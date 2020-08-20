@@ -25,8 +25,7 @@ class UAGBFormsCheckboxEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-		this.state = { optionsstate: null };
-		
+		this.state = { optionsstate:  [ { "optiontitle": "Option Name 1" } ] };
 	}
 
 	componentDidMount() {
@@ -56,7 +55,6 @@ class UAGBFormsCheckboxEdit extends Component {
 			options,
 			checkboxName
 		} = attributes
-			console.log(options);
 		const checkboxInspectorControls = () => {
 
 			return (
@@ -74,69 +72,84 @@ class UAGBFormsCheckboxEdit extends Component {
 			)
 		}
 
-		const addSelect = () => {
-			let newOption = "Option Name";
+		const addOption = () => {
+			const newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
+			options[options.length] = newOption; 
+			const addnewOptions = options.map( ( item, thisIndex ) => {				
+				return item
+			} )
+
+			setAttributes({ options:addnewOptions });
+			this.setState({optionsstate : addnewOptions});
+		};
+
+		const changeOption = (e, index) => {			
+			const editOptions = options.map( ( item, thisIndex ) => {
+				if ( index === thisIndex ) {
+					item = { ...item, ...e }
+				}
+				return item
+			} )
 			
-			options.push(newOption);
-			console.log((options));
-	
-			setAttributes({ options:options });
-			this.setState({optionsstate : options});
+			setAttributes({ options: editOptions });
+			this.setState({ optionsstate : editOptions });
+			
 		};
 
-		const optionChange = (e, index) => {
-			options[index] =  e.target.value;
-			setAttributes({ options: options });
-			console.log(options);
-			this.setState({optionsstate : this.state.optionsstate});
-
-		};
-		const handleDelete = index => {
+		const deleteOption = index => {
+			const deleteOptions = options.map( ( item, thisIndex ) => {
+				if ( index === thisIndex ) {
+					 options.splice(index, 1)
+					item = { options }
+				}
+				return item
+			} )
 		
-			options.splice(index, 1);
-			setAttributes({ options });
-			
-			console.log(options);
-			this.setState({optionsstate : this.state.optionsstate});
-		};
+			this.setState({optionsstate : deleteOptions});
+			setAttributes({ deleteOptions });			
 
+		};
+		
+		
 		const editView = options.map((s, index) => {
+			
 			return (
-				<div className={`uagb-form-checkbox-option uagb-block-${ block_id }`}>
-					<input type="checkbox" name={s} value={s}></input>
+				<div className="uagb-form-checkbox-option">
+					<input												
+						type="checkbox"
+						name={`checkbox-${block_id}`}
+						value={s.optiontitle}						
+					/>	
 					<input
-						aria-label={s}
-						onChange={e => optionChange(e, index)}
+						aria-label={s.optiontitle}
+						onChange={e => changeOption( { optiontitle: e.target.value }, index)}
 						type="text"
-						value={s}
-						
+						value={s.optiontitle}						
 					/>					
 					<Button 
 						className="uagb-form-checkbox-option-delete"
         				icon="trash"
-        				label="Remove" onClick={() => handleDelete(index)}
+        				label="Remove" onClick={ () => deleteOption(index) }
     				/>
 				</div>
 			);
 		});
+
 		const CheckboxView = () => {
-			return (
-				
-				<div className={ classnames(
-					"uagb-form-checkbox-wrapper",
-					`uagb-block-${ block_id }`,
-					) }>
+
+			return  (	
 					
-					{options.map((o, index) => {
-						var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
-						return (<Fragment>
-							<input type="checkbox"  name={optionvalue} value={optionvalue}/>
-							<label for={optionvalue}>{o}</label><br/>
-							</Fragment>);
-					})}
-				</div>
-				
-			);
+				options.map((o, index) => {
+					var optiontitle = o.optiontitle;
+					var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+					return (
+						<Fragment>
+						<input type="checkbox" id={optionvalue} name={`checkbox-${block_id}`} value={optionvalue} required={checkboxRequired}/>
+						<label for={optionvalue}>{optiontitle}</label><br/>						
+						</Fragment>
+					);
+				})
+			)			
 		};
 		
 
@@ -147,11 +160,21 @@ class UAGBFormsCheckboxEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-checkbox-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ checkboxRequired }
+							onChange={ ( value ) => setAttributes( { checkboxRequired: ! checkboxRequired } ) }
+						/>
+					</div>
+					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "checkbox Title" ) }
+						placeholder={ __( "Checkbox Title" ) }
 						value={ checkboxName }
 						onChange={ ( value ) => setAttributes( { checkboxName: value } ) }
 						className='uagb-forms-checkbox-label'
@@ -162,7 +185,7 @@ class UAGBFormsCheckboxEdit extends Component {
 							{editView}
 							<div className="uagb-forms-checkbox-controls">
 								<div>
-									<Button isSecondary onClick={addSelect}>{ __(" + Add Option ") }</Button>									
+									<Button isSecondary onClick={addOption}>{ __(" + Add Option ") }</Button>									
 								</div>								
 							</div>
 						</Fragment>
