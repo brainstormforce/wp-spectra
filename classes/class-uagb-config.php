@@ -2283,7 +2283,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'textareaName' => 'Message',
 						),
 					),
-					'uagb/forms-select'        => array(
+					'uagb/forms-select'       => array(
 						'slug'        => '',
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
