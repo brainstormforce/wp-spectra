@@ -22,6 +22,7 @@ export default function save( props ) {
 	return (
 		<div className={ classnames(
 			"uagb-forms-radio-wrap",
+			"uagb-forms-field-set",
 			`uagb-block-${ block_id }`,
 			) }>
 			<RichText.Content
@@ -35,13 +36,12 @@ export default function save( props ) {
 				var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="radio" id={optionvalue} name={`radio-${block_id}`} value={optionvalue}/>
-					<label for={`radio-${block_id}`}>{optiontitle}</label><br/>						
+					<input type="radio" id={ optionvalue } name={`radio-${ block_id }`} value={ optionvalue } required={ radioRequired }/>
+					<label for={ optionvalue }>{ optiontitle }</label><br/>						
 					</Fragment>
-					);
-				})}
-				
-				
-				</div>
-				)
-			}
+				);
+			})}
+								
+		</div>
+	)
+}
