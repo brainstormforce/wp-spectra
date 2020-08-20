@@ -2254,7 +2254,36 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-select'       => array(
+					'uagb/forms-hidden'       => array(
+						'slug'        => '',
+						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id'           => '',
+							'hidden_field_name'  => 'Hidden Field Name',
+							'hidden_field_value' => '',
+
+						),
+					),
+					'uagb/forms-phone'        => array(
+						'slug'        => '',
+						'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
+					),
+					'uagb/forms-textarea'     => array(
+						'slug'        => '',
+						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id'     => '',
+							'textareaName' => 'Message',
+						),
+					),
+					'uagb/forms-select'        => array(
 						'slug'        => '',
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),

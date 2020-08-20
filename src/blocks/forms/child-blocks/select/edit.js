@@ -155,8 +155,18 @@ class UAGBFormsSelectEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-select-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ selectRequired }
+							onChange={ ( value ) => setAttributes( { selectRequired: ! selectRequired } ) }
+						/>
+					</div>
+					)}
 					<RichText
 						tagName="div"
 						placeholder={ __( "Select Title" ) }
