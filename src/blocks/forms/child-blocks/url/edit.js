@@ -45,7 +45,7 @@ class UAGBFormsUrlEdit extends Component {
 	
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes,isSelected } = this.props
 
         const {
 			block_id,
@@ -80,6 +80,15 @@ class UAGBFormsUrlEdit extends Component {
 					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ required }
+							onChange={ ( value ) => setAttributes( { required: ! required } ) }
+						/>
+					</div>
+					)}
 					<RichText
 						tagName="div"
 						placeholder={ __( "URL Name" ) }
