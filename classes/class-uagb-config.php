@@ -2283,13 +2283,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'textareaName' => 'Message',
 						),
 					),
-					'uagb/forms-checkbox'        => array(
+					'uagb/forms-checkbox'     => array(
 						'slug'        => '',
 						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'attributes'  => array(
-						)
+						'attributes'  => array(),
 					),
 				);
 			}

@@ -144,7 +144,7 @@ class UAGBFormsCheckboxEdit extends Component {
 					var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="checkbox" id={optionvalue} name={`checkbox-${block_id}`} value={optionvalue} required={checkboxRequired}/>
+						<input type="checkbox"  name={`checkbox-${block_id}`} value={optionvalue} required={checkboxRequired}/>
 						<label for={optionvalue}>{optiontitle}</label><br/>						
 						</Fragment>
 					);
