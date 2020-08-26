@@ -123,6 +123,7 @@ class UAGBInlineNoticeEdit extends Component {
 				contentHrPadding,
 				titleVrPadding,
 				titleHrPadding,
+				headingTag,
 			},
 			setAttributes,
 			className,
@@ -179,6 +180,22 @@ class UAGBInlineNoticeEdit extends Component {
 		const inlineGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<h2>{ __( "Primary Heading" ) }</h2>
+					<SelectControl
+						label={ __( "Tag" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+							{ value: "span", label: __( "span" ) },
+							{ value: "p", label: __( "p" ) },
+						] }
+					/>
 					<SelectControl
 							label={ __( 'Notice Display' ) }
 							options={ noticeDismissOptions }
@@ -368,7 +385,7 @@ class UAGBInlineNoticeEdit extends Component {
 				>
 					{ image_icon_html }
 					<RichText
-						tagName="h4"
+						tagName={ headingTag }
 						placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }
 						keepPlaceholderOnFocus
 						value={ noticeTitle }
