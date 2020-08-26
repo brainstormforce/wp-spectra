@@ -22,3 +22,9 @@
 		background: #00800030;
 	}
 }
+
+//add right space for radio button in frontend
+.uagb-forms-radio-wrap input[type="radio"] {
+	margin-right: 15px;
+	vertical-align: middle;
+}

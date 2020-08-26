@@ -486,6 +486,11 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						// Exclude Current Post.
+						'excludeCurrentPost'      => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
 				)

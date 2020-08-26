@@ -22,7 +22,8 @@ export default function save( props ) {
 		answer,
 		icon,
 		iconActive,
-		layout
+		layout,
+		headingTag
 	} = props.attributes
 
 	const faqRenderIcon = () => {
@@ -46,7 +47,7 @@ export default function save( props ) {
 						<div className="uagb-faq-questions-button uagb-faq-questions">
 							{ 'accordion' === layout && faqRenderIcon() }
 							<RichText.Content
-								tagName='span'
+								tagName={ headingTag }
 								value={ question }
 								className='uagb-question'
 							/>

@@ -42,6 +42,7 @@ import "./blocks/forms/child-blocks/email/block.js"
 import "./blocks/forms/child-blocks/hidden/block.js"
 import "./blocks/forms/child-blocks/phone/block.js"
 import "./blocks/forms/child-blocks/textarea/block.js"
+import "./blocks/forms/child-blocks/radio/block.js"
 import "./blocks/forms/child-blocks/url/block.js"
 import "./blocks/forms/child-blocks/select/block.js"
 
