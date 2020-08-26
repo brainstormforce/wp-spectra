@@ -2290,6 +2290,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
+					'uagb/forms-toggle'       => array(
+						'slug'        => '',
+						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
+					),
 				);
 			}
 			return self::$block_attributes;
