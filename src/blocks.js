@@ -42,6 +42,7 @@ import "./blocks/forms/child-blocks/email/block.js"
 import "./blocks/forms/child-blocks/hidden/block.js"
 import "./blocks/forms/child-blocks/phone/block.js"
 import "./blocks/forms/child-blocks/textarea/block.js"
+import "./blocks/forms/child-blocks/url/block.js"
 import "./blocks/forms/child-blocks/select/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
@@ -51,6 +52,3 @@ const { updateCategory } = wp.blocks
 updateCategory( "uagb", {
 	icon: UAGB_Block_Icons.logo,
 }, )
-
-
-
