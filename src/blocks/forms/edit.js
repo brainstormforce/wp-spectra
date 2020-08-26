@@ -36,7 +36,7 @@ const {
 
 const { __ } = wp.i18n
 
-const ALLOWED_BLOCKS = [ "uagb/forms-name", "uagb/forms-email", "uagb/forms-hidden", "uagb/forms-phone", "uagb/forms-textarea", "uagb/forms-select", "uagb/forms-toggle" ]
+const ALLOWED_BLOCKS = [ "uagb/forms-name", "uagb/forms-email", "uagb/forms-hidden", "uagb/forms-phone", "uagb/forms-textarea", "uagb/forms-url", "uagb/forms-select", "uagb/forms-toggle" ]
 
 class UAGBFormsEdit extends Component {
 

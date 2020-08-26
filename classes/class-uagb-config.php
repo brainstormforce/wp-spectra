@@ -2283,6 +2283,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'textareaName' => 'Message',
 						),
 					),
+					'uagb/forms-url'          => array(
+						'slug'        => '',
+						'title'       => __( 'URL', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id' => '',
+							'name'     => __( 'URL' ),
+						),
+					),
 					'uagb/forms-select'       => array(
 						'slug'        => '',
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
