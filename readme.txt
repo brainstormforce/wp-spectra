@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Icon List Border turns to the oval issue.
 * Fix: Info Box - Fixed a Typography issue with CTA-Button.
 * Fix: Call To Action - Rectified the issue with Anchor that does not save.
+* Fix: Inline Notice - Notice dismiss issue.
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
