@@ -12,8 +12,14 @@
 		default : null,
 	},
 	noticeTitle: {
-		type: "string",
+		type:"string",
+		source: "html",					
+		selector: ".uagb-notice-title",		
 		default: "Notice Title",
+	},
+	headingTag: {
+		type: "string",
+		default: "h4"
 	},
 	noticeContent: {
 		type: "string",

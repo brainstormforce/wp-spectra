@@ -101,7 +101,6 @@ export default function save( props ) {
 	}
 
 	return (
-		<Fragment>
 			<div className={ classnames(
 				className,
 				"uagb-cta__outer-wrap",
@@ -117,6 +116,5 @@ export default function save( props ) {
 				{ ( ctaType !== "all") && output }
 
 			</div>
-		</Fragment>
 	)
 }

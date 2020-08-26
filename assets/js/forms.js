@@ -21,9 +21,17 @@
                 }
                 return true;
             } );
+            
+            //validation for checkbox if required.
+            var requiredCheckboxes = $('.uagb-forms-checkbox-wrap :checkbox[required]');
+            requiredCheckboxes.on('change', function(e) {
+              var checkboxGroup = requiredCheckboxes.filter('[name="' + $(this).attr('name') + '"]');
+              var isChecked = checkboxGroup.is(':checked');
+              checkboxGroup.prop('required', !isChecked);
+            });
+            requiredCheckboxes.trigger('change');
 
             $form.on( 'submit', function( e ) {
-
                 UAGBForms._formSubmit( e, $( this ), attr )
             } );
         },
