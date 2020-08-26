@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.4
-Stable tag: 1.16.1
+Tested up to: 5.5
+Stable tag: 1.17.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,9 +160,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.17.0 =
-* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM
+* Improvement: Compatibility with WordPress 5.5.
+* Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
+* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
+* Fix: Icon List - Icon List Border turns to the oval issue.
+* Fix: Info Box - Fixed a Typography issue with CTA-Button.
+* Fix: Call To Action - Rectified the issue with Anchor that does not save.
+* Fix: Inline Notice - Notice dismiss issue.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
-
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
