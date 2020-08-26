@@ -59,8 +59,12 @@
 		height: 40px;
 	}
 
-	.uagb-icon-list__source-icon svg{
-		display: block;
+	.uagb-icon-list__content-wrap span.uagb-icon-list__source-wrap {
+	    display: block;
+	}
+
+	.uagb-icon-list__source-icon svg {
+   	    display:block;
 	}
 
 	.uagb-icon-list__source-image {

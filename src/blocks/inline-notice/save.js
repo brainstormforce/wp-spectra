@@ -20,12 +20,13 @@ export default function save( props ) {
 		noticeTitle,
 		noticeContent,
 		noticeAlignment,
+		headingTag,
 		icon,
 		noticeDismiss,
 		cookies,
 		close_cookie_days
 	} = attributes
- 
+ 	
 	let image_icon_html = ''
 
 	if ( noticeDismiss ) {
@@ -49,7 +50,7 @@ export default function save( props ) {
 			{image_icon_html}
 			<RichText.Content
 				value={ noticeTitle }
-				tagName="h4"
+				tagName={ headingTag }
 				className='uagb-notice-title'
 			/>
 			<RichText.Content
