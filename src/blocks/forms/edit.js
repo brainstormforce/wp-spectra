@@ -45,7 +45,8 @@ const ALLOWED_BLOCKS = [
 	"uagb/forms-url",
 	"uagb/forms-select",
 	"uagb/forms-radio",
-	"uagb/forms-checkbox"
+	"uagb/forms-checkbox",
+	"uagb/forms-upload"
 ]
 
 class UAGBFormsEdit extends Component {

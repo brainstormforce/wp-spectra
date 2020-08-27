@@ -30,3 +30,4 @@ p.uagb-marketing-btn__prefix.block-editor-rich-text__editable{margin:0 !importan
 .uagb-forms-checkbox-wrap input[type="checkbox"],.uagb-form-checkbox-option input[type="checkbox"]{margin-right:15px;vertical-align:middle}.uagb-forms-checkbox-controls{margin-top:10px}.uagb-form-checkbox-option-delete.has-icon{margin:0;padding:10px;vertical-align:middle}
 .uagb-forms-radio-wrap input[type="radio"],.uagb-form-radio-option input[type="radio"]{margin-right:15px;vertical-align:middle}.uagb-forms-radio-controls{margin-top:10px}.uagb-form-radio-option-delete.has-icon{margin:0;padding:10px;vertical-align:middle}
 .uagb-forms-select-controls{margin-top:10px}.uagb-form-select-option-delete.has-icon{margin:0;padding:10px;vertical-align:middle}
+.uagb-columns__wrap:before{content:'';position:absolute;border:1px dashed #03ddff;top:0;right:0;bottom:0;left:0;z-index:1}
