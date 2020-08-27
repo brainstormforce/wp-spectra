@@ -13,14 +13,7 @@ const {
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
 	ToggleControl,
-	IconButton
 } = wp.components
 const {
 	InspectorControls,
