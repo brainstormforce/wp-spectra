@@ -29,7 +29,6 @@ export default function save( props ) {
 				value={ name }
 				className="uagb-forms-toggle-label"			
 				/>
-				{/* <input type="text" required={ toggleRequired } className="uagb-forms-toggle-input"/> */}
 				<label class="uagb-switch">
 					<input 
 						type="checkbox"
