@@ -1,7 +1,7 @@
 .uagb-forms__outer-wrap {
     .uagb-forms-main-form {
-
-		.uagb-forms-name-input, .uagb-forms-email-input, .uagb-forms-phone-input, .uagb-forms-textarea-input, .uagb-forms-url-input, .uagb-forms-select-box {
+		
+		input:not([type=checkbox]):not([type=radio]) , textarea, select {
 			width: 100%;
 		}
 		.uagb-forms-field-set{
@@ -21,16 +21,25 @@
 		padding: 20px 20px;
 		background: #00800030;
 	}
-	.uagb-form-checkbox-wrapper input[type="checkbox"] {		
-		margin-right: 12px;
-	}
-	
-	
+		
 }
 
-// Add right space for Checkbox / Radio Button in frontend.
-.uagb-forms-checkbox-wrap input[type="checkbox"],
-.uagb-forms-radio-wrap input[type="radio"] {
-	margin-right: 15px;
-	vertical-align: middle;
+.uagb-forms__outer-wrap {
+
+	// Checkbox Css 
+	.uagb-forms-checkbox-wrap input[type="checkbox"] {
+		margin-right: 15px;
+		vertical-align: middle;
+	}
+	
+	//Checkbox Css End
+
+	// Radio Css 
+	.uagb-forms-radio-wrap input[type="radio"] {
+		margin-right: 15px;
+		vertical-align: middle;
+	}
+	
+	//Radio Css End
+
 }
