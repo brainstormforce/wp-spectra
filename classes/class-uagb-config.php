@@ -2338,6 +2338,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
+					'uagb/forms-date'         => array(
+						'slug'        => '',
+						'title'       => __( 'Date', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add date field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
+					),
 				);
 			}
 			return self::$block_attributes;
