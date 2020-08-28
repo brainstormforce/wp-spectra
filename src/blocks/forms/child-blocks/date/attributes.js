@@ -8,7 +8,7 @@ const attributes = {
     },
     name: {
         type: "string",
-        default: "Name"
+        default: "Date"
     },
 }
 export default attributes
