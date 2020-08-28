@@ -167,6 +167,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Info Box - Fixed a Typography issue with CTA-Button.
 * Fix: Call To Action - Rectified the issue with Anchor that does not save.
 * Fix: Inline Notice - Notice dismiss issue.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.

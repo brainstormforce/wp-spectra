@@ -703,6 +703,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconSizeTablet'               => 15,
 							'iconSizeType'                 => 'px',
 							'columns'                      => 2,
+							'tcolumns'                     => 2,
+							'mcolumns'                     => 1,
 							'schema'                       => '',
 							'enableToggle'                 => true,
 							'questionLeftPaddingTablet'    => 10,
