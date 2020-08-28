@@ -70,6 +70,8 @@ class UAGBFormsTextareaEdit extends Component {
 			)
 		}
 
+		const isRequired = (textareaRequired) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -94,7 +96,7 @@ class UAGBFormsTextareaEdit extends Component {
 						placeholder={ __( "Textarea Name" ) }
 						value={ textareaName }
 						onChange={ ( value ) => setAttributes( { textareaName: value } ) }
-						className='uagb-forms-textarea-label'
+						className={`uagb-forms-textarea-label ${isRequired}`}
 						multiline={ false }
 					/>					
 					<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>

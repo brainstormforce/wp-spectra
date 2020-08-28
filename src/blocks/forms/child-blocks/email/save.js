@@ -17,7 +17,9 @@ export default function save( props ) {
 		name,
 		required
 	} = attributes
-		
+	
+	const isRequired = (required) ? "required" : "";
+
 	return (
 		<div className={ classnames(
 			"uagb-forms-email-wrap",
@@ -27,7 +29,7 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ name }
-				className="uagb-forms-email-label"			
+				className={`uagb-forms-email-label ${isRequired}`}			
 			/>			
 			<input type="email" className="uagb-forms-email-input" required={ required }/>
 		</div>

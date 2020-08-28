@@ -77,6 +77,7 @@ class UAGBFormsNameEdit extends Component {
 			)
 		}
 
+		const isRequired = (nameRequired) ? "required" : "";
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -102,7 +103,7 @@ class UAGBFormsNameEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className="uagb-forms-name-label"
+						className={`uagb-forms-name-label ${isRequired}`}
 						multiline={ false }
 					/>					
 					<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>

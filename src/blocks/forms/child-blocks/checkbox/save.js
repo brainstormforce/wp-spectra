@@ -19,6 +19,8 @@ export default function save( props ) {
 		checkboxName
 	} = attributes
 	
+	const isRequired = (checkboxRequired) ? "required" : "";
+
 	return (
 		<div className={ classnames(
 			"uagb-forms-checkbox-wrap",
@@ -28,7 +30,7 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ checkboxName }
-			className='uagb-forms-checkbox-label'			
+			className={`uagb-forms-checkbox-label ${isRequired}`}		
 			/>
 			
 			{options.map((o, index) => {

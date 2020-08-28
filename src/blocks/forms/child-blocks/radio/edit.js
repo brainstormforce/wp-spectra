@@ -152,6 +152,7 @@ class UAGBFormsRadioEdit extends Component {
 			)			
 		};
 		
+		const isRequired = (radioRequired) ? "required" : "";
 
 		return (
 			<Fragment>
@@ -177,7 +178,7 @@ class UAGBFormsRadioEdit extends Component {
 						placeholder={ __( "Radio Title" ) }
 						value={ radioName }
 						onChange={ ( value ) => setAttributes( { radioName: value } ) }
-						className='uagb-forms-radio-label'
+						className={`uagb-forms-radio-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{isSelected && (

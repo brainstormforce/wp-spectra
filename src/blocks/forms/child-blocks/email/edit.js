@@ -51,6 +51,8 @@ class UAGBFormsEmailEdit extends Component {
 			required
 		} = attributes
 		
+		const isRequired = (required) ? "required" : "";
+
 		return (
 			<div className={ classnames(
 				"uagb-forms-email-wrap",
@@ -71,7 +73,7 @@ class UAGBFormsEmailEdit extends Component {
 						placeholder={ __( "Email" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className="uagb-forms-email-label"
+						className={`uagb-forms-email-label ${isRequired}`}
 						multiline={ false }
 				/>
 				<input type="email" className="uagb-forms-email-input" required={ required }/>

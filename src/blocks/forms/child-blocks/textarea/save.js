@@ -16,6 +16,8 @@ export default function save( props ) {
 		textareaName
 	} = attributes
 	
+	const isRequired = (textareaRequired) ? "required" : "";
+	
 	return (
 		<div className={ classnames(
 			"uagb-forms-textarea-wrap",
@@ -25,7 +27,7 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ textareaName }
-			className='uagb-forms-textarea-label'
+			className={`uagb-forms-textarea-label ${isRequired}`}
 			
 			/>
 			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>

@@ -153,6 +153,8 @@ class UAGBFormsCheckboxEdit extends Component {
 		};
 		
 
+		const isRequired = (checkboxRequired) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -177,7 +179,7 @@ class UAGBFormsCheckboxEdit extends Component {
 						placeholder={ __( "Checkbox Title" ) }
 						value={ checkboxName }
 						onChange={ ( value ) => setAttributes( { checkboxName: value } ) }
-						className='uagb-forms-checkbox-label'
+						className={`uagb-forms-checkbox-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{isSelected && (
