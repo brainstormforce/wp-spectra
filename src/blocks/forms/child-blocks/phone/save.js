@@ -31,6 +31,8 @@ export default function save( props ) {
 		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input"/>
 	}
 	
+	const isRequired = (phoneRequired) ? "required" : "";
+	
 	return (
 		<div className={ classnames(
 			"uagb-forms-phone-wrap",
@@ -40,7 +42,7 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ phoneName }
-				className='uagb-forms-phone-label'			
+				className={`uagb-forms-phone-label ${isRequired}`}	
 			/>
 			{phone_html}
 		</div>

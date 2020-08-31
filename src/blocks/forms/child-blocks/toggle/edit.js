@@ -72,7 +72,8 @@ class UAGBFormsToggleEdit extends Component {
 			)
 		}
 		
-		
+		const isRequired = (toggleRequired) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -98,7 +99,7 @@ class UAGBFormsToggleEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className="uagb-forms-toggle-label"
+						className={`uagb-forms-toggle-label ${isRequired}`}
 						multiline={ false }
 					/>
 					<label class="uagb-switch">

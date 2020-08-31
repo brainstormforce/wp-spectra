@@ -70,6 +70,8 @@ class UAGBFormsUrlEdit extends Component {
 			)
 		}
 
+		const isRequired = (required) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -94,7 +96,7 @@ class UAGBFormsUrlEdit extends Component {
 						placeholder={ __( "URL Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className='uagb-forms-url-label'
+						className={`uagb-forms-url-label ${isRequired}`}
 						multiline={ false }
 					/>
 					<input type="url" required={ required } className="uagb-forms-url-input"/>					

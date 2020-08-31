@@ -147,6 +147,7 @@ class UAGBFormsSelectEdit extends Component {
 			)			
 		};
 		
+		const isRequired = (selectRequired) ? "required" : "";
 
 		return (
 			<Fragment>
@@ -172,7 +173,7 @@ class UAGBFormsSelectEdit extends Component {
 						placeholder={ __( "Select Title" ) }
 						value={ selectName }
 						onChange={ ( value ) => setAttributes( { selectName: value } ) }
-						className='uagb-forms-select-label'
+						className={`uagb-forms-select-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{isSelected && (

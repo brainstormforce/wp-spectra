@@ -79,6 +79,8 @@ class UAGBFormsUploadEdit extends Component {
 			)
 		}
 
+		const isRequired = (uploadRequired) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -104,7 +106,7 @@ class UAGBFormsUploadEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className="uagb-forms-upload-label"
+						className={`uagb-forms-upload-label ${isRequired}`}
 						multiline={ false }
 					/>					
 					<input type="file" className="uagb-forms-upload-input" disabled required={uploadRequired} />

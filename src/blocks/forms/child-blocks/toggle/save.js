@@ -18,6 +18,8 @@ export default function save( props ) {
 		toggleStatus
 	} = attributes
 	
+	const isRequired = (toggleRequired) ? "required" : "";
+	
 	return (
 		<div className={ classnames(
 			"uagb-forms-toggle-wrap",
@@ -27,7 +29,7 @@ export default function save( props ) {
 				<RichText.Content
 				tagName="div"
 				value={ name }
-				className="uagb-forms-toggle-label"			
+				className={`uagb-forms-toggle-label ${isRequired}`}		
 				/>
 				<label class="uagb-switch">
 					<input 

@@ -20,6 +20,8 @@ export default function save( props ) {
 	
 	const allowed_files = formats.map(f => ".".concat(f)).join(",");
 
+	const isRequired = (uploadRequired) ? "required" : "";
+
 	return (
 		<div className={ classnames(
 			"uagb-forms-upload-wrap",
@@ -29,7 +31,7 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ name }
-			className="uagb-forms-upload-label"			
+			className={`uagb-forms-upload-label ${isRequired}`}		
 			/>
 			<input type="file" accept={allowed_files} className="uagb-forms-upload-input" required={uploadRequired} />
 		</div>
