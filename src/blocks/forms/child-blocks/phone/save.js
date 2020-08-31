@@ -42,7 +42,7 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ phoneName }
-				className={`uagb-forms-name-label ${isRequired}`}	
+				className={`uagb-forms-phone-label ${isRequired}`}	
 			/>
 			{phone_html}
 		</div>
