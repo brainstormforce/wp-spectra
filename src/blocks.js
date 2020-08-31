@@ -46,6 +46,8 @@ import "./blocks/forms/child-blocks/checkbox/block.js"
 import "./blocks/forms/child-blocks/radio/block.js"
 import "./blocks/forms/child-blocks/url/block.js"
 import "./blocks/forms/child-blocks/select/block.js"
+import "./blocks/forms/child-blocks/toggle/block.js"
+import "./blocks/forms/child-blocks/upload/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 
