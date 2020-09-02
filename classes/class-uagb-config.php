@@ -2250,6 +2250,18 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'inputSizeType'           => '%',
 						),
 					),
+					'uagb/taxonomy-list'          => array(
+						'slug'        => '',
+						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you display Taxonomy List.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,						
+						'attributes'  => array(
+							'block_id'   => '',
+							'postType'   => 'post',
+							'taxonomyType'   => 'category',							
+
+						),
+					),
 				);
 			}
 			return self::$block_attributes;
