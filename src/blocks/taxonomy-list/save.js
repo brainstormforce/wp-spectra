@@ -19,7 +19,8 @@ const { withSelect } = wp.data
         postType,       
         taxonomyType,        
         layout,
-        seperatorStyle,      
+        seperatorStyle, 
+        noTaxDisplaytext     
 
     } = props.attributes
 
