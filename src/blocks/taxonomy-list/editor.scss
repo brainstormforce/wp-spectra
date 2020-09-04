@@ -1,13 +1,8 @@
-.uagb-taxonomy-wrap.uagb-layout-grid{
-    display: grid;  
-    grid-template-columns: repeat(2,auto);
-
+.uagb-tax-not-available {
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
 }
-// .uagb-taxonomy-wrap div {
-//     background-color: #ecebeb;
-//     margin-left: 20px;
-//     margin-right: 20px;
-//     padding-right: 10px;
-//     padding-left: 10px;
-//     margin-bottom: 20px;
-// }
+.uagb-layout-list .uagb-list-wrap{
+    margin: 0;
+}

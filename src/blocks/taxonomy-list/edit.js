@@ -90,9 +90,7 @@ class UAGBTaxonomyList extends Component {
 			taxonomyList,
 			categoriesList,
 			latestPosts
-		} = this.props
-		console.log(uagb_blocks_info);
-		console.log(categoriesList);
+		} = this.props		
 
 		// Caching all attributes.
 		const {
@@ -124,7 +122,6 @@ class UAGBTaxonomyList extends Component {
 			seperatorColor,
 			listTextColor,
 			hoverlistTextColor,
-			listLeftMargin,
 			listBottomMargin,
 			listStyleColor,
 			hoverlistStyleColor
@@ -426,14 +423,7 @@ class UAGBTaxonomyList extends Component {
 							</PanelBody>
 
 							<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>					
-								<RangeControl
-									label={ __( "Left Margin" ) }
-									value={ listLeftMargin }
-									onChange={ ( value ) => setAttributes( { listLeftMargin: value } ) }
-									min={ 0 }
-									max={ 100 }
-									allowReset
-								/>
+								
 								<RangeControl
 									label={ __( "Bottom Margin" ) }
 									value={ listBottomMargin }
@@ -544,12 +534,14 @@ class UAGBTaxonomyList extends Component {
 							)}
 
 							{"list" == layout && ( 
-								<ul>
+								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">
-											<a class="uagb-tax-link" href={p.link}>
-												{p.name} - {p.count} Documents
-											</a>
+											<div className="uagb-tax-link-wrap">
+												<a class="uagb-tax-link" href={p.link}>
+													{p.name} - {p.count} Documents
+												</a>
+											</div>
 
 											{"none" != seperatorStyle && (
 												<div class="uagb-tax-separator-wrap">
@@ -562,9 +554,9 @@ class UAGBTaxonomyList extends Component {
 								</ul>
 							)}
 						</div>
-							{/* If not Taxonomy is available. */}
+							{/* If no Taxonomy is available. */}
 							{categoriesList == "" && (
-								<div class="uagb-tax-not-available">Tax Not Available.</div>
+								<div class="uagb-tax-not-available">Taxonomy Not Available.</div>
 							)}
 
 					</div>	
@@ -576,7 +568,6 @@ class UAGBTaxonomyList extends Component {
 export default withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
-	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -585,21 +576,6 @@ export default withSelect( ( select, props ) => {
 	let categoriesList = []
 	let rest_base = ""
 
-	if ( true === postPagination && 'empty' === paginationMarkup ) {
-		$.ajax({
-			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: "uagb_post_pagination",
-				attributes : props.attributes,
-				nonce: uagb_blocks_info.uagb_ajax_nonce
-			},
-			dataType: "json",
-			type: "POST",
-			success: function( data ) {
-				setAttributes( { paginationMarkup: data.data } ) 
-			}
-		});
-	}
 
 	if ( "undefined" != typeof currentTax ) {
 
@@ -620,12 +596,6 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
-	if ( excludeCurrentPost ) {		
-		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
-	}
-	
-	// latestPostsQuery[rest_base] = categories
-	
 	return {
 		latestPosts: getEntityRecords( 'postType' ,postType, latestPostsQuery ),
 		categoriesList: categoriesList,

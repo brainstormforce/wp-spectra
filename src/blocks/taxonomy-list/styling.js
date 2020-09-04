@@ -78,17 +78,22 @@ function styling( props ) {
         //List layout styling
         ' .uagb-layout-list .uagb-tax-list' : {
             "list-style" : listStyle,
-            "color" : listStyleColor                               
+            "color" : listStyleColor ,
+                                         
         },
         ' .uagb-layout-list .uagb-tax-list:hover' : {            
             "color" : hoverlistStyleColor                               
         },
         ' .uagb-layout-list .uagb-tax-list a.uagb-tax-link' : {
-            "color" : listTextColor,                               
+            "color" : listTextColor,                                        
         },
         ' .uagb-layout-list .uagb-tax-list a.uagb-tax-link:hover' : {
             "color" : hoverlistTextColor,                               
         },
+        ' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap' : {
+            "margin-bottom" :  generateCSSUnit( listBottomMargin, 'px' )                                        
+        },
+        
 
         
         

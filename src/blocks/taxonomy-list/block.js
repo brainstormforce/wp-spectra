@@ -9,6 +9,8 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import "./style.scss"
 import "./editor.scss"
 import edit from "./edit"
+import save from "./save"
+
 import  "./editor.scss"
 import  "./style.scss"
 import attributes from "./attributes"
@@ -32,8 +34,6 @@ registerBlockType( "uagb/taxonomy-list", {
 		__( "uag" ),
 	],
 	edit,
-	// Render via PHP
-	save() {
-		return null
-	},
+	
+	save,
 } )

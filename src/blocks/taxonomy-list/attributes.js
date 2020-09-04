@@ -96,13 +96,9 @@ const attributes = {
         type : "number",
         default : 15
     },
-    listLeftMargin : {
-        type : "number",
-        default : 20
-    },
     listBottomMargin : {
         type : "number",
-        default : 20
+        default : 10
     },
     
 
