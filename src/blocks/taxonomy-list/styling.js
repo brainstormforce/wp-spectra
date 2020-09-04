@@ -36,7 +36,6 @@ function styling( props ) {
         seperatorColor,
         listTextColor,
         hoverlistTextColor,
-        listLeftMargin,
         listBottomMargin,
         listStyleColor,
 		hoverlistStyleColor

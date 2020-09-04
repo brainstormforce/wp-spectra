@@ -4743,5 +4743,63 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
+
+		/**
+		 * Get Taxonomy List CSS.
+		 *
+		 * @since 1.17.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_taxonomy_list_css( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/taxonomy-list']['attributes'];
+			$attr     = array_merge( $defaults, $attr );
+
+			$selectors   = array();
+			$t_selectors = array();
+			$m_selectors = array();
+
+			$selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+					'display'               => 'grid',
+					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
+					'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
+
+				),
+				' .uagb-layout-grid .uagb-taxomony-box' => array(
+					'border'           => '1px solid #c6c6c6',
+					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
+					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+					'background-color' => $attr['bgColor'],
+
+				),
+				' .uagb-layout-grid .uagb-tax-title'    => array(
+					'color'         => $attr['titleColor'],
+					'text-align'    => $attr['titleAlignment'],
+					'margin-top'    => '0',
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+				),
+				' .uagb-layout-grid .uagb-tax-count'    => array(
+					'color'      => $attr['countColor'],
+					'text-align' => $attr['countAlignment'],
+				),
+			);
+
+			$m_selectors = array();
+
+			$t_selectors        = array();
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+			// $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input', $combined_selectors );
+
+			// $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
 	}
 }

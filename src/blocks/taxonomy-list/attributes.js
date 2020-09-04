@@ -1,10 +1,10 @@
 const attributes = {
     block_id : {
-		type : "string"
+        type : "string"
     },
     postType : {
-      type : "string",
-      default : "post",
+        type : "string",
+        default : "post",
     },
     taxonomyType : {
         type : "string",
@@ -30,18 +30,18 @@ const attributes = {
         default : "grid"
     },
     columns: {
-		type: "number",
-		default : 3
-	},
-	tcolumns :{
-		type: "number",
-		default: 2,
-	},
-	mcolumns :{
-		type: "number",
-		default: 1,
-	},
-
+        type: "number",
+        default : 3
+    },
+    tcolumns :{
+        type: "number",
+        default: 2,
+    },
+    mcolumns :{
+        type: "number",
+        default: 1,
+    },
+    
     //Color Attributes
     bgColor : {
         type : "string",
@@ -73,8 +73,8 @@ const attributes = {
     },
     
     
-
-
+    
+    
     //Spacing Attributes    
     rowGap : {
         type : "number",
@@ -101,8 +101,8 @@ const attributes = {
         default : 10
     },
     
-
-
+    
+    
     //ALignment Attributes
     titleAlignment : {
         type : "string",
@@ -112,31 +112,31 @@ const attributes = {
         type : "string",
         default : "center"
     },
-
-
+    
+    
     //List Attributes
     listStyle : {
         type : "string",
         default : "disc"
     },
-
+    
     //Seperator Attributes
     seperatorStyle : {
-		type: "string",
-		default: "none"
-	},
-	seperatorWidth : {
-		type: "number",
-		default: 100
-	},
-	seperatorThickness : {
-		type: "number",
-		default: 1
-	},
-	seperatorColor : {
-		type: "string",
-		default: "#b2b4b5",
-	},
+        type: "string",
+        default: "none"
+    },
+    seperatorWidth : {
+        type: "number",
+        default: 100
+    },
+    seperatorThickness : {
+        type: "number",
+        default: 1
+    },
+    seperatorColor : {
+        type: "string",
+        default: "#b2b4b5",
+    },
     
 }
 
