@@ -1090,6 +1090,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$related_tax[] = array(
 								'id'   => $t_obj->term_id,
 								'name' => $t_obj->name,
+								'count' => $t_obj->count,
+								'link' => get_term_link( $t_obj->term_id ) 
 							);
 						}
 
