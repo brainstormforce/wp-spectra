@@ -124,7 +124,8 @@ class UAGBTaxonomyList extends Component {
 			hoverlistTextColor,
 			listBottomMargin,
 			listStyleColor,
-			hoverlistStyleColor
+			hoverlistStyleColor,
+			noTaxDisplaytext
 
         } = attributes
 
@@ -263,7 +264,16 @@ class UAGBTaxonomyList extends Component {
 							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
 							options={ taxonomyListOptions }
 							/>
-						}					
+						}
+						{ "" == taxonomyList && (
+								<TextControl
+									autoComplete="off"
+									label={ __( 'Display Message' ) }
+									value={ noTaxDisplaytext }
+									onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
+									help={ __( "If Taxonomy Not Found" ) }
+								/>
+						)}					
                 </PanelBody>
 				
 				<PanelBody title={ __( setting_label ) } initialOpen={ false }>
@@ -556,7 +566,7 @@ class UAGBTaxonomyList extends Component {
 						</div>
 							{/* If no Taxonomy is available. */}
 							{categoriesList == "" && (
-								<div class="uagb-tax-not-available">Taxonomy Not Available.</div>
+								<div class="uagb-tax-not-available">{noTaxDisplaytext}</div>
 							)}
 
 					</div>	

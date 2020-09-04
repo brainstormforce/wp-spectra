@@ -88,7 +88,7 @@ const { withSelect } = wp.data
 						</div>
 							{/* If no Taxonomy is available. */}
 							{categoriesList == "" && (
-								<div class="uagb-tax-not-available">Taxonomy Not Available.</div>
+								<div class="uagb-tax-not-available">{noTaxDisplaytext}</div>
 							)}
 
 					</div>	

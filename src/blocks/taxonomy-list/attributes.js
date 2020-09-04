@@ -41,6 +41,11 @@ const attributes = {
         type: "number",
         default: 1,
     },
+    noTaxDisplaytext : {
+        type : "string",
+        default : "Taxonomy Not Available." 
+    },
+
     
     //Color Attributes
     bgColor : {
