@@ -557,6 +557,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
 					break;
 
+				case 'uagb/taxonomy-list':
+					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -1088,10 +1092,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'   => $t_obj->term_id,
-								'name' => $t_obj->name,
+								'id'    => $t_obj->term_id,
+								'name'  => $t_obj->name,
 								'count' => $t_obj->count,
-								'link' => get_term_link( $t_obj->term_id ) 
+								'link'  => get_term_link( $t_obj->term_id ),
 							);
 						}
 
