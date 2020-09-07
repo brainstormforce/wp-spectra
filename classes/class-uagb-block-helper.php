@@ -4765,7 +4765,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'display'               => 'grid',
 					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
 					'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
-					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),					
+					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
 
 				),
 				' .uagb-layout-grid .uagb-taxomony-box'   => array(
@@ -4786,7 +4786,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['countAlignment'],
 				),
 
-				// List layout styling
+				// List layout styling.
 				' .uagb-layout-list .uagb-tax-list'       => array(
 					'list-style' => $attr['listStyle'],
 					'color'      => $attr['listStyleColor'],

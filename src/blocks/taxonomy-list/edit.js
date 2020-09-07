@@ -218,7 +218,7 @@ class UAGBTaxonomyList extends Component {
 												value={ tcolumns }
 												onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 												min={ 1 }
-												max={ 4 }
+												max={ 3 }
 											/>
 										)
 									} else {
@@ -228,7 +228,7 @@ class UAGBTaxonomyList extends Component {
 												value={ columns }
 												onChange={ ( value ) => setAttributes( { columns: value } ) }
 												min={ 1 }
-												max={ 6 }
+												max={ 4 }
 											/>
 										)
 									}
