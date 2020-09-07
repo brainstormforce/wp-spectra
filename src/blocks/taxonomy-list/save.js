@@ -3,13 +3,9 @@
  */
 
 import classnames from "classnames"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
-const {	RichText } = wp.blockEditor
-const { Component,Fragment } = wp.element
-const { withSelect } = wp.data
+const { Fragment } = wp.element
 
-// const { getEntityRecords } = select( "core" )
 
  export default function save( props ) {
     const { className } = props
@@ -55,7 +51,7 @@ const { withSelect } = wp.data
 						`uagb-layout-${layout}`
 						) }>
 
-							{"grid" == layout && ( 
+							{"grid" === layout && ( 
 								categoriesList.map((p,index)=>
 									<div className="uagb-taxomony-box">
 										<a class="uagb-tax-link" href={p.link}>
@@ -66,7 +62,7 @@ const { withSelect } = wp.data
 								)
 							)}
 
-							{"list" == layout && ( 
+							{"list" === layout && ( 
 								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">

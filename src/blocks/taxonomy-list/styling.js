@@ -54,7 +54,8 @@ function styling( props ) {
             "display" : "grid",
             "grid-template-columns" : 'repeat(' + columns + ', 1fr)',
             "grid-column-gap": generateCSSUnit( columnGap, 'px' ),
-            "grid-row-gap": generateCSSUnit( rowGap, 'px' ),            
+            "grid-row-gap": generateCSSUnit( rowGap, 'px' ), 
+                       
         },        
         ' .uagb-layout-grid .uagb-taxomony-box' : {
             "border" : "1px solid #c6c6c6",
@@ -93,9 +94,6 @@ function styling( props ) {
             "margin-bottom" :  generateCSSUnit( listBottomMargin, 'px' )                                        
         },
         
-
-        
-        
     }
 
     if ( seperatorStyle !== "none" ) {
@@ -109,10 +107,18 @@ function styling( props ) {
     
 
     mobile_selectors = {
-        
+        ' .uagb-taxonomy-wrap.uagb-layout-grid' : {        
+            "grid-template-columns" : 'repeat(' + mcolumns + ', 1fr)',          
+        },
+        ' .uagb-layout-grid .uagb-taxomony-box' : {          
+            "padding" :generateCSSUnit( contentPaddingMobile, 'px' ),
+        },
     }
 
     tablet_selectors = {
+        ' .uagb-taxonomy-wrap.uagb-layout-grid' : {        
+            "grid-template-columns" : 'repeat(' + tcolumns + ', 1fr)',          
+        },
        
     }
     var styling_css = '';

@@ -3,11 +3,6 @@
  */
 import classnames from "classnames"
 import styling from "./styling"
-// Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
-
-// Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
@@ -16,24 +11,17 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 const { __ } = wp.i18n
 const {
 	PanelBody,
-	Placeholder,
 	RangeControl,
 	SelectControl,
-	Spinner,
-	ToggleControl,
 	TabPanel,
 	Dashicon,
 	TextControl,
-	RadioControl,
 	IconButton
 } = wp.components
 
 const {
 	InspectorControls,
-	BlockAlignmentToolbar,
-	BlockControls,
-	ColorPalette,
-	
+	ColorPalette,	
 } = wp.blockEditor
  
 const { Component,Fragment } = wp.element
@@ -577,12 +565,11 @@ class UAGBTaxonomyList extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType} = props.attributes
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
 	let currentTax = allTaxonomy[postType]
-	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
 

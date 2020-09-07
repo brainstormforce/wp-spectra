@@ -1,3 +1,5 @@
+const { __ } = wp.i18n
+
 const attributes = {
     block_id : {
         type : "string"
@@ -43,7 +45,7 @@ const attributes = {
     },
     noTaxDisplaytext : {
         type : "string",
-        default : "Taxonomy Not Available." 
+        default : __("Taxonomy Not Available."), 
     },
 
     

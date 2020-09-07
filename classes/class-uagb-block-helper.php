@@ -4761,43 +4761,79 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 
 			$selectors = array(
-				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid'   => array(
 					'display'               => 'grid',
 					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
 					'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
-					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
+					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),					
 
 				),
-				' .uagb-layout-grid .uagb-taxomony-box' => array(
+				' .uagb-layout-grid .uagb-taxomony-box'   => array(
 					'border'           => '1px solid #c6c6c6',
 					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
 					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 					'background-color' => $attr['bgColor'],
 
 				),
-				' .uagb-layout-grid .uagb-tax-title'    => array(
+				' .uagb-layout-grid .uagb-tax-title'      => array(
 					'color'         => $attr['titleColor'],
 					'text-align'    => $attr['titleAlignment'],
 					'margin-top'    => '0',
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
 				),
-				' .uagb-layout-grid .uagb-tax-count'    => array(
+				' .uagb-layout-grid .uagb-tax-count'      => array(
 					'color'      => $attr['countColor'],
 					'text-align' => $attr['countAlignment'],
 				),
+
+				// List layout styling
+				' .uagb-layout-list .uagb-tax-list'       => array(
+					'list-style' => $attr['listStyle'],
+					'color'      => $attr['listStyleColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list:hover' => array(
+					'color' => $attr['hoverlistStyleColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list a.uagb-tax-link' => array(
+					'color' => $attr['listTextColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list a.uagb-tax-link:hover' => array(
+					'color' => $attr['hoverlistTextColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['listBottomMargin'], 'px' ),
+				),
+
 			);
 
-			$m_selectors = array();
+			if ( 'none' !== $attr['seperatorStyle'] ) {
+				$selectors[' .uagb-layout-list .uagb-tax-separator'] = array(
+					'border-top-color' => $attr['seperatorColor'],
+					'border-top-style' => $attr['seperatorStyle'],
+					'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+					'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
+				);
+			}
 
-			$t_selectors        = array();
+			$t_selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+				),
+			);
+			$m_selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+				),
+				' .uagb-layout-grid .uagb-taxomony-box' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+				),
+			);
+
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
 				'mobile'  => $m_selectors,
 			);
-			// $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input', $combined_selectors );
-
-			// $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
