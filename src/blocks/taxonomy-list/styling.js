@@ -8,14 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
     const {
-        block_id,
-        postType,
-        postToShow,
-        taxonomyType,
-        categories,
-        order,
-        orderBy,
-        layout,
+        block_id,        
         columns,
         tcolumns,
         mcolumns,
