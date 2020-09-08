@@ -68,6 +68,10 @@ const attributes = {
 		type: "string",
 		default: "outset"
     },
+    countName : {
+        type: "string",
+        default: "Articles"
+    },
 
     
     //Color Attributes

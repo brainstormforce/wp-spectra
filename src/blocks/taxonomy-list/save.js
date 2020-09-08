@@ -16,7 +16,8 @@ const { Fragment } = wp.element
         taxonomyType,        
         layout,
         seperatorStyle, 
-        noTaxDisplaytext     
+		noTaxDisplaytext,
+		countName     
 
     } = props.attributes
 
@@ -56,7 +57,7 @@ const { Fragment } = wp.element
 									<div className="uagb-taxomony-box">
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
-											<div class="uagb-tax-count">{p.count} Documents</div>
+											<div class="uagb-tax-count">{p.count} {countName}</div>
 										</a>
 									</div>						
 								)
@@ -68,7 +69,7 @@ const { Fragment } = wp.element
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
 												<a class="uagb-tax-link" href={p.link}>
-													{p.name} - {p.count} Documents
+													{p.name} - {p.count} {countName}
 												</a>
 											</div>
 

@@ -113,7 +113,8 @@ class UAGBTaxonomyList extends Component {
             boxShadowVOffset,
             boxShadowBlur,
             boxShadowSpread,
-            boxShadowPosition,
+			boxShadowPosition,
+			countName
         } = attributes
 
 		let taxonomyListOptions = [
@@ -163,8 +164,7 @@ class UAGBTaxonomyList extends Component {
 			</Fragment>
 
 		)
-		const setting_label = layout == "grid" ? "Grid Settings" : "List Settings" 
-		
+				
 		const inspectorControlsSettings = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
@@ -245,29 +245,34 @@ class UAGBTaxonomyList extends Component {
 						options={ uagb_blocks_info.post_types }
 						/>				
 					{ "" != taxonomyList &&
-							<SelectControl
-							label={ __( "Taxonomy" ) }
-							value={ taxonomyType }
-							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
-							options={ taxonomyListOptions }
-							/>
-						}
-						{ "" == taxonomyList && (
-								<TextControl
-									autoComplete="off"
-									label={ __( 'Display Message' ) }
-									value={ noTaxDisplaytext }
-									onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
-									help={ __( "If Taxonomy Not Found" ) }
+						<SelectControl
+						label={ __( "Taxonomy" ) }
+						value={ taxonomyType }
+						onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
+						options={ taxonomyListOptions }
+						/>
+					}
+					{ "" == taxonomyList && (
+							<TextControl
+								autoComplete="off"
+								label={ __( 'Display Message' ) }
+								value={ noTaxDisplaytext }
+								onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
+								help={ __( "If Taxonomy Not Found" ) }
 								/>
-						)}					
-                </PanelBody>
-				
-				<PanelBody title={ __( setting_label ) } initialOpen={ false }>
+								)}
+					
 
-					{ layout == "grid" && (
-						<Fragment>						
-						<PanelBody title={ __( "Design" ) } initialOpen={ false }>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Count Text' ) }
+						value={ countName }
+						onChange={ ( value ) => setAttributes( { countName: value } ) }
+						help={ __( "Display Text after the count" ) }
+					/>
+					
+					{"grid" == layout && (
+						<Fragment>
 							<p className="uagb-setting-label">{ __( "Alignment" ) }</p>
 							<IconButton
 								key={ "left" }
@@ -293,18 +298,94 @@ class UAGBTaxonomyList extends Component {
 								aria-pressed = { "right" === alignment }
 								isPrimary = { "right" === alignment }
 							/>	
-							<BoxShadowControl
-							setAttributes = { setAttributes }
-							label = { __( "Box Shadow" ) }
-							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
-							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
-							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
-							/>						
-						</PanelBody>				
-						<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+						</Fragment>
+					)}
+
+					{"list" == layout && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "List Style" ) }</p>
+								<IconButton
+									key={ "bullet" }
+									icon="editor-ul"
+									label="Bullet"
+									onClick={ () => setAttributes( { listStyle: "disc" } ) }
+									aria-pressed = { "disc" === listStyle }
+									isPrimary = { "disc" === listStyle }
+								/>
+								<IconButton
+									key={ "numbers" }
+									icon="editor-ol"
+									label="Numbers"
+									onClick={ () => setAttributes( { listStyle: "decimal" } ) }
+									aria-pressed = { "decimal" === listStyle }
+									isPrimary = { "decimal" === listStyle }
+								/>			
+						</Fragment>
+					)}
+
+                </PanelBody>
+				
+				<PanelBody title={ __( "Color" ) } initialOpen={ false }>
+					{ "grid" == layout && (
+						<Fragment>					
+							
+							<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+							<ColorPalette
+							value={ bgColor }
+							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+							allowReset
+							/>
+							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+							<ColorPalette
+							value={ titleColor }
+							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
+							allowReset
+							/>
+							<p className="uagb-setting-label">{ __( "Count Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
+							<ColorPalette
+							value={ countColor }
+							onChange={ ( colorValue ) => setAttributes( { countColor: colorValue } ) }
+							allowReset
+							/>							
+							
+						</Fragment>
+					) }	
+
+					{ "list" == layout && (
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: "normal",
+									title: __( "Normal" ),
+									className: "uagb-normal-tab",
+								},
+								{
+									name: "hover",
+									title: __( "Hover" ),
+									className: "uagb-hover-tab",
+								},
+							] }>
+							{
+								( tabName ) => {
+									let color_tab
+									if( "normal" === tabName.name ) {
+										color_tab = color_control
+									}else {
+										color_tab = color_control_hover
+									}
+									return <div>{ color_tab }</div>
+								}
+							}
+						</TabPanel>		
+					) }	
+
+				</PanelBody>
+
+				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+
+					{"grid" == layout && (
+						<Fragment>
 							<RangeControl
 								label={ __( "Row Gap" ) }
 								value={ rowGap }
@@ -346,97 +427,40 @@ class UAGBTaxonomyList extends Component {
 								min={ 0 }
 								max={ 50 }
 								allowReset
-							/>					
-						</PanelBody>
-						<PanelBody title={ __( "Colors" ) } initialOpen={ false }>					
-							
-							<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
-							<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-							/>
-							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
-							<ColorPalette
-							value={ titleColor }
-							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
-							allowReset
-							/>
-							<p className="uagb-setting-label">{ __( "Count Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
-							<ColorPalette
-							value={ countColor }
-							onChange={ ( colorValue ) => setAttributes( { countColor: colorValue } ) }
-							allowReset
-							/>							
-							
-						</PanelBody>
+							/>				
 						</Fragment>
 					)}
 
-					{layout == "list" && (
-						<Fragment>							
-							<PanelBody title={ __( "Color" ) } initialOpen={ false }>					
-								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-									activeClass="active-tab"
-									tabs={ [
-										{
-											name: "normal",
-											title: __( "Normal" ),
-											className: "uagb-normal-tab",
-										},
-										{
-											name: "hover",
-											title: __( "Hover" ),
-											className: "uagb-hover-tab",
-										},
-									] }>
-									{
-										( tabName ) => {
-											let color_tab
-											if( "normal" === tabName.name ) {
-												color_tab = color_control
-											}else {
-												color_tab = color_control_hover
-											}
-											return <div>{ color_tab }</div>
-										}
-									}
-								</TabPanel>						
-							</PanelBody>
+					{"list" == layout && (
+						<RangeControl
+							label={ __( "Bottom Margin" ) }
+							value={ listBottomMargin }
+							onChange={ ( value ) => setAttributes( { listBottomMargin: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+					)}				
+				</PanelBody>
 
-							<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>					
-								
-								<RangeControl
-									label={ __( "Bottom Margin" ) }
-									value={ listBottomMargin }
-									onChange={ ( value ) => setAttributes( { listBottomMargin: value } ) }
-									min={ 0 }
-									max={ 100 }
-									allowReset
-								/>					
-							</PanelBody>
-
-							<PanelBody title={ __( "Design" ) } initialOpen={ false }>					
-								<p className="uagb-setting-label">{ __( "List Style" ) }</p>
-								<IconButton
-									key={ "bullet" }
-									icon="editor-ul"
-									label="Bullet"
-									onClick={ () => setAttributes( { listStyle: "disc" } ) }
-									aria-pressed = { "disc" === listStyle }
-									isPrimary = { "disc" === listStyle }
-								/>
-								<IconButton
-									key={ "numbers" }
-									icon="editor-ol"
-									label="Numbers"
-									onClick={ () => setAttributes( { listStyle: "decimal" } ) }
-									aria-pressed = { "decimal" === listStyle }
-									isPrimary = { "decimal" === listStyle }
-								/>							
-							</PanelBody>
+				<PanelBody title={ __( "Style" ) } initialOpen={ false }>					
 							
-							<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
+					{"grid" == layout && (
+						<BoxShadowControl
+						setAttributes = { setAttributes }
+						label = { __( "Box Shadow" ) }
+						boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+						boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+						boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
+						boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+						boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+						boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+						/>
+					)}
+
+					{"list" == layout && (
+						
+							<Fragment>
 								<SelectControl
 									label={ __( "Separator Style" ) }
 									value={ seperatorStyle }
@@ -481,10 +505,10 @@ class UAGBTaxonomyList extends Component {
 										</Fragment>
 									</Fragment>
 								}
-							</PanelBody>
-						</Fragment>						
-					)}
+							</Fragment>
 						
+					)}				
+							
 				</PanelBody>
 				
 			</InspectorControls>
@@ -509,7 +533,7 @@ class UAGBTaxonomyList extends Component {
 									<div className="uagb-taxomony-box">
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
-											<div class="uagb-tax-count">{p.count} Documents</div>
+											<div class="uagb-tax-count">{p.count} {countName}</div>
 										</a>
 									</div>						
 								)
@@ -521,7 +545,7 @@ class UAGBTaxonomyList extends Component {
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
 												<a class="uagb-tax-link" href={p.link}>
-													{p.name} - {p.count} Documents
+													{p.name} - {p.count} {countName}
 												</a>
 											</div>
 
