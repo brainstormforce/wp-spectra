@@ -891,7 +891,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'block_id' => '',
 							'height'   => '300',
-							'language'=>'en',
+							'language' => 'en',
 						),
 					),
 					'uagb/how-to'             => array(
