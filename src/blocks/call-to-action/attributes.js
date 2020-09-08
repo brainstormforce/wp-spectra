@@ -156,7 +156,7 @@ const attributes = {
 		default: "button",
 	},
 	ctaText: {
-		type: "string",
+		type: "html",
 		default: "Read More",
 	},
 	ctaLink: {

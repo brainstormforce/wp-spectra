@@ -159,6 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.17.0.1 =
+* Fix: Unicode error in some cases issue fixed.
+
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.
 * Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
