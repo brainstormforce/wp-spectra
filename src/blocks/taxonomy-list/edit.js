@@ -76,19 +76,14 @@ class UAGBTaxonomyList extends Component {
 			attributes,
 			setAttributes,
 			taxonomyList,
-			categoriesList,
-			latestPosts
+			categoriesList,			
 		} = this.props		
 
 		// Caching all attributes.
 		const {
             block_id,
             postType,
-			postToShow,
-			taxonomyType,
-			categories,
-			order,
-			orderBy,
+			taxonomyType,			
 			layout,
 			columns,
 			tcolumns,
@@ -281,7 +276,7 @@ class UAGBTaxonomyList extends Component {
 							<IconButton
 								key={ "center" }
 								icon="editor-aligncenter"
-								label="Right"
+								label="Center"
 								onClick={ () => setAttributes( { titleAlignment: "center" } ) }
 								aria-pressed = { "center" === titleAlignment }
 								isPrimary = { "center" === titleAlignment }
@@ -306,7 +301,7 @@ class UAGBTaxonomyList extends Component {
 							<IconButton
 								key={ "center" }
 								icon="editor-aligncenter"
-								label="Right"
+								label="Center"
 								onClick={ () => setAttributes( { countAlignment: "center" } ) }
 								aria-pressed = { "center" === countAlignment }
 								isPrimary = { "center" === countAlignment }
@@ -552,10 +547,11 @@ class UAGBTaxonomyList extends Component {
 								</ul>
 							)}
 						</div>
-							{/* If no Taxonomy is available. */}
-							{categoriesList == "" && (
-								<div class="uagb-tax-not-available">{noTaxDisplaytext}</div>
-							)}
+							
+						{/* If no Taxonomy is available. */}
+						{categoriesList == "" && (
+							<div class="uagb-tax-not-available">{noTaxDisplaytext}</div>
+						)}
 
 					</div>	
 				</Fragment>
