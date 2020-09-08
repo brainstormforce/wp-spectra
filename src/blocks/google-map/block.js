@@ -56,7 +56,8 @@ class UAGBGoogleMap extends Component {
 		console.log(this.props.attributes);
 		let encoded_address = encodeURI( address )
 
-		var lang_par = (language) ? language :"en";
+		var lang_par = (language) ? language : "en";
+
 		let url = `https://www.google.com/maps/embed/v1/place?key=${api_key}&q=${encoded_address}&zoom=${zoom}&language=${lang_par}`
 
 
@@ -226,7 +227,8 @@ registerBlockType( "uagb/google-map", {
 		} = props.attributes
 		
 		let encoded_address = encodeURI( address )
-		var lang_par = (language) ? language :"en";
+
+		var lang_par = (language) ? language : "en";
 
 		let url = `https://www.google.com/maps/embed/v1/place?key=${api_key}&q=${encoded_address}&zoom=${zoom}&language=${lang_par}`
 
