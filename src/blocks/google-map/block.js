@@ -50,10 +50,9 @@ class UAGBGoogleMap extends Component {
 				height,
 				zoom,
 				address,
-				language
+				language,
 			},
 		} = this.props
-		console.log(this.props.attributes);
 		let encoded_address = encodeURI( address )
 
 		var lang_par = (language) ? language : "en";
