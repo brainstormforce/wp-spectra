@@ -3,7 +3,7 @@
  */
 import classnames from "classnames"
 import styling from "./styling"
-
+import BoxShadowControl from "../../components/box-shadow"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 
@@ -95,9 +95,8 @@ class UAGBTaxonomyList extends Component {
 			columnGap,
 			contentPadding,
 			contentPaddingMobile,
-			titleBottomSpace,
-			titleAlignment,
-			countAlignment,
+			titleBottomSpace,			
+			alignment,
 			listStyle,
 			seperatorStyle,
 			seperatorWidth,
@@ -108,8 +107,13 @@ class UAGBTaxonomyList extends Component {
 			listBottomMargin,
 			listStyleColor,
 			hoverlistStyleColor,
-			noTaxDisplaytext
-
+			noTaxDisplaytext,
+			boxShadowColor,
+            boxShadowHOffset,
+            boxShadowVOffset,
+            boxShadowBlur,
+            boxShadowSpread,
+            boxShadowPosition,
         } = attributes
 
 		let taxonomyListOptions = [
@@ -264,56 +268,41 @@ class UAGBTaxonomyList extends Component {
 					{ layout == "grid" && (
 						<Fragment>						
 						<PanelBody title={ __( "Design" ) } initialOpen={ false }>
-							<p className="uagb-setting-label">{ __( "Title Alignment" ) }</p>
+							<p className="uagb-setting-label">{ __( "Alignment" ) }</p>
 							<IconButton
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
-								onClick={ () => setAttributes( { titleAlignment: "left" } ) }
-								aria-pressed = { "left" === titleAlignment }
-								isPrimary = { "left" === titleAlignment }
+								onClick={ () => setAttributes( { alignment: "left" } ) }
+								aria-pressed = { "left" === alignment }
+								isPrimary = { "left" === alignment }
 							/>
 							<IconButton
 								key={ "center" }
 								icon="editor-aligncenter"
 								label="Center"
-								onClick={ () => setAttributes( { titleAlignment: "center" } ) }
-								aria-pressed = { "center" === titleAlignment }
-								isPrimary = { "center" === titleAlignment }
+								onClick={ () => setAttributes( { alignment: "center" } ) }
+								aria-pressed = { "center" === alignment }
+								isPrimary = { "center" === alignment }
 							/>
 							<IconButton
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
-								onClick={ () => setAttributes( { titleAlignment: "right" } ) }
-								aria-pressed = { "right" === titleAlignment }
-								isPrimary = { "right" === titleAlignment }
-							/>
-							<p className="uagb-setting-label">{ __( "Count Alignment" ) }</p>
-							<IconButton
-								key={ "left" }
-								icon="editor-alignleft"
-								label="Left"
-								onClick={ () => setAttributes( { countAlignment: "left" } ) }
-								aria-pressed = { "left" === countAlignment }
-								isPrimary = { "left" === countAlignment }
-							/>
-							<IconButton
-								key={ "center" }
-								icon="editor-aligncenter"
-								label="Center"
-								onClick={ () => setAttributes( { countAlignment: "center" } ) }
-								aria-pressed = { "center" === countAlignment }
-								isPrimary = { "center" === countAlignment }
-							/>
-							<IconButton
-								key={ "right" }
-								icon="editor-alignright"
-								label="Right"
-								onClick={ () => setAttributes( { countAlignment: "right" } ) }
-								aria-pressed = { "right" === countAlignment }
-								isPrimary = { "right" === countAlignment }
-							/>
+								onClick={ () => setAttributes( { alignment: "right" } ) }
+								aria-pressed = { "right" === alignment }
+								isPrimary = { "right" === alignment }
+							/>	
+							<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							/>						
 						</PanelBody>				
 						<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 							<RangeControl

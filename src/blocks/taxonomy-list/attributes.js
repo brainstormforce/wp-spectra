@@ -47,6 +47,27 @@ const attributes = {
         type : "string",
         default : __("Taxonomy Not Available."), 
     },
+    boxShadowColor: {
+		type: "string"
+	},
+	boxShadowHOffset : {
+		type: "number",
+		default: 0
+	},
+	boxShadowVOffset : {
+		type: "number",
+		default: 0
+	},
+	boxShadowBlur : {
+		type: "number"
+	},
+	boxShadowSpread : {
+		type: "number"
+	},
+	boxShadowPosition: {
+		type: "string",
+		default: "outset"
+    },
 
     
     //Color Attributes
@@ -109,18 +130,12 @@ const attributes = {
     },
     
     
-    
     //ALignment Attributes
-    titleAlignment : {
+    alignment : {
         type : "string",
         default : "center"
     },
-    countAlignment : {
-        type : "string",
-        default : "center"
-    },
-    
-    
+       
     //List Attributes
     listStyle : {
         type : "string",

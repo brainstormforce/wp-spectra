@@ -20,8 +20,7 @@ function styling( props ) {
         contentPadding,
         contentPaddingMobile,
         titleBottomSpace,
-        titleAlignment,
-        countAlignment,
+        alignment,
         listStyle,
         seperatorStyle,
         seperatorWidth,
@@ -31,7 +30,13 @@ function styling( props ) {
         hoverlistTextColor,
         listBottomMargin,
         listStyleColor,
-		hoverlistStyleColor
+        hoverlistStyleColor,
+        boxShadowColor,
+        boxShadowHOffset,
+        boxShadowVOffset,
+        boxShadowBlur,
+        boxShadowSpread,
+        boxShadowPosition,
     } = props.attributes
 
     
@@ -39,7 +44,11 @@ function styling( props ) {
     var tablet_selectors = {}
     var mobile_selectors = {}
     
+    var boxShadowPositionCSS = boxShadowPosition;
     
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+    }
     
     selectors = {
         //grid layout styling
@@ -54,17 +63,18 @@ function styling( props ) {
             "border" : "1px solid #c6c6c6",
             "padding" :generateCSSUnit( contentPadding, 'px' ),
             "background-color" : bgColor,
+            "text-align" : alignment,
+            "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
+
                                  
         },        
         ' .uagb-layout-grid .uagb-tax-title' : {
-            "color" : titleColor,
-            "text-align" : titleAlignment,
+            "color" : titleColor,            
             "margin-top" : "0",
             "margin-bottom" : generateCSSUnit( titleBottomSpace, 'px' ),                     
         },
         ' .uagb-layout-grid .uagb-tax-count' : {
-            "color" : countColor,
-            "text-align" : countAlignment,                     
+            "color" : countColor,                                 
         },
         
 

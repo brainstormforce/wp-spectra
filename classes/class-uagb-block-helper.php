@@ -4760,6 +4760,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
+
 			$selectors = array(
 				' .uagb-taxonomy-wrap.uagb-layout-grid'   => array(
 					'display'               => 'grid',
@@ -4773,17 +4779,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
 					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 					'background-color' => $attr['bgColor'],
+					'text-align'       => $attr['alignment'],
+					'box-shadow'       => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 
 				),
 				' .uagb-layout-grid .uagb-tax-title'      => array(
 					'color'         => $attr['titleColor'],
-					'text-align'    => $attr['titleAlignment'],
 					'margin-top'    => '0',
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
 				),
 				' .uagb-layout-grid .uagb-tax-count'      => array(
-					'color'      => $attr['countColor'],
-					'text-align' => $attr['countAlignment'],
+					'color' => $attr['countColor'],
 				),
 
 				// List layout styling.
