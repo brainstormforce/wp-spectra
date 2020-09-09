@@ -37,6 +37,42 @@ function styling( props ) {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
+        titleFontSize,
+        titleFontSizeType,
+        titleFontSizeMobile,
+        titleFontSizeTablet,
+        titleFontFamily,
+        titleFontWeight,
+        titleFontSubset,
+        titleLineHeightType,
+        titleLineHeight,
+        titleLineHeightTablet,
+        titleLineHeightMobile,
+        titleLoadGoogleFonts,
+        countFontSize,
+        countFontSizeType,
+        countFontSizeMobile,
+        countFontSizeTablet,
+        countFontFamily,
+        countFontWeight,
+        countFontSubset,
+        countLineHeightType,
+        countLineHeight,
+        countLineHeightTablet,
+        countLineHeightMobile,
+        countLoadGoogleFonts,        
+        listFontSize,
+        listFontSizeType,
+        listFontSizeMobile,
+        listFontSizeTablet,
+        listFontFamily,
+        listFontWeight,
+        listFontSubset,
+        listLineHeightType,
+        listLineHeight,
+        listLineHeightTablet,
+        listLineHeightMobile,
+        listLoadGoogleFonts,
     } = props.attributes
 
     
@@ -71,10 +107,18 @@ function styling( props ) {
         ' .uagb-layout-grid .uagb-tax-title' : {
             "color" : titleColor,            
             "margin-top" : "0",
-            "margin-bottom" : generateCSSUnit( titleBottomSpace, 'px' ),                     
+            "margin-bottom" : generateCSSUnit( titleBottomSpace, 'px' ),
+            "font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),                     
         },
         ' .uagb-layout-grid .uagb-tax-count' : {
-            "color" : countColor,                                 
+            "color" : countColor,
+            "font-size" : generateCSSUnit( countFontSize, countFontSizeType ),
+			"font-family": countFontFamily,
+			"font-weight": countFontWeight,
+			"line-height": generateCSSUnit( countLineHeight, countLineHeightType ),                                 
         },
         
 
@@ -82,6 +126,10 @@ function styling( props ) {
         ' .uagb-layout-list .uagb-tax-list' : {
             "list-style" : listStyle,
             "color" : listStyleColor ,
+            "font-size" : generateCSSUnit( listFontSize, listFontSizeType ),
+			"font-family": listFontFamily,
+			"font-weight": listFontWeight,
+			"line-height": generateCSSUnit( listLineHeight, listLineHeightType ), 
                                          
         },
         ' .uagb-layout-list .uagb-tax-list:hover' : {            
@@ -116,12 +164,36 @@ function styling( props ) {
         ' .uagb-layout-grid .uagb-taxomony-box' : {          
             "padding" :generateCSSUnit( contentPaddingMobile, 'px' ),
         },
+        ' .uagb-layout-grid .uagb-tax-title' : {           
+            "font-size" : generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),			
+			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),                     
+        },
+        ' .uagb-layout-grid .uagb-tax-count' : {          
+            "font-size" : generateCSSUnit( countFontSizeMobile, countFontSizeType ),		
+			"line-height": generateCSSUnit( countLineHeightMobile, countLineHeightType ),                                 
+        },
+        ' .uagb-layout-list .uagb-tax-list' : {           
+            "font-size" : generateCSSUnit( listFontSizeMobile, listFontSizeType ),		
+			"line-height": generateCSSUnit( listLineHeightMobile, listLineHeightType ),
+        },
     }
 
     tablet_selectors = {
         ' .uagb-taxonomy-wrap.uagb-layout-grid' : {        
             "grid-template-columns" : 'repeat(' + tcolumns + ', 1fr)',          
         },
+        ' .uagb-layout-grid .uagb-tax-title' : {           
+            "font-size" : generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),			
+			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),                     
+        },
+        ' .uagb-layout-grid .uagb-tax-count' : {          
+            "font-size" : generateCSSUnit( countFontSizeTablet, countFontSizeType ),		
+			"line-height": generateCSSUnit( countLineHeightTablet, countLineHeightType ),                                 
+        },
+        ' .uagb-layout-list .uagb-tax-list' : {           
+            "font-size" : generateCSSUnit( listFontSizeTablet, listFontSizeType ),		
+			"line-height": generateCSSUnit( listLineHeightTablet, listLineHeightType ),
+        }
        
     }
     var styling_css = '';

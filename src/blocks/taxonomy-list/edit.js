@@ -5,7 +5,8 @@ import classnames from "classnames"
 import styling from "./styling"
 import BoxShadowControl from "../../components/box-shadow"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
+import TypographyControl from "../../components/typography"
+import WebfontLoader from "../../components/typography/fontloader"
 
 
 const { __ } = wp.i18n
@@ -16,7 +17,8 @@ const {
 	TabPanel,
 	Dashicon,
 	TextControl,
-	IconButton
+	IconButton,
+	ToggleControl
 } = wp.components
 
 const {
@@ -114,7 +116,44 @@ class UAGBTaxonomyList extends Component {
             boxShadowBlur,
             boxShadowSpread,
 			boxShadowPosition,
-			countName
+			countName,
+			showCount,			
+			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			titleLoadGoogleFonts,
+			countFontSize,
+			countFontSizeType,
+			countFontSizeMobile,
+			countFontSizeTablet,
+			countFontFamily,
+			countFontWeight,
+			countFontSubset,
+			countLineHeightType,
+			countLineHeight,
+			countLineHeightTablet,
+			countLineHeightMobile,
+			countLoadGoogleFonts,
+			listFontSize,
+			listFontSizeType,
+			listFontSizeMobile,
+			listFontSizeTablet,
+			listFontFamily,
+			listFontWeight,
+			listFontSubset,
+			listLineHeightType,
+			listLineHeight,
+			listLineHeightTablet,
+			listLineHeightMobile,
+			listLoadGoogleFonts,
         } = attributes
 
 		let taxonomyListOptions = [
@@ -127,6 +166,52 @@ class UAGBTaxonomyList extends Component {
 			} )
 		}
 
+		let loadTitleGoogleFonts
+		let loadCountGoogleFonts
+		let loadListGoogleFonts
+
+
+		if( titleLoadGoogleFonts == true ) {
+
+			const titleconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
+				},
+			}
+
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ titleconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( countLoadGoogleFonts == true ) {
+
+			const countconfig = {
+				google: {
+					families: [ countFontFamily + ( countFontWeight ? ":" + countFontWeight : "" ) ],
+				},
+			}
+
+			loadCountGoogleFonts = (
+				<WebfontLoader config={ countconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( listLoadGoogleFonts == true ) {
+
+			const listconfig = {
+				google: {
+					families: [ listFontFamily + ( listFontWeight ? ":" + listFontWeight : "" ) ],
+				},
+			}
+
+			loadListGoogleFonts = (
+				<WebfontLoader config={ listconfig }>
+				</WebfontLoader>
+			)
+		}
 		
 
 		// All Controls.
@@ -261,16 +346,23 @@ class UAGBTaxonomyList extends Component {
 								help={ __( "If Taxonomy Not Found" ) }
 								/>
 								)}
-					
-
-					<TextControl
-						autoComplete="off"
-						label={ __( 'Count Text' ) }
-						value={ countName }
-						onChange={ ( value ) => setAttributes( { countName: value } ) }
-						help={ __( "Display Text after the count" ) }
+										
+					<ToggleControl
+						label={ __( "Show Posts Count" ) }
+						checked={ showCount }
+						onChange={ ( value ) => setAttributes( { showCount: ! showCount } ) }
 					/>
-					
+
+					{ showCount && (
+						<TextControl
+							autoComplete="off"
+							label={ __( 'Count Text' ) }
+							value={ countName }
+							onChange={ ( value ) => setAttributes( { countName: value } ) }
+							help={ __( "Display Text after the count" ) }
+						/>
+					)}
+
 					{"grid" == layout && (
 						<Fragment>
 							<p className="uagb-setting-label">{ __( "Alignment" ) }</p>
@@ -322,6 +414,7 @@ class UAGBTaxonomyList extends Component {
 								/>			
 						</Fragment>
 					)}
+				
 
                 </PanelBody>
 				
@@ -446,21 +539,68 @@ class UAGBTaxonomyList extends Component {
 				<PanelBody title={ __( "Style" ) } initialOpen={ false }>					
 							
 					{"grid" == layout && (
-						<BoxShadowControl
-						setAttributes = { setAttributes }
-						label = { __( "Box Shadow" ) }
-						boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-						boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
-						boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
-						boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-						boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-						boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
-						/>
+						<Fragment>
+							<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							/>
+							<hr className="uagb-editor__separator" />
+
+							{ "grid" === layout && ( 
+								<Fragment>
+								<p className="uagb-setting-label">{ __( "Title " ) }</p>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+									fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+									fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+									fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+									fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+									fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+									fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+									fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+									lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+									lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+									lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+									lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
+									/>
+								<hr className="uagb-editor__separator" />
+	
+								<p className="uagb-setting-label">{ __( "Count " ) }</p>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
+									fontFamily = { { value: countFontFamily, label: "countFontFamily" } }
+									fontWeight = { { value: countFontWeight, label: "countFontWeight" } }
+									fontSubset = { { value: countFontSubset, label: "countFontSubset" } }
+									fontSizeType = { { value: countFontSizeType, label: "countFontSizeType" } }
+									fontSize = { { value: countFontSize, label: "countFontSize" } }
+									fontSizeMobile = { { value: countFontSizeMobile, label: "countFontSizeMobile" } }
+									fontSizeTablet= { { value: countFontSizeTablet, label: "countFontSizeTablet" } }
+									lineHeightType = { { value: countLineHeightType, label: "countLineHeightType" } }
+									lineHeight = { { value: countLineHeight, label: "countLineHeight" } }
+									lineHeightMobile = { { value: countLineHeightMobile, label: "countLineHeightMobile" } }
+									lineHeightTablet= { { value: countLineHeightTablet, label: "countLineHeightTablet" } }
+									/>
+								</Fragment>
+							)}
+
+						</Fragment>
 					)}
 
 					{"list" == layout && (
 						
-							<Fragment>
+						<Fragment>
 								<SelectControl
 									label={ __( "Separator Style" ) }
 									value={ seperatorStyle }
@@ -505,6 +645,28 @@ class UAGBTaxonomyList extends Component {
 										</Fragment>
 									</Fragment>
 								}
+								
+								<hr className="uagb-editor__separator" />
+								
+								<p className="uagb-setting-label">{ __( "List " ) }</p>
+								<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: listLoadGoogleFonts, label: "listLoadGoogleFonts" } }
+								fontFamily = { { value: listFontFamily, label: "listFontFamily" } }
+								fontWeight = { { value: listFontWeight, label: "listFontWeight" } }
+								fontSubset = { { value: listFontSubset, label: "listFontSubset" } }
+								fontSizeType = { { value: listFontSizeType, label: "listFontSizeType" } }
+								fontSize = { { value: listFontSize, label: "listFontSize" } }
+								fontSizeMobile = { { value: listFontSizeMobile, label: "listFontSizeMobile" } }
+								fontSizeTablet= { { value: listFontSizeTablet, label: "listFontSizeTablet" } }
+								lineHeightType = { { value: listLineHeightType, label: "listLineHeightType" } }
+								lineHeight = { { value: listLineHeight, label: "listLineHeight" } }
+								lineHeightMobile = { { value: listLineHeightMobile, label: "listLineHeightMobile" } }
+								lineHeightTablet= { { value: listLineHeightTablet, label: "listLineHeightTablet" } }
+								/>
+								
 							</Fragment>
 						
 					)}				
@@ -533,10 +695,13 @@ class UAGBTaxonomyList extends Component {
 									<div className="uagb-taxomony-box">
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
-											<div class="uagb-tax-count">{p.count} {countName}</div>
+											{showCount && (
+												<div class="uagb-tax-count">{p.count} {countName}</div>
+											)}
 										</a>
 									</div>						
 								)
+								
 							)}
 
 							{"list" == layout && ( 
@@ -545,7 +710,7 @@ class UAGBTaxonomyList extends Component {
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
 												<a class="uagb-tax-link" href={p.link}>
-													{p.name} - {p.count} {countName}
+													{p.name} { showCount && (  <Fragment> - {p.count} {countName} </Fragment> )}
 												</a>
 											</div>
 
@@ -567,6 +732,10 @@ class UAGBTaxonomyList extends Component {
 						)}
 
 					</div>	
+					{ loadTitleGoogleFonts }
+					{ loadCountGoogleFonts }
+					{ loadListGoogleFonts }
+
 				</Fragment>
         )
     }

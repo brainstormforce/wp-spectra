@@ -559,6 +559,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/taxonomy-list':
 					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
 					break;
 
 				default:

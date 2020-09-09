@@ -72,6 +72,10 @@ const attributes = {
         type: "string",
         default: "Articles"
     },
+    showCount : {
+        type : "boolean",
+        default : true
+    },
 
     
     //Color Attributes
@@ -164,6 +168,130 @@ const attributes = {
         default: "#b2b4b5",
     },
     
+
+    //Typograpghy attributes
+    titleFontSize: {
+		type: "number",
+	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
+	titleFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
+	},
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+    },
+    
+    countFontSize: {
+		type: "number",
+	},
+	countFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	countFontSizeMobile: {
+		type: "number",
+	},
+	countFontSizeTablet: {
+		type: "number",
+	},
+	countFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	countFontWeight: {
+		type: "string",
+	},
+	countFontSubset: {
+		type: "string",
+	},
+	countLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	countLineHeight: {
+		type: "number",
+	},
+	countLineHeightTablet: {
+		type: "number",
+	},
+	countLineHeightMobile: {
+		type: "number",
+	},
+	countLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+    },
+    
+    listFontSize: {
+		type: "number",
+	},
+	listFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	listFontSizeMobile: {
+		type: "number",
+	},
+	listFontSizeTablet: {
+		type: "number",
+	},
+	listFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	listFontWeight: {
+		type: "string",
+	},
+	listFontSubset: {
+		type: "string",
+	},
+	listLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	listLineHeight: {
+		type: "number",
+	},
+	listLineHeightTablet: {
+		type: "number",
+	},
+	listLineHeightMobile: {
+		type: "number",
+	},
+	listLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
 }
 
 export default attributes
