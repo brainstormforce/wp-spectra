@@ -233,12 +233,16 @@ class UAGBTaxonomyList extends Component {
 				onChange={ ( colorValue ) => setAttributes( { listTextColor: colorValue } ) }
 				allowReset
 				/><br/>
-				<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listStyleColor }} ></span></span></h2>
-				<ColorPalette
-				value={ listStyleColor }
-				onChange={ ( colorValue ) => setAttributes( { listStyleColor: colorValue } ) }
-				allowReset
-				/>
+				{ "none" != listStyle && (
+					<Fragment>
+						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listStyleColor }} ></span></span></h2>
+						<ColorPalette
+						value={ listStyleColor }
+						onChange={ ( colorValue ) => setAttributes( { listStyleColor: colorValue } ) }
+						allowReset
+						/>
+					</Fragment>
+				)}
 			</Fragment>
 
 		)
@@ -250,12 +254,16 @@ class UAGBTaxonomyList extends Component {
 				onChange={ ( colorValue ) => setAttributes( { hoverlistTextColor: colorValue } ) }
 				allowReset
 				/><br/>
-				<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistStyleColor }} ></span></span></h2>
-				<ColorPalette
-				value={ hoverlistStyleColor }
-				onChange={ ( colorValue ) => setAttributes( { hoverlistStyleColor: colorValue } ) }
-				allowReset
-				/>
+				{ "none" != listStyle && (
+					<Fragment>
+						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistStyleColor }} ></span></span></h2>
+						<ColorPalette
+						value={ hoverlistStyleColor }
+						onChange={ ( colorValue ) => setAttributes( { hoverlistStyleColor: colorValue } ) }
+						allowReset
+						/>
+					</Fragment>
+				)}
 			</Fragment>
 
 		)
@@ -369,7 +377,7 @@ class UAGBTaxonomyList extends Component {
 						onChange={ ( value ) => setAttributes( { showCount: ! showCount } ) }
 					/>
 
-					{ showCount && (
+					{ showCount && "grid" === layout && (
 						<TextControl
 							autoComplete="off"
 							label={ __( 'Count Text' ) }
@@ -427,6 +435,14 @@ class UAGBTaxonomyList extends Component {
 									onClick={ () => setAttributes( { listStyle: "decimal" } ) }
 									aria-pressed = { "decimal" === listStyle }
 									isPrimary = { "decimal" === listStyle }
+								/>
+								<IconButton
+									key={ "none" }
+									icon="menu"
+									label="None"
+									onClick={ () => setAttributes( { listStyle: "none" } ) }
+									aria-pressed = { "none" === listStyle }
+									isPrimary = { "none" === listStyle }
 								/>			
 						</Fragment>
 					)}
@@ -450,12 +466,16 @@ class UAGBTaxonomyList extends Component {
 							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 							allowReset
 							/>
-							<p className="uagb-setting-label">{ __( "Count Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
-							<ColorPalette
-							value={ countColor }
-							onChange={ ( colorValue ) => setAttributes( { countColor: colorValue } ) }
-							allowReset
-							/>							
+							{ showCount && (
+								<Fragment>
+									<p className="uagb-setting-label">{ __( "Count Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
+									<ColorPalette
+									value={ countColor }
+									onChange={ ( colorValue ) => setAttributes( { countColor: colorValue } ) }
+									allowReset
+									/>	
+								</Fragment>						
+							)}
 							
 						</Fragment>
 					) }	
@@ -571,15 +591,19 @@ class UAGBTaxonomyList extends Component {
 											}
 										}
 							</TabPanel>
-							<hr className="uagb-editor__separator" />
-							<RangeControl
-								label={ __( "Title Bottom Spacing" ) }
-								value={ titleBottomSpace }
-								onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>	
+							{showCount && (
+								<Fragment>
+									<hr className="uagb-editor__separator" />
+									<RangeControl
+										label={ __( "Title Bottom Spacing" ) }
+										value={ titleBottomSpace }
+										onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
+										min={ 0 }
+										max={ 50 }
+										allowReset
+									/>	
+								</Fragment>
+							)}							
 						</Fragment>
 					)}
 
@@ -618,26 +642,29 @@ class UAGBTaxonomyList extends Component {
 								lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
 								lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
 								/>
-							<hr className="uagb-editor__separator" />
-	
-							<p className="uagb-setting-label">{ __( "Count " ) }</p>
-							<TypographyControl
-								label={ __( "Typography" ) }
-								attributes = { attributes }
-								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
-								fontFamily = { { value: countFontFamily, label: "countFontFamily" } }
-								fontWeight = { { value: countFontWeight, label: "countFontWeight" } }
-								fontSubset = { { value: countFontSubset, label: "countFontSubset" } }
-								fontSizeType = { { value: countFontSizeType, label: "countFontSizeType" } }
-								fontSize = { { value: countFontSize, label: "countFontSize" } }
-								fontSizeMobile = { { value: countFontSizeMobile, label: "countFontSizeMobile" } }
-								fontSizeTablet= { { value: countFontSizeTablet, label: "countFontSizeTablet" } }
-								lineHeightType = { { value: countLineHeightType, label: "countLineHeightType" } }
-								lineHeight = { { value: countLineHeight, label: "countLineHeight" } }
-								lineHeightMobile = { { value: countLineHeightMobile, label: "countLineHeightMobile" } }
-								lineHeightTablet= { { value: countLineHeightTablet, label: "countLineHeightTablet" } }
-								/>		
+							{ showCount && (
+								<Fragment>
+								<hr className="uagb-editor__separator" />
+								<p className="uagb-setting-label">{ __( "Count " ) }</p>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
+									fontFamily = { { value: countFontFamily, label: "countFontFamily" } }
+									fontWeight = { { value: countFontWeight, label: "countFontWeight" } }
+									fontSubset = { { value: countFontSubset, label: "countFontSubset" } }
+									fontSizeType = { { value: countFontSizeType, label: "countFontSizeType" } }
+									fontSize = { { value: countFontSize, label: "countFontSize" } }
+									fontSizeMobile = { { value: countFontSizeMobile, label: "countFontSizeMobile" } }
+									fontSizeTablet= { { value: countFontSizeTablet, label: "countFontSizeTablet" } }
+									lineHeightType = { { value: countLineHeightType, label: "countLineHeightType" } }
+									lineHeight = { { value: countLineHeight, label: "countLineHeight" } }
+									lineHeightMobile = { { value: countLineHeightMobile, label: "countLineHeightMobile" } }
+									lineHeightTablet= { { value: countLineHeightTablet, label: "countLineHeightTablet" } }
+								/>	
+							</Fragment>	
+							)}							
 							<hr className="uagb-editor__separator" />							
 							<BoxShadowControl
 							setAttributes = { setAttributes }
@@ -799,9 +826,10 @@ class UAGBTaxonomyList extends Component {
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
-												<a class="uagb-tax-link" href={p.link}>
-													{p.name} { showCount && ( `(${p.count})`  )}
-												</a>
+												<a class="uagb-tax-link" href={p.link}>{p.name}</a>
+												{ showCount && (
+												<span className="uagb-tax-list-count">{` (${p.count})`}</span>
+												)}
 											</div>
 
 											{"none" != seperatorStyle && (

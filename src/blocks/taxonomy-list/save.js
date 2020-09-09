@@ -71,9 +71,10 @@ const { Fragment } = wp.element
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
-												<a class="uagb-tax-link" href={p.link}>
-												{p.name} { showCount && ( `(${p.count})`  )}
-												</a>
+												<a class="uagb-tax-link" href={p.link}>{p.name}</a>
+												{ showCount && (
+												<span className="uagb-tax-list-count">{` (${p.count})`}</span>
+												)}
 											</div>
 
 											{"none" != seperatorStyle && (
