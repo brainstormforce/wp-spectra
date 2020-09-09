@@ -58,7 +58,9 @@ const { Fragment } = wp.element
 									<div className="uagb-taxomony-box">
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
-											<div class="uagb-tax-count">{p.count} {countName}</div>
+											{showCount && (
+												<div class="uagb-tax-count">{p.count} {countName}</div>
+											)}
 										</a>
 									</div>						
 								)
