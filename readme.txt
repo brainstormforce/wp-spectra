@@ -158,6 +158,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.17.1 =
+* Fix: Inline Notice - Notice dismiss issue.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
+* Improvement: Added language option to google map block.
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.
@@ -166,8 +170,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Icon List Border turns to the oval issue.
 * Fix: Info Box - Fixed a Typography issue with CTA-Button.
 * Fix: Call To Action - Rectified the issue with Anchor that does not save.
-* Fix: Inline Notice - Notice dismiss issue.
-* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
