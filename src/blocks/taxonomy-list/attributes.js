@@ -76,6 +76,10 @@ const attributes = {
         type : "boolean",
         default : true
     },
+    showEmptyTaxonomy : {
+        type : "boolean",
+        default : false
+    },
 
     
     //Color Attributes
@@ -124,6 +128,10 @@ const attributes = {
         type : "number",
         default : 20
     },
+    contentPaddingTablet : {
+        type : "number",
+        default : 15
+    },
     contentPaddingMobile : {
         type : "number",
         default : 15
@@ -168,6 +176,20 @@ const attributes = {
         default: "#b2b4b5",
     },
     
+    //Grid Border attributes
+    borderColor : {
+        type: "string",
+        default: "#b2b4b5",
+    },
+    borderThickness : {
+        type: "number",
+        default: 1
+    },
+    borderStyle : {
+        type: "string",
+        default: "solid"
+    },
+
 
     //Typograpghy attributes
     titleFontSize: {

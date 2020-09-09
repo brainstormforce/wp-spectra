@@ -19,6 +19,7 @@ function styling( props ) {
         columnGap,
         contentPadding,
         contentPaddingMobile,
+        contentPaddingTablet,
         titleBottomSpace,
         alignment,
         listStyle,
@@ -42,25 +43,21 @@ function styling( props ) {
         titleFontSizeMobile,
         titleFontSizeTablet,
         titleFontFamily,
-        titleFontWeight,
-        titleFontSubset,
+        titleFontWeight,        
         titleLineHeightType,
         titleLineHeight,
         titleLineHeightTablet,
-        titleLineHeightMobile,
-        titleLoadGoogleFonts,
+        titleLineHeightMobile,        
         countFontSize,
         countFontSizeType,
         countFontSizeMobile,
         countFontSizeTablet,
         countFontFamily,
-        countFontWeight,
-        countFontSubset,
+        countFontWeight,        
         countLineHeightType,
         countLineHeight,
         countLineHeightTablet,
-        countLineHeightMobile,
-        countLoadGoogleFonts,        
+        countLineHeightMobile,                
         listFontSize,
         listFontSizeType,
         listFontSizeMobile,
@@ -71,8 +68,10 @@ function styling( props ) {
         listLineHeightType,
         listLineHeight,
         listLineHeightTablet,
-        listLineHeightMobile,
-        listLoadGoogleFonts,
+        listLineHeightMobile,        
+        borderStyle,
+        borderThickness,
+        borderColor,
     } = props.attributes
 
     
@@ -96,7 +95,6 @@ function styling( props ) {
                        
         },        
         ' .uagb-layout-grid .uagb-taxomony-box' : {
-            "border" : "1px solid #c6c6c6",
             "padding" :generateCSSUnit( contentPadding, 'px' ),
             "background-color" : bgColor,
             "text-align" : alignment,
@@ -154,6 +152,12 @@ function styling( props ) {
 			"border-top-width": generateCSSUnit( seperatorThickness, "px" ),
 			"width": generateCSSUnit( seperatorWidth, "%" ),
 		}
+    }
+    
+    if ( borderStyle !== "none" ) {
+		selectors[" .uagb-taxomony-box"] = {
+			"border" : generateCSSUnit( borderThickness, "px" ) + ' ' + borderStyle + ' ' + borderColor
+		}
 	}
     
 
@@ -181,6 +185,9 @@ function styling( props ) {
     tablet_selectors = {
         ' .uagb-taxonomy-wrap.uagb-layout-grid' : {        
             "grid-template-columns" : 'repeat(' + tcolumns + ', 1fr)',          
+        },
+        ' .uagb-layout-grid .uagb-taxomony-box' : {          
+            "padding" :generateCSSUnit( contentPaddingTablet, 'px' ),
         },
         ' .uagb-layout-grid .uagb-tax-title' : {           
             "font-size" : generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),			

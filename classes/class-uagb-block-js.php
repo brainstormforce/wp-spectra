@@ -749,15 +749,15 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$count_font_weight      = isset( $attr['countFontWeight'] ) ? $attr['countFontWeight'] : '';
 			$count_font_subset      = isset( $attr['countFontSubset'] ) ? $attr['countFontSubset'] : '';
 
-			// $cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
-			// $cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
-			// $cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
-			// $cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+			$list_load_google_font = isset( $attr['listLoadGoogleFonts'] ) ? $attr['listLoadGoogleFonts'] : '';
+			$list_font_family      = isset( $attr['listFontFamily'] ) ? $attr['listFontFamily'] : '';
+			$list_font_weight      = isset( $attr['listFontWeight'] ) ? $attr['listFontWeight'] : '';
+			$list_font_subset      = isset( $attr['listFontSubset'] ) ? $attr['listFontSubset'] : '';
 
 			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
 			UAGB_Helper::blocks_google_font( $count_load_google_font, $count_font_family, $count_font_weight, $count_font_subset );
-			// UAGB_Helper::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
-			
+			UAGB_Helper::blocks_google_font( $list_load_google_font, $list_font_family, $list_font_weight, $list_font_subset );
+
 		}
 
 	}

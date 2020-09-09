@@ -17,7 +17,8 @@ const { Fragment } = wp.element
         layout,
         seperatorStyle, 
 		noTaxDisplaytext,
-		countName     
+		countName,
+		showCount     
 
     } = props.attributes
 
@@ -69,7 +70,7 @@ const { Fragment } = wp.element
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
 												<a class="uagb-tax-link" href={p.link}>
-													{p.name} - {p.count} {countName}
+												{p.name} { showCount && ( `(${p.count})`  )}
 												</a>
 											</div>
 

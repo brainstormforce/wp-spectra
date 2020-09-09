@@ -4775,7 +4775,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				),
 				' .uagb-layout-grid .uagb-taxomony-box'   => array(
-					'border'           => '1px solid #c6c6c6',
 					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
 					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 					'background-color' => $attr['bgColor'],
@@ -4821,11 +4820,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors[' .uagb-taxomony-box'] = array(
+					'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+				);
+			}
+
 			$t_selectors = array(
 				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
 					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
 				),
+				' .uagb-layout-grid .uagb-taxomony-box' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+				),
 			);
+
 			$m_selectors = array(
 				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
 					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
@@ -4840,6 +4849,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'tablet'  => $t_selectors,
 				'mobile'  => $m_selectors,
 			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-layout-grid .uagb-tax-title', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', ' .uagb-layout-grid .uagb-tax-count', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', ' .uagb-layout-list .uagb-tax-list', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}

@@ -4,7 +4,6 @@
 import classnames from "classnames"
 import styling from "./styling"
 import BoxShadowControl from "../../components/box-shadow"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
@@ -26,7 +25,11 @@ const {
 	ColorPalette,	
 } = wp.blockEditor
  
-const { Component,Fragment } = wp.element
+const { 
+	Component,
+	Fragment 
+} = wp.element
+
 const { withSelect } = wp.data
 
 class UAGBTaxonomyList extends Component {
@@ -78,7 +81,8 @@ class UAGBTaxonomyList extends Component {
 			attributes,
 			setAttributes,
 			taxonomyList,
-			categoriesList,			
+			categoriesList,
+			termsList			
 		} = this.props		
 
 		// Caching all attributes.
@@ -97,6 +101,7 @@ class UAGBTaxonomyList extends Component {
 			columnGap,
 			contentPadding,
 			contentPaddingMobile,
+			contentPaddingTablet,
 			titleBottomSpace,			
 			alignment,
 			listStyle,
@@ -154,14 +159,19 @@ class UAGBTaxonomyList extends Component {
 			listLineHeightTablet,
 			listLineHeightMobile,
 			listLoadGoogleFonts,
+			showEmptyTaxonomy,
+			borderStyle,
+			borderThickness,
+			borderColor,
         } = attributes
 
 		let taxonomyListOptions = [
 			{ value: "", label: __( "Select Taxonomy" ) }
 		]
+		const taxonomy_list_setting = (showEmptyTaxonomy) ? taxonomyList : termsList;
 
 		if ( "" != taxonomyList ) {
-			Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+			Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
 				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
 			} )
 		}
@@ -346,7 +356,13 @@ class UAGBTaxonomyList extends Component {
 								help={ __( "If Taxonomy Not Found" ) }
 								/>
 								)}
-										
+
+					<ToggleControl
+						label={ __( "Show Empty Taxonomy" ) }
+						checked={ showEmptyTaxonomy }
+						onChange={ ( value ) => setAttributes( { showEmptyTaxonomy: ! showEmptyTaxonomy } ) }
+						help={__( "Show Empty Taxonomy in list " )}
+					/>					
 					<ToggleControl
 						label={ __( "Show Posts Count" ) }
 						checked={ showCount }
@@ -496,22 +512,65 @@ class UAGBTaxonomyList extends Component {
 								allowReset
 							/>
 							<hr className="uagb-editor__separator" />
-							<RangeControl
-								label={ __( "Content Padding" ) }
-								value={ contentPadding }
-								onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
-								min={ 10 }
-								max={ 100 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Content Padding (Mobile)" ) }
-								value={ contentPaddingMobile }
-								onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
+
+							<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+									
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<RangeControl
+											label={ __( "Mobile Content Padding" ) }
+											value={ contentPaddingMobile }
+											onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
+											min={ 0 }
+											max={ 100 }
+											/>
+											)
+										} else if ( "tablet" === tab.name ) {
+											tabout = (
+												<RangeControl
+												label={ __( "Tab Content Padding" ) }
+												value={ contentPaddingTablet }
+												onChange={ ( value ) => setAttributes( { contentPaddingTablet: value } ) }
+												min={ 0 }
+												max={ 100 }
+												/>
+												)
+											} else {
+												tabout = (
+													<RangeControl
+													label={ __( "Content Padding" ) }
+													value={ contentPadding }
+													onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+													min={ 10 }
+													max={ 100 }
+													/>
+													)
+												}
+												
+												return <label>{ tabout }</label>
+											}
+										}
+							</TabPanel>
 							<hr className="uagb-editor__separator" />
 							<RangeControl
 								label={ __( "Title Bottom Spacing" ) }
@@ -520,7 +579,7 @@ class UAGBTaxonomyList extends Component {
 								min={ 0 }
 								max={ 50 }
 								allowReset
-							/>				
+							/>	
 						</Fragment>
 					)}
 
@@ -540,6 +599,46 @@ class UAGBTaxonomyList extends Component {
 							
 					{"grid" == layout && (
 						<Fragment>
+
+							<p className="uagb-setting-label">{ __( "Title " ) }</p>
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+								fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+								fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+								fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+								fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+								fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+								fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+								fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+								lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+								lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+								lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+								lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
+								/>
+							<hr className="uagb-editor__separator" />
+	
+							<p className="uagb-setting-label">{ __( "Count " ) }</p>
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
+								fontFamily = { { value: countFontFamily, label: "countFontFamily" } }
+								fontWeight = { { value: countFontWeight, label: "countFontWeight" } }
+								fontSubset = { { value: countFontSubset, label: "countFontSubset" } }
+								fontSizeType = { { value: countFontSizeType, label: "countFontSizeType" } }
+								fontSize = { { value: countFontSize, label: "countFontSize" } }
+								fontSizeMobile = { { value: countFontSizeMobile, label: "countFontSizeMobile" } }
+								fontSizeTablet= { { value: countFontSizeTablet, label: "countFontSizeTablet" } }
+								lineHeightType = { { value: countLineHeightType, label: "countLineHeightType" } }
+								lineHeight = { { value: countLineHeight, label: "countLineHeight" } }
+								lineHeightMobile = { { value: countLineHeightMobile, label: "countLineHeightMobile" } }
+								lineHeightTablet= { { value: countLineHeightTablet, label: "countLineHeightTablet" } }
+								/>		
+							<hr className="uagb-editor__separator" />							
 							<BoxShadowControl
 							setAttributes = { setAttributes }
 							label = { __( "Box Shadow" ) }
@@ -551,50 +650,41 @@ class UAGBTaxonomyList extends Component {
 							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
 							/>
 							<hr className="uagb-editor__separator" />
-
-							{ "grid" === layout && ( 
-								<Fragment>
-								<p className="uagb-setting-label">{ __( "Title " ) }</p>
-								<TypographyControl
-									label={ __( "Typography" ) }
-									attributes = { attributes }
-									setAttributes = { setAttributes }
-									loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
-									fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
-									fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
-									fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
-									fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
-									fontSize = { { value: titleFontSize, label: "titleFontSize" } }
-									fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
-									fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
-									lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
-									lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
-									lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
-									lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
-									/>
-								<hr className="uagb-editor__separator" />
-	
-								<p className="uagb-setting-label">{ __( "Count " ) }</p>
-								<TypographyControl
-									label={ __( "Typography" ) }
-									attributes = { attributes }
-									setAttributes = { setAttributes }
-									loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
-									fontFamily = { { value: countFontFamily, label: "countFontFamily" } }
-									fontWeight = { { value: countFontWeight, label: "countFontWeight" } }
-									fontSubset = { { value: countFontSubset, label: "countFontSubset" } }
-									fontSizeType = { { value: countFontSizeType, label: "countFontSizeType" } }
-									fontSize = { { value: countFontSize, label: "countFontSize" } }
-									fontSizeMobile = { { value: countFontSizeMobile, label: "countFontSizeMobile" } }
-									fontSizeTablet= { { value: countFontSizeTablet, label: "countFontSizeTablet" } }
-									lineHeightType = { { value: countLineHeightType, label: "countLineHeightType" } }
-									lineHeight = { { value: countLineHeight, label: "countLineHeight" } }
-									lineHeightMobile = { { value: countLineHeightMobile, label: "countLineHeightMobile" } }
-									lineHeightTablet= { { value: countLineHeightTablet, label: "countLineHeightTablet" } }
-									/>
-								</Fragment>
-							)}
-
+							<SelectControl
+									label={ __( "Border Style" ) }
+									value={ borderStyle }
+									onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "solid", label: __( "Solid" ) },
+										{ value: "dotted", label: __( "Dotted" ) },
+										{ value: "dashed", label: __( "Dashed" ) },
+										{ value: "double", label: __( "Double" ) },
+										{ value: "groove", label: __( "Groove" ) },
+										{ value: "inset", label: __( "Inset" ) },
+										{ value: "outset", label: __( "Outset" ) },
+										{ value: "ridge", label: __( "Ridge" ) },
+									] }
+								/>
+								{ "none" != borderStyle &&
+									<Fragment>										
+										<RangeControl
+											label={ __( "Border Thickness" ) }
+											value={ borderThickness }
+											onChange={ ( value ) => setAttributes( { borderThickness: value } ) }
+											min={ 0 }
+											max={ 10 }
+											allowReset
+										/>										
+										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+										<ColorPalette
+											value={ borderColor }
+											onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+											allowReset
+										/>
+										
+									</Fragment>
+								}
 						</Fragment>
 					)}
 
@@ -645,7 +735,7 @@ class UAGBTaxonomyList extends Component {
 										</Fragment>
 									</Fragment>
 								}
-								
+
 								<hr className="uagb-editor__separator" />
 								
 								<p className="uagb-setting-label">{ __( "List " ) }</p>
@@ -710,7 +800,7 @@ class UAGBTaxonomyList extends Component {
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
 												<a class="uagb-tax-link" href={p.link}>
-													{p.name} { showCount && (  <Fragment> - {p.count} {countName} </Fragment> )}
+													{p.name} { showCount && ( `(${p.count})`  )}
 												</a>
 											</div>
 
@@ -774,7 +864,9 @@ export default withSelect( ( select, props ) => {
 	return {
 		latestPosts: getEntityRecords( 'postType' ,postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] ,
+		termsList: ( "undefined" != typeof currentTax ) ? currentTax["terms"] : [] 
+
 	}
 
 } )( UAGBTaxonomyList )
