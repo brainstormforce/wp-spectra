@@ -159,9 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 = 1.17.1 =
-* Fix: Inline Notice - Notice dismiss issue.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
-* Improvement: Added language option to google map block.
+* Improvement: Google Map - Now user can show language specific Google Map.
+* Fix: Inline Notice - Notice dismiss issue.
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.
