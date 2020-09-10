@@ -16,7 +16,7 @@ const {
 	TabPanel,
 	Dashicon,
 	TextControl,
-	IconButton,
+	Button,
 	ToggleControl
 } = wp.components
 
@@ -390,7 +390,7 @@ class UAGBTaxonomyList extends Component {
 					{"grid" == layout && (
 						<Fragment>
 							<p className="uagb-setting-label">{ __( "Alignment" ) }</p>
-							<IconButton
+							<Button
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
@@ -398,7 +398,7 @@ class UAGBTaxonomyList extends Component {
 								aria-pressed = { "left" === alignment }
 								isPrimary = { "left" === alignment }
 							/>
-							<IconButton
+							<Button
 								key={ "center" }
 								icon="editor-aligncenter"
 								label="Center"
@@ -406,7 +406,7 @@ class UAGBTaxonomyList extends Component {
 								aria-pressed = { "center" === alignment }
 								isPrimary = { "center" === alignment }
 							/>
-							<IconButton
+							<Button
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
@@ -420,7 +420,7 @@ class UAGBTaxonomyList extends Component {
 					{"list" == layout && (
 						<Fragment>
 							<p className="uagb-setting-label">{ __( "List Style" ) }</p>
-								<IconButton
+								<Button
 									key={ "bullet" }
 									icon="editor-ul"
 									label="Bullet"
@@ -428,7 +428,7 @@ class UAGBTaxonomyList extends Component {
 									aria-pressed = { "disc" === listStyle }
 									isPrimary = { "disc" === listStyle }
 								/>
-								<IconButton
+								<Button
 									key={ "numbers" }
 									icon="editor-ol"
 									label="Numbers"
@@ -436,7 +436,7 @@ class UAGBTaxonomyList extends Component {
 									aria-pressed = { "decimal" === listStyle }
 									isPrimary = { "decimal" === listStyle }
 								/>
-								<IconButton
+								<Button
 									key={ "none" }
 									icon="menu"
 									label="None"
@@ -813,7 +813,7 @@ class UAGBTaxonomyList extends Component {
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
 											{showCount && (
-												<div class="uagb-tax-count">{p.count} {countName}</div>
+												<div class="uagb-tax-count">{p.count} {p.count > "1" ? `${countName}s` :countName}</div>
 											)}
 										</a>
 									</div>						

@@ -70,7 +70,7 @@ const attributes = {
     },
     countName : {
         type: "string",
-        default: "Articles"
+        default: "Article"
     },
     showCount : {
         type : "boolean",
