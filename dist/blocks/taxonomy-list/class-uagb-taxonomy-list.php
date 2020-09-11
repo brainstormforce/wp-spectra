@@ -13,18 +13,23 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 	/**
 	 * Class UAGB_Taxonomy_List.
+	 *
+	 * @since x.x.x
 	 */
 	class UAGB_Taxonomy_List {
 
 		/**
 		 * Member Variable
 		 *
+		 * @since x.x.x
 		 * @var instance
 		 */
 		private static $instance;
 
 		/**
 		 *  Initiator
+		 *
+		 * @since x.x.x
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -35,6 +40,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 		/**
 		 * Constructor
+		 *
+		 * @since x.x.x
 		 */
 		public function __construct() {
 
@@ -43,9 +50,9 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		}
 
 		/**
-		 * Registers the `core/latest-posts` block on server.
+		 * Registers the `uagb/taxonomy-list` block on server.
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 */
 		public function register_blocks() {
 
@@ -58,32 +65,308 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				'uagb/taxonomy-list',
 				array(
 					'attributes'      => array(
-						'block_id'         => array(
+
+						'block_id'              => array(
 							'type' => 'string',
 						),
-						'postType'         => array(
+						'postType'              => array(
 							'type'    => 'string',
 							'default' => 'post',
 						),
-						'taxonomyType'     => array(
+						'taxonomyType'          => array(
 							'type'    => 'string',
 							'default' => 'category',
 						),
-						'layout'           => array(
+						'categories'            => array(
+							'type' => 'string',
+						),
+						'order'                 => array(
+							'type'    => 'string',
+							'default' => 'desc',
+						),
+						'orderBy'               => array(
+							'type'    => 'string',
+							'default' => 'date',
+						),
+						'postsToShow'           => array(
+							'type'    => 'number',
+							'default' => '8',
+						),
+						'layout'                => array(
 							'type'    => 'string',
 							'default' => 'grid',
 						),
-						'seperatorStyle'   => array(
+						'columns'               => array(
+							'type'    => 'number',
+							'default' => 3,
+						),
+						'tcolumns'              => array(
+							'type'    => 'number',
+							'default' => 2,
+						),
+						'mcolumns'              => array(
+							'type'    => 'number',
+							'default' => 1,
+						),
+						'noTaxDisplaytext'      => array(
+							'type'    => 'string',
+							'default' => __( 'Taxonomy Not Available.' ),
+						),
+						'boxShadowColor'        => array(
+							'type' => 'string',
+						),
+						'boxShadowHOffset'      => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'boxShadowVOffset'      => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'boxShadowBlur'         => array(
+							'type' => 'number',
+						),
+						'boxShadowSpread'       => array(
+							'type' => 'number',
+						),
+						'boxShadowPosition'     => array(
+							'type'    => 'string',
+							'default' => 'outset',
+						),
+						'showCount'             => array(
+							'type'    => 'boolean',
+							'default' => true,
+						),
+						'showEmptyTaxonomy'     => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						// Color Attributes.
+						'bgColor'               => array(
+							'type'    => 'string',
+							'default' => '#e4e4e4',
+						),
+						'titleColor'            => array(
+							'type'    => 'string',
+							'default' => '#3b3b3b',
+						),
+						'countColor'            => array(
+							'type'    => 'string',
+							'default' => '#777777',
+						),
+						'listTextColor'         => array(
+							'type'    => 'string',
+							'default' => '#3b3b3b',
+						),
+						'hoverlistTextColor'    => array(
+							'type'    => 'string',
+							'default' => '#3b3b3b',
+						),
+						'listStyleColor'        => array(
+							'type'    => 'string',
+							'default' => '#3b3b3b',
+						),
+						'hoverlistStyleColor'   => array(
+							'type'    => 'string',
+							'default' => '#3b3b3b',
+						),
+
+						// Spacing Attributes.
+						'rowGap'                => array(
+							'type'    => 'number',
+							'default' => 20,
+						),
+						'columnGap'             => array(
+							'type'    => 'number',
+							'default' => 20,
+						),
+						'contentPadding'        => array(
+							'type'    => 'number',
+							'default' => 20,
+						),
+						'contentPaddingTablet'  => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'contentPaddingMobile'  => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'titleBottomSpace'      => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'listBottomMargin'      => array(
+							'type'    => 'number',
+							'default' => 10,
+						),
+
+						// ALignment Attributes.
+						'alignment'             => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
+
+						// List Attributes.
+						'listStyle'             => array(
+							'type'    => 'string',
+							'default' => 'disc',
+						),
+
+						// Seperator Attributes.
+						'seperatorStyle'        => array(
 							'type'    => 'string',
 							'default' => 'none',
 						),
-						'noTaxDisplaytext' => array(
-							'type'    => 'string',
-							'default' => 'Taxonomy Not Available.',
+						'seperatorWidth'        => array(
+							'type'    => 'number',
+							'default' => 100,
 						),
-						'showCount'        => array(
+						'seperatorThickness'    => array(
+							'type'    => 'number',
+							'default' => 1,
+						),
+						'seperatorColor'        => array(
+							'type'    => 'string',
+							'default' => '#b2b4b5',
+						),
+
+						// Grid Border attributes.
+						'borderColor'           => array(
+							'type'    => 'string',
+							'default' => '#b2b4b5',
+						),
+						'borderThickness'       => array(
+							'type'    => 'number',
+							'default' => 1,
+						),
+						'borderStyle'           => array(
+							'type'    => 'string',
+							'default' => 'solid',
+						),
+
+						// Typograpghy attributes.
+						'titleFontSize'         => array(
+							'type' => 'number',
+						),
+						'titleFontSizeType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'titleFontSizeMobile'   => array(
+							'type' => 'number',
+						),
+						'titleFontSizeTablet'   => array(
+							'type' => 'number',
+						),
+						'titleFontFamily'       => array(
+							'type'    => 'string',
+							'default' => 'Default',
+						),
+						'titleFontWeight'       => array(
+							'type' => 'string',
+						),
+						'titleFontSubset'       => array(
+							'type' => 'string',
+						),
+						'titleLineHeightType'   => array(
+							'type'    => 'string',
+							'default' => 'em',
+						),
+						'titleLineHeight'       => array(
+							'type' => 'number',
+						),
+						'titleLineHeightTablet' => array(
+							'type' => 'number',
+						),
+						'titleLineHeightMobile' => array(
+							'type' => 'number',
+						),
+						'titleLoadGoogleFonts'  => array(
 							'type'    => 'boolean',
-							'default' => true,
+							'default' => false,
+						),
+						'countFontSize'         => array(
+							'type' => 'number',
+						),
+						'countFontSizeType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'countFontSizeMobile'   => array(
+							'type' => 'number',
+						),
+						'countFontSizeTablet'   => array(
+							'type' => 'number',
+						),
+						'countFontFamily'       => array(
+							'type'    => 'string',
+							'default' => 'Default',
+						),
+						'countFontWeight'       => array(
+							'type' => 'string',
+						),
+						'countFontSubset'       => array(
+							'type' => 'string',
+						),
+						'countLineHeightType'   => array(
+							'type'    => 'string',
+							'default' => 'em',
+						),
+						'countLineHeight'       => array(
+							'type' => 'number',
+						),
+						'countLineHeightTablet' => array(
+							'type' => 'number',
+						),
+						'countLineHeightMobile' => array(
+							'type' => 'number',
+						),
+						'countLoadGoogleFonts'  => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						'listFontSize'          => array(
+							'type' => 'number',
+						),
+						'listFontSizeType'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'listFontSizeMobile'    => array(
+							'type' => 'number',
+						),
+						'listFontSizeTablet'    => array(
+							'type' => 'number',
+						),
+						'listFontFamily'        => array(
+							'type'    => 'string',
+							'default' => 'Default',
+						),
+						'listFontWeight'        => array(
+							'type' => 'string',
+						),
+						'listFontSubset'        => array(
+							'type' => 'string',
+						),
+						'listLineHeightType'    => array(
+							'type'    => 'string',
+							'default' => 'em',
+						),
+						'listLineHeight'        => array(
+							'type' => 'number',
+						),
+						'listLineHeightTablet'  => array(
+							'type' => 'number',
+						),
+						'listLineHeightMobile'  => array(
+							'type' => 'number',
+						),
+						'listLoadGoogleFonts'   => array(
+							'type'    => 'boolean',
+							'default' => false,
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
@@ -92,11 +375,115 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		}
 
 		/**
+		 * Render Grid HTML.
+		 *
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since x.x.x
+		 */
+		public function grid_html( $attributes ) {
+			$block_id         = $attributes['block_id'];
+			$postType         = $attributes['postType'];
+			$taxonomyType     = $attributes['taxonomyType'];
+			$layout           = $attributes['layout'];
+			$seperatorStyle   = $attributes['seperatorStyle'];
+			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
+			$showCount        = $attributes['showCount'];
+
+			if ( 'grid' === $layout ) {
+				$allTaxonomy    = UAGB_Helper::get_related_taxonomy();
+				$currentTax     = $allTaxonomy[ $postType ];
+				$categoriesList = array();
+
+				if ( $currentTax['taxonomy'] ) {
+
+					if ( '' !== $taxonomyType ) {
+						if ( 'undefined' !== gettype( $currentTax['terms'] ) && 'undefined' !== gettype( $currentTax['terms'][ $taxonomyType ] ) ) {
+							$categoriesList = $currentTax['terms'][ $taxonomyType ];
+						}
+					}
+				}
+
+				foreach ( $categoriesList as $value ) {
+					?>
+
+					<div class="uagb-taxomony-box">
+						<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>">
+							<h4 class="uagb-tax-title"><?php echo esc_attr( $value['name'] ); ?></h4>
+							<?php if ( $showCount ) { ?>
+								<div class="uagb-tax-count">
+									<?php echo esc_attr( $value['count'] ); ?>
+									<?php $countName = ( $value['count'] > 1 ) ? esc_attr( $value['singular_name'] ) . 's' : esc_attr( $value['singular_name'] ); ?> 
+									<?php
+									echo apply_filters( 'uagb_taxonomy_count_text', $countName, $value['count'] );
+									?>																																				  
+								</div>
+							<?php } ?>
+						</a>
+					</div>
+					<?php
+				}
+			}
+		}
+
+		/**
+		 * Render List HTML.
+		 *
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since x.x.x
+		 */
+		public function list_html( $attributes ) {
+			$block_id         = $attributes['block_id'];
+			$postType         = $attributes['postType'];
+			$taxonomyType     = $attributes['taxonomyType'];
+			$layout           = $attributes['layout'];
+			$seperatorStyle   = $attributes['seperatorStyle'];
+			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
+			$showCount        = $attributes['showCount'];
+
+			if ( 'list' === $layout ) {
+				$allTaxonomy    = UAGB_Helper::get_related_taxonomy();
+				$currentTax     = $allTaxonomy[ $postType ];
+				$categoriesList = array();
+
+				if ( $currentTax['taxonomy'] ) {
+
+					if ( '' !== $taxonomyType ) {
+						if ( 'undefined' !== gettype( $currentTax['terms'] ) && 'undefined' !== gettype( $currentTax['terms'][ $taxonomyType ] ) ) {
+							$categoriesList = $currentTax['terms'][ $taxonomyType ];
+						}
+					}
+				}
+
+				?>
+					<ul class="uagb-list-wrap">
+						<?php foreach ( $categoriesList as $value ) { ?>
+							<li class="uagb-tax-list">
+								<div class="uagb-tax-link-wrap">
+									<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>"><?php echo esc_attr( $value['name'] ); ?></a>
+										<?php if ( $showCount ) { ?>
+											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value['count'] ) . ')'; ?></span>
+										<?php } ?>
+								</div>
+								<?php if ( 'none' !== $seperatorStyle ) { ?>
+									<div class="uagb-tax-separator-wrap">
+										<div class="uagb-tax-separator"></div>
+									</div>
+								<?php } ?>
+							</li>
+						<?php } ?>
+					</ul>
+				<?php
+			}
+		}
+
+		/**
 		 * Render Taxonomy List HTML.
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since 1.17.1
+		 * @since x.x.x
 		 */
 		public function render_html( $attributes ) {
 
@@ -136,47 +523,15 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<?php if ( ! empty( $categoriesList ) ) { ?>
 						<div class = "<?php echo esc_attr( implode( ' ', $inner_classes ) ); ?>">
-							<?php if ( 'grid' === $layout ) { ?>
-								<?php foreach ( $categoriesList as $value ) { ?>
-									<div class="uagb-taxomony-box">
-										<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>">
-											<h4 class="uagb-tax-title"><?php echo esc_attr( $value['name'] ); ?></h4>
-											<?php if ( $showCount ) { ?>
-												<div class="uagb-tax-count">
-													<?php echo esc_attr( $value['count'] ); ?>
-													<?php $countName = ( $value['count'] > 1 ) ? esc_attr( $value['singular_name'] ) . 's' : esc_attr( $value['singular_name'] ); ?> 
-													<?php echo esc_attr( $countName ); ?>                                          
-												</div>
-											<?php } ?>
-										</a>
-									</div>  
-								<?php } ?>
-							<?php } elseif ( 'list' === $layout ) { ?>
-								<ul class="uagb-list-wrap">
-									<?php foreach ( $categoriesList as $value ) { ?>
-										<li class="uagb-tax-list">
-											<div class="uagb-tax-link-wrap">
-												<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>"><?php echo esc_attr( $value['name'] ); ?></a>
-													<?php if ( $showCount ) { ?>
-														<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value['count'] ) . ')'; ?></span>
-													<?php } ?>
-											</div>
-											<?php if ( 'none' !== $seperatorStyle ) { ?>
-												<div class="uagb-tax-separator-wrap">
-													<div class="uagb-tax-separator"></div>
-												</div>
-											<?php } ?>
-										</li>
-									<?php } ?>
-								</ul>
-							<?php } ?>
-						<?php } else { ?>
+							<?php $this->grid_html( $attributes ); ?>
+							<?php $this->list_html( $attributes ); ?>							
+						</div>
+					<?php } else { ?>
 							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
-						<?php } ?>					
-					</div>
+					<?php } ?>					
 				</div>
-				<?php
 
+			<?php
 				return ob_get_clean();
 		}
 	}

@@ -9,7 +9,6 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import "./style.scss"
 import "./editor.scss"
 import edit from "./edit"
-import attributes from "./attributes"
 
 // Components
 const { __ } = wp.i18n
@@ -23,7 +22,6 @@ registerBlockType( "uagb/taxonomy-list", {
 	description: uagb_blocks_info.blocks["uagb/taxonomy-list"]["description"],
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
-	attributes,
 	keywords: [
 		__( "post" ),
 		__( "taxonomy" ),
