@@ -13,7 +13,8 @@ export default function save( props ) {
 	const {
 		block_id,
 		textareaRequired,
-		textareaName
+		textareaName,
+		rows
 	} = attributes
 	
 	const isRequired = (textareaRequired) ? "required" : "";
@@ -30,7 +31,7 @@ export default function save( props ) {
 			className={`uagb-forms-textarea-label ${isRequired}`}
 			
 			/>
-			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>
+			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows={rows} ></textarea>
 			</div>
 			)
 		}

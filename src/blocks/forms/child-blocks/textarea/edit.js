@@ -14,6 +14,7 @@ const {
 const {
 	PanelBody,	
 	ToggleControl,
+	RangeControl
 } = wp.components
 const {
 	InspectorControls,
@@ -50,7 +51,8 @@ class UAGBFormsTextareaEdit extends Component {
         const {
 			block_id,
 			textareaRequired,
-			textareaName
+			textareaName,
+			rows
 		} = attributes
 		
 		const textareaInspectorControls = () => {
@@ -65,6 +67,14 @@ class UAGBFormsTextareaEdit extends Component {
 						label={ __( "Required" ) }
 						checked={ textareaRequired }
 						onChange={ ( value ) => setAttributes( { textareaRequired: ! textareaRequired } ) }
+					/>
+					<RangeControl
+						label={ __( "Number of lines" ) }
+						value={ rows }
+						onChange={ ( value ) => setAttributes( { rows: value } ) }
+						min={ 2 }
+						max={ 10 }
+						allowReset
 					/>
 				</PanelBody>
 			)
@@ -99,7 +109,7 @@ class UAGBFormsTextareaEdit extends Component {
 						className={`uagb-forms-textarea-label ${isRequired}`}
 						multiline={ false }
 					/>					
-					<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>
+					<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows={rows} ></textarea>
 					
 				</div>
 			</Fragment>

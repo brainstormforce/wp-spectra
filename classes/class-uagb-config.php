@@ -2305,6 +2305,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'block_id'     => '',
 							'textareaName' => 'Message',
+							'rows'         => '4',
 						),
 					),
 					'uagb/forms-checkbox'     => array(

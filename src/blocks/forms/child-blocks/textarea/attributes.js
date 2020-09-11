@@ -9,6 +9,10 @@ const attributes = {
 	textareaRequired : {
         type: "boolean",
         default: false
+    },
+    rows : {
+        type: "number",
+        default: 4
     }
 }
 export default attributes
