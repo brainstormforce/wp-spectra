@@ -6,7 +6,6 @@ import styling from "./styling"
 import BoxShadowControl from "../../components/box-shadow"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
-import { post } from "jquery"
 
 
 const { __ } = wp.i18n
