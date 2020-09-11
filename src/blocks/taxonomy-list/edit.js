@@ -6,6 +6,7 @@ import styling from "./styling"
 import BoxShadowControl from "../../components/box-shadow"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
+import { post } from "jquery"
 
 
 const { __ } = wp.i18n
@@ -121,7 +122,6 @@ class UAGBTaxonomyList extends Component {
             boxShadowBlur,
             boxShadowSpread,
 			boxShadowPosition,
-			countName,
 			showCount,			
 			titleFontSize,
 			titleFontSizeType,
@@ -377,15 +377,6 @@ class UAGBTaxonomyList extends Component {
 						onChange={ ( value ) => setAttributes( { showCount: ! showCount } ) }
 					/>
 
-					{ showCount && "grid" === layout && (
-						<TextControl
-							autoComplete="off"
-							label={ __( 'Count Text' ) }
-							value={ countName }
-							onChange={ ( value ) => setAttributes( { countName: value } ) }
-							help={ __( "Display Text after the count" ) }
-						/>
-					)}
 
 					{"grid" == layout && (
 						<Fragment>
@@ -796,13 +787,11 @@ class UAGBTaxonomyList extends Component {
         return (
 				<Fragment>							
 					{ inspectorControlsSettings }
-					<div className={ classnames(
-					className,
+					<div className={ classnames(					
 					"uagb-taxonomy__outer-wrap",
 					`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 					) }>
-						<div className={ classnames(
-						className,
+						<div className={ classnames(						
 						"uagb-taxonomy-wrap",
 						`uagb-layout-${layout}`
 						) }>
@@ -813,7 +802,7 @@ class UAGBTaxonomyList extends Component {
 										<a class="uagb-tax-link" href={p.link}>
 											<h4 class="uagb-tax-title">{p.name}</h4>
 											{showCount && (
-												<div class="uagb-tax-count">{p.count} {p.count > "1" ? `${countName}s` :countName}</div>
+												<div class="uagb-tax-count">{p.count} {p.count > "1" ? `${p.singular_name}s` :p.singular_name}</div>
 											)}
 										</a>
 									</div>						
@@ -867,14 +856,9 @@ export default withSelect( ( select, props ) => {
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
 	let currentTax = allTaxonomy[postType]
 	let categoriesList = []
-	let rest_base = ""
 
 
 	if ( "undefined" != typeof currentTax ) {
-
-		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
-			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
-		}
 
 		if ( "" != taxonomyType ) {
 			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {

@@ -67,11 +67,7 @@ const attributes = {
 	boxShadowPosition: {
 		type: "string",
 		default: "outset"
-    },
-    countName : {
-        type: "string",
-        default: "Article"
-    },
+    },    
     showCount : {
         type : "boolean",
         default : true

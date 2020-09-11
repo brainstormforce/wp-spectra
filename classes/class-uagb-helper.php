@@ -1079,6 +1079,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
 				$data       = array();
 
+				$get_singular_name = get_post_type_object( $post_type );
+
 				foreach ( $taxonomies as $tax_slug => $tax ) {
 					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
 						continue;
@@ -1093,10 +1095,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'    => $t_obj->term_id,
-								'name'  => $t_obj->name,
-								'count' => $t_obj->count,
-								'link'  => get_term_link( $t_obj->term_id ),
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
 							);
 						}
 
