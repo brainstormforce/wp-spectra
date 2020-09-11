@@ -414,9 +414,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								<div class="uagb-tax-count">
 									<?php echo esc_attr( $value['count'] ); ?>
 									<?php $countName = ( $value['count'] > 1 ) ? esc_attr( $value['singular_name'] ) . 's' : esc_attr( $value['singular_name'] ); ?> 
-									<?php
-									echo apply_filters( 'uagb_taxonomy_count_text', $countName, $value['count'] );
-									?>																																				  
+									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value['count'] ) ); ?>																																																															  
 								</div>
 							<?php } ?>
 						</a>
