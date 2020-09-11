@@ -13,7 +13,8 @@ export default function save( props ) {
 	const {
 		block_id,
 		required,
-		name
+		name,
+		placeholder
 	} = attributes
 
 	var url_field_name = name.replace(/\s+/g, '-').toLowerCase();
@@ -31,7 +32,7 @@ export default function save( props ) {
 			value={ name }
 			className={`uagb-forms-url-label ${isRequired}`}			
 			/>
-			<input type="url" name={url_field_name} required={ required } className="uagb-forms-url-input"/>					
+			<input type="url" name={url_field_name} required={ required } placeholder={placeholder}  className="uagb-forms-url-input"/>					
 
 		</div>
 	)

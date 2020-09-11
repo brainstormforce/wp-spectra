@@ -1,3 +1,6 @@
+
+const { __ } = wp.i18n
+
 const attributes = {
     block_id: {
 		type: "string"
@@ -8,7 +11,11 @@ const attributes = {
     },
     name: {
         type: "string",
-        default: "Name"
+        default:__( "Name" )
+    },
+    placeholder: {
+        type: "string",
+        default: __( "Roman Gill" )
     },
 }
 export default attributes

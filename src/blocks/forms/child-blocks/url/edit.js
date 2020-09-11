@@ -13,7 +13,8 @@ const {
 
 const {
 	PanelBody,	
-	ToggleControl
+	ToggleControl,
+	TextControl
 } = wp.components
 const {
 	InspectorControls,
@@ -50,7 +51,8 @@ class UAGBFormsUrlEdit extends Component {
         const {
 			block_id,
 			required,
-			name
+			name,
+			placeholder
 		} = attributes
 		
 		const urlInspectorControls = () => {
@@ -65,6 +67,12 @@ class UAGBFormsUrlEdit extends Component {
 						label={ __( "Required" ) }
 						checked={ required }
 						onChange={ ( value ) => setAttributes( { required: ! required } ) }
+					/>
+					<TextControl
+					 	label="Placeholder"
+						value={ placeholder }
+						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+						placeholder={__( "Placeholder" )}
 					/>
 				</PanelBody>
 			)
@@ -99,7 +107,7 @@ class UAGBFormsUrlEdit extends Component {
 						className={`uagb-forms-url-label ${isRequired}`}
 						multiline={ false }
 					/>
-					<input type="url" required={ required } className="uagb-forms-url-input"/>					
+					<input type="url" placeholder={placeholder} required={ required } className="uagb-forms-url-input"/>					
 					
 					
 				</div>

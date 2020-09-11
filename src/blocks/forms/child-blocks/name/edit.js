@@ -13,14 +13,8 @@ const {
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
 	ToggleControl,
-	IconButton
+	TextControl
 } = wp.components
 const {
 	InspectorControls,
@@ -57,7 +51,8 @@ class UAGBFormsNameEdit extends Component {
         const {
 			block_id,
 			nameRequired,
-			name
+			name,
+			placeholder
 		} = attributes
 		
 		const nameInspectorControls = () => {
@@ -72,6 +67,12 @@ class UAGBFormsNameEdit extends Component {
 						label={ __( "Required" ) }
 						checked={ nameRequired }
 						onChange={ ( value ) => setAttributes( { nameRequired: ! nameRequired } ) }
+					/>
+					<TextControl
+					 	label="Placeholder"
+						value={ placeholder }
+						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+						placeholder={__( "Placeholder" )}
 					/>
 				</PanelBody>
 			)
@@ -106,7 +107,7 @@ class UAGBFormsNameEdit extends Component {
 						className={`uagb-forms-name-label ${isRequired}`}
 						multiline={ false }
 					/>					
-					<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>
+					<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input"/>
 				</div>
 			</Fragment>
 		)
