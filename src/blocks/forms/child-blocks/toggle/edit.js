@@ -14,6 +14,7 @@ const {
 const {
 	PanelBody,
 	ToggleControl,
+	SelectControl
 } = wp.components
 const {
 	InspectorControls,
@@ -52,7 +53,8 @@ class UAGBFormsToggleEdit extends Component {
 			block_id,
 			toggleRequired,
 			name,
-			toggleStatus
+			toggleStatus,
+			layout
 		} = attributes
 		
 		const toggleInspectorControls = () => {
@@ -63,11 +65,20 @@ class UAGBFormsToggleEdit extends Component {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
-					<ToggleControl
-						label={ __( "Required" ) }
-						checked={ toggleRequired }
-						onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
-						/>
+				<ToggleControl
+					label={ __( "Required" ) }
+					checked={ toggleRequired }
+					onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
+				/>
+				<SelectControl
+					label={ __( "Layout" ) }
+					value={ layout }
+					onChange={ ( value ) => setAttributes( { layout: value } ) }
+					options={ [
+						{ value: "", label: __( "Square" ) },
+						{ value: "round", label: __( "Round" ) },								
+					] }
+				/>
 				</PanelBody>
 			)
 		}
@@ -91,7 +102,7 @@ class UAGBFormsToggleEdit extends Component {
 								label={ __( "Required" ) }
 								checked={ toggleRequired }
 								onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
-							/>
+							/>							
 						</div>
 					)}
 					<RichText
@@ -109,7 +120,7 @@ class UAGBFormsToggleEdit extends Component {
 							checked={toggleStatus}
 							onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
 						/>
-						<span class="uagb-slider"></span>
+						<span class={`uagb-slider ${layout}`}></span>
 					</label>	
 				</div>
 			</Fragment>

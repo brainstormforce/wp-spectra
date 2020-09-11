@@ -14,5 +14,9 @@ const attributes = {
         type: "boolean",
         default: false
     },
+    layout: {
+        type: "string",
+        default: ""
+    },
 }
 export default attributes

@@ -15,7 +15,8 @@ export default function save( props ) {
 		block_id,
 		toggleRequired,
 		name,
-		toggleStatus
+		toggleStatus,
+		layout
 	} = attributes
 	
 	const isRequired = (toggleRequired) ? "required" : "";
@@ -39,7 +40,7 @@ export default function save( props ) {
 						value={toggleStatus ? "yes" : "no"}
 						required={toggleRequired}					
 					/>
-					<span class="uagb-slider"></span>
+					<span class={`uagb-slider ${layout}`}></span>
 				</label>
 		</div>
 	)
