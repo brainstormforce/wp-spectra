@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-
+import styling from "./styling"
 const { __ } = wp.i18n
 
 const {
@@ -14,11 +14,12 @@ const {
 const {
 	PanelBody,
 	ToggleControl,
-	SelectControl
+	SelectControl,
 } = wp.components
 const {
 	InspectorControls,
 	RichText,
+	ColorPalette       
 } = wp.blockEditor
 
 class UAGBFormsToggleEdit extends Component {
@@ -42,6 +43,11 @@ class UAGBFormsToggleEdit extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-style-forms-toggle-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
     }
 	
 	
@@ -54,7 +60,8 @@ class UAGBFormsToggleEdit extends Component {
 			toggleRequired,
 			name,
 			toggleStatus,
-			layout
+			layout,
+			activeColor
 		} = attributes
 		
 		const toggleInspectorControls = () => {
@@ -78,6 +85,12 @@ class UAGBFormsToggleEdit extends Component {
 						{ value: "", label: __( "Square" ) },
 						{ value: "round", label: __( "Round" ) },								
 					] }
+				/>
+				<p className="uagb-setting-label">{ __( "Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
+				<ColorPalette
+					value={ activeColor }
+					onChange={ ( colorValue ) => setAttributes( { activeColor: colorValue } ) }
+					allowReset
 				/>
 				</PanelBody>
 			)
