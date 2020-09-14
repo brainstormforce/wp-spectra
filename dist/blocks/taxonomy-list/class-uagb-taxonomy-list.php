@@ -496,10 +496,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 			);
 
-			if($taxonomyType ){
-				$newcategoriesList = get_terms( $taxonomyType , $args );
+			if ( $taxonomyType ) {
+				$newcategoriesList = get_terms( $taxonomyType, $args );
 			}
-			
+
 			ob_start();
 
 			?>
