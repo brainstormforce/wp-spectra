@@ -391,31 +391,27 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$showCount        = $attributes['showCount'];
 
 			if ( 'grid' === $layout ) {
-				$allTaxonomy    = UAGB_Helper::get_related_taxonomy();
-				$currentTax     = $allTaxonomy[ $postType ];
-				$categoriesList = array();
 
-				if ( $currentTax['taxonomy'] ) {
+				$pt            = get_post_type_object( $postType );
+				$singular_name = $pt->labels->singular_name;
 
-					if ( '' !== $taxonomyType ) {
-						if ( 'undefined' !== gettype( $currentTax['terms'] ) && 'undefined' !== gettype( $currentTax['terms'][ $taxonomyType ] ) ) {
-							$categoriesList = $currentTax['terms'][ $taxonomyType ];
-						}
-					}
-				}
+				$args              = array(
+					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
+				);
+				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
 
-				foreach ( $categoriesList as $value ) {
+				foreach ( $newcategoriesList as $value ) {
 					?>
 
 					<div class="uagb-taxomony-box">
-						<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>">
-							<h4 class="uagb-tax-title"><?php echo esc_attr( $value['name'] ); ?></h4>
+						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>">
+							<h4 class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?></h4>
 							<?php if ( $showCount ) { ?>
 								<div class="uagb-tax-count">
-									<?php echo esc_attr( $value['count'] ); ?>
-									<?php $countName = ( $value['count'] > 1 ) ? esc_attr( $value['singular_name'] ) . 's' : esc_attr( $value['singular_name'] ); ?> 
-									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value['count'] ) ); ?>																																																															  
-								</div>
+									<?php echo esc_attr( $value->count ); ?>
+									<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
+									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
+									</div>
 							<?php } ?>
 						</a>
 					</div>
@@ -441,27 +437,22 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$showCount        = $attributes['showCount'];
 
 			if ( 'list' === $layout ) {
-				$allTaxonomy    = UAGB_Helper::get_related_taxonomy();
-				$currentTax     = $allTaxonomy[ $postType ];
-				$categoriesList = array();
+				$pt            = get_post_type_object( $postType );
+				$singular_name = $pt->labels->singular_name;
 
-				if ( $currentTax['taxonomy'] ) {
-
-					if ( '' !== $taxonomyType ) {
-						if ( 'undefined' !== gettype( $currentTax['terms'] ) && 'undefined' !== gettype( $currentTax['terms'][ $taxonomyType ] ) ) {
-							$categoriesList = $currentTax['terms'][ $taxonomyType ];
-						}
-					}
-				}
+				$args              = array(
+					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
+				);
+				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
 
 				?>
 					<ul class="uagb-list-wrap">
-						<?php foreach ( $categoriesList as $value ) { ?>
+						<?php foreach ( $newcategoriesList as $value ) { ?>
 							<li class="uagb-tax-list">
 								<div class="uagb-tax-link-wrap">
-									<a class="uagb-tax-link" href="<?php echo esc_attr( $value['link'] ); ?>"><?php echo esc_attr( $value['name'] ); ?></a>
+									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
-											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value['count'] ) . ')'; ?></span>
+											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
 										<?php } ?>
 								</div>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
@@ -493,19 +484,6 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
 			$showCount        = $attributes['showCount'];
 
-			$allTaxonomy    = UAGB_Helper::get_related_taxonomy();
-			$currentTax     = $allTaxonomy[ $postType ];
-			$categoriesList = array();
-
-			if ( $currentTax['taxonomy'] ) {
-
-				if ( '' !== $taxonomyType ) {
-					if ( 'undefined' !== gettype( $currentTax['terms'] ) && 'undefined' !== gettype( $currentTax['terms'][ $taxonomyType ] ) ) {
-						$categoriesList = $currentTax['terms'][ $taxonomyType ];
-					}
-				}
-			}
-
 			$main_classes  = array(
 				'uagb-taxonomy__outer-wrap',
 				'uagb-block-' . $block_id,
@@ -514,12 +492,19 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				'uagb-taxonomy-wrap',
 				'uagb-layout-' . $layout,
 			);
+			$args          = array(
+				'hide_empty' => ! $attributes['showEmptyTaxonomy'],
+			);
 
+			if($taxonomyType ){
+				$newcategoriesList = get_terms( $taxonomyType , $args );
+			}
+			
 			ob_start();
 
 			?>
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
-					<?php if ( ! empty( $categoriesList ) ) { ?>
+					<?php if ( ! empty( $newcategoriesList ) ) { ?>
 						<div class = "<?php echo esc_attr( implode( ' ', $inner_classes ) ); ?>">
 							<?php $this->grid_html( $attributes ); ?>
 							<?php $this->list_html( $attributes ); ?>							

@@ -1069,8 +1069,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_related_taxonomy() {
 
-			$post_types = self::get_post_types();
-
+			$post_types   = self::get_post_types();
 			$return_array = array();
 
 			foreach ( $post_types as $key => $value ) {
@@ -1108,6 +1107,95 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				$return_array[ $post_type ]['taxonomy'] = $data;
+			}
+
+			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
+		}
+
+		/**
+		 * Get all taxonomies list.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function get_taxonomy_list() {
+
+			$post_types = self::get_post_types();
+
+			$return_array = array();
+
+			foreach ( $post_types as $key => $value ) {
+				$post_type = $value['value'];
+
+				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+				$data       = array();
+
+				$get_singular_name = get_post_type_object( $post_type );
+				foreach ( $taxonomies as $tax_slug => $tax ) {
+					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
+						continue;
+					}
+
+					$data[ $tax_slug ] = $tax;
+
+					$terms = get_terms( $tax_slug );
+
+					$related_tax_terms = array();
+
+					if ( ! empty( $terms ) ) {
+						foreach ( $terms as $t_index => $t_obj ) {
+							$related_tax_terms[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+							);
+						}
+
+						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
+					}
+
+					$newcategoriesList = get_terms( $tax_slug, array( 'hide_empty' => true ) );
+
+					$related_tax = array();
+
+					if ( ! empty( $newcategoriesList ) ) {
+						foreach ( $newcategoriesList as $t_index => $t_obj ) {
+							$related_tax[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+							);
+						}
+
+						$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
+
+					}
+
+					$newcategoriesList_empty_tax = get_terms( $tax_slug, array( 'hide_empty' => false ) );
+
+					$related_tax_empty_tax = array();
+
+					if ( ! empty( $newcategoriesList_empty_tax ) ) {
+						foreach ( $newcategoriesList_empty_tax as $t_index => $t_obj ) {
+							$related_tax_empty_tax[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+							);
+						}
+
+						$return_array[ $post_type ]['with_empty_taxonomy'][ $tax_slug ] = $related_tax_empty_tax;
+
+					}
+				}
+				$return_array[ $post_type ]['taxonomy'] = $data;
+
 			}
 
 			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );

@@ -849,20 +849,20 @@ class UAGBTaxonomyList extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType} = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType,showEmptyTaxonomy} = props.attributes
 	const { getEntityRecords } = select( "core" )
 
-	let allTaxonomy = uagb_blocks_info.all_taxonomy
+	
+	
+	let allTaxonomy = uagb_blocks_info.taxonomy_list
 	let currentTax = allTaxonomy[postType]
+	
+	var listToShowTaxonomy = (showEmptyTaxonomy) ? "with_empty_taxonomy" : "without_empty_taxonomy";
+	
 	let categoriesList = []
-
-
 	if ( "undefined" != typeof currentTax ) {
-
-		if ( "" != taxonomyType ) {
-			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
-				categoriesList = currentTax["terms"][taxonomyType]
-			}
+		if ("undefined" != typeof  currentTax[listToShowTaxonomy] && "undefined" != typeof currentTax[listToShowTaxonomy][taxonomyType] ) {
+			categoriesList = currentTax[listToShowTaxonomy][taxonomyType]
 		}
 	}
 
