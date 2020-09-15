@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_related_taxonomy() {
 
-			$post_types   = self::get_post_types();
+			$post_types = self::get_post_types();
 
 			$return_array = array();
 
@@ -1077,7 +1077,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$post_type = $value['value'];
 
 				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
-				$data       = array();			
+				$data       = array();
 
 				foreach ( $taxonomies as $tax_slug => $tax ) {
 					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
@@ -1093,8 +1093,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'            => $t_obj->term_id,
-								'name'          => $t_obj->name,	
+								'id'   => $t_obj->term_id,
+								'name' => $t_obj->name,
 							);
 						}
 
