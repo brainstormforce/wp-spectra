@@ -1152,37 +1152,64 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
 					}
 
-					$newcategoriesList = get_terms( $tax_slug, array( 'hide_empty' => true ) );
+					$newcategoriesList = get_terms(
+						$tax_slug,
+						array(
+							'hide_empty' => true,
+							'parent'     => 0,
+						)
+					);
 
 					$related_tax = array();
 
 					if ( ! empty( $newcategoriesList ) ) {
 						foreach ( $newcategoriesList as $t_index => $t_obj ) {
+							$child_arg     = array(
+								'hide_empty' => true,
+								'parent'     => $t_obj->term_id,
+							);
+							$child_cat     = get_terms( $tax_slug, $child_arg );
+							$child_cat_arr = $child_cat ? $child_cat : null;
 							$related_tax[] = array(
 								'id'            => $t_obj->term_id,
 								'name'          => $t_obj->name,
 								'count'         => $t_obj->count,
 								'link'          => get_term_link( $t_obj->term_id ),
 								'singular_name' => $get_singular_name->labels->singular_name,
+								'children'      => $child_cat_arr,
 							);
+
 						}
 
 						$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
 
 					}
 
-					$newcategoriesList_empty_tax = get_terms( $tax_slug, array( 'hide_empty' => false ) );
+					$newcategoriesList_empty_tax = get_terms(
+						$tax_slug,
+						array(
+							'hide_empty' => false,
+							'parent'     => 0,
+						)
+					);
 
 					$related_tax_empty_tax = array();
 
 					if ( ! empty( $newcategoriesList_empty_tax ) ) {
 						foreach ( $newcategoriesList_empty_tax as $t_index => $t_obj ) {
+							$child_arg_empty_tax     = array(
+								'hide_empty' => false,
+								'parent'     => $t_obj->term_id,
+							);
+							$child_cat_empty_tax     = get_terms( $tax_slug, $child_arg_empty_tax );
+							$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
 							$related_tax_empty_tax[] = array(
 								'id'            => $t_obj->term_id,
 								'name'          => $t_obj->name,
 								'count'         => $t_obj->count,
 								'link'          => get_term_link( $t_obj->term_id ),
 								'singular_name' => $get_singular_name->labels->singular_name,
+								'children'      => $child_cat_empty_tax_arr,
 							);
 						}
 

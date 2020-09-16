@@ -17,6 +17,7 @@ const {
 	Dashicon,
 	TextControl,
 	Button,
+	ButtonGroup,
 	ToggleControl
 } = wp.components
 
@@ -162,6 +163,8 @@ class UAGBTaxonomyList extends Component {
 			borderStyle,
 			borderThickness,
 			borderColor,
+			listDisplayStyle,
+			showhierarchy
         } = attributes
 
 		let taxonomyListOptions = [
@@ -362,7 +365,28 @@ class UAGBTaxonomyList extends Component {
 								onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
 								help={ __( "If Taxonomy Not Found" ) }
 								/>
-								)}
+					)}
+					{"list" == layout && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Display Style" ) }</p>
+							<ButtonGroup className="uagb-list-display-style-group">
+								<Button
+									key={ "list" }								
+									label="List"
+									onClick={ () => setAttributes( { listDisplayStyle: "list" } ) }
+									aria-pressed = { "list" === listDisplayStyle }
+									isPrimary = { "list" === listDisplayStyle }
+								>List</Button>
+								<Button
+									key={ "dropdown" }								
+									label="Dropdown"
+									onClick={ () => setAttributes( { listDisplayStyle: "dropdown" } ) }
+									aria-pressed = { "dropdown" === listDisplayStyle }
+									isPrimary = { "dropdown" === listDisplayStyle }
+								>Dropdown</Button>
+							</ButtonGroup>
+						</Fragment>
+					)}
 
 					<ToggleControl
 						label={ __( "Show Empty Taxonomy" ) }
@@ -374,8 +398,17 @@ class UAGBTaxonomyList extends Component {
 						label={ __( "Show Posts Count" ) }
 						checked={ showCount }
 						onChange={ ( value ) => setAttributes( { showCount: ! showCount } ) }
+						help={__( "Show Count of taxonomy " )}
 					/>
 
+					{ "list" == layout && "list" == listDisplayStyle &&(
+						<ToggleControl
+						label={ __( "Show Hierarchy" ) }
+						checked={ showhierarchy }
+						onChange={ ( value ) => setAttributes( { showhierarchy: ! showhierarchy } ) }
+						help={__( "Show Hierarchy of taxonomy " )}
+						/>
+					)}
 
 					{"grid" == layout && (
 						<Fragment>
@@ -408,7 +441,7 @@ class UAGBTaxonomyList extends Component {
 					)}
 
 					{"list" == layout && (
-						<Fragment>
+						<Fragment>							
 							<p className="uagb-setting-label">{ __( "List Style" ) }</p>
 								<Button
 									key={ "bullet" }
@@ -809,7 +842,7 @@ class UAGBTaxonomyList extends Component {
 								
 							)}
 
-							{"list" == layout && ( 
+							{"list" == layout && "list" == listDisplayStyle && ( 
 								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">
@@ -817,6 +850,18 @@ class UAGBTaxonomyList extends Component {
 												<a class="uagb-tax-link" href={p.link}>{p.name}</a>
 												{ showCount && (
 												<span className="uagb-tax-list-count">{` (${p.count})`}</span>
+												)}
+												{showhierarchy && p.children != null && (														
+													<ul className="uagb-taxonomy-list-children">
+														{ Object.keys( p.children ).map( function( key, index ) {
+															return 	<li className="uagb-tax-list">
+																<a class="uagb-tax-link" href={`${p.link}${p.children[key]["slug"]}`}>{p.children[key]["name"]}</a>
+																{ showCount && (
+																	<span>{` (${p.children[key]["count"]})`}</span>
+																)}
+																</li>														
+														} ) }
+													</ul>
 												)}
 											</div>
 
@@ -829,6 +874,14 @@ class UAGBTaxonomyList extends Component {
 										</li>
 									)}
 								</ul>
+							)}
+
+							{"list" == layout && "dropdown" == listDisplayStyle && ( 
+								<select className="uagb-list-dropdown-wrap">
+									{ categoriesList.map((p,index)=>										
+										<option value={p.link}> { p.name } </option>
+									) }
+								</select>
 							)}
 						</div>
 							
@@ -852,7 +905,6 @@ export default withSelect( ( select, props ) => {
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType,showEmptyTaxonomy} = props.attributes
 	const { getEntityRecords } = select( "core" )
 
-	
 	
 	let allTaxonomy = uagb_blocks_info.taxonomy_list
 	let currentTax = allTaxonomy[postType]
