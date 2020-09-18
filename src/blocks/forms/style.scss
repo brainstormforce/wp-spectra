@@ -1,7 +1,7 @@
 .uagb-forms__outer-wrap {
     .uagb-forms-main-form {
 		
-		input:not([type=checkbox]):not([type=radio]) , textarea, select {
+		input:not([type=checkbox]):not([type=radio]):not([type=file]) , textarea, select {
 			width: 100%;
 		}
 		

@@ -99,8 +99,7 @@ function styling( props ) {
         },
                
 
-        " .uagb-forms-main-form  .uagb-forms-input::placeholder" : {
-            'color' : inputColor,
+        " .uagb-forms-main-form  .uagb-forms-input::placeholder" : {            
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
 			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			"font-family": inputFontFamily,
@@ -125,20 +124,17 @@ function styling( props ) {
             'color' : submitColorHover,
             'background-color' : submitBgColorHover,
             'border-color' : submitborderHoverColor,
-        },
-        " .uagb-forms-main-form  .uagb-forms-input:not(.uagb-forms-select-box)" : {
-            'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
-
-        },
+        },        
         
     }
-
+    
     if ( "boxed" == formStyle ) {		
-		selectors[" .uagb-forms-main-form  .uagb-forms-input"] = {
+        selectors[" .uagb-forms-main-form  .uagb-forms-input"] = {
             'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
             'background-color' : bgColor,
             'color' : inputColor,
+            'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
 		}
 	}else if( "underlined" == formStyle ){
         selectors[" .uagb-forms-main-form  .uagb-forms-input"] = {
@@ -148,6 +144,7 @@ function styling( props ) {
             'background': 'transparent',
             'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'color' : inputColor,
+            'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
 		}
     }
    

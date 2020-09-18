@@ -16,7 +16,9 @@ export default function save( props ) {
 		toggleRequired,
 		name,
 		toggleStatus,
-		layout
+		layout,
+		trueValue,
+		falseValue
 	} = attributes
 	
 	const isRequired = (toggleRequired) ? "required" : "";
@@ -37,7 +39,7 @@ export default function save( props ) {
 						type="checkbox"
 						className="uagb-forms-toggle-input"
 						checked={toggleStatus}
-						value={toggleStatus ? "yes" : "no"}
+						value={ toggleStatus ? trueValue : falseValue }
 						required={toggleRequired}					
 					/>
 					<span class={`uagb-slider ${layout}`}></span>

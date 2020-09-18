@@ -19,7 +19,7 @@ const attributes = {
     },
     placeholder: {
         type: "string",
-        default: __( "Enter your message....." )
+        default: __( "Enter your message" )
     },
 }
 export default attributes

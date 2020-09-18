@@ -502,25 +502,15 @@ class UAGBFormsEdit extends Component {
 						checked={ sendAfterSubmitEmail }
 						onChange={ ( value ) => setAttributes( { sendAfterSubmitEmail: value } ) }
 					/>
-				</PanelBody>
-			)
-		}
-		const emailSettings = () => {
-			if ( true === sendAfterSubmitEmail ) {
-
-				return (
-					<PanelBody
-					title={ __( "Email Settings" ) }
-					initialOpen={ false }
-					className="uagb__url-panel-body"
-					>
-						<TextControl
+					{ true === sendAfterSubmitEmail && (
+						<Fragment>
+							<TextControl
 							label= { __( "From" ) }
 							placeholder = { __( "Email" ) }
 							value= { afterSubmitFromEmail }
 							onChange={ value => setAttributes( { afterSubmitFromEmail: value } ) }
-						/>	
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
+							/>	
+							<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "to",
@@ -541,7 +531,7 @@ class UAGBFormsEdit extends Component {
 							{
 								( tab ) => {
 									let tabout
-
+	
 									if ( "to" === tab.name ) {
 										tabout = (
 											<TextControl
@@ -570,19 +560,17 @@ class UAGBFormsEdit extends Component {
 											/>
 										)
 									}
-
-									return <div>{ tabout }</div>
+	
+									return <div className="uagb-form-emailto">{ tabout }</div>
 								}
 							}
-						</TabPanel>
-					</PanelBody>
-				)
-
-			}
-
-			return '';
+							</TabPanel>
+						</Fragment>
+					)}
+				</PanelBody>
+			)
 		}
-
+		
 		const designSettings = () => {
 			return (
 				<PanelBody
@@ -730,7 +718,6 @@ class UAGBFormsEdit extends Component {
 					{ generalSettings() }
 					{ submitButtonSettings() }
 					{ afterSubmitActions() }
-					{ emailSettings() }
 					{ designSettings() }
 				</InspectorControls>
 				<div className={ classnames(

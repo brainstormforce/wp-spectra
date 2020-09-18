@@ -2321,7 +2321,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'hPaddingField'              => 10,
 							'fieldGap'                   => 20,
 							'formStyle'                  => 'boxed',
-							'overallAlignment'=>'left'
+							'overallAlignment'           => 'left',
 						),
 					),
 					'uagb/forms-name'         => array(
@@ -2411,7 +2411,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'attributes'  => array(),
+						'attributes'  => array(
+							'activeColor' => '#2196F3',
+						),
 					),
 				);
 			}

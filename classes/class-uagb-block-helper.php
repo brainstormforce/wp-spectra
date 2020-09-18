@@ -4766,12 +4766,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-forms-main-form .uagb-forms-input-label' => array(
 					'color' => $attr['labelColor'],
 				),
-				
-				' .uagb-forms-main-form  input:not([type=submit])' => array(
-					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),			
-				),
-				' .uagb-forms-main-form  .uagb-forms-input::placeholder' => array(
-					'color'            => $attr['inputColor'],					
+
+				' .uagb-forms-main-form  .uagb-forms-input' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 				),
 
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
@@ -4793,25 +4790,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			if ( 'boxed' === $attr['formStyle']  ) {				
+			if ( 'boxed' === $attr['formStyle'] ) {
 
 				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 					'background-color' => $attr['bgColor'],
 					'border'           => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
 					'color'            => $attr['inputColor'],
+					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
 			}
 
-			if ( 'underlined' === $attr['formStyle']  ) {
+			if ( 'underlined' === $attr['formStyle'] ) {
 				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
-					'border'=> 0,
-					'outline'=> 0,
-					'border-radius' =>0,
-					'background'=> 'transparent',
-					'border-bottom'  => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-					'color'            => $attr['inputColor'],
+					'border'        => 0,
+					'outline'       => 0,
+					'border-radius' => 0,
+					'background'    => 'transparent',
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'color'         => $attr['inputColor'],
+					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
 			}
