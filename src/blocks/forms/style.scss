@@ -108,6 +108,14 @@
 		transform: translateX(26px);
 	}	
 
+	/* Rounded sliders */
+	.uagb-slider.round {
+		border-radius: 34px;
+	}
+	
+	.uagb-slider.round:before {
+		border-radius: 50%;
+	}
 	// Toggle Css End
 
 

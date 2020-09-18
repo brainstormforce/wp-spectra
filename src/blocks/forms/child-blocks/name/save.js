@@ -14,7 +14,8 @@ export default function save( props ) {
 	const {
 		block_id,
 		nameRequired,
-		name
+		name,
+		placeholder
 	} = attributes
 	
 	const isRequired = (nameRequired) ? "required" : "";
@@ -30,7 +31,7 @@ export default function save( props ) {
 				value={ name }
 				className={`uagb-forms-name-label ${isRequired}`}			
 				/>
-				<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>
+				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input"/>
 		</div>
 	)
 }

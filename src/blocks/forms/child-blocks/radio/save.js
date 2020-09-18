@@ -34,12 +34,12 @@ export default function save( props ) {
 			/>
 			
 			{options.map((o, index) => {
-				var optiontitle = o.optiontitle;
-				var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+				var optionvalue = o.optionvalue;
+				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="radio" id={ optionvalue } name={`radio-${ block_id }`} value={ optionvalue } required={ radioRequired }/>
-					<label for={ optionvalue }>{ optiontitle }</label><br/>						
+					<input type="radio" id={ value } name={`radio-${ block_id }`} value={ value } required={ radioRequired }/>
+					<label for={ value }>{o.optiontitle}</label><br/>						
 					</Fragment>
 				);
 			})}

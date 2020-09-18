@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-
+import styling from "./styling"
 const { __ } = wp.i18n
 
 const {
@@ -14,10 +14,12 @@ const {
 const {
 	PanelBody,
 	ToggleControl,
+	SelectControl,
 } = wp.components
 const {
 	InspectorControls,
 	RichText,
+	ColorPalette       
 } = wp.blockEditor
 
 class UAGBFormsToggleEdit extends Component {
@@ -41,6 +43,11 @@ class UAGBFormsToggleEdit extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-style-forms-toggle-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
     }
 	
 	
@@ -52,7 +59,9 @@ class UAGBFormsToggleEdit extends Component {
 			block_id,
 			toggleRequired,
 			name,
-			toggleStatus
+			toggleStatus,
+			layout,
+			activeColor
 		} = attributes
 		
 		const toggleInspectorControls = () => {
@@ -63,11 +72,26 @@ class UAGBFormsToggleEdit extends Component {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
-					<ToggleControl
-						label={ __( "Required" ) }
-						checked={ toggleRequired }
-						onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
-						/>
+				<ToggleControl
+					label={ __( "Required" ) }
+					checked={ toggleRequired }
+					onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
+				/>
+				<SelectControl
+					label={ __( "Layout" ) }
+					value={ layout }
+					onChange={ ( value ) => setAttributes( { layout: value } ) }
+					options={ [
+						{ value: "", label: __( "Square" ) },
+						{ value: "round", label: __( "Round" ) },								
+					] }
+				/>
+				<p className="uagb-setting-label">{ __( "Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
+				<ColorPalette
+					value={ activeColor }
+					onChange={ ( colorValue ) => setAttributes( { activeColor: colorValue } ) }
+					allowReset
+				/>
 				</PanelBody>
 			)
 		}
@@ -91,7 +115,7 @@ class UAGBFormsToggleEdit extends Component {
 								label={ __( "Required" ) }
 								checked={ toggleRequired }
 								onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
-							/>
+							/>							
 						</div>
 					)}
 					<RichText
@@ -109,7 +133,7 @@ class UAGBFormsToggleEdit extends Component {
 							checked={toggleStatus}
 							onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
 						/>
-						<span class="uagb-slider"></span>
+						<span class={`uagb-slider ${layout}`}></span>
 					</label>	
 				</div>
 			</Fragment>
