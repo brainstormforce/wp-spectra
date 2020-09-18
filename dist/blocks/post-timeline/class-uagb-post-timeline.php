@@ -616,9 +616,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		 * @param  array $attributes attribute array.
 		 */
 		public function get_icon( $attributes ) {
+			$icon = apply_filters( 'uagb_timeline_attribute_filter', $attributes );
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $icon['icon'] ); ?></span>
 			</div>
 			<?php
 		}
