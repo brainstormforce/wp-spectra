@@ -5,6 +5,14 @@
 import classnames from "classnames"
 import { Fragment } from "react"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 const {
 	Component,
 } = wp.element
@@ -29,7 +37,6 @@ const {
 	TabPanel,
 	ButtonGroup,
 	Dashicon,
-	IconButton,
 	TextareaControl,
 	CheckboxControl
 } = wp.components
@@ -100,7 +107,124 @@ class UAGBFormsEdit extends Component {
 			afterSubmitToEmail,
 			afterSubmitCcEmail,
 			afterSubmitBccEmail,
+			submitColor,
+			submitColorHover,
+			submitBgColor,
+			submitBgColorHover,
+			//Border
+			submitborderStyle,
+			submitborderWidth,
+			submitborderRadius,
+			submitborderColor,
+			submitborderHoverColor,
+			vPaddingSubmit,
+			hPaddingSubmit,
+			//Typography
+			//submit button
+			submitTextloadGoogleFonts,
+			submitTextFontFamily,
+			submitTextFontWeight,
+			submitTextFontSubset,
+			submitTextFontSize,
+			submitTextFontSizeType,
+			submitTextFontSizeTablet,
+			submitTextFontSizeMobile,
+			submitTextLineHeightType,
+			submitTextLineHeight,
+			submitTextLineHeightTablet,
+			submitTextLineHeightMobile,
+			//label
+			labelloadGoogleFonts,
+			labelFontFamily,
+			labelFontWeight,
+			labelFontSubset,
+			labelFontSize,
+			labelFontSizeType,
+			labelFontSizeTablet,
+			labelFontSizeMobile,
+			labelLineHeightType,
+			labelLineHeight,
+			labelLineHeightTablet,
+			labelLineHeightMobile,
+			//Input
+			inputloadGoogleFonts,
+			inputFontFamily,
+			inputFontWeight,
+			inputFontSubset,
+			inputFontSize,
+			inputFontSizeType,
+			inputFontSizeTablet,
+			inputFontSizeMobile,
+			inputLineHeightType,
+			inputLineHeight,
+			inputLineHeightTablet,
+			inputLineHeightMobile,
+			//Color
+			labelColor,
+			inputColor,
+			bgColor,
+			//Input Border
+			inputborderStyle,
+			inputborderWidth,
+			inputborderRadius,
+			inputborderColor,
+			inputborderHoverColor,
+			vPaddingField,
+			hPaddingField,
+			fieldGap,
+			formStyle,
+			overallAlignment
         } = attributes
+
+
+		let loadsubmittextGoogleFonts;
+
+		if( submitTextloadGoogleFonts == true ) {
+			
+			const qconfig = {
+				google: {
+					families: [ submitTextFontFamily + ( submitTextFontWeight ? ':' + submitTextFontWeight : '' ) ],
+				},
+			};
+
+			loadsubmittextGoogleFonts = (
+				<WebfontLoader config={ qconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		let loadlabelGoogleFonts;
+
+		if( labelloadGoogleFonts == true ) {
+			
+			const qconfig = {
+				google: {
+					families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
+				},
+			};
+
+			loadlabelGoogleFonts = (
+				<WebfontLoader config={ qconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		let loadinputGoogleFonts;
+
+		if( inputloadGoogleFonts == true ) {
+			
+			const qconfig = {
+				google: {
+					families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
+				},
+			};
+
+			loadinputGoogleFonts = (
+				<WebfontLoader config={ qconfig }>
+				</WebfontLoader>
+			)
+        }
+		
 
 		const generalSettings = () => {
 
@@ -115,33 +239,40 @@ class UAGBFormsEdit extends Component {
 						value= { formLabel }
 						onChange={ value => setAttributes( { formLabel: value } ) }
 					/>
-					<Fragment>
-						<h2> { __( "Button Alignment" ) }</h2>
-						<Button
-							key={ "left" }
-							icon="editor-alignleft"
-							label="Left"
-							onClick={ () => setAttributes( { buttonAlign: "left" } ) }
-							aria-pressed = { "left" === buttonAlign }
-							isPrimary = { "left" === buttonAlign }
-						/>
-						<Button
-							key={ "center" }
-							icon="editor-aligncenter"
-							label="Right"
-							onClick={ () => setAttributes( { buttonAlign: "center" } ) }
-							aria-pressed = { "center" === buttonAlign }
-							isPrimary = { "center" === buttonAlign }
-						/>
-						<Button
-							key={ "right" }
-							icon="editor-alignright"
-							label="Right"
-							onClick={ () => setAttributes( { buttonAlign: "right" } ) }
-							aria-pressed = { "right" === buttonAlign }
-							isPrimary = { "right" === buttonAlign }
-						/>
-					</Fragment>
+					<SelectControl
+						label={ __( "Style" ) }
+						value={ formStyle }
+						onChange={ ( value ) => setAttributes( { formStyle: value } ) }
+						options={ [
+							{ value: "boxed", label: __( "Boxed" ) },
+							{ value: "underlined", label: __( "Underlined" ) },							
+						] }
+					/>
+					<h2> { __( "Overall Alignment" ) }</h2>
+					<Button
+						key={ "left" }
+						icon="editor-alignleft"
+						label="Left"
+						onClick={ () => setAttributes( { overallAlignment: "left" } ) }
+						aria-pressed = { "left" === overallAlignment }
+						isPrimary = { "left" === overallAlignment }
+					/>
+					<Button
+						key={ "center" }
+						icon="editor-aligncenter"
+						label="Right"
+						onClick={ () => setAttributes( { overallAlignment: "center" } ) }
+						aria-pressed = { "center" === overallAlignment }
+						isPrimary = { "center" === overallAlignment }
+					/>
+					<Button
+						key={ "right" }
+						icon="editor-alignright"
+						label="Right"
+						onClick={ () => setAttributes( { overallAlignment: "right" } ) }
+						aria-pressed = { "right" === overallAlignment }
+						isPrimary = { "right" === overallAlignment }
+					/>
 					<h2> { __( "Confirmation Type" ) }</h2>
 					<ButtonGroup className="uagb-forms-button-group" aria-label={ __( "Confirmation Type" ) }>
 						<Button 
@@ -184,6 +315,181 @@ class UAGBFormsEdit extends Component {
 				</PanelBody>
 			);
 		}
+		
+
+		const submitButtonSettings = () => {
+			return (
+				<PanelBody
+					title={ __( "Submit Button" ) }
+					initialOpen={ false }
+					className="uagb__url-panel-body"
+				>
+					<Fragment>
+						<h2> { __( "Button Alignment" ) }</h2>
+						<Button
+							key={ "left" }
+							icon="editor-alignleft"
+							label="Left"
+							onClick={ () => setAttributes( { buttonAlign: "left" } ) }
+							aria-pressed = { "left" === buttonAlign }
+							isPrimary = { "left" === buttonAlign }
+						/>
+						<Button
+							key={ "center" }
+							icon="editor-aligncenter"
+							label="Right"
+							onClick={ () => setAttributes( { buttonAlign: "center" } ) }
+							aria-pressed = { "center" === buttonAlign }
+							isPrimary = { "center" === buttonAlign }
+						/>
+						<Button
+							key={ "right" }
+							icon="editor-alignright"
+							label="Right"
+							onClick={ () => setAttributes( { buttonAlign: "right" } ) }
+							aria-pressed = { "right" === buttonAlign }
+							isPrimary = { "right" === buttonAlign }
+						/>
+						<h2>{ __( "Button Padding" ) }</h2>
+						<RangeControl
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-padding-control submit-btn-control" }
+							value={ vPaddingSubmit }
+							onChange={ ( value ) => setAttributes( { vPaddingSubmit: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+						<RangeControl
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-padding-control submit-btn-control" }
+							value={ hPaddingSubmit }
+							onChange={ ( value ) => setAttributes( { hPaddingSubmit: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+					</Fragment>
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
+						{
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-focus-tab",
+						},
+					] }>
+					{
+						( tabName ) => {
+							let tabout_submitColor
+							if( "normal" === tabName.name ) {
+								tabout_submitColor = <Fragment>
+									<p className="uagb-setting-label">{ __( "Submit Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitColor }} ></span></span></p>
+									<ColorPalette
+										value={ submitColor }
+										onChange={ ( colorValue ) => setAttributes( { submitColor: colorValue } ) }
+										allowReset
+									/>
+									<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitBgColor }} ></span></span></p>
+									<ColorPalette
+										value={ submitBgColor }
+										onChange={ ( colorValue ) => setAttributes( { submitBgColor: colorValue } ) }
+										allowReset
+									/>
+								</Fragment>
+							}else {
+								tabout_submitColor = <Fragment>
+									<p className="uagb-setting-label">{ __( "Submit Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitColorHover }} ></span></span></p>
+									<ColorPalette
+										value={ submitColorHover }
+										onChange={ ( colorValue ) => setAttributes( { submitColorHover: colorValue } ) }
+										allowReset
+									/>
+									<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitBgColorHover }} ></span></span></p>
+									<ColorPalette
+										value={ submitBgColorHover }
+										onChange={ ( colorValue ) => setAttributes( { submitBgColorHover: colorValue } ) }
+										allowReset
+									/>
+								</Fragment>
+							}
+							return <div>{ tabout_submitColor }</div>
+						}
+					}
+					</TabPanel>
+					<SelectControl
+							label={ __( "Border Style" ) }
+							value={ submitborderStyle }
+							onChange={ ( value ) => setAttributes( { submitborderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "groove", label: __( "Groove" ) },
+								{ value: "inset", label: __( "Inset" ) },
+								{ value: "outset", label: __( "Outset" ) },
+								{ value: "ridge", label: __( "Ridge" ) },
+							] }
+						/>						
+						{ "none" != submitborderStyle && (
+							<Fragment>
+								<RangeControl
+									label={ __( "Border Width" ) }
+									value={ submitborderWidth }
+									onChange={ ( value ) => setAttributes( { submitborderWidth: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Border Radius" ) }
+									value={ submitborderRadius }
+									onChange={ ( value ) => setAttributes( { submitborderRadius: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitborderColor }} ></span></span></p>
+								<ColorPalette
+									value={ submitborderColor }
+									onChange={ ( colorValue ) => setAttributes( { submitborderColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: submitborderHoverColor }} ></span></span></p>
+								<ColorPalette
+									value={ submitborderHoverColor }
+									onChange={ ( colorValue ) => setAttributes( { submitborderHoverColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						) }
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: submitTextloadGoogleFonts, label: "submitTextloadGoogleFonts" } }
+							fontFamily = { { value: submitTextFontFamily, label: "submitTextFontFamily" } }
+							fontWeight = { { value: submitTextFontWeight, label: "submitTextFontWeight" } }
+							fontSubset = { { value: submitTextFontSubset, label: "submitTextFontSubset" } }
+							fontSizeType = { { value: submitTextFontSizeType, label: "submitTextFontSizeType" } }
+							fontSize = { { value: submitTextFontSize, label: "submitTextFontSize" } }
+							fontSizeMobile = { { value: submitTextFontSizeMobile, label: "submitTextFontSizeMobile" } }
+							fontSizeTablet= { { value: submitTextFontSizeTablet, label: "submitTextFontSizeTablet" } }
+							lineHeightType = { { value: submitTextLineHeightType, label: "submitTextLineHeightType" } }
+							lineHeight = { { value: submitTextLineHeight, label: "submitTextLineHeight" } }
+							lineHeightMobile = { { value: submitTextLineHeightMobile, label: "submitTextLineHeightMobile" } }
+							lineHeightTablet= { { value: submitTextLineHeightTablet, label: "submitTextLineHeightTablet" } }
+						/>
+				</PanelBody>
+			)
+		}
+
+
 		const afterSubmitActions = () => {
 			return (
 				<PanelBody
@@ -214,7 +520,7 @@ class UAGBFormsEdit extends Component {
 							value= { afterSubmitFromEmail }
 							onChange={ value => setAttributes( { afterSubmitFromEmail: value } ) }
 						/>	
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "to",
@@ -277,12 +583,155 @@ class UAGBFormsEdit extends Component {
 			return '';
 		}
 
+		const designSettings = () => {
+			return (
+				<PanelBody
+					title={ __( "Design" ) }
+					initialOpen={ false }
+					className="uagb__url-panel-body"
+				>				
+				<TypographyControl
+					label={ __( "Label Typography" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: labelloadGoogleFonts, label: "labelloadGoogleFonts" } }
+					fontFamily = { { value: labelFontFamily, label: "labelFontFamily" } }
+					fontWeight = { { value: labelFontWeight, label: "labelFontWeight" } }
+					fontSubset = { { value: labelFontSubset, label: "labelFontSubset" } }
+					fontSizeType = { { value: labelFontSizeType, label: "labelFontSizeType" } }
+					fontSize = { { value: labelFontSize, label: "labelFontSize" } }
+					fontSizeMobile = { { value: labelFontSizeMobile, label: "labelFontSizeMobile" } }
+					fontSizeTablet= { { value: labelFontSizeTablet, label: "labelFontSizeTablet" } }
+					lineHeightType = { { value: labelLineHeightType, label: "labelLineHeightType" } }
+					lineHeight = { { value: labelLineHeight, label: "labelLineHeight" } }
+					lineHeightMobile = { { value: labelLineHeightMobile, label: "labelLineHeightMobile" } }
+					lineHeightTablet= { { value: labelLineHeightTablet, label: "labelLineHeightTablet" } }
+				/>
+				<TypographyControl
+					label={ __( "Input Typography" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: inputloadGoogleFonts, label: "inputloadGoogleFonts" } }
+					fontFamily = { { value: inputFontFamily, label: "inputFontFamily" } }
+					fontWeight = { { value: inputFontWeight, label: "inputFontWeight" } }
+					fontSubset = { { value: inputFontSubset, label: "inputFontSubset" } }
+					fontSizeType = { { value: inputFontSizeType, label: "inputFontSizeType" } }
+					fontSize = { { value: inputFontSize, label: "inputFontSize" } }
+					fontSizeMobile = { { value: inputFontSizeMobile, label: "inputFontSizeMobile" } }
+					fontSizeTablet= { { value: inputFontSizeTablet, label: "inputFontSizeTablet" } }
+					lineHeightType = { { value: inputLineHeightType, label: "inputLineHeightType" } }
+					lineHeight = { { value: inputLineHeight, label: "inputLineHeight" } }
+					lineHeightMobile = { { value: inputLineHeightMobile, label: "inputLineHeightMobile" } }
+					lineHeightTablet= { { value: inputLineHeightTablet, label: "inputLineHeightTablet" } }
+				/>
+				<p className="uagb-setting-label">{ __( "Label Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: labelColor }} ></span></span></p>
+				<ColorPalette
+					value={ labelColor }
+					onChange={ ( colorValue ) => setAttributes( { labelColor: colorValue } ) }
+					allowReset
+				/>				
+				<p className="uagb-setting-label">{ __( "Input Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputColor }} ></span></span></p>
+				<ColorPalette
+					value={ inputColor }
+					onChange={ ( colorValue ) => setAttributes( { inputColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Field Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+				<ColorPalette
+					value={ bgColor }
+					onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+					allowReset
+				/>
+						
+					<SelectControl
+						label={ __( "Border Style" ) }
+						value={ inputborderStyle }
+						onChange={ ( value ) => setAttributes( { inputborderStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "groove", label: __( "Groove" ) },
+							{ value: "inset", label: __( "Inset" ) },
+							{ value: "outset", label: __( "Outset" ) },
+							{ value: "ridge", label: __( "Ridge" ) },
+						] }
+					/>						
+					{ "none" != inputborderStyle && (
+						<Fragment>
+							<RangeControl
+								label={ __( "Border Width" ) }
+								value={ inputborderWidth }
+								onChange={ ( value ) => setAttributes( { inputborderWidth: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							{"boxed" == formStyle && (
+								<RangeControl
+									label={ __( "Border Radius" ) }
+									value={ inputborderRadius }
+									onChange={ ( value ) => setAttributes( { inputborderRadius: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
+								/>
+							)}
+							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputborderColor }} ></span></span></p>
+							<ColorPalette
+								value={ inputborderColor }
+								onChange={ ( colorValue ) => setAttributes( { inputborderColor: colorValue } ) }
+								allowReset
+							/>
+							<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputborderHoverColor }} ></span></span></p>
+							<ColorPalette
+								value={ inputborderHoverColor }
+								onChange={ ( colorValue ) => setAttributes( { inputborderHoverColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+					) }
+									
+					<RangeControl	
+						label={ __( "Spacing between fields (px)" ) }					
+						className={ "uagb-padding-control" }
+						value={ fieldGap }
+						onChange={ ( value ) => setAttributes( { fieldGap: value } ) }
+						min={ 0 }
+						max={ 100 }
+					/>
+					<h2>{ __( "Field Padding (px)" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-padding-control" }
+						value={ vPaddingField }
+						onChange={ ( value ) => setAttributes( { vPaddingField: value } ) }
+						min={ 0 }
+						max={ 100 }
+					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-padding-control" }
+						value={ hPaddingField }
+						onChange={ ( value ) => setAttributes( { hPaddingField: value } ) }
+						min={ 0 }
+						max={ 100 }
+					/>
+				</PanelBody>
+				
+			)
+		}
+
 		return (
 			<Fragment>
 				<InspectorControls>
 					{ generalSettings() }
+					{ submitButtonSettings() }
 					{ afterSubmitActions() }
 					{ emailSettings() }
+					{ designSettings() }
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms__outer-wrap",
@@ -312,6 +761,9 @@ class UAGBFormsEdit extends Component {
 						</div>
 					</form>
 				</div>
+				{ loadsubmittextGoogleFonts }
+				{ loadlabelGoogleFonts }
+				{ loadinputGoogleFonts }
 			</Fragment>
 		)
 	}

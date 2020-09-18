@@ -30,7 +30,7 @@ export default function save( props ) {
 				<RichText.Content
 				tagName="div"
 				value={ name }
-				className={`uagb-forms-toggle-label ${isRequired}`}		
+				className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}		
 				/>
 				<label class="uagb-switch">
 					<input 

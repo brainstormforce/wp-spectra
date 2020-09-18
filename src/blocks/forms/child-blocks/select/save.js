@@ -29,9 +29,9 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ selectName }
-				className={`uagb-forms-select-label ${isRequired}`}		
+				className={`uagb-forms-select-label ${isRequired} uagb-forms-input-label`}		
 			/>
-				<select className="uagb-forms-select-box"  required={ selectRequired }>
+				<select className="uagb-forms-select-box uagb-forms-input"  required={ selectRequired }>
 					<option value="" disabled selected>
 						Select your option
 					</option>

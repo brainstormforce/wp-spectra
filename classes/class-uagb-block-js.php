@@ -753,5 +753,34 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
 		}
 
+		/**
+		 * Adds Google fonts for WP Search block.
+		 *
+		 * @since 1.16.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_forms_gfont( $attr ) {
+
+			$submitText_load_google_font = isset( $attr['submitTextloadGoogleFonts'] ) ? $attr['submitTextloadGoogleFonts'] : '';
+			$submitText_font_family      = isset( $attr['submitTextFontFamily'] ) ? $attr['submitTextFontFamily'] : '';
+			$submitText_font_weight      = isset( $attr['submitTextFontWeight'] ) ? $attr['submitTextFontWeight'] : '';
+			$submitText_font_subset      = isset( $attr['submitTextFontSubset'] ) ? $attr['submitTextFontSubset'] : '';
+
+			$label_load_google_font = isset( $attr['labelloadGoogleFonts'] ) ? $attr['labelloadGoogleFonts'] : '';
+			$label_font_family      = isset( $attr['labelFontFamily'] ) ? $attr['labelFontFamily'] : '';
+			$label_font_weight      = isset( $attr['labelFontWeight'] ) ? $attr['labelFontWeight'] : '';
+			$label_font_subset      = isset( $attr['labelFontSubset'] ) ? $attr['labelFontSubset'] : '';
+
+			$input_load_google_font = isset( $attr['inputloadGoogleFonts'] ) ? $attr['inputloadGoogleFonts'] : '';
+			$input_font_family      = isset( $attr['inputFontFamily'] ) ? $attr['inputFontFamily'] : '';
+			$input_font_weight      = isset( $attr['inputFontWeight'] ) ? $attr['inputFontWeight'] : '';
+			$input_font_subset      = isset( $attr['inputFontSubset'] ) ? $attr['inputFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $submitText_load_google_font, $submitText_font_family, $submitText_font_weight, $submitText_font_subset );
+			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight, $label_font_subset );
+			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
+
+		}
+
 	}
 }

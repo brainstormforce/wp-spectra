@@ -72,6 +72,8 @@ class UAGBFormsToggleEdit extends Component {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
+				<p className="uagb-settings-notice">{ __( "Leaving the toggle in On/Off state will set it as a default value on page load for the user." ) }</p>
+
 				<ToggleControl
 					label={ __( "Required" ) }
 					checked={ toggleRequired }
@@ -123,7 +125,7 @@ class UAGBFormsToggleEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className={`uagb-forms-toggle-label ${isRequired}`}
+						className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>
 					<label class="uagb-switch">
