@@ -118,7 +118,7 @@ class UAGBinfoBox extends Component {
 	onRemoveImage() {
 		const { setAttributes } = this.props
 
-		setAttributes( { iconImage: null } )
+		setAttributes( { iconImage: '' } )
 	}
 
 	/**
