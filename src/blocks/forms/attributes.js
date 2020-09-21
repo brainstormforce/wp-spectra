@@ -52,7 +52,7 @@ const attributes = {
 	},
 	submitBgColor : {
 		type: "string",
-		default:"#abb8c3"
+		default:"#ffffff"
 	},
 	submitBgColorHover : {
 		type: "string",
