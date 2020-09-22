@@ -440,7 +440,7 @@ class UAGBTaxonomyList extends Component {
 						</Fragment>
 					)}
 
-					{"list" == layout && (
+					{"list" == layout && "dropdown" !== listDisplayStyle && (
 						<Fragment>							
 							<p className="uagb-setting-label">{ __( "List Style" ) }</p>
 								<Button
@@ -472,6 +472,8 @@ class UAGBTaxonomyList extends Component {
 				
 
                 </PanelBody>
+			{"dropdown" !== listDisplayStyle &&(
+			<Fragment>
 				
 				<PanelBody title={ __( "Color" ) } initialOpen={ false }>
 					{ "grid" == layout && (
@@ -813,6 +815,8 @@ class UAGBTaxonomyList extends Component {
 							
 				</PanelBody>
 				
+			</Fragment>
+			)}
 			</InspectorControls>
 		)
 		
@@ -875,11 +879,14 @@ class UAGBTaxonomyList extends Component {
 									)}
 								</ul>
 							)}
-
+							
 							{"list" == layout && "dropdown" == listDisplayStyle && ( 
 								<select className="uagb-list-dropdown-wrap">
 									{ categoriesList.map((p,index)=>										
-										<option value={p.link}> { p.name } </option>
+										<option value={p.link}>
+											{ p.name } 
+											{ showCount && ( ` (${p.count})` )}
+										</option>
 									) }
 								</select>
 							)}

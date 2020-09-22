@@ -2333,6 +2333,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderStyle'           => 'solid',
 							'borderThickness'       => 1,
 							'borderColor'           => '#b2b4b5',
+							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.' ),
+							'showCount'             => true,
+							'showEmptyTaxonomy'     => false,
+							'showhierarchy'         => false,
+							'listDisplayStyle'      => 'list',
 						),
 					),
 				);

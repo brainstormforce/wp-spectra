@@ -27,6 +27,9 @@ registerBlockType( "uagb/taxonomy-list", {
 		__( "taxonomy" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	edit,
 	// Render via PHP
 	save() {

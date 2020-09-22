@@ -500,7 +500,12 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- Select -- </option>
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
-							<option value="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>" ><?php echo esc_attr( $value->name ); ?></option>
+							<option value="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>" >
+								<?php echo esc_attr( $value->name ); ?>
+								<?php if ( $showCount ) { ?>
+									<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
+								<?php } ?>
+							</option>
 						<?php } ?>
 					</select>
 					<script type="text/javascript">
