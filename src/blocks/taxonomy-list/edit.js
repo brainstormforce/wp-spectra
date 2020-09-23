@@ -401,7 +401,7 @@ class UAGBTaxonomyList extends Component {
 						help={__( "Show Count of taxonomy " )}
 					/>
 
-					{ "list" == layout && "list" == listDisplayStyle &&(
+					{ "list" == layout && "list" == listDisplayStyle && "post_tag" !== taxonomyType && (
 						<ToggleControl
 						label={ __( "Show Hierarchy" ) }
 						checked={ showhierarchy }

@@ -550,12 +550,12 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 			);
 
-			if ( $taxonomyType ) {
+			if ( $taxonomyType  && "page" !== $postType ) {
 				$newcategoriesList = get_terms( $taxonomyType, $args );
 			}
 
 			ob_start();
-
+			
 			?>
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<?php if ( ! empty( $newcategoriesList ) ) { ?>
