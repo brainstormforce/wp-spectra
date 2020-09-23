@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.5  
-**Stable tag:** 1.17.0  
+**Stable tag:** 1.17.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -161,6 +161,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ### 1.17.1 ###
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 * Improvement: Google Map - Now user can show language specific Google Map.
+* Improvement: Post Timeline - Added filter for post timeline connector svg.
 * Fix: Inline Notice - Notice dismiss issue.
 
 ### 1.17.0 ###
