@@ -248,7 +248,12 @@ class UAGBHowTo extends Component {
 				timeSpace,
 				costSpace,
 				row_gap,
-				step_gap
+				step_gap,
+				timeInMins,
+				timeInHours,
+				timeInDays,
+				timeInMonths,
+				timeInYears,
 			},
 		} = this.props
 
@@ -418,6 +423,53 @@ class UAGBHowTo extends Component {
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 					help={ __( "Note: Time is recommended field for schema. It should be ON" ) }
 				/>
+				{ showTotaltime &&(
+					<PanelBody title={ __( "Time" ) } initialOpen={ false } className="uagb-editor-howto-timepanel">
+					<Fragment>
+						<RangeControl
+							label={ __( "Years" ) }
+							value={ timeInYears }
+							onChange={ ( value ) => setAttributes( { timeInYears: value } ) }
+							min={ 1 }
+							max={ 10 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Months" ) }
+							value={ timeInMonths }
+							onChange={ ( value ) => setAttributes( { timeInMonths: value } ) }
+							min={ 1 }
+							max={ 12 }
+							allowReset
+						/>						
+						<RangeControl
+							label={ __( "Days" ) }
+							value={ timeInDays }
+							onChange={ ( value ) => setAttributes( { timeInDays: value } ) }
+							min={ 1 }
+							max={ 31 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Hours" ) }
+							value={ timeInHours }
+							onChange={ ( value ) => setAttributes( { timeInHours: value } ) }
+							min={ 1 }
+							max={ 24 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Minutes" ) }
+							value={ timeInMins }
+							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
+							min={ 1 }
+							max={ 60 }
+							allowReset
+						/>
+					</Fragment>
+					</PanelBody>
+				)}
+				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Estimated Cost" ) }
 					checked={ showEstcost }
@@ -633,6 +685,15 @@ class UAGBHowTo extends Component {
 				</PanelBody>
 			)
 		}
+		//Time Labels
+		var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
+		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
+		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
+		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
+		var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
+
+
+
 
 		return (
 			<Fragment>
@@ -641,9 +702,12 @@ class UAGBHowTo extends Component {
 					headingDesc = { headingDesc }
 					mainimage = { mainimage }
 					showTotaltime = { showTotaltime }
-					timeNeeded = { timeNeeded }
-					time = { time }
-					timeIn = { timeIn }
+					timeNeeded = { timeNeeded }					
+					timeInMins = {timeInMins}
+					timeInHours = {timeInHours}
+					timeInDays = {timeInDays}
+					timeInMonths = {timeInMonths}
+					timeInYears = {timeInYears}
 					showEstcost = { showEstcost }
 					estCost = { estCost }
 					cost = { cost }
@@ -716,30 +780,17 @@ class UAGBHowTo extends Component {
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
-					{ showTotaltime &&
-						<RichText
-							tagName="p"
-							placeholder={ __( "30" ) }
-							value={ time }
-							className='uagb-howto-timeNeeded-value'
-							onChange={ ( value ) => setAttributes( { time: value } ) }
-							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
-							onRemove={ () => onReplace( [] ) }
-						/>
-					}
-					{ showTotaltime &&
-						<RichText
-							tagName="p"
-							placeholder={ __( "Minutes" ) }
-							value={ timeIn }
-							className='uagb-howto-timeINmin-text'
-							onChange={ ( value ) => setAttributes( { timeIn: value } ) }
-							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
-							onRemove={ () => onReplace( [] ) }
-						/>
-					}
+					{showTotaltime && (
+						<Fragment>
+							<span>
+							{timeInYears && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInYears}</p><p className='uagb-howto-timeINmin-text'>{yearlabel}</p></span> )}							
+							{timeInMonths && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></span> )}							
+							{timeInDays && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></span> )}							
+							{timeInHours && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></span> )}							
+							{timeInMins && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMins}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></span> )}	
+							</span>
+						</Fragment>
+					)}					
 					</span>
 					<span className="uagb-howto__cost-wrap">
 					{ showEstcost &&
@@ -932,8 +983,15 @@ export default compose(
 				"step": []
 			}
 
+			var y                    = ( 525600 * ownProps.attributes.timeInYears );
+			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
+			var d                    = ( 1440 * ownProps.attributes.timeInDays );
+			var h                    = ( 60 * ownProps.attributes.timeInHours );
+			var minutes              = ( ownProps.attributes.timeInMins );
+			var calculated_total_time = y + m + d + h + minutes;
+
 			if ( ownProps.attributes.showTotaltime ) {
-				json_data.totalTime = "PT"+ownProps.attributes.time+"M";
+				json_data.totalTime = "PT"+calculated_total_time+"M";
 			}
 
 			if ( ownProps.attributes.showEstcost ) {
@@ -953,7 +1011,7 @@ export default compose(
 					json_data["tool"][key] = tools_data;
 				});
 			}
-
+			
 			if ( ownProps.attributes.showMaterials ) {
 				ownProps.attributes.materials.forEach((materials, key) => {
 					materials_data = {	

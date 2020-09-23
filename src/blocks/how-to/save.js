@@ -36,6 +36,11 @@ export default function save( props ) {
 		showEstcost,
 		showTools,
 		showMaterials,
+		timeInMins,
+		timeInHours,
+		timeInDays,
+		timeInMonths,
+		timeInYears,
 	} = attributes
 
 	let url_chk = ''
@@ -64,6 +69,13 @@ export default function save( props ) {
 		image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
 
 	}
+
+	//Time Labels
+	var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
+	var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
+	var daylabel = (timeInDays > 1) ? " Days " : " Day ";
+	var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
+	var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
 
 	return (
 		<div
@@ -97,7 +109,14 @@ export default function save( props ) {
 						tagName='h4'
 						className='uagb-howto-timeNeeded-text'
 					/>
-					<RichText.Content
+					<span>
+						{timeInYears && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInYears}</p><p className='uagb-howto-timeINmin-text'>{yearlabel}</p></span> )}							
+						{timeInMonths && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></span> )}							
+						{timeInDays && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></span> )}							
+						{timeInHours && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></span> )}							
+						{timeInMins && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMins}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></span> )}	
+					</span>
+					{/* <RichText.Content
 						value={ time }
 						tagName='p'
 						className='uagb-howto-timeNeeded-value'
@@ -106,7 +125,7 @@ export default function save( props ) {
 						tagName="p"
 						value={ timeIn }
 						className='uagb-howto-timeINmin-text'
-					/>
+					/> */}
 				</span>
 				}
 				{ showEstcost &&

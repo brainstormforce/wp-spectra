@@ -98,7 +98,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value": {
+		" .uagb-howto-timeNeeded-value": {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
@@ -106,7 +106,7 @@ function styling( props ) {
 			"color": subHeadingColor,
 			"margin-left" : generateCSSUnit( timeSpace,"px"),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .uagb-howto-timeINmin-text ": {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
