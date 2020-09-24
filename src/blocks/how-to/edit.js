@@ -249,6 +249,7 @@ class UAGBHowTo extends Component {
 				costSpace,
 				row_gap,
 				step_gap,
+				timeInMins,
 				timeInHours,
 				timeInDays,
 				timeInMonths,
@@ -333,7 +334,6 @@ class UAGBHowTo extends Component {
 
 	}
 
-	
 		const getInfoBoxAsChild = [
 			[ 'uagb/info-box', 
 				{
@@ -460,8 +460,8 @@ class UAGBHowTo extends Component {
 						/>
 						<RangeControl
 							label={ __( "Minutes" ) }
-							value={ time }
-							onChange={ ( value ) => setAttributes( { time: value } ) }
+							value={ timeInMins }
+							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
 							min={ 1 }
 							max={ 60 }
 							allowReset
@@ -690,10 +690,11 @@ class UAGBHowTo extends Component {
 		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
 		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-		var minslabel = (time > 1) ? " Minutes " : " Minute ";
+		var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
 
 
-
+		var minsValue = (timeInMins) ? timeInMins : time;
+		
 
 		return (
 			<Fragment>
@@ -703,7 +704,7 @@ class UAGBHowTo extends Component {
 					mainimage = { mainimage }
 					showTotaltime = { showTotaltime }
 					timeNeeded = { timeNeeded }					
-					time = {time}
+					timeInMins = {timeInMins}
 					timeInHours = {timeInHours}
 					timeInDays = {timeInDays}
 					timeInMonths = {timeInMonths}
@@ -787,7 +788,7 @@ class UAGBHowTo extends Component {
 							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
 							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
 							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
-							{time && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{time}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMins}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
 							
 						</Fragment>
 					)}					
@@ -982,12 +983,12 @@ export default compose(
 				"supply": [],
 				"step": []
 			}
-
+			var minstimeValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins :ownProps.attributes.time;
 			var y                    = ( 525600 * ownProps.attributes.timeInYears );
 			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
 			var d                    = ( 1440 * ownProps.attributes.timeInDays );
 			var h                    = ( 60 * ownProps.attributes.timeInHours );
-			var minutes              = ( ownProps.attributes.time );
+			var minutes              = ( minstimeValue );
 			var calculated_total_time = y + m + d + h + minutes;
 
 			if ( ownProps.attributes.showTotaltime ) {
