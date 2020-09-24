@@ -980,13 +980,15 @@ export default compose(
 				"supply": [],
 				"step": []
 			}
-			var minsValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
 			
-			var y                    = ( 525600 * ownProps.attributes.timeInYears );
-			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
-			var d                    = ( 1440 * ownProps.attributes.timeInDays );
-			var h                    = ( 60 * ownProps.attributes.timeInHours );
-			var minutes              = ( minsValue );
+			var y  = (ownProps.attributes.timeInYears) ? ( 525600 * ownProps.attributes.timeInYears ) : 0;
+			var m  = ( 43200 * ownProps.attributes.timeInMonths ) ? ( 43200 * ownProps.attributes.timeInMonths ) : 0;
+			var d  = ( 1440 * ownProps.attributes.timeInDays ) ? ( 1440 * ownProps.attributes.timeInDays ) : 0;
+			var h  = ( 60 * ownProps.attributes.timeInHours ) ? ( 60 * ownProps.attributes.timeInHours ) : 0;
+
+			var minsValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
+			var minutes  = ( minsValue );
+
 			var calculated_total_time = y + m + d + h + minutes;
 
 			if ( ownProps.attributes.showTotaltime ) {

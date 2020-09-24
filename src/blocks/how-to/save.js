@@ -78,9 +78,6 @@ export default function save( props ) {
 
 	var minsValue = (timeInMins) ? timeInMins : time;
 
-	
-
-console.log(minsValue);
 	return (
 		<div
 			className={ classnames(
