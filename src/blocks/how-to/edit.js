@@ -783,7 +783,7 @@ class UAGBHowTo extends Component {
 					{showTotaltime && (
 						<Fragment>
 							<span>
-							{timeInYears && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInYears}</p><p className='uagb-howto-timeINmin-text'>{yearlabel}</p></span> )}							
+							{timeInYears && ( <span><p className='uagb-howto-timeNeeded-value'> {timeInYears}</p><p className='uagb-howto-timeINmin-text'>  {yearlabel}</p></span> )}							
 							{timeInMonths && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></span> )}							
 							{timeInDays && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></span> )}							
 							{timeInHours && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></span> )}							

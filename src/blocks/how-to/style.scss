@@ -12,6 +12,9 @@
    .uagb-howto-timeNeeded-text,
    .uagb-howto-timeNeeded-value,
    .uagb-howto-timeINmin-text {
-       display:inline-flex
+       display:inline-flex;
+   }
+   .uagb-howto-timeINmin-text{
+       margin-left: 5px;
    }
 }
