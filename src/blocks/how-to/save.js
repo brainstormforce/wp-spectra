@@ -75,7 +75,6 @@ export default function save( props ) {
 	var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 	var daylabel = (timeInDays > 1) ? " Days " : " Day ";
 	var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-	// var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
 
 	var minsValue = (timeInMins) ? timeInMins : time;
 

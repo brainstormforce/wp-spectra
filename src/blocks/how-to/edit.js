@@ -256,16 +256,16 @@ class UAGBHowTo extends Component {
 				timeInYears,
 			},
 		} = this.props
-
+		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
 		}
-
+		
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
 		let loadPriceGoogleFonts;
-
-
+		
+		
 		if( true === headLoadGoogleFonts ) {
 			
 			const hconfig = {
@@ -273,40 +273,40 @@ class UAGBHowTo extends Component {
 					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadHeadingGoogleFonts = (
 				<WebfontLoader config={ hconfig }>
 				</WebfontLoader>
 			)
 		}
-
+		
 		if( true === subHeadLoadGoogleFonts ) {
-
+			
 			const sconfig = {
 				google: {
 					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadSubHeadingGoogleFonts = (
 				<WebfontLoader config={ sconfig }>
 				</WebfontLoader>
 			)
 		}	
-
+		
 		if( true === priceLoadGoogleFonts ){
 			const pconfig = {
 				google: {
 					families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadPriceGoogleFonts = (
 				<WebfontLoader config={ pconfig }>
 				</WebfontLoader>
 			)
 		}
-
+		
 		let url_chk = ''
 		let title = ''
 		if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
@@ -318,25 +318,26 @@ class UAGBHowTo extends Component {
 		if( '' !== url_chk ){
 			let size = attributes.mainimage.sizes
 			let imageSize = attributes.imgSize
-
+			
 			if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
-			  url = size[imageSize].url 
+				url = size[imageSize].url 
 			}else{
-			  url = url_chk 
+				url = url_chk 
 			}
-	}
-
-	let image_icon_html = ''
-
-	if ( mainimage && mainimage.url ) {
-
-		image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
-
-	}
-
+		}
+		
+		let image_icon_html = ''
+		
+		if ( mainimage && mainimage.url ) {
+			
+			image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
+			
+		}
+		var minsValue = (timeInMins) ? timeInMins : time;
+		
 		const getInfoBoxAsChild = [
 			[ 'uagb/info-box', 
-				{
+			{
 					infoBoxTitle:"Step 1",
 					iconimgPosition:"left",
 					source_type:"image",
@@ -689,11 +690,9 @@ class UAGBHowTo extends Component {
 		var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
 		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
-		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-		// var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
+		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";		
 
 
-		var minsValue = (timeInMins) ? timeInMins : time;
 		
 
 		return (

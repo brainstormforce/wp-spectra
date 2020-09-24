@@ -965,6 +965,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'row_gap'                 => 20,
 							'step_gap'                => '',
 							'schema'                  => '',
+							'timeInMins' => 10,
 						),
 					),
 					'uagb/icon-list'          => array(
