@@ -981,18 +981,15 @@ export default compose(
 				"step": []
 			}
 			
-			var y  = (ownProps.attributes.timeInYears) ? ( 525600 * ownProps.attributes.timeInYears ) : 0;
-			var m  = ( 43200 * ownProps.attributes.timeInMonths ) ? ( 43200 * ownProps.attributes.timeInMonths ) : 0;
-			var d  = ( 1440 * ownProps.attributes.timeInDays ) ? ( 1440 * ownProps.attributes.timeInDays ) : 0;
-			var h  = ( 60 * ownProps.attributes.timeInHours ) ? ( 60 * ownProps.attributes.timeInHours ) : 0;
+			var y  = ( ownProps.attributes.timeInYears ) ? ( ownProps.attributes.timeInYears ) : 0;
+			var m  = ( ownProps.attributes.timeInMonths ) ? ( ownProps.attributes.timeInMonths  ) : 0;
+			var d  = ( ownProps.attributes.timeInDays ) ? (  ownProps.attributes.timeInDays ) : 0;
+			var h  = ( ownProps.attributes.timeInHours ) ? ( ownProps.attributes.timeInHours ) : 0;
 
-			var minsValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
-			var minutes  = ( minsValue );
-
-			var calculated_total_time = y + m + d + h + minutes;
+			var minutes = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
 
 			if ( ownProps.attributes.showTotaltime ) {
-				json_data.totalTime = "PT"+calculated_total_time+"M";
+				json_data.totalTime = "P"+y+"Y"+m+"M"+d+"DT"+h+"H"+minutes+"M";
 			}
 
 			if ( ownProps.attributes.showEstcost ) {
