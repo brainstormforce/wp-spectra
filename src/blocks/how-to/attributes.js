@@ -291,7 +291,7 @@ const attributes = {
 	},
 	timeInMins: {
 		type: "number",
-		default: 10
+		
 	},
 	timeInHours: {
 		type: "number",		

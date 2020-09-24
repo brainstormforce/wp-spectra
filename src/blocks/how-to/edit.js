@@ -461,7 +461,7 @@ class UAGBHowTo extends Component {
 						/>
 						<RangeControl
 							label={ __( "Minutes" ) }
-							value={ timeInMins }
+							value={ minsValue }
 							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
 							min={ 1 }
 							max={ 60 }
