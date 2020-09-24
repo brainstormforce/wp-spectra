@@ -690,7 +690,7 @@ class UAGBHowTo extends Component {
 		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
 		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-		var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
+		// var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
 
 
 		var minsValue = (timeInMins) ? timeInMins : time;
@@ -788,7 +788,7 @@ class UAGBHowTo extends Component {
 							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
 							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
 							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
-							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMins}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{timeIn}</p></Fragment> )}	
 							
 						</Fragment>
 					)}					
@@ -983,12 +983,12 @@ export default compose(
 				"supply": [],
 				"step": []
 			}
-			var minstimeValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins :ownProps.attributes.time;
+			
 			var y                    = ( 525600 * ownProps.attributes.timeInYears );
 			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
 			var d                    = ( 1440 * ownProps.attributes.timeInDays );
 			var h                    = ( 60 * ownProps.attributes.timeInHours );
-			var minutes              = ( minstimeValue );
+			var minutes              = ( ownProps.attributes.timeInMins );
 			var calculated_total_time = y + m + d + h + minutes;
 
 			if ( ownProps.attributes.showTotaltime ) {

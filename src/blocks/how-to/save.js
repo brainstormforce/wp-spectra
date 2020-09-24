@@ -75,10 +75,13 @@ export default function save( props ) {
 	var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 	var daylabel = (timeInDays > 1) ? " Days " : " Day ";
 	var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-	var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
+	// var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
 
 	var minsValue = (timeInMins) ? timeInMins : time;
 
+	
+
+console.log(minsValue);
 	return (
 		<div
 			className={ classnames(
@@ -117,7 +120,7 @@ export default function save( props ) {
 							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
 							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
 							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
-							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{timeIn}</p></Fragment> )}	
 							
 					</Fragment>
 					{/* <RichText.Content
