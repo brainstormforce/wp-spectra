@@ -620,7 +620,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
 			<?php if ( isset( $icon ) ) { ?>
-				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php echo wp_kses_normalize_entities( $icon ); ?></span>
+				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php echo $icon; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></span> 
 			<?php	} else { ?>
 				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
 			<?php	} ?>
