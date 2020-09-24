@@ -88,8 +88,8 @@ function styling( props ) {
 		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
 		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
 		 },
-		' .uagb-howto-steps__wrap .wp-block.block-editor-block-list__block' : {
-			'margin-bottom' : generateCSS( s_gap, 'px' )
+		' .uagb-howto-steps__wrap .wp-block-uagb-info-box' : {
+			'margin-bottom' : generateCSSUnit( s_gap, 'px' )
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,
