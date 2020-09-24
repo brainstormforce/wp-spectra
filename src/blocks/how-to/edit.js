@@ -693,8 +693,6 @@ class UAGBHowTo extends Component {
 		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";		
 
 
-		
-
 		return (
 			<Fragment>
 				<SchemaNotices
@@ -982,12 +980,13 @@ export default compose(
 				"supply": [],
 				"step": []
 			}
+			var minsValue = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
 			
 			var y                    = ( 525600 * ownProps.attributes.timeInYears );
 			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
 			var d                    = ( 1440 * ownProps.attributes.timeInDays );
 			var h                    = ( 60 * ownProps.attributes.timeInHours );
-			var minutes              = ( ownProps.attributes.timeInMins );
+			var minutes              = ( minsValue );
 			var calculated_total_time = y + m + d + h + minutes;
 
 			if ( ownProps.attributes.showTotaltime ) {
