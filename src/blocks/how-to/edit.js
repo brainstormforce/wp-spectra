@@ -334,6 +334,7 @@ class UAGBHowTo extends Component {
 
 	}
 
+	
 		const getInfoBoxAsChild = [
 			[ 'uagb/info-box', 
 				{
@@ -460,8 +461,8 @@ class UAGBHowTo extends Component {
 						/>
 						<RangeControl
 							label={ __( "Minutes" ) }
-							value={ timeInMins }
-							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
+							value={ time }
+							onChange={ ( value ) => setAttributes( { time: value } ) }
 							min={ 1 }
 							max={ 60 }
 							allowReset
@@ -690,7 +691,7 @@ class UAGBHowTo extends Component {
 		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
 		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-		var minslabel = (timeInMins > 1) ? " Minutes " : " Minute ";
+		var minslabel = (time > 1) ? " Minutes " : " Minute ";
 
 
 
@@ -703,7 +704,7 @@ class UAGBHowTo extends Component {
 					mainimage = { mainimage }
 					showTotaltime = { showTotaltime }
 					timeNeeded = { timeNeeded }					
-					timeInMins = {timeInMins}
+					time = {time}
 					timeInHours = {timeInHours}
 					timeInDays = {timeInDays}
 					timeInMonths = {timeInMonths}
@@ -782,13 +783,13 @@ class UAGBHowTo extends Component {
 					}
 					{showTotaltime && (
 						<Fragment>
-							<span>
-							{timeInYears && ( <span><p className='uagb-howto-timeNeeded-value'> {timeInYears}</p><p className='uagb-howto-timeINmin-text'>  {yearlabel}</p></span> )}							
-							{timeInMonths && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></span> )}							
-							{timeInDays && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></span> )}							
-							{timeInHours && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></span> )}							
-							{timeInMins && ( <span><p className='uagb-howto-timeNeeded-value'>{timeInMins}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></span> )}	
-							</span>
+							
+							{timeInYears && ( <Fragment><p className='uagb-howto-timeNeeded-value'> {timeInYears}</p><p className='uagb-howto-timeINmin-text'>  {yearlabel}</p></Fragment> )}							
+							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
+							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
+							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
+							{time && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{time}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
+							
 						</Fragment>
 					)}					
 					</span>
@@ -987,7 +988,7 @@ export default compose(
 			var m                    = ( 43200 * ownProps.attributes.timeInMonths );
 			var d                    = ( 1440 * ownProps.attributes.timeInDays );
 			var h                    = ( 60 * ownProps.attributes.timeInHours );
-			var minutes              = ( ownProps.attributes.timeInMins );
+			var minutes              = ( ownProps.attributes.time );
 			var calculated_total_time = y + m + d + h + minutes;
 
 			if ( ownProps.attributes.showTotaltime ) {
