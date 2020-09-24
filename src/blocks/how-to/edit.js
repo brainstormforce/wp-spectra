@@ -701,7 +701,7 @@ class UAGBHowTo extends Component {
 					mainimage = { mainimage }
 					showTotaltime = { showTotaltime }
 					timeNeeded = { timeNeeded }					
-					timeInMins = {timeInMins}
+					minsValue = {minsValue}
 					timeInHours = {timeInHours}
 					timeInDays = {timeInDays}
 					timeInMonths = {timeInMonths}

@@ -31,7 +31,7 @@ class SchemaNotices extends Component {
             tools,
             materials,
             clientId,
-            timeInMins,
+            minsValue,
             timeInHours,
             timeInDays,
             timeInMonths,
@@ -59,7 +59,7 @@ class SchemaNotices extends Component {
         if ( true === showTotaltime && ( 'undefined' === typeof timeNeeded || '' === timeNeeded ) ) {
             emptyItems.push( 'Time Needed Label' );
         }
-        if ( true === showTotaltime && ( ( 'undefined' === typeof timeInMins || '' === timeInMins ) && ( 'undefined' === typeof timeInHours || '' === timeInHours ) && ( 'undefined' === typeof timeInDays || '' === timeInDays ) && ( 'undefined' === typeof timeInMonths || '' === timeInMonths ) && ( 'undefined' === typeof timeInYears || '' === timeInYears ) ) ) {
+        if ( true === showTotaltime && ( ( 'undefined' === typeof minsValue || '' === minsValue ) && ( 'undefined' === typeof timeInHours || '' === timeInHours ) && ( 'undefined' === typeof timeInDays || '' === timeInDays ) && ( 'undefined' === typeof timeInMonths || '' === timeInMonths ) && ( 'undefined' === typeof timeInYears || '' === timeInYears ) ) ) {
             emptyItems.push( 'Time' );
         }        
         if ( true === showEstcost && ( 'undefined' === typeof estCost || '' === estCost ) ) {
