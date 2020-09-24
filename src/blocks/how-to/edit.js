@@ -249,7 +249,6 @@ class UAGBHowTo extends Component {
 				costSpace,
 				row_gap,
 				step_gap,
-				timeInMins,
 				timeInHours,
 				timeInDays,
 				timeInMonths,

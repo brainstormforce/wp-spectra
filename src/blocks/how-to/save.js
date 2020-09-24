@@ -36,7 +36,6 @@ export default function save( props ) {
 		showEstcost,
 		showTools,
 		showMaterials,
-		timeInMins,
 		timeInHours,
 		timeInDays,
 		timeInMonths,
