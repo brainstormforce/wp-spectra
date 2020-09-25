@@ -13,8 +13,12 @@ export default function save( props ) {
 	const {
 		block_id,
 		textareaRequired,
-		textareaName
+		textareaName,
+		rows,
+		placeholder
 	} = attributes
+	
+	const isRequired = (textareaRequired) ? "required" : "";
 	
 	return (
 		<div className={ classnames(
@@ -25,10 +29,10 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ textareaName }
-			className='uagb-forms-textarea-label'
+			className={`uagb-forms-textarea-label ${isRequired}`}
 			
 			/>
-			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>
+			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows={rows} placeholder={placeholder} ></textarea>
 			</div>
 			)
 		}

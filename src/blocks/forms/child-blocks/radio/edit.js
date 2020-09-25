@@ -73,7 +73,7 @@ class UAGBFormsRadioEdit extends Component {
 		}
 
 		const addOption = () => {
-			const newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
+			const newOption ={ "optiontitle": `Option Name ${options.length + 1}`,"optionvalue": `Option Value ${options.length + 1}` }
 			options[options.length] = newOption; 
 			const addnewOptions = options.map( ( item, thisIndex ) => {				
 				return item
@@ -121,11 +121,19 @@ class UAGBFormsRadioEdit extends Component {
 						value={s.optiontitle}						
 					/>	
 					<input
+						className="uagb-inner-input-view"
 						aria-label={s.optiontitle}
-						onChange={e => changeOption( { optiontitle: e.target.value }, index)}
+						onChange={e => changeOption( { optiontitle: e.target.value,optionvalue: e.target.value }, index)}
 						type="text"
 						value={s.optiontitle}						
-					/>					
+					/>
+					<input
+						className="uagb-inner-input-view"
+						aria-label={s.optionvalue}
+						onChange={e => changeOption( { optionvalue: e.target.value }, index)}
+						type="text"
+						value={s.optionvalue}						
+					/>						
 					<Button 
 						className="uagb-form-radio-option-delete"
         				icon="trash"
@@ -140,18 +148,19 @@ class UAGBFormsRadioEdit extends Component {
 			return  (	
 					
 				options.map((o, index) => {
-					var optiontitle = o.optiontitle;
-					var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+					var optionvalue = o.optionvalue;
+					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="radio" id={optionvalue} name={`radio-${block_id}`} value={optionvalue} required={radioRequired}/>
-						<label for={optionvalue}>{optiontitle}</label><br/>						
+						<input type="radio" id={value} name={`radio-${block_id}`} value={value} required={radioRequired}/>
+						<label for={value}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);
 				})
 			)			
 		};
 		
+		const isRequired = (radioRequired) ? "required" : "";
 
 		return (
 			<Fragment>
@@ -177,13 +186,13 @@ class UAGBFormsRadioEdit extends Component {
 						placeholder={ __( "Radio Title" ) }
 						value={ radioName }
 						onChange={ ( value ) => setAttributes( { radioName: value } ) }
-						className='uagb-forms-radio-label'
+						className={`uagb-forms-radio-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{isSelected && (
 						<Fragment>														
-							{editView}
 							<div className="uagb-forms-radio-controls">
+								{editView}
 								<div>
 									<Button isSecondary onClick={addOption}>{ __(" + Add Option ") }</Button>									
 								</div>								

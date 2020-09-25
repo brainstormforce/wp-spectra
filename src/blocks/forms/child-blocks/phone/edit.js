@@ -97,6 +97,8 @@ class UAGBFormsPhoneEdit extends Component {
 			phone_html =  <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input"/>
 		}
 		
+		const isRequired = (phoneRequired) ? "required" : "";
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -121,7 +123,7 @@ class UAGBFormsPhoneEdit extends Component {
 						placeholder={ __( "Phone Name" ) }
 						value={ phoneName }
 						onChange={ ( value ) => setAttributes( { phoneName: value } ) }
-						className='uagb-forms-textarea-label'
+						className={`uagb-forms-phone-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{phone_html}

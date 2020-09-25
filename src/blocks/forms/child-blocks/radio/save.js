@@ -19,6 +19,8 @@ export default function save( props ) {
 		radioName
 	} = attributes
 	
+	const isRequired = (radioRequired) ? "required" : "";
+	
 	return (
 		<div className={ classnames(
 			"uagb-forms-radio-wrap",
@@ -28,16 +30,16 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ radioName }
-			className='uagb-forms-radio-label'			
+			className={`uagb-forms-radio-label ${isRequired}`}		
 			/>
 			
 			{options.map((o, index) => {
-				var optiontitle = o.optiontitle;
-				var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+				var optionvalue = o.optionvalue;
+				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="radio" id={ optionvalue } name={`radio-${ block_id }`} value={ optionvalue } required={ radioRequired }/>
-					<label for={ optionvalue }>{ optiontitle }</label><br/>						
+					<input type="radio" id={ value } name={`radio-${ block_id }`} value={ value } required={ radioRequired }/>
+					<label for={ value }>{o.optiontitle}</label><br/>						
 					</Fragment>
 				);
 			})}

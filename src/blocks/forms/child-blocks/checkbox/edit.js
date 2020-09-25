@@ -73,7 +73,7 @@ class UAGBFormsCheckboxEdit extends Component {
 		}
 
 		const addOption = () => {
-			const newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
+			const newOption ={ "optiontitle": `Option Name ${options.length + 1}`,"optionvalue": `Option Value ${options.length + 1}` }
 			options[options.length] = newOption; 
 			const addnewOptions = options.map( ( item, thisIndex ) => {				
 				return item
@@ -121,10 +121,18 @@ class UAGBFormsCheckboxEdit extends Component {
 						value={s.optiontitle}						
 					/>	
 					<input
+						className="uagb-inner-input-view"
 						aria-label={s.optiontitle}
-						onChange={e => changeOption( { optiontitle: e.target.value }, index)}
+						onChange={e => changeOption( { optiontitle: e.target.value,optionvalue: e.target.value }, index)}
 						type="text"
 						value={s.optiontitle}						
+					/>
+					<input
+						className="uagb-inner-input-view"
+						aria-label={s.optionvalue}
+						onChange={e => changeOption( { optionvalue: e.target.value }, index)}
+						type="text"
+						value={s.optionvalue}						
 					/>					
 					<Button 
 						className="uagb-form-checkbox-option-delete"
@@ -140,18 +148,20 @@ class UAGBFormsCheckboxEdit extends Component {
 			return  (	
 					
 				options.map((o, index) => {
-					var optiontitle = o.optiontitle;
-					var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+					var optionvalue = o.optionvalue;
+					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="checkbox"  name={`checkbox-${block_id}`} value={optionvalue} required={checkboxRequired}/>
-						<label for={optionvalue}>{optiontitle}</label><br/>						
+						<input type="checkbox" id={`checkbox-${value}-${block_id}`} name={`checkbox-${block_id}`} value={value} required={checkboxRequired}/>
+						<label for={`checkbox-${value}-${block_id}`}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);
 				})
 			)			
 		};
 		
+
+		const isRequired = (checkboxRequired) ? "required" : "";
 
 		return (
 			<Fragment>
@@ -177,7 +187,7 @@ class UAGBFormsCheckboxEdit extends Component {
 						placeholder={ __( "Checkbox Title" ) }
 						value={ checkboxName }
 						onChange={ ( value ) => setAttributes( { checkboxName: value } ) }
-						className='uagb-forms-checkbox-label'
+						className={`uagb-forms-checkbox-label ${isRequired}`}
 						multiline={ false }
 					/>
 					{isSelected && (

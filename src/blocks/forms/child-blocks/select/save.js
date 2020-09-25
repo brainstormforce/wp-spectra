@@ -18,6 +18,8 @@ export default function save( props ) {
 		selectName
 	} = attributes
 	
+	const isRequired = (selectRequired) ? "required" : "";
+	
 	return (
 		<div className={ classnames(
 			"uagb-forms-select-wrap",
@@ -27,16 +29,16 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ selectName }
-				className='uagb-forms-select-label'			
+				className={`uagb-forms-select-label ${isRequired}`}		
 			/>
 				<select className="uagb-forms-select-box"  required={ selectRequired }>
 					<option value="" disabled selected>
 						Select your option
 					</option>
 					{options.map((o, index) => {
-						var optiontitle = o.optiontitle;
-						var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
-						return <option value={optionvalue}>{o.optiontitle}</option>;
+						var optionvalue = o.optionvalue;
+						var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
+						return <option value={value}>{o.optiontitle}</option>;
 					})}
 					
 				</select>

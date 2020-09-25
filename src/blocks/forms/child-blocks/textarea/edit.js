@@ -14,6 +14,8 @@ const {
 const {
 	PanelBody,	
 	ToggleControl,
+	RangeControl,
+	TextControl
 } = wp.components
 const {
 	InspectorControls,
@@ -50,7 +52,9 @@ class UAGBFormsTextareaEdit extends Component {
         const {
 			block_id,
 			textareaRequired,
-			textareaName
+			textareaName,
+			rows,
+			placeholder
 		} = attributes
 		
 		const textareaInspectorControls = () => {
@@ -66,9 +70,25 @@ class UAGBFormsTextareaEdit extends Component {
 						checked={ textareaRequired }
 						onChange={ ( value ) => setAttributes( { textareaRequired: ! textareaRequired } ) }
 					/>
+					<TextControl
+					 	label="Placeholder"
+						value={ placeholder }
+						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+						placeholder={__( "Placeholder" )}
+					/>
+					<RangeControl
+						label={ __( "Number of lines" ) }
+						value={ rows }
+						onChange={ ( value ) => setAttributes( { rows: value } ) }
+						min={ 2 }
+						max={ 10 }
+						allowReset
+					/>
 				</PanelBody>
 			)
 		}
+
+		const isRequired = (textareaRequired) ? "required" : "";
 
 		return (
 			<Fragment>
@@ -94,10 +114,10 @@ class UAGBFormsTextareaEdit extends Component {
 						placeholder={ __( "Textarea Name" ) }
 						value={ textareaName }
 						onChange={ ( value ) => setAttributes( { textareaName: value } ) }
-						className='uagb-forms-textarea-label'
+						className={`uagb-forms-textarea-label ${isRequired}`}
 						multiline={ false }
 					/>					
-					<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows="4" ></textarea>
+					<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows={rows} placeholder={placeholder} ></textarea>
 					
 				</div>
 			</Fragment>

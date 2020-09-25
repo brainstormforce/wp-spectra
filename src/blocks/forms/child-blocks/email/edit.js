@@ -8,14 +8,18 @@ const { __ } = wp.i18n
 
 const {
 	Component,
+	Fragment
 } = wp.element
 
 const {
 	RichText,
+	InspectorControls
 } = wp.blockEditor
 
 const {	
 	ToggleControl,
+	TextControl,
+	PanelBody
 } = wp.components
 
 class UAGBFormsEmailEdit extends Component {
@@ -48,34 +52,65 @@ class UAGBFormsEmailEdit extends Component {
         const {
 			block_id,
 			name,
-			required
+			required,
+			placeholder
 		} = attributes
 		
+		const nameInspectorControls = () => {
+
+			return (
+				<PanelBody
+					title={ __( "General" ) }
+					initialOpen={ true }
+					className="uagb__url-panel-body"
+				>
+					<ToggleControl
+						label={ __( "Required" ) }
+						checked={ required }
+						onChange={ ( value ) => setAttributes( { required: ! required } ) }
+					/>
+					<TextControl
+					 	label="Placeholder"
+						value={ placeholder }
+						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+						placeholder={__( "Placeholder" )}
+					/>
+				</PanelBody>
+			)
+		}
+
+		const isRequired = (required) ? "required" : "";
+
 		return (
-			<div className={ classnames(
-				"uagb-forms-email-wrap",
-				"uagb-forms-field-set",
-				`uagb-block-${ block_id }`,
-			) }>
-				{isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __( "Required" ) }
-							checked={ required }
-							onChange={ ( value ) => setAttributes( { required: ! required } ) }
-						/>
-					</div>
-				)}
-				<RichText
-						tagName="div"
-						placeholder={ __( "Email" ) }
-						value={ name }
-						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className="uagb-forms-email-label"
-						multiline={ false }
-				/>
-				<input type="email" className="uagb-forms-email-input" required={ required }/>
-			</div>
+			<Fragment>
+				<InspectorControls>
+					{ nameInspectorControls() }
+				</InspectorControls>
+				<div className={ classnames(
+					"uagb-forms-email-wrap",
+					"uagb-forms-field-set",
+					`uagb-block-${ block_id }`,
+				) }>
+					{isSelected && (
+						<div className="uagb-forms-required-wrap">
+							<ToggleControl
+								label={ __( "Required" ) }
+								checked={ required }
+								onChange={ ( value ) => setAttributes( { required: ! required } ) }
+							/>
+						</div>
+					)}
+					<RichText
+							tagName="div"
+							placeholder={ __( "Email" ) }
+							value={ name }
+							onChange={ ( value ) => setAttributes( { name: value } ) }
+							className={`uagb-forms-email-label ${isRequired}`}
+							multiline={ false }
+					/>
+					<input type="email" className="uagb-forms-email-input" placeholder={placeholder} required={ required }/>
+				</div>
+			</Fragment>
 		)
 	}
 }
