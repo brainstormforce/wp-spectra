@@ -426,7 +426,7 @@ class UAGBHowTo extends Component {
 					help={ __( "Note: Time is recommended field for schema. It should be ON" ) }
 				/>
 				{ showTotaltime &&(
-					<PanelBody title={ __( "Time" ) } initialOpen={ false } className="uagb-editor-howto-timepanel">
+					<PanelBody title={ __( "Time" ) } initialOpen={ true } className="uagb-editor-howto-timepanel">
 					<Fragment>
 						<RangeControl
 							label={ __( "Years" ) }
@@ -689,11 +689,11 @@ class UAGBHowTo extends Component {
 		}
 
 		//Time Labels
-		var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
-		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
-		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
-		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
-		var minslabel = (minsValue > 1) ? " Minutes " : " Minute ";		
+		var yearlabel = (timeInYears > 1) ? __( "Years" ) : __( "Year" );
+		var monthlabel = (timeInMonths > 1) ? __(" Months ") : __(" Month ");
+		var daylabel = (timeInDays > 1) ? __(" Days ") :__( " Day ");
+		var hourlabel = (timeInHours > 1) ? __("Hours ") :__( " Hour ");
+		var minslabel = (minsValue > 1) ? __(" Minutes ") : __(" Minute ");		
 
 
 
