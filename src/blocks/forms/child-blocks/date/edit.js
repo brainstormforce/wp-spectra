@@ -57,7 +57,14 @@ class UAGBFormsDateEdit extends Component {
         const {
 			block_id,
 			dateRequired,
-			name
+			name,
+			additonalVal,
+			minYear,
+			minMonth,
+			minDay,
+			maxYear,
+			maxMonth,
+			maxDay
 		} = attributes
 		
 		const dateInspectorControls = () => {
@@ -73,10 +80,78 @@ class UAGBFormsDateEdit extends Component {
 						checked={ dateRequired }
 						onChange={ ( value ) => setAttributes( { dateRequired: ! dateRequired } ) }
 					/>
+					<ToggleControl
+						label={ __( "Additional Validation" ) }
+						checked={ additonalVal }
+						onChange={ ( value ) => setAttributes( { additonalVal: ! additonalVal } ) }
+					/>
+					{ additonalVal && (
+						<Fragment>
+							<p>Minimum Date</p>
+							<TextControl
+							className={"minDate"}					
+							value={ parseInt(minYear)  }
+							onChange={ ( value ) => setAttributes( { minYear:  value } ) }
+							placeholder="YYYY"
+							type="number"
+							/>
+							<b> - </b>
+							<TextControl
+							className={"minDate"}							
+							value={ parseInt(minMonth)  }
+							onChange={ ( minMonth ) => setAttributes( { minMonth } ) }
+							placeholder="MM"
+							type="number"
+							/> 
+							<b> - </b>
+							<TextControl
+							className={"minDate"}							
+							value={ parseInt(minDay)  }
+							onChange={ ( minDay ) => setAttributes( { minDay } ) }
+							placeholder="DD"
+							type="number"
+							/>
+							<p>Maximum Date</p>
+							<TextControl
+							className={"maxDate"}					
+							value={ parseInt(maxYear)  }
+							onChange={ ( value ) => setAttributes( { maxYear:  value } ) }
+							placeholder="YYYY"
+							type="number"					
+							/>
+							<b> - </b>
+							<TextControl
+							className={"maxDate"}							
+							value={ parseInt(maxMonth)  }
+							onChange={ ( maxMonth ) => setAttributes( { maxMonth } ) }
+							placeholder="MM"
+							type="number"
+							/> 
+							<b> - </b>
+							<TextControl
+							className={"maxDate"}							
+							value={ parseInt(maxDay)  }
+							onChange={ ( maxDay ) => setAttributes( { maxDay } ) }
+							placeholder="DD"
+							type="number"
+							/>
+						</Fragment>
+						
+					)}
 				</PanelBody>
 			)
 		}
+		
+	var validation_min_value =""
+	var validation_max_value =""
+	
+	if( minYear && minMonth && minDay ){
+		validation_min_value = minYear+"-"+minMonth+"-"+minDay			
+	}
 
+	if( maxYear && maxMonth && maxDay ){	
+		validation_max_value = maxYear+"-"+maxMonth+"-"+maxDay		
+	}
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -104,8 +179,16 @@ class UAGBFormsDateEdit extends Component {
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className="uagb-forms-date-label"
 						multiline={ false }
-					/>					
+					/>	
+
+					{additonalVal &&(
+					<input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>
+					)}	
+
+					{!additonalVal &&(
 					<input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired }/>
+					)}	
+									
 				</div>
 			</Fragment>
 		)

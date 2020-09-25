@@ -14,9 +14,27 @@ export default function save( props ) {
 	const {
 		block_id,
 		dateRequired,
-		name
+		name,
+		additonalVal,
+		minYear,
+		minMonth,
+		minDay,
+		maxYear,
+		maxMonth,
+		maxDay
 	} = attributes
 	
+	var validation_min_value =""
+	var validation_max_value =""
+	
+	if( minYear && minMonth && minDay ){
+		validation_min_value = minYear+"-"+minMonth+"-"+minDay			
+	}
+
+	if( maxYear && maxMonth && maxDay ){	
+		validation_max_value = maxYear+"-"+maxMonth+"-"+maxDay		
+	}
+
 	return (
 		<div className={ classnames(
 			"uagb-forms-date-wrap",
@@ -27,8 +45,15 @@ export default function save( props ) {
 				tagName="div"
 				value={ name }
 				className="uagb-forms-date-label"			
-				/>					
-				<input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired }/>
+				/>				
+
+				{additonalVal &&(
+					<input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>
+				)}	
+
+				{!additonalVal &&(
+					<input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired }/>
+				)}	
 		</div>
 	)
 }
