@@ -2,14 +2,17 @@
  * BLOCK: How-To Schema - Save Block
  */
 
-// Import block dependencies and components.
 import classnames from "classnames"
 
 const {
 	RichText,
 	InnerBlocks
 } = wp.blockEditor
-const {  Fragment } = wp.element
+
+const {  
+	Fragment 
+} = wp.element
+
 export default function save( props ) {
 	
 	const { attributes, className } = props
@@ -77,6 +80,7 @@ export default function save( props ) {
 	var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
 
 	var minsValue = (timeInMins) ? timeInMins : time;
+	var minslabel = (minsValue > 1) ? " Minutes " : " Minute ";		
 
 	return (
 		<div
@@ -115,7 +119,7 @@ export default function save( props ) {
 							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
 							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
 							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
-							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{timeIn}</p></Fragment> )}								
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}								
 					</Fragment>					
 				</span>
 				}

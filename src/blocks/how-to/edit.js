@@ -333,6 +333,7 @@ class UAGBHowTo extends Component {
 			image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
 			
 		}
+
 		var minsValue = (timeInMins) ? timeInMins : time;
 		
 		const getInfoBoxAsChild = [
@@ -686,11 +687,14 @@ class UAGBHowTo extends Component {
 				</PanelBody>
 			)
 		}
+
 		//Time Labels
 		var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
 		var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
 		var daylabel = (timeInDays > 1) ? " Days " : " Day ";
-		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";		
+		var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
+		var minslabel = (minsValue > 1) ? " Minutes " : " Minute ";		
+
 
 
 		return (
@@ -785,7 +789,7 @@ class UAGBHowTo extends Component {
 							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
 							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
 							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
-							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{timeIn}</p></Fragment> )}	
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
 							
 						</Fragment>
 					)}					
