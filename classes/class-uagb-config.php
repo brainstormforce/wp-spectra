@@ -2355,8 +2355,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/forms-date'       => array(
 						'slug'        => '',
-						'title'       => __( 'Date', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps to add Date field.', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(),
 					),
