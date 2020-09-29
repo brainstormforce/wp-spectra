@@ -2360,6 +2360,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
+					'uagb/forms-accept'         => array(
+						'slug'        => '',
+						'title'       => __( 'Accept', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Accept field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
+					),
 				);
 			}
 			return self::$block_attributes;
