@@ -163,11 +163,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Google Map - Now user can show language specific Google Map.
 * Fix: Inline Notice - Notice dismiss issue.
 * Fix: How To Schema - Step gap issue.
-<<<<<<< HEAD
-* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
-=======
 * Fix: How to Schema - Image deletion issue for steps.
->>>>>>> 73b86bec316be215d2ba42519246e5348c1c66da
+* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
 
 ### 1.17.0 ###
 * Improvement: Compatibility with WordPress 5.5.
