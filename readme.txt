@@ -158,7 +158,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.17.1 =
+= 1.18.0 =
+* New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 * Improvement: Google Map - Now user can show language specific Google Map.
 * Fix: Inline Notice - Notice dismiss issue.
