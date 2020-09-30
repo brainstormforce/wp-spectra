@@ -30,7 +30,7 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ checkboxName }
-			className={`uagb-forms-checkbox-label ${isRequired}`}		
+			className={`uagb-forms-checkbox-label ${isRequired} uagb-forms-input-label`}		
 			/>
 			
 			{options.map((o, index) => {

@@ -29,10 +29,10 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ textareaName }
-			className={`uagb-forms-textarea-label ${isRequired}`}
+			className={`uagb-forms-textarea-label ${isRequired} uagb-forms-input-label`}
 			
 			/>
-			<textarea required={ textareaRequired } className="uagb-forms-textarea-input" rows={rows} placeholder={placeholder} ></textarea>
+			<textarea required={ textareaRequired } className="uagb-forms-textarea-input uagb-forms-input" rows={rows} placeholder={placeholder} ></textarea>
 			</div>
 			)
 		}

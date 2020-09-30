@@ -21,7 +21,7 @@ function styling( props ) {
             'background-color' : activeColor
         },
         " .uagb-switch input:focus + .uagb-slider" : {
-            "box-shadow": "0 0 1px #2196F3"
+            "box-shadow": "0 0 1px" + activeColor
           }
     }
 

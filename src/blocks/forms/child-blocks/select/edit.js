@@ -148,7 +148,7 @@ class UAGBFormsSelectEdit extends Component {
 			})
 
 			return  (
-				<select className="uagb-forms-select-box" required={ selectRequired }>
+				<select className="uagb-forms-select-box uagb-forms-input" required={ selectRequired }>
 					<option value="" disabled selected>Select your option</option>
 					{ showoptionsField }
 				</select>
@@ -181,7 +181,7 @@ class UAGBFormsSelectEdit extends Component {
 						placeholder={ __( "Select Title" ) }
 						value={ selectName }
 						onChange={ ( value ) => setAttributes( { selectName: value } ) }
-						className={`uagb-forms-select-label ${isRequired}`}
+						className={`uagb-forms-select-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>
 					{isSelected && (

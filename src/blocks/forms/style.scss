@@ -1,13 +1,10 @@
 .uagb-forms__outer-wrap {
     .uagb-forms-main-form {
 		
-		input:not([type=checkbox]):not([type=radio]) , textarea, select {
+		input:not([type=checkbox]):not([type=radio]):not([type=file]) , textarea, select {
 			width: 100%;
 		}
-		.uagb-forms-field-set{
-			margin: 20px 0;
-		}
-
+		
 		.required:after {
 			content:" *";
 			color: red;
@@ -93,15 +90,7 @@
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
-
-	.uagb-switch input:checked+.uagb-slider {
-		background-color: #2196F3;
-	}
-
-	.uagb-switch input:focus+.uagb-slider {
-		box-shadow: 0 0 1px #2196F3;
-	}
-
+	
 	.uagb-switch input:checked+.uagb-slider:before {
 		-webkit-transform: translateX(26px);
 		-ms-transform: translateX(26px);

@@ -15,6 +15,7 @@ const {
 	PanelBody,
 	ToggleControl,
 	SelectControl,
+	TextControl
 } = wp.components
 const {
 	InspectorControls,
@@ -61,7 +62,9 @@ class UAGBFormsToggleEdit extends Component {
 			name,
 			toggleStatus,
 			layout,
-			activeColor
+			activeColor,
+			trueValue,
+			falseValue
 		} = attributes
 		
 		const toggleInspectorControls = () => {
@@ -72,10 +75,28 @@ class UAGBFormsToggleEdit extends Component {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
+				<p className="uagb-settings-notice">{ __( "Leaving the toggle in On/Off state will set it as a default value on page load for the user." ) }</p>
+
 				<ToggleControl
 					label={ __( "Required" ) }
 					checked={ toggleRequired }
 					onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
+				/>
+				<ToggleControl
+					label={ __( "Default State" ) }
+					checked={ toggleStatus }
+					help={ toggleStatus ? 'ON State' : 'OFF State' }
+					onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
+				/>
+				<TextControl
+					label="True State"
+					value={ trueValue }
+					onChange={ ( value ) => setAttributes( { trueValue: value } ) }					
+				/>
+				<TextControl
+					label="False State"
+					value={ falseValue }
+					onChange={ ( value ) => setAttributes( { falseValue: value } ) }					
 				/>
 				<SelectControl
 					label={ __( "Layout" ) }
@@ -115,7 +136,7 @@ class UAGBFormsToggleEdit extends Component {
 								label={ __( "Required" ) }
 								checked={ toggleRequired }
 								onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
-							/>							
+							/>														
 						</div>
 					)}
 					<RichText
@@ -123,15 +144,14 @@ class UAGBFormsToggleEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className={`uagb-forms-toggle-label ${isRequired}`}
+						className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>
 					<label class="uagb-switch">
 						<input 
 							type="checkbox"
 							className="uagb-forms-toggle-input"
-							checked={toggleStatus}
-							onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
+							checked={toggleStatus}							
 						/>
 						<span class={`uagb-slider ${layout}`}></span>
 					</label>	

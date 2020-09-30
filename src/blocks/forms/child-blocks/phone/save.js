@@ -26,9 +26,9 @@ export default function save( props ) {
 	
 	var phone_html = "";
 	if(pattern != ""){
-		phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input"/>
+		phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
 	}else{
-		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input"/>
+		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
 	}
 	
 	const isRequired = (phoneRequired) ? "required" : "";
@@ -42,7 +42,7 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ phoneName }
-				className={`uagb-forms-phone-label ${isRequired}`}	
+				className={`uagb-forms-phone-label ${isRequired} uagb-forms-input-label`}	
 			/>
 			{phone_html}
 		</div>

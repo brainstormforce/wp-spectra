@@ -21,6 +21,15 @@ const attributes = {
     activeColor : {
         type: "string",
         default: "#2196F3"
+    },
+    trueValue : {
+        type: "string",
+        default: "on"
+    },
+    falseValue : {
+        type: "string",
+        default: "off"
     }
+    			
 }
 export default attributes
