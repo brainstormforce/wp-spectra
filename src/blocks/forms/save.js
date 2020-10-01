@@ -22,6 +22,10 @@ export default function save( props ) {
 		submitButtonText,
 		confirmationType,
 		confirmationMessage,
+		reCaptchaEnable,
+		reCaptchaType,			
+		reCaptchaSiteKeyV2,
+		reCaptchaSiteKeyV3
 	} = attributes
 
 	const renderConfirmationMessage = () => {
@@ -42,6 +46,31 @@ export default function save( props ) {
 
 		return '';
 	}
+
+	const renderButtonHtml = () => {
+
+		if ( reCaptchaEnable && 'v3' === reCaptchaType ) {			
+			return (
+				<button className="uagb-forms-main-submit-button g-recaptcha" data-sitekey={ reCaptchaSiteKeyV3 }>
+						<RichText.Content
+							tagName='div'
+							value={ submitButtonText }
+							className='uagb-forms-main-submit-button-text'
+						/>
+				</button>
+			)
+		}
+
+		return (
+			<button className="uagb-forms-main-submit-button" >
+						<RichText.Content
+							tagName='div'
+							value={ submitButtonText }
+							className='uagb-forms-main-submit-button-text'
+						/>
+			</button>
+		);
+	}
 	return (
 		<div className={ classnames(
 			"uagb-forms__outer-wrap",
@@ -54,14 +83,11 @@ export default function save( props ) {
 					<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
 					<input type="hidden" name="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 				</div>
+				{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
+					<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+				)}
 				<div className="uagb-forms-main-submit-button-wrap">
-					<button className="uagb-forms-main-submit-button">
-						<RichText.Content
-							tagName='div'
-							value={ submitButtonText }
-							className='uagb-forms-main-submit-button-text'
-						/>
-					</button>
+					{renderButtonHtml()}
 				</div>
 				{ renderConfirmationMessage() }
 			</form>

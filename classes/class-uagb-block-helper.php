@@ -4754,8 +4754,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array();
 			$t_selectors = array();
-
-			$selectors = array(
+			$selectors   = array(
 				' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 					'text-align' => $attr['overallAlignment'],
 				),
@@ -4764,18 +4763,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], 'px' ),
 				),
 				' .uagb-forms-main-form .uagb-forms-input-label' => array(
-					'color' => $attr['labelColor'],
+					'color'     => $attr['labelColor'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 				),
-
-				' .uagb-forms-main-form  .uagb-forms-input' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
-				),
-
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 					'text-align' => $attr['buttonAlign'],
 
 				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
+					'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
 					'color'            => $attr['submitColor'],
 					'background-color' => $attr['submitBgColor'],
 					'border'           => UAGB_Helper::get_css_value( $attr['submitborderWidth'], 'px' ) . ' ' . $attr['submitborderStyle'] . ' ' . $attr['submitborderColor'],

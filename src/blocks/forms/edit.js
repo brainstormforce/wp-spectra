@@ -38,7 +38,8 @@ const {
 	ButtonGroup,
 	Dashicon,
 	TextareaControl,
-	CheckboxControl
+	CheckboxControl,
+	ExternalLink
 } = wp.components
 
 const { __ } = wp.i18n
@@ -174,7 +175,13 @@ class UAGBFormsEdit extends Component {
 			hPaddingField,
 			fieldGap,
 			formStyle,
-			overallAlignment
+			overallAlignment,
+			reCaptchaEnable,
+			reCaptchaType,			
+			reCaptchaSecretKeyV2,
+			reCaptchaSecretKeyV3,
+			reCaptchaSiteKeyV2,
+			reCaptchaSiteKeyV3
         } = attributes
 
 
@@ -713,6 +720,121 @@ class UAGBFormsEdit extends Component {
 			)
 		}
 
+		const googleReCaptcha = () => {
+			return (
+				<PanelBody
+					title={ __( "Google reCaptcha" ) }
+					initialOpen={ false }					
+				>
+					<ToggleControl
+						label={ __( "Enable reCaptcha " ) }
+						checked={ reCaptchaEnable }
+						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
+					/>
+					{ reCaptchaEnable && (
+						<Fragment>									
+						<TabPanel className="my-tab-panel"
+						 	onSelect={ (value) => setAttributes( { reCaptchaType: value } ) }
+							activeClass="is-active"
+							tabs={ [
+								{
+									name: 'v2',
+									title: 'V2',
+									className: 'uagb-forms-recaptcha-button',
+								},
+								{
+									name: 'v3',
+									title: 'V3',
+									className: 'uagb-forms-recaptcha-button',
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "v3" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<TextControl
+													label="Site Key"
+													value={ reCaptchaSiteKeyV3 }
+													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV3: value } ) }
+													placeholder={"Enter v3 Keys"}
+												/>
+												<TextControl
+													label="Secret Key"
+													value={ reCaptchaSecretKeyV3 }
+													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV3: value } ) }
+													placeholder={"Enter v3 Keys"}
+												/>
+											</Fragment>
+										)
+									} else if ( "v2" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<TextControl
+													label="Site Key"
+													value={ reCaptchaSiteKeyV2 }
+													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV2: value } ) }
+													placeholder={"Enter v2 Keys"}
+
+												/>
+												<TextControl
+													label="Secret Key"
+													value={ reCaptchaSecretKeyV2 }
+													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV2: value } ) }
+													placeholder={"Enter v2 Keys"}
+
+												/>
+											</Fragment>
+										)
+									} 
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
+						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
+					</Fragment>
+					)}
+					
+				</PanelBody>
+			)
+		}
+
+
+		const renderButtonHtml = () => {
+			if ( reCaptchaEnable && 'v3' === reCaptchaType && reCaptchaSiteKeyV3) {			
+				return (
+					<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button g-recaptcha" data-sitekey={reCaptchaSiteKeyV3}>
+						<RichText
+							tagName="div"
+							placeholder={ __( "Submit" ) }
+							value={ submitButtonText }
+							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
+							className='uagb-forms-main-submit-button-text'
+							multiline={ false }
+							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+						/>
+					</button>
+				)
+			}
+	
+			return (
+				<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
+					<RichText
+						tagName="div"
+						placeholder={ __( "Submit" ) }
+						value={ submitButtonText }
+						onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
+						className='uagb-forms-main-submit-button-text'
+						multiline={ false }
+						allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+					/>
+				</button>
+			);
+		}
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -720,6 +842,7 @@ class UAGBFormsEdit extends Component {
 					{ submitButtonSettings() }
 					{ afterSubmitActions() }
 					{ designSettings() }
+					{ googleReCaptcha() }
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms__outer-wrap",
@@ -734,18 +857,13 @@ class UAGBFormsEdit extends Component {
 							<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
 							<input type="hidden" name="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 						</div>
+
+						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
+							<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+						)}
+
 						<div className="uagb-forms-main-submit-button-wrap">
-							<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
-								<RichText
-									tagName="div"
-									placeholder={ __( "Submit" ) }
-									value={ submitButtonText }
-									onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
-									className='uagb-forms-main-submit-button-text'
-									multiline={ false }
-									allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-								/>
-							</button>
+							{renderButtonHtml()}
 						</div>
 					</form>
 				</div>
