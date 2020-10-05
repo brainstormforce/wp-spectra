@@ -405,6 +405,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 				$args              = array(
 					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
+					'parent'     => 0,
 				);
 				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
 

@@ -20,13 +20,14 @@ const { registerBlockType } = wp.blocks
 registerBlockType( "uagb/taxonomy-list", {
 	title: uagb_blocks_info.blocks["uagb/taxonomy-list"]["title"],
 	description: uagb_blocks_info.blocks["uagb/taxonomy-list"]["description"],
-	icon: UAGB_Block_Icons.post_grid,
+	icon: UAGB_Block_Icons.taxonomy_list,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "post" ),
 		__( "taxonomy" ),
 		__( "uag" ),
 	],	
+	example:{},
 	edit,
 	// Render via PHP
 	save() {
