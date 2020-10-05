@@ -3706,6 +3706,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'       => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
+
 				),
 				' select'                                => array(
 					'background-color' => $attr['fieldBgColor'],
@@ -3815,6 +3816,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// Submit button.
 				' input.gform_button'                    => array(
 					'color'            => $attr['buttonTextColor'],
+					'font-size'        => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ) . '!important',
 					'background-color' => $attr['buttonBgColor'],
 					'border-color'     => $attr['buttonBorderColor'],
 					'border-style'     => $attr['buttonBorderStyle'],
@@ -4065,7 +4067,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'successMsg', ' .gform_confirmation_message', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .gform_wrapper div.validation_error', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .wpgf-response-output', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' input.gform_button', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .gform_footer input[type=submit]', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_checkbox label.gfield_label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_radio label.gfield_label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form label.gfield_label', $combined_selectors );

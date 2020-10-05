@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: How To Schema - Step gap issue.
 * Fix: How to Schema - Image deletion issue for steps.
 * Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
+* Fix: Gravity Form Styler - Submit button text color issue.
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.

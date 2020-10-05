@@ -294,7 +294,7 @@ function styling( props ) {
 
 		// Submit button.
 		" input.gform_button"                    : {
-			"color"            : buttonTextColor,
+			"color"            : buttonTextColor + "!important",
 			"background-color" : buttonBgColor,
 			"font-size"        : generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			"font-family"      : buttonFontFamily,
