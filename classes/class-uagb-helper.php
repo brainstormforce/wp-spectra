@@ -1318,6 +1318,35 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * Deletes the upload dir.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 */
+		public static function delete_upload_dir() {
+
+			$wp_info = wp_upload_dir( null, false );
+
+			$dir_name = basename( UAGB_DIR );
+			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
+				$dir_name = 'uag-plugin';
+			}
+
+			// Build the paths.
+			$dir_info = array(
+				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
+			);
+
+			// Check the upload dir if it doesn't exist or not.
+			if ( file_exists( $dir_info['path'] . 'index.html' ) ) {
+				// Remove the directory.
+				$wp_filesystem = self::get_instance()->get_filesystem();
+				return $wp_filesystem->rmdir( $dir_info['path'], true );
+			}
+			return false;
+		}
+
+		/**
 		 * Checks to see if the site has SSL enabled or not.
 		 *
 		 * @since 1.14.0
@@ -1378,6 +1407,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return boolean true/false
 		 */
 		public static function create_file( $assets_info, $style_data, $timestamp, $type ) {
+
+			$post_id = get_the_ID();
+			if ( ! $post_id ) {
+				return false;
+			}
+
 			$file_system = self::get_instance()->get_filesystem();
 
 			// Create a new file.
@@ -1385,7 +1420,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( $result ) {
 				// Update meta with current timestamp.
-				update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $timestamp );
+				update_post_meta( $post_id, 'uag_style_timestamp-' . $type, $timestamp );
 			}
 
 			return $result;
@@ -1400,7 +1435,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, true );
+			$post_id = get_the_ID();
+			if ( ! $post_id ) {
+				return false;
+			}
+
+			$post_timestamp = get_post_meta( $post_id, 'uag_style_timestamp-' . $type, true );
 			$var            = ( 'css' === $type ) ? 'css' : 'js';
 			$date           = new DateTime();
 			$new_timestamp  = $date->getTimestamp();
