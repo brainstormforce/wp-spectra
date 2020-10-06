@@ -558,7 +558,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 
 				case 'uagb/forms':
-					$js .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
+					$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_forms_gfont( $blockattr );
+					break;
+
+				case 'uagb/forms-toggle':
+					$css += UAGB_Block_Helper::get_forms_child_toggle_css( $blockattr, $block_id );
 					break;
 
 				default:

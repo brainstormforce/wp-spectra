@@ -186,7 +186,7 @@ class UAGBFormsRadioEdit extends Component {
 						placeholder={ __( "Radio Title" ) }
 						value={ radioName }
 						onChange={ ( value ) => setAttributes( { radioName: value } ) }
-						className={`uagb-forms-radio-label ${isRequired}`}
+						className={`uagb-forms-radio-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>
 					{isSelected && (

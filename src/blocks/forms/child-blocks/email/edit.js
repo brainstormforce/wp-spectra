@@ -105,10 +105,10 @@ class UAGBFormsEmailEdit extends Component {
 							placeholder={ __( "Email" ) }
 							value={ name }
 							onChange={ ( value ) => setAttributes( { name: value } ) }
-							className={`uagb-forms-email-label ${isRequired}`}
+							className={`uagb-forms-email-label ${isRequired} uagb-forms-input-label`}
 							multiline={ false }
 					/>
-					<input type="email" className="uagb-forms-email-input" placeholder={placeholder} required={ required }/>
+					<input type="email" className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required }/>
 				</div>
 			</Fragment>
 		)

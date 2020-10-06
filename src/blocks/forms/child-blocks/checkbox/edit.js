@@ -187,7 +187,7 @@ class UAGBFormsCheckboxEdit extends Component {
 						placeholder={ __( "Checkbox Title" ) }
 						value={ checkboxName }
 						onChange={ ( value ) => setAttributes( { checkboxName: value } ) }
-						className={`uagb-forms-checkbox-label ${isRequired}`}
+						className={`uagb-forms-checkbox-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>
 					{isSelected && (

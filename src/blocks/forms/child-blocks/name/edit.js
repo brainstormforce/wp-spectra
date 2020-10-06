@@ -104,10 +104,10 @@ class UAGBFormsNameEdit extends Component {
 						placeholder={ __( "Name" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
-						className={`uagb-forms-name-label ${isRequired}`}
+						className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>					
-					<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input"/>
+					<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input"/>
 				</div>
 			</Fragment>
 		)

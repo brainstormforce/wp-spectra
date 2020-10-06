@@ -4737,5 +4737,141 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
+
+		/**
+		 * Get Forms Block Parent CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_forms_css( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/forms']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
+					'text-align' => $attr['overallAlignment'],
+				),
+
+				' .uagb-forms-main-form .uagb-forms-field-set' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], 'px' ),
+				),
+				' .uagb-forms-main-form .uagb-forms-input-label' => array(
+					'color' => $attr['labelColor'],
+				),
+
+				' .uagb-forms-main-form  .uagb-forms-input' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
+				),
+
+				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+					'text-align' => $attr['buttonAlign'],
+
+				),
+				' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
+					'color'            => $attr['submitColor'],
+					'background-color' => $attr['submitBgColor'],
+					'border'           => UAGB_Helper::get_css_value( $attr['submitborderWidth'], 'px' ) . ' ' . $attr['submitborderStyle'] . ' ' . $attr['submitborderColor'],
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['submitborderRadius'], 'px' ),
+					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingSubmit'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingSubmit'], 'px' ),
+				),
+				' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
+					'color'            => $attr['submitColorHover'],
+					'background-color' => $attr['submitBgColorHover'],
+					'border-color'     => $attr['submitborderHoverColor'],
+				),
+
+			);
+
+			if ( 'boxed' === $attr['formStyle'] ) {
+
+				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+					'background-color' => $attr['bgColor'],
+					'border'           => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+					'color'            => $attr['inputColor'],
+					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
+
+				);
+			}
+
+			if ( 'underlined' === $attr['formStyle'] ) {
+				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+					'border'        => 0,
+					'outline'       => 0,
+					'border-radius' => 0,
+					'background'    => 'transparent',
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'color'         => $attr['inputColor'],
+					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
+
+				);
+			}
+
+			$t_selectors = array();
+
+			$m_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'submitText', ' .uagb-forms-main-form .uagb-forms-main-submit-button', $combined_selectors );
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .uagb-forms-main-form .uagb-forms-input-label', $combined_selectors );
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input::placeholder', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
+
+		/**
+		 * Get Forms Child Toggle CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_forms_child_toggle_css( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/forms-toggle']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				' .uagb-switch input:checked + .uagb-slider' => array(
+					'background-color' => $attr['activeColor'],
+
+				),
+				' .uagb-switch input:focus + .uagb-slider' => array(
+					'box-shadow' => '0 0 1px' . $attr['activeColor'],
+				),
+			);
+
+			$t_selectors = array();
+
+			$m_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
 	}
 }

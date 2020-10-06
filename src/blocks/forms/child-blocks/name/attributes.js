@@ -15,7 +15,7 @@ const attributes = {
     },
     placeholder: {
         type: "string",
-        default: __( "Roman Gill" )
+        default: __( "John Doe" )
     },
 }
 export default attributes
