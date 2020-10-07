@@ -193,7 +193,7 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeightMobile,
 			mappingHeaders,
 			headingAlignment,
-			headingBGColor
+			contentBGColor
 		} = attributes
 
 		let loadGFonts
@@ -380,13 +380,7 @@ class UAGBTableOfContentsEdit extends Component {
 							value={ headingColor }
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Heading BG Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ headingBGColor: headingColor }} ></span></span></p>
-						<ColorPalette
-							value={ headingBGColor }
-							onChange={ ( colorValue ) => setAttributes( { headingBGColor: colorValue } ) }
-							allowReset
-						/>
+						/>						
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Collapsible" ) }</h2>
 						<ToggleControl
@@ -544,6 +538,12 @@ class UAGBTableOfContentsEdit extends Component {
 						<ColorPalette
 							value={ linkHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Content BG Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ contentBGColor: headingColor }} ></span></span></p>
+						<ColorPalette
+							value={ contentBGColor }
+							onChange={ ( colorValue ) => setAttributes( { contentBGColor: colorValue } ) }
 							allowReset
 						/>
 					</PanelBody>

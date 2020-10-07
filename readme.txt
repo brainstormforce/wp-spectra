@@ -162,11 +162,13 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 * Improvement: Google Map - Now user can show language specific Google Map.
+* Improvement: Table of Content - Alignment option added for table heading and background color option for content.
 * Fix: Inline Notice - Notice dismiss issue.
 * Fix: How To Schema - Step gap issue.
 * Fix: How to Schema - Image deletion issue for steps.
 * Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
 * Fix: Post Block - Infinite scroll broken for anonymous user.
+
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.

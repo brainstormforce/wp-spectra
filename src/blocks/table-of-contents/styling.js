@@ -78,7 +78,7 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
-		headingBGColor,
+		contentBGColor,
 	} = props.attributes
 
 	var selectors = {}
@@ -97,7 +97,6 @@ function styling( props ) {
 		},
 		" .uagb-toc__title-wrap" : {
 			"justify-content" : alignment,
-			"background-color" : headingBGColor,
 			"margin-bottom" : generateCSSUnit( headingBottom, "px" ),
 		},
 		" .uagb-toc__title" : {
@@ -131,13 +130,13 @@ function styling( props ) {
 			"padding-top": 0
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list li" : {
-		    "color" : bulletColor
+			"color" : bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
-		    "padding-bottom": 0
+			"padding-bottom": 0
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
+			"padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
 			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
 		},
 		" .uag-toc__collapsible-wrap svg" : {
@@ -146,10 +145,11 @@ function styling( props ) {
 			"fill" : iconColor
 		}
 	}
-
+	
 	selectors[" .uagb-toc__list-wrap"] = {
 		'column-count': tColumnsDesktop,
-		'overflow': 'hidden'
+		'overflow': 'hidden',
+		"background-color" : contentBGColor,
 	}
 
 	if ( customWidth ) {

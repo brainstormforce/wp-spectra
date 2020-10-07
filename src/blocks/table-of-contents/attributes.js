@@ -331,7 +331,7 @@ const attributes = {
 		type: "string",
 		default: "left"
 	},
-	headingBGColor : {
+	contentBGColor : {
 		type : "string",
 	},
 }

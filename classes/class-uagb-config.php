@@ -2024,7 +2024,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingLineHeight'         => '',
 							'headingLineHeightTablet'   => '',
 							'headingLineHeightMobile'   => '',
-							'headingAlignment'=>'left,'
+							'headingAlignment'          => 'left',
+							'contentBGColor'            => '',
 						),
 					),
 					'uagb/team'               => array(
