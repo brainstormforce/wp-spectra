@@ -759,7 +759,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
-
 		public static function blocks_taxonomy_list_gfont( $attr ) {
 
 			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
@@ -781,7 +780,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $count_load_google_font, $count_font_family, $count_font_weight, $count_font_subset );
 			UAGB_Helper::blocks_google_font( $list_load_google_font, $list_font_family, $list_font_weight, $list_font_subset );
 
-
 		}
 
 		/**
@@ -790,7 +788,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
-
 		public static function blocks_forms_gfont( $attr ) {
 
 			$submitText_load_google_font = isset( $attr['submitTextloadGoogleFonts'] ) ? $attr['submitTextloadGoogleFonts'] : '';
