@@ -78,6 +78,7 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
+		headingBGColor,
 	} = props.attributes
 
 	var selectors = {}
@@ -95,7 +96,9 @@ function styling( props ) {
 			"color": linkColor,
 		},
 		" .uagb-toc__title-wrap" : {
-			"justify-content" : alignment
+			"justify-content" : alignment,
+			"background-color" : headingBGColor,
+			"margin-bottom" : generateCSSUnit( headingBottom, "px" ),
 		},
 		" .uagb-toc__title" : {
 			"font-size" : generateCSSUnit( headingFontSize, headingFontSizeType ),
@@ -103,7 +106,6 @@ function styling( props ) {
 			"font-family": headingFontFamily,
 			"font-weight": headingFontWeight,
 			"color": headingColor,
-			"margin-bottom" : generateCSSUnit( headingBottom, "px" )
 		},
 		" .uagb-toc__list-wrap ul li a:hover" : {
 			"color": linkHoverColor,

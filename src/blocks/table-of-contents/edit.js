@@ -192,7 +192,8 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeightTablet,
 			headingLineHeightMobile,
 			mappingHeaders,
-			headingAlignment
+			headingAlignment,
+			headingBGColor
 		} = attributes
 
 		let loadGFonts
@@ -378,6 +379,12 @@ class UAGBTableOfContentsEdit extends Component {
 						<ColorPalette
 							value={ headingColor }
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Heading BG Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ headingBGColor: headingColor }} ></span></span></p>
+						<ColorPalette
+							value={ headingBGColor }
+							onChange={ ( colorValue ) => setAttributes( { headingBGColor: colorValue } ) }
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />

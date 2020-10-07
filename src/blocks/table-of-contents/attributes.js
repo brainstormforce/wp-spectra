@@ -331,6 +331,9 @@ const attributes = {
 		type: "string",
 		default: "left"
 	},
+	headingBGColor : {
+		type : "string",
+	},
 }
 
 export default attributes
