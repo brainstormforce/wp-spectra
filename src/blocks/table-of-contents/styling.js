@@ -77,11 +77,14 @@ function styling( props ) {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		disableBullets,
+		headingAlignment,
 	} = props.attributes
 
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+
+	var alignment = ( headingAlignment == "left" ) ? "flex-start" : ( ( headingAlignment == "right" ) ? "flex-end" : "center" )
 
 	selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
@@ -90,6 +93,9 @@ function styling( props ) {
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
 			"color": linkColor,
+		},
+		" .uagb-toc__title-wrap" : {
+			"justify-content" : alignment
 		},
 		" .uagb-toc__title" : {
 			"font-size" : generateCSSUnit( headingFontSize, headingFontSizeType ),

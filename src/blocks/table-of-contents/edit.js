@@ -192,6 +192,7 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeightTablet,
 			headingLineHeightMobile,
 			mappingHeaders,
+			headingAlignment
 		} = attributes
 
 		let loadGFonts
@@ -337,7 +338,17 @@ class UAGBTableOfContentsEdit extends Component {
 						}
 					</PanelBody>
 					<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-						<h2>{ __( "Heading" ) }</h2>						
+						<h2>{ __( "Heading" ) }</h2>
+						<SelectControl
+							label={ __( "Alignment" ) }
+							value={ headingAlignment }
+							onChange={ ( value ) => setAttributes( { headingAlignment: value } ) }
+							options={ [
+								{ value: "left", label: __( "Left" ) },
+								{ value: "center", label: __( "Center" ) },
+								{ value: "right", label: __( "Right" ) },
+							] }
+	  					/>						
 						<RangeControl
 							label={ __( "Bottom Space" ) }
 							value={ headingBottom }
