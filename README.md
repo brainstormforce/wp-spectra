@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.5  
-**Stable tag:** 1.17.0 
+**Stable tag:** 1.17.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -158,6 +158,15 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 1.18.0 ###
+* New: Taxonomy List.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
+* Improvement: Google Map - Now user can show language specific Google Map.
+* Fix: Inline Notice - Notice dismiss issue.
+* Fix: How To Schema - Step gap issue.
+* Fix: How to Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
+* Fix: Post Block - Infinite scroll broken for anonymous user.
 
 ### 1.17.0 ###
 * Improvement: Compatibility with WordPress 5.5.
