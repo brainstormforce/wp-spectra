@@ -754,9 +754,38 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Adds Google fonts for WP Search block.
+		 * Adds Google fonts for Taxonomy List block.
 		 *
-		 * @since 1.16.0
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_taxonomy_list_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$count_load_google_font = isset( $attr['countLoadGoogleFonts'] ) ? $attr['countLoadGoogleFonts'] : '';
+			$count_font_family      = isset( $attr['countFontFamily'] ) ? $attr['countFontFamily'] : '';
+			$count_font_weight      = isset( $attr['countFontWeight'] ) ? $attr['countFontWeight'] : '';
+			$count_font_subset      = isset( $attr['countFontSubset'] ) ? $attr['countFontSubset'] : '';
+
+			$list_load_google_font = isset( $attr['listLoadGoogleFonts'] ) ? $attr['listLoadGoogleFonts'] : '';
+			$list_font_family      = isset( $attr['listFontFamily'] ) ? $attr['listFontFamily'] : '';
+			$list_font_weight      = isset( $attr['listFontWeight'] ) ? $attr['listFontWeight'] : '';
+			$list_font_subset      = isset( $attr['listFontSubset'] ) ? $attr['listFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $count_load_google_font, $count_font_family, $count_font_weight, $count_font_subset );
+			UAGB_Helper::blocks_google_font( $list_load_google_font, $list_font_family, $list_font_weight, $list_font_subset );
+
+		}
+
+		/**
+		 * Adds Google fonts for Forms block.
+		 *
+		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_forms_gfont( $attr ) {
@@ -779,8 +808,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $submitText_load_google_font, $submitText_font_family, $submitText_font_weight, $submitText_font_subset );
 			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight, $label_font_subset );
 			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
-
 		}
-
 	}
 }
