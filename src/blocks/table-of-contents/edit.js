@@ -540,7 +540,7 @@ class UAGBTableOfContentsEdit extends Component {
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Content BG Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ contentBGColor: headingColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Content Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentBGColor }} ></span></span></p>
 						<ColorPalette
 							value={ contentBGColor }
 							onChange={ ( colorValue ) => setAttributes( { contentBGColor: colorValue } ) }
