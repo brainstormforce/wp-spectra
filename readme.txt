@@ -167,6 +167,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: How to Schema - Image deletion issue for steps.
 * Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
 * Fix: Post Block - Infinite scroll broken for anonymous user.
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.
