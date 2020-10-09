@@ -131,7 +131,8 @@ function faqClick( e, faqItem, questionButtons ) {
 		faqItem.setAttribute( 'aria-expanded', false );
 		slideUp( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 	} else {
-		var parent = e.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement;
+		var parent = e.currentTarget.closest('.wp-block-uagb-faq');
+		
 		var faqToggle = 'true';
 		if ( parent.classList.contains( 'wp-block-uagb-faq' ) ) {
 			faqToggle = parent.getAttribute( 'data-faqtoggle' );
