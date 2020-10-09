@@ -124,6 +124,8 @@ class UAGBInlineNoticeEdit extends Component {
 				titleVrPadding,
 				titleHrPadding,
 				headingTag,
+				layout,
+				highlightWidth
 			},
 			setAttributes,
 			className,
@@ -179,7 +181,26 @@ class UAGBInlineNoticeEdit extends Component {
 
 		const inlineGeneralSettings = () => {
 			return (
-				<PanelBody title={ __( "General" ) } initialOpen={ true }>
+				<PanelBody title={ __( "General" ) } initialOpen={ true }>					
+					<SelectControl
+						label={ __( "Layout" ) }
+						value={ layout }
+						onChange={ ( value ) => setAttributes( { layout: value } ) }
+						options={ [
+							{ value: "modern", label: __( "Modern" ) },
+							{ value: "simple", label: __( "Simple" ) },							
+						] }
+					/>
+					{ "simple" == layout  &&
+						<RangeControl
+							label={ __( "Highlight width" ) }
+							value={ highlightWidth }
+							onChange={ ( value ) => setAttributes( { highlightWidth: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+					}
 					<h2>{ __( "Primary Heading" ) }</h2>
 					<SelectControl
 						label={ __( "Tag" ) }
@@ -380,6 +401,7 @@ class UAGBInlineNoticeEdit extends Component {
 					"uagb-inline_notice__outer-wrap",
 					`${ noticeDismiss }`,
 					`uagb-inline_notice__align-${ noticeAlignment }`,
+					`uagb-inline_notice__layout-${ layout }`,
 					`uagb-block-${ block_id }`
 					) }
 				>
