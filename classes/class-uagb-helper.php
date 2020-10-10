@@ -1323,7 +1323,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since x.x.x
 		 * @return array
 		 */
-		public static function delete_upload_dir() {
+		public function delete_upload_dir() {
 
 			$wp_info = wp_upload_dir( null, false );
 
