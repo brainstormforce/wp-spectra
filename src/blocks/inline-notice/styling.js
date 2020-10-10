@@ -72,7 +72,6 @@ function styling( props ) {
 			"font-family": titleFontFamily,
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 			"color": titleColor,
-			// "background-color": noticeColor,
 			"padding-left" : generateCSSUnit( lPadding, "px" ),
 			"padding-right" : generateCSSUnit( rPadding, "px" ),
 			"padding-top" : generateCSSUnit( titleVrPadding, "px" ),
@@ -113,13 +112,14 @@ function styling( props ) {
 		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["border-bottom-right-radius"] = "3px"
 
 
-	}
+	}else if("simple" == layout){	
+		
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["background-color"] = contentBgColor
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["border-left"] =  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor
 
-	if("simple" == layout){	
-		selectors["  .uagb-notice-title, .uagb-notice-text"] = {
-			"background-color": contentBgColor,
-			"border-left":  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor,
-		}
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["background-color"] = contentBgColor
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["border-left"] =  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor
+		
 	}
 	mobile_selectors = {
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {

@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 * Improvement: Google Map - Now user can show language specific Google Map.
+* Improvement: Inline Notice - New layout added for inline notice.
 * Fix: Inline Notice - Notice dismiss issue.
 * Fix: How To Schema - Step gap issue.
 * Fix: How to Schema - Image deletion issue for steps.

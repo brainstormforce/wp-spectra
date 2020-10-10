@@ -401,7 +401,6 @@ class UAGBInlineNoticeEdit extends Component {
 					"uagb-inline_notice__outer-wrap",
 					`${ noticeDismiss }`,
 					`uagb-inline_notice__align-${ noticeAlignment }`,
-					`uagb-inline_notice__layout-${ layout }`,
 					`uagb-block-${ block_id }`
 					) }
 				>
