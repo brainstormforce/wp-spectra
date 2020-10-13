@@ -22,12 +22,13 @@ export default function save( props ) {
 		image,
 		block_id,
 		link,
+		pinterestImage,
+		current_url
 	} = props.attributes
-
-	let url = links[type]
-
+	// let url = links[type]
+	
 	let image_icon_html = ""
-
+	
 	if ( image_icon == "icon" ) {
 		if ( icon ) {
 			image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
@@ -37,7 +38,20 @@ export default function save( props ) {
 			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
+	const featuredImageId = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
+	const featuredImagemedia = featuredImageId ? wp.data.select( 'core').getMedia( featuredImageId ) : '';
 	
+	
+	let img_url = ''
+	if( "undefined" !== typeof pinterestImage && null !== pinterestImage && "" !== pinterestImage ){
+		img_url = pinterestImage.url		
+	}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
+		img_url = featuredImagemedia.source_url
+	}
+	
+	var url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=`+"df" : links[type];
+	console.log(img_url);
+
 	return (
 		<div
 			className={ classnames(
@@ -47,6 +61,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
+			
 			<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 		</div>
 	)
