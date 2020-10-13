@@ -163,6 +163,7 @@ class UAGBTaxonomyList extends Component {
 			borderStyle,
 			borderThickness,
 			borderColor,
+			borderRadius,
 			listDisplayStyle,
 			showhierarchy
         } = attributes
@@ -727,6 +728,17 @@ class UAGBTaxonomyList extends Component {
 											min={ 0 }
 											max={ 10 }
 											allowReset
+										/>
+										<RangeControl
+											label={ __( "Rounded Corners (px)" ) }
+											value={ borderRadius }
+											onChange={ value => {
+												setAttributes( { borderRadius: value } )
+											} }
+											min={ 0 }
+											max={ 50 }
+											allowReset
+
 										/>										
 										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 										<ColorPalette
