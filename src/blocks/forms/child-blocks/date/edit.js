@@ -190,9 +190,9 @@ class UAGBFormsDateEdit extends Component {
 
 	var date_html = "";
 	if( additonalVal ){
-		date_html = <input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>		
+		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>		
 	}else{
-		date_html = <input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired }/>
+		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" name={name} required={ dateRequired }/>
 	}
 
 	 
@@ -223,7 +223,7 @@ class UAGBFormsDateEdit extends Component {
 						placeholder={ __( "Date" ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }						
-						className={`uagb-forms-date-label ${isRequired}`}
+						className={`uagb-forms-date-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
 					/>	
 					{date_html}									

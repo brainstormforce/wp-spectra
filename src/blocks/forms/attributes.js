@@ -287,5 +287,31 @@ const attributes = {
 		type: "string",
 		default:'left'
 	},
+
+	//recaptha.
+	reCaptchaEnable: {
+		type: "boolean",
+		default: false
+	},
+	reCaptchaType : {
+		type: "string",
+		default: "v3",
+	},
+	reCaptchaSiteKeyV2 : {
+		type: "string",
+		default: "",
+	},
+	reCaptchaSecretKeyV2 : {
+		type: "string",
+		default: "",
+	},
+	reCaptchaSiteKeyV3 : {
+		type: "string",
+		default: "",
+	},
+	reCaptchaSecretKeyV3 : {
+		type: "string",
+		default: "",
+	},
 }
 export default attributes

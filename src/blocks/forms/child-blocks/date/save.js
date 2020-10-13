@@ -37,10 +37,10 @@ export default function save( props ) {
 
 	var date_html = "";
 	if( additonalVal ){
-		date_html = <input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>
+		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" name={name} required={ dateRequired } min={validation_min_value} max={validation_max_value}/>
 		
 	}else{
-		date_html = <input type="date" className="uagb-forms-date-input" name={name} required={ dateRequired }/>
+		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" name={name} required={ dateRequired }/>
 
 	}
 	const isRequired = (dateRequired) ? "required" : "";
@@ -54,7 +54,7 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ name }
-			className={`uagb-forms-date-label ${isRequired}`}	
+			className={`uagb-forms-date-label ${isRequired} uagb-forms-input-label`}	
 			/>
 			{date_html}
 		</div>

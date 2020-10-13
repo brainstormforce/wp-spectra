@@ -31,6 +31,11 @@
             });
             requiredCheckboxes.trigger('change');
 
+            //append recaptcha js when enabled.
+            if(attr['reCaptchaEnable'] == true){
+                $('head').append(' <script src="https://www.google.com/recaptcha/api.js"></script>');
+            }
+            
             $form.on( 'submit', function( e ) {
                 UAGBForms._formSubmit( e, $( this ), attr )
             } );
