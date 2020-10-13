@@ -4256,7 +4256,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap'               => array(
 					'column-count' => $attr['tColumnsDesktop'],
 					'overflow'     => 'hidden',
-					'background'   => $attr['contentBGColor'],
 				),
 				' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
 					'padding-top' => 0,

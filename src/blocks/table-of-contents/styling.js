@@ -78,7 +78,6 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
-		contentBGColor,
 	} = props.attributes
 
 	var selectors = {}
@@ -149,7 +148,6 @@ function styling( props ) {
 	selectors[" .uagb-toc__list-wrap"] = {
 		'column-count': tColumnsDesktop,
 		'overflow': 'hidden',
-		"background-color" : contentBGColor,
 	}
 
 	if ( customWidth ) {

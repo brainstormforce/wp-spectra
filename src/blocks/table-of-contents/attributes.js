@@ -330,10 +330,7 @@ const attributes = {
 	headingAlignment: {
 		type: "string",
 		default: "left"
-	},
-	contentBGColor : {
-		type : "string",
-	},
+	},	
 }
 
 export default attributes

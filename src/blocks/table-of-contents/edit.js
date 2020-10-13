@@ -193,7 +193,6 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeightMobile,
 			mappingHeaders,
 			headingAlignment,
-			contentBGColor
 		} = attributes
 
 		let loadGFonts
@@ -539,13 +538,7 @@ class UAGBTableOfContentsEdit extends Component {
 							value={ linkHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
 							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Content Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentBGColor }} ></span></span></p>
-						<ColorPalette
-							value={ contentBGColor }
-							onChange={ ( colorValue ) => setAttributes( { contentBGColor: colorValue } ) }
-							allowReset
-						/>
+						/>						
 					</PanelBody>
 					<PanelBody title={ __( "Style" ) } initialOpen={ false }>
 						<h2>{ __( "Background" ) }</h2>

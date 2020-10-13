@@ -2025,7 +2025,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingLineHeightTablet'   => '',
 							'headingLineHeightMobile'   => '',
 							'headingAlignment'          => 'left',
-							'contentBGColor'            => '',
 						),
 					),
 					'uagb/team'               => array(
