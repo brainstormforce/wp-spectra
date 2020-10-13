@@ -4827,7 +4827,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[' .uagb-taxomony-box'] = array(
-					'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+					'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 			}
 

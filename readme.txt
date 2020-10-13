@@ -163,6 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
 * Improvement: Google Map - Now user can show language specific Google Map.
 * Improvement: Table of Content - Alignment option added for table heading .
+* Improvement: How to Schema - More options to add total time.
 * Fix: Inline Notice - Notice dismiss issue.
 * Fix: How To Schema - Step gap issue.
 * Fix: How to Schema - Image deletion issue for steps.
