@@ -248,19 +248,24 @@ class UAGBHowTo extends Component {
 				timeSpace,
 				costSpace,
 				row_gap,
-				step_gap
+				step_gap,
+				timeInMins,
+				timeInHours,
+				timeInDays,
+				timeInMonths,
+				timeInYears,
 			},
 		} = this.props
-
+		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
 		}
-
+		
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
 		let loadPriceGoogleFonts;
-
-
+		
+		
 		if( true === headLoadGoogleFonts ) {
 			
 			const hconfig = {
@@ -268,40 +273,40 @@ class UAGBHowTo extends Component {
 					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadHeadingGoogleFonts = (
 				<WebfontLoader config={ hconfig }>
 				</WebfontLoader>
 			)
 		}
-
+		
 		if( true === subHeadLoadGoogleFonts ) {
-
+			
 			const sconfig = {
 				google: {
 					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadSubHeadingGoogleFonts = (
 				<WebfontLoader config={ sconfig }>
 				</WebfontLoader>
 			)
 		}	
-
+		
 		if( true === priceLoadGoogleFonts ){
 			const pconfig = {
 				google: {
 					families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
 				},
 			};
-
+			
 			loadPriceGoogleFonts = (
 				<WebfontLoader config={ pconfig }>
 				</WebfontLoader>
 			)
 		}
-
+		
 		let url_chk = ''
 		let title = ''
 		if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
@@ -313,25 +318,27 @@ class UAGBHowTo extends Component {
 		if( '' !== url_chk ){
 			let size = attributes.mainimage.sizes
 			let imageSize = attributes.imgSize
-
+			
 			if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
-			  url = size[imageSize].url 
+				url = size[imageSize].url 
 			}else{
-			  url = url_chk 
+				url = url_chk 
 			}
-	}
+		}
+		
+		let image_icon_html = ''
+		
+		if ( mainimage && mainimage.url ) {
+			
+			image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
+			
+		}
 
-	let image_icon_html = ''
-
-	if ( mainimage && mainimage.url ) {
-
-		image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
-
-	}
-
+		var minsValue = (timeInMins) ? timeInMins : time;
+		
 		const getInfoBoxAsChild = [
 			[ 'uagb/info-box', 
-				{
+			{
 					infoBoxTitle:"Step 1",
 					iconimgPosition:"left",
 					source_type:"image",
@@ -418,6 +425,53 @@ class UAGBHowTo extends Component {
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 					help={ __( "Note: Time is recommended field for schema. It should be ON" ) }
 				/>
+				{ showTotaltime &&(
+					<PanelBody title={ __( "Time" ) } initialOpen={ true } className="uagb-editor-howto-timepanel">
+					<Fragment>
+						<RangeControl
+							label={ __( "Years" ) }
+							value={ timeInYears }
+							onChange={ ( value ) => setAttributes( { timeInYears: value } ) }
+							min={ 1 }
+							max={ 10 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Months" ) }
+							value={ timeInMonths }
+							onChange={ ( value ) => setAttributes( { timeInMonths: value } ) }
+							min={ 1 }
+							max={ 12 }
+							allowReset
+						/>						
+						<RangeControl
+							label={ __( "Days" ) }
+							value={ timeInDays }
+							onChange={ ( value ) => setAttributes( { timeInDays: value } ) }
+							min={ 1 }
+							max={ 31 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Hours" ) }
+							value={ timeInHours }
+							onChange={ ( value ) => setAttributes( { timeInHours: value } ) }
+							min={ 1 }
+							max={ 24 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Minutes" ) }
+							value={ minsValue }
+							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
+							min={ 1 }
+							max={ 60 }
+							allowReset
+						/>
+					</Fragment>
+					</PanelBody>
+				)}
+				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Estimated Cost" ) }
 					checked={ showEstcost }
@@ -634,6 +688,15 @@ class UAGBHowTo extends Component {
 			)
 		}
 
+		//Time Labels
+		var yearlabel = (timeInYears > 1) ? __( "Years" ) : __( "Year" );
+		var monthlabel = (timeInMonths > 1) ? __(" Months ") : __(" Month ");
+		var daylabel = (timeInDays > 1) ? __(" Days ") :__( " Day ");
+		var hourlabel = (timeInHours > 1) ? __("Hours ") :__( " Hour ");
+		var minslabel = (minsValue > 1) ? __(" Minutes ") : __(" Minute ");		
+
+
+
 		return (
 			<Fragment>
 				<SchemaNotices
@@ -641,9 +704,12 @@ class UAGBHowTo extends Component {
 					headingDesc = { headingDesc }
 					mainimage = { mainimage }
 					showTotaltime = { showTotaltime }
-					timeNeeded = { timeNeeded }
-					time = { time }
-					timeIn = { timeIn }
+					timeNeeded = { timeNeeded }					
+					minsValue = {minsValue}
+					timeInHours = {timeInHours}
+					timeInDays = {timeInDays}
+					timeInMonths = {timeInMonths}
+					timeInYears = {timeInYears}
 					showEstcost = { showEstcost }
 					estCost = { estCost }
 					cost = { cost }
@@ -716,30 +782,17 @@ class UAGBHowTo extends Component {
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
-					{ showTotaltime &&
-						<RichText
-							tagName="p"
-							placeholder={ __( "30" ) }
-							value={ time }
-							className='uagb-howto-timeNeeded-value'
-							onChange={ ( value ) => setAttributes( { time: value } ) }
-							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
-							onRemove={ () => onReplace( [] ) }
-						/>
-					}
-					{ showTotaltime &&
-						<RichText
-							tagName="p"
-							placeholder={ __( "Minutes" ) }
-							value={ timeIn }
-							className='uagb-howto-timeINmin-text'
-							onChange={ ( value ) => setAttributes( { timeIn: value } ) }
-							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
-							onRemove={ () => onReplace( [] ) }
-						/>
-					}
+					{showTotaltime && (
+						<Fragment>
+							
+							{timeInYears && ( <Fragment><p className='uagb-howto-timeNeeded-value'> {timeInYears}</p><p className='uagb-howto-timeINmin-text'>  {yearlabel}</p></Fragment> )}							
+							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
+							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
+							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}	
+							
+						</Fragment>
+					)}					
 					</span>
 					<span className="uagb-howto__cost-wrap">
 					{ showEstcost &&
@@ -931,9 +984,16 @@ export default compose(
 				"supply": [],
 				"step": []
 			}
+			
+			var y  = ( ownProps.attributes.timeInYears ) ? ( ownProps.attributes.timeInYears ) : 0;
+			var m  = ( ownProps.attributes.timeInMonths ) ? ( ownProps.attributes.timeInMonths  ) : 0;
+			var d  = ( ownProps.attributes.timeInDays ) ? (  ownProps.attributes.timeInDays ) : 0;
+			var h  = ( ownProps.attributes.timeInHours ) ? ( ownProps.attributes.timeInHours ) : 0;
+
+			var minutes = (ownProps.attributes.timeInMins) ? ownProps.attributes.timeInMins : ownProps.attributes.time;
 
 			if ( ownProps.attributes.showTotaltime ) {
-				json_data.totalTime = "PT"+ownProps.attributes.time+"M";
+				json_data.totalTime = "P"+y+"Y"+m+"M"+d+"DT"+h+"H"+minutes+"M";
 			}
 
 			if ( ownProps.attributes.showEstcost ) {
@@ -953,7 +1013,7 @@ export default compose(
 					json_data["tool"][key] = tools_data;
 				});
 			}
-
+			
 			if ( ownProps.attributes.showMaterials ) {
 				ownProps.attributes.materials.forEach((materials, key) => {
 					materials_data = {	
