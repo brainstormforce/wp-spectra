@@ -52,7 +52,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uagb_post_pagination', array( $this, 'post_pagination' ) );
 			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 		}
 

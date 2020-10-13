@@ -288,7 +288,24 @@ const attributes = {
 	schema: {
 		type: "string",
 		default: ""
-	}
+	},
+	timeInMins: {
+		type: "number",
+		
+	},
+	timeInHours: {
+		type: "number",		
+	},
+	timeInDays: {
+		type: "number",		
+	},
+	timeInMonths: {
+		type: "number",		
+	},
+	timeInYears: {
+		type: "number",		
+	},
+	
 }
 
 export default attributes

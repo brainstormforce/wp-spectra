@@ -88,8 +88,8 @@ function styling( props ) {
 		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
 		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
 		 },
-		' .uagb-howto-steps__wrap .wp-block.block-editor-block-list__block' : {
-			'margin-bottom' : generateCSS( s_gap, 'px' )
+		' .uagb-howto-steps__wrap .wp-block-uagb-info-box' : {
+			'margin-bottom' : generateCSSUnit( s_gap, 'px' )
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,
@@ -98,7 +98,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value": {
+		" .uagb-howto-timeNeeded-value": {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
@@ -106,7 +106,7 @@ function styling( props ) {
 			"color": subHeadingColor,
 			"margin-left" : generateCSSUnit( timeSpace,"px"),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .uagb-howto-timeINmin-text ": {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
