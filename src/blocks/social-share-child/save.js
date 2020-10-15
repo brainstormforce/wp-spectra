@@ -49,8 +49,8 @@ export default function save( props ) {
 		img_url = featuredImagemedia.source_url
 	}
 	
-	var url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=`+"df" : links[type];
-	console.log(img_url);
+	var url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
+	
 
 	return (
 		<div

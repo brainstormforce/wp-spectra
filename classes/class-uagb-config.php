@@ -1909,6 +1909,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'  => '0',
 							'social_layout' => 'horizontal',
 							'stack'         => 'none',
+							'pinterestImageURL'=>'22',
 						),
 					),
 					'uagb/social-share-child' => array(
@@ -1926,6 +1927,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'icon_hover_color'    => '',
 							'icon_bg_color'       => '',
 							'icon_bg_hover_color' => '',
+							'pinterestImageURL'=>'ss',
 						),
 					),
 					'uagb/table-of-contents'  => array(

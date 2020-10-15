@@ -134,7 +134,13 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						if( social_url == "mailto:?body=" ) {
 							target = "_self";
 						}
-						var request_url = social_url + window.location.href;
+						var  request_url ="";
+						console.log(social_url);
+						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
+							 request_url = social_url;
+						}else{
+							 request_url = social_url + window.location.href;
+						}
 						window.open( request_url, target );
 					});
 				}

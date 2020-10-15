@@ -40,6 +40,9 @@ const attributes = {
 	pinterestImage: {
 		type: "object",
 	},	
+	pinterestImageURL: {
+		type: "string",
+	},
 }
 
 export default attributes
