@@ -1,11 +1,11 @@
 /**
- * BLOCK: Inline Notice - Save Block
+ * BLOCK: Rating review block - Save Block
  */
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import { EmptyStar, FullStar, HalfStar } from "./icons";
+import { Stars } from "./components";
+// import { ReviewBody } from "./components";
 
 const {
 	RichText,
@@ -13,37 +13,30 @@ const {
 
 export default function save( props ) {
 	
-	const { highlightedStars, attributes, className } = props
+	const { attributes, className } = props
 
 	const {
-		block_id,
 		rTitle,
 		rContent,
 		mainimage,
-		imgSize,
-		showFeature,
-		feature_count,
-		featuresTitle,
-		featuresAvgText,
-		features,
+		rAuthor,
 		headingTag,
-		pricetext,
-		offerHighPrice,
-		offerLowPrice,
-		offerPrice,
-		offerType,
-		offerCurrency,
-		selectedStars,
-		offerStatus,
-		availabilitytext,
 		starCount,
-		starSize,
-		starColor,
+		ID,
+		parts,
+		summaryTitle,
+		summaryDescription,
+		inactiveStarColor,
+		activeStarColor,
+		selectedStarColor,
+		starOutlineColor,
+		imgSize,
 		schema,
+		blockID,
 	} = attributes
-
-	//console.log(attributes)
-
+	console.log(attributes);
+		const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
+	
 		let url_chk = ''
 		let title = ''
 		if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
@@ -75,181 +68,89 @@ export default function save( props ) {
 		<div className={ classnames(
 			className,
 			"uagb-ratings__outer-wrap",
-			`uagb-block-${ block_id }`
+			`uagb-block-${ blockID.substr( 0, 8 ) }`
 		) }
 		>
-		<script type="application/ld+json">
-			{ schema }
-		</script>
-			<RichText.Content
-				value={ rTitle }
-				className='uagb-rating-title'
-				tagName={ headingTag }
-			/>
-			<RichText.Content
-				tagName="p"
-				value={ rContent }
-				className='uagb-rating-desc'
-			/>
-			<div className="uagb-rating__source-wrap">
-				{image_icon_html}
-			</div>
-			<div className="uagb-rating__wrap">
-				{ showFeature &&
-					<RichText.Content
-						tagName="h4"
-						value={ featuresTitle }
-						className='uagb-rating-feature-text'
-					/>
-				}
-					{ showFeature &&
-						<div className="uagb-ratings-feature">
-							{
-								features.map( ( features, index ) => {
-							
-									return( 
-										<div
-											className={ classnames(
-											`uagb-rating-feature-${index}`,
-											"uagb-rating-feature-child__wrapper",
-											) }
-											key={ index }
-										>
-											<div className="uagb-features">
-												<RichText.Content
-													tagName="div"
-													value={ features.features_name }
-													className='uagb-rating-feature__label'
-												/>
-												<div className="uagb-features-star">
-													<div className="uagb-star-inner-container">
-														{[...Array(starCount)].map((e, i) => (
-															<div>
-																{i < (highlightedStars ? highlightedStars : selectedStars) ? (
-																	highlightedStars ? (
-																		highlightedStars - 1 === i ? (
-																			selectedStars % 1 > 0 ? (
-																				highlightedStars - selectedStars - 0.5 !== 0 ? (
-																					<HalfStar size={starSize} fillColor={starColor} />
-																				) : (
-																					<FullStar size={starSize} fillColor={starColor} />
-																				)
-																			) : highlightedStars - selectedStars !== 0 ? (
-																				<FullStar size={starSize} fillColor={starColor} />
-																			) : (
-																				<HalfStar size={starSize} fillColor={starColor} />
-																			)
-																		) : (
-																			<FullStar size={starSize} fillColor={starColor} />
-																		)
-																	) : selectedStars - i >= 1 ? (
-																		<FullStar size={starSize} fillColor={starColor} />
-																	) : (
-																		<HalfStar size={starSize} fillColor={starColor} />
-																	)
-																) : (
-																	<EmptyStar size={starSize} />
-																)}
-															</div>
-														))}
-													</div>
-												</div>
-											</div>
-										</div>		
-										)
-									} 
-								)
-							}	
-						</div>
-					}
-			</div>
-			<div class="uagb-ratings-wrap">
-				<div className="uagb-avg-review-star">
-					<RichText.Content
-						tagName="h4"
-						value={ featuresAvgText }
-						className='uagb-avg-rating-text'
-					/>
-					<div className="uagb-avg-review-star-inner-container">
-					{[...Array(starCount)].map((e, i) => (
-						<div>
-							{i < (highlightedStars ? highlightedStars : selectedStars) ? (
-								highlightedStars ? (
-									highlightedStars - 1 === i ? (
-										selectedStars % 1 > 0 ? (
-											highlightedStars - selectedStars - 0.5 !== 0 ? (
-												<HalfStar size={starSize} fillColor={starColor} />
-											) : (
-												<FullStar size={starSize} fillColor={starColor} />
-											)
-										) : highlightedStars - selectedStars !== 0 ? (
-											<FullStar size={starSize} fillColor={starColor} />
-										) : (
-											<HalfStar size={starSize} fillColor={starColor} />
-										)
-									) : (
-										<FullStar size={starSize} fillColor={starColor} />
-									)
-								) : selectedStars - i >= 1 ? (
-									<FullStar size={starSize} fillColor={starColor} />
-								) : (
-									<HalfStar size={starSize} fillColor={starColor} />
-								)
-							) : (
-								<EmptyStar size={starSize} />
-							)}
-						</div>
-					))}
-					</div>
+			<script type="application/ld+json">
+				{ schema }
+			</script>
+			<div className="uagb_review_block">
+				<RichText.Content
+					value={ rTitle }
+					className='uagb-rating-title'
+					tagName={ headingTag }
+				/>
+				<RichText.Content
+					tagName="p"
+					value={ rContent }
+					className='uagb-rating-desc'
+				/>
+				<RichText.Content
+					tagName="p"
+					value={ rAuthor }
+					className='uagb-rating-author'
+				/>
+				<div className="uagb-rating__source-wrap">
+					{image_icon_html}
 				</div>
-				<div className="uagb-product-price">
-					<RichText.Content
-						tagName="h4"
-						value={ pricetext }
-						className='uagb-price-text'
-					/>
-						{offerType === "Offer" ? (
-							<div className="uagb-product-price-value">
-								<RichText.Content
-									tagName="h4"
-									value={ offerPrice }
-									className='uagb-price-value-text'
-								/>
-							</div>
-						) : (
-							<div className="uagb-product-price-value">
-								<RichText.Content
-									tagName="h4"
-									value={ offerLowPrice }
-									className='uagb-price-value-text'
-								/>
-							</div>
-							)
-						}
-						<div className="uagb-product-price-currency">
-							<RichText.Content
-								tagName="h4"
-								value={ offerCurrency }
-								className='uagb-price-currency-text'
+					{parts.map((j, i) => (
+					<div className="uagb_review_entry">
+						<RichText.Content
+							tagName="div"
+							value={j.label}
+						/>
+						<div
+							key={i}
+							style={{
+								marginLeft: "auto",
+								minWidth: parts.length > 1 ? 120 : 100,
+							}}
+						>
+							<Stars
+								id={`${i}`}
+								key={i}
+								value={j.value}
+								limit={starCount}
+								inactiveStarColor={inactiveStarColor}
+								activeStarColor={activeStarColor}
+								selectedStarColor={selectedStarColor}
+								starOutlineColor={starOutlineColor}
 							/>
 						</div>
-				</div>
-				<div className="uagb-stock-availability">
-					<RichText.Content
-						tagName="h4"
-						value={ availabilitytext }
-						className='uagb-availability-text'
-					/>
-					<div className="uagb-stock-availability-value">
-						<RichText.Content
-							tagName="h4"
-							value={ offerStatus }
-							className='uagb-availability-value-text'
-						/>
 					</div>
+					))}
+					<div className="uagb_review_summary">
+						<RichText.Content
+							className="uagb_review_summary_title"
+							tagName="p"
+							value={summaryTitle}
+						/>
+						<div className="uagb_review_overall_value">
+							<RichText.Content
+								className="uagb_review_summary_desc"
+								tagName="p"
+								value={summaryDescription}
+							/>
+							<div className="uagb_review_average">
+								<span className="uagb_review_rating">
+									{Math.round(newAverage * 10) / 10}
+								</span>
+								<Stars
+									id={`${ID}-average`}
+									className="uagb_review_average_stars"
+									onHover={() => null}
+									onClick={() => null}
+									value={newAverage}
+									limit={starCount}
+									inactiveStarColor={inactiveStarColor}
+									activeStarColor={activeStarColor}
+									selectedStarColor={selectedStarColor}
+									starOutlineColor={starOutlineColor}
+								/>
+							</div>
+						</div>
 				</div>
 			</div>
-			
-			</div>
+		</div>
 	)
 }

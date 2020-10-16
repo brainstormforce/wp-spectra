@@ -8,6 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		blockID,
 		block_id,
 		starColor,
 		descColor,
@@ -47,6 +48,10 @@ function styling( props ) {
 		contentVrPadding,
 		contentHrPadding,
 		star_gap,
+		authorColor,
+		summaryColor,
+		starActiveColor,
+		starOutlineColor,
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -60,26 +65,26 @@ function styling( props ) {
 		" .uagb-avg-review-star-inner-container svg" : {
 			"fill":starColor,
 		},
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-title.keep-placeholder-on-focus" : {
+		" .uagb-rating-title.keep-placeholder-on-focus" : {
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-weight": titleFontWeight,
 			"font-family": titleFontFamily,
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		    "color": titleColor,
 		},
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-feature-text" : {
-			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
-			"font-weight": titleFontWeight,
-			"font-family": titleFontFamily,
-			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		    "color": titleColor,
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-desc.keep-placeholder-on-focus" : {
+		" .uagb-rating-desc.keep-placeholder-on-focus" : {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-weight": descFontWeight,
 			"font-family": descFontFamily,
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 		    "color": descColor,
+		},
+		" .uagb-rating-author.keep-placeholder-on-focus" : {
+			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
+			"font-weight": descFontWeight,
+			"font-family": descFontFamily,
+			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
+		    "color": authorColor,
 		},
 		" .uagb-features .uagb-rating-feature__label" : {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
@@ -145,8 +150,18 @@ function styling( props ) {
 		    "font-family": contentFontFamily,
 		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
 		},
-		" .uagb-ratings-wrap" : {
+		" .uagb_review_entry .rich-text" : {
 			"color" : contentColor,
+		},
+		" .uagb_review_summary" : {
+			"color": summaryColor,
+		},
+		" .uagb_review_entry .star, .uagb_review_average_stars .star" : {
+			"fill": starColor,
+		},
+		" .uagb_review_entry path, .uagb_review_average_stars path" : {
+			"stroke":starOutlineColor,
+			"fill": starActiveColor,
 		}
 	}
 
@@ -228,7 +243,7 @@ function styling( props ) {
 		},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ blockID.substr( 0, 8 ) }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 

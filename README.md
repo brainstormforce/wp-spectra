@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.4  
-**Stable tag:** 1.16.0  
+**Tested up to:** 5.5  
+**Stable tag:** 1.17.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 1,000,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 1+ million users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -158,18 +158,39 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 1.18.0 ###
+* New: Taxonomy List.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
+* Improvement: Google Map - Now user can show language specific Google Map.
+* Fix: Inline Notice - Notice dismiss issue.
+* Fix: How To Schema - Step gap issue.
+* Fix: How to Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
+* Fix: Post Block - Infinite scroll broken for anonymous user.
 
 ### 1.17.0 ###
+* Improvement: Compatibility with WordPress 5.5.
+* Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
+* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
+* Fix: Icon List - Icon List Border turns to the oval issue.
+* Fix: Info Box - Fixed a Typography issue with CTA-Button.
+* Fix: Call To Action - Rectified the issue with Anchor that does not save.
+
+### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
-* Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
-* Improvement: New Gradient Pallete is introduced to set background.
+* Improvement: Advanced Columns - New Gradient Palette is introduced to set background.
+* Improvement: Sections - New Gradient Palette is introduced to set background.
+* Improvement: FAQ Schema - Added heading options for question.
+* Improvement: Post Layouts - Added an option to exclude current post.
+* Improvement: Post Layouts - Option to Display Post Content Type as Excerpt/Full-Post.
+* Improvement: Inline Notice - Added heading options for Notice title.
 * Fix: Post Grid - Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the FAQ.
+* Fix: Social Share - Fixed an issue with reusable block.
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
-* Improvement: FAQ Schema - Added heading options for question.
-* Improvement: Post Layout - Added an option to exclude current post.
-* Improvement: Inline Notice - Added heading options for notice title.
-* Fix: Info Box - CSS selector affecting all of Gutenberg.
+* Fix: Info Box - Fixed an issue with CSS selector.
+* Fix: Icon List - Icon Top Alignment issue.
 
 ### 1.16.0 ###
 * New: WP - Search Block.

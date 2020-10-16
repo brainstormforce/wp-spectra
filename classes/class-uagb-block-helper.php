@@ -28,54 +28,116 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/ratings']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
-
+			
 			$t_selectors = array();
 			$m_selectors = array();
 			$selectors   = array();
 
 			$selectors = array(
-
-				' .uagb-rating-title' => array(
-					'color' => $attr['titleColor'],
+				" .uagb-rating-title"  => array(
+					"font-size"=> UAGB_Helper::get_css_value( $attr['titleFontSize'], $attr['titleFontSizeType'] ),
+					"font-weight"=> $attr['titleFontWeight'],
+					"font-family"=> $attr['titleFontFamily'],
+					"line-height"=> UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
+					"color"=> $attr['titleColor'],
 				),
-
-				' .uagb-rating__wrap .uagb-rating-feature-text' => array(
-					'color' => $attr['titleColor'],
+				" .uagb-rating-desc"  => array(
+					"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
+					"font-weight"=> $attr['descFontWeight'],
+					"font-family"=> $attr['descFontFamily'],
+					"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
+					"color"=> $attr['descColor'],
 				),
-
-				' .uagb-rating-desc'  => array(
-					'color' => $attr['descColor'],
+				" .uagb-rating-author"  => array(
+					"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
+					"font-weight"=> $attr['descFontWeight'],
+					"font-family"=> $attr['descFontFamily'],
+					"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
+					"color"=> $attr['authorColor'],
 				),
-
-				' .uagb-features .uagb-rating-feature__label' => array(
-					'color' => $attr['descColor'],
+				// " .uagb-features .uagb-rating-feature__label"  => array(
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
+				// 	"font-weight"=> $attr['descFontWeight'],
+				// 	"font-family"=> $attr['descFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
+				// 	"color"=> $attr['descColor'],
+				// ),
+				// " .uagb-ratings-wrap .uagb-stock-availability"  => array(
+				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// ),
+				// " .uagb-ratings-wrap .uagb-product-price"  => array(
+				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// ),
+				// " .uagb-ratings-wrap .uagb-avg-review-star"  => array(
+				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
+				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
+				// ),
+				// " .uagb-features-star .uagb-star-inner-container"  => array(
+				// 	"margin-left"=>UAGB_Helper::get_css_value( $attr['star_gap'], "px" ),
+				// ),
+				// " .uagb-avg-rating-text"  => array(
+				//    "font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				//    "font-weight"=> $attr['contentFontWeight'],
+				//    "font-family"=> $attr['contentFontFamily'],
+				//    "line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// ),
+				// " .uagb-price-text"  => array(
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				// 	"font-weight"=> $attr['contentFontWeight'],
+				// 	"font-family"=> $attr['contentFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// ),
+				// " .uagb-price-value-text" : {
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				// 	"font-weight"=> $attr['contentFontWeight'],
+				// 	"font-family"=> $attr['contentFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// },
+				// " .uagb-price-currency-text"  => array(
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				// 	"font-weight"=> $attr['contentFontWeight'],
+				// 	"font-family"=> $attr['contentFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// ),
+				// " .uagb-availability-text"  => array(
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				// 	"font-weight"=> $attr['contentFontWeight'],
+				// 	"font-family"=> $attr['contentFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// ),
+				// " .uagb-availability-value-text"  => array(
+				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				// 	"font-weight"=> $attr['contentFontWeight'],
+				// 	"font-family"=> $attr['contentFontFamily'],
+				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+				// ),
+				" .uagb_review_entry"  => array(
+					"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
+				   "font-weight"=> $attr['contentFontWeight'],
+				   "font-family"=> $attr['contentFontFamily'],
+				   "line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
+					"color" => $attr['contentColor'],
 				),
-
-				' .uagb-ratings-wrap .uagb-avg-review-star .uagb-avg-rating-text' => array(
-					'color' => $attr['contentColor'],
+				" .uagb_review_summary"  => array(
+					"color"=> $attr['summaryColor'],
 				),
-
-				' .uagb-product-price .uagb-price-text, .uagb-product-price-value .uagb-price-value-text, .uagb-product-price-currency .uagb-price-currency-text' => array(
-					'color' => $attr['contentColor'],
+				" .uagb_review_entry .star, .uagb_review_average_stars .star"  => array(
+					"fill"=> $attr['starColor'],
 				),
-
-				' .uagb-stock-availability .uagb-availability-text, .uagb-stock-availability-value .uagb-availability-value-text' => array(
-					'color' => $attr['contentColor'],
-				),
-
-				' .uagb-ratings-wrap .uagb-stock-availability, .uagb-ratings-wrap .uagb-product-price, .uagb-ratings-wrap .uagb-avg-review-star' => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-				),
-
-				' .uagb-features-star .uagb-star-inner-container' => array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['star_gap'], 'px' ),
-				),
-
+				" .uagb_review_entry path, .uagb_review_average_stars path"  => array(
+					"stroke"=>$attr['starOutlineColor'],
+					"fill"=> $attr['starActiveColor'],
+				)
 			);
-
+			// var_dump($selectors);
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
@@ -88,7 +150,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb-avg-review-star, .uagb-price-text, .uagb-price-value-text, .uagb-price-currency-text, .uagb-availability-text, .uagb-availability-value-text', $combined_selectors );
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['blockID'], 0, 8) );
 
 		}
 
@@ -999,11 +1061,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
+
 				foreach ( $attr['buttons'] as $key => $button ) {
 
 					if ( $attr['btn_count'] <= $key ) {
 						break;
 					}
+
+					$button = array_merge( $defaults, (array) $button );
 
 					$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 
@@ -1871,8 +1937,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/social-share-child']['attributes'];
+
 				foreach ( $attr['socials'] as $key => $socials ) {
 
+					$socials                        = array_merge( $defaults, (array) $socials );
 					$socials['icon_color']          = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
 					$socials['icon_hover_color']    = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
 					$socials['icon_bg_color']       = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
@@ -2114,7 +2183,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-icon-list-repeater'] = array(
 					'font-family' => $attr['fontFamily'],
 					'font-weight' => $attr['fontWeight'],
-					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 			}
@@ -2228,6 +2297,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
+
 				foreach ( $attr['icons'] as $key => $icon ) {
 
 					$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-icon-list-repeater-' . $key . '.uagb-icon-list__wrapper' : ' .uagb-icon-list-repeater';
@@ -2251,18 +2322,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
 					);
 
-					$icon['icon_color']              = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
-					$icon['icon_hover_color']        = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
-					$icon['icon_bg_color']           = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
-					$icon['icon_bg_hover_color']     = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-					$icon['icon_border_color']       = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-					$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
-					$icon['label_color']             = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
-					$icon['label_hover_color']       = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
-
 					if ( $attr['icon_count'] <= $key ) {
 						break;
 					}
+
+					$icon = array_merge( $defaults, (array) $icon );
 
 					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
 					$selectors       = array_merge( $selectors, (array) $child_selectors );
@@ -2441,7 +2505,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
+			$base_selector      = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -3335,7 +3400,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'               => array(
-					'color' => $attr['dateColor'],
+					'color'     => $attr['dateColor'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
 				' .uagb-timeline__events-inner-new'       => array(
 					'background-color' => $attr['backgroundColor'],
@@ -4638,6 +4704,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
 					'display'               => 'grid',
 				);
+				$t_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']  = array(
+					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+				);
+				$m_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']  = array(
+					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+				);
 			}
 
 			$combined_selectors = array(
@@ -4806,6 +4878,119 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input', $combined_selectors );
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
+
+		/**
+		 * Get Taxonomy List CSS.
+		 *
+		 * @since 1.17.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_taxonomy_list_css( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/taxonomy-list']['attributes'];
+			$attr     = array_merge( $defaults, $attr );
+
+			$selectors   = array();
+			$t_selectors = array();
+			$m_selectors = array();
+
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
+
+			$selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid'   => array(
+					'display'               => 'grid',
+					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
+					'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
+
+				),
+				' .uagb-layout-grid .uagb-taxomony-box'   => array(
+					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
+					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+					'background-color' => $attr['bgColor'],
+					'text-align'       => $attr['alignment'],
+					'box-shadow'       => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+
+				),
+				' .uagb-layout-grid .uagb-tax-title'      => array(
+					'color'         => $attr['titleColor'],
+					'margin-top'    => '0',
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+				),
+				' .uagb-layout-grid .uagb-tax-count'      => array(
+					'color' => $attr['countColor'],
+				),
+
+				// List layout styling.
+				' .uagb-layout-list .uagb-tax-list'       => array(
+					'list-style' => $attr['listStyle'],
+					'color'      => $attr['listStyleColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list:hover' => array(
+					'color' => $attr['hoverlistStyleColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list a.uagb-tax-link' => array(
+					'color' => $attr['listTextColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list a.uagb-tax-link:hover' => array(
+					'color' => $attr['hoverlistTextColor'],
+				),
+				' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['listBottomMargin'], 'px' ),
+				),
+
+			);
+
+			if ( 'none' !== $attr['seperatorStyle'] ) {
+				$selectors[' .uagb-layout-list .uagb-tax-separator'] = array(
+					'border-top-color' => $attr['seperatorColor'],
+					'border-top-style' => $attr['seperatorStyle'],
+					'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+					'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
+				);
+			}
+
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors[' .uagb-taxomony-box'] = array(
+					'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+				);
+			}
+
+			$t_selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+				),
+				' .uagb-layout-grid .uagb-taxomony-box' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+				),
+			);
+
+			$m_selectors = array(
+				' .uagb-taxonomy-wrap.uagb-layout-grid' => array(
+					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+				),
+				' .uagb-layout-grid .uagb-taxomony-box' => array(
+					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-layout-grid .uagb-tax-title', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', ' .uagb-layout-grid .uagb-tax-count', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', ' .uagb-layout-list .uagb-tax-list', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}

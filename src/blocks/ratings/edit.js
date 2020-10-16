@@ -9,21 +9,17 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import SchemaNotices from "./schema-notices"
 import times from "lodash/times"
-import { EmptyStar, FullStar, HalfStar } from "./icons";
-
+import { ReviewBody } from "./components";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
-
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-// Setup the block
 
 const { __ } = wp.i18n
 
-const { compose } = wp.compose
-
-const { select, withSelect } = wp.data
+const { withState, compose } = wp.compose;
+const { withSelect } = wp.data;
 
 const {
 	AlignmentToolbar,
@@ -50,13 +46,24 @@ const {
 	Fragment,
 } = wp.element
 
-let svg_icons = Object.keys( UAGBIcon )
-
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
 	{ value: "medium", label: __( "Medium" ) },
 	{ value: "full", label: __( "Large" ) }
 ]
+
+compose([
+	withState({ editable: "", editedStar: 0 }),
+	withSelect((select, ownProps) => {
+		const { getBlock } =
+			select("core/block-editor") || select("core/editor");
+
+		return {
+			block: getBlock(ownProps.clientId),
+			getBlock,
+		};
+	}),
+])
 
 class UAGBRatingEdit extends Component {
 
@@ -99,44 +106,6 @@ class UAGBRatingEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 	}
-
-	savefeatures( value, index ) {
-			const { attributes, setAttributes } = this.props
-			const { features } = attributes
-
-		const newItems = features.map( ( item, thisIndex ) => {
-			if ( index === thisIndex ) {
-				item = { ...item, ...value }
-			}
-
-			return item
-		} )
-
-			setAttributes( {
-				features: newItems,
-			} )
-		}
-
-		removefeatures( value, index ) {
-			const { attributes, setAttributes } = this.props
-			const { features } = attributes
-
-			let newItemsList = []
-			
-			newItemsList = features.splice(index, 1)
-
-			const newItems = features.map( ( item, thisIndex ) => {
-			if ( index === thisIndex ) {
-				item = { ...item, ...value }
-			}
-
-			return item
-		} )
-
-			setAttributes( {
-				features: newItems,
-			} )
-		}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -193,22 +162,47 @@ class UAGBRatingEdit extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
+				blockID,
 				block_id,
+				authorName,
+				itemName,
+				description,
+				imgID,
+				imgAlt,
+				imgURL,
+				items,
+				parts,
+				starCount,
+				summaryTitle,
+				summaryDescription,
+				inactiveStarColor,
+				activeStarColor,
+				titleAlign,
+				authorAlign,
+				descriptionAlign,
+				sku,
+				identifier,
+				identifierType,
+				offerType,
+				offerCurrency,
+				offerStatus,
+				offerHighPrice,
+				offerLowPrice,
+				offerPrice,
+				offerCount,
+				offerExpiry,
+				ctaLink,
+				ctaTarget,
+				author,
+				brand,
 				rTitle,
 				rContent,
+				rAuthor,
+				headingTag,
 				mainimage,
 				imgSize,
 				showFeature,
-				feature_count,
-				featuresTitle,
-				featuresAvgText,
-				features,
-				headingTag,
-				starCount,
-				starSize,
 				starColor,
-				pricevalue,
-				pricetext,
 				selectedStars,
 				descColor,
 				titleColor,
@@ -249,97 +243,86 @@ class UAGBRatingEdit extends Component {
 				contentLineHeight,
 				contentLineHeightTablet,
 				contentLineHeightMobile,
-				availabilitytext,
-				availabilityvalue,
 				contentVrPadding,
 				contentHrPadding,
 				star_gap,
-				sku,
-				identifier,
-				identifierType,
-				offerType,
-				offerCurrency,
-				offerStatus,
-				offerHighPrice,
-				offerLowPrice,
-				offerPrice,
-				offerCount,
-				offerExpiry,
-				ctaLink,
-				ctaTarget,
-				author,
-				brand,
+				authorColor,
+				summaryColor,
+				starActiveColor,
+				starOutlineColor,
 			},
 			setAttributes,
+			isSelected,
+			editable,
+			editedStar,
+			setState,
+			block,
+			getBlock,
 			className,
-			attributes,
-			mergeBlocks,
-			highlightedStars
 		} = this.props;
-
-		let loadTitleGoogleFonts;
-		let loadDescriptionGoogleFonts;
-		let loadContentGoogleFonts;
-
-
-		if( true === titleLoadGoogleFonts ) {
-			
-			const hconfig = {
-				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
-				},
-			};
-
-			loadTitleGoogleFonts = (
-				<WebfontLoader config={ hconfig }>
-				</WebfontLoader>
-			)
+		// console.log(this.props);
+		if (
+			blockID === ""
+		) {
+			setAttributes({
+				
+				blockID: this.props.clientId.substr( 0, 8 ),
+			});
 		}
 
-		if( true === descLoadGoogleFonts ) {
+		// const setAlignment = (target, value) => {
+		// 	switch (target) {
+		// 		case "reviewTitle":
+		// 			setAttributes({ titleAlign: value });
+		// 			break;
+		// 		case "reviewAuthor":
+		// 			setAttributes({ authorAlign: value });
+		// 			break;
+		// 		case "reviewItemDescription":
+		// 			setAttributes({ descriptionAlign: value });
+		// 			break;
+		// 	}
+		// };
 
-			const sconfig = {
-				google: {
-					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
-				},
-			};
+		// const getCurrentAlignment = (target) => {
+		// 	switch (target) {
+		// 		case "reviewTitle":
+		// 			return titleAlign;
+		// 		case "reviewAuthor":
+		// 			return authorAlign;
+		// 		case "reviewItemDescription":
+		// 			return descriptionAlign;
+		// 	}
+		// };
 
-			loadDescriptionGoogleFonts = (
-				<WebfontLoader config={ sconfig }>
-				</WebfontLoader>
-			)
+		if (
+			items &&
+			items !== JSON.stringify(parts) &&
+			parts.length === 1 &&
+			parts[0].label === "" &&
+			parts[0].value === 0
+		) {
+			setAttributes({
+				parts: JSON.parse(items),
+				items: '[{"label":"","value":0}]',
+			});
 		}
 
-		if( true === contentLoadGoogleFonts ) {
-
-			const sconfig = {
-				google: {
-					families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
-				},
-			};
-
-			loadContentGoogleFonts = (
-				<WebfontLoader config={ sconfig }>
-				</WebfontLoader>
-			)
-		}
-
-		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
 		}
 
 			let url_chk = ''
 			let title = ''
-			if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
-				url_chk = attributes.mainimage.url
-				title = attributes.mainimage.title
+			if( "undefined" !== typeof this.props.attributes.mainimage  && null !== this.props.attributes.mainimage && "" !== this.props.attributes.mainimage ){
+				url_chk = this.props.attributes.mainimage.url
+				title = this.props.attributes.mainimage.title
 			}
 			
 			let url = ''
 			if( '' !== url_chk ){
-				let size = attributes.mainimage.sizes
-				let imageSize = attributes.imgSize
+				let size = this.props.attributes.mainimage.sizes
+				let imageSize = this.props.attributes.imgSize
 
 				if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
 				  url = size[imageSize].url 
@@ -352,13 +335,29 @@ class UAGBRatingEdit extends Component {
 
 		if ( mainimage && mainimage.url ) {
 
-			image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
+			image_icon_html = <img className="uagb-review__source-image" src={url} title={title}/>
 
 		}
 
 		const ratingStyleSettings = () => {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
+					<RangeControl
+							label={__("Star rating for current feature")}
+							value={parts[editedStar]}
+							onChange={(newValue) => {
+								setAttributes({
+									parts: [
+										...parts.slice(0, editedStar),
+										Object.assign({}, parts[editedStar], { value: newValue }),
+										...parts.slice(editedStar + 1),
+									],
+								});
+							}}
+							min={1}
+							max={5}
+							step={0.5}
+						/>
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
@@ -374,6 +373,13 @@ class UAGBRatingEdit extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+					<ColorPalette
+						value={ authorColor }
+						onChange={ ( value ) => setAttributes( { authorColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
 					<ColorPalette
 						value={ contentColor }
@@ -381,17 +387,38 @@ class UAGBRatingEdit extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Summary Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: summaryColor }} ></span></span></p>
+					<ColorPalette
+						value={ summaryColor }
+						onChange={ ( value ) => setAttributes( { summaryColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Active Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
 					<ColorPalette
 						value={ starColor }
 						onChange={ ( value ) => setAttributes( { starColor: value } ) }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Inactive Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starActiveColor }} ></span></span></p>
+					<ColorPalette
+						value={ starActiveColor }
+						onChange={ ( value ) => setAttributes( { starActiveColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Star Outline Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starOutlineColor }} ></span></span></p>
+					<ColorPalette
+						value={ starOutlineColor }
+						onChange={ ( value ) => setAttributes( { starOutlineColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Typography" ) }</h2>
 						<TypographyControl
 							label={ __( "Title" ) }
-							attributes = { attributes }
+							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
 							fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
@@ -408,7 +435,7 @@ class UAGBRatingEdit extends Component {
 						/>
 						<TypographyControl
 							label={ __( "Description" ) }
-							attributes = { attributes }
+							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: descLoadGoogleFonts, label: 'descLoadGoogleFonts' } }
 							fontFamily = { { value: descFontFamily, label: 'descFontFamily' } }
@@ -425,7 +452,7 @@ class UAGBRatingEdit extends Component {
 						/>
 						<TypographyControl
 							label={ __( "Content" ) }
-							attributes = { attributes }
+							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
 							fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
@@ -455,8 +482,8 @@ class UAGBRatingEdit extends Component {
 					/>
 					<TextControl
 						label={__("Author")}
-						value={author}
-						onChange={(author) => setAttributes({ author })}
+						value={rAuthor}
+						onChange={(rAuthor) => setAttributes({ rAuthor })}
 					/>
 					<TextControl
 						label={__("SKU")}
@@ -524,7 +551,7 @@ class UAGBRatingEdit extends Component {
 								}))}
 								onChange={(offerStatus) => setAttributes({ offerStatus })}
 							/>
-							<ToggleControl
+							{/* <ToggleControl
 								label={__("Offer expiration")}
 								checked={offerExpiry > 0}
 								onChange={(_) =>
@@ -534,8 +561,13 @@ class UAGBRatingEdit extends Component {
 											: 60 * (10080 + Math.ceil(Date.now() / 60000)), //default to one week from Date.now() when enabled
 									})
 								}
+							/> */}
+							<TextControl
+								label={__("Offer expiration")}
+								value={offerExpiry}
+								onChange={(offerExpiry) => setAttributes({ offerExpiry })}
 							/>
-							<ExternalLink href={ 'https://en.wikipedia.org/wiki/ISO_8601' }>
+							{/* <ExternalLink href={ 'https://en.wikipedia.org/wiki/ISO_8601' }>
 								{ __( 'Learn more about date/time formats.' ) }
 							</ExternalLink>
 							{offerExpiry > 0 && (
@@ -543,11 +575,12 @@ class UAGBRatingEdit extends Component {
 									currentDate={offerExpiry * 1000}
 									onChange={(newDate) =>
 										setAttributes({
-											offerExpiry: Math.floor(Date.parse(newDate) / 1000),
+											offerExpiry: (Date.parse(newDate) / 1000),
+											// offerExpiry : new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(offerExpiry)
 										})
 									}
 								/>
-							)}
+							)} */}
 						</Fragment>
 					) : (
 						<Fragment>
@@ -575,7 +608,7 @@ class UAGBRatingEdit extends Component {
 				</PanelBody>
 			)
 		}
-
+		// console.log(($average % 1 == 0 ? $average : number_format(average$, 1, '.', '')));
 
 		const ratingGeneralSettings = () => {
 			return (
@@ -670,407 +703,134 @@ class UAGBRatingEdit extends Component {
 				</PanelBody>
 			)
 		}
+
 		
-		return (
-			<Fragment>
-				<SchemaNotices
-					rTitle = { rTitle }
-					rContent = { rContent }
-					mainimage = { mainimage }
-					sku = { sku }
-					brand = { brand }
-					author = { author }
-					offerCount = { offerCount }
-					offerLowPrice = { offerLowPrice }
-					offerHighPrice = { offerHighPrice }
-					offerCurrency = { offerCurrency }
-					offerPrice = { offerPrice }
-					ctaLink = { ctaLink }
-					offerExpiry = { offerExpiry }
-					identifier = { identifier }
-					showFeature = { showFeature }
-					features = { features }
-					clientId = { this.props.clientId }
-				/>
+		return [
+			isSelected && (
 				<InspectorControls>
 					{ ratingGeneralSettings() }
 					{ ratingSchemaSettings() }
 					{ ratingStyleSettings() }
 				</InspectorControls>
+			),
 			<div className={ classnames(
 				className,
 				"uagb-ratings__outer-wrap",
-				`uagb-block-${ block_id }`
-				) }
-				>
-				<RichText
-					tagName={ headingTag }
-					placeholder={ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
-					keepPlaceholderOnFocus
-					value={ rTitle }
-					className='uagb-rating-title'
-					onChange={ ( value ) =>
-						setAttributes( { rTitle: value } )
-					}
-				/>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Review Description', 'ultimate-addons-for-gutenberg' ) }
-					keepPlaceholderOnFocus
-					value={ rContent }
-					className='uagb-rating-desc'
-					onChange={ ( value ) =>
-						setAttributes( { rContent: value } )
-					}
-				/>
-				<div className="uagb-rating__source-wrap">{image_icon_html}</div>
-				<div className="uagb-rating__wrap">
-					{ showFeature &&
-					<RichText
-						tagName="h4"
-						placeholder={ __( "List Of Features:" ) }
-						value={ featuresTitle }
-						className='uagb-rating-feature-text'
-						onChange={ ( value ) => setAttributes( { featuresTitle: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-					}
-					{ showFeature &&
-					<div className="uagb-ratings-feature">
-								{
-								features.map( ( features, index ) => {
+				`uagb-block-${ blockID.substr( 0, 8 ) }`
+			) }>
+			<ReviewBody
+				rTitle={rTitle}
+				rContent={rContent}
+				rAuthor={rAuthor}
+				headingTag={headingTag}
+				mainimage={mainimage}
+				imgSize={imgSize}
+				image_icon_html={image_icon_html}
+				isSelected={isSelected}
+				authorName={authorName}
+				itemName={itemName}
+				description={description}
+				// descriptionEnabled={enableDescription}
+				ID={blockID}
+				imgID={imgID}
+				imgAlt={imgAlt}
+				imgURL={imgURL}
+				// imageEnabled={enableImage}
+				items={parts}
+				starCount={starCount}
+				summaryTitle={summaryTitle}
+				summaryDescription={summaryDescription}
+				inactiveStarColor={inactiveStarColor}
+				activeStarColor={activeStarColor}
+				selectedStarColor={activeStarColor}
+				starOutlineColor={starOutlineColor}
+				setAuthorName={(newValue) => setAttributes({ authorName: newValue })}
+				setItemName={(newValue) => setAttributes({ itemName: newValue })}
+				setDescription={(newValue) => setAttributes({ description: newValue })}
+				setImage={(img) =>
+					setAttributes({
+						imgID: img.id,
+						imgURL: img.url,
+						imgAlt: img.alt,
+					})
+				}
+				setItems={(newValue) => setAttributes({ parts: newValue })}
+				setSummaryTitle={(newValue) =>
+					setAttributes({ summaryTitle: newValue })
+				}
+				setSummaryDescription={(newValue) =>
+					setAttributes({ summaryDescription: newValue })
+				}
+				hasFocus={isSelected}
+				setEditable={(newValue) => setState({ editable: newValue })}
+				setActiveStarIndex={(editedStar) => setState({ editedStar })}
+			/></div>,
+		];
+	}} 
+	export default compose(
+		withSelect( ( select, ownProps ) => {
+			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
+			console.log();
+				var offers = {}
+				var json_data = {
+					"@context": "https://schema.org/",
+					"@type": "Product",
+					"name": ownProps.attributes.rTitle,
+					"description": ownProps.attributes.rContent,
+					"image": [],
+					"sku": ownProps.attributes.sku,
+					"brand": {
+						  "@type": "Brand",
+						  "name": ownProps.attributes.brand,
+						},
+					"review": {
+					  "@type": "Review",
+					  "reviewRating": {
+						"@type": "Rating",
+						"ratingValue": newAverage,
+						"bestRating": ownProps.attributes.starCount,
 
-										return (
-											<div
-												className={ classnames(
-													`uagb-rating-feature-${index}`,
-													"uagb-rating-feature-child__wrapper",
-												) }
-												key={ index }
-											>
-												<div className="uagb-features">
-													<RichText
-														tagName="div"
-														placeholder={ __( "Requirements Features:" ) }
-														value={ features.features_name }
-														onChange={ value => {
-																	this.savefeatures( { features_name: value }, index )
-																} }
-														className='uagb-rating-feature__label'
-														placeholder={ __( "- Feature" ) }
-														multiline={false}
-														allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-													/>
-													<div
-														className="dashicons dashicons-trash"
-														value={ feature_count }
-														onClick={ value => {
-																	this.removefeatures( { features_name: value }, index )
-																} }
-													/>
-													<div className="uagb-features-star">
-													<div
-														className="uagb-star-inner-container"
-														onMouseLeave={() => setAttributes({ highlightedStars: 0 })}
-													>
-														{[...Array(starCount)].map((e, i) => (
-															<div
-																key={i}
-																onMouseEnter={() => {
-																	setAttributes({ highlightedStars: i + 1 });
-																}}
-																onClick={() => {
-																	if (selectedStars % 1 === 0) {
-																		setAttributes({
-																			selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
-																		});
-																	} else {
-																		setAttributes({
-																			selectedStars: i + (selectedStars - 0.5 === i ? 1 : 0.5)
-																		});
-																	}
-																}}
-															>
-																{i < (highlightedStars ? highlightedStars : selectedStars) ? (
-																	highlightedStars ? (
-																		highlightedStars - 1 === i ? (
-																			selectedStars % 1 > 0 ? (
-																				highlightedStars - selectedStars - 0.5 !== 0 ? (
-																					<HalfStar size={starSize} fillColor={starColor} />
-																				) : (
-																					<FullStar size={starSize} fillColor={starColor} />
-																				)
-																			) : highlightedStars - selectedStars !== 0 ? (
-																				<FullStar size={starSize} fillColor={starColor} />
-																			) : (
-																				<HalfStar size={starSize} fillColor={starColor} />
-																			)
-																		) : (
-																			<FullStar size={starSize} fillColor={starColor} />
-																		)
-																	) : selectedStars - i >= 1 ? (
-																		<FullStar size={starSize} fillColor={starColor} />
-																	) : (
-																		<HalfStar size={starSize} fillColor={starColor} />
-																	)
-																) : (
-																	<EmptyStar size={starSize} />
-																)}
-															</div>
-														))}
-														</div>
-													</div>
-											</div>
-											</div>
-										)
-									})
-								}
-								{ showFeature &&
-						<div
-						className="dashicons dashicons-plus-alt"
-						value={ feature_count }
-						onClick={ newCount => {
-							let cloneIcons = [ ...features ]
+					  },
+					  "author": {
+						"@type": "Person",
+						"name": ownProps.attributes.rAuthor,
+					  }
+					},
+				   "aggregateRating": {
+					  "@type": "AggregateRating",
+					  "ratingValue": newAverage,
+					  "reviewCount": (newAverage/ownProps.attributes.starCount * 100 )
+					},
+					offers : []
+				}
 	
-								const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
-
-								{ times( incAmount, n => {
-
-									cloneIcons.push( {
-										"feature_name": "- Feature Name." + ( cloneIcons.length + 1 ),
-									} )
-
-								} ) }
-
-								setAttributes( { features: cloneIcons } )
-							
-							setAttributes( { feature_count: newCount } )
-							} }
-						/>
-					}						
-					</div>
-					}
-				</div>
-				<div class="uagb-ratings-wrap">
-				<div className="uagb-avg-review-star">
-				<RichText
-					tagName="h4"
-					placeholder={ __( "List Of Features:" ) }
-					value={ featuresAvgText }
-					className='uagb-avg-rating-text'
-					onChange={ ( value ) => setAttributes( { featuresAvgText: value } ) }
-					onMerge={ mergeBlocks }
-					unstableOnSplit={ this.splitBlock }
-					onnRemove={ () => onReplace( [] ) }
-				/>
-				<div
-					className="uagb-avg-review-star-inner-container"
-					onMouseLeave={() => setAttributes({ highlightedStars: 0 })}
-				>
-					{[...Array(starCount)].map((e, i) => (
-						<div
-							key={i}
-							onMouseEnter={() => {
-								setAttributes({ highlightedStars: i + 1 });
-							}}
-							onClick={() => {
-								if (selectedStars % 1 === 0) {
-									setAttributes({
-										selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
-									});
-								} else {
-									setAttributes({
-										selectedStars: i + (selectedStars - 0.5 === i ? 1 : 0.5)
-									});
-								}
-							}}
-						>
-							{i < (highlightedStars ? highlightedStars : selectedStars) ? (
-								highlightedStars ? (
-									highlightedStars - 1 === i ? (
-										selectedStars % 1 > 0 ? (
-											highlightedStars - selectedStars - 0.5 !== 0 ? (
-												<HalfStar size={starSize} fillColor={starColor} />
-											) : (
-												<FullStar size={starSize} fillColor={starColor} />
-											)
-										) : highlightedStars - selectedStars !== 0 ? (
-											<FullStar size={starSize} fillColor={starColor} />
-										) : (
-											<HalfStar size={starSize} fillColor={starColor} />
-										)
-									) : (
-										<FullStar size={starSize} fillColor={starColor} />
-									)
-								) : selectedStars - i >= 1 ? (
-									<FullStar size={starSize} fillColor={starColor} />
-								) : (
-									<HalfStar size={starSize} fillColor={starColor} />
-								)
-							) : (
-								<EmptyStar size={starSize} />
-							)}
-						</div>
-					))}
-					</div>
-				</div>
+				if( 'Aggregate Offer' == ownProps.attributes.offerType ){
+					json_data.offers = {
+						"@type": ownProps.attributes.offerType,
+						"offerCount": ownProps.attributes.offerCount,
+						"lowPrice": ownProps.attributes.offerLowPrice,
+						"highPrice": ownProps.attributes.offerHighPrice,
+						"priceCurrency": ownProps.attributes.offerCurrency,
+					}	
+				} else {
+					json_data.offers = {
+						"@type": ownProps.attributes.offerType,
+						"price": ownProps.attributes.offerPrice,
+						"url": ownProps.attributes.ctaLink,
+						"priceValidUntil": ownProps.attributes.offerExpiry,
+						"priceCurrency": ownProps.attributes.offerCurrency,
+						"availability": "https://schema.org/InStock"
+					  }
+				  }
+	
+				if ( ownProps.attributes.mainimage ) {
+					json_data.image = ownProps.attributes.mainimage.url;
+				}
+	
+				json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 				
-				<div className="uagb-product-price">
-					<RichText
-						tagName="h4"
-						placeholder={ __( "Price" ) }
-						value={ pricetext }
-						className='uagb-price-text'
-						onChange={ ( value ) => setAttributes( { pricetext: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-					{offerType === "Offer" ? (
-						
-						<div className="uagb-product-price-value">
-							<RichText
-								tagName="h4"
-								placeholder={ __( "$65" ) }
-								value={ offerPrice }
-								className='uagb-price-value-text'
-								onChange={ ( value ) => setAttributes( { offerPrice: value } ) }
-								onMerge={ mergeBlocks }
-								unstableOnSplit={ this.splitBlock }
-								onnRemove={ () => onReplace( [] ) }
-							/>
-						</div>
-
-						) : (
-
-						<div className="uagb-product-price-value">
-							<RichText
-								tagName="h4"
-								placeholder={ __( "$69" ) }
-								value={ offerLowPrice }
-								className='uagb-price-value-text'
-								onChange={ ( value ) => setAttributes( { offerLowPrice: value } ) }
-								onMerge={ mergeBlocks }
-								unstableOnSplit={ this.splitBlock }
-								onnRemove={ () => onReplace( [] ) }
-							/>
-						</div>	
-
-						)
-					}
-					<div className="uagb-product-price-currency">
-					<RichText
-						tagName="h4"
-						placeholder={ __( "US" ) }
-						value={ offerCurrency }
-						className='uagb-price-currency-text'
-						onChange={ ( value ) => setAttributes( { offerCurrency: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-				</div>
-				</div>
-				<div className="uagb-stock-availability">
-					<RichText
-						tagName="h4"
-						placeholder={ __( "Availability" ) }
-						value={ availabilitytext }
-						className='uagb-availability-text'
-						onChange={ ( value ) => setAttributes( { availabilitytext: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-					<div className="uagb-stock-availability-value">
-					<RichText
-						tagName="h4"
-						placeholder={ __( "Instock" ) }
-						value={ offerStatus }
-						className='uagb-availability-value-text'
-						//onChange={ ( value ) => setAttributes( { offerStatus: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-					</div>
-				</div>
-				</div>
-			</div>
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
-			{ loadContentGoogleFonts }
-			</Fragment>
-		)
-	}
-}
-
-export default compose(
-	withSelect( ( select, ownProps ) => {
-			
-			var offers = {}
-			var data = {}
-			var simple_offers_data = {}
-			var json_data = {
-				"@context": "https://schema.org/",
-				"@type": "Product",
-				"name": ownProps.attributes.rTitle,
-				"description": ownProps.attributes.rContent,
-				"image": [],
-				"sku": ownProps.attributes.sku,
-				"brand": {
-				      "@type": "Thing",
-				      "name": ownProps.attributes.brand,
-				    },
-			    "review": {
-		          "@type": "Review",
-		          "reviewRating": {
-		            "@type": "Rating",
-		            "ratingValue": "4",
-		            "bestRating": "5"
-		          },
-		          "author": {
-		            "@type": "Person",
-		            "name": ownProps.attributes.author,
-		          }
-		        },
-		       "aggregateRating": {
-		          "@type": "AggregateRating",
-		          "ratingValue": "4.4",
-		          "reviewCount": "89"
-		        },
-		        offers : []
-			}
-
-			if( 'Aggregate Offer' == ownProps.attributes.offerType ){
-				json_data.offers = {
-					"@type": ownProps.attributes.offerType,
-			        "offerCount": ownProps.attributes.offerCount,
-			        "lowPrice": ownProps.attributes.offerLowPrice,
-			        "highPrice": ownProps.attributes.offerHighPrice,
-			        "priceCurrency": ownProps.attributes.offerCurrency,
-		        }	
-			} else {
-				json_data.offers = {
-					"@type": ownProps.attributes.offerType,
-			        "price": ownProps.attributes.offerPrice,
-			        "url": ownProps.attributes.ctaLink,
-			        "priceValidUntil": ownProps.attributes.offerExpiry,
-			        "priceCurrency": ownProps.attributes.offerCurrency,
-			        "availability": "https://schema.org/InStock"
-		      	}
-	      	}
-
-			if ( ownProps.attributes.mainimage ) {
-				json_data.image = ownProps.attributes.mainimage.url;
-			}
-
-			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
-			
-		return {
-			schemaJsonData: json_data
-		};
-	} )
-) ( UAGBRatingEdit )
+			return {
+				schemaJsonData: json_data
+			};
+		} )
+	) ( UAGBRatingEdit )
