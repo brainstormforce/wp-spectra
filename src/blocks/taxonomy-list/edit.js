@@ -45,6 +45,8 @@ class UAGBTaxonomyList extends Component {
 
 		setAttributes( { postType: value } )
 		setAttributes( { categories: "" } )
+		setAttributes( { taxonomyType: "" } )
+
 	}
 	
 	onSelectTaxonomyType( value ) {
@@ -53,8 +55,6 @@ class UAGBTaxonomyList extends Component {
 		setAttributes( { taxonomyType: value } )
 		setAttributes( { categories: "" } )
 	}
-    
-
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -71,8 +71,7 @@ class UAGBTaxonomyList extends Component {
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
-        }
-
+		}
 	}
 
     render() {
@@ -168,12 +167,13 @@ class UAGBTaxonomyList extends Component {
 			showhierarchy
         } = attributes
 
-		let taxonomyListOptions = [
-			{ value: "", label: __( "Select Taxonomy" ) }
-		]
+		
 		const taxonomy_list_setting = (showEmptyTaxonomy) ? taxonomyList : termsList;
-
-		if ( "" != taxonomyList ) {
+		
+		if ( "" != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
+			var taxonomyListOptions = [
+				{ value: "", label: __( "Select Taxonomy" ) }
+			]
 			Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
 				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
 			} )
@@ -847,10 +847,10 @@ class UAGBTaxonomyList extends Component {
 							{"grid" == layout && ( 
 								categoriesList.map((p,index)=>
 									<div className="uagb-taxomony-box">
-										<a class="uagb-tax-link" href={p.link}>
-											<h4 class="uagb-tax-title">{p.name}</h4>
+										<a className="uagb-tax-link" href={p.link}>
+											<h4 className="uagb-tax-title">{p.name}</h4>
 											{showCount && (
-												<div class="uagb-tax-count">{p.count} {p.count > "1" ? `${p.singular_name}s` :p.singular_name}</div>
+												<div className="uagb-tax-count">{p.count} {p.count > "1" ? `${p.singular_name}s` :p.singular_name}</div>
 											)}
 										</a>
 									</div>						
@@ -863,7 +863,7 @@ class UAGBTaxonomyList extends Component {
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list">
 											<div className="uagb-tax-link-wrap">
-												<a class="uagb-tax-link" href={p.link}>{p.name}</a>
+												<a className="uagb-tax-link" href={p.link}>{p.name}</a>
 												{ showCount && (
 												<span className="uagb-tax-list-count">{` (${p.count})`}</span>
 												)}
@@ -871,7 +871,7 @@ class UAGBTaxonomyList extends Component {
 													<ul className="uagb-taxonomy-list-children">
 														{ Object.keys( p.children ).map( function( key, index ) {
 															return 	<li className="uagb-tax-list">
-																<a class="uagb-tax-link" href={`${p.link}${p.children[key]["slug"]}`}>{p.children[key]["name"]}</a>
+																<a className="uagb-tax-link" href={`${p.link}${p.children[key]["slug"]}`}>{p.children[key]["name"]}</a>
 																{ showCount && (
 																	<span>{` (${p.children[key]["count"]})`}</span>
 																)}
@@ -882,8 +882,8 @@ class UAGBTaxonomyList extends Component {
 											</div>
 
 											{"none" != seperatorStyle && (
-												<div class="uagb-tax-separator-wrap">
-													<div class="uagb-tax-separator"></div>
+												<div className="uagb-tax-separator-wrap">
+													<div className="uagb-tax-separator"></div>
 												</div>
 											)}
 
@@ -906,7 +906,7 @@ class UAGBTaxonomyList extends Component {
 							
 						{/* If no Taxonomy is available. */}
 						{categoriesList == "" && (
-							<div class="uagb-tax-not-available">{noTaxDisplaytext}</div>
+							<div className="uagb-tax-not-available">{noTaxDisplaytext}</div>
 						)}
 
 					</div>	
@@ -936,7 +936,7 @@ export default withSelect( ( select, props ) => {
 			categoriesList = currentTax[listToShowTaxonomy][taxonomyType]
 		}
 	}
-
+	
 	let latestPostsQuery = {
 		order: order,
 		orderby: orderBy,
