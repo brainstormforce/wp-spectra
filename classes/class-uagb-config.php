@@ -2254,7 +2254,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/taxonomy-list'      => array(
 						'slug'        => '',
 						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you display Taxonomy List.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'              => '',
@@ -2268,7 +2268,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'columns'               => 3,
 							'tcolumns'              => 2,
 							'mcolumns'              => 1,
-							'bgColor'               => '#e4e4e4',
+							'bgColor'               => '#f5f5f5',
 							'titleColor'            => '#3b3b3b',
 							'countColor'            => '#777777',
 							'listTextColor'         => '#3b3b3b',
@@ -2332,7 +2332,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'listLoadGoogleFonts'   => false,
 							'borderStyle'           => 'solid',
 							'borderThickness'       => 1,
-							'borderColor'           => '#b2b4b5',
+							'borderRadius'          => 0,
+							'borderColor'           => '#E0E0E0',
 							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.' ),
 							'showCount'             => true,
 							'showEmptyTaxonomy'     => false,
