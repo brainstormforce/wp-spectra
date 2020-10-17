@@ -23,9 +23,7 @@ export default function save( props ) {
 		block_id,
 		link,
 		pinterestImage,
-		current_url
 	} = props.attributes
-	// let url = links[type]
 	
 	let image_icon_html = ""
 	
@@ -51,7 +49,6 @@ export default function save( props ) {
 	
 	var url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
 	
-
 	return (
 		<div
 			className={ classnames(
@@ -60,8 +57,7 @@ export default function save( props ) {
 				className,
 				`uagb-block-${ block_id }`
 			) }
-		>
-			
+		>			
 			<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 		</div>
 	)

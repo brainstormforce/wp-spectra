@@ -135,7 +135,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 							target = "_self";
 						}
 						var  request_url ="";
-						console.log(social_url);
 						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
 							 request_url = social_url;
 						}else{
