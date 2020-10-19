@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.5
-Stable tag: 1.17.0
+Stable tag: 1.18.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
 	<li><a href="https://www.ultimategutenberg.com/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
  	<li><a href="https://www.ultimategutenberg.com/faq/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user’s common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/docs/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
@@ -158,6 +159,18 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.18.0 =
+* New: Taxonomy List.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
+* Improvement: Google Map - Now user can show language-specific Google Map.
+* Improvement: How to Schema - More options to add total time.
+* Fix: Multiple file generation issue in some cases fixed.
+* Fix: Inline Notice - Dismissal of Notice issue.
+* Fix: How To Schema - Step gap issue.
+* Fix: How To Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on the same page not allowed issue.
+* Fix: Post Block - Infinite scroll is broken for anonymous user.
+* Fix: Unicode error in some cases issue fixed.
 
 = 1.17.0 =
 * Improvement: Compatibility with WordPress 5.5.

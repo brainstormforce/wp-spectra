@@ -29,15 +29,15 @@ const attributes = {
 		default: "left",
 	},
 	toolsTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Required Tools:" ),
 	},
 	materialTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Things Needed?" ),
 	},
 	stepsTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Steps to configure the How-to Schema:" ),
 	},
 	tools_count: {
@@ -79,15 +79,15 @@ const attributes = {
 		}
 	},
 	estCost:{
-		type: "string",
+		type: "html",
 		default: __( "Total Cost:" ),
 	},
 	timeNeeded:{
-		type: "string",
+		type: "html",
 		default: __( "Total Time Needed :" ),
 	},
 	timeIn:{
-		type: "string",
+		type: "html",
 		default: __( " Minutes" ),
 	},
 	imgSize:{
@@ -116,7 +116,7 @@ const attributes = {
 		default: __( "How To Configure How-To Schema In Ultimate Addons For Gutenberg?" ),
 	},
 	currencyType: {
-		type: "string",
+		type: "html",
 		default: " USD"
 	},
 	headingDesc: {
@@ -286,9 +286,26 @@ const attributes = {
 		type: "number",
 	},
 	schema: {
-		type: "string",
+		type: "html",
 		default: ""
-	}
+	},
+	timeInMins: {
+		type: "number",
+		
+	},
+	timeInHours: {
+		type: "number",		
+	},
+	timeInDays: {
+		type: "number",		
+	},
+	timeInMonths: {
+		type: "number",		
+	},
+	timeInYears: {
+		type: "number",		
+	},
+	
 }
 
 export default attributes

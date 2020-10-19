@@ -280,6 +280,14 @@ const attributes = {
 		type: "number",
 		default : 2
 	},
+	tcolumns :{
+		type: "number",
+		default: 2,
+	},
+	mcolumns :{
+		type: "number",
+		default: 1,
+	},
 	schema: {
 		type: "string",
 		default: ""
