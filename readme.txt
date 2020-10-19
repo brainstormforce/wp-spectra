@@ -162,14 +162,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.18.0 =
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
-* Improvement: Google Map - Now user can show language specific Google Map.
+* Improvement: Google Map - Now user can show language-specific Google Map.
 * Improvement: How to Schema - More options to add total time.
 * Fix: Multiple file generation issue in some cases fixed.
-* Fix: Inline Notice - Notice dismiss issue.
+* Fix: Inline Notice - Dismissal of Notice issue.
 * Fix: How To Schema - Step gap issue.
 * Fix: How To Schema - Image deletion issue for steps.
-* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
-* Fix: Post Block - Infinite scroll broken for anonymous user.
+* Fix: FAQ Schema - Multiple FAQSchema on the same page not allowed issue.
+* Fix: Post Block - Infinite scroll is broken for anonymous user.
 * Fix: Unicode error in some cases issue fixed.
 
 = 1.17.0 =
