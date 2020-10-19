@@ -4747,7 +4747,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Taxonomy List CSS.
 		 *
-		 * @since 1.17.0
+		 * @since 1.18.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
