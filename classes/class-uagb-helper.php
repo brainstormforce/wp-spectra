@@ -1111,7 +1111,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get all taxonomies list.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.0
 		 * @access public
 		 */
 		public static function get_taxonomy_list() {
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Deletes the upload dir.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.0
 		 * @return array
 		 */
 		public function delete_upload_dir() {

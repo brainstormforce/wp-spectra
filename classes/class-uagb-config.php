@@ -2334,7 +2334,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderThickness'       => 1,
 							'borderRadius'          => 0,
 							'borderColor'           => '#E0E0E0',
-							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.' ),
+							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 							'showCount'             => true,
 							'showEmptyTaxonomy'     => false,
 							'showhierarchy'         => false,
