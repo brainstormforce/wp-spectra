@@ -37,7 +37,7 @@ const attributes = {
 		type: "string",
 	},
 	label: {
-		type: "string",
+		type: "html",
 		default:'#Click Here' 
 	} ,
 	link: {
