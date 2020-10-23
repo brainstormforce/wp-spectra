@@ -28,116 +28,36 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/ratings']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
-			
+
 			$t_selectors = array();
 			$m_selectors = array();
 			$selectors   = array();
 
 			$selectors = array(
-				" .uagb-rating-title"  => array(
-					"font-size"=> UAGB_Helper::get_css_value( $attr['titleFontSize'], $attr['titleFontSizeType'] ),
-					"font-weight"=> $attr['titleFontWeight'],
-					"font-family"=> $attr['titleFontFamily'],
-					"line-height"=> UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
-					"color"=> $attr['titleColor'],
+				' .uagb-rating-title'   => array(
+					'color' => $attr['titleColor'],
 				),
-				" .uagb-rating-desc"  => array(
-					"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
-					"font-weight"=> $attr['descFontWeight'],
-					"font-family"=> $attr['descFontFamily'],
-					"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
-					"color"=> $attr['descColor'],
+				' .uagb-rating-desc'    => array(
+					'color' => $attr['descColor'],
 				),
-				" .uagb-rating-author"  => array(
-					"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
-					"font-weight"=> $attr['descFontWeight'],
-					"font-family"=> $attr['descFontFamily'],
-					"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
-					"color"=> $attr['authorColor'],
+				' .uagb-rating-author'  => array(
+					'color' => $attr['authorColor'],
 				),
-				// " .uagb-features .uagb-rating-feature__label"  => array(
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
-				// 	"font-weight"=> $attr['descFontWeight'],
-				// 	"font-family"=> $attr['descFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['descLineHeight'], $attr['descLineHeightType'] ),
-				// 	"color"=> $attr['descColor'],
-				// ),
-				// " .uagb-ratings-wrap .uagb-stock-availability"  => array(
-				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// ),
-				// " .uagb-ratings-wrap .uagb-product-price"  => array(
-				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// ),
-				// " .uagb-ratings-wrap .uagb-avg-review-star"  => array(
-				// 		"padding-left" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-right" : UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-				// 		"padding-top" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// 		"padding-bottom" : UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-				// ),
-				// " .uagb-features-star .uagb-star-inner-container"  => array(
-				// 	"margin-left"=>UAGB_Helper::get_css_value( $attr['star_gap'], "px" ),
-				// ),
-				// " .uagb-avg-rating-text"  => array(
-				//    "font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				//    "font-weight"=> $attr['contentFontWeight'],
-				//    "font-family"=> $attr['contentFontFamily'],
-				//    "line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// ),
-				// " .uagb-price-text"  => array(
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				// 	"font-weight"=> $attr['contentFontWeight'],
-				// 	"font-family"=> $attr['contentFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// ),
-				// " .uagb-price-value-text" : {
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				// 	"font-weight"=> $attr['contentFontWeight'],
-				// 	"font-family"=> $attr['contentFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// },
-				// " .uagb-price-currency-text"  => array(
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				// 	"font-weight"=> $attr['contentFontWeight'],
-				// 	"font-family"=> $attr['contentFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// ),
-				// " .uagb-availability-text"  => array(
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				// 	"font-weight"=> $attr['contentFontWeight'],
-				// 	"font-family"=> $attr['contentFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// ),
-				// " .uagb-availability-value-text"  => array(
-				// 	"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				// 	"font-weight"=> $attr['contentFontWeight'],
-				// 	"font-family"=> $attr['contentFontFamily'],
-				// 	"line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-				// ),
-				" .uagb_review_entry"  => array(
-					"font-size"=> UAGB_Helper::get_css_value( $attr['contentFontSize'], $attr['contentFontSizeType'] ),
-				   "font-weight"=> $attr['contentFontWeight'],
-				   "font-family"=> $attr['contentFontFamily'],
-				   "line-height"=> UAGB_Helper::get_css_value( $attr['contentLineHeight'], $attr['contentLineHeightType'] ),
-					"color" => $attr['contentColor'],
+				' .uagb_review_entry'   => array(
+					'color' => $attr['contentColor'],
 				),
-				" .uagb_review_summary"  => array(
-					"color"=> $attr['summaryColor'],
+				' .uagb_review_summary' => array(
+					'color' => $attr['summaryColor'],
 				),
-				" .uagb_review_entry .star, .uagb_review_average_stars .star"  => array(
-					"fill"=> $attr['starColor'],
+				' .uagb_review_entry .star, .uagb_review_average_stars .star' => array(
+					'fill' => $attr['starColor'],
 				),
-				" .uagb_review_entry path, .uagb_review_average_stars path"  => array(
-					"stroke"=>$attr['starOutlineColor'],
-					"fill"=> $attr['starActiveColor'],
-				)
+				' .uagb_review_entry path, .uagb_review_average_stars path' => array(
+					'stroke' => $attr['starOutlineColor'],
+					'fill'   => $attr['starActiveColor'],
+				),
 			);
-			// var_dump($selectors);
+
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
@@ -150,7 +70,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb-avg-review-star, .uagb-price-text, .uagb-price-value-text, .uagb-price-currency-text, .uagb-availability-text, .uagb-availability-value-text', $combined_selectors );
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['blockID'], 0, 8) );
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['blockID'], 0, 8 ) );
 
 		}
 
