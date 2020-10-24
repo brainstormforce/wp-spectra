@@ -27,17 +27,14 @@ registerBlockType( "uagb/post-timeline", {
 		__( "timeline" ),
 		__( "uag" ),
 	],
-
 	getEditWrapperProps( attributes ) {
 		const { align } = attributes
 
 	},
-
+	example: {},
 	edit,
-
 	// Render via PHP
 	save() {
 		return null
 	},
-
 } )
