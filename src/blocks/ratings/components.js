@@ -137,18 +137,24 @@ export class ReviewBody extends Component {
 			setItems,
 			setSummaryDescription,
 			setSummaryTitle,
+			setTitle,
+			setDescription,
+			setAuthorName,
 			inactiveStarColor,
 			activeStarColor,
 			selectedStarColor,
 			starOutlineColor,
-			setEditable,
+			// setEditable,
 			setActiveStarIndex,
-			imageSize,
 			rTitle,
 			rContent,
 			rAuthor,
 			headingTag,
-			image_icon_html
+			image_icon_html,
+			showfeature,
+			imageEnabled,
+			descriptionEnabled,
+			showauthor,
 		} = this.props;
 
 		const { average } = this.state;
@@ -168,32 +174,32 @@ export class ReviewBody extends Component {
 					keepPlaceholderOnFocus
 					value={ rTitle }
 					className='uagb-rating-title'
-					onChange={ ( value ) =>
-						setAttributes( { rTitle: value } )
-					}
+					onChange={(text) => setTitle(text)}
 				/>
+				{ descriptionEnabled === true &&
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Review Description', 'ultimate-addons-for-gutenberg' ) }
 					keepPlaceholderOnFocus
 					value={ rContent }
 					className='uagb-rating-desc'
-					onChange={ ( value ) =>
-						setAttributes( { rContent: value } )
-					}
+					onChange={(text) => setDescription(text)}
 				/>
+				}
+				{ showauthor === true && 
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Review Author', 'ultimate-addons-for-gutenberg' ) }
 					keepPlaceholderOnFocus
 					value={ rAuthor }
 					className='uagb-rating-author'
-					onChange={ ( value ) =>
-						setAttributes( { rAuthor: value } )
-					}
-				/>
+					onChange={(text) => setAuthorName(text)}
+				/>}
+				{ imageEnabled === true &&
 				<div className="uagb-rating__source-wrap">{image_icon_html}</div>
+				}
 				{items.map((j, i) => (
+					showfeature === true && ( 
 					<div className="uagb_review_entry">
 						<RichText
 							style={{ marginRight: "auto" }}
@@ -207,10 +213,6 @@ export class ReviewBody extends Component {
 									...items.slice(i + 1),
 								])
 							}
-							unstableOnFocus={() => {
-								setEditable("");
-								setActiveStarIndex(i);
-							}}
 						/>
 						<div
 							key={i}
@@ -219,24 +221,20 @@ export class ReviewBody extends Component {
 								minWidth: items.length > 1 ? 120 : 100,
 							}}
 						>
-							{items.length > 1 && (
-								<div
-									className="dashicons dashicons-trash"
-									onClick={() => {
-										setEditable("");
-										let newItems = items
-											.slice(0, i)
-											.concat(items.slice(i + 1, items.length));
-										setItems(newItems);
-										this.setState({
-											average:
-												newItems
-													.map((i) => i.value)
-													.reduce((total, v) => total + v) / newItems.length,
-										});
-									}}
-								/>
-							)}
+						<div
+							className="dashicons dashicons-trash"
+							onClick={() => {
+								let newItems = items
+									.slice(0, i)
+									.concat(items.slice(i + 1, items.length));
+									setItems(newItems);
+								this.setState({
+									average: newItems
+									.map((i) => i.value)
+									.reduce((total, v) => total + v) / newItems.length,
+								});
+							}}
+						/>
 							<Stars
 								id={`${ID}-${i}`}
 								key={i}
@@ -264,7 +262,8 @@ export class ReviewBody extends Component {
 							/>
 						</div>
 					</div>
-				))}
+				)))}
+				{ showfeature === true && ( 
 				<div
 					title={__("Insert new review entry")}
 					onClick={() => {
@@ -275,6 +274,7 @@ export class ReviewBody extends Component {
 					}}
 					className="uagb_review_add_entry dashicons dashicons-plus-alt"
 				/>
+				)}
 				<div className="uagb_review_summary">
 					<RichText
 						className="uagb_review_summary_title"
@@ -282,14 +282,12 @@ export class ReviewBody extends Component {
 						tagName="p"
 						onChange={(text) => setSummaryTitle(text)}
 						value={summaryTitle}
-						unstableOnFocus={() => setEditable("")}
 					/>
 					<div className="uagb_review_overall_value">
 						<RichText
 							placeholder={__("Summary of the review goes here")}
 							onChange={(text) => setSummaryDescription(text)}
 							value={summaryDescription}
-							unstableOnFocus={() => setEditable("")}
 						/>
 						<div className="uagb_review_average">
 							<span className="uagb_review_rating">

@@ -105,9 +105,9 @@
 		type: "string",
 		default: "",
 	},
-	callToActionURL: {
+	ctaLink: {
 		type: "string",
-		default: "",
+		default: "#",
 	},
 	callToActionBackColor: {
 		type: "string",
@@ -247,15 +247,11 @@
 	},
 	showFeature: {
 		type: "boolean",
-		default: true
+		default: false
 	},
-	headingTag: {
-		type: "string",
-		default: "h2"
-	},
-	starCount: {
-		type: "number",
-		default: 5,
+	showAuthor: {
+		type: "boolean",
+		default: false
 	},
 	starSize: {
 		type: "number",
@@ -272,18 +268,6 @@
 	starAlign: {
 		type: "string",
 		default: "left",
-	},
-	inactiveStarColor: {
-		type: "string",
-		default: "#888888",
-	},
-	activeStarColor: {
-		type: "string",
-		default: "#eeee00",
-	},
-	starOutlineColor: {
-		type: "string",
-		default: "#000000",
 	},
 	descColor: {
 		type: "string",
@@ -328,58 +312,6 @@
 	author: {
 		type: "string",
 		default: "",
-	},
-	brand: {
-		type: "string",
-		default: "",
-	},
-	sku: {
-		type: "string",
-		default: "",
-	},
-	identifier: {
-		type: "string",
-		default: "",
-	},
-	identifierType: {
-		type: "string",
-		default: "gtin", // nsn, mpn, gtin8, gtin12, gtin13, gtin14, gtin
-	},
-	offerType: {
-		type: "string",
-		default: "Offer", //can also be set to aggregate offer (which prevevnts calltoactionurl from being  used as offer url)
-	},
-	offerStatus: {
-		type: "string",
-		default: "InStock", //available values: Discontinued, InStock, InStoreOnly, LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, PreSale, SoldOut
-	},
-	//begin aggregate offer-only attributes
-	offerHighPrice: {
-		type: "string",
-		default: 0,
-	},
-	offerLowPrice: {
-		type: "string",
-		default: 0,
-	},
-	offerCount: {
-		type: "string",
-		default: 0,
-	},
-	//end  aggregate offer-only attributes
-	offerPrice: {
-		//only for offer
-		type: "string",
-		default: 0,
-	},
-	offerCurrency: {
-		type: "string",
-		default: "USD",
-	},
-	offerExpiry: {
-		type: "string",
-		//default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
-		default: 0,
 	},
 	titleFontFamily: {
 		type: "string",

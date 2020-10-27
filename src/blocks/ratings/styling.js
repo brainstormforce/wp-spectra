@@ -86,65 +86,20 @@ function styling( props ) {
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 		    "color": authorColor,
 		},
-		" .uagb-features .uagb-rating-feature__label" : {
+		" .uagb-rating-desc, .uagb-rating-author" : {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-weight": descFontWeight,
 			"font-family": descFontFamily,
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 		    "color": descColor,
 		},
-		" .uagb-ratings-wrap .uagb-stock-availability" : {
+		" .uagb_review_block" : {
 		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
 		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
 		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
 		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
 		},
-		" .uagb-ratings-wrap .uagb-product-price" : {
-		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
-		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
-		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
-		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
-		},
-		" .uagb-ratings-wrap .uagb-avg-review-star" : {
-		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
-		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
-		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
-		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
-		},
-		" .uagb-features-star .uagb-star-inner-container" : {
-		    "margin-left":generateCSSUnit( star_gap, "px" ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-avg-rating-text" : {
-		   "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
-		   "font-weight": contentFontWeight,
-		   "font-family": contentFontFamily,
-		   "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
-		},
-        " .rich-text.block-editor-rich-text__editable.uagb-price-text" : {
-		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
-		    "font-weight": contentFontWeight,
-		    "font-family": contentFontFamily,
-		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-price-value-text" : {
-		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
-		    "font-weight": contentFontWeight,
-		    "font-family": contentFontFamily,
-		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-price-currency-text" : {
-		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
-		    "font-weight": contentFontWeight,
-		    "font-family": contentFontFamily,
-		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-availability-text" : {
-		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
-		    "font-weight": contentFontWeight,
-		    "font-family": contentFontFamily,
-		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-availability-value-text" : {
+		" .uagb_review_summary" : {
 		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
 		    "font-weight": contentFontWeight,
 		    "font-family": contentFontFamily,

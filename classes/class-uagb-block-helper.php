@@ -46,6 +46,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb_review_entry'   => array(
 					'color' => $attr['contentColor'],
 				),
+				' .uagb_review_block'   => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+				),
 				' .uagb_review_summary' => array(
 					'color' => $attr['summaryColor'],
 				),
@@ -64,11 +70,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-rating-title, .uagb-rating-feature-text', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-rating-title, .uagb_review_entry', $combined_selectors );
 
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-rating-desc, .uagb-rating-feature__label', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-rating-desc, .uagb-rating-author', $combined_selectors );
 
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb-avg-review-star, .uagb-price-text, .uagb-price-value-text, .uagb-price-currency-text, .uagb-availability-text, .uagb-availability-value-text', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb_review_summary', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['blockID'], 0, 8 ) );
 
@@ -4805,12 +4811,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Taxonomy List CSS.
 		 *
-<<<<<<< HEAD
-		 *
-		 * @since 1.17.0
-=======
 		 * @since 1.18.0
->>>>>>> cebee0151951fc645037ddf2f2c201ff6c411469
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */

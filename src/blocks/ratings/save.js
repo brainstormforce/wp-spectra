@@ -5,7 +5,6 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import { Stars } from "./components";
-// import { ReviewBody } from "./components";
 
 const {
 	RichText,
@@ -33,8 +32,14 @@ export default function save( props ) {
 		imgSize,
 		schema,
 		blockID,
+		showAuthor,
+		showFeature,
+		enableDescription,
+		enableImage,
+		ctaTarget,
+		ctaLink 
 	} = attributes
-	console.log(attributes);
+
 		const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
 	
 		let url_chk = ''
@@ -64,6 +69,12 @@ export default function save( props ) {
 
 	}
 
+	let target ="_self"
+		let rel ="noopener noreferrer"
+		if( ctaTarget ){
+			target ="_blank"
+		}
+
 	return (
 		<div className={ classnames(
 			className,
@@ -74,26 +85,43 @@ export default function save( props ) {
 			<script type="application/ld+json">
 				{ schema }
 			</script>
+			<a
+				href = {ctaLink}
+				className = {
+					classnames(
+						'uagb-cta__button-link-wrapper',
+					)
+				}
+				target= {target}
+				rel= {rel}
+			>
 			<div className="uagb_review_block">
 				<RichText.Content
 					value={ rTitle }
 					className='uagb-rating-title'
 					tagName={ headingTag }
 				/>
+				{ enableDescription === true &&
 				<RichText.Content
 					tagName="p"
 					value={ rContent }
 					className='uagb-rating-desc'
 				/>
+				}
+				{ showAuthor === true && 
 				<RichText.Content
 					tagName="p"
 					value={ rAuthor }
 					className='uagb-rating-author'
 				/>
+				}
+				{ enableImage === true && 
 				<div className="uagb-rating__source-wrap">
 					{image_icon_html}
 				</div>
+				}
 					{parts.map((j, i) => (
+						showFeature === true && ( 
 					<div className="uagb_review_entry">
 						<RichText.Content
 							tagName="div"
@@ -118,7 +146,7 @@ export default function save( props ) {
 							/>
 						</div>
 					</div>
-					))}
+					)))}
 					<div className="uagb_review_summary">
 						<RichText.Content
 							className="uagb_review_summary_title"
@@ -151,6 +179,6 @@ export default function save( props ) {
 						</div>
 				</div>
 			</div>
-		</div>
+		</a></div>
 	)
 }

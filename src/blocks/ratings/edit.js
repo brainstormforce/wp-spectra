@@ -5,10 +5,8 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import styling from "./styling"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import SchemaNotices from "./schema-notices"
-import times from "lodash/times"
+// import SchemaNotices from "./schema-notices"
 import { ReviewBody } from "./components";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -22,8 +20,6 @@ const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
 
 const {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 	RichText,
 	ColorPalette,
@@ -167,9 +163,6 @@ class UAGBRatingEdit extends Component {
 				authorName,
 				itemName,
 				description,
-				imgID,
-				imgAlt,
-				imgURL,
 				items,
 				parts,
 				starCount,
@@ -177,9 +170,6 @@ class UAGBRatingEdit extends Component {
 				summaryDescription,
 				inactiveStarColor,
 				activeStarColor,
-				titleAlign,
-				authorAlign,
-				descriptionAlign,
 				sku,
 				identifier,
 				identifierType,
@@ -193,7 +183,6 @@ class UAGBRatingEdit extends Component {
 				offerExpiry,
 				ctaLink,
 				ctaTarget,
-				author,
 				brand,
 				rTitle,
 				rContent,
@@ -202,8 +191,8 @@ class UAGBRatingEdit extends Component {
 				mainimage,
 				imgSize,
 				showFeature,
+				showAuthor,
 				starColor,
-				selectedStars,
 				descColor,
 				titleColor,
 				contentColor,
@@ -245,22 +234,21 @@ class UAGBRatingEdit extends Component {
 				contentLineHeightMobile,
 				contentVrPadding,
 				contentHrPadding,
-				star_gap,
 				authorColor,
 				summaryColor,
 				starActiveColor,
 				starOutlineColor,
+				editable,
+				enableDescription,
+				enableImage
 			},
 			setAttributes,
 			isSelected,
-			editable,
 			editedStar,
-			setState,
-			block,
 			getBlock,
 			className,
 		} = this.props;
-		// console.log(this.props);
+
 		if (
 			blockID === ""
 		) {
@@ -269,31 +257,6 @@ class UAGBRatingEdit extends Component {
 				blockID: this.props.clientId.substr( 0, 8 ),
 			});
 		}
-
-		// const setAlignment = (target, value) => {
-		// 	switch (target) {
-		// 		case "reviewTitle":
-		// 			setAttributes({ titleAlign: value });
-		// 			break;
-		// 		case "reviewAuthor":
-		// 			setAttributes({ authorAlign: value });
-		// 			break;
-		// 		case "reviewItemDescription":
-		// 			setAttributes({ descriptionAlign: value });
-		// 			break;
-		// 	}
-		// };
-
-		// const getCurrentAlignment = (target) => {
-		// 	switch (target) {
-		// 		case "reviewTitle":
-		// 			return titleAlign;
-		// 		case "reviewAuthor":
-		// 			return authorAlign;
-		// 		case "reviewItemDescription":
-		// 			return descriptionAlign;
-		// 	}
-		// };
 
 		if (
 			items &&
@@ -342,22 +305,6 @@ class UAGBRatingEdit extends Component {
 		const ratingStyleSettings = () => {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
-					<RangeControl
-							label={__("Star rating for current feature")}
-							value={parts[editedStar]}
-							onChange={(newValue) => {
-								setAttributes({
-									parts: [
-										...parts.slice(0, editedStar),
-										Object.assign({}, parts[editedStar], { value: newValue }),
-										...parts.slice(editedStar + 1),
-									],
-								});
-							}}
-							min={1}
-							max={5}
-							step={0.5}
-						/>
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
@@ -551,36 +498,11 @@ class UAGBRatingEdit extends Component {
 								}))}
 								onChange={(offerStatus) => setAttributes({ offerStatus })}
 							/>
-							{/* <ToggleControl
-								label={__("Offer expiration")}
-								checked={offerExpiry > 0}
-								onChange={(_) =>
-									setAttributes({
-										offerExpiry: offerExpiry
-											? 0
-											: 60 * (10080 + Math.ceil(Date.now() / 60000)), //default to one week from Date.now() when enabled
-									})
-								}
-							/> */}
 							<TextControl
 								label={__("Offer expiration")}
 								value={offerExpiry}
 								onChange={(offerExpiry) => setAttributes({ offerExpiry })}
 							/>
-							{/* <ExternalLink href={ 'https://en.wikipedia.org/wiki/ISO_8601' }>
-								{ __( 'Learn more about date/time formats.' ) }
-							</ExternalLink>
-							{offerExpiry > 0 && (
-								<DatePicker
-									currentDate={offerExpiry * 1000}
-									onChange={(newDate) =>
-										setAttributes({
-											offerExpiry: (Date.parse(newDate) / 1000),
-											// offerExpiry : new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(offerExpiry)
-										})
-									}
-								/>
-							)} */}
 						</Fragment>
 					) : (
 						<Fragment>
@@ -608,7 +530,6 @@ class UAGBRatingEdit extends Component {
 				</PanelBody>
 			)
 		}
-		// console.log(($average % 1 == 0 ? $average : number_format(average$, 1, '.', '')));
 
 		const ratingGeneralSettings = () => {
 			return (
@@ -627,34 +548,6 @@ class UAGBRatingEdit extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 					/>
-					<h2>{ __( "Image" ) }</h2>
-					<MediaUpload
-						title={ __( "Select Image" ) }
-						onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
-						allowedTypes={ [ "image" ] }
-						value={ mainimage }
-						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
-								{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
-							</Button>
-						) }
-					/>
-					{ mainimage.url &&
-						<Button
-							className="uagb-rm-btn"
-							onClick={ () => setAttributes( { mainimage: '' } ) }
-							isLink isDestructive>
-							{ __( "Remove Image" ) }
-						</Button>
-					}
-					{ mainimage.url &&
-						<SelectControl
-							label={ __( "Size" ) }
-							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-						/>
-					}
 					<h2>{ __( "Link" ) }</h2>
 					<TextControl
 						value= { ctaLink }
@@ -666,22 +559,65 @@ class UAGBRatingEdit extends Component {
 						onChange={ this.toggleTarget }
 					/>
 						<hr className="uagb-editor__separator" />
+						<ToggleControl
+					    	label={ __( "Show author" ) }
+					    	checked={ showAuthor }
+					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
 					    <ToggleControl
+					    	label={ __( "Show description" ) }
+					    	checked={ enableDescription }
+					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
+						 <ToggleControl
+					    	label={ __( "Show image" ) }
+					    	checked={ enableImage }
+					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
+						{ enableImage === true && 
+							<Fragment>
+								<h2>{ __( "Image" ) }</h2>
+								<MediaUpload
+									title={ __( "Select Image" ) }
+									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
+									allowedTypes={ [ "image" ] }
+									value={ mainimage }
+									render={ ( { open } ) => (
+										<Button isDefault onClick={ open }>
+											{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+										</Button>
+									)}
+									/>
+							
+							{ mainimage.url &&
+								<Button
+									className="uagb-rm-btn"
+									onClick={ () => setAttributes( { mainimage: '' } ) }
+									isLink isDestructive>
+									{ __( "Remove Image" ) }
+								</Button>
+							}
+							{ mainimage.url &&
+								<SelectControl
+									label={ __( "Size" ) }
+									options={ imageSizeOptions }
+									value={ imgSize }
+									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+								/>
+							}
+							</Fragment>
+						} 
+						<hr className="uagb-editor__separator" />
+						 <ToggleControl
 					    	label={ __( "Show features" ) }
 					    	checked={ showFeature }
 					    	onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
 					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
 					    />
-						<hr className="uagb-editor__separator" />
-						<RangeControl
-							label={ __( "Gap Between Star" ) }
-							value={ star_gap }
-							onChange={ ( value ) => setAttributes( { star_gap: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
-						<h2>{ __( "Content Padding (px)" ) }</h2>
+						<h2>{ __( "Overall Padding (px)" ) }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.vertical_spacing }
 							className={ "uagb-margin-control" }
@@ -704,6 +640,12 @@ class UAGBRatingEdit extends Component {
 			)
 		}
 
+		let target ="_self"
+		let rel ="noopener noreferrer"
+		if( ctaTarget ){
+			target ="_blank"
+		}
+
 		
 		return [
 			isSelected && (
@@ -718,10 +660,29 @@ class UAGBRatingEdit extends Component {
 				"uagb-ratings__outer-wrap",
 				`uagb-block-${ blockID.substr( 0, 8 ) }`
 			) }>
+				<a
+				href = {ctaLink}
+				className = {
+					classnames(
+						'uagb-cta__button-link-wrapper',
+					)
+				}
+				target= {target}
+				rel= {rel}
+			>
 			<ReviewBody
 				rTitle={rTitle}
+				setTitle={(newValue) =>
+					setAttributes({ rTitle: newValue })
+				}
 				rContent={rContent}
+				setDescription={(newValue) =>
+					setAttributes({ rContent: newValue })
+				}
 				rAuthor={rAuthor}
+				setAuthorName={(newValue) =>
+					setAttributes({ rAuthor: newValue })
+				}
 				headingTag={headingTag}
 				mainimage={mainimage}
 				imgSize={imgSize}
@@ -730,12 +691,9 @@ class UAGBRatingEdit extends Component {
 				authorName={authorName}
 				itemName={itemName}
 				description={description}
-				// descriptionEnabled={enableDescription}
+				descriptionEnabled={enableDescription}
 				ID={blockID}
-				imgID={imgID}
-				imgAlt={imgAlt}
-				imgURL={imgURL}
-				// imageEnabled={enableImage}
+				imageEnabled={enableImage}
 				items={parts}
 				starCount={starCount}
 				summaryTitle={summaryTitle}
@@ -744,9 +702,7 @@ class UAGBRatingEdit extends Component {
 				activeStarColor={activeStarColor}
 				selectedStarColor={activeStarColor}
 				starOutlineColor={starOutlineColor}
-				setAuthorName={(newValue) => setAttributes({ authorName: newValue })}
 				setItemName={(newValue) => setAttributes({ itemName: newValue })}
-				setDescription={(newValue) => setAttributes({ description: newValue })}
 				setImage={(img) =>
 					setAttributes({
 						imgID: img.id,
@@ -764,7 +720,9 @@ class UAGBRatingEdit extends Component {
 				hasFocus={isSelected}
 				setEditable={(newValue) => setState({ editable: newValue })}
 				setActiveStarIndex={(editedStar) => setState({ editedStar })}
-			/></div>,
+				showfeature={showFeature}
+				showauthor={showAuthor}
+			/></a></div>,
 		];
 	}} 
 	export default compose(
@@ -834,3 +792,4 @@ class UAGBRatingEdit extends Component {
 			};
 		} )
 	) ( UAGBRatingEdit )
+	
