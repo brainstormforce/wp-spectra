@@ -1,48 +1,49 @@
 /**
-* BLOCK: UAGB Lottie Block Attributes
-*/
+ * BLOCK: UAGB Lottie Block Attributes
+ */
 
 const attributes = {
-  block_id :{
+  block_id : {
     type : "string"
   },
-  //Controls
-  loop: {
-		type: "boolean",
-		default: false,
-  }, 
-  count: {
-    type: "number",
-  },  
-  speed: {
-    type: "number",
-  },
-  reverse: {
-		type: "boolean",
-		default: false,
-  },
-  playOnHover: {
-		type: "boolean",
-		default: false,
-	},
-  //style
-  height: {
-    type: "number",
-  },
-  width: {
-    type: "number",
-  },
-  backgroundColor:{
-    type : "string",
-    default : "#fff"
-  },
-
-  jsonLottie:{
+  jsonLottie : {
     type : "object",
   },
-  lottieURl:{
+  lottieURl : {
     type : "string",
-    default:''
-  }
+    default : '',
+  },
+
+  //Controls
+  loop : {
+		type : "boolean",
+		default : true,
+  },   
+  speed : {
+    type : "number",
+    default : 1,
+  },
+  reverse : {
+		type : "boolean",
+		default : false,
+  },
+  playOnHover : {
+		type : "boolean",
+		default : false,
+  },
+  
+  //style
+  height : {
+    type : "number",
+  },
+  width : {
+    type : "number",
+  },
+  backgroundColor : {
+    type : "string",
+    default : "#fff",
+  },
+
+
 }
 export default attributes

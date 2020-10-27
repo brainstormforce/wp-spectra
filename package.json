@@ -51,6 +51,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-lottie": "^1.2.3",
     "react-select": "^3.1.0",
     "react-slick": "^0.23.2",
     "react-transition-group": "^2.9.0",

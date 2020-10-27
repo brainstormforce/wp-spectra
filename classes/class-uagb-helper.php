@@ -564,8 +564,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/lottie':
 					$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
-					break;	
-					
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

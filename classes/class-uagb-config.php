@@ -2341,13 +2341,23 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'listDisplayStyle'      => 'list',
 						),
 					),
-					'uagb/lottie'          => array(
+					'uagb/lottie'             => array(
 						'slug'        => '',
 						'title'       => __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add Lottie animation.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,						
+						'default'     => true,
 						'attributes'  => array(
-							'block_id'   => '',							
+							'block_id'        => '',
+							'height'          => '',
+							'width'           => '',
+							'backgroundColor' => '',
+							'loop'            => '',
+							'count'           => '',
+							'speed'           => 1,
+							'reverse'         => '',
+							'playOnHover'     => '',
+							'jsonLottie'      => '',
+							'lottieURl'       => '',
 						),
 					),
 				);

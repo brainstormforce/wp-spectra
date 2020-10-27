@@ -9,15 +9,12 @@ import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 
+import Lottie from 'react-lottie';
 
 const { __ } = wp.i18n
 
 const {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
-	RichText,
-	PanelColorSettings,
 	MediaUpload,
     ColorPalette,
     MediaUploadCheck
@@ -25,14 +22,10 @@ const {
 
 const {
     PanelBody,
-	SelectControl,
 	RangeControl,
 	Button,
-	ButtonGroup,
 	TextControl,
-	BaseControl,
     ToggleControl,
-    FormFileUpload
 } = wp.components
 
 const { Component, Fragment } = wp.element
@@ -41,10 +34,39 @@ const { Component, Fragment } = wp.element
 class UAGBLottie extends Component {
 
     constructor() {
-		super( ...arguments )
+        super( ...arguments )
+        this.lottieplayer = React.createRef();
+        this.state = {  direction: 1,  loopState: true,};
         this.onSelectLottieJSON    = this.onSelectLottieJSON.bind( this )
+        this.reverseDirection    = this.reverseDirection.bind( this )
+        this.loopLottie    = this.loopLottie.bind( this )
+        
+        
+        
+        
 	}
     
+    componentDidMount() {
+        
+        // Assigning block_id in the attribute.
+        this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+        this.props.setAttributes( { classMigrate: true } )
+        
+        // Pushing Style tag for this block css.
+        const $style = document.createElement( "style" )
+        $style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+        document.head.appendChild( $style )
+        
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+
+        if( null !== element && undefined !== element ) {
+            element.innerHTML = styling( this.props )
+        }
+    }
+
     onSelectLottieJSON( media ) {
 
         const { setAttributes } = this.props
@@ -60,26 +82,29 @@ class UAGBLottie extends Component {
     }
     
     
-    componentDidMount() {
-        
-        // Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		this.props.setAttributes( { classMigrate: true } )
-        
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+
+    loopLottie() {
+        const { setAttributes } = this.props
+        const { loop } = this.props.attributes  
+        const { loopState } = this.state
+
+        setAttributes( { loop: ! loop } )
+		this.setState({ loopState :! loopState});
+		
     }
+
+    reverseDirection() {
+        const { setAttributes } = this.props
+        const { reverse } = this.props.attributes  
+        const { direction } = this.state
+
+        setAttributes( { reverse: ! reverse } )
+		this.setState({ direction : direction * -1 });
+		
+    }
+
     
-    componentDidUpdate(prevProps, prevState) {
-        var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
-
-        if( null !== element && undefined !== element ) {
-            element.innerHTML = styling( this.props )
-        }
-    }
-
+      
     render() {
         const { className, setAttributes, attributes } = this.props
         
@@ -87,16 +112,16 @@ class UAGBLottie extends Component {
             height,
             width,
             backgroundColor,
-            loop,
-            count,
+            loop,            
             speed,
             reverse,
             playOnHover,
             jsonLottie,
-            lottieURl
+            lottieURl,
+            
         } = attributes
 
-        
+       
         const controlsSettings = (
             <PanelBody
                 title={ __( "Controls" ) }
@@ -104,28 +129,24 @@ class UAGBLottie extends Component {
                 <ToggleControl
                     label={ __( "Loop" ) }
                     checked={ loop }
-                    onChange={ ( value ) => setAttributes( { loop: ! loop } ) }
+                    onChange={ this.loopLottie }
+                    help={ __( 'Enable to loop animation.' ) }
                     />
-                <RangeControl
-                    label={ __( "Count" ) }
-                    value={ count }
-                    onChange={ ( value ) => setAttributes( { count: value } ) }
-                    min={ 0 }
-                    max={ 50 }
-                    allowReset
-                    />
+                
                 <RangeControl
                     label={ __( "Speed" ) }
                     value={ speed }
                     onChange={ ( value ) => setAttributes( { speed: value } ) }
-                    min={ 0 }
+                    min={ 1 }
                     max={ 50 }
+                    help={ __( 'Animation speed.' ) }
                     allowReset
                     />
                  <ToggleControl
                     label={ __( "Reverse" ) }
                     checked={ reverse }
-                    onChange={ ( value ) => setAttributes( { reverse: ! reverse } ) }
+                    onChange={this.reverseDirection}
+                    help={ __( 'Direction of animation.' ) }
                     />
                 <ToggleControl
                     label={ __( "Play on Hover" ) }
@@ -144,7 +165,7 @@ class UAGBLottie extends Component {
                     value={ width }
                     onChange={ ( value ) => setAttributes( { width: value } ) }
                     min={ 0 }
-                    max={ 500 }
+                    max={ 1000 }
                     allowReset
                     />
                 <RangeControl
@@ -152,7 +173,7 @@ class UAGBLottie extends Component {
                     value={ height }
                     onChange={ ( value ) => setAttributes( { height: value } ) }
                     min={ 0 }
-                    max={ 500 }
+                    max={ 1000 }
                     allowReset
                     />
                 <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
@@ -163,10 +184,11 @@ class UAGBLottie extends Component {
                     />
             </PanelBody>
         )
+
         //Check if given url is valid or not for json extension.
         var validJsonPath = 'invalid';
-        if( lottieURl ){
-             validJsonPath = lottieURl.endsWith('.json') ? 'valid' :'invalid'
+        if( lottieURl && lottieURl.endsWith('.json') ){
+             validJsonPath = 'valid' 
         }       
 
         if ( validJsonPath === 'invalid' ) {
@@ -182,7 +204,7 @@ class UAGBLottie extends Component {
                         value={ jsonLottie }
                         render={ ( { open } ) => (
                             <Button isDefault onClick={ open }>
-                                { ! jsonLottie ? __( "Upload JSON" ) : __( "Replace JSON" ) }
+                                {__( "Upload JSON" ) }
                             </Button>
                         ) }
                     />
@@ -198,14 +220,53 @@ class UAGBLottie extends Component {
 				</Fragment>
 			)
         }
+       
+       
+        const handleLottieMouseEnter = () => {  
+            this.lottieplayer.current.anim.play();
+        };
+
+        const handleLottieMouseLeave = () => {
+            this.lottieplayer.current.anim.stop();
+        };
+
+        const reversedir = (reverse) ? -1 : 1
         
         return (
             <Fragment>
-               <InspectorControls>
-                   { controlsSettings }
-                   { styleSettings }
-               </InspectorControls>
-               asd
+                
+                <InspectorControls>
+                    { controlsSettings }
+                    { styleSettings }
+                </InspectorControls>
+                
+                <div
+                className={ classnames(
+                    className,
+                    "uagb-lottie__outer-wrap",
+                    `uagb-block-${this.props.clientId.substr( 0, 8 )}`
+                ) }
+                onMouseEnter={ playOnHover ? handleLottieMouseEnter : ()=> null }
+                onMouseLeave={ playOnHover ? handleLottieMouseLeave : ()=> null } >
+                    <Lottie 
+                        ref={this.lottieplayer}
+                        options={{                            
+                            loop: loop,
+                            path: lottieURl,
+                            rendererSettings: {
+                                preserveAspectRatio: 'xMidYMid',
+                                className:"uagb-lottie-inner-wrap"
+                            }
+                        }}
+                        isStopped={playOnHover}                        
+                        height={height}
+                        width={width}
+                        speed={speed}
+                        isClickToPauseDisabled = {true}
+                        direction={`${reversedir}`}
+                        style={{backgroundColor:backgroundColor}}                       
+                    />
+                </div>
             </Fragment>
         );
     }
