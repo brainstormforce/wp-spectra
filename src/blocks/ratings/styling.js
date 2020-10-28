@@ -52,6 +52,7 @@ function styling( props ) {
 		summaryColor,
 		starActiveColor,
 		starOutlineColor,
+		overallAlignment
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -97,7 +98,8 @@ function styling( props ) {
 		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
 		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
 		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
-		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+				"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+				"text-align" : overallAlignment,
 		},
 		" .uagb_review_summary, .uagb_review_summary_title" : {
 		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),

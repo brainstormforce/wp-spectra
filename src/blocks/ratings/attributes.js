@@ -17,6 +17,10 @@
 		type: "string",
 		default: "",
 	},
+	overallAlignment: {
+		type: "string",
+		default: "left",
+	},
 	block_id: {
 		type: "string",
 	},

@@ -24,6 +24,8 @@ const {
 	RichText,
 	ColorPalette,
 	MediaUpload,
+	AlignmentToolbar,
+	BlockControls,
 } = wp.blockEditor
 
 const {
@@ -242,6 +244,7 @@ class UAGBRatingEdit extends Component {
 				editable,
 				enableDescription,
 				enableImage,
+				overallAlignment
 			},
 			setAttributes,
 			isSelected,
@@ -731,7 +734,12 @@ class UAGBRatingEdit extends Component {
 				offerExpiry={offerExpiry}
 				identifier={identifier}
 				/>,
-			// isSelected && (
+				<BlockControls key='index'>
+				<AlignmentToolbar
+					value={ overallAlignment }
+					onChange={ ( value ) => setAttributes( { overallAlignment: value } ) }
+				/>
+				</BlockControls>,
 				<InspectorControls>
 					{ ratingGeneralSettings() }
 					{ ratingSchemaSettings() }

@@ -51,6 +51,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					"text-align" => $attr['overallAlignment'],
 				),
 				' .uagb_review_summary' => array(
 					'color' => $attr['summaryColor'],
