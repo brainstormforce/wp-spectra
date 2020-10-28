@@ -193,6 +193,10 @@
 		type: "string",
 		default: "gtin", // nsn, mpn, gtin8, gtin12, gtin13, gtin14, gtin
 	},
+	ctaTarget: {
+		type: "boolean",
+		default: false,
+	},
 	offerType: {
 		type: "string",
 		default: "Offer", //can also be set to aggregate offer (which prevevnts calltoactionurl from being  used as offer url)

@@ -69,8 +69,8 @@ export default function save( props ) {
 
 	}
 
-	let target ="_self"
 		let rel ="noopener noreferrer"
+		let target =""
 		if( ctaTarget ){
 			target ="_blank"
 		}

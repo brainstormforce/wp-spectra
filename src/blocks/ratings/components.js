@@ -172,7 +172,7 @@ export class ReviewBody extends Component {
 		if( ctaTarget ){
 			target ="_blank"
 		}
-		
+
 		return (
 			<div className="uagb_review_block">
 				<a
