@@ -35,6 +35,7 @@ const {
 	TextControl,
 	DatePicker,
 	ExternalLink,
+	DateTimePicker 
 } = wp.components
 
 const {
@@ -240,7 +241,7 @@ class UAGBRatingEdit extends Component {
 				starOutlineColor,
 				editable,
 				enableDescription,
-				enableImage
+				enableImage,
 			},
 			setAttributes,
 			isSelected,
@@ -248,6 +249,11 @@ class UAGBRatingEdit extends Component {
 			getBlock,
 			className,
 		} = this.props;
+
+		const onUpdateDate = ( dateTime ) => {
+			var newDateTime = moment(dateTime).format( 'YYYY-MM-DD' );
+			setAttributes( { offerExpiry: newDateTime } );
+		  };
 
 		if (
 			blockID === ""
@@ -543,25 +549,27 @@ class UAGBRatingEdit extends Component {
 								label={__("Offer Status")}
 								value={offerStatus}
 								options={[
-									"Discontinued",
-									"In Stock",
-									"In Store Only",
-									"Limited Availability",
-									"Online Only",
-									"Out Of Stock",
-									"Pre Order",
-									"Pre Sale",
-									"Sold Out",
-								].map((a) => ({
-									label: __(a),
-									value: a.replace(" ", ""),
-								}))}
-								onChange={(offerStatus) => setAttributes({ offerStatus })}
+									{ value: 'https://schema.org/Discontinued', label: __( 'Discontinued' ) },
+									{ value: 'https://schema.org/InStock', label: __( 'In Stock' ) },
+									{ value: 'https://schema.org/InStoreOnly', label: __( 'In Store Only' ) },
+									{ value: 'https://schema.org/LimitedAvailability', label: __( 'Limited Availability' ) },
+									{ value: 'https://schema.org/OnlineOnly', label: __( 'Online Only' ) },
+									{ value: 'https://schema.org/OutOfStock', label: __( 'Out Of Stock' ) },
+									{ value: 'https://schema.org/PreOrder', label: __( 'Pre Order' ) },
+									{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale' ) },
+									{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out' ) },
+								]}
+								// onChange={(offerStatus) => setAttributes({ offerStatus })}
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										offerStatus: value,
+									} )
+								}
 							/>
-							<TextControl
-								label={__("Offer expiration")}
-								value={offerExpiry}
-								onChange={(offerExpiry) => setAttributes({ offerExpiry })}
+							<DateTimePicker
+								currentDate={ offerExpiry }
+								onChange={ ( val ) => onUpdateDate( val ) }
+								is12Hour={ true }
 							/>
 						</Fragment>
 					) : (
@@ -797,7 +805,7 @@ class UAGBRatingEdit extends Component {
 	export default compose(
 		withSelect( ( select, ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
-			console.log();
+			
 				var offers = {}
 				var json_data = {
 					"@context": "https://schema.org/",
@@ -846,7 +854,7 @@ class UAGBRatingEdit extends Component {
 						"url": ownProps.attributes.ctaLink,
 						"priceValidUntil": ownProps.attributes.offerExpiry,
 						"priceCurrency": ownProps.attributes.offerCurrency,
-						"availability": "https://schema.org/InStock"
+						"availability": ownProps.attributes.offerStatus
 					  }
 				  }
 	

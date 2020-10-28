@@ -199,7 +199,7 @@
 	},
 	offerStatus: {
 		type: "string",
-		default: "InStock", //available values: Discontinued, InStock, InStoreOnly, LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, PreSale, SoldOut
+		default: "", //available values: Discontinued, InStock, InStoreOnly, LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, PreSale, SoldOut
 	},
 	//begin aggregate offer-only attributes
 	offerHighPrice: {
