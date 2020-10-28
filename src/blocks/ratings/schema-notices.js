@@ -20,7 +20,10 @@ class SchemaNotices extends Component {
             mainimage,
             sku,
             brand,
-            author,
+            starCount,
+            rAuthor,
+            newAverage,
+            offerType,
             offerCount,
             offerLowPrice,
             offerHighPrice,
@@ -29,7 +32,6 @@ class SchemaNotices extends Component {
             ctaLink,
             offerExpiry,
             identifier,
-            showFeature,
             features,
             clientId,
             } = this.props
@@ -37,13 +39,11 @@ class SchemaNotices extends Component {
         var emptyItems = [];
         
         var feature_empty_item_flag = false;
-        features.forEach((feature, key) => {
-            if ( '' === feature.feature_name || 'undefined' === typeof feature.feature_name ) {
+        // features.forEach((feature, key) => {
+            if ( '' === mainimage.url || 'undefined' === typeof mainimage.url ) {
                 feature_empty_item_flag = true;
             }
-        });
-
-
+        // });
 
         if ( 'undefined' === typeof rTitle || '' === rTitle ) {
             emptyItems.push( 'Mising Rating Block Title' );
@@ -60,11 +60,14 @@ class SchemaNotices extends Component {
         if ( 'undefined' === typeof brand || '' === brand ) {
             emptyItems.push( 'Brand' );
         }
-        if ( 'undefined' === typeof author || '' === author ) {
+        if ( 'undefined' === typeof rAuthor || '' === rAuthor ) {
             emptyItems.push( 'Author' );
         }
         if ( 'undefined' === typeof offerCount || '' === offerCount ) {
             emptyItems.push( 'Missing field Offer Count' );
+        }
+        if ( 'undefined' === typeof offerType || '' === offerType ) {
+            emptyItems.push( 'Missing field Offer Type' );
         }
         if ( 'undefined' === typeof offerLowPrice || '' === offerLowPrice ) {
             emptyItems.push( 'Missing field Offer Low Price' );
@@ -104,7 +107,7 @@ class SchemaNotices extends Component {
                         <ul className="rating-schema-notices-list">
                             { listItems }
                         </ul>
-                <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="https://developers.google.com/search/docs/data-types/how-to" target="_blank">{ __( 'Read more.' ) }</a></p>
+                <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="https://developers.google.com/search/docs/data-types/review-snippet" target="_blank">{ __( 'Read more.' ) }</a></p>
                     </div>
                 )
             }

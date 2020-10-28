@@ -99,17 +99,15 @@ function styling( props ) {
 		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
 		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
 		},
-		" .uagb_review_summary" : {
+		" .uagb_review_summary, .uagb_review_summary_title" : {
 		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
 		    "font-weight": contentFontWeight,
 		    "font-family": contentFontFamily,
-		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+			"line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+			"color": summaryColor,
 		},
 		" .uagb_review_entry .rich-text" : {
 			"color" : contentColor,
-		},
-		" .uagb_review_summary" : {
-			"color": summaryColor,
 		},
 		" .uagb_review_entry .star, .uagb_review_average_stars .star" : {
 			"fill": starColor,
@@ -121,78 +119,30 @@ function styling( props ) {
 	}
 
 	mobile_selectors = {
-			" .rich-text.block-editor-rich-text__editable.uagb-rating-title.keep-placeholder-on-focus" : {
+			" .uagb-rating-title" : {
 				"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 				"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 			},
-			" .rich-text.block-editor-rich-text__editable.uagb-rating-feature-text" : {
-				"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
-				"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
-			},
-			" .rich-text.block-editor-rich-text__editable.uagb-rating-desc.keep-placeholder-on-focus" : {
+			" .uagb-rating-desc, .uagb-rating-author" : {
 				"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 				"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 			},
-			" .uagb-features .uagb-rating-feature__label" : {
-				"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
-				"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
-			},
-	        " .rich-text.block-editor-rich-text__editable.uagb-price-text" : {
-			    "font-size": generateCSSUnit( contentFontSizeMobile, contentFontSizeType ),
-			    "line-height": generateCSSUnit( contentLineHeightMobile, contentLineHeightType ),
-			},
-			" .rich-text.block-editor-rich-text__editable.uagb-price-value-text" : {
-			    "font-size": generateCSSUnit( contentFontSizeMobile, contentFontSizeType ),
-			    "line-height": generateCSSUnit( contentLineHeightMobile, contentLineHeightType ),
-			},
-			" .rich-text.block-editor-rich-text__editable.uagb-price-currency-text" : {
-			    "font-size": generateCSSUnit( contentFontSizeMobile, contentFontSizeType ),
-			    "line-height": generateCSSUnit( contentLineHeightMobile, contentLineHeightType ),
-			},
-			" .rich-text.block-editor-rich-text__editable.uagb-availability-text" : {
-			    "font-size": generateCSSUnit( contentFontSizeMobile, contentFontSizeType ),
-			    "line-height": generateCSSUnit( contentLineHeightMobile, contentLineHeightType ),
-			},
-			" .rich-text.block-editor-rich-text__editable.uagb-availability-value-text" : {
+			" .uagb_review_summary, .uagb_review_summary_title" : {
 			    "font-size": generateCSSUnit( contentFontSizeMobile, contentFontSizeType ),
 			    "line-height": generateCSSUnit( contentLineHeightMobile, contentLineHeightType ),
 			},
 	}
 
 	tablet_selectors = { 
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-title.keep-placeholder-on-focus" : {
+		" .uagb-rating-title" : {
 			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 		},
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-feature-text" : {
-			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
-			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-rating-desc.keep-placeholder-on-focus" : {
+		" .uagb-rating-desc, .uagb-rating-author" : {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
-		" .uagb-features .uagb-rating-feature__label" : {
-			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
-			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
-		},
-        " .rich-text.block-editor-rich-text__editable.uagb-price-text" : {
-		    "font-size": generateCSSUnit( contentFontSizeTablet, contentFontSizeType ),
-		    "line-height": generateCSSUnit( contentLineHeightTablet, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-price-value-text" : {
-		    "font-size": generateCSSUnit( contentFontSizeTablet, contentFontSizeType ),
-		    "line-height": generateCSSUnit( contentLineHeightTablet, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-price-currency-text" : {
-			    "font-size": generateCSSUnit( contentFontSizeTablet, contentFontSizeType ),
-			    "line-height": generateCSSUnit( contentLineHeightTablet, contentLineHeightType ),
-			},
-		" .rich-text.block-editor-rich-text__editable.uagb-availability-text" : {
-		    "font-size": generateCSSUnit( contentFontSizeTablet, contentFontSizeType ),
-		    "line-height": generateCSSUnit( contentLineHeightTablet, contentLineHeightType ),
-		},
-		" .rich-text.block-editor-rich-text__editable.uagb-availability-value-text" : {
+		" .uagb_review_summary, .uagb_review_summary_title" : {
 		    "font-size": generateCSSUnit( contentFontSizeTablet, contentFontSizeType ),		    
 		    "line-height": generateCSSUnit( contentLineHeightTablet, contentLineHeightType ),
 		},

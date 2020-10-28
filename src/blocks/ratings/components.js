@@ -144,7 +144,8 @@ export class ReviewBody extends Component {
 			activeStarColor,
 			selectedStarColor,
 			starOutlineColor,
-			// setEditable,
+			ctaTarget,
+			ctaLink,
 			setActiveStarIndex,
 			rTitle,
 			rContent,
@@ -165,17 +166,30 @@ export class ReviewBody extends Component {
 		if (average !== newAverage) {
 			this.setState({ average: newAverage });
 		}
+
+		let target ="_self"
+		let rel ="noopener noreferrer"
+		if( ctaTarget ){
+			target ="_blank"
+		}
 		
 		return (
 			<div className="uagb_review_block">
-				<RichText
-					tagName={ headingTag }
-					placeholder={ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
-					keepPlaceholderOnFocus
-					value={ rTitle }
-					className='uagb-rating-title'
-					onChange={(text) => setTitle(text)}
-				/>
+				<a
+					href = {ctaLink}
+					className = 'uagb-rating-link-wrapper'
+					target= {target}
+					rel= {rel}
+				>
+					<RichText
+						tagName={ headingTag }
+						placeholder={ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
+						keepPlaceholderOnFocus
+						value={ rTitle }
+						className='uagb-rating-title'
+						onChange={(text) => setTitle(text)}
+					/>
+					</a>
 				{ descriptionEnabled === true &&
 				<RichText
 					tagName="p"

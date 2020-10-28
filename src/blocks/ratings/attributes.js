@@ -38,7 +38,7 @@
 	},
 	headingTag: {
 		type: "string",
-		default: "h2"
+		default: "h3"
 	},
 	blockID: {
 		type: "string",

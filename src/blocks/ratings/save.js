@@ -85,22 +85,22 @@ export default function save( props ) {
 			<script type="application/ld+json">
 				{ schema }
 			</script>
-			<a
-				href = {ctaLink}
-				className = {
-					classnames(
-						'uagb-cta__button-link-wrapper',
-					)
-				}
-				target= {target}
-				rel= {rel}
-			>
 			<div className="uagb_review_block">
+				<a
+					href = {ctaLink}
+					className = {
+						classnames(
+							'uagb-rating-link-wrapper',
+						)
+					}
+					target= {target}
+					rel= {rel}
+				>
 				<RichText.Content
 					value={ rTitle }
 					className='uagb-rating-title'
 					tagName={ headingTag }
-				/>
+				/></a>
 				{ enableDescription === true &&
 				<RichText.Content
 					tagName="p"
@@ -179,6 +179,6 @@ export default function save( props ) {
 						</div>
 				</div>
 			</div>
-		</a></div>
+		</div>
 	)
 }

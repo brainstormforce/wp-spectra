@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-// import SchemaNotices from "./schema-notices"
+import SchemaNotices from "./schema-notices"
 import { ReviewBody } from "./components";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -302,6 +302,52 @@ class UAGBRatingEdit extends Component {
 
 		}
 
+		let loadTitleGoogleFonts;
+		let loadDescriptionGoogleFonts;
+		let loadContentGoogleFonts;
+		
+		
+		if( true === titleLoadGoogleFonts ) {
+			
+			const tconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+				},
+			};
+			
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ tconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( true === descLoadGoogleFonts ) {
+			
+			const dconfig = {
+				google: {
+					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+				},
+			};
+			
+			loadDescriptionGoogleFonts = (
+				<WebfontLoader config={ dconfig }>
+				</WebfontLoader>
+			)
+		}	
+		
+		if( true === contentLoadGoogleFonts ){
+			const cconfig = {
+				google: {
+					families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
+				},
+			};
+			
+			loadContentGoogleFonts = (
+				<WebfontLoader config={ cconfig }>
+				</WebfontLoader>
+			)
+		}
+
 		const ratingStyleSettings = () => {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
@@ -312,6 +358,8 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
 						allowReset
 					/>
+					{ enableDescription === true &&
+					(<Fragment>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 					<ColorPalette
@@ -319,6 +367,10 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { descColor: value } ) }
 						allowReset
 					/>
+					</Fragment>)
+					}
+					{ showAuthor === true &&
+					(<Fragment>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
 					<ColorPalette
@@ -326,6 +378,10 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { authorColor: value } ) }
 						allowReset
 					/>
+					</Fragment>)
+					}
+					{ showFeature === true &&
+					(<Fragment>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
 					<ColorPalette
@@ -333,6 +389,8 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { contentColor: value } ) }
 						allowReset
 					/>
+					</Fragment>)
+					}
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Summary Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: summaryColor }} ></span></span></p>
 					<ColorPalette
@@ -380,6 +438,7 @@ class UAGBRatingEdit extends Component {
 							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
 							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
 						/>
+						{ ( showAuthor === true && enableDescription === true ) &&
 						<TypographyControl
 							label={ __( "Description" ) }
 							attributes = { this.props.attributes }
@@ -397,6 +456,7 @@ class UAGBRatingEdit extends Component {
 							lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
 							lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
 						/>
+						}
 						<TypographyControl
 							label={ __( "Content" ) }
 							attributes = { this.props.attributes }
@@ -640,41 +700,48 @@ class UAGBRatingEdit extends Component {
 			)
 		}
 
-		let target ="_self"
-		let rel ="noopener noreferrer"
-		if( ctaTarget ){
-			target ="_blank"
-		}
+		
 
 		
 		return [
-			isSelected && (
+			<SchemaNotices
+				rTitle={rTitle}
+				rContent={rContent}
+				mainimage={mainimage}
+				sku={sku}
+				brand={brand}
+				starCount={starCount}
+				rAuthor={rAuthor}
+				// newAverage={newAverage}
+				offerType={offerType}
+				offerCount={offerCount}
+				offerLowPrice={offerLowPrice}
+				offerHighPrice={offerHighPrice}
+				offerCurrency={offerCurrency}
+				offerPrice={offerPrice}
+				ctaLink={ctaLink}
+				offerExpiry={offerExpiry}
+				identifier={identifier}
+				/>,
+			// isSelected && (
 				<InspectorControls>
 					{ ratingGeneralSettings() }
 					{ ratingSchemaSettings() }
 					{ ratingStyleSettings() }
 				</InspectorControls>
-			),
-			<div className={ classnames(
+			// ),
+			,<div className={ classnames(
 				className,
 				"uagb-ratings__outer-wrap",
 				`uagb-block-${ blockID.substr( 0, 8 ) }`
 			) }>
-				<a
-				href = {ctaLink}
-				className = {
-					classnames(
-						'uagb-cta__button-link-wrapper',
-					)
-				}
-				target= {target}
-				rel= {rel}
-			>
 			<ReviewBody
 				rTitle={rTitle}
 				setTitle={(newValue) =>
 					setAttributes({ rTitle: newValue })
 				}
+				ctaLink={ctaLink}
+				ctaTarget={ctaTarget}
 				rContent={rContent}
 				setDescription={(newValue) =>
 					setAttributes({ rContent: newValue })
@@ -722,7 +789,9 @@ class UAGBRatingEdit extends Component {
 				setActiveStarIndex={(editedStar) => setState({ editedStar })}
 				showfeature={showFeature}
 				showauthor={showAuthor}
-			/></a></div>,
+			/>{ loadTitleGoogleFonts }
+			{ loadDescriptionGoogleFonts }
+			{ loadContentGoogleFonts }</div>
 		];
 	}} 
 	export default compose(
