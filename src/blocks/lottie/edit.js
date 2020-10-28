@@ -17,7 +17,8 @@ const {
 	InspectorControls,
 	MediaUpload,
     ColorPalette,
-    MediaUploadCheck
+    MediaUploadCheck,
+    MediaPlaceholder
 } = wp.blockEditor
 
 const {
@@ -192,32 +193,20 @@ class UAGBLottie extends Component {
         }       
 
         if ( validJsonPath === 'invalid' ) {
-            return (
-                <Fragment>
-				<div className="uagb-lottie_upload_wrap">
-                    <h3 className="uagb-lottie-upload-heading">  {__( "Lottie" ) } </h3>
-                <MediaUploadCheck>
-                    <MediaUpload
-                        title={ __( "Upload" ) }
+            return (               
+				<div className="uagb-lottie_upload_wrap">                    
+                    <MediaPlaceholder
+                        labels={ {
+                            title: __( 'Lottie' ),
+                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website' )
+                        } }                        
+                        allowedTypes={ [ 'application/json' ] }
+                        accept={ [ 'application/json' ] }
+                        value={jsonLottie }
+                        onSelectURL={ ( value ) => setAttributes( { lottieURl: value } )  }
                         onSelect={ this.onSelectLottieJSON }
-                        allowedTypes={ [ "application/json" ] }
-                        value={ jsonLottie }
-                        render={ ( { open } ) => (
-                            <Button isDefault onClick={ open }>
-                                {__( "Upload JSON" ) }
-                            </Button>
-                        ) }
                     />
-                </MediaUploadCheck>                
-                <p className="components-base-control__label">{__( "OR" )}</p>
-                <TextControl
-                    className="uagb-lottie-url-input"
-                    value={ lottieURl }
-                    onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
-                    placeholder={__( "Enter URL" )}
-                />
-                </div>
-				</Fragment>
+                </div>				
 			)
         }
        
