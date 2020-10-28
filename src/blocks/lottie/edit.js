@@ -195,7 +195,7 @@ class UAGBLottie extends Component {
             return (
                 <Fragment>
 				<div className="uagb-lottie_upload_wrap">
-                    <p>UAGB Lottie</p>
+                    <h3 className="uagb-lottie-upload-heading">  {__( "Lottie" ) } </h3>
                 <MediaUploadCheck>
                     <MediaUpload
                         title={ __( "Upload" ) }
