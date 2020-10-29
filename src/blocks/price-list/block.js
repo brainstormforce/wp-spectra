@@ -65,6 +65,7 @@ registerBlockType( "uagb/restaurant-menu", {
 		__( "menu" ),
 		__( "uag" ),
 	],
+	example:{},
 	supports: {
 		anchor: true,
 	},
