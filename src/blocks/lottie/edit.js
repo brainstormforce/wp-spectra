@@ -4,8 +4,6 @@
 
 import classnames from "classnames"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 
@@ -40,11 +38,7 @@ class UAGBLottie extends Component {
         this.state = {  direction: 1,  loopState: true,};
         this.onSelectLottieJSON    = this.onSelectLottieJSON.bind( this )
         this.reverseDirection    = this.reverseDirection.bind( this )
-        this.loopLottie    = this.loopLottie.bind( this )
-        
-        
-        
-        
+        this.loopLottie    = this.loopLottie.bind( this )        
 	}
     
     componentDidMount() {
@@ -52,20 +46,12 @@ class UAGBLottie extends Component {
         // Assigning block_id in the attribute.
         this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
         this.props.setAttributes( { classMigrate: true } )
-        
-        // Pushing Style tag for this block css.
-        const $style = document.createElement( "style" )
-        $style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
-        document.head.appendChild( $style )
+      
         
     }
     
     componentDidUpdate(prevProps, prevState) {
-        var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
-
-        if( null !== element && undefined !== element ) {
-            element.innerHTML = styling( this.props )
-        }
+       
     }
 
     onSelectLottieJSON( media ) {
@@ -232,8 +218,8 @@ class UAGBLottie extends Component {
                 <div
                 className={ classnames(
                     className,
+                    `uagb-block-${this.props.clientId.substr( 0, 8 )}`,
                     "uagb-lottie__outer-wrap",
-                    `uagb-block-${this.props.clientId.substr( 0, 8 )}`
                 ) }
                 onMouseEnter={ playOnHover ? handleLottieMouseEnter : ()=> null }
                 onMouseLeave={ playOnHover ? handleLottieMouseLeave : ()=> null } >

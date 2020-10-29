@@ -159,6 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.18.1 =
+* New: Lottie.
+
 = 1.18.0 =
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.

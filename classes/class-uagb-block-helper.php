@@ -4874,6 +4874,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
+			$selectors = array(
+				'.uagb-lottie__outer-wrap' => array(
+					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
+					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),
+					'overflow'         => 'hidden',
+					'margin'           => '0px auto',
+					'outline'          => 'none',
+					'background-color' => $attr['backgroundColor'],
+				),
+			);
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
