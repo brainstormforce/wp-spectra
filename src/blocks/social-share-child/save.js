@@ -36,19 +36,24 @@ export default function save( props ) {
 			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
-	const featuredImageId = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
-	const featuredImagemedia = featuredImageId ? wp.data.select( 'core').getMedia( featuredImageId ) : '';
-	
-	
+
 	let img_url = ''
-	if( "undefined" !== typeof pinterestImage && null !== pinterestImage && "" !== pinterestImage ){
-		img_url = pinterestImage.url		
-	}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
-		img_url = featuredImagemedia.source_url
+
+	if ( "pinterest" ==  type ){
+		
+		const featuredImageId = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
+		const featuredImagemedia = featuredImageId ? wp.data.select( 'core').getMedia( featuredImageId ) : '';
+
+		if( "undefined" !== typeof pinterestImage && null !== pinterestImage && "" !== pinterestImage ){
+			img_url = pinterestImage.url		
+		}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
+			img_url = featuredImagemedia.source_url
+		}	
+	
 	}
 
 	let url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
-	
+
 	return (
 		<div
 			className={ classnames(

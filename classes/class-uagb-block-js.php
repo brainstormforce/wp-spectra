@@ -119,7 +119,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $attr, $id ) {
-
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
 			ob_start();
