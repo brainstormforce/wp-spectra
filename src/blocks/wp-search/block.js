@@ -31,4 +31,5 @@ registerBlockType( "uagb/wp-search", {
 	attributes,
 	edit,
 	save,
+	example: {},
 } )

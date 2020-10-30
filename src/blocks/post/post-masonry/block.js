@@ -28,6 +28,7 @@ registerBlockType( "uagb/post-masonry", {
 		__( "uag" ),
 	],
 	edit,
+	example: {},
 	// Render via PHP
 	save() {
 		return null

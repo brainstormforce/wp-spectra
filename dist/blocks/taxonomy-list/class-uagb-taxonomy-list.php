@@ -110,7 +110,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						),
 						'noTaxDisplaytext'      => array(
 							'type'    => 'string',
-							'default' => __( 'Taxonomy Not Available.' ),
+							'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 						),
 						'boxShadowColor'        => array(
 							'type' => 'string',
@@ -149,7 +149,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						// Color Attributes.
 						'bgColor'               => array(
 							'type'    => 'string',
-							'default' => '#e4e4e4',
+							'default' => '#f5f5f5',
 						),
 						'titleColor'            => array(
 							'type'    => 'string',
@@ -243,11 +243,15 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						// Grid Border attributes.
 						'borderColor'           => array(
 							'type'    => 'string',
-							'default' => '#b2b4b5',
+							'default' => '#E0E0E0',
 						),
 						'borderThickness'       => array(
 							'type'    => 'number',
 							'default' => 1,
+						),
+						'borderRadius'          => array(
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'borderStyle'           => array(
 							'type'    => 'string',

@@ -29,6 +29,7 @@ registerBlockType( "uagb/inline-notice", {
 		anchor: true,
 	},
 	attributes,
+	example: {},
 	edit,
 	save,
 } )
