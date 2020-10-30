@@ -159,6 +159,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.19.0 ###
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
+
 ### 1.18.0 ###
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
@@ -170,7 +174,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: How to Schema - Image deletion issue for steps.
 * Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
 * Fix: Post Block - Infinite scroll broken for anonymous user.
-* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Unicode error in some cases issue fixed.
 
 ### 1.17.0 ###
