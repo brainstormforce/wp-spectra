@@ -37,9 +37,11 @@ export default function save( props ) {
 		}
 	}
 
-	let img_url = ''
+	let url = links[type];
 
 	if ( "pinterest" ==  type ){
+		
+		let img_url = ''
 		
 		const featuredImageId = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
 		const featuredImagemedia = featuredImageId ? wp.data.select( 'core').getMedia( featuredImageId ) : '';
@@ -49,10 +51,9 @@ export default function save( props ) {
 		}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
 			img_url = featuredImagemedia.source_url
 		}	
-	
-	}
 
-	let url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
+		url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
+	}
 
 	return (
 		<div
