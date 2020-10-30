@@ -72,6 +72,7 @@ function styling( props ) {
         borderStyle,
         borderThickness,
         borderColor,
+        borderRadius,
     } = props.attributes
 
     
@@ -156,7 +157,8 @@ function styling( props ) {
     
     if ( borderStyle !== "none" ) {
 		selectors[" .uagb-taxomony-box"] = {
-			"border" : generateCSSUnit( borderThickness, "px" ) + ' ' + borderStyle + ' ' + borderColor
+            "border" : generateCSSUnit( borderThickness, "px" ) + ' ' + borderStyle + ' ' + borderColor,
+            "border-radius" : generateCSSUnit( borderRadius, "px" ),
 		}
 	}
     
