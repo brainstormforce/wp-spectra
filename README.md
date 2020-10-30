@@ -171,9 +171,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multiple file generation issue in some cases fixed.
 * Fix: Inline Notice - Dismissal of Notice issue.
 * Fix: How To Schema - Step gap issue.
-* Fix: How to Schema - Image deletion issue for steps.
-* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
-* Fix: Post Block - Infinite scroll broken for anonymous user.
+* Fix: How To Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on the same page not allowed issue.
+* Fix: Post Block - Infinite scroll is broken for anonymous user.
 * Fix: Unicode error in some cases issue fixed.
 
 ### 1.17.0 ###
