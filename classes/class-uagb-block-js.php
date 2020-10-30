@@ -136,9 +136,9 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						}
 						var  request_url ="";
 						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
-							 request_url = social_url;
+							request_url = social_url;
 						}else{
-							 request_url = social_url + window.location.href;
+							request_url = social_url + window.location.href;
 						}
 						window.open( request_url, target );
 					});
