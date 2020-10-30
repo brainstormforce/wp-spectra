@@ -55,11 +55,13 @@ const deprecated =[
 							<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 						</div>
 					)
-			},
+			}
+		},
+		{
+			attributes,
 			save: props => {
-	
 				const { attributes, className } = props
-			
+
 				const {
 					type,
 					image_icon,
@@ -68,11 +70,11 @@ const deprecated =[
 					block_id,
 					link,
 				} = props.attributes
-			
+
 				let url = links[type]
-			
+
 				let image_icon_html = ""
-			
+
 				if ( image_icon == "icon" ) {
 					if ( icon ) {
 						image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
