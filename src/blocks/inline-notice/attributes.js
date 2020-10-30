@@ -160,6 +160,14 @@
 		type: "number",
 		default : 15
 	},
+	layout: {
+		type: "string",
+		default : "modern",
+	},
+	highlightWidth: {
+		type: "number",
+		default : 10
+	},
 }
 
 export default attributes
