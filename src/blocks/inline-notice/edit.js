@@ -188,7 +188,7 @@ class UAGBInlineNoticeEdit extends Component {
 						onChange={ ( value ) => setAttributes( { layout: value } ) }
 						options={ [
 							{ value: "modern", label: __( "Modern" ) },
-							{ value: "simple", label: __( "Simple" ) },							
+							{ value: "simple", label: __( "Default" ) },							
 						] }
 					/>
 					{ "simple" == layout  &&

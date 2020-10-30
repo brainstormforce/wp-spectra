@@ -29,6 +29,12 @@ registerBlockType( "uagb/advanced-heading", {
 	supports: {
 		anchor: true,
 	},
+	example: {
+		attributes: {
+			headingTitle: __( 'Write a Heading' ),
+			headingDesc: __( 'Write a Description' ),
+		},
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	transform,
