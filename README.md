@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ### 1.19.0 ###
 * Improvement: Inline Notice - New layout added for inline notice.
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 
 ### 1.18.0 ###
 * New: Taxonomy List.
