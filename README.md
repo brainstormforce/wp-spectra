@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.5  
-**Stable tag:** 1.17.0  
+**Stable tag:** 1.18.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -159,17 +159,21 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 1.19.0 ###
+* Fix: Social Share - Pinterest Share not working because missing image issue.
+
 ### 1.18.0 ###
 * New: Taxonomy List.
 * Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
-* Improvement: Google Map - Now user can show language specific Google Map.
+* Improvement: Google Map - Now user can show language-specific Google Map.
 * Improvement: How to Schema - More options to add total time.
-* Fix: Inline Notice - Notice dismiss issue.
+* Fix: Multiple file generation issue in some cases fixed.
+* Fix: Inline Notice - Dismissal of Notice issue.
 * Fix: How To Schema - Step gap issue.
-* Fix: How to Schema - Image deletion issue for steps.
-* Fix: FAQ Schema - Multiple FAQSchema on same page not allowed issue.
-* Fix: Post Block - Infinite scroll broken for anonymous user.
-* Fix: Social Share - Pinterest Share not working because missing image issue.
+* Fix: How To Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on the same page not allowed issue.
+* Fix: Post Block - Infinite scroll is broken for anonymous user.
+* Fix: Unicode error in some cases issue fixed.
 
 ### 1.17.0 ###
 * Improvement: Compatibility with WordPress 5.5.

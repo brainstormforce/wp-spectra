@@ -739,7 +739,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Taxonomy List.
 		 *
-		 * @since 1.16.0
+		 * @since 1.18.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_taxonomy_list_gfont( $attr ) {
