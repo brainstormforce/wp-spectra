@@ -159,7 +159,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
 = 1.19.0 =
+* Improvement: Inline Notice - New layout added for inline notice.
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Social Share - Pinterest Share not working because missing image issue.
 
 = 1.18.0 =

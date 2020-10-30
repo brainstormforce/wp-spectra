@@ -108,7 +108,7 @@ window.addEventListener(
 		var accordionElements = document.getElementsByClassName( 'uagb-faq-layout-accordion' );
 		for ( var item = 0;  item < accordionElements.length; item++ ) {
 			var questionButtons = accordionElements[item].querySelectorAll( '.uagb-faq-questions-button' );
-			
+		
 			for ( var button = 0; button < questionButtons.length; button++ ) {
 				
 				questionButtons[button].addEventListener("click", function( e ) {
@@ -131,15 +131,19 @@ function faqClick( e, faqItem, questionButtons ) {
 		faqItem.setAttribute( 'aria-expanded', false );
 		slideUp( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 	} else {
-		var parent = faqItem.parentElement.parentElement.parentElement.parentElement;
+		var parent = e.currentTarget.closest('.wp-block-uagb-faq');
+		
 		var faqToggle = 'true';
 		if ( parent.classList.contains( 'wp-block-uagb-faq' ) ) {
 			faqToggle = parent.getAttribute( 'data-faqtoggle' );
 		}
+		
 		faqItem.classList.add('uagb-faq-item-active');
 		faqItem.setAttribute( 'aria-expanded', true );
 		slideDown( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 		if( 'true' === faqToggle ) {
+			
+			var questionButtons = parent.querySelectorAll( '.uagb-faq-questions-button' );
 			for ( var buttonChild = 0; buttonChild < questionButtons.length; buttonChild++ ) {
 				var buttonItem = questionButtons[buttonChild].parentElement
 				if ( buttonItem === faqItem ) {
