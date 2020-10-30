@@ -214,6 +214,7 @@ registerBlockType( "uagb/google-map", {
 			default: "en",
 		},
 	},
+	example: {},
 	edit: UAGBGoogleMap,
 	save: function( props ) {
 
