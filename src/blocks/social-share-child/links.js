@@ -10,6 +10,7 @@ const links = {
 	tumblr: "https://www.tumblr.com/widgets/share/tool?canonicalUrl=",
 	myspace: "https://myspace.com/post?u=",
 	email: "mailto:?body=",
+	pinterest: "https://pinterest.com/pin/create/link/?url=",
 }
 
 export default links

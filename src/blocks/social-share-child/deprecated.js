@@ -84,7 +84,7 @@ const deprecated =[
 						image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 					}
 				}
-				
+
 				return (
 					<div
 						className={ classnames(
