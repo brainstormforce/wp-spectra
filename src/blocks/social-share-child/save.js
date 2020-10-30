@@ -46,7 +46,7 @@ export default function save( props ) {
 	}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
 		img_url = featuredImagemedia.source_url
 	}
-	
+
 	let url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
 	
 	return (
