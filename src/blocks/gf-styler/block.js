@@ -45,6 +45,7 @@ if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 		},
 		category: uagb_blocks_info.category,
 		edit,
+		example: {},
 		save() {
 			return null
 		},	

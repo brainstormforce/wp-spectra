@@ -4749,7 +4749,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Taxonomy List CSS.
 		 *
-		 * @since 1.17.0
+		 * @since 1.18.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
@@ -4824,7 +4824,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[' .uagb-taxomony-box'] = array(
-					'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+					'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 			}
 

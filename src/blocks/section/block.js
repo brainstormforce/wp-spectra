@@ -43,5 +43,6 @@ registerBlockType( "uagb/section", {
 		}
 	},
 	save,
+	example: {},
 	deprecated,
 } )

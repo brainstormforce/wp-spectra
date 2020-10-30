@@ -35,5 +35,6 @@ registerBlockType( "uagb/call-to-action", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

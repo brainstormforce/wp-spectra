@@ -32,5 +32,6 @@ registerBlockType( "uagb/marketing-button", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

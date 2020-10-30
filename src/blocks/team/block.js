@@ -32,6 +32,7 @@ registerBlockType( "uagb/team", {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
+	example: {},
 	edit,
 	save,
 	deprecated,
