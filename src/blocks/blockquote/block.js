@@ -47,5 +47,6 @@ registerBlockType( "uagb/blockquote", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

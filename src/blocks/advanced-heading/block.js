@@ -13,14 +13,8 @@ import "./style.scss"
 const { __ } = wp.i18n
 
 const {
-	registerBlockType,
-	createBlock
+	registerBlockType
 } = wp.blocks
-
-const {
-	RichText
-} = wp.blockEditor
-
 
 registerBlockType( "uagb/advanced-heading", {
 
@@ -34,6 +28,12 @@ registerBlockType( "uagb/advanced-heading", {
 	],
 	supports: {
 		anchor: true,
+	},
+	example: {
+		attributes: {
+			headingTitle: __( 'Write a Heading' ),
+			headingDesc: __( 'Write a Description' ),
+		},
 	},
 	category: uagb_blocks_info.category,
 	attributes,

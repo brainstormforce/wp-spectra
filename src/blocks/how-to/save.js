@@ -1,14 +1,17 @@
 /**
- * BLOCK: How-To - Save Block
+ * BLOCK: How-To Schema - Save Block
  */
 
-// Import block dependencies and components.
 import classnames from "classnames"
 
 const {
 	RichText,
 	InnerBlocks
 } = wp.blockEditor
+
+const {  
+	Fragment 
+} = wp.element
 
 export default function save( props ) {
 	
@@ -36,6 +39,11 @@ export default function save( props ) {
 		showEstcost,
 		showTools,
 		showMaterials,
+		timeInMins,
+		timeInHours,
+		timeInDays,
+		timeInMonths,
+		timeInYears,
 	} = attributes
 
 	let url_chk = ''
@@ -65,6 +73,15 @@ export default function save( props ) {
 
 	}
 
+	//Time Labels
+	var yearlabel = (timeInYears > 1) ? " Years " : " Year ";
+	var monthlabel = (timeInMonths > 1) ? " Months " : " Month ";
+	var daylabel = (timeInDays > 1) ? " Days " : " Day ";
+	var hourlabel = (timeInHours > 1) ? "Hours " : " Hour ";
+
+	var minsValue = (timeInMins) ? timeInMins : time;
+	var minslabel = (minsValue > 1) ? " Minutes " : " Minute ";		
+
 	return (
 		<div
 			className={ classnames(
@@ -87,40 +104,39 @@ export default function save( props ) {
 					tagName='p'
 					className='uagb-howto-desc-text'
 				/>
-				<div className="uagb-howto__source-wrap">{image_icon_html}</div>
+				{ mainimage.url &&
+					<div className="uagb-howto__source-wrap">{image_icon_html}</div>
+				}
 				{ showTotaltime &&
 				<span className="uagb-howto__time-wrap">
 					<RichText.Content
 						value={ timeNeeded }
-						tagName='h3'
+						tagName='h4'
 						className='uagb-howto-timeNeeded-text'
 					/>
-					<RichText.Content
-						value={ time }
-						tagName='h3'
-						className='uagb-howto-timeNeeded-value'
-					/>
-					<RichText.Content
-						tagName="h3"
-						value={ timeIn }
-						className='uagb-howto-timeINmin-text'
-					/>
+					<Fragment>							
+							{timeInYears && ( <Fragment><p className='uagb-howto-timeNeeded-value'> {timeInYears}</p><p className='uagb-howto-timeINmin-text'>  {yearlabel}</p></Fragment> )}							
+							{timeInMonths && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInMonths}</p><p className='uagb-howto-timeINmin-text'>{monthlabel}</p></Fragment> )}							
+							{timeInDays && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInDays}</p><p className='uagb-howto-timeINmin-text'>{daylabel}</p></Fragment> )}							
+							{timeInHours && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{timeInHours}</p><p className='uagb-howto-timeINmin-text'>{hourlabel}</p></Fragment> )}							
+							{minsValue && ( <Fragment><p className='uagb-howto-timeNeeded-value'>{minsValue}</p><p className='uagb-howto-timeINmin-text'>{minslabel}</p></Fragment> )}								
+					</Fragment>					
 				</span>
 				}
 				{ showEstcost &&
 				<span className="uagb-howto__cost-wrap">
 					<RichText.Content
 						value={ estCost }
-						tagName='h3'
+						tagName='h4'
 						className='uagb-howto-estcost-text'
 					/>
 					<RichText.Content
 						value={ cost }
-						tagName='h3'
+						tagName='p'
 						className='uagb-howto-estcost-value'
 					/>
 					<RichText.Content
-						tagName="h3"
+						tagName="p"
 						value={ currencyType }
 						className='uagb-howto-estcost-type'
 					/>
@@ -131,7 +147,7 @@ export default function save( props ) {
 				<div className="uagb-how-to-tools__wrap">
 					<RichText.Content
 						value={ toolsTitle }
-						tagName='h3'
+						tagName='h4'
 						className='uagb-howto-req-tools-text'
 					/>
 				</div>
@@ -145,8 +161,6 @@ export default function save( props ) {
 									className={ classnames(
 										`uagb-how-to-tools-${index}`,
 										"uagb-how-to-tools-child__wrapper",
-										className,
-										`uagb-block-${ props.clientId }`
 									) }
 									key={ index }
 								>
@@ -167,7 +181,7 @@ export default function save( props ) {
 				<div className="uagb-how-to-materials__wrap">
 					<RichText.Content
 						value={ materialTitle }
-						tagName='h3'
+						tagName='h4'
 						className='uagb-howto-req-materials-text'
 					/>
 				</div>
@@ -181,16 +195,14 @@ export default function save( props ) {
 								className={ classnames(
 									`uagb-how-to-materials-${index}`,
 									"uagb-how-to-materials-child__wrapper",
-									className,
-									`uagb-block-${ props.clientId }`
 								) }
 							>
 								<div className="uagb-materials">
-										<RichText.Content
-											tagName="div"
-											value={ materials.add_required_materials }
-											className='uagb-materials__label'
-										/>
+									<RichText.Content
+										tagName="div"
+										value={ materials.add_required_materials }
+										className='uagb-materials__label'
+									/>
 								</div>
 							</div>
 						)
@@ -201,7 +213,7 @@ export default function save( props ) {
 			<div className="uagb-how-to-steps__wrap">
 				<RichText.Content
 					value={ stepsTitle }
-					tagName='h3'
+					tagName='h4'
 					className='uagb-howto-req-steps-text'
 				/>
 				<div className="uagb-howto-steps__wrap">

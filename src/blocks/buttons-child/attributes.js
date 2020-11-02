@@ -3,12 +3,12 @@
  */
 
 const attributes = {
-	block_id: {
-		type: "string"
-	},
-	classMigrate: {
+	inheritFromTheme: {
 		type: "boolean",
 		default: false
+	},
+	block_id: {
+		type: "string"
 	},
 	align: {
 		type: "string",
@@ -37,7 +37,7 @@ const attributes = {
 		type: "string",
 	},
 	label: {
-		type: "string",
+		type: "html",
 		default:'#Click Here' 
 	} ,
 	link: {
@@ -125,7 +125,19 @@ const attributes = {
 	} ,
 	opensInNewTab: {
 		type: "boolean"
-	}
+	},
+	icon : {
+		type : "string",
+		default : ""
+	},
+	iconPosition: {
+		type: "string",
+		default: "after"
+	},
+	iconSpace :{
+		type: "number",
+		default : 8
+	},
 }
 
 export default attributes

@@ -58,12 +58,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $file_generation = 'disabled';
 
 		/**
-		 * UAG File Generation Fallback Flag
+		 * UAG File Generation Fallback Flag for CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @var file_generation
 		 */
-		public static $fallback_assets = false;
+		public static $fallback_css = false;
+
+		/**
+		 * UAG File Generation Fallback Flag for JS
+		 *
+		 * @since 1.15.0
+		 * @var file_generation
+		 */
+		public static $fallback_js = false;
 
 		/**
 		 * Enque Style and Script Variable
@@ -140,9 +148,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list      = UAGB_Config::get_block_attributes();
 			self::$file_generation = self::allow_file_generation();
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ) );
 			add_action( 'wp', array( $this, 'generate_assets' ), 99 );
-			add_action( 'get_header', array( $this, 'generate_asset_files' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ), 10 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
@@ -154,13 +162,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * CSS Path : uploads/uag-plugin/uag-style-{post_id}-{timestamp}.css
 		 * JS Path : uploads/uag-plugin/uag-script-{post_id}-{timestamp}.js
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 */
 		public function generate_asset_files() {
 
 			global $content_width;
 			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
-			self::$script     = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+			if ( '' !== self::$script ) {
+				self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+			}
 
 			if ( 'enabled' === self::$file_generation ) {
 				self::file_write( self::$stylesheet, 'css' );
@@ -202,12 +212,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( isset( $file_handler['css_url'] ) ) {
 					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), UAGB_VER, 'all' );
 				} else {
-					self::$fallback_assets = true;
+					self::$fallback_css = true;
 				}
 				if ( isset( $file_handler['js_url'] ) ) {
 					wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
 				} else {
-					self::$fallback_assets = true;
+					self::$fallback_js = true;
 				}
 			}
 
@@ -218,7 +228,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function print_script() {
 
-			if ( 'enabled' === self::$file_generation && ! self::$fallback_assets ) {
+			if ( 'enabled' === self::$file_generation && ! self::$fallback_js ) {
 				return;
 			}
 
@@ -238,7 +248,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function print_stylesheet() {
 
-			if ( 'enabled' === self::$file_generation && ! self::$fallback_assets ) {
+			if ( 'enabled' === self::$file_generation && ! self::$fallback_css ) {
 				return;
 			}
 
@@ -402,6 +412,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			switch ( $name ) {
+				case 'uagb/inline-notice':
+					$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
+					$js .= UAGB_Block_JS::get_inline_notice_js( $blockattr, $block_id );
+					break;
+
 				case 'uagb/how-to':
 					$css += UAGB_Block_Helper::get_how_to_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_how_to_gfont( $blockattr );
@@ -534,6 +550,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/faq':
 					$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_faq_gfont( $blockattr );
+					break;
+
+				case 'uagb/wp-search':
+					$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
+					break;
+
+				case 'uagb/taxonomy-list':
+					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
 					break;
 
 				default:
@@ -907,7 +933,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
 				'ignore_sticky_posts' => 1,
+				'paged'               => 1,
 			);
+
+			if ( $attributes['excludeCurrentPost'] ) {
+				$query_args['post__not_in'] = array( get_the_ID() );
+			}
 
 			if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
 				$query_args['tax_query'][] = array(
@@ -918,7 +949,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
-			if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
+			if ( 'grid' === $block_type && isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
 				if ( get_query_var( 'paged' ) ) {
 
@@ -935,6 +966,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 				$query_args['posts_per_page'] = $attributes['postsToShow'];
 				$query_args['paged']          = $paged;
+
+			}
+
+			if ( 'masonry' === $block_type && isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] && isset( $attributes['paged'] ) ) {
+
+				$query_args['paged'] = $attributes['paged'];
 
 			}
 
@@ -1072,6 +1109,122 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * Get all taxonomies list.
+		 *
+		 * @since 1.18.0
+		 * @access public
+		 */
+		public static function get_taxonomy_list() {
+
+			$post_types = self::get_post_types();
+
+			$return_array = array();
+
+			foreach ( $post_types as $key => $value ) {
+				$post_type = $value['value'];
+
+				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+				$data       = array();
+
+				$get_singular_name = get_post_type_object( $post_type );
+				foreach ( $taxonomies as $tax_slug => $tax ) {
+					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
+						continue;
+					}
+
+					$data[ $tax_slug ] = $tax;
+
+					$terms = get_terms( $tax_slug );
+
+					$related_tax_terms = array();
+
+					if ( ! empty( $terms ) ) {
+						foreach ( $terms as $t_index => $t_obj ) {
+							$related_tax_terms[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+							);
+						}
+
+						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
+					}
+
+					$newcategoriesList = get_terms(
+						$tax_slug,
+						array(
+							'hide_empty' => true,
+							'parent'     => 0,
+						)
+					);
+
+					$related_tax = array();
+
+					if ( ! empty( $newcategoriesList ) ) {
+						foreach ( $newcategoriesList as $t_index => $t_obj ) {
+							$child_arg     = array(
+								'hide_empty' => true,
+								'parent'     => $t_obj->term_id,
+							);
+							$child_cat     = get_terms( $tax_slug, $child_arg );
+							$child_cat_arr = $child_cat ? $child_cat : null;
+							$related_tax[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+								'children'      => $child_cat_arr,
+							);
+
+						}
+
+						$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
+
+					}
+
+					$newcategoriesList_empty_tax = get_terms(
+						$tax_slug,
+						array(
+							'hide_empty' => false,
+							'parent'     => 0,
+						)
+					);
+
+					$related_tax_empty_tax = array();
+
+					if ( ! empty( $newcategoriesList_empty_tax ) ) {
+						foreach ( $newcategoriesList_empty_tax as $t_index => $t_obj ) {
+							$child_arg_empty_tax     = array(
+								'hide_empty' => false,
+								'parent'     => $t_obj->term_id,
+							);
+							$child_cat_empty_tax     = get_terms( $tax_slug, $child_arg_empty_tax );
+							$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
+							$related_tax_empty_tax[] = array(
+								'id'            => $t_obj->term_id,
+								'name'          => $t_obj->name,
+								'count'         => $t_obj->count,
+								'link'          => get_term_link( $t_obj->term_id ),
+								'singular_name' => $get_singular_name->labels->singular_name,
+								'children'      => $child_cat_empty_tax_arr,
+							);
+						}
+
+						$return_array[ $post_type ]['with_empty_taxonomy'][ $tax_slug ] = $related_tax_empty_tax;
+
+					}
+				}
+				$return_array[ $post_type ]['taxonomy'] = $data;
+
+			}
+
+			return apply_filters( 'uagb_taxonomies_list', $return_array );
+		}
+
+		/**
 		 *  Get - RGBA Color
 		 *
 		 *  Get HEX color and return RGBA. Default return RGB color.
@@ -1141,8 +1294,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
 			}
 
-			$wp_info = wp_upload_dir( null, false );
-
 			$dir_name = basename( UAGB_DIR );
 			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
 				$dir_name = 'uag-plugin';
@@ -1164,6 +1315,35 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
+		}
+
+		/**
+		 * Deletes the upload dir.
+		 *
+		 * @since 1.18.0
+		 * @return array
+		 */
+		public function delete_upload_dir() {
+
+			$wp_info = wp_upload_dir( null, false );
+
+			$dir_name = basename( UAGB_DIR );
+			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
+				$dir_name = 'uag-plugin';
+			}
+
+			// Build the paths.
+			$dir_info = array(
+				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
+			);
+
+			// Check the upload dir if it doesn't exist or not.
+			if ( file_exists( $dir_info['path'] . 'index.html' ) ) {
+				// Remove the directory.
+				$wp_filesystem = self::get_instance()->get_filesystem();
+				return $wp_filesystem->rmdir( $dir_info['path'], true );
+			}
+			return false;
 		}
 
 		/**
@@ -1201,12 +1381,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$js_suffix   = 'uag-script';
 			$info        = array();
 
-			if ( ! empty( $data ) && 'css' === $type ) {
+			if ( 'css' === $type ) {
 
 				$info['css']     = $uploads_dir['path'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
 				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
 
-			} elseif ( ! empty( $data ) && 'js' === $type ) {
+			} elseif ( 'js' === $type ) {
 
 				$info['js']     = $uploads_dir['path'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
 				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
@@ -1223,10 +1403,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  string $style_data The data that needs to be copied into the created file.
 		 * @param  string $timestamp Current timestamp.
 		 * @param  string $type Type of file - CSS/JS.
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @return boolean true/false
 		 */
 		public static function create_file( $assets_info, $style_data, $timestamp, $type ) {
+
+			$post_id = get_the_ID();
+			if ( ! $post_id ) {
+				return false;
+			}
+
 			$file_system = self::get_instance()->get_filesystem();
 
 			// Create a new file.
@@ -1234,7 +1420,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( $result ) {
 				// Update meta with current timestamp.
-				update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $timestamp );
+				update_post_meta( $post_id, 'uag_style_timestamp-' . $type, $timestamp );
 			}
 
 			return $result;
@@ -1249,18 +1435,39 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, true );
+			$post_id = get_the_ID();
+			if ( ! $post_id ) {
+				return false;
+			}
+
+			$post_timestamp = get_post_meta( $post_id, 'uag_style_timestamp-' . $type, true );
 			$var            = ( 'css' === $type ) ? 'css' : 'js';
 			$date           = new DateTime();
 			$new_timestamp  = $date->getTimestamp();
 			$file_system    = self::get_instance()->get_filesystem();
 
 			// Get timestamp - Already saved OR new one.
-			$post_timestamp = ( '' === $post_timestamp || false === $post_timestamp ) ? '' : $post_timestamp;
+			$post_timestamp  = ( '' === $post_timestamp || false === $post_timestamp ) ? '' : $post_timestamp;
+			$assets_info     = self::get_asset_info( $style_data, $type, $post_timestamp );
+			$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
 
-			$assets_info       = self::get_asset_info( $style_data, $type, $post_timestamp );
-			$new_assets_info   = self::get_asset_info( $style_data, $type, $new_timestamp );
 			$relative_src_path = $assets_info[ $var ];
+
+			if ( '' === $style_data ) {
+				/**
+				 * This is when the generated CSS/JS is blank.
+				 * This means this page does not use UAG block.
+				 * In this scenario we need to delete the existing file.
+				 * This will ensure there are no extra files added for user.
+				*/
+
+				if ( file_exists( $relative_src_path ) ) {
+					// Delete old file.
+					wp_delete_file( $relative_src_path );
+				}
+
+				return true;
+			}
 
 			/**
 			 * Timestamp present but file does not exists.
@@ -1269,7 +1476,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 */
 			if ( ! $file_system->exists( $relative_src_path ) && '' !== $post_timestamp ) {
 
-				$did_create = self::create_file( $assets_info, $style_data, $new_timestamp, $type );
+				$did_create = self::create_file( $assets_info, $style_data, $post_timestamp, $type );
 
 				if ( $did_create ) {
 					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1300,25 +1507,27 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 * Need to match the content.
 			 * If new content is present we update the current assets.
 			 */
-			if ( file_exists( $assets_info[ $var ] ) ) {
+			if ( file_exists( $relative_src_path ) ) {
 
-				$old_data = $file_system->get_contents( $assets_info[ $var ] );
+				$old_data = $file_system->get_contents( $relative_src_path );
 
 				if ( $old_data !== $style_data ) {
+
+					// Delete old file.
+					wp_delete_file( $relative_src_path );
 
 					// Create a new file.
 					$did_create = self::create_file( $new_assets_info, $style_data, $new_timestamp, $type );
 
 					if ( $did_create ) {
-						// Delete old file.
-						wp_delete_file( $assets_info[ $var ] );
 						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
 					}
 
 					return $did_create;
 				}
 			}
-			self::$css_file_handler = $assets_info;
+
+			self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
 
 			return true;
 		}
@@ -1493,7 +1702,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  string $slug The field slug.
 		 * @param  string $selector The selector array.
 		 * @param  array  $combined_selectors The combined selector array.
-		 * @since  x.x.x
+		 * @since  1.15.0
 		 * @return bool|string
 		 */
 		public static function get_typography_css( $attr, $slug, $selector, $combined_selectors ) {
@@ -1567,7 +1776,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $combined_selectors The combined selector array.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.15.0
 		 */
 		public static function generate_all_css( $combined_selectors, $id ) {
 

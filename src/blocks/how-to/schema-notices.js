@@ -1,5 +1,5 @@
 /**
- * Schema Notices component.
+ * How-To Schema Notices component.
  *
  */
 const { __ } = wp.i18n
@@ -31,6 +31,11 @@ class SchemaNotices extends Component {
             tools,
             materials,
             clientId,
+            minsValue,
+            timeInHours,
+            timeInDays,
+            timeInMonths,
+            timeInYears,
         } = this.props
 
         var emptyItems = [];
@@ -54,12 +59,9 @@ class SchemaNotices extends Component {
         if ( true === showTotaltime && ( 'undefined' === typeof timeNeeded || '' === timeNeeded ) ) {
             emptyItems.push( 'Time Needed Label' );
         }
-        if ( true === showTotaltime && ( 'undefined' === typeof time || '' === time ) ) {
+        if ( true === showTotaltime && ( ( 'undefined' === typeof minsValue || '' === minsValue ) && ( 'undefined' === typeof timeInHours || '' === timeInHours ) && ( 'undefined' === typeof timeInDays || '' === timeInDays ) && ( 'undefined' === typeof timeInMonths || '' === timeInMonths ) && ( 'undefined' === typeof timeInYears || '' === timeInYears ) ) ) {
             emptyItems.push( 'Time' );
-        }
-        if ( true === showTotaltime && ( 'undefined' === typeof timeIn || '' === timeIn ) ) {
-            emptyItems.push( 'Time Unit' );
-        }
+        }        
         if ( true === showEstcost && ( 'undefined' === typeof estCost || '' === estCost ) ) {
             emptyItems.push( 'Total Cost Label' );
         }
@@ -91,11 +93,11 @@ class SchemaNotices extends Component {
                 return (
                     <div className="how-to-schema-notices">
 
-                        <h6> { __( 'It seems the following fields are empty, It may generate Schema errors / warnings for your Page, we recommend you to fill those fields.' ) } </h6>
+                        <h6> { __( 'It seems the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.' ) } </h6>
                         <ul className="how-to-schema-notices-list">
                             { listItems }
                         </ul>
-                <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="" target="_blank">{ __( 'Read more.' ) }</a></p>
+                <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="https://developers.google.com/search/docs/data-types/how-to" target="_blank">{ __( 'Read more.' ) }</a></p>
                     </div>
                 )
             }

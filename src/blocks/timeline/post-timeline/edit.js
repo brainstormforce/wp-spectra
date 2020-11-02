@@ -209,7 +209,8 @@ class UAGBTimeline extends Component {
 			linkTarget,
 			postType,
 			taxonomyType,
-			dateFormat
+			dateFormat,
+			excludeCurrentPost
 		} = attributes
 
 		let taxonomyListOptions = [
@@ -510,6 +511,11 @@ class UAGBTimeline extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -1215,7 +1221,7 @@ class UAGBTimeline extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -1243,6 +1249,9 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
 	latestPostsQuery[rest_base] = categories
 
 	return {

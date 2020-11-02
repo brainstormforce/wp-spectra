@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB How-To Attributes
+ * BLOCK: UAGB How-To Schema Attributes
  */
 
  const { __ } = wp.i18n
@@ -29,15 +29,15 @@ const attributes = {
 		default: "left",
 	},
 	toolsTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Required Tools:" ),
 	},
 	materialTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Things Needed?" ),
 	},
 	stepsTitle: {
-		type: "string",
+		type: "html",
 		default : __( "Steps to configure the How-to Schema:" ),
 	},
 	tools_count: {
@@ -79,15 +79,15 @@ const attributes = {
 		}
 	},
 	estCost:{
-		type: "string",
+		type: "html",
 		default: __( "Total Cost:" ),
 	},
 	timeNeeded:{
-		type: "string",
+		type: "html",
 		default: __( "Total Time Needed :" ),
 	},
 	timeIn:{
-		type: "string",
+		type: "html",
 		default: __( " Minutes" ),
 	},
 	imgSize:{
@@ -116,7 +116,7 @@ const attributes = {
 		default: __( "How To Configure How-To Schema In Ultimate Addons For Gutenberg?" ),
 	},
 	currencyType: {
-		type: "string",
+		type: "html",
 		default: " USD"
 	},
 	headingDesc: {
@@ -148,7 +148,7 @@ const attributes = {
 	},
 	headingTag: {
 		type: "string",
-		default: "h2"
+		default: "h3"
 	},
 	headSpace: {
 		type: "number",
@@ -282,10 +282,30 @@ const attributes = {
 		type: "number",
 		default: 20
 	},
+	step_gap: {
+		type: "number",
+	},
 	schema: {
-		type: "string",
+		type: "html",
 		default: ""
-	}
+	},
+	timeInMins: {
+		type: "number",
+		
+	},
+	timeInHours: {
+		type: "number",		
+	},
+	timeInDays: {
+		type: "number",		
+	},
+	timeInMonths: {
+		type: "number",		
+	},
+	timeInYears: {
+		type: "number",		
+	},
+	
 }
 
 export default attributes

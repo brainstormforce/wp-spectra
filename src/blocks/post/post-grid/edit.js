@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-import map from "lodash/map"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
@@ -27,7 +26,9 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-	TextControl
+	TextControl,
+	RadioControl,
+	IconButton
 } = wp.components
 
 const {
@@ -100,11 +101,19 @@ class UAGBPostGrid extends Component {
 
 	componentDidMount() {
 
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	render() {
@@ -234,6 +243,11 @@ class UAGBPostGrid extends Component {
 			paginationAlignment,
 			paginationPrevText,
 			paginationNextText,
+			inheritFromTheme,
+			postDisplaytext,
+			displayPostContentRadio,
+			excludeCurrentPost
+			
 		} = attributes
 
 		const hoverSettings = (
@@ -281,11 +295,6 @@ class UAGBPostGrid extends Component {
 				/>
 			</Fragment>
 		)
-
-		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
-		]
 
 		let loadTitleGoogleFonts
 		let loadMetaGoogleFonts
@@ -399,6 +408,11 @@ class UAGBPostGrid extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<RangeControl
 							label={ __( "Posts Per Page" ) }
 							value={ postsToShow }
@@ -503,7 +517,21 @@ class UAGBPostGrid extends Component {
 							max={ 100 }
 						/>
                 	}
-					
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
+					<hr className="uagb-editor__separator" />
+					<ToggleControl
+						label={ __( "Inherit Styling from Theme" ) }
+						checked={ inheritFromTheme }
+						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme." ) }
+					/>
 				</PanelBody>
 				{ postPagination == true && 
 					<PanelBody title={ __( "Pagination" ) } initialOpen={ false }>
@@ -517,15 +545,30 @@ class UAGBPostGrid extends Component {
 									{ value: "filled", label: __( "Filled" ) },
 								] }
 							/>
-							<SelectControl
-								label={ __( "Pagination Alignment" ) }
-								value={ paginationAlignment }
-								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
-								options={ [
-									{ value: "left", label: __( "Left" ) },
-									{ value: "center", label: __( "Center" ) },
-									{ value: "right", label: __( "Right" ) },
-								] }
+							<h2> { __( "Pagination Alignment" ) }</h2>
+							<IconButton
+								key={ "left" }
+								icon="editor-alignleft"
+								label="Left"
+								onClick={ () => setAttributes( { paginationAlignment: "left" } ) }
+								aria-pressed = { "left" === paginationAlignment }
+								isPrimary = { "left" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "center" }
+								icon="editor-aligncenter"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "center" } ) }
+								aria-pressed = { "center" === paginationAlignment }
+								isPrimary = { "center" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "right" }
+								icon="editor-alignright"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "right" } ) }
+								aria-pressed = { "right" === paginationAlignment }
+								isPrimary = { "right" === paginationAlignment }
 							/>
 							<hr className="uagb-editor__separator" />
 							{ paginationLayout == "filled" && 
@@ -684,17 +727,37 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
-					{ displayPostExcerpt &&
-						<RangeControl
-							label={ __( "Excerpt Length" ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 1 }
-							max={ 500 }
-							allowReset
+					{ displayPostExcerpt && (
+						<RadioControl
+							label={ __( 'Show:' ) }
+							selected={ displayPostContentRadio }
+							options={ [
+								{ label: __( 'Excerpt' ), value: "excerpt" },
+								{label: __( 'Full post' ), value: "full_post",},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( {
+									displayPostContentRadio: value,
+								} )
+							}
 						/>
-					}
+					) }
+					{ displayPostExcerpt &&
+						displayPostContentRadio === 'excerpt' && (
+							<RangeControl
+								label={ __( 'Max number of words in excerpt' ) }
+								value={ excerptLength }
+								onChange={ ( value ) =>
+									setAttributes( { excerptLength: value } )
+								}
+								min={ 1 }
+								max={ 100 }
+								allowReset
+							/>
+						) }
 				</PanelBody>
+
+				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
 				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
@@ -715,104 +778,108 @@ class UAGBPostGrid extends Component {
 								value= { ctaText }
 								onChange={ value => setAttributes( { ctaText: value } ) }
 							/>
-							<TypographyControl
-								label={ __( "Typography" ) }
-								attributes = { attributes }
-								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
-								fontFamily = { { value: ctaFontFamily, label: "ctaFontFamily" } }
-								fontWeight = { { value: ctaFontWeight, label: "ctaFontWeight" } }
-								fontSubset = { { value: ctaFontSubset, label: "ctaFontSubset" } }
-								fontSizeType = { { value: ctaFontSizeType, label: "ctaFontSizeType" } }
-								fontSize = { { value: ctaFontSize, label: "ctaFontSize" } }
-								fontSizeMobile = { { value: ctaFontSizeMobile, label: "ctaFontSizeMobile" } }
-								fontSizeTablet= { { value: ctaFontSizeTablet, label: "ctaFontSizeTablet" } }
-								lineHeightType = { { value: ctaLineHeightType, label: "ctaLineHeightType" } }
-								lineHeight = { { value: ctaLineHeight, label: "ctaLineHeight" } }
-								lineHeightMobile = { { value: ctaLineHeightMobile, label: "ctaLineHeightMobile" } }
-								lineHeightTablet= { { value: ctaLineHeightTablet, label: "ctaLineHeightTablet" } }
-							/>
-							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Border" ) }</h2>
-							<SelectControl
-								label={ __( "Style" ) }
-								value={ borderStyle }
-								onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "solid", label: __( "Solid" ) },
-									{ value: "dashed", label: __( "Dashed" ) },
-									{ value: "dotted", label: __( "Dotted" ) },
-									{ value: "double", label: __( "Double" ) },
-								] }
-							/>
-							<RangeControl
-								label={ __( "Width" ) }
-								value={ borderWidth }
-								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-								min={ 0 }
-								max={ 10 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Rounded Corner" ) }
-								value={ borderRadius }
-								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
-							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Padding (px)" ) }</h2>
-							<RangeControl
-								label={ UAGB_Block_Icons.vertical_spacing }
-								className={ "uagb-margin-control" }
-								value={ btnVPadding }
-								onChange={ ( value ) => setAttributes( { btnVPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
-							<RangeControl
-								label={ UAGB_Block_Icons.horizontal_spacing }
-								className={ "uagb-margin-control" }
-								value={ btnHPadding }
-								onChange={ ( value ) => setAttributes( { btnHPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
-							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Colors" ) }</h2>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
+							{ ! inheritFromTheme &&
+							<Fragment>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
+									fontFamily = { { value: ctaFontFamily, label: "ctaFontFamily" } }
+									fontWeight = { { value: ctaFontWeight, label: "ctaFontWeight" } }
+									fontSubset = { { value: ctaFontSubset, label: "ctaFontSubset" } }
+									fontSizeType = { { value: ctaFontSizeType, label: "ctaFontSizeType" } }
+									fontSize = { { value: ctaFontSize, label: "ctaFontSize" } }
+									fontSizeMobile = { { value: ctaFontSizeMobile, label: "ctaFontSizeMobile" } }
+									fontSizeTablet= { { value: ctaFontSizeTablet, label: "ctaFontSizeTablet" } }
+									lineHeightType = { { value: ctaLineHeightType, label: "ctaLineHeightType" } }
+									lineHeight = { { value: ctaLineHeight, label: "ctaLineHeight" } }
+									lineHeightMobile = { { value: ctaLineHeightMobile, label: "ctaLineHeightMobile" } }
+									lineHeightTablet= { { value: ctaLineHeightTablet, label: "ctaLineHeightTablet" } }
+								/>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Button Border" ) }</h2>
+								<SelectControl
+									label={ __( "Style" ) }
+									value={ borderStyle }
+									onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "solid", label: __( "Solid" ) },
+										{ value: "dashed", label: __( "Dashed" ) },
+										{ value: "dotted", label: __( "Dotted" ) },
+										{ value: "double", label: __( "Double" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ borderWidth }
+									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+									min={ 0 }
+									max={ 10 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Rounded Corner" ) }
+									value={ borderRadius }
+									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Button Padding (px)" ) }</h2>
+								<RangeControl
+									label={ UAGB_Block_Icons.vertical_spacing }
+									className={ "uagb-margin-control" }
+									value={ btnVPadding }
+									onChange={ ( value ) => setAttributes( { btnVPadding: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<RangeControl
+									label={ UAGB_Block_Icons.horizontal_spacing }
+									className={ "uagb-margin-control" }
+									value={ btnHPadding }
+									onChange={ ( value ) => setAttributes( { btnHPadding: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Button Colors" ) }</h2>
+								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+									activeClass="active-tab"
+									tabs={ [
+										{
+											name: "normal",
+											title: __( "Normal" ),
+											className: "uagb-normal-tab",
+										},
+										{
+											name: "hover",
+											title: __( "Hover" ),
+											className: "uagb-hover-tab",
+										},
+									] }>
 									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-hover-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if ( "hover" === tabName.name ){
-											tabout = hoverSettings
-										} else {
-											tabout = normalSettings
+										( tabName ) => {
+											let tabout
+											if ( "hover" === tabName.name ){
+												tabout = hoverSettings
+											} else {
+												tabout = normalSettings
+											}
+											return <div>{ tabout }</div>
 										}
-										return <div>{ tabout }</div>
 									}
-								}
-							</TabPanel>
+								</TabPanel>
+							</Fragment>
+							}
 						</Fragment>
 					}
-				</PanelBody>
+				</PanelBody>)}
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<h2>{ __( "Title" ) }</h2>
 					<SelectControl
@@ -830,68 +897,72 @@ class UAGBPostGrid extends Component {
 							{ value: "p", label: __( "p" ) },
 						] }
 					/>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
-						fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
-						fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
-						fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
-						fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
-						fontSize = { { value: titleFontSize, label: "titleFontSize" } }
-						fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
-						fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
-						lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
-						lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
-						lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
-						lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
-					/>
+					{ ! inheritFromTheme &&
+						<Fragment>
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+								fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+								fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+								fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+								fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+								fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+								fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+								fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+								lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+								lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+								lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+								lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
+							/>
 
-					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Meta" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
-							fontFamily = { { value: metaFontFamily, label: "metaFontFamily" } }
-							fontWeight = { { value: metaFontWeight, label: "metaFontWeight" } }
-							fontSubset = { { value: metaFontSubset, label: "metaFontSubset" } }
-							fontSizeType = { { value: metaFontSizeType, label: "metaFontSizeType" } }
-							fontSize = { { value: metaFontSize, label: "metaFontSize" } }
-							fontSizeMobile = { { value: metaFontSizeMobile, label: "metaFontSizeMobile" } }
-							fontSizeTablet= { { value: metaFontSizeTablet, label: "metaFontSizeTablet" } }
-							lineHeightType = { { value: metaLineHeightType, label: "metaLineHeightType" } }
-							lineHeight = { { value: metaLineHeight, label: "metaLineHeight" } }
-							lineHeightMobile = { { value: metaLineHeightMobile, label: "metaLineHeightMobile" } }
-							lineHeightTablet= { { value: metaLineHeightTablet, label: "metaLineHeightTablet" } }
-						/>
-					</Fragment>
-					}
+							{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Meta" ) }</h2>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
+									fontFamily = { { value: metaFontFamily, label: "metaFontFamily" } }
+									fontWeight = { { value: metaFontWeight, label: "metaFontWeight" } }
+									fontSubset = { { value: metaFontSubset, label: "metaFontSubset" } }
+									fontSizeType = { { value: metaFontSizeType, label: "metaFontSizeType" } }
+									fontSize = { { value: metaFontSize, label: "metaFontSize" } }
+									fontSizeMobile = { { value: metaFontSizeMobile, label: "metaFontSizeMobile" } }
+									fontSizeTablet= { { value: metaFontSizeTablet, label: "metaFontSizeTablet" } }
+									lineHeightType = { { value: metaLineHeightType, label: "metaLineHeightType" } }
+									lineHeight = { { value: metaLineHeight, label: "metaLineHeight" } }
+									lineHeightMobile = { { value: metaLineHeightMobile, label: "metaLineHeightMobile" } }
+									lineHeightTablet= { { value: metaLineHeightTablet, label: "metaLineHeightTablet" } }
+								/>
+							</Fragment>
+							}
 
-					{ displayPostExcerpt &&	<Fragment>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Excerpt" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
-							fontFamily = { { value: excerptFontFamily, label: "excerptFontFamily" } }
-							fontWeight = { { value: excerptFontWeight, label: "excerptFontWeight" } }
-							fontSubset = { { value: excerptFontSubset, label: "excerptFontSubset" } }
-							fontSizeType = { { value: excerptFontSizeType, label: "excerptFontSizeType" } }
-							fontSize = { { value: excerptFontSize, label: "excerptFontSize" } }
-							fontSizeMobile = { { value: excerptFontSizeMobile, label: "excerptFontSizeMobile" } }
-							fontSizeTablet= { { value: excerptFontSizeTablet, label: "excerptFontSizeTablet" } }
-							lineHeightType = { { value: excerptLineHeightType, label: "excerptLineHeightType" } }
-							lineHeight = { { value: excerptLineHeight, label: "excerptLineHeight" } }
-							lineHeightMobile = { { value: excerptLineHeightMobile, label: "excerptLineHeightMobile" } }
-							lineHeightTablet= { { value: excerptLineHeightTablet, label: "excerptLineHeightTablet" } }
-						/>
-					</Fragment>
+							{ displayPostExcerpt &&	<Fragment>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Excerpt" ) }</h2>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
+									fontFamily = { { value: excerptFontFamily, label: "excerptFontFamily" } }
+									fontWeight = { { value: excerptFontWeight, label: "excerptFontWeight" } }
+									fontSubset = { { value: excerptFontSubset, label: "excerptFontSubset" } }
+									fontSizeType = { { value: excerptFontSizeType, label: "excerptFontSizeType" } }
+									fontSize = { { value: excerptFontSize, label: "excerptFontSize" } }
+									fontSizeMobile = { { value: excerptFontSizeMobile, label: "excerptFontSizeMobile" } }
+									fontSizeTablet= { { value: excerptFontSizeTablet, label: "excerptFontSizeTablet" } }
+									lineHeightType = { { value: excerptLineHeightType, label: "excerptLineHeightType" } }
+									lineHeight = { { value: excerptLineHeight, label: "excerptLineHeight" } }
+									lineHeightMobile = { { value: excerptLineHeightMobile, label: "excerptLineHeightMobile" } }
+									lineHeightTablet= { { value: excerptLineHeightTablet, label: "excerptLineHeightTablet" } }
+								/>
+							</Fragment>
+							}
+						</Fragment>
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
@@ -901,25 +972,29 @@ class UAGBPostGrid extends Component {
 						onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
-					<ColorPalette
-						value={ titleColor }
-						onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
-						allowReset
-					/>
-					<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
-					<ColorPalette
-						value={ metaColor }
-						onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
-					/>
-					{ displayPostExcerpt == true &&
+					{ ! inheritFromTheme &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 							<ColorPalette
-								value={ excerptColor }
-								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
+								value={ titleColor }
+								onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 								allowReset
 							/>
+							<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
+							<ColorPalette
+								value={ metaColor }
+								onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
+							/>
+							{ displayPostExcerpt == true &&
+								<Fragment>
+									<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
+									<ColorPalette
+										value={ excerptColor }
+										onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
+										allowReset
+									/>
+								</Fragment>
+							}
 						</Fragment>
 					}
 				</PanelBody>
@@ -986,12 +1061,6 @@ class UAGBPostGrid extends Component {
 			</InspectorControls>
 		)
 
-		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -1001,7 +1070,7 @@ class UAGBPostGrid extends Component {
 					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>
@@ -1020,7 +1089,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
@@ -1032,7 +1101,7 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
 	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
@@ -1077,6 +1146,10 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
+	
 	latestPostsQuery[rest_base] = categories
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),

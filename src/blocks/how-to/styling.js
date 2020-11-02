@@ -8,7 +8,6 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		imgWidth,
 		overallAlignment,
 		headingTag,
 		showTotaltimecolor,
@@ -41,19 +40,21 @@ function styling( props ) {
 		priceFontSizeMobile,
 		priceFontFamily,
 		priceFontWeight,
-		priceFontSubset,
 		priceLineHeightType,
 		priceLineHeight,
 		priceLineHeightTablet,
 		priceLineHeightMobile,
-		priceLoadGoogleFonts,
 		timeSpace,
 		costSpace,
 		row_gap,
+		step_gap
 	} = props.attributes
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+
+	var s_gap = ( '' !== step_gap ) ? step_gap : 0;
+	s_gap += 30;
 
 	var selectors = {
 		
@@ -65,6 +66,10 @@ function styling( props ) {
 			"color": subHeadingColor,
 		},
 		' .uagb-how-to-main-wrap p': { 
+			"margin-bottom" :generateCSSUnit( row_gap, 'px' ),
+		 },
+
+		 ' .uagb-how-to-main-wrap .uagb-howto__source-wrap': { 
 			"margin-bottom" :generateCSSUnit( row_gap, 'px' ),
 		 },
 
@@ -83,6 +88,9 @@ function styling( props ) {
 		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
 		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
 		 },
+		' .uagb-howto-steps__wrap .wp-block-uagb-info-box' : {
+			'margin-bottom' : generateCSSUnit( s_gap, 'px' )
+		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
@@ -90,20 +98,20 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value": {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
+		" .uagb-howto-timeNeeded-value": {
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			"color": subHeadingColor,
 			"margin-left" : generateCSSUnit( timeSpace,"px"),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
+		" .uagb-howto-timeINmin-text ": {
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			"color": subHeadingColor,
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-text" :{
 			"font-family": priceFontFamily,
@@ -113,20 +121,33 @@ function styling( props ) {
 			"color": showTotaltimecolor,
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			"color": subHeadingColor,
 			"margin-left" : generateCSSUnit( costSpace,"px"),
 		},
 
-		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
+		" .uagb-howto-steps__wrap h4.block-editor-rich-text__editable" :{
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
+		},
+		" .uagb-howto-steps__wrap p.block-editor-rich-text__editable" : {
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+		},
+
+		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			"color": subHeadingColor,
 		},
 
 		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
@@ -153,23 +174,7 @@ function styling( props ) {
 			"color": showTotaltimecolor,
 		},
 
-		" .block-editor-rich-text__editable.uagb-howto-req-tools-text" : {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
-		},
-
 		" .block-editor-rich-text__editable.uagb-howto-req-steps-text" : {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
-		},
-
-		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -220,24 +225,24 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
-			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
-			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-text" : {
 			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
-			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
-			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-tools__label" : {
 			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
@@ -267,24 +272,24 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
-			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
-			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-text" : {
 			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
-			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
-			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .block-editor-rich-text__editable.uagb-tools__label" : {
 			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
@@ -304,7 +309,7 @@ function styling( props ) {
 		},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 

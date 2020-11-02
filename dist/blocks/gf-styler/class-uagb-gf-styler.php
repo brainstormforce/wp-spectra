@@ -609,6 +609,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			$classes = array(
 				'uagb-gf-styler__align-' . $attributes['align'],
 				'uagb-gf-styler__field-style-' . $attributes['fieldStyle'],
+				'uagb-gf-styler__gform-heading-' . $attributes['titleDescStyle'],
 				'uagb-gf-styler__btn-align-' . $attributes['buttonAlignment'],
 			);
 
@@ -631,7 +632,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			);
 
 			if ( isset( $attributes['className'] ) ) {
-				$main_classes . push( $attributes['className'] );
+				$main_classes[] = $attributes['className'];
 			}
 
 			ob_start();

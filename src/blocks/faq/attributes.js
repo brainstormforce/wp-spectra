@@ -36,7 +36,7 @@ const attributes = {
 	},
 	boxBgColor: {
 		type: "string",
-		default: "#eeeeee"
+		default: "#FFFFFF"
 	},
 	boxPaddingTypeMobile: {
 		type: "string",
@@ -84,11 +84,11 @@ const attributes = {
 	},
 	borderRadius: {
 		type: "number",
-		default : 4
+		default : 2
 	},
 	borderColor: {
 		type: "string",
-		default: "#313131"
+		default: "#D2D2D2"
 	},
 	questionTextColor: {
 		type: "string",
@@ -96,15 +96,7 @@ const attributes = {
 	},
 	questionTextActiveColor: {
 		type: "string",
-		default: "#313131"
-	},
-	questionPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	questionPaddingTypeTablet: {
-		type: "string",
-		default : "px"
+		default: "#656565"
 	},
 	questionPaddingTypeDesktop: {
 		type: "string",
@@ -137,14 +129,6 @@ const attributes = {
 	answerTextColor: {
 		type: "string",
 		default: "#313131"
-	},
-	answerPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	answerPaddingTypeTablet: {
-		type: "string",
-		default : "px"
 	},
 	answerPaddingTypeDesktop: {
 		type: "string",
@@ -278,15 +262,15 @@ const attributes = {
 	},
 	iconSize: {
 		type: "number",
-		default : 15
+		default : 12
 	},
 	iconSizeTablet: {
 		type: "number",
-		default : 15
+		default : 12
 	},
 	iconSizeMobile: {
 		type: "number",
-		default : 15
+		default : 12
 	},
 	iconSizeType: {
 		type: "string",
@@ -296,6 +280,14 @@ const attributes = {
 		type: "number",
 		default : 2
 	},
+	tcolumns :{
+		type: "number",
+		default: 2,
+	},
+	mcolumns :{
+		type: "number",
+		default: 1,
+	},
 	schema: {
 		type: "string",
 		default: ""
@@ -304,6 +296,38 @@ const attributes = {
 		type: "boolean",
 		default: true	
 	},
+	equalHeight: {
+		type: "boolean",
+		default: true	
+	},
+	questionLeftPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	questionBottomPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	questionLeftPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
+	questionBottomPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
+	questionLeftPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	questionBottomPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	headingTag: {
+		type: "html",
+		selector: "span,p,h1,h2,h3,h4,h5,h6",
+		default: "span"
+	}
 }
-
 export default attributes

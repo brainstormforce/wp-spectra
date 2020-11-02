@@ -1,5 +1,5 @@
 /**
- * BLOCK: How To
+ * BLOCK: How-To Schema
  */
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
@@ -8,7 +8,7 @@ import edit from "./edit"
 import save from "./save"
 import "./style.scss"
 import "./editor.scss"
-
+import deprecated from "./deprecated"
 
 const { __ } = wp.i18n
 
@@ -32,4 +32,5 @@ registerBlockType( "uagb/how-to", {
 	attributes,
 	edit,
 	save,
+	deprecated
 } )

@@ -22,8 +22,6 @@ function styling( props ) {
         borderColor,
         questionTextColor,
         questionTextActiveColor,
-        questionPaddingTypeMobile,
-        questionPaddingTypeTablet,
         questionPaddingTypeDesktop,
         vquestionPaddingMobile,
         vquestionPaddingTablet,
@@ -32,8 +30,6 @@ function styling( props ) {
         hquestionPaddingTablet,
         hquestionPaddingDesktop,
         answerTextColor,
-        answerPaddingTypeMobile,
-        answerPaddingTypeTablet,
         answerPaddingTypeDesktop,
         vanswerPaddingMobile,
         vanswerPaddingTablet,
@@ -69,7 +65,15 @@ function styling( props ) {
         iconSizeType,
         iconSizeMobile,
         iconSizeTablet,
-        columns
+        columns,
+        tcolumns,
+        mcolumns,
+        questionLeftPaddingTablet,
+        questionBottomPaddingTablet,
+        questionLeftPaddingDesktop,
+        questionBottomPaddingDesktop,
+        questionLeftPaddingMobile,
+        questionBottomPaddingMobile,
     } = props.attributes
 
     var selectors = {}
@@ -127,9 +131,9 @@ function styling( props ) {
         },
         " .uagb-faq-questions-button" : {
             "padding-top": generateCSSUnit( vquestionPaddingDesktop, questionPaddingTypeDesktop ),
-            "padding-bottom": generateCSSUnit( vquestionPaddingDesktop, questionPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( questionBottomPaddingDesktop, questionPaddingTypeDesktop ),
             "padding-right": generateCSSUnit( hquestionPaddingDesktop, questionPaddingTypeDesktop ),
-            "padding-left": generateCSSUnit( hquestionPaddingDesktop, questionPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( questionLeftPaddingDesktop, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
             "margin-top": generateCSSUnit( vanswerPaddingDesktop, answerPaddingTypeDesktop ),
@@ -166,16 +170,16 @@ function styling( props ) {
     
     tablet_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeTablet ),
-            "padding-bottom": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeTablet ),
-            "padding-right": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeTablet ),
-            "padding-left": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeTablet ),
+            "padding-top": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( questionBottomPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( questionLeftPaddingTablet, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
-            "margin-top": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-bottom": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-right": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-left": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeTablet ),
+            "margin-top": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-bottom": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-right": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-left": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeDesktop ),
         },
         " .uagb-faq-questions-button .uagb-question" : {
             "font-size" : generateCSSUnit( questionFontSizeTablet, questionFontSizeType ),
@@ -199,16 +203,16 @@ function styling( props ) {
 
     mobile_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeMobile ),
-            "padding-bottom": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeMobile ),
-            "padding-right": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeMobile ),
-            "padding-left": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeMobile ),
+            "padding-top": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( questionBottomPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( questionLeftPaddingMobile, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
-            "margin-top": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-bottom": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-right": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-left": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeMobile ),
+            "margin-top": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-bottom": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-right": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-left": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeDesktop ),
         },
         " .uagb-faq-questions-button .uagb-question" : {
             "font-size" : generateCSSUnit( questionFontSizeMobile, questionFontSizeType ),
@@ -273,10 +277,16 @@ function styling( props ) {
         selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
             "grid-template-columns" : 'repeat(' + columns + ', 1fr)'
         }
+        tablet_selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
+            "grid-template-columns" : 'repeat(' + tcolumns + ', 1fr)'
+        }
+        mobile_selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
+            "grid-template-columns" : 'repeat(' + mcolumns + ', 1fr)'
+        }
     }
 
     var styling_css = '';
-    var id = `.uagb-block-${ props.clientId }`
+    var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
     styling_css = generateCSS( selectors, id )
     

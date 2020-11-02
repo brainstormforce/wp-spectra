@@ -211,6 +211,16 @@ class UAGB_Init_Blocks {
 			}
 		}
 
+		$uagb_masonry_ajax_nonce = wp_create_nonce( 'uagb_masonry_ajax_nonce' );
+		wp_localize_script(
+			'uagb-post-js',
+			'uagb_data',
+			array(
+				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'uagb_masonry_ajax_nonce' => $uagb_masonry_ajax_nonce,
+			)
+		);
+
 	} // End function editor_assets().
 
 	/**
@@ -294,7 +304,9 @@ class UAGB_Init_Blocks {
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 				'post_types'        => UAGB_Helper::get_post_types(),
 				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
+				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
+				'uagb_home_url'     => home_url(),
 			)
 		);
 	} // End function editor_assets().

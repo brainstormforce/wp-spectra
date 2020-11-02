@@ -16,8 +16,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		backgroundVideo,
-		className,
 		innerWidth,
 		innerWidthType,
 		contentWidth,
@@ -54,7 +52,6 @@ function styling( props ) {
 		gradientOverlayLocation2,
 		gradientOverlayAngle,
 		gradientOverlayPosition,
-		backgroundOverlayOpacity,
 		mobileMarginType,
 		tabletMarginType,
 		mobilePaddingType,
@@ -65,6 +62,7 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		gradientValue
 	} = props.attributes
 
 	var inner_width = "100%"
@@ -131,13 +129,18 @@ function styling( props ) {
 		selectors[" > .uagb-section__overlay"]["background-color"] = "transparent"
 		selectors[" > .uagb-section__overlay"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 
-		if ( "linear" === gradientType ) {
+		if(gradientValue){
+			selectors[" > .uagb-section__overlay"]["background-image"] = gradientValue
+		}else{
+			if ( "linear" === gradientType ) {
 
-			selectors[" > .uagb-section__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		} else {
-
-			selectors[" > .uagb-section__overlay"]["background-image"] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+				selectors[" > .uagb-section__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			} else {
+	
+				selectors[" > .uagb-section__overlay"]["background-image"] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			}
 		}
+		
 	}
 
 	selectors[" > .uagb-section__overlay"]["border-radius"] = generateCSSUnit( borderRadius, "px" )
@@ -185,10 +188,7 @@ function styling( props ) {
 	}
 
 	var styling_css = ""
-	var id = `#uagb-section-${ props.clientId }`
-	if ( classMigrate ) {
-		id = `.uagb-block-${ props.clientId }`
-	}
+	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	styling_css = generateCSS( selectors, id )
 

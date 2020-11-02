@@ -3,6 +3,10 @@
  */
 
 const attributes = {
+	inheritFromTheme: {
+		type: "boolean",
+		default: false
+	},
 	prefixTitle: {
 		source: "html",
 		selector: "span.uagb-ifb-title-prefix",
@@ -260,7 +264,7 @@ const attributes = {
 		default: "none",
 	},
 	ctaText: {
-		type: "string",
+		type: "html",
 		default: "Read More",
 	},
 	ctaLink: {

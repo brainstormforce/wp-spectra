@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
+import GradientSettings from "../../components/gradient-settings"
 
 const { __ } = wp.i18n
 
@@ -44,21 +45,28 @@ export default class UAGBColumnEdit extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-column-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-column-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate( prevProps ) {
+		var element = document.getElementById( "uagb-column-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	/*
 	 * Event to set Image as null while removing.
 	 */
 	onRemoveImage() {
-		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		setAttributes( { backgroundImage: null } )
@@ -69,7 +77,6 @@ export default class UAGBColumnEdit extends Component {
 	 */
 	onSelectImage( media ) {
 
-		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
@@ -150,17 +157,12 @@ export default class UAGBColumnEdit extends Component {
 				mobilePaddingType,
 				tabletPaddingType,
 				desktopPaddingType,
+				gradientValue
 			},
 			setAttributes,
 			className,
 			isSelected
 		} = this.props
-
-		var element = document.getElementById( "uagb-column-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
 
 		const border_setting = (
 			<Fragment>
@@ -792,55 +794,7 @@ export default class UAGBColumnEdit extends Component {
 					}
 					{ "gradient" == backgroundType &&
 							( <Fragment>
-								<PanelColorSettings
-									title={ __( "Color Settings" ) }
-									colorSettings={ [
-										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
-											label: __( "Color 1" ),
-										},
-										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
-											label: __( "Color 2" ),
-										},
-									] }
-								>
-								</PanelColorSettings>
-								<SelectControl
-									label={ __( "Type" ) }
-									value={ gradientType }
-									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
-									options={ [
-										{ value: "linear", label: __( "Linear" ) },
-										{ value: "radial", label: __( "Radial" ) },
-									] }
-								/>
-								<RangeControl
-									label={ __( "Location 1" ) }
-									value={ gradientLocation1 }
-									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
-									min={ 0 }
-									max={ 100 }
-									allowReset
-								/>
-								<RangeControl
-									label={ __( "Location 2" ) }
-									value={ gradientLocation2 }
-									onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
-									min={ 0 }
-									max={ 100 }
-									allowReset
-								/>
-								<RangeControl
-									label={ __( "Angle" ) }
-									value={ gradientAngle }
-									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
-									min={ 0 }
-									max={ 360 }
-									allowReset
-								/>
+								<GradientSettings attributes={ this.props.attributes }	setAttributes={ setAttributes }/>
 							</Fragment> )
 					}
 					{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
@@ -879,7 +833,7 @@ export default class UAGBColumnEdit extends Component {
 						align_class,
 						align_class_mobile,
 						align_class_tablet,
-						`uagb-block-${this.props.clientId}`
+						`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 					) }
 				>
 					<div className="uagb-column__overlay"></div>

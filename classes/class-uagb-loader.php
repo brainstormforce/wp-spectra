@@ -68,6 +68,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 
@@ -84,7 +85,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.14.11' );
+			define( 'UAGB_VER', '1.18.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -109,6 +110,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'dist/blocks/post-timeline/class-uagb-post-timeline.php';
 			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
 			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
+			require_once UAGB_DIR . 'dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php';
+
 		}
 
 		/**
@@ -126,7 +129,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Load Ultimate Gutenberg Text Domain.
 		 * This will load the translation textdomain depending on the file priorities.
 		 *      1. Global Languages /wp-content/languages/ultimate-addons-for-gutenberg/ folder
-		 *      2. Local dorectory /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder
+		 *      2. Local directory /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder
 		 *
 		 * @since  1.0.0
 		 * @return void

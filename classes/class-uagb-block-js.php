@@ -168,6 +168,38 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 		}
 
+
+		/**
+		 * Get Inline Notice Js
+		 *
+		 * @since 1.16.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_inline_notice_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/inline-notice']['attributes'];
+
+			$attr          = array_merge( $defaults, (array) $attr );
+			$base_selector = '.uagb-block-';
+			$selector      = $base_selector . $id;
+			$js_attr       = array(
+				'c_id'              => $attr['c_id'],
+				'cookies'           => $attr['cookies'],
+				'close_cookie_days' => $attr['close_cookie_days'],
+				'noticeDismiss'     => $attr['noticeDismiss'],
+			);
+
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				UAGBInlineNotice._run( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+			});
+			<?php
+			return ob_get_clean();
+
+		}
+
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
@@ -193,7 +225,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for How To block.
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_how_to_gfont( $attr ) {
@@ -218,6 +250,27 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $price_load_google_font, $price_font_family, $price_font_weight, $price_font_subset );
 		}
 
+		/**
+		 * Adds Google fonts for Inline Notice block.
+		 *
+		 * @since 1.16.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_inline_notice_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
 
 		/**
 		 * Adds Google fonts for CF7 Styler block.
@@ -636,7 +689,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for FAQ block.
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_faq_gfont( $attr ) {
@@ -653,6 +706,57 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			UAGB_Helper::blocks_google_font( $question_load_google_font, $question_font_family, $question_font_weight, $question_font_subset );
 			UAGB_Helper::blocks_google_font( $answer_load_google_font, $answer_font_family, $answer_font_weight, $answer_font_subset );
+
+		}
+
+		/**
+		 * Adds Google fonts for WP Search block.
+		 *
+		 * @since 1.16.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_wp_search_gfont( $attr ) {
+
+			$input_load_google_font = isset( $attr['inputloadGoogleFonts'] ) ? $attr['inputloadGoogleFonts'] : '';
+			$input_font_family      = isset( $attr['inputFontFamily'] ) ? $attr['inputFontFamily'] : '';
+			$input_font_weight      = isset( $attr['inputFontWeight'] ) ? $attr['inputFontWeight'] : '';
+			$input_font_subset      = isset( $attr['inputFontSubset'] ) ? $attr['inputFontSubset'] : '';
+
+			$button_load_google_font = isset( $attr['buttonloadGoogleFonts'] ) ? $attr['buttonloadGoogleFonts'] : '';
+			$button_font_family      = isset( $attr['buttonFontFamily'] ) ? $attr['buttonFontFamily'] : '';
+			$button_font_weight      = isset( $attr['buttonFontWeight'] ) ? $attr['buttonFontWeight'] : '';
+			$button_font_subset      = isset( $attr['buttonFontSubset'] ) ? $attr['buttonFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $button_load_google_font, $button_font_family, $button_font_weight, $button_font_subset );
+			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Taxonomy List.
+		 *
+		 * @since 1.18.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_taxonomy_list_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$count_load_google_font = isset( $attr['countLoadGoogleFonts'] ) ? $attr['countLoadGoogleFonts'] : '';
+			$count_font_family      = isset( $attr['countFontFamily'] ) ? $attr['countFontFamily'] : '';
+			$count_font_weight      = isset( $attr['countFontWeight'] ) ? $attr['countFontWeight'] : '';
+			$count_font_subset      = isset( $attr['countFontSubset'] ) ? $attr['countFontSubset'] : '';
+
+			$list_load_google_font = isset( $attr['listLoadGoogleFonts'] ) ? $attr['listLoadGoogleFonts'] : '';
+			$list_font_family      = isset( $attr['listFontFamily'] ) ? $attr['listFontFamily'] : '';
+			$list_font_weight      = isset( $attr['listFontWeight'] ) ? $attr['listFontWeight'] : '';
+			$list_font_subset      = isset( $attr['listFontSubset'] ) ? $attr['listFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $count_load_google_font, $count_font_family, $count_font_weight, $count_font_subset );
+			UAGB_Helper::blocks_google_font( $list_load_google_font, $list_font_family, $list_font_weight, $list_font_subset );
 
 		}
 

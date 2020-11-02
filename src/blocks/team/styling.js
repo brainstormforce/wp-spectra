@@ -22,8 +22,6 @@ function styling( props ) {
 		titleFontSizeTablet,
 		titleLineHeightType,
 		titleLineHeight,
-		titleLineHeightMobile,
-		titleLineHeightTablet,
 		prefixFontFamily,
 		prefixFontWeight,
 		prefixFontSizeType,
@@ -32,8 +30,6 @@ function styling( props ) {
 		prefixFontSizeTablet,
 		prefixLineHeightType,
 		prefixLineHeight,
-		prefixLineHeightMobile,
-		prefixLineHeightTablet,
 		descFontFamily,
 		descFontWeight,
 		descFontSizeType,
@@ -42,15 +38,11 @@ function styling( props ) {
 		descFontSizeTablet,
 		descLineHeightType,
 		descLineHeight,
-		descLineHeightMobile,
-		descLineHeightTablet,
 		socialFontSize,
 		socialFontSizeType,
 		socialFontSizeMobile,
 		socialFontSizeTablet,
-		imgStyle,
 		imgAlign,
-		imgSize,
 		imgWidth,
 		imgPosition,
 		titleSpace,
@@ -77,7 +69,7 @@ function styling( props ) {
 			"color": descColor,
 			"margin-bottom": generateCSSUnit( descSpace, "px" ),
 		},
-		" .uagb-team__prefix": {
+		" .rich-text.block-editor-rich-text__editable.uagb-team__prefix": {
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
 			"font-size": generateCSSUnit( prefixFontSize, prefixFontSizeType ),
@@ -151,7 +143,7 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" " + tag + ".uagb-team__title"] = {
+	selectors[" " + tag + ".rich-text.block-editor-rich-text__editable.uagb-team__title"] = {
 		"font-family": titleFontFamily,
 		"font-weight": titleFontWeight,
 		"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -207,10 +199,7 @@ function styling( props ) {
 	}
 
 	var styling_css = ""
-	var id = `#uagb-team-${ props.clientId }`
-	if ( classMigrate ) {
-		id = `.uagb-block-${ props.clientId }`
-	}
+	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	styling_css = generateCSS( selectors, id )
 
