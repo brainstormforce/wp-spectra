@@ -3723,7 +3723,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'       => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
-
 				),
 				' select'                                => array(
 					'background-color' => $attr['fieldBgColor'],
@@ -3833,7 +3832,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// Submit button.
 				' input.gform_button'                    => array(
 					'color'            => $attr['buttonTextColor'],
-					'font-size'        => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ) . '!important',
+					'font-size'        => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ),
 					'background-color' => $attr['buttonBgColor'],
 					'border-color'     => $attr['buttonBorderColor'],
 					'border-style'     => $attr['buttonBorderStyle'],
@@ -4095,7 +4094,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .chosen-container-single span', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'radioCheck', ' .uagb-gf-styler__check-style-enabled form .gfield_radio label', $combined_selectors );
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.wp-block-uagb-gf-styler.uagb-gf-styler__outer-wrap.uagb-block-' . $id );
 		}
 
 		/**
