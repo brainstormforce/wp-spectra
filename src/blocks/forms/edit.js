@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import { Fragment } from "react"
 import styling from "./styling"
+import map from 'lodash/map';
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 // Import all of our Text Options requirements.
@@ -14,14 +15,29 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 const {
+	withSelect,
+	useDispatch,
+	withDispatch
+} = wp.data
+
+const {
+	compose,
+} = wp.compose
+
+const {
 	Component,
 } = wp.element
+
+const {
+	createBlock
+} = wp.blocks
 
 const {
 	InnerBlocks,
 	RichText,
 	InspectorControls,
-	ColorPalette
+	ColorPalette,
+	__experimentalBlockVariationPicker
 } = wp.blockEditor
 
 const {
@@ -39,7 +55,8 @@ const {
 	Dashicon,
 	TextareaControl,
 	CheckboxControl,
-	ExternalLink
+	ExternalLink,
+	withNotices
 } = wp.components
 
 const { __ } = wp.i18n
@@ -64,6 +81,8 @@ class UAGBFormsEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
+		this.blockVariationPickerOnSelect = this.blockVariationPickerOnSelect.bind( this )
+
 	}
 
 	componentDidMount() {
@@ -93,9 +112,27 @@ class UAGBFormsEdit extends Component {
 		e.preventDefault();
 	}
 
+	blockVariationPickerOnSelect ( nextVariation = this.props.defaultVariation ) {
+			
+		if ( nextVariation.attributes ) {
+			this.props.setAttributes( nextVariation.attributes );
+		}
+
+		if ( nextVariation.innerBlocks ) {
+			this.props.replaceInnerBlocks(
+				this.props.clientId,
+				this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+			);
+		}
+	}
+
+	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
+		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+	}
+
 	render() {
 
-        const { attributes, setAttributes } = this.props
+        const { attributes, setAttributes,variations,hasInnerBlocks, } = this.props
 
         const {
 			block_id,
@@ -804,7 +841,6 @@ class UAGBFormsEdit extends Component {
 			)
 		}
 
-
 		const renderButtonHtml = () => {
 			if ( reCaptchaEnable && 'v3' === reCaptchaType && reCaptchaSiteKeyV3) {			
 				return (
@@ -836,6 +872,21 @@ class UAGBFormsEdit extends Component {
 				</button>
 			);
 		}
+		if ( ! hasInnerBlocks ) {
+			return (
+				<Fragment>
+					<__experimentalBlockVariationPicker
+						icon ={ UAGB_Block_Icons.columns }
+						label={ uagb_blocks_info.blocks["uagb/forms"]["title"] }
+						instructions={ __( 'Select a variation to start with.' ) }
+						variations={ variations }
+						allowSkip
+						onSelect={ ( nextVariation ) => this.blockVariationPickerOnSelect( nextVariation ) }
+					/>
+				</Fragment>
+			)
+		}
+		
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -876,4 +927,22 @@ class UAGBFormsEdit extends Component {
 	}
 }
 
-export default UAGBFormsEdit
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
+	const innerBlocks = getBlocks( props.clientId );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	return {
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		blockType: getBlockType( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+		replaceInnerBlocks,
+	};
+} );
+
+export default compose( withNotices, applyWithSelect )( UAGBFormsEdit )

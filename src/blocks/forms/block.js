@@ -8,6 +8,7 @@ import edit from "./edit"
 import save from "./save"
 import "./style.scss"
 import "./editor.scss"
+import variations from './variations';
 
 const { __ } = wp.i18n
 
@@ -25,6 +26,7 @@ registerBlockType( "uagb/forms", {
 		__( "uag" ),
 	],
 	attributes,
+	variations,
 	edit,
 	supports: {
 		anchor: true,
