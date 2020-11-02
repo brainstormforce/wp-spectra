@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import variationIcons from './variation-icons';
-
+const {Dashicon} = wp.components
 /**
  * WordPress dependencies
  */
@@ -18,7 +18,7 @@ const variations = [
 	{
 		name: 'simple-contact-form',
 		label: __( 'Simple Contact Form' ),
-		icon: variationIcons.simple,
+		icon:  <Dashicon icon="phone" />,
 		attributes: {
 		},
 		isDefault: true,
@@ -33,7 +33,7 @@ const variations = [
 	{
 		name: 'newsletter-form',
 		label: __( 'Newsletter Form' ),
-		icon: variationIcons.newsletter,
+		icon:  <Dashicon icon="buddicons-pm" />,
 		attributes: {
 		},
 		innerBlocks: [
@@ -45,13 +45,23 @@ const variations = [
 	{
 		name: 'suggestion-form',
 		label: __( 'Suggestion form' ),
-		icon: variationIcons.suggestion,
+		icon:  <Dashicon icon="edit" />,
 		attributes: {
 		}, 
 		innerBlocks: [
 			[ 'uagb/forms-name', { nameRequired:true } ],
 			[ 'uagb/forms-email',{ emailRequired:true } ],
-			[ 'uagb/forms-radio',{ radioRequired:true } ],
+			[ 'uagb/forms-radio',{ 
+				radioRequired:true,
+				radioName:'Some Question with below listed option',
+				options:[ 
+					{ "optiontitle": __( "Option Name 1" ),"optionvalue": __( "Option Value 1" ) },
+					{ "optiontitle": __( "Option Name 2" ),"optionvalue": __( "Option Value 2" ) },
+					{ "optiontitle": __( "Option Name 3" ),"optionvalue": __( "Option Value 3" ) },
+					{ "optiontitle": __( "Option Name 4" ),"optionvalue": __( "Option Value 4" ) },
+
+				] 
+			} ],
 			[ 'uagb/forms-name', { name:'Subject',placeholder:'Enter your subject',nameRequired:true } ],
 			[ 'uagb/forms-textarea',{ textareaRequired:true } ],
 		],
