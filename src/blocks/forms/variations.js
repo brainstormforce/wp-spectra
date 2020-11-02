@@ -53,7 +53,7 @@ const variations = [
 			[ 'uagb/forms-email',{ emailRequired:true } ],
 			[ 'uagb/forms-radio',{ 
 				radioRequired:true,
-				radioName:'Some Question with below listed option',
+				radioName:'Some question with below listed option?',
 				options:[ 
 					{ "optiontitle": __( "Option Name 1" ),"optionvalue": __( "Option Value 1" ) },
 					{ "optiontitle": __( "Option Name 2" ),"optionvalue": __( "Option Value 2" ) },
