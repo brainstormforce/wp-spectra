@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import variationIcons from './variation-icons';
 const {Dashicon} = wp.components
+
 /**
  * WordPress dependencies
  */
@@ -19,6 +19,7 @@ const variations = [
 		name: 'simple-contact-form',
 		label: __( 'Simple Contact Form' ),
 		icon:  <Dashicon icon="phone" />,
+		title: __( 'Simple Contact Form' ),
 		attributes: {
 		},
 		isDefault: true,
@@ -34,6 +35,7 @@ const variations = [
 		name: 'newsletter-form',
 		label: __( 'Newsletter Form' ),
 		icon:  <Dashicon icon="buddicons-pm" />,
+		title: __( 'Newsletter Form' ),
 		attributes: {
 		},
 		innerBlocks: [
@@ -46,6 +48,7 @@ const variations = [
 		name: 'suggestion-form',
 		label: __( 'Suggestion form' ),
 		icon:  <Dashicon icon="edit" />,
+		title: __( 'Suggestion form' ),
 		attributes: {
 		}, 
 		innerBlocks: [
