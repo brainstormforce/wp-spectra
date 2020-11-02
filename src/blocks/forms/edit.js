@@ -841,13 +841,6 @@ class UAGBFormsEdit extends Component {
 			)
 		}
 
-		const getFormsTemplate = [
-			[ 'uagb/forms-name', {} ],
-			[ 'uagb/forms-email',{} ],
-			[ 'uagb/forms-textarea', {} ],			
-
-		];
-
 		const renderButtonHtml = () => {
 			if ( reCaptchaEnable && 'v3' === reCaptchaType && reCaptchaSiteKeyV3) {			
 				return (
@@ -910,7 +903,6 @@ class UAGBFormsEdit extends Component {
 				>
 					<form className="uagb-forms-main-form" name={ `uagb-form-${ block_id }` }>
 						<InnerBlocks
-							// template={ getFormsTemplate }
 							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 						<div className="uagb-forms-form-hidden-data">
