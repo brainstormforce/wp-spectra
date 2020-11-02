@@ -37,23 +37,7 @@ export default function save( props ) {
 		}
 	}
 
-	let url = links[type];
-
-	if ( "pinterest" ==  type ){
-		
-		let img_url = ''
-		
-		const featuredImageId = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
-		const featuredImagemedia = featuredImageId ? wp.data.select( 'core').getMedia( featuredImageId ) : '';
-
-		if( "undefined" !== typeof pinterestImage && null !== pinterestImage && "" !== pinterestImage ){
-			img_url = pinterestImage.url		
-		}else if( "undefined" !== typeof featuredImagemedia && null !== featuredImagemedia && "" !== featuredImagemedia ){
-			img_url = featuredImagemedia.source_url
-		}	
-
-		url  = ("pinterest" ==  type) ? `https://pinterest.com/pin/create/link/?url=${window.location.href}&media=${img_url}` : links[type];
-	}
+	let url = links[type];	
 
 	return (
 		<div
