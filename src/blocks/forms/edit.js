@@ -761,11 +761,11 @@ class UAGBFormsEdit extends Component {
 		const googleReCaptcha = () => {
 			return (
 				<PanelBody
-					title={ __( "Google reCaptcha" ) }
+					title={ __( "Google reCAPTCHA" ) }
 					initialOpen={ false }					
 				>
 					<ToggleControl
-						label={ __( "Enable reCaptcha " ) }
+						label={ __( "Enable reCAPTCHA " ) }
 						checked={ reCaptchaEnable }
 						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
 					/>

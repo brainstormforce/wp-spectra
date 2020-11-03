@@ -22,7 +22,7 @@ const attributes = {
 	},
 	confirmationMessage : {
 		type: "string",
-		default: __( 'The form has been submitted Successfully!' )
+		default: __( 'The form has been submitted successfully!' )
 	},
 	confirmationUrl : {
 		type: "string",

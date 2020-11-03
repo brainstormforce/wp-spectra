@@ -23,6 +23,24 @@
 		padding: 20px 20px;
 		background: #00800030;
 	}
+
+	// Ready Classes.
+	.uag-col-1 , .uag-col-2 , .uag-col-3 , .uag-col-4 {
+		display: -webkit-inline-box ;
+		display: -ms-inline-flexbox ;
+		display: inline-flex ;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;		
+		clear: none;
+		vertical-align: top;
+	}
+	.uag-col-1 { width: 100%; } 
+	.uag-col-2 { width: 49.5%; } 
+	.uag-col-3 { width: 33%; } 
+	.uag-col-4 { width: 24.5%; }
+	
 		
 }
 
