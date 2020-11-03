@@ -165,6 +165,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Gravity Form Styler - Submit button text color issue.
+* Fix: Post Grid - Vertical and Horizontal spacing issue.
 
 = 1.18.0 =
 * New: Taxonomy List.
