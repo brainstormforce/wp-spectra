@@ -3842,6 +3842,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 				),
+
+				' .gform_footer.top_label input[type="submit"]'                    => array(
+					'font-size'        => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ),					
+				),
+
 				' input.gform_button:hover'              => array(
 					'color'            => $attr['buttonTextHoverColor'],
 					'background-color' => $attr['buttonBgHoverColor'],

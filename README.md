@@ -162,8 +162,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ### 1.19.0 ###
 * Improvement: Inline Notice - New layout added for inline notice.
+* Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Social Share - Pinterest Share not working because missing image issue.
+* Fix: Gravity Form Styler - Submit button text color issue.
 
 ### 1.18.0 ###
 * New: Taxonomy List.
