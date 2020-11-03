@@ -36,9 +36,6 @@ const attributes = {
 	},
 	icon_bg_hover_color: {
 		type: "string"
-	},
-	pinterestImage: {
-		type: "object",
 	},	
 }
 

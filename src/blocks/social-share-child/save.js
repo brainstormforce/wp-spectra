@@ -22,8 +22,9 @@ export default function save( props ) {
 		image,
 		block_id,
 		link,
-		pinterestImage,
 	} = props.attributes
+
+	let url = links[type];	
 	
 	let image_icon_html = ""
 	
@@ -36,8 +37,6 @@ export default function save( props ) {
 			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
-
-	let url = links[type];	
 
 	return (
 		<div
