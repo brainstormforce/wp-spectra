@@ -197,7 +197,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
-					wp_enqueue_script( $val );
+					if( $val === 'uagb-faq-js' ){
+
+						$post = get_post(); 
+
+						if ( has_blocks( $post->post_content ) ) {
+							$blocks_used_on_page = parse_blocks( $post->post_content );
+							
+							foreach ( $blocks_used_on_page as $key => $value ) {
+								if ( $blocks_used_on_page[$key]['blockName'] === 'uagb/faq' ) {
+									if( !isset($blocks_used_on_page[$key]['attrs']['layout']) ){
+										wp_enqueue_script(  'uagb-faq-js' );
+									}
+								}
+							}
+						}
+					}else{
+						wp_enqueue_script( $val );
+					}
 				}
 
 				foreach ( $css_assets as $asset_handle => $val ) {
