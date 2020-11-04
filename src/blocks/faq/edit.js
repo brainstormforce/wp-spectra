@@ -1078,11 +1078,12 @@ class UAGBFaqEdit extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-
+		const page_url = select("core/editor").getPermalink();
 		var faq_data = {}
 		var json_data = {
 			"@context": "https://schema.org",
 			"@type": "FAQPage",
+			"@id": page_url,
 			"mainEntity": []
 		}
 		const faqChildBlocks = select('core/block-editor').getBlocks( ownProps.clientId );
