@@ -205,11 +205,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
-					if( $val == 'uagb-faq-js'){
-						if( self::$uag_faq_layout ){
+					if ( $val === 'uagb-faq-js' ) {
+						if ( self::$uag_faq_layout ) {
 							wp_enqueue_script( 'uagb-faq-js' );
 						}
-					}else{
+					} else {
 						wp_enqueue_script( $val );
 					}
 				}
@@ -563,7 +563,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/faq':
 					$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
-					if( !isset( $blockattr['layout'] ) ) {
+					if ( ! isset( $blockattr['layout'] ) ) {
 						self::$uag_faq_layout = true;
 					}
 					UAGB_Block_JS::blocks_faq_gfont( $blockattr );
