@@ -34,7 +34,7 @@ class TestimonialImage extends React.Component {
 					<div className ="uagb-tm__image-content" key={"tm_img-wrap-"+index_value}>           
 						<div className="uagb-tm__image" key={"tm_img-"+index_value}>                        
 							<img
-								className ="uagb-tm-img-src"
+								className =""
 								src = { url }                        
 								alt = { image.alt }                    
 							/>                        
