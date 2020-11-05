@@ -164,6 +164,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Inline Notice - New layout added for inline notice.
 * Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
+* Improvement: Post Timeline - Added filter for post timeline connector svg.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Gravity Form Styler - Submit button text color issue.
 
