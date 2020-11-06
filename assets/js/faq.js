@@ -108,17 +108,17 @@ window.addEventListener(
 		var accordionElements = document.getElementsByClassName( 'uagb-faq-layout-accordion' );
 		for ( var item = 0;  item < accordionElements.length; item++ ) {
 			var questionButtons = accordionElements[item].querySelectorAll( '.uagb-faq-questions-button' );
+			var faqItems = accordionElements[item].querySelectorAll( '.uagb-faq-item' );
 			
-				accordionElements[item].addEventListener('keyup', function( e ) {
-					faqClick( e, this.parentElement, questionButtons );
-				});
-		
 			for ( var button = 0; button < questionButtons.length; button++ ) {
-				console.log(questionButtons[button]);
+				
 				questionButtons[button].addEventListener("click", function( e ) {
 					faqClick( e, this.parentElement, questionButtons );
 				});
-				questionButtons[button].addEventListener("keypress", function( e ) {
+			}
+			for ( var button = 0; button < faqItems.length; button++ ) {
+				
+				faqItems[button].addEventListener("keyup", function( e ) {
 					faqClick( e, this.parentElement, questionButtons );
 				});
 			}
