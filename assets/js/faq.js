@@ -10,18 +10,17 @@ function slideUp (target, duration ) {
 	target.style.paddingBottom = 0;
 	target.style.marginTop = 0;
 	target.style.marginBottom = 0;
-	target.style.display = 'block';
-	// window.setTimeout( function() {
-	// 	target.style.display = 'none';
-	// 	target.style.removeProperty('height');
-	// 	target.style.removeProperty('padding-top');
-	// 	target.style.removeProperty('padding-bottom');
-	// 	target.style.removeProperty('margin-top');
-	// 	target.style.removeProperty('margin-bottom');
-	// 	target.style.removeProperty('overflow');
-	// 	target.style.removeProperty('transition-duration');
-	// 	target.style.removeProperty('transition-property');
-	// }, duration);
+	window.setTimeout( function() {
+		target.style.display = 'none';
+		target.style.removeProperty('height');
+		target.style.removeProperty('padding-top');
+		target.style.removeProperty('padding-bottom');
+		target.style.removeProperty('margin-top');
+		target.style.removeProperty('margin-bottom');
+		target.style.removeProperty('overflow');
+		target.style.removeProperty('transition-duration');
+		target.style.removeProperty('transition-property');
+	}, duration);
 }
 
 function slideDown (target, duration ) {
@@ -119,7 +118,7 @@ window.addEventListener(
 
 			for ( var button = 0; button < faqItems.length; button++ ) {
 				faqItems[button].addEventListener("keyup", function( e ) {
-					faqClick( e, this.parentElement, questionButtons );
+					faqClick( e, this, questionButtons );
 				});
 			}
 
@@ -130,7 +129,6 @@ window.addEventListener(
 function faqClick( e, faqItem, questionButtons ) {
 
 	if( e.keyCode === 13 || e.keyCode === 32 || e.button === 0 ){ // enter || spacebar || left mouse click.
-
 		if ( faqItem.classList.contains('uagb-faq-item-active') ) {
 			faqItem.classList.remove('uagb-faq-item-active');
 			faqItem.setAttribute( 'aria-expanded', false );
