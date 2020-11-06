@@ -161,6 +161,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.19.0 =
+* New: Social share - Add support of Whatsapp and other social share in Social share block.
 * Improvement: Inline Notice - New layout added for inline notice.
 * Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
