@@ -10,17 +10,18 @@ function slideUp (target, duration ) {
 	target.style.paddingBottom = 0;
 	target.style.marginTop = 0;
 	target.style.marginBottom = 0;
-	window.setTimeout( function() {
-		target.style.display = 'none';
-		target.style.removeProperty('height');
-		target.style.removeProperty('padding-top');
-		target.style.removeProperty('padding-bottom');
-		target.style.removeProperty('margin-top');
-		target.style.removeProperty('margin-bottom');
-		target.style.removeProperty('overflow');
-		target.style.removeProperty('transition-duration');
-		target.style.removeProperty('transition-property');
-	}, duration);
+	target.style.display = 'block';
+	// window.setTimeout( function() {
+	// 	target.style.display = 'none';
+	// 	target.style.removeProperty('height');
+	// 	target.style.removeProperty('padding-top');
+	// 	target.style.removeProperty('padding-bottom');
+	// 	target.style.removeProperty('margin-top');
+	// 	target.style.removeProperty('margin-bottom');
+	// 	target.style.removeProperty('overflow');
+	// 	target.style.removeProperty('transition-duration');
+	// 	target.style.removeProperty('transition-property');
+	// }, duration);
 }
 
 function slideDown (target, duration ) {
@@ -109,58 +110,52 @@ window.addEventListener(
 		for ( var item = 0;  item < accordionElements.length; item++ ) {
 			var questionButtons = accordionElements[item].querySelectorAll( '.uagb-faq-questions-button' );
 			var faqItems = accordionElements[item].querySelectorAll( '.uagb-faq-item' );
-			
-			for ( var button = 0; button < questionButtons.length; button++ ) {
-				
+
+			for ( var button = 0; button < questionButtons.length; button++ ) {	
 				questionButtons[button].addEventListener("click", function( e ) {
 					faqClick( e, this.parentElement, questionButtons );
 				});
 			}
+
 			for ( var button = 0; button < faqItems.length; button++ ) {
-				
 				faqItems[button].addEventListener("keyup", function( e ) {
 					faqClick( e, this.parentElement, questionButtons );
 				});
 			}
+
 		}
     }
 );
 
 function faqClick( e, faqItem, questionButtons ) {
 
-	e.preventDefault();
-	console.log(faqItem)
-	console.log(questionButtons)
-	// if( e.currentTarget.closest('.wp-block-uagb-faq') ){
-					
-	if ( faqItem.classList.contains('uagb-faq-item-active') ) {
-		faqItem.classList.remove('uagb-faq-item-active');
-		faqItem.setAttribute( 'aria-expanded', false );
-		slideUp( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
-	} else {
-		var parent = e.currentTarget.closest('.wp-block-uagb-faq');
-		
-		var faqToggle = 'true';
-		if ( parent.classList.contains( 'wp-block-uagb-faq' ) ) {
-			faqToggle = parent.getAttribute( 'data-faqtoggle' );
-		}
-		faqItem.classList.add('uagb-faq-item-active');
-		faqItem.setAttribute( 'aria-expanded', true );
-		slideDown( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
-		if( 'true' === faqToggle ) {
-			
-			// var questionButtons = parent.querySelectorAll( '.uagb-faq-questions-button' );
-			var questionButtons = parent.querySelectorAll( '.uagb-faq-content' );
-			for ( var buttonChild = 0; buttonChild < questionButtons.length; buttonChild++ ) {
-				var buttonItem = questionButtons[buttonChild].parentElement
-				if ( buttonItem === faqItem ) {
-					continue;
+	if( e.keyCode === 13 || e.keyCode === 32 || e.button === 0 ){ // enter || spacebar || left mouse click.
+
+		if ( faqItem.classList.contains('uagb-faq-item-active') ) {
+			faqItem.classList.remove('uagb-faq-item-active');
+			faqItem.setAttribute( 'aria-expanded', false );
+			slideUp( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
+		} else {
+			var parent = e.currentTarget.closest('.wp-block-uagb-faq');
+			var faqToggle = 'true';
+			if ( parent.classList.contains( 'wp-block-uagb-faq' ) ) {
+				faqToggle = parent.getAttribute( 'data-faqtoggle' );
+			}
+			faqItem.classList.add('uagb-faq-item-active');
+			faqItem.setAttribute( 'aria-expanded', true );
+			slideDown( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
+			if( 'true' === faqToggle ) {
+				
+				var questionButtons = parent.querySelectorAll( '.uagb-faq-content' );
+				for ( var buttonChild = 0; buttonChild < questionButtons.length; buttonChild++ ) {
+					var buttonItem = questionButtons[buttonChild].parentElement
+					if ( buttonItem === faqItem ) {
+						continue;
+					}
+					buttonItem.classList.remove('uagb-faq-item-active');
+					buttonItem.setAttribute( 'aria-expanded', false );
+					slideUp( buttonItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 				}
-				console.log(questionButtons[buttonChild]);
-				questionButtons[buttonChild].setAttribute( 'style','display:block' )
-				buttonItem.classList.remove('uagb-faq-item-active');
-				buttonItem.setAttribute( 'aria-expanded', false );
-				slideUp( buttonItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 			}
 		}
 	}
