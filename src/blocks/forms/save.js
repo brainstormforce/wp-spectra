@@ -77,7 +77,7 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`,
 		) }
 		>
-			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >
+			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >			
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
 					<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>

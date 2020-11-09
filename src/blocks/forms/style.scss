@@ -24,24 +24,22 @@
 		background: #00800030;
 	}
 
-	// Ready Classes.
-	.uag-col-1 , .uag-col-2 , .uag-col-3 , .uag-col-4 {
-		display: -webkit-inline-box ;
-		display: -ms-inline-flexbox ;
-		display: inline-flex ;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;		
-		clear: none;
-		vertical-align: top;
+	//Ready Classes.	
+	.uag-col-2-wrap{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 15px;
+	}	
+	.uag-col-3-wrap{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 15px;
 	}
-	.uag-col-1 { width: 100%; } 
-	.uag-col-2 { width: 49.5%; } 
-	.uag-col-3 { width: 33%; } 
-	.uag-col-4 { width: 24.5%; }
-	
-		
+	.uag-col-4-wrap{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		column-gap: 15px;
+	}	
 }
 
 .uagb-forms__outer-wrap {
