@@ -19,18 +19,26 @@ class Price extends React.Component {
 			index_value	
 		} = this.props
 
-		// const rest_arr = attributes.rest_menu_item_arr[index_value]
-		// let price = ""
-		// if( rest_arr && typeof rest_arr !== "undefined"){
-		// 	price = rest_arr["price"]			
-		// }
-		let price = attributes.price
-		if(price == ""){
-			const rest_arr = attributes.rest_menu_item_arr[index_value]
-			price = rest_arr["price"]
+		const rest_arr = attributes.rest_menu_item_arr
+		let price = ""
+		if( rest_arr && typeof rest_arr !== "undefined"){
+			rest_arr.forEach( element => {
+				price = element["price"];
+			});			
 		}else{
 			price = attributes.price
 		}
+
+
+		// let price = attributes.price
+		// if(price == ""){
+		// 	const rest_arr = attributes.rest_menu_item_arr[index_value]
+		// 	price = rest_arr["price"]
+		// }else{
+		// 	price = attributes.price
+		// }
+
+		console.log(price);
 
 		// var data_copy = [...attributes.rest_menu_item_arr]
 

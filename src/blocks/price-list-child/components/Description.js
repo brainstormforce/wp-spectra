@@ -18,13 +18,17 @@ class Description extends React.Component {
 			props,
 			index_value		
 		} = this.props
-			
-		// const rest_arr = attributes.rest_menu_item_arr[index_value]
-		// let description = ""
-		// if( rest_arr && typeof rest_arr !== "undefined"){
-		// 	description = rest_arr["description"]			
-		// }
-		let description = attributes.description
+		
+		const rest_arr = attributes.rest_menu_item_arr
+		let description = ""
+		if( rest_arr && typeof rest_arr !== "undefined"){
+			rest_arr.forEach( element => {
+				description = element["description"];
+			});			
+		}else{
+		   description = attributes.description
+		}
+		console.log(description);
 
 		// var data_copy = [...attributes.rest_menu_item_arr]
 		
