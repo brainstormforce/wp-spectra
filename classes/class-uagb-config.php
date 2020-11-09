@@ -1187,6 +1187,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleVrPadding'        => 15,
 							'contentHrPadding'      => 15,
 							'contentVrPadding'      => 15,
+							'layout'                => 'modern',
+							'highlightWidth'        => 10,
+
 						),
 					),
 					'uagb/marketing-button'   => array(
@@ -2255,7 +2258,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/taxonomy-list'      => array(
 						'slug'        => '',
 						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you display Taxonomy List.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'              => '',
@@ -2335,7 +2338,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderThickness'       => 1,
 							'borderRadius'          => 0,
 							'borderColor'           => '#E0E0E0',
-							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.' ),
+							'noTaxDisplaytext'      => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 							'showCount'             => true,
 							'showEmptyTaxonomy'     => false,
 							'showhierarchy'         => false,
