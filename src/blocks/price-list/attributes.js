@@ -8,9 +8,9 @@ const ITEM_COUNT = 4
 const rest_menu_block = []
 
 for ( var i = 1; i <= ITEM_COUNT; i++ ) {
-	var desc_text = __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-	var title_text    = __("Menu Item "+i)
-	var price_text    = __("$9")
+	var desc_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+	var title_text    = "Menu Item "+i
+	var price_text    = "$9"
 	rest_menu_block.push(
 		{
 			"description": desc_text,
