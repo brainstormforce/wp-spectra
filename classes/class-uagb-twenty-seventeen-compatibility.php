@@ -43,7 +43,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		/**
 		 * Generates stylesheet and appends in head tag.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function generate_stylesheet() {
 

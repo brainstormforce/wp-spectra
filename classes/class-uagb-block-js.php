@@ -137,14 +137,13 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 				for ( var i = 0; i < ssLink.length; i++ ) {
 					ssLink[i].addEventListener( "click", function() {
 						var social_url = this.dataset.href;
-						
 						var target = "";
 						if( social_url == "mailto:?body=" ) {
 							target = "_self";
 						}
 						var  request_url ="";
 						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
-							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ) ?>';
+							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
 						}else{
 							request_url = social_url + window.location.href;
 						}
