@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var settings
 		 */
 		private static $settings;
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {

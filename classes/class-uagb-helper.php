@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * UAG FAQ Layout Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var uag_faq_layout
 		 */
 		public static $uag_faq_layout = false;
@@ -137,6 +137,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
 			}
+
 			return self::$instance;
 		}
 
@@ -205,7 +206,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
-					if ( $val === 'uagb-faq-js' ) {
+					if ( 'uagb-faq-js' === $val ) {
 						if ( self::$uag_faq_layout ) {
 							wp_enqueue_script( 'uagb-faq-js' );
 						}
