@@ -167,6 +167,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Post Timeline - Added filter for post timeline connector svg.
 * Improvement: Social Share - Added support to some more social platforms like Pocket, VK, Odnoklassniki, Skype, Telegram, WhatsApp, Xing, and Buffer.
 * Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
+* Improvement: Testimonial - Added class to Image for lazy load compatibility.
+* Improvement: Info Box - Added class to Image for lazy load compatibility.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Gravity Form Styler - Submit button text color issue.
 
