@@ -21,9 +21,16 @@ class Title extends React.Component {
 		const test_arr = attributes.rest_menu_item_arr
 		let author_title = ""
 		if( test_arr && typeof test_arr !== "undefined"){
-			test_arr.forEach( element => {
-				author_title = element["title"];
-			});
+			for( var i = 0; i < test_arr.length; i++ ){
+				// console.log(i);
+				// console.log(test_arr[i]["title"]);
+				author_title = test_arr[i]["title"];
+			}
+			// forEach( test_arr, element => value ) {
+			// 	console.log(element);
+			// 	console.log(value);
+			// 	author_title = element["title"];
+			// }
 		}else{
 			author_title = attributes.title
 		}
@@ -35,7 +42,7 @@ class Title extends React.Component {
 		// }
 		// author_title = attributes.title
 		// console.log(attributes.rest_menu_item_arr);
-		console.log(attributes);
+		// console.log(attributes);
 		
 		if( setAttributes !== "not_set" ){
 		// 	var data_copy = [...attributes.rest_menu_item_arr]

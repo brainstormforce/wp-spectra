@@ -38,7 +38,7 @@ class Price extends React.Component {
 		// 	price = attributes.price
 		// }
 
-		console.log(price);
+		// console.log(price);
 
 		// var data_copy = [...attributes.rest_menu_item_arr]
 

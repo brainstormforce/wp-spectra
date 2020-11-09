@@ -28,7 +28,7 @@ class Description extends React.Component {
 		}else{
 		   description = attributes.description
 		}
-		console.log(description);
+		// console.log(description);
 
 		// var data_copy = [...attributes.rest_menu_item_arr]
 		
