@@ -162,17 +162,17 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ### 1.18.1 ###
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
-* Improvement: FAQ Schema - Added keyboard accessibility of spacebar, enter and left click.
+* Improvement: FAQ Schema - Added keyboard accessibility of spacebar, enter and left-click.
 * Improvement: Inline Notice - New layout added for inline notice.
-* Improvement: Post Timeline - Added filter for post timeline connector svg.
+* Improvement: Post Timeline - Added filter for post timeline connector SVG.
 * Improvement: Social Share - Added support to some more social platforms like Pocket, VK, Odnoklassniki, Skype, Telegram, WhatsApp, Xing, and Buffer.
-* Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
+* Improvement: Twenty Seventeen Theme: Added compatibility to Twenty Seventeen Sections.
 * Improvement: Testimonial - Added class to Image for lazy load compatibility.
 * Improvement: Info Box - Added class to Image for lazy load compatibility.
 * Improvement: Table of Content - Alignment option added for table heading.
-* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on the same page.
 * Fix: Social Share - Resolved the missing image issue in the Pinterest social platform.
-* Fix: Gravity Form Styler - Submit button text color issue.
+* Fix: Gravity Form Styler - Submit button text colour issue.
 
 ### 1.18.0 ###
 * New: Taxonomy List.
