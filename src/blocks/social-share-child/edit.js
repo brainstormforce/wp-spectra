@@ -281,7 +281,7 @@ class UAGBSocialShareChild extends Component {
 							{ value: "odnoklassniki", label: __( "Odnoklassniki" ) },
 							{ value: "skype", label: __( "Skype" ) },
 							{ value: "telegram", label: __( "Telegram" ) },
-							{ value: "whatsapp", label: __( "Whatsapp" ) },
+							{ value: "whatsapp", label: __( "WhatsApp" ) },
 							{ value: "xing", label: __( "Xing" ) },
 							{ value: "buffer", label: __( "Buffer" ) },
 						] }
