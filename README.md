@@ -170,6 +170,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Testimonial - Added class to Image for lazy load compatibility.
 * Improvement: Info Box - Added class to Image for lazy load compatibility.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
+* Fix: Social Share - Pinterest Share not working because missing image issue.
 * Fix: Gravity Form Styler - Submit button text color issue.
 * Fix: Social Share - Resolved the missing image issue in the Pinterest social platform.
 

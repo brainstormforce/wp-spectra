@@ -133,7 +133,6 @@ class UAGBSocialShareChild extends Component {
 			icon_hover_color,
 			icon_bg_color,
 			icon_bg_hover_color,
-			pinterestImage
 		} = attributes
 
 		const iconColorControls = () => {
@@ -288,33 +287,6 @@ class UAGBSocialShareChild extends Component {
 						] }
 						onChange={ this.onChangeType }
 						/>
-						{ "pinterest" === type &&(
-							<Fragment>
-							<h2>{ __( "Pinterest Image" ) }</h2>
-							<MediaUpload
-								title={ __( "Select Image" ) }
-								onSelect={ ( value ) => setAttributes( { pinterestImage: value } ) }
-								allowedTypes={ [ "image" ] }
-								value={ pinterestImage }
-								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
-										{ ! pinterestImage ? __( "Select Image" ) : __( "Replace image" ) }
-									</Button>
-								) }
-								help="if empty"
-							/>
-							{ pinterestImage &&
-								<Button
-									className="uagb-rm-btn"
-									onClick={ () => setAttributes( { pinterestImage: '' } ) }
-									isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-						<hr className="uagb-editor__separator" />						
-						</Fragment>
-						
-						)}
 						<SelectControl
 							label={ __( "Image / Icon" ) }
 							value={ image_icon }
