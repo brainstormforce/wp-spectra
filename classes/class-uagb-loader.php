@@ -89,10 +89,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
-			$tablet = apply_filters( 'uagb_tablet_break_point_filter', '976' );
-			define( 'UAGB_TABLET_BREAKPOINT', $tablet );
-			$mobile = apply_filters( 'uagb_mobile_break_point_filter', '767' );
-			define( 'UAGB_MOBILE_BREAKPOINT', $mobile );
+			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
+				define( 'UAGB_TABLET_BREAKPOINT', '976' );
+			}
+			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
+				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			}
 		}
 
 		/**
