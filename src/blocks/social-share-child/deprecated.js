@@ -55,7 +55,7 @@ const deprecated =[
 							<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 						</div>
 					)
-			},
+			}
 		}
 	]
 

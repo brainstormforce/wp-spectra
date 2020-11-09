@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var settings
 		 */
 		private static $settings;
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -616,9 +616,14 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		 * @param  array $attributes attribute array.
 		 */
 		public function get_icon( $attributes ) {
+			$icon = apply_filters( 'uagb_timeline_icon_filter', UAGB_Helper::render_svg_html( $attributes['icon'] ) );
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
+			<?php if ( isset( $icon ) ) { ?>
+				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php echo $icon; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></span> 
+			<?php	} else { ?>
 				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+			<?php	} ?>
 			</div>
 			<?php
 		}

@@ -1187,6 +1187,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleVrPadding'        => 15,
 							'contentHrPadding'      => 15,
 							'contentVrPadding'      => 15,
+							'layout'                => 'modern',
+							'highlightWidth'        => 10,
+
 						),
 					),
 					'uagb/marketing-button'   => array(
@@ -2024,6 +2027,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingLineHeight'         => '',
 							'headingLineHeightTablet'   => '',
 							'headingLineHeightMobile'   => '',
+							'headingAlignment'          => 'left',
 						),
 					),
 					'uagb/team'               => array(

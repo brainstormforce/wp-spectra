@@ -51,27 +51,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .uagb-notice-title'           => array(
-					'color'            => $attr['titleColor'],
-					'background-color' => $attr['noticeColor'],
-					'padding-left'     => UAGB_Helper::get_css_value( $lPadding, 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $rPadding, 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'color'          => $attr['titleColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 				),
 				' .uagb-notice-text'            => array(
-					'border-color'     => $attr['noticeColor'],
-					'color'            => $attr['textColor'],
-					'background-color' => $attr['contentBgColor'],
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'color'          => $attr['textColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 				),
 				' span.uagb-notice-dismiss svg' => array(
 					'fill'  => $attr['noticeDismissColor'],
 					'color' => $attr['noticeDismissColor'],
 				),
 			);
+
+			if ( 'modern' === $attr['layout'] ) {
+
+				$selectors[' .uagb-notice-title']['background-color']        = $attr['noticeColor'];
+				$selectors[' .uagb-notice-title']['border-top-right-radius'] = '3px';
+				$selectors[' .uagb-notice-title']['border-top-left-radius']  = '3px';
+
+				$selectors[' .uagb-notice-text']['background-color']           = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-text']['border']                     = '2px solid' . $attr['noticeColor'];
+				$selectors[' .uagb-notice-text']['border-bottom-left-radius']  = '3px';
+				$selectors[' .uagb-notice-text']['border-bottom-right-radius'] = '3px';
+			} elseif ( 'simple' === $attr['layout'] ) {
+
+				$selectors[' .uagb-notice-title']['background-color'] = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+
+				$selectors[' .uagb-notice-text']['background-color'] = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+
+			}
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -3825,6 +3842,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 				),
+
+				' .gform_footer.top_label input[type="submit"]' => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ),
+				),
+
 				' input.gform_button:hover'              => array(
 					'color'            => $attr['buttonTextHoverColor'],
 					'background-color' => $attr['buttonBgHoverColor'],
@@ -4226,6 +4248,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
+
 			$selectors = array(
 				' .uagb-toc__list-wrap ul li a:hover' => array(
 					'color' => $attr['linkHoverColor'],
@@ -4233,9 +4257,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul li a'       => array(
 					'color' => $attr['linkColor'],
 				),
+				' .uagb-toc__title-wrap'              => array(
+					'justify-content' => $alignment,
+					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+				),
 				' .uagb-toc__title'                   => array(
-					'color'         => $attr['headingColor'],
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+					'color' => $attr['headingColor'],
 				),
 				' .uagb-toc__wrap'                    => array(
 					'border-style'   => $attr['borderStyle'],
