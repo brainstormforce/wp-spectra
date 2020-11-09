@@ -286,7 +286,7 @@ class UAGBSocialShareChild extends Component {
 							{ value: "buffer", label: __( "Buffer" ) },
 						] }
 						onChange={ this.onChangeType }
-					/>
+						/>
 						<SelectControl
 							label={ __( "Image / Icon" ) }
 							value={ image_icon }
