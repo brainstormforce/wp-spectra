@@ -105,6 +105,14 @@ class UAGBSocialShareChild extends Component {
 			tumblr: "fab fa-tumblr-square",
 			myspace: "fas fa-user-friends",
 			email: "fas fa-envelope",
+			pocket: 'fab fa-get-pocket',
+			vk: 'fab fa-vk',
+			odnoklassniki:'fab fa-odnoklassniki',
+			skype: 'fab fa-skype',
+			telegram:'fab fa-telegram',
+			whatsapp:'fab fa-whatsapp',
+			xing:'fab fa-xing',
+			buffer:'fab fa-buffer',
 		}
 		
 		setAttributes( { type: type } )
@@ -259,7 +267,7 @@ class UAGBSocialShareChild extends Component {
 						options={ [
 							{ value: "facebook", label: __( "Facebook" ) },
 							{ value: "twitter", label: __( "Twitter" ) },
-							{ value: "google", label: __( "Google Plus" ) },
+							{ value: "google", label: __( "Google Currents" ) },
 							{ value: "pinterest", label: __( "Pinterest" ) },
 							{ value: "linkedin", label: __( "LinkedIn" ) },
 							{ value: "digg", label: __( "Digg" ) },
@@ -269,6 +277,14 @@ class UAGBSocialShareChild extends Component {
 							{ value: "tumblr", label: __( "Tumblr" ) },
 							{ value: "myspace", label: __( "Myspace" ) },
 							{ value: "email", label: __( "Email" ) },
+							{ value: "pocket", label: __( "Pocket" ) },
+							{ value: "vk", label: __( "VK" ) },
+							{ value: "odnoklassniki", label: __( "Odnoklassniki" ) },
+							{ value: "skype", label: __( "Skype" ) },
+							{ value: "telegram", label: __( "Telegram" ) },
+							{ value: "whatsapp", label: __( "WhatsApp" ) },
+							{ value: "xing", label: __( "Xing" ) },
+							{ value: "buffer", label: __( "Buffer" ) },
 						] }
 						onChange={ this.onChangeType }
 						/>

@@ -56,5 +56,6 @@ registerBlockType( "uagb/content-timeline", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

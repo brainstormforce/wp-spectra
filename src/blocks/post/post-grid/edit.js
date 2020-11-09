@@ -1000,7 +1000,7 @@ class UAGBPostGrid extends Component {
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
-						label={ __( "Row Gap" ) }
+						label={ __( "Vertical Spacing" ) }
 						value={ rowGap }
 						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 						min={ 0 }
@@ -1008,7 +1008,7 @@ class UAGBPostGrid extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
+						label={ __( "Horizontal Spacing" ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }

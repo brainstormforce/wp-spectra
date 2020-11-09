@@ -31,5 +31,6 @@ registerBlockType( "uagb/info-box", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

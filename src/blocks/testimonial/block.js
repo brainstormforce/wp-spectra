@@ -31,5 +31,6 @@ registerBlockType( "uagb/testimonial", {
 	attributes,
 	edit,
 	save,
+	example: {},
 	deprecated,
 } )

@@ -50,6 +50,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $uag_flag = false;
 
 		/**
+		 * UAG FAQ Layout Flag
+		 *
+		 * @since x.x.x
+		 * @var uag_faq_layout
+		 */
+		public static $uag_faq_layout = false;
+
+		/**
 		 * UAG File Generation Flag
 		 *
 		 * @since 1.14.0
@@ -197,7 +205,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
-					wp_enqueue_script( $val );
+					if ( $val === 'uagb-faq-js' ) {
+						if ( self::$uag_faq_layout ) {
+							wp_enqueue_script( 'uagb-faq-js' );
+						}
+					} else {
+						wp_enqueue_script( $val );
+					}
 				}
 
 				foreach ( $css_assets as $asset_handle => $val ) {
@@ -549,6 +563,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/faq':
 					$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
+					if ( ! isset( $blockattr['layout'] ) ) {
+						self::$uag_faq_layout = true;
+					}
 					UAGB_Block_JS::blocks_faq_gfont( $blockattr );
 					break;
 

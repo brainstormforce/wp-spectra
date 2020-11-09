@@ -45,6 +45,7 @@ registerBlockType( "uagb/columns", {
 		editorsKitBlockNavigator: true,
 		anchor: true,
 	},
+	example: {},
 	save : function( props ) {
 
 		const { attributes, className } = props

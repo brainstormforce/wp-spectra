@@ -27,7 +27,7 @@ registerBlockType( "uagb/taxonomy-list", {
 		__( "taxonomy" ),
 		__( "uag" ),
 	],	
-	example:{},
+	example: {},
 	edit,
 	// Render via PHP
 	save() {

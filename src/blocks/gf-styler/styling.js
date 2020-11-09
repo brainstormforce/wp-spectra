@@ -655,7 +655,7 @@ function styling( props ) {
 		},
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }` )
+	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler.uagb-block-${props.clientId.substr( 0, 8 )}` )
 
 	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "tablet" )
 
