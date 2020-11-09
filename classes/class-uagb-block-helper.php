@@ -4248,6 +4248,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
+
 			$selectors = array(
 				' .uagb-toc__list-wrap ul li a:hover' => array(
 					'color' => $attr['linkHoverColor'],
@@ -4255,9 +4257,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul li a'       => array(
 					'color' => $attr['linkColor'],
 				),
+				' .uagb-toc__title-wrap'              => array(
+					'justify-content' => $alignment,
+					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+				),
 				' .uagb-toc__title'                   => array(
-					'color'         => $attr['headingColor'],
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+					'color' => $attr['headingColor'],
 				),
 				' .uagb-toc__wrap'                    => array(
 					'border-style'   => $attr['borderStyle'],

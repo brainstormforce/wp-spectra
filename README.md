@@ -169,10 +169,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Twenty Seventeen Theme : Added compatibility to Twenty Seventeen Sections.
 * Improvement: Testimonial - Added class to Image for lazy load compatibility.
 * Improvement: Info Box - Added class to Image for lazy load compatibility.
+* Improvement: Table of Content - Alignment option added for table heading.
 * Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on same page.
 * Fix: Social Share - Resolved the missing image issue in the Pinterest social platform.
 * Fix: Gravity Form Styler - Submit button text color issue.
-
 
 ### 1.18.0 ###
 * New: Taxonomy List.

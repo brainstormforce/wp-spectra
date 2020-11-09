@@ -327,6 +327,10 @@ const attributes = {
 	headingLineHeightMobile: {
 		type: "number",
 	},
+	headingAlignment: {
+		type: "string",
+		default: "left"
+	},	
 }
 
 export default attributes
