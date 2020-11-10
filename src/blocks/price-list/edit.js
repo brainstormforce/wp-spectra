@@ -190,7 +190,6 @@ class UAGBRestaurantMenu extends Component {
 			titleLineHeight,
 			titleLineHeightTablet,
 			titleLineHeightMobile,
-			
 			priceFontSizeType,
 			priceFontSize,
 			priceFontSizeTablet,
@@ -670,13 +669,12 @@ class UAGBRestaurantMenu extends Component {
 													</InspectorControls>
 													)
 													
-													const getPriceListTemplate = memoize( ( menu_item_count, rest_menu_item_arr ) => {
-														return times( menu_item_count, n => [ "uagb/restaurant-menu-child", rest_menu_item_arr[n] ] )
+													const getPriceListTemplate = memoize( ( menu_item_block, rest_menu_item_arr ) => {
+														return times( menu_item_block, n => [ "uagb/restaurant-menu-child", rest_menu_item_arr[n] ] )
 													} )
 													
 													return (
 														<Fragment>
-														
 														{inspect_control}
 														<div className={ classnames(
 															className,
@@ -684,20 +682,17 @@ class UAGBRestaurantMenu extends Component {
 															`uagb-block-${this.props.clientId.substr( 0, 8 )}`,
 															...PositionClasses( attributes ),
 															) }
-															>
-															
+															>	
 															<InnerBlocks
-															template={ getPriceListTemplate( menu_item_count, rest_menu_item_arr ) }
-															templateLock={ false }
-															allowedBlocks={ ALLOWED_BLOCKS }
-															__experimentalMoverDirection={ 'horizontal' }
+																template={ getPriceListTemplate( menu_item_count, rest_menu_item_arr ) }
+																templateLock={ false }
+																allowedBlocks={ ALLOWED_BLOCKS }
+																__experimentalMoverDirection={ 'horizontal' }
 															/>
-															
-															</div>
+														</div>
 															{ loadTitleGoogleFonts }
 															{ loadDescGoogleFonts }
 															{ loadPriceGoogleFonts }
-															
 															</Fragment>
 															)
 														}

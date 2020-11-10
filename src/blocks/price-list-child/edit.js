@@ -107,13 +107,11 @@ class UAGBRestaurantMenuChild extends Component {
 			imagePosition,
 			imageSize,
 			image,
-			imageAlignment
-			
+			imageAlignment,
+			title,
+			price,
+			description			
 		} = attributes	
-		
-		
-
-		console.log(attributes)
 
         const inspect_control = (
             <InspectorControls>
@@ -179,7 +177,7 @@ class UAGBRestaurantMenuChild extends Component {
 													<Fragment>
 														<div className = "uagb-rm-details">
 															<div className = "uagb-rm__title-wrap" >
-																	<Title attributes={attributes} setAttributes = { setAttributes } />
+																	<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 															<div className = "uagb-rest-menu-text-wrap">
 																	<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  />
 																</div>
