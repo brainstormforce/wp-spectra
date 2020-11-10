@@ -113,7 +113,7 @@ class UAGBRestaurantMenuChild extends Component {
 		
 		
 
-		
+		console.log(attributes)
 
         const inspect_control = (
             <InspectorControls>
@@ -147,7 +147,9 @@ class UAGBRestaurantMenuChild extends Component {
 				</PanelBody>
             </InspectorControls>
         )
-        
+		// var  menu_item_arr = attributes.rest_menu_item_arr.keys;
+		
+		// var index;
 		return (
 			<Fragment>
 				{   ( imagePosition =="top" )  && <BlockControls key='controls'>
@@ -171,14 +173,14 @@ class UAGBRestaurantMenuChild extends Component {
 						) } >
 										<div className = "uagb-rm__content" >
 											
-											{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
+											{ ( imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
 											<div className ="uagb-rm__text-wrap">
 												{
 													<Fragment>
 														<div className = "uagb-rm-details">
 															<div className = "uagb-rm__title-wrap" >
-																<Title attributes={attributes} setAttributes = { setAttributes } />
-																<div className = "uagb-rest-menu-text-wrap">
+																	<Title attributes={attributes} setAttributes = { setAttributes } />
+															<div className = "uagb-rest-menu-text-wrap">
 																	<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  />
 																</div>
 															</div>
