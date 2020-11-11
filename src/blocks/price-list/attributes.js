@@ -42,8 +42,6 @@ const attributes = {
 		type: "string",
 		default: "left",
 	},
-	
-	
 	priceSpace: {
 		type: "number",
 		default : 5
@@ -279,7 +277,6 @@ const attributes = {
 		type: "number",
 		default: "",
 	},
-	
 }
 
 export default attributes

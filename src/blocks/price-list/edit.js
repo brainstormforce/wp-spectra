@@ -4,12 +4,8 @@
 
 
 import classnames from "classnames"
-// import Title from "./components/Title"
-// import Price from "./components/Price"
-// import Description from "./components/Description"
 import PositionClasses from "./classes"
 import RestMenuStyle from "./inline-styles"
-// import RestMenuImage from "./components/RestMenuImage"
 import times from "lodash/times"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import memoize from "memize"
