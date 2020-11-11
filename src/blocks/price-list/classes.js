@@ -5,20 +5,18 @@
 function PositionClasses( attributes ) {
 	
 	var iconimgStyle_class = ""
-	
-	// attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
-		// 	let image_arr = attributes.image
-		// 	if( image_arr && typeof image_arr !== "undefined"){
-			// 		const image = image_arr["image"]
-			// 		if( typeof image !== "undefined" && image !== null && image !=="" ){
-				// 			imge_cnt++
-				// 		}
-				// 	}
-				// } )
-				
 	let imge_cnt = 0
+
 	let image = attributes.image
-	if( image && typeof image !== "undefined"){		
+	
+	if( typeof image == "undefined" ){		
+		attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
+			let image_arr = item.image
+			if( image_arr && typeof image_arr !== "undefined"){
+				imge_cnt++
+			}
+		} )
+	}else{
 		if( typeof image !== "undefined" && image !== null && image !=="" ){
 			imge_cnt++
 		}
