@@ -3724,6 +3724,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
+				' input[type=button]'                    => array(
+					'color'            => $attr['buttonTextColor'],
+					'background-color' => $attr['buttonBgColor'],
+					'border-color'     => $attr['buttonBorderColor'],
+					'border-style'     => $attr['buttonBorderStyle'],
+					'border-width'     => UAGB_Helper::get_css_value( $attr['buttonBorderWidth'], 'px' ),
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['buttonBorderRadius'], $attr['buttonBorderRadiusType'] ),
+					'padding-left'     => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
+					'padding-right'    => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
+					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
+				),
+				' input[type=button]:hover'              => array(
+					'color'            => $attr['buttonTextHoverColor'],
+					'background-color' => $attr['buttonBgHoverColor'],
+					'border-color'     => $attr['buttonBorderHoverColor'],
+				),
 				' select'                                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
