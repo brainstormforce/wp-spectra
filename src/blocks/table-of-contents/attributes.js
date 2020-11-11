@@ -61,7 +61,7 @@ const attributes = {
 		default: Array(6).fill(true)
 	},
 	headerLinks: {
-		type: 'string',
+		type: 'html',
 		default: ''
 	},
 	align : {
@@ -327,6 +327,10 @@ const attributes = {
 	headingLineHeightMobile: {
 		type: "number",
 	},
+	headingAlignment: {
+		type: "string",
+		default: "left"
+	},	
 }
 
 export default attributes

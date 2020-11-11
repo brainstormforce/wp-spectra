@@ -69,7 +69,7 @@ function styling( props ) {
 			"color": descColor,
 			"margin-bottom": generateCSSUnit( descSpace, "px" ),
 		},
-		" .uagb-team__prefix": {
+		" .rich-text.block-editor-rich-text__editable.uagb-team__prefix": {
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
 			"font-size": generateCSSUnit( prefixFontSize, prefixFontSizeType ),
@@ -143,7 +143,7 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" " + tag + ".uagb-team__title"] = {
+	selectors[" " + tag + ".rich-text.block-editor-rich-text__editable.uagb-team__title"] = {
 		"font-family": titleFontFamily,
 		"font-weight": titleFontWeight,
 		"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),

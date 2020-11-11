@@ -66,6 +66,8 @@ function styling( props ) {
         iconSizeMobile,
         iconSizeTablet,
         columns,
+        tcolumns,
+        mcolumns,
         questionLeftPaddingTablet,
         questionBottomPaddingTablet,
         questionLeftPaddingDesktop,
@@ -274,6 +276,12 @@ function styling( props ) {
         }
         selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
             "grid-template-columns" : 'repeat(' + columns + ', 1fr)'
+        }
+        tablet_selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
+            "grid-template-columns" : 'repeat(' + tcolumns + ', 1fr)'
+        }
+        mobile_selectors[".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "] = {
+            "grid-template-columns" : 'repeat(' + mcolumns + ', 1fr)'
         }
     }
 

@@ -119,9 +119,16 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $attr, $id ) {
-
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
+			global $post;
+			// Get the featured image.
+			if ( has_post_thumbnail() ) {
+				$thumbnail_id = get_post_thumbnail_id( $post->ID );
+				$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
+			} else {
+				$thumbnail = null;
+			}
 			ob_start();
 			?>
 			var ssLinks = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
@@ -134,7 +141,12 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						if( social_url == "mailto:?body=" ) {
 							target = "_self";
 						}
-						var request_url = social_url + window.location.href;
+						var  request_url ="";
+						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
+							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
+						}else{
+							request_url = social_url + window.location.href;
+						}
 						window.open( request_url, target );
 					});
 				}
@@ -729,6 +741,35 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			UAGB_Helper::blocks_google_font( $button_load_google_font, $button_font_family, $button_font_weight, $button_font_subset );
 			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Taxonomy List.
+		 *
+		 * @since 1.18.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_taxonomy_list_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$count_load_google_font = isset( $attr['countLoadGoogleFonts'] ) ? $attr['countLoadGoogleFonts'] : '';
+			$count_font_family      = isset( $attr['countFontFamily'] ) ? $attr['countFontFamily'] : '';
+			$count_font_weight      = isset( $attr['countFontWeight'] ) ? $attr['countFontWeight'] : '';
+			$count_font_subset      = isset( $attr['countFontSubset'] ) ? $attr['countFontSubset'] : '';
+
+			$list_load_google_font = isset( $attr['listLoadGoogleFonts'] ) ? $attr['listLoadGoogleFonts'] : '';
+			$list_font_family      = isset( $attr['listFontFamily'] ) ? $attr['listFontFamily'] : '';
+			$list_font_weight      = isset( $attr['listFontWeight'] ) ? $attr['listFontWeight'] : '';
+			$list_font_subset      = isset( $attr['listFontSubset'] ) ? $attr['listFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $count_load_google_font, $count_font_family, $count_font_weight, $count_font_subset );
+			UAGB_Helper::blocks_google_font( $list_load_google_font, $list_font_family, $list_font_weight, $list_font_subset );
+
 		}
 
 	}

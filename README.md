@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.4  
-**Stable tag:** 1.16.0  
+**Tested up to:** 5.5  
+**Stable tag:** 1.18.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 1,000,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 1+ million users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
 	<li><a href="https://www.ultimategutenberg.com/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
  	<li><a href="https://www.ultimategutenberg.com/faq/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user’s common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/docs/wp-search/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">WP - Search </a>: Search bars quickly bring information users are looking for and deliver a great user experience. You can display the WordPress search field anywhere on your page easily with the WP - Search block.</li>
@@ -159,17 +160,56 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.18.1 ###
+* Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
+* Improvement: FAQ Schema - Added keyboard accessibility of spacebar, enter and left-click.
+* Improvement: Inline Notice - New layout added for inline notice.
+* Improvement: Post Timeline - Added filter for post timeline connector SVG.
+* Improvement: Social Share - Added support to some more social platforms like Pocket, VK, Odnoklassniki, Skype, Telegram, WhatsApp, Xing, and Buffer.
+* Improvement: Twenty Seventeen Theme: Added compatibility to Twenty Seventeen Sections.
+* Improvement: Testimonial - Added class to Image for lazy load compatibility.
+* Improvement: Info Box - Added class to Image for lazy load compatibility.
+* Improvement: Table of Content - Alignment option added for table heading.
+* Fix: FAQ Schema - Toggle issue when we add multiple FAQ Blocks on the same page.
+* Fix: Social Share - Resolved the missing image issue in the Pinterest social platform.
+* Fix: Gravity Form Styler - Submit button text colour issue.
+
+### 1.18.0 ###
+* New: Taxonomy List.
+* Improvement: FAQ Schema - Added responsive columns options for mobile and tablet.
+* Improvement: Google Map - Now user can show language-specific Google Map.
+* Improvement: How to Schema - More options to add total time.
+* Fix: Multiple file generation issue in some cases fixed.
+* Fix: Inline Notice - Dismissal of Notice issue.
+* Fix: How To Schema - Step gap issue.
+* Fix: How To Schema - Image deletion issue for steps.
+* Fix: FAQ Schema - Multiple FAQSchema on the same page not allowed issue.
+* Fix: Post Block - Infinite scroll is broken for anonymous user.
+* Fix: Unicode error in some cases issue fixed.
+
 ### 1.17.0 ###
+* Improvement: Compatibility with WordPress 5.5.
+* Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
+* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
+* Fix: Icon List - Icon List Border turns to the oval issue.
+* Fix: Info Box - Fixed a Typography issue with CTA-Button.
+* Fix: Call To Action - Rectified the issue with Anchor that does not save.
+
+### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
-* Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
-* Improvement: New Gradient Pallete is introduced to set background.
+* Improvement: Advanced Columns - New Gradient Palette is introduced to set background.
+* Improvement: Sections - New Gradient Palette is introduced to set background.
+* Improvement: FAQ Schema - Added heading options for question.
+* Improvement: Post Layouts - Added an option to exclude current post.
+* Improvement: Post Layouts - Option to Display Post Content Type as Excerpt/Full-Post.
+* Improvement: Inline Notice - Added heading options for Notice title.
 * Fix: Post Grid - Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the FAQ.
+* Fix: Social Share - Fixed an issue with reusable block.
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
-* Improvement: FAQ Schema - Added heading options for question.
-* Improvement: Post Layout - Added an option to exclude current post.
-* Improvement: Inline Notice - Added heading options for notice title.
-* Fix: Info Box - CSS selector affecting all of Gutenberg.
+* Fix: Info Box - Fixed an issue with CSS selector.
+* Fix: Icon List - Icon Top Alignment issue.
 
 ### 1.16.0 ###
 * New: WP - Search Block.
