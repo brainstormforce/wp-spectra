@@ -2284,7 +2284,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'inputSizeType'           => '%',
 						),
 					),
-					'uagb/taxonomy-list'      => array(
+					'uagb/taxonomy-list'         => array(
 						'slug'        => '',
 						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
