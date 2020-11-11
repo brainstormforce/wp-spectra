@@ -1075,7 +1075,7 @@ export default compose(
 
 				const headingContentEmpty = typeof heading_attr[contentName] === 'undefined' || heading_attr[contentName] === '';
 
-				if ( !headingContentEmpty ) {
+				if ( !headingContentEmpty && 'uagb-toc-hide-heading' != heading_attr.className ) {
 					headers.push(
 						{
 							tag: contentLevel,
