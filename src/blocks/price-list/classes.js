@@ -21,7 +21,7 @@ function PositionClasses( attributes ) {
 			imge_cnt++
 		}
 	}
-	
+	console.log(attributes.imagePosition)
 	if( imge_cnt > 0 ){
 		iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
 	}
