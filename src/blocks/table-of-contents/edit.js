@@ -1075,16 +1075,25 @@ export default compose(
 
 				const headingContentEmpty = typeof heading_attr[contentName] === 'undefined' || heading_attr[contentName] === '';
 
-				if ( !headingContentEmpty && 'uagb-toc-hide-heading' != heading_attr.className ) {
-					headers.push(
-						{
-							tag: contentLevel,
-							text: striptags( heading_attr[contentName] ),
-							link: parseTocSlug( striptags( heading_attr[contentName] ) ),
-							content: heading_attr[contentName]
-						}
-					);
+				let heading_className = heading_attr.className;
+				let exclude_heading = '';
+
+				if( heading_className )
+					
+					if( typeof heading_className !== 'undefined' ){
+						exclude_heading = heading_className.substr(0, 21);
 				}
+
+					if ( !headingContentEmpty && !exclude_heading ) {
+						headers.push(
+							{
+								tag: contentLevel,
+								text: striptags( heading_attr[contentName] ),
+								link: parseTocSlug( striptags( heading_attr[contentName] ) ),
+								content: heading_attr[contentName]
+							}
+						);
+					}
 			});
 		}
 
