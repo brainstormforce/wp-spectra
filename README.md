@@ -160,6 +160,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.18.2 ###
+* Fix: Taxonomy List - Resolved issue for term containing spaces.
+
 ### 1.18.1 ###
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
 * Improvement: FAQ Schema - Added keyboard accessibility of spacebar, enter and left-click.
