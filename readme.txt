@@ -160,7 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.18.2 =
+= 1.18.1.1 =
 * Fix: Taxonomy List - Resolved issue for term containing spaces.
 
 = 1.18.1 =

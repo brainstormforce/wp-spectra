@@ -14,14 +14,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 	/**
 	 * Class UAGB_Taxonomy_List.
 	 *
-	 * @since x.x.x
+	 * @since 1.18.1
 	 */
 	class UAGB_Taxonomy_List {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function __construct() {
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 * Registers the `uagb/taxonomy-list` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function register_blocks() {
 
@@ -391,7 +391,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function grid_html( $attributes ) {
 			$block_id         = $attributes['block_id'];
@@ -438,7 +438,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function list_html( $attributes ) {
 			$block_id         = $attributes['block_id'];
@@ -531,7 +531,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function render_html( $attributes ) {
 
