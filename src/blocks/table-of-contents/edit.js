@@ -1084,7 +1084,7 @@ export default compose(
 					}
 				}
 
-					if ( !headingContentEmpty && true !== exclude_heading ) {
+					if ( !headingContentEmpty && !exclude_heading ) {
 						headers.push(
 							{
 								tag: contentLevel,
