@@ -4,7 +4,10 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-
+ .wp-block-uagb-restaurant-menu-child.uagb-rest_menu__outer-wrap {
+    display: block;
+    float: left;
+ }
 .uagb-rm__desc,
 .editor-block-list__layout .uagb-rm__desc.block-editor-rich-text__editable{
     margin-bottom: 15px;
