@@ -1078,13 +1078,13 @@ export default compose(
 				let heading_className = heading_attr.className;
 				let exclude_heading = '';
 
-				if( heading_className )
-					
+				if( heading_className ){
 					if( typeof heading_className !== 'undefined' ){
-						exclude_heading = heading_className.substr(0, 21);
+						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
+					}
 				}
 
-					if ( !headingContentEmpty && 'uagb-toc-hide-heading' !== exclude_heading ) {
+					if ( !headingContentEmpty && true !== exclude_heading ) {
 						headers.push(
 							{
 								tag: contentLevel,

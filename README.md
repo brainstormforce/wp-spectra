@@ -159,6 +159,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 1.19.1 ###
+* Improvement: Table of Content - Exclude specific headings from Table of Contents block.
 
 ### 1.18.1 ###
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
