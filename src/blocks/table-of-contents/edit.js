@@ -1084,7 +1084,7 @@ export default compose(
 						exclude_heading = heading_className.substr(0, 21);
 				}
 
-					if ( !headingContentEmpty && !exclude_heading ) {
+					if ( !headingContentEmpty && 'uagb-toc-hide-heading' !== exclude_heading ) {
 						headers.push(
 							{
 								tag: contentLevel,
