@@ -618,11 +618,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_icon( $attributes ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-			<?php if ( has_filter('uagb_timeline_icon_filter') ) { ?>
-				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php echo apply_filters( 'uagb_timeline_icon_filter', $attributes['icon'] ); ?></span> 
-			<?php	} else { ?>
 				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
-			<?php	} ?>
 			</div>
 			<?php
 		}
