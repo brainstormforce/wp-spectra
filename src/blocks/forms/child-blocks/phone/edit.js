@@ -92,9 +92,9 @@ class UAGBFormsPhoneEdit extends Component {
 	
 		var phone_html = "";
 		if(pattern != ""){
-			phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
+			phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 		}else{
-			phone_html =  <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
+			phone_html = <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 		}
 		
 		const isRequired = (phoneRequired) ? "required" : "";
@@ -125,6 +125,7 @@ class UAGBFormsPhoneEdit extends Component {
 						onChange={ ( value ) => setAttributes( { phoneName: value } ) }
 						className={`uagb-forms-phone-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
+						id={ block_id }
 					/>
 					{phone_html}
 				</div>

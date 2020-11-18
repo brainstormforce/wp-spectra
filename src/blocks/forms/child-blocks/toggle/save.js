@@ -32,7 +32,8 @@ export default function save( props ) {
 				<RichText.Content
 				tagName="div"
 				value={ name }
-				className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}		
+				className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}	
+				id={ block_id }	
 				/>
 				<label class="uagb-switch">
 					<input 
@@ -40,7 +41,8 @@ export default function save( props ) {
 						className="uagb-forms-toggle-input"
 						checked={toggleStatus}
 						value={ toggleStatus ? trueValue : falseValue }
-						required={toggleRequired}					
+						required={toggleRequired}	
+						name={ block_id }				
 					/>
 					<span class={`uagb-slider ${layout}`}></span>
 				</label>

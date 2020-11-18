@@ -30,9 +30,9 @@ export default function save( props ) {
 				tagName="div"
 				value={ name }
 				className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}	
-				id={ block_id} 		
+				id={ block_id }		
 				/>
-				<input type="text" name={ block_id } placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input"/>
+				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input" name={ block_id }/>
 		</div>
 	)
 }

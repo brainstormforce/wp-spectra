@@ -106,8 +106,9 @@ class UAGBFormsUrlEdit extends Component {
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-url-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
+						id={ block_id }
 					/>
-					<input type="url" placeholder={placeholder} required={ required } className="uagb-forms-url-input uagb-forms-input"/>					
+					<input type="url" name={ block_id } placeholder={placeholder} required={ required } className="uagb-forms-url-input uagb-forms-input"/>					
 					
 					
 				</div>
