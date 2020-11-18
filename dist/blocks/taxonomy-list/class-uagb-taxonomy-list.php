@@ -111,7 +111,6 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'noTaxDisplaytext'      => array(
 							'type'    => 'string',
 							'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
-							'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 						),
 						'boxShadowColor'        => array(
 							'type' => 'string',

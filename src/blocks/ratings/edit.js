@@ -426,23 +426,23 @@ class UAGBRatingEdit extends Component {
 					/>
 					</Fragment>)
 					}
-						<TypographyControl
-							label={ __( "Content" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
-							fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
-							fontWeight = { { value: contentFontWeight, label: 'contentFontWeight' } }
-							fontSubset = { { value: contentFontSubset, label: 'contentFontSubset' } }
-							fontSizeType = { { value: contentFontSizeType, label: 'contentFontSizeType' } }
-							fontSize = { { value: contentFontSize, label: 'contentFontSize' } }
-							fontSizeMobile = { { value: contentFontSizeMobile, label: 'contentFontSizeMobile' } }
-							fontSizeTablet= { { value: contentFontSizeTablet, label: 'contentFontSizeTablet' } }
-							lineHeightType = { { value: contentLineHeightType, label: 'contentLineHeightType' } }
-							lineHeight = { { value: contentLineHeight, label: 'contentLineHeight' } }
-							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
-							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
-						/>
+					<TypographyControl
+						label={ __( "Content" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
+						fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
+						fontWeight = { { value: contentFontWeight, label: 'contentFontWeight' } }
+						fontSubset = { { value: contentFontSubset, label: 'contentFontSubset' } }
+						fontSizeType = { { value: contentFontSizeType, label: 'contentFontSizeType' } }
+						fontSize = { { value: contentFontSize, label: 'contentFontSize' } }
+						fontSizeMobile = { { value: contentFontSizeMobile, label: 'contentFontSizeMobile' } }
+						fontSizeTablet= { { value: contentFontSizeTablet, label: 'contentFontSizeTablet' } }
+						lineHeightType = { { value: contentLineHeightType, label: 'contentLineHeightType' } }
+						lineHeight = { { value: contentLineHeight, label: 'contentLineHeight' } }
+						lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
+						lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
+					/>
 					{ showFeature === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
