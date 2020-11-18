@@ -32,7 +32,7 @@ export default function save( props ) {
 				value={ name }
 				className={`uagb-forms-email-label ${isRequired} uagb-forms-input-label`}			
 			/>			
-			<input type="email" className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required }/>
+			<input type="email" name={`${name}-${ block_id }`} className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required }/>
 		</div>
 	)
 }

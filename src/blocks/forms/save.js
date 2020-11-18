@@ -89,8 +89,8 @@ export default function save( props ) {
 				<div className="uagb-forms-main-submit-button-wrap">
 					{renderButtonHtml()}
 				</div>
-				{ renderConfirmationMessage() }
 			</form>
+				{ renderConfirmationMessage() }
 		</div>
 	)
 }
