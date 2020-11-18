@@ -235,20 +235,22 @@ export class ReviewBody extends Component {
 								minWidth: items.length > 1 ? 120 : 100,
 							}}
 						>
-						<div
-							className="dashicons dashicons-trash"
-							onClick={() => {
-								let newItems = items
-									.slice(0, i)
-									.concat(items.slice(i + 1, items.length));
-									setItems(newItems);
-								this.setState({
-									average: newItems
-									.map((i) => i.value)
-									.reduce((total, v) => total + v) / newItems.length,
-								});
-							}}
-						/>
+						{items.length > 1 && (
+							<div
+								className="dashicons dashicons-trash"
+								onClick={() => {
+									let newItems = items
+										.slice(0, i)
+										.concat(items.slice(i + 1, items.length));
+										setItems(newItems);
+									this.setState({
+										average: newItems
+										.map((i) => i.value)
+										.reduce((total, v) => total + v) / newItems.length,
+									});
+								}}
+							/>
+						)}
 							<Stars
 								id={`${ID}-${i}`}
 								key={i}

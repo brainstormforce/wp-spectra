@@ -72,8 +72,9 @@ class UAGBRatingEdit extends Component {
 
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
+		// this.onUpdateDate  = this.onUpdateDate.blind( this )
 		this.getImageSize  = this.getImageSize.bind( this )
-		this.toggleTarget     = this.toggleTarget.bind( this )
+		this.toggleTarget  = this.toggleTarget.bind( this )
 	}
 
 	componentDidMount() {
@@ -254,9 +255,10 @@ class UAGBRatingEdit extends Component {
 		} = this.props;
 
 		const onUpdateDate = ( dateTime ) => {
+			console.log(dateTime)
 			var newDateTime = moment(dateTime).format( 'YYYY-MM-DD' );
 			setAttributes( { offerExpiry: newDateTime } );
-		  };
+		  }
 
 		if (
 			blockID === ""
@@ -571,7 +573,8 @@ class UAGBRatingEdit extends Component {
 							/>
 							<DateTimePicker
 								currentDate={ offerExpiry }
-								onChange={ ( val ) => onUpdateDate( val ) }
+								// onChange={ ( val ) => onUpdateDate(  val ) }
+								onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
 								is12Hour={ true }
 							/>
 						</Fragment>
@@ -723,7 +726,7 @@ class UAGBRatingEdit extends Component {
 				brand={brand}
 				starCount={starCount}
 				rAuthor={rAuthor}
-				// newAverage={newAverage}
+				showfeature={showFeature}
 				offerType={offerType}
 				offerCount={offerCount}
 				offerLowPrice={offerLowPrice}

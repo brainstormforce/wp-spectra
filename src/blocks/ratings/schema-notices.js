@@ -34,6 +34,7 @@ class SchemaNotices extends Component {
             identifier,
             features,
             clientId,
+            showfeature,
             } = this.props
 
         var emptyItems = [];
@@ -90,7 +91,7 @@ class SchemaNotices extends Component {
         if ( 'undefined' === typeof identifier || '' === identifier ) {
             emptyItems.push( 'Missing field Identifier' );
         }
-        if ( true === feature_empty_item_flag ) {
+        if ( false === showfeature ) {
             emptyItems.push( 'Feature list rating are required' );
         }
         const listItems = emptyItems.map( ( item ) =>

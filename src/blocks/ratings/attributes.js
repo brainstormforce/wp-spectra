@@ -38,7 +38,7 @@
 	},
 	rAuthor: {
 		type: "string",
-		default: "Ultimate Addons for Gutenberg",
+		default: "Brainstorm Force",
 	},
 	headingTag: {
 		type: "string",
@@ -234,8 +234,8 @@
 	},
 	offerExpiry: {
 		type: "number",
-		//default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
-		default: 0,
+		// default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
+		default: '',
 	},
 	featuresTitle : {
 		type: "string",
