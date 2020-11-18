@@ -1,0 +1,8 @@
+
+body.rtl .uagb-infobox__content-wrap {
+    text-align:right
+}
+
+body.rtl .uagb-heading-text,body.rtl .uagb-separator-wrap,body.rtl .uagb-desc-text{
+    text-align:right
+}
