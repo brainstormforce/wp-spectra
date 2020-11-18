@@ -119,9 +119,16 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $attr, $id ) {
-
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
+			global $post;
+			// Get the featured image.
+			if ( has_post_thumbnail() ) {
+				$thumbnail_id = get_post_thumbnail_id( $post->ID );
+				$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
+			} else {
+				$thumbnail = null;
+			}
 			ob_start();
 			?>
 			var ssLinks = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
@@ -134,7 +141,12 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						if( social_url == "mailto:?body=" ) {
 							target = "_self";
 						}
-						var request_url = social_url + window.location.href;
+						var  request_url ="";
+						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
+							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
+						}else{
+							request_url = social_url + window.location.href;
+						}
 						window.open( request_url, target );
 					});
 				}
@@ -251,31 +263,31 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Adds Google fonts for Inline Notice block.
+		 * Adds Google fonts for Rating block.
 		 *
 		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_rating_gfont( $attr ) {
 
-			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
 
-			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
 
-			$subheadload_google_fonts = isset( $attr['contentLoadGoogleFonts'] ) ? $attr['contentLoadGoogleFonts'] : '';
-			$subheadfont_family       = isset( $attr['contentFontFamily'] ) ? $attr['contentFontFamily'] : '';
-			$subheadfont_weight       = isset( $attr['contentFontWeight'] ) ? $attr['contentFontWeight'] : '';
-			$subheadfont_subset       = isset( $attr['contentFontSubset'] ) ? $attr['contentFontSubset'] : '';
+			$content_load_google_fonts = isset( $attr['contentLoadGoogleFonts'] ) ? $attr['contentLoadGoogleFonts'] : '';
+			$content_font_family       = isset( $attr['contentFontFamily'] ) ? $attr['contentFontFamily'] : '';
+			$content_font_weight       = isset( $attr['contentFontWeight'] ) ? $attr['contentFontWeight'] : '';
+			$content_font_subset       = isset( $attr['contentFontSubset'] ) ? $attr['contentFontSubset'] : '';
 
-			UAGB_Helper::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
-			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
-			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			UAGB_Helper::blocks_google_font( $content_load_google_fonts, $content_font_family, $content_font_weight, $content_font_subset );
 		}
 
 		/**

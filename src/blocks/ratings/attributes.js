@@ -321,85 +321,93 @@
 		type: "string",
 		default: "",
 	},
-	titleFontFamily: {
+	headFontFamily: {
 		type: "string",
 		default: "Default",
 	},
-	titleFontWeight: {
+	headFontWeight: {
 		type: "string",
 	},
-	titleFontSubset: {
+	headFontSubset: {
 		type: "string",
 	},
-	titleFontSizeType: {
+	headFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	titleLineHeightType: {
+	headLineHeightType: {
 		type: "string",
 		default: "em"
 	},
-	titleFontSize: {
+	headFontSize: {
 		type: "number",
 	},
-	titleFontSizeTablet: {
+	headFontSizeTablet: {
 		type: "number",
 	},
-	titleFontSizeMobile: {
+	headFontSizeMobile: {
 		type: "number",
 	},
-	titleLineHeight: {
+	headLineHeight: {
 		type: "number",
 	},
-	titleLineHeightTablet: {
+	headLineHeightTablet: {
 		type: "number",
 	},
-	titleLineHeightMobile: {
+	headLineHeightMobile: {
 		type: "number",
 	},
-	descFontFamily: {
+	subHeadFontFamily: {
+		type: "string",
+		default: "",
+	},
+	subHeadFontWeight: {
+		type: "string",
+	},
+	subHeadFontSubset: {
+		type: "string",
+	},
+	subHeadFontSize: {
+		type: "number",
+	},
+	subHeadFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	subHeadFontSizeTablet: {
+		type: "number",
+	},
+	subHeadFontSizeMobile: {
+		type: "number",
+	},
+	subHeadLineHeight: {
+		type: "number",
+	},
+	subHeadLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	subHeadLineHeightTablet: {
+		type: "number",
+	},
+	subHeadLineHeightMobile: {
+		type: "number",
+	},
+	separatorSpace: {
+		type: "number",
+		default: 15
+	},
+	headLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	subHeadLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	contentFontFamily: {
 		type: "string",
 		default: "Default",
-	},
-	descFontWeight: {
-		type: "string",
-	},
-	descFontSubset: {
-		type: "string",
-	},
-	descFontSize: {
-		type: "number",
-	},
-	descFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	descFontSizeTablet: {
-		type: "number",
-	},
-	descFontSizeMobile: {
-		type: "number",
-	},
-	descLineHeight: {
-		type: "number",
-	},
-	descLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	descLineHeightTablet: {
-		type: "number",
-	},
-	descLineHeightMobile: {
-		type: "number",
-	},
-	titleLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	},
-	descLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
 	},
 	contentLoadGoogleFonts: {
 		type: "boolean",

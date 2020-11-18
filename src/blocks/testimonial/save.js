@@ -7,7 +7,7 @@ import AuthorName from "./components/AuthorName"
 import Company from "./components/Company"
 import Description from "./components/Description"
 import PositionClasses from "./classes"
-import TestimonialImage from "./components/TestimonialImage"
+import TestimonialImage from "./components/Image"
 
 const { Fragment } = wp.element
 

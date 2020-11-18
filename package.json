@@ -1,6 +1,6 @@
 {
   "name": "ultimate-addons-for-gutenberg",
-  "version": "1.17.0",
+  "version": "1.18.1",
   "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
   "author": "Brainstorm Force",
   "license": "ISC",
@@ -57,7 +57,8 @@
     "sass-loader": "^6.0.6",
     "slick-carousel": "^1.8.1",
     "striptags": "^3.1.1",
-    "update-notifier": "^2.3.0"
+    "update-notifier": "^2.3.0",
+    "bl": ">=1.2.3"
   },
   "babel": {
     "presets": [

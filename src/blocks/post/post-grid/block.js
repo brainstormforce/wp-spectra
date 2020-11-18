@@ -28,6 +28,7 @@ registerBlockType( "uagb/post-grid", {
 		__( "uag" ),
 	],
 	edit,
+	example: {},
 	// Render via PHP
 	save() {
 		return null

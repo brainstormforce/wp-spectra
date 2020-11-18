@@ -200,30 +200,30 @@ class UAGBRatingEdit extends Component {
 				descColor,
 				titleColor,
 				contentColor,
-				titleFontFamily,
-				titleFontWeight,
-				titleFontSubset,
-				titleFontSizeType,
-				titleLineHeightType,
-				titleFontSize,
-				titleFontSizeTablet,
-				titleFontSizeMobile,
-				titleLineHeight,
-				titleLineHeightTablet,
-				titleLineHeightMobile,
-				descFontFamily,
-				descFontWeight,
-				descFontSubset,
-				descFontSize,
-				descFontSizeType,
-				descFontSizeTablet,
-				descFontSizeMobile,
-				descLineHeight,
-				descLineHeightType,
-				descLineHeightTablet,
-				descLineHeightMobile,
-				titleLoadGoogleFonts,
-				descLoadGoogleFonts,
+				headFontFamily,
+				headFontWeight,
+				headFontSubset,
+				headFontSizeType,
+				headFontSize,
+				headFontSizeMobile,
+				headFontSizeTablet,
+				headLineHeightType,
+				headLineHeight,
+				headLineHeightMobile,
+				headLineHeightTablet,
+				headLoadGoogleFonts,
+				subHeadFontFamily,
+				subHeadFontWeight,
+				subHeadFontSubset,
+				subHeadFontSize,
+				subHeadFontSizeType,
+				subHeadFontSizeMobile,
+				subHeadFontSizeTablet,
+				subHeadLineHeight,
+				subHeadLineHeightType,
+				subHeadLineHeightMobile,
+				subHeadLineHeightTablet,
+				subHeadLoadGoogleFonts,
 				contentLoadGoogleFonts,
 				contentFontFamily,
 				contentFontWeight,
@@ -313,40 +313,39 @@ class UAGBRatingEdit extends Component {
 
 		}
 
-		let loadTitleGoogleFonts;
-		let loadDescriptionGoogleFonts;
 		let loadContentGoogleFonts;
-		
-		
-		if( true === titleLoadGoogleFonts ) {
+		let loadHeadingGoogleFonts;
+		let loadSubHeadingGoogleFonts;
+
+		if( headLoadGoogleFonts == true ) {
 			
-			const tconfig = {
+			const hconfig = {
 				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
 				},
 			};
-			
-			loadTitleGoogleFonts = (
-				<WebfontLoader config={ tconfig }>
+
+			loadHeadingGoogleFonts = (
+				<WebfontLoader config={ hconfig }>
 				</WebfontLoader>
 			)
 		}
-		
-		if( true === descLoadGoogleFonts ) {
-			
-			const dconfig = {
+
+		if( subHeadLoadGoogleFonts == true ) {
+
+			const sconfig = {
 				google: {
-					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
 				},
 			};
-			
-			loadDescriptionGoogleFonts = (
-				<WebfontLoader config={ dconfig }>
+
+			loadSubHeadingGoogleFonts = (
+				<WebfontLoader config={ sconfig }>
 				</WebfontLoader>
 			)
 		}	
 		
-		if( true === contentLoadGoogleFonts ){
+		if( contentLoadGoogleFonts == true ) {
 			const cconfig = {
 				google: {
 					families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
@@ -362,6 +361,23 @@ class UAGBRatingEdit extends Component {
 		const ratingStyleSettings = () => {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
+					<TypographyControl
+							label={ __( "Title" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: headLoadGoogleFonts, label:'headLoadGoogleFonts'  } }
+							fontFamily = { { value: headFontFamily, label:'headFontFamily'  } }
+							fontWeight = { { value: headFontWeight, label:'headFontWeight'  } }
+							fontSubset = { { value: headFontSubset, label:'headFontSubset'  } }
+							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+							fontSize = { { value: headFontSize, label:'headFontSize'  } }
+							fontSizeMobile = { { value: headFontSizeMobile, label:'headFontSizeMobile'  } }
+							fontSizeTablet= { { value: headFontSizeTablet, label:'headFontSizeTablet'  } }
+							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+							lineHeight = { { value: headLineHeight, label:'headLineHeight'  } }
+							lineHeightMobile = { { value: headLineHeightMobile, label:'headLineHeightMobile'  } }
+							lineHeightTablet= { { value: headLineHeightTablet, label:'headLineHeightTablet'  } }
+						/>
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
@@ -380,6 +396,25 @@ class UAGBRatingEdit extends Component {
 					/>
 					</Fragment>)
 					}
+					{ ( showAuthor === true || enableDescription === true ) &&
+							<TypographyControl
+							label={ __( "Description" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+							fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+							fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+							fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+							fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+							fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+							lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+						/>
+						}
 					{ showAuthor === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
@@ -391,6 +426,23 @@ class UAGBRatingEdit extends Component {
 					/>
 					</Fragment>)
 					}
+						<TypographyControl
+							label={ __( "Content" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
+							fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
+							fontWeight = { { value: contentFontWeight, label: 'contentFontWeight' } }
+							fontSubset = { { value: contentFontSubset, label: 'contentFontSubset' } }
+							fontSizeType = { { value: contentFontSizeType, label: 'contentFontSizeType' } }
+							fontSize = { { value: contentFontSize, label: 'contentFontSize' } }
+							fontSizeMobile = { { value: contentFontSizeMobile, label: 'contentFontSizeMobile' } }
+							fontSizeTablet= { { value: contentFontSizeTablet, label: 'contentFontSizeTablet' } }
+							lineHeightType = { { value: contentLineHeightType, label: 'contentLineHeightType' } }
+							lineHeight = { { value: contentLineHeight, label: 'contentLineHeight' } }
+							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
+							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
+						/>
 					{ showFeature === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
@@ -430,61 +482,6 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { starOutlineColor: value } ) }
 						allowReset
 					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Typography" ) }</h2>
-						<TypographyControl
-							label={ __( "Title" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
-							fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
-							fontWeight = { { value: titleFontWeight, label: 'titleFontWeight' } }
-							fontSubset = { { value: titleFontSubset, label: 'titleFontSubset' } }
-							fontSizeType = { { value: titleFontSizeType, label: 'titleFontSizeType' } }
-							fontSize = { { value: titleFontSize, label: 'titleFontSize' } }
-							fontSizeMobile = { { value: titleFontSizeMobile, label: 'titleFontSizeMobile' } }
-							fontSizeTablet= { { value: titleFontSizeTablet, label: 'titleFontSizeTablet' } }
-							lineHeightType = { { value: titleLineHeightType, label: 'titleLineHeightType' } }
-							lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
-							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
-							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
-						/>
-						{ ( showAuthor === true && enableDescription === true ) &&
-						<TypographyControl
-							label={ __( "Description" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: descLoadGoogleFonts, label: 'descLoadGoogleFonts' } }
-							fontFamily = { { value: descFontFamily, label: 'descFontFamily' } }
-							fontWeight = { { value: descFontWeight, label: 'descFontWeight' } }
-							fontSubset = { { value: descFontSubset, label: 'descFontSubset' } }
-							fontSizeType = { { value: descFontSizeType, label: 'descFontSizeType' } }
-							fontSize = { { value: descFontSize, label: 'descFontSize' } }
-							fontSizeMobile = { { value: descFontSizeMobile, label: 'descFontSizeMobile' } }
-							fontSizeTablet= { { value: descFontSizeTablet, label: 'descFontSizeTablet' } }
-							lineHeightType = { { value: descLineHeightType, label: 'descLineHeightType' } }
-							lineHeight = { { value: descLineHeight, label: 'descLineHeight' } }
-							lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
-							lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
-						/>
-						}
-						<TypographyControl
-							label={ __( "Content" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
-							fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
-							fontWeight = { { value: contentFontWeight, label: 'contentFontWeight' } }
-							fontSubset = { { value: contentFontSubset, label: 'contentFontSubset' } }
-							fontSizeType = { { value: contentFontSizeType, label: 'contentFontSizeType' } }
-							fontSize = { { value: contentFontSize, label: 'contentFontSize' } }
-							fontSizeMobile = { { value: contentFontSizeMobile, label: 'contentFontSizeMobile' } }
-							fontSizeTablet= { { value: contentFontSizeTablet, label: 'contentFontSizeTablet' } }
-							lineHeightType = { { value: contentLineHeightType, label: 'contentLineHeightType' } }
-							lineHeight = { { value: contentLineHeight, label: 'contentLineHeight' } }
-							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
-							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
-						/>
 				</PanelBody>
 			)
 		}
@@ -808,8 +805,8 @@ class UAGBRatingEdit extends Component {
 				setActiveStarIndex={(editedStar) => setState({ editedStar })}
 				showfeature={showFeature}
 				showauthor={showAuthor}
-			/>{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
+			/>{ loadHeadingGoogleFonts }
+			{ loadSubHeadingGoogleFonts }
 			{ loadContentGoogleFonts }</div>
 		];
 	}} 
