@@ -30,7 +30,8 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ checkboxName }
-			className={`uagb-forms-checkbox-label ${isRequired} uagb-forms-input-label`}		
+			className={`uagb-forms-checkbox-label ${isRequired} uagb-forms-input-label`}
+			id={ block_id }		
 			/>
 			
 			{options.map((o, index) => {
@@ -38,7 +39,7 @@ export default function save( props ) {
 				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="checkbox"  id={`checkbox-${value}-${block_id}`} name={`checkbox-${ block_id }`} value={ value } required={ checkboxRequired }/>
+					<input type="checkbox"  id={`checkbox-${value}-${block_id}`} name={ block_id } value={ value } required={ checkboxRequired }/>
 					<label for={ `checkbox-${value}-${block_id}` }>{ o.optiontitle }</label><br/>						
 					</Fragment>
 				);

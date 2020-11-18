@@ -116,8 +116,9 @@ class UAGBFormsTextareaEdit extends Component {
 						onChange={ ( value ) => setAttributes( { textareaName: value } ) }
 						className={`uagb-forms-textarea-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
+						id={ block_id }
 					/>					
-					<textarea required={ textareaRequired } className="uagb-forms-textarea-input uagb-forms-input" rows={rows} placeholder={placeholder} ></textarea>
+					<textarea required={ textareaRequired } className="uagb-forms-textarea-input uagb-forms-input" rows={rows} placeholder={placeholder} name={ block_id }></textarea>
 					
 				</div>
 			</Fragment>

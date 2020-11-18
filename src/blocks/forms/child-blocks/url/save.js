@@ -17,8 +17,7 @@ export default function save( props ) {
 		placeholder
 	} = attributes
 
-	var url_field_name = name.replace(/\s+/g, '-').toLowerCase();
-
+	
 	const isRequired = (required) ? "required" : "";
 	
 	return (
@@ -30,9 +29,10 @@ export default function save( props ) {
 				<RichText.Content
 			tagName="div"
 			value={ name }
-			className={`uagb-forms-url-label ${isRequired} uagb-forms-input-label`}			
+			className={`uagb-forms-url-label ${isRequired} uagb-forms-input-label`}
+			id={ block_id }			
 			/>
-			<input type="url" name={url_field_name} required={ required } placeholder={placeholder}  className="uagb-forms-url-input uagb-forms-input"/>					
+			<input type="url" name={ block_id } required={ required } placeholder={placeholder}  className="uagb-forms-url-input uagb-forms-input"/>					
 
 		</div>
 	)

@@ -30,7 +30,8 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ radioName }
-			className={`uagb-forms-radio-label ${isRequired} uagb-forms-input-label`}		
+			className={`uagb-forms-radio-label ${isRequired} uagb-forms-input-label`}
+			id={ block_id }		
 			/>
 			
 			{options.map((o, index) => {
@@ -38,7 +39,7 @@ export default function save( props ) {
 				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="radio" id={ value } name={`radio-${ block_id }`} value={ value } required={ radioRequired }/>
+					<input type="radio" id={ value } name={ block_id } value={ value } required={ radioRequired } />
 					<label for={ value }>{o.optiontitle}</label><br/>						
 					</Fragment>
 				);

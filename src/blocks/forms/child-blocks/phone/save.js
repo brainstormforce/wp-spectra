@@ -26,9 +26,9 @@ export default function save( props ) {
 	
 	var phone_html = "";
 	if(pattern != ""){
-		phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
+		phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 	}else{
-		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input"/>
+		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 	}
 	
 	const isRequired = (phoneRequired) ? "required" : "";
@@ -43,6 +43,7 @@ export default function save( props ) {
 				tagName="div"
 				value={ phoneName }
 				className={`uagb-forms-phone-label ${isRequired} uagb-forms-input-label`}	
+				id={ block_id }
 			/>
 			{phone_html}
 		</div>
