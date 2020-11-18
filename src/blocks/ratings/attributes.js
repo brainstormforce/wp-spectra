@@ -17,6 +17,27 @@
 		type: "string",
 		default: "",
 	},
+	itemType: {
+		type: "string",
+		default: "Product",
+	},
+	itemSubtype: {
+		type: "string",
+		default: "",
+	},
+	itemSubsubtype: {
+		type: "string",
+		default: "",
+	},
+	//beginning of book-only attributes
+	bookAuthorName: {
+		type: "string",
+		default: "",
+	},
+	isbn: {
+		type: "string",
+		default: "",
+	},
 	overallAlignment: {
 		type: "string",
 		default: "left",

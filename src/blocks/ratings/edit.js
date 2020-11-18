@@ -51,6 +51,11 @@ let imageSizeOptions = [
 	{ value: "full", label: __( "Large" ) }
 ]
 
+export const removeFromArray = (arr, removedElems) =>
+	arr.filter((a) =>
+		Array.isArray(removedElems) ? !removedElems.includes(a) : a !== removedElems
+	);
+
 compose([
 	withState({ editable: "", editedStar: 0 }),
 	withSelect((select, ownProps) => {
@@ -163,7 +168,9 @@ class UAGBRatingEdit extends Component {
 		const {
 			attributes: {
 				blockID,
-				block_id,
+				itemType,
+				itemSubtype,
+				itemSubsubtype,
 				authorName,
 				itemName,
 				description,
@@ -245,7 +252,9 @@ class UAGBRatingEdit extends Component {
 				editable,
 				enableDescription,
 				enableImage,
-				overallAlignment
+				overallAlignment,
+				isbn,
+				bookAuthorName
 			},
 			setAttributes,
 			isSelected,
@@ -357,6 +366,294 @@ class UAGBRatingEdit extends Component {
 				</WebfontLoader>
 			)
 		}
+
+		let itemTypeExtras;
+
+		const subtypeCategories = {
+			Book: ["Audiobook"],
+			Event: [
+				"BusinessEvent",
+				"ChildrensEvent",
+				"ComedyEvent",
+				"CourseInstance",
+				"DanceEvent",
+				"DeliveryEvent",
+				"EducationEvent",
+				"EventSeries", //pending
+				"Festival",
+				"FoodEvent",
+				"Hackathon", //pending
+				"LiteraryEvent",
+				"MusicEvent",
+				"PublicationEvent",
+				"SaleEvent",
+				"ScreeningEvent",
+				"SocialEvent",
+				"SportsEvent",
+				"TheaterEvent",
+				"VisualArtsEvent",
+			],
+			Game: ["VideoGame"],
+			LocalBusiness: [
+				"AnimalShelter",
+				"ArchiveOrganization", //pending
+				"AutomotiveBusiness",
+				"ChildCare",
+				"Dentist",
+				"DryCleaningOrLaundry",
+				"EmergencyService",
+				"EmploymentAgency",
+				"EntertainmentBusiness",
+				"FinancialService",
+				"FoodEstablishment",
+				"GovernmentOffice",
+				"HealthAndBeautyBusiness",
+				"HomeAndConstructionBusiness",
+				"InternetCafe",
+				"LegalService",
+				"Library",
+				"LodgingBusiness",
+				"MedicalBusiness",
+				"ProfessionalService",
+				"RadioStation",
+				"RealEstateAgent",
+				"RecyclingCenter",
+				"SelfStorage",
+				"ShoppingCenter",
+				"SportsActivityLocation",
+				"TelevisionStation",
+				"TouristInformationCenter",
+				"TravelAgency",
+			],
+			MediaObject: [
+				"3DModel", //pending
+				"AudioObject",
+				"DataDownload",
+				"ImageObject",
+				"LegislationObject", //pending
+				"MusicVideoObject",
+				"VideoObject",
+			],
+			MusicPlaylist: ["MusicAlbum", "MusicRelease"],
+			Organization: [
+				"Airline",
+				"Consortium", //pending
+				"Corporation",
+				"EducationalOrganization",
+				"FundingScheme", //pending
+				"GovernmentOrganization",
+				"LibrarySystem", //pending
+				"MedicalOrganization",
+				"NewsMediaOrganization", //pending
+				"NGO",
+				"PerformingGroup",
+				"Project", //pending
+				"SportsOrganization",
+				"WorkersUnion",
+			],
+			Product: [
+				"IndividualProduct",
+				"ProductCollection",
+				"ProductGroup",
+				"ProductModel",
+				"SomeProducts",
+				"Vehicle",
+			],
+			SoftwareApplication: ["MobileApplication", "VideoGame", "WebApplication"],
+		};
+
+		const subsubtypes = {
+			PublicationEvent: ["BroadcastEvent", "OnDemandEvent"],
+			EducationalOrganization: [
+				"CollegeOrUniversity",
+				"ElementarySchool",
+				"HighSchool",
+				"MiddleSchool",
+				"Preschool",
+				"School",
+			],
+			MedicalOrganization: [
+				"Dentist",
+				"DiagnosticLab",
+				"Hospital",
+				"MedicalClinic",
+				"Pharmacy",
+				"Physician",
+				"VeterinaryCare",
+			],
+			PerformingGroup: ["DanceGroup", "MusicGroup", "TheaterGroup"],
+			Project: ["FundingAgency", "ResearchProject"],
+			SportsOrganization: ["SportsTeam"],
+			AutomotiveBusiness: [
+				"AutoBodyShop",
+				"AutoDealer",
+				"AutoPartsStore",
+				"AutoRental",
+				"AutoRepair",
+				"AutoWash",
+				"GasStation",
+				"MotorcycleDealer",
+				"MotorcycleRepair",
+			],
+			EmergencyService: ["FireStation", "Hospital", "PoliceStation"],
+			EntertainmentBusiness: [
+				"AdultEntertainment",
+				"AmusementPark",
+				"ArtGallery",
+				"Casino",
+				"ComedyClub",
+				"MovieTheater",
+				"NightClub",
+			],
+			FinancialService: [
+				"AccountingService",
+				"AutomatedTeller",
+				"BankOrCreditUnion",
+				"InsuranceAgency",
+			],
+			FoodEstablishment: [
+				"Bakery",
+				"BarOrPub",
+				"Brewery",
+				"CafeOrCoffeeShop",
+				"Distillery",
+				"FastFoodRestaurant",
+				"IceCreamShop",
+				"Restaurant",
+				"Winery",
+			],
+			GovernmentOffice: ["PostOffice"],
+			HealthAndBeautyBusiness: [
+				"BeautySalon",
+				"DaySpa",
+				"HairSalon",
+				"HealthClub",
+				"NailSalon",
+				"TattooParlor",
+			],
+			HomeAndConstructionBusiness: [
+				"Electrician",
+				"GeneralContractor",
+				"HVACBusiness",
+				"HousePainter",
+				"Locksmith",
+				"MovingCompany",
+				"Plumber",
+				"RoofingContractor",
+			],
+			LegalService: ["Attorney", "Notary"],
+			LodgingBusiness: [
+				"BedAndBreakfast",
+				"Campground",
+				"Hostel",
+				"Hotel",
+				"Motel",
+				"Resort",
+			],
+			MedicalBusiness: [
+				//only subtypes that support reviews are included
+				"Dentist",
+				"MedicalClinic",
+				"Optician",
+				"Pharmacy",
+				"Physician",
+			],
+			SportsActivityLocation: [
+				"BowlingAlley",
+				"ExerciseGym",
+				"GolfCourse",
+				"HealthClub",
+				"PublicSwimmingPool",
+				"SkiResort",
+				"SportsClub",
+				"StadiumOrArena",
+				"TennisComplex",
+			],
+			Store: [
+				"AutoPartsStore",
+				"BikeStore",
+				"BookStore",
+				"ClothingStore",
+				"ComputerStore",
+				"ConvenienceStore",
+				"DepartmentStore",
+				"ElectronicsStore",
+				"Florist",
+				"FurnitureStore",
+				"GardenStore",
+				"GroceryStore",
+				"HardwareStore",
+				"HobbyShop",
+				"HomeGoodsStore",
+				"JewelryStore",
+				"LiquorStore",
+				"MensClothingStore",
+				"MobilePhoneStore",
+				"MovieRentalStore",
+				"MusicStore",
+				"OfficeEquipmentStore",
+				"OutletStore",
+				"PawnShop",
+				"PetStore",
+				"ShoeStore",
+				"SportingGoodsStore",
+				"TireShop",
+				"ToyStore",
+				"WholesaleStore",
+			],
+		};
+
+		let unusedDefaults = [
+			"bookAuthorName",
+			"isbn",
+			"provider",
+			// ...offerAttributes,
+			"startDate",
+			"endDate",
+			"usePhysicalAddress",
+			"addressName",
+			"address",
+			"eventPage",
+			"organizer",
+			"performer",
+			"brand",
+			"sku",
+			"identifierType",
+			"identifier",
+			"cuisines",
+			"phoneNumber",
+			"priceRange",
+			"appCategory",
+			"operatingSystem",
+			"videoUploadDate",
+			"videoURL",
+		];
+
+		switch (itemType) {
+			default:
+				//there's nothing to add
+				break;
+			case "Book":
+				itemTypeExtras = (
+					<Fragment>
+						<TextControl
+							label={__("ISBN")}
+							value={isbn}
+							onChange={(isbn) => setAttributes({ isbn })}
+						/>
+						<TextControl
+							label={__("Book author name")}
+							value={bookAuthorName}
+							onChange={(bookAuthorName) => setAttributes({ bookAuthorName })}
+						/>
+					</Fragment>
+				);
+				unusedDefaults = removeFromArray(unusedDefaults, [
+					"isbn",
+					"bookAuthorName",
+				]);
+				break;
+			}
 
 		const ratingStyleSettings = () => {
 			return (
@@ -490,6 +787,80 @@ class UAGBRatingEdit extends Component {
 			return (
 				<PanelBody title={ __( "Schema" ) } initialOpen={ true }>
 					<h2>{ __( "Schema" ) }</h2>
+					<SelectControl
+						label={__("Item type")}
+						value={itemType}
+						onChange={(itemType) => {
+							setAttributes({ itemType });
+							if (itemType === "Movie") {
+								setAttributes({ enableImage: true });
+							}
+							if (itemType === "Course") {
+								setAttributes({ enableDescription: true });
+							}
+							if (
+								!subtypeCategories.hasOwnProperty(itemType) ||
+								!subtypeCategories[itemType].includes(itemSubtype)
+							) {
+								setAttributes({ itemSubtype: "", itemSubsubtype: "" });
+							}
+						}}
+						options={[
+							"Book",
+							"Course",
+							"CreativeWorkSeason",
+							"CreativeWorkSeries",
+							"Episode",
+							"Event",
+							"Game",
+							"LocalBusiness",
+							"MediaObject",
+							"Movie",
+							"MusicPlaylist",
+							"MusicRecording",
+							"Organization",
+							"Product",
+							"SoftwareApplication",
+						].map((a) => ({ label: a, value: a }))}
+					/>
+					{subtypeCategories.hasOwnProperty(itemType) && (
+						<SelectControl
+							label={__("Item subtype")}
+							value={itemSubtype}
+							onChange={(itemSubtype) => {
+								setAttributes({ itemSubtype });
+								if (itemSubtype === "VideoObject") {
+									setAttributes({ enableImage: true });
+								}
+								if (
+									!subsubtypes.hasOwnProperty(itemSubtype) ||
+									!subsubtypes[itemSubtype].includes(itemSubsubtype)
+								) {
+									setAttributes({ itemSubsubtype: "" });
+								}
+							}}
+							options={["", ...subtypeCategories[itemType]].map((a) => ({
+								label: a,
+								value: a,
+							}))}
+						/>
+					)}
+					{subsubtypes.hasOwnProperty(itemSubtype) && (
+						<SelectControl
+							label={__("Item subsubtype")}
+							value={itemSubsubtype}
+							onChange={(itemSubsubtype) =>
+								setAttributes({ itemSubsubtype })
+							}
+							options={["", ...subsubtypes[itemSubtype]].map((a) => ({
+								label: a,
+								value: a,
+							}))}
+						/>
+					)}
+					{itemTypeExtras}
+					{["Event", "Product", "SoftwareApplication"].includes( itemType ) && (
+					<Fragment>
 					<TextControl
 						label={__("Brand")}
 						value={brand}
@@ -598,6 +969,8 @@ class UAGBRatingEdit extends Component {
 							/>
 						</Fragment>
 					)}
+					</Fragment>
+				)}
 				</PanelBody>
 			)
 		}
