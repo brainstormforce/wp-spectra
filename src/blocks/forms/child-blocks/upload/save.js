@@ -31,9 +31,10 @@ export default function save( props ) {
 			<RichText.Content
 			tagName="div"
 			value={ name }
-			className={`uagb-forms-upload-label ${isRequired} uagb-forms-input-label`}		
+			className={`uagb-forms-upload-label ${isRequired} uagb-forms-input-label`}	
+			id={ block_id }	
 			/>
-			<input type="file" accept={allowed_files} className="uagb-forms-upload-input" required={uploadRequired} />
+			<input type="file" accept={allowed_files} className="uagb-forms-upload-input" required={uploadRequired} name={ block_id } />
 		</div>
 	)
 }
