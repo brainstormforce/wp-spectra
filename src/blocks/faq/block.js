@@ -64,6 +64,7 @@ registerBlockType( "uagb/faq", {
 	],
 	attributes,
 	edit,
+	example: {},
 	supports: {
 		anchor: true,
 	},

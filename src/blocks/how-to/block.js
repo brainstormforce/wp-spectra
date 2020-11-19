@@ -29,6 +29,7 @@ registerBlockType( "uagb/how-to", {
 	supports: {
 		anchor: true,
 	},
+	example: {},
 	attributes,
 	edit,
 	save,

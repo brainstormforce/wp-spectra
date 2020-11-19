@@ -29,6 +29,7 @@ registerBlockType( "uagb/icon-list", {
 	supports: {
 		anchor: true,
 	},
+	example: {},
 	attributes,
 	edit,
 	save,

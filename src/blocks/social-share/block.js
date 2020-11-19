@@ -33,6 +33,7 @@ registerBlockType( "uagb/social-share", {
 	supports: {
 		anchor: true,
 	},
+	example: {},
 	attributes,
 	edit,
 	save,
