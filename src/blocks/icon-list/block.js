@@ -29,7 +29,19 @@ registerBlockType( "uagb/icon-list", {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example:{
+		innerBlocks: [
+			{
+				name: 'uagb/icon-list-child',
+				innerBlocks: [
+					{
+						name: 'uagb/icon-list-child',
+						attributes: { label: '#Label' },
+					},
+				],
+			},
+		],
+	},
 	attributes,
 	edit,
 	save,

@@ -33,7 +33,19 @@ registerBlockType( "uagb/social-share", {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example:{
+		innerBlocks: [
+			{
+				name: 'uagb/social-share-child',
+				innerBlocks: [
+					{
+						name: 'uagb/social-share-child',
+						attributes: { type: 'facebook' },
+					},
+				],
+			},
+		],
+	},
 	attributes,
 	edit,
 	save,
