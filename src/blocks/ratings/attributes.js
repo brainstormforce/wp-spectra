@@ -29,6 +29,10 @@
 		type: "string",
 		default: "",
 	},
+	reviewPublisher: {
+		type: "string",
+		default: "",
+	},
 	//beginning of book-only attributes
 	bookAuthorName: {
 		type: "string",

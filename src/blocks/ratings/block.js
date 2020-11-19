@@ -25,6 +25,7 @@ registerBlockType( "uagb/ratings", {
 		__( "schema" ),
 		__( "uag" ),
 	],
+	example:{},
 	supports: {
 		anchor: true,
 	},

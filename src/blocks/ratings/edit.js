@@ -254,7 +254,8 @@ class UAGBRatingEdit extends Component {
 				enableImage,
 				overallAlignment,
 				isbn,
-				bookAuthorName
+				bookAuthorName,
+				reviewPublisher
 			},
 			setAttributes,
 			isSelected,
@@ -655,6 +656,8 @@ class UAGBRatingEdit extends Component {
 				break;
 			}
 
+		// console.log(itemTypeExtras)
+
 		const ratingStyleSettings = () => {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
@@ -859,6 +862,11 @@ class UAGBRatingEdit extends Component {
 						/>
 					)}
 					{itemTypeExtras}
+					<TextControl
+						label={__("Review publisher")}
+						value={reviewPublisher}
+						onChange={(reviewPublisher) => setAttributes({ reviewPublisher })}
+					/>
 					{["Event", "Product", "SoftwareApplication"].includes( itemType ) && (
 					<Fragment>
 					<TextControl
@@ -1186,22 +1194,23 @@ class UAGBRatingEdit extends Component {
 	export default compose(
 		withSelect( ( select, ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
-			
+			// console.log(ownProps.attributes)
+			// console.log(ownProps)
 				var offers = {}
+				var itemReviewed = {}
 				var json_data = {
-					"@context": "https://schema.org/",
-					"@type": "Product",
-					"name": ownProps.attributes.rTitle,
+					"@context": "http://schema.org/",
+					"@type": "Review",
+					"reviewBody": ownProps.attributes.summaryDescription,
 					"description": ownProps.attributes.rContent,
-					"image": [],
-					"sku": ownProps.attributes.sku,
-					"brand": {
-						  "@type": "Brand",
-						  "name": ownProps.attributes.brand,
-						},
-					"review": {
-					  "@type": "Review",
-					  "reviewRating": {
+					itemReviewed: [],
+					// "itemReviewed":{
+					// 	"@type":ownProps.attributes.itemType,
+					// 	"name": ownProps.attributes.rTitle,
+					// 	"description": ownProps.attributes.rContent,
+					// 	"image": [],
+					// },
+					"reviewRating": {
 						"@type": "Rating",
 						"ratingValue": newAverage,
 						"bestRating": ownProps.attributes.starCount,
@@ -1210,40 +1219,113 @@ class UAGBRatingEdit extends Component {
 					  "author": {
 						"@type": "Person",
 						"name": ownProps.attributes.rAuthor,
-					  }
-					},
-				   "aggregateRating": {
-					  "@type": "AggregateRating",
-					  "ratingValue": newAverage,
-					  "reviewCount": (newAverage/ownProps.attributes.starCount * 100 )
-					},
-					offers : []
+					  },
+					"publisher": ownProps.attributes.reviewPublisher,
+					"datePublished": ownProps.attributes.offerExpiry,
+					"url": ownProps.attributes.ctaLink
 				}
+				
+				// var json_data = {
+				// 	"@context": "https://schema.org/",
+				// 	"@type": "Product",
+				// 	"name": ownProps.attributes.rTitle,
+				// 	"description": ownProps.attributes.rContent,
+				// 	"image": [],
+				// 	"sku": ownProps.attributes.sku,
+				// 	"brand": {
+				// 		  "@type": "Brand",
+				// 		  "name": ownProps.attributes.brand,
+				// 		},
+				// 	"review": {
+				// 	  "@type": "Review",
+				// 	  "reviewRating": {
+				// 		"@type": "Rating",
+				// 		"ratingValue": newAverage,
+				// 		"bestRating": ownProps.attributes.starCount,
+
+				// 	  },
+				// 	  "author": {
+				// 		"@type": "Person",
+				// 		"name": ownProps.attributes.rAuthor,
+				// 	  }
+				// 	},
+				//    "aggregateRating": {
+				// 	  "@type": "AggregateRating",
+				// 	  "ratingValue": newAverage,
+				// 	  "reviewCount": (newAverage/ownProps.attributes.starCount * 100 )
+				// 	},
+				// 	offers : []
+				// }
 	
-				if( 'Aggregate Offer' == ownProps.attributes.offerType ){
-					json_data.offers = {
-						"@type": ownProps.attributes.offerType,
-						"offerCount": ownProps.attributes.offerCount,
-						"lowPrice": ownProps.attributes.offerLowPrice,
-						"highPrice": ownProps.attributes.offerHighPrice,
-						"priceCurrency": ownProps.attributes.offerCurrency,
-					}	
-				} else {
-					json_data.offers = {
-						"@type": ownProps.attributes.offerType,
-						"price": ownProps.attributes.offerPrice,
-						"url": ownProps.attributes.ctaLink,
-						"priceValidUntil": ownProps.attributes.offerExpiry,
-						"priceCurrency": ownProps.attributes.offerCurrency,
-						"availability": ownProps.attributes.offerStatus
-					  }
+				
+				  
+				  switch ( ownProps.attributes.itemType ) {
+					case "Book":
+					json_data.itemReviewed = {
+						"@type":ownProps.attributes.itemType,
+						"name": ownProps.attributes.rTitle,
+						"description": ownProps.attributes.rContent,
+						"image": [],
+						"author": ownProps.attributes.rAuthor,
+						"isbn": ownProps.attributes.isbn,
+					}
+					break;
+					
+					default:
+					json_data.itemReviewed = {
+						"@type":ownProps.attributes.itemType,
+						"name": ownProps.attributes.rTitle,
+						"description": ownProps.attributes.rContent,
+						"image": [],
+						"sku": ownProps.attributes.sku,
+						"brand": {
+						  "@type": "Brand",
+						  "name": ownProps.attributes.brand,
+						},
+						offers : []
+					}
+					break;
 				  }
-	
-				if ( ownProps.attributes.mainimage ) {
-					json_data.image = ownProps.attributes.mainimage.url;
+
+				  if ( ownProps.attributes.mainimage ) {
+					json_data.itemReviewed.image = ownProps.attributes.mainimage.url;
 				}
 	
-				json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
+				// if( ownProps.attributes.itemType == 'Book' ){
+				// 	json_data.itemReviewed = { 
+				// 		"@type":ownProps.attributes.itemType,
+				// 		"name": ownProps.attributes.rTitle,
+				// 		"description": ownProps.attributes.rContent,
+				// 		"image": [],
+				// 		"author": ownProps.attributes.rAuthor,
+				// 		"isbn": ownProps.attributes.isbn,
+				// 	}
+					
+				// }
+				
+				if( ownProps.attributes.itemType == 'Product' ){
+					json_data.itemReviewed[ownProps.attributes.identifierType] = ownProps.attributes.identifier
+					if( 'Aggregate Offer' == ownProps.attributes.offerType ){
+						json_data.itemReviewed.offers = {
+							"@type": ownProps.attributes.offerType,
+							"offerCount": ownProps.attributes.offerCount,
+							"lowPrice": ownProps.attributes.offerLowPrice,
+							"highPrice": ownProps.attributes.offerHighPrice,
+							"priceCurrency": ownProps.attributes.offerCurrency,
+						}	
+					} else {
+						json_data.itemReviewed.offers = {
+							"@type": ownProps.attributes.offerType,
+							"price": ownProps.attributes.offerPrice,
+							"url": ownProps.attributes.ctaLink,
+							"priceValidUntil": ownProps.attributes.offerExpiry,
+							"priceCurrency": ownProps.attributes.offerCurrency,
+							"availability": ownProps.attributes.offerStatus
+						  }
+					  }
+				}
+
+				console.log(json_data);
 				
 			return {
 				schemaJsonData: json_data
