@@ -255,7 +255,12 @@ class UAGBRatingEdit extends Component {
 				overallAlignment,
 				isbn,
 				bookAuthorName,
-				reviewPublisher
+				reviewPublisher,
+				provider,
+				appCategory,
+				operatingSystem,
+				datecreated,
+				directorname,
 			},
 			setAttributes,
 			isSelected,
@@ -628,6 +633,8 @@ class UAGBRatingEdit extends Component {
 			"operatingSystem",
 			"videoUploadDate",
 			"videoURL",
+			"directorname",
+			"datecreated"
 		];
 
 		switch (itemType) {
@@ -654,9 +661,65 @@ class UAGBRatingEdit extends Component {
 					"bookAuthorName",
 				]);
 				break;
-			}
 
-		// console.log(itemTypeExtras)
+			case "Course":
+				itemTypeExtras = (
+					<Fragment>
+						<TextControl
+							label={__("provider")}
+							value={provider}
+							onChange={(provider) => setAttributes({ provider })}
+						/>
+					</Fragment>
+				);
+				unusedDefaults = removeFromArray(unusedDefaults, [
+					"provider",
+				]);
+				break;
+
+			case "SoftwareApplication":
+				itemTypeExtras = (
+					<Fragment>
+						<TextControl
+							label={__("Application Category")}
+							value={appCategory}
+							onChange={(appCategory) => setAttributes({ appCategory })}
+						/>
+						<TextControl
+							label={__("Operating System")}
+							value={operatingSystem}
+							onChange={( operatingSystem ) => setAttributes({ operatingSystem })}
+						/>
+					</Fragment>
+				);
+				unusedDefaults = removeFromArray(unusedDefaults, [
+					"appCategory",
+					"operatingSystem",
+				]);
+				break;
+
+			case "Movie":
+				itemTypeExtras = (
+					<Fragment>
+						<TextControl
+							label={__("Director Name")}
+							value={directorname}
+							onChange={(directorname) => setAttributes({ directorname })}
+						/>
+						<DateTimePicker
+							currentDate={ datecreated }
+							// onChange={ ( val ) => onUpdateDate(  val ) }
+							onChange={ ( value ) => setAttributes( { datecreated: value } ) }
+							is12Hour={ true }
+						/>
+					</Fragment>
+				);
+				unusedDefaults = removeFromArray(unusedDefaults, [
+					"directorname",
+					'datecreated'
+				]);
+				break;
+			}
 
 		const ratingStyleSettings = () => {
 			return (
@@ -869,56 +932,64 @@ class UAGBRatingEdit extends Component {
 					/>
 					{["Event", "Product", "SoftwareApplication"].includes( itemType ) && (
 					<Fragment>
-					<TextControl
-						label={__("Brand")}
-						value={brand}
-						onChange={(brand) => setAttributes({ brand })}
-					/>
-					<TextControl
-						label={__("Author")}
-						value={rAuthor}
-						onChange={(rAuthor) => setAttributes({ rAuthor })}
-					/>
-					<TextControl
-						label={__("SKU")}
-						value={sku}
-						onChange={(sku) => setAttributes({ sku })}
-					/>
-					<TextControl
-						label={__("Identifier")}
-						value={identifier}
-						onChange={(identifier) => setAttributes({ identifier })}
-					/>
-					<SelectControl
-						label={__("Identifier type")}
-						value={identifierType}
-						options={[
-							"nsn",
-							"mpn",
-							"gtin8",
-							"gtin12",
-							"gtin13",
-							"gtin14",
-							"gtin",
-						].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
-						onChange={(identifierType) =>
-							setAttributes({ identifierType })
-						}
-					/>
-					<SelectControl
-						label={__("Offer Type")}
-						value={offerType}
-						options={["Offer", "Aggregate Offer"].map((a) => ({
-							label: __(a),
-							value: a.replace(" ", ""),
-						}))}
-						onChange={(offerType) => setAttributes({ offerType })}
-					/>
-					<TextControl
-						label={__("Offer Currency")}
-						value={offerCurrency}
-						onChange={(offerCurrency) => setAttributes({ offerCurrency })}
-					/>
+						{["Event", "Product"].includes( itemType ) && (
+							<Fragment>
+								<TextControl
+									label={__("Brand")}
+									value={brand}
+									onChange={(brand) => setAttributes({ brand })}
+								/>
+								<TextControl
+									label={__("Author")}
+									value={rAuthor}
+									onChange={(rAuthor) => setAttributes({ rAuthor })}
+								/>
+								<TextControl
+									label={__("SKU")}
+									value={sku}
+									onChange={(sku) => setAttributes({ sku })}
+								/>
+								<TextControl
+									label={__("Identifier")}
+									value={identifier}
+									onChange={(identifier) => setAttributes({ identifier })}
+								/>
+								<SelectControl
+									label={__("Identifier type")}
+									value={identifierType}
+									options={[
+										"nsn",
+										"mpn",
+										"gtin8",
+										"gtin12",
+										"gtin13",
+										"gtin14",
+										"gtin",
+									].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
+									onChange={(identifierType) =>
+										setAttributes({ identifierType })
+									}
+								/>
+							</Fragment>
+						)}
+					{["Product", "SoftwareApplication"].includes( itemType ) && (
+						<Fragment>
+						<SelectControl
+							label={__("Offer Type")}
+							value={offerType}
+							options={["Offer", "Aggregate Offer"].map((a) => ({
+								label: __(a),
+								value: a.replace(" ", ""),
+							}))}
+							onChange={(offerType) => setAttributes({ offerType })}
+						/>
+						<TextControl
+							label={__("Offer Currency")}
+							value={offerCurrency}
+							onChange={(offerCurrency) => setAttributes({ offerCurrency })}
+						/>
+						</Fragment>
+					)}
 					{offerType == "Offer" ? (
 						<Fragment>
 							<TextControl
@@ -1204,12 +1275,6 @@ class UAGBRatingEdit extends Component {
 					"reviewBody": ownProps.attributes.summaryDescription,
 					"description": ownProps.attributes.rContent,
 					itemReviewed: [],
-					// "itemReviewed":{
-					// 	"@type":ownProps.attributes.itemType,
-					// 	"name": ownProps.attributes.rTitle,
-					// 	"description": ownProps.attributes.rContent,
-					// 	"image": [],
-					// },
 					"reviewRating": {
 						"@type": "Rating",
 						"ratingValue": newAverage,
@@ -1270,8 +1335,18 @@ class UAGBRatingEdit extends Component {
 						"isbn": ownProps.attributes.isbn,
 					}
 					break;
+
+					case "Course":
+					json_data.itemReviewed = {
+						"@type":ownProps.attributes.itemType,
+						"name": ownProps.attributes.rTitle,
+						"description": ownProps.attributes.rContent,
+						"image": [],
+						"provider": ownProps.attributes.provider,
+					}
+					break;
 					
-					default:
+					case "Product":
 					json_data.itemReviewed = {
 						"@type":ownProps.attributes.itemType,
 						"name": ownProps.attributes.rTitle,
@@ -1285,6 +1360,36 @@ class UAGBRatingEdit extends Component {
 						offers : []
 					}
 					break;
+
+					case "Movie":
+					json_data.itemReviewed = {
+						"@type":ownProps.attributes.itemType,
+						"name": ownProps.attributes.rTitle,
+						"dateCreated": ownProps.attributes.datecreated,
+						"director": {
+							"@type": "Person",
+							"name": ownProps.attributes.directorname,
+						},
+					}
+					break;
+
+					case "SoftwareApplication":
+					json_data.itemReviewed = {
+						"@type": ownProps.attributes.itemType,
+						"name": ownProps.attributes.rTitle,
+						"applicationCategory": ownProps.attributes.appCategory,
+						"operatingSystem": ownProps.attributes.operatingSystem,
+						offers : {
+							"@type": ownProps.attributes.offerType,
+							"price": ownProps.attributes.offerPrice,
+							"url": ownProps.attributes.ctaLink,
+							"priceCurrency": ownProps.attributes.offerCurrency,
+						},
+					}
+					break;
+
+					default:
+					break;	
 				  }
 
 				  if ( ownProps.attributes.mainimage ) {

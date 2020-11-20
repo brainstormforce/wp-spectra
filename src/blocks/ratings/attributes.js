@@ -42,6 +42,29 @@
 		type: "string",
 		default: "",
 	},
+	provider: {
+		//for course
+		type: "string",
+		default: "",
+	},
+	appCategory: {
+		//softwareapplication only
+		type: "string",
+		default: "",
+	},
+	operatingSystem: {
+		//softwareapplication only
+		type: "string",
+		default: "",
+	},
+	datecreated: {
+	    type: "string",
+		default: "",
+	},
+	directorname: {
+		type: "string",
+		default: "",
+	},
 	overallAlignment: {
 		type: "string",
 		default: "left",
