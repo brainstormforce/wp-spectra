@@ -145,9 +145,7 @@ class UAGBRestaurantMenuChild extends Component {
 				</PanelBody>
             </InspectorControls>
         )
-		// var  menu_item_arr = attributes.rest_menu_item_arr.keys;
 		
-		// var index;
 		return (
 			<Fragment>
 				{   ( imagePosition =="top" )  && <BlockControls key='controls'>
