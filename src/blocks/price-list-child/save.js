@@ -28,7 +28,8 @@ export default function save( props ) {
 	return (
 		<Fragment>
 			
-			<div className={ classnames(					
+			<div className={ classnames(	
+				"uagb-rest_menu__wrap",				
 					"uagb-rest_menu_repeater",
 					...PositionClasses( props.attributes )
 				) }
@@ -40,7 +41,7 @@ export default function save( props ) {
 				) }
 				>
 						<div className = { classnames(
-							"uagb-rest_menu__wrap",
+							// "uagb-rest_menu__wrap",
 							...PositionClasses( props.attributes ),
 						) } >
 						<div className = "uagb-rm__content">
