@@ -166,7 +166,7 @@ class UAGBRestaurantMenuChild extends Component {
 				>
 
 			<div className = { classnames(
-							"uagb-rest_menu__wrap",
+							// "uagb-rest_menu__wrap",
 							...PositionClasses( attributes ),
 						) } >
 										<div className = "uagb-rm__content" >
