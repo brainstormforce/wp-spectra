@@ -145,7 +145,7 @@ class UAGBRestaurantMenuChild extends Component {
 				</PanelBody>
             </InspectorControls>
         )
-		console.log(...PositionClasses( attributes ));
+		console.log(attributes);
 		return (
 			<Fragment>
 				{   ( imagePosition =="top" )  && <BlockControls key='controls'>

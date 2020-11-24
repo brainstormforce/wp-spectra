@@ -11,12 +11,14 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	var desc_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 	var title_text    = "Menu Item "+i
 	var price_text    = "$9"
+	var imagePosition    = "top"
 	rest_menu_block.push(
 		{
 			"description": desc_text,
 			"title": title_text,
 			"price": price_text,
 			"image": "",
+			"imagePosition": imagePosition,
 		}
 	)
 }
