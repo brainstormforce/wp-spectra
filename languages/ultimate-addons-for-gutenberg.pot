@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.17.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.18.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-10-19 06:01:25+00:00\n"
+"POT-Creation-Date: 2020-11-24 08:58:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,47 +25,44 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/bsf-analytics/class-bsf-analytics.php:183
+#: admin/bsf-analytics/class-bsf-analytics.php:216
 #. translators: %s product name
 msgid ""
 "Want to help make <strong>%1s</strong> even more awesome? Allow us to "
 "collect non-sensitive diagnostic data and usage information. "
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:186
+#: admin/bsf-analytics/class-bsf-analytics.php:219
 msgid "This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:210
+#: admin/bsf-analytics/class-bsf-analytics.php:243
 #. translators: %s usage doc link
 msgid " Know More."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:217
+#: admin/bsf-analytics/class-bsf-analytics.php:251
 msgid "Yes! Allow it"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:225
+#: admin/bsf-analytics/class-bsf-analytics.php:260
 msgid "No Thanks"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:294
-msgid "Every two days"
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:348
+#: admin/bsf-analytics/class-bsf-analytics.php:364
 msgid "Usage Tracking"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:380
-msgid "Allow Brainstorm Force products to track non-sensitive usage tracking data."
+#: admin/bsf-analytics/class-bsf-analytics.php:408
+#. translators: %s Product title
+msgid "Allow %s products to track non-sensitive usage tracking data."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:383
+#: admin/bsf-analytics/class-bsf-analytics.php:411
 msgid " This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:388
+#: admin/bsf-analytics/class-bsf-analytics.php:416
 msgid "Learn More."
 msgstr ""
 
@@ -446,7 +443,7 @@ msgid "Icon List"
 msgstr ""
 
 #: classes/class-uagb-config.php:973 classes/class-uagb-config.php:1026
-#: classes/class-uagb-config.php:1917
+#: classes/class-uagb-config.php:1920
 msgid "This block allows you to place an image or icon in a list format."
 msgstr ""
 
@@ -476,161 +473,161 @@ msgstr ""
 msgid "This block helps you add an inline notice."
 msgstr ""
 
-#: classes/class-uagb-config.php:1194
+#: classes/class-uagb-config.php:1197
 msgid "Marketing Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:1195
+#: classes/class-uagb-config.php:1198
 msgid "This block allows you to place a Marketing Button with small description."
 msgstr ""
 
-#: classes/class-uagb-config.php:1269
+#: classes/class-uagb-config.php:1272
 msgid "Multi Buttons"
 msgstr ""
 
-#: classes/class-uagb-config.php:1270
+#: classes/class-uagb-config.php:1273
 msgid "This block allows you to add multiple buttons with a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:1289
+#: classes/class-uagb-config.php:1292
 msgid "Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:1290
+#: classes/class-uagb-config.php:1293
 msgid "This block allows you to style button."
 msgstr ""
 
-#: classes/class-uagb-config.php:1325
+#: classes/class-uagb-config.php:1328
 msgid "Post Carousel"
 msgstr ""
 
-#: classes/class-uagb-config.php:1326
+#: classes/class-uagb-config.php:1329
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a carousel layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1406 classes/class-uagb-config.php:1490
-#: classes/class-uagb-config.php:1592 dist/blocks/post/class-uagb-post.php:403
+#: classes/class-uagb-config.php:1409 classes/class-uagb-config.php:1493
+#: classes/class-uagb-config.php:1595 dist/blocks/post/class-uagb-post.php:403
 #: dist/blocks/post/class-uagb-post.php:1354
 #: dist/blocks/post-timeline/class-uagb-post-timeline.php:447
 msgid "Read More"
 msgstr ""
 
-#: classes/class-uagb-config.php:1416
+#: classes/class-uagb-config.php:1419
 msgid "Post Grid"
 msgstr ""
 
-#: classes/class-uagb-config.php:1417
+#: classes/class-uagb-config.php:1420
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a grid layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1516
+#: classes/class-uagb-config.php:1519
 msgid "Post Masonry"
 msgstr ""
 
-#: classes/class-uagb-config.php:1517
+#: classes/class-uagb-config.php:1520
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a masonry layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1624
+#: classes/class-uagb-config.php:1627
 msgid "Post Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:1625
+#: classes/class-uagb-config.php:1628
 msgid ""
 "The Timeline block lets you create beautiful timelines of Posts on your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:1725
+#: classes/class-uagb-config.php:1728
 msgid "Price List"
 msgstr ""
 
-#: classes/class-uagb-config.php:1726
+#: classes/class-uagb-config.php:1729
 msgid "This block allows you to add attractive Price List."
 msgstr ""
 
-#: classes/class-uagb-config.php:1798
+#: classes/class-uagb-config.php:1801
 msgid "Section"
 msgstr ""
 
-#: classes/class-uagb-config.php:1799
+#: classes/class-uagb-config.php:1802
 msgid ""
 "This block is an outer wrap section that allows you to add other blocks "
 "within it."
 msgstr ""
 
-#: classes/class-uagb-config.php:1880
+#: classes/class-uagb-config.php:1883
 msgid "Social Share"
 msgstr ""
 
-#: classes/class-uagb-config.php:1881
+#: classes/class-uagb-config.php:1884
 msgid ""
 "This block allows you to let users share your content across various social "
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1916
+#: classes/class-uagb-config.php:1919
 msgid "Social Share Child"
 msgstr ""
 
-#: classes/class-uagb-config.php:1933
+#: classes/class-uagb-config.php:1936
 msgid "Table of Contents"
 msgstr ""
 
-#: classes/class-uagb-config.php:1934
+#: classes/class-uagb-config.php:1937
 msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
-#: classes/class-uagb-config.php:2031
+#: classes/class-uagb-config.php:2035
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:2032
+#: classes/class-uagb-config.php:2036
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:2103
+#: classes/class-uagb-config.php:2107
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:2104
+#: classes/class-uagb-config.php:2108
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:2188
+#: classes/class-uagb-config.php:2192
 msgid "WP - Search"
 msgstr ""
 
-#: classes/class-uagb-config.php:2189
+#: classes/class-uagb-config.php:2193
 msgid "This block helps you add a Search field."
 msgstr ""
 
-#: classes/class-uagb-config.php:2256
+#: classes/class-uagb-config.php:2260
 msgid "Taxonomy List"
 msgstr ""
 
-#: classes/class-uagb-config.php:2257
+#: classes/class-uagb-config.php:2261
 msgid ""
 "This block helps you to display content categorization for various post "
 "types"
 msgstr ""
 
-#: classes/class-uagb-config.php:2337
+#: classes/class-uagb-config.php:2341
 #: dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php:113
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: classes/class-uagb-helper.php:1001
+#: classes/class-uagb-helper.php:1019
 msgid "Full"
 msgstr ""
 
@@ -659,14 +656,14 @@ msgstr ""
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-loader.php:159
+#: classes/class-uagb-loader.php:164
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:162
+#: classes/class-uagb-loader.php:167
 msgid "Install Gutenberg"
 msgstr ""
 
