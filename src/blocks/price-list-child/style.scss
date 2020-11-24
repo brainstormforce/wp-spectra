@@ -4,48 +4,48 @@
  * CSS for both Frontend+Backend.
  */
  
-    .uagb-rest_menu__wrap.uagb-rm__desk-column-3{
-        display: block;
-        width: 33%;
-        float: left;
-        width: calc(100% / 3);
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .uagb-rest_menu__wrap.uagb-rm__desk-column-2{
-        display: block;
-        width: 49%;
-        float: left;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .uagb-rest_menu__wrap.uagb-rm__desk-column-1{
-        display: block;
-        width: 100%;
-        float: left;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+//     .uagb-rest_menu__wrap.uagb-rm__desk-column-3{
+//         display: block;
+//         width: 33%;
+//         float: left;
+//         width: calc(100% / 3);
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
+//     .uagb-rest_menu__wrap.uagb-rm__desk-column-2{
+//         display: block;
+//         width: 49%;
+//         float: left;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
+//     .uagb-rest_menu__wrap.uagb-rm__desk-column-1{
+//         display: block;
+//         width: 100%;
+//         float: left;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
 
-@media(max-width:976px) {
+// @media(max-width:976px) {
 
 
-    .uagb-rm__tablet-column-3.uagb-rest_menu__wrap{   
-        width: 33%;
-        float: left;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .uagb-rm__tablet-column-2.uagb-rest_menu__wrap{   
-        width: 50%;
-        float: left;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .uagb-rm__tablet-column-1.uagb-rest_menu__wrap{   
-        width: 100%;
-        float: left;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
+//     .uagb-rm__tablet-column-3.uagb-rest_menu__wrap{   
+//         width: 33%;
+//         float: left;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
+//     .uagb-rm__tablet-column-2.uagb-rest_menu__wrap{   
+//         width: 50%;
+//         float: left;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
+//     .uagb-rm__tablet-column-1.uagb-rest_menu__wrap{   
+//         width: 100%;
+//         float: left;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//     }
+// }
