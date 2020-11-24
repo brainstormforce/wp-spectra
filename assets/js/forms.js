@@ -45,30 +45,25 @@
         
         _formSubmit: function ( e, $form, attr ) {
             e.preventDefault();
-            var originalSerialized = $($form).serialize();
-           
-            var splitedString = (decodeURIComponent(originalSerialized).split("&"));
-            
-            var newString = "";
-            for ( var index = 0; index < splitedString.length; ++index) {
-                let strangeName = splitedString[index].substr(0, splitedString[index].indexOf('='));
-                //for checkbox related
-                if(strangeName.endsWith("[]")){
-                    strangeName = strangeName.substring(0, strangeName.length - 2)                    
-                    if(newString == ""){
-                        newString = $("#"+strangeName).html()+"[]" + splitedString[index].substr(splitedString[index].indexOf('='));
-                    }else{
-                        newString += "&" + $("#"+strangeName).html()+"[]" + splitedString[index].substr(splitedString[index].indexOf('='));
+            var originalSerialized = $($form).serializeArray();
+          
+            var postData = {};
+            for (var i = 0; i < originalSerialized.length; i++) {
+                let inputname = originalSerialized[i].name;
+                if (originalSerialized[i]['name'].endsWith('[]')) {
+                    var name = originalSerialized[i]['name'];
+                    name = name.substring(0, name.length - 2);
+                    if (!(name in postData)) {
+                        postData[name] = [];
                     }
-                }else{
-                    if(newString == ""){
-                        newString = $("#"+strangeName).html() + splitedString[index].substr(splitedString[index].indexOf('='));
-                    }else{
-                        newString += "&" + $("#"+strangeName).html() + splitedString[index].substr(splitedString[index].indexOf('='));
-                    }
-                } 
+                    postData[name].push(originalSerialized[i]['value']);
+                } else {
+                    postData[$("#"+inputname).html()] = originalSerialized[i]['value'];
+                }
             }
-            
+            console.log(postData);
+
+            var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
             $.ajax({
                 type: 'POST',
@@ -77,7 +72,8 @@
                 data: {
                     action: 'uagb_process_forms',                    
                     nonce : uagb_forms_data.uagb_forms_ajax_nonce,
-                    form_data:newString,
+                    form_data:postData,
+                    after_submit_data:after_submit_data
                 },
                 
                 success: function( data ) {

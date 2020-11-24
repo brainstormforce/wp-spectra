@@ -84,6 +84,19 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 									'social-share-child',
 									'buttons-child',
 									'faq-child',
+									'forms-name',
+									'forms-email',
+									'forms-hidden',
+									'forms-phone',
+									'forms-textarea',
+									'forms-url',
+									'forms-select',
+									'forms-radio',
+									'forms-checkbox',
+									'forms-upload',
+									'forms-toggle',
+									'forms-date',
+									'forms-accept',
 								);
 
 								if ( in_array( $addon, $child_blocks, true ) ) {

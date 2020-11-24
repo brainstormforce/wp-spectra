@@ -56,42 +56,44 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-			$admin_email = get_option( 'admin_email' );
 			
-			$str        = $_POST['form_data'];
-			$new_string = str_replace( '+', ' ', $_POST['form_data'] );
-			parse_str( $new_string, $data );
-			
-			$body = '';
+
+			$form_data        = $_POST['form_data'];			
+
+			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
 			$body .= '<div style="padding: 15px;">';
 
-			foreach ( $data as $key => $value ) {
-				
-				if(is_array($value)){
-					$body .= '<p>' . '<strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong>' . ' - ' . implode(', ', $value) . '</p>';
-				}else{
-					$body .= '<p>' . '<strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong>' . ' - ' . sanitize_text_field( $value ) . '</p>';
+			foreach ( $form_data as $key => $value ) {
+
+				if ( is_array( $value ) ) {
+					$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . implode( ', ', $value ) . '</p>';
+				} else {
+					$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field( $value ) . '</p>';
 				}
-				
 			}
-			$body .= '<p style="text-align:center;">This e-mail was sent from a '.get_bloginfo( 'name' ) .' ( '. site_url().' )</p>';
+			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
 
-			$this->send_email( $admin_email, $body );
+			$this->send_email(  $body );
 		}
 
 
 
+		public function send_email(  $body ) {
 
-		public function send_email( $admin_email, $body ) {
-			$headers        = array(
-				'Reply-To: ' . get_bloginfo( 'name' ) . ' <' . $admin_email . '>',
+			$after_submit_data =$_POST['after_submit_data'];
+
+			$to =  $after_submit_data['to']  ? sanitize_email( $after_submit_data['to'] ) : get_option( 'admin_email' );
+			$subject =  $after_submit_data['subject']  ? esc_html( $after_submit_data['subject'] ) : "Form Submission";
+
+			$headers = array(
+				'Reply-To: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
 				'Content-Type: text/html; charset=UTF-8',
 			);
 			
-			$succefull_mail = wp_mail( $admin_email, 'The subject', $body, $headers );
+			$succefull_mail = wp_mail( $to, $subject, $body, $headers );
 
 			wp_send_json_success( $succefull_mail );
 		}

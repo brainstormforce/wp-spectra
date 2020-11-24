@@ -142,11 +142,11 @@ class UAGBFormsEdit extends Component {
 			confirmationType,
 			confirmationMessage,
 			confirmationUrl,
-			sendAfterSubmitEmail,
-			afterSubmitFromEmail,
+			sendAfterSubmitEmail,			
 			afterSubmitToEmail,
 			afterSubmitCcEmail,
 			afterSubmitBccEmail,
+			afterSubmitEmailSubject,
 			submitColor,
 			submitColorHover,
 			submitBgColor,
@@ -549,13 +549,7 @@ class UAGBFormsEdit extends Component {
 						onChange={ ( value ) => setAttributes( { sendAfterSubmitEmail: value } ) }
 					/>
 					{ true === sendAfterSubmitEmail && (
-						<Fragment>
-							<TextControl
-							label= { __( "From" ) }
-							placeholder = { __( "Email" ) }
-							value= { afterSubmitFromEmail }
-							onChange={ value => setAttributes( { afterSubmitFromEmail: value } ) }
-							/>	
+						<Fragment>								
 							<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
 							tabs={ [
 								{
@@ -611,6 +605,12 @@ class UAGBFormsEdit extends Component {
 								}
 							}
 							</TabPanel>
+							<TextControl
+							label= { __( "Subject" ) }
+							placeholder = { __( "Subject" ) }
+							value= { afterSubmitEmailSubject }
+							onChange={ value => setAttributes( { afterSubmitEmailSubject: value } ) }
+							/>	
 						</Fragment>
 					)}
 				</PanelBody>

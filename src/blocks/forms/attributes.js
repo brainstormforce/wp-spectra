@@ -29,10 +29,7 @@ const attributes = {
 	},
 	sendAfterSubmitEmail : {
 		type: "boolean"
-	},
-	afterSubmitFromEmail : {
-		type: "string",
-	},
+	},	
 	afterSubmitToEmail : {
 		type: "string",
 	},
@@ -42,6 +39,9 @@ const attributes = {
 	afterSubmitBccEmail : {
 		type: "string",
 	},
+	afterSubmitEmailSubject : {
+		type: "string",
+	},	
 	submitColor : {
 		type: "string",
 		default:"#000000"

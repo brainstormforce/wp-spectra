@@ -39,7 +39,7 @@ export default function save( props ) {
 				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="checkbox"  id={`checkbox-${value}-${block_id}`} name={ `${block_id}[]` } value={ value } required={ checkboxRequired }/>
+					<input type="checkbox"  id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={ value } required={ checkboxRequired }/>
 					<label for={ `checkbox-${value}-${block_id}` }>{ o.optiontitle }</label><br/>						
 					</Fragment>
 				);
