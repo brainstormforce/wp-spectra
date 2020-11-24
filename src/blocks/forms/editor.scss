@@ -36,3 +36,7 @@ select.uagb-forms-select-box.uagb-forms-input {
 	width: 50%;
 	margin-bottom: 15px;
 }
+[data-type="uagb/forms"] .block-editor-block-variation-picker__variations {
+	display: flex;
+  justify-content: center;
+}

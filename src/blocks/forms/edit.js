@@ -882,6 +882,7 @@ class UAGBFormsEdit extends Component {
 						variations={ variations }
 						allowSkip
 						onSelect={ ( nextVariation ) => this.blockVariationPickerOnSelect( nextVariation ) }
+						className="uagb-forms-variations"
 					/>
 				</Fragment>
 			)

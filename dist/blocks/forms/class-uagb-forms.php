@@ -51,33 +51,55 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		public function __construct() {
 			add_action( 'wp_ajax_uagb_process_forms', array( $this, 'process_forms' ) );
 			add_action( 'wp_ajax_nopriv_uagb_process_forms', array( $this, 'process_forms' ) );
-			
+
 		}
 
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-			parse_str($_POST['form_data'], $data);
-			$body ='';
+			$admin_email = get_option( 'admin_email' );
 			
-			print_r($data);
-			foreach ($data as $key => $value) {
-				$body .= '<p>' . sanitize_text_field($key) .' - ' .sanitize_text_field($value)  .'</p>';                
+			$str        = $_POST['form_data'];
+			$new_string = str_replace( '+', ' ', $_POST['form_data'] );
+			parse_str( $new_string, $data );
+			
+			$body = '';
+			$body .= '<div style="border: 50px solid #f6f6f6;">';
+			$body .= '<div style="padding: 15px;">';
+
+			foreach ( $data as $key => $value ) {
+				
+				if(is_array($value)){
+					$body .= '<p>' . '<strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong>' . ' - ' . implode(', ', $value) . '</p>';
+				}else{
+					$body .= '<p>' . '<strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong>' . ' - ' . sanitize_text_field( $value ) . '</p>';
+				}
+				
 			}
-			
-			$succefull_mail = wp_mail('amith@bsf.io', 'The subject', $body, array('Content-Type: text/html; charset=UTF-8') );
+			$body .= '<p style="text-align:center;">This e-mail was sent from a '.get_bloginfo( 'name' ) .' ( '. site_url().' )</p>';
+			$body .= '</div>';
+			$body .= '</div>';
 
-			wp_send_json($succefull_mail);
+			$this->send_email( $admin_email, $body );
 		}
-		
-		
 
-		
 
-		
 
-		
 
-		
+		public function send_email( $admin_email, $body ) {
+			$headers        = array(
+				'Reply-To: ' . get_bloginfo( 'name' ) . ' <' . $admin_email . '>',
+				'Content-Type: text/html; charset=UTF-8',
+			);
+			
+			$succefull_mail = wp_mail( $admin_email, 'The subject', $body, $headers );
+
+			wp_send_json_success( $succefull_mail );
+		}
+
+
+
+
+
 	}
 
 	/**

@@ -226,7 +226,7 @@ class UAGB_Init_Blocks {
 			'uagb-forms-js',
 			'uagb_forms_data',
 			array(
-				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'ajax_url'              => admin_url( 'admin-ajax.php' ),
 				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
 			)
 		);

@@ -12,10 +12,11 @@ const {
 	RichText
 } = wp.blockEditor
 
+
 export default function save( props ) {
 
 	const { attributes } = props
-
+	console.log(props);
 	const {
 		block_id,
 		formLabel,
@@ -80,14 +81,14 @@ export default function save( props ) {
 			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
-					<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
-					<input type="hidden" name="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
+					<input type="hidden" class="uagb_forms_form_label" value={ formLabel }/>
+					<input type="hidden" class="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 				</div>
 				{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
 					<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
 				)}
 				<div className="uagb-forms-main-submit-button-wrap">
-					{renderButtonHtml()}
+					{renderButtonHtml()}				
 				</div>
 			</form>
 				{ renderConfirmationMessage() }
