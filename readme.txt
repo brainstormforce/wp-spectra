@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.5
-Stable tag: 1.18.1
+Stable tag: 1.18.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.18.2 =
+* Fix: Post Timeline - Fixed the Icon issue and removed the unwanted filter for Post Timeline SVG connector.
 
 = 1.18.1 =
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
