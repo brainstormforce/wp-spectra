@@ -33,6 +33,8 @@ const {
 	Dashicon
 } = wp.components
 
+const { select, withSelect } = wp.data;
+
 const { Component, Fragment } = wp.element
 
 class UAGBRestaurantMenuChild extends Component {
@@ -144,8 +146,11 @@ class UAGBRestaurantMenuChild extends Component {
 					</BaseControl>
 				</PanelBody>
             </InspectorControls>
-        )
-		console.log(attributes);
+		)
+		
+		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId );
+		const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId );
+		
 		return (
 			<Fragment>
 				{   ( imagePosition =="top" )  && <BlockControls key='controls'>
@@ -169,7 +174,7 @@ class UAGBRestaurantMenuChild extends Component {
 						) } >
 										<div className = "uagb-rm__content" >
 											
-											{ ( imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
+											{ ( parentAttributes.imagePosition == "top" || parentAttributes.imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
 											<div className ="uagb-rm__text-wrap">
 												{
 													<Fragment>
@@ -189,7 +194,7 @@ class UAGBRestaurantMenuChild extends Component {
 												}
 											</div>
 											
-											{ ( imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  /> }
+											{ ( parentAttributes.imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  /> }
 										</div>
 										<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
 									</div>
