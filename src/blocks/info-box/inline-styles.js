@@ -180,7 +180,7 @@ function InfoBoxStyle( props ) {
 			"margin-bottom": generateCSSUnit( prefixSpace, "px" ),
 		},
 		// Title Style
-		" .block-editor-rich-text__editable.uagb-ifb-title" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title, .block-editor-rich-text__editable.uagb-ifb-title a" : {
 			"font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
 			"font-family": headFontFamily,
 			"font-weight": headFontWeight,
