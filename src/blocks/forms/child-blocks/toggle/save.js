@@ -37,9 +37,21 @@ export default function save( props ) {
 				/>
 				<label class="uagb-switch">
 					<input 
+						type="hidden"
+						className="uagb-forms-toggle-input"
+						checked={toggleStatus}
+						data-trueState  = {trueValue}
+						data-falseState = {falseValue}
+						value={ toggleStatus ? trueValue : falseValue }
+						required={toggleRequired}	
+						name={ block_id }				
+					/>
+					<input 
 						type="checkbox"
 						className="uagb-forms-toggle-input"
 						checked={toggleStatus}
+						data-trueState  = {trueValue}
+						data-falseState = {falseValue}
 						value={ toggleStatus ? trueValue : falseValue }
 						required={toggleRequired}	
 						name={ block_id }				

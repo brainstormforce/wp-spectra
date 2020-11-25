@@ -22,6 +22,17 @@
                 }
                 return true;
             } );
+
+            var toggleinput = $form.find( '.uagb-forms-toggle-input' );
+
+            toggleinput.on('change', function(e) {
+                if(this.checked) {                    
+                    $(toggleinput).val($(this).attr("data-trueState"));
+                }else {
+                    $(toggleinput).val($(this).attr("data-falseState"));
+
+                }
+            });
             
             //validation for checkbox if required.
             var requiredCheckboxes = $('.uagb-forms-checkbox-wrap :checkbox[required]');
