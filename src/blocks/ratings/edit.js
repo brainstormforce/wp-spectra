@@ -410,7 +410,7 @@ class UAGBRatingEdit extends Component {
 
 		switch (itemType) {
 			default:
-				//there's nothing to add
+				//empty
 				break;
 			case "Book":
 				itemTypeExtras = (
