@@ -89,7 +89,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$subject =  $after_submit_data['subject']  ? esc_html( $after_submit_data['subject'] ) : "Form Submission";
 
 			$headers = array(
-				'Reply-To: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
+				'Reply-To-: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
 				'Content-Type: text/html; charset=UTF-8',
 			);
 			
