@@ -1144,7 +1144,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 				),
 				// Title Style.
-				' .uagb-ifb-title, .uagb-ifb-title a'             => array(
+				' .uagb-ifb-title a'             => array(
+					'color'         => $attr['headingColor'],
+				),
+				' .uagb-ifb-title'             => array(
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . 'px',
 				),
