@@ -160,6 +160,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.18.2.1 ###
+* Fix: Info box - Title color not applying when title is as link.
+
 ### 1.18.2 ###
 * Fix: Post Timeline - Fixed the Icon issue and removed the unwanted filter for Post Timeline SVG connector.
 
