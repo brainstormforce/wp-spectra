@@ -110,6 +110,10 @@ class UAGBRatingEdit extends Component {
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		$(".uagb-rating-link-wrapper").click( function(event) {
+			event.preventDefault()
+		})
 	}
 
 	/*
@@ -377,86 +381,6 @@ class UAGBRatingEdit extends Component {
 
 		const subtypeCategories = {
 			Book: ["Audiobook"],
-			Event: [
-				"BusinessEvent",
-				"ChildrensEvent",
-				"ComedyEvent",
-				"CourseInstance",
-				"DanceEvent",
-				"DeliveryEvent",
-				"EducationEvent",
-				"EventSeries", //pending
-				"Festival",
-				"FoodEvent",
-				"Hackathon", //pending
-				"LiteraryEvent",
-				"MusicEvent",
-				"PublicationEvent",
-				"SaleEvent",
-				"ScreeningEvent",
-				"SocialEvent",
-				"SportsEvent",
-				"TheaterEvent",
-				"VisualArtsEvent",
-			],
-			Game: ["VideoGame"],
-			LocalBusiness: [
-				"AnimalShelter",
-				"ArchiveOrganization", //pending
-				"AutomotiveBusiness",
-				"ChildCare",
-				"Dentist",
-				"DryCleaningOrLaundry",
-				"EmergencyService",
-				"EmploymentAgency",
-				"EntertainmentBusiness",
-				"FinancialService",
-				"FoodEstablishment",
-				"GovernmentOffice",
-				"HealthAndBeautyBusiness",
-				"HomeAndConstructionBusiness",
-				"InternetCafe",
-				"LegalService",
-				"Library",
-				"LodgingBusiness",
-				"MedicalBusiness",
-				"ProfessionalService",
-				"RadioStation",
-				"RealEstateAgent",
-				"RecyclingCenter",
-				"SelfStorage",
-				"ShoppingCenter",
-				"SportsActivityLocation",
-				"TelevisionStation",
-				"TouristInformationCenter",
-				"TravelAgency",
-			],
-			MediaObject: [
-				"3DModel", //pending
-				"AudioObject",
-				"DataDownload",
-				"ImageObject",
-				"LegislationObject", //pending
-				"MusicVideoObject",
-				"VideoObject",
-			],
-			MusicPlaylist: ["MusicAlbum", "MusicRelease"],
-			Organization: [
-				"Airline",
-				"Consortium", //pending
-				"Corporation",
-				"EducationalOrganization",
-				"FundingScheme", //pending
-				"GovernmentOrganization",
-				"LibrarySystem", //pending
-				"MedicalOrganization",
-				"NewsMediaOrganization", //pending
-				"NGO",
-				"PerformingGroup",
-				"Project", //pending
-				"SportsOrganization",
-				"WorkersUnion",
-			],
 			Product: [
 				"IndividualProduct",
 				"ProductCollection",
@@ -468,171 +392,18 @@ class UAGBRatingEdit extends Component {
 			SoftwareApplication: ["MobileApplication", "VideoGame", "WebApplication"],
 		};
 
-		const subsubtypes = {
-			PublicationEvent: ["BroadcastEvent", "OnDemandEvent"],
-			EducationalOrganization: [
-				"CollegeOrUniversity",
-				"ElementarySchool",
-				"HighSchool",
-				"MiddleSchool",
-				"Preschool",
-				"School",
-			],
-			MedicalOrganization: [
-				"Dentist",
-				"DiagnosticLab",
-				"Hospital",
-				"MedicalClinic",
-				"Pharmacy",
-				"Physician",
-				"VeterinaryCare",
-			],
-			PerformingGroup: ["DanceGroup", "MusicGroup", "TheaterGroup"],
-			Project: ["FundingAgency", "ResearchProject"],
-			SportsOrganization: ["SportsTeam"],
-			AutomotiveBusiness: [
-				"AutoBodyShop",
-				"AutoDealer",
-				"AutoPartsStore",
-				"AutoRental",
-				"AutoRepair",
-				"AutoWash",
-				"GasStation",
-				"MotorcycleDealer",
-				"MotorcycleRepair",
-			],
-			EmergencyService: ["FireStation", "Hospital", "PoliceStation"],
-			EntertainmentBusiness: [
-				"AdultEntertainment",
-				"AmusementPark",
-				"ArtGallery",
-				"Casino",
-				"ComedyClub",
-				"MovieTheater",
-				"NightClub",
-			],
-			FinancialService: [
-				"AccountingService",
-				"AutomatedTeller",
-				"BankOrCreditUnion",
-				"InsuranceAgency",
-			],
-			FoodEstablishment: [
-				"Bakery",
-				"BarOrPub",
-				"Brewery",
-				"CafeOrCoffeeShop",
-				"Distillery",
-				"FastFoodRestaurant",
-				"IceCreamShop",
-				"Restaurant",
-				"Winery",
-			],
-			GovernmentOffice: ["PostOffice"],
-			HealthAndBeautyBusiness: [
-				"BeautySalon",
-				"DaySpa",
-				"HairSalon",
-				"HealthClub",
-				"NailSalon",
-				"TattooParlor",
-			],
-			HomeAndConstructionBusiness: [
-				"Electrician",
-				"GeneralContractor",
-				"HVACBusiness",
-				"HousePainter",
-				"Locksmith",
-				"MovingCompany",
-				"Plumber",
-				"RoofingContractor",
-			],
-			LegalService: ["Attorney", "Notary"],
-			LodgingBusiness: [
-				"BedAndBreakfast",
-				"Campground",
-				"Hostel",
-				"Hotel",
-				"Motel",
-				"Resort",
-			],
-			MedicalBusiness: [
-				//only subtypes that support reviews are included
-				"Dentist",
-				"MedicalClinic",
-				"Optician",
-				"Pharmacy",
-				"Physician",
-			],
-			SportsActivityLocation: [
-				"BowlingAlley",
-				"ExerciseGym",
-				"GolfCourse",
-				"HealthClub",
-				"PublicSwimmingPool",
-				"SkiResort",
-				"SportsClub",
-				"StadiumOrArena",
-				"TennisComplex",
-			],
-			Store: [
-				"AutoPartsStore",
-				"BikeStore",
-				"BookStore",
-				"ClothingStore",
-				"ComputerStore",
-				"ConvenienceStore",
-				"DepartmentStore",
-				"ElectronicsStore",
-				"Florist",
-				"FurnitureStore",
-				"GardenStore",
-				"GroceryStore",
-				"HardwareStore",
-				"HobbyShop",
-				"HomeGoodsStore",
-				"JewelryStore",
-				"LiquorStore",
-				"MensClothingStore",
-				"MobilePhoneStore",
-				"MovieRentalStore",
-				"MusicStore",
-				"OfficeEquipmentStore",
-				"OutletStore",
-				"PawnShop",
-				"PetStore",
-				"ShoeStore",
-				"SportingGoodsStore",
-				"TireShop",
-				"ToyStore",
-				"WholesaleStore",
-			],
-		};
+		const subsubtypes = {}
 
 		let unusedDefaults = [
 			"bookAuthorName",
 			"isbn",
 			"provider",
-			// ...offerAttributes,
-			"startDate",
-			"endDate",
-			"usePhysicalAddress",
-			"addressName",
-			"address",
-			"eventPage",
-			"organizer",
-			"performer",
 			"brand",
 			"sku",
 			"identifierType",
 			"identifier",
-			"cuisines",
-			"phoneNumber",
-			"priceRange",
 			"appCategory",
 			"operatingSystem",
-			"videoUploadDate",
-			"videoURL",
 			"directorname",
 			"datecreated"
 		];
@@ -741,7 +512,6 @@ class UAGBRatingEdit extends Component {
 							lineHeightMobile = { { value: headLineHeightMobile, label:'headLineHeightMobile'  } }
 							lineHeightTablet= { { value: headLineHeightTablet, label:'headLineHeightTablet'  } }
 						/>
-					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
 						value={ titleColor }
@@ -751,6 +521,23 @@ class UAGBRatingEdit extends Component {
 					{ enableDescription === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
+						<TypographyControl
+						label={ __( "Description" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+					/>
 					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 					<ColorPalette
 						value={ descColor }
@@ -759,25 +546,6 @@ class UAGBRatingEdit extends Component {
 					/>
 					</Fragment>)
 					}
-					{ ( showAuthor === true || enableDescription === true ) &&
-							<TypographyControl
-							label={ __( "Description" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-							fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-							fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-							fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-							fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-							fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-							lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-						/>
-						}
 					{ showAuthor === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
@@ -789,8 +557,20 @@ class UAGBRatingEdit extends Component {
 					/>
 					</Fragment>)
 					}
+					{ showFeature === true &&
+					(<Fragment>
+					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
+					<ColorPalette
+						value={ contentColor }
+						onChange={ ( value ) => setAttributes( { contentColor: value } ) }
+						allowReset
+					/>
+					</Fragment>)
+					}
+					<hr className="uagb-editor__separator" />
 					<TypographyControl
-						label={ __( "Content" ) }
+						label={ __( "Summary" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
@@ -806,18 +586,6 @@ class UAGBRatingEdit extends Component {
 						lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
 						lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
 					/>
-					{ showFeature === true &&
-					(<Fragment>
-					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
-					<ColorPalette
-						value={ contentColor }
-						onChange={ ( value ) => setAttributes( { contentColor: value } ) }
-						allowReset
-					/>
-					</Fragment>)
-					}
-					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Summary Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: summaryColor }} ></span></span></p>
 					<ColorPalette
 						value={ summaryColor }
@@ -874,17 +642,7 @@ class UAGBRatingEdit extends Component {
 						options={[
 							"Book",
 							"Course",
-							"CreativeWorkSeason",
-							"CreativeWorkSeries",
-							"Episode",
-							"Event",
-							"Game",
-							"LocalBusiness",
-							"MediaObject",
 							"Movie",
-							"MusicPlaylist",
-							"MusicRecording",
-							"Organization",
 							"Product",
 							"SoftwareApplication",
 						].map((a) => ({ label: a, value: a }))}
@@ -895,9 +653,6 @@ class UAGBRatingEdit extends Component {
 							value={itemSubtype}
 							onChange={(itemSubtype) => {
 								setAttributes({ itemSubtype });
-								if (itemSubtype === "VideoObject") {
-									setAttributes({ enableImage: true });
-								}
 								if (
 									!subsubtypes.hasOwnProperty(itemSubtype) ||
 									!subsubtypes[itemSubtype].includes(itemSubsubtype)
@@ -905,25 +660,64 @@ class UAGBRatingEdit extends Component {
 									setAttributes({ itemSubsubtype: "" });
 								}
 							}}
-							options={["", ...subtypeCategories[itemType]].map((a) => ({
+							options={["None", ...subtypeCategories[itemType]].map((a) => ({
 								label: a,
 								value: a,
 							}))}
 						/>
 					)}
-					{subsubtypes.hasOwnProperty(itemSubtype) && (
-						<SelectControl
-							label={__("Item subsubtype")}
-							value={itemSubsubtype}
-							onChange={(itemSubsubtype) =>
-								setAttributes({ itemSubsubtype })
+					<ToggleControl
+					    	label={ __( "Show author" ) }
+					    	checked={ showAuthor }
+					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
+					    <ToggleControl
+					    	label={ __( "Show description" ) }
+					    	checked={ enableDescription }
+					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
+						 <ToggleControl
+					    	label={ __( "Show image" ) }
+					    	checked={ enableImage }
+					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
+						{ enableImage === true && 
+							<Fragment>
+								<h2>{ __( "Image" ) }</h2>
+								<MediaUpload
+									title={ __( "Select Image" ) }
+									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
+									allowedTypes={ [ "image" ] }
+									value={ mainimage }
+									render={ ( { open } ) => (
+										<Button isDefault onClick={ open }>
+											{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+										</Button>
+									)}
+									/>
+							
+							{ mainimage.url &&
+								<Button
+									className="uagb-rm-btn"
+									onClick={ () => setAttributes( { mainimage: '' } ) }
+									isLink isDestructive>
+									{ __( "Remove Image" ) }
+								</Button>
 							}
-							options={["", ...subsubtypes[itemSubtype]].map((a) => ({
-								label: a,
-								value: a,
-							}))}
-						/>
-					)}
+							{ mainimage.url &&
+								<SelectControl
+									label={ __( "Size" ) }
+									options={ imageSizeOptions }
+									value={ imgSize }
+									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+								/>
+							}
+							</Fragment>
+						} 
+					<hr className="uagb-editor__separator" />
 					{itemTypeExtras}
 					<TextControl
 						label={__("Review publisher")}
@@ -1081,99 +875,46 @@ class UAGBRatingEdit extends Component {
 						checked={ ctaTarget }
 						onChange={ this.toggleTarget }
 					/>
-						<hr className="uagb-editor__separator" />
-						<ToggleControl
-					    	label={ __( "Show author" ) }
-					    	checked={ showAuthor }
-					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					    />
-					    <ToggleControl
-					    	label={ __( "Show description" ) }
-					    	checked={ enableDescription }
-					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					    />
-						 <ToggleControl
-					    	label={ __( "Show image" ) }
-					    	checked={ enableImage }
-					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					    />
-						{ enableImage === true && 
-							<Fragment>
-								<h2>{ __( "Image" ) }</h2>
-								<MediaUpload
-									title={ __( "Select Image" ) }
-									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
-									allowedTypes={ [ "image" ] }
-									value={ mainimage }
-									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
-											{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
-										</Button>
-									)}
-									/>
-							
-							{ mainimage.url &&
-								<Button
-									className="uagb-rm-btn"
-									onClick={ () => setAttributes( { mainimage: '' } ) }
-									isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-							{ mainimage.url &&
-								<SelectControl
-									label={ __( "Size" ) }
-									options={ imageSizeOptions }
-									value={ imgSize }
-									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-								/>
-							}
-							</Fragment>
-						} 
-						<hr className="uagb-editor__separator" />
-						 <ToggleControl
-					    	label={ __( "Show features" ) }
-					    	checked={ showFeature }
-					    	onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					    />
-						<h2>{ __( "Overall Padding (px)" ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ "uagb-margin-control" }
-							value={ contentVrPadding }
-							onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ "uagb-margin-control" }
-							value={ contentHrPadding }
-							onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
+					<ToggleControl
+						label={ __( "Show features" ) }
+						checked={ showFeature }
+						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
+					/>
+					<h2>{ __( "Overall Padding (px)" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
+						value={ contentVrPadding }
+						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
+						value={ contentHrPadding }
+						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 				</PanelBody>
 			)
 		}
 
-		
-
-		
 		return [
 			<SchemaNotices
+			    itemType={itemType}
 				rTitle={rTitle}
+				enableDescription={enableDescription}
 				rContent={rContent}
+				enableImage={enableImage}
 				mainimage={mainimage}
 				sku={sku}
 				brand={brand}
 				starCount={starCount}
+				showAuthor={showAuthor}
 				rAuthor={rAuthor}
 				showfeature={showFeature}
 				offerType={offerType}
@@ -1185,6 +926,14 @@ class UAGBRatingEdit extends Component {
 				ctaLink={ctaLink}
 				offerExpiry={offerExpiry}
 				identifier={identifier}
+				isbn={isbn}
+				bookAuthorName={bookAuthorName}
+				directorname={directorname}
+				datecreated={datecreated}
+				provider={provider}
+				appCategory={appCategory}
+				operatingSystem={operatingSystem}
+				reviewPublisher={reviewPublisher}
 				/>,
 				<BlockControls key='index'>
 				<AlignmentToolbar
@@ -1197,7 +946,6 @@ class UAGBRatingEdit extends Component {
 					{ ratingSchemaSettings() }
 					{ ratingStyleSettings() }
 				</InspectorControls>
-			// ),
 			,<div className={ classnames(
 				className,
 				"uagb-ratings__outer-wrap",
@@ -1265,8 +1013,7 @@ class UAGBRatingEdit extends Component {
 	export default compose(
 		withSelect( ( select, ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
-			// console.log(ownProps.attributes)
-			// console.log(ownProps)
+			
 				var offers = {}
 				var itemReviewed = {}
 				var json_data = {
@@ -1279,50 +1026,15 @@ class UAGBRatingEdit extends Component {
 						"@type": "Rating",
 						"ratingValue": newAverage,
 						"bestRating": ownProps.attributes.starCount,
-
-					  },
-					  "author": {
+					},
+					"author": {
 						"@type": "Person",
 						"name": ownProps.attributes.rAuthor,
-					  },
+					},
 					"publisher": ownProps.attributes.reviewPublisher,
 					"datePublished": ownProps.attributes.offerExpiry,
 					"url": ownProps.attributes.ctaLink
 				}
-				
-				// var json_data = {
-				// 	"@context": "https://schema.org/",
-				// 	"@type": "Product",
-				// 	"name": ownProps.attributes.rTitle,
-				// 	"description": ownProps.attributes.rContent,
-				// 	"image": [],
-				// 	"sku": ownProps.attributes.sku,
-				// 	"brand": {
-				// 		  "@type": "Brand",
-				// 		  "name": ownProps.attributes.brand,
-				// 		},
-				// 	"review": {
-				// 	  "@type": "Review",
-				// 	  "reviewRating": {
-				// 		"@type": "Rating",
-				// 		"ratingValue": newAverage,
-				// 		"bestRating": ownProps.attributes.starCount,
-
-				// 	  },
-				// 	  "author": {
-				// 		"@type": "Person",
-				// 		"name": ownProps.attributes.rAuthor,
-				// 	  }
-				// 	},
-				//    "aggregateRating": {
-				// 	  "@type": "AggregateRating",
-				// 	  "ratingValue": newAverage,
-				// 	  "reviewCount": (newAverage/ownProps.attributes.starCount * 100 )
-				// 	},
-				// 	offers : []
-				// }
-	
-				
 				  
 				  switch ( ownProps.attributes.itemType ) {
 					case "Book":
@@ -1396,18 +1108,6 @@ class UAGBRatingEdit extends Component {
 					json_data.itemReviewed.image = ownProps.attributes.mainimage.url;
 				}
 	
-				// if( ownProps.attributes.itemType == 'Book' ){
-				// 	json_data.itemReviewed = { 
-				// 		"@type":ownProps.attributes.itemType,
-				// 		"name": ownProps.attributes.rTitle,
-				// 		"description": ownProps.attributes.rContent,
-				// 		"image": [],
-				// 		"author": ownProps.attributes.rAuthor,
-				// 		"isbn": ownProps.attributes.isbn,
-				// 	}
-					
-				// }
-				
 				if( ownProps.attributes.itemType == 'Product' ){
 					json_data.itemReviewed[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 					if( 'Aggregate Offer' == ownProps.attributes.offerType ){
@@ -1429,8 +1129,6 @@ class UAGBRatingEdit extends Component {
 						  }
 					  }
 				}
-
-				console.log(json_data);
 				
 			return {
 				schemaJsonData: json_data
