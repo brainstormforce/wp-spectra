@@ -3,12 +3,10 @@
  */
 
 import classnames from "classnames"
+import { Fragment } from "react"
 
 const {
-	InnerBlocks
-} = wp.blockEditor
-
-const {
+	InnerBlocks,
 	RichText
 } = wp.blockEditor
 
@@ -26,22 +24,25 @@ export default function save( props ) {
 		reCaptchaEnable,
 		reCaptchaType,			
 		reCaptchaSiteKeyV2,
-		reCaptchaSiteKeyV3
+		reCaptchaSecretKeyV2,
+		reCaptchaSiteKeyV3,
+		reCaptchaSecretKeyV3
 	} = attributes
 
 	const renderConfirmationMessage = () => {
 
 		if ( 'message' === confirmationType ) {
-			var show = 'hide'
 			return (
 				<div className={ classnames(
 					"uagb-forms-success-message",
-					`uagb-forms-success-message-${ show }`,
+					`uagb-forms-success-message-${ block_id }`,
+					'uagb-forms-success-message-hide',
 				) }>
 					<span>
 						{ confirmationMessage }
 					</span>
 				</div>
+				
 			)
 		}
 
@@ -78,17 +79,24 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`,
 		) }
 		>
+			
 			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
+					{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (					
+						<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
+					) }
 					<input type="hidden" class="uagb_forms_form_label" value={ formLabel }/>
 					<input type="hidden" class="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 				</div>
-				{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
-					<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
-				)}
+				{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (
+					<Fragment>
+						<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+						<div className={`uagb-form-reacaptcha-error-${ block_id }`}></div>
+					</Fragment>
+				) }
 				<div className="uagb-forms-main-submit-button-wrap">
-					{renderButtonHtml()}				
+					{renderButtonHtml()}						
 				</div>
 			</form>
 				{ renderConfirmationMessage() }

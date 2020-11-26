@@ -907,12 +907,18 @@ class UAGBFormsEdit extends Component {
 							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 						<div className="uagb-forms-form-hidden-data">
+							{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 &&(					
+								<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
+							)}
 							<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
 							<input type="hidden" name="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 						</div>
 
-						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
-							<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (
+							<Fragment>
+								<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+								<div className={`uagb-form-reacaptcha-error-${ block_id }`}></div>
+							</Fragment>
 						)}
 
 						<div className="uagb-forms-main-submit-button-wrap">

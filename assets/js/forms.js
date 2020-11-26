@@ -27,10 +27,9 @@
 
             toggleinput.on('change', function(e) {
                 if(this.checked) {                    
-                    $(toggleinput).val($(this).attr("data-trueState"));
+                    $(this).val($(this).attr("data-trueState"));
                 }else {
-                    $(toggleinput).val($(this).attr("data-falseState"));
-
+                    $(this).val($(this).attr("data-falseState"));
                 }
             });
             
@@ -48,16 +47,29 @@
                 $('head').append(' <script src="https://www.google.com/recaptcha/api.js"></script>');
             }
             
-            $form.on( 'submit', function( e ) {
-                $submitButtonWrap.append('<span class="components-spinner"></span>');
+            $form.on( 'submit', function( e ) {                ;
                 UAGBForms._formSubmit( e, $( this ), attr )
             } );
         },
         
         _formSubmit: function ( e, $form, attr ) {
             e.preventDefault();
+            
+            if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v2" && attr['reCaptchaSiteKeyV2'] ){
+                
+                var uagb_captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
+                if (!uagb_captcha_response) {
+                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha"> Please fill up the above captcha.</p>');
+                    return false;
+                } else {
+                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
+                    var uagab_captcha_keys = { 'secret':attr['reCaptchaSecretKeyV2'],'sitekey':attr['reCaptchaSiteKeyV2'] }                   
+                }
+                
+            }
+            
             var originalSerialized = $($form).serializeArray();
-          
+            
             var postData = {};
             for (var i = 0; i < originalSerialized.length; i++) {
                 let inputname = originalSerialized[i].name;
@@ -73,27 +85,45 @@
                 }
             }
             console.log(postData);
-
+            
             var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
+           
+            // var file_upload_data = [];            
+            // var fileinput = $form[0].getElementsByClassName("uagb-forms-upload-input");
+            // if (fileinput.length > 0) {
+                //     for (var i = 0; i < fileinput.length; i++) {
+                    //        if(fileinput[i].files[0]){
+                        //         file_upload_data.push(fileinput[i].files[0]['name']);
+                        //        }
+                        //     }
+                        // }
+                        
+                        
+            
+            //add spiner to form button to show processing.
+            $( '<span class="components-spinner"></span>' ).appendTo( $form.find(".uagb-forms-main-submit-button-wrap") );
+
             $.ajax({
                 type: 'POST',
-                url: uagb_forms_data.ajax_url,    
-                dataType: 'json',           
+                url: uagb_forms_data.ajax_url,
                 data: {
                     action: 'uagb_process_forms',                    
                     nonce : uagb_forms_data.uagb_forms_ajax_nonce,
                     form_data:postData,
-                    after_submit_data:after_submit_data
+                    after_submit_data:after_submit_data,
+                    uagab_captcha_keys : uagab_captcha_keys,
+                    uagb_captcha_response : uagb_captcha_response,
+                    // file_upload_data:file_upload_data
                 },
                 
-                success: function( data ) {
-                  console.log(data);
-                    if( true === data.success ) {
+                success: function( response ) {
+
+                    if( 200 === response.data ) {
                         
-                        if ( 'message' === attr.confirmationType ) {
-                            $form[0].style.display = 'none'; 
-                            $scope.find('.uagb-forms-success-message').removeClass( 'uagb-forms-success-message-hide' ).addClass( 'uagb-forms-success-message-show' );
+                        if ( 'message' === attr.confirmationType ) {                             
+                            $('[name="uagb-form-'+attr['block_id']+'"]').hide();
+                            $('.uagb-forms-success-message-'+attr['block_id']).removeClass('uagb-forms-success-message-hide')
                         }
                         
                         if ( 'url' === attr.confirmationType ) {

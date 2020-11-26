@@ -41,8 +41,7 @@ class UAGBFormsNameEdit extends Component {
 		
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-    }
+	
 	
 	render() {
 
