@@ -57,6 +57,14 @@ const {
 	Dashicon,
 } = wp.components
 
+const {
+	withSelect,
+	useDispatch,
+	select, 
+	useSelect,
+	withDispatch
+} = wp.data
+
 let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBcontentTimelineChild extends Component {
@@ -142,6 +150,7 @@ class UAGBcontentTimelineChild extends Component {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
 			this.props.setAttributes( { classMigrate: true } )
+			
 
 			// Pushing Style tag for this block css.
 			const $style = document.createElement( "style" )
@@ -149,9 +158,14 @@ class UAGBcontentTimelineChild extends Component {
 			document.head.appendChild( $style )
 		}
 
-		componentDidUpdate(){
+		componentDidUpdate(prevProps, prevState){
 			var id = this.props.clientId
 
+			// if ( prevProps.attributes.content_class == "uagb-timeline__widget uagb-timeline__right" ) {
+			// 	const { setAttributes } = this.props
+			// 	setAttributes( { content_class: "uagb-timeline__widget uagb-timeline__left" } )
+			// }
+			// console.log(this.props.attributes)
 			// window.addEventListener("load", this.timelineContent_back(id))
 			// window.addEventListener("resize", this.timelineContent_back(id))
 			// var time = this
@@ -251,13 +265,32 @@ class UAGBcontentTimelineChild extends Component {
 				},
 			} = this.props
 
-			
 
 			
-			var x = counter + 1  
-			console.log("child")
+			// var addElement = 0;
+			// if( addElement != 0 ){
+			// 	addElement++;
+			// }
+			// setAttributes( { counter: addElement } )
 
-			console.log(this.props)
+			// console.log(addElement)
+			// var x = counter + 1  
+			// console.log("child+"+this.props.attributes.content_class)
+			const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId(this.props.clientId);
+
+			const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId );
+			// console.log(select('core/block-editor').getBlocksByClientId( parentClientId )[0].innerBlocks)
+
+			const innerBlocks = select('core/block-editor').getBlocksByClientId( parentClientId )[0].innerBlocks;
+			
+			innerBlocks.map((innerBlocks, key) => {
+				// console.log(innerBlocks.clientId)
+				// console.log("child"+this.props.clientId)
+				// setAttributes( { content_class: AlignClass( this.props.attributes,innerBlocks ) } )
+			})
+			
+			console.log(this.props.attributes.content_class)
+			const getChildBlocks = select('core/block-editor').getBlocks( parentClientId );
 
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -441,12 +474,9 @@ class UAGBcontentTimelineChild extends Component {
 				</InspectorControls>
 			)
 
-
-
-			// var content_align_class = '';
-
-			var content_align_class = AlignClass( this.props.attributes, 1 ) // Get classname for layout alignment
-			var day_align_class     = DayAlignClass( this.props.attributes, 1 ) // Get classname for day alignment.
+			const counter1 = wp.data.select( 'core/editor' ).getBlockCount( parentClientId );
+			var content_align_class = AlignClass( this.props.attributes, (counter1%2) ) // Get classname for layout alignment
+			var day_align_class     = DayAlignClass( this.props.attributes, (counter1%2) ) // Get classname for day alignment.
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
@@ -458,29 +488,16 @@ class UAGBcontentTimelineChild extends Component {
 				}
 			}
 
-			// console.log("child "+post_date)
-
 			const hasItems = Array.isArray( time_heading ) && time_heading.length
 			const hasDate = Array.isArray( t_date ) && t_date.length
-
-			// var counter = 0
-
-			// console.log(counter++)
-
-			// console.log(timelineItem)
-			// // console.log(tm_content)
-			// console.log(t_date)
-
-			if(timelinAlignment == "center"){
-				//console.log("if loop")
-				display_inner_date = true
-				content_align_class = AlignClass( this.props.attributes, 2 )
-				day_align_class = DayAlignClass( this.props.attributes, 2 )
-			} 
-			
-			// console.log("child-"+content_align_class)
-			
-
+			getChildBlocks.map((UAGBcontentTimelineChild, key) => {
+				if(timelinAlignment == "center"){
+					display_inner_date = true
+					content_align_class = AlignClass( this.props.attributes,key)
+					day_align_class = DayAlignClass( this.props.attributes,key)
+				} 
+			})
+		
 				return (
 							<Fragment>
 								{ content_control }
@@ -495,13 +512,25 @@ class UAGBcontentTimelineChild extends Component {
 								</BlockControls>
 								<div className = "uagb-timeline__days">
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"   id={"uagb-timeline-child-"+this.props.clientId}>
-									<div className = {content_align_class}>
-
+									<div className = { this.props.attributes.content_class }>
+										{/* // getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+										// AlignClass( parentAttributes,((Math.round(Math.random(1))>=0.5)? 1 : 0) )
+										// AlignClass(this.props.attributes,(counter%2))
+										// AlignClass( parentAttributes, randomNumber(0, 1) )
+										// })
+									// }> */}
+										
 									<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
 										<span className = {icon_class}>{ renderSVG(icon) }</span>
 									</div>
 
-								<div className = {day_align_class} >	
+								<div className = { this.props.attributes.dayalign_class }>
+									{/* // getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {Math.round(Math.random(1)) 
+									// DayAlignClass( parentAttributes, ((Math.round(Math.random(1))>0.5)? 1 : 0) )
+									// DayAlignClass(this.props.attributes,(counter%2))
+									// DayAlignClass( parentAttributes, randomNumber(0, 1) )
+									// })
+								// } >	 */}
 								<div className="uagb-timeline__events-new">
 									<div className="uagb-timeline__events-inner-new">
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
@@ -560,7 +589,8 @@ class UAGBcontentTimelineChild extends Component {
 								</article>	
 								</div>					
 							</Fragment>
-						)
+							
+					)
 		}
 
 		/*  Js for timeline line and inner line filler*/

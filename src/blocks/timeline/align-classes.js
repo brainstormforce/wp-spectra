@@ -5,8 +5,6 @@
  */
 function AlignClass( attributes, index_val ) {
 
-	
-
 	let align_class = ""
 	if( "left" == attributes.timelinAlignment ){
 		align_class = "uagb-timeline__widget uagb-timeline__left"
@@ -30,13 +28,3 @@ function AlignClass( attributes, index_val ) {
 }
 
 export default AlignClass
-
-
-// for (var i = 1; i <= counter; i++) {
-
-// 					if( i % 2 == 0 ){
-// 						console.log("even-"+i)
-// 					}else{
-// 						console.log("odd-"+i)
-// 					}
-// 			}

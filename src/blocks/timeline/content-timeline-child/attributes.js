@@ -5,10 +5,10 @@
 const { __ } = wp.i18n
 
 const attributes = {
-	counter: {
-		type : "number",
-		default : 1,
-	},
+	// content_class: {
+	// 	type : "string",
+	// 	default: "uagb-timeline__widget uagb-timeline__right",
+	// },
 	time_heading:{
 		type: "string",
 		default:__( "Timeline Heading " )

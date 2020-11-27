@@ -62,6 +62,7 @@ const {
 const {
 	withSelect,
 	useDispatch,
+	dispatch,
 	select, 
 	useSelect,
 	withDispatch
@@ -361,57 +362,17 @@ class UAGBcontentTimeline extends Component {
 
 		var content_align_class = ''
 
-		// console.log(getChildBlocks[0])
+		// console.log(select('core/block-editor').getBlocksByClientId( this.props.clientId )[0].innerBlocks)
 
-		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-
-		for (var i = 1; i <= counter; i++) {
-			if( i % 2 == 0 ){
-				console.log("even-"+i)
-				content_align_class = "uagb-timeline__widget uagb-timeline__right"
-
-				
-				if (i == 1){
-					// console.log(getChildBlocks[0].clientId)
-				}else{
-					// console.log(getChildBlocks[i].clientId)
-				}
-				// console.log("left-"+content_align_class)
-
-				
-				// 	// if ( getChildBlocks[i].clientId == UAGBcontentTimelineChild.clientId ){
-				// 		if ( getChildBlocks.clientId ){
-
-							UAGBcontentTimelineChild.attributes.align = content_align_class
-
-						// }
-						
-				// 	// }
-					
-			
-			}else{
-				console.log("odd-"+i)
-				content_align_class = "uagb-timeline__widget uagb-timeline__left"
-				// console.log("right-"+getChildBlocks[i].clientId)
-				// console.log("right-"+content_align_class)
-
-				
-						UAGBcontentTimelineChild.attributes.align = content_align_class
-				// 	}
-					
-				
-
-				
-			} 
-		} 
-
-		});
-
-		setAttributes( { align: content_align_class } )
-
+		select('core/editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+			// console.log(key)
+			dispatch('core/editor').updateBlockAttributes(block.clientId, { content_class: AlignClass( block.attributes,key ) })
+			dispatch('core/editor').updateBlockAttributes(block.clientId, { dayalign_class: DayAlignClass( block.attributes,key ) })
+		  })
 
 		// getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-		// 	UAGBcontentTimelineChild.attributes.counter = counter
+		// 	setAttributes( { content_class: AlignClass( this.props.attributes,key ) } )
+		// 	// setAttributes( { content_class: key } )
 		// });
 
 		// setAttributes( { counter: counter } )
@@ -775,7 +736,7 @@ class UAGBcontentTimeline extends Component {
 
 
 		// const counterx = times( timelineItem, n => this.gettimelineItem(n) )
-
+		// console.log(timelineItem)
 
 
 		// const getContentTimelineTemplate = [

@@ -43,6 +43,9 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 }
 
 const attributes = {
+	content_class: {
+		type : "string",
+	},
 	tm_content: {
 		type: "array",
 		default : item,
