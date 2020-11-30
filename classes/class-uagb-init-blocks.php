@@ -304,6 +304,7 @@ class UAGB_Init_Blocks {
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 				'post_types'        => UAGB_Helper::get_post_types(),
 				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
+				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 				'uagb_home_url'     => home_url(),
 			)

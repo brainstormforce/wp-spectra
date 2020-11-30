@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var settings
 		 */
 		private static $settings;
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -52,7 +52,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uagb_post_pagination', array( $this, 'post_pagination' ) );
 			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 		}
 
@@ -885,7 +887,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param object $query WP_Query object.
 		 * @param array  $attributes Array of block attributes.
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function render_pagination( $query, $attributes ) {
 
@@ -943,7 +945,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Sends the Posts to Masonry AJAX.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function masonry_pagination() {
 
@@ -971,7 +973,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param object $query WP_Query object.
 		 * @param array  $attributes Array of block attributes.
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function posts_articles_markup( $query, $attributes ) {
 

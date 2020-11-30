@@ -12,8 +12,9 @@
 		default : null,
 	},
 	noticeTitle: {
-		source: "html",
-		selector: "h1,h2,h3,h4,h5,h6,span,p",
+		type:"string",
+		source: "html",					
+		selector: ".uagb-notice-title",		
 		default: "Notice Title",
 	},
 	headingTag: {
@@ -158,6 +159,14 @@
 	titleHrPadding: {
 		type: "number",
 		default : 15
+	},
+	layout: {
+		type: "string",
+		default : "modern",
+	},
+	highlightWidth: {
+		type: "number",
+		default : 10
 	},
 }
 

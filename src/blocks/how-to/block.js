@@ -8,7 +8,7 @@ import edit from "./edit"
 import save from "./save"
 import "./style.scss"
 import "./editor.scss"
-
+import deprecated from "./deprecated"
 
 const { __ } = wp.i18n
 
@@ -29,7 +29,45 @@ registerBlockType( "uagb/how-to", {
 	supports: {
 		anchor: true,
 	},
+	example:{
+		innerBlocks: [
+			{
+				name: 'uagb/info-box',
+				attributes: { 
+					infoBoxTitle:"Step 1",
+					iconimgPosition:"left",
+					source_type:"image",
+					showPrefix:false,
+					seperatorStyle:"none",
+					ctaType:"all",
+					headingTag: "h4" },
+			},
+			{
+				name: 'uagb/info-box',
+				attributes: { 
+					infoBoxTitle:"Step 2",
+					iconimgPosition:"left",
+					source_type:"image",
+					showPrefix:false,
+					seperatorStyle:"none",
+					ctaType:"all",
+					headingTag: "h4" },
+			},
+			{
+				name: 'uagb/info-box',
+				attributes: { 
+					infoBoxTitle:"Step 3",
+					iconimgPosition:"left",
+					source_type:"image",
+					showPrefix:false,
+					seperatorStyle:"none",
+					ctaType:"all",
+					headingTag: "h4" },
+			},
+		],
+	},
 	attributes,
 	edit,
 	save,
+	deprecated
 } )
