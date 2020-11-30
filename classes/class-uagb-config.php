@@ -626,7 +626,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Content Timeline Child', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'js_assets'   => array( 'uagb-content-timeline-js' ),
+						// 'js_assets'   => array( 'uagb-content-timeline-js' ),
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'align'                   => 'center',
@@ -2377,10 +2377,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
 						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
 						'skipEditor' => true,
-					),
-					'uagb-content-timeline-js'       => array(
-						'src' => UAGB_URL . 'assets/js/uagb-content-timeline-child-js.js',
-						'dep' => array( 'jquery' ),
 					),
 				);
 			}

@@ -730,6 +730,113 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
+		const color_control = (
+			<InspectorControls>
+			<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+				<TextControl
+					label= { __( "Date Settings" ) }
+					value= { t_date }
+					onChange={ ( value ) => setAttributes( { t_date: value } ) }
+				/>
+				<SelectControl
+						label={ __( "Typography" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+							{ value: "p", label: __( "P" ) },
+							{ value: "span", label: __( "SPAN" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Rounded Corners" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						initialPosition={10}
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Padding" ) }
+						value={ bgPadding }
+						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+						min={ 1 }
+						initialPosition={10}
+						max={ 50 }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Heading" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+						fontSize = { { value: headFontSize, label: 'headFontSize' } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+					/>
+
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Content" ) }</h2>
+					<TypographyControl
+						label={ __( "Content Tag" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+					/>
+				</PanelBody>
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: headingColor,
+							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+							label: __( "Heading Color" ),
+						},
+						{
+							value: subHeadingColor,
+							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+							label: __( "Content Color" ),
+						},
+						{
+							value: backgroundColor,
+							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+							label: __( "Background Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
+			</InspectorControls>
+		)
+
+
 		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
 			return times( icon_block, n => [ 'uagb/content-timeline-child',tm_content[n]] )
 		} )
@@ -760,6 +867,7 @@ class UAGBcontentTimeline extends Component {
 		return (
 			<Fragment>
 				{ content_control }
+				{ color_control }
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }

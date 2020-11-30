@@ -34,7 +34,7 @@ export default function save( props ) {
 		time_heading,
 		time_desc,
 	} = props.attributes
-
+	
 	/* Style for elements */
 	var front_style = contentTimelineChildStyle( props )
 
@@ -65,21 +65,18 @@ export default function save( props ) {
 	// 		content_align_class = "uagb-timeline__widget uagb-timeline__left"
 	// 	} 
 	// }
-
+	console.log(props.attributes.content_class)
+	console.log(props.attributes.dayalign_class)
 	return (
 		<div className = "uagb-timeline__days">
 		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+block_id}>
-			<div className = { classnames(
-				...content_align_class,
-			) }>
+			<div className = { props.attributes.content_class }>
 
 				<div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
 					<span className = {icon_class}>{ renderSVG(icon) }</span>
 				</div>
 
-				<div className = { classnames(
-					...day_align_class,
-				) }>
+				<div className = { props.attributes.dayalign_class }>
 					<div className="uagb-events-new" >
 						<div className="uagb-timeline__events-inner-new" >
 							<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >

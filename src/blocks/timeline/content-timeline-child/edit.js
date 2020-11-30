@@ -19,7 +19,7 @@ import TypographyControl from "../../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../../components/typography/fontloader"
 
-const { dateI18n, __experimentalGetSettings } = wp.date
+const { dateI18n, __experimentalGetSettings,gmdateI18n } = wp.date
 
 const { Component, Fragment } = wp.element
 
@@ -265,31 +265,12 @@ class UAGBcontentTimelineChild extends Component {
 				},
 			} = this.props
 
-
-			
-			// var addElement = 0;
-			// if( addElement != 0 ){
-			// 	addElement++;
-			// }
-			// setAttributes( { counter: addElement } )
-
-			// console.log(addElement)
-			// var x = counter + 1  
-			// console.log("child+"+this.props.attributes.content_class)
 			const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId(this.props.clientId);
 
 			const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId );
-			// console.log(select('core/block-editor').getBlocksByClientId( parentClientId )[0].innerBlocks)
 
 			const innerBlocks = select('core/block-editor').getBlocksByClientId( parentClientId )[0].innerBlocks;
 			
-			innerBlocks.map((innerBlocks, key) => {
-				// console.log(innerBlocks.clientId)
-				// console.log("child"+this.props.clientId)
-				// setAttributes( { content_class: AlignClass( this.props.attributes,innerBlocks ) } )
-			})
-			
-			console.log(this.props.attributes.content_class)
 			const getChildBlocks = select('core/block-editor').getBlocks( parentClientId );
 
 			// Add CSS.
@@ -309,170 +290,170 @@ class UAGBcontentTimelineChild extends Component {
 				noSelectedPlaceholder: __( "Select Icon" )
 			}
 
-			const iconControls = (
-						<PanelBody	title={ __( "Connector Color Settings" ) }	initialOpen={ true }>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "focus",
-										title: __( "Focus" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "focus" === tabName.name ) {
-											tabout = iconFocusSettings
-										}else {
-											tabout = iconColorSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-						</PanelBody>
-					)
+			// const iconControls = (
+			// 			<PanelBody	title={ __( "Connector Color Settings" ) }	initialOpen={ true }>
+			// 				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+			// 					activeClass="active-tab"
+			// 					tabs={ [
+			// 						{
+			// 							name: "normal",
+			// 							title: __( "Normal" ),
+			// 							className: "uagb-normal-tab",
+			// 						},
+			// 						{
+			// 							name: "focus",
+			// 							title: __( "Focus" ),
+			// 							className: "uagb-focus-tab",
+			// 						},
+			// 					] }>
+			// 					{
+			// 						( tabName ) => {
+			// 							let tabout
+			// 							if( "focus" === tabName.name ) {
+			// 								tabout = iconFocusSettings
+			// 							}else {
+			// 								tabout = iconColorSettings
+			// 							}
+			// 							return <div>{ tabout }</div>
+			// 						}
+			// 					}
+			// 				</TabPanel>
+			// 			</PanelBody>
+			// 		)
 
-					const iconColorSettings = (
-						<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
-							colorSettings={ [
-								{
-									value: separatorColor,
-									onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-									label: __( "Line Color" ),
-								},
-								{
-									value: iconColor,
-									onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-									label: __( "Icon Color" ),
-								},
-								{
-									value: separatorBg,
-									onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
-									label: __( "Background Color" ),
-								},
-								{
-									value: separatorBorder,
-									onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
-									label: __( "Border Color" ),
-								},
-							] }
-						>
-						</PanelColorSettings>
-					)
+			// 		const iconColorSettings = (
+			// 			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
+			// 				colorSettings={ [
+			// 					{
+			// 						value: separatorColor,
+			// 						onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
+			// 						label: __( "Line Color" ),
+			// 					},
+			// 					{
+			// 						value: iconColor,
+			// 						onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
+			// 						label: __( "Icon Color" ),
+			// 					},
+			// 					{
+			// 						value: separatorBg,
+			// 						onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
+			// 						label: __( "Background Color" ),
+			// 					},
+			// 					{
+			// 						value: separatorBorder,
+			// 						onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
+			// 						label: __( "Border Color" ),
+			// 					},
+			// 				] }
+			// 			>
+			// 			</PanelColorSettings>
+			// 		)
 
-			const content_control = (
-				<InspectorControls>
-				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
-					<TextControl
-						label= { __( "Date Settings" ) }
-						value= { t_date }
-						onChange={ ( value ) => setAttributes( { t_date: value } ) }
-					/>
-					<SelectControl
-							label={ __( "Typography" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-								{ value: "p", label: __( "P" ) },
-								{ value: "span", label: __( "SPAN" ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Rounded Corners" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							initialPosition={10}
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Padding" ) }
-							value={ bgPadding }
-							onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-							min={ 1 }
-							initialPosition={10}
-							max={ 50 }
-							allowReset
-						/>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Heading" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-							fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-							fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-							fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-							fontSize = { { value: headFontSize, label: 'headFontSize' } }
-							fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-							fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-							lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-							lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-							lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-						/>
+			// const content_control = (
+			// 	<InspectorControls>
+			// 	<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+			// 		<TextControl
+			// 			label= { __( "Date Settings" ) }
+			// 			value= { t_date }
+			// 			onChange={ ( value ) => setAttributes( { t_date: value } ) }
+			// 		/>
+			// 		<SelectControl
+			// 				label={ __( "Typography" ) }
+			// 				value={ headingTag }
+			// 				onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+			// 				options={ [
+			// 					{ value: "h1", label: __( "H1" ) },
+			// 					{ value: "h2", label: __( "H2" ) },
+			// 					{ value: "h3", label: __( "H3" ) },
+			// 					{ value: "h4", label: __( "H4" ) },
+			// 					{ value: "h5", label: __( "H5" ) },
+			// 					{ value: "h6", label: __( "H6" ) },
+			// 					{ value: "p", label: __( "P" ) },
+			// 					{ value: "span", label: __( "SPAN" ) },
+			// 				] }
+			// 			/>
+			// 			<RangeControl
+			// 				label={ __( "Rounded Corners" ) }
+			// 				value={ borderRadius }
+			// 				onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+			// 				min={ 0 }
+			// 				initialPosition={10}
+			// 				max={ 50 }
+			// 				allowReset
+			// 			/>
+			// 			<RangeControl
+			// 				label={ __( "Padding" ) }
+			// 				value={ bgPadding }
+			// 				onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+			// 				min={ 1 }
+			// 				initialPosition={10}
+			// 				max={ 50 }
+			// 				allowReset
+			// 			/>
+			// 			<hr className="uagb-editor__separator" />
+			// 			<h2>{ __( "Heading" ) }</h2>
+			// 			<TypographyControl
+			// 				label={ __( "Typography" ) }
+			// 				attributes = { this.props.attributes }
+			// 				setAttributes = { setAttributes }
+			// 				loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+			// 				fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+			// 				fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+			// 				fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+			// 				fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+			// 				fontSize = { { value: headFontSize, label: 'headFontSize' } }
+			// 				fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+			// 				fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+			// 				lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+			// 				lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+			// 				lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+			// 				lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+			// 			/>
 
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Content" ) }</h2>
-						<TypographyControl
-							label={ __( "Content Tag" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-							fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-							fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-							fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-							fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-							fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-							lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-						/>
-					</PanelBody>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Content Color" ),
-							},
-							{
-								value: backgroundColor,
-								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-								label: __( "Background Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
-				</InspectorControls>
-			)
+			// 			<hr className="uagb-editor__separator" />
+			// 			<h2>{ __( "Content" ) }</h2>
+			// 			<TypographyControl
+			// 				label={ __( "Content Tag" ) }
+			// 				attributes = { this.props.attributes }
+			// 				setAttributes = { setAttributes }
+			// 				loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+			// 				fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+			// 				fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+			// 				fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+			// 				fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+			// 				fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+			// 				fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+			// 				fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+			// 				lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+			// 				lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+			// 				lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+			// 				lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+			// 			/>
+			// 		</PanelBody>
+			// 		<PanelColorSettings
+			// 			title={ __( "Color Settings" ) }
+			// 			initialOpen={ false }
+			// 			colorSettings={ [
+			// 				{
+			// 					value: headingColor,
+			// 					onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+			// 					label: __( "Heading Color" ),
+			// 				},
+			// 				{
+			// 					value: subHeadingColor,
+			// 					onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+			// 					label: __( "Content Color" ),
+			// 				},
+			// 				{
+			// 					value: backgroundColor,
+			// 					onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+			// 					label: __( "Background Color" ),
+			// 				},
+			// 			] }
+			// 		>
+			// 		</PanelColorSettings>
+			// 	</InspectorControls>
+			// )
 
 			const counter1 = wp.data.select( 'core/editor' ).getBlockCount( parentClientId );
 			var content_align_class = AlignClass( this.props.attributes, (counter1%2) ) // Get classname for layout alignment
@@ -480,6 +461,7 @@ class UAGBcontentTimelineChild extends Component {
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
+
 			if ( 'custom' != dateFormat ) {
 
 				post_date = dateI18n( dateFormat, t_date )
@@ -500,7 +482,7 @@ class UAGBcontentTimelineChild extends Component {
 		
 				return (
 							<Fragment>
-								{ content_control }
+								{/* { content_control } */}
 								<BlockControls>
 									<BlockAlignmentToolbar
 										value={ align }
