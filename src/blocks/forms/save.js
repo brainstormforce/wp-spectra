@@ -21,6 +21,7 @@ export default function save( props ) {
 		submitButtonText,
 		confirmationType,
 		confirmationMessage,
+		failedMessage,
 		reCaptchaEnable,
 		reCaptchaType,			
 		reCaptchaSiteKeyV2,
@@ -29,25 +30,7 @@ export default function save( props ) {
 		reCaptchaSecretKeyV3
 	} = attributes
 
-	const renderConfirmationMessage = () => {
 
-		if ( 'message' === confirmationType ) {
-			return (
-				<div className={ classnames(
-					"uagb-forms-success-message",
-					`uagb-forms-success-message-${ block_id }`,
-					'uagb-forms-success-message-hide',
-				) }>
-					<span>
-						{ confirmationMessage }
-					</span>
-				</div>
-				
-			)
-		}
-
-		return '';
-	}
 
 	const renderButtonHtml = () => {
 
@@ -99,7 +82,27 @@ export default function save( props ) {
 					{renderButtonHtml()}						
 				</div>
 			</form>
-				{ renderConfirmationMessage() }
+				{ 'message' === confirmationType && (
+					<Fragment>
+						<div className={ classnames(						
+							`uagb-forms-success-message-${ block_id }`,
+							'uagb-forms-submit-message-hide',
+						) }>
+							<span>
+								{ confirmationMessage }
+							</span>
+						</div>
+						<div className={ classnames(						
+							`uagb-forms-failed-message-${ block_id }`,
+							'uagb-forms-submit-message-hide',
+						) }>
+							<span>
+								{ failedMessage }
+							</span>
+						</div>
+					</Fragment>
+				)}
+				
 		</div>
 	)
 }

@@ -2418,6 +2418,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'fieldGap'                   => 20,
 							'formStyle'                  => 'boxed',
 							'overallAlignment'           => 'left',
+							'successMessageTextColor'    => '',
+							'successMessageBGColor'      => '',
+							'successMessageBorderColor'  => '',
+							'failedMessageTextColor'     => '',
+							'failedMessageBorderColor'   => '',
+							'failedMessageBGColor'       => '',
 						),
 					),
 					'uagb/forms-name'         => array(

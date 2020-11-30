@@ -14,13 +14,14 @@
             display:none;
         }
 	}
-	.uagb-forms-success-message.uagb-forms-success-message-hide {
+	.uagb-forms-submit-message-hide {
 		display: none;
 	}
-	.uagb-forms-success-message {	
-		border-left: 2px solid green;
-		padding: 20px 20px;
-		background: #00800030;
+	.uagb-forms-success-message {
+		padding: 20px 20px;		
+	}
+	.uagb-forms-failed-message {		
+		padding: 20px 20px;	
 	}
 	span.components-spinner {
 		float: none;

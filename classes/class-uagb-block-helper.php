@@ -4903,6 +4903,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'     => $attr['labelColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 				),
+				' .uagb-forms-success-message' => array(
+					'border-left'      => '2px solid ' . $attr['successMessageBorderColor'],
+					'background-color' => $attr['successMessageBGColor'],
+					'color'            => $attr['successMessageTextColor'],
+				),
+				' .uagb-forms-failed-message'  => array(
+					'border-left'      => '2px solid ' . $attr['failedMessageBorderColor'],
+					'background-color' => $attr['failedMessageBGColor'],
+					'color'            => $attr['failedMessageTextColor'],
+				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 					'text-align' => $attr['buttonAlign'],
 

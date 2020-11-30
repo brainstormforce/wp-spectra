@@ -24,6 +24,10 @@ const attributes = {
 		type: "string",
 		default: __( 'The form has been submitted Successfully!' )
 	},
+	failedMessage : {
+		type: "string",
+		default: __( 'Unsuccessful Submission!' )
+	},
 	confirmationUrl : {
 		type: "string",
 	},
@@ -33,12 +37,15 @@ const attributes = {
 	},	
 	afterSubmitToEmail : {
 		type: "string",
+		default:'',
 	},
 	afterSubmitCcEmail : {
 		type: "string",
+		default:'',
 	},
 	afterSubmitBccEmail : {
 		type: "string",
+		default:'',
 	},
 	afterSubmitEmailSubject : {
 		type: "string",
@@ -314,6 +321,32 @@ const attributes = {
 	reCaptchaSecretKeyV3 : {
 		type: "string",
 		default: "",
+	},
+
+	//message attributes
+	successMessageTextColor : {
+		type: "string",
+		default:"",
+	},
+	successMessageBGColor : {
+		type: "string",
+		default:"#00800030",
+	},
+	successMessageBorderColor : {
+		type: "string",
+		default:"green",
+	},
+	failedMessageTextColor : {
+		type: "string",
+		default:"",
+	},
+	failedMessageBorderColor : {
+		type: "string",
+		default:"red",
+	},
+	failedMessageBGColor : {
+		type: "string",
+		default:"#f5f5f5",
 	},
 }
 export default attributes

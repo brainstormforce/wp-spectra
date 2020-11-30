@@ -103,7 +103,7 @@
             
             //add spiner to form button to show processing.
             $( '<span class="components-spinner"></span>' ).appendTo( $form.find(".uagb-forms-main-submit-button-wrap") );
-
+            console.log(after_submit_data);
             $.ajax({
                 type: 'POST',
                 url: uagb_forms_data.ajax_url,
@@ -111,6 +111,7 @@
                     action: 'uagb_process_forms',                    
                     nonce : uagb_forms_data.uagb_forms_ajax_nonce,
                     form_data:postData,
+                    sendAfterSubmitEmail : attr['sendAfterSubmitEmail'],
                     after_submit_data:after_submit_data,
                     uagab_captcha_keys : uagab_captcha_keys,
                     uagb_captcha_response : uagb_captcha_response,
@@ -123,13 +124,18 @@
                         
                         if ( 'message' === attr.confirmationType ) {                             
                             $('[name="uagb-form-'+attr['block_id']+'"]').hide();
-                            $('.uagb-forms-success-message-'+attr['block_id']).removeClass('uagb-forms-success-message-hide')
+                            $('.uagb-forms-success-message-'+attr['block_id']).removeClass('uagb-forms-submit-message-hide').addClass('uagb-forms-success-message')
                         }
                         
                         if ( 'url' === attr.confirmationType ) {
                             window.location.replace(attr.confirmationUrl);
                         }
                         
+                    }else if( 400 === response.data ){
+                        if ( 'message' === attr.confirmationType ) {                             
+                            $('[name="uagb-form-'+attr['block_id']+'"]').hide();
+                            $('.uagb-forms-failed-message-'+attr['block_id']).removeClass('uagb-forms-submit-message-hide').addClass('uagb-forms-failed-message')
+                        }
                     }
                     
                 }

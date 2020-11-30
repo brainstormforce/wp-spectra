@@ -141,6 +141,7 @@ class UAGBFormsEdit extends Component {
 			buttonAlign,
 			confirmationType,
 			confirmationMessage,
+			failedMessage,
 			confirmationUrl,
 			sendAfterSubmitEmail,			
 			afterSubmitToEmail,
@@ -219,7 +220,13 @@ class UAGBFormsEdit extends Component {
 			reCaptchaSecretKeyV2,
 			reCaptchaSecretKeyV3,
 			reCaptchaSiteKeyV2,
-			reCaptchaSiteKeyV3
+			reCaptchaSiteKeyV3,
+			successMessageTextColor,
+			successMessageBGColor,
+			successMessageBorderColor,
+			failedMessageTextColor,
+			failedMessageBorderColor,
+			failedMessageBGColor,
         } = attributes
 
 
@@ -342,12 +349,68 @@ class UAGBFormsEdit extends Component {
 						</Button>
 					</ButtonGroup>
 					{ 'message' === confirmationType && 
-						<TextareaControl
-							label="Message"
-							help={ __( "Enter a message you want to display after form Submission" ) }
-							value={ confirmationMessage }
-							onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
-						/>
+						<Fragment>
+							<TextareaControl
+								label="Success Message"
+								help={ __( "Enter a message you want to display after successfull form Submission" ) }
+								value={ confirmationMessage }
+								onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
+							/>
+							<PanelBody
+								title={ __( "Success Message Design" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body"
+							>
+								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageTextColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageTextColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageTextColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageBGColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageBGColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageBGColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageBorderColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelBody>
+							<TextareaControl
+								label="Failed Message"
+								help={ __( "Enter a message you want to display after unsuccessfull form Submission" ) }
+								value={ failedMessage }
+								onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
+							/>
+							<PanelBody
+								title={ __( "Failed Message Design" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body"
+							>
+								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageTextColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageTextColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageTextColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBGColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageBGColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageBGColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageBorderColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelBody>
+						</Fragment>
 					}
 					{ 'url' === confirmationType && 
 						<TextControl
