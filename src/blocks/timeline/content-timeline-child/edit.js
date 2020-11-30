@@ -150,8 +150,8 @@ class UAGBcontentTimelineChild extends Component {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
 			this.props.setAttributes( { classMigrate: true } )
-			
-
+			// console.log( this.props.attributes.content_class )
+			// this.props.setAttributes( { dayalign_class: this.props.attributes.dayalign_class } )
 			// Pushing Style tag for this block css.
 			const $style = document.createElement( "style" )
 			$style.setAttribute( "id", "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -160,18 +160,6 @@ class UAGBcontentTimelineChild extends Component {
 
 		componentDidUpdate(prevProps, prevState){
 			var id = this.props.clientId
-
-			// if ( prevProps.attributes.content_class == "uagb-timeline__widget uagb-timeline__right" ) {
-			// 	const { setAttributes } = this.props
-			// 	setAttributes( { content_class: "uagb-timeline__widget uagb-timeline__left" } )
-			// }
-			// console.log(this.props.attributes)
-			// window.addEventListener("load", this.timelineContent_back(id))
-			// window.addEventListener("resize", this.timelineContent_back(id))
-			// var time = this
-			// $(".edit-post-layout__content").scroll( function(event) {
-			// 	time.timelineContent_back(id)
-			// })
 		}	
 
 		render() {
@@ -264,14 +252,6 @@ class UAGBcontentTimelineChild extends Component {
 					time_desc,
 				},
 			} = this.props
-
-			const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId(this.props.clientId);
-
-			const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId );
-
-			const innerBlocks = select('core/block-editor').getBlocksByClientId( parentClientId )[0].innerBlocks;
-			
-			const getChildBlocks = select('core/block-editor').getBlocks( parentClientId );
 
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -455,9 +435,6 @@ class UAGBcontentTimelineChild extends Component {
 			// 	</InspectorControls>
 			// )
 
-			const counter1 = wp.data.select( 'core/editor' ).getBlockCount( parentClientId );
-			var content_align_class = AlignClass( this.props.attributes, (counter1%2) ) // Get classname for layout alignment
-			var day_align_class     = DayAlignClass( this.props.attributes, (counter1%2) ) // Get classname for day alignment.
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
@@ -470,16 +447,10 @@ class UAGBcontentTimelineChild extends Component {
 				}
 			}
 
-			const hasItems = Array.isArray( time_heading ) && time_heading.length
-			const hasDate = Array.isArray( t_date ) && t_date.length
-			getChildBlocks.map((UAGBcontentTimelineChild, key) => {
 				if(timelinAlignment == "center"){
 					display_inner_date = true
-					content_align_class = AlignClass( this.props.attributes,key)
-					day_align_class = DayAlignClass( this.props.attributes,key)
 				} 
-			})
-		
+
 				return (
 							<Fragment>
 								{/* { content_control } */}
@@ -495,24 +466,10 @@ class UAGBcontentTimelineChild extends Component {
 								<div className = "uagb-timeline__days">
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"   id={"uagb-timeline-child-"+this.props.clientId}>
 									<div className = { this.props.attributes.content_class }>
-										{/* // getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-										// AlignClass( parentAttributes,((Math.round(Math.random(1))>=0.5)? 1 : 0) )
-										// AlignClass(this.props.attributes,(counter%2))
-										// AlignClass( parentAttributes, randomNumber(0, 1) )
-										// })
-									// }> */}
-										
 									<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
 										<span className = {icon_class}>{ renderSVG(icon) }</span>
 									</div>
-
 								<div className = { this.props.attributes.dayalign_class }>
-									{/* // getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {Math.round(Math.random(1)) 
-									// DayAlignClass( parentAttributes, ((Math.round(Math.random(1))>0.5)? 1 : 0) )
-									// DayAlignClass(this.props.attributes,(counter%2))
-									// DayAlignClass( parentAttributes, randomNumber(0, 1) )
-									// })
-								// } >	 */}
 								<div className="uagb-timeline__events-new">
 									<div className="uagb-timeline__events-inner-new">
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >

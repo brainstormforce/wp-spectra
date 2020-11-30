@@ -38,13 +38,6 @@ export default function save( props ) {
 	/* Style for elements */
 	var front_style = contentTimelineChildStyle( props )
 
-	const hasItems = Array.isArray( tm_content ) && tm_content.length
-
-	// var content_align_class = '';
-
-	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
-	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
-
 	var display_inner_date = true
 	var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "
 	var post_date = t_date
@@ -56,27 +49,23 @@ export default function save( props ) {
 		}
 	}
 
-	// for (var i = 1; i <= counter; i++) {
-	// 	if( i % 2 == 0 ){
-	// 		console.log("even-"+i)
-	// 		content_align_class = "uagb-timeline__widget uagb-timeline__right"
-	// 	}else{
-	// 		console.log("odd-"+i)
-	// 		content_align_class = "uagb-timeline__widget uagb-timeline__left"
-	// 	} 
-	// }
-	console.log(props.attributes.content_class)
-	console.log(props.attributes.dayalign_class)
+	var content_class = '';
+	var dayalign_class = '';
+
+	if( props.attributes.dayalign_class != 'undefined' && props.attributes.content_class != 'undefined'){
+		content_class = props.attributes.content_class
+		dayalign_class = props.attributes.dayalign_class
+	}
 	return (
 		<div className = "uagb-timeline__days">
 		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+block_id}>
-			<div className = { props.attributes.content_class }>
+			<div className = { classnames( content_class ) }>
 
 				<div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
 					<span className = {icon_class}>{ renderSVG(icon) }</span>
 				</div>
 
-				<div className = { props.attributes.dayalign_class }>
+				<div className = { classnames( dayalign_class ) }>
 					<div className="uagb-events-new" >
 						<div className="uagb-timeline__events-inner-new" >
 							<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >

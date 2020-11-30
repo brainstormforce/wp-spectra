@@ -356,32 +356,12 @@ class UAGBcontentTimeline extends Component {
 			},
 		} = this.props
 
-		const counter = wp.data.select( 'core/editor' ).getBlockCount( this.props.clientId );
-
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-
 		var content_align_class = ''
 
-		// console.log(select('core/block-editor').getBlocksByClientId( this.props.clientId )[0].innerBlocks)
-
-		select('core/editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-			// console.log(key)
-			dispatch('core/editor').updateBlockAttributes(block.clientId, { content_class: AlignClass( block.attributes,key ) })
-			dispatch('core/editor').updateBlockAttributes(block.clientId, { dayalign_class: DayAlignClass( block.attributes,key ) })
+		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
 		  })
-
-		// getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-		// 	setAttributes( { content_class: AlignClass( this.props.attributes,key ) } )
-		// 	// setAttributes( { content_class: key } )
-		// });
-
-		// setAttributes( { counter: counter } )
-
-		// const blockCount = useSelect( select => ({
-		//    blockCount: wp.data.select('core/block-editor').getBlockCount(this.props.clientId)
-		//  }))
-
-		// const blockHasParent = wp.data.select( 'core/editor' )
 
 		
 		// Parameters for FontIconPicker
@@ -935,6 +915,7 @@ class UAGBcontentTimeline extends Component {
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
+		
 	}
 
 	/*  Js for timeline line and inner line filler*/

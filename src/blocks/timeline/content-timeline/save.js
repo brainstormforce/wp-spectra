@@ -16,6 +16,15 @@ const {
 	InnerBlocks,
 } = wp.blockEditor
 
+const {
+	withSelect,
+	useDispatch,
+	dispatch,
+	select, 
+	useSelect,
+	withDispatch
+} = wp.data
+
 const { Fragment } = wp.element
 
 export default function save( props ) {
@@ -37,7 +46,7 @@ export default function save( props ) {
 	var front_style = contentTimelineStyle( props )
 
 	const hasItems = Array.isArray( tm_content ) && tm_content.length
-
+	// console.log(props.attributes)
 	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
 	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 

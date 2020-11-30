@@ -5,10 +5,12 @@
 const { __ } = wp.i18n
 
 const attributes = {
-	// content_class: {
-	// 	type : "string",
-	// 	default: "uagb-timeline__widget uagb-timeline__right",
-	// },
+	content_class: {
+		type : "string",
+	},
+	dayalign_class: {
+		type : "string",
+	},
 	time_heading:{
 		type: "string",
 		default:__( "Timeline Heading " )
