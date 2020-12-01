@@ -254,6 +254,10 @@ const attributes = {
 		type: "string",
 		default:"#ffffff"
 	},
+	inputplaceholderColor : {
+		type: "string",
+		default:"black"
+	},
 
 	// InputBorder
 	inputborderStyle : {

@@ -64,6 +64,7 @@ function styling( props ) {
         labelColor,
         inputColor,
         bgColor,
+        inputplaceholderColor,
         //Input Border
         inputborderStyle,
         inputborderWidth,
@@ -103,7 +104,9 @@ function styling( props ) {
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
 			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			"font-family": inputFontFamily,
-			"font-weight": inputFontWeight,
+            "font-weight": inputFontWeight,
+            'color' : inputplaceholderColor,          
+            
         },
        
         " .uagb-forms-main-form .uagb-forms-main-submit-button-wrap" : {
@@ -135,7 +138,11 @@ function styling( props ) {
             'background-color' : bgColor,
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
-		}
+        }
+        selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
+            'border-color' : inputborderHoverColor,            
+        }
+        
 	}else if( "underlined" == formStyle ){
         selectors[" .uagb-forms-main-form  .uagb-forms-input"] = {
             'border': 0,
@@ -145,7 +152,11 @@ function styling( props ) {
             'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
-		}
+        }
+        selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
+            'border-color' : inputborderHoverColor,            
+        }
+       
     }
    
     tablet_selectors = {

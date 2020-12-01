@@ -204,6 +204,7 @@ class UAGBFormsEdit extends Component {
 			labelColor,
 			inputColor,
 			bgColor,
+			inputplaceholderColor,
 			//Input Border
 			inputborderStyle,
 			inputborderWidth,
@@ -737,6 +738,12 @@ class UAGBFormsEdit extends Component {
 				<ColorPalette
 					value={ bgColor }
 					onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Field Placeholder Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputplaceholderColor }} ></span></span></p>
+				<ColorPalette
+					value={ inputplaceholderColor }
+					onChange={ ( colorValue ) => setAttributes( { inputplaceholderColor: colorValue } ) }
 					allowReset
 				/>
 						

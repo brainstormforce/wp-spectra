@@ -4943,6 +4943,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
+				$selectors[' .uagb-forms-input:hover'] = array(					
+					'border-color'           => $attr['inputborderHoverColor'],
+				);
+				$selectors[' .uagb-forms-input::placeholder'] = array(					
+					'color'           => $attr['inputplaceholderColor'],
+				);
 			}
 
 			if ( 'underlined' === $attr['formStyle'] ) {
@@ -4955,6 +4961,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['inputColor'],
 					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
+				);
+				$selectors[' .uagb-forms-input:hover'] = array(					
+					'border-color'           => $attr['inputborderHoverColor'],
+				);
+				$selectors[' .uagb-forms-input::placeholder'] = array(					
+					'color'           => $attr['inputplaceholderColor'],
 				);
 			}
 
