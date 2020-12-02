@@ -8,7 +8,7 @@ import times from "lodash/times"
 import memoize from "memize"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import contentTimelineStyle from ".././inline-styles"
+import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
@@ -356,12 +356,18 @@ class UAGBcontentTimeline extends Component {
 			},
 		} = this.props
 
+		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
+
+			if( null != element && "undefined" != typeof element ) {
+				element.innerHTML = contentTimelineStyle( this.props )
+			}
+
 		var content_align_class = ''
 
-		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
-		  })
+		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
+		//   })
 
 		
 		// Parameters for FontIconPicker
@@ -662,14 +668,14 @@ class UAGBcontentTimeline extends Component {
 						max={ 100 }
 						allowReset
 					/>
-					<RangeControl
+					{/* <RangeControl
 						label={ __( "Heading Bottom Spacing" ) }
 						value={ headSpace }
 						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>
+					/> */}
 				</PanelBody>
 				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
 					<FontIconPicker {...icon_props} />
@@ -710,111 +716,111 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
-		const color_control = (
-			<InspectorControls>
-			<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
-				<TextControl
-					label= { __( "Date Settings" ) }
-					value= { t_date }
-					onChange={ ( value ) => setAttributes( { t_date: value } ) }
-				/>
-				<SelectControl
-						label={ __( "Typography" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-							{ value: "p", label: __( "P" ) },
-							{ value: "span", label: __( "SPAN" ) },
-						] }
-					/>
-					<RangeControl
-						label={ __( "Rounded Corners" ) }
-						value={ borderRadius }
-						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-						min={ 0 }
-						initialPosition={10}
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Padding" ) }
-						value={ bgPadding }
-						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-						min={ 1 }
-						initialPosition={10}
-						max={ 50 }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Heading" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { this.props.attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-						fontSize = { { value: headFontSize, label: 'headFontSize' } }
-						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-					/>
+		// const color_control = (
+		// 	<InspectorControls>
+		// 	<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+		// 		<TextControl
+		// 			label= { __( "Date Settings" ) }
+		// 			value= { t_date }
+		// 			onChange={ ( value ) => setAttributes( { t_date: value } ) }
+		// 		/>
+		// 		<SelectControl
+		// 				label={ __( "Typography" ) }
+		// 				value={ headingTag }
+		// 				onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+		// 				options={ [
+		// 					{ value: "h1", label: __( "H1" ) },
+		// 					{ value: "h2", label: __( "H2" ) },
+		// 					{ value: "h3", label: __( "H3" ) },
+		// 					{ value: "h4", label: __( "H4" ) },
+		// 					{ value: "h5", label: __( "H5" ) },
+		// 					{ value: "h6", label: __( "H6" ) },
+		// 					{ value: "p", label: __( "P" ) },
+		// 					{ value: "span", label: __( "SPAN" ) },
+		// 				] }
+		// 			/>
+		// 			<RangeControl
+		// 				label={ __( "Rounded Corners" ) }
+		// 				value={ borderRadius }
+		// 				onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+		// 				min={ 0 }
+		// 				initialPosition={10}
+		// 				max={ 50 }
+		// 				allowReset
+		// 			/>
+		// 			<RangeControl
+		// 				label={ __( "Padding" ) }
+		// 				value={ bgPadding }
+		// 				onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+		// 				min={ 1 }
+		// 				initialPosition={10}
+		// 				max={ 50 }
+		// 				allowReset
+		// 			/>
+		// 			<hr className="uagb-editor__separator" />
+		// 			<h2>{ __( "Heading" ) }</h2>
+		// 			<TypographyControl
+		// 				label={ __( "Typography" ) }
+		// 				attributes = { this.props.attributes }
+		// 				setAttributes = { setAttributes }
+		// 				loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+		// 				fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+		// 				fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+		// 				fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+		// 				fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+		// 				fontSize = { { value: headFontSize, label: 'headFontSize' } }
+		// 				fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+		// 				fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+		// 				lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+		// 				lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+		// 				lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+		// 				lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+		// 			/>
 
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Content" ) }</h2>
-					<TypographyControl
-						label={ __( "Content Tag" ) }
-						attributes = { this.props.attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-					/>
-				</PanelBody>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: headingColor,
-							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-							label: __( "Heading Color" ),
-						},
-						{
-							value: subHeadingColor,
-							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-							label: __( "Content Color" ),
-						},
-						{
-							value: backgroundColor,
-							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-							label: __( "Background Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
-			</InspectorControls>
-		)
+		// 			<hr className="uagb-editor__separator" />
+		// 			<h2>{ __( "Content" ) }</h2>
+		// 			<TypographyControl
+		// 				label={ __( "Content Tag" ) }
+		// 				attributes = { this.props.attributes }
+		// 				setAttributes = { setAttributes }
+		// 				loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+		// 				fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+		// 				fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+		// 				fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+		// 				fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+		// 				fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+		// 				fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+		// 				fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+		// 				lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+		// 				lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+		// 				lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+		// 				lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+		// 			/>
+		// 		</PanelBody>
+		// 		<PanelColorSettings
+		// 			title={ __( "Color Settings" ) }
+		// 			initialOpen={ false }
+		// 			colorSettings={ [
+		// 				{
+		// 					value: headingColor,
+		// 					onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+		// 					label: __( "Heading Color" ),
+		// 				},
+		// 				{
+		// 					value: subHeadingColor,
+		// 					onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+		// 					label: __( "Content Color" ),
+		// 				},
+		// 				{
+		// 					value: backgroundColor,
+		// 					onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+		// 					label: __( "Background Color" ),
+		// 				},
+		// 			] }
+		// 		>
+		// 		</PanelColorSettings>
+		// 	</InspectorControls>
+		// )
 
 
 		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
@@ -847,7 +853,7 @@ class UAGBcontentTimeline extends Component {
 		return (
 			<Fragment>
 				{ content_control }
-				{ color_control }
+				{/* { color_control } */}
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -888,6 +894,10 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidMount() {
+		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
+		  })
 		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { classMigrate: true } )

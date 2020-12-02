@@ -4,7 +4,7 @@
 
 const { __ } = wp.i18n
 
-const ITEM_COUNT = 4
+const ITEM_COUNT = 5
 
 const item = []
 const date_arr = []

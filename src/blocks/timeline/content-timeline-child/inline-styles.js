@@ -100,7 +100,7 @@ function contentTimelineStyle( props ) {
 		ctaBackground,
 	} = props.attributes
 
-	
+	// console.log(headingColor)
 	var resp_selectors = "left"
 
 	var selectors = {
@@ -165,13 +165,13 @@ function contentTimelineStyle( props ) {
 			" .uagb-timeline__center-block .uagb-timeline__line" : {
 				"right" : "calc( "+connectorBgsize+"px / 2 )",
 			},
-			" .uagb-timeline__marker" : {
-				"background-color" : separatorBg,
-				"min-height": generateCSSUnit( connectorBgsize, "px" ),
-				"min-width" : generateCSSUnit( connectorBgsize, "px" ),
-				"line-height" : generateCSSUnit( connectorBgsize, "px" ),
-				"border": borderwidth+"px solid"+separatorBorder,
-			},
+			// " .uagb-timeline__marker" : {
+			// 	"background-color" : separatorBg,
+			// 	"min-height": generateCSSUnit( connectorBgsize, "px" ),
+			// 	"min-width" : generateCSSUnit( connectorBgsize, "px" ),
+			// 	"line-height" : generateCSSUnit( connectorBgsize, "px" ),
+			// 	"border": borderwidth+"px solid"+separatorBorder,
+			// },
 			" .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow" : {
 				"height" : generateCSSUnit( connectorBgsize, "px" ),
 			},
@@ -218,24 +218,24 @@ function contentTimelineStyle( props ) {
 				"border-radius" : generateCSSUnit( borderRadius, "px" ),
 				"padding": generateCSSUnit( bgPadding, "px" ),
 			},
-			" .uagb-timeline__icon-new" : {
-				"color": iconColor,
-				"font-size" : generateCSSUnit( iconSize, "px" ),
-				"width": generateCSSUnit( iconSize, "px" ),
-			},
-			" .uagb-timeline__marker.uagb-timeline__in-view-icon" : {
-				"background" : iconBgFocus,
-				"border-color": borderFocus,
-			},
-			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new" : {
-				"color": iconFocus,
-			},
-			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
-				"fill": iconColor,
-			},
-			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
-				"fill": iconFocus,
-			},
+			// " .uagb-timeline__icon-new" : {
+			// 	"color": iconColor,
+			// 	"font-size" : generateCSSUnit( iconSize, "px" ),
+			// 	"width": generateCSSUnit( iconSize, "px" ),
+			// },
+			// " .uagb-timeline__marker.uagb-timeline__in-view-icon" : {
+			// 	"background" : iconBgFocus,
+			// 	"border-color": borderFocus,
+			// },
+			// " .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new" : {
+			// 	"color": iconFocus,
+			// },
+			// " .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
+			// 	"fill": iconColor,
+			// },
+			// " .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
+			// 	"fill": iconFocus,
+			// },
 
 			//Author and CTA
 			" .uagb-timeline__author" : {
