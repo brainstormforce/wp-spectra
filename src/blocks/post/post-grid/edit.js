@@ -26,9 +26,13 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
+	Toolbar,
 	TextControl,
 	RadioControl,
-	IconButton
+	IconButton,
+	Tip,
+	Disabled,
+	Button
 } = wp.components
 
 const {
@@ -40,8 +44,9 @@ const {
 
 const { withSelect } = wp.data
 
-class UAGBPostGrid extends Component {
 
+class UAGBPostGrid extends Component {
+	
 	constructor() {
 		super( ...arguments )
 		this.onSelectPostType = this.onSelectPostType.bind( this )
@@ -51,6 +56,10 @@ class UAGBPostGrid extends Component {
 		this.onChangePageLimit = this.onChangePageLimit.bind( this )
 		this.onChangePrevText = this.onChangePrevText.bind( this )
 		this.onChangeNextText = this.onChangeNextText.bind( this )
+		this.state = {
+			isEditing: false,
+			innerBlocks: [],
+		};
 	}
 
 	onSelectPostType( value ) {
@@ -1076,7 +1085,44 @@ class UAGBPostGrid extends Component {
 				</Fragment>
 			)
 		}
+		const renderViewMode = (
+			<Disabled><Blog editor={false} attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
+		)
 
+		const renderEditMode =  (
+			
+				<Placeholder label='Post Grid Layout'>
+					<div className="uagb_posts_layout-template">
+						<Tip>
+							{ __(
+								'Edit the blocks inside the preview below to change the content displayed for each posts within the post grid.',
+								'uag'
+							) }
+						</Tip>
+						<div className="uagb_posts_layout__actions">
+						<Blog editor={true} attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
+
+						<Button className="uagb_posts_layout__done-button">
+							{ __( 'Done', 'uag' ) }
+						</Button>
+						<Button className="uagb_posts_layout__cancel-button">
+							{ __( 'Cancel', 'uag' ) }
+						</Button>
+						<IconButton className="uagb_posts_layout__reset-button"
+							label={ __(
+								'Reset layout to default',
+								'uag'
+							) }>
+							{ __(
+								'Reset Layout',
+								'uag'
+							) }
+						</IconButton>
+					</div>
+					</div>
+				</Placeholder>
+		)
+		const { isEditing } = this.state;
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -1088,8 +1134,20 @@ class UAGBPostGrid extends Component {
 						} }
 						controls={ [ "left", "center", "right" ] }
 					/>
+					<Toolbar
+					controls={ [
+								{
+									icon: 'edit',
+									title: __( 'Edit', 'uag' ),
+									onClick: () => this.setState( {
+										isEditing: ! this.state.isEditing
+									}),
+									isActive: isEditing,
+								},
+							] }
+					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
+				{ isEditing ? renderEditMode : renderViewMode }
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
