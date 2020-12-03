@@ -364,40 +364,40 @@ class UAGBcontentTimeline extends Component {
 
 		var content_align_class = ''
 
-		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
 			
-			// var content_align = AlignClass( block.attributes,key )
-			// var day_align = DayAlignClass( block.attributes,key )
-			// console.log(content_align)
-			// console.log(day_align)
-			let align_class = ""
-			if( "left" == block.attributes.timelinAlignment ){
-				align_class = "uagb-timeline__widget uagb-timeline__left"
-			}else if( "right" == block.attributes.timelinAlignment ){
-				align_class = "uagb-timeline__widget uagb-timeline__right"
-			}else if( "center" == block.attributes.timelinAlignment ){
-				if( key % 2 == "0" ){
-					align_class = "uagb-timeline__widget uagb-timeline__right"
-				}else{
-					align_class = "uagb-timeline__widget uagb-timeline__left"
-				}  
-			} 
-			let day_align_class = ""
+		// 	// var content_align = AlignClass( block.attributes,key )
+		// 	// var day_align = DayAlignClass( block.attributes,key )
+		// 	// console.log(content_align)
+		// 	// console.log(day_align)
+		// 	let align_class = ""
+		// 	if( "left" == block.attributes.timelinAlignment ){
+		// 		align_class = "uagb-timeline__widget uagb-timeline__left"
+		// 	}else if( "right" == block.attributes.timelinAlignment ){
+		// 		align_class = "uagb-timeline__widget uagb-timeline__right"
+		// 	}else if( "center" == block.attributes.timelinAlignment ){
+		// 		if( key % 2 == "0" ){
+		// 			align_class = "uagb-timeline__widget uagb-timeline__right"
+		// 		}else{
+		// 			align_class = "uagb-timeline__widget uagb-timeline__left"
+		// 		}  
+		// 	} 
+		// 	let day_align_class = ""
 
-			if( "left" == block.attributes.timelinAlignment ){
-				day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-			}else if( "right" == block.attributes.timelinAlignment ){
-				day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-			}else if( "center" == block.attributes.timelinAlignment ){
-				if( key % 2 == "0" ){
-					day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-				}else{
-					day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-				}
-			}
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
-		  })
+		// 	if( "left" == block.attributes.timelinAlignment ){
+		// 		day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+		// 	}else if( "right" == block.attributes.timelinAlignment ){
+		// 		day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+		// 	}else if( "center" == block.attributes.timelinAlignment ){
+		// 		if( key % 2 == "0" ){
+		// 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+		// 		}else{
+		// 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+		// 		}
+		// 	}
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
+		//   })
 
 		
 		// Parameters for FontIconPicker
@@ -570,13 +570,46 @@ class UAGBcontentTimeline extends Component {
 		var today = new Date()
 
 		const renderSettings = (
-			<PanelBody	title={ __( "Date Settings" ) }	initialOpen={ false } >
+			<PanelBody	title={ __( "General" ) } initialOpen={ false }>
+				<h2>{ __( "Layout" ) }</h2>
+					<SelectControl
+						label={ __( "Orientation" ) }
+						value={ timelinAlignment }
+						onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
+						options={ [
+							{ value: "left", label: __( "Left" ) },
+							{ value: "right", label: __( "Right" ) },
+							{ value: "center", label: __( "Center" ) },
+						] }
+					/>
+					<SelectControl
+						label={ __( "Arrow Alignment" ) }
+						value={ arrowlinAlignment }
+						onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
+						options={ [
+							{ value: "top", label: __( "Top" ) },
+							{ value: "bottom", label: __( "Bottom" ) },
+							{ value: "center", label: __( "Center" ) },
+						] }
+					/>
+					<SelectControl
+						label={ __( "Stack on" ) }
+						value={ stack }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "tablet", label: __( "Tablet" ) },
+							{ value: "mobile", label: __( "Mobile" ) },
+						] }
+						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
+						onChange={ ( value ) => setAttributes( { stack: value } ) }
+					/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Date" ) }</h2>
 				<ToggleControl
 					label={ __( "Display Post Date" ) }
 					checked={ displayPostDate }
 					onChange={ this.toggleDisplayPostDate }
 				/>
-
 				{displayPostDate && 
 				<SelectControl
 					label={ __( "Date Format" ) }
@@ -612,75 +645,81 @@ class UAGBcontentTimeline extends Component {
 					allowReset
 				/>
 				}
+				<hr className="uagb-editor__separator" />
+						<h2>{ __( "Heading" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+							fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+							fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+							fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+							fontSize = { { value: headFontSize, label: 'headFontSize' } }
+							fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+							fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+							lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+							lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+							lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+						/>
 
-				{ <Fragment>
-					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-					<ColorPalette
-						value={ dateColor }
-						onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Date Typography" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { this.props.attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: dateLoadGoogleFonts, label: 'dateLoadGoogleFonts' } }
-						fontFamily = { { value: dateFontFamily, label: 'dateFontFamily' } }
-						fontWeight = { { value: dateFontWeight, label: 'dateFontWeight' } }
-						fontSubset = { { value: dateFontSubset, label: 'dateFontSubset' } }
-						fontSizeType = { { value: dateFontsizeType, label: 'dateFontsizeType' } }
-						fontSize = { { value: dateFontsize, label: 'dateFontsize' } }
-						fontSizeMobile = { { value: dateFontsizeMobile, label: 'dateFontsizeMobile' } }
-						fontSizeTablet= { { value: dateFontsizeTablet, label: 'dateFontsizeTablet' } }
-						lineHeightType = { { value: dateLineHeightType, label: 'dateLineHeightType' } }
-						lineHeight = { { value: dateLineHeight, label: 'dateLineHeight' } }
-						lineHeightMobile = { { value: dateLineHeightMobile, label: 'dateLineHeightMobile' } }
-						lineHeightTablet= { { value: dateLineHeightTablet, label: 'dateLineHeightTablet' } }
-					/>
-				</Fragment>
-				}
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Content" ) }</h2>
+						<TypographyControl
+							label={ __( "Content Tag" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+							fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+							fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+							fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+							fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+							fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+							lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+						/>
+
+					{ <Fragment>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Date Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: 'dateLoadGoogleFonts' } }
+							fontFamily = { { value: dateFontFamily, label: 'dateFontFamily' } }
+							fontWeight = { { value: dateFontWeight, label: 'dateFontWeight' } }
+							fontSubset = { { value: dateFontSubset, label: 'dateFontSubset' } }
+							fontSizeType = { { value: dateFontsizeType, label: 'dateFontsizeType' } }
+							fontSize = { { value: dateFontsize, label: 'dateFontsize' } }
+							fontSizeMobile = { { value: dateFontsizeMobile, label: 'dateFontsizeMobile' } }
+							fontSizeTablet= { { value: dateFontsizeTablet, label: 'dateFontsizeTablet' } }
+							lineHeightType = { { value: dateLineHeightType, label: 'dateLineHeightType' } }
+							lineHeight = { { value: dateLineHeight, label: 'dateLineHeight' } }
+							lineHeightMobile = { { value: dateLineHeightMobile, label: 'dateLineHeightMobile' } }
+							lineHeightTablet= { { value: dateLineHeightTablet, label: 'dateLineHeightTablet' } }
+						/>
+						<hr className="uagb-editor__separator" />
+						<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+						<ColorPalette
+							value={ dateColor }
+							onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+							allowReset
+						/>
+					</Fragment>
+					}
 			</PanelBody>
 		)
 
 		const content_control = (
 			<InspectorControls>
 				{ renderSettings }
-				<PanelBody	title={ __( "Layout" ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( "Orientation" ) }
-						value={ timelinAlignment }
-						onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
-						options={ [
-							{ value: "left", label: __( "Left" ) },
-							{ value: "right", label: __( "Right" ) },
-							{ value: "center", label: __( "Center" ) },
-						] }
-					/>
-					<SelectControl
-						label={ __( "Arrow Alignment" ) }
-						value={ arrowlinAlignment }
-						onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
-						options={ [
-							{ value: "top", label: __( "Top" ) },
-							{ value: "bottom", label: __( "Bottom" ) },
-							{ value: "center", label: __( "Center" ) },
-						] }
-					/>
-					<SelectControl
-						label={ __( "Stack on" ) }
-						value={ stack }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "tablet", label: __( "Tablet" ) },
-							{ value: "mobile", label: __( "Mobile" ) },
-						] }
-						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
-						onChange={ ( value ) => setAttributes( { stack: value } ) }
-					/>
-				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false } >
 					<RangeControl
 						label={ __( "Horizontal Space" ) }
@@ -948,10 +987,40 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidUpdate(){
-		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-		// 		dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
-		// 		dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
-		// 	  })
+		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+			
+			// var content_align = AlignClass( block.attributes,key )
+			// var day_align = DayAlignClass( block.attributes,key )
+			// console.log(content_align)
+			// console.log(day_align)
+			let align_class = ""
+			if( "left" == block.attributes.timelinAlignment ){
+				align_class = "uagb-timeline__widget uagb-timeline__left"
+			}else if( "right" == block.attributes.timelinAlignment ){
+				align_class = "uagb-timeline__widget uagb-timeline__right"
+			}else if( "center" == block.attributes.timelinAlignment ){
+				if( key % 2 == "0" ){
+					align_class = "uagb-timeline__widget uagb-timeline__right"
+				}else{
+					align_class = "uagb-timeline__widget uagb-timeline__left"
+				}  
+			} 
+			let day_align_class = ""
+
+			if( "left" == block.attributes.timelinAlignment ){
+				day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+			}else if( "right" == block.attributes.timelinAlignment ){
+				day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+			}else if( "center" == block.attributes.timelinAlignment ){
+				if( key % 2 == "0" ){
+					day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+				}else{
+					day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+				}
+			}
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
+		  })
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))

@@ -2442,7 +2442,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => UAGB_Helper::get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightTablet'], $attr['headLineHeightType'] ),
 				),
-				' .uagb-timeline-desc-content' => array(
+				' p.uagb-timeline-desc-content' => array(
 					'font-size'   => UAGB_Helper::get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightTablet'], $attr['subHeadLineHeightType'] ),
 				),
@@ -2463,7 +2463,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => UAGB_Helper::get_css_value( $attr['headFontSizeMobile'], $attr['headFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightMobile'], $attr['headLineHeightType'] ),
 				),
-				' .uagb-timeline-desc-content' => array(
+				' p.uagb-timeline-desc-content' => array(
 					'font-size'   => UAGB_Helper::get_css_value( $attr['subHeadFontSizeMobile'], $attr['subHeadFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightMobile'], $attr['subHeadLineHeightType'] ),
 				),
@@ -2478,7 +2478,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector      = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
-
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p.uagb-timeline-desc-content', $combined_selectors );
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
@@ -2592,11 +2592,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-timeline-desc-content', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p.uagb-timeline-desc-content', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'author', ' .uagb-timeline__author-link', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-timeline__link', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-timeline__heading a', $combined_selectors );
-
+			
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
@@ -3295,7 +3295,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading-text'           => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' .uagb-timeline-desc-content'            => array(
+				' p.uagb-timeline-desc-content'            => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),

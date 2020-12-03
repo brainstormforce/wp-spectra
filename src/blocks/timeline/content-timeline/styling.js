@@ -123,7 +123,7 @@ function contentTimelineStyle( props ) {
            " .uagb-timeline__heading-text" : {
                "margin-bottom" : generateCSSUnit( headSpace, "px" ),
            },
-           " .uagb-timeline-desc-content" : {
+           " p.uagb-timeline-desc-content" : {
                "font-size" : generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
                "font-family": subHeadFontFamily,
                "font-weight": subHeadFontWeight,
@@ -295,7 +295,7 @@ function contentTimelineStyle( props ) {
            "font-size" : generateCSSUnit( headFontSizeTablet, headFontSizeType ),
            "line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
        },
-       " .uagb-timeline-desc-content" : {
+       " p.uagb-timeline-desc-content" : {
            "font-size" : generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
            "line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
        },
@@ -306,7 +306,7 @@ function contentTimelineStyle( props ) {
        " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content" : {
+       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet p.uagb-timeline-desc-content" : {
            "text-align"  : resp_selectors,
        },
        " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new" : {
@@ -366,7 +366,7 @@ function contentTimelineStyle( props ) {
            "font-size" : generateCSSUnit( headFontSizeMobile, headFontSizeType ),
            "line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
        },
-       " .uagb-timeline-desc-content" : {
+       " p.uagb-timeline-desc-content" : {
            "font-size" : generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
            "line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
        },
@@ -383,7 +383,7 @@ function contentTimelineStyle( props ) {
        " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content" : {
+       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile p.uagb-timeline-desc-content" : {
            "text-align"  : resp_selectors,
        },
        " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new" : {

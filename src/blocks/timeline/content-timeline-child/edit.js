@@ -256,10 +256,6 @@ class UAGBcontentTimelineChild extends Component {
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
 
-			const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId ); //Pass Child's Client Id.
-
-			const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId ); //Pass the Parents CLient Id from above and get all Parent attributes
-
 			if( null != element && "undefined" != typeof element ) {
 				element.innerHTML = contentTimelineChildStyle( this.props )
 			}
@@ -382,7 +378,7 @@ class UAGBcontentTimelineChild extends Component {
 							max={ 50 }
 							allowReset
 						/>
-						<hr className="uagb-editor__separator" />
+						{/* <hr className="uagb-editor__separator" />
 						<h2>{ __( "Heading" ) }</h2>
 						<TypographyControl
 							label={ __( "Typography" ) }
@@ -420,7 +416,7 @@ class UAGBcontentTimelineChild extends Component {
 							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
 							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
 							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-						/>
+						/> */}
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
