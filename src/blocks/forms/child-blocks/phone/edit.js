@@ -3,6 +3,7 @@
  */
 
 import classnames from "classnames"
+import countryOptions from "./country-option"
 
 const { __ } = wp.i18n
 
@@ -127,6 +128,11 @@ class UAGBFormsPhoneEdit extends Component {
 						multiline={ false }
 						id={ block_id }
 					/>
+					<select className="uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor" id={`uagb-form-country-${block_id}`} name={ `${phoneName}[]` }>
+						{ countryOptions.map( ( o, index ) => 
+							<option value={o.props.value} key={index}>{o.props.children}</option>	
+						)}				
+					</select>
 					{phone_html}
 				</div>
 			</Fragment>

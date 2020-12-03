@@ -258,6 +258,11 @@ const attributes = {
 		type: "string",
 		default:"black"
 	},
+	inputactiveColor : {
+		type: "string",
+		default:"black"
+	},
+	
 
 	// InputBorder
 	inputborderStyle : {
@@ -330,7 +335,7 @@ const attributes = {
 	//message attributes
 	successMessageTextColor : {
 		type: "string",
-		default:"",
+		default:"black",
 	},
 	successMessageBGColor : {
 		type: "string",
@@ -342,7 +347,7 @@ const attributes = {
 	},
 	failedMessageTextColor : {
 		type: "string",
-		default:"",
+		default:"black",
 	},
 	failedMessageBorderColor : {
 		type: "string",

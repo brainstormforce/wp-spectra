@@ -13,6 +13,7 @@
             
             $phoneinput = $form.find( '.uagb-forms-phone-input' );
             $phoneinput.on( 'keypress', function( e ) {
+                
                 var charCode = (e.which) ? e.which : e.keyCode
                 if(charCode == 45){
                     return true
@@ -38,6 +39,9 @@
             requiredCheckboxes.on('change', function(e) {
                 var checkboxGroup = requiredCheckboxes.filter('[name="' + $(this).attr('name') + '"]');
                 var isChecked = checkboxGroup.is(':checked');
+                checkboxGroup.each(function() {
+                    this.setCustomValidity(''); //remove all custom validity messages
+                  });
                 checkboxGroup.prop('required', !isChecked);
             });
             requiredCheckboxes.trigger('change');
@@ -69,22 +73,28 @@
             }
             
             var originalSerialized = $($form).serializeArray();
-            
             var postData = {};
             for (var i = 0; i < originalSerialized.length; i++) {
                 let inputname = originalSerialized[i].name;
-                if (originalSerialized[i]['name'].endsWith('[]')) {
+                if (originalSerialized[i]['name'].endsWith('[]')) { //For checkbox element
                     var name = originalSerialized[i]['name'];
                     name = name.substring(0, name.length - 2);
                     if (!(name in postData)) {
                         postData[name] = [];
                     }
                     postData[name].push(originalSerialized[i]['value']);
+                } else if(originalSerialized[i]['value'].startsWith('+')){ //For phone element. 
+                    
+                    var name = originalSerialized[i]['name'];
+                    name = name.substring(0, name.length - 2);
+                    if (!(name in postData)) {
+                        postData[name] = [];
+                    }
+                    postData[$("#"+name).html()].push(originalSerialized[i]['value']);
                 } else {
                     postData[$("#"+inputname).html()] = originalSerialized[i]['value'];
                 }
             }
-            console.log(postData);
             
             var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
@@ -103,7 +113,7 @@
             
             //add spiner to form button to show processing.
             $( '<span class="components-spinner"></span>' ).appendTo( $form.find(".uagb-forms-main-submit-button-wrap") );
-            console.log(after_submit_data);
+            
             $.ajax({
                 type: 'POST',
                 url: uagb_forms_data.ajax_url,

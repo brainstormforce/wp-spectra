@@ -7,15 +7,7 @@
 			float: right;
 		}
 	}
-	.uagb-forms-success-message.uagb-forms-success-message-hide {
-		display: none;
-	}
-	.uagb-forms-success-message.uagb-forms-success-message-show {
-		display: block;
-		border-left: 2px solid green;
-		padding: 20px 20px;
-		background: #00800030;
-	}
+	
 	
 }
 //width for select box in editor
@@ -39,4 +31,7 @@ select.uagb-forms-select-box.uagb-forms-input {
 [data-type="uagb/forms"] .block-editor-block-variation-picker__variations {
 	display: flex;
   justify-content: center;
+}
+[data-type="uagb/forms"] .block-editor-block-variation-picker__variation.components-button.has-icon {
+	width: 90px;
 }

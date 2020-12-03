@@ -14,7 +14,7 @@ const {
 export default function save( props ) {
 
 	const { attributes } = props
-	console.log(props);
+	
 	const {
 		block_id,
 		formLabel,

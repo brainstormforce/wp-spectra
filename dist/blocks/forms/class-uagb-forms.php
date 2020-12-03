@@ -94,7 +94,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			foreach ( $form_data as $key => $value ) {
 
 				if ( $key ) {
-					if ( is_array( $value ) ) {
+					if ( is_array( $value ) && stripos( wp_json_encode( $value ), '+' ) !== false ) {
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . implode( '', $value ) . '</p>';
+					} elseif ( is_array( $value ) ) {
 						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . implode( ', ', $value ) . '</p>';
 					} else {
 						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field( $value ) . '</p>';

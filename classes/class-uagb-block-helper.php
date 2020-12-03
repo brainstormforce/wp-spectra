@@ -4917,6 +4917,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['buttonAlign'],
 
 				),
+				' .uagb-forms-main-form .uagb-forms-input:focus' => array(
+					'outline' => ' none !important',
+					'border'  => '2px solid ' . $attr['inputactiveColor'],
+				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 					'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
 					'color'            => $attr['submitColor'],
@@ -4943,11 +4947,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
-				$selectors[' .uagb-forms-input:hover'] = array(					
-					'border-color'           => $attr['inputborderHoverColor'],
+				$selectors[' .uagb-forms-input:hover']        = array(
+					'border-color' => $attr['inputborderHoverColor'],
 				);
-				$selectors[' .uagb-forms-input::placeholder'] = array(					
-					'color'           => $attr['inputplaceholderColor'],
+				$selectors[' .uagb-forms-input::placeholder'] = array(
+					'color' => $attr['inputplaceholderColor'],
 				);
 			}
 
@@ -4962,11 +4966,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
-				$selectors[' .uagb-forms-input:hover'] = array(					
-					'border-color'           => $attr['inputborderHoverColor'],
+				$selectors[' .uagb-forms-input:hover']        = array(
+					'border-color' => $attr['inputborderHoverColor'],
 				);
-				$selectors[' .uagb-forms-input::placeholder'] = array(					
-					'color'           => $attr['inputplaceholderColor'],
+				$selectors[' .uagb-forms-input::placeholder'] = array(
+					'color' => $attr['inputplaceholderColor'],
 				);
 			}
 

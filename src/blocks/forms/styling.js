@@ -65,6 +65,7 @@ function styling( props ) {
         inputColor,
         bgColor,
         inputplaceholderColor,
+        inputactiveColor,
         //Input Border
         inputborderStyle,
         inputborderWidth,
@@ -108,7 +109,11 @@ function styling( props ) {
             'color' : inputplaceholderColor,          
             
         },
-       
+        ' .uagb-forms-main-form .uagb-forms-input:focus': {
+            'outline' : ' none !important',
+            'border'  : '2px solid ' + inputactiveColor,
+        },
+        
         " .uagb-forms-main-form .uagb-forms-main-submit-button-wrap" : {
             'text-align' : buttonAlign
         },
