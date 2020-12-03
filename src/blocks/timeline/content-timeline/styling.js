@@ -100,7 +100,7 @@ function contentTimelineStyle( props ) {
        ctaBackground,
    } = props.attributes
 
-   console.log(props.attributes)
+//    console.log(props.attributes)
    var resp_selectors = "left"
 
    var selectors = {

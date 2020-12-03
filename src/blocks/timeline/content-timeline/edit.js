@@ -364,10 +364,40 @@ class UAGBcontentTimeline extends Component {
 
 		var content_align_class = ''
 
-		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
-		//   })
+		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+			
+			// var content_align = AlignClass( block.attributes,key )
+			// var day_align = DayAlignClass( block.attributes,key )
+			// console.log(content_align)
+			// console.log(day_align)
+			let align_class = ""
+			if( "left" == block.attributes.timelinAlignment ){
+				align_class = "uagb-timeline__widget uagb-timeline__left"
+			}else if( "right" == block.attributes.timelinAlignment ){
+				align_class = "uagb-timeline__widget uagb-timeline__right"
+			}else if( "center" == block.attributes.timelinAlignment ){
+				if( key % 2 == "0" ){
+					align_class = "uagb-timeline__widget uagb-timeline__right"
+				}else{
+					align_class = "uagb-timeline__widget uagb-timeline__left"
+				}  
+			} 
+			let day_align_class = ""
+
+			if( "left" == block.attributes.timelinAlignment ){
+				day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+			}else if( "right" == block.attributes.timelinAlignment ){
+				day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+			}else if( "center" == block.attributes.timelinAlignment ){
+				if( key % 2 == "0" ){
+					day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
+				}else{
+					day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
+				}
+			}
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
+			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
+		  })
 
 		
 		// Parameters for FontIconPicker
@@ -894,10 +924,10 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidMount() {
-		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
-			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
-		  })
+		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
+		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
+		//   })
 		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { classMigrate: true } )
@@ -918,6 +948,10 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidUpdate(){
+		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
+		// 		dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
+		// 		dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
+		// 	  })
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))

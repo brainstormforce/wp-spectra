@@ -11,19 +11,15 @@ function AlignClass( attributes, index_val ) {
 	}else if( "right" == attributes.timelinAlignment ){
 		align_class = "uagb-timeline__widget uagb-timeline__right"
 	}else if( "center" == attributes.timelinAlignment ){
-		// for (var i = 1; i <= attributes.counter; i++) {
-			if( index_val % 2 == 0 ){
-				// console.log("even-"+i)
-				align_class = "uagb-timeline__widget uagb-timeline__right"
-			}else{
-				// console.log("odd-"+i)
-				align_class = "uagb-timeline__widget uagb-timeline__left"
-			}  
-		}
-	// }     
-        
+		if( index_val % 2 == "0" ){
+			align_class = "uagb-timeline__widget uagb-timeline__right"
+		}else{
+			align_class = "uagb-timeline__widget uagb-timeline__left"
+		}  
+	}     
+    //  console.log(align_class)   
 	return [
-		align_class
+		align_class        
 	]
 }
 
