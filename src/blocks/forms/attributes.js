@@ -256,11 +256,11 @@ const attributes = {
 	},
 	inputplaceholderColor : {
 		type: "string",
-		default:"black"
+		default:"#000000"
 	},
 	inputactiveColor : {
 		type: "string",
-		default:"black"
+		default:"#000000"
 	},
 	
 
@@ -335,7 +335,7 @@ const attributes = {
 	//message attributes
 	successMessageTextColor : {
 		type: "string",
-		default:"black",
+		default:"#000000",
 	},
 	successMessageBGColor : {
 		type: "string",
@@ -347,7 +347,7 @@ const attributes = {
 	},
 	failedMessageTextColor : {
 		type: "string",
-		default:"black",
+		default:"#000000",
 	},
 	failedMessageBorderColor : {
 		type: "string",
