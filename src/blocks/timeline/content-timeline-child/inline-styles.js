@@ -24,21 +24,21 @@ function contentTimelineStyle( props ) {
 				"color": headingColor,
 			},
 			" .uagb-timeline__heading a" : {
-				"text-align": align,
+				// "text-align": align,
 				"color": headingColor,
 			},
 			" .uagb-timeline__heading-text" : {
 				"margin-bottom" : generateCSSUnit( headSpace, "px" ),
 			},
 			" .uagb-timeline-desc-content" : {
-				"text-align": align,
+				// "text-align": align,
 				"color": subHeadingColor,
 			},
 			" .uagb-timeline__events-new" : {
-				"text-align": align,
+				// "text-align": align,
 			},
 			" .uagb-timeline__date-inner" : {
-				"text-align": align,
+				// "text-align": align,
 			},
 			" .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
 				"border-left-color" : backgroundColor,
@@ -53,7 +53,7 @@ function contentTimelineStyle( props ) {
 				"border-right-color" : backgroundColor
 			},
 			" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
-				"text-align": align,
+				// "text-align": align,
 			},
 			" .uagb-timeline__events-inner-new" : {
 				"background-color" : backgroundColor,
@@ -61,10 +61,10 @@ function contentTimelineStyle( props ) {
 				"padding": generateCSSUnit( bgPadding, "px" ),
 			},
 			" .uagb-timeline__author" : {
-				"text-align": align,
+				// "text-align": align,
 			},
 			" .uagb-timeline__link_parent" :{
-				"text-align": align,
+				// "text-align": align,
 			},
 		}
 

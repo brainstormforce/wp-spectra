@@ -203,9 +203,15 @@ function contentTimelineStyle( props ) {
                "line-height": generateCSSUnit( dateLineHeight, dateLineHeightType ),
                "text-align": align,
            },
+           " .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left" : {
+            "margin-right" : generateCSSUnit( horizontalSpace, "px" ),
+        },
            " .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left" : {
                "margin-left" : generateCSSUnit( horizontalSpace, "px" ),
            },
+           " .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right" : {
+            "margin-left": generateCSSUnit( horizontalSpace, "px" ),
+            },
            " .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right" : {
                "margin-right" : generateCSSUnit( horizontalSpace, "px" ),
            },

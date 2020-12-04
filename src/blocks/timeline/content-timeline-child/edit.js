@@ -266,15 +266,6 @@ class UAGBcontentTimelineChild extends Component {
 				return (
 							<Fragment>
 								{ content_control }
-								<BlockControls>
-									<BlockAlignmentToolbar
-										value={ align }
-										onChange={ ( value ) => {
-											setAttributes( { align: value } )
-										} }
-										controls={ [ "center", "left","right" ] }
-									/>
-								</BlockControls>
 								<div className = "uagb-timeline__days">
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"   id={"uagb-timeline-child-"+this.props.clientId}>
 									<div className = { this.props.attributes.content_class }>

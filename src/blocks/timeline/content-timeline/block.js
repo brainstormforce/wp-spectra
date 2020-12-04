@@ -10,8 +10,6 @@
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-import classnames from "classnames"
-import times from "lodash/times"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import ".././style.scss"
@@ -20,12 +18,13 @@ import deprecated from "./deprecated"
 import save from "./save"
 import attributes from "./attributes"
 import edit from "./edit"
-import contentTimelineStyle from ".././inline-styles"
-import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
-const { dateI18n, __experimentalGetSettings } = wp.date
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import contentTimelineStyle from "./styling"
+// import contentTimelineStyle from ".././inline-styles"
+// import ContentTmClasses from ".././classes"
+// import AlignClass from ".././align-classes"
+// import DayAlignClass from ".././day-align-classes"
+// const { dateI18n, __experimentalGetSettings } = wp.date
+// import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Components
 const { __ } = wp.i18n

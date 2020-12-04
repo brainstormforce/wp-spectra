@@ -99,9 +99,7 @@ function contentTimelineStyle( props ) {
 		ctaLoadGoogleFonts,
 		ctaBackground,
 	} = props.attributes
-
-	console.log(iconBgFocus)
-
+	
 	var resp_selectors = "left"
 
 	var selectors = {
