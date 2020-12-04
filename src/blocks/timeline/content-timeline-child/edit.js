@@ -1,41 +1,23 @@
 /**
  * BLOCK: Content Timeline.
  */
-
-import classnames from "classnames"
-import map from "lodash/map"
-import times from "lodash/times"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineChildStyle from "./inline-styles"
-import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
-// Import all of our Text Options requirements.
-import TypographyControl from "../../../components/typography"
-
-// Import Web font loader for google fonts.
-import WebfontLoader from "../../../components/typography/fontloader"
-
-const { dateI18n, __experimentalGetSettings,gmdateI18n } = wp.date
+const { dateI18n } = wp.date
 
 const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
 
-const { decodeEntities } = wp.htmlEntities
-
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
 	createBlock
 } = wp.blocks
 
 const {
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 	BlockAlignmentToolbar,
@@ -45,25 +27,9 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	Placeholder,
 	RangeControl,
-	Spinner,
 	TextControl,
-	ToggleControl,
-	Toolbar,
-	ButtonGroup,
-	Button,
-	TabPanel,
-	Dashicon,
 } = wp.components
-
-const {
-	withSelect,
-	useDispatch,
-	select, 
-	useSelect,
-	withDispatch
-} = wp.data
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -74,7 +40,7 @@ class UAGBcontentTimelineChild extends Component {
 
 			// this.splitBlock = this.splitBlock.bind( this )
 
-			this.getTimelineicon = this.getTimelineicon.bind(this)
+			// this.getTimelineicon = this.getTimelineicon.bind(this)
 
 			this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		}
@@ -125,9 +91,9 @@ class UAGBcontentTimelineChild extends Component {
 	     * @param  {[type]} value [description]
 	     * @return {[type]}       [description]
 	     */
-		getTimelineicon(value) {
-			this.props.setAttributes( { icon: value } )
-		}
+		// getTimelineicon(value) {
+		// 	this.props.setAttributes( { icon: value } )
+		// }
 
 		saveDate( value, index ) {
 			const { attributes, setAttributes } = this.props
@@ -150,8 +116,6 @@ class UAGBcontentTimelineChild extends Component {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
 			this.props.setAttributes( { classMigrate: true } )
-			// console.log( this.props.attributes.content_class )
-			// this.props.setAttributes( { dayalign_class: this.props.attributes.dayalign_class } )
 			// Pushing Style tag for this block css.
 			const $style = document.createElement( "style" )
 			$style.setAttribute( "id", "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -160,93 +124,41 @@ class UAGBcontentTimelineChild extends Component {
 
 		componentDidUpdate(prevProps, prevState){
 			var id = this.props.clientId
+			window.addEventListener("load", this.timelineContent_back(id))
+			window.addEventListener("resize", this.timelineContent_back(id))
+			var time = this
+			$(".edit-post-layout__content").scroll( function(event) {
+				time.timelineContent_back(id)
+			})
 		}	
 
 		render() {
 
 			// Setup the attributes.
 			const {
-				isSelected,
-				className,
+				// isSelected,
+				// className,
 				setAttributes,
 				insertBlocksAfter,
 				mergeBlocks,
 				onReplace,
-				count,
 				attributes: {
-					counter,
-					tm_content,
-					headingAlign,
-					separatorHeight,
 					headSpace,
-					separatorSpace,
+					headingTag,
+					// separatorSpace,
 					headingColor,
 					subHeadingColor,
 					backgroundColor,
-					separatorColor,
-					separatorFillColor,
-					separatorBg,
-					separatorBorder,
-					borderFocus,
-					headingTag,
-					headFontSizeType,
-					headFontSize,
-					headFontSizeTablet,
-					headFontSizeMobile,
-					headFontFamily,
-					headFontWeight,
-					headFontSubset,
-					headLineHeightType,
-					headLineHeight,
-					headLineHeightTablet,
-					headLineHeightMobile,
-					headLoadGoogleFonts,
-					timelineItem,
+					// timelineItem,
 					timelinAlignment,
-					arrowlinAlignment,
-					subHeadFontSizeType,
-					subHeadFontSize,
-					subHeadFontSizeTablet,
-					subHeadFontSizeMobile,
-					subHeadFontFamily,
-					subHeadFontWeight,
-					subHeadFontSubset,
-					subHeadLineHeightType,
-					subHeadLineHeight,
-					subHeadLineHeightTablet,
-					subHeadLineHeightMobile,
-					subHeadLoadGoogleFonts,
-					verticalSpace,
-					horizontalSpace,
-					separatorwidth,
-					borderwidth,
-					connectorBgsize,
-					dateBottomspace,
 					align,
 					icon,
-					iconColor,
-					dateColor,
-					dateFontsizeType,
-					dateFontsize,
-					dateFontsizeTablet,
-					dateFontsizeMobile,
-					dateFontFamily,
-					dateFontWeight,
-					dateFontSubset,
-					dateLineHeightType,
-					dateLineHeight,
-					dateLineHeightTablet,
-					dateLineHeightMobile,
-					dateLoadGoogleFonts,
-					iconSize,
 					borderRadius,
 					bgPadding,
 					block_id,
-					iconFocus,
-					iconBgFocus,
 					t_date,
 					displayPostDate,
-					stack,
+					// stack,
 					dateFormat,
 					time_heading,
 					time_desc,
@@ -259,76 +171,7 @@ class UAGBcontentTimelineChild extends Component {
 			if( null != element && "undefined" != typeof element ) {
 				element.innerHTML = contentTimelineChildStyle( this.props )
 			}
-
-			// Parameters for FontIconPicker
-			const icon_props = {
-				icons: svg_icons,
-				value: icon,
-				onChange: this.getTimelineicon,
-				isMulti: false,
-				renderFunc: renderSVG,
-				noSelectedPlaceholder: __( "Select Icon" )
-			}
 			
-			const iconControls = (
-						<PanelBody	title={ __( "Connector Color Settings" ) }	initialOpen={ true }>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "focus",
-										title: __( "Focus" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "focus" === tabName.name ) {
-											tabout = iconFocusSettings
-										}else {
-											tabout = iconColorSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-						</PanelBody>
-					)
-					
-					const iconColorSettings = (
-						<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
-							colorSettings={ [
-								{
-									value: separatorColor,
-									onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-									label: __( "Line Color" ),
-								},
-								{
-									value: iconColor,
-									onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-									label: __( "Icon Color" ),
-								},
-								{
-									value: separatorBg,
-									onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
-									label: __( "Background Color" ),
-								},
-								{
-									value: separatorBorder,
-									onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
-									label: __( "Border Color" ),
-								},
-							] }
-						>
-						</PanelColorSettings>
-					)
-					
 			const content_control = (
 				<InspectorControls>
 				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
@@ -378,45 +221,6 @@ class UAGBcontentTimelineChild extends Component {
 							max={ 50 }
 							allowReset
 						/>
-						{/* <hr className="uagb-editor__separator" />
-						<h2>{ __( "Heading" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-							fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-							fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-							fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-							fontSize = { { value: headFontSize, label: 'headFontSize' } }
-							fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-							fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-							lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-							lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-							lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-						/>
-
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Content" ) }</h2>
-						<TypographyControl
-							label={ __( "Content Tag" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-							fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-							fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-							fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-							fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-							fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-							lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-							lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-						/> */}
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
@@ -461,8 +265,6 @@ class UAGBcontentTimelineChild extends Component {
 
 				return (
 							<Fragment>
-								{/* { iconControls } 
-								{ iconColorSettings } */}
 								{ content_control }
 								<BlockControls>
 									<BlockAlignmentToolbar

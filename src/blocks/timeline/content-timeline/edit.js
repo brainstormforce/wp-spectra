@@ -1117,26 +1117,4 @@ class UAGBcontentTimeline extends Component {
 		
 		}
 	}
-}
-export default compose(
-withDispatch( ( dispatch, ownProps, registry ) => {
-
-	// updateEditable( isEditing ) {
-		// console.log(isEditing)
-	  const { clientId, setAttributes } = ownProps;
-	  const { getBlockOrder, getBlock } = registry.select( 'core/block-editor' );
-
-	  //get all innerBlockIds
-	  const innerBlockIds = getBlockOrder( ownProps.clientId );
-
-	  // console.log(innerBlockIds)
-
-  return {
-    
-      // innerBlockIds.forEach( ( innerBlockId ) => {
-      //   console.log( getBlock( innerBlockId ) );
-      // } );
-    // },
-  };
-} )
-) ( UAGBcontentTimeline )
+}export default UAGBcontentTimeline
