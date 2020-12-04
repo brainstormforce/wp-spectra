@@ -100,6 +100,8 @@ function contentTimelineStyle( props ) {
 		ctaBackground,
 	} = props.attributes
 
+	console.log(iconBgFocus)
+
 	var resp_selectors = "left"
 
 	var selectors = {

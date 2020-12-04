@@ -3,15 +3,15 @@
  */
 
 import classnames from "classnames"
-import map from "lodash/map"
+// import map from "lodash/map"
 import times from "lodash/times"
 import memoize from "memize"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
+// import AlignClass from ".././align-classes"
+// import DayAlignClass from ".././day-align-classes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Import all of our Text Options requirements.
@@ -26,11 +26,8 @@ const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
 
-const { decodeEntities } = wp.htmlEntities
-
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
 	createBlock
 } = wp.blocks
 
@@ -38,7 +35,7 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
+	// RichText,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
 	InnerBlocks,
@@ -47,16 +44,16 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	Placeholder,
+	// Placeholder,
 	RangeControl,
-	Spinner,
+	// Spinner,
 	TextControl,
 	ToggleControl,
-	Toolbar,
-	ButtonGroup,
-	Button,
+	// Toolbar,
+	// ButtonGroup,
+	// Button,
 	TabPanel,
-	Dashicon,
+	// Dashicon,
 } = wp.components
 
 const {
@@ -273,27 +270,19 @@ class UAGBcontentTimeline extends Component {
 
 		// Setup the attributes.
 		const {
-			isSelected,
 			className,
 			setAttributes,
-			insertBlocksAfter,
-			mergeBlocks,
-			onReplace,
+			// insertBlocksAfter,
+			// onReplace,
 			attributes: {
 				tm_content,
-				headingAlign,
 				separatorHeight,
-				headSpace,
 				separatorSpace,
-				headingColor,
-				subHeadingColor,
-				backgroundColor,
 				separatorColor,
 				separatorFillColor,
 				separatorBg,
 				separatorBorder,
 				borderFocus,
-				headingTag,
 				headFontSizeType,
 				headFontSize,
 				headFontSizeTablet,
@@ -344,8 +333,6 @@ class UAGBcontentTimeline extends Component {
 				dateLineHeightMobile,
 				dateLoadGoogleFonts,
 				iconSize,
-				borderRadius,
-				bgPadding,
 				block_id,
 				iconFocus,
 				iconBgFocus,
@@ -361,44 +348,6 @@ class UAGBcontentTimeline extends Component {
 			if( null != element && "undefined" != typeof element ) {
 				element.innerHTML = contentTimelineStyle( this.props )
 			}
-
-		var content_align_class = ''
-
-		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-			
-		// 	// var content_align = AlignClass( block.attributes,key )
-		// 	// var day_align = DayAlignClass( block.attributes,key )
-		// 	// console.log(content_align)
-		// 	// console.log(day_align)
-		// 	let align_class = ""
-		// 	if( "left" == block.attributes.timelinAlignment ){
-		// 		align_class = "uagb-timeline__widget uagb-timeline__left"
-		// 	}else if( "right" == block.attributes.timelinAlignment ){
-		// 		align_class = "uagb-timeline__widget uagb-timeline__right"
-		// 	}else if( "center" == block.attributes.timelinAlignment ){
-		// 		if( key % 2 == "0" ){
-		// 			align_class = "uagb-timeline__widget uagb-timeline__right"
-		// 		}else{
-		// 			align_class = "uagb-timeline__widget uagb-timeline__left"
-		// 		}  
-		// 	} 
-		// 	let day_align_class = ""
-
-		// 	if( "left" == block.attributes.timelinAlignment ){
-		// 		day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-		// 	}else if( "right" == block.attributes.timelinAlignment ){
-		// 		day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-		// 	}else if( "center" == block.attributes.timelinAlignment ){
-		// 		if( key % 2 == "0" ){
-		// 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
-		// 		}else{
-		// 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-		// 		}
-		// 	}
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
-		//   })
-
 		
 		// Parameters for FontIconPicker
 		const icon_props = {
@@ -785,144 +734,13 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
-		// const color_control = (
-		// 	<InspectorControls>
-		// 	<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
-		// 		<TextControl
-		// 			label= { __( "Date Settings" ) }
-		// 			value= { t_date }
-		// 			onChange={ ( value ) => setAttributes( { t_date: value } ) }
-		// 		/>
-		// 		<SelectControl
-		// 				label={ __( "Typography" ) }
-		// 				value={ headingTag }
-		// 				onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-		// 				options={ [
-		// 					{ value: "h1", label: __( "H1" ) },
-		// 					{ value: "h2", label: __( "H2" ) },
-		// 					{ value: "h3", label: __( "H3" ) },
-		// 					{ value: "h4", label: __( "H4" ) },
-		// 					{ value: "h5", label: __( "H5" ) },
-		// 					{ value: "h6", label: __( "H6" ) },
-		// 					{ value: "p", label: __( "P" ) },
-		// 					{ value: "span", label: __( "SPAN" ) },
-		// 				] }
-		// 			/>
-		// 			<RangeControl
-		// 				label={ __( "Rounded Corners" ) }
-		// 				value={ borderRadius }
-		// 				onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-		// 				min={ 0 }
-		// 				initialPosition={10}
-		// 				max={ 50 }
-		// 				allowReset
-		// 			/>
-		// 			<RangeControl
-		// 				label={ __( "Padding" ) }
-		// 				value={ bgPadding }
-		// 				onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-		// 				min={ 1 }
-		// 				initialPosition={10}
-		// 				max={ 50 }
-		// 				allowReset
-		// 			/>
-		// 			<hr className="uagb-editor__separator" />
-		// 			<h2>{ __( "Heading" ) }</h2>
-		// 			<TypographyControl
-		// 				label={ __( "Typography" ) }
-		// 				attributes = { this.props.attributes }
-		// 				setAttributes = { setAttributes }
-		// 				loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-		// 				fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-		// 				fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-		// 				fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-		// 				fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-		// 				fontSize = { { value: headFontSize, label: 'headFontSize' } }
-		// 				fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-		// 				fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-		// 				lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-		// 				lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-		// 				lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-		// 				lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-		// 			/>
-
-		// 			<hr className="uagb-editor__separator" />
-		// 			<h2>{ __( "Content" ) }</h2>
-		// 			<TypographyControl
-		// 				label={ __( "Content Tag" ) }
-		// 				attributes = { this.props.attributes }
-		// 				setAttributes = { setAttributes }
-		// 				loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-		// 				fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-		// 				fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-		// 				fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-		// 				fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-		// 				fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-		// 				fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-		// 				fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-		// 				lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-		// 				lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-		// 				lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-		// 				lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-		// 			/>
-		// 		</PanelBody>
-		// 		<PanelColorSettings
-		// 			title={ __( "Color Settings" ) }
-		// 			initialOpen={ false }
-		// 			colorSettings={ [
-		// 				{
-		// 					value: headingColor,
-		// 					onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-		// 					label: __( "Heading Color" ),
-		// 				},
-		// 				{
-		// 					value: subHeadingColor,
-		// 					onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-		// 					label: __( "Content Color" ),
-		// 				},
-		// 				{
-		// 					value: backgroundColor,
-		// 					onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-		// 					label: __( "Background Color" ),
-		// 				},
-		// 			] }
-		// 		>
-		// 		</PanelColorSettings>
-		// 	</InspectorControls>
-		// )
-
-
 		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
 			return times( icon_block, n => [ 'uagb/content-timeline-child',tm_content[n]] )
 		} )
 
-
-		// const counterx = times( timelineItem, n => this.gettimelineItem(n) )
-		// console.log(timelineItem)
-
-
-		// const getContentTimelineTemplate = [
-		// 	[ 'uagb/content-timeline-child', 
-		// 		{
-		// 			iconColor:iconColor,
-		// 			iconSize:iconSize,
-		// 			iconBgFocus:iconBgFocus,
-		// 			borderFocus:borderFocus,
-		// 			iconColor:iconColor,
-		// 			timelineItem:timelineItem,
-		// 			tm_content:tm_content,
-		// 		}
-		// 	]
-		// ];
-
-		// console.log("parent-"+counterx)
-
-		// console.log(getContentTimelineTemplate)
-
 		return (
 			<Fragment>
 				{ content_control }
-				{/* { color_control } */}
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -963,10 +781,6 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidMount() {
-		// select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: AlignClass( block.attributes,key ) }))
-		// 	dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: DayAlignClass( block.attributes,key ) }))
-		//   })
 		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { classMigrate: true } )
@@ -988,11 +802,6 @@ class UAGBcontentTimeline extends Component {
 
 	componentDidUpdate(){
 		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
-			
-			// var content_align = AlignClass( block.attributes,key )
-			// var day_align = DayAlignClass( block.attributes,key )
-			// console.log(content_align)
-			// console.log(day_align)
 			let align_class = ""
 			if( "left" == block.attributes.timelinAlignment ){
 				align_class = "uagb-timeline__widget uagb-timeline__left"
@@ -1021,6 +830,7 @@ class UAGBcontentTimeline extends Component {
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
 		  })
+
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
@@ -1028,7 +838,6 @@ class UAGBcontentTimeline extends Component {
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
-		
 	}
 
 	/*  Js for timeline line and inner line filler*/
