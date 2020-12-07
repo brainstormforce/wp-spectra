@@ -160,6 +160,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.19.0 ###
+* Improvement: Ability to modify breakpoints for Dynamic CSS.
+* Improvement: Table of Content - Fixed issue with scroll to heading when the heading has ellipsis dots in them.
+
 ### 1.18.1 ###
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
 * Improvement: FAQ Schema - Added keyboard accessibility of spacebar, enter and left-click.
