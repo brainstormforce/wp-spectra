@@ -2339,16 +2339,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 					'padding'          => UAGB_Helper::get_css_value( $attr['bgPadding'], 'px' ),
 				),
+				' .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+					'border-left-color' => $attr['backgroundColor'],
+				),				
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				// ' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
-				// 	'border-left-color' => $attr['backgroundColor'],
-				// ),
-				// ' .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
-				// 	'border-right-color' => $attr['backgroundColor'],
-				// ),
 				' .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+					'border-right-color' => $attr['backgroundColor'],
+				),				
+				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
 			);
@@ -2444,6 +2444,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
 					'color' => $attr['iconFocus'],
 				),
+				// ' .uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				// 	'border-left' => 13px solid #ff6900;
+				// ),				
+				// ' .uagb-timeline__left-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				// 	'border-right' => 13px solid #fcb900;
+				// ),
 			);
 
 			// $desktop_selectors = self::get_timeline_selectors( $attr );
