@@ -801,6 +801,8 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	componentDidUpdate(){
+
+		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId ); //Pass Child's Client Id.
 		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
 			let align_class = ""
 			if( "left" == block.attributes.timelinAlignment ){
@@ -827,10 +829,15 @@ class UAGBcontentTimeline extends Component {
 					day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
 				}
 			}
+			
+
+			// const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId ); //Pass the Parents CLient Id from above and get all Parent attributes
+			// console.log(parentAttributes.t_date[key].title)
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
+			// dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ t_date: parentAttributes.t_date[key].title }))
 		  })
-
+		
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))

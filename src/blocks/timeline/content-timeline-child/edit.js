@@ -31,6 +31,8 @@ const {
 	TextControl,
 } = wp.components
 
+const { select, withSelect } = wp.data;
+
 let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBcontentTimelineChild extends Component {
@@ -247,6 +249,10 @@ class UAGBcontentTimelineChild extends Component {
 				</InspectorControls>
 			)
 
+			
+
+			// console.log(t_date)
+			
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
