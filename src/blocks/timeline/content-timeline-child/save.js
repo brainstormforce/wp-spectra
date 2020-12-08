@@ -1,12 +1,9 @@
 /**
- * BLOCK: Testimonial - Save Block
+ * BLOCK: Content timeline - Save Block
  */
 
 import classnames from "classnames"
 import contentTimelineChildStyle from "./inline-styles"
-import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
@@ -20,16 +17,10 @@ const { Fragment } = wp.element
 export default function save( props ) {
 	const {
 		block_id,
-		counter,
 		headingTag,
-		timelinAlignment,
 		displayPostDate,
 		icon,
-		tm_content,
 		t_date,
-		date_icon,
-		stack,
-		timelineItem,
 		dateFormat,
 		time_heading,
 		time_desc,

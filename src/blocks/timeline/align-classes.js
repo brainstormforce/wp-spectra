@@ -17,7 +17,7 @@ function AlignClass( attributes, index_val ) {
 			align_class = "uagb-timeline__widget uagb-timeline__left"
 		}  
 	}     
-    //  console.log(align_class)   
+    
 	return [
 		align_class        
 	]
