@@ -25,27 +25,12 @@ export default function save( props ) {
 		reCaptchaEnable,
 		reCaptchaType,			
 		reCaptchaSiteKeyV2,
-		reCaptchaSecretKeyV2,
-		reCaptchaSiteKeyV3,
-		reCaptchaSecretKeyV3
+		reCaptchaSecretKeyV2,	
 	} = attributes
 
 
 
 	const renderButtonHtml = () => {
-
-		if ( reCaptchaEnable && 'v3' === reCaptchaType ) {			
-			return (
-				<button className="uagb-forms-main-submit-button g-recaptcha" data-sitekey={ reCaptchaSiteKeyV3 }>
-						<RichText.Content
-							tagName='div'
-							value={ submitButtonText }
-							className='uagb-forms-main-submit-button-text'
-						/>
-				</button>
-			)
-		}
-
 		return (
 			<button className="uagb-forms-main-submit-button" >
 						<RichText.Content
@@ -69,12 +54,12 @@ export default function save( props ) {
 					{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (					
 						<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
 					) }
-					<input type="hidden" class="uagb_forms_form_label" value={ formLabel }/>
-					<input type="hidden" class="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
+					<input type="hidden" className="uagb_forms_form_label" value={ formLabel }/>
+					<input type="hidden" className="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 				</div>
 				{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (
 					<Fragment>
-						<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+						<div className="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
 						<div className={`uagb-form-reacaptcha-error-${ block_id }`}></div>
 					</Fragment>
 				) }

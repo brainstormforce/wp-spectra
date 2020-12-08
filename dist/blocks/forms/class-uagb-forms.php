@@ -63,7 +63,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 			if ( $uagb_google_recaptcha_verify ) {
 
-				$google_recaptcha = isset( $_POST['uagb_captcha_response'] ) ? $_POST['uagb_captcha_response'] : '';
+				$google_recaptcha = isset( $_POST['captcha_response'] ) ? $_POST['captcha_response'] : '';
 
 				$google_recaptcha_secret_key = $_POST['uagab_captcha_keys']['secret'];
 
@@ -81,7 +81,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$decode_google_response = json_decode( $google_response['body'] );
 
 				if ( false === $decode_google_response->success ) {
-					wp_send_json_error( $response );
+					wp_send_json_error( 400 );
 				}
 			}
 
@@ -107,57 +107,12 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '</div>';
 			$body .= '</div>';
 
-			// if(isset($_POST['file_upload_data'])){
-			// $upload_files = $_POST['file_upload_data'];
-			// $extensions = array();
-			// foreach ($upload_files as $key => $value) {
-			// $ext = pathinfo($value, PATHINFO_EXTENSION);
-			// $file_basename = pathinfo($value, PATHINFO_FILENAME);
-			// $extensions[$file_basename] = $ext;
-			// }
-			// $this->upload_media($extensions);
-			// }
-
-			// if($_POST['sendAfterSubmitEmail'] == "true"){
-				$this->send_email( $body );
-			// }else{
-			// wp_send_json_success( 200 );
-			// }
+			
+			$this->send_email( $body );
+			
 		}
 
-		// public function generate_file_name($extensions) {
-		// $file_names = array();
-		// foreach ($extensions as $key => $value) {
-		// $hexed_file_name = md5(uniqid(rand(), true));
-		// $hexed_file_name .= ".$value";
-		// $file_names[] = $hexed_file_name;
-		// }
-		// return $file_names;
-
-		// }
-
-		// public function upload_media($extensions) {
-		// $plugin_upload_dir = 'uagb-forms-uploads';
-		// $plugin_upload_path = WP_CONTENT_DIR . '/uploads' . '/' . $plugin_upload_dir;
-		// print_r($plugin_upload_path);
-		// wp_mkdir_p( $plugin_upload_path );
-
-		// $file_name = $this->generate_file_name($extensions);
-
-		// move_uploaded_file("edd.docx", $plugin_upload_path . '/' . $file_name);
-
-
-		// $file_names_email = array();
-		// foreach ($file_name as $key => $value) {
-		// $file_names_email[] = array(
-		// 'path' => $plugin_upload_path . '/' . $value,
-		// 'filename' => $value
-		// );
-		// }
-		// return $file_names_email;
-
-
-		// }
+		
 
 		public function send_email( $body ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );

@@ -61,8 +61,9 @@
             
             if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v2" && attr['reCaptchaSiteKeyV2'] ){
                 
-                var uagb_captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
-                if (!uagb_captcha_response) {
+                var captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
+               
+                if (!captcha_response) {                  
                     $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha"> Please fill up the above captcha.</p>');
                     return false;
                 } else {
@@ -99,17 +100,6 @@
             var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
            
-            // var file_upload_data = [];            
-            // var fileinput = $form[0].getElementsByClassName("uagb-forms-upload-input");
-            // if (fileinput.length > 0) {
-                //     for (var i = 0; i < fileinput.length; i++) {
-                    //        if(fileinput[i].files[0]){
-                        //         file_upload_data.push(fileinput[i].files[0]['name']);
-                        //        }
-                        //     }
-                        // }
-                        
-                        
             
             //add spiner to form button to show processing.
             $( '<span class="components-spinner"></span>' ).appendTo( $form.find(".uagb-forms-main-submit-button-wrap") );
@@ -124,8 +114,7 @@
                     sendAfterSubmitEmail : attr['sendAfterSubmitEmail'],
                     after_submit_data:after_submit_data,
                     uagab_captcha_keys : uagab_captcha_keys,
-                    uagb_captcha_response : uagb_captcha_response,
-                    // file_upload_data:file_upload_data
+                    captcha_response : captcha_response,                    
                 },
                 
                 success: function( response ) {

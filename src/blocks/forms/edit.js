@@ -220,9 +220,7 @@ class UAGBFormsEdit extends Component {
 			reCaptchaEnable,
 			reCaptchaType,			
 			reCaptchaSecretKeyV2,
-			reCaptchaSecretKeyV3,
 			reCaptchaSiteKeyV2,
-			reCaptchaSiteKeyV3,
 			successMessageTextColor,
 			successMessageBGColor,
 			successMessageBorderColor,
@@ -847,68 +845,21 @@ class UAGBFormsEdit extends Component {
 						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
 					/>
 					{ reCaptchaEnable && (
-						<Fragment>									
-						<TabPanel className="my-tab-panel"
-						 	onSelect={ (value) => setAttributes( { reCaptchaType: value } ) }
-							activeClass="is-active"
-							tabs={ [
-								{
-									name: 'v2',
-									title: 'V2',
-									className: 'uagb-forms-recaptcha-button',
-								},
-								{
-									name: 'v3',
-									title: 'V3',
-									className: 'uagb-forms-recaptcha-button',
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
+						<Fragment>
+							<TextControl
+								label="Site Key"
+								value={ reCaptchaSiteKeyV2 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV2: value } ) }
+								placeholder={"Enter v2 Keys"}
 
-									if ( "v3" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<TextControl
-													label="Site Key"
-													value={ reCaptchaSiteKeyV3 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV3: value } ) }
-													placeholder={"Enter v3 Keys"}
-												/>
-												<TextControl
-													label="Secret Key"
-													value={ reCaptchaSecretKeyV3 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV3: value } ) }
-													placeholder={"Enter v3 Keys"}
-												/>
-											</Fragment>
-										)
-									} else if ( "v2" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<TextControl
-													label="Site Key"
-													value={ reCaptchaSiteKeyV2 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV2: value } ) }
-													placeholder={"Enter v2 Keys"}
+							/>
+							<TextControl
+								label="Secret Key"
+								value={ reCaptchaSecretKeyV2 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV2: value } ) }
+								placeholder={"Enter v2 Keys"}
 
-												/>
-												<TextControl
-													label="Secret Key"
-													value={ reCaptchaSecretKeyV2 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV2: value } ) }
-													placeholder={"Enter v2 Keys"}
-
-												/>
-											</Fragment>
-										)
-									} 
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+							/>		
 						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
 						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
 					</Fragment>
@@ -918,23 +869,7 @@ class UAGBFormsEdit extends Component {
 			)
 		}
 
-		const renderButtonHtml = () => {
-			if ( reCaptchaEnable && 'v3' === reCaptchaType && reCaptchaSiteKeyV3) {			
-				return (
-					<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button g-recaptcha" data-sitekey={reCaptchaSiteKeyV3}>
-						<RichText
-							tagName="div"
-							placeholder={ __( "Submit" ) }
-							value={ submitButtonText }
-							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
-							className='uagb-forms-main-submit-button-text'
-							multiline={ false }
-							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-						/>
-					</button>
-				)
-			}
-	
+		const renderButtonHtml = () => {			
 			return (
 				<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
 					<RichText
@@ -949,6 +884,7 @@ class UAGBFormsEdit extends Component {
 				</button>
 			);
 		}
+
 		if ( ! hasInnerBlocks ) {
 			return (
 				<Fragment>
@@ -993,7 +929,7 @@ class UAGBFormsEdit extends Component {
 
 						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (
 							<Fragment>
-								<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+								<div className="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
 								<div className={`uagb-form-reacaptcha-error-${ block_id }`}></div>
 							</Fragment>
 						)}

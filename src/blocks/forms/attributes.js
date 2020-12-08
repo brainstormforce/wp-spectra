@@ -313,7 +313,7 @@ const attributes = {
 	},
 	reCaptchaType : {
 		type: "string",
-		default: "v3",
+		default: "v2",
 	},
 	reCaptchaSiteKeyV2 : {
 		type: "string",
@@ -322,15 +322,7 @@ const attributes = {
 	reCaptchaSecretKeyV2 : {
 		type: "string",
 		default: "",
-	},
-	reCaptchaSiteKeyV3 : {
-		type: "string",
-		default: "",
-	},
-	reCaptchaSecretKeyV3 : {
-		type: "string",
-		default: "",
-	},
+	},	
 
 	//message attributes
 	successMessageTextColor : {
