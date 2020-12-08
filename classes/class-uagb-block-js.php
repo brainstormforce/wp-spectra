@@ -263,12 +263,12 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Adds Google fonts for Rating block.
+		 * Adds Google fonts for review block.
 		 *
 		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
-		public static function blocks_rating_gfont( $attr ) {
+		public static function blocks_review_gfont( $attr ) {
 
 			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
 			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';

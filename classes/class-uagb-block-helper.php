@@ -17,15 +17,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
-		 * Get Rating block CSS
+		 * Get review block CSS
 		 *
 		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_rating_css( $attr, $id ) {
-			$defaults = UAGB_Helper::$block_list['uagb/ratings']['attributes'];
+		public static function get_review_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/review']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
 
