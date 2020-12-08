@@ -274,7 +274,6 @@ class UAGBRatingEdit extends Component {
 		} = this.props;
 
 		const onUpdateDate = ( dateTime ) => {
-			console.log(dateTime)
 			var newDateTime = moment(dateTime).format( 'YYYY-MM-DD' );
 			setAttributes( { offerExpiry: newDateTime } );
 		  }
@@ -670,19 +669,19 @@ class UAGBRatingEdit extends Component {
 					    	label={ __( "Show author" ) }
 					    	checked={ showAuthor }
 					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
 					    />
 					    <ToggleControl
 					    	label={ __( "Show description" ) }
 					    	checked={ enableDescription }
 					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
 					    />
 						 <ToggleControl
 					    	label={ __( "Show image" ) }
 					    	checked={ enableImage }
 					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
 					    />
 						{ enableImage === true && 
 							<Fragment>
@@ -871,7 +870,7 @@ class UAGBRatingEdit extends Component {
 						onChange={ value => setAttributes( { ctaLink: value } ) }
 					/>
 					<ToggleControl
-						label={ __( "Open in new Window" ) }
+						label={ __( "Open in new window" ) }
 						checked={ ctaTarget }
 						onChange={ this.toggleTarget }
 					/>

@@ -85,12 +85,16 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.18.1' );
+			define( 'UAGB_VER', '1.18.2' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
-			define( 'UAGB_TABLET_BREAKPOINT', '976' );
-			define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
+				define( 'UAGB_TABLET_BREAKPOINT', '976' );
+			}
+			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
+				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			}
 		}
 
 		/**
