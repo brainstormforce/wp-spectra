@@ -2,6 +2,10 @@
  * External dependencies
  */
 
+import classnames from "classnames"
+import memoize from "memize"
+
+import times from "lodash/times"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
@@ -17,6 +21,8 @@ import styling from ".././styling"
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 8
+
+const ALLOWED_BLOCKS = [ "uagb/post-title" , "uagb/post-image" , "uagb/post-button" , "uagb/post-excerpt", "uagb/post-meta" ]
 const {
 	PanelBody,
 	Placeholder,
@@ -29,17 +35,17 @@ const {
 	Toolbar,
 	TextControl,
 	RadioControl,
-	IconButton,
+	Button,
 	Tip,
-	Disabled,
-	Button
+	Disabled
 } = wp.components
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette
+	ColorPalette,
+	InnerBlocks
 } = wp.blockEditor
 
 const { withSelect } = wp.data
@@ -138,6 +144,7 @@ class UAGBPostGrid extends Component {
 
 		// Caching all attributes.
 		const {
+			postdata,
 			block_id,
 			displayPostTitle,
 			displayPostDate,
@@ -258,6 +265,10 @@ class UAGBPostGrid extends Component {
 			excludeCurrentPost
 			
 		} = attributes
+		
+		const displayPosts = null === latestPosts ? '' : latestPosts.length > postsToShow ?
+			latestPosts.slice( 0, postsToShow ) :
+			latestPosts
 
 		const hoverSettings = (
 			<Fragment>
@@ -555,7 +566,7 @@ class UAGBPostGrid extends Component {
 								] }
 							/>
 							<h2> { __( "Pagination Alignment" ) }</h2>
-							<IconButton
+							<Button
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
@@ -563,7 +574,7 @@ class UAGBPostGrid extends Component {
 								aria-pressed = { "left" === paginationAlignment }
 								isPrimary = { "left" === paginationAlignment }
 							/>
-							<IconButton
+							<Button
 								key={ "center" }
 								icon="editor-aligncenter"
 								label="Right"
@@ -571,7 +582,7 @@ class UAGBPostGrid extends Component {
 								aria-pressed = { "center" === paginationAlignment }
 								isPrimary = { "center" === paginationAlignment }
 							/>
-							<IconButton
+							<Button
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
@@ -1086,12 +1097,42 @@ class UAGBPostGrid extends Component {
 			)
 		}
 		const renderViewMode = (
-			<Disabled><Blog editor={false} attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
+			<Disabled><Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
 		)
+		
+		const getPostTemplate = memoize( ( button_block, buttons ) => {
+			return times( button_block, n => [ "uagb/post-title", buttons[n] ] )
+		} )
+		setAttributes( { postdata: displayPosts } );
+		
+		const renderEditMode = (
+		// 	const onDone = () => {
+		// 	const { block, setAttributes } = this.props;
+		// 	setAttributes( {
+		// 		layoutConfig: getProductLayoutConfig( block.innerBlocks ),
+		// 	} );
+		// 	this.setState( { innerBlocks: block.innerBlocks } );
+		// 	this.togglePreview();
+		// };
 
-		const renderEditMode =  (
-			
-				<Placeholder label='Post Grid Layout'>
+		// const onCancel = () => {
+		// 	const { block, replaceInnerBlocks } = this.props;
+		// 	const { innerBlocks } = this.state;
+		// 	replaceInnerBlocks( block.clientId, innerBlocks, false );
+		// 	this.togglePreview();
+		// };
+
+		// const onReset = () => {
+		// 	const { block, replaceInnerBlocks } = this.props;
+		// 	const newBlocks = [];
+		// 	DEFAULT_PRODUCT_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
+		// 		newBlocks.push( createBlock( name, attributes ) );
+		// 		return true;
+		// 	} );
+		// 	replaceInnerBlocks( block.clientId, newBlocks, false );
+		// 	this.setState( { innerBlocks: block.innerBlocks } );
+		// };
+			<Placeholder label='Post Grid Layout'>
 					<div className="uagb_posts_layout-template">
 						<Tip>
 							{ __(
@@ -1099,16 +1140,39 @@ class UAGBPostGrid extends Component {
 								'uag'
 							) }
 						</Tip>
-						<div className="uagb_posts_layout__actions">
-						<Blog editor={true} attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
-
+						<div className="uagb_posts_layout__actions">	
+					<div
+						className={ classnames(
+							"uagb-post-grid",
+							`uagb-post__image-position-${ imgPosition }`,
+							`uagb-block-${ block_id }`
+						) }
+					>
+						<div
+							className={ classnames(
+								"is-grid",
+								`uagb-post__columns-${ columns }`,
+								`uagb-post__columns-tablet-${ tcolumns }`,
+								`uagb-post__columns-mobile-${ mcolumns }`,
+								"uagb-post__items",
+							) }
+						>
+							<article >
+								<div className="uagb-post__inner-wrap" >
+								<InnerBlocks
+									allowedBlocks={ ALLOWED_BLOCKS }
+								/>
+								</div>
+							</article>
+						</div>
+					</div>
 						<Button className="uagb_posts_layout__done-button">
 							{ __( 'Done', 'uag' ) }
 						</Button>
 						<Button className="uagb_posts_layout__cancel-button">
 							{ __( 'Cancel', 'uag' ) }
 						</Button>
-						<IconButton className="uagb_posts_layout__reset-button"
+						<Button className="uagb_posts_layout__reset-button"
 							label={ __(
 								'Reset layout to default',
 								'uag'
@@ -1117,12 +1181,13 @@ class UAGBPostGrid extends Component {
 								'Reset Layout',
 								'uag'
 							) }
-						</IconButton>
+						</Button>
 					</div>
 					</div>
 				</Placeholder>
 		)
 		const { isEditing } = this.state;
+		
 		return (
 			<Fragment>
 				{ inspectorControls }

@@ -10,11 +10,46 @@ import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 import ".././style.scss"
 import ".././editor.scss"
 
-// Components
+
+const { addFilter } = wp.hooks;
 const { __ } = wp.i18n
+
+const { Fragment } = wp.element;
+const { withSelect } = wp.data;
+const { compose, createHigherOrderComponent } = wp.compose;
 
 // Register block controls
 const { registerBlockType } = wp.blocks
+/**
+ * Override the default block element to add	wrapper props.
+ *
+ * @param  {Function} BlockListBlock Original component
+ * @return {Function} Wrapped component
+ */
+
+const enhance = compose(
+	
+	withSelect( ( select ) => {
+		return {
+			selected: select( 'core/block-editor' ).getSelectedBlock(),
+		};
+	} )
+);
+/**
+ * Add custom UAG attributes to selected blocks
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+const withPost = createHigherOrderComponent( ( BlockEdit ) => {
+	return enhance( ( { ...props } ) => {
+		return (
+			<Fragment>
+				<BlockEdit { ...props } />
+			</Fragment>
+		);
+	} );
+}, 'withPost' );
 
 // Register the block
 registerBlockType( "uagb/post-grid", {
@@ -34,3 +69,8 @@ registerBlockType( "uagb/post-grid", {
 		return null
 	},
 } )
+addFilter(
+	'editor.BlockEdit',
+	'uagb/post-grid',
+	withPost
+);
