@@ -15,6 +15,9 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 
 const { __ } = wp.i18n
+const {
+	date: { dateI18n },
+} = wp;
 
 const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
@@ -273,11 +276,6 @@ class UAGBRatingEdit extends Component {
 			className,
 		} = this.props;
 
-		const onUpdateDate = ( dateTime ) => {
-			var newDateTime = moment(dateTime).format( 'YYYY-MM-DD' );
-			setAttributes( { offerExpiry: newDateTime } );
-		  }
-
 		if (
 			blockID === ""
 		) {
@@ -476,6 +474,7 @@ class UAGBRatingEdit extends Component {
 							value={directorname}
 							onChange={(directorname) => setAttributes({ directorname })}
 						/>
+						<h2>{ __( "Date" ) }</h2>
 						<DateTimePicker
 							currentDate={ datecreated }
 							// onChange={ ( val ) => onUpdateDate(  val ) }
@@ -767,15 +766,6 @@ class UAGBRatingEdit extends Component {
 						)}
 					{["Product", "SoftwareApplication"].includes( itemType ) && (
 						<Fragment>
-						<SelectControl
-							label={__("Offer Type")}
-							value={offerType}
-							options={["Offer", "Aggregate Offer"].map((a) => ({
-								label: __(a),
-								value: a.replace(" ", ""),
-							}))}
-							onChange={(offerType) => setAttributes({ offerType })}
-						/>
 						<TextControl
 							label={__("Offer Currency")}
 							value={offerCurrency}
@@ -783,7 +773,7 @@ class UAGBRatingEdit extends Component {
 						/>
 						</Fragment>
 					)}
-					{offerType == "Offer" ? (
+					{offerType == "Offer" && (
 						<Fragment>
 							<TextControl
 								label={__("Offer Price")}
@@ -811,32 +801,13 @@ class UAGBRatingEdit extends Component {
 									} )
 								}
 							/>
-							<DateTimePicker
-								currentDate={ offerExpiry }
-								// onChange={ ( val ) => onUpdateDate(  val ) }
-								onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
-								is12Hour={ true }
-							/>
-						</Fragment>
-					) : (
-						<Fragment>
-							<TextControl
-								label={__("Offer Count")}
-								value={offerCount}
-								onChange={(offerCount) => setAttributes({ offerCount })}
-							/>
-							<TextControl
-								label={__(`Lowest Available Price (${offerCurrency})`)}
-								value={offerLowPrice}
-								onChange={(offerLowPrice) =>
-									setAttributes({ offerLowPrice })
-								}
-							/>
-							<TextControl
-								label={__(`Highest Available Price (${offerCurrency})`)}
-								value={offerHighPrice}
-								onChange={(offerHighPrice) =>
-									setAttributes({ offerHighPrice })
+							<h2>{ __( "Date" ) }</h2>
+							<DatePicker
+								currentDate={offerExpiry * 1000}
+								onChange={(newDate) =>
+									setAttributes({
+										offerExpiry: Math.floor(Date.parse(newDate) / 1000),
+									})
 								}
 							/>
 						</Fragment>
@@ -1015,6 +986,10 @@ class UAGBRatingEdit extends Component {
 			
 				var offers = {}
 				var itemReviewed = {}
+				// var today = ownProps.attributes.offerExpiry
+				// { myData ? dateI18n( 'F j, Y g:i a', myData ) : "Pick Date & Time" }
+				// var d = dateI18n( 'F j, Y g:i a', ownProps.attributes.offerExpiry )
+				// console.log(d)
 				var json_data = {
 					"@context": "http://schema.org/",
 					"@type": "Review",
@@ -1031,7 +1006,7 @@ class UAGBRatingEdit extends Component {
 						"name": ownProps.attributes.rAuthor,
 					},
 					"publisher": ownProps.attributes.reviewPublisher,
-					"datePublished": ownProps.attributes.offerExpiry,
+					"datePublished":ownProps.attributes.offerExpiry,
 					"url": ownProps.attributes.ctaLink
 				}
 				  
@@ -1109,24 +1084,14 @@ class UAGBRatingEdit extends Component {
 	
 				if( ownProps.attributes.itemType == 'Product' ){
 					json_data.itemReviewed[ownProps.attributes.identifierType] = ownProps.attributes.identifier
-					if( 'Aggregate Offer' == ownProps.attributes.offerType ){
-						json_data.itemReviewed.offers = {
-							"@type": ownProps.attributes.offerType,
-							"offerCount": ownProps.attributes.offerCount,
-							"lowPrice": ownProps.attributes.offerLowPrice,
-							"highPrice": ownProps.attributes.offerHighPrice,
-							"priceCurrency": ownProps.attributes.offerCurrency,
-						}	
-					} else {
-						json_data.itemReviewed.offers = {
-							"@type": ownProps.attributes.offerType,
-							"price": ownProps.attributes.offerPrice,
-							"url": ownProps.attributes.ctaLink,
-							"priceValidUntil": ownProps.attributes.offerExpiry,
-							"priceCurrency": ownProps.attributes.offerCurrency,
-							"availability": ownProps.attributes.offerStatus
-						  }
-					  }
+					json_data.itemReviewed.offers = {
+						"@type": ownProps.attributes.offerType,
+						"price": ownProps.attributes.offerPrice,
+						"url": ownProps.attributes.ctaLink,
+						"priceValidUntil": ownProps.attributes.offerExpiry,
+						"priceCurrency": ownProps.attributes.offerCurrency,
+						"availability": ownProps.attributes.offerStatus
+					}
 				}
 				
 			return {

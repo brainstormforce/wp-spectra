@@ -282,8 +282,8 @@
 	},
 	offerExpiry: {
 		type: "number",
-		// default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
-		default: '',
+		default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
+		// default: '',
 	},
 	featuresTitle : {
 		type: "string",
