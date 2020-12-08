@@ -55,6 +55,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 		}
 
+		/**
+		 *
+		 * Form Process Initiated.
+		 */
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 
@@ -107,13 +111,17 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '</div>';
 			$body .= '</div>';
 
-			
 			$this->send_email( $body );
-			
+
 		}
 
-		
 
+		/**
+		 *
+		 * Trigger Mail.
+		 *
+		 * @param object $body Email Body.
+		 */
 		public function send_email( $body ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 			$after_submit_data = isset( $_POST['after_submit_data'] ) ? $_POST['after_submit_data'] : '';
@@ -131,7 +139,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 			$succefull_mail = wp_mail( $to, $subject, $body, $headers );
 
-			if ( $bcc && ! empty( trim( $bcc ) ) ) {
+			if ( $bcc && ! empty( $bcc ) ) {
 				$bcc_emails = explode( ',', $after_submit_data['bcc'] );
 				foreach ( $bcc_emails as $bcc_email ) {
 					wp_mail( sanitize_email( trim( $bcc_email ) ), $subject, $body, $headers );
