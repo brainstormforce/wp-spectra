@@ -3,15 +3,6 @@
  */
   const { __ } = wp.i18n
 
- const features = []
-
- features.push(
- 	{
- 		"feature_name": __( "- Feature Name." ),
- 	}
- )
-
-
  const attributes = {
 	ID: {
 		type: "string",
@@ -33,7 +24,6 @@
 		type: "string",
 		default: "",
 	},
-	//beginning of book-only attributes
 	bookAuthorName: {
 		type: "string",
 		default: "",
@@ -43,23 +33,20 @@
 		default: "",
 	},
 	provider: {
-		//for course
 		type: "string",
 		default: "",
 	},
 	appCategory: {
-		//softwareapplication only
 		type: "string",
 		default: "",
 	},
 	operatingSystem: {
-		//softwareapplication only
 		type: "string",
 		default: "",
 	},
 	datecreated: {
-	    type: "string",
-		default: "",
+		type: "string",
+		default: 'Dec 19 2020'
 	},
 	directorname: {
 		type: "string",
@@ -68,9 +55,6 @@
 	overallAlignment: {
 		type: "string",
 		default: "left",
-	},
-	block_id: {
-		type: "string",
 	},
 	schema: {
 		type: "string",
@@ -92,7 +76,7 @@
 		type: "string",
 		default: "h3"
 	},
-	blockID: {
+	block_id: {
 		type: "string",
 		default: "",
 	},
@@ -243,7 +227,7 @@
 	},
 	identifierType: {
 		type: "string",
-		default: "gtin", // nsn, mpn, gtin8, gtin12, gtin13, gtin14, gtin
+		default: "gtin",
 	},
 	ctaTarget: {
 		type: "boolean",
@@ -251,26 +235,12 @@
 	},
 	offerType: {
 		type: "string",
-		default: "Offer", //can also be set to aggregate offer (which prevevnts calltoactionurl from being  used as offer url)
+		default: "Offer",
 	},
 	offerStatus: {
 		type: "string",
-		default: "", //available values: Discontinued, InStock, InStoreOnly, LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, PreSale, SoldOut
+		default: "", 
 	},
-	//begin aggregate offer-only attributes
-	offerHighPrice: {
-		type: "number",
-		default: 0,
-	},
-	offerLowPrice: {
-		type: "number",
-		default: 0,
-	},
-	offerCount: {
-		type: "number",
-		default: 0,
-	},
-	//end  aggregate offer-only attributes
 	offerPrice: {
 		type: "string",
 		default: 0,
@@ -280,6 +250,10 @@
 		default: "USD",
 	},
 	offerExpiry: {
+		type: "string",
+		default: 'Dec 19 2020'
+	},
+	datepublish: {
 		type: "string",
 		default: 'Dec 19 2020'
 	},
@@ -294,10 +268,6 @@
 	feature_count: {
 		type: "number",
 		default: 1
-	},
-	features: {
-		type: "array",
-		default : features,
 	},
 	showFeature: {
 		type: "boolean",

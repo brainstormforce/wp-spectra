@@ -24,13 +24,11 @@ class SchemaNotices extends Component {
             showAuthor,
             rAuthor,
             offerType,
-            offerCount,
-            offerLowPrice,
-            offerHighPrice,
             offerCurrency,
             offerPrice,
             ctaLink,
             offerExpiry,
+            datepublish,
             identifier,
             isbn,
             bookAuthorName,
@@ -52,17 +50,8 @@ class SchemaNotices extends Component {
                 if ( 'undefined' === typeof brand || '' === brand ) {
                     emptyItems.push( 'Mising Brand' );
                 }
-                if ( 'undefined' === typeof offerCount || '' === offerCount ) {
-                    emptyItems.push( 'Missing field Offer Count' );
-                }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
                     emptyItems.push( 'Missing field Offer Type' );
-                }
-                if ( 'undefined' === typeof offerLowPrice || '' === offerLowPrice ) {
-                    emptyItems.push( 'Missing field Offer Low Price' );
-                }
-                if ( 'undefined' === typeof offerHighPrice || '' === offerHighPrice ) {
-                    emptyItems.push( 'Missing field Offer High Price' );
                 }
                 if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
                     emptyItems.push( 'Missing field Offer Currency' );
@@ -143,6 +132,9 @@ class SchemaNotices extends Component {
             }
             if ( 'undefined' === typeof reviewPublisher || '' === reviewPublisher ) {
                 emptyItems.push( 'Mising Review Publisher' );
+            }
+            if ( 'undefined' === typeof datepublish || '' === datepublish ) {
+                emptyItems.push( 'Mising Date of Publish' );
             }
         }
         

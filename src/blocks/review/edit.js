@@ -15,16 +15,12 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 
 const { __ } = wp.i18n
-const {
-	date: { dateI18n },
-} = wp;
 
 const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
 
 const {
 	InspectorControls,
-	RichText,
 	ColorPalette,
 	MediaUpload,
 	AlignmentToolbar,
@@ -39,7 +35,6 @@ const {
 	Button,
 	TextControl,
 	DatePicker,
-	ExternalLink,
 	DateTimePicker 
 } = wp.components
 
@@ -174,7 +169,7 @@ class UAGBRatingEdit extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				blockID,
+				block_id,
 				itemType,
 				itemSubtype,
 				itemSubsubtype,
@@ -194,11 +189,10 @@ class UAGBRatingEdit extends Component {
 				offerType,
 				offerCurrency,
 				offerStatus,
-				offerHighPrice,
-				offerLowPrice,
 				offerPrice,
-				offerCount,
+				// offerCount,
 				offerExpiry,
+				datepublish,
 				ctaLink,
 				ctaTarget,
 				brand,
@@ -256,7 +250,7 @@ class UAGBRatingEdit extends Component {
 				summaryColor,
 				starActiveColor,
 				starOutlineColor,
-				editable,
+				// editable,
 				enableDescription,
 				enableImage,
 				overallAlignment,
@@ -271,17 +265,17 @@ class UAGBRatingEdit extends Component {
 			},
 			setAttributes,
 			isSelected,
-			editedStar,
-			getBlock,
+			// editedStar,
+			// getBlock,
 			className,
 		} = this.props;
 
 		if (
-			blockID === ""
+			block_id === ""
 		) {
 			setAttributes({
 				
-				blockID: this.props.clientId.substr( 0, 8 ),
+				block_id: this.props.clientId.substr( 0, 8 ),
 			});
 		}
 
@@ -415,12 +409,12 @@ class UAGBRatingEdit extends Component {
 						<TextControl
 							label={__("ISBN")}
 							value={isbn}
-							onChange={(isbn) => setAttributes({ isbn })}
+							onChange={(value) => setAttributes({ isbn:value})}
 						/>
 						<TextControl
 							label={__("Book author name")}
 							value={bookAuthorName}
-							onChange={(bookAuthorName) => setAttributes({ bookAuthorName })}
+							onChange={(value) => setAttributes({ bookAuthorName:value })}
 						/>
 					</Fragment>
 				);
@@ -436,7 +430,7 @@ class UAGBRatingEdit extends Component {
 						<TextControl
 							label={__("provider")}
 							value={provider}
-							onChange={(provider) => setAttributes({ provider })}
+							onChange={(value) => setAttributes({ provider:value })}
 						/>
 					</Fragment>
 				);
@@ -451,12 +445,12 @@ class UAGBRatingEdit extends Component {
 						<TextControl
 							label={__("Application Category")}
 							value={appCategory}
-							onChange={(appCategory) => setAttributes({ appCategory })}
+							onChange={(value) => setAttributes({ appCategory:value })}
 						/>
 						<TextControl
 							label={__("Operating System")}
 							value={operatingSystem}
-							onChange={( operatingSystem ) => setAttributes({ operatingSystem })}
+							onChange={( value ) => setAttributes({ operatingSystem:value })}
 						/>
 					</Fragment>
 				);
@@ -472,12 +466,11 @@ class UAGBRatingEdit extends Component {
 						<TextControl
 							label={__("Director Name")}
 							value={directorname}
-							onChange={(directorname) => setAttributes({ directorname })}
+							onChange={(value) => setAttributes({ directorname:value })}
 						/>
-						<h2>{ __( "Date" ) }</h2>
+						<h2>{ __( "Date of create" ) }</h2>
 						<DateTimePicker
 							currentDate={ datecreated }
-							// onChange={ ( val ) => onUpdateDate(  val ) }
 							onChange={ ( value ) => setAttributes( { datecreated: value } ) }
 							is12Hour={ true }
 						/>
@@ -622,8 +615,8 @@ class UAGBRatingEdit extends Component {
 					<SelectControl
 						label={__("Item type")}
 						value={itemType}
-						onChange={(itemType) => {
-							setAttributes({ itemType });
+						onChange={(value) => {
+							setAttributes({ itemType:value });
 							if (itemType === "Movie") {
 								setAttributes({ enableImage: true });
 							}
@@ -649,8 +642,8 @@ class UAGBRatingEdit extends Component {
 						<SelectControl
 							label={__("Item subtype")}
 							value={itemSubtype}
-							onChange={(itemSubtype) => {
-								setAttributes({ itemSubtype });
+							onChange={(value) => {
+								setAttributes({ itemSubtype:value });
 								if (
 									!subsubtypes.hasOwnProperty(itemSubtype) ||
 									!subsubtypes[itemSubtype].includes(itemSubsubtype)
@@ -720,8 +713,14 @@ class UAGBRatingEdit extends Component {
 					<TextControl
 						label={__("Review publisher")}
 						value={reviewPublisher}
-						onChange={(reviewPublisher) => setAttributes({ reviewPublisher })}
+						onChange={(value) => setAttributes({ reviewPublisher:value })}
 					/>
+					<h2>{ __( "Date of publish" ) }</h2>
+							<DateTimePicker
+							currentDate={ datepublish }
+							onChange={ ( value ) => setAttributes( { datepublish: value } ) }
+							is12Hour={ true }
+							/>
 					{["Event", "Product", "SoftwareApplication"].includes( itemType ) && (
 					<Fragment>
 						{["Event", "Product"].includes( itemType ) && (
@@ -729,22 +728,22 @@ class UAGBRatingEdit extends Component {
 								<TextControl
 									label={__("Brand")}
 									value={brand}
-									onChange={(brand) => setAttributes({ brand })}
+									onChange={(value) => setAttributes({ brand:value })}
 								/>
 								<TextControl
 									label={__("Author")}
 									value={rAuthor}
-									onChange={(rAuthor) => setAttributes({ rAuthor })}
+									onChange={(value) => setAttributes({ rAuthor:value })}
 								/>
 								<TextControl
 									label={__("SKU")}
 									value={sku}
-									onChange={(sku) => setAttributes({ sku })}
+									onChange={(value) => setAttributes({ sku:value })}
 								/>
 								<TextControl
 									label={__("Identifier")}
 									value={identifier}
-									onChange={(identifier) => setAttributes({ identifier })}
+									onChange={(value) => setAttributes({ identifier:value })}
 								/>
 								<SelectControl
 									label={__("Identifier type")}
@@ -758,8 +757,8 @@ class UAGBRatingEdit extends Component {
 										"gtin14",
 										"gtin",
 									].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
-									onChange={(identifierType) =>
-										setAttributes({ identifierType })
+									onChange={(value) =>
+										setAttributes({ identifierType:value })
 									}
 								/>
 							</Fragment>
@@ -769,7 +768,7 @@ class UAGBRatingEdit extends Component {
 						<TextControl
 							label={__("Offer Currency")}
 							value={offerCurrency}
-							onChange={(offerCurrency) => setAttributes({ offerCurrency })}
+							onChange={(value) => setAttributes({ offerCurrency:value })}
 						/>
 						</Fragment>
 					)}
@@ -778,7 +777,7 @@ class UAGBRatingEdit extends Component {
 							<TextControl
 								label={__("Offer Price")}
 								value={offerPrice}
-								onChange={(offerPrice) => setAttributes({ offerPrice })}
+								onChange={(value) => setAttributes({ offerPrice:value })}
 							/>
 							<SelectControl
 								label={__("Offer Status")}
@@ -794,21 +793,17 @@ class UAGBRatingEdit extends Component {
 									{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale' ) },
 									{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out' ) },
 								]}
-								// onChange={(offerStatus) => setAttributes({ offerStatus })}
 								onChange={ ( value ) =>
 									this.props.setAttributes( {
 										offerStatus: value,
 									} )
 								}
 							/>
-							<h2>{ __( "Date" ) }</h2>
-							<DatePicker
-								currentDate={offerExpiry}
-								onChange={(newDate) =>
-									setAttributes({
-										offerExpiry: newDate,
-									})
-								}
+							<h2>{ __( "Price Valid Until" ) }</h2>
+							<DateTimePicker
+							currentDate={ offerExpiry }
+							onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
+							is12Hour={ true }
 							/>
 						</Fragment>
 					)}
@@ -888,9 +883,7 @@ class UAGBRatingEdit extends Component {
 				rAuthor={rAuthor}
 				showfeature={showFeature}
 				offerType={offerType}
-				offerCount={offerCount}
-				offerLowPrice={offerLowPrice}
-				offerHighPrice={offerHighPrice}
+				datepublish={datepublish}
 				offerCurrency={offerCurrency}
 				offerPrice={offerPrice}
 				ctaLink={ctaLink}
@@ -919,7 +912,7 @@ class UAGBRatingEdit extends Component {
 			,<div className={ classnames(
 				className,
 				"uagb-ratings__outer-wrap",
-				`uagb-block-${ blockID.substr( 0, 8 ) }`
+				`uagb-block-${ block_id.substr( 0, 8 ) }`
 			) }>
 			<ReviewBody
 				rTitle={rTitle}
@@ -945,7 +938,7 @@ class UAGBRatingEdit extends Component {
 				itemName={itemName}
 				description={description}
 				descriptionEnabled={enableDescription}
-				ID={blockID}
+				ID={block_id}
 				imageEnabled={enableImage}
 				items={parts}
 				starCount={starCount}
@@ -1002,7 +995,7 @@ class UAGBRatingEdit extends Component {
 						"name": ownProps.attributes.rAuthor,
 					},
 					"publisher": ownProps.attributes.reviewPublisher,
-					"datePublished":ownProps.attributes.offerExpiry,
+					"datePublished":ownProps.attributes.datepublish,
 					"url": ownProps.attributes.ctaLink
 				}
 				  

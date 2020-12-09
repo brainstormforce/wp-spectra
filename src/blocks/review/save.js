@@ -29,9 +29,8 @@ export default function save( props ) {
 		activeStarColor,
 		selectedStarColor,
 		starOutlineColor,
-		imgSize,
 		schema,
-		blockID,
+		block_id,
 		showAuthor,
 		showFeature,
 		enableDescription,
@@ -79,7 +78,7 @@ export default function save( props ) {
 		<div className={ classnames(
 			className,
 			"uagb-ratings__outer-wrap",
-			`uagb-block-${ blockID.substr( 0, 8 ) }`
+			`uagb-block-${ block_id.substr( 0, 8 ) }`
 		) }
 		>
 			<script type="application/ld+json">

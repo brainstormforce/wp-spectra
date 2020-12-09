@@ -8,7 +8,6 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		blockID,
 		block_id,
 		starColor,
 		descColor,
@@ -26,7 +25,6 @@ function styling( props ) {
 		headLineHeightMobile,
 		subHeadFontFamily,
 		subHeadFontWeight,
-		subHeadFontSubset,
 		subHeadFontSize,
 		subHeadFontSizeType,
 		subHeadFontSizeMobile,
@@ -35,10 +33,8 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
-		subHeadLoadGoogleFonts,
 		contentFontFamily,
 		contentFontWeight,
-		contentFontSubset,
 		contentFontSizeType,
 		contentLineHeightType,
 		contentFontSize,
@@ -49,7 +45,6 @@ function styling( props ) {
 		contentLineHeightMobile,
 		contentVrPadding,
 		contentHrPadding,
-		star_gap,
 		authorColor,
 		summaryColor,
 		starActiveColor,
@@ -158,7 +153,7 @@ function styling( props ) {
 		},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ blockID.substr( 0, 8 ) }`
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id.substr( 0, 8 ) }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 
