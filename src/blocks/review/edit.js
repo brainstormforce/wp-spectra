@@ -481,7 +481,7 @@ class UAGBRatingEdit extends Component {
 			return (
 				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
 					<TypographyControl
-							label={ __( "Title" ) }
+							label={ __( "Title Typography" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: headLoadGoogleFonts, label:'headLoadGoogleFonts'  } }
@@ -507,7 +507,7 @@ class UAGBRatingEdit extends Component {
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
 						<TypographyControl
-						label={ __( "Description" ) }
+						label={ __( "Description Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
@@ -555,7 +555,7 @@ class UAGBRatingEdit extends Component {
 					}
 					<hr className="uagb-editor__separator" />
 					<TypographyControl
-						label={ __( "Summary" ) }
+						label={ __( "Summary Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }

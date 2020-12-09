@@ -139,7 +139,7 @@ class SchemaNotices extends Component {
         }
         
         const listItems = emptyItems.map( ( item ) =>
-            <li key={ item }> { __( item ) } </li> 
+            <li key={ item }> { item } </li> 
         );
 
         const schemaNoticeMarkup = () => {
