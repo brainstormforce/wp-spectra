@@ -958,8 +958,8 @@ class UAGBRatingEdit extends Component {
 					setAttributes({ summaryDescription: newValue })
 				}
 				hasFocus={isSelected}
-				setEditable={(newValue) => setState({ editable: newValue })}
-				setActiveStarIndex={(editedStar) => setState({ editedStar })}
+				setEditable={(newValue) => this.setState({ editable: newValue })}
+				setActiveStarIndex={(editedStar) => this.setState({ editedStar })}
 				showfeature={showFeature}
 				showauthor={showAuthor}
 			/>{ loadHeadingGoogleFonts }
