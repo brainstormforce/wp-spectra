@@ -34,7 +34,6 @@ const {
 	ToggleControl,
 	Button,
 	TextControl,
-	DatePicker,
 	DateTimePicker 
 } = wp.components
 
@@ -75,7 +74,6 @@ class UAGBRatingEdit extends Component {
 
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
-		// this.onUpdateDate  = this.onUpdateDate.blind( this )
 		this.getImageSize  = this.getImageSize.bind( this )
 		this.toggleTarget  = this.toggleTarget.bind( this )
 	}
@@ -190,7 +188,6 @@ class UAGBRatingEdit extends Component {
 				offerCurrency,
 				offerStatus,
 				offerPrice,
-				// offerCount,
 				offerExpiry,
 				datepublish,
 				ctaLink,
@@ -250,7 +247,6 @@ class UAGBRatingEdit extends Component {
 				summaryColor,
 				starActiveColor,
 				starOutlineColor,
-				// editable,
 				enableDescription,
 				enableImage,
 				overallAlignment,
@@ -265,8 +261,6 @@ class UAGBRatingEdit extends Component {
 			},
 			setAttributes,
 			isSelected,
-			// editedStar,
-			// getBlock,
 			className,
 		} = this.props;
 
@@ -974,7 +968,7 @@ class UAGBRatingEdit extends Component {
 		];
 	}} 
 	export default compose(
-		withSelect( ( select, ownProps ) => {
+		withSelect( ( select,ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
 			
 				var offers = {}
