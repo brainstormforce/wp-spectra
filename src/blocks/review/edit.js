@@ -971,8 +971,6 @@ class UAGBRatingEdit extends Component {
 		withSelect( ( select,ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
 			
-				var offers = {}
-				var itemReviewed = {}
 				var json_data = {
 					"@context": "http://schema.org/",
 					"@type": "Review",
