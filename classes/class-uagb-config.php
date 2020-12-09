@@ -1796,7 +1796,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorColor'        => '#b2b4b5',
 						),
 					),
-					'uagb/review'            => array(
+					'uagb/review'             => array(
 						'slug'        => '',
 						'title'       => __( 'Review block', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to add an review snippets.', 'ultimate-addons-for-gutenberg' ),

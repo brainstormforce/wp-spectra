@@ -280,9 +280,8 @@
 		default: "USD",
 	},
 	offerExpiry: {
-		type: "number",
-		default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
-		// default: '',
+		type: "string",
+		default: 'Dec 19 2020'
 	},
 	featuresTitle : {
 		type: "string",

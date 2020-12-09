@@ -614,7 +614,7 @@ class UAGBRatingEdit extends Component {
 				</PanelBody>
 			)
 		}
-
+	
 		const ratingSchemaSettings = () => {
 			return (
 				<PanelBody title={ __( "Schema" ) } initialOpen={ true }>
@@ -803,10 +803,10 @@ class UAGBRatingEdit extends Component {
 							/>
 							<h2>{ __( "Date" ) }</h2>
 							<DatePicker
-								currentDate={offerExpiry * 1000}
+								currentDate={offerExpiry}
 								onChange={(newDate) =>
 									setAttributes({
-										offerExpiry: Math.floor(Date.parse(newDate) / 1000),
+										offerExpiry: newDate,
 									})
 								}
 							/>
@@ -817,7 +817,7 @@ class UAGBRatingEdit extends Component {
 				</PanelBody>
 			)
 		}
-
+		
 		const ratingGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
@@ -986,10 +986,6 @@ class UAGBRatingEdit extends Component {
 			
 				var offers = {}
 				var itemReviewed = {}
-				// var today = ownProps.attributes.offerExpiry
-				// { myData ? dateI18n( 'F j, Y g:i a', myData ) : "Pick Date & Time" }
-				// var d = dateI18n( 'F j, Y g:i a', ownProps.attributes.offerExpiry )
-				// console.log(d)
 				var json_data = {
 					"@context": "http://schema.org/",
 					"@type": "Review",
