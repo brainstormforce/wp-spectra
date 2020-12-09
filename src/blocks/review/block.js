@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/review", {
 	title: uagb_blocks_info.blocks["uagb/review"]["title"],
 	description: uagb_blocks_info.blocks["uagb/review"]["description"],
-	icon: UAGB_Block_Icons.inline_notice,
+	icon: UAGB_Block_Icons.review,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "ratings" ),

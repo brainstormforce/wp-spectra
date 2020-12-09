@@ -272,8 +272,7 @@
 	},
 	//end  aggregate offer-only attributes
 	offerPrice: {
-		//only for offer
-		type: "number",
+		type: "string",
 		default: 0,
 	},
 	offerCurrency: {
