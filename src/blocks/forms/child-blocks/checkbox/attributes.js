@@ -7,7 +7,7 @@ const attributes = {
     },
     checkboxName:{
         type: "string",
-        default: __( "Select Title" )
+        default: __( "Checkbox Title" )
     },
 	checkboxRequired : {
         type: "boolean",

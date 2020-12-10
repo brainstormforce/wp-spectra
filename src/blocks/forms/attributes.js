@@ -49,7 +49,7 @@ const attributes = {
 	},
 	afterSubmitEmailSubject : {
 		type: "string",
-		default:"Form Submission"
+		default:__( "Form Submission" )
 	},	
 	submitColor : {
 		type: "string",
