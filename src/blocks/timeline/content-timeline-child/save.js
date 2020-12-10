@@ -6,13 +6,11 @@ import classnames from "classnames"
 import contentTimelineChildStyle from "./inline-styles"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
-const { dateI18n, __experimentalGetSettings } = wp.date
+const { dateI18n } = wp.date
 
 const {
 	RichText
 } = wp.blockEditor
-
-const { Fragment } = wp.element
 
 export default function save( props ) {
 	const {
@@ -25,9 +23,6 @@ export default function save( props ) {
 		time_heading,
 		time_desc,
 	} = props.attributes
-	
-	/* Style for elements */
-	var front_style = contentTimelineChildStyle( props )
 
 	var display_inner_date = true
 	var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "

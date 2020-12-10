@@ -17,10 +17,8 @@ const {
 } = wp.blocks
 
 const {
-	BlockControls,
 	InspectorControls,
 	RichText,
-	BlockAlignmentToolbar,
 	PanelColorSettings,
 } = wp.blockEditor
 
@@ -31,18 +29,12 @@ const {
 	TextControl,
 } = wp.components
 
-const { select, withSelect } = wp.data;
-
 let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBcontentTimelineChild extends Component {
 
 		constructor() {
 			super( ...arguments )
-
-			// this.splitBlock = this.splitBlock.bind( this )
-
-			// this.getTimelineicon = this.getTimelineicon.bind(this)
 
 			this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		}
@@ -67,7 +59,6 @@ class UAGBcontentTimelineChild extends Component {
 
 			const { content } = attributes
 
-			//console.log(attributes)
 			if ( ! before ) {
 				// If before content is omitted, treat as intent to delete block.
 				onReplace( [] )
@@ -87,15 +78,6 @@ class UAGBcontentTimelineChild extends Component {
 
 			setAttributes( { displayPostDate: ! displayPostDate } )
 		}
-
-		/**
-	     * [getTimelineicon description]
-	     * @param  {[type]} value [description]
-	     * @return {[type]}       [description]
-	     */
-		// getTimelineicon(value) {
-		// 	this.props.setAttributes( { icon: value } )
-		// }
 
 		saveDate( value, index ) {
 			const { attributes, setAttributes } = this.props
@@ -124,22 +106,18 @@ class UAGBcontentTimelineChild extends Component {
 			document.head.appendChild( $style )
 		}
 
-		componentDidUpdate(prevProps, prevState){
-			// var id = this.props.clientId
-			// window.addEventListener("load", this.timelineContent_back(id))
-			// window.addEventListener("resize", this.timelineContent_back(id))
-			// var time = this
-			// $(".edit-post-layout__content").scroll( function(event) {
-			// 	time.timelineContent_back(id)
-			// })
+		componentDidUpdate() {
+			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
+
+			if( null !== element && undefined !== element ) {
+				element.innerHTML = contentTimelineChildStyle( this.props )
+			}
 		}	
 
 		render() {
 
 			// Setup the attributes.
 			const {
-				// isSelected,
-				// className,
 				setAttributes,
 				insertBlocksAfter,
 				mergeBlocks,
@@ -147,20 +125,16 @@ class UAGBcontentTimelineChild extends Component {
 				attributes: {
 					headSpace,
 					headingTag,
-					// separatorSpace,
 					headingColor,
 					subHeadingColor,
 					backgroundColor,
-					// timelineItem,
 					timelinAlignment,
-					align,
 					icon,
 					borderRadius,
 					bgPadding,
 					block_id,
 					t_date,
 					displayPostDate,
-					// stack,
 					dateFormat,
 					time_heading,
 					time_desc,
@@ -248,10 +222,6 @@ class UAGBcontentTimelineChild extends Component {
 					</PanelColorSettings>
 				</InspectorControls>
 			)
-
-			
-
-			// console.log(t_date)
 			
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "

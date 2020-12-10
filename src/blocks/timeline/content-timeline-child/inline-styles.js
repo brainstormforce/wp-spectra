@@ -11,7 +11,6 @@ function contentTimelineStyle( props ) {
 		headingColor,
 		subHeadingColor,
 		backgroundColor,
-		align,
 		bgPadding,
 		borderRadius,
 		block_id,
