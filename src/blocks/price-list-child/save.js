@@ -17,12 +17,7 @@ export default function save( props ) {
 	const {
 		block_id,
 		className,
-		rest_menu_item_arr,
 		imagePosition,
-		imageSize,
-		image,
-		imageAlignment,
-		headingAlign,
 	} = props.attributes
 
 	return (
@@ -41,7 +36,6 @@ export default function save( props ) {
 				) }
 				>
 						<div className = { classnames(
-							// "uagb-rest_menu__wrap",
 							...PositionClasses( props.attributes ),
 						) } >
 						<div className = "uagb-rm__content">

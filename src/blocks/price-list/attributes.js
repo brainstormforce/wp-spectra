@@ -1,7 +1,6 @@
 /**
  * BLOCK: Price List - Attributes
  */
-const { __ } = wp.i18n
 
 const ITEM_COUNT = 4
 

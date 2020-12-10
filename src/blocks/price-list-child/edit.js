@@ -4,36 +4,27 @@
 import classnames from "classnames"
 
 import PositionClasses from "../price-list/classes"
-import RestMenuStyle from "./inline-styles"
 import RestMenuImage from "./components/RestMenuImage"
 import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
-
-import times from "lodash/times"
-
 
 const { __ } = wp.i18n
 
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	MediaUpload
 } = wp.blockEditor
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
 	BaseControl,
 	Button,
-	TabPanel,
-	Dashicon
 } = wp.components
 
-const { select, withSelect } = wp.data;
+const { select } = wp.data;
 
 const { Component, Fragment } = wp.element
 
@@ -45,8 +36,6 @@ class UAGBRestaurantMenuChild extends Component {
 		this.onSelectRestImage  = this.onSelectRestImage.bind( this )
 		this.onRemoveRestImage  = this.onRemoveRestImage.bind(this)
 		this.getImageName       = this.getImageName.bind(this)
-		// this.onRemoveImage 		= this.onRemoveImage.bind( this )
-		// this.onSelectImage 		= this.onSelectImage.bind( this )
     }
     
     onSelectRestImage( media ) {
@@ -103,16 +92,9 @@ class UAGBRestaurantMenuChild extends Component {
 
 		// Setup the attributes.
 		const {
-			menu_item_count,
-			rest_menu_item_arr,
 			headingAlign,
 			imagePosition,
-			imageSize,
-			image,
-			imageAlignment,
-			title,
-			price,
-			description			
+			image,		
 		} = attributes	
 
         const inspect_control = (
@@ -169,7 +151,6 @@ class UAGBRestaurantMenuChild extends Component {
 				>
 
 			<div className = { classnames(
-							// "uagb-rest_menu__wrap",
 							...PositionClasses( attributes ),
 						) } >
 										<div className = "uagb-rm__content" >
@@ -206,26 +187,12 @@ class UAGBRestaurantMenuChild extends Component {
 		)
 	}
 
-	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-restaurant-menu-style-child-" + this.props.clientId.substr( 0, 8 ) )
-		
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = RestMenuStyle( this.props )
-		}
-	}
-
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-restaurant-menu-style-child-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-
 		
 	}
 }

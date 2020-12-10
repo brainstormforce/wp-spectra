@@ -1,8 +1,3 @@
-const {
-	RichText,
-} = wp.blockEditor
-
-const { __ } = wp.i18n
 
 class RestMenuImage extends React.Component {
 

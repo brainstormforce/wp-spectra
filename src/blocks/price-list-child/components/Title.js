@@ -3,9 +3,6 @@ const {
 } = wp.blockEditor
 
 const { __ } = wp.i18n
-const {
-	createBlock
-} = wp.blocks
 
 class Title extends React.Component {
 	
@@ -13,8 +10,7 @@ class Title extends React.Component {
 
 		const {
 			attributes,
-			setAttributes ,
-			props,
+			setAttributes,
 			index_value
 		} = this.props
 		let author_title = ""

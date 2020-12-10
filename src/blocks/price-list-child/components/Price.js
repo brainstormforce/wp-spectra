@@ -4,10 +4,6 @@ const {
 
 const { __ } = wp.i18n
 
-const {
-	createBlock
-} = wp.blocks
-
 class Price extends React.Component {
 
 	render() {
@@ -15,7 +11,6 @@ class Price extends React.Component {
 		const {	
 			attributes, 
 			setAttributes , 
-			props,
 			index_value	
 		} = this.props
 
