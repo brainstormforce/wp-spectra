@@ -41,71 +41,89 @@ class SchemaNotices extends Component {
             } = this.props
 
         var emptyItems = [];
+        var msg;
 
         switch ( itemType ) {
             case "Product":
                 if ( 'undefined' === typeof sku || '' === sku ) {
-                    emptyItems.push( 'Mising SKU' );
+                    msg = __( 'Mising SKU' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof brand || '' === brand ) {
-                    emptyItems.push( 'Mising Brand' );
+                    msg = __( 'Mising Brand' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
-                    emptyItems.push( 'Missing field Offer Type' );
+                    msg = __( 'Missing field Offer Type' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
-                    emptyItems.push( 'Missing field Offer Currency' );
+                    msg = __('Missing field Offer Currency');
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-                    emptyItems.push( 'Missing field Offer Price' );
+                    msg = __( 'Missing field Offer Price' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerExpiry || '' === offerExpiry ) {
-                    emptyItems.push( 'Missing field Offer Expiry' );
+                    msg = __( 'Missing field Offer Expiry' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof identifier || '' === identifier ) {
-                    emptyItems.push( 'Missing field Identifier' );
+                    msg = __( 'Missing field Identifier' );
+                    emptyItems.push( msg );
                 }
                 break;
             
             case 'Book':
                 if ( 'undefined' === typeof isbn || '' === isbn ) {
-                    emptyItems.push( 'Mising ISBN Number' );
+                    msg = __( 'Mising ISBN Number' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof bookAuthorName || '' === bookAuthorName ) {
-                    emptyItems.push( 'Mising Book Author Name' );
+                    msg = __( 'Mising Book Author Name' );
+                    emptyItems.push( msg );
                 }
                 break; 
 
             case 'Movie':
                 if ( 'undefined' === typeof datecreated || '' === datecreated ) {
-                    emptyItems.push( 'Mising Date' );
+                    msg = __( 'Mising Date' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof directorname || '' === directorname ) {
-                    emptyItems.push( 'Mising Director Name' );
+                    msg = __( 'Mising Director Name' );
+                    emptyItems.push( msg );
                 }
                 break;
             
             case 'Course':
                 if ( 'undefined' === typeof provider || '' === provider ) {
-                    emptyItems.push( 'Mising Provider' );
+                    msg = __( 'Mising Provider' );
+                    emptyItems.push( msg );
                 }
                 break;
             
             case 'SoftwareApplication':
                 if ( 'undefined' === typeof appCategory || '' === appCategory ) {
-                    emptyItems.push( 'Mising Application Category' );
+                    msg = __( 'Mising Application Category' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof operatingSystem || '' === operatingSystem ) {
-                    emptyItems.push( 'Mising Operating System' );
+                    msg = __( 'Mising Operating System' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
-                    emptyItems.push( 'Missing field Offer Type' );
+                    msg = __( 'Missing field Offer Type' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-                    emptyItems.push( 'Missing field Offer Price' );
+                    msg = __( 'Missing field Offer Price' );
+                    emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
-                    emptyItems.push( 'Missing field Offer Currency' );
+                    msg = __( 'Missing field Offer Currency' );
+                    emptyItems.push( msg );
                 }
                 break;
             
@@ -116,25 +134,32 @@ class SchemaNotices extends Component {
         
         if( itemType ){
             if ( 'undefined' === typeof rTitle || '' === rTitle ) {
-                emptyItems.push( 'Mising Rating Block Title' );
+                msg = __( 'Mising Rating Block Title' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rContent || '' === rContent || false == enableDescription ) {
-                emptyItems.push( 'Mising Description' );
+                msg = __( 'Mising Description' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof mainimage.url || null === mainimage.url || '' === mainimage.url || false == enableImage ) {
-                emptyItems.push( 'Mising Image' );
+                msg = __( 'Mising Image' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof ctaLink || '' === ctaLink ) {
-                emptyItems.push( 'Missing field url' );
+                msg = __( 'Missing field url' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rAuthor || '' === rAuthor || false == showAuthor ) {
-                emptyItems.push( 'Missing Author' );
+                msg = __( 'Missing Author' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof reviewPublisher || '' === reviewPublisher ) {
-                emptyItems.push( 'Mising Review Publisher' );
+                msg = __( 'Mising Review Publisher' );
+                emptyItems.push( msg );
             }
             if ( 'undefined' === typeof datepublish || '' === datepublish ) {
-                emptyItems.push( 'Mising Date of Publish' );
+                msg = __( 'Mising Date of Publish' );
+                emptyItems.push( msg );
             }
         }
         
