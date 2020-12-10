@@ -14,6 +14,7 @@
 		}
 
 		var parsedSlug = slug.toString().toLowerCase()
+			.replace(/\…+/g,'')                             // Remove multiple …
 			.replace(/&(amp;)/g, '')					 	// Remove &
 			.replace(/&(mdash;)/g, '')					 	// Remove long dash
 			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
@@ -138,6 +139,7 @@
 
 						let header = $( this );
 						let header_text = parseTocSlug(header.text());
+
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
