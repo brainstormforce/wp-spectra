@@ -1,56 +1,19 @@
 /**
- * BLOCK: Testimonial - Save Block
+ * BLOCK: Timeline - Save Block
  */
 
 import classnames from "classnames"
-import contentTimelineStyle from ".././inline-styles"
+import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
-
-const { dateI18n, __experimentalGetSettings } = wp.date
 
 const {
-	RichText,
 	InnerBlocks,
 } = wp.blockEditor
-
-const {
-	withSelect,
-	useDispatch,
-	dispatch,
-	select, 
-	useSelect,
-	withDispatch
-} = wp.data
-
-const { Fragment } = wp.element
 
 export default function save( props ) {
 	const {
 		block_id,
-		headingTag,
-		timelinAlignment,
-		displayPostDate,
-		icon,
-		tm_content,
-		t_date,
-		date_icon,
-		stack,
-		timelineItem,
-		dateFormat
 	} = props.attributes
-
-	/* Style for elements */
-	var front_style = contentTimelineStyle( props )
-
-	const hasItems = Array.isArray( tm_content ) && tm_content.length
-	// console.log(props.attributes)
-	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
-	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
-
-	var display_inner_date = false
 
 	return (
 		<div  className={ classnames(
