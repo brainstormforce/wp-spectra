@@ -18,13 +18,6 @@ import deprecated from "./deprecated"
 import save from "./save"
 import attributes from "./attributes"
 import edit from "./edit"
-import contentTimelineStyle from "./styling"
-// import contentTimelineStyle from ".././inline-styles"
-// import ContentTmClasses from ".././classes"
-// import AlignClass from ".././align-classes"
-// import DayAlignClass from ".././day-align-classes"
-// const { dateI18n, __experimentalGetSettings } = wp.date
-// import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Components
 const { __ } = wp.i18n
@@ -33,10 +26,6 @@ const { __ } = wp.i18n
 const {
 	registerBlockType
 } = wp.blocks
-
-const {
-	RichText
-} = wp.blockEditor
 
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;

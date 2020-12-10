@@ -10,8 +10,6 @@ import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
-// import AlignClass from ".././align-classes"
-// import DayAlignClass from ".././day-align-classes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Import all of our Text Options requirements.
@@ -20,7 +18,7 @@ import TypographyControl from "../../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../../components/typography/fontloader"
 
-const { dateI18n, __experimentalGetSettings } = wp.date
+const { dateI18n } = wp.date
 
 const { Component, Fragment } = wp.element
 
@@ -35,7 +33,6 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	// RichText,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
 	InnerBlocks,
@@ -44,28 +41,15 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	// Placeholder,
 	RangeControl,
-	// Spinner,
-	TextControl,
 	ToggleControl,
-	// Toolbar,
-	// ButtonGroup,
-	// Button,
 	TabPanel,
-	// Dashicon,
 } = wp.components
 
 const {
-	withSelect,
-	useDispatch,
 	dispatch,
 	select, 
-	useSelect,
-	withDispatch
 } = wp.data
-
-const { compose } = wp.compose
 
 const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
@@ -91,54 +75,6 @@ class UAGBcontentTimeline extends Component {
 		this.getconnectorBgsize = this.getconnectorBgsize.bind(this)
 
 		this.getseparatorwidth = this.getseparatorwidth.bind(this)
-
-		// this.getseparatorColor = this.getseparatorColor.blind(this)
-
-		// this.geticonColor = this.geticonColor.blind(this)
-
-		// this.gettimelineItem = this.gettimelineItem.blind(this)
-
-		// this.getseparatorBorder = this.getseparatorBorder.blind(this)
-	}
-
-	getseparatorBorder (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		
-		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-			UAGBcontentTimelineChild.attributes.separatorBorder = value
-		});
-		setAttributes( { separatorBorder: value } )
-	}
-
-	gettimelineItem (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		
-		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-			UAGBcontentTimelineChild.attributes.timelineItem = value
-		});
-		setAttributes( { timelineItem: value } )
-	}
-
-	geticonColor (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		
-		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-			UAGBcontentTimelineChild.attributes.iconColor = value
-		});
-		setAttributes( { iconColor: value } )
-	}
-
-	getseparatorColor (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		
-		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-			UAGBcontentTimelineChild.attributes.separatorColor = value
-		});
-		setAttributes( { separatorColor: value } )
 	}
 
 	getconnectorBgsize (value) {
@@ -240,44 +176,14 @@ class UAGBcontentTimeline extends Component {
 		setAttributes( { displayPostDate: ! displayPostDate } )
 	}
 
-	/**
-     * [getTimelineicon description]
-     * @param  {[type]} value [description]
-     * @return {[type]}       [description]
-     */
-	// getTimelineicon(value) {
-	// 	this.props.setAttributes( { icon: value } )
-	// }
-
-	saveDate( value, index ) {
-		const { attributes, setAttributes } = this.props
-		const { t_date } = attributes
-
-		const newItems = t_date.map( ( item, thisIndex ) => {
-			if ( index === thisIndex ) {
-				item = { ...item, ...value }
-			}
-
-			return item
-		} )
-
-		setAttributes( {
-			t_date: newItems,
-		} )
-	}
-
 	render() {
 
 		// Setup the attributes.
 		const {
 			className,
 			setAttributes,
-			// insertBlocksAfter,
-			// onReplace,
 			attributes: {
 				tm_content,
-				separatorHeight,
-				separatorSpace,
 				separatorColor,
 				separatorFillColor,
 				separatorBg,
@@ -366,25 +272,21 @@ class UAGBcontentTimeline extends Component {
 					{
 						value: separatorColor,
 						onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-						// onChange: ( this.getseparatorColor(colorValue) ),
 						label: __( "Line Color" ) ,
 					},
 					{
 						value: iconColor,
 						onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-						// onChange: ( this.geticonColor(colorValue) ),
 						label: __( "Icon Color" ),
 					},
 					{
 						value: separatorBg,
 						onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
-						// onChange: ( this.getseparatorBg(colorValue) ),
 						label: __( "Background Color" ),
 					},
 					{
 						value: separatorBorder,
 						onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
-						// onChange: ( this.getseparatorBorder(colorValue) ),
 						label: __( "Border Color" ),
 					},
 				] }
@@ -450,25 +352,6 @@ class UAGBcontentTimeline extends Component {
 				</TabPanel>
 			</PanelBody>
 		)
-
-		const renderDateSettings = ( index ) => {
-			return (
-				<Fragment key ={index}>
-					<TextControl
-						label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-						value= { t_date[ index ].title }
-						onChange={ value => {
-							this.saveDate( { title: value }, index )
-						} }
-					/>
-				</Fragment>
-			)
-		}
-
-		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
-		]
 
 		let loadHeadGoogleFonts
 		let loadSubHeadGoogleFonts
@@ -815,8 +698,8 @@ class UAGBcontentTimeline extends Component {
 					align_class = "uagb-timeline__widget uagb-timeline__left"
 				}  
 			} 
-			let day_align_class = ""
 
+			let day_align_class = ""
 			if( "left" == block.attributes.timelinAlignment ){
 				day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
 			}else if( "right" == block.attributes.timelinAlignment ){

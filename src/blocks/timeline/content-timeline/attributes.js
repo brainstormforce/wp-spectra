@@ -115,9 +115,6 @@ const attributes = {
 		type: "string",
 		default: "px"
 	},
-	headFontSize: {
-		type: "number",
-	},
 	headFontSizeTablet: {
 		type: "number",
 	},
