@@ -213,10 +213,10 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 				}
 
 				/* translators: %s product name */
-				$notice_string = __( 'Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. ' );
+				$notice_string = __( 'Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. ', 'ultimate-addons-for-gutenberg' );
 
 				if ( is_multisite() ) {
-					$notice_string .= __( 'This will be applicable for all sites from the network.' );
+					$notice_string .= __( 'This will be applicable for all sites from the network.', 'ultimate-addons-for-gutenberg' );
 				}
 
 				$language_dir = is_rtl() ? 'rtl' : 'ltr';
@@ -240,7 +240,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 									</div>
 								</div>',
 							/* translators: %s usage doc link */
-							sprintf( $notice_string . '<span dir="%2s"><a href="%3s" target="_blank" rel="noreferrer noopener">%4s</a><span>', esc_html( $data['product_name'] ), $language_dir, esc_url( $usage_doc_link ), __( ' Know More.' ) ),
+							sprintf( $notice_string . '<span dir="%2s"><a href="%3s" target="_blank" rel="noreferrer noopener">%4s</a><span>', esc_html( $data['product_name'] ), $language_dir, esc_url( $usage_doc_link ), __( ' Know More.', 'ultimate-addons-for-gutenberg' ) ),
 							add_query_arg(
 								array(
 									$key . '_analytics_optin' => 'yes',
@@ -248,7 +248,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 									'bsf_analytics_source' => $key,
 								)
 							),
-							__( 'Yes! Allow it' ),
+							__( 'Yes! Allow it', 'ultimate-addons-for-gutenberg' ),
 							add_query_arg(
 								array(
 									$key . '_analytics_optin' => 'no',
@@ -257,7 +257,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 								)
 							),
 							MONTH_IN_SECONDS,
-							__( 'No Thanks' )
+							__( 'No Thanks', 'ultimate-addons-for-gutenberg' )
 						),
 						'show_if'                    => true,
 						'repeat-notice-after'        => false,
@@ -361,7 +361,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 				add_settings_field(
 					$key . '-analytics-optin',       // Field ID.
-					__( 'Usage Tracking' ),       // Field title.
+					__( 'Usage Tracking', 'ultimate-addons-for-gutenberg' ),       // Field title.
 					array( $this, 'render_settings_field_html' ), // Field callback function.
 					'general',
 					'default',                   // Settings page slug.
@@ -405,15 +405,15 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 				<input id="<?php echo esc_attr( $args['id'] ); ?>" type="checkbox" value="1" name="<?php echo esc_attr( $args['name'] ); ?>" <?php checked( get_site_option( $args['name'], 'no' ), 'yes' ); ?>>
 				<?php
 				/* translators: %s Product title */
-				echo esc_html( sprintf( __( 'Allow %s products to track non-sensitive usage tracking data.' ), $args['title'] ) );// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+				echo esc_html( sprintf( __( 'Allow %s products to track non-sensitive usage tracking data.', 'ultimate-addons-for-gutenberg' ), $args['title'] ) );// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 
 				if ( is_multisite() ) {
-					esc_html_e( ' This will be applicable for all sites from the network.' );
+					esc_html_e( ' This will be applicable for all sites from the network.', 'ultimate-addons-for-gutenberg' );
 				}
 				?>
 			</label>
 			<?php
-			echo wp_kses_post( sprintf( '<a href="%1s" target="_blank" rel="noreferrer noopener">%2s</a>', esc_url( $args['usage_doc_link'] ), __( 'Learn More.' ) ) );
+			echo wp_kses_post( sprintf( '<a href="%1s" target="_blank" rel="noreferrer noopener">%2s</a>', esc_url( $args['usage_doc_link'] ), __( 'Learn More.', 'ultimate-addons-for-gutenberg' ) ) );
 			?>
 			</fieldset>
 			<?php
