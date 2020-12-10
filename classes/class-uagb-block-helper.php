@@ -2341,13 +2341,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__arrow:after' => array(
+				' .uagb-timeline__arrow:after'      => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__arrow:after' => array(
+				' .uagb-timeline__arrow:after'      => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
 			);
