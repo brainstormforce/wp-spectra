@@ -46,83 +46,83 @@ class SchemaNotices extends Component {
         switch ( itemType ) {
             case "Product":
                 if ( 'undefined' === typeof sku || '' === sku ) {
-                    msg = __( 'Mising SKU' );
+                    msg = __( 'Mising merchant-specific identifier for product ( SKU )' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof brand || '' === brand ) {
-                    msg = __( 'Mising Brand' );
+                    msg = __( 'Mising brand of the product' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
-                    msg = __( 'Missing field Offer Type' );
+                    msg = __( 'Missing offer Type' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
-                    msg = __('Missing field Offer Currency');
+                    msg = __('Missing offer currency of a product');
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-                    msg = __( 'Missing field Offer Price' );
+                    msg = __( 'Missing offer price of a product' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerExpiry || '' === offerExpiry ) {
-                    msg = __( 'Missing field Offer Expiry' );
+                    msg = __( 'Missing offer expiry of a product' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof identifier || '' === identifier ) {
-                    msg = __( 'Missing field Identifier' );
+                    msg = __( 'Missing global identifiers' );
                     emptyItems.push( msg );
                 }
                 break;
             
             case 'Book':
                 if ( 'undefined' === typeof isbn || '' === isbn ) {
-                    msg = __( 'Mising ISBN Number' );
+                    msg = __( 'Mising ISBN number of a book' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof bookAuthorName || '' === bookAuthorName ) {
-                    msg = __( 'Mising Book Author Name' );
+                    msg = __( 'Mising author of the book' );
                     emptyItems.push( msg );
                 }
                 break; 
 
             case 'Movie':
                 if ( 'undefined' === typeof datecreated || '' === datecreated ) {
-                    msg = __( 'Mising Date' );
+                    msg = __( 'Mising released date of the movie' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof directorname || '' === directorname ) {
-                    msg = __( 'Mising Director Name' );
+                    msg = __( 'Mising director name of the movie' );
                     emptyItems.push( msg );
                 }
                 break;
             
             case 'Course':
                 if ( 'undefined' === typeof provider || '' === provider ) {
-                    msg = __( 'Mising Provider' );
+                    msg = __( 'Mising provider of the course' );
                     emptyItems.push( msg );
                 }
                 break;
             
             case 'SoftwareApplication':
                 if ( 'undefined' === typeof appCategory || '' === appCategory ) {
-                    msg = __( 'Mising Application Category' );
+                    msg = __( 'Mising type of application (Application Category)' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof operatingSystem || '' === operatingSystem ) {
-                    msg = __( 'Mising Operating System' );
+                    msg = __( 'Mising operating system(s) required' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
-                    msg = __( 'Missing field Offer Type' );
+                    msg = __( 'Missing Offer Type' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerPrice || '' === offerPrice ) {
-                    msg = __( 'Missing field Offer Price' );
+                    msg = __( 'Missing offer price of the application' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerCurrency || '' === offerCurrency ) {
-                    msg = __( 'Missing field Offer Currency' );
+                    msg = __( 'Missing offer currency of the application' );
                     emptyItems.push( msg );
                 }
                 break;
@@ -134,31 +134,31 @@ class SchemaNotices extends Component {
         
         if( itemType ){
             if ( 'undefined' === typeof rTitle || '' === rTitle ) {
-                msg = __( 'Mising Rating Block Title' );
+                msg = __( 'Mising title of the review' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rContent || '' === rContent || false == enableDescription ) {
-                msg = __( 'Mising Description' );
+                msg = __( 'Mising review description' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof mainimage.url || null === mainimage.url || '' === mainimage.url || false == enableImage ) {
-                msg = __( 'Mising Image' );
+                msg = __( 'Mising review Image' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof ctaLink || '' === ctaLink ) {
-                msg = __( 'Missing field url' );
+                msg = __( 'Missing url field' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rAuthor || '' === rAuthor || false == showAuthor ) {
-                msg = __( 'Missing Author' );
+                msg = __( 'Mising review author name' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof reviewPublisher || '' === reviewPublisher ) {
-                msg = __( 'Mising Review Publisher' );
+                msg = __( 'Mising review publisher' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof datepublish || '' === datepublish ) {
-                msg = __( 'Mising Date of Publish' );
+                msg = __( 'Mising date of publish' );
                 emptyItems.push( msg );
             }
         }

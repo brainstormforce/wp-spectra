@@ -183,7 +183,7 @@ export class ReviewBody extends Component {
 				>
 					<RichText
 						tagName={ headingTag }
-						placeholder={ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
+						placeholder={ __( 'Title of the review', 'ultimate-addons-for-gutenberg' ) }
 						keepPlaceholderOnFocus
 						value={ rTitle }
 						className='uagb-rating-title'
@@ -218,7 +218,7 @@ export class ReviewBody extends Component {
 						<RichText
 							style={{ marginRight: "auto" }}
 							key={i}
-							placeholder={__("Feature name")}
+							placeholder={ __( "Edit review" ) }
 							value={j.label}
 							onChange={(text) =>
 								setItems([

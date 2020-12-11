@@ -404,11 +404,13 @@ class UAGBRatingEdit extends Component {
 							label={__("ISBN")}
 							value={isbn}
 							onChange={(value) => setAttributes({ isbn:value})}
+							help={ __( "Note: This is required field for schema." ) }
 						/>
 						<TextControl
 							label={__("Book author name")}
 							value={bookAuthorName}
 							onChange={(value) => setAttributes({ bookAuthorName:value })}
+							help={ __( "Note: This is required field for schema." ) }
 						/>
 					</Fragment>
 				);
@@ -422,7 +424,7 @@ class UAGBRatingEdit extends Component {
 				itemTypeExtras = (
 					<Fragment>
 						<TextControl
-							label={__("provider")}
+							label={__("Provider")}
 							value={provider}
 							onChange={(value) => setAttributes({ provider:value })}
 						/>
@@ -479,7 +481,7 @@ class UAGBRatingEdit extends Component {
 
 		const ratingStyleSettings = () => {
 			return (
-				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
+				<PanelBody title={ __( "Style" ) } initialOpen={ false }>
 					<TypographyControl
 							label={ __( "Title Typography" ) }
 							attributes = { this.props.attributes }
@@ -604,8 +606,7 @@ class UAGBRatingEdit extends Component {
 	
 		const ratingSchemaSettings = () => {
 			return (
-				<PanelBody title={ __( "Schema" ) } initialOpen={ true }>
-					<h2>{ __( "Schema" ) }</h2>
+				<PanelBody title={ __( "Schema" ) } initialOpen={ false }>
 					<SelectControl
 						label={__("Item type")}
 						value={itemType}
@@ -621,7 +622,7 @@ class UAGBRatingEdit extends Component {
 								!subtypeCategories.hasOwnProperty(itemType) ||
 								!subtypeCategories[itemType].includes(itemSubtype)
 							) {
-								setAttributes({ itemSubtype: "", itemSubsubtype: "" });
+								setAttributes({ itemSubtype: "None", itemSubsubtype: "" });
 							}
 						}}
 						options={[
@@ -632,7 +633,7 @@ class UAGBRatingEdit extends Component {
 							"SoftwareApplication",
 						].map((a) => ({ label: a, value: a }))}
 					/>
-					{subtypeCategories.hasOwnProperty(itemType) && (
+					{ subtypeCategories.hasOwnProperty(itemType) && (
 						<SelectControl
 							label={__("Item subtype")}
 							value={itemSubtype}
@@ -652,22 +653,27 @@ class UAGBRatingEdit extends Component {
 						/>
 					)}
 					<ToggleControl
-					    	label={ __( "Show author" ) }
+					    	label={ __( "Show review author" ) }
 					    	checked={ showAuthor }
 					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
+					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
 					    />
 					    <ToggleControl
-					    	label={ __( "Show description" ) }
+					    	label={ __( "Show review description" ) }
 					    	checked={ enableDescription }
 					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
+					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
 					    />
+						<ToggleControl
+							label={ __( "Show review" ) }
+							checked={ showFeature }
+							onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
+						/>
 						 <ToggleControl
-					    	label={ __( "Show image" ) }
+					    	label={ __( "Show review image" ) }
 					    	checked={ enableImage }
 					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-					    	help={ __( "Note: This is recommended field for schema. It should be ON" ) }
+					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
 					    />
 						{ enableImage === true && 
 							<Fragment>
@@ -708,6 +714,7 @@ class UAGBRatingEdit extends Component {
 						label={__("Review publisher")}
 						value={reviewPublisher}
 						onChange={(value) => setAttributes({ reviewPublisher:value })}
+						help={ __( "Note: This is required field for schema." ) }
 					/>
 					<h2>{ __( "Date of publish" ) }</h2>
 							<DateTimePicker
@@ -715,9 +722,9 @@ class UAGBRatingEdit extends Component {
 							onChange={ ( value ) => setAttributes( { datepublish: value } ) }
 							is12Hour={ true }
 							/>
-					{["Event", "Product", "SoftwareApplication"].includes( itemType ) && (
+					{["Product", "SoftwareApplication"].includes( itemType ) && (
 					<Fragment>
-						{["Event", "Product"].includes( itemType ) && (
+						{["Product"].includes( itemType ) && (
 							<Fragment>
 								<TextControl
 									label={__("Brand")}
@@ -772,6 +779,7 @@ class UAGBRatingEdit extends Component {
 								label={__("Offer Price")}
 								value={offerPrice}
 								onChange={(value) => setAttributes({ offerPrice:value })}
+								help={ __( "Note: This is required field for schema." ) }
 							/>
 							<SelectControl
 								label={__("Offer Status")}
@@ -810,7 +818,7 @@ class UAGBRatingEdit extends Component {
 		const ratingGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
-				<h2>{ __( "Primary Heading" ) }</h2>
+				<h2>{ __( "Review Title" ) }</h2>
 						<SelectControl
 							label={ __( "Tag" ) }
 							value={ headingTag }
@@ -833,11 +841,6 @@ class UAGBRatingEdit extends Component {
 						label={ __( "Open in new window" ) }
 						checked={ ctaTarget }
 						onChange={ this.toggleTarget }
-					/>
-					<ToggleControl
-						label={ __( "Show features" ) }
-						checked={ showFeature }
-						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
 					/>
 					<h2>{ __( "Overall Padding (px)" ) }</h2>
 					<RangeControl
@@ -970,7 +973,14 @@ class UAGBRatingEdit extends Component {
 	export default compose(
 		withSelect( ( select,ownProps ) => {
 			const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
-			
+			var itemtype = '';
+				
+			if( ["Product", "SoftwareApplication", "Book"].includes( ownProps.attributes.itemType ) ){
+				itemtype = ( ( ownProps.attributes.itemSubtype != "None" && ownProps.attributes.itemSubtype != "" ) ? ownProps.attributes.itemSubtype : ownProps.attributes.itemType)
+			}else{
+				itemtype = ownProps.attributes.itemType
+			}
+
 				var json_data = {
 					"@context": "http://schema.org/",
 					"@type": "Review",
@@ -994,7 +1004,7 @@ class UAGBRatingEdit extends Component {
 				  switch ( ownProps.attributes.itemType ) {
 					case "Book":
 					json_data.itemReviewed = {
-						"@type":ownProps.attributes.itemType,
+						"@type":itemtype,
 						"name": ownProps.attributes.rTitle,
 						"description": ownProps.attributes.rContent,
 						"image": [],
@@ -1015,7 +1025,7 @@ class UAGBRatingEdit extends Component {
 					
 					case "Product":
 					json_data.itemReviewed = {
-						"@type":ownProps.attributes.itemType,
+						"@type":itemtype,
 						"name": ownProps.attributes.rTitle,
 						"description": ownProps.attributes.rContent,
 						"image": [],
@@ -1042,7 +1052,7 @@ class UAGBRatingEdit extends Component {
 
 					case "SoftwareApplication":
 					json_data.itemReviewed = {
-						"@type": ownProps.attributes.itemType,
+						"@type": itemtype,
 						"name": ownProps.attributes.rTitle,
 						"applicationCategory": ownProps.attributes.appCategory,
 						"operatingSystem": ownProps.attributes.operatingSystem,

@@ -62,15 +62,15 @@
 	},
 	rTitle: {
 		type: "string",
-		default: "Ultimate Addons for Gutenberg",
+		default: "",
 	},
 	rContent: {
 		type: "string",
-		default: "The Ultimate Gutenberg Blocks Library. Supercharge the Gutenberg editor with beautiful and powerful blocks to design stunning websites in minutes!",
+		default: "",
 	},
 	rAuthor: {
 		type: "string",
-		default: "Brainstorm Force",
+		default: "",
 	},
 	headingTag: {
 		type: "string",
@@ -199,7 +199,7 @@
 	},
 	enableDescription: {
 		type: "boolean",
-		default: false,
+		default: true,
 	},
 	starOutlineColor: {
 		type: "string",
@@ -275,7 +275,7 @@
 	},
 	showAuthor: {
 		type: "boolean",
-		default: false
+		default: true
 	},
 	starSize: {
 		type: "number",
