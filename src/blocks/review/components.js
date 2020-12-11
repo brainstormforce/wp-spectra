@@ -218,7 +218,7 @@ export class ReviewBody extends Component {
 						<RichText
 							style={{ marginRight: "auto" }}
 							key={i}
-							placeholder={ __( "Edit review" ) }
+							placeholder={ __( "Edit feature" ) }
 							value={j.label}
 							onChange={(text) =>
 								setItems([

@@ -1799,7 +1799,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/review'             => array(
 						'slug'        => '',
 						'title'       => __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you to add an review snippets.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'                => '',

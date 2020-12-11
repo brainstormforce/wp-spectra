@@ -406,13 +406,13 @@ class UAGBRatingEdit extends Component {
 							label={__("ISBN")}
 							value={isbn}
 							onChange={(value) => setAttributes({ isbn:value})}
-							help={ __( "Note: This is required field for schema." ) }
+							help={ __( "Note: This is a mandatory field for the Review schema" ) }
 						/>
 						<TextControl
 							label={__("Book author name")}
 							value={bookAuthorName}
 							onChange={(value) => setAttributes({ bookAuthorName:value })}
-							help={ __( "Note: This is required field for schema." ) }
+							help={ __( "Note: This is a mandatory field for the Review schema" ) }
 						/>
 					</Fragment>
 				);
@@ -674,7 +674,7 @@ class UAGBRatingEdit extends Component {
 							label={__("Review publisher")}
 							value={reviewPublisher}
 							onChange={(value) => setAttributes({ reviewPublisher:value })}
-							help={ __( "Note: This is required field for schema." ) }
+							help={ __( "Note: This is a mandatory field for the Review schema" ) }
 						/>
 						<h2>{ __( "Date of publish" ) }</h2>
 								<DateTimePicker
@@ -734,7 +734,7 @@ class UAGBRatingEdit extends Component {
 									label={__("Offer Price")}
 									value={offerPrice}
 									onChange={(value) => setAttributes({ offerPrice:value })}
-									help={ __( "Note: This is required field for schema." ) }
+									help={ __( "Note: This is a mandatory field for the Review schema" ) }
 								/>
 								<SelectControl
 									label={__("Offer Status")}
@@ -852,7 +852,7 @@ class UAGBRatingEdit extends Component {
 						label={ __( "Show feature" ) }
 						checked={ showFeature }
 						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
-						help={ __( "Note: Add feature/section ratings separately" ) }
+						help={ __( "Note: Add feature/section ratings separately." ) }
 					/>
 					<ToggleControl
 						label={ __( "Enable schema support" ) }

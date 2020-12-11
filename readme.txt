@@ -70,7 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
-	<li><a href="" target="_blank">Review block </a>: With this block, you can easily display review schema on post/pages. Further, you can style it with colors, typography.</li>
+	<li><a href="" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
 	<li><a href="https://www.ultimategutenberg.com/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
  	<li><a href="https://www.ultimategutenberg.com/faq/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user’s common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
