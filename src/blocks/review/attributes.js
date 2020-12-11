@@ -16,10 +16,6 @@
 		type: "string",
 		default: "",
 	},
-	itemSubsubtype: {
-		type: "string",
-		default: "",
-	},
 	reviewPublisher: {
 		type: "string",
 		default: "",

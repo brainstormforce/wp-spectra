@@ -171,7 +171,6 @@ class UAGBRatingEdit extends Component {
 				enableSchema,
 				itemType,
 				itemSubtype,
-				itemSubsubtype,
 				authorName,
 				itemName,
 				description,
@@ -366,19 +365,21 @@ class UAGBRatingEdit extends Component {
 		let itemTypeExtras;
 
 		const subtypeCategories = {
-			Book: ["Audiobook"],
+			Book: [{ value: "Audiobook", label: __( "Audio book" ) }],
 			Product: [
-				"IndividualProduct",
-				"ProductCollection",
-				"ProductGroup",
-				"ProductModel",
-				"SomeProducts",
-				"Vehicle",
+				{ value: "IndividualProduct", label: __( "Individual Product" ) },
+				{ value: "ProductCollection", label: __( "Product Collection" ) },
+				{ value: "ProductGroup", label: __( "Product Group" ) },
+				{ value: "ProductModel", label: __( "Product Model" ) },
+				{ value: "SomeProducts", label: __( "Some Products" ) },
+				{ value: "Vehicle", label: __( "Vehicle" ) },
 			],
-			SoftwareApplication: ["MobileApplication", "VideoGame", "WebApplication"],
+			SoftwareApplication: [
+				{ value: "MobileApplication", label: __( "Mobile Application" ) },
+				{ value: "VideoGame" , label: __( "Video Game" ) },
+				{ value: "WebApplication" , label: __( "Web Application" ) }
+			],
 		};
-
-		const subsubtypes = {}
 
 		let unusedDefaults = [
 			"bookAuthorName",
@@ -644,34 +645,27 @@ class UAGBRatingEdit extends Component {
 									!subtypeCategories.hasOwnProperty(itemType) ||
 									!subtypeCategories[itemType].includes(itemSubtype)
 								) {
-									setAttributes({ itemSubtype: "None", itemSubsubtype: "" });
+									setAttributes({ itemSubtype: "None" });
 								}
 							}}
 							options={[
-								"Book",
-								"Course",
-								"Movie",
-								"Product",
-								"SoftwareApplication",
-							].map((a) => ({ label: a, value: a }))}
+								{ value: 'Book', label: __( 'Book' ) },
+								{ value: 'Course', label: __( 'Course' ) },
+								{ value: 'Movie', label: __( 'Movie' ) },
+								{ value: 'Product', label: __( 'Product' ) },
+								{ value: 'SoftwareApplication', label: __( 'Software Application' ) },
+							]}
 						/>
 						{ subtypeCategories.hasOwnProperty(itemType) && (
 							<SelectControl
 								label={__("Item subtype")}
-								value={itemSubtype}
-								onChange={(value) => {
-									setAttributes({ itemSubtype:value });
-									if (
-										!subsubtypes.hasOwnProperty(itemSubtype) ||
-										!subsubtypes[itemSubtype].includes(itemSubsubtype)
-									) {
-										setAttributes({ itemSubsubtype: "" });
-									}
-								}}
-								options={["None", ...subtypeCategories[itemType]].map((a) => ({
-									label: a,
-									value: a,
-								}))}
+								options={ ["None",...subtypeCategories[itemType]] }
+								value={ itemSubtype }
+								onChange={ ( value ) =>
+									setAttributes( {
+										itemSubtype: value,
+									} )
+								}
 							/>
 						)}
 						<hr className="uagb-editor__separator" />
@@ -807,19 +801,19 @@ class UAGBRatingEdit extends Component {
 						label={ __( "Show review description" ) }
 						checked={ enableDescription }
 						onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-						help={ __( "Note: This is required field for schema. It should be ON" ) }
+						help={ __( "Note: This is a mandatory field for the Review schema." ) }
 					/>
 					<ToggleControl
 						label={ __( "Show review author" ) }
 						checked={ showAuthor }
 						onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-						help={ __( "Note: This is required field for schema. It should be ON" ) }
+						help={ __( "Note: This is a mandatory field for the Review schema." ) }
 					/>
 					<ToggleControl
 						label={ __( "Show review image" ) }
 						checked={ enableImage }
 						onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-						help={ __( "Note: This is required field for schema. It should be ON" ) }
+						help={ __( "Note: This is a mandatory field for the Review schema." ) }
 					/>
 					{ enableImage === true && 
 						<Fragment>
@@ -858,6 +852,7 @@ class UAGBRatingEdit extends Component {
 						label={ __( "Show feature" ) }
 						checked={ showFeature }
 						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
+						help={ __( "Note: Add feature/section ratings separately" ) }
 					/>
 					<ToggleControl
 						label={ __( "Enable schema support" ) }
