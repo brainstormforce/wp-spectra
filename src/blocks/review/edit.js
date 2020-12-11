@@ -112,7 +112,7 @@ class UAGBRatingEdit extends Component {
 		})
 	}
 
-	/*
+	/**
 	 * Event to set Image as null while removing.
 	 */
 	onRemoveImage() {
@@ -120,7 +120,7 @@ class UAGBRatingEdit extends Component {
 		setAttributes( { mainimage: null } )
 	}
 
-	/*
+	/**
 	 * Event to set Image as while adding.
 	 */
 	onSelectImage( media ) {
@@ -659,7 +659,7 @@ class UAGBRatingEdit extends Component {
 						{ subtypeCategories.hasOwnProperty(itemType) && (
 							<SelectControl
 								label={__("Item subtype")}
-								options={ ["None",...subtypeCategories[itemType]] }
+								options={ [{ value: 'none', label: __( 'None' ) },...subtypeCategories[itemType]] }
 								value={ itemSubtype }
 								onChange={ ( value ) =>
 									setAttributes( {
