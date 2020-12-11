@@ -849,7 +849,7 @@ class UAGBRatingEdit extends Component {
 						</Fragment>
 					} 
 					<ToggleControl
-						label={ __( "Show feature" ) }
+						label={ __( "Show ratings" ) }
 						checked={ showFeature }
 						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
 						help={ __( "Note: Add feature/section ratings separately." ) }
