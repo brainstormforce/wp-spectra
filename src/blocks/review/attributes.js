@@ -195,9 +195,13 @@
 	},
 	enableImage: {
 		type: "boolean",
-		default: false,
+		default: true,
 	},
 	enableDescription: {
+		type: "boolean",
+		default: true,
+	},
+	enableSchema:{
 		type: "boolean",
 		default: true,
 	},

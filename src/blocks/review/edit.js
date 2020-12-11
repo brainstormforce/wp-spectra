@@ -168,6 +168,7 @@ class UAGBRatingEdit extends Component {
 		const {
 			attributes: {
 				block_id,
+				enableSchema,
 				itemType,
 				itemSubtype,
 				itemSubsubtype,
@@ -600,221 +601,181 @@ class UAGBRatingEdit extends Component {
 						onChange={ ( value ) => setAttributes( { starOutlineColor: value } ) }
 						allowReset
 					/>
+					<h2>{ __( "Overall Padding (px)" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
+						value={ contentVrPadding }
+						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
+						value={ contentHrPadding }
+						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 				</PanelBody>
 			)
 		}
 	
-		const ratingSchemaSettings = () => {
-			return (
-				<PanelBody title={ __( "Schema" ) } initialOpen={ false }>
-					<SelectControl
-						label={__("Item type")}
-						value={itemType}
-						onChange={(value) => {
-							setAttributes({ itemType:value });
-							if (itemType === "Movie") {
-								setAttributes({ enableImage: true });
-							}
-							if (itemType === "Course") {
-								setAttributes({ enableDescription: true });
-							}
-							if (
-								!subtypeCategories.hasOwnProperty(itemType) ||
-								!subtypeCategories[itemType].includes(itemSubtype)
-							) {
-								setAttributes({ itemSubtype: "None", itemSubsubtype: "" });
-							}
-						}}
-						options={[
-							"Book",
-							"Course",
-							"Movie",
-							"Product",
-							"SoftwareApplication",
-						].map((a) => ({ label: a, value: a }))}
-					/>
-					{ subtypeCategories.hasOwnProperty(itemType) && (
+		
+			const ratingSchemaSettings = () => {
+				if ( true === enableSchema ) {
+				return (
+					<PanelBody title={ __( "Schema" ) } initialOpen={ false }>
 						<SelectControl
-							label={__("Item subtype")}
-							value={itemSubtype}
+							label={__("Item type")}
+							value={itemType}
 							onChange={(value) => {
-								setAttributes({ itemSubtype:value });
+								setAttributes({ itemType:value });
+								if (itemType === "Movie") {
+									setAttributes({ enableImage: true });
+								}
+								if (itemType === "Course") {
+									setAttributes({ enableDescription: true });
+								}
 								if (
-									!subsubtypes.hasOwnProperty(itemSubtype) ||
-									!subsubtypes[itemSubtype].includes(itemSubsubtype)
+									!subtypeCategories.hasOwnProperty(itemType) ||
+									!subtypeCategories[itemType].includes(itemSubtype)
 								) {
-									setAttributes({ itemSubsubtype: "" });
+									setAttributes({ itemSubtype: "None", itemSubsubtype: "" });
 								}
 							}}
-							options={["None", ...subtypeCategories[itemType]].map((a) => ({
-								label: a,
-								value: a,
-							}))}
+							options={[
+								"Book",
+								"Course",
+								"Movie",
+								"Product",
+								"SoftwareApplication",
+							].map((a) => ({ label: a, value: a }))}
 						/>
-					)}
-					<ToggleControl
-					    	label={ __( "Show review author" ) }
-					    	checked={ showAuthor }
-					    	onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
-					    />
-					    <ToggleControl
-					    	label={ __( "Show review description" ) }
-					    	checked={ enableDescription }
-					    	onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
-					    />
-						<ToggleControl
-							label={ __( "Show review" ) }
-							checked={ showFeature }
-							onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
-						/>
-						 <ToggleControl
-					    	label={ __( "Show review image" ) }
-					    	checked={ enableImage }
-					    	onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-					    	help={ __( "Note: This is required field for schema. It should be ON" ) }
-					    />
-						{ enableImage === true && 
-							<Fragment>
-								<h2>{ __( "Image" ) }</h2>
-								<MediaUpload
-									title={ __( "Select Image" ) }
-									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
-									allowedTypes={ [ "image" ] }
-									value={ mainimage }
-									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
-											{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
-										</Button>
-									)}
-									/>
-							
-							{ mainimage.url &&
-								<Button
-									className="uagb-rm-btn"
-									onClick={ () => setAttributes( { mainimage: '' } ) }
-									isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-							{ mainimage.url &&
-								<SelectControl
-									label={ __( "Size" ) }
-									options={ imageSizeOptions }
-									value={ imgSize }
-									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-								/>
-							}
-							</Fragment>
-						} 
-					<hr className="uagb-editor__separator" />
-					{itemTypeExtras}
-					<TextControl
-						label={__("Review publisher")}
-						value={reviewPublisher}
-						onChange={(value) => setAttributes({ reviewPublisher:value })}
-						help={ __( "Note: This is required field for schema." ) }
-					/>
-					<h2>{ __( "Date of publish" ) }</h2>
-							<DateTimePicker
-							currentDate={ datepublish }
-							onChange={ ( value ) => setAttributes( { datepublish: value } ) }
-							is12Hour={ true }
-							/>
-					{["Product", "SoftwareApplication"].includes( itemType ) && (
-					<Fragment>
-						{["Product"].includes( itemType ) && (
-							<Fragment>
-								<TextControl
-									label={__("Brand")}
-									value={brand}
-									onChange={(value) => setAttributes({ brand:value })}
-								/>
-								<TextControl
-									label={__("Author")}
-									value={rAuthor}
-									onChange={(value) => setAttributes({ rAuthor:value })}
-								/>
-								<TextControl
-									label={__("SKU")}
-									value={sku}
-									onChange={(value) => setAttributes({ sku:value })}
-								/>
-								<TextControl
-									label={__("Identifier")}
-									value={identifier}
-									onChange={(value) => setAttributes({ identifier:value })}
-								/>
-								<SelectControl
-									label={__("Identifier type")}
-									value={identifierType}
-									options={[
-										"nsn",
-										"mpn",
-										"gtin8",
-										"gtin12",
-										"gtin13",
-										"gtin14",
-										"gtin",
-									].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
-									onChange={(value) =>
-										setAttributes({ identifierType:value })
+						{ subtypeCategories.hasOwnProperty(itemType) && (
+							<SelectControl
+								label={__("Item subtype")}
+								value={itemSubtype}
+								onChange={(value) => {
+									setAttributes({ itemSubtype:value });
+									if (
+										!subsubtypes.hasOwnProperty(itemSubtype) ||
+										!subsubtypes[itemSubtype].includes(itemSubsubtype)
+									) {
+										setAttributes({ itemSubsubtype: "" });
 									}
+								}}
+								options={["None", ...subtypeCategories[itemType]].map((a) => ({
+									label: a,
+									value: a,
+								}))}
+							/>
+						)}
+						<hr className="uagb-editor__separator" />
+						{itemTypeExtras}
+						<TextControl
+							label={__("Review publisher")}
+							value={reviewPublisher}
+							onChange={(value) => setAttributes({ reviewPublisher:value })}
+							help={ __( "Note: This is required field for schema." ) }
+						/>
+						<h2>{ __( "Date of publish" ) }</h2>
+								<DateTimePicker
+								currentDate={ datepublish }
+								onChange={ ( value ) => setAttributes( { datepublish: value } ) }
+								is12Hour={ true }
+								/>
+						{["Product", "SoftwareApplication"].includes( itemType ) && (
+						<Fragment>
+							{["Product"].includes( itemType ) && (
+								<Fragment>
+									<TextControl
+										label={__("Brand")}
+										value={brand}
+										onChange={(value) => setAttributes({ brand:value })}
+									/>
+									<TextControl
+										label={__("SKU")}
+										value={sku}
+										onChange={(value) => setAttributes({ sku:value })}
+									/>
+									<TextControl
+										label={__("Identifier")}
+										value={identifier}
+										onChange={(value) => setAttributes({ identifier:value })}
+									/>
+									<SelectControl
+										label={__("Identifier type")}
+										value={identifierType}
+										options={[
+											"nsn",
+											"mpn",
+											"gtin8",
+											"gtin12",
+											"gtin13",
+											"gtin14",
+											"gtin",
+										].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
+										onChange={(value) =>
+											setAttributes({ identifierType:value })
+										}
+									/>
+								</Fragment>
+							)}
+						{["Product", "SoftwareApplication"].includes( itemType ) && (
+							<Fragment>
+							<TextControl
+								label={__("Offer Currency")}
+								value={offerCurrency}
+								onChange={(value) => setAttributes({ offerCurrency:value })}
+							/>
+							</Fragment>
+						)}
+						{offerType == "Offer" && (
+							<Fragment>
+								<TextControl
+									label={__("Offer Price")}
+									value={offerPrice}
+									onChange={(value) => setAttributes({ offerPrice:value })}
+									help={ __( "Note: This is required field for schema." ) }
+								/>
+								<SelectControl
+									label={__("Offer Status")}
+									value={offerStatus}
+									options={[
+										{ value: 'https://schema.org/Discontinued', label: __( 'Discontinued' ) },
+										{ value: 'https://schema.org/InStock', label: __( 'In Stock' ) },
+										{ value: 'https://schema.org/InStoreOnly', label: __( 'In Store Only' ) },
+										{ value: 'https://schema.org/LimitedAvailability', label: __( 'Limited Availability' ) },
+										{ value: 'https://schema.org/OnlineOnly', label: __( 'Online Only' ) },
+										{ value: 'https://schema.org/OutOfStock', label: __( 'Out Of Stock' ) },
+										{ value: 'https://schema.org/PreOrder', label: __( 'Pre Order' ) },
+										{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale' ) },
+										{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out' ) },
+									]}
+									onChange={ ( value ) =>
+										this.props.setAttributes( {
+											offerStatus: value,
+										} )
+									}
+								/>
+								<h2>{ __( "Price Valid Until" ) }</h2>
+								<DateTimePicker
+								currentDate={ offerExpiry }
+								onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
+								is12Hour={ true }
 								/>
 							</Fragment>
 						)}
-					{["Product", "SoftwareApplication"].includes( itemType ) && (
-						<Fragment>
-						<TextControl
-							label={__("Offer Currency")}
-							value={offerCurrency}
-							onChange={(value) => setAttributes({ offerCurrency:value })}
-						/>
 						</Fragment>
 					)}
-					{offerType == "Offer" && (
-						<Fragment>
-							<TextControl
-								label={__("Offer Price")}
-								value={offerPrice}
-								onChange={(value) => setAttributes({ offerPrice:value })}
-								help={ __( "Note: This is required field for schema." ) }
-							/>
-							<SelectControl
-								label={__("Offer Status")}
-								value={offerStatus}
-								options={[
-									{ value: 'https://schema.org/Discontinued', label: __( 'Discontinued' ) },
-									{ value: 'https://schema.org/InStock', label: __( 'In Stock' ) },
-									{ value: 'https://schema.org/InStoreOnly', label: __( 'In Store Only' ) },
-									{ value: 'https://schema.org/LimitedAvailability', label: __( 'Limited Availability' ) },
-									{ value: 'https://schema.org/OnlineOnly', label: __( 'Online Only' ) },
-									{ value: 'https://schema.org/OutOfStock', label: __( 'Out Of Stock' ) },
-									{ value: 'https://schema.org/PreOrder', label: __( 'Pre Order' ) },
-									{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale' ) },
-									{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out' ) },
-								]}
-								onChange={ ( value ) =>
-									this.props.setAttributes( {
-										offerStatus: value,
-									} )
-								}
-							/>
-							<h2>{ __( "Price Valid Until" ) }</h2>
-							<DateTimePicker
-							currentDate={ offerExpiry }
-							onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
-							is12Hour={ true }
-							/>
-						</Fragment>
-					)}
-					</Fragment>
+					</PanelBody>
 				)}
-				</PanelBody>
-			)
-		}
-		
+			}
+	
 		const ratingGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
@@ -842,24 +803,66 @@ class UAGBRatingEdit extends Component {
 						checked={ ctaTarget }
 						onChange={ this.toggleTarget }
 					/>
-					<h2>{ __( "Overall Padding (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.vertical_spacing }
-						className={ "uagb-margin-control" }
-						value={ contentVrPadding }
-						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
+					<ToggleControl
+						label={ __( "Show review description" ) }
+						checked={ enableDescription }
+						onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
+						help={ __( "Note: This is required field for schema. It should be ON" ) }
 					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.horizontal_spacing }
-						className={ "uagb-margin-control" }
-						value={ contentHrPadding }
-						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
+					<ToggleControl
+						label={ __( "Show review author" ) }
+						checked={ showAuthor }
+						onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
+						help={ __( "Note: This is required field for schema. It should be ON" ) }
+					/>
+					<ToggleControl
+						label={ __( "Show review image" ) }
+						checked={ enableImage }
+						onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
+						help={ __( "Note: This is required field for schema. It should be ON" ) }
+					/>
+					{ enableImage === true && 
+						<Fragment>
+							<h2>{ __( "Image" ) }</h2>
+							<MediaUpload
+								title={ __( "Select Image" ) }
+								onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
+								allowedTypes={ [ "image" ] }
+								value={ mainimage }
+								render={ ( { open } ) => (
+									<Button isDefault onClick={ open }>
+										{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+									</Button>
+								)}
+								/>
+						
+						{ mainimage.url &&
+							<Button
+								className="uagb-rm-btn"
+								onClick={ () => setAttributes( { mainimage: '' } ) }
+								isLink isDestructive>
+								{ __( "Remove Image" ) }
+							</Button>
+						}
+						{ mainimage.url &&
+							<SelectControl
+								label={ __( "Size" ) }
+								options={ imageSizeOptions }
+								value={ imgSize }
+								onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+							/>
+						}
+						</Fragment>
+					} 
+					<ToggleControl
+						label={ __( "Show feature" ) }
+						checked={ showFeature }
+						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
+					/>
+					<ToggleControl
+						label={ __( "Enable schema support" ) }
+						checked={ enableSchema }
+						onChange={ ( value ) => setAttributes( { enableSchema: ! enableSchema } ) }
 					/>
 				</PanelBody>
 			)
@@ -867,6 +870,7 @@ class UAGBRatingEdit extends Component {
 
 		return [
 			<SchemaNotices
+			    enableSchema={enableSchema}
 			    itemType={itemType}
 				rTitle={rTitle}
 				enableDescription={enableDescription}

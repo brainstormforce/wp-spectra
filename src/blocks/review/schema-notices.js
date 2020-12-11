@@ -13,6 +13,7 @@ class SchemaNotices extends Component {
     }
     render() {
         const {
+            enableSchema,
             itemType,
             rTitle,
             enableDescription,
@@ -168,24 +169,27 @@ class SchemaNotices extends Component {
         );
 
         const schemaNoticeMarkup = () => {
-            if ( 0 !== emptyItems.length ) {
-                return (
-                    <div className="rating-schema-notices">
+            if( enableSchema == true ){
+                if ( 0 !== emptyItems.length ) {
+                    return (
+                        <div className="rating-schema-notices">
 
-                        <h6> { __( 'It seems that the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.' ) } </h6>
-                        <ul className="rating-schema-notices-list">
-                            { listItems }
-                        </ul>
-                <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="https://developers.google.com/search/docs/data-types/review-snippet" target="_blank">{ __( 'Read more.' ) }</a></p>
-                    </div>
-                )
+                            <h6> { __( 'It seems that the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields.' ) } </h6>
+                            <ul className="rating-schema-notices-list">
+                                { listItems }
+                            </ul>
+                    <p>{ __( 'P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away.' ) }&nbsp;<a href="https://developers.google.com/search/docs/data-types/review-snippet" target="_blank">{ __( 'Read more.' ) }</a></p>
+                        </div>
+                    )
+                }
             }
             return '';
         }
 
         return (
+           
             <Fragment>
-                { schemaNoticeMarkup() }
+                 {schemaNoticeMarkup()}
             </Fragment>
         )
     }

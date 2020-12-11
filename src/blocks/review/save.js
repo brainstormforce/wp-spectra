@@ -15,6 +15,7 @@ export default function save( props ) {
 	const { attributes, className } = props
 
 	const {
+		enableSchema,
 		rTitle,
 		rContent,
 		mainimage,
@@ -81,9 +82,11 @@ export default function save( props ) {
 			`uagb-block-${ block_id.substr( 0, 8 ) }`
 		) }
 		>
+			{ enableSchema && (
 			<script type="application/ld+json">
 				{ schema }
 			</script>
+			)}
 			<div className="uagb_review_block">
 				<a
 					href = {ctaLink}
