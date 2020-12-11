@@ -22,12 +22,8 @@ const { __ } = wp.i18n
 const {
 	InspectorControls,
 	PanelColorSettings,
-	AlignmentToolbar,
-	BlockControls,
 	ColorPalette,
-	MediaUpload,
 	InnerBlocks
-	
 } = wp.blockEditor
 
 const {
@@ -50,8 +46,6 @@ const { Component, Fragment } = wp.element
 const MAX_COLUMNS = 3
 
 const ALLOWED_BLOCKS = [ "uagb/restaurant-menu-child" ]
-// const ALLOWED_BLOCKS = [ "core/buttons" ]
-
 
 class UAGBRestaurantMenu extends Component {
 	
@@ -62,10 +56,10 @@ class UAGBRestaurantMenu extends Component {
 		this.onRemoveImage 		= this.onRemoveImage.bind( this )
 		this.onSelectImage 		= this.onSelectImage.bind( this )
 		this.setcolumns			= this.setcolumns.bind( this )
-		this.setheadingTag			= this.setheadingTag.bind( this )
-		this.setimagePosition			= this.setimagePosition.bind( this )
-		this.setimageSize			= this.setimageSize.bind( this )
-		this.setimageAlignment			= this.setimageAlignment.bind( this )
+		this.setheadingTag		= this.setheadingTag.bind( this )
+		this.setimagePosition	= this.setimagePosition.bind( this )
+		this.setimageSize		= this.setimageSize.bind( this )
+		this.setimageAlignment	= this.setimageAlignment.bind( this )
 		
 	}
 	

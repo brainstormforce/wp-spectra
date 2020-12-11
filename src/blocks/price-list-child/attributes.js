@@ -11,15 +11,15 @@ const attributes = {
 	},
 	description:{
 		type: "string",
-		default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+		default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 	},
 	title:{
 		type: "string",
-		default:  "Menu Item"
+		default:  __("Menu Item")
 	},
 	price: {
 		type: "string",
-		default:  "$9"
+		default:  __("$9")
 	},
 	image: {
 		type: "object",
