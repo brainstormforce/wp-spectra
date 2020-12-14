@@ -24,24 +24,33 @@ const attributes = {
 		type: "string",
 		default: __( 'The form has been submitted successfully!' )
 	},
+	failedMessage : {
+		type: "string",
+		default: __( 'Unsuccessful Submission!' )
+	},
 	confirmationUrl : {
 		type: "string",
 	},
 	sendAfterSubmitEmail : {
-		type: "boolean"
-	},
-	afterSubmitFromEmail : {
-		type: "string",
-	},
+		type: "boolean",
+		default:true,
+	},	
 	afterSubmitToEmail : {
 		type: "string",
+		default:'',
 	},
 	afterSubmitCcEmail : {
 		type: "string",
+		default:'',
 	},
 	afterSubmitBccEmail : {
 		type: "string",
+		default:'',
 	},
+	afterSubmitEmailSubject : {
+		type: "string",
+		default:__( "Form Submission" )
+	},	
 	submitColor : {
 		type: "string",
 		default:"#000000"
@@ -245,6 +254,15 @@ const attributes = {
 		type: "string",
 		default:"#ffffff"
 	},
+	inputplaceholderColor : {
+		type: "string",
+		default:"#000000"
+	},
+	inputactiveColor : {
+		type: "string",
+		default:"#000000"
+	},
+	
 
 	// InputBorder
 	inputborderStyle : {
@@ -295,7 +313,7 @@ const attributes = {
 	},
 	reCaptchaType : {
 		type: "string",
-		default: "v3",
+		default: "v2",
 	},
 	reCaptchaSiteKeyV2 : {
 		type: "string",
@@ -304,14 +322,32 @@ const attributes = {
 	reCaptchaSecretKeyV2 : {
 		type: "string",
 		default: "",
-	},
-	reCaptchaSiteKeyV3 : {
+	},	
+
+	//message attributes
+	successMessageTextColor : {
 		type: "string",
-		default: "",
+		default:"#000000",
 	},
-	reCaptchaSecretKeyV3 : {
+	successMessageBGColor : {
 		type: "string",
-		default: "",
+		default:"#00800030",
+	},
+	successMessageBorderColor : {
+		type: "string",
+		default:"green",
+	},
+	failedMessageTextColor : {
+		type: "string",
+		default:"#000000",
+	},
+	failedMessageBorderColor : {
+		type: "string",
+		default:"red",
+	},
+	failedMessageBGColor : {
+		type: "string",
+		default:"#f5f5f5",
 	},
 }
 export default attributes

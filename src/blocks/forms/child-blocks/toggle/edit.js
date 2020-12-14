@@ -146,12 +146,28 @@ class UAGBFormsToggleEdit extends Component {
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
+						id={ block_id }
 					/>
-					<label class="uagb-switch">
+					<label class="uagb-switch">						
+						<input 
+							type="hidden"
+							className="uagb-forms-toggle-input"
+							checked={toggleStatus}
+							data-trueState  = {trueValue}
+							data-falseState = {falseValue}
+							value={ toggleStatus ? trueValue : falseValue }
+							required={toggleRequired}	
+							name={ block_id }				
+						/>
 						<input 
 							type="checkbox"
 							className="uagb-forms-toggle-input"
-							checked={toggleStatus}							
+							checked={toggleStatus}
+							data-trueState  = {trueValue}
+							data-falseState = {falseValue}
+							value={ toggleStatus ? trueValue : falseValue }
+							required={toggleRequired}	
+							name={ block_id }				
 						/>
 						<span class={`uagb-slider ${layout}`}></span>
 					</label>	

@@ -108,8 +108,9 @@ class UAGBFormsUploadEdit extends Component {
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-upload-label ${isRequired} uagb-forms-input-label`}
 						multiline={ false }
+						id={ block_id }
 					/>					
-					<input type="file" className="uagb-forms-upload-input" disabled required={uploadRequired} />
+					<input type="file" name={ block_id } className="uagb-forms-upload-input" disabled required={uploadRequired} />
 				</div>
 			</Fragment>
 		)

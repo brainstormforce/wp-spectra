@@ -7,7 +7,7 @@ const attributes = {
     },
     radioName:{
         type: "string",
-        default: __( "Select Title" )
+        default: __( "RadioBox Title" )
     },
 	radioRequired : {
         type: "boolean",

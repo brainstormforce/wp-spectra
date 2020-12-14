@@ -29,9 +29,10 @@ export default function save( props ) {
 				<RichText.Content
 				tagName="div"
 				value={ name }
-				className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}			
+				className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}	
+				id={ block_id }		
 				/>
-				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input"/>
+				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input" name={ block_id } />
 		</div>
 	)
 }

@@ -72,7 +72,6 @@ const ALLOWED_BLOCKS = [
 	"uagb/forms-select",
 	"uagb/forms-radio",
 	"uagb/forms-checkbox",
-	"uagb/forms-upload",
 	"uagb/forms-toggle",
 	"uagb/forms-date",
 	"uagb/forms-accept",
@@ -121,12 +120,13 @@ class UAGBFormsEdit extends Component {
 			buttonAlign,
 			confirmationType,
 			confirmationMessage,
+			failedMessage,
 			confirmationUrl,
-			sendAfterSubmitEmail,
-			afterSubmitFromEmail,
+			sendAfterSubmitEmail,			
 			afterSubmitToEmail,
 			afterSubmitCcEmail,
 			afterSubmitBccEmail,
+			afterSubmitEmailSubject,
 			submitColor,
 			submitColorHover,
 			submitBgColor,
@@ -183,6 +183,8 @@ class UAGBFormsEdit extends Component {
 			labelColor,
 			inputColor,
 			bgColor,
+			inputplaceholderColor,
+			inputactiveColor,
 			//Input Border
 			inputborderStyle,
 			inputborderWidth,
@@ -197,9 +199,13 @@ class UAGBFormsEdit extends Component {
 			reCaptchaEnable,
 			reCaptchaType,			
 			reCaptchaSecretKeyV2,
-			reCaptchaSecretKeyV3,
 			reCaptchaSiteKeyV2,
-			reCaptchaSiteKeyV3
+			successMessageTextColor,
+			successMessageBGColor,
+			successMessageBorderColor,
+			failedMessageTextColor,
+			failedMessageBorderColor,
+			failedMessageBGColor,
         } = attributes
 
 
@@ -322,12 +328,68 @@ class UAGBFormsEdit extends Component {
 						</Button>
 					</ButtonGroup>
 					{ 'message' === confirmationType && 
-						<TextareaControl
-							label="Message"
-							help={ __( "Enter a message you want to display after form Submission" ) }
-							value={ confirmationMessage }
-							onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
-						/>
+						<Fragment>
+							<TextareaControl
+								label="Success Message"
+								help={ __( "Enter a message you want to display after successfull form Submission" ) }
+								value={ confirmationMessage }
+								onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
+							/>
+							<PanelBody
+								title={ __( "Success Message Design" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body"
+							>
+								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageTextColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageTextColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageTextColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageBGColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageBGColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageBGColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ successMessageBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { successMessageBorderColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelBody>
+							<TextareaControl
+								label="Failed Message"
+								help={ __( "Enter a message you want to display after unsuccessfull form Submission" ) }
+								value={ failedMessage }
+								onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
+							/>
+							<PanelBody
+								title={ __( "Failed Message Design" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body"
+							>
+								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageTextColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageTextColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageTextColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBGColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageBGColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageBGColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageBorderColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelBody>
+						</Fragment>
 					}
 					{ 'url' === confirmationType && 
 						<TextControl
@@ -529,13 +591,7 @@ class UAGBFormsEdit extends Component {
 						onChange={ ( value ) => setAttributes( { sendAfterSubmitEmail: value } ) }
 					/>
 					{ true === sendAfterSubmitEmail && (
-						<Fragment>
-							<TextControl
-							label= { __( "From" ) }
-							placeholder = { __( "Email" ) }
-							value= { afterSubmitFromEmail }
-							onChange={ value => setAttributes( { afterSubmitFromEmail: value } ) }
-							/>	
+						<Fragment>								
 							<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
 							tabs={ [
 								{
@@ -591,6 +647,12 @@ class UAGBFormsEdit extends Component {
 								}
 							}
 							</TabPanel>
+							<TextControl
+							label= { __( "Subject" ) }
+							placeholder = { __( "Subject" ) }
+							value= { afterSubmitEmailSubject }
+							onChange={ value => setAttributes( { afterSubmitEmailSubject: value } ) }
+							/>	
 						</Fragment>
 					)}
 				</PanelBody>
@@ -654,6 +716,18 @@ class UAGBFormsEdit extends Component {
 				<ColorPalette
 					value={ bgColor }
 					onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Field Placeholder Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputplaceholderColor }} ></span></span></p>
+				<ColorPalette
+					value={ inputplaceholderColor }
+					onChange={ ( colorValue ) => setAttributes( { inputplaceholderColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Field Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputactiveColor }} ></span></span></p>
+				<ColorPalette
+					value={ inputactiveColor }
+					onChange={ ( colorValue ) => setAttributes( { inputactiveColor: colorValue } ) }
 					allowReset
 				/>
 						
@@ -750,68 +824,21 @@ class UAGBFormsEdit extends Component {
 						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
 					/>
 					{ reCaptchaEnable && (
-						<Fragment>									
-						<TabPanel className="my-tab-panel"
-						 	onSelect={ (value) => setAttributes( { reCaptchaType: value } ) }
-							activeClass="is-active"
-							tabs={ [
-								{
-									name: 'v2',
-									title: 'V2',
-									className: 'uagb-forms-recaptcha-button',
-								},
-								{
-									name: 'v3',
-									title: 'V3',
-									className: 'uagb-forms-recaptcha-button',
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
+						<Fragment>
+							<TextControl
+								label="Site Key"
+								value={ reCaptchaSiteKeyV2 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV2: value } ) }
+								placeholder={"Enter v2 Keys"}
 
-									if ( "v3" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<TextControl
-													label="Site Key"
-													value={ reCaptchaSiteKeyV3 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV3: value } ) }
-													placeholder={"Enter v3 Keys"}
-												/>
-												<TextControl
-													label="Secret Key"
-													value={ reCaptchaSecretKeyV3 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV3: value } ) }
-													placeholder={"Enter v3 Keys"}
-												/>
-											</Fragment>
-										)
-									} else if ( "v2" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<TextControl
-													label="Site Key"
-													value={ reCaptchaSiteKeyV2 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV2: value } ) }
-													placeholder={"Enter v2 Keys"}
+							/>
+							<TextControl
+								label="Secret Key"
+								value={ reCaptchaSecretKeyV2 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV2: value } ) }
+								placeholder={"Enter v2 Keys"}
 
-												/>
-												<TextControl
-													label="Secret Key"
-													value={ reCaptchaSecretKeyV2 }
-													onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV2: value } ) }
-													placeholder={"Enter v2 Keys"}
-
-												/>
-											</Fragment>
-										)
-									} 
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+							/>		
 						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
 						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
 					</Fragment>
@@ -821,23 +848,7 @@ class UAGBFormsEdit extends Component {
 			)
 		}
 
-		const renderButtonHtml = () => {
-			if ( reCaptchaEnable && 'v3' === reCaptchaType && reCaptchaSiteKeyV3) {			
-				return (
-					<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button g-recaptcha" data-sitekey={reCaptchaSiteKeyV3}>
-						<RichText
-							tagName="div"
-							placeholder={ __( "Submit" ) }
-							value={ submitButtonText }
-							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
-							className='uagb-forms-main-submit-button-text'
-							multiline={ false }
-							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-						/>
-					</button>
-				)
-			}
-	
+		const renderButtonHtml = () => {			
 			return (
 				<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
 					<RichText
@@ -852,6 +863,7 @@ class UAGBFormsEdit extends Component {
 				</button>
 			);
 		}
+
 		if ( ! hasInnerBlocks ) {
 			return (
 				<Fragment>
@@ -862,6 +874,7 @@ class UAGBFormsEdit extends Component {
 						variations={ variations }
 						allowSkip
 						onSelect={ ( nextVariation ) => this.blockVariationPickerOnSelect( nextVariation ) }
+						className="uagb-forms-variations"
 					/>
 				</Fragment>
 			)
@@ -886,12 +899,18 @@ class UAGBFormsEdit extends Component {
 							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 						<div className="uagb-forms-form-hidden-data">
+							{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 &&(					
+								<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
+							)}
 							<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
 							<input type="hidden" name="uagb_forms_form_id" value= { `uagb-form-${ block_id }` }/>
 						</div>
 
-						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && (
-							<div class="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+						{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (
+							<Fragment>
+								<div className="g-recaptcha uagb-forms-field-set" data-sitekey={reCaptchaSiteKeyV2}></div>
+								<div className={`uagb-form-reacaptcha-error-${ block_id }`}></div>
+							</Fragment>
 						)}
 
 						<div className="uagb-forms-main-submit-button-wrap">

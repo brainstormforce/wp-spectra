@@ -29,16 +29,17 @@ export default function save( props ) {
 			<RichText.Content
 				tagName="div"
 				value={ selectName }
-				className={`uagb-forms-select-label ${isRequired} uagb-forms-input-label`}		
+				className={`uagb-forms-select-label ${isRequired} uagb-forms-input-label`}	
+				id={ block_id }	
 			/>
-				<select className="uagb-forms-select-box uagb-forms-input"  required={ selectRequired }>
+				<select className="uagb-forms-select-box uagb-forms-input"  required={ selectRequired } name={ block_id }>
 					<option value="" disabled selected>
 						Select your option
 					</option>
 					{options.map((o, index) => {
 						var optionvalue = o.optionvalue;
 						var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
-						return <option value={value}>{o.optiontitle}</option>;
+						return <option value={optionvalue}>{o.optiontitle}</option>;
 					})}
 					
 				</select>

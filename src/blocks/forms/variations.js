@@ -46,9 +46,9 @@ const variations = [
 	},
 	{
 		name: 'suggestion-form',
-		label: __( 'Suggestion form' ),
+		label: __( 'Suggestion Form' ),
 		icon:  <Dashicon icon="edit" />,
-		title: __( 'Suggestion form' ),
+		title: __( 'Suggestion Form' ),
 		attributes: {
 		}, 
 		innerBlocks: [

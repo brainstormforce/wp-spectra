@@ -95,7 +95,7 @@ class UAGBFormsHiddenEdit extends Component {
 					{!this.props.isSelected && (
 						<Fragment>
 							<label className={`uagb-forms-hidden-label uagb-form-hidden-${hidden_field_label}` }> { __( hidden_field_name ) } </label>
-							<input type="hidden" name={hidden_field_label} className="uagb-forms-hidden-input" value={hidden_field_value} />
+							<input type="hidden"  className="uagb-forms-hidden-input" value={hidden_field_value} />
 						</Fragment>
 					)}
 					
