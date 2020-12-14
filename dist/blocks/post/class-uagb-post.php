@@ -1051,7 +1051,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
 					$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
 					$is_rtl       = is_rtl();
-					
+
 					?>
 					<script type="text/javascript" id="<?php echo esc_html( $key ); ?>">
 						document.addEventListener("DOMContentLoaded", function(){
@@ -1062,7 +1062,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								if ( cols >= $scope.children().length ) {
 									return;
 								}
-								
 								var slider_options = {
 									'slidesToShow' : cols,
 									'slidesToScroll' : 1,
