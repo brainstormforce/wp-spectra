@@ -1796,7 +1796,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorColor'        => '#b2b4b5',
 						),
 					),
-					'uagb/review'             => array(
+					'uagb/review'                => array(
 						'slug'        => '',
 						'title'       => __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
