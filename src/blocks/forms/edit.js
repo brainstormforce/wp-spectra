@@ -22,6 +22,7 @@ const {
 
 const {
 	compose,
+	createHigherOrderComponent,
 } = wp.compose
 
 const {
@@ -84,29 +85,8 @@ class UAGBFormsEdit extends Component {
 
 	}
 
-	componentDidMount() {
-
-		const { attributes, setAttributes } = this.props
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-		
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-
-		var element = document.getElementById( "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
-    }
 	
+
 	onSubmitClick ( e ) {
 		e.preventDefault();
 	}
@@ -835,11 +815,11 @@ class UAGBFormsEdit extends Component {
 		const googleReCaptcha = () => {
 			return (
 				<PanelBody
-					title={ __( "Google reCaptcha" ) }
+					title={ __( "Google reCAPTCHA" ) }
 					initialOpen={ false }					
 				>
 					<ToggleControl
-						label={ __( "Enable reCaptcha " ) }
+						label={ __( "Enable reCAPTCHA " ) }
 						checked={ reCaptchaEnable }
 						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
 					/>
@@ -944,6 +924,80 @@ class UAGBFormsEdit extends Component {
 			</Fragment>
 		)
 	}
+
+	componentDidMount() {
+
+		const { attributes, setAttributes } = this.props
+
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+
+		
+
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
+		document.head.appendChild( $style )
+		
+		var id = this.props.clientId
+		window.addEventListener("load", this.renderReadyClasses(id))
+		
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+
+		var element = document.getElementById( "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
+
+	}
+	
+	renderReadyClasses(id){
+		var mainDiv = document.getElementById( "block-" + id )
+		var formscope = mainDiv.getElementsByClassName('uagb-forms__outer-wrap')
+		
+		if( null !== formscope[0] && undefined !== formscope[0] ) {
+			
+			var editorwrap = formscope[0].children;
+			var formInnerWrap = editorwrap[0].children;
+			var editorBlockWrap = formInnerWrap[0].getElementsByClassName('block-editor-block-list__layout')
+			var sibling = editorBlockWrap[0].children
+			
+			
+			for (let index = 0; index < sibling.length; index++) {
+
+                if( sibling[index].classList.contains("uag-col-2") && sibling[index+1].classList.contains("uag-col-2") ){
+                    let div = document.createElement('div');
+                    div.className = 'uag-col-2-wrap uag-col-wrap-' + index;                        
+                    sibling[index+1].after(div)
+                    let wrapper_div = formscope[0].getElementsByClassName('uag-col-wrap-' + index)
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+				}else if( (sibling[index].classList.contains("uag-col-3")) && (sibling[index+1].classList.contains("uag-col-3") && (sibling[index+2].classList.contains("uag-col-3"))) ){
+                    let div = document.createElement('div');
+                    div.className = 'uag-col-3-wrap uag-col-wrap-' + index;                        
+                    sibling[index+2].after(div)
+                    let wrapper_div = formscope[0].getElementsByClassName('uag-col-wrap-' + index)
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+
+                }else if( (sibling[index].classList.contains("uag-col-4")) && (sibling[index+1].classList.contains("uag-col-4") && (sibling[index+2].classList.contains("uag-col-4")) && (sibling[index+3].classList.contains("uag-col-4"))) ){
+                    let div = document.createElement('div');
+                    div.className = 'uag-col-4-wrap uag-col-wrap-' + index;                        
+                    sibling[index+3].after(div)
+                    let wrapper_div = formscope[0].getElementsByClassName('uag-col-wrap-' + index)
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+                    wrapper_div[0].appendChild(sibling[index])
+
+                }
+			}
+		}		
+	}
 }
 
 const applyWithSelect = withSelect( ( select, props ) => {
@@ -964,4 +1018,13 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	};
 } );
 
-export default compose( withNotices, applyWithSelect )( UAGBFormsEdit )
+
+const addAdvancedClasses = createHigherOrderComponent((BlockListBlock) => {
+  return props => {
+    return <BlockListBlock { ...props } className={ props.attributes.className } />
+  }
+}, 'addAdvancedClasses')
+
+wp.hooks.addFilter('editor.BlockListBlock', 'uagb/forms', addAdvancedClasses)
+
+export default compose( withNotices, applyWithSelect,addAdvancedClasses )( UAGBFormsEdit )

@@ -47,8 +47,7 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`,
 		) }
 		>
-			
-			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >
+			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >			
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
 					{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (					
