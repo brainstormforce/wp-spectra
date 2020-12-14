@@ -148,6 +148,12 @@ class UAGB_Init_Blocks {
 			}
 		}
 
+		// var_dump(UAGB_URL);
+
+		if ( is_rtl() ) {
+			wp_enqueue_style(  'uag-style-rtl', UAGB_URL . 'assets/css/blocks/rtl.css' );
+		}
+
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.

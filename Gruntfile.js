@@ -148,6 +148,41 @@ module.exports = function(grunt) {
 				}
 			},
 		},
+		rtlcss: {
+			options: {
+				config: {
+					swapLeftRightInUrl: false,
+					swapLtrRtlInUrl: false,
+					autoRename: false,
+					preserveDirectives: true,
+					preserveComments: true
+				}
+			},
+			main: {
+				files: [ 
+					{ // all .min.css to -rtl.min.css
+						expand: true,
+						ext: '-rtl.min.css',
+						src: [
+							'**.css',
+							'!**-rtl.min.css',
+						],
+						dest: 'assets/css/blocks',
+						cwd: 'assets/css/blocks',
+					},
+					{ // uael-frontend.min.css to uael-frontend-rtl.min.css
+	                    expand: true,
+						ext: '-rtl.min.css',
+						src: [
+							'**.css',
+							'!**-rtl.min.css',
+						],
+						dest: 'assets/css',
+						cwd: 'assets/css',
+	                }
+	            ]
+			}
+		},
 	})
 
 	/* Load Tasks */
@@ -163,12 +198,14 @@ module.exports = function(grunt) {
 
 	/* Read File Generation task */
 	grunt.loadNpmTasks("grunt-wp-readme-to-markdown")
-
+	grunt.loadNpmTasks( 'grunt-rtlcss' );
 
 
 	/* Register task started */
 	grunt.registerTask("release", ["clean:zip", "copy","compress","clean:main"])
 	grunt.registerTask("i18n", ["addtextdomain", "makepot"])
+	// rtlcss
+	grunt.registerTask('rtl', ['rtlcss:main']);
 
 	// Default
 	//grunt.registerTask('default', ['style']);
