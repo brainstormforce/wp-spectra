@@ -128,8 +128,8 @@ class UAGBFormsAcceptEdit extends Component {
 						<div className="uagb-forms-accept-privacy-link">
 							<a href={ link } target={target} rel="noopener noreferrer" > { linkLabel }  </a>		
 						</div>
-					)}		
-					<input type="checkbox" id={`uagb-forms-accept-${block_id}`} name={ block_id } required={ acceptRequired }/>
+					)}							
+					<input type="checkbox" id={`uagb-forms-accept-${block_id}`} name={ block_id } required={ acceptRequired } value="Agree"/>
  					<label name={ block_id } className={`uagb-forms-accept-label ${isRequired}`} >{ acceptText }</label><br></br>
 				</div>
 			</Fragment>

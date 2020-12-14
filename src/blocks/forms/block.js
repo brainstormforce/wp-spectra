@@ -25,6 +25,7 @@ registerBlockType( "uagb/forms", {
 		__( "forms" ),
 		__( "uag" ),
 	],
+	example:{},
 	attributes,
 	variations,
 	edit,

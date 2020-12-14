@@ -4903,9 +4903,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'     => $attr['labelColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 				),
+				' .uagb-forms-success-message' => array(
+					'border-left'      => '2px solid ' . $attr['successMessageBorderColor'],
+					'background-color' => $attr['successMessageBGColor'],
+					'color'            => $attr['successMessageTextColor'],
+				),
+				' .uagb-forms-failed-message'  => array(
+					'border-left'      => '2px solid ' . $attr['failedMessageBorderColor'],
+					'background-color' => $attr['failedMessageBGColor'],
+					'color'            => $attr['failedMessageTextColor'],
+				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 					'text-align' => $attr['buttonAlign'],
 
+				),
+				' .uagb-forms-main-form .uagb-forms-input:focus' => array(
+					'outline' => ' none !important',
+					'border'  => '2px solid ' . $attr['inputactiveColor'],
 				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 					'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
@@ -4933,6 +4947,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
+				$selectors[' .uagb-forms-input:hover']        = array(
+					'border-color' => $attr['inputborderHoverColor'],
+				);
+				$selectors[' .uagb-forms-input::placeholder'] = array(
+					'color' => $attr['inputplaceholderColor'],
+				);
 			}
 
 			if ( 'underlined' === $attr['formStyle'] ) {
@@ -4945,6 +4965,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['inputColor'],
 					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
+				);
+				$selectors[' .uagb-forms-input:hover']        = array(
+					'border-color' => $attr['inputborderHoverColor'],
+				);
+				$selectors[' .uagb-forms-input::placeholder'] = array(
+					'color' => $attr['inputplaceholderColor'],
 				);
 			}
 

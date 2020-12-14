@@ -48,7 +48,7 @@ import "./blocks/forms/child-blocks/radio/block.js"
 import "./blocks/forms/child-blocks/url/block.js"
 import "./blocks/forms/child-blocks/select/block.js"
 import "./blocks/forms/child-blocks/toggle/block.js"
-import "./blocks/forms/child-blocks/upload/block.js"
+// import "./blocks/forms/child-blocks/upload/block.js"
 import "./blocks/forms/child-blocks/date/block.js"
 import "./blocks/forms/child-blocks/accept/block.js"
 

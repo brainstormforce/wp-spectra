@@ -152,7 +152,7 @@ class UAGBFormsRadioEdit extends Component {
 					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="radio" id={value} name={ block_id } value={value} required={radioRequired}/>
+						<input type="radio" id={value} name={ block_id } value={optionvalue} required={radioRequired}/>
 						<label for={value}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);

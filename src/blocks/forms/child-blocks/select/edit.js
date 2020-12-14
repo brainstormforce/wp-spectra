@@ -144,7 +144,7 @@ class UAGBFormsSelectEdit extends Component {
 			var showoptionsField =  options.map((o, index) => {
 				var optionvalue = o.optionvalue;
 				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
-				return <option value={value}>{o.optiontitle}</option>;
+				return <option value={optionvalue}>{o.optiontitle}</option>;
 			})
 
 			return  (

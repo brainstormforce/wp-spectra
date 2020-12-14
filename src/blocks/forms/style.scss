@@ -4,24 +4,30 @@
 		input:not([type=checkbox]):not([type=radio]):not([type=file]) , textarea, select {
 			width: 100%;
 		}
+		//Phone block css.
+		.uagb-form-phone-country { width: 25%;}
+		input.uagb-forms-phone-input.uagb-forms-input { width: 75% !important;}
 		
 		.required:after {
 			content:" *";
-			color: red;
+			color: #ff0000;
 		}
 
         .uagb-forms-form-hidden-data {
             display:none;
         }
 	}
-	.uagb-forms-success-message.uagb-forms-success-message-hide {
+	.uagb-forms-submit-message-hide {
 		display: none;
 	}
-	.uagb-forms-success-message.uagb-forms-success-message-show {
-		display: block;
-		border-left: 2px solid green;
-		padding: 20px 20px;
-		background: #00800030;
+	.uagb-forms-success-message {
+		padding: 20px 20px;		
+	}
+	.uagb-forms-failed-message {		
+		padding: 20px 20px;	
+	}
+	span.components-spinner {
+		float: none;
 	}
 		
 }
@@ -94,7 +100,7 @@
 		width: 26px;
 		left: 4px;
 		bottom: 4px;
-		background-color: white;
+		background-color: #ffffff;
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
