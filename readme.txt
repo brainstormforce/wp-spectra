@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.5
-Stable tag: 1.18.2
+Tested up to: 5.6
+Stable tag: 1.19.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Table of Content - Exclude specific headings from Table of Contents block.
 * Improvement: Table of Content - Fixed issue with scroll to heading when the heading has ellipsis dots in them.
 * Fix: Post Carousel - Fixed carousel not being displayed on RTL websites.
+* Fix: Info Box - Link to complete box target issue with "Open In Same Tab" fixed.
 
 = 1.18.2 =
 * Fix: Post Timeline - Fixed the Icon issue and removed the unwanted filter for Post Timeline SVG connector.
