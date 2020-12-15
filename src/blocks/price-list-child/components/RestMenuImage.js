@@ -1,8 +1,3 @@
-const {
-	RichText,
-} = wp.blockEditor
-
-const { __ } = wp.i18n
 
 class RestMenuImage extends React.Component {
 
@@ -10,17 +5,32 @@ class RestMenuImage extends React.Component {
 
 		const { attributes , index_value } = this.props
 		let url_check = ""
-        
-		const image_arr = attributes.rest_menu_item_arr[index_value]
-        
+		let image_arr = ""
+
+		if( typeof index_value !== "undefined" ){
+			const image_array = attributes.rest_menu_item_arr[index_value]	
+			if( typeof image_array !== "undefined"){		
+				image_arr = image_array['image']		
+			}     
+		}else{
+			if(attributes.image !== ""){
+				image_arr = attributes.image
+		   }
+		}
+		
 		if( image_arr && typeof image_arr !== "undefined"){
-			const image = image_arr["image"]
+			let image = '';
+			if(  typeof image_arr !== "undefined" ){
+				image = image_arr;
+			}else{
+				image = attributes.image;
+			}
 			let url = ""
-           
+			  
 			if( typeof image !== "undefined" && image !== null && image !=="" ){
 				url_check = image.url
-			}       
-            
+			}   
+			 
 			if( url_check !== "" ){
 				let size = image.sizes
 				let imageSize = attributes.imageSize
@@ -31,8 +41,8 @@ class RestMenuImage extends React.Component {
 				}
                 
 				return (     
-					<div className ="uagb-rm__image-content" key={"rm_img-wrap-"+index_value}>           
-						<div className="uagb-rm__image" key={"rm_img-"+index_value}>                        
+					<div className ="uagb-rm__image-content" >           
+						<div className="uagb-rm__image" >                        
 							<img
 								className =""
 								src = { url }                        
