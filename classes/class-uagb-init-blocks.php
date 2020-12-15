@@ -147,9 +147,6 @@ class UAGB_Init_Blocks {
 				}
 			}
 		}
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'uag-style-rtl', UAGB_URL . 'assets/css/blocks/rtl.css', array(), UAGB_VER );
-		}
 
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
