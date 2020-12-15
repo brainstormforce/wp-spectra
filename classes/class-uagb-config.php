@@ -1866,6 +1866,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorThickness'    => '1',
 							'seperatorColor'        => '#b2b4b5',
 						),
+					),
 					'uagb/review'                => array(
 						'slug'        => '',
 						'title'       => __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
