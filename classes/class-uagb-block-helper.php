@@ -19,7 +19,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get review block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.19.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
