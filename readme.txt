@@ -167,6 +167,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Ability to modify breakpoints for Dynamic CSS.
 * Improvement: Table of Content - Exclude specific headings from Table of Contents block.
 * Improvement: Table of Content - Fixed issue with scroll to heading when the heading has ellipsis dots in them.
+* Fix: Post Carousel - Fixed carousel not being displayed on RTL websites.
 * Fix: Info Box - Link to complete box target issue with "Open In Same Tab" fixed.
 
 = 1.18.2 =
