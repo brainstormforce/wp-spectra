@@ -62,8 +62,31 @@ registerBlockType( "uagb/faq", {
 		__( "uag" ),
 		__( "accordion" ),
 	],
+	example:{
+		innerBlocks: [
+			{
+				name: "uagb/faq-child",
+				innerBlocks: [
+					{
+						name: "uagb/faq-child",
+						attributes: { question: "What is FAQ?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
+					},
+				],
+			},
+			{
+				name: "uagb/faq-child",
+				innerBlocks: [
+					{
+						name: "uagb/faq-child",
+						attributes: { question: "What is FAQ?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
+					},
+				],
+			}
+		],
+	},
 	attributes,
 	edit,
+	example: {},
 	supports: {
 		anchor: true,
 	},

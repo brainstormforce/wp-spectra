@@ -164,8 +164,6 @@ module.exports = function(grunt) {
 	/* Read File Generation task */
 	grunt.loadNpmTasks("grunt-wp-readme-to-markdown")
 
-
-
 	/* Register task started */
 	grunt.registerTask("release", ["clean:zip", "copy","compress","clean:main"])
 	grunt.registerTask("i18n", ["addtextdomain", "makepot"])

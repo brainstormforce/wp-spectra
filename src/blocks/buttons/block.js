@@ -35,8 +35,31 @@ registerBlockType( "uagb/buttons", {
 	supports: {
 		anchor: true,
 	},
+	example: {},
 	getEditWrapperProps( attributes ) {
 		return { "data-btn-width": attributes.align }
+	},
+	example:{
+		innerBlocks: [
+			{
+				name: 'uagb/buttons-child',
+				innerBlocks: [
+					{
+						name: 'uagb/buttons-child',
+						attributes: { label: '#Click Here' },
+					},
+				],
+			},
+			{
+				name: 'uagb/buttons-child',
+				innerBlocks: [
+					{
+						name: 'uagb/buttons-child',
+						attributes: { label: '#Click Here' },
+					},
+				],
+			}
+		],
 	},
 	attributes,
 	edit,
