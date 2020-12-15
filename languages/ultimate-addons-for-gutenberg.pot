@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.18.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-11-24 08:58:56+00:00\n"
+"POT-Creation-Date: 2020-12-08 10:29:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -443,7 +443,7 @@ msgid "Icon List"
 msgstr ""
 
 #: classes/class-uagb-config.php:973 classes/class-uagb-config.php:1026
-#: classes/class-uagb-config.php:1920
+#: classes/class-uagb-config.php:2017
 msgid "This block allows you to place an image or icon in a list format."
 msgstr ""
 
@@ -553,81 +553,89 @@ msgid "This block allows you to add attractive Price List."
 msgstr ""
 
 #: classes/class-uagb-config.php:1801
-msgid "Section"
+msgid "Ratings"
 msgstr ""
 
 #: classes/class-uagb-config.php:1802
+msgid "This block helps you add an Rating block."
+msgstr ""
+
+#: classes/class-uagb-config.php:1898
+msgid "Section"
+msgstr ""
+
+#: classes/class-uagb-config.php:1899
 msgid ""
 "This block is an outer wrap section that allows you to add other blocks "
 "within it."
 msgstr ""
 
-#: classes/class-uagb-config.php:1883
+#: classes/class-uagb-config.php:1980
 msgid "Social Share"
 msgstr ""
 
-#: classes/class-uagb-config.php:1884
+#: classes/class-uagb-config.php:1981
 msgid ""
 "This block allows you to let users share your content across various social "
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1919
+#: classes/class-uagb-config.php:2016
 msgid "Social Share Child"
 msgstr ""
 
-#: classes/class-uagb-config.php:1936
+#: classes/class-uagb-config.php:2033
 msgid "Table of Contents"
 msgstr ""
 
-#: classes/class-uagb-config.php:1937
+#: classes/class-uagb-config.php:2034
 msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
-#: classes/class-uagb-config.php:2035
+#: classes/class-uagb-config.php:2132
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:2036
+#: classes/class-uagb-config.php:2133
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:2107
+#: classes/class-uagb-config.php:2204
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:2108
+#: classes/class-uagb-config.php:2205
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:2192
+#: classes/class-uagb-config.php:2289
 msgid "WP - Search"
 msgstr ""
 
-#: classes/class-uagb-config.php:2193
+#: classes/class-uagb-config.php:2290
 msgid "This block helps you add a Search field."
 msgstr ""
 
-#: classes/class-uagb-config.php:2260
+#: classes/class-uagb-config.php:2357
 msgid "Taxonomy List"
 msgstr ""
 
-#: classes/class-uagb-config.php:2261
+#: classes/class-uagb-config.php:2358
 msgid ""
 "This block helps you to display content categorization for various post "
 "types"
 msgstr ""
 
-#: classes/class-uagb-config.php:2341
+#: classes/class-uagb-config.php:2438
 #: dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php:113
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: classes/class-uagb-helper.php:1019
+#: classes/class-uagb-helper.php:1024
 msgid "Full"
 msgstr ""
 
@@ -656,14 +664,14 @@ msgstr ""
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-loader.php:164
+#: classes/class-uagb-loader.php:168
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:167
+#: classes/class-uagb-loader.php:171
 msgid "Install Gutenberg"
 msgstr ""
 

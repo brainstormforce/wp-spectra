@@ -22,7 +22,6 @@ function RestMenuStyle( props ) {
 		titleLineHeight,
 		titleLineHeightTablet,
 		titleLineHeightMobile,
-
 		priceFontSizeType,
 		priceFontSize,
 		priceFontSizeTablet,
@@ -33,7 +32,6 @@ function RestMenuStyle( props ) {
 		priceLineHeight,
 		priceLineHeightTablet,
 		priceLineHeightMobile,
-
 		descFontSizeType,
 		descFontSize,
 		descFontSizeTablet,
@@ -44,7 +42,6 @@ function RestMenuStyle( props ) {
 		descLineHeight,
 		descLineHeightTablet,
 		descLineHeightMobile,
-
 		descSpace,
 		titleSpace,
 		imgVrPadding,
@@ -129,7 +126,7 @@ function RestMenuStyle( props ) {
 	}
 
 	if ( seperatorStyle !== "none" ) {
-		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
+		selectors[" .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,
 			"border-top-style": seperatorStyle,
 			"border-top-width": generateCSSUnit( seperatorThickness, "px" ),
