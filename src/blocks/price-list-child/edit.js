@@ -191,8 +191,6 @@ class UAGBRestaurantMenuChild extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
-		this.props.setAttributes( { classMigrate: true } )
 		
 	}
 }

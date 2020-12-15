@@ -5,10 +5,6 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
-	classMigrate: {
-		type: "boolean",
-		default: false
-	},
 	description:{
 		type: "string",
 		default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
