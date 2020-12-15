@@ -10,7 +10,7 @@
 	},
 	itemType: {
 		type: "string",
-		default: "Product",
+		default:  __( "Product" ),
 	},
 	itemSubtype: {
 		type: "string",
@@ -127,7 +127,7 @@
 	},
 	summaryTitle: {
 		type: "string",
-		default: "Summary",
+		default:  __( "Summary" ),
 	},
 	summaryDescription: {
 		type: "string",
@@ -311,11 +311,11 @@
 	},
 	availabilityvalue: {
 		type: "string",
-		default: "Instock"
+		default:  __( "Instock" ),
 	},
 	availabilitytext: {
 		type: "string",
-		default: "Availability"
+		default:  __( "Availability" ),
 	},
 	contentVrPadding: {
 		type: "number",
