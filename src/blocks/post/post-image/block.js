@@ -28,6 +28,12 @@ registerBlockType( "uagb/post-image", {
 	example: {},
 	// Render via PHP
 	save() {
-		return 'image'
+		return <div className='uagb-post__image'>
+					<a href='https://example.org/' target='_blank' rel ="noopener noreferrer">
+						<img
+							src={'https://www.ultimategutenberg.com/wp-content/uploads/2018/12/uagb-10.png'}
+						/>
+					</a>
+				</div>
 	},
 } )

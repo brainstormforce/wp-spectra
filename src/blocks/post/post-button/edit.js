@@ -1,10 +1,5 @@
 const { __ } = wp.i18n
 import classnames from "classnames"
-import {
-	useInnerBlockLayoutContext,
-	useProductDataContext,
-	withProductDataContext
-} from '.././function';
 
 export const PostButton = (props) =>  {
 	

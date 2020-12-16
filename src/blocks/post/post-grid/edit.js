@@ -211,12 +211,14 @@ class UAGBPostGrid extends Component {
 						parentClassName="uagb-block-grid"
 					>
 						<article>
-							<div className="uagb-post__inner-wrap">
+							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
+								<div className="uagb-post__text">
 								<PostDataContextProvider
 									post={ previewPosts[ 0 ] }
 								>
 									<InnerBlocks { ...InnerBlockProps } />
 								</PostDataContextProvider>
+								</div>
 							</div>
 						</article>
 					</InnerBlockLayoutContextProvider>

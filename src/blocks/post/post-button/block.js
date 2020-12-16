@@ -24,9 +24,12 @@ registerBlockType( "uagb/post-button", {
 		__( "button" ),
 		__( "uag" ),
 	],
+	PostButton,
 	example: {},
 	// Render via PHP
 	save() {
-		return 'button';
+		return 	<div className='uagb-post__cta components-button is-primary'>
+					Read More
+				</div>
 	},
 } )
