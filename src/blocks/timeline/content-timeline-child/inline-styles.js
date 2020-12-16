@@ -32,16 +32,12 @@ function contentTimelineStyle( props ) {
 				"color": subHeadingColor,
 			},
 			" .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
+				"border-right-color" : backgroundColor,
 				"border-left-color" : backgroundColor,
 			},
-			" .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
-				"border-left-color" : backgroundColor
-			},
 			" .uagb-timeline__day-left .uagb-timeline__arrow:after" : {
-				"border-right-color" : backgroundColor
-			},
-			" .uagb-timeline__day-left .uagb-timeline__arrow:after" : {
-				"border-right-color" : backgroundColor
+				"border-right-color" : backgroundColor,
+				"border-left-color" : backgroundColor,
 			},
 			" .uagb-timeline__events-inner-new" : {
 				"background-color" : backgroundColor,
