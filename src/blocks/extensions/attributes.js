@@ -2,11 +2,11 @@ function addAttributes( settings ) {
 
 	if ( typeof settings.attributes !== 'undefined' ) {
 		settings.attributes = Object.assign( settings.attributes, {
-			loggedIn: {
+			UAGloggedIn: {
 				type: "boolean",
 		        default: false
 			},
-			loggedOut: {
+			UAGloggedOut: {
 				type: "boolean",
 		        default: false
 			},
@@ -17,6 +17,6 @@ function addAttributes( settings ) {
 
 wp.hooks.addFilter(
 	'blocks.registerBlockType',
-	'uagb/cover-advanced-control',
+	'uagb/advanced-control-block',
     addAttributes
 );

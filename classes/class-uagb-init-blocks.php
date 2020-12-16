@@ -54,6 +54,33 @@ class UAGB_Init_Blocks {
 
 		add_action( 'wp_ajax_uagb_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_uagb_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
+
+		if ( ! is_admin() ) {
+			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
+		}
+	}
+	/**
+	 * Render block.
+	 *
+	 * @param mixed $block_content The block content.
+	 * @param array $block The block data.
+	 * @since x.x.x
+	 * @return mixed Returns the new block content.
+	 */
+	public function render_block( $block_content, $block ) {
+
+		$block_attributes = $block['attrs'];
+
+		if ( isset( $block_attributes['UAGloggedIn'] ) && $block_attributes['UAGloggedIn'] && is_user_logged_in() ) {
+			return '';
+		}
+
+		if ( isset( $block_attributes['UAGloggedOut'] ) && $block_attributes['UAGloggedOut'] && ! is_user_logged_in() ) {
+			return '';
+		}
+
+		return $block_content;
+
 	}
 
 	/**
