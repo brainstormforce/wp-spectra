@@ -17,6 +17,69 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Get review block CSS
+		 *
+		 * @since 1.19.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_review_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/review']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$t_selectors = array();
+			$m_selectors = array();
+			$selectors   = array();
+
+			$selectors = array(
+				' .uagb-rating-title'   => array(
+					'color' => $attr['titleColor'],
+				),
+				' .uagb-rating-desc'    => array(
+					'color' => $attr['descColor'],
+				),
+				' .uagb-rating-author'  => array(
+					'color' => $attr['authorColor'],
+				),
+				' .uagb_review_entry'   => array(
+					'color' => $attr['contentColor'],
+				),
+				' .uagb_review_block'   => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'text-align'     => $attr['overallAlignment'],
+				),
+				' .uagb_review_summary' => array(
+					'color' => $attr['summaryColor'],
+				),
+				' .uagb_review_entry .star, .uagb_review_average_stars .star' => array(
+					'fill' => $attr['starColor'],
+				),
+				' .uagb_review_entry path, .uagb_review_average_stars path' => array(
+					'stroke' => $attr['starOutlineColor'],
+					'fill'   => $attr['starActiveColor'],
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-rating-title, .uagb_review_entry', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-rating-desc, .uagb-rating-author', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb_review_summary', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
+
+		}
+
+		/**
 		 * Get Inline Notice CSS
 		 *
 		 * @since 1.16.0
@@ -51,27 +114,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .uagb-notice-title'           => array(
-					'color'            => $attr['titleColor'],
-					'background-color' => $attr['noticeColor'],
-					'padding-left'     => UAGB_Helper::get_css_value( $lPadding, 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $rPadding, 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'color'          => $attr['titleColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 				),
 				' .uagb-notice-text'            => array(
-					'border-color'     => $attr['noticeColor'],
-					'color'            => $attr['textColor'],
-					'background-color' => $attr['contentBgColor'],
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'color'          => $attr['textColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 				),
 				' span.uagb-notice-dismiss svg' => array(
 					'fill'  => $attr['noticeDismissColor'],
 					'color' => $attr['noticeDismissColor'],
 				),
 			);
+
+			if ( 'modern' === $attr['layout'] ) {
+
+				$selectors[' .uagb-notice-title']['background-color']        = $attr['noticeColor'];
+				$selectors[' .uagb-notice-title']['border-top-right-radius'] = '3px';
+				$selectors[' .uagb-notice-title']['border-top-left-radius']  = '3px';
+
+				$selectors[' .uagb-notice-text']['background-color']           = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-text']['border']                     = '2px solid' . $attr['noticeColor'];
+				$selectors[' .uagb-notice-text']['border-bottom-left-radius']  = '3px';
+				$selectors[' .uagb-notice-text']['border-bottom-right-radius'] = '3px';
+			} elseif ( 'simple' === $attr['layout'] ) {
+
+				$selectors[' .uagb-notice-title']['background-color'] = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+
+				$selectors[' .uagb-notice-text']['background-color'] = $attr['contentBgColor'];
+				$selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+
+			}
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -1127,6 +1207,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 				),
 				// Title Style.
+				' .uagb-ifb-title a'           => array(
+					'color' => $attr['headingColor'],
+				),
 				' .uagb-ifb-title'             => array(
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . 'px',
@@ -3825,6 +3908,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
 				),
+
+				' .gform_footer.top_label input[type="submit"]' => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ),
+				),
+
 				' input.gform_button:hover'              => array(
 					'color'            => $attr['buttonTextHoverColor'],
 					'background-color' => $attr['buttonBgHoverColor'],
@@ -4226,6 +4314,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
+
 			$selectors = array(
 				' .uagb-toc__list-wrap ul li a:hover' => array(
 					'color' => $attr['linkHoverColor'],
@@ -4233,9 +4323,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul li a'       => array(
 					'color' => $attr['linkColor'],
 				),
+				' .uagb-toc__title-wrap'              => array(
+					'justify-content' => $alignment,
+					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+				),
 				' .uagb-toc__title'                   => array(
-					'color'         => $attr['headingColor'],
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+					'color' => $attr['headingColor'],
 				),
 				' .uagb-toc__wrap'                    => array(
 					'border-style'   => $attr['borderStyle'],
@@ -4874,7 +4967,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
-			$selectors = array(
+			$selectors          = array(
 				'.uagb-lottie__outer-wrap' => array(
 					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
 					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),

@@ -77,11 +77,14 @@ function styling( props ) {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		disableBullets,
+		headingAlignment,
 	} = props.attributes
 
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+
+	var alignment = ( headingAlignment == "left" ) ? "flex-start" : ( ( headingAlignment == "right" ) ? "flex-end" : "center" )
 
 	selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
@@ -91,13 +94,16 @@ function styling( props ) {
 			"font-weight": fontWeight,
 			"color": linkColor,
 		},
+		" .uagb-toc__title-wrap" : {
+			"justify-content" : alignment,
+			"margin-bottom" : generateCSSUnit( headingBottom, "px" ),
+		},
 		" .uagb-toc__title" : {
 			"font-size" : generateCSSUnit( headingFontSize, headingFontSizeType ),
 			"line-height" : generateCSSUnit( headingLineHeight, headingLineHeightType ),
 			"font-family": headingFontFamily,
 			"font-weight": headingFontWeight,
 			"color": headingColor,
-			"margin-bottom" : generateCSSUnit( headingBottom, "px" )
 		},
 		" .uagb-toc__list-wrap ul li a:hover" : {
 			"color": linkHoverColor,
@@ -123,13 +129,13 @@ function styling( props ) {
 			"padding-top": 0
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list li" : {
-		    "color" : bulletColor
+			"color" : bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
-		    "padding-bottom": 0
+			"padding-bottom": 0
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
-		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
+			"padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
 			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
 		},
 		" .uag-toc__collapsible-wrap svg" : {
@@ -138,10 +144,10 @@ function styling( props ) {
 			"fill" : iconColor
 		}
 	}
-
+	
 	selectors[" .uagb-toc__list-wrap"] = {
 		'column-count': tColumnsDesktop,
-		'overflow': 'hidden'
+		'overflow': 'hidden',
 	}
 
 	if ( customWidth ) {
