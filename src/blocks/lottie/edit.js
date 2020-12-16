@@ -238,7 +238,7 @@ class UAGBLottie extends Component {
                         width={width}
                         speed={speed}
                         isClickToPauseDisabled = {true}
-                        direction={`${reversedir}`}
+                        direction={reversedir}
                         style={{backgroundColor:backgroundColor}}                       
                     />
                 </div>
