@@ -216,7 +216,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					case 'post-image':
 					case 'post-button':
 					case 'post-excerpt':
-					case 'post-meta':	
+					case 'post-meta':
 						if ( ! $is_already_post ) {
 							$combined[]      = 'post';
 							$is_already_post = true;

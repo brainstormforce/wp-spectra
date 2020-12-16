@@ -1512,30 +1512,30 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationAlignment'         => 'left',
 							'paginationNextText'          => '« Previous',
 							'paginationPrevText'          => 'Next »',
-							'layoutConfig' => [
-											[ 'uagb/post-image' ],
-											[ 'uagb/post-title' ],
-											[ 'uagb/post-meta' ],
-											[ 'uagb/post-excerpt' ],
-											[ 'uagb/post-button' ],
-										]
+							'layoutConfig'                => array(
+								array( 'uagb/post-image' ),
+								array( 'uagb/post-title' ),
+								array( 'uagb/post-meta' ),
+								array( 'uagb/post-excerpt' ),
+								array( 'uagb/post-button' ),
+							),
 						),
 					),
-					'uagb/post-title'          => array(
+					'uagb/post-title'         => array(
 						'slug'        => '',
 						'title'       => __( 'Post Title', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'is_child'    => true,
 					),
-					'uagb/post-button'          => array(
+					'uagb/post-button'        => array(
 						'slug'        => '',
 						'title'       => __( 'Post Button', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'is_child'    => true,
 					),
-					'uagb/post-excerpt'          => array(
+					'uagb/post-excerpt'       => array(
 						'slug'        => '',
 						'title'       => __( 'Post Excerpt', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
@@ -1549,7 +1549,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'is_child'    => true,
 					),
-					'uagb/post-image'          => array(
+					'uagb/post-image'         => array(
 						'slug'        => '',
 						'title'       => __( 'Post Image', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),

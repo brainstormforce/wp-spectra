@@ -143,15 +143,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'Next »',
 							),
-							'layoutConfig'          => array(
+							'layoutConfig'                => array(
 								'type'    => 'array',
-								'default' => [
-											[ 'uagb/post-image' ],
-											[ 'uagb/post-title' ],
-											[ 'uagb/post-meta' ],
-											[ 'uagb/post-excerpt' ],
-											[ 'uagb/post-button' ],
-										],
+								'default' => array(
+									array( 'uagb/post-image' ),
+									array( 'uagb/post-title' ),
+									array( 'uagb/post-meta' ),
+									array( 'uagb/post-excerpt' ),
+									array( 'uagb/post-button' ),
+								),
 							),
 						)
 					),
@@ -722,7 +722,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function post_grid_callback( $attributes ) {
-			
+
 			// Render query.
 			$query = UAGB_Helper::get_query( $attributes, 'grid' );
 
