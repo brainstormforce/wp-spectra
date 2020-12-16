@@ -1020,12 +1020,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 					<div class="uagb-post__inner-wrap">
 						<?php $this->render_complete_box_link( $attributes ); ?>
-						<?php $this->render_image( $attributes ); ?>
-						<div class="uagb-post__text">
-							<?php $this->render_title( $attributes ); ?>
-							<?php $this->render_meta( $attributes ); ?>
-							<?php $this->render_excerpt( $attributes ); ?>
-							<?php $this->render_button( $attributes ); ?>
+						<div class="uagb-post__text">	
+							<?php $this->render_innerblocks( $attributes ); ?>
 						</div>
 					</div>
 					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
@@ -1038,6 +1034,41 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 
 			wp_reset_postdata();
+		}
+		/**
+		 * Render layout.
+		 *
+		 * @param array $attr Array of block attributes.
+		 *
+		 * @since 0.0.1
+		 */
+		public function rendor_layout($fname, $attr ){
+			
+			if($fname == 'uagb/post-button'){
+				return $this->render_button( $attr ); 
+			}else if($fname == 'uagb/post-image'){
+				return $this->render_image( $attr ); 
+			}else if($fname == 'uagb/post-title'){
+				return $this->render_title( $attr ); 
+			}else if($fname == 'uagb/post-meta'){
+				return $this->render_meta( $attr ); 
+			}else if($fname == 'uagb/post-excerpt'){
+				return $this->render_excerpt( $attr ); 
+			}else {
+				return '';
+			}
+		}
+		/**
+		 * Render Inner blocks.
+		 *
+		 * @param array $attributes Array of block attributes.
+		 *
+		 * @since 0.0.1
+		 */
+		public function render_innerblocks( $attributes ) {
+			for($i=0; $i<count($attributes['layoutConfig']); $i++){
+				$this->rendor_layout($attributes['layoutConfig'][$i][0], $attributes);
+			}
 		}
 		/**
 		 * Renders the post masonry related script.
