@@ -20,6 +20,15 @@ const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const { decodeEntities } = wp.htmlEntities
 const MAX_POSTS_COLUMNS = 8
+const { createBlock } = wp.blocks
+import {
+	InnerBlockLayoutContextProvider,
+	PostDataContextProvider,
+	DEFAULT_POST_LIST_LAYOUT,
+	getPostLayoutConfig,
+	getBlockMap,
+	previewPosts 
+} from '.././function';
 const {
 	PanelBody,
 	Placeholder,
@@ -34,7 +43,9 @@ const {
 	TabPanel,
 	Dashicon,
 	TextControl,
-	RadioControl
+	RadioControl,
+	Tip,
+	Disabled
 } = wp.components
 
 const {
@@ -42,15 +53,23 @@ const {
 	BlockAlignmentToolbar,
 	BlockControls,
 	ColorPalette,
-	RichText
+	RichText,
+	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect } = wp.data
+const { withSelect , useDispatch} = wp.data
 
 class UAGBPostCarousel extends Component {
 
 	constructor() {
 		super( ...arguments )
+		this.state = {
+			isEditing: false,
+			innerBlocks: [],
+		};
+		this.togglePreview = this.togglePreview.bind( this )
+		this.getBlockControls = this.getBlockControls.bind( this )
+		this.renderEditMode = this.renderEditMode.bind( this )
 		this.onSelectPostType = this.onSelectPostType.bind( this )
 		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
 	}
@@ -70,6 +89,8 @@ class UAGBPostCarousel extends Component {
 	}
 
 	componentDidMount() {
+		const { block } = this.props;
+		this.setState( { innerBlocks: block } );
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId.substr( 0, 8 ) )
@@ -93,13 +114,133 @@ class UAGBPostCarousel extends Component {
 			css += ".uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + this.props.attributes.arrowColor + "; }"
 			element.innerHTML = css
 		}
+		
 	}
+	togglePreview() {
 
+		this.setState( { isEditing: ! this.state.isEditing } );
+		if ( ! this.state.isEditing ) {
+			__(
+				'Showing All Post Grid Layout.',
+				'uag'
+			)
+		}
+	}
+	getBlockControls() {
+		const { isEditing } = this.state;
+
+		return (
+				<Toolbar
+					controls={ [
+						{
+							icon: 'edit',
+							title: __( 'Edit', 'uag' ),
+							onClick: () => this.togglePreview(),
+							isActive: isEditing,
+						},
+					] }
+				/>
+		);
+	}
+	
+	renderEditMode() {
+		const onDone = () => {
+			const { block, setAttributes } = this.props;
+			setAttributes( {
+				layoutConfig: getPostLayoutConfig( block ),
+			} );
+			this.setState( { innerBlocks: block } );
+			this.togglePreview();
+		};
+
+		const onCancel = () => {
+			const {replaceInnerBlocks } = this.props;
+			const { innerBlocks } = this.state;
+			replaceInnerBlocks( this.props.clientId, innerBlocks );
+			this.togglePreview();
+		};
+
+		const onReset = () => {
+			const { block, replaceInnerBlocks } = this.props;
+			const newBlocks = [];
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
+				newBlocks.push( createBlock( name, attributes ) );
+				return true;
+			} );	
+			replaceInnerBlocks( this.props.clientId, newBlocks );
+			this.setState( { innerBlocks: block} );
+		};
+
+		const InnerBlockProps = {
+			template: this.props.attributes.layoutConfig,
+			templateLock: false,
+			allowedBlocks: Object.keys( getBlockMap( 'uagb/post-grid' ) ),
+		};
+		if ( this.props.attributes.layoutConfig.length !== 0 ) {
+			InnerBlockProps.renderAppender = false;
+		}
+		return (
+			<Placeholder  label="Post Grid Layout">
+				<div className="uagb-block-all-post-grid-item-template">
+					<Tip>
+						{ __(
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.',
+							'uag'
+						) }
+					</Tip>
+					<InnerBlockLayoutContextProvider
+						parentName="uagb/post-grid"
+						parentClassName="uagb-block-grid"
+					>
+						<article>
+							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
+								<div className="uagb-post__text">
+								<PostDataContextProvider
+									post={ previewPosts[ 0 ] }
+								>
+									<InnerBlocks { ...InnerBlockProps } />
+								</PostDataContextProvider>
+								</div>
+							</div>
+						</article>
+					</InnerBlockLayoutContextProvider>
+					<div className="uagb-block-all-post__actions">
+						<Button
+							className="uagb-block-all-post__done-button"
+							isPrimary
+							isLarge
+							onClick={ onDone }
+						>
+							{ __( 'Done', 'uag' ) }
+						</Button>
+						<Button
+							className="uagb-block-all-post__cancel-button"
+							isTertiary
+							onClick={ onCancel }
+						>
+							{ __( 'Cancel', 'uag' ) }
+						</Button>
+						<Button
+							className="uagb-block-all-post__reset-button"
+							onClick={ onReset }
+						>
+							{ __(
+								'Reset Layout',
+								'uag'
+							) }
+						</Button>
+					</div>
+				</div>
+			</Placeholder>
+		);
+	}
 	render() {
+		const { isEditing } = this.state;
 		const {
 			attributes,
 			categoriesList,
 			setAttributes,
+			block,
 			latestPosts,
 			taxonomyList
 		} = this.props
@@ -217,7 +358,8 @@ class UAGBPostCarousel extends Component {
 			inheritFromTheme,
 			postDisplaytext,
 			displayPostContentRadio,
-			excludeCurrentPost
+			excludeCurrentPost,
+			layoutConfig
 		} = attributes
 
 		const hoverSettings = (
@@ -993,7 +1135,9 @@ class UAGBPostCarousel extends Component {
 				</Fragment>
 			)
 		}
-
+		const renderViewMode = (
+			<Disabled><Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
+		)
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -1005,8 +1149,9 @@ class UAGBPostCarousel extends Component {
 						} }
 						controls={ [ "left", "center", "right" ] }
 					/>
+					{this.getBlockControls()}
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList}/>
+				{ isEditing ? this.renderEditMode() : renderViewMode}
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
@@ -1051,10 +1196,15 @@ export default withSelect( ( select, props ) => {
 	}
 
 	latestPostsQuery[rest_base] = categories
+	const { getBlocks } = select( 'core/block-editor' );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
+		block: getBlocks( props.clientId ),
+		replaceInnerBlocks
 	}
 
 } )( UAGBPostCarousel )

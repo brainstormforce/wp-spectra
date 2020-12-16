@@ -209,7 +209,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'                => array(
+							'layoutConfig'      => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -317,7 +317,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => 12,
 							),
-							'layoutConfig'                => array(
+							'layoutConfig'                 => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),

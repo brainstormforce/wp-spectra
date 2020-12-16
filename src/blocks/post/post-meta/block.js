@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import PostMeta from "./edit"
+import {PostMeta} from "./edit"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Components

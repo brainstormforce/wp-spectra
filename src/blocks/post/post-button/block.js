@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import PostButton from "./edit"
+import {PostButton} from "./edit"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Components
