@@ -23,11 +23,9 @@ const MAX_POSTS_COLUMNS = 8
 const { createBlock } = wp.blocks
 import {
 	InnerBlockLayoutContextProvider,
-	PostDataContextProvider,
 	DEFAULT_POST_LIST_LAYOUT,
 	getPostLayoutConfig,
-	getBlockMap,
-	previewPosts 
+	getBlockMap
 } from '.././function';
 const {
 	PanelBody,
@@ -195,11 +193,7 @@ class UAGBPostCarousel extends Component {
 						<article>
 							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
 								<div className="uagb-post__text">
-								<PostDataContextProvider
-									post={ previewPosts[ 0 ] }
-								>
 									<InnerBlocks { ...InnerBlockProps } />
-								</PostDataContextProvider>
 								</div>
 							</div>
 						</article>

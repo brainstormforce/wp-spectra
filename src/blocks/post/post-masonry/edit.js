@@ -12,11 +12,9 @@ import Blog from "./blog"
 import styling from ".././styling"
 import {
 	InnerBlockLayoutContextProvider,
-	PostDataContextProvider,
 	DEFAULT_POST_LIST_LAYOUT,
 	getPostLayoutConfig,
-	getBlockMap,
-	previewPosts 
+	getBlockMap
 } from '.././function';
 
 const { Component, Fragment  } = wp.element
@@ -175,11 +173,7 @@ class UAGBPostMasonry extends Component {
 						<article>
 							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
 								<div className="uagb-post__text">
-								<PostDataContextProvider
-									post={ previewPosts[ 0 ] }
-								>
 									<InnerBlocks { ...InnerBlockProps } />
-								</PostDataContextProvider>
 								</div>
 							</div>
 						</article>

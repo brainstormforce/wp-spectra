@@ -46,7 +46,6 @@ export const renderPostLayout = (
 	attributes,
 	categoriesList
 ) => {
-	console.log(layoutConfig);
 	if ( ! layoutConfig ) {
 		return;
 	}
@@ -172,81 +171,6 @@ export function getRegisteredBlockComponents( context ) {
 		...registeredBlockComponents.any,
 	};
 }
-export const withPostDataContext = ( OriginalComponent ) => {
-	return ( props ) => {
-		const postDataContext = usePostDataContext();
-
-		// If a post prop was provided, use this as the context for the tree.
-		if ( !! props.post || ! postDataContext.hasContext ) {
-			return (
-				<OriginalComponentWithContext
-					{ ...props }
-					OriginalComponent={ OriginalComponent }
-				/>
-			);
-		}
-
-		return <OriginalComponent { ...props } />;
-	};
-};
-/**
- * Default post shape matching API response.
- */
-const defaultPostData = {
-		id: 1,
-		title: [{rendered:'Post Title' , raw:'Post Title'}],
-		link: 'https://example.org',
-		categories: 'categories',
-		uagb_author_info: [{author_link:'https://example.org', display_name:'Author Name'}],
-		uagb_excerpt:
-			'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-		date_gmt: '23 Dec, 2020',
-		uagb_comment_info: 'Comment Info',
-		uagb_featured_image_src:'',
-		content : [{raw:'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-					}]
-};
-
-const PostDataContext = createContext( {
-	post: defaultPostData,
-	hasContext: false,
-} );
-export const usePostDataContext = () => useContext( PostDataContext );
-
-export const PostDataContextProvider = ( {
-	post = null,
-	children,
-	isLoading = false,
-} ) => {
-	const contextValue = {
-		post: post || defaultPostData,
-		hasContext: true,
-	};
-	return (
-		<PostDataContext.Provider value={ contextValue }>
-			{ isLoading ? (
-				<div className="is-loading">{ children }</div>
-			) : (
-				children
-			) }
-		</PostDataContext.Provider>
-	);
-};
-export const previewPosts = [
-	{
-		title: [{rendered:'Post Title' , raw:'Post Title'}],
-		link: 'https://example.org',
-		categories: 'categories',
-		uagb_author_info: [{author_link:'https://example.org', display_name:'Author Name'}],
-		uagb_excerpt:
-			'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-		date_gmt: '23 Dec, 2020',
-		uagb_comment_info: 'Comment Info',
-		uagb_featured_image_src:'',
-		content : [{raw:'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-					}]
-	},
-];
 
 /**
  * Converts innerblocks to a list of layout configs.
