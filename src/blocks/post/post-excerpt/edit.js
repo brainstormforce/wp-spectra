@@ -1,32 +1,27 @@
 import truncate from "lodash/truncate"
 
-const {  select } = wp.data;
+export const PostExcerpt = (props) =>  {
+		const { post, attributes } = props
 
-class Excerpt extends React.Component {
-
-	render() {
-
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId ); //Pass Child's Client Id.
-		const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId ); //Pass the Parents CLient Id from above and get all Parent parentAttributes
-		if ( parentAttributes.postdata[0].uagb_excerpt == undefined ) {
+		if ( post.uagb_excerpt == undefined ) {
 			return null
 		}
 
-		const words = parentAttributes.postdata[0].uagb_excerpt.split(" ")
+		const words = post.uagb_excerpt.split(" ")
 
-		let excerpt = parentAttributes.postdata[0].uagb_excerpt
+		let excerpt = post.uagb_excerpt
 
-		let exLen = ( parentAttributes.excerptLength ) ? parentAttributes.excerptLength : 25
+		let exLen = ( attributes.excerptLength ) ? attributes.excerptLength : 25
 
 		if ( exLen >= words.length ) {
-			excerpt = parentAttributes.postdata[0].uagb_excerpt
+			excerpt = post.uagb_excerpt
 		} else {
 			const truncated = words.slice( 0, exLen )
 			excerpt = truncated.join( " " )
 			excerpt += " ..."
 		}
 
-		if ( parentAttributes.displayPostExcerpt && parentAttributes.displayPostContentRadio == "excerpt" ) {
+		if ( attributes.displayPostExcerpt && attributes.displayPostContentRadio == "excerpt" ) {
 
 			return (
 
@@ -35,12 +30,12 @@ class Excerpt extends React.Component {
 				</div>
 			)
 
-		}else if(parentAttributes.displayPostExcerpt && parentAttributes.displayPostContentRadio == "full_post" ){
+		}else if(attributes.displayPostExcerpt && attributes.displayPostContentRadio == "full_post" ){
 			
 			return (
 
 				<div className='uagb-post__excerpt uagb-full_post'>
-						<div dangerouslySetInnerHTML={ { __html: parentAttributes.postdata[0].content.raw.trim() } } />
+						<div dangerouslySetInnerHTML={ { __html: post.content.raw.trim() } } />
 						
 				</div>
 			)
@@ -50,6 +45,5 @@ class Excerpt extends React.Component {
 			return null
 		}
 	}
-}
 
-export default Excerpt
+

@@ -143,6 +143,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'Next »',
 							),
+							'layoutConfig'          => array(
+								'type'    => 'array',
+								'default' => [
+									[ 'uagb/post-image' ],
+									[ 'uagb/post-title' ],
+									[ 'uagb/post-meta' ],
+									[ 'uagb/post-excerpt' ],
+									[ 'uagb/post-button' ],
+								],
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),

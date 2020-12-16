@@ -1512,6 +1512,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationAlignment'         => 'left',
 							'paginationNextText'          => '« Previous',
 							'paginationPrevText'          => 'Next »',
+							'layoutConfig' => [
+											[ 'uagb/post-image' ],
+											[ 'uagb/post-title' ],
+											[ 'uagb/post-meta' ],
+											[ 'uagb/post-excerpt' ],
+											[ 'uagb/post-button' ],
+										]
 						),
 					),
 					'uagb/post-title'          => array(

@@ -1,36 +1,36 @@
 const { decodeEntities } = wp.htmlEntities
 const { __ } = wp.i18n
-const {  select } = wp.data;
+import {
+	useInnerBlockLayoutContext,
+	usePostDataContext
+} from '.././function';
 
-class Title extends React.Component {
-	constructor() {
-		super( ...arguments )
-	}
-	render() {
+export const PostTitle = (props) => {
+	
+		const { parentClassName } = useInnerBlockLayoutContext();
+		// const { post } = usePostDataContext();
+		
+		const { attributes ,post } = props
+		
+		const Tag = attributes.titleTag
 
-		console.log('post-title');
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId ); //Pass Child's Client Id.
-		const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId ); //Pass the Parents CLient Id from above and get all Parent attributes
-		const Tag = parentAttributes.titleTag
-		let target = ( parentAttributes.newTab ) ? "_blank" : "_self"
-		console.log(parentAttributes)
-		if ( undefined == parentAttributes.postdata[0].title ) {
+		let target = ( attributes.newTab ) ? "_blank" : "_self"
+
+		if ( undefined == post.title ) {
 			return null
 		}
 
-		if ( parentAttributes.displayPostTitle ) {
+		if ( attributes.displayPostTitle ) {
 
 			return (
 
-				<Tag className={ "uagb-post__title" }>
-					<a href={ parentAttributes.postdata[0].link } target={ target } rel ="noopener noreferrer">{ decodeEntities( parentAttributes.postdata[0].title.rendered.trim() ) || __( "(Untitled)" ) }</a>
+				<Tag className={ "uagb-post__title" , `${parentClassName}__parent-block`}>
+					<a href={ post.link } target={ target } rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
 				</Tag>
 			)
 		} else {
 			return null
 		}
 
-	}
 }
-
-export default Title
+	
