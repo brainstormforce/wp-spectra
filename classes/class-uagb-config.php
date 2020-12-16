@@ -1412,6 +1412,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderColor'             => '',
 							'borderHColor'            => '',
 							'borderRadius'            => '0',
+							'layoutConfig'                => array(
+								array( 'uagb/post-image' ),
+								array( 'uagb/post-title' ),
+								array( 'uagb/post-meta' ),
+								array( 'uagb/post-excerpt' ),
+								array( 'uagb/post-button' ),
+							),
 						),
 					),
 					'uagb/post-grid'          => array(
@@ -1662,6 +1669,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'hpaginationButtonPaddingMobile' => 12,
 							'hpaginationButtonPaddingTablet' => 12,
 							'hpaginationButtonPaddingDesktop' => 12,
+							'layoutConfig'                => array(
+								array( 'uagb/post-image' ),
+								array( 'uagb/post-title' ),
+								array( 'uagb/post-meta' ),
+								array( 'uagb/post-excerpt' ),
+								array( 'uagb/post-button' ),
+							),
 						),
 					),
 					'uagb/post-timeline'      => array(

@@ -46,6 +46,7 @@ export const renderPostLayout = (
 	attributes,
 	categoriesList
 ) => {
+	console.log(layoutConfig);
 	if ( ! layoutConfig ) {
 		return;
 	}

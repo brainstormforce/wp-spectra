@@ -209,6 +209,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
+							'layoutConfig'                => array(
+								'type'    => 'array',
+								'default' => array(
+									array( 'uagb/post-image' ),
+									array( 'uagb/post-title' ),
+									array( 'uagb/post-meta' ),
+									array( 'uagb/post-excerpt' ),
+									array( 'uagb/post-button' ),
+								),
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_carousel_callback' ),
@@ -306,6 +316,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							'hpaginationButtonPaddingDesktop' => array(
 								'type'    => 'number',
 								'default' => 12,
+							),
+							'layoutConfig'                => array(
+								'type'    => 'array',
+								'default' => array(
+									array( 'uagb/post-image' ),
+									array( 'uagb/post-title' ),
+									array( 'uagb/post-meta' ),
+									array( 'uagb/post-excerpt' ),
+									array( 'uagb/post-button' ),
+								),
 							),
 						)
 					),
