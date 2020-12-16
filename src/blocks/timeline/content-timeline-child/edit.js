@@ -99,7 +99,6 @@ class UAGBcontentTimelineChild extends Component {
 		componentDidMount() {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
-			this.props.setAttributes( { classMigrate: true } )
 			// Pushing Style tag for this block css.
 			const $style = document.createElement( "style" )
 			$style.setAttribute( "id", "uagb-content-timeline-child-style-" + this.props.clientId )

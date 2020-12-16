@@ -19,10 +19,6 @@ const attributes = {
 		type: "string",
 		default:__( "This is Timeline description, you can change me anytime click here " )
 	},
-	classMigrate: {
-		type: "boolean",
-		default: false
-	},
 	dateFormat: {
 		type: "string",
 		default: "F j, Y"
