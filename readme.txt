@@ -162,7 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.20.0 =
-* Fix: Testimonial - Fixed the JS console warning with Slick Library.
+* Fix: Testimonial - Fixed the JS console warning with Slick library.
 
 = 1.19.0 =
 * New: Review Schema Block.
