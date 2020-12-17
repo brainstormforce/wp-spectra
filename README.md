@@ -161,6 +161,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.20.0 ###
+* New: Lottie Block.
+
 ### 1.19.0 ###
 * New: Review Schema Block.
 * Improvement: Better options for delete/edit/duplicate action of each item in Price list block.

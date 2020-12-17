@@ -50,10 +50,7 @@ class UAGBLottie extends Component {
         
     }
     
-    componentDidUpdate(prevProps, prevState) {
-       
-    }
-
+    
     onSelectLottieJSON( media ) {
 
         const { setAttributes } = this.props
