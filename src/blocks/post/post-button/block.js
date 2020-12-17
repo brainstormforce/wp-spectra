@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import {PostButton} from "./edit"
+import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Components
@@ -26,10 +27,5 @@ registerBlockType( "uagb/post-button", {
 	],
 	PostButton,
 	example: {},
-	// Render via PHP
-	save() {
-		return 	<div className='uagb-post__cta components-button is-primary'>
-					Read More
-				</div>
-	},
+	save
 } )

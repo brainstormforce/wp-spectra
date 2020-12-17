@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import {PostImage} from "./edit"
+import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Components
@@ -26,14 +27,5 @@ registerBlockType( "uagb/post-image", {
 	],
 	PostImage,
 	example: {},
-	// Render via PHP
-	save() {
-		return <div className='uagb-post__image'>
-					<a href='https://example.org/' target='_blank' rel ="noopener noreferrer">
-						<img
-							src={'https://www.ultimategutenberg.com/wp-content/uploads/2018/12/uagb-10.png'}
-						/>
-					</a>
-				</div>
-	},
+	save
 } )

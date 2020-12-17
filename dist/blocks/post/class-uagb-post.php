@@ -1044,24 +1044,24 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since x.x.x
 		 */
 		public function render_layout( $fname, $attr ) {
-			switch($fname){
+			switch ( $fname ) {
 				case 'uagb/post-button':
-						return $this->render_button( $attr );
+					return $this->render_button( $attr );
 						break;
 				case 'uagb/post-image':
-						return $this->render_image( $attr );
+					return $this->render_image( $attr );
 						break;
 				case 'uagb/post-title':
-						return $this->render_title( $attr );
+					return $this->render_title( $attr );
 						break;
 				case 'uagb/post-meta':
-						return $this->render_meta( $attr );
+					return $this->render_meta( $attr );
 						break;
 				case 'uagb/post-excerpt':
-						return $this->render_excerpt( $attr );
+					return $this->render_excerpt( $attr );
 						break;
 				default:
-						return '';
+					return '';
 			}
 		}
 		/**

@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import {PostExcerpt} from "./edit"
+import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import "./style.scss"
@@ -27,10 +28,5 @@ registerBlockType( "uagb/post-excerpt", {
 	],
 	PostExcerpt,
 	example: {},
-	// Render via PHP
-	save() {
-		return <div className='uagb-post__excerpt uagb-full_post'>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 	
-				</div>
-	},
+	save
 } )

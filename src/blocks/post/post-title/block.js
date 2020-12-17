@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import {PostTitle} from "./edit"
+import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Components
@@ -26,10 +27,5 @@ registerBlockType( "uagb/post-title", {
 	],
 	PostTitle,
 	example: {},
-	// Render via PHP
-	save() {
-		return <h3 className="uagb-post__title">
-					<a href='https://example.org/' target='_blank' rel ="noopener noreferrer">Wordpress Post Title</a>
-				</h3>
-	},
+	save
 } )
