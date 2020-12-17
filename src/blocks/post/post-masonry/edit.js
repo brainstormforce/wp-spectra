@@ -70,8 +70,7 @@ class UAGBPostMasonry extends Component {
 		this.setState( { isEditing: ! this.state.isEditing } );
 		if ( ! this.state.isEditing ) {
 			__(
-				'Showing All Post Grid Layout.',
-				'uag'
+				'Showing All Post Masonry Layout.'
 			)
 		}
 	}
@@ -83,7 +82,7 @@ class UAGBPostMasonry extends Component {
 					controls={ [
 						{
 							icon: 'edit',
-							title: __( 'Edit', 'uag' ),
+							title: __( 'Edit'),
 							onClick: () => this.togglePreview(),
 							isActive: isEditing,
 						},
@@ -162,8 +161,7 @@ class UAGBPostMasonry extends Component {
 				<div className="uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
-							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.',
-							'uag'
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.'
 						) }
 					</Tip>
 					<InnerBlockLayoutContextProvider
@@ -185,23 +183,20 @@ class UAGBPostMasonry extends Component {
 							isLarge
 							onClick={ onDone }
 						>
-							{ __( 'Done', 'uag' ) }
+							{ __( 'Done' ) }
 						</Button>
 						<Button
 							className="uagb-block-all-post__cancel-button"
 							isTertiary
 							onClick={ onCancel }
 						>
-							{ __( 'Cancel', 'uag' ) }
+							{ __( 'Cancel' ) }
 						</Button>
 						<Button
 							className="uagb-block-all-post__reset-button"
 							onClick={ onReset }
 						>
-							{ __(
-								'Reset Layout',
-								'uag'
-							) }
+							{ __('Reset Layout') }
 						</Button>
 					</div>
 				</div>

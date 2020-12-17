@@ -119,8 +119,7 @@ class UAGBPostCarousel extends Component {
 		this.setState( { isEditing: ! this.state.isEditing } );
 		if ( ! this.state.isEditing ) {
 			__(
-				'Showing All Post Grid Layout.',
-				'uag'
+				'Showing All Post Grid Layout.'
 			)
 		}
 	}
@@ -132,7 +131,7 @@ class UAGBPostCarousel extends Component {
 					controls={ [
 						{
 							icon: 'edit',
-							title: __( 'Edit', 'uag' ),
+							title: __( 'Edit' ),
 							onClick: () => this.togglePreview(),
 							isActive: isEditing,
 						},
@@ -178,12 +177,11 @@ class UAGBPostCarousel extends Component {
 			InnerBlockProps.renderAppender = false;
 		}
 		return (
-			<Placeholder  label="Post Grid Layout">
+			<Placeholder  label="Post Carousel Layout">
 				<div className="uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
-							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.',
-							'uag'
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post carousel.'
 						) }
 					</Tip>
 					<InnerBlockLayoutContextProvider
@@ -205,14 +203,14 @@ class UAGBPostCarousel extends Component {
 							isLarge
 							onClick={ onDone }
 						>
-							{ __( 'Done', 'uag' ) }
+							{ __( 'Done') }
 						</Button>
 						<Button
 							className="uagb-block-all-post__cancel-button"
 							isTertiary
 							onClick={ onCancel }
 						>
-							{ __( 'Cancel', 'uag' ) }
+							{ __( 'Cancel') }
 						</Button>
 						<Button
 							className="uagb-block-all-post__reset-button"
@@ -220,8 +218,7 @@ class UAGBPostCarousel extends Component {
 						>
 							{ __(
 								'Reset Layout',
-								'uag'
-							) }
+													) }
 						</Button>
 					</div>
 				</div>

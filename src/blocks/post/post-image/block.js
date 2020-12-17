@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - post-image
+ * BLOCK: Post Image
  */
 
 // Import block dependencies and components

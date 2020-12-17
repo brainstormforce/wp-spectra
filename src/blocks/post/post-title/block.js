@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - post-title
+ * BLOCK: Post Title
  */
 
 // Import block dependencies and components

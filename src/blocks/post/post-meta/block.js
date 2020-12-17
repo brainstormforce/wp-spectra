@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - post-meta
+ * BLOCK: Post Meta
  */
 
 // Import block dependencies and components

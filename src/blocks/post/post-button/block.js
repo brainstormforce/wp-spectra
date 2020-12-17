@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - post-button
+ * BLOCK: Post Button
  */
 
 // Import block dependencies and components

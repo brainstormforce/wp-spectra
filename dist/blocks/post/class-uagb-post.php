@@ -1041,22 +1041,27 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @param array $fname to get the block.
 		 * @param array $attr Array of block attributes.
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 */
-		public function rendor_layout( $fname, $attr ) {
-
-			if ( 'uagb/post-button' === $fname ) {
-				return $this->render_button( $attr );
-			} elseif ( 'uagb/post-image' === $fname ) {
-				return $this->render_image( $attr );
-			} elseif ( 'uagb/post-title' === $fname ) {
-				return $this->render_title( $attr );
-			} elseif ( 'uagb/post-meta' === $fname ) {
-				return $this->render_meta( $attr );
-			} elseif ( 'uagb/post-excerpt' === $fname ) {
-				return $this->render_excerpt( $attr );
-			} else {
-				return '';
+		public function render_layout( $fname, $attr ) {
+			switch($fname){
+				case 'uagb/post-button':
+						return $this->render_button( $attr );
+						break;
+				case 'uagb/post-image':
+						return $this->render_image( $attr );
+						break;
+				case 'uagb/post-title':
+						return $this->render_title( $attr );
+						break;
+				case 'uagb/post-meta':
+						return $this->render_meta( $attr );
+						break;
+				case 'uagb/post-excerpt':
+						return $this->render_excerpt( $attr );
+						break;
+				default:
+						return '';
 			}
 		}
 		/**
@@ -1064,12 +1069,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 */
 		public function render_innerblocks( $attributes ) {
 			$length = count( $attributes['layoutConfig'] );
 			for ( $i = 0; $i < $length; $i++ ) {
-				$this->rendor_layout( $attributes['layoutConfig'][ $i ][0], $attributes );
+				$this->render_layout( $attributes['layoutConfig'][ $i ][0], $attributes );
 			}
 		}
 		/**

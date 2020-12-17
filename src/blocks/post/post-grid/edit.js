@@ -137,8 +137,7 @@ class UAGBPostGrid extends Component {
 		this.setState( { isEditing: ! this.state.isEditing } );
 		if ( ! this.state.isEditing ) {
 			__(
-				'Showing All Post Grid Layout.',
-				'uag'
+				'Showing All Post Grid Layout.'
 			)
 		}
 	}
@@ -150,7 +149,7 @@ class UAGBPostGrid extends Component {
 					controls={ [
 						{
 							icon: 'edit',
-							title: __( 'Edit', 'uag' ),
+							title: __( 'Edit' ),
 							onClick: () => this.togglePreview(),
 							isActive: isEditing,
 						},
@@ -201,7 +200,7 @@ class UAGBPostGrid extends Component {
 					<Tip>
 						{ __(
 							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.',
-							'uag'
+							
 						) }
 					</Tip>
 					<InnerBlockLayoutContextProvider
@@ -223,23 +222,20 @@ class UAGBPostGrid extends Component {
 							isLarge
 							onClick={ onDone }
 						>
-							{ __( 'Done', 'uag' ) }
+							{ __( 'Done' ) }
 						</Button>
 						<Button
 							className="uagb-block-all-post__cancel-button"
 							isTertiary
 							onClick={ onCancel }
 						>
-							{ __( 'Cancel', 'uag' ) }
+							{ __( 'Cancel' ) }
 						</Button>
 						<Button
 							className="uagb-block-all-post__reset-button"
 							onClick={ onReset }
 						>
-							{ __(
-								'Reset Layout',
-								'uag'
-							) }
+							{ __('Reset Layout') }
 						</Button>
 					</div>
 				</div>

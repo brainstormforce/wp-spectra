@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - post-excerpt
+ * BLOCK: Post Excerpt
  */
 
 // Import block dependencies and components
