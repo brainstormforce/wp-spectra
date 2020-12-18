@@ -47,11 +47,11 @@ class SchemaNotices extends Component {
         switch ( itemType ) {
             case "Product":
                 if ( 'undefined' === typeof sku || '' === sku ) {
-                    msg = __( 'Mising merchant-specific identifier for product ( SKU )' );
+                    msg = __( 'Missing merchant-specific identifier for product ( SKU )' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof brand || '' === brand ) {
-                    msg = __( 'Mising brand of the product' );
+                    msg = __( 'Missing brand of the product' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
@@ -78,40 +78,40 @@ class SchemaNotices extends Component {
             
             case 'Book':
                 if ( 'undefined' === typeof isbn || '' === isbn ) {
-                    msg = __( 'Mising ISBN number of a book' );
+                    msg = __( 'Missing ISBN number of a book' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof bookAuthorName || '' === bookAuthorName ) {
-                    msg = __( 'Mising author of the book' );
+                    msg = __( 'Missing author of the book' );
                     emptyItems.push( msg );
                 }
                 break; 
 
             case 'Movie':
                 if ( 'undefined' === typeof datecreated || '' === datecreated ) {
-                    msg = __( 'Mising released date of the movie' );
+                    msg = __( 'Missing released date of the movie' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof directorname || '' === directorname ) {
-                    msg = __( 'Mising director name of the movie' );
+                    msg = __( 'Missing director name of the movie' );
                     emptyItems.push( msg );
                 }
                 break;
             
             case 'Course':
                 if ( 'undefined' === typeof provider || '' === provider ) {
-                    msg = __( 'Mising provider of the course' );
+                    msg = __( 'Missing provider of the course' );
                     emptyItems.push( msg );
                 }
                 break;
             
             case 'SoftwareApplication':
                 if ( 'undefined' === typeof appCategory || '' === appCategory ) {
-                    msg = __( 'Mising type of application (Application Category)' );
+                    msg = __( 'Missing type of application (Application Category)' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof operatingSystem || '' === operatingSystem ) {
-                    msg = __( 'Mising operating system(s) required' );
+                    msg = __( 'Missing operating system(s) required' );
                     emptyItems.push( msg );
                 }
                 if ( 'undefined' === typeof offerType || '' === offerType ) {
@@ -135,15 +135,15 @@ class SchemaNotices extends Component {
         
         if( itemType ){
             if ( 'undefined' === typeof rTitle || '' === rTitle ) {
-                msg = __( 'Mising title of the review' );
+                msg = __( 'Missing title of the review' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rContent || '' === rContent || false == enableDescription ) {
-                msg = __( 'Mising review description' );
+                msg = __( 'Missing review description' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof mainimage.url || null === mainimage.url || '' === mainimage.url || false == enableImage ) {
-                msg = __( 'Mising review Image' );
+                msg = __( 'Missing review Image' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof ctaLink || '' === ctaLink ) {
@@ -151,15 +151,15 @@ class SchemaNotices extends Component {
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof rAuthor || '' === rAuthor || false == showAuthor ) {
-                msg = __( 'Mising review author name' );
+                msg = __( 'Missing review author name' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof reviewPublisher || '' === reviewPublisher ) {
-                msg = __( 'Mising review publisher' );
+                msg = __( 'Missing review publisher' );
                 emptyItems.push( msg );
             }
             if ( 'undefined' === typeof datepublish || '' === datepublish ) {
-                msg = __( 'Mising date of publish' );
+                msg = __( 'Missing date of publish' );
                 emptyItems.push( msg );
             }
         }

@@ -163,6 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.20.0 =
 * Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
+* Fix: Testimonial - Fixed the JS console warning with Slick library.
 
 = 1.19.0 =
 * New: Review Schema Block.
