@@ -2562,8 +2562,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 			$selectors         = array_merge( $selectors, $desktop_selectors );
-			$t_selectors       = array();
-			$m_selectors       = array();
 
 			$combined_selectors = array(
 				'desktop' => $selectors,

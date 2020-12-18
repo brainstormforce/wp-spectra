@@ -46,20 +46,12 @@ function contentTimelineStyle( props ) {
 			},
 		}
 
-	var tablet_selectors = {}
-
-	var mobile_selectors = {}
-
 	var styling_css = ""
 	
 	var id = `article#uagb-timeline-child-${ props.clientId }`
 
 	styling_css = generateCSS( selectors, id )
-
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
-
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
-
+	
 	return styling_css
 
 }
