@@ -2367,7 +2367,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Content Timeline Child Block CSS
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -2413,13 +2413,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-right-color' => $attr['backgroundColor'],
 				),
 			);
-
-			$desktop_selectors = array();
-
-			$selectors = array_merge( $selectors, $desktop_selectors );
-
-			$t_selectors = array();
-			$m_selectors = array();
 
 			$combined_selectors = array(
 				'desktop' => $selectors,

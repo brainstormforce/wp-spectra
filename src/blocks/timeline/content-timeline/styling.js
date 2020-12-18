@@ -87,7 +87,6 @@ function contentTimelineStyle( props ) {
        ctaBackground,
    } = props.attributes
 
-//    console.log(props.attributes)
    var resp_selectors = "left"
 
    var selectors = {
@@ -175,9 +174,6 @@ function contentTimelineStyle( props ) {
                "margin-left" : generateCSSUnit( horizontalSpace, "px" ),
                "margin-right": generateCSSUnit( horizontalSpace, "px" ),
            },
-        //    " .uagb-timeline__field:not(:last-child)" : {
-        //        "margin-bottom" : generateCSSUnit( verticalSpace, "px" ),
-        //    },
         " .uagb-timeline__field" : {
             "margin-bottom" : generateCSSUnit( verticalSpace, "px" ),
         },

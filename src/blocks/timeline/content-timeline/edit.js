@@ -251,7 +251,7 @@ class UAGBcontentTimeline extends Component {
 
 		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
 
-			if( null != element && "undefined" != typeof element ) {
+		if( element ) {
 				element.innerHTML = contentTimelineStyle( this.props )
 			}
 		

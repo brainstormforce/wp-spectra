@@ -1,7 +1,6 @@
 /**
  * BLOCK: Content Timeline.
  */
-import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import contentTimelineChildStyle from "./inline-styles"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
@@ -11,7 +10,6 @@ const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
 
-// Import registerBlockType() from wp.blocks
 const {
 	createBlock
 } = wp.blocks
@@ -28,8 +26,6 @@ const {
 	RangeControl,
 	TextControl,
 } = wp.components
-
-let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBcontentTimelineChild extends Component {
 
@@ -143,7 +139,7 @@ class UAGBcontentTimelineChild extends Component {
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
 
-			if( null != element && "undefined" != typeof element ) {
+			if( element ) {
 				element.innerHTML = contentTimelineChildStyle( this.props )
 			}
 			
