@@ -1895,6 +1895,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Price List-Child', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'classMigrate'     => false,
 							'childMigrate'     => false,
