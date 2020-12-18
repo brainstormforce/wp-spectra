@@ -46,7 +46,6 @@ class UAGBTaxonomyList extends Component {
 		setAttributes( { postType: value } )
 		setAttributes( { categories: "" } )
 		setAttributes( { taxonomyType: "" } )
-
 	}
 	
 	onSelectTaxonomyType( value ) {
@@ -71,7 +70,7 @@ class UAGBTaxonomyList extends Component {
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
-		}
+        }
 	}
 
     render() {
@@ -166,7 +165,6 @@ class UAGBTaxonomyList extends Component {
 			listDisplayStyle,
 			showhierarchy
         } = attributes
-
 		
 		const taxonomy_list_setting = (showEmptyTaxonomy) ? taxonomyList : termsList;
 		
@@ -738,7 +736,6 @@ class UAGBTaxonomyList extends Component {
 											min={ 0 }
 											max={ 50 }
 											allowReset
-
 										/>										
 										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 										<ColorPalette
@@ -936,7 +933,6 @@ export default withSelect( ( select, props ) => {
 			categoriesList = currentTax[listToShowTaxonomy][taxonomyType]
 		}
 	}
-	
 	let latestPostsQuery = {
 		order: order,
 		orderby: orderBy,
