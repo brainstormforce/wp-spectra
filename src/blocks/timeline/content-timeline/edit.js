@@ -24,11 +24,6 @@ const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
 
-// Import registerBlockType() from wp.blocks
-const {
-	createBlock
-} = wp.blocks
-
 const {
 	BlockControls,
 	ColorPalette,
@@ -59,8 +54,6 @@ class UAGBcontentTimeline extends Component {
 
 	constructor() {
 		super( ...arguments )
-
-		this.splitBlock = this.splitBlock.bind( this )
 
 		this.getdateFormat = this.getdateFormat.bind(this)
 
@@ -137,35 +130,6 @@ class UAGBcontentTimeline extends Component {
 			setAttributes( { icon: value } )
 		}
 
-	splitBlock( before, after, ...blocks ) {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props
-
-		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
-			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( "core/paragraph", { content: after } ) )
-		}
-
-		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks )
-		}
-
-		const { content } = attributes
-		if ( ! before ) {
-			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] )
-		} else if ( content !== before ) {
-			// Only update content if it has in-fact changed. In case that user
-			// has created a new paragraph at end of an existing one, the value
-			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } )
-		}
-	}
 	/**
      * Function Name: toggleDisplayPostDate.
      */
