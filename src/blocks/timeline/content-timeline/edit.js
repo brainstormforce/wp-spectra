@@ -184,11 +184,16 @@ class UAGBcontentTimeline extends Component {
 			setAttributes,
 			attributes: {
 				tm_content,
+				headSpace,
+				headingColor,
+				subHeadingColor,
+				backgroundColor,
 				separatorColor,
 				separatorFillColor,
 				separatorBg,
 				separatorBorder,
 				borderFocus,
+				headingTag,
 				headFontSizeType,
 				headFontSize,
 				headFontSizeTablet,
@@ -239,13 +244,15 @@ class UAGBcontentTimeline extends Component {
 				dateLineHeightMobile,
 				dateLoadGoogleFonts,
 				iconSize,
+				borderRadius,
+				bgPadding,
 				block_id,
 				iconFocus,
 				iconBgFocus,
 				t_date,
 				displayPostDate,
 				stack,
-				dateFormat
+				dateFormat 
 			},
 		} = this.props
 
@@ -351,6 +358,76 @@ class UAGBcontentTimeline extends Component {
 					}
 				</TabPanel>
 			</PanelBody>
+		)
+
+		const content_color_control = (
+			<InspectorControls>
+				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+				<SelectControl
+						label={ __( "Typography" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+							{ value: "p", label: __( "P" ) },
+							{ value: "span", label: __( "SPAN" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Rounded Corners" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						initialPosition={10}
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Padding" ) }
+						value={ bgPadding }
+						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+						min={ 1 }
+						initialPosition={10}
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Heading Bottom Spacing" ) }
+						value={ headSpace }
+						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+				</PanelBody>
+					<PanelColorSettings
+						title={ __( "Color Settings" ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: headingColor,
+								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+								label: __( "Heading Color" ),
+							},
+							{
+								value: subHeadingColor,
+								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+								label: __( "Content Color" ),
+							},
+							{
+								value: backgroundColor,
+								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+								label: __( "Background Color" ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+					</InspectorControls>
 		)
 
 		let loadHeadGoogleFonts
@@ -624,6 +701,7 @@ class UAGBcontentTimeline extends Component {
 		return (
 			<Fragment>
 				{ content_control }
+				{ content_color_control }
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }

@@ -3,7 +3,6 @@
  */
 
 import classnames from "classnames"
-import contentTimelineChildStyle from "./inline-styles"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n } = wp.date

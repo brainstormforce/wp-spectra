@@ -1,7 +1,6 @@
 /**
  * BLOCK: Content Timeline.
  */
-import contentTimelineChildStyle from "./inline-styles"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n } = wp.date
@@ -31,8 +30,6 @@ class UAGBcontentTimelineChild extends Component {
 
 		constructor() {
 			super( ...arguments )
-
-			this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		}
 
 		splitBlock( before, after, ...blocks ) {
@@ -65,48 +62,13 @@ class UAGBcontentTimelineChild extends Component {
 				setAttributes( { content: before } )
 			}
 		}
-		/**
-	     * Function Name: toggleDisplayPostDate.
-	     */
-		toggleDisplayPostDate() {
-			const { displayPostDate } = this.props.attributes
-			const { setAttributes } = this.props
-
-			setAttributes( { displayPostDate: ! displayPostDate } )
-		}
-
-		saveDate( value, index ) {
-			const { attributes, setAttributes } = this.props
-			const { t_date } = attributes
-
-			const newItems = t_date.map( ( item, thisIndex ) => {
-				if ( index === thisIndex ) {
-					item = { ...item, ...value }
-				}
-
-				return item
-			} )
-
-			setAttributes( {
-				t_date: newItems,
-			} )
-		}
 
 		componentDidMount() {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
-			// Pushing Style tag for this block css.
-			const $style = document.createElement( "style" )
-			$style.setAttribute( "id", "uagb-content-timeline-child-style-" + this.props.clientId )
-			document.head.appendChild( $style )
 		}
 
 		componentDidUpdate() {
-			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
-
-			if( null !== element && undefined !== element ) {
-				element.innerHTML = contentTimelineChildStyle( this.props )
-			}
 		}	
 
 		render() {
@@ -118,16 +80,9 @@ class UAGBcontentTimelineChild extends Component {
 				mergeBlocks,
 				onReplace,
 				attributes: {
-					headSpace,
 					headingTag,
-					headingColor,
-					subHeadingColor,
-					backgroundColor,
 					timelinAlignment,
 					icon,
-					borderRadius,
-					bgPadding,
-					block_id,
 					t_date,
 					displayPostDate,
 					dateFormat,
@@ -135,13 +90,6 @@ class UAGBcontentTimelineChild extends Component {
 					time_desc,
 				},
 			} = this.props
-
-			// Add CSS.
-			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
-
-			if( element ) {
-				element.innerHTML = contentTimelineChildStyle( this.props )
-			}
 			
 			const content_control = (
 				<InspectorControls>
@@ -151,70 +99,7 @@ class UAGBcontentTimelineChild extends Component {
 						value= { t_date }
 						onChange={ ( value ) => setAttributes( { t_date: value } ) }
 					/>
-					<SelectControl
-							label={ __( "Typography" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-								{ value: "p", label: __( "P" ) },
-								{ value: "span", label: __( "SPAN" ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Rounded Corners" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							initialPosition={10}
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Padding" ) }
-							value={ bgPadding }
-							onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-							min={ 1 }
-							initialPosition={10}
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Heading Bottom Spacing" ) }
-							value={ headSpace }
-							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
 					</PanelBody>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Content Color" ),
-							},
-							{
-								value: backgroundColor,
-								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-								label: __( "Background Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
 				</InspectorControls>
 			)
 			

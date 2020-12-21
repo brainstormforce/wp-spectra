@@ -27,16 +27,6 @@ const attributes = {
 		type : "string",
 		default : "center",
 	},
-	headingColor : {
-		type : "string",
-	},
-	subHeadingColor : {
-		type : "string",
-	},
-	backgroundColor : {
-		type : "string",
-		default : "#eee",
-	},
 	headingTag : {
 		type : "string",
 		default : "h4",
@@ -49,14 +39,6 @@ const attributes = {
 		type : "string",
 		default : "center",
 	},
-	headSpace : {
-		type : "number",
-		default : 5,
-	},
-	subHeadSpace : {
-		type : "number",
-		default : 5,
-	},
 	block_id  : {
 		type : "string",
 		default : "0",
@@ -68,14 +50,6 @@ const attributes = {
 	tm_client_id  : {
 		type : "string",
 		default : "not_set",
-	},
-	borderRadius : {
-		type : "number",
-		default : 2,
-	},
-	bgPadding : {
-		type : "number",
-		default : 20,
 	},
 	iconSize : {
 		type : "number",
