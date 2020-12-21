@@ -36,7 +36,7 @@ const {
 	BlockAlignmentToolbar,
 	PanelColorSettings,
 	InnerBlocks,
-} = wp.blockEditor
+} = wp.editor
 
 const {
 	PanelBody,
@@ -249,7 +249,6 @@ class UAGBcontentTimeline extends Component {
 				block_id,
 				iconFocus,
 				iconBgFocus,
-				t_date,
 				displayPostDate,
 				stack,
 				dateFormat 
@@ -793,7 +792,7 @@ class UAGBcontentTimeline extends Component {
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
 		  })
-		
+
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))

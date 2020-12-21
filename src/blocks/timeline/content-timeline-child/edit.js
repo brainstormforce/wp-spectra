@@ -1,5 +1,5 @@
 /**
- * BLOCK: Content Timeline.
+ * BLOCK: Content Timeline child.
  */
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
@@ -16,13 +16,10 @@ const {
 const {
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 } = wp.blockEditor
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
 	TextControl,
 } = wp.components
 

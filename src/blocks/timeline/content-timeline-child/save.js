@@ -1,5 +1,5 @@
 /**
- * BLOCK: Content timeline - Save Block
+ * BLOCK: Content timeline child - Save Block
  */
 
 import classnames from "classnames"

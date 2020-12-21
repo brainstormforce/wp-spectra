@@ -123,24 +123,33 @@ function contentTimelineStyle( props ) {
            " .uagb-timeline__date-inner" : {
                "text-align": align,
            },
-           " .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
-               "border-left-color" : backgroundColor,
-           },
-           '.uagb-timeline__left-block .uagb-timeline__day-right .uagb-timeline__arrow:after':{
-               "border-right-color" : backgroundColor,
-           },
-           " .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
-            "border-right-color" : backgroundColor,
-           },
-           " .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
-               "border-left-color" : backgroundColor
-           },
-           " .uagb-timeline__day-left .uagb-timeline__arrow:after" : {
-               "border-right-color" : backgroundColor
-           },
-           " .uagb-timeline__day-left .uagb-timeline__arrow:after" : {
-               "border-right-color" : backgroundColor
-           },
+        ' .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-left-color' : backgroundColor,
+        },
+        ' .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-right-color' : backgroundColor,
+        },
+        ' .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-left-color' : backgroundColor,
+        },
+        ' .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-right-color' : backgroundColor,
+        },
+        ' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-left-color' : backgroundColor,
+        },
+        ' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after'  : {
+            'border-left-color' : backgroundColor,
+        },
+        ' .uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after'  : {
+            'border-left-color' : backgroundColor,
+        },
+        ' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after'  : {
+            'border-right-color' : backgroundColor,
+        },
+        ' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after'  : {
+            'border-right-color' : backgroundColor,
+        },
            " .uagb-timeline__line__inner" : {
                "background-color" : separatorFillColor
            },
