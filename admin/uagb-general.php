@@ -89,6 +89,7 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 									'post-button',
 									'post-excerpt',
 									'post-meta',
+									'restaurant-menu-child',
 								);
 
 								if ( in_array( $addon, $child_blocks, true ) ) {
