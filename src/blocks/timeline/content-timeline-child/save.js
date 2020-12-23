@@ -42,8 +42,10 @@ export default function save( props ) {
 		dayalign_class = props.attributes.dayalign_class
 	}
 	return (
-		<div className = "uagb-timeline__days">
-		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+block_id}>
+		<article  className = { classnames(
+			"uagb-timeline__field uagb-timeline__field-wrap",
+			`uagb-timeline-child-${block_id}`
+		) }>
 			<div className = { classnames( content_class ) }>
 
 				<div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
@@ -92,6 +94,5 @@ export default function save( props ) {
 				}
 			</div>
 		</article>
-		</div>
 	)
 }

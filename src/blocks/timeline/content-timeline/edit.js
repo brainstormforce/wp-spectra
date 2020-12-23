@@ -364,14 +364,6 @@ class UAGBcontentTimeline extends Component {
 						max={ 50 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Heading Bottom Spacing" ) }
-						value={ headSpace }
-						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
 				</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
@@ -513,7 +505,7 @@ class UAGBcontentTimeline extends Component {
 						{ value: 'custom'    , label: __( 'Normal Text' ) },
 					] }
 				/>}
-				{ <RangeControl
+				{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
 					label={ __( "Date Bottom Spacing" ) }
 					value={ dateBottomspace }
 					onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
@@ -561,8 +553,7 @@ class UAGBcontentTimeline extends Component {
 							lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
 							lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
 						/>
-
-					{ <Fragment>
+					{ displayPostDate && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Date Typography" ) }</h2>
 						<TypographyControl
@@ -614,14 +605,14 @@ class UAGBcontentTimeline extends Component {
 						max={ 100 }
 						allowReset
 					/>
-					{/* <RangeControl
+					<RangeControl
 						label={ __( "Heading Bottom Spacing" ) }
 						value={ headSpace }
 						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/> */}
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
 					<FontIconPicker {...icon_props} />
@@ -690,11 +681,13 @@ class UAGBcontentTimeline extends Component {
 					) }>
 						<div className = "uagb-timeline-wrapper">
 							<div className = "uagb-timeline__main">
+								<div className = "uagb-timeline__days">
 								<InnerBlocks
 									template={ getContentTimelineTemplate( timelineItem, tm_content ) }
 									templateLock={ false }
 									allowedBlocks={ ALLOWED_BLOCKS }	
 								/>
+								</div>
 								<div className = "uagb-timeline__line" >
 									<div className = "uagb-timeline__line__inner"></div>
 								</div>

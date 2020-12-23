@@ -1,6 +1,7 @@
 /**
  * BLOCK: Content Timeline child.
  */
+import classnames from "classnames"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n } = wp.date
@@ -77,6 +78,7 @@ class UAGBcontentTimelineChild extends Component {
 				mergeBlocks,
 				onReplace,
 				attributes: {
+					block_id,
 					headingTag,
 					timelinAlignment,
 					icon,
@@ -119,10 +121,12 @@ class UAGBcontentTimelineChild extends Component {
 				} 
 
 				return (
-							<Fragment>
+					<Fragment>
 								{ content_control }
-								<div className = "uagb-timeline__days">
-								<article className = "uagb-timeline__field uagb-timeline__field-wrap"   id={"uagb-timeline-child-"+this.props.clientId}>
+								<article  className={ classnames(
+									"uagb-timeline__field uagb-timeline__field-wrap",
+									`uagb-timeline-child-${block_id}`
+								) }>
 									<div className = { this.props.attributes.content_class }>
 									<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
 										<span className = {icon_class}>{ renderSVG(icon) }</span>
@@ -184,7 +188,6 @@ class UAGBcontentTimelineChild extends Component {
 									}
 									</div>
 								</article>	
-								</div>					
 							</Fragment>
 							
 					)
