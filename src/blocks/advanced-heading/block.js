@@ -13,7 +13,7 @@ import "./style.scss"
 const { __ } = wp.i18n
 
 const {
-	registerBlockType
+	registerBlockType ,createBlock
 } = wp.blocks
 
 registerBlockType( "uagb/advanced-heading", {
@@ -37,7 +37,30 @@ registerBlockType( "uagb/advanced-heading", {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	transform,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: ({values}) => {
+					return createBlock('uagb/advanced-heading', {
+						values: values,
+					})
+				}
+			}
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: ({values}) => {
+					return createBlock('core/heading', {
+						values: values,
+					})
+				}
+			}
+		]
+	},
 	edit,
 	save,
 	deprecated,

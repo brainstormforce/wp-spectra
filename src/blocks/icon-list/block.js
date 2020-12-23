@@ -13,7 +13,7 @@ import "./editor.scss"
 
 const { __ } = wp.i18n
 const {
-	registerBlockType
+	registerBlockType , createBlock
 } = wp.blocks
 
 registerBlockType( "uagb/icon-list", {
@@ -45,6 +45,29 @@ registerBlockType( "uagb/icon-list", {
 	attributes,
 	edit,
 	save,
-	transform,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/list'],
+				transform: ({values}) => {
+					return createBlock('uagb/icon-list', {
+						values: values,
+					})
+				}
+			}
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/list'],
+				transform: ({values}) => {
+					return createBlock('core/list', {
+						values: values,
+					})
+				}
+			}
+		]
+	},
 	deprecated
 } )

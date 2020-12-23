@@ -16,7 +16,7 @@ const { __ } = wp.i18n
 
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
+	registerBlockType, createBlock
 } = wp.blocks
 
 /**
@@ -48,5 +48,29 @@ registerBlockType( "uagb/blockquote", {
 	edit,
 	save,
 	example: {},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/quote'],
+				transform: ({values}) => {
+					return createBlock('uagb/blockquote', {
+						values: values,
+					})
+				}
+			}
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/quote'],
+				transform: ({values}) => {
+					return createBlock('core/quote', {
+						values: values,
+					})
+				}
+			}
+		]
+	},
 	deprecated,
 } )

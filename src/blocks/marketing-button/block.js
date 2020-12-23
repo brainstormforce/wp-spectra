@@ -13,7 +13,7 @@ import "./editor.scss"
 const { __ } = wp.i18n
 
 const {
-	registerBlockType
+	registerBlockType , createBlock
 } = wp.blocks
 
 registerBlockType( "uagb/marketing-button", {
@@ -34,4 +34,28 @@ registerBlockType( "uagb/marketing-button", {
 	save,
 	example: {},
 	deprecated,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/buttons'],
+				transform: ({values}) => {
+					return createBlock('uagb/marketing-button', {
+						values: values,
+					})
+				}
+			}
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/buttons'],
+				transform: ({values}) => {
+					return createBlock('core/buttons', {
+						values: values,
+					})
+				}
+			}
+		]
+	},
 } )
