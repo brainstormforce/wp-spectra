@@ -7,7 +7,6 @@ import attributes from "./attributes"
 import edit from "./edit"
 import save from "./save"
 import deprecated from "./deprecated"
-import transform from "./transform"
 import "./style.scss"
 
 const { __ } = wp.i18n
