@@ -83,7 +83,7 @@ export default function save( props ) {
 					</div>
 				</div>
 				{ display_inner_date && <div className = "uagb-timeline__date-new">
-					{ displayPostDate && t_date &&
+					{ displayPostDate != true && t_date &&
                         <div className={ "uagb-timeline__date-new" }>
                         	{ post_date }
                         </div>

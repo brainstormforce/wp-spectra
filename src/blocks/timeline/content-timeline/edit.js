@@ -135,8 +135,13 @@ class UAGBcontentTimeline extends Component {
      */
 	toggleDisplayPostDate() {
 		const { displayPostDate } = this.props.attributes
+		// const { setAttributes } = this.props
 		const { setAttributes } = this.props
-
+			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+			
+			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+				UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate
+			});
 		setAttributes( { displayPostDate: ! displayPostDate } )
 	}
 
@@ -218,7 +223,7 @@ class UAGBcontentTimeline extends Component {
 				dateFormat 
 			},
 		} = this.props
-
+		
 		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
 
 		if( element ) {
@@ -478,7 +483,7 @@ class UAGBcontentTimeline extends Component {
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( "Date" ) }</h2>
 				<ToggleControl
-					label={ __( "Display Post Date" ) }
+					label={ __( "Display Date" ) }
 					checked={ displayPostDate }
 					onChange={ this.toggleDisplayPostDate }
 				/>

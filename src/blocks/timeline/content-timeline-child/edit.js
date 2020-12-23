@@ -90,13 +90,15 @@ class UAGBcontentTimelineChild extends Component {
 			
 			const content_control = (
 				<InspectorControls>
-				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
-					<TextControl
-						label= { __( "Date Settings" ) }
-						value= { t_date }
-						onChange={ ( value ) => setAttributes( { t_date: value } ) }
-					/>
+					{ displayPostDate != true &&(
+					<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+						<TextControl
+							label= { __( "Date" ) }
+							value= { t_date }
+							onChange={ ( value ) => setAttributes( { t_date: value } ) }
+						/>
 					</PanelBody>
+					)}
 				</InspectorControls>
 			)
 			
@@ -173,7 +175,7 @@ class UAGBcontentTimelineChild extends Component {
 								</div>
 								</div>	
 									{ display_inner_date && <div className = "uagb-timeline__date-new">
-										{ displayPostDate && t_date &&
+										{ displayPostDate != true && t_date &&
                                             <div className={ "uagb-timeline__date-new" }>
                                             	{ post_date }
                                             </div>

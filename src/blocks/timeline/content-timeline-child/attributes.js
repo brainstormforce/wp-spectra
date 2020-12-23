@@ -65,7 +65,6 @@ const attributes = {
 	},
 	displayPostDate:{
 		type: "boolean",
-		default: true,
 	},
 	stack: {
 		type: "string",
