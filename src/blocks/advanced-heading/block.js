@@ -36,14 +36,20 @@ registerBlockType( "uagb/advanced-heading", {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
+	edit,
+	save,
+	deprecated,
 	transforms: {
 		from: [
 			{
 				type: 'block',
 				blocks: ['core/heading'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('uagb/advanced-heading', {
-						values: values,
+						content: attributes.headingTitle,
+						level:attributes.headingTag,
+						align:attributes.headingAlign,
+						className:'uagb-heading-text'
 					})
 				}
 			}
@@ -52,15 +58,16 @@ registerBlockType( "uagb/advanced-heading", {
 			{
 				type: 'block',
 				blocks: ['core/heading'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('core/heading', {
-						values: values,
+						content: attributes.headingTitle,
+						level:attributes.headingTag,
+						align:attributes.headingAlign,
+						className:'uagb-heading-text'
 					})
 				}
 			}
 		]
 	},
-	edit,
-	save,
-	deprecated,
 } )
+console.log(attributes)

@@ -48,14 +48,16 @@ registerBlockType( "uagb/blockquote", {
 	edit,
 	save,
 	example: {},
+	deprecated,
 	transforms: {
 		from: [
 			{
 				type: 'block',
 				blocks: ['core/quote'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('uagb/blockquote', {
-						values: values,
+						value : attributes.descriptionText,
+						citation: attributes.author
 					})
 				}
 			}
@@ -64,13 +66,13 @@ registerBlockType( "uagb/blockquote", {
 			{
 				type: 'block',
 				blocks: ['core/quote'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('core/quote', {
-						values: values,
+						value : attributes.descriptionText,
+						citation: attributes.author
 					})
 				}
 			}
 		]
 	},
-	deprecated,
 } )
