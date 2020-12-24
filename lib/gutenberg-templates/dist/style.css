@@ -26,9 +26,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.gutenberg-templates-icon-search:before {
+/* .gutenberg-templates-icon-search:before {
 	content: '\e900';
-}
+} */
 
 .gutenberg-templates-icon-heart:before {
 	content: '\e901';

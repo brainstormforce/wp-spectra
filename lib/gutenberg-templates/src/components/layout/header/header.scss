@@ -1,0 +1,76 @@
+.header-menu {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+}
+
+.header-menu-item {
+	line-height: 1em;
+	width: 108px;
+	padding: 18px 0;
+	display: inline-block;
+	text-align: center;
+	font-weight: 600;
+	color: #444;
+	font-size: 13px;
+	border-bottom: 3px solid transparent;
+	cursor: pointer;
+
+	&:hover {
+		color: #0073aa;
+	}
+
+	&.active {
+		border-color: #0073aa;
+		background-image: linear-gradient(to bottom, #f1f3f5, #fff);
+		color: #0073aa;
+	}
+
+	.dashicons {
+		width: auto;
+		height: auto;
+		font-size: initial;
+		margin-right: 8px;
+	}
+
+	.gutenberg-templates-icon {
+		margin-right: 10px;
+		font-size: 16px;
+	}
+}
+
+.header {
+	display: flex;
+	background-color: #fff;
+	box-shadow: 25px 0 30px rgba(28, 39, 60, 0.09);
+	border-bottom: 1px solid #dddddd;
+	align-items: stretch;
+
+	h2 {
+		padding: 10px 15px;
+	}
+
+	.close {
+		padding: 0 15px;
+		cursor: pointer;
+		color: #a4afb7;
+		border-left: 1px solid #e6e9ec;
+		line-height: normal;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:hover {
+			color: #6d7882;
+		}
+
+		.dashicons {
+			line-height: normal;
+			height: auto;
+			width: auto;
+			vertical-align: middle;
+			font-size: 22px;
+		}
+	}
+}

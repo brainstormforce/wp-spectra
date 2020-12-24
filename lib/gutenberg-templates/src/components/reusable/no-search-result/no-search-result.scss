@@ -1,0 +1,25 @@
+.no-search-result {
+	padding: 7em 0;
+	text-align: center;
+	color: #6d7882;
+	flex: 1;
+	right: 0;
+	top: 0em !important;
+
+	h3 {
+		margin-bottom: 1.2em;
+		font-size: 1.3rem;
+		font-weight: normal;
+		color: #666;
+		margin-top: 0;
+	}
+
+	p {
+		font-size: 13px;
+		margin: 0;
+	}
+}
+
+.no-search-result-description a {
+	text-decoration: none;
+}

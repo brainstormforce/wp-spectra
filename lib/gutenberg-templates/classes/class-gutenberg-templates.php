@@ -365,7 +365,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		public function template_assets() {
-			wp_enqueue_script( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded' ), GUTENBERG_TEMPLATES_VER, true );
+			wp_enqueue_script( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), GUTENBERG_TEMPLATES_VER, true );
 			wp_add_inline_script( 'gutenberg-templates', 'window.lodash = _.noConflict();', 'after' );
 
 			wp_enqueue_style( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/style.css', array( ), GUTENBERG_TEMPLATES_VER, 'all' );

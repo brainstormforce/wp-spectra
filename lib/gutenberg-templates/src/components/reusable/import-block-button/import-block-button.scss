@@ -1,0 +1,30 @@
+.gutenberg-import-block-button {
+	color: #6d7882;
+	font-size: 13px;
+	line-height: normal;
+	vertical-align: middle;
+	cursor: pointer;
+	// position: absolute;
+	// right: 108px;
+
+	.components-spinner,
+	.dashicons {
+		margin: 0 5px 0px 0;
+		font-size: 16px;
+		line-height: normal;
+		vertical-align: sub;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.header .gutenberg-import-block-button {
+	padding: 15px 20px;
+	border-right: 1px solid #e6e9ec;
+	opacity: 0;
+	visibility: hidden;
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
+}

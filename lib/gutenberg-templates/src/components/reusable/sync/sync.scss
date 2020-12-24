@@ -1,0 +1,46 @@
+.gutenberg-templates-sync {
+	position: relative;
+	padding: 0 18px;
+	cursor: pointer;
+	color: #6d7882;
+	border-left: 1px solid #e6e9ec;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover .gutenberg-templates-icon {
+		color: #6d7882;
+	}
+
+	.gutenberg-templates-icon {
+		font-size: 16px;
+		color: #a4afb7;
+	}
+
+	.gutenberg-templates-tooltip {
+		text-align: center;
+		width: 100px;
+	}
+
+	&:hover .gutenberg-templates-tooltip {
+		display: block;
+	}
+}
+
+.gutenberg-templates-sync__title {
+	position: absolute;
+	bottom: -15px;
+	left: -139px;
+	background: #ffffff;
+	width: 200px;
+	border-radius: 0px;
+	padding: 3px 8px;
+	text-align: left;
+	border: 1px solid #e6e9ec;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.gutenberg-templates-sync--processing .gutenberg-templates-icon {
+	animation: rotation 2s infinite linear;
+}

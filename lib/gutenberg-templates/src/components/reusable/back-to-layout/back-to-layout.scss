@@ -1,0 +1,26 @@
+.back-to-layout {
+	border-right: 1px solid #eeeeee;
+	padding: 0 15px;
+	text-align: center;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	visibility: hidden;
+	position: relative;
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.gutenberg-templates-icon {
+		font-size: 24px;
+	}
+
+	/** Tooltip */
+	&:hover .gutenberg-templates-tooltip {
+		display: block;
+	}
+}
