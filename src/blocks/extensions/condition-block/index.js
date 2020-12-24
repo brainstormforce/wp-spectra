@@ -17,13 +17,13 @@ const UserConditionOptions = ( props ) => {
     return(
         <Fragment>
             <ToggleControl
-				label={ __('Hide on loggedIn Users')}
+				label={ __('Hide From Logged In Users')}
 				checked={UAGloggedIn}
                 help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                 onChange={(value) => setAttributes({ UAGloggedIn: !attributes.UAGloggedIn })}
 			/>
             <ToggleControl
-                label={ __('Hide on loggedOut Users' ) }
+                label={ __('Hide From Logged Out Users' ) }
                 checked={UAGloggedOut}
                 help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                 onChange={(value) => setAttributes({ UAGloggedOut: !attributes.UAGloggedOut })}
