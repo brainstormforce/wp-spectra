@@ -157,7 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Credits ==
 
-The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata).Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC.While [Slick](https://github.com/akiran/react-slick) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Screenshots ==
 
