@@ -163,7 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.20.0 =
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
-* Improvement: Advanced Heading, Blockquote, Buttons, Marketing Button, Icon List, Price List  - Added Transform Compatibility Feature.
+* Improvement: Added transform compatibility for Advanced Heading, Blockquote, Buttons, Marketing Button, Icon List and Price List block.
 
 = 1.19.0 =
 * New: Review Schema Block.
