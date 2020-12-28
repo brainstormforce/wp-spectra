@@ -164,6 +164,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.20.0 =
 * Fix: Gravity Form Styler - Multistep form styling issue.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
+* Fix: Faq - Fixed Accessibility issue.
 
 = 1.19.0 =
 * New: Review Schema Block.
