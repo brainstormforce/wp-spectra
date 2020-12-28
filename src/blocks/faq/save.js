@@ -46,6 +46,7 @@ export default function save( props ) {
 			equalHeightClass
 		) }
 		data-faqtoggle = { props.attributes.enableToggle }
+		role = 'tablist'
 		>
 			{ renderSchema() }
 			<div className="uagb-faq__wrap uagb-buttons-layout-wrap">
