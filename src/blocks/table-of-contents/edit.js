@@ -1046,6 +1046,7 @@ export default compose(
 			}
 			
 			var parsedSlug = slug.toString().toLowerCase()
+				.replace(/\…+/g,'')                          // Remove multiple …
 				.replace(/&(amp;)/g, '')					 // Remove &
 				.replace(/&(mdash;)/g, '')					 // Remove long dash
 				.replace(/\u2013|\u2014/g, '')				 // Remove long dash
@@ -1075,16 +1076,25 @@ export default compose(
 
 				const headingContentEmpty = typeof heading_attr[contentName] === 'undefined' || heading_attr[contentName] === '';
 
-				if ( !headingContentEmpty ) {
-					headers.push(
-						{
-							tag: contentLevel,
-							text: striptags( heading_attr[contentName] ),
-							link: parseTocSlug( striptags( heading_attr[contentName] ) ),
-							content: heading_attr[contentName]
-						}
-					);
+				let heading_className = heading_attr.className;
+				let exclude_heading = '';
+
+				if( heading_className ){
+					if( typeof heading_className !== 'undefined' ){
+						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
+					}
 				}
+
+					if ( !headingContentEmpty && !exclude_heading ) {
+						headers.push(
+							{
+								tag: contentLevel,
+								text: striptags( heading_attr[contentName] ),
+								link: parseTocSlug( striptags( heading_attr[contentName] ) ),
+								content: heading_attr[contentName]
+							}
+						);
+					}
 			});
 		}
 

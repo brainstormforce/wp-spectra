@@ -17,6 +17,69 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Get review block CSS
+		 *
+		 * @since 1.19.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_review_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/review']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$t_selectors = array();
+			$m_selectors = array();
+			$selectors   = array();
+
+			$selectors = array(
+				' .uagb-rating-title'   => array(
+					'color' => $attr['titleColor'],
+				),
+				' .uagb-rating-desc'    => array(
+					'color' => $attr['descColor'],
+				),
+				' .uagb-rating-author'  => array(
+					'color' => $attr['authorColor'],
+				),
+				' .uagb_review_entry'   => array(
+					'color' => $attr['contentColor'],
+				),
+				' .uagb_review_block'   => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'text-align'     => $attr['overallAlignment'],
+				),
+				' .uagb_review_summary' => array(
+					'color' => $attr['summaryColor'],
+				),
+				' .uagb_review_entry .star, .uagb_review_average_stars .star' => array(
+					'fill' => $attr['starColor'],
+				),
+				' .uagb_review_entry path, .uagb_review_average_stars path' => array(
+					'stroke' => $attr['starOutlineColor'],
+					'fill'   => $attr['starActiveColor'],
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-rating-title, .uagb_review_entry', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-rating-desc, .uagb-rating-author', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb_review_summary', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
+
+		}
+
+		/**
 		 * Get Inline Notice CSS
 		 *
 		 * @since 1.16.0
@@ -1144,6 +1207,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 				),
 				// Title Style.
+				' .uagb-ifb-title a'           => array(
+					'color' => $attr['headingColor'],
+				),
 				' .uagb-ifb-title'             => array(
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . 'px',
