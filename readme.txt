@@ -160,7 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.19.0 =
+= 1.20.0 =
 * Fix: Gravity Form Styler - Multistep form styling issue.
 
 = 1.18.1 =
