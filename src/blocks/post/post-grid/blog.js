@@ -1,5 +1,7 @@
 const { decodeEntities } = wp.htmlEntities
 
+const { select } = wp.data
+
 import classnames from "classnames"
 import FeaturedImage from ".././components/FeaturedImage"
 import Title from ".././components/Title"
@@ -11,7 +13,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList, deviceType} = this.props
 
 		const {
 			columns,
@@ -23,7 +25,7 @@ class Blog extends React.Component {
 			paginationMarkup,
 			postPagination
 		} = attributes
-
+		
 		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
 
 		// Removing posts from display should be instant.
@@ -38,6 +40,7 @@ class Blog extends React.Component {
 					className,
 					"uagb-post-grid",
 					`uagb-post__image-position-${ imgPosition }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`
 				) }
 			>
