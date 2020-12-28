@@ -10,7 +10,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList, deviceType } = this.props
 
 		const {
 			columns,
@@ -63,6 +63,7 @@ class Blog extends React.Component {
 					"uagb-post-grid",
 					"uagb-post__arrow-outside",
 					`uagb-post__image-position-${ imgPosition }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`
 				) }
 				data-blog-id={block_id}
