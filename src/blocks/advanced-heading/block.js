@@ -46,9 +46,8 @@ registerBlockType( "uagb/advanced-heading", {
 				blocks: ['core/heading'],
 				transform: (attributes) => {
 					return createBlock('uagb/advanced-heading', {
-						content: attributes.headingTitle,
-						level:attributes.headingTag,
-						align:attributes.headingAlign,
+						headingTitle: attributes.content,
+						headingAlign:attributes.align,
 						className:'uagb-heading-text'
 					})
 				}
@@ -61,7 +60,6 @@ registerBlockType( "uagb/advanced-heading", {
 				transform: (attributes) => {
 					return createBlock('core/heading', {
 						content: attributes.headingTitle,
-						level:attributes.headingTag,
 						align:attributes.headingAlign,
 						className:'uagb-heading-text'
 					})
@@ -70,4 +68,3 @@ registerBlockType( "uagb/advanced-heading", {
 		]
 	},
 } )
-console.log(attributes)

@@ -80,9 +80,9 @@ registerBlockType( "uagb/restaurant-menu", {
 			{
 				type: 'block',
 				blocks: ['core/list'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('uagb/restaurant-menu', {
-						values: values,
+						...attributes,
 					})
 				}
 			}
@@ -91,9 +91,9 @@ registerBlockType( "uagb/restaurant-menu", {
 			{
 				type: 'block',
 				blocks: ['core/list'],
-				transform: ({values}) => {
+				transform: (attributes) => {
 					return createBlock('core/list', {
-						values: values,
+						...attributes,
 					})
 				}
 			}

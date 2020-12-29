@@ -41,10 +41,10 @@ registerBlockType( "uagb/marketing-button", {
 				blocks: ['core/buttons'],
 				transform: (attributes) => {
 					return createBlock('uagb/marketing-button', {
-						url: attributes.link,
-						text: attributes.heading,
+						link: attributes.url,
+						heading: attributes.text,
 						align: attributes.align,
-						textColor: attributes.titleColor,
+						titleColor: attributes.textColor,
 						backgroundColor: attributes.backgroundColor
 					})
 				}

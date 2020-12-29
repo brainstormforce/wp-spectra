@@ -56,8 +56,9 @@ registerBlockType( "uagb/blockquote", {
 				blocks: ['core/quote'],
 				transform: (attributes) => {
 					return createBlock('uagb/blockquote', {
-						value : attributes.descriptionText,
-						citation: attributes.author
+						descriptionText : attributes.value,
+						author: attributes.citation,
+						align: attributes.align
 					})
 				}
 			}
@@ -69,7 +70,8 @@ registerBlockType( "uagb/blockquote", {
 				transform: (attributes) => {
 					return createBlock('core/quote', {
 						value : attributes.descriptionText,
-						citation: attributes.author
+						citation: attributes.author,
+						align: attributes.align
 					})
 				}
 			}
