@@ -1,6 +1,6 @@
 
 export default function save() {
-    return<div className='uagb-post-grid-byline'>
+    return <div className='uagb-post-grid-byline'>
             <span className='uagb-post__author'>
                 <span className="dashicons-admin-users dashicons"></span>
                 Author Name
