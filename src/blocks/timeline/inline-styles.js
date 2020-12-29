@@ -99,7 +99,7 @@ function contentTimelineStyle( props ) {
 		ctaLoadGoogleFonts,
 		ctaBackground,
 	} = props.attributes
-
+	
 	var resp_selectors = "left"
 
 	var selectors = {

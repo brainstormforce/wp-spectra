@@ -162,8 +162,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.20.0 =
+* Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
+<<<<<<< HEAD
 * Improvement: Added transform compatibility for Advanced Heading, Blockquote, Buttons, Marketing Button, Icon List and Price List block.
+=======
+* Fix: Table of content - Fixed the pipe symbol issue in heading.
+* Fix: Faq - Fixed Accessibility issue.
+>>>>>>> bc7f8172753e1d2b1eddcd64a605a37703aa7d30
 
 = 1.19.0 =
 * New: Review Schema Block.
