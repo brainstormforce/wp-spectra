@@ -1,7 +1,5 @@
 const { decodeEntities } = wp.htmlEntities
 
-const { select } = wp.data
-
 import classnames from "classnames"
 import FeaturedImage from ".././components/FeaturedImage"
 import Title from ".././components/Title"

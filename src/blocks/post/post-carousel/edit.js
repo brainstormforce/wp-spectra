@@ -101,6 +101,7 @@ class UAGBPostCarousel extends Component {
 			categoriesList,
 			setAttributes,
 			latestPosts,
+			deviceType,
 			taxonomyList
 		} = this.props
 		const {
@@ -1006,7 +1007,7 @@ class UAGBPostCarousel extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList}/>
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} deviceType={deviceType} />
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
@@ -1020,6 +1021,9 @@ export default withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
 	let currentTax = allTaxonomy[postType]
@@ -1054,6 +1058,7 @@ export default withSelect( ( select, props ) => {
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
+		deviceType: deviceType,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
 	}
 
