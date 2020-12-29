@@ -1110,7 +1110,6 @@ export default withSelect( ( select, props ) => {
 	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
-
 	if ( true === postPagination && 'empty' === paginationMarkup ) {
 		$.ajax({
 			url: uagb_blocks_info.ajax_url,
@@ -1132,7 +1131,7 @@ export default withSelect( ( select, props ) => {
 		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
 			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
 		}
-
+	
 		if ( "" != taxonomyType ) {
 			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
 				categoriesList = currentTax["terms"][taxonomyType]
@@ -1150,7 +1149,17 @@ export default withSelect( ( select, props ) => {
 		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
 	}
 	
-	latestPostsQuery[rest_base] = categories
+
+	var cate = [];
+	cate.push(categories); // 23
+	cate.forEach(c =>{
+	categoriesList.forEach(cat => {
+			if(cat.parent == c){
+				cate.push(cat.id);
+			}
+		})
+	});
+	latestPostsQuery[rest_base] = cate
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
