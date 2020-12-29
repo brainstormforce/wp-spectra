@@ -2,6 +2,9 @@ function addAttributes( settings ) {
 
 	if ( settings.attributes ) {
 		settings.attributes = Object.assign( settings.attributes, {
+			UAGUserRole:{
+				type:"string"	
+			},
 			UAGBrowser: {
 				type:"string"
 			},

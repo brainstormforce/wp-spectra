@@ -18,9 +18,12 @@ const UserConditionOptions = ( props ) => {
         UAGHideMob,
         UAGHideTab,
         UAGSystem,
-        UAGBrowser
+        UAGBrowser,
+        UAGUserRole
     } = attributes;
-
+ 
+    const user_role = uagb_blocks_info.user_role;
+    console.log( uagb_blocks_info );
     return(
         <Fragment>
             <SelectControl
@@ -107,6 +110,16 @@ const UserConditionOptions = ( props ) => {
                             { value: "safari", label: __( "Safari" ) },
                             { value: "edge", label: __( "Microsoft Edge" ) },
                         ]}
+			        />
+                </Fragment>
+            }
+            { DisplayConditions == "userRole" && 
+                <Fragment>
+                    <SelectControl
+                        label={ __( "User Role" ) }
+                        value={ UAGUserRole }
+                        onChange={ ( value ) => setAttributes( { UAGUserRole: value } ) }
+                        options={ uagb_blocks_info.user_role }
 			        />
                 </Fragment>
             }

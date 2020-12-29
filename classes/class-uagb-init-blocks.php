@@ -71,6 +71,149 @@ class UAGB_Init_Blocks {
 
 		$block_attributes = $block['attrs'];
 
+		if ( isset( $block_attributes['DisplayConditions'] ) && array_key_exists( 'DisplayConditions', $block_attributes ) ) {
+
+			switch ( $block_attributes['DisplayConditions'] ) {
+
+				case 'userstate':
+					$block_content = $this->user_state_visibility( $block_attributes, $block_content );
+					break;
+
+				case 'userRole':
+					$block_content = $this->user_role_visibility( $block_attributes );
+					break;
+
+				case 'browser':
+					$block_content = $this->browser_visibility( $block_attributes );
+					break;
+
+				case 'os':
+					$block_content = $this->os_visibility( $block_attributes );
+					break;
+
+				default:
+					// code...
+					break;
+			}
+		}
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since x.x.x
+	 * @return mixed Returns the new block content.
+	 */
+	public function user_role_visibility( $block_attributes, $block_content ) {
+
+		$user = wp_get_current_user();
+
+		if ( isset( $block_attributes['UAGUserRole'] ) && array_key_exists( 'UAGUserRole', $block_attributes ) ) {
+
+			$value = $block_attributes['UAGUserRole'];
+
+			if ( is_user_logged_in() && in_array( $value, $user->roles, true ) ) {
+				return '';
+			}
+		}
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 * @since x.x.x
+	 * @return mixed Returns the new block content.
+	 */
+	public function os_visibility( $block_attributes, $block_content ) {
+
+		if ( ! array_key_exists( 'UAGSystem', $block_attributes ) ) {
+			return $block_content;
+		}
+
+		$value = $block_attributes['UAGSystem'];
+
+		$os = array(
+			'iphone'   => '(iPhone)',
+			'android'  => '(Android)',
+			'windows'  => 'Win16|(Windows 95)|(Win95)|(Windows_95)|(Windows 98)|(Win98)|(Windows NT 5.0)|(Windows 2000)|(Windows NT 5.1)|(Windows XP)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows Vista)|(Windows NT 6.1)|(Windows 7)|(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)|Windows ME',
+			'open_bsd' => 'OpenBSD',
+			'sun_os'   => 'SunOS',
+			'linux'    => '(Linux)|(X11)',
+			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
+		);
+
+		if ( preg_match( '@' . $os[ $value ] . '@', $_SERVER['HTTP_USER_AGENT'] ) ) {
+			return '';
+		}
+
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since x.x.x
+	 * @return mixed Returns the new block content.
+	 */
+	public function browser_visibility( $block_attributes, $block_content ) {
+
+		if ( ! array_key_exists( 'UAGBrowser', $block_attributes ) ) {
+			return $block_content;
+		}
+
+		$browsers = array(
+			'ie'         => array(
+				'MSIE',
+				'Trident',
+			),
+			'firefox'    => 'Firefox',
+			'chrome'     => 'Chrome',
+			'opera_mini' => 'Opera Mini',
+			'opera'      => 'Opera',
+			'safari'     => 'Safari',
+		);
+
+		$value = $block_attributes['UAGBrowser'];
+
+		$show = false;
+
+		if ( 'ie' === $value ) {
+			if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ][0] ) || false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ][1] ) ) {
+				$show = true;
+			}
+		} else {
+			if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ] ) ) {
+				$show = true;
+
+				// Additional check for Chrome that returns Safari.
+				if ( 'safari' === $value || 'firefox' === $value ) {
+					if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'Chrome' ) ) {
+						$show = false;
+					}
+				}
+			}
+		}
+
+		return ( $show ) ? '' : $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since x.x.x
+	 * @return mixed Returns the new block content.
+	 */
+	public function user_state_visibility( $block_attributes, $block_content ) {
+
 		if ( isset( $block_attributes['UAGloggedIn'] ) && $block_attributes['UAGloggedIn'] && is_user_logged_in() ) {
 			return '';
 		}
@@ -334,10 +477,32 @@ class UAGB_Init_Blocks {
 				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 				'uagb_home_url'     => home_url(),
+				'user_role'         => $this->get_user_role(),
 			)
 		);
 	} // End function editor_assets().
+	/**
+	 *  Get the User Roles
+	 *
+	 *  @since x.x.x
+	 */
+	public function get_user_role() {
 
+		global $wp_roles;
+
+		$field_options = array();
+
+		$role_lists = $wp_roles->get_names();
+
+		foreach ( $role_lists as $key => $role_list ) {
+			$field_options[] = array(
+				'value' => $key,
+				'label' => $role_list,
+			);
+		}
+
+		return $field_options;
+	}
 
 	/**
 	 * Function to integrate CF7 Forms.
