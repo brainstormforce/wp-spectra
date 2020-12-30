@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
-.uagb-post-grid {
+ .uagb-post-grid {
 	margin: 0;
 	position: relative;
 	.uagb-post__load-more-wrap {
@@ -33,6 +33,7 @@
 
 	.is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
 		height: 100%;
+		padding-top: 15px;
 	}
 
 	.is-masonry .uagb-post__inner-wrap {
@@ -81,11 +82,12 @@
 		text-align: left;
 		box-sizing: border-box;
 	}
-
+	.uagb-post__image , .uagb-post__cta{
+		margin-bottom: 15px;
+	}
 	.uagb-post__title {
 		margin-top: 0;
 		margin-bottom: 15px;
-		margin-top: 15px;
 		word-break: break-word;
 
 		a {
@@ -112,7 +114,6 @@
 		text-transform: uppercase;
 		font-size: 11px;
 		letter-spacing: 1px;
-		margin-top: 15px;
 		margin-bottom: 15px;
 	}
 
@@ -163,7 +164,6 @@
 
 	.uagb-post__excerpt {
 		margin-bottom: 25px;
-		margin-top: 25px;
 		word-break: break-word;
 	}
 
@@ -178,8 +178,6 @@
 	.uagb-post__cta {
 		border: none;
 		display: inline-block;
-		margin-top: 15px;
-		margin-bottom:15px;
 	}
 
 	.uagb-post__link {
@@ -226,7 +224,8 @@
 	}
 
 	.uagb-post__image img {
-
+		
+	
 		position: absolute;
 		width: auto;
 		height: auto;

@@ -98,7 +98,6 @@ class Blog extends React.Component {
 		const all_posts = displayPosts.map( ( post, i ) =>
 				<article key={ i } >
 					<div className="uagb-post__inner-wrap" >
-						<div className="uagb-post__text" >
 							{ renderPostLayout(
 								"uagb/post-carousel",
 								post,
@@ -106,7 +105,6 @@ class Blog extends React.Component {
 								this.props.attributes,
 								this.props.categoriesList
 							) }
-						</div>
 					</div>
 				</article>
 		)

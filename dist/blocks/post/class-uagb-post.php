@@ -1020,9 +1020,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 					<div class="uagb-post__inner-wrap">
 						<?php $this->render_complete_box_link( $attributes ); ?>
-						<div class="uagb-post__text">	
-							<?php $this->render_innerblocks( $attributes ); ?>
-						</div>
+						<?php $this->render_innerblocks( $attributes ); ?>
 					</div>
 					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				</article>
@@ -1224,9 +1222,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
-			</<?php echo esc_html( $attributes['titleTag'] ); ?>>
+			<div class='uagb-post__text'> 
+				<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+				</<?php echo esc_html( $attributes['titleTag'] ); ?>>
+			</div>
 			<?php
 			do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1244,10 +1244,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 			?>
-			<span class="uagb-post__author">
-				<span class="dashicons-admin-users dashicons"></span>
-				<?php the_author_posts_link(); ?>
-			</span>
+				<span class="uagb-post__author">
+					<span class="dashicons-admin-users dashicons"></span>
+					<?php the_author_posts_link(); ?>
+				</span>
 			<?php
 		}
 
@@ -1265,10 +1265,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 			global $post;
 			?>
-			<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
-				<span class="dashicons-calendar dashicons"></span>
-				<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
-			</time>
+				<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
+					<span class="dashicons-calendar dashicons"></span>
+					<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
+				</time>
 			<?php
 		}
 
@@ -1285,10 +1285,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 			?>
-			<span class="uagb-post__comment">
-				<span class="dashicons-admin-comments dashicons"></span>
-				<?php comments_number(); ?>
-			</span>
+				<span class="uagb-post__comment">
+					<span class="dashicons-admin-comments dashicons"></span>
+					<?php comments_number(); ?>
+				</span>
 			<?php
 		}
 
@@ -1337,6 +1337,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
 			$meta_sequence = apply_filters( "uagb_single_post_meta_sequence_{$attributes['post_type']}", $meta_sequence, get_the_ID(), $attributes );
 			?>
+			<div class='uagb-post__text'> 
 			<div class="uagb-post-grid-byline">
 				<?php
 				foreach ( $meta_sequence as $key => $sequence ) {
@@ -1362,6 +1363,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					}
 				}
 				?>
+			</div>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1395,9 +1397,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-				<div class="uagb-post__excerpt">
-					<?php echo wp_kses_post( $excerpt ); ?>
-				</div>
+				<div class='uagb-post__text'> 
+					<div class="uagb-post__excerpt">
+						<?php echo wp_kses_post( $excerpt ); ?>
+					</div>
+			</div>
 			<?php
 			do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1419,8 +1423,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$wrap_classes = ( true === $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
 			$link_classes = ( false === $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
 			?>
-			<div class="<?php echo esc_html( $wrap_classes ); ?>">
-				<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
+			<div class='uagb-post__text'> 
+				<div class="<?php echo esc_html( $wrap_classes ); ?>">
+					<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
+				</div>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );

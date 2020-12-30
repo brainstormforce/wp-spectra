@@ -132,7 +132,8 @@ function styling( props ) {
 			"background" : bgColor,
 		},
 		" .uagb-post__text": {
-			"padding" : generateCSSUnit( ( contentPadding ), "px" ),
+			"padding-left" : generateCSSUnit( ( contentPadding ), "px" ),
+			"padding-right" : generateCSSUnit( ( contentPadding ), "px" ),
 			"text-align" : align
 		},
 		" .uagb-post__text .uagb-post__title": {
@@ -449,7 +450,8 @@ function styling( props ) {
 	}
 
 	mobile_selectors[" .uagb-post__text"] = {
-		"padding" : ( contentPaddingMobile ) + "px",
+		"padding-left" : ( contentPaddingMobile ) + "px",
+		"padding-right" : ( contentPaddingMobile ) + "px",
 	}
 
 	var styling_css = ""

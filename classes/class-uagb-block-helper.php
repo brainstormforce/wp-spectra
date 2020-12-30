@@ -2959,8 +2959,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background' => $attr['bgColor'],
 				),
 				' .uagb-post__text'                        => array(
-					'padding'    => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
-					'text-align' => $attr['align'],
+					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
+					'padding-right' => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
+					'text-align'    => $attr['align'],
 				),
 				' .uagb-post__text .uagb-post__title'      => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),

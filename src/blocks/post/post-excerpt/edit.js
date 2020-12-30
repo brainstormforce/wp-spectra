@@ -24,19 +24,21 @@ export const PostExcerpt = (props) =>  {
 		if ( attributes.displayPostExcerpt && attributes.displayPostContentRadio == "excerpt" ) {
 
 			return (
-
-				<div className='uagb-post__excerpt'>
-					<div dangerouslySetInnerHTML={ { __html: excerpt } } />
+				<div className='uagb-post__text'> 
+					<div className='uagb-post__excerpt'>
+						<div dangerouslySetInnerHTML={ { __html: excerpt } } />
+					</div>
 				</div>
 			)
 
 		}else if(attributes.displayPostExcerpt && attributes.displayPostContentRadio == "full_post" ){
 			
 			return (
-
-				<div className='uagb-post__excerpt uagb-full_post'>
-						<div dangerouslySetInnerHTML={ { __html: post.content.raw.trim() } } />
-						
+				<div className='uagb-post__text'> 
+					<div className='uagb-post__excerpt uagb-full_post'>
+							<div dangerouslySetInnerHTML={ { __html: post.content.raw.trim() } } />
+							
+					</div>
 				</div>
 			)
 		

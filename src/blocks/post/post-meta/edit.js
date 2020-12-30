@@ -15,7 +15,7 @@ export const PostMeta = (props) =>  {
 		})
 
 		return (
-
+			<div className=' uagb-post__text '>
 			<div className='uagb-post-grid-byline'>
 				{ attributes.displayPostAuthor && undefined !== post.uagb_author_info &&
 					<span className='uagb-post__author'>
@@ -44,6 +44,7 @@ export const PostMeta = (props) =>  {
 						{ categoryObject.name }
 					</span>
 				}
+			</div>
 			</div>
 		)
 }

@@ -56,7 +56,7 @@ class Blog extends React.Component {
 					{ displayPosts.map( ( post = {}, i ) =>
 						<article key={ i } >
 							<div className="uagb-post__inner-wrap" >
-								<div className="uagb-post__text" >
+								
 									{ renderPostLayout(
 										"uagb/post-grid",
 										post,
@@ -64,7 +64,7 @@ class Blog extends React.Component {
 										this.props.attributes,
 										this.props.categoriesList
 									) }
-								</div>
+								
 							</div>
 						</article>
 					) }
