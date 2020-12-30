@@ -184,6 +184,7 @@ class UAGBColumns extends Component {
 			className, 
 			variations,
 			hasInnerBlocks,
+			deviceType,
 		 } = this.props
 
 		const {
@@ -1211,6 +1212,7 @@ class UAGBColumns extends Component {
 						"uagb-columns__wrap",
 						`uagb-columns__background-${backgroundType}`,
 						`uagb-columns__edit-${ active }`,
+						`uagb-editor-preview-mode-${deviceType.toLowerCase()}`,
 						`uagb-columns__stack-${stack}`,
 						`uagb-columns__valign-${vAlign}`,
 						`uagb-columns__gap-${columnGap}`,
@@ -1254,6 +1256,9 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -1264,6 +1269,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
+		deviceType:deviceType,
 	};
 } );
 
