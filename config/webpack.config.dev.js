@@ -20,6 +20,7 @@
  * @since 1.0.0
  */
 
+const path = require( "path" );
 const paths = require( "./paths" )
 const autoprefixer = require( "autoprefixer" )
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
@@ -56,8 +57,8 @@ fs.readdir( paths.pluginSrc + "/blocks", function(err, items) {
 		}, function( error, result ) {
 
 			let file_path = result.stats.entry
-			let new_path = file_path.replace( paths.pluginSrc + "/blocks/", "" );
-			new_path = new_path.replace( "/style.scss", "" );
+			let new_path = file_path.replace( paths.pluginSrc + path.sep + "blocks" + path.sep, "" );
+			new_path = new_path.replace( path.sep + "style.scss", "" );
 			
 			if ( !error && undefined !== new_path ) {
 				fs.writeFile('./assets/css/blocks/' + new_path + '.css', result.css, function(err) {
