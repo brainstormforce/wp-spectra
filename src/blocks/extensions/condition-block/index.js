@@ -23,7 +23,7 @@ const UserConditionOptions = ( props ) => {
     } = attributes;
  
     const user_role = uagb_blocks_info.user_role;
-    console.log( uagb_blocks_info );
+
     return(
         <Fragment>
             <SelectControl
@@ -44,13 +44,11 @@ const UserConditionOptions = ( props ) => {
                     <ToggleControl
                         label={ __('Hide From Logged In Users')}
                         checked={UAGloggedIn}
-                        help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                         onChange={(value) => setAttributes({ UAGloggedIn: !attributes.UAGloggedIn })}
                     />
                     <ToggleControl
                         label={ __('Hide From Logged Out Users' ) }
                         checked={UAGloggedOut}
-                        help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                         onChange={(value) => setAttributes({ UAGloggedOut: !attributes.UAGloggedOut })}
                     />
                 </Fragment>
@@ -60,19 +58,16 @@ const UserConditionOptions = ( props ) => {
                     <ToggleControl
                         label={ __('Hide on Desktop')}
                         checked={UAGHideDesktop}
-                        help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                         onChange={(value) => setAttributes({ UAGHideDesktop: !attributes.UAGHideDesktop })}
                     />
                     <ToggleControl
                         label={ __('Hide on Tablet' ) }
                         checked={UAGHideTab}
-                        help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                         onChange={(value) => setAttributes({ UAGHideTab: !attributes.UAGHideTab })}
                     />
                     <ToggleControl
                         label={ __('Hide on Mobile' ) }
                         checked={UAGHideMob}
-                        help={ __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg." ) }
                         onChange={(value) => setAttributes({ UAGHideMob: !attributes.UAGHideMob })}
                     />
                 </Fragment>

@@ -87,6 +87,10 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 									'restaurant-menu-child',
 								);
 
+								if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
+									continue;
+								}
+
 								if ( in_array( $addon, $child_blocks, true ) ) {
 									continue;
 								}

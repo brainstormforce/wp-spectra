@@ -511,9 +511,29 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$recent_posts = UAGB_Helper::get_query( $attributes, 'timeline' );
 			$block_id     = 'uagb-block-' . $attributes['block_id'];
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'DisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['DisplayConditions'] ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
+			$main_classes = array(
+				$block_id,
+				$desktop_class,
+				$tab_class,
+				$mob_class,
+			);
+
 			ob_start();
 			?>
-			<div class = "uagb-timeline__outer-wrap <?php echo esc_html( $block_id ); ?>" >
+			<div class = "uagb-timeline__outer-wrap <?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
 				<div  class = "<?php echo esc_html( $this->get_classes( $attributes ) ); ?>" >
 					<div class = "uagb-timeline-wrapper">
 						<div class = "uagb-timeline__main">

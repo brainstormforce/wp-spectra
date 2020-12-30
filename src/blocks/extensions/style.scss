@@ -1,0 +1,13 @@
+.uag-hide-desktop {
+ display: none;
+}
+@media (max-width: 976px) {
+    .uag-hide-tab {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .uag-hide-mob {
+        display: none;
+    }
+}

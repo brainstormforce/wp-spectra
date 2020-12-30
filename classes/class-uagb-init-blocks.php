@@ -80,15 +80,15 @@ class UAGB_Init_Blocks {
 					break;
 
 				case 'userRole':
-					$block_content = $this->user_role_visibility( $block_attributes );
+					$block_content = $this->user_role_visibility( $block_attributes, $block_content );
 					break;
 
 				case 'browser':
-					$block_content = $this->browser_visibility( $block_attributes );
+					$block_content = $this->browser_visibility( $block_attributes, $block_content );
 					break;
 
 				case 'os':
-					$block_content = $this->os_visibility( $block_attributes );
+					$block_content = $this->os_visibility( $block_attributes, $block_content );
 					break;
 
 				default:
