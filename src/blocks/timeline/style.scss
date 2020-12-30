@@ -66,6 +66,9 @@ a.uagb-timeline__link {
 .uagb-timeline__field:not(:last-child) {
     margin-bottom: 20px;
 }
+.uagb-timeline__field {
+    margin-bottom: 20px;
+}
 .uagb-timeline__center-block .uagb-timeline__widget.uagb-timeline__right,
 .uagb-timeline__right-block .uagb-timeline__widget {
     flex-direction: row-reverse;
@@ -1236,4 +1239,11 @@ a.uagb-timeline__link {
             }
         }
     }
+}
+
+.wp-block-uagb-content-timeline .uagb-timeline__left-block .uagb-timeline__date-new{
+    display:none;
+}
+.wp-block-uagb-content-timeline .uagb-timeline__right-block .uagb-timeline__date-new{
+    display:none;
 }
