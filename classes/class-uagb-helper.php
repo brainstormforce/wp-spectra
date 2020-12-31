@@ -1116,24 +1116,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'   => $t_obj->term_id,
-								'name' => $t_obj->name,
+								'id'     => $t_obj->term_id,
+								'name'   => $t_obj->name,
 								'parent' => $t_obj->parent,
-							);	
-							
+							);
+
 						}
 						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
 					}
-					// print_r($terms);
-					// echo '<br><br>';
-					// die();
 				}
-				
-				
+
 				$return_array[ $post_type ]['taxonomy'] = $data;
-				
+
 			}
-			
+
 			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
 		}
 

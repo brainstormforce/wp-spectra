@@ -1049,8 +1049,24 @@ export default withSelect( ( select, props ) => {
 	if ( excludeCurrentPost ) {		
 		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
 	}
+	var category = [];
+	var temp = parseInt(categories)
+	if( '' !== temp){
+		CheckCategories(categoriesList);
+		category.push(temp);
+	}
+	function CheckCategories(catelist){
+		var catlenght = catelist.length;
+		for(var i=0;i<catlenght;i++){
+			if(catelist[i].parent == temp){
+				category.push(catelist[i].id);
+				temp = catelist[i].id;
+				CheckCategories(catelist)
+			}
+		}
+	}
 
-	latestPostsQuery[rest_base] = categories
+	latestPostsQuery[rest_base] = ('' == categories) ? categories :category;
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
