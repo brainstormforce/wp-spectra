@@ -494,6 +494,11 @@ class UAGB_Init_Blocks {
 
 		$role_lists = $wp_roles->get_names();
 
+		$field_options[0] = array(
+			'value' => '',
+			'label' => __( 'None', 'ultimate-addons-for-gutenberg' ),
+		);
+
 		foreach ( $role_lists as $key => $role_list ) {
 			$field_options[] = array(
 				'value' => $key,

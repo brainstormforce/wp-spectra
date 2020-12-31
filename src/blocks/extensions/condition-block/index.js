@@ -36,7 +36,7 @@ const UserConditionOptions = ( props ) => {
                     { value: "responsiveVisibility", label: __( "Responsive Visibility" ) },
                     { value: "userRole", label: __( "User Role" ) },
                     { value: "browser", label: __( "Browser" ) },
-                    { value: "os", label: __( "Operting System" ) },
+                    { value: "os", label: __( "Operating System" ) },
                 ]}
 			/> 
             { DisplayConditions == "userstate" && 
@@ -75,11 +75,12 @@ const UserConditionOptions = ( props ) => {
             { DisplayConditions == "os" && 
                 <Fragment>
                     <SelectControl
-                        label={ __( "Operting System" ) }
+                        label={ __( "Hide on Operating System" ) }
                         value={ UAGSystem }
                         onChange={ ( value ) => setAttributes( { UAGSystem: value } ) }
                         options={ [
-                            { value: 'iphone', label: __( "iPhone" ) },
+                            { value: '', label: __( "None" ) },
+                            { value: 'iphone', label: __( "IOS" ) },
                             { value: "android", label: __( "Android" ) },
                             { value: "windows", label: __( "Windows" ) },
                             { value: "open_bsd", label: __( "OpenBSD" ) },
@@ -93,10 +94,11 @@ const UserConditionOptions = ( props ) => {
             { DisplayConditions == "browser" && 
                 <Fragment>
                     <SelectControl
-                        label={ __( "Browser" ) }
+                        label={ __( "Hide on Browser" ) }
                         value={ UAGBrowser }
                         onChange={ ( value ) => setAttributes( { UAGBrowser: value } ) }
                         options={ [
+                            { value: '', label: __( "None" ) },
                             { value: 'ie', label: __( "Internet Explorer" ) },
                             { value: "firefox", label: __( "Mozilla Firefox" ) },
                             { value: "chrome", label: __( "Google Chrome" ) },
@@ -111,7 +113,7 @@ const UserConditionOptions = ( props ) => {
             { DisplayConditions == "userRole" && 
                 <Fragment>
                     <SelectControl
-                        label={ __( "User Role" ) }
+                        label={ __( "Hide for User Role" ) }
                         value={ UAGUserRole }
                         onChange={ ( value ) => setAttributes( { UAGUserRole: value } ) }
                         options={ uagb_blocks_info.user_role }
