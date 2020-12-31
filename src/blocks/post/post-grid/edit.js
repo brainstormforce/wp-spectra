@@ -13,7 +13,6 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
-import { array, arrayOf } from "prop-types"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
