@@ -1060,7 +1060,8 @@ class UAGBFaqEdit extends Component {
 					`uagb-faq-inactive-other-${ this.props.attributes.inactiveOtherItems }`,
 					equalHeightClass
 				) }
-				data-faqtoggle = { this.props.attributes.enableToggle }
+				data-faqtoggle = { this.props.attributes.enableToggle } 
+				role="tablist"
 				>
                     <InnerBlocks
                         template={ getFaqChildTemplate( 2, faq ) }
