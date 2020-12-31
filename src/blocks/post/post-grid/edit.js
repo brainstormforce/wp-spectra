@@ -13,6 +13,7 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
+import { array, arrayOf } from "prop-types"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
@@ -1149,24 +1150,19 @@ export default withSelect( ( select, props ) => {
 		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
 	}
 
-	var category = [];
-	if( undefined !== categories || null !== categories || '' !== categories){		
-		var temp = parseInt(categories);
-		category.push(temp);
-		CheckCategories(categoriesList);
-	
-	}
-	function CheckCategories(catlist){
-		var catlenght = catlist.length;
-		for(var i=0;i<catlenght;i++){
-			if(catlist[i].parent == temp){
-				category.push(catlist[i].id);
-				temp = catlist[i].id;
-				CheckCategories(catlist)
-			}
+	var category = [];	
+	var temp = parseInt(categories);
+	category.push(temp);
+	var catlenght = categoriesList.length;
+	for(var i=0;i<catlenght;i++){
+		if(categoriesList[i].id == temp){
+			if(categoriesList[i].child.length !== 0){
+				categoriesList[i].child.forEach(element => {
+					category.push(element);
+				});
+			}		
 		}
 	}
-
 	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
