@@ -1150,23 +1150,24 @@ export default withSelect( ( select, props ) => {
 	}
 
 	var category = [];
-	var temp = parseInt(categories)
-	if( '' !== temp){
-		CheckCategories(categoriesList);
+	if( undefined !== categories || null !== categories || '' !== categories){		
+		var temp = parseInt(categories);
 		category.push(temp);
+		CheckCategories(categoriesList);
+	
 	}
-	function CheckCategories(catelist){
-		var catlenght = catelist.length;
+	function CheckCategories(catlist){
+		var catlenght = catlist.length;
 		for(var i=0;i<catlenght;i++){
-			if(catelist[i].parent == temp){
-				category.push(catelist[i].id);
-				temp = catelist[i].id;
-				CheckCategories(catelist)
+			if(catlist[i].parent == temp){
+				category.push(catlist[i].id);
+				temp = catlist[i].id;
+				CheckCategories(catlist)
 			}
 		}
 	}
 
-	latestPostsQuery[rest_base] = ('' == categories) ? categories :category;
+	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
