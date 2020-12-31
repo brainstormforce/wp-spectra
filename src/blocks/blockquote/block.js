@@ -61,7 +61,26 @@ registerBlockType( "uagb/blockquote", {
 						align: attributes.align
 					})
 				}
-			}
+			},
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: (attributes) => {
+					return createBlock('uagb/blockquote', {
+						descriptionText: attributes.content,
+						align:attributes.align,
+					})
+				}
+			},
+			{
+				type: 'block',
+				blocks: ['core/list'],
+				transform: (attributes) => {
+					return createBlock('uagb/blockquote', {
+						descriptionText: attributes.values,
+					})
+				}
+			},
 		],
 		to: [
 			{
@@ -72,6 +91,26 @@ registerBlockType( "uagb/blockquote", {
 						value : attributes.descriptionText,
 						citation: attributes.author,
 						align: attributes.align
+					})
+				}
+			},
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: (attributes) => {
+					return createBlock('core/heading', {
+						content: attributes.descriptionText,
+						align:attributes.align
+					})
+				}
+			},
+			{
+				type: 'block',
+				blocks: ['core/list'],
+				transform: (attributes) => {
+					return createBlock('core/list', {
+						nodeName: 'UL',
+						values: attributes.descriptionText,
 					})
 				}
 			}
