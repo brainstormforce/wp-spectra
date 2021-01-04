@@ -692,6 +692,12 @@ class UAGBRestaurantMenu extends Component {
 															if( null !== element && undefined !== element ) {
 																element.innerHTML = RestMenuStyle( this.props )
 															}
+
+															const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+															getChildBlocks.forEach((pricelistChild, key) => {
+																pricelistChild.attributes.imagePosition = this.props.attributes.imagePosition;
+															});
 														}
 														
 														componentDidMount() {
