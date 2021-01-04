@@ -314,7 +314,7 @@ class UAGBRestaurantMenu extends Component {
 						max={ 50 }
 						allowReset
 						/>
-						{  cnt > 0 && <Fragment>
+						<Fragment>
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( "Image Padding (px)" ) }</h2>
 							<RangeControl
@@ -336,7 +336,6 @@ class UAGBRestaurantMenu extends Component {
 							allowReset
 							/>
 							</Fragment>
-						}
 						
 						</PanelBody>
 						)
