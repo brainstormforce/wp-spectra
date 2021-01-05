@@ -323,7 +323,14 @@ const attributes = {
 		type: "string",
 		default: "",
 	},	
-
+	reCaptchaSiteKeyV3 : {
+		type: "string",
+		default: "",
+	},
+	reCaptchaSecretKeyV3 : {
+		type: "string",
+		default: "",
+	},
 	//message attributes
 	successMessageTextColor : {
 		type: "string",

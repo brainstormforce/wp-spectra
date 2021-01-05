@@ -2430,6 +2430,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'reCaptchaType'              => 'v2',
 							'reCaptchaSiteKeyV2'         => '',
 							'reCaptchaSecretKeyV2'       => '',
+							'reCaptchaSiteKeyV3'         => '',
+							'reCaptchaSecretKeyV3'       => '',
 						),
 					),
 					'uagb/forms-name'         => array(

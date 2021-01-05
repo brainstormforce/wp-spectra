@@ -200,6 +200,8 @@ class UAGBFormsEdit extends Component {
 			reCaptchaType,			
 			reCaptchaSecretKeyV2,
 			reCaptchaSiteKeyV2,
+			reCaptchaSecretKeyV3,
+			reCaptchaSiteKeyV3,
 			successMessageTextColor,
 			successMessageBGColor,
 			successMessageBorderColor,
@@ -823,7 +825,18 @@ class UAGBFormsEdit extends Component {
 						checked={ reCaptchaEnable }
 						onChange={ ( value ) => setAttributes( { reCaptchaEnable: ! reCaptchaEnable } ) }
 					/>
-					{ reCaptchaEnable && (
+					{ reCaptchaEnable &&
+						<SelectControl
+							label={ __( "Select Version" ) }
+							value={ reCaptchaType }
+							onChange={ ( value ) => setAttributes( { reCaptchaType: value } ) }
+							options={ [
+								{ value: "v2", label: __( "V2" ) },
+								{ value: "v3", label: __( "V3" ) },
+							] }
+						/>
+					}
+					{ reCaptchaEnable && "v2" === reCaptchaType && (
 						<Fragment>
 							<TextControl
 								label="Site Key"
@@ -843,25 +856,61 @@ class UAGBFormsEdit extends Component {
 						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
 					</Fragment>
 					)}
-					
+					{ reCaptchaEnable && "v3" === reCaptchaType && (
+						<Fragment>
+							<TextControl
+								label="Site Key"
+								value={ reCaptchaSiteKeyV3 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSiteKeyV3: value } ) }
+								placeholder={"Enter v3 Keys"}
+
+							/>
+							<TextControl
+								label="Secret Key"
+								value={ reCaptchaSecretKeyV3 }
+								onChange={ ( value ) => setAttributes( { reCaptchaSecretKeyV3: value } ) }
+								placeholder={"Enter v3 Keys"}
+
+							/>		
+						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
+						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
+					</Fragment>
+					)}
 				</PanelBody>
 			)
 		}
 
-		const renderButtonHtml = () => {			
-			return (
-				<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
-					<RichText
-						tagName="div"
-						placeholder={ __( "Submit" ) }
-						value={ submitButtonText }
-						onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
-						className='uagb-forms-main-submit-button-text'
-						multiline={ false }
-						allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-					/>
-				</button>
-			);
+		const renderButtonHtml = () => {
+			if(reCaptchaEnable && "v3" === reCaptchaType && '' !== reCaptchaSiteKeyV3 && '' !== reCaptchaSecretKeyV3 ){
+				return (
+					<button onClick={ this.onSubmitClick } className="g-recaptcha uagb-forms-main-submit-button"
+        				data-sitekey={ reCaptchaSiteKeyV3 } >
+						<RichText
+							tagName="div"
+							placeholder={ __( "Submit" ) }
+							value={ submitButtonText }
+							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
+							className='uagb-forms-main-submit-button-text'
+							multiline={ false }
+							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+						/>
+					</button>
+				);
+			}else{			
+				return (
+					<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
+						<RichText
+							tagName="div"
+							placeholder={ __( "Submit" ) }
+							value={ submitButtonText }
+							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
+							className='uagb-forms-main-submit-button-text'
+							multiline={ false }
+							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+						/>
+					</button>
+				);
+			}
 		}
 
 		if ( ! hasInnerBlocks ) {

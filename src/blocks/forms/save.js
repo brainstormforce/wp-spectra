@@ -26,21 +26,36 @@ export default function save( props ) {
 		reCaptchaType,			
 		reCaptchaSiteKeyV2,
 		reCaptchaSecretKeyV2,	
+		reCaptchaSiteKeyV3,
+		reCaptchaSecretKeyV3,	
 	} = attributes
 
-
-
 	const renderButtonHtml = () => {
-		return (
-			<button className="uagb-forms-main-submit-button" >
-						<RichText.Content
-							tagName='div'
-							value={ submitButtonText }
-							className='uagb-forms-main-submit-button-text'
-						/>
-			</button>
-		);
-	}
+		if(reCaptchaEnable && 'v3' === reCaptchaType){
+			return (
+				<button className="g-recaptcha uagb-forms-main-submit-button jhgjhg" 	data-sitekey={ reCaptchaSiteKeyV3 } >
+							<RichText.Content
+								tagName='div'
+								value={ submitButtonText }
+								className='uagb-forms-main-submit-button-text'
+							/>
+				</button>
+			);
+		}
+		else{
+				return (
+					<button className="uagb-forms-main-submit-button kjhkj" >
+								<RichText.Content
+									tagName='div'
+									value={ submitButtonText }
+									className='uagb-forms-main-submit-button-text'
+								/>
+					</button>
+				);
+			}
+		}
+
+
 	return (
 		<div className={ classnames(
 			"uagb-forms__outer-wrap",
