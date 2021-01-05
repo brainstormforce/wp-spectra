@@ -240,6 +240,8 @@ class UAGB_Init_Blocks {
 			true // Enqueue the script in the footer.
 		);
 
+		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
+
 		// Styles.
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.

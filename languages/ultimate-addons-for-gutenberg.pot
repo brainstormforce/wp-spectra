@@ -1,43 +1,48 @@
-# Copyright (C) 2020 Brainstorm Force
-# This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
+# Copyright (C) 2021 Brainstorm Force
+# This file is distributed under the same license as the Ultimate Addons for Gutenberg plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.18.2\n"
-"Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-12-08 10:29:37+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.19.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-05T11:33:45+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0-alpha-59d879d\n"
+"X-Domain: ultimate-addons-for-gutenberg\n"
 
-#: admin/bsf-analytics/class-bsf-analytics.php:216
+#. Plugin Name of the plugin
+#: admin/uagb-general.php:33
+msgid "Ultimate Addons for Gutenberg"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.brainstormforce.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
+msgstr ""
+
+#. Author of the plugin
+msgid "Brainstorm Force"
+msgstr ""
+
 #. translators: %s product name
-msgid ""
-"Want to help make <strong>%1s</strong> even more awesome? Allow us to "
-"collect non-sensitive diagnostic data and usage information. "
+#: admin/bsf-analytics/class-bsf-analytics.php:216
+msgid "Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. "
 msgstr ""
 
 #: admin/bsf-analytics/class-bsf-analytics.php:219
 msgid "This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:243
 #. translators: %s usage doc link
+#: admin/bsf-analytics/class-bsf-analytics.php:243
 msgid " Know More."
 msgstr ""
 
@@ -53,8 +58,8 @@ msgstr ""
 msgid "Usage Tracking"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:408
 #. translators: %s Product title
+#: admin/bsf-analytics/class-bsf-analytics.php:408
 msgid "Allow %s products to track non-sensitive usage tracking data."
 msgstr ""
 
@@ -78,19 +83,12 @@ msgstr ""
 msgid "Submit a Ticket »"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Ultimate Addons for Gutenberg"
-msgstr ""
-
 #: admin/uagb-general.php:39
 msgid "Welcome to the Ultimate Addons for Gutenberg!"
 msgstr ""
 
 #: admin/uagb-general.php:41
-msgid ""
-"Thank you for choosing Ultimate Addons for Gutenberg - the most "
-"comprehensive library of advanced and creative blocks to build a stunning "
-"website and blog faster than ever before!"
+msgid "Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of advanced and creative blocks to build a stunning website and blog faster than ever before!"
 msgstr ""
 
 #: admin/uagb-general.php:42
@@ -102,11 +100,7 @@ msgid "Ready-to-use Full Demo Websites - "
 msgstr ""
 
 #: admin/uagb-general.php:43
-msgid ""
-"Get professionally designed 20+ pre-built FREE starter sites built using "
-"Gutenberg, Ultimate Addons for Gutenberg and the Astra theme. These can be "
-"imported in just a few clicks. Tweak them easily and build awesome websites "
-"in minutes!"
+msgid "Get professionally designed 20+ pre-built FREE starter sites built using Gutenberg, Ultimate Addons for Gutenberg and the Astra theme. These can be imported in just a few clicks. Tweak them easily and build awesome websites in minutes!"
 msgstr ""
 
 #: admin/uagb-general.php:44
@@ -118,12 +112,7 @@ msgid "Ever-growing Library of Gutenberg Blocks"
 msgstr ""
 
 #: admin/uagb-general.php:55
-msgid ""
-"The easy-to-use and extremely powerful blocks of the Ultimate Addons for "
-"Gutenberg (UAG) are now available within your Gutenberg Editor. Search for "
-"\"UAG\" in the block inserter and see all the Ultimate Addons for Gutenberg "
-"blocks listed below. Simply click on the block you wish to add on your page "
-"or post."
+msgid "The easy-to-use and extremely powerful blocks of the Ultimate Addons for Gutenberg (UAG) are now available within your Gutenberg Editor. Search for \"UAG\" in the block inserter and see all the Ultimate Addons for Gutenberg blocks listed below. Simply click on the block you wish to add on your page or post."
 msgstr ""
 
 #: admin/uagb-general.php:56
@@ -135,12 +124,11 @@ msgid "See Demos »"
 msgstr ""
 
 #: admin/uagb-general.php:58
-msgid ""
-"Check out the detailed knowledge base articles that will help you "
-"understand the working of each block."
+msgid "Check out the detailed knowledge base articles that will help you understand the working of each block."
 msgstr ""
 
-#: admin/uagb-general.php:59 admin/uagb-general.php:222
+#: admin/uagb-general.php:59
+#: admin/uagb-general.php:224
 msgid "Visit Knowledge Base »"
 msgstr ""
 
@@ -160,120 +148,108 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:99 classes/class-uagb-admin.php:263
+#: admin/uagb-general.php:101
+#: classes/class-uagb-admin.php:263
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:106 classes/class-uagb-admin.php:264
+#: admin/uagb-general.php:108
+#: classes/class-uagb-admin.php:264
 msgid "Deactivate"
 msgstr ""
 
-#: admin/uagb-general.php:143
+#: admin/uagb-general.php:145
 msgid "Free Theme for Gutenberg"
 msgstr ""
 
-#: admin/uagb-general.php:147
-msgid ""
-"Join over 1+ million active users empowering their websites with Astra! "
-"From beginners to industry leaders, everyone loves the Astra theme."
+#: admin/uagb-general.php:149
+msgid "Join over 1+ million active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme."
 msgstr ""
 
-#: admin/uagb-general.php:148
+#: admin/uagb-general.php:150
 msgid "Why Astra Theme?"
 msgstr ""
 
-#: admin/uagb-general.php:149
+#: admin/uagb-general.php:151
 msgid "Faster Performance - "
 msgstr ""
 
-#: admin/uagb-general.php:149
-msgid ""
-"Built with speed and performance in mind, Astra follows the best coding "
-"standards and lets you build faster loading and better performing websites."
+#: admin/uagb-general.php:151
+msgid "Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites."
 msgstr ""
 
-#: admin/uagb-general.php:150
+#: admin/uagb-general.php:152
 msgid "Easy Customization - "
 msgstr ""
 
-#: admin/uagb-general.php:150
-msgid ""
-"With all the settings managed through the customizer, Astra keeps it simple "
-"and gives you lots of options to customize everything with a few clicks."
+#: admin/uagb-general.php:152
+msgid "With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks."
 msgstr ""
 
-#: admin/uagb-general.php:151
+#: admin/uagb-general.php:153
 msgid "Pixel Perfect Design - "
 msgstr ""
 
-#: admin/uagb-general.php:151
-msgid ""
-"Astra reduces your design time by giving you pixel-perfect FREE "
-"ready-to-use websites demos within a huge library of starter sites."
-msgstr ""
-
-#: admin/uagb-general.php:156
-msgid "Install Astra Now!"
+#: admin/uagb-general.php:153
+msgid "Astra reduces your design time by giving you pixel-perfect FREE ready-to-use websites demos within a huge library of starter sites."
 msgstr ""
 
 #: admin/uagb-general.php:158
+msgid "Install Astra Now!"
+msgstr ""
+
+#: admin/uagb-general.php:160
 msgid "Activate Astra Now!"
 msgstr ""
 
-#: admin/uagb-general.php:169
+#: admin/uagb-general.php:171
 msgid "CSS File Generation"
 msgstr ""
 
-#: admin/uagb-general.php:175
-msgid ""
-"Enabling this option will generate CSS files for Ultimate Addons for "
-"Gutenberg block styling instead of loading the CSS inline on page."
+#: admin/uagb-general.php:177
+msgid "Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page."
 msgstr ""
 
-#: admin/uagb-general.php:184
 #. translators: %1$s: a tag open.
+#: admin/uagb-general.php:186
 msgid "Please read %1$s this article %2$s to know more."
 msgstr ""
 
-#: admin/uagb-general.php:195
+#: admin/uagb-general.php:197
 msgid "Enable File Generation"
 msgstr ""
 
-#: admin/uagb-general.php:199
+#: admin/uagb-general.php:201
 msgid "Inadequate File Permission"
 msgstr ""
 
-#: admin/uagb-general.php:204
+#: admin/uagb-general.php:206
 msgid "Disable File Generation"
 msgstr ""
 
-#: admin/uagb-general.php:216
+#: admin/uagb-general.php:218
 msgid "Knowledge Base"
 msgstr ""
 
-#: admin/uagb-general.php:220
+#: admin/uagb-general.php:222
 msgid "Not sure how something works? Take a peek at the knowledge base and learn."
 msgstr ""
 
-#: admin/uagb-general.php:228
+#: admin/uagb-general.php:230
 msgid "Five Star Support"
 msgstr ""
 
-#: admin/uagb-general.php:235
 #. translators: %1$s: uagb name.
+#: admin/uagb-general.php:237
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
 #: classes/class-uagb-admin.php:129
-msgid ""
-"Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on "
-"your website!"
+msgid "Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on your website!"
 msgstr ""
 
 #: classes/class-uagb-admin.php:130
-msgid ""
-"Would you please mind sharing your views and give it a 5 star rating on the "
-"WordPress repository?"
+msgid "Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?"
 msgstr ""
 
 #: classes/class-uagb-admin.php:132
@@ -288,12 +264,9 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:154
 #. translators: %s: html tags
-msgid ""
-"Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can "
-"change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin "
-"is currently NOT RUNNING."
+#: classes/class-uagb-admin.php:154
+msgid "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
 #: classes/class-uagb-admin.php:265
@@ -333,9 +306,7 @@ msgid "Advanced Heading"
 msgstr ""
 
 #: classes/class-uagb-config.php:47
-msgid ""
-"This block lets you add a combination of a heading and a sub-heading with a "
-"separator in between."
+msgid "This block lets you add a combination of a heading and a sub-heading with a separator in between."
 msgstr ""
 
 #: classes/class-uagb-config.php:89
@@ -343,9 +314,7 @@ msgid "Advanced Columns"
 msgstr ""
 
 #: classes/class-uagb-config.php:90
-msgid ""
-"This block gives you advanced options to insert a number of columns within "
-"a single row."
+msgid "This block gives you advanced options to insert a number of columns within a single row."
 msgstr ""
 
 #: classes/class-uagb-config.php:176
@@ -369,9 +338,7 @@ msgid "Call To Action"
 msgstr ""
 
 #: classes/class-uagb-config.php:347
-msgid ""
-"This block allows you to place an CTA along with a heading and description "
-"within a single block."
+msgid "This block allows you to place an CTA along with a heading and description within a single block."
 msgstr ""
 
 #: classes/class-uagb-config.php:418
@@ -379,9 +346,7 @@ msgid "Contact Form 7 Styler"
 msgstr ""
 
 #: classes/class-uagb-config.php:419
-msgid ""
-"This block allows you to add and style your Contact Form 7 forms right in "
-"the Gutenberg editor."
+msgid "This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor."
 msgstr ""
 
 #: classes/class-uagb-config.php:554
@@ -389,248 +354,235 @@ msgid "Content Timeline"
 msgstr ""
 
 #: classes/class-uagb-config.php:555
+#: classes/class-uagb-config.php:627
 msgid "The Timeline block lets you create beautiful timelines on your website."
 msgstr ""
 
 #: classes/class-uagb-config.php:626
+msgid "Content Timeline Child"
+msgstr ""
+
+#: classes/class-uagb-config.php:652
 msgid "FAQ - Schema"
 msgstr ""
 
-#: classes/class-uagb-config.php:627
-msgid ""
-"This block helps you add FAQ or Accordion with automatically adding FAQ "
-"Schema to your page."
+#: classes/class-uagb-config.php:653
+msgid "This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page."
 msgstr ""
 
-#: classes/class-uagb-config.php:720
+#: classes/class-uagb-config.php:746
 msgid "FAQ - Schema Child"
 msgstr ""
 
-#: classes/class-uagb-config.php:721
+#: classes/class-uagb-config.php:747
 msgid "This block helps you add single FAQ."
 msgstr ""
 
-#: classes/class-uagb-config.php:735
+#: classes/class-uagb-config.php:761
 msgid "Gravity Form Styler"
 msgstr ""
 
-#: classes/class-uagb-config.php:736
-msgid ""
-"This block allows you to add and style your Gravity Forms right in the "
-"Gutenberg editor."
+#: classes/class-uagb-config.php:762
+msgid "This block allows you to add and style your Gravity Forms right in the Gutenberg editor."
 msgstr ""
 
-#: classes/class-uagb-config.php:888
+#: classes/class-uagb-config.php:914
 msgid "Google Map"
 msgstr ""
 
-#: classes/class-uagb-config.php:889
+#: classes/class-uagb-config.php:915
 msgid "This block allows you to place a Google Map Location."
 msgstr ""
 
-#: classes/class-uagb-config.php:899
+#: classes/class-uagb-config.php:925
 msgid "How-to Schema"
 msgstr ""
 
-#: classes/class-uagb-config.php:900
-msgid ""
-"This block allows you to design attractive How-to pages or articles with "
-"automatically adding How-to Schema to your page."
+#: classes/class-uagb-config.php:926
+msgid "This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page."
 msgstr ""
 
-#: classes/class-uagb-config.php:972
+#: classes/class-uagb-config.php:998
 msgid "Icon List"
 msgstr ""
 
-#: classes/class-uagb-config.php:973 classes/class-uagb-config.php:1026
-#: classes/class-uagb-config.php:2017
+#: classes/class-uagb-config.php:999
+#: classes/class-uagb-config.php:1052
+#: classes/class-uagb-config.php:2070
 msgid "This block allows you to place an image or icon in a list format."
 msgstr ""
 
-#: classes/class-uagb-config.php:982
+#: classes/class-uagb-config.php:1008
 msgid "Label #1"
 msgstr ""
 
-#: classes/class-uagb-config.php:1025
+#: classes/class-uagb-config.php:1051
 msgid "Icon"
 msgstr ""
 
-#: classes/class-uagb-config.php:1047
+#: classes/class-uagb-config.php:1073
 msgid "Info Box"
 msgstr ""
 
-#: classes/class-uagb-config.php:1048
-msgid ""
-"This block allows you to place an image or icon along with a heading and "
-"description within a single block."
+#: classes/class-uagb-config.php:1074
+msgid "This block allows you to place an image or icon along with a heading and description within a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:1144
+#: classes/class-uagb-config.php:1170
 msgid "Inline Notice"
 msgstr ""
 
-#: classes/class-uagb-config.php:1145
+#: classes/class-uagb-config.php:1171
 msgid "This block helps you add an inline notice."
 msgstr ""
 
-#: classes/class-uagb-config.php:1197
+#: classes/class-uagb-config.php:1223
 msgid "Marketing Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:1198
+#: classes/class-uagb-config.php:1224
 msgid "This block allows you to place a Marketing Button with small description."
 msgstr ""
 
-#: classes/class-uagb-config.php:1272
+#: classes/class-uagb-config.php:1298
 msgid "Multi Buttons"
 msgstr ""
 
-#: classes/class-uagb-config.php:1273
+#: classes/class-uagb-config.php:1299
 msgid "This block allows you to add multiple buttons with a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:1292
+#: classes/class-uagb-config.php:1318
 msgid "Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:1293
+#: classes/class-uagb-config.php:1319
 msgid "This block allows you to style button."
 msgstr ""
 
-#: classes/class-uagb-config.php:1328
+#: classes/class-uagb-config.php:1354
 msgid "Post Carousel"
 msgstr ""
 
-#: classes/class-uagb-config.php:1329
-msgid ""
-"This block fetches the blog posts you may have on your website and displays "
-"them in a carousel layout."
+#: classes/class-uagb-config.php:1355
+msgid "This block fetches the blog posts you may have on your website and displays them in a carousel layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1409 classes/class-uagb-config.php:1493
-#: classes/class-uagb-config.php:1595 dist/blocks/post/class-uagb-post.php:403
-#: dist/blocks/post/class-uagb-post.php:1354
+#: classes/class-uagb-config.php:1435
+#: classes/class-uagb-config.php:1519
+#: classes/class-uagb-config.php:1621
 #: dist/blocks/post-timeline/class-uagb-post-timeline.php:447
+#: dist/blocks/post/class-uagb-post.php:403
+#: dist/blocks/post/class-uagb-post.php:1354
 msgid "Read More"
 msgstr ""
 
-#: classes/class-uagb-config.php:1419
+#: classes/class-uagb-config.php:1445
 msgid "Post Grid"
 msgstr ""
 
-#: classes/class-uagb-config.php:1420
-msgid ""
-"This block fetches the blog posts you may have on your website and displays "
-"them in a grid layout."
+#: classes/class-uagb-config.php:1446
+msgid "This block fetches the blog posts you may have on your website and displays them in a grid layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1519
+#: classes/class-uagb-config.php:1545
 msgid "Post Masonry"
 msgstr ""
 
-#: classes/class-uagb-config.php:1520
-msgid ""
-"This block fetches the blog posts you may have on your website and displays "
-"them in a masonry layout."
+#: classes/class-uagb-config.php:1546
+msgid "This block fetches the blog posts you may have on your website and displays them in a masonry layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1627
+#: classes/class-uagb-config.php:1653
 msgid "Post Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:1628
-msgid ""
-"The Timeline block lets you create beautiful timelines of Posts on your "
-"website."
+#: classes/class-uagb-config.php:1654
+msgid "The Timeline block lets you create beautiful timelines of Posts on your website."
 msgstr ""
 
-#: classes/class-uagb-config.php:1728
+#: classes/class-uagb-config.php:1754
 msgid "Price List"
 msgstr ""
 
-#: classes/class-uagb-config.php:1729
+#: classes/class-uagb-config.php:1755
+#: classes/class-uagb-config.php:1922
 msgid "This block allows you to add attractive Price List."
 msgstr ""
 
-#: classes/class-uagb-config.php:1801
-msgid "Ratings"
+#: classes/class-uagb-config.php:1827
+msgid "Review Schema"
 msgstr ""
 
-#: classes/class-uagb-config.php:1802
-msgid "This block helps you add an Rating block."
+#: classes/class-uagb-config.php:1828
+msgid "This block helps you to add a review for various items with schema support."
 msgstr ""
 
-#: classes/class-uagb-config.php:1898
+#: classes/class-uagb-config.php:1921
+msgid "Price List-Child"
+msgstr ""
+
+#: classes/class-uagb-config.php:1951
 msgid "Section"
 msgstr ""
 
-#: classes/class-uagb-config.php:1899
-msgid ""
-"This block is an outer wrap section that allows you to add other blocks "
-"within it."
-msgstr ""
-
-#: classes/class-uagb-config.php:1980
-msgid "Social Share"
-msgstr ""
-
-#: classes/class-uagb-config.php:1981
-msgid ""
-"This block allows you to let users share your content across various social "
-"networking sites."
-msgstr ""
-
-#: classes/class-uagb-config.php:2016
-msgid "Social Share Child"
+#: classes/class-uagb-config.php:1952
+msgid "This block is an outer wrap section that allows you to add other blocks within it."
 msgstr ""
 
 #: classes/class-uagb-config.php:2033
-msgid "Table of Contents"
+msgid "Social Share"
 msgstr ""
 
 #: classes/class-uagb-config.php:2034
+msgid "This block allows you to let users share your content across various social networking sites."
+msgstr ""
+
+#: classes/class-uagb-config.php:2069
+msgid "Social Share Child"
+msgstr ""
+
+#: classes/class-uagb-config.php:2086
+msgid "Table of Contents"
+msgstr ""
+
+#: classes/class-uagb-config.php:2087
 msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
-#: classes/class-uagb-config.php:2132
+#: classes/class-uagb-config.php:2185
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:2133
-msgid ""
-"This block allows you to display your team. Add their picture, name, what "
-"they do and links to their social profiles."
+#: classes/class-uagb-config.php:2186
+msgid "This block allows you to display your team. Add their picture, name, what they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:2204
+#: classes/class-uagb-config.php:2257
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:2205
-msgid ""
-"This block helps your display some amazing client feedback within your "
-"website."
+#: classes/class-uagb-config.php:2258
+msgid "This block helps your display some amazing client feedback within your website."
 msgstr ""
 
-#: classes/class-uagb-config.php:2289
+#: classes/class-uagb-config.php:2342
 msgid "WP - Search"
 msgstr ""
 
-#: classes/class-uagb-config.php:2290
+#: classes/class-uagb-config.php:2343
 msgid "This block helps you add a Search field."
 msgstr ""
 
-#: classes/class-uagb-config.php:2357
+#: classes/class-uagb-config.php:2410
 msgid "Taxonomy List"
 msgstr ""
 
-#: classes/class-uagb-config.php:2358
-msgid ""
-"This block helps you to display content categorization for various post "
-"types"
+#: classes/class-uagb-config.php:2411
+msgid "This block helps you to display content categorization for various post types"
 msgstr ""
 
-#: classes/class-uagb-config.php:2438
+#: classes/class-uagb-config.php:2491
 #: dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php:113
 msgid "Taxonomy Not Available."
 msgstr ""
@@ -651,24 +603,22 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:331
-#: classes/class-uagb-init-blocks.php:364
+#: classes/class-uagb-init-blocks.php:333
+#: classes/class-uagb-init-blocks.php:366
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:345
+#: classes/class-uagb-init-blocks.php:347
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:378
+#: classes/class-uagb-init-blocks.php:380
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-loader.php:168
 #. translators: %s: html tags
-msgid ""
-"The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
-"plugin installed & activated."
+#: classes/class-uagb-loader.php:168
+msgid "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
 #: classes/class-uagb-loader.php:171
@@ -687,30 +637,454 @@ msgstr ""
 msgid "WordPress Nonce not validated."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:38
 #. translators: %s: PHP version
-msgid ""
-"Ultimate Addons for Gutenberg requires PHP version %s+, plugin is currently "
-"NOT RUNNING."
+#: ultimate-addons-for-gutenberg.php:38
+msgid "Ultimate Addons for Gutenberg requires PHP version %s+, plugin is currently NOT RUNNING."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:55
 #. translators: %s: WordPress version
-msgid ""
-"Ultimate Addons for Gutenberg requires WordPress version %s+. Because you "
-"are using an earlier version, the plugin is currently NOT RUNNING."
+#: ultimate-addons-for-gutenberg.php:55
+msgid "Ultimate Addons for Gutenberg requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://www.brainstormforce.com"
+#: dist/blocks.build.js:23209
+msgid "Title of the review"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"The Ultimate Addons for Gutenberg extends the Gutenberg functionality with "
-"several unique and feature-rich blocks that help build websites faster."
+#: dist/blocks.build.js:23220
+msgid "Review Description"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Brainstorm Force"
+#: dist/blocks.build.js:23230
+msgid "Review Author"
+msgstr ""
+
+#: dist/blocks.build.js:23319
+msgid "Title of the summary goes here"
+msgstr ""
+
+#: dist/blocks.build.js:23330
+msgid "Summary of the review goes here"
+msgstr ""
+
+#: dist/blocks.build.js:122980
+msgid "Notice Title"
+msgstr ""
+
+#: dist/blocks.build.js:122991
+msgid "Add notice text..."
+msgstr ""
+
+#: dist/blocks.build.js:125402
+msgid "Thumbnail"
+msgstr ""
+
+#: dist/blocks.build.js:125402
+msgid "Medium"
+msgstr ""
+
+#: dist/blocks.build.js:125402
+msgid "Large"
+msgstr ""
+
+#: dist/blocks.build.js:125718
+msgid "Audio book"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Individual Product"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Product Collection"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Product Group"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Product Model"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Some Products"
+msgstr ""
+
+#: dist/blocks.build.js:125719
+msgid "Vehicle"
+msgstr ""
+
+#: dist/blocks.build.js:125720
+msgid "Mobile Application"
+msgstr ""
+
+#: dist/blocks.build.js:125720
+msgid "Video Game"
+msgstr ""
+
+#: dist/blocks.build.js:125720
+msgid "Web Application"
+msgstr ""
+
+#: dist/blocks.build.js:125734
+msgid "ISBN"
+msgstr ""
+
+#: dist/blocks.build.js:125739
+#: dist/blocks.build.js:125747
+#: dist/blocks.build.js:126098
+#: dist/blocks.build.js:126170
+msgid "Note: This is a mandatory field for the Review schema"
+msgstr ""
+
+#: dist/blocks.build.js:125742
+msgid "Book author name"
+msgstr ""
+
+#: dist/blocks.build.js:125758
+msgid "Provider"
+msgstr ""
+
+#: dist/blocks.build.js:125773
+msgid "Application Category"
+msgstr ""
+
+#: dist/blocks.build.js:125780
+msgid "Operating System"
+msgstr ""
+
+#: dist/blocks.build.js:125795
+msgid "Director Name"
+msgstr ""
+
+#: dist/blocks.build.js:125821
+msgid "Style"
+msgstr ""
+
+#: dist/blocks.build.js:125823
+msgid "Title Typography"
+msgstr ""
+
+#: dist/blocks.build.js:125842
+msgid "Title Color"
+msgstr ""
+
+#: dist/blocks.build.js:125861
+msgid "Description Typography"
+msgstr ""
+
+#: dist/blocks.build.js:125880
+msgid "Description Color"
+msgstr ""
+
+#: dist/blocks.build.js:125902
+msgid "Author Color"
+msgstr ""
+
+#: dist/blocks.build.js:125924
+msgid "Content Color"
+msgstr ""
+
+#: dist/blocks.build.js:125941
+msgid "Summary Typography"
+msgstr ""
+
+#: dist/blocks.build.js:125960
+msgid "Summary Color"
+msgstr ""
+
+#: dist/blocks.build.js:125978
+msgid "Active Star Color"
+msgstr ""
+
+#: dist/blocks.build.js:125996
+msgid "Inactive Star Color"
+msgstr ""
+
+#: dist/blocks.build.js:126014
+msgid "Star Outline Color"
+msgstr ""
+
+#: dist/blocks.build.js:126031
+msgid "Overall Padding (px)"
+msgstr ""
+
+#: dist/blocks.build.js:126062
+msgid "Schema"
+msgstr ""
+
+#: dist/blocks.build.js:126064
+msgid "Item type"
+msgstr ""
+
+#: dist/blocks.build.js:126078
+msgid "Book"
+msgstr ""
+
+#: dist/blocks.build.js:126078
+msgid "Course"
+msgstr ""
+
+#: dist/blocks.build.js:126078
+msgid "Movie"
+msgstr ""
+
+#: dist/blocks.build.js:126078
+msgid "Product"
+msgstr ""
+
+#: dist/blocks.build.js:126078
+msgid "Software Application"
+msgstr ""
+
+#: dist/blocks.build.js:126081
+msgid "Item subtype"
+msgstr ""
+
+#: dist/blocks.build.js:126082
+msgid "None"
+msgstr ""
+
+#: dist/blocks.build.js:126093
+msgid "Review publisher"
+msgstr ""
+
+#: dist/blocks.build.js:126103
+msgid "Date of publish"
+msgstr ""
+
+#: dist/blocks.build.js:126119
+msgid "Brand"
+msgstr ""
+
+#: dist/blocks.build.js:126126
+msgid "SKU"
+msgstr ""
+
+#: dist/blocks.build.js:126133
+msgid "Identifier"
+msgstr ""
+
+#: dist/blocks.build.js:126140
+msgid "Identifier type"
+msgstr ""
+
+#: dist/blocks.build.js:126154
+msgid "Offer Currency"
+msgstr ""
+
+#: dist/blocks.build.js:126165
+msgid "Offer Price"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Discontinued"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "In Stock"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "In Store Only"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Limited Availability"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Online Only"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Out Of Stock"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Pre Order"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Pre Sale"
+msgstr ""
+
+#: dist/blocks.build.js:126175
+msgid "Sold Out"
+msgstr ""
+
+#: dist/blocks.build.js:126185
+msgid "Price Valid Until"
+msgstr ""
+
+#: dist/blocks.build.js:126203
+msgid "General"
+msgstr ""
+
+#: dist/blocks.build.js:126207
+msgid "Review Title"
+msgstr ""
+
+#: dist/blocks.build.js:126210
+msgid "Tag"
+msgstr ""
+
+#: dist/blocks.build.js:126229
+msgid "Open in new window"
+msgstr ""
+
+#: dist/blocks.build.js:126234
+msgid "Show review description"
+msgstr ""
+
+#: dist/blocks.build.js:126239
+#: dist/blocks.build.js:126247
+#: dist/blocks.build.js:126255
+msgid "Note: This is a mandatory field for the Review schema."
+msgstr ""
+
+#: dist/blocks.build.js:126242
+msgid "Show review author"
+msgstr ""
+
+#: dist/blocks.build.js:126250
+msgid "Show review image"
+msgstr ""
+
+#: dist/blocks.build.js:126266
+#: dist/blocks.build.js:126277
+msgid "Select Image"
+msgstr ""
+
+#: dist/blocks.build.js:126277
+msgid "Replace image"
+msgstr ""
+
+#: dist/blocks.build.js:126289
+msgid "Remove Image"
+msgstr ""
+
+#: dist/blocks.build.js:126292
+msgid "Size"
+msgstr ""
+
+#: dist/blocks.build.js:126301
+msgid "Show ratings"
+msgstr ""
+
+#: dist/blocks.build.js:126306
+msgid "Note: Add feature/section ratings separately."
+msgstr ""
+
+#: dist/blocks.build.js:126309
+msgid "Enable schema support"
+msgstr ""
+
+#: dist/blocks.build.js:126814
+msgid "Missing merchant-specific identifier for product ( SKU )"
+msgstr ""
+
+#: dist/blocks.build.js:126818
+msgid "Missing brand of the product"
+msgstr ""
+
+#: dist/blocks.build.js:126822
+msgid "Missing offer Type"
+msgstr ""
+
+#: dist/blocks.build.js:126826
+msgid "Missing offer currency of a product"
+msgstr ""
+
+#: dist/blocks.build.js:126830
+msgid "Missing offer price of a product"
+msgstr ""
+
+#: dist/blocks.build.js:126834
+msgid "Missing offer expiry of a product"
+msgstr ""
+
+#: dist/blocks.build.js:126838
+msgid "Missing global identifiers"
+msgstr ""
+
+#: dist/blocks.build.js:126845
+msgid "Missing ISBN number of a book"
+msgstr ""
+
+#: dist/blocks.build.js:126849
+msgid "Missing author of the book"
+msgstr ""
+
+#: dist/blocks.build.js:126856
+msgid "Missing released date of the movie"
+msgstr ""
+
+#: dist/blocks.build.js:126860
+msgid "Missing director name of the movie"
+msgstr ""
+
+#: dist/blocks.build.js:126867
+msgid "Missing provider of the course"
+msgstr ""
+
+#: dist/blocks.build.js:126874
+msgid "Missing type of application (Application Category)"
+msgstr ""
+
+#: dist/blocks.build.js:126878
+msgid "Missing operating system(s) required"
+msgstr ""
+
+#: dist/blocks.build.js:126882
+msgid "Missing Offer Type"
+msgstr ""
+
+#: dist/blocks.build.js:126886
+msgid "Missing offer price of the application"
+msgstr ""
+
+#: dist/blocks.build.js:126890
+msgid "Missing offer currency of the application"
+msgstr ""
+
+#: dist/blocks.build.js:126902
+msgid "Missing title of the review"
+msgstr ""
+
+#: dist/blocks.build.js:126906
+msgid "Missing review description"
+msgstr ""
+
+#: dist/blocks.build.js:126910
+msgid "Missing review Image"
+msgstr ""
+
+#: dist/blocks.build.js:126914
+msgid "Missing url field"
+msgstr ""
+
+#: dist/blocks.build.js:126918
+msgid "Missing review author name"
+msgstr ""
+
+#: dist/blocks.build.js:126922
+msgid "Missing review publisher"
+msgstr ""
+
+#: dist/blocks.build.js:126926
+msgid "Missing date of publish"
+msgstr ""
+
+#: dist/blocks.build.js:126951
+msgid "It seems that the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields."
+msgstr ""
+
+#: dist/blocks.build.js:126962
+msgid "P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away."
+msgstr ""
+
+#: dist/blocks.build.js:126967
+msgid "Read more."
 msgstr ""
