@@ -697,6 +697,9 @@ class UAGBRestaurantMenu extends Component {
 
 															getChildBlocks.forEach((pricelistChild, key) => {
 																pricelistChild.attributes.imagePosition = this.props.attributes.imagePosition;
+																pricelistChild.attributes.columns = this.props.attributes.columns;
+																pricelistChild.attributes.tcolumns = this.props.attributes.tcolumns;
+																pricelistChild.attributes.mcolumns = this.props.attributes.mcolumns;
 															});
 														}
 														
