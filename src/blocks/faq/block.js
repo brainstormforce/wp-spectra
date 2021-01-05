@@ -8,6 +8,7 @@ import edit from "./edit"
 import save from "./save"
 import "./style.scss"
 import "./editor.scss"
+import deprecated from "./deprecated"
 
 const { addFilter } = wp.hooks;
 const { __ } = wp.i18n
@@ -62,7 +63,30 @@ registerBlockType( "uagb/faq", {
 		__( "uag" ),
 		__( "accordion" ),
 	],
+	example:{
+		innerBlocks: [
+			{
+				name: "uagb/faq-child",
+				innerBlocks: [
+					{
+						name: "uagb/faq-child",
+						attributes: { question: "What is FAQ?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
+					},
+				],
+			},
+			{
+				name: "uagb/faq-child",
+				innerBlocks: [
+					{
+						name: "uagb/faq-child",
+						attributes: { question: "What is FAQ?", answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
+					},
+				],
+			}
+		],
+	},
 	attributes,
+	deprecated,
 	edit,
 	supports: {
 		anchor: true,

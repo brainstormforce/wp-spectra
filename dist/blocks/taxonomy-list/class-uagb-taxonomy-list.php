@@ -257,7 +257,6 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'string',
 							'default' => 'solid',
 						),
-
 						// Typograpghy attributes.
 						'titleFontSize'         => array(
 							'type' => 'number',

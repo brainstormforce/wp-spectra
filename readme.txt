@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.5
-Stable tag: 1.18.1
+Tested up to: 5.6
+Stable tag: 1.19.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://www.ultimategutenberg.com/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
 	<li><a href="https://www.ultimategutenberg.com/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
  	<li><a href="https://www.ultimategutenberg.com/faq/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">FAQ Schema </a>: This block helps you answering user’s common queries in an easy and attractive way.  You also get a one-click option to apply FAQ Schema on the page. That helps to display content in a rich snippet that can pull more traffic to your website.</li>
@@ -160,8 +161,25 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.18.1.1 =
-* Fix: Taxonomy List - Fixed issue with broken links in case of Taxonomies that contain spaces in them.
+= 1.20.0 =
+* Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
+* Fix: Testimonial - Fixed the JS console warning with Slick library.
+* Fix: Table of content - Fixed the pipe symbol issue in heading.
+* Fix: Faq - Fixed Accessibility issue.
+* Fix: Taxonomy List - Fixed issue with broken links.
+
+= 1.19.0 =
+* New: Review Schema Block.
+* Improvement: Better options for delete/edit/duplicate action of each item in Price list block.
+* Improvement: Ability to modify breakpoints for Dynamic CSS.
+* Improvement: Table of Content - Exclude specific headings from Table of Contents block.
+* Improvement: Table of Content - Fixed issue with scroll to heading when the heading has ellipsis dots in them.
+* Fix: Post Carousel - Fixed carousel not being displayed on RTL websites.
+* Fix: Info Box - Link to complete box target issue with "Open In Same Tab" fixed.
+* Fix: Info box - Title color not applying when title is as link.
+
+= 1.18.2 =
+* Fix: Post Timeline - Fixed the Icon issue and removed the unwanted filter for Post Timeline SVG connector.
 
 = 1.18.1 =
 * Improvement: FAQ Schema - Skipped loading of dependent JS file for Grid layout.
