@@ -137,6 +137,12 @@ class UAGBFaqEdit extends Component {
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((faqChild, key) => {
+			faqChild.attributes.headingTag = this.props.attributes.headingTag;
+		});
 	}
 	onchangeIcon ( value ) {
 		const { setAttributes } = this.props
