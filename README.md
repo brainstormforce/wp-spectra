@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
 * Fix: Table of content - Fixed the pipe symbol issue in heading.
 * Fix: Faq - Fixed Accessibility issue.
+* Fix: Gravity Form Styler - Multistep form styling issue.
 
 ### 1.19.0 ###
 * New: Review Schema Block.
