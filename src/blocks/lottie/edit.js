@@ -5,7 +5,7 @@
 import classnames from "classnames"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
+import styling from "./styling"
 
 import Lottie from 'react-lottie';
 
@@ -25,6 +25,9 @@ const {
 	Button,
 	TextControl,
     ToggleControl,
+    TabPanel,
+    Dashicon,
+    SelectControl
 } = wp.components
 
 const { Component, Fragment } = wp.element
@@ -45,12 +48,22 @@ class UAGBLottie extends Component {
         
         // Assigning block_id in the attribute.
         this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-        this.props.setAttributes( { classMigrate: true } )
-      
-        
+        this.props.setAttributes( { classMigrate: true } );
+
+        // Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+		document.head.appendChild( $style )
     }
-    
-    
+
+    componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
+	}
+
     onSelectLottieJSON( media ) {
 
         const { setAttributes } = this.props
@@ -94,15 +107,19 @@ class UAGBLottie extends Component {
         
         const {
             height,
+            heightTablet,
+            heightMob,
             width,
+            widthTablet,
+            widthMob,
             backgroundColor,
             loop,            
             speed,
             reverse,
-            playOnHover,
             jsonLottie,
             lottieURl,
-            
+            playOn,
+            backgroundHColor
         } = attributes
 
        
@@ -132,11 +149,17 @@ class UAGBLottie extends Component {
                     onChange={this.reverseDirection}
                     help={ __( 'Direction of animation.' ) }
                     />
-                <ToggleControl
-                    label={ __( "Play on Hover" ) }
-                    checked={ playOnHover }
-                    onChange={ ( value ) => setAttributes( { playOnHover: ! playOnHover } ) }
-                    />                
+                <SelectControl
+					label={ __( "Play On" ) }
+					value={ playOn }
+					onChange={ ( value ) => setAttributes( { playOn: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "hover", label: __( "On Hover" ) },
+						{ value: "click", label: __( "On Click" ) },
+						{ value: "scroll", label: __( "Scroll" ) },
+                    ] }
+				/>                
             </PanelBody>
         )
         
@@ -144,26 +167,138 @@ class UAGBLottie extends Component {
             <PanelBody
             title={ __( "Style" ) }
             initialOpen={ false }>
-                <RangeControl
-                    label={ __( "Width" ) }
-                    value={ width }
-                    onChange={ ( value ) => setAttributes( { width: value } ) }
-                    min={ 0 }
-                    max={ 1000 }
-                    allowReset
-                    />
-                <RangeControl
-                    label={ __( "Height" ) }
-                    value={ height }
-                    onChange={ ( value ) => setAttributes( { height: value } ) }
-                    min={ 0 }
-                    max={ 1000 }
-                    allowReset
-                    />
+                <TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width" ) }
+                                            value={ widthMob }
+                                            onChange={ ( value ) => setAttributes( { widthMob: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width" ) }
+                                            value={ widthTablet }
+                                            onChange={ ( value ) => setAttributes( { widthTablet: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width" ) }
+                                            value={ width }
+                                            onChange={ ( value ) => setAttributes( { width: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+                    <TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height" ) }
+                                            value={ heightMob }
+                                            onChange={ ( value ) => setAttributes( { heightMob: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height" ) }
+                                            value={ heightTablet }
+                                            onChange={ ( value ) => setAttributes( { heightTablet: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height" ) }
+                                            value={ height }
+                                            onChange={ ( value ) => setAttributes( { height: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
                 <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
                 <ColorPalette
                     value={ backgroundColor }
                     onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
+                    allowReset
+                    />
+                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHColor }} ></span></span></p>
+                <ColorPalette
+                    value={ backgroundHColor }
+                    onChange={ ( value ) => setAttributes( { backgroundHColor: value } ) }
                     allowReset
                     />
             </PanelBody>
@@ -203,7 +338,9 @@ class UAGBLottie extends Component {
         };
 
         const reversedir = (reverse) ? -1 : 1
-        
+
+        const playIs = ( 'none' !== playOn ) ? true : false;
+
         return (
             <Fragment>
                 
@@ -218,8 +355,10 @@ class UAGBLottie extends Component {
                     `uagb-block-${this.props.clientId.substr( 0, 8 )}`,
                     "uagb-lottie__outer-wrap",
                 ) }
-                onMouseEnter={ playOnHover ? handleLottieMouseEnter : ()=> null }
-                onMouseLeave={ playOnHover ? handleLottieMouseLeave : ()=> null } >
+                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> null }
+                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> null } 
+                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> null }
+                >
                     <Lottie 
                         ref={this.lottieplayer}
                         options={{                            
@@ -230,13 +369,10 @@ class UAGBLottie extends Component {
                                 className:"uagb-lottie-inner-wrap"
                             }
                         }}
-                        isStopped={playOnHover}                        
-                        height={height}
-                        width={width}
+                        isStopped={playIs}                        
                         speed={speed}
                         isClickToPauseDisabled = {true}
-                        direction={reversedir}
-                        style={{backgroundColor:backgroundColor}}                       
+                        direction={reversedir}                       
                     />
                 </div>
             </Fragment>

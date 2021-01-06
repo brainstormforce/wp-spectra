@@ -23,9 +23,6 @@ registerBlockType( "uagb/lottie", {
 		__( "uag" ),
 	],
 	example:{},
-	supports: {
-		anchor: true,
-	},
 	category: uagb_blocks_info.category,
 	edit,
 	// Render via PHP

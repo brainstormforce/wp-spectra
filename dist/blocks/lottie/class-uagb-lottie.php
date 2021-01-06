@@ -92,14 +92,33 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						'playOn'     => array(
+							'type'    => 'string',
+						),
 						// Style.
 						'height'          => array(
+							'type' => 'number',
+						),
+						'heightTablet'          => array(
+							'type' => 'number',
+						),
+						'heightMob'          => array(
 							'type' => 'number',
 						),
 						'width'           => array(
 							'type' => 'number',
 						),
+						'widthTablet'           => array(
+							'type' => 'number',
+						),
+						'widthMob'           => array(
+							'type' => 'number',
+						),
 						'backgroundColor' => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'backgroundHColor' => array(
 							'type'    => 'string',
 							'default' => '',
 						),

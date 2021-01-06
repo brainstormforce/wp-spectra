@@ -3,12 +3,12 @@
 	UAGBLottie = {
 
 		_run: function( attr, id ) {
-            
+
 			var animation = bodymovin.loadAnimation({
                 container: document.getElementsByClassName(id)[0],
                 renderer: 'svg',
                 loop: attr['loop'],
-                autoplay: !attr['playOnHover'], 
+                autoplay: ( 'none' === attr['playOn'] ) ? true : false, 
                 path: attr['lottieURl'],
                 rendererSettings: {
                     preserveAspectRatio: 'xMidYMid',
@@ -21,12 +21,20 @@
             const reversedir = (attr['reverse']) ? -1 : 1
             animation.setDirection(reversedir)
             
-            if(attr['playOnHover']){
+            if( 'hover' === attr['playOn']){
                 document.getElementsByClassName(id)[0].addEventListener("mouseenter", function() {
                     animation.play()
                 });
                 document.getElementsByClassName(id)[0].addEventListener("mouseleave", function() {
                     animation.stop()
+                });
+            } else if ( 'click' === attr['playOn']){
+                document.getElementsByClassName(id)[0].addEventListener("click", function() {
+                    animation.play()
+                });
+            } else if ( 'scroll' === attr['playOn']) {
+                window.addEventListener("scroll", function() {
+                    animation.play()
                 });
             }
 		}
