@@ -65,56 +65,56 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 				'uagb/lottie',
 				array(
 					'attributes'      => array(
-						'block_id'        => array(
+						'block_id'         => array(
 							'type' => 'string',
 						),
-						'lottieURl'       => array(
+						'lottieURl'        => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'jsonLottie'      => array(
+						'jsonLottie'       => array(
 							'type' => 'object',
 						),
 						// Controls.
-						'loop'            => array(
+						'loop'             => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'speed'           => array(
+						'speed'            => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'reverse'         => array(
+						'reverse'          => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'playOnHover'     => array(
+						'playOnHover'      => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'playOn'     => array(
-							'type'    => 'string',
+						'playOn'           => array(
+							'type' => 'string',
 						),
 						// Style.
-						'height'          => array(
+						'height'           => array(
 							'type' => 'number',
 						),
-						'heightTablet'          => array(
+						'heightTablet'     => array(
 							'type' => 'number',
 						),
-						'heightMob'          => array(
+						'heightMob'        => array(
 							'type' => 'number',
 						),
-						'width'           => array(
+						'width'            => array(
 							'type' => 'number',
 						),
-						'widthTablet'           => array(
+						'widthTablet'      => array(
 							'type' => 'number',
 						),
-						'widthMob'           => array(
+						'widthMob'         => array(
 							'type' => 'number',
 						),
-						'backgroundColor' => array(
+						'backgroundColor'  => array(
 							'type'    => 'string',
 							'default' => '',
 						),

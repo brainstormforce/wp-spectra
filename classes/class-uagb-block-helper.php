@@ -5053,7 +5053,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
-			$selectors          = array(
+			$selectors                                   = array(
 				'.uagb-lottie__outer-wrap' => array(
 					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
 					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),
@@ -5063,21 +5063,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['backgroundColor'],
 				),
 			);
-			$selectors[ '.uagb-lottie__outer-wrap:hover' ] = array(
-				'background'   => $attr['backgroundHColor']
+			$selectors['.uagb-lottie__outer-wrap:hover'] = array(
+				'background' => $attr['backgroundHColor'],
 			);
 
-			$t_selectors          = array(
+			$t_selectors = array(
 				'.uagb-lottie__outer-wrap' => array(
-					'width'            => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
-					'height'           => UAGB_Helper::get_css_value( $attr['heightTablet'], 'px' ),
+					'width'  => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['heightTablet'], 'px' ),
 				),
 			);
 
-			$m_selectors          = array(
+			$m_selectors = array(
 				'.uagb-lottie__outer-wrap' => array(
-					'width'            => UAGB_Helper::get_css_value( $attr['widthMob'], 'px' ),
-					'height'           => UAGB_Helper::get_css_value( $attr['heightMob'], 'px' ),
+					'width'  => UAGB_Helper::get_css_value( $attr['widthMob'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['heightMob'], 'px' ),
 				),
 			);
 
