@@ -97,6 +97,8 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 									'forms-toggle',
 									'forms-date',
 									'forms-accept',
+									'restaurant-menu-child',
+									'content-timeline-child',
 								);
 
 								if ( in_array( $addon, $child_blocks, true ) ) {

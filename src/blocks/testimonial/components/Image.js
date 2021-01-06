@@ -4,14 +4,14 @@ const {
 
 const { __ } = wp.i18n
 
-class RestMenuImage extends React.Component {
+class TestimonialImage extends React.Component {
 
 	render() {
 
 		const { attributes , index_value } = this.props
 		let url_check = ""
         
-		const image_arr = attributes.rest_menu_item_arr[index_value]
+		const image_arr = attributes.test_block[index_value]
         
 		if( image_arr && typeof image_arr !== "undefined"){
 			const image = image_arr["image"]
@@ -31,10 +31,10 @@ class RestMenuImage extends React.Component {
 				}
                 
 				return (     
-					<div className ="uagb-rm__image-content" key={"rm_img-wrap-"+index_value}>           
-						<div className="uagb-rm__image" key={"rm_img-"+index_value}>                        
+					<div className ="uagb-tm__image-content" key={"tm_img-wrap-"+index_value}>           
+						<div className="uagb-tm__image" key={"tm_img-"+index_value}>                        
 							<img
-								className =""
+								className ="uagb-tm-img-src"
 								src = { url }                        
 								alt = { image.alt }                    
 							/>                        
@@ -51,4 +51,4 @@ class RestMenuImage extends React.Component {
 	}
 }
 
-export default RestMenuImage
+export default TestimonialImage

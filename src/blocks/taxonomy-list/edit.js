@@ -46,7 +46,6 @@ class UAGBTaxonomyList extends Component {
 		setAttributes( { postType: value } )
 		setAttributes( { categories: "" } )
 		setAttributes( { taxonomyType: "" } )
-
 	}
 	
 	onSelectTaxonomyType( value ) {
@@ -71,7 +70,7 @@ class UAGBTaxonomyList extends Component {
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
-		}
+        }
 	}
 
     render() {
@@ -166,7 +165,6 @@ class UAGBTaxonomyList extends Component {
 			listDisplayStyle,
 			showhierarchy
         } = attributes
-
 		
 		const taxonomy_list_setting = (showEmptyTaxonomy) ? taxonomyList : termsList;
 		
@@ -738,7 +736,6 @@ class UAGBTaxonomyList extends Component {
 											min={ 0 }
 											max={ 50 }
 											allowReset
-
 										/>										
 										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 										<ColorPalette
@@ -846,7 +843,7 @@ class UAGBTaxonomyList extends Component {
 
 							{"grid" == layout && ( 
 								categoriesList.map((p,index)=>
-									<div className="uagb-taxomony-box">
+									<div className="uagb-taxomony-box" key={index}>
 										<a className="uagb-tax-link" href={p.link}>
 											<h4 className="uagb-tax-title">{p.name}</h4>
 											{showCount && (
@@ -861,7 +858,7 @@ class UAGBTaxonomyList extends Component {
 							{"list" == layout && "list" == listDisplayStyle && ( 
 								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
-										<li className="uagb-tax-list">
+										<li className="uagb-tax-list" key={index}>
 											<div className="uagb-tax-link-wrap">
 												<a className="uagb-tax-link" href={p.link}>{p.name}</a>
 												{ showCount && (
@@ -870,7 +867,7 @@ class UAGBTaxonomyList extends Component {
 												{showhierarchy && p.children != null && (														
 													<ul className="uagb-taxonomy-list-children">
 														{ Object.keys( p.children ).map( function( key, index ) {
-															return 	<li className="uagb-tax-list">
+															return 	<li className="uagb-tax-list" key={index}>
 																<a className="uagb-tax-link" href={`${p.link}${p.children[key]["slug"]}`}>{p.children[key]["name"]}</a>
 																{ showCount && (
 																	<span>{` (${p.children[key]["count"]})`}</span>
@@ -936,7 +933,6 @@ export default withSelect( ( select, props ) => {
 			categoriesList = currentTax[listToShowTaxonomy][taxonomyType]
 		}
 	}
-	
 	let latestPostsQuery = {
 		order: order,
 		orderby: orderBy,

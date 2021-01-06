@@ -2,7 +2,7 @@
   "name": "brainstormforce/ultimate-addons-for-gutenberg",
   "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
     "wp-coding-standards/wpcs": "dev-master",
     "phpcompatibility/phpcompatibility-wp": "*"
   },
