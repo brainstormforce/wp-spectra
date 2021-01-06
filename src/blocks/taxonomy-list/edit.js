@@ -843,7 +843,7 @@ class UAGBTaxonomyList extends Component {
 
 							{"grid" == layout && ( 
 								categoriesList.map((p,index)=>
-									<div className="uagb-taxomony-box">
+									<div className="uagb-taxomony-box" key={index}>
 										<a className="uagb-tax-link" href={p.link}>
 											<h4 className="uagb-tax-title">{p.name}</h4>
 											{showCount && (
@@ -858,7 +858,7 @@ class UAGBTaxonomyList extends Component {
 							{"list" == layout && "list" == listDisplayStyle && ( 
 								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
-										<li className="uagb-tax-list">
+										<li className="uagb-tax-list" key={index}>
 											<div className="uagb-tax-link-wrap">
 												<a className="uagb-tax-link" href={p.link}>{p.name}</a>
 												{ showCount && (
@@ -867,7 +867,7 @@ class UAGBTaxonomyList extends Component {
 												{showhierarchy && p.children != null && (														
 													<ul className="uagb-taxonomy-list-children">
 														{ Object.keys( p.children ).map( function( key, index ) {
-															return 	<li className="uagb-tax-list">
+															return 	<li className="uagb-tax-list" key={index}>
 																<a className="uagb-tax-link" href={`${p.link}${p.children[key]["slug"]}`}>{p.children[key]["name"]}</a>
 																{ showCount && (
 																	<span>{` (${p.children[key]["count"]})`}</span>
