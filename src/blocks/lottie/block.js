@@ -16,7 +16,7 @@ const {
 registerBlockType( "uagb/lottie", {
 	title: uagb_blocks_info.blocks["uagb/lottie"]["title"],
 	description: uagb_blocks_info.blocks["uagb/lottie"]["description"],
-	icon: UAGB_Block_Icons.wp_search,
+	icon: UAGB_Block_Icons.lottie,
 	keywords: [
 		__( "lottie" ),
 		__( "animation" ),
