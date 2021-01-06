@@ -5,12 +5,11 @@
         init: function( attr, id ) {
             
             $scope = $( id );
-            
             $form = $scope.find( '.uagb-forms-main-form' );
             
             $submitButtonWrap = $form.find( '.uagb-forms-main-submit-button-wrap' );
             $submitButton = $form.find( '.uagb-forms-main-submit-button' );
-            
+           
             $phoneinput = $form.find( '.uagb-forms-phone-input' );
             $phoneinput.on( 'keypress', function( e ) {
                 
@@ -47,8 +46,22 @@
             requiredCheckboxes.trigger('change');
             
             //append recaptcha js when enabled.
-            if(attr['reCaptchaEnable'] == true){
+            if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v2" && attr['reCaptchaSiteKeyV2'] ){
+                
                 $('head').append(' <script src="https://www.google.com/recaptcha/api.js"></script>');
+               
+            }else if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v3" && attr['reCaptchaSiteKeyV3'] ){
+                if(attr['hidereCaptchaBatch']){
+                    if(document.getElementsByClassName("grecaptcha-badge")[0] === undefined){
+                        return
+                    }
+                    var badge = document.getElementsByClassName("grecaptcha-badge")[0];
+                    badge.style.visibility = 'hidden';
+                }
+                var api = document.createElement("script");
+                api.type = "text/javascript";
+                api.src = "https://www.google.com/recaptcha/api.js?render="+attr['reCaptchaSiteKeyV3'];
+                $('head').append(api);
             }
             
             
@@ -100,11 +113,9 @@
         
         _formSubmit: function ( e, $form, attr ) {
             e.preventDefault();
-            
             if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v2" && attr['reCaptchaSiteKeyV2'] ){
-                
+              
                 var captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
-               
                 if (!captcha_response) {                  
                     $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha"> Please fill up the above captcha.</p>');
                     return false;
@@ -112,19 +123,23 @@
                     $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
                     var uagab_captcha_keys = { 'secret':attr['reCaptchaSecretKeyV2'],'sitekey':attr['reCaptchaSiteKeyV2'] }                   
                 }
-                
             }
+
             if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v3" && attr['reCaptchaSiteKeyV3'] ){
-                var captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
+                  grecaptcha.ready(function() {
+                    grecaptcha.execute(attr['reCaptchaSiteKeyV3'], {action: 'submit'}).then(function(token) {
+                        document.getElementById('g-recaptcha-response').value = token;
+                        var captcha_response = token;
                
-                if (!captcha_response) {                  
-                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha"> Please fill up the above captcha.</p>');
-                    return false;
-                } else {
-                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
-                    var uagab_captcha_keys = { 'secret':attr['reCaptchaSecretKeyV3'],'sitekey':attr['reCaptchaSiteKeyV3'] }                   
-                }
-                
+                        if (!captcha_response) {                  
+                            $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha"> Please fill up the above captcha.</p>');
+                            return false;
+                        } else {
+                            $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
+                            var uagab_captcha_keys = { 'secret':attr['reCaptchaSecretKeyV3'],'sitekey':attr['reCaptchaSiteKeyV3'] }                   
+                        }
+                    });
+                  });
             }
             
             var originalSerialized = $($form).serializeArray();

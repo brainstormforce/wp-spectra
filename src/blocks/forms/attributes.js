@@ -331,6 +331,10 @@ const attributes = {
 		type: "string",
 		default: "",
 	},
+	hidereCaptchaBatch: {
+		type: "boolean",
+		default: false
+	},
 	//message attributes
 	successMessageTextColor : {
 		type: "string",

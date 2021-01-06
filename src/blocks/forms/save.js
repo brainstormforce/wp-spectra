@@ -31,20 +31,9 @@ export default function save( props ) {
 	} = attributes
 
 	const renderButtonHtml = () => {
-		if(reCaptchaEnable && 'v3' === reCaptchaType){
-			return (
-				<button className="g-recaptcha uagb-forms-main-submit-button jhgjhg" 	data-sitekey={ reCaptchaSiteKeyV3 } >
-							<RichText.Content
-								tagName='div'
-								value={ submitButtonText }
-								className='uagb-forms-main-submit-button-text'
-							/>
-				</button>
-			);
-		}
-		else{
+		
 				return (
-					<button className="uagb-forms-main-submit-button kjhkj" >
+					<button className="uagb-forms-main-submit-button" >
 								<RichText.Content
 									tagName='div'
 									value={ submitButtonText }
@@ -53,7 +42,7 @@ export default function save( props ) {
 					</button>
 				);
 			}
-		}
+		
 
 
 	return (
@@ -65,7 +54,7 @@ export default function save( props ) {
 			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >			
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
-					{ reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 && (					
+					{ reCaptchaEnable && (					
 						<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
 					) }
 					<input type="hidden" className="uagb_forms_form_label" value={ formLabel }/>

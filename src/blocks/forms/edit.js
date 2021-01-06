@@ -202,6 +202,7 @@ class UAGBFormsEdit extends Component {
 			reCaptchaSiteKeyV2,
 			reCaptchaSecretKeyV3,
 			reCaptchaSiteKeyV3,
+			hidereCaptchaBatch,
 			successMessageTextColor,
 			successMessageBGColor,
 			successMessageBorderColor,
@@ -852,8 +853,6 @@ class UAGBFormsEdit extends Component {
 								placeholder={"Enter v2 Keys"}
 
 							/>		
-						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
-						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
 					</Fragment>
 					)}
 					{ reCaptchaEnable && "v3" === reCaptchaType && (
@@ -872,31 +871,22 @@ class UAGBFormsEdit extends Component {
 								placeholder={"Enter v3 Keys"}
 
 							/>		
-						<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
-						<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
-					</Fragment>
+							<ToggleControl
+								label={ __( "Hide reCAPTCHA Badge" ) }
+								checked={ hidereCaptchaBatch }
+								onChange={ ( value ) => setAttributes( { hidereCaptchaBatch: ! hidereCaptchaBatch } ) }
+							/>
+						</Fragment>
 					)}
+					<h2> { __( "Know More" ) }</h2>
+					<ExternalLink href="https://www.google.com/recaptcha/admin/create">{__("Get Keys")}</ExternalLink>
+					<ExternalLink href="https://developers.google.com/recaptcha/intro">{__(" | Documentation")}</ExternalLink>
 				</PanelBody>
 			)
 		}
 
 		const renderButtonHtml = () => {
-			if(reCaptchaEnable && "v3" === reCaptchaType && '' !== reCaptchaSiteKeyV3 && '' !== reCaptchaSecretKeyV3 ){
-				return (
-					<button onClick={ this.onSubmitClick } className="g-recaptcha uagb-forms-main-submit-button"
-        				data-sitekey={ reCaptchaSiteKeyV3 } >
-						<RichText
-							tagName="div"
-							placeholder={ __( "Submit" ) }
-							value={ submitButtonText }
-							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
-							className='uagb-forms-main-submit-button-text'
-							multiline={ false }
-							allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
-						/>
-					</button>
-				);
-			}else{			
+					
 				return (
 					<button onClick={ this.onSubmitClick } className="uagb-forms-main-submit-button">
 						<RichText
@@ -911,7 +901,7 @@ class UAGBFormsEdit extends Component {
 					</button>
 				);
 			}
-		}
+		
 
 		if ( ! hasInnerBlocks ) {
 			return (
@@ -948,7 +938,7 @@ class UAGBFormsEdit extends Component {
 							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 						<div className="uagb-forms-form-hidden-data">
-							{reCaptchaEnable && "v2" === reCaptchaType && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 &&(					
+							{reCaptchaEnable && (					
 								<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha"/>
 							)}
 							<input type="hidden" name="uagb_forms_form_label" value={ formLabel }/>
