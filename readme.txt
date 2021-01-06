@@ -163,7 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.20.0 =
 * Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
-* Fix: Price List - Css issue on mobile.
+* Fix: Price List - CSS issue on mobile.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
 * Fix: Table of content - Fixed the pipe symbol issue in heading.
 * Fix: Faq - Fixed Accessibility issue.
