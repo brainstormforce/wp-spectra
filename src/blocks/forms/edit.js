@@ -821,6 +821,8 @@ class UAGBFormsEdit extends Component {
 					title={ __( "Google reCAPTCHA" ) }
 					initialOpen={ false }					
 				>
+					<p className='uagb-form-notice'>{ __( 'P.S. Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page. ' ) }</p>
+              
 					<ToggleControl
 						label={ __( "Enable reCAPTCHA " ) }
 						checked={ reCaptchaEnable }
@@ -928,8 +930,7 @@ class UAGBFormsEdit extends Component {
 					{ designSettings() }
 					{ googleReCaptcha() }
 				</InspectorControls>
-				<p className='uagb-form-notice'>{ __( 'P.S. Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page. ' ) }</p>
-                
+				  
 				<div className={ classnames(
 					"uagb-forms__outer-wrap",
 					`uagb-block-${ block_id }`,
