@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-06T07:51:23+00:00\n"
+"POT-Creation-Date: 2021-01-06T09:00:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0-alpha-59d879d\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -681,6 +681,7 @@ msgstr ""
 #: dist/blocks.build.js:78651
 #: dist/blocks.build.js:89918
 #: dist/blocks.build.js:90896
+#: dist/blocks.build.js:114935
 #: dist/blocks.build.js:124846
 msgid "uag"
 msgstr ""
@@ -703,6 +704,9 @@ msgid "Full Width"
 msgstr ""
 
 #: dist/blocks.build.js:78986
+#: dist/blocks.build.js:115760
+#: dist/blocks.build.js:115794
+#: dist/blocks.build.js:115828
 msgid "Width"
 msgstr ""
 
@@ -719,6 +723,18 @@ msgstr ""
 #: dist/blocks.build.js:79458
 #: dist/blocks.build.js:90133
 #: dist/blocks.build.js:90156
+#: dist/blocks.build.js:115515
+#: dist/blocks.build.js:115553
+#: dist/blocks.build.js:115591
+#: dist/blocks.build.js:115743
+#: dist/blocks.build.js:115777
+#: dist/blocks.build.js:115811
+#: dist/blocks.build.js:115932
+#: dist/blocks.build.js:115982
+#: dist/blocks.build.js:116032
+#: dist/blocks.build.js:116110
+#: dist/blocks.build.js:116160
+#: dist/blocks.build.js:116210
 msgid "Size Type"
 msgstr ""
 
@@ -767,6 +783,9 @@ msgid "Padding Tablet"
 msgstr ""
 
 #: dist/blocks.build.js:79232
+#: dist/blocks.build.js:115951
+#: dist/blocks.build.js:116001
+#: dist/blocks.build.js:116051
 msgid "Padding"
 msgstr ""
 
@@ -783,6 +802,7 @@ msgid "Margin"
 msgstr ""
 
 #: dist/blocks.build.js:79536
+#: dist/blocks.build.js:115690
 msgid "Background"
 msgstr ""
 
@@ -793,6 +813,7 @@ msgstr ""
 #: dist/blocks.build.js:79543
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:90217
+#: dist/blocks.build.js:116275
 #: dist/blocks.build.js:126082
 msgid "None"
 msgstr ""
@@ -818,6 +839,8 @@ msgid "Video"
 msgstr ""
 
 #: dist/blocks.build.js:79551
+#: dist/blocks.build.js:115337
+#: dist/blocks.build.js:115695
 msgid "Background Color"
 msgstr ""
 
@@ -894,6 +917,7 @@ msgid "Fixed"
 msgstr ""
 
 #: dist/blocks.build.js:79611
+#: dist/blocks.build.js:115274
 msgid "Scroll"
 msgstr ""
 
@@ -994,55 +1018,68 @@ msgid "Opacity"
 msgstr ""
 
 #: dist/blocks.build.js:79821
+#: dist/blocks.build.js:116267
 msgid "Border"
 msgstr ""
 
 #: dist/blocks.build.js:79823
+#: dist/blocks.build.js:116270
 msgid "Border Style"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Solid"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Dotted"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Dashed"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Double"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Groove"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Inset"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Outset"
 msgstr ""
 
 #: dist/blocks.build.js:79828
+#: dist/blocks.build.js:116275
 msgid "Ridge"
 msgstr ""
 
 #: dist/blocks.build.js:79831
+#: dist/blocks.build.js:116278
 msgid "Border Width"
 msgstr ""
 
 #: dist/blocks.build.js:79841
 #: dist/blocks.build.js:90315
+#: dist/blocks.build.js:116288
 msgid "Border Radius"
 msgstr ""
 
 #: dist/blocks.build.js:79856
+#: dist/blocks.build.js:116303
 msgid "Border Color"
 msgstr ""
 
@@ -1091,6 +1128,7 @@ msgid "em"
 msgstr ""
 
 #: dist/blocks.build.js:90202
+#: dist/blocks.build.js:115245
 #: dist/blocks.build.js:126203
 msgid "General"
 msgstr ""
@@ -1252,6 +1290,7 @@ msgid "Image / Icon"
 msgstr ""
 
 #: dist/blocks.build.js:91313
+#: dist/blocks.build.js:115213
 msgid "Select Icon"
 msgstr ""
 
@@ -1269,6 +1308,152 @@ msgstr ""
 
 #: dist/blocks.build.js:91350
 msgid "Icon Color Settings"
+msgstr ""
+
+#: dist/blocks.build.js:114935
+msgid "table of contents"
+msgstr ""
+
+#: dist/blocks.build.js:114935
+msgid "table"
+msgstr ""
+
+#: dist/blocks.build.js:115249
+msgid "Select the heading to consider when generating the table"
+msgstr ""
+
+#: dist/blocks.build.js:115276
+msgid "Smooth Scroll"
+msgstr ""
+
+#: dist/blocks.build.js:115278
+msgid "This will be in Action only in Front End."
+msgstr ""
+
+#: dist/blocks.build.js:115287
+msgid "Smooth Scroll Offset (px)"
+msgstr ""
+
+#: dist/blocks.build.js:115296
+msgid "Scroll Animation Delay (ms)"
+msgstr ""
+
+#: dist/blocks.build.js:115307
+msgid "Show Scroll To Top"
+msgstr ""
+
+#: dist/blocks.build.js:115309
+msgid "This will add a Scroll to Top arrow at the bottom of page."
+msgstr ""
+
+#: dist/blocks.build.js:115320
+msgid "Icon Color"
+msgstr ""
+
+#: dist/blocks.build.js:115355
+#: dist/blocks.build.js:115460
+msgid "Content"
+msgstr ""
+
+#: dist/blocks.build.js:115359
+msgid "Heading"
+msgstr ""
+
+#: dist/blocks.build.js:115362
+msgid "Alignment"
+msgstr ""
+
+#: dist/blocks.build.js:115367
+msgid "Left"
+msgstr ""
+
+#: dist/blocks.build.js:115367
+msgid "Center"
+msgstr ""
+
+#: dist/blocks.build.js:115367
+msgid "Right"
+msgstr ""
+
+#: dist/blocks.build.js:115370
+msgid "Bottom Space"
+msgstr ""
+
+#: dist/blocks.build.js:115380
+#: dist/blocks.build.js:115633
+msgid "Typography"
+msgstr ""
+
+#: dist/blocks.build.js:115399
+msgid "Heading Color"
+msgstr ""
+
+#: dist/blocks.build.js:115417
+msgid "Collapsible"
+msgstr ""
+
+#: dist/blocks.build.js:115420
+msgid "Make Content Collapsible"
+msgstr ""
+
+#: dist/blocks.build.js:115430
+msgid "Keep Collapsed Initially"
+msgstr ""
+
+#: dist/blocks.build.js:115438
+msgid "Icon Size"
+msgstr ""
+
+#: dist/blocks.build.js:115463
+msgid "Disable Bullet Points"
+msgstr ""
+
+#: dist/blocks.build.js:115475
+msgid "Bullet Points Color"
+msgstr ""
+
+#: dist/blocks.build.js:115534
+#: dist/blocks.build.js:115572
+#: dist/blocks.build.js:115610
+msgid "Gap Between Lists"
+msgstr ""
+
+#: dist/blocks.build.js:115652
+#: dist/blocks.build.js:125924
+msgid "Content Color"
+msgstr ""
+
+#: dist/blocks.build.js:115669
+msgid "Content Hover Color"
+msgstr ""
+
+#: dist/blocks.build.js:115686
+#: dist/blocks.build.js:125821
+msgid "Style"
+msgstr ""
+
+#: dist/blocks.build.js:115711
+msgid "Custom Width"
+msgstr ""
+
+#: dist/blocks.build.js:115716
+msgid "Table's width will be auto if this is kept off."
+msgstr ""
+
+#: dist/blocks.build.js:115869
+#: dist/blocks.build.js:115879
+#: dist/blocks.build.js:115889
+msgid "Columns"
+msgstr ""
+
+#: dist/blocks.build.js:116129
+#: dist/blocks.build.js:116179
+#: dist/blocks.build.js:116229
+msgid "List Margin"
+msgstr ""
+
+#: dist/blocks.build.js:116332
+msgid "Table Of Contents"
 msgstr ""
 
 #: dist/blocks.build.js:122980
@@ -1374,10 +1559,6 @@ msgstr ""
 msgid "Director Name"
 msgstr ""
 
-#: dist/blocks.build.js:125821
-msgid "Style"
-msgstr ""
-
 #: dist/blocks.build.js:125823
 msgid "Title Typography"
 msgstr ""
@@ -1396,10 +1577,6 @@ msgstr ""
 
 #: dist/blocks.build.js:125902
 msgid "Author Color"
-msgstr ""
-
-#: dist/blocks.build.js:125924
-msgid "Content Color"
 msgstr ""
 
 #: dist/blocks.build.js:125941
