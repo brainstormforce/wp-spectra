@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-06T10:10:58+00:00\n"
+"POT-Creation-Date: 2021-01-07T04:17:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0-alpha-59d879d\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -425,9 +425,9 @@ msgstr ""
 #: dist/blocks.build.js:88785
 #: dist/blocks.build.js:91291
 #: dist/blocks.build.js:91302
-#: dist/blocks.build.js:124017
-#: dist/blocks.build.js:124142
-#: dist/blocks.build.js:124201
+#: dist/blocks.build.js:124030
+#: dist/blocks.build.js:124155
+#: dist/blocks.build.js:124214
 msgid "Icon"
 msgstr ""
 
@@ -464,7 +464,7 @@ msgid "This block allows you to add multiple buttons with a single block."
 msgstr ""
 
 #: classes/class-uagb-config.php:1318
-#: dist/blocks.build.js:124007
+#: dist/blocks.build.js:124020
 msgid "Button"
 msgstr ""
 
@@ -685,18 +685,18 @@ msgstr ""
 #: dist/blocks.build.js:3364
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Inset"
 msgstr ""
 
 #: dist/blocks.build.js:3364
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Outset"
 msgstr ""
 
@@ -796,22 +796,22 @@ msgstr ""
 #: dist/blocks.build.js:79458
 #: dist/blocks.build.js:90133
 #: dist/blocks.build.js:90156
-#: dist/blocks.build.js:115515
-#: dist/blocks.build.js:115553
-#: dist/blocks.build.js:115591
-#: dist/blocks.build.js:115743
-#: dist/blocks.build.js:115777
-#: dist/blocks.build.js:115811
-#: dist/blocks.build.js:115932
-#: dist/blocks.build.js:115982
-#: dist/blocks.build.js:116032
-#: dist/blocks.build.js:116110
-#: dist/blocks.build.js:116160
-#: dist/blocks.build.js:116210
-#: dist/blocks.build.js:123667
-#: dist/blocks.build.js:123817
-#: dist/blocks.build.js:123867
-#: dist/blocks.build.js:123917
+#: dist/blocks.build.js:115520
+#: dist/blocks.build.js:115558
+#: dist/blocks.build.js:115596
+#: dist/blocks.build.js:115748
+#: dist/blocks.build.js:115782
+#: dist/blocks.build.js:115816
+#: dist/blocks.build.js:115937
+#: dist/blocks.build.js:115987
+#: dist/blocks.build.js:116037
+#: dist/blocks.build.js:116115
+#: dist/blocks.build.js:116165
+#: dist/blocks.build.js:116215
+#: dist/blocks.build.js:123680
+#: dist/blocks.build.js:123830
+#: dist/blocks.build.js:123880
+#: dist/blocks.build.js:123930
 msgid "Size Type"
 msgstr ""
 
@@ -829,12 +829,14 @@ msgstr ""
 #: dist/blocks.build.js:88162
 #: dist/blocks.build.js:89918
 #: dist/blocks.build.js:90896
+#: dist/blocks.build.js:91755
 #: dist/blocks.build.js:96116
 #: dist/blocks.build.js:97779
 #: dist/blocks.build.js:98294
-#: dist/blocks.build.js:114935
-#: dist/blocks.build.js:124846
-#: dist/blocks.build.js:127259
+#: dist/blocks.build.js:114940
+#: dist/blocks.build.js:123318
+#: dist/blocks.build.js:124859
+#: dist/blocks.build.js:127272
 msgid "uag"
 msgstr ""
 
@@ -842,8 +844,8 @@ msgstr ""
 #: dist/blocks.build.js:90204
 #: dist/blocks.build.js:97302
 #: dist/blocks.build.js:98978
-#: dist/blocks.build.js:123648
-#: dist/blocks.build.js:127630
+#: dist/blocks.build.js:123661
+#: dist/blocks.build.js:127643
 msgid "Layout"
 msgstr ""
 
@@ -862,10 +864,10 @@ msgstr ""
 #: dist/blocks.build.js:78986
 #: dist/blocks.build.js:87221
 #: dist/blocks.build.js:88651
-#: dist/blocks.build.js:115760
-#: dist/blocks.build.js:115794
-#: dist/blocks.build.js:115828
-#: dist/blocks.build.js:124051
+#: dist/blocks.build.js:115765
+#: dist/blocks.build.js:115799
+#: dist/blocks.build.js:115833
+#: dist/blocks.build.js:124064
 msgid "Width"
 msgstr ""
 
@@ -914,7 +916,7 @@ msgstr ""
 #: dist/blocks.build.js:88951
 #: dist/blocks.build.js:97455
 #: dist/blocks.build.js:99295
-#: dist/blocks.build.js:127958
+#: dist/blocks.build.js:127971
 msgid "Spacing"
 msgstr ""
 
@@ -924,12 +926,12 @@ msgstr ""
 
 #: dist/blocks.build.js:79232
 #: dist/blocks.build.js:97221
-#: dist/blocks.build.js:115951
-#: dist/blocks.build.js:116001
-#: dist/blocks.build.js:116051
-#: dist/blocks.build.js:123836
-#: dist/blocks.build.js:123886
-#: dist/blocks.build.js:123936
+#: dist/blocks.build.js:115956
+#: dist/blocks.build.js:116006
+#: dist/blocks.build.js:116056
+#: dist/blocks.build.js:123849
+#: dist/blocks.build.js:123899
+#: dist/blocks.build.js:123949
 msgid "Padding"
 msgstr ""
 
@@ -947,7 +949,7 @@ msgstr ""
 
 #: dist/blocks.build.js:79536
 #: dist/blocks.build.js:86696
-#: dist/blocks.build.js:115690
+#: dist/blocks.build.js:115695
 msgid "Background"
 msgstr ""
 
@@ -967,11 +969,11 @@ msgstr ""
 #: dist/blocks.build.js:98998
 #: dist/blocks.build.js:105363
 #: dist/blocks.build.js:105364
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:123747
-#: dist/blocks.build.js:126082
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:123760
+#: dist/blocks.build.js:126095
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "None"
 msgstr ""
 
@@ -979,12 +981,12 @@ msgstr ""
 #: dist/blocks.build.js:79635
 #: dist/blocks.build.js:79874
 #: dist/blocks.build.js:86703
-#: dist/blocks.build.js:123776
-#: dist/blocks.build.js:123991
-#: dist/blocks.build.js:124156
-#: dist/blocks.build.js:124220
-#: dist/blocks.build.js:127868
-#: dist/blocks.build.js:128127
+#: dist/blocks.build.js:123789
+#: dist/blocks.build.js:124004
+#: dist/blocks.build.js:124169
+#: dist/blocks.build.js:124233
+#: dist/blocks.build.js:127881
+#: dist/blocks.build.js:128140
 msgid "Color"
 msgstr ""
 
@@ -1014,11 +1016,11 @@ msgstr ""
 #: dist/blocks.build.js:98702
 #: dist/blocks.build.js:98732
 #: dist/blocks.build.js:98782
-#: dist/blocks.build.js:115337
-#: dist/blocks.build.js:115695
-#: dist/blocks.build.js:123724
-#: dist/blocks.build.js:124065
-#: dist/blocks.build.js:127875
+#: dist/blocks.build.js:115342
+#: dist/blocks.build.js:115700
+#: dist/blocks.build.js:123737
+#: dist/blocks.build.js:124078
+#: dist/blocks.build.js:127888
 msgid "Background Color"
 msgstr ""
 
@@ -1038,7 +1040,7 @@ msgstr ""
 #: dist/blocks.build.js:86744
 #: dist/blocks.build.js:88596
 #: dist/blocks.build.js:91331
-#: dist/blocks.build.js:126277
+#: dist/blocks.build.js:126290
 msgid "Replace image"
 msgstr ""
 
@@ -1110,7 +1112,7 @@ msgid "Fixed"
 msgstr ""
 
 #: dist/blocks.build.js:79611
-#: dist/blocks.build.js:115274
+#: dist/blocks.build.js:115279
 msgid "Scroll"
 msgstr ""
 
@@ -1141,9 +1143,9 @@ msgstr ""
 #: dist/blocks.build.js:90250
 #: dist/blocks.build.js:90267
 #: dist/blocks.build.js:90284
-#: dist/blocks.build.js:124145
-#: dist/blocks.build.js:124209
-#: dist/blocks.build.js:126292
+#: dist/blocks.build.js:124158
+#: dist/blocks.build.js:124222
+#: dist/blocks.build.js:126305
 msgid "Size"
 msgstr ""
 
@@ -1189,7 +1191,7 @@ msgstr ""
 
 #: dist/blocks.build.js:79716
 #: dist/blocks.build.js:79734
-#: dist/blocks.build.js:124015
+#: dist/blocks.build.js:124028
 msgid "Type"
 msgstr ""
 
@@ -1226,67 +1228,67 @@ msgstr ""
 
 #: dist/blocks.build.js:79821
 #: dist/blocks.build.js:86818
-#: dist/blocks.build.js:116267
-#: dist/blocks.build.js:123742
+#: dist/blocks.build.js:116272
+#: dist/blocks.build.js:123755
 msgid "Border"
 msgstr ""
 
 #: dist/blocks.build.js:79823
 #: dist/blocks.build.js:86820
-#: dist/blocks.build.js:116270
-#: dist/blocks.build.js:128136
+#: dist/blocks.build.js:116275
+#: dist/blocks.build.js:128149
 msgid "Border Style"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:123747
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:123760
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Solid"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:123747
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:123760
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Dotted"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:123747
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:123760
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Dashed"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:123747
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:123760
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Double"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Groove"
 msgstr ""
 
 #: dist/blocks.build.js:79828
 #: dist/blocks.build.js:86825
-#: dist/blocks.build.js:116275
-#: dist/blocks.build.js:128141
-#: dist/blocks.build.js:128194
+#: dist/blocks.build.js:116280
+#: dist/blocks.build.js:128154
+#: dist/blocks.build.js:128207
 msgid "Ridge"
 msgstr ""
 
@@ -1294,14 +1296,14 @@ msgstr ""
 #: dist/blocks.build.js:86831
 #: dist/blocks.build.js:97508
 #: dist/blocks.build.js:99271
-#: dist/blocks.build.js:116278
+#: dist/blocks.build.js:116283
 msgid "Border Width"
 msgstr ""
 
 #: dist/blocks.build.js:79841
 #: dist/blocks.build.js:86863
 #: dist/blocks.build.js:90315
-#: dist/blocks.build.js:116288
+#: dist/blocks.build.js:116293
 msgid "Border Radius"
 msgstr ""
 
@@ -1311,47 +1313,47 @@ msgstr ""
 #: dist/blocks.build.js:97159
 #: dist/blocks.build.js:98708
 #: dist/blocks.build.js:98738
-#: dist/blocks.build.js:116303
-#: dist/blocks.build.js:128169
+#: dist/blocks.build.js:116308
+#: dist/blocks.build.js:128182
 msgid "Border Color"
 msgstr ""
 
 #: dist/blocks.build.js:79873
-#: dist/blocks.build.js:123990
-#: dist/blocks.build.js:128126
+#: dist/blocks.build.js:124003
+#: dist/blocks.build.js:128139
 msgid "Box Shadow"
 msgstr ""
 
 #: dist/blocks.build.js:79875
 #: dist/blocks.build.js:90206
-#: dist/blocks.build.js:123992
-#: dist/blocks.build.js:128128
+#: dist/blocks.build.js:124005
+#: dist/blocks.build.js:128141
 msgid "Horizontal"
 msgstr ""
 
 #: dist/blocks.build.js:79876
 #: dist/blocks.build.js:90206
-#: dist/blocks.build.js:123993
-#: dist/blocks.build.js:128129
+#: dist/blocks.build.js:124006
+#: dist/blocks.build.js:128142
 msgid "Vertical"
 msgstr ""
 
 #: dist/blocks.build.js:79877
-#: dist/blocks.build.js:123994
-#: dist/blocks.build.js:128130
+#: dist/blocks.build.js:124007
+#: dist/blocks.build.js:128143
 msgid "Blur"
 msgstr ""
 
 #: dist/blocks.build.js:79878
-#: dist/blocks.build.js:123995
-#: dist/blocks.build.js:128131
+#: dist/blocks.build.js:124008
+#: dist/blocks.build.js:128144
 msgid "Spread"
 msgstr ""
 
 #: dist/blocks.build.js:79879
 #: dist/blocks.build.js:88607
-#: dist/blocks.build.js:123996
-#: dist/blocks.build.js:128132
+#: dist/blocks.build.js:124009
+#: dist/blocks.build.js:128145
 msgid "Position"
 msgstr ""
 
@@ -1365,8 +1367,8 @@ msgstr ""
 #: dist/blocks.build.js:88596
 #: dist/blocks.build.js:91320
 #: dist/blocks.build.js:91331
-#: dist/blocks.build.js:126266
-#: dist/blocks.build.js:126277
+#: dist/blocks.build.js:126279
+#: dist/blocks.build.js:126290
 msgid "Select Image"
 msgstr ""
 
@@ -1391,13 +1393,13 @@ msgstr ""
 #: dist/blocks.build.js:99162
 #: dist/blocks.build.js:99189
 #: dist/blocks.build.js:99216
-#: dist/blocks.build.js:115380
-#: dist/blocks.build.js:115633
-#: dist/blocks.build.js:123972
-#: dist/blocks.build.js:124033
-#: dist/blocks.build.js:128080
-#: dist/blocks.build.js:128106
-#: dist/blocks.build.js:128248
+#: dist/blocks.build.js:115385
+#: dist/blocks.build.js:115638
+#: dist/blocks.build.js:123985
+#: dist/blocks.build.js:124046
+#: dist/blocks.build.js:128093
+#: dist/blocks.build.js:128119
+#: dist/blocks.build.js:128261
 msgid "Typography"
 msgstr ""
 
@@ -1430,13 +1432,13 @@ msgid "Gap Between Content & Dots"
 msgstr ""
 
 #: dist/blocks.build.js:86630
-#: dist/blocks.build.js:127963
+#: dist/blocks.build.js:127976
 msgid "Row Gap"
 msgstr ""
 
 #: dist/blocks.build.js:86640
 #: dist/blocks.build.js:99308
-#: dist/blocks.build.js:128024
+#: dist/blocks.build.js:128037
 msgid "Content Padding"
 msgstr ""
 
@@ -1459,27 +1461,27 @@ msgstr ""
 #: dist/blocks.build.js:86751
 #: dist/blocks.build.js:88603
 #: dist/blocks.build.js:91343
-#: dist/blocks.build.js:126289
+#: dist/blocks.build.js:126302
 msgid "Remove Image"
 msgstr ""
 
 #: dist/blocks.build.js:86876
 #: dist/blocks.build.js:88246
-#: dist/blocks.build.js:125402
+#: dist/blocks.build.js:125415
 msgid "Thumbnail"
 msgstr ""
 
 #: dist/blocks.build.js:86876
 #: dist/blocks.build.js:88246
 #: dist/blocks.build.js:105348
-#: dist/blocks.build.js:125402
+#: dist/blocks.build.js:125415
 msgid "Medium"
 msgstr ""
 
 #: dist/blocks.build.js:86876
 #: dist/blocks.build.js:88246
 #: dist/blocks.build.js:105353
-#: dist/blocks.build.js:125402
+#: dist/blocks.build.js:125415
 msgid "Large"
 msgstr ""
 
@@ -1542,9 +1544,9 @@ msgstr ""
 #: dist/blocks.build.js:87123
 #: dist/blocks.build.js:87133
 #: dist/blocks.build.js:87143
-#: dist/blocks.build.js:115869
-#: dist/blocks.build.js:115879
-#: dist/blocks.build.js:115889
+#: dist/blocks.build.js:115874
+#: dist/blocks.build.js:115884
+#: dist/blocks.build.js:115894
 msgid "Columns"
 msgstr ""
 
@@ -1566,7 +1568,7 @@ msgstr ""
 #: dist/blocks.build.js:88612
 #: dist/blocks.build.js:97310
 #: dist/blocks.build.js:98985
-#: dist/blocks.build.js:115367
+#: dist/blocks.build.js:115372
 msgid "Left"
 msgstr ""
 
@@ -1574,7 +1576,7 @@ msgstr ""
 #: dist/blocks.build.js:88612
 #: dist/blocks.build.js:97310
 #: dist/blocks.build.js:98985
-#: dist/blocks.build.js:115367
+#: dist/blocks.build.js:115372
 msgid "Right"
 msgstr ""
 
@@ -1625,7 +1627,7 @@ msgstr ""
 #: dist/blocks.build.js:91215
 #: dist/blocks.build.js:97172
 #: dist/blocks.build.js:98751
-#: dist/blocks.build.js:127934
+#: dist/blocks.build.js:127947
 msgid "Normal"
 msgstr ""
 
@@ -1705,7 +1707,7 @@ msgstr ""
 #: dist/blocks.build.js:91313
 #: dist/blocks.build.js:97104
 #: dist/blocks.build.js:98616
-#: dist/blocks.build.js:115213
+#: dist/blocks.build.js:115218
 msgid "Select Icon"
 msgstr ""
 
@@ -1805,8 +1807,8 @@ msgid "Social Icons"
 msgstr ""
 
 #: dist/blocks.build.js:88921
-#: dist/blocks.build.js:125842
-#: dist/blocks.build.js:127892
+#: dist/blocks.build.js:125855
+#: dist/blocks.build.js:127905
 msgid "Title Color"
 msgstr ""
 
@@ -1815,7 +1817,7 @@ msgid "Designation Color"
 msgstr ""
 
 #: dist/blocks.build.js:88933
-#: dist/blocks.build.js:125880
+#: dist/blocks.build.js:125893
 msgid "Description Color"
 msgstr ""
 
@@ -1828,7 +1830,7 @@ msgid "Social Icon Hover Color"
 msgstr ""
 
 #: dist/blocks.build.js:88954
-#: dist/blocks.build.js:128046
+#: dist/blocks.build.js:128059
 msgid "Title Bottom Spacing"
 msgstr ""
 
@@ -1859,11 +1861,12 @@ msgid "icon"
 msgstr ""
 
 #: dist/blocks.build.js:90202
+#: dist/blocks.build.js:91686
 #: dist/blocks.build.js:97298
-#: dist/blocks.build.js:115245
-#: dist/blocks.build.js:123643
-#: dist/blocks.build.js:126203
-#: dist/blocks.build.js:127628
+#: dist/blocks.build.js:115250
+#: dist/blocks.build.js:123656
+#: dist/blocks.build.js:126216
+#: dist/blocks.build.js:127641
 msgid "General"
 msgstr ""
 
@@ -1916,7 +1919,7 @@ msgid "Icon Background Hover Color"
 msgstr ""
 
 #: dist/blocks.build.js:91219
-#: dist/blocks.build.js:127938
+#: dist/blocks.build.js:127951
 msgid "Hover"
 msgstr ""
 
@@ -1996,6 +1999,322 @@ msgstr ""
 msgid "Icon Color Settings"
 msgstr ""
 
+#: dist/blocks.build.js:91690
+msgid "This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it."
+msgstr ""
+
+#: dist/blocks.build.js:91695
+msgid "Address"
+msgstr ""
+
+#: dist/blocks.build.js:91702
+msgid "Type the address"
+msgstr ""
+
+#: dist/blocks.build.js:91705
+msgid "Zoom"
+msgstr ""
+
+#: dist/blocks.build.js:91716
+msgid "Height"
+msgstr ""
+
+#: dist/blocks.build.js:91726
+msgid "Language"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Afrikaans"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Albanian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Amharic"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Arabic"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Armenian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Azerbaijani"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Basque"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Belarusian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Bengali"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Bosnian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Bulgarian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Burmese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Catalan"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Chinese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Croatian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Czech"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Danish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Dutch"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "English"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Estonian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Farsi"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Finnish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "French"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Galician"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Georgian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "German"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Greek"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Gujarati"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Hebrew"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Hindi"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Hungarian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Icelandic"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Indonesian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Italian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Japanese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Kannada"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Kazakh"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Khmer"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Korean"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Kyrgyz"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Lao"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Latvian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Lithuanian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Macedonian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Malay"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Malayalam"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Marathi"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Mongolian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Nepali"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Norwegian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Polish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Portuguese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Punjabi"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Romanian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Russian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Serbian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Sinhalese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Slovak"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Slovenian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Spanish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Swahili"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Swedish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Tamil"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Telugu"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Thai"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Turkish"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Ukrainian"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Urdu"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Uzbek"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Vietnamese"
+msgstr ""
+
+#: dist/blocks.build.js:91731
+msgid "Zulu"
+msgstr ""
+
+#: dist/blocks.build.js:91755
+msgid "google map"
+msgstr ""
+
+#: dist/blocks.build.js:91755
+msgid "map"
+msgstr ""
+
 #: dist/blocks.build.js:96116
 #: dist/blocks.build.js:97779
 msgid "Timeline"
@@ -2012,7 +2331,7 @@ msgstr ""
 #: dist/blocks.build.js:97147
 #: dist/blocks.build.js:98696
 #: dist/blocks.build.js:98726
-#: dist/blocks.build.js:115320
+#: dist/blocks.build.js:115325
 msgid "Icon Color"
 msgstr ""
 
@@ -2049,14 +2368,14 @@ msgstr ""
 
 #: dist/blocks.build.js:97240
 #: dist/blocks.build.js:98811
-#: dist/blocks.build.js:115399
+#: dist/blocks.build.js:115404
 msgid "Heading Color"
 msgstr ""
 
 #: dist/blocks.build.js:97246
 #: dist/blocks.build.js:98853
-#: dist/blocks.build.js:115652
-#: dist/blocks.build.js:125924
+#: dist/blocks.build.js:115657
+#: dist/blocks.build.js:125937
 msgid "Content Color"
 msgstr ""
 
@@ -2069,7 +2388,7 @@ msgstr ""
 #: dist/blocks.build.js:97318
 #: dist/blocks.build.js:98985
 #: dist/blocks.build.js:98993
-#: dist/blocks.build.js:115367
+#: dist/blocks.build.js:115372
 msgid "Center"
 msgstr ""
 
@@ -2102,15 +2421,15 @@ msgstr ""
 
 #: dist/blocks.build.js:97360
 #: dist/blocks.build.js:99098
-#: dist/blocks.build.js:115359
+#: dist/blocks.build.js:115364
 msgid "Heading"
 msgstr ""
 
 #: dist/blocks.build.js:97383
 #: dist/blocks.build.js:99026
 #: dist/blocks.build.js:99132
-#: dist/blocks.build.js:115355
-#: dist/blocks.build.js:115460
+#: dist/blocks.build.js:115360
+#: dist/blocks.build.js:115465
 msgid "Content"
 msgstr ""
 
@@ -2149,7 +2468,7 @@ msgstr ""
 
 #: dist/blocks.build.js:97492
 #: dist/blocks.build.js:99251
-#: dist/blocks.build.js:115438
+#: dist/blocks.build.js:115443
 msgid "Icon Size"
 msgstr ""
 
@@ -2174,7 +2493,7 @@ msgid "Write a Heading"
 msgstr ""
 
 #: dist/blocks.build.js:98294
-#: dist/blocks.build.js:127259
+#: dist/blocks.build.js:127272
 msgid "post"
 msgstr ""
 
@@ -2183,7 +2502,7 @@ msgid "timeline"
 msgstr ""
 
 #: dist/blocks.build.js:98593
-#: dist/blocks.build.js:127492
+#: dist/blocks.build.js:127505
 msgid "Select Taxonomy"
 msgstr ""
 
@@ -2192,7 +2511,7 @@ msgid "All"
 msgstr ""
 
 #: dist/blocks.build.js:98832
-#: dist/blocks.build.js:125902
+#: dist/blocks.build.js:125915
 msgid "Author Color"
 msgstr ""
 
@@ -2209,12 +2528,12 @@ msgid "Query"
 msgstr ""
 
 #: dist/blocks.build.js:98917
-#: dist/blocks.build.js:127697
+#: dist/blocks.build.js:127710
 msgid "Post Type"
 msgstr ""
 
 #: dist/blocks.build.js:98926
-#: dist/blocks.build.js:127705
+#: dist/blocks.build.js:127718
 msgid "Taxonomy"
 msgstr ""
 
@@ -2338,655 +2657,663 @@ msgstr ""
 msgid "Extra Large"
 msgstr ""
 
-#: dist/blocks.build.js:114935
+#: dist/blocks.build.js:114940
 msgid "table of contents"
 msgstr ""
 
-#: dist/blocks.build.js:114935
+#: dist/blocks.build.js:114940
 msgid "table"
 msgstr ""
 
-#: dist/blocks.build.js:115249
+#: dist/blocks.build.js:115254
 msgid "Select the heading to consider when generating the table"
 msgstr ""
 
-#: dist/blocks.build.js:115276
+#: dist/blocks.build.js:115281
 msgid "Smooth Scroll"
 msgstr ""
 
-#: dist/blocks.build.js:115278
+#: dist/blocks.build.js:115283
 msgid "This will be in Action only in Front End."
 msgstr ""
 
-#: dist/blocks.build.js:115287
+#: dist/blocks.build.js:115292
 msgid "Smooth Scroll Offset (px)"
 msgstr ""
 
-#: dist/blocks.build.js:115296
+#: dist/blocks.build.js:115301
 msgid "Scroll Animation Delay (ms)"
 msgstr ""
 
-#: dist/blocks.build.js:115307
+#: dist/blocks.build.js:115312
 msgid "Show Scroll To Top"
 msgstr ""
 
-#: dist/blocks.build.js:115309
+#: dist/blocks.build.js:115314
 msgid "This will add a Scroll to Top arrow at the bottom of page."
 msgstr ""
 
-#: dist/blocks.build.js:115362
-#: dist/blocks.build.js:127790
+#: dist/blocks.build.js:115367
+#: dist/blocks.build.js:127803
 msgid "Alignment"
 msgstr ""
 
-#: dist/blocks.build.js:115370
+#: dist/blocks.build.js:115375
 msgid "Bottom Space"
 msgstr ""
 
-#: dist/blocks.build.js:115417
+#: dist/blocks.build.js:115422
 msgid "Collapsible"
 msgstr ""
 
-#: dist/blocks.build.js:115420
+#: dist/blocks.build.js:115425
 msgid "Make Content Collapsible"
 msgstr ""
 
-#: dist/blocks.build.js:115430
+#: dist/blocks.build.js:115435
 msgid "Keep Collapsed Initially"
 msgstr ""
 
-#: dist/blocks.build.js:115463
+#: dist/blocks.build.js:115468
 msgid "Disable Bullet Points"
 msgstr ""
 
-#: dist/blocks.build.js:115475
+#: dist/blocks.build.js:115480
 msgid "Bullet Points Color"
 msgstr ""
 
-#: dist/blocks.build.js:115534
-#: dist/blocks.build.js:115572
-#: dist/blocks.build.js:115610
+#: dist/blocks.build.js:115539
+#: dist/blocks.build.js:115577
+#: dist/blocks.build.js:115615
 msgid "Gap Between Lists"
 msgstr ""
 
-#: dist/blocks.build.js:115669
+#: dist/blocks.build.js:115674
 msgid "Content Hover Color"
 msgstr ""
 
-#: dist/blocks.build.js:115686
-#: dist/blocks.build.js:123745
-#: dist/blocks.build.js:125821
-#: dist/blocks.build.js:128070
+#: dist/blocks.build.js:115691
+#: dist/blocks.build.js:123758
+#: dist/blocks.build.js:125834
+#: dist/blocks.build.js:128083
 msgid "Style"
 msgstr ""
 
-#: dist/blocks.build.js:115711
+#: dist/blocks.build.js:115716
 msgid "Custom Width"
 msgstr ""
 
-#: dist/blocks.build.js:115716
+#: dist/blocks.build.js:115721
 msgid "Table's width will be auto if this is kept off."
 msgstr ""
 
-#: dist/blocks.build.js:116129
-#: dist/blocks.build.js:116179
-#: dist/blocks.build.js:116229
+#: dist/blocks.build.js:116134
+#: dist/blocks.build.js:116184
+#: dist/blocks.build.js:116234
 msgid "List Margin"
 msgstr ""
 
-#: dist/blocks.build.js:116332
+#: dist/blocks.build.js:116337
 msgid "Table Of Contents"
 msgstr ""
 
-#: dist/blocks.build.js:122980
+#: dist/blocks.build.js:122993
 msgid "Notice Title"
 msgstr ""
 
-#: dist/blocks.build.js:122991
+#: dist/blocks.build.js:123004
 msgid "Add notice text..."
 msgstr ""
 
-#: dist/blocks.build.js:123650
+#: dist/blocks.build.js:123318
+msgid "search"
+msgstr ""
+
+#: dist/blocks.build.js:123318
+msgid "wp"
+msgstr ""
+
+#: dist/blocks.build.js:123663
 msgid "Classic"
 msgstr ""
 
-#: dist/blocks.build.js:123650
+#: dist/blocks.build.js:123663
 msgid "Minimal"
 msgstr ""
 
-#: dist/blocks.build.js:123659
+#: dist/blocks.build.js:123672
 msgid "Placeholder"
 msgstr ""
 
-#: dist/blocks.build.js:123684
+#: dist/blocks.build.js:123697
 msgid "Input Width"
 msgstr ""
 
-#: dist/blocks.build.js:123700
+#: dist/blocks.build.js:123713
 msgid "Input Box"
 msgstr ""
 
-#: dist/blocks.build.js:123707
-#: dist/blocks.build.js:124102
-#: dist/blocks.build.js:127542
+#: dist/blocks.build.js:123720
+#: dist/blocks.build.js:124115
+#: dist/blocks.build.js:127555
 msgid "Text Color"
 msgstr ""
 
-#: dist/blocks.build.js:123756
+#: dist/blocks.build.js:123769
 msgid "Thickness (px)"
 msgstr ""
 
-#: dist/blocks.build.js:123765
-#: dist/blocks.build.js:128157
+#: dist/blocks.build.js:123778
+#: dist/blocks.build.js:128170
 msgid "Rounded Corners (px)"
 msgstr ""
 
-#: dist/blocks.build.js:124017
+#: dist/blocks.build.js:124030
 msgid "Text"
 msgstr ""
 
-#: dist/blocks.build.js:124082
+#: dist/blocks.build.js:124095
 msgid "Background Hover Color"
 msgstr ""
 
-#: dist/blocks.build.js:124119
-#: dist/blocks.build.js:127585
+#: dist/blocks.build.js:124132
+#: dist/blocks.build.js:127598
 msgid "Text Hover Color"
 msgstr ""
 
-#: dist/blocks.build.js:124173
+#: dist/blocks.build.js:124186
 msgid "Hover Color"
 msgstr ""
 
-#: dist/blocks.build.js:124262
+#: dist/blocks.build.js:124275
 msgid "Search"
 msgstr ""
 
-#: dist/blocks.build.js:124846
+#: dist/blocks.build.js:124859
 msgid "ratings"
 msgstr ""
 
-#: dist/blocks.build.js:124846
+#: dist/blocks.build.js:124859
 msgid "review"
 msgstr ""
 
-#: dist/blocks.build.js:124846
+#: dist/blocks.build.js:124859
 msgid "schema"
 msgstr ""
 
-#: dist/blocks.build.js:125718
+#: dist/blocks.build.js:125731
 msgid "Audio book"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Individual Product"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Product Collection"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Product Group"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Product Model"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Some Products"
 msgstr ""
 
-#: dist/blocks.build.js:125719
+#: dist/blocks.build.js:125732
 msgid "Vehicle"
 msgstr ""
 
-#: dist/blocks.build.js:125720
+#: dist/blocks.build.js:125733
 msgid "Mobile Application"
 msgstr ""
 
-#: dist/blocks.build.js:125720
+#: dist/blocks.build.js:125733
 msgid "Video Game"
 msgstr ""
 
-#: dist/blocks.build.js:125720
+#: dist/blocks.build.js:125733
 msgid "Web Application"
 msgstr ""
 
-#: dist/blocks.build.js:125734
+#: dist/blocks.build.js:125747
 msgid "ISBN"
 msgstr ""
 
-#: dist/blocks.build.js:125739
-#: dist/blocks.build.js:125747
-#: dist/blocks.build.js:126098
-#: dist/blocks.build.js:126170
+#: dist/blocks.build.js:125752
+#: dist/blocks.build.js:125760
+#: dist/blocks.build.js:126111
+#: dist/blocks.build.js:126183
 msgid "Note: This is a mandatory field for the Review schema"
 msgstr ""
 
-#: dist/blocks.build.js:125742
+#: dist/blocks.build.js:125755
 msgid "Book author name"
 msgstr ""
 
-#: dist/blocks.build.js:125758
+#: dist/blocks.build.js:125771
 msgid "Provider"
 msgstr ""
 
-#: dist/blocks.build.js:125773
+#: dist/blocks.build.js:125786
 msgid "Application Category"
 msgstr ""
 
-#: dist/blocks.build.js:125780
+#: dist/blocks.build.js:125793
 msgid "Operating System"
 msgstr ""
 
-#: dist/blocks.build.js:125795
+#: dist/blocks.build.js:125808
 msgid "Director Name"
 msgstr ""
 
-#: dist/blocks.build.js:125823
+#: dist/blocks.build.js:125836
 msgid "Title Typography"
 msgstr ""
 
-#: dist/blocks.build.js:125861
+#: dist/blocks.build.js:125874
 msgid "Description Typography"
 msgstr ""
 
-#: dist/blocks.build.js:125941
+#: dist/blocks.build.js:125954
 msgid "Summary Typography"
 msgstr ""
 
-#: dist/blocks.build.js:125960
+#: dist/blocks.build.js:125973
 msgid "Summary Color"
 msgstr ""
 
-#: dist/blocks.build.js:125978
+#: dist/blocks.build.js:125991
 msgid "Active Star Color"
 msgstr ""
 
-#: dist/blocks.build.js:125996
+#: dist/blocks.build.js:126009
 msgid "Inactive Star Color"
 msgstr ""
 
-#: dist/blocks.build.js:126014
+#: dist/blocks.build.js:126027
 msgid "Star Outline Color"
 msgstr ""
 
-#: dist/blocks.build.js:126031
+#: dist/blocks.build.js:126044
 msgid "Overall Padding (px)"
 msgstr ""
 
-#: dist/blocks.build.js:126062
+#: dist/blocks.build.js:126075
 msgid "Schema"
 msgstr ""
 
-#: dist/blocks.build.js:126064
+#: dist/blocks.build.js:126077
 msgid "Item type"
 msgstr ""
 
-#: dist/blocks.build.js:126078
+#: dist/blocks.build.js:126091
 msgid "Book"
 msgstr ""
 
-#: dist/blocks.build.js:126078
+#: dist/blocks.build.js:126091
 msgid "Course"
 msgstr ""
 
-#: dist/blocks.build.js:126078
+#: dist/blocks.build.js:126091
 msgid "Movie"
 msgstr ""
 
-#: dist/blocks.build.js:126078
+#: dist/blocks.build.js:126091
 msgid "Product"
 msgstr ""
 
-#: dist/blocks.build.js:126078
+#: dist/blocks.build.js:126091
 msgid "Software Application"
 msgstr ""
 
-#: dist/blocks.build.js:126081
+#: dist/blocks.build.js:126094
 msgid "Item subtype"
 msgstr ""
 
-#: dist/blocks.build.js:126093
+#: dist/blocks.build.js:126106
 msgid "Review publisher"
 msgstr ""
 
-#: dist/blocks.build.js:126103
+#: dist/blocks.build.js:126116
 msgid "Date of publish"
 msgstr ""
 
-#: dist/blocks.build.js:126119
+#: dist/blocks.build.js:126132
 msgid "Brand"
 msgstr ""
 
-#: dist/blocks.build.js:126126
+#: dist/blocks.build.js:126139
 msgid "SKU"
 msgstr ""
 
-#: dist/blocks.build.js:126133
+#: dist/blocks.build.js:126146
 msgid "Identifier"
 msgstr ""
 
-#: dist/blocks.build.js:126140
+#: dist/blocks.build.js:126153
 msgid "Identifier type"
 msgstr ""
 
-#: dist/blocks.build.js:126154
+#: dist/blocks.build.js:126167
 msgid "Offer Currency"
 msgstr ""
 
-#: dist/blocks.build.js:126165
+#: dist/blocks.build.js:126178
 msgid "Offer Price"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Discontinued"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "In Stock"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "In Store Only"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Limited Availability"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Online Only"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Out Of Stock"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Pre Order"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Pre Sale"
 msgstr ""
 
-#: dist/blocks.build.js:126175
+#: dist/blocks.build.js:126188
 msgid "Sold Out"
 msgstr ""
 
-#: dist/blocks.build.js:126185
+#: dist/blocks.build.js:126198
 msgid "Price Valid Until"
 msgstr ""
 
-#: dist/blocks.build.js:126207
+#: dist/blocks.build.js:126220
 msgid "Review Title"
 msgstr ""
 
-#: dist/blocks.build.js:126210
+#: dist/blocks.build.js:126223
 msgid "Tag"
 msgstr ""
 
-#: dist/blocks.build.js:126229
+#: dist/blocks.build.js:126242
 msgid "Open in new window"
 msgstr ""
 
-#: dist/blocks.build.js:126234
+#: dist/blocks.build.js:126247
 msgid "Show review description"
 msgstr ""
 
-#: dist/blocks.build.js:126239
-#: dist/blocks.build.js:126247
-#: dist/blocks.build.js:126255
+#: dist/blocks.build.js:126252
+#: dist/blocks.build.js:126260
+#: dist/blocks.build.js:126268
 msgid "Note: This is a mandatory field for the Review schema."
 msgstr ""
 
-#: dist/blocks.build.js:126242
+#: dist/blocks.build.js:126255
 msgid "Show review author"
 msgstr ""
 
-#: dist/blocks.build.js:126250
+#: dist/blocks.build.js:126263
 msgid "Show review image"
 msgstr ""
 
-#: dist/blocks.build.js:126301
+#: dist/blocks.build.js:126314
 msgid "Show ratings"
 msgstr ""
 
-#: dist/blocks.build.js:126306
+#: dist/blocks.build.js:126319
 msgid "Note: Add feature/section ratings separately."
 msgstr ""
 
-#: dist/blocks.build.js:126309
+#: dist/blocks.build.js:126322
 msgid "Enable schema support"
 msgstr ""
 
-#: dist/blocks.build.js:126814
+#: dist/blocks.build.js:126827
 msgid "Missing merchant-specific identifier for product ( SKU )"
 msgstr ""
 
-#: dist/blocks.build.js:126818
+#: dist/blocks.build.js:126831
 msgid "Missing brand of the product"
 msgstr ""
 
-#: dist/blocks.build.js:126822
+#: dist/blocks.build.js:126835
 msgid "Missing offer Type"
 msgstr ""
 
-#: dist/blocks.build.js:126826
+#: dist/blocks.build.js:126839
 msgid "Missing offer currency of a product"
 msgstr ""
 
-#: dist/blocks.build.js:126830
+#: dist/blocks.build.js:126843
 msgid "Missing offer price of a product"
 msgstr ""
 
-#: dist/blocks.build.js:126834
+#: dist/blocks.build.js:126847
 msgid "Missing offer expiry of a product"
 msgstr ""
 
-#: dist/blocks.build.js:126838
+#: dist/blocks.build.js:126851
 msgid "Missing global identifiers"
 msgstr ""
 
-#: dist/blocks.build.js:126845
+#: dist/blocks.build.js:126858
 msgid "Missing ISBN number of a book"
 msgstr ""
 
-#: dist/blocks.build.js:126849
+#: dist/blocks.build.js:126862
 msgid "Missing author of the book"
 msgstr ""
 
-#: dist/blocks.build.js:126856
+#: dist/blocks.build.js:126869
 msgid "Missing released date of the movie"
 msgstr ""
 
-#: dist/blocks.build.js:126860
+#: dist/blocks.build.js:126873
 msgid "Missing director name of the movie"
 msgstr ""
 
-#: dist/blocks.build.js:126867
+#: dist/blocks.build.js:126880
 msgid "Missing provider of the course"
 msgstr ""
 
-#: dist/blocks.build.js:126874
+#: dist/blocks.build.js:126887
 msgid "Missing type of application (Application Category)"
 msgstr ""
 
-#: dist/blocks.build.js:126878
+#: dist/blocks.build.js:126891
 msgid "Missing operating system(s) required"
 msgstr ""
 
-#: dist/blocks.build.js:126882
+#: dist/blocks.build.js:126895
 msgid "Missing Offer Type"
 msgstr ""
 
-#: dist/blocks.build.js:126886
+#: dist/blocks.build.js:126899
 msgid "Missing offer price of the application"
 msgstr ""
 
-#: dist/blocks.build.js:126890
+#: dist/blocks.build.js:126903
 msgid "Missing offer currency of the application"
 msgstr ""
 
-#: dist/blocks.build.js:126902
+#: dist/blocks.build.js:126915
 msgid "Missing title of the review"
 msgstr ""
 
-#: dist/blocks.build.js:126906
+#: dist/blocks.build.js:126919
 msgid "Missing review description"
 msgstr ""
 
-#: dist/blocks.build.js:126910
+#: dist/blocks.build.js:126923
 msgid "Missing review Image"
 msgstr ""
 
-#: dist/blocks.build.js:126914
+#: dist/blocks.build.js:126927
 msgid "Missing url field"
 msgstr ""
 
-#: dist/blocks.build.js:126918
+#: dist/blocks.build.js:126931
 msgid "Missing review author name"
 msgstr ""
 
-#: dist/blocks.build.js:126922
+#: dist/blocks.build.js:126935
 msgid "Missing review publisher"
 msgstr ""
 
-#: dist/blocks.build.js:126926
+#: dist/blocks.build.js:126939
 msgid "Missing date of publish"
 msgstr ""
 
-#: dist/blocks.build.js:126951
+#: dist/blocks.build.js:126964
 msgid "It seems that the following fields are empty. This may generate Schema errors / warnings for your Page, we recommend you to fill these fields."
 msgstr ""
 
-#: dist/blocks.build.js:126962
+#: dist/blocks.build.js:126975
 msgid "P.S. Note that this notice is visible only in the editor. This will not be visible in frontend. Also, once the required fields are added, this notice will go away."
 msgstr ""
 
-#: dist/blocks.build.js:126967
+#: dist/blocks.build.js:126980
 msgid "Read more."
 msgstr ""
 
-#: dist/blocks.build.js:127259
+#: dist/blocks.build.js:127272
 msgid "taxonomy"
 msgstr ""
 
-#: dist/blocks.build.js:127563
+#: dist/blocks.build.js:127576
 msgid "Bullet/Numbers Color"
 msgstr ""
 
-#: dist/blocks.build.js:127606
+#: dist/blocks.build.js:127619
 msgid "Bullet/Numbers Hover Color"
 msgstr ""
 
-#: dist/blocks.build.js:127635
+#: dist/blocks.build.js:127648
 msgid "Grid"
 msgstr ""
 
-#: dist/blocks.build.js:127635
+#: dist/blocks.build.js:127648
 msgid "List"
 msgstr ""
 
-#: dist/blocks.build.js:127658
+#: dist/blocks.build.js:127671
 msgid "Mobile Columns"
 msgstr ""
 
-#: dist/blocks.build.js:127668
+#: dist/blocks.build.js:127681
 msgid "Tab Columns"
 msgstr ""
 
-#: dist/blocks.build.js:127678
+#: dist/blocks.build.js:127691
 msgid "Desktop Columns"
 msgstr ""
 
-#: dist/blocks.build.js:127714
+#: dist/blocks.build.js:127727
 msgid "Display Message"
 msgstr ""
 
-#: dist/blocks.build.js:127719
+#: dist/blocks.build.js:127732
 msgid "If Taxonomy Not Found"
 msgstr ""
 
-#: dist/blocks.build.js:127727
+#: dist/blocks.build.js:127740
 msgid "Display Style"
 msgstr ""
 
-#: dist/blocks.build.js:127761
+#: dist/blocks.build.js:127774
 msgid "Show Empty Taxonomy"
 msgstr ""
 
-#: dist/blocks.build.js:127769
+#: dist/blocks.build.js:127782
 msgid "Show Posts Count"
 msgstr ""
 
-#: dist/blocks.build.js:127774
+#: dist/blocks.build.js:127787
 msgid "Show Count of taxonomy "
 msgstr ""
 
-#: dist/blocks.build.js:127777
+#: dist/blocks.build.js:127790
 msgid "Show Hierarchy"
 msgstr ""
 
-#: dist/blocks.build.js:127782
+#: dist/blocks.build.js:127795
 msgid "Show Hierarchy of taxonomy "
 msgstr ""
 
-#: dist/blocks.build.js:127829
+#: dist/blocks.build.js:127842
 msgid "List Style"
 msgstr ""
 
-#: dist/blocks.build.js:127912
+#: dist/blocks.build.js:127925
 msgid "Count Color"
 msgstr ""
 
-#: dist/blocks.build.js:127973
+#: dist/blocks.build.js:127986
 msgid "Column Gap"
 msgstr ""
 
-#: dist/blocks.build.js:128004
+#: dist/blocks.build.js:128017
 msgid "Mobile Content Padding"
 msgstr ""
 
-#: dist/blocks.build.js:128014
+#: dist/blocks.build.js:128027
 msgid "Tab Content Padding"
 msgstr ""
 
-#: dist/blocks.build.js:128058
+#: dist/blocks.build.js:128071
 msgid "Bottom Margin"
 msgstr ""
 
-#: dist/blocks.build.js:128077
+#: dist/blocks.build.js:128090
 msgid "Title "
 msgstr ""
 
-#: dist/blocks.build.js:128103
+#: dist/blocks.build.js:128116
 msgid "Count "
 msgstr ""
 
-#: dist/blocks.build.js:128147
+#: dist/blocks.build.js:128160
 msgid "Border Thickness"
 msgstr ""
 
-#: dist/blocks.build.js:128189
+#: dist/blocks.build.js:128202
 msgid "Separator Style"
 msgstr ""
 
-#: dist/blocks.build.js:128200
+#: dist/blocks.build.js:128213
 msgid "Separator Width (%)"
 msgstr ""
 
-#: dist/blocks.build.js:128210
+#: dist/blocks.build.js:128223
 msgid "Separator Thickness"
 msgstr ""
 
-#: dist/blocks.build.js:128225
+#: dist/blocks.build.js:128238
 msgid "Separator Color"
 msgstr ""
 
-#: dist/blocks.build.js:128245
+#: dist/blocks.build.js:128258
 msgid "List "
 msgstr ""
