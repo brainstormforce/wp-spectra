@@ -64,6 +64,7 @@ function styling( props ) {
 		ctaHColor,
 		ctaBgHColor,
 		titleBottomSpace,
+		imageBottomSpace,
 		metaBottomSpace,
 		excerptBottomSpace,
 		overlayOpacity,
@@ -135,6 +136,9 @@ function styling( props ) {
 			"padding-left" : generateCSSUnit( ( contentPadding ), "px" ),
 			"padding-right" : generateCSSUnit( ( contentPadding ), "px" ),
 			"text-align" : align
+		},
+		" .uagb-post__image": {
+			"margin-bottom": generateCSSUnit( imageBottomSpace, "px" )
 		},
 		" .uagb-post__text .uagb-post__title": {
 			"margin-bottom": generateCSSUnit( titleBottomSpace, "px" )

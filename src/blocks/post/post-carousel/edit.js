@@ -328,6 +328,7 @@ class UAGBPostCarousel extends Component {
 			ctaBgHColor,
 			arrowColor,
 			titleBottomSpace,
+			imageBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
 			autoplay,
@@ -1080,6 +1081,14 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
+					<RangeControl
+						label={ __( "Image Bottom Spacing" ) }
+						value={ imageBottomSpace }
+						onChange={ ( value ) => setAttributes( { imageBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 					<RangeControl
 						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }

@@ -347,6 +347,7 @@ class UAGBPostGrid extends Component {
 			ctaBgColor,
 			ctaHColor,
 			ctaBgHColor,
+			imageBottomSpace,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
@@ -1161,6 +1162,14 @@ class UAGBPostGrid extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
+					<RangeControl
+						label={ __( "Image Bottom Spacing" ) }
+						value={ imageBottomSpace }
+						onChange={ ( value ) => setAttributes( { imageBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 					<RangeControl
 						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }
