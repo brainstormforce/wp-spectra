@@ -125,39 +125,39 @@ class UAGBLottie extends Component {
        
         const controlsSettings = (
             <PanelBody
-                title={ __( "Controls" ) }
+                title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
                 initialOpen={ false }>
                 <ToggleControl
-                    label={ __( "Loop" ) }
+                    label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
                     checked={ loop }
                     onChange={ this.loopLottie }
-                    help={ __( 'Enable to loop animation.' ) }
+                    help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
                     />
                 
                 <RangeControl
-                    label={ __( "Speed" ) }
+                    label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
                     value={ speed }
                     onChange={ ( value ) => setAttributes( { speed: value } ) }
                     min={ 1 }
                     max={ 50 }
-                    help={ __( 'Animation speed.' ) }
+                    help={ __( 'Animation speed.', 'ultimate-addons-for-gutenberg' ) }
                     allowReset
                     />
                  <ToggleControl
-                    label={ __( "Reverse" ) }
+                    label={ __( "Reverse", 'ultimate-addons-for-gutenberg' ) }
                     checked={ reverse }
                     onChange={this.reverseDirection}
-                    help={ __( 'Direction of animation.' ) }
+                    help={ __( 'Direction of animation.', 'ultimate-addons-for-gutenberg' ) }
                     />
                 <SelectControl
-					label={ __( "Play On" ) }
+					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
 					value={ playOn }
 					onChange={ ( value ) => setAttributes( { playOn: value } ) }
 					options={ [
-						{ value: "none", label: __( "None" ) },
-						{ value: "hover", label: __( "On Hover" ) },
-						{ value: "click", label: __( "On Click" ) },
-						{ value: "scroll", label: __( "Scroll" ) },
+						{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
                     ] }
 				/>                
             </PanelBody>
@@ -165,7 +165,7 @@ class UAGBLottie extends Component {
         
         const styleSettings = (
             <PanelBody
-            title={ __( "Style" ) }
+            title={ __( "Style", 'ultimate-addons-for-gutenberg' ) }
             initialOpen={ false }>
                 <TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
@@ -192,7 +192,7 @@ class UAGBLottie extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Width" ) }
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
                                             value={ widthMob }
                                             onChange={ ( value ) => setAttributes( { widthMob: value } ) }
                                             min={ 0 }
@@ -203,7 +203,7 @@ class UAGBLottie extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Width" ) }
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
                                             value={ widthTablet }
                                             onChange={ ( value ) => setAttributes( { widthTablet: value } ) }
                                             min={ 0 }
@@ -214,7 +214,7 @@ class UAGBLottie extends Component {
 								} else {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Width" ) }
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
                                             value={ width }
                                             onChange={ ( value ) => setAttributes( { width: value } ) }
                                             min={ 0 }
@@ -253,7 +253,7 @@ class UAGBLottie extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Height" ) }
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
                                             value={ heightMob }
                                             onChange={ ( value ) => setAttributes( { heightMob: value } ) }
                                             min={ 0 }
@@ -264,7 +264,7 @@ class UAGBLottie extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Height" ) }
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
                                             value={ heightTablet }
                                             onChange={ ( value ) => setAttributes( { heightTablet: value } ) }
                                             min={ 0 }
@@ -275,7 +275,7 @@ class UAGBLottie extends Component {
 								} else {
 									tabout = (
 										<RangeControl
-                                            label={ __( "Height" ) }
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
                                             value={ height }
                                             onChange={ ( value ) => setAttributes( { height: value } ) }
                                             min={ 0 }
@@ -289,13 +289,13 @@ class UAGBLottie extends Component {
 							}
 						}
 					</TabPanel>
-                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+                <p className="uagb-setting-label">{ __( "Background Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
                 <ColorPalette
                     value={ backgroundColor }
                     onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
                     allowReset
                     />
-                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHColor }} ></span></span></p>
+                <p className="uagb-setting-label">{ __( "Background Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHColor }} ></span></span></p>
                 <ColorPalette
                     value={ backgroundHColor }
                     onChange={ ( value ) => setAttributes( { backgroundHColor: value } ) }
@@ -315,8 +315,8 @@ class UAGBLottie extends Component {
 				<div className="uagb-lottie_upload_wrap">                    
                     <MediaPlaceholder
                         labels={ {
-                            title: __( 'Lottie' ),
-                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website' )
+                            title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
+                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website', 'ultimate-addons-for-gutenberg' )
                         } }                        
                         allowedTypes={ [ 'application/json' ] }
                         accept={ [ 'application/json' ] }
