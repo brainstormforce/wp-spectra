@@ -154,7 +154,7 @@ class UAGBLottie extends Component {
 					value={ playOn }
 					onChange={ ( value ) => setAttributes( { playOn: value } ) }
 					options={ [
-						{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
@@ -338,8 +338,11 @@ class UAGBLottie extends Component {
         };
 
         const reversedir = (reverse) ? -1 : 1
+        var play_animation = false;
 
-        const playIs = ( 'none' !== playOn ) ? true : false;
+        if ( 'none' === playOn || 'scroll' === playOn ) {
+            play_animation = false;
+        }
 
         return (
             <Fragment>
@@ -355,9 +358,9 @@ class UAGBLottie extends Component {
                     `uagb-block-${this.props.clientId.substr( 0, 8 )}`,
                     "uagb-lottie__outer-wrap",
                 ) }
-                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> null }
-                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> null } 
-                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> null }
+                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> play_animation=null }
+                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> play_animation=null } 
+                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> play_animation=null }
                 >
                     <Lottie 
                         ref={this.lottieplayer}
@@ -369,7 +372,7 @@ class UAGBLottie extends Component {
                                 className:"uagb-lottie-inner-wrap"
                             }
                         }}
-                        isStopped={playIs}                        
+                        isStopped={play_animation}                        
                         speed={speed}
                         isClickToPauseDisabled = {true}
                         direction={reversedir}                       
