@@ -22,17 +22,17 @@ registerBlockType( "uagb/advanced-heading", {
 	description: uagb_blocks_info.blocks["uagb/advanced-heading"]["description"],
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
-		__( "advanced heading" ),
-		__( "uag" ),
-		__( "heading" ),
+		__( "advanced heading", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
+		__( "heading", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
 	},
 	example: {
 		attributes: {
-			headingTitle: __( 'Write a Heading' ),
-			headingDesc: __( 'Write a Description' ),
+			headingTitle: __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ),
+			headingDesc: __( 'Write a Description', 'ultimate-addons-for-gutenberg' ),
 		},
 	},
 	category: uagb_blocks_info.category,
