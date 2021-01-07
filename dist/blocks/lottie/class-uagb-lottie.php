@@ -136,8 +136,13 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		 * @since x.x.x
 		 */
 		public function render_html( $attributes ) {
+			
+			$block_id = '';
 
-			$block_id     = $attributes['block_id'];
+			if ( isset( $attributes['block_id'] ) ) {
+				$block_id   = $attributes['block_id'];
+			}
+			
 			$main_classes = array(
 				'uagb-block-' . $block_id,
 				'uagb-lottie__outer-wrap',
