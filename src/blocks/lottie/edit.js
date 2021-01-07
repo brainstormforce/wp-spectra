@@ -157,8 +157,9 @@ class UAGBLottie extends Component {
 						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
-						{ value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
+                        { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
                     ] }
+                    help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
 				/>                
             </PanelBody>
         )
@@ -338,9 +339,10 @@ class UAGBLottie extends Component {
         };
 
         const reversedir = (reverse) ? -1 : 1
-        var play_animation = false;
 
-        if ( 'none' === playOn || 'scroll' === playOn ) {
+        var play_animation = true;
+
+        if ( 'none' === playOn || 'scroll' === playOn || 'undefined' === typeof playOn ) {
             play_animation = false;
         }
 
@@ -358,9 +360,9 @@ class UAGBLottie extends Component {
                     `uagb-block-${this.props.clientId.substr( 0, 8 )}`,
                     "uagb-lottie__outer-wrap",
                 ) }
-                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> play_animation=null }
-                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> play_animation=null } 
-                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> play_animation=null }
+                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> play_animation = true }
+                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> play_animation = true } 
+                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> play_animation = true }
                 >
                     <Lottie 
                         ref={this.lottieplayer}
