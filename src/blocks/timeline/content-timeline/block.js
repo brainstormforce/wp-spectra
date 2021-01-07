@@ -10,21 +10,14 @@
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-import classnames from "classnames"
-import times from "lodash/times"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import ".././style.scss"
+import "./style.scss"
 import deprecated from "./deprecated"
 import save from "./save"
 import attributes from "./attributes"
 import edit from "./edit"
-import contentTimelineStyle from ".././inline-styles"
-import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
-const { dateI18n, __experimentalGetSettings } = wp.date
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Components
 const { __ } = wp.i18n
@@ -34,9 +27,41 @@ const {
 	registerBlockType
 } = wp.blocks
 
-const {
-	RichText
-} = wp.blockEditor
+const { addFilter } = wp.hooks;
+const { Fragment } = wp.element;
+const { withSelect } = wp.data;
+const { compose, createHigherOrderComponent } = wp.compose;
+
+/**
+ * Override the default block element to add	wrapper props.
+ *
+ * @param  {Function} BlockListBlock Original component
+ * @return {Function} Wrapped component
+ */
+
+const enhance = compose(
+	
+	withSelect( ( select ) => {
+		return {
+			selected: select( 'core/block-editor' ).getSelectedBlock(),
+		};
+	} )
+);
+/**
+ * Add custom UAG attributes to selected blocks
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
+	return enhance( ( { ...props } ) => {
+		return (
+			<Fragment>
+				<BlockEdit { ...props } />
+			</Fragment>
+		);
+	} );
+}, 'withcontentTimeline' );
 
 registerBlockType( "uagb/content-timeline", {
 
@@ -56,6 +81,59 @@ registerBlockType( "uagb/content-timeline", {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		innerBlocks: [
+			{
+				name: 'uagb/content-timeline-child',
+				innerBlocks: [
+					{
+						name: 'uagb/content-timeline-child',
+						attributes: { time_heading: "Timeline Heading ",time_desc: "This is Timeline description, you can change me anytime click here ",t_date:'1/1/2019' },
+					},
+				],
+			},
+			{
+				name: 'uagb/content-timeline-child',
+				innerBlocks: [
+					{
+						name: 'uagb/content-timeline-child',
+						attributes: { time_heading: "Timeline Heading ",time_desc: "This is Timeline description, you can change me anytime click here ",t_date:'1/1/2019' },
+					},
+				],
+			},
+			{
+				name: 'uagb/content-timeline-child',
+				innerBlocks: [
+					{
+						name: 'uagb/content-timeline-child',
+						attributes: { time_heading: "Timeline Heading ",time_desc: "This is Timeline description, you can change me anytime click here ",t_date:'1/1/2019' },
+					},
+				],
+			},
+			{
+				name: 'uagb/content-timeline-child',
+				innerBlocks: [
+					{
+						name: 'uagb/content-timeline-child',
+						attributes: { time_heading: "Timeline Heading ",time_desc: "This is Timeline description, you can change me anytime click here ",t_date:'1/1/2019' },
+					},
+				],
+			},
+			{
+				name: 'uagb/content-timeline-child',
+				innerBlocks: [
+					{
+						name: 'uagb/content-timeline-child',
+						attributes: { time_heading: "Timeline Heading ",time_desc: "This is Timeline description, you can change me anytime click here ",t_date:'1/1/2019' },
+					},
+				],
+			},
+		],
+	},
 	deprecated,
 } )
+addFilter(
+	'editor.BlockEdit',
+	'uagb/content-timeline',
+	withcontentTimeline
+);
