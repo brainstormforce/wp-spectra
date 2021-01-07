@@ -33,7 +33,6 @@
 
 	.is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
 		height: 100%;
-		padding-top: 15px;
 	}
 
 	.is-masonry .uagb-post__inner-wrap {
@@ -77,11 +76,6 @@
 			width: 100%;
 		}
 	}
-
-	.uagb-post__text {
-		text-align: left;
-		box-sizing: border-box;
-	}
 	.uagb-post__image , .uagb-post__cta{
 		margin-bottom: 15px;
 	}
@@ -117,7 +111,7 @@
 		margin-bottom: 15px;
 	}
 
-	.uagb-post__text .uagb-post-grid-byline > * {
+	.uagb-post-grid-byline > * {
 		margin-right: 10px;
 	}
 
@@ -167,7 +161,7 @@
 		word-break: break-word;
 	}
 
-	.uagb-post__text p {
+	.uagb-post__inner-wrap p {
 		margin: 0 0 15px 0;
 
 		&:last-of-type {

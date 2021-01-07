@@ -714,6 +714,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'contentPaddingMobile'    => array(
 					'type' => 'number',
 				),
+				'ctaBottomSpace'          => array(
+					'type'    => 'number',
+					'default' => 15,
+				),
+				'imageBottomSpace'        => array(
+					'type'    => 'number',
+					'default' => 15,
+				),
 				'titleBottomSpace'        => array(
 					'type'    => 'number',
 					'default' => 15,

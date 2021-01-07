@@ -351,6 +351,7 @@ class UAGBPostGrid extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
+			ctaBottomSpace,
 			equalHeight,
 			excerptLength,
 			overlayOpacity,
@@ -1190,6 +1191,14 @@ class UAGBPostGrid extends Component {
 						label={ __( "Excerpt Bottom Spacing" ) }
 						value={ excerptBottomSpace }
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "CTA Bottom Spacing" ) }
+						value={ ctaBottomSpace }
+						onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset

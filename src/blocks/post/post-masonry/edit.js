@@ -305,6 +305,7 @@ class UAGBPostMasonry extends Component {
 			ctaHColor,
 			ctaBgHColor,
 			imageBottomSpace,
+			ctaBottomSpace,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
@@ -1328,6 +1329,14 @@ class UAGBPostMasonry extends Component {
 						label={ __( "Excerpt Bottom Spacing" ) }
 						value={ excerptBottomSpace }
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "CTA Bottom Spacing" ) }
+						value={ ctaBottomSpace }
+						onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
