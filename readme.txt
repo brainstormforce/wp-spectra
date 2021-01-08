@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Gravity Form Styler - Multistep form styling issue.
 * Fix: FAQ Schema - Fixed Accessibility issue.
 * Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
+* Fix: Taxonomy List - Fixed issue with broken links.
 
 = 1.19.0 =
 * New: Review Schema Block.
