@@ -23,7 +23,7 @@ class AuthorText extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ attributes.author }
-	                placeholder={ __( "Author" ) }
+	                placeholder={ __( "Author", 'ultimate-addons-for-gutenberg' ) }
 	                className='uagb-blockquote__author'
 	                onChange={ ( value ) => setAttributes( { author: value } ) }
 	                onMerge = { props.mergeBlocks }
