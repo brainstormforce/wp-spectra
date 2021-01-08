@@ -358,9 +358,7 @@ class UAGBPostGrid extends Component {
 		}
 
 
-		let taxonomyListOptions = [
-			{ value: "", label: __( "Select Taxonomy" ) }
-		]
+		let taxonomyListOptions = []
 
 		let categoryListOptions = [
 			{ value: "", label: __( "All" ) }
