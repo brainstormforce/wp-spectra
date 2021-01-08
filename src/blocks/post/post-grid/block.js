@@ -23,9 +23,9 @@ registerBlockType( "uagb/post-grid", {
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "grid" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "grid",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
 	example: {},
