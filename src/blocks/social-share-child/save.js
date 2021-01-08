@@ -24,10 +24,10 @@ export default function save( props ) {
 		link,
 	} = props.attributes
 
-	let url = links[type]
-
+	let url = links[type];	
+	
 	let image_icon_html = ""
-
+	
 	if ( image_icon == "icon" ) {
 		if ( icon ) {
 			image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
@@ -37,7 +37,7 @@ export default function save( props ) {
 			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
-	
+
 	return (
 		<div
 			className={ classnames(
@@ -46,7 +46,7 @@ export default function save( props ) {
 				className,
 				`uagb-block-${ block_id }`
 			) }
-		>
+		>			
 			<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 		</div>
 	)

@@ -69,6 +69,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
+
+			if ( 'twentyseventeen' === get_template() ) {
+
+				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
+			}
 		}
 
 		/**
@@ -80,12 +85,16 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.18.0' );
+			define( 'UAGB_VER', '1.19.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
-			define( 'UAGB_TABLET_BREAKPOINT', '976' );
-			define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
+				define( 'UAGB_TABLET_BREAKPOINT', '976' );
+			}
+			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
+				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			}
 		}
 
 		/**

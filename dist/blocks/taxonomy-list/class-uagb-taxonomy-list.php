@@ -14,14 +14,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 	/**
 	 * Class UAGB_Taxonomy_List.
 	 *
-	 * @since x.x.x
+	 * @since 1.18.1
 	 */
 	class UAGB_Taxonomy_List {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 * @var instance
 		 */
 		private static $instance;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function __construct() {
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		/**
 		 * Registers the `uagb/taxonomy-list` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function register_blocks() {
 
@@ -257,7 +257,6 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'string',
 							'default' => 'solid',
 						),
-
 						// Typograpghy attributes.
 						'titleFontSize'         => array(
 							'type' => 'number',
@@ -391,7 +390,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function grid_html( $attributes ) {
 			$block_id         = $attributes['block_id'];
@@ -417,7 +416,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					?>
 
 					<div class="uagb-taxomony-box">
-						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>">
+						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
 							<h4 class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?></h4>
 							<?php if ( $showCount ) { ?>
 								<div class="uagb-tax-count">
@@ -438,7 +437,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function list_html( $attributes ) {
 			$block_id         = $attributes['block_id'];
@@ -476,7 +475,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
 							<li class="uagb-tax-list">
 								<div class="uagb-tax-link-wrap">
-									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
+									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
 											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
 										<?php } ?>
@@ -484,7 +483,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 											<ul class="uagb-taxonomy-list-children">	
 												<?php foreach ( $newcategoriesList[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
+													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
 													<?php if ( $showCount ) { ?>
 														<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
 													<?php } ?>												
@@ -505,7 +504,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- Select -- </option>
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
-							<option value="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>" >
+							<option value="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>
 								<?php if ( $showCount ) { ?>
 									<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
@@ -531,7 +530,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.18.1
 		 */
 		public function render_html( $attributes ) {
 

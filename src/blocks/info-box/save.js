@@ -11,7 +11,7 @@ import Icon from "./components/Icon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeparator from "./components/InfoBoxSeparator"
 import CallToAction from "./components/CallToAction"
-import InfoBoxIconImage from "./components/InfoBoxIconImage"
+import InfoBoxIconImage from "./components/IconImage"
 
 const {
 	RichText
@@ -153,7 +153,7 @@ export default function save( props ) {
 		</div>
 	)
 
-	let target =""
+	let target ="_self"
 	if( ctaTarget ){
 		target ="_blank"
 	}

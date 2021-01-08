@@ -31,6 +31,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$dots   = ( 'dots' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
 			$arrows = ( 'arrows' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
+			$is_rtl       = is_rtl();
 
 			$slick_options = apply_filters(
 				'uagb_testimonials_slick_options',
@@ -44,7 +45,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 					'speed'          => $attr['transitionSpeed'],
 					'arrows'         => $arrows,
 					'dots'           => $dots,
-					'rtl'            => false,
+					'rtl'            => $is_rtl,
 					'prevArrow'      => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '"  ><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg></button>',
 					'nextArrow'      => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '" ><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg></button>',
 					'responsive'     => array(
@@ -119,9 +120,16 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $attr, $id ) {
-
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
+			global $post;
+			// Get the featured image.
+			if ( has_post_thumbnail() ) {
+				$thumbnail_id = get_post_thumbnail_id( $post->ID );
+				$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
+			} else {
+				$thumbnail = null;
+			}
 			ob_start();
 			?>
 			var ssLinks = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
@@ -134,7 +142,12 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						if( social_url == "mailto:?body=" ) {
 							target = "_self";
 						}
-						var request_url = social_url + window.location.href;
+						var  request_url ="";
+						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
+							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
+						}else{
+							request_url = social_url + window.location.href;
+						}
 						window.open( request_url, target );
 					});
 				}
@@ -248,6 +261,34 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
 			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
 			UAGB_Helper::blocks_google_font( $price_load_google_font, $price_font_family, $price_font_weight, $price_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for review block.
+		 *
+		 * @since 1.19.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_review_gfont( $attr ) {
+
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$content_load_google_fonts = isset( $attr['contentLoadGoogleFonts'] ) ? $attr['contentLoadGoogleFonts'] : '';
+			$content_font_family       = isset( $attr['contentFontFamily'] ) ? $attr['contentFontFamily'] : '';
+			$content_font_weight       = isset( $attr['contentFontWeight'] ) ? $attr['contentFontWeight'] : '';
+			$content_font_subset       = isset( $attr['contentFontSubset'] ) ? $attr['contentFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			UAGB_Helper::blocks_google_font( $content_load_google_fonts, $content_font_family, $content_font_weight, $content_font_subset );
 		}
 
 		/**
