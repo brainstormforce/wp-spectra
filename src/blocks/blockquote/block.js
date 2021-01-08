@@ -109,7 +109,6 @@ registerBlockType( "uagb/blockquote", {
 				blocks: ['core/list'],
 				transform: (attributes) => {
 					return createBlock('core/list', {
-						nodeName: 'UL',
 						values: attributes.descriptionText,
 					})
 				}

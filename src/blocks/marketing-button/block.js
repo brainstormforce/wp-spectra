@@ -41,11 +41,7 @@ registerBlockType( "uagb/marketing-button", {
 				blocks: ['core/buttons'],
 				transform: (attributes) => {
 					return createBlock('uagb/marketing-button', {
-						link: attributes.url,
-						heading: attributes.text,
-						align: attributes.align,
-						titleColor: attributes.textColor,
-						backgroundColor: attributes.backgroundColor
+						heading: attributes.name,
 					})
 				}
 			}
@@ -56,11 +52,7 @@ registerBlockType( "uagb/marketing-button", {
 				blocks: ['core/buttons'],
 				transform: (attributes) => {
 					return createBlock('core/buttons', {
-						url: attributes.link,
-						text: attributes.heading,
-						align: attributes.align,
-						textColor: attributes.titleColor,
-						backgroundColor: attributes.backgroundColor
+						name: attributes.heading,
 					})
 				}
 			}

@@ -68,6 +68,7 @@ registerBlockType( "uagb/advanced-heading", {
 				transform: (attributes) => {
 					return createBlock('uagb/advanced-heading', {
 						headingTitle: attributes.value,
+						headingDesc: attributes.citation,
 						className:'uagb-heading-text'
 					})
 				}
@@ -90,7 +91,6 @@ registerBlockType( "uagb/advanced-heading", {
 				blocks: ['core/list'],
 				transform: (attributes) => {
 					return createBlock('core/list', {
-						nodeName: 'UL',
 						values: attributes.headingTitle,
 						className:'uagb-heading-text'
 					})
@@ -102,6 +102,7 @@ registerBlockType( "uagb/advanced-heading", {
 				transform: (attributes) => {
 					return createBlock('core/quote', {
 						value: attributes.headingTitle,
+						citation: attributes.headingDesc,
 						className:'uagb-heading-text'
 					})
 				}
