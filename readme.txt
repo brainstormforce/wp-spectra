@@ -155,6 +155,10 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 When you use the Ultimate Addons for Gutenberg along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+== Credits ==
+
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+
 == Screenshots ==
 
 1. /assets/screenshots/1.png
@@ -171,6 +175,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Gravity Form Styler - Multistep form styling issue.
 * Fix: FAQ Schema - Fixed Accessibility issue.
 * Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
+* Fix: Taxonomy List - Fixed issue with broken links.
 
 = 1.19.0 =
 * New: Review Schema Block.
