@@ -58,7 +58,6 @@ registerBlockType( "uagb/advanced-heading", {
 				transform: (attributes) => {
 					return createBlock('uagb/advanced-heading', {
 						headingTitle: attributes.values,
-						className:'uagb-heading-text'
 					})
 				}
 			},

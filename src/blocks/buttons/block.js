@@ -64,28 +64,4 @@ registerBlockType( "uagb/buttons", {
 	edit,
 	save,
 	deprecated,
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: ['core/buttons'],
-				transform: ({values}) => {
-					return createBlock('uagb/buttons', {
-						values: values,
-					})
-				}
-			}
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: ['core/buttons'],
-				transform: ({values}) => {
-					return createBlock('core/buttons', {
-						values: values,
-					})
-				}
-			}
-		]
-	},
 } )

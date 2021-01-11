@@ -34,28 +34,4 @@ registerBlockType( "uagb/marketing-button", {
 	save,
 	example: {},
 	deprecated,
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: ['core/buttons'],
-				transform: (attributes) => {
-					return createBlock('uagb/marketing-button', {
-						heading: attributes.name,
-					})
-				}
-			}
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: ['core/buttons'],
-				transform: (attributes) => {
-					return createBlock('core/buttons', {
-						name: attributes.heading,
-					})
-				}
-			}
-		]
-	},
 } )
