@@ -253,6 +253,13 @@ const UAGB_Block_Icons = {
         el("path", { fill: "#4a00e0", d:"M30.080 29.547c-0.133 0-0.24-0.053-0.32-0.16l-3.6-3.947c-0.187-0.187-0.16-0.507 0.027-0.667 0.187-0.187 0.507-0.16 0.667 0.027l3.6 3.947c0.187 0.187 0.16 0.48-0.027 0.667 0 0 0 0 0 0-0.107 0.080-0.213 0.133-0.347 0.133z" } ),
         el("path", { fill: "#4a00e0", d:"M23.947 11.573h-17.040c-0.373 0-0.667 0.293-0.667 0.667s0.293 0.667 0.667 0.667h17.040c0.373 0 0.667-0.293 0.667-0.667s-0.293-0.667-0.667-0.667z" } ),
 	),
+	"lottie": el("svg", { width: 20, height: 20, role:"img", viewBox:"0 0 120 120", },
+
+		el("rect", { x:"8.1",y:"11.8", fill:"none", stroke:"#4a00e0", strokeWidth:"10",miterlimit:"10", width:"102.9", height:"99.9"} ),
+		el("ellipse", { transform:"matrix(0.9666 -0.2562 0.2562 0.9666 -22.8642 11.8718)", fill:"none", stroke:"#4a00e0", strokeWidth:"10", miterlimit:"10", cx:"34.1", cy:"93.7", rx:"0.1", ry:"0"} ),
+		el("ellipse", { transform:"matrix(-0.9666 0.2562 -0.2562 -0.9666 174.7596 36.9626)", fill:"none", stroke:"#4a00e0", strokeWidth:"10", miterlimit:"10", cx:"85", cy:"29.9", rx:"0.1", ry:"0"} ),
+		el("path", { fill:"none", stroke:"#4a00e0", strokeWidth:"10", miterlimit:"10", d:"M84.4,29.7c0,0-18-4.9-23.4,32.2S34.1,93.7,34.1,93.7"} ),
+	),
 }
 
 export default UAGB_Block_Icons

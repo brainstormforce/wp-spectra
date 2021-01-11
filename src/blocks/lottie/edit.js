@@ -5,7 +5,7 @@
 import classnames from "classnames"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
+import styling from "./styling"
 
 import Lottie from 'react-lottie';
 
@@ -25,6 +25,9 @@ const {
 	Button,
 	TextControl,
     ToggleControl,
+    TabPanel,
+    Dashicon,
+    SelectControl
 } = wp.components
 
 const { Component, Fragment } = wp.element
@@ -45,12 +48,22 @@ class UAGBLottie extends Component {
         
         // Assigning block_id in the attribute.
         this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-        this.props.setAttributes( { classMigrate: true } )
-      
-        
+        this.props.setAttributes( { classMigrate: true } );
+
+        // Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+		document.head.appendChild( $style )
     }
-    
-    
+
+    componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
+	}
+
     onSelectLottieJSON( media ) {
 
         const { setAttributes } = this.props
@@ -94,76 +107,199 @@ class UAGBLottie extends Component {
         
         const {
             height,
+            heightTablet,
+            heightMob,
             width,
+            widthTablet,
+            widthMob,
             backgroundColor,
             loop,            
             speed,
             reverse,
-            playOnHover,
             jsonLottie,
             lottieURl,
-            
+            playOn,
+            backgroundHColor
         } = attributes
 
        
         const controlsSettings = (
             <PanelBody
-                title={ __( "Controls" ) }
+                title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
                 initialOpen={ false }>
                 <ToggleControl
-                    label={ __( "Loop" ) }
+                    label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
                     checked={ loop }
                     onChange={ this.loopLottie }
-                    help={ __( 'Enable to loop animation.' ) }
+                    help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
                     />
                 
                 <RangeControl
-                    label={ __( "Speed" ) }
+                    label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
                     value={ speed }
                     onChange={ ( value ) => setAttributes( { speed: value } ) }
                     min={ 1 }
                     max={ 50 }
-                    help={ __( 'Animation speed.' ) }
+                    help={ __( 'Animation speed.', 'ultimate-addons-for-gutenberg' ) }
                     allowReset
                     />
                  <ToggleControl
-                    label={ __( "Reverse" ) }
+                    label={ __( "Reverse", 'ultimate-addons-for-gutenberg' ) }
                     checked={ reverse }
                     onChange={this.reverseDirection}
-                    help={ __( 'Direction of animation.' ) }
+                    help={ __( 'Direction of animation.', 'ultimate-addons-for-gutenberg' ) }
                     />
-                <ToggleControl
-                    label={ __( "Play on Hover" ) }
-                    checked={ playOnHover }
-                    onChange={ ( value ) => setAttributes( { playOnHover: ! playOnHover } ) }
-                    />                
+                <SelectControl
+					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
+					value={ playOn }
+					onChange={ ( value ) => setAttributes( { playOn: value } ) }
+					options={ [
+						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
+                        { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
+                    ] }
+                    help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
+				/>                
             </PanelBody>
         )
         
         const styleSettings = (
             <PanelBody
-            title={ __( "Style" ) }
+            title={ __( "Style", 'ultimate-addons-for-gutenberg' ) }
             initialOpen={ false }>
-                <RangeControl
-                    label={ __( "Width" ) }
-                    value={ width }
-                    onChange={ ( value ) => setAttributes( { width: value } ) }
-                    min={ 0 }
-                    max={ 1000 }
-                    allowReset
-                    />
-                <RangeControl
-                    label={ __( "Height" ) }
-                    value={ height }
-                    onChange={ ( value ) => setAttributes( { height: value } ) }
-                    min={ 0 }
-                    max={ 1000 }
-                    allowReset
-                    />
-                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+                <TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ widthMob }
+                                            onChange={ ( value ) => setAttributes( { widthMob: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ widthTablet }
+                                            onChange={ ( value ) => setAttributes( { widthTablet: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ width }
+                                            onChange={ ( value ) => setAttributes( { width: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+                    <TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ heightMob }
+                                            onChange={ ( value ) => setAttributes( { heightMob: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ heightTablet }
+                                            onChange={ ( value ) => setAttributes( { heightTablet: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								} else {
+									tabout = (
+										<RangeControl
+                                            label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+                                            value={ height }
+                                            onChange={ ( value ) => setAttributes( { height: value } ) }
+                                            min={ 0 }
+                                            max={ 1000 }
+                                            allowReset
+                                        />
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+                <p className="uagb-setting-label">{ __( "Background Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
                 <ColorPalette
                     value={ backgroundColor }
                     onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
+                    allowReset
+                    />
+                <p className="uagb-setting-label">{ __( "Background Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHColor }} ></span></span></p>
+                <ColorPalette
+                    value={ backgroundHColor }
+                    onChange={ ( value ) => setAttributes( { backgroundHColor: value } ) }
                     allowReset
                     />
             </PanelBody>
@@ -180,8 +316,8 @@ class UAGBLottie extends Component {
 				<div className="uagb-lottie_upload_wrap">                    
                     <MediaPlaceholder
                         labels={ {
-                            title: __( 'Lottie' ),
-                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website' )
+                            title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
+                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website', 'ultimate-addons-for-gutenberg' )
                         } }                        
                         allowedTypes={ [ 'application/json' ] }
                         accept={ [ 'application/json' ] }
@@ -203,7 +339,13 @@ class UAGBLottie extends Component {
         };
 
         const reversedir = (reverse) ? -1 : 1
-        
+
+        var play_animation = true;
+
+        if ( 'none' === playOn || 'scroll' === playOn || 'undefined' === typeof playOn ) {
+            play_animation = false;
+        }
+
         return (
             <Fragment>
                 
@@ -218,8 +360,10 @@ class UAGBLottie extends Component {
                     `uagb-block-${this.props.clientId.substr( 0, 8 )}`,
                     "uagb-lottie__outer-wrap",
                 ) }
-                onMouseEnter={ playOnHover ? handleLottieMouseEnter : ()=> null }
-                onMouseLeave={ playOnHover ? handleLottieMouseLeave : ()=> null } >
+                onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : ()=> play_animation = true }
+                onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> play_animation = true } 
+                onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> play_animation = true }
+                >
                     <Lottie 
                         ref={this.lottieplayer}
                         options={{                            
@@ -230,13 +374,10 @@ class UAGBLottie extends Component {
                                 className:"uagb-lottie-inner-wrap"
                             }
                         }}
-                        isStopped={playOnHover}                        
-                        height={height}
-                        width={width}
+                        isStopped={play_animation}                        
                         speed={speed}
                         isClickToPauseDisabled = {true}
-                        direction={reversedir}
-                        style={{backgroundColor:backgroundColor}}                       
+                        direction={reversedir}                       
                     />
                 </div>
             </Fragment>

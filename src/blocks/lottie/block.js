@@ -16,16 +16,13 @@ const {
 registerBlockType( "uagb/lottie", {
 	title: uagb_blocks_info.blocks["uagb/lottie"]["title"],
 	description: uagb_blocks_info.blocks["uagb/lottie"]["description"],
-	icon: UAGB_Block_Icons.wp_search,
+	icon: UAGB_Block_Icons.lottie,
 	keywords: [
-		__( "lottie" ),
-		__( "animation" ),
-		__( "uag" ),
+		__( "lottie", 'ultimate-addons-for-gutenberg' ),
+		__( "animation", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	example:{},
-	supports: {
-		anchor: true,
-	},
 	category: uagb_blocks_info.category,
 	edit,
 	// Render via PHP

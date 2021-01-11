@@ -65,41 +65,60 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 				'uagb/lottie',
 				array(
 					'attributes'      => array(
-						'block_id'        => array(
+						'block_id'         => array(
 							'type' => 'string',
 						),
-						'lottieURl'       => array(
+						'lottieURl'        => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'jsonLottie'      => array(
+						'jsonLottie'       => array(
 							'type' => 'object',
 						),
 						// Controls.
-						'loop'            => array(
+						'loop'             => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'speed'           => array(
+						'speed'            => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'reverse'         => array(
+						'reverse'          => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'playOnHover'     => array(
+						'playOnHover'      => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'playOn'           => array(
+							'type' => 'string',
 						),
 						// Style.
-						'height'          => array(
+						'height'           => array(
 							'type' => 'number',
 						),
-						'width'           => array(
+						'heightTablet'     => array(
 							'type' => 'number',
 						),
-						'backgroundColor' => array(
+						'heightMob'        => array(
+							'type' => 'number',
+						),
+						'width'            => array(
+							'type' => 'number',
+						),
+						'widthTablet'      => array(
+							'type' => 'number',
+						),
+						'widthMob'         => array(
+							'type' => 'number',
+						),
+						'backgroundColor'  => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'backgroundHColor' => array(
 							'type'    => 'string',
 							'default' => '',
 						),
@@ -117,8 +136,13 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		 * @since x.x.x
 		 */
 		public function render_html( $attributes ) {
+			
+			$block_id = '';
 
-			$block_id     = $attributes['block_id'];
+			if ( isset( $attributes['block_id'] ) ) {
+				$block_id   = $attributes['block_id'];
+			}
+			
 			$main_classes = array(
 				'uagb-block-' . $block_id,
 				'uagb-lottie__outer-wrap',
