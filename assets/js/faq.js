@@ -70,7 +70,7 @@ function setupFAQ() {
 	var expandFirstelements = document.getElementsByClassName( 'uagb-faq-expand-first-true' );
 	var inactiveOtherelements = document.getElementsByClassName( 'uagb-faq-inactive-other-false' );
 	
-	if ( pattern.test( hashval ) ) {
+	if ( ( ((document.getElementById( hashval ) !== undefined) && (document.getElementById( hashval ) !== null) && (document.getElementById( hashval ) !== "")) && pattern.test( hashval ) )) {
 
 		var elementToOpen = document.getElementById( hashval );
 		elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0].classList.add( 'uagb-faq-item-active' );
