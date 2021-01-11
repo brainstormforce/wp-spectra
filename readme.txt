@@ -177,7 +177,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
 * Fix: FAQ-Schema - FAQ console error when accessing child by hashval.
 * Fix: Taxonomy List - Fixed issue with broken links.
-- Fix: Table of content - Fixed the issue of TOC headings not working on IE11.
+* Fix: Table of content - Fixed the issue of TOC headings not working on IE11.
 
 = 1.19.0 =
 * New: Review Schema Block.
