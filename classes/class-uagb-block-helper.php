@@ -3876,6 +3876,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
+				' input[type=button]'                    => array(
+					'color'            => $attr['buttonTextColor'],
+					'background-color' => $attr['buttonBgColor'],
+					'border-color'     => $attr['buttonBorderColor'],
+					'border-style'     => $attr['buttonBorderStyle'],
+					'border-width'     => UAGB_Helper::get_css_value( $attr['buttonBorderWidth'], 'px' ),
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['buttonBorderRadius'], $attr['buttonBorderRadiusType'] ),
+					'padding-left'     => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
+					'padding-right'    => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
+					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
+				),
+				' input[type=button]:hover'              => array(
+					'color'            => $attr['buttonTextHoverColor'],
+					'background-color' => $attr['buttonBgHoverColor'],
+					'border-color'     => $attr['buttonBorderHoverColor'],
+				),
 				' select'                                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -4239,7 +4256,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'successMsg', ' .gform_confirmation_message', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .gform_wrapper div.validation_error', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .wpgf-response-output', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' input.gform_button', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' input.gform_button, input.gform_previous_button, input.gform_next_button', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_checkbox label.gfield_label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_radio label.gfield_label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form label.gfield_label', $combined_selectors );

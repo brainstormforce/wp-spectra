@@ -314,7 +314,7 @@ class UAGBRestaurantMenu extends Component {
 						max={ 50 }
 						allowReset
 						/>
-						{  cnt > 0 && <Fragment>
+						<Fragment>
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( "Image Padding (px)" ) }</h2>
 							<RangeControl
@@ -336,7 +336,6 @@ class UAGBRestaurantMenu extends Component {
 							allowReset
 							/>
 							</Fragment>
-						}
 						
 						</PanelBody>
 						)
@@ -693,6 +692,15 @@ class UAGBRestaurantMenu extends Component {
 															if( null !== element && undefined !== element ) {
 																element.innerHTML = RestMenuStyle( this.props )
 															}
+
+															const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+															getChildBlocks.forEach((pricelistChild, key) => {
+																pricelistChild.attributes.imagePosition = this.props.attributes.imagePosition;
+																pricelistChild.attributes.columns = this.props.attributes.columns;
+																pricelistChild.attributes.tcolumns = this.props.attributes.tcolumns;
+																pricelistChild.attributes.mcolumns = this.props.attributes.mcolumns;
+															});
 														}
 														
 														componentDidMount() {
