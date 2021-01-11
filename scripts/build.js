@@ -32,6 +32,20 @@ const theCWD = process.cwd()
 const fileBuildJS = path.resolve( theCWD, "./dist/blocks.build.js" )
 const fileEditorCSS = path.resolve( theCWD, "./dist/blocks.editor.build.css" )
 const fileStyleCSS = path.resolve( theCWD, "./dist/blocks.style.build.css" )
+const outputFileRTL = path.resolve( theCWD, "./dist/blocks.rtl.build.css" );
+
+const postCSSRTLSync = ( ltrCSS, callback ) => {
+
+	postcss( [ require( 'rtlcss' )() ] )
+			.process( ltrCSS, { from: 'src/app.css', to: 'dest/app.css' } )
+			.then( ( result ) => callback( null, result ) );
+	};
+
+	const result = deasync( postCSSSync )();
+	fs.writeFileSync( outputFile, result.css );	
+
+	const resultRTL = deasync( postCSSRTLSync )( result );
+	fs.writeFileSync( outputFileRTL, resultRTL );
 
 /**
  * Get File Size

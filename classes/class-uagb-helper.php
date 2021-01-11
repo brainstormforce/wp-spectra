@@ -271,15 +271,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			if ( is_rtl() ) {
-				wp_enqueue_style(  'uagb-style-rtl', UAGB_URL . 'output.rtl.css' );
-			}
-
 				ob_start();
 				?>
 				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 				<?php
 				ob_end_flush();
+
+			if ( is_rtl() ) {
+				wp_enqueue_style(  'uagb-style-rtl', UAGB_URL . 'output.rtl.css' );
+			}
 		}
 
 		/**
