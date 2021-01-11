@@ -169,9 +169,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
 * Fix: Price List - CSS issue on mobile.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
+* Fix: Taxonomy List - Fixed the JS console warning in editor mode.
 * Fix: Table of content - Fixed the pipe symbol issue in heading.
-* Fix: Faq - Fixed Accessibility issue.
+* Fix: Price List - Fixed missing image padding option and columns not updating issue.
 * Fix: Gravity Form Styler - Multistep form styling issue.
+* Fix: FAQ Schema - Fixed Accessibility issue.
+* Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
+* Fix: FAQ-Schema - FAQ console error when accessing child by hashval.
+* Fix: Taxonomy List - Fixed issue with broken links.
 
 ### 1.19.0 ###
 * New: Review Schema Block.
