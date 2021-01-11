@@ -140,19 +140,19 @@ function styling( props ) {
 			"padding" : generateCSSUnit( ( contentPadding ), "px" ),
 			"text-align" : align
 		},
-		" .uagb-post__cta": {
+		" .uagb-post__inner-wrap .uagb-post__cta": {
 			"margin-bottom": generateCSSUnit( ctaBottomSpace, "px" )
 		},
-		" .uagb-post__image": {
+		" .uagb-post__inner-wrap .uagb-post__image": {
 			"margin-bottom": generateCSSUnit( imageBottomSpace, "px" )
 		},
-		" .uagb-post__title": {
+		" .uagb-post__inner-wrap .uagb-post__title": {
 			"margin-bottom": generateCSSUnit( titleBottomSpace, "px" )
 		},
-		" .uagb-post-grid-byline": {
+		" .uagb-post__inner-wrap .uagb-post-grid-byline": {
 			"margin-bottom": generateCSSUnit( metaBottomSpace, "px" )
 		},
-		" .uagb-post__excerpt": {
+		" .uagb-post__inner-wrap .uagb-post__excerpt": {
 			"margin-bottom": generateCSSUnit( excerptBottomSpace, "px" )
 		},
 		" .uagb-post__image:before" : {

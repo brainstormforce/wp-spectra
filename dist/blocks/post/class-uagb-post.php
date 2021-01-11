@@ -716,7 +716,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'ctaBottomSpace'          => array(
 					'type'    => 'number',
-					'default' => 15,
+					'default' => 0,
 				),
 				'imageBottomSpace'        => array(
 					'type'    => 'number',
