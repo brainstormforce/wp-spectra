@@ -166,6 +166,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.20.0 =
+* Improvement: Added EditMode to change posts layout in Post Grid , Post Masonry and Post Carousel blocks.
 * Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
 * Fix: Price List - CSS issue on mobile.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
