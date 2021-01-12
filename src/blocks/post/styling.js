@@ -115,6 +115,7 @@ function styling( props ) {
 		hpaginationButtonPaddingMobile,
 		hpaginationButtonPaddingTablet,
 		hpaginationButtonPaddingDesktop,
+		imgPosition
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -129,11 +130,6 @@ function styling( props ) {
 			"padding-right" : generateCSSUnit( ( rowGap/2 ) , "px" ),
 			"padding-left" : generateCSSUnit( ( rowGap/2 ) , "px" ),
 			"margin-bottom" : generateCSSUnit( ( columnGap ), "px" )
-		},
-		" .uagb-post__inner-wrap  > .uagb-post__image:first-child": {
-			"margin-top" : generateCSSUnit( ( -contentPadding ), "px" ),
-			"margin-left" : generateCSSUnit( ( -contentPadding ), "px" ),
-			"margin-right" : generateCSSUnit( ( -contentPadding ), "px" ),
 		},
 		" .uagb-post__inner-wrap": {
 			"background" : bgColor,
@@ -164,7 +160,13 @@ function styling( props ) {
 			"text-align": paginationAlignment
 		},
 	}
-
+	if( imgPosition !== 'background' ){
+		selectors[" .uagb-post__inner-wrap  > .uagb-post__image:first-child"] = {
+			"margin-top" : generateCSSUnit( ( -contentPadding ), "px" ),
+			"margin-left" : generateCSSUnit( ( -contentPadding ), "px" ),
+			"margin-right" : generateCSSUnit( ( -contentPadding ), "px" ),
+		}
+	}
 	if ( ! inheritFromTheme ) {
 		selectors[" .uagb-post__title"] = {
 			"color": titleColor,

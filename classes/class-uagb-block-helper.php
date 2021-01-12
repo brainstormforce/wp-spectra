@@ -3049,11 +3049,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'    => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__inner-wrap > .uagb-post__image:first-child' => array(
-					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-				),
+
 				' .uagb-post__cta'           => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], 'px' ),
 				),
@@ -3074,7 +3070,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity'          => ( $attr['overlayOpacity'] / 100 ),
 				),
 			);
-
+			if ( 'background' !== $attr['imgPosition'] ) {
+				$selectors[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
+					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+				);
+			}
 			if ( ! $attr['inheritFromTheme'] ) {
 				$selectors[' .uagb-post__text .uagb-post__title']['color']                  = $attr['titleColor'];
 				$selectors[' .uagb-post__text .uagb-post__title a']                         = array(
