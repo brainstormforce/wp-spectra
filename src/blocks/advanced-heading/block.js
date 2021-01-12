@@ -54,15 +54,6 @@ registerBlockType( "uagb/advanced-heading", {
 			},
 			{
 				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('uagb/advanced-heading', {
-						headingTitle: attributes.values,
-					})
-				}
-			},
-			{
-				type: 'block',
 				blocks: ['core/quote'],
 				transform: (attributes) => {
 					return createBlock('uagb/advanced-heading', {
@@ -81,16 +72,6 @@ registerBlockType( "uagb/advanced-heading", {
 					return createBlock('core/heading', {
 						content: attributes.headingTitle,
 						align:attributes.headingAlign,
-						className:'uagb-heading-text'
-					})
-				}
-			},
-			{
-				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('core/list', {
-						values: attributes.headingTitle,
 						className:'uagb-heading-text'
 					})
 				}

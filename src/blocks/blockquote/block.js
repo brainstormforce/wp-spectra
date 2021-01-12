@@ -72,15 +72,6 @@ registerBlockType( "uagb/blockquote", {
 					})
 				}
 			},
-			{
-				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('uagb/blockquote', {
-						descriptionText: attributes.values,
-					})
-				}
-			},
 		],
 		to: [
 			{
@@ -104,15 +95,6 @@ registerBlockType( "uagb/blockquote", {
 					})
 				}
 			},
-			{
-				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('core/list', {
-						values: attributes.descriptionText,
-					})
-				}
-			}
 		]
 	},
 } )

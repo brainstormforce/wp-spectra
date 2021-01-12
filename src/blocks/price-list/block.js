@@ -14,7 +14,7 @@ import "./editor.scss"
 const { __ } = wp.i18n
 
 const {
-	registerBlockType, createBlock
+	registerBlockType
 } = wp.blocks
 
 const { addFilter } = wp.hooks;
@@ -75,30 +75,6 @@ registerBlockType( "uagb/restaurant-menu", {
 	save,
 	example: {},
 	deprecated,
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('uagb/restaurant-menu', {
-						...attributes,
-					})
-				}
-			}
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: ['core/list'],
-				transform: (attributes) => {
-					return createBlock('core/list', {
-						...attributes,
-					})
-				}
-			}
-		]
-	},
 } )
 addFilter(
 	'editor.BlockEdit',
