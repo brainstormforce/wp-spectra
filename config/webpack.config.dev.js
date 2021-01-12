@@ -24,8 +24,6 @@ const path = require( "path" );
 const paths = require( "./paths" )
 const autoprefixer = require( "autoprefixer" )
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-const postcss = require( 'postcss' );
 
 // Extract style.css for both editor and frontend styles.
 const blocksCSSPlugin = new ExtractTextPlugin( {
@@ -35,10 +33,6 @@ const blocksCSSPlugin = new ExtractTextPlugin( {
 // Extract editor.css for editor styles.
 const editBlocksCSSPlugin = new ExtractTextPlugin( {
 	filename: './dist/blocks.editor.build.css',
-} );
-
-const rtlBlocksCSSPlugin = new CopyWebpackPlugin( {
-	filename: './dist/blocks.rtl.build.css',
 } );
 
 const fs = require( "fs" )
@@ -120,29 +114,6 @@ const extractConfig = {
 	],
 };
 
-const stylesTransform = ( content ) => {
-	if ( mode === 'production' ) {
-		return postcss( [
-			require( 'cssnano' )( {
-				preset: [
-					'default',
-					{
-						discardComments: {
-							removeAll: true,
-						},
-					},
-				],
-			} ),
-		] )
-			.process( content, {
-				from: 'src/app.css',
-				to: 'dest/app.css',
-			} )
-			.then( ( result ) => result.css );
-	}
-	return content;
-};
-
 // Export configuration.
 module.exports = {
 	entry: {
@@ -182,16 +153,6 @@ module.exports = {
 				test: /editor\.s?css$/,
 				exclude: /(node_modules|bower_components)/,
 				use: editBlocksCSSPlugin.extract( extractConfig ),
-			},
-			{
-				// from: './packages/block-library/build-style/*/style-rtl.css',
-				test: new RegExp(
-					`([\\w-]+)${ escapeRegExp( path.sep ) }style-rtl\\.css$`
-				),
-				exclude: /(node_modules|bower_components)/,
-				// to: 'build/block-library/blocks/[1]/style-rtl.css',
-				use: rtlBlocksCSSPlugin.extract( extractConfig ),
-				transform: stylesTransform,
 			},
 		],
 	},

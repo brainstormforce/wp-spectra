@@ -184,7 +184,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-how-to-main-wrap' => array(
 					'text-align' => $attr['overallAlignment'],
-					'direction' => 'ltr',
 				),
 				' .uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
