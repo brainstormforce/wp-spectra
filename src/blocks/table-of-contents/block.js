@@ -32,7 +32,10 @@ registerBlockType( "uagb/table-of-contents", {
 	},
 	attributes,
 	edit,
-	save,
+	// save,
+	save() {
+		return null
+	},
 	example: {},
 	deprecated
 } )
