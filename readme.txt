@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: FAQ-Schema - FAQ console error when accessing child by hashval.
 * Fix: Taxonomy List - Fixed issue with broken links.
 * Fix: Testinomial - Fixed carousel not being displayed on RTL websites.
+* Fix: Post Layout - Child Posts not visible when parent category is selected in editor mode.
 
 = 1.19.0 =
 * New: Review Schema Block.

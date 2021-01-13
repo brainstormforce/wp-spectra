@@ -488,9 +488,8 @@ class UAGBPostGrid extends Component {
 			)
 		}
 
-		let taxonomyListOptions = [
-			{ value: "", label: __( "Select Taxonomy" ) }
-		]
+
+		let taxonomyListOptions = []
 
 		let categoryListOptions = [
 			{ value: "", label: __( "All" ) }
@@ -1249,8 +1248,7 @@ class UAGBPostGrid extends Component {
 	}
 }
 
-export default compose(
-	withSelect( ( select, props ) => {
+export default withSelect( ( select, props ) => {
 		const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost , block_id} = props.attributes
 		const { setAttributes } = props
 		const { getEntityRecords } = select( "core" )
@@ -1294,7 +1292,20 @@ export default compose(
 		if ( excludeCurrentPost ) {		
 			latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
 		}
-		latestPostsQuery[rest_base] = categories
+		var category = [];	
+		var temp = parseInt(categories);
+		category.push(temp);
+		var catlenght = categoriesList.length;
+		for(var i=0;i<catlenght;i++){
+			if(categoriesList[i].id == temp){
+				if(categoriesList[i].child.length !== 0){
+					categoriesList[i].child.forEach(element => {
+						category.push(element);
+					});
+				}		
+			}
+		}
+		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 		const { getBlocks } = select( 'core/block-editor' );
 		const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 		return {
@@ -1304,6 +1315,4 @@ export default compose(
 			block: getBlocks( props.clientId ),
 			replaceInnerBlocks
 		}
-	})
-
-)( UAGBPostGrid );
+})( UAGBPostGrid );
