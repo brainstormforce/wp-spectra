@@ -380,8 +380,25 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 */
 		public function uagb_render_table_of_contents_block( $attributes ) {
+			$headings = [];
+
+			global $post;
+
+			$blocks = parse_blocks($post->post_content);
+			$level = '';
+
+			foreach ($blocks as $block) {
+				if ($block['blockName'] == 'core/heading') {
+					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
+					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level];
+				}
+				if ($block['blockName'] == 'uagb/advanced-heading') {
+					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
+					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level];
+				}
+			}
 			
-			$linkArray = json_decode($attributes['headerLinks'], true);
+			// $linkArray = json_decode($attributes['headerLinks'], true);
 			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
@@ -408,12 +425,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						}
 						?>
 					</div>
-					<?php if( $linkArray ){ ?>
-						<div className="uagb-toc__list-wrap">
+					<?php if( $headings ){ ?>
+						<div class="uagb-toc__list-wrap">
 							<ul class="uagb-toc__list">
-								<?php foreach ( $linkArray as $link ) { ?>
+								<?php foreach ( $headings as $link ) { ?>
 									<li>
-									<a href='#<?php echo $link['link']; ?>'><?php echo $link['text']; ?></a>
+									<a href='#h<?php echo $link['level']; ?>'><?php echo $link['title']; ?></a>
 									</li>
 								<?php } ?>	
 							</ul>
