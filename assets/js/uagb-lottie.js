@@ -3,16 +3,11 @@
 	UAGBLottie = {
 
 		_run: function( attr, id ) {
-            
-            console.log( 'none' === attr['playOn']);
-            console.log( '------------------' );
-            console.log( attr['loop']);
-
 			var animation = bodymovin.loadAnimation({
                 container: document.getElementsByClassName(id)[0],
                 renderer: 'svg',
-                loop: true,
-                autoplay: false, 
+                loop: attr['loop'],
+                autoplay: true, 
                 path: attr['lottieURl'],
                 rendererSettings: {
                     preserveAspectRatio: 'xMidYMid',

@@ -137,15 +137,13 @@ class UAGBLottie extends Component {
                         { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
                     ] }
                     help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
-				/>
-                { ( 'none' === playOn ) && 
-                    <ToggleControl
-                        label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
-                        checked={ loop }
-                        onChange={ this.loopLottie }
-                        help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
-                        />
-                }
+				/> 
+                <ToggleControl
+                    label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
+                    checked={ loop }
+                    onChange={ this.loopLottie }
+                    help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
+                    />
                 <RangeControl
                     label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
                     value={ speed }
