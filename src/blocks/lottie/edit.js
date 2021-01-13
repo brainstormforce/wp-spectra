@@ -125,7 +125,19 @@ class UAGBLottie extends Component {
             <PanelBody
                 title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
                 initialOpen={ false }>
-
+                    <div className="uagb-lottie_upload_wrap-controller">                    
+                    <MediaPlaceholder
+                        labels={ {
+                            title: __( 'Select Lottie', 'ultimate-addons-for-gutenberg' ),
+                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website', 'ultimate-addons-for-gutenberg' )
+                        } }                        
+                        allowedTypes={ [ 'application/json' ] }
+                        accept={ [ 'application/json' ] }
+                        value={jsonLottie }
+                        onSelectURL={ ( value ) => setAttributes( { lottieURl: value } )  }
+                        onSelect={ this.onSelectLottieJSON }
+                    />
+                </div>
                 <SelectControl
 					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
 					value={ playOn }
@@ -142,7 +154,7 @@ class UAGBLottie extends Component {
                     label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
                     checked={ loop }
                     onChange={ this.loopLottie }
-                    help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
+                    help={ __( "Enable to loop animation.This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) }
                     />
                 <RangeControl
                     label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
@@ -153,12 +165,14 @@ class UAGBLottie extends Component {
                     help={ __( 'Animation speed.', 'ultimate-addons-for-gutenberg' ) }
                     allowReset
                     />
-                 <ToggleControl
+                { loop && 
+                <ToggleControl
                     label={ __( "Reverse", 'ultimate-addons-for-gutenberg' ) }
                     checked={ reverse }
                     onChange={this.reverseDirection}
                     help={ __( 'Direction of animation.', 'ultimate-addons-for-gutenberg' ) }
-                    />                
+                    />
+                }                
             </PanelBody>
         )
         
@@ -310,12 +324,16 @@ class UAGBLottie extends Component {
         }       
 
         if ( validJsonPath === 'invalid' ) {
+
+            const lottie_url = <span> {__('Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations', 'ultimate-addons-for-gutenberg' )}
+                <a href="https://lottiefiles.com/" target="__blank"> { __( 'here on this' ) } </a>{__('website.')}</span>;
+
             return (               
 				<div className="uagb-lottie_upload_wrap">                    
                     <MediaPlaceholder
                         labels={ {
                             title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
-                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website', 'ultimate-addons-for-gutenberg' )
+                            instructions: lottie_url,
                         } }                        
                         allowedTypes={ [ 'application/json' ] }
                         accept={ [ 'application/json' ] }
@@ -336,7 +354,7 @@ class UAGBLottie extends Component {
             this.lottieplayer.current.anim.stop();
         };
 
-        const reversedir = (reverse) ? -1 : 1
+        const reversedir = (reverse && loop ) ? -1 : 1
 
         var play_animation = true;
 
