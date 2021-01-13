@@ -3,11 +3,16 @@
 	UAGBLottie = {
 
 		_run: function( attr, id ) {
+            
+            console.log( 'none' === attr['playOn']);
+            console.log( '------------------' );
+            console.log( attr['loop']);
+
 			var animation = bodymovin.loadAnimation({
                 container: document.getElementsByClassName(id)[0],
                 renderer: 'svg',
-                loop: attr['loop'],
-                autoplay: ( 'none' === attr['playOn'] ||  ''=== attr['playOn'] ) ? true : false, 
+                loop: true,
+                autoplay: false, 
                 path: attr['lottieURl'],
                 rendererSettings: {
                     preserveAspectRatio: 'xMidYMid',
@@ -18,6 +23,7 @@
             animation.setSpeed(attr['speed'])
 
             const reversedir = (attr['reverse']) ? -1 : 1
+
             animation.setDirection(reversedir)
             
             if( 'hover' === attr['playOn']){

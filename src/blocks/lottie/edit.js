@@ -99,8 +99,6 @@ class UAGBLottie extends Component {
 		this.setState({ direction : direction * -1 });
 		
     }
-
-    
       
     render() {
         const { className, setAttributes, attributes } = this.props
@@ -127,13 +125,27 @@ class UAGBLottie extends Component {
             <PanelBody
                 title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
                 initialOpen={ false }>
-                <ToggleControl
-                    label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
-                    checked={ loop }
-                    onChange={ this.loopLottie }
-                    help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
-                    />
-                
+
+                <SelectControl
+					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
+					value={ playOn }
+                    onChange={ ( value ) => setAttributes( { playOn: value } ) }
+					options={ [
+						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
+						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
+                        { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
+                    ] }
+                    help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
+				/>
+                { ( 'none' === playOn ) && 
+                    <ToggleControl
+                        label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
+                        checked={ loop }
+                        onChange={ this.loopLottie }
+                        help={ __( 'Enable to loop animation.', 'ultimate-addons-for-gutenberg' ) }
+                        />
+                }
                 <RangeControl
                     label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
                     value={ speed }
@@ -148,19 +160,7 @@ class UAGBLottie extends Component {
                     checked={ reverse }
                     onChange={this.reverseDirection}
                     help={ __( 'Direction of animation.', 'ultimate-addons-for-gutenberg' ) }
-                    />
-                <SelectControl
-					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
-					value={ playOn }
-					onChange={ ( value ) => setAttributes( { playOn: value } ) }
-					options={ [
-						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
-						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
-                        { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
-                    ] }
-                    help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
-				/>                
+                    />                
             </PanelBody>
         )
         

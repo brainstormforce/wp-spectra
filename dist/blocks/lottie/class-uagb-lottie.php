@@ -94,6 +94,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 						),
 						'playOn'           => array(
 							'type' => 'string',
+							'default' => 'none',
 						),
 						// Style.
 						'height'           => array(

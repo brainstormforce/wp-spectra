@@ -2516,7 +2516,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'loop'             => true,
 							'speed'            => 1,
 							'reverse'          => false,
-							'playOn'           => '',
+							'playOn'           => 'none',
 						),
 					),
 				);
