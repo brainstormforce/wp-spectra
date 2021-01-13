@@ -166,6 +166,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.20.0 ###
+* Improvement: Post Layout: Added EditMode to shuffle the Post elements i.e Post Title, Post Meta, Post Content, Featured Image, CTA Button etc.
 * Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
 * Fix: Price List - CSS issue on mobile.
 * Fix: Testimonial - Fixed the JS console warning with Slick library.
@@ -177,7 +178,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
 * Fix: FAQ-Schema - FAQ console error when accessing child by hashval.
 * Fix: Taxonomy List - Fixed issue with broken links.
-* Fix: Table of content - Fixed the issue of TOC headings not working on IE11.
+* Fix: Table of Content - IE11 compatibility issues.
+* Fix: Testinomial - Fixed carousel not being displayed on RTL websites.
+* Fix: Post Layout - Child Posts not visible when parent category is selected in editor mode.
 
 ### 1.19.0 ###
 * New: Review Schema Block.
