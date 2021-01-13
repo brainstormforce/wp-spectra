@@ -150,6 +150,229 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'type'    => "number",
 								'default' => 1,
 							),
+							'mappingHeaders'=> array(
+								'type'   => 'array',
+								'default'=> '',
+							),
+							// Color
+							'backgroundColor'=> array(
+								'type'=> "string",
+								'default'=> "#eee"
+							),
+							'linkColor'=> array(
+								'type'=> "string",
+								'default'=> "#333"
+							),
+							'linkHoverColor'=> array(
+								'type'=> "string"
+							),
+							'headingColor' => array(
+								'type'=> "string"
+							),
+
+							// Padding
+							'vPaddingDesktop' => array(
+								'type'=> "number",
+								'default'=> 30,
+							),
+							'hPaddingDesktop' => array(
+								'type'=> "number",
+								'default'=> 30,
+							),
+							'vPaddingTablet' => array(
+								'type'=> "number",
+							),
+							'hPaddingTablet' => array(
+								'type'=> "number",
+							),
+							'vPaddingMobile' => array(
+								'type'=> "number",
+							),
+							'hPaddingMobile' => array(
+								'type'=> "number",
+							),
+							// Margin
+							'vMarginDesktop' => array(
+								'type'=> "number",
+							),
+							'hMarginDesktop' => array(
+								'type'=> "number",
+							),
+							'vMarginTablet' => array(
+								'type'=> "number",
+							),
+							'hMarginTablet' => array(
+								'type'=> "number",
+							),
+							'vMarginMobile' => array(
+								'type'=> "number",
+							),
+							'hMarginMobile' => array(
+								'type'=> "number",
+							),
+							'marginTypeDesktop' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'marginTypeTablet' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'marginTypeMobile' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'headingBottom' => array(
+								'type'=> "number"
+							),	
+							'paddingTypeDesktop' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'paddingTypeTablet' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'paddingTypeMobile' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+
+							// Content Padding
+							'contentPaddingDesktop' => array(
+								'type'=> "number",
+							),
+							'contentPaddingTablet' => array(
+								'type'=> "number",
+							),
+							'contentPaddingMobile' => array(
+								'type'=> "number",
+							),	
+							'contentPaddingTypeDesktop' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'contentPaddingTypeTablet' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+							'contentPaddingTypeMobile' => array(
+								'type'    => "string",
+								'default' => "px",
+							),
+
+							// Border
+							'borderStyle' => array(
+								'type'=> "string",
+								'default'=> "solid"
+							),
+							'borderWidth' => array(
+								'type'=> "number",
+								'default'=> 1
+							),
+							'borderRadius' => array(
+								'type'=> "number"
+							),
+							'borderColor' => array(
+								'type'=> "string",
+								'default'=> "#333"
+							),
+
+
+							// Typography
+							// Link Font Family
+							'loadGoogleFonts'=> array(
+								'type'=> "boolean",
+								'default'=> false
+							),
+							'fontFamily'=> array(
+								'type'=> "string",
+								'default'=> "Default",
+							),
+							'fontWeight'=> array(
+								'type'=> "string",
+							),
+							'fontSubset'=> array(
+								'type'=> "string",
+							),
+							// Link Font Size
+							'fontSize'=> array(
+								'type'=> "number",
+							),
+							'fontSizeType'=> array(
+								'type'=> "string",
+								'default'=> "px"
+							),
+							'fontSizeTablet'=> array(
+								'type'=> "number",
+							),
+							'fontSizeMobile'=> array(
+								'type'=> "number",
+							),
+							// Link Line Height
+							'lineHeightType'=> array(
+								'type'=> "string",
+								'default'=> "em"
+							),
+							'lineHeight'=> array(
+								'type'=> "number",
+							),
+							'lineHeightTablet'=> array(
+								'type'=> "number",
+							),
+							'lineHeightMobile'=> array(
+								'type'=> "number",
+							),
+
+							// Link Font Family
+							'headingLoadGoogleFonts'=> array(
+								'type'=> "boolean",
+								'default'=> false
+							),
+							'headingFontFamily'=> array(
+								'type'=> "string",
+								'default'=> "Default",
+							),
+							'headingFontWeight'=> array(
+								'type'=> "string",
+								'default'=> "500"
+							),
+							'headingFontSubset'=> array(
+								'type'=> "string",
+							),
+							// Link Font Size
+							'headingFontSize'=> array(
+								'type'=> "number",
+								'default'=> 20
+							),
+							'headingFontSizeType'=> array(
+								'type'=> "string",
+								'default'=> "px"
+							),
+							'headingFontSizeTablet'=> array(
+								'type'=> "number",
+							),
+							'headingFontSizeMobile'=> array(
+								'type'=> "number",
+							),
+							// Link Line Height
+							'headingLineHeightType'=> array(
+								'type'=> "string",
+								'default'=> "em"
+							),
+							'headingLineHeight'=> array(
+								'type'=> "number",
+							),
+							'headingLineHeightTablet'=> array(
+								'type'=> "number",
+							),
+							'headingLineHeightMobile'=> array(
+								'type'=> "number",
+							),
+							'headingAlignment'=> array(
+								'type'=> "string",
+								'default'=> "left"
+							),
 						)
 					),
 					'render_callback' => array( $this, 'uagb_render_table_of_contents_block' ),
@@ -165,7 +388,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 */
 		public function uagb_render_table_of_contents_block( $attributes ) {
-
+			
+			$linkArray = json_decode($attributes['headerLinks'], true);
+			// print_r($linkArray[0]['link']);
+			// foreach ( $linkArray as $link ) { print_r($link['text']); }
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
 				'uagb-toc__align-' . $attributes['align'],
@@ -192,6 +418,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				}
 			}
 			// var_dump(esc_html( implode( ' ', $sortedHeaders) ));
+			$content = '';
 
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
@@ -210,7 +437,21 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						}
 						?>
 					</div>
-					
+					<?php if( $linkArray ){ ?>
+						<div className="uagb-toc__list-wrap">
+							<ul>
+								<?php foreach ( $linkArray as $link ) { ?>
+									<li>
+									<a href='#<?php echo $link['link']; ?>'><?php echo $link['text']; ?></a>
+									</li>
+								<?php } ?>	
+							</ul>
+						</div>
+					<?php } else{ ?>
+						<p class="uagb_table-of-contents-placeholder">
+							<?php echo esc_html('Add a header to begin generating the table of contents'); ?>
+						</p>
+					<?php } ?>
 				</div>
 			</div>
 			<?php
