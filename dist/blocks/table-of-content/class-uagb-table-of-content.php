@@ -26,14 +26,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		private static $instance;
 
 		/**
-		 * Member Variable
-		 *
-		 * @since x.x.x
-		 * @var settings
-		 */
-		private static $settings;
-
-		/**
 		 *  Initiator
 		 *
 		 * @since x.x.x
@@ -390,8 +382,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function uagb_render_table_of_contents_block( $attributes ) {
 			
 			$linkArray = json_decode($attributes['headerLinks'], true);
-			// print_r($linkArray[0]['link']);
-			// foreach ( $linkArray as $link ) { print_r($link['text']); }
+			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
 				'uagb-toc__align-' . $attributes['align'],
@@ -399,26 +390,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( isset( $attributes['initialCollapse'] ) ) ? 'uagb-toc__collapse' : '',
 				'uagb-block-' . $attributes['block_id'],
 			);
-
-			global $post;
-     
-			$blocks = parse_blocks( $post->post_content );
-
-			$sortedHeaders = [];
-			
-			foreach ( $blocks as $block ) {
-				  
-				if ( 'core/heading' === $block['blockName'] ) {
-					// print_r($block);
-					array_push($sortedHeaders,$block['innerHTML']);
-				}
-				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
-					// print_r($block['innerHTML']);
-					array_push($sortedHeaders,$block['innerHTML']);
-				}
-			}
-			// var_dump(esc_html( implode( ' ', $sortedHeaders) ));
-			$content = '';
 
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
@@ -439,7 +410,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					</div>
 					<?php if( $linkArray ){ ?>
 						<div className="uagb-toc__list-wrap">
-							<ul>
+							<ul class="uagb-toc__list">
 								<?php foreach ( $linkArray as $link ) { ?>
 									<li>
 									<a href='#<?php echo $link['link']; ?>'><?php echo $link['text']; ?></a>
