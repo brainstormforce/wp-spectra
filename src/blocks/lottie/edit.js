@@ -311,6 +311,18 @@ class UAGBLottie extends Component {
         if( lottieURl && lottieURl.endsWith('.json') ){
              validJsonPath = 'valid' 
         }       
+        if ( ! uagb_blocks_info.uagb_mime_type ) {
+
+            return(
+                <div className="uagb-show-notice">
+                    <span> 
+                        {__('Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations', 'ultimate-addons-for-gutenberg' )}
+                            <a href="https://lottiefiles.com/" target="__blank"> { __( 'here on this' ) } </a>
+                            {__('website.')}
+                    </span>;
+                </div>
+            ); 
+        }
 
         if ( validJsonPath === 'invalid' ) {
 
