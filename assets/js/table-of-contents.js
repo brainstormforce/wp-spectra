@@ -117,8 +117,6 @@
 			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
-
-			var $headers = JSON.parse(attr.headerLinks);
 			
 			var allowed_h_tags = [];
 			
@@ -130,34 +128,14 @@
 
 			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
 
-			if ( undefined !== $headers && 0 !== all_header.length ) {
-
-				var h = ["h1", "h2", "h3", "h4", "h5", "h6"];
-					var headings = [];
-					for (var i = 0; i < h.length; i++) {
-						if (document.getElementsByTagName(h[i])) {
-							headings[i] = document.querySelector(h[i]);
-							if (headings[i]) {
-								console.log(headings[i].localName)
-								// console.log(headings[i].textContent);
-								// headings[i].before('<span id="uagb-heading-level-'+ headings[i].id +'" class="uag-toc__heading-anchor"></span>');
-							}
-						}
-					}
-
-				// $headers.forEach(function (element, i) {
-					
-				// 	let element_text = parseTocSlug(element.text);
-				// 	all_header.each( function (){
-
-				// 		let header = $( this );
-				// 		let header_text = parseTocSlug(header.text());
-
-				// 		if ( element_text.localeCompare(header_text) === 0 ) {
-				// 			header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
-				// 		}
-				// 	});
-				// });
+			if ( 0 !== all_header.length ) {
+				
+				all_header.each( function (){
+					let header = $( this );
+					let header_text = parseTocSlug(header.text());
+					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
+				});
+				
 			}
 
 			scroll_to_top = attr.scrollToTop

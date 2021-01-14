@@ -398,8 +398,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				}
 			}
 			
-			// $linkArray = json_decode($attributes['headerLinks'], true);
-			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
 				'uagb-toc__align-' . $attributes['align'],
@@ -430,7 +428,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							<ul class="uagb-toc__list">
 								<?php foreach ( $headings as $link ) { ?>
 									<li>
-									<a href='#h<?php echo $link['level']; ?>'><?php echo $link['title']; ?></a>
+									<a href='#<?php echo strtolower(str_replace(" ", "-", $link['title'])); ?>'><?php echo $link['title']; ?></a>
 									</li>
 								<?php } ?>	
 							</ul>
