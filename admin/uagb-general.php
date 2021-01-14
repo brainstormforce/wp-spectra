@@ -95,6 +95,11 @@ array_multisort(
 									'social-share-child',
 									'buttons-child',
 									'faq-child',
+									'post-title',
+									'post-image',
+									'post-button',
+									'post-excerpt',
+									'post-meta',
 									'restaurant-menu-child',
 									'content-timeline-child',
 								);

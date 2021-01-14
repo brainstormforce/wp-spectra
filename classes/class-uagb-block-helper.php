@@ -3035,37 +3035,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 			$selectors = array(
-				' .uagb-post__items'                       => array(
+				' .uagb-post__items'         => array(
 					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
 					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
 				),
-				' .uagb-post__items article'               => array(
+				' .uagb-post__items article' => array(
 					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
 					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), 'px' ),
 				),
-				' .uagb-post__inner-wrap'                  => array(
+				' .uagb-post__inner-wrap'    => array(
 					'background' => $attr['bgColor'],
-				),
-				' .uagb-post__text'                        => array(
 					'padding'    => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__text .uagb-post__title'      => array(
+
+				' .uagb-post__cta'           => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], 'px' ),
+				),
+				' .uagb-post__image'         => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], 'px' ),
+				),
+				' .uagb-post__title'         => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
 				),
-				' .uagb-post__text .uagb-post-grid-byline' => array(
+				' .uagb-post-grid-byline'    => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], 'px' ),
 				),
-				' .uagb-post__text .uagb-post__excerpt'    => array(
+				' .uagb-post__excerpt'       => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], 'px' ),
 				),
-				' .uagb-post__image:before'                => array(
+				' .uagb-post__image:before'  => array(
 					'background-color' => $attr['bgOverlayColor'],
 					'opacity'          => ( $attr['overlayOpacity'] / 100 ),
 				),
 			);
-
+			if ( 'background' !== $attr['imgPosition'] ) {
+				$selectors[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
+					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+				);
+			}
 			if ( ! $attr['inheritFromTheme'] ) {
 				$selectors[' .uagb-post__text .uagb-post__title']['color']                  = $attr['titleColor'];
 				$selectors[' .uagb-post__text .uagb-post__title a']                         = array(
@@ -3114,7 +3125,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_post_mobile_selectors( $attr ) {
 
 			return array(
-				' .uagb-post__text' => array(
+				' .uagb-post__inner-wrap' => array(
 					'padding' => ( $attr['contentPaddingMobile'] ) . 'px',
 				),
 			);
