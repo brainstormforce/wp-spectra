@@ -124,7 +124,7 @@ class UAGBLottie extends Component {
         const controlsSettings = (
             <PanelBody
                 title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
-                initialOpen={ false }>
+                initialOpen={ true }>
                     <div className="uagb-lottie_upload_wrap-controller">                    
                     <MediaPlaceholder
                         labels={ {
@@ -146,7 +146,7 @@ class UAGBLottie extends Component {
 						{ value: 'none', label: __( "None", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "hover", label: __( "On Hover", 'ultimate-addons-for-gutenberg' ) },
 						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
-                        { value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) },
+                        { value: "scroll", label: __( "Viewport", 'ultimate-addons-for-gutenberg' ) },
                     ] }
                     help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
 				/> 
@@ -154,7 +154,7 @@ class UAGBLottie extends Component {
                     label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
                     checked={ loop }
                     onChange={ this.loopLottie }
-                    help={ __( "Enable to loop animation.This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) }
+                    help={ __( "Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing." ) }
                     />
                 <RangeControl
                     label={ __( "Speed", 'ultimate-addons-for-gutenberg' ) }
@@ -162,7 +162,6 @@ class UAGBLottie extends Component {
                     onChange={ ( value ) => setAttributes( { speed: value } ) }
                     min={ 1 }
                     max={ 50 }
-                    help={ __( 'Animation speed.', 'ultimate-addons-for-gutenberg' ) }
                     allowReset
                     />
                 { loop && 
