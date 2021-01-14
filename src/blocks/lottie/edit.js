@@ -16,7 +16,9 @@ const {
 	MediaUpload,
     ColorPalette,
     MediaUploadCheck,
-    MediaPlaceholder
+    MediaPlaceholder,
+    BlockControls,
+    MediaReplaceFlow
 } = wp.blockEditor
 
 const {
@@ -27,7 +29,8 @@ const {
     ToggleControl,
     TabPanel,
     Dashicon,
-    SelectControl
+    SelectControl,
+    ToolbarGroup,
 } = wp.components
 
 const { Component, Fragment } = wp.element
@@ -125,19 +128,6 @@ class UAGBLottie extends Component {
             <PanelBody
                 title={ __( "Controls", 'ultimate-addons-for-gutenberg' ) }
                 initialOpen={ true }>
-                    <div className="uagb-lottie_upload_wrap-controller">                    
-                    <MediaPlaceholder
-                        labels={ {
-                            title: __( 'Select Lottie', 'ultimate-addons-for-gutenberg' ),
-                            instructions: __( 'Allows you to add fancy animation i.e lottie to your website', 'ultimate-addons-for-gutenberg' )
-                        } }                        
-                        allowedTypes={ [ 'application/json' ] }
-                        accept={ [ 'application/json' ] }
-                        value={jsonLottie }
-                        onSelectURL={ ( value ) => setAttributes( { lottieURl: value } )  }
-                        onSelect={ this.onSelectLottieJSON }
-                    />
-                </div>
                 <SelectControl
 					label={ __( "Play On", 'ultimate-addons-for-gutenberg' ) }
 					value={ playOn }
@@ -363,7 +353,19 @@ class UAGBLottie extends Component {
 
         return (
             <Fragment>
-                
+                { validJsonPath === 'valid' && 
+                    <BlockControls>
+                        <ToolbarGroup>
+                            <MediaReplaceFlow
+                                mediaURL={ lottieURl }
+                                allowedTypes={ [ 'application/json' ] }
+                                accept={ [ 'application/json' ] }
+                                onSelectURL={ ( value ) => setAttributes( { lottieURl: value } )  }
+                                onSelect={ this.onSelectLottieJSON }
+                            />
+                        </ToolbarGroup>
+                    </BlockControls>
+                }
                 <InspectorControls>
                     { controlsSettings }
                     { styleSettings }
