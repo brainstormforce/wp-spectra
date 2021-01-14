@@ -31,11 +31,13 @@
                 });
             } else if ( 'click' === attr['playOn']){
                 document.getElementsByClassName(id)[0].addEventListener("click", function() {
-                    animation.play()
+                    animation.stop();
+                    animation.play();
                 });
             } else if ( 'scroll' === attr['playOn']) {
                 window.addEventListener("scroll", function() {
-                    animation.play()
+                    animation.stop();
+                    animation.play();
                 });
             }
 		}

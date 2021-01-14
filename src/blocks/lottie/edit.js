@@ -380,7 +380,8 @@ class UAGBLottie extends Component {
                 onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : ()=> play_animation = true } 
                 onClick = { 'click' === playOn ? handleLottieMouseEnter : ()=> play_animation = true }
                 >
-                    <Lottie 
+                    <Lottie
+                        key={ lottieURl } 
                         ref={this.lottieplayer}
                         options={{                            
                             loop: loop,
