@@ -5064,5 +5064,58 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
+
+		/**
+		 * Get Lottie CSS.
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_lottie_css( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/lottie']['attributes'];
+			$attr     = array_merge( $defaults, $attr );
+
+			$selectors   = array();
+			$t_selectors = array();
+			$m_selectors = array();
+
+			$selectors                                   = array(
+				'.uagb-lottie__outer-wrap' => array(
+					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
+					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),
+					'overflow'         => 'hidden',
+					'margin'           => '0px auto',
+					'outline'          => 'none',
+					'background-color' => $attr['backgroundColor'],
+				),
+			);
+			$selectors['.uagb-lottie__outer-wrap:hover'] = array(
+				'background' => $attr['backgroundHColor'],
+			);
+
+			$t_selectors = array(
+				'.uagb-lottie__outer-wrap' => array(
+					'width'  => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['heightTablet'], 'px' ),
+				),
+			);
+
+			$m_selectors = array(
+				'.uagb-lottie__outer-wrap' => array(
+					'width'  => UAGB_Helper::get_css_value( $attr['widthMob'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['heightMob'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
 	}
 }

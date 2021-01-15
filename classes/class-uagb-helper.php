@@ -585,6 +585,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
 					break;
 
+				case 'uagb/lottie':
+					$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -937,6 +942,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			?>
 			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
 			<?php
+		}
+
+		/**
+		 *  Check MIME Type
+		 *
+		 *  @since x.x.x
+		 */
+		public static function get_mime_type() {
+
+			$allowed_types = get_allowed_mime_types();
+
+			return ( array_key_exists( 'json', $allowed_types ) ) ? true : false;
+
 		}
 
 		/**

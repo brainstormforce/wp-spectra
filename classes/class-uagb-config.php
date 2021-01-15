@@ -2557,6 +2557,30 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'listDisplayStyle'      => 'list',
 						),
 					),
+					'uagb/lottie'                 => array(
+						'slug'        => '',
+						'title'       => __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add Lottie animation.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'js_assets'   => array( 'uagb-lottie-js', 'uagb-bodymovin-min' ),
+						'attributes'  => array(
+							'block_id'         => '',
+							'jsonLottie'       => '',
+							'lottieURl'        => '',
+							'height'           => '',
+							'heightTablet'     => '',
+							'heightMob'        => '',
+							'width'            => '',
+							'widthTablet'      => '',
+							'widthMob'         => '',
+							'backgroundColor'  => '',
+							'backgroundHColor' => '',
+							'loop'             => true,
+							'speed'            => 1,
+							'reverse'          => false,
+							'playOn'           => 'none',
+						),
+					),
 				);
 			}
 			return self::$block_attributes;
@@ -2614,6 +2638,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
 						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+						'skipEditor' => true,
+					),
+					'uagb-bodymovin-min'     => array(
+						'src'        => UAGB_URL . 'assets/js/uagb-bodymovin.min.js',
+						'dep'        => array(),
+						'skipEditor' => true,
+					),
+					'uagb-lottie-js'         => array(
+						'src'        => UAGB_URL . 'assets/js/uagb-lottie.js',
+						'dep'        => array( 'jquery', 'uagb-bodymovin-min' ),
 						'skipEditor' => true,
 					),
 				);

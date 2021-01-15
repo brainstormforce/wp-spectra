@@ -214,6 +214,31 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
+		 * Get UAGB Lottie Js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_lottie_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/lottie']['attributes'];
+
+			$attr          = array_merge( $defaults, (array) $attr );
+			$base_selector = 'uagb-block-';
+			$selector      = $base_selector . $id;
+
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				UAGBLottie._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+			});
+			<?php
+			return ob_get_clean();
+
+		}
+
+		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
 		 * @since 1.9.1

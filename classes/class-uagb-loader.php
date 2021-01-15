@@ -89,6 +89,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
+			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
+
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
 				define( 'UAGB_TABLET_BREAKPOINT', '976' );
 			}
@@ -115,6 +117,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
 			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
 			require_once UAGB_DIR . 'dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php';
+			require_once UAGB_DIR . 'dist/blocks/lottie/class-uagb-lottie.php';
 
 		}
 
