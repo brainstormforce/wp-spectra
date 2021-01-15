@@ -397,6 +397,32 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level];
 				}
 			}
+			$sortedHeaders = [];
+			foreach ($headings as $elem){
+				$last = count($sortedHeaders) - 1;
+				if (count($sortedHeaders) == 0 || $sortedHeaders[$last][0]['level'] < $elem['level']) {
+					array_push($sortedHeaders, [$elem]);
+				} else if ($sortedHeaders[$last][0]['level'] == $elem['level']){
+					array_push($sortedHeaders[$last], $elem);
+				} else{
+					while($sortedHeaders[$last][0]['level'] > $elem['level'] && count($sortedHeaders) > 1){
+						array_push($sortedHeaders[count($sortedHeaders) - 2], array_pop($sortedHeaders));
+						$last = count($sortedHeaders) - 1;
+					}
+					if($sortedHeaders[$last][0]['level'] == $elem['level']){
+						array_push($sortedHeaders[$last], $elem);
+					}
+				}
+			}
+			
+			if(count($sortedHeaders) > 0){
+				while(count($sortedHeaders) > 1 &&
+					$sortedHeaders[count($sortedHeaders) - 1][0]['level'] > $sortedHeaders[count($sortedHeaders) - 2][0]['level']){
+					array_push($sortedHeaders[count($sortedHeaders) - 2], array_pop($sortedHeaders));
+				}
+				$sortedHeaders = $sortedHeaders[0];
+			}
+			// print_r($sortedHeaders);
 			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
@@ -405,7 +431,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( isset( $attributes['initialCollapse'] ) ) ? 'uagb-toc__collapse' : '',
 				'uagb-block-' . $attributes['block_id'],
 			);
-
+			ob_start();
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
 					data-scroll= <?php echo $attributes['smoothScroll'] ?>
@@ -441,6 +467,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				</div>
 			</div>
 			<?php
+				return ob_get_clean();
 		}
            
     }

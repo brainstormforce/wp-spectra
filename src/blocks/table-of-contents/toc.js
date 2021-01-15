@@ -39,7 +39,7 @@ class TableOfContents extends React.Component {
 			) {
 				arrays[arrays.length - 2].push(arrays.pop());
 			}
-
+			
 			return arrays[0];
 		};
 
@@ -50,6 +50,7 @@ class TableOfContents extends React.Component {
 					arrays.push( heading );
 				}
 			});
+			console.log(arrays);
 			return makeHeaderArray( arrays );
 		};
 
