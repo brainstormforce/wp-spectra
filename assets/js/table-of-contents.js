@@ -127,7 +127,7 @@
 			}
 
 			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
-
+			
 			if ( 0 !== all_header.length ) {
 				
 				all_header.each( function (){

@@ -50,7 +50,6 @@ class TableOfContents extends React.Component {
 					arrays.push( heading );
 				}
 			});
-			console.log(arrays);
 			return makeHeaderArray( arrays );
 		};
 
