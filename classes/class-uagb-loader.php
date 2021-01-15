@@ -89,6 +89,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
+			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
+
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
 				define( 'UAGB_TABLET_BREAKPOINT', '976' );
 			}

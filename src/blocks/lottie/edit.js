@@ -138,7 +138,7 @@ class UAGBLottie extends Component {
 						{ value: "click", label: __( "On Click", 'ultimate-addons-for-gutenberg' ) },
                         { value: "scroll", label: __( "Viewport", 'ultimate-addons-for-gutenberg' ) },
                     ] }
-                    help={ ( 'scroll' === playOn ) ? __( "This settings will only take effect once you are on the live page, and not while you're editing in Gutenberg.", 'ultimate-addons-for-gutenberg' ) : '' }
+                    help={ ( 'scroll' === playOn ) ? __( "This setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) : '' }
 				/> 
                 <ToggleControl
                     label={ __( "Loop", 'ultimate-addons-for-gutenberg' ) }
@@ -316,9 +316,9 @@ class UAGBLottie extends Component {
             return(
                 <div className="uagb-show-notice">
                     <span> 
-                        {__('Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations', 'ultimate-addons-for-gutenberg' )}
-                            <a href="https://lottiefiles.com/" target="__blank"> { __( 'here on this' ) } </a>
-                            {__('website.')}
+                        {__('Lottie block requires the file type JSON to be uploaded to media files. Seems like your website has disabled this file type. Please refer', 'ultimate-addons-for-gutenberg' )}
+                            <a href={`${uagb_blocks_info.uagb_site_url}docs/lottie//?utm_source=uagb-dashboard&utm_medium=uagb-editor-page&utm_campaign=uagb-plugin`} target="__blank"> { __( 'this document' ) } </a>
+                            {__('to know more about it.')}
                     </span>;
                 </div>
             ); 

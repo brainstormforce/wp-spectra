@@ -944,14 +944,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			<?php
 		}
 
-		/** 
+		/**
 		 *  Check MIME Type
+		 *
 		 *  @since x.x.x
 		 */
 		public static function get_mime_type() {
-			
+
 			$allowed_types = get_allowed_mime_types();
-			
+
 			return ( array_key_exists( 'json', $allowed_types ) ) ? true : false;
 
 		}
