@@ -3,19 +3,14 @@
  */
 
 import classnames from "classnames"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
-
 import Lottie from 'react-lottie';
 
 const { __ } = wp.i18n
 
 const {
 	InspectorControls,
-	MediaUpload,
     ColorPalette,
-    MediaUploadCheck,
     MediaPlaceholder,
     BlockControls,
     MediaReplaceFlow
@@ -24,8 +19,6 @@ const {
 const {
     PanelBody,
 	RangeControl,
-	Button,
-	TextControl,
     ToggleControl,
     TabPanel,
     Dashicon,
@@ -317,9 +310,9 @@ class UAGBLottie extends Component {
                 <div className="uagb-show-notice">
                     <span> 
                         {__('Lottie block requires the file type JSON to be uploaded to media files. Seems like your website has disabled this file type. Please refer', 'ultimate-addons-for-gutenberg' )}
-                            <a href={`${uagb_blocks_info.uagb_site_url}docs/lottie//?utm_source=uagb-dashboard&utm_medium=uagb-editor-page&utm_campaign=uagb-plugin`} target="__blank"> { __( 'this document' ) } </a>
+                            <a href={`${uagb_blocks_info.uagb_site_url}/docs/lottie/?utm_source=uagb-dashboard&utm_medium=uagb-editor-page&utm_campaign=uagb-plugin`} target="__blank"> { __( 'this document' ) } </a>
                             {__('to know more about it.')}
-                    </span>;
+                    </span>
                 </div>
             ); 
         }
