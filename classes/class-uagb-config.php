@@ -2560,7 +2560,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/lottie'                 => array(
 						'slug'        => '',
 						'title'       => __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you add Lottie animation.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add Lottie animation and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'js_assets'   => array( 'uagb-lottie-js', 'uagb-bodymovin-min' ),
 						'attributes'  => array(
