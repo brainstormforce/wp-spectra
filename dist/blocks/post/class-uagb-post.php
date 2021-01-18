@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @param array $fname to get the block.
 		 * @param array $attr Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public function render_layout( $fname, $attr ) {
 			switch ( $fname ) {
@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public function render_innerblocks( $attributes ) {
 			$length = count( $attributes['layoutConfig'] );

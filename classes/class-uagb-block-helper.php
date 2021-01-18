@@ -5068,7 +5068,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Lottie CSS.
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */

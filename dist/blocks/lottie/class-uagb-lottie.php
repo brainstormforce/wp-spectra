@@ -14,14 +14,14 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 	/**
 	 * Class UAGB_Lottie.
 	 *
-	 * @since x.x.x
+	 * @since 1.20.0
 	 */
 	class UAGB_Lottie {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 * @var instance
 		 */
 		private static $instance;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public function __construct() {
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		/**
 		 * Registers the `uagb/lottie` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public function register_blocks() {
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.20.0
 		 */
 		public function render_html( $attributes ) {
 

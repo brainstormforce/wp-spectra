@@ -947,7 +947,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 *  Check MIME Type
 		 *
-		 *  @since x.x.x
+		 *  @since 1.20.0
 		 */
 		public static function get_mime_type() {
 
