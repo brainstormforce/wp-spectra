@@ -1440,6 +1440,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderColor'             => '',
 							'borderHColor'            => '',
 							'borderRadius'            => '0',
+							'imgPosition'             => 'top',
 							'layoutConfig'            => array(
 								array( 'uagb/post-image' ),
 								array( 'uagb/post-title' ),
@@ -1549,6 +1550,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationAlignment'         => 'left',
 							'paginationNextText'          => '« Previous',
 							'paginationPrevText'          => 'Next »',
+							'imgPosition'                 => 'top',
 							'layoutConfig'                => array(
 								array( 'uagb/post-image' ),
 								array( 'uagb/post-title' ),
@@ -1666,6 +1668,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'hpaginationButtonPaddingMobile' => 12,
 							'hpaginationButtonPaddingTablet' => 12,
 							'hpaginationButtonPaddingDesktop' => 12,
+							'imgPosition'                  => 'top',
 							'layoutConfig'                 => array(
 								array( 'uagb/post-image' ),
 								array( 'uagb/post-title' ),
