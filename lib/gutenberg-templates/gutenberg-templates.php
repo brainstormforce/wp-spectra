@@ -11,6 +11,10 @@
  * @package Gutenberg Templates
  */
 
+if ( class_exists( 'Gutenberg_Templates' ) ) {
+	return;
+}
+
 // Set constants.
 define( 'GUTENBERG_TEMPLATES_LIBRARY_URL', 'https://websitedemos.net/' );
 define( 'GUTENBERG_TEMPLATES_VER', '1.0.0-beta-1' );

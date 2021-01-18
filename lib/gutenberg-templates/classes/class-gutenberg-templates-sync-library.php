@@ -46,16 +46,47 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 			add_action( 'wp_ajax_gutenberg-templates-get-sites-request-count', array( $this, 'ajax_sites_requests_count' ) );
 			add_action( 'wp_ajax_gutenberg-templates-import-sites', array( $this, 'ajax_import_sites' ) );
 
-            add_action( 'wp_ajax_gutenberg-templates-get-blocks-request-count', array( $this, 'ajax_blocks_requests_count' ) );
-            add_action( 'wp_ajax_gutenberg-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
-            add_action( 'wp_ajax_gutenberg-templates-check-sync-library-status', array( $this, 'check_sync_status' ) );
+			add_action( 'wp_ajax_gutenberg-templates-get-blocks-request-count', array( $this, 'ajax_blocks_requests_count' ) );
+			add_action( 'wp_ajax_gutenberg-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
+			add_action( 'wp_ajax_gutenberg-templates-check-sync-library-status', array( $this, 'check_sync_status' ) );
 			add_action( 'wp_ajax_gutenberg-templates-update-sync-library-status', array( $this, 'update_library_complete' ) );
-        }
+			add_action( 'admin_head', array( $this, 'start_importer' ) );
+		}
 
-        /**
+		/**
+		 * Start Importer
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function start_importer() {
+
+			$is_fresh_site = get_site_option( 'gutenberg-templates-fresh-site', '' );
+
+			// Process initially for the fresh user.
+			if ( empty( $is_fresh_site ) ) {
+
+				$dir        = GUTENBERG_TEMPLATES_DIR . 'dist/json';
+				$list_files = list_files( $dir );
+				if ( ! empty( $list_files ) ) {
+					$list_files = array_map( 'basename', $list_files );
+					foreach ( $list_files as $key => $file_name ) {
+						$data = Gutenberg_Templates::get_instance()->get_filesystem()->get_contents( $dir . '/' . $file_name );
+						if ( ! empty( $data ) ) {
+							$option_name = str_replace( '.json', '', $file_name );
+							update_site_option( $option_name, json_decode( $data, true ) );
+						}
+					}
+				}
+
+				update_site_option( 'gutenberg-templates-fresh-site', 'yes', 'no' );
+			}
+		}
+
+		/**
 		 * Update Library Complete
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function update_library_complete() {
@@ -63,40 +94,58 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 
 			update_site_option( 'gutenberg-templates-batch-is-complete', 'no', 'no' );
 			update_site_option( 'gutenberg-templates-manual-sync-complete', 'yes', 'no' );
-			
-			if( doing_wp_cli() ) {
+
+			if ( gutenberg_templates_doing_wp_cli() ) {
 				WP_CLI::line( 'Updated checksums' );
 			} else {
-				wp_send_json_success( array( 'message' => 'Updated checksums', 'status' => true, 'data' => '' ) );
+				wp_send_json_success(
+					array(
+						'message' => 'Updated checksums',
+						'status'  => true,
+						'data'    => '',
+					)
+				);
 			}
-        }
+		}
 
-        /**
+		/**
 		 * Update Library
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function check_sync_status() {
 
 			if ( 'no' === $this->get_last_export_checksums() ) {
 
-				if( doing_wp_cli() ) {
+				if ( gutenberg_templates_doing_wp_cli() ) {
 					WP_CLI::error( 'Template library refreshed!' );
 				} else {
-					wp_send_json_success( array( 'message' => 'Updated', 'status' => true, 'data' => 'updated' ) );
+					wp_send_json_success(
+						array(
+							'message' => 'Updated',
+							'status'  => true,
+							'data'    => 'updated',
+						)
+					);
 				}
 			}
 
-			if( ! doing_wp_cli() ) {
-				wp_send_json_success( array( 'message' => 'Complete', 'status' => true, 'data' => '' ) );
+			if ( ! gutenberg_templates_doing_wp_cli() ) {
+				wp_send_json_success(
+					array(
+						'message' => 'Complete',
+						'status'  => true,
+						'data'    => '',
+					)
+				);
 			}
-        }
-        
-        /**
+		}
+
+		/**
 		 * Get Last Exported Checksum Status
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return string Checksums Status.
 		 */
 		public function get_last_export_checksums() {
@@ -116,12 +165,12 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 			}
 
 			return apply_filters( 'gutenberg_templates_checksums_status', $checksums_status );
-        }
-        
-        /**
+		}
+
+		/**
 		 * Set Last Exported Checksum
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return string Checksums Status.
 		 */
 		public function set_last_export_checksums() {
@@ -152,14 +201,14 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 			}
 
 			return $this->last_export_checksums;
-        }
-        
-        /**
+		}
+
+		/**
 		 * Check Cron Status
 		 *
 		 * Gets the current cron status by performing a test spawn. Cached for one hour when all is well.
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 *
 		 * @param bool $cache Whether to use the cached result from previous calls.
 		 * @return true|WP_Error Boolean true if the cron spawner is working as expected, or a WP_Error object if not.
@@ -218,13 +267,13 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 			}
 
 		}
-        
-        /**
+
+		/**
 		 * Update Latest Checksums
 		 *
 		 * Store latest checksum after batch complete.
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function update_latest_checksums() {
@@ -235,67 +284,115 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 		/**
 		 * Import Sites
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function ajax_import_sites() {
 			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( $page_no ) {
 				$sites_and_pages = $this->import_sites( $page_no );
-				wp_send_json_success( array( 'message' => 'Success imported sites for page ' . $page_no, 'status' => true, 'data' => $sites_and_pages ) );
+				wp_send_json_success(
+					array(
+						'message' => 'Success imported sites for page ' . $page_no,
+						'status'  => true,
+						'data'    => $sites_and_pages,
+					)
+				);
 			}
 
-			wp_send_json_error( array( 'message' => 'Failed imported sites for page ' . $page_no, 'status' => false, 'data' => '' ) );
+			wp_send_json_error(
+				array(
+					'message' => 'Failed imported sites for page ' . $page_no,
+					'status'  => false,
+					'data'    => '',
+				)
+			);
 		}
 
-        /**
+		/**
 		 * Import Blocks
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function ajax_import_blocks() {
 			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( $page_no ) {
 				$sites_and_pages = $this->import_blocks( $page_no );
-				wp_send_json_success( array( 'message' => 'Success imported sites for page ' . $page_no, 'status' => true, 'data' => $sites_and_pages ) );
+				wp_send_json_success(
+					array(
+						'message' => 'Success imported sites for page ' . $page_no,
+						'status'  => true,
+						'data'    => $sites_and_pages,
+					)
+				);
 			}
 
-			wp_send_json_error( array( 'message' => 'Failed imported blocks for page ' . $page_no, 'status' => false, 'data' => '' ) );
+			wp_send_json_error(
+				array(
+					'message' => 'Failed imported blocks for page ' . $page_no,
+					'status'  => false,
+					'data'    => '',
+				)
+			);
 		}
 
 		/**
 		 * Blocks Requests Count
 		 *
-		 * @since 2.1.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function ajax_sites_requests_count() {
 			// Get count.
 			$total_requests = $this->get_total_sites_count();
 			if ( $total_requests ) {
-				wp_send_json_success( array( 'message' => 'Success', 'status' => true, 'data' => $total_requests ) );
+				wp_send_json_success(
+					array(
+						'message' => 'Success',
+						'status'  => true,
+						'data'    => $total_requests,
+					)
+				);
 			}
 
-			wp_send_json_success( array( 'message' => 'Failed', 'status' => false, 'data' => $total_requests ) );
-        }
+			wp_send_json_success(
+				array(
+					'message' => 'Failed',
+					'status'  => false,
+					'data'    => $total_requests,
+				)
+			);
+		}
 
-        /**
+		/**
 		 * Blocks Requests Count
 		 *
-		 * @since 2.1.0
+		 * @since 1.0.0
 		 * @return void
 		 */
 		public function ajax_blocks_requests_count() {
 			// Get count.
 			$total_requests = $this->get_total_blocks_requests();
 			if ( $total_requests ) {
-				wp_send_json_success( array( 'message' => 'Success', 'status' => true, 'data' => $total_requests ) );
+				wp_send_json_success(
+					array(
+						'message' => 'Success',
+						'status'  => true,
+						'data'    => $total_requests,
+					)
+				);
 			}
 
-			wp_send_json_success( array( 'message' => 'Failed', 'status' => false, 'data' => $total_requests ) );
-        }
-		
+			wp_send_json_success(
+				array(
+					'message' => 'Failed',
+					'status'  => false,
+					'data'    => $total_requests,
+				)
+			);
+		}
+
 		/**
 		 * Get Sites Total Requests
 		 *
@@ -303,20 +400,22 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 		 */
 		public function get_total_sites_count() {
 
-			error_log( 'SITE: Getting Total Sites' );
+			gutenberg_templates_log( 'SITE: Getting Total Sites' );
 
 			$api_args = array(
 				'timeout' => 60,
 			);
 
-			$query_args = array(
-				'page_builder' => 'gutenberg',
-				'draft' => 'yes',
+			$query_args = apply_filters(
+				'gutenberg_templates_get_total_pages_args',
+				array(
+					'page_builder' => 'gutenberg',
+				)
 			);
 
 			$api_url = add_query_arg( $query_args, trailingslashit( GUTENBERG_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-total-pages/' );
 
-			error_log( 'SITE: ' . $api_url );
+			gutenberg_templates_log( 'SITE: ' . $api_url );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -324,42 +423,42 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 				$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 				if ( isset( $total_requests['pages'] ) ) {
-					error_log( 'SITE: Request count ' . $total_requests['pages'] );
+					gutenberg_templates_log( 'SITE: Request count ' . $total_requests['pages'] );
 
 					update_site_option( 'gutenberg-templates-site-requests', $total_requests['pages'], 'no' );
-					
+
 					$this->generate_file( 'gutenberg-templates-site-requests', $total_requests['pages'] );
 
 					return $total_requests['pages'];
 				}
 			}
 
-			error_log( 'SITE: Request Failed! Still Calling..' );
-
-			// $this->get_total_sites_count();
+			gutenberg_templates_log( 'SITE: Request Failed! Still Calling..' );
 		}
 
-        /**
+		/**
 		 * Get Blocks Total Requests
 		 *
 		 * @return integer
 		 */
 		public function get_total_blocks_requests() {
 
-			error_log( 'BLOCK: Getting Total Blocks' );
+			gutenberg_templates_log( 'BLOCK: Getting Total Blocks' );
 
 			$api_args = array(
 				'timeout' => 60,
 			);
 
-			$query_args = array(
-				'page_builder' => 'gutenberg',
-				'draft' => 'yes',
+			$query_args = apply_filters(
+				'gutenberg_templates_get_blocks_count_args',
+				array(
+					'page_builder' => 'gutenberg',
+				)
 			);
 
 			$api_url = add_query_arg( $query_args, trailingslashit( GUTENBERG_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/get-blocks-count/' );
 
-			error_log( 'BLOCK: ' . $api_url );
+			gutenberg_templates_log( 'BLOCK: ' . $api_url );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -367,7 +466,7 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 				$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 				if ( isset( $total_requests['pages'] ) ) {
-					error_log( 'BLOCK: Requests count ' . $total_requests['pages'] );
+					gutenberg_templates_log( 'BLOCK: Requests count ' . $total_requests['pages'] );
 
 					update_site_option( 'gutenberg-templates-block-requests', $total_requests['pages'], 'no' );
 
@@ -377,9 +476,6 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 				}
 			}
 
-			// error_log( 'BLOCK: Request Failed! Still Calling..' );
-
-			// $this->get_total_blocks_requests();
 		}
 
 		/**
@@ -391,22 +487,24 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 		 */
 		public function import_sites( $page = 1 ) {
 
-			error_log( 'SITE: Importing request '.$page.' ..' );
+			gutenberg_templates_log( 'SITE: Importing request ' . $page . ' ..' );
 			$api_args   = array(
 				'timeout' => 30,
 			);
 			$all_blocks = array();
 
-			$query_args = array(
-				'per_page' => 100,
-				'page' => $page,
-				'page-builder' => 'gutenberg',
-				'draft' => 'yes',
+			$query_args = apply_filters(
+				'gutenberg_templates_get_sites_and_pages_args',
+				array(
+					'per_page'     => 100,
+					'page'         => $page,
+					'page-builder' => 'gutenberg',
+				)
 			);
 
 			$api_url = add_query_arg( $query_args, trailingslashit( GUTENBERG_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/sites-and-pages/' );
 
-			error_log( 'SITE: ' . $api_url );
+			gutenberg_templates_log( 'SITE: ' . $api_url );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -416,30 +514,30 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 				if ( isset( $all_blocks['code'] ) ) {
 					$message = isset( $all_blocks['message'] ) ? $all_blocks['message'] : '';
 					if ( ! empty( $message ) ) {
-						error_log( 'SITE: HTTP Request Error: ' . $message );
+						gutenberg_templates_log( 'SITE: HTTP Request Error: ' . $message );
 					} else {
-						error_log( 'SITE: HTTP Request Error!' );
+						gutenberg_templates_log( 'SITE: HTTP Request Error!' );
 					}
 				} else {
 
 					$option_name = 'gutenberg-templates-sites-' . $page;
-					error_log( 'SITE: Storing in option ' . $option_name );
+					gutenberg_templates_log( 'SITE: Storing in option ' . $option_name );
 
 					update_site_option( $option_name, $all_blocks, 'no' );
 
-					if ( doing_wp_cli() ) {
-						error_log( 'SITE: Generating ' . $option_name . '.json file' );
+					if ( gutenberg_templates_doing_wp_cli() ) {
+						gutenberg_templates_log( 'SITE: Generating ' . $option_name . '.json file' );
 						$this->generate_file( $option_name, $all_blocks );
 					}
 				}
 			} else {
-				error_log( 'SITE: API Error: ' . $response->get_error_message() );
+				gutenberg_templates_log( 'SITE: API Error: ' . $response->get_error_message() );
 			}
 
-			error_log( 'SITE: Completed request ' . $page );
-        }
-        
-        /**
+			gutenberg_templates_log( 'SITE: Completed request ' . $page );
+		}
+
+		/**
 		 * Import Blocks
 		 *
 		 * @since 1.0.0
@@ -448,22 +546,24 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 		 */
 		public function import_blocks( $page = 1 ) {
 
-			error_log( 'BLOCK: Importing request '.$page.' ..' );
+			gutenberg_templates_log( 'BLOCK: Importing request ' . $page . ' ..' );
 			$api_args   = array(
 				'timeout' => 30,
 			);
 			$all_blocks = array();
 
-			$query_args = array(
-				'per_page' => 100,
-				'page' => $page,
-				'page_builder' => 'gutenberg',
-				'draft' => 'yes',
+			$query_args = apply_filters(
+				'gutenberg_templates_blocks_args',
+				array(
+					'per_page'     => 100,
+					'page'         => $page,
+					'page_builder' => 'gutenberg',
+				)
 			);
 
 			$api_url = add_query_arg( $query_args, trailingslashit( GUTENBERG_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v1/blocks/' );
 
-			error_log( 'BLOCK: '.$api_url );
+			gutenberg_templates_log( 'BLOCK: ' . $api_url );
 
 			$response = wp_remote_get( $api_url, $api_args );
 
@@ -473,29 +573,29 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 				if ( isset( $all_blocks['code'] ) ) {
 					$message = isset( $all_blocks['message'] ) ? $all_blocks['message'] : '';
 					if ( ! empty( $message ) ) {
-						error_log( 'BLOCK: HTTP Request Error: ' . $message );
+						gutenberg_templates_log( 'BLOCK: HTTP Request Error: ' . $message );
 					} else {
-						error_log( 'BLOCK: HTTP Request Error!' );
+						gutenberg_templates_log( 'BLOCK: HTTP Request Error!' );
 					}
 				} else {
 					$option_name = 'gutenberg-templates-blocks-' . $page;
-					error_log( 'BLOCK: Storing in option ' . $option_name );
+					gutenberg_templates_log( 'BLOCK: Storing in option ' . $option_name );
 
 					update_site_option( $option_name, $all_blocks, 'no' );
 
-					if ( doing_wp_cli() ) {
-						error_log( 'BLOCK: Genearting ' . $option_name . '.json file' );
+					if ( gutenberg_templates_doing_wp_cli() ) {
+						gutenberg_templates_log( 'BLOCK: Genearting ' . $option_name . '.json file' );
 						$this->generate_file( $option_name, $all_blocks );
 					}
 				}
 			} else {
-				error_log( 'BLOCK: API Error: ' . $response->get_error_message() );
+				gutenberg_templates_log( 'BLOCK: API Error: ' . $response->get_error_message() );
 			}
 
-			error_log( 'BLOCK: Completed request ' . $page );
-        }
+			gutenberg_templates_log( 'BLOCK: Completed request ' . $page );
+		}
 
-        /**
+		/**
 		 * Generate JSON file.
 		 *
 		 * @since 1.0.0
@@ -505,12 +605,12 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 		 * @return void.
 		 */
 		public function generate_file( $filename = '', $data = array() ) {
-			if ( doing_wp_cli() ) {
+			if ( gutenberg_templates_doing_wp_cli() ) {
 				$this->get_filesystem()->put_contents( GUTENBERG_TEMPLATES_DIR . 'dist/json/' . $filename . '.json', wp_json_encode( $data ) );
 			}
-        }
-        
-        /**
+		}
+
+		/**
 		 * Get an instance of WP_Filesystem_Direct.
 		 *
 		 * @since 1.0.0
@@ -525,21 +625,12 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library' ) ) :
 
 			return $wp_filesystem;
 		}
-    
-    }
-    
-    /**
+
+	}
+
+	/**
 	 * Kicking this off by calling 'get_instance()' method
 	 */
 	Gutenberg_Templates_Sync_Library::get_instance();
 
-endif;
-
-if( ! function_exists( 'doing_wp_cli' ) ) :
-	function doing_wp_cli() {
-		if( defined( 'WP_CLI' ) && WP_CLI ) {
-			return true;
-		}
-		return false;
-	}
 endif;

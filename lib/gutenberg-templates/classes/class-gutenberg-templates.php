@@ -46,6 +46,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		private function __construct() {
+			require_once GUTENBERG_TEMPLATES_DIR . 'classes/functions.php';
 			require_once GUTENBERG_TEMPLATES_DIR . 'classes/class-gutenberg-templates-sync-library.php';
 			require_once GUTENBERG_TEMPLATES_DIR . 'classes/class-gutenberg-templates-image-importer.php';
 			require_once GUTENBERG_TEMPLATES_DIR . 'classes/class-gutenberg-templates-sync-library-wp-cli.php';
@@ -55,36 +56,33 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 			add_action( 'wp_ajax_gutenberg_templates_activate_plugin', array( $this, 'activate_plugin' ) );
 			add_action( 'wp_ajax_gutenberg_templates_import_wpforms', array( $this, 'import_wpforms' ) );
 			add_action( 'wp_ajax_gutenberg_templates_import_block', array( $this, 'import_block' ) );
-
-			register_activation_hook( GUTENBERG_TEMPLATES_FILE, array( $this, 'after_activate' ) );
+			add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		}
 
-		function after_activate() {
-			$dir = GUTENBERG_TEMPLATES_DIR . 'dist/json';
-			$list_files = list_files( $dir );
-			if ( ! empty( $list_files ) ) {
-				$list_files = array_map( 'basename', $list_files );
-				foreach ( $list_files as $key => $file_name ) {
-					$data = $this->get_filesystem()->get_contents( $dir . '/' . $file_name );
-					if ( ! empty( $data ) ) {
-						$option_name = str_replace( '.json', '', $file_name );
-						update_site_option( $option_name, json_decode( $data, true ) );
-					}
-				}
-			}
+		/**
+		 * Add .json files as supported format in the uploader.
+		 *
+		 * @param array $mimes Already supported mime types.
+		 */
+		public function custom_upload_mimes( $mimes ) {
+
+			// Allow JSON files.
+			$mimes['json'] = 'application/json';
+
+			return $mimes;
 		}
 
 		/**
 		 * Import WP Forms
 		 *
-		 * @since 1.0.0 The `$wpforms_url` was added.
+		 * @since 1.0.0
 		 *
 		 * @param  string $wpforms_url WP Forms JSON file URL.
 		 * @return void
 		 */
 		public function import_wpforms( $wpforms_url = '' ) {
-			
-			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url;
+
+			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$ids_mapping = array();
 
 			if ( ! empty( $wpforms_url ) && function_exists( 'wpforms_encode' ) ) {
@@ -118,7 +116,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 											)
 										);
 
-										error_log( 'Imported Form ' . $title );
+										gutenberg_templates_log( 'Imported Form ' . $title );
 									}
 
 									if ( $new_id ) {
@@ -138,6 +136,8 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 							}
 						}
 					}
+				} else {
+					wp_send_json_error( $file_path );
 				}
 			}
 
@@ -146,7 +146,10 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 			wp_send_json_success( $ids_mapping );
 		}
 
-		function import_block() {
+		/**
+		 * Import Block
+		 */
+		public function import_block() {
 
 			// Allow the SVG tags in batch update process.
 			add_filter( 'wp_kses_allowed_html', array( $this, 'allowed_tags_and_attributes' ), 10, 2 );
@@ -154,14 +157,14 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 			$ids_mapping = get_option( 'gutenberg_templates_wpforms_ids_mapping', array() );
 
 			// Post content.
-			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : '';
+			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			// Empty mapping? Then return.
 			if ( ! empty( $ids_mapping ) ) {
 				// Replace ID's.
 				foreach ( $ids_mapping as $old_id => $new_id ) {
 					$content = str_replace( '[wpforms id="' . $old_id, '[wpforms id="' . $new_id, $content );
-					$content = str_replace( '{"formId":"'.$old_id.'"}', '{"formId":"'.$new_id.'"}', $content );
+					$content = str_replace( '{"formId":"' . $old_id . '"}', '{"formId":"' . $new_id . '"}', $content );
 				}
 			}
 
@@ -180,7 +183,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		/**
 		 * Download and Replace hotlink images
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 *
 		 * @param  string $content Mixed post content.
 		 * @return array           Hotlink image array.
@@ -238,17 +241,6 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 				}
 			}
 
-			// // Step 2: Replace the demo site URL with live site URL.
-			// if ( ! empty( $other_links ) ) {
-			// 	$demo_data = get_option( 'astra_sites_import_data', array() );
-			// 	if ( isset( $demo_data['astra-site-url'] ) ) {
-			// 		$site_url = get_site_url();
-			// 		foreach ( $other_links as $key => $link ) {
-			// 			$link_mapping[ $link ] = str_replace( 'https:' . $demo_data['astra-site-url'], $site_url, $link );
-			// 		}
-			// 	}
-			// }
-
 			// Step 3: Replace mapping links.
 			foreach ( $link_mapping as $old_url => $new_url ) {
 				$content = str_replace( $old_url, $new_url, $content );
@@ -290,8 +282,11 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 
 			return $allowedposttags;
 		}
-		
-		function activate_plugin() {
+
+		/**
+		 * Activate Plugin
+		 */
+		public function activate_plugin() {
 			wp_clean_plugins_cache();
 
 			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : ''; // phpcs:ignore
@@ -314,50 +309,56 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 			);
 		}
 
-        /**
+		/**
 		 * Template Importer
 		 *
 		 * @since 1.0.0
 		 */
 		public function template_importer() {
 
-            $nonce = isset( $_REQUEST['_ajax_nonce'] ) && wp_verify_nonce( $_REQUEST['_ajax_nonce'], 'gutenberg-templates-ajax-nonce' ) ? true : false;
+			$nonce = isset( $_REQUEST['_ajax_nonce'] ) && wp_verify_nonce( $_REQUEST['_ajax_nonce'], 'gutenberg-templates-ajax-nonce' ) ? true : false;
 
-            if ( ! $nonce ) {
-                wp_send_json_error( 'Invalid nonce.' );
-            }
-            
-            $api_uri = sanitize_text_field( $_REQUEST[ 'api_uri' ] );
+			if ( ! $nonce ) {
+				wp_send_json_error( 'Invalid nonce.' );
+			}
 
-            $api_args = apply_filters( 'gutenberg_templates_api_args', array(
-                'timeout' => 15,
-            ));
+			$api_uri = sanitize_text_field( $_REQUEST['api_uri'] );
 
-            $request_params = apply_filters( 'gutenberg_templates_api_params', array(
-                '_fields' => 'original_content',
-            ) );
+			$api_args = apply_filters(
+				'gutenberg_templates_api_args',
+				array(
+					'timeout' => 15,
+				)
+			);
 
-            $demo_api_uri = add_query_arg( $request_params, $api_uri );
+			$request_params = apply_filters(
+				'gutenberg_templates_api_params',
+				array(
+					'_fields' => 'original_content',
+				)
+			);
 
-            // API Call.
-            $response = wp_remote_get( $demo_api_uri, $api_args );
+			$demo_api_uri = add_query_arg( $request_params, $api_uri );
 
-            if ( is_wp_error( $response ) || ( isset( $response->status ) && 0 === $response->status ) ) {
-                if ( isset( $response->status ) ) {
-                    wp_send_json_error( json_decode( $response, true ) );
-                } else {
-                    wp_send_json_error( $response->get_error_message() );
-                }
-            }
+			// API Call.
+			$response = wp_remote_get( $demo_api_uri, $api_args );
 
-            if ( wp_remote_retrieve_response_code( $response ) !== 200 ) {
-                wp_send_json_error( wp_remote_retrieve_body( $response ) );
-            }
-            
-            $data = json_decode( wp_remote_retrieve_body( $response ), true );
+			if ( is_wp_error( $response ) || ( isset( $response->status ) && 0 === $response->status ) ) {
+				if ( isset( $response->status ) ) {
+					wp_send_json_error( json_decode( $response, true ) );
+				} else {
+					wp_send_json_error( $response->get_error_message() );
+				}
+			}
 
-            wp_send_json_success( $data['original_content'] );
-        }
+			if ( wp_remote_retrieve_response_code( $response ) !== 200 ) {
+				wp_send_json_error( wp_remote_retrieve_body( $response ) );
+			}
+
+			$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			wp_send_json_success( $data['original_content'] );
+		}
 
 		/**
 		 * Template Assets
@@ -365,23 +366,26 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		public function template_assets() {
-			wp_enqueue_script( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded' ), GUTENBERG_TEMPLATES_VER, true );
+			wp_enqueue_script( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), GUTENBERG_TEMPLATES_VER, true );
 			wp_add_inline_script( 'gutenberg-templates', 'window.lodash = _.noConflict();', 'after' );
 
-			wp_enqueue_style( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/style.css', array( ), GUTENBERG_TEMPLATES_VER, 'all' );
+			wp_enqueue_style( 'gutenberg-templates', GUTENBERG_TEMPLATES_URI . 'dist/style.css', array(), GUTENBERG_TEMPLATES_VER, 'all' );
 
-            wp_localize_script(
+			wp_localize_script(
 				'gutenberg-templates',
 				'GutenbergTemplatesVars',
-				array(
-					'ajax_url' => admin_url('admin-ajax.php'),
-                    'uri' => GUTENBERG_TEMPLATES_URI,
-                    'allBlocks' => $this->get_all_blocks(),
-					'allSites' => $this->get_all_sites( ),
-					'wpforms_status' => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
-					'gutenberg_status' => $this->get_plugin_status( 'gutenberg/gutenberg.php' ),
-                    '_ajax_nonce' => wp_create_nonce( 'gutenberg-templates-ajax-nonce' ),
-
+				apply_filters(
+					'gutenberg_templates_localize_vars',
+					array(
+						'ajax_url'         => admin_url( 'admin-ajax.php' ),
+						'uri'              => GUTENBERG_TEMPLATES_URI,
+						'white_label_name' => '',
+						'allBlocks'        => $this->get_all_blocks(),
+						'allSites'         => $this->get_all_sites(),
+						'wpforms_status'   => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
+						'gutenberg_status' => $this->get_plugin_status( 'gutenberg/gutenberg.php' ),
+						'_ajax_nonce'      => wp_create_nonce( 'gutenberg-templates-ajax-nonce' ),
+					)
 				)
 			);
 
@@ -390,7 +394,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		/**
 		 * Get plugin status
 		 *
-		 * @since 1.1.4
+		 * @since 1.0.0
 		 *
 		 * @param  string $plugin_init_file Plguin init file.
 		 * @return mixed
@@ -420,38 +424,38 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 
 			$sites = array();
 
-			if( $total_requests ) {
+			if ( $total_requests ) {
 
 				for ( $page = 1; $page <= $total_requests; $page++ ) {
 					$current_page_data = get_site_option( 'gutenberg-templates-sites-' . $page, array() );
 					if ( ! empty( $current_page_data ) ) {
 						foreach ( $current_page_data as $site_id => $site_data ) {
-	
-							// Replace `astra-sites-tag` with `tag`
+
+							// Replace `astra-sites-tag` with `tag`.
 							$site_data['tag'] = $site_data['astra-sites-tag'];
 							unset( $site_data['astra-sites-tag'] );
-	
+
 							// Replace `id-` from the site ID.
 							$site_data['ID'] = str_replace( 'id-', '', $site_id );
-							
-							if( count( $site_data['pages'] ) ) {
-								foreach( $site_data['pages'] as $page_id => $page_data ) {
-									
+
+							if ( count( $site_data['pages'] ) ) {
+								foreach ( $site_data['pages'] as $page_id => $page_data ) {
+
 									$single_page = $page_data;
-									
-									// Replace `astra-sites-tag` with `tag`
+
+									// Replace `astra-sites-tag` with `tag`.
 									$single_page['tag'] = $single_page['astra-sites-tag'];
 									unset( $single_page['astra-sites-tag'] );
-	
+
 									// Replace `id-` from the site ID.
 									$single_page['ID'] = str_replace( 'id-', '', $page_id );
-	
+
 									$site_data['pages'][] = $single_page;
-	
-									unset( $site_data['pages'][$page_id] );
+
+									unset( $site_data['pages'][ $page_id ] );
 								}
 							}
-	
+
 							$sites[] = $site_data;
 						}
 					}
@@ -476,7 +480,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 				if ( ! empty( $current_page_data ) ) {
 					foreach ( $current_page_data as $page_id => $page_data ) {
 						$page_data['ID'] = str_replace( 'id-', '', $page_id );
-						$blocks[] = $page_data;
+						$blocks[]        = $page_data;
 					}
 				}
 			}
@@ -487,7 +491,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		/**
 		 * Download File Into Uploads Directory
 		 *
-		 * @since 2.1.0 Added $overrides argument to override the uploaded file actions.
+		 * @since 1.0.0
 		 *
 		 * @param  string $file Download File URL.
 		 * @param  array  $overrides Upload file arguments.
@@ -536,7 +540,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 
 				'mimes'       => array(
 					'xml'  => 'text/xml',
-					'json' => 'text/plain',
+					'json' => 'application/json',
 				),
 			);
 
@@ -562,7 +566,7 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 		/**
 		 * Get an instance of WP_Filesystem_Direct.
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @return object A WP_Filesystem_Direct instance.
 		 */
 		public function get_filesystem() {
@@ -582,8 +586,3 @@ if ( ! class_exists( 'Gutenberg_Templates' ) ) :
 	Gutenberg_Templates::get_instance();
 
 endif;
-
-// add_action( 'admin_head', function() {
-// 	vl( Gutenberg_Templates::get_instance()->get_all_blocks() );
-// 	wp_die();
-// });

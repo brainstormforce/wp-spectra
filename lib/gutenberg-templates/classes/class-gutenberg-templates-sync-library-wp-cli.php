@@ -2,9 +2,9 @@
 /**
  * WP CLI
  *
- * 1. Run `wp gutenberg-templates info`       Info.
+ * 1. Run `wp gutenberg-templates sync`       Info.
  *
- * @since x.x.x
+ * @since 1.0.0
  *
  * @package gutenberg-templates
  */
@@ -12,16 +12,16 @@
 if ( ! class_exists( 'Gutenberg_Templates_Sync_Library_WP_CLI' ) && class_exists( 'WP_CLI_Command' ) ) :
 
 	/**
-	 * gutenberg-templates WP CLI
+	 * Gutenberg Templates WP CLI
 	 */
 	class Gutenberg_Templates_Sync_Library_WP_CLI extends WP_CLI_Command {
-		
+
 		/**
 		 * Sync
 		 *
 		 *  Example: wp gutenberg-templates sync
 		 *
-		 * @since x.x.x
+		 * @since 1.0.0
 		 * @param  array $args       Arguments.
 		 * @param  array $assoc_args Associated Arguments.
 		 * @return void
@@ -29,56 +29,44 @@ if ( ! class_exists( 'Gutenberg_Templates_Sync_Library_WP_CLI' ) && class_exists
 		public function sync( $args = array(), $assoc_args = array() ) {
 
 			// Start Sync.
-			WP_CLI::line('Sync Started');
+			WP_CLI::line( 'Sync Started' );
 
-			// /**
-			//  * Check sync status.
-			//  */
-			// Gutenberg_Templates_Sync_Library::get_instance()->check_sync_status();
+			// Check sync status.
+			Gutenberg_Templates_Sync_Library::get_instance()->check_sync_status();
 
-			/**
-			 * Get Blocks Count
-			 */
+			// Get Blocks Count.
 			$total_blocks_requests = Gutenberg_Templates_Sync_Library::get_instance()->get_total_blocks_requests();
-			if( $total_blocks_requests ) {
-				for ($page_no = 1; $page_no <= $total_blocks_requests; $page_no++) {
+			if ( $total_blocks_requests ) {
+				for ( $page_no = 1; $page_no <= $total_blocks_requests; $page_no++ ) {
 
-					/**
-					 * Import Blocks
-					 */
+					// Import Blocks.
 					Gutenberg_Templates_Sync_Library::get_instance()->import_blocks( $page_no );
-					WP_CLI::line('BLOCK: Importing blocks from page ' . $page_no);
+					WP_CLI::line( 'BLOCK: Importing blocks from page ' . $page_no );
 				}
-				WP_CLI::line('BLOCK: Importd blocks from ' . $total_blocks_requests . ' pages.' );
+				WP_CLI::line( 'BLOCK: Importd blocks from ' . $total_blocks_requests . ' pages.' );
 			} else {
 				WP_CLI::line( 'BLOCK: No block requests found' );
 			}
-			
-			/**
-			 * Get Sites Count
-			 */
-			$total_sites_requests = Gutenberg_Templates_Sync_Library::get_instance()->get_total_sites_count();
-			if( $total_sites_requests ) {
-				for ($page_no = 1; $page_no <= $total_sites_requests; $page_no++) {
 
-					/**
-					 * Import Sites
-					 */
+			// Get Sites Count.
+			$total_sites_requests = Gutenberg_Templates_Sync_Library::get_instance()->get_total_sites_count();
+			if ( $total_sites_requests ) {
+				for ( $page_no = 1; $page_no <= $total_sites_requests; $page_no++ ) {
+
+					// Import Sites.
 					Gutenberg_Templates_Sync_Library::get_instance()->import_sites( $page_no );
-					WP_CLI::line('SITE: Importing sites from page ' . $page_no);
+					WP_CLI::line( 'SITE: Importing sites from page ' . $page_no );
 				}
-				WP_CLI::line('SITE: Importd sites from ' . $total_sites_requests . ' pages.' );
+				WP_CLI::line( 'SITE: Importd sites from ' . $total_sites_requests . ' pages.' );
 			} else {
 				WP_CLI::line( 'SITE: No sites requests found' );
 			}
 
-			/**
-			 * Sync Complete
-			 */
+			// Sync Complete.
 			Gutenberg_Templates_Sync_Library::get_instance()->update_library_complete();
-			
+
 			// Start Sync.
-			WP_CLI::line('Sync Completed');
+			WP_CLI::line( 'Sync Completed' );
 		}
 	}
 
