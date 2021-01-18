@@ -1,7 +1,25 @@
 /**
  * BLOCK: UAGB Tabs Block Attributes
  */
+const ITEM_COUNT = 2	
 
+const tab = []	
+
+for ( var i = 1; i <= ITEM_COUNT; i++ ) {	
+	var desc_text = "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."		
+	tab.push(	
+		{	
+			"desc_text": desc_text,	
+			"vPadding": 10,	
+			"hPadding": 14,	
+			"borderWidth": 1,	
+			"borderRadius": 2,	
+			"borderStyle": "solid",	
+			"borderColor": "#333",	
+			"borderHColor": "#333",	
+		}	
+	)	
+}
 const attributes = {
 	block_id :{
 		type : "string"
@@ -22,30 +40,20 @@ const attributes = {
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "John Doe",
 	},
-	prefix: {
-		selector: "div.uagb-team__prefix",
-		default: "Designation",
+	titlebackgroundColor: {
+		type: "string",
 	},
-	description_text: {
-		selector: "p",
-		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+	activeTabtitleColor: {
+		type: "string",
+	},
+	activeTabtitlebackgroundColor: {
+		type: "string",
+	},
+	activeTabtitleColor: {
+		type: "string",
 	},
 	titleColor: {
 		type: "string",
-	},
-	prefixColor: {
-		type: "string",
-		default: "#888888"
-	},
-	descColor: {
-		type: "string",
-	},
-	socialColor: {
-		type: "string",
-		default: "#333"
-	},
-	socialHoverColor: {
-		type: "string"
 	},
 	titleFontFamily: {
 		type: "string",
@@ -83,202 +91,21 @@ const attributes = {
 	titleLineHeightMobile: {
 		type: "number",
 	},
-	prefixFontFamily: {
-		type: "string",
-		default: "Default",
-	},
-	prefixFontWeight: {
-		type: "string",
-	},
-	prefixFontSubset: {
-		type: "string",
-	},
-	prefixFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	prefixLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	prefixFontSize: {
-		type: "number",
-		default: 15	
-	},
-	prefixFontSizeTablet: {
-		type: "number",
-	},
-	prefixFontSizeMobile: {
-		type: "number",
-	},
-	prefixLineHeight: {
-		type: "number",
-	},
-	prefixLineHeightTablet: {
-		type: "number",
-	},
-	prefixLineHeightMobile: {
-		type: "number",
-	},
-	descFontFamily: {
-		type: "string",
-		default: "Default",
-	},
-	descFontWeight: {
-		type: "string",
-	},
-	descFontSubset: {
-		type: "string",
-	},
-	descFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	descLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	descFontSize: {
-		type: "number",
-	},
-	descFontSizeTablet: {
-		type: "number",
-	},
-	descFontSizeMobile: {
-		type: "number",
-	},
-	descLineHeight: {
-		type: "number",
-	},
-	descLineHeightTablet: {
-		type: "number",
-	},
-	descLineHeightMobile: {
-		type: "number",
-	},
-	socialFontSize: {
-		type: "number",
-		default: 20
-	},
-	socialFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	socialFontSizeMobile: {
-		type: "number",
-	},
-	socialFontSizeTablet: {
-		type: "number",
-	},
-	image: {
-		type: "object",
-	},
-	imgStyle: {
-		type: "string",
-		default: "normal"
-	},
-	imgPosition: {
-		type: "string",
-		default: "above"
-	},
-	imgAlign:{
-		type : "string",
-		default : "top"
-	},
-	imgSize:{
-		type: "string",
-		default: "thumbnail",
-	},
-	imgWidth :{
-		type: "number",
-		default: 120,
-	},
 	titleSpace: {
 		type: "number",
 	},
-	prefixSpace: {
-		type: "number",
-	},
-	descSpace :{
-		type: "number",
-		default: 10,
-	},
-	imgLeftMargin :{
-		type: "number",
-		default: 20,
-	},
-	imgRightMargin :{
-		type: "number",
-		default: 20,
-	},
-	imgTopMargin :{
-		type: "number",
-		default: 15,
-	},
-	imgBottomMargin :{
-		type: "number",
-		default: 15,
-	},
-	socialEnable: {
-		type: "boolean",
-		default: true
-	},
-	socialSpace :{
-		type: "number",
-		default: 20,
-	},
-	socialTarget: {
-		type: "boolean",
-		default: false,
-	},
-	twitterIcon : {
-		type : "string",
-		default : "fab fa-twitter"
-	},
-	fbIcon : {
-		type : "string",
-		default : "fab fa-facebook"
-	},
-	linkedinIcon : {
-		type : "string",
-		default : "fab fa-linkedin"
-	},
-	pinIcon : {
-		type : "string",
-		default : "fab fa-pinterest"
-	},
-	twitterLink: {
+	initailOpentab: {
 		type: "string",
-		default : "#"
+		default: 'Tab 1',
 	},
-	fbLink: {
+	tabstyle: {
 		type: "string",
-		default : "#"
-	},
-	linkedinLink: {
-		type: "string",
-		default : "#"
-	},
-	pinLink: {
-		type: "string",
-		default : "#"
-	},
-	stack: {
-		type: "string",
-		default: "tablet"
+		default: "horizontal"
 	},
 	titleLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
 	},
-	prefixLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	},
-	descLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	}
 }
 
 export default attributes

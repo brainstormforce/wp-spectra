@@ -476,6 +476,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_tabs_gfont( $blockattr );
 					break;
+					
+				case 'uagb/tabs-child':
+					$css += UAGB_Block_Helper::get_tabs_child_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_tabs_gfont( $blockattr );
+					break;
 	
 				case 'uagb/testimonial':
 					$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
