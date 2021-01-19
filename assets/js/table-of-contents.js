@@ -20,7 +20,7 @@
 			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
 			.replace(/[&]nbsp[;]/gi, '-')                	// Replace inseccable spaces
 			.replace(/\s+/g, '-')                        	// Replace spaces with -
-			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}@‘’”“]/g, '')  // Remove special chars
+			.replace(/[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '')  // Remove special chars
 			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
 			.replace(/^-+/, '')                          	// Trim - from start of text
 			.replace(/-+$/, '');                         	// Trim - from end of text
@@ -124,7 +124,7 @@
 			
 			if ( undefined !== attr.mappingHeaders ) {
 
-				attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
+				attr.mappingHeaders.forEach((h_tag, index) ( h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null) );
 				var allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
 			}
 
