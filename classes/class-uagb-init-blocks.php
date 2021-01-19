@@ -307,7 +307,7 @@ class UAGB_Init_Blocks {
 				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 				'uagb_home_url'     => home_url(),
-				'UAGB_URL'          => UAGB_URL,
+				'uagb_url'          => UAGB_URL,
 				'uagb_mime_type'    => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'     => UAGB_URI,
 			)
