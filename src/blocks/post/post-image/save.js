@@ -1,7 +1,7 @@
 export default function save() {
     return <div className='uagb-post__image'>
                 <img
-                    src='https://www.ultimategutenberg.com/wp-content/uploads/2018/12/uagb-10.png'
+                    src={ `${uagb_blocks_info.UAGB_URL}/admin/assets/images/uagb-10.png` }
                 />
             </div>
 }
