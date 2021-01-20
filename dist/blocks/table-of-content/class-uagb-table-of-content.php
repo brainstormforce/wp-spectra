@@ -102,7 +102,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							'heading'=> array(
 								'source'=> "html",
 								'selector'=> ".uagb-toc__title",
-								'default'=> "Table Of Contents",
+								'default'=> __( "Table Of Contents", 'ultimate-addons-for-gutenberg' ),
 							),
 							'icon'	=> array(
 								'type' => "string",
@@ -449,7 +449,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						</div>
 					<?php } else{ ?>
 						<p class="uagb_table-of-contents-placeholder">
-							<?php echo esc_html('Add a header to begin generating the table of contents'); ?>
+							<?php echo __('Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
 					<?php } ?>
 				</div>

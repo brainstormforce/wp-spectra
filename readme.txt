@@ -166,6 +166,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.21.0 = 
+* Improvement: Table of content - Revamp TOC with dynamic logic.
+
 = 1.20.0 =
 * New: Lottie Block.
 * Improvement: Post Layout: Added EditMode to shuffle the Post elements i.e Post Title, Post Meta, Post Content, Featured Image, CTA Button etc.
