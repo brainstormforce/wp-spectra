@@ -373,7 +373,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
         }
 
         /**
-		 * Renders the post carousel block on server.
+		 * Renders the Table of content block on server.
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
@@ -435,12 +435,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									?>
 									<?php if( $link['level'] === 1 ) { ?>
 										<li>
-											<a href='#<?php echo strtolower(str_replace(" ", "-", $link['title'])); ?>'><?php echo $link['title']; ?></a>
+											<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
 										</li>
 									<?php } else{ ?>
 										<ul class="uagb-toc__list">
 											<li>
-												<a href='#<?php echo strtolower(str_replace(" ", "-", $link['title'])); ?>'><?php echo $link['title']; ?></a>
+												<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
 											</li>
 										</ul>
 										<?php } ?>
@@ -457,8 +457,26 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			<?php
 				return ob_get_clean();
 		}
+
+	/**
+	 * Remove special char.
+	 *
+	 * @param array $string string variable.
+	 *
+	 * @since x.x.x
+	 */
+	public function remove_special_char($string){
+
+		$string = preg_replace('/[^A-Za-z0-9]/s',' ', trim($string));
+		$string = preg_replace( '/\|/s', '', trim($string));
+		$string = str_replace( array('nbsp','amp'), '', trim($string));
+		
+		// return $string;
+		return preg_replace('/\s+/', '-', trim($string)); // Removes spaces.
+
+	}
            
-    }
+	}
 
 	/**
 	 *  Prepare if class 'UAGB_Table_Of_Content' exist.

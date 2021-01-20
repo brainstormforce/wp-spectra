@@ -213,9 +213,7 @@ class UAGBTimeline extends Component {
 			excludeCurrentPost
 		} = attributes
 
-		let taxonomyListOptions = [
-			{ value: "", label: __( "Select Taxonomy" ) }
-		]
+		let taxonomyListOptions = []
 
 		let categoryListOptions = [
 			{ value: "", label: __( "All" ) }
@@ -1252,7 +1250,21 @@ export default withSelect( ( select, props ) => {
 	if ( excludeCurrentPost ) {		
 		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
 	}
-	latestPostsQuery[rest_base] = categories
+	var category = [];	
+	var temp = parseInt(categories);
+	category.push(temp);
+	var catlenght = categoriesList.length;
+	for(var i=0;i<catlenght;i++){
+		if(categoriesList[i].id == temp){
+			if(categoriesList[i].child.length !== 0){
+				categoriesList[i].child.forEach(element => {
+					category.push(element);
+				});
+			}		
+		}
+	}
+
+	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),

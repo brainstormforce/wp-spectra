@@ -10,7 +10,7 @@ import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 import ".././style.scss"
 import ".././editor.scss"
 
-// Components
+
 const { __ } = wp.i18n
 
 // Register block controls
@@ -34,3 +34,4 @@ registerBlockType( "uagb/post-grid", {
 		return null
 	},
 } )
+
