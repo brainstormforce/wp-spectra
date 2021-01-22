@@ -754,6 +754,10 @@ class UAGBcontentTimeline extends Component {
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ content_class: align_class }))
 			dispatch('core/block-editor').updateBlockAttributes(block.clientId, ({ dayalign_class: day_align_class }))
 		  })
+		  const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		  getChildBlocks.forEach((ctChild, key) => {
+			ctChild.attributes.headingTag = this.props.attributes.headingTag;
+		});
 
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
