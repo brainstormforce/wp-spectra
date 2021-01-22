@@ -1,25 +1,7 @@
 /**
  * BLOCK: UAGB Tabs Block Attributes
  */
-const ITEM_COUNT = 2	
 
-const tab = []	
-
-for ( var i = 1; i <= ITEM_COUNT; i++ ) {	
-	var desc_text = "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."		
-	tab.push(	
-		{	
-			"desc_text": desc_text,	
-			"vPadding": 10,	
-			"hPadding": 14,	
-			"borderWidth": 1,	
-			"borderRadius": 2,	
-			"borderStyle": "solid",	
-			"borderColor": "#333",	
-			"borderHColor": "#333",	
-		}	
-	)	
-}
 const attributes = {
 	block_id :{
 		type : "string"
@@ -28,84 +10,84 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
-	align: {
-		type: "string",
-		default: "center",
+	tabHeaders: {
+		type: 'array',
+		default: ['Tab 1','Tab 2','Tab 3']
 	},
-	tag :{
-		type: "string",
-		default: "h3"
+	tabActive: {
+		type: 'number',
+		default: 0,
 	},
-	title: {
-		selector: "h1,h2,h3,h4,h5,h6",
-		default: "John Doe",
+	tabActiveFrontend: {
+		type: 'number',
+		default: 0,
 	},
-	titlebackgroundColor: {
-		type: "string",
+	tabsStyleD: {
+		type: 'string',
+		default: 'horz'
 	},
-	activeTabtitleColor: {
-		type: "string",
+	tabsStyleT: {
+		type: 'string',
+		default: 'vert'
 	},
-	activeTabtitlebackgroundColor: {
-		type: "string",
+	tabsStyleM: {
+		type: 'string',
+		default: 'vert'
 	},
-	activeTabtitleColor: {
-		type: "string",
+	headerBgColor: {
+		type: 'string', 
+		default: '#e0e0e0',
 	},
-	titleColor: {
-		type: "string",
+	headerTextColor: {
+		type: 'string',
+		default: '#fff',
 	},
-	titleFontFamily: {
-		type: "string",
-		default: "Default",
+	bodyBgColor: {
+		type: 'string',
 	},
-	titleFontWeight: {
-		type: "string",
+	bodyTextColor: {
+		type: 'string',
 	},
-	titleFontSubset: {
-		type: "string",
+	borderStyle: {
+		type: 'string',
+		default: 'solid',
 	},
-	titleFontSizeType: {
-		type: "string",
-		default: "px"
+	borderWidth: {
+		type: 'number',
+		default: 1,
 	},
-	titleLineHeightType: {
-		type: "string",
-		default: "em"
+	borderColor: {
+		type: 'string',
 	},
-	titleFontSize: {
-		type: "number",
+	borderRadius: {
+		type: 'number',
+		default: 10,
 	},
-	titleFontSizeTablet: {
-		type: "number",
+	pid: {
+		type: 'string',
 	},
-	titleFontSizeMobile: {
-		type: "number",
+	activeTabBgColor: {
+		type: 'string',
 	},
-	titleLineHeight: {
-		type: "number",
+	activeTabTextColor: {
+		type: 'string',
 	},
-	titleLineHeightTablet: {
-		type: "number",
+	changed: {
+		type: 'boolean',
+		default: false,
 	},
-	titleLineHeightMobile: {
-		type: "number",
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	},
-	titleSpace: {
-		type: "number",
+	uniqueID: {
+		type: 'string',
+		default: ''
 	},
-	initailOpentab: {
-		type: "string",
-		default: 'Tab 1',
-	},
-	tabstyle: {
-		type: "string",
-		default: "horizontal"
-	},
-	titleLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	},
+	isTransform: {
+		type: 'boolean',
+		default: false
+	}
 }
 
 export default attributes

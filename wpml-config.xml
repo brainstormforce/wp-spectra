@@ -24,6 +24,7 @@
 		<gutenberg-block type="uagb/column" translate="0"/>
 		<gutenberg-block type="uagb/social-share" translate="0"/>
 		<gutenberg-block type="uagb/social-share-child" translate="0"/>
+		<gutenberg-block type="uagb/tabs" translate="0"/>
 		<gutenberg-block type="uagb/google-map" translate="0"/>
 		<gutenberg-block type="uagb/info-box" translate="1">
 			<xpath>//span[@class="uagb-ifb-title-prefix"]</xpath>

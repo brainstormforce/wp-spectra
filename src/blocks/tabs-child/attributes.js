@@ -6,66 +6,35 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
-	align: {
-		type: "string",
-		default: "center",
+	id: {
+		type: 'number',
+		default: 0
 	},
-	desc_text: {
-		selector: "p",
-		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+	pid: {
+		type: 'string',
 	},
-	descColor: {
-		type: "string",
+	header: {
+		type: 'html',
 	},
-	descbodybackground:{
-		type: "string",
+	tabActive: {
+		type: 'number',
+		default: 0,
 	},
-	descbodytextcolor:{
-		type: "string",
+	changed: {
+		type: 'boolean',
+		default: false,
 	},
-	descFontFamily: {
-		type: "string",
-		default: "Default",
+	tabHeaders: {
+		type: 'array',
+		default: [
+			'Tab 1',
+			'Tab 2',
+			'Tab 3',
+		]
 	},
-	descFontWeight: {
-		type: "string",
-	},
-	descFontSubset: {
-		type: "string",
-	},
-	descFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	descLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	descFontSize: {
-		type: "number",
-	},
-	descFontSizeTablet: {
-		type: "number",
-	},
-	descFontSizeMobile: {
-		type: "number",
-	},
-	descLineHeight: {
-		type: "number",
-	},
-	descLineHeightTablet: {
-		type: "number",
-	},
-	descLineHeightMobile: {
-		type: "number",
-	},
-	descSpace :{
-		type: "number",
-		default: 10,
-	},
-	descLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	},
+	uniqueID: {
+		type: 'string',
+		default: '',
+	}
 }
 export default attributes
