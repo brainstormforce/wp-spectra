@@ -3146,42 +3146,42 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = array(
-				' .uagb-tab'          => array(
-					'background'         => $attr['headerBgColor'],
+				' .uagb-tab'                     => array(
+					'background' => $attr['headerBgColor'] . '!important',
 				),
-				' .uagb-tab a'       => array(
-					'color'      => $attr['headerTextColor'],
+				' .uagb-tab a'                   => array(
+					'color' => $attr['headerTextColor'] . '!important',
 				),
-				' .uagb-tab.uagb-tabs__active' => array(
-					'background'      => $attr['activeTabBgColor'],
+				' .uagb-tab.uagb-tabs__active'   => array(
+					'background' => $attr['activeTabBgColor'] . '!important',
 				),
 
 				' .uagb-tab.uagb-tabs__active a' => array(
-					'color'    => $attr['activeTabTextColor'],
+					'color' => $attr['activeTabTextColor'] . '!important',
 				),
 
-				' .uagb-tabs__body-wrap' => array(
-					'background'  => $attr['bodyBgColor'],
+				' .uagb-tabs__body-wrap'         => array(
+					'background' => $attr['bodyBgColor'],
 				),
 
-				' .uagb-tabs__body-wrap p ' => array(
-					'color'  => $attr['bodyTextColor'],
+				' .uagb-tabs__body-wrap p '      => array(
+					'color' => $attr['bodyTextColor'],
 				),
 			);
 
-			if ( $attr['borderStyle'] !== "none") {
+			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[' .uagb-tab , .uagb-tabs__body-wrap'] = array(
-					'border-style'     => $attr['borderStyle'],
-					'border-color'     => $attr['borderColor'],
-					'border-width'     => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['borderStyle'] ),
+					'border-style'  => $attr['borderStyle'],
+					'border-color'  => $attr['borderColor'],
+					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 			}
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
-				'mobile' => $selectors,
-				'tablet' => $selectors,
+				'mobile'  => $selectors,
+				'tablet'  => $selectors,
 			);
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-tabs-';

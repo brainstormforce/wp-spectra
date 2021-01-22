@@ -2102,7 +2102,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'bodyTextColor'      => '',
 							'borderStyle'        => 'solid',
 							'borderWidth'        => 1,
-							'borderColor'        => '',
+							'borderColor'        => '#000000',
 							'borderRadius'       => 10,
 							'pid'                => '',
 							'activeTabBgColor'   => '',

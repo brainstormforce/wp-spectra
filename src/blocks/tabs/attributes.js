@@ -58,6 +58,7 @@ const attributes = {
 	},
 	borderColor: {
 		type: 'string',
+		default: '#000000',
 	},
 	borderRadius: {
 		type: 'number',

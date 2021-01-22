@@ -248,12 +248,12 @@ class UAGBTabsEdit extends Component {
                                 {
                                     label: __( 'Background Color' ),
                                     value: headerBgColor,
-                                    onChange: ( value ) => setAttributes( { headerBgColor: value === undefined ? '#e0e0e0' : value } ),
+                                    onChange: ( value ) => setAttributes( { headerBgColor: value } ),
                                 },
                                 {
                                     label: __( 'Text Color' ),
                                     value: headerTextColor,
-                                    onChange: ( value ) => setAttributes( { headerTextColor: value === undefined ? '#fff' : value } ),
+                                    onChange: ( value ) => setAttributes( { headerTextColor: value } ),
                                 },
                                 {
                                     label: __( 'Active Tab Background Color' ),
