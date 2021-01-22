@@ -27,7 +27,7 @@ function styling( props ) {
 			"background": headerBgColor,
 			"color": headerTextColor,
 		},
-		" .uagb-tabs__wrap .uagb-tab .uagb-tabs__active" : {
+		" .uagb-tabs__wrap .uagb-tab.uagb-tabs__active" : {
 			"background": activeTabBgColor,
 			"color": activeTabTextColor ,
 		},

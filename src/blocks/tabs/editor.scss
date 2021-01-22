@@ -9,22 +9,23 @@
             li.uagb-tab{
                 float: left;
                 margin: 0 8px 8px 0;
-                padding: 5px;
+                padding: 10px;
+                position: relative;
                 p{
                     margin:0px;
                 }
             }
         }   
     .uagb-tabs__body-wrap{
+        position:relative;
         max-width: 100%;
         padding: 20px;
     }
     span.uagb-tabs__remove {
         position: absolute;
         top: -8px;
-        float: right;
+        right: -8px;
         height: 20px;
-        width: 20px;
         color: #fff;
         background-color: #000000;
         border-radius: 50%;

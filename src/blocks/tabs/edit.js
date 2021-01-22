@@ -121,6 +121,16 @@ class UAGBTabsEdit extends Component {
 		this.props.resetOrder();
 	}
 	
+	updateTabsAttr( attrs ) {
+		const { setAttributes, clientId } = this.props;
+		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
+		const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const childBlocks = getBlockOrder(clientId);
+
+		setAttributes( attrs );
+		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, attrs ) );
+		this.props.resetOrder();
+	}
 	render() {
 		const { viewport } = this.state;
 		const { attributes , setAttributes } = this.props;
@@ -241,8 +251,7 @@ class UAGBTabsEdit extends Component {
                                     label: __( 'Active Tab Text Color' ),
 									value: activeTabTextColor,
 									bodyBgColor,
-									onChange: ( value ) => setAttributes( { activeTabTextColor,
-										bodyBgColor: value } ),
+									onChange: ( value ) => setAttributes( { activeTabTextColor: value } ),
                                 },
                             ] }
                         />
