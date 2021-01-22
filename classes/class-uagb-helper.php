@@ -486,7 +486,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/tabs':
 					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-					print_r ($css);
 					if ( ! isset( $blockattr['layout'] ) ) {
 						self::$uag_tab_layout = true;
 					}
