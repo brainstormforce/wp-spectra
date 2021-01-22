@@ -1,4 +1,5 @@
 import classnames from "classnames"
+import attributes from "./attributes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
@@ -8,9 +9,9 @@ const {
 } = wp.blockEditor
 
 const deprecated = [
-	{//deprecated
-		attributes,
-		save: function( props ) {
+	{
+        attributes,
+        save: function( props ) {
             const {
                 block_id,
                 headingTag,
@@ -94,7 +95,7 @@ const deprecated = [
                     </div>
                 </article>
             )
-        },
+        }
 	},
 ]
 
