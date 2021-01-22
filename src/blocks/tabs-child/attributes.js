@@ -17,8 +17,7 @@ const attributes = {
 		type: 'html',
 	},
 	tabActive: {
-		type: 'number',
-		default: 0,
+			type: 'number',
 	},
 	changed: {
 		type: 'boolean',

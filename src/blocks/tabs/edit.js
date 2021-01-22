@@ -2,16 +2,9 @@
  * BLOCK: Multi Buttons
  */
 
-import classnames from "classnames"
+import memoize from "memize"
 import times from "lodash/times"
 import styling from "./styling"
-import memoize from "memize"
-
-// Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
-
-// Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
 
@@ -127,35 +120,34 @@ class UAGBTabsEdit extends Component {
 		this.updateTabsAttr({tabActive: 0});
 		this.props.resetOrder();
 	}
-
+	
 	render() {
 		const { viewport } = this.state;
 		const { attributes , setAttributes } = this.props;
-            const {
-				tabsStyleD,
-				tabsStyleM,
-				tabsStyleT,
-				tabActiveFrontend,
-				tabHeaders,
-				headerBgColor,
-				borderStyle,
-				borderWidth,
-				borderColor,
-				borderRadius,
-				headerTextColor,
-				activeTabBgColor,
-				activeTabTextColor,
-				bodyBgColor,
-				bodyTextColor,
-				tabActive
-			} = attributes;
-			
-			const blockClass = [
-                `uagb-tabs__wrap`,
-                `uagb-tabs__${tabsStyleD}-desktop`,
-                `uagb-tabs__${tabsStyleT}-tablet`,
-                `uagb-tabs__${tabsStyleM}-mobile`,
-            ].filter( Boolean ).join( ' ' );
+		const {
+			tabsStyleD,
+			tabsStyleM,
+			tabsStyleT,
+			tabActiveFrontend,
+			tabHeaders,
+			headerBgColor,
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderRadius,
+			headerTextColor,
+			activeTabBgColor,
+			activeTabTextColor,
+			bodyBgColor,
+			bodyTextColor,
+			tabActive
+		} = attributes;
+		const blockClass = [
+			`uagb-tabs__wrap`,
+			`uagb-tabs__${tabsStyleD}-desktop`,
+			`uagb-tabs__${tabsStyleT}-tablet`,
+			`uagb-tabs__${tabsStyleM}-mobile`,
+		].filter( Boolean ).join( ' ' );
 		return (
 			<Fragment>     
 				<InspectorControls>

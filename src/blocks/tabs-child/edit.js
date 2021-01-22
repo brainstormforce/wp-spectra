@@ -64,7 +64,7 @@ class UAGBTabsChildEdit extends Component {
 		setAttributes({
 			header: tabHeaders[id]
 		})
-	}
+	}	
 	render() {
 		const { attributes } = this.props;
 		const {tabActive, id, uniqueID} = attributes;

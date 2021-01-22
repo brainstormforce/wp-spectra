@@ -8,9 +8,11 @@
             margin-bottom:5px!important;
             li.uagb-tab{
                 float: left;
-                line-height: 0px;
                 margin: 0 8px 8px 0;
                 padding: 5px;
+                p{
+                    margin:0px;
+                }
             }
         }   
     .uagb-tabs__body-wrap{
