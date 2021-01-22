@@ -9,9 +9,10 @@ const {
 export default function save( props ) {
 
 	const { attributes } = props
-    const {id, uniqueID, header} = attributes;
+    const {id, uniqueID, header,block_id} = attributes;
     
     const tabClassName = [
+        `uagb-block-${ block_id}`,
         `uagb-tabs__${uniqueID}`,
         'uagb-tabs__body'
     ].filter(Boolean).join(' ');

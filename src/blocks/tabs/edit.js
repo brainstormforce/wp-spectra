@@ -49,6 +49,18 @@ class UAGBTabsEdit extends Component {
 			viewport: 'desktop',
 		};
 	}
+	componentDidMount() {
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+
+		this.props.setAttributes( { classMigrate: true } )
+
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
+		document.head.appendChild( $style )
+	}
 	componentDidUpdate() {
 		const { attributes, setAttributes } = this.props;
 		const { isTransform } = attributes;
@@ -59,7 +71,7 @@ class UAGBTabsEdit extends Component {
 			} );
 			this.props.updateTabActive( 0 );
 		}
-		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
+		var element = document.getElementById( "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
@@ -101,7 +113,7 @@ class UAGBTabsEdit extends Component {
 		setAttributes( {
 			tabHeaders: [
 				...attributes.tabHeaders,
-				'Tab header'
+				'New Tab'
 			]
 		} );
 		this.props.resetOrder();
@@ -153,6 +165,7 @@ class UAGBTabsEdit extends Component {
 			tabActive
 		} = attributes;
 		const blockClass = [
+			`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 			`uagb-tabs__wrap`,
 			`uagb-tabs__${tabsStyleD}-desktop`,
 			`uagb-tabs__${tabsStyleT}-tablet`,
@@ -315,15 +328,8 @@ class UAGBTabsEdit extends Component {
                     <ul className="uagb-tabs__panel">
                         {tabHeaders.map( ( header, index ) => (
                             <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''}`}
-                                style={ {
-                                    backgroundColor: headerBgColor,
-                                    borderStyle: borderStyle,
-                                    borderWidth: borderWidth + 'px',
-                                    borderColor: borderColor,
-                                    borderRadius: borderRadius + 'px',
-                                } }
                             >
-                                <a style={ { color: headerTextColor } }
+                                <a
                                        onClick={ () => {
                                            this.props.updateTabActive( index );
                                        } }
@@ -360,16 +366,7 @@ class UAGBTabsEdit extends Component {
 							</Tooltip>
                         </li>
 						</ul>
-						<div className="uagb-tabs__body-wrap"
-                             style={ {
-                                 backgroundColor: bodyBgColor,
-                                 color: bodyTextColor,
-                                 borderStyle: borderStyle,
-                                 borderWidth: borderWidth + 'px',
-                                 borderColor: borderColor,
-                                 borderRadius: borderRadius + 'px',
-                             } }
-                        >
+						<div className="uagb-tabs__body-wrap">
                             <InnerBlocks
                                 template={ [ ['uagb/tabs-child'], ['uagb/tabs-child'], ['uagb/tabs-child']] }
                                 templateLock={false}

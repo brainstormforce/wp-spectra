@@ -23,21 +23,27 @@ function styling( props ) {
 
 	var selectors = {}
 	selectors = {
-		" .uagb-tabs__wrap .uagb-tab" : {
+		" .uagb-tab" : {
 			"background": headerBgColor,
+		},
+		" .uagb-tab a" : {
 			"color": headerTextColor,
 		},
-		" .uagb-tabs__wrap .uagb-tab.uagb-tabs__active" : {
+		" .uagb-tab.uagb-tabs__active" : {
 			"background": activeTabBgColor,
+		},
+		" .uagb-tab.uagb-tabs__active a" : {
 			"color": activeTabTextColor ,
 		},
-		" .uagb-tabs__wrap .uagb-tabs__body-wrap" : {
+		" .uagb-tabs__body-wrap" : {
 			"background": bodyBgColor,
+		},
+		" .uagb-tabs__body-wrap p" : {
 			"color": bodyTextColor,
 		},
 	}
 	if ( borderStyle !== "none" ) {
-		selectors[" .uagb-tabs__wrap uagb-tab , .uagb-tabs__wrap .uagb-tabs__body-wrap"] = {
+		selectors[" .uagb-tabs__panel .uagb-tab , .uagb-tabs__body-wrap"] = {
             "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
             "border-radius" : generateCSSUnit( borderRadius, "px" ),
 		}

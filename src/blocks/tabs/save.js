@@ -10,6 +10,7 @@ export default function save( props ) {
 
 	const { attributes, className } = props
     const {
+        block_id,
         tabHeaders,
         tabActiveFrontend,
         tabsStyleD,
@@ -27,6 +28,7 @@ export default function save( props ) {
     } = attributes;
 
     const blockClass = [
+        `uagb-block-${ block_id}`,
         `uagb-tabs__wrap`,
         `uagb-tabs__${tabsStyleD}-desktop`,
         `uagb-tabs__${tabsStyleT}-tablet`,
@@ -38,33 +40,14 @@ export default function save( props ) {
         <div className={blockClass} data-tab-active={tabActiveFrontend}>
             <ul className="uagb-tabs__panel">
                 {tabHeaders.map( ( header, index ) => (
-                    <li key={ index } className="uagb-tab"
-                        style={ {
-                            backgroundColor: headerBgColor,
-                            borderStyle: borderStyle,
-                            borderWidth: borderWidth + 'px',
-                            borderColor: borderColor,
-                            borderRadius: borderRadius + 'px',
-                        } }
-                    >
-                        <a href={`#uagb-tabs__tab${index}`}
-                           style={ { color: headerTextColor } }
-                        >
+                    <li key={ index } className="uagb-tab">
+                        <a href={`#uagb-tabs__tab${index}`}>
                             <span>{header}</span>
                         </a>
                     </li>
                 ) ) }
             </ul>
-            <div className="uagb-tabs__body-wrap"
-                 style={ {
-                     backgroundColor: bodyBgColor,
-                     color: bodyTextColor,
-                     borderStyle: borderStyle,
-                     borderWidth: borderWidth + 'px',
-                     borderColor: borderColor,
-                     borderRadius: borderRadius + 'px',
-                 } }
-            >
+            <div className="uagb-tabs__body-wrap">
                 <InnerBlocks.Content />
             </div>
         </div>

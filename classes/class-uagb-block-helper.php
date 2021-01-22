@@ -3131,7 +3131,63 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return array();
 
 		}
+		/**
+		 * Get Tabs CSS
+		 *
+		 * @since 1.8.2
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_tabs_css( $attr, $id ) {
 
+			$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				' .uagb-tab'          => array(
+					'background'         => $attr['headerBgColor'],
+				),
+				' .uagb-tab a'       => array(
+					'color'      => $attr['headerTextColor'],
+				),
+				' .uagb-tab.uagb-tabs__active' => array(
+					'background'      => $attr['activeTabBgColor'],
+				),
+
+				' .uagb-tab.uagb-tabs__active a' => array(
+					'color'    => $attr['activeTabTextColor'],
+				),
+
+				' .uagb-tabs__body-wrap' => array(
+					'background'  => $attr['bodyBgColor'],
+				),
+
+				' .uagb-tabs__body-wrap p ' => array(
+					'color'  => $attr['bodyTextColor'],
+				),
+			);
+
+			if ( $attr['borderStyle'] !== "none") {
+				$selectors[' .uagb-tab , .uagb-tabs__body-wrap'] = array(
+					'border-style'     => $attr['borderStyle'],
+					'border-color'     => $attr['borderColor'],
+					'border-width'     => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['borderStyle'] ),
+				);
+			}
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'mobile' => $selectors,
+				'tablet' => $selectors,
+			);
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-tabs-';
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+		}
 		/**
 		 * Get Blockquote CSS
 		 *

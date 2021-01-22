@@ -485,6 +485,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 
 				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
+					print_r ($css);
+					if ( ! isset( $blockattr['layout'] ) ) {
+						self::$uag_tab_layout = true;
+					}
+					break;
+				case 'uagb/tabs-child':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					if ( ! isset( $blockattr['layout'] ) ) {
 						self::$uag_tab_layout = true;
 					}
