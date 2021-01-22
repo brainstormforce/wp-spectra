@@ -211,14 +211,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
 
 				$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
-				
+
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
 					if ( 'uagb-faq-js' === $val ) {
 						if ( self::$uag_faq_layout ) {
 							wp_enqueue_script( 'uagb-faq-js' );
 						}
-					}else if ( 'uagb-tabs-js' === $val ) {
+					} elseif ( 'uagb-tabs-js' === $val ) {
 						if ( self::$uag_tab_layout ) {
 							wp_enqueue_script( 'uagb-tabs-js' );
 						}
@@ -485,12 +485,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 
 				case 'uagb/tabs':
-						if ( ! isset( $blockattr['layout'] ) ) {
+					if ( ! isset( $blockattr['layout'] ) ) {
 						self::$uag_tab_layout = true;
 					}
 					break;
-				
-	
+
 				case 'uagb/testimonial':
 					$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
