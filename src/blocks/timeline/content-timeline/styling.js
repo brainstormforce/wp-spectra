@@ -90,7 +90,7 @@ function contentTimelineStyle( props ) {
    var resp_selectors = "left"
 
    var selectors = {
-           " .uagb-timeline__heading" : {
+           " .uagb-timeline__heading.rich-text" : {
                "font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
                "font-family": headFontFamily,
                "font-weight": headFontWeight,

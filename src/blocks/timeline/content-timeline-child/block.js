@@ -8,6 +8,7 @@
  import save from "./save"
  import attributes from "./attributes"
  import edit from "./edit"
+ import deprecated from "./deprecated"
 
 const { __ } = wp.i18n
 
@@ -29,4 +30,5 @@ registerBlockType( "uagb/content-timeline-child", {
 	attributes,
 	edit,
 	save,
+	deprecated,
 } )
