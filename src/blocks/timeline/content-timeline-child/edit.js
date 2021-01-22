@@ -135,9 +135,11 @@ class UAGBcontentTimelineChild extends Component {
 								<div className="uagb-timeline__events-new">
 									<div className="uagb-timeline__events-inner-new">
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
+										{ displayPostDate != true && t_date &&
 	                                        <div className={ "uagb-timeline__inner-date-new" }>
 	                                        	{ post_date }
 	                                        </div>
+										}
 										</div>
 										<div className="uagb-content">
 											<div className="uagb-timeline__heading-text">
