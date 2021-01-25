@@ -49,6 +49,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'headingAlign'            => 'center',
+							'headingTag'              => 'h2',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'separatorColor'          => '',
