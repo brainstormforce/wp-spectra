@@ -113,7 +113,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				' .uagb-notice-title'           => array(
+				' ' .$attr['headingTag'] . '.uagb-notice-title'           => array(
 					'color'          => $attr['titleColor'],
 					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
 					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
@@ -226,7 +226,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $attr['costSpace'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap .uagb-howto-heading-text' => array(
+				' ' . $attr['headingTag'] . '.uagb-how-to-main-wrap .uagb-howto-heading-text' => array(
 					'color' => $attr['headingColor'],
 				),
 
@@ -1164,7 +1164,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
 			$t_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 			$icon_size       = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
-
+			
 			$selectors = array(
 				' .uagb-ifb-icon'              => array(
 					'height'      => $icon_size,
@@ -1207,15 +1207,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 				),
 				// Title Style.
-				' .uagb-ifb-title a'           => array(
-					'color' => $attr['headingColor'],
-				),
-				' .uagb-ifb-title'             => array(
+				
+				' ' .$attr['headingTag']. '.uagb-ifb-title'             => array(
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . 'px',
 				),
 				// Description Style.
-				' .uagb-ifb-desc'              => array(
+				' p.uagb-ifb-desc'              => array(
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['subHeadSpace'], 'px' ),
 				),
@@ -2385,7 +2383,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
 
 			$selectors = array(
-				' .uagb-timeline__heading'          => array(
+				' ' . $attr['headingTag'] . '.uagb-timeline__heading'          => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
@@ -2587,7 +2585,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['ctaColor'],
 					'background-color' => $attr['ctaBackground'],
 				),
-				' .uagb-timeline__heading a'    => array(
+				' ' . $attr['headingTag'] . '.uagb-timeline__heading a'    => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
@@ -2713,7 +2711,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 				),
-				' .uagb-rm__title'            => array(
+				' ' .$attr['headingTag'] . '.uagb-rm__title'            => array(
 					'color'         => $attr['titleColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 				),
@@ -4441,7 +4439,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'justify-content' => $alignment,
 					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 				),
-				' .uagb-toc__title'                   => array(
+				' ' . $attr['headingTag'] . '.uagb-toc__title'                   => array(
 					'color' => $attr['headingColor'],
 				),
 				' .uagb-toc__wrap'                    => array(
