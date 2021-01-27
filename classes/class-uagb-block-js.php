@@ -31,6 +31,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$dots   = ( 'dots' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
 			$arrows = ( 'arrows' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
+			$is_rtl = is_rtl();
 
 			$slick_options = apply_filters(
 				'uagb_testimonials_slick_options',
@@ -44,7 +45,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 					'speed'          => $attr['transitionSpeed'],
 					'arrows'         => $arrows,
 					'dots'           => $dots,
-					'rtl'            => false,
+					'rtl'            => $is_rtl,
 					'prevArrow'      => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '"  ><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg></button>',
 					'nextArrow'      => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '" ><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg></button>',
 					'responsive'     => array(
@@ -206,6 +207,31 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			?>
 			jQuery( document ).ready(function() {
 				UAGBInlineNotice._run( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+			});
+			<?php
+			return ob_get_clean();
+
+		}
+
+		/**
+		 * Get UAGB Lottie Js
+		 *
+		 * @since 1.20.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_lottie_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/lottie']['attributes'];
+
+			$attr          = array_merge( $defaults, (array) $attr );
+			$base_selector = 'uagb-block-';
+			$selector      = $base_selector . $id;
+
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				UAGBLottie._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 			});
 			<?php
 			return ob_get_clean();

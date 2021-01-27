@@ -73,9 +73,11 @@ function setupFAQ() {
 	if ( ( ((document.getElementById( hashval ) !== undefined) && (document.getElementById( hashval ) !== null) && (document.getElementById( hashval ) !== "")) && pattern.test( hashval ) )) {
 
 		var elementToOpen = document.getElementById( hashval );
-		elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0].classList.add( 'uagb-faq-item-active' );
-		elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0].setAttribute( 'aria-expanded', true );
-		slideDown( elementToOpen.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
+		if( elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0] !== undefined ){
+			elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0].classList.add( 'uagb-faq-item-active' );
+			elementToOpen.getElementsByClassName( 'uagb-faq-item' )[0].setAttribute( 'aria-expanded', true );
+			slideDown( elementToOpen.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
+		}
 	} else {
 
 		for ( var item = 0;  item < expandFirstelements.length; item++ ) {

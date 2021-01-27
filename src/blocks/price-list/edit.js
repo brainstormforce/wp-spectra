@@ -716,6 +716,12 @@ class UAGBRestaurantMenu extends Component {
 															const $style = document.createElement( "style" )
 															$style.setAttribute( "id", "uagb-restaurant-menu-style-" + this.props.clientId.substr( 0, 8 ) )
 															document.head.appendChild( $style )
+
+															const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+															getChildBlocks.forEach((pricelistChild, key) => {
+																pricelistChild.attributes.imageAlignment = this.props.attributes.imageAlignment
+															});
 														}
 													}
 													
