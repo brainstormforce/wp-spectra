@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import TableOfContents from './deprecated/components';
 import TOC from './deprecated/table-of-contents';
+import TableOfContent from './toc';
 import attributes from "./attributes"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
@@ -232,7 +233,7 @@ const deprecated = [
 							/>
 							{icon_html}
 						</div>
-						<TableOfContents
+						<TableOfContent
 							mappingHeaders={mappingHeaders}
 							headers={headerLinks && JSON.parse(headerLinks)}
 						/>
