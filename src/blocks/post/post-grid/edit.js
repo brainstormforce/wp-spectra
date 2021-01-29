@@ -1,7 +1,9 @@
+
 /**
  * External dependencies
  */
 
+import classnames from "classnames"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
@@ -13,10 +15,19 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
+import {
+	InnerBlockLayoutContextProvider,
+	DEFAULT_POST_LIST_LAYOUT,
+	getPostLayoutConfig,
+	getBlockMap,
+} from '.././function';
 
+const { compose } = wp.compose
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 8
+const { createBlock } = wp.blocks
+
 const {
 	PanelBody,
 	Placeholder,
@@ -26,24 +37,33 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
+	Toolbar,
 	TextControl,
 	RadioControl,
-	IconButton
+	Button,
+	Tip,
+	Disabled
 } = wp.components
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette
+	ColorPalette,
+	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect } = wp.data
+const { useDispatch , withSelect } = wp.data
+
 
 class UAGBPostGrid extends Component {
-
+	
 	constructor() {
 		super( ...arguments )
+		this.state = {
+			isEditing: false,
+			innerBlocks: [],
+		};
 		this.onSelectPostType = this.onSelectPostType.bind( this )
 		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
 		this.onSelectPagination = this.onSelectPagination.bind( this )
@@ -51,22 +71,22 @@ class UAGBPostGrid extends Component {
 		this.onChangePageLimit = this.onChangePageLimit.bind( this )
 		this.onChangePrevText = this.onChangePrevText.bind( this )
 		this.onChangeNextText = this.onChangeNextText.bind( this )
+		this.togglePreview = this.togglePreview.bind( this )
+		this.getBlockControls = this.getBlockControls.bind( this )
+		this.renderEditMode = this.renderEditMode.bind( this )
 	}
-
 	onSelectPostType( value ) {
 		const { setAttributes } = this.props
 
 		setAttributes( { postType: value } )
 		setAttributes( { categories: "" } )
 	}
-
 	onSelectTaxonomyType( value ) {
 		const { setAttributes } = this.props
 
 		setAttributes( { taxonomyType: value } )
 		setAttributes( { categories: "" } )
 	}
-
 	onSelectPagination( value ) {
 		const { setAttributes } = this.props
 
@@ -97,32 +117,141 @@ class UAGBPostGrid extends Component {
 		setAttributes( { paginationNextText: value } )
 		setAttributes( { paginationMarkup: "empty" } )
 	}
-
-
 	componentDidMount() {
-
+		const { block } = this.props;
+		this.setState( { innerBlocks: block } );
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
-
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate() {
 		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
 		}
 	}
+	togglePreview() {
+
+		this.setState( { isEditing: ! this.state.isEditing } );
+		if ( ! this.state.isEditing ) {
+			__(
+				'Showing All Post Grid Layout.'
+			)
+		}
+	}
+	getBlockControls() {
+		const { isEditing } = this.state;
+
+		return (
+				<Toolbar
+					controls={ [
+						{
+							icon: 'edit',
+							title: __( 'Edit' ),
+							onClick: () => this.togglePreview(),
+							isActive: isEditing,
+						},
+					] }
+				/>
+		);
+	}
+	
+	renderEditMode() {
+		const onDone = () => {
+			const { block, setAttributes } = this.props;
+			setAttributes( {
+				layoutConfig: getPostLayoutConfig( block ),
+			} );
+			this.setState( { innerBlocks: block } );
+			this.togglePreview();
+		};
+
+		const onCancel = () => {
+			const {replaceInnerBlocks } = this.props;
+			const { innerBlocks } = this.state;
+			replaceInnerBlocks( this.props.clientId, innerBlocks );
+			this.togglePreview();
+		};
+
+		const onReset = () => {
+			const { block, replaceInnerBlocks } = this.props;
+			const newBlocks = [];
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
+				newBlocks.push( createBlock( name, attributes ) );
+				return true;
+			} );	
+			replaceInnerBlocks( this.props.clientId, newBlocks );
+			this.setState( { innerBlocks: block} );
+		};
+
+		const InnerBlockProps = {
+			template: this.props.attributes.layoutConfig,
+			templateLock: false,
+			allowedBlocks: Object.keys( getBlockMap( 'uagb/post-grid' ) ),
+		};
+		if ( this.props.attributes.layoutConfig.length !== 0 ) {
+			InnerBlockProps.renderAppender = false;
+		}
+		return (
+			<Placeholder  label="Post Grid Layout">
+				<div className="uagb-block-all-post-grid-item-template">
+					<Tip>
+						{ __(
+							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.',
+							
+						) }
+					</Tip>
+					<InnerBlockLayoutContextProvider
+						parentName="uagb/post-grid"
+						parentClassName="uagb-block-grid"
+					>
+						<article>
+							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
+								<div className="uagb-post__text">
+									<InnerBlocks { ...InnerBlockProps } />
+								</div>
+							</div>
+						</article>
+					</InnerBlockLayoutContextProvider>
+					<div className="uagb-block-all-post__actions">
+						<Button
+							className="uagb-block-all-post__done-button"
+							isPrimary
+							isLarge
+							onClick={ onDone }
+						>
+							{ __( 'Done' ) }
+						</Button>
+						<Button
+							className="uagb-block-all-post__cancel-button"
+							isTertiary
+							onClick={ onCancel }
+						>
+							{ __( 'Cancel' ) }
+						</Button>
+						<Button
+							className="uagb-block-all-post__reset-button"
+							onClick={ onReset }
+						>
+							{ __('Reset Layout') }
+						</Button>
+					</div>
+				</div>
+			</Placeholder>
+		);
+	}
 
 	render() {
-
+		const { isEditing } = this.state;
+		
 		// Caching all Props.
 		const {
 			attributes,
 			setAttributes,
 			latestPosts,
+			block,
 			categoriesList,
 			taxonomyList
 		} = this.props
@@ -218,9 +347,11 @@ class UAGBPostGrid extends Component {
 			ctaBgColor,
 			ctaHColor,
 			ctaBgHColor,
+			imageBottomSpace,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
+			ctaBottomSpace,
 			equalHeight,
 			excerptLength,
 			overlayOpacity,
@@ -246,8 +377,8 @@ class UAGBPostGrid extends Component {
 			inheritFromTheme,
 			postDisplaytext,
 			displayPostContentRadio,
-			excludeCurrentPost
-			
+			excludeCurrentPost,
+			layoutConfig
 		} = attributes
 
 		const hoverSettings = (
@@ -358,9 +489,7 @@ class UAGBPostGrid extends Component {
 		}
 
 
-		let taxonomyListOptions = [
-			{ value: "", label: __( "Select Taxonomy" ) }
-		]
+		let taxonomyListOptions = []
 
 		let categoryListOptions = [
 			{ value: "", label: __( "All" ) }
@@ -546,7 +675,7 @@ class UAGBPostGrid extends Component {
 								] }
 							/>
 							<h2> { __( "Pagination Alignment" ) }</h2>
-							<IconButton
+							<Button
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
@@ -554,7 +683,7 @@ class UAGBPostGrid extends Component {
 								aria-pressed = { "left" === paginationAlignment }
 								isPrimary = { "left" === paginationAlignment }
 							/>
-							<IconButton
+							<Button
 								key={ "center" }
 								icon="editor-aligncenter"
 								label="Right"
@@ -562,7 +691,7 @@ class UAGBPostGrid extends Component {
 								aria-pressed = { "center" === paginationAlignment }
 								isPrimary = { "center" === paginationAlignment }
 							/>
-							<IconButton
+							<Button
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
@@ -1034,6 +1163,14 @@ class UAGBPostGrid extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
+						label={ __( "Image Bottom Spacing" ) }
+						value={ imageBottomSpace }
+						onChange={ ( value ) => setAttributes( { imageBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
 						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
@@ -1057,6 +1194,14 @@ class UAGBPostGrid extends Component {
 						max={ 50 }
 						allowReset
 					/>
+					<RangeControl
+						label={ __( "CTA Bottom Spacing" ) }
+						value={ ctaBottomSpace }
+						onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 				</PanelBody>	
 			</InspectorControls>
 		)
@@ -1076,7 +1221,10 @@ class UAGBPostGrid extends Component {
 				</Fragment>
 			)
 		}
-
+		const renderViewMode = (
+			<Disabled><Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
+		)
+		
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -1088,8 +1236,9 @@ class UAGBPostGrid extends Component {
 						} }
 						controls={ [ "left", "center", "right" ] }
 					/>
+					{this.getBlockControls()}
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
+				{ isEditing ? this.renderEditMode() : renderViewMode}
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
@@ -1100,61 +1249,70 @@ class UAGBPostGrid extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
-	const { setAttributes } = props
-	const { getEntityRecords } = select( "core" )
-
-	let allTaxonomy = uagb_blocks_info.all_taxonomy
-	let currentTax = allTaxonomy[postType]
-	let taxonomy = ""
-	let categoriesList = []
-	let rest_base = ""
-
-	if ( true === postPagination && 'empty' === paginationMarkup ) {
-		$.ajax({
-			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: "uagb_post_pagination",
-				attributes : props.attributes,
-				nonce: uagb_blocks_info.uagb_ajax_nonce
-			},
-			dataType: "json",
-			type: "POST",
-			success: function( data ) {
-				setAttributes( { paginationMarkup: data.data } ) 
-			}
-		});
-	}
-
-	if ( "undefined" != typeof currentTax ) {
-
-		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
-			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+		const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost , block_id} = props.attributes
+		const { setAttributes } = props
+		const { getEntityRecords } = select( "core" )
+		let allTaxonomy = uagb_blocks_info.all_taxonomy
+		let currentTax = allTaxonomy[postType]
+		let taxonomy = ""
+		let categoriesList = []
+		let rest_base = ""
+		if ( true === postPagination && 'empty' === paginationMarkup ) {
+			$.ajax({
+				url: uagb_blocks_info.ajax_url,
+				data: {
+					action: "uagb_post_pagination",
+					attributes : props.attributes,
+					nonce: uagb_blocks_info.uagb_ajax_nonce
+				},
+				dataType: "json",
+				type: "POST",
+				success: function( data ) {
+					setAttributes( { paginationMarkup: data.data } ) 
+				}
+			});
 		}
+		if ( "undefined" != typeof currentTax ) {
 
-		if ( "" != taxonomyType ) {
-			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
-				categoriesList = currentTax["terms"][taxonomyType]
+			if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
+				rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+			}
+
+			if ( "" != taxonomyType ) {
+				if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
+					categoriesList = currentTax["terms"][taxonomyType]
+				}
 			}
 		}
-	}
-
-	let latestPostsQuery = {
-		order: order,
-		orderby: orderBy,
-		per_page: postsToShow,
-	}
-
-	if ( excludeCurrentPost ) {		
-		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
-	}
-	
-	latestPostsQuery[rest_base] = categories
-	return {
-		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
-	}
-
-} )( UAGBPostGrid )
+		let latestPostsQuery = {
+			order: order,
+			orderby: orderBy,
+			per_page: postsToShow,
+		}
+		if ( excludeCurrentPost ) {		
+			latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+		}
+		var category = [];	
+		var temp = parseInt(categories);
+		category.push(temp);
+		var catlenght = categoriesList.length;
+		for(var i=0;i<catlenght;i++){
+			if(categoriesList[i].id == temp){
+				if(categoriesList[i].child.length !== 0){
+					categoriesList[i].child.forEach(element => {
+						category.push(element);
+					});
+				}		
+			}
+		}
+		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+		const { getBlocks } = select( 'core/block-editor' );
+		const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+		return {
+			latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
+			categoriesList: categoriesList,
+			taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
+			block: getBlocks( props.clientId ),
+			replaceInnerBlocks
+		}
+})( UAGBPostGrid );
