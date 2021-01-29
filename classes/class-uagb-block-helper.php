@@ -3204,14 +3204,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => $attr['iconSize'],
 					'fill'   => $attr['iconColor'],
 				),
+
+				'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop , .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' => array(
+					'background' => $attr['bodyBgColor'],
+				),
 			);
 
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors['.uagb-tabs__wrap .uagb-tab ,.uagb-tabs__wrap .uagb-tabs__body-wrap'] = array(
-					'border-style'  => $attr['borderStyle'].'!important',
-					'border-color'  => $attr['borderColor'].'!important',
-					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ).'!important',
-					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ).'!important',
+					'border-style'  => $attr['borderStyle'] . '!important',
+					'border-color'  => $attr['borderColor'] . '!important',
+					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ) . '!important',
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ) . '!important',
 				);
 			}
 			$m_selectors = array(
@@ -3219,12 +3223,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => UAGB_Helper::get_css_value( $attr['titleFontSizeMobile'], $attr['titleFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['titleFontSizeMobile'], $attr['titleFontSizeType'] ),
 				),
+				'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile , .uagb-tabs__wrap.uagb-tabs__vstyle10-mobile , .uagb-tabs__wrap.uagb-tabs__stack4-mobile' => array(
+					'background' => $attr['bodyBgColor'],
+				),
 			);
 
 			$t_selectors = array(
 				' .uagb-tabs__panel .uagb-tab p' => array(
 					'font-size'   => UAGB_Helper::get_css_value( $attr['titleFontSizeTablet'], $attr['titleFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['titleFontSizeTablet'], $attr['titleFontSizeType'] ),
+				),
+
+				'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet , .uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' => array(
+					'background' => $attr['bodyBgColor'],
 				),
 			);
 

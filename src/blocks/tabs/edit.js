@@ -297,6 +297,10 @@ class UAGBTabsEdit extends Component {
 															{value: 'vstyle8', label: __('Vertical Style 8')},
 															{value: 'vstyle9', label: __('Vertical Style 9')},
 															{value: 'vstyle10', label: __('Vertical Style 10')},
+															{value: 'stack1', label: __('Stack Style 11')},
+															{value: 'stack2', label: __('Stack Style 12')},
+															{value: 'stack3', label: __('Stack Style 13')},
+															{value: 'stack4', label: __('Stack Style 14')},
 														] }
 														onChange={ (value) => setAttributes( { tabsStyleM: value } ) }
 													/>

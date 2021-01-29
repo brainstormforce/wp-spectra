@@ -98,16 +98,24 @@ function styling( props ) {
             "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
             "border-radius" : generateCSSUnit( borderRadius, "px" ),
 		},
-		".uagb-tabs__wrap .uagb-tabs__body-wrap " : {
+		".uagb-tabs__wrap .uagb-tabs__body-wrap" : {
             "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
             "border-radius" : generateCSSUnit( borderRadius, "px" ),
 		},
+		".uagb-tabs__wrap.uagb-tabs__hstyle5-desktop , .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop" : {
+            "background": bodyBgColor,
+		},
+	}
+	tablet_selectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-tablet , .uagb-tabs__wrap.uagb-tabs__vstyle10-tablet"] = {
+		"background": bodyBgColor,
 	}
 	tablet_selectors[" .uagb-tabs__panel .uagb-tab p"] = {
 		"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 		"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 	}
-
+	mobile_selectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-mobile , .uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ,  .uagb-tabs__wrap.uagb-tabs__stack4-mobile"] = {
+		"background": bodyBgColor,
+	}
 	mobile_selectors[" .uagb-tabs__panel .uagb-tab p"] = {
 		"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 		"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
