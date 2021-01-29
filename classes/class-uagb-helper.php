@@ -427,6 +427,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			switch ( $name ) {
+				case 'uagb/review':
+					$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_review_gfont( $blockattr );
+					break;
+
 				case 'uagb/inline-notice':
 					$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
@@ -578,6 +583,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/taxonomy-list':
 					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
+					break;
+
+				case 'uagb/lottie':
+					$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 					break;
 
 				default:
@@ -935,6 +945,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 *  Check MIME Type
+		 *
+		 *  @since 1.20.0
+		 */
+		public static function get_mime_type() {
+
+			$allowed_types = get_allowed_mime_types();
+
+			return ( array_key_exists( 'json', $allowed_types ) ) ? true : false;
+
+		}
+
+		/**
 		 * Returns Query.
 		 *
 		 * @param array  $attributes The block attributes.
@@ -1111,16 +1134,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'   => $t_obj->term_id,
-								'name' => $t_obj->name,
+								'id'    => $t_obj->term_id,
+								'name'  => $t_obj->name,
+								'child' => get_term_children( $t_obj->term_id, $tax_slug ),
 							);
 						}
-
 						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
 					}
 				}
 
 				$return_array[ $post_type ]['taxonomy'] = $data;
+
 			}
 
 			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );

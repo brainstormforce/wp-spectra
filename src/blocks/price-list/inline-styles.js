@@ -22,7 +22,6 @@ function RestMenuStyle( props ) {
 		titleLineHeight,
 		titleLineHeightTablet,
 		titleLineHeightMobile,
-
 		priceFontSizeType,
 		priceFontSize,
 		priceFontSizeTablet,
@@ -33,7 +32,6 @@ function RestMenuStyle( props ) {
 		priceLineHeight,
 		priceLineHeightTablet,
 		priceLineHeightMobile,
-
 		descFontSizeType,
 		descFontSize,
 		descFontSizeTablet,
@@ -44,7 +42,6 @@ function RestMenuStyle( props ) {
 		descLineHeight,
 		descLineHeightTablet,
 		descLineHeightMobile,
-
 		descSpace,
 		titleSpace,
 		imgVrPadding,
@@ -74,12 +71,12 @@ function RestMenuStyle( props ) {
 	}
 
 	var selectors = {
-		" .uagb-rest_menu__wrap": {
+		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
 			"padding-left" : generateCSSUnit( columnGap/2, "px" ),
 			"padding-right" : generateCSSUnit( columnGap/2, "px" ),
 			"margin-bottom" : generateCSSUnit( rowGap, "px" ),
 		},
-		" .uagb-rest_menu__wrap .uagb-rm__image-content": {
+		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
 			"padding-left" : generateCSSUnit( imgHrPadding, "px" ),
 			"padding-right" : generateCSSUnit( imgHrPadding, "px" ),
 			"padding-top" : generateCSSUnit( imgVrPadding, "px" ),
@@ -129,7 +126,7 @@ function RestMenuStyle( props ) {
 	}
 
 	if ( seperatorStyle !== "none" ) {
-		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
+		selectors[" .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,
 			"border-top-style": seperatorStyle,
 			"border-top-width": generateCSSUnit( seperatorThickness, "px" ),

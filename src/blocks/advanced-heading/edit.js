@@ -12,7 +12,6 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-
 //  Import CSS.
 import "./style.scss"
 

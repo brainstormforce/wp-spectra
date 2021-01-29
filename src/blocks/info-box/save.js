@@ -153,7 +153,7 @@ export default function save( props ) {
 		</div>
 	)
 
-	let target =""
+	let target ="_self"
 	if( ctaTarget ){
 		target ="_blank"
 	}
