@@ -6,6 +6,17 @@ import memoize from "memize"
 import times from "lodash/times"
 import styling from "./styling"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+
 const { __ } = wp.i18n
 
 const {
@@ -13,12 +24,15 @@ const {
 	Fragment,
 } = wp.element
 
+let svg_icons = Object.keys( UAGBIcon )
+
 const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
 	PanelColorSettings,
-	RichText
+	RichText,
+	ColorPalette
 } = wp.blockEditor
 
 const {
@@ -26,6 +40,7 @@ const {
 	TabPanel,
 	SelectControl,
 	RangeControl,
+	ToggleControl,
 	BaseControl,
 	Tooltip,
 	Button,
@@ -45,21 +60,20 @@ const { withDispatch, select, dispatch } = wp.data;
 class UAGBTabsEdit extends Component {	
 	constructor() {
 		super( ...arguments );
-		this.state = {
-			viewport: 'desktop',
-		};
 	}
 	componentDidMount() {
-
-		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
 		this.props.setAttributes( { classMigrate: true } )
-
-		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+		document.head.appendChild( $style );
+		if (!this.props.attributes.pid) {
+			this.props.setAttributes( {
+				pid: `uagb-tabs-${this.props.clientId}`,
+			} );
+		}
+		this.updateTabTitle();
+		this.props.resetTabOrder();
 	}
 	componentDidUpdate() {
 		const { attributes, setAttributes } = this.props;
@@ -69,7 +83,7 @@ class UAGBTabsEdit extends Component {
 			setAttributes( {
 				isTransform: false
 			} );
-			this.props.updateTabActive( 0 );
+			this.props.updateActiveTab( 0 );
 		}
 		var element = document.getElementById( "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
 
@@ -77,7 +91,7 @@ class UAGBTabsEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 	}
-	updateTabsHeader(header, index) {
+	updateTabsTitle(header, index) {
 		const { attributes, setAttributes, clientId } = this.props;
 		const { tabHeaders } = attributes;
 		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
@@ -93,9 +107,9 @@ class UAGBTabsEdit extends Component {
 
 		setAttributes( { tabHeaders: newHeaders} );
 		updateBlockAttributes(childBlocks[index], {header: header});
-		this.updateTabHeaders();
+		this.updateTabTitle();
 	}
-	updateTabHeaders() {
+	updateTabTitle() {
 		const { attributes, clientId } = this.props;
 		const { tabHeaders } = attributes;
 		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
@@ -116,7 +130,7 @@ class UAGBTabsEdit extends Component {
 				'New Tab'
 			]
 		} );
-		this.props.resetOrder();
+		this.props.resetTabOrder();
 	}
 
 	removeTab(index) {
@@ -130,7 +144,7 @@ class UAGBTabsEdit extends Component {
 			tabHeaders: attributes.tabHeaders.filter( (vl, idx) => idx !== index )
 		} );
 		this.updateTabsAttr({tabActive: 0});
-		this.props.resetOrder();
+		this.props.resetTabOrder();
 	}
 	
 	updateTabsAttr( attrs ) {
@@ -141,10 +155,9 @@ class UAGBTabsEdit extends Component {
 
 		setAttributes( attrs );
 		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, attrs ) );
-		this.props.resetOrder();
+		this.props.resetTabOrder();
 	}
 	render() {
-		const { viewport } = this.state;
 		const { attributes , setAttributes } = this.props;
 		const {
 			tabsStyleD,
@@ -162,8 +175,44 @@ class UAGBTabsEdit extends Component {
 			activeTabTextColor,
 			bodyBgColor,
 			bodyTextColor,
-			tabActive
+			tabActive,
+			HorizontalStyleD,
+			HorizontalStyleT,
+			HorizontalStyleM,
+			VerticalStyleD,
+			VerticalStyleT,
+			VerticalStyleM,
+			tabTitleLeftMargin,
+			tabTitleRightMargin,
+			tabTitleTopMargin,
+			tabTitleBottomMargin,
+			tabBodyLeftMargin,
+			tabBodyRightMargin,
+			tabBodyTopMargin,
+			tabBodyBottomMargin,
+			tabBodyVertPadding,
+			tabBodyHrPadding,
+			tabTitleVertPadding,
+			tabTitleHrPadding,
+			titleLoadGoogleFonts,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
+			titleFontSizeType,
+			titleFontSize,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightMobile,
+			titleLineHeightTablet,
+			titleAlign,
+			showIcon,
+			Icon,
+			iconColor,
+			iconSize
 		} = attributes;
+		
 		const blockClass = [
 			`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 			`uagb-tabs__wrap`,
@@ -171,6 +220,7 @@ class UAGBTabsEdit extends Component {
 			`uagb-tabs__${tabsStyleT}-tablet`,
 			`uagb-tabs__${tabsStyleM}-mobile`,
 		].filter( Boolean ).join( ' ' );
+
 		return (
 			<Fragment>     
 				<InspectorControls>
@@ -198,40 +248,64 @@ class UAGBTabsEdit extends Component {
 								( tabName ) => {
 									if( "desktop" === tabName.name ) {
 										return <SelectControl
-													label={ __( 'Desktop Style' ) }
-													value={ tabsStyleD }
-													options={ [
-														{value: 'horz', label: __('Horizontal')},
-														{value: 'vert', label: __('Vertical')},
-													] }
-													onChange={ (value) => setAttributes( { tabsStyleD: value } ) }
-												/>
+														label={ __( 'Desktop Style' ) }
+														value={ tabsStyleD }
+														options={ [
+															{value: 'hstyle1', label: __('Horizontal Style 1')},
+															{value: 'hstyle2', label: __('Horizontal Style 2')},
+															{value: 'hstyle3', label: __('Horizontal Style 3')},
+															{value: 'hstyle4', label: __('Horizontal Style 4')},
+															{value: 'hstyle5', label: __('Horizontal Style 5')},
+															{value: 'vstyle6', label: __('Vertical Style 6')},
+															{value: 'vstyle7', label: __('Vertical Style 7')},
+															{value: 'vstyle8', label: __('Vertical Style 8')},
+															{value: 'vstyle9', label: __('Vertical Style 9')},
+															{value: 'vstyle10', label: __('Vertical Style 10')},
+														] }
+														onChange={ (value) => setAttributes( { tabsStyleD: value } ) }
+													/>
 									}else if( "tablet" === tabName.name ) {
 										return <SelectControl
 													label={ __( 'Tablet Style' ) }
 													value={ tabsStyleT }
 													options={ [
-														{value: 'horz', label: __('Horizontal')},
-														{value: 'vert', label: __('Vertical')},
+														{value: 'hstyle1', label: __('Horizontal Style 1')},
+														{value: 'hstyle2', label: __('Horizontal Style 2')},
+														{value: 'hstyle3', label: __('Horizontal Style 3')},
+														{value: 'hstyle4', label: __('Horizontal Style 4')},
+														{value: 'hstyle5', label: __('Horizontal Style 5')},
+														{value: 'vstyle6', label: __('Vertical Style 6')},
+														{value: 'vstyle7', label: __('Vertical Style 7')},
+														{value: 'vstyle8', label: __('Vertical Style 8')},
+														{value: 'vstyle9', label: __('Vertical Style 9')},
+														{value: 'vstyle10', label: __('Vertical Style 10')},
 													] }
 													onChange={ (value) => setAttributes( { tabsStyleT: value } ) }
 												/>
 									}else{
-										return <SelectControl
-													label={ __( 'Mobile Style' ) }
-													value={ tabsStyleM }
-													options={ [
-														{value: 'horz', label: __('Horizontal')},
-														{value: 'vert', label: __('Vertical')},
-													] }
-													onChange={ (value) => setAttributes( { tabsStyleM: value } ) }
-												/>
+										return  <SelectControl
+														label={ __( 'Mobile Style' ) }
+														value={ tabsStyleM }
+														options={ [
+															{value: 'hstyle1', label: __('Horizontal Style 1')},
+															{value: 'hstyle2', label: __('Horizontal Style 2')},
+															{value: 'hstyle3', label: __('Horizontal Style 3')},
+															{value: 'hstyle4', label: __('Horizontal Style 4')},
+															{value: 'hstyle5', label: __('Horizontal Style 5')},
+															{value: 'vstyle6', label: __('Vertical Style 6')},
+															{value: 'vstyle7', label: __('Vertical Style 7')},
+															{value: 'vstyle8', label: __('Vertical Style 8')},
+															{value: 'vstyle9', label: __('Vertical Style 9')},
+															{value: 'vstyle10', label: __('Vertical Style 10')},
+														] }
+														onChange={ (value) => setAttributes( { tabsStyleM: value } ) }
+													/>
 									}
 								}
 							}
 							</TabPanel>
 						</PanelBody>
-                        <PanelBody title={ __( 'Tabs Settings' ) }>
+                        <PanelBody title={ __( 'Tabs Title Settings' ) }>
                             <SelectControl
                                 label={ __( 'Initial Open Tab' ) }
                                 value={ tabActiveFrontend }
@@ -240,50 +314,220 @@ class UAGBTabsEdit extends Component {
                                 } ) }
                                 onChange={ (value) => setAttributes( { tabActiveFrontend: parseInt(value) } ) }
                             />
-                        </PanelBody>
-                        <PanelColorSettings
-                            title={ __( 'Tab Colors' ) }
-                            initialOpen={ false }
-                            colorSettings={ [
-                                {
-                                    label: __( 'Background Color' ),
-                                    value: headerBgColor,
-                                    onChange: ( value ) => setAttributes( { headerBgColor: value } ),
-                                },
-                                {
-                                    label: __( 'Text Color' ),
-                                    value: headerTextColor,
-                                    onChange: ( value ) => setAttributes( { headerTextColor: value } ),
-                                },
-                                {
-                                    label: __( 'Active Tab Background Color' ),
-                                    value: activeTabBgColor,
-                                    onChange: ( value ) => setAttributes( { activeTabBgColor: value } ),
-                                },
-                                {
-                                    label: __( 'Active Tab Text Color' ),
-									value: activeTabTextColor,
-									bodyBgColor,
-									onChange: ( value ) => setAttributes( { activeTabTextColor: value } ),
-                                },
-                            ] }
+							<h2>{ __( "Alignment" ) }</h2>
+							<BlockAlignmentToolbar
+								value={ titleAlign }
+								onChange={ ( value ) =>
+									setAttributes( {
+										titleAlign: value,
+									} )
+								}
+								controls={ [ 'left', 'center', 'right' ] }
+								isCollapsed={ false }
+						/>		
+						<ToggleControl
+							label={ __( "Enable Icon" ) }
+							checked={ showIcon }
+							onChange={ ( value ) => setAttributes( { showIcon: ! showIcon } ) }
+						/>
+						{ showIcon && 
+							<Fragment>
+								<h2 className="components-base-control__label">{__( "Icon" )}</h2>
+								<FontIconPicker
+											icons={svg_icons}
+											renderFunc= {renderSVG}
+											theme="default"
+											value={Icon}
+											onChange={ ( value ) => setAttributes( { Icon: value } ) }
+											isMulti={false}
+											noSelectedPlaceholder= { __( "Select Icon" ) }
+								/>
+								<h2>{ __( 'Icon Color' ) }</h2>
+								<ColorPalette 
+										value={ iconColor}
+										onChange={ ( value ) => setAttributes( { iconColor: value } )}
+										allowReset
+								/>
+								<h2>{ __( 'Icon Size' ) }</h2>
+								<RangeControl
+								className={ "uagb-tabs__icon" }
+								value={ iconSize }
+								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+						/>
+							</Fragment>
+						}
+						<h2>{ __( "Tab Title Margin (px)" ) }</h2>
+						<RangeControl
+								label={ UAGB_Block_Icons.left_margin }
+								className={ "uagb-margin-control" }
+								value={ tabTitleLeftMargin }
+								onChange={ ( value ) => setAttributes( { tabTitleLeftMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+						/>
+						<RangeControl
+								label={ UAGB_Block_Icons.right_margin }
+								className={ "uagb-margin-control" }
+								value={ tabTitleRightMargin }
+								onChange={ ( value ) => setAttributes( { tabTitleRightMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+						/>
+						<RangeControl
+								label={ UAGB_Block_Icons.top_margin }
+								value={ tabTitleTopMargin }
+								onChange={ ( value ) => setAttributes( { tabTitleTopMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+						/>
+						<RangeControl
+								label={ UAGB_Block_Icons.bottom_margin }
+								className={ "uagb-margin-control" }
+								value={ tabTitleBottomMargin }
+								onChange={ ( value ) => setAttributes( { tabTitleBottomMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+						/>
+						<h2>{ __( "Title Padding" ) }</h2>
+						<RangeControl
+								label={ UAGB_Block_Icons.vertical_spacing }
+								value={ tabTitleVertPadding }
+								onChange={ ( value ) => setAttributes( { tabTitleVertPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								className={ "uagb-margin-control" }
+								allowReset
+						/>
+						<RangeControl
+								label={ UAGB_Block_Icons.horizontal_spacing }
+								value={ tabTitleHrPadding }
+								onChange={ ( value ) => setAttributes( { tabTitleHrPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								className={ "uagb-margin-control" }
+								allowReset
+						/>
+						<h2>{ __( 'Title Background Color' ) }</h2>
+						<ColorPalette
+								value={ headerBgColor}
+								onChange={ ( value ) => setAttributes( { headerBgColor: value } )}
+								allowReset
+						/>
+						<h2>{ __( 'Title Text Color' ) }</h2>
+						<ColorPalette 
+								value={ headerTextColor}
+								onChange={ ( value ) => setAttributes( { headerTextColor: value } )}
+								allowReset
+						/>
+						<h2>{ __( 'Active Tab Background Color' ) }</h2>
+						<ColorPalette 
+								value={ activeTabBgColor}
+								onChange={ ( value ) => setAttributes( { activeTabBgColor: value } )}
+								allowReset
+						/>
+						<h2>{ __( 'Active Tab Text Color' ) }</h2>
+						<ColorPalette 
+								value={ activeTabTextColor}
+								onChange={ ( value ) => setAttributes( { activeTabTextColor: value } )}
+								allowReset
+						/>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
+							fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
+							fontWeight = { { value: titleFontWeight, label: 'titleFontWeight' } }
+							fontSubset = { { value: titleFontSubset, label: 'titleFontSubset' } }
+							fontSizeType = { { value: titleFontSizeType, label: 'titleFontSizeType' } }
+							fontSize = { { value: titleFontSize, label: 'titleFontSize' } }
+							fontSizeMobile = { { value: titleFontSizeMobile, label: 'titleFontSizeMobile' } }
+							fontSizeTablet= { { value: titleFontSizeTablet, label: 'titleFontSizeTablet' } }
+							lineHeightType = { { value: titleLineHeightType, label: 'titleLineHeightType' } }
+							lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
+							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
+							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
+						/>
+						</PanelBody>
+						<PanelBody title={ __( 'Tabs Body Settings' ) }>
+						<h2>{ __( 'Body Background Color' ) }</h2>
+						<ColorPalette
+							value={ bodyBgColor}
+							onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
+							allowReset
+                        />  
+						<h2>{ __( 'Body Text Color' ) }</h2>
+						<ColorPalette
+							value= {bodyTextColor}
+							onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
+							allowReset
                         />
-                        <PanelColorSettings
-                            title={ __( 'Body Colors' ) }
-                            initialOpen={ false }
-                            colorSettings={ [
-                                {
-                                    label: __( 'Background Color' ),
-                                    value: bodyBgColor,
-                                    onChange: ( value ) => setAttributes( { bodyBgColor: value } ),
-                                },
-                                {
-                                    label: __( 'Text Color' ),
-                                    value: bodyTextColor,
-                                    onChange: ( value ) => setAttributes( { bodyTextColor: value } ),
-                                },
-                            ] }
-                        />
+						<h2>{ __( "Tab Body Margin (px)" ) }</h2>
+							<RangeControl
+								label={ UAGB_Block_Icons.left_margin }
+								className={ "uagb-margin-control" }
+								value={ tabBodyLeftMargin }
+								onChange={ ( value ) => setAttributes( { tabBodyLeftMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.right_margin }
+								className={ "uagb-margin-control" }
+								value={ tabBodyRightMargin }
+								onChange={ ( value ) => setAttributes( { tabBodyRightMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.top_margin }
+								className={ "uagb-margin-control" }
+								value={ tabBodyTopMargin }
+								onChange={ ( value ) => setAttributes( { tabBodyTopMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.bottom_margin }
+								className={ "uagb-margin-control" }
+								value={ tabBodyBottomMargin }
+								onChange={ ( value ) => setAttributes( { tabBodyBottomMargin: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<h2>{ __( "Body Padding" ) }</h2>
+							<RangeControl
+								label={ UAGB_Block_Icons.vertical_spacing }
+								value={ 
+									tabBodyVertPadding }
+								onChange={ ( value ) => setAttributes( { 
+									tabBodyVertPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								className={ "uagb-margin-control" }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.horizontal_spacing }
+								value={ tabBodyHrPadding }
+								onChange={ ( value ) => setAttributes( { tabBodyHrPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								className={ "uagb-margin-control" }
+								allowReset
+							/>
+						</PanelBody>
                         <PanelBody title={ __( 'Border Settings' ) } initialOpen={ false }>
                             <SelectControl
                                 label={ __( 'Border Style' ) }
@@ -322,8 +566,8 @@ class UAGBTabsEdit extends Component {
                                 onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
                             />
                         </PanelBody>
+
                 </InspectorControls>
-				
                 <div className={blockClass} data-tab-active={tabActiveFrontend}>
                     <ul className="uagb-tabs__panel">
                         {tabHeaders.map( ( header, index ) => (
@@ -331,13 +575,16 @@ class UAGBTabsEdit extends Component {
                             >
                                 <a
                                        onClick={ () => {
-                                           this.props.updateTabActive( index );
+                                           this.props.updateActiveTab( index );
                                        } }
                                     >
+										{(showIcon && Icon && 
+										<span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>
+										)}
 										<RichText
                                             tagName="p"
                                             value={ header }
-                                            onChange={ ( value ) => this.updateTabsHeader(value, index) }
+                                            onChange={ ( value ) => this.updateTabsTitle(value, index) }
                                             unstableOnSplit={ () => null }
                                             placeholder={ __( 'Title…' ) }
                                         />
@@ -353,12 +600,7 @@ class UAGBTabsEdit extends Component {
                                 )}
                             </li>
                         ) ) }
-						 <li className="uagb-tab uagb-tabs__add-tab"
-                                style={ {
-                                    borderRadius: borderRadius + 'px',
-                                    borderWidth: borderWidth + 'px',
-                                } }
-                            >
+						 <li className="uagb-tab uagb-tabs__add-tab">
 							<Tooltip text={ __( 'Add tab' ) }>
 								<span onClick={ () => this.addTab() }>
 								<Dashicon icon="plus"/>
@@ -389,14 +631,14 @@ export default compose(
 		} = dispatch( 'core/block-editor' );
 		const block = getBlock( clientId );
 		return {
-			resetOrder() {
+			resetTabOrder() {
 				times( block.innerBlocks.length, n => {
 					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
 						id: n,
 					} );
 				} );
 			},
-			updateTabActive(tabActive) {
+			updateActiveTab(tabActive) {
 				updateBlockAttributes( block.clientId, {
 					tabActive: tabActive,
 				} );
@@ -405,7 +647,7 @@ export default compose(
 						tabActive: tabActive,
 					} );
 				} );
-				this.resetOrder();
+				this.resetTabOrder();
 			},
 		};
 

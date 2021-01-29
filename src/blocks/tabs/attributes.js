@@ -22,25 +22,26 @@ const attributes = {
 		type: 'number',
 		default: 0,
 	},
+	HorizontalStyle: {
+		type: 'string',
+	},
 	tabsStyleD: {
 		type: 'string',
-		default: 'horz'
+		default: 'hstyle1'
 	},
 	tabsStyleT: {
 		type: 'string',
-		default: 'vert'
+		default: 'vstyle6'
 	},
 	tabsStyleM: {
 		type: 'string',
-		default: 'vert'
+		default: 'vstyle6'
 	},
 	headerBgColor: {
 		type: 'string', 
-		default: '#e0e0e0',
 	},
 	headerTextColor: {
 		type: 'string',
-		default: '#fff',
 	},
 	bodyBgColor: {
 		type: 'string',
@@ -50,19 +51,15 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
 	},
 	borderColor: {
 		type: 'string',
-		default: '#000000',
 	},
 	borderRadius: {
 		type: 'number',
-		default: 10,
 	},
 	pid: {
 		type: 'string',
@@ -88,6 +85,99 @@ const attributes = {
 	isTransform: {
 		type: 'boolean',
 		default: false
+	},
+	tabTitleLeftMargin :{
+		type: "number",
+	},
+	tabTitleRightMargin :{
+		type: "number",
+	},
+	tabTitleTopMargin :{
+		type: "number",
+	},
+	tabTitleBottomMargin :{
+		type: "number",
+	},
+	tabBodyLeftMargin :{
+		type: "number",
+	},
+	tabBodyRightMargin :{
+		type: "number",
+	},
+	tabBodyTopMargin :{
+		type: "number",
+	},
+	tabBodyBottomMargin :{
+		type: "number",
+	},
+	tabBodyVertPadding :{
+		type: "number",
+	},
+	tabBodyHrPadding :{
+		type: "number",
+	},
+	tabTitleVertPadding :{
+		type: "number",
+	},
+	tabTitleHrPadding :{
+		type: "number",
+	},
+	titleFontSize: {
+		type: "number",
+	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
+	},
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false
+	},
+	titleAlign: {
+		type: "string",
+		default: "center"
+	},
+	showIcon: {
+		type: "boolean",
+		default: false
+	},
+	Icon: {
+		type: "string",
+	},
+	iconColor:{
+		type: "string",
+	},
+	iconSize:{
+		type: "number",
 	}
 }
 

@@ -2,6 +2,8 @@
  * BLOCK: Column - Save Block
  */
 
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
 const {
 	InnerBlocks
 } = wp.blockEditor
@@ -16,14 +18,8 @@ export default function save( props ) {
         tabsStyleD,
         tabsStyleT,
         tabsStyleM,
-        headerBgColor,
-        headerTextColor,
-        bodyBgColor,
-        bodyTextColor,
-        borderStyle,
-        borderWidth,
-        borderColor,
-        borderRadius,
+        Icon,
+        showIcon,
         pid
     } = attributes;
 
@@ -43,6 +39,8 @@ export default function save( props ) {
                     <li key={ index } className="uagb-tab">
                         <a href={`#uagb-tabs__tab${index}`}>
                             <span>{header}</span>
+                            {(showIcon && 
+                                 <span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>)}
                         </a>
                     </li>
                 ) ) }

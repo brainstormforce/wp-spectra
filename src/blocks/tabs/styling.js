@@ -9,48 +9,112 @@ function styling( props ) {
 
 	const {
 		headerBgColor,
+		titleAlign,
 		headerTextColor,
 		activeTabBgColor,
 		activeTabTextColor,
 		bodyBgColor,
 		bodyTextColor,
+		tabTitleTopMargin,
+		tabTitleLeftMargin,
+		tabTitleRightMargin,
+		tabTitleBottomMargin,
+		tabTitleVertPadding,
+		tabTitleHrPadding,
+		titleFontFamily,
+		titleFontWeight,
+		titleFontSize,
+		titleFontSizeType,
+		titleFontSizeMobile,
+		titleFontSizeTablet,
+		titleLineHeight,
+		titleLineHeightType,
+		titleLineHeightMobile,
+		titleLineHeightTablet,
 		//Border
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
+		iconColor,
+		iconSize,
+		tabBodyLeftMargin,
+		tabBodyRightMargin,
+		tabBodyTopMargin,
+		tabBodyBottomMargin, 
+		tabBodyVertPadding,
+		tabBodyHrPadding,
 	} = props.attributes
 
 	var selectors = {}
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 	selectors = {
-		" .uagb-tab" : {
+		" .uagb-tabs__panel .uagb-tab" : {
 			"background": headerBgColor,
+			"text-align": titleAlign,
+			"padding-top": generateCSSUnit( tabTitleVertPadding, "px" ),
+			"padding-bottom": generateCSSUnit( tabTitleVertPadding, "px" ),
+			"padding-left": generateCSSUnit( tabTitleHrPadding, "px" ),
+			"padding-right": generateCSSUnit( tabTitleHrPadding, "px" ),
+			"margin-top": generateCSSUnit( tabTitleTopMargin, "px" ),
+			"margin-left": generateCSSUnit( tabTitleLeftMargin, "px" ),
+			"margin-right": generateCSSUnit( tabTitleRightMargin, "px" ),
+			"margin-bottom": generateCSSUnit( tabTitleBottomMargin, "px" )
 		},
-		" .uagb-tab a" : {
+		" .uagb-tabs__panel .uagb-tab p" : {
 			"color": headerTextColor,
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		},
-		" .uagb-tab.uagb-tabs__active" : {
+		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active" : {
 			"background": activeTabBgColor,
 		},
-		" .uagb-tab.uagb-tabs__active a" : {
+		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active p" : {
 			"color": activeTabTextColor ,
 		},
 		" .uagb-tabs__body-wrap" : {
 			"background": bodyBgColor,
+			"padding-top": generateCSSUnit( tabBodyVertPadding, "px" ),
+			"padding-bottom": generateCSSUnit( tabBodyVertPadding, "px" ),
+			"padding-left": generateCSSUnit( tabBodyHrPadding, "px" ),
+			"padding-right": generateCSSUnit( tabBodyHrPadding, "px" ),
+			"margin-top": generateCSSUnit( tabBodyTopMargin, "px" ),
+			"margin-left": generateCSSUnit( tabBodyLeftMargin, "px" ),
+			"margin-right": generateCSSUnit( tabBodyRightMargin, "px" ),
+			"margin-bottom": generateCSSUnit( tabBodyBottomMargin, "px" )
 		},
 		" .uagb-tabs__body-wrap p" : {
 			"color": bodyTextColor,
 		},
-	}
-	if ( borderStyle !== "none" ) {
-		selectors[" .uagb-tabs__panel .uagb-tab , .uagb-tabs__body-wrap"] = {
+		" .uagb-tabs__icon svg" : {
+			"height": generateCSSUnit( iconSize, "px" ),
+			"width": generateCSSUnit( iconSize, "px" ),
+			"fill": iconColor
+		},
+		" .uagb-tabs__hstyle1-desktop .uagb-tab" : {
             "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
             "border-radius" : generateCSSUnit( borderRadius, "px" ),
 		}
 	}
-	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	tablet_selectors[" .uagb-tabs__panel .uagb-tab p"] = {
+		"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+		"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
+	}
 
-	var styling_css = generateCSS( selectors, id )
+	mobile_selectors[" .uagb-tabs__panel .uagb-tab p"] = {
+		"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+		"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
+	}
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`
+
+	var styling_css = generateCSS( selectors, base_selector )
+
+	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
 
 	return styling_css
 }
