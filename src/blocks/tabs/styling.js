@@ -94,10 +94,14 @@ function styling( props ) {
 			"width": generateCSSUnit( iconSize, "px" ),
 			"fill": iconColor
 		},
-		" .uagb-tabs__hstyle1-desktop .uagb-tab" : {
+		".uagb-tabs__wrap .uagb-tabs__panel .uagb-tab" : {
             "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
             "border-radius" : generateCSSUnit( borderRadius, "px" ),
-		}
+		},
+		".uagb-tabs__wrap .uagb-tabs__body-wrap " : {
+            "border" : generateCSSUnit( borderWidth, "px" ) + ' ' + borderStyle + ' ' + borderColor,
+            "border-radius" : generateCSSUnit( borderRadius, "px" ),
+		},
 	}
 	tablet_selectors[" .uagb-tabs__panel .uagb-tab p"] = {
 		"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),

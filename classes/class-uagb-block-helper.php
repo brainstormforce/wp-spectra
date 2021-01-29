@@ -3207,11 +3207,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[' .uagb-tab , .uagb-tabs__body-wrap'] = array(
-					'border-style'  => $attr['borderStyle'],
-					'border-color'  => $attr['borderColor'],
-					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				$selectors['.uagb-tabs__wrap .uagb-tab ,.uagb-tabs__wrap .uagb-tabs__body-wrap'] = array(
+					'border-style'  => $attr['borderStyle'].'!important',
+					'border-color'  => $attr['borderColor'].'!important',
+					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ).'!important',
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ).'!important',
 				);
 			}
 			$m_selectors = array(
