@@ -62,14 +62,6 @@ class UAGBTableOfContentsEdit extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// if (
-		// 	JSON.stringify( this.props.headers ) !==
-		// 	JSON.stringify( prevProps.headers )
-		// ) {
-		// 	this.props.setAttributes({
-		// 		headerLinks: JSON.stringify(this.props.headers)
-		// 	});
-		// }
 
 		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
 
@@ -84,8 +76,6 @@ class UAGBTableOfContentsEdit extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
-
-		// this.props.setAttributes( { headerLinks: JSON.stringify( this.props.headers ) } )
 
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )

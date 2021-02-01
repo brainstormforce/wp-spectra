@@ -389,6 +389,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$excludeheading = '';
 			
 			foreach ($blocks as $block) {
+				
 				if ($block['blockName'] == 'core/heading') {
 					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
 					$excludeheading = (isset($block['attrs']['className'])) ? $block['attrs']['className'] : '';
@@ -398,8 +399,40 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
 					$excludeheading = (isset($block['attrs']['className'])) ? $block['attrs']['className'] : '';
 					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
-				}	
+				}
+				if ($block['blockName'] == 'uagb/columns' || $block['blockName'] == 'core/columns' ) {
+					for($i=0;$i<count($block['innerBlocks']);$i++){
+						if ($block['innerBlocks'][$i]['innerBlocks'][0]['blockName'] == 'core/heading') {
+							$level = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default
+					    	$excludeheading = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'] : '';
+					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerBlocks'][0]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						}
+						if ($block['innerBlocks'][$i]['innerBlocks'][0]['blockName'] == 'uagb/advanced-heading') {
+							$level = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default
+					    	$excludeheading = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'] : '';
+					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerBlocks'][0]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						}
+					}
+				}
+				if ($block['blockName'] == 'uagb/section') {
+					for($i=0;$i<count($block['innerBlocks']);$i++){
+						if ($block['innerBlocks'][$i]['blockName'] == 'core/heading') {
+							$level = (isset($block['innerBlocks'][$i]['attrs']['level'])) ? $block['innerBlocks'][$i]['attrs']['level'] : 2;  // h2 as default
+					    	$excludeheading = (isset($block['innerBlocks'][$i]['attrs']['className'])) ? $block['innerBlocks'][$i]['attrs']['className'] : '';
+					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						}
+						if ($block['innerBlocks'][$i]['blockName'] == 'uagb/advanced-heading') {
+							$level = (isset($block['innerBlocks'][$i]['attrs']['level'])) ? $block['innerBlocks'][$i]['attrs']['level'] : 2;  // h2 as default
+					    	$excludeheading = (isset($block['innerBlocks'][$i]['attrs']['className'])) ? $block['innerBlocks'][$i]['attrs']['className'] : '';
+					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						}
+					}
+				}
 			}	
+
+			// print_r($headings);
+
+			// $headings = $this->filter_array($headings);
 			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
@@ -433,15 +466,23 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								<?php foreach ( $headings as $link ) { 
 										if( 'uagb-toc-hide-heading' !== $link['excludeheading'] ){
 									?>
-									<?php if( $link['level'] === 1 ) { ?>
+									<?php if( $link['level'] === 1 || $link['level'] === 2 ) { ?>
 										<li>
 											<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
 										</li>
 									<?php } else{ ?>
 										<ul class="uagb-toc__list">
-											<li>
-												<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
-											</li>
+											<?php if( $link['level'] === 3 ) { ?>
+												<li>
+													<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
+												</li>
+											<?php } else{ ?>
+												<ul class="uagb-toc__list">
+												   <li>
+													<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
+												   </li>
+												</ul>
+											<?php } ?>
 										</ul>
 										<?php } ?>
 								<?php } } ?>	
@@ -456,6 +497,28 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			</div>
 			<?php
 				return ob_get_clean();
+		}
+	
+		public function filter_array( $headers ){
+			$arrays = [];
+				foreach ( $headers as $index ) {
+					$index['level'] = 0;
+					
+					for ( $i = count($headers) - 1; $i >= 0; $i-- ) {
+						$currentOrderedItem = $headers[$i];
+						
+						if ( $currentOrderedItem['level'] <= $index['level'] ) {
+							$index['level'] = $currentOrderedItem['level'];
+	
+							if ( $currentOrderedItem['level'] < $index['level'] ) {
+								$index['level']++;
+							}
+							break;
+						}
+					}
+			}
+			// var_dump($headers);
+			return $headers;
 		}
 
 	/**
