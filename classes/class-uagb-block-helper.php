@@ -34,13 +34,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$selectors = array(
-				' .uagb-rating-title'   => array(
+				' ' . $attr['headingTag'] . '.uagb-rating-title' => array(
 					'color' => $attr['titleColor'],
 				),
-				' .uagb-rating-desc'    => array(
+				' p.uagb-rating-desc'   => array(
 					'color' => $attr['descColor'],
 				),
-				' .uagb-rating-author'  => array(
+				' p.uagb-rating-author' => array(
 					'color' => $attr['authorColor'],
 				),
 				' .uagb_review_entry'   => array(
@@ -230,7 +230,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['headingColor'],
 				),
 
-				' .uagb-howto-desc-text'  => array(
+				' p.uagb-howto-desc-text' => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
@@ -4439,7 +4439,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'justify-content' => $alignment,
 					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 				),
-				' ' . $attr['headingTag'] . '.uagb-toc__title' => array(
+				' .uagb-toc__title'                   => array(
 					'color' => $attr['headingColor'],
 				),
 				' .uagb-toc__wrap'                    => array(

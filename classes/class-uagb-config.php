@@ -559,7 +559,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'align'                   => 'center',
-							'headingTag'              => 'h2',
+							'headingTag'              => 'h4',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'separatorBg'             => '#eee',
@@ -1936,7 +1936,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'rTitle'                  => '',
 							'rContent'                => '',
 							'rAuthor'                 => '',
-							'headingTag'              => 'h4',
+							'headingTag'              => 'h3',
 							'mainimage'               => '',
 							'imgSize'                 => '',
 							'showFeature'             => '',
