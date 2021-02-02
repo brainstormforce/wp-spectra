@@ -839,11 +839,6 @@ hr.uagb-editor__separator {
 	transform: scale(1.8)
 }
 
-.rfipicons__ibox--error {
-	text-transform: lowercase;
-	font-style: italic
-}
-
 .rfipicons__icon {
 	width: 20%;
 	height: 64px;
@@ -862,9 +857,8 @@ hr.uagb-editor__separator {
 
 .rfipicons__icon--error {
 	display: block;
-	padding: 16px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 16px;
 	width: 100%;
 	line-height: 1
 }
@@ -1968,10 +1962,6 @@ hr.uagb-editor__separator {
 .rfipdropdown--default .rfipicons__ibox:active,
 .rfipdropdown--default .rfipicons__ibox:focus {
 	border: 1px solid #bdbdbd
-}
-
-.rfipdropdown--default .rfipicons__ibox--error {
-	color: #ef9a9a
 }
 
 .rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox {

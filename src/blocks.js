@@ -53,6 +53,7 @@ import "./blocks/forms/child-blocks/toggle/block.js"
 // import "./blocks/forms/child-blocks/upload/block.js"
 import "./blocks/forms/child-blocks/date/block.js"
 import "./blocks/forms/child-blocks/accept/block.js"
+import "./blocks/lottie/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 

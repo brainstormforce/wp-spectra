@@ -416,7 +416,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					?>
 
 					<div class="uagb-taxomony-box">
-						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>">
+						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
 							<h4 class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?></h4>
 							<?php if ( $showCount ) { ?>
 								<div class="uagb-tax-count">
@@ -475,7 +475,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
 							<li class="uagb-tax-list">
 								<div class="uagb-tax-link-wrap">
-									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
+									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
 											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
 										<?php } ?>
@@ -483,7 +483,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 											<ul class="uagb-taxonomy-list-children">	
 												<?php foreach ( $newcategoriesList[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
+													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
 													<?php if ( $showCount ) { ?>
 														<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
 													<?php } ?>												
@@ -504,7 +504,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- Select -- </option>
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
-							<option value="<?php echo esc_url( get_term_link( $value->name, $attributes['taxonomyType'] ) ); ?>" >
+							<option value="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>
 								<?php if ( $showCount ) { ?>
 									<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
