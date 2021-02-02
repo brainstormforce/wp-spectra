@@ -43,10 +43,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function __construct() {
 
 			add_action( 'init', array( $this, 'register_blocks' ) );
-			
+
 		}
 
-        /**
+		/**
 		 * Registers the `core/latest-posts` block on server.
 		 *
 		 * @since x.x.x
@@ -57,322 +57,321 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return;
 			}
 
-            register_block_type(
+			register_block_type(
 				'uagb/table-of-contents',
 				array(
 					'attributes'      => array_merge(
 						array(
-							'block_id' => array(
-                                'type'    => 'string',
-                                'default' => 'not_set',
+							'block_id'                  => array(
+								'type'    => 'string',
+								'default' => 'not_set',
 							),
-							'classMigrate' => array(
-								'type'=>"boolean",
-								'default'=> false
-							),
-							'disableBullets' => array(
-								'type'    => "boolean",
+							'classMigrate'              => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'makeCollapsible' => array(
-								'type'    => "boolean",
+							'disableBullets'            => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'initialCollapse' => array(
-								'type'   => "boolean",
-								'default'=>false,
+							'makeCollapsible'           => array(
+								'type'    => 'boolean',
+								'default' => false,
 							),
-							'icon'  => array(
-								'type'=> "string",
-								'default'=> "fa-angle-down"
+							'initialCollapse'           => array(
+								'type'    => 'boolean',
+								'default' => false,
 							),
-							'iconSize' => array(
-								'type'=> "number",
+							'icon'                      => array(
+								'type'    => 'string',
+								'default' => 'fa-angle-down',
 							),
-							'iconColor' => array(
-								'type'=> "string",
+							'iconSize'                  => array(
+								'type' => 'number',
 							),
-							'bulletColor' => array(
-								'type' => "string",
+							'iconColor'                 => array(
+								'type' => 'string',
 							),
-							'align' => array(
-								'type'    => "string",
-								'default' => "left",
+							'bulletColor'               => array(
+								'type' => 'string',
 							),
-							'heading'=> array(
-								'source'=> "html",
-								'selector'=> ".uagb-toc__title",
-								'default'=> __( "Table Of Contents", 'ultimate-addons-for-gutenberg' ),
+							'align'                     => array(
+								'type'    => 'string',
+								'default' => 'left',
 							),
-							'icon'	=> array(
-								'type' => "string",
-								'default' => "fa-angle-down"
+							'heading'                   => array(
+								'source'   => 'html',
+								'selector' => '.uagb-toc__title',
+								'default'  => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 							),
-							'smoothScroll' => array(
-								'type'    => "boolean",
+							'icon'                      => array(
+								'type'    => 'string',
+								'default' => 'fa-angle-down',
+							),
+							'smoothScroll'              => array(
+								'type'    => 'boolean',
 								'default' => true,
 							),
-							'smoothScrollDelay' => array(
-								'type'    => "number",
+							'smoothScrollDelay'         => array(
+								'type'    => 'number',
 								'default' => 800,
 							),
-							'smoothScrollOffset' => array(
-								'type'    => "number",
+							'smoothScrollOffset'        => array(
+								'type'    => 'number',
 								'default' => 30,
 							),
-							'scrollToTop' => array(
-								'type'    => "boolean",
+							'scrollToTop'               => array(
+								'type'    => 'boolean',
 								'default' => false,
 							),
-							'scrollToTopColor' => array(
-								'type' => "string",
+							'scrollToTopColor'          => array(
+								'type' => 'string',
 							),
-							'scrollToTopBgColor' => array(
-								'type' => "string",
+							'scrollToTopBgColor'        => array(
+								'type' => 'string',
 							),
-							'tColumnsDesktop' => array(
-								'type'    => "number",
+							'tColumnsDesktop'           => array(
+								'type'    => 'number',
 								'default' => 1,
 							),
-							'tColumnsTablet' => array(
-								'type'    => "number",
+							'tColumnsTablet'            => array(
+								'type'    => 'number',
 								'default' => 1,
 							),
-							'tColumnsMobile' => array(
-								'type'    => "number",
+							'tColumnsMobile'            => array(
+								'type'    => 'number',
 								'default' => 1,
 							),
-							'mappingHeaders'=> array(
-								'type'   => 'array',
-								'default'=> '',
+							'mappingHeaders'            => array(
+								'type'    => 'array',
+								'default' => '',
 							),
-							// Color
-							'backgroundColor'=> array(
-								'type'=> "string",
-								'default'=> "#eee"
+							// Color.
+							'backgroundColor'           => array(
+								'type'    => 'string',
+								'default' => '#eee',
 							),
-							'linkColor'=> array(
-								'type'=> "string",
-								'default'=> "#333"
+							'linkColor'                 => array(
+								'type'    => 'string',
+								'default' => '#333',
 							),
-							'linkHoverColor'=> array(
-								'type'=> "string"
+							'linkHoverColor'            => array(
+								'type' => 'string',
 							),
-							'headingColor' => array(
-								'type'=> "string"
+							'headingColor'              => array(
+								'type' => 'string',
 							),
 
-							// Padding
-							'vPaddingDesktop' => array(
-								'type'=> "number",
-								'default'=> 30,
+							// Padding.
+							'vPaddingDesktop'           => array(
+								'type'    => 'number',
+								'default' => 30,
 							),
-							'hPaddingDesktop' => array(
-								'type'=> "number",
-								'default'=> 30,
+							'hPaddingDesktop'           => array(
+								'type'    => 'number',
+								'default' => 30,
 							),
-							'vPaddingTablet' => array(
-								'type'=> "number",
+							'vPaddingTablet'            => array(
+								'type' => 'number',
 							),
-							'hPaddingTablet' => array(
-								'type'=> "number",
+							'hPaddingTablet'            => array(
+								'type' => 'number',
 							),
-							'vPaddingMobile' => array(
-								'type'=> "number",
+							'vPaddingMobile'            => array(
+								'type' => 'number',
 							),
-							'hPaddingMobile' => array(
-								'type'=> "number",
+							'hPaddingMobile'            => array(
+								'type' => 'number',
 							),
-							// Margin
-							'vMarginDesktop' => array(
-								'type'=> "number",
+							// Margin.
+							'vMarginDesktop'            => array(
+								'type' => 'number',
 							),
-							'hMarginDesktop' => array(
-								'type'=> "number",
+							'hMarginDesktop'            => array(
+								'type' => 'number',
 							),
-							'vMarginTablet' => array(
-								'type'=> "number",
+							'vMarginTablet'             => array(
+								'type' => 'number',
 							),
-							'hMarginTablet' => array(
-								'type'=> "number",
+							'hMarginTablet'             => array(
+								'type' => 'number',
 							),
-							'vMarginMobile' => array(
-								'type'=> "number",
+							'vMarginMobile'             => array(
+								'type' => 'number',
 							),
-							'hMarginMobile' => array(
-								'type'=> "number",
+							'hMarginMobile'             => array(
+								'type' => 'number',
 							),
-							'marginTypeDesktop' => array(
-								'type'    => "string",
-								'default' => "px",
+							'marginTypeDesktop'         => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'marginTypeTablet' => array(
-								'type'    => "string",
-								'default' => "px",
+							'marginTypeTablet'          => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'marginTypeMobile' => array(
-								'type'    => "string",
-								'default' => "px",
+							'marginTypeMobile'          => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'headingBottom' => array(
-								'type'=> "number"
-							),	
-							'paddingTypeDesktop' => array(
-								'type'    => "string",
-								'default' => "px",
+							'headingBottom'             => array(
+								'type' => 'number',
 							),
-							'paddingTypeTablet' => array(
-								'type'    => "string",
-								'default' => "px",
+							'paddingTypeDesktop'        => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'paddingTypeMobile' => array(
-								'type'    => "string",
-								'default' => "px",
+							'paddingTypeTablet'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingTypeMobile'         => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
 
-							// Content Padding
-							'contentPaddingDesktop' => array(
-								'type'=> "number",
+							// Content Padding.
+							'contentPaddingDesktop'     => array(
+								'type' => 'number',
 							),
-							'contentPaddingTablet' => array(
-								'type'=> "number",
+							'contentPaddingTablet'      => array(
+								'type' => 'number',
 							),
-							'contentPaddingMobile' => array(
-								'type'=> "number",
-							),	
+							'contentPaddingMobile'      => array(
+								'type' => 'number',
+							),
 							'contentPaddingTypeDesktop' => array(
-								'type'    => "string",
-								'default' => "px",
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'contentPaddingTypeTablet' => array(
-								'type'    => "string",
-								'default' => "px",
+							'contentPaddingTypeTablet'  => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'contentPaddingTypeMobile' => array(
-								'type'    => "string",
-								'default' => "px",
-							),
-
-							// Border
-							'borderStyle' => array(
-								'type'=> "string",
-								'default'=> "solid"
-							),
-							'borderWidth' => array(
-								'type'=> "number",
-								'default'=> 1
-							),
-							'borderRadius' => array(
-								'type'=> "number"
-							),
-							'borderColor' => array(
-								'type'=> "string",
-								'default'=> "#333"
+							'contentPaddingTypeMobile'  => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
 
-
-							// Typography
-							// Link Font Family
-							'loadGoogleFonts'=> array(
-								'type'=> "boolean",
-								'default'=> false
+							// Border.
+							'borderStyle'               => array(
+								'type'    => 'string',
+								'default' => 'solid',
 							),
-							'fontFamily'=> array(
-								'type'=> "string",
-								'default'=> "Default",
+							'borderWidth'               => array(
+								'type'    => 'number',
+								'default' => 1,
 							),
-							'fontWeight'=> array(
-								'type'=> "string",
+							'borderRadius'              => array(
+								'type' => 'number',
 							),
-							'fontSubset'=> array(
-								'type'=> "string",
-							),
-							// Link Font Size
-							'fontSize'=> array(
-								'type'=> "number",
-							),
-							'fontSizeType'=> array(
-								'type'=> "string",
-								'default'=> "px"
-							),
-							'fontSizeTablet'=> array(
-								'type'=> "number",
-							),
-							'fontSizeMobile'=> array(
-								'type'=> "number",
-							),
-							// Link Line Height
-							'lineHeightType'=> array(
-								'type'=> "string",
-								'default'=> "em"
-							),
-							'lineHeight'=> array(
-								'type'=> "number",
-							),
-							'lineHeightTablet'=> array(
-								'type'=> "number",
-							),
-							'lineHeightMobile'=> array(
-								'type'=> "number",
+							'borderColor'               => array(
+								'type'    => 'string',
+								'default' => '#333',
 							),
 
-							// Link Font Family
-							'headingLoadGoogleFonts'=> array(
-								'type'=> "boolean",
-								'default'=> false
+							// Typography.
+							// Link Font Family.
+							'loadGoogleFonts'           => array(
+								'type'    => 'boolean',
+								'default' => false,
 							),
-							'headingFontFamily'=> array(
-								'type'=> "string",
-								'default'=> "Default",
+							'fontFamily'                => array(
+								'type'    => 'string',
+								'default' => 'Default',
 							),
-							'headingFontWeight'=> array(
-								'type'=> "string",
-								'default'=> "500"
+							'fontWeight'                => array(
+								'type' => 'string',
 							),
-							'headingFontSubset'=> array(
-								'type'=> "string",
+							'fontSubset'                => array(
+								'type' => 'string',
 							),
-							// Link Font Size
-							'headingFontSize'=> array(
-								'type'=> "number",
-								'default'=> 20
+							// Link Font Size.
+							'fontSize'                  => array(
+								'type' => 'number',
 							),
-							'headingFontSizeType'=> array(
-								'type'=> "string",
-								'default'=> "px"
+							'fontSizeType'              => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'headingFontSizeTablet'=> array(
-								'type'=> "number",
+							'fontSizeTablet'            => array(
+								'type' => 'number',
 							),
-							'headingFontSizeMobile'=> array(
-								'type'=> "number",
+							'fontSizeMobile'            => array(
+								'type' => 'number',
 							),
-							// Link Line Height
-							'headingLineHeightType'=> array(
-								'type'=> "string",
-								'default'=> "em"
+							// Link Line Height.
+							'lineHeightType'            => array(
+								'type'    => 'string',
+								'default' => 'em',
 							),
-							'headingLineHeight'=> array(
-								'type'=> "number",
+							'lineHeight'                => array(
+								'type' => 'number',
 							),
-							'headingLineHeightTablet'=> array(
-								'type'=> "number",
+							'lineHeightTablet'          => array(
+								'type' => 'number',
 							),
-							'headingLineHeightMobile'=> array(
-								'type'=> "number",
+							'lineHeightMobile'          => array(
+								'type' => 'number',
 							),
-							'headingAlignment'=> array(
-								'type'=> "string",
-								'default'=> "left"
+
+							// Link Font Family.
+							'headingLoadGoogleFonts'    => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'headingFontFamily'         => array(
+								'type'    => 'string',
+								'default' => 'Default',
+							),
+							'headingFontWeight'         => array(
+								'type'    => 'string',
+								'default' => '500',
+							),
+							'headingFontSubset'         => array(
+								'type' => 'string',
+							),
+							// Link Font Size.
+							'headingFontSize'           => array(
+								'type'    => 'number',
+								'default' => 20,
+							),
+							'headingFontSizeType'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'headingFontSizeTablet'     => array(
+								'type' => 'number',
+							),
+							'headingFontSizeMobile'     => array(
+								'type' => 'number',
+							),
+							// Link Line Height.
+							'headingLineHeightType'     => array(
+								'type'    => 'string',
+								'default' => 'em',
+							),
+							'headingLineHeight'         => array(
+								'type' => 'number',
+							),
+							'headingLineHeightTablet'   => array(
+								'type' => 'number',
+							),
+							'headingLineHeightMobile'   => array(
+								'type' => 'number',
+							),
+							'headingAlignment'          => array(
+								'type'    => 'string',
+								'default' => 'left',
 							),
 						)
 					),
 					'render_callback' => array( $this, 'uagb_render_table_of_contents_block' ),
 				)
 			);
-        }
+		}
 
-        /**
+		/**
 		 * Renders the Table of content block on server.
 		 *
 		 * @param array $attributes Array of block attributes.
@@ -380,117 +379,116 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 */
 		public function uagb_render_table_of_contents_block( $attributes ) {
-			$headings = [];
+			$headings = array();
 
 			global $post;
 
-			$blocks = parse_blocks($post->post_content);
-			$level = '';
+			$blocks         = parse_blocks( $post->post_content );
+			$level          = '';
 			$excludeheading = '';
-			
-			foreach ($blocks as $block) {
-				
-				if ($block['blockName'] == 'core/heading') {
-					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
-					$excludeheading = (isset($block['attrs']['className'])) ? $block['attrs']['className'] : '';
-					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+
+			foreach ( $blocks as $block ) {
+				$innercount = count( $block['innerBlocks'] );
+
+				if ( 'core/heading' === $block['blockName'] ) {
+					$level          = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;  // h2 as default.
+					$excludeheading = ( isset( $block['attrs']['className'] ) ) ? $block['attrs']['className'] : '';
+					$headings[]     = array(
+						'title'          => wp_strip_all_tags( $block['innerHTML'] ),
+						'level'          => $level,
+						'excludeheading' => $excludeheading,
+					);
 				}
-				if ($block['blockName'] == 'uagb/advanced-heading') {
-					$level = (isset($block['attrs']['level'])) ? $block['attrs']['level'] : 2;  // h2 as default
-					$excludeheading = (isset($block['attrs']['className'])) ? $block['attrs']['className'] : '';
-					$headings[] = ['title' => wp_strip_all_tags($block['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
+					$level          = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;  // h2 as default.
+					$excludeheading = ( isset( $block['attrs']['className'] ) ) ? $block['attrs']['className'] : '';
+					$headings[]     = array(
+						'title'          => wp_strip_all_tags( $block['innerHTML'] ),
+						'level'          => $level,
+						'excludeheading' => $excludeheading,
+					);
 				}
-				if ($block['blockName'] == 'uagb/columns' || $block['blockName'] == 'core/columns' ) {
-					for($i=0;$i<count($block['innerBlocks']);$i++){
-						if ($block['innerBlocks'][$i]['innerBlocks'][0]['blockName'] == 'core/heading') {
-							$level = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default
-					    	$excludeheading = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'] : '';
-					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerBlocks'][0]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+				if ( 'uagb/columns' === $block['blockName'] || 'core/columns' === $block['blockName'] ) {
+					for ( $i = 0;$i < $innercount;$i++ ) {
+						if ( 'core/heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
+							$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
+							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
+							$headings[]     = array(
+								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
+								'level'          => $level,
+								'excludeheading' => $excludeheading,
+							);
 						}
-						if ($block['innerBlocks'][$i]['innerBlocks'][0]['blockName'] == 'uagb/advanced-heading') {
-							$level = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default
-					    	$excludeheading = (isset($block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'])) ? $block['innerBlocks'][$i]['innerBlocks'][0]['attrs']['className'] : '';
-					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerBlocks'][0]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						if ( 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
+							$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
+							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
+							$headings[]     = array(
+								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
+								'level'          => $level,
+								'excludeheading' => $excludeheading,
+							);
 						}
 					}
 				}
-				if ($block['blockName'] == 'uagb/section') {
-					for($i=0;$i<count($block['innerBlocks']);$i++){
-						if ($block['innerBlocks'][$i]['blockName'] == 'core/heading') {
-							$level = (isset($block['innerBlocks'][$i]['attrs']['level'])) ? $block['innerBlocks'][$i]['attrs']['level'] : 2;  // h2 as default
-					    	$excludeheading = (isset($block['innerBlocks'][$i]['attrs']['className'])) ? $block['innerBlocks'][$i]['attrs']['className'] : '';
-					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+				if ( 'uagb/section' === $block['blockName'] ) {
+					for ( $i = 0;$i < $innercount;$i++ ) {
+						if ( 'core/heading' === $block['innerBlocks'][ $i ]['blockName'] ) {
+							$level          = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
+							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['className'] : '';
+							$headings[]     = array(
+								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerHTML'] ),
+								'level'          => $level,
+								'excludeheading' => $excludeheading,
+							);
 						}
-						if ($block['innerBlocks'][$i]['blockName'] == 'uagb/advanced-heading') {
-							$level = (isset($block['innerBlocks'][$i]['attrs']['level'])) ? $block['innerBlocks'][$i]['attrs']['level'] : 2;  // h2 as default
-					    	$excludeheading = (isset($block['innerBlocks'][$i]['attrs']['className'])) ? $block['innerBlocks'][$i]['attrs']['className'] : '';
-					    	$headings[] = ['title' => wp_strip_all_tags($block['innerBlocks'][$i]['innerHTML']), 'level' => $level, 'excludeheading' => $excludeheading];
+						if ( 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['blockName'] ) {
+							$level          = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
+							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['className'] : '';
+							$headings[]     = array(
+								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerHTML'] ),
+								'level'          => $level,
+								'excludeheading' => $excludeheading,
+							);
 						}
 					}
 				}
-			}	
+			}
 
-			// print_r($headings);
-
-			// $headings = $this->filter_array($headings);
-			
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
 				'uagb-toc__align-' . $attributes['align'],
 				'uagb-toc__columns-' . $attributes['tColumnsDesktop'],
-				( isset( $attributes['initialCollapse'] ) ) ? `uagb-toc__collapse` : ``,
+				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
 				'uagb-block-' . $attributes['block_id'],
 			);
-			
+
 			ob_start();
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
-					data-scroll= <?php echo $attributes['smoothScroll'] ?>
-					data-offset= <?php echo $attributes['smoothScrollOffset'] ?>
-					data-delay= <?php echo $attributes['smoothScrollDelay'] ?>
+					data-scroll= <?php echo esc_attr( $attributes['smoothScroll'] ); ?>
+					data-offset= <?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>
+					data-delay= <?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>
 				>
 				<div class="uagb-toc__wrap">
 					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-						   <?php echo esc_html( $attributes['heading'] ); ?>
+						<?php echo esc_html( $attributes['heading'] ); ?>
 						</div>
-						<?php 
-						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) { 
-							?> <span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span><?php
+						<?php
+						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+							?>
+							<span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+							<?php
 						}
 						?>
 					</div>
-					<?php if( $headings ){ ?>
+					<?php if ( $headings ) { ?>
 						<div class="uagb-toc__list-wrap">
-							<ul class="uagb-toc__list">
-								<?php foreach ( $headings as $link ) { 
-										if( 'uagb-toc-hide-heading' !== $link['excludeheading'] ){
-									?>
-									<?php if( $link['level'] === 1 || $link['level'] === 2 ) { ?>
-										<li>
-											<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
-										</li>
-									<?php } else{ ?>
-										<ul class="uagb-toc__list">
-											<?php if( $link['level'] === 3 ) { ?>
-												<li>
-													<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
-												</li>
-											<?php } else{ ?>
-												<ul class="uagb-toc__list">
-												   <li>
-													<a href='#<?php echo strtolower($this->remove_special_char($link['title'])); ?>'><?php echo $link['title']; ?></a>
-												   </li>
-												</ul>
-											<?php } ?>
-										</ul>
-										<?php } ?>
-								<?php } } ?>	
-							</ul>
+						<?php $this->filter_array( $headings ); ?>
 						</div>
-					<?php } else{ ?>
+					<?php } else { ?>
 						<p class="uagb_table-of-contents-placeholder">
-							<?php echo __('Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
 					<?php } ?>
 				</div>
@@ -498,47 +496,96 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			<?php
 				return ob_get_clean();
 		}
-	
-		public function filter_array( $headers ){
-			$arrays = [];
-				foreach ( $headers as $index ) {
-					$index['level'] = 0;
-					
-					for ( $i = count($headers) - 1; $i >= 0; $i-- ) {
-						$currentOrderedItem = $headers[$i];
-						
-						if ( $currentOrderedItem['level'] <= $index['level'] ) {
-							$index['level'] = $currentOrderedItem['level'];
-	
-							if ( $currentOrderedItem['level'] < $index['level'] ) {
-								$index['level']++;
-							}
-							break;
-						}
+
+		/**
+		 * Filter Heading array
+		 *
+		 * @param  array $filteredHeaders variable.
+		 *
+		 * @since x.x.x
+		 */
+		public function filter_array( $filteredHeaders ) {
+			$sortedHeaders = array();
+
+			foreach ( $filteredHeaders as $elem ) {
+
+				$elem['title'] = trim( preg_replace( '/(<.+?>)/', '', $elem['title'] ) );
+				$last          = count( $sortedHeaders ) - 1;
+				$count         = count( $sortedHeaders );
+
+				if ( count( $sortedHeaders ) === 0 || $sortedHeaders[ $last ][0]['level'] < $elem['level'] ) {
+					array_push( $sortedHeaders, array( $elem ) );
+				} elseif ( $sortedHeaders[ $last ][0]['level'] === $elem['level'] ) {
+					array_push( $sortedHeaders[ $last ], $elem );
+				} else {
+					while ( $sortedHeaders[ $last ][0]['level'] > $elem['level'] && $count > 1 ) {
+						array_push( $sortedHeaders[ count( $sortedHeaders ) - 2 ], array_pop( $sortedHeaders ) );
+						$last = count( $sortedHeaders ) - 1;
 					}
+					if ( $sortedHeaders[ $last ][0]['level'] === $elem['level'] ) {
+						array_push( $sortedHeaders[ $last ], $elem );
+					}
+				}
 			}
-			// var_dump($headers);
-			return $headers;
+
+			if ( count( $sortedHeaders ) > 0 ) {
+				foreach ( $sortedHeaders[0] as $key => $item ) {
+					$listItems = $this->header_list_item( $key, $item );
+				}
+			}
+
+			echo wp_kses_post( $listItems );
 		}
 
-	/**
-	 * Remove special char.
-	 *
-	 * @param array $string string variable.
-	 *
-	 * @since x.x.x
-	 */
-	public function remove_special_char($string){
+		/**
+		 * Header List Item
+		 *
+		 * @param  mixed $num variable.
+		 * @param  array $item variable.
+		 *
+		 * @since x.x.x
+		 */
+		public function header_list_item( $num, $item ) {
+			static $outputString = '';
+			if ( 0 === $num && '' !== $outputString ) {
+				$outputString = '';
+			}
+			if ( isset( $item['level'] ) ) {
+				$outputString .= '<li><a href=#' . strtolower( trim( $this->remove_special_char( $item['title'] ) ) ) . '>' . $item['title'] . '</a></li>';
+			} else {
+				$openingTag = '<ul class="uagb-toc__list">';
 
-		$string = preg_replace('/[^A-Za-z0-9]/s',' ', trim($string));
-		$string = preg_replace( '/\|/s', '', trim($string));
-		$string = str_replace( array('nbsp','amp'), '', trim($string));
-		
-		// return $string;
-		return preg_replace('/\s+/', '-', trim($string)); // Removes spaces.
+				$outputString = substr_replace(
+					$outputString,
+					$openingTag,
+					strrpos( $outputString, '</li>' ),
+					strlen( '</li>' )
+				);
 
-	}
-           
+				foreach ( $item as $key => $subItem ) {
+					$this->header_list_item( $key + 1, $subItem );
+				}
+				$outputString .= ( '</ul>' ) . '</li>';
+			}
+			return $outputString;
+		}
+
+		/**
+		 * Remove special char.
+		 *
+		 * @param array $string string variable.
+		 *
+		 * @since x.x.x
+		 */
+		public function remove_special_char( $string ) {
+
+			$string = preg_replace( '/[^A-Za-z0-9]/s', ' ', trim( $string ) );
+			$string = preg_replace( '/\|/s', '', trim( $string ) );
+			$string = str_replace( array( 'nbsp', 'amp' ), '', trim( $string ) );
+			return preg_replace( '/\s+/', '-', trim( $string ) ); // Removes spaces.
+
+		}
+
 	}
 
 	/**

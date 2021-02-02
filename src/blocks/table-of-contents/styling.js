@@ -87,7 +87,7 @@ function styling( props ) {
 	var alignment = ( headingAlignment == "left" ) ? "flex-start" : ( ( headingAlignment == "right" ) ? "flex-end" : "center" )
 
 	selectors = {
-		" .uagb-toc__list-wrap ul li a" : {
+		" .uagb-toc__list-wrap li a" : {
 			"font-size" : generateCSSUnit( fontSize, fontSizeType ),
 			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
 			"font-family": fontFamily,
@@ -105,7 +105,7 @@ function styling( props ) {
 			"font-weight": headingFontWeight,
 			"color": headingColor,
 		},
-		" .uagb-toc__list-wrap ul li a:hover" : {
+		" .uagb-toc__list-wrap li a:hover" : {
 			"color": linkHoverColor,
 		},
 		" .uagb-toc__wrap" : {
@@ -164,7 +164,7 @@ function styling( props ) {
 	}
 
 	tablet_selectors = {
-		" .uagb-toc__list-wrap ul li a" : {
+		" .uagb-toc__list-wrap li a" : {
 			"font-size": generateCSSUnit( fontSizeTablet, fontSizeType ),
 			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
 		},
@@ -197,7 +197,7 @@ function styling( props ) {
 	}
 
 	mobile_selectors = {
-		" .uagb-toc__list-wrap ul li a" : {
+		" .uagb-toc__list-wrap li a" : {
 			"font-size": generateCSSUnit( fontSizeMobile, fontSizeType ),
 			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
 		},
