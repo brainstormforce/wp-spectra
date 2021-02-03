@@ -34,13 +34,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$selectors = array(
-				' ' . $attr['headingTag'] . '.uagb-rating-title' => array(
+				' .uagb_review_block .uagb-rating-title' => array(
 					'color' => $attr['titleColor'],
 				),
-				' p.uagb-rating-desc'   => array(
+				' .uagb_review_block .uagb-rating-desc'   => array(
 					'color' => $attr['descColor'],
 				),
-				' p.uagb-rating-author' => array(
+				' .uagb_review_block .uagb-rating-author' => array(
 					'color' => $attr['authorColor'],
 				),
 				' .uagb_review_entry'   => array(
@@ -113,12 +113,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				' ' . $attr['headingTag'] . '.uagb-notice-title' => array(
-					'color'          => $attr['titleColor'],
+				' .uagb-notice-title' => array(
 					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
 					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+				),
+				'.uagb-inline_notice__outer-wrap .uagb-notice-title' => array(
+					'color'          => $attr['titleColor'],
 				),
 				' .uagb-notice-text'            => array(
 					'color'          => $attr['textColor'],
