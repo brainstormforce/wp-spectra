@@ -836,7 +836,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 
 			$selectors = array(
-				' ' . $attr['headingTag'] . '.uagb-heading-text' => array(
+				'.wp-block-uagb-advanced-heading .uagb-heading-text'   => array(
 					'text-align'    => $attr['headingAlign'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
@@ -844,7 +844,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
 				),
-				' p.uagb-desc-text'     => array(
+				'.wp-block-uagb-advanced-heading .uagb-desc-text'     => array(
 					'text-align' => $attr['headingAlign'],
 					'color'      => $attr['subHeadingColor'],
 				),
@@ -1208,12 +1208,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				// Title Style.
 
-				' ' . $attr['headingTag'] . '.uagb-ifb-title' => array(
+				' .uagb-ifb-title-wrap .uagb-ifb-title' => array(
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . 'px',
 				),
 				// Description Style.
-				' p.uagb-ifb-desc'             => array(
+				' .uagb-ifb-text-wrap .uagb-ifb-desc'             => array(
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['subHeadSpace'], 'px' ),
 				),
@@ -2383,7 +2383,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
 
 			$selectors = array(
-				' ' . $attr['headingTag'] . '.uagb-timeline__heading' => array(
+				' .uagb-timeline-content .uagb-timeline__heading' => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
@@ -2396,7 +2396,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading-text'     => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' p.uagb-timeline-desc-content'     => array(
+				' .uagb-timeline-content .uagb-timeline-desc-content'     => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
@@ -2585,7 +2585,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['ctaColor'],
 					'background-color' => $attr['ctaBackground'],
 				),
-				' ' . $attr['headingTag'] . '.uagb-timeline__heading a' => array(
+				' .uagb-timeline-content .uagb-timeline__heading a' => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
@@ -2711,7 +2711,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 				),
-				' ' . $attr['headingTag'] . '.uagb-rm__title' => array(
+				' .uagb-rm-details .uagb-rm__title' => array(
 					'color'         => $attr['titleColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 				),

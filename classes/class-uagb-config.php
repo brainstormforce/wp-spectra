@@ -49,7 +49,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'headingAlign'            => 'center',
-							'headingTag'              => 'h2',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'separatorColor'          => '',
@@ -559,7 +558,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'align'                   => 'center',
-							'headingTag'              => 'h4',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'separatorBg'             => '#eee',
@@ -631,7 +629,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(
 							'align'             => 'center',
-							'headingTag'        => 'h2',
 							'headingColor'      => '',
 							'subHeadingColor'   => '',
 							'backgroundColor'   => '#eee',
@@ -953,7 +950,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'showEstcostcolor'        => '',
 							'showTotaltimecolor'      => '',
 							'subHeadingColor'         => '',
-							'headingTag'              => 'h3',
 							'headSpace'               => 15,
 							'headFontFamily'          => 'Default',
 							'headFontWeight'          => '',
@@ -1081,7 +1077,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'classMigrate'            => false,
 							'inheritFromTheme'        => false,
 							'headingAlign'            => 'center',
-							'headingTag'              => 'h3',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'prefixColor'             => '',
@@ -1186,7 +1181,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'noticeColor'           => '#FFD54F',
 							'contentBgColor'        => '',
 							'fontSize'              => '14',
-							'headingTag'            => 'h4',
 							'icon'                  => 'fa fa-window-close',
 							'noticeDismiss'         => '',
 							'noticeDismissColor'    => '',
@@ -1727,7 +1721,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-timeline-js' ),
 						'attributes'  => array(
 							'align'                   => 'center',
-							'headingTag'              => 'h2',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
 							'separatorBg'             => '#eee',
@@ -1829,7 +1822,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'          => false,
 							'block_id'              => '',
-							'headingTag'            => 'h4',
 							'headingAlign'          => 'left',
 							'descColor'             => '#333',
 							'priceColor'            => '#888888',
@@ -1936,7 +1928,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'rTitle'                  => '',
 							'rContent'                => '',
 							'rAuthor'                 => '',
-							'headingTag'              => 'h3',
+							'headingTag'              => '',
 							'mainimage'               => '',
 							'imgSize'                 => '',
 							'showFeature'             => '',
@@ -1998,7 +1990,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'     => false,
 							'childMigrate'     => false,
-							'headingTag'       => 'h4',
 							'block_id'         => '',
 							'headingAlign'     => 'left',
 							'imagePosition'    => 'top',
@@ -2222,7 +2213,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingBottom'             => '',
 							'backgroundColor'           => '#eee',
 							'linkHoverColor'            => '',
-							'headingTag'                => 'h2',
 							'headingColor'              => '',
 							'borderStyle'               => 'solid',
 							'borderWidth'               => 1,
