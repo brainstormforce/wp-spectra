@@ -1,11 +1,9 @@
 import classnames from "classnames"
 import Masonry from "react-masonry-component"
-import FeaturedImage from ".././components/FeaturedImage"
-import Title from ".././components/Title"
-import Meta from ".././components/Meta"
-import Excerpt from ".././components/Excerpt"
-import Button from ".././components/Button"
-
+import {
+	InnerBlockLayoutContextProvider,
+	renderPostLayout 
+} from '.././function';
 class Blog extends React.Component {
 
 	render() {
@@ -20,7 +18,8 @@ class Blog extends React.Component {
 			postsToShow,
 			paginationEventType,
 			buttonText,
-			paginationType
+			paginationType,
+			layoutConfig
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -76,20 +75,23 @@ class Blog extends React.Component {
 						"uagb-post__items"
 					) }
 				>
+					<InnerBlockLayoutContextProvider
+						parentName="uagb/post-masonry"
+						parentClassName="uagb-block-grid">
 					{ displayPosts.map( ( post, i ) =>
 						<article key={ i }>
 							<div className="uagb-post__inner-wrap">
-								<FeaturedImage post={post} attributes={attributes} />
-
-								<div className="uagb-post__text">
-									<Title post={post} attributes={attributes} />
-									<Meta post={post} attributes={attributes} categoriesList={categoriesList} />
-									<Excerpt post={post} attributes={attributes} />
-									<Button post={post} attributes={attributes} />
-								</div>
+								{ renderPostLayout(
+									"uagb/post-masonry",
+									post,
+									layoutConfig,
+									this.props.attributes,
+									this.props.categoriesList
+								) }
 							</div>
 						</article>
 					) }
+					</InnerBlockLayoutContextProvider>
 				</Masonry>
 				{ paginationRender() }
 			</div>

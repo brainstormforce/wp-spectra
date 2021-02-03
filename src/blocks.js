@@ -39,6 +39,8 @@ import "./blocks/inline-notice/block.js"
 import "./blocks/wp-search/block.js"
 import "./blocks/review/block.js"
 import "./blocks/taxonomy-list/block.js"
+import "./blocks/lottie/block.js"
+
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 
 const { updateCategory } = wp.blocks
