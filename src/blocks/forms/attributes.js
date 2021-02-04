@@ -67,6 +67,10 @@ const attributes = {
 		type: "string",
 		default:"#000000"
 	},
+	buttonSize : {
+		type: "string",
+		default: 'medium'
+	},
 	// Border
 	submitborderStyle : {
 		type: "string",
@@ -89,11 +93,9 @@ const attributes = {
 	},
 	hPaddingSubmit : {
 		type: "number",
-		default: 20
 	},
 	vPaddingSubmit : {
 		type: "number",
-		default: 10
 	},
 	// Typography
 	// Submit text Font Family
@@ -347,6 +349,14 @@ const attributes = {
 	successMessageBorderColor : {
 		type: "string",
 		default:"green",
+	},
+	successMessageBorderStyle :{
+		type: "string",
+		default:"solid",
+	},
+	successMessageBorderWidth:{
+		type: "string",
+		default:"2",
 	},
 	failedMessageTextColor : {
 		type: "string",

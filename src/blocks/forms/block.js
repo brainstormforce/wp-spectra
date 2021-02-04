@@ -20,7 +20,7 @@ const {
 registerBlockType( "uagb/forms", {
 	title: uagb_blocks_info.blocks["uagb/forms"]["title"],
 	description: uagb_blocks_info.blocks["uagb/forms"]["description"],
-	icon: UAGB_Block_Icons.faq,
+	icon: UAGB_Block_Icons.forms,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "forms" ),

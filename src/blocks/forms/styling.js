@@ -144,6 +144,15 @@ function styling( props ) {
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
         }
+        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
+            'color' : inputColor
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap > label"] = {
+            'color' : inputColor
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap > label"] = {
+            'color' : inputColor
+        }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
             'border-color' : inputborderHoverColor,            
         }
@@ -157,6 +166,15 @@ function styling( props ) {
             'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
+            'color' : inputColor
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap > label"] = {
+            'color' : inputColor
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap > label"] = {
+            'color' : inputColor
         }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
             'border-color' : inputborderHoverColor,            

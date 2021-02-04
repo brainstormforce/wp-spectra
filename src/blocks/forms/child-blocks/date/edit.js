@@ -83,7 +83,7 @@ class UAGBFormsDateEdit extends Component {
 		var end = Date.parse(validation_max_value);
 
 		if (start > end) {
-			invalidDateErrorMsg = <p className="uagb-forms-date-invalidate">Invalid Date Range selected</p>			
+			invalidDateErrorMsg = <p className="uagb-forms-date-invalidate">Invalid date range selected</p>			
 		}
 
 		

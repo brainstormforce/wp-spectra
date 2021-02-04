@@ -118,6 +118,7 @@ class UAGBFormsEdit extends Component {
 			submitButtonText,
 			formLabel,
 			buttonAlign,
+			buttonSize,
 			confirmationType,
 			confirmationMessage,
 			failedMessage,
@@ -206,8 +207,12 @@ class UAGBFormsEdit extends Component {
 			successMessageTextColor,
 			successMessageBGColor,
 			successMessageBorderColor,
+			successMessageBorderStyle,
+			successMessageBorderWidth,
 			failedMessageTextColor,
 			failedMessageBorderColor,
+			failedMessageBorderStyle,
+			failedMessageBorderWidth,
 			failedMessageBGColor,
         } = attributes
 
@@ -270,7 +275,7 @@ class UAGBFormsEdit extends Component {
 					className="uagb__url-panel-body"
 				>
 					<TextControl
-						label= { __( "Form Label" ) }
+						label= { __( "Hidden Field Label" ) }
 						value= { formLabel }
 						onChange={ value => setAttributes( { formLabel: value } ) }
 					/>
@@ -343,7 +348,7 @@ class UAGBFormsEdit extends Component {
 								initialOpen={ false }
 								className="uagb__url-panel-body"
 							>
-								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageTextColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ Color: successMessageTextColor }} ></span></span></p>
 								<ColorPalette
 									value={ successMessageTextColor }
 									onChange={ ( colorValue ) => setAttributes( { successMessageTextColor: colorValue } ) }
@@ -355,12 +360,37 @@ class UAGBFormsEdit extends Component {
 									onChange={ ( colorValue ) => setAttributes( { successMessageBGColor: colorValue } ) }
 									allowReset
 								/>
+								<SelectControl
+									label={ __( "Border Style" ) }
+									value={ successMessageBorderStyle }
+									onChange={ ( value ) => setAttributes( { successMessageBorderStyle: value } ) }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "solid", label: __( "Solid" ) },
+										{ value: "dotted", label: __( "Dotted" ) },
+										{ value: "dashed", label: __( "Dashed" ) },
+										{ value: "double", label: __( "Double" ) },
+										{ value: "groove", label: __( "Groove" ) },
+										{ value: "inset", label: __( "Inset" ) },
+										{ value: "outset", label: __( "Outset" ) },
+										{ value: "ridge", label: __( "Ridge" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Border Width" ) }
+									value={ successMessageBorderWidth }
+									onChange={ ( value ) => setAttributes( { successMessageBorderWidth: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
 								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: successMessageBorderColor }} ></span></span></p>
 								<ColorPalette
 									value={ successMessageBorderColor }
 									onChange={ ( colorValue ) => setAttributes( { successMessageBorderColor: colorValue } ) }
 									allowReset
 								/>
+
 							</PanelBody>
 							<TextareaControl
 								label="Failed Message"
@@ -391,6 +421,30 @@ class UAGBFormsEdit extends Component {
 									onChange={ ( colorValue ) => setAttributes( { failedMessageBorderColor: colorValue } ) }
 									allowReset
 								/>
+								<SelectControl
+									label={ __( "Border Style" ) }
+									value={ failedMessageBorderStyle }
+									onChange={ ( value ) => setAttributes( { failedMessageBorderStyle: value } ) }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "solid", label: __( "Solid" ) },
+										{ value: "dotted", label: __( "Dotted" ) },
+										{ value: "dashed", label: __( "Dashed" ) },
+										{ value: "double", label: __( "Double" ) },
+										{ value: "groove", label: __( "Groove" ) },
+										{ value: "inset", label: __( "Inset" ) },
+										{ value: "outset", label: __( "Outset" ) },
+										{ value: "ridge", label: __( "Ridge" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Border Width" ) }
+									value={ failedMessageBorderWidth }
+									onChange={ ( value ) => setAttributes( { failedMessageBorderWidth: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
 							</PanelBody>
 						</Fragment>
 					}
@@ -416,6 +470,18 @@ class UAGBFormsEdit extends Component {
 					className="uagb__url-panel-body"
 				>
 					<Fragment>
+						<SelectControl
+							label={ __( "Button Size" ) }
+							value={ buttonSize }
+							onChange={ ( value ) => setAttributes( { buttonSize: value } ) }
+							options={ [
+								{ value: "small", label: __( "Small" ) },
+								{ value: "medium", label: __( "Medium" ) },
+								{ value: "large", label: __( "Large" ) },
+								{ value: "extralarge", label: __( "Extra Large" ) },
+								{ value: "full", label: __( "Full" ) },
+							] }
+						/>
 						<h2> { __( "Button Alignment" ) }</h2>
 						<Button
 							key={ "left" }
@@ -934,6 +1000,7 @@ class UAGBFormsEdit extends Component {
 				<div className={ classnames(
 					"uagb-forms__outer-wrap",
 					`uagb-block-${ block_id }`,
+					`uagb-forms__${buttonSize}-btn`
 				) }
 				>
 					<form className="uagb-forms-main-form" name={ `uagb-form-${ block_id }` }>

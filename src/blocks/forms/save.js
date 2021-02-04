@@ -27,7 +27,8 @@ export default function save( props ) {
 		reCaptchaSiteKeyV2,
 		reCaptchaSecretKeyV2,	
 		reCaptchaSiteKeyV3,
-		reCaptchaSecretKeyV3,	
+		reCaptchaSecretKeyV3,
+		buttonSize	
 	} = attributes
 
 	const renderButtonHtml = () => {
@@ -49,6 +50,7 @@ export default function save( props ) {
 		<div className={ classnames(
 			"uagb-forms__outer-wrap",
 			`uagb-block-${ block_id }`,
+			`uagb-forms__${buttonSize}-btn`
 		) }
 		>
 			<form className="uagb-forms-main-form" method="post" name={ `uagb-form-${ block_id }` } >			

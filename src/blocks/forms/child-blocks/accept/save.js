@@ -35,7 +35,7 @@ export default function save( props ) {
 					<a href={ link } target={target} rel="noopener noreferrer" > { linkLabel }  </a>		
 				</div>
 			)}
-			<input type="checkbox"  name={ block_id } required={ acceptRequired }  value="Agree" />			
+			<input type="checkbox"  name={ block_id } required={ acceptRequired }  value="Agree" className="uagb-forms-input"/>			
 			<label name={ block_id } for={`uagb-forms-accept-${block_id}`} className={`uagb-forms-accept-label ${isRequired}`} id={ block_id }>{ acceptText }</label><br></br>
 		</div>
 	)

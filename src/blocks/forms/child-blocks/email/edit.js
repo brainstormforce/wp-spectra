@@ -109,7 +109,7 @@ class UAGBFormsEmailEdit extends Component {
 							multiline={ false }
 							id={ block_id }
 					/>
-					<input type="email" className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required } name={ block_id }/>
+					<input type="text" className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required } name={ block_id }/>
 				</div>
 			</Fragment>
 		)
