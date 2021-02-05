@@ -473,9 +473,9 @@ function styling( props ) {
 
 	styling_css = generateCSS( selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }` )
 
-	styling_css += generateCSS( tablet_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	return styling_css
 }
