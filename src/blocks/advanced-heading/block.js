@@ -55,7 +55,7 @@ registerBlockType( "uagb/advanced-heading", {
 			{
 				type: 'block',
 				blocks: ['core/quote'],
-				transform: (attributes) => {
+				transform: (attributes) => { 
 					return createBlock('uagb/advanced-heading', {
 						headingTitle: attributes.value,
 						headingDesc: attributes.citation,
@@ -79,9 +79,9 @@ registerBlockType( "uagb/advanced-heading", {
 			{
 				type: 'block',
 				blocks: ['core/quote'],
-				transform: (attributes) => {
+				transform: (attributes) => { 
 					return createBlock('core/quote', {
-						value: attributes.headingTitle,
+						value: `<p>${ attributes.headingTitle }</p>`,
 						citation: attributes.headingDesc,
 						className:'uagb-heading-text'
 					})

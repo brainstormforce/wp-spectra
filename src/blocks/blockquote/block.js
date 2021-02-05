@@ -79,7 +79,7 @@ registerBlockType( "uagb/blockquote", {
 				blocks: ['core/quote'],
 				transform: (attributes) => {
 					return createBlock('core/quote', {
-						value : attributes.descriptionText,
+						value : `<p>${ attributes.descriptionText }</p>`,
 						citation: attributes.author,
 						align: attributes.align
 					})
