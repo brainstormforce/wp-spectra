@@ -1,10 +1,7 @@
 import truncate from "lodash/truncate"
 
-class Excerpt extends React.Component {
-
-	render() {
-
-		const { post, attributes } = this.props
+export const PostExcerpt = (props) =>  {
+		const { post, attributes } = props
 
 		if ( post.uagb_excerpt == undefined ) {
 			return null
@@ -27,19 +24,21 @@ class Excerpt extends React.Component {
 		if ( attributes.displayPostExcerpt && attributes.displayPostContentRadio == "excerpt" ) {
 
 			return (
-
-				<div className='uagb-post__excerpt'>
-					<div dangerouslySetInnerHTML={ { __html: excerpt } } />
+				<div className='uagb-post__text'> 
+					<div className='uagb-post__excerpt'>
+						<div dangerouslySetInnerHTML={ { __html: excerpt } } />
+					</div>
 				</div>
 			)
 
 		}else if(attributes.displayPostExcerpt && attributes.displayPostContentRadio == "full_post" ){
 			
 			return (
-
-				<div className='uagb-post__excerpt uagb-full_post'>
-						<div dangerouslySetInnerHTML={ { __html: post.content.raw.trim() } } />
-						
+				<div className='uagb-post__text'> 
+					<div className='uagb-post__excerpt uagb-full_post'>
+							<div dangerouslySetInnerHTML={ { __html: post.content.raw.trim() } } />
+							
+					</div>
 				</div>
 			)
 		
@@ -48,6 +47,5 @@ class Excerpt extends React.Component {
 			return null
 		}
 	}
-}
 
-export default Excerpt
+

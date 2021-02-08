@@ -478,6 +478,9 @@ class UAGB_Init_Blocks {
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 				'uagb_home_url'     => home_url(),
 				'user_role'         => $this->get_user_role(),
+				'uagb_url'          => UAGB_URL,
+				'uagb_mime_type'    => UAGB_Helper::get_mime_type(),
+				'uagb_site_url'     => UAGB_URI,
 			)
 		);
 	} // End function editor_assets().
