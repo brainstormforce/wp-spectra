@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/forms-radio", {
 	title: uagb_blocks_info.blocks["uagb/forms-radio"]["title"],
 	description: uagb_blocks_info.blocks["uagb/forms-radio"]["description"],
-	icon: UAGB_Block_Icons.faq,
+	icon: UAGB_Block_Icons.radio,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/forms" ],
 	attributes,

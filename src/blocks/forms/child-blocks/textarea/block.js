@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/forms-textarea", {
 	title: uagb_blocks_info.blocks["uagb/forms-textarea"]["title"],
 	description: uagb_blocks_info.blocks["uagb/forms-textarea"]["description"],
-	icon: UAGB_Block_Icons.faq,
+	icon: UAGB_Block_Icons.textarea,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/forms" ],
 	attributes,

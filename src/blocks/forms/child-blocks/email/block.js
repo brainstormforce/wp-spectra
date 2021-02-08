@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/forms-email", {
 	title: uagb_blocks_info.blocks["uagb/forms-email"]["title"],
 	description: uagb_blocks_info.blocks["uagb/forms-email"]["description"],
-	icon: UAGB_Block_Icons.faq,
+	icon: UAGB_Block_Icons.email,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/forms" ],
 	attributes,

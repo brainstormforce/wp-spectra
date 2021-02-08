@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/forms-accept", {
 	title: uagb_blocks_info.blocks["uagb/forms-accept"]["title"],
 	description: uagb_blocks_info.blocks["uagb/forms-accept"]["description"],
-	icon: UAGB_Block_Icons.faq,
+	icon: UAGB_Block_Icons.accept,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/forms" ],
 	attributes,
