@@ -9,6 +9,7 @@ import RestMenuStyle from "./inline-styles"
 import times from "lodash/times"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import memoize from "memize"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 
 // Import all of our Text Options requirements.
@@ -143,7 +144,7 @@ class UAGBRestaurantMenu extends Component {
 	
 	render() {
 		
-		const { className, setAttributes, attributes } = this.props
+		const { className, setAttributes, attributes, deviceType  } = this.props
 		
 		// Setup the attributes.
 		const {
@@ -587,65 +588,40 @@ class UAGBRestaurantMenu extends Component {
 									const inspect_control = (
 										<InspectorControls>
 										<PanelBody	title={ __( "General" ) } initialOpen={ true }	>
-										
-										<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-										tabs={ [
-											{
-												name: "desktop",
-												title: <Dashicon icon="desktop" />,
-												className: "uagb-desktop-tab uagb-responsive-tabs",
-											},
-											{
-												name: "tablet",
-												title: <Dashicon icon="tablet" />,
-												className: "uagb-tablet-tab uagb-responsive-tabs",
-											},
-											{
-												name: "mobile",
-												title: <Dashicon icon="smartphone" />,
-												className: "uagb-mobile-tab uagb-responsive-tabs",
-											},
-										] }>
-										{
-											( tab ) => {
-												let tabout
-												
-												if ( "mobile" === tab.name ) {
-													tabout = (
+										<Columnresponsive/>
+													{ "Desktop" === deviceType && (
+														<Fragment>
 														<RangeControl
-														label={ __( "Columns" ) }
-														value={ mcolumns }
-														onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-														min={ 1 }
-														max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-														/>
-														)
-													} else if ( "tablet" === tab.name ) {
-														tabout = (
-															<RangeControl
+															label={ __( "Columns" ) }
+															value={ columns }
+															onChange={this.setcolumns }
+															min={ 1 }
+															max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+															/>
+														</Fragment>
+													)}
+													{ "Tablet" === deviceType && (
+														<Fragment>
+														<RangeControl
 															label={ __( "Columns" ) }
 															value={ tcolumns }
 															onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 															min={ 1 }
 															max={ Math.min( MAX_COLUMNS, menu_item_count ) }
 															/>
-															)
-														} else {
-															tabout = (
-																<RangeControl
+														</Fragment>
+													)}
+													{ "Mobile" === deviceType && (
+														<Fragment>
+															<RangeControl
 																label={ __( "Columns" ) }
-																value={ columns }
-																onChange={this.setcolumns }
+																value={ mcolumns }
+																onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 																min={ 1 }
 																max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-																/>
-																)
-															}
-															
-															return <div>{ tabout }</div>
-														}
-													}
-													</TabPanel>
+															/>
+														</Fragment>
+													)}
 													<hr className="uagb-editor__separator" />
 													{imageSettings}
 													<hr className="uagb-editor__separator" />
@@ -668,6 +644,7 @@ class UAGBRestaurantMenu extends Component {
 														<div className={ classnames(
 															className,
 															"uagb-rest_menu__outer-wrap",
+															`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 															`uagb-block-${this.props.clientId.substr( 0, 8 )}`,
 															...PositionClasses( attributes ),
 															) }
@@ -725,5 +702,14 @@ class UAGBRestaurantMenu extends Component {
 														}
 													}
 													
-													export default UAGBRestaurantMenu
+													export default withSelect( ( select, props ) => { 
+
+														const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+													
+														let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+													
+														return {
+															deviceType: deviceType,
+														}
+													})( UAGBRestaurantMenu )
 													
