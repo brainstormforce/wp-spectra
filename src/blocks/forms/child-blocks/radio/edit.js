@@ -154,7 +154,7 @@ class UAGBFormsRadioEdit extends Component {
 					return (
 						<Fragment>
 						<input type="radio" id={value} name={ block_id } value={optionvalue} required={radioRequired} className="uagb-forms-input"/>
-						<label for={value}>{o.optiontitle}</label><br/>						
+						<label htmlfor={value}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);
 				})

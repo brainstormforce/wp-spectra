@@ -165,7 +165,7 @@
                     postData[$("#"+inputname).html()] = originalSerialized[i]['value'];
                 }
             }
-            
+            console.log(attr['afterSubmitToEmail']);
             var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
            
