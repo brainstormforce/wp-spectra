@@ -109,6 +109,14 @@ function styling( props ) {
             'color' : inputplaceholderColor,          
             
         },
+        " .uagb-forms-main-form select" : {            
+            "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
+			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
+			"font-family": inputFontFamily,
+            "font-weight": inputFontWeight,
+            'color' : inputplaceholderColor,          
+            
+        },
         ' .uagb-forms-main-form .uagb-forms-input:focus': {
             'outline' : ' none !important',
             'border'  : '2px solid ' + inputactiveColor,

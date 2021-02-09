@@ -118,7 +118,7 @@ class UAGBFormsCheckboxEdit extends Component {
 					<input												
 						type="checkbox"
 						name={`checkbox-${block_id}`}
-						value={s.optiontitle}						
+						value={s.optiontitle}			
 					/>	
 					<input
 						className="uagb-inner-input-view"
@@ -152,8 +152,8 @@ class UAGBFormsCheckboxEdit extends Component {
 					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="checkbox" className="uagb-forms-input" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={value} required={checkboxRequired} onInvalid="this.setCustomValidity('Please check this box if you want to proceed.')" />
-						<label htmlfor={`checkbox-${value}-${block_id}`}>{o.optiontitle}</label><br/>						
+						<input type="checkbox" className="uagb-forms-input" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={value} required={checkboxRequired}  />
+						<label htmlFor={`checkbox-${value}-${block_id}`}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);
 				})

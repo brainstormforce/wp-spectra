@@ -40,7 +40,7 @@ export default function save( props ) {
 				return (
 					<Fragment>
 					<input type="radio" id={ value } className = "uagb-forms-input" name={ block_id } value={ optionvalue } required={ radioRequired } />
-					<label htmlfor={ value }>{o.optiontitle}</label><br/>						
+					<label htmlFor={ value }>{o.optiontitle}</label><br/>						
 					</Fragment>
 				);
 			})}

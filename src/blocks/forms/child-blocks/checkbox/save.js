@@ -40,7 +40,7 @@ export default function save( props ) {
 				return (
 					<Fragment>
 					<input type="checkbox" class="uagb-forms-input" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={ optionvalue } required={ checkboxRequired }  onInvalid="this.setCustomValidity('Please check this box if you want to proceed.')"/>
-					<label htmlfor={ `checkbox-${value}-${block_id}` }>{ o.optiontitle }</label><br/>						
+					<label htmlFor={ `checkbox-${value}-${block_id}` }>{ o.optiontitle }</label><br/>						
 					</Fragment>
 				);
 			})}

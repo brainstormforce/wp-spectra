@@ -2625,7 +2625,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'labelColor'                 => '#000000',
 							'inputColor'                 => '#000000',
 							'bgColor'                    => '#ffffff',
-							'inputplaceholderColor'      => '#000000',
+							'inputplaceholderColor'      => '#abb8c3',
 							'inputactiveColor'           => '#000000',
 							'inputborderStyle'           => 'solid',
 							'inputborderWidth'           => 1,

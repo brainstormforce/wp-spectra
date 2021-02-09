@@ -258,7 +258,7 @@ const attributes = {
 	},
 	inputplaceholderColor : {
 		type: "string",
-		default:"#000000"
+		default:"#abb8c3"
 	},
 	inputactiveColor : {
 		type: "string",

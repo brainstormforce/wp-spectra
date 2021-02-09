@@ -40,8 +40,8 @@ export default function save( props ) {
 						type="hidden"
 						className="uagb-forms-toggle-input"
 						checked={toggleStatus}
-						data-trueState  = {trueValue}
-						data-falseState = {falseValue}
+						data-truestate  = {trueValue}
+						data-falsestate = {falseValue}
 						value={ toggleStatus ? trueValue : falseValue }
 						required={toggleRequired}	
 						name={ block_id }				
@@ -50,11 +50,11 @@ export default function save( props ) {
 						type="checkbox"
 						className="uagb-forms-toggle-input"
 						checked={toggleStatus}
-						data-trueState  = {trueValue}
-						data-falseState = {falseValue}
+						data-truestate  = {trueValue}
+						data-falsestate = {falseValue}
 						value={ toggleStatus ? trueValue : falseValue }
 						required={toggleRequired}	
-						name={ block_id }				
+						name={ block_id }			
 					/>
 					<span class={`uagb-slider ${layout}`}></span>
 				</label>

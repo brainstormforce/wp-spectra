@@ -27,9 +27,9 @@
 
             toggleinput.on('change', function(e) {
                 if(this.checked) {                    
-                    $(this).val($(this).attr("data-trueState"));
+                    $(this).val($(this).attr("data-truestate"));
                 }else {
-                    $(this).val($(this).attr("data-falseState"));
+                    $(this).val($(this).attr("data-falsestate"));
                 }
             });
             
