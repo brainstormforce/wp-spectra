@@ -163,6 +163,9 @@ function styling( props ) {
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
         }
+        selectors[" .uagb-slider "] = {
+            'background-color' : bgColor,
+        }
         selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
             'color' : inputColor
         }

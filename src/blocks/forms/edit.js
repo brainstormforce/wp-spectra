@@ -771,7 +771,7 @@ class UAGBFormsEdit extends Component {
 					lineHeightTablet= { { value: inputLineHeightTablet, label: "inputLineHeightTablet" } }
 				/>
 				<RangeControl
-					label={ __( "Toggle Size" ) }
+					label={ __( "Checkbox/Radio/Toggle Size" ) }
 					value={ toggleSize  }
 					onChange={ ( value ) => setAttributes( { toggleSize : value } ) }
 					min={ 0 }

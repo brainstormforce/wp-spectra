@@ -257,7 +257,6 @@ const attributes = {
 	},
 	bgColor : {
 		type: "string",
-		default:"#ffffff"
 	},
 	inputplaceholderColor : {
 		type: "string",
