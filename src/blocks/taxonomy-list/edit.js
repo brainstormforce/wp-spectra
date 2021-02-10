@@ -6,6 +6,7 @@ import styling from "./styling"
 import BoxShadowControl from "../../components/box-shadow"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 
 const { __ } = wp.i18n
@@ -81,7 +82,8 @@ class UAGBTaxonomyList extends Component {
 			setAttributes,
 			taxonomyList,
 			categoriesList,
-			termsList			
+			termsList,
+			deviceType 		
 		} = this.props		
 
 		// Caching all attributes.
@@ -281,66 +283,42 @@ class UAGBTaxonomyList extends Component {
 							{ value: "list", label: __( "List" ) },
 						] }
 					/>
-					{ 'grid' === layout &&						
-						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Mobile Columns" ) }
-												value={ mcolumns }
-												onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-												min={ 1 }
-												max={ 2 }
-											/>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Tab Columns" ) }
-												value={ tcolumns }
-												onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-												min={ 1 }
-												max={ 3 }
-											/>
-										)
-									} else {
-										tabout = (
-											<RangeControl
-												label={ __( "Desktop Columns" ) }
-												value={ columns }
-												onChange={ ( value ) => setAttributes( { columns: value } ) }
-												min={ 1 }
-												max={ 4 }
-											/>
-										)
-									}
-
-									return <label>{ tabout }</label>
-								}
-							}
-						</TabPanel>
-					}
+						{ 'grid' === layout &&
+							<Columnresponsive/>
+						}
+                        { "Desktop" === deviceType && 'grid' === layout && (
+                            <Fragment>
+                            <RangeControl
+								label={ __( "Desktop Columns" ) }
+								value={ columns }
+								onChange={ ( value ) => setAttributes( { columns: value } ) }
+								min={ 1 }
+								max={ 4 }
+							/>
+                            </Fragment>
+                        )}
+                        { "Tablet" === deviceType && 'grid' === layout && (
+                            <Fragment>
+                            <RangeControl
+								label={ __( "Tab Columns" ) }
+								value={ tcolumns }
+								onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+								min={ 1 }
+								max={ 3 }
+							/>
+                            </Fragment>
+                        )}
+                        { "Mobile" === deviceType && 'grid' === layout && (
+                            <Fragment>
+                               <RangeControl
+									label={ __( "Mobile Columns" ) }
+									value={ mcolumns }
+									onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+									min={ 1 }
+									max={ 2 }
+								/>
+                            </Fragment>
+                        )}	
 					<hr className="uagb-editor__separator" />
 					<SelectControl
 						label={ __( "Post Type" ) }
@@ -556,65 +534,42 @@ class UAGBTaxonomyList extends Component {
 								allowReset
 							/>
 							<hr className="uagb-editor__separator" />
-
-							<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-									
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<RangeControl
-											label={ __( "Mobile Content Padding" ) }
-											value={ contentPaddingMobile }
-											onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
-											min={ 0 }
-											max={ 100 }
-											/>
-											)
-										} else if ( "tablet" === tab.name ) {
-											tabout = (
-												<RangeControl
-												label={ __( "Tab Content Padding" ) }
-												value={ contentPaddingTablet }
-												onChange={ ( value ) => setAttributes( { contentPaddingTablet: value } ) }
-												min={ 0 }
-												max={ 100 }
-												/>
-												)
-											} else {
-												tabout = (
-													<RangeControl
-													label={ __( "Content Padding" ) }
-													value={ contentPadding }
-													onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
-													min={ 10 }
-													max={ 100 }
-													/>
-													)
-												}
-												
-												return <label>{ tabout }</label>
-											}
-										}
-							</TabPanel>
+							{ 'grid' === layout &&
+								<Columnresponsive/>
+							}
+							{ "Desktop" === deviceType && 'grid' === layout && (
+								<Fragment>
+								<RangeControl
+									label={ __( "Content Padding" ) }
+									value={ contentPadding }
+									onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+									min={ 10 }
+									max={ 100 }
+									/>
+								</Fragment>
+							)}
+							{ "Tablet" === deviceType && 'grid' === layout && (
+								<Fragment>
+								<RangeControl
+									label={ __( "Content Padding" ) }
+									value={ contentPaddingTablet }
+									onChange={ ( value ) => setAttributes( { contentPaddingTablet: value } ) }
+									min={ 0 }
+									max={ 100 }
+									/>
+								</Fragment>
+							)}
+							{ "Mobile" === deviceType && 'grid' === layout && (
+								<Fragment>
+								<RangeControl
+										label={ __( "Content Padding" ) }
+										value={ contentPaddingMobile }
+										onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
+										min={ 0 }
+										max={ 100 }
+									/>
+								</Fragment>
+							)}
 							{showCount && (
 								<Fragment>
 									<hr className="uagb-editor__separator" />
@@ -834,6 +789,7 @@ class UAGBTaxonomyList extends Component {
 					{ inspectorControlsSettings }
 					<div className={ classnames(					
 					"uagb-taxonomy__outer-wrap",
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 					) }>
 						<div className={ classnames(						
@@ -920,6 +876,9 @@ export default withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType,showEmptyTaxonomy} = props.attributes
 	const { getEntityRecords } = select( "core" )
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	
 	let allTaxonomy = uagb_blocks_info.taxonomy_list
@@ -943,7 +902,8 @@ export default withSelect( ( select, props ) => {
 		latestPosts: getEntityRecords( 'postType' ,postType, latestPostsQuery ),
 		categoriesList: categoriesList,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] ,
-		termsList: ( "undefined" != typeof currentTax ) ? currentTax["terms"] : [] 
+		termsList: ( "undefined" != typeof currentTax ) ? currentTax["terms"] : [],
+		deviceType: deviceType,
 
 	}
 
