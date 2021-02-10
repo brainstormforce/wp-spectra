@@ -76,7 +76,8 @@ function styling( props ) {
         hPaddingField,
         fieldGap,
         formStyle,
-        overallAlignment
+        overallAlignment,
+        toggleSize
     } = props.attributes
 
     var selectors = {}
@@ -99,8 +100,18 @@ function styling( props ) {
             "font-weight": labelFontWeight,
             'color' : labelColor,            
         },
-               
-
+        " .uagb-forms-main-form input[type=checkbox]" : {            
+            "width" : generateCSSUnit( toggleSize, "px" ),
+            "height" : generateCSSUnit( toggleSize, "px" )           
+        },
+        " .uagb-forms-main-form input[type=radio]" : {            
+            "width" : generateCSSUnit( toggleSize, "px" ),
+            "height" : generateCSSUnit( toggleSize, "px" )           
+        },
+        " .uagb-forms-main-form input[type=url]" : {            
+            "width" : generateCSSUnit( toggleSize, "px" ),
+            "height" : generateCSSUnit( toggleSize, "px" )           
+        },
         " .uagb-forms-main-form  .uagb-forms-input::placeholder" : {            
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
 			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),

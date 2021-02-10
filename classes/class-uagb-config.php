@@ -2580,6 +2580,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'submitBgColor'              => '#ffffff',
 							'submitBgColorHover'         => '#000000',
 							'submitborderStyle'          => 'solid',
+							'toggleSize'                 => '',
 							'submitborderWidth'          => 1,
 							'submitborderRadius'         => '',
 							'submitborderColor'          => '#7e8993',

@@ -180,6 +180,7 @@ class UAGBFormsEdit extends Component {
 			inputLineHeight,
 			inputLineHeightTablet,
 			inputLineHeightMobile,
+			toggleSize,
 			//Color
 			labelColor,
 			inputColor,
@@ -768,6 +769,14 @@ class UAGBFormsEdit extends Component {
 					lineHeight = { { value: inputLineHeight, label: "inputLineHeight" } }
 					lineHeightMobile = { { value: inputLineHeightMobile, label: "inputLineHeightMobile" } }
 					lineHeightTablet= { { value: inputLineHeightTablet, label: "inputLineHeightTablet" } }
+				/>
+				<RangeControl
+					label={ __( "Toggle Size" ) }
+					value={ toggleSize  }
+					onChange={ ( value ) => setAttributes( { toggleSize : value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
 				/>
 				<p className="uagb-setting-label">{ __( "Label Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: labelColor }} ></span></span></p>
 				<ColorPalette

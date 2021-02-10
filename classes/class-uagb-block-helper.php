@@ -5085,20 +5085,42 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 					'text-align' => $attr['overallAlignment'],
 				),
-
 				' .uagb-forms-main-form .uagb-forms-field-set' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], 'px' ),
+				),
+				' .uagb-forms-main-form input[type=radio]:checked' => array(
+					'appearance' => 'auto',
+				),
+				' .uagb-forms-main-form  .uagb-forms-checkbox-wrap > input:checked' => array(
+					'background-color' => $attr['inputactiveColor'],
+					'appearance'       => 'auto',
+				),
+				' .uagb-slider'                            => array(
+					'background-color' => $attr['bgColor'],
+				),
+				' .uagb-forms-main-form input[type=radio]' => array(
+					'border-radius' => '50%',
+					'width'         => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+					'height'        => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				),
+				' .uagb-forms-main-form input[type=checkbox]' => array(
+					'width'  => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				),
+				' .uagb-forms-main-form input[type=url]'   => array(
+					'width'  => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 				),
 				' .uagb-forms-main-form .uagb-forms-input-label' => array(
 					'color'     => $attr['labelColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 				),
-				' .uagb-forms-success-message' => array(
+				' .uagb-forms-success-message'             => array(
 					'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'] . ' ' . $attr['successMessageBorderColor'],
 					'background-color' => $attr['successMessageBGColor'],
 					'color'            => $attr['successMessageTextColor'],
 				),
-				' .uagb-forms-failed-message'  => array(
+				' .uagb-forms-failed-message'              => array(
 					'border'           => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'] . ' ' . $attr['failedMessageBorderColor'],
 					'background-color' => $attr['failedMessageBGColor'],
 					'color'            => $attr['failedMessageTextColor'],

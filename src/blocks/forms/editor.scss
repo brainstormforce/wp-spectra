@@ -7,6 +7,10 @@
 		.uagb-forms-required-wrap {
 			float: right;
 		}
+		input[type=checkbox] , input[type=radio]{
+			appearance: none;
+			margin-bottom: 10px;
+		}
 	}
 	
 	

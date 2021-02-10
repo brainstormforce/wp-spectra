@@ -236,6 +236,9 @@ const attributes = {
 	inputLineHeight: {
 		type: "number",
 	},
+	toggleSize:{
+		type: "number",
+	},
 	inputLineHeightTablet: {
 		type: "number",
 	},
