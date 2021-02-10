@@ -239,6 +239,14 @@ const attributes = {
 	toggleSize:{
 		type: "number",
 	},
+	togglewidthSize:{
+		type: "number",
+		default:0
+	},
+	toggleheightSize:{
+		type: "number",
+		default:0
+	},
 	inputLineHeightTablet: {
 		type: "number",
 	},

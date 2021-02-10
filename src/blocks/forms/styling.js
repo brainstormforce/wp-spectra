@@ -14,6 +14,8 @@ function styling( props ) {
         submitColorHover,
         submitBgColor,
         submitBgColorHover,
+        togglewidthSize,
+        toggleheightSize,
         //Border
         submitborderStyle,
         submitborderWidth,
@@ -151,8 +153,18 @@ function styling( props ) {
             'color' : submitColorHover,
             'background-color' : submitBgColorHover,
             'border-color' : submitborderHoverColor,
-        },        
-        
+        },  
+        " .uagb-switch ": {
+            'height' : generateCSSUnit( 34  + toggleheightSize, "px" ),
+            'width' : generateCSSUnit( 60 + togglewidthSize, "px" )
+        },      
+        " .uagb-slider:before ": {
+            'height' : generateCSSUnit( 26 + toggleheightSize , "px" ),
+            'width' : generateCSSUnit( 26 + togglewidthSize/2, "px")
+        },  
+        " .uagb-switch input:checked + .uagb-slider:before ": {
+            'transform' : 'translateX('+ generateCSSUnit( 26 + togglewidthSize , "px" )/2+")",
+        }
     }
     
     if ( "boxed" == formStyle ) {		
@@ -188,6 +200,9 @@ function styling( props ) {
             'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
+        }
+        selectors[" .uagb-slider "] = {
+            'background-color' : bgColor,
         }
         selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
             'color' : inputColor

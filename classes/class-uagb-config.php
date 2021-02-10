@@ -2581,6 +2581,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'submitBgColorHover'         => '#000000',
 							'submitborderStyle'          => 'solid',
 							'toggleSize'                 => '',
+							'togglewidthSize'            => 0,
+							'toggleheightSize'           => 0,
 							'submitborderWidth'          => 1,
 							'submitborderRadius'         => '',
 							'submitborderColor'          => '#7e8993',

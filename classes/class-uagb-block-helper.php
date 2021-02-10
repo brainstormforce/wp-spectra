@@ -5117,6 +5117,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 					'height' => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 				),
+				' .uagb-forms-main-form .uagb-switch'      => array(
+					'width'  => UAGB_Helper::get_css_value( '60' + $attr['togglewidthSize'], 'px' ),
+					'height' => UAGB_Helper::get_css_value( '34' + $attr['toggleheightSize'], 'px' ),
+				),
+				' .uagb-forms-main-form .uagb-slider:before' => array(
+					'width'  => UAGB_Helper::get_css_value( '26' + $attr['togglewidthSize'] / 2, 'px' ),
+					'height' => UAGB_Helper::get_css_value( '26' + $attr['toggleheightSize'], 'px' ),
+				),
+				' .uagb-switch input:checked + .uagb-slider:before ' => array(
+					'transform' => ' translateX(' . UAGB_Helper::get_css_value( '26' + $attr['togglewidthSize'] / 2, 'px' ) . ')',
+				),
 				' .uagb-forms-main-form .uagb-forms-input-label' => array(
 					'color'     => $attr['labelColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),

@@ -181,6 +181,8 @@ class UAGBFormsEdit extends Component {
 			inputLineHeightTablet,
 			inputLineHeightMobile,
 			toggleSize,
+			togglewidthSize,
+			toggleheightSize,
 			//Color
 			labelColor,
 			inputColor,
@@ -771,9 +773,25 @@ class UAGBFormsEdit extends Component {
 					lineHeightTablet= { { value: inputLineHeightTablet, label: "inputLineHeightTablet" } }
 				/>
 				<RangeControl
-					label={ __( "Checkbox/Radio/Toggle Size" ) }
+					label={ __( "Checkbox/Radio Size" ) }
 					value={ toggleSize  }
 					onChange={ ( value ) => setAttributes( { toggleSize : value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Toggle Width" ) }
+					value={ togglewidthSize  }
+					onChange={ ( value ) => setAttributes( { togglewidthSize : value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Toggle Height" ) }
+					value={ toggleheightSize  }
+					onChange={ ( value ) => setAttributes( { toggleheightSize : value } ) }
 					min={ 0 }
 					max={ 50 }
 					allowReset
