@@ -156,11 +156,15 @@ hr.uagb-editor__separator {
 	margin-top: 20px;
 }
 
+.uagb-size-type-field-tabs{
+    margin-bottom: -20px;
+}
+
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	border-bottom: 0;
 	text-align: right;
 	margin-right: 40px;
-	margin-bottom: -42px;
+	margin-bottom: -20px;
 	display: block;
 }
 
@@ -3363,3 +3367,4 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button span.dashicon.dashicons {
     font-size:15px
 }
+
