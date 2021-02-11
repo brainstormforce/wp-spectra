@@ -46,7 +46,6 @@ export default function Columnresponsive ( props ) {
 			itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
 		},
 	];
- 	// console.log(desktopChildren)
 	const output = {};
 	output.Desktop = (
         <Fragment></Fragment>
