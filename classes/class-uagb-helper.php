@@ -218,10 +218,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						if ( self::$uag_faq_layout ) {
 							wp_enqueue_script( 'uagb-faq-js' );
 						}
-					} elseif ( 'uagb-tabs-js' === $val ) {
-						if ( self::$uag_tab_layout ) {
-							wp_enqueue_script( 'uagb-tabs-js' );
-						}
 					} else {
 						wp_enqueue_script( $val );
 					}
@@ -486,9 +482,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/tabs':
 					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-					if ( ! isset( $blockattr['layout'] ) ) {
-						self::$uag_tab_layout = true;
-					}
+					self::$uag_tab_layout = true;
 					break;
 
 				case 'uagb/testimonial':

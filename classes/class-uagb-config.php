@@ -2153,8 +2153,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
-							'classMigrate'          => false,
-							'childMigrate'          => false,
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
@@ -2214,8 +2212,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'is_child'    => true,
 						'attributes'  => array(
-							'classMigrate' => false,
-							'childMigrate' => false,
 							'id'           => 0,
 							'pid'          => '',
 							'header'       => '',

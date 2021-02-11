@@ -1,9 +1,8 @@
 /**
- * BLOCK: Social Share
+ * BLOCK: Tabs Child Block
  */
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"

@@ -1,5 +1,5 @@
 /**
- * BLOCK: Multi Buttons
+ * BLOCK: Tabs Block
  */
 
 import memoize from "memize"

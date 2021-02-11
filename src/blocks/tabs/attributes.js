@@ -70,10 +70,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	isPreview: {
-		type: 'boolean',
-		default: false,
-	},
 	uniqueID: {
 		type: 'string',
 		default: ''

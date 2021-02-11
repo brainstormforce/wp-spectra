@@ -1,5 +1,5 @@
 /**
- * BLOCK: Column - Save Block
+ * BLOCK: Tabs - Save Block
  */
 
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"

@@ -1,5 +1,5 @@
 /**
- * BLOCK: Multi Buttons
+ * BLOCK: Tabs Child Block
  */
 
 const { __ } = wp.i18n

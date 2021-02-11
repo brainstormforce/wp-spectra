@@ -1,5 +1,5 @@
 /**
- * BLOCK: Social Share - Save Block
+ * BLOCK: Tabs Child - Save Block
  */
 
 const {
