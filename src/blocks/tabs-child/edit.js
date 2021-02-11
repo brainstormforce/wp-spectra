@@ -10,14 +10,13 @@ const {
 } = wp.element
 
 const {
-	BlockAlignmentToolbar,
-	InspectorControls,
 	InnerBlocks
 } = wp.blockEditor
 
+const { select } = wp.data;
 
-const { withDispatch, select, dispatch } = wp.data;
 var uagbTabsUniqueIDs = [];
+
 class UAGBTabsChildEdit extends Component {
 	constructor() {
 		super( ...arguments );

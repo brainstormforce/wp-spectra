@@ -2,10 +2,6 @@ const attributes = {
 	block_id :{
 		type : "string"
 	},
-	classMigrate: {
-		type: "boolean",
-		default: false
-	},
 	id: {
 		type: 'number',
 		default: 0

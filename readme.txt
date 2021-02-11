@@ -166,8 +166,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.20.1 =
+= 1.21.0 =
 * New: Tabs Block.
+
+= 1.20.1 =
 * Fix: Content Timeline - Content not being saved issue.
 * Fix: Post Carousel - Posts layout breaks when equal height option is enabled.
 * Fix: Table of Content - Hyperlink not being scrolled to respective heading issue.

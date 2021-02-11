@@ -63,7 +63,6 @@ class UAGBTabsEdit extends Component {
 	}
 	componentDidMount() {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		this.props.setAttributes( { classMigrate: true } )
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style );
