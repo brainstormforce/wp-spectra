@@ -180,7 +180,7 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
     border: 0;
     border-bottom: 0;
-    padding: 3px;
+    padding: 3px 3px 0px 0px;
     margin-bottom: 0;
     outline: 0;
     width: auto;
