@@ -385,46 +385,61 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			$blocks         = parse_blocks( $post->post_content );
 			$level          = '';
+			$tag            = '';
 			$excludeheading = '';
 
 			foreach ( $blocks as $block ) {
 				$innercount = count( $block['innerBlocks'] );
-
 				if ( 'core/heading' === $block['blockName'] ) {
+
+					$tag            = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;
 					$level          = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;  // h2 as default.
 					$excludeheading = ( isset( $block['attrs']['className'] ) ) ? $block['attrs']['className'] : '';
-					$headings[]     = array(
+
+					$headings[] = array(
+						'tag'            => $tag,
 						'title'          => wp_strip_all_tags( $block['innerHTML'] ),
-						'level'          => $level,
+						'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+						'level'          => ( $level ),
 						'excludeheading' => $excludeheading,
 					);
 				}
 				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
+					$tag            = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;
 					$level          = ( isset( $block['attrs']['level'] ) ) ? $block['attrs']['level'] : 2;  // h2 as default.
 					$excludeheading = ( isset( $block['attrs']['className'] ) ) ? $block['attrs']['className'] : '';
-					$headings[]     = array(
+
+					$headings[] = array(
+						'tag'            => $tag,
 						'title'          => wp_strip_all_tags( $block['innerHTML'] ),
-						'level'          => $level,
+						'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+						'level'          => ( $level ),
 						'excludeheading' => $excludeheading,
 					);
 				}
 				if ( 'uagb/columns' === $block['blockName'] || 'core/columns' === $block['blockName'] ) {
 					for ( $i = 0;$i < $innercount;$i++ ) {
 						if ( 'core/heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
+							$tag            = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
 							$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
 							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
 							$headings[]     = array(
+								'tag'            => $tag,
 								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
-								'level'          => $level,
+								'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+								'level'          => ( $level ),
 								'excludeheading' => $excludeheading,
 							);
 						}
 						if ( 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
+							$tag            = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
 							$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
 							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
 							$headings[]     = array(
+								'tag'            => $tag,
 								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
-								'level'          => $level,
+								'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+								'level'          => ( $level ),
 								'excludeheading' => $excludeheading,
 							);
 						}
@@ -433,20 +448,26 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				if ( 'uagb/section' === $block['blockName'] ) {
 					for ( $i = 0;$i < $innercount;$i++ ) {
 						if ( 'core/heading' === $block['innerBlocks'][ $i ]['blockName'] ) {
+							$tag            = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
 							$level          = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
 							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['className'] : '';
 							$headings[]     = array(
+								'tag'            => $tag,
 								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerHTML'] ),
-								'level'          => $level,
+								'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+								'level'          => ( $level ),
 								'excludeheading' => $excludeheading,
 							);
 						}
 						if ( 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['blockName'] ) {
+							$tag            = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
 							$level          = ( isset( $block['innerBlocks'][ $i ]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['level'] : 2;  // h2 as default.
 							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['attrs']['className'] : '';
 							$headings[]     = array(
+								'tag'            => $tag,
 								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerHTML'] ),
-								'level'          => $level,
+								'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+								'level'          => ( $level ),
 								'excludeheading' => $excludeheading,
 							);
 						}
@@ -485,7 +506,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					<?php if ( $headings ) { ?>
 						<div class="uagb-toc__list-wrap">
 						<?php $this->filter_array( $headings ); ?>
-						</div>
 					<?php } else { ?>
 						<p class="uagb_table-of-contents-placeholder">
 							<?php esc_html_e( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ); ?>
@@ -511,13 +531,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 				$elem['title'] = trim( preg_replace( '/(<.+?>)/', '', $elem['title'] ) );
 				$last          = count( $sortedHeaders ) - 1;
-				$count         = count( $sortedHeaders );
-
 				if ( count( $sortedHeaders ) === 0 || $sortedHeaders[ $last ][0]['level'] < $elem['level'] ) {
 					array_push( $sortedHeaders, array( $elem ) );
 				} elseif ( $sortedHeaders[ $last ][0]['level'] === $elem['level'] ) {
 					array_push( $sortedHeaders[ $last ], $elem );
 				} else {
+					$count = count( $sortedHeaders );
 					while ( $sortedHeaders[ $last ][0]['level'] > $elem['level'] && $count > 1 ) {
 						array_push( $sortedHeaders[ count( $sortedHeaders ) - 2 ], array_pop( $sortedHeaders ) );
 						$last = count( $sortedHeaders ) - 1;
@@ -529,6 +548,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			}
 
 			if ( count( $sortedHeaders ) > 0 ) {
+				while ( count( $sortedHeaders ) > 1 && $sortedHeaders[ count( $sortedHeaders ) - 1 ][0]['level'] > $sortedHeaders[ count( $sortedHeaders ) - 2 ][0]['level'] ) { //phpcs:ignore Squiz.PHP.DisallowSizeFunctionsInLoops.Found
+					array_push( $sortedHeaders[ count( $sortedHeaders ) - 2 ], array_pop( $sortedHeaders ) );
+				}
 				foreach ( $sortedHeaders[0] as $key => $item ) {
 					$listItems = $this->header_list_item( $key, $item );
 				}
@@ -551,8 +573,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$outputString = '';
 			}
 			if ( isset( $item['level'] ) ) {
+
 				$outputString .= '<li><a href=#' . strtolower( trim( $this->remove_special_char( $item['title'] ) ) ) . '>' . $item['title'] . '</a></li>';
 			} else {
+
 				$openingTag = '<ul class="uagb-toc__list">';
 
 				$outputString = substr_replace(
@@ -567,7 +591,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				}
 				$outputString .= ( '</ul>' ) . '</li>';
 			}
-			return $outputString;
+			return '<ul class="uagb-toc__list">' . $outputString . '</ul>';
 		}
 
 		/**
