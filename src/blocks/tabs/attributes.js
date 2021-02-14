@@ -170,6 +170,7 @@ const attributes = {
 	},
 	iconSize:{
 		type: "number",
+		default: 12,
 	}
 }
 

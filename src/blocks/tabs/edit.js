@@ -536,10 +536,15 @@ class UAGBTabsEdit extends Component {
                                 label={ __( 'Border Style' ) }
                                 value={ borderStyle }
                                 options={ [
-                                    { label: __( 'None' ), value: 'none' },
-                                    { label: __( 'Solid' ), value: 'solid' },
-                                    { label: __( 'Dashed' ), value: 'dashed' },
-                                    { label: __( 'Dotted' ), value: 'dotted' },
+									{ value: "none", label: __( "None" ) },
+									{ value: "solid", label: __( "Solid" ) },
+									{ value: "dotted", label: __( "Dotted" ) },
+									{ value: "dashed", label: __( "Dashed" ) },
+									{ value: "double", label: __( "Double" ) },
+									{ value: "groove", label: __( "Groove" ) },
+									{ value: "inset", label: __( "Inset" ) },
+									{ value: "outset", label: __( "Outset" ) },
+									{ value: "ridge", label: __( "Ridge" ) },
                                 ] }
                                 onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
                             />

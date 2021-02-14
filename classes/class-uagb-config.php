@@ -2202,7 +2202,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'showIcon'              => '',
 							'Icon'                  => '',
 							'iconColor'             => '',
-							'iconSize'              => '',
+							'iconSize'              => 12,
 						),
 					),
 					'uagb/tabs-child'             => array(
