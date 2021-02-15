@@ -48,6 +48,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		/**
 		 *
 		 * Constructor
+		 *
 		 * @since x.x.x
 		 */
 		public function __construct() {
@@ -59,6 +60,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		/**
 		 *
 		 * Form Process Initiated.
+		 *
 		 * @since x.x.x
 		 */
 		public function process_forms() {
