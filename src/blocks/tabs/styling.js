@@ -44,8 +44,20 @@ function styling( props ) {
 		tabBodyBottomMargin, 
 		tabBodyVertPadding,
 		tabBodyHrPadding,
+		iconSpacing,
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
 	} = props.attributes
+	
+	var boxShadowPositionCSS = boxShadowPosition;
 
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
@@ -104,6 +116,24 @@ function styling( props ) {
 		},
 		".uagb-tabs__wrap.uagb-tabs__hstyle5-desktop , .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop" : {
             "background": bodyBgColor,
+		},
+		" .uagb-tabs__icon-position-left  .uagb-tabs__icon " : {
+			"margin-right": generateCSSUnit(iconSpacing , "px" ),
+		},
+		" .uagb-tabs__icon-position-right  .uagb-tabs__icon " : {
+			"margin-left": generateCSSUnit(iconSpacing , "px" ),
+		},
+		" .uagb-tabs__icon-position-top  .uagb-tabs__icon " : {
+			"margin-bottom": generateCSSUnit(iconSpacing , "px" ),
+		},
+		" .uagb-tabs__icon-position-bottom  .uagb-tabs__icon " : {
+			"margin-top": generateCSSUnit(iconSpacing , "px" ),
+		},
+		" .uagb-tabs__body-wrap": {
+			"box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
+		},
+		" .uagb-tab": {
+			"box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
 		},
 	}
 	tablet_selectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-tablet , .uagb-tabs__wrap.uagb-tabs__vstyle10-tablet"] = {

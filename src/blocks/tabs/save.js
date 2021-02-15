@@ -5,7 +5,8 @@
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const {
-	InnerBlocks
+	InnerBlocks,
+	RichText
 } = wp.blockEditor
 
 export default function save( props ) {
@@ -20,7 +21,8 @@ export default function save( props ) {
         tabsStyleM,
         Icon,
         showIcon,
-        pid
+        pid,
+        iconPosition
     } = attributes;
 
     const blockClass = [
@@ -37,9 +39,14 @@ export default function save( props ) {
             <ul className="uagb-tabs__panel">
                 {tabHeaders.map( ( header, index ) => (
                     <li key={ index } className="uagb-tab">
-                        <a href={`#uagb-tabs__tab${index}`}>
-                            <span>{header}</span>
-                            {(showIcon && 
+                        <a href={`#uagb-tabs__tab${index}`} className={`uagb-tabs__icon-position-${iconPosition}`}>
+                        {(showIcon && (iconPosition === 'left' || iconPosition === 'top' ) &&
+                                 <span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>)}
+                            <RichText.Content
+                                tagName={ 'span' }
+                                value={ header }					
+                            />
+                            {(showIcon && (iconPosition === 'right' || iconPosition === 'bottom') &&
                                  <span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>)}
                         </a>
                     </li>

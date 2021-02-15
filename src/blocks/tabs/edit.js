@@ -6,6 +6,8 @@ import memoize from "memize"
 import times from "lodash/times"
 import styling from "./styling"
 
+import BoxShadowControl from "../../components/box-shadow"
+
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -175,12 +177,12 @@ class UAGBTabsEdit extends Component {
 			bodyBgColor,
 			bodyTextColor,
 			tabActive,
-			HorizontalStyleD,
-			HorizontalStyleT,
-			HorizontalStyleM,
-			VerticalStyleD,
-			VerticalStyleT,
-			VerticalStyleM,
+			boxShadowColor,
+			boxShadowHOffset,
+			boxShadowVOffset,
+			boxShadowBlur,
+			boxShadowSpread,
+			boxShadowPosition,
 			tabTitleLeftMargin,
 			tabTitleRightMargin,
 			tabTitleTopMargin,
@@ -209,6 +211,8 @@ class UAGBTabsEdit extends Component {
 			showIcon,
 			Icon,
 			iconColor,
+			iconPosition,
+			iconSpacing,
 			iconSize
 		} = attributes;
 		
@@ -344,6 +348,26 @@ class UAGBTabsEdit extends Component {
 											onChange={ ( value ) => setAttributes( { Icon: value } ) }
 											isMulti={false}
 											noSelectedPlaceholder= { __( "Select Icon" ) }
+								/>
+								<SelectControl
+									label={ __( 'Icon Position' ) }
+									value={ iconPosition }
+									options={ [
+										{value: 'left', label: __('Left')},
+										{value: 'right', label: __('Right')},
+										{value: 'top', label: __('Top')},
+										{value: 'bottom', label: __('Bottom')},
+									] }
+									onChange={ (value) => setAttributes( { iconPosition: value } ) }
+								/>
+								<h2>{ __( 'Icon Spacing' ) }</h2>
+								<RangeControl
+									className={ "uagb-tabs__icon" }
+									value={ iconSpacing }
+									onChange={ ( value ) => setAttributes( { iconSpacing: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
 								/>
 								<h2>{ __( 'Icon Color' ) }</h2>
 								<ColorPalette 
@@ -574,19 +598,30 @@ class UAGBTabsEdit extends Component {
                                 onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
                             />
                         </PanelBody>
-
+						<PanelBody title={ __( 'Box Shadow Settings' ) } initialOpen={ false }>
+							<BoxShadowControl
+								setAttributes = { setAttributes }
+								label = { __( "Box Shadow" ) }
+								boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+								boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+								boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
+								boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+								boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+								boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							/>
+						</PanelBody>
                 </InspectorControls>
                 <div className={blockClass} data-tab-active={tabActiveFrontend}>
                     <ul className="uagb-tabs__panel">
                         {tabHeaders.map( ( header, index ) => (
-                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''}`}
+                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} `}
                             >
-                                <a
+                                <a className={`uagb-tabs__icon-position-${iconPosition}`}
                                        onClick={ () => {
                                            this.props.updateActiveTab( index );
                                        } }
                                     >
-										{(showIcon && Icon && 
+										{(showIcon && Icon && (iconPosition === 'left' || iconPosition === 'top') &&
 										<span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>
 										)}
 										<RichText
@@ -596,7 +631,11 @@ class UAGBTabsEdit extends Component {
                                             unstableOnSplit={ () => null }
                                             placeholder={ __( 'Title…' ) }
                                         />
+										{(showIcon && Icon && ( iconPosition === 'right' || iconPosition === 'bottom' )&&
+											<span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>
+										)}
 								</a>
+								
 								{tabHeaders.length > 1 && (
 									<Tooltip text={ __( 'Remove tab' ) }>
 										<span className="uagb-tabs__remove"

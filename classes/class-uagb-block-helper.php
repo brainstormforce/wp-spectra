@@ -3154,10 +3154,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
 
-			$attr = array_merge( $defaults, (array) $attr );
-
+			$attr                 = array_merge( $defaults, (array) $attr );
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
 			$selectors = array(
-				' .uagb-tabs__panel .uagb-tab'   => array(
+				' .uagb-tabs__panel .uagb-tab'      => array(
 					'background'     => $attr['headerBgColor'],
 					'text-align'     => $attr['titleAlign'],
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleVertPadding'], 'px' ),
@@ -3181,7 +3184,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['activeTabTextColor'],
 				),
 
-				' .uagb-tabs__body-wrap'         => array(
+				' .uagb-tabs__body-wrap'            => array(
 					'background'     => $attr['bodyBgColor'],
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabBodyVertPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabBodyVertPadding'], 'px' ),
@@ -3193,10 +3196,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabBodyBottomMargin'], 'px' ),
 				),
 
-				' .uagb-tabs__body-wrap p '      => array(
+				' .uagb-tabs__body-wrap p '         => array(
 					'color' => $attr['bodyTextColor'],
 				),
-				' .uagb-tabs__icon svg'          => array(
+				' .uagb-tabs__icon svg'             => array(
 					'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'   => $attr['iconColor'],
@@ -3205,10 +3208,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop , .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' => array(
 					'background' => $attr['bodyBgColor'],
 				),
+				' .uagb-tabs__icon-position-left > .uagb-tabs__icon' => array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
+				),
+				' .uagb-tabs__icon-position-right > .uagb-tabs__icon' => array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
+				),
+				' .uagb-tabs__icon-position-bottom > .uagb-tabs__icon' => array(
+					'margin-top' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
+				),
+				' .uagb-tabs__icon-position-top > .uagb-tabs__icon' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
+				),
+				' .uagb-tabs__body-wrap'            => array(
+					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+				),
+				' .uagb-tab'                        => array(
+					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+				),
 			);
 
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors['.uagb-tabs__wrap .uagb-tab '] = array(
+				$selectors['.uagb-tabs__wrap .uagb-tab ']            = array(
 					'border-style'  => $attr['borderStyle'],
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
@@ -3248,7 +3269,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'tablet'  => $t_selectors,
 			);
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab span', $combined_selectors );
-		
+
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 		/**
