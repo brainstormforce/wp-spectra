@@ -405,17 +405,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				}
 				if ( 'uagb/columns' === $block['blockName'] || 'core/columns' === $block['blockName'] ) {
 					for ( $i = 0;$i < $innercount;$i++ ) {
-						if ( 'core/heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] || 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
-							$tag            = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
-							$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
-							$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
-							$headings[]     = array(
-								'tag'            => $tag,
-								'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
-								'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
-								'level'          => ( $level ),
-								'excludeheading' => $excludeheading,
-							);
+						if( isset($block['innerBlocks'][$i]['innerBlocks'][0]) ){
+							if ( 'core/heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] || 'uagb/advanced-heading' === $block['innerBlocks'][ $i ]['innerBlocks'][0]['blockName'] ) {
+								$tag            = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
+								$level          = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['level'] : 2;  // h2 as default.
+								$excludeheading = ( isset( $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] ) ) ? $block['innerBlocks'][ $i ]['innerBlocks'][0]['attrs']['className'] : '';
+								$headings[]     = array(
+									'tag'            => $tag,
+									'title'          => wp_strip_all_tags( $block['innerBlocks'][ $i ]['innerBlocks'][0]['innerHTML'] ),
+									'link'           => strtolower( $this->remove_special_char( wp_strip_all_tags( $block['innerHTML'] ) ) ),
+									'level'          => ( $level ),
+									'excludeheading' => $excludeheading,
+								);
+							}
 						}
 					}
 				}
