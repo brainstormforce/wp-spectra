@@ -6,7 +6,7 @@ const attributes = {
   },
   name: {
     type: "string",
-    default: __( "URL" ),
+    default: __( "URL" , 'ultimate-addons-for-gutenberg' ),
   },
   required : {
     type: "boolean",
@@ -14,7 +14,7 @@ const attributes = {
   },
   placeholder: {
     type: "string",
-    default: __( "https://example.com" )
+    default: __( "https://example.com" , 'ultimate-addons-for-gutenberg')
   },
 }
 export default attributes

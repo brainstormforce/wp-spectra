@@ -11,7 +11,7 @@ const attributes = {
     },   
     acceptText: {
         type: "string",
-        default: __( "I have read and agree to the Privacy Policy." )
+        default: __( "I have read and agree to the Privacy Policy."  , 'ultimate-addons-for-gutenberg')
     },
     showLink : {
         type: "boolean",
@@ -19,11 +19,11 @@ const attributes = {
     },
     linkLabel: {
         type: "string",
-        default: __( "Privacy Policy" )
+        default: __( "Privacy Policy" , 'ultimate-addons-for-gutenberg' )
     },
     link: {
         type: "string",
-        default: __( "#" )
+        default: __( "#" , 'ultimate-addons-for-gutenberg' )
     },
     linkInNewTab : {
         type: "boolean",

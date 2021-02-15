@@ -132,7 +132,6 @@ class UAGBFormsEdit extends Component {
 			submitColorHover,
 			submitBgColor,
 			submitBgColorHover,
-			//Border
 			submitborderStyle,
 			submitborderWidth,
 			submitborderRadius,
@@ -140,8 +139,6 @@ class UAGBFormsEdit extends Component {
 			submitborderHoverColor,
 			vPaddingSubmit,
 			hPaddingSubmit,
-			//Typography
-			//submit button
 			submitTextloadGoogleFonts,
 			submitTextFontFamily,
 			submitTextFontWeight,
@@ -154,7 +151,6 @@ class UAGBFormsEdit extends Component {
 			submitTextLineHeight,
 			submitTextLineHeightTablet,
 			submitTextLineHeightMobile,
-			//label
 			labelloadGoogleFonts,
 			labelFontFamily,
 			labelFontWeight,
@@ -167,7 +163,6 @@ class UAGBFormsEdit extends Component {
 			labelLineHeight,
 			labelLineHeightTablet,
 			labelLineHeightMobile,
-			//Input
 			inputloadGoogleFonts,
 			inputFontFamily,
 			inputFontWeight,
@@ -183,13 +178,11 @@ class UAGBFormsEdit extends Component {
 			toggleSize,
 			togglewidthSize,
 			toggleheightSize,
-			//Color
 			labelColor,
 			inputColor,
 			bgColor,
 			inputplaceholderColor,
-			inputactiveColor,
-			//Input Border
+			inputactiveColor, 
 			inputborderStyle,
 			inputborderWidth,
 			inputborderRadius,

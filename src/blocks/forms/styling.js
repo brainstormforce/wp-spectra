@@ -16,7 +16,6 @@ function styling( props ) {
         submitBgColorHover,
         togglewidthSize,
         toggleheightSize,
-        //Border
         submitborderStyle,
         submitborderWidth,
         submitborderRadius,
@@ -24,7 +23,6 @@ function styling( props ) {
         submitborderHoverColor,
         vPaddingSubmit,
         hPaddingSubmit,
-        //Typography
         submitTextFontFamily,
         submitTextFontWeight,
         submitTextFontSubset,
@@ -36,7 +34,6 @@ function styling( props ) {
         submitTextLineHeight,
         submitTextLineHeightTablet,
         submitTextLineHeightMobile,
-        //label
         labelloadGoogleFonts,
         labelFontFamily,
         labelFontWeight,
@@ -49,7 +46,6 @@ function styling( props ) {
         labelLineHeight,
         labelLineHeightTablet,
         labelLineHeightMobile,
-        //Input
         inputloadGoogleFonts,
         inputFontFamily,
         inputFontWeight,
@@ -68,7 +64,6 @@ function styling( props ) {
         bgColor,
         inputplaceholderColor,
         inputactiveColor,
-        //Input Border
         inputborderStyle,
         inputborderWidth,
         inputborderRadius,

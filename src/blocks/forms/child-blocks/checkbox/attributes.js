@@ -7,7 +7,7 @@ const attributes = {
     },
     checkboxName:{
         type: "string",
-        default: __( "Checkbox Title" )
+        default: __( "Checkbox Title" , 'ultimate-addons-for-gutenberg' )
     },
 	checkboxRequired : {
         type: "boolean",

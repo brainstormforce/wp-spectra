@@ -10,7 +10,7 @@ const attributes = {
   },
   name: {
     type: "string",
-    default: "Date"
+    default: __("Date" , 'ultimate-addons-for-gutenberg' )
   },
   additonalVal : {
     type: "boolean",

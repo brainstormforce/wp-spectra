@@ -6,7 +6,7 @@ const attributes = {
     },
     selectName:{
         type: "string",
-        default: __( "Select Title" )
+        default: __( "Select Title" , 'ultimate-addons-for-gutenberg' )
     },
 	selectRequired : {
         type: "boolean",

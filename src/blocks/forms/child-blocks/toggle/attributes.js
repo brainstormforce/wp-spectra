@@ -8,7 +8,7 @@ const attributes = {
     },
     name: {
         type: "string",
-        default: "Name"
+        default: __("Name" , 'ultimate-addons-for-gutenberg')
     },
     toggleStatus : {
         type: "boolean",

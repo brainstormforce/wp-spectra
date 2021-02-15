@@ -5221,10 +5221,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
-			$t_selectors = array();
-
-			$m_selectors = array();
-
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
@@ -5266,10 +5262,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'box-shadow' => '0 0 1px' . $attr['activeColor'],
 				),
 			);
-
-			$t_selectors = array();
-
-			$m_selectors = array();
 
 			$combined_selectors = array(
 				'desktop' => $selectors,

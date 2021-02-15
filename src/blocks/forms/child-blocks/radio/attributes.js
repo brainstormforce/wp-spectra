@@ -7,7 +7,7 @@ const attributes = {
     },
     radioName:{
         type: "string",
-        default: __( "RadioBox Title" )
+        default: __( "RadioBox Title" , 'ultimate-addons-for-gutenberg' )
     },
 	radioRequired : {
         type: "boolean",

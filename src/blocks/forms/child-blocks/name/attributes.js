@@ -11,11 +11,11 @@ const attributes = {
     },
     name: {
         type: "string",
-        default:__( "Name" )
+        default:__( "Name" , 'ultimate-addons-for-gutenberg')
     },
     placeholder: {
         type: "string",
-        default: __( "John Doe" )
+        default: __( "John Doe" , 'ultimate-addons-for-gutenberg' )
     },
 }
 export default attributes

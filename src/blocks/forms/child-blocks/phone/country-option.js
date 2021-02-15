@@ -1,5 +1,6 @@
+const { __ } = wp.i18n
 const countryOptions = [
-<option data-countryCode="GB" value="+44" Selected>UK (+44)</option>,
+<option data-countryCode="GB" value="+44" Selected>__("UK +44")</option>,
 <option data-countryCode="US" value="+1">USA (+1)</option>,
 <option data-countryCode="DZ" value="+213">Algeria (+213)</option>,
 <option data-countryCode="AD" value="+376">Andorra (+376)</option>,

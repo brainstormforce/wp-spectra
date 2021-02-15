@@ -4,7 +4,7 @@ const attributes = {
     },
     phoneName: {
         type: "string",
-        default: "Phone"
+        default: __("Phone" , 'ultimate-addons-for-gutenberg' )
     },
 	phoneRequired : {
         type: "boolean",

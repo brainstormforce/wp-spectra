@@ -4,7 +4,7 @@ const attributes = {
 	},
 	hidden_field_name : {
 		type: "string",
-		default: "Hidden Field Name",
+		default: __("Hidden Field Name", 'ultimate-addons-for-gutenberg')
 	},
 	hidden_field_value : {
 		type: "string"

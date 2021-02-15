@@ -6,27 +6,27 @@ const attributes = {
 	},
 	submitButtonText : {
 		type: "string",
-		default: __( "Submit" )
+		default: __( "Submit" , "ultimate-addons-for-gutenberg" )
 	},
 	formLabel : {
 		type: "string",
-		default: __( "UAG Form" )
+		default: __( "UAG Form" , "ultimate-addons-for-gutenberg" )
 	},
 	buttonAlign : {
 		type: "string",
-		default:'left'
+		default:  'left' 
 	},
 	confirmationType : {
 		type: "string",
-		default:'message'
+		default:  __('message' , 'ultimate-addons-for-gutenberg'),
 	},
 	confirmationMessage : {
 		type: "string",
-		default: __( 'The form has been submitted successfully!' )
+		default: __( 'The form has been submitted successfully!' , 'ultimate-addons-for-gutenberg' )
 	},
 	failedMessage : {
 		type: "string",
-		default: __( 'Unsuccessful Submission!' )
+		default: __( 'Unsuccessful Submission!' ,'ultimate-addons-for-gutenberg' )
 	},
 	confirmationUrl : {
 		type: "string",
@@ -49,7 +49,7 @@ const attributes = {
 	},
 	afterSubmitEmailSubject : {
 		type: "string",
-		default:__( "Form Submission" )
+		default:__( "Form Submission" , "ultimate-addons-for-gutenberg" )
 	},	
 	submitColor : {
 		type: "string",
