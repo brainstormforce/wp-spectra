@@ -166,7 +166,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 1.20.2 ###
+### 1.21.0 ###
+* Fix: Content Timeline - Connector issue on Tablet and mobile.
 * Fix: Heading Color issue in some blocks when used with Cover block.
 
 ### 1.20.1 ###
