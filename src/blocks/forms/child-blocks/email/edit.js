@@ -41,9 +41,6 @@ class UAGBFormsEmailEdit extends Component {
 		document.head.appendChild( $style )
 		
 	}
-
-	componentDidUpdate(prevProps, prevState) {
-    }
     
 	render() {
 

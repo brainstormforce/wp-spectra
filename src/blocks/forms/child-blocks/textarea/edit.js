@@ -42,9 +42,6 @@ class UAGBFormsTextareaEdit extends Component {
 		
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-    }
-	
 	render() {
 
 		const { attributes, setAttributes, isSelected } = this.props

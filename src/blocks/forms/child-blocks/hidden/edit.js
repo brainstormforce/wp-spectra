@@ -38,9 +38,6 @@ class UAGBFormsHiddenEdit extends Component {
 		document.head.appendChild( $style )
 		
 	}
-	
-	componentDidUpdate(prevProps, prevState) {
-	}
 
 	changeHiddenName  (value) {
 		const { setAttributes } = this.props

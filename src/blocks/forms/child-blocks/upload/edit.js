@@ -40,9 +40,6 @@ class UAGBFormsUploadEdit extends Component {
 		document.head.appendChild( $style )
 		
 	}
-
-	componentDidUpdate(prevProps, prevState) {
-    }
 	
 	render() {
 
