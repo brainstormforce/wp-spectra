@@ -482,43 +482,43 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Filter Heading array
 		 *
-		 * @param  array $filteredHeaders variable.
+		 * @param  array $filtered_headers variable.
 		 *
 		 * @since x.x.x
 		 */
-		public function filter_array( $filteredHeaders ) {
-			$sortedHeaders = array();
+		public function filter_array( $filtered_headers ) {
+			$sorted_headers = array();
 
-			foreach ( $filteredHeaders as $elem ) {
+			foreach ( $filtered_headers as $elem ) {
 
 				$elem['title'] = trim( preg_replace( '/(<.+?>)/', '', $elem['title'] ) );
-				$last          = count( $sortedHeaders ) - 1;
-				if ( count( $sortedHeaders ) === 0 || $sortedHeaders[ $last ][0]['level'] < $elem['level'] ) {
-					array_push( $sortedHeaders, array( $elem ) );
-				} elseif ( $sortedHeaders[ $last ][0]['level'] === $elem['level'] ) {
-					array_push( $sortedHeaders[ $last ], $elem );
+				$last          = count( $sorted_headers ) - 1;
+				if ( count( $sorted_headers ) === 0 || $sorted_headers[ $last ][0]['level'] < $elem['level'] ) {
+					array_push( $sorted_headers, array( $elem ) );
+				} elseif ( $sorted_headers[ $last ][0]['level'] === $elem['level'] ) {
+					array_push( $sorted_headers[ $last ], $elem );
 				} else {
-					$count = count( $sortedHeaders );
-					while ( $sortedHeaders[ $last ][0]['level'] > $elem['level'] && $count > 1 ) {
-						array_push( $sortedHeaders[ count( $sortedHeaders ) - 2 ], array_pop( $sortedHeaders ) );
-						$last = count( $sortedHeaders ) - 1;
+					$count = count( $sorted_headers );
+					while ( $sorted_headers[ $last ][0]['level'] > $elem['level'] && $count > 1 ) {
+						array_push( $sorted_headers[ count( $sorted_headers ) - 2 ], array_pop( $sorted_headers ) );
+						$last = count( $sorted_headers ) - 1;
 					}
-					if ( $sortedHeaders[ $last ][0]['level'] === $elem['level'] ) {
-						array_push( $sortedHeaders[ $last ], $elem );
+					if ( $sorted_headers[ $last ][0]['level'] === $elem['level'] ) {
+						array_push( $sorted_headers[ $last ], $elem );
 					}
 				}
 			}
 
-			if ( count( $sortedHeaders ) > 0 ) {
-				while ( count( $sortedHeaders ) > 1 && $sortedHeaders[ count( $sortedHeaders ) - 1 ][0]['level'] > $sortedHeaders[ count( $sortedHeaders ) - 2 ][0]['level'] ) { //phpcs:ignore Squiz.PHP.DisallowSizeFunctionsInLoops.Found
-					array_push( $sortedHeaders[ count( $sortedHeaders ) - 2 ], array_pop( $sortedHeaders ) );
+			if ( count( $sorted_headers ) > 0 ) {
+				while ( count( $sorted_headers ) > 1 && $sorted_headers[ count( $sorted_headers ) - 1 ][0]['level'] > $sorted_headers[ count( $sorted_headers ) - 2 ][0]['level'] ) { //phpcs:ignore Squiz.PHP.DisallowSizeFunctionsInLoops.Found
+					array_push( $sorted_headers[ count( $sorted_headers ) - 2 ], array_pop( $sorted_headers ) );
 				}
-				foreach ( $sortedHeaders[0] as $key => $item ) {
-					$listItems = $this->header_list_item( $key, $item );
+				foreach ( $sorted_headers[0] as $key => $item ) {
+					$list_items = $this->header_list_item( $key, $item );
 				}
 			}
 
-			echo wp_kses_post( $listItems );
+			echo wp_kses_post( $list_items );
 		}
 
 		/**
@@ -530,30 +530,30 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 */
 		public function header_list_item( $num, $item ) {
-			static $outputString = '';
-			if ( 0 === $num && '' !== $outputString ) {
-				$outputString = '';
+			static $output_string = '';
+			if ( 0 === $num && '' !== $output_string ) {
+				$output_string = '';
 			}
 			if ( isset( $item['level'] ) ) {
 
-				$outputString .= '<li><a href=#' . strtolower( trim( $this->remove_special_char( $item['title'] ) ) ) . '>' . $item['title'] . '</a></li>';
+				$output_string .= '<li><a href=#' . strtolower( trim( $this->remove_special_char( $item['title'] ) ) ) . '>' . $item['title'] . '</a></li>';
 			} else {
 
-				$openingTag = '<ul class="uagb-toc__list">';
+				$opening_tag = '<ul class="uagb-toc__list">';
 
-				$outputString = substr_replace(
-					$outputString,
-					$openingTag,
-					strrpos( $outputString, '</li>' ),
+				$output_string = substr_replace(
+					$output_string,
+					$opening_tag,
+					strrpos( $output_string, '</li>' ),
 					strlen( '</li>' )
 				);
 
-				foreach ( $item as $key => $subItem ) {
-					$this->header_list_item( $key + 1, $subItem );
+				foreach ( $item as $key => $sub_item ) {
+					$this->header_list_item( $key + 1, $sub_item );
 				}
-				$outputString .= ( '</ul>' ) . '</li>';
+				$output_string .= ( '</ul>' ) . '</li>';
 			}
-			return '<ul class="uagb-toc__list">' . $outputString . '</ul>';
+			return '<ul class="uagb-toc__list">' . $output_string . '</ul>';
 		}
 
 		/**
