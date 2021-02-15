@@ -2523,11 +2523,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+					'margin-left'  => 0,
+					'margin-right' => 0,
+				),
 			);
 
 			$t_selectors = array(
 				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
+				),
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+					'margin-left'  => 0,
+					'margin-right' => 0,
 				),
 			);
 
