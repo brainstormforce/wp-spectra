@@ -333,19 +333,16 @@ class UAGBFormsEdit extends Component {
 					</ButtonGroup>
 					{ 'message' === confirmationType && 
 						<Fragment>
-							<PanelBody>
+							<PanelBody 
+								title={ __( "Success Message" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body">
 								<TextareaControl
-									label="Success Message"
+									label="Success Message Text"
 									help={ __( "Enter a message you want to display after successfull form submission" ) }
 									value={ confirmationMessage }
 									onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
 								/>
-							</PanelBody>
-							<PanelBody
-								title={ __( "Success Message Design" ) }
-								initialOpen={ false }
-								className="uagb__url-panel-body"
-							>
 								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ Color: successMessageTextColor }} ></span></span></p>
 								<ColorPalette
 									value={ successMessageTextColor }
@@ -390,19 +387,15 @@ class UAGBFormsEdit extends Component {
 								/>
 
 							</PanelBody>
-							<PanelBody>
+							<PanelBody title={ __( "Error Message Text" ) }
+								initialOpen={ false }
+								className="uagb__url-panel-body">
 								<TextareaControl
 									label="Error Message"
 									help={ __( "Enter a message you want to display after unsuccessfull form submission" ) }
 									value={ failedMessage }
 									onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
 								/>
-							</PanelBody>
-							<PanelBody
-								title={ __( "Error Message Design" ) }
-								initialOpen={ false }
-								className="uagb__url-panel-body"
-							>
 								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageTextColor }} ></span></span></p>
 								<ColorPalette
 									value={ failedMessageTextColor }
