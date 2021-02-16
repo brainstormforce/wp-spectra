@@ -168,6 +168,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.21.0 =
 * New: Tabs Block.
+* Fix: Content Timeline - Connector issue on Tablet and mobile.
 
 = 1.20.1 =
 * Fix: Content Timeline - Content not being saved issue.

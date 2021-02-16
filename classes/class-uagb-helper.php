@@ -422,7 +422,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-				$blockattr = $block['attrs'];
+				/**
+				 * Filters the block attributes for CSS and JS generation.
+				 *
+				 * @param array  $block_attributes The block attributes to be filtered.
+				 * @param string $name             The block name.
+				 */
+				$blockattr = apply_filters( 'uagb_block_attributes_for_css_and_js', $block['attrs'], $name );
 				if ( isset( $blockattr['block_id'] ) ) {
 					$block_id = $blockattr['block_id'];
 				}
