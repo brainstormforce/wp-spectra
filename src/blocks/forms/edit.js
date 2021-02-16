@@ -387,11 +387,11 @@ class UAGBFormsEdit extends Component {
 								/>
 
 							</PanelBody>
-							<PanelBody title={ __( "Error Message Text" ) }
+							<PanelBody title={ __( "Error Message " ) }
 								initialOpen={ false }
 								className="uagb__url-panel-body">
 								<TextareaControl
-									label="Error Message"
+									label="Error Message Text"
 									help={ __( "Enter a message you want to display after unsuccessfull form submission" ) }
 									value={ failedMessage }
 									onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
