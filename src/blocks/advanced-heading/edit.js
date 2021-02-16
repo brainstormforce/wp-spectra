@@ -50,6 +50,10 @@ class UAGBAdvancedHeading extends Component {
 	}
 
 	componentDidMount() {
+		const {
+			headingTitleString,
+			headingTitle
+		} = this.props.attributes
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -64,6 +68,10 @@ class UAGBAdvancedHeading extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+
+		if ( ! headingTitleString || headingTitleString !== headingTitle ) {
+			this.props.setAttributes( { headingTitleString: headingTitle } )
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -360,7 +368,8 @@ class UAGBAdvancedHeading extends Component {
 						className='uagb-heading-text'
 						multiline={ false }
 						onChange={ ( value ) => {
-							setAttributes( { headingTitle: value } ) }
+							setAttributes( { headingTitle: value } ) 
+							setAttributes( { headingTitleString: value } ) }
 						}
 						onMerge={ mergeBlocks }
 						unstableOnSplit={
