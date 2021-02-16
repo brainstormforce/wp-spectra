@@ -7,7 +7,7 @@ const {Dashicon} = wp.components
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 /**
  * Template option choices for predefined form layouts.
  *
@@ -18,7 +18,7 @@ const variations = [
 	{
 		name: 'simple-contact-form',
 		label: __( 'Simple Contact Form' ),
-		icon:  <Dashicon icon="phone" />,
+		icon:  UAGB_Block_Icons.form1,
 		title: __( 'Simple Contact Form' ),
 		attributes: {
 		},
@@ -34,7 +34,7 @@ const variations = [
 	{
 		name: 'newsletter-form',
 		label: __( 'Newsletter Form' ),
-		icon:  <Dashicon icon="buddicons-pm" />,
+		icon:  UAGB_Block_Icons.form2,
 		title: __( 'Newsletter Form' ),
 		attributes: {
 		},
@@ -47,7 +47,7 @@ const variations = [
 	{
 		name: 'suggestion-form',
 		label: __( 'Suggestion Form' ),
-		icon:  <Dashicon icon="edit" />,
+		icon:  UAGB_Block_Icons.form3,
 		title: __( 'Suggestion Form' ),
 		attributes: {
 		}, 

@@ -2645,7 +2645,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'successMessageBorderColor'  => 'green',
 							'successMessageBorderStyle'  => 'solid',
 							'successMessageBorderWidth'  => 2,
-							'failedMessage'  => 'There has been some error while submitting the form. Please verify all form fields again.',
+							'failedMessage'              => 'There has been some error while submitting the form. Please verify all form fields again.',
 							'failedMessageTextColor'     => '#000000',
 							'failedMessageBorderColor'   => 'red',
 							'failedMessageBGColor'       => '#f5f5f',
