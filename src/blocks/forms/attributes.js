@@ -26,7 +26,7 @@ const attributes = {
 	},
 	failedMessage : {
 		type: "string",
-		default: __( 'Unsuccessful Submission!' ,'ultimate-addons-for-gutenberg' )
+		default: __( 'There has been some error while submitting the form. Please verify all form fields again.' ,'ultimate-addons-for-gutenberg' )
 	},
 	confirmationUrl : {
 		type: "string",

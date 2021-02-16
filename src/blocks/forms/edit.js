@@ -333,12 +333,14 @@ class UAGBFormsEdit extends Component {
 					</ButtonGroup>
 					{ 'message' === confirmationType && 
 						<Fragment>
-							<TextareaControl
-								label="Success Message"
-								help={ __( "Enter a message you want to display after successfull form Submission" ) }
-								value={ confirmationMessage }
-								onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
-							/>
+							<PanelBody>
+								<TextareaControl
+									label="Success Message"
+									help={ __( "Enter a message you want to display after successfull form submission" ) }
+									value={ confirmationMessage }
+									onChange={ ( value ) => setAttributes( { confirmationMessage: value } ) }
+								/>
+							</PanelBody>
 							<PanelBody
 								title={ __( "Success Message Design" ) }
 								initialOpen={ false }
@@ -388,14 +390,16 @@ class UAGBFormsEdit extends Component {
 								/>
 
 							</PanelBody>
-							<TextareaControl
-								label="Failed Message"
-								help={ __( "Enter a message you want to display after unsuccessfull form Submission" ) }
-								value={ failedMessage }
-								onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
-							/>
+							<PanelBody>
+								<TextareaControl
+									label="Error Message"
+									help={ __( "Enter a message you want to display after unsuccessfull form submission" ) }
+									value={ failedMessage }
+									onChange={ ( value ) => setAttributes( { failedMessage: value } ) }
+								/>
+							</PanelBody>
 							<PanelBody
-								title={ __( "Failed Message Design" ) }
+								title={ __( "Error Message Design" ) }
 								initialOpen={ false }
 								className="uagb__url-panel-body"
 							>
