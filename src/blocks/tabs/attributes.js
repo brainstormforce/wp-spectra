@@ -1,14 +1,14 @@
 /**
  * BLOCK: UAGB Tabs Block Attributes
  */
-
+const { __ } = wp.i18n
 const attributes = {
 	block_id :{
 		type : "string"
 	},
 	tabHeaders: {
 		type: 'array',
-		default: ['Tab 1','Tab 2','Tab 3']
+		default: [__('Tab 1' , 'ultimate-addons-for-gutenberg' ),__('Tab 2','ultimate-addons-for-gutenberg'),__('Tab 3','ultimate-addons-for-gutenberg')]
 	},
 	tabActive: {
 		type: 'number',

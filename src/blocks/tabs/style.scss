@@ -35,19 +35,23 @@
         padding: 10px;
     }
 }
+
 //Horizonatal Styles
 .uagb-tabs__wrap.uagb-tabs__hstyle1-desktop {
     flex-direction: column;
-    ul.uagb-tabs__panel{
+    ul.uagb-tabs__panel , html[dir=rtl] ul.uagb-tabs__panel{
         margin:0px;
         padding:0px;
     }
-    .uagb-tab{  
+    .uagb-tab {  
         border: 2px solid;
         margin: 10px 10px 10px 0px;
         padding: 12px;
     }
-    p{
+    html[dir=rtl] .uagb-tab{
+        margin: 10px 10px 10px 0px;
+    }
+    p , html[dir=rtl] p{
         margin:0px;
     }
     .uagb-tabs__body-wrap{
@@ -150,7 +154,7 @@
         max-width: 25%;
         .uagb-tab{  
             border: 2px solid;
-            margin: 0px 10px 10px 0px;
+            margin: 0px 10px 10px 10px;
             padding: 12px;
             p{
                 margin:0px;
@@ -163,6 +167,7 @@
         max-width: 75%;
     }
 }
+
 .uagb-tabs__wrap.uagb-tabs__vstyle7-desktop {
     flex-direction: row;
     ul.uagb-tabs__panel{
@@ -175,7 +180,7 @@
         padding:0px;
         border-bottom: 2px solid #f1f1f1;
         .uagb-tab{  
-            margin: 10px 10px 0px 0px;
+            margin: 10px 10px 0px 10px;
             padding: 12px;
             background: none;
             p{
@@ -208,7 +213,7 @@
             border-top: 2px solid;
             border-left: 2px solid;
             border-bottom: 2px solid;
-            margin: 0px -1px 10px 0px;
+            margin: 0px -1px 10px 10px;
             padding: 12px;
             p{
                 margin:0px;
@@ -234,7 +239,7 @@
         .uagb-tab{  
             border-radius: 30px;
             border: 2px solid;
-            margin: 0px 10px 10px 0px;
+            margin: 0px 10px 10px 10px;
             padding: 5px 20px 5px 20px;
             p{
                 margin:0px;
@@ -390,7 +395,7 @@
          max-width: 25%;
          .uagb-tab{  
              border: 2px solid;
-             margin: 0px 10px 10px 0px;
+             margin: 0px 10px 10px 10px;
              padding: 12px;
              p{
                  margin:0px;
@@ -415,7 +420,7 @@
          padding:0px;
          border-bottom: 2px solid #f1f1f1;
          .uagb-tab{  
-             margin: 10px 10px 0px 0px;
+             margin: 10px 10px 0px 10px;
              padding: 12px;
              background: none;
              p{
@@ -448,7 +453,7 @@
              border-top: 2px solid;
              border-left: 2px solid;
              border-bottom: 2px solid;
-             margin: 0px -1px 10px 0px;
+             margin: 0px -1px 10px 10px;
              padding: 12px;
              p{
                  margin:0px;
@@ -474,7 +479,7 @@
          .uagb-tab{  
              border-radius: 30px;
              border: 2px solid;
-             margin: 0px 10px 10px 0px;
+             margin: 0px 10px 10px 10px;
              padding: 5px 20px 5px 20px;
              p{
                  margin:0px;
