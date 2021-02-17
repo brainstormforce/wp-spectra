@@ -56,3 +56,15 @@ function uagb_fail_wp_version() {
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 }
+
+add_filter( 'ast_block_templates_localize_vars', function( $vars = array() ) {
+	// if ( defined( 'ASTRA_SITES_VER' ) ) {
+	// 	return $vars;
+	// }
+
+	$vars['button_text'] = 'UAG Templates';
+	$vars['display_button_logo'] = false;
+	$vars['popup_logo_uri'] = 'http://localhost/dev/wp-content/plugins/ultimate-addons-for-gutenberg/admin/assets/images/uagb_logo.svg';
+	
+	return $vars;
+});
