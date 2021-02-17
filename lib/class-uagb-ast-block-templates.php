@@ -51,16 +51,23 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 			add_filter( 'ast_block_templates_localize_vars', array( $this, 'update_vars' ) );
 		}
 
-		function update_vars( $vars = array() ) {
-			// if ( defined( 'ASTRA_SITES_VER' ) ) {
-			// 	return $vars;
-			// }
-			$vars['button_text'] = 'UAG Templates';
+		/**
+		 * Add support to change template button text.
+		 *
+		 * @since x.x.x
+		 * @param  array $vars localize array of button.
+		 */
+		public function update_vars( $vars = array() ) {
+			if ( defined( 'ASTRA_SITES_VER' ) ) {
+				return $vars;
+			}
+
+			$vars['button_text']         = 'UAG Templates';
 			$vars['display_button_logo'] = false;
-			$vars['popup_logo_uri'] = 'http://localhost/dev/wp-content/plugins/ultimate-addons-for-gutenberg/admin/assets/images/uagb_logo.svg';
+			$vars['popup_logo_uri']      = UAGB_URL . '/admin/assets/images/uagb_logo.svg';
 			return $vars;
 		}
-		
+
 		/**
 		 * Version Check
 		 *
@@ -76,7 +83,7 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 				$file_data = json_decode( file_get_contents( $file ), true );
 				// @codingStandardsIgnoreEnd
 				global $ast_block_templates_version, $ast_block_templates_init;
-				$path = realpath( dirname( __FILE__ ) . '/ast-block-templates/ast-block-templates.php' );
+				$path    = realpath( dirname( __FILE__ ) . '/ast-block-templates/ast-block-templates.php' );
 				$version = isset( $file_data['version'] ) ? $file_data['version'] : 0;
 
 				// Compare versions.
