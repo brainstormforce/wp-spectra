@@ -69,3 +69,16 @@
   .rtl .uagb-post-grid .uagb-post__text{
     text-align:right;
 }
+
+/* for icon list */
+.rtl .uagb-icon-list__outer-wrap:not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap {
+  margin-left: 15px;
+}
+/* for faq icon */
+.rtl .uagb-faq__outer-wrap.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap {
+  margin-left: 10px;
+}
+/* for price list */
+.rtl .uagb-rm__content{
+  text-align:right;
+}
