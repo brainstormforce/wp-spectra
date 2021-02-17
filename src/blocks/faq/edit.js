@@ -137,6 +137,12 @@ class UAGBFaqEdit extends Component {
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((faqChild, key) => {
+			faqChild.attributes.headingTag = this.props.attributes.headingTag;
+		});
 	}
 	onchangeIcon ( value ) {
 		const { setAttributes } = this.props
@@ -1060,7 +1066,8 @@ class UAGBFaqEdit extends Component {
 					`uagb-faq-inactive-other-${ this.props.attributes.inactiveOtherItems }`,
 					equalHeightClass
 				) }
-				data-faqtoggle = { this.props.attributes.enableToggle }
+				data-faqtoggle = { this.props.attributes.enableToggle } 
+				role="tablist"
 				>
                     <InnerBlocks
                         template={ getFaqChildTemplate( 2, faq ) }
