@@ -497,7 +497,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					</div>
 					<?php if ( $headings ) { ?>
 						<div class="uagb-toc__list-wrap">
-						<?php $this->filter_array( $headings ); ?>
+						
+						<?php //$this->filter_array( $headings ); ?>
 					<?php } else { ?>
 						<p class="uagb_table-of-contents-placeholder">
 							<?php esc_html_e( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ); ?>
@@ -505,6 +506,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					<?php } ?>
 				</div>
 			</div>
+			<div id='toc-pro'></div> 
 			<?php
 				return ob_get_clean();
 		}

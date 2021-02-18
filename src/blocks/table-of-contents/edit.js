@@ -1005,23 +1005,23 @@ export default compose(
 						if( element.innerBlocks.length > 0 ) {
 							getData( element.innerBlocks, a );
 						} else {
-							if( element.name === 'core/heading' ) {
+							// if( element.name === 'core/heading' ) {
 								a.push( element );
-							}
+							// }
 
-							if( element.name === 'uagb/advanced-heading' ) {
-								a.push( element );
-							}
+							// if( element.name === 'uagb/advanced-heading' ) {
+							// 	a.push( element );
+							// }
 						}
 					});
 				} else {
-					if( header.name === 'core/heading' ) {
+					// if( header.name === 'core/heading' ) {
 						a.push( header );
-					}
+					// }
 
-					if( header.name === 'uagb/advanced-heading' ) {
-						a.push( header );
-					}
+					// if( header.name === 'uagb/advanced-heading' ) {
+						// a.push( header );
+					// }
 				}
 
 			});
