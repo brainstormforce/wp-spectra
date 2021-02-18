@@ -49,7 +49,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 			add_action( 'wp_ajax_ast-block-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
 			add_action( 'wp_ajax_ast-block-templates-check-sync-library-status', array( $this, 'check_sync_status' ) );
 			add_action( 'wp_ajax_ast-block-templates-update-sync-library-status', array( $this, 'update_library_complete' ) );
-			add_action( 'admin_head', array( $this, 'start_importer' ) );
+			add_action( 'admin_head', array( $this, 'setup_templates' ) );
 		}
 
 		/**
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		public function start_importer() {
+		public function setup_templates() {
 
 			$is_fresh_site = get_site_option( 'ast-block-templates-fresh-site', '' );
 
@@ -211,71 +211,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 			}
 
 			return $this->last_export_checksums;
-		}
-
-		/**
-		 * Check Cron Status
-		 *
-		 * Gets the current cron status by performing a test spawn. Cached for one hour when all is well.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param bool $cache Whether to use the cached result from previous calls.
-		 * @return true|WP_Error Boolean true if the cron spawner is working as expected, or a WP_Error object if not.
-		 */
-		public function test_cron( $cache = true ) {
-			global $wp_version;
-
-			if ( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ) {
-				return new WP_Error( 'ast_block_templates_cron_error', esc_html__( 'ERROR! Cron schedules are disabled by setting constant DISABLE_WP_CRON to true.<br/>To start the import process please enable the cron by setting the constant to false. E.g. define( \'DISABLE_WP_CRON\', false );', 'ast-block-templates' ) );
-			}
-
-			if ( defined( 'ALTERNATE_WP_CRON' ) && ALTERNATE_WP_CRON ) {
-				return new WP_Error( 'ast_block_templates_cron_error', esc_html__( 'ERROR! Cron schedules are disabled by setting constant ALTERNATE_WP_CRON to true.<br/>To start the import process please enable the cron by setting the constant to false. E.g. define( \'ALTERNATE_WP_CRON\', false );', 'ast-block-templates' ) );
-			}
-
-			$cached_status = get_transient( 'ast-block-templates-cron-test-ok' );
-
-			if ( $cache && $cached_status ) {
-				return true;
-			}
-
-			$sslverify     = version_compare( $wp_version, 4.0, '<' );
-			$doing_wp_cron = sprintf( '%.22F', microtime( true ) );
-
-			$cron_request = apply_filters(
-				'cron_request',
-				array(
-					'url'  => site_url( 'wp-cron.php?doing_wp_cron=' . $doing_wp_cron ),
-					'key'  => $doing_wp_cron,
-					'args' => array(
-						'timeout'   => 3,
-						'blocking'  => true,
-						'sslverify' => apply_filters( 'https_local_ssl_verify', $sslverify ),
-					),
-				)
-			);
-
-			$cron_request['args']['blocking'] = true;
-
-			$result = wp_remote_post( $cron_request['url'], $cron_request['args'] );
-
-			if ( is_wp_error( $result ) ) {
-				return $result;
-			} elseif ( wp_remote_retrieve_response_code( $result ) >= 300 ) {
-				return new WP_Error(
-					'unexpected_http_response_code',
-					sprintf(
-						/* translators: 1: The HTTP response code. */
-						__( 'Unexpected HTTP response code: %s', 'ast-block-templates' ),
-						intval( wp_remote_retrieve_response_code( $result ) )
-					)
-				);
-			} else {
-				set_transient( 'ast-block-templates-cron-test-ok', 1, 3600 );
-				return true;
-			}
-
 		}
 
 		/**
@@ -453,8 +388,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 
 					update_site_option( 'ast-block-templates-site-requests', $total_requests['pages'], 'no' );
 
-					$this->generate_file( 'ast-block-templates-site-requests', $total_requests['pages'] );
-
 					return $total_requests['pages'];
 				}
 			}
@@ -495,8 +428,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 					ast_block_templates_log( 'BLOCK: Requests count ' . $total_requests['pages'] );
 
 					update_site_option( 'ast-block-templates-block-requests', $total_requests['pages'], 'no' );
-
-					$this->generate_file( 'ast-block-templates-block-requests', $total_requests['pages'] );
 
 					return $total_requests['pages'];
 				}
@@ -553,7 +484,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 
 					if ( ast_block_templates_doing_wp_cli() ) {
 						ast_block_templates_log( 'SITE: Generating ' . $option_name . '.json file' );
-						$this->generate_file( $option_name, $all_blocks );
 					}
 				}
 			} else {
@@ -611,7 +541,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 
 					if ( ast_block_templates_doing_wp_cli() ) {
 						ast_block_templates_log( 'BLOCK: Genearting ' . $option_name . '.json file' );
-						$this->generate_file( $option_name, $all_blocks );
 					}
 				}
 			} else {
@@ -619,21 +548,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 			}
 
 			ast_block_templates_log( 'BLOCK: Completed request ' . $page );
-		}
-
-		/**
-		 * Generate JSON file.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param  string $filename File name.
-		 * @param  array  $data     JSON file data.
-		 * @return void.
-		 */
-		public function generate_file( $filename = '', $data = array() ) {
-			if ( ast_block_templates_doing_wp_cli() ) {
-				ast_block_templates_get_filesystem()->put_contents( AST_BLOCK_TEMPLATES_DIR . 'dist/json/' . $filename . '.json', wp_json_encode( $data ) );
-			}
 		}
 
 	}

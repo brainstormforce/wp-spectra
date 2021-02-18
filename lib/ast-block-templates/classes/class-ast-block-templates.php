@@ -208,7 +208,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 
 			// Extract normal and image links.
 			foreach ( $all_links as $key => $link ) {
-				if ( preg_match( '/^((https?:\/\/)|(www\.))([a-z0-9-].?)+(:[0-9]+)?\/[\w\-]+\.(jpg|png|gif|jpeg)\/?$/i', $link ) ) {
+				if ( ast_block_templates_is_valid_image( $link ) ) {
 
 					// Get all image links.
 					// Avoid *-150x, *-300x and *-1024x images.
@@ -377,6 +377,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				apply_filters(
 					'ast_block_templates_localize_vars',
 					array(
+						'popup_class'         => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
 						'ajax_url'            => admin_url( 'admin-ajax.php' ),
 						'uri'                 => AST_BLOCK_TEMPLATES_URI,
 						'white_label_name'    => '',
