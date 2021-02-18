@@ -227,90 +227,116 @@ class UAGBTabsEdit extends Component {
 		return (
 			<Fragment>     
 				<InspectorControls>
-                        <PanelBody title={ __( 'Tabs Style' ) }>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: __( "Desktop" ),
-									className: "uagb-desktop-tab",
-								},
-								{
-									name: "tablet",
-									title: __( "Tablet" ),
-									className: "uagb-tablet-tab",
-								},
-								{
-									name: "mobile",
-									title: __( "Mobile" ),
-									className: "uagb-mobile-tab",
-								},
-							] }>
-							{
-								( tabName ) => {
-									if( "desktop" === tabName.name ) {
-										return <SelectControl
-														label={ __( 'Desktop Style' ) }
-														value={ tabsStyleD }
-														options={ [
-															{value: 'hstyle1', label: __('Horizontal Style 1')},
-															{value: 'hstyle2', label: __('Horizontal Style 2')},
-															{value: 'hstyle3', label: __('Horizontal Style 3')},
-															{value: 'hstyle4', label: __('Horizontal Style 4')},
-															{value: 'hstyle5', label: __('Horizontal Style 5')},
-															{value: 'vstyle6', label: __('Vertical Style 6')},
-															{value: 'vstyle7', label: __('Vertical Style 7')},
-															{value: 'vstyle8', label: __('Vertical Style 8')},
-															{value: 'vstyle9', label: __('Vertical Style 9')},
-															{value: 'vstyle10', label: __('Vertical Style 10')},
-														] }
-														onChange={ (value) => setAttributes( { tabsStyleD: value } ) }
-													/>
-									}else if( "tablet" === tabName.name ) {
-										return <SelectControl
-													label={ __( 'Tablet Style' ) }
-													value={ tabsStyleT }
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1')},
-														{value: 'hstyle2', label: __('Horizontal Style 2')},
-														{value: 'hstyle3', label: __('Horizontal Style 3')},
-														{value: 'hstyle4', label: __('Horizontal Style 4')},
-														{value: 'hstyle5', label: __('Horizontal Style 5')},
-														{value: 'vstyle6', label: __('Vertical Style 6')},
-														{value: 'vstyle7', label: __('Vertical Style 7')},
-														{value: 'vstyle8', label: __('Vertical Style 8')},
-														{value: 'vstyle9', label: __('Vertical Style 9')},
-														{value: 'vstyle10', label: __('Vertical Style 10')},
-													] }
-													onChange={ (value) => setAttributes( { tabsStyleT: value } ) }
-												/>
-									}else{
-										return  <SelectControl
-														label={ __( 'Mobile Style' ) }
-														value={ tabsStyleM }
-														options={ [
-															{value: 'hstyle1', label: __('Horizontal Style 1')},
-															{value: 'hstyle2', label: __('Horizontal Style 2')},
-															{value: 'hstyle3', label: __('Horizontal Style 3')},
-															{value: 'hstyle4', label: __('Horizontal Style 4')},
-															{value: 'hstyle5', label: __('Horizontal Style 5')},
-															{value: 'vstyle6', label: __('Vertical Style 6')},
-															{value: 'vstyle7', label: __('Vertical Style 7')},
-															{value: 'vstyle8', label: __('Vertical Style 8')},
-															{value: 'vstyle9', label: __('Vertical Style 9')},
-															{value: 'vstyle10', label: __('Vertical Style 10')},
-															{value: 'stack1', label: __('Stack Style 11')},
-															{value: 'stack2', label: __('Stack Style 12')},
-															{value: 'stack3', label: __('Stack Style 13')},
-															{value: 'stack4', label: __('Stack Style 14')},
-														] }
-														onChange={ (value) => setAttributes( { tabsStyleM: value } ) }
-													/>
-									}
-								}
+					
+					<PanelBody title={ __( 'Tabs Style' ) }>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					tabs={ [
+						{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className: "uagb-desktop-tab uagb-responsive-tabs",
+						},
+						{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className: "uagb-tablet-tab uagb-responsive-tabs",
+						},
+						{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className: "uagb-mobile-tab uagb-responsive-tabs",
+						},
+					] }>
+					{
+						( tab ) => {
+							let tabout
+
+							if ( "mobile" === tab.name ) {
+								tabout = (
+									<Fragment>
+										
+										<SelectControl
+											label={ __( "Tabs Style" ) }
+											value={ tabsStyleM }
+											onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
+											beforeIcon="editor-textcolor"
+											initialPosition={30}
+											options={ [
+												{value: 'hstyle1', label: __('Horizontal Style 1')},
+												{value: 'hstyle2', label: __('Horizontal Style 2')},
+												{value: 'hstyle3', label: __('Horizontal Style 3')},
+												{value: 'hstyle4', label: __('Horizontal Style 4')},
+												{value: 'hstyle5', label: __('Horizontal Style 5')},
+												{value: 'vstyle6', label: __('Vertical Style 6')},
+												{value: 'vstyle7', label: __('Vertical Style 7')},
+												{value: 'vstyle8', label: __('Vertical Style 8')},
+												{value: 'vstyle9', label: __('Vertical Style 9')},
+												{value: 'vstyle10', label: __('Vertical Style 10')},
+												{value: 'stack1', label: __('Stack Style 11')},
+												{value: 'stack2', label: __('Stack Style 12')},
+												{value: 'stack3', label: __('Stack Style 13')},
+												{value: 'stack4', label: __('Stack Style 14')},
+											] }
+										/>
+									</Fragment>
+								)
+							} else if ( "tablet" === tab.name ) {
+								tabout = (
+									<Fragment>
+										
+										<SelectControl
+											label={ __( "Tabs Style" ) }
+											value={ tabsStyleT }
+											onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
+											beforeIcon="editor-textcolor"
+											initialPosition={30}
+											options={ [
+												{value: 'hstyle1', label: __('Horizontal Style 1')},
+												{value: 'hstyle2', label: __('Horizontal Style 2')},
+												{value: 'hstyle3', label: __('Horizontal Style 3')},
+												{value: 'hstyle4', label: __('Horizontal Style 4')},
+												{value: 'hstyle5', label: __('Horizontal Style 5')},
+												{value: 'vstyle6', label: __('Vertical Style 6')},
+												{value: 'vstyle7', label: __('Vertical Style 7')},
+												{value: 'vstyle8', label: __('Vertical Style 8')},
+												{value: 'vstyle9', label: __('Vertical Style 9')},
+												{value: 'vstyle10', label: __('Vertical Style 10')},
+											] }
+										/>
+									</Fragment>
+								)
+							} else {
+								tabout = (
+									<Fragment>
+										
+										<RangeControl
+											label={ __( "Tabs Style" ) }
+											value={ tabsStyleD }
+											onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
+											beforeIcon="editor-textcolor"
+											initialPosition={30}
+											options={ [
+												{value: 'hstyle1', label: __('Horizontal Style 1')},
+												{value: 'hstyle2', label: __('Horizontal Style 2')},
+												{value: 'hstyle3', label: __('Horizontal Style 3')},
+												{value: 'hstyle4', label: __('Horizontal Style 4')},
+												{value: 'hstyle5', label: __('Horizontal Style 5')},
+												{value: 'vstyle6', label: __('Vertical Style 6')},
+												{value: 'vstyle7', label: __('Vertical Style 7')},
+												{value: 'vstyle8', label: __('Vertical Style 8')},
+												{value: 'vstyle9', label: __('Vertical Style 9')},
+												{value: 'vstyle10', label: __('Vertical Style 10')},
+											] }
+										/>
+									</Fragment>
+								)
 							}
-							</TabPanel>
+
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>	
+			
 						</PanelBody>
                         <PanelBody title={ __( 'Tabs Title Settings' ) }>
                             <SelectControl
