@@ -130,9 +130,6 @@ class UAGBRestaurantMenuChild extends Component {
             </InspectorControls>
 		)
 		
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( this.props.clientId );
-		const parentAttributes = select('core/block-editor').getBlockAttributes( parentClientId );
-		
 		return (
 			<Fragment>
 				{   ( imagePosition =="top" )  && <BlockControls key='controls'>
@@ -155,7 +152,7 @@ class UAGBRestaurantMenuChild extends Component {
 						) } >
 										<div className = "uagb-rm__content" >
 											
-											{ ( parentAttributes.imagePosition == "top" || parentAttributes.imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
+											{ ( imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
 											<div className ="uagb-rm__text-wrap">
 												{
 													<Fragment>
@@ -175,7 +172,7 @@ class UAGBRestaurantMenuChild extends Component {
 												}
 											</div>
 											
-											{ ( parentAttributes.imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  /> }
+											{ ( imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  /> }
 										</div>
 										<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
 									</div>
