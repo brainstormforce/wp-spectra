@@ -229,7 +229,7 @@ class UAGBTabsEdit extends Component {
 				<InspectorControls>
 					
 					<PanelBody title={ __( 'Tabs Style' ) }>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
 					tabs={ [
 						{
 							name: "desktop",
@@ -256,7 +256,7 @@ class UAGBTabsEdit extends Component {
 									<Fragment>
 										
 										<SelectControl
-											label={ __( "Tabs Style" ) }
+											label={ __( "Mobile Style" ) }
 											value={ tabsStyleM }
 											onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
 											beforeIcon="editor-textcolor"
@@ -284,7 +284,7 @@ class UAGBTabsEdit extends Component {
 									<Fragment>
 										
 										<SelectControl
-											label={ __( "Tabs Style" ) }
+											label={ __( "Tablet Style" ) }
 											value={ tabsStyleT }
 											onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
 											beforeIcon="editor-textcolor"
@@ -308,7 +308,7 @@ class UAGBTabsEdit extends Component {
 									<Fragment>
 										
 										<SelectControl
-											label={ __( "Tabs Style" ) }
+											label={ __( "Desktop Style" ) }
 											value={ tabsStyleD }
 											onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
 											beforeIcon="editor-textcolor"
