@@ -260,7 +260,6 @@ class UAGBTabsEdit extends Component {
 											value={ tabsStyleM }
 											onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
 											beforeIcon="editor-textcolor"
-											initialPosition={30}
 											options={ [
 												{value: 'hstyle1', label: __('Horizontal Style 1')},
 												{value: 'hstyle2', label: __('Horizontal Style 2')},
@@ -289,7 +288,6 @@ class UAGBTabsEdit extends Component {
 											value={ tabsStyleT }
 											onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
 											beforeIcon="editor-textcolor"
-											initialPosition={30}
 											options={ [
 												{value: 'hstyle1', label: __('Horizontal Style 1')},
 												{value: 'hstyle2', label: __('Horizontal Style 2')},
@@ -309,12 +307,11 @@ class UAGBTabsEdit extends Component {
 								tabout = (
 									<Fragment>
 										
-										<RangeControl
+										<SelectControl
 											label={ __( "Tabs Style" ) }
 											value={ tabsStyleD }
 											onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
 											beforeIcon="editor-textcolor"
-											initialPosition={30}
 											options={ [
 												{value: 'hstyle1', label: __('Horizontal Style 1')},
 												{value: 'hstyle2', label: __('Horizontal Style 2')},
