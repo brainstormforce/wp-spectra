@@ -139,25 +139,26 @@
 				});				
 			}
 
-			var header_array = $( 'div.entry-content' ).find( allowed_h_tags_str )
-
+			var header_array = $( 'div.entry-content' ).find( all_header )
+			// console.log(header_array)
+			if ( 0 !== header_array.length ) {
 			header_array.each( function (index){
 				let header = $( this );
 				// .includes('uagb-advanced-heading')
-				// let heading_className = header_array;
-				let heading_className = ( header[0].parentNode.className.includes('uagb-advanced-heading') ) ? header[0].parentNode.className : header[0].className;
+				// let heading_className = ( typeof header[index].className !== 'undefined' ) ? header[index].className : header[index].parentNode.className;
+				// let heading_className = ( header[0].parentNode.className.includes('uagb-advanced-heading') ) ? header[0].parentNode.className : header[0].className;
 				// console.log(attr);
 				// console.log(header[0].className);
-				// console.log(header[0].parentNode.className.includes('uagb-advanced-heading'));
+				console.log(header.parents('.uagb-toc-hide-heading'));
+				// console.log(heading_className)
+				// let exclude_heading = '';
+				// if( heading_className ){
+				// 	if( typeof heading_className !== 'undefined' ){
+				// 		exclude_heading = heading_className.includes('uagb-toc-hide-heading');
+				// 		// console.log(exclude_heading);
+				// 	}
+				// }
 				
-				let exclude_heading = '';
-				if( heading_className ){
-					if( typeof heading_className !== 'undefined' ){
-						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
-						// console.log(exclude_heading);
-					}
-				}
-				// console.log(attr)
 				// console.log(header_array.parentNode.children[2]); //header[0].parentElement.className.includes('uagb-toc-hide-heading');
 				let header_text = parseTocSlug(header.text());
 				// $( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
@@ -166,7 +167,8 @@
 
 						var openLevel = header[0].nodeName.replace(/^H+/, '');
 						var titleText = header.text();
-						var closeLevel = 0;
+
+						// console.log(header[0].nodeName.replace(/^H+/, ''))
 					
 					if (openLevel > level) {
 						TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
@@ -175,9 +177,12 @@
 					}
 					level = parseInt(openLevel);
 					TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
-				
+					
 				// }					
 			});
+		} else{
+			TOC +=  "<p class='uagb_table-of-contents-placeholder'>" + 'Add a header to begin generating the table of contents' + "</p>";
+		}
 
 			$(".uagb-toc__list-wrap").prepend(TOC);
 
