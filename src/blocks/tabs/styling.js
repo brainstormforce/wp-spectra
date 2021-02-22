@@ -81,13 +81,13 @@ function styling( props ) {
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		},
-		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active" : {
+		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active " : {
 			"background": activeTabBgColor,
 		},
 		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active p" : {
 			"color": activeTabTextColor ,
 		},
-		" .uagb-tabs__body-wrap" : {
+		" .uagb-tabs__body-wrap " : {
 			"background": bodyBgColor,
 			"padding-top": generateCSSUnit( tabBodyVertPadding, "px" ),
 			"padding-bottom": generateCSSUnit( tabBodyVertPadding, "px" ),

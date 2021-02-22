@@ -3192,7 +3192,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['activeTabTextColor'],
 				),
 
-				' .uagb-tabs__body-wrap'            => array(
+				' .uagb-tabs__body-wrap '            => array(
 					'background'     => $attr['bodyBgColor'],
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabBodyVertPadding'], 'px' ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabBodyVertPadding'], 'px' ),
