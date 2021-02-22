@@ -131,30 +131,53 @@
 			var level = 0;
 
 			if ( 0 !== all_header.length ) {
-				console.log(all_header)
+	
 				all_header.each( function (){
 					let header = $( this );
-					console.log(header);
 					let header_text = parseTocSlug(header.text());
-					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
-					let exclude_heading = header[0].className.includes('uagb-toc-hide-heading');
-					if ( !exclude_heading ) {
-
-							var openLevel = header[0].nodeName.replace(/^H+/, '');
-							var titleText = header.text();
-							var closeLevel = 0;
-						
-						if (openLevel > level) {
-							TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
-						} else if (openLevel < level) {
-							TOC += (new Array(level - openLevel + 1)).join("</ul>");
-						}
-						level = parseInt(openLevel);
-						TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
-					
-					}					
+					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
 				});				
 			}
+
+			var header_array = $( 'div.entry-content' ).find( allowed_h_tags_str )
+
+			header_array.each( function (index){
+				let header = $( this );
+				// .includes('uagb-advanced-heading')
+				// let heading_className = header_array;
+				let heading_className = ( header[0].parentNode.className.includes('uagb-advanced-heading') ) ? header[0].parentNode.className : header[0].className;
+				// console.log(attr);
+				// console.log(header[0].className);
+				// console.log(header[0].parentNode.className.includes('uagb-advanced-heading'));
+				
+				let exclude_heading = '';
+				if( heading_className ){
+					if( typeof heading_className !== 'undefined' ){
+						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
+						// console.log(exclude_heading);
+					}
+				}
+				// console.log(attr)
+				// console.log(header_array.parentNode.children[2]); //header[0].parentElement.className.includes('uagb-toc-hide-heading');
+				let header_text = parseTocSlug(header.text());
+				// $( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
+				// let exclude_heading = header[0].className.includes('uagb-toc-hide-heading');
+				// if ( !exclude_heading ) {
+
+						var openLevel = header[0].nodeName.replace(/^H+/, '');
+						var titleText = header.text();
+						var closeLevel = 0;
+					
+					if (openLevel > level) {
+						TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
+					} else if (openLevel < level) {
+						TOC += (new Array(level - openLevel + 1)).join("</ul>");
+					}
+					level = parseInt(openLevel);
+					TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
+				
+				// }					
+			});
 
 			$(".uagb-toc__list-wrap").prepend(TOC);
 
