@@ -16,7 +16,7 @@ const { __ } = wp.i18n
 
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
+	registerBlockType, createBlock
 } = wp.blocks
 
 /**
@@ -49,4 +49,52 @@ registerBlockType( "uagb/blockquote", {
 	save,
 	example: {},
 	deprecated,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/quote'],
+				transform: (attributes) => {
+					return createBlock('uagb/blockquote', {
+						descriptionText : attributes.value,
+						author: attributes.citation,
+						align: attributes.align
+					})
+				}
+			},
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: (attributes) => {
+					return createBlock('uagb/blockquote', {
+						descriptionText: attributes.content,
+						align:attributes.align,
+					})
+				}
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/quote'],
+				transform: (attributes) => {
+					return createBlock('core/quote', {
+						value : `<p>${ attributes.descriptionText }</p>`,
+						citation: attributes.author,
+						align: attributes.align
+					})
+				}
+			},
+			{
+				type: 'block',
+				blocks: ['core/heading'],
+				transform: (attributes) => {
+					return createBlock('core/heading', {
+						content: attributes.descriptionText,
+						align:attributes.align
+					})
+				}
+			},
+		]
+	},
 } )
