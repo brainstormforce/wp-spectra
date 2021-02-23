@@ -213,8 +213,7 @@ const attributes = {
 	},
 	// input Font Size
 	inputFontSize: {
-		type: "number",
-		default: 20
+		type: "number"
 	},
 	inputFontSizeType: {
 		type: "string",
@@ -238,6 +237,7 @@ const attributes = {
 	},
 	toggleSize:{
 		type: "number",
+		default:20
 	},
 	togglewidthSize:{
 		type: "number",

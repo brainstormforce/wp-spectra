@@ -149,7 +149,7 @@ class UAGBFormsCheckboxEdit extends Component {
 					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="checkbox" className="uagb-forms-input" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={value} required={checkboxRequired}  />
+						<input type="checkbox" className="uagb-forms-checkbox" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={value} required={checkboxRequired}  />
 						<label htmlFor={`checkbox-${value}-${block_id}`}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);

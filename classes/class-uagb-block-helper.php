@@ -5096,30 +5096,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-forms-main-form .uagb-forms-field-set' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], 'px' ),
 				),
-				' .uagb-forms-main-form input[type=radio]:checked' => array(
-					'appearance' => 'auto',
+				' .uagb-forms-main-form input[type=radio]::checked' => array(
+					'appearance' => 'unset',
+					'background-color' => $attr['bgColor'],
 					'width'      => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 					'height'     => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 				),
-				' .uagb-forms-main-form  .uagb-forms-checkbox-wrap > input:checked' => array(
-					'background-color' => $attr['inputactiveColor'],
-					'appearance'       => 'auto',
-					'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				' .uagb-forms-main-form input[type=checkbox]:checked' => array(
+					'appearance' => 'auto',
+					'background-color' => $attr['bgColor'],
+					'width'      => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+					'height'     => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 				),
 				' .uagb-slider'                            => array(
 					'background-color' => $attr['bgColor'],
 				),
 				' .uagb-forms-main-form input[type=radio]' => array(
+					'appearance' => 'inherit',
 					'border-radius' => '50%',
 					'width'         => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 					'height'        => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					'padding'       => '0px;',
 				),
 				' .uagb-forms-main-form input[type=checkbox]' => array(
+					'appearance' => 'inherit',
 					'width'   => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
 					'height'  => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					'padding' => '0px;',
+					
 				),
 				' .uagb-forms-main-form input[type=url]'   => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
@@ -5156,7 +5158,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-forms-main-form .uagb-forms-input:focus' => array(
 					'outline' => ' none !important',
-					'border'  => '2px solid ' . $attr['inputactiveColor'],
+					'border-color'  => $attr['inputactiveColor'],
 				),
 				' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 					'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
@@ -5183,6 +5185,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['inputColor'],
 					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox'] = array(
+					'background-color' => $attr['bgColor'],
+					'border'           => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'border-radius'    => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+					'color'            => $attr['inputColor'],
 				);
 				$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']    = array(
 					'color' => $attr['inputColor'],
@@ -5240,6 +5248,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .uagb-forms-main-form .uagb-forms-input-label', $combined_selectors );
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input::placeholder', $combined_selectors );
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}

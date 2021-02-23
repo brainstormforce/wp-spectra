@@ -117,13 +117,19 @@ function styling( props ) {
             'color' : inputplaceholderColor,          
             
         },
+        " .uagb-forms-main-form input" : {            
+            "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
+			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
+			"font-family": inputFontFamily,
+            "font-weight": inputFontWeight,
+            'color' : inputplaceholderColor,            
+        },
         " .uagb-forms-main-form select" : {            
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
 			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			"font-family": inputFontFamily,
             "font-weight": inputFontWeight,
-            'color' : inputplaceholderColor,          
-            
+            'color' : inputplaceholderColor,            
         },
         ' .uagb-forms-main-form .uagb-forms-input:focus': {
             'outline' : ' none !important',
@@ -170,6 +176,12 @@ function styling( props ) {
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
         }
+        selectors[" .uagb-forms-main-form  .uagb-forms-checkbox"] = {
+            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
+            'background-color' : bgColor,
+            'color' : inputColor,
+        }
         selectors[" .uagb-slider "] = {
             'background-color' : bgColor,
         }
@@ -195,6 +207,12 @@ function styling( props ) {
             'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
+        }
+        selectors[" .uagb-forms-main-form  .uagb-forms-checkbox"] = {
+            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
+            'background-color' : bgColor,
+            'color' : inputColor,
         }
         selectors[" .uagb-slider "] = {
             'background-color' : bgColor,
