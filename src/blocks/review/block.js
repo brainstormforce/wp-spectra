@@ -21,10 +21,10 @@ registerBlockType( "uagb/review", {
 	icon: UAGB_Block_Icons.review,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "ratings" ),
-		__( "review" ),
-		__( "schema" ),
-		__( "uag" ),
+		__( "ratings",'ultimate-addons-for-gutenberg' ),
+		__( "review",'ultimate-addons-for-gutenberg' ),
+		__( "schema",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	example:{},
 	supports: {

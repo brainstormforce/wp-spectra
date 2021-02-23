@@ -13,11 +13,11 @@ const attributes = {
 	},
 	time_heading:{
 		type: "string",
-		default:__( "Timeline Heading " )
+		default:__( "Timeline Heading ",'ultimate-addons-for-gutenberg' )
 	},
 	time_desc:{
 		type: "string",
-		default:__( "This is Timeline description, you can change me anytime click here " )
+		default:__( "This is Timeline description, you can change me anytime click here ",'ultimate-addons-for-gutenberg' )
 	},
 	dateFormat: {
 		type: "string",

@@ -36,11 +36,11 @@ class TypographyControl extends Component {
 	onAdvancedControlClick() {
 
 		let control = true
-		let label = __( "Hide Advanced" )
+		let label = __( "Hide Advanced",'ultimate-addons-for-gutenberg' )
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
 			control = false
-			label = __( "Advanced" )
+			label = __( "Advanced",'ultimate-addons-for-gutenberg' )
 		}
 
 		this.setState(
@@ -113,9 +113,9 @@ class TypographyControl extends Component {
 					sizeTabletLabel = { this.props.lineHeightTablet.label }
 					size = { this.props.lineHeight }
 					sizeLabel = { this.props.lineHeight.label }
-					sizeMobileText = { __( "Line Height" ) }
-					sizeTabletText = { __( "Line Height" ) }
-					sizeText = { __( "Line Height" ) }
+					sizeMobileText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
+					sizeTabletText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
+					sizeText = { __( "Line Height",'ultimate-addons-for-gutenberg' ) }
 					steps = { 0.1 }
 					{ ...this.props }
 				/>
@@ -133,9 +133,9 @@ class TypographyControl extends Component {
 					sizeTabletLabel = { this.props.fontSizeTablet.label }
 					size = { this.props.fontSize }
 					sizeLabel = { this.props.fontSize.label }
-					sizeMobileText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
-					sizeTabletText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
-					sizeText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
+					sizeMobileText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
+					sizeTabletText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
+					sizeText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size",'ultimate-addons-for-gutenberg' ) : this.props.fontSizeLabel }
 					steps = { 0.1 }
 					{ ...this.props }
 				/>

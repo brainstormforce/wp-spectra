@@ -29,9 +29,9 @@ registerBlockType( "uagb/columns", {
 	icon: UAGB_Block_Icons.columns,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "columns" ),
-		__( "rows" ),
-		__( "uag" ),
+		__( "columns", 'ultimate-addons-for-gutenberg' ),
+		__( "rows", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
 	variations,
