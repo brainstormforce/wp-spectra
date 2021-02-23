@@ -11,9 +11,9 @@ const UserConditionOptions = ( props ) => {
     const { attributes, setAttributes } = props;
     const { Fragment } = wp.element;
     const { 
-        UAGloggedIn,
-        UAGloggedOut,
-        DisplayConditions,
+        UAGLoggedIn,
+        UAGLoggedOut,
+        UAGDisplayConditions,
         UAGHideDesktop,
         UAGHideMob,
         UAGHideTab,
@@ -28,8 +28,8 @@ const UserConditionOptions = ( props ) => {
         <Fragment>
             <SelectControl
 				label={ __( "Display Conditions" ) }
-				value={ DisplayConditions }
-				onChange={ ( value ) => setAttributes( { DisplayConditions: value } ) }
+				value={ UAGDisplayConditions }
+				onChange={ ( value ) => setAttributes( { UAGDisplayConditions: value } ) }
 				options={ [
                     { value: "none", label: __( "None" ) },
                     { value: "userstate", label: __( "User State" ) },
@@ -39,21 +39,21 @@ const UserConditionOptions = ( props ) => {
                     { value: "os", label: __( "Operating System" ) },
                 ]}
 			/> 
-            { DisplayConditions == "userstate" && 
+            { UAGDisplayConditions == "userstate" && 
                 <Fragment>
                     <ToggleControl
                         label={ __('Hide From Logged In Users')}
-                        checked={UAGloggedIn}
-                        onChange={(value) => setAttributes({ UAGloggedIn: !attributes.UAGloggedIn })}
+                        checked={UAGLoggedIn}
+                        onChange={(value) => setAttributes({ UAGLoggedIn: !attributes.UAGLoggedIn })}
                     />
                     <ToggleControl
                         label={ __('Hide From Logged Out Users' ) }
-                        checked={UAGloggedOut}
-                        onChange={(value) => setAttributes({ UAGloggedOut: !attributes.UAGloggedOut })}
+                        checked={UAGLoggedOut}
+                        onChange={(value) => setAttributes({ UAGLoggedOut: !attributes.UAGLoggedOut })}
                     />
                 </Fragment>
             }
-            { DisplayConditions == "responsiveVisibility" && 
+            { UAGDisplayConditions == "responsiveVisibility" && 
                 <Fragment>
                     <ToggleControl
                         label={ __('Hide on Desktop')}
@@ -72,7 +72,7 @@ const UserConditionOptions = ( props ) => {
                     />
                 </Fragment>
             }
-            { DisplayConditions == "os" && 
+            { UAGDisplayConditions == "os" && 
                 <Fragment>
                     <SelectControl
                         label={ __( "Hide on Operating System" ) }
@@ -91,7 +91,7 @@ const UserConditionOptions = ( props ) => {
 			        />
                 </Fragment>
             }
-            { DisplayConditions == "browser" && 
+            { UAGDisplayConditions == "browser" && 
                 <Fragment>
                     <SelectControl
                         label={ __( "Hide on Browser" ) }
@@ -110,7 +110,7 @@ const UserConditionOptions = ( props ) => {
 			        />
                 </Fragment>
             }
-            { DisplayConditions == "userRole" && 
+            { UAGDisplayConditions == "userRole" && 
                 <Fragment>
                     <SelectControl
                         label={ __( "Hide for User Role" ) }

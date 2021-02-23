@@ -11,7 +11,7 @@ function addAttributes( settings ) {
 			UAGSystem: {
 				type: "string"
 			},
-			DisplayConditions: {
+			UAGDisplayConditions: {
 				type: "string"
 			},
 			UAGHideDesktop:{
@@ -26,11 +26,11 @@ function addAttributes( settings ) {
 				type: "boolean",
 		        default: false
 			},
-			UAGloggedIn: {
+			UAGLoggedIn: {
 				type: "boolean",
 		        default: false
 			},
-			UAGloggedOut: {
+			UAGLoggedOut: {
 				type: "boolean",
 		        default: false
 			},

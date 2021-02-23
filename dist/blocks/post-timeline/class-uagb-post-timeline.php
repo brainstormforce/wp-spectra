@@ -524,7 +524,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$outer_class = 'uagb-timeline__outer-wrap';
+
 			$main_classes = array(
+				$outer_class,
 				$block_id,
 				$desktop_class,
 				$tab_class,
@@ -533,7 +536,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			ob_start();
 			?>
-			<div class = "uagb-timeline__outer-wrap <?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
+			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
 				<div  class = "<?php echo esc_html( $this->get_classes( $attributes ) ); ?>" >
 					<div class = "uagb-timeline-wrapper">
 						<div class = "uagb-timeline__main">

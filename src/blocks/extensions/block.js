@@ -43,10 +43,10 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
-		DisplayConditions,
+		UAGDisplayConditions,
 	} = attributes;
 
-	if ( 'responsiveVisibility' === DisplayConditions ) {
+	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
 		if ( UAGHideDesktop ) {	
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
