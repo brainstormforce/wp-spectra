@@ -36,9 +36,9 @@ registerBlockType( "uagb/blockquote", {
 	description: uagb_blocks_info.blocks["uagb/blockquote"]["description"],
 	icon: UAGB_Block_Icons.blockquote,
 	keywords: [
-		__( "blockquote" ),
-		__( "quote" ),
-		__( "uagb" ),
+		__( "blockquote", 'ultimate-addons-for-gutenberg' ),
+		__( "quote", 'ultimate-addons-for-gutenberg' ),
+		__( "uagb", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

@@ -23,9 +23,9 @@ registerBlockType( "uagb/content-timeline-child", {
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/content-timeline" ],
 	keywords: [
-		__( "Content Timeline" ),
-		__( "Timeline" ),
-		__( "uag" ),
+		__( "Content Timeline",'ultimate-addons-for-gutenberg' ),
+		__( "Timeline",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
 	edit,

@@ -22,9 +22,9 @@ registerBlockType( "uagb/marketing-button", {
 	icon: UAGB_Block_Icons.marketing_button,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "marketing button" ),
-		__( "cta" ),
-		__( "uag" ),
+		__( "marketing button", 'ultimate-addons-for-gutenberg' ),
+		__( "cta", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

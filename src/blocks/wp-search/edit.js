@@ -176,31 +176,31 @@ class UAGBWpSearchEdit extends Component {
             return (
 
                 <PanelBody
-                    title={ __( "General" ) }
+                    title={ __( "General",'ultimate-addons-for-gutenberg' ) }
                     initialOpen={ true }
                     className="uagb__url-panel-body"
 				>
                     <SelectControl
-						label={ __( "Layout" ) }
+						label={ __( "Layout",'ultimate-addons-for-gutenberg' ) }
 						value={ layout }
 						options={ [
-                            { value: "input-button", label: __( "Classic" ) },
-							{ value: "input", label: __( "Minimal" ) },
+                            { value: "input-button", label: __( "Classic",'ultimate-addons-for-gutenberg' ) },
+							{ value: "input", label: __( "Minimal",'ultimate-addons-for-gutenberg' ) },
 						] }
 						onChange={ (value) => setAttributes( { layout: value } ) }
 					/>
                     <Fragment>
                         <TextControl
-                            label= { __( "Placeholder" ) }
+                            label= { __( "Placeholder",'ultimate-addons-for-gutenberg' ) }
                             value= { placeholder }
                             onChange={ value => setAttributes( { placeholder: value } ) }
                         />
-                        <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                        <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
                             <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputSizeType === "px" } aria-pressed={ inputSizeType === "px" } onClick={ () => setAttributes( { inputSizeType: "px" } ) }>{ "px" }</Button>
                             <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputSizeType === "%" } aria-pressed={ inputSizeType === "%" } onClick={ () => setAttributes( { inputSizeType: "%" } ) }>{ "%" }</Button>
                         </ButtonGroup>
                         <RangeControl
-                            label={ __( "Input Width" ) }
+                            label={ __( "Input Width",'ultimate-addons-for-gutenberg' ) }
                             value={ inputSize }
                             onChange={ ( value ) => setAttributes( { inputSize: value } ) }
                             min={ 0 }
@@ -216,33 +216,33 @@ class UAGBWpSearchEdit extends Component {
             return (
 
                 <PanelBody
-                    title={ __( "Input Box" ) }
+                    title={ __( "Input Box",'ultimate-addons-for-gutenberg' ) }
                     initialOpen={ false }
                     className="uagb__url-panel-body"
 				>
-                    <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
+                    <p className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
                     <ColorPalette
                         value={ textColor }
                         onChange={ ( value ) => setAttributes( { textColor: value } ) }
                         allowReset
                     />
-                    <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputBgColor }} ></span></span></p>
+                    <p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputBgColor }} ></span></span></p>
                     <ColorPalette
                         value={ inputBgColor }
                         onChange={ ( value ) => setAttributes( { inputBgColor: value } ) }
                         allowReset
                     />
                     <hr/>
-                    <h2>{ __( "Border" ) }</h2>
+                    <h2>{ __( "Border",'ultimate-addons-for-gutenberg' ) }</h2>
                     <SelectControl
-                        label={ __( "Style" ) }
+                        label={ __( "Style",'ultimate-addons-for-gutenberg' ) }
                         value={ borderStyle }
                         options={ [
-                            { value: "none", label: __( "None" ) },
-                            { value: "solid", label: __( "Solid" ) },
-                            { value: "dotted", label: __( "Dotted" ) },
-                            { value: "dashed", label: __( "Dashed" ) },
-                            { value: "double", label: __( "Double" ) },
+                            { value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+                            { value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+                            { value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+                            { value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+                            { value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
                         ] }
                         onChange={ value => {
                             setAttributes( { borderStyle: value } )
@@ -251,7 +251,7 @@ class UAGBWpSearchEdit extends Component {
                     { "none" !== borderStyle &&
                         <Fragment>
                             <RangeControl
-                                label={ __( "Thickness (px)" ) }
+                                label={ __( "Thickness (px)",'ultimate-addons-for-gutenberg' ) }
                                 value={ borderWidth }
                                 onChange={ value => {
                                     setAttributes( { borderWidth: value } )
@@ -260,7 +260,7 @@ class UAGBWpSearchEdit extends Component {
                                 max={ 20 }
                             />
                             <RangeControl
-                                label={ __( "Rounded Corners (px)" ) }
+                                label={ __( "Rounded Corners (px)",'ultimate-addons-for-gutenberg' ) }
                                 value={ borderRadius }
                                 onChange={ value => {
                                     setAttributes( { borderRadius: value } )
@@ -268,7 +268,7 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 50 }
                             />
-                            <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+                            <p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
                             <ColorPalette
                                 value={ borderColor }
                                 onChange={ ( value ) => setAttributes( { borderColor: value } ) }
@@ -302,11 +302,11 @@ class UAGBWpSearchEdit extends Component {
                                 if ( "mobile" === tab.name ) {
                                     tabout = (
                                         <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
                                                 <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
                                                 <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
                                             </ButtonGroup>
-                                            <h2>{ __( "Padding" ) }</h2>
+                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
                                             <RangeControl
                                                 label={ UAGB_Block_Icons.vertical_spacing }
                                                 className={ "uagb-margin-control" }
@@ -330,11 +330,11 @@ class UAGBWpSearchEdit extends Component {
                                 } else if ( "tablet" === tab.name ) {
                                     tabout = (
                                         <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
                                                 <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
                                                 <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
                                             </ButtonGroup>
-                                            <h2>{ __( "Padding" ) }</h2>
+                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
                                             <RangeControl
                                                 label={ UAGB_Block_Icons.vertical_spacing }
                                                 className={ "uagb-margin-control" }
@@ -358,14 +358,14 @@ class UAGBWpSearchEdit extends Component {
                                 } else {
                                     tabout = (
                                         <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
                                                 <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
                                                 <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
                                             </ButtonGroup>
-                                            <h2>{ __( "Padding" ) }</h2>
+                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
                                             <RangeControl
                                                 label={ UAGB_Block_Icons.vertical_spacing }
-                                                className={ "uagb-margin-control" }
+                                                className={ "uagb-margin-control",'ultimate-addons-for-gutenberg' }
                                                 value={ vinputPaddingDesktop }
                                                 onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
                                                 min={ 0 }
@@ -391,7 +391,7 @@ class UAGBWpSearchEdit extends Component {
                     </TabPanel>
                     <hr/>
                     <TypographyControl
-                        label={ __( "Typography" ) }
+                        label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
                         attributes = { attributes }
                         setAttributes = { setAttributes }
                         loadGoogleFonts = { { value: inputloadGoogleFonts, label: 'inputloadGoogleFonts'  } }
@@ -409,13 +409,13 @@ class UAGBWpSearchEdit extends Component {
                     />
                     <BoxShadowControl
                         setAttributes = { setAttributes }
-                        label = { __( "Box Shadow" ) }
-                        boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-                        boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
-                        boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
-                        boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-                        boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-                        boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+                        label = { __( "Box Shadow",'ultimate-addons-for-gutenberg' ) }
+                        boxShadowColor = { { value: boxShadowColor, label: __( "Color",'ultimate-addons-for-gutenberg' ) } }
+                        boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal",'ultimate-addons-for-gutenberg' ) } }
+                        boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical",'ultimate-addons-for-gutenberg' ) } }
+                        boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur",'ultimate-addons-for-gutenberg' ) } }
+                        boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread",'ultimate-addons-for-gutenberg' ) } }
+                        boxShadowPosition = { { value: boxShadowPosition, label: __( "Position",'ultimate-addons-for-gutenberg' ) } }
                     />
                 </PanelBody>
             )
@@ -426,17 +426,17 @@ class UAGBWpSearchEdit extends Component {
 
                 return (
                     <PanelBody
-                        title={ __( "Button" ) }
+                        title={ __( "Button",'ultimate-addons-for-gutenberg' ) }
                         initialOpen={ false }
                         className="uagb__url-panel-body"
                     >
                         <Fragment>
                             <SelectControl
-                                label={ __( "Type" ) }
+                                label={ __( "Type",'ultimate-addons-for-gutenberg' ) }
                                 value={ buttonType }
                                 options={ [
-                                    { value: "icon", label: __( "Icon" ) },
-                                    { value: "text", label: __( "Text" ) },
+                                    { value: "icon", label: __( "Icon",'ultimate-addons-for-gutenberg' ) },
+                                    { value: "text", label: __( "Text",'ultimate-addons-for-gutenberg' ) },
                                 ] }
                                 onChange={ value => {
                                     setAttributes( { buttonType: value } )
@@ -452,7 +452,7 @@ class UAGBWpSearchEdit extends Component {
                                         } }
                                     />
                                     <TypographyControl
-                                        label={ __( "Typography" ) }
+                                        label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
                                         attributes = { attributes }
                                         setAttributes = { setAttributes }
                                         loadGoogleFonts = { { value: buttonloadGoogleFonts, label: 'buttonloadGoogleFonts'  } }
@@ -471,7 +471,7 @@ class UAGBWpSearchEdit extends Component {
                                 </Fragment>
                             }
                             <RangeControl
-                                label={ __( "Width" ) }
+                                label={ __( "Width",'ultimate-addons-for-gutenberg' ) }
                                 value={ buttonWidth }
                                 onChange={ value => {
                                     setAttributes( { buttonWidth: value } )
@@ -480,13 +480,13 @@ class UAGBWpSearchEdit extends Component {
                                 max={ 500 }
                             />
                             <Fragment>
-                                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
+                                <p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
                                 <ColorPalette
                                     value={ buttonBgColor }
                                     onChange={ ( value ) => setAttributes( { buttonBgColor: value } ) }
                                     allowReset
                                 />
-                                <p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
+                                <p className="uagb-setting-label">{ __( "Background Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
                                 <ColorPalette
                                     value={ buttonBgHoverColor }
                                     onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
@@ -494,13 +494,13 @@ class UAGBWpSearchEdit extends Component {
                                 />
                                 { 'text' === buttonType &&
                                     <Fragment>
-                                        <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
+                                        <p className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
                                         <ColorPalette
                                             value={ buttonTextColor }
                                             onChange={ ( value ) => setAttributes( { buttonTextColor: value } ) }
                                             allowReset
                                         />
-                                        <p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
+                                        <p className="uagb-setting-label">{ __( "Text Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
                                         <ColorPalette
                                             value={ buttonTextHoverColor }
                                             onChange={ ( value ) => setAttributes( { buttonTextHoverColor: value } ) }
@@ -512,9 +512,9 @@ class UAGBWpSearchEdit extends Component {
                             { 'icon' === buttonType &&
                                 <Fragment>
                                     <hr className="uagb-editor__separator" />
-                                    <h2>{ __( "Icon" ) }</h2>
+                                    <h2>{ __( "Icon",'ultimate-addons-for-gutenberg' ) }</h2>
                                     <RangeControl
-                                        label={ __( "Size" ) }
+                                        label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
                                         value={ buttonIconSize }
                                         onChange={ value => {
                                             setAttributes( { buttonIconSize: value } )
@@ -522,13 +522,13 @@ class UAGBWpSearchEdit extends Component {
                                         min={ 0 }
                                         max={ 500 }
                                     />
-                                    <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconColor }} ></span></span></p>
+                                    <p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconColor }} ></span></span></p>
                                     <ColorPalette
                                         value={ buttonIconColor }
                                         onChange={ ( value ) => setAttributes( { buttonIconColor: value } ) }
                                         allowReset
                                     />
-                                    <p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconHoverColor }} ></span></span></p>
+                                    <p className="uagb-setting-label">{ __( "Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconHoverColor }} ></span></span></p>
                                     <ColorPalette
                                         value={ buttonIconHoverColor }
                                         onChange={ ( value ) => setAttributes( { buttonIconHoverColor: value } ) }
@@ -550,13 +550,13 @@ class UAGBWpSearchEdit extends Component {
                 return (
 
                     <PanelBody
-                        title={ __( "Icon" ) }
+                        title={ __( "Icon",'ultimate-addons-for-gutenberg' ) }
                         initialOpen={ false }
                         className="uagb__url-panel-body"
                     >
                         <Fragment>
                             <RangeControl
-                                label={ __( "Size" ) }
+                                label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
                                 value={ iconSize }
                                 onChange={ value => {
                                     setAttributes( { iconSize: value } )
@@ -564,7 +564,7 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 500 }
                             />
-                            <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
+                            <p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
                             <ColorPalette
                                 value={ iconColor }
                                 onChange={ ( value ) => setAttributes( { iconColor: value } ) }
@@ -597,7 +597,7 @@ class UAGBWpSearchEdit extends Component {
                                 { "text" === buttonType &&
                                     <RichText
                                         tagName="span"
-                                        placeholder={ __( "Search" ) }
+                                        placeholder={ __( "Search",'ultimate-addons-for-gutenberg' ) }
                                         value={ buttonText }
                                         onChange={ ( value ) => setAttributes( { buttonText: value } ) }
                                         className='uagb-wp-search-button-text'
