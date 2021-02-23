@@ -13,7 +13,7 @@ import "./editor.scss"
 const { __ } = wp.i18n
 
 const {
-	registerBlockType
+	registerBlockType 
 } = wp.blocks
 
 registerBlockType( "uagb/marketing-button", {
