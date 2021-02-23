@@ -13,8 +13,8 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 
 	item.push(
 		{
-			"time_heading": __( "Timeline Heading " ) + i ,
-			"time_desc": __( "This is Timeline description, you can change me anytime click here " ),
+			"time_heading": __( "Timeline Heading ",'ultimate-addons-for-gutenberg' ) + i ,
+			"time_desc": __( "This is Timeline description, you can change me anytime click here ",'ultimate-addons-for-gutenberg' ),
 		}
 	)
 

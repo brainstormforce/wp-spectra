@@ -10,13 +10,13 @@ const materials = []
 
 	tools.push(
 		{
-			"add_required_tools": __( "- A Computer." ),
+			"add_required_tools": __( "- A Computer.", 'ultimate-addons-for-gutenberg' ),
 		}
 	)
 
 	materials.push(
 		{
-			"add_required_materials": __( "- A WordPress Website." ),
+			"add_required_materials": __( "- A WordPress Website.", 'ultimate-addons-for-gutenberg' ),
 		}
 	)
 
@@ -30,15 +30,15 @@ const attributes = {
 	},
 	toolsTitle: {
 		type: "html",
-		default : __( "Required Tools:" ),
+		default : __( "Required Tools:", 'ultimate-addons-for-gutenberg' ),
 	},
 	materialTitle: {
 		type: "html",
-		default : __( "Things Needed?" ),
+		default : __( "Things Needed?", 'ultimate-addons-for-gutenberg' ),
 	},
 	stepsTitle: {
 		type: "html",
-		default : __( "Steps to configure the How-to Schema:" ),
+		default : __( "Steps to configure the How-to Schema:", 'ultimate-addons-for-gutenberg' ),
 	},
 	tools_count: {
 		type: "number",
@@ -80,15 +80,15 @@ const attributes = {
 	},
 	estCost:{
 		type: "html",
-		default: __( "Total Cost:" ),
+		default: __( "Total Cost:", 'ultimate-addons-for-gutenberg' ),
 	},
 	timeNeeded:{
 		type: "html",
-		default: __( "Total Time Needed :" ),
+		default: __( "Total Time Needed :", 'ultimate-addons-for-gutenberg' ),
 	},
 	timeIn:{
 		type: "html",
-		default: __( " Minutes" ),
+		default: __( " Minutes", 'ultimate-addons-for-gutenberg' ),
 	},
 	imgSize:{
 		type: "string",
@@ -113,7 +113,7 @@ const attributes = {
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
-		default: __( "How To Configure How-To Schema In Ultimate Addons For Gutenberg?" ),
+		default: __( "How To Configure How-To Schema In Ultimate Addons For Gutenberg?", 'ultimate-addons-for-gutenberg' ),
 	},
 	currencyType: {
 		type: "html",
@@ -122,7 +122,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements." ),
+		default: __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.", 'ultimate-addons-for-gutenberg' ),
 	},
 	headingAlign: {
 		type: "string",

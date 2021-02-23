@@ -71,9 +71,9 @@ registerBlockType( "uagb/content-timeline", {
 	icon: UAGB_Block_Icons.content_timeline, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "Content Timeline" ),
-		__( "Timeline" ),
-		__( "uag" ),
+		__( "Content Timeline",'ultimate-addons-for-gutenberg' ),
+		__( "Timeline",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
