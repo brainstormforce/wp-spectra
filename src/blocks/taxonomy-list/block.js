@@ -23,9 +23,9 @@ registerBlockType( "uagb/taxonomy-list", {
 	icon: UAGB_Block_Icons.taxonomy_list,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "taxonomy" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "taxonomy",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],	
 	example: {},
 	edit,

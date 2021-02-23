@@ -82,12 +82,12 @@ class UAGBSocialShare extends Component {
 		} = attributes
 
 		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
+			{ key: "px", name: __( "px",'ultimate-addons-for-gutenberg' ) },
+			{ key: "em", name: __( "em",'ultimate-addons-for-gutenberg' ) },
 		]
 
 		const sizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -104,7 +104,7 @@ class UAGBSocialShare extends Component {
 		)
 
 		const bgSizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -136,29 +136,29 @@ class UAGBSocialShare extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 						<SelectControl
-							label={ __( "Layout" ) }
+							label={ __( "Layout",'ultimate-addons-for-gutenberg' ) }
 							value={ social_layout }
 							options={ [
-								{ value: "horizontal", label: __( "Horizontal" ) },
-								{ value: "vertical", label: __( "Vertical" ) },
+								{ value: "horizontal", label: __( "Horizontal",'ultimate-addons-for-gutenberg' ) },
+								{ value: "vertical", label: __( "Vertical",'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { social_layout: value } ) }
 						/>
 						{ "horizontal" == social_layout &&
 							<Fragment>
 								<SelectControl
-									label={ __( "Stack on" ) }
+									label={ __( "Stack on",'ultimate-addons-for-gutenberg' ) }
 									value={ stack }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "desktop", label: __( "Desktop" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "desktop", label: __( "Desktop",'ultimate-addons-for-gutenberg' ) },
+										{ value: "tablet", label: __( "Tablet",'ultimate-addons-for-gutenberg' ) },
+										{ value: "mobile", label: __( "Mobile",'ultimate-addons-for-gutenberg' ) },
 									] }
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
-									help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
+									help={ __( "Note: Choose on what breakpoint the Icons will stack.",'ultimate-addons-for-gutenberg' ) }
 								/>
 							</Fragment>
 						}
@@ -190,7 +190,7 @@ class UAGBSocialShare extends Component {
 											<Fragment>
 												{sizeTypesControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
 													value={ sizeMobile }
 													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
 													min={ 0 }
@@ -205,7 +205,7 @@ class UAGBSocialShare extends Component {
 											<Fragment>
 												{sizeTypesControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
 													value={ sizeTablet }
 													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
 													min={ 0 }
@@ -220,7 +220,7 @@ class UAGBSocialShare extends Component {
 											<Fragment>
 												{sizeTypesControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
 													value={ size }
 													onChange={ ( value ) => setAttributes( { size: value } ) }
 													min={ 0 }
@@ -237,27 +237,27 @@ class UAGBSocialShare extends Component {
 							}
 						</TabPanel>
 						<RangeControl
-							label={ __( "Background Size" ) }
+							label={ __( "Background Size",'ultimate-addons-for-gutenberg' ) }
 							value={ bgSize }
 							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
-							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons.",'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 500 }
 						/>
 						<RangeControl
-							label={ __( "Border Radius" ) }
+							label={ __( "Border Radius",'ultimate-addons-for-gutenberg' ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							help={ __( "Note: Border Radius option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Border Radius option is useful when one adds background color to the icons.",'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 500 }
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
-							label={ __( "Gap between Items" ) }
+							label={ __( "Gap between Items",'ultimate-addons-for-gutenberg' ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
-							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
+							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.",'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 100 }
 						/>
