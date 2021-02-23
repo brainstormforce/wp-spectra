@@ -1064,47 +1064,36 @@ export default compose(
 			
 
 
-			header_array.each( function (heading, key){
+			header_array.each( function (index, value){
 				let header = $( this );
+				let exclude_heading ;
 				
-				let heading_className = header_array[heading].classList.value;
-				// console.log(heading_className);
-				
-				let exclude_heading = '';
-				if( heading_className ){
-					if( typeof heading_className !== 'undefined' ){
-						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
-						// console.log(exclude_heading);
-					}
+				if ( value.className.includes('uagb-toc-hide-heading') ) {
+					exclude_heading = true;
+				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+					exclude_heading = true;
+				} else {
+					exclude_heading = false;
 				}
 				
 				let header_text = parseTocSlug(header.text());
-				// $( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
-				// let exclude_heading = header[0].className.includes('uagb-toc-hide-heading');
-				// if ( !exclude_heading ) {
-
-						var openLevel = header[0].nodeName.replace(/^H+/, '');
-						var titleText = header.text();
-						var closeLevel = 0;
+				var openLevel = header[0].nodeName.replace(/^H+/, '');
+				var titleText = header.text();
 					
-					// if (openLevel > level) {
-					// 	TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
-					// } else if (openLevel < level) {
-					// 	TOC += (new Array(level - openLevel + 1)).join("</ul>");
-					// }
 					level = parseInt(openLevel);
-					// TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
-
-					headers.push(
-						{
-							tag: level,
-							text: titleText,
-							link: header_text,
-							content: header.text(),
-						}
-					);
+					
+					if ( !exclude_heading ) {
+						headers.push(
+							{
+								tag: level,
+								text: titleText,
+								link: header_text,
+								content: header.text(),
+							}
+						);
+					}
 				
-				// }					
+									
 			});	
 		}
 

@@ -58,7 +58,6 @@ class TableOfContents extends React.Component {
 
 		const parseList = list => {
 			let items = [];
-			// console.log(list)
 			if( list !== 'undefined' && list && list.length > 0 ){
 			list.forEach(item => {
 				
@@ -85,10 +84,7 @@ class TableOfContents extends React.Component {
             
 		};		
 		
-		// if (
-		// 	mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0
-		// ) {
-			if ( mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0 ) {
+		if ( mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0 ) {
 			return (
 				<div className="uagb-toc__list-wrap">
 					{parseList(filterArray(headers))}
@@ -103,24 +99,6 @@ class TableOfContents extends React.Component {
 				</p>
 			);
 		}
-		// console.log(headers)
-		// $(".uagb-toc__list-wrap").prepend(headers)
-
-		// if ( headers && headers.length > 0 ) {
-		// 	return (
-		// 		<div className="uagb-toc__list-wrap">
-		// 			{parseList(filterArray(headers))}
-		// 		</div>
-		// 	);
-		// } else {
-		// 	return (
-		// 		<p className="uagb_table-of-contents-placeholder">
-		// 			{__(
-		// 				'Add a header to begin generating the table of contents'
-		// 			)}
-		// 		</p>
-		// 	);
-		// }
 
 	}
 }

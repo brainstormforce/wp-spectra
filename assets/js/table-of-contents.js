@@ -142,49 +142,50 @@
 			var header_array = $( 'div.entry-content' ).find( all_header )
 			// console.log(header_array)
 			if ( 0 !== header_array.length ) {
-			header_array.each( function (index){
+			header_array.each( function (index,value){
 				let header = $( this );
-				// .includes('uagb-advanced-heading')
-				// let heading_className = ( typeof header[index].className !== 'undefined' ) ? header[index].className : header[index].parentNode.className;
-				// let heading_className = ( header[0].parentNode.className.includes('uagb-advanced-heading') ) ? header[0].parentNode.className : header[0].className;
-				// console.log(attr);
-				// console.log(header[0].className);
-				console.log(header.parents('.uagb-toc-hide-heading'));
-				// console.log(heading_className)
-				// let exclude_heading = '';
-				// if( heading_className ){
-				// 	if( typeof heading_className !== 'undefined' ){
-				// 		exclude_heading = heading_className.includes('uagb-toc-hide-heading');
-				// 		// console.log(exclude_heading);
-				// 	}
-				// }
+				let exclude_heading ;
 				
-				// console.log(header_array.parentNode.children[2]); //header[0].parentElement.className.includes('uagb-toc-hide-heading');
+				if ( value.className.includes('uagb-toc-hide-heading') ) {
+					exclude_heading = true;
+				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+					exclude_heading = true;
+				} else {
+					exclude_heading = false;
+				}
+
 				let header_text = parseTocSlug(header.text());
-				// $( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
-				// let exclude_heading = header[0].className.includes('uagb-toc-hide-heading');
-				// if ( !exclude_heading ) {
 
-						var openLevel = header[0].nodeName.replace(/^H+/, '');
-						var titleText = header.text();
-
-						// console.log(header[0].nodeName.replace(/^H+/, ''))
+				if ( !exclude_heading ) {
+					
+					var openLevel = header[0].localName.replace(/^h+/, '');
+					var titleText = header.text();
 					
 					if (openLevel > level) {
 						TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
 					} else if (openLevel < level) {
+						console.log(openLevel)
 						TOC += (new Array(level - openLevel + 1)).join("</ul>");
 					}
 					level = parseInt(openLevel);
 					TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
 					
-				// }					
+				}					
 			});
-		} else{
-			TOC +=  "<p class='uagb_table-of-contents-placeholder'>" + 'Add a header to begin generating the table of contents' + "</p>";
-		}
+
+			$(".uagb_table-of-contents-placeholder").remove();
 
 			$(".uagb-toc__list-wrap").prepend(TOC);
+
+			} else{
+
+				TOC +=  'Add a header to begin generating the table of contents';
+
+				$(".uagb-toc__list-wrap").remove();
+				
+				$(".uagb_table-of-contents-placeholder").prepend(TOC);
+			
+			}
 
 			scroll_to_top = attr.scrollToTop
 

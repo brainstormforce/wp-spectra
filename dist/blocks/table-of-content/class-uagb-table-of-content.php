@@ -411,8 +411,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						}
 						?>
 					</div>
-					<div class="uagb-toc__list-wrap">
-					</div>
+					<div class="uagb-toc__list-wrap"></div>
+					<p class='uagb_table-of-contents-placeholder'></p>
 				</div>
 			</div>
 			<?php
