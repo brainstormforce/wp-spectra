@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
 * Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
+* Improvement: RTL support to the block.
 * Deprecated: Removed Transform Compatibility from Icon List Block.
 
 = 1.20.1 =

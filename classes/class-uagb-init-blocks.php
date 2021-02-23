@@ -155,6 +155,15 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		if ( is_rtl() ) {
+			wp_enqueue_style(  
+				'uagb-style-rtl', // Handle.
+				UAGB_URL . 'dist/blocks.style.rtl.css', // RTL style CSS.
+				array(),
+			    UAGB_VER
+			);
+		}
+
 		$blocks          = UAGB_Config::get_block_attributes();
 		$disabled_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets    = UAGB_Config::get_block_assets();
