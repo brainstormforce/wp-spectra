@@ -23,9 +23,9 @@ registerBlockType( "uagb/team", {
 	description: uagb_blocks_info.blocks["uagb/team"]["description"],
 	icon: UAGB_Block_Icons.team,
 	keywords: [
-		__( "team" ),
-		__( "members" ),
-		__( "uag" ),
+		__( "team",'ultimate-addons-for-gutenberg' ),
+		__( "members",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
