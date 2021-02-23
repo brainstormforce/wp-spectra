@@ -38,6 +38,7 @@ const attributes = {
 	},
 	headerTextColor: {
 		type: 'string',
+		default:"#0693e3"
 	},
 	bodyBgColor: {
 		type: 'string',
@@ -45,26 +46,24 @@ const attributes = {
 	bodyTextColor: {
 		type: 'string',
 	},
-	borderStyle: {
-		type: 'string',
-	},
 	borderWidth: {
 		type: 'number',
+		default:1
 	},
 	borderColor: {
 		type: 'string',
-	},
-	borderRadius: {
-		type: 'number',
+		default:"#b3b6b9"
 	},
 	pid: {
 		type: 'string',
 	},
 	activeTabBgColor: {
 		type: 'string',
+		default:"#0693e3"
 	},
 	activeTabTextColor: {
 		type: 'string',
+		default:"#ffffff"
 	},
 	changed: {
 		type: 'boolean',
@@ -179,27 +178,6 @@ const attributes = {
 	iconSize:{
 		type: "number",
 		default: 12,
-	},
-	boxShadowColor: {
-		type: "string"
-	},
-	boxShadowHOffset : {
-		type: "number",
-		default: 0
-	},
-	boxShadowVOffset : {
-		type: "number",
-		default: 0
-	},
-	boxShadowBlur : {
-		type: "number"
-	},
-	boxShadowSpread : {
-		type: "number"
-	},
-	boxShadowPosition: {
-		type: "string",
-		default: "outset"
 	},
 }
 
