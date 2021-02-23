@@ -6,11 +6,11 @@ const attributes = {
 	},
 	question: {
 		type: "html",
-		default: __( "What is FAQ?" )
+		default: __( "What is FAQ?", 'ultimate-addons-for-gutenberg' )
 	},
 	answer: {
 		type: "html",
-		default: __( "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." )
+		default: __( "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 'ultimate-addons-for-gutenberg' )
 	},
 	icon: {
 		type: "html",

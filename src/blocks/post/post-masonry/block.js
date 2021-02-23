@@ -23,9 +23,9 @@ registerBlockType( "uagb/post-masonry", {
 	icon: UAGB_Block_Icons.post_masonry,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "masonry" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "masonry",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
 	example: {},

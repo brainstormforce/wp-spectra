@@ -6,14 +6,13 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
 import save from "./save"
-import transform from "./transform"
 import deprecated from "./deprecated"
 import "./style.scss"
 import "./editor.scss"
 
 const { __ } = wp.i18n
 const {
-	registerBlockType
+	registerBlockType 
 } = wp.blocks
 
 registerBlockType( "uagb/icon-list", {
@@ -22,9 +21,9 @@ registerBlockType( "uagb/icon-list", {
 	icon: UAGB_Block_Icons.icon_list,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "icon list" ),
-		__( "image list" ),
-		__( "uag" ),
+		__( "icon list", 'ultimate-addons-for-gutenberg' ),
+		__( "image list", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
@@ -45,6 +44,5 @@ registerBlockType( "uagb/icon-list", {
 	attributes,
 	edit,
 	save,
-	transform,
 	deprecated
 } )

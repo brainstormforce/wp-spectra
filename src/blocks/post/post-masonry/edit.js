@@ -345,19 +345,19 @@ class UAGBPostMasonry extends Component {
 
 		const hoverSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaHColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Background Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaBgHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Border Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
 				<ColorPalette
 					value={ borderHColor }
 					onChange={ ( colorValue ) => setAttributes( { borderHColor: colorValue } ) }
@@ -368,19 +368,19 @@ class UAGBPostMasonry extends Component {
 
 		const normalSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaBgColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 				<ColorPalette
 					value={ borderColor }
 					onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
@@ -453,7 +453,7 @@ class UAGBPostMasonry extends Component {
 		let taxonomyListOptions = []
 
 		let categoryListOptions = [
-			{ value: "", label: __( "All" ) }
+			{ value: "", label: __( "All",'ultimate-addons-for-gutenberg' ) }
 		]
 
 		if ( "" != taxonomyList ) {
@@ -472,13 +472,13 @@ class UAGBPostMasonry extends Component {
 			if ( 'infinite' === paginationType ) {
 				return (
 					<PanelBody
-						title={ __( "Pagination" ) }
+						title={ __( "Pagination",'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
 						className="uagb__url-panel-body"
 					>
 						{ 'button' === paginationEventType &&
 							<Fragment>
-								<h2> { __( "Alignment" ) }</h2>
+								<h2> { __( "Alignment",'ultimate-addons-for-gutenberg' ) }</h2>
 								<IconButton
 									key={ "left" }
 									icon="editor-alignleft"
@@ -503,7 +503,7 @@ class UAGBPostMasonry extends Component {
 									aria-pressed = { "right" === paginationAlign }
 									isPrimary = { "right" === paginationAlign }
 								/>
-								<h2> { __("Font Size (px) ") } </h2>
+								<h2> { __("Font Size (px) ",'ultimate-addons-for-gutenberg') } </h2>
 								<RangeControl
 									value={ paginationFontSize }
 									onChange={ ( value ) => setAttributes( { paginationFontSize: value } ) }
@@ -536,11 +536,11 @@ class UAGBPostMasonry extends Component {
 											if ( "mobile" === tab.name ) {
 												tabout = (
 													<Fragment>
-														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
 															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
 														</ButtonGroup>
-														<h2>{ __( "Padding" ) }</h2>
+														<h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
 														<RangeControl
 															label={ UAGB_Block_Icons.vertical_spacing }
 															className={ "uagb-margin-control" }
@@ -564,11 +564,11 @@ class UAGBPostMasonry extends Component {
 											} else if ( "tablet" === tab.name ) {
 												tabout = (
 													<Fragment>
-														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
 															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
 														</ButtonGroup>
-														<h2>{ __( "Padding" ) }</h2>
+														<h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
 														<RangeControl
 															label={ UAGB_Block_Icons.vertical_spacing }
 															className={ "uagb-margin-control" }
@@ -592,11 +592,11 @@ class UAGBPostMasonry extends Component {
 											} else {
 												tabout = (
 													<Fragment>
-														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
 															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
 														</ButtonGroup>
-														<h2>{ __( "Padding" ) }</h2>
+														<h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
 														<RangeControl
 															label={ UAGB_Block_Icons.vertical_spacing }
 															className={ "uagb-margin-control" }
@@ -628,12 +628,12 @@ class UAGBPostMasonry extends Component {
 									tabs={ [
 										{
 											name: "normal",
-											title: __( "Normal" ),
+											title: __( "Normal",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-normal-tab",
 										},
 										{
 											name: "hover",
-											title: __( "Hover" ),
+											title: __( "Hover",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-hover-tab",
 										},
 									] }>
@@ -644,13 +644,13 @@ class UAGBPostMasonry extends Component {
 												
 												return (
 													<Fragment>
-														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextColor }} ></span></span></p>
+														<p className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextColor }} ></span></span></p>
 														<ColorPalette
 															value={ paginationTextColor }
 															onChange={ ( colorValue ) => setAttributes( { paginationTextColor: colorValue } ) }
 															allowReset
 														/>
-														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBgColor }} ></span></span></p>
+														<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBgColor }} ></span></span></p>
 														<ColorPalette
 															value={ paginationMasonryBgColor }
 															onChange={ ( colorValue ) => setAttributes( { paginationMasonryBgColor: colorValue } ) }
@@ -661,14 +661,14 @@ class UAGBPostMasonry extends Component {
 											} else {
 												return (
 													<Fragment>
-														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextHoverColor }} ></span></span></p>
+														<p className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextHoverColor }} ></span></span></p>
 														<ColorPalette
 															value={ paginationTextHoverColor }
 															onChange={ ( colorValue ) => setAttributes( { paginationTextHoverColor: colorValue } ) }
 															allowReset
 														/>
 														
-														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgHoverColor }} ></span></span></p>
+														<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgHoverColor }} ></span></span></p>
 														<ColorPalette
 															value={ paginationBgHoverColor }
 															onChange={ ( colorValue ) => setAttributes( { paginationBgHoverColor: colorValue } ) }
@@ -682,16 +682,16 @@ class UAGBPostMasonry extends Component {
 									}
 								</TabPanel>
 								<hr className="uagb-editor__separator" />
-								<h2> { __( "Border" ) } </h2>
+								<h2> { __( "Border",'ultimate-addons-for-gutenberg' ) } </h2>
 								<SelectControl
-									label={ __( "Style" ) }
+									label={ __( "Style",'ultimate-addons-for-gutenberg' ) }
 									value={ paginationMasonryBorderStyle }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "solid", label: __( "Solid" ) },
-										{ value: "dotted", label: __( "Dotted" ) },
-										{ value: "dashed", label: __( "Dashed" ) },
-										{ value: "double", label: __( "Double" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+										{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
 									] }
 									onChange={ value => {
 										setAttributes( { paginationMasonryBorderStyle: value } )
@@ -700,7 +700,7 @@ class UAGBPostMasonry extends Component {
 								{ "none" !== paginationMasonryBorderStyle &&
 									<Fragment>
 										<RangeControl
-											label={ __( "Thickness (px)" ) }
+											label={ __( "Thickness (px)",'ultimate-addons-for-gutenberg' ) }
 											value={ paginationMasonryBorderWidth }
 											onChange={ value => {
 												setAttributes( { paginationMasonryBorderWidth: value } )
@@ -709,7 +709,7 @@ class UAGBPostMasonry extends Component {
 											max={ 20 }
 										/>
 										<RangeControl
-											label={ __( "Rounded Corners (px)" ) }
+											label={ __( "Rounded Corners (px)",'ultimate-addons-for-gutenberg' ) }
 											value={ paginationMasonryBorderRadius }
 											onChange={ value => {
 												setAttributes( { paginationMasonryBorderRadius: value } )
@@ -717,7 +717,7 @@ class UAGBPostMasonry extends Component {
 											min={ 0 }
 											max={ 50 }
 										/>
-										<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
+										<p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
 										<ColorPalette
 											value={ paginationMasonryBorderColor }
 											onChange={ ( value ) => setAttributes( { paginationMasonryBorderColor: value } ) }
@@ -729,14 +729,14 @@ class UAGBPostMasonry extends Component {
 						}
 						{ 'scroll' === paginationEventType &&
 							<Fragment>
-								<p className="uagb-setting-label">{ __( " Loader Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: loaderColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( " Loader Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: loaderColor }} ></span></span></p>
 								<ColorPalette
 									value={ loaderColor }
 									onChange={ ( value ) => setAttributes( { loaderColor: value } ) }
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Loader Size" ) }
+									label={ __( "Loader Size",'ultimate-addons-for-gutenberg' ) }
 									value={ loaderSize }
 									onChange={ ( value ) => setAttributes( { loaderSize: value } ) }
 									min={ 1 }
@@ -752,9 +752,9 @@ class UAGBPostMasonry extends Component {
 		}
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( "General" ) }>
+				<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) }>
 					<SelectControl
-						label={ __( "Post Type" ) }
+						label={ __( "Post Type",'ultimate-addons-for-gutenberg' ) }
 						value={ postType }
 						onChange={ ( value ) => this.onSelectPostType( value ) }
 						options={ uagb_blocks_info.post_types }
@@ -762,7 +762,7 @@ class UAGBPostMasonry extends Component {
 					<hr className="uagb-editor__separator" />
 					{ "" != taxonomyList &&
 						<SelectControl
-							label={ __( "Taxonomy" ) }
+							label={ __( "Taxonomy",'ultimate-addons-for-gutenberg' ) }
 							value={ taxonomyType }
 							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
 							options={ taxonomyListOptions }
@@ -780,7 +780,7 @@ class UAGBPostMasonry extends Component {
 						</Fragment>
 					}
 					<ToggleControl
-						label={ __( "Exclude Current Post" ) }
+						label={ __( "Exclude Current Post",'ultimate-addons-for-gutenberg' ) }
 						checked={ excludeCurrentPost }
 						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
 					/>
@@ -790,23 +790,23 @@ class UAGBPostMasonry extends Component {
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 					<SelectControl
-						label={ __( "Order By" ) }
+						label={ __( "Order By",'ultimate-addons-for-gutenberg' ) }
 						value={ orderBy }
 						onChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						options={ [
-							{ value: "date", label: __( "Date" ) },
-							{ value: "title", label: __( "Title" ) },
-							{ value: "rand", label: __( "Random" ) },
-							{ value: "menu_order", label: __( "Menu Order" ) },
+							{ value: "date", label: __( "Date",'ultimate-addons-for-gutenberg' ) },
+							{ value: "title", label: __( "Title",'ultimate-addons-for-gutenberg' ) },
+							{ value: "rand", label: __( "Random",'ultimate-addons-for-gutenberg' ) },
+							{ value: "menu_order", label: __( "Menu Order",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					<SelectControl
-						label={ __( "Order" ) }
+						label={ __( "Order",'ultimate-addons-for-gutenberg' ) }
 						value={ order }
 						onChange={ ( value ) => setAttributes( { order: value } ) }
 						options={ [
-							{ value: "desc", label: __( "Descending" ) },
-							{ value: "asc", label: __( "Ascending" ) },
+							{ value: "desc", label: __( "Descending",'ultimate-addons-for-gutenberg' ) },
+							{ value: "asc", label: __( "Ascending",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
@@ -834,7 +834,7 @@ class UAGBPostMasonry extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ mcolumns }
 											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 											min={ 1 }
@@ -844,7 +844,7 @@ class UAGBPostMasonry extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ tcolumns }
 											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 											min={ 1 }
@@ -854,7 +854,7 @@ class UAGBPostMasonry extends Component {
 								} else {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ columns }
 											onChange={ ( value ) => setAttributes( { columns: value } ) }
 											min={ 1 }
@@ -868,60 +868,60 @@ class UAGBPostMasonry extends Component {
 						}
 					</TabPanel>
 					<SelectControl
-						label={ __( "Pagination" ) }
+						label={ __( "Pagination",'ultimate-addons-for-gutenberg' ) }
 						value={ paginationType }
 						onChange={ ( value ) => setAttributes( { paginationType: value } ) }
 						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "infinite", label: __( "Infinite" ) },
+							{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+							{ value: "infinite", label: __( "Infinite",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					{ 'infinite' === paginationType &&
 
 						<SelectControl
-						label={ __( "Infinite Load Event" ) }
+						label={ __( "Infinite Load Event",'ultimate-addons-for-gutenberg' ) }
 						value={ paginationEventType }
 						onChange={ ( value ) => setAttributes( { paginationEventType: value } ) }
 						options={ [
-							{ value: "button", label: __( "Button" ) },
-							{ value: "scroll", label: __( "Scroll" ) },
+							{ value: "button", label: __( "Button",'ultimate-addons-for-gutenberg' ) },
+							{ value: "scroll", label: __( "Scroll",'ultimate-addons-for-gutenberg' ) },
 						] }
 						/>
 					}
 					{ 'infinite' === paginationType && 'button' === paginationEventType &&
 						<TextControl
 							autoComplete="off"
-							label={ __( 'Button Text' ) }
+							label={ __( 'Button Text','ultimate-addons-for-gutenberg' ) }
 							value={ buttonText }
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
 					}
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<h2>{ __( "If Posts Not Found",'ultimate-addons-for-gutenberg' ) }</h2>
 					<TextControl
 						autoComplete="off"
-						label={ __( 'Display Message' ) }
+						label={ __( 'Display Message','ultimate-addons-for-gutenberg' ) }
 						value={ postDisplaytext }
 						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
 					/>
 					<hr className="uagb-editor__separator" />
 					<ToggleControl
-						label={ __( "Inherit Styling from Theme" ) }
+						label={ __( "Inherit Styling from Theme",'ultimate-addons-for-gutenberg' ) }
 						checked={ inheritFromTheme }
 						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
-						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme." ) }
+						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme.",'ultimate-addons-for-gutenberg' ) }
 					/>
 				</PanelBody>
 				{ paginationSettings() } 
-				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Image",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Featured Image" ) }
+						label={ __( "Show Featured Image",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostImage }
 						onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
-							label={ __( "Image Sizes" ) }
+							label={ __( "Image Sizes",'ultimate-addons-for-gutenberg' ) }
 							value={ imgSize }
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 							options={ uagb_blocks_info.image_sizes }
@@ -929,25 +929,25 @@ class UAGBPostMasonry extends Component {
                 	}
                 	{ displayPostImage == true &&
 						<SelectControl
-							label={ __( "Image Position" ) }
+							label={ __( "Image Position",'ultimate-addons-for-gutenberg' ) }
 							value={ imgPosition }
 							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
 							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "background", label: __( "Background" ) },
+								{ value: "top", label: __( "Top",'ultimate-addons-for-gutenberg' ) },
+								{ value: "background", label: __( "Background",'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 					}
 					{ displayPostImage == true && imgPosition == "background" &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Background Overlay Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
 							<ColorPalette
 								value={ bgOverlayColor }
 								onChange={ ( colorValue ) => setAttributes( { bgOverlayColor: colorValue } ) }
 								allowReset
 							/>
 							<RangeControl
-								label={ __( "Overlay Opacity" ) }
+								label={ __( "Overlay Opacity",'ultimate-addons-for-gutenberg' ) }
 								value={ overlayOpacity }
 								onChange={ ( value ) => setAttributes( { overlayOpacity: value } ) }
 								min={ 0 }
@@ -955,51 +955,51 @@ class UAGBPostMasonry extends Component {
 								allowReset
 							/>
 							<ToggleControl
-								label={ __( "Link Complete Box" ) }
+								label={ __( "Link Complete Box",'ultimate-addons-for-gutenberg' ) }
 								checked={ linkBox }
 								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
 							/>
 						</Fragment>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Content",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Title" ) }
+						label={ __( "Show Title",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostTitle }
 						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Author" ) }
+						label={ __( "Show Author",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostAuthor }
 						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Date" ) }
+						label={ __( "Show Date",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostDate }
 						onChange={ ( value ) => setAttributes( { displayPostDate : ! displayPostDate } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Comment" ) }
+						label={ __( "Show Comment",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostComment }
 						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Taxonomy" ) }
+						label={ __( "Show Taxonomy",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostTaxonomy }
 						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Excerpt" ) }
+						label={ __( "Show Excerpt",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
 					{ displayPostExcerpt && (
 						<RadioControl
-							label={ __( 'Show:' ) }
+							label={ __( 'Show:','ultimate-addons-for-gutenberg' ) }
 							selected={ displayPostContentRadio }
 							options={ [
-								{ label: __( 'Excerpt' ), value: "excerpt" },
-								{label: __( 'Full post' ), value: "full_post",},
+								{ label: __( 'Excerpt','ultimate-addons-for-gutenberg' ), value: "excerpt" },
+								{label: __( 'Full post','ultimate-addons-for-gutenberg' ), value: "full_post",},
 							] }
 							onChange={ ( value ) =>
 								setAttributes( {
@@ -1011,7 +1011,7 @@ class UAGBPostMasonry extends Component {
 					{ displayPostExcerpt &&
 						displayPostContentRadio === 'excerpt' && (
 							<RangeControl
-								label={ __( 'Max number of words in excerpt' ) }
+								label={ __( 'Max number of words in excerpt','ultimate-addons-for-gutenberg' ) }
 								value={ excerptLength }
 								onChange={ ( value ) =>
 									setAttributes( { excerptLength: value } )
@@ -1024,30 +1024,30 @@ class UAGBPostMasonry extends Component {
 				</PanelBody>
 
 				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
-				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Read More Link",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Read More Link" ) }
+						label={ __( "Show Read More Link",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostLink }
 						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
 					<ToggleControl
-						label={ __( "Open links in New Tab" ) }
+						label={ __( "Open links in New Tab",'ultimate-addons-for-gutenberg' ) }
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
 					{ displayPostLink &&
 						<Fragment>
 							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Text" ) }</h2>
+							<h2>{ __( "Button Text",'ultimate-addons-for-gutenberg' ) }</h2>
 							<TextControl
-								label= { __( "Text" ) }
+								label= { __( "Text",'ultimate-addons-for-gutenberg' ) }
 								value= { ctaText }
 								onChange={ value => setAttributes( { ctaText: value } ) }
 							/>
 							{ ! inheritFromTheme &&
 							<Fragment>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
@@ -1064,21 +1064,21 @@ class UAGBPostMasonry extends Component {
 									lineHeightTablet= { { value: ctaLineHeightTablet, label: "ctaLineHeightTablet" } }
 								/>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Button Border" ) }</h2>
+								<h2>{ __( "Button Border",'ultimate-addons-for-gutenberg' ) }</h2>
 								<SelectControl
-									label={ __( "Style" ) }
+									label={ __( "Style",'ultimate-addons-for-gutenberg' ) }
 									value={ borderStyle }
 									onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "solid", label: __( "Solid" ) },
-										{ value: "dashed", label: __( "Dashed" ) },
-										{ value: "dotted", label: __( "Dotted" ) },
-										{ value: "double", label: __( "Double" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+										{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 								<RangeControl
-									label={ __( "Width" ) }
+									label={ __( "Width",'ultimate-addons-for-gutenberg' ) }
 									value={ borderWidth }
 									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 									min={ 0 }
@@ -1086,7 +1086,7 @@ class UAGBPostMasonry extends Component {
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Rounded Corner" ) }
+									label={ __( "Rounded Corner",'ultimate-addons-for-gutenberg' ) }
 									value={ borderRadius }
 									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 									min={ 0 }
@@ -1094,7 +1094,7 @@ class UAGBPostMasonry extends Component {
 									allowReset
 								/>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Button Padding (px)" ) }</h2>
+								<h2>{ __( "Button Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 								<RangeControl
 									label={ UAGB_Block_Icons.vertical_spacing }
 									className={ "uagb-margin-control" }
@@ -1114,18 +1114,18 @@ class UAGBPostMasonry extends Component {
 									allowReset
 								/>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Button Colors" ) }</h2>
+								<h2>{ __( "Button Colors",'ultimate-addons-for-gutenberg' ) }</h2>
 								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 									activeClass="active-tab"
 									tabs={ [
 										{
 											name: "normal",
-											title: __( "Normal" ),
+											title: __( "Normal",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-normal-tab",
 										},
 										{
 											name: "hover",
-											title: __( "Hover" ),
+											title: __( "Hover",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-hover-tab",
 										},
 									] }>
@@ -1146,26 +1146,26 @@ class UAGBPostMasonry extends Component {
 						</Fragment>
 					}
 				</PanelBody>)}
-				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Typography",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<SelectControl
-						label={ __( "Title Tag" ) }
+						label={ __( "Title Tag",'ultimate-addons-for-gutenberg' ) }
 						value={ titleTag }
 						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-							{ value: "span", label: __( "span" ) },
-							{ value: "p", label: __( "p" ) },
+							{ value: "h1", label: __( "H1",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h2", label: __( "H2",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h3", label: __( "H3",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h4", label: __( "H4",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h5", label: __( "H5",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h6", label: __( "H6",'ultimate-addons-for-gutenberg' ) },
+							{ value: "span", label: __( "span",'ultimate-addons-for-gutenberg' ) },
+							{ value: "p", label: __( "p",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					{ ! inheritFromTheme &&
 						<Fragment>
 							<TypographyControl
-								label={ __( "Typography" ) }
+								label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
@@ -1184,9 +1184,9 @@ class UAGBPostMasonry extends Component {
 
 							{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&	<Fragment>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Meta" ) }</h2>
+								<h2>{ __( "Meta",'ultimate-addons-for-gutenberg' ) }</h2>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
@@ -1207,9 +1207,9 @@ class UAGBPostMasonry extends Component {
 
 							{ displayPostExcerpt && <Fragment>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Excerpt" ) }</h2>
+								<h2>{ __( "Excerpt",'ultimate-addons-for-gutenberg' ) }</h2>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
@@ -1231,8 +1231,8 @@ class UAGBPostMasonry extends Component {
 					}
 				</PanelBody>
 
-				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
-					<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+				<PanelBody title={ __( "Colors",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+					<p className="uagb-setting-label">{ __( "Blog Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
 					<ColorPalette
 						value={ bgColor }
 						onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
@@ -1240,20 +1240,20 @@ class UAGBPostMasonry extends Component {
 					/>
 					{ ! inheritFromTheme &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Title Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 							<ColorPalette
 								value={ titleColor }
 								onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 								allowReset
 							/>
-							<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Meta Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
 							<ColorPalette
 								value={ metaColor }
 								onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
 							/>
 							{ displayPostExcerpt == true &&
 								<Fragment>
-									<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
+									<p className="uagb-setting-label">{ __( "Excerpt Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
 									<ColorPalette
 										value={ excerptColor }
 										onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
@@ -1264,9 +1264,9 @@ class UAGBPostMasonry extends Component {
 						</Fragment>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Spacing",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<RangeControl
-						label={ __( "Row Gap" ) }
+						label={ __( "Row Gap",'ultimate-addons-for-gutenberg' ) }
 						value={ rowGap }
 						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 						min={ 0 }
@@ -1274,7 +1274,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
+						label={ __( "Column Gap",'ultimate-addons-for-gutenberg' ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }
@@ -1283,7 +1283,7 @@ class UAGBPostMasonry extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
-						label={ __( "Content Padding" ) }
+						label={ __( "Content Padding",'ultimate-addons-for-gutenberg' ) }
 						value={ contentPadding }
 						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
 						min={ 0 }
@@ -1291,7 +1291,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Content Padding (Mobile)" ) }
+						label={ __( "Content Padding (Mobile)",'ultimate-addons-for-gutenberg' ) }
 						value={ contentPaddingMobile }
 						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 						min={ 0 }
@@ -1300,7 +1300,7 @@ class UAGBPostMasonry extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
-						label={ __( "Image Bottom Spacing" ) }
+						label={ __( "Image Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ imageBottomSpace }
 						onChange={ ( value ) => setAttributes( { imageBottomSpace: value } ) }
 						min={ 0 }
@@ -1308,7 +1308,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Title Bottom Spacing" ) }
+						label={ __( "Title Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
 						min={ 0 }
@@ -1316,7 +1316,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Meta Bottom Spacing" ) }
+						label={ __( "Meta Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ metaBottomSpace }
 						onChange={ ( value ) => setAttributes( { metaBottomSpace: value } ) }
 						min={ 0 }
@@ -1324,7 +1324,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Excerpt Bottom Spacing" ) }
+						label={ __( "Excerpt Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ excerptBottomSpace }
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
 						min={ 0 }

@@ -166,9 +166,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-### 1.21.0 ###
+= 1.21.0 =
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
 * Fix: Price List - Block encountered an error when used as a reusable block.
+* Fix: Heading Color issue in some blocks when used with Cover block.
+* Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
+* Deprecated: Removed Transform Compatibility from Icon List Block.
 
 = 1.20.1 =
 * Fix: Content Timeline - Content not being saved issue.
