@@ -2617,7 +2617,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'inputFontFamily'            => 'Default',
 							'inputFontWeight'            => '',
 							'inputFontSubset'            => '',
-							'inputFontSize'              => 20,
+							'inputFontSize'              => '',
 							'inputFontSizeType'          => 'px',
 							'inputFontSizeTablet'        => '',
 							'inputFontSizeMobile'        => '',

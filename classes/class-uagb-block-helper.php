@@ -5186,6 +5186,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
 				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'] = array(
+					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'] - 0.5,  'px' )  . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
+				);
 				$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox'] = array(
 					'background-color' => $attr['bgColor'],
 					'border'           => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
@@ -5219,6 +5222,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['inputColor'],
 					'padding'       => UAGB_Helper::get_css_value( $attr['vPaddingField'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'] = array(
+					'padding'          => UAGB_Helper::get_css_value( $attr['vPaddingField'] - 0.5,  'px' )  . ' ' . UAGB_Helper::get_css_value( $attr['hPaddingField'], 'px' ),
 				);
 				$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']    = array(
 					'color' => $attr['inputColor'],
