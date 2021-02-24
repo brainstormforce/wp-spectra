@@ -23,7 +23,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ attributes.descriptionText }
-	                placeholder={ __( "Write a Quote" ) }
+	                placeholder={ __( "Write a Quote", 'ultimate-addons-for-gutenberg' ) }
 	                className='uagb-blockquote__content'
 	                onChange={ ( value ) => setAttributes( { descriptionText: value } ) }
 	                onMerge = { props.mergeBlocks }

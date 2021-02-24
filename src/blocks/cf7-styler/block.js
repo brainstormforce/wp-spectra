@@ -37,9 +37,9 @@ if( uagb_blocks_info.blocks["uagb/cf7-styler"]["is_active"] ) {
 		description:uagb_blocks_info.blocks["uagb/cf7-styler"]["description"], // Block description.
 		icon: UAGB_Block_Icons.cf7_styler,
 		keywords: [
-			__( "CF7 styler" ),
-			__( "contact form styler" ),
-			__( "uag" ),
+			__( "CF7 styler",'ultimate-addons-for-gutenberg' ),
+			__( "contact form styler",'ultimate-addons-for-gutenberg' ),
+			__( "uag",'ultimate-addons-for-gutenberg' ),
 		],
 		supports: {
 			anchor: true,

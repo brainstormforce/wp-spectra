@@ -28,11 +28,11 @@ class BoxShadowControl extends Component {
     onAdvancedControlClick() {
 
 		let control = true
-		let label = __( "Hide Advanced" )
+		let label = __( "Hide Advanced",'ultimate-addons-for-gutenberg' )
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
 			control = false
-			label = __( "Advanced" )
+			label = __( "Advanced",'ultimate-addons-for-gutenberg' )
 		}
 
 		this.setState(
@@ -124,8 +124,8 @@ class BoxShadowControl extends Component {
                         value={ boxShadowPosition.value }
                         onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
                         options={ [
-                            { value: "inset", label: __( "Inset" ) },
-                            { value: "outset", label: __( "Outset" ) },
+                            { value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+                            { value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
                         ] }
                     />
                     </Fragment>

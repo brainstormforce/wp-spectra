@@ -32,7 +32,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ description }
-	                placeholder={ __( "Write Description" ) }
+	                placeholder={ __( "Write Description",'ultimate-addons-for-gutenberg' ) }
 	                className='uagb-tm__desc'
 	                onChange={ ( value ) => { 
 
