@@ -357,19 +357,19 @@ class UAGBPostCarousel extends Component {
 
 		const hoverSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaHColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Background Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaBgHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Border Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
 				<ColorPalette
 					value={ borderHColor }
 					onChange={ ( colorValue ) => setAttributes( { borderHColor: colorValue } ) }
@@ -380,19 +380,19 @@ class UAGBPostCarousel extends Component {
 
 		const normalSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 				<ColorPalette
 					value={ ctaBgColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 				<ColorPalette
 					value={ borderColor }
 					onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
@@ -465,7 +465,7 @@ class UAGBPostCarousel extends Component {
 		let taxonomyListOptions = []
 
 		let categoryListOptions = [
-			{ value: "", label: __( "All" ) }
+			{ value: "", label: __( "All",'ultimate-addons-for-gutenberg' ) }
 		]
 
 		if ( "" != taxonomyList ) {
@@ -482,9 +482,9 @@ class UAGBPostCarousel extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( "General" ) }>
+				<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) }>
 					<SelectControl
-						label={ __( "Post Type" ) }
+						label={ __( "Post Type",'ultimate-addons-for-gutenberg' ) }
 						value={ postType }
 						onChange={ ( value ) => this.onSelectPostType( value ) }
 						options={ uagb_blocks_info.post_types }
@@ -492,7 +492,7 @@ class UAGBPostCarousel extends Component {
 					<hr className="uagb-editor__separator" />
 					{ "" != taxonomyList &&
 						<SelectControl
-							label={ __( "Taxonomy" ) }
+							label={ __( "Taxonomy",'ultimate-addons-for-gutenberg' ) }
 							value={ taxonomyType }
 							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
 							options={ taxonomyListOptions }
@@ -510,7 +510,7 @@ class UAGBPostCarousel extends Component {
 						</Fragment>
 					}
 					<ToggleControl
-						label={ __( "Exclude Current Post" ) }
+						label={ __( "Exclude Current Post",'ultimate-addons-for-gutenberg' ) }
 						checked={ excludeCurrentPost }
 						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
 					/>
@@ -524,19 +524,19 @@ class UAGBPostCarousel extends Component {
 						value={ orderBy }
 						onChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						options={ [
-							{ value: "date", label: __( "Date" ) },
-							{ value: "title", label: __( "Title" ) },
-							{ value: "rand", label: __( "Random" ) },
-							{ value: "menu_order", label: __( "Menu Order" ) },
+							{ value: "date", label: __( "Date",'ultimate-addons-for-gutenberg' ) },
+							{ value: "title", label: __( "Title",'ultimate-addons-for-gutenberg' ) },
+							{ value: "rand", label: __( "Random",'ultimate-addons-for-gutenberg' ) },
+							{ value: "menu_order", label: __( "Menu Order",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					<SelectControl
-						label={ __( "Order" ) }
+						label={ __( "Order",'ultimate-addons-for-gutenberg' ) }
 						value={ order }
 						onChange={ ( value ) => setAttributes( { order: value } ) }
 						options={ [
-							{ value: "desc", label: __( "Descending" ) },
-							{ value: "asc", label: __( "Ascending" ) },
+							{ value: "desc", label: __( "Descending",'ultimate-addons-for-gutenberg' ) },
+							{ value: "asc", label: __( "Ascending",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
@@ -564,7 +564,7 @@ class UAGBPostCarousel extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ mcolumns }
 											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 											min={ 1 }
@@ -574,7 +574,7 @@ class UAGBPostCarousel extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ tcolumns }
 											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 											min={ 1 }
@@ -584,7 +584,7 @@ class UAGBPostCarousel extends Component {
 								} else {
 									tabout = (
 										<RangeControl
-											label={ __( "Columns" ) }
+											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
 											value={ columns }
 											onChange={ ( value ) => setAttributes( { columns: value } ) }
 											min={ 1 }
@@ -598,40 +598,40 @@ class UAGBPostCarousel extends Component {
 						}
 					</TabPanel>
 					<ToggleControl
-						label={ __( "Equal Height" ) }
+						label={ __( "Equal Height",'ultimate-addons-for-gutenberg' ) }
 						checked={ equalHeight }
 						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<h2>{ __( "If Posts Not Found",'ultimate-addons-for-gutenberg' ) }</h2>
 					<TextControl
 						autoComplete="off"
-						label={ __( 'Display Message' ) }
+						label={ __( 'Display Message','ultimate-addons-for-gutenberg' ) }
 						value={ postDisplaytext }
 						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
 					/>
 					<hr className="uagb-editor__separator" />
 					<ToggleControl
-						label={ __( "Inherit Styling from Theme" ) }
+						label={ __( "Inherit Styling from Theme",'ultimate-addons-for-gutenberg' ) }
 						checked={ inheritFromTheme }
 						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
-						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme." ) }
+						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme.",'ultimate-addons-for-gutenberg' ) }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Carousel",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Pause On Hover" ) }
+						label={ __( "Pause On Hover",'ultimate-addons-for-gutenberg' ) }
 						checked={ pauseOnHover }
 						onChange={ ( value ) => setAttributes( { pauseOnHover: ! pauseOnHover } ) }
 					/>
 					<ToggleControl
-						label={ __( "Autoplay" ) }
+						label={ __( "Autoplay",'ultimate-addons-for-gutenberg' ) }
 						checked={ autoplay }
 						onChange={ ( value ) => setAttributes( { autoplay: ! autoplay } ) }
 					/>
 					{ autoplay == true &&
 						<RangeControl
-							label={ __( "Autoplay Speed (ms)" ) }
+							label={ __( "Autoplay Speed (ms)",'ultimate-addons-for-gutenberg' ) }
 							value={ autoplaySpeed }
 							onChange={ ( value ) => setAttributes( { autoplaySpeed: value } ) }
 							min={ 100 }
@@ -639,47 +639,47 @@ class UAGBPostCarousel extends Component {
 						/>
 					}
 					<ToggleControl
-						label={ __( "Infinite Loop" ) }
+						label={ __( "Infinite Loop",'ultimate-addons-for-gutenberg' ) }
 						checked={ infiniteLoop }
 						onChange={ ( value ) => setAttributes( { infiniteLoop: ! infiniteLoop } ) }
 					/>
 					<RangeControl
-						label={ __( "Transition Speed (ms)" ) }
+						label={ __( "Transition Speed (ms)",'ultimate-addons-for-gutenberg' ) }
 						value={ transitionSpeed }
 						onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
 						min={ 100 }
 						max={ 5000 }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Arrows & Dots" ) }</h2>
+					<h2>{ __( "Arrows & Dots",'ultimate-addons-for-gutenberg' ) }</h2>
 					<SelectControl
-						label={ __( "Show Arrows & Dots" ) }
+						label={ __( "Show Arrows & Dots",'ultimate-addons-for-gutenberg' ) }
 						value={ arrowDots }
 						onChange={ ( value ) => setAttributes( { arrowDots: value } ) }
 						options={ [
-							{ value: "arrows", label: __( "Only Arrows" ) },
-							{ value: "dots", label: __( "Only Dots" ) },
-							{ value: "arrows_dots", label: __( "Both Arrows & Dots" ) },
+							{ value: "arrows", label: __( "Only Arrows",'ultimate-addons-for-gutenberg' ) },
+							{ value: "dots", label: __( "Only Dots",'ultimate-addons-for-gutenberg' ) },
+							{ value: "arrows_dots", label: __( "Both Arrows & Dots",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					{ "dots" != arrowDots &&
 						<Fragment>
 							<RangeControl
-								label={ __( "Arrow Size" ) }
+								label={ __( "Arrow Size",'ultimate-addons-for-gutenberg' ) }
 								value={ arrowSize }
 								onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
 								min={ 0 }
 								max={ 50 }
 							/>
 							<RangeControl
-								label={ __( "Arrow Border Size" ) }
+								label={ __( "Arrow Border Size",'ultimate-addons-for-gutenberg' ) }
 								value={ arrowBorderSize }
 								onChange={ ( value ) => setAttributes( { arrowBorderSize: value } ) }
 								min={ 0 }
 								max={ 50 }
 							/>
 							<RangeControl
-								label={ __( "Arrow Border Radius" ) }
+								label={ __( "Arrow Border Radius",'ultimate-addons-for-gutenberg' ) }
 								value={ arrowBorderRadius }
 								onChange={ ( value ) => setAttributes( { arrowBorderRadius: value } ) }
 								min={ 0 }
@@ -688,15 +688,15 @@ class UAGBPostCarousel extends Component {
 						</Fragment>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Image",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Featured Image" ) }
+						label={ __( "Show Featured Image",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostImage }
 						onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
-							label={ __( "Image Sizes" ) }
+							label={ __( "Image Sizes",'ultimate-addons-for-gutenberg' ) }
 							value={ imgSize }
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 							options={ uagb_blocks_info.image_sizes }
@@ -704,25 +704,25 @@ class UAGBPostCarousel extends Component {
 					}
 					{ displayPostImage == true &&
 						<SelectControl
-							label={ __( "Image Position" ) }
+							label={ __( "Image Position",'ultimate-addons-for-gutenberg' ) }
 							value={ imgPosition }
 							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
 							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "background", label: __( "Background" ) },
+								{ value: "top", label: __( "Top",'ultimate-addons-for-gutenberg' ) },
+								{ value: "background", label: __( "Background",'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 					}
 					{ displayPostImage == true && imgPosition == "background" &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Background Overlay Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
 							<ColorPalette
 								value={ bgOverlayColor }
 								onChange={ ( colorValue ) => setAttributes( { bgOverlayColor: colorValue } ) }
 								allowReset
 							/>
 							<RangeControl
-								label={ __( "Overlay Opacity" ) }
+								label={ __( "Overlay Opacity",'ultimate-addons-for-gutenberg' ) }
 								value={ overlayOpacity }
 								onChange={ ( value ) => setAttributes( { overlayOpacity: value } ) }
 								min={ 0 }
@@ -730,51 +730,51 @@ class UAGBPostCarousel extends Component {
 								allowReset
 							/>
 							<ToggleControl
-								label={ __( "Link Complete Box" ) }
+								label={ __( "Link Complete Box",'ultimate-addons-for-gutenberg' ) }
 								checked={ linkBox }
 								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
 							/>
 						</Fragment>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Content",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Title" ) }
+						label={ __( "Show Title",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostTitle }
 						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Author" ) }
+						label={ __( "Show Author",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostAuthor }
 						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Date" ) }
+						label={ __( "Show Date",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostDate }
 						onChange={ ( value ) => setAttributes( { displayPostDate : ! displayPostDate } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Comment" ) }
+						label={ __( "Show Comment",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostComment }
 						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Taxonomy" ) }
+						label={ __( "Show Taxonomy",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostTaxonomy }
 						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
 					/>
 					<ToggleControl
-						label={ __( "Show Excerpt" ) }
+						label={ __( "Show Excerpt",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
 					{ displayPostExcerpt && (
 						<RadioControl
-							label={ __( 'Show:' ) }
+							label={ __( 'Show:','ultimate-addons-for-gutenberg' ) }
 							selected={ displayPostContentRadio }
 							options={ [
-								{ label: __( 'Excerpt' ), value: "excerpt" },
-								{label: __( 'Full post' ), value: "full_post",},
+								{ label: __( 'Excerpt','ultimate-addons-for-gutenberg' ), value: "excerpt" },
+								{label: __( 'Full post','ultimate-addons-for-gutenberg' ), value: "full_post",},
 							] }
 							onChange={ ( value ) =>
 								setAttributes( {
@@ -786,7 +786,7 @@ class UAGBPostCarousel extends Component {
 					{ displayPostExcerpt &&
 						displayPostContentRadio === 'excerpt' && (
 							<RangeControl
-								label={ __( 'Max number of words in excerpt' ) }
+								label={ __( 'Max number of words in excerpt','ultimate-addons-for-gutenberg' ) }
 								value={ excerptLength }
 								onChange={ ( value ) =>
 									setAttributes( { excerptLength: value } )
@@ -799,30 +799,30 @@ class UAGBPostCarousel extends Component {
 				</PanelBody>
 				
 				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
-				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Read More Link",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Show Read More Link" ) }
+						label={ __( "Show Read More Link",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostLink }
 						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
 					<ToggleControl
-						label={ __( "Open links in New Tab" ) }
+						label={ __( "Open links in New Tab",'ultimate-addons-for-gutenberg' ) }
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
 					{ displayPostLink &&
 						<Fragment>
 							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Text" ) }</h2>
+							<h2>{ __( "Button Text",'ultimate-addons-for-gutenberg' ) }</h2>
 							<TextControl
-								label= { __( "Text" ) }
+								label= { __( "Text",'ultimate-addons-for-gutenberg' ) }
 								value= { ctaText }
 								onChange={ value => setAttributes( { ctaText: value } ) }
 							/>
 							{ ! inheritFromTheme &&
 							<Fragment>
 								<TypographyControl
-									label={ __( "CTA Tag" ) }
+									label={ __( "CTA Tag",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
@@ -845,15 +845,15 @@ class UAGBPostCarousel extends Component {
 									value={ borderStyle }
 									onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "solid", label: __( "Solid" ) },
-										{ value: "dashed", label: __( "Dashed" ) },
-										{ value: "dotted", label: __( "Dotted" ) },
-										{ value: "double", label: __( "Double" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+										{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 								<RangeControl
-									label={ __( "Width" ) }
+									label={ __( "Width",'ultimate-addons-for-gutenberg' ) }
 									value={ borderWidth }
 									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 									min={ 0 }
@@ -861,7 +861,7 @@ class UAGBPostCarousel extends Component {
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Rounded Corner" ) }
+									label={ __( "Rounded Corner",'ultimate-addons-for-gutenberg' ) }
 									value={ borderRadius }
 									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 									min={ 0 }
@@ -869,7 +869,7 @@ class UAGBPostCarousel extends Component {
 									allowReset
 								/>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Button Padding (px)" ) }</h2>
+								<h2>{ __( "Button Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 								<RangeControl
 									label={ UAGB_Block_Icons.vertical_spacing }
 									className={ "uagb-margin-control" }
@@ -895,12 +895,12 @@ class UAGBPostCarousel extends Component {
 									tabs={ [
 										{
 											name: "normal",
-											title: __( "Normal" ),
+											title: __( "Normal",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-normal-tab",
 										},
 										{
 											name: "hover",
-											title: __( "Hover" ),
+											title: __( "Hover",'ultimate-addons-for-gutenberg' ),
 											className: "uagb-hover-tab",
 										},
 									] }>
@@ -921,26 +921,26 @@ class UAGBPostCarousel extends Component {
 						</Fragment>
 					}
 				</PanelBody>)}
-				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Typography",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ titleTag }
 						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-							{ value: "span", label: __( "span" ) },
-							{ value: "p", label: __( "p" ) },
+							{ value: "h1", label: __( "H1",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h2", label: __( "H2",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h3", label: __( "H3",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h4", label: __( "H4",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h5", label: __( "H5",'ultimate-addons-for-gutenberg' ) },
+							{ value: "h6", label: __( "H6",'ultimate-addons-for-gutenberg' ) },
+							{ value: "span", label: __( "span",'ultimate-addons-for-gutenberg' ) },
+							{ value: "p", label: __( "p",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					{ ! inheritFromTheme &&
 						<Fragment>
 							<TypographyControl
-								label={ __( "Typography" ) }
+								label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
@@ -958,9 +958,9 @@ class UAGBPostCarousel extends Component {
 							/>
 							{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Meta" ) }</h2>
+								<h2>{ __( "Meta",'ultimate-addons-for-gutenberg' ) }</h2>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
@@ -981,9 +981,9 @@ class UAGBPostCarousel extends Component {
 
 							{ displayPostExcerpt && <Fragment>
 								<hr className="uagb-editor__separator" />
-								<h2>{ __( "Excerpt" ) }</h2>
+								<h2>{ __( "Excerpt",'ultimate-addons-for-gutenberg' ) }</h2>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
@@ -1005,8 +1005,8 @@ class UAGBPostCarousel extends Component {
 					}
 				</PanelBody>
 
-				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
-					<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+				<PanelBody title={ __( "Colors",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+					<p className="uagb-setting-label">{ __( "Blog Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
 					<ColorPalette
 						value={ bgColor }
 						onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
@@ -1014,13 +1014,13 @@ class UAGBPostCarousel extends Component {
 					/>
 					{ ! inheritFromTheme &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Title Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 							<ColorPalette
 								value={ titleColor }
 								onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 								allowReset
 							/>
-							<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Meta Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
 							<ColorPalette
 								value={ metaColor }
 								onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
@@ -1028,7 +1028,7 @@ class UAGBPostCarousel extends Component {
 
 							{ displayPostExcerpt == true &&
 								<Fragment>
-									<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
+									<p className="uagb-setting-label">{ __( "Excerpt Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
 									<ColorPalette
 										value={ excerptColor }
 										onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
@@ -1038,16 +1038,16 @@ class UAGBPostCarousel extends Component {
 							}
 						</Fragment>
 					}
-					<p className="uagb-setting-label">{ __( "Arrows & Dots Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Arrows & Dots Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
 					<ColorPalette
 						value={ arrowColor }
 						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
 						allowReset
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Spacing",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<RangeControl
-						label={ __( "Row Gap" ) }
+						label={ __( "Row Gap",'ultimate-addons-for-gutenberg' ) }
 						value={ rowGap }
 						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 						min={ 0 }
@@ -1055,7 +1055,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Gap Between Posts & Dots" ) }
+						label={ __( "Gap Between Posts & Dots",'ultimate-addons-for-gutenberg' ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }
@@ -1064,7 +1064,7 @@ class UAGBPostCarousel extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
-						label={ __( "Content Padding" ) }
+						label={ __( "Content Padding",'ultimate-addons-for-gutenberg' ) }
 						value={ contentPadding }
 						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
 						min={ 0 }
@@ -1072,7 +1072,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Content Padding (Mobile)" ) }
+						label={ __( "Content Padding (Mobile)",'ultimate-addons-for-gutenberg' ) }
 						value={ contentPaddingMobile }
 						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 						min={ 0 }
@@ -1081,7 +1081,7 @@ class UAGBPostCarousel extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
-						label={ __( "Image Bottom Spacing" ) }
+						label={ __( "Image Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ imageBottomSpace }
 						onChange={ ( value ) => setAttributes( { imageBottomSpace: value } ) }
 						min={ 0 }
@@ -1089,7 +1089,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Title Bottom Spacing" ) }
+						label={ __( "Title Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
 						min={ 0 }
@@ -1097,7 +1097,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Meta Bottom Spacing" ) }
+						label={ __( "Meta Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ metaBottomSpace }
 						onChange={ ( value ) => setAttributes( { metaBottomSpace: value } ) }
 						min={ 0 }
@@ -1105,7 +1105,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Excerpt Bottom Spacing" ) }
+						label={ __( "Excerpt Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 						value={ excerptBottomSpace }
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
 						min={ 0 }

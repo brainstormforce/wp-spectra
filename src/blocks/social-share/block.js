@@ -26,9 +26,9 @@ registerBlockType( "uagb/social-share", {
 	icon: UAGB_Block_Icons.social_share,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "social share" ),
-		__( "icon" ),
-		__( "uag" ),
+		__( "social share",'ultimate-addons-for-gutenberg' ),
+		__( "icon",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
