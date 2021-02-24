@@ -228,12 +228,15 @@
         .uagb-tab{  
             border-top-style: solid ;
             border-left-style: solid ;
-            border-bottom-style: solid ;
+            border-bottom-style: none ;
             padding: 12px;
             border-top-left-radius: 4px;
             p{
                 margin:0px;
             }
+        }
+        .uagb-tab:last-child {
+            border-bottom-style: solid ;
         }
     }
     .uagb-tabs__body-wrap{
@@ -468,12 +471,15 @@
         .uagb-tab{  
             border-top-style: solid ;
             border-left-style: solid ;
-            border-bottom-style: solid ;
+            border-bottom-style: none ;
             padding: 12px;
             border-top-left-radius: 4px;
             p{
                 margin:0px;
             }
+        }
+        .uagb-tab:last-child {
+            border-bottom-style: solid ;
         }
     }
     .uagb-tabs__body-wrap{
@@ -711,12 +717,15 @@
         .uagb-tab{  
             border-top-style: solid ;
             border-left-style: solid ;
-            border-bottom-style: solid ;
+            border-bottom-style: none ;
             padding: 12px;
             border-top-left-radius: 4px;
             p{
                 margin:0px;
             }
+        }
+        .uagb-tab:last-child {
+            border-bottom-style: solid ;
         }
     }
     .uagb-tabs__body-wrap{

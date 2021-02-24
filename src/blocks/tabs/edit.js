@@ -218,7 +218,7 @@ class UAGBTabsEdit extends Component {
 			<Fragment>     
 				<InspectorControls>
 					
-					<PanelBody title={ __( 'Tabs Style' ) }  initialOpen={ false }>
+					<PanelBody title={ __( 'Tabs Style' ) }  initialOpen={ true }>
 						<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
