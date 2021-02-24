@@ -58,14 +58,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $uag_faq_layout = false;
 
 		/**
-		 * UAG Tab Layout Flag
-		 *
-		 * @since 1.18.1
-		 * @var uag_tab_layout
-		 */
-		public static $uag_tab_layout = false;
-
-		/**
 		 * UAG File Generation Flag
 		 *
 		 * @since 1.14.0
@@ -487,8 +479,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 
 				case 'uagb/tabs':
-					$css                 += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-					self::$uag_tab_layout = true;
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':

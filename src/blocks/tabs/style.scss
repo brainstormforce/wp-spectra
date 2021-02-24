@@ -34,26 +34,6 @@
         max-width: 100%;
         padding: 10px;
     }
-    span.uagb-tabs__remove {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        height: 20px;
-        color: #fff;
-        background-color: #000000;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        z-index: 1;
-    }
-    li.uagb-tab:hover span.uagb-tabs__remove {
-        display: block;
-    }
-    .uagb-tab.uagb-tabs__add-tab{
-        .dashicon{
-            vertical-align: middle;
-        }
-    }
 }
 //Horizonatal Styles
 .uagb-tabs__wrap.uagb-tabs__hstyle1-desktop {
