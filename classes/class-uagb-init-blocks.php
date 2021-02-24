@@ -156,11 +156,11 @@ class UAGB_Init_Blocks {
 		);
 
 		if ( is_rtl() ) {
-			wp_enqueue_style(  
+			wp_enqueue_style(
 				'uagb-style-rtl', // Handle.
 				UAGB_URL . 'dist/blocks.style.rtl.css', // RTL style CSS.
 				array(),
-			    UAGB_VER
+				UAGB_VER
 			);
 		}
 
