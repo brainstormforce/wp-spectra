@@ -2156,6 +2156,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
+							'extension'             => false,
 							'tabsStyleD'            => 'hstyle1',
 							'tabsStyleT'            => 'vstyle6',
 							'tabsStyleM'            => 'vstyle6',
