@@ -2210,7 +2210,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'   => '',
-							'id'         => 0,
+							'id'         => 0, //Unique Tab Body ID
 							'header'     => '',
 							'tabActive'  => 0,
 							'tabHeaders' => '',
