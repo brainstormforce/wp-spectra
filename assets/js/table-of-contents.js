@@ -28,7 +28,6 @@
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
 
-
 	UAGBTableOfContents = {
 
 		init: function() {
@@ -140,7 +139,7 @@
 			}
 
 			var header_array = $( 'div.entry-content' ).find( all_header )
-			// console.log(header_array)
+			// console.log(parseList(header_array))
 			if ( 0 !== header_array.length ) {
 			header_array.each( function (index,value){
 				let header = $( this );
@@ -162,10 +161,21 @@
 					var titleText = header.text();
 					
 					if (openLevel > level) {
-						TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
+						
+						if( 2 == (new Array(openLevel - level + 1)).length ){
+							TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
+						} else{
+							TOC += "<ul class='uagb-toc__list'>"
+						}
+
 					} else if (openLevel < level) {
-						console.log(openLevel)
-						TOC += (new Array(level - openLevel + 1)).join("</ul>");
+						
+						if( 0 !== (new Array(level - openLevel + 1)).length ){
+							TOC += (new Array(level - openLevel + 1)).join("</ul>");
+						} else{
+							TOC += "</ul>"
+						}
+						
 					}
 					level = parseInt(openLevel);
 					TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";

@@ -999,39 +999,6 @@ class UAGBTableOfContentsEdit extends Component {
 export default compose(
 	withSelect( ( select, ownProps ) => {
 
-		// const getData = ( headerData, a ) => {
-		// 	headerData.map( ( header ) => {
-		// 		let innerBlock = header.innerBlocks;
-		// 		if( innerBlock.length > 0 ) {
-		// 			innerBlock.forEach(function(element) {
-		// 				if( element.innerBlocks.length > 0 ) {
-		// 					getData( element.innerBlocks, a );
-		// 				} else {
-		// 					// if( element.name === 'core/heading' ) {
-		// 						a.push( element );
-		// 					// }
-
-		// 					// if( element.name === 'uagb/advanced-heading' ) {
-		// 					// 	a.push( element );
-		// 					// }
-		// 				}
-		// 			});
-		// 		} else {
-		// 			// if( header.name === 'core/heading' ) {
-		// 				a.push( header );
-		// 			// }
-
-		// 			// if( header.name === 'uagb/advanced-heading' ) {
-		// 				// a.push( header );
-		// 			// }
-		// 		}
-
-		// 	});
-		// 	return a; 
-		// }
-
-		
-
 		const parseTocSlug = ( slug ) => {
 
 			// If not have the element then return false!
@@ -1054,15 +1021,11 @@ export default compose(
 			return decodeURI( encodeURIComponent( parsedSlug ) );
 		}
 
-		// var TOC = '';
 		var level = 0;
 
 		var header_array = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
 		let headers = [];
 		if( header_array != 'undefined' ) {
-
-			
-
 
 			header_array.each( function (index, value){
 				let header = $( this );
