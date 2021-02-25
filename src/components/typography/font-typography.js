@@ -20,7 +20,7 @@ import Select from "react-select"
 function FontFamilyControl( props ) {
 
 	const fonts = [
-		{ value: "", label: __( "Default" ), weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+		{ value: "", label: __( "Default",'ultimate-addons-for-gutenberg' ), weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
 		{ value: "Arial", label: "Arial", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
 		{ value: "Helvetica", label: "Helvetica", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
 		{ value: "Times New Roman", label: "Times New Roman", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
@@ -126,7 +126,7 @@ function FontFamilyControl( props ) {
 
 	return (
 		<div className="uag-typography-font-family-options">
-			<label className="uag-typography-font-family-label">{ __( "Font Family" ) }</label>
+			<label className="uag-typography-font-family-label">{ __( "Font Family",'ultimate-addons-for-gutenberg' ) }</label>
 			<Select
 				options={ fonts }
 				value={ { value: props.fontFamily.value, label: props.fontFamily.value, weight: fontWeightObj } }
@@ -137,7 +137,7 @@ function FontFamilyControl( props ) {
 				classNamePrefix="react-select"
 			/>
 			<SelectControl
-				label={ __( "Font Weight" ) }
+				label={ __( "Font Weight",'ultimate-addons-for-gutenberg' ) }
 				value={ props.fontWeight.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
 				options={
@@ -145,7 +145,7 @@ function FontFamilyControl( props ) {
 				}
 			/>
 			<SelectControl
-				label={ __( "Font Subset" ) }
+				label={ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }
 				value={ props.fontSubset.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
 				options={
