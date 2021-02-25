@@ -2209,6 +2209,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'is_child'    => true,
 						'attributes'  => array(
+							'block_id'   => '',
 							'id'         => 0,
 							'header'     => '',
 							'tabActive'  => 0,
