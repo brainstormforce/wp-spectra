@@ -38,7 +38,7 @@ const attributes = {
 	},
 	headerTextColor: {
 		type: 'string',
-		default:"#0693e3"
+		default:"#007cba"
 	},
 	bodyBgColor: {
 		type: 'string',
@@ -52,18 +52,18 @@ const attributes = {
 	},
 	borderColor: {
 		type: 'string',
-		default:"#b3b6b9"
+		default:"#e0e0e0"
 	},
 	pid: {
 		type: 'string',
 	},
 	activeTabBgColor: {
 		type: 'string',
-		default:"#0693e3"
+		default:"#007cba"
 	},
 	activeTabTextColor: {
 		type: 'string',
-		default:"#ffffff"
+		default:"#fff"
 	},
 	changed: {
 		type: 'boolean',
