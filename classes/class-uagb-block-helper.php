@@ -3152,7 +3152,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Tabs CSS
 		 *
-		 * @since 1.8.2
+		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -3175,11 +3175,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMargin'], 'px' ),
 					'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMargin'], 'px' ),
 					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabTitleBottomMargin'], 'px' ),
+					'border-color'   => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				),
 				' .uagb-tabs__panel .uagb-tab span' => array(
-					'color'       => $attr['headerTextColor'],
-					'font-size'   => UAGB_Helper::get_css_value( $attr['titleFontSize'], $attr['titleFontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
+					'color' => $attr['headerTextColor'],
 				),
 				' .uagb-tabs__panel .uagb-tab.uagb-tabs__active' => array(
 					'background' => $attr['activeTabBgColor'],
@@ -3199,6 +3199,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left'    => UAGB_Helper::get_css_value( $attr['tabBodyLeftMargin'], 'px' ),
 					'margin-right'   => UAGB_Helper::get_css_value( $attr['tabBodyRightMargin'], 'px' ),
 					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabBodyBottomMargin'], 'px' ),
+					'border-color'   => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				),
 
 				' .uagb-tabs__body-wrap p '         => array(
@@ -3227,20 +3229,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-				$selectors['.uagb-tabs__wrap .uagb-tab ']            = array(
-					'border-color' => $attr['borderColor'],
-					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-				);
-				$selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap'] = array(
-					'border-color' => $attr['borderColor'],
-					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-				);
-
 				$m_selectors = array(
-					' .uagb-tabs__panel .uagb-tab p' => array(
-						'font-size'   => UAGB_Helper::get_css_value( $attr['titleFontSizeMobile'], $attr['titleFontSizeType'] ),
-						'line-height' => UAGB_Helper::get_css_value( $attr['titleFontSizeMobile'], $attr['titleFontSizeType'] ),
-					),
 					'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile , .uagb-tabs__wrap.uagb-tabs__vstyle10-mobile , .uagb-tabs__wrap.uagb-tabs__stack4-mobile' => array(
 						'background'   => $attr['bodyBgColor'],
 						'border-color' => $attr['borderColor'],
@@ -3248,11 +3237,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$t_selectors = array(
-					' .uagb-tabs__panel .uagb-tab p' => array(
-						'font-size'   => UAGB_Helper::get_css_value( $attr['titleFontSizeTablet'], $attr['titleFontSizeType'] ),
-						'line-height' => UAGB_Helper::get_css_value( $attr['titleFontSizeTablet'], $attr['titleFontSizeType'] ),
-					),
-
 					'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet , .uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' => array(
 						'background' => $attr['bodyBgColor'],
 					),

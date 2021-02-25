@@ -18,9 +18,6 @@ const attributes = {
 		type: 'number',
 		default: 0,
 	},
-	HorizontalStyle: {
-		type: 'string',
-	},
 	tabsStyleD: {
 		type: 'string',
 		default: 'hstyle1'
@@ -54,9 +51,6 @@ const attributes = {
 		type: 'string',
 		default:"#e0e0e0"
 	},
-	pid: {
-		type: 'string',
-	},
 	activeTabBgColor: {
 		type: 'string',
 		default:"#007cba"
@@ -64,18 +58,6 @@ const attributes = {
 	activeTabTextColor: {
 		type: 'string',
 		default:"#fff"
-	},
-	changed: {
-		type: 'boolean',
-		default: false,
-	},
-	uniqueID: {
-		type: 'string',
-		default: ''
-	},
-	isTransform: {
-		type: 'boolean',
-		default: false
 	},
 	tabTitleLeftMargin :{
 		type: "number",
@@ -161,7 +143,7 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
-	Icon: {
+	icon: {
 		type: "string",
 	},
 	iconPosition: {

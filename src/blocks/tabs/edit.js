@@ -1,8 +1,7 @@
 /**
  * BLOCK: Tabs Block
  */
-
-import memoize from "memize"
+import classnames from "classnames"
 import times from "lodash/times"
 import styling from "./styling"
 
@@ -66,24 +65,11 @@ class UAGBTabsEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style );
-		if (!this.props.attributes.pid) {
-			this.props.setAttributes( {
-				pid: `uagb-tabs-${this.props.clientId}`,
-			} );
-		}
 		this.updateTabTitle();
 		this.props.resetTabOrder();
 	}
 	componentDidUpdate() {
-		const { attributes, setAttributes } = this.props;
-		const { isTransform } = attributes;
 
-		if(isTransform) {
-			setAttributes( {
-				isTransform: false
-			} );
-			this.props.updateActiveTab( 0 );
-		}
 		var element = document.getElementById( "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
@@ -103,7 +89,7 @@ class UAGBTabsEdit extends Component {
 			}
 			return item;
 		} );
-
+		
 		setAttributes( { tabHeaders: newHeaders} );
 		updateBlockAttributes(childBlocks[index], {header: header});
 		this.updateTabTitle();
@@ -157,7 +143,7 @@ class UAGBTabsEdit extends Component {
 		this.props.resetTabOrder();
 	}
 	render() {
-		const { attributes , setAttributes } = this.props;
+		const { attributes , setAttributes , className } = this.props;
 		const {
 			tabsStyleD,
 			tabsStyleM,
@@ -199,25 +185,16 @@ class UAGBTabsEdit extends Component {
 			titleLineHeightTablet,
 			titleAlign,
 			showIcon,
-			Icon,
+			icon,
 			iconColor,
 			iconPosition,
 			iconSpacing,
 			iconSize
 		} = attributes;
-		
-		const blockClass = [
-			`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
-			`uagb-tabs__wrap`,
-			`uagb-tabs__${tabsStyleD}-desktop`,
-			`uagb-tabs__${tabsStyleT}-tablet`,
-			`uagb-tabs__${tabsStyleM}-mobile`,
-		].filter( Boolean ).join( ' ' );
 
 		return (
 			<Fragment>     
 				<InspectorControls>
-					
 					<PanelBody title={ __( 'Tabs Style' ) }  initialOpen={ true }>
 						<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
@@ -240,11 +217,9 @@ class UAGBTabsEdit extends Component {
 							{
 								( tab ) => {
 									let tabout
-
 									if ( "mobile" === tab.name ) {
 										tabout = (
-											<Fragment>
-												
+											<Fragment>		
 												<SelectControl
 													label={ __( "Mobile Style" ) }
 													value={ tabsStyleM }
@@ -356,8 +331,8 @@ class UAGBTabsEdit extends Component {
 										icons={svg_icons}
 										renderFunc= {renderSVG}
 										theme="default"
-										value={Icon}
-										onChange={ ( value ) => setAttributes( { Icon: value } ) }
+										value={icon}
+										onChange={ ( value ) => setAttributes( { icon: value } ) }
 										isMulti={false}
 										noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
@@ -583,7 +558,14 @@ class UAGBTabsEdit extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
-                <div className={blockClass} data-tab-active={tabActiveFrontend}>
+                <div className={ classnames(
+					className,
+					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
+					`uagb-tabs__wrap`,
+					`uagb-tabs__${tabsStyleD}-desktop`,
+					`uagb-tabs__${tabsStyleT}-tablet`,
+					`uagb-tabs__${tabsStyleM}-mobile`,
+				) } data-tab-active={tabActiveFrontend}>
                     <ul className="uagb-tabs__panel">
                         {tabHeaders.map( ( header, index ) => (
                             <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} `}
@@ -593,8 +575,8 @@ class UAGBTabsEdit extends Component {
                                            this.props.updateActiveTab( index );
                                        } }
                                     >
-										{(showIcon && Icon && (iconPosition === 'left' || iconPosition === 'top') &&
-										<span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>
+										{(showIcon && icon && (iconPosition === 'left' || iconPosition === 'top') &&
+										<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}
 										<RichText
                                             tagName="p"
@@ -603,8 +585,8 @@ class UAGBTabsEdit extends Component {
                                             unstableOnSplit={ () => null }
                                             placeholder={ __( 'Title…' ) }
                                         />
-										{(showIcon && Icon && ( iconPosition === 'right' || iconPosition === 'bottom' )&&
-											<span className="uagb-tabs__icon">{ renderSVG(Icon) }</span>
+										{(showIcon && icon && ( iconPosition === 'right' || iconPosition === 'bottom' )&&
+											<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}
 								</a>
 								
