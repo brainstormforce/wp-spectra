@@ -71,9 +71,9 @@ class UAGB_Init_Blocks {
 
 		$block_attributes = $block['attrs'];
 
-		if ( isset( $block_attributes['DisplayConditions'] ) && array_key_exists( 'DisplayConditions', $block_attributes ) ) {
+		if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
 
-			switch ( $block_attributes['DisplayConditions'] ) {
+			switch ( $block_attributes['UAGDisplayConditions'] ) {
 
 				case 'userstate':
 					$block_content = $this->user_state_visibility( $block_attributes, $block_content );
@@ -214,11 +214,11 @@ class UAGB_Init_Blocks {
 	 */
 	public function user_state_visibility( $block_attributes, $block_content ) {
 
-		if ( isset( $block_attributes['UAGloggedIn'] ) && $block_attributes['UAGloggedIn'] && is_user_logged_in() ) {
+		if ( isset( $block_attributes['UAGLoggedIn'] ) && $block_attributes['UAGLoggedIn'] && is_user_logged_in() ) {
 			return '';
 		}
 
-		if ( isset( $block_attributes['UAGloggedOut'] ) && $block_attributes['UAGloggedOut'] && ! is_user_logged_in() ) {
+		if ( isset( $block_attributes['UAGLoggedOut'] ) && $block_attributes['UAGLoggedOut'] && ! is_user_logged_in() ) {
 			return '';
 		}
 
