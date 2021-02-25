@@ -13,7 +13,6 @@ export default function save( props ) {
     
     return (
         <div className="uagb-tabs__body-container">
-            <div className="uagb-tabs__body-header">{header}</div>
             <div className={ classnames(
 					className,
 					`uagb-blocks__${block_id}`,
