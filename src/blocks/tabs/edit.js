@@ -195,7 +195,7 @@ class UAGBTabsEdit extends Component {
 		return (
 			<Fragment>     
 				<InspectorControls>
-					<PanelBody title={ __( 'Tabs Style' ) }  initialOpen={ true }>
+					<PanelBody title={ __( 'Tabs Style'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ true }>
 						<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
@@ -221,25 +221,25 @@ class UAGBTabsEdit extends Component {
 										tabout = (
 											<Fragment>		
 												<SelectControl
-													label={ __( "Mobile Style" ) }
+													label={ __( "Mobile Style"  , 'ultimate-addons-for-gutenberg' ) }
 													value={ tabsStyleM }
 													onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
 													beforeIcon="editor-textcolor"
 													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1')},
-														{value: 'hstyle2', label: __('Horizontal Style 2')},
-														{value: 'hstyle3', label: __('Horizontal Style 3')},
-														{value: 'hstyle4', label: __('Horizontal Style 4')},
-														{value: 'hstyle5', label: __('Horizontal Style 5')},
-														{value: 'vstyle6', label: __('Vertical Style 6')},
-														{value: 'vstyle7', label: __('Vertical Style 7')},
-														{value: 'vstyle8', label: __('Vertical Style 8')},
-														{value: 'vstyle9', label: __('Vertical Style 9')},
-														{value: 'vstyle10', label: __('Vertical Style 10')},
-														{value: 'stack1', label: __('Stack Style 11')},
-														{value: 'stack2', label: __('Stack Style 12')},
-														{value: 'stack3', label: __('Stack Style 13')},
-														{value: 'stack4', label: __('Stack Style 14')},
+														{value: 'hstyle1', label: __('Horizontal Style 1' , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle2', label: __('Horizontal Style 2' , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle3', label: __('Horizontal Style 3' , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle4', label: __('Horizontal Style 4' , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle5', label: __('Horizontal Style 5' , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle6', label: __('Vertical Style 6' , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle7', label: __('Vertical Style 7' , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle8', label: __('Vertical Style 8' , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle9', label: __('Vertical Style 9' , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle10', label: __('Vertical Style 10' , 'ultimate-addons-for-gutenberg')},
+														{value: 'stack1', label: __('Stack Style 11' , 'ultimate-addons-for-gutenberg')},
+														{value: 'stack2', label: __('Stack Style 12' , 'ultimate-addons-for-gutenberg')},
+														{value: 'stack3', label: __('Stack Style 13'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'stack4', label: __('Stack Style 14'  , 'ultimate-addons-for-gutenberg')},
 													] }
 												/>
 											</Fragment>
@@ -249,21 +249,21 @@ class UAGBTabsEdit extends Component {
 											<Fragment>
 												
 												<SelectControl
-													label={ __( "Tablet Style" ) }
+													label={ __( "Tablet Style"  , 'ultimate-addons-for-gutenberg') }
 													value={ tabsStyleT }
 													onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
 													beforeIcon="editor-textcolor"
 													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1')},
-														{value: 'hstyle2', label: __('Horizontal Style 2')},
-														{value: 'hstyle3', label: __('Horizontal Style 3')},
-														{value: 'hstyle4', label: __('Horizontal Style 4')},
-														{value: 'hstyle5', label: __('Horizontal Style 5')},
-														{value: 'vstyle6', label: __('Vertical Style 6')},
-														{value: 'vstyle7', label: __('Vertical Style 7')},
-														{value: 'vstyle8', label: __('Vertical Style 8')},
-														{value: 'vstyle9', label: __('Vertical Style 9')},
-														{value: 'vstyle10', label: __('Vertical Style 10')},
+														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
 													] }
 												/>
 											</Fragment>
@@ -273,21 +273,21 @@ class UAGBTabsEdit extends Component {
 											<Fragment>
 												
 												<SelectControl
-													label={ __( "Desktop Style" ) }
+													label={ __( "Desktop Style"  , 'ultimate-addons-for-gutenberg') }
 													value={ tabsStyleD }
 													onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
 													beforeIcon="editor-textcolor"
 													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1')},
-														{value: 'hstyle2', label: __('Horizontal Style 2')},
-														{value: 'hstyle3', label: __('Horizontal Style 3')},
-														{value: 'hstyle4', label: __('Horizontal Style 4')},
-														{value: 'hstyle5', label: __('Horizontal Style 5')},
-														{value: 'vstyle6', label: __('Vertical Style 6')},
-														{value: 'vstyle7', label: __('Vertical Style 7')},
-														{value: 'vstyle8', label: __('Vertical Style 8')},
-														{value: 'vstyle9', label: __('Vertical Style 9')},
-														{value: 'vstyle10', label: __('Vertical Style 10')},
+														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
 													] }
 												/>
 											</Fragment>
@@ -299,16 +299,16 @@ class UAGBTabsEdit extends Component {
 							}
 						</TabPanel>	
 					</PanelBody>
-					<PanelBody title={ __( 'Tabs Title Settings' ) }  initialOpen={ false }>
+					<PanelBody title={ __( 'Tabs Title Settings'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ false }>
 						<SelectControl
-							label={ __( 'Initial Open Tab' ) }
+							label={ __( 'Initial Open Tab'  , 'ultimate-addons-for-gutenberg' ) }
 							value={ tabActiveFrontend }
 							options={ tabHeaders.map((tab, index) => {
 								return {value: index, label: tab};
 							} ) }
 							onChange={ (value) => setAttributes( { tabActiveFrontend: parseInt(value) } ) }
 						/>
-						<h2>{ __( "Alignment" ) }</h2>
+						<h2>{ __( "Alignment"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<BlockAlignmentToolbar
 							value={ titleAlign }
 							onChange={ ( value ) =>
@@ -320,13 +320,13 @@ class UAGBTabsEdit extends Component {
 							isCollapsed={ false }
 					/>		
 					<ToggleControl
-						label={ __( "Enable Icon" ) }
+						label={ __( "Enable Icon"  , 'ultimate-addons-for-gutenberg') }
 						checked={ showIcon }
 						onChange={ ( value ) => setAttributes( { showIcon: ! showIcon } ) }
 					/>
 					{ showIcon && 
 						<Fragment>
-							<h2 className="components-base-control__label">{__( "Icon" )}</h2>
+							<h2 className="components-base-control__label">{__( "Icon"  , 'ultimate-addons-for-gutenberg')}</h2>
 							<FontIconPicker
 										icons={svg_icons}
 										renderFunc= {renderSVG}
@@ -334,53 +334,53 @@ class UAGBTabsEdit extends Component {
 										value={icon}
 										onChange={ ( value ) => setAttributes( { icon: value } ) }
 										isMulti={false}
-										noSelectedPlaceholder= { __( "Select Icon" ) }
+										noSelectedPlaceholder= { __( "Select Icon"  , 'ultimate-addons-for-gutenberg' ) }
 							/>
 							<SelectControl
-								label={ __( 'Icon Position' ) }
+								label={ __( 'Icon Position'  , 'ultimate-addons-for-gutenberg' ) }
 								value={ iconPosition }
 								options={ [
-									{value: 'left', label: __('Left')},
-									{value: 'right', label: __('Right')},
-									{value: 'top', label: __('Top')},
-									{value: 'bottom', label: __('Bottom')},
+									{value: 'left', label: __('Left'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'right', label: __('Right'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'top', label: __('Top'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'bottom', label: __('Bottom'  , 'ultimate-addons-for-gutenberg')},
 								] }
 								onChange={ (value) => setAttributes( { iconPosition: value } ) }
 							/>
-							<h2>{ __( 'Icon Spacing' ) }</h2>
+							<h2>{ __( 'Icon Spacing'  , 'ultimate-addons-for-gutenberg') }</h2>
 							<RangeControl
 								className={ "uagb-tabs__icon" }
 								value={ iconSpacing }
 								onChange={ ( value ) => setAttributes( { iconSpacing: value } ) }
 								min={ 0 }
-								max={ 50 }
+								max={ 500 }
 								allowReset
 							/>
-							<h2>{ __( 'Icon Color' ) }</h2>
+							<h2>{ __( 'Icon Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 							<ColorPalette 
 									value={ iconColor}
 									onChange={ ( value ) => setAttributes( { iconColor: value } )}
 									allowReset
 							/>
-							<h2>{ __( 'Icon Size' ) }</h2>
+							<h2>{ __( 'Icon Size'  , 'ultimate-addons-for-gutenberg') }</h2>
 							<RangeControl
 							className={ "uagb-tabs__icon" }
 							value={ iconSize }
 							onChange={ ( value ) => setAttributes( { iconSize: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 					/>
 						</Fragment>
 					}
-					<h2>{ __( "Tab Title Margin (px)" ) }</h2>
+					<h2>{ __( "Tab Title Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
 					<RangeControl
 							label={ UAGB_Block_Icons.left_margin }
 							className={ "uagb-margin-control" }
 							value={ tabTitleLeftMargin }
 							onChange={ ( value ) => setAttributes( { tabTitleLeftMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 					/>
 					<RangeControl
@@ -389,7 +389,7 @@ class UAGBTabsEdit extends Component {
 							value={ tabTitleRightMargin }
 							onChange={ ( value ) => setAttributes( { tabTitleRightMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 					/>
 					<RangeControl
@@ -397,7 +397,7 @@ class UAGBTabsEdit extends Component {
 							value={ tabTitleTopMargin }
 							onChange={ ( value ) => setAttributes( { tabTitleTopMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 					/>
 					<RangeControl
@@ -406,16 +406,16 @@ class UAGBTabsEdit extends Component {
 							value={ tabTitleBottomMargin }
 							onChange={ ( value ) => setAttributes( { tabTitleBottomMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 					/>
-					<h2>{ __( "Title Padding" ) }</h2>
+					<h2>{ __( "Title Padding"  , 'ultimate-addons-for-gutenberg') }</h2>
 					<RangeControl
 							label={ UAGB_Block_Icons.vertical_spacing }
 							value={ tabTitleVertPadding }
 							onChange={ ( value ) => setAttributes( { tabTitleVertPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							className={ "uagb-margin-control" }
 							allowReset
 					/>
@@ -424,36 +424,36 @@ class UAGBTabsEdit extends Component {
 							value={ tabTitleHrPadding }
 							onChange={ ( value ) => setAttributes( { tabTitleHrPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							className={ "uagb-margin-control" }
 							allowReset
 					/>
-					<h2>{ __( 'Title Background Color' ) }</h2>
+					<h2>{ __( 'Title Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette
 							value={ headerBgColor}
 							onChange={ ( value ) => setAttributes( { headerBgColor: value } )}
 							allowReset
 					/>
-					<h2>{ __( 'Title Text Color' ) }</h2>
+					<h2>{ __( 'Title Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette 
 							value={ headerTextColor}
 							onChange={ ( value ) => setAttributes( { headerTextColor: value } )}
 							allowReset
 					/>
-					<h2>{ __( 'Active Tab Background Color' ) }</h2>
+					<h2>{ __( 'Active Tab Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette 
 							value={ activeTabBgColor}
 							onChange={ ( value ) => setAttributes( { activeTabBgColor: value } )}
 							allowReset
 					/>
-					<h2>{ __( 'Active Tab Text Color' ) }</h2>
+					<h2>{ __( 'Active Tab Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette 
 							value={ activeTabTextColor}
 							onChange={ ( value ) => setAttributes( { activeTabTextColor: value } )}
 							allowReset
 					/>
 					<TypographyControl
-						label={ __( "Typography" ) }
+						label={ __( "Typography"  , 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
@@ -470,27 +470,27 @@ class UAGBTabsEdit extends Component {
 						lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
 					/>
 					</PanelBody>
-					<PanelBody title={ __( 'Tabs Body Settings' ) } initialOpen={ false }>
-					<h2>{ __( 'Body Background Color' ) }</h2>
+					<PanelBody title={ __( 'Tabs Body Settings'  , 'ultimate-addons-for-gutenberg') } initialOpen={ false }>
+					<h2>{ __( 'Body Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette
 						value={ bodyBgColor}
 						onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
 						allowReset
 					/>  
-					<h2>{ __( 'Body Text Color' ) }</h2>
+					<h2>{ __( 'Body Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
 					<ColorPalette
 						value= {bodyTextColor}
 						onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
 						allowReset
 					/>
-					<h2>{ __( "Tab Body Margin (px)" ) }</h2>
+					<h2>{ __( "Tab Body Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.left_margin }
 							className={ "uagb-margin-control" }
 							value={ tabBodyLeftMargin }
 							onChange={ ( value ) => setAttributes( { tabBodyLeftMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
 						<RangeControl
@@ -499,7 +499,7 @@ class UAGBTabsEdit extends Component {
 							value={ tabBodyRightMargin }
 							onChange={ ( value ) => setAttributes( { tabBodyRightMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
 						<RangeControl
@@ -508,7 +508,7 @@ class UAGBTabsEdit extends Component {
 							value={ tabBodyTopMargin }
 							onChange={ ( value ) => setAttributes( { tabBodyTopMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
 						<RangeControl
@@ -517,10 +517,10 @@ class UAGBTabsEdit extends Component {
 							value={ tabBodyBottomMargin }
 							onChange={ ( value ) => setAttributes( { tabBodyBottomMargin: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
-						<h2>{ __( "Body Padding" ) }</h2>
+						<h2>{ __( "Body Padding"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.vertical_spacing }
 							value={ 
@@ -528,7 +528,7 @@ class UAGBTabsEdit extends Component {
 							onChange={ ( value ) => setAttributes( { 
 								tabBodyVertPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							className={ "uagb-margin-control" }
 							allowReset
 						/>
@@ -537,23 +537,23 @@ class UAGBTabsEdit extends Component {
 							value={ tabBodyHrPadding }
 							onChange={ ( value ) => setAttributes( { tabBodyHrPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							className={ "uagb-margin-control" }
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false }>
-						<p className="uagb-setting-label">{ __( "Border Color" ) }</p>					
+					<PanelBody title={ __( 'Border Settings'  , 'ultimate-addons-for-gutenberg') } initialOpen={ false }>
+						<p className="uagb-setting-label">{ __( "Border Color"  , 'ultimate-addons-for-gutenberg' ) }</p>					
 						<ColorPalette
 							value={ borderColor}
 							onChange={ ( value ) => setAttributes( { borderColor: value } )}
 							allowReset
 						/> 
 						<RangeControl
-							label={ __( 'Border width' ) }
+							label={ __( 'Border width'  , 'ultimate-addons-for-gutenberg') }
 							value={ borderWidth }
 							min={ 1 }
-							max={ 10 }
+							max={ 500 }
 							onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 						/>
 					</PanelBody>
@@ -583,7 +583,7 @@ class UAGBTabsEdit extends Component {
                                             value={ header }
                                             onChange={ ( value ) => this.updateTabsTitle(value, index) }
                                             unstableOnSplit={ () => null }
-                                            placeholder={ __( 'Title…' ) }
+                                            placeholder={ __( 'Title…' , 'ultimate-addons-for-gutenberg' ) }
                                         />
 										{(showIcon && icon && ( iconPosition === 'right' || iconPosition === 'bottom' )&&
 											<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
@@ -591,7 +591,7 @@ class UAGBTabsEdit extends Component {
 								</a>
 								
 								{tabHeaders.length > 1 && (
-									<Tooltip text={ __( 'Remove tab' ) }>
+									<Tooltip text={ __( 'Remove tab'  , 'ultimate-addons-for-gutenberg' ) }>
 										<span className="uagb-tabs__remove"
 												onClick={ () => this.removeTab(index) }
 										>
@@ -602,7 +602,7 @@ class UAGBTabsEdit extends Component {
                             </li>
                         ) ) }
 						 <li className="uagb-tab uagb-tabs__add-tab">
-							<Tooltip text={ __( 'Add tab' ) }>
+							<Tooltip text={ __( 'Add tab'  , 'ultimate-addons-for-gutenberg' ) }>
 								<span onClick={ () => this.addTab() }>
 								<Dashicon icon="plus"/>
 								</span>

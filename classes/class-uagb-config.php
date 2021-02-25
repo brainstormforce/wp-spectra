@@ -2151,12 +2151,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'extension'   => false,
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
-							'extension'             => false,
 							'tabsStyleD'            => 'hstyle1',
 							'tabsStyleT'            => 'vstyle6',
 							'tabsStyleM'            => 'vstyle6',
@@ -2207,6 +2207,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Tabs child', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'extension'  => false,
 						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'   => '',

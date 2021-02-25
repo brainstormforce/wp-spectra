@@ -3211,10 +3211,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'   => $attr['iconColor'],
 				),
-
-				'.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop , .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' => array(
-					'background' => $attr['bodyBgColor'],
-				),
 				' .uagb-tabs__icon-position-left > .uagb-tabs__icon' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 				),
@@ -3228,28 +3224,69 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 				),
 			);
-
-				$m_selectors = array(
-					'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile , .uagb-tabs__wrap.uagb-tabs__vstyle10-mobile , .uagb-tabs__wrap.uagb-tabs__stack4-mobile' => array(
+			$m_selectors = array();
+			$t_selectors = array();
+			
+			//Desktop
+			if ( 'hstyle5' === $attr['tabsStyleD'] ){
+				$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop'] = array(
+						'background' => $attr['bodyBgColor'],	
+						'border-color' => $attr['borderColor'],	
+						'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+				);
+			}
+			if(  'vstyle10' === $attr['tabsStyleD']){
+				$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop'] = array(
+					'background' => $attr['bodyBgColor'],
+					'border-color' => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+				);
+			}
+			//Mobile
+			if( 'hstyle5' === $attr['tabsStyleM'] ){
+				$m_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile '] = array(
 						'background'   => $attr['bodyBgColor'],
 						'border-color' => $attr['borderColor'],
-					),
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				);
-
-				$t_selectors = array(
-					'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet , .uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' => array(
-						'background' => $attr['bodyBgColor'],
-					),
+			}
+			if('vstyle10' === $attr['tabsStyleM'] ){
+				$m_selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] =  array(
+					'background'   => $attr['bodyBgColor'],
+					'border-color' => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				);
-
-				$combined_selectors = array(
-					'desktop' => $selectors,
-					'mobile'  => $m_selectors,
-					'tablet'  => $t_selectors,
+			}
+			if( 'stack4' === $attr['tabsStyleM']){
+				$m_selectors['.uagb-tabs__wrap.uagb-tabs__stack4-mobile'] = array(
+					'background'   => $attr['bodyBgColor'],
+					'border-color' => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				);
-				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab span', $combined_selectors );
+			}
+			//Tablet.
+			if( 'hstyle5' === $attr['tabsStyleT'] ){
+				$t_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet '] = array(
+					'background' => $attr['bodyBgColor'],	
+					'border-color' => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+				);
+			}
+			if( 'vstyle10' === $attr['tabsStyleT']){
+				$t_selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet'] = array(
+					'background' => $attr['bodyBgColor'],
+					'border-color' => $attr['borderColor'],
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+				);
+			}
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'mobile'  => $m_selectors,
+				'tablet'  => $t_selectors,
+			);
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab span', $combined_selectors );
 
-				return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 		/**
 		 * Get Blockquote CSS

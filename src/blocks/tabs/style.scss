@@ -121,7 +121,7 @@
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle5-desktop {
     flex-direction: column;
-    border: 1px solid #d6dada;
+    border-style: solid;
     ul.uagb-tabs__panel{
         justify-content: space-between;
         margin: 0px;
@@ -304,7 +304,7 @@
     ul.uagb-tabs__panel{
         margin:0px;
         padding:0px;
-        border-bottom:1px solid #b3b6b9 ;
+        border-bottom-style:solid;
     }
     .uagb-tab{  
         margin: 10px 10px -1px 0px;
@@ -365,7 +365,7 @@
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle5-tablet {
     flex-direction: column;
-    border: 1px solid #d6dada;
+    border-style: solid;
     ul.uagb-tabs__panel{
        justify-content: space-between;
         margin: 0px;
@@ -612,7 +612,7 @@
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle5-mobile{
     flex-direction: column;
-    border: 1px solid #d6dada;
+    border-style: solid;
     ul.uagb-tabs__panel{
         justify-content: space-between;
         margin: 0px;
@@ -817,7 +817,6 @@
 
    }
    .uagb-tabs__body-wrap{
-       border:none;   
        max-width:100%;
    }
 }
