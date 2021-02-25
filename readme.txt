@@ -173,7 +173,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
 * Improvement: RTL support to the block.
 * Deprecated: Removed Transform Compatibility from Icon List Block.
-* Improvement: Introduce conditions to blocks 
+* Improvement: Block Conditions - Now user can add conditions of visibility to blocks with respect to User State, Responsive Visibility, User Role, Browser, and Operating System.
 
 = 1.20.1 =
 * Fix: Content Timeline - Content not being saved issue.
