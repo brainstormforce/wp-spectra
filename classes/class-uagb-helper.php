@@ -272,7 +272,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 				ob_start();
-				?>
+			?>
 				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 				<?php
 				ob_end_flush();

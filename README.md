@@ -167,6 +167,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.21.0 ###
+* New: Added the single pages and blocks for the Gutenberg. [Read more](https://wpastra.com/docs/import-gb-pages-patterns/)
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
