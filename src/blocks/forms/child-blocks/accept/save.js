@@ -5,7 +5,6 @@
 import classnames from "classnames"
 
 const { __ } = wp.i18n
-const {	RichText } = wp.blockEditor
 
 export default function save( props ) {
 	
@@ -21,8 +20,8 @@ export default function save( props ) {
 		linkInNewTab
 	} = attributes
 	
-	const isRequired = (acceptRequired) ? "required" : "";
-	const target = (linkInNewTab) ? "_blank" : "_self" ;
+	const isRequired = (acceptRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+	const target = (linkInNewTab) ? __("_blank", 'ultimate-addons-for-gutenberg') : __("_self" , 'ultimate-addons-for-gutenberg') ;
 	
 	return (
 		<div className={ classnames(

@@ -56,12 +56,12 @@ class UAGBFormsCheckboxEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ checkboxRequired }
 						onChange={ ( value ) => setAttributes( { checkboxRequired: ! checkboxRequired } ) }
 					/>
@@ -173,7 +173,7 @@ class UAGBFormsCheckboxEdit extends Component {
 					{isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required" ) }
+							label={ __( "Required" , 'ultimate-addons-for-gutenberg' ) }
 							checked={ checkboxRequired }
 							onChange={ ( value ) => setAttributes( { checkboxRequired: ! checkboxRequired } ) }
 						/>
@@ -181,7 +181,7 @@ class UAGBFormsCheckboxEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Checkbox Title" ) }
+						placeholder={ __( "Checkbox Title" , 'ultimate-addons-for-gutenberg') }
 						value={ checkboxName }
 						onChange={ ( value ) => setAttributes( { checkboxName: value } ) }
 						className={`uagb-forms-checkbox-label ${isRequired} uagb-forms-input-label`}
@@ -193,7 +193,7 @@ class UAGBFormsCheckboxEdit extends Component {
 							{editView}
 							<div className="uagb-forms-checkbox-controls">
 								<div>
-									<Button isSecondary onClick={addOption}>{ __(" + Add Option ") }</Button>									
+									<Button isSecondary onClick={addOption}>{ __(" + Add Option " , 'ultimate-addons-for-gutenberg') }</Button>									
 								</div>								
 							</div>
 						</Fragment>

@@ -57,12 +57,12 @@ class UAGBFormsEmailEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required", 'ultimate-addons-for-gutenberg' ) }
 						checked={ required }
 						onChange={ ( value ) => setAttributes( { required: ! required } ) }
 					/>
@@ -70,13 +70,13 @@ class UAGBFormsEmailEdit extends Component {
 					 	label="Placeholder"
 						value={ placeholder }
 						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
-						placeholder={__( "Placeholder" )}
+						placeholder={__( "Placeholder" , 'ultimate-addons-for-gutenberg')}
 					/>
 				</PanelBody>
 			)
 		}
 
-		const isRequired = (required) ? "required" : "";
+		const isRequired = (required) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
@@ -91,7 +91,7 @@ class UAGBFormsEmailEdit extends Component {
 					{isSelected && (
 						<div className="uagb-forms-required-wrap">
 							<ToggleControl
-								label={ __( "Required" ) }
+								label={ __( "Required" , 'ultimate-addons-for-gutenberg' ) }
 								checked={ required }
 								onChange={ ( value ) => setAttributes( { required: ! required } ) }
 							/>
@@ -99,7 +99,7 @@ class UAGBFormsEmailEdit extends Component {
 					)}
 					<RichText
 							tagName="div"
-							placeholder={ __( "Email" ) }
+							placeholder={ __( "Email" , 'ultimate-addons-for-gutenberg' ) }
 							value={ name }
 							onChange={ ( value ) => setAttributes( { name: value } ) }
 							className={`uagb-forms-email-label ${isRequired} uagb-forms-input-label`}

@@ -23,7 +23,7 @@ const attributes = {
     },
     link: {
         type: "string",
-        default: __( "#" , 'ultimate-addons-for-gutenberg' )
+        default: "#"
     },
     linkInNewTab : {
         type: "boolean",

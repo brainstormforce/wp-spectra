@@ -43,7 +43,7 @@ export default function save( props ) {
 		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input"  required={ dateRequired } name={ block_id }/>
 
 	}
-	const isRequired = (dateRequired) ? "required" : "";
+	const isRequired = (dateRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 	return (
 		<div className={ classnames(

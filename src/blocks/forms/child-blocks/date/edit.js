@@ -111,20 +111,20 @@ class UAGBFormsDateEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg') }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ dateRequired }
 						onChange={ ( value ) => setAttributes( { dateRequired: ! dateRequired } ) }
 					/>
 					<ToggleControl
-						label={ __( "Additional Validation" ) }
+						label={ __( "Additional Validation" , 'ultimate-addons-for-gutenberg' ) }
 						checked={ additonalVal }
 						onChange={ ( value ) => setAttributes( { additonalVal: ! additonalVal } ) }
-						help={ __( "Helps to set range of calender" )}
+						help={ __( "Helps to set range of calender" , 'ultimate-addons-for-gutenberg')}
 					/>
 					{ additonalVal && (
 						<Fragment>
@@ -209,7 +209,7 @@ class UAGBFormsDateEdit extends Component {
 					{isSelected && (
 						<div className="uagb-forms-required-wrap">
 							<ToggleControl
-								label={ __( "Required" ) }
+								label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 								checked={ dateRequired }
 								onChange={ ( value ) => setAttributes( { dateRequired: ! dateRequired } ) }
 							/>
@@ -217,7 +217,7 @@ class UAGBFormsDateEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Date" ) }
+						placeholder={ __( "Date" , 'ultimate-addons-for-gutenberg') }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }						
 						className={`uagb-forms-date-label ${isRequired} uagb-forms-input-label`}

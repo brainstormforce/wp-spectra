@@ -15,7 +15,7 @@ const attributes = {
     },
     options: {
         type: "array",
-        default: [ { "optiontitle": __( "Option Name 1" ),"optionvalue": __( "Option Value 1" ) } ],
+        default: [ { "optiontitle": __( "Option Name 1" , 'ultimate-addons-for-gutenberg'),"optionvalue": __( "Option Value 1", 'ultimate-addons-for-gutenberg' ) } ],
         
     },
     

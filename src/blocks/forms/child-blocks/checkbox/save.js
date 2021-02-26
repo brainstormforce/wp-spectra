@@ -19,7 +19,7 @@ export default function save( props ) {
 		checkboxName
 	} = attributes
 	
-	const isRequired = (checkboxRequired) ? "required" : "";
+	const isRequired = (checkboxRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 	return (
 		<div className={ classnames(
