@@ -139,7 +139,7 @@
 			}
 
 			var header_array = $( 'div.entry-content' ).find( all_header )
-			// console.log(parseList(header_array))
+			console.log(header_array)
 			if ( 0 !== header_array.length ) {
 			header_array.each( function (index,value){
 				let header = $( this );
@@ -157,8 +157,8 @@
 
 				if ( !exclude_heading ) {
 					
-					var openLevel = header[0].localName.replace(/^h+/, '');
-					var titleText = header.text();
+					let openLevel = header[0].localName.replace(/^h+/, '');
+					let titleText = header.text();
 					
 					if (openLevel > level) {
 						
