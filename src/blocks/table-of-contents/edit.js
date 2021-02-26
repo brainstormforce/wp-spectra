@@ -245,7 +245,7 @@ class UAGBTableOfContentsEdit extends Component {
 			onChange: this.getIcon,
 			isMulti: false,
 			renderFunc: renderSVG,
-			noSelectedPlaceholder: __( "Select Icon" )
+			noSelectedPlaceholder: __( "Select Icon",'ultimate-addons-for-gutenberg' )
 		}
 
 		let icon_html = ''
@@ -268,8 +268,8 @@ class UAGBTableOfContentsEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
+					<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+						<h2>{ __( "Select the heading to consider when generating the table",'ultimate-addons-for-gutenberg' ) }</h2>
 						{mappingHeaders.map((a, i) => (
 							<PanelRow key={i}>
 								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i + 1}`}</label>
@@ -289,24 +289,24 @@ class UAGBTableOfContentsEdit extends Component {
 							</PanelRow>
 						))}
 					</PanelBody>
-					<PanelBody title={ __( "Scroll" ) } initialOpen={ false }>
+					<PanelBody title={ __( "Scroll",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 						<ToggleControl
-							label={ __( "Smooth Scroll" ) }
+							label={ __( "Smooth Scroll",'ultimate-addons-for-gutenberg' ) }
 							checked={ smoothScroll }
-							help={ __( "This will be in Action only in Front End." ) }
+							help={ __( "This will be in Action only in Front End.",'ultimate-addons-for-gutenberg' ) }
 							onChange={ ( value ) => setAttributes( { smoothScroll: ! smoothScroll } ) }
 						/>
 						{ smoothScroll &&
 							<Fragment>
 								<RangeControl
-									label={ __( "Smooth Scroll Offset (px)" ) }
+									label={ __( "Smooth Scroll Offset (px)",'ultimate-addons-for-gutenberg' ) }
 									value={ smoothScrollOffset }
 									onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
 									min={ 0 }
 									max={ 1000 }
 								/>
 								<RangeControl
-									label={ __( "Scroll Animation Delay (ms)" ) }
+									label={ __( "Scroll Animation Delay (ms)",'ultimate-addons-for-gutenberg' ) }
 									value={ smoothScrollDelay }
 									onChange={ ( value ) => setAttributes( { smoothScrollDelay: value } ) }
 									min={ 100 }
@@ -316,20 +316,20 @@ class UAGBTableOfContentsEdit extends Component {
 						}
 						<hr className="uagb-editor__separator"/>
 						<ToggleControl
-							label={ __( "Show Scroll To Top" ) }
+							label={ __( "Show Scroll To Top",'ultimate-addons-for-gutenberg' ) }
 							checked={ scrollToTop }
-							help={ __( "This will add a Scroll to Top arrow at the bottom of page." ) }
+							help={ __( "This will add a Scroll to Top arrow at the bottom of page.",'ultimate-addons-for-gutenberg' ) }
 							onChange={ ( value ) => setAttributes( { scrollToTop: ! scrollToTop } ) }
 						/>
 						{ scrollToTop &&
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Icon Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopColor }} ></span></span></p>
 								<ColorPalette
 									value={ scrollToTopColor }
 									onChange={ ( colorValue ) => setAttributes( { scrollToTopColor: colorValue } ) }
 									allowReset
 								/>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopBgColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopBgColor }} ></span></span></p>
 								<ColorPalette
 									value={ scrollToTopBgColor }
 									onChange={ ( colorValue ) => setAttributes( { scrollToTopBgColor: colorValue } ) }
@@ -338,20 +338,20 @@ class UAGBTableOfContentsEdit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-					<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-						<h2>{ __( "Heading" ) }</h2>
+					<PanelBody title={ __( "Content",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+						<h2>{ __( "Heading",'ultimate-addons-for-gutenberg' ) }</h2>
 						<SelectControl
-							label={ __( "Alignment" ) }
+							label={ __( "Alignment",'ultimate-addons-for-gutenberg' ) }
 							value={ headingAlignment }
 							onChange={ ( value ) => setAttributes( { headingAlignment: value } ) }
 							options={ [
-								{ value: "left", label: __( "Left" ) },
-								{ value: "center", label: __( "Center" ) },
-								{ value: "right", label: __( "Right" ) },
+								{ value: "left", label: __( "Left",'ultimate-addons-for-gutenberg' ) },
+								{ value: "center", label: __( "Center",'ultimate-addons-for-gutenberg' ) },
+								{ value: "right", label: __( "Right",'ultimate-addons-for-gutenberg' ) },
 							] }
 	  					/>						
 						<RangeControl
-							label={ __( "Bottom Space" ) }
+							label={ __( "Bottom Space",'ultimate-addons-for-gutenberg' ) }
 							value={ headingBottom }
 							onChange={ ( value ) => setAttributes( { headingBottom: value } ) }
 							min={ 0 }
@@ -359,7 +359,7 @@ class UAGBTableOfContentsEdit extends Component {
 							allowReset
 						/>
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: headingLoadGoogleFonts, label: "headingLoadGoogleFonts" } }
@@ -375,29 +375,29 @@ class UAGBTableOfContentsEdit extends Component {
 							lineHeightMobile = { { value: headingLineHeightMobile, label: "headingLineHeightMobile" } }
 							lineHeightTablet= { { value: headingLineHeightTablet, label: "headingLineHeightTablet" } }
 						/>
-						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Heading Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
 							value={ headingColor }
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
 						/>						
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Collapsible" ) }</h2>
+						<h2>{ __( "Collapsible",'ultimate-addons-for-gutenberg' ) }</h2>
 						<ToggleControl
-							label={ __( "Make Content Collapsible" ) }
+							label={ __( "Make Content Collapsible",'ultimate-addons-for-gutenberg' ) }
 							checked={ makeCollapsible }
 							onChange={ ( value ) => setAttributes( { makeCollapsible: ! makeCollapsible } ) }
 						/>
 						{ makeCollapsible &&
 							<Fragment>
 								<ToggleControl
-									label={ __( "Keep Collapsed Initially" ) }
+									label={ __( "Keep Collapsed Initially",'ultimate-addons-for-gutenberg' ) }
 									checked={ initialCollapse }
 									onChange={ ( value ) => setAttributes( { initialCollapse: ! initialCollapse } ) }
 								/>
 								<FontIconPicker {...icon_props} />
 								<RangeControl
-									label = { __( "Icon Size" ) }
+									label = { __( "Icon Size",'ultimate-addons-for-gutenberg' ) }
 									value = { iconSize }
 									onChange = { ( value ) => setAttributes( { iconSize: value } ) }
 									min = { 0 }
@@ -413,15 +413,15 @@ class UAGBTableOfContentsEdit extends Component {
 							</Fragment>
 						}
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Content" ) }</h2>
+						<h2>{ __( "Content",'ultimate-addons-for-gutenberg' ) }</h2>
 						<ToggleControl
-							label={ __( "Disable Bullet Points" ) }
+							label={ __( "Disable Bullet Points",'ultimate-addons-for-gutenberg' ) }
 							checked={ disableBullets }
 							onChange={ ( value ) => setAttributes( { disableBullets: ! disableBullets } ) }
 						/>
 						{ ! disableBullets &&
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Bullet Points Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Bullet Points Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
 								<ColorPalette
 									value={ bulletColor }
 									onChange={ ( colorValue ) => setAttributes( { bulletColor: colorValue } ) }
@@ -429,6 +429,7 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
 							</Fragment>
 						}
+
 						<Columnresponsive/>
 						{ "Desktop" === deviceType && (
                             <Fragment>
@@ -481,8 +482,9 @@ class UAGBTableOfContentsEdit extends Component {
 									/>
                             </Fragment>
                         )}
+
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadGoogleFonts, label: "loadGoogleFonts" } }
@@ -498,22 +500,22 @@ class UAGBTableOfContentsEdit extends Component {
 							lineHeightMobile = { { value: lineHeightMobile, label: "lineHeightMobile" } }
 							lineHeightTablet= { { value: lineHeightTablet, label: "lineHeightTablet" } }
 						/>
-						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Content Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
 						<ColorPalette
 							value={ linkColor }
 							onChange={ ( colorValue ) => setAttributes( { linkColor: colorValue } ) }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Content Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Content Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
 						<ColorPalette
 							value={ linkHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
 							allowReset
 						/>						
 					</PanelBody>
-					<PanelBody title={ __( "Style" ) } initialOpen={ false }>
-						<h2>{ __( "Background" ) }</h2>
-						<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+					<PanelBody title={ __( "Style",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+						<h2>{ __( "Background",'ultimate-addons-for-gutenberg' ) }</h2>
+						<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
 						<ColorPalette
 							value={ backgroundColor }
 							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
@@ -521,12 +523,13 @@ class UAGBTableOfContentsEdit extends Component {
 						/>
 						<hr className="uagb-editor__separator"/>
 						<ToggleControl
-							label={ __( "Custom Width" ) }
+							label={ __( "Custom Width",'ultimate-addons-for-gutenberg' ) }
 							checked={ customWidth }
 							onChange={ ( value ) => setAttributes( { customWidth: ! customWidth } ) }
-							help={ __( "Table's width will be auto if this is kept off." ) }
+							help={ __( "Table's width will be auto if this is kept off.",'ultimate-addons-for-gutenberg' ) }
 						/>
 						{ customWidth &&
+
 						<Columnresponsive/>
 						}
 						{ "Desktop" === deviceType && customWidth && (
@@ -779,27 +782,28 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
                             </Fragment>
                         )}
+
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Border" ) }</h2>
+						<h2>{ __( "Border",'ultimate-addons-for-gutenberg' ) }</h2>
 						<SelectControl
-							label={ __( "Border Style" ) }
+							label={ __( "Border Style",'ultimate-addons-for-gutenberg' ) }
 							value={ borderStyle }
 							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
+								{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+								{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+								{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+								{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+								{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
+								{ value: "groove", label: __( "Groove",'ultimate-addons-for-gutenberg' ) },
+								{ value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+								{ value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+								{ value: "ridge", label: __( "Ridge",'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 						{ "none" != borderStyle && (
 							<RangeControl
-								label={ __( "Border Width" ) }
+								label={ __( "Border Width",'ultimate-addons-for-gutenberg' ) }
 								value={ borderWidth }
 								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 								min={ 0 }
@@ -808,7 +812,7 @@ class UAGBTableOfContentsEdit extends Component {
 							/>
 						) }
 						<RangeControl
-							label={ __( "Border Radius" ) }
+							label={ __( "Border Radius",'ultimate-addons-for-gutenberg' ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 							min={ 0 }
@@ -817,7 +821,7 @@ class UAGBTableOfContentsEdit extends Component {
 						/>
 						{ "none" != borderStyle && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 								<ColorPalette
 									value={ borderColor }
 									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
@@ -840,7 +844,7 @@ class UAGBTableOfContentsEdit extends Component {
 						<div className="uagb-toc__title-wrap">
 							<RichText
 								tagName= { "div" }
-								placeholder={ __( "Table Of Contents" ) }
+								placeholder={ __( "Table Of Contents",'ultimate-addons-for-gutenberg' ) }
 								value={ heading }
 								className = 'uagb-toc__title'
 								onChange = { ( value ) => setAttributes( { heading: value } ) }

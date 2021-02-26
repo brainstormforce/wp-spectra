@@ -308,42 +308,42 @@ class UAGBFaqEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<SelectControl
-						label={ __( "Layout" ) }
+						label={ __( "Layout", 'ultimate-addons-for-gutenberg' ) }
 						value={ layout }
 						options={ [
-							{ value: "accordion", label: __( "Accordion" ) },
-							{ value: "grid", label: __( "Grid" ) },
+							{ value: "accordion", label: __( "Accordion", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "grid", label: __( "Grid", 'ultimate-addons-for-gutenberg' ) },
 						] }
 						onChange={ (value) => this.onchangeLayout( value ) }
 					/>
 					{ 'accordion' === layout &&
 						<Fragment>
 							<ToggleControl
-								label={ __( "Collapse other items" ) }
+								label={ __( "Collapse other items", 'ultimate-addons-for-gutenberg' ) }
 								checked={ inactiveOtherItems }
 								onChange={ ( value ) => setAttributes( { inactiveOtherItems: ! inactiveOtherItems } ) }
 							/>
 							{ true === inactiveOtherItems &&
 								<ToggleControl
-									label={ __( "Expand First Item" ) }
+									label={ __( "Expand First Item", 'ultimate-addons-for-gutenberg' ) }
 									checked={ expandFirstItem }
 									onChange={ ( value ) => setAttributes( { expandFirstItem: ! expandFirstItem } ) }
 								/>
 							}
 							<ToggleControl
-								label={ __( "Enable Toggle" ) }
+								label={ __( "Enable Toggle", 'ultimate-addons-for-gutenberg' ) }
 								checked={ enableToggle }
 								onChange={ ( value ) => setAttributes( { enableToggle: ! enableToggle } ) }
 							/>
 						</Fragment>
 					}
 					<ToggleControl
-						label={ __( "Enable Schema Support" ) }
+						label={ __( "Enable Schema Support", 'ultimate-addons-for-gutenberg' ) }
 						checked={ enableSchemaSupport }
 						onChange={ ( value ) => setAttributes( { enableSchemaSupport: ! enableSchemaSupport } ) }
 					/>
@@ -374,7 +374,7 @@ class UAGBFaqEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Mobile Columns" ) }
+											label={ __( "Mobile Columns", 'ultimate-addons-for-gutenberg' ) }
 											value={ mcolumns }
 											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 											min={ 1 }
@@ -384,7 +384,7 @@ class UAGBFaqEdit extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<RangeControl
-											label={ __( "Tab Columns" ) }
+											label={ __( "Tab Columns", 'ultimate-addons-for-gutenberg' ) }
 											value={ tcolumns }
 											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 											min={ 1 }
@@ -394,7 +394,7 @@ class UAGBFaqEdit extends Component {
 								} else {
 									tabout = (
 										<RangeControl
-											label={ __( "Desktop Columns" ) }
+											label={ __( "Desktop Columns", 'ultimate-addons-for-gutenberg' ) }
 											value={ columns }
 											onChange={ ( value ) => setAttributes( { columns: value } ) }
 											min={ 1 }
@@ -410,7 +410,7 @@ class UAGBFaqEdit extends Component {
 					}
 					{ 'grid' === layout &&
 						<Fragment>
-							<h2> { __( "Alignment" ) }</h2>
+							<h2> { __( "Alignment", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<IconButton
 								key={ "left" }
 								icon="editor-alignleft"
@@ -446,18 +446,18 @@ class UAGBFaqEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "Style" ) }
+					title={ __( "Style", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
-					<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxBgColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Background Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxBgColor }} ></span></span></p>
 					<ColorPalette
 						value={ boxBgColor }
 						onChange={ ( value ) => setAttributes( { boxBgColor: value } ) }
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Rows Gap (px)" ) }
+						label={ __( "Rows Gap (px)", 'ultimate-addons-for-gutenberg' ) }
 						value={ rowsGap }
 						onChange={ ( value ) => setAttributes( { rowsGap: value } ) }
 						min={ 0 }
@@ -466,35 +466,35 @@ class UAGBFaqEdit extends Component {
 					{ 'grid' === layout &&
 						<Fragment>
 							<RangeControl
-								label={ __( "Columns Gap (px)" ) }
+								label={ __( "Columns Gap (px)", 'ultimate-addons-for-gutenberg' ) }
 								value={ columnsGap }
 								onChange={ ( value ) => setAttributes( { columnsGap: value } ) }
 								min={ 0 }
 								max={ 50 }
 							/>
 							<ToggleControl
-							label={ __( "Equal Height" ) }
+							label={ __( "Equal Height", 'ultimate-addons-for-gutenberg' ) }
 							checked={ equalHeight }
 							onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 							/>
 						</Fragment>
 					}
 					<ToggleControl
-						label={ __( "Enable Separator" ) }
+						label={ __( "Enable Separator", 'ultimate-addons-for-gutenberg' ) }
 						checked={ enableSeparator }
 						onChange={ ( value ) => setAttributes( { enableSeparator: ! enableSeparator } ) }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Border" ) }</h2>
+					<h2>{ __( "Border", 'ultimate-addons-for-gutenberg' ) }</h2>
 					<SelectControl
-						label={ __( "Style" ) }
+						label={ __( "Style", 'ultimate-addons-for-gutenberg' ) }
 						value={ borderStyle }
 						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
+							{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
 						] }
 						onChange={ value => {
 							setAttributes( { borderStyle: value } )
@@ -502,7 +502,7 @@ class UAGBFaqEdit extends Component {
 					/>
 					{ "none" !== borderStyle &&
 						<RangeControl
-							label={ __( "Thickness (px)" ) }
+							label={ __( "Thickness (px)", 'ultimate-addons-for-gutenberg' ) }
 							value={ borderWidth }
 							onChange={ value => {
 								setAttributes( { borderWidth: value } )
@@ -513,7 +513,7 @@ class UAGBFaqEdit extends Component {
 					}
 					{ "none" !== borderStyle &&
 						<RangeControl
-							label={ __( "Rounded Corners (px)" ) }
+							label={ __( "Rounded Corners (px)", 'ultimate-addons-for-gutenberg' ) }
 							value={ borderRadius }
 							onChange={ value => {
 								setAttributes( { borderRadius: value } )
@@ -522,7 +522,7 @@ class UAGBFaqEdit extends Component {
 							max={ 50 }
 						/>
 					}
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 					<ColorPalette
 						value={ borderColor }
 						onChange={ ( value ) => setAttributes( { borderColor: value } ) }
@@ -532,7 +532,7 @@ class UAGBFaqEdit extends Component {
 					{ 'accordion' === layout &&
 						<Fragment>
 							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Icon" ) }</h2>
+							<h2>{ __( "Icon", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<Columnresponsive/>
 							{ "Desktop" === deviceType && (
 								<Fragment>
@@ -583,19 +583,19 @@ class UAGBFaqEdit extends Component {
 								</Fragment>
 							)}
 							<RangeControl
-								label={ __( "Gap between Icon and Question" ) }
+								label={ __( "Gap between Icon and Question", 'ultimate-addons-for-gutenberg' ) }
 								value={ gapBtwIconQUestion }
 								onChange={ ( value ) => setAttributes( { gapBtwIconQUestion: value } ) }
 								min={ 0 }
 								max={ 100 }
 							/>
-							<p className="uagb-setting-label">{ __( "Expand Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Expand Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
 							<ColorPalette
 								value={ iconColor }
 								onChange={ ( value ) => setAttributes( { iconColor: value } ) }
 								allowReset
 							/>
-							<p className="uagb-setting-label">{ __( "Collapse Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconActiveColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Collapse Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconActiveColor }} ></span></span></p>
 							<ColorPalette
 								value={ iconActiveColor }
 								onChange={ ( value ) => setAttributes( { iconActiveColor: value } ) }
@@ -610,8 +610,8 @@ class UAGBFaqEdit extends Component {
 
 			return (
 				<Fragment>
-					<h2> { __( "Icon" ) } </h2>
-					<p className="components-base-control__label">{__( "Expand" )}</p>
+					<h2> { __( "Icon", 'ultimate-addons-for-gutenberg' ) } </h2>
+					<p className="components-base-control__label">{__( "Expand", 'ultimate-addons-for-gutenberg' )}</p>
 					<FontIconPicker
 						icons={svg_icons}
 						renderFunc= {renderSVG}
@@ -619,9 +619,9 @@ class UAGBFaqEdit extends Component {
 						value={icon}
 						onChange={ (value) => this.onchangeIcon( value ) }
 						isMulti={false}
-						noSelectedPlaceholder= { __( "Select Icon" ) }
+						noSelectedPlaceholder= { __( "Select Icon", 'ultimate-addons-for-gutenberg' ) }
 					/>
-					<p className="components-base-control__label">{__( "Collapse" )}</p>
+					<p className="components-base-control__label">{__( "Collapse", 'ultimate-addons-for-gutenberg' )}</p>
 					<FontIconPicker
 						icons={svg_icons}
 						renderFunc= {renderSVG}
@@ -629,9 +629,9 @@ class UAGBFaqEdit extends Component {
 						value={iconActive}
 						onChange={ (value) => this.onchangeActiveIcon( value ) }
 						isMulti={false}
-						noSelectedPlaceholder= { __( "Select Icon" ) }
+						noSelectedPlaceholder= { __( "Select Icon", 'ultimate-addons-for-gutenberg' ) }
 					/>
-					<h2> { __( "Icon Alignment" ) }</h2>
+					<h2> { __( "Icon Alignment", 'ultimate-addons-for-gutenberg' ) }</h2>
 					<IconButton
 					 	key={ "row" }
 						icon="editor-alignleft"
@@ -655,27 +655,27 @@ class UAGBFaqEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "Question" ) }
+					title={ __( "Question", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
 					<SelectControl
-						label={ __( "Question Tag" ) }
+						label={ __( "Question Tag", 'ultimate-addons-for-gutenberg' ) }
 						value={ headingTag }
 						onChange={ (value) => this.onchangeTag( value ) }
 						options={ [
-							{ value: "span", label: __( "Span" ) },
-							{ value: "p", label: __( "P" ) },
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
+							{ value: "span", label: __( "Span", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "p", label: __( "P", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h1", label: __( "H1", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h4", label: __( "H4", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h5", label: __( "H5", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h6", label: __( "H6", 'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
 					<TypographyControl
-						label={ __( "Typography" ) }
+						label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: questionloadGoogleFonts, label: 'questionloadGoogleFonts'  } }
@@ -691,13 +691,13 @@ class UAGBFaqEdit extends Component {
 						lineHeightMobile = { { value: questionLineHeightMobile, label: 'questionLineHeightMobile'  } }
 						lineHeightTablet= { { value: questionLineHeightTablet, label: 'questionLineHeightTablet'  } }
 					/>
-					<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: questionTextColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Text Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: questionTextColor }} ></span></span></p>
 						<ColorPalette
 							value={ questionTextColor }
 							onChange={ ( value ) => setAttributes( { questionTextColor: value } ) }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Text Active/Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: questionTextActiveColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Text Active/Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: questionTextActiveColor }} ></span></span></p>
 						<ColorPalette
 							value={ questionTextActiveColor }
 							onChange={ ( value ) => setAttributes( { questionTextActiveColor: value } ) }
@@ -706,7 +706,7 @@ class UAGBFaqEdit extends Component {
 						<Columnresponsive/>
 						{ "Desktop" === deviceType && (
                             <Fragment>
-                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "px" } aria-pressed={ questionPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "%" } aria-pressed={ questionPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 							</ButtonGroup>
@@ -751,11 +751,11 @@ class UAGBFaqEdit extends Component {
                         )}
                         { "Tablet" === deviceType && (
                             <Fragment>
-                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "px" } aria-pressed={ questionPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "%" } aria-pressed={ questionPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 							</ButtonGroup>
-							<h2>{ __( "Padding" ) }</h2>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<RangeControl
 								label={ UAGB_Block_Icons.left_margin }
 								className={ "uagb-margin-control" }
@@ -796,11 +796,11 @@ class UAGBFaqEdit extends Component {
                         )}
                         { "Mobile" === deviceType && (
                             <Fragment>
-                               <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                               <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 									<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "px" } aria-pressed={ questionPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 									<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ questionPaddingTypeDesktop === "%" } aria-pressed={ questionPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { questionPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 								</ButtonGroup>
-								<h2>{ __( "Padding" ) }</h2>
+								<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 								<RangeControl
 									label={ UAGB_Block_Icons.left_margin }
 									className={ "uagb-margin-control" }
@@ -847,12 +847,12 @@ class UAGBFaqEdit extends Component {
 			return (
 
 				<PanelBody
-					title={ __( "Answer" ) }
+					title={ __( "Answer", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
 					<TypographyControl
-						label={ __( "Typography" ) }
+						label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: answerloadGoogleFonts, label: 'answerloadGoogleFonts'  } }
@@ -868,7 +868,7 @@ class UAGBFaqEdit extends Component {
 						lineHeightMobile = { { value: answerLineHeightMobile, label: 'answerLineHeightMobile'  } }
 						lineHeightTablet= { { value: answerLineHeightTablet, label: 'answerLineHeightTablet'  } }
 					/>
-					<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: answerTextColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Text Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: answerTextColor }} ></span></span></p>
 					<ColorPalette
 						value={ answerTextColor }
 						onChange={ ( value ) => setAttributes( { answerTextColor: value } ) }
@@ -877,11 +877,11 @@ class UAGBFaqEdit extends Component {
 					<Columnresponsive/>
 					{ "Desktop" === deviceType && (
                             <Fragment>
-                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "px" } aria-pressed={ answerPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "%" } aria-pressed={ answerPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 							</ButtonGroup>
-							<h2>{ __( "Padding" ) }</h2>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<RangeControl
 								label={ UAGB_Block_Icons.vertical_spacing }
 								className={ "uagb-margin-control" }
@@ -904,11 +904,11 @@ class UAGBFaqEdit extends Component {
                         )}
                         { "Tablet" === deviceType && (
                             <Fragment>
-                           <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                           <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "px" } aria-pressed={ answerPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "%" } aria-pressed={ answerPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 							</ButtonGroup>
-							<h2>{ __( "Padding" ) }</h2>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<RangeControl
 								label={ UAGB_Block_Icons.vertical_spacing }
 								className={ "uagb-margin-control" }
@@ -931,11 +931,11 @@ class UAGBFaqEdit extends Component {
                         )}
                         { "Mobile" === deviceType && (
                             <Fragment>
-                               <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                               <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 									<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "px" } aria-pressed={ answerPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 									<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ answerPaddingTypeDesktop === "%" } aria-pressed={ answerPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { answerPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 								</ButtonGroup>
-								<h2>{ __( "Padding" ) }</h2>
+								<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 								<RangeControl
 									label={ UAGB_Block_Icons.vertical_spacing }
 									className={ "uagb-margin-control" }

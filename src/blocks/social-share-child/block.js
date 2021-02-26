@@ -23,9 +23,9 @@ registerBlockType( "uagb/social-share-child", {
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/social-share" ],
 	keywords: [
-		__( "social share" ),
-		__( "icon" ),
-		__( "uag" ),
+		__( "social share",'ultimate-addons-for-gutenberg' ),
+		__( "icon",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	attributes,
 	edit,

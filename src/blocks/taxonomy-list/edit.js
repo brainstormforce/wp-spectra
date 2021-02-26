@@ -172,7 +172,7 @@ class UAGBTaxonomyList extends Component {
 		
 		if ( "" != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
 			var taxonomyListOptions = [
-				{ value: "", label: __( "Select Taxonomy" ) }
+				{ value: "", label: __( "Select Taxonomy",'ultimate-addons-for-gutenberg' ) }
 			]
 			Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
 				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
@@ -230,7 +230,7 @@ class UAGBTaxonomyList extends Component {
 		// All Controls.
 		const color_control = (
 			<Fragment>
-				<h2 className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listTextColor }} ></span></span></h2>
+				<h2 className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listTextColor }} ></span></span></h2>
 				<ColorPalette
 				value={ listTextColor }
 				onChange={ ( colorValue ) => setAttributes( { listTextColor: colorValue } ) }
@@ -238,7 +238,7 @@ class UAGBTaxonomyList extends Component {
 				/><br/>
 				{ "none" != listStyle && (
 					<Fragment>
-						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listStyleColor }} ></span></span></h2>
+						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: listStyleColor }} ></span></span></h2>
 						<ColorPalette
 						value={ listStyleColor }
 						onChange={ ( colorValue ) => setAttributes( { listStyleColor: colorValue } ) }
@@ -251,7 +251,7 @@ class UAGBTaxonomyList extends Component {
 		)
 		const color_control_hover = (
 			<Fragment>
-				<h2 className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistTextColor }} ></span></span></h2>
+				<h2 className="uagb-setting-label">{ __( "Text Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistTextColor }} ></span></span></h2>
 				<ColorPalette
 				value={ hoverlistTextColor }
 				onChange={ ( colorValue ) => setAttributes( { hoverlistTextColor: colorValue } ) }
@@ -259,7 +259,7 @@ class UAGBTaxonomyList extends Component {
 				/><br/>
 				{ "none" != listStyle && (
 					<Fragment>
-						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistStyleColor }} ></span></span></h2>
+						<h2 className="uagb-setting-label">{ __( "Bullet/Numbers Hover Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hoverlistStyleColor }} ></span></span></h2>
 						<ColorPalette
 						value={ hoverlistStyleColor }
 						onChange={ ( colorValue ) => setAttributes( { hoverlistStyleColor: colorValue } ) }
@@ -273,16 +273,16 @@ class UAGBTaxonomyList extends Component {
 				
 		const inspectorControlsSettings = (
 			<InspectorControls>
-				<PanelBody title={ __( "General" ) }>
-					<SelectControl
-						label={ __( "Layout" ) }
-						value={ layout }
-						onChange={ ( value ) => setAttributes( { layout: value } ) }
-						options={ [
-							{ value: "grid", label: __( "Grid" ) },
-							{ value: "list", label: __( "List" ) },
-						] }
-					/>
+				<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) }>
+						<SelectControl
+							label={ __( "Layout",'ultimate-addons-for-gutenberg' ) }
+							value={ layout }
+							onChange={ ( value ) => setAttributes( { layout: value } ) }
+							options={ [
+								{ value: "grid", label: __( "Grid",'ultimate-addons-for-gutenberg' ) },
+								{ value: "list", label: __( "List",'ultimate-addons-for-gutenberg' ) },
+							] }
+						/>
 						{ 'grid' === layout &&
 							<Columnresponsive/>
 						}
@@ -321,14 +321,14 @@ class UAGBTaxonomyList extends Component {
                         )}	
 					<hr className="uagb-editor__separator" />
 					<SelectControl
-						label={ __( "Post Type" ) }
+						label={ __( "Post Type",'ultimate-addons-for-gutenberg' ) }
 						value={ postType }
 						onChange={ ( value ) => this.onSelectPostType( value ) }
 						options={ uagb_blocks_info.post_types }
 						/>				
 					{ "" != taxonomyList &&
 						<SelectControl
-						label={ __( "Taxonomy" ) }
+						label={ __( "Taxonomy",'ultimate-addons-for-gutenberg' ) }
 						value={ taxonomyType }
 						onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
 						options={ taxonomyListOptions }
@@ -337,15 +337,15 @@ class UAGBTaxonomyList extends Component {
 					{ "" == taxonomyList && (
 							<TextControl
 								autoComplete="off"
-								label={ __( 'Display Message' ) }
+								label={ __( 'Display Message','ultimate-addons-for-gutenberg' ) }
 								value={ noTaxDisplaytext }
 								onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
-								help={ __( "If Taxonomy Not Found" ) }
+								help={ __( "If Taxonomy Not Found",'ultimate-addons-for-gutenberg' ) }
 								/>
 					)}
 					{"list" == layout && (
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Display Style" ) }</p>
+							<p className="uagb-setting-label">{ __( "Display Style",'ultimate-addons-for-gutenberg' ) }</p>
 							<ButtonGroup className="uagb-list-display-style-group">
 								<Button
 									key={ "list" }								
@@ -366,30 +366,30 @@ class UAGBTaxonomyList extends Component {
 					)}
 
 					<ToggleControl
-						label={ __( "Show Empty Taxonomy" ) }
+						label={ __( "Show Empty Taxonomy",'ultimate-addons-for-gutenberg' ) }
 						checked={ showEmptyTaxonomy }
 						onChange={ ( value ) => setAttributes( { showEmptyTaxonomy: ! showEmptyTaxonomy } ) }
 						help={__( "Show Empty Taxonomy in list " )}
 					/>					
 					<ToggleControl
-						label={ __( "Show Posts Count" ) }
+						label={ __( "Show Posts Count",'ultimate-addons-for-gutenberg' ) }
 						checked={ showCount }
 						onChange={ ( value ) => setAttributes( { showCount: ! showCount } ) }
-						help={__( "Show Count of taxonomy " )}
+						help={__( "Show Count of taxonomy ",'ultimate-addons-for-gutenberg' )}
 					/>
 
 					{ "list" == layout && "list" == listDisplayStyle && "post_tag" !== taxonomyType && (
 						<ToggleControl
-						label={ __( "Show Hierarchy" ) }
+						label={ __( "Show Hierarchy",'ultimate-addons-for-gutenberg' ) }
 						checked={ showhierarchy }
 						onChange={ ( value ) => setAttributes( { showhierarchy: ! showhierarchy } ) }
-						help={__( "Show Hierarchy of taxonomy " )}
+						help={__( "Show Hierarchy of taxonomy ",'ultimate-addons-for-gutenberg' )}
 						/>
 					)}
 
 					{"grid" == layout && (
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Alignment" ) }</p>
+							<p className="uagb-setting-label">{ __( "Alignment",'ultimate-addons-for-gutenberg' ) }</p>
 							<Button
 								key={ "left" }
 								icon="editor-alignleft"
@@ -419,7 +419,7 @@ class UAGBTaxonomyList extends Component {
 
 					{"list" == layout && "dropdown" !== listDisplayStyle && (
 						<Fragment>							
-							<p className="uagb-setting-label">{ __( "List Style" ) }</p>
+							<p className="uagb-setting-label">{ __( "List Style",'ultimate-addons-for-gutenberg' ) }</p>
 								<Button
 									key={ "bullet" }
 									icon="editor-ul"
@@ -452,17 +452,17 @@ class UAGBTaxonomyList extends Component {
 			{"dropdown" !== listDisplayStyle &&(
 			<Fragment>
 				
-				<PanelBody title={ __( "Color" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Color",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					{ "grid" == layout && (
 						<Fragment>					
 							
-							<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
 							<ColorPalette
 							value={ bgColor }
 							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 							allowReset
 							/>
-							<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Title Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 							<ColorPalette
 							value={ titleColor }
 							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
@@ -470,7 +470,7 @@ class UAGBTaxonomyList extends Component {
 							/>
 							{ showCount && (
 								<Fragment>
-									<p className="uagb-setting-label">{ __( "Count Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
+									<p className="uagb-setting-label">{ __( "Count Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: countColor }} ></span></span></p>
 									<ColorPalette
 									value={ countColor }
 									onChange={ ( colorValue ) => setAttributes( { countColor: colorValue } ) }
@@ -488,12 +488,12 @@ class UAGBTaxonomyList extends Component {
 							tabs={ [
 								{
 									name: "normal",
-									title: __( "Normal" ),
+									title: __( "Normal",'ultimate-addons-for-gutenberg' ),
 									className: "uagb-normal-tab",
 								},
 								{
 									name: "hover",
-									title: __( "Hover" ),
+									title: __( "Hover",'ultimate-addons-for-gutenberg' ),
 									className: "uagb-hover-tab",
 								},
 							] }>
@@ -513,12 +513,12 @@ class UAGBTaxonomyList extends Component {
 
 				</PanelBody>
 
-				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Spacing",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 
 					{"grid" == layout && (
 						<Fragment>
 							<RangeControl
-								label={ __( "Row Gap" ) }
+								label={ __( "Row Gap",'ultimate-addons-for-gutenberg' ) }
 								value={ rowGap }
 								onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 								min={ 0 }
@@ -526,7 +526,7 @@ class UAGBTaxonomyList extends Component {
 								allowReset
 							/>
 							<RangeControl
-								label={ __( "Column Gap" ) }
+								label={ __( "Column Gap",'ultimate-addons-for-gutenberg' ) }
 								value={ columnGap }
 								onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 								min={ 0 }
@@ -570,11 +570,12 @@ class UAGBTaxonomyList extends Component {
 									/>
 								</Fragment>
 							)}
+
 							{showCount && (
 								<Fragment>
 									<hr className="uagb-editor__separator" />
 									<RangeControl
-										label={ __( "Title Bottom Spacing" ) }
+										label={ __( "Title Bottom Spacing",'ultimate-addons-for-gutenberg' ) }
 										value={ titleBottomSpace }
 										onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
 										min={ 0 }
@@ -588,7 +589,7 @@ class UAGBTaxonomyList extends Component {
 
 					{"list" == layout && (
 						<RangeControl
-							label={ __( "Bottom Margin" ) }
+							label={ __( "Bottom Margin",'ultimate-addons-for-gutenberg' ) }
 							value={ listBottomMargin }
 							onChange={ ( value ) => setAttributes( { listBottomMargin: value } ) }
 							min={ 0 }
@@ -598,14 +599,14 @@ class UAGBTaxonomyList extends Component {
 					)}				
 				</PanelBody>
 
-				<PanelBody title={ __( "Style" ) } initialOpen={ false }>					
+				<PanelBody title={ __( "Style",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>					
 							
 					{"grid" == layout && (
 						<Fragment>
 
-							<p className="uagb-setting-label">{ __( "Title " ) }</p>
+							<p className="uagb-setting-label">{ __( "Title ",'ultimate-addons-for-gutenberg' ) }</p>
 							<TypographyControl
-								label={ __( "Typography" ) }
+								label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
@@ -624,9 +625,9 @@ class UAGBTaxonomyList extends Component {
 							{ showCount && (
 								<Fragment>
 								<hr className="uagb-editor__separator" />
-								<p className="uagb-setting-label">{ __( "Count " ) }</p>
+								<p className="uagb-setting-label">{ __( "Count ",'ultimate-addons-for-gutenberg' ) }</p>
 								<TypographyControl
-									label={ __( "Typography" ) }
+									label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 									attributes = { attributes }
 									setAttributes = { setAttributes }
 									loadGoogleFonts = { { value: countLoadGoogleFonts, label: "countLoadGoogleFonts" } }
@@ -647,35 +648,35 @@ class UAGBTaxonomyList extends Component {
 							<hr className="uagb-editor__separator" />							
 							<BoxShadowControl
 							setAttributes = { setAttributes }
-							label = { __( "Box Shadow" ) }
-							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
-							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
-							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							label = { __( "Box Shadow",'ultimate-addons-for-gutenberg' ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color",'ultimate-addons-for-gutenberg' ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal",'ultimate-addons-for-gutenberg' ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical",'ultimate-addons-for-gutenberg' ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur",'ultimate-addons-for-gutenberg' ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread",'ultimate-addons-for-gutenberg' ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position",'ultimate-addons-for-gutenberg' ) } }
 							/>
 							<hr className="uagb-editor__separator" />
 							<SelectControl
-									label={ __( "Border Style" ) }
+									label={ __( "Border Style",'ultimate-addons-for-gutenberg' ) }
 									value={ borderStyle }
 									onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "solid", label: __( "Solid" ) },
-										{ value: "dotted", label: __( "Dotted" ) },
-										{ value: "dashed", label: __( "Dashed" ) },
-										{ value: "double", label: __( "Double" ) },
-										{ value: "groove", label: __( "Groove" ) },
-										{ value: "inset", label: __( "Inset" ) },
-										{ value: "outset", label: __( "Outset" ) },
-										{ value: "ridge", label: __( "Ridge" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+										{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
+										{ value: "groove", label: __( "Groove",'ultimate-addons-for-gutenberg' ) },
+										{ value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+										{ value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+										{ value: "ridge", label: __( "Ridge",'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 								{ "none" != borderStyle &&
 									<Fragment>										
 										<RangeControl
-											label={ __( "Border Thickness" ) }
+											label={ __( "Border Thickness",'ultimate-addons-for-gutenberg' ) }
 											value={ borderThickness }
 											onChange={ ( value ) => setAttributes( { borderThickness: value } ) }
 											min={ 0 }
@@ -683,7 +684,7 @@ class UAGBTaxonomyList extends Component {
 											allowReset
 										/>
 										<RangeControl
-											label={ __( "Rounded Corners (px)" ) }
+											label={ __( "Rounded Corners (px)",'ultimate-addons-for-gutenberg' ) }
 											value={ borderRadius }
 											onChange={ value => {
 												setAttributes( { borderRadius: value } )
@@ -692,7 +693,7 @@ class UAGBTaxonomyList extends Component {
 											max={ 50 }
 											allowReset
 										/>										
-										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+										<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 										<ColorPalette
 											value={ borderColor }
 											onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
@@ -708,25 +709,25 @@ class UAGBTaxonomyList extends Component {
 						
 						<Fragment>
 								<SelectControl
-									label={ __( "Separator Style" ) }
+									label={ __( "Separator Style",'ultimate-addons-for-gutenberg' ) }
 									value={ seperatorStyle }
 									onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "solid", label: __( "Solid" ) },
-										{ value: "dotted", label: __( "Dotted" ) },
-										{ value: "dashed", label: __( "Dashed" ) },
-										{ value: "double", label: __( "Double" ) },
-										{ value: "groove", label: __( "Groove" ) },
-										{ value: "inset", label: __( "Inset" ) },
-										{ value: "outset", label: __( "Outset" ) },
-										{ value: "ridge", label: __( "Ridge" ) },
+										{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+										{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+										{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+										{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
+										{ value: "groove", label: __( "Groove",'ultimate-addons-for-gutenberg' ) },
+										{ value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+										{ value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+										{ value: "ridge", label: __( "Ridge",'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 								{ "none" != seperatorStyle &&
 									<Fragment>
 										<RangeControl
-											label={ __( "Separator Width (%)" ) }
+											label={ __( "Separator Width (%)",'ultimate-addons-for-gutenberg' ) }
 											value={ seperatorWidth }
 											onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 											min={ 0 }
@@ -734,7 +735,7 @@ class UAGBTaxonomyList extends Component {
 											allowReset
 										/>
 										<RangeControl
-											label={ __( "Separator Thickness" ) }
+											label={ __( "Separator Thickness",'ultimate-addons-for-gutenberg' ) }
 											value={ seperatorThickness }
 											onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
 											min={ 0 }
@@ -742,7 +743,7 @@ class UAGBTaxonomyList extends Component {
 											allowReset
 										/>
 										<Fragment>
-											<p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Separator Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 											<ColorPalette
 												value={ seperatorColor }
 												onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
@@ -754,9 +755,9 @@ class UAGBTaxonomyList extends Component {
 
 								<hr className="uagb-editor__separator" />
 								
-								<p className="uagb-setting-label">{ __( "List " ) }</p>
+								<p className="uagb-setting-label">{ __( "List ",'ultimate-addons-for-gutenberg' ) }</p>
 								<TypographyControl
-								label={ __( "Typography" ) }
+								label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								loadGoogleFonts = { { value: listLoadGoogleFonts, label: "listLoadGoogleFonts" } }

@@ -93,9 +93,9 @@ class UAGBcontentTimelineChild extends Component {
 			const content_control = (
 				<InspectorControls>
 					{ displayPostDate != true &&(
-					<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+					<PanelBody title={ __( "Timeline Item",'ultimate-addons-for-gutenberg' ) } initialOpen={ false } >
 						<TextControl
-							label= { __( "Date" ) }
+							label= { __( "Date",'ultimate-addons-for-gutenberg' ) }
 							value= { t_date }
 							onChange={ ( value ) => setAttributes( { t_date: value } ) }
 						/>
@@ -111,7 +111,7 @@ class UAGBcontentTimelineChild extends Component {
 			if ( 'custom' != dateFormat ) {
 
 				post_date = dateI18n( dateFormat, t_date )
-				if( post_date === "Invalid date" ){
+				if( post_date === "Invalid date",'ultimate-addons-for-gutenberg' ){
 					post_date = t_date
 				}
 			}
@@ -147,7 +147,7 @@ class UAGBcontentTimelineChild extends Component {
 													tagName={ headingTag }
 													value={ time_heading }
 													onChange={ ( value ) => setAttributes( { time_heading: value } ) }
-													placeholder={ __( "Write a Heading" ) }
+													placeholder={ __( "Write a Heading",'ultimate-addons-for-gutenberg' ) }
 													className='uagb-timeline__heading'
 													onMerge={ mergeBlocks }
 													unstableOnSplit={
@@ -168,7 +168,7 @@ class UAGBcontentTimelineChild extends Component {
 												tagName= "p"
 												value={ time_desc }
 												onChange={ ( value ) => setAttributes( { time_desc: value } ) }
-												placeholder={ __( "Write a Description" ) }
+												placeholder={ __( "Write a Description",'ultimate-addons-for-gutenberg' ) }
 												className='uagb-timeline-desc-content'
 												onMerge={ mergeBlocks }
 												unstableOnSplit={ this.splitBlock }

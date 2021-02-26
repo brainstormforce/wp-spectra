@@ -53,8 +53,8 @@ export default function RangeTypographyControl ( props ) {
 		sizeTypes = props.sizeTypes
 	} else {
 		sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
+			{ key: "px", name: __( "px",'ultimate-addons-for-gutenberg' ) },
+			{ key: "em", name: __( "em",'ultimate-addons-for-gutenberg' ) },
 		]
 	}
 
