@@ -15,6 +15,7 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
+const { withSelect } = wp.data
 
 const { __ } = wp.i18n
 
@@ -96,7 +97,7 @@ class UAGBTeam extends Component {
 
 	render() {
 
-		const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
+		const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType } = this.props
 
 		// Setup the attributes.
 		const {
@@ -753,6 +754,7 @@ class UAGBTeam extends Component {
 						`uagb-team__image-position-${imgPosition}`,
 						`uagb-team__align-${align}`,
 						`uagb-team__stack-${stack}`,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 						`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 					) }>
 					<div className = "uagb-team__wrap">
@@ -802,4 +804,11 @@ class UAGBTeam extends Component {
 	}
 }
 
-export default UAGBTeam
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+} )( UAGBTeam )
