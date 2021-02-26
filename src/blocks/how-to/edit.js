@@ -181,6 +181,7 @@ class UAGBHowTo extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
+			deviceType,
 			attributes: {
 				overallAlignment,
 				currencyType,
@@ -731,6 +732,7 @@ class UAGBHowTo extends Component {
 				<div
 					className={ classnames(
 						className,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 						`uagb-block-${this.props.clientId.substr( 0, 8 )}`,					
 					) }
 				>
@@ -957,6 +959,9 @@ class UAGBHowTo extends Component {
 export default compose(
 	withSelect( ( select, ownProps ) => {
 
+		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
 		let url_chk = ''
 		let title = ''
 		if( "undefined" !== ownProps.attributes.mainimage  && null !== ownProps.attributes.mainimage && "" !== ownProps.attributes.mainimage ){
@@ -1038,7 +1043,8 @@ export default compose(
 			});	
 			
 		return {
-			schemaJsonData: json_data
+			schemaJsonData: json_data,
+			deviceType: deviceType,
 		};
 	} )
 ) ( UAGBHowTo )
