@@ -104,6 +104,11 @@ array_multisort(
 									'content-timeline-child',
 									'tabs-child',
 								);
+
+								if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
+									continue;
+								}
+
 								if ( in_array( $addon, $child_blocks, true ) ) {
 									continue;
 								}

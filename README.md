@@ -168,13 +168,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 1.21.0 ###
 * New: [Tabs Block.](https://ultimategutenberg.com/tabs/)
-* New: Added the single pages and blocks for the Gutenberg. [Read more](https://wpastra.com/docs/import-gb-pages-patterns/)
+* New: Added the single pages and blocks for the Gutenberg.
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
 * Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
 * Improvement: RTL support to the block.
 * Deprecated: Removed Transform Compatibility from Icon List Block.
+* Improvement: Block Conditions - Now user can add conditions of visibility to blocks with respect to User State, Responsive Visibility, User Role, Browser, and Operating System.
 
 ### 1.20.1 ###
 * Fix: Content Timeline - Content not being saved issue.
