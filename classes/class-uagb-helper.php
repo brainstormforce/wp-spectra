@@ -478,6 +478,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/testimonial':
 					$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
