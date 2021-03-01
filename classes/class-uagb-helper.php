@@ -271,11 +271,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			ob_start();
+				ob_start();
 			?>
-			<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
-			<?php
-			ob_end_flush();
+				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
+				<?php
+				ob_end_flush();
 		}
 
 		/**
@@ -414,7 +414,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-				$blockattr = $block['attrs'];
+				/**
+				 * Filters the block attributes for CSS and JS generation.
+				 *
+				 * @param array  $block_attributes The block attributes to be filtered.
+				 * @param string $name             The block name.
+				 */
+				$blockattr = apply_filters( 'uagb_block_attributes_for_css_and_js', $block['attrs'], $name );
 				if ( isset( $blockattr['block_id'] ) ) {
 					$block_id = $blockattr['block_id'];
 				}
@@ -470,6 +476,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
 					$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
+					break;
+
+				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':

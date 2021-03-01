@@ -69,9 +69,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
+			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
-
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
 		}
@@ -85,7 +85,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.20.1' );
+			define( 'UAGB_VER', '1.21.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );

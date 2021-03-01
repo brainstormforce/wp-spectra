@@ -52,9 +52,9 @@ const { Component, Fragment } = wp.element
 const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
 
 let imageSizeOptions = [
-	{ value: "thumbnail", label: __( "Thumbnail" ) },
-	{ value: "medium", label: __( "Medium" ) },
-	{ value: "full", label: __( "Large" ) }
+	{ value: "thumbnail", label: __( "Thumbnail", 'ultimate-addons-for-gutenberg' ) },
+	{ value: "medium", label: __( "Medium", 'ultimate-addons-for-gutenberg' ) },
+	{ value: "full", label: __( "Large", 'ultimate-addons-for-gutenberg' ) }
 ]
 
 class UAGBHowTo extends Component {
@@ -375,16 +375,16 @@ class UAGBHowTo extends Component {
 		const howtoGeneralSettings = () => {
 
 			return (
-				<PanelBody title={ __( "General" ) } initialOpen={ true } >
-							<h2>{ __( "Image" ) }</h2>
+				<PanelBody title={ __( "General", 'ultimate-addons-for-gutenberg' ) } initialOpen={ true } >
+							<h2>{ __( "Image", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<MediaUpload
-								title={ __( "Select Image" ) }
+								title={ __( "Select Image", 'ultimate-addons-for-gutenberg' ) }
 								onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
-										{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+										{ ! mainimage.url ? __( "Select Image", 'ultimate-addons-for-gutenberg' ) : __( "Replace image", 'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								) }
 							/>
@@ -393,43 +393,43 @@ class UAGBHowTo extends Component {
 									className="uagb-rm-btn"
 									onClick={ () => setAttributes( { mainimage: '' } ) }
 									isLink isDestructive>
-									{ __( "Remove Image" ) }
+									{ __( "Remove Image", 'ultimate-addons-for-gutenberg' ) }
 								</Button>
 							}
 							{ mainimage.url &&
 								<SelectControl
-									label={ __( "Size" ) }
+									label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
 									options={ imageSizeOptions }
 									value={ imgSize }
 									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 								/>
 							}
-				<h2>{ __( "Primary Heading" ) }</h2>
+				<h2>{ __( "Primary Heading", 'ultimate-addons-for-gutenberg' ) }</h2>
 					<SelectControl
 						label={ __( "Tag" ) }
 						value={ headingTag }
 						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
+							{ value: "h1", label: __( "H1", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h4", label: __( "H4", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h5", label: __( "H5", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h6", label: __( "H6", 'ultimate-addons-for-gutenberg' ) },
 						] }
 				/>
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
-					label={ __( "Show Total Time" ) }
+					label={ __( "Show Total Time", 'ultimate-addons-for-gutenberg' ) }
 					checked={ showTotaltime }
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
-					help={ __( "Note: Time is recommended field for schema. It should be ON" ) }
+					help={ __( "Note: Time is recommended field for schema. It should be ON", 'ultimate-addons-for-gutenberg' ) }
 				/>
 				{ showTotaltime &&(
-					<PanelBody title={ __( "Time" ) } initialOpen={ true } className="uagb-editor-howto-timepanel">
+					<PanelBody title={ __( "Time", 'ultimate-addons-for-gutenberg' ) } initialOpen={ true } className="uagb-editor-howto-timepanel">
 					<Fragment>
 						<RangeControl
-							label={ __( "Years" ) }
+							label={ __( "Years", 'ultimate-addons-for-gutenberg' ) }
 							value={ timeInYears }
 							onChange={ ( value ) => setAttributes( { timeInYears: value } ) }
 							min={ 1 }
@@ -437,7 +437,7 @@ class UAGBHowTo extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Months" ) }
+							label={ __( "Months", 'ultimate-addons-for-gutenberg' ) }
 							value={ timeInMonths }
 							onChange={ ( value ) => setAttributes( { timeInMonths: value } ) }
 							min={ 1 }
@@ -445,7 +445,7 @@ class UAGBHowTo extends Component {
 							allowReset
 						/>						
 						<RangeControl
-							label={ __( "Days" ) }
+							label={ __( "Days", 'ultimate-addons-for-gutenberg' ) }
 							value={ timeInDays }
 							onChange={ ( value ) => setAttributes( { timeInDays: value } ) }
 							min={ 1 }
@@ -453,7 +453,7 @@ class UAGBHowTo extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Hours" ) }
+							label={ __( "Hours", 'ultimate-addons-for-gutenberg' ) }
 							value={ timeInHours }
 							onChange={ ( value ) => setAttributes( { timeInHours: value } ) }
 							min={ 1 }
@@ -461,7 +461,7 @@ class UAGBHowTo extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Minutes" ) }
+							label={ __( "Minutes", 'ultimate-addons-for-gutenberg' ) }
 							value={ minsValue }
 							onChange={ ( value ) => setAttributes( { timeInMins: value } ) }
 							min={ 1 }
@@ -473,24 +473,24 @@ class UAGBHowTo extends Component {
 				)}
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
-					label={ __( "Show Estimated Cost" ) }
+					label={ __( "Show Estimated Cost", 'ultimate-addons-for-gutenberg' ) }
 					checked={ showEstcost }
 					onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
-					help={ __( "Note: Cost is recommended field for schema.It should be ON" ) }
+					help={ __( "Note: Cost is recommended field for schema.It should be ON", 'ultimate-addons-for-gutenberg' ) }
 				/>
 				<ExternalLink href={ 'https://en.wikipedia.org/wiki/List_of_circulating_currencies' }>
-					{ __( 'Click here to find your countrys ISO code.' ) }
+					{ __( 'Click here to find your countrys ISO code.', 'ultimate-addons-for-gutenberg' ) }
 				</ExternalLink>
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
-					label={ __( "Show Tools" ) }
+					label={ __( "Show Tools", 'ultimate-addons-for-gutenberg' ) }
 					checked={ showTools }
 					onChange={ ( value ) => setAttributes( { showTools: ! showTools } ) }
-					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					help={ __( "Note: This is recommended field for schema.It should be ON", 'ultimate-addons-for-gutenberg' ) }
 				/>
 				{ showTools &&
 					<RangeControl
-						label={ __( "Number of Tools" ) }
+						label={ __( "Number of Tools", 'ultimate-addons-for-gutenberg' ) }
 						value={ tools_count }
 						onChange={ newCount => {
 
@@ -526,14 +526,14 @@ class UAGBHowTo extends Component {
 					}
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
-					label={ __( "Show Materials" ) }
+					label={ __( "Show Materials", 'ultimate-addons-for-gutenberg' ) }
 					checked={ showMaterials }
 					onChange={ ( value ) => setAttributes( { showMaterials: ! showMaterials } ) }
-					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					help={ __( "Note: This is recommended field for schema.It should be ON", 'ultimate-addons-for-gutenberg' ) }
 				/>
 				{ showMaterials &&
 					<RangeControl
-						label={ __( "Number of Materials" ) }
+						label={ __( "Number of Materials", 'ultimate-addons-for-gutenberg' ) }
 						value={ material_count }
 						onChange={ newCount => {
 
@@ -573,30 +573,30 @@ class UAGBHowTo extends Component {
 		const howtoStyleSettings = () => {
 
 			return (
-				<PanelBody title={ __( "Style" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Style", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<h2>{ __( "Colors" ) }</h2>
-				<p className="uagb-setting-label">{ __( "Heading" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Heading", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 				<ColorPalette
 					value={ headingColor }
 					onChange={ ( value ) => setAttributes( { headingColor: value } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Secondary Heading" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Secondary Heading", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
 				<ColorPalette
 					value={ showTotaltimecolor }
 					onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Description" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Description", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 					<ColorPalette
 						value={ subHeadingColor }
 						onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
 						allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Typography" ) }</h2>
+				<h2>{ __( "Typography", 'ultimate-addons-for-gutenberg' ) }</h2>
 					<TypographyControl
-						label={ __( "Heading" ) }
+						label={ __( "Heading", 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
@@ -613,7 +613,7 @@ class UAGBHowTo extends Component {
 						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
 					/>
 					<TypographyControl
-						label={ __( "Secondary Heading" ) }
+						label={ __( "Secondary Heading", 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
@@ -630,7 +630,7 @@ class UAGBHowTo extends Component {
 						lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
 					/>	
 					<TypographyControl
-						label={ __( "Description" ) }
+						label={ __( "Description", 'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
@@ -647,10 +647,10 @@ class UAGBHowTo extends Component {
 						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
 					/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Spacing" ) }</h2>
+				<h2>{ __( "Spacing", 'ultimate-addons-for-gutenberg' ) }</h2>
 				{ showTotaltime &&
 					<RangeControl
-						label={ __( "Time Margin" ) }
+						label={ __( "Time Margin", 'ultimate-addons-for-gutenberg' ) }
 						value={ timeSpace }
 						onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
 						min={ 0 }
@@ -660,7 +660,7 @@ class UAGBHowTo extends Component {
 				}
 				{ showEstcost &&
 					<RangeControl
-						label={ __( "Cost Margin" ) }
+						label={ __( "Cost Margin", 'ultimate-addons-for-gutenberg' ) }
 						value={ costSpace }
 						onChange={ ( value ) => setAttributes( { costSpace: value } ) }
 						min={ 0 }
@@ -669,7 +669,7 @@ class UAGBHowTo extends Component {
 					/>
 				}
 				<RangeControl
-					label={ __( "Row Gap" ) }
+					label={ __( "Row Gap", 'ultimate-addons-for-gutenberg' ) }
 					value={ row_gap }
 					onChange={ ( value ) => setAttributes( { row_gap: value } ) }
 					min={ 0 }
@@ -677,7 +677,7 @@ class UAGBHowTo extends Component {
 					allowReset
 				/>
 				<RangeControl
-					label={ __( "Gap Between Steps" ) }
+					label={ __( "Gap Between Steps", 'ultimate-addons-for-gutenberg' ) }
 					value={ step_gap }
 					onChange={ ( value ) => setAttributes( { step_gap: value } ) }
 					min={ 0 }
@@ -689,11 +689,11 @@ class UAGBHowTo extends Component {
 		}
 
 		//Time Labels
-		var yearlabel = (timeInYears > 1) ? __( "Years" ) : __( "Year" );
-		var monthlabel = (timeInMonths > 1) ? __(" Months ") : __(" Month ");
-		var daylabel = (timeInDays > 1) ? __(" Days ") :__( " Day ");
-		var hourlabel = (timeInHours > 1) ? __("Hours ") :__( " Hour ");
-		var minslabel = (minsValue > 1) ? __(" Minutes ") : __(" Minute ");		
+		var yearlabel = (timeInYears > 1) ? __( "Years", 'ultimate-addons-for-gutenberg' ) : __( "Year", 'ultimate-addons-for-gutenberg' );
+		var monthlabel = (timeInMonths > 1) ? __(" Months " , 'ultimate-addons-for-gutenberg') : __(" Month " , 'ultimate-addons-for-gutenberg');
+		var daylabel = (timeInDays > 1) ? __(" Days ", 'ultimate-addons-for-gutenberg') :__( " Day ", 'ultimate-addons-for-gutenberg');
+		var hourlabel = (timeInHours > 1) ? __("Hours ", 'ultimate-addons-for-gutenberg') :__( " Hour ", 'ultimate-addons-for-gutenberg');
+		var minslabel = (minsValue > 1) ? __(" Minutes ", 'ultimate-addons-for-gutenberg') : __(" Minute ", 'ultimate-addons-for-gutenberg');		
 
 
 
@@ -737,7 +737,7 @@ class UAGBHowTo extends Component {
 				<div className="uagb-how-to-main-wrap">
 					<RichText
 						tagName={ headingTag }
-						placeholder={ __( "How to configure HowTo Schema in UAG?" ) }
+						placeholder={ __( "How to configure HowTo Schema in UAG?", 'ultimate-addons-for-gutenberg' ) }
 						value={ headingTitle }
 						className='uagb-howto-heading-text'
 						multiline={ false }
@@ -760,7 +760,7 @@ class UAGBHowTo extends Component {
 					/>
 					<RichText
 						tagName="p"
-						placeholder={ __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements." ) }
+						placeholder={ __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements.", 'ultimate-addons-for-gutenberg' ) }
 						value={ headingDesc }
 						className='uagb-howto-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
@@ -773,7 +773,7 @@ class UAGBHowTo extends Component {
 					{ showTotaltime &&
 						<RichText
 							tagName="h4"
-							placeholder={ __( "Total Time Needed ( Minutes ):" ) }
+							placeholder={ __( "Total Time Needed ( Minutes ):", 'ultimate-addons-for-gutenberg' ) }
 							value={ timeNeeded }
 							className='uagb-howto-timeNeeded-text'
 							onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
@@ -798,7 +798,7 @@ class UAGBHowTo extends Component {
 					{ showEstcost &&
 						<RichText
 							tagName="h4"
-							placeholder={ __( "Total Cost:" ) }
+							placeholder={ __( "Total Cost:", 'ultimate-addons-for-gutenberg' ) }
 							value={ estCost }
 							className='uagb-howto-estcost-text'
 							onChange={ ( value ) => setAttributes( { estCost: value } ) }
@@ -810,7 +810,7 @@ class UAGBHowTo extends Component {
 					{ showEstcost &&
 						<RichText
 							tagName="p"
-							placeholder={ __( "30" ) }
+							placeholder={ __( "30", 'ultimate-addons-for-gutenberg' ) }
 							value={ cost }
 							className='uagb-howto-estcost-value'
 							onChange={ ( value ) => setAttributes( { cost: value } ) }
@@ -822,7 +822,7 @@ class UAGBHowTo extends Component {
 					{ showEstcost &&
 						<RichText
 							tagName="p"
-							placeholder={ __( "USD" ) }
+							placeholder={ __( "USD", 'ultimate-addons-for-gutenberg' ) }
 							value={ currencyType }
 							className='uagb-howto-estcost-type'
 							onChange={ ( value ) => setAttributes( { currencyType: value } ) }
@@ -836,7 +836,7 @@ class UAGBHowTo extends Component {
 						{ showTools &&
 						<RichText
 							tagName="h4"
-							placeholder={ __( "requirements tools:" ) }
+							placeholder={ __( "requirements tools:", 'ultimate-addons-for-gutenberg' ) }
 							value={ toolsTitle }
 							className='uagb-howto-req-tools-text'
 							onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
@@ -861,13 +861,13 @@ class UAGBHowTo extends Component {
 													<div className="uagb-tools">
 														<RichText
 															tagName="div"
-															placeholder={ __( "Requirements Tools:" ) }
+															placeholder={ __( "Requirements Tools:", 'ultimate-addons-for-gutenberg' ) }
 															value={ tools.add_required_tools }
 															onChange={ value => {
 																		this.savetools( { add_required_tools: value }, index )
 																	} }
 															className='uagb-tools__label'
-															placeholder={ __( "Description" ) }
+															placeholder={ __( "Description", 'ultimate-addons-for-gutenberg' ) }
 															multiline={false}
 															allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 														/>
@@ -882,7 +882,7 @@ class UAGBHowTo extends Component {
 					{ showMaterials &&
 						<RichText
 							tagName="h4"
-							placeholder={ __( "requirements materials:" ) }
+							placeholder={ __( "requirements materials:", 'ultimate-addons-for-gutenberg' ) }
 							value={ materialTitle }
 							className='uagb-howto-req-materials-text'
 							onChange={ ( value ) => setAttributes( { materialTitle: value } ) }
@@ -908,13 +908,13 @@ class UAGBHowTo extends Component {
 										<div className="uagb-materials">
 											<RichText
 												tagName="div"
-												placeholder={ __( "Requirements Materials:" ) }
+												placeholder={ __( "Requirements Materials:", 'ultimate-addons-for-gutenberg' ) }
 												value={ materials.add_required_materials }
 												onChange={ value => {
 															this.savematerials( { add_required_materials: value }, index )
 														} }
 												className='uagb-materials__label'
-												placeholder={ __( "Description" ) }
+												placeholder={ __( "Description", 'ultimate-addons-for-gutenberg' ) }
 												multiline={false}
 												allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 											/>
@@ -929,7 +929,7 @@ class UAGBHowTo extends Component {
 					<div className="uagb-how-to-steps__wrap">
 						<RichText
 							tagName="h4"
-							placeholder={ __( "requirements Steps:" ) }
+							placeholder={ __( "requirements Steps:", 'ultimate-addons-for-gutenberg' ) }
 							value={ stepsTitle }
 							className='uagb-howto-req-steps-text'
 							onChange={ ( value ) => setAttributes( { stepsTitle: value } ) }
