@@ -161,6 +161,9 @@ const attributes = {
 		type: "number",
 		default: 12,
 	},
+	activeiconColor:{
+		type: "string",
+	}
 }
 
 export default attributes

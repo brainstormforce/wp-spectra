@@ -45,7 +45,8 @@ function styling( props ) {
 		iconSpacing,
 		tabsStyleD,
 		tabsStyleM,
-		tabsStyleT
+		tabsStyleT,
+		activeiconColor
 	} = props.attributes
 	
 	var selectors = {}
@@ -76,6 +77,9 @@ function styling( props ) {
 		},
 		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active p" : {
 			"color": activeTabTextColor ,
+		},
+		" .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg" : {
+			"fill": activeiconColor,
 		},
 		" .uagb-tabs__body-wrap " : {
 			"background": bodyBgColor,

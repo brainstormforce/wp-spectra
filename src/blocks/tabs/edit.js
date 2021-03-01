@@ -189,7 +189,8 @@ class UAGBTabsEdit extends Component {
 			iconColor,
 			iconPosition,
 			iconSpacing,
-			iconSize
+			iconSize,
+			activeiconColor
 		} = attributes;
 
 		return (
@@ -360,6 +361,12 @@ class UAGBTabsEdit extends Component {
 							<ColorPalette 
 									value={ iconColor}
 									onChange={ ( value ) => setAttributes( { iconColor: value } )}
+									allowReset
+							/>
+							<h2>{ __( 'Active Icon Color'  , 'ultimate-addons-for-gutenberg') }</h2>
+							<ColorPalette 
+									value={ activeiconColor}
+									onChange={ ( value ) => setAttributes( { activeiconColor: value } )}
 									allowReset
 							/>
 							<h2>{ __( 'Icon Size'  , 'ultimate-addons-for-gutenberg') }</h2>

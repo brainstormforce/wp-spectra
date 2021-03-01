@@ -2169,6 +2169,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'          => '',
 							'activeTabBgColor'      => '#007cba',
 							'activeTabTextColor'    => '#fff',
+							'activeiconColor'       => '#fff',
 							'tabTitleLeftMargin'    => '',
 							'tabTitleRightMargin'   => '',
 							'tabTitleTopMargin'     => '',

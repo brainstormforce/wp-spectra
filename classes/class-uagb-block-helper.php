@@ -3188,6 +3188,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-tabs__panel .uagb-tab.uagb-tabs__active  span' => array(
 					'color' => $attr['activeTabTextColor'],
 				),
+				" .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg"  => array(
+					'fill' => $attr['activeiconColor'],
+				),
 
 				' .uagb-tabs__body-wrap '           => array(
 					'background'     => $attr['bodyBgColor'],
