@@ -102,6 +102,7 @@ array_multisort(
 									'post-meta',
 									'restaurant-menu-child',
 									'content-timeline-child',
+									'tabs-child',
 								);
 
 								if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
