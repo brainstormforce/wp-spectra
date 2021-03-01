@@ -3152,7 +3152,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Tabs CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.21.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.

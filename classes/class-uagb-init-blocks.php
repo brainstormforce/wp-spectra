@@ -64,7 +64,7 @@ class UAGB_Init_Blocks {
 	 *
 	 * @param mixed $block_content The block content.
 	 * @param array $block The block data.
-	 * @since x.x.x
+	 * @since 1.21.0
 	 * @return mixed Returns the new block content.
 	 */
 	public function render_block( $block_content, $block ) {
@@ -104,7 +104,7 @@ class UAGB_Init_Blocks {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since x.x.x
+	 * @since 1.21.0
 	 * @return mixed Returns the new block content.
 	 */
 	public function user_role_visibility( $block_attributes, $block_content ) {
@@ -126,7 +126,7 @@ class UAGB_Init_Blocks {
 	 *
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
-	 * @since x.x.x
+	 * @since 1.21.0
 	 * @return mixed Returns the new block content.
 	 */
 	public function os_visibility( $block_attributes, $block_content ) {
@@ -159,7 +159,7 @@ class UAGB_Init_Blocks {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since x.x.x
+	 * @since 1.21.0
 	 * @return mixed Returns the new block content.
 	 */
 	public function browser_visibility( $block_attributes, $block_content ) {
@@ -209,7 +209,7 @@ class UAGB_Init_Blocks {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since x.x.x
+	 * @since 1.21.0
 	 * @return mixed Returns the new block content.
 	 */
 	public function user_state_visibility( $block_attributes, $block_content ) {
@@ -498,7 +498,7 @@ class UAGB_Init_Blocks {
 	/**
 	 *  Get the User Roles
 	 *
-	 *  @since x.x.x
+	 *  @since 1.21.0
 	 */
 	public function get_user_role() {
 
