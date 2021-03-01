@@ -171,8 +171,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * New: Added ability to import pre-made pages, patterns for block editor.
 * Improvement: Block Conditions - Now user can add conditions of visibility to blocks with respect to User State, Responsive Visibility, User Role, Browser, and Operating System.
 * Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
-* Improvement: Added hooks for automatic Tooslet Dynamic Sources.
-* Fix: RTL issues in few of the blocks.
+* Improvement: Added hooks for automatic Toolset Dynamic Sources.
+* Fix: RTL issues in a few of the blocks.
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
