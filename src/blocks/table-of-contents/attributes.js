@@ -71,7 +71,7 @@ const attributes = {
 	heading: {
 		type: "string",
 		selector: ".uagb-toc__title",
-		default: "Table Of Contents",
+		default: __( "Table Of Contents" , 'ultimate-addons-for-gutenberg' ),
 	},
 	customWidth : {
 		type: "boolean",

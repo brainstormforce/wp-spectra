@@ -57,7 +57,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return;
 			}
 
-			$array = array_fill_keys(array(0,1,2,3,4,5), true);
+			$mappingHeadersArray = array_fill_keys(array(0,1,2,3,4,5), true);
 			
 			register_block_type(
 				'uagb/table-of-contents',
@@ -149,7 +149,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							),
 							'mappingHeaders'            => array(
 								'type'    => 'array',
-								'default' => $array,
+								'default' => $mappingHeadersArray,
 							),
 							// Color.
 							'backgroundColor'           => array(
