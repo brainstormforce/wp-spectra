@@ -142,7 +142,7 @@
 			
 			var header_array = $( 'div.entry-content' ).find( all_header )
 			console.log(header_array) // For testing will remove it later
-			if ( 0 !== header_array.length && ( headerMappingHeaders > 0 || undefined !== attr.mappingHeaders )  ) {
+			if ( 0 !== header_array.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
 			header_array.each( function (index,value){
 				let header = $( this );
 				let exclude_heading ;

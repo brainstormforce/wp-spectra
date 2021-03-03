@@ -56,8 +56,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
-			$keys = array(0,1,2,3,4,5);
-			$array = array_fill_keys($keys, true);
+
+			$array = array_fill_keys(array(0,1,2,3,4,5), true);
+			
 			register_block_type(
 				'uagb/table-of-contents',
 				array(
