@@ -1020,35 +1020,35 @@ export default compose(
 		}
 
 		var level = 0;
-
-		var header_array = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
+		
+		var headerArray = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
 		let headers = [];
-		if( header_array != 'undefined' ) {
+		if( headerArray != 'undefined' ) {
 
-			header_array.each( function (index, value){
+			headerArray.each( function (index, value){
 				let header = $( this );
-				let exclude_heading ;
+				let excludeHeading ;
 				
 				if ( value.className.includes('uagb-toc-hide-heading') ) {
-					exclude_heading = true;
+					excludeHeading = true;
 				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
-					exclude_heading = true;
+					excludeHeading = true;
 				} else {
-					exclude_heading = false;
+					excludeHeading = false;
 				}
 				
-				let header_text = parseTocSlug(header.text());
+				let headerText = parseTocSlug(header.text());
 				var openLevel = header[0].nodeName.replace(/^H+/, '');
 				var titleText = header.text();
 					
 					level = parseInt(openLevel);
 					
-					if ( !exclude_heading ) {
+					if ( !excludeHeading ) {
 						headers.push(
 							{
 								tag: level,
 								text: titleText,
-								link: header_text,
+								link: headerText,
 								content: header.text(),
 							}
 						);
