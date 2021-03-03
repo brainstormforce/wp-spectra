@@ -272,7 +272,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 				ob_start();
-				?>
+			?>
 				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 				<?php
 				ob_end_flush();
@@ -476,6 +476,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
 					$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
+					break;
+
+				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':
