@@ -18,7 +18,7 @@ const attributes = {
 	},
 	confirmationType : {
 		type: "string",
-		default:  __('message' , 'ultimate-addons-for-gutenberg'),
+		default:  'message',
 	},
 	confirmationMessage : {
 		type: "string",

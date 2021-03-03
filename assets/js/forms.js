@@ -113,6 +113,7 @@
         },
         
         _formSubmit: function ( e, $form, attr ) {
+           
             e.preventDefault();
             var uagab_captcha_keys,captcha_response;
             if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v2" && attr['reCaptchaSiteKeyV2'] ){
@@ -169,11 +170,9 @@
             
             var after_submit_data = { "to": attr['afterSubmitToEmail'], "cc": attr['afterSubmitCcEmail'], "bcc": attr['afterSubmitBccEmail'], "subject": attr['afterSubmitEmailSubject']};
             
-           
-            
             //add spiner to form button to show processing.
             $( '<span class="components-spinner"></span>' ).appendTo( $form.find(".uagb-forms-main-submit-button-wrap") );
-         
+        
             $.ajax({
                 type: 'POST',
                 url: uagb_forms_data.ajax_url,
@@ -188,20 +187,19 @@
                 },
              
                 success: function( response ) {
-                  
+                 
                     if( 200 === response.data ) {
-                        
-                        if ( 'message' === attr.confirmationType ) {                             
+                        if ( 'message' === attr['confirmationType'] ) {                             
                             $('[name="uagb-form-'+attr['block_id']+'"]').hide();
                             $('.uagb-forms-success-message-'+attr['block_id']).removeClass('uagb-forms-submit-message-hide').addClass('uagb-forms-success-message')
                         }
                         
-                        if ( 'url' === attr.confirmationType ) {
+                        if ( 'url' === attr['confirmationType'] ) {
                             window.location.replace(attr.confirmationUrl);
                         }
                         
-                    }else if( 400 === response.data ){
-                        if ( 'message' === attr.confirmationType ) {                             
+                    }else if( 400 === response.data ){ 
+                        if ( 'message' === attr['confirmationType'] ) {                            
                             $('[name="uagb-form-'+attr['block_id']+'"]').hide();
                             $('.uagb-forms-failed-message-'+attr['block_id']).removeClass('uagb-forms-submit-message-hide').addClass('uagb-forms-failed-message')
                         }
