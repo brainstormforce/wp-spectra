@@ -105,10 +105,6 @@ function styling( props ) {
             "width" : generateCSSUnit( toggleSize, "px" ),
             "height" : generateCSSUnit( toggleSize, "px" )           
         },
-        " .uagb-forms-main-form input[type=url]" : {            
-            "width" : generateCSSUnit( toggleSize, "px" ),
-            "height" : generateCSSUnit( toggleSize, "px" )           
-        },
         " .uagb-forms-main-form  .uagb-forms-input::placeholder" : {            
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
 			"line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),

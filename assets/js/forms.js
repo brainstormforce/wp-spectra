@@ -1,4 +1,4 @@
-const { __ } = wp.i18n
+
 ( function( $ ) {
     
     UAGBForms = {
@@ -119,7 +119,7 @@ const { __ } = wp.i18n
               
                captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
                 if (!captcha_response) {                  
-                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">'+__( 'Please fill up the above captcha.' , "ultimate-addons-for-gutenberg")+'</p>');
+                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">Please fill up the above captcha.</p>');
                     return false;
                 } else {
                     $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
@@ -136,7 +136,7 @@ const { __ } = wp.i18n
                   
                captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
                if (!captcha_response) {                  
-                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">'+__( 'Please fill up the above captcha.',"ultimate-addons-for-gutenberg")+'</p>');
+                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">Please fill up the above captcha.</p>');
                    return false;
                } else {
                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
