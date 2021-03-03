@@ -69,7 +69,7 @@ const attributes = {
 		default : "left",
 	},
 	heading: {
-		source: "html",
+		type: "string",
 		selector: ".uagb-toc__title",
 		default: "Table Of Contents",
 	},
@@ -330,7 +330,11 @@ const attributes = {
 	headingAlignment: {
 		type: "string",
 		default: "left"
-	},	
+	},
+	emptyHeadingTeaxt: {
+		type: "string",
+		default: __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
+	},
 }
 
 export default attributes

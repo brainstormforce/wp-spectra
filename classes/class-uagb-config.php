@@ -38,7 +38,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_block_attributes() {
-
+			$keys = array(0,1,2,3,4,5);
+			$array = array_fill_keys($keys, true);
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
 					'uagb/advanced-heading'       => array(
@@ -48,7 +49,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'            => false,
-							'headingTitleString'      => '',
 							'headingAlign'            => 'center',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
@@ -2157,6 +2157,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'classMigrate'              => false,
 							'block_id'                  => '',
 							'heading'                   => 'Table Of Contents',
+							'emptyHeadingTeaxt'         => 'Add a header to begin generating the table of contents',
 							'disableBullets'            => false,
 							'smoothScroll'              => true,
 							'smoothScrollOffset'        => 30,
@@ -2176,6 +2177,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tColumnsDesktop'           => 1,
 							'tColumnsTablet'            => 1,
 							'tColumnsMobile'            => 1,
+							'mappingHeaders'			=> $array,
 							'widthTypeDesktop'          => '%',
 							'widthTypeTablet'           => '%',
 							'widthTypeMobile'           => '%',

@@ -118,15 +118,17 @@
 			}
 			
 			var allowed_h_tags = [];
-			
+			let headerMappingHeaders = [];
 			if ( undefined !== attr.mappingHeaders ) {
 
 				attr.mappingHeaders.forEach(function(h_tag, index) { (h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);});
 				var allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+
+				headerMappingHeaders = attr.mappingHeaders.filter(header => header).length;
 			}
 
 			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
-			var TOC = '';
+			var UAGBToc = '';
 			var level = 0;
 
 			if ( 0 !== all_header.length ) {
@@ -137,10 +139,10 @@
 					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
 				});				
 			}
-
+			
 			var header_array = $( 'div.entry-content' ).find( all_header )
-			console.log(header_array)
-			if ( 0 !== header_array.length ) {
+			console.log(header_array) // For testing will remove it later
+			if ( 0 !== header_array.length && ( headerMappingHeaders > 0 || undefined !== attr.mappingHeaders )  ) {
 			header_array.each( function (index,value){
 				let header = $( this );
 				let exclude_heading ;
@@ -161,39 +163,39 @@
 					let titleText = header.text();
 					
 					if (openLevel > level) {
-						
-						if( 2 == (new Array(openLevel - level + 1)).length ){
-							TOC += (new Array(openLevel - level + 1)).join("<ul class='uagb-toc__list'>");
+						let arrayOpenLevel = new Array(openLevel - level + 1)
+						if( 2 == (arrayOpenLevel).length ){
+							UAGBToc += (arrayOpenLevel).join("<ul class='uagb-toc__list'>");
 						} else{
-							TOC += "<ul class='uagb-toc__list'>"
+							UAGBToc += "<ul class='uagb-toc__list'>"
 						}
 
 					} else if (openLevel < level) {
-						
-						if( 0 !== (new Array(level - openLevel + 1)).length ){
-							TOC += (new Array(level - openLevel + 1)).join("</ul>");
+						let arrayLevel = new Array(level - openLevel + 1)
+						if( 0 !== (arrayLevel).length ){
+							UAGBToc += (arrayLevel).join("</ul>");
 						} else{
-							TOC += "</ul>"
+							UAGBToc += "</ul>"
 						}
 						
 					}
 					level = parseInt(openLevel);
-					TOC +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
+					UAGBToc +=  "<li><a href='#" + header_text + "'>" + titleText + "</a></li>";
 					
 				}					
 			});
 
 			$(".uagb_table-of-contents-placeholder").remove();
 
-			$(".uagb-toc__list-wrap").prepend(TOC);
+			$(".uagb-toc__list-wrap").prepend(UAGBToc);
 
 			} else{
 
-				TOC +=  'Add a header to begin generating the table of contents';
+				UAGBToc +=  attr.emptyHeadingTeaxt;
 
 				$(".uagb-toc__list-wrap").remove();
 				
-				$(".uagb_table-of-contents-placeholder").prepend(TOC);
+				$(".uagb_table-of-contents-placeholder").prepend(UAGBToc);
 			
 			}
 

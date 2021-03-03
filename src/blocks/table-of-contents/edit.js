@@ -245,8 +245,6 @@ class UAGBTableOfContentsEdit extends Component {
 			)	
 		}
 
-		// console.log(headers)
-
 		return (
 			<Fragment>
 				<BlockControls>
