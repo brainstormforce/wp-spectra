@@ -1,3 +1,6 @@
+/**
+ * BLOCK: UAGB Form - URL Attributes
+ */
 const { __ } = wp.i18n
 
 const attributes = {

@@ -1,3 +1,6 @@
+/**
+ * BLOCK: UAGB Form - Toggle Attributes
+ */
 const { __ } = wp.i18n
 const attributes = {
     block_id: {

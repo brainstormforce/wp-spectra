@@ -18,7 +18,7 @@ export default function save( props ) {
 		placeholder
 	} = attributes
 	
-	const isRequired = (textareaRequired) ? "required" : "";
+	const isRequired = (textareaRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 	
 	return (
 		<div className={ classnames(

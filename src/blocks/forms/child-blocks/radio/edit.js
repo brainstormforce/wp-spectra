@@ -56,12 +56,12 @@ class UAGBFormsRadioEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg') }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ radioRequired }
 						onChange={ ( value ) => setAttributes( { radioRequired: ! radioRequired } ) }
 					/>
@@ -173,7 +173,7 @@ class UAGBFormsRadioEdit extends Component {
 					{isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required" ) }
+							label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 							checked={ radioRequired }
 							onChange={ ( value ) => setAttributes( { radioRequired: ! radioRequired } ) }
 						/>
@@ -181,7 +181,7 @@ class UAGBFormsRadioEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Radio Title" ) }
+						placeholder={ __( "Radio Title" , 'ultimate-addons-for-gutenberg') }
 						value={ radioName }
 						onChange={ ( value ) => setAttributes( { radioName: value } ) }
 						className={`uagb-forms-radio-label ${isRequired} uagb-forms-input-label`}
@@ -193,7 +193,7 @@ class UAGBFormsRadioEdit extends Component {
 							<div className="uagb-forms-radio-controls">
 								{editView}
 								<div>
-									<Button isSecondary onClick={addOption}>{ __(" + Add Option ") }</Button>									
+									<Button isSecondary onClick={addOption}>{ __(" + Add Option " , 'ultimate-addons-for-gutenberg') }</Button>									
 								</div>								
 							</div>
 						</Fragment>

@@ -17,7 +17,7 @@ export default function save( props ) {
 		name,
 		required,
 		placeholder
-	} = attributes0
+	} = attributes
 	
 	const isRequired = (required) ? __("required", 'ultimate-addons-for-gutenberg' ): "";
 

@@ -1,5 +1,5 @@
 /**
- * BLOCK: Forms - Name
+ * BLOCK: Forms - Hidden
  */
 
 import UAGB_Block_Icons from "../../../../../dist/blocks/uagb-controls/block-icons"
@@ -7,9 +7,6 @@ import attributes from "./attributes"
 import edit from "./edit"
 import save from "./save"
 import "./editor.scss"
-
-
-const { __ } = wp.i18n
 
 const {
 	registerBlockType

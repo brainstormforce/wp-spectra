@@ -25,7 +25,7 @@ class UAGBFormsCheckboxEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-		this.state = { optionsstate:  [ { "optiontitle": "Option Name 1" } ] };
+		this.state = { optionsstate:  [ { "optiontitle": __("Option Name 1" , 'ultimate-addons-for-gutenberg') } ] };
 	}
 
 	componentDidMount() {
@@ -70,7 +70,7 @@ class UAGBFormsCheckboxEdit extends Component {
 		}
 
 		const addOption = () => {
-			const newOption ={ "optiontitle": `Option Name ${options.length + 1}`,"optionvalue": `Option Value ${options.length + 1}` }
+			const newOption ={ "optiontitle": __(`Option Name ${options.length + 1}`, 'ultimate-addons-for-gutenberg'),"optionvalue": __(`Option Value ${options.length + 1}`, 'ultimate-addons-for-gutenberg') }
 			options[options.length] = newOption; 
 			const addnewOptions = options.map( ( item, thisIndex ) => {				
 				return item
@@ -158,7 +158,7 @@ class UAGBFormsCheckboxEdit extends Component {
 		};
 		
 
-		const isRequired = (checkboxRequired) ? "required" : "";
+		const isRequired = (checkboxRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

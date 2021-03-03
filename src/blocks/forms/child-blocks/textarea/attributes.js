@@ -1,3 +1,6 @@
+/**
+ * BLOCK: UAGB Form - TextArea Attributes
+ */
 
 const { __ } = wp.i18n
 

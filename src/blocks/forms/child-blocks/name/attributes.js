@@ -1,4 +1,7 @@
 
+/**
+ * BLOCK: UAGB Form - Name Attributes
+ */
 const { __ } = wp.i18n
 
 const attributes = {

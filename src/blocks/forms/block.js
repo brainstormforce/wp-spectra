@@ -22,8 +22,8 @@ registerBlockType( "uagb/forms", {
 	icon: UAGB_Block_Icons.forms,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "forms" ),
-		__( "uag" ),
+		__( "forms" , "ultimate-addons-for-gutenberg" ),
+		__( "uag" , "ultimate-addons-for-gutenberg" ),
 	],
 	example:{},
 	attributes,

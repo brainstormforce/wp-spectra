@@ -4,7 +4,6 @@
 
 import classnames from "classnames"
 
-const { __ } = wp.i18n
 
 export default function save( props ) {
 	
@@ -12,11 +11,8 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		hidden_field_value,
-		hidden_field_name
+		hidden_field_value
 	} = attributes
-
-	var hidden_field_label = hidden_field_name.replace(/\s+/g, '-').toLowerCase();
 		
 	return (
 		<div className={ classnames(

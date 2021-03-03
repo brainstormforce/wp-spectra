@@ -22,9 +22,9 @@ export default function save( props ) {
 
 	var placeholder = "";
 	if(pattern == "[0-9]{3}-[0-9]{2}-[0-9]{3}"){
-		placeholder = "123-45-678"
+		placeholder = __("123-45-678", 'ultimate-addons-for-gutenberg')
 	}else if(pattern == "[0-9]{3}-[0-9]{3}-[0-9]{4}"){
-		placeholder = "123-456-6789"
+		placeholder = __("123-456-6789", 'ultimate-addons-for-gutenberg')
 	}
 	
 	var phone_html = "";
@@ -34,7 +34,7 @@ export default function save( props ) {
 		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ `${phoneName}[]` }/>
 	}
 	
-	const isRequired = (phoneRequired) ? "required" : "";
+	const isRequired = (phoneRequired) ? __("required" , 'ultimate-addons-for-gutenberg'): "";
 	return (
 		<div className={ classnames(
 			"uagb-forms-phone-wrap",

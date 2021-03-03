@@ -1,3 +1,6 @@
+/**
+ * BLOCK: UAGB Form - Phone Attributes
+ */
 const { __ } = wp.i18n
 const attributes = {
     block_id: {
@@ -13,7 +16,7 @@ const attributes = {
     },
     pattern: {
         type: "string",
-        default: "[0-9]{3}-[0-9]{3}-[0-9]{4}",
+        default: __("[0-9]{3}-[0-9]{3}-[0-9]{4}" , 'ultimate-addons-for-gutenberg'),
     }
 }
 export default attributes

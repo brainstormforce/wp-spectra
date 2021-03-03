@@ -30,7 +30,7 @@ class UAGBFormsTextareaEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -58,23 +58,22 @@ class UAGBFormsTextareaEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ textareaRequired }
 						onChange={ ( value ) => setAttributes( { textareaRequired: ! textareaRequired } ) }
 					/>
 					<TextControl
-					 	label="Placeholder"
+					 	label={__("Placeholder", 'ultimate-addons-for-gutenberg')}
 						value={ placeholder }
 						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
-						placeholder={__( "Placeholder" )}
 					/>
 					<RangeControl
-						label={ __( "Number of lines" ) }
+						label={ __( "Number of lines" , 'ultimate-addons-for-gutenberg') }
 						value={ rows }
 						onChange={ ( value ) => setAttributes( { rows: value } ) }
 						min={ 2 }
@@ -85,7 +84,7 @@ class UAGBFormsTextareaEdit extends Component {
 			)
 		}
 
-		const isRequired = (textareaRequired) ? "required" : "";
+		const isRequired = (textareaRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
@@ -100,7 +99,7 @@ class UAGBFormsTextareaEdit extends Component {
 					{isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required" ) }
+							label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 							checked={ textareaRequired }
 							onChange={ ( value ) => setAttributes( { textareaRequired: ! textareaRequired } ) }
 						/>
@@ -108,7 +107,7 @@ class UAGBFormsTextareaEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Textarea Name" ) }
+						placeholder={ __( "Textarea Name" , 'ultimate-addons-for-gutenberg') }
 						value={ textareaName }
 						onChange={ ( value ) => setAttributes( { textareaName: value } ) }
 						className={`uagb-forms-textarea-label ${isRequired} uagb-forms-input-label`}

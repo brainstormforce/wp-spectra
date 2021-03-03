@@ -15,9 +15,9 @@ const {
 	TextControl,
 } = wp.components
 const {
-	InspectorControls,
-	RichText,
+	InspectorControls
 } = wp.blockEditor
+
 class UAGBFormsHiddenEdit extends Component {
 	
 	constructor() {
@@ -91,7 +91,7 @@ class UAGBFormsHiddenEdit extends Component {
 						{/* Hidden Field View */}
 					{!this.props.isSelected && (
 						<Fragment>
-							<label className={`uagb-forms-hidden-label uagb-form-hidden-${hidden_field_label}` }> { __( hidden_field_name ) } </label>
+							<label className={`uagb-forms-hidden-label uagb-form-hidden-${hidden_field_label}` }> { __( hidden_field_name , 'ultimate-addons-for-gutenberg' ) } </label>
 							<input type="hidden"  className="uagb-forms-hidden-input" value={hidden_field_value} />
 						</Fragment>
 					)}

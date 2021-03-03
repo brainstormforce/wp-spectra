@@ -71,43 +71,43 @@ class UAGBFormsToggleEdit extends Component {
 			
 			return (
 				<PanelBody
-				title={ __( "General" ) }
+				title={ __( "General" , 'ultimate-addons-for-gutenberg') }
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
-				<p className="uagb-settings-notice">{ __( "Leaving the toggle in On/Off state will set it as a default value on page load for the user." ) }</p>
+				<p className="uagb-settings-notice">{ __( "Leaving the toggle in On/Off state will set it as a default value on page load for the user." , 'ultimate-addons-for-gutenberg') }</p>
 
 				<ToggleControl
-					label={ __( "Required" ) }
+					label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 					checked={ toggleRequired }
 					onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
 				/>
 				<ToggleControl
-					label={ __( "Default State" ) }
+					label={ __( "Default State" , 'ultimate-addons-for-gutenberg') }
 					checked={ toggleStatus }
-					help={ toggleStatus ? 'ON State' : 'OFF State' }
+					help={ toggleStatus ? __('ON State', 'ultimate-addons-for-gutenberg') : __('OFF State', 'ultimate-addons-for-gutenberg') }
 					onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
 				/>
 				<TextControl
-					label="True State"
+					label={__("True State", 'ultimate-addons-for-gutenberg')}
 					value={ trueValue }
 					onChange={ ( value ) => setAttributes( { trueValue: value } ) }					
 				/>
 				<TextControl
-					label="False State"
+					label={__("False State" , 'ultimate-addons-for-gutenberg')}
 					value={ falseValue }
 					onChange={ ( value ) => setAttributes( { falseValue: value } ) }					
 				/>
 				<SelectControl
-					label={ __( "Layout" ) }
+					label={ __( "Layout" , 'ultimate-addons-for-gutenberg') }
 					value={ layout }
 					onChange={ ( value ) => setAttributes( { layout: value } ) }
 					options={ [
-						{ value: "", label: __( "Square" ) },
-						{ value: "round", label: __( "Round" ) },								
+						{ value: "", label: __( "Square" , 'ultimate-addons-for-gutenberg') },
+						{ value: "round", label: __( "Round" , 'ultimate-addons-for-gutenberg') },								
 					] }
 				/>
-				<p className="uagb-setting-label">{ __( "Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Active Color" , 'ultimate-addons-for-gutenberg') }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
 				<ColorPalette
 					value={ activeColor }
 					onChange={ ( colorValue ) => setAttributes( { activeColor: colorValue } ) }

@@ -97,8 +97,7 @@ const attributes = {
 	vPaddingSubmit : {
 		type: "number",
 	},
-	// Typography
-	// Submit text Font Family
+	// Submit text Typography
 	
 	submitTextloadGoogleFonts: {
 		type: "boolean",

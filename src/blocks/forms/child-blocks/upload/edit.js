@@ -29,7 +29,7 @@ class UAGBFormsUploadEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -57,12 +57,12 @@ class UAGBFormsUploadEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General"  , 'ultimate-addons-for-gutenberg') }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required"  , 'ultimate-addons-for-gutenberg') }
 						checked={ uploadRequired }
 						onChange={ ( value ) => setAttributes( { uploadRequired: ! uploadRequired } ) }
 					/>
@@ -70,13 +70,13 @@ class UAGBFormsUploadEdit extends Component {
 					<FormTokenField 
 					value={ formats } 					
 					onChange={ ( value ) => setAttributes( { formats: value } ) }
-					placeholder="Type allowed formats"
+					placeholder={__("Type allowed formats" , 'ultimate-addons-for-gutenberg')}
 					/>
 				</PanelBody>
 			)
 		}
 
-		const isRequired = (uploadRequired) ? "required" : "";
+		const isRequired = (uploadRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
@@ -92,7 +92,7 @@ class UAGBFormsUploadEdit extends Component {
 					{isSelected && (
 						<div className="uagb-forms-required-wrap">
 							<ToggleControl
-								label={ __( "Required" ) }
+								label={ __( "Required" , 'ultimate-addons-for-gutenberg' ) }
 								checked={ uploadRequired }
 								onChange={ ( value ) => setAttributes( { uploadRequired: ! uploadRequired } ) }
 							/>
@@ -100,7 +100,7 @@ class UAGBFormsUploadEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Name" ) }
+						placeholder={ __( "Name" , 'ultimate-addons-for-gutenberg') }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-upload-label ${isRequired} uagb-forms-input-label`}

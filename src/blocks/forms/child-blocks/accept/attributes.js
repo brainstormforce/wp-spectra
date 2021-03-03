@@ -1,4 +1,7 @@
 
+/**
+ * BLOCK: UAGB Form - Accept Attributes
+ */
 const { __ } = wp.i18n
 
 const attributes = {
@@ -28,8 +31,6 @@ const attributes = {
     linkInNewTab : {
         type: "boolean",
         default: true
-    },		
-			
-    
+    },		    
 }
 export default attributes

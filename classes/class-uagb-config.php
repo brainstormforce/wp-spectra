@@ -2568,11 +2568,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-forms-js' ),
 						'attributes'  => array(
 							'block_id'                   => '',
-							'submitButtonText'           => 'Submit',
-							'formLabel'                  => 'UAG Form',
+							'submitButtonText'           => __('Submit','ultimate-addons-for-gutenberg'),
+							'formLabel'                  => __('UAG Form','ultimate-addons-for-gutenberg' ),
 							'buttonAlign'                => 'left',
 							'confirmationType'           => 'message',
-							'confirmationMessage'        => 'The form has been submitted Successfully!',
+							'confirmationMessage'        => __('The form has been submitted Successfully!','ultimate-addons-for-gutenberg' ),
 							'confirmationUrl'            => '',
 							'buttonSize'                 => 'medium',
 							'submitColor'                => '#000000',
@@ -2645,7 +2645,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'successMessageBorderColor'  => 'green',
 							'successMessageBorderStyle'  => 'solid',
 							'successMessageBorderWidth'  => 2,
-							'failedMessage'              => 'There has been some error while submitting the form. Please verify all form fields again.',
+							'failedMessage'              => __('There has been some error while submitting the form. Please verify all form fields again.','ultimate-addons-for-gutenberg' ),
 							'failedMessageTextColor'     => '#000000',
 							'failedMessageBorderColor'   => 'red',
 							'failedMessageBGColor'       => '#f5f5f',
@@ -2681,7 +2681,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'           => '',
-							'hidden_field_name'  => 'Hidden Field Name',
+							'hidden_field_name'  => __('Hidden Field Name','ultimate-addons-for-gutenberg' ),
 							'hidden_field_value' => '',
 
 						),
@@ -2700,7 +2700,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'     => '',
-							'textareaName' => 'Message',
+							'textareaName' => __('Message','ultimate-addons-for-gutenberg' ),
 							'rows'         => '4',
 						),
 					),
@@ -2725,7 +2725,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'block_id' => '',
-							'name'     => __( 'URL' ),
+							'name'     => __( 'URL' ,'ultimate-addons-for-gutenberg'),
 						),
 					),
 					'uagb/forms-select'           => array(

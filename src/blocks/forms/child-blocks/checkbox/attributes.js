@@ -1,4 +1,7 @@
 
+/**
+ * BLOCK: Forms - Checkbox - Attribute
+ */
 const { __ } = wp.i18n
 
 const attributes = {

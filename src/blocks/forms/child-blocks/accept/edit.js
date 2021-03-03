@@ -19,8 +19,7 @@ const {
 } = wp.components
 
 const {
-	InspectorControls,
-	RichText,
+	InspectorControls
 } = wp.blockEditor
 
 class UAGBFormsAcceptEdit extends Component {
@@ -31,7 +30,7 @@ class UAGBFormsAcceptEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -45,7 +44,7 @@ class UAGBFormsAcceptEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes,isSelected } = this.props
+		const { attributes, setAttributes } = this.props
 
         const {
 			block_id,
@@ -108,8 +107,8 @@ class UAGBFormsAcceptEdit extends Component {
 			)
 		}
 
-		const isRequired = (acceptRequired) ? "required" : "";
-		const target = (linkInNewTab) ? "_blank" : "_self" ;
+		const isRequired = (acceptRequired) ? __("required"  , 'ultimate-addons-for-gutenberg' ) : "";
+		const target = (linkInNewTab) ? __("_blank"  , 'ultimate-addons-for-gutenberg' ) : __("_self"  , 'ultimate-addons-for-gutenberg' ) ;
 		return (
 			<Fragment>
 				<InspectorControls>

@@ -31,7 +31,7 @@ class UAGBFormsPhoneEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -58,12 +58,12 @@ class UAGBFormsPhoneEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ phoneRequired }
 						onChange={ ( value ) => setAttributes( { phoneRequired: ! phoneRequired } ) }
 					/>
@@ -72,8 +72,8 @@ class UAGBFormsPhoneEdit extends Component {
 					value={ pattern }
 					options={ [
 						{ label: 'None', value: '' },
-						{ label: '123-45-678', value: '[0-9]{3}-[0-9]{2}-[0-9]{3}' },
-						{ label: '123-456-6789', value: '[0-9]{3}-[0-9]{3}-[0-9]{4}' },
+						{ label: '123-45-678', value: __('[0-9]{3}-[0-9]{2}-[0-9]{3}', 'ultimate-addons-for-gutenberg') },
+						{ label: '123-456-6789', value: __('[0-9]{3}-[0-9]{3}-[0-9]{4}', 'ultimate-addons-for-gutenberg') },
 
 					] }
 					onChange={ ( pattern ) => { setAttributes( { pattern } ) } }
@@ -83,9 +83,9 @@ class UAGBFormsPhoneEdit extends Component {
 		}	
 		var placeholder = "";
 		if(pattern == "[0-9]{3}-[0-9]{2}-[0-9]{3}"){
-			placeholder = "123-45-678"
+			placeholder = __("123-45-678", 'ultimate-addons-for-gutenberg')
 		}else if(pattern == "[0-9]{3}-[0-9]{3}-[0-9]{4}"){
-			placeholder = "123-456-6789"
+			placeholder = __("123-456-6789", 'ultimate-addons-for-gutenberg')
 		}
 	
 		var phone_html = "";
@@ -95,7 +95,7 @@ class UAGBFormsPhoneEdit extends Component {
 			phone_html = <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 		}
 		
-		const isRequired = (phoneRequired) ? "required" : "";
+		const isRequired = (phoneRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
@@ -110,7 +110,7 @@ class UAGBFormsPhoneEdit extends Component {
 					{isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required" ) }
+							label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 							checked={ phoneRequired }
 							onChange={ ( value ) => setAttributes( { phoneRequired: ! phoneRequired } ) }
 						/>
@@ -118,7 +118,7 @@ class UAGBFormsPhoneEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Phone Name" ) }
+						placeholder={ __( "Phone Name" , 'ultimate-addons-for-gutenberg') }
 						value={ phoneName }
 						onChange={ ( value ) => setAttributes( { phoneName: value } ) }
 						className={`uagb-forms-phone-label ${isRequired} uagb-forms-input-label`}

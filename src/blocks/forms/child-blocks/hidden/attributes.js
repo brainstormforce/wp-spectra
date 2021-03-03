@@ -1,4 +1,8 @@
+/**
+ * BLOCK: UAGB Form - Hidden Attributes
+ */
 const { __ } = wp.i18n
+
 const attributes = {
 	block_id: {
 		type: "string"

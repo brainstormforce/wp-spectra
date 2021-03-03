@@ -14,13 +14,7 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
-	ToggleControl,
-	IconButton
+	ToggleControl
 } = wp.components
 const {
 	InspectorControls,
@@ -35,7 +29,7 @@ class UAGBFormsDateEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -193,7 +187,7 @@ class UAGBFormsDateEdit extends Component {
 	}
 
 	 
-	const isRequired = (dateRequired) ? "required" : "";
+	const isRequired = (dateRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 	
 		return (
 			<Fragment>

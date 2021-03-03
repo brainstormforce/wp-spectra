@@ -20,7 +20,7 @@ export default function save( props ) {
 	
 	const allowed_files = formats.map(f => ".".concat(f)).join(",");
 
-	const isRequired = (uploadRequired) ? "required" : "";
+	const isRequired = (uploadRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 
 	return (
 		<div className={ classnames(

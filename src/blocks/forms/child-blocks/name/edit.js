@@ -29,7 +29,7 @@ class UAGBFormsNameEdit extends Component {
 
 	componentDidMount() {
 
-		const { attributes, setAttributes } = this.props
+		const { setAttributes } = this.props
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
@@ -58,12 +58,12 @@ class UAGBFormsNameEdit extends Component {
 
 			return (
 				<PanelBody
-					title={ __( "General" ) }
+					title={ __( "General" , 'ultimate-addons-for-gutenberg') }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Required" ) }
+						label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 						checked={ nameRequired }
 						onChange={ ( value ) => setAttributes( { nameRequired: ! nameRequired } ) }
 					/>
@@ -71,13 +71,13 @@ class UAGBFormsNameEdit extends Component {
 					 	label="Placeholder"
 						value={ placeholder }
 						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
-						placeholder={__( "Placeholder" )}
+						placeholder={__( "Placeholder" , 'ultimate-addons-for-gutenberg' )}
 					/>
 				</PanelBody>
 			)
 		}
 
-		const isRequired = (nameRequired) ? "required" : "";
+		const isRequired = (nameRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -92,7 +92,7 @@ class UAGBFormsNameEdit extends Component {
 					{isSelected && (
 						<div className="uagb-forms-required-wrap">
 							<ToggleControl
-								label={ __( "Required" ) }
+								label={ __( "Required" , 'ultimate-addons-for-gutenberg') }
 								checked={ nameRequired }
 								onChange={ ( value ) => setAttributes( { nameRequired: ! nameRequired } ) }
 							/>
@@ -100,7 +100,7 @@ class UAGBFormsNameEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Name" ) }
+						placeholder={ __( "Name" , 'ultimate-addons-for-gutenberg') }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}
