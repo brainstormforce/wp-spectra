@@ -53,19 +53,19 @@ const attributes = {
 	},	
 	submitColor : {
 		type: "string",
-		default:"#000000"
+		default:"#ffffff"
 	},
 	submitColorHover : {
 		type: "string",
-		default:"#ffffff"
+		default:"#000000"
 	},
 	submitBgColor : {
 		type: "string",
-		default:"#ffffff"
+		default:"#000000"
 	},
 	submitBgColorHover : {
 		type: "string",
-		default:"#000000"
+		default:"#ffffff"
 	},
 	buttonSize : {
 		type: "string",
@@ -82,7 +82,7 @@ const attributes = {
 	},
 	submitborderRadius : {
 		type: "number",
-		default: 0
+		default: 3
 	},
 	submitborderColor : {
 		type: "string",
@@ -116,7 +116,7 @@ const attributes = {
 	// submitText Font Size
 	submitTextFontSize: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	submitTextFontSizeType: {
 		type: "string",
@@ -124,11 +124,11 @@ const attributes = {
 	},
 	submitTextFontSizeTablet: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	submitTextFontSizeMobile: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	// submitText Line Height
 	submitTextLineHeightType: {
@@ -164,7 +164,7 @@ const attributes = {
 	// label Font Size
 	labelFontSize: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	labelFontSizeType: {
 		type: "string",
@@ -172,11 +172,11 @@ const attributes = {
 	},
 	labelFontSizeTablet: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	labelFontSizeMobile: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	// label Line Height
 	labelLineHeightType: {
@@ -220,11 +220,11 @@ const attributes = {
 	},
 	inputFontSizeTablet: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	inputFontSizeMobile: {
 		type: "number",
-		default: 20
+		default: 15
 	},
 	// input Line Height
 	inputLineHeightType: {
@@ -286,7 +286,7 @@ const attributes = {
 	},
 	inputborderRadius : {
 		type: "number",
-		default: 0
+		default: 3
 	},
 	inputborderColor : {
 		type: "string",
