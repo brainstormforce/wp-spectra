@@ -77,7 +77,7 @@ class UAGBFormsNameEdit extends Component {
 			)
 		}
 
-		const isRequired = (nameRequired) ? __("Required" , 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (nameRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 		return (
 			<Fragment>
 				<InspectorControls>

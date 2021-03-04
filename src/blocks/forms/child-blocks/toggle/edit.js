@@ -117,7 +117,7 @@ class UAGBFormsToggleEdit extends Component {
 			)
 		}
 		
-		const isRequired = (toggleRequired) ? __("Required",'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (toggleRequired) ? __("required",'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

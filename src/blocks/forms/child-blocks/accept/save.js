@@ -20,7 +20,7 @@ export default function save( props ) {
 		linkInNewTab
 	} = attributes
 	
-	const isRequired = (acceptRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
+	const isRequired = (acceptRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 	const target = (linkInNewTab) ? __("_blank", 'ultimate-addons-for-gutenberg') : __("_self" , 'ultimate-addons-for-gutenberg') ;
 	
 	return (

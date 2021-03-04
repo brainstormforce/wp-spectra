@@ -18,7 +18,7 @@ export default function save( props ) {
 		placeholder
 	} = attributes
 	
-	const isRequired = (nameRequired) ? __("Required" , 'ultimate-addons-for-gutenberg'): "";
+	const isRequired = (nameRequired) ? __("required" , 'ultimate-addons-for-gutenberg'): "";
 	
 	return (
 		<div className={ classnames(
@@ -32,7 +32,7 @@ export default function save( props ) {
 				className={`uagb-forms-name-label ${isRequired} uagb-forms-input-label`}	
 				id={ block_id }		
 				/>
-				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input" name={ block_id } />
+				<input type="text" placeholder={placeholder} required={ nameRequired } className="uagb-forms-name-input uagb-forms-input" name= { block_id }  />
 		</div>
 	)
 }

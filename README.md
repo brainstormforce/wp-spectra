@@ -166,9 +166,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 1.22.0 ###
+* New: [Forms Block](https://ultimategutenberg.com/forms/).
+
 ### 1.21.0 ###
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
-* New: Forms Block.
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
 * Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.

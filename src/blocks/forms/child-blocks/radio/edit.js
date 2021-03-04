@@ -158,7 +158,7 @@ class UAGBFormsRadioEdit extends Component {
 			)			
 		};
 		
-		const isRequired = (radioRequired) ?__( "Required",'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (radioRequired) ?__( "required",'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

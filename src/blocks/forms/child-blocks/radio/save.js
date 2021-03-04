@@ -19,7 +19,7 @@ export default function save( props ) {
 		radioName
 	} = attributes
 	
-	const isRequired = (radioRequired) ? __("Required" , 'ultimate-addons-for-gutenberg') : "";
+	const isRequired = (radioRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
 	
 	return (
 		<div className={ classnames(

@@ -158,7 +158,7 @@ class UAGBFormsCheckboxEdit extends Component {
 		};
 		
 
-		const isRequired = (checkboxRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (checkboxRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
