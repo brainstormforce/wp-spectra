@@ -13,6 +13,8 @@ import RestMenuImage from "../price-list-child/components/RestMenuImage"
 
 const { Fragment } = wp.element
 
+const {	InnerBlocks } = wp.blockEditor
+
 const deprecated = [
 	{
 		attributes,
@@ -119,6 +121,30 @@ const deprecated = [
 								<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
 							</div>
 						)}
+					</div>
+				</Fragment>
+			)
+		},
+	},
+
+	{
+		attributes,
+		save: function( props ) {
+
+			const {
+				block_id,
+				className,
+			} = props.attributes
+		
+			return (
+				<Fragment>
+					<div className={ classnames(
+							className,
+							"uagb-rest_menu__outer-wrap",
+							`uagb-block-${block_id}`,					
+						) }
+						>				
+					<InnerBlocks.Content/>
 					</div>
 				</Fragment>
 			)

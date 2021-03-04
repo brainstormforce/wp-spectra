@@ -100,24 +100,24 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '<div style="padding: 15px;">';
 
 			foreach ( $form_data as $key => $value ) {
-				
+
 				if ( $key ) {
 					if ( is_array( $value ) && stripos( wp_json_encode( $value ), '+' ) !== false ) {
 
-						$val = implode( '', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' .  sanitize_text_field($val)  . '</p>';
-					
+						$val   = implode( '', $value );
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field( $val ) . '</p>';
+
 					} elseif ( is_array( $value ) ) {
 
-						$val = implode( ', ', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field($val)  . '</p>';
-					
+						$val   = implode( ', ', $value );
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field( $val ) . '</p>';
+
 					} else {
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' .  sanitize_text_field($value) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . sanitize_text_field( $value ) . '</p>';
 					}
 				}
 			}
-			
+
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
