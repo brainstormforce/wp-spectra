@@ -238,7 +238,8 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 				'afterSubmitEmailSubject' => $attr['afterSubmitEmailSubject'],
 				'sendAfterSubmitEmail'    => $attr['sendAfterSubmitEmail'],
 				'confirmationType' =>$attr['confirmationType'],
-				'hidereCaptchaBatch' => $attr['hidereCaptchaBatch']
+				'hidereCaptchaBatch' => $attr['hidereCaptchaBatch'],
+				'captchaMessage' => $attr['captchaMessage']
 			);
 			ob_start();
 			?>

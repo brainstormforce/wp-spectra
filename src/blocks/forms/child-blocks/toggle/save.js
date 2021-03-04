@@ -21,7 +21,7 @@ export default function save( props ) {
 		falseValue
 	} = attributes
 	
-	const isRequired = (toggleRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+	const isRequired = (toggleRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
 	
 	return (
 		<div className={ classnames(

@@ -2663,6 +2663,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'reCaptchaSiteKeyV3'         => '',
 							'reCaptchaSecretKeyV3'       => '',
 							'hidereCaptchaBatch'         => false,
+							'captchaMessage'             => __('Please fill up the above captcha.', 'ultimate-addons-for-gutenberg')
 						),
 					),
 					'uagb/forms-name'             => array(

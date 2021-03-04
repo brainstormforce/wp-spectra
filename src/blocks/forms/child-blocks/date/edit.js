@@ -187,7 +187,7 @@ class UAGBFormsDateEdit extends Component {
 	}
 
 	 
-	const isRequired = (dateRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+	const isRequired = (dateRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
 	
 		return (
 			<Fragment>

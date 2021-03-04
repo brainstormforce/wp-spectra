@@ -76,7 +76,7 @@ class UAGBFormsEmailEdit extends Component {
 			)
 		}
 
-		const isRequired = (required) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (required) ? __("Required" , 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

@@ -152,7 +152,7 @@ class UAGBFormsSelectEdit extends Component {
 			)			
 		};
 		
-		const isRequired = (selectRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (selectRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

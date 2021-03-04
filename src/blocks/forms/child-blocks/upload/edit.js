@@ -76,7 +76,7 @@ class UAGBFormsUploadEdit extends Component {
 			)
 		}
 
-		const isRequired = (uploadRequired) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (uploadRequired) ? __("Required" , 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

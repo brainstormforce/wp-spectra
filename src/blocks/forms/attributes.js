@@ -379,5 +379,9 @@ const attributes = {
 		type: "string",
 		default:"#f5f5f5",
 	},
+	captchaMessage:{
+		type:"string",
+		default:__("Please fill up the above captcha." , 'ultimate-addons-for-gutenberg')
+	}
 }
 export default attributes

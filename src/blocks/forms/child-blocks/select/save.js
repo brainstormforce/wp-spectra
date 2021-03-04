@@ -18,7 +18,7 @@ export default function save( props ) {
 		selectName
 	} = attributes
 	
-	const isRequired = (selectRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+	const isRequired = (selectRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
 	
 	return (
 		<div className={ classnames(

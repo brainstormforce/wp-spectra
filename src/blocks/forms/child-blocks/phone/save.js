@@ -34,7 +34,7 @@ export default function save( props ) {
 		phone_html =  <input type="tel" required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ `${phoneName}[]` }/>
 	}
 	
-	const isRequired = (phoneRequired) ? __("required" , 'ultimate-addons-for-gutenberg'): "";
+	const isRequired = (phoneRequired) ? __("Required" , 'ultimate-addons-for-gutenberg'): "";
 	return (
 		<div className={ classnames(
 			"uagb-forms-phone-wrap",

@@ -95,7 +95,7 @@ class UAGBFormsPhoneEdit extends Component {
 			phone_html = <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input uagb-forms-input" name={ block_id }/>
 		}
 		
-		const isRequired = (phoneRequired) ? __("required", 'ultimate-addons-for-gutenberg') : "";
+		const isRequired = (phoneRequired) ? __("Required", 'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>

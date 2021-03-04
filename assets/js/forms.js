@@ -120,7 +120,7 @@
               
                captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
                 if (!captcha_response) {                  
-                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">Please fill up the above captcha.</p>');
+                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">'+attr['captchaMessage']+'</p>');
                     return false;
                 } else {
                     $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
@@ -137,7 +137,7 @@
                   
                captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
                if (!captcha_response) {                  
-                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">Please fill up the above captcha.</p>');
+                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">'+attr['captchaMessage']+'</p>');
                    return false;
                } else {
                    $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');

@@ -117,7 +117,7 @@ class UAGBFormsToggleEdit extends Component {
 			)
 		}
 		
-		const isRequired = (toggleRequired) ? "required" : "";
+		const isRequired = (toggleRequired) ? __("Required",'ultimate-addons-for-gutenberg') : "";
 
 		return (
 			<Fragment>
@@ -133,7 +133,7 @@ class UAGBFormsToggleEdit extends Component {
 					{isSelected && (
 						<div className="uagb-forms-required-wrap">
 							<ToggleControl
-								label={ __( "Required" ) }
+								label={ __( "Required", 'ultimate-addons-for-gutenberg') }
 								checked={ toggleRequired }
 								onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
 							/>														
@@ -141,7 +141,7 @@ class UAGBFormsToggleEdit extends Component {
 					)}
 					<RichText
 						tagName="div"
-						placeholder={ __( "Name" ) }
+						placeholder={ __( "Name" , 'ultimate-addons-for-gutenberg' ) }
 						value={ name }
 						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className={`uagb-forms-toggle-label ${isRequired} uagb-forms-input-label`}
