@@ -34,7 +34,6 @@ const {
 	Button,
 	Dashicon,
 	TextControl,
-	IconButton,
 	RadioControl,
 	Disabled,
 	Tip,
@@ -479,7 +478,7 @@ class UAGBPostMasonry extends Component {
 						{ 'button' === paginationEventType &&
 							<Fragment>
 								<h2> { __( "Alignment",'ultimate-addons-for-gutenberg' ) }</h2>
-								<IconButton
+								<Button
 									key={ "left" }
 									icon="editor-alignleft"
 									label="Left"
@@ -487,7 +486,7 @@ class UAGBPostMasonry extends Component {
 									aria-pressed = { "left" === paginationAlign }
 									isPrimary = { "left" === paginationAlign }
 								/>
-								<IconButton
+								<Button
 									key={ "center" }
 									icon="editor-aligncenter"
 									label="Right"
@@ -495,7 +494,7 @@ class UAGBPostMasonry extends Component {
 									aria-pressed = { "center" === paginationAlign }
 									isPrimary = { "center" === paginationAlign }
 								/>
-								<IconButton
+								<Button
 									key={ "right" }
 									icon="editor-alignright"
 									label="Right"
