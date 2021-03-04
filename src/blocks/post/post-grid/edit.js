@@ -37,7 +37,7 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-	Toolbar,
+	ToolbarGroup,
 	TextControl,
 	RadioControl,
 	Button,
@@ -145,7 +145,7 @@ class UAGBPostGrid extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
+				<ToolbarGroup
 					controls={ [
 						{
 							icon: 'edit',

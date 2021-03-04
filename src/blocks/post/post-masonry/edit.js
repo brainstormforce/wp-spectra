@@ -37,7 +37,7 @@ const {
 	RadioControl,
 	Disabled,
 	Tip,
-	Toolbar
+	ToolbarGroup 
 } = wp.components
 
 const {
@@ -77,16 +77,16 @@ class UAGBPostMasonry extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
-					controls={ [
-						{
-							icon: 'edit',
-							title: __( 'Edit'),
-							onClick: () => this.togglePreview(),
-							isActive: isEditing,
-						},
-					] }
-				/>
+			<ToolbarGroup
+				controls={ [
+					{
+						icon: 'edit',
+						title: __( 'Edit' ),
+						onClick: () => this.togglePreview(),
+						isActive: isEditing,
+					},
+				] }
+			/>
 		);
 	}
 	onSelectPostType( value ) {

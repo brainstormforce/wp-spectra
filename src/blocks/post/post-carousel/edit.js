@@ -35,7 +35,7 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	Toolbar,
+	ToolbarGroup,
 	ButtonGroup,
 	Button,
 	TabPanel,
@@ -127,16 +127,16 @@ class UAGBPostCarousel extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
-					controls={ [
-						{
-							icon: 'edit',
-							title: __( 'Edit' ),
-							onClick: () => this.togglePreview(),
-							isActive: isEditing,
-						},
-					] }
-				/>
+			<ToolbarGroup
+				controls={ [
+					{
+						icon: 'edit',
+						title: __( 'Edit' ),
+						onClick: () => this.togglePreview(),
+						isActive: isEditing,
+					},
+				] }
+			/>
 		);
 	}
 	
