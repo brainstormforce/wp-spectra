@@ -98,7 +98,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
 			$body .= '<div style="padding: 15px;">';
-			
+
 			foreach ( $form_data as $key => $value ) {
 
 				if ( $key ) {
