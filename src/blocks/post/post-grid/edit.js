@@ -126,11 +126,11 @@ class UAGBPostGrid extends Component {
 		document.head.appendChild( $style )
 	}
 	componentDidUpdate() {
-		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		
+			var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
+			if( null !== element && undefined !== element ) {
+					element.innerHTML = styling( this.props )
+			}
 	}
 	togglePreview() {
 
@@ -149,7 +149,7 @@ class UAGBPostGrid extends Component {
 					controls={ [
 						{
 							icon: 'edit',
-							title: __( 'Edit' ),
+							title: __( 'Edit' ), 
 							onClick: () => this.togglePreview(),
 							isActive: isEditing,
 						},

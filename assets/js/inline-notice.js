@@ -18,7 +18,7 @@
 			}
 
 			if ( attr['noticeDismiss'] !== '' ) {
-				$( id + " .uagb-notice-dismiss" ).click( function() {
+				$( id + " .uagb-notice-dismiss" ).on( 'click',function() {
 					if ( true === is_cookie && 'undefined' !== typeof current_cookie) {
 						current_cookies = Cookies.set( 'uagb-notice-' + unique_id, true, { expires: cookies_days } );
 					$( id ).addClass("uagb-notice__active").css('display' ,'none')
