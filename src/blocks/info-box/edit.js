@@ -973,7 +973,7 @@ class UAGBinfoBox extends Component {
 						allowedTypes= { [ "image" ] }
 						value={ iconImage }
 						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
+							<Button isSecondary onClick={ open }>
 								{ image_name }
 							</Button>
 						) }

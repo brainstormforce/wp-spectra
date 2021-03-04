@@ -318,7 +318,7 @@ class UAGBSocialShareChild extends Component {
 									allowedTypes={ [ "image" ] }
 									value={ image }
 									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
+										<Button isSecondary onClick={ open }>
 											{ ! image ? __( "Select Image",'ultimate-addons-for-gutenberg') : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 										</Button>
 									) }

@@ -113,7 +113,7 @@ class UAGBRestaurantMenuChild extends Component {
 							allowedTypes= { [ "image" ] }
 							value={ image }
 							render={ ( { open } ) => (
-								<Button isDefault onClick={ open }>
+								<Button isSecondary onClick={ open }>
 									{  this.getImageName( image ) }
 								</Button>
 							) }

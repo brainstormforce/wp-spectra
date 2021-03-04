@@ -543,7 +543,7 @@ class UAGBBlockQuote extends Component {
 						allowedTypes= { [ "image" ] }
 						value={ authorImage }
 						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
+							<Button isSecondary onClick={ open }>
 								{ image_name }
 							</Button>
 						) }

@@ -383,7 +383,7 @@ class UAGBHowTo extends Component {
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
+									<Button isSecondary onClick={ open }>
 										{ ! mainimage.url ? __( "Select Image", 'ultimate-addons-for-gutenberg' ) : __( "Replace image", 'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								) }
