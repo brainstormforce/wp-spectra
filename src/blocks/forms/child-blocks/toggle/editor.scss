@@ -2,8 +2,6 @@
 .uagb-switch {
 	position: relative;
 	display: inline-block;
-	width: 60px;
-	height: 34px;
  	input {
 		opacity: 0;
 		width: 0;
@@ -26,8 +24,6 @@
   .uagb-slider:before {
 	position: absolute;
 	content: "";
-	height: 26px;
-	width: 26px;
 	left: 4px;
 	bottom: 4px;
 	background-color: white;

@@ -2694,8 +2694,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'submitBgColorHover'         => '#ffffff',
 							'submitborderStyle'          => 'solid',
 							'toggleSize'                 => 20,
-							'togglewidthSize'            => 0,
-							'toggleheightSize'           => 0,
+							'toggleActiveColor'          => '#000000',
+							'toggleWidthSize'            => 0,
+							'toggleHeightSize'           => 0,
 							'submitborderWidth'          => 1,
 							'submitborderRadius'         => 3,
 							'submitborderColor'          => '#BDBDBD',
@@ -2866,9 +2867,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'attributes'  => array(
-							'activeColor' => '#2196F3',
-						),
+						'attributes'  => array(),
 					),
 					'uagb/forms-date'             => array(
 						'slug'        => '',

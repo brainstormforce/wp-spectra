@@ -1,9 +1,5 @@
 .uagb-forms__outer-wrap {
     .uagb-forms-main-form {
-		input[type=checkbox] , input[type=radio]{
-			margin-top: 5px;
-			margin-bottom: 5px;
-		}
 		input:not([type=checkbox]):not([type=radio]):not([type=file]) , textarea, select {
 			width: 100%;
 		}
@@ -50,8 +46,60 @@
 		column-gap: 15px;
 	}	
 }
-.uagb-forms-main-form input[type=radio]:checked{
-	background-color: #0274be;
+//radio
+.uagb-forms-radio-wrap input[type=radio] {
+	display: none;
+}
+.uagb-forms-radio-wrap input[type=radio]:checked + label:before{
+	content: " ";
+	line-height: 1.2;
+	box-shadow: inset 0px 0px 0px 4px #fafafa;
+}
+.uagb-forms-radio-wrap input[type=radio] + label:before{
+	box-sizing: content-box;
+	content: '';
+	border-radius: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+	margin-top: 5px;
+    text-align: center;
+}
+//checkbox
+.uagb-forms-checkbox-wrap input[type=checkbox] {
+	display: none;
+}
+.uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before{
+	content: "\2714";
+	line-height: 1.2;
+}
+.uagb-forms-checkbox-wrap input[type=checkbox] + label:before{
+	box-sizing: content-box;
+	display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+	margin-bottom: 5px;
+    text-align: center;
+	line-height: 1.2;
+	content: " ";
+}
+//accept checkbox
+.uagb-forms-accept-wrap input[type=checkbox] {
+	display: none;
+}
+.uagb-forms-accept-wrap input[type=checkbox]:checked + label:before{
+	content: "\2714";
+	line-height: 1.2;
+}
+.uagb-forms-accept-wrap input[type=checkbox] + label:before{
+	box-sizing: content-box;
+	display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+	margin-bottom: 5px;
+    text-align: center;
+	line-height: 1.2;
+	content: " ";
 }
 .uagb-forms__small-btn .uagb-forms-main-submit-button{
 	padding: 5px 10px;
@@ -70,33 +118,7 @@
 	width:100%;
 }
 .uagb-forms__outer-wrap {
-
-	// Checkbox Css 
-	.uagb-forms-checkbox-wrap input[type="checkbox"] {
-		margin-right: 15px;
-		vertical-align: middle;
-	}
 	
-	//Checkbox Css End
-
-	// Radio Css 
-	.uagb-forms-radio-wrap input[type="radio"] {
-		margin-right: 15px;
-		vertical-align: middle;
-	}
-	
-	//Radio Css End
-
-	// Accept Checkbox Css 
-	.uagb-forms-accept-wrap input[type="checkbox"] {
-		margin-right: 15px;
-		vertical-align: middle;
-	}
-	
-	// Accept Checkbox Css  End
-
-	// Toggle Css 
-
 	/* The switch - the box around the slider */
 
 	.uagb-switch {
@@ -114,7 +136,6 @@
 		width: 0;
 		height: 0;
 	}
-
 
 	/* The slider */
 

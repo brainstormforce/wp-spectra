@@ -14,8 +14,8 @@ function styling( props ) {
         submitColorHover,
         submitBgColor,
         submitBgColorHover,
-        togglewidthSize,
-        toggleheightSize,
+        toggleWidthSize,
+        toggleHeightSize,
         submitborderStyle,
         submitborderWidth,
         submitborderRadius,
@@ -58,7 +58,7 @@ function styling( props ) {
         inputLineHeight,
         inputLineHeightTablet,
         inputLineHeightMobile,
-
+        toggleActiveColor,
         labelColor,
         inputColor,
         bgColor,
@@ -96,14 +96,6 @@ function styling( props ) {
             "font-family": labelFontFamily,
             "font-weight": labelFontWeight,
             'color' : labelColor,            
-        },
-        " .uagb-forms-main-form input[type=checkbox]" : {            
-            "width" : generateCSSUnit( toggleSize, "px" ),
-            "height" : generateCSSUnit( toggleSize, "px" )           
-        },
-        " .uagb-forms-main-form input[type=radio]" : {            
-            "width" : generateCSSUnit( toggleSize, "px" ),
-            "height" : generateCSSUnit( toggleSize, "px" )           
         },
         " .uagb-forms-main-form  .uagb-forms-input::placeholder" : {            
             "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -152,16 +144,60 @@ function styling( props ) {
             'border-color' : submitborderHoverColor,
         },  
         " .uagb-switch ": {
-            'height' : generateCSSUnit( 34  + toggleheightSize, "px" ),
-            'width' : generateCSSUnit( 60 + togglewidthSize, "px" )
-        },      
+            'height' : generateCSSUnit( 34  + toggleHeightSize, "px" ),
+            'width' : generateCSSUnit( 60 + toggleWidthSize, "px" )
+        }, 
+        " .uagb-switch input:checked + .uagb-slider" : {
+            'background-color' : toggleActiveColor
+        },
+        " .uagb-switch input:focus + .uagb-slider" : {
+            "box-shadow": "0 0 1px" + toggleActiveColor
+        },     
         " .uagb-slider:before ": {
-            'height' : generateCSSUnit( 26 + toggleheightSize , "px" ),
-            'width' : generateCSSUnit( 26 + togglewidthSize/2, "px")
+            'height' : generateCSSUnit( 26 + toggleHeightSize , "px" ),
+            'width' : generateCSSUnit( 26 + toggleWidthSize/2, "px")
         },  
         " .uagb-switch input:checked + .uagb-slider:before ": {
-            'transform' : 'translateX('+ generateCSSUnit( 26 + togglewidthSize , "px" )/2+")",
-        }
+            'transform' : 'translateX('+ generateCSSUnit( 26 + toggleWidthSize , "px" )/2+")",
+        },
+        ' .uagb-forms-radio-wrap input[type=radio]:checked + label:before' :{
+            'background-color'         : inputColor,
+            'font-size' : 'calc(' + toggleSize + 'px / 1.2 )',	
+        },
+        ' .uagb-forms-radio-wrap input[type=radio] + label:before'        :{
+            'background-color' : bgColor,
+            'width'      : generateCSSUnit( toggleSize, 'px' ),
+            'height'     : generateCSSUnit( toggleSize, 'px' ),
+        },
+        ' .uagb-forms-radio-wrap > label'        :{
+            'color'         : inputColor,
+        },
+        ' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before' :{
+            'color'         : inputColor,
+            'font-size' : 'calc(' + toggleSize + 'px / 1.2 )',	
+        },
+        ' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'        :{
+            'background-color' : bgColor,
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
+            'width'      : generateCSSUnit( toggleSize, 'px' ),
+            'height'     : generateCSSUnit( toggleSize, 'px' ),
+        },
+        ' .uagb-forms-checkbox-wrap > label'        :{
+            'color'         : inputColor,
+        },
+        ' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before' :{
+            'color'         : inputColor,
+            'font-size' : 'calc(' + toggleSize + 'px / 1.2 )',	
+        },
+        ' .uagb-forms-accept-wrap input[type=checkbox] + label:before'        :{
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
+            'background-color' : bgColor,
+            'width'      : generateCSSUnit( toggleSize, 'px' ),
+            'height'     : generateCSSUnit( toggleSize, 'px' ),
+        },
+        ' .uagb-forms-accept-wrap > label'        :{
+            'color'         : inputColor,
+        },
     }
     
     if ( "boxed" == formStyle ) {		
@@ -172,23 +208,17 @@ function styling( props ) {
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
         }
-        selectors[" .uagb-forms-main-form  .uagb-forms-checkbox"] = {
+        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before"] = {
             'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
-            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
-            'background-color' : bgColor,
-            'color' : inputColor,
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before"] = {
+            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before"] = {
+            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
         }
         selectors[" .uagb-slider "] = {
             'background-color' : bgColor,
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
-            'color' : inputColor
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap > label"] = {
-            'color' : inputColor
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap > label"] = {
-            'color' : inputColor
         }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
             'border-color' : inputborderHoverColor,            
@@ -204,23 +234,17 @@ function styling( props ) {
             'color' : inputColor,
             'padding' : generateCSSUnit( vPaddingField, "px" ) + " " + generateCSSUnit( hPaddingField, "px" ),
         }
-        selectors[" .uagb-forms-main-form  .uagb-forms-checkbox"] = {
-            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
-            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
-            'background-color' : bgColor,
-            'color' : inputColor,
+        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before"] = {
+           'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+         }
+        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before"] = {
+           'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+        }
+        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before"] = {
+           'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
         }
         selectors[" .uagb-slider "] = {
             'background-color' : bgColor,
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap > label"] = {
-            'color' : inputColor
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap > label"] = {
-            'color' : inputColor
-        }
-        selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap > label"] = {
-            'color' : inputColor
         }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
             'border-color' : inputborderHoverColor,            

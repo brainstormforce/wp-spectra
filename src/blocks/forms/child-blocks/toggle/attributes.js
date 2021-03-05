@@ -22,10 +22,6 @@ const attributes = {
         type: "string",
         default: ""
     },
-    activeColor : {
-        type: "string",
-        default: "#2196F3"
-    },
     trueValue : {
         type: "string",
         default: "on"

@@ -117,6 +117,7 @@ class UAGBFormsCheckboxEdit extends Component {
 						name={`checkbox-${block_id}`}
 						value={s.optiontitle}			
 					/>	
+					<label for={s.optiontitle}></label>
 					<input
 						className="uagb-inner-input-view"
 						aria-label={s.optiontitle}

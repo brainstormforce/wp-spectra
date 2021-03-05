@@ -3,7 +3,6 @@
  */
 
 import classnames from "classnames"
-import styling from "./styling"
 const { __ } = wp.i18n
 
 const {
@@ -35,21 +34,8 @@ class UAGBFormsToggleEdit extends Component {
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-forms-toggle-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 		
 	}
-
-	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-style-forms-toggle-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
-    }
 	
 	
 	render() {
@@ -62,7 +48,6 @@ class UAGBFormsToggleEdit extends Component {
 			name,
 			toggleStatus,
 			layout,
-			activeColor,
 			trueValue,
 			falseValue
 		} = attributes
@@ -106,12 +91,6 @@ class UAGBFormsToggleEdit extends Component {
 						{ value: "", label: __( "Square" , 'ultimate-addons-for-gutenberg') },
 						{ value: "round", label: __( "Round" , 'ultimate-addons-for-gutenberg') },								
 					] }
-				/>
-				<p className="uagb-setting-label">{ __( "Active Color" , 'ultimate-addons-for-gutenberg') }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
-				<ColorPalette
-					value={ activeColor }
-					onChange={ ( colorValue ) => setAttributes( { activeColor: colorValue } ) }
-					allowReset
 				/>
 				</PanelBody>
 			)

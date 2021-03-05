@@ -115,9 +115,9 @@ class UAGBFormsRadioEdit extends Component {
 					<input												
 						type="radio"
 						name={`radio-${block_id}`}
-						value={s.optiontitle}		
-						className="uagb-forms-input"				
+						value={s.optiontitle}					
 					/>	
+					<label for={s.optiontitle}></label>
 					<input
 						className="uagb-inner-input-view"
 						aria-label={s.optiontitle}
@@ -150,7 +150,7 @@ class UAGBFormsRadioEdit extends Component {
 					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
-						<input type="radio" id={value} name={ block_id } value={optionvalue} required={radioRequired} className="uagb-forms-input"/>
+						<input type="radio" id={value} name={ block_id } value={optionvalue} required={radioRequired}/>
 						<label htmlfor={value}>{o.optiontitle}</label><br/>						
 						</Fragment>
 					);

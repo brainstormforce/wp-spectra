@@ -167,8 +167,9 @@ class UAGBFormsEdit extends Component {
 			inputLineHeightTablet,
 			inputLineHeightMobile,
 			toggleSize,
-			togglewidthSize,
-			toggleheightSize,
+			toggleWidthSize,
+			toggleHeightSize,
+			toggleActiveColor,
 			labelColor,
 			inputColor,
 			bgColor,
@@ -763,18 +764,24 @@ class UAGBFormsEdit extends Component {
 				/>
 				<RangeControl
 					label={ __( "Toggle Width", "ultimate-addons-for-gutenberg" ) }
-					value={ togglewidthSize  }
-					onChange={ ( value ) => setAttributes( { togglewidthSize : value } ) }
+					value={ toggleWidthSize  }
+					onChange={ ( value ) => setAttributes( { toggleWidthSize : value } ) }
 					min={ 0 }
 					max={ 50 }
 					allowReset
 				/>
 				<RangeControl
 					label={ __( "Toggle Height" , "ultimate-addons-for-gutenberg") }
-					value={ toggleheightSize  }
-					onChange={ ( value ) => setAttributes( { toggleheightSize : value } ) }
+					value={ toggleHeightSize  }
+					onChange={ ( value ) => setAttributes( { toggleHeightSize : value } ) }
 					min={ 0 }
 					max={ 50 }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Toggle Active Color" , 'ultimate-addons-for-gutenberg') }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
+				<ColorPalette
+					value={ toggleActiveColor }
+					onChange={ ( colorValue ) => setAttributes( { toggleActiveColor: colorValue } ) }
 					allowReset
 				/>
 				<p className="uagb-setting-label">{ __( "Label Color" , "ultimate-addons-for-gutenberg") }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: labelColor }} ></span></span></p>

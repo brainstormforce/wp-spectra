@@ -596,10 +596,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_forms_gfont( $blockattr );
 					break;
 
-				case 'uagb/forms-toggle':
-					$css += UAGB_Block_Helper::get_forms_child_toggle_css( $blockattr, $block_id );
-					break;
-
 				case 'uagb/taxonomy-list':
 					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );

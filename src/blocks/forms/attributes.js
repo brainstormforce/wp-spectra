@@ -238,11 +238,15 @@ const attributes = {
 		type: "number",
 		default:20
 	},
-	togglewidthSize:{
+	toggleWidthSize:{
 		type: "number",
 		default:0
 	},
-	toggleheightSize:{
+	toggleActiveColor:{
+		type: "string",
+		default:"#000000"
+	},
+	toggleHeightSize:{
 		type: "number",
 		default:0
 	},
