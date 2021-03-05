@@ -21,7 +21,7 @@ class UAGBTabsChildEdit extends Component {
 		super( ...arguments );
 	}
 	
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { attributes, clientId } = this.props;
 
 		const { getBlockRootClientId, getBlockAttributes } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
