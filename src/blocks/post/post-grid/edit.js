@@ -219,7 +219,6 @@ class UAGBPostGrid extends Component {
 						<Button
 							className="uagb-block-all-post__done-button"
 							isPrimary
-							isLarge
 							onClick={ onDone }
 						>
 							{ __( 'Done' ) }
