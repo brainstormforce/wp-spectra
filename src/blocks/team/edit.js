@@ -274,7 +274,7 @@ class UAGBTeam extends Component {
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
 					placeholder={ __( "Write a Description",'ultimate-addons-for-gutenberg' ) }
-					unstableOnSplit = {
+					onSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -312,7 +312,7 @@ class UAGBTeam extends Component {
 					multiline={ false }
 					placeholder={ __( "Write a Title",'ultimate-addons-for-gutenberg' ) }
 					onMerge = { mergeBlocks }
-					unstableOnSplit = {
+					onSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -333,7 +333,7 @@ class UAGBTeam extends Component {
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }
 					placeholder={ __( "Write a Designation",'ultimate-addons-for-gutenberg' ) }
-					unstableOnSplit = {
+					onSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

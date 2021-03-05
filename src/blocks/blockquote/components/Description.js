@@ -27,7 +27,7 @@ class Description extends React.Component {
 	                className='uagb-blockquote__content'
 	                onChange={ ( value ) => setAttributes( { descriptionText: value } ) }
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

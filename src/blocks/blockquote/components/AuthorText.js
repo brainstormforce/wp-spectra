@@ -27,7 +27,7 @@ class AuthorText extends React.Component {
 	                className='uagb-blockquote__author'
 	                onChange={ ( value ) => setAttributes( { author: value } ) }
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

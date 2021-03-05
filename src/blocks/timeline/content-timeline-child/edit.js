@@ -150,7 +150,7 @@ class UAGBcontentTimelineChild extends Component {
 													placeholder={ __( "Write a Heading",'ultimate-addons-for-gutenberg' ) }
 													className='uagb-timeline__heading'
 													onMerge={ mergeBlocks }
-													unstableOnSplit={
+													onSplit={
 														insertBlocksAfter ?
 															( before, after, ...blocks ) => {
 																setAttributes( { content: before } )
@@ -171,7 +171,7 @@ class UAGBcontentTimelineChild extends Component {
 												placeholder={ __( "Write a Description",'ultimate-addons-for-gutenberg' ) }
 												className='uagb-timeline-desc-content'
 												onMerge={ mergeBlocks }
-												unstableOnSplit={ this.splitBlock }
+												onSplit={ this.splitBlock }
 												onRemove={ () => onReplace( [] ) }
 											/>
 											<div className="uagb-timeline__arrow"></div>
