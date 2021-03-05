@@ -5236,7 +5236,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors     = array();
 			$t_selectors     = array();
 			$content         = get_post_field( 'post_content' );
-			$reusable_blocks = UAGB_Helper::parse( $content );
+			global $wp_version;
+			$reusable_blocks = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 
 			$selectors = array(
 				' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(

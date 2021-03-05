@@ -117,7 +117,6 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					}
 				}
 			}
-			print_r($body);
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';

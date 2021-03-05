@@ -86,7 +86,7 @@ const attributes = {
 	},
 	submitborderColor : {
 		type: "string",
-		default: "#7e8993"
+		default: "#BDBDBD"
 	},
 	submitborderHoverColor : {
 		type: "string"
@@ -290,7 +290,7 @@ const attributes = {
 	},
 	inputborderColor : {
 		type: "string",
-		default: "#7e8993"
+		default: "#BDBDBD"
 	},
 	inputborderHoverColor : {
 		type: "string"
