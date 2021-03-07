@@ -778,7 +778,7 @@ class UAGBFormsEdit extends Component {
 					max={ 50 }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Toggle Active Color" , 'ultimate-addons-for-gutenberg') }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: activeColor }} ></span></span></p>
+				<p className="uagb-setting-label">{ __( "Toggle Active Color" , 'ultimate-addons-for-gutenberg') }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: toggleActiveColor }} ></span></span></p>
 				<ColorPalette
 					value={ toggleActiveColor }
 					onChange={ ( colorValue ) => setAttributes( { toggleActiveColor: colorValue } ) }

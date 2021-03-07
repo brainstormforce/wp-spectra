@@ -115,7 +115,8 @@ class UAGBFormsCheckboxEdit extends Component {
 					<input												
 						type="checkbox"
 						name={`checkbox-${block_id}`}
-						value={s.optiontitle}			
+						value={s.optiontitle}	
+						id={s.optiontitle}		
 					/>	
 					<label for={s.optiontitle}></label>
 					<input

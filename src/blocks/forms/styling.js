@@ -144,8 +144,8 @@ function styling( props ) {
             'border-color' : submitborderHoverColor,
         },  
         " .uagb-switch ": {
-            'height' : generateCSSUnit( 34  + toggleHeightSize, "px" ),
-            'width' : generateCSSUnit( 60 + toggleWidthSize, "px" )
+            'height' : generateCSSUnit( 34  + toggleHeightSize + inputborderWidth, "px" ),
+            'width' : generateCSSUnit( 60 + toggleWidthSize + inputborderWidth, "px" )
         }, 
         " .uagb-switch input:checked + .uagb-slider" : {
             'background-color' : toggleActiveColor
@@ -154,8 +154,8 @@ function styling( props ) {
             "box-shadow": "0 0 1px" + toggleActiveColor
         },     
         " .uagb-slider:before ": {
-            'height' : generateCSSUnit( 26 + toggleHeightSize , "px" ),
-            'width' : generateCSSUnit( 26 + toggleWidthSize/2, "px")
+            'height' : generateCSSUnit( 26 + toggleHeightSize - inputborderWidth, "px" ),
+            'width' : generateCSSUnit( 26 + toggleWidthSize - inputborderWidth/2, "px")
         },  
         " .uagb-switch input:checked + .uagb-slider:before ": {
             'transform' : 'translateX('+ generateCSSUnit( 26 + toggleWidthSize , "px" )/2+")",
@@ -210,14 +210,17 @@ function styling( props ) {
         }
         selectors[" .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before"] = {
             'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
         }
         selectors[" .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before"] = {
             'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
+            'border-radius' : generateCSSUnit( inputborderRadius, "px" ),
         }
         selectors[" .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before"] = {
             'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
         }
         selectors[" .uagb-slider "] = {
+            'border' : generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
             'background-color' : bgColor,
         }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
@@ -245,6 +248,7 @@ function styling( props ) {
         }
         selectors[" .uagb-slider "] = {
             'background-color' : bgColor,
+            'border-bottom':  generateCSSUnit( inputborderWidth, "px" ) + " " + inputborderStyle + " " + inputborderColor,
         }
         selectors[" .uagb-forms-main-form  .uagb-forms-input:hover"] = {
             'border-color' : inputborderHoverColor,            

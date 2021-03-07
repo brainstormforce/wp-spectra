@@ -46,10 +46,7 @@
 		column-gap: 15px;
 	}	
 }
-//radio
-.uagb-forms-radio-wrap input[type=radio] {
-	display: none;
-}
+
 .uagb-forms-radio-wrap input[type=radio]:checked + label:before{
 	content: " ";
 	line-height: 1.2;
@@ -65,32 +62,15 @@
 	margin-top: 5px;
     text-align: center;
 }
-//checkbox
-.uagb-forms-checkbox-wrap input[type=checkbox] {
+.uagb-forms-radio-wrap input[type=radio] , .uagb-forms-checkbox-wrap input[type=checkbox] , .uagb-forms-accept-wrap input[type=checkbox] {
 	display: none;
 }
-.uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before{
-	content: "\2714";
-	line-height: 1.2;
-}
-.uagb-forms-checkbox-wrap input[type=checkbox] + label:before{
-	box-sizing: content-box;
-	display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-	margin-bottom: 5px;
-    text-align: center;
-	line-height: 1.2;
-	content: " ";
-}
-//accept checkbox
-.uagb-forms-accept-wrap input[type=checkbox] {
-	display: none;
-}
+.uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before ,
 .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before{
 	content: "\2714";
 	line-height: 1.2;
 }
+.uagb-forms-checkbox-wrap input[type=checkbox] + label:before , 
 .uagb-forms-accept-wrap input[type=checkbox] + label:before{
 	box-sizing: content-box;
 	display: inline-block;
@@ -101,6 +81,7 @@
 	line-height: 1.2;
 	content: " ";
 }
+
 .uagb-forms__small-btn .uagb-forms-main-submit-button{
 	padding: 5px 10px;
 }
@@ -157,7 +138,7 @@
 		height: 26px;
 		width: 26px;
 		left: 4px;
-		bottom: 4px;
+		bottom: 2px;
 		background-color: #ffffff;
 		-webkit-transition: .4s;
 		transition: .4s;

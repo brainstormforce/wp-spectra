@@ -126,7 +126,7 @@ class UAGBFormsAcceptEdit extends Component {
 						</div>
 					)}							
 					<input type="checkbox" id={`uagb-forms-accept-${block_id}`} className="uagb-forms-checkbox" name={ block_id } required={ acceptRequired } value="Agree"/>
- 					<label name={ block_id } className={`uagb-forms-accept-label ${isRequired}`} >{ acceptText }</label><br></br>
+ 					<label name={ block_id } htmlFor={`uagb-forms-accept-${block_id}`} className={`uagb-forms-accept-label ${isRequired}`} >{ acceptText }</label><br></br>
 				</div>
 			</Fragment>
 		)

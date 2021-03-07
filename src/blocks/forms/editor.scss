@@ -7,6 +7,10 @@
 		.uagb-forms-required-wrap {
 			float: right;
 		}
+		input[type=checkbox] , input[type=radio]{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
 	}
 	
 	
@@ -16,6 +20,7 @@
 	}
 	
 }
+
 
 .uagb-form-notice{
 	background-color: #FFF8E5;

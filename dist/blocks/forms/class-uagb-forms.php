@@ -105,15 +105,15 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					if ( is_array( $value ) && stripos( wp_json_encode( $value ), '+' ) !== false ) {
 
 						$val   = implode( '', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' .esc_html( $val) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
 
 					} elseif ( is_array( $value ) ) {
 
 						$val   = implode( ', ', $value );
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' .esc_html( $val) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $val ) . '</p>';
 
 					} else {
-						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' .esc_html( $value) . '</p>';
+						$body .= '<p><strong>' . str_replace( '_', ' ', ucwords( $key ) ) . '</strong> - ' . esc_html( $value ) . '</p>';
 					}
 				}
 			}
