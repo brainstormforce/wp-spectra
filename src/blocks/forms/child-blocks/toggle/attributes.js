@@ -20,7 +20,7 @@ const attributes = {
     },
     layout: {
         type: "string",
-        default: ""
+        default: "round"
     },
     trueValue : {
         type: "string",

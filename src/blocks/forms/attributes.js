@@ -74,11 +74,9 @@ const attributes = {
 	// Border
 	submitborderStyle : {
 		type: "string",
-		default: "solid"
 	},
 	submitborderWidth : {
 		type: "number",
-		default: 1
 	},
 	submitborderRadius : {
 		type: "number",
@@ -86,7 +84,6 @@ const attributes = {
 	},
 	submitborderColor : {
 		type: "string",
-		default: "#BDBDBD"
 	},
 	submitborderHoverColor : {
 		type: "string"
@@ -236,7 +233,7 @@ const attributes = {
 	},
 	toggleSize:{
 		type: "number",
-		default:20
+		default:16
 	},
 	toggleWidthSize:{
 		type: "number",

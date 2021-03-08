@@ -400,12 +400,6 @@ class UAGBFormsEdit extends Component {
 									onChange={ ( colorValue ) => setAttributes( { failedMessageBGColor: colorValue } ) }
 									allowReset
 								/>
-								<p className="uagb-setting-label">{ __( "Border Color" , "ultimate-addons-for-gutenberg" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBorderColor }} ></span></span></p>
-								<ColorPalette
-									value={ failedMessageBorderColor }
-									onChange={ ( colorValue ) => setAttributes( { failedMessageBorderColor: colorValue } ) }
-									allowReset
-								/>
 								<SelectControl
 									label={ __( "Border Style" , "ultimate-addons-for-gutenberg" ) }
 									value={ failedMessageBorderStyle }
@@ -428,6 +422,12 @@ class UAGBFormsEdit extends Component {
 									onChange={ ( value ) => setAttributes( { failedMessageBorderWidth: value } ) }
 									min={ 0 }
 									max={ 50 }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Border Color" , "ultimate-addons-for-gutenberg" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: failedMessageBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ failedMessageBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { failedMessageBorderColor: colorValue } ) }
 									allowReset
 								/>
 							</PanelBody>

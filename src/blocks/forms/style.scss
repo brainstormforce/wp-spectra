@@ -4,7 +4,7 @@
 			width: 100%;
 		}
 		//Phone block css.
-		.uagb-form-phone-country { width: 25%;}
+		.uagb-form-phone-country { width: 23%; margin-right: 5px;}
 		input.uagb-forms-phone-input.uagb-forms-input { width: 75% !important;}
 		
 		.required:after {
@@ -56,12 +56,16 @@
 	box-sizing: content-box;
 	content: '';
 	border-radius: 100%;
-    display: inline-block;
+	display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
-	margin-top: 5px;
+	margin-bottom: 5px;
     text-align: center;
+	line-height: 1.2;
 }
+select:after , select:before {
+	padding:10px;
+  }
 .uagb-forms-radio-wrap input[type=radio] , .uagb-forms-checkbox-wrap input[type=checkbox] , .uagb-forms-accept-wrap input[type=checkbox] {
 	display: none;
 }
@@ -138,7 +142,7 @@
 		height: 26px;
 		width: 26px;
 		left: 4px;
-		bottom: 2px;
+		bottom: 4px;
 		background-color: #ffffff;
 		-webkit-transition: .4s;
 		transition: .4s;
