@@ -842,7 +842,7 @@ class UAGBHowTo extends Component {
 							onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
 							onMerge={ mergeBlocks }
 							onSplit={ this.splitBlock }
-							onnRemove={ () => onReplace( [] ) }
+							onRemove={ () => onReplace( [] ) }
 						/>
 						}
 						{ showTools &&

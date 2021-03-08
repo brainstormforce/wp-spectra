@@ -107,7 +107,7 @@ class UAGBRatingEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		$(".uagb-rating-link-wrapper").click( function(event) {
+		$(".uagb-rating-link-wrapper").on( "click", function(event) {
 			event.preventDefault()
 		})
 	}
