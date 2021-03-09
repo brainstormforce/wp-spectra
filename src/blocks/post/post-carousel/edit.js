@@ -16,6 +16,7 @@ import WebfontLoader from "../../../components/typography/fontloader"
 import Blog from "./blog"
 import styling from ".././styling"
 
+const { compose } = wp.compose
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const { decodeEntities } = wp.htmlEntities
@@ -55,7 +56,7 @@ const {
 	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect , useDispatch} = wp.data
+const { withSelect , useDispatch, withDispatch} = wp.data
 
 class UAGBPostCarousel extends Component {
 
@@ -1167,7 +1168,8 @@ class UAGBPostCarousel extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default compose(
+	withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
@@ -1214,14 +1216,19 @@ export default withSelect( ( select, props ) => {
 		}
 	}
 	const { getBlocks } = select( 'core/block-editor' );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
-		replaceInnerBlocks
 	}
 
-} )( UAGBPostCarousel )
+} ),
+withDispatch( ( dispatch ) => {
+	const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+	return {
+		replaceInnerBlocks,
+	};
+} )
+)( UAGBPostCarousel )

@@ -17,6 +17,7 @@ import {
 	getBlockMap
 } from '.././function';
 
+const { compose } = wp.compose
 const { Component, Fragment  } = wp.element
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 8
@@ -48,7 +49,7 @@ const {
 	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect , useDispatch} = wp.data
+const { withSelect , useDispatch, withDispatch} = wp.data
 
 class UAGBPostMasonry extends Component {
 
@@ -1385,7 +1386,8 @@ class UAGBPostMasonry extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default compose(
+	withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
@@ -1432,14 +1434,19 @@ export default withSelect( ( select, props ) => {
 		}
 	}
 	const { getBlocks } = select( 'core/block-editor' );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
-		replaceInnerBlocks
 	}
 
-} )( UAGBPostMasonry )
+} ),
+withDispatch( ( dispatch ) => {
+	const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+	return {
+		replaceInnerBlocks,
+	};
+} )
+)( UAGBPostMasonry )
