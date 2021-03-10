@@ -5364,7 +5364,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 					if ( 'boxed' === $attr['formStyle'] ) {
 						$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-							'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+							'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
 						);
 					}
 					if ( 'underlined' === $attr['formStyle'] ) {
