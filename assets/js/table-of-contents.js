@@ -139,7 +139,7 @@
 					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
 				});				
 			}
-			
+			let blockId = attr.block_id;
 			var headerArray = $( 'div.entry-content' ).find( all_header )
 			console.log(headerArray) // For testing will remove it later
 			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
@@ -187,13 +187,13 @@
 
 			$(".uagb_table-of-contents-placeholder").remove();
 
-			$(".uagb-toc__list-wrap").prepend(headerTable);
+			$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).prepend(headerTable);
 
 			} else{
 
 				headerTable +=  attr.emptyHeadingTeaxt;
 
-				$(".uagb-toc__list-wrap").remove();
+				$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).remove();
 				
 				$(".uagb_table-of-contents-placeholder").prepend(headerTable);
 			
