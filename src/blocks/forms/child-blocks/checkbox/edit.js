@@ -108,30 +108,30 @@ class UAGBFormsCheckboxEdit extends Component {
 		};
 		
 		
-		const editView = options.map((s, index) => {
+		const editView = options.map((option, index) => {
 			
 			return (
 				<div className="uagb-form-checkbox-option">
 					<input												
 						type="checkbox"
 						name={`checkbox-${block_id}`}
-						value={s.optiontitle}	
-						id={s.optiontitle}		
+						value={option.optiontitle}	
+						id={option.optiontitle}		
 					/>	
-					<label for={s.optiontitle}></label>
+					<label for={option.optiontitle}></label>
 					<input
 						className="uagb-inner-input-view"
-						aria-label={s.optiontitle}
+						aria-label={option.optiontitle}
 						onChange={e => changeOption( { optiontitle: e.target.value,optionvalue: e.target.value }, index)}
 						type="text"
-						value={s.optiontitle}						
+						value={option.optiontitle}						
 					/>
 					<input
 						className="uagb-inner-input-view"
-						aria-label={s.optionvalue}
+						aria-label={option.optionvalue}
 						onChange={e => changeOption( { optionvalue: e.target.value }, index)}
 						type="text"
-						value={s.optionvalue}						
+						value={option.optionvalue}						
 					/>					
 					<Button 
 						className="uagb-form-checkbox-option-delete"
@@ -146,13 +146,13 @@ class UAGBFormsCheckboxEdit extends Component {
 
 			return  (	
 					
-				options.map((o, index) => {
-					var optionvalue = o.optionvalue;
+				options.map((option, index) => {
+					var optionvalue = option.optionvalue;
 					var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 					return (
 						<Fragment>
 						<input type="checkbox" className="uagb-forms-checkbox" id={`checkbox-${value}-${block_id}`} name={ `${checkboxName}[]` } value={value} required={checkboxRequired}  />
-						<label htmlFor={`checkbox-${value}-${block_id}`}>{o.optiontitle}</label><br/>						
+						<label htmlFor={`checkbox-${value}-${block_id}`}>{option.optiontitle}</label><br/>						
 						</Fragment>
 					);
 				})
