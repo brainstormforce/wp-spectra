@@ -108,14 +108,7 @@ class UAGBcontentTimelineChild extends Component {
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
 
-			if ( 'custom' != dateFormat ) {
-
-				post_date = dateI18n( dateFormat, t_date )
-				if( post_date === "Invalid date",'ultimate-addons-for-gutenberg' ){
-					post_date = t_date
-				}
-			}
-
+			
 				if(timelinAlignment == "center"){
 					display_inner_date = true
 				} 
@@ -137,7 +130,7 @@ class UAGBcontentTimelineChild extends Component {
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
 										{ displayPostDate != true && t_date &&
 	                                        <div className={ "uagb-timeline__inner-date-new" }>
-	                                        	{ post_date }
+	                                        	{ 'custom' != dateFormat && ( dateI18n( dateFormat, post_date ) ) || post_date }
 	                                        </div>
 										}
 										</div>
@@ -182,7 +175,7 @@ class UAGBcontentTimelineChild extends Component {
 									{ display_inner_date && <div className = "uagb-timeline__date-new">
 										{ displayPostDate != true && t_date &&
                                             <div className={ "uagb-timeline__date-new" }>
-                                            	{ post_date }
+                                            	{ 'custom' != dateFormat && ( dateI18n( dateFormat, post_date ) ) || post_date }
                                             </div>
 										}
 									</div>
