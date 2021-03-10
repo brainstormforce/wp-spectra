@@ -294,14 +294,14 @@ export class ReviewBody extends Component {
 				<div className="uagb_review_summary">
 					<RichText
 						className="uagb_review_summary_title"
-						placeholder={__("Title of the summary goes here")}
+						placeholder={__("Title of the summary goes here",'ultimate-addons-for-gutenberg')}
 						tagName="p"
 						onChange={(text) => setSummaryTitle(text)}
 						value={summaryTitle}
 					/>
 					<div className="uagb_review_overall_value">
 						<RichText
-							placeholder={__("Summary of the review goes here")}
+							placeholder={__("Summary of the review goes here",'ultimate-addons-for-gutenberg')}
 							onChange={(text) => setSummaryDescription(text)}
 							value={summaryDescription}
 						/>

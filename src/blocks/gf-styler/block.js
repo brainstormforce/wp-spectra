@@ -36,9 +36,9 @@ if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 		description:uagb_blocks_info.blocks["uagb/gf-styler"]["description"], // Block description.
 		icon: UAGB_Block_Icons.gf_styler,
 		keywords: [
-			__( "GF styler" ),
-			__( "gravity form styler" ),
-			__( "uag" ),
+			__( "GF styler",'ultimate-addons-for-gutenberg' ),
+			__( "gravity form styler",'ultimate-addons-for-gutenberg' ),
+			__( "uag",'ultimate-addons-for-gutenberg' ),
 		],
 		supports: {
 			anchor: true,

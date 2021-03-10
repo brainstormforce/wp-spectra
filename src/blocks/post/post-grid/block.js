@@ -10,7 +10,7 @@ import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 import ".././style.scss"
 import ".././editor.scss"
 
-// Components
+
 const { __ } = wp.i18n
 
 // Register block controls
@@ -23,9 +23,9 @@ registerBlockType( "uagb/post-grid", {
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "grid" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "grid",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
 	example: {},
@@ -34,3 +34,4 @@ registerBlockType( "uagb/post-grid", {
 		return null
 	},
 } )
+

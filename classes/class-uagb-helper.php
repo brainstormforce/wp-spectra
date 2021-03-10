@@ -271,11 +271,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			ob_start();
+				ob_start();
 			?>
-			<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
-			<?php
-			ob_end_flush();
+				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
+				<?php
+				ob_end_flush();
 		}
 
 		/**
@@ -414,7 +414,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-				$blockattr = $block['attrs'];
+				/**
+				 * Filters the block attributes for CSS and JS generation.
+				 *
+				 * @param array  $block_attributes The block attributes to be filtered.
+				 * @param string $name             The block name.
+				 */
+				$blockattr = apply_filters( 'uagb_block_attributes_for_css_and_js', $block['attrs'], $name );
 				if ( isset( $blockattr['block_id'] ) ) {
 					$block_id = $blockattr['block_id'];
 				}
@@ -470,6 +476,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
 					$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
+					break;
+
+				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':
@@ -583,6 +593,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/taxonomy-list':
 					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
+					break;
+
+				case 'uagb/lottie':
+					$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 					break;
 
 				default:
@@ -940,6 +955,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 *  Check MIME Type
+		 *
+		 *  @since 1.20.0
+		 */
+		public static function get_mime_type() {
+
+			$allowed_types = get_allowed_mime_types();
+
+			return ( array_key_exists( 'json', $allowed_types ) ) ? true : false;
+
+		}
+
+		/**
 		 * Returns Query.
 		 *
 		 * @param array  $attributes The block attributes.
@@ -1116,16 +1144,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 						foreach ( $terms as $t_index => $t_obj ) {
 							$related_tax[] = array(
-								'id'   => $t_obj->term_id,
-								'name' => $t_obj->name,
+								'id'    => $t_obj->term_id,
+								'name'  => $t_obj->name,
+								'child' => get_term_children( $t_obj->term_id, $tax_slug ),
 							);
 						}
-
 						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
 					}
 				}
 
 				$return_array[ $post_type ]['taxonomy'] = $data;
+
 			}
 
 			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );

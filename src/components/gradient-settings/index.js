@@ -39,11 +39,11 @@ function GradientSettings({ attributes, setAttributes }) {
 
 	return (
 		<__experimentalPanelColorGradientSettings
-			title={__("Color Settings")}
+			title={__("Color Settings",'ultimate-addons-for-gutenberg')}
 			initialOpen={true}
 			settings={[
 				{
-					label: __("Overlay Color"),
+					label: __("Overlay Color",'ultimate-addons-for-gutenberg'),
 					gradientValue,
 					onGradientChange
 				}

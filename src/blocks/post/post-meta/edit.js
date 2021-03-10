@@ -1,23 +1,21 @@
 const { dateI18n, format, __experimentalGetSettings } = wp.date
 
-class Meta extends React.Component {
-
-	render() {
-
-		const { post, attributes, categoriesList } = this.props
+export const PostMeta = (props) =>  {
+		
+		const { post, attributes, categoriesList } = props
 
 		const dateFormat = __experimentalGetSettings().formats.date
 
 		let categoryObject = ''
 
-		this.props.categoriesList.map( ( item, thisIndex ) => {
+		categoriesList.map( ( item, thisIndex ) => {
 			if ( post.categories && item.id == post.categories[0] ) {
 				categoryObject = item
 			}
 		})
 
 		return (
-
+			<div className=' uagb-post__text '>
 			<div className='uagb-post-grid-byline'>
 				{ attributes.displayPostAuthor && undefined !== post.uagb_author_info &&
 					<span className='uagb-post__author'>
@@ -47,8 +45,7 @@ class Meta extends React.Component {
 					</span>
 				}
 			</div>
+			</div>
 		)
-	}
 }
 
-export default Meta

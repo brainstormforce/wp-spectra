@@ -212,6 +212,11 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					case 'post-grid':
 					case 'post-carousel':
 					case 'post-masonry':
+					case 'post-title':
+					case 'post-image':
+					case 'post-button':
+					case 'post-excerpt':
+					case 'post-meta':
 						if ( ! $is_already_post ) {
 							$combined[]      = 'post';
 							$is_already_post = true;

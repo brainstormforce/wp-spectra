@@ -71,12 +71,12 @@ function RestMenuStyle( props ) {
 	}
 
 	var selectors = {
-		" .uagb-rest_menu__wrap": {
+		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
 			"padding-left" : generateCSSUnit( columnGap/2, "px" ),
 			"padding-right" : generateCSSUnit( columnGap/2, "px" ),
 			"margin-bottom" : generateCSSUnit( rowGap, "px" ),
 		},
-		" .uagb-rest_menu__wrap .uagb-rm__image-content": {
+		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
 			"padding-left" : generateCSSUnit( imgHrPadding, "px" ),
 			"padding-right" : generateCSSUnit( imgHrPadding, "px" ),
 			"padding-top" : generateCSSUnit( imgVrPadding, "px" ),

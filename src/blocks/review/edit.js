@@ -43,9 +43,9 @@ const {
 } = wp.element
 
 let imageSizeOptions = [
-	{ value: "thumbnail", label: __( "Thumbnail" ) },
-	{ value: "medium", label: __( "Medium" ) },
-	{ value: "full", label: __( "Large" ) }
+	{ value: "thumbnail", label: __( "Thumbnail",'ultimate-addons-for-gutenberg' ) },
+	{ value: "medium", label: __( "Medium",'ultimate-addons-for-gutenberg' ) },
+	{ value: "full", label: __( "Large",'ultimate-addons-for-gutenberg' ) }
 ]
 
 export const removeFromArray = (arr, removedElems) =>
@@ -365,19 +365,19 @@ class UAGBRatingEdit extends Component {
 		let itemTypeExtras;
 
 		const subtypeCategories = {
-			Book: [{ value: "Audiobook", label: __( "Audio book" ) }],
+			Book: [{ value: "Audiobook", label: __( "Audio book",'ultimate-addons-for-gutenberg' ) }],
 			Product: [
-				{ value: "IndividualProduct", label: __( "Individual Product" ) },
-				{ value: "ProductCollection", label: __( "Product Collection" ) },
-				{ value: "ProductGroup", label: __( "Product Group" ) },
-				{ value: "ProductModel", label: __( "Product Model" ) },
-				{ value: "SomeProducts", label: __( "Some Products" ) },
-				{ value: "Vehicle", label: __( "Vehicle" ) },
+				{ value: "IndividualProduct", label: __( "Individual Product",'ultimate-addons-for-gutenberg' ) },
+				{ value: "ProductCollection", label: __( "Product Collection",'ultimate-addons-for-gutenberg' ) },
+				{ value: "ProductGroup", label: __( "Product Group",'ultimate-addons-for-gutenberg' ) },
+				{ value: "ProductModel", label: __( "Product Model",'ultimate-addons-for-gutenberg' ) },
+				{ value: "SomeProducts", label: __( "Some Products",'ultimate-addons-for-gutenberg' ) },
+				{ value: "Vehicle", label: __( "Vehicle",'ultimate-addons-for-gutenberg' ) },
 			],
 			SoftwareApplication: [
-				{ value: "MobileApplication", label: __( "Mobile Application" ) },
-				{ value: "VideoGame" , label: __( "Video Game" ) },
-				{ value: "WebApplication" , label: __( "Web Application" ) }
+				{ value: "MobileApplication", label: __( "Mobile Application",'ultimate-addons-for-gutenberg' ) },
+				{ value: "VideoGame" , label: __( "Video Game",'ultimate-addons-for-gutenberg' ) },
+				{ value: "WebApplication" , label: __( "Web Application",'ultimate-addons-for-gutenberg' ) }
 			],
 		};
 
@@ -403,16 +403,16 @@ class UAGBRatingEdit extends Component {
 				itemTypeExtras = (
 					<Fragment>
 						<TextControl
-							label={__("ISBN")}
+							label={__("ISBN",'ultimate-addons-for-gutenberg')}
 							value={isbn}
 							onChange={(value) => setAttributes({ isbn:value})}
-							help={ __( "Note: This is a mandatory field for the Review schema" ) }
+							help={ __( "Note: This is a mandatory field for the Review schema",'ultimate-addons-for-gutenberg' ) }
 						/>
 						<TextControl
-							label={__("Book author name")}
+							label={__("Book author name",'ultimate-addons-for-gutenberg')}
 							value={bookAuthorName}
 							onChange={(value) => setAttributes({ bookAuthorName:value })}
-							help={ __( "Note: This is a mandatory field for the Review schema" ) }
+							help={ __( "Note: This is a mandatory field for the Review schema",'ultimate-addons-for-gutenberg' ) }
 						/>
 					</Fragment>
 				);
@@ -426,7 +426,7 @@ class UAGBRatingEdit extends Component {
 				itemTypeExtras = (
 					<Fragment>
 						<TextControl
-							label={__("Provider")}
+							label={__("Provider",'ultimate-addons-for-gutenberg')}
 							value={provider}
 							onChange={(value) => setAttributes({ provider:value })}
 						/>
@@ -441,12 +441,12 @@ class UAGBRatingEdit extends Component {
 				itemTypeExtras = (
 					<Fragment>
 						<TextControl
-							label={__("Application Category")}
+							label={__("Application Category",'ultimate-addons-for-gutenberg')}
 							value={appCategory}
 							onChange={(value) => setAttributes({ appCategory:value })}
 						/>
 						<TextControl
-							label={__("Operating System")}
+							label={__("Operating System",'ultimate-addons-for-gutenberg')}
 							value={operatingSystem}
 							onChange={( value ) => setAttributes({ operatingSystem:value })}
 						/>
@@ -462,7 +462,7 @@ class UAGBRatingEdit extends Component {
 				itemTypeExtras = (
 					<Fragment>
 						<TextControl
-							label={__("Director Name")}
+							label={__("Director Name",'ultimate-addons-for-gutenberg')}
 							value={directorname}
 							onChange={(value) => setAttributes({ directorname:value })}
 						/>
@@ -483,9 +483,9 @@ class UAGBRatingEdit extends Component {
 
 		const ratingStyleSettings = () => {
 			return (
-				<PanelBody title={ __( "Style" ) } initialOpen={ false }>
+				<PanelBody title={ __( "Style",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<TypographyControl
-							label={ __( "Title Typography" ) }
+							label={ __( "Title Typography",'ultimate-addons-for-gutenberg' ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: headLoadGoogleFonts, label:'headLoadGoogleFonts'  } }
@@ -501,7 +501,7 @@ class UAGBRatingEdit extends Component {
 							lineHeightMobile = { { value: headLineHeightMobile, label:'headLineHeightMobile'  } }
 							lineHeightTablet= { { value: headLineHeightTablet, label:'headLineHeightTablet'  } }
 						/>
-					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Title Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
 						value={ titleColor }
 						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
@@ -511,7 +511,7 @@ class UAGBRatingEdit extends Component {
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
 						<TypographyControl
-						label={ __( "Description Typography" ) }
+						label={ __( "Description Typography",'ultimate-addons-for-gutenberg' ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
@@ -527,7 +527,7 @@ class UAGBRatingEdit extends Component {
 						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
 						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
 					/>
-					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Description Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 					<ColorPalette
 						value={ descColor }
 						onChange={ ( value ) => setAttributes( { descColor: value } ) }
@@ -538,7 +538,7 @@ class UAGBRatingEdit extends Component {
 					{ showAuthor === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Author Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
 					<ColorPalette
 						value={ authorColor }
 						onChange={ ( value ) => setAttributes( { authorColor: value } ) }
@@ -549,7 +549,7 @@ class UAGBRatingEdit extends Component {
 					{ showFeature === true &&
 					(<Fragment>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Content Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
 					<ColorPalette
 						value={ contentColor }
 						onChange={ ( value ) => setAttributes( { contentColor: value } ) }
@@ -559,7 +559,7 @@ class UAGBRatingEdit extends Component {
 					}
 					<hr className="uagb-editor__separator" />
 					<TypographyControl
-						label={ __( "Summary Typography" ) }
+						label={ __( "Summary Typography",'ultimate-addons-for-gutenberg' ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
@@ -575,34 +575,34 @@ class UAGBRatingEdit extends Component {
 						lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
 						lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
 					/>
-					<p className="uagb-setting-label">{ __( "Summary Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: summaryColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Summary Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: summaryColor }} ></span></span></p>
 					<ColorPalette
 						value={ summaryColor }
 						onChange={ ( value ) => setAttributes( { summaryColor: value } ) }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Active Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Active Star Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
 					<ColorPalette
 						value={ starColor }
 						onChange={ ( value ) => setAttributes( { starColor: value } ) }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Inactive Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starActiveColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Inactive Star Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starActiveColor }} ></span></span></p>
 					<ColorPalette
 						value={ starActiveColor }
 						onChange={ ( value ) => setAttributes( { starActiveColor: value } ) }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Star Outline Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starOutlineColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Star Outline Color",'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starOutlineColor }} ></span></span></p>
 					<ColorPalette
 						value={ starOutlineColor }
 						onChange={ ( value ) => setAttributes( { starOutlineColor: value } ) }
 						allowReset
 					/>
-					<h2>{ __( "Overall Padding (px)" ) }</h2>
+					<h2>{ __( "Overall Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 					<RangeControl
 						label={ UAGB_Block_Icons.vertical_spacing }
 						className={ "uagb-margin-control" }
@@ -629,9 +629,9 @@ class UAGBRatingEdit extends Component {
 			const ratingSchemaSettings = () => {
 				if ( true === enableSchema ) {
 				return (
-					<PanelBody title={ __( "Schema" ) } initialOpen={ false }>
+					<PanelBody title={ __( "Schema",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 						<SelectControl
-							label={__("Item type")}
+							label={__("Item type",'ultimate-addons-for-gutenberg')}
 							value={itemType}
 							onChange={(value) => {
 								setAttributes({ itemType:value });
@@ -649,17 +649,17 @@ class UAGBRatingEdit extends Component {
 								}
 							}}
 							options={[
-								{ value: 'Book', label: __( 'Book' ) },
-								{ value: 'Course', label: __( 'Course' ) },
-								{ value: 'Movie', label: __( 'Movie' ) },
-								{ value: 'Product', label: __( 'Product' ) },
-								{ value: 'SoftwareApplication', label: __( 'Software Application' ) },
+								{ value: 'Book', label: __( 'Book','ultimate-addons-for-gutenberg' ) },
+								{ value: 'Course', label: __( 'Course','ultimate-addons-for-gutenberg' ) },
+								{ value: 'Movie', label: __( 'Movie','ultimate-addons-for-gutenberg' ) },
+								{ value: 'Product', label: __( 'Product','ultimate-addons-for-gutenberg' ) },
+								{ value: 'SoftwareApplication', label: __( 'Software Application','ultimate-addons-for-gutenberg' ) },
 							]}
 						/>
 						{ subtypeCategories.hasOwnProperty(itemType) && (
 							<SelectControl
-								label={__("Item subtype")}
-								options={ [{ value: 'none', label: __( 'None' ) },...subtypeCategories[itemType]] }
+								label={__("Item subtype",'ultimate-addons-for-gutenberg')}
+								options={ [{ value: 'none', label: __( 'None','ultimate-addons-for-gutenberg' ) },...subtypeCategories[itemType]] }
 								value={ itemSubtype }
 								onChange={ ( value ) =>
 									setAttributes( {
@@ -671,12 +671,12 @@ class UAGBRatingEdit extends Component {
 						<hr className="uagb-editor__separator" />
 						{itemTypeExtras}
 						<TextControl
-							label={__("Review publisher")}
+							label={__("Review publisher",'ultimate-addons-for-gutenberg')}
 							value={reviewPublisher}
 							onChange={(value) => setAttributes({ reviewPublisher:value })}
-							help={ __( "Note: This is a mandatory field for the Review schema" ) }
+							help={ __( "Note: This is a mandatory field for the Review schema",'ultimate-addons-for-gutenberg' ) }
 						/>
-						<h2>{ __( "Date of publish" ) }</h2>
+						<h2>{ __( "Date of publish",'ultimate-addons-for-gutenberg' ) }</h2>
 								<DateTimePicker
 								currentDate={ datepublish }
 								onChange={ ( value ) => setAttributes( { datepublish: value } ) }
@@ -687,22 +687,22 @@ class UAGBRatingEdit extends Component {
 							{["Product"].includes( itemType ) && (
 								<Fragment>
 									<TextControl
-										label={__("Brand")}
+										label={__("Brand",'ultimate-addons-for-gutenberg')}
 										value={brand}
 										onChange={(value) => setAttributes({ brand:value })}
 									/>
 									<TextControl
-										label={__("SKU")}
+										label={__("SKU",'ultimate-addons-for-gutenberg')}
 										value={sku}
 										onChange={(value) => setAttributes({ sku:value })}
 									/>
 									<TextControl
-										label={__("Identifier")}
+										label={__("Identifier",'ultimate-addons-for-gutenberg')}
 										value={identifier}
 										onChange={(value) => setAttributes({ identifier:value })}
 									/>
 									<SelectControl
-										label={__("Identifier type")}
+										label={__("Identifier type",'ultimate-addons-for-gutenberg')}
 										value={identifierType}
 										options={[
 											"nsn",
@@ -722,7 +722,7 @@ class UAGBRatingEdit extends Component {
 						{["Product", "SoftwareApplication"].includes( itemType ) && (
 							<Fragment>
 							<TextControl
-								label={__("Offer Currency")}
+								label={__("Offer Currency",'ultimate-addons-for-gutenberg')}
 								value={offerCurrency}
 								onChange={(value) => setAttributes({ offerCurrency:value })}
 							/>
@@ -731,24 +731,24 @@ class UAGBRatingEdit extends Component {
 						{offerType == "Offer" && (
 							<Fragment>
 								<TextControl
-									label={__("Offer Price")}
+									label={__("Offer Price",'ultimate-addons-for-gutenberg')}
 									value={offerPrice}
 									onChange={(value) => setAttributes({ offerPrice:value })}
-									help={ __( "Note: This is a mandatory field for the Review schema" ) }
+									help={ __( "Note: This is a mandatory field for the Review schema",'ultimate-addons-for-gutenberg' ) }
 								/>
 								<SelectControl
 									label={__("Offer Status")}
 									value={offerStatus}
 									options={[
-										{ value: 'https://schema.org/Discontinued', label: __( 'Discontinued' ) },
-										{ value: 'https://schema.org/InStock', label: __( 'In Stock' ) },
-										{ value: 'https://schema.org/InStoreOnly', label: __( 'In Store Only' ) },
-										{ value: 'https://schema.org/LimitedAvailability', label: __( 'Limited Availability' ) },
-										{ value: 'https://schema.org/OnlineOnly', label: __( 'Online Only' ) },
-										{ value: 'https://schema.org/OutOfStock', label: __( 'Out Of Stock' ) },
-										{ value: 'https://schema.org/PreOrder', label: __( 'Pre Order' ) },
-										{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale' ) },
-										{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out' ) },
+										{ value: 'https://schema.org/Discontinued', label: __( 'Discontinued','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/InStock', label: __( 'In Stock','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/InStoreOnly', label: __( 'In Store Only','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/LimitedAvailability', label: __( 'Limited Availability','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/OnlineOnly', label: __( 'Online Only','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/OutOfStock', label: __( 'Out Of Stock','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/PreOrder', label: __( 'Pre Order','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/PreSale', label: __( 'Pre Sale','ultimate-addons-for-gutenberg' ) },
+										{ value: 'https://schema.org/SoldOut', label: __( 'Sold Out','ultimate-addons-for-gutenberg' ) },
 									]}
 									onChange={ ( value ) =>
 										this.props.setAttributes( {
@@ -756,7 +756,7 @@ class UAGBRatingEdit extends Component {
 										} )
 									}
 								/>
-								<h2>{ __( "Price Valid Until" ) }</h2>
+								<h2>{ __( "Price Valid Until",'ultimate-addons-for-gutenberg' ) }</h2>
 								<DateTimePicker
 								currentDate={ offerExpiry }
 								onChange={ ( value ) => setAttributes( { offerExpiry: value } ) }
@@ -772,10 +772,10 @@ class UAGBRatingEdit extends Component {
 	
 		const ratingGeneralSettings = () => {
 			return (
-				<PanelBody title={ __( "General" ) } initialOpen={ true }>
-				<h2>{ __( "Review Title" ) }</h2>
+				<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<h2>{ __( "Review Title",'ultimate-addons-for-gutenberg' ) }</h2>
 						<SelectControl
-							label={ __( "Tag" ) }
+							label={ __( "Tag",'ultimate-addons-for-gutenberg' ) }
 							value={ headingTag }
 							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 							options={ [
@@ -793,39 +793,39 @@ class UAGBRatingEdit extends Component {
 						onChange={ value => setAttributes( { ctaLink: value } ) }
 					/>
 					<ToggleControl
-						label={ __( "Open in new window" ) }
+						label={ __( "Open in new window",'ultimate-addons-for-gutenberg' ) }
 						checked={ ctaTarget }
 						onChange={ this.toggleTarget }
 					/>
 					<ToggleControl
-						label={ __( "Show review description" ) }
+						label={ __( "Show review description",'ultimate-addons-for-gutenberg' ) }
 						checked={ enableDescription }
 						onChange={ ( value ) => setAttributes( { enableDescription: ! enableDescription } ) }
-						help={ __( "Note: This is a mandatory field for the Review schema." ) }
+						help={ __( "Note: This is a mandatory field for the Review schema.",'ultimate-addons-for-gutenberg' ) }
 					/>
 					<ToggleControl
-						label={ __( "Show review author" ) }
+						label={ __( "Show review author",'ultimate-addons-for-gutenberg' ) }
 						checked={ showAuthor }
 						onChange={ ( value ) => setAttributes( { showAuthor: ! showAuthor } ) }
-						help={ __( "Note: This is a mandatory field for the Review schema." ) }
+						help={ __( "Note: This is a mandatory field for the Review schema.",'ultimate-addons-for-gutenberg' ) }
 					/>
 					<ToggleControl
-						label={ __( "Show review image" ) }
+						label={ __( "Show review image",'ultimate-addons-for-gutenberg' ) }
 						checked={ enableImage }
 						onChange={ ( value ) => setAttributes( { enableImage: ! enableImage } ) }
-						help={ __( "Note: This is a mandatory field for the Review schema." ) }
+						help={ __( "Note: This is a mandatory field for the Review schema.",'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ enableImage === true && 
 						<Fragment>
 							<h2>{ __( "Image" ) }</h2>
 							<MediaUpload
-								title={ __( "Select Image" ) }
+								title={ __( "Select Image",'ultimate-addons-for-gutenberg' ) }
 								onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
-										{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+										{ ! mainimage.url ? __( "Select Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								)}
 								/>
@@ -835,12 +835,12 @@ class UAGBRatingEdit extends Component {
 								className="uagb-rm-btn"
 								onClick={ () => setAttributes( { mainimage: '' } ) }
 								isLink isDestructive>
-								{ __( "Remove Image" ) }
+								{ __( "Remove Image",'ultimate-addons-for-gutenberg' ) }
 							</Button>
 						}
 						{ mainimage.url &&
 							<SelectControl
-								label={ __( "Size" ) }
+								label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
 								options={ imageSizeOptions }
 								value={ imgSize }
 								onChange={ ( value ) => setAttributes( { imgSize: value } ) }
@@ -849,13 +849,13 @@ class UAGBRatingEdit extends Component {
 						</Fragment>
 					} 
 					<ToggleControl
-						label={ __( "Show ratings" ) }
+						label={ __( "Show ratings",'ultimate-addons-for-gutenberg' ) }
 						checked={ showFeature }
 						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
-						help={ __( "Note: Add feature/section ratings separately." ) }
+						help={ __( "Note: Add feature/section ratings separately.",'ultimate-addons-for-gutenberg' ) }
 					/>
 					<ToggleControl
-						label={ __( "Enable schema support" ) }
+						label={ __( "Enable schema support",'ultimate-addons-for-gutenberg' ) }
 						checked={ enableSchema }
 						onChange={ ( value ) => setAttributes( { enableSchema: ! enableSchema } ) }
 					/>

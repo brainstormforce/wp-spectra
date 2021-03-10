@@ -20,9 +20,9 @@ registerBlockType( "uagb/wp-search", {
 	description: uagb_blocks_info.blocks["uagb/wp-search"]["description"],
 	icon: UAGB_Block_Icons.wp_search,
 	keywords: [
-		__( "search" ),
-		__( "wp" ),
-		__( "uag" ),
+		__( "search",'ultimate-addons-for-gutenberg' ),
+		__( "wp",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

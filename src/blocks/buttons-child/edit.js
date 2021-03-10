@@ -132,7 +132,7 @@ class UAGBButtonsChild extends Component {
 			onChange: (value) => ( setAttributes( { icon: value } ) ),
 			isMulti: false,
 			renderFunc: renderSVG,
-			noSelectedPlaceholder: __( "Select Icon" )
+			noSelectedPlaceholder: __( "Select Icon", 'ultimate-addons-for-gutenberg' )
 		}
 
 		const linkControl = this.state.isURLPickerOpen && (
@@ -160,30 +160,30 @@ class UAGBButtonsChild extends Component {
 		const buttonControls = () => {
 			return (
 				<PanelBody
-					title={ __( "Button Settings" ) }
+					title={ __( "Button Settings", 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<ToggleControl
-						label={ __( "Inherit from Theme" ) }
+						label={ __( "Inherit from Theme", 'ultimate-addons-for-gutenberg' ) }
 						checked={ inheritFromTheme }
 						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 					/>
-					<h2>{ __( "Button Icon" ) }</h2>
+					<h2>{ __( "Button Icon", 'ultimate-addons-for-gutenberg' ) }</h2>
 					<FontIconPicker {...icon_props} />
 					{ "" !== icon &&
 						<Fragment>
 							<SelectControl
-								label={ __( "Icon Position" ) }
+								label={ __( "Icon Position", 'ultimate-addons-for-gutenberg' ) }
 								value={ iconPosition }
 								onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
 								options={ [
-									{ value: "before", label: __( "Before Text" ) },
-									{ value: "after", label: __( "After Text" ) },
+									{ value: "before", label: __( "Before Text", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "after", label: __( "After Text", 'ultimate-addons-for-gutenberg' ) },
 								] }
 							/>
 							<RangeControl
-								label={ __( "Icon Spacing" ) }
+								label={ __( "Icon Spacing", 'ultimate-addons-for-gutenberg' ) }
 								value={ iconSpace }
 								onChange={ ( value ) => setAttributes( { iconSpace: value } ) }
 								min={ 0 }
@@ -195,18 +195,18 @@ class UAGBButtonsChild extends Component {
 					}
 					{ ! inheritFromTheme &&
 						<Fragment>
-							<h2>{  __( " Color Settings" ) }</h2>
+							<h2>{  __( " Color Settings", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 								activeClass="active-tab"
 								tabs={ [
 									{
 										name: "normal",
-										title: __( "Normal" ),
+										title: __( "Normal", 'ultimate-addons-for-gutenberg' ),
 										className: "uagb-normal-tab",
 									},
 									{
 										name: "hover",
-										title: __( "Hover" ),
+										title: __( "Hover", 'ultimate-addons-for-gutenberg' ),
 										className: "uagb-hover-tab",
 									},
 								] }>
@@ -215,19 +215,19 @@ class UAGBButtonsChild extends Component {
 										let btn_color_tab
 										if( "normal" === tabName.name ) {
 											btn_color_tab = <Fragment>
-												<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: color }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Text Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: color }} ></span></span></p>
 												<ColorPalette
 													value={ color }
 													onChange={ ( value ) => setAttributes( { color: value } ) }
 													allowReset
 												/>
-												<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: background }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Background Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: background }} ></span></span></p>
 												<ColorPalette
 													value={ background }
 													onChange={ ( value ) => setAttributes( { background: value } ) }
 													allowReset
 												/>
-												<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Border Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 												<ColorPalette
 													value={ borderColor }
 													onChange={ ( value ) => setAttributes( { borderColor: value } ) }
@@ -236,19 +236,19 @@ class UAGBButtonsChild extends Component {
 											</Fragment>
 										}else {
 											btn_color_tab = <Fragment>
-												<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hColor }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Text Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hColor }} ></span></span></p>
 												<ColorPalette
 													value={ hColor }
 													onChange={ ( value ) => setAttributes( { hColor: value } ) }
 													allowReset
 												/>
-												<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hBackground }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Background Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hBackground }} ></span></span></p>
 												<ColorPalette
 													value={ hBackground }
 													onChange={ ( value ) => setAttributes( { hBackground: value } ) }
 													allowReset
 												/>
-												<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+												<p className="uagb-setting-label">{ __( "Border Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
 												<ColorPalette
 													value={ borderHColor }
 													onChange={ ( value ) => setAttributes( { borderHColor: value } ) }
@@ -261,7 +261,7 @@ class UAGBButtonsChild extends Component {
 								}
 							</TabPanel>
 							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Padding (px)" ) }</h2>
+							<h2>{ __( "Padding (px)", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<RangeControl
 								label={ UAGB_Block_Icons.vertical_spacing }
 								className={ "uagb-margin-control" }
@@ -282,16 +282,16 @@ class UAGBButtonsChild extends Component {
 								min={ 0 }
 								max={ 100 }
 							/>
-							<h2>{ __( "Border" ) }</h2>
+							<h2>{ __( "Border", 'ultimate-addons-for-gutenberg' ) }</h2>
 							<SelectControl
-								label={ __( "Style" ) }
+								label={ __( "Style", 'ultimate-addons-for-gutenberg' ) }
 								value={ borderStyle }
 								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "solid", label: __( "Solid" ) },
-									{ value: "dotted", label: __( "Dotted" ) },
-									{ value: "dashed", label: __( "Dashed" ) },
-									{ value: "double", label: __( "Double" ) },
+									{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
 								] }
 								onChange={ value => {
 									setAttributes( { borderStyle: value } )
@@ -299,7 +299,7 @@ class UAGBButtonsChild extends Component {
 							/>
 							{ borderStyle != "none" &&
 								<RangeControl
-									label={ __( "Thickness" ) }
+									label={ __( "Thickness", 'ultimate-addons-for-gutenberg' ) }
 									value={ borderWidth }
 									onChange={ value => {
 										setAttributes( { borderWidth: value } )
@@ -309,7 +309,7 @@ class UAGBButtonsChild extends Component {
 								/>
 							}
 							<RangeControl
-								label={ __( "Rounded Corners" ) }
+								label={ __( "Rounded Corners", 'ultimate-addons-for-gutenberg' ) }
 								value={ borderRadius }
 								onChange={ value => {
 									setAttributes( { borderRadius: value } )
@@ -343,7 +343,7 @@ class UAGBButtonsChild extends Component {
 										if ( "mobile" === tab.name ) {
 											tabout = (
 												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 														<Button
 															key={ "px" }
 															className="uagb-size-btn"
@@ -488,7 +488,7 @@ class UAGBButtonsChild extends Component {
 										if ( "mobile" === tab.name ) {
 											tabout = (
 												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 														<Button
 															key={ "px" }
 															className="uagb-size-btn"
@@ -511,7 +511,7 @@ class UAGBButtonsChild extends Component {
 														</Button>
 													</ButtonGroup>
 													<RangeControl
-														label={ __( "Line Height" ) }
+														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
 														value={ lineHeightMobile }
 														onChange={ value => {
 															setAttributes( { lineHeightMobile: value } )
@@ -527,7 +527,7 @@ class UAGBButtonsChild extends Component {
 										} else if ( "tablet" === tab.name ) {
 											tabout = (
 												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 														<Button
 															key={ "px" }
 															className="uagb-size-btn"
@@ -550,7 +550,7 @@ class UAGBButtonsChild extends Component {
 														</Button>
 													</ButtonGroup>
 													<RangeControl
-														label={ __( "Line Height" ) }
+														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
 														value={ lineHeightTablet }
 														onChange={ value => {
 															setAttributes( { lineHeightTablet: value } )
@@ -567,7 +567,7 @@ class UAGBButtonsChild extends Component {
 										} else {
 											tabout = (
 												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 														<Button
 															key={ "px" }
 															className="uagb-size-btn"
@@ -590,7 +590,7 @@ class UAGBButtonsChild extends Component {
 														</Button>
 													</ButtonGroup>
 													<RangeControl
-														label={ __( "Line Height" ) }
+														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
 														value={ lineHeight }
 														onChange={ value => {
 															setAttributes( { lineHeight: value } )

@@ -23,9 +23,9 @@ registerBlockType( "uagb/table-of-contents", {
 	icon: UAGB_Block_Icons.table_of_contents,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "table of contents" ),
-		__( "table" ),
-		__( "uag" ),
+		__( "table of contents",'ultimate-addons-for-gutenberg' ),
+		__( "table",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

@@ -25,9 +25,9 @@ registerBlockType( "uagb/section", {
 	icon: UAGB_Block_Icons.section,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "section" ),
-		__( "wrapper" ),
-		__( "uag" ),
+		__( "section",'ultimate-addons-for-gutenberg' ),
+		__( "wrapper",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

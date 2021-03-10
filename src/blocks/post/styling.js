@@ -64,6 +64,8 @@ function styling( props ) {
 		ctaHColor,
 		ctaBgHColor,
 		titleBottomSpace,
+		ctaBottomSpace,
+		imageBottomSpace,
 		metaBottomSpace,
 		excerptBottomSpace,
 		overlayOpacity,
@@ -113,6 +115,7 @@ function styling( props ) {
 		hpaginationButtonPaddingMobile,
 		hpaginationButtonPaddingTablet,
 		hpaginationButtonPaddingDesktop,
+		imgPosition
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -130,18 +133,22 @@ function styling( props ) {
 		},
 		" .uagb-post__inner-wrap": {
 			"background" : bgColor,
-		},
-		" .uagb-post__text": {
 			"padding" : generateCSSUnit( ( contentPadding ), "px" ),
 			"text-align" : align
 		},
-		" .uagb-post__text .uagb-post__title": {
+		" .uagb-post__inner-wrap .uagb-post__cta": {
+			"margin-bottom": generateCSSUnit( ctaBottomSpace, "px" )
+		},
+		" .uagb-post__inner-wrap .uagb-post__image": {
+			"margin-bottom": generateCSSUnit( imageBottomSpace, "px" )
+		},
+		" .uagb-post__inner-wrap .uagb-post__title": {
 			"margin-bottom": generateCSSUnit( titleBottomSpace, "px" )
 		},
-		" .uagb-post__text .uagb-post-grid-byline": {
+		" .uagb-post__inner-wrap .uagb-post-grid-byline": {
 			"margin-bottom": generateCSSUnit( metaBottomSpace, "px" )
 		},
-		" .uagb-post__text .uagb-post__excerpt": {
+		" .uagb-post__inner-wrap .uagb-post__excerpt": {
 			"margin-bottom": generateCSSUnit( excerptBottomSpace, "px" )
 		},
 		" .uagb-post__image:before" : {
@@ -153,51 +160,57 @@ function styling( props ) {
 			"text-align": paginationAlignment
 		},
 	}
-
+	if( imgPosition !== 'background' ){
+		selectors[" .uagb-post__inner-wrap  > .uagb-post__image:first-child"] = {
+			"margin-top" : generateCSSUnit( ( -contentPadding ), "px" ),
+			"margin-left" : generateCSSUnit( ( -contentPadding ), "px" ),
+			"margin-right" : generateCSSUnit( ( -contentPadding ), "px" ),
+		}
+	}
 	if ( ! inheritFromTheme ) {
-		selectors[" .uagb-post__text .uagb-post__title"] = {
+		selectors[" .uagb-post__title"] = {
 			"color": titleColor,
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post__title a"] = {
+		selectors[" .uagb-post__title a"] = {
 			"color": titleColor,
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post-grid-byline"] = {
+		selectors[" .uagb-post-grid-byline"] = {
 			"color": metaColor,
 			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
 			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post-grid-byline .uagb-post__author"] = {
+		selectors[" .uagb-post-grid-byline .uagb-post__author"] = {
 			"color": metaColor,
 			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
 			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a"] = {
+		selectors[" .uagb-post-grid-byline .uagb-post__author a"] = {
 			"color": metaColor,
 			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
 			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post__excerpt"] = {
+		selectors[" .uagb-post__excerpt"] = {
 			"color": excerptColor,
 			"font-size": generateCSSUnit( excerptFontSize, excerptFontSizeType ),
 			"font-family": excerptFontFamily,
 			"font-weight": excerptFontWeight,
 			"line-height": generateCSSUnit( excerptLineHeight, excerptLineHeightType ),
 		}
-		selectors[" .uagb-post__text .uagb-post__cta"] = {
+		selectors[" .uagb-post__cta"] = {
 			"color": ctaColor,
 			"font-size": generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"font-family": ctaFontFamily,
@@ -209,17 +222,17 @@ function styling( props ) {
 			"border-color": borderColor,
 			"border-style": borderStyle,
 		};
-		selectors[" .uagb-post__text .uagb-post__cta a"] = {
+		selectors[" .uagb-post__cta a"] = {
 			"color": ctaColor,
 			"font-size": generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"padding": btnVPadding + "px " + btnHPadding + "px"
 		};
-		selectors[" .uagb-post__text .uagb-post__cta:hover"] = {
+		selectors[" .uagb-post__cta:hover"] = {
 			"color": ctaHColor,
 			"background": ctaBgHColor,
 			"border-color": borderHColor,
 		}
-		selectors[" .uagb-post__text .uagb-post__cta:hover a"] = {
+		selectors[" .uagb-post__cta:hover a"] = {
 			"color": ctaHColor
 		}
 	}
@@ -331,70 +344,70 @@ function styling( props ) {
 	if ( ! inheritFromTheme ) {
 
 		mobile_selectors = {
-			" .uagb-post__text .uagb-post__title": {
+			" .uagb-post__title": {
 				"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 				"line-height": titleLineHeightMobile + titleLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__title a": {
+			" .uagb-post__title a": {
 				"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 				"line-height": titleLineHeightMobile + titleLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline": {
+			" .uagb-post-grid-byline": {
 				"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 				"line-height": metaLineHeightMobile + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
+			" .uagb-post-grid-byline .uagb-post__author": {
 				"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 				"line-height": metaLineHeightMobile + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
+			" .uagb-post-grid-byline .uagb-post__author a": {
 				"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 				"line-height": metaLineHeightMobile + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__excerpt": {
+			" .uagb-post__excerpt": {
 				"font-size": generateCSSUnit( excerptFontSizeMobile, excerptFontSizeType ),
 				"line-height": excerptLineHeightMobile + excerptLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__cta": {
+			" .uagb-post__cta": {
 				"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 				"line-height": ctaLineHeightMobile + ctaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__cta a": {
+			" .uagb-post__cta a": {
 				"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 				"line-height": ctaLineHeightMobile + ctaLineHeightType,
 			},
 		}
 
 		tablet_selectors = {
-			" .uagb-post__text .uagb-post__title": {
+			" .uagb-post__title": {
 				"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 				"line-height": titleLineHeightTablet + titleLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__title a": {
+			" .uagb-post__title a": {
 				"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 				"line-height": titleLineHeightTablet + titleLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline": {
+			" .uagb-post-grid-byline": {
 				"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 				"line-height": metaLineHeightTablet + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
+			" .uagb-post-grid-byline .uagb-post__author": {
 				"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 				"line-height": metaLineHeightTablet + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
+			" .uagb-post-grid-byline .uagb-post__author a": {
 				"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 				"line-height": metaLineHeightTablet + metaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__excerpt": {
+			" .uagb-post__excerpt": {
 				"font-size": generateCSSUnit( excerptFontSizeTablet, excerptFontSizeType ),
 				"line-height": excerptLineHeightTablet + excerptLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__cta": {
+			" .uagb-post__cta": {
 				"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 				"line-height": ctaLineHeightTablet + ctaLineHeightType,
 			},
-			" .uagb-post__text .uagb-post__cta a": {
+			" .uagb-post__cta a": {
 				"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 				"line-height": ctaLineHeightTablet + ctaLineHeightType,
 			},
@@ -448,10 +461,14 @@ function styling( props ) {
 		}
 	}
 
-	mobile_selectors[" .uagb-post__text"] = {
+	mobile_selectors[" .uagb-post__inner-wrap"] = {
 		"padding" : ( contentPaddingMobile ) + "px",
 	}
-
+	mobile_selectors[".uagb-post__inner-wrap  > .uagb-post__image:first-child"] = {
+		"margin-top" : ( -contentPadding )+ "px",
+		"margin-left" : ( -contentPadding )+ "px",
+		"margin-right" : ( -contentPadding )+ "px",
+	}
 	var styling_css = ""
 
 	styling_css = generateCSS( selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }` )

@@ -28,9 +28,9 @@ registerBlockType( "uagb/buttons", {
 	icon: UAGB_Block_Icons.buttons,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "buttons" ),
-		__( "multi buttons" ),
-		__( "uag" ),
+		__( "buttons", 'ultimate-addons-for-gutenberg' ),
+		__( "multi buttons", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

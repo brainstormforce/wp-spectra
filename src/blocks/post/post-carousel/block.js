@@ -23,9 +23,9 @@ registerBlockType( "uagb/post-carousel", {
 	icon: UAGB_Block_Icons.post_carousel,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "carousel" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "carousel",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
 	example: {},

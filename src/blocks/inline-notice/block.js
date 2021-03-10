@@ -21,9 +21,9 @@ registerBlockType( "uagb/inline-notice", {
 	icon: UAGB_Block_Icons.inline_notice,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "inline notice" ),
-		__( "notice" ),
-		__( "uag" ),
+		__( "inline notice", 'ultimate-addons-for-gutenberg' ),
+		__( "notice", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

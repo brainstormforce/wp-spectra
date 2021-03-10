@@ -298,37 +298,37 @@ class UAGBCF7 extends Component {
 		}
 		
 		const field_border_setting = (
-			<PanelBody title={ __( "Field Style & Border" ) } initialOpen = { false } > 	
+			<PanelBody title={ __( "Field Style & Border",'ultimate-addons-for-gutenberg' ) } initialOpen = { false } > 	
 				<SelectControl
-					label={ __( "Field Style" ) }
+					label={ __( "Field Style",'ultimate-addons-for-gutenberg' ) }
 					value={ fieldStyle }
 					onChange={ ( value ) => setAttributes( { fieldStyle: value } ) }
 					options={ [
-						{ value: "box", label: __( "Box" ) },
-						{ value: "underline", label: __( "Underline" ) },							
+						{ value: "box", label: __( "Box",'ultimate-addons-for-gutenberg' ) },
+						{ value: "underline", label: __( "Underline",'ultimate-addons-for-gutenberg' ) },							
 					] }
 				/>						
 				{ fieldStyle == "box" && 
 						<SelectControl
-							label={ __( "Border Style" ) }
+							label={ __( "Border Style",'ultimate-addons-for-gutenberg' ) }
 							value={ fieldBorderStyle }
 							onChange={ ( value ) => setAttributes( { fieldBorderStyle: value } ) }
 							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
+								{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+								{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+								{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+								{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+								{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
+								{ value: "groove", label: __( "Groove",'ultimate-addons-for-gutenberg' ) },
+								{ value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+								{ value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+								{ value: "ridge", label: __( "Ridge",'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 				} 
 				{ ( "none" != fieldBorderStyle || fieldStyle == "underline" )&& (
 					<RangeControl
-						label={ __( "Border Width (px)" ) }
+						label={ __( "Border Width (px)",'ultimate-addons-for-gutenberg' ) }
 						value={ fieldBorderWidth }
 						onChange={ ( value ) => setAttributes( { fieldBorderWidth: value } ) }
 						min={ 0 }
@@ -336,12 +336,12 @@ class UAGBCF7 extends Component {
 						allowReset
 					/>
 				) }
-				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "px" } aria-pressed={ fieldBorderRadiusType === "px" } onClick={ () => setAttributes( { fieldBorderRadiusType: "px" } ) }>{ "px" }</Button>
 					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "%" } aria-pressed={ fieldBorderRadiusType === "%" } onClick={ () => setAttributes( { fieldBorderRadiusType: "%" } ) }>{ "%" }</Button>
 				</ButtonGroup>
 				<RangeControl
-					label={ __( "Border Radius" ) }
+					label={ __( "Border Radius",'ultimate-addons-for-gutenberg' ) }
 					value={ fieldBorderRadius }
 					onChange={ ( value ) => setAttributes( { fieldBorderRadius: value } ) }
 					min={ 0 }
@@ -350,7 +350,7 @@ class UAGBCF7 extends Component {
 				/>
 				{ ( "none" != fieldBorderStyle || fieldStyle == "underline" ) && (
 					<Fragment>
-						<p className="uagb-setting-label">{ __( "Border Color" ) }
+						<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
 								<span className="component-color-indicator" style={{ backgroundColor: fieldBorderColor }} ></span></span></p>
 						<ColorPalette
@@ -361,7 +361,7 @@ class UAGBCF7 extends Component {
 							
 					</Fragment>
 				) }
-				<p className="uagb-setting-label">{ __( "Active Border Color" ) }
+				<p className="uagb-setting-label">{ __( "Active Border Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: fieldBorderFocusColor }} ></span></span></p>
 				<ColorPalette
@@ -373,10 +373,10 @@ class UAGBCF7 extends Component {
 		)
 
 		const typography_settings = (			
-			<PanelBody title={ __( "Content" ) } initialOpen = { false } > 
-				<h2>{ __( "Label" ) }</h2>			
+			<PanelBody title={ __( "Content",'ultimate-addons-for-gutenberg' ) } initialOpen = { false } > 
+				<h2>{ __( "Label",'ultimate-addons-for-gutenberg' ) }</h2>			
 				<TypographyControl
-					label={ __( "Typography" ) }
+					label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: labelLoadGoogleFonts, label: 'labelLoadGoogleFonts' } }
@@ -392,7 +392,7 @@ class UAGBCF7 extends Component {
 					lineHeightMobile = { { value: labelLineHeightMobile, label: 'labelLineHeightMobile' } }
 					lineHeightTablet= { { value: labelLineHeightTablet, label: 'labelLineHeightTablet' } }
 				/>
-				<p className="uagb-setting-label">{ __( "Color" ) }
+				<p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
 				<ColorPalette
@@ -401,9 +401,9 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Input" ) }</h2>
+				<h2>{ __( "Input",'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( "Typography" ) }
+					label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: inputLoadGoogleFonts, label: 'inputLoadGoogleFonts' } }
@@ -419,7 +419,7 @@ class UAGBCF7 extends Component {
 					lineHeightMobile = { { value: inputLineHeightMobile, label: 'inputLineHeightMobile' } }
 					lineHeightTablet= { { value: inputLineHeightTablet, label: 'inputLineHeightTablet' } }
 				/>	
-				<p className="uagb-setting-label">{ __( "Color" ) }
+				<p className="uagb-setting-label">{ __( "Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: fieldInputColor }} ></span></span></p>
 				<ColorPalette
@@ -428,7 +428,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<p className="uagb-setting-label">{ __( "Field Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Field Background Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: fieldBgColor }} ></span></span></p>
 				<ColorPalette
@@ -440,9 +440,9 @@ class UAGBCF7 extends Component {
 		)	
 
 		const field_settings = (			
-			<PanelBody title={ __( "General" ) } >
+			<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } >
 				<SelectControl
-					label={ __( "Select Form" ) }
+					label={ __( "Select Form",'ultimate-addons-for-gutenberg' ) }
 					value={ formId }
 					onChange={ this.onSelectForm }
 					options={ uagb_blocks_info.cf7_forms }
@@ -456,7 +456,7 @@ class UAGBCF7 extends Component {
 					
 					<Placeholder
 						icon="admin-post"
-						label={ __( "Select a Contact Form 7" ) }
+						label={ __( "Select a Contact Form 7",'ultimate-addons-for-gutenberg' ) }
 					>
 						<SelectControl				
 							value={ formId }
@@ -472,24 +472,24 @@ class UAGBCF7 extends Component {
 		const btn_border_setting = (
 			<Fragment>				
 				<SelectControl
-					label={ __( "Border Style" ) }
+					label={ __( "Border Style",'ultimate-addons-for-gutenberg' ) }
 					value={ buttonBorderStyle }
 					onChange={ ( value ) => setAttributes( { buttonBorderStyle: value } ) }
 					options={ [
-						{ value: "none", label: __( "None" ) },
-						{ value: "solid", label: __( "Solid" ) },
-						{ value: "dotted", label: __( "Dotted" ) },
-						{ value: "dashed", label: __( "Dashed" ) },
-						{ value: "double", label: __( "Double" ) },
-						{ value: "groove", label: __( "Groove" ) },
-						{ value: "inset", label: __( "Inset" ) },
-						{ value: "outset", label: __( "Outset" ) },
-						{ value: "ridge", label: __( "Ridge" ) },
+						{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+						{ value: "solid", label: __( "Solid",'ultimate-addons-for-gutenberg' ) },
+						{ value: "dotted", label: __( "Dotted",'ultimate-addons-for-gutenberg' ) },
+						{ value: "dashed", label: __( "Dashed",'ultimate-addons-for-gutenberg' ) },
+						{ value: "double", label: __( "Double",'ultimate-addons-for-gutenberg' ) },
+						{ value: "groove", label: __( "Groove",'ultimate-addons-for-gutenberg' ) },
+						{ value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+						{ value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+						{ value: "ridge", label: __( "Ridge",'ultimate-addons-for-gutenberg' ) },
 					] }
 				/>
 				{ "none" != buttonBorderStyle && (
 					<RangeControl
-						label={ __( "Border Width (px)" ) }
+						label={ __( "Border Width (px)",'ultimate-addons-for-gutenberg' ) }
 						value={ buttonBorderWidth }
 						onChange={ ( value ) => setAttributes( { buttonBorderWidth: value } ) }
 						min={ 0 }
@@ -497,12 +497,12 @@ class UAGBCF7 extends Component {
 						allowReset
 					/>
 				) }
-				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "px" } aria-pressed={ buttonBorderRadiusType === "px" } onClick={ () => setAttributes( { buttonBorderRadiusType: "px" } ) }>{ "px" }</Button>
 					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "%" } aria-pressed={ buttonBorderRadiusType === "%" } onClick={ () => setAttributes( { buttonBorderRadiusType: "%" } ) }>{ "%" }</Button>
 				</ButtonGroup>
 				<RangeControl
-					label={ __( "Border Radius" ) }
+					label={ __( "Border Radius",'ultimate-addons-for-gutenberg' ) }
 					value={ buttonBorderRadius }
 					onChange={ ( value ) => setAttributes( { buttonBorderRadius: value } ) }
 					min={ 0 }
@@ -514,7 +514,7 @@ class UAGBCF7 extends Component {
 
 		const buttonNormalSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Text Color" ) }
+				<p className="uagb-setting-label">{ __( "Text Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
 				<ColorPalette
@@ -522,7 +522,7 @@ class UAGBCF7 extends Component {
 					onChange={ ( colorValue ) => setAttributes( { buttonTextColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
 				<ColorPalette
@@ -532,7 +532,7 @@ class UAGBCF7 extends Component {
 				/>
 				{ "none" != buttonBorderStyle && (
 					<Fragment>
-						<p className="uagb-setting-label">{ __( "Border Color" ) }
+						<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
 								<span className="component-color-indicator" style={{ backgroundColor: buttonBorderColor }} ></span></span></p>
 						<ColorPalette
@@ -547,7 +547,7 @@ class UAGBCF7 extends Component {
 
 		const buttonHoverSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Text Hover Color" ) }
+				<p className="uagb-setting-label">{ __( "Text Hover Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
 				<ColorPalette
@@ -555,7 +555,7 @@ class UAGBCF7 extends Component {
 					onChange={ ( colorValue ) => setAttributes( { buttonTextHoverColor: colorValue } ) }
 					allowReset
 				/>
-				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }
+				<p className="uagb-setting-label">{ __( "Background Hover Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
 				<ColorPalette
@@ -565,7 +565,7 @@ class UAGBCF7 extends Component {
 				/>
 				{ "none" != buttonBorderStyle && (
 					<Fragment>
-						<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
+						<p className="uagb-setting-label">{ __( "Border Hover Color",'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
 								<span className="component-color-indicator" style={{ backgroundColor: buttonBorderHoverColor }} ></span></span></p>
 						<ColorPalette
@@ -579,21 +579,21 @@ class UAGBCF7 extends Component {
 		)
 
 		const btn_setting = (
-			<PanelBody title={ __( "Submit Button" ) } initialOpen={ false }>
+			<PanelBody title={ __( "Submit Button",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<SelectControl
-					label={ __( "Button Alignment" ) }
+					label={ __( "Button Alignment",'ultimate-addons-for-gutenberg' ) }
 					value={ buttonAlignment }
 					onChange={ ( value ) => setAttributes( { buttonAlignment: value } ) }
 					options={ [
-						{ value: "center", label: __( "Center" ) },
-						{ value: "left", label: __( "Left" ) },
-						{ value: "right", label: __( "Right" ) },
-						{ value: "justify", label: __( "Justified" ) },
+						{ value: "center", label: __( "Center",'ultimate-addons-for-gutenberg' ) },
+						{ value: "left", label: __( "Left",'ultimate-addons-for-gutenberg' ) },
+						{ value: "right", label: __( "Right",'ultimate-addons-for-gutenberg' ) },
+						{ value: "justify", label: __( "Justified",'ultimate-addons-for-gutenberg' ) },
 					] }
 				/>
-				<h2>{ __( "Button Font" ) }</h2>
+				<h2>{ __( "Button Font",'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( "Typography" ) }
+					label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: buttonLoadGoogleFonts, label: 'buttonLoadGoogleFonts' } }
@@ -617,12 +617,12 @@ class UAGBCF7 extends Component {
 					tabs={ [
 						{
 							name: "normal",
-							title: __( "Normal" ),
+							title: __( "Normal",'ultimate-addons-for-gutenberg' ),
 							className: "uagb-normal-tab",
 						},
 						{
 							name: "hover",
-							title: __( "Hover" ),
+							title: __( "Hover",'ultimate-addons-for-gutenberg' ),
 							className: "uagb-focus-tab",
 						},
 					] }>
@@ -639,7 +639,7 @@ class UAGBCF7 extends Component {
 					}
 				</TabPanel>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Button Padding (px)" ) }</h2>
+				<h2>{ __( "Button Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 				<RangeControl
 					label={ UAGB_Block_Icons.vertical_spacing }
 					className={ "uagb-margin-control" }
@@ -662,9 +662,9 @@ class UAGBCF7 extends Component {
 		)
 
 		const spacing = (
-			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+			<PanelBody title={ __( "Spacing",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<RangeControl
-					label={ __( "Label & Input Space" ) }
+					label={ __( "Label & Input Space",'ultimate-addons-for-gutenberg' ) }
 					value={ fieldLabelSpacing }
 					onChange={ ( value ) => setAttributes( { fieldLabelSpacing: value } ) }
 					min={ 0 }
@@ -673,7 +673,7 @@ class UAGBCF7 extends Component {
 				/>
 
 				<RangeControl
-					label={ __( "Fields Space" ) }
+					label={ __( "Fields Space",'ultimate-addons-for-gutenberg' ) }
 					value={ fieldSpacing }
 					onChange={ ( value ) => setAttributes( { fieldSpacing: value } ) }
 					min={ 0 }
@@ -682,7 +682,7 @@ class UAGBCF7 extends Component {
 				/>
 
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Field Padding (px)" ) }</h2>
+				<h2>{ __( "Field Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 				<RangeControl
 					label={ UAGB_Block_Icons.vertical_spacing }
 					className={ "uagb-margin-control" }
@@ -705,15 +705,15 @@ class UAGBCF7 extends Component {
 		)
 
 		const radio_check_setting = (
-			<PanelBody title={ __( "Radio & Checkbox" ) } initialOpen={ false }>
+			<PanelBody title={ __( "Radio & Checkbox",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __( "Override Current Style" ) }
+					label={ __( "Override Current Style",'ultimate-addons-for-gutenberg' ) }
 					checked={ enableOveride }
 					onChange={ ( value ) => setAttributes( { enableOveride: ! enableOveride } ) }
 				/>
 				{ enableOveride && <Fragment>
 					<RangeControl
-						label={ __( "Size" ) }
+						label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
 						value={ radioCheckSize }
 						onChange={ ( value ) => setAttributes( { radioCheckSize: value } ) }
 						min={ 0 }
@@ -721,9 +721,9 @@ class UAGBCF7 extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Radio & Checkbox Label" ) }</h2>
+					<h2>{ __( "Radio & Checkbox Label",'ultimate-addons-for-gutenberg' ) }</h2>
 					<TypographyControl
-						label={ __( "Typography" ) }
+						label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: radioCheckLoadGoogleFonts, label: 'radioCheckLoadGoogleFonts' } }
@@ -740,7 +740,7 @@ class UAGBCF7 extends Component {
 						lineHeightTablet= { { value: radioCheckLineHeightTablet, label: 'radioCheckLineHeightTablet' } }
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Label Color" ) }
+					<p className="uagb-setting-label">{ __( "Label Color",'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: radioCheckLableColor }} ></span></span></p>
 					<ColorPalette
@@ -748,7 +748,7 @@ class UAGBCF7 extends Component {
 						onChange={ ( colorValue ) => setAttributes( { radioCheckLableColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Background Color" ) }
+					<p className="uagb-setting-label">{ __( "Background Color",'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: radioCheckBgColor }} ></span></span></p>
 					<ColorPalette
@@ -756,7 +756,7 @@ class UAGBCF7 extends Component {
 						onChange={ ( colorValue ) => setAttributes( { radioCheckBgColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Selected Color" ) }
+					<p className="uagb-setting-label">{ __( "Selected Color",'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: radioCheckSelectColor }} ></span></span></p>
 					<ColorPalette
@@ -769,26 +769,26 @@ class UAGBCF7 extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Radio & Checkbox Border" ) }</h2>
 						<RangeControl
-							label={ __( "Border Width (px)" ) }
+							label={ __( "Border Width (px)",'ultimate-addons-for-gutenberg' ) }
 							value={ radioCheckBorderWidth }
 							onChange={ ( value ) => setAttributes( { radioCheckBorderWidth: value } ) }
 							min={ 0 }
 							max={ 50 }
 							allowReset
 						/>
-						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 							<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ radioCheckBorderRadiusType === "px" } aria-pressed={ radioCheckBorderRadiusType === "px" } onClick={ () => setAttributes( { radioCheckBorderRadiusType: "px" } ) }>{ "px" }</Button>
 							<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ radioCheckBorderRadiusType === "%" } aria-pressed={ radioCheckBorderRadiusType === "%" } onClick={ () => setAttributes( { radioCheckBorderRadiusType: "%" } ) }>{ "%" }</Button>
 						</ButtonGroup>
 						<RangeControl
-							label={ __( "Border Radius" ) }
+							label={ __( "Border Radius",'ultimate-addons-for-gutenberg' ) }
 							value={ radioCheckBorderRadius }
 							onChange={ ( value ) => setAttributes( { radioCheckBorderRadius: value } ) }
 							min={ 0 }
 							max={ 100 }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Border Color" ) }
+						<p className="uagb-setting-label">{ __( "Border Color",'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
 								<span className="component-color-indicator" style={{ backgroundColor: radioCheckBorderColor }} ></span></span></p>
 						<ColorPalette
@@ -805,23 +805,23 @@ class UAGBCF7 extends Component {
 		)
 
 		const msg_settings = (			
-			<PanelBody title={ __( "Success / Error Message" ) } initialOpen={ false }>
-				<p className="uagb-settings-notice">{ __( "Note: This styling can be only seen at frontend" ) }</p>
+			<PanelBody title={ __( "Success / Error Message",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<p className="uagb-settings-notice">{ __( "Note: This styling can be only seen at frontend",'ultimate-addons-for-gutenberg' ) }</p>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Field Validation" ) }</h2>					
+				<h2>{ __( "Field Validation",'ultimate-addons-for-gutenberg' ) }</h2>					
 
 				<SelectControl
-					label={ __( "Validation Message Position" ) }
+					label={ __( "Validation Message Position",'ultimate-addons-for-gutenberg' ) }
 					value={ validationMsgPosition }
 					onChange={ ( value ) => setAttributes( { validationMsgPosition: value } ) }
 					options={ [
-						{ value: "default", label: __( "Default" ) },
-						{ value: "bottom_right", label: __( "Bottom Right Side of Field" ) },								
+						{ value: "default", label: __( "Default",'ultimate-addons-for-gutenberg' ) },
+						{ value: "bottom_right", label: __( "Bottom Right Side of Field",'ultimate-addons-for-gutenberg' ) },								
 					] }
 				/>
-				<h2>{ __( "Validation Font" ) }</h2>
+				<h2>{ __( "Validation Font",'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( "Typography" ) }
+					label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: 'validationMsgLoadGoogleFonts' } }
@@ -837,7 +837,7 @@ class UAGBCF7 extends Component {
 					lineHeightMobile = { { value: validationMsgLineHeightMobile, label: 'validationMsgLineHeightMobile' } }
 					lineHeightTablet= { { value: validationMsgLineHeightTablet, label: 'validationMsgLineHeightTablet' } }
 				/>
-				<p className="uagb-setting-label">{ __( "Validation Message Color" ) }
+				<p className="uagb-setting-label">{ __( "Validation Message Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: validationMsgColor }} ></span></span></p>
 				<ColorPalette
@@ -847,7 +847,7 @@ class UAGBCF7 extends Component {
 				/>
 
 				{ validationMsgPosition ==="bottom_right" && <Fragment>
-					<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+					<p className="uagb-setting-label">{ __( "Message Background Color",'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: validationMsgBgColor }} ></span></span></p>
 					<ColorPalette
@@ -859,13 +859,13 @@ class UAGBCF7 extends Component {
 				}
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
-					label={ __( "Highlight Borders" ) }
+					label={ __( "Highlight Borders",'ultimate-addons-for-gutenberg' ) }
 					checked={ enableHighlightBorder }
 					onChange={ ( value ) => setAttributes( { enableHighlightBorder: ! enableHighlightBorder } ) }
 				/>
 
 				{ enableHighlightBorder && <Fragment>
-					<p className="uagb-setting-label">{ __( "Highlight Border Color" ) }
+					<p className="uagb-setting-label">{ __( "Highlight Border Color",'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: highlightBorderColor }} ></span></span></p>
 					<ColorPalette
@@ -877,9 +877,9 @@ class UAGBCF7 extends Component {
 				}					
 					
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Form Success / Error Validation" ) }</h2>
+				<h2>{ __( "Form Success / Error Validation",'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( "Typography" ) }
+					label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: msgLoadGoogleFonts, label: 'msgLoadGoogleFonts' } }
@@ -896,8 +896,8 @@ class UAGBCF7 extends Component {
 					lineHeightTablet= { { value: msgLineHeightTablet, label: 'msgLineHeightTablet' } }
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Success Message" ) }</h2>
-				<p className="uagb-setting-label">{ __( "Message Color" ) }
+				<h2>{ __( "Success Message",'ultimate-addons-for-gutenberg' ) }</h2>
+				<p className="uagb-setting-label">{ __( "Message Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: successMsgColor }} ></span></span></p>
 				<ColorPalette
@@ -906,7 +906,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 
-				<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Background Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: successMsgBgColor }} ></span></span></p>
 				<ColorPalette
@@ -915,7 +915,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 
-				<p className="uagb-setting-label">{ __( "Message Border Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Border Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: successMsgBorderColor }} ></span></span></p>
 				<ColorPalette
@@ -924,8 +924,8 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Error Message" ) }</h2>
-				<p className="uagb-setting-label">{ __( "Message Color" ) }
+				<h2>{ __( "Error Message",'ultimate-addons-for-gutenberg' ) }</h2>
+				<p className="uagb-setting-label">{ __( "Message Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: errorMsgColor }} ></span></span></p>
 				<ColorPalette
@@ -934,7 +934,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 
-				<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Background Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: errorMsgBgColor }} ></span></span></p>
 				<ColorPalette
@@ -943,7 +943,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 
-				<p className="uagb-setting-label">{ __( "Message Border Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Border Color",'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: errorMsgBorderColor }} ></span></span></p>
 				<ColorPalette
@@ -954,19 +954,19 @@ class UAGBCF7 extends Component {
 
 				<hr className="uagb-editor__separator" />					
 				<RangeControl
-					label={ __( "Message Border Width (px)" ) }
+					label={ __( "Message Border Width (px)",'ultimate-addons-for-gutenberg' ) }
 					value={ msgBorderSize }
 					onChange={ ( value ) => setAttributes( { msgBorderSize: value } ) }
 					min={ 0 }
 					max={ 50 }
 					allowReset
 				/>			
-				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "px" } aria-pressed={ msgBorderRadiusType === "px" } onClick={ () => setAttributes( { msgBorderRadiusType: "px" } ) }>{ "px" }</Button>
 					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "%" } aria-pressed={ msgBorderRadiusType === "%" } onClick={ () => setAttributes( { msgBorderRadiusType: "%" } ) }>{ "%" }</Button>
 				</ButtonGroup>
 				<RangeControl
-					label={ __( "Message Border Radius" ) }
+					label={ __( "Message Border Radius",'ultimate-addons-for-gutenberg' ) }
 					value={ msgBorderRadius }
 					onChange={ ( value ) => setAttributes( { msgBorderRadius: value } ) }
 					min={ 0 }
@@ -974,7 +974,7 @@ class UAGBCF7 extends Component {
 					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Message Padding (px)" ) }</h2>
+				<h2>{ __( "Message Padding (px)",'ultimate-addons-for-gutenberg' ) }</h2>
 				<RangeControl
 					label={ UAGB_Block_Icons.vertical_spacing }
 					className={ "uagb-margin-control" }
@@ -1034,7 +1034,7 @@ class UAGBCF7 extends Component {
 						{ isHtml == false &&
 							<Placeholder
 								icon="admin-post"
-								label={ __( "Loading" ) }
+								label={ __( "Loading",'ultimate-addons-for-gutenberg' ) }
 							>
 								<Spinner />
 							</Placeholder>

@@ -8,6 +8,7 @@ import edit from "./edit"
 import save from "./save"
 import "./style.scss"
 import "./editor.scss"
+import deprecated from "./deprecated"
 
 const { addFilter } = wp.hooks;
 const { __ } = wp.i18n
@@ -57,10 +58,10 @@ registerBlockType( "uagb/faq", {
 	icon: UAGB_Block_Icons.faq,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "faq" ),
-		__( "schema" ),
-		__( "uag" ),
-		__( "accordion" ),
+		__( "faq", 'ultimate-addons-for-gutenberg' ),
+		__( "schema", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
+		__( "accordion", 'ultimate-addons-for-gutenberg' ),
 	],
 	example:{
 		innerBlocks: [
@@ -85,6 +86,7 @@ registerBlockType( "uagb/faq", {
 		],
 	},
 	attributes,
+	deprecated,
 	edit,
 	supports: {
 		anchor: true,

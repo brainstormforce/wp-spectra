@@ -21,8 +21,8 @@ registerBlockType( "uagb/info-box", {
 	description: uagb_blocks_info.blocks["uagb/info-box"]["description"],
 	icon: UAGB_Block_Icons.info_box,
 	keywords: [
-		__( "info box" ),
-		__( "uag" ),
+		__( "info box", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

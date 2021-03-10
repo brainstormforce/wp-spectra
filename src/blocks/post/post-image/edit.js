@@ -1,11 +1,9 @@
 const { decodeEntities } = wp.htmlEntities
 const { __ } = wp.i18n
 
-class FeaturedImage extends React.Component {
-
-	render() {
-
-		const { post, attributes } = this.props
+export const PostImage = (props) =>  {
+		
+		const { post, attributes } = props
 
 		let target = ( attributes.newTab ) ? "_blank" : "_self"
 
@@ -32,6 +30,4 @@ class FeaturedImage extends React.Component {
 			return null
 		}
 	}
-}
 
-export default FeaturedImage

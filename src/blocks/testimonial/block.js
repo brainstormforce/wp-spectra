@@ -21,8 +21,8 @@ registerBlockType( "uagb/testimonial", {
 	description: uagb_blocks_info.blocks["uagb/testimonial"]["description"], // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
-		__( "testimonial" ),
-		__( "uag" ),
+		__( "testimonial",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

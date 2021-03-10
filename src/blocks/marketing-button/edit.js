@@ -244,22 +244,22 @@ class UAGBMarketingButtonEdit extends Component {
 						<ToolbarButton
 							icon = 'admin-links'
 							name="link"
-							title={ __( 'Link' ) }
+							title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 							onClick={ this.onClickLinkSettings }
 						/>
 					</ToolbarGroup>
 				</BlockControls>
 				{ linkControl }
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<PanelBody title={ __( "General", 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 						<SelectControl
-							label={ __( "Text Alignment" ) }
+							label={ __( "Text Alignment", 'ultimate-addons-for-gutenberg' ) }
 							value={ textAlign }
 							onChange={ ( value ) => setAttributes( { textAlign: value } ) }
 							options={ [
-								{ value: "center", label: __( "Center" ) },
-								{ value: "left", label: __( "Left" ) },
-								{ value: "right", label: __( "Right" ) },
+								{ value: "center", label: __( "Center", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "left", label: __( "Left", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "right", label: __( "Right", 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 						<hr className="uagb-editor__separator" />
@@ -270,20 +270,20 @@ class UAGBMarketingButtonEdit extends Component {
 							value= { icon }
 							onChange={ ( value ) => setAttributes( { icon : value } ) }
 							isMulti= { false }
-							noSelectedPlaceholder= { __( "Select Icon" ) }
+							noSelectedPlaceholder= { __( "Select Icon", 'ultimate-addons-for-gutenberg' ) }
 						/>
 						{ "" != icon && <Fragment>
 							<SelectControl
-								label={ __( "Icon Position" ) }
+								label={ __( "Icon Position", 'ultimate-addons-for-gutenberg' ) }
 								value={ iconPosition }
 								onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
 								options={ [
-									{ value: "before", label: __( "Before Text" ) },
-									{ value: "after", label: __( "After Text" ) },
+									{ value: "before", label: __( "Before Text", 'ultimate-addons-for-gutenberg' ) },
+									{ value: "after", label: __( "After Text", 'ultimate-addons-for-gutenberg' ) },
 								] }
 							/>
 							<RangeControl
-								label={ __( "Icon Spacing" ) }
+								label={ __( "Icon Spacing", 'ultimate-addons-for-gutenberg' ) }
 								value={ iconSpace }
 								onChange={ ( value ) => setAttributes( { iconSpace: value } ) }
 								min={ 0 }
@@ -292,7 +292,7 @@ class UAGBMarketingButtonEdit extends Component {
 								allowReset
 							/>
 							<TypographyControl
-								label={ __( "Icon Size" ) }
+								label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								fontSizeType = { { value: iconFontSizeType, label: "iconFontSizeType" } }
@@ -307,7 +307,7 @@ class UAGBMarketingButtonEdit extends Component {
 						</Fragment>
 						}
 						<RangeControl
-							label={ __( "Title Bottom Spacing" ) }
+							label={ __( "Title Bottom Spacing", 'ultimate-addons-for-gutenberg' ) }
 							value={ titleSpace }
 							onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 							min={ 0 }
@@ -316,26 +316,26 @@ class UAGBMarketingButtonEdit extends Component {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody	title={ __( "Content" ) } initialOpen={ false }	>
+					<PanelBody	title={ __( "Content", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }	>
 						<SelectControl
-							label={ __( "Title Tag" ) }
+							label={ __( "Title Tag", 'ultimate-addons-for-gutenberg' ) }
 							value={ titleTag }
 							onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-								{ value: "span", label: __( "span" ) },
-								{ value: "p", label: __( "p" ) },
+								{ value: "h1", label: __( "H1", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "h4", label: __( "H4", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "h5", label: __( "H5", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "h6", label: __( "H6", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "span", label: __( "span", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "p", label: __( "p", 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Title" ) }</h2>
+						<h2>{ __( "Title", 'ultimate-addons-for-gutenberg' ) }</h2>
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadTitleGoogleFonts, label: "loadTitleGoogleFonts" } }
@@ -352,9 +352,9 @@ class UAGBMarketingButtonEdit extends Component {
 							lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Description" ) }</h2>
+						<h2>{ __( "Description", 'ultimate-addons-for-gutenberg' ) }</h2>
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadPrefixGoogleFonts, label: "loadPrefixGoogleFonts" } }
@@ -378,12 +378,12 @@ class UAGBMarketingButtonEdit extends Component {
 							tabs={ [
 								{
 									name: "normal",
-									title: __( "Normal" ),
+									title: __( "Normal", 'ultimate-addons-for-gutenberg' ),
 									className: "uagb-normal-tab",
 								},
 								{
 									name: "hover",
-									title: __( "Hover" ),
+									title: __( "Hover", 'ultimate-addons-for-gutenberg' ),
 									className: "uagb-focus-tab",
 								},
 							] }>
@@ -392,19 +392,19 @@ class UAGBMarketingButtonEdit extends Component {
 									let tabout_color
 									if( "normal" === tabName.name ) {
 										tabout_color = <Fragment>
-											<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Title Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 											<ColorPalette
 												value={ titleColor }
 												onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Icon Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
 											<ColorPalette
 												value={ iconColor }
 												onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Description Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 											<ColorPalette
 												value={ prefixColor }
 												onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
@@ -413,19 +413,19 @@ class UAGBMarketingButtonEdit extends Component {
 										</Fragment>
 									} else {
 										tabout_color = <Fragment>
-											<p className="uagb-setting-label">{ __( "Title Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleHoverColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Title Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleHoverColor }} ></span></span></p>
 											<ColorPalette
 												value={ titleHoverColor }
 												onChange={ ( colorValue ) => setAttributes( { titleHoverColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconHoverColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Icon Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconHoverColor }} ></span></span></p>
 											<ColorPalette
 												value={ iconHoverColor }
 												onChange={ ( colorValue ) => setAttributes( { iconHoverColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Description Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixHoverColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Description Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixHoverColor }} ></span></span></p>
 											<ColorPalette
 												value={ prefixHoverColor }
 												onChange={ ( colorValue ) => setAttributes( { prefixHoverColor: colorValue } ) }
@@ -438,7 +438,7 @@ class UAGBMarketingButtonEdit extends Component {
 							}
 						</TabPanel>
 					</PanelBody>
-					<PanelBody title={ __( "Background" ) } initialOpen={ false }>
+					<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
@@ -464,11 +464,11 @@ class UAGBMarketingButtonEdit extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Button Padding" ) }</h2>
+												<h2>{ __( "Button Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
@@ -490,11 +490,11 @@ class UAGBMarketingButtonEdit extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Button Padding" ) }</h2>
+												<h2>{ __( "Button Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
@@ -516,11 +516,11 @@ class UAGBMarketingButtonEdit extends Component {
 									} else {
 										tabout = (
 											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Button Padding" ) }</h2>
+												<h2>{ __( "Button Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
@@ -546,20 +546,20 @@ class UAGBMarketingButtonEdit extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Button Background" ) }</h2>
+						<h2>{ __( "Button Background", 'ultimate-addons-for-gutenberg' ) }</h2>
 						<SelectControl
-							label={ __( "Background Type" ) }
+							label={ __( "Background Type", 'ultimate-addons-for-gutenberg' ) }
 							value={ backgroundType }
 							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
 							options={ [
-								{ value: "transparent", label: __( "Transparent" ) },
-								{ value: "color", label: __( "Color" ) },
-								{ value: "gradient", label: __( "Gradient" ) },
+								{ value: "transparent", label: __( "Transparent", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "color", label: __( "Color", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "gradient", label: __( "Gradient", 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 						{ "color" == backgroundType && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Background Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
 								<ColorPalette
 									value={ backgroundColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
@@ -570,32 +570,32 @@ class UAGBMarketingButtonEdit extends Component {
 						{ "gradient" == backgroundType &&
 							( <Fragment>
 								<PanelColorSettings
-									title={ __( "Color Settings" ) }
+									title={ __( "Color Settings", 'ultimate-addons-for-gutenberg' ) }
 									colorSettings={ [
 										{
 											value: gradientColor2,
 											onChange:( value ) => setAttributes( { gradientColor2: value } ),
-											label: __( "Color 1" ),
+											label: __( "Color 1", 'ultimate-addons-for-gutenberg' ),
 										},
 										{
 											value: gradientColor1,
 											onChange:( value ) => setAttributes( { gradientColor1: value } ),
-											label: __( "Color 2" ),
+											label: __( "Color 2", 'ultimate-addons-for-gutenberg' ),
 										},
 									] }
 								>
 								</PanelColorSettings>
 								<SelectControl
-									label={ __( "Type" ) }
+									label={ __( "Type", 'ultimate-addons-for-gutenberg' ) }
 									value={ gradientType }
 									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
 									options={ [
-										{ value: "linear", label: __( "Linear" ) },
-										{ value: "radial", label: __( "Radial" ) },
+										{ value: "linear", label: __( "Linear", 'ultimate-addons-for-gutenberg' ) },
+										{ value: "radial", label: __( "Radial", 'ultimate-addons-for-gutenberg' ) },
 									] }
 								/>
 								<RangeControl
-									label={ __( "Location 1" ) }
+									label={ __( "Location 1", 'ultimate-addons-for-gutenberg' ) }
 									value={ gradientLocation1 }
 									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
 									min={ 0 }
@@ -603,7 +603,7 @@ class UAGBMarketingButtonEdit extends Component {
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Location 2" ) }
+									label={ __( "Location 2", 'ultimate-addons-for-gutenberg' ) }
 									value={ gradientLocation2 }
 									onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
 									min={ 0 }
@@ -611,7 +611,7 @@ class UAGBMarketingButtonEdit extends Component {
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Angle" ) }
+									label={ __( "Angle", 'ultimate-addons-for-gutenberg' ) }
 									value={ gradientAngle }
 									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
 									min={ 0 }
@@ -622,7 +622,7 @@ class UAGBMarketingButtonEdit extends Component {
 						}
 						{ "transparent" != backgroundType &&
 							<RangeControl
-								label={ __( "Opacity" ) }
+								label={ __( "Opacity", 'ultimate-addons-for-gutenberg' ) }
 								value={ backgroundOpacity }
 								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
 								min={ 0 }
@@ -633,14 +633,14 @@ class UAGBMarketingButtonEdit extends Component {
 						}
 						{ "color" == backgroundType && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHoverColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Background Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundHoverColor }} ></span></span></p>
 								<ColorPalette
 									value={ backgroundHoverColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundHoverColor: colorValue } ) }
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Opacity" ) }
+									label={ __( "Opacity", 'ultimate-addons-for-gutenberg' ) }
 									value={ backgroundHoverOpacity }
 									onChange={ ( value ) => setAttributes( { backgroundHoverOpacity: value } ) }
 									min={ 0 }
@@ -651,26 +651,26 @@ class UAGBMarketingButtonEdit extends Component {
 							</Fragment>
 						) }
 					</PanelBody>
-					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+					<PanelBody title={ __( "Border", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 						<SelectControl
-							label={ __( "Border Style" ) }
+							label={ __( "Border Style", 'ultimate-addons-for-gutenberg' ) }
 							value={ borderStyle }
 							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
+								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "groove", label: __( "Groove", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "ridge", label: __( "Ridge", 'ultimate-addons-for-gutenberg' ) },
 							] }
 						/>
 						{ "none" != borderStyle && (
 							<RangeControl
-								label={ __( "Border Width" ) }
+								label={ __( "Border Width", 'ultimate-addons-for-gutenberg' ) }
 								value={ borderWidth }
 								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 								min={ 0 }
@@ -679,7 +679,7 @@ class UAGBMarketingButtonEdit extends Component {
 							/>
 						) }
 						<RangeControl
-							label={ __( "Border Radius" ) }
+							label={ __( "Border Radius", 'ultimate-addons-for-gutenberg' ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 							min={ 0 }
@@ -688,13 +688,13 @@ class UAGBMarketingButtonEdit extends Component {
 						/>
 						{ "none" != borderStyle && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Border Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 								<ColorPalette
 									value={ borderColor }
 									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 									allowReset
 								/>
-								<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHoverColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Border Hover Color", 'ultimate-addons-for-gutenberg' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHoverColor }} ></span></span></p>
 								<ColorPalette
 									value={ borderHoverColor }
 									onChange={ ( colorValue ) => setAttributes( { borderHoverColor: colorValue } ) }
@@ -722,7 +722,7 @@ class UAGBMarketingButtonEdit extends Component {
 									</div>
 								}
 								<RichText
-									placeholder={ __( "Add Button Title…" ) }
+									placeholder={ __( "Add Button Title…", 'ultimate-addons-for-gutenberg' ) }
 									value={ heading }
 									tagName= { titleTag }
 									onChange={ ( value ) => setAttributes( { heading: value } ) }
@@ -746,7 +746,7 @@ class UAGBMarketingButtonEdit extends Component {
 							</div>
 							<div className="uagb-marketing-btn__prefix-wrap">
 								<RichText
-									placeholder={ __( "Add Button Description…" ) }
+									placeholder={ __( "Add Button Description…", 'ultimate-addons-for-gutenberg' ) }
 									value={ prefix }
 									tagName='p'
 									onChange={ ( value ) => setAttributes( { prefix: value } ) }

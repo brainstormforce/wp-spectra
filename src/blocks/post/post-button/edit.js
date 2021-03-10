@@ -1,11 +1,10 @@
 const { __ } = wp.i18n
 import classnames from "classnames"
 
-class Button extends React.Component {
-
-	render() {
-
-		const { post, attributes } = this.props
+export const PostButton = (props) =>  {
+	
+	
+		const { attributes , post } = props
 		
 		if ( attributes.displayPostContentRadio == "full_post" ) {
 			return null;
@@ -18,8 +17,8 @@ class Button extends React.Component {
 			let cta_text = ( attributes.ctaText ) ? attributes.ctaText : __( "Read More" )
 
 			return (
-
-				<div className={classnames('uagb-post__cta', ( attributes.inheritFromTheme ) ? 'wp-block-button' : null)}>
+				<div className='uagb-post__text'> 
+					<div className={classnames('uagb-post__cta', ( attributes.inheritFromTheme ) ? 'wp-block-button' : null)}>
 					<a
 						className={classnames(
 							( !attributes.inheritFromTheme ) ? 'uagb-post__link ' : null,
@@ -30,12 +29,10 @@ class Button extends React.Component {
 						target={ target }
 						rel ="noopener noreferrer">{ cta_text }</a>
 				</div>
+				</div>
 			)
 
 		} else {
 			return null
 		}
 	}
-}
-
-export default Button

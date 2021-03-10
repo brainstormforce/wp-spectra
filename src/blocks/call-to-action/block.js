@@ -24,9 +24,9 @@ registerBlockType( "uagb/call-to-action", {
 	description: uagb_blocks_info.blocks["uagb/call-to-action"]["description"],
 	icon: UAGB_Block_Icons.call_to_action,
 	keywords: [
-		__( "cta" ),
-		__( "call to action" ),
-		__( "uag" ),
+		__( "cta", 'ultimate-addons-for-gutenberg' ),
+		__( "call to action", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

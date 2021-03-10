@@ -1,12 +1,10 @@
 import classnames from "classnames"
 import Slider from "react-slick"
-import FeaturedImage from ".././components/FeaturedImage"
-import Title from ".././components/Title"
-import Meta from ".././components/Meta"
-import Excerpt from ".././components/Excerpt"
-import Button from ".././components/Button"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
-
+import {
+	InnerBlockLayoutContextProvider,
+	renderPostLayout 
+} from '.././function';
 class Blog extends React.Component {
 
 	render() {
@@ -28,7 +26,8 @@ class Blog extends React.Component {
 			arrowBorderRadius,
 			arrowColor,
 			arrowDots,
-			equalHeight
+			equalHeight,
+			layoutConfig
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -97,17 +96,17 @@ class Blog extends React.Component {
 		}
 
 		const all_posts = displayPosts.map( ( post, i ) =>
-			<article key={ i }>
-				<div className="uagb-post__inner-wrap">
-					<FeaturedImage post={post} attributes={attributes} />
-					<div className="uagb-post__text">
-						<Title post={post} attributes={attributes} />
-						<Meta post={post} attributes={attributes} categoriesList={categoriesList} />
-						<Excerpt post={post} attributes={attributes} />
-						<Button post={post} attributes={attributes} />
+				<article key={ i } >
+					<div className="uagb-post__inner-wrap" >
+							{ renderPostLayout(
+								"uagb/post-carousel",
+								post,
+								layoutConfig,
+								this.props.attributes,
+								this.props.categoriesList
+							) }
 					</div>
-				</div>
-			</article>
+				</article>
 		)
 
 		if ( columns >= displayPosts.length ) {
@@ -132,7 +131,12 @@ class Blog extends React.Component {
 							"uagb-post__items",
 						) }
 					>
-						{ all_posts }
+						<InnerBlockLayoutContextProvider
+						parentName="uagb/post-carousel"
+						parentClassName="uagb-block-grid"
+						>
+							{ all_posts }
+						</InnerBlockLayoutContextProvider>
 					</div>
 				</div>
 			)

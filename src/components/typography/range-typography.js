@@ -28,13 +28,13 @@ function RangeTypographyControl( props ) {
 		sizeTypes = props.sizeTypes
 	} else {
 		sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
+			{ key: "px", name: __( "px",'ultimate-addons-for-gutenberg' ) },
+			{ key: "em", name: __( "em",'ultimate-addons-for-gutenberg' ) },
 		]
 	}
 
 	const sizeTypesControls = (
-		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
 			{ map( sizeTypes, ( { name, key } ) => (
 				<Button
 					key={ key }

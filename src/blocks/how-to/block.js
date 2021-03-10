@@ -22,9 +22,9 @@ registerBlockType( "uagb/how-to", {
 	icon: UAGB_Block_Icons.how_to,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "how to" ),
-		__( "schema" ),
-		__( "uag" ),
+		__( "how to", 'ultimate-addons-for-gutenberg' ),
+		__( "schema", 'ultimate-addons-for-gutenberg' ),
+		__( "uag", 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,

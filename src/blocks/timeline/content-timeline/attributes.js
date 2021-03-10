@@ -4,15 +4,17 @@
 
 const { __ } = wp.i18n
 
+const ITEM_COUNT = 5
+
 const item = []
 const date_arr = []
 
-for (var i = 1; i <= 5; i++) {
+for (var i = 1; i <= ITEM_COUNT; i++) {
 
 	item.push(
 		{
-			"time_heading": __( "Timeline Heading " ) + i ,
-			"time_desc": __( "This is Timeline description, you can change me anytime click here " ),
+			"time_heading": __( "Timeline Heading ",'ultimate-addons-for-gutenberg' ) + i ,
+			"time_desc": __( "This is Timeline description, you can change me anytime click here ",'ultimate-addons-for-gutenberg' ),
 		}
 	)
 
@@ -41,11 +43,18 @@ for (var i = 1; i <= 5; i++) {
 }
 
 const attributes = {
+	content_class: {
+		type : "string",
+	},
 	tm_content: {
 		type: "array",
 		default : item,
 	},
 	classMigrate: {
+		type: "boolean",
+		default: false
+	},
+	childMigrate: {
 		type: "boolean",
 		default: false
 	},
@@ -105,9 +114,6 @@ const attributes = {
 	headFontSizeType: {
 		type: "string",
 		default: "px"
-	},
-	headFontSize: {
-		type: "number",
 	},
 	headFontSizeTablet: {
 		type: "number",
@@ -276,7 +282,7 @@ const attributes = {
 	},
 	timelineItem :{
 		type : "number",
-		default : 5,
+		default : ITEM_COUNT,
 	},
 	tm_client_id  : {
 		type : "string",
@@ -309,7 +315,7 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	}
+	},
 }
 
 export default attributes

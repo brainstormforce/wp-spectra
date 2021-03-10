@@ -314,6 +314,11 @@ function styling( props ) {
 			"background-color" : buttonBgHoverColor,
 			"border-color"     : buttonBorderHoverColor,
 		},
+		" input.gform_next_button:hover"              : {
+			"color"            : buttonTextHoverColor,
+			"background-color" : buttonBgHoverColor,
+			"border-color"     : buttonBorderHoverColor,
+		},
 
 		// Check box Radio.
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox']:checked + label:before" : {

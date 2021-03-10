@@ -54,6 +54,176 @@ class UAGB_Init_Blocks {
 
 		add_action( 'wp_ajax_uagb_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_uagb_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
+
+		if ( ! is_admin() ) {
+			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
+		}
+	}
+	/**
+	 * Render block.
+	 *
+	 * @param mixed $block_content The block content.
+	 * @param array $block The block data.
+	 * @since 1.21.0
+	 * @return mixed Returns the new block content.
+	 */
+	public function render_block( $block_content, $block ) {
+
+		$block_attributes = $block['attrs'];
+
+		if ( isset( $block_attributes['UAGDisplayConditions'] ) && array_key_exists( 'UAGDisplayConditions', $block_attributes ) ) {
+
+			switch ( $block_attributes['UAGDisplayConditions'] ) {
+
+				case 'userstate':
+					$block_content = $this->user_state_visibility( $block_attributes, $block_content );
+					break;
+
+				case 'userRole':
+					$block_content = $this->user_role_visibility( $block_attributes, $block_content );
+					break;
+
+				case 'browser':
+					$block_content = $this->browser_visibility( $block_attributes, $block_content );
+					break;
+
+				case 'os':
+					$block_content = $this->os_visibility( $block_attributes, $block_content );
+					break;
+
+				default:
+					// code...
+					break;
+			}
+		}
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 1.21.0
+	 * @return mixed Returns the new block content.
+	 */
+	public function user_role_visibility( $block_attributes, $block_content ) {
+
+		$user = wp_get_current_user();
+
+		if ( isset( $block_attributes['UAGUserRole'] ) && array_key_exists( 'UAGUserRole', $block_attributes ) ) {
+
+			$value = $block_attributes['UAGUserRole'];
+
+			if ( is_user_logged_in() && in_array( $value, $user->roles, true ) ) {
+				return '';
+			}
+		}
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 * @since 1.21.0
+	 * @return mixed Returns the new block content.
+	 */
+	public function os_visibility( $block_attributes, $block_content ) {
+
+		if ( ! array_key_exists( 'UAGSystem', $block_attributes ) ) {
+			return $block_content;
+		}
+
+		$value = $block_attributes['UAGSystem'];
+
+		$os = array(
+			'iphone'   => '(iPhone)',
+			'android'  => '(Android)',
+			'windows'  => 'Win16|(Windows 95)|(Win95)|(Windows_95)|(Windows 98)|(Win98)|(Windows NT 5.0)|(Windows 2000)|(Windows NT 5.1)|(Windows XP)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows Vista)|(Windows NT 6.1)|(Windows 7)|(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)|Windows ME',
+			'open_bsd' => 'OpenBSD',
+			'sun_os'   => 'SunOS',
+			'linux'    => '(Linux)|(X11)',
+			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
+		);
+
+		if ( preg_match( '@' . $os[ $value ] . '@', $_SERVER['HTTP_USER_AGENT'] ) ) {
+			return '';
+		}
+
+		return $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 1.21.0
+	 * @return mixed Returns the new block content.
+	 */
+	public function browser_visibility( $block_attributes, $block_content ) {
+
+		if ( ! array_key_exists( 'UAGBrowser', $block_attributes ) ) {
+			return $block_content;
+		}
+
+		$browsers = array(
+			'ie'         => array(
+				'MSIE',
+				'Trident',
+			),
+			'firefox'    => 'Firefox',
+			'chrome'     => 'Chrome',
+			'opera_mini' => 'Opera Mini',
+			'opera'      => 'Opera',
+			'safari'     => 'Safari',
+		);
+
+		$value = $block_attributes['UAGBrowser'];
+
+		$show = false;
+
+		if ( 'ie' === $value ) {
+			if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ][0] ) || false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ][1] ) ) {
+				$show = true;
+			}
+		} else {
+			if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], $browsers[ $value ] ) ) {
+				$show = true;
+
+				// Additional check for Chrome that returns Safari.
+				if ( 'safari' === $value || 'firefox' === $value ) {
+					if ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'Chrome' ) ) {
+						$show = false;
+					}
+				}
+			}
+		}
+
+		return ( $show ) ? '' : $block_content;
+	}
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 1.21.0
+	 * @return mixed Returns the new block content.
+	 */
+	public function user_state_visibility( $block_attributes, $block_content ) {
+
+		if ( isset( $block_attributes['UAGLoggedIn'] ) && $block_attributes['UAGLoggedIn'] && is_user_logged_in() ) {
+			return '';
+		}
+
+		if ( isset( $block_attributes['UAGLoggedOut'] ) && $block_attributes['UAGLoggedOut'] && ! is_user_logged_in() ) {
+			return '';
+		}
+
+		return $block_content;
+
 	}
 
 	/**
@@ -155,6 +325,15 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		if ( is_rtl() ) {
+			wp_enqueue_style(
+				'uagb-style-rtl', // Handle.
+				UAGB_URL . 'dist/blocks.style.rtl.css', // RTL style CSS.
+				array(),
+				UAGB_VER
+			);
+		}
+
 		$blocks          = UAGB_Config::get_block_attributes();
 		$disabled_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets    = UAGB_Config::get_block_assets();
@@ -240,6 +419,8 @@ class UAGB_Init_Blocks {
 			true // Enqueue the script in the footer.
 		);
 
+		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
+
 		// Styles.
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.
@@ -307,10 +488,40 @@ class UAGB_Init_Blocks {
 				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
 				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 				'uagb_home_url'     => home_url(),
+				'user_role'         => $this->get_user_role(),
+				'uagb_url'          => UAGB_URL,
+				'uagb_mime_type'    => UAGB_Helper::get_mime_type(),
+				'uagb_site_url'     => UAGB_URI,
 			)
 		);
 	} // End function editor_assets().
+	/**
+	 *  Get the User Roles
+	 *
+	 *  @since 1.21.0
+	 */
+	public function get_user_role() {
 
+		global $wp_roles;
+
+		$field_options = array();
+
+		$role_lists = $wp_roles->get_names();
+
+		$field_options[0] = array(
+			'value' => '',
+			'label' => __( 'None', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		foreach ( $role_lists as $key => $role_list ) {
+			$field_options[] = array(
+				'value' => $key,
+				'label' => $role_list,
+			);
+		}
+
+		return $field_options;
+	}
 
 	/**
 	 * Function to integrate CF7 Forms.

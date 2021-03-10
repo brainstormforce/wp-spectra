@@ -110,10 +110,10 @@ class UAGBMultiButtonEdit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<PanelBody title={ __( "General", 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 						<BaseControl>
 							<BaseControl.VisualLabel>
-								{ __( 'Alignment' ) }
+								{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 							</BaseControl.VisualLabel>
 							<BlockAlignmentToolbar
 								value={ align }
@@ -126,32 +126,32 @@ class UAGBMultiButtonEdit extends Component {
 								isCollapsed={ false }
 							/>
 						</BaseControl>
-						<h2>{ __( "Spacing" ) }</h2>
+						<h2>{ __( "Spacing", 'ultimate-addons-for-gutenberg' ) }</h2>
 						<RangeControl
-							label={ __( "Gap Between Buttons" ) }
+							label={ __( "Gap Between Buttons", 'ultimate-addons-for-gutenberg' ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
-							help={ __( "Note: The gap between the buttons will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
+							help={ __( "Note: The gap between the buttons will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.", 'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 500 }
 						/>
 						<hr className="uagb-editor__separator" />
 						<SelectControl
-							label={ __( "Stack on" ) }
+							label={ __( "Stack on", 'ultimate-addons-for-gutenberg' ) }
 							value={ stack }
 							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "desktop", label: __( "Desktop" ) },
-								{ value: "tablet", label: __( "Tablet" ) },
-								{ value: "mobile", label: __( "Mobile" ) },
+								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "desktop", label: __( "Desktop", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "tablet", label: __( "Tablet", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "mobile", label: __( "Mobile", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
-							help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+							help={ __( "Note: Choose on what breakpoint the buttons will stack.", 'ultimate-addons-for-gutenberg' ) }
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Typography" ) }</h2>
+						<h2>{ __( "Typography", 'ultimate-addons-for-gutenberg' ) }</h2>
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadGoogleFonts, label: "loadGoogleFonts" } }

@@ -625,10 +625,26 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 				$classes[] = 'uagb-gf-styler__error-yes';
 			}
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$main_classes = array(
 				'wp-block-uagb-gf-styler',
 				'uagb-gf-styler__outer-wrap',
 				'uagb-block-' . $attributes['block_id'],
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			if ( isset( $attributes['className'] ) ) {

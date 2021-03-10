@@ -40,7 +40,7 @@ class Company extends React.Component {
 	                	
 	                } }     
 	                multiline={ false }
-	                placeholder={ __( "Company Name" ) }
+	                placeholder={ __( "Company Name",'ultimate-addons-for-gutenberg' ) }
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

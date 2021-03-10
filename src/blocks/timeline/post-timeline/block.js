@@ -23,9 +23,9 @@ registerBlockType( "uagb/post-timeline", {
 	icon: UAGB_Block_Icons.post_timeline,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( "post" ),
-		__( "timeline" ),
-		__( "uag" ),
+		__( "post",'ultimate-addons-for-gutenberg' ),
+		__( "timeline",'ultimate-addons-for-gutenberg' ),
+		__( "uag",'ultimate-addons-for-gutenberg' ),
 	],
 	getEditWrapperProps( attributes ) {
 		const { align } = attributes

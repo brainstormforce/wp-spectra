@@ -140,12 +140,12 @@ class UAGBIconList extends Component {
 		const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
 
 		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
+			{ key: "px", name: __( "px", 'ultimate-addons-for-gutenberg' ) },
+			{ key: "em", name: __( "em", 'ultimate-addons-for-gutenberg' ) },
 		]
 
 		const sizeTypeControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -177,13 +177,13 @@ class UAGBIconList extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<PanelBody title={ __( "General", 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 						<SelectControl
-							label={ __( "Layout" ) }
+							label={ __( "Layout", 'ultimate-addons-for-gutenberg' ) }
 							value={ icon_layout }
 							options={ [
-								{ value: "horizontal", label: __( "Horizontal" ) },
-								{ value: "vertical", label: __( "Vertical" ) },
+								{ value: "horizontal", label: __( "Horizontal", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "vertical", label: __( "Vertical", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { icon_layout: value } ) }
 						/>
@@ -193,32 +193,32 @@ class UAGBIconList extends Component {
 									label={ __( "Stack on" ) }
 									value={ stack }
 									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
+										{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+										{ value: "tablet", label: __( "Tablet", 'ultimate-addons-for-gutenberg' ) },
+										{ value: "mobile", label: __( "Mobile", 'ultimate-addons-for-gutenberg' ) },
 									] }
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
-									help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
+									help={ __( "Note: Choose on what breakpoint the Icons will stack.", 'ultimate-addons-for-gutenberg' ) }
 								/>
 							</Fragment>
 						}
 						<ToggleControl
-							label={ __( "Hide Labels" ) }
+							label={ __( "Hide Labels", 'ultimate-addons-for-gutenberg' ) }
 							checked={ hideLabel }
 							onChange={ (value) => this.changeChildAttr( value ) }
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
-							label={ __( "Gap between Items" ) }
+							label={ __( "Gap between Items", 'ultimate-addons-for-gutenberg' ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
-							help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results." ) }
+							help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results.", 'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 100 }
 						/>
 						{ ! hideLabel &&
 							<RangeControl
-								label={ __( "Gap between Icon and Label" ) }
+								label={ __( "Gap between Icon and Label", 'ultimate-addons-for-gutenberg' ) }
 								value={ inner_gap }
 								onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
 								min={ 0 }
@@ -227,14 +227,14 @@ class UAGBIconList extends Component {
 						}
 						<hr className="uagb-editor__separator" />
 						<SelectControl
-							label={ __( "Icon Alignment" ) }
+							label={ __( "Icon Alignment", 'ultimate-addons-for-gutenberg' ) }
 							value={ iconPosition }
 							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "middle", label: __( "Middle" ) },
+								{ value: "top", label: __( "Top", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "middle", label: __( "Middle", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
-							help={ __( "Note: This manages the Icon Position with respect to the Label." ) }
+							help={ __( "Note: This manages the Icon Position with respect to the Label.", 'ultimate-addons-for-gutenberg' ) }
 						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
@@ -263,7 +263,7 @@ class UAGBIconList extends Component {
 											<Fragment>
 												{sizeTypeControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
 													value={ sizeMobile }
 													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
 													min={ 0 }
@@ -278,7 +278,7 @@ class UAGBIconList extends Component {
 											<Fragment>
 												{sizeTypeControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
 													value={ sizeTablet }
 													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
 													min={ 0 }
@@ -293,7 +293,7 @@ class UAGBIconList extends Component {
 											<Fragment>
 												{sizeTypeControls}
 												<RangeControl
-													label={ __( "Icon Size" ) }
+													label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
 													value={ size }
 													onChange={ ( value ) => setAttributes( { size: value } ) }
 													min={ 0 }
@@ -311,7 +311,7 @@ class UAGBIconList extends Component {
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
 						<TypographyControl
-							label={ __( "Typography" ) }
+							label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadGoogleFonts, label: 'loadGoogleFonts'  } }
@@ -329,26 +329,26 @@ class UAGBIconList extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
-							label={ __( "Background Size" ) }
+							label={ __( "Background Size", 'ultimate-addons-for-gutenberg' ) }
 							value={ bgSize }
 							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
-							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 500 }
 						/>
 						<RangeControl
-							label={ __( "Border" ) }
+							label={ __( "Border", 'ultimate-addons-for-gutenberg' ) }
 							value={ border }
 							onChange={ ( value ) => setAttributes( { border: value } ) }
-							help={ __( "Note: Border option is useful when one adds border color to the icons." ) }
+							help={ __( "Note: Border option is useful when one adds border color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 10 }
 						/>
 						<RangeControl
-							label={ __( "Border Radius" ) }
+							label={ __( "Border Radius", 'ultimate-addons-for-gutenberg' ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							help={ __( "Note: Border Radius option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Border Radius option is useful when one adds background color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 							min={ 0 }
 							max={ 500 }
 						/>

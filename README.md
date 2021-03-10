@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.6  
-**Stable tag:** 1.19.0  
+**Stable tag:** 1.21.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -70,6 +70,8 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://ultimategutenberg.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
+	<li><a href="https://ultimategutenberg.com/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
 	<li><a href="https://www.ultimategutenberg.com/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
 	<li><a href="https://www.ultimategutenberg.com/how-to-schema/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">How-to Schema </a>: This block allows you to design attractive How-to pages or articles that can describe the step-by-step procedure to achieve certain goals. The best thing is this block will automatically add How-to Schema to your page that can boost ranking in search results.</li>
@@ -155,11 +157,52 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 When you use the Ultimate Addons for Gutenberg along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+## Credits ##
+
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+
 ## Screenshots ##
 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.21.0 ###
+* New: Tabs Block. [Read More](https://ultimategutenberg.com/tabs/)
+* New: Added ability to import pre-made pages, patterns for block editor.
+* Improvement: Block Conditions - Now user can add conditions of visibility to blocks with respect to User State, Responsive Visibility, User Role, Browser, and Operating System.
+* Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
+* Improvement: Added hooks for automatic Toolset Dynamic Sources.
+* Fix: RTL issues in a few of the blocks.
+* Fix: Content Timeline - Connector issue on Tablet and mobile.
+* Fix: Content Timeline - Font size not applying for date on left/right layout.
+* Fix: Price List - Block encountered an error when used as a reusable block.
+* Fix: Heading Color issue in some blocks when used with Cover block.
+* Deprecated: Removed Transform Compatibility from Icon List Block.
+
+### 1.20.1 ###
+* Fix: Content Timeline - Content not being saved issue.
+* Fix: Post Carousel - Posts layout breaks when equal height option is enabled.
+* Fix: Table of Content - Hyperlink not being scrolled to respective heading issue.
+* Fix: Price List - Block Editor Validation issue when image alignment set to middle.
+
+### 1.20.0 ###
+* New: Lottie Block.
+* Improvement: Post Layout: Added EditMode to shuffle the Post elements i.e Post Title, Post Meta, Post Content, Featured Image, CTA Button etc.
+* Improvement: Better options for delete/edit/duplicate action of each content in Content timeline blocks.
+* Fix: FAQ Schema - Fixed Accessibility issue.
+* Fix: FAQ Schema - Fixed child block not inheriting question tag from the parent block when adding a new question.
+* Fix: FAQ-Schema - FAQ console error when accessing child by link hash value.
+* Fix: Gravity Form Styler - Multistep form styling issue.
+* Fix: Price List - CSS issue on mobile.
+* Fix: Price List - Fixed missing image padding option and columns not updating issue.
+* Fix: Post Layout - Child Posts not visible when parent category is selected in editor mode.
+* Fix: Testimonial - Fixed the JS console warning with Slick library.
+* Fix: Taxonomy List - Fixed the JS console warning in editor mode.
+* Fix: Table of content - Fixed the pipe symbol issue in heading.
+* Fix: Taxonomy List - Fixed issue with broken links.
+* Fix: Table of Content - IE11 compatibility issues.
+* Fix: Testimonial - Fixed carousel not being displayed on RTL websites.
 
 ### 1.19.0 ###
 * New: Review Schema Block.
