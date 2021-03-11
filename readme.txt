@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.22.0 =
 * Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
+* Fix: Post Layouts - Fixed the Post Layout keeps loading when clicking on categories All.
 
 = 1.21.0 =
 * New: Tabs Block. [Read More](https://ultimategutenberg.com/tabs/)
