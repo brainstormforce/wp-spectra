@@ -168,7 +168,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.21.1 ###
-* Fix: Added compatibility with WordPress v5.7 for jQuery migration warnings.
+* Improvement: Added compatibility with WordPress v5.7.
 
 ### 1.21.0 ###
 * New: Tabs Block. [Read More](https://ultimategutenberg.com/tabs/)
