@@ -109,8 +109,8 @@ select:after , select:before {
 	.uagb-switch {
 		position: relative;
 		display: inline-block;
-		width: 60px;
-		height: 34px;
+		width: 50px;
+		height: 25px;
 	}
 
 
@@ -132,26 +132,29 @@ select:after , select:before {
 		right: 0;
 		bottom: 0;
 		-webkit-transition: .4s;
-		background-color: #808080;
+		background-color: #ffffff;
 		transition: .4s;
 	}
 
 	.uagb-slider:before {
 		position: absolute;
 		content: "";
-		height: 26px;
-		width: 26px;
+		height: 20px;
+		width: 20px;
 		left: 4px;
-		bottom: 4px;
-		background-color: #ffffff;
+		top: 3px;
+    	bottom: 3px;
+		background-color: #000000;
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
 	
 	.uagb-switch input:checked+.uagb-slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
+		
+		background-color: #ffffff;
+		-webkit-transform: translateX(22px);
+		-ms-transform: translateX(22px);
+		transform: translateX(22px);
 	}	
 
 	/* Rounded sliders */

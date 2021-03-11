@@ -144,8 +144,8 @@ function styling( props ) {
             'border-color' : submitborderHoverColor,
         },  
         " .uagb-switch ": {
-            'height' : generateCSSUnit( 34  + toggleHeightSize + inputborderWidth, "px" ),
-            'width' : generateCSSUnit( 60 + toggleWidthSize + inputborderWidth, "px" )
+            'height' : generateCSSUnit( 25  + toggleHeightSize + inputborderWidth, "px" ),
+            'width' : generateCSSUnit( 50 + toggleWidthSize + inputborderWidth, "px" )
         }, 
         " .uagb-switch input:checked + .uagb-slider" : {
             'background-color' : toggleActiveColor
@@ -154,8 +154,8 @@ function styling( props ) {
             "box-shadow": "0 0 1px" + toggleActiveColor
         },     
         " .uagb-slider:before ": {
-            'height' : generateCSSUnit( 26 + toggleHeightSize - inputborderWidth, "px" ),
-            'width' : generateCSSUnit( 26 + toggleWidthSize - inputborderWidth/2, "px")
+            'height' : generateCSSUnit( 20 + toggleHeightSize - inputborderWidth, "px" ),
+            'width' : generateCSSUnit( 20 + toggleWidthSize - inputborderWidth/2, "px")
         },  
         " .uagb-switch input:checked + .uagb-slider:before ": {
             'transform' : 'translateX('+ generateCSSUnit( 26 + toggleWidthSize , "px" )/2+")",

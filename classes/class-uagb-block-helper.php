@@ -5349,12 +5349,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'background-color' => $attr['bgColor'],
 					);
 					$selectors[' .uagb-forms-main-form .uagb-switch']        = array(
-						'width'  => UAGB_Helper::get_css_value( '60' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
-						'height' => UAGB_Helper::get_css_value( '34' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
+						'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
+						'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
 					);
 					$selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
-						'width'  => UAGB_Helper::get_css_value( '26' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
-						'height' => UAGB_Helper::get_css_value( '26' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
+						'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
+						'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
 					);
 					$selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
 						'background-color' => $attr['toggleActiveColor'],

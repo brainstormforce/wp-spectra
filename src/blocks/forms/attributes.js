@@ -233,7 +233,7 @@ const attributes = {
 	},
 	toggleSize:{
 		type: "number",
-		default:16
+		default:15
 	},
 	toggleWidthSize:{
 		type: "number",
