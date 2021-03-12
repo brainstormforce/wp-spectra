@@ -1469,10 +1469,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
 							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'carousel',
-							),
 						),
 					),
 					'uagb/post-grid'              => array(
@@ -1584,10 +1580,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-meta' ),
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
-							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'grid',
 							),
 						),
 					),
@@ -1709,10 +1701,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
 							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'masonry',
-							),
+							
 						),
 					),
 					'uagb/post-title'             => array(
