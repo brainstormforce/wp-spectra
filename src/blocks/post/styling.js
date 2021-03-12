@@ -278,7 +278,7 @@ function styling( props ) {
 			}
 		}
 		if ( 'border' == paginationLayout ) {
-			selectors[" .uagb-post-pagination-wrap a"] = {
+			selectors[" .uagb-post-pagination-wrap > a"] = {
 				"border-style" : "solid",
 				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
 				"border-color" :  paginationBorderColor,

@@ -64,9 +64,6 @@ class UAGBcontentTimelineChild extends Component {
 		componentDidMount() {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
-		}
-
-		componentDidUpdate() {
 		}	
 
 		render() {
