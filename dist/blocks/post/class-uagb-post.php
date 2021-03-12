@@ -153,10 +153,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'grid',
-							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -222,10 +218,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-excerpt' ),
 									array( 'uagb/post-button' ),
 								),
-							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'carousel',
 							),
 						)
 					),
@@ -334,10 +326,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-excerpt' ),
 									array( 'uagb/post-button' ),
 								),
-							),
-							'post_type'                => array(
-								'type'    => 'string',
-								'default' => 'masonry',
 							),
 						)
 					),
