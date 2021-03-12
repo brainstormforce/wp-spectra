@@ -168,7 +168,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.22.0 ###
-* Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://wpastra.com/docs/filter-to-remove-starter-templates-button/)
+* New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
+* Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://ultimategutenberg.com/docs/remove-uag-templates-button/)
 * Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
 
 ### 1.21.0 ###
