@@ -168,6 +168,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.22.0 ###
+* New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
+* Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
 * Improvement: Table of content - Revamp TOC with dynamic logic.
 
 ### 1.21.0 ###
