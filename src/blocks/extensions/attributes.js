@@ -1,6 +1,8 @@
 function addAttributes( settings ) {
-
-	if( settings.category === 'uagb' ){
+	const excludeBlock = ['wpforms/form-selector'];
+	
+	if( ! excludeBlock.includes(settings.name) ){
+		
 		if ( settings.attributes ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				UAGUserRole:{

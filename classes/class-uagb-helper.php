@@ -602,6 +602,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				default:
 					// Nothing to do here.
+					$js  .= UAGB_Block_JS::get_condition_block_js( $blockattr, $block_id );
 					break;
 			}
 
