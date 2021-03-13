@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 1.21.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -166,9 +166,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
-
-### 1.22.0 ###
-* Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
 
 = 1.21.1 =
 * Improvement: Added compatibility with WordPress v5.7.
