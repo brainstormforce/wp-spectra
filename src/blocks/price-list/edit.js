@@ -32,7 +32,7 @@ const {
 	SelectControl,
 	TabPanel,
 	Dashicon,
-	IconButton,
+	Button,
 	ButtonGroup,
 	Path,
 	SVG
@@ -358,7 +358,7 @@ class UAGBRestaurantMenu extends Component {
 								<h2><strong>Image Settings</strong></h2>						
 								<h2> { __( "Image Position" ) }</h2>
 								<ButtonGroup className="uagb-editor_imgpos_group">
-								<IconButton
+								<Button
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
@@ -366,7 +366,7 @@ class UAGBRestaurantMenu extends Component {
 								aria-pressed = { "left" === imagePosition }
 								isPrimary = { "left" === imagePosition }
 								/>
-								<IconButton
+								<Button
 								key={ "top" }
 								icon={alignTop}
 								label="Top"
@@ -374,7 +374,7 @@ class UAGBRestaurantMenu extends Component {
 								aria-pressed = { "top" === imagePosition }
 								isPrimary = { "top" === imagePosition }
 								/>
-								<IconButton
+								<Button
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
