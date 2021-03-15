@@ -28,7 +28,7 @@ class InfoBoxDesc extends React.Component {
 	                className='uagb-ifb-desc'
 	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

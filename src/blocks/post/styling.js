@@ -237,7 +237,7 @@ function styling( props ) {
 		}
 	}
 
-	if ( true === postPagination && 'empty' === paginationMarkup ) {
+	if ( true === postPagination ) {
 		if ( 'filled' == paginationLayout ) {
 			selectors[" .uagb-post-pagination-wrap a"] = {
 				

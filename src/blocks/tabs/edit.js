@@ -589,7 +589,7 @@ class UAGBTabsEdit extends Component {
                                             tagName="p"
                                             value={ header }
                                             onChange={ ( value ) => this.updateTabsTitle(value, index) }
-                                            unstableOnSplit={ () => null }
+                                            onSplit={ () => null }
                                             placeholder={ __( 'Title…' , 'ultimate-addons-for-gutenberg' ) }
                                         />
 										{(showIcon && icon && ( iconPosition === 'right' || iconPosition === 'bottom' )&&
