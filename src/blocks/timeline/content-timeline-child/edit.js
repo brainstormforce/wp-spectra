@@ -64,9 +64,6 @@ class UAGBcontentTimelineChild extends Component {
 		componentDidMount() {
 			//Store client id.
 			this.props.setAttributes( { block_id: this.props.clientId } )
-		}
-
-		componentDidUpdate() {
 		}	
 
 		render() {
@@ -108,14 +105,7 @@ class UAGBcontentTimelineChild extends Component {
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			var post_date = t_date
 
-			if ( 'custom' != dateFormat ) {
-
-				post_date = dateI18n( dateFormat, t_date )
-				if( post_date === "Invalid date",'ultimate-addons-for-gutenberg' ){
-					post_date = t_date
-				}
-			}
-
+			
 				if(timelinAlignment == "center"){
 					display_inner_date = true
 				} 
@@ -137,7 +127,7 @@ class UAGBcontentTimelineChild extends Component {
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
 										{ displayPostDate != true && t_date &&
 	                                        <div className={ "uagb-timeline__inner-date-new" }>
-	                                        	{ post_date }
+	                                        	{ 'custom' != dateFormat && ( dateI18n( dateFormat, post_date ) ) || post_date }
 	                                        </div>
 										}
 										</div>
@@ -150,7 +140,7 @@ class UAGBcontentTimelineChild extends Component {
 													placeholder={ __( "Write a Heading",'ultimate-addons-for-gutenberg' ) }
 													className='uagb-timeline__heading'
 													onMerge={ mergeBlocks }
-													unstableOnSplit={
+													onSplit={
 														insertBlocksAfter ?
 															( before, after, ...blocks ) => {
 																setAttributes( { content: before } )
@@ -171,7 +161,7 @@ class UAGBcontentTimelineChild extends Component {
 												placeholder={ __( "Write a Description",'ultimate-addons-for-gutenberg' ) }
 												className='uagb-timeline-desc-content'
 												onMerge={ mergeBlocks }
-												unstableOnSplit={ this.splitBlock }
+												onSplit={ this.splitBlock }
 												onRemove={ () => onReplace( [] ) }
 											/>
 											<div className="uagb-timeline__arrow"></div>
@@ -182,7 +172,7 @@ class UAGBcontentTimelineChild extends Component {
 									{ display_inner_date && <div className = "uagb-timeline__date-new">
 										{ displayPostDate != true && t_date &&
                                             <div className={ "uagb-timeline__date-new" }>
-                                            	{ post_date }
+                                            	{ 'custom' != dateFormat && ( dateI18n( dateFormat, post_date ) ) || post_date }
                                             </div>
 										}
 									</div>

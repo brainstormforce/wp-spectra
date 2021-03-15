@@ -85,16 +85,16 @@
 			 */
 			UAGBAjaxQueue.run()
 
-			$( document ).delegate( ".uagb-activate-widget", "click", UAGBAdmin._activate_widget )
-			$( document ).delegate( ".uagb-deactivate-widget", "click", UAGBAdmin._deactivate_widget )
+			$( document ).on( "click",".uagb-activate-widget", UAGBAdmin._activate_widget )
+			$( document ).on( "click",".uagb-deactivate-widget", UAGBAdmin._deactivate_widget )
 
-			$( document ).delegate( ".uagb-activate-all", "click", UAGBAdmin._bulk_activate_widgets )
-			$( document ).delegate( ".uagb-deactivate-all", "click", UAGBAdmin._bulk_deactivate_widgets )
+			$( document ).on( "click",".uagb-activate-all", UAGBAdmin._bulk_activate_widgets )
+			$( document ).on( "click",".uagb-deactivate-all", UAGBAdmin._bulk_deactivate_widgets )
 
-			$( document ).delegate( ".uag-install-theme", "click", UAGBAdmin._installNow )
-			$( document ).delegate( ".uag-activate-theme", "click", UAGBAdmin._activateTheme)
+			$( document ).on( "click",".uag-install-theme", UAGBAdmin._installNow )
+			$( document ).on( "click",".uag-activate-theme", UAGBAdmin._activateTheme)
 
-			$( document ).delegate( ".uag-file-generation", "click", UAGBAdmin._fileGeneration )
+			$( document ).on( "click",".uag-file-generation", UAGBAdmin._fileGeneration )
 
 		},
 

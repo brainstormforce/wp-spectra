@@ -31,7 +31,7 @@ const {
 	BlockAlignmentToolbar,
 	PanelColorSettings,
 	InnerBlocks,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -712,7 +712,7 @@ class UAGBcontentTimeline extends Component {
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {
+		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
 
@@ -763,7 +763,7 @@ class UAGBcontentTimeline extends Component {
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {
+		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
 	}
