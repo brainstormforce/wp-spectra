@@ -107,7 +107,7 @@ class UAGBRatingEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		$(".uagb-rating-link-wrapper").click( function(event) {
+		$(".uagb-rating-link-wrapper").on( "click", function(event) {
 			event.preventDefault()
 		})
 	}
@@ -824,7 +824,7 @@ class UAGBRatingEdit extends Component {
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
+									<Button isSecondary onClick={ open }>
 										{ ! mainimage.url ? __( "Select Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								)}

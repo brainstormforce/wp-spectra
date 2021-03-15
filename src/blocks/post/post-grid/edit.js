@@ -37,7 +37,7 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-	Toolbar,
+	ToolbarGroup,
 	TextControl,
 	RadioControl,
 	Button,
@@ -53,7 +53,7 @@ const {
 	InnerBlocks
 } = wp.blockEditor
 
-const { useDispatch , withSelect } = wp.data
+const { useDispatch , withSelect, withDispatch } = wp.data
 
 
 class UAGBPostGrid extends Component {
@@ -126,11 +126,11 @@ class UAGBPostGrid extends Component {
 		document.head.appendChild( $style )
 	}
 	componentDidUpdate() {
-		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		
+			var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
+			if( null !== element && undefined !== element ) {
+					element.innerHTML = styling( this.props )
+			}
 	}
 	togglePreview() {
 
@@ -145,11 +145,11 @@ class UAGBPostGrid extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
+				<ToolbarGroup
 					controls={ [
 						{
 							icon: 'edit',
-							title: __( 'Edit' ),
+							title: __( 'Edit' ), 
 							onClick: () => this.togglePreview(),
 							isActive: isEditing,
 						},
@@ -219,7 +219,6 @@ class UAGBPostGrid extends Component {
 						<Button
 							className="uagb-block-all-post__done-button"
 							isPrimary
-							isLarge
 							onClick={ onDone }
 						>
 							{ __( 'Done' ) }
@@ -1247,7 +1246,8 @@ class UAGBPostGrid extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default compose(
+	withSelect( ( select, props ) => {
 		const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost , block_id} = props.attributes
 		const { setAttributes } = props
 		const { getEntityRecords } = select( "core" )
@@ -1272,11 +1272,9 @@ export default withSelect( ( select, props ) => {
 			});
 		}
 		if ( "undefined" != typeof currentTax ) {
-
 			if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
 				rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
 			}
-
 			if ( "" != taxonomyType ) {
 				if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
 					categoriesList = currentTax["terms"][taxonomyType]
@@ -1308,12 +1306,17 @@ export default withSelect( ( select, props ) => {
 			latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 		}
 		const { getBlocks } = select( 'core/block-editor' );
-		const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 		return {
 			latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 			categoriesList: categoriesList,
 			taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 			block: getBlocks( props.clientId ),
-			replaceInnerBlocks
 		}
-})( UAGBPostGrid );
+	} ),
+	withDispatch( ( dispatch ) => {
+		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+		return {
+			replaceInnerBlocks,
+		};
+	} )
+)( UAGBPostGrid );

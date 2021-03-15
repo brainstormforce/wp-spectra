@@ -17,6 +17,7 @@ import {
 	getBlockMap
 } from '.././function';
 
+const { compose } = wp.compose
 const { Component, Fragment  } = wp.element
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 8
@@ -34,11 +35,10 @@ const {
 	Button,
 	Dashicon,
 	TextControl,
-	IconButton,
 	RadioControl,
 	Disabled,
 	Tip,
-	Toolbar
+	ToolbarGroup 
 } = wp.components
 
 const {
@@ -49,7 +49,7 @@ const {
 	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect , useDispatch} = wp.data
+const { withSelect , useDispatch, withDispatch} = wp.data
 
 class UAGBPostMasonry extends Component {
 
@@ -78,16 +78,16 @@ class UAGBPostMasonry extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
-					controls={ [
-						{
-							icon: 'edit',
-							title: __( 'Edit'),
-							onClick: () => this.togglePreview(),
-							isActive: isEditing,
-						},
-					] }
-				/>
+			<ToolbarGroup
+				controls={ [
+					{
+						icon: 'edit',
+						title: __( 'Edit' ),
+						onClick: () => this.togglePreview(),
+						isActive: isEditing,
+					},
+				] }
+			/>
 		);
 	}
 	onSelectPostType( value ) {
@@ -180,7 +180,6 @@ class UAGBPostMasonry extends Component {
 						<Button
 							className="uagb-block-all-post__done-button"
 							isPrimary
-							isLarge
 							onClick={ onDone }
 						>
 							{ __( 'Done' ) }
@@ -479,7 +478,7 @@ class UAGBPostMasonry extends Component {
 						{ 'button' === paginationEventType &&
 							<Fragment>
 								<h2> { __( "Alignment",'ultimate-addons-for-gutenberg' ) }</h2>
-								<IconButton
+								<Button
 									key={ "left" }
 									icon="editor-alignleft"
 									label="Left"
@@ -487,7 +486,7 @@ class UAGBPostMasonry extends Component {
 									aria-pressed = { "left" === paginationAlign }
 									isPrimary = { "left" === paginationAlign }
 								/>
-								<IconButton
+								<Button
 									key={ "center" }
 									icon="editor-aligncenter"
 									label="Right"
@@ -495,7 +494,7 @@ class UAGBPostMasonry extends Component {
 									aria-pressed = { "center" === paginationAlign }
 									isPrimary = { "center" === paginationAlign }
 								/>
-								<IconButton
+								<Button
 									key={ "right" }
 									icon="editor-alignright"
 									label="Right"
@@ -1387,7 +1386,8 @@ class UAGBPostMasonry extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default compose(
+	withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
@@ -1434,7 +1434,6 @@ export default withSelect( ( select, props ) => {
 		}
 	}
 	const { getBlocks } = select( 'core/block-editor' );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	if ( undefined !== categories && '' !== categories ) {
 		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	}
@@ -1443,7 +1442,13 @@ export default withSelect( ( select, props ) => {
 		categoriesList: categoriesList,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
-		replaceInnerBlocks
 	}
 
-} )( UAGBPostMasonry )
+} ),
+withDispatch( ( dispatch ) => {
+	const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+	return {
+		replaceInnerBlocks,
+	};
+} )
+)( UAGBPostMasonry )

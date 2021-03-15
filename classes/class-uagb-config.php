@@ -1377,6 +1377,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
 						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
+							'post_type'			      => 'carousel',
 							'inheritFromTheme'        => false,
 							'align'                   => 'left',
 							'rowGap'                  => '20',
@@ -1477,6 +1478,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'extension'   => false,
 						'attributes'  => array(
+							'post_type'					  => 'grid',
 							'inheritFromTheme'            => false,
 							'align'                       => 'left',
 							'rowGap'                      => '20',
@@ -1589,6 +1591,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'extension'   => false,
 						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
 						'attributes'  => array(
+							'post_type'					  => 'masonry',
 							'postType'                     => 'post',
 							'inheritFromTheme'             => false,
 							'align'                        => 'left',
@@ -1698,6 +1701,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
 							),
+							
 						),
 					),
 					'uagb/post-title'             => array(
