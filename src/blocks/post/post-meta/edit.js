@@ -6,13 +6,20 @@ export const PostMeta = (props) =>  {
 
 		const dateFormat = __experimentalGetSettings().formats.date
 
-		let categoryObject = ''
+		var list = categoriesList;
+		var cat = post.categories;	
+		var categoriesname = [];
 
-		categoriesList.map( ( item, thisIndex ) => {
-			if ( post.categories && item.id == post.categories[0] ) {
-				categoryObject = item
+		if(list !== undefined && cat !== undefined){
+			for(var j=0;j<list.length;j++){
+				for(var i=0;i<cat.length;i++){
+					if(list[j].id === cat[i] ){
+						categoriesname.push(list[j].name);
+					}
+				}
 			}
-		})
+		}
+	
 
 		return (
 			<div className=' uagb-post__text '>
@@ -38,10 +45,10 @@ export const PostMeta = (props) =>  {
 					</span>
 				}
 
-				{ attributes.displayPostTaxonomy && '' !== categoryObject &&
+				{ attributes.displayPostTaxonomy && 
 					<span className='uagb-post__taxonomy' >
 						<span className="dashicons-tag dashicons"></span>
-						{ categoryObject.name }
+						{categoriesname.join(", ")}
 					</span>
 				}
 			</div>

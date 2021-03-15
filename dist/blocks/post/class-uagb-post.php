@@ -1354,7 +1354,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			?>
 			<span class="uagb-post__taxonomy">
 				<span class="dashicons-tag dashicons"></span>
-				<?php echo esc_html( $terms[0]->name ); ?>
+				<?php 
+				foreach($terms as $key => $value)
+				{
+					echo esc_html($value->name." "); 
+				}
+				?>
 			</span>
 			<?php
 		}
