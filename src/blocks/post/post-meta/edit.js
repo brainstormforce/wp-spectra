@@ -8,13 +8,13 @@ export const PostMeta = (props) =>  {
 
 		var list = categoriesList;
 		var cat = post.categories;	
-		var categoriesname = [];
+		var categoriesName = [];
 
 		if(list !== undefined && cat !== undefined){
 			for(var j=0;j<list.length;j++){
 				for(var i=0;i<cat.length;i++){
 					if(list[j].id === cat[i] ){
-						categoriesname.push(list[j].name);
+						categoriesName.push(list[j].name);
 					}
 				}
 			}
@@ -48,7 +48,7 @@ export const PostMeta = (props) =>  {
 				{ attributes.displayPostTaxonomy && 
 					<span className='uagb-post__taxonomy' >
 						<span className="dashicons-tag dashicons"></span>
-						{categoriesname.join(", ")}
+						{categoriesName.join(", ")}
 					</span>
 				}
 			</div>
