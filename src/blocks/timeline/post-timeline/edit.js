@@ -1263,7 +1263,6 @@ export default withSelect( ( select, props ) => {
 			}		
 		}
 	}
-
 	if ( undefined !== categories && '' !== categories ) {
 		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	}

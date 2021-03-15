@@ -1302,7 +1302,9 @@ export default compose(
 				}		
 			}
 		}
-		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+		if ( undefined !== categories && '' !== categories ) {
+			latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+		}
 		const { getBlocks } = select( 'core/block-editor' );
 		return {
 			latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),

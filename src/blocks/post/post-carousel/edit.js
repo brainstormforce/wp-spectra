@@ -1216,7 +1216,9 @@ export default compose(
 		}
 	}
 	const { getBlocks } = select( 'core/block-editor' );
-	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+	if ( undefined !== categories && '' !== categories ) {
+		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+	}
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
