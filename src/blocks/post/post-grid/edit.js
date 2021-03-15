@@ -1304,7 +1304,9 @@ export default withSelect( ( select, props ) => {
 				}		
 			}
 		}
-		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+		if ( undefined !== categories && '' !== categories ) {
+			latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+		}
 		const { getBlocks } = select( 'core/block-editor' );
 		const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 		return {
