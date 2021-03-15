@@ -1354,10 +1354,21 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			?>
 			<span class="uagb-post__taxonomy">
 				<span class="dashicons-tag dashicons"></span>
-				<?php 
-				foreach($terms as $key => $value)
-				{
-					echo esc_html($value->name." "); 
+				<?php
+				$a = count( $terms ) - 1;
+
+				foreach ( $terms as $key => $value ) {
+					// Get the ID of a given category
+					$category_id = get_cat_ID( $value->name );
+
+					// Get the URL of this category
+					$category_link = get_category_link( $category_id );
+					?>
+					<a href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $value->name ); ?></a> 
+					<?php
+					if ( $a !== $key ) {
+						echo ',';
+					}
 				}
 				?>
 			</span>
