@@ -63,6 +63,8 @@ const {
 
 let svg_icons = Object.keys( UAGBIcon )
 
+const $ = jQuery;
+
 class UAGBTimeline extends Component {
 
 	constructor() {
@@ -971,7 +973,6 @@ class UAGBTimeline extends Component {
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this;
-		$ = jQuery;
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
@@ -987,7 +988,6 @@ class UAGBTimeline extends Component {
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this;
-		$ = jQuery;
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
@@ -995,7 +995,6 @@ class UAGBTimeline extends Component {
 
 	/*  Js for timeline line and inner line filler*/
 	timelineContent_back(id){
-		$ = jQuery;
 		var timeline            = $(".uagb-timeline").parents("#block-"+id)
 		var tm_item             = timeline.find(".uagb-timeline")
 		var line_inner          = timeline.find(".uagb-timeline__line__inner")
