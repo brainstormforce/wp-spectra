@@ -711,7 +711,8 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
+		var time = this;
+		$ = jQuery;
 		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
@@ -762,7 +763,8 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
+		var time = this;
+		$ = jQuery;
 		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
@@ -770,6 +772,7 @@ class UAGBcontentTimeline extends Component {
 
 	/*  Js for timeline line and inner line filler*/
 	timelineContent_back(id){
+		$ = jQuery;
 		var timeline            = $(".uagb-timeline").parents("#block-"+id)
 		var tm_item             = timeline.find(".uagb-timeline")
 		var line_inner          = timeline.find(".uagb-timeline__line__inner")
