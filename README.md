@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 1.22.0 ###
 * New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
+* Fix: Conditional block - Fixed console error after deactivating all the blocks.
 
 ### 1.21.1 ###
 * Improvement: Added compatibility with WordPress v5.7.
