@@ -2669,14 +2669,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'listDisplayStyle'      => 'list',
 						),
 					),
-					'uagb/condition-block'        => array(
-						'slug'        => '',
-						'title'       => __( 'Condition Block', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you add a Condition field in the Advanced Tab.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => true,
-						'attributes'  => array(),
-					),
 					'uagb/forms'                  => array(
 						'slug'        => '',
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
