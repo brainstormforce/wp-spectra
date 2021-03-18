@@ -2851,13 +2851,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-upload'           => array(
-						'slug'        => '',
-						'title'       => __( 'File Upload', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps to add File Upload field.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'attributes'  => array(),
-					),
 					'uagb/forms-toggle'           => array(
 						'slug'        => '',
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
