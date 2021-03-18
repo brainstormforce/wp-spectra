@@ -27,7 +27,7 @@ class Description extends React.Component {
 	                className='uagb-cta__desc'
 	                onChange={ ( value ) => setAttributes( { description: value } ) }
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
