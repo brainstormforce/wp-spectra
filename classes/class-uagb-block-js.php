@@ -180,55 +180,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 		}
 
-				/**
-		 * Get Conditional block Js
-		 *
-		 * @since x.x.x
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_condition_block_js( $attr, $id ) {
-
-			$defaults = UAGB_Helper::$block_list['uagb/condition-block']['attributes'];
-
-			ob_start();
-			?>
-			jQuery( document ).ready(function() {
-				var styles = `
-				@media (min-width: 1025px){
-					.entry-content .uag-hide-desktop.uagb-google-map__wrap,
-					.entry-content .uag-hide-desktop {
-						display: none;
-					}
-				}
-
-				@media (min-width: 768px) and (max-width: 1024px){
-					.entry-content .uag-hide-tab.uagb-google-map__wrap,
-					.entry-content .uag-hide-tab {
-						display: none;
-					}
-				}
-
-				@media (max-width: 767px){
-					.entry-content .uag-hide-mob.uagb-google-map__wrap,
-					.entry-content .uag-hide-mob {
-						display: none;
-					}
-				}
-				`
-				const $style = document.createElement( "style" )
-				$style.setAttribute( "id", "uagb-condition-block-style")
-				$style.type = "text/css"
-				$style.innerText = styles
-				document.head.appendChild( $style )
-				
-			});
-			<?php
-			return ob_get_clean();
-
-		}
-
-
 		/**
 		 * Get Inline Notice Js
 		 *
