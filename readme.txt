@@ -167,6 +167,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.21.1.1 =
+* Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
+
 = 1.21.1 =
 * Improvement: Added compatibility with WordPress v5.7.
 * Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
