@@ -383,7 +383,7 @@ class UAGBHowTo extends Component {
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
+									<Button isSecondary onClick={ open }>
 										{ ! mainimage.url ? __( "Select Image", 'ultimate-addons-for-gutenberg' ) : __( "Replace image", 'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								) }
@@ -745,7 +745,7 @@ class UAGBHowTo extends Component {
 							setAttributes( { headingTitle: value } ) }
 						}
 						onMerge={ mergeBlocks }
-						unstableOnSplit={
+						onSplit={
 							insertBlocksAfter ?
 								( before, after, ...blocks ) => {
 									setAttributes( { content: before } )
@@ -765,7 +765,7 @@ class UAGBHowTo extends Component {
 						className='uagb-howto-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
+						onSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
 					/>
 					<div className="uagb-howto__source-wrap">{image_icon_html}</div>
@@ -778,7 +778,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-timeNeeded-text'
 							onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
@@ -803,7 +803,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-estcost-text'
 							onChange={ ( value ) => setAttributes( { estCost: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
@@ -815,7 +815,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-estcost-value'
 							onChange={ ( value ) => setAttributes( { cost: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
@@ -827,7 +827,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-estcost-type'
 							onChange={ ( value ) => setAttributes( { currencyType: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
@@ -841,8 +841,8 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-req-tools-text'
 							onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
-							onnRemove={ () => onReplace( [] ) }
+							onSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
 						/>
 						}
 						{ showTools &&
@@ -887,7 +887,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-req-materials-text'
 							onChange={ ( value ) => setAttributes( { materialTitle: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
@@ -934,7 +934,7 @@ class UAGBHowTo extends Component {
 							className='uagb-howto-req-steps-text'
 							onChange={ ( value ) => setAttributes( { stepsTitle: value } ) }
 							onMerge={ mergeBlocks }
-							unstableOnSplit={ this.splitBlock }
+							onSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
 						<div className="uagb-howto-steps__wrap">

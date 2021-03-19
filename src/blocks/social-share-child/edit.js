@@ -251,7 +251,7 @@ class UAGBSocialShareChild extends Component {
 											`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 										) }
 									>
-										<a className="uagb-ss__link" href="javascript:void(0)" rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+										<a className="uagb-ss__link" href="#" rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 									</div>
 								)
 		}
@@ -318,7 +318,7 @@ class UAGBSocialShareChild extends Component {
 									allowedTypes={ [ "image" ] }
 									value={ image }
 									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
+										<Button isSecondary onClick={ open }>
 											{ ! image ? __( "Select Image",'ultimate-addons-for-gutenberg') : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 										</Button>
 									) }
