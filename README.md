@@ -172,6 +172,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://ultimategutenberg.com/docs/remove-uag-templates-button/)
 * Fix: Advanced Column - Reverse column and stack issue on tablet/mobile.
 * Fix: Conditional block -  Console error after deactivating all the blocks from the UAG dashboard.
+* Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
 
 ### 1.21.1 ###
 * Improvement: Added compatibility with WordPress v5.7.
