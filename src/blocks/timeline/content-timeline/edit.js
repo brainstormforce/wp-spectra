@@ -50,6 +50,8 @@ const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
 let svg_icons = Object.keys( UAGBIcon )
 
+const $ = jQuery;
+
 class UAGBcontentTimeline extends Component {
 
 	constructor() {
@@ -711,7 +713,7 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
+		var time = this;
 		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
@@ -762,7 +764,7 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
+		var time = this;
 		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
