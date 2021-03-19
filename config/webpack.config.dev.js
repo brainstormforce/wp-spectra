@@ -55,21 +55,24 @@ fs.readdir( paths.pluginSrc + "/blocks", function(err, items) {
 			sourceMap: false,
 
 		}, function( error, result ) {
+			if (null !== result ) {
 
-			let file_path = result.stats.entry
+				let file_path = result.stats.entry
 
-			let new_path = file_path.replace( paths.pluginSrc + path.sep + "blocks" + path.sep, "" );
-			new_path = new_path.replace( path.sep + "style.scss", "" );
-			
-			if ( !error && undefined !== new_path ) {
-				fs.writeFile('./assets/css/blocks/' + new_path + '.css', result.css, function(err) {
+				let new_path = file_path.replace( paths.pluginSrc + path.sep + "blocks" + path.sep, "" );
+
+				new_path = new_path.replace( path.sep + "style.scss", "" );
+				
+				if ( !error && undefined !== new_path ) {
+					fs.writeFile('./assets/css/blocks/' + new_path + '.css', result.css, function(err) {
+							if (err) throw err;
+						}
+					);
+
+					fs.appendFile('./dist/blocks.style.css', result.css, function (err) {
 						if (err) throw err;
-					}
-				);
-
-				fs.appendFile('./dist/blocks.style.css', result.css, function (err) {
-					if (err) throw err;
-				});
+					});
+				}
 			}
 		});
 	}

@@ -31,7 +31,7 @@ const {
 	BlockAlignmentToolbar,
 	PanelColorSettings,
 	InnerBlocks,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -49,6 +49,8 @@ const {
 const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
 let svg_icons = Object.keys( UAGBIcon )
+
+const $ = jQuery;
 
 class UAGBcontentTimeline extends Component {
 
@@ -711,8 +713,8 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {
+		var time = this;
+		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
 
@@ -762,8 +764,8 @@ class UAGBcontentTimeline extends Component {
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {
+		var time = this;
+		$(".edit-post-layout__content").on('scroll',function(event) {
 			time.timelineContent_back(id)
 		})
 	}

@@ -337,7 +337,7 @@ class UAGBIconListChild extends Component {
 									allowedTypes={ [ "image" ] }
 									value={ image }
 									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
+										<Button isSecondary onClick={ open }>
 											{ ! image ? __( "Select Image" ) : __( "Replace image" ) }
 										</Button>
 									) }

@@ -731,7 +731,7 @@ class UAGBMarketingButtonEdit extends Component {
 									onRemove={ () => this.props.onReplace( [] ) }
 									multiline={ false }
 									onMerge = { this.props.mergeBlocks }
-									unstableOnSplit = {
+									onSplit = {
 										this.props.insertBlocksAfter ?
 											( before, after, ...blocks ) => {
 												setAttributes( { content: before } )
@@ -755,7 +755,7 @@ class UAGBMarketingButtonEdit extends Component {
 									onRemove={ () => this.props.onReplace( [] ) }
 									multiline={ false }
 									onMerge = { this.props.mergeBlocks }
-									unstableOnSplit = {
+									onSplit = {
 										this.props.insertBlocksAfter ?
 											( before, after, ...blocks ) => {
 												setAttributes( { content: before } )
