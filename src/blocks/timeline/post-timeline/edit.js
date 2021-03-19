@@ -92,7 +92,7 @@ class UAGBTimeline extends Component {
 
 	render() {
 
-		const { attributes, categoriesList, setAttributes, latestPosts, focus, taxonomyList, className } = this.props
+		const { attributes, categoriesList, setAttributes, latestPosts, focus, taxonomyList, className, deviceType, } = this.props
 
 		const {
 			headingColor,
@@ -937,6 +937,7 @@ class UAGBTimeline extends Component {
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap",
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId }`
 				) }>
 					<div  className = { classnames(
@@ -1222,6 +1223,9 @@ export default withSelect( ( select, props ) => {
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
 
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
 	let currentTax = allTaxonomy[postType]
 	let taxonomy = ""
@@ -1267,6 +1271,7 @@ export default withSelect( ( select, props ) => {
 		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
 	}
 	return {
+		deviceType: deviceType,
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
