@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 		/**
 		 * Add support to change template button text.
 		 *
-		 * @since x.x.x
+		 * @since 1.21.0
 		 * @param  array $vars localize array of button.
 		 */
 		public function update_vars( $vars = array() ) {

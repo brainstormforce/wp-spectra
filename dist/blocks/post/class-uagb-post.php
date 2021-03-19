@@ -153,6 +153,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
+							'post_type'                   => array(
+								'type'    => 'string',
+								'default' => 'grid',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -218,6 +222,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-excerpt' ),
 									array( 'uagb/post-button' ),
 								),
+							),
+							'post_type'         => array(
+								'type'    => 'string',
+								'default' => 'carousel',
 							),
 						)
 					),
@@ -326,6 +334,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-excerpt' ),
 									array( 'uagb/post-button' ),
 								),
+							),
+							'post_type'                    => array(
+								'type'    => 'string',
+								'default' => 'masonry',
 							),
 						)
 					),
@@ -825,12 +837,29 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'uagb-post__columns-mobile-' . $attributes['mcolumns'],
 			);
 
-			$block_id  = 'uagb-block-' . $attributes['block_id'];
+			$block_id = 'uagb-block-' . $attributes['block_id'];
+
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$outerwrap = array(
 				'uagb-post-grid',
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 				'uagb-post__image-position-' . $attributes['imgPosition'],
 				$block_id,
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			switch ( $layout ) {

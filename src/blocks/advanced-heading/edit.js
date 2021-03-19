@@ -365,7 +365,7 @@ class UAGBAdvancedHeading extends Component {
 							setAttributes( { headingTitle: value } ) }
 						}
 						onMerge={ mergeBlocks }
-						unstableOnSplit={
+						onSplit={
 							insertBlocksAfter ?
 								( before, after, ...blocks ) => {
 									setAttributes( { content: before } )
@@ -386,7 +386,7 @@ class UAGBAdvancedHeading extends Component {
 						className='uagb-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
+						onSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>

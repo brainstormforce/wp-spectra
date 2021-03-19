@@ -506,7 +506,7 @@ class UAGBtestimonial extends Component {
 										allowedTypes= { [ "image" ] }
 										value={ backgroundImage }
 										render={ ( { open } ) => (
-											<Button isDefault onClick={ open }>
+											<Button isSecondary onClick={ open }>
 												{ ! backgroundImage ? __( "Select Background Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 											</Button>
 										) }
@@ -712,7 +712,7 @@ class UAGBtestimonial extends Component {
 							allowedTypes= { [ "image" ] }
 							value={ image_val }
 							render={ ( { open } ) => (
-								<Button isDefault onClick={ open }>
+								<Button isSecondary onClick={ open }>
 									{  this.getImageName( test_block[index]["image"] ) }
 								</Button>
 							) }

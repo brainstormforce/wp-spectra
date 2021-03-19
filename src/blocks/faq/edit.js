@@ -41,7 +41,6 @@ const {
 	Button,
 	Dashicon,
 	ToggleControl,
-	IconButton
 } = wp.components
 
 const ALLOWED_BLOCKS = [ "uagb/faq-child" ]
@@ -411,7 +410,7 @@ class UAGBFaqEdit extends Component {
 					{ 'grid' === layout &&
 						<Fragment>
 							<h2> { __( "Alignment", 'ultimate-addons-for-gutenberg' ) }</h2>
-							<IconButton
+							<Button
 								key={ "left" }
 								icon="editor-alignleft"
 								label="Left"
@@ -419,7 +418,7 @@ class UAGBFaqEdit extends Component {
 								aria-pressed = { "left" === align }
 								isPrimary = { "left" === align }
 							/>
-							<IconButton
+							<Button
 								key={ "center" }
 								icon="editor-aligncenter"
 								label="Right"
@@ -427,7 +426,7 @@ class UAGBFaqEdit extends Component {
 								aria-pressed = { "center" === align }
 								isPrimary = { "center" === align }
 							/>
-							<IconButton
+							<Button
 								key={ "right" }
 								icon="editor-alignright"
 								label="Right"
@@ -632,7 +631,7 @@ class UAGBFaqEdit extends Component {
 						noSelectedPlaceholder= { __( "Select Icon", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<h2> { __( "Icon Alignment", 'ultimate-addons-for-gutenberg' ) }</h2>
-					<IconButton
+					<Button
 					 	key={ "row" }
 						icon="editor-alignleft"
 						label="Left"
@@ -640,7 +639,7 @@ class UAGBFaqEdit extends Component {
 						aria-pressed = { "row" === iconAlign }
 						isPrimary = { "row" === iconAlign }
 					/>
-					<IconButton
+					<Button
 						key={ "row-reverse" }
 						icon="editor-alignright"
 						label="Right"

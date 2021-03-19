@@ -95,6 +95,19 @@ array_multisort(
 									'social-share-child',
 									'buttons-child',
 									'faq-child',
+									'forms-name',
+									'forms-email',
+									'forms-hidden',
+									'forms-phone',
+									'forms-textarea',
+									'forms-url',
+									'forms-select',
+									'forms-radio',
+									'forms-checkbox',
+									'forms-upload',
+									'forms-toggle',
+									'forms-date',
+									'forms-accept',
 									'post-title',
 									'post-image',
 									'post-button',
@@ -102,7 +115,13 @@ array_multisort(
 									'post-meta',
 									'restaurant-menu-child',
 									'content-timeline-child',
+									'tabs-child',
 								);
+
+								if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
+									continue;
+								}
+
 								if ( in_array( $addon, $child_blocks, true ) ) {
 									continue;
 								}

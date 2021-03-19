@@ -29,7 +29,7 @@ class Title extends React.Component {
 	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }
 	                multiline={ false }
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

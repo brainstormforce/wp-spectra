@@ -17,6 +17,7 @@ import WebfontLoader from "../../../components/typography/fontloader"
 import Blog from "./blog"
 import styling from ".././styling"
 
+const { compose } = wp.compose
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const { decodeEntities } = wp.htmlEntities
@@ -36,7 +37,7 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	Toolbar,
+	ToolbarGroup,
 	ButtonGroup,
 	Button,
 	TabPanel,
@@ -56,7 +57,7 @@ const {
 	InnerBlocks
 } = wp.blockEditor
 
-const { withSelect , useDispatch} = wp.data
+const { withSelect , useDispatch, withDispatch} = wp.data
 
 class UAGBPostCarousel extends Component {
 
@@ -128,16 +129,16 @@ class UAGBPostCarousel extends Component {
 		const { isEditing } = this.state;
 
 		return (
-				<Toolbar
-					controls={ [
-						{
-							icon: 'edit',
-							title: __( 'Edit' ),
-							onClick: () => this.togglePreview(),
-							isActive: isEditing,
-						},
-					] }
-				/>
+			<ToolbarGroup
+				controls={ [
+					{
+						icon: 'edit',
+						title: __( 'Edit' ),
+						onClick: () => this.togglePreview(),
+						isActive: isEditing,
+					},
+				] }
+			/>
 		);
 	}
 	
@@ -201,7 +202,6 @@ class UAGBPostCarousel extends Component {
 						<Button
 							className="uagb-block-all-post__done-button"
 							isPrimary
-							isLarge
 							onClick={ onDone }
 						>
 							{ __( 'Done') }
@@ -1140,7 +1140,8 @@ class UAGBPostCarousel extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default compose(
+	withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
@@ -1189,15 +1190,22 @@ export default withSelect( ( select, props ) => {
 		}
 	}
 	const { getBlocks } = select( 'core/block-editor' );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-	latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+	if ( undefined !== categories && '' !== categories ) {
+		latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+	}
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
 		deviceType: deviceType,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
-		replaceInnerBlocks
 	}
 
-} )( UAGBPostCarousel )
+} ),
+withDispatch( ( dispatch ) => {
+	const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+	return {
+		replaceInnerBlocks,
+	};
+} )
+)( UAGBPostCarousel )

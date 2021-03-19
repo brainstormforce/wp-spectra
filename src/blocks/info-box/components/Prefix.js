@@ -33,7 +33,7 @@ class Prefix extends React.Component {
 	                	}	
 	                }            	
 	                onMerge = { props.mergeBlocks }
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

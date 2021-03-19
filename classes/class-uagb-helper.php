@@ -478,6 +478,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/tabs':
+					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/testimonial':
 					$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
@@ -584,6 +588,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/wp-search':
 					$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
+					break;
+
+				case 'uagb/forms':
+					$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_forms_gfont( $blockattr );
 					break;
 
 				case 'uagb/taxonomy-list':

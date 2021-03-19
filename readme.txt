@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.6
-Stable tag: 1.20.1
+Tested up to: 5.7
+Stable tag: 1.21.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://ultimategutenberg.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
 	<li><a href="https://ultimategutenberg.com/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
 	<li><a href="https://www.ultimategutenberg.com/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
 	<li><a href="https://www.ultimategutenberg.com/blocks/taxonomy/" target="_blank">Taxonomy List </a>: With this block, you can easily display categories for post/pages or custom post types. Further, you can style it with a grid, list, or dropdown layout and set color, typography.</li>
@@ -166,14 +167,26 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.21.0 =
+= 1.22.0 =
+* New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
 * Improvement: Block preview on responsive devices in editor.
-* New: Added the single pages and blocks for the Gutenberg. [Read more](https://wpastra.com/docs/import-gb-pages-patterns/)
+
+= 1.21.1 =
+* Improvement: Added compatibility with WordPress v5.7.
+* Fix: Post Layouts - Fixed the JS undefined error with `post_type` in block editor while using Post Masonry.
+* Fix: Post Layouts - Fixed the Post Layout keeps loading when clicking on categories All.
+
+= 1.21.0 =
+* New: Tabs Block. [Read More](https://ultimategutenberg.com/tabs/)
+* New: Added ability to import pre-made pages, patterns for block editor.
+* Improvement: Block Conditions - Now user can add conditions of visibility to blocks with respect to User State, Responsive Visibility, User Role, Browser, and Operating System.
+* Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
+* Improvement: Added hooks for automatic Toolset Dynamic Sources.
+* Fix: RTL issues in a few of the blocks.
 * Fix: Content Timeline - Connector issue on Tablet and mobile.
+* Fix: Content Timeline - Font size not applying for date on left/right layout.
 * Fix: Price List - Block encountered an error when used as a reusable block.
 * Fix: Heading Color issue in some blocks when used with Cover block.
-* Improvement: Added Transform Compatibility in Advanced Heading and Blockquote Block.
-* Improvement: RTL support to the block.
 * Deprecated: Removed Transform Compatibility from Icon List Block.
 
 = 1.20.1 =

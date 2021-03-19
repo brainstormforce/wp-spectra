@@ -542,10 +542,27 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
 			$showCount        = $attributes['showCount'];
 
-			$main_classes  = array(
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
+			$main_classes = array(
 				'uagb-taxonomy__outer-wrap',
 				'uagb-block-' . $block_id,
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
+
 			$inner_classes = array(
 				'uagb-taxonomy-wrap',
 				'uagb-layout-' . $layout,
