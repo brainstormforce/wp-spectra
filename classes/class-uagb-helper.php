@@ -263,6 +263,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function print_stylesheet() {
 
+			$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
+
+			ob_start();
+			?>
+				<style id="uagb-style-conditional-extension"><?php echo $conditional_block_css; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
+			<?php
+			ob_end_flush();
+
 			if ( 'enabled' === self::$file_generation && ! self::$fallback_css ) {
 				return;
 			}
@@ -608,7 +616,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				default:
 					// Nothing to do here.
-					$css += UAGB_Block_Helper::get_condition_block_css( $blockattr, $block_id );
 					break;
 			}
 
@@ -812,9 +819,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$desktop = '';
 			$tablet  = '';
 			$mobile  = '';
-			$only_desktop = '';
-			$only_tablet  = '';
-			$only_mobile  = '';
 
 			$tab_styling_css = '';
 			$mob_styling_css = '';
@@ -853,31 +857,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$desktop .= $css['desktop'];
 							$tablet  .= $css['tablet'];
 							$mobile  .= $css['mobile'];
-							$only_desktop .= $css['onlydesktop'];
-							$only_tablet  .= $css['onlytablet'];
-							$only_mobile  .= $css['onlymobile'];
 						}
 						$js .= $block_assets['js'];
 					}
 				}
-			}
-
-			if ( ! empty( $only_desktop ) ) {
-				$tab_styling_css .= '@media (min-width: 1025px){';
-				$tab_styling_css .= $only_desktop;
-				$tab_styling_css .= '}';
-			}
-
-			if ( ! empty( $only_tablet ) ) {
-				$tab_styling_css .= '@media (min-width: ' . ( UAGB_MOBILE_BREAKPOINT + 1 ) . 'px) and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
-				$tab_styling_css .= $only_tablet;
-				$tab_styling_css .= '}';
-			}
-
-			if ( ! empty( $only_mobile ) ) {
-				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
-				$tab_styling_css .= $only_mobile;
-				$tab_styling_css .= '}';
 			}
 
 			if ( ! empty( $tablet ) ) {
@@ -1862,27 +1845,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.15.0
 		 */
 		public static function generate_all_css( $combined_selectors, $id ) {
-			$desktop = array();
-			$tablet  = array();
-			$mobile  = array();
-			$onlydesktop = array();
-			$onlytablet  = array();
-			$onlymobile  = array();
-
-			$desktop = ( isset( $combined_selectors['desktop'] ) ) ? $combined_selectors['desktop'] : array();
-			$tablet = ( isset( $combined_selectors['tablet'] ) ) ? $combined_selectors['tablet'] : array();
-			$mobile = ( isset( $combined_selectors['mobile'] ) ) ? $combined_selectors['mobile'] : array();
-			$onlydesktop = ( isset( $combined_selectors['onlydesktop'] ) ) ? $combined_selectors['onlydesktop'] : array();
-			$onlytablet = ( isset( $combined_selectors['onlytablet'] ) ) ? $combined_selectors['onlytablet'] : array();
-			$onlymobile = ( isset( $combined_selectors['onlymobile'] ) ) ? $combined_selectors['onlymobile'] : array();
-
+			
 			return array(
-				'desktop' => self::generate_css( $desktop, $id ),
-				'tablet'  => self::generate_css( $tablet, $id ),
-				'mobile'  => self::generate_css( $mobile, $id ),
-				'onlydesktop' => self::generate_css( $onlydesktop, $id ),
-				'onlytablet'  => self::generate_css( $onlytablet, $id ),
-				'onlymobile'  => self::generate_css( $onlymobile, $id ),
+				'desktop' => self::generate_css( $combined_selectors['desktop'], $id ),
+				'tablet'  => self::generate_css( $combined_selectors['tablet'], $id ),
+				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
 		}
 	}
