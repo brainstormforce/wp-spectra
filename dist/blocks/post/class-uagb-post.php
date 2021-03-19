@@ -1355,21 +1355,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			<span class="uagb-post__taxonomy">
 				<span class="dashicons-tag dashicons"></span>
 				<?php
-				$a = count( $terms ) - 1;
-
+				$terms_list = [];
 				foreach ( $terms as $key => $value ) {
-					// Get the ID of a given category
-					$category_id = get_cat_ID( $value->name );
-
 					// Get the URL of this category
-					$category_link = get_category_link( $category_id );
-					?>
-					<a href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $value->name ); ?></a> 
-					<?php
-					if ( $a !== $key ) {
-						echo ',';
-					}
+					$category_link = get_category_link( $value->term_id );	
+					array_push($terms_list,"<a href=".esc_url($category_link).">".esc_html($value->name)."</a>"); 
 				}
+				echo implode(", ",$terms_list);
 				?>
 			</span>
 			<?php
