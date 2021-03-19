@@ -141,7 +141,6 @@
 			}
 			let blockId = attr.block_id;
 			var headerArray = $( 'div.entry-content' ).find( all_header )
-			console.log(headerArray) // For testing will remove it later
 			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
 			headerArray.each( function (index,value){
 				let header = $( this );
