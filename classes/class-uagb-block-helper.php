@@ -5526,43 +5526,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
-		public static function get_condition_block_css( $attr, $id ) {
+		public static function get_condition_block_css() {
 
-			$defaults = UAGB_Helper::$block_list['uagb/condition-block']['attributes'];
-			$attr     = array_merge( $defaults, $attr );
-
-			$selectors   = array();
-			$t_selectors = array();
-			$m_selectors = array();
-
-			$selectors = array(
-			'.entry-content .uag-hide-desktop.uagb-google-map__wrap,
-				.entry-content .uag-hide-desktop' => array(
-					'display'=> 'none',
-				),
-			);
-
-			$t_selectors = array(
-				'.entry-content .uag-hide-tab.uagb-google-map__wrap,
-				.entry-content .uag-hide-tab' => array(
-					'display'=> 'none',
-				),
-			);
-
-			$m_selectors = array(
-				'.entry-content .uag-hide-mob.uagb-google-map__wrap,
-				.entry-content .uag-hide-mob' => array(
-					'display'=> 'none',
-				),
-			);
-
-			$combined_selectors = array(
-				'onlydesktop' => $selectors,
-				'onlytablet'  => $t_selectors,
-				'onlymobile'  => $m_selectors,
-			);
-			
-			return UAGB_Helper::generate_all_css( $combined_selectors,  $id );
+			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
 		
 		}
 	}
