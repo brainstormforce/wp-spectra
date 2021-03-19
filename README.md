@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ### 1.22.0 ###
 * New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
+* Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://ultimategutenberg.com/docs/remove-uag-templates-button/)
 * Fix: Advanced Column - Reverse column and stack issue on tablet/mobile.
 
 ### 1.21.1 ###
