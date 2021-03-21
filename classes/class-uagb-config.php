@@ -1701,6 +1701,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
 							),
+							
 						),
 					),
 					'uagb/post-title'             => array(
@@ -2670,14 +2671,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'listDisplayStyle'      => 'list',
 						),
 					),
-					'uagb/condition-block'        => array(
-						'slug'        => '',
-						'title'       => __( 'Condition Block', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you add a Condition field in the Advanced Tab.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => true,
-						'attributes'  => array(),
-					),
 					'uagb/forms'                  => array(
 						'slug'        => '',
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
@@ -2857,13 +2850,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'slug'        => '',
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'attributes'  => array(),
-					),
-					'uagb/forms-upload'           => array(
-						'slug'        => '',
-						'title'       => __( 'File Upload', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps to add File Upload field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(),
 					),

@@ -20,13 +20,18 @@ class UAGBTabsChildEdit extends Component {
 	constructor() {
 		super( ...arguments );
 	}
-	
-	componentWillMount() {
-		const { attributes, clientId } = this.props;
 
+	componentDidMount() {
+		const { attributes, setAttributes, clientId  } = this.props;
+		const {id, tabHeaders} = attributes;
 		const { getBlockRootClientId, getBlockAttributes } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 		const rootBlockId = getBlockRootClientId( clientId );
 		const rootBlockAttrs = getBlockAttributes( rootBlockId );
+
+		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+		setAttributes({
+			header: tabHeaders[id]
+		})
 
 		// Apply parent style if newly inserted
 		if (rootBlockAttrs !== null && rootBlockAttrs.needUpdate !== false) {
@@ -34,16 +39,8 @@ class UAGBTabsChildEdit extends Component {
 				attributes[attribute] = rootBlockAttrs[attribute];
 			});
 		}
-	}
-
-	componentDidMount() {
-		const { attributes, setAttributes } = this.props;
-		const {id, tabHeaders} = attributes;
-		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		setAttributes({
-			header: tabHeaders[id]
-		})
 	}	
+	
 	render() {
 		const { attributes , className} = this.props;
 		const {tabActive, id, block_id} = attributes;

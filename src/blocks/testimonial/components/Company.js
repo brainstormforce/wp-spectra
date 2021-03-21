@@ -42,7 +42,7 @@ class Company extends React.Component {
 	                multiline={ false }
 	                placeholder={ __( "Company Name",'ultimate-addons-for-gutenberg' ) }
 	                onMerge = { props.mergeBlocks }		
-	                unstableOnSplit = {
+	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

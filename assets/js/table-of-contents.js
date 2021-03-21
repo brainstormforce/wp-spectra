@@ -32,9 +32,9 @@
 
 		init: function() {
 
-			$( document ).delegate( ".uagb-toc__list a", "click", UAGBTableOfContents._scroll )
-			$( document ).delegate( ".uagb-toc__scroll-top", "click", UAGBTableOfContents._scrollTop )
-			$( document ).delegate( '.uagb-toc__title-wrap', 'click', UAGBTableOfContents._toggleCollapse )
+			$( document ).on( "click",".uagb-toc__list a", UAGBTableOfContents._scroll )
+			$( document ).on( "click",".uagb-toc__scroll-top", UAGBTableOfContents._scrollTop )
+			$( document ).on( "click",'.uagb-toc__title-wrap', UAGBTableOfContents._toggleCollapse )
 			$( document ).on( "scroll", UAGBTableOfContents._showHideScroll  )
 
 		},

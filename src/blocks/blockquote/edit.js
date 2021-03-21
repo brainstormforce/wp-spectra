@@ -543,7 +543,7 @@ class UAGBBlockQuote extends Component {
 						allowedTypes= { [ "image" ] }
 						value={ authorImage }
 						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
+							<Button isSecondary onClick={ open }>
 								{ image_name }
 							</Button>
 						) }
@@ -1045,7 +1045,7 @@ class UAGBBlockQuote extends Component {
 					/>
 					}
 					{ skinStyle === "quotation" && <Fragment>
-						<Toolbar>
+						<Toolbar label="Options">
 							<Tooltip text={ __( "Normal Quote", 'ultimate-addons-for-gutenberg' ) }>
 								<Button
 									className={ classnames(
@@ -1060,7 +1060,7 @@ class UAGBBlockQuote extends Component {
 							</Tooltip>
 						</Toolbar>
 
-						<Toolbar>
+						<Toolbar label="Options">
 							<Tooltip text={ __( "Inline Quote", 'ultimate-addons-for-gutenberg' ) }>
 								<Button
 									className={ classnames(
@@ -1079,7 +1079,7 @@ class UAGBBlockQuote extends Component {
 
 					{ enableTweet &&
 						<Fragment>
-							<Toolbar>
+							<Toolbar label="Options">
 								<label
 									aria-label={ __( "Twitter Username", 'ultimate-addons-for-gutenberg' ) }
 									className={ `${ className }__via-label` }
