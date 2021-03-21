@@ -832,7 +832,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( '' === $block['blockName'] ) {
 						continue;
 					}
-					
+
 					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
@@ -852,7 +852,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						$block_assets = $this->get_block_css_and_js( $block );
 						// Get CSS for the Block.
 						$css = $block_assets['css'];
-						
+
 						if ( isset( $css['desktop'] ) ) {
 							$desktop .= $css['desktop'];
 							$tablet  .= $css['tablet'];
@@ -1845,7 +1845,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.15.0
 		 */
 		public static function generate_all_css( $combined_selectors, $id ) {
-			
+
 			return array(
 				'desktop' => self::generate_css( $combined_selectors['desktop'], $id ),
 				'tablet'  => self::generate_css( $combined_selectors['tablet'], $id ),
