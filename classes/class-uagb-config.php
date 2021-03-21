@@ -1701,7 +1701,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 								array( 'uagb/post-excerpt' ),
 								array( 'uagb/post-button' ),
 							),
-							
+
 						),
 					),
 					'uagb/post-title'             => array(
