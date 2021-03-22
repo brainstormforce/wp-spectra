@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-name", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

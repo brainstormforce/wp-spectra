@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-phone", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

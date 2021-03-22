@@ -19,6 +19,7 @@ registerBlockType( "uagb/forms-select", {
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/forms" ],
 	attributes,
-	edit,	
+	edit,
+	example:{},	
 	save,
 } )

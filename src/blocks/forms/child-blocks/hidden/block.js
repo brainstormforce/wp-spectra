@@ -22,5 +22,6 @@ registerBlockType( "uagb/forms-hidden", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )
