@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Conditional block -  Console error after deactivating all the blocks from the UAG dashboard.
 * Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
 * Fix: Block Conditions - Conflicting the WPForms.
+* Improvement: Post Layouts - Now all the selected categories can be displayed in each post layout.
 
 = 1.21.1 =
 * Improvement: Added compatibility with WordPress v5.7.
