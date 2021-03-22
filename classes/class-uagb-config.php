@@ -38,7 +38,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_block_attributes() {
-		
+
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
 					'uagb/advanced-heading'       => array(
@@ -2282,7 +2282,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tColumnsDesktop'           => 1,
 							'tColumnsTablet'            => 1,
 							'tColumnsMobile'            => 1,
-							'mappingHeaders'			=> array_fill_keys(array(0,1,2,3,4,5), true),
+							'mappingHeaders'            => array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true ),
 							'widthTypeDesktop'          => '%',
 							'widthTypeTablet'           => '%',
 							'widthTypeMobile'           => '%',

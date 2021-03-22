@@ -57,8 +57,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return;
 			}
 
-			$mappingHeadersArray = array_fill_keys(array(0,1,2,3,4,5), true);
-			
+			$mappingHeadersArray = array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true );
+
 			register_block_type(
 				'uagb/table-of-contents',
 				array(
@@ -105,7 +105,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'default' => 'left',
 							),
 							'heading'                   => array(
-								'type'   => 'string',
+								'type'     => 'string',
 								'selector' => '.uagb-toc__title',
 								'default'  => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 							),
@@ -369,7 +369,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'type'    => 'string',
 								'default' => 'left',
 							),
-							'emptyHeadingTeaxt' 		=> array(
+							'emptyHeadingTeaxt'         => array(
 								'type'    => 'string',
 								'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 							),
