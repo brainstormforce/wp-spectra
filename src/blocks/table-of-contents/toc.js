@@ -83,7 +83,7 @@ class TableOfContents extends React.Component {
 		}
             
 		};		
-
+		
 		if ( mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0 ) {
 			return (
 				<div className="uagb-toc__list-wrap">

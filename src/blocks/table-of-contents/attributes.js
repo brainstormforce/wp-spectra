@@ -60,10 +60,6 @@ const attributes = {
 		type: 'array',
 		default: Array(6).fill(true)
 	},
-	headerLinks: {
-		type: 'html',
-		default: ''
-	},
 	align : {
 		type    : "string",
 		default : "left",
