@@ -214,7 +214,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Get Forms Js
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
@@ -867,7 +867,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Forms block.
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_forms_gfont( $attr ) {
