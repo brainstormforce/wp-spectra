@@ -375,7 +375,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							),
 						)
 					),
-					'render_callback' => array( $this, 'uagb_render_table_of_contents_block' ),
+					'render_callback' => array( $this, 'render_table_of_contents_block' ),
 				)
 			);
 		}
@@ -387,7 +387,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @since x.x.x
 		 */
-		public function uagb_render_table_of_contents_block( $attributes ) {
+		public function render_table_of_contents_block( $attributes ) {
 
 			$wrap = array(
 				'wp-block-uagb-table-of-contents ',
@@ -395,6 +395,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				'uagb-toc__columns-' . $attributes['tColumnsDesktop'],
 				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
 				'uagb-block-' . $attributes['block_id'],
+				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
 
 			ob_start();
