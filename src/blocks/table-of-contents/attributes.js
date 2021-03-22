@@ -64,6 +64,10 @@ const attributes = {
 		type    : "string",
 		default : "left",
 	},
+	headerLinks: {
+		type: 'html',
+		default: ''
+	},
 	heading: {
 		type: "string",
 		selector: ".uagb-toc__title",

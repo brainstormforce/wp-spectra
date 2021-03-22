@@ -31,6 +31,7 @@ registerBlockType( "uagb/table-of-contents", {
 	},
 	attributes,
 	edit,
+	// Render via PHP
 	save() {
 		return null
 	},
