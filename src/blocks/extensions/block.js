@@ -13,9 +13,8 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 		const { isSelected } = props;
 		
 		const blocks_name = props.name;
-
-		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child' ];
-
+		
+		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector' ];
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
@@ -47,7 +46,7 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 	} = attributes;
 
 	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
-		if ( UAGHideDesktop ) {	
+		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
 	
@@ -58,6 +57,7 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		if ( UAGHideMob ) {	
 			extraProps.className = extraProps.className + ' uag-hide-mob';
 		}
+		
 	}
 
 	return extraProps;
