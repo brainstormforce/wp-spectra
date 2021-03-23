@@ -5283,17 +5283,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			);
-			$check_reusable_block = [];
+			$check_reusable_block = array();
 			foreach ( $reusable_blocks as $i => $block ) {
 				if ( isset( $block['blockName'] ) && 'core/block' === $block['blockName'] ) {
 					$block_id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 					if ( $block_id ) {
 						$content = get_post_field( 'post_content', $block_id );
 
-						$reusable_blocks = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+						$reusable_blocks      = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 						$check_reusable_block = $reusable_blocks;
 					}
-				}else{
+				} else {
 					$check_reusable_block = $reusable_blocks;
 				}
 			}
@@ -5415,7 +5415,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-			
 
 			if ( 'boxed' === $attr['formStyle'] ) {
 
@@ -5478,7 +5477,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
-	
+
 		/**
 		 * Get Lottie CSS.
 		 *
