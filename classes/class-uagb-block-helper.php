@@ -5291,9 +5291,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					if ( $block_id ) {
 						$content = get_post_field( 'post_content', $block_id );
 
-						$reusable_blockss = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+						$reusable_blocks = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 
-						foreach ( $reusable_blockss[0]['innerBlocks'] as $key => $blocks ) {
+						foreach ( $reusable_blocks[0]['innerBlocks'] as $key => $blocks ) {
 
 							if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
 
