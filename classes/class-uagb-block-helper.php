@@ -5283,142 +5283,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			);
-
+			$check_reusable_block = [];
 			foreach ( $reusable_blocks as $i => $block ) {
 				if ( isset( $block['blockName'] ) && 'core/block' === $block['blockName'] ) {
 					$block_id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
-
 					if ( $block_id ) {
 						$content = get_post_field( 'post_content', $block_id );
 
 						$reusable_blocks = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
-
-						foreach ( $reusable_blocks[0]['innerBlocks'] as $key => $blocks ) {
-
-							if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
-
-								$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
-									'color'     => $attr['inputColor'],
-									'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-								);
-								$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-									'background-color' => $attr['bgColor'],
-									'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-									'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-								);
-								$selectors[' .uagb-forms-checkbox-wrap > label']                                     = array(
-									'color' => $attr['inputColor'],
-								);
-
-								if ( 'boxed' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-										'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-										'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
-									);
-									$selectors[' .uagb-forms-main-form .uagb-forms-checkbox-wrap > input']                              = array(
-										'color' => $attr['inputColor'],
-									);
-								}
-								if ( 'underlined' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-										'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-								}
-							}
-							if ( 'uagb/forms-radio' === $blocks['blockName'] ) {
-								$selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-									'background-color' => $attr['inputColor'],
-									'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-								);
-								$selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-									'background-color' => $attr['bgColor'],
-									'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-									'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-								);
-								$selectors[' .uagb-forms-radio-wrap > label']                                  = array(
-									'color' => $attr['inputColor'],
-								);
-
-								if ( 'boxed' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-										'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-									$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']                           = array(
-										'color' => $attr['inputColor'],
-									);
-								}
-								if ( 'underlined' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-										'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-								}
-							}
-							if ( 'uagb/forms-toggle' === $blocks['blockName'] ) {
-
-								$selectors[' .uagb-slider']                              = array(
-									'background-color' => $attr['bgColor'],
-								);
-								$selectors[' .uagb-forms-main-form .uagb-switch']        = array(
-									'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
-									'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
-								);
-								$selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
-									'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
-									'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
-								);
-								$selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
-									'background-color' => $attr['toggleActiveColor'],
-								);
-								$selectors[' .uagb-switch input:focus + .uagb-slider']   = array(
-									'box-shadow' => '0 0 1px' . $attr['toggleActiveColor'],
-								);
-								if ( 'boxed' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-										'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-								}
-								if ( 'underlined' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-										'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-								}
-							}
-							if ( 'uagb/forms-accept' === $blocks['blockName'] ) {
-								$selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-									'color'     => $attr['inputColor'],
-									'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-								);
-								$selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-									'background-color' => $attr['bgColor'],
-									'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-									'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-								);
-								$selectors[' .uagb-forms-accept-wrap > label']                                     = array(
-									'color' => $attr['inputColor'],
-								);
-
-								if ( 'boxed' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
-										'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-										'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
-									);
-									$selectors[' .uagb-forms-main-form .uagb-forms-accept-wrap > input']                              = array(
-										'color' => $attr['inputColor'],
-									);
-								}
-								if ( 'underlined' === $attr['formStyle'] ) {
-									$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
-										'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-									);
-								}
-							}
-						}
+						$check_reusable_block = $reusable_blocks;
 					}
+				}else{
+					$check_reusable_block = $reusable_blocks;
 				}
 			}
-
-			foreach ( $reusable_blocks[0]['innerBlocks'] as $key => $blocks ) {
-
+			foreach ( $check_reusable_block[0]['innerBlocks'] as $key => $blocks ) {
 				if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
 					$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
 						'color'     => $attr['inputColor'],
@@ -5536,6 +5415,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
+			
 
 			if ( 'boxed' === $attr['formStyle'] ) {
 
@@ -5598,7 +5478,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
-
+	
 		/**
 		 * Get Lottie CSS.
 		 *
