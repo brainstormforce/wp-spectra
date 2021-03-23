@@ -5416,7 +5416,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-			
+
 			foreach ( $reusable_blocks[0]['innerBlocks'] as $key => $blocks ) {
 
 				if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
@@ -5432,7 +5432,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$selectors[' .uagb-forms-checkbox-wrap > label']                                     = array(
 						'color' => $attr['inputColor'],
 					);
-				
+
 					if ( 'boxed' === $attr['formStyle'] ) {
 						$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
 							'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
@@ -5461,7 +5461,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$selectors[' .uagb-forms-radio-wrap > label']                                  = array(
 						'color' => $attr['inputColor'],
 					);
-				
+
 					if ( 'boxed' === $attr['formStyle'] ) {
 						$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
 							'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
@@ -5477,7 +5477,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 				if ( 'uagb/forms-toggle' === $blocks['blockName'] ) {
-				
+
 					$selectors[' .uagb-slider']                              = array(
 						'background-color' => $attr['bgColor'],
 					);
@@ -5519,7 +5519,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$selectors[' .uagb-forms-accept-wrap > label']                                     = array(
 						'color' => $attr['inputColor'],
 					);
-				
+
 					if ( 'boxed' === $attr['formStyle'] ) {
 						$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
 							'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
@@ -5536,7 +5536,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-				
+
 			if ( 'boxed' === $attr['formStyle'] ) {
 
 				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
