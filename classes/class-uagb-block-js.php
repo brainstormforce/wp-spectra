@@ -180,6 +180,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 		}
 
+
 		/**
 		 * Get Inline Notice Js
 		 *
