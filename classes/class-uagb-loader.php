@@ -117,6 +117,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
 			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
 			require_once UAGB_DIR . 'dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php';
+			require_once UAGB_DIR . 'dist/blocks/table-of-content/class-uagb-table-of-content.php';
 			require_once UAGB_DIR . 'dist/blocks/forms/class-uagb-forms.php';
 			require_once UAGB_DIR . 'dist/blocks/lottie/class-uagb-lottie.php';
 

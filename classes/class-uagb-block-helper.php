@@ -4585,20 +4585,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
 
 			$selectors = array(
-				' .uagb-toc__list-wrap ul li a:hover' => array(
+				' .uagb-toc__list-wrap li a:hover' => array(
 					'color' => $attr['linkHoverColor'],
 				),
-				' .uagb-toc__list-wrap ul li a'       => array(
+				' .uagb-toc__list-wrap li a'       => array(
 					'color' => $attr['linkColor'],
 				),
-				' .uagb-toc__title-wrap'              => array(
+				' .uagb-toc__title-wrap'           => array(
 					'justify-content' => $alignment,
 					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 				),
-				' .uagb-toc__title'                   => array(
+				' .uagb-toc__title'                => array(
 					'color' => $attr['headingColor'],
 				),
-				' .uagb-toc__wrap'                    => array(
+				' .uagb-toc__wrap'                 => array(
 					'border-style'   => $attr['borderStyle'],
 					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color'   => $attr['borderColor'],
@@ -4609,7 +4609,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vPaddingDesktop'], $attr['paddingTypeDesktop'] ),
 					'background'     => $attr['backgroundColor'],
 				),
-				' .uagb-toc__list-wrap'               => array(
+				' .uagb-toc__list-wrap'            => array(
 					'column-count' => $attr['tColumnsDesktop'],
 					'overflow'     => 'hidden',
 				),
@@ -4617,6 +4617,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top' => 0,
 				),
 				' .uagb-toc__list-wrap > ul.uagb-toc__list li' => array(
+					'color' => $attr['bulletColor'],
+				),
+				' .uagb-toc__list-wrap > li'       => array(
 					'color' => $attr['bulletColor'],
 				),
 				' .uagb-toc__list-wrap ul.uagb-toc__list:first-child' => array(
@@ -4628,7 +4631,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child' => array(
 					'padding-bottom' => 0,
 				),
-				' .uag-toc__collapsible-wrap svg'     => array(
+				' .uag-toc__collapsible-wrap svg'  => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'   => $attr['iconColor'],
