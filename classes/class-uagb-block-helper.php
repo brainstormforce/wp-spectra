@@ -5283,7 +5283,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			);
-		
+
 			$check_reusable_block = array();
 			foreach ( $reusable_blocks as $i => $block ) {
 				if ( isset( $block['blockName'] ) && 'core/block' === $block['blockName'] ) {
@@ -5298,7 +5298,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$check_reusable_block = $reusable_blocks;
 				}
 			}
-			if(!empty($check_reusable_block)){
+			if ( ! empty( $check_reusable_block ) ) {
 				foreach ( $check_reusable_block[0]['innerBlocks'] as $key => $blocks ) {
 					if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
 						$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
@@ -5418,7 +5418,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-			
 
 			if ( 'boxed' === $attr['formStyle'] ) {
 
