@@ -60,18 +60,18 @@ const attributes = {
 		type: 'array',
 		default: Array(6).fill(true)
 	},
-	headerLinks: {
-		type: 'html',
-		default: ''
-	},
 	align : {
 		type    : "string",
 		default : "left",
 	},
+	headerLinks: {
+		type: 'html',
+		default: ''
+	},
 	heading: {
-		source: "html",
+		type: "string",
 		selector: ".uagb-toc__title",
-		default: "Table Of Contents",
+		default: __( "Table Of Contents" , 'ultimate-addons-for-gutenberg' ),
 	},
 	customWidth : {
 		type: "boolean",
@@ -330,7 +330,11 @@ const attributes = {
 	headingAlignment: {
 		type: "string",
 		default: "left"
-	},	
+	},
+	emptyHeadingTeaxt: {
+		type: "string",
+		default: __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
+	},
 }
 
 export default attributes

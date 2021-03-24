@@ -2261,7 +2261,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'              => false,
 							'block_id'                  => '',
-							'heading'                   => 'Table Of Contents',
+							'heading'                   => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
+							'emptyHeadingTeaxt'         => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 							'disableBullets'            => false,
 							'smoothScroll'              => true,
 							'smoothScrollOffset'        => 30,
@@ -2281,6 +2282,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tColumnsDesktop'           => 1,
 							'tColumnsTablet'            => 1,
 							'tColumnsMobile'            => 1,
+							'mappingHeaders'            => array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true ),
 							'widthTypeDesktop'          => '%',
 							'widthTypeTablet'           => '%',
 							'widthTypeMobile'           => '%',

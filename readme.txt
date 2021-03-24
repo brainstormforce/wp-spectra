@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Post Layouts - Now all the selected categories can be displayed in each post layout.
 * Fix: Advanced Column - Reverse column and stack issue on tablet/mobile.
 * Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
+* Improvement: Table of content - Revamp TOC with dynamic logic.
 * Fix: Block Conditions - Conflicting the WPForms.
 * Fix: Conditional block -  Console error after deactivating all the blocks from the UAG dashboard.
 
