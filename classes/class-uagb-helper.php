@@ -263,6 +263,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function print_stylesheet() {
 
+			$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
+
+			ob_start();
+			?>
+				<style id="uagb-style-conditional-extension"><?php echo $conditional_block_css; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
+			<?php
+			ob_end_flush();
+
 			if ( 'enabled' === self::$file_generation && ! self::$fallback_css ) {
 				return;
 			}
@@ -590,6 +598,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
 					break;
 
+				case 'uagb/forms':
+					$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_forms_gfont( $blockattr );
+					break;
+
 				case 'uagb/taxonomy-list':
 					$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
@@ -818,6 +832,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( '' === $block['blockName'] ) {
 						continue;
 					}
+
 					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
@@ -843,7 +858,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$tablet  .= $css['tablet'];
 							$mobile  .= $css['mobile'];
 						}
-
 						$js .= $block_assets['js'];
 					}
 				}

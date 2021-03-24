@@ -3351,6 +3351,9 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-typography-advanced .uag-typography-range-options .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field{
     display:block;
 }
+.uagb-forms-button-group {
+	margin-bottom:15px;
+}
 /* WP 5.6 typography icon css */
 .uag-typography-option-actions button .dashicons,.uag-typography-option-actions button .dashicons-before:before {
     font-size:15px
