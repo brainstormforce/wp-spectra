@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-toggle", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

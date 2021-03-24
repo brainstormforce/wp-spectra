@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Registers the `core/latest-posts` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public function register_blocks() {
 			// Check if the register function exists.
@@ -385,7 +385,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public function render_table_of_contents_block( $attributes ) {
 

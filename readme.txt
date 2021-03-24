@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.21.1
+Stable tag: 1.22.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://ultimategutenberg.com/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
 	<li><a href="https://ultimategutenberg.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
 	<li><a href="https://ultimategutenberg.com/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
 	<li><a href="https://www.ultimategutenberg.com/review-schema/" target="_blank">Review Schema </a>: Add a review for a book, movie, course, software application, or product with star ratings. Enable review schema support just with a click to get higher rankings for your page/post in search results.</li>
@@ -170,12 +171,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 1.22.0 =
 * New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
 * Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://ultimategutenberg.com/docs/remove-uag-templates-button/)
-* Fix: Advanced Column - Reverse column and stack issue on tablet/mobile.
-* Fix: Conditional block -  Console error after deactivating all the blocks from the UAG dashboard.
-* Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
-* Improvement: Table of content - Revamp TOC with dynamic logic.
-* Fix: Block Conditions - Conflicting the WPForms.
 * Improvement: Post Layouts - Now all the selected categories can be displayed in each post layout.
+* Improvement: Table of Contents - Now Table of Contents stores minimal data in databases and calculates the contents dynamically on page load.
+* Fix: Advanced Column - Reverse column and stack issue on tablet/mobile.
+* Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
+* Fix: Block Conditions - Resolved some conflicts with the WPForms.
+* Fix: Block Conditions -  Deactivating all the blocks resulting to few console errors on admin page.
+
 
 = 1.21.1 =
 * Improvement: Added compatibility with WordPress v5.7.

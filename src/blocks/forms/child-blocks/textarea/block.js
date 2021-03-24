@@ -22,5 +22,6 @@ registerBlockType( "uagb/forms-textarea", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

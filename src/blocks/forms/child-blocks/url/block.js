@@ -22,5 +22,6 @@ registerBlockType( "uagb/forms-url", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

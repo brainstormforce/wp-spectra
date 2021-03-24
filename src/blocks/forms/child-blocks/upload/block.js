@@ -22,5 +22,6 @@ registerBlockType( "uagb/forms-upload", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )
