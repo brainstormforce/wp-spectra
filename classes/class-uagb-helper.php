@@ -95,7 +95,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 * @var stylesheet
 		 */
-		public static $stylesheet;
+		public static $stylesheet = '';
 
 		/**
 		 * Script
@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 * @var script
 		 */
-		public static $script;
+		public static $script = '';
 
 		/**
 		 * Store Json variable
