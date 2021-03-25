@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
-			add_action( 'wp_head', array( $this, 'check_toc_present' ) );
+			add_filter( 'the_content', array( $this, 'add_toc_wrapper' ) );
 
 		}
 
@@ -1864,18 +1864,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
-		 * Check if the Table of Contents is Present or not on Current Page.
-		 *
-		 * @since x.x.x
-		 */
-		public function check_toc_present() {
-
-			if ( true === self::$toc_present ) {
-
-				add_filter( 'the_content', array( $this, 'add_toc_wrapper' ) );
-			}
-		}
-		/**
 		 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
 		 *
 		 * @param string $content Post Content.
@@ -1884,7 +1872,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function add_toc_wrapper( $content ) {
 
-			return '<div class="uag-toc__entry-content">' . $content . '</div>';
+			if ( true === self::$toc_present ) {
+
+				return '<div class="uag-toc__entry-content">' . $content . '</div>';
+			}
 		}
 	}
 
