@@ -129,6 +129,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $gfonts = array();
 
 		/**
+		 * Table of Contents Present on a Page.
+		 *
+		 * @var bool
+		 */
+		public static $toc_present = false;
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -164,6 +171,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
+			add_action( 'wp_head', array( $this, 'check_toc_present' ) );
+
 		}
 
 		/**
@@ -582,7 +591,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/table-of-contents':
 					$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-					$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
+					$js               .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
+					self::$toc_present = true;
 					break;
 
 				case 'uagb/faq':
@@ -1851,6 +1861,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'tablet'  => self::generate_css( $combined_selectors['tablet'], $id ),
 				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
+		}
+
+		/**
+		 * Check if the Table of Contents is Present or not on Current Page.
+		 *
+		 * @since x.x.x
+		 */
+		public function check_toc_present() {
+
+			if ( true === self::$toc_present ) {
+
+				add_filter( 'the_content', array( $this, 'add_toc_wrapper' ) );
+			}
+		}
+		/**
+		 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
+		 *
+		 * @param string $content Post Content.
+		 *
+		 * @since x.x.x
+		 */
+		public function add_toc_wrapper( $content ) {
+
+			return '<div class="uag-toc__entry-content">' . $content . '</div>';
 		}
 	}
 
