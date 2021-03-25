@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 1.22.1 ###
+* Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
+
 ### 1.22.0 ###
 * New: Forms Block. [Read More](https://ultimategutenberg.com/forms/).
 * Improvement: Block Templates - Added filter to disable the Block Templates. [Read More](https://ultimategutenberg.com/docs/remove-uag-templates-button/)

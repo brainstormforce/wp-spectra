@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $content Post Content.
 		 *
-		 * @since x.x.x
+		 * @since 1.22.1
 		 */
 		public function add_table_of_contents_wrapper( $content ) {
 
