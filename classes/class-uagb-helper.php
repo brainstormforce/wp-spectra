@@ -591,7 +591,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/table-of-contents':
 					$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-					$js               .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
+					$js                          .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
 					self::$table_of_contents_flag = true;
 					break;
 
@@ -1876,6 +1876,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				return '<div class="uag-toc__entry-content">' . $content . '</div>';
 			}
+
+			return $content;
 		}
 	}
 
