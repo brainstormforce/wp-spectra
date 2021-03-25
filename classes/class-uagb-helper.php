@@ -95,7 +95,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 * @var stylesheet
 		 */
-		public static $stylesheet;
+		public static $stylesheet = '';
 
 		/**
 		 * Script
@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 * @var script
 		 */
-		public static $script;
+		public static $script = '';
 
 		/**
 		 * Store Json variable
@@ -127,6 +127,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @var array
 		 */
 		public static $gfonts = array();
+
+		/**
+		 * Table of Contents Present on a Page.
+		 *
+		 * @var bool
+		 */
+		public static $table_of_contents_flag = false;
 
 		/**
 		 *  Initiator
@@ -164,6 +171,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
+			add_filter( 'the_content', array( $this, 'add_table_of_contents_wrapper' ) );
+
 		}
 
 		/**
@@ -582,7 +591,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/table-of-contents':
 					$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-					$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
+					$js                          .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
+					self::$table_of_contents_flag = true;
 					break;
 
 				case 'uagb/faq':
@@ -1851,6 +1861,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'tablet'  => self::generate_css( $combined_selectors['tablet'], $id ),
 				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
+		}
+
+		/**
+		 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
+		 *
+		 * @param string $content Post Content.
+		 *
+		 * @since 1.22.1
+		 */
+		public function add_table_of_contents_wrapper( $content ) {
+
+			if ( true === self::$table_of_contents_flag ) {
+
+				return '<div class="uag-toc__entry-content">' . $content . '</div>';
+			}
+
+			return $content;
 		}
 	}
 
