@@ -664,7 +664,7 @@ class UAGBSectionEdit extends Component {
 										allowedTypes={ [ "image" ] }
 										value={ backgroundImage }
 										render={ ( { open } ) => (
-											<Button isDefault onClick={ open }>
+											<Button isSecondary onClick={ open }>
 												{ ! backgroundImage ? __( "Select Background Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 											</Button>
 										) }
@@ -829,7 +829,7 @@ class UAGBSectionEdit extends Component {
 									allowedTypes={ [ "video" ] }
 									value={ backgroundVideo }
 									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
+										<Button isSecondary onClick={ open }>
 											{ ! backgroundVideo ? __( "Select Background Video",'ultimate-addons-for-gutenberg' ) : __( "Replace Video",'ultimate-addons-for-gutenberg' ) }
 										</Button>
 									) }

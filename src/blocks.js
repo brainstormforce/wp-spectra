@@ -40,6 +40,19 @@ import "./blocks/inline-notice/block.js"
 import "./blocks/wp-search/block.js"
 import "./blocks/review/block.js"
 import "./blocks/taxonomy-list/block.js"
+import "./blocks/forms/block.js"
+import "./blocks/forms/child-blocks/name/block.js"
+import "./blocks/forms/child-blocks/email/block.js"
+import "./blocks/forms/child-blocks/hidden/block.js"
+import "./blocks/forms/child-blocks/phone/block.js"
+import "./blocks/forms/child-blocks/textarea/block.js"
+import "./blocks/forms/child-blocks/checkbox/block.js"
+import "./blocks/forms/child-blocks/radio/block.js"
+import "./blocks/forms/child-blocks/url/block.js"
+import "./blocks/forms/child-blocks/select/block.js"
+import "./blocks/forms/child-blocks/toggle/block.js"
+import "./blocks/forms/child-blocks/date/block.js"
+import "./blocks/forms/child-blocks/accept/block.js"
 import "./blocks/extensions/block.js"
 import "./blocks/tabs/block.js"
 import "./blocks/tabs-child/block.js"
@@ -52,6 +65,3 @@ const { updateCategory } = wp.blocks
 updateCategory( "uagb", {
 	icon: UAGB_Block_Icons.logo,
 }, )
-
-
-

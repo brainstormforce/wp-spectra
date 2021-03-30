@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import TableOfContents from './deprecated/components';
 import TOC from './deprecated/table-of-contents';
+import TableOfContent from './toc';
 import attributes from "./attributes"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
@@ -173,6 +174,66 @@ const deprecated = [
 							{icon_html}
 						</div>
 						<TOC
+							mappingHeaders={mappingHeaders}
+							headers={headerLinks && JSON.parse(headerLinks)}
+						/>
+					</div>
+				</div>
+			)
+		},
+	},
+	{
+		attributes,			
+		save: function( props ) {
+	
+			const { className } = props
+		
+			const {
+				align,
+				block_id,
+				tColumns,
+				heading,
+				headerLinks,
+				mappingHeaders,
+				smoothScroll,
+				makeCollapsible,
+				icon,
+				initialCollapse,
+				smoothScrollOffset,
+				smoothScrollDelay,
+			} = props.attributes
+		
+			let icon_html = ''
+		
+			if ( makeCollapsible && icon ) {
+				icon_html = (
+					<span className="uag-toc__collapsible-wrap">{renderSVG(icon)}</span>
+				)	
+			}
+		
+			return (
+		
+				<div className={ classnames(
+						className,
+						`uagb-toc__align-${align}`,
+						`uagb-toc__columns-${tColumns}`,
+						( initialCollapse ) ? `uagb-toc__collapse` : '',
+						`uagb-block-${ block_id }`
+					) }
+					data-scroll={smoothScroll}
+					data-offset={smoothScrollOffset}
+					data-delay={smoothScrollDelay}
+				>
+					<div className="uagb-toc__wrap">
+						<div className="uagb-toc__title-wrap">
+							<RichText.Content
+								value={ heading }
+								tagName='div'
+								className='uagb-toc__title'
+							/>
+							{icon_html}
+						</div>
+						<TableOfContent
 							mappingHeaders={mappingHeaders}
 							headers={headerLinks && JSON.parse(headerLinks)}
 						/>
