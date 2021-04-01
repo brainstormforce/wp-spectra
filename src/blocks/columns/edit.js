@@ -596,8 +596,8 @@ class UAGBColumns extends Component {
 							value={ stack }
 							options={ [
 								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-								{ value: "tablet", label: __( "Tablet", 'ultimate-addons-for-gutenberg' ) },
-								{ value: "mobile", label: __( "Mobile", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "tablet", label: __( "Tablet & Mobile", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "mobile", label: __( "Mobile only", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 							help={ __( "Note: Choose on what breakpoint the columns will stack.", 'ultimate-addons-for-gutenberg' ) }
@@ -659,12 +659,12 @@ class UAGBColumns extends Component {
 							] }
 						/>
 						<ToggleControl
-							label={ __( "Reverse Columns (Tablet)", 'ultimate-addons-for-gutenberg' ) }
+							label={ __( "Reverse Columns (Tablet & Mobile)", 'ultimate-addons-for-gutenberg' ) }
 							checked={ reverseTablet }
 							onChange={ ( value ) => setAttributes( { reverseTablet: ! reverseTablet } ) }
 						/>
 						<ToggleControl
-							label={ __( "Reverse Columns (Mobile)", 'ultimate-addons-for-gutenberg' ) }
+							label={ __( "Reverse Columns (Mobile only)", 'ultimate-addons-for-gutenberg' ) }
 							checked={ reverseMobile }
 							onChange={ ( value ) => setAttributes( { reverseMobile: ! reverseMobile } ) }
 						/>
