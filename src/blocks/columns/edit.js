@@ -664,7 +664,7 @@ class UAGBColumns extends Component {
 							onChange={ ( value ) => setAttributes( { reverseTablet: ! reverseTablet } ) }
 						/>
 						<ToggleControl
-							label={ __( "Reverse Columns (Mobile only)", 'ultimate-addons-for-gutenberg' ) }
+							label={ __( "Reverse Columns (Mobile)", 'ultimate-addons-for-gutenberg' ) }
 							checked={ reverseMobile }
 							onChange={ ( value ) => setAttributes( { reverseMobile: ! reverseMobile } ) }
 						/>
