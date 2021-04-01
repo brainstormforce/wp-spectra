@@ -597,7 +597,7 @@ class UAGBColumns extends Component {
 							options={ [
 								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
 								{ value: "tablet", label: __( "Tablet & Mobile", 'ultimate-addons-for-gutenberg' ) },
-								{ value: "mobile", label: __( "Mobile only", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "mobile", label: __( "Mobile", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 							help={ __( "Note: Choose on what breakpoint the columns will stack.", 'ultimate-addons-for-gutenberg' ) }
