@@ -1,5 +1,5 @@
 function addAttributes( settings ) {
-	const excludeBlock = ['wpforms/form-selector'];
+	const excludeBlock = ['wpforms/form-selector','formidable/simple-form','formidable/calculator'];
 	
 	if( ! excludeBlock.includes(settings.name) ){
 		
