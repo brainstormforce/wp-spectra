@@ -109,7 +109,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'selector' => '.uagb-toc__title',
 								'default'  => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 							),
-							'headingTitle'                     => array(
+							'headingTitle'              => array(
 								'type'    => 'string',
 								'default' => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 							),
