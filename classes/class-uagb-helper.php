@@ -1874,12 +1874,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$toc_wrap = apply_filters( 'uagb_toc__entry_content_wrap', true );
 
-			if ( $toc_wrap ) {
+			if ( true === $toc_wrap && true === self::$table_of_contents_flag ) {
 
-				if ( true === self::$table_of_contents_flag ) {
-
-					return '<div class="uag-toc__entry-content">' . $content . '</div>';
-				}
+				return '<div class="uag-toc__entry-content">' . $content . '</div>';
 			}
 
 			return $content;
