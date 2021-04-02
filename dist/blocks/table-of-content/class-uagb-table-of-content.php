@@ -109,6 +109,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'selector' => '.uagb-toc__title',
 								'default'  => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 							),
+							'headingTitle'                     => array(
+								'type'    => 'string',
+								'default' => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
+							),
 							'icon'                      => array(
 								'type'    => 'string',
 								'default' => 'fa-angle-down',
@@ -408,7 +412,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				<div class="uagb-toc__wrap">
 					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-						<?php echo esc_html( $attributes['heading'] ); ?>
+						<?php echo esc_html( $attributes['headingTitle'] ); ?>
 						</div>
 						<?php
 						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
