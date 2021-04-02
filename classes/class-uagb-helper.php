@@ -1872,15 +1872,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function add_table_of_contents_wrapper( $content ) {
 
-			$toc_wrap = apply_filters( "uagb_toc__entry_content_wrap", true );
+			$toc_wrap = apply_filters( 'uagb_toc__entry_content_wrap', true );
 
-			if( $toc_wrap ){
+			if ( $toc_wrap ) {
 
 				if ( true === self::$table_of_contents_flag ) {
 
 					return '<div class="uag-toc__entry-content">' . $content . '</div>';
 				}
-
 			}
 
 			return $content;
