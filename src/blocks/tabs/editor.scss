@@ -47,7 +47,7 @@
     }
     span.uagb-tabs__remove {
         position: absolute;
-        top: -8px;
+        top: -12px;
         right: -8px;
         height: 20px;
         color: #fff;
@@ -58,6 +58,36 @@
         z-index: 1;
     }
     li.uagb-tab:hover span.uagb-tabs__remove {
+        display: block;
+    }
+    .uagb-tab-item__move-forward {
+        position: absolute;
+        top: -12px;
+        left: 10px;
+        height: 20px;
+        color: #fff;
+        background-color: #000000;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        z-index: 1;
+    }
+    .uagb-tab-item__move-back{
+        position: absolute;
+        top: -12px;
+        left: -10px;
+        height: 20px;
+        color: #fff;
+        background-color: #000000;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        z-index: 1;
+    }
+    li.uagb-tab:hover .uagb-tab-item__move-forward {
+        display: block;
+    }
+    li.uagb-tab:hover .uagb-tab-item__move-back {
         display: block;
     }
     .uagb-tab.uagb-tabs__add-tab{

@@ -45,7 +45,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -64,7 +64,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle2-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         border-bottom:1px solid #b3b6b9 ;
     }
@@ -87,7 +87,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{ 
@@ -109,7 +109,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -149,7 +149,7 @@
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-desktop{   
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
@@ -206,7 +206,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -236,7 +236,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -289,7 +289,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -308,7 +308,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle2-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         border-bottom-style:solid;
     }
@@ -331,7 +331,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -353,7 +353,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -393,7 +393,7 @@
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-tablet{   
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
@@ -450,7 +450,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -480,7 +480,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -536,7 +536,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -555,7 +555,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle2-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         border-bottom:1px solid #b3b6b9 ;
     }
@@ -578,7 +578,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -600,7 +600,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -640,7 +640,7 @@
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-mobile{  
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
@@ -697,7 +697,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -727,7 +727,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -880,3 +880,49 @@
    }
 }
 }
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-center{
+    margin: auto;
+}
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-left{
+    margin-right: auto;
+    margin-left: 0;
+}
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-right{
+    margin-left: auto;
+       margin-left: 0;
+}
+
+.uagb-tabs__wrap.uagb-active-tab-0 > .uagb-tabs__body-wrap > .uagb-inner-tab-0 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-1 > .uagb-tabs__body-wrap > .uagb-inner-tab-1 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-2 > .uagb-tabs__body-wrap > .uagb-inner-tab-2 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-3 > .uagb-tabs__body-wrap > .uagb-inner-tab-3 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-4 > .uagb-tabs__body-wrap > .uagb-inner-tab-4 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-5 > .uagb-tabs__body-wrap > .uagb-inner-tab-5 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-6 > .uagb-tabs__body-wrap > .uagb-inner-tab-6 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-7 > .uagb-tabs__body-wrap > .uagb-inner-tab-7 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-8 > .uagb-tabs__body-wrap > .uagb-inner-tab-8 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-9 > .uagb-tabs__body-wrap > .uagb-inner-tab-9 {
+    display: block;
+}
+.uagb-tabs__wrap.uagb-active-tab-10 > .uagb-tabs__body-wrap > .uagb-inner-tab-10 {
+    display: block;
+}
+    
