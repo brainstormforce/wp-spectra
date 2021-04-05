@@ -169,7 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.22.2 =
-* Fix: Table of Contents: showing default title instead of old one.
+* Fix: Table of Contents: Showing default title instead of saved one.
 
 = 1.22.1 =
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
