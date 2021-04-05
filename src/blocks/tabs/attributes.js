@@ -168,37 +168,7 @@ const attributes = {
 	activeiconColor:{
 		type: "string",
 	},
-	backgroundType: {
-		type: "string",
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
-	},
-	backgroundColor: {
-		type: "string",
-	},
-	backgroundOpacity: {
-		type: "number"
-	},
-	backgroundImageColor: {
-		type: "string"
-	}
+
 }
 
 export default attributes

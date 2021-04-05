@@ -532,19 +532,19 @@ class UAGBTabsEdit extends Component {
 					/>
 					</PanelBody>
 					<PanelBody title={ __( 'Tabs Body Settings'  , 'ultimate-addons-for-gutenberg') } initialOpen={ false }>
-					<h2>{ __( 'Body Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
-					<ColorPalette
-						value={ bodyBgColor}
-						onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
-						allowReset
-					/> 
-					<h2>{ __( 'Body Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
-					<ColorPalette
-						value= {bodyTextColor}
-						onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
-						allowReset
-					/>
-					<h2>{ __( "Tab Body Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
+						<h2>{ __( 'Body Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
+						<ColorPalette
+							value={ bodyBgColor}
+							onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
+							allowReset
+						/> 
+						<h2>{ __( 'Body Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
+						<ColorPalette
+							value= {bodyTextColor}
+							onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
+							allowReset
+						/>
+						<h2>{ __( "Tab Body Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.left_margin }
 							className={ "uagb-margin-control" }
@@ -631,6 +631,37 @@ class UAGBTabsEdit extends Component {
                         {tabHeaders.map( ( header, index ) => (
                             <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} `}
                             >
+								{tabHeaders.length > 0 && (
+									<div className="uagb-tabs-editor-controls">
+										{  index !== 0 && (	
+											<span className="uagb-tab-item__move-back"
+												onClick={ index === 0 ? ' ' : this.onMoveBack( index , tabHeaders.length) }
+												aria-disabled={ ( index ) === tabHeaders.length }
+													disabled={ ( index ) === tabHeaders.length }
+											>
+												<Dashicon icon="arrow-left"/>
+											</span>
+										)}
+										{ ( index + 1 ) !== tabHeaders.length && (
+											<Tooltip text={ __( 'Move Item Forward'  , 'ultimate-addons-for-gutenberg' ) }>
+												<span className="uagb-tab-item__move-forward"
+														onClick={ ( index ) === tabHeaders.length ? ' ' : this.onMoveForward( index , tabHeaders.length) }
+														aria-disabled={ ( index ) === tabHeaders.length }
+														disabled={ ( index ) === tabHeaders.length }
+												>
+													<Dashicon icon="arrow-right"/>
+												</span>
+											</Tooltip>
+										)}
+									<Tooltip text={ __( 'Remove tab'  , 'ultimate-addons-for-gutenberg' ) }>
+										<span className="uagb-tabs__remove"
+												onClick={ () => this.removeTab(index) }
+										>
+											<Dashicon icon="no"/>
+										</span>
+									</Tooltip>
+								</div>
+                                )}
                                 <a className={`uagb-tabs__icon-position-${iconPosition}`}
                                        onClick={ () => {
                                            this.props.updateActiveTab( index );
@@ -650,38 +681,6 @@ class UAGBTabsEdit extends Component {
 											<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}
 								</a>
-								{tabHeaders.length > 0 && (
-									<Fragment>
-										{  index !== 0 && (	
-										<span className="uagb-tab-item__move-back"
-											onClick={ index === 0 ? ' ' : this.onMoveBack( index , tabHeaders.length) }
-											aria-disabled={ ( index ) === tabHeaders.length }
-												disabled={ ( index ) === tabHeaders.length }
-										>
-											<Dashicon icon="arrow-left"/>
-										</span>
-										)}
-										{ ( index + 1 ) !== tabHeaders.length && (
-										<Tooltip text={ __( 'Move Item Forward'  , 'ultimate-addons-for-gutenberg' ) }>
-										<span className="uagb-tab-item__move-forward"
-												onClick={ ( index ) === tabHeaders.length ? ' ' : this.onMoveForward( index , tabHeaders.length) }
-												aria-disabled={ ( index ) === tabHeaders.length }
-												disabled={ ( index ) === tabHeaders.length }
-										>
-											<Dashicon icon="arrow-right"/>
-										</span>
-									</Tooltip>
-										)}
-									<Tooltip text={ __( 'Remove tab'  , 'ultimate-addons-for-gutenberg' ) }>
-										<span className="uagb-tabs__remove"
-												onClick={ () => this.removeTab(index) }
-										>
-											<Dashicon icon="no"/>
-										</span>
-									</Tooltip>
-									</Fragment>
-
-                                )}
                             </li>
                         ) ) }
 						<li className="uagb-tab uagb-tabs__add-tab">
@@ -692,7 +691,7 @@ class UAGBTabsEdit extends Component {
 							</Tooltip>
                         </li>
 					</ul>
-					<div className={`uagb-tabs__body-wrap uagb-tabs__background-${backgroundType}`}>
+					<div className="uagb-tabs__body-wrap">
 						<InnerBlocks
 							template={ [ ['uagb/tabs-child'], ['uagb/tabs-child'], ['uagb/tabs-child']] }
 							templateLock={false}
