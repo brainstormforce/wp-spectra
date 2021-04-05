@@ -86,7 +86,7 @@ class UAGBTableOfContentsEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
-		if( this.props.attributes.heading ){
+		if( this.props.attributes.heading && '' !== this.props.attributes.heading ){
 			this.props.setAttributes( { headingTitle: this.props.attributes.heading } )
 		}
 	}
