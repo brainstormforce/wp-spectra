@@ -634,13 +634,15 @@ class UAGBTabsEdit extends Component {
 								{tabHeaders.length > 0 && (
 									<div className="uagb-tabs-editor-controls">
 										{  index !== 0 && (	
-											<span className="uagb-tab-item__move-back"
-												onClick={ index === 0 ? ' ' : this.onMoveBack( index , tabHeaders.length) }
-												aria-disabled={ ( index ) === tabHeaders.length }
-													disabled={ ( index ) === tabHeaders.length }
-											>
-												<Dashicon icon="arrow-left"/>
-											</span>
+											<Tooltip text={ __( 'Move Item Back'  , 'ultimate-addons-for-gutenberg' ) }>
+												<span className="uagb-tab-item__move-back"
+													onClick={ index === 0 ? ' ' : this.onMoveBack( index , tabHeaders.length) }
+													aria-disabled={ ( index ) === tabHeaders.length }
+														disabled={ ( index ) === tabHeaders.length }
+												>
+													<Dashicon icon="arrow-left"/>
+												</span>
+											</Tooltip>
 										)}
 										{ ( index + 1 ) !== tabHeaders.length && (
 											<Tooltip text={ __( 'Move Item Forward'  , 'ultimate-addons-for-gutenberg' ) }>
