@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-checkbox", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

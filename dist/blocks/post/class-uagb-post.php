@@ -1354,7 +1354,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			?>
 			<span class="uagb-post__taxonomy">
 				<span class="dashicons-tag dashicons"></span>
-				<?php echo esc_html( $terms[0]->name ); ?>
+				<?php
+				$terms_list = array();
+				foreach ( $terms as $key => $value ) {
+					// Get the URL of this category.
+					$category_link = get_category_link( $value->term_id );
+					array_push( $terms_list, '<a href=' . esc_url( $category_link ) . '>' . esc_html( $value->name ) . '</a>' );
+				}
+				echo wp_kses_post( implode( ', ', $terms_list ) );
+				?>
 			</span>
 			<?php
 		}

@@ -39,8 +39,8 @@ export default function save( props ) {
 				var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
 				return (
 					<Fragment>
-					<input type="radio" id={ value } name={ block_id } value={ optionvalue } required={ radioRequired } />
-					<label htmlFor={ value }>{o.optiontitle}</label><br/>						
+					<input type="radio" id={ `radio-${value}-${block_id}` } name={ block_id } value={ optionvalue } required={ radioRequired } />
+					<label htmlFor={ `radio-${value}-${block_id}` }>{o.optiontitle}</label><br/>						
 					</Fragment>
 				);
 			})}

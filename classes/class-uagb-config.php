@@ -2262,7 +2262,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'              => false,
 							'block_id'                  => '',
-							'heading'                   => 'Table Of Contents',
+							'heading'                   => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
+							'emptyHeadingTeaxt'         => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 							'disableBullets'            => false,
 							'smoothScroll'              => true,
 							'smoothScrollOffset'        => 30,
@@ -2282,6 +2283,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tColumnsDesktop'           => 1,
 							'tColumnsTablet'            => 1,
 							'tColumnsMobile'            => 1,
+							'mappingHeaders'            => array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true ),
 							'widthTypeDesktop'          => '%',
 							'widthTypeTablet'           => '%',
 							'widthTypeMobile'           => '%',
@@ -2673,7 +2675,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/forms'                  => array(
 						'slug'        => '',
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps to add Forms.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'js_assets'   => array( 'uagb-forms-js' ),
 						'attributes'  => array(

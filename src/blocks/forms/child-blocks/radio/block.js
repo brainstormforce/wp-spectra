@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-radio", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

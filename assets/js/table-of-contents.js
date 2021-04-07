@@ -28,7 +28,6 @@
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
 
-
 	UAGBTableOfContents = {
 
 		init: function() {
@@ -117,34 +116,86 @@
 			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
-
-			var $headers = JSON.parse(attr.headerLinks);
 			
 			var allowed_h_tags = [];
-			
+			let headerMappingHeaders = [];
 			if ( undefined !== attr.mappingHeaders ) {
 
 				attr.mappingHeaders.forEach(function(h_tag, index) { (h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);});
 				var allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+
+				headerMappingHeaders = attr.mappingHeaders.filter(header => header).length;
 			}
 
 			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
+			var headerTable = '';
+			var level = 0;
 
-			if ( undefined !== $headers && 0 !== all_header.length ) {
+			if ( 0 !== all_header.length ) {
+	
+				all_header.each( function (){
+					let header = $( this );
+					let header_text = parseTocSlug(header.text());
+					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
+				});				
+			}
+			let blockId = attr.block_id;
+			var headerArray = $( 'div.uag-toc__entry-content' ).find( all_header )
+			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
+			headerArray.each( function (index,value){
+				let header = $( this );
+				let excludeHeading ;
+				
+				if ( value.className.includes('uagb-toc-hide-heading') ) {
+					excludeHeading = true;
+				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+					excludeHeading = true;
+				} else {
+					excludeHeading = false;
+				}
+				
+				let headerText = parseTocSlug(header.text());
 
-				$headers.forEach(function (element, i) {
+				if ( !excludeHeading ) {
 					
-					let element_text = parseTocSlug(element.text);
-					all_header.each( function (){
-
-						let header = $( this );
-						let header_text = parseTocSlug(header.text());
-
-						if ( element_text.localeCompare(header_text) === 0 ) {
-							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
+					let openLevel = header[0].localName.replace(/^h+/, '');
+					let titleText = header.text();
+					
+					if (openLevel > level) {
+						let arrayOpenLevel = new Array(openLevel - level + 1)
+						if( 2 == (arrayOpenLevel).length ){
+							headerTable += (arrayOpenLevel).join("<ul class='uagb-toc__list'>");
+						} else{
+							headerTable += "<ul class='uagb-toc__list'>"
 						}
-					});
-				});
+
+					} else if (openLevel < level) {
+						let arrayLevel = new Array(level - openLevel + 1)
+						if( 0 !== (arrayLevel).length ){
+							headerTable += (arrayLevel).join("</ul>");
+						} else{
+							headerTable += "</ul>"
+						}
+						
+					}
+					level = parseInt(openLevel);
+					headerTable +=  "<li><a href='#" + headerText + "'>" + titleText + "</a></li>";
+					
+				}					
+			});
+
+			$(".uagb_table-of-contents-placeholder").remove();
+
+			$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).prepend(headerTable);
+
+			} else{
+
+				headerTable +=  attr.emptyHeadingTeaxt;
+
+				$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).remove();
+				
+				$(".uagb_table-of-contents-placeholder").prepend(headerTable);
+			
 			}
 
 			scroll_to_top = attr.scrollToTop
@@ -168,6 +219,5 @@
 	$( document ).ready(function() {
 		UAGBTableOfContents.init()
 	})
-
 
 } )( jQuery )

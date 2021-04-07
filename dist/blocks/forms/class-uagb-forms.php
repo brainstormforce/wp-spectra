@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @var settings
 		 */
 		private static $settings;
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public function __construct() {
 			add_action( 'wp_ajax_uagb_process_forms', array( $this, 'process_forms' ) );
@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * Form Process Initiated.
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
@@ -131,7 +131,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * Trigger Mail.
 		 *
 		 * @param object $body Email Body.
-		 * @since x.x.x
+		 * @since 1.22.0
 		 */
 		public function send_email( $body ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
