@@ -252,7 +252,6 @@ export default class UAGBColumnEdit extends Component {
 											} }
 											min={ 0 }
 											max={ 100 }
-											step={ 1 }
 										/>
 									)
 								} else if ( "tablet" === tab.name ) {
@@ -267,7 +266,6 @@ export default class UAGBColumnEdit extends Component {
 											} }
 											min={ 0 }
 											max={ 100 }
-											step={ 1 }
 										/>
 									)
 								} else {
@@ -282,7 +280,6 @@ export default class UAGBColumnEdit extends Component {
 											} }
 											min={ 0 }
 											max={ 100 }
-											step={ 1 }
 										/>
 									)
 								}
