@@ -596,7 +596,7 @@ class UAGBColumns extends Component {
 							value={ stack }
 							options={ [
 								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-								{ value: "tablet", label: __( "Tablet", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "tablet", label: __( "Tablet & Mobile", 'ultimate-addons-for-gutenberg' ) },
 								{ value: "mobile", label: __( "Mobile", 'ultimate-addons-for-gutenberg' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
@@ -659,7 +659,7 @@ class UAGBColumns extends Component {
 							] }
 						/>
 						<ToggleControl
-							label={ __( "Reverse Columns (Tablet)", 'ultimate-addons-for-gutenberg' ) }
+							label={ __( "Reverse Columns (Tablet & Mobile)", 'ultimate-addons-for-gutenberg' ) }
 							checked={ reverseTablet }
 							onChange={ ( value ) => setAttributes( { reverseTablet: ! reverseTablet } ) }
 						/>
