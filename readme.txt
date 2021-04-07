@@ -169,7 +169,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.22.2 =
-* Improvement: Table of Content - Added filter to remove `uagb_toc__entry_content_wrap`.
+* Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
+* Improvement: Table of Content - Added filter `uagb_toc__entry_content_wrap` to remove `uag-toc__entry-content` class.
 
 = 1.22.1 =
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
