@@ -2188,7 +2188,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
-							'tabAlign'             => 'left',
+							'tabAlign'              => 'left',
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
 							'tabsStyleD'            => 'hstyle1',
