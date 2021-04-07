@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.22.1
+Stable tag: 1.22.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,7 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
-* Fix: Table of Contents: Showing default title instead of saved one.
+* Fix: Table of Contents - Showing default title instead of saved one.
 
 = 1.22.1 =
 * Fix: Table of Contents: Content not being generated in few themes due to missing `entry-content` class.
@@ -184,7 +184,6 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: BuddyBoss Platform plugin conflicting with Content Timeline and Post Timeline.
 * Fix: Block Conditions - Resolved some conflicts with the WPForms.
 * Fix: Block Conditions -  Deactivating all the blocks resulting to few console errors on admin page.
-
 
 = 1.21.1 =
 * Improvement: Added compatibility with WordPress v5.7.
