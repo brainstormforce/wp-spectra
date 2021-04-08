@@ -1468,7 +1468,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
 
 			}
-			
+
 			return $info;
 		}
 

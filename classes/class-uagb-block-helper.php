@@ -26,7 +26,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Static CSS Added Array
-		 * 
+		 *
 		 * @since x.x.x
 		 * @var array
 		 */
@@ -34,7 +34,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * File System Object.
-		 * 
+		 *
 		 * @since x.x.x
 		 * @var object
 		 */
@@ -55,7 +55,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Constructor
-		 * 
+		 *
 		 *  @since x.x.x
 		 */
 		public function __construct() {
@@ -1082,11 +1082,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$buttons_static_css = self::get_block_static_css( 'buttons' );
-			
+
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
 			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-			
+
 			$css['desktop'] = $buttons_static_css . $css['desktop'];
 
 			return $css;
@@ -5566,8 +5566,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Static CSS of Block.
 		 *
-		 * @var string $block_name Block Name.
-		 * 
+		 * @param string $block_name Block Name.
+		 *
 		 * @return string Static CSS.
 		 * @since x.x.x
 		 */
@@ -5575,15 +5575,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$css = '';
 
-			if ( ! in_array( $block_name, self::$static_css_blocks ) ) {
-				
-				$block_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/' .$block_name . '.css';
+			if ( ! in_array( $block_name, self::$static_css_blocks, true ) ) {
+
+				$block_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/' . $block_name . '.css';
 
 				if ( file_exists( $block_static_css_path ) ) {
 
 					$css = self::$file_system->get_contents( $block_static_css_path );
 				}
-				
+
 				array_push( self::$static_css_blocks, $block_name );
 
 			}
