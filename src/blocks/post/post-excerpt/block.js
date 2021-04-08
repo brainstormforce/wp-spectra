@@ -6,8 +6,6 @@
 import {PostExcerpt} from "./edit"
 import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
-//  Import CSS.
-import "./style.scss"
 // Components
 const { __ } = wp.i18n
 

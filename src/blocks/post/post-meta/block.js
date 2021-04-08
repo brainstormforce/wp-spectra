@@ -6,7 +6,6 @@
 import {PostMeta} from "./edit"
 import save from "./save"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
-import "./style.scss"
 import "./editor.scss"
 // Components
 const { __ } = wp.i18n
