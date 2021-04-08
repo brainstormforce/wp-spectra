@@ -28,8 +28,8 @@ registerBlockType( "uagb/tabs-child", {
 	supports: {
 		anchor: true,
 	},
-	deprecated,
 	attributes,
+	deprecated,
 	edit,
 	save
 } )

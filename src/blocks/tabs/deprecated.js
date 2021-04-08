@@ -13,7 +13,7 @@ const {
 const deprecated = [
 	{	
 		save: function( props ) {
-
+			const { className } = props
 			const {
 				block_id,
 				tabHeaders,
