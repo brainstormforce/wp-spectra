@@ -626,11 +626,11 @@ class UAGBTabsEdit extends Component {
 					`uagb-tabs__${tabsStyleD}-desktop`,
 					`uagb-tabs__${tabsStyleT}-tablet`,
 					`uagb-tabs__${tabsStyleM}-mobile`,
-				) } data-tab-active={tabActiveFrontend}>
+				) }>
                     <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`}>
                         {tabHeaders.map( ( header, index ) => (
-                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} `}
-                            >
+                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} ` }
+                            id={`uagb-tabs__tab${index}`}>
 								{tabHeaders.length > 0 && (
 									<div className="uagb-tabs-editor-controls">
 										{  index !== 0 && (	
@@ -664,11 +664,11 @@ class UAGBTabsEdit extends Component {
 									</Tooltip>
 								</div>
                                 )}
-                                <a className={`uagb-tabs__icon-position-${iconPosition}`}
+                                <a className={`uagb-tabs__icon-position-${iconPosition} uagb-tabs-list`}
                                        onClick={ () => {
                                            this.props.updateActiveTab( index );
                                        } }
-                                    >
+                                    data-tab={index}>
 										{(showIcon && icon && (iconPosition === 'left' || iconPosition === 'top') &&
 										<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}

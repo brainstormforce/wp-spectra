@@ -27,8 +27,8 @@ class UAGBTabsChildEdit extends Component {
 		const rootBlockId = getBlockRootClientId( clientId );
 		const rootBlockAttrs = getBlockAttributes( rootBlockId );
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		setAttributes( { tabActive: rootBlockAttrs.tabActive} )
-
+		setAttributes( { tabActive: rootBlockAttrs.tabActiveFrontend} )
+		
 		// Apply parent style if newly inserted
 		if (rootBlockAttrs !== null && rootBlockAttrs.needUpdate !== false) {
 			Object.keys(rootBlockAttrs).map((attribute) => {
@@ -42,20 +42,18 @@ class UAGBTabsChildEdit extends Component {
 		const {tabActive, id, block_id} = attributes;
 		
 		return (
+			<div className={`uagb-tabs__body-container uagb-inner-tab-${id}`} style={{ display: id === tabActive ? 'block' : 'none'}}>
 				<div className={ classnames(
 					className,
 					`uagb-tabs__${block_id}`,
 					'uagb-tabs__body'
-				) }
-					 style={{
-						 display: id === tabActive ? 'block' : 'none',
-					 }}
-				>
+				) }aria-labelledby={`uagb-tabs__tab${id}`}>
 					<InnerBlocks
 						template={[ [ 'core/paragraph' ] ]}
 						templateLock={false}
 					/>
 				</div>
+			</div>
 		);
 	}
 }

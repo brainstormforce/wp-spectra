@@ -3,13 +3,14 @@
  */
 
  import classnames from "classnames"
- 
+ import attributes from "./attributes"
  const {
 	 InnerBlocks
  } = wp.blockEditor
  
  const deprecated = [
-	 {			
+	 {		
+		 attributes,	
 		 save: function( props ) {
 			const { attributes , className } = props
    

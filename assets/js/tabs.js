@@ -43,8 +43,8 @@ function Click(e , tabName , list , count){
         main.classList.remove( 'uagb-active-tab-'+idx); 
     }
     main.classList.add('uagb-active-tab-'+ tabId)
-    main.querySelector( '.uagb-tabs__body-wrap > .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabId + ')' ).setAttribute( 'aria-hidden', 'true' );
-    main.querySelector( '.uagb-tabs__body-wrap > .uagb-inner-tab-' + tabId ).setAttribute( 'aria-hidden', 'false' );
+    main.querySelector( '.uagb-tabs__body-wrap .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabId + ')' ).setAttribute( 'aria-hidden', 'true' );
+    main.querySelector( '.uagb-tabs__body-wrap .uagb-inner-tab-' + tabId ).setAttribute( 'aria-hidden', 'false' );
 
 }
 function anchorTabs() {
@@ -70,9 +70,8 @@ function anchorTabs() {
                 main.classList.remove( 'uagb-active-tab-'+idx); 
             }
             main.classList.add('uagb-active-tab-'+tabnumber)
-            main.querySelector( '.uagb-tabs__body-wrap > .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabnumber + ')' ).setAttribute( 'aria-hidden', 'true' );
-            // main.querySelector( '.uagb-tabs__body-wrap > .uagb-inner-tab-' + tabnumber ).setAttribute( 'aria-hidden', 'false' );
-
+            main.querySelector( '.uagb-tabs__body-wrap .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabnumber + ')' ).setAttribute( 'aria-hidden', 'true' );
+            main.querySelector( '.uagb-tabs__body-wrap .uagb-inner-tab-' + tabnumber ).setAttribute( 'aria-hidden', 'false' );
 		}
 	}
 }
