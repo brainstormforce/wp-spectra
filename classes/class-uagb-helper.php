@@ -481,6 +481,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 
 				case 'uagb/buttons':
+					var_dump($block_id);
 					$css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
 					break;
@@ -1468,7 +1469,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
 
 			}
-
+			
 			return $info;
 		}
 

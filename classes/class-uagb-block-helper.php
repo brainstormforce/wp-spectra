@@ -17,6 +17,49 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Member Variable
+		 *
+		 * @since 0.0.1
+		 * @var instance
+		 */
+		private static $instance;
+
+		/**
+		 * Static CSS Added Array
+		 *
+		 * @var array
+		 */
+		public static $static_css_blocks = array();
+
+		/**
+		 * File System Object.
+		 *
+		 * @var object
+		 */
+		public static $file_system;
+
+		/**
+		 *  Initiator
+		 *
+		 * @since 0.0.1
+		 */
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+
+			return self::$instance;
+		}
+
+		/**
+		 * Constructor
+		 */
+		public function __construct() {
+
+			self::$file_system = UAGB_Helper::get_instance()->get_filesystem();
+		}
+
+		/**
 		 * Get review block CSS
 		 *
 		 * @since 1.19.0
@@ -1034,9 +1077,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
+			$buttons_static_css = '';
+			
+			if ( ! in_array( 'buttons', self::$static_css_blocks ) ) {
+				
+				$button_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/buttons.css';
+
+				if ( file_exists( $button_static_css_path ) ) {
+
+					// $buttons_static_css = self::$file_system->get_contents( $button_static_css_path );
+				}
+				
+				array_push( self::$static_css_blocks, 'buttons' );
+
+			}
+			
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+			
+			$css['desktop'] = $buttons_static_css . $css['desktop'];
+
+			return $css;
 		}
 		/**
 		 * Get Multi Buttons - Child Block CSS
@@ -1058,7 +1120,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $all_selectors['m_selectors'],
 			);
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+			$buttons_child_static_css = '.uagb-buttons-repeater{display:flex;justify-content:center;align-items:center}.uagb-buttons-repeater a.uagb-button__link{display:flex;justify-content:center}.uagb-buttons-repeater .uagb-button__icon{font-size:inherit;display:flex;align-items:center;width:15px}.uagb-buttons-repeater .uagb-button__icon svg{fill:currentColor;width:inherit;height:inherit}
+			';
+
+			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+
+			$css['desktop'] = $buttons_child_static_css . $css['desktop'];
+
+			return $css;
 		}
 		/**
 		 * Get Buttons Block CSS
@@ -5504,4 +5573,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
 		}
 	}
+
+	/**
+	 *  Prepare if class 'UAGB_Block_Helper' exist.
+	 *  Kicking this off by calling 'get_instance()' method
+	 */
+	UAGB_Block_Helper::get_instance();
 }

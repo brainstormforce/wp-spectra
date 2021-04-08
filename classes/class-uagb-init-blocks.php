@@ -318,13 +318,6 @@ class UAGB_Init_Blocks {
 			}
 		}
 
-		wp_enqueue_style(
-			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
-			array(),
-			UAGB_VER
-		);
-
 		if ( is_rtl() ) {
 			wp_enqueue_style(
 				'uagb-style-rtl', // Handle.
