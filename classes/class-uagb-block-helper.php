@@ -19,21 +19,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 * @var instance
 		 */
 		private static $instance;
 
 		/**
 		 * Static CSS Added Array
-		 *
+		 * 
+		 * @since x.x.x
 		 * @var array
 		 */
 		public static $static_css_blocks = array();
 
 		/**
 		 * File System Object.
-		 *
+		 * 
+		 * @since x.x.x
 		 * @var object
 		 */
 		public static $file_system;
@@ -41,7 +43,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -53,6 +55,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Constructor
+		 * 
+		 *  @since x.x.x
 		 */
 		public function __construct() {
 
@@ -1077,20 +1081,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$buttons_static_css = '';
-			
-			if ( ! in_array( 'buttons', self::$static_css_blocks ) ) {
-				
-				$button_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/buttons.css';
-
-				if ( file_exists( $button_static_css_path ) ) {
-
-					// $buttons_static_css = self::$file_system->get_contents( $button_static_css_path );
-				}
-				
-				array_push( self::$static_css_blocks, 'buttons' );
-
-			}
+			$buttons_static_css = self::get_block_static_css( 'buttons' );
 			
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
@@ -1120,8 +1111,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $all_selectors['m_selectors'],
 			);
 
-			$buttons_child_static_css = '.uagb-buttons-repeater{display:flex;justify-content:center;align-items:center}.uagb-buttons-repeater a.uagb-button__link{display:flex;justify-content:center}.uagb-buttons-repeater .uagb-button__icon{font-size:inherit;display:flex;align-items:center;width:15px}.uagb-buttons-repeater .uagb-button__icon svg{fill:currentColor;width:inherit;height:inherit}
-			';
+			$buttons_child_static_css = self::get_block_static_css( 'buttons-child' );
 
 			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 
@@ -5571,6 +5561,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_condition_block_css() {
 
 			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
+		}
+
+		/**
+		 * Get Static CSS of Block.
+		 *
+		 * @var string $block_name Block Name.
+		 * 
+		 * @return string Static CSS.
+		 * @since x.x.x
+		 */
+		public static function get_block_static_css( $block_name ) {
+
+			$css = '';
+
+			if ( ! in_array( $block_name, self::$static_css_blocks ) ) {
+				
+				$block_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/' .$block_name . '.css';
+
+				if ( file_exists( $block_static_css_path ) ) {
+
+					$css = self::$file_system->get_contents( $block_static_css_path );
+				}
+				
+				array_push( self::$static_css_blocks, $block_name );
+
+			}
+
+			return $css;
 		}
 	}
 
