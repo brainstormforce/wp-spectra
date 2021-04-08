@@ -1459,7 +1459,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function render_button( $attributes ) {
-			if ( ! $attributes['displayPostLink'] || 'full_post' === $attributes['displayPostContentRadio'] ) {
+			if ( ! $attributes['displayPostLink'] ) {
 				return;
 			}
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
