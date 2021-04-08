@@ -168,6 +168,13 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.22.3 =
+* Improvement: Tabs - Added alignment option to the tab headers.
+* Improvement: Tabs - Added option to update the tabs order by moving it left or right.
+* Fix: Tabs - Nested tab layout breaking all the tab functionality.
+* Fix: Tabs - Tabs body generating multiple times.
+* Fix: Tabs - Tab Anchors in the page link Are Ignored.
+
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
 * Fix: Table of Contents - Showing default title instead of saved one.
