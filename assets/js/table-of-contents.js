@@ -140,8 +140,7 @@
 				});				
 			}
 			let blockId = attr.block_id;
-			var entryContentClass = ( 0 !== $( 'div.uag-toc__entry-content' ).length ? 'div.uag-toc__entry-content' : 'div.entry-content' );
-			var headerArray = $( entryContentClass ).find( all_header )
+			var headerArray = $("div.uag-toc__entry-content").parent().find( all_header )
 			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
 			headerArray.each( function (index,value){
 				let header = $( this );
