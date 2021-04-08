@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 1.22.3 ###
+* Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
+
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
 * Fix: Table of Contents - Showing default title instead of saved one.
