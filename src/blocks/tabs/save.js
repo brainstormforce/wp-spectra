@@ -35,7 +35,7 @@ export default function save( props ) {
             `uagb-tabs__${tabsStyleT}-tablet`,
             `uagb-tabs__${tabsStyleM}-mobile`
             ) }>
-            <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`} role="tablist">
+            <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`}>
                 {tabHeaders.map( ( header, index ) => (
                     <li key={ index } className={`uagb-tab ${(index === tabActiveFrontend ? 'uagb-tabs__active' : '')}`} id={`uagb-tabs__tab${index}`}>
                         <a href={`#uagb-tabs__tab${index}`} className={`uagb-tabs-list uagb-tabs__icon-position-${iconPosition}`} data-tab={index}>
