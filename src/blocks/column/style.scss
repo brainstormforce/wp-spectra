@@ -63,20 +63,6 @@
 	}
 }
 
-.wp-block-uagb-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: -14px;
-    margin-right: -14px;
-    min-width: 0;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    flex-basis: 100%;
-}
-
 @media (max-width: 976px) {
 	.uagb-column__align-tablet-left .uagb-column__inner-wrap {
 		margin-left: 0;
