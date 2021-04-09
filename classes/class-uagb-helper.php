@@ -136,6 +136,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $table_of_contents_flag = false;
 
 		/**
+		 * Static CSS Added Array
+		 *
+		 * @since x.x.x
+		 * @var array
+		 */
+		public static $static_css_blocks = array();
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -449,6 +457,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				self::$uag_flag = true;
 			}
 
+			// Add static css here.
+			$block_css_arr = UAGB_Config::get_block_assets_css();
+
+			if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], self::$static_css_blocks, true ) ) {
+				$common_css = array(
+					'common' => self::get_block_static_css( $block_css_arr[ $name ]['name'] ),
+				);
+				$css       += $common_css;
+			}
+
 			switch ( $name ) {
 				case 'uagb/review':
 					$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
@@ -624,10 +642,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 					break;
 
-				case 'uagb/google-map':
-					$css += UAGB_Block_Helper::get_google_map_css( $blockattr, $block_id );
-					break;
-
 				default:
 					// Nothing to do here.
 					break;
@@ -653,9 +667,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						$inner_assets    = $this->get_block_css_and_js( $inner_block );
 						$inner_block_css = $inner_assets['css'];
 
+						$css_common  = ( isset( $css['common'] ) ? $css['common'] : '' );
 						$css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
 						$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
 						$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
+
+						if ( isset( $inner_block_css['common'] ) ) {
+							$css['common'] = $css_common . $inner_block_css['common'];
+						}
 
 						if ( isset( $inner_block_css['desktop'] ) ) {
 							$css['desktop'] = $css_desktop . $inner_block_css['desktop'];
@@ -863,9 +882,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 
+						// Add your block specif css here.
 						$block_assets = $this->get_block_css_and_js( $block );
 						// Get CSS for the Block.
 						$css = $block_assets['css'];
+
+						if ( ! empty( $css['common'] ) ) {
+							$desktop .= $css['common'];
+						}
 
 						if ( isset( $css['desktop'] ) ) {
 							$desktop .= $css['desktop'];
@@ -1882,6 +1906,32 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $content;
+		}
+
+		/**
+		 * Get Static CSS of Block.
+		 *
+		 * @param string $block_name Block Name.
+		 *
+		 * @return string Static CSS.
+		 * @since x.x.x
+		 */
+		public static function get_block_static_css( $block_name ) {
+
+			$css = '';
+
+			$block_static_css_path = UAGB_DIR . 'assets/css/blocks/' . $block_name . '.css';
+
+			if ( file_exists( $block_static_css_path ) ) {
+
+				$file_system = self::get_instance()->get_filesystem();
+
+				$css = $file_system->get_contents( $block_static_css_path );
+			}
+
+			array_push( self::$static_css_blocks, $block_name );
+
+			return $css;
 		}
 	}
 
