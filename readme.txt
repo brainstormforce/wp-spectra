@@ -170,6 +170,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.22.3 =
 * Improvement: Static CSS Optimized by loading block specific CSS on a Page.
+* Fix: Resolved RangeControl Slider issue in responsive modes.
+* Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
+* Fix: Google Map - Added some padding for the editor to improve the experience of a selection of Google Map.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
