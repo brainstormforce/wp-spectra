@@ -17,51 +17,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
-		 * Member Variable
-		 *
-		 * @since x.x.x
-		 * @var instance
-		 */
-		private static $instance;
-
-		/**
 		 * Static CSS Added Array
 		 *
 		 * @since x.x.x
 		 * @var array
 		 */
 		public static $static_css_blocks = array();
-
-		/**
-		 * File System Object.
-		 *
-		 * @since x.x.x
-		 * @var object
-		 */
-		public static $file_system;
-
-		/**
-		 *  Initiator
-		 *
-		 * @since x.x.x
-		 */
-		public static function get_instance() {
-			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self();
-			}
-
-			return self::$instance;
-		}
-
-		/**
-		 * Constructor
-		 *
-		 *  @since x.x.x
-		 */
-		public function __construct() {
-
-			self::$file_system = UAGB_Helper::get_instance()->get_filesystem();
-		}
 
 		/**
 		 * Get review block CSS
@@ -5801,7 +5762,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				if ( file_exists( $block_static_css_path ) ) {
 
-					$css = self::$file_system->get_contents( $block_static_css_path );
+					$file_system = UAGB_Helper::get_instance()->get_filesystem();
+
+					$css = $file_system->get_contents( $block_static_css_path );
 				}
 
 				array_push( self::$static_css_blocks, $block_name );
@@ -5811,10 +5774,4 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $css;
 		}
 	}
-
-	/**
-	 *  Prepare if class 'UAGB_Block_Helper' exist.
-	 *  Kicking this off by calling 'get_instance()' method
-	 */
-	UAGB_Block_Helper::get_instance();
 }
