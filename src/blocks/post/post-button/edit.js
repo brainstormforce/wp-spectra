@@ -5,10 +5,6 @@ export const PostButton = (props) =>  {
 	
 	
 		const { attributes , post } = props
-		
-		if ( attributes.displayPostContentRadio == "full_post" ) {
-			return null;
-		}
 
 		let target = ( attributes.newTab ) ? "_blank" : "_self"
 
