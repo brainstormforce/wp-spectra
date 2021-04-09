@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 1.22.3 =
 * Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
 * Fix: Resolved RangeControl Slider issue in responsive modes.
+* Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
