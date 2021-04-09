@@ -440,6 +440,13 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		wp_enqueue_style(
+			'uagb-block-css', // Handle.
+			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
+			array(),
+			UAGB_VER
+		);
+
 		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'dist/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
 		$blocks       = array();
