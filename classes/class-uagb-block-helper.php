@@ -76,6 +76,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb_review_summary', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
+
 		}
 
 		/**
@@ -1345,6 +1346,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-infobox-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+
 		}
 
 		/**
@@ -1492,6 +1494,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-cta-block-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+
 		}
 
 		/**
@@ -2552,7 +2555,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p.uagb-timeline-desc-content', $combined_selectors );
-
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
