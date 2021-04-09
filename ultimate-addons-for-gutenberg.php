@@ -13,7 +13,6 @@
 
 define( 'UAGB_FILE', __FILE__ );
 define( 'UAGB_ROOT', dirname( plugin_basename( UAGB_FILE ) ) );
-define( 'UAGB_PLUGIN_PATH', trailingslashit( esc_url( plugin_dir_path( UAGB_FILE ) ) ) );
 define( 'UAGB_PLUGIN_NAME', 'Ultimate Addons for Gutenberg' );
 define( 'UAGB_PLUGIN_SHORT_NAME', 'UAG' );
 

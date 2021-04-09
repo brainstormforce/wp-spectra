@@ -5758,7 +5758,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! in_array( $block_name, self::$static_css_blocks, true ) ) {
 
-				$block_static_css_path = UAGB_PLUGIN_PATH . 'assets/css/blocks/' . $block_name . '.css';
+				$block_static_css_path = UAGB_DIR . 'assets/css/blocks/' . $block_name . '.css';
 
 				if ( file_exists( $block_static_css_path ) ) {
 
