@@ -4920,11 +4920,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $mobile,
 			);
 
-			$table_of_contents_static_css = self::get_block_static_css( 'table-of-contents' );
+			// $table_of_contents_static_css = self::get_block_static_css( 'table-of-contents' );
 
 			$css = $generated_css;
 
-			$css['desktop'] = $table_of_contents_static_css . $css['desktop'];
+			// $css['desktop'] = $table_of_contents_static_css . $css['desktop'];
+			$css['desktop'] = $css['desktop'];
 
 			return $css;
 		}

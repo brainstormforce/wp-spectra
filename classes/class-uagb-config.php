@@ -30,6 +30,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static $block_assets = null;
 
+
+		/**
+		 * Block Assets
+		 *
+		 * @var block_attributes
+		 */
+		public static $block_assets_css = null;
+
 		/**
 		 * Get Widget List.
 		 *
@@ -2978,6 +2986,25 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				);
 			}
 			return self::$block_assets;
+		}
+
+		/**
+		 * Get Block Assets.
+		 *
+		 * @since 1.13.4
+		 *
+		 * @return array The Asset List.
+		 */
+		public static function get_block_assets_css() {
+
+			if ( null === self::$block_assets_css ) {
+				self::$block_assets_css = array(
+					'uagb/table-of-contents' => array(
+						'name' => 'table-of-contents',
+					),
+				);
+			}
+			return self::$block_assets_css;
 		}
 	}
 }

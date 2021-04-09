@@ -449,6 +449,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				self::$uag_flag = true;
 			}
 
+			// Add static css here.
+			// $css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
+			
+			$block_css_arr = UAGB_Config::get_block_assets_css();
+
+			if ( isset( $block_css_arr[ $name ] ) ) {
+				$common_css = array( 
+					'common' => UAGB_Block_Helper::get_block_static_css( $block_css_arr[ $name ]['name'] )
+				);
+				$css += $common_css;
+			}
+			
 			switch ( $name ) {
 				case 'uagb/review':
 					$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
@@ -653,9 +665,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						$inner_assets    = $this->get_block_css_and_js( $inner_block );
 						$inner_block_css = $inner_assets['css'];
 
+						$css_common = ( isset( $css['common'] ) ? $css['common'] : '' );
 						$css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
 						$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
 						$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
+
+						if ( isset( $inner_block_css['common'] )  ) {
+							$css['common'] = $css_common . $inner_block_css['common'];
+						}
 
 						if ( isset( $inner_block_css['desktop'] ) ) {
 							$css['desktop'] = $css_desktop . $inner_block_css['desktop'];
@@ -863,9 +880,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 
+						// Add your block specif css here
 						$block_assets = $this->get_block_css_and_js( $block );
 						// Get CSS for the Block.
 						$css = $block_assets['css'];
+
+						if ( ! empty( $css['common'] ) ) {
+							$desktop .= $css['common'];
+						}
 
 						if ( isset( $css['desktop'] ) ) {
 							$desktop .= $css['desktop'];
