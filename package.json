@@ -7,7 +7,8 @@
   "main": "src/blocks.js",
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "build": "wp-scripts build",
+    "makepot": "vendor/bin/wp i18n make-pot . --skip-audit --exclude='.dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress' languages/ultimate-addons-for-gutenberg.pot"
   },
   "dependencies": {
     "@dr-kobros/react-webfont-loader": "^8.0.0",
