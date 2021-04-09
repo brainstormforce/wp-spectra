@@ -17,14 +17,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
-		 * Static CSS Added Array
-		 *
-		 * @since x.x.x
-		 * @var array
-		 */
-		public static $static_css_blocks = array();
-
-		/**
 		 * Get review block CSS
 		 *
 		 * @since 1.19.0
@@ -83,13 +75,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-rating-desc, .uagb-rating-author', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb_review_summary', $combined_selectors );
 
-			$review_static_css = self::get_block_static_css( 'review' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
-
-			$css['desktop'] = $review_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
 		}
 
 		/**
@@ -177,13 +163,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-notice-title', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-notice-text p', $combined_selectors );
 
-			$inline_notice_static_css = self::get_block_static_css( 'inline-notice' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
-
-			$css['desktop'] = $inline_notice_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
 		}
 
 		/**
@@ -303,13 +283,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials .uagb-materials__label', $combined_selectors );
 
-			$how_to_notice_static_css = self::get_block_static_css( 'how-to' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
-
-			$css['desktop'] = $how_to_notice_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
 		}
 
 		/**
@@ -520,13 +494,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-section-';
 
-			$section_static_css = self::get_block_static_css( 'section' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $section_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -701,13 +669,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-columns-';
 
-			$columns_static_css = self::get_block_static_css( 'columns' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $columns_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -853,13 +815,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-column-';
 
-			$column_static_css = self::get_block_static_css( 'column' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $column_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -919,13 +875,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-adv-heading-';
 
-			$advanced_heading_static_css = self::get_block_static_css( 'advanced-heading' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $advanced_heading_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -1085,13 +1035,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
-			$buttons_static_css = self::get_block_static_css( 'buttons' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $buttons_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 		/**
 		 * Get Multi Buttons - Child Block CSS
@@ -1113,13 +1057,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $all_selectors['m_selectors'],
 			);
 
-			$buttons_child_static_css = self::get_block_static_css( 'buttons-child' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $buttons_child_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 		/**
 		 * Get Buttons Block CSS
@@ -1406,13 +1344,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-infobox-';
 
-			$info_box_static_css = self::get_block_static_css( 'info-box' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $info_box_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -1559,13 +1491,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-cta-block-';
 
-			$call_to_action_static_css = self::get_block_static_css( 'call-to-action' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $call_to_action_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -1685,13 +1611,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 
-			$testimonial_static_css = self::get_block_static_css( 'testimonial' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $testimonial_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -1831,13 +1751,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-team-';
 
-			$team_static_css = self::get_block_static_css( 'team' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $team_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -2052,13 +1966,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 
-			$social_share_static_css = self::get_block_static_css( 'social-share' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $social_share_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -2085,13 +1993,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => '',
 			);
 
-			$social_share_child_static_css = self::get_block_static_css( 'social-share-child' );
-
-			$css = $generated_css;
-
-			$css['desktop'] = $social_share_child_static_css . $css['desktop'];
-
-			return $css;
+			return $generated_css;
 		}
 
 		/**
@@ -2382,13 +2284,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-icon-list-';
 
-			$icon_list_static_css = self::get_block_static_css( 'icon-list' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $icon_list_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -2415,13 +2311,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => '',
 			);
 
-			$icon_list_child_static_css = self::get_block_static_css( 'icon-list-child' );
-
-			$css = $generated_css;
-
-			$css['desktop'] = $icon_list_child_static_css . $css['desktop'];
-
-			return $css;
+			return $generated_css;
 		}
 
 		/**
@@ -2663,13 +2553,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p.uagb-timeline-desc-content', $combined_selectors );
 
-			$content_timeline_static_css = self::get_block_static_css( 'timeline' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $content_timeline_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -2787,13 +2671,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-timeline__link', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-timeline__heading a', $combined_selectors );
 
-			$post_timeline_static_css = self::get_block_static_css( 'timeline' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $post_timeline_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -2907,15 +2785,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-rm-';
 
-			$price_list_static_css = self::get_block_static_css( 'price-list' );
-
-			$price_list_static_css .= self::get_block_static_css( 'price-list-child' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $price_list_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -2997,13 +2867,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text .uagb-post__cta a', $combined_selectors );
 			}
 
-			$post_static_css = self::get_block_static_css( 'post' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $post_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -3084,13 +2948,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text .uagb-post__cta a', $combined_selectors );
 			}
 
-			$post_static_css = self::get_block_static_css( 'post' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $post_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -3177,13 +3035,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			}
 
-			$post_static_css = self::get_block_static_css( 'post' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $post_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -3441,15 +3293,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab span', $combined_selectors );
 
-			$tabs_static_css = self::get_block_static_css( 'tabs' );
-
-			$tabs_static_css = self::get_block_static_css( 'tabs-child' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $tabs_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 		/**
 		 * Get Blockquote CSS
@@ -3662,13 +3506,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 
-			$blockquote_static_css = self::get_block_static_css( 'blockquote' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $blockquote_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -4157,13 +3995,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .wpcf7 textarea', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .wpcf7 input:not([type=submit])', $combined_selectors );
 
-			$cf7_styler_static_css = self::get_block_static_css( 'cf7-styler' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $cf7_styler_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -4598,13 +4430,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .chosen-container-single span', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'radioCheck', ' .uagb-gf-styler__check-style-enabled form .gfield_radio label', $combined_selectors );
 
-			$gf_styler_static_css = self::get_block_static_css( 'gf-styler' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $gf_styler_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -4735,13 +4561,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-marketing-btn-';
 
-			$marketing_button_static_css = self::get_block_static_css( 'marketing-button' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
-
-			$css['desktop'] = $marketing_button_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
 
 		/**
@@ -4920,14 +4740,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $mobile,
 			);
 
-			// $table_of_contents_static_css = self::get_block_static_css( 'table-of-contents' );
-
-			$css = $generated_css;
-
-			// $css['desktop'] = $table_of_contents_static_css . $css['desktop'];
-			$css['desktop'] = $css['desktop'];
-
-			return $css;
+			return $generated_css;
 		}
 
 		/**
@@ -5132,15 +4945,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'question', ' .uagb-faq-questions-button .uagb-question', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'answer', ' .uagb-faq-item .uagb-faq-content p', $combined_selectors );
 
-			$faq_static_css = self::get_block_static_css( 'faq' );
-
-			$faq_static_css .= self::get_block_static_css( 'faq-child' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $faq_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 		/**
 		 * Get WP-Search CSS.
@@ -5298,13 +5103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text', $combined_selectors );
 
-			$wp_search_static_css = self::get_block_static_css( 'wp-search' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $wp_search_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -5418,13 +5217,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', ' .uagb-layout-grid .uagb-tax-count', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', ' .uagb-layout-list .uagb-tax-list', $combined_selectors );
 
-			$taxonomy_list_static_css = self::get_block_static_css( 'taxonomy-list' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $taxonomy_list_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -5643,13 +5436,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input', $combined_selectors );
 
-			$forms_static_css = self::get_block_static_css( 'forms' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $forms_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -5702,37 +5489,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$lottie_static_css = self::get_block_static_css( 'lottie' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $lottie_static_css . $css['desktop'];
-
-			return $css;
-		}
-
-		/**
-		 * Get Google Map CSS.
-		 *
-		 * @since x.x.x
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_google_map_css( $attr, $id ) {
-
-			$combined_selectors = array(
-				'desktop' => array(),
-				'tablet'  => array(),
-				'mobile'  => array(),
-			);
-
-			$google_map_static_css = self::get_block_static_css( 'google-map' );
-
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $google_map_static_css . $css['desktop'];
-
-			return $css;
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**
@@ -5743,36 +5500,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_condition_block_css() {
 
 			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
-		}
-
-		/**
-		 * Get Static CSS of Block.
-		 *
-		 * @param string $block_name Block Name.
-		 *
-		 * @return string Static CSS.
-		 * @since x.x.x
-		 */
-		public static function get_block_static_css( $block_name ) {
-
-			$css = '';
-
-			if ( ! in_array( $block_name, self::$static_css_blocks, true ) ) {
-
-				$block_static_css_path = UAGB_DIR . 'assets/css/blocks/' . $block_name . '.css';
-
-				if ( file_exists( $block_static_css_path ) ) {
-
-					$file_system = UAGB_Helper::get_instance()->get_filesystem();
-
-					$css = $file_system->get_contents( $block_static_css_path );
-				}
-
-				array_push( self::$static_css_blocks, $block_name );
-
-			}
-
-			return $css;
 		}
 	}
 }
