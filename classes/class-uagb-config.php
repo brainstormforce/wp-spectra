@@ -34,6 +34,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		/**
 		 * Block Assets
 		 *
+		 * @since x.x.x
 		 * @var block_attributes
 		 */
 		public static $block_assets_css = null;
