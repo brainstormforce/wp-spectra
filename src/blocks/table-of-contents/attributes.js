@@ -69,9 +69,13 @@ const attributes = {
 		default: ''
 	},
 	heading: {
-		type: "string",
+		source: "html",
 		selector: ".uagb-toc__title",
 		default: __( "Table Of Contents" , 'ultimate-addons-for-gutenberg' ),
+	},
+	headingTitle : {
+		type    : "string",
+		default : __( "Table Of Contents" , 'ultimate-addons-for-gutenberg' ),
 	},
 	customWidth : {
 		type: "boolean",
