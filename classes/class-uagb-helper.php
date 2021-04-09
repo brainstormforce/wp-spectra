@@ -882,7 +882,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 
-						// Add your block specif css here
+						// Add your block specif css here.
 						$block_assets = $this->get_block_css_and_js( $block );
 						// Get CSS for the Block.
 						$css = $block_assets['css'];
