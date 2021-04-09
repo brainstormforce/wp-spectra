@@ -293,6 +293,8 @@ class UAGBColumns extends Component {
 			{ value: "fan_opacity", label: __( "Fan Opacity", 'ultimate-addons-for-gutenberg' ) },
 			{ value: "curve", label: __( "Curve", 'ultimate-addons-for-gutenberg' ) },
 			{ value: "curve_asymmetrical", label: __( "Curve Asymmetrical", 'ultimate-addons-for-gutenberg' ) },
+			{ value: "curve_reverse", label: __( "Curve Reverse", 'ultimate-addons-for-gutenberg' ) },
+			{ value: "curve_asym_reverse", label: __( "Curve Asymmetrical Reverse", 'ultimate-addons-for-gutenberg' ) },
 			{ value: "arrow", label: __( "Arrow", 'ultimate-addons-for-gutenberg' ) },
 			{ value: "arrow_split", label: __( "Arrow Split", 'ultimate-addons-for-gutenberg' ) },
 			{ value: "book", label: __( "Book", 'ultimate-addons-for-gutenberg' ) },

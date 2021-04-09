@@ -70,6 +70,12 @@ const shapes = {
 	"book" : el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" },
 		el("path", { className: "uagb-columns__shape-fill", d: "M194,99c186.7,0.7,305-78.3,306-97.2c1,18.9,119.3,97.9,306,97.2c114.3-0.3,194,0.3,194,0.3s0-91.7,0-100c0,0,0,0,0-0 L0,0v99.3C0,99.3,79.7,98.7,194,99z" } )
 	),
+	"curve_reverse": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 800 300", preserveAspectRatio: "none" }, 
+		el("path", { className: "uagb-columns__shape-fill", d: "M791.7,166.5V56.8H8.3v109.7C8.3,109.8,183.6,63.8,400,63.8S791.7,109.8,791.7,166.5z" })
+	),
+	"curve_asym_reverse": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1200 120", preserveAspectRatio: "none" }, 
+		el("path", { className: "uagb-columns__shape-fill", d: "M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" })
+	),
 }
 
 export default shapes
