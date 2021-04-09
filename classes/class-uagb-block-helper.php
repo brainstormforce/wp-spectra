@@ -5719,17 +5719,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_google_map_css( $attr, $id ) {
 
-			$combined_selectors = array(
-				'desktop' => array(),
-				'tablet'  => array(),
-				'mobile'  => array(),
+			$css = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
 			);
 
 			$google_map_static_css = self::get_block_static_css( 'google-map' );
 
-			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
-
-			$css['desktop'] = $google_map_static_css . $css['desktop'];
+			$css['desktop'] = $google_map_static_css;
 
 			return $css;
 		}
