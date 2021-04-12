@@ -320,7 +320,7 @@ class UAGB_Init_Blocks {
 
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
+			UAGB_URL . 'dist/build/style-blocks.css', // Block style CSS.
 			array(),
 			UAGB_VER
 		);
