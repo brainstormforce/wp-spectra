@@ -56,16 +56,16 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 
 	return extraProps;
 }
-
+wp.hooks.addFilter(
+	'blocks.getSaveContent.extraProps',
+	'uagb/apply-extra-class',
+	ApplyExtraClass,
+);
 if(enableConditions){
 	wp.hooks.addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
 		AdvancedControlsBlock
 	);
-	wp.hooks.addFilter(
-		'blocks.getSaveContent.extraProps',
-		'uagb/apply-extra-class',
-		ApplyExtraClass,
-	);
+	
 }
