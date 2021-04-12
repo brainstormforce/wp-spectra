@@ -480,7 +480,7 @@ class UAGB_Init_Blocks {
 				'deactivated_blocks' => $blocks,
 			)
 		);
-		
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
