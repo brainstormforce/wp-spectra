@@ -3,13 +3,17 @@
   "version": "1.22.2",
   "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
   "author": "Brainstorm Force",
-  "license": "ISC",
-  "main": "src/blocks.js",
-  "scripts": {
-    "start": "wp-scripts start",
-    "build": "wp-scripts build",
-    "makepot": "vendor/bin/wp i18n make-pot . --skip-audit --exclude='.dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress' languages/ultimate-addons-for-gutenberg.pot"
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "gutenberg", "blocks", "gutenberg blocks", "editor", "block"
+  ],
+  "homepage": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg"
   },
+  "bugs": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg/issues/",
+  "main": "src/blocks.js",
   "dependencies": {
     "@dr-kobros/react-webfont-loader": "^8.0.0",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
@@ -43,5 +47,15 @@
     "@wordpress/scripts": "^14.1.0",
     "install": "^0.13.0",
     "webpack": "^4.46.0"
+  },
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "format:js": "wp-scripts format-js",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "check-engines": "wp-scripts check-engines",
+    "makepot": "vendor/bin/wp i18n make-pot . --skip-audit --exclude='.dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress' languages/ultimate-addons-for-gutenberg.pot"
   }
 }
