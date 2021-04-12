@@ -1,7 +1,6 @@
 import UserConditionOptions from './condition-block';
 
 const { __ } = wp.i18n
-const enableConditions = uagb_blocks_info.uagb_display_condition;
 
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {
 
@@ -30,6 +29,13 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 	};
 }, 'AdvancedControlsBlock');
 
+
+wp.hooks.addFilter(
+	'editor.BlockEdit',
+	'uagb/advanced-control-block',
+	AdvancedControlsBlock
+);
+
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
 	const { 
@@ -57,15 +63,8 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 	return extraProps;
 }
 
-if(enableConditions){
-	wp.hooks.addFilter(
-		'editor.BlockEdit',
-		'uagb/advanced-control-block',
-		AdvancedControlsBlock
-	);
-	wp.hooks.addFilter(
-		'blocks.getSaveContent.extraProps',
-		'uagb/apply-extra-class',
-		ApplyExtraClass,
-	);
-}
+wp.hooks.addFilter(
+	'blocks.getSaveContent.extraProps',
+	'uagb/apply-extra-class',
+	ApplyExtraClass,
+);

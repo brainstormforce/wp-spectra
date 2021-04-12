@@ -502,7 +502,6 @@ class UAGB_Init_Blocks {
 				'uagb_url'          => UAGB_URL,
 				'uagb_mime_type'    => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'     => UAGB_URI,
-				'uagb_display_condition' =>  apply_filters('disable_block_condition', true) 
 			)
 		);
 	} // End function editor_assets().
