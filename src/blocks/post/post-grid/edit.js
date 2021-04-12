@@ -883,21 +883,19 @@ class UAGBPostGrid extends Component {
 							/>
 						) }
 				</PanelBody>
-
-				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
 				<PanelBody title={ __( "Read More Link",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link",'ultimate-addons-for-gutenberg' ) }
 						checked={ displayPostLink }
 						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
-					<ToggleControl
-						label={ __( "Open links in New Tab",'ultimate-addons-for-gutenberg' ) }
-						checked={ newTab }
-						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
-					/>
 					{ displayPostLink &&
 						<Fragment>
+							<ToggleControl
+								label={ __( "Open links in New Tab",'ultimate-addons-for-gutenberg' ) }
+								checked={ newTab }
+								onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
+							/>				
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( "Button Text",'ultimate-addons-for-gutenberg' ) }</h2>
 							<TextControl
@@ -1006,7 +1004,7 @@ class UAGBPostGrid extends Component {
 							}
 						</Fragment>
 					}
-				</PanelBody>)}
+				</PanelBody>
 				<PanelBody title={ __( "Typography",'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<h2>{ __( "Title",'ultimate-addons-for-gutenberg' ) }</h2>
 					<SelectControl
