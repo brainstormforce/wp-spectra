@@ -10,7 +10,7 @@
   "homepage": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg"
+    "url": "git@git.brainstormforce.com:wp-sharks/ultimate-addons-for-gutenberg.git"
   },
   "bugs": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg/issues/",
   "main": "src/blocks.js",
