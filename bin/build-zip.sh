@@ -19,7 +19,7 @@ fi
 
 rsync -rc --exclude-from ".distignore" "./" "ultimate-addons-for-gutenberg"
 
-cd ultimate-addons-for-gutenberg
-zip -r "ultimate-addons-for-gutenberg.zip" "./ultimate-addons-for-gutenberg/"
-cd -
+# cd ultimate-addons-for-gutenberg
+zip -r "ultimate-addons-for-gutenberg.zip" "./ultimate-addons-for-gutenberg"
+# cd -
 
