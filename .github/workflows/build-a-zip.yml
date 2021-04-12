@@ -65,7 +65,7 @@ jobs:
           path: ./ultimate-addons-for-gutenberg.zip
 
       - name: "Echo upload"
-        run: echo print_r( ${{steps.uag-zip-upload.outputs}} )
+        run: echo  ${{ json_encode( steps.uag-zip-upload.outputs) }} )
 
       - name: Download zip artifact
         uses: actions/download-artifact@v2
@@ -77,5 +77,5 @@ jobs:
       - name: "Echo download path"
         run: echo ${{steps.uag-zip-download.outputs.download-path}}
 
-      - name: "Echo download"
-        run: echo print_r( ${{steps.uag-zip-download.outputs}} )
+      # - name: "Echo download"
+      #   run: echo print_r( ${{steps.uag-zip-download.outputs}} )
