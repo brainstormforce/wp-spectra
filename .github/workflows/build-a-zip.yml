@@ -55,7 +55,7 @@ jobs:
         run: npm run build
 
       - name: Build a package
-        run: npm run package
+        run: wp dist-archive . ultimate-addons-for-gutenberg
 
       - name: Upload zip  artifact
         uses: actions/upload-artifact@v2
