@@ -163,7 +163,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list      = UAGB_Config::get_block_attributes();
 			self::$file_generation = self::allow_file_generation();
-
+			
 			add_action( 'wp', array( $this, 'generate_assets' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ), 10 );
@@ -172,9 +172,55 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 			add_filter( 'the_content', array( $this, 'add_table_of_contents_wrapper' ) );
+			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
 
 		}
+		/**
+		 * This function determines wether to generate new assets or not.
+		 * 
+		 * @since x.x.x
+		 */
+		public function allow_generate_assets() {
 
+			$post_id     = get_the_ID();
+
+			if ( 'disabled' === self::$file_generation ) {
+
+				$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
+
+				if ( isset( $page_assets ) && empty( $page_assets ) ) {
+
+					return true;
+
+				}
+			} 
+		}
+		/**
+		 * This function deletes the Page assets from the Page Meta Key.
+		 * 
+		 * @since x.x.x
+		 */
+		public function delete_page_assets( $post_id ) {
+
+			delete_post_meta( $post_id, '_uagb_page_assets' );
+
+		}
+		/**
+		 * This function updates the Page assets in the Page Meta Key.
+		 * 
+		 * @since x.x.x
+		 */
+		public function update_page_assets() {
+
+			$post_id     = get_the_ID();
+				
+			$meta_array = array(
+				'css' => self::$stylesheet,
+				'js'  => self::$script
+			);
+
+			update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
+		}
 		/**
 		 * This is the action where we create dynamic asset files.
 		 * CSS Path : uploads/uag-plugin/uag-style-{post_id}-{timestamp}.css
@@ -191,6 +237,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( 'enabled' === self::$file_generation ) {
+
 				self::file_write( self::$stylesheet, 'css' );
 				self::file_write( self::$script, 'js' );
 			}
@@ -265,6 +312,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			<script type="text/javascript" id="uagb-script-frontend"><?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></script>
 			<?php
 			ob_end_flush();
+
+			$this->update_page_assets();
 		}
 
 		/**
@@ -293,6 +342,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 				<?php
 				ob_end_flush();
+
+				$this->update_page_assets();
 		}
 
 		/**
@@ -709,6 +760,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_assets() {
 
+			$this::allow_generate_assets();
+			
 			$this_post = array();
 
 			if ( class_exists( 'WooCommerce' ) ) {
