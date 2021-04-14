@@ -2706,7 +2706,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'afterSubmitToEmail'         => '',
 							'afterSubmitBccEmail'        => '',
 							'afterSubmitCcEmail'         => '',
-							'afterSubmitEmailSubject'    => '',
+							'afterSubmitEmailSubject'    => __( 'Form Submission', 'ultimate-addons-for-gutenberg' ),
 							'submitTextFontFamily'       => 'Default',
 							'submitTextFontWeight'       => '',
 							'submitTextFontSubset'       => '',

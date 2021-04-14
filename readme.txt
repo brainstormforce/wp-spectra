@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
 * Improvement: Forms - Resolved after adding v3 recaptcha in forms block need to click twice on button to submit the form. 
+* Fix: Forms - Resolved subject is not attached in the mail issue. 
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
