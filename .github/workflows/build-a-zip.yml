@@ -79,9 +79,9 @@ jobs:
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
           switches: -avzr --delete
-          path: ./temp/
-          # remote_path: ${{ secrets.SSH_PATH }}
-          remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
+          path: ./ultimate-addons-for-gutenberg.zip
+          remote_path: ${{ secrets.SSH_PATH }}
+          # remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
           remote_host: ${{ secrets.SSH_HOST }}
           remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USER }}

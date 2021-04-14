@@ -34,21 +34,21 @@ export BUILD_NAME
 echo "BUILD_NAME=$BUILD_NAME"  >> $GITHUB_ENV
 echo "BUILD_VERSION=$BUILD_VERSION"  >> $GITHUB_ENV
 
-if [ ! -d "ultimate-addons-for-gutenberg" ]; then
-  mkdir "ultimate-addons-for-gutenberg"
-fi
-
-# if [ ! -d "artifact" ]; then
-#   mkdir "artifact"
+# if [ ! -d "ultimate-addons-for-gutenberg" ]; then
+#   mkdir "ultimate-addons-for-gutenberg"
 # fi
 
-rsync -rc --exclude-from ".distignore" "./" "ultimate-addons-for-gutenberg"
+if [ ! -d "artifact" ]; then
+  mkdir "artifact"
+fi
 
-# cd ultimate-addons-for-gutenberg
-zip -r "ultimate-addons-for-gutenberg.zip" "./ultimate-addons-for-gutenberg"
+rsync -rc --exclude-from ".distignore" "./" "artifact/ultimate-addons-for-gutenberg"
+
+cd artifact
+zip -r "../" "./ultimate-addons-for-gutenberg"
 # cd -
 
-rm -rf ./ultimate-addons-for-gutenberg
+rm -rf ./artifact
 
 success "Done. Your UAG zip is ready..! 🎉"
 
