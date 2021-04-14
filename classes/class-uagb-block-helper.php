@@ -2574,43 +2574,43 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 
 			$selectors = array(
-				' .uagb-timeline__heading'      => array(
+				' .uagb-timeline__heading'                 => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__author'       => array(
+				' .uagb-timeline__author'                  => array(
 					'text-align'    => $attr['align'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 				),
-				' .uagb-timeline__link_parent'  => array(
+				' .uagb-timeline__link_parent'             => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__image a'      => array(
+				' .uagb-timeline__image a'                 => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__author-link'  => array(
+				' .uagb-timeline__author-link'             => array(
 					'color' => $attr['authorColor'],
 				),
-				' .dashicons-admin-users'       => array(
+				' .dashicons-admin-users'                  => array(
 					'color'       => $attr['authorColor'],
 					'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSize'], $attr['authorFontSizeType'] ),
 					'font-weight' => $attr['authorFontWeight'],
 					'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeight'], $attr['authorLineHeightType'] ),
 				),
-				' .uagb-timeline__link'         => array(
+				' .uagb-timeline__link'                    => array(
 					'color'            => $attr['ctaColor'],
 					'background-color' => $attr['ctaBackground'],
 				),
-				' .uagb-timeline-content .uagb-timeline__heading a' => array(
+				' .uagb-content .uagb-timeline__heading a' => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
-				' .uagb-timeline__heading-text' => array(
+				' .uagb-timeline__heading-text'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
 				' .uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 				),
-				' .uagb-content'                => array(
+				' .uagb-content'                           => array(
 					'padding' => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
 				),
 			);
@@ -3523,7 +3523,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading-text'           => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' p.uagb-timeline-desc-content'           => array(
+				' .uagb-timeline-desc-content'            => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
@@ -4585,20 +4585,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
 
 			$selectors = array(
-				' .uagb-toc__list-wrap ul li a:hover' => array(
+				' .uagb-toc__list-wrap li a:hover' => array(
 					'color' => $attr['linkHoverColor'],
 				),
-				' .uagb-toc__list-wrap ul li a'       => array(
+				' .uagb-toc__list-wrap li a'       => array(
 					'color' => $attr['linkColor'],
 				),
-				' .uagb-toc__title-wrap'              => array(
+				' .uagb-toc__title-wrap'           => array(
 					'justify-content' => $alignment,
 					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 				),
-				' .uagb-toc__title'                   => array(
+				' .uagb-toc__title'                => array(
 					'color' => $attr['headingColor'],
 				),
-				' .uagb-toc__wrap'                    => array(
+				' .uagb-toc__wrap'                 => array(
 					'border-style'   => $attr['borderStyle'],
 					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color'   => $attr['borderColor'],
@@ -4609,7 +4609,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vPaddingDesktop'], $attr['paddingTypeDesktop'] ),
 					'background'     => $attr['backgroundColor'],
 				),
-				' .uagb-toc__list-wrap'               => array(
+				' .uagb-toc__list-wrap'            => array(
 					'column-count' => $attr['tColumnsDesktop'],
 					'overflow'     => 'hidden',
 				),
@@ -4617,6 +4617,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top' => 0,
 				),
 				' .uagb-toc__list-wrap > ul.uagb-toc__list li' => array(
+					'color' => $attr['bulletColor'],
+				),
+				' .uagb-toc__list-wrap > li'       => array(
 					'color' => $attr['bulletColor'],
 				),
 				' .uagb-toc__list-wrap ul.uagb-toc__list:first-child' => array(
@@ -4628,7 +4631,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child' => array(
 					'padding-bottom' => 0,
 				),
-				' .uag-toc__collapsible-wrap svg'     => array(
+				' .uag-toc__collapsible-wrap svg'  => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'   => $attr['iconColor'],
@@ -5222,7 +5225,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Forms Block Parent CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.22.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -5235,11 +5238,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 			$m_selectors = array();
 			$t_selectors = array();
-			$content     = get_post_field( 'post_content' );
-			global $wp_version;
-			$reusable_blocks = version_compare( $wp_version, '5', '>=' ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
-
-			$selectors = array(
+			$selectors   = array(
 				' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 					'text-align' => $attr['overallAlignment'],
 				),
@@ -5284,127 +5283,91 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			foreach ( $reusable_blocks[0]['innerBlocks'] as $key => $blocks ) {
+			// Checkbox Field css.
+			$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
+				'color'     => $attr['inputColor'],
+				'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
+			);
+			$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
+				'background-color' => $attr['bgColor'],
+				'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+			);
+			$selectors[' .uagb-forms-checkbox-wrap > label']                                     = array(
+				'color' => $attr['inputColor'],
+			);
 
-				if ( 'uagb/forms-checkbox' === $blocks['blockName'] ) {
-					$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
-						'color'     => $attr['inputColor'],
-						'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-					);
-					$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-						'background-color' => $attr['bgColor'],
-						'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-						'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					);
-					$selectors[' .uagb-forms-checkbox-wrap > label']                                     = array(
-						'color' => $attr['inputColor'],
-					);
+			// Radio Button Field css.
+			$selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
+				'background-color' => $attr['inputColor'],
+				'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
+			);
+			$selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
+				'background-color' => $attr['bgColor'],
+				'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+			);
+			$selectors[' .uagb-forms-radio-wrap > label']                                  = array(
+				'color' => $attr['inputColor'],
+			);
 
-					if ( 'boxed' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-							'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-							'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
-						);
-						$selectors[' .uagb-forms-main-form .uagb-forms-checkbox-wrap > input']                              = array(
-							'color' => $attr['inputColor'],
-						);
-					}
-					if ( 'underlined' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-							'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-					}
-				}
-				if ( 'uagb/forms-radio' === $blocks['blockName'] ) {
-					$selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-						'background-color' => $attr['inputColor'],
-						'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-					);
-					$selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-						'background-color' => $attr['bgColor'],
-						'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-						'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					);
-					$selectors[' .uagb-forms-radio-wrap > label']                                  = array(
-						'color' => $attr['inputColor'],
-					);
+			// Toggle Field css.
+			$selectors[' .uagb-slider']                              = array(
+				'background-color' => $attr['bgColor'],
+			);
+			$selectors[' .uagb-forms-main-form .uagb-switch']        = array(
+				'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
+				'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
+			);
+			$selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
+				'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
+				'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
+			);
+			$selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
+				'background-color' => $attr['toggleActiveColor'],
+			);
+			$selectors[' .uagb-switch input:focus + .uagb-slider']   = array(
+				'box-shadow' => '0 0 1px' . $attr['toggleActiveColor'],
+			);
 
-					if ( 'boxed' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-							'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-						$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']                           = array(
-							'color' => $attr['inputColor'],
-						);
-					}
-					if ( 'underlined' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-							'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-					}
-				}
-				if ( 'uagb/forms-toggle' === $blocks['blockName'] ) {
-
-					$selectors[' .uagb-slider']                              = array(
-						'background-color' => $attr['bgColor'],
-					);
-					$selectors[' .uagb-forms-main-form .uagb-switch']        = array(
-						'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
-						'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
-					);
-					$selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
-						'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
-						'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
-					);
-					$selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
-						'background-color' => $attr['toggleActiveColor'],
-					);
-					$selectors[' .uagb-switch input:focus + .uagb-slider']   = array(
-						'box-shadow' => '0 0 1px' . $attr['toggleActiveColor'],
-					);
-					if ( 'boxed' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-							'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-					}
-					if ( 'underlined' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-							'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-					}
-				}
-				if ( 'uagb/forms-accept' === $blocks['blockName'] ) {
-					$selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-						'color'     => $attr['inputColor'],
-						'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
-					);
-					$selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-						'background-color' => $attr['bgColor'],
-						'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-						'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
-					);
-					$selectors[' .uagb-forms-accept-wrap > label']                                     = array(
-						'color' => $attr['inputColor'],
-					);
-
-					if ( 'boxed' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
-							'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-							'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
-						);
-						$selectors[' .uagb-forms-main-form .uagb-forms-accept-wrap > input']                              = array(
-							'color' => $attr['inputColor'],
-						);
-					}
-					if ( 'underlined' === $attr['formStyle'] ) {
-						$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
-							'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-						);
-					}
-				}
-			}
+			// Accept Field css.
+			$selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
+				'color'     => $attr['inputColor'],
+				'font-size' => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
+			);
+			$selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
+				'background-color' => $attr['bgColor'],
+				'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+				'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], 'px' ),
+			);
+			$selectors[' .uagb-forms-accept-wrap > label']                                     = array(
+				'color' => $attr['inputColor'],
+			);
 
 			if ( 'boxed' === $attr['formStyle'] ) {
+				$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
+					'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+				);
+				$selectors[' .uagb-forms-main-form .uagb-forms-checkbox-wrap > input']                              = array(
+					'color' => $attr['inputColor'],
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = array(
+					'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']                                 = array(
+					'color' => $attr['inputColor'],
+				);
+				$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
+					'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
+					'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+				);
+				$selectors[' .uagb-forms-main-form .uagb-forms-accept-wrap > input']                              = array(
+					'color' => $attr['inputColor'],
+				);
 
 				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 					'background-color' => $attr['bgColor'],
@@ -5427,7 +5390,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			if ( 'underlined' === $attr['formStyle'] ) {
-				$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+				$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before']   = array(
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
+					'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+				);
+				$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array(
 					'border'        => 0,
 					'outline'       => 0,
 					'border-radius' => 0,
@@ -5517,6 +5492,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
+
+		/**
+		 * Get Condition block CSS.
+		 *
+		 * @since 1.22.0
+		 */
+		public static function get_condition_block_css() {
+
+			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
 		}
 	}
 }

@@ -362,7 +362,8 @@ class UAGBAdvancedHeading extends Component {
 						className='uagb-heading-text'
 						multiline={ false }
 						onChange={ ( value ) => {
-							setAttributes( { headingTitle: value } ) }
+							setAttributes( { headingTitle: value } ) 
+							}
 						}
 						onMerge={ mergeBlocks }
 						onSplit={

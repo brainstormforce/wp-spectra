@@ -63,14 +63,6 @@ class UAGBTableOfContentsEdit extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (
-			JSON.stringify( this.props.headers ) !==
-			JSON.stringify( prevProps.headers )
-		) {
-			this.props.setAttributes({
-				headerLinks: JSON.stringify(this.props.headers)
-			});
-		}
 
 		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
 
@@ -86,8 +78,6 @@ class UAGBTableOfContentsEdit extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
-		this.props.setAttributes( { headerLinks: JSON.stringify( this.props.headers ) } )
-
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
 		$scrollTop.setAttribute( "class", "uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2" )
@@ -97,6 +87,9 @@ class UAGBTableOfContentsEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+		if( this.props.attributes.heading && '' !== this.props.attributes.heading ){
+			this.props.setAttributes( { headingTitle: this.props.attributes.heading } )
+		}
 	}
 
 	render() {
@@ -194,6 +187,7 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeightMobile,
 			mappingHeaders,
 			headingAlignment,
+			headingTitle
 		} = attributes
 
 		let loadGFonts
@@ -845,9 +839,9 @@ class UAGBTableOfContentsEdit extends Component {
 							<RichText
 								tagName= { "div" }
 								placeholder={ __( "Table Of Contents",'ultimate-addons-for-gutenberg' ) }
-								value={ heading }
+								value={ headingTitle }
 								className = 'uagb-toc__title'
-								onChange = { ( value ) => setAttributes( { heading: value } ) }
+								onChange = { ( value ) => setAttributes( { headingTitle: value } ) }
 								multiline={ false }
 								onRemove={ () => props.onReplace( [] ) }
 							/>
@@ -869,38 +863,6 @@ class UAGBTableOfContentsEdit extends Component {
 export default compose(
 	withSelect( ( select, ownProps ) => {
 		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
-
-    	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-		const getData = ( headerData, a ) => {
-			headerData.map( ( header ) => {
-				let innerBlock = header.innerBlocks;
-				if( innerBlock.length > 0 ) {
-					innerBlock.forEach(function(element) {
-						if( element.innerBlocks.length > 0 ) {
-							getData( element.innerBlocks, a );
-						} else {
-							if( element.name === 'core/heading' ) {
-								a.push( element );
-							}
-
-							if( element.name === 'uagb/advanced-heading' ) {
-								a.push( element );
-							}
-						}
-					});
-				} else {
-					if( header.name === 'core/heading' ) {
-						a.push( header );
-					}
-
-					if( header.name === 'uagb/advanced-heading' ) {
-						a.push( header );
-					}
-				}
-
-			});
-			return a; 
-		}
 
 		const parseTocSlug = ( slug ) => {
 
@@ -924,42 +886,43 @@ export default compose(
 			return decodeURI( encodeURIComponent( parsedSlug ) );
 		}
 
-		let a = [];
-		let all_headers = getData( select( 'core/block-editor' ).getBlocks(), a );
-
+		var level = 0;
+		
+		var headerArray = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
 		let headers = [];
+		if( headerArray != 'undefined' ) {
 
-		if( all_headers != 'undefined' ) {
-			all_headers.forEach((heading, key) => {
-
-				let heading_attr = heading.attributes
-
-				const contentLevel = ( heading.name == 'uagb/advanced-heading' ) ? parseInt( heading_attr.headingTag[1] ) : heading_attr.level
-
-				const contentName = ( heading.name == 'uagb/advanced-heading' ) ? 'headingTitle' : 'content'
-
-				const headingContentEmpty = typeof heading_attr[contentName] === 'undefined' || heading_attr[contentName] === '';
-
-				let heading_className = heading_attr.className;
-				let exclude_heading = '';
-
-				if( heading_className ){
-					if( typeof heading_className !== 'undefined' ){
-						exclude_heading = heading_className.includes('uagb-toc-hide-heading');
-					}
+			headerArray.each( function (index, value){
+				let header = $( this );
+				let excludeHeading ;
+				
+				if ( value.className.includes('uagb-toc-hide-heading') ) {
+					excludeHeading = true;
+				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+					excludeHeading = true;
+				} else {
+					excludeHeading = false;
 				}
-
-					if ( !headingContentEmpty && !exclude_heading ) {
+				
+				let headerText = parseTocSlug(header.text());
+				var openLevel = header[0].nodeName.replace(/^H+/, '');
+				var titleText = header.text();
+					
+					level = parseInt(openLevel);
+					
+					if ( !excludeHeading ) {
 						headers.push(
 							{
-								tag: contentLevel,
-								text: striptags( heading_attr[contentName] ),
-								link: parseTocSlug( striptags( heading_attr[contentName] ) ),
-								content: heading_attr[contentName]
+								tag: level,
+								text: titleText,
+								link: headerText,
+								content: header.text(),
 							}
 						);
 					}
-			});
+				
+									
+			});	
 		}
 
 		if ( headers !== undefined ) {

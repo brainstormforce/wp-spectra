@@ -11,18 +11,12 @@
 	}
 
 	ul.uagb-toc__list {
-		margin-left:1.2em;
+		margin-left:2.2em;
 		padding-left: 0px;
 		margin-bottom:0;
 		li {
 			margin: 0;
 		}
-	}
-
-	.uagb-toc__list-wrap ul li a {
-		color: inherit;
-		line-height: inherit;
-		font-size: inherit;
 	}
 
 	&.uagb-toc__align-left {
@@ -66,10 +60,8 @@
 	}
 }
 
-.uagb-toc__list {
-	.uagb-toc__list {
-		list-style-type: circle;
-	}
+.uagb-toc__list ul {
+	list-style-type: circle;
 }
 
 .uagb-toc__scroll-top {

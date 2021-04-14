@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-date", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )

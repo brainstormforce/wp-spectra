@@ -23,5 +23,6 @@ registerBlockType( "uagb/forms-email", {
 	supports: {
 		anchor: true,
 	},
+	example:{},
 	save
 } )
