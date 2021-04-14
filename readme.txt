@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
 * Fix: Resolved Invalid block issue of core widget blocks.
+* Fix: Marketing Button - Fix Icon size setting issue.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
