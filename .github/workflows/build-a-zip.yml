@@ -128,7 +128,7 @@ jobs:
         id: get-comment-body
         run: |
           body="Plugin zip for ${{ github.event.pull_request.head.sha }} is ready :bellhop_bell:!
-          - Download the plugin [zip](http://uag-dev.cvh6svsgwm-gok67yw2r652.p.runcloud.link/wp-content/uploads/uag-gh/ultimate-addons-for-gutenberg.zip)"
+          - Download the plugin [zip](http://uag-dev.cvh6svsgwm-gok67yw2r652.p.runcloud.link/wp-content/uploads/uag-gh/${{ needs.build-zip.outputs.branch-name }}/ultimate-addons-for-gutenberg.zip)"
           body="${body//$'\n'/'%0A'}"
           echo "::set-output name=body::$body"
       - name: Create comment on PR with links to plugin zip
