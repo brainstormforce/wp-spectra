@@ -62,7 +62,7 @@ jobs:
         id: uag-zip-upload
         with:
           name: uag-zip
-          path: ./ultimate-addons-for-gutenberg.zip
+          path: ./artifact/ultimate-addons-for-gutenberg.zip
 
       - name: Download zip artifact
         uses: actions/download-artifact@v2
@@ -71,8 +71,8 @@ jobs:
           name: uag-zip
           path: ./temp/ultimate-addons-for-gutenberg.zip
 
-      # - name: "Echo download path"
-      #   run: echo ${{steps.uag-zip-download.outputs.download-path}}
+      - name: "Check git status"
+        run: git status
 
       - name: QA site sync - rsync deployments
         uses: burnett01/rsync-deployments@4.1

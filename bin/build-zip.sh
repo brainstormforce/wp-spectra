@@ -45,10 +45,10 @@ fi
 rsync -rc --exclude-from ".distignore" "./" "artifact/ultimate-addons-for-gutenberg"
 
 cd artifact
-zip -r "../" "./ultimate-addons-for-gutenberg"
+zip -r ultimate-addons-for-gutenberg.zip "./ultimate-addons-for-gutenberg"
 # cd -
 
-rm -rf ./artifact
+rm -rf ultimate-addons-for-gutenberg
 
 success "Done. Your UAG zip is ready..! 🎉"
 
