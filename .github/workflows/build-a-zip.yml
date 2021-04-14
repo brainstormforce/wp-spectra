@@ -57,29 +57,29 @@ jobs:
       - name: Build a package
         run: npm run build-zip
 
-      - name: Upload zip  artifact
-        uses: actions/upload-artifact@v2
-        id: uag-zip-upload
-        with:
-          name: uag-zip
-          path: ./artifact/ultimate-addons-for-gutenberg.zip
+      # - name: Upload zip  artifact
+      #   uses: actions/upload-artifact@v2
+      #   id: uag-zip-upload
+      #   with:
+      #     name: uag-zip
+      #     path: ./artifact/ultimate-addons-for-gutenberg.zip
 
-      - name: Download zip artifact
-        uses: actions/download-artifact@v2
-        id: uag-zip-download
-        with:
-          name: uag-zip
-          path: ./temp/ultimate-addons-for-gutenberg.zip
+      # - name: Download zip artifact
+      #   uses: actions/download-artifact@v2
+      #   id: uag-zip-download
+      #   with:
+      #     name: uag-zip
+      #     path: ./temp/ultimate-addons-for-gutenberg.zip
 
-      - name: "Check git status"
-        run: git status
+      # - name: "Check git status"
+      #   run: git status
 
       - name: QA site sync - rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
           switches: -avzr --delete
-          path: ./ultimate-addons-for-gutenberg.zip
+          path: ./artifact/ultimate-addons-for-gutenberg.zip
           remote_path: ${{ secrets.SSH_PATH }}
           # remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
           remote_host: ${{ secrets.SSH_HOST }}
