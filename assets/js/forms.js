@@ -129,20 +129,11 @@
             }
 
             if(attr['reCaptchaEnable'] == true && attr['reCaptchaType'] == "v3" && attr['reCaptchaSiteKeyV3'] ){
-                  grecaptcha.ready(function() {
+                grecaptcha.ready(function() {
                     grecaptcha.execute(attr['reCaptchaSiteKeyV3'], {action: 'submit'}).then(function(token) {
                         document.getElementById('g-recaptcha-response').value = token;
                     });
-                  });
-                  
-               captcha_response = $form[0].getElementsByClassName("uagb-forms-recaptcha")[0].value;
-               if (!captcha_response) {                  
-                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('<p style="color:red !important" class="error-captcha">'+attr['captchaMessage']+'</p>');
-                   return false;
-               } else {
-                   $('.uagb-form-reacaptcha-error-'+attr['block_id']).html('');
-                   uagab_captcha_keys = { 'secret':attr['reCaptchaSecretKeyV3'],'sitekey':attr['reCaptchaSiteKeyV3'] }                   
-               }
+                });
             }
             var originalSerialized = $($form).serializeArray();
             var postData = {};
