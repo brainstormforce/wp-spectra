@@ -35,7 +35,7 @@ jobs:
 
       - name: Extract current branch name
         id: get-current-branch
-        run: echo "::set-output name=branch_name::$(echo ${GITHUB_REF#refs/heads/})"
+        run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
 
       - name: Cache node modules
         id: cache-node
@@ -80,8 +80,9 @@ jobs:
 
       - name: Create branch directory
         run: |
-          mkdir -p artifact/${{ steps.get-current-branch.outputs.branch_name }}
-          mv /artifact/ultimate-addons-for-gutenberg.zip /artifact/${{ steps.get-current-branch.outputs.branch_name }}/
+          cd artifact
+          mkdir -p ${{ steps.get-current-branch.outputs.branch_name }}
+          mv ultimate-addons-for-gutenberg.zip ${{ steps.get-current-branch.outputs.branch_name }}/
 
       - name: QA site sync - rsync deployments
         uses: burnett01/rsync-deployments@4.1
