@@ -80,7 +80,7 @@ jobs:
         uses: burnett01/rsync-deployments@4.1
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
-          switches: -avzr --delete
+          switches: -avzrd --relative --delete
           path: ./artifact/ultimate-addons-for-gutenberg.zip
           remote_path: ${{ secrets.SSH_PATH }}
           # remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
