@@ -6,9 +6,11 @@ on:
 
 jobs:
   build-zip:
+    name: "Run npm build commands"
     # if: github.event_name == 'push' && contains(toJson(github.event.commits), '[run build pr]') != false
     runs-on: ubuntu-latest
-    name: "Run npm build commands"
+    outputs:
+      branch-name: ${{ steps.get-current-branch.outputs.branch_name }}
     steps:
       # - name: Setup PHP without xdebug
       #   uses: shivammathur/setup-php@v2
@@ -32,8 +34,8 @@ jobs:
       #     git config user.email "noreply@github.com"
 
       - name: Extract current branch name
-        id: extract_branch
-        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        id: get-current-branch
+        run: echo "::set-output name=branch_name::$(echo ${GITHUB_REF#refs/heads/})"
 
       - name: Cache node modules
         id: cache-node
@@ -76,12 +78,18 @@ jobs:
       # - name: "Check git status"
       #   run: git status
 
+      - name: Create branch directory
+        run: |
+          mkdir -p artifact/${{ steps.get-current-branch.outputs.branch_name }}
+          mv /artifact/ultimate-addons-for-gutenberg.zip /artifact/${{ steps.get-current-branch.outputs.branch_name }}/
+
       - name: QA site sync - rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
-          switches: -avzrd --relative --delete
-          path: ./artifact/ultimate-addons-for-gutenberg.zip
+          switches: -avzr --delete
+          # path: ./artifact/ultimate-addons-for-gutenberg.zip
+          path: ./artifact/
           remote_path: ${{ secrets.SSH_PATH }}
           # remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
           remote_host: ${{ secrets.SSH_HOST }}/wf/34/
