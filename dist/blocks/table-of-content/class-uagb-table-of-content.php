@@ -401,7 +401,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
-			
+
 			ob_start();
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
