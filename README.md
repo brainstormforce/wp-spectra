@@ -174,7 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Google Map - Added some padding for the editor to improve the experience of a selection of Google Map.
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
-* Fix: Post Layout - Conflicting with NexGen.
+* Fix: Post Layout - Conflicting with NexGen Gallery plugin.
 
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
