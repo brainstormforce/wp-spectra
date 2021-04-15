@@ -1,6 +1,7 @@
 import UserConditionOptions from './condition-block';
 
 const { __ } = wp.i18n
+const enableConditions = uagb_blocks_info.uagb_display_condition;
 
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {
 
@@ -14,7 +15,7 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 		
 		const blocks_name = props.name;
 		
-		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors'];
+		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
@@ -28,13 +29,6 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 		);
 	};
 }, 'AdvancedControlsBlock');
-
-
-wp.hooks.addFilter(
-	'editor.BlockEdit',
-	'uagb/advanced-control-block',
-	AdvancedControlsBlock
-);
 
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
@@ -62,9 +56,16 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 
 	return extraProps;
 }
-
 wp.hooks.addFilter(
 	'blocks.getSaveContent.extraProps',
 	'uagb/apply-extra-class',
 	ApplyExtraClass,
 );
+if(enableConditions){
+	wp.hooks.addFilter(
+		'editor.BlockEdit',
+		'uagb/advanced-control-block',
+		AdvancedControlsBlock
+	);
+	
+}
