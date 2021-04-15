@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.23.0 =
+* Improvement: Improve the Dynamic Assets loading functionality for better performance.
+
 = 1.22.3 =
 * Fix: Resolved RangeControl Slider issue in responsive modes.
 * Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
