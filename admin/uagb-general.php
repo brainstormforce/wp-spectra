@@ -225,7 +225,8 @@ array_multisort(
 						</p>
 						<label for="uag_file_generation">
 							<?php
-							$button_disabled = '';
+							$button_disabled      = '';
+							$disable_regeneration = '';
 							if ( 'disabled' === $allow_file_generation && true === $has_read_write_perms ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
@@ -239,9 +240,15 @@ array_multisort(
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
+							if ( 'disabled' === $allow_file_generation ) {
+								$disable_regeneration = 'disabled';
+							}
 							?>
 							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
+							</button>
+							<button class="button astra-beta-updates uag-file-regeneration" <?php echo esc_attr( $disable_regeneration ); ?> >
+								<?php echo esc_html( __( 'Regenerate Files', 'ultimate-addons-for-gutenberg' ) ); ?>
 							</button>
 						</label>
 					</div>

@@ -290,3 +290,6 @@
 .uagb-reusable-block-link > span {
 	vertical-align: text-top;
 }
+.wp-core-ui .button.uag-file-regeneration {
+	margin-top: 15px;
+}

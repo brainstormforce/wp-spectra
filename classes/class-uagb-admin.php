@@ -46,6 +46,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
 
+			add_action( 'wp_ajax_uagb_file_regeneration', __CLASS__ . '::file_regeneration' );
+
 			// Enqueue admin scripts.
 			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
@@ -441,6 +443,32 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			);
 		}
 
+		/**
+		 * File Regeneration Flag
+		 *
+		 * @since x.x.x
+		 */
+		public static function file_regeneration() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Access Denied. You don\'t have enough capabilities to execute this action.', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			UAGB_Helper::get_instance()->delete_upload_dir();
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+				)
+			);
+		}
 		/**
 		 * Required Plugin Activate
 		 *
