@@ -222,6 +222,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				self::$css_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
+				if ( ( ! isset( $css_file_path ) || null === $css_file_path ) && ( ! isset( $js_file_path ) || null === $js_file_path ) ) {
+					return true;
+				}
+
 				if ( ( isset( $css_file_path ) && null !== $css_file_path && ! file_exists( $css_file_path ) ) || ( isset( $js_file_path ) && null !== $js_file_path && ! file_exists( $js_file_path ) ) ) {
 
 					return true;
