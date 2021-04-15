@@ -1589,7 +1589,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'extension'   => false,
-						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js', 'uagb-slick-js',  ),
+						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js', 'uagb-slick-js' ),
 						'attributes'  => array(
 							'post_type'                    => 'masonry',
 							'postType'                     => 'post',
