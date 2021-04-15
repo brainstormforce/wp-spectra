@@ -163,7 +163,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list      = UAGB_Config::get_block_attributes();
 			self::$file_generation = self::allow_file_generation();
-			
+
 			add_action( 'wp', array( $this, 'generate_assets' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ), 10 );
@@ -173,58 +173,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 			add_filter( 'the_content', array( $this, 'add_table_of_contents_wrapper' ) );
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
-			add_filter( 'render_block_data', function( $parsed_block ) {
-
-				if ( isset( $parsed_block['innerBlocks'] ) ) {
-					$name = $parsed_block['blockName'];
-				}
-
-				$name = $parsed_block['blockName'];
-				error_log('here--------------------------------');
-				error_log( print_r( $name, true ) );
-				self::$current_block_list[] = $name;
-// var_dump(self::$current_block_list);
-				return $parsed_block;
-			});
-
 		}
 
-		/**
-		 * This function determines the current blocks on a Page.
-		 * 
-		 * @since x.x.x
-		 */
-		public function update_current_blocks_list() {
-
-			if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
-
-				$blocks            = $this->parse( $this_post->post_content );
-				self::$page_blocks = $blocks;
-
-				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-					return;
-				}
-
-				$assets = $this->get_assets( $blocks );
-
-				self::$stylesheet .= $assets['css'];
-				self::$script     .= $assets['js'];
-			}
-		}
 		/**
 		 * This function determines wether to generate new assets or not.
-		 * 
+		 *
 		 * @since x.x.x
 		 */
 		public function allow_generate_assets() {
 
-			$post_id     = get_the_ID();
+			$post_id = get_the_ID();
 
-			self::$uag_flag = true;
+			$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
+
+			if ( isset( $page_assets ) && ! empty( $page_assets ) ) {
+
+				self::$current_block_list = $page_assets['current_block_list'];
+				self::$uag_flag           = $page_assets['uag_flag'];
+			}
 
 			if ( 'disabled' === self::$file_generation ) {
-
-				$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
 
 				if ( isset( $page_assets ) && empty( $page_assets ) ) {
 
@@ -234,17 +202,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} else {
 
 				$post_timestamp_css = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
-				$post_timestamp_js = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
+				$post_timestamp_js  = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
 
 				$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
-				$js_asset_info = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+				$js_asset_info  = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
 
 				self::$css_file_handler = array_merge( $css_asset_info, $js_asset_info );
-				
-				$css_file_path = $css_asset_info['css'];
-				$js_file_path = $js_asset_info['js'];
 
-				if ( ( isset( $css_file_path ) && NULL !== $css_file_path && ! file_exists( $css_file_path ) ) || ( isset( $js_file_path ) && NULL !== $js_file_path && ! file_exists( $js_file_path ) ) ) {
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+				if ( ( isset( $css_file_path ) && null !== $css_file_path && ! file_exists( $css_file_path ) ) || ( isset( $js_file_path ) && null !== $js_file_path && ! file_exists( $js_file_path ) ) ) {
 					return true;
 				}
 			}
@@ -253,25 +221,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 		/**
 		 * This function deletes the Page assets from the Page Meta Key.
-		 * 
+		 *
+		 * @param int $post_id Post Id.
 		 * @since x.x.x
 		 */
 		public function delete_page_assets( $post_id ) {
 
-			if ( 'disabled' === self::$file_generation ) {
+			delete_post_meta( $post_id, '_uagb_page_assets' );
+
+			if ( 'disabled' !== self::$file_generation ) {
 
 				delete_post_meta( $post_id, '_uagb_page_assets' );
 
-			} else {
-
 				$post_timestamp_css = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
-				$post_timestamp_js = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
+				$post_timestamp_js  = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
 
 				$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
-				$js_asset_info = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+				$js_asset_info  = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
 
 				$css_file_path = $css_asset_info['css'];
-				$js_file_path = $js_asset_info['js'];
+				$js_file_path  = $js_asset_info['js'];
 
 				wp_delete_file( $css_file_path );
 				wp_delete_file( $js_file_path );
@@ -280,16 +249,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 		/**
 		 * This function updates the Page assets in the Page Meta Key.
-		 * 
+		 *
 		 * @since x.x.x
 		 */
 		public function update_page_assets() {
 
-			$post_id     = get_the_ID();
-				
+			$post_id = get_the_ID();
+
 			$meta_array = array(
-				'css' => self::$stylesheet,
-				'js'  => self::$script
+				'css'                => self::$stylesheet,
+				'js'                 => self::$script,
+				'current_block_list' => self::$current_block_list,
+				'uag_flag'           => self::$uag_flag,
 			);
 
 			update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
@@ -303,7 +274,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_asset_files() {
 
-			if( ! $this::allow_generate_assets() ) {
+			if ( ! $this::allow_generate_assets() ) {
 				return;
 			}
 
@@ -317,6 +288,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				self::file_write( self::$stylesheet, 'css' );
 				self::file_write( self::$script, 'js' );
+
+				$this->update_page_assets();
 			}
 		}
 
@@ -326,11 +299,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 */
 		public function block_assets() {
-			var_dump(self::$current_block_list);
+
 			$block_list_for_assets = self::$current_block_list;
 
 			$blocks = UAGB_Config::get_block_attributes();
-			
+
 			foreach ( $block_list_for_assets as $key => $curr_block_name ) {
 
 				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
@@ -838,10 +811,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_assets() {
 
-			if( ! $this::allow_generate_assets() ) {
+			if ( ! $this::allow_generate_assets() ) {
 				return;
 			}
-			
+
 			$this_post = array();
 
 			if ( class_exists( 'WooCommerce' ) ) {
