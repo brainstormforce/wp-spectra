@@ -212,20 +212,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			} else {
 
-				$post_timestamp_css = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
-				$post_timestamp_js  = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
+				$post_timestamp_css = get_post_meta( $post_id, '_uag_css_style_name', true );
+				$post_timestamp_js  = get_post_meta( $post_id, '_uag_js_script_name', true );
 
 				$css_asset_info = array();
 				$js_asset_info  = array();
 
 				if ( ! empty( $post_timestamp_css ) ) {
 
-					$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
+					$css_asset_info = self::get_asset_info( 'css', $post_id );
 					$css_file_path  = $css_asset_info['css'];
 				}
 				if ( ! empty( $post_timestamp_js ) ) {
 
-					$js_asset_info = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+					$js_asset_info = self::get_asset_info( 'js', $post_id );
 					$js_file_path  = $js_asset_info['js'];
 				}
 
@@ -251,25 +251,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function delete_page_assets( $post_id ) {
 
-			delete_post_meta( $post_id, '_uagb_page_assets' );
-
 			if ( 'disabled' !== self::$file_generation ) {
 
-				delete_post_meta( $post_id, '_uagb_page_assets' );
-
-				$post_timestamp_css = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
-				$post_timestamp_js  = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
-
-				$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
-				$js_asset_info  = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+				$css_asset_info = self::get_asset_info( 'css', $post_id );
+				$js_asset_info  = self::get_asset_info( 'js', $post_id );
 
 				$css_file_path = $css_asset_info['css'];
 				$js_file_path  = $js_asset_info['js'];
 
-				wp_delete_file( $css_file_path );
-				wp_delete_file( $js_file_path );
-
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $css_file_path );
+				}
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $js_file_path );
+				}
 			}
+
+			delete_post_meta( $post_id, '_uagb_page_assets' );
+			delete_post_meta( $post_id, '_uag_css_style_name' );
+			delete_post_meta( $post_id, '_uag_js_script_name' );
 		}
 		/**
 		 * This function updates the Page assets in the Page Meta Key.
@@ -1593,29 +1593,27 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Returns an array of paths for the CSS and JS assets
 		 * of the current post.
 		 *
-		 * @param  var $data    Gets the CSS\JS for the current Page.
 		 * @param  var $type    Gets the CSS\JS type.
-		 * @param  var $timestamp Timestamp.
+		 * @param  var $post_id Post ID.
 		 * @since 1.14.0
 		 * @return array
 		 */
-		public static function get_asset_info( $data, $type, $timestamp ) {
+		public static function get_asset_info( $type, $post_id ) {
 
-			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$css_suffix  = 'uag-style';
-			$js_suffix   = 'uag-script';
 			$info        = array();
 
 			if ( 'css' === $type ) {
 
-				$info['css']     = $uploads_dir['path'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
-				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
+				$path            = get_post_meta( $post_id, '_uag_css_style_name', true );
+				$info['css']     = $uploads_dir['path'] . $path;
+				$info['css_url'] = $uploads_dir['url'] . $path;
 
 			} elseif ( 'js' === $type ) {
 
-				$info['js']     = $uploads_dir['path'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
-				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
+				$path           = get_post_meta( $post_id, '_uag_js_script_name', true );
+				$info['js']     = $uploads_dir['path'] . $path;
+				$info['js_url'] = $uploads_dir['url'] . $path;
 
 			}
 
@@ -1625,28 +1623,56 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Creates a new file for Dynamic CSS/JS.
 		 *
-		 * @param  array  $assets_info File path and other information.
 		 * @param  string $style_data The data that needs to be copied into the created file.
 		 * @param  string $timestamp Current timestamp.
 		 * @param  string $type Type of file - CSS/JS.
+		 * @param  string $file_state Wether File is new or old.
 		 * @since 1.15.0
 		 * @return boolean true/false
 		 */
-		public static function create_file( $assets_info, $style_data, $timestamp, $type ) {
+		public static function create_file( $style_data, $timestamp, $type, $file_state ) {
 
 			$post_id = get_the_ID();
 			if ( ! $post_id ) {
 				return false;
 			}
 
+			$uploads_dir = self::get_upload_dir();
+
 			$file_system = self::get_instance()->get_filesystem();
 
-			// Create a new file.
-			$result = $file_system->put_contents( $assets_info[ $type ], $style_data, FS_CHMOD_FILE );
+			if ( 'css' === $type ) {
 
-			if ( $result ) {
-				// Update meta with current timestamp.
-				update_post_meta( $post_id, 'uag_style_timestamp-' . $type, $timestamp );
+				$path = 'uag-style-' . $post_id . '-' . $timestamp . '.css';
+
+				if ( 'old' === $file_state ) {
+
+					$path = $timestamp;
+				}
+
+				// Create a new file.
+				$result = $file_system->put_contents( $uploads_dir['path'] . $path, $style_data, FS_CHMOD_FILE );
+
+				if ( $result ) {
+					// Update meta with current timestamp.
+					update_post_meta( $post_id, '_uag_css_style_name', $path );
+				}
+			} elseif ( 'js' === $type ) {
+
+				$path = 'uag-script-' . $post_id . '-' . $timestamp . '.js';
+
+				if ( 'old' === $file_state ) {
+
+					$path = $timestamp;
+				}
+
+				// Create a new file.
+				$result = $file_system->put_contents( $uploads_dir['path'] . $path, $style_data, FS_CHMOD_FILE );
+
+				if ( $result ) {
+					// Update meta with current timestamp.
+					update_post_meta( $post_id, '_uag_js_script_name', $path );
+				}
 			}
 
 			return $result;
@@ -1666,16 +1692,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return false;
 			}
 
-			$post_timestamp = get_post_meta( $post_id, 'uag_style_timestamp-' . $type, true );
-			$var            = ( 'css' === $type ) ? 'css' : 'js';
-			$date           = new DateTime();
-			$new_timestamp  = $date->getTimestamp();
-			$file_system    = self::get_instance()->get_filesystem();
+			if ( 'css' === $type ) {
+
+				$post_timestamp_path = get_post_meta( $post_id, '_uag_css_style_name', true );
+
+			} elseif ( 'js' === $type ) {
+
+				$post_timestamp_path = get_post_meta( $post_id, '_uag_js_script_name', true );
+			}
+
+			$var           = ( 'css' === $type ) ? 'css' : 'js';
+			$date          = new DateTime();
+			$new_timestamp = $date->getTimestamp();
+			$file_system   = self::get_instance()->get_filesystem();
 
 			// Get timestamp - Already saved OR new one.
-			$post_timestamp  = ( '' === $post_timestamp || false === $post_timestamp ) ? '' : $post_timestamp;
-			$assets_info     = self::get_asset_info( $style_data, $type, $post_timestamp );
-			$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
+			$post_timestamp_path = ( '' === $post_timestamp_path || false === $post_timestamp_path ) ? '' : $post_timestamp_path;
+			$assets_info         = self::get_asset_info( $type, $post_id );
 
 			$relative_src_path = $assets_info[ $var ];
 
@@ -1700,9 +1733,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 * This is the case where somehow the files are delete or not created in first place.
 			 * Here we attempt to create them again.
 			 */
-			if ( ! $file_system->exists( $relative_src_path ) && '' !== $post_timestamp ) {
+			if ( ! $file_system->exists( $relative_src_path ) && '' !== $post_timestamp_path ) {
 
-				$did_create = self::create_file( $assets_info, $style_data, $post_timestamp, $type );
+				$did_create = self::create_file( $style_data, $post_timestamp_path, $type, 'old' );
 
 				if ( $did_create ) {
 					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1715,12 +1748,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 * Need to create new assets.
 			 * No such assets present for this current page.
 			 */
-			if ( '' === $post_timestamp ) {
+			if ( '' === $post_timestamp_path ) {
 
 				// Create a new file.
-				$did_create = self::create_file( $new_assets_info, $style_data, $new_timestamp, $type );
+				$did_create = self::create_file( $style_data, $new_timestamp, $type, 'new' );
 
 				if ( $did_create ) {
+					$new_assets_info        = self::get_asset_info( $type, $post_id );
 					self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
 				}
 
@@ -1743,9 +1777,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					wp_delete_file( $relative_src_path );
 
 					// Create a new file.
-					$did_create = self::create_file( $new_assets_info, $style_data, $new_timestamp, $type );
+					$did_create = self::create_file( $style_data, $new_timestamp, $type, 'new' );
 
 					if ( $did_create ) {
+						$new_assets_info        = self::get_asset_info( $type, $post_id );
 						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
 					}
 
