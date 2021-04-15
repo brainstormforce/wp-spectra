@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.22.3 ###
+* Improvement: Added filter to disable block conditions from editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
 * Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
 * Fix: Resolved RangeControl Slider issue in responsive modes.
 * Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
