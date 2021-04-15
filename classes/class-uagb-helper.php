@@ -285,7 +285,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( 'enabled' === self::$file_generation ) {
-
 				self::file_write( self::$stylesheet, 'css' );
 				self::file_write( self::$script, 'js' );
 
@@ -317,7 +316,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							wp_enqueue_script( 'uagb-faq-js' );
 						}
 					} else {
-						;
 						wp_enqueue_script( $val );
 					}
 				}
