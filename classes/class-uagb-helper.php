@@ -188,10 +188,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( isset( $page_assets ) && ! empty( $page_assets ) ) {
 
-				self::$current_block_list = $page_assets['current_block_list'];
-				self::$uag_flag           = $page_assets['uag_flag'];
-				self::$stylesheet         = $page_assets['css'];
-				self::$script             = $page_assets['js'];
+				self::$current_block_list     = $page_assets['current_block_list'];
+				self::$uag_flag               = $page_assets['uag_flag'];
+				self::$stylesheet             = $page_assets['css'];
+				self::$script                 = $page_assets['js'];
+				self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
 			}
 
 			if ( 'disabled' === self::$file_generation ) {
@@ -272,10 +273,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$post_id = get_the_ID();
 
 			$meta_array = array(
-				'css'                => self::$stylesheet,
-				'js'                 => self::$script,
-				'current_block_list' => self::$current_block_list,
-				'uag_flag'           => self::$uag_flag,
+				'css'                    => self::$stylesheet,
+				'js'                     => self::$script,
+				'current_block_list'     => self::$current_block_list,
+				'uag_flag'               => self::$uag_flag,
+				'table_of_contents_flag' => self::$table_of_contents_flag,
 			);
 
 			update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
