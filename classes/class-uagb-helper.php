@@ -190,6 +190,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				self::$current_block_list = $page_assets['current_block_list'];
 				self::$uag_flag           = $page_assets['uag_flag'];
+				self::$stylesheet         = $page_assets['css'];
+				self::$script             = $page_assets['js'];
 			}
 
 			if ( 'disabled' === self::$file_generation ) {
@@ -204,15 +206,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$post_timestamp_css = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
 				$post_timestamp_js  = get_post_meta( $post_id, 'uag_style_timestamp-js', true );
 
-				$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
-				$js_asset_info  = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+				$css_asset_info = array();
+				$js_asset_info  = array();
+
+				if ( ! empty( $post_timestamp_css ) ) {
+
+					$css_asset_info = self::get_asset_info( self::$stylesheet, 'css', $post_timestamp_css );
+					$css_file_path  = $css_asset_info['css'];
+				}
+				if ( ! empty( $post_timestamp_js ) ) {
+
+					$js_asset_info = self::get_asset_info( self::$stylesheet, 'js', $post_timestamp_js );
+					$js_file_path  = $js_asset_info['js'];
+				}
 
 				self::$css_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
-				$css_file_path = $css_asset_info['css'];
-				$js_file_path  = $js_asset_info['js'];
-
 				if ( ( isset( $css_file_path ) && null !== $css_file_path && ! file_exists( $css_file_path ) ) || ( isset( $js_file_path ) && null !== $js_file_path && ! file_exists( $js_file_path ) ) ) {
+
 					return true;
 				}
 			}
@@ -387,6 +398,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 				ob_start();
+
 			?>
 				<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 				<?php
