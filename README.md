@@ -174,6 +174,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Resolved RangeControl Slider issue in responsive modes.
 * Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
 * Fix: Google Map - Added some padding for the editor to improve the experience of a selection of Google Map.
+* Fix: Fix taxonomy special character issue in all post layouts.
+* Improvement: First letter Capitalize instead of all Meta in post layout. 
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
