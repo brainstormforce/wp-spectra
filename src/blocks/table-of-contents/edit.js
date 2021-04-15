@@ -20,7 +20,8 @@ import TableOfContents from './toc';
 
 const striptags = require('striptags');
 const { __ } = wp.i18n
-const { withSelect } = wp.data
+const { withSelect,dispatch,
+	select } = wp.data
 const { compose } = wp.compose
 
 const {
@@ -55,6 +56,7 @@ class UAGBTableOfContentsEdit extends Component {
 	constructor() {
 		super( ...arguments )
 		this.getIcon  	 = this.getIcon.bind(this)
+		this.saveMeta = this.saveMeta.bind( this );
 	}
 
 	getIcon(value) {
@@ -68,6 +70,35 @@ class UAGBTableOfContentsEdit extends Component {
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		// const meta = wp.data.select('core/editor').getEditedPostAttribute('meta');
+		// const metaExample = meta['_Table_Of_Content'];
+		// console.log(metaExample)
+
+	}
+
+	saveMeta( type ) {
+
+		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { editPost } = dispatch( 'core/editor' );
+		const meta = getEditedPostAttribute( 'meta' );
+		
+		let headings = {};
+
+		if ( typeof meta._Table_Of_Content === 'undefined' || ( typeof meta._Table_Of_Content !== 'undefined' && meta._Table_Of_Content === '' ) ) {
+			headings = {};
+		} else {
+			headings = JSON.parse( meta._Table_Of_Content );
+		}
+
+		headings = this.props.headers;
+
+		editPost( {
+			meta: {
+				_Table_Of_Content: JSON.stringify( headings ),
+			},
+		} );
+
 	}
 
 	componentDidMount() {
@@ -89,6 +120,8 @@ class UAGBTableOfContentsEdit extends Component {
 		if( this.props.attributes.heading && '' !== this.props.attributes.heading ){
 			this.props.setAttributes( { headingTitle: this.props.attributes.heading } )
 		}
+
+		
 	}
 
 	render() {
@@ -248,6 +281,10 @@ class UAGBTableOfContentsEdit extends Component {
 				<span className="uag-toc__collapsible-wrap">{renderSVG(icon)}</span>
 			)	
 		}
+
+		// {
+		// wholesomecode_meta_key_example: 'Example',
+		// }
 
 		return (
 			<Fragment>
