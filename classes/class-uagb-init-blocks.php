@@ -318,13 +318,6 @@ class UAGB_Init_Blocks {
 			}
 		}
 
-		wp_enqueue_style(
-			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
-			array(),
-			UAGB_VER
-		);
-
 		if ( is_rtl() ) {
 			wp_enqueue_style(
 				'uagb-style-rtl', // Handle.
@@ -444,6 +437,13 @@ class UAGB_Init_Blocks {
 			'uagb-block-common-editor-css', // Handle.
 			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
+		wp_enqueue_style(
+			'uagb-block-css', // Handle.
+			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
+			array(),
 			UAGB_VER
 		);
 

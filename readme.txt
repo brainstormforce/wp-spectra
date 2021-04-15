@@ -170,6 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.23.0 =
 * Improvement: Improve the Dynamic Assets loading functionality for better performance.
+* Improvement: Static CSS Optimized by loading block specific CSS on a Page.
 
 = 1.22.3 =
 * Fix: Resolved RangeControl Slider issue in responsive modes.
