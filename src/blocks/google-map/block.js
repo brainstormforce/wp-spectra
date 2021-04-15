@@ -6,6 +6,7 @@
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import "./style.scss"
+import "./editor.scss"
 
 const { __ } = wp.i18n
 
