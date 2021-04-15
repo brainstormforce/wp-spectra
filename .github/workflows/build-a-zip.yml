@@ -1,37 +1,17 @@
-name: Build a zip
+name: Build a zip & Comment on PR
 on:
-  # - push
   pull_request:
     types: [opened, synchronize, ready_for_review]
 
 jobs:
   build-zip:
-    name: "Run npm build commands"
-    # if: github.event_name == 'push' && contains(toJson(github.event.commits), '[run build pr]') != false
+    name: "Build a zip and upload to server"
     runs-on: ubuntu-latest
     outputs:
       branch-name: ${{ steps.get-current-branch.outputs.branch_name }}
     steps:
-      # - name: Setup PHP without xdebug
-      #   uses: shivammathur/setup-php@v2
-      #   with:
-      #     php-version: "7.4"
-      #     coverage: none
-
-      # - name: Install wp-cli
-      #   run: |
-      #     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-      #     php wp-cli.phar --info
-      #     chmod +x wp-cli.phar
-      #     sudo mv wp-cli.phar /usr/local/bin/wp
-
       - name: "Checkout"
         uses: actions/checkout@master
-
-      # - name: Initialize mandatory git config
-      #   run: |
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "noreply@github.com"
 
       - name: Extract current branch name
         id: get-current-branch
@@ -43,40 +23,17 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          # path: ~/.npm
-          path: "**/node_modules"
+          path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
-      - name: Install dependencies and build
-        if: steps.cache-node.outputs.cache-hit != 'true'
+      - name: Install dependencies
         run: npm install
 
-      - name: Run build
+      - name: Create a build
         run: npm run build
 
       - name: Build a package
         run: npm run build-zip
-
-      # - name: Upload zip  artifact
-      #   uses: actions/upload-artifact@v2
-      #   id: uag-zip-upload
-      #   with:
-      #     name: uag-zip
-      #     path: ./artifact/ultimate-addons-for-gutenberg.zip
-
-      # - name: Download zip artifact
-      #   uses: actions/download-artifact@v2
-      #   id: uag-zip-download
-      #   with:
-      #     name: uag-zip
-      #     path: ./temp/ultimate-addons-for-gutenberg.zip
-
-      # - name: "Check git status"
-      #   run: git status
 
       - name: Create branch directory
         run: |
@@ -84,22 +41,18 @@ jobs:
           mkdir -p ${{ steps.get-current-branch.outputs.branch_name }}
           mv ultimate-addons-for-gutenberg.zip ${{ steps.get-current-branch.outputs.branch_name }}/
 
-      - name: QA site sync - rsync deployments
+      - name: Upload a zip to server
         uses: burnett01/rsync-deployments@4.1
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
           switches: -avzr
-          # path: ./artifact/ultimate-addons-for-gutenberg.zip
           path: ./artifact/
           remote_path: ${{ secrets.SSH_PATH }}
-          # remote_path: /home/runcloud/webapps/uag-dev/wp-content/uploads/uag-gh/
           remote_host: ${{ secrets.SSH_HOST }}
           remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_KEY }}
 
-      # - name: "Echo download"
-      #   run: echo print_r( ${{steps.uag-zip-download.outputs}} )
   comment-on-pr:
     name: Comment on PR with links to plugin ZIPs
     if: ${{ github.head_ref && github.head_ref != null }}
