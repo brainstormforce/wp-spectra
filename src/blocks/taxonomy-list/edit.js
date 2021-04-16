@@ -278,7 +278,7 @@ class UAGBTaxonomyList extends Component {
 						value={ titleTag }
 						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 						options={ [
-							{ value: "select", label: __( "Select", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "div", label: __( "Div", 'ultimate-addons-for-gutenberg' ) },
 							{ value: "h1", label: __( "H1", 'ultimate-addons-for-gutenberg' ) },
 							{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
 							{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
