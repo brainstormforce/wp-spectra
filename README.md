@@ -183,6 +183,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
 * Fix: Resolved Invalid block issue of core widget blocks.
 * Fix: Marketing Button - Fix Icon size setting issue.
+* Fix: Post Masonary - Fixed the JS UAGBPostMasonry is not defined error.
 
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
