@@ -75,33 +75,40 @@ function block_core_table_of_contents_get_headings_from_content(
 
 	$xpath = new DOMXPath( $doc );
 
-	// Get all non-empty heading elements in the post content.
-	$headings = iterator_to_array(
-		$xpath->query(
-			'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
-		)
-	);
+	
 	// $Htmlheading = array();
 	// if( true === $mappingHeadersArray[0] ){
-	// 	$Htmlheading .= `self::h1`;
+	// 	array_push($Htmlheading,'self::h1');
 	// } else if( true === $mappingHeadersArray[1] ){
-	// 	$Htmlheading .= `self::h2`;
+	// 	array_push($Htmlheading,'self::h2');
 	// }else if( true === $mappingHeadersArray[2] ){
-	// 	$Htmlheading .= `self::h3`;
+	// 	array_push($Htmlheading,'self::h3');
 	// }else if( true === $mappingHeadersArray[3] ){
-	// 	$Htmlheading .= `self::h4`;
+	// 	array_push($Htmlheading,'self::h4');
 	// }else if( true === $mappingHeadersArray[4] ){
-	// 	$Htmlheading .= `self::h5`;
+	// 	array_push($Htmlheading,'self::h5');
 	// }else if( true === $mappingHeadersArray[5] ){
-	// 	$Htmlheading .= `self::h6`;
+	// 	array_push($Htmlheading,'self::h6');
 	// }else{
 	// 	echo '';
 	// }
 
-	// var_dump($Htmlheading);
+// $stack = array("orange", "banana");
+
+// print_r($xpath);
+
+// Get all non-empty heading elements in the post content.
+$headings = iterator_to_array(
+	$xpath->query(
+		'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
+	)
+);
+// print_r( $mappingHeadersArray[2] );
 
 	return array_map(
 		function ( $heading ) {
+
+			// print_r((int) $heading->nodeName[1]);
 
 			return array(
 				// A little hacky, but since we know at this point that the tag will
