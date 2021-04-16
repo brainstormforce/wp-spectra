@@ -194,6 +194,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
 
+			if ( isset( $page_assets ) && isset( $page_assets['uag_version'] ) && UAGB_VER !== $page_assets['uag_version'] ) {
+				return true;
+			}
+
 			if ( 'disabled' === self::$file_generation ) {
 
 				if ( isset( $page_assets ) && empty( $page_assets ) ) {
@@ -286,6 +290,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'current_block_list'     => self::$current_block_list,
 				'uag_flag'               => self::$uag_flag,
 				'table_of_contents_flag' => self::$table_of_contents_flag,
+				'uag_version'            => UAGB_VER,
 			);
 
 			update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
