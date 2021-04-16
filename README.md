@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: First letter Capitalize instead of all Meta in post layout. 
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
+* Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
 * Fix: Resolved Invalid block issue of core widget blocks.
 * Fix: Marketing Button - Fix Icon size setting issue.
