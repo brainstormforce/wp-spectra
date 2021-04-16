@@ -2913,7 +2913,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		public static function get_block_assets() {
 
 			$blocks  = UAGB_Admin_Helper::get_block_options();
-			$slickjs = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
+			$post_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
 
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
@@ -2943,7 +2943,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_URL . 'assets/js/post.js',
-						'dep' => $slickjs,
+						'dep' => $post_dep,
 					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_URL . 'assets/js/faq.js',
