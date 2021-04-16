@@ -227,6 +227,7 @@ array_multisort(
 							<?php
 							$button_disabled          = '';
 							$file_regeneration_string = __( 'Regenerate Files', 'ultimate-addons-for-gutenberg' );
+							$file_perm_notice         = false;
 							if ( 'disabled' === $allow_file_generation && true === $has_read_write_perms ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
@@ -235,6 +236,7 @@ array_multisort(
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Inadequate File Permission', 'ultimate-addons-for-gutenberg' );
 								$button_disabled        = 'disabled';
+								$file_perm_notice       = __( 'Please update your file permissions for "wp-content/uploads" folder in order to use the File Generation feature.', 'ultimate-addons-for-gutenberg' );
 
 							} else {
 								$val                    = 'disabled';
@@ -243,7 +245,11 @@ array_multisort(
 							if ( 'disabled' === $allow_file_generation ) {
 								$file_regeneration_string = __( 'Regenerate CSS & JS', 'ultimate-addons-for-gutenberg' );
 							}
-							?>
+
+							if ( $file_perm_notice ) {
+								?>
+							<div class="uag-file-permissions-notice"> <?php echo esc_html( $file_perm_notice ); ?></div>
+							<?php } ?>
 							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
