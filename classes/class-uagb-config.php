@@ -1589,7 +1589,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'extension'   => false,
-						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js', 'uagb-slick-js' ),
+						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
 						'attributes'  => array(
 							'post_type'                    => 'masonry',
 							'postType'                     => 'post',
@@ -2912,6 +2912,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static function get_block_assets() {
 
+			$blocks = UAGB_Admin_Helper::get_block_options();
+			$slickJs = ((false === $blocks['uagb/post-carousel']["is_activate"]) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js'));
+
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
 					'uagb-timeline-js'       => array(
@@ -2940,7 +2943,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_URL . 'assets/js/post.js',
-						'dep' => array( 'jquery', 'uagb-slick-js' ),
+						'dep' => $slickJs,
 					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_URL . 'assets/js/faq.js',
