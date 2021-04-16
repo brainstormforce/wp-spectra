@@ -1006,7 +1006,7 @@ a.uagb-timeline__link {
          text-align: left;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line {
-         right: 20px;
+         right: calc( 35px / 2 );
          left: auto;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__marker, .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-new {
@@ -1014,7 +1014,7 @@ a.uagb-timeline__link {
          position: relative;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line {
-         left: 20px;
+         left: calc( 35px / 2 );
          right: auto;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-new {
@@ -1213,11 +1213,11 @@ a.uagb-timeline__link {
          border-right: none;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line, .rtl .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-res-right .uagb-timeline__line {
-         left: calc(3em / 2);
+         left: calc(35px / 2);
          right: auto;
     }
      .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-res-right .uagb-timeline__line, .rtl .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line {
-         right: calc(3em / 2);
+         right: calc(35px / 2);
          left: auto;
     }
 
