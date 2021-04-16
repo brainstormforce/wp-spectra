@@ -48,7 +48,7 @@ export const PostMeta = (props) =>  {
 				{ attributes.displayPostTaxonomy && 
 					<span className='uagb-post__taxonomy' >
 						<span className="dashicons-tag dashicons"></span>
-						{categoriesName.join(", ")}
+						<div dangerouslySetInnerHTML={{__html:categoriesName.join(", ")}}></div>
 					</span>
 				}
 			</div>

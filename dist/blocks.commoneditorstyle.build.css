@@ -3334,11 +3334,6 @@ label.wp-block-uagb-blockquote__via-label svg {
 }
 
 /* Reset Button Alignment */
-/* .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field {
-	display:flex;
-	flex-wrap: unset;
-} */
-
 .uagb-size-type-field-tabs.uagb-size-type-field__common-tabs .components-base-control.components-range-control.uagb-margin-control .components-base-control__field{
     display:flex;
 } 

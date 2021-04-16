@@ -864,6 +864,8 @@ export default compose(
 	withSelect( ( select, ownProps ) => {
 		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
 
+		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
 		const parseTocSlug = ( slug ) => {
 
 			// If not have the element then return false!
