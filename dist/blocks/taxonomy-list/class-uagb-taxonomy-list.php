@@ -145,7 +145,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
-
+						'titleTag'              => array(
+							'type'    => 'string',
+							'default' => 'h4',
+						),
 						// Color Attributes.
 						'bgColor'               => array(
 							'type'    => 'string',
@@ -400,6 +403,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$seperatorStyle   = $attributes['seperatorStyle'];
 			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
 			$showCount        = $attributes['showCount'];
+			$titleTag         = $attributes['titleTag'];
 
 			if ( 'grid' === $layout ) {
 
@@ -413,11 +417,13 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				$newcategoriesList = get_terms( $attributes['taxonomyType'], $args );
 
 				foreach ( $newcategoriesList as $value ) {
+
 					?>
 
 					<div class="uagb-taxomony-box">
 						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
-							<h4 class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?></h4>
+							<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
+							</<?php echo esc_html( $titleTag ); ?>>
 							<?php if ( $showCount ) { ?>
 								<div class="uagb-tax-count">
 									<?php echo esc_attr( $value->count ); ?>
@@ -447,6 +453,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$seperatorStyle   = $attributes['seperatorStyle'];
 			$noTaxDisplaytext = $attributes['noTaxDisplaytext'];
 			$showCount        = $attributes['showCount'];
+			$titleTag         = $attributes['titleTag'];
 
 			if ( 'list' === $layout ) {
 				$pt            = get_post_type_object( $postType );
@@ -474,7 +481,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					<ul class="uagb-list-wrap">
 						<?php foreach ( $newcategoriesList as $key => $value ) { ?>
 							<li class="uagb-tax-list">
-								<div class="uagb-tax-link-wrap">
+								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
 											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
@@ -491,7 +498,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 												<?php } ?>
 											</ul>			
 										<?php } ?>										
-								</div>
+								</<?php echo esc_html( $titleTag ); ?>>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
 									<div class="uagb-tax-separator-wrap">
 										<div class="uagb-tax-separator"></div>

@@ -163,7 +163,8 @@ class UAGBTaxonomyList extends Component {
 			borderColor,
 			borderRadius,
 			listDisplayStyle,
-			showhierarchy
+			showhierarchy,
+			titleTag
         } = attributes
 		
 		const taxonomy_list_setting = (showEmptyTaxonomy) ? taxonomyList : termsList;
@@ -272,6 +273,20 @@ class UAGBTaxonomyList extends Component {
 		const inspectorControlsSettings = (
 			<InspectorControls>
 				<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) }>
+					<SelectControl
+						label={ __( "Heading Tag", 'ultimate-addons-for-gutenberg' ) }
+						value={ titleTag }
+						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+						options={ [
+							{ value: "select", label: __( "Select", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h1", label: __( "H1", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h4", label: __( "H4", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h5", label: __( "H5", 'ultimate-addons-for-gutenberg' ) },
+							{ value: "h6", label: __( "H6", 'ultimate-addons-for-gutenberg' ) },
+						] }
+					/>
 					<SelectControl
 						label={ __( "Layout",'ultimate-addons-for-gutenberg' ) }
 						value={ layout }
@@ -828,7 +843,7 @@ class UAGBTaxonomyList extends Component {
 			)}
 			</InspectorControls>
 		)
-		
+		const Tag = titleTag ? titleTag : "H4";
         return (
 				<Fragment>							
 					{ inspectorControlsSettings }
@@ -845,7 +860,7 @@ class UAGBTaxonomyList extends Component {
 								categoriesList.map((p,index)=>
 									<div className="uagb-taxomony-box" key={index}>
 										<a className="uagb-tax-link" href={p.link}>
-											<h4 className="uagb-tax-title">{p.name}</h4>
+											<Tag className="uagb-tax-title" dangerouslySetInnerHTML={ { __html: p.name}}></Tag>
 											{showCount && (
 												<div className="uagb-tax-count">{p.count} {p.count > "1" ? `${p.singular_name}s` :p.singular_name}</div>
 											)}
@@ -859,8 +874,8 @@ class UAGBTaxonomyList extends Component {
 								<ul className="uagb-list-wrap">
 									{categoriesList.map((p,index)=>										
 										<li className="uagb-tax-list" key={index}>
-											<div className="uagb-tax-link-wrap">
-												<a className="uagb-tax-link" href={p.link}>{p.name}</a>
+											<Tag className="uagb-tax-link-wrap">
+												<a className="uagb-tax-link" href={p.link} dangerouslySetInnerHTML={ { __html: p.name}}></a>
 												{ showCount && (
 												<span className="uagb-tax-list-count">{` (${p.count})`}</span>
 												)}
@@ -876,7 +891,7 @@ class UAGBTaxonomyList extends Component {
 														} ) }
 													</ul>
 												)}
-											</div>
+											</Tag>
 
 											{"none" != seperatorStyle && (
 												<div className="uagb-tax-separator-wrap">
