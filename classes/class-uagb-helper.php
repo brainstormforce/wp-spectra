@@ -240,7 +240,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				self::$script                 = $page_assets['js'];
 				self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
 			}
-			
+
 			return false;
 		}
 		/**
