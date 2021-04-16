@@ -156,7 +156,7 @@ function styling( props ) {
 		" p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 		},
-		" .uagb-team__prefix": {
+		" .rich-text.block-editor-rich-text__editable.uagb-team__prefix": {
 			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
 		},
 		" .uagb-team__social-icon a": {
@@ -175,7 +175,7 @@ function styling( props ) {
 		" p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 		},
-		" .uagb-team__prefix": {
+		" .rich-text.block-editor-rich-text__editable.uagb-team__prefix": {
 			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
 		},
 		" .uagb-team__social-icon a": {
@@ -203,9 +203,9 @@ function styling( props ) {
 
 	styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	return styling_css
 }
