@@ -202,13 +202,13 @@ array_multisort(
 					<h2 class="hndle ast-normal-cusror">
 						<span class="dashicons dashicons-admin-page"></span>
 						<span>
-							<?php printf( esc_html__( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+							<?php printf( esc_html__( 'CSS & JS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
 						</span>
 					</h2>
 					<div class="inside">
 						<p class="warning">
 						</p>
-							<?php esc_html_e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
 						<p>
 						<?php
 						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
@@ -225,9 +225,8 @@ array_multisort(
 						</p>
 						<label for="uag_file_generation">
 							<?php
-							$button_disabled          = '';
-							$file_regeneration_string = __( 'Regenerate Files', 'ultimate-addons-for-gutenberg' );
-							$file_perm_notice         = false;
+							$button_disabled  = '';
+							$file_perm_notice = false;
 							if ( 'disabled' === $allow_file_generation && true === $has_read_write_perms ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
@@ -242,9 +241,6 @@ array_multisort(
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
-							if ( 'disabled' === $allow_file_generation ) {
-								$file_regeneration_string = __( 'Regenerate CSS & JS', 'ultimate-addons-for-gutenberg' );
-							}
 
 							if ( $file_perm_notice ) {
 								?>
@@ -253,10 +249,21 @@ array_multisort(
 							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
-							<button class="button astra-beta-updates uag-file-regeneration">
-								<?php echo esc_html( $file_regeneration_string ); ?>
-							</button>
 						</label>
+					</div>
+				</div>
+				<div class="postbox">
+					<h2 class="hndle uagb-normal-cusror">
+						<span class="dashicons dashicons-controls-repeat"></span>
+						<span><?php esc_html_e( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ); ?></span>
+					</h2>
+					<div class="inside">
+						<p>
+							<?php esc_html_e( 'You can regenerate your CSS & Javascript assets here.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+						<button class="button astra-beta-updates uag-file-regeneration">
+							<?php echo esc_html( __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</button>
 					</div>
 				</div>
 				<div class="postbox">
