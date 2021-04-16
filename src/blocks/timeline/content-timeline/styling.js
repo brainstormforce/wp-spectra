@@ -307,34 +307,31 @@ function contentTimelineStyle( props ) {
            "margin-left" : 0,
            "margin-right" : 0,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading" : {
+       " .uagb-timeline__center-block .uagb-timeline__heading" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet p.uagb-timeline-desc-content" : {
+       " .uagb-timeline__center-block p.uagb-timeline-desc-content" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new" : {
+       " .uagb-timeline__center-block .uagb-timeline__events-new" : {
            "text-align" : resp_selectors
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner" : {
+       " .uagb-timeline__center-block .uagb-timeline__date-inner" : {
            "text-align" : resp_selectors
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
+       " .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
+       " .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
            "border-right-color"  : backgroundColor,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" : {
-           "left" : "calc( "+connectorBgsize+"px / 2 )",
-       },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" :{
+       " .uagb-timeline__center-block .uagb-timeline__author" :{
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" :{
+       " .uagb-timeline__center-block .uagb-timeline__link_parent" :{
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a" :{
+       " .uagb-timeline__center-block .uagb-timeline__image a" :{
            "text-align": resp_selectors,
        },
 
@@ -384,34 +381,31 @@ function contentTimelineStyle( props ) {
        " .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right" : {
            "margin-left" : generateCSSUnit( horizontalSpace, "px" ),
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading" : {
+       " .uagb-timeline__center-block .uagb-timeline__heading" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile p.uagb-timeline-desc-content" : {
+       " .uagb-timeline__center-block p.uagb-timeline-desc-content" : {
            "text-align"  : resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new" : {
+       " .uagb-timeline__center-block .uagb-timeline__events-new" : {
            "text-align" : resp_selectors
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner" : {
+       " .uagb-timeline__center-block .uagb-timeline__date-inner" : {
            "text-align" : resp_selectors
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
+       " .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
+       " .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
            "border-right-color"  : backgroundColor,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line" : {
-           "left" : "calc( "+connectorBgsize+"px / 2 )",
-       },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__author" :{
+       " .uagb-timeline__center-block .uagb-timeline__author" :{
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__link_parent" :{
+       " .uagb-timeline__center-block .uagb-timeline__link_parent" :{
            "text-align": resp_selectors,
        },
-       " .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a" :{
+       " .uagb-timeline__center-block .uagb-timeline__image a" :{
            "text-align": resp_selectors,
        },
 
@@ -435,9 +429,9 @@ function contentTimelineStyle( props ) {
 
    styling_css = generateCSS( selectors, id )
 
-   styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+   styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-   styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+   styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
    return styling_css
 

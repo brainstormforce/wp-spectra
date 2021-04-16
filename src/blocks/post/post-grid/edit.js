@@ -8,6 +8,7 @@ import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
+import Columnresponsive from "../../../components/typography/column-responsive"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../../components/typography/fontloader"
@@ -252,6 +253,7 @@ class UAGBPostGrid extends Component {
 			latestPosts,
 			block,
 			categoriesList,
+			deviceType,
 			taxonomyList
 		} = this.props
 
@@ -504,7 +506,6 @@ class UAGBPostGrid extends Component {
 				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
 			} )
 		}
-
 		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
@@ -567,64 +568,34 @@ class UAGBPostGrid extends Component {
 							{ value: "asc", label: __( "Ascending",'ultimate-addons-for-gutenberg' ) },
 						] }
 					/>
-					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<RangeControl
-											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
-											value={ mcolumns }
-											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-											min={ 1 }
-											max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-										/>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<RangeControl
-											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
-											value={ tcolumns }
-											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-											min={ 1 }
-											max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-										/>
-									)
-								} else {
-									tabout = (
-										<RangeControl
-											label={ __( "Columns",'ultimate-addons-for-gutenberg' ) }
-											value={ columns }
-											onChange={ ( value ) => setAttributes( { columns: value } ) }
-											min={ 1 }
-											max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-										/>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+						<RangeControl
+						label={ __( "Columns" ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+						/>)
+					}
+					{ "Tablet" === deviceType && (
+						<RangeControl
+						label={ __( "Columns" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+						/>)
+					}
+					{ "Mobile" === deviceType && (
+						<RangeControl
+						label={ __( "Columns" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+						/>)
+					}
 					<ToggleControl
 						label={ __( "Equal Height",'ultimate-addons-for-gutenberg' ) }
 						checked={ equalHeight }
@@ -1218,7 +1189,7 @@ class UAGBPostGrid extends Component {
 			)
 		}
 		const renderViewMode = (
-			<Disabled><Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} /></Disabled>
+			<Disabled><Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} deviceType={deviceType} /></Disabled>
 		)
 		
 		return (
@@ -1249,6 +1220,9 @@ export default compose(
 		const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost , block_id} = props.attributes
 		const { setAttributes } = props
 		const { getEntityRecords } = select( "core" )
+		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 		let allTaxonomy = uagb_blocks_info.all_taxonomy
 		let currentTax = allTaxonomy[postType]
 		let taxonomy = ""
@@ -1307,10 +1281,11 @@ export default compose(
 		return {
 			latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 			categoriesList: categoriesList,
+			deviceType: deviceType,
 			taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 			block: getBlocks( props.clientId ),
 		}
-	} ),
+} ),
 	withDispatch( ( dispatch ) => {
 		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
 		return {
