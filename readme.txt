@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.22.3 =
+* Improvement: Block preview on responsive devices in editor.
 * Improvement: Added filter to disable block conditions from editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
 * Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
 * Fix: Resolved RangeControl Slider issue in responsive modes.
@@ -178,10 +179,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: First letter Capitalize instead of all Meta in post layout. 
 * Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
+* Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
 * Fix: Resolved Invalid block issue of core widget blocks.
 * Fix: Marketing Button - Fix Icon size setting issue.
 * Improvement: Taxonomy List - Added Html Tag Selector to set Tag of list title.
+* Fix: Post Masonary - Fixed the JS UAGBPostMasonry is not defined error.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
