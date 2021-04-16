@@ -1427,12 +1427,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
+			global $post;
+
+			$post_excerpt = ( '' === $post->post_excerpt ) ? get_the_content() : $post->post_excerpt;
+
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$excerpt = get_the_content();
 			} else {
-				$excerpt = wp_trim_words( get_the_excerpt(), $length );
+				$excerpt = wp_trim_words( $post_excerpt, $length );
 			}
 
 			if ( ! $excerpt ) {
