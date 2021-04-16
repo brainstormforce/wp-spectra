@@ -194,15 +194,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
 
-			if ( isset( $page_assets ) && ! empty( $page_assets ) ) {
-
-				self::$current_block_list     = $page_assets['current_block_list'];
-				self::$uag_flag               = $page_assets['uag_flag'];
-				self::$stylesheet             = $page_assets['css'];
-				self::$script                 = $page_assets['js'];
-				self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
-			}
-
 			if ( 'disabled' === self::$file_generation ) {
 
 				if ( isset( $page_assets ) && empty( $page_assets ) ) {
@@ -241,6 +232,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
+			if ( isset( $page_assets ) && ! empty( $page_assets ) ) {
+
+				self::$current_block_list     = $page_assets['current_block_list'];
+				self::$uag_flag               = $page_assets['uag_flag'];
+				self::$stylesheet             = $page_assets['css'];
+				self::$script                 = $page_assets['js'];
+				self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
+			}
+			
 			return false;
 		}
 		/**
