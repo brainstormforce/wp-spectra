@@ -461,7 +461,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
-			UAGB_Helper::get_instance()->delete_upload_dir();
+			global $wpdb;
+
+			$file_generation = UAGB_Helper::allow_file_generation();
+
+			$uag_query = "DELETE FROM $wpdb->postmeta WHERE meta_key = '_uagb_page_assets'";
+			$result    = $wpdb->get_results( $uag_query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+			if ( 'enabled' === $file_generation ) {
+
+				UAGB_Helper::get_instance()->delete_upload_dir();
+			}
 
 			wp_send_json_success(
 				array(
