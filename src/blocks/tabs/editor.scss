@@ -67,11 +67,7 @@
     li.uagb-tab:hover span.uagb-tabs__remove {
         display: block;
     }
-    .uagb-tab-item__move-forward {
-        color: #fff;
-        cursor: pointer;
-        z-index: 1;
-    }
+    .uagb-tab-item__move-forward,
     .uagb-tab-item__move-back{
         color: #fff;
         cursor: pointer;
