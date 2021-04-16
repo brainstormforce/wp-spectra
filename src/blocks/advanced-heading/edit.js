@@ -126,6 +126,7 @@ class UAGBAdvancedHeading extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
+			deviceType,
 			attributes: {
 				headingTitle,
 				headingDesc,
@@ -350,6 +351,7 @@ class UAGBAdvancedHeading extends Component {
 				<div
 					className={ classnames(
 						className,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 						`uagb-block-${this.props.clientId.substr( 0, 8 )}`,					
 					) }
 				>
@@ -399,7 +401,11 @@ class UAGBAdvancedHeading extends Component {
 
 export default withSelect( ( select, props ) => {
 	const { attributes } = props
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
 	return {
-		anchor: attributes.headingId
+		anchor: attributes.headingId,
+		deviceType: deviceType
 	}
 } )( UAGBAdvancedHeading )

@@ -1061,7 +1061,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					</div>
 					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				</article>
-
 				<?php
 
 				do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );

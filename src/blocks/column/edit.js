@@ -6,6 +6,7 @@ import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
 import GradientSettings from "../../components/gradient-settings"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 const { __ } = wp.i18n
 
@@ -33,7 +34,9 @@ const {
 	Fragment,
 } = wp.element
 
-export default class UAGBColumnEdit extends Component {
+const { withSelect } = wp.data
+
+class UAGBColumnEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -161,7 +164,8 @@ export default class UAGBColumnEdit extends Component {
 			},
 			setAttributes,
 			className,
-			isSelected
+			isSelected,
+			deviceType
 		} = this.props
 
 		const border_setting = (
@@ -290,339 +294,142 @@ export default class UAGBColumnEdit extends Component {
 					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
-												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
-											</ButtonGroup>
-											<h2>{ __( "Padding Mobile", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topPaddingMobile }
-												onChange={ ( value ) => setAttributes( { topPaddingMobile: value } ) }
-												min={ 0 }
-												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomPaddingMobile }
-												onChange={ ( value ) => setAttributes( { bottomPaddingMobile: value } ) }
-												min={ 0 }
-												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftPaddingMobile }
-												onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
-												min={ 0 }
-												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightPaddingMobile }
-												onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
-												min={ 0 }
-												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
-												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
-											</ButtonGroup>
-											<h2>{ __( "Padding Tablet", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topPaddingTablet }
-												onChange={ ( value ) => setAttributes( { topPaddingTablet: value } ) }
-												min={ 0 }
-												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomPaddingTablet }
-												onChange={ ( value ) => setAttributes( { bottomPaddingTablet: value } ) }
-												min={ 0 }
-												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftPaddingTablet }
-												onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
-												min={ 0 }
-												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightPaddingTablet }
-												onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
-												min={ 0 }
-												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
-												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
-											</ButtonGroup>
-											<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topPadding }
-												onChange={ ( value ) => setAttributes( { topPadding: value } ) }
-												min={ 0 }
-												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomPadding }
-												onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
-												min={ 0 }
-												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftPadding }
-												onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
-												min={ 0 }
-												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightPadding }
-												onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
-												min={ 0 }
-												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
-					<hr className="uagb-editor__separator" />
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
-												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
-											</ButtonGroup>
-											<h2>{ __( "Margin Mobile", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topMarginMobile }
-												onChange={ ( value ) => setAttributes( { topMarginMobile: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomMarginMobile }
-												onChange={ ( value ) => setAttributes( { bottomMarginMobile: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftMarginMobile }
-												onChange={ ( value ) => setAttributes( { leftMarginMobile: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightMarginMobile }
-												onChange={ ( value ) => setAttributes( { rightMarginMobile: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
-												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
-											</ButtonGroup>
-											<h2>{ __( "Margin Tablet", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topMarginTablet }
-												onChange={ ( value ) => setAttributes( { topMarginTablet: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomMarginTablet }
-												onChange={ ( value ) => setAttributes( { bottomMarginTablet: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftMarginTablet }
-												onChange={ ( value ) => setAttributes( { leftMarginTablet: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightMarginTablet }
-												onChange={ ( value ) => setAttributes( { rightMarginTablet: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-											<h2>{ __( "Margin", 'ultimate-addons-for-gutenberg' ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.top_margin }
-												className={ "uagb-margin-control" }
-												value={ topMargin }
-												onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.bottom_margin }
-												className={ "uagb-margin-control" }
-												value={ bottomMargin }
-												onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftMargin }
-												onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightMargin }
-												onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-												min={ -2000 }
-												max={ 2000 }
-												allowReset
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+				<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+						<Fragment>
+							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
+								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
+							</ButtonGroup>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+							<RangeControl
+								label={ UAGB_Block_Icons.top_margin }
+								className={ "uagb-margin-control" }
+								value={ topPadding }
+								onChange={ ( value ) => setAttributes( { topPadding: value } ) }
+								min={ 0 }
+								max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.bottom_margin }
+								className={ "uagb-margin-control" }
+								value={ bottomPadding }
+								onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
+								min={ 0 }
+								max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.left_margin }
+								className={ "uagb-margin-control" }
+								value={ leftPadding }
+								onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
+								min={ 0 }
+								max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.right_margin }
+								className={ "uagb-margin-control" }
+								value={ rightPadding }
+								onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
+								min={ 0 }
+								max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+						</Fragment>
+					)}
+					{ "Tablet" === deviceType && (
+						<Fragment>
+							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
+								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
+							</ButtonGroup>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+							<RangeControl
+								label={ UAGB_Block_Icons.top_margin }
+								className={ "uagb-margin-control" }
+								value={ topPaddingTablet }
+								onChange={ ( value ) => setAttributes( { topPaddingTablet: value } ) }
+								min={ 0 }
+								max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.bottom_margin }
+								className={ "uagb-margin-control" }
+								value={ bottomPaddingTablet }
+								onChange={ ( value ) => setAttributes( { bottomPaddingTablet: value } ) }
+								min={ 0 }
+								max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.left_margin }
+								className={ "uagb-margin-control" }
+								value={ leftPaddingTablet }
+								onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
+								min={ 0 }
+								max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.right_margin }
+								className={ "uagb-margin-control" }
+								value={ rightPaddingTablet }
+								onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
+								min={ 0 }
+								max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+						</Fragment>
+					)}
+					{ "Mobile" === deviceType && (
+						<Fragment>
+							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
+								<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
+							</ButtonGroup>
+							<h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+							<RangeControl
+								label={ UAGB_Block_Icons.top_margin }
+								className={ "uagb-margin-control" }
+								value={ topPaddingMobile }
+								onChange={ ( value ) => setAttributes( { topPaddingMobile: value } ) }
+								min={ 0 }
+								max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.bottom_margin }
+								className={ "uagb-margin-control" }
+								value={ bottomPaddingMobile }
+								onChange={ ( value ) => setAttributes( { bottomPaddingMobile: value } ) }
+								min={ 0 }
+								max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.left_margin }
+								className={ "uagb-margin-control" }
+								value={ leftPaddingMobile }
+								onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
+								min={ 0 }
+								max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+							<RangeControl
+								label={ UAGB_Block_Icons.right_margin }
+								className={ "uagb-margin-control" }
+								value={ rightPaddingMobile }
+								onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
+								min={ 0 }
+								max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
+								allowReset
+							/>
+						</Fragment>
+					)}
 				</PanelBody>
 				<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<SelectControl
@@ -833,6 +640,7 @@ export default class UAGBColumnEdit extends Component {
 						align_class,
 						align_class_mobile,
 						align_class_tablet,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 						`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 					) }
 				>
@@ -845,3 +653,11 @@ export default class UAGBColumnEdit extends Component {
 		)
 	}
 }
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+} )( UAGBColumnEdit )

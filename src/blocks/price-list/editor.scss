@@ -41,3 +41,58 @@
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+/*
+/* Responsive for price-list on tablet in editor
+*/
+.uagb-editor-preview-mode-tablet {
+    
+    &.uagb-rm__tablet-column-3 [data-type="uagb/restaurant-menu-child"]{   
+        width: 33%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    &.uagb-rm__tablet-column-2 [data-type="uagb/restaurant-menu-child"]{   
+        width: 50%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &.uagb-rm__tablet-column-1 [data-type="uagb/restaurant-menu-child"]{   
+        width: 100%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/*
+/* Responsive for price-list on mobile in editor
+*/
+.uagb-editor-preview-mode-mobile {
+    
+    &.uagb-rm__mobile-column-3 [data-type="uagb/restaurant-menu-child"]{   
+        width: 33%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &.uagb-rm__mobile-column-2 [data-type="uagb/restaurant-menu-child"]{   
+        width: 50%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    
+    }
+
+    &.uagb-rm__mobile-column-1 [data-type="uagb/restaurant-menu-child"]{   
+        width: 100%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
