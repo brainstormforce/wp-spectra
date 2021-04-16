@@ -2590,7 +2590,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'              => '',
 							'postType'              => 'post',
 							'taxonomyType'          => 'category',
-							'titleTag'              => 'h4',
+							'titleTag'              => __('h4', 'ultimate-addons-for-gutenberg' ),
 							'categories'            => '',
 							'order'                 => 'desc',
 							'orderBy'               => 'date',
