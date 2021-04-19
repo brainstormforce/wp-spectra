@@ -823,10 +823,11 @@ class UAGBTaxonomyList extends Component {
 			)}
 			</InspectorControls>
 		)
+		
 		if ( "grid" == layout ) {
-			const Tag = titleTag ? titleTag : "H4";
+			var Tag = titleTag ? titleTag : "H4";
 		} else if ( "list" == layout ) {
-			const Tag = titleTag ? titleTag : "div";
+			var Tag = titleTag ? titleTag : "div";
 		}
         return (
 				<Fragment>							
