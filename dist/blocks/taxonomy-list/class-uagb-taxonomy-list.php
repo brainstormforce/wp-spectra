@@ -147,7 +147,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						),
 						'titleTag'              => array(
 							'type'    => 'string',
-							'default' => __( 'h4', 'ultimate-addons-for-gutenberg' ),
+							'default' => '',
 						),
 						// Color Attributes.
 						'bgColor'               => array(
@@ -407,6 +407,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 			if ( 'grid' === $layout ) {
 
+				if ( '' === $titleTag ) {
+					$titleTag = 'h4';
+				}
+
 				$pt            = get_post_type_object( $postType );
 				$singular_name = $pt->labels->singular_name;
 
@@ -456,6 +460,11 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$titleTag         = $attributes['titleTag'];
 
 			if ( 'list' === $layout ) {
+
+				if ( '' === $titleTag ) {
+					$titleTag = 'div';
+				}
+
 				$pt            = get_post_type_object( $postType );
 				$singular_name = $pt->labels->singular_name;
 

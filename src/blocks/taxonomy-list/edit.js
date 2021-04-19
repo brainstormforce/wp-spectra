@@ -823,7 +823,11 @@ class UAGBTaxonomyList extends Component {
 			)}
 			</InspectorControls>
 		)
-		const Tag = titleTag ? titleTag : "H4";
+		if ( "grid" == layout ) {
+			const Tag = titleTag ? titleTag : "H4";
+		} else if ( "list" == layout ) {
+			const Tag = titleTag ? titleTag : "div";
+		}
         return (
 				<Fragment>							
 					{ inspectorControlsSettings }
@@ -838,6 +842,7 @@ class UAGBTaxonomyList extends Component {
 						) }>
 
 							{"grid" == layout && ( 
+								
 								categoriesList.map((p,index)=>
 									<div className="uagb-taxomony-box" key={index}>
 										<a className="uagb-tax-link" href={p.link}>
