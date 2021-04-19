@@ -117,14 +117,13 @@
 							if (token) {
 								document.getElementById('g-recaptcha-response').value = token;
 								UAGBForms._formSubmit(e, $(this), attr);
+							} else {
+								document.getElementById('g-recaptcha-response').value = 'Invalid Site key';
+								UAGBForms._formSubmit(e, $(this), attr);
 							}
 						});
 					});
 
-					if ('' === document.getElementById('g-recaptcha-response').value) {
-						document.getElementById('g-recaptcha-response').value = 'Invalid Site key';
-						UAGBForms._formSubmit(e, $(this), attr);
-					}
 				} else {
 					UAGBForms._formSubmit(e, $(this), attr);
 				}
