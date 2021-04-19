@@ -147,7 +147,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						),
 						'titleTag'              => array(
 							'type'    => 'string',
-							'default' => __('h4', 'ultimate-addons-for-gutenberg' ),
+							'default' => __( 'h4', 'ultimate-addons-for-gutenberg' ),
 						),
 						// Color Attributes.
 						'bgColor'               => array(
