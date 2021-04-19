@@ -8,6 +8,7 @@ import map from "lodash/map"
 import memoize from "memize"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import styling from "./styling"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 const { __ } = wp.i18n
 
@@ -32,6 +33,8 @@ const {
 	TabPanel,
 	Dashicon
 } = wp.components
+
+const { withSelect } = wp.data
 
 const ALLOWED_BLOCKS = [ "uagb/social-share-child" ]
 
@@ -62,7 +65,7 @@ class UAGBSocialShare extends Component {
 
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, deviceType } = this.props
 
 		const {
 			align,
@@ -163,79 +166,49 @@ class UAGBSocialShare extends Component {
 							</Fragment>
 						}
 						<hr className="uagb-editor__separator" />
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{sizeTypesControls}
-												<RangeControl
-													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
-													value={ sizeMobile }
-													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{sizeTypesControls}
-												<RangeControl
-													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
-													value={ sizeTablet }
-													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{sizeTypesControls}
-												<RangeControl
-													label={ __( "Size",'ultimate-addons-for-gutenberg' ) }
-													value={ size }
-													onChange={ ( value ) => setAttributes( { size: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<Columnresponsive/>
+						{ "Desktop" === deviceType && (
+							<Fragment>
+							{sizeTypesControls}
+							<RangeControl
+								label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
+								value={ size }
+								onChange={ ( value ) => setAttributes( { size: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+								initialPosition={40}
+							/>
+							</Fragment>
+						)}
+						{ "Tablet" === deviceType && (
+							<Fragment>
+							{sizeTypesControls}
+							<RangeControl
+								label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
+								value={ sizeTablet }
+								onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+								initialPosition={40}
+							/>
+							</Fragment>
+						)}
+						{ "Mobile" === deviceType && (
+							<Fragment>
+								{sizeTypesControls}
+								<RangeControl
+									label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
+									value={ sizeMobile }
+									onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+									initialPosition={40}
+								/>
+							</Fragment>
+						)}
 						<RangeControl
 							label={ __( "Background Size",'ultimate-addons-for-gutenberg' ) }
 							value={ bgSize }
@@ -267,6 +240,7 @@ class UAGBSocialShare extends Component {
 					className,
 					"uagb-social-share__outer-wrap",
 					`uagb-social-share__layout-${social_layout}`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 				) }
 				>
@@ -284,4 +258,11 @@ class UAGBSocialShare extends Component {
 	}
 }
 
-export default UAGBSocialShare
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType
+	}
+} )( UAGBSocialShare )

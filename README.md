@@ -169,11 +169,29 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.22.3 ###
+<<<<<<< HEAD
 * Improvement: Tabs - Added alignment option to the tab headers.
 * Improvement: Tabs - Added option to update the tabs order by moving it left or right.
 * Fix: Tabs - Nested tab layout breaking all the tab functionality.
 * Fix: Tabs - Tabs body generating multiple times.
 * Fix: Tabs - Tab Anchors in the page link Are Ignored.
+=======
+* Improvement: Block preview on responsive devices in editor.
+* Improvement: Added filter to disable block conditions from editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
+* Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
+* Fix: Resolved RangeControl Slider issue in responsive modes.
+* Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
+* Fix: Google Map - Added some padding for the editor to improve the experience of a selection of Google Map.
+* Fix: Fix taxonomy special character issue in all post layouts.
+* Improvement: First letter Capitalize instead of all Meta in post layout. 
+* Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
+* Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
+* Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
+* Fix: Post Layout - Conflicting with NextGen Gallery plugin.
+* Fix: Resolved Invalid block issue of core widget blocks.
+* Fix: Marketing Button - Fix Icon size setting issue.
+* Fix: Post Masonary - Fixed the JS UAGBPostMasonry is not defined error.
+>>>>>>> 4c4873d22d0d5c2c2c40198de493442e795d8527
 
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
