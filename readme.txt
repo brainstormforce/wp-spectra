@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.22.3 =
+* Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
 * Improvement: Block preview on responsive devices in editor.
 * Improvement: Added filter to disable block conditions from editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
 * Fix: Display Condition - Added body tag instead of "enrty-content" class in css to hide the block.
