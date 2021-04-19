@@ -21,7 +21,6 @@ function block_core_table_of_contents_get_headings_from_content(
 	$mappingHeadersArray
 ) {
 
-
 	/* phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase */
 	// Disabled because of PHP DOMDocument and DOMXPath APIs using camelCase.
 
@@ -75,51 +74,39 @@ function block_core_table_of_contents_get_headings_from_content(
 
 	$xpath = new DOMXPath( $doc );
 
-	
-	// $Htmlheading = array();
-	// if( true === $mappingHeadersArray[0] ){
-	// 	array_push($Htmlheading,'self::h1');
-	// } else if( true === $mappingHeadersArray[1] ){
-	// 	array_push($Htmlheading,'self::h2');
-	// }else if( true === $mappingHeadersArray[2] ){
-	// 	array_push($Htmlheading,'self::h3');
-	// }else if( true === $mappingHeadersArray[3] ){
-	// 	array_push($Htmlheading,'self::h4');
-	// }else if( true === $mappingHeadersArray[4] ){
-	// 	array_push($Htmlheading,'self::h5');
-	// }else if( true === $mappingHeadersArray[5] ){
-	// 	array_push($Htmlheading,'self::h6');
-	// }else{
-	// 	echo '';
-	// }
-
-// $stack = array("orange", "banana");
-
-// print_r($xpath);
-
-// Get all non-empty heading elements in the post content.
-$headings = iterator_to_array(
-	$xpath->query(
-		'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
-	)
-);
-// print_r( $mappingHeadersArray[2] );
+	// Get all non-empty heading elements in the post content.
+	$headings = iterator_to_array(
+		$xpath->query(
+			'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
+		)
+	);
 
 	return array_map(
-		function ( $heading ) {
-
-			// print_r((int) $heading->nodeName[1]);
-
-			return array(
-				// A little hacky, but since we know at this point that the tag will
-				// be an h1-h6, we can just grab the 2nd character of the tag name
-				// and convert it to an integer. Should be faster than conditionals.
-				'level'   => (int) $heading->nodeName[1],
-				'id'      => clean($heading->textContent),//$id,
-				// 'page'    => $headings_page,
-				'content' => $heading->textContent,
-			);
-		},
+		function ( $heading ) use ( $mappingHeadersArray ) {
+		
+		$mapping_header = 0;
+		foreach($mappingHeadersArray as $key => $value){
+		
+			if( $mappingHeadersArray[$key] ){
+				
+				$mapping_header = ( $key + 1 );
+			}
+			
+			if( $heading->nodeName[1] == $mapping_header ){
+				
+				return array(
+					// A little hacky, but since we know at this point that the tag will
+					// be an h1-h6, we can just grab the 2nd character of the tag name
+					// and convert it to an integer. Should be faster than conditionals.
+					'level'   => (int) $heading->nodeName[1],
+					'id'      => clean($heading->textContent),//$id,
+					// 'page'    => $headings_page,
+					'content' => $heading->textContent,
+				);
+			}
+	
+		}
+	},
 		$headings
 	);
 	/* phpcs:enable */
@@ -243,6 +230,8 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
 		}
 	}
 
+	// var_dump($nested_heading_list);
+
 	return $nested_heading_list;
 }
 
@@ -258,17 +247,25 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
  */
 function block_core_table_of_contents_render_list(
 	$nested_heading_list,
-	$page_url
+	$page_url,
+	$attributes
 ) {
+
 	$entry_class = 'wp-block-table-of-contents__entry';
-
+	
 	$child_nodes = array_map(
-		function ( $child_node ) use ( $entry_class, $page_url ) {
+		function ( $child_node ) use ( $entry_class, $page_url, $attributes ) {
+			if( $child_node['heading'] || $child_node['children']){
 			global $multipage;
-
+			
 			$id      = $child_node['heading']['id'];
 			$content = $child_node['heading']['content'];
+			$heading = '';
 
+			if( $content ){
+				$heading = esc_html( $content );
+			}
+			
 			if ( isset( $id ) ) {
 				if ( $multipage ) {
 					$href = add_query_arg(
@@ -284,31 +281,37 @@ function block_core_table_of_contents_render_list(
 					'<a class="%1$s" href="%2$s">%3$s</a>',
 					$entry_class,
 					esc_url( $href ),
-					esc_html( $content )
+					$heading
 				);
 			} else {
 				$entry = sprintf(
 					'<span class="%1$s">%2$s</span>',
 					$entry_class,
-					esc_html( $content )
+					$heading
 				);
+			}
+
+			$children = '';
+
+			if( $child_node['children'] ){
+				$children = (block_core_table_of_contents_render_list(
+					$child_node['children'],
+					$page_url,
+					$attributes
+				));
 			}
 
 			return sprintf(
 				'<li>%1$s%2$s</li>',
-				$entry,
-				$child_node['children']
-					? block_core_table_of_contents_render_list(
-						$child_node['children'],
-						$page_url
-					)
-					: null
+				strlen($heading) > 0 ? $entry : '',
+				$children
 			);
+		}
 		},
 		$nested_heading_list
 	);
 
-	return '<ul>' . implode( $child_nodes ) . '</ul>';
+	return '<ul class="uagb-toc__list">' . implode( $child_nodes ) . '</ul>';
 }
 
 /**
@@ -334,18 +337,39 @@ function render_block_core_table_of_contents( $attributes, $content, $block ) {
 		$post->ID,
 		$attributes
 	);
-	
+
 	// If there are no headings.
 	if ( count( $headings ) === 0 ) {
 		return '';
 	}
 
+	$wrap = array(
+		'wp-block-uagb-table-of-contents',
+		'uagb-toc__align-' . $attributes['align'],
+		'uagb-toc__columns-' . $attributes['tColumnsDesktop'],
+		( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
+		'uagb-block-' . $attributes['block_id'],
+		( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+	);
+
 	return sprintf(
-		'<nav %1$s>%2$s</nav>',
-		get_block_wrapper_attributes(),
+		'<div class="%1$s" data-scroll="%2$s" data-offset="%3$s" data-delay="%4$s">
+			<div class="uagb-toc__wrap">
+				<div class="uagb-toc__title-wrap">
+					<div class="uagb-toc__title">%5$s</div>
+				</div>
+			<div class="uagb-toc__list-wrap">%6$s</div>
+			</div>
+		</div>',
+		esc_html( implode( ' ', $wrap ) ),
+		esc_attr( $attributes['smoothScroll'] ),
+		esc_attr( $attributes['smoothScrollOffset'] ),
+		esc_attr( $attributes['smoothScrollDelay'] ),
+		esc_html( $attributes['headingTitle'] ),
 		block_core_table_of_contents_render_list(
 			block_core_table_of_contents_linear_to_nested_heading_list( $headings ),
-			get_permalink( $post->ID )
+			get_permalink( $post->ID ),
+			$attributes
 		)
 	);
 }
