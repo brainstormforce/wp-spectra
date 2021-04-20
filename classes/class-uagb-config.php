@@ -2590,6 +2590,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'              => '',
 							'postType'              => 'post',
 							'taxonomyType'          => 'category',
+							'titleTag'              => '',
 							'categories'            => '',
 							'order'                 => 'desc',
 							'orderBy'               => 'date',
