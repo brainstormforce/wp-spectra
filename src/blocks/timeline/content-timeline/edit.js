@@ -473,7 +473,7 @@ class UAGBcontentTimeline extends Component {
 							{ value: "tablet", label: __( "Tablet",'ultimate-addons-for-gutenberg' ) },
 							{ value: "mobile", label: __( "Mobile",'ultimate-addons-for-gutenberg' ) },
 						] }
-						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack.",'ultimate-addons-for-gutenberg' ) }
+						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.",'ultimate-addons-for-gutenberg' ) }
 						onChange={ ( value ) => setAttributes( { stack: value } ) }
 					/>
 				<hr className="uagb-editor__separator" />
