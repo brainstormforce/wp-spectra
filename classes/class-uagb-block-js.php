@@ -70,7 +70,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$settings      = wp_json_encode( $slick_options );
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 			$selector      = $base_selector . $id;
-			$js            = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings . ' ); } } );';
+			$js            = 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings . ' ); } } );';
 
 			return $js;
 
