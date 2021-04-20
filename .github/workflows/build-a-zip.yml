@@ -2,6 +2,10 @@ name: Build a zip & Comment on PR
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
+    branches:
+      - master
+      - dev
+      - next-release
 
 jobs:
   build-zip:
