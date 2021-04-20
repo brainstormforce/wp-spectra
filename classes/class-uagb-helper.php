@@ -187,7 +187,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			global $content_width;
 			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
 			if ( '' !== self::$script ) {
-				self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+				self::$script = 'document.addEventListener("DOMContentLoaded", function(){ ' . self::$script . ' })';
 			}
 
 			if ( 'enabled' === self::$file_generation ) {

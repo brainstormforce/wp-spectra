@@ -188,6 +188,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Marketing Button - Fix Icon size setting issue.
 * Improvement: Taxonomy List - Added Html Tag Selector to set Tag of list title.
 * Fix: Post Masonary - Fixed the JS UAGBPostMasonry is not defined error.
+* Fix: Social Share - Fixed the jQuery undefined error.
 * Fix: Content Timeline - Fixed Connector layout on mobile devices issue.
 
 ### 1.22.2 ###
