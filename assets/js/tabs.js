@@ -4,7 +4,7 @@ window.addEventListener( 'hashchange', anchorTabId, false );
 function uagbTabInit(){
 	var tabWrap = document.getElementsByClassName( 'uagb-tabs__wrap' );
 	for ( var item = 0; item < tabWrap.length; item++ ) {
-		var tabList = tabWrap[item].querySelector( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
+		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
 			tabList[tab].setAttribute('aria-selected', 'false');
 		}

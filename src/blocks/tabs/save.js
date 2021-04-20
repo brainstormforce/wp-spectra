@@ -37,7 +37,7 @@ export default function save( props ) {
             ) }>
             <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`}>
                 {tabHeaders.map( ( header, index ) => (
-                    <li key={ index } className={`uagb-tab ${(index === tabActiveFrontend ? 'uagb-tabs__active' : '')}`} id={`uagb-tabs__tab${index}`}>
+                    <li key={ index } className={`uagb-tab ${(tabActiveFrontend == index ? 'uagb-tabs__active' : '')}`}>
                         <a href={`#uagb-tabs__tab${index}`} className={`uagb-tabs-list uagb-tabs__icon-position-${iconPosition}`} data-tab={index}>
                         {(showIcon && (iconPosition === 'left' || iconPosition === 'top' ) &&
                                  <span className="uagb-tabs__icon">{ renderSVG(icon) }</span>)}
