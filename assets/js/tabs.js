@@ -23,11 +23,9 @@ function uagbTabInit(){
 
 		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
-            if(tabActive === tab){
-                tabList[tab].classList.add('uagb-tabs__active');
-            }
 			tabList[tab].setAttribute('aria-selected', 'false');
 		}
+        
         var tabAnchor = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li a' );
         for ( var a = 0; a < tabAnchor.length; a++ ) {
             if(!tabAnchor[a].classList.contains("uagb-tabs-list")){
