@@ -4459,9 +4459,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__title-wrap'    => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 				),
-				' .uagb-marketing-btn__title'         => array(
-					'color' => $attr['titleColor'],
-				),
 				' .uagb-marketing-btn__icon-wrap'     => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
 					'height' => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
@@ -4469,13 +4466,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap svg' => array(
 					'fill' => $icon_color,
 				),
-				' .uagb-marketing-btn__prefix'        => array(
+				' p.uagb-marketing-btn__prefix'        => array(
 					'color' => $attr['prefixColor'],
 				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__title' => array(
-					'color' => $attr['titleHoverColor'],
-				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__prefix' => array(
+				' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 					'color' => $attr['prefixHoverColor'],
 				),
 				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg' => array(
@@ -4494,6 +4488,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__link:hover'    => array(
 					'border-color' => $attr['borderHoverColor'],
 				),
+			);
+
+			$selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleColor'],
+			);
+
+			$selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleHoverColor'],
 			);
 
 			if ( 'transparent' === $attr['backgroundType'] ) {

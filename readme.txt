@@ -190,6 +190,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonary - Fixed the JS UAGBPostMasonry is not defined error.
 * Fix: Social Share - Fixed the jQuery undefined error.
 * Fix: Content Timeline - Fixed Connector layout on mobile devices issue.
+* Fix: Marketing button - Text color and hover color overriding the block-library style.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.
