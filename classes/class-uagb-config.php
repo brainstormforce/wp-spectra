@@ -1087,6 +1087,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'extension'   => false,
 						'attributes'  => array(
 							'classMigrate'            => false,
