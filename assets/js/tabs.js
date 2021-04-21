@@ -14,6 +14,7 @@ function uagbTabInit(){
                     tabLi[i].classList.add('uagb-tabs__active');
                     tabWrap[item].classList.add( 'uagb-active-tab-'+i); 
                 }
+                tabLi[i].setAttribute('id', 'uagb-tabs__tab'+i);
                 tabbody[i].classList.add('uagb-inner-tab-'+i);
                 tabbody[i].setAttribute('aria-hidden', 'true');
             }
