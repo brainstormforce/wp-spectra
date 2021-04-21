@@ -65,7 +65,7 @@ function styling( props ) {
 			"margin-right": generateCSSUnit( tabTitleRightMargin, "px" ),
 			"margin-bottom": generateCSSUnit( tabTitleBottomMargin, "px" )
 		},
-		" > .uagb-tabs__panel .uagb-tab p" : {
+		" > .uagb-tabs__panel .uagb-tab a > p" : {
 			"color": headerTextColor,
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
