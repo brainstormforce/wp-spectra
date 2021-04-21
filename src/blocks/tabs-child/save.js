@@ -12,7 +12,7 @@ export default function save( props ) {
     const {id, block_id} = attributes;
     
     return (
-        <div className={`uagb-tabs__body-container uagb-inner-tab-${id}`}>
+        <div className={`uagb-tabs__body-container uagb-tabs__inner-tab uagb-inner-tab-${id}`}>
             <div className={ classnames(
 					className,
 					`uagb-blocks__${block_id}`,

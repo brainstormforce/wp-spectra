@@ -10,22 +10,19 @@ function uagbTabInit(){
         var tabLi = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li.uagb-tab' );
         for ( var i = 0; i < tabLi.length; i++ ) {
             if(!tabLi[i].classList.contains("uagb-tabs__active")){
-                if(tabActive == i){
+                if(tabActive == i){  
                     tabLi[i].classList.add('uagb-tabs__active');
                     tabWrap[item].classList.add( 'uagb-active-tab-'+i); 
+                }else{
+                    tabWrap[item].classList.add( 'uagb-active-tab-'+tabActive);
                 }
                 tabLi[i].setAttribute('id', 'uagb-tabs__tab'+i);
             }
             if(tabbody[i] == undefined){
                 return
             }
-            for ( var body = 0; body < tabbody[i].classList.length; body++ ) {
-                if(tabbody[i].classList[body].includes('uagb-inner-tab-')){
-                    var val = true;
-                    if(!val){
-                        tabbody[i].classList.add('uagb-inner-tab-'+i); 
-                    }
-                }
+            if(undefined === tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__inner-tab' )){
+                tabbody[i].classList.add('uagb-inner-tab-'+i); 
             }
         }
 
