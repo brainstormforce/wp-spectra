@@ -21,7 +21,7 @@ function uagbTabInit(){
             if(tabbody[i] == undefined){
                 return
             }
-            if(undefined === tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__inner-tab' )){
+            if(!tabbody[i].classList.contains( '.uagb-tabs__inner-tab' )){
                 tabbody[i].classList.add('uagb-inner-tab-'+i); 
             }
         }
