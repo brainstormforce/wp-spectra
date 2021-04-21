@@ -30,11 +30,10 @@ export default function save( props ) {
             className,
             `uagb-block-${ block_id}`,
             `uagb-tabs__wrap`,
-            `uagb-active-tab-${tabActiveFrontend}`,
             `uagb-tabs__${tabsStyleD}-desktop`,
             `uagb-tabs__${tabsStyleT}-tablet`,
             `uagb-tabs__${tabsStyleM}-mobile`
-            ) }>
+            ) } data-tab-active={tabActiveFrontend}>
             <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`}>
                 {tabHeaders.map( ( header, index ) => (
                     <li key={ index } className={`uagb-tab ${(tabActiveFrontend == index ? 'uagb-tabs__active' : '')}`}>
