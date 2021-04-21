@@ -5,7 +5,6 @@ function uagbTabInit(){
 	var tabWrap = document.getElementsByClassName( 'uagb-tabs__wrap' );
 	for ( var item = 0; item < tabWrap.length; item++ ) {
         
-        var tabbody = tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__body-container' );
         var tabActive = tabWrap[item].getAttribute('data-tab-active');
         var tabLi = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li.uagb-tab' );
         for ( var i = 0; i < tabLi.length; i++ ) {
@@ -18,14 +17,17 @@ function uagbTabInit(){
                 }
                 tabLi[i].setAttribute('id', 'uagb-tabs__tab'+i);
             }
-            if(tabbody[i] == undefined){
+        }
+        var tabbody = tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__body-container' );
+        for ( var body = 0; body < tabbody.length; body++ ) {
+            if(tabbody[body] == undefined){
                 return
             }
-            if(!tabbody[i].classList.contains( '.uagb-tabs__inner-tab' )){
-                tabbody[i].classList.add('uagb-inner-tab-'+i); 
+            if(tabbody[body].classList.contains( '.uagb-tabs__inner-tab' )){
+                console.log('sdhfgh')
+                tabbody[body].classList.add('uagb-inner-tab-'+body); 
             }
         }
-
 		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
 			tabList[tab].setAttribute('aria-selected', 'false');
