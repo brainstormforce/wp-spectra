@@ -20,7 +20,7 @@ function uagbTabInit(){
 
         }
 
-		var tabAnchor = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
+		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
             if(tabActive === tab){
                 tabList[tab].classList.add('uagb-tabs__active');
