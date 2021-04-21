@@ -47,7 +47,7 @@ class UAGBTabsChildEdit extends Component {
 					className,
 					`uagb-tabs__${block_id}`,
 					'uagb-tabs__body'
-				) }aria-labelledby={`uagb-tabs__tab${id}`}>
+				) } aria-labelledby={`uagb-tabs__tab${id}`}>
 					<InnerBlocks
 						template={[ [ 'core/paragraph' ] ]}
 						templateLock={false}

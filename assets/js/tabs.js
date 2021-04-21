@@ -18,14 +18,14 @@ function uagbTabInit(){
                 tabLi[i].setAttribute('id', 'uagb-tabs__tab'+i);
             }
         }
-        var tabbody = tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__body-container' );
-        for ( var body = 0; body < tabbody.length; body++ ) {
-            if(tabbody[body] == undefined){
+        var tabBody = tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__body-container' );
+        for ( var body = 0; body < tabBody.length; body++ ) {
+            if(tabBody[body] == undefined){
                 return
             }
-            if(tabbody[body].classList.contains( '.uagb-tabs__inner-tab' )){
+            if(tabBody[body].classList.contains( '.uagb-tabs__inner-tab' )){
                
-                tabbody[body].classList.add('uagb-inner-tab-'+body); 
+                tabBody[body].classList.add('uagb-inner-tab-'+body); 
             }
         }
 		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
