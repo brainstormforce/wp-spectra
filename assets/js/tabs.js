@@ -24,7 +24,7 @@ function uagbTabInit(){
                 return
             }
             if(tabbody[body].classList.contains( '.uagb-tabs__inner-tab' )){
-                console.log('sdhfgh')
+               
                 tabbody[body].classList.add('uagb-inner-tab-'+body); 
             }
         }
@@ -43,7 +43,7 @@ function uagbTabInit(){
 		tabWrap[item].querySelector('.uagb-tabs__panel li.uagb-tabs__active a').setAttribute('aria-selected', 'true');
         
         var tabPanel = tabWrap[item].querySelectorAll('.uagb-tabs__panel li a');
-        
+       
         for ( var panel = 0; panel < tabPanel.length; panel++ ) {
 			tabPanel[panel].addEventListener("click", function( e ) {
                 tabClickEvent( e, this , this.parentElement , tabPanel.length);
@@ -55,9 +55,18 @@ function uagbTabInit(){
 function tabClickEvent(e , tabName , list , count){
 
     e.preventDefault();
-
+    
     var tabId = tabName.getAttribute( 'data-tab' );
+    var mainWrap = list.closest( '.uagb-tabs__wrap' );
+    
+    for ( var idx = 0; idx < 15; idx++ ) {
+        if(mainWrap.classList.contains('uagb-active-tab-'+idx)){
+            mainWrap.classList.remove( 'uagb-active-tab-'+idx); 
+        }else{
+            mainWrap.classList.add('uagb-active-tab-'+ tabId);
+        }
 
+    }
     var listPanel = list.closest( '.uagb-tabs__panel' );
 
     var oldActiveTab = listPanel.querySelector( '.uagb-tabs__active' );
@@ -70,11 +79,8 @@ function tabClickEvent(e , tabName , list , count){
     list.classList.add( 'uagb-tabs__active' );
 
     tabName.setAttribute( 'aria-selected', 'true' );
-    var mainWrap = list.closest( '.uagb-tabs__wrap' );
-    for ( var idx = 0; idx < count; idx++ ) {
-        mainWrap.classList.remove( 'uagb-active-tab-'+idx); 
-    }
-    mainWrap.classList.add('uagb-active-tab-'+ tabId)
+    
+   
     mainWrap.querySelector( '.uagb-tabs__body-wrap .uagb-tabs__body-container:not(.uagb-inner-tab-' + tabId + ')' ).setAttribute( 'aria-hidden', 'true' );
     mainWrap.querySelector( '.uagb-tabs__body-wrap .uagb-inner-tab-' + tabId ).setAttribute( 'aria-hidden', 'false' );
 
