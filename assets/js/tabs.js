@@ -15,11 +15,12 @@ function uagbTabInit(){
                     tabWrap[item].classList.add( 'uagb-active-tab-'+i); 
                 }
                 tabbody[i].classList.add('uagb-inner-tab-'+i);
+                tabbody[i].setAttribute('aria-hidden', 'true');
             }
 
         }
 
-		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
+		var tabAnchor = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
             if(tabActive === tab){
                 tabList[tab].classList.add('uagb-tabs__active');
