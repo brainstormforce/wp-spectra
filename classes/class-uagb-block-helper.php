@@ -4466,7 +4466,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap svg' => array(
 					'fill' => $icon_color,
 				),
-				' p.uagb-marketing-btn__prefix'        => array(
+				' p.uagb-marketing-btn__prefix'       => array(
 					'color' => $attr['prefixColor'],
 				),
 				' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
