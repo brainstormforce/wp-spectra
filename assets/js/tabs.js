@@ -4,9 +4,34 @@ window.addEventListener( 'hashchange', anchorTabId, false );
 function uagbTabInit(){
 	var tabWrap = document.getElementsByClassName( 'uagb-tabs__wrap' );
 	for ( var item = 0; item < tabWrap.length; item++ ) {
+        
+        var tabbody = tabWrap[item].querySelectorAll( '.uagb-tabs__body-wrap .uagb-tabs__body-container' );
+        var tabActive = tabWrap[item].getAttribute('data-tab-active');
+        var tabLi = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li.uagb-tab' );
+        for ( var i = 0; i < tabLi.length; i++ ) {
+            if(!tabLi[i].classList.contains("uagb-tabs__active")){
+                if(tabActive == i){
+                    tabLi[i].classList.add('uagb-tabs__active');
+                    tabWrap[item].classList.add( 'uagb-active-tab-'+i); 
+                }
+                tabbody[i].classList.add('uagb-inner-tab-'+i);
+            }
+
+        }
+
 		var tabList = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li:not(.uagb-tabs__active) a' );
         for ( var tab = 0; tab < tabList.length; tab++ ) {
+            if(tabActive === tab){
+                tabList[tab].classList.add('uagb-tabs__active');
+            }
 			tabList[tab].setAttribute('aria-selected', 'false');
+		}
+        var tabAnchor = tabWrap[item].querySelectorAll( '.uagb-tabs__panel li a' );
+        for ( var a = 0; a < tabAnchor.length; a++ ) {
+            if(!tabAnchor[a].classList.contains("uagb-tabs-list")){
+                tabAnchor[a].classList.add('uagb-tabs-list');
+                tabAnchor[a].setAttribute('data-tab', a);
+            }
 		}
 		tabWrap[item].querySelector('.uagb-tabs__panel li.uagb-tabs__active a').setAttribute('aria-selected', 'true');
         
