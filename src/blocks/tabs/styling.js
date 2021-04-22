@@ -183,9 +183,9 @@ function styling( props ) {
 
 	var styling_css = generateCSS( selectors, base_selector )
 
-	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	return styling_css
 }

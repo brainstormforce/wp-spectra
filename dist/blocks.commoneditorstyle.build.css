@@ -3368,3 +3368,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uag-typography-range-options + .components-base-control .components-base-control__field .css-unzpkb-Flex-Root{
     position:inherit;
 }
+
+.uag-typography-range-options + .components-button-group.uagb-size-type-field {
+    margin-bottom:-33px
+}
