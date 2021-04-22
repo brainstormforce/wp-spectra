@@ -193,9 +193,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Masonry - Fixed the JS UAGBPostMasonry is not defined error.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
+* Fix: Posts Layout - On disabling the "Show Excerpt" option  "Read More" setting was hidden.
 * Fix: Resolved RangeControl Slider issue in responsive modes.
 * Fix: Fix taxonomy special character issue in all post layouts.
-* Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.

@@ -16,6 +16,8 @@ import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+import Columnresponsive from "../../components/typography/column-responsive"
+
 const { __ } = wp.i18n
 
 const {
@@ -54,7 +56,7 @@ const {
 	compose,
 } = wp.compose
 
-const { withDispatch, select, dispatch } = wp.data;
+const { withDispatch, select, dispatch, withSelect } = wp.data;
 
 class UAGBTabsEdit extends Component {	
 	constructor() {
@@ -185,7 +187,7 @@ class UAGBTabsEdit extends Component {
 		this.props.resetTabOrder();
 	}
 	render() {
-		const { attributes , setAttributes , className } = this.props;
+		const { attributes , setAttributes , className, deviceType   } = this.props;
 		const {
 			tabsStyleD,
 			tabsStyleM,
@@ -240,108 +242,77 @@ class UAGBTabsEdit extends Component {
 			<Fragment>     
 				<InspectorControls>
 					<PanelBody title={ __( 'Tabs Style'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ true }>
-						<TabPanel className="components-base-control uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>		
-												<SelectControl
-													label={ __( "Mobile Style"  , 'ultimate-addons-for-gutenberg' ) }
-													value={ tabsStyleM }
-													onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack1', label: __('Stack Style 11' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack2', label: __('Stack Style 12' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack3', label: __('Stack Style 13'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack4', label: __('Stack Style 14'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												
-												<SelectControl
-													label={ __( "Tablet Style"  , 'ultimate-addons-for-gutenberg') }
-													value={ tabsStyleT }
-													onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												
-												<SelectControl
-													label={ __( "Desktop Style"  , 'ultimate-addons-for-gutenberg') }
-													value={ tabsStyleD }
-													onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>	
+					<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+							<Fragment>
+							<SelectControl
+								label={ __( "Desktop Style"  , 'ultimate-addons-for-gutenberg') }
+								value={ tabsStyleD }
+								onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
+								beforeIcon="editor-textcolor"
+								options={ [
+									{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
+								] }
+							/>
+							</Fragment>
+						)}
+						{ "Tablet" === deviceType && (
+							<Fragment>
+								<SelectControl
+									label={ __( "Tablet Style"  , 'ultimate-addons-for-gutenberg') }
+									value={ tabsStyleT }
+									onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
+									beforeIcon="editor-textcolor"
+									options={ [
+										{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
+									] }
+								/>
+							</Fragment>
+						)}
+						{ "Mobile" === deviceType && (
+							<Fragment>
+								<SelectControl
+									label={ __( "Mobile Style"  , 'ultimate-addons-for-gutenberg' ) }
+									value={ tabsStyleM }
+									onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
+									beforeIcon="editor-textcolor"
+									options={ [
+										{value: 'hstyle1', label: __('Horizontal Style 1' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle2', label: __('Horizontal Style 2' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle3', label: __('Horizontal Style 3' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle4', label: __('Horizontal Style 4' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle5', label: __('Horizontal Style 5' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle6', label: __('Vertical Style 6' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle7', label: __('Vertical Style 7' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle8', label: __('Vertical Style 8' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle9', label: __('Vertical Style 9' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle10', label: __('Vertical Style 10' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack1', label: __('Stack Style 11' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack2', label: __('Stack Style 12' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack3', label: __('Stack Style 13'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack4', label: __('Stack Style 14'  , 'ultimate-addons-for-gutenberg')},
+									] }
+								/>
+							</Fragment>
+						)}
 					</PanelBody>
 					<PanelBody title={ __( 'Tabs Title Settings'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ false }>
 						<SelectControl
@@ -621,6 +592,7 @@ class UAGBTabsEdit extends Component {
 				</InspectorControls>
                 <div className={ classnames(
 					className,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 					`uagb-tabs__wrap`,
 					`uagb-tabs__${tabsStyleD}-desktop`,
@@ -707,7 +679,13 @@ class UAGBTabsEdit extends Component {
 }
 
 export default compose(
-
+	withSelect( ( select, props ) => {
+		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		return {
+			deviceType: deviceType,
+		}
+	}),
 	withDispatch( (dispatch, { clientId }, { select }) => {
 		const {
 			getBlock,
@@ -717,6 +695,7 @@ export default compose(
 			moveBlockToPosition
 		} = dispatch( 'core/block-editor' );
 		const block = getBlock( clientId );
+		
 		return {
 			resetTabOrder() {
 				times( block.innerBlocks.length, n => {
