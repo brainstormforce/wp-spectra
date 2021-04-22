@@ -293,7 +293,7 @@ class UAGBMarketingButtonEdit extends Component {
 								beforeIcon=""
 								allowReset
 							/>
-							<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+							<TabPanel className="components-base-control uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
