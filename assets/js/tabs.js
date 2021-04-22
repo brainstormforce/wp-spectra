@@ -89,12 +89,10 @@ function anchorTabId() {
 	if ( window.location.hash != '' && /^#uagb-tabs__tab\d$/.test( window.location.hash ) ) {
         var tabId = escape(window.location.hash.substring(1));
         var tabPanel = document.querySelector('#' + tabId );
-
         const topPos = tabPanel.getBoundingClientRect().top + window.pageYOffset
-
         window.scrollTo({
-            top: topPos, // scroll so that the element is at the top of the view
-            behavior: 'smooth' // smooth scroll
+            top: topPos, 
+            behavior: 'smooth' 
         })
         var tabNum = tabPanel.querySelector('a.uagb-tabs-list').getAttribute( 'data-tab' );
         var listPanel = tabPanel.closest( '.uagb-tabs__panel' );
