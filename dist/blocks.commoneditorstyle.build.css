@@ -3365,3 +3365,6 @@ label.wp-block-uagb-blockquote__via-label svg {
     font-size:15px
 }
 
+.uag-typography-range-options + .components-base-control .components-base-control__field .css-unzpkb-Flex-Root{
+    position:inherit;
+}
