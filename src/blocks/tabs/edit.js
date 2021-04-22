@@ -240,7 +240,7 @@ class UAGBTabsEdit extends Component {
 			<Fragment>     
 				<InspectorControls>
 					<PanelBody title={ __( 'Tabs Style'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ true }>
-						<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
+						<TabPanel className="components-base-control uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
