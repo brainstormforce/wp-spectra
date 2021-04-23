@@ -78,8 +78,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
 				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
 			}
+
+			define( 'UAGB_ASSET_VER', update_option( '__uagb_asset_version', UAGB_VER ) );
 		}
-		
+
 		/**
 		 * Loads Other files.
 		 *
@@ -186,6 +188,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function activation_reset() {
 			update_option( '__uagb_do_redirect', true );
+			update_option( '__uagb_asset_version', time() );
 		}
 
 		/**

@@ -151,7 +151,13 @@ class UAGB_Frontend {
     public function __construct() {
 
         $this->define_vars();
-        
+
+        if ( 'disabled' === self::$file_generation  ) {
+            
+        }else{
+
+        }
+
         add_action( 'wp', array( $this, 'generate_assets' ), 99 );
         add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
         add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ), 10 );
@@ -183,7 +189,7 @@ class UAGB_Frontend {
 
         $page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
 
-        if ( isset( $page_assets ) && isset( $page_assets['uag_version'] ) && UAGB_VER !== $page_assets['uag_version'] ) {
+        if ( isset( $page_assets ) && isset( $page_assets['uag_version'] ) && UAGB_ASSET_VER !== $page_assets['uag_version'] ) {
             return true;
         }
 

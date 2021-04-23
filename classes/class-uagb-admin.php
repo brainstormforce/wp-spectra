@@ -473,6 +473,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				UAGB_Helper::get_instance()->delete_upload_dir();
 			}
 
+			/* Update the asset version */
+			update_option( '__uagb_asset_version', time() );
+
 			wp_send_json_success(
 				array(
 					'success' => true,
