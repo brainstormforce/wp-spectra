@@ -67,6 +67,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';

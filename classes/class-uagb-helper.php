@@ -1103,7 +1103,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return self::$icon_json;
 			}
 
-			$str             = self::get_instance()->get_filesystem()->get_contents( $json_file );
+			$str             = uagb_filesystem()->get_contents( $json_file );
 			self::$icon_json = json_decode( $str, true );
 			return self::$icon_json;
 		}
@@ -1539,7 +1539,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				$wp_filesystem = self::get_instance()->get_filesystem();
+				$wp_filesystem = uagb_filesystem();
 				$wp_filesystem->mkdir( $dir_info['path'] );
 				// Add an index file for security.
 				$wp_filesystem->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Check the upload dir if it doesn't exist or not.
 			if ( file_exists( $dir_info['path'] . 'index.html' ) ) {
 				// Remove the directory.
-				$wp_filesystem = self::get_instance()->get_filesystem();
+				$wp_filesystem = uagb_filesystem();
 				return $wp_filesystem->rmdir( $dir_info['path'], true );
 			}
 			return false;
@@ -1644,7 +1644,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$uploads_dir = self::get_upload_dir();
 
-			$file_system = self::get_instance()->get_filesystem();
+			$file_system = uagb_filesystem();
 
 			if ( 'css' === $type ) {
 
@@ -1709,7 +1709,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$var           = ( 'css' === $type ) ? 'css' : 'js';
 			$date          = new DateTime();
 			$new_timestamp = $date->getTimestamp();
-			$file_system   = self::get_instance()->get_filesystem();
+			$file_system   = uagb_filesystem();
 
 			// Get timestamp - Already saved OR new one.
 			$post_timestamp_path = ( '' === $post_timestamp_path || false === $post_timestamp_path ) ? '' : $post_timestamp_path;
@@ -1808,22 +1808,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
-		 * Get an instance of WP_Filesystem_Direct.
-		 *
-		 * @since 1.14.4
-		 * @return object A WP_Filesystem_Direct instance.
-		 */
-		public function get_filesystem() {
-			global $wp_filesystem;
-
-			require_once ABSPATH . '/wp-admin/includes/file.php';
-
-			WP_Filesystem();
-
-			return $wp_filesystem;
-		}
-
-		/**
 		 * Check if UAG upload folder has write permissions or not.
 		 *
 		 * @since  1.14.9
@@ -1833,7 +1817,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$upload_dir = self::get_upload_dir();
 
-			$file_created = self::get_instance()->get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
+			$file_created = uagb_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
 
 			if ( ! $file_created ) {
 
@@ -2086,7 +2070,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( file_exists( $block_static_css_path ) ) {
 
-				$file_system = self::get_instance()->get_filesystem();
+				$file_system = uagb_filesystem();
 
 				$css = $file_system->get_contents( $block_static_css_path );
 			}
