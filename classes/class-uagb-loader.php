@@ -58,26 +58,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		}
 
 		/**
-		 * Loads Other files.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @return void
-		 */
-		public function loader() {
-			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
-			require_once UAGB_DIR . 'classes/class-uagb-update.php';
-			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
-			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-
-			if ( 'twentyseventeen' === get_template() ) {
-				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
-			}
-		}
-
-		/**
 		 * Defines all constants
 		 *
 		 * @since 1.0.0
@@ -97,6 +77,26 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
 				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
+			}
+		}
+		
+		/**
+		 * Loads Other files.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
+		public function loader() {
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
+			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
+			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			if ( 'twentyseventeen' === get_template() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
 		}
 
