@@ -6,12 +6,12 @@
  */
 
 /**
- * Extracts heading content, id, page, and level from the given post content.
+ * Extracts heading content, id, and level from the given post content.
  *
  * @access private
  *
  * @param string $content       The post content to extract headings from.
- * @param int    $headings_page The page of the post where the headings are
+ * @param int    $mappingHeadersArray The page of the post where the headings are
  *                              located.
  *
  * @return array The list of headings.
@@ -83,42 +83,49 @@ function block_core_table_of_contents_get_headings_from_content(
 
 	return array_map(
 		function ( $heading ) use ( $mappingHeadersArray ) {
-		
-		$mapping_header = 0;
-		foreach($mappingHeadersArray as $key => $value){
-		
-			if( $mappingHeadersArray[$key] ){
-				
-				$mapping_header = ( $key + 1 );
+
+			$mapping_header = 0;
+
+			foreach ( $mappingHeadersArray as $key => $value ) {
+
+				if ( $mappingHeadersArray[ $key ] ) {
+
+					$mapping_header = ( $key + 1 );
+				}
+
+				if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
+
+					return array(
+						// A little hacky, but since we know at this point that the tag will
+						// be an h1-h6, we can just grab the 2nd character of the tag name
+						// and convert it to an integer. Should be faster than conditionals.
+						'level'   => (int) $heading->nodeName[1],
+						'id'      => clean( $heading->textContent ), // $id,
+						'content' => $heading->textContent,
+					);
+				}
 			}
-			
-			if( $heading->nodeName[1] == $mapping_header ){
-				
-				return array(
-					// A little hacky, but since we know at this point that the tag will
-					// be an h1-h6, we can just grab the 2nd character of the tag name
-					// and convert it to an integer. Should be faster than conditionals.
-					'level'   => (int) $heading->nodeName[1],
-					'id'      => clean($heading->textContent),//$id,
-					// 'page'    => $headings_page,
-					'content' => $heading->textContent,
-				);
-			}
-	
-		}
-	},
+		},
 		$headings
 	);
 	/* phpcs:enable */
 }
 
-function clean($string) {
-	// $string = str_replace(' ', '-', $string ); // Replaces all spaces with hyphens.
-	// $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-	$string = str_replace( array( '‘', '’', '“', '”' ),'', $string );
+/**
+ * Clean up heading content.
+ *
+ * @access private
+ *
+ * @param string $string The post content to extract headings from.
+ *
+ * @return string $string.
+ */
+function clean( $string ) {
+	$string = str_replace( array( '‘', '’', '“', '”' ), '', $string );
 	$string = str_replace( array( '$', '.', '+', '!', '*', '\'', '(', ')', ',' ), '', $string );
-	$string =str_replace( array( '%', '{', '}', '|', '\\', '^', '~', '[', ']', '`' ), '', $string );
-	$string = str_replace( array( '*', '\'', '(', ')', ';', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']' ),
+	$string = str_replace( array( '%', '{', '}', '|', '\\', '^', '~', '[', ']', '`' ), '', $string );
+	$string = str_replace(
+		array( '*', '\'', '(', ')', ';', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']' ),
 		'',
 		$string
 	);
@@ -131,11 +138,10 @@ function clean($string) {
 	$string = preg_replace( '/-+/', '-', $string );
 	// Replace multiple `_` (underscore) with a single `_` (underscore).
 	$string = preg_replace( '/_+/', '-', $string );
-	// Remove trailing `-` (hyphen) and `_` (underscore).
+	// Remove trailing `-` and `_`.
 	$string = rtrim( $string, '-_' );
-	// return $string;
-	return strtolower(preg_replace('/-+/', '-', $string)); // Replaces multiple hyphens with single one.
- }
+	return strtolower( preg_replace( '/-+/', '-', $string ) ); // Replaces multiple hyphens with single one.
+}
 
 /**
  * Gets the content, anchor, level, and page of headings from a post. Returns
@@ -156,11 +162,10 @@ function block_core_table_of_contents_get_headings(
 	$post_id,
 	$current_page_only
 ) {
-	
 		// Only one page, so return headings from entire post_content.
 		return block_core_table_of_contents_get_headings_from_content(
 			get_post( $post_id )->post_content,
-			$current_page_only["mappingHeaders"]
+			$current_page_only['mappingHeaders']
 		);
 }
 
@@ -182,20 +187,13 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
 	$nested_heading_list = array();
 
 	foreach ( $heading_list as $key => $heading ) {
-		// Make sure we are only working with the same level as the first
-		// iteration in our set.
-		if ( $heading['level'] === $heading_list[0]['level'] ) {
-			// Check that the next iteration will return a value.
-			// If it does and the next level is greater than the current level,
-			// the next iteration becomes a child of the current iteration.
+
+		if ( ! is_null( $heading_list[ $key ] ) ) {
 			if (
 				isset( $heading_list[ $key + 1 ] ) &&
 				$heading_list[ $key + 1 ]['level'] > $heading['level']
 			) {
-				// We need to calculate the last index before the next iteration
-				// that has the same level (siblings). We then use this last index
-				// to slice the array for use in recursion. This prevents duplicate
-				// nodes.
+
 				$heading_list_length = count( $heading_list );
 				$end_of_slice        = $heading_list_length;
 				for ( $i = $key + 1; $i < $heading_list_length; $i++ ) {
@@ -205,8 +203,6 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
 					}
 				}
 
-				// Found a child node: Push a new node onto the return array with
-				// children.
 				$nested_heading_list[] = array(
 					'heading'  => $heading,
 					'index'    => $index + $key,
@@ -219,18 +215,17 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
 						$index + $key + 1
 					),
 				);
+				break;
 			} else {
-				// No child node: Push a new node onto the return array.
-				$nested_heading_list[] = array(
-					'heading'  => $heading,
-					'index'    => $index + $key,
-					'children' => null,
-				);
+					$nested_heading_list[] = array(
+						'heading'  => $heading,
+						'index'    => $index + $key,
+						'children' => null,
+					);
+
 			}
 		}
 	}
-
-	// var_dump($nested_heading_list);
 
 	return $nested_heading_list;
 }
@@ -241,7 +236,8 @@ function block_core_table_of_contents_linear_to_nested_heading_list(
  * @access private
  *
  * @param array  $nested_heading_list Nested list of heading data.
- * @param string $page_url            URL of the page the block belongs to.
+ * @param string $page_url URL of the page the block belongs to.
+ * @param array  $attributes array of attributes.
  *
  * @return string The heading list rendered as HTML.
  */
@@ -252,20 +248,16 @@ function block_core_table_of_contents_render_list(
 ) {
 
 	$entry_class = 'wp-block-table-of-contents__entry';
-	
 	$child_nodes = array_map(
 		function ( $child_node ) use ( $entry_class, $page_url, $attributes ) {
-			if( $child_node['heading'] || $child_node['children']){
 			global $multipage;
-			
 			$id      = $child_node['heading']['id'];
 			$content = $child_node['heading']['content'];
 			$heading = '';
 
-			if( $content ){
+			if ( $content ) {
 				$heading = esc_html( $content );
 			}
-			
 			if ( isset( $id ) ) {
 				if ( $multipage ) {
 					$href = add_query_arg(
@@ -276,7 +268,6 @@ function block_core_table_of_contents_render_list(
 				} else {
 					$href = $page_url . '#' . $id;
 				}
-
 				$entry = sprintf(
 					'<a class="%1$s" href="%2$s">%3$s</a>',
 					$entry_class,
@@ -285,7 +276,7 @@ function block_core_table_of_contents_render_list(
 				);
 			} else {
 				$entry = sprintf(
-					'<span class="%1$s">%2$s</span>',
+					'<span class="%1$s" >%2$s</span>',
 					$entry_class,
 					$heading
 				);
@@ -293,20 +284,21 @@ function block_core_table_of_contents_render_list(
 
 			$children = '';
 
-			if( $child_node['children'] ){
-				$children = (block_core_table_of_contents_render_list(
+			if ( $child_node['children'] ) {
+
+				$children = block_core_table_of_contents_render_list(
 					$child_node['children'],
 					$page_url,
 					$attributes
-				));
+				);
+
 			}
 
 			return sprintf(
 				'<li>%1$s%2$s</li>',
-				strlen($heading) > 0 ? $entry : '',
+				strlen( $heading ) > 0 ? $entry : '',
 				$children
 			);
-		}
 		},
 		$nested_heading_list
 	);
@@ -328,7 +320,7 @@ function block_core_table_of_contents_render_list(
 function render_block_core_table_of_contents( $attributes, $content, $block ) {
 
 	global $post;
-	
+
 	if ( ! isset( $post->ID ) ) {
 		return '';
 	}
@@ -384,12 +376,6 @@ function render_block_core_table_of_contents( $attributes, $content, $block ) {
  * @throws WP_Error An exception parsing the block definition.
  */
 function register_block_core_table_of_contents() {
-	// register_block_type_from_metadata(
-	// 	__DIR__ . '/table-of-contents',
-	// 	array(
-	// 		'render_callback' => 'render_block_core_table_of_contents',
-	// 	)
-	// );
 	$mappingHeadersArray = array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true );
 
 			register_block_type(
@@ -712,7 +698,6 @@ function register_block_core_table_of_contents() {
 							),
 						)
 					),
-					// 'render_callback' => array( $this, 'render_table_of_contents_block' ),
 					'render_callback' => 'render_block_core_table_of_contents',
 				)
 			);

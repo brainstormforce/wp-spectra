@@ -141,62 +141,62 @@
 			}
 			let blockId = attr.block_id;
 			// var headerArray = $( 'div.uag-toc__entry-content' ).find( all_header )
-			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
-			headerArray.each( function (index,value){
-				let header = $( this );
-				let excludeHeading ;
+			// if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
+			// headerArray.each( function (index,value){
+			// 	let header = $( this );
+			// 	let excludeHeading ;
 				
-				if ( value.className.includes('uagb-toc-hide-heading') ) {
-					excludeHeading = true;
-				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
-					excludeHeading = true;
-				} else {
-					excludeHeading = false;
-				}
+			// 	if ( value.className.includes('uagb-toc-hide-heading') ) {
+			// 		excludeHeading = true;
+			// 	} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+			// 		excludeHeading = true;
+			// 	} else {
+			// 		excludeHeading = false;
+			// 	}
 				
-				let headerText = parseTocSlug(header.text());
+			// 	let headerText = parseTocSlug(header.text());
 
-				if ( !excludeHeading ) {
+			// 	if ( !excludeHeading ) {
 					
-					let openLevel = header[0].localName.replace(/^h+/, '');
-					let titleText = header.text();
+			// 		let openLevel = header[0].localName.replace(/^h+/, '');
+			// 		let titleText = header.text();
 					
-					if (openLevel > level) {
-						let arrayOpenLevel = new Array(openLevel - level + 1)
-						if( 2 == (arrayOpenLevel).length ){
-							headerTable += (arrayOpenLevel).join("<ul class='uagb-toc__list'>");
-						} else{
-							headerTable += "<ul class='uagb-toc__list'>"
-						}
+			// 		if (openLevel > level) {
+			// 			let arrayOpenLevel = new Array(openLevel - level + 1)
+			// 			if( 2 == (arrayOpenLevel).length ){
+			// 				headerTable += (arrayOpenLevel).join("<ul class='uagb-toc__list'>");
+			// 			} else{
+			// 				headerTable += "<ul class='uagb-toc__list'>"
+			// 			}
 
-					} else if (openLevel < level) {
-						let arrayLevel = new Array(level - openLevel + 1)
-						if( 0 !== (arrayLevel).length ){
-							headerTable += (arrayLevel).join("</ul>");
-						} else{
-							headerTable += "</ul>"
-						}
+			// 		} else if (openLevel < level) {
+			// 			let arrayLevel = new Array(level - openLevel + 1)
+			// 			if( 0 !== (arrayLevel).length ){
+			// 				headerTable += (arrayLevel).join("</ul>");
+			// 			} else{
+			// 				headerTable += "</ul>"
+			// 			}
 						
-					}
-					level = parseInt(openLevel);
-					headerTable +=  "<li><a href='#" + headerText + "'>" + titleText + "</a></li>";
+			// 		}
+			// 		level = parseInt(openLevel);
+			// 		headerTable +=  "<li><a href='#" + headerText + "'>" + titleText + "</a></li>";
 					
-				}					
-			});
+			// 	}					
+			// });
 
-			$(".uagb_table-of-contents-placeholder").remove();
+			// $(".uagb_table-of-contents-placeholder").remove();
 
-			$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).prepend(headerTable);
+			// $(`.uagb-block-${blockId} .uagb-toc__list-wrap`).prepend(headerTable);
 
-			} else{
+			// } else{
 
-				headerTable +=  attr.emptyHeadingTeaxt;
+			// 	headerTable +=  attr.emptyHeadingTeaxt;
 
-				$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).remove();
+			// 	$(`.uagb-block-${blockId} .uagb-toc__list-wrap`).remove();
 				
-				$(".uagb_table-of-contents-placeholder").prepend(headerTable);
+			// 	$(".uagb_table-of-contents-placeholder").prepend(headerTable);
 			
-			}
+			// }
 
 			scroll_to_top = attr.scrollToTop
 
