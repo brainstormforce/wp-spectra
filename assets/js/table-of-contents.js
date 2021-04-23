@@ -133,13 +133,14 @@
 
 			if ( 0 !== all_header.length ) {
 	
-				all_header.each( function (){
+				all_header.each( function (index,value){
 					let header = $( this );
 					let header_text = parseTocSlug(header.text());
 					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
 				});				
 			}
-			let blockId = attr.block_id;
+			
+			// let blockId = attr.block_id;
 			// var headerArray = $( 'div.uag-toc__entry-content' ).find( all_header )
 			// if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
 			// headerArray.each( function (index,value){

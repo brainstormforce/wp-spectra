@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
-	
+
 	/**
 	 * Class UAGB_Table_Of_Content.
 	 */
@@ -26,7 +26,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 */
 		private static $instance;
 
-		
+
 		/**
 		 *  Initiator
 		 *
@@ -141,7 +141,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								// be an h1-h6, we can just grab the 2nd character of the tag name
 								// and convert it to an integer. Should be faster than conditionals.
 								'level'   => (int) $heading->nodeName[1],
-								'id'      => $this->clean( $heading->textContent ), // $id,
+								'id'      => $this->clean( $heading->textContent ),
 								'content' => $heading->textContent,
 							);
 						}
@@ -385,13 +385,18 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
 
+			if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+				$makeCollapsible = UAGB_Helper::render_svg_html( $attributes['icon'] );
+			}
+
 			return sprintf(
 				'<div class="%1$s" data-scroll="%2$s" data-offset="%3$s" data-delay="%4$s">
 					<div class="uagb-toc__wrap">
 						<div class="uagb-toc__title-wrap">
 							<div class="uagb-toc__title">%5$s</div>
+							<span class="uag-toc__collapsible-wrap">%6$s</span>
 						</div>
-					<div class="uagb-toc__list-wrap">%6$s</div>
+					<div class="uagb-toc__list-wrap">%7$s</div>
 					</div>
 				</div>',
 				esc_html( implode( ' ', $wrap ) ),
@@ -399,6 +404,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				esc_attr( $attributes['smoothScrollOffset'] ),
 				esc_attr( $attributes['smoothScrollDelay'] ),
 				esc_html( $attributes['headingTitle'] ),
+				esc_html( $makeCollapsible ),
 				$this->block_core_table_of_contents_render_list(
 					$this->block_core_table_of_contents_linear_to_nested_heading_list( $headings ),
 					get_permalink( $post->ID ),
@@ -424,326 +430,326 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						array(
 							'attributes'      => array_merge(
 								array(
-									'block_id'                  => array(
+									'block_id'             => array(
 										'type'    => 'string',
 										'default' => 'not_set',
 									),
-									'classMigrate'              => array(
+									'classMigrate'         => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'headingTitleString'        => array(
+									'headingTitleString'   => array(
 										'type' => 'string',
 									),
-									'disableBullets'            => array(
+									'disableBullets'       => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'makeCollapsible'           => array(
+									'makeCollapsible'      => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'initialCollapse'           => array(
+									'initialCollapse'      => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'icon'                      => array(
+									'icon'                 => array(
 										'type'    => 'string',
 										'default' => 'fa-angle-down',
 									),
-									'iconSize'                  => array(
+									'iconSize'             => array(
 										'type' => 'number',
 									),
-									'iconColor'                 => array(
+									'iconColor'            => array(
 										'type' => 'string',
 									),
-									'bulletColor'               => array(
+									'bulletColor'          => array(
 										'type' => 'string',
 									),
-									'align'                     => array(
+									'align'                => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),
-									'heading'                   => array(
+									'heading'              => array(
 										'type'     => 'string',
 										'selector' => '.uagb-toc__title',
 										'default'  => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 									),
-									'headingTitle'              => array(
+									'headingTitle'         => array(
 										'type'    => 'string',
 										'default' => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 									),
-									'icon'                      => array(
+									'icon'                 => array(
 										'type'    => 'string',
 										'default' => 'fa-angle-down',
 									),
-									'smoothScroll'              => array(
+									'smoothScroll'         => array(
 										'type'    => 'boolean',
 										'default' => true,
 									),
-									'smoothScrollDelay'         => array(
+									'smoothScrollDelay'    => array(
 										'type'    => 'number',
 										'default' => 800,
 									),
-									'smoothScrollOffset'        => array(
+									'smoothScrollOffset'   => array(
 										'type'    => 'number',
 										'default' => 30,
 									),
-									'scrollToTop'               => array(
+									'scrollToTop'          => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'scrollToTopColor'          => array(
+									'scrollToTopColor'     => array(
 										'type' => 'string',
 									),
-									'scrollToTopBgColor'        => array(
+									'scrollToTopBgColor'   => array(
 										'type' => 'string',
 									),
-									'tColumnsDesktop'           => array(
+									'tColumnsDesktop'      => array(
 										'type'    => 'number',
 										'default' => 1,
 									),
-									'tColumnsTablet'            => array(
+									'tColumnsTablet'       => array(
 										'type'    => 'number',
 										'default' => 1,
 									),
-									'tColumnsMobile'            => array(
+									'tColumnsMobile'       => array(
 										'type'    => 'number',
 										'default' => 1,
 									),
-									'mappingHeaders'            => array(
+									'mappingHeaders'       => array(
 										'type'    => 'array',
 										'default' => $mappingHeadersArray,
 									),
 									// Color.
-									'backgroundColor'           => array(
+									'backgroundColor'      => array(
 										'type'    => 'string',
 										'default' => '#eee',
 									),
-									'linkColor'                 => array(
+									'linkColor'            => array(
 										'type'    => 'string',
 										'default' => '#333',
 									),
-									'linkHoverColor'            => array(
+									'linkHoverColor'       => array(
 										'type' => 'string',
 									),
-									'headingColor'              => array(
+									'headingColor'         => array(
 										'type' => 'string',
 									),
 
 									// Padding.
-									'vPaddingDesktop'           => array(
+									'vPaddingDesktop'      => array(
 										'type'    => 'number',
 										'default' => 30,
 									),
-									'hPaddingDesktop'           => array(
+									'hPaddingDesktop'      => array(
 										'type'    => 'number',
 										'default' => 30,
 									),
-									'vPaddingTablet'            => array(
+									'vPaddingTablet'       => array(
 										'type' => 'number',
 									),
-									'hPaddingTablet'            => array(
+									'hPaddingTablet'       => array(
 										'type' => 'number',
 									),
-									'vPaddingMobile'            => array(
+									'vPaddingMobile'       => array(
 										'type' => 'number',
 									),
-									'hPaddingMobile'            => array(
+									'hPaddingMobile'       => array(
 										'type' => 'number',
 									),
 									// Margin.
-									'vMarginDesktop'            => array(
+									'vMarginDesktop'       => array(
 										'type' => 'number',
 									),
-									'hMarginDesktop'            => array(
+									'hMarginDesktop'       => array(
 										'type' => 'number',
 									),
-									'vMarginTablet'             => array(
+									'vMarginTablet'        => array(
 										'type' => 'number',
 									),
-									'hMarginTablet'             => array(
+									'hMarginTablet'        => array(
 										'type' => 'number',
 									),
-									'vMarginMobile'             => array(
+									'vMarginMobile'        => array(
 										'type' => 'number',
 									),
-									'hMarginMobile'             => array(
+									'hMarginMobile'        => array(
 										'type' => 'number',
 									),
-									'marginTypeDesktop'         => array(
+									'marginTypeDesktop'    => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'marginTypeTablet'          => array(
+									'marginTypeTablet'     => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'marginTypeMobile'          => array(
+									'marginTypeMobile'     => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'headingBottom'             => array(
+									'headingBottom'        => array(
 										'type' => 'number',
 									),
-									'paddingTypeDesktop'        => array(
+									'paddingTypeDesktop'   => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'paddingTypeTablet'         => array(
+									'paddingTypeTablet'    => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'paddingTypeMobile'         => array(
+									'paddingTypeMobile'    => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
 
 									// Content Padding.
-									'contentPaddingDesktop'     => array(
+									'contentPaddingDesktop' => array(
 										'type' => 'number',
 									),
-									'contentPaddingTablet'      => array(
+									'contentPaddingTablet' => array(
 										'type' => 'number',
 									),
-									'contentPaddingMobile'      => array(
+									'contentPaddingMobile' => array(
 										'type' => 'number',
 									),
 									'contentPaddingTypeDesktop' => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'contentPaddingTypeTablet'  => array(
+									'contentPaddingTypeTablet' => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'contentPaddingTypeMobile'  => array(
+									'contentPaddingTypeMobile' => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
 
 									// Border.
-									'borderStyle'               => array(
+									'borderStyle'          => array(
 										'type'    => 'string',
 										'default' => 'solid',
 									),
-									'borderWidth'               => array(
+									'borderWidth'          => array(
 										'type'    => 'number',
 										'default' => 1,
 									),
-									'borderRadius'              => array(
+									'borderRadius'         => array(
 										'type' => 'number',
 									),
-									'borderColor'               => array(
+									'borderColor'          => array(
 										'type'    => 'string',
 										'default' => '#333',
 									),
 
 									// Typography.
 									// Link Font Family.
-									'loadGoogleFonts'           => array(
+									'loadGoogleFonts'      => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'fontFamily'                => array(
+									'fontFamily'           => array(
 										'type'    => 'string',
 										'default' => 'Default',
 									),
-									'fontWeight'                => array(
+									'fontWeight'           => array(
 										'type' => 'string',
 									),
-									'fontSubset'                => array(
+									'fontSubset'           => array(
 										'type' => 'string',
 									),
 									// Link Font Size.
-									'fontSize'                  => array(
+									'fontSize'             => array(
 										'type' => 'number',
 									),
-									'fontSizeType'              => array(
+									'fontSizeType'         => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'fontSizeTablet'            => array(
+									'fontSizeTablet'       => array(
 										'type' => 'number',
 									),
-									'fontSizeMobile'            => array(
+									'fontSizeMobile'       => array(
 										'type' => 'number',
 									),
 									// Link Line Height.
-									'lineHeightType'            => array(
+									'lineHeightType'       => array(
 										'type'    => 'string',
 										'default' => 'em',
 									),
-									'lineHeight'                => array(
+									'lineHeight'           => array(
 										'type' => 'number',
 									),
-									'lineHeightTablet'          => array(
+									'lineHeightTablet'     => array(
 										'type' => 'number',
 									),
-									'lineHeightMobile'          => array(
+									'lineHeightMobile'     => array(
 										'type' => 'number',
 									),
 
 									// Link Font Family.
-									'headingLoadGoogleFonts'    => array(
+									'headingLoadGoogleFonts' => array(
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'headingFontFamily'         => array(
+									'headingFontFamily'    => array(
 										'type'    => 'string',
 										'default' => 'Default',
 									),
-									'headingFontWeight'         => array(
+									'headingFontWeight'    => array(
 										'type'    => 'string',
 										'default' => '500',
 									),
-									'headingFontSubset'         => array(
+									'headingFontSubset'    => array(
 										'type' => 'string',
 									),
 									// Link Font Size.
-									'headingFontSize'           => array(
+									'headingFontSize'      => array(
 										'type'    => 'number',
 										'default' => 20,
 									),
-									'headingFontSizeType'       => array(
+									'headingFontSizeType'  => array(
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'headingFontSizeTablet'     => array(
+									'headingFontSizeTablet' => array(
 										'type' => 'number',
 									),
-									'headingFontSizeMobile'     => array(
+									'headingFontSizeMobile' => array(
 										'type' => 'number',
 									),
 									// Link Line Height.
-									'headingLineHeightType'     => array(
+									'headingLineHeightType' => array(
 										'type'    => 'string',
 										'default' => 'em',
 									),
-									'headingLineHeight'         => array(
+									'headingLineHeight'    => array(
 										'type' => 'number',
 									),
-									'headingLineHeightTablet'   => array(
+									'headingLineHeightTablet' => array(
 										'type' => 'number',
 									),
-									'headingLineHeightMobile'   => array(
+									'headingLineHeightMobile' => array(
 										'type' => 'number',
 									),
-									'headingAlignment'          => array(
+									'headingAlignment'     => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),
-									'emptyHeadingTeaxt'         => array(
+									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',
 										'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 									),
 								)
 							),
-							'render_callback' => array( $this, 'render_block_core_table_of_contents'),
+							'render_callback' => array( $this, 'render_block_core_table_of_contents' ),
 						)
 					);
 		}
-		
+
 	}
 
 	/**
