@@ -2188,6 +2188,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
+							'tabAlign'              => 'left',
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
 							'tabsStyleD'            => 'hstyle1',
@@ -2590,6 +2591,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'              => '',
 							'postType'              => 'post',
 							'taxonomyType'          => 'category',
+							'titleTag'              => '',
 							'categories'            => '',
 							'order'                 => 'desc',
 							'orderBy'               => 'date',
@@ -2706,7 +2708,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'afterSubmitToEmail'         => '',
 							'afterSubmitBccEmail'        => '',
 							'afterSubmitCcEmail'         => '',
-							'afterSubmitEmailSubject'    => '',
+							'afterSubmitEmailSubject'    => __( 'Form Submission', 'ultimate-addons-for-gutenberg' ),
 							'submitTextFontFamily'       => 'Default',
 							'submitTextFontWeight'       => '',
 							'submitTextFontSubset'       => '',
@@ -2912,6 +2914,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static function get_block_assets() {
 
+			$blocks      = UAGB_Admin_Helper::get_block_options();
+			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
+
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
 					'uagb-timeline-js'       => array(
@@ -2940,7 +2945,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_URL . 'assets/js/post.js',
-						'dep' => array( 'jquery', 'uagb-slick-js' ),
+						'dep' => $post_js_dep,
 					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_URL . 'assets/js/faq.js',

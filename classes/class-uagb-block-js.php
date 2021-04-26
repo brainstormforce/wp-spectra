@@ -70,7 +70,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$settings      = wp_json_encode( $slick_options );
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 			$selector      = $base_selector . $id;
-			$js            = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings . ' ); } } );';
+			$js            = 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings . ' ); } } );';
 
 			return $js;
 
@@ -105,9 +105,17 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 			$selector      = $base_selector . $id;
 
-			$js = 'jQuery( "' . $selector . '" ).find( ".uagb-blockquote__tweet-button" ).click(function(){ var content = jQuery("' . $selector . '").find(".uagb-blockquote__content").text(); var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . $url . '")+"&text="+content+"&via="+("' . $via . '"); window.open( request_url ); });';
-
-			return $js;
+			ob_start();
+			?>
+			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
+			var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
+			blockquote__tweet[0].addEventListener("click",function(){
+				var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
+				var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . <?php $url; ?>. '")+"&text="+content+"&via="+("' . <?php $via; ?> . '"); 
+				window.open( request_url ); 
+			});
+			<?php
+			return ob_get_clean();
 
 		}
 
