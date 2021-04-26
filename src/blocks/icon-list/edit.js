@@ -11,6 +11,7 @@ import styling from "./styling"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
@@ -40,6 +41,8 @@ const {
 	ButtonGroup,
 	Dashicon
 } = wp.components
+
+const { useDispatch , withSelect } = wp.data
 
 const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
 
@@ -87,7 +90,7 @@ class UAGBIconList extends Component {
 
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, deviceType } = this.props
 
 		const {
 			align,
@@ -236,79 +239,49 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
 							help={ __( "Note: This manages the Icon Position with respect to the Label.", 'ultimate-addons-for-gutenberg' ) }
 						/>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{sizeTypeControls}
-												<RangeControl
-													label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
-													value={ sizeMobile }
-													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{sizeTypeControls}
-												<RangeControl
-													label={ __( "Size", 'ultimate-addons-for-gutenberg' ) }
-													value={ sizeTablet }
-													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{sizeTypeControls}
-												<RangeControl
-													label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
-													value={ size }
-													onChange={ ( value ) => setAttributes( { size: value } ) }
-													min={ 0 }
-													max={ 500 }
-													allowReset
-													initialPosition={40}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<Columnresponsive/>
+						{ "Desktop" === deviceType && (
+						<Fragment>
+						{sizeTypeControls}
+						<RangeControl
+							label={ __( "Icon Size" ) }
+							value={ size }
+							onChange={ ( value ) => setAttributes( { size: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+							initialPosition={40}
+						/>
+					</Fragment>)
+					}
+					{ "Tablet" === deviceType && (
+						<Fragment>
+						{sizeTypeControls}
+						<RangeControl
+							label={ __( "Size" ) }
+							value={ sizeTablet }
+							onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+							initialPosition={40}
+						/>
+					</Fragment>)
+					}
+					{ "Mobile" === deviceType && (
+						<Fragment>
+						{sizeTypeControls}
+						<RangeControl
+							label={ __( "Size" ) }
+							value={ sizeMobile }
+							onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+							initialPosition={40}
+						/>
+					</Fragment>)
+					}
 						<hr className="uagb-editor__separator" />
 						<TypographyControl
 							label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
@@ -360,6 +333,7 @@ class UAGBIconList extends Component {
 					`uagb-icon-list__layout-${icon_layout}`,
 					( iconPosition == "top" ? "uagb-icon-list__icon-at-top" : "" ),
 					labelClass,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 				) }>
 					<div className="uagb-icon-list__wrap">
@@ -377,4 +351,13 @@ class UAGBIconList extends Component {
 	}
 }
 
-export default UAGBIconList
+export default withSelect( ( select, props ) => { 
+
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+})(UAGBIconList);

@@ -74,7 +74,8 @@
 
 			$( "html, body" ).animate( {
 				scrollTop: 0
-			}, scroll_delay )
+			}, 800 )
+
 		},
 
 		/**

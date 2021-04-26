@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList, deviceType} = this.props
 
 		const {
 			columns,
@@ -24,7 +24,7 @@ class Blog extends React.Component {
 			postPagination,
 			layoutConfig
 		} = attributes
-
+		
 		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
@@ -36,6 +36,7 @@ class Blog extends React.Component {
 					className,
 					"uagb-post-grid",
 					`uagb-post__image-position-${ imgPosition }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`
 				) }
 			>

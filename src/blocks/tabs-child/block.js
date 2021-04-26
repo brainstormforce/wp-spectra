@@ -6,6 +6,7 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import "./style.scss"
 import attributes from "./attributes"
 import edit from "./edit"
+import deprecated from "./deprecated"
 import save from "./save"
 
 const { __ } = wp.i18n
@@ -29,5 +30,6 @@ registerBlockType( "uagb/tabs-child", {
 	},
 	attributes,
 	edit,
-	save
+	save,
+	deprecated
 } )

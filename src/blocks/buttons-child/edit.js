@@ -9,6 +9,7 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -40,6 +41,9 @@ const {
 	ToolbarGroup,
 	ToggleControl
 } = wp.components
+
+const { withSelect } = wp.data
+
 class UAGBButtonsChild extends Component {
 	
 	constructor() {
@@ -94,7 +98,7 @@ class UAGBButtonsChild extends Component {
 
 	render() {
 		
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, deviceType } = this.props
 	
 		const {
 			className,
@@ -318,298 +322,238 @@ class UAGBButtonsChild extends Component {
 								max={ 50 }
 							/>
 							<hr className="uagb-editor__separator" />
-							<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-								tabs={ [
-									{
-										name: "desktop",
-										title: <Dashicon icon="desktop" />,
-										className: "uagb-desktop-tab uagb-responsive-tabs",
-									},
-									{
-										name: "tablet",
-										title: <Dashicon icon="tablet" />,
-										className: "uagb-tablet-tab uagb-responsive-tabs",
-									},
-									{
-										name: "mobile",
-										title: <Dashicon icon="smartphone" />,
-										className: "uagb-mobile-tab uagb-responsive-tabs",
-									},
-								] }>
-								{
-									( tab ) => {
-										let tabout
-
-										if ( "mobile" === tab.name ) {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "px" }
-															aria-pressed={ sizeType === "px" }
-															onClick={ () => setAttributes( { sizeType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "%" }
-															aria-pressed={ sizeType === "%" }
-															onClick={ () => setAttributes( { sizeType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Font Size" ) }
-														value={ sizeMobile }
-														onChange={ value => {
-															setAttributes( { sizeMobile: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														beforeIcon="editor-textcolor"
-														allowReset
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										} else if ( "tablet" === tab.name ) {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "px" }
-															aria-pressed={ sizeType === "px" }
-															onClick={ () => setAttributes( { sizeType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "%" }
-															aria-pressed={ sizeType === "%" }
-															onClick={ () => setAttributes( { sizeType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Font Size" ) }
-														value={ sizeTablet }
-														onChange={ value => {
-															setAttributes( { sizeTablet: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														beforeIcon="editor-textcolor"
-														allowReset
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										} else {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "px" }
-															aria-pressed={ sizeType === "px" }
-															onClick={ () => setAttributes( { sizeType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ sizeType === "%" }
-															aria-pressed={ sizeType === "%" }
-															onClick={ () => setAttributes( { sizeType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Font Size" ) }
-														value={ size }
-														onChange={ value => {
-															setAttributes( { size: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														beforeIcon="editor-textcolor"
-														allowReset
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										}
-
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-							<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-								tabs={ [
-									{
-										name: "desktop",
-										title: <Dashicon icon="desktop" />,
-										className: "uagb-desktop-tab uagb-responsive-tabs",
-									},
-									{
-										name: "tablet",
-										title: <Dashicon icon="tablet" />,
-										className: "uagb-tablet-tab uagb-responsive-tabs",
-									},
-									{
-										name: "mobile",
-										title: <Dashicon icon="smartphone" />,
-										className: "uagb-mobile-tab uagb-responsive-tabs",
-									},
-								] }>
-								{
-									( tab ) => {
-										let tabout
-
-										if ( "mobile" === tab.name ) {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "px" }
-															aria-pressed={ lineHeightType === "px" }
-															onClick={ () => setAttributes( { lineHeightType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "%" }
-															aria-pressed={ lineHeightType === "%" }
-															onClick={ () => setAttributes( { lineHeightType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
-														value={ lineHeightMobile }
-														onChange={ value => {
-															setAttributes( { lineHeightMobile: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														beforeIcon="editor-textcolor"
-														allowReset
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										} else if ( "tablet" === tab.name ) {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "px" }
-															aria-pressed={ lineHeightType === "px" }
-															onClick={ () => setAttributes( { lineHeightType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "%" }
-															aria-pressed={ lineHeightType === "%" }
-															onClick={ () => setAttributes( { lineHeightType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
-														value={ lineHeightTablet }
-														onChange={ value => {
-															setAttributes( { lineHeightTablet: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														beforeIcon="editor-textcolor"
-														allowReset
-														step={0.1}
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										} else {
-											tabout = (
-												<Fragment>
-													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-														<Button
-															key={ "px" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "px" }
-															aria-pressed={ lineHeightType === "px" }
-															onClick={ () => setAttributes( { lineHeightType: "px" } ) }
-														>
-															{ "px" }
-														</Button>
-														<Button
-															key={ "%" }
-															className="uagb-size-btn"
-															isSmall
-															isPrimary={ lineHeightType === "%" }
-															aria-pressed={ lineHeightType === "%" }
-															onClick={ () => setAttributes( { lineHeightType: "%" } ) }
-														>
-															{ "%" }
-														</Button>
-													</ButtonGroup>
-													<RangeControl
-														label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
-														value={ lineHeight }
-														onChange={ value => {
-															setAttributes( { lineHeight: value } )
-														} }
-														min={ 0 }
-														max={ 100 }
-														step={0.1}
-														beforeIcon="editor-textcolor"
-														allowReset
-														initialPosition={16}
-													/>
-												</Fragment>
-											)
-										}
-
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
+							<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+						<Fragment>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+								<Button
+									key={ "px" }
+									className="uagb-size-btn"
+									isSmall
+									isPrimary={ sizeType === "px" }
+									aria-pressed={ sizeType === "px" }
+									onClick={ () => setAttributes( { sizeType: "px" } ) }
+								>
+									{ "px" }
+								</Button>
+								<Button
+									key={ "%" }
+									className="uagb-size-btn"
+									isSmall
+									isPrimary={ sizeType === "%" }
+									aria-pressed={ sizeType === "%" }
+									onClick={ () => setAttributes( { sizeType: "%" } ) }
+								>
+									{ "%" }
+								</Button>
+							</ButtonGroup>
+							<RangeControl
+								label={ __( "Font Size", 'ultimate-addons-for-gutenberg' ) }
+								value={ size }
+								onChange={ value => {
+									setAttributes( { size: value } )
+								} }
+								min={ 0 }
+								max={ 100 }
+								beforeIcon="editor-textcolor"
+								allowReset
+								initialPosition={16}
+							/>
+						</Fragment>
+					)}
+					{ "Tablet" === deviceType && (
+						<Fragment>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+							<Button
+								key={ "px" }
+								className="uagb-size-btn"
+								isSmall
+								isPrimary={ sizeType === "px" }
+								aria-pressed={ sizeType === "px" }
+								onClick={ () => setAttributes( { sizeType: "px" } ) }
+							>
+								{ "px" }
+							</Button>
+							<Button
+								key={ "%" }
+								className="uagb-size-btn"
+								isSmall
+								isPrimary={ sizeType === "%" }
+								aria-pressed={ sizeType === "%" }
+								onClick={ () => setAttributes( { sizeType: "%" } ) }
+							>
+								{ "%" }
+							</Button>
+						</ButtonGroup>
+						<RangeControl
+							label={ __( "Font Size", 'ultimate-addons-for-gutenberg' ) }
+							value={ sizeTablet }
+							onChange={ value => {
+								setAttributes( { sizeTablet: value } )
+							} }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={16}
+						/>
+						</Fragment>
+					)}
+					{ "Mobile" === deviceType && (
+						<Fragment>
+							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+								<Button
+									key={ "px" }
+									className="uagb-size-btn"
+									isSmall
+									isPrimary={ sizeType === "px" }
+									aria-pressed={ sizeType === "px" }
+									onClick={ () => setAttributes( { sizeType: "px" } ) }
+								>
+									{ "px" }
+								</Button>
+								<Button
+									key={ "%" }
+									className="uagb-size-btn"
+									isSmall
+									isPrimary={ sizeType === "%" }
+									aria-pressed={ sizeType === "%" }
+									onClick={ () => setAttributes( { sizeType: "%" } ) }
+								>
+									{ "%" }
+								</Button>
+							</ButtonGroup>
+							<RangeControl
+								label={ __( "Font Size", 'ultimate-addons-for-gutenberg' ) }
+								value={ sizeMobile }
+								onChange={ value => {
+									setAttributes( { sizeMobile: value } )
+								} }
+								min={ 0 }
+								max={ 100 }
+								beforeIcon="editor-textcolor"
+								allowReset
+								initialPosition={16}
+							/>
+						</Fragment>
+					)}
+							<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+						<Fragment>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+						<Button
+							key={ "px" }
+							className="uagb-size-btn"
+							isSmall
+							isPrimary={ lineHeightType === "px" }
+							aria-pressed={ lineHeightType === "px" }
+							onClick={ () => setAttributes( { lineHeightType: "px" } ) }
+						>
+							{ "px" }
+						</Button>
+						<Button
+							key={ "%" }
+							className="uagb-size-btn"
+							isSmall
+							isPrimary={ lineHeightType === "%" }
+							aria-pressed={ lineHeightType === "%" }
+							onClick={ () => setAttributes( { lineHeightType: "%" } ) }
+						>
+							{ "%" }
+						</Button>
+					</ButtonGroup>
+					<RangeControl
+						label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
+						value={ lineHeight }
+						onChange={ value => {
+							setAttributes( { lineHeight: value } )
+						} }
+						min={ 0 }
+						max={ 100 }
+						step={0.1}
+						beforeIcon="editor-textcolor"
+						allowReset
+						initialPosition={16}
+					/>
+						</Fragment>
+					)}
+					{ "Tablet" === deviceType && (
+						<Fragment>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+						<Button
+							key={ "px" }
+							className="uagb-size-btn"
+							isSmall
+							isPrimary={ lineHeightType === "px" }
+							aria-pressed={ lineHeightType === "px" }
+							onClick={ () => setAttributes( { lineHeightType: "px" } ) }
+						>
+							{ "px" }
+						</Button>
+						<Button
+							key={ "%" }
+							className="uagb-size-btn"
+							isSmall
+							isPrimary={ lineHeightType === "%" }
+							aria-pressed={ lineHeightType === "%" }
+							onClick={ () => setAttributes( { lineHeightType: "%" } ) }
+						>
+							{ "%" }
+						</Button>
+					</ButtonGroup>
+					<RangeControl
+						label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
+						value={ lineHeightTablet }
+						onChange={ value => {
+							setAttributes( { lineHeightTablet: value } )
+						} }
+						min={ 0 }
+						max={ 100 }
+						beforeIcon="editor-textcolor"
+						allowReset
+						step={0.1}
+						initialPosition={16}
+					/>
+						</Fragment>
+					)}
+					{ "Mobile" === deviceType && (
+						<Fragment>
+							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+							<Button
+								key={ "px" }
+								className="uagb-size-btn"
+								isSmall
+								isPrimary={ lineHeightType === "px" }
+								aria-pressed={ lineHeightType === "px" }
+								onClick={ () => setAttributes( { lineHeightType: "px" } ) }
+							>
+								{ "px" }
+							</Button>
+							<Button
+								key={ "%" }
+								className="uagb-size-btn"
+								isSmall
+								isPrimary={ lineHeightType === "%" }
+								aria-pressed={ lineHeightType === "%" }
+								onClick={ () => setAttributes( { lineHeightType: "%" } ) }
+							>
+								{ "%" }
+							</Button>
+						</ButtonGroup>
+						<RangeControl
+							label={ __( "Line Height", 'ultimate-addons-for-gutenberg' ) }
+							value={ lineHeightMobile }
+							onChange={ value => {
+								setAttributes( { lineHeightMobile: value } )
+							} }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={16}
+						/>
+						</Fragment>
+					)}
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
@@ -648,6 +592,7 @@ class UAGBButtonsChild extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-buttons__outer-wrap",
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 					( inheritFromTheme ) ? "wp-block-button" : null
 					) }>
@@ -674,4 +619,13 @@ class UAGBButtonsChild extends Component {
         )
 	}
 }
-export default UAGBButtonsChild
+export default withSelect( ( select, props ) => { 
+
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+})( UAGBButtonsChild )

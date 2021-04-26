@@ -43,7 +43,8 @@ const {
 
 const {
 	dispatch,
-	select, 
+	select,
+	withSelect
 } = wp.data
 
 const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
@@ -153,6 +154,7 @@ class UAGBcontentTimeline extends Component {
 		const {
 			className,
 			setAttributes,
+			deviceType,
 			attributes: {
 				tm_content,
 				headSpace,
@@ -471,7 +473,7 @@ class UAGBcontentTimeline extends Component {
 							{ value: "tablet", label: __( "Tablet",'ultimate-addons-for-gutenberg' ) },
 							{ value: "mobile", label: __( "Mobile",'ultimate-addons-for-gutenberg' ) },
 						] }
-						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack.",'ultimate-addons-for-gutenberg' ) }
+						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.",'ultimate-addons-for-gutenberg' ) }
 						onChange={ ( value ) => setAttributes( { stack: value } ) }
 					/>
 				<hr className="uagb-editor__separator" />
@@ -675,6 +677,7 @@ class UAGBcontentTimeline extends Component {
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap",
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId }`
 				) }>
 					<div  className = { classnames(
@@ -856,4 +859,11 @@ class UAGBcontentTimeline extends Component {
 		
 		}
 	}
-}export default UAGBcontentTimeline
+}export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType
+	}
+} )( UAGBcontentTimeline )
