@@ -32,6 +32,12 @@ function styling( props ) {
 		vMarginDesktop,
 		hMarginDesktop,
 		marginTypeDesktop,
+		hMarginMobile,
+		vMarginMobile,
+		marginTypeMobile,
+		vMarginTablet,
+		hMarginTablet,
+		marginTypeTablet,
 		//Padding,
 		vPaddingDesktop,
 		vPaddingTablet,
@@ -179,6 +185,12 @@ function styling( props ) {
 			"padding-top": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
 			"padding-bottom": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
 		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
+			"margin-left": generateCSSUnit( hMarginTablet, marginTypeTablet ),
+			"margin-right": generateCSSUnit( hMarginTablet, marginTypeTablet ),
+			"margin-top": generateCSSUnit( vMarginTablet, marginTypeTablet ),
+			"margin-bottom": generateCSSUnit( vMarginTablet, marginTypeTablet ),
+		},
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsTablet,
 			'overflow': 'hidden'
@@ -212,6 +224,12 @@ function styling( props ) {
 			"padding-top": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
 			"padding-bottom": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
 		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
+			"margin-left": generateCSSUnit( hMarginMobile, marginTypeMobile ),
+			"margin-right": generateCSSUnit( hMarginMobile, marginTypeMobile ),
+			"margin-top": generateCSSUnit( vMarginMobile, marginTypeMobile ),
+			"margin-bottom": generateCSSUnit( vMarginMobile, marginTypeMobile ),
+		},
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsMobile,
 			'overflow': 'hidden'
@@ -232,9 +250,9 @@ function styling( props ) {
 
 	var styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	if ( "" != scrollToTopColor ) {
 		styling_css += ".uagb-toc__scroll-top { color: " + scrollToTopColor + "; }"

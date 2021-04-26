@@ -187,7 +187,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			global $content_width;
 			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
 			if ( '' !== self::$script ) {
-				self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+				self::$script = 'document.addEventListener("DOMContentLoaded", function(){ ' . self::$script . ' })';
 			}
 
 			if ( 'enabled' === self::$file_generation ) {
@@ -1873,8 +1873,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function add_table_of_contents_wrapper( $content ) {
 
 			if ( true === self::$table_of_contents_flag ) {
-
-				return '<div class="uag-toc__entry-content">' . $content . '</div>';
+				return '<div class="uag-toc__entry-content"></div>' . $content;
 			}
 
 			return $content;

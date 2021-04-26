@@ -2574,43 +2574,43 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 
 			$selectors = array(
-				' .uagb-timeline__heading'      => array(
+				' .uagb-timeline__heading'                 => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__author'       => array(
+				' .uagb-timeline__author'                  => array(
 					'text-align'    => $attr['align'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 				),
-				' .uagb-timeline__link_parent'  => array(
+				' .uagb-timeline__link_parent'             => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__image a'      => array(
+				' .uagb-timeline__image a'                 => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__author-link'  => array(
+				' .uagb-timeline__author-link'             => array(
 					'color' => $attr['authorColor'],
 				),
-				' .dashicons-admin-users'       => array(
+				' .dashicons-admin-users'                  => array(
 					'color'       => $attr['authorColor'],
 					'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSize'], $attr['authorFontSizeType'] ),
 					'font-weight' => $attr['authorFontWeight'],
 					'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeight'], $attr['authorLineHeightType'] ),
 				),
-				' .uagb-timeline__link'         => array(
+				' .uagb-timeline__link'                    => array(
 					'color'            => $attr['ctaColor'],
 					'background-color' => $attr['ctaBackground'],
 				),
-				' .uagb-timeline-content .uagb-timeline__heading a' => array(
+				' .uagb-content .uagb-timeline__heading a' => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['headingColor'],
 				),
-				' .uagb-timeline__heading-text' => array(
+				' .uagb-timeline__heading-text'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
 				' .uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 				),
-				' .uagb-content'                => array(
+				' .uagb-content'                           => array(
 					'padding' => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
 				),
 			);
@@ -3523,7 +3523,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading-text'           => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' p.uagb-timeline-desc-content'           => array(
+				' .uagb-timeline-desc-content'            => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
@@ -4459,9 +4459,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__title-wrap'    => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 				),
-				' .uagb-marketing-btn__title'         => array(
-					'color' => $attr['titleColor'],
-				),
 				' .uagb-marketing-btn__icon-wrap'     => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
 					'height' => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
@@ -4469,13 +4466,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap svg' => array(
 					'fill' => $icon_color,
 				),
-				' .uagb-marketing-btn__prefix'        => array(
+				' p.uagb-marketing-btn__prefix'       => array(
 					'color' => $attr['prefixColor'],
 				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__title' => array(
-					'color' => $attr['titleHoverColor'],
-				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__prefix' => array(
+				' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 					'color' => $attr['prefixHoverColor'],
 				),
 				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg' => array(
@@ -4494,6 +4488,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__link:hover'    => array(
 					'border-color' => $attr['borderHoverColor'],
 				),
+			);
+
+			$selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleColor'],
+			);
+
+			$selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleHoverColor'],
 			);
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
@@ -5501,7 +5503,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_condition_block_css() {
 
-			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
+			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
 		}
 	}
 }
