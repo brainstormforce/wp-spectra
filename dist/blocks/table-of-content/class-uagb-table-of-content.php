@@ -405,9 +405,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			ob_start();
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
-					data-scroll= <?php echo esc_attr( $attributes['smoothScroll'] ); ?>
-					data-offset= <?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>
-					data-delay= <?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>
+					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
+					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
+					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
 				>
 				<div class="uagb-toc__wrap">
 					<div class="uagb-toc__title-wrap">
