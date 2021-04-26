@@ -133,9 +133,6 @@
 	
 				all_header.each( function (index,value){
 					let header = $( this );
-					// if( value.className.includes('uagb-toc-hide-heading') ){
-					// 	$(this).closest('.uagb-toc-hide-heading').remove()
-					// }
 					let header_text = parseTocSlug(header.text());
 					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
 				});				
