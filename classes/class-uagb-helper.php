@@ -664,10 +664,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
 			}
 
-			$dir_name = basename( UAGB_DIR );
-			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
-				$dir_name = 'uag-plugin';
-			}
+			$dir_name = 'uag-plugin';
 
 			// Build the paths.
 			$dir_info = array(
@@ -693,15 +690,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.18.0
 		 * @return array
 		 */
-		public function delete_upload_dir() {
+		public static function delete_upload_dir() {
 
 			$wp_info = wp_upload_dir( null, false );
-
-			$dir_name = basename( UAGB_DIR );
-			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
-				$dir_name = 'uag-plugin';
-			}
-
+			$dir_name = 'uag-plugin';
+			
 			// Build the paths.
 			$dir_info = array(
 				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
@@ -714,6 +707,46 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return $wp_filesystem->rmdir( $dir_info['path'], true );
 			}
 			return false;
+		}
+
+		/**
+		 * Get UAG upload dir path.
+		 *
+		 * @since x.x.x
+		 * @return string
+		 */
+		public static function get_uag_upload_dir_path() {
+
+			$wp_info = wp_upload_dir( null, false );
+			$dir_name = 'uag-plugin';
+			
+			// Build the paths.
+			return trailingslashit( $wp_info['basedir'] ) . $dir_name;
+		}
+
+		/**
+		 * Delete all files from UAG upload dir.
+		 *
+		 * @since x.x.x
+		 * @return string
+		 */
+		public static function delete_all_uag_dir_files() {
+
+			$dir = self::get_uag_upload_dir_path();
+			$wp_filesystem = uagb_filesystem();
+			$dir     = trailingslashit( $dir );
+			$filelist = $wp_filesystem->dirlist( $dir, true );
+			$retval = true;
+
+			if ( is_array( $filelist ) ) {
+				foreach ( $filelist as $filename => $fileinfo ) {
+					if ( ! $wp_filesystem->delete( $dir . $filename, true, $fileinfo['type'] ) ) {
+						$retval = false;
+					}
+				}
+			}
+			
+			return $retval;
 		}
 
 		/**
