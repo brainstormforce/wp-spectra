@@ -464,12 +464,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			global $wpdb;
 
 			$file_generation = UAGB_Helper::allow_file_generation();
-			
+
 			if ( 'enabled' === $file_generation ) {
-				
+
 				UAGB_Helper::delete_all_uag_dir_files();
 			}
-			
+
 			/* Update the asset version */
 			update_option( '__uagb_asset_version', time() );
 

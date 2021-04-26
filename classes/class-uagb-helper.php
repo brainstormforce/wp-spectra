@@ -692,9 +692,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function delete_upload_dir() {
 
-			$wp_info = wp_upload_dir( null, false );
+			$wp_info  = wp_upload_dir( null, false );
 			$dir_name = 'uag-plugin';
-			
+
 			// Build the paths.
 			$dir_info = array(
 				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
@@ -717,9 +717,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_uag_upload_dir_path() {
 
-			$wp_info = wp_upload_dir( null, false );
+			$wp_info  = wp_upload_dir( null, false );
 			$dir_name = 'uag-plugin';
-			
+
 			// Build the paths.
 			return trailingslashit( $wp_info['basedir'] ) . $dir_name;
 		}
@@ -732,11 +732,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function delete_all_uag_dir_files() {
 
-			$dir = self::get_uag_upload_dir_path();
+			$dir           = self::get_uag_upload_dir_path();
 			$wp_filesystem = uagb_filesystem();
-			$dir     = trailingslashit( $dir );
-			$filelist = $wp_filesystem->dirlist( $dir, true );
-			$retval = true;
+			$dir           = trailingslashit( $dir );
+			$filelist      = $wp_filesystem->dirlist( $dir, true );
+			$retval        = true;
 
 			if ( is_array( $filelist ) ) {
 				foreach ( $filelist as $filename => $fileinfo ) {
@@ -745,7 +745,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 				}
 			}
-			
+
 			return $retval;
 		}
 
@@ -974,9 +974,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function generate_all_css( $combined_selectors, $id ) {
 
 			return array(
-				'desktop' => UAGB_Helper::generate_css( $combined_selectors['desktop'], $id ),
-				'tablet'  => UAGB_Helper::generate_css( $combined_selectors['tablet'], $id ),
-				'mobile'  => UAGB_Helper::generate_css( $combined_selectors['mobile'], $id ),
+				'desktop' => self::generate_css( $combined_selectors['desktop'], $id ),
+				'tablet'  => self::generate_css( $combined_selectors['tablet'], $id ),
+				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
 		}
 	}

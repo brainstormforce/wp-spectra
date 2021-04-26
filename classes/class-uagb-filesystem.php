@@ -14,25 +14,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Filesystem {
 
-    /**
-     * Member Variable
-     *
-     * @var instance
-     */
-    private static $instance;
+	/**
+	 * Member Variable
+	 *
+	 * @var instance
+	 */
+	private static $instance;
 
-    /**
-     *  Initiator
-     */
-    public static function get_instance() {
-        if ( ! isset( self::$instance ) ) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
+	/**
+	 *  Initiator
+	 */
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
 
-    /**
+	/**
 	 * Get an instance of WP_Filesystem.
+	 *
 	 * @since x.x.x
 	 */
 	function get_filesystem() {
@@ -44,6 +45,7 @@ class UAGB_Filesystem {
 
 			/**
 			 * Context for filesystem, default false.
+			 *
 			 * @see request_filesystem_credentials_context
 			 */
 			$context = apply_filters( 'request_filesystem_credentials_context', false );
@@ -70,16 +72,18 @@ class UAGB_Filesystem {
 		return $wp_filesystem;
 	}
 
-    /**
+	/**
 	 * Method to direct.
+	 *
 	 * @since x.x.x
 	 */
 	function filesystem_method() {
 		return 'direct';
 	}
 
-    /**
+	/**
 	 * Sets credentials to true.
+	 *
 	 * @since x.x.x
 	 */
 	function request_filesystem_credentials() {
@@ -95,6 +99,7 @@ UAGB_Filesystem::get_instance();
 
 /**
  * Filesystem class
+ *
  * @since x.x.x
  */
 function uagb_filesystem() {
