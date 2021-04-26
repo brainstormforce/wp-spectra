@@ -125,25 +125,37 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			return array_map(
 				function ( $heading ) use ( $mappingHeadersArray ) {
 
+					$exclude_heading = null;
+
+					if ( isset( $heading->attributes ) ) {
+						$class_name = $heading->attributes->getNamedItem( 'class' );
+						if ( null !== $class_name && '' !== $class_name->value ) {
+							$exclude_heading = $class_name->value;
+						}
+					}
+
 					$mapping_header = 0;
 
-					foreach ( $mappingHeadersArray as $key => $value ) {
+					if ( 'uagb-toc-hide-heading' !== $exclude_heading ) {
 
-						if ( $mappingHeadersArray[ $key ] ) {
+						foreach ( $mappingHeadersArray as $key => $value ) {
 
-							$mapping_header = ( $key + 1 );
-						}
+							if ( $mappingHeadersArray[ $key ] ) {
 
-						if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
+								$mapping_header = ( $key + 1 );
+							}
 
-							return array(
-								// A little hacky, but since we know at this point that the tag will
-								// be an h1-h6, we can just grab the 2nd character of the tag name
-								// and convert it to an integer. Should be faster than conditionals.
-								'level'   => (int) $heading->nodeName[1],
-								'id'      => $this->clean( $heading->textContent ),
-								'content' => $heading->textContent,
-							);
+							if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
+
+								return array(
+									// A little hacky, but since we know at this point that the tag will
+									// be an h1-h6, we can just grab the 2nd character of the tag name
+									// and convert it to an integer. Should be faster than conditionals.
+									'level'   => (int) $heading->nodeName[1],
+									'id'      => $this->clean( $heading->textContent ),
+									'content' => $heading->textContent,
+								);
+							}
 						}
 					}
 				},
