@@ -24,7 +24,6 @@
     "@wordpress/icons": "^2.10.1",
     "classnames": "^2.2.6",
     "memize": "^1.0.5",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.6.2",
     "re-resizable": "^4.7.1",
     "react-color": "^2.18.0",
@@ -36,7 +35,6 @@
     "react-select": "^2.2.0",
     "react-slick": "^0.24.0",
     "react-transition-group": "^2.4.0",
-    "sass-loader": "^6.0.6",
     "striptags": "^3.1.1"
   },
   "devDependencies": {
@@ -44,6 +42,8 @@
     "@wordpress/i18n": "^3.19.1",
     "@wordpress/scripts": "^14.1.0",
     "install": "^0.13.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^6.0.6",
     "webpack": "^4.46.0"
   },
   "scripts": {
