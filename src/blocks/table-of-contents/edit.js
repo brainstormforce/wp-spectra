@@ -282,10 +282,6 @@ class UAGBTableOfContentsEdit extends Component {
 			)	
 		}
 
-		// {
-		// wholesomecode_meta_key_example: 'Example',
-		// }
-
 		return (
 			<Fragment>
 				<BlockControls>

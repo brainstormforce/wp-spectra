@@ -263,7 +263,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 								'index'    => $index + $key,
 								'children' => null,
 							);
-
 					}
 				}
 			}
@@ -272,7 +271,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		}
 
 		/**
-		 * Renders the heading list of the `core/table-of-contents` block on server.
+		 * Renders the heading list of the UAGB Table Of Contents block.
 		 *
 		 * @access public
 		 *
@@ -348,7 +347,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		}
 
 		/**
-		 * Renders the `core/table-of-contents` block on server.
+		 * Renders the UAGB Table Of Contents block.
 		 *
 		 * @access public
 		 *
@@ -376,6 +375,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return '';
 			}
 
+			$mapping_header_func = function( $value ) {
+				return $value;
+			};
+
 			$wrap = array(
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
@@ -385,36 +388,51 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
 
-			if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
-				$makeCollapsible = UAGB_Helper::render_svg_html( $attributes['icon'] );
-			}
-
-			return sprintf(
-				'<div class="%1$s" data-scroll="%2$s" data-offset="%3$s" data-delay="%4$s">
-					<div class="uagb-toc__wrap">
-						<div class="uagb-toc__title-wrap">
-							<div class="uagb-toc__title">%5$s</div>
-							<span class="uag-toc__collapsible-wrap">%6$s</span>
+			ob_start();
+			?>
+				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
+					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
+					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
+					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
+				>
+				<div class="uagb-toc__wrap">
+					<div class="uagb-toc__title-wrap">
+						<div class="uagb-toc__title">
+							<?php echo esc_html( $attributes['headingTitle'] ); ?>
 						</div>
-					<div class="uagb-toc__list-wrap">%7$s</div>
+						<?php
+						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+							?>
+							<span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+							<?php
+						}
+						?>
 					</div>
-				</div>',
-				esc_html( implode( ' ', $wrap ) ),
-				esc_attr( $attributes['smoothScroll'] ),
-				esc_attr( $attributes['smoothScrollOffset'] ),
-				esc_attr( $attributes['smoothScrollDelay'] ),
-				esc_html( $attributes['headingTitle'] ),
-				esc_html( $makeCollapsible ),
-				$this->block_core_table_of_contents_render_list(
-					$this->block_core_table_of_contents_linear_to_nested_heading_list( $headings ),
-					get_permalink( $post->ID ),
-					$attributes
-				)
-			);
+					<?php if ( $headings && count( $headings ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
+					<div class="uagb-toc__list-wrap">
+						<?php
+							echo wp_kses_post(
+								$this->block_core_table_of_contents_render_list(
+									$this->block_core_table_of_contents_linear_to_nested_heading_list( $headings ),
+									get_permalink( $post->ID ),
+									$attributes
+								)
+							);
+						?>
+					</div>
+					<?php } else { ?> 
+						<p class='uagb_table-of-contents-placeholder'>
+						<?php echo esc_html( $attributes['emptyHeadingTeaxt'] ); ?>
+						</p>
+					<?php } ?>
+				</div>
+				</div>
+			<?php
+			return ob_get_clean();
 		}
 
 		/**
-		 * Registers the `core/table-of-contents` block on server.
+		 * Registers the UAGB Table Of Contents block.
 		 *
 		 * @access public
 		 *
