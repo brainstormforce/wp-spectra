@@ -161,19 +161,20 @@ class UAGB_Frontend {
 		$this->define_vars();
 
 		add_action( 'wp', array( $this, 'set_initial_vars' ), 5 );
+		/* Generated assets */
 		add_action( 'wp', array( $this, 'generate_assets' ), 99 );
 
-		if ( 'disabled' === self::$file_generation ) {
-
-		} else {
-
-		}
-
+		/* Generated assets files*/
 		add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ), 10 );
-		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
+
+		/* Enqueue assets files*/
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_block_assets' ), 10 );
+
+		/* Print fonts */
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+		add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
 		add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+
 		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		add_filter( 'the_content', array( $this, 'add_table_of_contents_wrapper' ) );
 		add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
@@ -224,17 +225,15 @@ class UAGB_Frontend {
 			$js_asset_info  = array();
 
 			if ( ! empty( $post_timestamp_css ) ) {
-
 				$css_asset_info = self::get_asset_info( 'css', $post_id );
 				$css_file_path  = $css_asset_info['css'];
 			}
+
 			if ( ! empty( $post_timestamp_js ) ) {
 
 				$js_asset_info = self::get_asset_info( 'js', $post_id );
 				$js_file_path  = $js_asset_info['js'];
 			}
-
-			self::$css_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
 			if ( empty( $css_file_path ) || ! file_exists( $css_file_path ) ) {
 				return true;
@@ -243,16 +242,16 @@ class UAGB_Frontend {
 			if ( empty( $js_file_path ) || ! file_exists( $js_file_path ) ) {
 				return true;
 			}
+
+			self::$css_file_handler = array_merge( $css_asset_info, $js_asset_info );
 		}
 
-		if ( isset( $page_assets ) && ! empty( $page_assets ) ) {
-
-			self::$current_block_list     = $page_assets['current_block_list'];
-			self::$uag_flag               = $page_assets['uag_flag'];
-			self::$stylesheet             = $page_assets['css'];
-			self::$script                 = $page_assets['js'];
-			self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
-		}
+		// Set required varibled from stored data.
+		self::$current_block_list     = $page_assets['current_block_list'];
+		self::$uag_flag               = $page_assets['uag_flag'];
+		self::$stylesheet             = $page_assets['css'];
+		self::$script                 = $page_assets['js'];
+		self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
 
 		return false;
 	}
@@ -317,18 +316,12 @@ class UAGB_Frontend {
 			return;
 		}
 
-		global $content_width;
-		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
-		if ( '' !== self::$script ) {
-			self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
-		}
-
 		if ( 'enabled' === self::$file_generation ) {
 			self::file_write( self::$stylesheet, 'css' );
 			self::file_write( self::$script, 'js' );
-
-			$this->update_page_assets();
 		}
+
+		$this->update_page_assets();
 	}
 
 	/**
@@ -336,7 +329,7 @@ class UAGB_Frontend {
 	 *
 	 * @since 1.13.4
 	 */
-	public function block_assets() {
+	public function enqueue_block_assets() {
 
 		$block_list_for_assets = self::$current_block_list;
 
@@ -391,17 +384,11 @@ class UAGB_Frontend {
 			return;
 		}
 
-		if ( is_null( self::$script ) || '' === self::$script ) {
+		if ( empty( self::$script ) ) {
 			return;
 		}
 
-		ob_start();
-		?>
-		<script type="text/javascript" id="uagb-script-frontend"><?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></script>
-		<?php
-		ob_end_flush();
-
-		$this->update_page_assets();
+		echo '<script type="text/javascript" id="uagb-script-frontend">' . self::$script . '</script>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -409,36 +396,34 @@ class UAGB_Frontend {
 	 */
 	public function print_stylesheet() {
 
-		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
-
-		ob_start();
-		?>
-			<style id="uagb-style-conditional-extension"><?php echo $conditional_block_css; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
-		<?php
-		ob_end_flush();
+		$this->print_conditional_css();
 
 		if ( 'enabled' === self::$file_generation && ! self::$fallback_css ) {
 			return;
 		}
 
-		if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
+		if ( empty( self::$stylesheet ) ) {
 			return;
 		}
 
-			ob_start();
-
-		?>
-			<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
-			<?php
-			ob_end_flush();
-
-			$this->update_page_assets();
+		echo '<style id="uagb-style-frontend">' . self::$stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
+
+	/**
+	 * Print Conditional blocks css.
+	 */
+	public function print_conditional_css() {
+
+		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
+
+		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	}
+
 
 	/**
 	 * Load the front end Google Fonts.
 	 */
-	public function frontend_gfonts() {
+	public function print_google_fonts() {
 
 		if ( empty( UAGB_Helper::$gfonts ) ) {
 			return;
@@ -796,7 +781,7 @@ class UAGB_Frontend {
 			}
 
 			if ( is_object( $this_post ) ) {
-				$this->get_generated_stylesheet( $this_post );
+				$this->prepare_assets( $this_post );
 			}
 		}
 
@@ -816,7 +801,7 @@ class UAGB_Frontend {
 			 */
 			$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
-			$this->get_generated_stylesheet( $this_post );
+			$this->prepare_assets( $this_post );
 
 		} elseif ( is_archive() || is_home() || is_search() ) {
 
@@ -824,9 +809,21 @@ class UAGB_Frontend {
 			$cached_wp_query = $wp_query;
 
 			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-				$this->get_generated_stylesheet( $post );
+				$this->prepare_assets( $post );
 			}
 		}
+
+		/* Prepare assets and store in static variable */
+		global $content_width;
+
+		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
+
+		if ( '' !== self::$script ) {
+			self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+		}
+
+		/* Update page assets */
+		$this->update_page_assets();
 	}
 
 	/**
@@ -835,7 +832,7 @@ class UAGB_Frontend {
 	 * @param object $this_post Current Post Object.
 	 * @since 1.7.0
 	 */
-	public function get_generated_stylesheet( $this_post ) {
+	public function prepare_assets( $this_post ) {
 
 		if ( empty( $this_post ) || empty( $this_post->ID ) ) {
 			return;
