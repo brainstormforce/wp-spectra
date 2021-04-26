@@ -10,6 +10,7 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import Columnresponsive from "../../components/typography/column-responsive"
 
 const { __ } = wp.i18n
 const {
@@ -31,6 +32,8 @@ const {
 	Button,
     Dashicon,
 } = wp.components
+
+const { select, withSelect } = wp.data;
 
 class UAGBWpSearchEdit extends Component {
 
@@ -77,7 +80,7 @@ class UAGBWpSearchEdit extends Component {
     }
     
 	render() {
-        const { attributes, setAttributes } = this.props
+        const { attributes, setAttributes, deviceType } = this.props
         const {
             block_id,
             layout,
@@ -277,118 +280,88 @@ class UAGBWpSearchEdit extends Component {
                         </Fragment>
                     }
                     <hr/>
-                    <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
-                        tabs={ [
-                            {
-                                name: "desktop",
-                                title: <Dashicon icon="desktop" />,
-                                className: "uagb-desktop-tab uagb-responsive-tabs",
-                            },
-                            {
-                                name: "tablet",
-                                title: <Dashicon icon="tablet" />,
-                                className: "uagb-tablet-tab uagb-responsive-tabs",
-                            },
-                            {
-                                name: "mobile",
-                                title: <Dashicon icon="smartphone" />,
-                                className: "uagb-mobile-tab uagb-responsive-tabs",
-                            },
-                        ] }>
-                        {
-                            ( tab ) => {
-                                let tabout
-
-                                if ( "mobile" === tab.name ) {
-                                    tabout = (
-                                        <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
-                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
-                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
-                                            </ButtonGroup>
-                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.vertical_spacing }
-                                                className={ "uagb-margin-control" }
-                                                value={ vinputPaddingMobile }
-                                                onChange={ ( value ) => setAttributes( { vinputPaddingMobile: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.horizontal_spacing }
-                                                className={ "uagb-margin-control" }
-                                                value={ hinputPaddingMobile }
-                                                onChange={ ( value ) => setAttributes( { hinputPaddingMobile: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                        </Fragment>
-                                    )
-                                } else if ( "tablet" === tab.name ) {
-                                    tabout = (
-                                        <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
-                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
-                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
-                                            </ButtonGroup>
-                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.vertical_spacing }
-                                                className={ "uagb-margin-control" }
-                                                value={ vinputPaddingTablet }
-                                                onChange={ ( value ) => setAttributes( { vinputPaddingTablet: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.horizontal_spacing }
-                                                className={ "uagb-margin-control" }
-                                                value={ hinputPaddingTablet }
-                                                onChange={ ( value ) => setAttributes( { hinputPaddingTablet: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                        </Fragment>
-                                    )
-                                } else {
-                                    tabout = (
-                                        <Fragment>
-                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
-                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
-                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
-                                            </ButtonGroup>
-                                            <h2>{ __( "Padding",'ultimate-addons-for-gutenberg' ) }</h2>
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.vertical_spacing }
-                                                className={ "uagb-margin-control",'ultimate-addons-for-gutenberg' }
-                                                value={ vinputPaddingDesktop }
-                                                onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                            <RangeControl
-                                                label={ UAGB_Block_Icons.horizontal_spacing }
-                                                className={ "uagb-margin-control" }
-                                                value={ hinputPaddingDesktop }
-                                                onChange={ ( value ) => setAttributes( { hinputPaddingDesktop: value } ) }
-                                                min={ 0 }
-                                                max={ 100 }
-                                                allowReset
-                                            />
-                                        </Fragment>
-                                    )
-                                }
-
-                                return <div>{ tabout }</div>
-                            }
-                        }
-                    </TabPanel>
+                    <Columnresponsive/>
+                        { "Desktop" === deviceType && (
+                            <Fragment>
+                             <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+                            </ButtonGroup>
+                            <h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+                            <RangeControl
+                                label={ UAGB_Block_Icons.vertical_spacing }
+                                className={ "uagb-margin-control" }
+                                value={ vinputPaddingDesktop }
+                                onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
+                                min={ 0 }
+                                max={ 100 }
+                                allowReset
+                            />
+                            <RangeControl
+                                label={ UAGB_Block_Icons.horizontal_spacing }
+                                className={ "uagb-margin-control" }
+                                value={ hinputPaddingDesktop }
+                                onChange={ ( value ) => setAttributes( { hinputPaddingDesktop: value } ) }
+                                min={ 0 }
+                                max={ 100 }
+                                allowReset
+                            />
+                            </Fragment>
+                        )}
+                        { "Tablet" === deviceType && (
+                            <Fragment>
+                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+                            </ButtonGroup>
+                            <h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+                            <RangeControl
+                                label={ UAGB_Block_Icons.vertical_spacing }
+                                className={ "uagb-margin-control" }
+                                value={ vinputPaddingTablet }
+                                onChange={ ( value ) => setAttributes( { vinputPaddingTablet: value } ) }
+                                min={ 0 }
+                                max={ 100 }
+                                allowReset
+                            />
+                            <RangeControl
+                                label={ UAGB_Block_Icons.horizontal_spacing }
+                                className={ "uagb-margin-control" }
+                                value={ hinputPaddingTablet }
+                                onChange={ ( value ) => setAttributes( { hinputPaddingTablet: value } ) }
+                                min={ 0 }
+                                max={ 100 }
+                                allowReset
+                            />
+                            </Fragment>
+                        )}
+                        { "Mobile" === deviceType && (
+                            <Fragment>
+                               <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+                                    <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                    <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+                                </ButtonGroup>
+                                <h2>{ __( "Padding", 'ultimate-addons-for-gutenberg' ) }</h2>
+                                <RangeControl
+                                    label={ UAGB_Block_Icons.vertical_spacing }
+                                    className={ "uagb-margin-control" }
+                                    value={ vinputPaddingMobile }
+                                    onChange={ ( value ) => setAttributes( { vinputPaddingMobile: value } ) }
+                                    min={ 0 }
+                                    max={ 100 }
+                                    allowReset
+                                />
+                                <RangeControl
+                                    label={ UAGB_Block_Icons.horizontal_spacing }
+                                    className={ "uagb-margin-control" }
+                                    value={ hinputPaddingMobile }
+                                    onChange={ ( value ) => setAttributes( { hinputPaddingMobile: value } ) }
+                                    min={ 0 }
+                                    max={ 100 }
+                                    allowReset
+                                />
+                            </Fragment>
+                        )}
                     <hr/>
                     <TypographyControl
                         label={ __( "Typography",'ultimate-addons-for-gutenberg' ) }
@@ -637,6 +610,7 @@ class UAGBWpSearchEdit extends Component {
 		return (
 			<div className={ classnames(
                 "uagb-wp-search__outer-wrap",
+                `uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
                 `uagb-block-${ block_id }`,
                 `uagb-layout-${ layout }`
             ) }
@@ -656,4 +630,13 @@ class UAGBWpSearchEdit extends Component {
 	}
 }
 
-export default UAGBWpSearchEdit
+export default withSelect( ( select, props ) => { 
+
+    const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType,
+    }
+})(UAGBWpSearchEdit)

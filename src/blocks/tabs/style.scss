@@ -2,6 +2,7 @@
     display: flex;
     margin: 15px;
         ul.uagb-tabs__panel{
+            margin: 0px;
             list-style-type: none;
             display: inherit;
             li.uagb-tab{
@@ -45,8 +46,9 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        flex-direction: row;
     }
     .uagb-tab{  
         border-style: solid;
@@ -64,8 +66,9 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle2-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        flex-direction: row;
         border-bottom:1px solid #b3b6b9 ;
     }
     .uagb-tab{  
@@ -87,8 +90,9 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        flex-direction: row;
     }
     .uagb-tab{ 
         border-top-right-radius: 7px;
@@ -109,7 +113,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-desktop {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -149,13 +153,13 @@
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-desktop{   
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-style: solid;
             margin: 0px 10px 10px 0px;
@@ -178,15 +182,17 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin:0px;
         padding:0px;
-        border-bottom-style: solid;
         .uagb-tab{  
             margin: 10px 10px 0px 0px;
             padding: 6px 12px;
-            
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom-style: solid;
             p{
                 margin:0px;
             }
@@ -206,7 +212,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -236,12 +242,13 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-radius: 30px;
             border-style: solid;
@@ -261,10 +268,11 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle10-desktop {
     border-style: solid;
     ul.uagb-tabs__panel{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin: 0px;
         padding:0px;
         .uagb-tab{  
@@ -289,7 +297,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -308,7 +316,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle2-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         border-bottom-style:solid;
     }
@@ -331,7 +339,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle3-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -353,7 +361,7 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle4-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
     }
     .uagb-tab{  
@@ -393,13 +401,13 @@
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-tablet{   
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-style: solid;
             margin: 0px 10px 10px 0px;
@@ -422,8 +430,8 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin:0px;
         padding:0px;
         border-bottom-style: solid;
@@ -450,7 +458,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -480,12 +488,13 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-radius: 30px;
             border-style: solid;
@@ -506,10 +515,11 @@
     border-style: solid;
     flex-direction: row;
     ul.uagb-tabs__panel{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin: 0px;
         padding:0px;
         .uagb-tab{  
@@ -536,8 +546,11 @@
 .uagb-tabs__wrap.uagb-tabs__hstyle1-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
     }
     .uagb-tab{  
         border-style: solid;
@@ -550,13 +563,17 @@
     }
     .uagb-tabs__body-wrap{
         border-style: solid;
+        flex-direction: row;
     }
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle2-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
         border-bottom:1px solid #b3b6b9 ;
     }
     .uagb-tab{  
@@ -573,12 +590,16 @@
     }
     .uagb-tabs__body-wrap{
         border:none;
+        flex-direction: row;
     }
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle3-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        display: flex;
+        flex-grow: 1;
+        margin-bottom:0px;
+        flex-direction: row;
         padding:0px;
     }
     .uagb-tab{  
@@ -595,13 +616,17 @@
     }
     .uagb-tabs__body-wrap{
         border-style: solid;
+        flex-direction: row;
     }
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle4-mobile{
     flex-direction: column;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
+        flex-direction: row;
+        display: flex;
+        flex-grow: 1;
     }
     .uagb-tab{  
         border-radius: 30px;
@@ -614,12 +639,16 @@
     }
     .uagb-tabs__body-wrap{
         border-style: solid;
+        max-width: 100%;
     }
 }
 .uagb-tabs__wrap.uagb-tabs__hstyle5-mobile{
     flex-direction: column;
     border-style: solid;
     ul.uagb-tabs__panel{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: row;
         justify-content: space-between;
         margin: 0px;
         padding:0px;
@@ -636,17 +665,22 @@
     .uagb-tab.uagb-tabs__active{
         border-bottom-style:solid;
     }
+    .uagb-tabs__body-wrap{
+        max-width: 100%;
+    }
 }
 //Vertical Styles
 .uagb-tabs__wrap.uagb-tabs__vstyle6-mobile{  
+    
+    flex-direction: row;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-style: solid;
             margin: 0px 10px 10px 0px;
@@ -669,12 +703,15 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin:0px;
         padding:0px;
-        border-bottom-style: solid;
         .uagb-tab{  
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom-style: solid;
             margin: 10px 10px 0px 0px;
             padding: 6px 12px;
             
@@ -697,7 +734,7 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
         display: grid;
         flex-grow: 1;
@@ -727,12 +764,13 @@
     flex-direction: row;
     display: flex;
     ul.uagb-tabs__panel{
-        margin:0px;
+        margin-bottom:0px;
         padding:0px;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         .uagb-tab{  
             border-radius: 30px;
             border-style: solid;
@@ -752,10 +790,11 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle10-mobile{
     border-style: solid;
     ul.uagb-tabs__panel{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        min-width: 25%;
-        max-width: 25%;
+        min-width: 24%;
+        max-width: 24%;
         margin: 0px;
         padding:0px;
         .uagb-tab{  
@@ -776,6 +815,7 @@
     }
 }
 .uagb-tabs__wrap.uagb-tabs__stack1-mobile{ 
+    border-style: None;
     display: grid; 
    ul.uagb-tabs__panel{
        margin:0px;
@@ -799,6 +839,7 @@
    }
 }
 .uagb-tabs__wrap.uagb-tabs__stack2-mobile{
+    border-style: None;
    display: grid; 
    ul.uagb-tabs__panel{
        display: flex;
@@ -827,6 +868,7 @@
    }
 }
 .uagb-tabs__wrap.uagb-tabs__stack3-mobile{
+    border-style: None;
    display: grid; 
    ul.uagb-tabs__panel{
        margin:0px;
@@ -880,3 +922,39 @@
    }
 }
 }
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-center{
+    margin: auto;
+}
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-left{
+    margin-right: auto;
+    margin-left: 0;
+}
+.uagb-tabs__wrap .uagb-tabs__panel.uagb-tabs__align-right{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.uagb-tabs__wrap.uagb-active-tab-0 > .uagb-tabs__body-wrap > .uagb-inner-tab-0 ,
+.uagb-tabs__wrap.uagb-active-tab-1 > .uagb-tabs__body-wrap > .uagb-inner-tab-1 ,
+.uagb-tabs__wrap.uagb-active-tab-2 > .uagb-tabs__body-wrap > .uagb-inner-tab-2 ,
+.uagb-tabs__wrap.uagb-active-tab-3 > .uagb-tabs__body-wrap > .uagb-inner-tab-3 ,
+.uagb-tabs__wrap.uagb-active-tab-4 > .uagb-tabs__body-wrap > .uagb-inner-tab-4 ,
+.uagb-tabs__wrap.uagb-active-tab-5 > .uagb-tabs__body-wrap > .uagb-inner-tab-5 ,
+.uagb-tabs__wrap.uagb-active-tab-6 > .uagb-tabs__body-wrap > .uagb-inner-tab-6 ,
+.uagb-tabs__wrap.uagb-active-tab-7 > .uagb-tabs__body-wrap > .uagb-inner-tab-7 ,
+.uagb-tabs__wrap.uagb-active-tab-8 > .uagb-tabs__body-wrap > .uagb-inner-tab-8 ,
+.uagb-tabs__wrap.uagb-active-tab-9 > .uagb-tabs__body-wrap > .uagb-inner-tab-9 ,
+.uagb-tabs__wrap.uagb-active-tab-10 > .uagb-tabs__body-wrap > .uagb-inner-tab-10,
+.uagb-tabs__wrap.uagb-active-tab-11 > .uagb-tabs__body-wrap > .uagb-inner-tab-11 ,
+.uagb-tabs__wrap.uagb-active-tab-12 > .uagb-tabs__body-wrap > .uagb-inner-tab-12,
+.uagb-tabs__wrap.uagb-active-tab-13 > .uagb-tabs__body-wrap > .uagb-inner-tab-13 ,
+.uagb-tabs__wrap.uagb-active-tab-14 > .uagb-tabs__body-wrap > .uagb-inner-tab-14 ,
+.uagb-tabs__wrap.uagb-active-tab-15 > .uagb-tabs__body-wrap > .uagb-inner-tab-15 ,
+.uagb-tabs__wrap.uagb-active-tab-16 > .uagb-tabs__body-wrap > .uagb-inner-tab-16 ,
+.uagb-tabs__wrap.uagb-active-tab-17 > .uagb-tabs__body-wrap > .uagb-inner-tab-17 ,
+.uagb-tabs__wrap.uagb-active-tab-18 > .uagb-tabs__body-wrap > .uagb-inner-tab-18 ,
+.uagb-tabs__wrap.uagb-active-tab-19 > .uagb-tabs__body-wrap > .uagb-inner-tab-19 ,
+.uagb-tabs__wrap.uagb-active-tab-20 > .uagb-tabs__body-wrap > .uagb-inner-tab-20 {
+    display: block;
+}
+    

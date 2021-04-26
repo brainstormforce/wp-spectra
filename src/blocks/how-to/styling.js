@@ -205,17 +205,11 @@ function styling( props ) {
 		"margin-bottom": generateCSSUnit( headSpace, "px" ),
 	}
 
-	mobile_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
-		"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
-		"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
-	}
-
-	tablet_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
-		"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
-		"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
-	}
-
 	mobile_selectors = {
+		" .block-editor-rich-text__editable.uagb-howto-heading-text": {
+			"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
+		},	
 		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
 			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
@@ -224,11 +218,11 @@ function styling( props ) {
 			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
+		" .uagb-howto-timeNeeded-value" : {
 			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .uagb-howto-timeINmin-text ": {
 			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
@@ -263,6 +257,10 @@ function styling( props ) {
 	}
 
 	tablet_selectors = {
+		" .block-editor-rich-text__editable.uagb-howto-heading-text": {
+			"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
+		},
 		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
 			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
@@ -271,11 +269,11 @@ function styling( props ) {
 			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
+		" .uagb-howto-timeNeeded-value" : {
 			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .uagb-howto-timeINmin-text ": {
 			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
@@ -313,9 +311,9 @@ function styling( props ) {
 
 	var styling_css = generateCSS( selectors, base_selector )
 
-	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	return styling_css
 }

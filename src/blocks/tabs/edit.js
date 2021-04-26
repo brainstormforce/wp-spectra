@@ -16,6 +16,8 @@ import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+import Columnresponsive from "../../components/typography/column-responsive"
+
 const { __ } = wp.i18n
 
 const {
@@ -54,12 +56,15 @@ const {
 	compose,
 } = wp.compose
 
-const { withDispatch, select, dispatch } = wp.data;
+const { withDispatch, select, dispatch, withSelect } = wp.data;
 
 class UAGBTabsEdit extends Component {	
 	constructor() {
 		super( ...arguments );
+		this.onMoveForward = this.onMoveForward.bind( this );
+		this.onMoveBack = this.onMoveBack.bind( this );
 	}
+	
 	componentDidMount() {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		const $style = document.createElement( "style" )
@@ -76,6 +81,45 @@ class UAGBTabsEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 	}
+	onMove( oldIndex, newIndex ) {
+		const { attributes, setAttributes, clientId } = this.props;
+		const { tabHeaders, tabActiveFrontend } = attributes;
+
+		const { getBlock } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const tabsBlock = getBlock(clientId);
+
+		const titles = [ ...tabHeaders ];
+		titles.splice( newIndex, 1, tabHeaders[ oldIndex ] );
+		titles.splice( oldIndex, 1, tabHeaders[ newIndex ] );
+		setAttributes( { tabHeaders: titles} );
+		if ( tabActiveFrontend === ( oldIndex + 1 ) ) {
+			setAttributes( { tabActiveFrontend: ( newIndex + 1 ) } );
+		} else if ( tabActiveFrontend === ( newIndex + 1 ) ) {
+			setAttributes( { tabActiveFrontend: ( oldIndex + 1 ) } );
+		}
+		this.props.moveTab( tabsBlock.innerBlocks[ oldIndex ].clientId, newIndex );
+		this.props.resetTabOrder();
+	}
+	
+	onMoveForward( oldIndex , realTabsCount ) {
+	
+		return () => {
+			if ( oldIndex === realTabsCount - 1 ) {
+				return;
+			}
+			this.onMove( oldIndex, oldIndex + 1 );
+		};
+	}
+
+	onMoveBack( oldIndex ) {
+		return () => {
+			if ( oldIndex < 0 ) {
+				return;
+			}
+			this.onMove( oldIndex, oldIndex - 1 );
+		};
+	}
+
 	updateTabsTitle(header, index) {
 		const { attributes, setAttributes, clientId } = this.props;
 		const { tabHeaders } = attributes;
@@ -131,7 +175,7 @@ class UAGBTabsEdit extends Component {
 		this.updateTabsAttr({tabActive: 0});
 		this.props.resetTabOrder();
 	}
-	
+
 	updateTabsAttr( attrs ) {
 		const { setAttributes, clientId } = this.props;
 		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
@@ -143,7 +187,7 @@ class UAGBTabsEdit extends Component {
 		this.props.resetTabOrder();
 	}
 	render() {
-		const { attributes , setAttributes , className } = this.props;
+		const { attributes , setAttributes , className, deviceType   } = this.props;
 		const {
 			tabsStyleD,
 			tabsStyleM,
@@ -184,6 +228,7 @@ class UAGBTabsEdit extends Component {
 			titleLineHeightMobile,
 			titleLineHeightTablet,
 			titleAlign,
+			tabAlign,
 			showIcon,
 			icon,
 			iconColor,
@@ -197,108 +242,77 @@ class UAGBTabsEdit extends Component {
 			<Fragment>     
 				<InspectorControls>
 					<PanelBody title={ __( 'Tabs Style'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ true }>
-						<TabPanel className="uagb-tabs-select-style uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>		
-												<SelectControl
-													label={ __( "Mobile Style"  , 'ultimate-addons-for-gutenberg' ) }
-													value={ tabsStyleM }
-													onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4' , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9' , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack1', label: __('Stack Style 11' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack2', label: __('Stack Style 12' , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack3', label: __('Stack Style 13'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'stack4', label: __('Stack Style 14'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												
-												<SelectControl
-													label={ __( "Tablet Style"  , 'ultimate-addons-for-gutenberg') }
-													value={ tabsStyleT }
-													onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												
-												<SelectControl
-													label={ __( "Desktop Style"  , 'ultimate-addons-for-gutenberg') }
-													value={ tabsStyleD }
-													onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
-													beforeIcon="editor-textcolor"
-													options={ [
-														{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
-														{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
-													] }
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>	
+					<Columnresponsive/>
+					{ "Desktop" === deviceType && (
+							<Fragment>
+							<SelectControl
+								label={ __( "Desktop Style"  , 'ultimate-addons-for-gutenberg') }
+								value={ tabsStyleD }
+								onChange={ ( value ) => setAttributes( { tabsStyleD: value } ) }
+								beforeIcon="editor-textcolor"
+								options={ [
+									{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+									{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
+								] }
+							/>
+							</Fragment>
+						)}
+						{ "Tablet" === deviceType && (
+							<Fragment>
+								<SelectControl
+									label={ __( "Tablet Style"  , 'ultimate-addons-for-gutenberg') }
+									value={ tabsStyleT }
+									onChange={ ( value ) => setAttributes( { tabsStyleT: value } ) }
+									beforeIcon="editor-textcolor"
+									options={ [
+										{value: 'hstyle1', label: __('Horizontal Style 1'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle2', label: __('Horizontal Style 2'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle3', label: __('Horizontal Style 3'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle4', label: __('Horizontal Style 4'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle5', label: __('Horizontal Style 5'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle6', label: __('Vertical Style 6'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle7', label: __('Vertical Style 7'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle8', label: __('Vertical Style 8'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle9', label: __('Vertical Style 9'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle10', label: __('Vertical Style 10'  , 'ultimate-addons-for-gutenberg')},
+									] }
+								/>
+							</Fragment>
+						)}
+						{ "Mobile" === deviceType && (
+							<Fragment>
+								<SelectControl
+									label={ __( "Mobile Style"  , 'ultimate-addons-for-gutenberg' ) }
+									value={ tabsStyleM }
+									onChange={ ( value ) => setAttributes( { tabsStyleM: value } ) }
+									beforeIcon="editor-textcolor"
+									options={ [
+										{value: 'hstyle1', label: __('Horizontal Style 1' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle2', label: __('Horizontal Style 2' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle3', label: __('Horizontal Style 3' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle4', label: __('Horizontal Style 4' , 'ultimate-addons-for-gutenberg')},
+										{value: 'hstyle5', label: __('Horizontal Style 5' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle6', label: __('Vertical Style 6' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle7', label: __('Vertical Style 7' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle8', label: __('Vertical Style 8' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle9', label: __('Vertical Style 9' , 'ultimate-addons-for-gutenberg')},
+										{value: 'vstyle10', label: __('Vertical Style 10' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack1', label: __('Stack Style 11' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack2', label: __('Stack Style 12' , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack3', label: __('Stack Style 13'  , 'ultimate-addons-for-gutenberg')},
+										{value: 'stack4', label: __('Stack Style 14'  , 'ultimate-addons-for-gutenberg')},
+									] }
+								/>
+							</Fragment>
+						)}
 					</PanelBody>
 					<PanelBody title={ __( 'Tabs Title Settings'  , 'ultimate-addons-for-gutenberg' ) }  initialOpen={ false }>
 						<SelectControl
@@ -309,7 +323,18 @@ class UAGBTabsEdit extends Component {
 							} ) }
 							onChange={ (value) => setAttributes( { tabActiveFrontend: parseInt(value) } ) }
 						/>
-						<h2>{ __( "Alignment"  , 'ultimate-addons-for-gutenberg') }</h2>
+						<h2>{ __( "Tab Alignment"  , 'ultimate-addons-for-gutenberg') }</h2>
+						<BlockAlignmentToolbar
+							value={ tabAlign }
+							onChange={ ( value ) =>
+								setAttributes( {
+									tabAlign: value,
+								} )
+							}
+							controls={ [ 'left', 'center', 'right' ] }
+							isCollapsed={ false }
+						/>	
+						<h2>{ __( "Tab Text Alignment"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<BlockAlignmentToolbar
 							value={ titleAlign }
 							onChange={ ( value ) =>
@@ -319,7 +344,7 @@ class UAGBTabsEdit extends Component {
 							}
 							controls={ [ 'left', 'center', 'right' ] }
 							isCollapsed={ false }
-					/>		
+						/>
 					<ToggleControl
 						label={ __( "Enable Icon"  , 'ultimate-addons-for-gutenberg') }
 						checked={ showIcon }
@@ -478,19 +503,19 @@ class UAGBTabsEdit extends Component {
 					/>
 					</PanelBody>
 					<PanelBody title={ __( 'Tabs Body Settings'  , 'ultimate-addons-for-gutenberg') } initialOpen={ false }>
-					<h2>{ __( 'Body Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
-					<ColorPalette
-						value={ bodyBgColor}
-						onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
-						allowReset
-					/>  
-					<h2>{ __( 'Body Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
-					<ColorPalette
-						value= {bodyTextColor}
-						onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
-						allowReset
-					/>
-					<h2>{ __( "Tab Body Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
+						<h2>{ __( 'Body Background Color'  , 'ultimate-addons-for-gutenberg') }</h2>
+						<ColorPalette
+							value={ bodyBgColor}
+							onChange={ ( value ) => setAttributes( { bodyBgColor: value } )}
+							allowReset
+						/> 
+						<h2>{ __( 'Body Text Color'  , 'ultimate-addons-for-gutenberg') }</h2>
+						<ColorPalette
+							value= {bodyTextColor}
+							onChange={ ( value ) => setAttributes( { bodyTextColor: value } )}
+							allowReset
+						/>
+						<h2>{ __( "Tab Body Margin (px)"  , 'ultimate-addons-for-gutenberg') }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.left_margin }
 							className={ "uagb-margin-control" }
@@ -567,21 +592,55 @@ class UAGBTabsEdit extends Component {
 				</InspectorControls>
                 <div className={ classnames(
 					className,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 					`uagb-tabs__wrap`,
 					`uagb-tabs__${tabsStyleD}-desktop`,
 					`uagb-tabs__${tabsStyleT}-tablet`,
 					`uagb-tabs__${tabsStyleM}-mobile`,
-				) } data-tab-active={tabActiveFrontend}>
-                    <ul className="uagb-tabs__panel">
+				) }>
+                    <ul className={`uagb-tabs__panel uagb-tabs__align-${tabAlign}`}>
                         {tabHeaders.map( ( header, index ) => (
-                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} `}
-                            >
-                                <a className={`uagb-tabs__icon-position-${iconPosition}`}
+                            <li key={ index } className={`uagb-tab ${tabActive === index ? 'uagb-tabs__active' : ''} ` }
+                            id={`uagb-tabs__tab${index}`}>
+								{tabHeaders.length > 0 && (
+									<div className="uagb-tabs-editor-controls">
+										{  index !== 0 && (	
+											<Tooltip text={ __( 'Move Item Back'  , 'ultimate-addons-for-gutenberg' ) }>
+												<span className="uagb-tab-item__move-back"
+													onClick={ index === 0 ? ' ' : this.onMoveBack( index , tabHeaders.length) }
+													aria-disabled={ ( index ) === tabHeaders.length }
+														disabled={ ( index ) === tabHeaders.length }
+												>
+													<Dashicon icon="arrow-left"/>
+												</span>
+											</Tooltip>
+										)}
+										{ ( index + 1 ) !== tabHeaders.length && (
+											<Tooltip text={ __( 'Move Item Forward'  , 'ultimate-addons-for-gutenberg' ) }>
+												<span className="uagb-tab-item__move-forward"
+														onClick={ ( index ) === tabHeaders.length ? ' ' : this.onMoveForward( index , tabHeaders.length) }
+														aria-disabled={ ( index ) === tabHeaders.length }
+														disabled={ ( index ) === tabHeaders.length }
+												>
+													<Dashicon icon="arrow-right"/>
+												</span>
+											</Tooltip>
+										)}
+									<Tooltip text={ __( 'Remove tab'  , 'ultimate-addons-for-gutenberg' ) }>
+										<span className="uagb-tabs__remove"
+												onClick={ () => this.removeTab(index) }
+										>
+											<Dashicon icon="no"/>
+										</span>
+									</Tooltip>
+								</div>
+                                )}
+                                <a className={`uagb-tabs__icon-position-${iconPosition} uagb-tabs-list`}
                                        onClick={ () => {
                                            this.props.updateActiveTab( index );
                                        } }
-                                    >
+                                    data-tab={index}>
 										{(showIcon && icon && (iconPosition === 'left' || iconPosition === 'top') &&
 										<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}
@@ -596,33 +655,23 @@ class UAGBTabsEdit extends Component {
 											<span className="uagb-tabs__icon">{ renderSVG(icon) }</span>
 										)}
 								</a>
-								
-								{tabHeaders.length > 1 && (
-									<Tooltip text={ __( 'Remove tab'  , 'ultimate-addons-for-gutenberg' ) }>
-										<span className="uagb-tabs__remove"
-												onClick={ () => this.removeTab(index) }
-										>
-											<Dashicon icon="no"/>
-										</span>
-									</Tooltip>
-                                )}
                             </li>
                         ) ) }
-						 <li className="uagb-tab uagb-tabs__add-tab">
+						<li className="uagb-tab uagb-tabs__add-tab">
 							<Tooltip text={ __( 'Add tab'  , 'ultimate-addons-for-gutenberg' ) }>
 								<span onClick={ () => this.addTab() }>
 								<Dashicon icon="plus"/>
 								</span>
 							</Tooltip>
                         </li>
-						</ul>
-						<div className="uagb-tabs__body-wrap">
-                            <InnerBlocks
-                                template={ [ ['uagb/tabs-child'], ['uagb/tabs-child'], ['uagb/tabs-child']] }
-                                templateLock={false}
-                                allowedBlocks={ [ 'uagb/tabs-child' ] }
-                            />
-                        </div>
+					</ul>
+					<div className="uagb-tabs__body-wrap">
+						<InnerBlocks
+							template={ [ ['uagb/tabs-child'], ['uagb/tabs-child'], ['uagb/tabs-child']] }
+							templateLock={false}
+							allowedBlocks={ [ 'uagb/tabs-child' ] }
+						/>
+					</div>
                 </div>
 			</Fragment>
 		)
@@ -630,14 +679,23 @@ class UAGBTabsEdit extends Component {
 }
 
 export default compose(
+	withSelect( ( select, props ) => {
+		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		return {
+			deviceType: deviceType,
+		}
+	}),
 	withDispatch( (dispatch, { clientId }, { select }) => {
 		const {
 			getBlock,
 		} = select( 'core/block-editor' );
 		const {
 			updateBlockAttributes,
+			moveBlockToPosition
 		} = dispatch( 'core/block-editor' );
 		const block = getBlock( clientId );
+		
 		return {
 			resetTabOrder() {
 				times( block.innerBlocks.length, n => {
@@ -656,6 +714,9 @@ export default compose(
 					} );
 				} );
 				this.resetTabOrder();
+			},
+			moveTab( tabId, newIndex ) {
+				moveBlockToPosition( tabId, clientId, clientId, parseInt( newIndex ) );
 			},
 		};
 

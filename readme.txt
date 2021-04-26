@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.22.2
+Stable tag: 1.22.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,8 +168,35 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.22.2.1 =
+= 1.22.3 =
+* Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
+* Improvement: Added filter to disable block conditions from the editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
+* Improvement: Block preview on responsive devices in the editor.
+* Improvement: First letter Capitalize instead of all Meta in post layout. 
+* Improvement: Forms - Resolved after adding v3 ReCaptcha in forms block needs to click twice on button to submit the form.
+* Improvement: Tabs - Added alignment option to the tab headers.
+* Improvement: Tabs - Added option to update the tabs order by moving it left or right.
+* Improvement: Taxonomy List - Added Html Tag Selector to set Tag of list title.
+* Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
+* Fix: Block Conditions - Resolved Invalid block issue of core widget blocks.
+* Fix: Content Timeline - Fixed Connector layout on mobile devices issue.
+* Fix: Display Condition - Added body tag instead of "entry-content" class in CSS to hide the block.
+* Fix: Forms - Resolved subject is not attached in the mail issue. 
+* Fix: Google Map - Added some padding for the editor to improve a Google Map selection experience.
+* Fix: Social Share - Fixed the jQuery undefined error.
+* Fix: Tabs - Nested tab layout breaking all the tab functionality.
+* Fix: Tabs - Tabs body generating multiple times.
+* Fix: Tabs - Tab Anchors in the page link Are Ignored.
 * Fix: Table of Contents - Conflict with Mediavine Ad Script.
+* Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
+* Fix: Marketing Button - Fix Icon size setting issue.
+* Fix: Marketing button - Text color and hover color overriding the block-library style.
+* Fix: Post Masonry - Fixed the JS UAGBPostMasonry is not defined error.
+* Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
+* Fix: Post Layout - Conflicting with NextGen Gallery plugin.
+* Fix: Posts Layout - On disabling the "Show Excerpt" option  "Read More" setting was hidden.
+* Fix: Resolved RangeControl Slider issue in responsive modes.
+* Fix: Fix taxonomy special character issue in all post layouts.
 
 = 1.22.2 =
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.

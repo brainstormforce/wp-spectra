@@ -312,9 +312,6 @@ function contentTimelineStyle( props ) {
 		" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
 			"border-right-color"  : backgroundColor,
 		},
-		" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" : {
-			"left" : "calc( "+connectorBgsize+"px / 2 )",
-		},
 		" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" :{
 			"text-align": resp_selectors,
 		},
@@ -389,9 +386,6 @@ function contentTimelineStyle( props ) {
 		" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after" : {
 			"border-right-color"  : backgroundColor,
 		},
-		" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line" : {
-			"left" : "calc( "+connectorBgsize+"px / 2 )",
-		},
 		" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__author" :{
 			"text-align": resp_selectors,
 		},
@@ -422,9 +416,9 @@ function contentTimelineStyle( props ) {
 
 	styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 	return styling_css
 
