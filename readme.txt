@@ -190,6 +190,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Table of Contents - Conflict with Mediavine Ad Script.
 * Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
 * Fix: Marketing Button - Fix Icon size setting issue.
+* Fix: Marketing button - Text color and hover color overriding the block-library style.
 * Fix: Post Masonry - Fixed the JS UAGBPostMasonry is not defined error.
 * Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
 * Fix: Post Layout - Conflicting with NextGen Gallery plugin.
