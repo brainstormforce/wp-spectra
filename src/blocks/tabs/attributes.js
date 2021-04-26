@@ -135,6 +135,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	tabAlign: {
+		type: "string",
+		default: "left"
+	},
 	titleAlign: {
 		type: "string",
 		default: "center"
@@ -163,7 +167,8 @@ const attributes = {
 	},
 	activeiconColor:{
 		type: "string",
-	}
+	},
+
 }
 
 export default attributes
