@@ -4,7 +4,7 @@ module.exports = {
 		commonjs: true,
 	},
 	"extends": [
-		"eslint:recommended",
+		"plugin:@wordpress/eslint-plugin/recommended",
 		"plugin:react/recommended"
 	],
 	parserOptions: {
@@ -18,9 +18,9 @@ module.exports = {
 	rules: {
 		"react/react-in-jsx-scope": "off",
 		indent: [ 'error', 'tab' ],
-		'linebreak-style': [ 'error', 'windows' ],
+		"linebreak-style": ["error", "unix"],
 		quotes: [ 'error', 'double' ],
-		semi: [ 'error', 'never' ],
+		semi: [ 'error', 'always' ],
 	},
 	"globals": { "wp": true },
 };

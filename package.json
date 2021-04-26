@@ -23,13 +23,6 @@
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "@wordpress/icons": "^2.10.1",
     "classnames": "^2.2.6",
-    "eslint": "^4.15.0",
-    "eslint-config-wordpress": "^2.0.0",
-    "eslint-plugin-jest": "^21.6.1",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1",
-    "eslint-plugin-wordpress": "^0.1.0",
-    "extract-text-webpack-plugin": "^1.0.1",
     "memize": "^1.0.5",
     "node-sass": "^4.14.1",
     "prop-types": "^15.6.2",
@@ -47,6 +40,7 @@
     "striptags": "^3.1.1"
   },
   "devDependencies": {
+    "@wordpress/eslint-plugin": "^3.1.0",
     "@wordpress/i18n": "^3.19.1",
     "@wordpress/scripts": "^14.1.0",
     "install": "^0.13.0",
