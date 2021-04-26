@@ -36,11 +36,11 @@ class UAGB_Filesystem {
 	 *
 	 * @since x.x.x
 	 */
-	function get_filesystem() {
+	public function get_filesystem() {
 
 		global $wp_filesystem;
 
-		if ( ! $wp_filesystem || 'direct' != $wp_filesystem->method ) {
+		if ( ! $wp_filesystem || 'direct' !== $wp_filesystem->method ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 
 			/**
@@ -77,7 +77,7 @@ class UAGB_Filesystem {
 	 *
 	 * @since x.x.x
 	 */
-	function filesystem_method() {
+	public function filesystem_method() {
 		return 'direct';
 	}
 
@@ -86,7 +86,7 @@ class UAGB_Filesystem {
 	 *
 	 * @since x.x.x
 	 */
-	function request_filesystem_credentials() {
+	public function request_filesystem_credentials() {
 		return true;
 	}
 }

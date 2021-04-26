@@ -781,18 +781,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since  1.14.9
 		 * @return bool true or false.
 		 */
-		public static function has_read_write_permissions() {
+		public static function is_uag_dir_has_write_permissions() {
 
 			$upload_dir = self::get_upload_dir();
 
-			$file_created = uagb_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
-
-			if ( ! $file_created ) {
-
-				return false;
-			}
-
-			return true;
+			return uagb_filesystem()->is_writable( $upload_dir['path'] );
 		}
 		/**
 		 * Gives the paged Query var.
