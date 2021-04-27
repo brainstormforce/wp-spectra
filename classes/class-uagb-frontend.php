@@ -818,7 +818,7 @@ class UAGB_Frontend {
 		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
 
 		if ( '' !== self::$script ) {
-			self::$script = 'document.addEventListener("DOMContentLoaded", function(){( function( $ ) { ' . self::$script . ' })(jQuery)})';
+			self::$script = 'document.addEventListener("DOMContentLoaded", function(){ ' . self::$script . ' })';
 		}
 
 		/* Update page assets */
@@ -1147,7 +1147,7 @@ class UAGB_Frontend {
 
 		if ( true === self::$table_of_contents_flag ) {
 
-			return '<div class="uag-toc__entry-content">' . $content . '</div>';
+			return '<div class="uag-toc__entry-content"></div>' . $content;
 		}
 
 		return $content;

@@ -7,6 +7,7 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
+import deprecated from "./deprecated"
 import save from "./save"
 
 const { __ } = wp.i18n
@@ -29,5 +30,6 @@ registerBlockType( "uagb/tabs", {
 	},
 	attributes,
 	edit,
-	save
+	save,
+	deprecated,
 } )

@@ -4459,9 +4459,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__title-wrap'    => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 				),
-				' .uagb-marketing-btn__title'         => array(
-					'color' => $attr['titleColor'],
-				),
 				' .uagb-marketing-btn__icon-wrap'     => array(
 					'width'  => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
 					'height' => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
@@ -4469,13 +4466,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap svg' => array(
 					'fill' => $icon_color,
 				),
-				' .uagb-marketing-btn__prefix'        => array(
+				' p.uagb-marketing-btn__prefix'       => array(
 					'color' => $attr['prefixColor'],
 				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__title' => array(
-					'color' => $attr['titleHoverColor'],
-				),
-				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__prefix' => array(
+				' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 					'color' => $attr['prefixHoverColor'],
 				),
 				' .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg' => array(
@@ -4494,6 +4488,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__link:hover'    => array(
 					'border-color' => $attr['borderHoverColor'],
 				),
+			);
+
+			$selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleColor'],
+			);
+
+			$selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+				'color' => $attr['titleHoverColor'],
 			);
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
@@ -5501,7 +5503,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_condition_block_css() {
 
-			return '@media (min-width: 1025px){.entry-content .uag-hide-desktop.uagb-google-map__wrap,.entry-content .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){.entry-content .uag-hide-tab.uagb-google-map__wrap,.entry-content .uag-hide-tab{display:none}}@media (max-width: 767px){.entry-content .uag-hide-mob.uagb-google-map__wrap,.entry-content .uag-hide-mob{display:none}}';
+			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
 		}
 	}
 }

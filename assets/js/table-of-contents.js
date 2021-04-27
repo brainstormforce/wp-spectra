@@ -74,7 +74,8 @@
 
 			$( "html, body" ).animate( {
 				scrollTop: 0
-			}, scroll_delay )
+			}, 800 )
+
 		},
 
 		/**
@@ -140,7 +141,7 @@
 				});				
 			}
 			let blockId = attr.block_id;
-			var headerArray = $( 'div.uag-toc__entry-content' ).find( all_header )
+			var headerArray = $("div.uag-toc__entry-content").parent().find( all_header )
 			if ( 0 !== headerArray.length && ( headerMappingHeaders > 0 && undefined !== attr.mappingHeaders )  ) {
 			headerArray.each( function (index,value){
 				let header = $( this );
