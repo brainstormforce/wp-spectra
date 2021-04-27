@@ -168,6 +168,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.23.0 =
+* Improvement: Improve the Dynamic Assets loading functionality for better performance.
+* Improvement: Static CSS Optimized by loading block specific CSS on a Page.
+
 = 1.22.3 =
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
 * Improvement: Added filter to disable block conditions from the editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)

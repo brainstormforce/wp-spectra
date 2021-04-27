@@ -294,7 +294,7 @@ class UAGB_Init_Blocks {
 
 			if ( class_exists( 'WooCommerce' ) ) {
 
-				if ( false === UAGB_Helper::$uag_flag ) {
+				if ( false === UAGB_Frontend::$uag_flag ) {
 					return;
 				}
 			} else {
@@ -312,18 +312,11 @@ class UAGB_Init_Blocks {
 					return;
 				}
 
-				if ( false === UAGB_Helper::$uag_flag ) {
+				if ( false === UAGB_Frontend::$uag_flag ) {
 					return;
 				}
 			}
 		}
-
-		wp_enqueue_style(
-			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/build/style-blocks.css', // Block style CSS.
-			array(),
-			UAGB_VER
-		);
 
 		if ( is_rtl() ) {
 			wp_enqueue_style(
@@ -444,6 +437,13 @@ class UAGB_Init_Blocks {
 			'uagb-block-common-editor-css', // Handle.
 			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
+		wp_enqueue_style(
+			'uagb-block-css', // Handle.
+			UAGB_URL . 'dist/build/style-blocks.css', // Block style CSS.
+			array(),
 			UAGB_VER
 		);
 

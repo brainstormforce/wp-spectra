@@ -30,6 +30,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static $block_assets = null;
 
+
+		/**
+		 * Block Assets
+		 *
+		 * @since x.x.x
+		 * @var block_attributes
+		 */
+		public static $block_assets_css = null;
+
 		/**
 		 * Get Widget List.
 		 *
@@ -2983,6 +2992,139 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				);
 			}
 			return self::$block_assets;
+		}
+
+		/**
+		 * Get Block Assets.
+		 *
+		 * @since x.x.x
+		 *
+		 * @return array The Asset List.
+		 */
+		public static function get_block_assets_css() {
+
+			if ( null === self::$block_assets_css ) {
+				self::$block_assets_css = array(
+					'uagb/table-of-contents'      => array(
+						'name' => 'table-of-contents',
+					),
+					'uagb/advanced-heading'       => array(
+						'name' => 'advanced-heading',
+					),
+					'uagb/blockquote'             => array(
+						'name' => 'blockquote',
+					),
+					'uagb/buttons-child'          => array(
+						'name' => 'buttons-child',
+					),
+					'uagb/buttons'                => array(
+						'name' => 'buttons',
+					),
+					'uagb/call-to-action'         => array(
+						'name' => 'call-to-action',
+					),
+					'uagb/cf7-styler'             => array(
+						'name' => 'cf7-styler',
+					),
+					'uagb/column'                 => array(
+						'name' => 'column',
+					),
+					'uagb/columns'                => array(
+						'name' => 'columns',
+					),
+					'uagb/faq-child'              => array(
+						'name' => 'faq-child',
+					),
+					'uagb/faq'                    => array(
+						'name' => 'faq',
+					),
+					'uagb/forms'                  => array(
+						'name' => 'forms',
+					),
+					'uagb/gf-styler'              => array(
+						'name' => 'gf-styler',
+					),
+					'uagb/google-map'             => array(
+						'name' => 'google-map',
+					),
+					'uagb/how-to'                 => array(
+						'name' => 'how-to',
+					),
+					'uagb/icon-list-child'        => array(
+						'name' => 'icon-list-child',
+					),
+					'uagb/icon-list'              => array(
+						'name' => 'icon-list',
+					),
+					'uagb/info-box'               => array(
+						'name' => 'info-box',
+					),
+					'uagb/inline-notice'          => array(
+						'name' => 'inline-notice',
+					),
+					'uagb/marketing-button'       => array(
+						'name' => 'marketing-button',
+					),
+					'uagb/post-grid'              => array(
+						'name' => 'post',
+					),
+					'uagb/post-carousel'          => array(
+						'name' => 'post',
+					),
+					'uagb/post-masonry'           => array(
+						'name' => 'post',
+					),
+					'uagb/price-list-child'       => array(
+						'name' => 'price-list-child',
+					),
+					'uagb/price-list'             => array(
+						'name' => 'price-list',
+					),
+					'uagb/review'                 => array(
+						'name' => 'review',
+					),
+					'uagb/section'                => array(
+						'name' => 'section',
+					),
+					'uagb/social-share-child'     => array(
+						'name' => 'social-share-child',
+					),
+					'uagb/social-share'           => array(
+						'name' => 'social-share',
+					),
+					'uagb/table-of-contents'      => array(
+						'name' => 'table-of-contents',
+					),
+					'uagb/tabs-child'             => array(
+						'name' => 'tabs-child',
+					),
+					'uagb/tabs'                   => array(
+						'name' => 'tabs',
+					),
+					'uagb/taxonomy-list'          => array(
+						'name' => 'taxonomy-list',
+					),
+					'uagb/team'                   => array(
+						'name' => 'team',
+					),
+					'uagb/testimonial'            => array(
+						'name' => 'testimonial',
+					),
+					'uagb/content-timeline'       => array(
+						'name' => 'timeline',
+					),
+					'uagb/content-timeline-child' => array(
+						'name' => 'timeline',
+					),
+					'uagb/post-timeline'          => array(
+						'name' => 'timeline',
+					),
+					'uagb/wp-search'              => array(
+						'name' => 'wp-search',
+					),
+				);
+			}
+			return self::$block_assets_css;
 		}
 	}
 }
