@@ -739,6 +739,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$retval        = true;
 
 			if ( is_array( $filelist ) ) {
+
+				unset( $filelist['index.html'] );
+
 				foreach ( $filelist as $filename => $fileinfo ) {
 					if ( ! $wp_filesystem->delete( $dir . $filename, true, $fileinfo['type'] ) ) {
 						$retval = false;
