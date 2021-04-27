@@ -413,12 +413,22 @@ class UAGB_Init_Blocks {
 	public function editor_assets() {
 
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
+
+		$script_dep_path = UAGB_DIR . 'dist/build/blocks.asset.php';
+		$script_info     = file_exists( $script_dep_path )
+			? include $script_dep_path
+			: array(
+				'dependencies' => array(),
+				'version'      => UAGB_VER,
+			);
+		$script_dep      = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ) );
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/build/blocks.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ), // Dependencies, defined above.
-			UAGB_VER,
+			$script_dep, // Dependencies, defined above.
+			$script_info['version'], // UAGB_VER.
 			true // Enqueue the script in the footer.
 		);
 
