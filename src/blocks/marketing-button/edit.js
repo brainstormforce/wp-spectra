@@ -293,67 +293,43 @@ class UAGBMarketingButtonEdit extends Component {
 								beforeIcon=""
 								allowReset
 							/>
-							<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
-												value={ iconFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { iconFontSizeMobile: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
-												value={ iconFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { iconFontSizeTablet: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else {
-										tabout = (
-											<RangeControl
-												label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
-												value={ iconFontSize }
-												onChange={ ( value ) => setAttributes( { iconFontSize: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+							<Columnresponsive/>
+							{ "Desktop" === deviceType && (
+								<Fragment>
+								<RangeControl
+									label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
+									value={ iconFontSize }
+									onChange={ ( value ) => setAttributes( { iconFontSize: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+								</Fragment>
+							)}
+							{ "Tablet" === deviceType && (
+								<Fragment>
+								<RangeControl
+									label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
+									value={ iconFontSizeTablet }
+									onChange={ ( value ) => setAttributes( { iconFontSizeTablet: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+								</Fragment>
+							)}
+							{ "Mobile" === deviceType && (
+								<Fragment>
+								<RangeControl
+									label={ __( "Icon Size", 'ultimate-addons-for-gutenberg' ) }
+									value={ iconFontSizeMobile }
+									onChange={ ( value ) => setAttributes( { iconFontSizeMobile: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+								</Fragment>
+							)}
 						</Fragment>
 						}
 						<RangeControl

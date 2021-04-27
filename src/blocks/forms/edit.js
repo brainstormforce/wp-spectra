@@ -646,7 +646,7 @@ class UAGBFormsEdit extends Component {
 					/>
 					{ true === sendAfterSubmitEmail && (
 						<Fragment>								
-							<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
+							<TabPanel className="uagb-size-type-field-tabs components-base-control uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "to",

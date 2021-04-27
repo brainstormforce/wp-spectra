@@ -1087,7 +1087,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'is_child'    => true,
 						'extension'   => false,
 						'attributes'  => array(
 							'classMigrate'            => false,
@@ -2190,6 +2189,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
+							'tabAlign'              => 'left',
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
 							'tabsStyleD'            => 'hstyle1',
@@ -2786,6 +2786,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Name', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Name field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-email'            => array(
@@ -2793,6 +2794,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Email', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Email field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-hidden'           => array(
@@ -2800,6 +2802,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'           => '',
 							'hidden_field_name'  => __( 'Hidden Field Name', 'ultimate-addons-for-gutenberg' ),
@@ -2812,6 +2815,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-textarea'         => array(
@@ -2819,6 +2823,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'     => '',
 							'textareaName' => __( 'Message', 'ultimate-addons-for-gutenberg' ),
@@ -2830,6 +2835,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-radio'            => array(
@@ -2837,6 +2843,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-url'              => array(
@@ -2844,6 +2851,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id' => '',
 							'name'     => __( 'URL', 'ultimate-addons-for-gutenberg' ),
@@ -2854,6 +2862,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-toggle'           => array(
@@ -2861,6 +2870,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-date'             => array(
@@ -2868,6 +2878,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-accept'           => array(
