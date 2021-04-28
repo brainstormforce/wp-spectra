@@ -5,10 +5,10 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 import Columnresponsive from "../../components/typography/column-responsive"
 
 let svg_icons = Object.keys( UAGBIcon )

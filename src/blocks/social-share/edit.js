@@ -6,7 +6,7 @@ import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
 import memoize from "memize"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import styling from "./styling"
 import Columnresponsive from "../../components/typography/column-responsive"
 

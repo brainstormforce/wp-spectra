@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
 import deprecated from "./deprecated"

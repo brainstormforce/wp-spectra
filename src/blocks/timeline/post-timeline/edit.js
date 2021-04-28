@@ -5,9 +5,9 @@ import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 import map from "lodash/map"
 import classnames from "classnames"
-import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 // Import css for timeline.
 import contentTimelineStyle from ".././inline-styles"

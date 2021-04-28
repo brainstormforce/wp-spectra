@@ -7,7 +7,7 @@ import classnames from "classnames"
 import PositionClasses from "./classes"
 import RestMenuStyle from "./inline-styles"
 import times from "lodash/times"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import memoize from "memize"
 import Columnresponsive from "../../components/typography/column-responsive"
 

@@ -4,7 +4,7 @@
 
 import classnames from "classnames"
 import attributes from "./attributes"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 import AuthorName from "./components/AuthorName"
 import Company from "./components/Company"
 import Description from "./components/Description"

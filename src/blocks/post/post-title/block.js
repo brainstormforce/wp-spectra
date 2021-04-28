@@ -7,7 +7,7 @@ import {PostTitle} from "./edit"
 import "./style.scss"
 import "./editor.scss"
 import save from "./save"
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
 // Components
 const { __ } = wp.i18n

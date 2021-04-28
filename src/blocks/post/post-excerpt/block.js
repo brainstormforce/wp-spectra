@@ -5,7 +5,7 @@
 // Import block dependencies and components
 import {PostExcerpt} from "./edit"
 import save from "./save"
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 //  Import CSS.
 import "./style.scss"
 // Components

@@ -4,10 +4,10 @@
 
 // Import classes
 import classnames from "classnames"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 const { __ } = wp.i18n
 

@@ -2,7 +2,7 @@
  * BLOCK: Content Timeline child.
  */
 import classnames from "classnames"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 const { dateI18n } = wp.date
 

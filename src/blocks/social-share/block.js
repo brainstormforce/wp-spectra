@@ -3,8 +3,8 @@
  */
 
 import classnames from "classnames"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import UAGB_Block_Icons from "@Controls/block-icons"
+import renderSVG from "@Controls/renderIcon"
 import "./style.scss"
 import "./editor.scss"
 import transform from "./transform"

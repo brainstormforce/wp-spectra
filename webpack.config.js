@@ -1,9 +1,19 @@
-const defaultConfig = require("@wordpress/scripts/config/webpack.config")
+const defaultConfig = require("@wordpress/scripts/config/webpack.config");
+const path = require( "path" );
 
 module.exports = {
 	...defaultConfig,
 	entry: {
-		"blocks": "./src/blocks.js",
+		"blocks": path.resolve(
+			__dirname,
+			'src/blocks.js'
+		),
+	},
+	resolve: {
+		alias: {
+			...defaultConfig.resolve.alias,
+			'@Controls': path.resolve( __dirname, 'blocks-config/uagb-controls/' ),
+		},
 	},
 	output: {
 		filename: "[name].js",
@@ -12,7 +22,6 @@ module.exports = {
 	}
 }
 
-const path = require( "path" )
 const paths = require( "./paths" )
 const fs = require( "fs" )
 const sass = require("node-sass")

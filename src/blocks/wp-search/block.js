@@ -7,7 +7,7 @@ import "./editor.scss"
 import save from "./save"
 import edit from "./edit"
 import attributes from "./attributes"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
 const { __ } = wp.i18n
 

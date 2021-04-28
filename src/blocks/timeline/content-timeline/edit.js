@@ -6,11 +6,11 @@ import classnames from "classnames"
 // import map from "lodash/map"
 import times from "lodash/times"
 import memoize from "memize"
-import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"

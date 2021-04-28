@@ -12,7 +12,7 @@ import TestimonialStyle from "./inline-styles"
 import TestimonialImage from "./components/Image"
 import times from "lodash/times"
 import Slider from "react-slick"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../components/typography/column-responsive"
 
 // Import all of our Text Options requirements.
