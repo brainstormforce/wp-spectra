@@ -8,8 +8,8 @@ import classnames from "classnames"
 import BoxShadowControl from "../../components/box-shadow"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import renderSVG from "@Controls/renderIcon"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../components/typography/column-responsive"
 
 const { __ } = wp.i18n

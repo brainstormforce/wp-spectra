@@ -232,7 +232,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			$json_file = UAGB_DIR . 'dist/blocks/uagb-controls/UAGBIcon.json';
+			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/UAGBIcon.json';
 			if ( ! file_exists( $json_file ) ) {
 				return array();
 			}

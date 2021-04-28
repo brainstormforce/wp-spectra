@@ -1,4 +1,4 @@
-import hexToRgba from "../../../dist/blocks/uagb-controls/hexToRgba";
+import hexToRgba from "@Controls/hexToRgba";
 const { __ } = wp.i18n;
 const { __experimentalPanelColorGradientSettings } = wp.blockEditor;
 

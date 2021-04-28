@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
 import Columnresponsive from "../../../components/typography/column-responsive"

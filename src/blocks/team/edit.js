@@ -3,11 +3,11 @@
  */
 
 import classnames from "classnames"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import renderSVG from "@Controls/renderIcon"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"

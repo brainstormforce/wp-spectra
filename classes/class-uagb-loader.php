@@ -111,14 +111,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
-			require_once UAGB_DIR . 'dist/blocks/post/class-uagb-post.php';
-			require_once UAGB_DIR . 'dist/blocks/post-timeline/class-uagb-post-timeline.php';
-			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
-			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
-			require_once UAGB_DIR . 'dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php';
-			require_once UAGB_DIR . 'dist/blocks/table-of-content/class-uagb-table-of-content.php';
-			require_once UAGB_DIR . 'dist/blocks/forms/class-uagb-forms.php';
-			require_once UAGB_DIR . 'dist/blocks/lottie/class-uagb-lottie.php';
+			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';

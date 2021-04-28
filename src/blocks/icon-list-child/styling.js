@@ -2,7 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSS from "@Controls/generateCSS"
 
 function styling( props ) {
 

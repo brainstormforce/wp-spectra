@@ -4,15 +4,15 @@
 
 
 import classnames from "classnames"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaPositionClasses from "./classes"
 import CTA from "./components/CTA"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import CtaStyle from "./inline-styles"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"

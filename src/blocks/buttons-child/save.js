@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 const { __ } = wp.i18n
 
 const {

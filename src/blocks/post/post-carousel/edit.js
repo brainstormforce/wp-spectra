@@ -4,7 +4,7 @@
 
 import get from "lodash/get"
 import map from "lodash/map"
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../../components/typography/column-responsive"
 
 // Import all of our Text Options requirements.
