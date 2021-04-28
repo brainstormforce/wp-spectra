@@ -10,7 +10,7 @@ import attributes from "./attributes"
 import deprecated from "./deprecated"
 import "./style.scss"
 import "./editor.scss"
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType,

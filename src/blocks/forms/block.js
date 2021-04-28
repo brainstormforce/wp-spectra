@@ -10,7 +10,7 @@ import "./style.scss"
 import "./editor.scss"
 import variations from './variations';
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType

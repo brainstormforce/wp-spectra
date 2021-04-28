@@ -20,7 +20,7 @@ import attributes from "./attributes"
 import edit from "./edit"
 
 // Components
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 // Register block controls
 const {

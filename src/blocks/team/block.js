@@ -12,7 +12,7 @@ import attributes from "./attributes"
 import "./editor.scss"
 import "./style.scss"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType,

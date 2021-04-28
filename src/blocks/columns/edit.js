@@ -18,7 +18,7 @@ import rowIcons from './icons';
 import Columnresponsive from "../../components/typography/column-responsive"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const {
 	withSelect,
 	useDispatch,

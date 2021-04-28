@@ -19,7 +19,7 @@ import styling from ".././styling"
 
 const { compose } = wp.compose
 const { Component, Fragment } = wp.element
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const { decodeEntities } = wp.htmlEntities
 const MAX_POSTS_COLUMNS = 8
 const { createBlock } = wp.blocks

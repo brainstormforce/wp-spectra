@@ -13,7 +13,8 @@ import Columnresponsive from "../../components/typography/column-responsive"
 
 let svg_icons = Object.keys( UAGBIcon )
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 const {
 	Component,

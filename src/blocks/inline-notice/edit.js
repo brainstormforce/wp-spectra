@@ -18,7 +18,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 // Setup the block
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	AlignmentToolbar,
