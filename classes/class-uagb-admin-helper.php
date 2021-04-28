@@ -276,7 +276,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			}
 
-			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
+			$combined_path = UAGB_DIR . 'assets/css/custom-style-blocks.css';
 			wp_delete_file( $combined_path );
 
 			$style = '';
@@ -284,7 +284,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$wp_filesystem = uagb_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
-				$style .= $wp_filesystem->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
+				$style .= $wp_filesystem->get_contents( UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
 			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
