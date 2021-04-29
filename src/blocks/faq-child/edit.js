@@ -5,7 +5,7 @@
 import classnames from "classnames"
 import renderSVG from "@Controls/renderIcon"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	Component,

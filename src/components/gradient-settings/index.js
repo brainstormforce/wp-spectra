@@ -1,5 +1,5 @@
 import hexToRgba from "@Controls/hexToRgba";
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 const { __experimentalPanelColorGradientSettings } = wp.blockEditor;
 
 function GradientSettings({ attributes, setAttributes }) {

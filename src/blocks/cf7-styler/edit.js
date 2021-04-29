@@ -10,8 +10,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 // Import icon.
 import styling from "./styling"
-
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	AlignmentToolbar,

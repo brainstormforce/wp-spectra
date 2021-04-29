@@ -10,7 +10,7 @@ import UAGBIcon from "@Controls/UAGBIcon.json"
 import styling from "./styling"
 import Columnresponsive from "../../components/typography/column-responsive"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	Component,

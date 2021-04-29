@@ -3,7 +3,7 @@
  * WordPress dependencies
  */
 
-const { __ } = wp.i18n
+ import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from "@Controls/block-icons"
 /**
  * Template option choices for predefined form layouts.

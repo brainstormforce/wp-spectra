@@ -12,7 +12,7 @@ import renderSVG from "@Controls/renderIcon"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../components/typography/column-responsive"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const {
 	Component,
 } = wp.element

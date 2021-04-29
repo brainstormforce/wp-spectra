@@ -9,7 +9,7 @@ import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	AlignmentToolbar,

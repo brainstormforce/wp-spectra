@@ -20,7 +20,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 import TableOfContents from './toc';
 
 const striptags = require('striptags');
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const { withSelect } = wp.data
 const { compose } = wp.compose
 

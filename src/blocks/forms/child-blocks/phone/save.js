@@ -6,7 +6,7 @@ import classnames from "classnames"
 
 import countryOptions from "./country-option"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const {	RichText } = wp.blockEditor
 
 export default function save( props ) {

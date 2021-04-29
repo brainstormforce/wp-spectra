@@ -6,7 +6,7 @@ import "./editor.scss"
 import edit from "./edit"
 import UAGB_Block_Icons from "@Controls/block-icons"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType,
