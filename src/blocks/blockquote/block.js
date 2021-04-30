@@ -2,16 +2,13 @@
  * BLOCK: Quote
  */
 
-// Import block dependencies and components.
-import UAGB_Block_Icons from "@Controls/block-icons";
-
-// Import icon.
+import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
-import deprecated from './deprecated';
 import save from './save';
-import attributes from './attributes';
 import './editor.scss';
 import './style.scss';
+import deprecated from './deprecated';
+import attributes from './attributes';
 const { __ } = wp.i18n;
 
 // Import registerBlockType() from wp.blocks

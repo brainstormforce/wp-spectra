@@ -1,19 +1,13 @@
-// Import block dependencies and components.
 import classnames from 'classnames';
-
-// Import icon.
 import TweetButtonCTA from './components/TweetButtonCTA';
 import Description from './components/Description';
 import AuthorText from './components/AuthorText';
 import AuthorImage from './components/AuthorImage';
 import styling from './styling';
 import map from 'lodash/map';
-import UAGB_Block_Icons from "@Controls/block-icons";
-import React, { useState, useEffect } from 'react';
-// Import all of our Text Options requirements.
+import UAGB_Block_Icons from '@Controls/block-icons';
+import React, { useEffect } from 'react';
 import TypographyControl from '../../components/typography';
-
-// Import Web font loader for google fonts.
 import WebfontLoader from '../../components/typography/fontloader';
 
 const { __ } = wp.i18n;
@@ -851,7 +845,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: quotecolor } }
+								style={ { backgroundColor: quoteColor } }
 							></span>
 						</span>
 					</p>
@@ -870,7 +864,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: quotebgcolor } }
+								style={ { backgroundColor: quoteBgColor } }
 							></span>
 						</span>
 					</p>
@@ -918,7 +912,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: quotehovercolor } }
+								style={ { backgroundColor: quoteHoverColor } }
 							></span>
 						</span>
 					</p>
@@ -937,7 +931,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: quotebghovercolor } }
+								style={ { backgroundColor: quoteBgHoverColor } }
 							></span>
 						</span>
 					</p>

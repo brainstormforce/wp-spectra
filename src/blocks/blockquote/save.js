@@ -3,16 +3,11 @@
  */
 
 import classnames from 'classnames';
-import UAGB_Block_Icons from "@Controls/block-icons";
+import UAGB_Block_Icons from '@Controls/block-icons';
 import TweetButtonCTA from './components/TweetButtonCTA';
 import Description from './components/Description';
 import AuthorText from './components/AuthorText';
 import AuthorImage from './components/AuthorImage';
-
-const { RichText } = wp.blockEditor;
-
-// Extend component
-const { Fragment } = wp.element;
 
 export default function save( props ) {
 	const {

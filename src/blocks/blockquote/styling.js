@@ -5,12 +5,11 @@
  * @return {Object} The inline background type CSS.
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
-		classMigrate,
 		skinStyle,
 		align,
 		authorColor,
