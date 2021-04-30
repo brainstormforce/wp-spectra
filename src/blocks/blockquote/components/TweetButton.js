@@ -1,5 +1,5 @@
 const { Fragment } = wp.element;
-import UAGB_Block_Icons from '../../../../dist/blocks/uagb-controls/block-icons';
+import UAGB_Block_Icons from "@Controls/block-icons";
 const TweetButton = ( { attributes } ) => (
 	<a
 		href="javascript:void(0)"

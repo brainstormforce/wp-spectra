@@ -8,7 +8,7 @@ import AuthorText from './components/AuthorText';
 import AuthorImage from './components/AuthorImage';
 import styling from './styling';
 import map from 'lodash/map';
-import UAGB_Block_Icons from '../../../dist/blocks/uagb-controls/block-icons';
+import UAGB_Block_Icons from "@Controls/block-icons";
 import React, { useState, useEffect } from 'react';
 // Import all of our Text Options requirements.
 import TypographyControl from '../../components/typography';
@@ -830,7 +830,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: bordercolor } }
+								style={ { backgroundColor: borderColor } }
 							></span>
 						</span>
 					</p>
@@ -898,7 +898,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: borderhovercolor } }
+								style={ { backgroundColor: borderHoverColor } }
 							></span>
 						</span>
 					</p>
@@ -1018,7 +1018,7 @@ const UAGBBlockQuote = ( props ) => {
 					<span className="components-base-control__label">
 						<span
 							className="component-color-indicator"
-							style={ { backgroundColor: desccolor } }
+							style={ { backgroundColor: descColor } }
 						></span>
 					</span>
 				</p>
@@ -1092,7 +1092,7 @@ const UAGBBlockQuote = ( props ) => {
 					<span className="components-base-control__label">
 						<span
 							className="component-color-indicator"
-							style={ { backgroundColor: authorcolor } }
+							style={ { backgroundColor: authorColor } }
 						></span>
 					</span>
 				</p>
@@ -1118,7 +1118,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: tweetlinkcolor } }
+								style={ { backgroundColor: tweetLinkColor } }
 							></span>
 						</span>
 					</p>
@@ -1138,7 +1138,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: tweetbtncolor } }
+								style={ { backgroundColor: tweetBtnColor } }
 							></span>
 						</span>
 					</p>
@@ -1158,7 +1158,7 @@ const UAGBBlockQuote = ( props ) => {
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
-								style={ { backgroundColor: tweetbtnbgcolor } }
+								style={ { backgroundColor: tweetBtnBgColor } }
 							></span>
 						</span>
 					</p>
@@ -1187,7 +1187,7 @@ const UAGBBlockQuote = ( props ) => {
 							<span
 								className="component-color-indicator"
 								style={ {
-									backgroundColor: tweetbtnhovercolor,
+									backgroundColor: tweetBtnHoverColor,
 								} }
 							></span>
 						</span>
@@ -1212,7 +1212,7 @@ const UAGBBlockQuote = ( props ) => {
 							<span
 								className="component-color-indicator"
 								style={ {
-									backgroundColor: tweetbtnhovercolor,
+									backgroundColor: tweetBtnHoverColor,
 								} }
 							></span>
 						</span>
@@ -1234,7 +1234,7 @@ const UAGBBlockQuote = ( props ) => {
 							<span
 								className="component-color-indicator"
 								style={ {
-									backgroundColor: tweetbtnbghovercolor,
+									backgroundColor: tweetBtnBgHoverColor,
 								} }
 							></span>
 						</span>
