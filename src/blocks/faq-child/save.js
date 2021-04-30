@@ -2,19 +2,14 @@
  * BLOCK: FAQ - Child - Save Block
  */
 
-import classnames from "classnames";
-import renderSVG from "@Controls/renderIcon"
+import classnames from 'classnames';
+import renderSVG from '@Controls/renderIcon';
 
-const {
-	Fragment,
-} = wp.element;
+const { Fragment } = wp.element;
 
-const {
-	RichText
-} = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default function save( props ) {
-	
 	const { className } = props;
 	const {
 		block_id,
@@ -23,11 +18,10 @@ export default function save( props ) {
 		icon,
 		iconActive,
 		layout,
-		headingTag
+		headingTag,
 	} = props.attributes;
 
 	const faqRenderIcon = () => {
-			
 		return (
 			<Fragment>
 				<span className="uagb-icon uagb-faq-icon-wrap">
@@ -40,7 +34,6 @@ export default function save( props ) {
 		);
 	};
 	const faqRenderAccordion = () => {
-
 		return (
 			<div className="uagb-faq-item" role="tab" tabIndex="0">
 				<div className="uagb-faq-questions-button uagb-faq-questions">
@@ -48,29 +41,26 @@ export default function save( props ) {
 					<RichText.Content
 						tagName={ headingTag }
 						value={ question }
-						className='uagb-question'
+						className="uagb-question"
 					/>
 				</div>
 				<div className="uagb-faq-content">
 					<span>
-						<RichText.Content
-							tagName='p'
-							value={ answer }
-						/>
+						<RichText.Content tagName="p" value={ answer } />
 					</span>
 				</div>
 			</div>
 		);
 	};
 	return (
-		<div className={ classnames(
-			className,
-			"uagb-faq-child__outer-wrap",
-			`uagb-block-${ block_id }`
-		) }
+		<div
+			className={ classnames(
+				className,
+				'uagb-faq-child__outer-wrap',
+				`uagb-block-${ block_id }`
+			) }
 		>
 			{ faqRenderAccordion() }
-
 		</div>
 	);
 }
