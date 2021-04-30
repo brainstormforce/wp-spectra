@@ -6,16 +6,16 @@
 
 import styling from './styling';
 import map from 'lodash/map';
-import UAGB_Block_Icons from '../../../dist/blocks/uagb-controls/block-icons';
+import UAGB_Block_Icons from "@Controls/block-icons"
 import columnsSettings from './settings';
 import renderColumns from './render';
 import React, { useEffect } from 'react';
+import { __ } from '@wordpress/i18n';
 
-const { __ } = wp.i18n;
 const { withSelect, useDispatch } = wp.data;
 
 const { compose } = wp.compose;
-const { Component } = wp.element;
+
 
 const { __experimentalBlockVariationPicker } = wp.blockEditor;
 

@@ -567,7 +567,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-columns__video-wrap'       => array(
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
-				' .uagb-column__wrap'        => array(
+				' .uagb-column__wrap'              => array(
 					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 				),
 				' .uagb-columns__shape-top svg'    => array(

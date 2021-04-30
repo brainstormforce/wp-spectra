@@ -10,7 +10,7 @@ import attributes from './attributes';
 
 const { InnerBlocks } = wp.blockEditor;
 
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 const deprecated = [
 	{
