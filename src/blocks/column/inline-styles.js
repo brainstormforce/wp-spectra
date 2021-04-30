@@ -2,10 +2,9 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSSUnit from '../../../dist/blocks/uagb-controls/generateCSSUnit';
 
 function inlineStyles( props, isEditor ) {
-
 	const {
 		backgroundColor,
 		backgroundOpacity,
@@ -25,53 +24,64 @@ function inlineStyles( props, isEditor ) {
 		gradientOverlayLocation1,
 		gradientOverlayLocation2,
 		gradientOverlayAngle,
-		gradientValue
-	} = props.attributes
+		gradientValue,
+	} = props.attributes;
 
-	var style = {}
+	const style = {};
 
-	if ( "image" === backgroundType ) {
-		if( "color" == overlayType ){
-			style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-			style["background-color"] = backgroundImageColor
-		}else{
-			style["background-color"] = "transparent"
-			style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-
-			if ( "linear" === gradientOverlayType ) {
-
-				style["background-image"] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
-			} else {
-
-				style["background-image"] = `radial-gradient( at center center, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
-			}
-		}
-
-	} else if ( "gradient" === backgroundType ) {
-		style["background-color"] = "transparent"
-		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-
-		if( gradientValue ) {
-			style["background-image"] = gradientValue
+	if ( 'image' === backgroundType ) {
+		if ( 'color' == overlayType ) {
+			style.opacity =
+				typeof backgroundOpacity !== 'undefined'
+					? backgroundOpacity / 100
+					: '';
+			style[ 'background-color' ] = backgroundImageColor;
 		} else {
-			if ( "linear" === gradientType ) {
+			style[ 'background-color' ] = 'transparent';
+			style.opacity =
+				typeof backgroundOpacity !== 'undefined'
+					? backgroundOpacity / 100
+					: '';
 
-				style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			if ( 'linear' === gradientOverlayType ) {
+				style[
+					'background-image'
+				] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
 			} else {
-	
-				style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+				style[
+					'background-image'
+				] = `radial-gradient( at center center, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
 			}
 		}
-		
-	} else if ( "color" == backgroundType ) {
+	} else if ( 'gradient' === backgroundType ) {
+		style[ 'background-color' ] = 'transparent';
+		style.opacity =
+			typeof backgroundOpacity !== 'undefined'
+				? backgroundOpacity / 100
+				: '';
 
-		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-		style["background-color"] = backgroundColor
+		if ( gradientValue ) {
+			style[ 'background-image' ] = gradientValue;
+		} else if ( 'linear' === gradientType ) {
+			style[
+				'background-image'
+			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+		} else {
+			style[
+				'background-image'
+			] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+		}
+	} else if ( 'color' == backgroundType ) {
+		style.opacity =
+			typeof backgroundOpacity !== 'undefined'
+				? backgroundOpacity / 100
+				: '';
+		style[ 'background-color' ] = backgroundColor;
 	}
 
-	style["border-radius"] = generateCSSUnit( borderRadius, "px" )
+	style[ 'border-radius' ] = generateCSSUnit( borderRadius, 'px' );
 
-	return style
+	return style;
 }
 
-export default inlineStyles
+export default inlineStyles;
