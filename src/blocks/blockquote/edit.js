@@ -9,8 +9,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useEffect } from 'react';
 import TypographyControl from '../../components/typography';
 import WebfontLoader from '../../components/typography/fontloader';
-
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 const {
 	AlignmentToolbar,
@@ -34,9 +33,6 @@ const {
 	ButtonGroup,
 	Dashicon,
 } = wp.components;
-
-// Extend component
-const { Component, Fragment } = wp.element;
 
 const UAGBBlockQuote = ( props ) => {
 	useEffect( () => {
@@ -305,7 +301,7 @@ const UAGBBlockQuote = ( props ) => {
 	];
 
 	const border_settings = (
-		<Fragment>
+		<>
 			<h2>
 				{ __(
 					'Modern Layout - Styling',
@@ -375,11 +371,11 @@ const UAGBBlockQuote = ( props ) => {
 					allowReset
 				/>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const quote_settings = (
-		<Fragment>
+		<>
 			<h2>
 				{ __(
 					'Quotation Layout - Styling',
@@ -412,7 +408,7 @@ const UAGBBlockQuote = ( props ) => {
 
 					if ( 'mobile' === tab.name ) {
 						tabout = (
-							<Fragment>
+							<>
 								{ quoteSizeTypeControls }
 								<RangeControl
 									label={ __(
@@ -431,11 +427,11 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					} else if ( 'tablet' === tab.name ) {
 						tabout = (
-							<Fragment>
+							<>
 								{ quoteSizeTypeControls }
 								<RangeControl
 									label={ __(
@@ -454,11 +450,11 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					} else {
 						tabout = (
-							<Fragment>
+							<>
 								{ quoteSizeTypeControls }
 								<RangeControl
 									label={ __(
@@ -475,7 +471,7 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					}
 
@@ -508,7 +504,7 @@ const UAGBBlockQuote = ( props ) => {
 
 					if ( 'mobile' === tab.name ) {
 						tabout = (
-							<Fragment>
+							<>
 								{ quotePaddingControls }
 								<RangeControl
 									label={ __(
@@ -527,11 +523,11 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					} else if ( 'tablet' === tab.name ) {
 						tabout = (
-							<Fragment>
+							<>
 								{ quotePaddingControls }
 								<RangeControl
 									label={ __(
@@ -550,11 +546,11 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					} else {
 						tabout = (
-							<Fragment>
+							<>
 								{ quotePaddingControls }
 								<RangeControl
 									label={ __(
@@ -571,7 +567,7 @@ const UAGBBlockQuote = ( props ) => {
 									allowReset
 									initialPosition={ 30 }
 								/>
-							</Fragment>
+							</>
 						);
 					}
 
@@ -593,7 +589,7 @@ const UAGBBlockQuote = ( props ) => {
 					allowReset
 				/>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const skin_settings = (
@@ -620,7 +616,7 @@ const UAGBBlockQuote = ( props ) => {
 			{ skinStyle === 'border' && border_settings }
 			{ skinStyle === 'quotation' && quote_settings }
 			{ skinStyle === 'quotation' && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<h2>
 						{ __(
@@ -628,7 +624,7 @@ const UAGBBlockQuote = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					</h2>
-				</Fragment>
+				</>
 			) }
 			{ 'none' != borderStyle && (
 				<TabPanel
@@ -693,7 +689,7 @@ const UAGBBlockQuote = ( props ) => {
 
 	// Image controls.
 	const imageControls = (
-		<Fragment>
+		<>
 			<hr className="uagb-editor__separator" />
 			<BaseControl
 				className="editor-bg-image-control"
@@ -732,7 +728,7 @@ const UAGBBlockQuote = ( props ) => {
 			{ authorImage &&
 				authorImage.url !== 'null' &&
 				authorImage.url !== '' && (
-					<Fragment>
+					<>
 						<SelectControl
 							label={ __(
 								'Author Image Position',
@@ -807,15 +803,15 @@ const UAGBBlockQuote = ( props ) => {
 							beforeIcon=""
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
-		</Fragment>
+		</>
 	);
 
 	const colorSettings = (
-		<Fragment>
+		<>
 			{ 'none' != borderStyle && skinStyle == 'border' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Border Color',
@@ -835,11 +831,11 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 
 			{ skinStyle == 'quotation' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
@@ -875,15 +871,15 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const hoverSettings = (
-		<Fragment>
+		<>
 			{ skinStyle == 'border' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Border Hover Color',
@@ -903,10 +899,10 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 			{ skinStyle == 'quotation' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
@@ -942,13 +938,13 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const Typography = (
-		<Fragment>
+		<>
 			<PanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
@@ -1100,13 +1096,13 @@ const UAGBBlockQuote = ( props ) => {
 
 				{ imageControls }
 			</PanelBody>
-		</Fragment>
+		</>
 	);
 
 	const tweet_normal = (
-		<Fragment>
+		<>
 			{ iconSkin == 'link' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __( 'Tweet Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
@@ -1123,10 +1119,10 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 			{ iconSkin !== 'link' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __( 'Tweet Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
@@ -1163,15 +1159,15 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const tweet_hover = (
-		<Fragment>
+		<>
 			{ iconSkin == 'link' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Tweet Hover Color',
@@ -1193,10 +1189,10 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 			{ iconSkin !== 'link' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Tweet Hover Color',
@@ -1242,9 +1238,9 @@ const UAGBBlockQuote = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const spacing_settings = (
@@ -1253,7 +1249,7 @@ const UAGBBlockQuote = ( props ) => {
 			initialOpen={ false }
 		>
 			{ skinStyle === 'quotation' && (
-				<Fragment>
+				<>
 					<h2>
 						{ __(
 							'Quote Icon Margin (px)',
@@ -1305,7 +1301,7 @@ const UAGBBlockQuote = ( props ) => {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-				</Fragment>
+				</>
 			) }
 			{ skinStyle === 'border' && (
 				<RangeControl
@@ -1352,7 +1348,7 @@ const UAGBBlockQuote = ( props ) => {
 			) }
 
 			{ skinStyle === 'border' && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<h2>
 						{ __(
@@ -1371,7 +1367,7 @@ const UAGBBlockQuote = ( props ) => {
 						max={ 500 }
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 		</PanelBody>
 	);
@@ -1392,7 +1388,7 @@ const UAGBBlockQuote = ( props ) => {
 				}
 			/>
 			{ enableTweet && (
-				<Fragment>
+				<>
 					<SelectControl
 						label={ __(
 							'Icon View',
@@ -1459,10 +1455,10 @@ const UAGBBlockQuote = ( props ) => {
 							},
 						] }
 					/>
-				</Fragment>
+				</>
 			) }
 			{ enableTweet && iconView !== 'icon' && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<TextControl
 						label={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
@@ -1471,11 +1467,11 @@ const UAGBBlockQuote = ( props ) => {
 							setAttributes( { iconLabel: value } )
 						}
 					/>
-				</Fragment>
+				</>
 			) }
 
 			{ enableTweet && (
-				<Fragment>
+				<>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1570,10 +1566,10 @@ const UAGBBlockQuote = ( props ) => {
 							}
 						/>
 					) }
-				</Fragment>
+				</>
 			) }
 			{ enableTweet && iconSkin !== 'link' && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<h2>
 						{ __(
@@ -1605,10 +1601,10 @@ const UAGBBlockQuote = ( props ) => {
 						allowReset
 						initialPosition={ 5 }
 					/>
-				</Fragment>
+				</>
 			) }
 			{ enableTweet && iconView == 'icon_text' && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
 						label={ __(
@@ -1624,10 +1620,10 @@ const UAGBBlockQuote = ( props ) => {
 						allowReset
 						initialPosition={ 5 }
 					/>
-				</Fragment>
+				</>
 			) }
 			{ enableTweet && (
-				<Fragment>
+				<>
 					<hr className="uagb-editor__separator" />
 					<TabPanel
 						className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
@@ -1661,13 +1657,13 @@ const UAGBBlockQuote = ( props ) => {
 							return <div>{ tweet_tab_output }</div>;
 						} }
 					</TabPanel>
-				</Fragment>
+				</>
 			) }
 		</PanelBody>
 	);
 
 	return (
-		<Fragment>
+		<>
 			<BlockControls key="controls">
 				{ skinStyle !== 'border' && (
 					<AlignmentToolbar
@@ -1678,7 +1674,7 @@ const UAGBBlockQuote = ( props ) => {
 					/>
 				) }
 				{ skinStyle === 'quotation' && (
-					<Fragment>
+					<>
 						<Toolbar label="Options">
 							<Tooltip
 								text={ __(
@@ -1732,11 +1728,11 @@ const UAGBBlockQuote = ( props ) => {
 								</Button>
 							</Tooltip>
 						</Toolbar>
-					</Fragment>
+					</>
 				) }
 
 				{ enableTweet && (
-					<Fragment>
+					<>
 						<Toolbar label="Options">
 							<label
 								aria-label={ __(
@@ -1769,7 +1765,7 @@ const UAGBBlockQuote = ( props ) => {
 								value={ iconShareVia }
 							/>
 						</Toolbar>
-					</Fragment>
+					</>
 				) }
 			</BlockControls>
 			<InspectorControls>
@@ -1853,7 +1849,7 @@ const UAGBBlockQuote = ( props ) => {
 			{ loadDescGoogleFonts }
 			{ loadAuthorGoogleFonts }
 			{ loadTweetGoogleFonts }
-		</Fragment>
+		</>
 	);
 };
 

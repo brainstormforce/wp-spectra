@@ -9,7 +9,7 @@ import './editor.scss';
 import './style.scss';
 import deprecated from './deprecated';
 import attributes from './attributes';
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 // Import registerBlockType() from wp.blocks
 const { registerBlockType, createBlock } = wp.blocks;

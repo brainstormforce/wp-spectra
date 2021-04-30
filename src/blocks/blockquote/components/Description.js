@@ -1,5 +1,5 @@
 const { RichText } = wp.blockEditor;
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 const { createBlock } = wp.blocks;
 
 const Description = ( { attributes, setAttributes, props } ) => {
