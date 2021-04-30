@@ -20,9 +20,9 @@
 
 .block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list{list-style:none;display:flex;margin:0;padding:0}.block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a{color:#333}.wp-block-uagb-team .components-button:focus:enabled,.wp-block-uagb-team .components-button{background:transparent;border:none;box-shadow:none}.wp-block-uagb-team p.uagb-team__desc.block-editor-rich-text__editable{margin:0;margin-bottom:10px}
 
-#wpwrap .edit-post-visual-editor a.uagb-ss__link{color:#3a3a3a}#wpwrap .edit-post-visual-editor a.uagb-ss__link{color:#3a3a3a}.uagb-social-share__layout-vertical .uagb-social-share__wrap>.block-editor-inner-blocks{width:100%}[data-type="uagb/social-share"] .uagb-social-share__layout-horizontal .block-editor-inner-blocks>.block-editor-block-list__layout{display:flex}[data-type="uagb/social-share"] .block-editor-inner-blocks>.block-editor-block-list__layout>.wp-block{width:auto;padding-left:0;padding-right:0;margin-left:10px;margin-right:10px}
+#wpwrap .edit-post-visual-editor a.uagb-ss__link,#wpwrap .edit-post-visual-editor a.uagb-ss__link{color:#3a3a3a}.uagb-social-share__layout-vertical .uagb-social-share__outer-wrap>.block-editor-inner-blocks{width:100%}[data-type="uagb/social-share"] .uagb-social-share__layout-horizontal .block-editor-inner-blocks>.block-editor-block-list__layout{display:flex}[data-type="uagb/social-share"] .block-editor-inner-blocks>.block-editor-block-list__layout>.wp-block{width:auto;padding-left:0;padding-right:0;margin-left:10px;margin-right:10px}
 
-.wp-block.block-editor-block-list__block[data-type="uagb/social-share-child"]{margin-top:15px;margin-bottom:15px}.uagb-social-share__layout-vertical .uagb-social-share__wrap .block-list-appender{margin-top:28px;width:60px}.uagb-social-share__layout-horizontal .uagb-social-share__wrap .block-list-appender{margin-top:0;margin-left:20px}
+.wp-block.block-editor-block-list__block[data-type="uagb/social-share-child"]{margin-top:15px;margin-bottom:15px}.uagb-social-share__layout-vertical .block-list-appender{margin-top:28px;width:60px}.uagb-social-share__layout-horizontal .block-list-appender{margin-top:0;margin-left:20px}
 
 .block-editor-block-list__block .uagb-google-map__wrap{padding:25px}
 

@@ -3,26 +3,20 @@
  */
 
 // Import block dependencies and components.
-import classnames from "classnames"
-import renderSVG from "@Controls/renderIcon"
-import links from "./links"
+import classnames from "classnames";
 
 const {
 	InnerBlocks
-} = wp.blockEditor
+} = wp.blockEditor;
 
 export default function save( props ) {
 
-	const { attributes, className } = props
+	const { className } = props;
 
 	const {
 		block_id,
-		align,
-		items,
-		socials,
-		social_count,
 		social_layout,
-	} = props.attributes
+	} = props.attributes;
 
 	return (
 		<div className={ classnames(
@@ -31,9 +25,7 @@ export default function save( props ) {
 			`uagb-social-share__layout-${social_layout}`,
 			`uagb-block-${ block_id}`
 		) }>
-			<div className="uagb-social-share__wrap">
-				<InnerBlocks.Content />
-			</div>
+			<InnerBlocks.Content />
 		</div>
-	)
+	);
 }
