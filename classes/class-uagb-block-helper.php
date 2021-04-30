@@ -2401,7 +2401,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
-				' .uagb-timeline__day-new'       => array(
+				' .uagb-timeline__day-new'          => array(
 					'text-align' => $attr['align'],
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -3527,7 +3527,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
-				' .uagb-timeline__day-new'             => array(
+				' .uagb-timeline__day-new'                => array(
 					'text-align' => $attr['align'],
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(

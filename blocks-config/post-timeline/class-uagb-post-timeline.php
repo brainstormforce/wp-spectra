@@ -536,7 +536,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			ob_start();
 			?>
-			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); echo esc_html( $this->get_classes( $attributes ) ); ?>" >
+			<div class = "
+			<?php
+			echo esc_attr( implode( ' ', $main_classes ) );
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			<?php
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			" >
 				<div class = "uagb-timeline__main">
 					<?php
 					if ( empty( $recent_posts ) ) {
