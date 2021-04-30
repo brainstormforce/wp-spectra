@@ -3,23 +3,21 @@
  */
 
 import UAGB_Block_Icons from "@Controls/block-icons"
-import attributes from "./attributes"
-import edit from "./edit"
-import save from "./save"
-import "./style.scss"
-import "./editor.scss"
-import deprecated from "./deprecated"
-
-
+import attributes from "./attributes";
+import edit from "./edit";
+import save from "./save";
+import "./style.scss";
+import "./editor.scss";
+import deprecated from "./deprecated";
 import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType
-} = wp.blocks
+} = wp.blocks;
 
 registerBlockType( "uagb/faq-child", {
-	title: uagb_blocks_info.blocks["uagb/faq-child"]["title"],
-	description: uagb_blocks_info.blocks["uagb/faq-child"]["description"],
+	title: uagb_blocks_info.blocks["uagb/faq-child"].title,
+	description: uagb_blocks_info.blocks["uagb/faq-child"].description,
 	icon: UAGB_Block_Icons.faq,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/faq" ],
@@ -30,4 +28,4 @@ registerBlockType( "uagb/faq-child", {
 	},
 	save,
 	deprecated
-} )
+} );

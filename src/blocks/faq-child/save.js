@@ -2,20 +2,20 @@
  * BLOCK: FAQ - Child - Save Block
  */
 
-import classnames from "classnames"
+import classnames from "classnames";
 import renderSVG from "@Controls/renderIcon"
 
 const {
 	Fragment,
-} = wp.element
+} = wp.element;
 
 const {
 	RichText
-} = wp.blockEditor
+} = wp.blockEditor;
 
 export default function save( props ) {
 	
-	const { className } = props
+	const { className } = props;
 	const {
 		block_id,
 		question,
@@ -24,46 +24,44 @@ export default function save( props ) {
 		iconActive,
 		layout,
 		headingTag
-	} = props.attributes
+	} = props.attributes;
 
 	const faqRenderIcon = () => {
 			
 		return (
 			<Fragment>
 				<span className="uagb-icon uagb-faq-icon-wrap">
-					{ renderSVG(icon) }
+					{ renderSVG( icon ) }
 				</span>
 				<span className="uagb-icon-active uagb-faq-icon-wrap">
-					{ renderSVG(iconActive) }
+					{ renderSVG( iconActive ) }
 				</span>
 			</Fragment>
-		)
-	}
+		);
+	};
 	const faqRenderAccordion = () => {
 
 		return (
-				<div className="uagb-faq-child__wrapper">
-					<div className="uagb-faq-item" role="tab" tabIndex="0">
-						<div className="uagb-faq-questions-button uagb-faq-questions">
-							{ 'accordion' === layout && faqRenderIcon() }
-							<RichText.Content
-								tagName={ headingTag }
-								value={ question }
-								className='uagb-question'
-							/>
-						</div>
-						<div className="uagb-faq-content">
-							<span>
-								<RichText.Content
-									tagName='p'
-									value={ answer }
-								/>
-							</span>
-						</div>
-					</div>
+			<div className="uagb-faq-item" role="tab" tabIndex="0">
+				<div className="uagb-faq-questions-button uagb-faq-questions">
+					{ 'accordion' === layout && faqRenderIcon() }
+					<RichText.Content
+						tagName={ headingTag }
+						value={ question }
+						className='uagb-question'
+					/>
 				</div>
-			)
-	}
+				<div className="uagb-faq-content">
+					<span>
+						<RichText.Content
+							tagName='p'
+							value={ answer }
+						/>
+					</span>
+				</div>
+			</div>
+		);
+	};
 	return (
 		<div className={ classnames(
 			className,
@@ -74,5 +72,5 @@ export default function save( props ) {
 			{ faqRenderAccordion() }
 
 		</div>
-	)
+	);
 }
