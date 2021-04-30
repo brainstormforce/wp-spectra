@@ -1,3 +1,7 @@
+/**
+ * BLOCK: Column - Attributes
+ */
+
 const attributes = {
 	block_id: {
 		type: "string",
