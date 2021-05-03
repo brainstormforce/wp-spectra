@@ -1,0 +1,55 @@
+// Import classes
+import classnames from 'classnames';
+import times from 'lodash/times';
+import memoize from 'memize';
+const { InnerBlocks } = wp.blockEditor;
+
+const ALLOWED_BLOCKS = [ 'uagb/icon-list-child' ];
+
+const iconListRender = ( props ) => {
+	const { attributes, deviceType } = props;
+
+	const {
+		className,
+		icon_count,
+		icons,
+		icon_layout,
+		iconPosition,
+		hideLabel,
+		block_id,
+	} = attributes;
+
+	const labelClass = hideLabel ? 'uagb-icon-list__no-label' : '';
+
+	const getIconTemplate = memoize( ( icon_block, icons ) => {
+		return times( icon_block, ( n ) => [
+			'uagb/icon-list-child',
+			icons[ n ],
+		] );
+	} );
+
+	return (
+		<div
+			className={ classnames(
+				className,
+				'uagb-icon-list__outer-wrap',
+				`uagb-icon-list__layout-${ icon_layout }`,
+				iconPosition == 'top' ? 'uagb-icon-list__icon-at-top' : '',
+				labelClass,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ block_id }`
+			) }
+		>
+			<div className="uagb-icon-list__wrap">
+				<InnerBlocks
+					template={ getIconTemplate( icon_count, icons ) }
+					templateLock={ false }
+					allowedBlocks={ ALLOWED_BLOCKS }
+					__experimentalMoverDirection={ icon_layout }
+				/>
+			</div>
+		</div>
+	);
+};
+
+export default iconListRender;
