@@ -1,22 +1,25 @@
-const CtaLink = props => {
-
-	const { post, attributes } = props
-	let target ="_self"
-	if( attributes.linkTarget ){
-		target ="_blank"
+const CtaLink = ( props ) => {
+	const { post, attributes } = props;
+	let target = '_self';
+	if ( attributes.linkTarget ) {
+		target = '_blank';
 	}
 
 	if ( attributes.displayPostLink ) {
 		return (
-			<div className='uagb-timeline__link_parent'	>
-				<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer">
+			<div className="uagb-timeline__link_parent">
+				<a
+					className="uagb-timeline__link"
+					href={ post.link }
+					target={ target }
+					rel="noopener noreferrer"
+				>
 					{ attributes.readMoreText }
 				</a>
 			</div>
-		)
-	} else {
-		return null
+		);
 	}
-}
+	return null;
+};
 
-export default CtaLink
+export default CtaLink;
