@@ -31,15 +31,12 @@ export default function renderPostTimeline ( props ) {
     /* Render output at backend */
 	const getContent = () => {
 
-		const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = props;
+		const { attributes, latestPosts } = props;
 
 		const {
 			timelinAlignment,
-			arrowlinAlignment,
-			displayPostDate,
 			postsToShow,
 			contentPadding,
-			align,
 		} = attributes;
 
 
