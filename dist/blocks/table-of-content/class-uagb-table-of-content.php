@@ -242,40 +242,13 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			foreach ( $heading_list as $key => $heading ) {
 
 				if ( ! is_null( $heading_list[ $key ] ) ) {
-					if (
-						isset( $heading_list[ $key + 1 ] ) &&
-						$heading_list[ $key + 1 ]['level'] > $heading['level']
-					) {
 
-						$heading_list_length = count( $heading_list );
-						$end_of_slice        = $heading_list_length;
-						for ( $i = $key + 1; $i < $heading_list_length; $i++ ) {
-							if ( $heading_list[ $i ]['level'] === $heading['level'] ) {
-								$end_of_slice = $i;
-								break;
-							}
-						}
+					$nested_heading_list[] = array(
+						'heading'  => $heading,
+						'index'    => $index + $key,
+						'children' => null,
+					);
 
-						$nested_heading_list[] = array(
-							'heading'  => $heading,
-							'index'    => $index + $key,
-							'children' => $this->block_core_table_of_contents_linear_to_nested_heading_list(
-								array_slice(
-									$heading_list,
-									$key + 1,
-									$end_of_slice - ( $key + 1 )
-								),
-								$index + $key + 1
-							),
-						);
-						break;
-					} else {
-							$nested_heading_list[] = array(
-								'heading'  => $heading,
-								'index'    => $index + $key,
-								'children' => null,
-							);
-					}
 				}
 			}
 
@@ -299,63 +272,34 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$attributes
 		) {
 
-			$entry_class = 'wp-block-table-of-contents__entry';
-			$child_nodes = array_map(
-				function ( $child_node ) use ( $entry_class, $page_url, $attributes ) {
-					global $multipage;
-					$id      = $child_node['heading']['id'];
-					$content = $child_node['heading']['content'];
-					$heading = '';
+			$toc        = '';
+			$last_level = 0;
 
-					if ( $content ) {
-						$heading = esc_html( $content );
-					}
-					if ( isset( $id ) ) {
-						if ( $multipage ) {
-							$href = add_query_arg(
-								'page',
-								(string) $child_node['heading']['page'],
-								remove_query_arg( 'page', $page_url )
-							) . '#' . $id;
-						} else {
-							$href = $page_url . '#' . $id;
-						}
-						$entry = sprintf(
-							'<a class="%1$s" href="%2$s">%3$s</a>',
-							$entry_class,
-							esc_url( $href ),
-							$heading
-						);
+			foreach ( $nested_heading_list as $heading ) {
+				$level   = $heading['heading']['level'];
+				$id      = $heading['heading']['id'];
+				$content = $heading['heading']['content'];
+
+				if ( $level > $last_level ) {
+					$arrayOpenLevel = array( $level - $last_level + 1 );
+					if ( 2 === count( $arrayOpenLevel ) ) {
+						$toc .= ( "<ul class='uagb-toc__list'>" );
 					} else {
-						$entry = sprintf(
-							'<span class="%1$s" >%2$s</span>',
-							$entry_class,
-							$heading
-						);
+						$toc .= "<ul class='uagb-toc__list'>";
 					}
-
-					$children = '';
-
-					if ( $child_node['children'] ) {
-
-						$children = $this->block_core_table_of_contents_render_list(
-							$child_node['children'],
-							$page_url,
-							$attributes
-						);
-
+				} elseif ( $level < $last_level ) {
+					$arrayLevel = array( $last_level - $level + 1 );
+					if ( 0 !== count( $arrayLevel ) ) {
+						$toc .= ( '</ul>' );
+					} else {
+						$toc .= '</ul>';
 					}
+				}
+				$last_level = intval( $level );
+				$toc       .= "<li><a href='#{$id}'>{$content}</a></li>";
+			}
+			return $toc;
 
-					return sprintf(
-						'<li>%1$s%2$s</li>',
-						strlen( $heading ) > 0 ? $entry : '',
-						$children
-					);
-				},
-				$nested_heading_list
-			);
-
-			return '<ul class="uagb-toc__list">' . implode( $child_nodes ) . '</ul>';
 		}
 
 		/**
@@ -410,7 +354,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				<div class="uagb-toc__wrap">
 					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-							<?php echo esc_html( $attributes['headingTitle'] ); ?>
+							<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
 						</div>
 						<?php
 						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
