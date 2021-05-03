@@ -1,13 +1,11 @@
-import React from "react";
+import React from 'react';
+import { __ } from '@wordpress/i18n';
 
 const { InspectorControls } = wp.blockEditor;
 
 const { PanelBody, RangeControl, TextControl, SelectControl } = wp.components;
 
-const { Component, Fragment } = wp.element;
-
 const Settings = ( props ) => {
-
 	props = props.parentProps;
 
 	const {
@@ -55,10 +53,7 @@ const Settings = ( props ) => {
 					allowReset
 				/>
 				<RangeControl
-					label={ __(
-						'Height',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
 					value={ height }
 					onChange={ ( value ) =>
 						setAttributes( {
@@ -70,10 +65,7 @@ const Settings = ( props ) => {
 					allowReset
 				/>
 				<SelectControl
-					label={ __(
-						'Language',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Language', 'ultimate-addons-for-gutenberg' ) }
 					value={ language }
 					onChange={ ( value ) =>
 						setAttributes( {
@@ -363,10 +355,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'lo',
-							label: __(
-								'Lao',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Lao', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'lv',
@@ -583,9 +572,6 @@ const Settings = ( props ) => {
 			</PanelBody>
 		</InspectorControls>
 	);
-
-
-
-}
+};
 
 export default React.memo( Settings );

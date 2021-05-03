@@ -2,13 +2,13 @@
  * BLOCK: Google Map
  */
 
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import './style.scss';
 import './editor.scss';
-import edit from "./edit"
-import save from "./save"
-import deprecated from "./deprecated"
-import attributes from "./attributes"
+import edit from './edit';
+import save from './save';
+import deprecated from './deprecated';
+import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
 const { registerBlockType } = wp.blocks;
@@ -26,9 +26,9 @@ registerBlockType( 'uagb/google-map', {
 		anchor: true,
 	},
 	category: uagb_blocks_info.category,
-	attributes: attributes,
+	attributes,
 	example: {},
-	edit: edit,
-	save: save,
-	deprecated: deprecated,
+	edit,
+	save,
+	deprecated,
 } );

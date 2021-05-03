@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import React from "react";
+import classnames from 'classnames';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 const api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
