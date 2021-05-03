@@ -1,5 +1,8 @@
 import classnames from "classnames";
 import React from "react";
+import { __ } from '@wordpress/i18n';
+
+const api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
 
 export default function save( props ) {
 
@@ -23,8 +26,7 @@ export default function save( props ) {
 				className="uagb-google-map__iframe"
 				title={ __( 'Google Map for ' + address ) }
 				src={ url }
-				style={ { height } }
-			></iframe>
+				style={ { height } }></iframe>
 		</div>
 	);
 
