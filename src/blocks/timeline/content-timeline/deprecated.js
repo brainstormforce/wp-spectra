@@ -9,7 +9,9 @@ import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
 import renderSVG from "@Controls/renderIcon"
-
+const {
+    InnerBlocks
+} = wp.blockEditor
 const { dateI18n, __experimentalGetSettings } = wp.date
 
 const {
@@ -536,6 +538,40 @@ const deprecated = [
 				</div>
 			)
 		}
+	},
+	{
+		attributes,
+		save: function( props ) {
+
+			const {
+				block_id,
+			} = props.attributes
+		
+			return (
+				<div  className={ classnames(
+					props.className,
+					"uagb-timeline__outer-wrap",
+					`uagb-block-${block_id}`
+				) }>
+					<div  className = { classnames(
+						"uagb-timeline__content-wrap",
+						...ContentTmClasses( props.attributes ),
+					) }>
+						<div className = "uagb-timeline-wrapper">
+							<div className = "uagb-timeline__main">
+								<div className = "uagb-timeline__days">
+									<InnerBlocks.Content />
+								</div>
+								<div className = "uagb-timeline__line" >
+									<div className = "uagb-timeline__line__inner"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			)
+		}
+
 	}
 ]
 
