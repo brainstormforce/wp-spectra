@@ -1,14 +1,12 @@
-import classnames from "classnames";
-import UAGB_Block_Icons from "@Controls/block-icons";
-import Description from "./components/Description";
-import AuthorImage from "./components/AuthorImage";
-import AuthorText from "./components/AuthorText";
-import TweetButtonCTA from "./components/TweetButtonCTA";
-import React from "react";
-
+import classnames from 'classnames';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import Description from './components/Description';
+import AuthorImage from './components/AuthorImage';
+import AuthorText from './components/AuthorText';
+import TweetButtonCTA from './components/TweetButtonCTA';
+import React from 'react';
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const { className, setAttributes, attributes } = props;
@@ -52,9 +50,9 @@ const Render = ( props ) => {
 				<blockquote className="uagb-blockquote">
 					{ skinStyle === 'quotation' && (
 						<div className="uagb-blockquote__icon-wrap">
-								<span className="uagb-blockquote__icon">
-									{ UAGB_Block_Icons.quote_inline_icon }
-								</span>{ ' ' }
+							<span className="uagb-blockquote__icon">
+								{ UAGB_Block_Icons.quote_inline_icon }
+							</span>{ ' ' }
 						</div>
 					) }
 
@@ -76,11 +74,7 @@ const Render = ( props ) => {
 										: ''
 								) }
 							>
-								{
-									<AuthorImage
-										attributes={ attributes }
-									/>
-								}
+								{ <AuthorImage attributes={ attributes } /> }
 								{
 									<AuthorText
 										attributes={ attributes }
@@ -97,7 +91,7 @@ const Render = ( props ) => {
 				</blockquote>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
 export default React.memo( Render );

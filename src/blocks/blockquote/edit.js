@@ -4,7 +4,6 @@ import Render from './render';
 import React, { useEffect } from 'react';
 
 const UAGBBlockQuote = ( props ) => {
-
 	useEffect( () => {
 		const element = document.getElementById(
 			'uagb-blockquote-style-' + props.clientId.substr( 0, 8 )
@@ -33,8 +32,8 @@ const UAGBBlockQuote = ( props ) => {
 
 	return (
 		<>
-			<Settings parentProps={props} />
-			<Render parentProps={props} />
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
 		</>
 	);
 };

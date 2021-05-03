@@ -1,8 +1,8 @@
-import classnames from "classnames";
-import UAGB_Block_Icons from "@Controls/block-icons";
-import React from "react";
-import WebfontLoader from "../../components/typography/fontloader";
-import TypographyControl from "../../components/typography";
+import classnames from 'classnames';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import React from 'react';
+import WebfontLoader from '../../components/typography/fontloader';
+import TypographyControl from '../../components/typography';
 import { __ } from '@wordpress/i18n';
 import map from 'lodash/map';
 
@@ -29,8 +29,7 @@ const {
 	MediaUpload,
 } = wp.blockEditor;
 
-const  Settings =  ( props ) => {
-
+const Settings = ( props ) => {
 	props = props.parentProps;
 
 	const { className, setAttributes, attributes } = props;
@@ -39,7 +38,6 @@ const  Settings =  ( props ) => {
 		{ key: 'px', name: __( 'px', 'ultimate-addons-for-gutenberg' ) },
 		{ key: 'em', name: __( 'em', 'ultimate-addons-for-gutenberg' ) },
 	];
-
 
 	const {
 		skinStyle,
@@ -140,7 +138,7 @@ const  Settings =  ( props ) => {
 			google: {
 				families: [
 					descFontFamily +
-					( descFontWeight ? ':' + descFontWeight : '' ),
+						( descFontWeight ? ':' + descFontWeight : '' ),
 				],
 			},
 		};
@@ -155,7 +153,7 @@ const  Settings =  ( props ) => {
 			google: {
 				families: [
 					authorFontFamily +
-					( authorFontWeight ? ':' + authorFontWeight : '' ),
+						( authorFontWeight ? ':' + authorFontWeight : '' ),
 				],
 			},
 		};
@@ -170,7 +168,7 @@ const  Settings =  ( props ) => {
 			google: {
 				families: [
 					tweetBtnFontFamily +
-					( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ),
+						( tweetBtnFontWeight ? ':' + tweetBtnFontWeight : '' ),
 				],
 			},
 		};
@@ -1180,101 +1178,101 @@ const  Settings =  ( props ) => {
 					) }
 				/>
 				{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<Button
-						className="uagb-rm-btn"
-						onClick={ onRemoveImage }
-						isLink
-						isDestructive
-					>
-						{ __(
-							'Remove Image',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</Button>
-				) }
+					authorImage.url !== 'null' &&
+					authorImage.url !== '' && (
+						<Button
+							className="uagb-rm-btn"
+							onClick={ onRemoveImage }
+							isLink
+							isDestructive
+						>
+							{ __(
+								'Remove Image',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</Button>
+					) }
 			</BaseControl>
 			{ authorImage &&
-			authorImage.url !== 'null' &&
-			authorImage.url !== '' && (
-				<>
-					<SelectControl
-						label={ __(
-							'Author Image Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { authorImgPosition: value } )
-						}
-						options={ [
-							{
-								value: 'left',
-								label: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								label: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-					/>
-					<SelectControl
-						label={ __(
-							'Author Image Size',
-							'ultimate-addons-for-gutenberg'
-						) }
-						options={ imageSizeOptions }
-						value={ authorImageSize }
-						onChange={ ( value ) =>
-							setAttributes( { authorImageSize: value } )
-						}
-					/>
-					<RangeControl
-						label={ __(
-							'Author Image Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImageWidth }
-						onChange={ ( value ) =>
-							setAttributes( { authorImageWidth: value } )
-						}
-						min={ 0 }
-						max={ 500 }
-						beforeIcon=""
-						allowReset
-					/>
-					<RangeControl
-						label={ __(
-							'Author Image Rounded Corners',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImgBorderRadius }
-						onChange={ ( value ) =>
-							setAttributes( {
-								authorImgBorderRadius: value,
-							} )
-						}
-						min={ 0 }
-						max={ 100 }
-						beforeIcon=""
-						allowReset
-					/>
-				</>
-			) }
+				authorImage.url !== 'null' &&
+				authorImage.url !== '' && (
+					<>
+						<SelectControl
+							label={ __(
+								'Author Image Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImgPosition }
+							onChange={ ( value ) =>
+								setAttributes( { authorImgPosition: value } )
+							}
+							options={ [
+								{
+									value: 'left',
+									label: __(
+										'Left',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'right',
+									label: __(
+										'Right',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'top',
+									label: __(
+										'Top',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+						<SelectControl
+							label={ __(
+								'Author Image Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							options={ imageSizeOptions }
+							value={ authorImageSize }
+							onChange={ ( value ) =>
+								setAttributes( { authorImageSize: value } )
+							}
+						/>
+						<RangeControl
+							label={ __(
+								'Author Image Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImageWidth }
+							onChange={ ( value ) =>
+								setAttributes( { authorImageWidth: value } )
+							}
+							min={ 0 }
+							max={ 500 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label={ __(
+								'Author Image Rounded Corners',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImgBorderRadius }
+							onChange={ ( value ) =>
+								setAttributes( {
+									authorImgBorderRadius: value,
+								} )
+							}
+							min={ 0 }
+							max={ 100 }
+							beforeIcon=""
+							allowReset
+						/>
+					</>
+				) }
 		</>
 	);
 
@@ -1558,8 +1556,8 @@ const  Settings =  ( props ) => {
 	);
 
 	/*
- * Event to set Image as null while removing.
- */
+	 * Event to set Image as null while removing.
+	 */
 	const onRemoveImage = () => {
 		const { setAttributes } = props;
 
@@ -1749,8 +1747,7 @@ const  Settings =  ( props ) => {
 			{ loadAuthorGoogleFonts }
 			{ loadTweetGoogleFonts }
 		</>
-	)
-
-}
+	);
+};
 
 export default React.memo( Settings );
