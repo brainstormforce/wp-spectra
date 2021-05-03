@@ -8,7 +8,6 @@ import renderSVG from '@Controls/renderIcon';
 
 const { RichText } = wp.blockEditor;
 
-
 function social_html( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
 	return (
