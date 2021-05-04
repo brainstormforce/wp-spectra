@@ -65,19 +65,19 @@ function styling( props ) {
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		},
-		' .uagb-how-to-main-wrap p': { 
+		'.uagb-how-to-main-wrap p': { 
 			"margin-bottom" :generateCSSUnit( row_gap, 'px' ),
 		 },
 
-		 ' .uagb-how-to-main-wrap .uagb-howto__source-wrap': { 
+		 '.uagb-how-to-main-wrap .uagb-howto__source-wrap': { 
 			"margin-bottom" :generateCSSUnit( row_gap, 'px' ),
 		 },
 
-		' .uagb-how-to-main-wrap span.uagb-howto__time-wrap' : {
+		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap' : {
 		   "margin-bottom" :generateCSSUnit( row_gap, 'px' ),
 		},
 
-		' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap' : {
+		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap' : {
 		    "margin-bottom" :generateCSSUnit( row_gap, 'px' ),
 		},
 
@@ -85,10 +85,10 @@ function styling( props ) {
 		 "margin-bottom" : generateCSSUnit( row_gap, 'px' ),
 		 },
 
-		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
+		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper' : {
 		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
 		 },
-		' .uagb-howto-steps__wrap .wp-block-uagb-info-box' : {
+		' .wp-block-uagb-info-box' : {
 			'margin-bottom' : generateCSSUnit( s_gap, 'px' )
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
@@ -129,13 +129,13 @@ function styling( props ) {
 			"margin-left" : generateCSSUnit( costSpace,"px"),
 		},
 
-		" .uagb-howto-steps__wrap h4.block-editor-rich-text__editable" :{
+		" h4.block-editor-rich-text__editable" :{
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 		},
-		" .uagb-howto-steps__wrap p.block-editor-rich-text__editable" : {
+		" p.block-editor-rich-text__editable" : {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
@@ -191,7 +191,7 @@ function styling( props ) {
 		},
 	}
 
-	selectors[" .uagb-how-to-main-wrap"] = {
+	selectors[".uagb-how-to-main-wrap"] = {
 		    "text-align": overallAlignment,
 		    "display": "block",
 	}
