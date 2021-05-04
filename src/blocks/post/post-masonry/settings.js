@@ -1,27 +1,16 @@
-import WebfontLoader from "../../../components/typography/fontloader";
+import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const {
-	BlockAlignmentToolbar,
-	BlockControls,
-} = wp.blockEditor
+const { BlockAlignmentToolbar, BlockControls } = wp.blockEditor;
 
-const {
-	ToolbarGroup
-} = wp.components;
+const { ToolbarGroup } = wp.components;
 
 const Settings = ( props ) => {
-
 	const { state, togglePreview, inspectorControls } = props;
 
 	props = props.parentProps;
 
-	const {
-		attributes,
-		categoriesList,
-		setAttributes,
-		taxonomyList
-	} = props
+	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
 
 	const {
 		align,
@@ -37,71 +26,71 @@ const Settings = ( props ) => {
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaLoadGoogleFonts,
-
-
-
 	} = attributes;
 
+	let loadTitleGoogleFonts;
+	let loadMetaGoogleFonts;
+	let loadExcerptGoogleFonts;
+	let loadCtaGoogleFonts;
 
-	let loadTitleGoogleFonts
-	let loadMetaGoogleFonts
-	let loadExcerptGoogleFonts
-	let loadCtaGoogleFonts
-
-	if( titleLoadGoogleFonts == true ) {
-
+	if ( titleLoadGoogleFonts == true ) {
 		const titleconfig = {
 			google: {
-				families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
+				families: [
+					titleFontFamily +
+						( titleFontWeight ? ':' + titleFontWeight : '' ),
+				],
 			},
-		}
+		};
 
 		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }>
-			</WebfontLoader>
-		)
+			<WebfontLoader config={ titleconfig }></WebfontLoader>
+		);
 	}
 
-	if( metaLoadGoogleFonts == true ) {
-
+	if ( metaLoadGoogleFonts == true ) {
 		const metaconfig = {
 			google: {
-				families: [ metaFontFamily + ( metaFontWeight ? ":" + metaFontWeight : "" ) ],
+				families: [
+					metaFontFamily +
+						( metaFontWeight ? ':' + metaFontWeight : '' ),
+				],
 			},
-		}
+		};
 
 		loadMetaGoogleFonts = (
-			<WebfontLoader config={ metaconfig }>
-			</WebfontLoader>
-		)
+			<WebfontLoader config={ metaconfig }></WebfontLoader>
+		);
 	}
 
-	if( excerptLoadGoogleFonts == true ) {
-
+	if ( excerptLoadGoogleFonts == true ) {
 		const excerptconfig = {
 			google: {
-				families: [ excerptFontFamily + ( excerptFontWeight ? ":" + excerptFontWeight : "" ) ],
+				families: [
+					excerptFontFamily +
+						( excerptFontWeight ? ':' + excerptFontWeight : '' ),
+				],
 			},
-		}
+		};
 
 		loadExcerptGoogleFonts = (
-			<WebfontLoader config={ excerptconfig }>
-			</WebfontLoader>
-		)
+			<WebfontLoader config={ excerptconfig }></WebfontLoader>
+		);
 	}
 
-	if( ctaLoadGoogleFonts == true ) {
-
+	if ( ctaLoadGoogleFonts == true ) {
 		const ctaconfig = {
 			google: {
-				families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
+				families: [
+					ctaFontFamily +
+						( ctaFontWeight ? ':' + ctaFontWeight : '' ),
+				],
 			},
-		}
+		};
 
 		loadCtaGoogleFonts = (
-			<WebfontLoader config={ ctaconfig }>
-			</WebfontLoader>
-		)
+			<WebfontLoader config={ ctaconfig }></WebfontLoader>
+		);
 	}
 
 	const getBlockControls = () => {
@@ -119,46 +108,51 @@ const Settings = ( props ) => {
 				] }
 			/>
 		);
-	}
+	};
 
-	let taxonomyListOptions = []
+	const taxonomyListOptions = [];
 
-	let categoryListOptions = [
-		{ value: "", label: __( "All",'ultimate-addons-for-gutenberg' ) }
-	]
+	const categoryListOptions = [
+		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
 
-	if ( "" != taxonomyList ) {
+	if ( '' != taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
-			return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
-		} )
+			return taxonomyListOptions.push( {
+				value: taxonomyList[ item ].name,
+				label: taxonomyList[ item ].label,
+			} );
+		} );
 	}
 
-	if ( "" != categoriesList ) {
+	if ( '' != categoriesList ) {
 		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
-			return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
-		} )
+			return categoryListOptions.push( {
+				value: categoriesList[ item ].id,
+				label: categoriesList[ item ].name,
+			} );
+		} );
 	}
 
-
-	return(
+	return (
 		<>
 			{ inspectorControls }
 			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ align }
 					onChange={ ( value ) => {
-						setAttributes( { align: value } )
+						setAttributes( { align: value } );
 					} }
-					controls={ [ "left", "center", "right" ] }
+					controls={ [ 'left', 'center', 'right' ] }
 				/>
-				{getBlockControls()}
+				{ getBlockControls() }
 			</BlockControls>
 			{ loadTitleGoogleFonts }
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
 			{ loadCtaGoogleFonts }
 		</>
-	)
-}
+	);
+};
 
 export default React.memo( Settings );

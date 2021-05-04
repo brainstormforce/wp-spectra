@@ -1,32 +1,24 @@
-import {DEFAULT_POST_LIST_LAYOUT, getBlockMap, getPostLayoutConfig, InnerBlockLayoutContextProvider} from "../function";
-import Blog from "./blog";
+import {
+	DEFAULT_POST_LIST_LAYOUT,
+	getBlockMap,
+	getPostLayoutConfig,
+	InnerBlockLayoutContextProvider,
+} from '../function';
+import Blog from './blog';
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks
+const { createBlock } = wp.blocks;
 
-const {
-	InnerBlocks
-} = wp.blockEditor
+const { InnerBlocks } = wp.blockEditor;
 
-const {
-	Placeholder,
-	Button,
-	Disabled,
-	Tip
-} = wp.components
+const { Placeholder, Button, Disabled, Tip } = wp.components;
 
 const Render = ( props ) => {
-
 	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;
 
-	const {
-		categoriesList,
-		latestPosts,
-		attributes,
-		deviceType,
-	} = props
+	const { categoriesList, latestPosts, attributes, deviceType } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -39,7 +31,7 @@ const Render = ( props ) => {
 		};
 
 		const onCancel = () => {
-			const {replaceInnerBlocks } = props;
+			const { replaceInnerBlocks } = props;
 			const { innerBlocks } = state;
 			replaceInnerBlocks( props.clientId, innerBlocks );
 			togglePreview();
@@ -53,7 +45,7 @@ const Render = ( props ) => {
 				return true;
 			} );
 			replaceInnerBlocks( props.clientId, newBlocks );
-			setState( { innerBlocks: block} );
+			setState( { innerBlocks: block } );
 		};
 
 		const InnerBlockProps = {
@@ -103,35 +95,28 @@ const Render = ( props ) => {
 							className="uagb-block-all-post__reset-button"
 							onClick={ onReset }
 						>
-							{ __('Reset Layout') }
+							{ __( 'Reset Layout' ) }
 						</Button>
 					</div>
 				</div>
 			</Placeholder>
 		);
-	}
+	};
 
 	const renderViewMode = (
 		<Disabled>
 			<Blog
-				attributes={attributes}
-				className={props.className}
-				latestPosts={latestPosts}
-				block_id={props.clientId.substr( 0, 8 )}
-				categoriesList={categoriesList}
-				deviceType={deviceType} />
+				attributes={ attributes }
+				className={ props.className }
+				latestPosts={ latestPosts }
+				block_id={ props.clientId.substr( 0, 8 ) }
+				categoriesList={ categoriesList }
+				deviceType={ deviceType }
+			/>
 		</Disabled>
-	)
+	);
 
-	return (
-		<>
-			{ state.isEditing ? renderEditMode() : renderViewMode }
-		</>
-	)
-}
+	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
+};
 
 export default React.memo( Render );
-
-
-
-
