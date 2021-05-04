@@ -2,7 +2,7 @@ import React from 'react';
 import WebfontLoader from '../../components/typography/fontloader';
 import TypographyControl from '../../components/typography';
 import { __ } from '@wordpress/i18n';
-import UAGB_Block_Icons from "@Controls/block-icons";
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 const {
 	AlignmentToolbar,
@@ -36,7 +36,7 @@ const Settings = ( props ) => {
 		fieldLabelColor,
 		fieldInputColor,
 		fieldBorderStyle,
-		fieldBorderWidth ,
+		fieldBorderWidth,
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
@@ -152,8 +152,8 @@ const Settings = ( props ) => {
 		radioCheckBorderRadiusType,
 		msgBorderRadiusType,
 		fieldBorderRadiusType,
-		buttonBorderRadiusType
-	} = attributes
+		buttonBorderRadiusType,
+	} = attributes;
 
 	let loadInputGoogleFonts;
 	let loadButtonGoogleFonts;

@@ -8,7 +8,6 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 
 const UAGBCF7 = ( props ) => {
-
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { isHtml: false } );
