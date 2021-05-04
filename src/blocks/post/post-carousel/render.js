@@ -1,45 +1,25 @@
-import {DEFAULT_POST_LIST_LAYOUT, getBlockMap, getPostLayoutConfig, InnerBlockLayoutContextProvider} from "../function";
-import React from "react";
-import Blog from "./blog";
+import {
+	DEFAULT_POST_LIST_LAYOUT,
+	getBlockMap,
+	getPostLayoutConfig,
+	InnerBlockLayoutContextProvider,
+} from '../function';
+import React from 'react';
+import Blog from './blog';
 import { __ } from '@wordpress/i18n';
+
+const { InnerBlocks } = wp.blockEditor;
 
 const { createBlock } = wp.blocks;
 
-const {
-	PanelBody,
-	Placeholder,
-	QueryControls,
-	RangeControl,
-	SelectControl,
-	Spinner,
-	ToggleControl,
-	ToolbarGroup,
-	ButtonGroup,
-	Button,
-	TabPanel,
-	Dashicon,
-	TextControl,
-	RadioControl,
-	Tip,
-	Disabled,
-} = wp.components;
-
+const { Placeholder, Button, Tip, Disabled } = wp.components;
 
 const Render = ( props ) => {
-
-	const { state, togglePreview } = props;
+	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;
 
-	const {
-		attributes,
-		categoriesList,
-		setAttributes,
-		block,
-		latestPosts,
-		deviceType,
-		taxonomyList,
-	} = props;
+	const { attributes, categoriesList, latestPosts, deviceType } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -137,12 +117,7 @@ const Render = ( props ) => {
 		</Disabled>
 	);
 
-	return (
-		<>
-			{ state.isEditing ? renderEditMode() : renderViewMode }
-		</>
-	)
-}
-
+	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
+};
 
 export default React.memo( Render );

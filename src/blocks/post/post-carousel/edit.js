@@ -2,14 +2,14 @@
  * External dependencies
  */
 
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import Columnresponsive from '../../../components/typography/column-responsive';
 import React, { useState, useEffect } from 'react';
 import TypographyControl from '../../../components/typography';
 import styling from '.././styling';
 
-import Render from "./render";
-import Settings from "./settings";
+import Render from './render';
+import Settings from './settings';
 
 const { compose } = wp.compose;
 
@@ -30,10 +30,7 @@ const {
 	RadioControl,
 } = wp.components;
 
-const {
-	InspectorControls,
-	ColorPalette,
-} = wp.blockEditor;
+const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const { withSelect, withDispatch } = wp.data;
 
@@ -102,9 +99,6 @@ const UAGBPostCarousel = ( props ) => {
 			__( 'Showing All Post Grid Layout.' );
 		}
 	};
-
-
-
 
 	const {
 		attributes,
@@ -1683,8 +1677,18 @@ const UAGBPostCarousel = ( props ) => {
 
 	return (
 		<>
-			<Settings parentProps={ props }  state={state} inspectorControls={inspectorControls} togglePreview={togglePreview} />
-			<Render parentProps={ props }  state={state} togglePreview={togglePreview} />
+			<Settings
+				parentProps={ props }
+				state={ state }
+				inspectorControls={ inspectorControls }
+				togglePreview={ togglePreview }
+			/>
+			<Render
+				parentProps={ props }
+				state={ state }
+				setState={ setState }
+				togglePreview={ togglePreview }
+			/>
 		</>
 	);
 };

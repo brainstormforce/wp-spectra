@@ -1,11 +1,13 @@
-import classnames from "classnames";
-import Slider from "react-slick";
-import UAGB_Block_Icons from "@Controls/block-icons"
-import {InnerBlockLayoutContextProvider, renderPostLayout} from ".././function";
+import classnames from 'classnames';
+import Slider from 'react-slick';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import {
+	InnerBlockLayoutContextProvider,
+	renderPostLayout,
+} from '.././function';
 
-function Blog(props) {
-
-	const {attributes, className, latestPosts, block_id, categoriesList, deviceType} = props;
+function Blog( props ) {
+	const { attributes, className, latestPosts, block_id, deviceType } = props;
 
 	const {
 		columns,
@@ -23,46 +25,63 @@ function Blog(props) {
 		arrowColor,
 		arrowDots,
 		equalHeight,
-		layoutConfig
+		layoutConfig,
 	} = attributes;
 
 	// Removing posts from display should be instant.
-	const displayPosts = latestPosts.length > postsToShow ?
-		latestPosts.slice(0, postsToShow) :
-		latestPosts;
+	const displayPosts =
+		latestPosts.length > postsToShow
+			? latestPosts.slice( 0, postsToShow )
+			: latestPosts;
 
-	function NextArrow(props) {
-
+	function NextArrow( props ) {
 		return (
-			<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0"
-					role="button" style={{
-				"borderColor": arrowColor,
-				"borderRadius": arrowBorderRadius,
-				"borderWidth": arrowBorderSize
-			}}>
-				{UAGB_Block_Icons.carousel_right}
+			<button
+				type="button"
+				data-role="none"
+				className="slick-next slick-arrow"
+				aria-label="Next"
+				tabIndex="0"
+				role="button"
+				style={ {
+					borderColor: arrowColor,
+					borderRadius: arrowBorderRadius,
+					borderWidth: arrowBorderSize,
+				} }
+			>
+				{ UAGB_Block_Icons.carousel_right }
 			</button>
 		);
 	}
 
-	function PrevArrow(props) {
-
+	function PrevArrow( props ) {
 		return (
-			<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0"
-					role="button" style={{
-				"borderColor": arrowColor,
-				"borderRadius": arrowBorderRadius,
-				"borderWidth": arrowBorderSize
-			}}>
-				{UAGB_Block_Icons.carousel_left}
+			<button
+				type="button"
+				data-role="none"
+				className="slick-prev slick-arrow"
+				aria-label="Previous"
+				tabIndex="0"
+				role="button"
+				style={ {
+					borderColor: arrowColor,
+					borderRadius: arrowBorderRadius,
+					borderWidth: arrowBorderSize,
+				} }
+			>
+				{ UAGB_Block_Icons.carousel_left }
 			</button>
 		);
 	}
 
-	const dots = ("dots" == arrowDots || "arrows_dots" == arrowDots) ? true : false;
-	const arrows = ("arrows" == arrowDots || "arrows_dots" == arrowDots) ? true : false;
+	const dots =
+		'dots' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+	const arrows =
+		'arrows' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
 
-	const equalHeightClass = equalHeight ? "uagb-post__carousel_equal-height" : "";
+	const equalHeightClass = equalHeight
+		? 'uagb-post__carousel_equal-height'
+		: '';
 
 	const current = this;
 
@@ -77,113 +96,111 @@ function Blog(props) {
 		arrows,
 		dots,
 		rtl: false,
-		afterChange: current => {
-			if (equalHeight) {
-				uagb_carousel_height(block_id);
+		afterChange: ( current ) => {
+			if ( equalHeight ) {
+				uagb_carousel_height( block_id );
 			}
 		},
-		nextArrow: <NextArrow arrowSize={arrowSize}/>,
-		prevArrow: <PrevArrow arrowSize={arrowSize}/>,
+		nextArrow: <NextArrow arrowSize={ arrowSize } />,
+		prevArrow: <PrevArrow arrowSize={ arrowSize } />,
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
 					slidesToShow: tcolumns,
 					slidesToScroll: 1,
-				}
+				},
 			},
 			{
 				breakpoint: 767,
 				settings: {
 					slidesToShow: mcolumns,
 					slidesToScroll: 1,
-				}
-			}
-		]
+				},
+			},
+		],
 	};
 
-	const all_posts = displayPosts.map((post, i) =>
-		<article key={i}>
+	const all_posts = displayPosts.map( ( post, i ) => (
+		<article key={ i }>
 			<div className="uagb-post__inner-wrap">
-				{renderPostLayout(
-					"uagb/post-carousel",
+				{ renderPostLayout(
+					'uagb/post-carousel',
 					post,
 					layoutConfig,
 					props.attributes,
 					props.categoriesList
-				)}
+				) }
 			</div>
 		</article>
-	);
+	) );
 
-	if (columns >= displayPosts.length) {
+	if ( columns >= displayPosts.length ) {
 		return (
 			<div
-				className={classnames(
+				className={ classnames(
 					className,
-					"uagb-post-grid",
-					"uagb-post__arrow-outside",
-					`uagb-post__image-position-${imgPosition}`,
-					`${equalHeightClass}`,
-					`uagb-editor-preview-mode-${deviceType.toLowerCase()}`,
-					`uagb-block-${block_id}`
-				)}
-				data-blog-id={block_id}
+					'uagb-post-grid',
+					'uagb-post__arrow-outside',
+					`uagb-post__image-position-${ imgPosition }`,
+					`${ equalHeightClass }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					`uagb-block-${ block_id }`
+				) }
+				data-blog-id={ block_id }
 			>
 				<div
-					className={classnames(
-						"is-carousel",
-						`uagb-post__columns-${columns}`,
-						`uagb-post__columns-tablet-${tcolumns}`,
-						`uagb-post__columns-mobile-${mcolumns}`,
-						"uagb-post__items",
-					)}
+					className={ classnames(
+						'is-carousel',
+						`uagb-post__columns-${ columns }`,
+						`uagb-post__columns-tablet-${ tcolumns }`,
+						`uagb-post__columns-mobile-${ mcolumns }`,
+						'uagb-post__items'
+					) }
 				>
 					<InnerBlockLayoutContextProvider
 						parentName="uagb/post-carousel"
 						parentClassName="uagb-block-grid"
 					>
-						{all_posts}
+						{ all_posts }
 					</InnerBlockLayoutContextProvider>
 				</div>
 			</div>
 		);
 	}
 
-	let style_str = "";
+	let style_str = '';
 
-	if ("dots" == arrowDots) {
-		style_str = {padding: "0 0 35px 0"};
+	if ( 'dots' == arrowDots ) {
+		style_str = { padding: '0 0 35px 0' };
 	}
 
 	return (
-
 		<div
-			className={classnames(
+			className={ classnames(
 				className,
-				"uagb-post-grid",
-				"uagb-post__arrow-outside",
-				"uagb-slick-carousel",
-				`uagb-post__image-position-${imgPosition}`,
-				`${equalHeightClass}`,
-				`uagb-block-${block_id}`
-			)}
-			data-blog-id={block_id}
-			style={("dots" == arrowDots) ? {padding: "0 0 35px 0"} : {}}
+				'uagb-post-grid',
+				'uagb-post__arrow-outside',
+				'uagb-slick-carousel',
+				`uagb-post__image-position-${ imgPosition }`,
+				`${ equalHeightClass }`,
+				`uagb-block-${ block_id }`
+			) }
+			data-blog-id={ block_id }
+			style={ 'dots' == arrowDots ? { padding: '0 0 35px 0' } : {} }
 		>
 			<Slider
-				className={classnames(
-					"is-carousel",
-					`uagb-post__columns-${columns}`,
-					"uagb-post__items"
-				)}
-				{...settings}
+				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columns }`,
+					'uagb-post__items'
+				) }
+				{ ...settings }
 			>
-				{all_posts}
+				{ all_posts }
 			</Slider>
 		</div>
 	);
-
 }
 
 export default React.memo( Blog );
