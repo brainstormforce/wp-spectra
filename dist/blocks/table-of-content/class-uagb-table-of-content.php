@@ -44,6 +44,24 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_block_core_table_of_contents' ) );
+			add_action( 'save_post', array( $this, 'update_toc_meta' ), 10, 3 );
+		}
+
+		/**
+		 * Set meta.
+		 *
+		 * @access public
+		 *
+		 * @param int     $post_id Post ID.
+		 * @param object  $post Post object.
+		 * @param boolean $update Whether this is an existing post being updated.
+		 */
+		public function update_toc_meta( $post_id, $post, $update ) {
+			if ( ! get_post_meta( $post_id, '_post_content', true ) ) {
+				update_post_meta( $post_id, '_post_content', $post->post_content );
+			} else {
+				add_post_meta( $post_id, '_post_content', get_post( $post_id )->post_content, true );
+			}
 		}
 
 		/**
@@ -215,11 +233,14 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$post_id,
 			$current_page_only
 		) {
-				// Only one page, so return headings from entire post_content.
-				return $this->block_core_table_of_contents_get_headings_from_content(
-					get_post( $post_id )->post_content,
-					$current_page_only['mappingHeaders']
-				);
+			if ( get_post_meta( $post_id, '_post_content', true ) ) {
+				$post_content = get_post_meta( $post_id, '_post_content', true );
+			}
+
+			return $this->block_core_table_of_contents_get_headings_from_content(
+				$post_content,
+				$current_page_only['mappingHeaders']
+			);
 		}
 
 		/**
