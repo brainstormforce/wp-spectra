@@ -184,7 +184,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 
 			$selectors = array(
-				'.uagb-how-to-main-wrap' => array(
+				'.uagb-how-to-main-wrap'              => array(
 					'text-align' => $attr['overallAlignment'],
 				),
 				'.uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
@@ -211,7 +211,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .wp-block-uagb-info-box' => array(
+				' .wp-block-uagb-info-box'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 				),
 
@@ -231,15 +231,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['headingColor'],
 				),
 
-				' p.uagb-howto-desc-text' => array(
+				' p.uagb-howto-desc-text'             => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' span.uagb-howto__time-wrap p' => array(
+				' span.uagb-howto__time-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' span.uagb-howto__cost-wrap p' => array(
+				' span.uagb-howto__cost-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
@@ -255,7 +255,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				' .uagb-howto-req-materials-text' => array(
+				' .uagb-howto-req-materials-text'     => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
