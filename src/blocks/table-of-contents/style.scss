@@ -11,9 +11,9 @@
 	}
 
 	ul.uagb-toc__list {
-		margin-left: 2.2em;
 		padding-left: 0;
 		margin-bottom: 0;
+		margin-left: 2.2em;
 
 		li {
 			margin: 0;
@@ -51,8 +51,8 @@
 	}
 
 	.uag-toc__collapsible-wrap {
-		margin-left: 10px;
 		display: flex;
+		margin-left: 10px;
 		cursor: pointer;
 	}
 
@@ -68,10 +68,10 @@
 .uagb-toc__scroll-top {
 
 	&.dashicons {
-		display: none;
 		position: fixed;
-		bottom: 50px;
 		right: 50px;
+		bottom: 50px;
+		display: none;
 		padding: 10px;
 		background: #ccd0d4;
 		cursor: pointer;
