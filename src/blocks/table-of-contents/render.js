@@ -1,114 +1,25 @@
-import classnames from "classnames";
-import TableOfContents from "./toc";
-import React from "react";
+import classnames from 'classnames';
+import TableOfContents from './toc';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import renderSVG from "@Controls/renderIcon";
+import renderSVG from '@Controls/renderIcon';
 
 const {
-	BlockControls,
-	BlockAlignmentToolbar,
-	InspectorControls,
 	RichText,
-	ColorPalette,
 } = wp.blockEditor;
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes, setAttributes, className, headers, deviceType } = props;
 
 	const {
 		align,
-		heading,
-		disableBullets,
 		makeCollapsible,
 		initialCollapse,
 		icon,
-		iconColor,
-		bulletColor,
-		iconSize,
-		smoothScroll,
-		smoothScrollOffset,
-		smoothScrollDelay,
-		scrollToTop,
-		scrollToTopColor,
-		scrollToTopBgColor,
-		customWidth,
-		widthDesktop,
-		widthTablet,
-		widthMobile,
-		widthTypeMobile,
-		widthTypeTablet,
-		widthTypeDesktop,
 		tColumnsDesktop,
-		tColumnsTablet,
-		tColumnsMobile,
-		//Color
-		backgroundColor,
-		linkColor,
-		linkHoverColor,
-		headingColor,
-		//Padding,
-		vPaddingDesktop,
-		vPaddingTablet,
-		vPaddingMobile,
-		hPaddingDesktop,
-		hPaddingTablet,
-		hPaddingMobile,
-		paddingTypeMobile,
-		paddingTypeTablet,
-		paddingTypeDesktop,
-		//Padding,
-		vMarginDesktop,
-		vMarginTablet,
-		vMarginMobile,
-		hMarginDesktop,
-		hMarginTablet,
-		hMarginMobile,
-		marginTypeMobile,
-		marginTypeTablet,
-		marginTypeDesktop,
-		headingBottom,
-		// Content Padding,
-		contentPaddingDesktop,
-		contentPaddingTablet,
-		contentPaddingMobile,
-		contentPaddingTypeMobile,
-		contentPaddingTypeTablet,
-		contentPaddingTypeDesktop,
-		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		//Typography
-		loadGoogleFonts,
-		fontFamily,
-		fontWeight,
-		fontSubset,
-		fontSize,
-		fontSizeType,
-		fontSizeTablet,
-		fontSizeMobile,
-		lineHeightType,
-		lineHeight,
-		lineHeightTablet,
-		lineHeightMobile,
-		headingLoadGoogleFonts,
-		headingFontFamily,
-		headingFontWeight,
-		headingFontSubset,
-		headingFontSize,
-		headingFontSizeType,
-		headingFontSizeTablet,
-		headingFontSizeMobile,
-		headingLineHeightType,
-		headingLineHeight,
-		headingLineHeightTablet,
-		headingLineHeightMobile,
 		mappingHeaders,
-		headingAlignment,
 		headingTitle,
 	} = attributes;
 
@@ -159,9 +70,7 @@ const Render = ( props ) => {
 				</div>
 			</div>
 		</>
-	)
-
-}
-
+	);
+};
 
 export default React.memo( Render );

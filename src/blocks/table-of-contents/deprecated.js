@@ -2,22 +2,19 @@
  * BLOCK: Table of Contents - Deprecated Block
  */
 
-import classnames from "classnames";
-import TableOfContents from "./deprecated/components";
-import TOC from "./deprecated/table-of-contents";
-import TableOfContent from "./toc";
-import attributes from "./attributes";
-import renderSVG from "@Controls/renderIcon"
+import classnames from 'classnames';
+import TableOfContents from './deprecated/components';
+import TOC from './deprecated/table-of-contents';
+import TableOfContent from './toc';
+import attributes from './attributes';
+import renderSVG from '@Controls/renderIcon';
 
-const {
-	RichText
-} = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 const deprecated = [
 	{
 		attributes,
 		save( props ) {
-
 			const { className } = props;
 
 			const {
@@ -31,19 +28,19 @@ const deprecated = [
 			} = props.attributes;
 
 			return (
-
-				<div className={ classnames(
-					className,
-					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumns}`
-				) }
-					id={ `uagb-toc-${ block_id }` }>
+				<div
+					className={ classnames(
+						className,
+						`uagb-toc__align-${ align }`,
+						`uagb-toc__columns-${ tColumns }`
+					) }
+					id={ `uagb-toc-${ block_id }` }
+				>
 					<div className="uagb-toc__wrap">
-
 						<RichText.Content
 							value={ heading }
-							tagName='div'
-							className='uagb-toc__title'
+							tagName="div"
+							className="uagb-toc__title"
 						/>
 						<TableOfContents
 							align={ align }
@@ -61,7 +58,6 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-
 			const { className } = props;
 
 			const {
@@ -80,32 +76,35 @@ const deprecated = [
 				smoothScrollDelay,
 			} = props.attributes;
 
-			let icon_html = "";
+			let icon_html = '';
 
 			if ( makeCollapsible && icon ) {
 				icon_html = (
-					<span className="uag-toc__collapsible-wrap">{ renderSVG( icon ) }</span>
+					<span className="uag-toc__collapsible-wrap">
+						{ renderSVG( icon ) }
+					</span>
 				);
 			}
 
 			return (
-
-				<div className={ classnames(
-					className,
-					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumns}`,
-					( initialCollapse ) ? "uagb-toc__collapse" : ""
-				) }
+				<div
+					className={ classnames(
+						className,
+						`uagb-toc__align-${ align }`,
+						`uagb-toc__columns-${ tColumns }`,
+						initialCollapse ? 'uagb-toc__collapse' : ''
+					) }
 					data-scroll={ smoothScroll }
 					data-offset={ smoothScrollOffset }
 					data-delay={ smoothScrollDelay }
-					id={ `uagb-toc-${ block_id }` }>
+					id={ `uagb-toc-${ block_id }` }
+				>
 					<div className="uagb-toc__wrap">
 						<div className="uagb-toc__title-wrap">
 							<RichText.Content
 								value={ heading }
-								tagName='div'
-								className='uagb-toc__title'
+								tagName="div"
+								className="uagb-toc__title"
 							/>
 							{ icon_html }
 						</div>
@@ -125,7 +124,6 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-
 			const { className } = props;
 
 			const {
@@ -143,33 +141,35 @@ const deprecated = [
 				smoothScrollDelay,
 			} = props.attributes;
 
-			let icon_html = "";
+			let icon_html = '';
 
 			if ( makeCollapsible && icon ) {
 				icon_html = (
-					<span className="uag-toc__collapsible-wrap">{ renderSVG( icon ) }</span>
+					<span className="uag-toc__collapsible-wrap">
+						{ renderSVG( icon ) }
+					</span>
 				);
 			}
 
 			return (
-
-				<div className={ classnames(
-					className,
-					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumns}`,
-					( initialCollapse ) ? "uagb-toc__collapse" : "",
-					`uagb-block-${ block_id }`
-				) }
-				data-scroll={ smoothScroll }
-				data-offset={ smoothScrollOffset }
-				data-delay={ smoothScrollDelay }
+				<div
+					className={ classnames(
+						className,
+						`uagb-toc__align-${ align }`,
+						`uagb-toc__columns-${ tColumns }`,
+						initialCollapse ? 'uagb-toc__collapse' : '',
+						`uagb-block-${ block_id }`
+					) }
+					data-scroll={ smoothScroll }
+					data-offset={ smoothScrollOffset }
+					data-delay={ smoothScrollDelay }
 				>
 					<div className="uagb-toc__wrap">
 						<div className="uagb-toc__title-wrap">
 							<RichText.Content
 								value={ heading }
-								tagName='div'
-								className='uagb-toc__title'
+								tagName="div"
+								className="uagb-toc__title"
 							/>
 							{ icon_html }
 						</div>
@@ -185,7 +185,6 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-
 			const { className } = props;
 
 			const {
@@ -203,33 +202,35 @@ const deprecated = [
 				smoothScrollDelay,
 			} = props.attributes;
 
-			let icon_html = "";
+			let icon_html = '';
 
 			if ( makeCollapsible && icon ) {
 				icon_html = (
-					<span className="uag-toc__collapsible-wrap">{ renderSVG( icon ) }</span>
+					<span className="uag-toc__collapsible-wrap">
+						{ renderSVG( icon ) }
+					</span>
 				);
 			}
 
 			return (
-
-				<div className={ classnames(
-					className,
-					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumns}`,
-					( initialCollapse ) ? "uagb-toc__collapse" : "",
-					`uagb-block-${ block_id }`
-				) }
-				data-scroll={ smoothScroll }
-				data-offset={ smoothScrollOffset }
-				data-delay={ smoothScrollDelay }
+				<div
+					className={ classnames(
+						className,
+						`uagb-toc__align-${ align }`,
+						`uagb-toc__columns-${ tColumns }`,
+						initialCollapse ? 'uagb-toc__collapse' : '',
+						`uagb-block-${ block_id }`
+					) }
+					data-scroll={ smoothScroll }
+					data-offset={ smoothScrollOffset }
+					data-delay={ smoothScrollDelay }
 				>
 					<div className="uagb-toc__wrap">
 						<div className="uagb-toc__title-wrap">
 							<RichText.Content
 								value={ heading }
-								tagName='div'
-								className='uagb-toc__title'
+								tagName="div"
+								className="uagb-toc__title"
 							/>
 							{ icon_html }
 						</div>
@@ -241,7 +242,7 @@ const deprecated = [
 				</div>
 			);
 		},
-	}
+	},
 ];
 
 export default deprecated;

@@ -1,19 +1,18 @@
 import { __ } from '@wordpress/i18n';
-import TypographyControl from "../../components/typography";
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import Columnresponsive from "../../components/typography/column-responsive";
+import TypographyControl from '../../components/typography';
+import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+import Columnresponsive from '../../components/typography/column-responsive';
 
-import WebfontLoader from "../../components/typography/fontloader";
-import UAGB_Block_Icons from "@Controls/block-icons";
-import renderSVG from "@Controls/renderIcon";
-import UAGBIcon from "@Controls/UAGBIcon.json";
-import React from "react";
+import WebfontLoader from '../../components/typography/fontloader';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import renderSVG from '@Controls/renderIcon';
+import UAGBIcon from '@Controls/UAGBIcon.json';
+import React from 'react';
 
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	RichText,
 	ColorPalette,
 } = wp.blockEditor;
 
@@ -25,18 +24,15 @@ const {
 	SelectControl,
 	RangeControl,
 	ToggleControl,
-	Dashicon,
-	TabPanel,
 } = wp.components;
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, className, headers, deviceType } = props;
+	const { attributes, setAttributes, deviceType } = props;
 
 	const {
 		align,
-		heading,
 		disableBullets,
 		makeCollapsible,
 		initialCollapse,
@@ -60,12 +56,10 @@ const Settings = ( props ) => {
 		tColumnsDesktop,
 		tColumnsTablet,
 		tColumnsMobile,
-		//Color
 		backgroundColor,
 		linkColor,
 		linkHoverColor,
 		headingColor,
-		//Padding,
 		vPaddingDesktop,
 		vPaddingTablet,
 		vPaddingMobile,
@@ -75,7 +69,6 @@ const Settings = ( props ) => {
 		paddingTypeMobile,
 		paddingTypeTablet,
 		paddingTypeDesktop,
-		//Padding,
 		vMarginDesktop,
 		vMarginTablet,
 		vMarginMobile,
@@ -86,19 +79,16 @@ const Settings = ( props ) => {
 		marginTypeTablet,
 		marginTypeDesktop,
 		headingBottom,
-		// Content Padding,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
 		contentPaddingTypeMobile,
 		contentPaddingTypeTablet,
 		contentPaddingTypeDesktop,
-		//Border
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
-		//Typography
 		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
@@ -125,7 +115,6 @@ const Settings = ( props ) => {
 		headingLineHeightMobile,
 		mappingHeaders,
 		headingAlignment,
-		headingTitle,
 	} = attributes;
 
 	const getIcon = ( value ) => {
@@ -164,7 +153,7 @@ const Settings = ( props ) => {
 			google: {
 				families: [
 					headingFontFamily +
-					( headingFontWeight ? ':' + headingFontWeight : '' ),
+						( headingFontWeight ? ':' + headingFontWeight : '' ),
 				],
 			},
 		};
@@ -1556,8 +1545,7 @@ const Settings = ( props ) => {
 			{ loadGFonts }
 			{ headingloadGFonts }
 		</>
-	)
-}
-
+	);
+};
 
 export default React.memo( Settings );

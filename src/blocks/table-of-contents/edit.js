@@ -12,7 +12,6 @@ import Render from './render';
 const { withSelect } = wp.data;
 const { compose } = wp.compose;
 
-
 const UAGBTableOfContentsEdit = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -50,9 +49,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		}
 	}, [ props ] );
 
-	const {
-		scrollToTop,
-	} = props.attributes
+	const { scrollToTop } = props.attributes;
 
 	const scrollElement = jQuery( '.uagb-toc__scroll-top' );
 	if ( null != scrollElement && 'undefined' !== scrollElement ) {
