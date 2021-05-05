@@ -2,16 +2,15 @@
  * BLOCK: Multi Buttons
  */
 
-import styling from "./styling"
+import styling from './styling';
 import { __ } from '@wordpress/i18n';
-import buttonsSettings from "./settings";
-import renderButtons from "./render";
+import buttonsSettings from './settings';
+import renderButtons from './render';
 import React, { useEffect, useState } from 'react';
 
 let prevState;
 
-const buttonsComponent = props => {
-
+const buttonsComponent = ( props ) => {
 	const initialState = {
 		isFocused: 'false',
 		isHovered: 'false',
@@ -23,19 +22,21 @@ const buttonsComponent = props => {
 		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } )
+		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { classMigrate: true } )
-		props.setAttributes( { childMigrate : true } )
+		props.setAttributes( { classMigrate: true } );
+		props.setAttributes( { childMigrate: true } );
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-buttons-" + props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+		const $style = document.createElement( 'style' );
+		$style.setAttribute(
+			'id',
+			'uagb-style-buttons-' + props.clientId.substr( 0, 8 )
+		);
+		document.head.appendChild( $style );
 
 		prevState = props.isSelected;
-
 	}, [] );
 
 	useEffect( () => {
@@ -46,14 +47,15 @@ const buttonsComponent = props => {
 			} );
 		}
 
-		var element = document.getElementById( "uagb-style-buttons-" + props.clientId.substr( 0, 8 ) )
+		const element = document.getElementById(
+			'uagb-style-buttons-' + props.clientId.substr( 0, 8 )
+		);
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props )
+		if ( null !== element && undefined !== element ) {
+			element.innerHTML = styling( props );
 		}
 
 		prevState = props.isSelected;
-
 	}, [ props ] );
 
 	return (
@@ -61,7 +63,7 @@ const buttonsComponent = props => {
 			{ buttonsSettings( props ) }
 			{ renderButtons( props ) }
 		</>
-	)
-}
+	);
+};
 
-export default buttonsComponent
+export default buttonsComponent;
