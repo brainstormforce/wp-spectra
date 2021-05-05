@@ -4,7 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import { Stars } from "./components";
+import Stars from "./star";
 
 const {
 	RichText,
