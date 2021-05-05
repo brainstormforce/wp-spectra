@@ -5,45 +5,43 @@ import { __ } from '@wordpress/i18n';
 
 const attributes = {
 	block_id: {
-		type: "string"
+		type: 'string',
 	},
-	dateRequired : {
-		type: "boolean",
-		default: false
+	dateRequired: {
+		type: 'boolean',
+		default: false,
 	},
 	name: {
-		type: "string",
-		default: __( "Date" , "ultimate-addons-for-gutenberg" )
+		type: 'string',
+		default: __( 'Date', 'ultimate-addons-for-gutenberg' ),
 	},
-	additonalVal : {
-		type: "boolean",
-		default: false
+	additonalVal: {
+		type: 'boolean',
+		default: false,
 	},
 	minYear: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	minMonth: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	minDay: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	maxYear: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	maxMonth: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	maxDay: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
-
-
 };
 export default attributes;

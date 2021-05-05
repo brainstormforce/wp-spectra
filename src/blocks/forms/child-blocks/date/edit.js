@@ -2,36 +2,30 @@
  * BLOCK: Forms - Date - Edit
  */
 
-import classnames from "classnames";
+import classnames from 'classnames';
 import React, { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 
-const {
-	PanelBody,
-	SelectControl,
-	ToggleControl
-} = wp.components;
-const {
-	InspectorControls,
-	RichText,
-} = wp.blockEditor;
+const { PanelBody, SelectControl, ToggleControl } = wp.components;
+const { InspectorControls, RichText } = wp.blockEditor;
 
-
-const UAGBFormsDateEdit = (props) => {
-
-	useEffect(() => {
+const UAGBFormsDateEdit = ( props ) => {
+	useEffect( () => {
 		const { setAttributes } = props;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" );
-		$style.setAttribute( "id", "uagb-style-forms-date-" + props.clientId.substr( 0, 8 ) );
+		const $style = document.createElement( 'style' );
+		$style.setAttribute(
+			'id',
+			'uagb-style-forms-date-' + props.clientId.substr( 0, 8 )
+		);
 		document.head.appendChild( $style );
-	}, []);
+	}, [] );
 
-	const { attributes, setAttributes,isSelected } = props;
+	const { attributes, setAttributes, isSelected } = props;
 
 	const {
 		block_id,
@@ -46,117 +40,138 @@ const UAGBFormsDateEdit = (props) => {
 		maxDay,
 	} = attributes;
 
-	let validation_min_value = "";
-	let validation_max_value = "";
+	let validation_min_value = '';
+	let validation_max_value = '';
 
-	if ( minYear && minMonth && minDay ){
-		validation_min_value = minYear+"-"+minMonth+"-"+minDay;
+	if ( minYear && minMonth && minDay ) {
+		validation_min_value = minYear + '-' + minMonth + '-' + minDay;
 	}
 
-	if ( maxYear && maxMonth && maxDay ){
-		validation_max_value = maxYear+"-"+maxMonth+"-"+maxDay;
+	if ( maxYear && maxMonth && maxDay ) {
+		validation_max_value = maxYear + '-' + maxMonth + '-' + maxDay;
 	}
 
-	let invalidDateErrorMsg = "";
+	let invalidDateErrorMsg = '';
 	const start = Date.parse( validation_min_value );
 	const end = Date.parse( validation_max_value );
 
 	if ( start > end ) {
-		invalidDateErrorMsg = <p className="uagb-forms-date-invalidate">Invalid date range selected</p>;
+		invalidDateErrorMsg = (
+			<p className="uagb-forms-date-invalidate">
+				Invalid date range selected
+			</p>
+		);
 	}
 
-
-
-	const YearDefaults = [{ label: "YYYY", value: "" }];
+	const YearDefaults = [ { label: 'YYYY', value: '' } ];
 
 	for ( var i = 1930; i <= 2030; i++ ) {
-		YearDefaults.push( { label: `${i}`, value: `${i}` } );
+		YearDefaults.push( { label: `${ i }`, value: `${ i }` } );
 	}
 
-
-	const MonthsDefaults = [{ label: "MM", value: "" }];
+	const MonthsDefaults = [ { label: 'MM', value: '' } ];
 
 	for ( var i = 1; i <= 12; i++ ) {
-		const twoDigitMonth = ( i < 10 ) ? `0${i}` : `${i}` ;
+		const twoDigitMonth = i < 10 ? `0${ i }` : `${ i }`;
 		MonthsDefaults.push( { label: twoDigitMonth, value: twoDigitMonth } );
 	}
 
-	const dateDefaults = [{ label: "DD", value: "" }];
+	const dateDefaults = [ { label: 'DD', value: '' } ];
 
 	for ( var i = 1; i <= 31; i++ ) {
-		const twoDigitDate = ( i < 10 ) ? `0${i}` : `${i}` ;
+		const twoDigitDate = i < 10 ? `0${ i }` : `${ i }`;
 		dateDefaults.push( { label: twoDigitDate, value: twoDigitDate } );
 	}
 
-
 	const dateInspectorControls = () => {
-
 		return (
 			<PanelBody
-				title={ __( "General" , "ultimate-addons-for-gutenberg" ) }
+				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<ToggleControl
-					label={ __( "Required" , "ultimate-addons-for-gutenberg" ) }
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
-					onChange={ ( value ) => setAttributes( { dateRequired: ! dateRequired } ) }
+					onChange={ ( value ) =>
+						setAttributes( { dateRequired: ! dateRequired } )
+					}
 				/>
 				<ToggleControl
-					label={ __( "Additional Validation" , "ultimate-addons-for-gutenberg" ) }
+					label={ __(
+						'Additional Validation',
+						'ultimate-addons-for-gutenberg'
+					) }
 					checked={ additonalVal }
-					onChange={ ( value ) => setAttributes( { additonalVal: ! additonalVal } ) }
-					help={ __( "Helps to set range of calender" , "ultimate-addons-for-gutenberg" ) }
+					onChange={ ( value ) =>
+						setAttributes( { additonalVal: ! additonalVal } )
+					}
+					help={ __(
+						'Helps to set range of calender',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				{ additonalVal && (
 					<>
 						<p>From :</p>
 						<SelectControl
-							className={ "minDate" }
+							className={ 'minDate' }
 							label="Year"
 							value={ minYear }
 							options={ YearDefaults }
-							onChange={ ( minYear ) => setAttributes( { minYear } ) }
+							onChange={ ( minYear ) =>
+								setAttributes( { minYear } )
+							}
 						/>
 						<b> - </b>
 						<SelectControl
-							className={ "minDate" }
+							className={ 'minDate' }
 							label="Month"
 							value={ minMonth }
 							options={ MonthsDefaults }
-							onChange={ ( minMonth ) => setAttributes( { minMonth } ) }
+							onChange={ ( minMonth ) =>
+								setAttributes( { minMonth } )
+							}
 						/>
 						<b> - </b>
 						<SelectControl
-							className={ "minDate" }
+							className={ 'minDate' }
 							label="Date"
 							value={ minDay }
 							options={ dateDefaults }
-							onChange={ ( minDay ) => setAttributes( { minDay } ) }
+							onChange={ ( minDay ) =>
+								setAttributes( { minDay } )
+							}
 						/>
 						<p>To :</p>
 						<SelectControl
-							className={ "maxDate" }
+							className={ 'maxDate' }
 							label="Year"
 							value={ maxYear }
 							options={ YearDefaults }
-							onChange={ ( maxYear ) => setAttributes( { maxYear } ) }
+							onChange={ ( maxYear ) =>
+								setAttributes( { maxYear } )
+							}
 						/>
 						<b> - </b>
 						<SelectControl
-							className={ "maxDate" }
+							className={ 'maxDate' }
 							label="Month"
 							value={ maxMonth }
 							options={ MonthsDefaults }
-							onChange={ ( maxMonth ) => setAttributes( { maxMonth } ) }
+							onChange={ ( maxMonth ) =>
+								setAttributes( { maxMonth } )
+							}
 						/>
 						<b> - </b>
 						<SelectControl
-							className={ "maxDate" }
+							className={ 'maxDate' }
 							label="Date"
 							value={ maxDay }
 							options={ dateDefaults }
-							onChange={ ( maxDay ) => setAttributes( { maxDay } ) }
+							onChange={ ( maxDay ) =>
+								setAttributes( { maxDay } )
+							}
 						/>
 						{ invalidDateErrorMsg }
 					</>
@@ -165,44 +180,68 @@ const UAGBFormsDateEdit = (props) => {
 		);
 	};
 
-
-
-	let date_html = "";
-	if ( additonalVal ){
-		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" required={ dateRequired } min={ validation_min_value } max={ validation_max_value } name={ block_id } />;
+	let date_html = '';
+	if ( additonalVal ) {
+		date_html = (
+			<input
+				type="date"
+				className="uagb-forms-date-input uagb-forms-input"
+				required={ dateRequired }
+				min={ validation_min_value }
+				max={ validation_max_value }
+				name={ block_id }
+			/>
+		);
 	} else {
-		date_html = <input type="date" className="uagb-forms-date-input uagb-forms-input" required={ dateRequired } name={ block_id } />;
+		date_html = (
+			<input
+				type="date"
+				className="uagb-forms-date-input uagb-forms-input"
+				required={ dateRequired }
+				name={ block_id }
+			/>
+		);
 	}
 
-
-	const isRequired = ( dateRequired ) ? __( "required", "ultimate-addons-for-gutenberg" ) : "";
+	const isRequired = dateRequired
+		? __( 'required', 'ultimate-addons-for-gutenberg' )
+		: '';
 
 	return (
 		<>
-			<InspectorControls>
-				{ dateInspectorControls() }
-			</InspectorControls>
-			<div className={ classnames(
-				"uagb-forms-date-wrap",
-				"uagb-forms-field-set",
-				`uagb-block-${ block_id }`,
-
-			) }>
+			<InspectorControls>{ dateInspectorControls() }</InspectorControls>
+			<div
+				className={ classnames(
+					'uagb-forms-date-wrap',
+					'uagb-forms-field-set',
+					`uagb-block-${ block_id }`
+				) }
+			>
 				{ isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required" , "ultimate-addons-for-gutenberg" ) }
+							label={ __(
+								'Required',
+								'ultimate-addons-for-gutenberg'
+							) }
 							checked={ dateRequired }
-							onChange={ ( value ) => setAttributes( { dateRequired: ! dateRequired } ) }
+							onChange={ ( value ) =>
+								setAttributes( {
+									dateRequired: ! dateRequired,
+								} )
+							}
 						/>
 					</div>
 				) }
 				<RichText
 					tagName="div"
-					placeholder={ __( "Date" , "ultimate-addons-for-gutenberg" ) }
+					placeholder={ __(
+						'Date',
+						'ultimate-addons-for-gutenberg'
+					) }
 					value={ name }
 					onChange={ ( value ) => setAttributes( { name: value } ) }
-					className={ `uagb-forms-date-label ${isRequired} uagb-forms-input-label` }
+					className={ `uagb-forms-date-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }
 				/>
@@ -210,8 +249,6 @@ const UAGBFormsDateEdit = (props) => {
 			</div>
 		</>
 	);
-
-}
-
+};
 
 export default UAGBFormsDateEdit;

@@ -2,13 +2,12 @@
  * BLOCK: Forms - Toggle - Save Block
  */
 
-import classnames from "classnames";
+import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default function save( props ) {
-
 	const { attributes } = props;
 
 	const {
@@ -18,21 +17,25 @@ export default function save( props ) {
 		toggleStatus,
 		layout,
 		trueValue,
-		falseValue
+		falseValue,
 	} = attributes;
 
-	const isRequired = ( toggleRequired ) ? __( "required", "ultimate-addons-for-gutenberg" ) : "";
+	const isRequired = toggleRequired
+		? __( 'required', 'ultimate-addons-for-gutenberg' )
+		: '';
 
 	return (
-		<div className={ classnames(
-			"uagb-forms-toggle-wrap",
-			"uagb-forms-field-set",
-			`uagb-block-${ block_id }`,
-		) }>
+		<div
+			className={ classnames(
+				'uagb-forms-toggle-wrap',
+				'uagb-forms-field-set',
+				`uagb-block-${ block_id }`
+			) }
+		>
 			<RichText.Content
 				tagName="div"
 				value={ name }
-				className={ `uagb-forms-toggle-label ${isRequired} uagb-forms-input-label` }
+				className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }
 				id={ block_id }
 			/>
 			<label className="uagb-switch">
@@ -56,7 +59,7 @@ export default function save( props ) {
 					required={ toggleRequired }
 					name={ block_id }
 				/>
-				<span className={ `uagb-slider ${layout}` }></span>
+				<span className={ `uagb-slider ${ layout }` }></span>
 			</label>
 		</div>
 	);

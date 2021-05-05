@@ -2,36 +2,23 @@
  * BLOCK: Forms - Toggle - Edit
  */
 
-import classnames from "classnames";
+import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect } from 'react';
-const {
-	Component,
-	Fragment
-} = wp.element;
+const { Component, Fragment } = wp.element;
 
-const {
-	PanelBody,
-	ToggleControl,
-	SelectControl,
-	TextControl
-} = wp.components;
-const {
-	InspectorControls,
-	RichText,
-	ColorPalette
-} = wp.blockEditor;
+const { PanelBody, ToggleControl, SelectControl, TextControl } = wp.components;
+const { InspectorControls, RichText, ColorPalette } = wp.blockEditor;
 
 const UAGBFormsToggleEdit = ( props ) => {
-
-	useEffect(() => {
+	useEffect( () => {
 		const { attributes, setAttributes } = props;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-	}, []);
+	}, [] );
 
-	const { attributes, setAttributes,isSelected } = props;
+	const { attributes, setAttributes, isSelected } = props;
 
 	const {
 		block_id,
@@ -40,81 +27,129 @@ const UAGBFormsToggleEdit = ( props ) => {
 		toggleStatus,
 		layout,
 		trueValue,
-		falseValue
+		falseValue,
 	} = attributes;
 
 	const toggleInspectorControls = () => {
-
 		return (
 			<PanelBody
-				title={ __( "General" , "ultimate-addons-for-gutenberg" ) }
+				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
-				<p className="uagb-settings-notice">{ __( "Leaving the toggle in On/Off state will set it as a default value on page load for the user." , "ultimate-addons-for-gutenberg" ) }</p>
+				<p className="uagb-settings-notice">
+					{ __(
+						'Leaving the toggle in On/Off state will set it as a default value on page load for the user.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 
 				<ToggleControl
-					label={ __( "Required" , "ultimate-addons-for-gutenberg" ) }
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ toggleRequired }
-					onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
+					onChange={ ( value ) =>
+						setAttributes( { toggleRequired: ! toggleRequired } )
+					}
 				/>
 				<ToggleControl
-					label={ __( "Default State" , "ultimate-addons-for-gutenberg" ) }
+					label={ __(
+						'Default State',
+						'ultimate-addons-for-gutenberg'
+					) }
 					checked={ toggleStatus }
-					help={ toggleStatus ? __( "ON State", "ultimate-addons-for-gutenberg" ) : __( "OFF State", "ultimate-addons-for-gutenberg" ) }
-					onChange={ ( value ) => setAttributes( { toggleStatus: ! toggleStatus } ) }
+					help={
+						toggleStatus
+							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
+							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
+					}
+					onChange={ ( value ) =>
+						setAttributes( { toggleStatus: ! toggleStatus } )
+					}
 				/>
 				<TextControl
-					label={ __( "True State", "ultimate-addons-for-gutenberg" ) }
+					label={ __(
+						'True State',
+						'ultimate-addons-for-gutenberg'
+					) }
 					value={ trueValue }
-					onChange={ ( value ) => setAttributes( { trueValue: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { trueValue: value } )
+					}
 				/>
 				<TextControl
-					label={ __( "False State" , "ultimate-addons-for-gutenberg" ) }
+					label={ __(
+						'False State',
+						'ultimate-addons-for-gutenberg'
+					) }
 					value={ falseValue }
-					onChange={ ( value ) => setAttributes( { falseValue: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { falseValue: value } )
+					}
 				/>
 				<SelectControl
-					label={ __( "Layout" , "ultimate-addons-for-gutenberg" ) }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 					value={ layout }
 					onChange={ ( value ) => setAttributes( { layout: value } ) }
 					options={ [
-						{ value: "", label: __( "Square" , "ultimate-addons-for-gutenberg" ) },
-						{ value: "round", label: __( "Round" , "ultimate-addons-for-gutenberg" ) },
+						{
+							value: '',
+							label: __(
+								'Square',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'round',
+							label: __(
+								'Round',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
 					] }
 				/>
 			</PanelBody>
 		);
 	};
 
-	const isRequired = ( toggleRequired ) ? __( "required","ultimate-addons-for-gutenberg" ) : "";
+	const isRequired = toggleRequired
+		? __( 'required', 'ultimate-addons-for-gutenberg' )
+		: '';
 
 	return (
 		<Fragment>
-			<InspectorControls>
-				{ toggleInspectorControls() }
-			</InspectorControls>
-			<div className={ classnames(
-				"uagb-forms-toggle-wrap",
-				"uagb-forms-field-set",
-				`uagb-block-${ block_id }`,
-
-			) }>
+			<InspectorControls>{ toggleInspectorControls() }</InspectorControls>
+			<div
+				className={ classnames(
+					'uagb-forms-toggle-wrap',
+					'uagb-forms-field-set',
+					`uagb-block-${ block_id }`
+				) }
+			>
 				{ isSelected && (
 					<div className="uagb-forms-required-wrap">
 						<ToggleControl
-							label={ __( "Required", "ultimate-addons-for-gutenberg" ) }
+							label={ __(
+								'Required',
+								'ultimate-addons-for-gutenberg'
+							) }
 							checked={ toggleRequired }
-							onChange={ ( value ) => setAttributes( { toggleRequired: ! toggleRequired } ) }
+							onChange={ ( value ) =>
+								setAttributes( {
+									toggleRequired: ! toggleRequired,
+								} )
+							}
 						/>
 					</div>
 				) }
 				<RichText
 					tagName="div"
-					placeholder={ __( "Name" , "ultimate-addons-for-gutenberg" ) }
+					placeholder={ __(
+						'Name',
+						'ultimate-addons-for-gutenberg'
+					) }
 					value={ name }
 					onChange={ ( value ) => setAttributes( { name: value } ) }
-					className={ `uagb-forms-toggle-label ${isRequired} uagb-forms-input-label` }
+					className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }
 					multiline={ false }
 					id={ block_id }
 				/>
@@ -140,13 +175,11 @@ const UAGBFormsToggleEdit = ( props ) => {
 						required={ toggleRequired }
 						name={ block_id }
 					/>
-					<span className={ `uagb-slider ${layout}` }></span>
+					<span className={ `uagb-slider ${ layout }` }></span>
 				</label>
 			</div>
 		</Fragment>
 	);
-
-}
-
+};
 
 export default UAGBFormsToggleEdit;
