@@ -61,6 +61,69 @@
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		column-gap: 15px;
 	}
+
+	/* The switch - the box around the slider */
+
+	.uagb-switch {
+		position: relative;
+		display: inline-block;
+		width: 50px;
+		height: 25px;
+	}
+
+
+	/* Hide default HTML checkbox */
+
+	.uagb-switch input {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+
+	/* The slider */
+
+	.uagb-slider {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: #fff;
+		cursor: pointer;
+		transition: 0.4s;
+		-webkit-transition: 0.4s;
+	}
+
+	.uagb-slider::before {
+		position: absolute;
+		top: 3px;
+		bottom: 3px;
+		left: 4px;
+		width: 20px;
+		height: 20px;
+		background-color: #000;
+		transition: 0.4s;
+		content: "";
+		-webkit-transition: 0.4s;
+	}
+
+	.uagb-switch input:checked + .uagb-slider::before {
+
+		background-color: #fff;
+		transform: translateX(22px);
+		-webkit-transform: translateX(22px);
+		-ms-transform: translateX(22px);
+	}
+
+	/* Rounded sliders */
+	.uagb-slider.round {
+		border-radius: 34px;
+	}
+
+	.uagb-slider.round::before {
+		border-radius: 50%;
+	}
+	// Toggle Css End
 }
 
 .uagb-forms-radio-wrap input[type="radio"]:checked + label::before {
@@ -129,73 +192,5 @@ select::before {
 .uagb-forms__full-btn .uagb-forms-main-submit-button {
 	width: 100%;
 	padding: 10px 15px;
-}
-
-.uagb-forms__outer-wrap {
-
-	/* The switch - the box around the slider */
-
-	.uagb-switch {
-		position: relative;
-		display: inline-block;
-		width: 50px;
-		height: 25px;
-	}
-
-
-	/* Hide default HTML checkbox */
-
-	.uagb-switch input {
-		width: 0;
-		height: 0;
-		opacity: 0;
-	}
-
-	/* The slider */
-
-	.uagb-slider {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background-color: #fff;
-		cursor: pointer;
-		transition: 0.4s;
-		-webkit-transition: 0.4s;
-	}
-
-	.uagb-slider::before {
-		position: absolute;
-		top: 3px;
-		bottom: 3px;
-		left: 4px;
-		width: 20px;
-		height: 20px;
-		background-color: #000;
-		transition: 0.4s;
-		content: "";
-		-webkit-transition: 0.4s;
-	}
-
-	.uagb-switch input:checked + .uagb-slider::before {
-
-		background-color: #fff;
-		transform: translateX(22px);
-		-webkit-transform: translateX(22px);
-		-ms-transform: translateX(22px);
-	}
-
-	/* Rounded sliders */
-	.uagb-slider.round {
-		border-radius: 34px;
-	}
-
-	.uagb-slider.round::before {
-		border-radius: 50%;
-	}
-	// Toggle Css End
-
-
 }
 
