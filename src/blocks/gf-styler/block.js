@@ -3,18 +3,16 @@
  */
 
 // Import block dependencies and components.
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 // Import icon.
-import edit from "./edit"
-import "./editor.scss"
-import "./style.scss"
+import edit from './edit';
+import './editor.scss';
+import './style.scss';
 import { __ } from '@wordpress/i18n';
 
 // Import registerBlockType() from wp.blocks
-const {
-	registerBlockType,
-} = wp.blocks
+const { registerBlockType } = wp.blocks;
 
 /**
  * Register: as Gutenberg Block.
@@ -29,16 +27,15 @@ const {
  *                             registered; otherwise `undefined`.
  */
 
-if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
-	registerBlockType( "uagb/gf-styler", {
-
-		title: uagb_blocks_info.blocks["uagb/gf-styler"]["title"], // Block title.
-		description:uagb_blocks_info.blocks["uagb/gf-styler"]["description"], // Block description.
+if ( uagb_blocks_info.blocks[ 'uagb/gf-styler' ].is_active ) {
+	registerBlockType( 'uagb/gf-styler', {
+		title: uagb_blocks_info.blocks[ 'uagb/gf-styler' ].title, // Block title.
+		description: uagb_blocks_info.blocks[ 'uagb/gf-styler' ].description, // Block description.
 		icon: UAGB_Block_Icons.gf_styler,
 		keywords: [
-			__( "GF styler",'ultimate-addons-for-gutenberg' ),
-			__( "gravity form styler",'ultimate-addons-for-gutenberg' ),
-			__( "uag",'ultimate-addons-for-gutenberg' ),
+			__( 'GF styler', 'ultimate-addons-for-gutenberg' ),
+			__( 'gravity form styler', 'ultimate-addons-for-gutenberg' ),
+			__( 'uag', 'ultimate-addons-for-gutenberg' ),
 		],
 		supports: {
 			anchor: true,
@@ -47,7 +44,7 @@ if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 		edit,
 		example: {},
 		save() {
-			return null
-		},	
-	} )
+			return null;
+		},
+	} );
 }

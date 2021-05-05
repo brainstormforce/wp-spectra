@@ -1,88 +1,108 @@
-import classnames from "classnames"
-const {
-	SelectControl,
-	Placeholder,
-	Spinner
-} = wp.components
+import classnames from 'classnames';
+const { SelectControl, Placeholder, Spinner } = wp.components;
 
-const gfStylerRender = props => {
-    const { className, attributes } = props
-    // Setup the attributes.
-    const {
-        formId,
-        align,
-        isHtml,
-        formJson,
-        titleDescStyle,
-        fieldStyle,
-        buttonAlignment,
-        enableLabel,
-        enableOveride,
-        advancedValidationSettings
-    } = attributes
-    
-    let html = ""
+import { __ } from '@wordpress/i18n';
 
-    if ( formJson && formJson.data.html ) {
-        html = formJson.data.html
-    }
+const gfStylerRender = ( props ) => {
+	const { className, attributes, setAttributes } = props;
+	// Setup the attributes.
+	const {
+		formId,
+		align,
+		isHtml,
+		formJson,
+		titleDescStyle,
+		fieldStyle,
+		buttonAlignment,
+		enableLabel,
+		enableOveride,
+		advancedValidationSettings,
+	} = attributes;
 
-    if ( formId == 0 ) {
-        return (
-            <>
-                <Placeholder
-                    icon="admin-post"
-                    label={ __( "Select a Gravity Form",'ultimate-addons-for-gutenberg' ) }
-                >
-                    <SelectControl				
-                        value={ formId }
-                        onChange={ onSelectForm() }
-                        options={ uagb_blocks_info.gf_forms }
-                    />	
-                </Placeholder>
-            </>
-        )
-    }
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
+	let html = '';
 
-    return (
-        <>
-            <div
-                className = { classnames(
-                    className,	
-                    "uagb-gf-styler__outer-wrap",
-                    `uagb-block-${ props.clientId.substr( 0, 8 ) }`
-                ) }
-            >
-                <div className = {  classnames(
-                    `uagb-gf-styler__align-${align}`,
-                    `uagb-gf-styler__field-style-${fieldStyle}`,
-                    `uagb-gf-styler__btn-align-${buttonAlignment}`,
-                    `uagb-gf-styler__gform-heading-${titleDescStyle}`,
-                    ( enableOveride ? "uagb-gf-styler__check-style-enabled" : "" ),
-                    ( enableLabel ? "uagb-gf-styler__hide-label" : "" ),
-                    ( advancedValidationSettings ? "uagb-gf-styler__error-yes" : "" ),
-                ) }>
+	if ( formJson && formJson.data.html ) {
+		html = formJson.data.html;
+	}
+	if ( formId == 0 ) {
+		return (
+			<>
+				<Placeholder
+					icon="admin-post"
+					label={ __(
+						'Select a Gravity Form',
+						'ultimate-addons-for-gutenberg'
+					) }
+				>
+					<SelectControl
+						value={ formId }
+						onChange={ onSelectForm() }
+						options={ uagb_blocks_info.gf_forms }
+					/>
+				</Placeholder>
+			</>
+		);
+	}
 
-                    { isHtml &&
-                        <div dangerouslySetInnerHTML={ { __html: html } } />
-                    }
-                    { isHtml == false &&
-                        <Placeholder
-                            icon="admin-post"
-                            label={ __( "Loading",'ultimate-addons-for-gutenberg' ) }
-                        >
-                            <Spinner />
-                        </Placeholder>
-                    }
-                </div>
-            </div>
-            { loadInputGoogleFonts }
-            { loadButtonGoogleFonts }
-            { loadLabelGoogleFonts }
-            { loadRadioGoogleFonts }
-            { loadValidationGoogleFonts }
-            { loadMsgGoogleFonts }
-        </>
-    )
-}
-export default gfStylerRender
+	return (
+		<>
+			<div
+				className={ classnames(
+					className,
+					'uagb-gf-styler__outer-wrap',
+					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				) }
+			>
+				<div
+					className={ classnames(
+						`uagb-gf-styler__align-${ align }`,
+						`uagb-gf-styler__field-style-${ fieldStyle }`,
+						`uagb-gf-styler__btn-align-${ buttonAlignment }`,
+						`uagb-gf-styler__gform-heading-${ titleDescStyle }`,
+						enableOveride
+							? 'uagb-gf-styler__check-style-enabled'
+							: '',
+						enableLabel ? 'uagb-gf-styler__hide-label' : '',
+						advancedValidationSettings
+							? 'uagb-gf-styler__error-yes'
+							: ''
+					) }
+				>
+					{ isHtml && (
+						<div dangerouslySetInnerHTML={ { __html: html } } />
+					) }
+					{ isHtml == false && (
+						<Placeholder
+							icon="admin-post"
+							label={ __(
+								'Loading',
+								'ultimate-addons-for-gutenberg'
+							) }
+						>
+							<Spinner />
+						</Placeholder>
+					) }
+				</div>
+			</div>
+			{ loadInputGoogleFonts }
+			{ loadButtonGoogleFonts }
+			{ loadLabelGoogleFonts }
+			{ loadRadioGoogleFonts }
+			{ loadValidationGoogleFonts }
+			{ loadMsgGoogleFonts }
+		</>
+	);
+};
+export default gfStylerRender;
