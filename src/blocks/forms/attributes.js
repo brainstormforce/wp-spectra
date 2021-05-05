@@ -14,19 +14,19 @@ const attributes = {
 	},
 	buttonAlign : {
 		type: "string",
-		default:  'left' 
+		default:  "left"
 	},
 	confirmationType : {
 		type: "string",
-		default:  'message',
+		default:  "message",
 	},
 	confirmationMessage : {
 		type: "string",
-		default: __( 'The form has been submitted successfully!' , 'ultimate-addons-for-gutenberg' )
+		default: __( "The form has been submitted successfully!" , "ultimate-addons-for-gutenberg" )
 	},
 	failedMessage : {
 		type: "string",
-		default: __( 'There has been some error while submitting the form. Please verify all form fields again.' ,'ultimate-addons-for-gutenberg' )
+		default: __( "There has been some error while submitting the form. Please verify all form fields again." ,"ultimate-addons-for-gutenberg" )
 	},
 	confirmationUrl : {
 		type: "string",
@@ -34,23 +34,23 @@ const attributes = {
 	sendAfterSubmitEmail : {
 		type: "boolean",
 		default:true,
-	},	
+	},
 	afterSubmitToEmail : {
 		type: "string",
-		default:'',
+		default:"",
 	},
 	afterSubmitCcEmail : {
 		type: "string",
-		default:'',
+		default:"",
 	},
 	afterSubmitBccEmail : {
 		type: "string",
-		default:'',
+		default:"",
 	},
 	afterSubmitEmailSubject : {
 		type: "string",
 		default:__( "Form Submission" , "ultimate-addons-for-gutenberg" )
-	},	
+	},
 	submitColor : {
 		type: "string",
 		default:"#ffffff"
@@ -69,7 +69,7 @@ const attributes = {
 	},
 	buttonSize : {
 		type: "string",
-		default: 'medium'
+		default: "medium"
 	},
 	// Border
 	submitborderStyle : {
@@ -95,7 +95,7 @@ const attributes = {
 		type: "number",
 	},
 	// Submit text Typography
-	
+
 	submitTextloadGoogleFonts: {
 		type: "boolean",
 		default: false
@@ -143,7 +143,7 @@ const attributes = {
 	},
 
 	// Label Font Family
-	
+
 	labelloadGoogleFonts: {
 		type: "boolean",
 		default: false
@@ -189,10 +189,10 @@ const attributes = {
 	labelLineHeightMobile: {
 		type: "number",
 	},
-	
+
 
 	// Input Font Family
-	
+
 	inputloadGoogleFonts: {
 		type: "boolean",
 		default: false
@@ -274,7 +274,7 @@ const attributes = {
 		type: "string",
 		default:"#000000"
 	},
-	
+
 
 	// InputBorder
 	inputborderStyle : {
@@ -315,7 +315,7 @@ const attributes = {
 	},
 	overallAlignment : {
 		type: "string",
-		default:'left'
+		default:"left"
 	},
 
 	//recaptha.
@@ -334,7 +334,7 @@ const attributes = {
 	reCaptchaSecretKeyV2 : {
 		type: "string",
 		default: "",
-	},	
+	},
 	reCaptchaSiteKeyV3 : {
 		type: "string",
 		default: "",
@@ -382,7 +382,7 @@ const attributes = {
 	},
 	captchaMessage:{
 		type:"string",
-		default:__("Please fill up the above captcha." , 'ultimate-addons-for-gutenberg')
+		default:__( "Please fill up the above captcha." , "ultimate-addons-for-gutenberg" )
 	}
-}
-export default attributes
+};
+export default attributes;

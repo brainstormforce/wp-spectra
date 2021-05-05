@@ -2,115 +2,102 @@
  * BLOCK: Forms - Email - Edit
  */
 
-import classnames from "classnames"
-
+import classnames from "classnames";
+import React, { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-
-const {
-	Component,
-	Fragment
-} = wp.element
 
 const {
 	RichText,
 	InspectorControls
-} = wp.blockEditor
+} = wp.blockEditor;
 
-const {	
+const {
 	ToggleControl,
 	TextControl,
 	PanelBody
-} = wp.components
+} = wp.components;
 
-class UAGBFormsEmailEdit extends Component {
+const UAGBFormsEmailEdit = ( props ) => {
 
-	constructor() {
-		super( ...arguments )
-	}
-
-	componentDidMount() {
-
-		const { attributes, setAttributes } = this.props
+	useEffect(() => {
+		const { attributes, setAttributes } = props;
 
 		// Assigning block_id in the attribute.
-		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-forms-email-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-		
-	}
-    
-	render() {
+		const $style = document.createElement( "style" );
+		$style.setAttribute( "id", "uagb-style-forms-email-" + props.clientId.substr( 0, 8 ) );
+		document.head.appendChild( $style );
+	}, []);
 
-		const { attributes,setAttributes,isSelected } = this.props
+	const { attributes,setAttributes,isSelected } = props;
 
-        const {
-			block_id,
-			name,
-			required,
-			placeholder
-		} = attributes
-		
-		const nameInspectorControls = () => {
+	const {
+		block_id,
+		name,
+		required,
+		placeholder
+	} = attributes;
 
-			return (
-				<PanelBody
-					title={ __( "General", 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
-					className="uagb__url-panel-body"
-				>
-					<ToggleControl
-						label={ __( "Required", 'ultimate-addons-for-gutenberg' ) }
-						checked={ required }
-						onChange={ ( value ) => setAttributes( { required: ! required } ) }
-					/>
-					<TextControl
-					 	label="Placeholder"
-						value={ placeholder }
-						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
-						placeholder={__( "Placeholder" , 'ultimate-addons-for-gutenberg')}
-					/>
-				</PanelBody>
-			)
-		}
-
-		const isRequired = (required) ? __("required" , 'ultimate-addons-for-gutenberg') : "";
+	const nameInspectorControls = () => {
 
 		return (
-			<Fragment>
-				<InspectorControls>
-					{ nameInspectorControls() }
-				</InspectorControls>
-				<div className={ classnames(
-					"uagb-forms-email-wrap",
-					"uagb-forms-field-set",
-					`uagb-block-${ block_id }`,
-				) }>
-					{isSelected && (
-						<div className="uagb-forms-required-wrap">
-							<ToggleControl
-								label={ __( "Required" , 'ultimate-addons-for-gutenberg' ) }
-								checked={ required }
-								onChange={ ( value ) => setAttributes( { required: ! required } ) }
-							/>
-						</div>
-					)}
-					<RichText
-							tagName="div"
-							placeholder={ __( "Email" , 'ultimate-addons-for-gutenberg' ) }
-							value={ name }
-							onChange={ ( value ) => setAttributes( { name: value } ) }
-							className={`uagb-forms-email-label ${isRequired} uagb-forms-input-label`}
-							multiline={ false }
-							id={ block_id }
-					/>
-					<input type="text" className="uagb-forms-email-input uagb-forms-input" placeholder={placeholder} required={ required } name={ block_id }/>
-				</div>
-			</Fragment>
-		)
-	}
+			<PanelBody
+				title={ __( "General", "ultimate-addons-for-gutenberg" ) }
+				initialOpen={ true }
+				className="uagb__url-panel-body"
+			>
+				<ToggleControl
+					label={ __( "Required", "ultimate-addons-for-gutenberg" ) }
+					checked={ required }
+					onChange={ ( value ) => setAttributes( { required: ! required } ) }
+				/>
+				<TextControl
+					label="Placeholder"
+					value={ placeholder }
+					onChange={ ( value ) => setAttributes( { placeholder: value } ) }
+					placeholder={ __( "Placeholder" , "ultimate-addons-for-gutenberg" ) }
+				/>
+			</PanelBody>
+		);
+	};
+
+	const isRequired = ( required ) ? __( "required" , "ultimate-addons-for-gutenberg" ) : "";
+
+	return (
+		<>
+			<InspectorControls>
+				{ nameInspectorControls() }
+			</InspectorControls>
+			<div className={ classnames(
+				"uagb-forms-email-wrap",
+				"uagb-forms-field-set",
+				`uagb-block-${ block_id }`,
+			) }>
+				{ isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" , "ultimate-addons-for-gutenberg" ) }
+							checked={ required }
+							onChange={ ( value ) => setAttributes( { required: ! required } ) }
+						/>
+					</div>
+				) }
+				<RichText
+					tagName="div"
+					placeholder={ __( "Email" , "ultimate-addons-for-gutenberg" ) }
+					value={ name }
+					onChange={ ( value ) => setAttributes( { name: value } ) }
+					className={ `uagb-forms-email-label ${isRequired} uagb-forms-input-label` }
+					multiline={ false }
+					id={ block_id }
+				/>
+				<input type="text" className="uagb-forms-email-input uagb-forms-input" placeholder={ placeholder } required={ required } name={ block_id } />
+			</div>
+		</>
+	);
+
 }
 
-export default UAGBFormsEmailEdit
+export default UAGBFormsEmailEdit;
