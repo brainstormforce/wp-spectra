@@ -33,10 +33,10 @@ const UAGBGF = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );
-
+	const { isHtml } = props.attributes
 	return (
 		<>
-			{ gfStylerSetting( props ) }
+			{ isHtml && (gfStylerSetting( props ) )}
 			{ gfStylerRender( props ) }
 		</>
 	);

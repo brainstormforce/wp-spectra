@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-const { SelectControl, Placeholder, Spinner } = wp.components;
+const { SelectControl, Placeholder } = wp.components;
 
 import { __ } from '@wordpress/i18n';
 
@@ -84,15 +84,20 @@ const gfStylerRender = ( props ) => {
 						<div dangerouslySetInnerHTML={ { __html: html } } />
 					) }
 					{ isHtml == false && (
-						<Placeholder
+							<Placeholder
 							icon="admin-post"
 							label={ __(
-								'Loading',
+								'Select a Gravity Form',
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							<Spinner />
+							<SelectControl
+								value={ formId }
+								onChange={ onSelectForm() }
+								options={ uagb_blocks_info.gf_forms }
+							/>
 						</Placeholder>
+				
 					) }
 				</div>
 			</div>
