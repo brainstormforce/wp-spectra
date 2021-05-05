@@ -277,19 +277,6 @@ const gfStylerRender = ( props ) => {
 		);
 	}
 
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectForm = ( id ) => {
-		if ( ! id ) {
-			setAttributes( { isHtml: false } );
-			setAttributes( { formId: null } );
-			return;
-		}
-		setAttributes( { isHtml: false } );
-		setAttributes( { formId: id } );
-	};
-
 	const fieldBorderSetting = () => {
 		return (
 			<PanelBody
@@ -2093,6 +2080,18 @@ const gfStylerRender = ( props ) => {
 			</BlockControls>
 		);
 	};
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
 
 	return (
 		<>
@@ -2106,12 +2105,12 @@ const gfStylerRender = ( props ) => {
 				{ msgSettings() }
 				{ spacingSetting() }
 			</InspectorControls>
-			{ loadInputGoogleFonts }
-			{ loadButtonGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadRadioGoogleFonts }
-			{ loadValidationGoogleFonts }
-			{ loadMsgGoogleFonts }
+			{loadInputGoogleFonts}
+			{loadButtonGoogleFonts}
+			{loadLabelGoogleFonts}
+			{loadRadioGoogleFonts}
+			{loadValidationGoogleFonts}
+			{loadMsgGoogleFonts}
 		</>
 	);
 };

@@ -96,12 +96,6 @@ const gfStylerRender = ( props ) => {
 					) }
 				</div>
 			</div>
-			{ loadInputGoogleFonts }
-			{ loadButtonGoogleFonts }
-			{ loadLabelGoogleFonts }
-			{ loadRadioGoogleFonts }
-			{ loadValidationGoogleFonts }
-			{ loadMsgGoogleFonts }
 		</>
 	);
 };

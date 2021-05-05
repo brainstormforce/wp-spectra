@@ -42,30 +42,32 @@ const UAGBGF = ( props ) => {
 	);
 };
 
-export default withSelect( ( props ) => {
-	const { attributes, setAttributes } = props;
-	const { formId, isHtml } = attributes;
-	let json_data = '';
+export default withSelect( ( select, props ) => {
+	const { setAttributes } = props
+	const { formId, isHtml } = props.attributes
+	let json_data = ""
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
-		$.ajax( {
+
+		$.ajax({
 			url: uagb_blocks_info.ajax_url,
 			data: {
-				action: 'uagb_gf_shortcode',
-				formId,
-				nonce: uagb_blocks_info.uagb_ajax_nonce,
+				action: "uagb_gf_shortcode",
+				formId : formId,
+				nonce: uagb_blocks_info.uagb_ajax_nonce
 			},
-			dataType: 'json',
-			type: 'POST',
-			success( data ) {
-				setAttributes( { isHtml: true } );
-				setAttributes( { formJson: data } );
-				json_data = data;
-			},
-		} );
+			dataType: "json",
+			type: "POST",
+			success: function( data ) {
+				setAttributes( { isHtml: true } )
+				setAttributes( { formJson: data } )
+				json_data = data
+			}
+		})
 	}
 
 	return {
-		formHTML: json_data,
-	};
-} )( UAGBGF );
+		formHTML: json_data
+	}
+} )( UAGBGF )
+
