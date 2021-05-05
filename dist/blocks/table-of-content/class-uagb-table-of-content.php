@@ -48,7 +48,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		}
 
 		/**
-		 * Set meta.
+		 * Delete toc meta.
 		 *
 		 * @access public
 		 *
@@ -57,11 +57,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @param boolean $update Whether this is an existing post being updated.
 		 */
 		public function update_toc_meta( $post_id, $post, $update ) {
-			if ( ! get_post_meta( $post_id, '_post_content', true ) ) {
-				update_post_meta( $post_id, '_post_content', $post->post_content );
-			} else {
-				add_post_meta( $post_id, '_post_content', get_post( $post_id )->post_content, true );
-			}
+			delete_post_meta( $post_id, '_uagb_toc_heading_content' );
 		}
 
 		/**
@@ -233,12 +229,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$post_id,
 			$current_page_only
 		) {
-			if ( get_post_meta( $post_id, '_post_content', true ) ) {
-				$post_content = get_post_meta( $post_id, '_post_content', true );
-			}
 
 			return $this->block_core_table_of_contents_get_headings_from_content(
-				$post_content,
+				get_post( $post_id )->post_content,
 				$current_page_only['mappingHeaders']
 			);
 		}
@@ -338,7 +331,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			global $post;
 
-			if ( ! isset( $post->ID ) ) {
+			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+
+			if ( ! isset( $post->ID ) || ( false === $uagb_toc_heading_content ) ) {
 				return '';
 			}
 
@@ -347,8 +342,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$attributes
 			);
 
+			update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
+
 			// If there are no headings.
-			if ( count( $headings ) === 0 ) {
+			if ( count( $uagb_toc_heading_content ) === 0 ) {
 				return '';
 			}
 
@@ -385,12 +382,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						}
 						?>
 					</div>
-					<?php if ( $headings && count( $headings ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
+					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
 							echo wp_kses_post(
 								$this->block_core_table_of_contents_render_list(
-									$this->block_core_table_of_contents_linear_to_nested_heading_list( $headings ),
+									$this->block_core_table_of_contents_linear_to_nested_heading_list( $uagb_toc_heading_content ),
 									get_permalink( $post->ID ),
 									$attributes
 								)
