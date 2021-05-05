@@ -334,67 +334,43 @@ class UAGBColumns extends Component {
 							max={ 2000 }
 							allowReset
 						/>
-						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ bottomHeightMobile }
-												onChange={ ( value ) => setAttributes( { bottomHeightMobile: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ bottomHeightTablet }
-												onChange={ ( value ) => setAttributes( { bottomHeightTablet: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ bottomHeight }
-												onChange={ ( value ) => setAttributes( { bottomHeight: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<Columnresponsive/>
+						{ "Desktop" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ bottomHeight }
+								onChange={ ( value ) => setAttributes( { bottomHeight: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+							</Fragment>
+						)}
+						{ "Tablet" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ bottomHeightTablet }
+								onChange={ ( value ) => setAttributes( { bottomHeightTablet: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+						</Fragment>
+						)}
+						{ "Mobile" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ bottomHeightMobile }
+								onChange={ ( value ) => setAttributes( { bottomHeightMobile: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+						</Fragment>
+						)}
 						<ToggleControl
 							label={ __( "Flip", 'ultimate-addons-for-gutenberg' ) }
 							checked={ bottomFlip }
@@ -442,67 +418,43 @@ class UAGBColumns extends Component {
 							max={ 2000 }
 							allowReset
 						/>
-						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ topHeightMobile }
-												onChange={ ( value ) => setAttributes( { topHeightMobile: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ topHeightTablet }
-												onChange={ ( value ) => setAttributes( { topHeightTablet: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									} else {
-										tabout = (
-											<RangeControl
-												label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
-												value={ topHeight }
-												onChange={ ( value ) => setAttributes( { topHeight: value } ) }
-												min={ 0 }
-												max={ 500 }
-												allowReset
-											/>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<Columnresponsive/>
+						{ "Desktop" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ topHeight }
+								onChange={ ( value ) => setAttributes( { topHeight: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+							</Fragment>
+						)}
+						{ "Tablet" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ topHeightTablet }
+								onChange={ ( value ) => setAttributes( { topHeightTablet: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+						</Fragment>
+						)}
+						{ "Mobile" === deviceType && (
+							<Fragment>
+							<RangeControl
+								label={ __( "Height", 'ultimate-addons-for-gutenberg' ) }
+								value={ topHeightMobile }
+								onChange={ ( value ) => setAttributes( { topHeightMobile: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+						</Fragment>
+						)}
 						<ToggleControl
 							label={ __( "Flip", 'ultimate-addons-for-gutenberg' ) }
 							checked={ topFlip }
