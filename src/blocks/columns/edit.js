@@ -988,7 +988,7 @@ class UAGBColumns extends Component {
 								min={ 0 }
 								max={ 100 }
 								allowReset
-								initialPosition={0}
+								initialPosition={100}
 							/> )
 						}
 						{ "video" == backgroundType && backgroundVideo && (
