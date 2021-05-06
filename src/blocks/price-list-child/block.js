@@ -27,5 +27,5 @@ registerBlockType( 'uagb/restaurant-menu-child', {
 	attributes,
 	edit,
 	save,
-	deprecated
+	deprecated,
 } );

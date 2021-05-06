@@ -30,49 +30,50 @@ const priceListChildRender = ( props ) => {
 				className,
 				'uagb-rest_menu__outer-wrap',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				...PositionClasses( attributes ) ) }>
-				<div className="uagb-rm__content">
-					{ ( position == 'top' || position == 'left' ) && (
-						<RestMenuImage attributes={ attributes } />
-					) }
-					<div className="uagb-rm__text-wrap">
-						{
-							<>
-								<div className="uagb-rm-details">
-									<div className="uagb-rm__title-wrap">
-										<Title
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											props={ props }
-										/>
-										<div className="uagb-rest-menu-text-wrap">
-											<Description
-												attributes={ attributes }
-												setAttributes={ setAttributes }
-												props={ props }
-											/>
-										</div>
-									</div>
-									<div className="uagb-rm__price-wrap">
-										<Price
+				...PositionClasses( attributes )
+			) }
+		>
+			<div className="uagb-rm__content">
+				{ ( position == 'top' || position == 'left' ) && (
+					<RestMenuImage attributes={ attributes } />
+				) }
+				<div className="uagb-rm__text-wrap">
+					{
+						<>
+							<div className="uagb-rm-details">
+								<div className="uagb-rm__title-wrap">
+									<Title
+										attributes={ attributes }
+										setAttributes={ setAttributes }
+										props={ props }
+									/>
+									<div className="uagb-rest-menu-text-wrap">
+										<Description
 											attributes={ attributes }
 											setAttributes={ setAttributes }
 											props={ props }
 										/>
 									</div>
 								</div>
-							</>
-						}
-					</div>
-					{ position == 'right' && (
-						<RestMenuImage attributes={ attributes } />
-					) }
+								<div className="uagb-rm__price-wrap">
+									<Price
+										attributes={ attributes }
+										setAttributes={ setAttributes }
+										props={ props }
+									/>
+								</div>
+							</div>
+						</>
+					}
 				</div>
-				<div className="uagb-rm__separator-parent">
-					<div className="uagb-rm__separator"></div>
-				</div>
+				{ position == 'right' && (
+					<RestMenuImage attributes={ attributes } />
+				) }
 			</div>
-		
+			<div className="uagb-rm__separator-parent">
+				<div className="uagb-rm__separator"></div>
+			</div>
+		</div>
 	);
 };
 export default priceListChildRender;
