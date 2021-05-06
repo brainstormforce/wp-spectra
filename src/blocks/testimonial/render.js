@@ -146,7 +146,7 @@ const testimonialRender = props => {
 
     return 	<div className={ classnames(
                 className,
-                "uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside",
+                "uagb-slick-carousel uagb-tm__arrow-outside",
                 `uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
                 `uagb-block-${ props.clientId.substr( 0, 8 ) }`
             ) }
@@ -177,7 +177,6 @@ const testimonialRender = props => {
                                             </div>
                                         </>
                                     }
-                                    <div className ="uagb-tm__meta">
                                         <div className ="uagb-tm__meta-inner">
 
                                             { (imagePosition == "bottom" ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }
@@ -192,7 +191,6 @@ const testimonialRender = props => {
                                             }
                                         </div>
                                     </div>
-                                </div>
                                 { ( imagePosition == "right" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }
                             </div>
                         </div>

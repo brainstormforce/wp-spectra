@@ -45,16 +45,14 @@
     display: flex;
 }
 .uagb-tm__meta-inner {
-    display: inline-block;
+    display: inline;
+    width: 100%;
+    line-height: 1;
 }
 .uagb-tm__image-position-bottom .uagb-tm__image-content,
 .uagb-tm__image-position-bottom .uagb-testimonial-details {
     display: table-cell;
     vertical-align: middle;
-}
-.uagb-tm__meta {
-    width: 100%;
-    line-height: 1;
 }
 .uagb-tm__image-position-bottom .uagb-tm__image-content {
     padding-right: 10px;
@@ -81,7 +79,7 @@
     color: #888888;
 }
 
-.is-carousel .uagb-testomonial__outer-wrap{
+.is-carousel{
     padding-left: 10px;
     padding-right: 10px;
 }
