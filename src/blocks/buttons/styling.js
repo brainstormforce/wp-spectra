@@ -51,6 +51,10 @@ function styling( props ) {
 			"flex-direction": "column"
 		}
 
+		mobile_selectors[" .block-editor-block-list__layout"] = {
+			"flex-direction": "column"
+		}
+
 	} else if ( "mobile" == stack ) {
 
 		mobile_selectors[" .uagb-button__wrapper"] = {
