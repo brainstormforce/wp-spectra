@@ -331,22 +331,21 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			global $post;
 
-			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
-
-			if ( ! isset( $post->ID ) || ( false === $uagb_toc_heading_content ) ) {
+			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
 
-			$headings = $this->block_core_table_of_contents_get_headings(
-				$post->ID,
-				$attributes
-			);
+			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
 
-			update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
+			if ( empty( $uagb_toc_heading_content ) ) {
 
-			// If there are no headings.
-			if ( count( $uagb_toc_heading_content ) === 0 ) {
-				return '';
+				$headings = $this->block_core_table_of_contents_get_headings(
+					$post->ID,
+					$attributes
+				);
+
+				update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
+
 			}
 
 			$mapping_header_func = function( $value ) {
