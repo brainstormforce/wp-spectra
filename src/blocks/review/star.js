@@ -1,24 +1,15 @@
 import { __ } from '@wordpress/i18n';;
-import React, { useEffect, useState } from 'react';
-let prevHoverState;
 
 const Stars = props => {
 
-	const initialState = {
-		displayValue: props.value,
-		displayColor: props.activeStarColor,
-	};
-
-	const [ state, setStateValue ] = useState( initialState );
-
 	const mouseHover = (i) => {
-		setStateValue({
+		props.setStateValue({
 			displayValue: i + (props.value - i === 1 ? 0.5 : 1),
 			displayColor: props.selectedStarColor,
 		});
 	}
 	const mouseLeave = () => {
-		setStateValue({
+		props.setStateValue({
 			displayValue: props.value,
 			displayColor: props.activeStarColor,
 		});
@@ -26,43 +17,24 @@ const Stars = props => {
 	const mouseClick = (i) => {
 		const { setValue, value } = props;
 		setValue(value === i + 1 ? i + 0.5 : i + 1);
-		setStateValue({
+		props.setStateValue({
 			displayValue: value === i + 1 ? i + 0.5 : i + 1,
 		});
 	}
-	useEffect( () => {
-
-		prevHoverState = props.onHover;
-
-	}, [] );
-
-	useEffect( () => {
-
-		const { value, activeStarColor } = props;
-
-		if ( prevHoverState || state.displayValue !== value) {
-			setStateValue({
-				displayValue: value,
-				displayColor: activeStarColor,
-			});
-
-			prevHoverState = props.onHover
-		} else {
-			setStateValue({ displayColor: activeStarColor });
-		}
-	}, [ props ] );
-
-	const { displayValue } = state;
+	
+	
 	const {
 		limit,
 		id,
 		className,
 		inactiveStarColor,
-		onHover,
 		onClick,
 		style,
 		starOutlineColor,
+		value,
+		activeStarColor
 	} = props;
+
 	return (
 		<div
 			className={className}
@@ -81,7 +53,7 @@ const Stars = props => {
 					height="20"
 					width="20"
 					viewBox="0 0 150 150"
-					onMouseOver={() => onHover || mouseHover(i)}
+					onMouseOver={() => mouseHover(i)}
 					onMouseOut={() => mouseLeave()}
 					onClick={() => onClick || mouseClick(i)}
 				>
@@ -90,9 +62,9 @@ const Stars = props => {
 							<rect
 								height="150"
 								width={
-									(displayValue - i > 0
-										? displayValue - i < 1
-											? displayValue - i
+									(value - i > 0
+										? value - i < 1
+											? value - i
 											: 1
 										: 0) * 150
 								}
@@ -113,7 +85,7 @@ const Stars = props => {
 						className="star"
 						id={`star${i}`}
 						mask={`url(#uagb_review_star_filter-${id}-${i})`}
-						fill={state.displayColor}
+						fill={activeStarColor}
 						strokeWidth="2.5"
 						d="m0.75,56.89914l56.02207,0l17.31126,-56.14914l17.31126,56.14914l56.02206,0l-45.32273,34.70168l17.31215,56.14914l-45.32274,-34.70262l-45.32274,34.70262l17.31215,-56.14914l-45.32274,-34.70168z"
 						stroke={starOutlineColor}

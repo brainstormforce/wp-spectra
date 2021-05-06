@@ -1,17 +1,9 @@
 const { RichText} = wp.blockEditor || wp.editor;
 import { __ } from '@wordpress/i18n';;
-import React, { useState } from 'react';
+import Stars from "./star";
 
 const ReviewBody = props => {
 
-	const initialState = {
-		average:
-				props.items.map((i) => i.value).reduce((total, v) => total + v) /
-				props.items.length,
-	};
-
-	const [ state, setStateValue ] = useState( initialState );
-	
 	const {
 		ID,
 		items,
@@ -42,13 +34,13 @@ const ReviewBody = props => {
 		showauthor,
 	} = props;
 
-	const { average } = state;
+	const { average } = props.state;
 
 	const newAverage =
 		items.map((i) => i.value).reduce((total, v) => total + v) / items.length;
 
 	if (average !== newAverage) {
-		setStateValue({ average: newAverage });
+		props.setStateValue({ average: newAverage });
 	}
 
 	let target ="_self"
@@ -56,7 +48,7 @@ const ReviewBody = props => {
 	if( ctaTarget ){
 		target ="_blank"
 	}
-
+	
 	return (
 		<div className="uagb_review_block">
 			<a
@@ -97,11 +89,11 @@ const ReviewBody = props => {
 			<div className="uagb-rating__source-wrap">{image_icon_html}</div>
 			}
 			{items.map((j, i) => (
-				showfeature === true && ( 
+				
+				showfeature === true && (
 				<div className="uagb_review_entry" key={i} >
 					<RichText
 						style={{ marginRight: "auto" }}
-						key={i}
 						placeholder={ __( "Edit feature" ) }
 						value={j.label}
 						onChange={(text) =>
@@ -113,7 +105,6 @@ const ReviewBody = props => {
 						}
 					/>
 					<div
-						key={i}
 						style={{
 							marginLeft: "auto",
 							minWidth: items.length > 1 ? 120 : 100,
@@ -127,7 +118,7 @@ const ReviewBody = props => {
 									.slice(0, i)
 									.concat(items.slice(i + 1, items.length));
 									setItems(newItems);
-								setStateValue({
+								props.setStateValue({
 									average: newItems
 									.map((i) => i.value)
 									.reduce((total, v) => total + v) / newItems.length,
@@ -148,7 +139,7 @@ const ReviewBody = props => {
 								];
 								setItems(newArray);
 								setActiveStarIndex(i);
-								setStateValue({
+								props.setStateValue({
 									average:
 										newArray
 											.map((i) => i.value)
@@ -159,6 +150,8 @@ const ReviewBody = props => {
 							activeStarColor={activeStarColor}
 							selectedStarColor={selectedStarColor}
 							starOutlineColor={starOutlineColor}
+							state = { props.starState }
+							setStateValue = { props.starSetStateValue }
 						/>
 					</div>
 				</div>
@@ -168,7 +161,7 @@ const ReviewBody = props => {
 				title={__("Insert new review entry")}
 				onClick={() => {
 					setItems([...items, { label: "", value: 0 }]);
-					setStateValue({
+					props.setStateValue({
 						average: average / (items.length + 1),
 					});
 				}}
@@ -204,6 +197,8 @@ const ReviewBody = props => {
 							activeStarColor={activeStarColor}
 							selectedStarColor={selectedStarColor}
 							starOutlineColor={starOutlineColor}
+							state = { props.starState }
+							setStateValue = { props.starSetStateValue }
 						/>
 					</div>
 				</div>

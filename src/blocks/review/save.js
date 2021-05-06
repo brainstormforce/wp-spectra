@@ -40,25 +40,25 @@ export default function save( props ) {
 		ctaLink 
 	} = attributes
 
-		const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
-	
-		let url_chk = ''
-		let title = ''
-		if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
-			url_chk = attributes.mainimage.url
-			title = attributes.mainimage.title
-		}
-		
-		let url = ''
-		if( '' !== url_chk ){
-			let size = attributes.mainimage.sizes
-			let imageSize = attributes.imgSize
+	const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
 
-			if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
-			  url = size[imageSize].url 
-			}else{
-			  url = url_chk 
-			}
+	let url_chk = ''
+	let title = ''
+	if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
+		url_chk = attributes.mainimage.url
+		title = attributes.mainimage.title
+	}
+	
+	let url = ''
+	if( '' !== url_chk ){
+		let size = attributes.mainimage.sizes
+		let imageSize = attributes.imgSize
+
+		if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
+			url = size[imageSize].url 
+		}else{
+			url = url_chk 
+		}
 	}
 
 	let image_icon_html = ''

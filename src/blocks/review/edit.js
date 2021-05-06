@@ -7,12 +7,27 @@ import SchemaNotices from "./schema-notices"
 import { __ } from '@wordpress/i18n';
 import reviewSettings from "./settings";
 import renderReview from "./render";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
 let prevState;
 
 const reviewComponent = props => {
+
+	const bodyInitialState = {
+		average:
+				props.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) /
+				props.attributes.parts.length,
+	};
+
+	const [ bodyState, bodySetStateValue ] = useState( bodyInitialState );
+
+	const starInitialState = {
+		displayValue: props.value,
+		displayColor: props.activeStarColor,
+	};
+
+	const [ starState, starSetStateValue ] = useState( starInitialState );
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -54,6 +69,7 @@ const reviewComponent = props => {
 		$(".uagb-rating-link-wrapper").on( "click", function(event) {
 			event.preventDefault()
 		})
+
 	}, [ props ] );
 
 	// Setup the attributes
@@ -149,7 +165,7 @@ const reviewComponent = props => {
 				reviewPublisher={reviewPublisher}
 			/>
 			{ reviewSettings( props ) }
-			{ renderReview( props ) }
+			{ renderReview( props, bodyState, bodySetStateValue, starState, starSetStateValue ) }
 			
 		</>
 	);

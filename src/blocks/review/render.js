@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ReviewBody from "./review-body";
 import { __ } from '@wordpress/i18n';
 
-export default function renderReview( props ) {
+export default function renderReview( props, bodyState, bodySetStateValue, starState, starSetStateValue  ) {
 
     // Setup the attributes
     const {
@@ -121,10 +121,14 @@ export default function renderReview( props ) {
                     setAttributes({ summaryDescription: newValue })
                 }
                 hasFocus={isSelected}
-                setEditable={(newValue) => setState({ editable: newValue })}
-                setActiveStarIndex={(editedStar) => setState({ editedStar })}
+                setEditable={(newValue) => bodySetStateValue({ editable: newValue })}
+                setActiveStarIndex={(editedStar) => bodySetStateValue({ editedStar })}
                 showfeature={showFeature}
                 showauthor={showAuthor}
+                state = { bodyState }
+                setStateValue = { bodySetStateValue }
+                starState = { starState }
+                starSetStateValue = { starSetStateValue }
             />
         </div>
     );
