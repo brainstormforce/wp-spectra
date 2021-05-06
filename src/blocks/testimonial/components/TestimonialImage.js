@@ -1,52 +1,48 @@
-const {
-	RichText,
-} = wp.blockEditor
 
-import { __ } from '@wordpress/i18n';
 
-const TestimonialImage = props => {
+const TestimonialImage = ( props ) => {
+	const { attributes, index_value } = props;
+	let url_check = '';
 
-		const { attributes , index_value } = props
-		let url_check = ""
-        
-		const image_arr = attributes.test_block[index_value]
-        
-		if( image_arr && typeof image_arr !== "undefined"){
-			const image = image_arr["image"]
-			let url = ""
-           
-			if( typeof image !== "undefined" && image !== null && image !=="" ){
-				url_check = image.url
-			}       
-            
-			if( url_check !== "" ){
-				let size = image.sizes
-				let imageSize = attributes.imageSize
-				if ( typeof size !== "undefined" && typeof size[imageSize] !== "undefined") {
-					url = size[imageSize].url 
-				}else{
-					url = url_check 
-				}
-                
-				return (     
-					<div className ="uagb-tm__image-content" key={"tm_img-wrap-"+index_value}>           
-						<div className="uagb-tm__image" key={"tm_img-"+index_value}>                        
-							<img
-								className =""
-								src = { url }                        
-								alt = { image.alt }                    
-							/>                        
-						</div>  
-					</div>                                 
-				)
-			}else{
-				return null
-			}     
+	const image_arr = attributes.test_block[ index_value ];
 
-		}else{
-			return null
+	if ( image_arr && typeof image_arr !== 'undefined' ) {
+		const image = image_arr.image;
+		let url = '';
+
+		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
+			url_check = image.url;
 		}
-	
-}
 
-export default TestimonialImage
+		if ( url_check !== '' ) {
+			const size = image.sizes;
+			const imageSize = attributes.imageSize;
+			if (
+				typeof size !== 'undefined' &&
+				typeof size[ imageSize ] !== 'undefined'
+			) {
+				url = size[ imageSize ].url;
+			} else {
+				url = url_check;
+			}
+
+			return (
+				<div
+					className="uagb-tm__image-content"
+					key={ 'tm_img-wrap-' + index_value }
+				>
+					<div
+						className="uagb-tm__image"
+						key={ 'tm_img-' + index_value }
+					>
+						<img className="" src={ url } alt={ image.alt } />
+					</div>
+				</div>
+			);
+		}
+		return null;
+	}
+	return null;
+};
+
+export default TestimonialImage;
