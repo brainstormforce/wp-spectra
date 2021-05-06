@@ -2,22 +2,23 @@
  * BLOCK: UAGB Review Block.
  */
 
-import styling from "./styling"
-import SchemaNotices from "./schema-notices"
+import styling from './styling';
+import SchemaNotices from './schema-notices';
 import { __ } from '@wordpress/i18n';
-import reviewSettings from "./settings";
-import renderReview from "./render";
+import reviewSettings from './settings';
+import renderReview from './render';
 import React, { useEffect, useState } from 'react';
 const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
 let prevState;
 
-const reviewComponent = props => {
-
+const reviewComponent = ( props ) => {
 	const bodyInitialState = {
 		average:
-				props.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) /
-				props.attributes.parts.length,
+			props.attributes.parts
+				.map( ( i ) => i.value )
+				.reduce( ( total, v ) => total + v ) /
+			props.attributes.parts.length,
 	};
 
 	const [ bodyState, bodySetStateValue ] = useState( bodyInitialState );
@@ -33,17 +34,21 @@ const reviewComponent = props => {
 		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } )
+		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes({ schema: JSON.stringify(props.schemaJsonData) });
+		props.setAttributes( {
+			schema: JSON.stringify( props.schemaJsonData ),
+		} );
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-ratings-style-" + props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+		const $style = document.createElement( 'style' );
+		$style.setAttribute(
+			'id',
+			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
+		);
+		document.head.appendChild( $style );
 
 		prevState = props.schemaJsonData;
-
 	}, [] );
 
 	useEffect( () => {
@@ -53,23 +58,24 @@ const reviewComponent = props => {
 			JSON.stringify( props.schemaJsonData ) !==
 			JSON.stringify( prevState )
 		) {
-				props.setAttributes({
-				schema: JSON.stringify(props.schemaJsonData)
-			});
+			props.setAttributes( {
+				schema: JSON.stringify( props.schemaJsonData ),
+			} );
 
 			prevState = props.schemaJsonData;
 		}
 
-		var element = document.getElementById( "uagb-ratings-style-" + props.clientId.substr( 0, 8 ) )
+		const element = document.getElementById(
+			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
+		);
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props )
+		if ( null !== element && undefined !== element ) {
+			element.innerHTML = styling( props );
 		}
 
-		$(".uagb-rating-link-wrapper").on( "click", function(event) {
-			event.preventDefault()
-		})
-
+		$( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
+			event.preventDefault();
+		} );
 	}, [ props ] );
 
 	// Setup the attributes
@@ -110,203 +116,219 @@ const reviewComponent = props => {
 		setAttributes,
 	} = props;
 
-	if (
-		block_id === ""
-	) {
-		setAttributes({
-			
+	if ( block_id === '' ) {
+		setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
-		});
+		} );
 	}
 
 	if (
 		items &&
-		items !== JSON.stringify(parts) &&
+		items !== JSON.stringify( parts ) &&
 		parts.length === 1 &&
-		parts[0].label === "" &&
-		parts[0].value === 0
+		parts[ 0 ].label === '' &&
+		parts[ 0 ].value === 0
 	) {
-		setAttributes({
-			parts: JSON.parse(items),
+		setAttributes( {
+			parts: JSON.parse( items ),
 			items: '[{"label":"","value":0}]',
-		});
+		} );
 	}
 
 	return (
 		<>
 			<SchemaNotices
-				enableSchema={enableSchema}
-				itemType={itemType}
-				rTitle={rTitle}
-				enableDescription={enableDescription}
-				rContent={rContent}
-				enableImage={enableImage}
-				mainimage={mainimage}
-				sku={sku}
-				brand={brand}
-				starCount={starCount}
-				showAuthor={showAuthor}
-				rAuthor={rAuthor}
-				showfeature={showFeature}
-				offerType={offerType}
-				datepublish={datepublish}
-				offerCurrency={offerCurrency}
-				offerPrice={offerPrice}
-				ctaLink={ctaLink}
-				offerExpiry={offerExpiry}
-				identifier={identifier}
-				isbn={isbn}
-				bookAuthorName={bookAuthorName}
-				directorname={directorname}
-				datecreated={datecreated}
-				provider={provider}
-				appCategory={appCategory}
-				operatingSystem={operatingSystem}
-				reviewPublisher={reviewPublisher}
+				enableSchema={ enableSchema }
+				itemType={ itemType }
+				rTitle={ rTitle }
+				enableDescription={ enableDescription }
+				rContent={ rContent }
+				enableImage={ enableImage }
+				mainimage={ mainimage }
+				sku={ sku }
+				brand={ brand }
+				starCount={ starCount }
+				showAuthor={ showAuthor }
+				rAuthor={ rAuthor }
+				showfeature={ showFeature }
+				offerType={ offerType }
+				datepublish={ datepublish }
+				offerCurrency={ offerCurrency }
+				offerPrice={ offerPrice }
+				ctaLink={ ctaLink }
+				offerExpiry={ offerExpiry }
+				identifier={ identifier }
+				isbn={ isbn }
+				bookAuthorName={ bookAuthorName }
+				directorname={ directorname }
+				datecreated={ datecreated }
+				provider={ provider }
+				appCategory={ appCategory }
+				operatingSystem={ operatingSystem }
+				reviewPublisher={ reviewPublisher }
 			/>
 			{ reviewSettings( props ) }
-			{ renderReview( props, bodyState, bodySetStateValue, starState, starSetStateValue ) }
-			
+			{ renderReview(
+				props,
+				bodyState,
+				bodySetStateValue,
+				starState,
+				starSetStateValue
+			) }
 		</>
 	);
-}
+};
 
-export const removeFromArray = (arr, removedElems) =>
-arr.filter((a) =>
-	Array.isArray(removedElems) ? !removedElems.includes(a) : a !== removedElems
-);
+export const removeFromArray = ( arr, removedElems ) =>
+	arr.filter( ( a ) =>
+		Array.isArray( removedElems )
+			? ! removedElems.includes( a )
+			: a !== removedElems
+	);
 
-compose([
-	withState({ editable: "", editedStar: 0 }),
-	withSelect((select, ownProps) => {
+compose( [
+	withState( { editable: '', editedStar: 0 } ),
+	withSelect( ( select, ownProps ) => {
 		const { getBlock } =
-			select("core/block-editor") || select("core/editor");
+			select( 'core/block-editor' ) || select( 'core/editor' );
 
 		return {
-			block: getBlock(ownProps.clientId),
+			block: getBlock( ownProps.clientId ),
 			getBlock,
 		};
-	}),
-])
+	} ),
+] );
 
 export default compose(
-	withSelect( ( select,ownProps ) => {
-		const newAverage = ownProps.attributes.parts.map((i) => i.value).reduce((total, v) => total + v) / ownProps.attributes.parts.length;
-		var itemtype = '';
-			
-		if( ["Product", "SoftwareApplication", "Book"].includes( ownProps.attributes.itemType ) ){
-			itemtype = ( ( ownProps.attributes.itemSubtype != "None" && ownProps.attributes.itemSubtype != "" ) ? ownProps.attributes.itemSubtype : ownProps.attributes.itemType)
-		}else{
-			itemtype = ownProps.attributes.itemType
+	withSelect( ( select, ownProps ) => {
+		const newAverage =
+			ownProps.attributes.parts
+				.map( ( i ) => i.value )
+				.reduce( ( total, v ) => total + v ) /
+			ownProps.attributes.parts.length;
+		let itemtype = '';
+
+		if (
+			[ 'Product', 'SoftwareApplication', 'Book' ].includes(
+				ownProps.attributes.itemType
+			)
+		) {
+			itemtype =
+				ownProps.attributes.itemSubtype != 'None' &&
+				ownProps.attributes.itemSubtype != ''
+					? ownProps.attributes.itemSubtype
+					: ownProps.attributes.itemType;
+		} else {
+			itemtype = ownProps.attributes.itemType;
 		}
 
-			var json_data = {
-				"@context": "http://schema.org/",
-				"@type": "Review",
-				"reviewBody": ownProps.attributes.summaryDescription,
-				"description": ownProps.attributes.rContent,
-				itemReviewed: [],
-				"reviewRating": {
-					"@type": "Rating",
-					"ratingValue": newAverage,
-					"bestRating": ownProps.attributes.starCount,
-				},
-				"author": {
-					"@type": "Person",
-					"name": ownProps.attributes.rAuthor,
-				},
-				"publisher": ownProps.attributes.reviewPublisher,
-				"datePublished":ownProps.attributes.datepublish,
-				"url": ownProps.attributes.ctaLink
-			}
-				
-				switch ( ownProps.attributes.itemType ) {
-				case "Book":
+		const json_data = {
+			'@context': 'http://schema.org/',
+			'@type': 'Review',
+			reviewBody: ownProps.attributes.summaryDescription,
+			description: ownProps.attributes.rContent,
+			itemReviewed: [],
+			reviewRating: {
+				'@type': 'Rating',
+				ratingValue: newAverage,
+				bestRating: ownProps.attributes.starCount,
+			},
+			author: {
+				'@type': 'Person',
+				name: ownProps.attributes.rAuthor,
+			},
+			publisher: ownProps.attributes.reviewPublisher,
+			datePublished: ownProps.attributes.datepublish,
+			url: ownProps.attributes.ctaLink,
+		};
+
+		switch ( ownProps.attributes.itemType ) {
+			case 'Book':
 				json_data.itemReviewed = {
-					"@type":itemtype,
-					"name": ownProps.attributes.rTitle,
-					"description": ownProps.attributes.rContent,
-					"image": [],
-					"author": ownProps.attributes.rAuthor,
-					"isbn": ownProps.attributes.isbn,
-				}
+					'@type': itemtype,
+					name: ownProps.attributes.rTitle,
+					description: ownProps.attributes.rContent,
+					image: [],
+					author: ownProps.attributes.rAuthor,
+					isbn: ownProps.attributes.isbn,
+				};
 				break;
 
-				case "Course":
+			case 'Course':
 				json_data.itemReviewed = {
-					"@type":ownProps.attributes.itemType,
-					"name": ownProps.attributes.rTitle,
-					"description": ownProps.attributes.rContent,
-					"image": [],
-					"provider": ownProps.attributes.provider,
-				}
+					'@type': ownProps.attributes.itemType,
+					name: ownProps.attributes.rTitle,
+					description: ownProps.attributes.rContent,
+					image: [],
+					provider: ownProps.attributes.provider,
+				};
 				break;
-				
-				case "Product":
+
+			case 'Product':
 				json_data.itemReviewed = {
-					"@type":itemtype,
-					"name": ownProps.attributes.rTitle,
-					"description": ownProps.attributes.rContent,
-					"image": [],
-					"sku": ownProps.attributes.sku,
-					"brand": {
-						"@type": "Brand",
-						"name": ownProps.attributes.brand,
+					'@type': itemtype,
+					name: ownProps.attributes.rTitle,
+					description: ownProps.attributes.rContent,
+					image: [],
+					sku: ownProps.attributes.sku,
+					brand: {
+						'@type': 'Brand',
+						name: ownProps.attributes.brand,
 					},
-					offers : []
-				}
+					offers: [],
+				};
 				break;
 
-				case "Movie":
+			case 'Movie':
 				json_data.itemReviewed = {
-					"@type":ownProps.attributes.itemType,
-					"name": ownProps.attributes.rTitle,
-					"dateCreated": ownProps.attributes.datecreated,
-					"director": {
-						"@type": "Person",
-						"name": ownProps.attributes.directorname,
+					'@type': ownProps.attributes.itemType,
+					name: ownProps.attributes.rTitle,
+					dateCreated: ownProps.attributes.datecreated,
+					director: {
+						'@type': 'Person',
+						name: ownProps.attributes.directorname,
 					},
-				}
+				};
 				break;
 
-				case "SoftwareApplication":
+			case 'SoftwareApplication':
 				json_data.itemReviewed = {
-					"@type": itemtype,
-					"name": ownProps.attributes.rTitle,
-					"applicationCategory": ownProps.attributes.appCategory,
-					"operatingSystem": ownProps.attributes.operatingSystem,
-					offers : {
-						"@type": ownProps.attributes.offerType,
-						"price": ownProps.attributes.offerPrice,
-						"url": ownProps.attributes.ctaLink,
-						"priceCurrency": ownProps.attributes.offerCurrency,
+					'@type': itemtype,
+					name: ownProps.attributes.rTitle,
+					applicationCategory: ownProps.attributes.appCategory,
+					operatingSystem: ownProps.attributes.operatingSystem,
+					offers: {
+						'@type': ownProps.attributes.offerType,
+						price: ownProps.attributes.offerPrice,
+						url: ownProps.attributes.ctaLink,
+						priceCurrency: ownProps.attributes.offerCurrency,
 					},
-				}
+				};
 				break;
 
-				default:
-				break;	
-				}
+			default:
+				break;
+		}
 
-				if ( ownProps.attributes.mainimage ) {
-				json_data.itemReviewed.image = ownProps.attributes.mainimage.url;
-			}
+		if ( ownProps.attributes.mainimage ) {
+			json_data.itemReviewed.image = ownProps.attributes.mainimage.url;
+		}
 
-			if( ownProps.attributes.itemType == 'Product' ){
-				json_data.itemReviewed[ownProps.attributes.identifierType] = ownProps.attributes.identifier
-				json_data.itemReviewed.offers = {
-					"@type": ownProps.attributes.offerType,
-					"price": ownProps.attributes.offerPrice,
-					"url": ownProps.attributes.ctaLink,
-					"priceValidUntil": ownProps.attributes.offerExpiry,
-					"priceCurrency": ownProps.attributes.offerCurrency,
-					"availability": ownProps.attributes.offerStatus
-				}
-			}
-			
+		if ( ownProps.attributes.itemType == 'Product' ) {
+			json_data.itemReviewed[ ownProps.attributes.identifierType ] =
+				ownProps.attributes.identifier;
+			json_data.itemReviewed.offers = {
+				'@type': ownProps.attributes.offerType,
+				price: ownProps.attributes.offerPrice,
+				url: ownProps.attributes.ctaLink,
+				priceValidUntil: ownProps.attributes.offerExpiry,
+				priceCurrency: ownProps.attributes.offerCurrency,
+				availability: ownProps.attributes.offerStatus,
+			};
+		}
+
 		return {
-			schemaJsonData: json_data
+			schemaJsonData: json_data,
 		};
 	} )
-) ( reviewComponent )
-	
+)( reviewComponent );
