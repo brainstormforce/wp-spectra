@@ -2,14 +2,14 @@
  * BLOCK: Forms - Edit
  */
 
-import { useCallback } from 'react';
+import { useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import map from 'lodash/map';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useEffect } from 'react';
 
-import Settings from './settings';
-import Render from './render';
+const Settings = lazy(() => import( /* webpackChunkName: "form-settings" */ './settings'));
+const Render = lazy(() => import( /* webpackChunkName: "form-render" */ './render'));
 
 const { withSelect, useDispatch } = wp.data;
 
@@ -189,11 +189,18 @@ const UAGBFormsEdit = ( props ) => {
 		);
 	}
 
+	const renderLoader = () => <p> { __( 'Loading..', 'ultimate-addons-for-gutenberg' ) } </p>;
+
 	return (
 		<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
+			<Suspense fallback={renderLoader()}>
+				<Settings parentProps={ props } />
+			</Suspense>
+			<Suspense fallback={renderLoader()}>
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
+
 	);
 };
 
