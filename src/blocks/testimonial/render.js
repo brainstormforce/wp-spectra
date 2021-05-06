@@ -13,61 +13,9 @@ const testimonialRender = props => {
 
     // Setup the attributes.
     const {
-        test_item_count,
         test_block,
-        headingAlign,
-        companyColor,
-        descColor,
-        authorColor,
-
-        nameFontSizeType,
-        nameFontSize,
-        nameFontSizeTablet,
-        nameFontSizeMobile,
-        nameFontFamily,
-        nameFontWeight,
-        nameFontSubset,
-        nameLineHeightType,
-        nameLineHeight,
-        nameLineHeightTablet,
-        nameLineHeightMobile,
-        nameLoadGoogleFonts,
-
-        companyFontSizeType,
-        companyFontSize,
-        companyFontSizeTablet,
-        companyFontSizeMobile,
-        companyFontFamily,
-        companyFontWeight,
-        companyFontSubset,
-        companyLineHeightType,
-        companyLineHeight,
-        companyLineHeightTablet,
-        companyLineHeightMobile,
-        companyLoadGoogleFonts,
-
-        descFontSizeType,
-        descFontSize,
-        descFontSizeTablet,
-        descFontSizeMobile,
-        descFontFamily,
-        descFontWeight,
-        descFontSubset,
-        descLineHeightType,
-        descLineHeight,
-        descLineHeightTablet,
-        descLineHeightMobile,
-        descLoadGoogleFonts,
-
-        descSpace,
-        iconimgStyle,
+       
         imagePosition,
-        imageAlignment,
-        nameSpace,
-        imgHrPadding,
-        imgVrPadding,
-        imageSize,
-        imageWidth,
         columns,
         tcolumns,
         mcolumns,
@@ -80,23 +28,7 @@ const testimonialRender = props => {
         arrowBorderRadius,
         autoplay,
         autoplaySpeed,
-        arrowColor,
-        rowGap,
-        columnGap,
-        contentPadding,
-        backgroundType,
-        backgroundColor,
-        backgroundImage,
-        backgroundPosition,
-        backgroundSize,
-        backgroundRepeat,
-        backgroundImageColor,
-        backgroundOpacity,
-        borderStyle,
-        borderWidth ,
-        borderRadius,
-        borderColor,
-        stack,
+        arrowColor
     } = attributes
 
     const NextArrow = ( ) => {
@@ -172,10 +104,8 @@ const testimonialRender = props => {
                                 <div className ="uagb-tm__text-wrap">
                                     {  // Get description.
                                         <>
-                                            <div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
                                                 <Description attributes={attributes} setAttributes = { setAttributes } props = { props }  index_value = {index}/>
-                                            </div>
-                                        </>
+                                           </>
                                     }
                                         <div className ="uagb-tm__meta-inner">
 
