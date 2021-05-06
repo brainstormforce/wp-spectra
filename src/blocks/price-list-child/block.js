@@ -5,8 +5,8 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import attributes from './attributes';
-import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
@@ -27,4 +27,5 @@ registerBlockType( 'uagb/restaurant-menu-child', {
 	attributes,
 	edit,
 	save,
+	deprecated
 } );

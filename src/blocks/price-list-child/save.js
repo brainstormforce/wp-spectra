@@ -10,13 +10,11 @@ import Description from './components/Description';
 import PositionClasses from '../price-list/classes';
 import RestMenuImage from './components/RestMenuImage';
 
-const { Fragment } = wp.element;
-
 export default function save( props ) {
 	const { block_id, className, imagePosition } = props.attributes;
 
 	return (
-		<Fragment>
+		<>
 			<div
 				className={ classnames(
 					'uagb-rest_menu__wrap',
@@ -24,18 +22,6 @@ export default function save( props ) {
 					...PositionClasses( props.attributes )
 				) }
 			>
-				<div
-					className={ classnames(
-						className,
-						'uagb-rest_menu__outer-wrap',
-						`uagb-block-${ block_id }`
-					) }
-				>
-					<div
-						className={ classnames(
-							...PositionClasses( props.attributes )
-						) }
-					>
 						<div className="uagb-rm__content">
 							{ ( imagePosition == 'top' ||
 								imagePosition == 'left' ) && (
@@ -45,7 +31,7 @@ export default function save( props ) {
 							) }
 							<div className="uagb-rm__text-wrap">
 								{
-									<Fragment>
+									<>
 										<div className="uagb-rm-details">
 											<div className="uagb-rm__title-wrap">
 												<Title
@@ -75,7 +61,7 @@ export default function save( props ) {
 												/>
 											</div>
 										</div>
-									</Fragment>
+									</>
 								}
 							</div>
 							{ imagePosition == 'right' && (
@@ -88,8 +74,7 @@ export default function save( props ) {
 							<div className="uagb-rm__separator"></div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</Fragment>
+				
+		</>
 	);
 }

@@ -29,10 +29,8 @@ const priceListChildRender = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-rest_menu__outer-wrap',
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
-			) }
-		>
-			<div className={ classnames( ...PositionClasses( attributes ) ) }>
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				...PositionClasses( attributes ) ) }>
 				<div className="uagb-rm__content">
 					{ ( position == 'top' || position == 'left' ) && (
 						<RestMenuImage attributes={ attributes } />
@@ -74,7 +72,7 @@ const priceListChildRender = ( props ) => {
 					<div className="uagb-rm__separator"></div>
 				</div>
 			</div>
-		</div>
+		
 	);
 };
 export default priceListChildRender;
