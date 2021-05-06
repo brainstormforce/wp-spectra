@@ -4,11 +4,9 @@ const {
 
 import { __ } from '@wordpress/i18n';
 
-class TestimonialImage extends React.Component {
+const TestimonialImage = props => {
 
-	render() {
-
-		const { attributes , index_value } = this.props
+		const { attributes , index_value } = props
 		let url_check = ""
         
 		const image_arr = attributes.test_block[index_value]
@@ -48,7 +46,7 @@ class TestimonialImage extends React.Component {
 		}else{
 			return null
 		}
-	}
+	
 }
 
 export default TestimonialImage

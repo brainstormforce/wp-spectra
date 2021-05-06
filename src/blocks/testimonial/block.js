@@ -2,7 +2,6 @@
  * BLOCK: Testimonial
  */
 
-import classnames from "classnames"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import edit from "./edit"
 import save from "./save"

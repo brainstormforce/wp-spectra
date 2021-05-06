@@ -5,7 +5,6 @@
  */
 
 .uagb-testimonial__wrap {
-    position:relative;
     box-sizing: border-box;
 }
 .uagb-testimonial__wrap,
@@ -15,7 +14,7 @@
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
 }
-.uagb-tm__image {
+.uagb-tm__image , .uagb-testimonial__wrap, .uagb-tm__content , .uagb-tm__text-wrap  {
     position:relative;
 }
 .uagb-tm__imgicon-style-circle .uagb-tm__image img {
@@ -40,7 +39,6 @@
     word-break: break-word;
     padding:15px;
     border-radius:inherit;
-    position: relative;
 }
 .uagb-tm__image-position-left .uagb-tm__content,
 .uagb-tm__image-position-right .uagb-tm__content{
@@ -97,9 +95,6 @@
     background:transparent;
 }
 
-.uagb-tm__text-wrap{
-    position: relative;
-}
 .uagb-tm__items{
     visibility:hidden;
 }
