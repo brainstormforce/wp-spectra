@@ -824,7 +824,7 @@ class UAGBRatingEdit extends Component {
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
-									<Button isSecondary onClick={ open }>
+									<Button className="uagb-review-select-btn" isSecondary onClick={ open }>
 										{ ! mainimage.url ? __( "Select Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								)}

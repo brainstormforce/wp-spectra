@@ -51,6 +51,10 @@ function styling( props ) {
 			"flex-direction": "column"
 		}
 
+		mobile_selectors[" .block-editor-block-list__layout"] = {
+			"flex-direction": "column"
+		}
+
 	} else if ( "mobile" == stack ) {
 
 		mobile_selectors[" .uagb-button__wrapper"] = {
@@ -104,9 +108,9 @@ function styling( props ) {
 	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	var styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 
 	return styling_css
