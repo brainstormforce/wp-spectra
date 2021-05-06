@@ -170,6 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.23.0 =
 * Fix: Post Grid - Link to complete box redirect to last post when image background set to Top.
+* Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
 
 = 1.22.3 =
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
