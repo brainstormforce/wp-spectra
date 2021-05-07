@@ -18,9 +18,10 @@ const {
 	createBlock
 } = wp.blocks
 
+const { select } = wp.data;
 
 const tabsRender = props => {
-    const { attributes , setAttributes , className, deviceType   } = props;
+    const { attributes , setAttributes , className, deviceType , clientId } = props;
     const {
         tabsStyleD,
         tabsStyleM,
@@ -68,7 +69,7 @@ const tabsRender = props => {
 		updateTabTitle();
 	}
     const onMove = ( oldIndex, newIndex ) => {
-
+        
 		const { getBlock } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 		const tabsBlock = getBlock(clientId);
 

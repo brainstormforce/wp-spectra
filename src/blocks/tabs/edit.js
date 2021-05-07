@@ -66,7 +66,13 @@ export default compose(
 		} );
 	
 		return {
-			resetTabOrder:  resetTabOrder,
+			resetTabOrder() {
+				times( block.innerBlocks.length, n => {
+					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
+						id: n,
+					} );
+				} );
+			},
 			updateActiveTab(tabActive) {
 				updateBlockAttributes( block.clientId, {
 					tabActive: tabActive,
