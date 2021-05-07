@@ -13,7 +13,8 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 const {
 	Component,
@@ -32,6 +33,8 @@ const {
 	RangeControl,
 	BaseControl
 } = wp.components
+
+const { withSelect } = wp.data
 
 const ALLOWED_BLOCKS = [ "uagb/buttons-child" ]
 class UAGBMultiButtonEdit extends Component {
@@ -75,7 +78,7 @@ class UAGBMultiButtonEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, deviceType} = this.props
 
 		const {
 			align,
@@ -166,7 +169,8 @@ class UAGBMultiButtonEdit extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-buttons__outer-wrap",
-					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
+					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				) }
 				>
 					<div className={ classnames(
@@ -187,4 +191,13 @@ class UAGBMultiButtonEdit extends Component {
 	}
 }
 
-export default UAGBMultiButtonEdit
+export default withSelect( ( select, props ) => { 
+
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+})( UAGBMultiButtonEdit )

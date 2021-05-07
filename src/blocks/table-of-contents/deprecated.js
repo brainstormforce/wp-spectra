@@ -7,7 +7,7 @@ import TableOfContents from './deprecated/components';
 import TOC from './deprecated/table-of-contents';
 import TableOfContent from './toc';
 import attributes from "./attributes"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 const {
 	RichText

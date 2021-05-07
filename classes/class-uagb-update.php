@@ -40,7 +40,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 *  Constructor
 		 */
 		public function __construct() {
-			add_action( 'admin_init', __CLASS__ . '::init' );
+			add_action( 'admin_init', array( $this, 'init' ) );
 		}
 
 		/**
@@ -49,30 +49,52 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 * @since 1.13.4
 		 * @return void
 		 */
-		public static function init() {
-
-			do_action( 'uagb_update_before' );
+		public function init() {
 
 			// Get auto saved version number.
 			$saved_version = get_option( 'uagb-version', false );
 
 			// Update auto saved version number.
 			if ( ! $saved_version ) {
+
+				// Fresh install updation.
+				$this->fresh_install_update_asset_generation_option();
+
+				// Update current version.
 				update_option( 'uagb-version', UAGB_VER );
 				return;
 			}
+
+			do_action( 'uagb_update_before' );
 
 			// If equals then return.
 			if ( version_compare( $saved_version, UAGB_VER, '=' ) ) {
 				return;
 			}
 
+			/* Create activated blocks stylesheet */
 			UAGB_Admin_Helper::create_specific_stylesheet();
+
+			// Update asset version number.
+			update_option( '__uagb_asset_version', time() );
 
 			// Update auto saved version number.
 			update_option( 'uagb-version', UAGB_VER );
 
 			do_action( 'uagb_update_after' );
+		}
+
+		/**
+		 * Update asset generation option if it is not exist.
+		 *
+		 * @since 1.22.4
+		 * @return void
+		 */
+		public function fresh_install_update_asset_generation_option() {
+
+			if ( UAGB_Helper::is_uag_dir_has_write_permissions() ) {
+				update_option( '_uagb_allow_file_generation', 'enabled' );
+			}
 		}
 	}
 

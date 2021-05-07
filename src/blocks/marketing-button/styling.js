@@ -2,9 +2,9 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
-import hexToRgba from "../../../dist/blocks/uagb-controls/hexToRgba"
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSS from "@Controls/generateCSS"
+import hexToRgba from "@Controls/hexToRgba"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function styling( props ) {
 

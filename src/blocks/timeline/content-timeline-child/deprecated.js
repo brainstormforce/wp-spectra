@@ -1,6 +1,6 @@
 import classnames from "classnames"
 import attributes from "./attributes"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
 

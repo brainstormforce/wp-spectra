@@ -18,7 +18,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 //  Import CSS.
 import "./style.scss"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const { compose } = wp.compose
 

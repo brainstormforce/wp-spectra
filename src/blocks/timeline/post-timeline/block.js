@@ -1,13 +1,13 @@
 /**
  * BLOCK: Post Timeline Js.
  */
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import ".././style.scss"
 import ".././editor.scss"
 import edit from "./edit"
 
 // Components.
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 // Register block controls.
 const {

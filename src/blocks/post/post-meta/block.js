@@ -5,11 +5,11 @@
 // Import block dependencies and components
 import {PostMeta} from "./edit"
 import save from "./save"
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import "./style.scss"
 import "./editor.scss"
 // Components
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 // Register block controls
 const { registerBlockType } = wp.blocks
