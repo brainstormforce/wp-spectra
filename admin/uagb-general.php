@@ -21,7 +21,7 @@ $support_url    = $support_data['support_url'];
 
 $uagb_support_link      = apply_filters( 'uagb_support_link', $support_url );
 $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a Ticket »', 'ultimate-addons-for-gutenberg' ) );
-$has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
+$has_write_permission   = UAGB_Helper::is_uag_dir_has_write_permissions();
 
 
 array_multisort(
@@ -202,13 +202,13 @@ array_multisort(
 					<h2 class="hndle ast-normal-cusror">
 						<span class="dashicons dashicons-admin-page"></span>
 						<span>
-							<?php printf( esc_html__( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+							<?php printf( esc_html__( 'CSS & JS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
 						</span>
 					</h2>
 					<div class="inside">
 						<p class="warning">
 						</p>
-							<?php esc_html_e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
 						<p>
 						<?php
 						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
@@ -225,25 +225,45 @@ array_multisort(
 						</p>
 						<label for="uag_file_generation">
 							<?php
-							$button_disabled = '';
-							if ( 'disabled' === $allow_file_generation && true === $has_read_write_perms ) {
+							$button_disabled  = '';
+							$file_perm_notice = false;
+							if ( 'disabled' === $allow_file_generation && true === $has_write_permission ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
-							} elseif ( 'disabled' === $allow_file_generation && false === $has_read_write_perms ) {
+							} elseif ( 'disabled' === $allow_file_generation && false === $has_write_permission ) {
 
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Inadequate File Permission', 'ultimate-addons-for-gutenberg' );
 								$button_disabled        = 'disabled';
+								$file_perm_notice       = __( 'Please update your file permissions for "wp-content/uploads" folder in order to use the File Generation feature.', 'ultimate-addons-for-gutenberg' );
 
 							} else {
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
-							?>
+
+							if ( $file_perm_notice ) {
+								?>
+							<div class="uag-file-permissions-notice"> <?php echo esc_html( $file_perm_notice ); ?></div>
+							<?php } ?>
 							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
 						</label>
+					</div>
+				</div>
+				<div class="postbox">
+					<h2 class="hndle uagb-normal-cusror">
+						<span class="dashicons dashicons-controls-repeat"></span>
+						<span><?php esc_html_e( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ); ?></span>
+					</h2>
+					<div class="inside">
+						<p>
+							<?php esc_html_e( 'You can regenerate your CSS & Javascript assets here.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+						<button class="button astra-beta-updates uag-file-regeneration">
+							<?php echo esc_html( __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</button>
 					</div>
 				</div>
 				<div class="postbox">

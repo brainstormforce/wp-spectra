@@ -5,9 +5,9 @@
 import classnames from "classnames"
 import styling from "./styling"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGBIcon from "@Controls/UAGBIcon.json"
+import renderSVG from "@Controls/renderIcon"
 import Columnresponsive from "../../components/typography/column-responsive"
 
 // Import all of our Text Options requirements.
@@ -18,7 +18,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 let svg_icons = Object.keys( UAGBIcon )
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	Component,

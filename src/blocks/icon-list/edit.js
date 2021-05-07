@@ -16,7 +16,7 @@ import Columnresponsive from "../../components/typography/column-responsive"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const { select } = wp.data;
 
 const {

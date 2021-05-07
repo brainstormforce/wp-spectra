@@ -1,7 +1,7 @@
 /**
  * BLOCK: UAGB Form - Select Attributes
  */
-const { __ } = wp.i18n
+ import { __ } from '@wordpress/i18n';
 
 const attributes = {
     block_id: {

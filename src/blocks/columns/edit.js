@@ -10,7 +10,7 @@ import memoize from "memize"
 import times from "lodash/times"
 import map from 'lodash/map';
 import dropRight from "lodash/dropRight"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import shapes from "./shapes"
 import BoxShadowControl from "../../components/box-shadow"
 import GradientSettings from "../../components/gradient-settings"
@@ -18,7 +18,7 @@ import rowIcons from './icons';
 import Columnresponsive from "../../components/typography/column-responsive"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const {
 	withSelect,
 	useDispatch,
