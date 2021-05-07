@@ -168,6 +168,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'level'   => (int) $heading->nodeName[1],
 									'id'      => $this->clean( $heading->textContent ),
 									'content' => $heading->textContent,
+									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
 						}
@@ -286,34 +287,39 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$attributes
 		) {
 
-			$toc        = '';
-			$last_level = 0;
-
-			foreach ( $nested_heading_list as $heading ) {
-				$level   = $heading['heading']['level'];
-				$id      = $heading['heading']['id'];
-				$content = $heading['heading']['content'];
-
-				if ( $level > $last_level ) {
-					$arrayOpenLevel = array( $level - $last_level + 1 );
-					if ( 2 === count( $arrayOpenLevel ) ) {
-						$toc .= ( "<ul class='uagb-toc__list'>" );
-					} else {
-						$toc .= "<ul class='uagb-toc__list'>";
-					}
-				} elseif ( $level < $last_level ) {
-					$arrayLevel = array( $last_level - $level + 1 );
-					if ( 0 !== count( $arrayLevel ) ) {
-						$toc .= ( '</ul>' );
-					} else {
-						$toc .= '</ul>';
-					}
+			$toc       = '';
+			$min_array = array();
+			// Determine the minimum heading level.
+			foreach ( $nested_heading_list as $entry ) {
+				$min_array = $entry['heading']['level'];
+				if ( $min_array > $entry['heading']['level'] ) {
+					$min_array = $entry['heading']['level'];
 				}
-				$last_level = intval( $level );
-				$toc       .= "<li><a href='#{$id}'>{$content}</a></li>";
 			}
-			return $toc;
+			// get lowest or minimum value in array php using foreach.
+			$currentLevel = $min_array - 1;
 
+			foreach ( $nested_heading_list as $anchor => $heading ) {
+				$level = $heading['heading']['level'];
+				$title = $heading['heading']['content'];
+				$id    = $heading['heading']['id'];
+
+				if ( $currentLevel < $level ) {
+					$toc .= str_repeat( '<ul class="uagb-toc__list"><li>', $level - $currentLevel );
+				} else {
+					$toc .= str_repeat( '</li></ul>', $currentLevel - $level ) . '<li>';
+				}
+				$currentLevel = $level;
+
+				$toc .= sprintf( '<a href="#%s">%s</a>', esc_attr( $id ), $title );
+			}
+
+			// Close any open lists.
+			if ( $currentLevel > $min_array - 1 ) {
+				$toc .= str_repeat( '</li></ul>', $currentLevel - $min_array + 1 );
+			}
+
+			return $toc;
 		}
 
 		/**
