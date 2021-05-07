@@ -2,7 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function inlineStyles( props, isEditor ) {
 

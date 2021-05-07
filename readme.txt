@@ -168,6 +168,14 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.23.0 =
+* Improvement: Improve the Dynamic Assets loading functionality for better performance.
+* Improvement: Static CSS Optimized by loading block specific CSS on a Page.
+* Improvement: Optimized headings rendering for CLS impact.
+* Fix: Table of content - HTML validation issue.
+* Fix: Post Grid - Link to complete box redirect to last post when image background set to Top.
+* Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
+
 = 1.22.3 =
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
 * Improvement: Added filter to disable block conditions from the editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)

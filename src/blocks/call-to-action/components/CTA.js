@@ -1,7 +1,8 @@
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 import classnames from "classnames"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 class CTA extends React.Component {
 

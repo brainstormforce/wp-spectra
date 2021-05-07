@@ -1,6 +1,6 @@
 import UserConditionOptions from './condition-block';
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const enableConditions = uagb_blocks_info.uagb_display_condition;
 
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {

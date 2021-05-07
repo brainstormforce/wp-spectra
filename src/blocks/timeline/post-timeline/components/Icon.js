@@ -1,4 +1,4 @@
-import renderSVG from "../../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 class Icon extends React.Component {
 

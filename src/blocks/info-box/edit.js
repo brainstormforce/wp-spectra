@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
@@ -14,8 +14,8 @@ import InfoBoxSeparator from "./components/InfoBoxSeparator"
 import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/IconImage"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import renderSVG from "@Controls/renderIcon"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -25,7 +25,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 let svg_icons = Object.keys( UAGBIcon )
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	AlignmentToolbar,

@@ -8,7 +8,7 @@ import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
-import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
 

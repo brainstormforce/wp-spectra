@@ -10,7 +10,7 @@
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 //  Import CSS.
 import ".././style.scss"
 import "./style.scss"
@@ -20,7 +20,7 @@ import attributes from "./attributes"
 import edit from "./edit"
 
 // Components
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 // Register block controls
 const {

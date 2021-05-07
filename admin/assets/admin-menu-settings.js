@@ -96,6 +96,8 @@
 
 			$( document ).on( "click",".uag-file-generation", UAGBAdmin._fileGeneration )
 
+			$( document ).on( "click",".uag-file-regeneration", UAGBAdmin._fileReGeneration )
+
 		},
 
 		_fileGeneration: function( e ) {
@@ -107,6 +109,35 @@
 			var data = {
 				value : value,
 				action: "uagb_file_generation",
+				nonce: uagb.ajax_nonce,
+			}
+
+			if ( button.hasClass( "updating-message" ) ) {
+				return
+			}
+
+			$( button ).addClass("updating-message")
+
+			UAGBAjaxQueue.add({
+				url: ajaxurl,
+				type: "POST",
+				data: data,
+				success: function(data){
+					console.log(data);
+					location.reload();
+				}
+			})
+
+		},
+
+		_fileReGeneration: function( e ) {
+
+			e.preventDefault();
+
+			var button = $( this );
+
+			var data = {
+				action: "uagb_file_regeneration",
 				nonce: uagb.ajax_nonce,
 			}
 

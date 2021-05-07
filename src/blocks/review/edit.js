@@ -5,7 +5,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import styling from "./styling"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 import SchemaNotices from "./schema-notices"
 import { ReviewBody } from "./components";
 // Import all of our Text Options requirements.
@@ -14,7 +14,7 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const { withState, compose } = wp.compose;
 const { withSelect } = wp.data;
@@ -824,7 +824,7 @@ class UAGBRatingEdit extends Component {
 								allowedTypes={ [ "image" ] }
 								value={ mainimage }
 								render={ ( { open } ) => (
-									<Button isSecondary onClick={ open }>
+									<Button className="uagb-review-select-btn" isSecondary onClick={ open }>
 										{ ! mainimage.url ? __( "Select Image",'ultimate-addons-for-gutenberg' ) : __( "Replace image",'ultimate-addons-for-gutenberg' ) }
 									</Button>
 								)}

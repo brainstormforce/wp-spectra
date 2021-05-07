@@ -5,11 +5,11 @@
 
 import classnames from "classnames"
 import styling from "./styling"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import renderSVG from "@Controls/renderIcon"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -20,9 +20,8 @@ import WebfontLoader from "../../components/typography/fontloader"
 import TableOfContents from './toc';
 
 const striptags = require('striptags');
-const { __ } = wp.i18n
-const { withSelect,dispatch,
-	select } = wp.data
+import { __ } from '@wordpress/i18n';
+const { withSelect } = wp.data
 const { compose } = wp.compose
 
 const {
