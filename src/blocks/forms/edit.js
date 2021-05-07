@@ -8,8 +8,8 @@ import map from 'lodash/map';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useEffect } from 'react';
 
-const Settings = lazy(() => import( /* webpackChunkName: "form-settings" */ './settings'));
-const Render = lazy(() => import( /* webpackChunkName: "form-render" */ './render'));
+const Settings = lazy(() => import( /* webpackChunkName: "chunks/form-settings" */ './settings'));
+const Render = lazy(() => import( /* webpackChunkName: "chunks/form-render" */ './render'));
 
 const { withSelect, useDispatch } = wp.data;
 
@@ -195,8 +195,6 @@ const UAGBFormsEdit = ( props ) => {
 		<>
 			<Suspense fallback={renderLoader()}>
 				<Settings parentProps={ props } />
-			</Suspense>
-			<Suspense fallback={renderLoader()}>
 				<Render parentProps={ props } />
 			</Suspense>
 		</>

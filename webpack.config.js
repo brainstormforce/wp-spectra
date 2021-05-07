@@ -1,5 +1,6 @@
 const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 const path = require( "path" );
+const CHUNK_DIR  = '/wp-content' + path.resolve( __dirname, 'dist/build' ).split('wp-content').pop() + '/';
 
 module.exports = {
 	...defaultConfig,
@@ -19,8 +20,7 @@ module.exports = {
 		filename: "[name].js",
 		// eslint-disable-next-line no-undef
 		path:  __dirname + "/dist/build",
-		publicPath: "/wp-content/plugins/ultimate-addons-for-gutenberg/dist/build/"
-
+		publicPath: CHUNK_DIR
 	}
 }
 
