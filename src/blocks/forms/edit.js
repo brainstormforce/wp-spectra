@@ -8,8 +8,12 @@ import map from 'lodash/map';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useEffect } from 'react';
 
-const Settings = lazy(() => import( /* webpackChunkName: "chunks/form-settings" */ './settings'));
-const Render = lazy(() => import( /* webpackChunkName: "chunks/form-render" */ './render'));
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-render" */ './render' )
+);
 
 const { withSelect, useDispatch } = wp.data;
 
@@ -17,18 +21,14 @@ const { compose, createHigherOrderComponent } = wp.compose;
 
 const { createBlock } = wp.blocks;
 
-const {
-	__experimentalBlockVariationPicker,
-} = wp.blockEditor;
+const { __experimentalBlockVariationPicker } = wp.blockEditor;
 
-const {
-	withNotices,
-} = wp.components;
+const { withNotices } = wp.components;
 
 import { __ } from '@wordpress/i18n';
+import lazyLoader from '@Controls/lazy-loader';
 
 const UAGBFormsEdit = ( props ) => {
-
 	useEffect( () => {
 		const { attributes, setAttributes } = props;
 
@@ -189,16 +189,13 @@ const UAGBFormsEdit = ( props ) => {
 		);
 	}
 
-	const renderLoader = () => <p> { __( 'Loading..', 'ultimate-addons-for-gutenberg' ) } </p>;
-
 	return (
 		<>
-			<Suspense fallback={renderLoader()}>
+			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
 		</>
-
 	);
 };
 

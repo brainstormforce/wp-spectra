@@ -1,13 +1,10 @@
-import React from "react";
-import UAGB_Block_Icons from "@Controls/block-icons";
-import TypographyControl from "../../components/typography";
-import WebfontLoader from "../../components/typography/fontloader";
+import React from 'react';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import TypographyControl from '../../components/typography';
+import WebfontLoader from '../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const {
-	InspectorControls,
-	ColorPalette,
-} = wp.blockEditor;
+const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const {
 	PanelBody,
@@ -126,7 +123,6 @@ const Settings = ( props ) => {
 		failedMessageBorderWidth,
 		failedMessageBGColor,
 	} = attributes;
-
 
 	const generalSettings = () => {
 		return (
@@ -2039,9 +2035,9 @@ const Settings = ( props ) => {
 			google: {
 				families: [
 					submitTextFontFamily +
-					( submitTextFontWeight
-						? ':' + submitTextFontWeight
-						: '' ),
+						( submitTextFontWeight
+							? ':' + submitTextFontWeight
+							: '' ),
 				],
 			},
 		};
@@ -2057,7 +2053,7 @@ const Settings = ( props ) => {
 			google: {
 				families: [
 					labelFontFamily +
-					( labelFontWeight ? ':' + labelFontWeight : '' ),
+						( labelFontWeight ? ':' + labelFontWeight : '' ),
 				],
 			},
 		};
@@ -2073,7 +2069,7 @@ const Settings = ( props ) => {
 			google: {
 				families: [
 					inputFontFamily +
-					( inputFontWeight ? ':' + inputFontWeight : '' ),
+						( inputFontWeight ? ':' + inputFontWeight : '' ),
 				],
 			},
 		};
@@ -2082,7 +2078,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	return(
+	return (
 		<>
 			<InspectorControls>
 				{ generalSettings() }
@@ -2095,7 +2091,7 @@ const Settings = ( props ) => {
 			{ loadlabelGoogleFonts }
 			{ loadinputGoogleFonts }
 		</>
-	)
-}
+	);
+};
 
 export default React.memo( Settings );

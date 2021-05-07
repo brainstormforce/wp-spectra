@@ -2,12 +2,15 @@
  * BLOCK: Forms - Upload - Edit
  */
 
-import classnames from 'classnames';
-import React, { useState, useEffect } from 'react';
-import { __ } from '@wordpress/i18n';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { PanelBody, ToggleControl, FormTokenField } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-upload-settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-upload-render" */ './render' )
+);
 
 const UAGBFormsUploadEdit = ( props ) => {
 	useEffect( () => {
@@ -25,89 +28,12 @@ const UAGBFormsUploadEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const { attributes, setAttributes, isSelected } = props;
-
-	const { block_id, uploadRequired, name, formats } = attributes;
-
-	const uploadInspectorControls = () => {
-		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ uploadRequired }
-					onChange={ ( value ) =>
-						setAttributes( { uploadRequired: ! uploadRequired } )
-					}
-				/>
-				<h2>Allowed Formats</h2>
-				<FormTokenField
-					value={ formats }
-					onChange={ ( value ) =>
-						setAttributes( { formats: value } )
-					}
-					placeholder={ __(
-						'Type allowed formats',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-			</PanelBody>
-		);
-	};
-
-	const isRequired = uploadRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
-
 	return (
 		<>
-			<InspectorControls>{ uploadInspectorControls() }</InspectorControls>
-			<div
-				className={ classnames(
-					'uagb-forms-upload-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
-			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ uploadRequired }
-							onChange={ ( value ) =>
-								setAttributes( {
-									uploadRequired: ! uploadRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
-				<RichText
-					tagName="div"
-					placeholder={ __(
-						'Name',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ name }
-					onChange={ ( value ) => setAttributes( { name: value } ) }
-					className={ `uagb-forms-upload-label ${ isRequired } uagb-forms-input-label` }
-					multiline={ false }
-					id={ block_id }
-				/>
-				<input
-					type="file"
-					name={ block_id }
-					className="uagb-forms-upload-input"
-					disabled
-					required={ uploadRequired }
-				/>
-			</div>
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

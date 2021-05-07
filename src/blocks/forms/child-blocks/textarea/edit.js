@@ -2,14 +2,17 @@
  * BLOCK: Forms - Textarea - Edit
  */
 
-import classnames from 'classnames';
+import React, { Suspense, useEffect, lazy } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-import { __ } from '@wordpress/i18n';
-import React, { useState, useEffect } from 'react';
-const { Component, Fragment } = wp.element;
-
-const { PanelBody, ToggleControl, RangeControl, TextControl } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor;
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/form-textarea-settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-textarea-render" */ './render' )
+);
 
 const UAGBFormsTextareaEdit = ( props ) => {
 	useEffect( () => {
@@ -27,112 +30,13 @@ const UAGBFormsTextareaEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const { attributes, setAttributes, isSelected } = props;
-
-	const {
-		block_id,
-		textareaRequired,
-		textareaName,
-		rows,
-		placeholder,
-	} = attributes;
-
-	const textareaInspectorControls = () => {
-		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ textareaRequired }
-					onChange={ ( value ) =>
-						setAttributes( {
-							textareaRequired: ! textareaRequired,
-						} )
-					}
-				/>
-				<TextControl
-					label={ __(
-						'Placeholder',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ placeholder }
-					onChange={ ( value ) =>
-						setAttributes( { placeholder: value } )
-					}
-				/>
-				<RangeControl
-					label={ __(
-						'Number of lines',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ rows }
-					onChange={ ( value ) => setAttributes( { rows: value } ) }
-					min={ 2 }
-					max={ 10 }
-					allowReset
-				/>
-			</PanelBody>
-		);
-	};
-
-	const isRequired = textareaRequired
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
-
 	return (
-		<Fragment>
-			<InspectorControls>
-				{ textareaInspectorControls() }
-			</InspectorControls>
-			<div
-				className={ classnames(
-					'uagb-forms-textarea-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
-			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ textareaRequired }
-							onChange={ ( value ) =>
-								setAttributes( {
-									textareaRequired: ! textareaRequired,
-								} )
-							}
-						/>
-					</div>
-				) }
-				<RichText
-					tagName="div"
-					placeholder={ __(
-						'Textarea Name',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ textareaName }
-					onChange={ ( value ) =>
-						setAttributes( { textareaName: value } )
-					}
-					className={ `uagb-forms-textarea-label ${ isRequired } uagb-forms-input-label` }
-					multiline={ false }
-					id={ block_id }
-				/>
-				<textarea
-					required={ textareaRequired }
-					className="uagb-forms-textarea-input uagb-forms-input"
-					rows={ rows }
-					placeholder={ placeholder }
-					name={ block_id }
-				></textarea>
-			</div>
-		</Fragment>
+		<>
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
+		</>
 	);
 };
 

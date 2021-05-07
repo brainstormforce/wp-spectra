@@ -8,7 +8,6 @@ import { Fragment } from 'react';
 const { InnerBlocks, RichText } = wp.blockEditor;
 
 export default function save( props ) {
-
 	const { attributes } = props;
 
 	const {

@@ -17,10 +17,7 @@ const ALLOWED_BLOCKS = [
 	'uagb/forms-accept',
 ];
 
-const {
-	InnerBlocks,
-	RichText,
-} = wp.blockEditor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -37,7 +34,7 @@ const Render = ( props ) => {
 		reCaptchaSiteKeyV2,
 	} = attributes;
 
-	const onSubmitClick = useCallback( (e) => {
+	const onSubmitClick = useCallback( ( e ) => {
 		e.preventDefault();
 	} );
 

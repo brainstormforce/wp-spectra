@@ -2,12 +2,15 @@
  * BLOCK: Forms - URL - Edit
  */
 
-import classnames from 'classnames';
-import React, { useState, useEffect } from 'react';
-import { __ } from '@wordpress/i18n';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { PanelBody, ToggleControl, TextControl } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-url-settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-url-render" */ './render' )
+);
 
 const UAGBFormsUrlEdit = ( props ) => {
 	useEffect( () => {
@@ -25,86 +28,12 @@ const UAGBFormsUrlEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
-	const { attributes, setAttributes, isSelected } = props;
-
-	const { block_id, required, name, placeholder } = attributes;
-
-	const urlInspectorControls = () => {
-		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ required }
-					onChange={ ( value ) =>
-						setAttributes( { required: ! required } )
-					}
-				/>
-				<TextControl
-					label={ __(
-						'Placeholder',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ placeholder }
-					onChange={ ( value ) =>
-						setAttributes( { placeholder: value } )
-					}
-				/>
-			</PanelBody>
-		);
-	};
-
-	const isRequired = required
-		? __( 'required', 'ultimate-addons-for-gutenberg' )
-		: '';
-
 	return (
 		<>
-			<InspectorControls>{ urlInspectorControls() }</InspectorControls>
-			<div
-				className={ classnames(
-					'uagb-forms-url-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
-			>
-				{ isSelected && (
-					<div className="uagb-forms-required-wrap">
-						<ToggleControl
-							label={ __(
-								'Required',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ required }
-							onChange={ ( value ) =>
-								setAttributes( { required: ! required } )
-							}
-						/>
-					</div>
-				) }
-				<RichText
-					tagName="div"
-					placeholder={ __(
-						'URL Name',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ name }
-					onChange={ ( value ) => setAttributes( { name: value } ) }
-					className={ `uagb-forms-url-label ${ isRequired } uagb-forms-input-label` }
-					multiline={ false }
-					id={ block_id }
-				/>
-				<input
-					type="url"
-					name={ block_id }
-					placeholder={ placeholder }
-					required={ required }
-					className="uagb-forms-url-input uagb-forms-input"
-				/>
-			</div>
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
