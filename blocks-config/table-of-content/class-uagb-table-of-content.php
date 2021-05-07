@@ -287,7 +287,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$attributes
 		) {
 
-			$toc       = '';
+			$toc = '';
 			$min = 0;
 			// Determine the minimum heading level.
 			foreach ( $nested_heading_list as $entry ) {
@@ -295,7 +295,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			}
 
 			// get lowest or minimum value in array php using foreach.
-			$min = min($min_array);
+			$min          = min( $min_array );
 			$currentLevel = $min + 1;
 
 			foreach ( $nested_heading_list as $anchor => $heading ) {
@@ -303,11 +303,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$title = $heading['heading']['content'];
 				$id    = $heading['heading']['id'];
 
-
-				if ( $currentLevel < $level ) {
-					$toc .= str_repeat( '<ul class="uagb-toc__list"><li class="uagb-toc__list">', $level - $currentLevel );
-				} else {
-					$toc .= str_repeat( '</li></ul>', $currentLevel - $level ) . '<li class="uagb-toc__list">';
+				if ( $currentLevel === $level ) { // If the heading level didn’t change.
+					$toc .= '<li class="uagb-toc__list">';
+				} elseif ( $currentLevel > $level ) { // If bigger then last heading level, create a nested list.
+					$toc .= '</li></ul><li class="uagb-toc__list">';
+				} elseif ( $currentLevel < $level ) { // If less then last Heading Level, end nested list.
+					$toc .= '<ul class="uagb-toc__list"><li class="uagb-toc__list">';
 				}
 				$currentLevel = $level;
 
