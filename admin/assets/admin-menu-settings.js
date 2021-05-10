@@ -236,6 +236,16 @@
 				}
 			})
 
+			if(id === 'how-to')
+			{
+				var list = document.querySelector('.uagb-widget-list');
+				var infoBox = list.querySelector('#info-box');
+				var activeClass = infoBox.querySelector('.uagb-activate-widget');
+				if(infoBox.getAttribute('class') == 'deactivate'){
+					$( activeClass ).trigger( "click" );
+				}
+			}
+
 			e.preventDefault()
 		},
 
@@ -254,7 +264,15 @@
 			if ( button.hasClass( "updating-message" ) ) {
 				return
 			}
-
+			if(id === 'info-box')
+			{
+				var list = document.querySelector('.uagb-widget-list');
+				var howTo = list.querySelector('#how-to');
+				if(howTo.getAttribute('class') == 'activate'){
+					e.preventDefault();
+					return;
+				}
+			}
 			$( button ).addClass("updating-message")
 
 			UAGBAjaxQueue.add({
@@ -274,6 +292,7 @@
 						.removeClass("updating-message")
 				}
 			})
+			
 			e.preventDefault()
 		},
 
