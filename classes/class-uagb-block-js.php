@@ -116,7 +116,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 				var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
 			}
-			
 			if ( blockquote__tweet[0] && undefined !== blockquote__tweet[0] && '' !== blockquote__tweet[0] ) {
 
 				blockquote__tweet[0].addEventListener("click",function(){
