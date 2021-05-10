@@ -138,7 +138,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ selectRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									selectRequired: ! selectRequired,
 								} )

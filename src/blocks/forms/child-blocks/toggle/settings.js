@@ -6,7 +6,7 @@ const { InspectorControls } = wp.blockEditor;
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		toggleRequired,
@@ -33,7 +33,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ toggleRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { toggleRequired: ! toggleRequired } )
 					}
 				/>
@@ -48,7 +48,7 @@ const Settings = ( props ) => {
 							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
 							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
 					}
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { toggleStatus: ! toggleStatus } )
 					}
 				/>

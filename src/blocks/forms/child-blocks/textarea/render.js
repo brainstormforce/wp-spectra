@@ -38,7 +38,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ textareaRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									textareaRequired: ! textareaRequired,
 								} )

@@ -22,7 +22,7 @@ const { InnerBlocks, RichText } = wp.blockEditor;
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, variations, hasInnerBlocks } = props;
+	const { attributes, setAttributes } = props;
 	const {
 		block_id,
 		submitButtonText,

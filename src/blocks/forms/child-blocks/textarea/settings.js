@@ -20,7 +20,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ textareaRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							textareaRequired: ! textareaRequired,
 						} )

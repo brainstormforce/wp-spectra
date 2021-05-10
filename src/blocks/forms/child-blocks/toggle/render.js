@@ -40,7 +40,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ toggleRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									toggleRequired: ! toggleRequired,
 								} )
@@ -60,7 +60,7 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<label className="uagb-switch">
+				<label htmlFor={ block_id } className="uagb-switch">
 					<input
 						type="hidden"
 						className="uagb-forms-toggle-input"

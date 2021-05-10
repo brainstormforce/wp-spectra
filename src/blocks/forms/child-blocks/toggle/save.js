@@ -38,7 +38,7 @@ export default function save( props ) {
 				className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }
 				id={ block_id }
 			/>
-			<label className="uagb-switch">
+			<label htmlFor={ block_id } className="uagb-switch">
 				<input
 					type="hidden"
 					className="uagb-forms-toggle-input"

@@ -2,10 +2,9 @@
  * BLOCK: Forms - Edit
  */
 
-import { useCallback, Suspense, lazy } from 'react';
+import React, { useEffect, useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { useEffect } from 'react';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/form-settings" */ './settings' )
@@ -29,7 +28,7 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const UAGBFormsEdit = ( props ) => {
 	useEffect( () => {
-		const { attributes, setAttributes } = props;
+		const { setAttributes } = props;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -58,7 +57,7 @@ const UAGBFormsEdit = ( props ) => {
 	}, [ props ] );
 
 	useEffect( () => {
-		const { attributes, setAttributes } = props; // Assigning block_id in the attribute.
+		const { setAttributes } = props; // Assigning block_id in the attribute.
 
 		setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
@@ -91,15 +90,15 @@ const UAGBFormsEdit = ( props ) => {
 		}
 	);
 	const createBlocksFromInnerBlocksTemplate = useCallback(
-
 		( innerBlocksTemplate ) => {
-
-			return	innerBlocksTemplate.map( ( [ name, attributes, innerBlocks = [] ] ) =>  createBlock(
-					name,
-					attributes,
-					createBlocksFromInnerBlocksTemplate( innerBlocks )
-				)
-			  )
+			return innerBlocksTemplate.map(
+				( [ name, attributes, innerBlocks = [] ] ) =>
+					createBlock(
+						name,
+						attributes,
+						createBlocksFromInnerBlocksTemplate( innerBlocks )
+					)
+			);
 		}
 	);
 	const { variations, hasInnerBlocks } = props;
@@ -198,7 +197,7 @@ const UAGBFormsEdit = ( props ) => {
 };
 
 const applyWithSelect = withSelect( ( select, props ) => {
-	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
+	const { getBlocks } = select( 'core/block-editor' );
 	const {
 		getBlockType,
 		getBlockVariations,

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-const { ToggleControl, TextControl } = wp.components;
+const { ToggleControl } = wp.components;
 const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
@@ -32,7 +32,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ required }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { required: ! required } )
 							}
 						/>

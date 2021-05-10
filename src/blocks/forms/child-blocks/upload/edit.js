@@ -2,7 +2,7 @@
  * BLOCK: Forms - Upload - Edit
  */
 
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>

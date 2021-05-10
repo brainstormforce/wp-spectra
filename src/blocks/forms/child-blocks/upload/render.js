@@ -33,7 +33,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ uploadRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									uploadRequired: ! uploadRequired,
 								} )
