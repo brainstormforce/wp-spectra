@@ -5,29 +5,29 @@ const { PanelBody, SelectControl, ToggleControl } = wp.components;
 const { InspectorControls, RichText } = wp.blockEditor;
 
 const YearDefaults = [ { label: 'YYYY', value: '' } ];
+const MonthsDefaults = [ { label: 'MM', value: '' } ];
+const dateDefaults = [ { label: 'DD', value: '' } ];
 
-for ( var i = 1930; i <= 2030; i++ ) {
-	YearDefaults.push( { label: `${ i }`, value: `${ i }` } );
+let index;
+
+for (index = 1930; index <= 2030; index++ ) {
+	YearDefaults.push( { label: `${ index }`, value: `${ index }` } );
 }
 
-const MonthsDefaults = [ { label: 'MM', value: '' } ];
-
-for ( var i = 1; i <= 12; i++ ) {
-	const twoDigitMonth = i < 10 ? `0${ i }` : `${ i }`;
+for (index = 1; index <= 12; index++ ) {
+	const twoDigitMonth = index < 10 ? `0${ index }` : `${ index }`;
 	MonthsDefaults.push( { label: twoDigitMonth, value: twoDigitMonth } );
 }
 
-const dateDefaults = [ { label: 'DD', value: '' } ];
-
-for ( var i = 1; i <= 31; i++ ) {
-	const twoDigitDate = i < 10 ? `0${ i }` : `${ i }`;
+for (index = 1; index <= 31; index++ ) {
+	const twoDigitDate = index < 10 ? `0${ index }` : `${ index }`;
 	dateDefaults.push( { label: twoDigitDate, value: twoDigitDate } );
 }
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		dateRequired,
@@ -96,7 +96,7 @@ const Settings = ( props ) => {
 				/>
 				{ additonalVal && (
 					<>
-						<p>From :</p>
+						<p>{ __( 'From', 'ultimate-addons-for-gutenberg' ) } :</p>
 						<SelectControl
 							className={ 'minDate' }
 							label="Year"

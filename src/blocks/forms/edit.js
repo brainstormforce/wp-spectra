@@ -4,7 +4,6 @@
 
 import { useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
-import map from 'lodash/map';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useEffect } from 'react';
 
@@ -92,16 +91,15 @@ const UAGBFormsEdit = ( props ) => {
 		}
 	);
 	const createBlocksFromInnerBlocksTemplate = useCallback(
+
 		( innerBlocksTemplate ) => {
-			return map(
-				innerBlocksTemplate,
-				( [ name, attributes, innerBlocks = [] ] ) =>
-					createBlock(
-						name,
-						attributes,
-						createBlocksFromInnerBlocksTemplate( innerBlocks )
-					)
-			);
+
+			return	innerBlocksTemplate.map( ( [ name, attributes, innerBlocks = [] ] ) =>  createBlock(
+					name,
+					attributes,
+					createBlocksFromInnerBlocksTemplate( innerBlocks )
+				)
+			  )
 		}
 	);
 	const { variations, hasInnerBlocks } = props;

@@ -8,9 +8,9 @@ const { InspectorControls } = wp.blockEditor;
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
-	const { block_id, checkboxRequired, options, checkboxName } = attributes;
+	const { checkboxRequired } = attributes;
 
 	const checkboxInspectorControls = () => {
 		return (

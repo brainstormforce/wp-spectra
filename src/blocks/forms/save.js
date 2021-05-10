@@ -3,7 +3,6 @@
  */
 
 import classnames from 'classnames';
-import { Fragment } from 'react';
 
 const { InnerBlocks, RichText } = wp.blockEditor;
 
@@ -73,7 +72,7 @@ export default function save( props ) {
 					'v2' === reCaptchaType &&
 					reCaptchaSiteKeyV2 &&
 					reCaptchaSecretKeyV2 && (
-						<Fragment>
+						<>
 							<div
 								className="g-recaptcha uagb-forms-field-set"
 								data-sitekey={ reCaptchaSiteKeyV2 }
@@ -81,14 +80,14 @@ export default function save( props ) {
 							<div
 								className={ `uagb-form-reacaptcha-error-${ block_id }` }
 							></div>
-						</Fragment>
+						</>
 					) }
 				<div className="uagb-forms-main-submit-button-wrap">
 					{ renderButtonHtml() }
 				</div>
 			</form>
 			{ 'message' === confirmationType && (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							`uagb-forms-success-message-${ block_id }`,
@@ -105,7 +104,7 @@ export default function save( props ) {
 					>
 						<span>{ failedMessage }</span>
 					</div>
-				</Fragment>
+				</>
 			) }
 		</div>
 	);

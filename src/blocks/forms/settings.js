@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import TypographyControl from '../../components/typography';
-import WebfontLoader from '../../components/typography/fontloader';
+
 import { __ } from '@wordpress/i18n';
+import lazyLoader from "@Controls/lazy-loader";
+
+const TypographyControl = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-typography-control" */ '../../components/typography' )
+);
+
+const WebfontLoader = lazy( () =>
+	import( /* webpackChunkName: "chunks/form-web-fornt-loader-control" */ '../../components/typography/fontloader' )
+);
 
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 
@@ -1065,6 +1073,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
+				<Suspense fallback={ lazyLoader() }>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1157,6 +1166,7 @@ const Settings = ( props ) => {
 						),
 					} }
 				/>
+				</Suspense>
 			</PanelBody>
 		);
 	};
@@ -1301,6 +1311,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
+				<Suspense fallback={ lazyLoader() }>
 				<TypographyControl
 					label={ __(
 						'Label Typography',
@@ -1485,6 +1496,7 @@ const Settings = ( props ) => {
 						),
 					} }
 				/>
+				</Suspense>
 				<RangeControl
 					label={ __(
 						'Checkbox/Radio Size',
@@ -2087,9 +2099,11 @@ const Settings = ( props ) => {
 				{ designSettings() }
 				{ googleReCaptcha() }
 			</InspectorControls>
+			<Suspense fallback={ lazyLoader() }>
 			{ loadsubmittextGoogleFonts }
 			{ loadlabelGoogleFonts }
 			{ loadinputGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
