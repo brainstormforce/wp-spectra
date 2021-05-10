@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const { RichText, InspectorControls } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const { ToggleControl, TextControl, PanelBody } = wp.components;
 
@@ -22,9 +22,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ required }
-					onChange={ ( value ) =>
-						setAttributes( { required: ! required } )
-					}
+					onChange={ () => setAttributes( { required: ! required } ) }
 				/>
 				<TextControl
 					label="Placeholder"

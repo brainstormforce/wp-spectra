@@ -17,19 +17,15 @@ const Render = ( props ) => {
 
 	const addOption = () => {
 		const newOption = {
-			optiontitle: __(
-				`Option Name ${ options.length + 1 }`,
-				'ultimate-addons-for-gutenberg'
-			),
-			optionvalue: __(
-				`Option Value ${ options.length + 1 }`,
-				'ultimate-addons-for-gutenberg'
-			),
+			optiontitle:
+				__( 'Option Name ', 'ultimate-addons-for-gutenberg' ) +
+				`${ options.length + 1 }`,
+			optionvalue:
+				__( 'Option Value ', 'ultimate-addons-for-gutenberg' ) +
+				`${ options.length + 1 }`,
 		};
 		options[ options.length ] = newOption;
-		const addnewOptions = options.map( ( item, thisIndex ) => {
-			return item;
-		} );
+		const addnewOptions = options.map( ( item ) => item );
 
 		setAttributes( { options: addnewOptions } );
 		setState( { optionsstate: addnewOptions } );
@@ -37,7 +33,7 @@ const Render = ( props ) => {
 
 	const editView = options.map( ( option, index ) => {
 		return (
-			<div className="uagb-form-checkbox-option">
+			<div key={ index } className="uagb-form-checkbox-option">
 				<input
 					type="checkbox"
 					name={ `checkbox-${ block_id }` }
@@ -148,7 +144,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ checkboxRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									checkboxRequired: ! checkboxRequired,
 								} )

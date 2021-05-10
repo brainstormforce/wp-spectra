@@ -34,7 +34,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ acceptRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { acceptRequired: ! acceptRequired } )
 					}
 				/>
@@ -55,9 +55,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showLink }
-					onChange={ ( value ) =>
-						setAttributes( { showLink: ! showLink } )
-					}
+					onChange={ () => setAttributes( { showLink: ! showLink } ) }
 				/>
 
 				{ showLink && (
@@ -98,7 +96,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ linkInNewTab }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									linkInNewTab: ! linkInNewTab,
 								} )

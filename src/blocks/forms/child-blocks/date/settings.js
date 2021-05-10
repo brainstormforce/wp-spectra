@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const YearDefaults = [ { label: 'YYYY', value: '' } ];
 const MonthsDefaults = [ { label: 'MM', value: '' } ];
@@ -76,7 +76,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { dateRequired: ! dateRequired } )
 					}
 				/>
@@ -86,7 +86,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ additonalVal }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { additonalVal: ! additonalVal } )
 					}
 					help={ __(
@@ -104,8 +104,8 @@ const Settings = ( props ) => {
 							label="Year"
 							value={ minYear }
 							options={ YearDefaults }
-							onChange={ ( minYear ) =>
-								setAttributes( { minYear } )
+							onChange={ ( newMinYear ) =>
+								setAttributes( { newMinYear } )
 							}
 						/>
 						<b> - </b>
@@ -114,8 +114,8 @@ const Settings = ( props ) => {
 							label="Month"
 							value={ minMonth }
 							options={ MonthsDefaults }
-							onChange={ ( minMonth ) =>
-								setAttributes( { minMonth } )
+							onChange={ ( newMinMonth ) =>
+								setAttributes( { newMinMonth } )
 							}
 						/>
 						<b> - </b>
@@ -124,8 +124,8 @@ const Settings = ( props ) => {
 							label="Date"
 							value={ minDay }
 							options={ dateDefaults }
-							onChange={ ( minDay ) =>
-								setAttributes( { minDay } )
+							onChange={ ( newMinDay ) =>
+								setAttributes( { newMinDay } )
 							}
 						/>
 						<p>To :</p>
@@ -134,8 +134,8 @@ const Settings = ( props ) => {
 							label="Year"
 							value={ maxYear }
 							options={ YearDefaults }
-							onChange={ ( maxYear ) =>
-								setAttributes( { maxYear } )
+							onChange={ ( newMaxYear ) =>
+								setAttributes( { newMaxYear } )
 							}
 						/>
 						<b> - </b>
@@ -144,8 +144,8 @@ const Settings = ( props ) => {
 							label="Month"
 							value={ maxMonth }
 							options={ MonthsDefaults }
-							onChange={ ( maxMonth ) =>
-								setAttributes( { maxMonth } )
+							onChange={ ( newMaxMonth ) =>
+								setAttributes( { newMaxMonth } )
 							}
 						/>
 						<b> - </b>
@@ -154,8 +154,8 @@ const Settings = ( props ) => {
 							label="Date"
 							value={ maxDay }
 							options={ dateDefaults }
-							onChange={ ( maxDay ) =>
-								setAttributes( { maxDay } )
+							onChange={ ( newMaxDay ) =>
+								setAttributes( { newMaxDay } )
 							}
 						/>
 						{ invalidDateErrorMsg }

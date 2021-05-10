@@ -34,7 +34,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ required }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { required: ! required } )
 							}
 						/>

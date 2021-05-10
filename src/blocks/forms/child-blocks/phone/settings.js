@@ -7,9 +7,9 @@ const { InspectorControls } = wp.blockEditor;
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern } = attributes;
+	const { phoneRequired, pattern } = attributes;
 
 	const phoneInspectorControls = () => {
 		return (
@@ -21,7 +21,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ phoneRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { phoneRequired: ! phoneRequired } )
 					}
 				/>
@@ -45,8 +45,8 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ ( pattern ) => {
-						setAttributes( { pattern } );
+					onChange={ ( new_pattern ) => {
+						setAttributes( { new_pattern } );
 					} }
 				/>
 			</PanelBody>

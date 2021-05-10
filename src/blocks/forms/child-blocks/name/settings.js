@@ -21,7 +21,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ nameRequired }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { nameRequired: ! nameRequired } )
 					}
 				/>

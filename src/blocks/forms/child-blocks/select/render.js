@@ -16,19 +16,15 @@ const Render = ( props ) => {
 
 	const addOption = () => {
 		const newOption = {
-			optiontitle: __(
-				`Option Name ${ options.length + 1 }`,
-				'ultimate-addons-for-gutenberg'
-			),
-			optionvalue: __(
-				`Option Value ${ options.length + 1 }`,
-				'ultimate-addons-for-gutenberg'
-			),
+			optiontitle:
+				__( 'Option Name ', 'ultimate-addons-for-gutenberg' ) +
+				`${ options.length + 1 }`,
+			optionvalue:
+				__( 'Option Value ', 'ultimate-addons-for-gutenberg' ) +
+				`${ options.length + 1 }`,
 		};
 		options[ options.length ] = newOption;
-		const addnewOptions = options.map( ( item, thisIndex ) => {
-			return item;
-		} );
+		const addnewOptions = options.map( ( item ) => item );
 
 		setAttributes( { options: addnewOptions } );
 		setState( { optionsstate: addnewOptions } );
@@ -36,7 +32,7 @@ const Render = ( props ) => {
 
 	const editView = options.map( ( s, index ) => {
 		return (
-			<div className="uagb-form-select-option">
+			<div key={ index } className="uagb-form-select-option">
 				<input
 					className="uagb-inner-input-view"
 					aria-label={ s.optiontitle }
@@ -73,9 +69,11 @@ const Render = ( props ) => {
 
 	const SelectView = () => {
 		const showoptionsField = options.map( ( o, index ) => {
-			const optionvalue = o.optionvalue;
-			const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
-			return <option value={ optionvalue }>{ o.optiontitle }</option>;
+			return (
+				<option key={ index } value={ o.optionvalue }>
+					{ o.optiontitle }
+				</option>
+			);
 		} );
 
 		return (
@@ -83,9 +81,13 @@ const Render = ( props ) => {
 				className="uagb-forms-select-box uagb-forms-input"
 				required={ selectRequired }
 				name={ block_id }
+				defaultValue=""
 			>
-				<option value="" disabled selected>
-					Select your option
+				<option value="" disabled>
+					{ __(
+						'Select your option',
+						'ultimate-addons-for-gutenberg'
+					) }
 				</option>
 				{ showoptionsField }
 			</select>

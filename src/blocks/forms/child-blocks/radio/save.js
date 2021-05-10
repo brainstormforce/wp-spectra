@@ -6,7 +6,6 @@ import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
 const { RichText } = wp.blockEditor;
-const { Fragment } = wp.element;
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -36,7 +35,7 @@ export default function save( props ) {
 				const optionvalue = o.optionvalue;
 				const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 				return (
-					<Fragment>
+					<>
 						<input
 							type="radio"
 							id={ `radio-${ value }-${ block_id }` }
@@ -48,7 +47,7 @@ export default function save( props ) {
 							{ o.optiontitle }
 						</label>
 						<br />
-					</Fragment>
+					</>
 				);
 			} ) }
 		</div>

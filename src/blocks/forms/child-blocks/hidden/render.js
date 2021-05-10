@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -41,11 +40,7 @@ const Render = ( props ) => {
 						<label
 							className={ `uagb-forms-hidden-label uagb-form-hidden-${ hidden_field_label }` }
 						>
-							{ ' ' }
-							{ __(
-								hidden_field_name,
-								'ultimate-addons-for-gutenberg'
-							) }{ ' ' }
+							{ hidden_field_name }
 						</label>
 						<input
 							type="hidden"

@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes } = props;
 
 	const {
 		block_id,

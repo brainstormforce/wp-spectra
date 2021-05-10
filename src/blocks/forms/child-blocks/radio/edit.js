@@ -26,7 +26,7 @@ const UAGBFormsRadioEdit = ( props ) => {
 	} );
 
 	useEffect( () => {
-		const { attributes, setAttributes } = props;
+		const { setAttributes } = props;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );

@@ -10,7 +10,22 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, dateRequired, name, additonalVal } = attributes;
+	const {
+		block_id,
+		dateRequired,
+		name,
+		additonalVal,
+		minYear,
+		minMonth,
+		minDay,
+	} = attributes;
+
+	let validation_min_value = '';
+	const validation_max_value = '';
+
+	if ( minYear && minMonth && minDay ) {
+		validation_min_value = minYear + '-' + minMonth + '-' + minDay;
+	}
 
 	let date_html = '';
 	if ( additonalVal ) {
@@ -56,7 +71,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ dateRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									dateRequired: ! dateRequired,
 								} )

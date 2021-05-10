@@ -21,8 +21,8 @@ const Settings = ( props ) => {
 				<TextControl
 					label={ __( 'Value', 'ultimate-addons-for-gutenberg' ) }
 					value={ hidden_field_value }
-					onChange={ ( hidden_field_value ) =>
-						setAttributes( { hidden_field_value } )
+					onChange={ ( new_hidden_field_value ) =>
+						setAttributes( { new_hidden_field_value } )
 					}
 				/>
 			</PanelBody>

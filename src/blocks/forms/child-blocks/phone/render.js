@@ -64,7 +64,7 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ phoneRequired }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									phoneRequired: ! phoneRequired,
 								} )
