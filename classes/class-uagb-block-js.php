@@ -112,12 +112,19 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			ob_start();
 			?>
 			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
-			var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
-			blockquote__tweet[0].addEventListener("click",function(){
-				var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-				var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . <?php $url; ?>. '")+"&text="+content+"&via="+("' . <?php $via; ?> . '"); 
-				window.open( request_url ); 
-			});
+			if ( selector[0] && undefined !== selector[0] && '' !== selector[0] ) {
+
+				var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
+			}
+			
+			if ( blockquote__tweet[0] && undefined !== blockquote__tweet[0] && '' !== blockquote__tweet[0] ) {
+
+				blockquote__tweet[0].addEventListener("click",function(){
+					var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
+					var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . <?php $url; ?>. '")+"&text="+content+"&via="+("' . <?php $via; ?> . '"); 
+					window.open( request_url ); 
+				});
+			}
 			<?php
 			return ob_get_clean();
 
