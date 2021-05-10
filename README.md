@@ -168,8 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 1.23.0 ###
+### 1.22.4 ###
 * Fix: Table of Contents - Not allowed HTML tags in title and JS minification issue.
+* Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
 
 ### 1.22.3 ###
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
