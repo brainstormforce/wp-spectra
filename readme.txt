@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.22.4 =
+* Fix: Blockquote - Javascript console error when Twitter Icon is disabled.
 * Fix: Table of Contents - Not allowed HTML tags in title and JS minification issue.
 * Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
 
