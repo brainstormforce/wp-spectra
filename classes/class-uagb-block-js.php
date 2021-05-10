@@ -89,6 +89,10 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			if ( ! $attr['enableTweet'] ) {
+				return '';
+			}
+
 			$target = $attr['iconTargetUrl'];
 
 			$url = '';
