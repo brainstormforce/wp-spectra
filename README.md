@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.7  
-**Stable tag:** 1.22.3  
+**Stable tag:** 1.22.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -167,6 +167,11 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.22.4 ###
+* Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
+* Fix: Blockquote - Javascript console error when Twitter Icon is disabled.
+* Fix: Table of Contents - Not allowed HTML tags in title and JS minification issue.
 
 ### 1.22.3 ###
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
