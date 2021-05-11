@@ -370,6 +370,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 				update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
 
+				$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+
 			}
 
 			$mapping_header_func = function( $value ) {
