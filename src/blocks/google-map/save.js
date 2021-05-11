@@ -23,7 +23,10 @@ export default function save( props ) {
 		>
 			<iframe
 				className="uagb-google-map__iframe"
-				title={ __( 'Google Map for ' + address ) }
+				title={
+					__( 'Google Map for ', 'ultimate-addons-for-gutenberg' ) +
+					address
+				}
 				src={ url }
 				style={ { height } }
 			></iframe>
