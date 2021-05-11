@@ -1,9 +1,26 @@
-import Columnresponsive from '../../components/typography/column-responsive';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import GradientSettings from '../../components/gradient-settings';
-import BoxShadowControl from '../../components/box-shadow';
-import React from 'react';
+
+import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
+import lazyLoader from '@Controls/lazy-loader';
+
+const ColumnResponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/section/column-responsive" */ '../../components/typography/column-responsive'
+	)
+);
+
+const GradientSettings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/section/gradient-settings" */ '../../components/gradient-settings'
+	)
+);
+
+const BoxShadowControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/section/box-shadow-control" */ '../../components/box-shadow'
+	)
+);
 
 const {
 	BlockControls,
@@ -217,13 +234,13 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ themeWidth }
-							onChange={ ( value ) =>
+							onChange={ (  ) =>
 								setAttributes( { themeWidth: ! themeWidth } )
 							}
 						/>
 					) }
 					{ contentWidth != 'boxed' && ! themeWidth && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __(
@@ -270,7 +287,7 @@ const Settings = ( props ) => {
 									setAttributes( { innerWidth: value } )
 								}
 							/>
-						</Fragment>
+						</>
 					) }
 					<SelectControl
 						label={ __(
@@ -342,9 +359,12 @@ const Settings = ( props ) => {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
-					<Columnresponsive />
+					<Suspense fallback={ lazyLoader() }>
+						{ ' ' }
+						<ColumnResponsive />{ ' ' }
+					</Suspense>
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -424,10 +444,10 @@ const Settings = ( props ) => {
 								max={ '%' == desktopPaddingType ? 100 : 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -512,10 +532,10 @@ const Settings = ( props ) => {
 								max={ '%' == tabletPaddingType ? 100 : 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -600,12 +620,15 @@ const Settings = ( props ) => {
 								max={ '%' == mobilePaddingType ? 100 : 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					<hr className="uagb-editor__separator" />
-					<Columnresponsive />
+					<Suspense fallback={ lazyLoader() }>
+						{ ' ' }
+						<ColumnResponsive />{ ' ' }
+					</Suspense>
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -684,10 +707,10 @@ const Settings = ( props ) => {
 								max={ 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -770,10 +793,10 @@ const Settings = ( props ) => {
 								max={ 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -856,7 +879,7 @@ const Settings = ( props ) => {
 								max={ 2000 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 				</PanelBody>
 				<PanelBody
@@ -914,7 +937,7 @@ const Settings = ( props ) => {
 						] }
 					/>
 					{ 'color' == backgroundType && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Background Color',
@@ -938,11 +961,12 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'image' == backgroundType && (
-						<Fragment>
+						<>
 							<BaseControl
+								id="section-image-settings"
 								className="editor-bg-image-control"
 								label={ __(
 									'Background Image',
@@ -983,7 +1007,7 @@ const Settings = ( props ) => {
 								) }
 							</BaseControl>
 							{ backgroundImage && (
-								<Fragment>
+								<>
 									<SelectControl
 										label={ __(
 											'Image Position',
@@ -1195,7 +1219,7 @@ const Settings = ( props ) => {
 										] }
 									/>
 									{ overlayType == 'color' && (
-										<Fragment>
+										<>
 											<p className="uagb-setting-label">
 												{ __(
 													'Image Overlay Color',
@@ -1205,7 +1229,7 @@ const Settings = ( props ) => {
 													<span
 														className="component-color-indicator"
 														style={ {
-															backgroundColor: backgroundimagecolor,
+															backgroundColor: backgroundImageColor,
 														} }
 													></span>
 												</span>
@@ -1219,11 +1243,11 @@ const Settings = ( props ) => {
 												}
 												allowReset
 											/>
-										</Fragment>
+										</>
 									) }
 
 									{ 'gradient' == overlayType && (
-										<Fragment>
+										<>
 											<p className="uagb-setting-label">
 												{ __(
 													'Color 1',
@@ -1233,7 +1257,7 @@ const Settings = ( props ) => {
 													<span
 														className="component-color-indicator"
 														style={ {
-															backgroundColor: backgroundvideocolor,
+															backgroundColor: backgroundVideoColor,
 														} }
 													></span>
 												</span>
@@ -1273,7 +1297,7 @@ const Settings = ( props ) => {
 													<span
 														className="component-color-indicator"
 														style={ {
-															backgroundColor: backgroundvideocolor,
+															backgroundColor: backgroundVideoColor,
 														} }
 													></span>
 												</span>
@@ -1440,22 +1464,25 @@ const Settings = ( props ) => {
 													] }
 												/>
 											) }
-										</Fragment>
+										</>
 									) }
-								</Fragment>
+								</>
 							) }
-						</Fragment>
+						</>
 					) }
 					{ 'gradient' == backgroundType && (
-						<Fragment>
-							<GradientSettings
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-							/>
-						</Fragment>
+						<>
+							<Suspense fallback={ lazyLoader() }>
+								<GradientSettings
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+								/>
+							</Suspense>
+						</>
 					) }
 					{ 'video' == backgroundType && (
 						<BaseControl
+							id="section-video-settings"
 							className="editor-bg-video-control"
 							label={ __(
 								'Background Video',
@@ -1514,14 +1541,14 @@ const Settings = ( props ) => {
 						/>
 					) }
 					{ 'video' == backgroundType && backgroundVideo && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __( 'Video Overlay Color' ) }
 								<span className="components-base-control__label">
 									<span
 										className="component-color-indicator"
 										style={ {
-											backgroundColor: backgroundvideocolor,
+											backgroundColor: backgroundVideoColor,
 										} }
 									></span>
 								</span>
@@ -1535,7 +1562,7 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'video' == backgroundType && backgroundVideo && (
 						<RangeControl
@@ -1664,7 +1691,7 @@ const Settings = ( props ) => {
 						allowReset
 					/>
 					{ 'none' != borderStyle && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Border Color',
@@ -1674,7 +1701,7 @@ const Settings = ( props ) => {
 									<span
 										className="component-color-indicator"
 										style={ {
-											backgroundColor: bordercolor,
+											backgroundColor: borderColor,
 										} }
 									></span>
 								</span>
@@ -1686,57 +1713,59 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
-					<BoxShadowControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Box Shadow',
-							'ultimate-addons-for-gutenberg'
-						) }
-						boxShadowColor={ {
-							value: boxShadowColor,
-							label: __(
-								'Color',
+					<Suspense fallback={ lazyLoader() }>
+						<BoxShadowControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Box Shadow',
 								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowHOffset={ {
-							value: boxShadowHOffset,
-							label: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowVOffset={ {
-							value: boxShadowVOffset,
-							label: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowBlur={ {
-							value: boxShadowBlur,
-							label: __(
-								'Blur',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowSpread={ {
-							value: boxShadowSpread,
-							label: __(
-								'Spread',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowPosition={ {
-							value: boxShadowPosition,
-							label: __(
-								'Position',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-					/>
+							) }
+							boxShadowColor={ {
+								value: boxShadowColor,
+								label: __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowHOffset={ {
+								value: boxShadowHOffset,
+								label: __(
+									'Horizontal',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowVOffset={ {
+								value: boxShadowVOffset,
+								label: __(
+									'Vertical',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowBlur={ {
+								value: boxShadowBlur,
+								label: __(
+									'Blur',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowSpread={ {
+								value: boxShadowSpread,
+								label: __(
+									'Spread',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+							boxShadowPosition={ {
+								value: boxShadowPosition,
+								label: __(
+									'Position',
+									'ultimate-addons-for-gutenberg'
+								),
+							} }
+						/>
+					</Suspense>
 				</PanelBody>
 			</InspectorControls>
 		</>

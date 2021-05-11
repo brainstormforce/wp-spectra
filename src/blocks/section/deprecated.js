@@ -12,7 +12,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { attributes, className } = props;
+			const { className } = props;
 
 			const {
 				block_id,
@@ -66,7 +66,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { attributes, className } = props;
+			const { className } = props;
 
 			const {
 				block_id,

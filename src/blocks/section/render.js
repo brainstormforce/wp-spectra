@@ -4,7 +4,6 @@ import React from 'react';
 const { InnerBlocks } = wp.blockEditor;
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes, isSelected, className, deviceType } = props;

@@ -2,10 +2,7 @@
  * BLOCK: Column - Save Block
  */
 
-// Import block dependencies and components.
 import classnames from 'classnames';
-
-const { Fragment } = wp.element;
 
 const { InnerBlocks } = wp.blockEditor;
 
