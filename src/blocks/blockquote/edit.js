@@ -1,7 +1,14 @@
 import styling from './styling';
-import Settings from './settings';
-import Render from './render';
-import React, { useEffect } from 'react';
+
+import React, { lazy, useEffect, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/blockquote/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/blockquote/render" */ './render' )
+);
 
 const UAGBBlockQuote = ( props ) => {
 	useEffect( () => {
@@ -32,8 +39,10 @@ const UAGBBlockQuote = ( props ) => {
 
 	return (
 		<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

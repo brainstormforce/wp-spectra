@@ -1,10 +1,29 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import Description from './components/Description';
-import AuthorImage from './components/AuthorImage';
-import AuthorText from './components/AuthorText';
-import TweetButtonCTA from './components/TweetButtonCTA';
-import React from 'react';
+
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Description = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/description" */ './components/Description'
+	)
+);
+const AuthorImage = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/author-image" */ './components/AuthorImage'
+	)
+);
+const AuthorText = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/author-text" */ './components/AuthorText'
+	)
+);
+const TweetButtonCTA = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/tweet-button-cta" */ './components/TweetButtonCTA'
+	)
+);
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -55,39 +74,44 @@ const Render = ( props ) => {
 							</span>{ ' ' }
 						</div>
 					) }
+					<Suspense fallback={ lazyLoader() }>
+						<div className="uagb-blockquote__content-wrap">
+							{
+								<Description
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+							}
 
-					<div className="uagb-blockquote__content-wrap">
-						{
-							<Description
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								props={ props }
-							/>
-						}
-
-						<footer>
-							<div
-								className={ classnames(
-									'uagb-blockquote__author-wrap',
-									authorImage !== ''
-										? `uagb-blockquote__author-at-${ authorImgPosition }`
-										: ''
+							<footer>
+								<div
+									className={ classnames(
+										'uagb-blockquote__author-wrap',
+										authorImage !== ''
+											? `uagb-blockquote__author-at-${ authorImgPosition }`
+											: ''
+									) }
+								>
+									{
+										<AuthorImage
+											attributes={ attributes }
+										/>
+									}
+									{
+										<AuthorText
+											attributes={ attributes }
+											setAttributes={ setAttributes }
+											props={ props }
+										/>
+									}
+								</div>
+								{ enableTweet && (
+									<TweetButtonCTA attributes={ attributes } />
 								) }
-							>
-								{ <AuthorImage attributes={ attributes } /> }
-								{
-									<AuthorText
-										attributes={ attributes }
-										setAttributes={ setAttributes }
-										props={ props }
-									/>
-								}
-							</div>
-							{ enableTweet && (
-								<TweetButtonCTA attributes={ attributes } />
-							) }
-						</footer>
-					</div>
+							</footer>
+						</div>
+					</Suspense>
 				</blockquote>
 			</div>
 		</div>

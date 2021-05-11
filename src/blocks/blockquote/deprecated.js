@@ -5,13 +5,35 @@
 import attributes from './attributes';
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import TweetButton from './components/TweetButton';
-import TweetButtonCTA from './components/TweetButtonCTA';
-import Description from './components/Description';
-import AuthorText from './components/AuthorText';
-import AuthorImage from './components/AuthorImage';
 
-const { RichText } = wp.blockEditor;
+import { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const TweetButton = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/description" */ './components/TweetButton'
+	)
+);
+const Description = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/description" */ './components/Description'
+	)
+);
+const AuthorImage = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/author-image" */ './components/AuthorImage'
+	)
+);
+const AuthorText = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/author-text" */ './components/AuthorText'
+	)
+);
+const TweetButtonCTA = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/blockquote/tweet-button-cta" */ './components/TweetButtonCTA'
+	)
+);
 
 const deprecated = [
 	{
@@ -64,44 +86,50 @@ const deprecated = [
 									</span>
 								</div>
 							) }
-							<div className="uagb-blockquote__content-wrap">
-								{ descriptionText !== '' && (
-									<Description
-										attributes={ props.attributes }
-										setAttributes="not_set"
-										props={ props }
-									/>
-								) }
-
-								<footer>
-									<div
-										className={ classnames(
-											'uagb-blockquote__author-wrap',
-											authorImage !== ''
-												? `uagb-blockquote__author-at-${ authorImgPosition }`
-												: ''
-										) }
-									>
-										{
-											<AuthorImage
-												attributes={ props.attributes }
-											/>
-										}
-										{ author !== '' && (
-											<AuthorText
-												attributes={ props.attributes }
-												setAttributes="not_set"
-												props={ props }
-											/>
-										) }
-									</div>
-									{ enableTweet && (
-										<TweetButton
+							<Suspense fallback={ lazyLoader() }>
+								<div className="uagb-blockquote__content-wrap">
+									{ descriptionText !== '' && (
+										<Description
 											attributes={ props.attributes }
+											setAttributes="not_set"
+											props={ props }
 										/>
 									) }
-								</footer>
-							</div>
+
+									<footer>
+										<div
+											className={ classnames(
+												'uagb-blockquote__author-wrap',
+												authorImage !== ''
+													? `uagb-blockquote__author-at-${ authorImgPosition }`
+													: ''
+											) }
+										>
+											{
+												<AuthorImage
+													attributes={
+														props.attributes
+													}
+												/>
+											}
+											{ author !== '' && (
+												<AuthorText
+													attributes={
+														props.attributes
+													}
+													setAttributes="not_set"
+													props={ props }
+												/>
+											) }
+										</div>
+										{ enableTweet && (
+											<TweetButton
+												attributes={ props.attributes }
+											/>
+										) }
+									</footer>
+								</div>
+							</Suspense>
 						</blockquote>
 					</div>
 				</div>

@@ -440,7 +440,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableTweet }
-				onChange={ ( value ) =>
+				onChange={ (  ) =>
 					setAttributes( { enableTweet: ! enableTweet } )
 				}
 			/>
@@ -1160,6 +1160,7 @@ const Settings = ( props ) => {
 		<>
 			<hr className="uagb-editor__separator" />
 			<BaseControl
+				id="blockquote-image-controls"
 				className="editor-bg-image-control"
 				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
 			>
