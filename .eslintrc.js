@@ -5,5 +5,6 @@ module.exports = {
 	},
 	"globals": {
 		"uagb_blocks_info": true,
+		"UAGB_Block_Icons": true,
 	}
 };

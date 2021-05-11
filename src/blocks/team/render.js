@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-
+const { createBlock } = wp.blocks;
 const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
@@ -72,10 +72,6 @@ const Render = ( props ) => {
 			<RichText
 				tagName="div"
 				value={ prefix }
-				placeholder={ __(
-					'Enter Prefix',
-					'ultimate-addons-for-gutenberg'
-				) }
 				className="uagb-team__prefix"
 				onChange={ ( value ) => setAttributes( { prefix: value } ) }
 				onMerge={ mergeBlocks }
@@ -148,10 +144,6 @@ const Render = ( props ) => {
 					setAttributes( { description_text: value } )
 				}
 				onMerge={ mergeBlocks }
-				placeholder={ __(
-					'Write a Description',
-					'ultimate-addons-for-gutenberg'
-				) }
 				onSplit={
 					insertBlocksAfter
 						? ( before, after, ...blocks ) => {

@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
-		classMigrate,
 		tag,
 		align,
 		titleColor,
