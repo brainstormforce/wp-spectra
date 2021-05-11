@@ -3,9 +3,18 @@
  */
 
 import styling from './styling';
-import React, { useEffect } from 'react';
-import Settings from './settings';
-import Render from './render';
+import React, { lazy, Suspense, useEffect } from 'react';
+
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/taxonomy-list/settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/taxonomy-list/render" */ './render' )
+);
 
 const { withSelect } = wp.data;
 
@@ -34,15 +43,16 @@ const UAGBTaxonomyList = ( props ) => {
 
 	return (
 		<>
-			<Settings parentProps={ props } />
-			<Render parentProps={ props } />
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
 
 export default withSelect( ( select, props ) => {
 	const {
-		categories,
 		postsToShow,
 		order,
 		orderBy,

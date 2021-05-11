@@ -121,7 +121,7 @@ const Render = ( props ) => {
 					{ 'list' == layout && 'dropdown' == listDisplayStyle && (
 						<select className="uagb-list-dropdown-wrap">
 							{ categoriesList.map( ( p, index ) => (
-								<option value={ p.link }>
+								<option key={ index } value={ p.link }>
 									{ p.name }
 									{ showCount && ` (${ p.count })` }
 								</option>

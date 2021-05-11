@@ -63,7 +63,6 @@ function styling( props ) {
 		listFontSizeTablet,
 		listFontFamily,
 		listFontWeight,
-		listFontSubset,
 		listLineHeightType,
 		listLineHeight,
 		listLineHeightTablet,

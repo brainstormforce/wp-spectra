@@ -1,9 +1,27 @@
-import WebfontLoader from '../../components/typography/fontloader';
-import Columnresponsive from '../../components/typography/column-responsive';
-import TypographyControl from '../../components/typography';
-import BoxShadowControl from '../../components/box-shadow';
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
+import lazyLoader from '@Controls/lazy-loader';
+
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/taxonomy-list/fontloader" */ './../../components/typography/fontloader'
+	)
+);
+const ColumnResponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/taxonomy-list/column-responsive" */ '../../components/typography/column-responsive'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/taxonomy-list/typography" */ '../../components/typography'
+	)
+);
+const BoxShadowControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/taxonomy-list/box-shadow" */ '../../components/box-shadow'
+	)
+);
 
 const {
 	PanelBody,
@@ -115,7 +133,7 @@ const Settings = ( props ) => {
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
 
 	if ( '' != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
-		var taxonomyListOptions = [
+		const taxonomyListOptions = [
 			{
 				value: '',
 				label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
@@ -351,7 +369,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ 'grid' === layout && <Columnresponsive /> }
+				{ 'grid' === layout && <ColumnResponsive /> }
 				{ 'Desktop' === deviceType && 'grid' === layout && (
 					<>
 						<RangeControl
@@ -480,7 +498,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showEmptyTaxonomy }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							showEmptyTaxonomy: ! showEmptyTaxonomy,
 						} )
@@ -493,7 +511,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showCount }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showCount: ! showCount } )
 					}
 					help={ __(
@@ -511,7 +529,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ showhierarchy }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									showhierarchy: ! showhierarchy,
 								} )
@@ -759,7 +777,7 @@ const Settings = ( props ) => {
 									allowReset
 								/>
 								<hr className="uagb-editor__separator" />
-								{ 'grid' === layout && <Columnresponsive /> }
+								{ 'grid' === layout && <ColumnResponsive /> }
 								{ 'Desktop' === deviceType &&
 									'grid' === layout && (
 										<>
@@ -1389,10 +1407,12 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ inspectorControlsSettings }
-			{ loadTitleGoogleFonts }
-			{ loadCountGoogleFonts }
-			{ loadListGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ inspectorControlsSettings }
+				{ loadTitleGoogleFonts }
+				{ loadCountGoogleFonts }
+				{ loadListGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
