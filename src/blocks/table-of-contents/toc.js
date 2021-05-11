@@ -50,14 +50,17 @@ class TableOfContents extends React.Component {
 
 						toc += '<li class="uagb-toc__list">';
 					} else {
+						if ( level > parentLevel ) {
 
-						if ( level < parentLevel ) {
+							toc += '</li>';
+
+						} else if ( level < parentLevel ) {
 
 							toc += '</ul></li>';
 
 						} else if ( level === parentLevel ) {
 
-							toc += str.repeat( lastLevel - level );
+							toc += str.repeat( lastLevel );
 							toc += '</li>';
 						}
 					}
