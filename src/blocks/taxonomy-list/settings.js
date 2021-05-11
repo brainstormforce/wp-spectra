@@ -131,14 +131,13 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
-
+	const taxonomyListOptions = [
+		{
+			value: '',
+			label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 	if ( '' != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
-		const taxonomyListOptions = [
-			{
-				value: '',
-				label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
-			},
-		];
 		Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
