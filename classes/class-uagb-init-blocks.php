@@ -290,11 +290,8 @@ class UAGB_Init_Blocks {
 	 */
 	public function block_assets() {
 
-		if ( ! is_admin() ) {
-
-			if ( false === UAGB_Frontend::$uag_flag ) {
-				return;
-			}
+		if ( false === UAGB_Frontend::$uag_flag ) {
+			return;
 		}
 
 		if ( is_rtl() ) {
