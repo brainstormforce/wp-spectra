@@ -315,12 +315,14 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 						$toc .= '<ul class="uagb-toc__list">';
 
+					} elseif ( $level === $last_level && $level !== $parent_level ) {
+
+						$toc .= '<li class="uagb-toc__list raj	">';
 					} else {
 
 						if ( $level > $parent_level ) {
-							$toc .= '</ul></li><li class="uagb-toc__list">';
-						}
-						if ( $level === $parent_level ) {
+							$toc .= '</ul></li>';
+						} elseif ( $level === $parent_level ) {
 							$toc .= str_repeat( '</li></ul>', $last_level - $level );
 							$toc .= '</li>';
 						}
