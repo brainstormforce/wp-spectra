@@ -317,7 +317,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 					} elseif ( $level === $last_level && $level !== $parent_level ) {
 
-						$toc .= '<li class="uagb-toc__list raj	">';
+						$toc .= '<li class="uagb-toc__list">';
 					} else {
 
 						if ( $level > $parent_level ) {
