@@ -5,6 +5,16 @@ class TableOfContents extends React.Component {
 	render() {
 		const { mappingHeaders, headers } = this.props;
 
+		const filterArray = origHeaders => {
+			let arrays = [];
+			headers.forEach( ( heading, key ) => {
+				if ( mappingHeaders[ heading.tag - 1 ] ) {
+					arrays.push( heading );
+				}
+			});
+			return arrays;
+		};
+
 		const renderList = headers => {
 
 			let lastLevel   = '';
@@ -68,7 +78,7 @@ class TableOfContents extends React.Component {
 			
 			return (
 				<div className="uagb-toc__list-wrap">
-					{ renderList( headers ) }
+					{ renderList( filterArray( headers ) ) }
 				</div>
 			);
 		} else {
