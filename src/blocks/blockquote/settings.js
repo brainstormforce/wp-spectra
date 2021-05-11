@@ -440,7 +440,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableTweet }
-				onChange={ (  ) =>
+				onChange={ () =>
 					setAttributes( { enableTweet: ! enableTweet } )
 				}
 			/>
