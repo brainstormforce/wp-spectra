@@ -1,10 +1,10 @@
 ( function( $ ) {
 
-	var scroll = true
-	var scroll_offset = 30
-	var scroll_delay = 800
-	var scroll_to_top = false
-	var scroll_element = null
+	var scroll = true;
+	var scroll_offset = 30;
+	var scroll_delay = 800;
+	var scroll_to_top = false;
+	var scroll_element = null;
 
 	var parseTocSlug = function( slug ) {
 
@@ -32,16 +32,16 @@
 
 		init: function() {
 
-			$( document ).on( "click",".uagb-toc__list a", UAGBTableOfContents._scroll )
-			$( document ).on( "click",".uagb-toc__scroll-top", UAGBTableOfContents._scrollTop )
-			$( document ).on( "click",'.uagb-toc__title-wrap', UAGBTableOfContents._toggleCollapse )
-			$( document ).on( "scroll", UAGBTableOfContents._showHideScroll  )
+			$( document ).on( "click",".uagb-toc__list a", UAGBTableOfContents._scroll );
+			$( document ).on( "click",".uagb-toc__scroll-top", UAGBTableOfContents._scrollTop );
+			$( document ).on( "click",'.uagb-toc__title-wrap', UAGBTableOfContents._toggleCollapse );
+			$( document ).on( "scroll", UAGBTableOfContents._showHideScroll  );
 
 		},
 
 		_toggleCollapse: function( e ) {
 			if ( $( this ).find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
-				let $root = $( this ).closest( '.wp-block-uagb-table-of-contents' )
+				let $root = $( this ).closest( '.wp-block-uagb-table-of-contents' );
 
 				if ( $root.hasClass( 'uagb-toc__collapse' ) ) {
 					$root.removeClass( 'uagb-toc__collapse' );
@@ -57,12 +57,12 @@
 
 				if ( jQuery( window ).scrollTop() > 300 ) {
 					if ( scroll_to_top ) {
-						scroll_element.addClass( "uagb-toc__show-scroll" )
+						scroll_element.addClass( "uagb-toc__show-scroll" );
 					} else {
-						scroll_element.removeClass( "uagb-toc__show-scroll" )
+						scroll_element.removeClass( "uagb-toc__show-scroll" );
 					}
 				} else {
-					scroll_element.removeClass( "uagb-toc__show-scroll" )
+					scroll_element.removeClass( "uagb-toc__show-scroll" );
 				}
 			}
 		},
@@ -85,16 +85,16 @@
 
 			if ( this.hash !== "" ) {
 
-				var hash = this.hash
-				var node = $( this ). closest( '.wp-block-uagb-table-of-contents' )
+				var hash = this.hash;
+				var node = $( this ). closest( '.wp-block-uagb-table-of-contents' );
 
-				scroll = node.data( 'scroll' )
-				scroll_offset = node.data( 'offset' )
-				scroll_delay = node.data( 'delay' )
+				scroll = node.data( 'scroll' );
+				scroll_offset = node.data( 'offset' );
+				scroll_delay = node.data( 'delay' );
 
 				if ( scroll ) {
 
-					var offset = $( decodeURIComponent( hash ) ).offset()
+					var offset = $( decodeURIComponent( hash ) ).offset();
 
 					if ( "undefined" != typeof offset ) {
 
@@ -139,26 +139,26 @@
 				});				
 			}
 
-			scroll_to_top = attr.scrollToTop
+			scroll_to_top = attr.scrollToTop;
 
-			scroll_element = $( ".uagb-toc__scroll-top" )
+			scroll_element = $( ".uagb-toc__scroll-top" );
 			if ( 0 == scroll_element.length ) {
-				$( "body" ).append( "<div class=\"uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2\"></div>" )
-				scroll_element = $( ".uagb-toc__scroll-top" )
+				$( "body" ).append( "<div class=\"uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2\"></div>" );
+				scroll_element = $( ".uagb-toc__scroll-top" );
 			}
 
 			if ( scroll_to_top ) {
-				scroll_element.addClass( "uagb-toc__show-scroll" )
+				scroll_element.addClass( "uagb-toc__show-scroll" );
 			} else {
-				scroll_element.removeClass( "uagb-toc__show-scroll" )
+				scroll_element.removeClass( "uagb-toc__show-scroll" );
 			}
 
-			UAGBTableOfContents._showHideScroll()
+			UAGBTableOfContents._showHideScroll();
 		},
 	}
 
 	$( document ).ready(function() {
-		UAGBTableOfContents.init()
+		UAGBTableOfContents.init();
 	})
 
 } )( jQuery )
