@@ -6,10 +6,10 @@ import React, { lazy, useEffect, Suspense } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-phone-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/phone-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-phone-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/phone-render" */ './render' )
 );
 
 const UAGBFormsPhoneEdit = ( props ) => {

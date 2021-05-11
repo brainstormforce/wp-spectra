@@ -6,10 +6,10 @@ import React, { lazy, useEffect, Suspense } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-hidden-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/hidden-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-hidden-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/hidden-render" */ './render' )
 );
 
 const UAGBFormsHiddenEdit = ( props ) => {

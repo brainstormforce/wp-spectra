@@ -6,10 +6,10 @@ import React, { lazy, useEffect, Suspense } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-name-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/name-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-name-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/name-render" */ './render' )
 );
 
 const UAGBFormsNameEdit = ( props ) => {

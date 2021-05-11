@@ -6,10 +6,10 @@ import React, { Suspense, useEffect, lazy } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-email-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/email-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-email-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/email-render" */ './render' )
 );
 
 const UAGBFormsEmailEdit = ( props ) => {

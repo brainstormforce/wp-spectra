@@ -6,10 +6,10 @@ import React, { lazy, useEffect, Suspense } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-accept-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/accept-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-accept-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/accept-render" */ './render' )
 );
 
 const UAGBFormsAcceptEdit = ( props ) => {

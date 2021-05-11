@@ -7,10 +7,10 @@ import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/render" */ './render' )
 );
 
 const { withSelect, useDispatch } = wp.data;

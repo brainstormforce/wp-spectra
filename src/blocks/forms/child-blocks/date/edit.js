@@ -6,10 +6,10 @@ import React, { useEffect, Suspense, lazy } from 'react';
 
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-date-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/date-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-date-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/date-render" */ './render' )
 );
 
 const UAGBFormsDateEdit = ( props ) => {

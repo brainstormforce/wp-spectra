@@ -6,13 +6,13 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/form-typography-control" */ '../../components/typography'
+		/* webpackChunkName: "chunks/form/typography-control" */ '../../components/typography'
 	)
 );
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/form-web-fornt-loader-control" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/form/web-fornt-loader-control" */ '../../components/typography/fontloader'
 	)
 );
 

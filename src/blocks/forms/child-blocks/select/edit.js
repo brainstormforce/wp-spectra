@@ -7,10 +7,10 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-select-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/select-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-select-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/select-render" */ './render' )
 );
 
 const UAGBFormsSelectEdit = ( props ) => {

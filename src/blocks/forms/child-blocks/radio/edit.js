@@ -7,10 +7,10 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-radio-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/radio-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-radio-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/radio-render" */ './render' )
 );
 
 const UAGBFormsRadioEdit = ( props ) => {

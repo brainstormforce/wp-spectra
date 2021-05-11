@@ -7,11 +7,11 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/form-textarea-settings" */ './settings'
+		/* webpackChunkName: "chunks/form/textarea-settings" */ './settings'
 	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-textarea-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/textarea-render" */ './render' )
 );
 
 const UAGBFormsTextareaEdit = ( props ) => {

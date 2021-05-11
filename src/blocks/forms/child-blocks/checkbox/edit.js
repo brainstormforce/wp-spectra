@@ -8,11 +8,11 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/form-checkbox-settings" */ './settings'
+		/* webpackChunkName: "chunks/form/checkbox-settings" */ './settings'
 	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-checkbox-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/checkbox-render" */ './render' )
 );
 
 const UAGBFormsCheckboxEdit = ( props ) => {

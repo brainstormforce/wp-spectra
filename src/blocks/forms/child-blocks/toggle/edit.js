@@ -5,10 +5,10 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-toggle-settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/form/toggle-settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/form-toggle-render" */ './render' )
+	import( /* webpackChunkName: "chunks/form/toggle-render" */ './render' )
 );
 
 const UAGBFormsToggleEdit = ( props ) => {
