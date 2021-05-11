@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import classnames from 'classnames';
-import Lottie from 'react-lottie';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Lottie = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/lottie/react-lottie" */ 'react-lottie'
+	)
+);
 
 const Render = ( props ) => {
 	const { lottieplayer } = props;
@@ -55,22 +61,24 @@ const Render = ( props ) => {
 						: () => ( play_animation = true )
 				}
 			>
-				<Lottie
-					key={ lottieURl }
-					ref={ lottieplayer }
-					options={ {
-						loop,
-						path: lottieURl,
-						rendererSettings: {
-							preserveAspectRatio: 'xMidYMid',
-							className: 'uagb-lottie-inner-wrap',
-						},
-					} }
-					isStopped={ play_animation }
-					speed={ speed }
-					isClickToPauseDisabled={ true }
-					direction={ reversedir }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<Lottie
+						key={ lottieURl }
+						ref={ lottieplayer }
+						options={ {
+							loop,
+							path: lottieURl,
+							rendererSettings: {
+								preserveAspectRatio: 'xMidYMid',
+								className: 'uagb-lottie-inner-wrap',
+							},
+						} }
+						isStopped={ play_animation }
+						speed={ speed }
+						isClickToPauseDisabled={ true }
+						direction={ reversedir }
+					/>
+				</Suspense>
 			</div>
 		</>
 	);
