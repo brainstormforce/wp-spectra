@@ -320,7 +320,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						$toc .= '<li class="uagb-toc__list">';
 					} else {
 
-						if ( $level > $parent_level ) {
+						if ( $level < $parent_level ) {
 							$toc .= '</ul></li>';
 						} elseif ( $level === $parent_level ) {
 							$toc .= str_repeat( '</li></ul>', $last_level - $level );
