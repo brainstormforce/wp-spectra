@@ -1,8 +1,10 @@
-.components-base-control.minDate, .components-base-control.maxDate{
-    width: 30%;
-    display:inline-block;
+.components-base-control.minDate,
+.components-base-control.maxDate {
+	display: inline-block;
+	width: 30%;
 }
+
 .uagb-forms-date-invalidate {
-    color: red;
-    font-weight: 400;
+	color: #f00;
+	font-weight: 400;
 }
