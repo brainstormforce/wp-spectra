@@ -286,32 +286,52 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$page_url,
 			$attributes
 		) {
-			$toc = '<ol class="uagb-toc__list">';
-			$last_level = '';
-			
+			$toc          = '<ol class="uagb-toc__list">';
+			$last_level   = '';
+			$parent_level = '';
+			$first_level  = '';
+
 			foreach ( $nested_heading_list as $anchor => $heading ) {
 
 				$level = $heading['heading']['level'];
 				$title = $heading['heading']['content'];
 				$id    = $heading['heading']['id'];
-				
+
+				if ( 0 === $anchor ) {
+					$first_level = $level;
+				}
+
+				if ( $level < $first_level ) {
+					continue;
+				}
+
+				if ( empty( $parent_level ) || $level < $parent_level ) {
+					$parent_level = $level;
+				}
+
 				if ( ! empty( $last_level ) ) {
 
-					if( $level > $last_level ) {
+					if ( $level > $last_level ) {
 
 						$toc .= '<ul class="uagb-toc__list">';
+
 					} else {
-						
-						$toc .= str_repeat('</li></ul>', $last_level - $level );
-						$toc .= '</li>';
+
+						if ( $level > $parent_level ) {
+							$toc .= '</ul></li><li class="uagb-toc__list">';
+						}
+						if ( $level === $parent_level ) {
+							$toc .= str_repeat( '</li></ul>', $last_level - $level );
+							$toc .= '</li>';
+						}
 					}
 				}
-				
+
 				$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
-			
+
 				$last_level = $level;
 			}
-			
+
 			$toc .= str_repeat( '</li></ul>', $last_level );
 			$toc .= '</ol>';
 			return $toc;
@@ -329,7 +349,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @return string Rendered block HTML.
 		 */
 		public function render_block_core_table_of_contents( $attributes, $content, $block ) {
-			
+
 			global $post;
 
 			if ( ! isset( $post->ID ) ) {
@@ -348,9 +368,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
 
 			}
-			// echo "<pre>";
-			// print_r($this->block_core_table_of_contents_linear_to_nested_heading_list( $uagb_toc_heading_content ));
-			// // wp_die();	
+
 			$mapping_header_func = function( $value ) {
 				return $value;
 			};
