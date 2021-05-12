@@ -363,14 +363,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) ) {
 
-				$headings = $this->block_core_table_of_contents_get_headings(
+				$uagb_toc_heading_content = $this->block_core_table_of_contents_get_headings(
 					$post->ID,
 					$attributes
 				);
 
-				update_post_meta( $post->ID, '_uagb_toc_heading_content', $headings );
-
-				$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+				update_post_meta( $post->ID, '_uagb_toc_heading_content', $uagb_toc_heading_content );
 
 			}
 
