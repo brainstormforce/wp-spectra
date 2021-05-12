@@ -1,6 +1,9 @@
 import classnames from 'classnames';
 import React, { useCallback } from 'react';
 import renderSVG from '@Controls/renderIcon';
+import { __ } from '@wordpress/i18n';
+
+const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -15,7 +18,7 @@ const Render = ( props ) => {
 		buttonText,
 	} = attributes;
 
-	const formPreventDefault = useCallback( () => {
+	const formPreventDefault = useCallback( ( e ) => {
 		e.preventDefault();
 	} );
 

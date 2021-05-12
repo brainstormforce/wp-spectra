@@ -1,10 +1,28 @@
-import React, { Fragment } from 'react';
-import Columnresponsive from '../../components/typography/column-responsive';
-import TypographyControl from '../../components/typography';
-import BoxShadowControl from '../../components/box-shadow';
-import WebfontLoader from '../../components/typography/fontloader';
+import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import lazyLoader from '@Controls/lazy-loader';
+
+const ColumnResponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/wp-search/column-responsive" */ '../../components/typography/column-responsive'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/wp-search/typography" */ '../../components/typography'
+	)
+);
+const BoxShadowControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/wp-search/box-shadow" */ '../../components/box-shadow'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/wp-search/fontloader" */ '../../components/typography/fontloader'
+	)
+);
 
 const {
 	PanelBody,
@@ -15,7 +33,7 @@ const {
 	Button,
 } = wp.components;
 
-const { InspectorControls, ColorPalette, RichText } = wp.blockEditor;
+const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -116,7 +134,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Fragment>
+				<>
 					<TextControl
 						label={ __(
 							'Placeholder',
@@ -179,7 +197,7 @@ const Settings = ( props ) => {
 						min={ 0 }
 						max={ 'px' === inputSizeType ? 500 : 100 }
 					/>
-				</Fragment>
+				</>
 			</PanelBody>
 		);
 	};
@@ -197,7 +215,7 @@ const Settings = ( props ) => {
 						<span
 							className="component-color-indicator"
 							style={ {
-								backgroundColor: textcolor,
+								backgroundColor: textColor,
 							} }
 						></span>
 					</span>
@@ -220,7 +238,7 @@ const Settings = ( props ) => {
 						<span
 							className="component-color-indicator"
 							style={ {
-								backgroundColor: inputbgcolor,
+								backgroundColor: inputBgColor,
 							} }
 						></span>
 					</span>
@@ -283,7 +301,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ 'none' !== borderStyle && (
-					<Fragment>
+					<>
 						<RangeControl
 							label={ __(
 								'Thickness (px)',
@@ -318,7 +336,7 @@ const Settings = ( props ) => {
 								<span
 									className="component-color-indicator"
 									style={ {
-										backgroundColor: bordercolor,
+										backgroundColor: borderColor,
 									} }
 								></span>
 							</span>
@@ -332,12 +350,12 @@ const Settings = ( props ) => {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				<hr />
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -405,10 +423,10 @@ const Settings = ( props ) => {
 							max={ 100 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Tablet' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -476,10 +494,10 @@ const Settings = ( props ) => {
 							max={ 100 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Mobile' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -547,7 +565,7 @@ const Settings = ( props ) => {
 							max={ 100 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				<hr />
 				<TypographyControl
@@ -658,7 +676,7 @@ const Settings = ( props ) => {
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
-					<Fragment>
+					<>
 						<SelectControl
 							label={ __(
 								'Type',
@@ -688,7 +706,7 @@ const Settings = ( props ) => {
 							} }
 						/>
 						{ 'text' === buttonType && (
-							<Fragment>
+							<>
 								<TextControl
 									label="Text"
 									value={ buttonText }
@@ -754,7 +772,7 @@ const Settings = ( props ) => {
 										label: 'buttonLineHeightTablet',
 									} }
 								/>
-							</Fragment>
+							</>
 						) }
 						<RangeControl
 							label={ __(
@@ -770,7 +788,7 @@ const Settings = ( props ) => {
 							min={ 0 }
 							max={ 500 }
 						/>
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Background Color',
@@ -780,7 +798,7 @@ const Settings = ( props ) => {
 									<span
 										className="component-color-indicator"
 										style={ {
-											backgroundColor: buttonbgcolor,
+											backgroundColor: buttonBgColor,
 										} }
 									></span>
 								</span>
@@ -803,7 +821,7 @@ const Settings = ( props ) => {
 									<span
 										className="component-color-indicator"
 										style={ {
-											backgroundColor: buttonbghovercolor,
+											backgroundColor: buttonBgHoverColor,
 										} }
 									></span>
 								</span>
@@ -818,7 +836,7 @@ const Settings = ( props ) => {
 								allowReset
 							/>
 							{ 'text' === buttonType && (
-								<Fragment>
+								<>
 									<p className="uagb-setting-label">
 										{ __(
 											'Text Color',
@@ -828,7 +846,7 @@ const Settings = ( props ) => {
 											<span
 												className="component-color-indicator"
 												style={ {
-													backgroundColor: buttontextcolor,
+													backgroundColor: buttonTextColor,
 												} }
 											></span>
 										</span>
@@ -851,7 +869,7 @@ const Settings = ( props ) => {
 											<span
 												className="component-color-indicator"
 												style={ {
-													backgroundColor: buttontexthovercolor,
+													backgroundColor: buttonTextHoverColor,
 												} }
 											></span>
 										</span>
@@ -865,11 +883,11 @@ const Settings = ( props ) => {
 										}
 										allowReset
 									/>
-								</Fragment>
+								</>
 							) }
-						</Fragment>
+						</>
 						{ 'icon' === buttonType && (
-							<Fragment>
+							<>
 								<hr className="uagb-editor__separator" />
 								<h2>
 									{ __(
@@ -900,7 +918,7 @@ const Settings = ( props ) => {
 										<span
 											className="component-color-indicator"
 											style={ {
-												backgroundColor: buttoniconcolor,
+												backgroundColor: buttonIconColor,
 											} }
 										></span>
 									</span>
@@ -923,7 +941,7 @@ const Settings = ( props ) => {
 										<span
 											className="component-color-indicator"
 											style={ {
-												backgroundColor: buttoniconhovercolor,
+												backgroundColor: buttonIconHoverColor,
 											} }
 										></span>
 									</span>
@@ -937,9 +955,9 @@ const Settings = ( props ) => {
 									}
 									allowReset
 								/>
-							</Fragment>
+							</>
 						) }
-					</Fragment>
+					</>
 				</PanelBody>
 			);
 		}
@@ -955,7 +973,7 @@ const Settings = ( props ) => {
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
-					<Fragment>
+					<>
 						<RangeControl
 							label={ __(
 								'Size',
@@ -976,7 +994,7 @@ const Settings = ( props ) => {
 								<span
 									className="component-color-indicator"
 									style={ {
-										backgroundColor: iconcolor,
+										backgroundColor: iconColor,
 									} }
 								></span>
 							</span>
@@ -990,7 +1008,7 @@ const Settings = ( props ) => {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				</PanelBody>
 			);
 		}
@@ -1031,7 +1049,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				{ generalSettings() }
 				{ inputSettings() }
@@ -1040,7 +1058,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadInputGoogleFonts }
 			{ loadButtonGoogleFonts }
-		</>
+		</Suspense>
 	);
 };
 
