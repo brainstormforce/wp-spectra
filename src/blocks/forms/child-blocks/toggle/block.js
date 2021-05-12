@@ -24,5 +24,5 @@ registerBlockType( 'uagb/forms-toggle', {
 	},
 	example: {},
 	save,
-	deprecated
+	deprecated,
 } );
