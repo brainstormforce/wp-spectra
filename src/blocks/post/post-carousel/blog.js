@@ -1,10 +1,18 @@
 import classnames from 'classnames';
-import Slider from 'react-slick';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import {
 	InnerBlockLayoutContextProvider,
 	renderPostLayout,
 } from '.././function';
+
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Slider = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-carousel/react-slick" */ 'react-slick'
+	)
+);
 
 function Blog( props ) {
 	const { attributes, className, latestPosts, block_id, deviceType } = props;
@@ -169,12 +177,6 @@ function Blog( props ) {
 		);
 	}
 
-	let style_str = '';
-
-	if ( 'dots' == arrowDots ) {
-		style_str = { padding: '0 0 35px 0' };
-	}
-
 	return (
 		<div
 			className={ classnames(
@@ -189,16 +191,18 @@ function Blog( props ) {
 			data-blog-id={ block_id }
 			style={ 'dots' == arrowDots ? { padding: '0 0 35px 0' } : {} }
 		>
-			<Slider
-				className={ classnames(
-					'is-carousel',
-					`uagb-post__columns-${ columns }`,
-					'uagb-post__items'
-				) }
-				{ ...settings }
-			>
-				{ all_posts }
-			</Slider>
+			<Suspense fallback={ lazyLoader() }>
+				<Slider
+					className={ classnames(
+						'is-carousel',
+						`uagb-post__columns-${ columns }`,
+						'uagb-post__items'
+					) }
+					{ ...settings }
+				>
+					{ all_posts }
+				</Slider>
+			</Suspense>
 		</div>
 	);
 }

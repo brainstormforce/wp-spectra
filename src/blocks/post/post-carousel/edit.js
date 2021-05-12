@@ -3,17 +3,32 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import Columnresponsive from '../../../components/typography/column-responsive';
-import React, { useState, useEffect } from 'react';
-import TypographyControl from '../../../components/typography';
-import styling from '.././styling';
+import { __ } from '@wordpress/i18n';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 
-import Render from './render';
-import Settings from './settings';
+import styling from '.././styling';
+import lazyLoader from '@Controls/lazy-loader';
+
+const ColumnResponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-carousel/settings" */ '../../../components/typography/column-responsive'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-carousel/settings" */ '../../../components/typography'
+	)
+);
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-carousel/settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-carousel/render" */ './render' )
+);
 
 const { compose } = wp.compose;
-
-const { __ } = wp.i18n;
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -95,7 +110,7 @@ const UAGBPostCarousel = ( props ) => {
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
-		if ( ! propsstate.isEditing ) {
+		if ( ! state.isEditing ) {
 			__( 'Showing All Post Grid Layout.' );
 		}
 	};
@@ -400,7 +415,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ excludeCurrentPost }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							excludeCurrentPost: ! excludeCurrentPost,
 						} )
@@ -471,7 +486,7 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					] }
 				/>
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<RangeControl
 						label={ __( 'Columns' ) }
@@ -532,7 +547,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ equalHeight }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { equalHeight: ! equalHeight } )
 					}
 				/>
@@ -561,7 +576,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ inheritFromTheme }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							inheritFromTheme: ! inheritFromTheme,
 						} )
@@ -582,16 +597,14 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ pauseOnHover }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { pauseOnHover: ! pauseOnHover } )
 					}
 				/>
 				<ToggleControl
 					label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) }
 					checked={ autoplay }
-					onChange={ ( value ) =>
-						setAttributes( { autoplay: ! autoplay } )
-					}
+					onChange={ () => setAttributes( { autoplay: ! autoplay } ) }
 				/>
 				{ autoplay == true && (
 					<RangeControl
@@ -613,7 +626,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ infiniteLoop }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { infiniteLoop: ! infiniteLoop } )
 					}
 				/>
@@ -717,7 +730,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostImage }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostImage: ! displayPostImage,
 						} )
@@ -806,7 +819,7 @@ const UAGBPostCarousel = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ linkBox }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { linkBox: ! linkBox } )
 							}
 						/>
@@ -823,7 +836,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostTitle }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostTitle: ! displayPostTitle,
 						} )
@@ -835,7 +848,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostAuthor }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostAuthor: ! displayPostAuthor,
 						} )
@@ -844,7 +857,7 @@ const UAGBPostCarousel = ( props ) => {
 				<ToggleControl
 					label={ __( 'Show Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostDate: ! displayPostDate } )
 					}
 				/>
@@ -854,7 +867,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostComment }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostComment: ! displayPostComment,
 						} )
@@ -866,7 +879,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostTaxonomy }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostTaxonomy: ! displayPostTaxonomy,
 						} )
@@ -878,7 +891,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostExcerpt }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostExcerpt: ! displayPostExcerpt,
 						} )
@@ -941,7 +954,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostLink }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
@@ -953,7 +966,7 @@ const UAGBPostCarousel = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ newTab }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
@@ -1676,7 +1689,7 @@ const UAGBPostCarousel = ( props ) => {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<Settings
 				parentProps={ props }
 				state={ state }
@@ -1689,7 +1702,7 @@ const UAGBPostCarousel = ( props ) => {
 				setState={ setState }
 				togglePreview={ togglePreview }
 			/>
-		</>
+		</Suspense>
 	);
 };
 
@@ -1714,7 +1727,6 @@ export default compose(
 			: null;
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
-		const taxonomy = '';
 		let categoriesList = [];
 		let rest_base = '';
 
