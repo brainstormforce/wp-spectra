@@ -1,13 +1,32 @@
 import { __ } from '@wordpress/i18n';
-import TypographyControl from '../../components/typography';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import Columnresponsive from '../../components/typography/column-responsive';
 
-import WebfontLoader from '../../components/typography/fontloader';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
+import lazyLoader from "@Controls/lazy-loader";
+
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography'
+		)
+);
+const FontIconPicker = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/render" */ '@fonticonpicker/react-fonticonpicker'
+		)
+);
+const ColumnResponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography/column-responsive'
+		)
+);
+
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography/fontloader'
+		)
+);
 
 const {
 	BlockControls,
@@ -164,7 +183,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<>
+		<Suspense fallback={lazyLoader()}>
 			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ align }
@@ -546,7 +565,7 @@ const Settings = ( props ) => {
 						</>
 					) }
 
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<ButtonGroup
@@ -861,7 +880,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					{ customWidth && <Columnresponsive /> }
+					{ customWidth && <ColumnResponsive /> }
 					{ 'Desktop' === deviceType && customWidth && (
 						<>
 							<ButtonGroup
@@ -1006,7 +1025,7 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<RangeControl
@@ -1047,7 +1066,7 @@ const Settings = ( props ) => {
 						</>
 					) }
 					<hr className="uagb-editor__separator" />
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<ButtonGroup
@@ -1228,7 +1247,7 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<ButtonGroup
@@ -1544,7 +1563,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadGFonts }
 			{ headingloadGFonts }
-		</>
+		</Suspense>
 	);
 };
 
