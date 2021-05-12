@@ -4,8 +4,16 @@ import {
 	getPostLayoutConfig,
 	InnerBlockLayoutContextProvider,
 } from '../function';
-import Blog from './blog';
+
 import { __ } from '@wordpress/i18n';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Blog = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ './blog'
+	)
+);
 
 const { createBlock } = wp.blocks;
 
@@ -105,14 +113,16 @@ const Render = ( props ) => {
 
 	const renderViewMode = (
 		<Disabled>
-			<Blog
-				attributes={ attributes }
-				className={ props.className }
-				latestPosts={ latestPosts }
-				block_id={ props.clientId.substr( 0, 8 ) }
-				categoriesList={ categoriesList }
-				deviceType={ deviceType }
-			/>
+			<Suspense fallback={ lazyLoader() }>
+				<Blog
+					attributes={ attributes }
+					className={ props.className }
+					latestPosts={ latestPosts }
+					block_id={ props.clientId.substr( 0, 8 ) }
+					categoriesList={ categoriesList }
+					deviceType={ deviceType }
+				/>
+			</Suspense>
 		</Disabled>
 	);
 

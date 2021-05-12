@@ -1,19 +1,20 @@
 import classnames from 'classnames';
-import Masonry from 'react-masonry-component';
+import { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Masonry = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ 'react-masonry-component'
+	)
+);
+
 import {
 	InnerBlockLayoutContextProvider,
 	renderPostLayout,
 } from '.././function';
 
 function Blog( props ) {
-	const {
-		attributes,
-		className,
-		latestPosts,
-		block_id,
-		categoriesList,
-		deviceType,
-	} = props;
+	const { attributes, className, latestPosts, block_id, deviceType } = props;
 
 	const {
 		columns,
@@ -69,34 +70,39 @@ function Blog( props ) {
 			) }
 			data-blog-id={ block_id }
 		>
-			<Masonry
-				className={ classnames(
-					'is-masonry',
-					`uagb-post__columns-${ columns }`,
-					`uagb-post__columns-tablet-${ tcolumns }`,
-					`uagb-post__columns-mobile-${ mcolumns }`,
-					'uagb-post__items'
-				) }
-			>
-				<InnerBlockLayoutContextProvider
-					parentName="uagb/post-masonry"
-					parentClassName="uagb-block-grid"
+			<Suspense fallback={ lazyLoader() }>
+				<Masonry
+					className={ classnames(
+						'is-masonry',
+						`uagb-post__columns-${ columns }`,
+						`uagb-post__columns-tablet-${ tcolumns }`,
+						`uagb-post__columns-mobile-${ mcolumns }`,
+						'uagb-post__items'
+					) }
 				>
-					{ displayPosts.map( ( post, i ) => (
-						<article key={ post.id }>
-							<div className="uagb-post__inner-wrap">
-								{ renderPostLayout(
-									'uagb/post-masonry',
-									post,
-									layoutConfig,
-									props.attributes,
-									props.categoriesList
-								) }
-							</div>
-						</article>
-					) ) }
-				</InnerBlockLayoutContextProvider>
-			</Masonry>
+					<InnerBlockLayoutContextProvider
+						parentName="uagb/post-masonry"
+						parentClassName="uagb-block-grid"
+					>
+						{ displayPosts.map( ( post, i ) => (
+							<article key={ i }>
+								<div
+									key={ i }
+									className="uagb-post__inner-wrap"
+								>
+									{ renderPostLayout(
+										'uagb/post-masonry',
+										post,
+										layoutConfig,
+										props.attributes,
+										props.categoriesList
+									) }
+								</div>
+							</article>
+						) ) }
+					</InnerBlockLayoutContextProvider>
+				</Masonry>
+			</Suspense>
 			{ paginationRender() }
 		</div>
 	);
