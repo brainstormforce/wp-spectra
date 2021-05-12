@@ -6,6 +6,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import './editor.scss';
 
 const { registerBlockType } = wp.blocks;
@@ -23,4 +24,5 @@ registerBlockType( 'uagb/forms-toggle', {
 	},
 	example: {},
 	save,
+	deprecated
 } );
