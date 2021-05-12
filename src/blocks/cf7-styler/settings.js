@@ -1,8 +1,20 @@
-import React from 'react';
-import WebfontLoader from '../../components/typography/fontloader';
-import TypographyControl from '../../components/typography';
+import React, { lazy, Suspense } from 'react';
+
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import lazyLoader from '@Controls/lazy-loader';
+
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/cf7-styler/fontloader" */ '../../components/typography/fontloader'
+	)
+);
+
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/cf7-styler/typography" */ '../../components/typography'
+	)
+);
 
 const {
 	AlignmentToolbar,
@@ -1792,7 +1804,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
@@ -1814,7 +1826,7 @@ const Settings = ( props ) => {
 			{ loadRadioGoogleFonts }
 			{ loadValidationGoogleFonts }
 			{ loadMsgGoogleFonts }
-		</>
+		</Suspense>
 	);
 };
 

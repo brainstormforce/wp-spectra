@@ -1,9 +1,13 @@
 import styling from './styling';
-import React, { useEffect } from 'react';
-import Settings from './settings';
-import Render from './render';
+import React, { lazy, useEffect, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { __ } = wp.i18n;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/cf7-styler/render" */ './render' )
+);
 
 const { withSelect } = wp.data;
 
@@ -35,10 +39,10 @@ const UAGBCF7 = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</>
+		</Suspense>
 	);
 };
 
