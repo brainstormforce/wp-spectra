@@ -48,6 +48,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_action( 'wp_ajax_uagb_file_regeneration', __CLASS__ . '::file_regeneration' );
 
+			add_action( 'wp_ajax_uagb_beta_updates', __CLASS__ . '::uagb_beta_updates' );
+
 			// Enqueue admin scripts.
 			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
@@ -412,7 +414,31 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			wp_send_json_success();
 		}
+		/**
+		 * Update the Beta updates flag.
+		 *
+		 * @since x.x.x
+		 */
+		public static function uagb_beta_updates() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Access Denied. You don\'t have enough capabilities to execute this action.', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => update_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) ),
+				)
+			);
+		}
 		/**
 		 * File Generation Flag
 		 *

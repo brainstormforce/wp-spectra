@@ -279,6 +279,39 @@ array_multisort(
 					</div>
 				</div>
 				<div class="postbox">
+					<?php
+						$uagb_beta = get_option( 'uagb_beta', 'no' );
+
+						$beta_updates_button_text = __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' );
+
+						$value = 'yes';
+
+					if ( 'yes' === $uagb_beta ) {
+
+						$beta_updates_button_text = __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' );
+
+						$value = 'no';
+
+					}
+					?>
+					<h2 class="hndle uagb-normal-cusror">
+						<span class="dashicons dashicons-controls-repeat"></span>
+						<span><?php esc_html_e( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ); ?></span>
+					</h2>
+					<div class="inside">
+						<p>
+							<?php esc_html_e( 'Turn-on Beta Updates, to get notified when a new beta version of Ultimate Addons for Gutenberg is available. The Beta version will not install automatically. You always have the option to ignore it.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+						<button class="button uag-beta-updates" data-value="<?php echo esc_attr( $value ); ?>" >
+							<?php echo esc_html( $beta_updates_button_text ); ?>
+						</button>
+
+						<p>
+							<?php esc_html_e( 'Please Note: We do not recommend updating to a beta version on production sites.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+					</div>
+				</div>
+				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
 						<span><?php esc_html_e( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ); ?></span>

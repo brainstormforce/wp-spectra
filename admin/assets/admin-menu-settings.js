@@ -98,8 +98,38 @@
 
 			$( document ).on( "click",".uag-file-regeneration", UAGBAdmin._fileReGeneration )
 
-		},
+			$( document ).on( "click",".uag-beta-updates", UAGBAdmin._betaUpdates )
 
+		},
+		_betaUpdates: function( e ) {
+			
+			e.preventDefault();
+
+			var button = $( this ),
+				value  = button.data("value")
+
+			var data = {
+				value : value,
+				action: "uagb_beta_updates",
+				nonce: uagb.ajax_nonce,
+			}
+
+			if ( button.hasClass( "updating-message" ) ) {
+				return
+			}
+
+			$( button ).addClass("updating-message")
+
+			UAGBAjaxQueue.add({
+				url: ajaxurl,
+				type: "POST",
+				data: data,
+				success: function(data){
+					console.log(data);
+					location.reload();
+				}
+			})
+		},
 		_fileGeneration: function( e ) {
 
 			e.preventDefault()
