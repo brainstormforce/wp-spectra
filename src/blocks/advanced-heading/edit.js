@@ -4,9 +4,16 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-import RenderHeading from './render';
-import HeadingSettings from './settings';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/advanced-heading/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/advanced-heading/render" */ './render' )
+);
+
 //  Import CSS.
 import './style.scss';
 
@@ -44,8 +51,10 @@ const HeadingComponent = ( props ) => {
 
 	return (
 		<>
-			{ HeadingSettings( props ) }
-			{ RenderHeading( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

@@ -1,8 +1,18 @@
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/advanced-heading/typography-control" */ '../../components/typography'
+	)
+);
+
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/advanced-heading/web-fornt-loader-control" */ '../../components/typography/fontloader'
+	)
+);
+
 import { __ } from '@wordpress/i18n';
 
 const {
@@ -20,7 +30,7 @@ const {
 } = wp.components;
 
 // Extend component
-export default function HeadingSettings( props ) {
+const Settings = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const {
 		headingAlign,
@@ -106,7 +116,7 @@ export default function HeadingSettings( props ) {
 		);
 	};
 
-	const AdvancedHeading = () => {
+	const HeadingPanel = () => {
 		return (
 			<PanelBody
 				title={ __(
@@ -224,62 +234,64 @@ export default function HeadingSettings( props ) {
 				<h2>
 					{ __( 'Sub-Heading', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: subHeadLoadGoogleFonts,
-						label: 'subHeadLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: subHeadFontFamily,
-						label: 'subHeadFontFamily',
-					} }
-					fontWeight={ {
-						value: subHeadFontWeight,
-						label: 'subHeadFontWeight',
-					} }
-					fontSubset={ {
-						value: subHeadFontSubset,
-						label: 'subHeadFontSubset',
-					} }
-					fontSizeType={ {
-						value: subHeadFontSizeType,
-						label: 'subHeadFontSizeType',
-					} }
-					fontSize={ {
-						value: subHeadFontSize,
-						label: 'subHeadFontSize',
-					} }
-					fontSizeMobile={ {
-						value: subHeadFontSizeMobile,
-						label: 'subHeadFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: subHeadFontSizeTablet,
-						label: 'subHeadFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: subHeadLineHeightType,
-						label: 'subHeadLineHeightType',
-					} }
-					lineHeight={ {
-						value: subHeadLineHeight,
-						label: 'subHeadLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: subHeadLineHeightMobile,
-						label: 'subHeadLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: subHeadLineHeightTablet,
-						label: 'subHeadLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: subHeadLoadGoogleFonts,
+							label: 'subHeadLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: subHeadFontFamily,
+							label: 'subHeadFontFamily',
+						} }
+						fontWeight={ {
+							value: subHeadFontWeight,
+							label: 'subHeadFontWeight',
+						} }
+						fontSubset={ {
+							value: subHeadFontSubset,
+							label: 'subHeadFontSubset',
+						} }
+						fontSizeType={ {
+							value: subHeadFontSizeType,
+							label: 'subHeadFontSizeType',
+						} }
+						fontSize={ {
+							value: subHeadFontSize,
+							label: 'subHeadFontSize',
+						} }
+						fontSizeMobile={ {
+							value: subHeadFontSizeMobile,
+							label: 'subHeadFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: subHeadFontSizeTablet,
+							label: 'subHeadFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: subHeadLineHeightType,
+							label: 'subHeadLineHeightType',
+						} }
+						lineHeight={ {
+							value: subHeadLineHeight,
+							label: 'subHeadLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: subHeadLineHeightMobile,
+							label: 'subHeadLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: subHeadLineHeightTablet,
+							label: 'subHeadLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 				<p className="uagb-setting-label">
 					{ __(
 						'Sub Heading Color',
@@ -498,12 +510,15 @@ export default function HeadingSettings( props ) {
 		<div>
 			{ BlockControlSettings() }
 			<InspectorControls>
-				{ AdvancedHeading() }
+				{ HeadingPanel() }
 				{ SeperatorSettings() }
 				{ SpacingSettings() }
 			</InspectorControls>
-			{ loadHeadingGoogleFonts }
-			{ loadSubHeadingGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadHeadingGoogleFonts }
+				{ loadSubHeadingGoogleFonts }
+			</Suspense>
 		</div>
 	);
 }
+export default React.memo( Settings );

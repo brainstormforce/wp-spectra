@@ -3,7 +3,7 @@ const { RichText } = wp.blockEditor;
 
 import { __ } from '@wordpress/i18n';
 
-export default function RenderHeading( props ) {
+const Render = ( props ) => {
 	const {
 		attributes: {
 			block_id,
@@ -66,3 +66,4 @@ export default function RenderHeading( props ) {
 		</div>
 	);
 }
+export default React.memo( Render );
