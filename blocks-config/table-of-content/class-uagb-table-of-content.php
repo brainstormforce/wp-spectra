@@ -329,13 +329,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					} elseif ( $level === $last_level && $level !== $parent_level ) {
 
 						$toc .= '<li class="uagb-toc__list">';
-						$current_depth ++;
 						$depth_array[ $level ] = $current_depth;
 
 					} elseif ( $level < $last_level ) {
 
 						$closing = absint( $current_depth - $depth_array[ $level ] );
-
+						
 						if ( $level > $parent_level ) {
 
 							$toc          .= str_repeat( '</li></ul>', $closing );

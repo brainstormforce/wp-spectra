@@ -58,7 +58,6 @@ class TableOfContents extends React.Component {
 					} else if ( level === lastLevel && level !== parentLevel ) {
 
 						toc += '<li class="uagb-toc__list">';
-						currentDepth ++;
 						depthArray[ level ] = currentDepth;
 					} else if ( level < lastLevel ) {
 
