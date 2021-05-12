@@ -55,8 +55,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			$this->loader();
 
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
-
-			add_action( 'rest_api_init', array( $this, 'load_plugin_beta_updates' ) );
 		}
 
 		/**
@@ -98,6 +96,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			if ( is_admin() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
+			}
 		}
 
 		/**
@@ -190,21 +192,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function deactivation_reset() {
 			update_option( '__uagb_do_redirect', false );
-		}
-
-		/**
-		 * Loads Plugin Beta files.
-		 *
-		 * @since x.x.x
-		 *
-		 * @return void
-		 */
-		public function load_plugin_beta_updates() {
-
-			if ( is_admin() ) {
-				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
-				$this->beta_updates = UAGB_Beta_Updates::get_instance();
-			}
 		}
 	}
 
