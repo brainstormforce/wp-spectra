@@ -286,10 +286,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$page_url,
 			$attributes
 		) {
-			$toc          = '<ol class="uagb-toc__list">';
-			$last_level   = '';
-			$parent_level = '';
-			$first_level  = '';
+			$toc           = '<ol class="uagb-toc__list">';
+			$last_level    = '';
+			$parent_level  = '';
+			$first_level   = '';
+			$current_depth = 0;
+			$depth_array   = array(
+				1 => 0,
+				2 => 0,
+				3 => 0,
+				4 => 0,
+				5 => 0,
+				6 => 0,
+			);
 
 			foreach ( $nested_heading_list as $anchor => $heading ) {
 
@@ -314,28 +323,37 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					if ( $level > $last_level ) {
 
 						$toc .= '<ul class="uagb-toc__list">';
+						$current_depth ++;
+						$depth_array[ $level ] = $current_depth;
 
 					} elseif ( $level === $last_level && $level !== $parent_level ) {
 
 						$toc .= '<li class="uagb-toc__list">';
-					} else {
+						$current_depth ++;
+						$depth_array[ $level ] = $current_depth;
+
+					} elseif ( $level < $last_level ) {
+
+						$closing = absint( $current_depth - $depth_array[ $level ] );
+
 						if ( $level > $parent_level ) {
-							$toc .= '</li>';
-						} elseif ( $level < $parent_level ) {
-							$toc .= '</ul></li>';
+
+							$toc          .= str_repeat( '</li></ul>', $closing );
+							$current_depth = absint( $current_depth - $closing );
+
 						} elseif ( $level === $parent_level ) {
-							$toc .= str_repeat( '</li></ul>', $last_level );
+
+							$toc .= str_repeat( '</li></ul>', $closing );
 							$toc .= '</li>';
 						}
 					}
 				}
 
-				$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
-
+				$toc       .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
 				$last_level = $level;
 			}
 
-			$toc .= str_repeat( '</li></ul>', $last_level );
+			$toc .= str_repeat( '</li></ul>', $current_depth );
 			$toc .= '</ol>';
 			return $toc;
 		}

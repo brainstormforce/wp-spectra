@@ -22,7 +22,15 @@ class TableOfContents extends React.Component {
 			let firstLevel  = '';
 			let toc = '';
 			let str = "</li></ul>";
-
+			let currentDepth = 0;
+			let depthArray = {
+				1 : 0,
+				2 : 0,
+				3 : 0,
+				4 : 0,
+				5 : 0,
+				6 : 0,
+			};
 			headers.forEach( ( item,index ) => {
 				
 				let level = item.tag;
@@ -45,22 +53,25 @@ class TableOfContents extends React.Component {
 					if ( level > lastLevel ) {
 
 						toc += '<ul class="uagb-toc__list">';
-
+						currentDepth ++;
+						depthArray[ level ] = currentDepth
 					} else if ( level === lastLevel && level !== parentLevel ) {
 
 						toc += '<li class="uagb-toc__list">';
-					} else {
+						currentDepth ++;
+						depthArray[ level ] = currentDepth;
+					} else if ( level < lastLevel ) {
+
+						let closing =  Math.abs( currentDepth - depthArray[ level ] );
+
 						if ( level > parentLevel ) {
-
-							toc += '</li>';
-
-						} else if ( level < parentLevel ) {
-
-							toc += '</ul></li>';
+							
+							toc += str.repeat( closing );
+							currentDepth = Math.abs( currentDepth - closing );
 
 						} else if ( level === parentLevel ) {
-
-							toc += str.repeat( lastLevel );
+							
+							toc += str.repeat( closing );
 							toc += '</li>';
 						}
 					}
