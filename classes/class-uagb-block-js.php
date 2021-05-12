@@ -190,8 +190,8 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$selector      = $base_selector . $id;
 
 			$attrs_needed_in_js = array(
-				'mappingHeaders'   => $attr['mappingHeaders'],
-				'scrollToTop'      => $attr['scrollToTop'],
+				'mappingHeaders' => $attr['mappingHeaders'],
+				'scrollToTop'    => $attr['scrollToTop'],
 			);
 
 			ob_start();
