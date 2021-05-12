@@ -220,12 +220,12 @@ const Settings = ( props ) => {
 							'This will be in Action only in Front End.',
 							'ultimate-addons-for-gutenberg'
 						) }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( { smoothScroll: ! smoothScroll } )
 						}
 					/>
 					{ smoothScroll && (
-						<Fragment>
+						<>
 							<RangeControl
 								label={ __(
 									'Smooth Scroll Offset (px)',
@@ -254,7 +254,7 @@ const Settings = ( props ) => {
 								min={ 100 }
 								max={ 5000 }
 							/>
-						</Fragment>
+						</>
 					) }
 					<hr className="uagb-editor__separator" />
 					<ToggleControl
@@ -267,12 +267,12 @@ const Settings = ( props ) => {
 							'This will add a Scroll to Top arrow at the bottom of page.',
 							'ultimate-addons-for-gutenberg'
 						) }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( { scrollToTop: ! scrollToTop } )
 						}
 					/>
 					{ scrollToTop && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Icon Color',
@@ -319,7 +319,7 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 				</PanelBody>
 				<PanelBody
@@ -460,21 +460,21 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ makeCollapsible }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								makeCollapsible: ! makeCollapsible,
 							} )
 						}
 					/>
 					{ makeCollapsible && (
-						<Fragment>
+						<>
 							<ToggleControl
 								label={ __(
 									'Keep Collapsed Initially',
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ initialCollapse }
-								onChange={ ( value ) =>
+								onChange={ () =>
 									setAttributes( {
 										initialCollapse: ! initialCollapse,
 									} )
@@ -502,7 +502,7 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					<hr className="uagb-editor__separator" />
 					<h2>
@@ -514,14 +514,14 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ disableBullets }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								disableBullets: ! disableBullets,
 							} )
 						}
 					/>
 					{ ! disableBullets && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Bullet Points Color',
@@ -543,12 +543,12 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 
 					<Columnresponsive />
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -605,10 +605,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -665,10 +665,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -725,7 +725,7 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 
 					<TypographyControl
@@ -853,7 +853,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ customWidth }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( { customWidth: ! customWidth } )
 						}
 						help={ __(
@@ -863,7 +863,7 @@ const Settings = ( props ) => {
 					/>
 					{ customWidth && <Columnresponsive /> }
 					{ 'Desktop' === deviceType && customWidth && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -908,10 +908,10 @@ const Settings = ( props ) => {
 								beforeIcon=""
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && customWidth && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -956,10 +956,10 @@ const Settings = ( props ) => {
 								beforeIcon=""
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && customWidth && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1004,11 +1004,11 @@ const Settings = ( props ) => {
 								beforeIcon=""
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					<Columnresponsive />
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<RangeControl
 								label={ __( 'Columns' ) }
 								value={ tColumnsDesktop }
@@ -1018,10 +1018,10 @@ const Settings = ( props ) => {
 								min={ 1 }
 								max={ 10 }
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<RangeControl
 								label={ __( 'Columns' ) }
 								value={ tColumnsTablet }
@@ -1031,10 +1031,10 @@ const Settings = ( props ) => {
 								min={ 1 }
 								max={ 10 }
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<RangeControl
 								label={ __( 'Columns' ) }
 								value={ tColumnsMobile }
@@ -1044,12 +1044,12 @@ const Settings = ( props ) => {
 								min={ 1 }
 								max={ 10 }
 							/>
-						</Fragment>
+						</>
 					) }
 					<hr className="uagb-editor__separator" />
 					<Columnresponsive />
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1106,10 +1106,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1166,10 +1166,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1226,11 +1226,11 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					<Columnresponsive />
 					{ 'Desktop' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1287,10 +1287,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Tablet' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1347,10 +1347,10 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 					{ 'Mobile' === deviceType && (
-						<Fragment>
+						<>
 							<ButtonGroup
 								className="uagb-size-type-field"
 								aria-label={ __( 'Size Type' ) }
@@ -1407,7 +1407,7 @@ const Settings = ( props ) => {
 								max={ 100 }
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 
 					<hr className="uagb-editor__separator" />
@@ -1516,7 +1516,7 @@ const Settings = ( props ) => {
 						allowReset
 					/>
 					{ 'none' != borderStyle && (
-						<Fragment>
+						<>
 							<p className="uagb-setting-label">
 								{ __(
 									'Border Color',
@@ -1538,7 +1538,7 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
 				</PanelBody>
 			</InspectorControls>

@@ -5,7 +5,7 @@
 	UAGBPostCarousel = {
 
 		_setHeight: function( scope ) {
-			
+
 			var post_wrapper = scope.find(".slick-slide"),
 				post_active = scope.find(".slick-slide.slick-active"),
 				max_height = -1,
@@ -72,9 +72,9 @@
 		},
 	}
 	UAGBPostMasonry = {
-       
+
         _init : function( $attr, $selector ) {
-            
+
             var count = 2;
             var windowHeight50 = jQuery( window ).outerHeight() / 1.25;
             var $scope = $( $selector );
@@ -85,15 +85,15 @@
             if ( "scroll" === $attr.paginationEventType ) {
 
                 $( window ).scroll( function () {
-                    
+
                     if( ( $( window ).scrollTop() + windowHeight50 ) >= ( $scope.find( '.uagb-post__items:last' ).offset().top ) ) {
-        
+
                         var $args = {
                             'page_number' : count
                         };
                         total = $scope.data( 'total' );
                         if( true == loadStatus ) {
-                            
+
                             if ( count <= total ) {
                                 loader.show();
                                 UAGBPostMasonry._callAjax( $scope, $args, $attr, loader, false, count );
@@ -107,7 +107,7 @@
             }
             if ( "button" === $attr.paginationEventType ) {
                 $( document ).on( 'click', '.uagb-post-pagination-button', function( e ) {
-					
+
 					$scope = $( this ).closest( '.uagb-post-grid' );
 					total = $scope.data( 'total' );
 					var $args = {
@@ -116,7 +116,7 @@
                     };
 					$scope.find('.uagb-post__load-more-wrap').hide();
                     if( true == loadStatus ) {
-                        
+
                         if ( count <= total ) {
 							loader.show();
                             UAGBPostMasonry._callAjax( $scope, $args, $attr, loader, true, count );
@@ -126,7 +126,7 @@
 
                     }
                 } );
-            } 
+            }
 
         },
         _callAjax : function( $scope, $obj, $attr, loader, append = false, count ) {
@@ -143,9 +143,9 @@
                 type: 'POST',
                 success: function( data ) {
                     $scope.find( '.is-masonry' ).isotope( 'insert',$( data.data ));
-                    loadStatus = true; 
+                    loadStatus = true;
 					loader.hide();
-					
+
 					if ( true === append ) {
 						$scope.find('.uagb-post__load-more-wrap').show();
 					}
@@ -161,6 +161,7 @@
 
 } )( jQuery )
 
+alert("From post.js")
 // Set Carousel Height for Customiser.
 function uagb_carousel_height(  id ) {
 	var wrap            = jQuery("#block-"+id)

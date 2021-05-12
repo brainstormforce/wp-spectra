@@ -89,12 +89,12 @@ function styling( props ) {
 	let tablet_selectors = {};
 	let mobile_selectors = {};
 
-	const alignment =
-		headingAlignment == 'left'
-			? 'flex-start'
-			: headingAlignment == 'right'
-			? 'flex-end'
-			: 'center';
+	let alignment;
+	if ( headingAlignment == 'left' ) {
+		alignment = 'flex-start';
+	} else {
+		alignment = headingAlignment == 'right' ? 'flex-end' : 'center';
+	}
 
 	selectors = {
 		' .uagb-toc__list-wrap ul li a': {

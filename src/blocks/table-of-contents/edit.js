@@ -4,10 +4,19 @@
 
 import styling from './styling';
 
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-import Settings from './settings';
-import Render from './render';
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/table-of-contents/render" */ './render'
+	)
+);
 
 const { withSelect } = wp.data;
 const { compose } = wp.compose;
@@ -61,10 +70,10 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
 			<Render parentProps={ props } />
-		</>
+		</Suspense>
 	);
 };
 

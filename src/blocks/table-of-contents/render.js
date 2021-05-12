@@ -4,9 +4,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 
-const {
-	RichText,
-} = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
 	props = props.parentProps;
