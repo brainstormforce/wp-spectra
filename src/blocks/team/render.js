@@ -41,7 +41,7 @@ const Render = ( props ) => {
 		stack,
 	} = attributes;
 
-	const title_html = (
+	const titleHtml = (
 		<div className="uagb-team__title-wrap">
 			<RichText
 				tagName={ tag }
@@ -97,7 +97,7 @@ const Render = ( props ) => {
 		</div>
 	);
 
-	const social_html = ( icon, link, target ) => {
+	const socialHtml = ( icon, link, target ) => {
 		const target_value = target ? '_blank' : '_self';
 
 		return (
@@ -115,22 +115,22 @@ const Render = ( props ) => {
 		);
 	};
 
-	const social_links = (
+	const socialLinks = (
 		<div className="uagb-team__social-icon-wrap">
 			<ul className="uagb-team__social-list">
 				{ '' != twitterIcon &&
-					social_html( twitterIcon, twitterLink, socialTarget ) }
-				{ '' != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
+					socialHtml( twitterIcon, twitterLink, socialTarget ) }
+				{ '' != fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
 				{ '' != linkedinIcon &&
-					social_html( linkedinIcon, linkedinLink, socialTarget ) }
+					socialHtml( linkedinIcon, linkedinLink, socialTarget ) }
 				{ '' != pinIcon &&
-					social_html( pinIcon, pinLink, socialTarget ) }
+					socialHtml( pinIcon, pinLink, socialTarget ) }
 			</ul>
 		</div>
 	);
 
 	// Get description and seperator components.
-	const desc_html = (
+	const descHtml = (
 		<div className="uagb-team__desc-wrap">
 			<RichText
 				tagName="p"
@@ -163,21 +163,21 @@ const Render = ( props ) => {
 	);
 
 	let size = '';
-	let img_url = '';
+	let imgUrl = '';
 
 	if ( image ) {
 		size = image.sizes;
 		if ( image.sizes ) {
-			img_url = size[ imgSize ] ? size[ imgSize ].url : image.url;
+			imgUrl = size[ imgSize ] ? size[ imgSize ].url : image.url;
 		} else {
-			img_url = image.url;
+			imgUrl = image.url;
 		}
 	}
 
-	let image_html = '';
+	let imageHtml = '';
 
-	if ( '' != img_url ) {
-		image_html = (
+	if ( '' != imgUrl ) {
+		imageHtml = (
 			<div
 				className={ classnames(
 					'uagb-team__image-wrap',
@@ -186,7 +186,7 @@ const Render = ( props ) => {
 			>
 				<img
 					className=""
-					src={ img_url }
+					src={ imgUrl }
 					alt={ image.alt ? image.alt : '' }
 				/>
 			</div>
@@ -208,19 +208,19 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-team__wrap">
-					{ imgPosition == 'left' && image_html }
+					{ imgPosition == 'left' && imageHtml }
 
 					<div className="uagb-team__content">
-						{ imgPosition == 'above' && image_html }
+						{ imgPosition == 'above' && imageHtml }
 
-						{ title_html }
+						{ titleHtml }
 
-						{ desc_html }
+						{ descHtml }
 
-						{ socialEnable && social_links }
+						{ socialEnable && socialLinks }
 					</div>
 
-					{ imgPosition == 'right' && image_html }
+					{ imgPosition == 'right' && imageHtml }
 				</div>
 			</div>
 		</>
