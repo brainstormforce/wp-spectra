@@ -13,6 +13,8 @@ import { __ } from '@wordpress/i18n';
 
 const { registerBlockType } = wp.blocks;
 
+wp.uagb_google_api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
+
 registerBlockType( 'uagb/google-map', {
 	title: uagb_blocks_info.blocks[ 'uagb/google-map' ].title,
 	description: uagb_blocks_info.blocks[ 'uagb/google-map' ].description,
