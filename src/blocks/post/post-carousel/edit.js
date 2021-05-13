@@ -3,34 +3,19 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import { __ } from '@wordpress/i18n';
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-
+import Columnresponsive from '../../../components/typography/column-responsive';
+import TypographyControl from '../../../components/typography';
 import styling from '.././styling';
-import lazyLoader from '@Controls/lazy-loader';
-
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/settings" */ '../../../components/typography/column-responsive'
-	)
-);
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/settings" */ '../../../components/typography'
-	)
-);
-const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/settings" */ './settings'
-	)
-);
-const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-carousel/render" */ './render' )
-);
 
 const { compose } = wp.compose;
 
+import { __ } from '@wordpress/i18n';
+
 const MAX_POSTS_COLUMNS = 8;
+
+import React, { useState, useEffect } from 'react';
+import Render from './render';
+import Settings from './settings';
 
 const {
 	PanelBody,
@@ -108,13 +93,6 @@ const UAGBPostCarousel = ( props ) => {
 		setAttributes( { categories: '' } );
 	};
 
-	const togglePreview = () => {
-		setState( { isEditing: ! state.isEditing } );
-		if ( ! state.isEditing ) {
-			__( 'Showing All Post Grid Layout.' );
-		}
-	};
-
 	const {
 		attributes,
 		categoriesList,
@@ -123,8 +101,8 @@ const UAGBPostCarousel = ( props ) => {
 		deviceType,
 		taxonomyList,
 	} = props;
-
 	const {
+		block_id,
 		displayPostTitle,
 		displayPostDate,
 		displayPostComment,
@@ -239,6 +217,36 @@ const UAGBPostCarousel = ( props ) => {
 		displayPostContentRadio,
 		excludeCurrentPost,
 	} = attributes;
+	const taxonomyListOptions = [];
+
+	const categoryListOptions = [
+		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
+	];
+
+	if ( '' != taxonomyList ) {
+		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+			return taxonomyListOptions.push( {
+				value: taxonomyList[ item ].name,
+				label: taxonomyList[ item ].label,
+			} );
+		} );
+	}
+
+	if ( '' != categoriesList ) {
+		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+			return categoryListOptions.push( {
+				value: categoriesList[ item ].id,
+				label: categoriesList[ item ].name,
+			} );
+		} );
+	}
+
+	const togglePreview = () => {
+		setState( { isEditing: ! state.isEditing } );
+		if ( ! state.isEditing ) {
+			__( 'Showing All Post Grid Layout.' );
+		}
+	};
 
 	const hoverSettings = (
 		<>
@@ -348,30 +356,6 @@ const UAGBPostCarousel = ( props ) => {
 			/>
 		</>
 	);
-
-	const taxonomyListOptions = [];
-
-	const categoryListOptions = [
-		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
-	];
-
-	if ( '' != taxonomyList ) {
-		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
-			return taxonomyListOptions.push( {
-				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
-			} );
-		} );
-	}
-
-	if ( '' != categoriesList ) {
-		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
-			return categoryListOptions.push( {
-				value: categoriesList[ item ].id,
-				label: categoriesList[ item ].name,
-			} );
-		} );
-	}
 
 	const inspectorControls = (
 		<InspectorControls>
@@ -486,7 +470,7 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					] }
 				/>
-				<ColumnResponsive />
+				<Columnresponsive />
 				{ 'Desktop' === deviceType && (
 					<RangeControl
 						label={ __( 'Columns' ) }
@@ -626,7 +610,7 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ infiniteLoop }
-					onChange={ () =>
+					onChange={ (  ) =>
 						setAttributes( { infiniteLoop: ! infiniteLoop } )
 					}
 				/>
@@ -1689,20 +1673,20 @@ const UAGBPostCarousel = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			<Settings
-				parentProps={ props }
 				state={ state }
-				inspectorControls={ inspectorControls }
 				togglePreview={ togglePreview }
+				inspectorControls={ inspectorControls }
+				parentProps={ props }
 			/>
 			<Render
-				parentProps={ props }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
+				parentProps={ props }
 			/>
-		</Suspense>
+		</>
 	);
 };
 
@@ -1727,6 +1711,7 @@ export default compose(
 			: null;
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
+
 		let categoriesList = [];
 		let rest_base = '';
 

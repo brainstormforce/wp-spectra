@@ -1,4 +1,5 @@
 import React from 'react';
+
 import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
@@ -7,7 +8,7 @@ const { BlockAlignmentToolbar, BlockControls } = wp.blockEditor;
 const { ToolbarGroup } = wp.components;
 
 const Settings = ( props ) => {
-	const { inspectorControls, togglePreview, state } = props;
+	const { state, inspectorControls, togglePreview } = props;
 
 	props = props.parentProps;
 
@@ -28,6 +29,23 @@ const Settings = ( props ) => {
 		ctaFontWeight,
 		ctaLoadGoogleFonts,
 	} = attributes;
+
+	const getBlockControls = () => {
+		const { isEditing } = state;
+
+		return (
+			<ToolbarGroup
+				controls={ [
+					{
+						icon: 'edit',
+						title: __( 'Edit' ),
+						onClick: () => togglePreview(),
+						isActive: isEditing,
+					},
+				] }
+			/>
+		);
+	};
 
 	let loadTitleGoogleFonts;
 	let loadMetaGoogleFonts;
@@ -93,23 +111,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ ctaconfig }></WebfontLoader>
 		);
 	}
-
-	const getBlockControls = () => {
-		const { isEditing } = state;
-
-		return (
-			<ToolbarGroup
-				controls={ [
-					{
-						icon: 'edit',
-						title: __( 'Edit' ),
-						onClick: () => togglePreview(),
-						isActive: isEditing,
-					},
-				] }
-			/>
-		);
-	};
 
 	return (
 		<>

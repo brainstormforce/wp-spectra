@@ -4,21 +4,15 @@ import {
 	getPostLayoutConfig,
 	InnerBlockLayoutContextProvider,
 } from '../function';
-
-import React, { lazy, Suspense } from 'react';
-
+import React from 'react';
+import Blog from './blog';
 import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
-
-const Blog = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-carousel/blog" */ './blog' )
-);
-
-const { InnerBlocks } = wp.blockEditor;
 
 const { createBlock } = wp.blocks;
 
 const { Placeholder, Button, Tip, Disabled } = wp.components;
+
+const { InnerBlocks } = wp.blockEditor;
 
 const Render = ( props ) => {
 	const { state, setState, togglePreview } = props;
@@ -112,16 +106,14 @@ const Render = ( props ) => {
 
 	const renderViewMode = (
 		<Disabled>
-			<Suspense fallback={ lazyLoader() }>
-				<Blog
-					attributes={ attributes }
-					className={ props.className }
-					latestPosts={ latestPosts }
-					block_id={ props.clientId.substr( 0, 8 ) }
-					categoriesList={ categoriesList }
-					deviceType={ deviceType }
-				/>
-			</Suspense>
+			<Blog
+				attributes={ attributes }
+				className={ props.className }
+				latestPosts={ latestPosts }
+				block_id={ props.clientId.substr( 0, 8 ) }
+				categoriesList={ categoriesList }
+				deviceType={ deviceType }
+			/>
 		</Disabled>
 	);
 
