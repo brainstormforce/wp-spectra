@@ -15,11 +15,11 @@ export default function save( { attributes, className } ) {
 		alignTablet,
 	} = attributes;
 
-	const align_class =
+	const alignClass =
 		'center' == align ? '' : `uagb-column__align-${ align }`;
-	const align_class_mobile =
+	const alignClassMobile =
 		'' == alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
-	const align_class_tablet =
+	const alignClassTablet =
 		'' == alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
 
 	return (
@@ -28,9 +28,9 @@ export default function save( { attributes, className } ) {
 				className,
 				'uagb-column__wrap',
 				`uagb-column__background-${ backgroundType }`,
-				align_class,
-				align_class_mobile,
-				align_class_tablet,
+				alignClass,
+				alignClassMobile,
+				alignClassTablet,
 				`uagb-block-${ block_id }`
 			) }
 		>

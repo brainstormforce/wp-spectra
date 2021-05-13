@@ -17,11 +17,11 @@ const Render = props  => {
 
 	const active = isSelected ? 'active' : 'not-active';
 
-	const align_class =
+	const alignClass =
 		'center' == align ? '' : `uagb-column__align-${ align }`;
-	const align_class_mobile =
+	const alignClassMobile =
 		'' == alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
-	const align_class_tablet =
+	const alignClassTablet =
 		'' == alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
 
 	return (
@@ -32,9 +32,9 @@ const Render = props  => {
 					'uagb-column__wrap',
 					`uagb-column__background-${ backgroundType }`,
 					`uagb-column__edit-${ active }`,
-					align_class,
-					align_class_mobile,
-					align_class_tablet,
+					alignClass,
+					alignClassMobile,
+					alignClassTablet,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`
 				) }

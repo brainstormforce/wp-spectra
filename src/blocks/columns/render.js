@@ -37,7 +37,7 @@ const Render = props => {
 		bottomContentAboveShape,
 	} = attributes;
 
-	const top_divider_html = topType != 'none' && (
+	const topDividerHtml = topType != 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -53,7 +53,7 @@ const Render = props => {
 		</div>
 	);
 
-	const bottom_divider_html = bottomType != 'none' && (
+	const bottomDividerHtml = bottomType != 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -70,9 +70,9 @@ const Render = props => {
 		</div>
 	);
 
-	const reverse_tablet = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
+	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
 
-	const reverse_mobile = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
+	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
 
 	const CustomTag = `${ tag }`;
 
@@ -90,14 +90,14 @@ const Render = props => {
 				`uagb-columns__valign-${ vAlign }`,
 				`uagb-columns__gap-${ columnGap }`,
 				`align${ align }`,
-				reverse_tablet,
-				reverse_mobile,
+				reverseTabletClass,
+				reverseMobileClass,
 				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,
 				`uagb-columns__columns-${ columns }`
 			) }
 		>
 			<div className="uagb-columns__overlay"></div>
-			{ top_divider_html }
+			{ topDividerHtml }
 			{ 'video' == backgroundType && (
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
@@ -115,7 +115,7 @@ const Render = props => {
 				templateLock="all"
 				allowedBlocks={ ALLOWED_BLOCKS }
 			/>
-			{ bottom_divider_html }
+			{ bottomDividerHtml }
 		</CustomTag>
 	);
 }

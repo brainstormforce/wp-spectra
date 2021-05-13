@@ -78,8 +78,8 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 	const style = inlineStyles( props );
 
 	style[ 'max-width' ] = max_width;
@@ -137,54 +137,60 @@ function styling( props ) {
 
 	selectors[ ' > .uagb-columns__overlay' ] = {};
 
-	if ( 'video' == backgroundType ) {
-		selectors[ ' > .uagb-columns__overlay' ] = {
-			opacity: 1,
-			'background-color': backgroundVideoColor,
-		};
-	} else if ( 'image' == backgroundType ) {
-		selectors[ ' > .uagb-columns__overlay' ] = {
-			opacity:
+	switch ( backgroundType ) {
+
+		case 'video':
+			selectors[ ' > .uagb-columns__overlay' ] = {
+				opacity: 1,
+				'background-color': backgroundVideoColor,
+			};
+			break;
+		case 'image':
+			selectors[ ' > .uagb-columns__overlay' ] = {
+				opacity:
+					typeof backgroundOpacity !== 'undefined'
+						? backgroundOpacity / 100
+						: '',
+				'background-color': backgroundImageColor,
+			};
+			break;
+		case 'color':
+			selectors[ ' > .uagb-columns__overlay' ] = {
+				opacity:
+					typeof backgroundOpacity !== 'undefined'
+						? backgroundOpacity / 100
+						: '',
+				'background-color': backgroundColor,
+			};
+			break;
+		case 'gradient':
+			selectors[ ' > .uagb-columns__overlay' ][ 'background-color' ] =
+				'transparent';
+			selectors[ ' > .uagb-columns__overlay' ].opacity =
 				typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
-					: '',
-			'background-color': backgroundImageColor,
-		};
-	} else if ( 'color' == backgroundType ) {
-		selectors[ ' > .uagb-columns__overlay' ] = {
-			opacity:
-				typeof backgroundOpacity !== 'undefined'
-					? backgroundOpacity / 100
-					: '',
-			'background-color': backgroundColor,
-		};
-	} else if ( 'gradient' === backgroundType ) {
-		selectors[ ' > .uagb-columns__overlay' ][ 'background-color' ] =
-			'transparent';
-		selectors[ ' > .uagb-columns__overlay' ].opacity =
-			typeof backgroundOpacity !== 'undefined'
-				? backgroundOpacity / 100
-				: '';
-		if ( gradientValue ) {
-			selectors[ ' > .uagb-columns__overlay' ][
-				'background-image'
-			] = gradientValue;
-		} else if ( 'linear' === gradientType ) {
-			selectors[ ' > .uagb-columns__overlay' ][
-				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		} else {
-			selectors[ ' > .uagb-columns__overlay' ][
-				'background-image'
-			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		}
+					: '';
+			if ( gradientValue ) {
+				selectors[ ' > .uagb-columns__overlay' ][
+					'background-image'
+				] = gradientValue;
+			} else if ( 'linear' === gradientType ) {
+				selectors[ ' > .uagb-columns__overlay' ][
+					'background-image'
+				] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+			} else {
+				selectors[ ' > .uagb-columns__overlay' ][
+					'background-image'
+				] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+			}
+			break;
 	}
 
 	selectors[ ' > .uagb-columns__overlay' ][
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
 
-	tablet_selectors = {
+	tabletSelectors = {
 		'.uagb-columns__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingTablet,
@@ -216,7 +222,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		'.uagb-columns__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingMobile,
@@ -248,26 +254,26 @@ function styling( props ) {
 		},
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

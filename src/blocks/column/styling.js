@@ -58,8 +58,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	const position = backgroundPosition.replace( '-', ' ' );
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const style = {
 		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),
@@ -94,7 +94,7 @@ function styling( props ) {
 		'': style,
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		'': {
 			'padding-top': generateCSSUnit(
 				topPaddingTablet,
@@ -128,7 +128,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		'': {
 			'padding-top': generateCSSUnit(
 				topPaddingMobile,
@@ -169,38 +169,38 @@ function styling( props ) {
 	}
 
 	if ( colWidthTablet != '' && colWidthTablet != 0 ) {
-		tablet_selectors[ '.block-editor-block-list__block' ] = {
+		tabletSelectors[ '.block-editor-block-list__block' ] = {
 			width: colWidthTablet + '%',
 		};
 	}
 
 	if ( colWidthMobile != '' && colWidthMobile != 0 ) {
-		mobile_selectors[ '.block-editor-block-list__block' ] = {
+		mobileSelectors[ '.block-editor-block-list__block' ] = {
 			width: colWidthMobile + '%',
 		};
 	}
 
-	let styling_css = '';
+	let stylingCss = '';
 
 	const id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

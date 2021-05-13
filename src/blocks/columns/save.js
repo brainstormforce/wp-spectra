@@ -32,7 +32,7 @@ export default function save( props ) {
 
 	const CustomTag = `${ tag }`;
 
-	const top_divider_html = topType != 'none' && (
+	const topDividerHtml = topType != 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -48,7 +48,7 @@ export default function save( props ) {
 		</div>
 	);
 
-	const bottom_divider_html = bottomType != 'none' && (
+	const bottomDividerHtml = bottomType != 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -65,9 +65,9 @@ export default function save( props ) {
 		</div>
 	);
 
-	const reverse_tablet = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
+	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
 
-	const reverse_mobile = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
+	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
 
 	return (
 		<CustomTag
@@ -79,14 +79,14 @@ export default function save( props ) {
 				`uagb-columns__valign-${ vAlign }`,
 				`uagb-columns__gap-${ columnGap }`,
 				`align${ align }`,
-				reverse_tablet,
-				reverse_mobile,
+				reverseTabletClass,
+				reverseMobileClass,
 				`uagb-block-${ block_id }`,
 				`uagb-columns__columns-${ columns }`
 			) }
 		>
 			<div className="uagb-columns__overlay"></div>
-			{ top_divider_html }
+			{ topDividerHtml }
 			{ 'video' == backgroundType && (
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
@@ -100,7 +100,7 @@ export default function save( props ) {
 				</div>
 			) }
 			<InnerBlocks.Content />
-			{ bottom_divider_html }
+			{ bottomDividerHtml }
 		</CustomTag>
 	);
 }
