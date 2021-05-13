@@ -1,5 +1,6 @@
 module.exports = {
 	extends: [ 'plugin:@wordpress/eslint-plugin/recommended' ],
+	"ignorePatterns": ["deprecated.js"],
 	rules: {
 		'camelcase': 'off',
 	},
