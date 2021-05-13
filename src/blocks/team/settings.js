@@ -215,18 +215,19 @@ const Settings = ( props ) => {
 		);
 	}
 
-	return (
-		<>
-			{ imgPosition == 'above' && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( value ) =>
-							setAttributes( { align: value } )
-						}
-					/>
-				</BlockControls>
-			) }
+	const getBlockControls = () => {
+		return (
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ align }
+					onChange={ ( value ) => setAttributes( { align: value } ) }
+				/>
+			</BlockControls>
+		);
+	}
+
+	const getInspectorControls = () => {
+		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Image' ) }>
 					<BaseControl
@@ -983,8 +984,7 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-				></PanelColorSettings>
-
+				/>
 				<PanelBody
 					title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
@@ -1108,11 +1108,24 @@ const Settings = ( props ) => {
 					) }
 				</PanelBody>
 			</InspectorControls>
+		);
+	}
+
+	const getFontSettings = () => {
+		return (
 			<Suspense fallback={ lazyLoader() }>
 				{ loadTitleGoogleFonts }
 				{ loadPrefixGoogleFonts }
 				{ loadDescGoogleFonts }
 			</Suspense>
+		);
+	}
+
+	return (
+		<>
+			{ imgPosition == 'above' && getBlockControls() }
+			{ getInspectorControls() }
+			{ getFontSettings() }
 		</>
 	);
 };
