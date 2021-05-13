@@ -300,14 +300,16 @@ array_multisort(
 					</h2>
 					<div class="inside">
 						<p>
-							<?php esc_html_e( 'Turn-on Beta Updates, to get notified when a new beta version of Ultimate Addons for Gutenberg is available. The Beta version will not install automatically. You always have the option to ignore it.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.', 'ultimate-addons-for-gutenberg' ); ?>
+							<br><br>
+							<?php esc_html_e( 'The beta version will not install automatically. You will always have the option to ignore it.', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
 						<button class="button uag-beta-updates" data-value="<?php echo esc_attr( $value ); ?>" >
 							<?php echo esc_html( $beta_updates_button_text ); ?>
 						</button>
 
 						<p>
-							<?php esc_html_e( 'Please Note: We do not recommend updating to a beta version on production sites.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Note: We do not recommend updating to a beta version on production site.', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
 					</div>
 				</div>
