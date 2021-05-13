@@ -388,23 +388,27 @@ const Settings = ( props ) => {
 		);
 	}
 
+	const getBlockControls = () => {
+		return (
+			<BlockControls>
+				<ToolbarGroup>
+					<MediaReplaceFlow
+						mediaURL={ lottieURl }
+						allowedTypes={ [ 'application/json' ] }
+						accept={ [ 'application/json' ] }
+						onSelectURL={ ( value ) =>
+							setAttributes( { lottieURl: value } )
+						}
+						onSelect={ onSelectLottieJSON }
+					/>
+				</ToolbarGroup>
+			</BlockControls>
+		);
+	};
+
 	return (
 		<>
-			{ validJsonPath === 'valid' && (
-				<BlockControls>
-					<ToolbarGroup>
-						<MediaReplaceFlow
-							mediaURL={ lottieURl }
-							allowedTypes={ [ 'application/json' ] }
-							accept={ [ 'application/json' ] }
-							onSelectURL={ ( value ) =>
-								setAttributes( { lottieURl: value } )
-							}
-							onSelect={ onSelectLottieJSON }
-						/>
-					</ToolbarGroup>
-				</BlockControls>
-			) }
+			{ validJsonPath === 'valid' && getBlockControls() }
 			<InspectorControls>
 				{ controlsSettings }
 				{ styleSettings }
