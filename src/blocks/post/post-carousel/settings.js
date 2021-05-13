@@ -1,7 +1,12 @@
-import React from 'react';
-
-import WebfontLoader from '../../../components/typography/fontloader';
+import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
+import lazyLoader from '@Controls/lazy-loader';
+
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-carousel/fontloader" */ '../../../components/typography/fontloader'
+	)
+);
 
 const { BlockAlignmentToolbar, BlockControls } = wp.blockEditor;
 
@@ -113,7 +118,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ inspectorControls }
 			<BlockControls>
 				<BlockAlignmentToolbar
@@ -129,7 +134,7 @@ const Settings = ( props ) => {
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</>
+		</Suspense>
 	);
 };
 
