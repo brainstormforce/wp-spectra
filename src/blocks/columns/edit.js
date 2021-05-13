@@ -5,7 +5,6 @@
 // Import classes
 
 import styling from './styling';
-import map from 'lodash/map';
 import UAGB_Block_Icons from "@Controls/block-icons"
 import { __ } from '@wordpress/i18n';
 
@@ -77,8 +76,8 @@ const columnsComponent = ( props ) => {
 	};
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-		return map(
-			innerBlocksTemplate,
+		
+		return innerBlocksTemplate.map(
 			( [ name, attributes, innerBlocks = [] ] ) =>
 				createBlock(
 					name,

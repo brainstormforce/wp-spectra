@@ -4,15 +4,10 @@
 
 import classnames from 'classnames';
 import shapes from './shapes';
-import memoize from 'memize';
-import times from 'lodash/times';
+import React, { useMemo } from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 const { InnerBlocks } = wp.blockEditor;
-
-const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, ( n ) => [ 'uagb/column', { id: n + 1 } ] );
-} );
 
 const Render = props => {
 
@@ -36,6 +31,19 @@ const Render = props => {
 		topContentAboveShape,
 		bottomContentAboveShape,
 	} = attributes;
+
+	const getColumnsTemplate = useMemo( () => {
+
+		let childColumns = [];
+
+		for ( var i = 0; i < columns; i++ ) {
+
+			childColumns.push( [ 'uagb/column', { id: i + 1 } ] ); 
+		}
+
+		return childColumns;
+
+	}, [ columns ] );
 
 	const topDividerHtml = topType != 'none' && (
 		<div
@@ -111,7 +119,7 @@ const Render = props => {
 				</div>
 			) }
 			<InnerBlocks
-				template={ getColumnsTemplate( columns ) }
+				template={ getColumnsTemplate }
 				templateLock="all"
 				allowedBlocks={ ALLOWED_BLOCKS }
 			/>
