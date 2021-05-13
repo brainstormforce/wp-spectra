@@ -290,8 +290,9 @@ class UAGB_Init_Blocks {
 	 */
 	public function block_assets() {
 
-		if ( false === UAGB_Frontend::$uag_flag ) {
-			return;
+		/* In editor, we don't check uag-flag condition */
+		if ( ! is_admin() && false === UAGB_Frontend::$uag_flag ) {
+				return;
 		}
 
 		if ( is_rtl() ) {
