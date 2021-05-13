@@ -7,8 +7,8 @@ import BoxShadowControl from '../../components/box-shadow';
 import GradientSettings from '../../components/gradient-settings';
 import Columnresponsive from '../../components/typography/column-responsive';
 import UAGB_Block_Icons from "@Controls/block-icons"
-import propsContext from './edit';
 import { __ } from '@wordpress/i18n';
+
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -29,8 +29,9 @@ const {
 	Dashicon,
 } = wp.components;
 
-export default function columnsSettings( props ) {
-	const { attributes, setAttributes, deviceType } = props;
+const Settings = props => {
+
+	const { attributes, setAttributes, deviceType } = props.parentProps;
 
 	const {
 		stack,
@@ -114,7 +115,7 @@ export default function columnsSettings( props ) {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { backgroundImage: null } );
 	};
@@ -123,7 +124,7 @@ export default function columnsSettings( props ) {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
@@ -141,7 +142,7 @@ export default function columnsSettings( props ) {
 	 * Event to set Video as null while removing.
 	 */
 	const onRemoveVideo = () => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { backgroundVideo: null } );
 	};
@@ -150,7 +151,7 @@ export default function columnsSettings( props ) {
 	 * Event to set Video while adding.
 	 */
 	const onSelectVideo = ( media ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundVideo: null } );
@@ -254,7 +255,7 @@ export default function columnsSettings( props ) {
 					] }
 				/>
 				{ contentWidth == 'custom' && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -303,7 +304,7 @@ export default function columnsSettings( props ) {
 								setAttributes( { width: value } )
 							}
 						/>
-					</Fragment>
+					</>
 				) }
 				<OptionSelectorControl
 					label={ __(
@@ -458,7 +459,7 @@ export default function columnsSettings( props ) {
 			<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
 				<Columnresponsive />
 				{ 'Desktop' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -538,10 +539,10 @@ export default function columnsSettings( props ) {
 							max={ '%' == desktopPaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Tablet' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -621,10 +622,10 @@ export default function columnsSettings( props ) {
 							max={ '%' == tabletPaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Mobile' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -704,12 +705,12 @@ export default function columnsSettings( props ) {
 							max={ '%' == mobilePaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				<hr className="uagb-editor__separator" />
 				<Columnresponsive />
 				{ 'Desktop' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __( 'Size Type' ) }
@@ -764,10 +765,10 @@ export default function columnsSettings( props ) {
 							max={ 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Tablet' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -828,10 +829,10 @@ export default function columnsSettings( props ) {
 							max={ 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Mobile' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -892,7 +893,7 @@ export default function columnsSettings( props ) {
 							max={ 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 			</PanelBody>
 		);
@@ -951,7 +952,7 @@ export default function columnsSettings( props ) {
 					] }
 				/>
 				{ 'color' == backgroundType && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __(
 								'Background Color',
@@ -973,10 +974,10 @@ export default function columnsSettings( props ) {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'image' == backgroundType && (
-					<Fragment>
+					<>
 						<BaseControl
 							className="editor-bg-image-control"
 							label={ __(
@@ -1021,7 +1022,7 @@ export default function columnsSettings( props ) {
 							) }
 						</BaseControl>
 						{ backgroundImage && (
-							<Fragment>
+							<>
 								<SelectControl
 									label={ __(
 										'Image Position',
@@ -1204,7 +1205,7 @@ export default function columnsSettings( props ) {
 										},
 									] }
 								/>
-								<Fragment>
+								<>
 									<p className="uagb-setting-label">
 										{ __(
 											'Image Overlay Color',
@@ -1228,18 +1229,18 @@ export default function columnsSettings( props ) {
 										}
 										allowReset
 									/>
-								</Fragment>
-							</Fragment>
+								</>
+							</>
 						) }
-					</Fragment>
+					</>
 				) }
 				{ 'gradient' == backgroundType && (
-					<Fragment>
+					<>
 						<GradientSettings
 							attributes={ attributes }
 							setAttributes={ setAttributes }
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'video' == backgroundType && (
 					<BaseControl
@@ -1304,7 +1305,7 @@ export default function columnsSettings( props ) {
 					/>
 				) }
 				{ 'video' == backgroundType && backgroundVideo && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __(
 								'Video Overlay Color',
@@ -1328,7 +1329,7 @@ export default function columnsSettings( props ) {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'video' == backgroundType && backgroundVideo && (
 					<RangeControl
@@ -1447,7 +1448,7 @@ export default function columnsSettings( props ) {
 		];
 
 		const topSettings = (
-			<Fragment>
+			<>
 				<SelectControl
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					value={ topType }
@@ -1457,7 +1458,7 @@ export default function columnsSettings( props ) {
 					options={ dividers }
 				/>
 				{ topType != 'none' && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
@@ -1608,13 +1609,13 @@ export default function columnsSettings( props ) {
 								} )
 							}
 						/>
-					</Fragment>
+					</>
 				) }
-			</Fragment>
+			</>
 		);
 
 		const bottomSettings = (
-			<Fragment>
+			<>
 				<SelectControl
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					value={ bottomType }
@@ -1624,7 +1625,7 @@ export default function columnsSettings( props ) {
 					options={ dividers }
 				/>
 				{ bottomType != 'none' && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
@@ -1775,9 +1776,9 @@ export default function columnsSettings( props ) {
 								} )
 							}
 						/>
-					</Fragment>
+					</>
 				) }
-			</Fragment>
+			</>
 		);
 
 		return (
@@ -1930,7 +1931,7 @@ export default function columnsSettings( props ) {
 					allowReset
 				/>
 				{ 'none' != borderStyle && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __(
 								'Border Color',
@@ -1950,7 +1951,7 @@ export default function columnsSettings( props ) {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				<BoxShadowControl
 					setAttributes={ setAttributes }
@@ -2009,3 +2010,5 @@ export default function columnsSettings( props ) {
 		</>
 	);
 }
+
+export default React.memo( Settings );

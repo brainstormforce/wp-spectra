@@ -26,9 +26,8 @@ const {
 	Dashicon,
 } = wp.components;
 
-const { Fragment } = wp.element;
+const Settings = props => {
 
-export default function columnSettings( props ) {
 	const {
 		attributes: {
 			topPadding,
@@ -72,13 +71,13 @@ export default function columnSettings( props ) {
 		},
 		setAttributes,
 		deviceType,
-	} = props;
+	} = props.parentProps;
 
 	/*
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { backgroundImage: null } );
 	};
@@ -87,7 +86,7 @@ export default function columnSettings( props ) {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
@@ -198,7 +197,7 @@ export default function columnSettings( props ) {
 			>
 				<Columnresponsive />
 				{ 'Desktop' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -280,10 +279,10 @@ export default function columnSettings( props ) {
 							max={ '%' == desktopPaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Tablet' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __(
@@ -363,10 +362,10 @@ export default function columnSettings( props ) {
 							max={ '%' == tabletPaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'Mobile' === deviceType && (
-					<Fragment>
+					<>
 						<ButtonGroup
 							className="uagb-size-type-field"
 							aria-label={ __( 'Size Type' ) }
@@ -443,7 +442,7 @@ export default function columnSettings( props ) {
 							max={ '%' == mobilePaddingType ? 100 : 2000 }
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 			</PanelBody>
 		);
@@ -496,7 +495,7 @@ export default function columnSettings( props ) {
 					] }
 				/>
 				{ 'color' == backgroundType && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __(
 								'Background Color',
@@ -518,10 +517,10 @@ export default function columnSettings( props ) {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 				{ 'image' == backgroundType && (
-					<Fragment>
+					<>
 						<BaseControl
 							className="editor-bg-image-control"
 							label={ __(
@@ -566,7 +565,7 @@ export default function columnSettings( props ) {
 							) }
 						</BaseControl>
 						{ backgroundImage && (
-							<Fragment>
+							<>
 								<SelectControl
 									label={ __(
 										'Image Position',
@@ -776,7 +775,7 @@ export default function columnSettings( props ) {
 									] }
 								/>
 								{ 'color' == overlayType && (
-									<Fragment>
+									<>
 										<p className="uagb-setting-label">
 											{ __(
 												'Image Overlay Color',
@@ -800,11 +799,11 @@ export default function columnSettings( props ) {
 											}
 											allowReset
 										/>
-									</Fragment>
+									</>
 								) }
 
 								{ 'gradient' == overlayType && (
-									<Fragment>
+									<>
 										<PanelColorSettings
 											title={ __(
 												'Color Settings',
@@ -908,19 +907,19 @@ export default function columnSettings( props ) {
 											max={ 360 }
 											allowReset
 										/>
-									</Fragment>
+									</>
 								) }
-							</Fragment>
+							</>
 						) }
-					</Fragment>
+					</>
 				) }
 				{ 'gradient' == backgroundType && (
-					<Fragment>
+					<>
 						<GradientSettings
-							attributes={ props.attributes }
+							attributes={ props.parentProps.attributes }
 							setAttributes={ setAttributes }
 						/>
-					</Fragment>
+					</>
 				) }
 				{ ( 'color' == backgroundType ||
 					( 'image' == backgroundType && backgroundImage ) ||
@@ -1051,7 +1050,7 @@ export default function columnSettings( props ) {
 					allowReset
 				/>
 				{ 'none' != borderStyle && (
-					<Fragment>
+					<>
 						<p className="uagb-setting-label">
 							{ __(
 								'Border Color',
@@ -1071,7 +1070,7 @@ export default function columnSettings( props ) {
 							}
 							allowReset
 						/>
-					</Fragment>
+					</>
 				) }
 			</PanelBody>
 		);
@@ -1086,3 +1085,5 @@ export default function columnSettings( props ) {
 		</InspectorControls>
 	);
 }
+
+export default React.memo( Settings );

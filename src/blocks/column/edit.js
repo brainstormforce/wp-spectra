@@ -3,13 +3,20 @@
  */
 
 import styling from './styling';
-import columnSettings from './settings';
-import renderColumn from './render';
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/column/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/column/render" */ './render' )
+);
 
 const { withSelect } = wp.data;
 
 const columnComponent = ( props ) => {
+	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -40,8 +47,10 @@ const columnComponent = ( props ) => {
 
 	return (
 		<>
-			{ columnSettings( props ) }
-			{ renderColumn( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

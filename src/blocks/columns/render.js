@@ -13,8 +13,10 @@ const { InnerBlocks } = wp.blockEditor;
 const getColumnsTemplate = memoize( ( columns ) => {
 	return times( columns, ( n ) => [ 'uagb/column', { id: n + 1 } ] );
 } );
-export default function renderColumns( props ) {
-	const { attributes, isSelected, className, deviceType } = props;
+
+const Render = props => {
+
+	const { attributes, isSelected, className, deviceType } = props.parentProps;
 
 	const {
 		stack,
@@ -90,7 +92,7 @@ export default function renderColumns( props ) {
 				`align${ align }`,
 				reverse_tablet,
 				reverse_mobile,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,
 				`uagb-columns__columns-${ columns }`
 			) }
 		>
@@ -117,3 +119,5 @@ export default function renderColumns( props ) {
 		</CustomTag>
 	);
 }
+
+export default React.memo( Render );

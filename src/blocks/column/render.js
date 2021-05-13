@@ -6,13 +6,14 @@ import classnames from 'classnames';
 
 const { InnerBlocks } = wp.blockEditor;
 
-export default function renderColumn( props ) {
+const Render = props  => {
+
 	const {
 		attributes: { align, backgroundType, alignMobile, alignTablet },
 		deviceType,
 		isSelected,
 		className,
-	} = props;
+	} = props.parentProps;
 
 	const active = isSelected ? 'active' : 'not-active';
 
@@ -35,7 +36,7 @@ export default function renderColumn( props ) {
 					align_class_mobile,
 					align_class_tablet,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+					`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`
 				) }
 			>
 				<div className="uagb-column__overlay"></div>
@@ -44,3 +45,5 @@ export default function renderColumn( props ) {
 		</>
 	);
 }
+
+export default React.memo( Render );

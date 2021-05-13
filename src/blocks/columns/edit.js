@@ -7,10 +7,17 @@
 import styling from './styling';
 import map from 'lodash/map';
 import UAGB_Block_Icons from "@Controls/block-icons"
-import columnsSettings from './settings';
-import renderColumns from './render';
-import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
+
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/render" */ './render' )
+);
 
 const { withSelect, useDispatch } = wp.data;
 
@@ -103,8 +110,10 @@ const columnsComponent = ( props ) => {
 
 	return (
 		<>
-			{ columnsSettings( props ) }
-			{ renderColumns( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
