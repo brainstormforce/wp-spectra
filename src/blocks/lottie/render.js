@@ -2,11 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 
-const Lottie = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/lottie/react-lottie" */ 'react-lottie'
-	)
-);
+import Lottie from 'react-lottie';
 
 const Render = ( props ) => {
 	const { lottieplayer } = props;
