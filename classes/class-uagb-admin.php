@@ -73,20 +73,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					exit();
 				}
 			}
-
-			$blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
-
-			// We have removed the option to activate/deactivate the Info box Block so to handle backward compatibility for the users who may have deactivated the Info Box block we are activating the block for them.
-
-			// We can remove this code after 2-3 releases.
-
-			if ( 'disabled' === $blocks['info-box'] ) {
-
-				$blocks['info-box'] = 'info-box';
-				// Update blocks.
-				UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
-				UAGB_Admin_Helper::create_specific_stylesheet();
-			}
 		}
 
 		/**
