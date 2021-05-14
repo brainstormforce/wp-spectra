@@ -319,11 +319,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks              = array_map( 'esc_attr', $blocks );
 
 			if ( 'how-to' === $block_id ) {
-				foreach ( $blocks as $slug => $value ) {
-					if ( 'info-box' === $slug && 'info-box' !== $value ) {
-						$blocks[ $slug ] = $slug;
-						$blocks          = array_map( 'esc_attr', $blocks );
-					}
+				if ( 'disabled' === $blocks['info-box'] ) {
+					$blocks['info-box'] = 'info-box';
+					$blocks             = array_map( 'esc_attr', $blocks );
 				}
 			}
 
@@ -347,12 +345,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks              = array_map( 'esc_attr', $blocks );
 
 			if ( 'info-box' === $block_id ) {
-				foreach ( $blocks as $slug => $value ) {
-					if ( 'how-to' === $slug && 'how-to' === $value ) {
-							$blocks[ $block_id ] = 'info-box';
-							$blocks              = array_map( 'esc_attr', $blocks );
+				if ( 'how-to' === $blocks['how-to'] ) {
+						$blocks['info-box'] = 'info-box';
+						$blocks             = array_map( 'esc_attr', $blocks );
 
-					}
 				}
 			}
 
