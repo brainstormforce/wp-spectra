@@ -102,7 +102,7 @@ class UAGB_Rollback {
 			}
 
 			h1 {
-				background: #D30C5C;
+				background: rgb(74, 0, 224);
 				text-align: center;
 				color: #fff !important;
 				padding: 70px !important;
@@ -174,7 +174,7 @@ class UAGB_Rollback {
 	/**
 	 * Run.
 	 *
-	 * UAGB_Rollback Elementor to previous versions.
+	 * Rollback UAG to previous versions.
 	 *
 	 * @since x.x.x
 	 * @access public

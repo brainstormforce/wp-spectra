@@ -340,7 +340,7 @@ array_multisort(
 						<select class="uagb-rollback-select">
 							<?php
 
-								$uag_versions = UAGB_Loader::get_instance()->get_rollback_versions();
+								$uag_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
 
 							foreach ( $uag_versions as $version ) {
 								?>

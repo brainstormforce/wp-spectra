@@ -290,6 +290,68 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
+		/**
+		 * Get Rollback versions.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 * @access public
+		 */
+		public function get_rollback_versions() {
+
+			$rollback_versions = get_transient( 'uag_rollback_versions_' . UAGB_VER );
+
+			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
+
+				$max_versions = 30;
+
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+				$plugin_information = plugins_api(
+					'plugin_information',
+					array(
+						'slug' => 'ultimate-addons-for-gutenberg',
+					)
+				);
+
+				if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+					return array();
+				}
+
+				krsort( $plugin_information->versions );
+
+				$rollback_versions = array();
+
+				$current_index = 0;
+
+				foreach ( $plugin_information->versions as $version => $download_link ) {
+
+					if ( $max_versions <= $current_index ) {
+						break;
+					}
+
+					$lowercase_version = strtolower( $version );
+
+					$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+
+					if ( ! $is_valid_rollback_version ) {
+						continue;
+					}
+
+					if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+						continue;
+					}
+
+					$current_index++;
+					$rollback_versions[] = $version;
+				}
+
+				set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions, WEEK_IN_SECONDS );
+			}
+
+			return $rollback_versions;
+		}
+
 	}
 
 	/**
