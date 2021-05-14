@@ -68,14 +68,14 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @access public
 		 *
 		 * @param string $content       The post content to extract headings from.
-		 * @param int    $mappingHeadersArray The page of the post where the headings are
+		 * @param int    $mapping_headers_array The page of the post where the headings are
 		 *                              located.
 		 *
 		 * @return array The list of headings.
 		 */
 		public function table_of_contents_get_headings_from_content(
 			$content,
-			$mappingHeadersArray
+			$mapping_headers_array
 		) {
 
 			/* phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase */
@@ -139,7 +139,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			);
 
 			return array_map(
-				function ( $heading ) use ( $mappingHeadersArray ) {
+				function ( $heading ) use ( $mapping_headers_array ) {
 
 					$exclude_heading = null;
 
@@ -154,9 +154,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 					if ( 'uagb-toc-hide-heading' !== $exclude_heading ) {
 
-						foreach ( $mappingHeadersArray as $key => $value ) {
+						foreach ( $mapping_headers_array as $key => $value ) {
 
-							if ( $mappingHeadersArray[ $key ] ) {
+							if ( $mapping_headers_array[ $key ] ) {
 
 								$mapping_header = ( $key + 1 );
 							}
@@ -464,7 +464,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @throws WP_Error An exception parsing the block definition.
 		 */
 		public function register_table_of_contents() {
-			$mappingHeadersArray = array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true );
+			$mapping_headers_array = array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true );
 
 					register_block_type(
 						'uagb/table-of-contents',
@@ -560,7 +560,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'mappingHeaders'       => array(
 										'type'    => 'array',
-										'default' => $mappingHeadersArray,
+										'default' => $mapping_headers_array,
 									),
 									// Color.
 									'backgroundColor'      => array(
