@@ -320,7 +320,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( 'how-to' === $block_id && 'disabled' === $blocks['info-box'] ) {
 				$blocks['info-box'] = 'info-box';
-				$blocks             = array_map( 'esc_attr', $blocks );	
+				$blocks             = array_map( 'esc_attr', $blocks );
 			}
 
 			// Update blocks.
