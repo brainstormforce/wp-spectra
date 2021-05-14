@@ -22,6 +22,7 @@ module.exports = {
 		alias: {
 			...defaultConfig.resolve.alias,
 			'@Controls': path.resolve( __dirname, 'blocks-config/uagb-controls/' ),
+			'@Components': path.resolve( __dirname, 'src/components/' ),
 		},
 	},
 	output: {
