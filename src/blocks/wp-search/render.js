@@ -110,7 +110,7 @@ const Render = ( props ) => {
 	};
 
 	return (
-		<>
+
 			<div
 				className={ classnames(
 					'uagb-wp-search__outer-wrap',
@@ -122,7 +122,7 @@ const Render = ( props ) => {
 				{ renderClassic() }
 				{ renderMinimal() }
 			</div>
-		</>
+
 	);
 };
 

@@ -68,8 +68,8 @@ function styling( props ) {
 	}
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const $vInputPaddingDesktop = generateCSSUnit(
 		vinputPaddingDesktop,
@@ -135,10 +135,10 @@ function styling( props ) {
 			boxShadowPositionCSS,
 	};
 
-	let icon_color = textColor;
+	let tmpIconColor = textColor;
 
 	if ( 'undefined' !== typeof iconColor && '' !== iconColor ) {
-		icon_color = iconColor;
+		tmpIconColor = iconColor;
 	}
 	if ( 'px' === inputSizeType ) {
 		boxCSS[ 'max-width' ] = generateCSSUnit( inputSize, inputSizeType );
@@ -182,7 +182,7 @@ function styling( props ) {
 			width: $iconSize,
 			height: $iconSize,
 			'font-size': $iconSize,
-			fill: icon_color,
+			fill: tmpIconColor,
 		},
 	};
 
@@ -233,7 +233,7 @@ function styling( props ) {
 		'background-color': buttonBgHoverColor,
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -265,7 +265,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
@@ -296,26 +296,26 @@ function styling( props ) {
 			),
 		},
 	};
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ block_id }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
