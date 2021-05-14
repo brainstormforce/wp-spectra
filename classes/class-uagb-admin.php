@@ -318,11 +318,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks[ $block_id ] = $block_id;
 			$blocks              = array_map( 'esc_attr', $blocks );
 
-			if ( 'how-to' === $block_id ) {
-				if ( 'disabled' === $blocks['info-box'] ) {
-					$blocks['info-box'] = 'info-box';
-					$blocks             = array_map( 'esc_attr', $blocks );
-				}
+			if ( 'how-to' === $block_id && 'disabled' === $blocks['info-box'] ) {
+				$blocks['info-box'] = 'info-box';
+				$blocks             = array_map( 'esc_attr', $blocks );	
 			}
 
 			// Update blocks.
@@ -344,12 +342,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks[ $block_id ] = 'disabled';
 			$blocks              = array_map( 'esc_attr', $blocks );
 
-			if ( 'info-box' === $block_id ) {
-				if ( 'how-to' === $blocks['how-to'] ) {
+			if ( 'info-box' === $block_id && 'how-to' === $blocks['how-to'] ) {
 						$blocks['info-box'] = 'info-box';
 						$blocks             = array_map( 'esc_attr', $blocks );
-
-				}
 			}
 
 			// Update blocks.
