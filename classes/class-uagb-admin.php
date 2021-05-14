@@ -64,7 +64,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Activation Reset
 		 */
 		public static function activation_redirect() {
-
 			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
 			if ( $do_redirect ) {
 				update_option( '__uagb_do_redirect', false );
