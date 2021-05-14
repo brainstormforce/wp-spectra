@@ -5,22 +5,22 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/wp-search/column-responsive" */ '../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/wp-search/column-responsive" */ '@Components/typography/column-responsive'
 	)
 );
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/wp-search/typography" */ '../../components/typography'
+		/* webpackChunkName: "chunks/wp-search/typography" */ '@Components/typography'
 	)
 );
 const BoxShadowControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/wp-search/box-shadow" */ '../../components/box-shadow'
+		/* webpackChunkName: "chunks/wp-search/box-shadow" */ '@Components/box-shadow'
 	)
 );
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/wp-search/fontloader" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/wp-search/fontloader" */ '@Components/typography/fontloader'
 	)
 );
 

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useCallback } from 'react';
+import React from 'react';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 
@@ -18,16 +18,12 @@ const Render = ( props ) => {
 		buttonText,
 	} = attributes;
 
-	const formPreventDefault = useCallback( ( e ) => {
-		e.preventDefault();
-	} );
-
 	const renderClassic = () => {
 		if ( 'input-button' === layout ) {
 			return (
 				<form
 					className="uagb-search-wrapper"
-					onSubmit={ formPreventDefault }
+					onSubmit={e => e.preventDefault()}
 					role="search"
 					action={ uagb_blocks_info.uagb_home_url }
 					method="get"
@@ -89,7 +85,7 @@ const Render = ( props ) => {
 			return (
 				<form
 					className="uagb-search-wrapper"
-					onSubmit={ formPreventDefault }
+					onSubmit={e => e.preventDefault()}
 					role="search"
 					action={ uagb_blocks_info.uagb_home_url }
 					method="get"
