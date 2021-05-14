@@ -52,6 +52,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @access public
 		 *
+		 * @since x.x.x
 		 * @param int     $post_id Post ID.
 		 * @param object  $post Post object.
 		 * @param boolean $update Whether this is an existing post being updated.
@@ -63,6 +64,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Extracts heading content, id, and level from the given post content.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param string $content       The post content to extract headings from.
@@ -182,6 +184,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Clean up heading content.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param string $string The post content to extract headings from.
@@ -217,6 +220,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * otherwise, returns only data from headings on the current page being
 		 * rendered.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param int  $post_id           Id of the post to extract headings from.
@@ -241,6 +245,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * Converts a flat list of heading parameters to a hierarchical nested list
 		 * based on each header's immediate parent's level.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param array $heading_list Flat list of heading parameters to nest.
@@ -273,6 +278,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Renders the heading list of the UAGB Table Of Contents block.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param array  $nested_heading_list Nested list of heading data.
@@ -360,6 +366,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Renders the UAGB Table Of Contents block.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @param  array    $attributes Block attributes.
@@ -449,6 +456,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Registers the UAGB Table Of Contents block.
 		 *
+		 * @since x.x.x
 		 * @access public
 		 *
 		 * @uses render_block_core_table_of_contents()
