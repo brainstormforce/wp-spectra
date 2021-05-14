@@ -126,13 +126,6 @@ class UAGB_Frontend {
 	public static $gfonts = array();
 
 	/**
-	 * Table of Contents Present on a Page.
-	 *
-	 * @var bool
-	 */
-	public static $table_of_contents_flag = false;
-
-	/**
 	 * Static CSS Added Array
 	 *
 	 * @since x.x.x
@@ -176,7 +169,6 @@ class UAGB_Frontend {
 		add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 
 		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
-		add_filter( 'the_content', array( $this, 'add_table_of_contents_wrapper' ) );
 		add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
 	}
 
@@ -246,11 +238,10 @@ class UAGB_Frontend {
 		}
 
 		// Set required varibled from stored data.
-		self::$current_block_list     = $page_assets['current_block_list'];
-		self::$uag_flag               = $page_assets['uag_flag'];
-		self::$stylesheet             = $page_assets['css'];
-		self::$script                 = $page_assets['js'];
-		self::$table_of_contents_flag = $page_assets['table_of_contents_flag'];
+		self::$current_block_list = $page_assets['current_block_list'];
+		self::$uag_flag           = $page_assets['uag_flag'];
+		self::$stylesheet         = $page_assets['css'];
+		self::$script             = $page_assets['js'];
 
 		return false;
 	}
@@ -292,12 +283,11 @@ class UAGB_Frontend {
 		$post_id = get_the_ID();
 
 		$meta_array = array(
-			'css'                    => self::$stylesheet,
-			'js'                     => self::$script,
-			'current_block_list'     => self::$current_block_list,
-			'uag_flag'               => self::$uag_flag,
-			'table_of_contents_flag' => self::$table_of_contents_flag,
-			'uag_version'            => UAGB_ASSET_VER,
+			'css'                => self::$stylesheet,
+			'js'                 => self::$script,
+			'current_block_list' => self::$current_block_list,
+			'uag_flag'           => self::$uag_flag,
+			'uag_version'        => UAGB_ASSET_VER,
 		);
 
 		update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
@@ -651,8 +641,7 @@ class UAGB_Frontend {
 			case 'uagb/table-of-contents':
 				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-				$js                          .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
-				self::$table_of_contents_flag = true;
+				$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
 				break;
 
 			case 'uagb/faq':
@@ -1134,23 +1123,6 @@ class UAGB_Frontend {
 		}
 
 		return $redirect_url;
-	}
-
-	/**
-	 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
-	 *
-	 * @param string $content Post Content.
-	 *
-	 * @since 1.22.1
-	 */
-	public function add_table_of_contents_wrapper( $content ) {
-
-		if ( true === self::$table_of_contents_flag ) {
-
-			return '<div class="uag-toc__entry-content"></div>' . $content;
-		}
-
-		return $content;
 	}
 
 	/**
