@@ -37,7 +37,7 @@ jobs:
         run: npm run build
 
       - name: Build a package
-        run: npm run build-zip
+        run: bash ./bin/build-zip.sh
 
       - name: Create branch directory
         run: |

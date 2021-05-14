@@ -6,7 +6,7 @@ import classnames from "classnames"
 import styling from "./styling"
 import Lottie from 'react-lottie';
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	InspectorControls,

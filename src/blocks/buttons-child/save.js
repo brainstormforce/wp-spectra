@@ -3,8 +3,9 @@
  */
 
 import classnames from "classnames"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-const { __ } = wp.i18n
+import renderSVG from "@Controls/renderIcon"
+import { __ } from '@wordpress/i18n';
+
 
 const {
 	RichText

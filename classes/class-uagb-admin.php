@@ -46,6 +46,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
 
+			add_action( 'wp_ajax_uagb_file_regeneration', __CLASS__ . '::file_regeneration' );
+
 			// Enqueue admin scripts.
 			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
@@ -315,16 +317,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks              = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 			$blocks[ $block_id ] = $block_id;
 			$blocks              = array_map( 'esc_attr', $blocks );
-			
-			if( 'how-to' === $block_id ){
+
+			if ( 'how-to' === $block_id ) {
 				foreach ( $blocks as $slug => $value ) {
-					if('info-box' === $slug && 'info-box' !== $value){
+					if ( 'info-box' === $slug && 'info-box' !== $value ) {
 						$blocks[ $slug ] = $slug;
-						$blocks    = array_map( 'esc_attr', $blocks );
+						$blocks          = array_map( 'esc_attr', $blocks );
 					}
 				}
 			}
-			
+
 			// Update blocks.
 			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Admin_Helper::create_specific_stylesheet();
@@ -344,17 +346,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks[ $block_id ] = 'disabled';
 			$blocks              = array_map( 'esc_attr', $blocks );
 
-			if( 'info-box' === $block_id ){
+			if ( 'info-box' === $block_id ) {
 				foreach ( $blocks as $slug => $value ) {
-					if('how-to' === $slug && 'how-to' === $value){
+					if ( 'how-to' === $slug && 'how-to' === $value ) {
 							$blocks[ $block_id ] = 'info-box';
 							$blocks              = array_map( 'esc_attr', $blocks );
-						
+
 					}
 				}
 			}
-			
-			
+
 			// Update blocks.
 			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Admin_Helper::create_specific_stylesheet();
@@ -450,17 +451,53 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			if ( 'disabled' === $_POST['value'] ) {
-				UAGB_Helper::get_instance()->delete_upload_dir();
+				UAGB_Helper::delete_upload_dir();
 			}
 
 			wp_send_json_success(
 				array(
 					'success' => true,
-					'message' => update_option( '_uagb_allow_file_generation', $_POST['value'] ),
+					'message' => update_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) ),
 				)
 			);
 		}
 
+		/**
+		 * File Regeneration Flag
+		 *
+		 * @since x.x.x
+		 */
+		public static function file_regeneration() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Access Denied. You don\'t have enough capabilities to execute this action.', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			global $wpdb;
+
+			$file_generation = UAGB_Helper::allow_file_generation();
+
+			if ( 'enabled' === $file_generation ) {
+
+				UAGB_Helper::delete_all_uag_dir_files();
+			}
+
+			/* Update the asset version */
+			update_option( '__uagb_asset_version', time() );
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+				)
+			);
+		}
 		/**
 		 * Required Plugin Activate
 		 *

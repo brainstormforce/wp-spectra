@@ -8,14 +8,15 @@ import AuthorText from "./components/AuthorText"
 import AuthorImage from "./components/AuthorImage"
 import styling from "./styling"
 import map from "lodash/map"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 const {
 	AlignmentToolbar,

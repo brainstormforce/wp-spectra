@@ -290,3 +290,8 @@
 .uagb-reusable-block-link > span {
 	vertical-align: text-top;
 }
+.uag-file-permissions-notice {
+	background: #dcdcdead;
+    margin-bottom: 15px;
+    padding: 5px;
+}

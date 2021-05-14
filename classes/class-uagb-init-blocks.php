@@ -290,45 +290,15 @@ class UAGB_Init_Blocks {
 	 */
 	public function block_assets() {
 
-		if ( ! is_admin() ) {
-
-			if ( class_exists( 'WooCommerce' ) ) {
-
-				if ( false === UAGB_Helper::$uag_flag ) {
-					return;
-				}
-			} else {
-
-				$post = get_post();
-
-				/**
-				 * Filters the post to build stylesheet for.
-				 *
-				 * @param \WP_Post $post The global post.
-				 */
-				$post = apply_filters( 'uagb_post_for_stylesheet', $post );
-
-				if ( false === has_blocks( $post ) ) {
-					return;
-				}
-
-				if ( false === UAGB_Helper::$uag_flag ) {
-					return;
-				}
-			}
+		/* In editor, we don't check uag-flag condition */
+		if ( ! is_admin() && false === UAGB_Frontend::$uag_flag ) {
+				return;
 		}
-
-		wp_enqueue_style(
-			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
-			array(),
-			UAGB_VER
-		);
 
 		if ( is_rtl() ) {
 			wp_enqueue_style(
 				'uagb-style-rtl', // Handle.
-				UAGB_URL . 'dist/blocks.style.rtl.css', // RTL style CSS.
+				UAGB_URL . 'assets/css/style-blocks.rtl.css', // RTL style CSS.
 				array(),
 				UAGB_VER
 			);
@@ -420,12 +390,22 @@ class UAGB_Init_Blocks {
 	public function editor_assets() {
 
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
+
+		$script_dep_path = UAGB_DIR . 'dist/blocks.asset.php';
+		$script_info     = file_exists( $script_dep_path )
+			? include $script_dep_path
+			: array(
+				'dependencies' => array(),
+				'version'      => UAGB_VER,
+			);
+		$script_dep      = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ) );
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
-			UAGB_URL . 'dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ), // Dependencies, defined above.
-			UAGB_VER,
+			UAGB_URL . 'dist/blocks.js',
+			$script_dep, // Dependencies, defined above.
+			$script_info['version'], // UAGB_VER.
 			true // Enqueue the script in the footer.
 		);
 
@@ -434,7 +414,7 @@ class UAGB_Init_Blocks {
 		// Styles.
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.
-			UAGB_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
+			UAGB_URL . 'dist/blocks.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
@@ -442,12 +422,28 @@ class UAGB_Init_Blocks {
 		// Common Editor style.
 		wp_enqueue_style(
 			'uagb-block-common-editor-css', // Handle.
-			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
+			UAGB_URL . 'admin/assets/common-block-editor.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
-		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'dist/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
+		if ( file_exists( UAGB_DIR . 'assets/css/custom-style-blocks.css' ) ) {
+			wp_enqueue_style(
+				'uagb-block-css', // Handle.
+				UAGB_URL . 'assets/css/custom-style-blocks.css', // Block style CSS.
+				array(),
+				UAGB_VER
+			);
+		} else {
+			wp_enqueue_style(
+				'uagb-block-css', // Handle.
+				UAGB_URL . 'dist/style-blocks.css', // Block style CSS.
+				array(),
+				UAGB_VER
+			);
+		}
+
+		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'admin/assets/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
 		$blocks       = array();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );

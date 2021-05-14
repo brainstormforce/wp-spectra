@@ -58,25 +58,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		}
 
 		/**
-		 * Loads Other files.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @return void
-		 */
-		public function loader() {
-			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-update.php';
-			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
-			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-
-			if ( 'twentyseventeen' === get_template() ) {
-				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
-			}
-		}
-
-		/**
 		 * Defines all constants
 		 *
 		 * @since 1.0.0
@@ -85,7 +66,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.22.3' );
+			define( 'UAGB_VER', '1.22.4' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -97,6 +78,24 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( ! defined( 'UAGB_MOBILE_BREAKPOINT' ) ) {
 				define( 'UAGB_MOBILE_BREAKPOINT', '767' );
 			}
+
+			define( 'UAGB_ASSET_VER', get_option( '__uagb_asset_version', UAGB_VER ) );
+		}
+
+		/**
+		 * Loads Other files.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
+		public function loader() {
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
+			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
+			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
 		}
 
 		/**
@@ -112,15 +111,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
-			require_once UAGB_DIR . 'dist/blocks/post/class-uagb-post.php';
-			require_once UAGB_DIR . 'dist/blocks/post-timeline/class-uagb-post-timeline.php';
-			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
-			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
-			require_once UAGB_DIR . 'dist/blocks/taxonomy-list/class-uagb-taxonomy-list.php';
-			require_once UAGB_DIR . 'dist/blocks/table-of-content/class-uagb-table-of-content.php';
-			require_once UAGB_DIR . 'dist/blocks/forms/class-uagb-forms.php';
-			require_once UAGB_DIR . 'dist/blocks/lottie/class-uagb-lottie.php';
+			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 
+			if ( 'twentyseventeen' === get_template() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
+			}
 		}
 
 		/**
@@ -185,6 +180,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function activation_reset() {
 			update_option( '__uagb_do_redirect', true );
+			update_option( '__uagb_asset_version', time() );
 		}
 
 		/**

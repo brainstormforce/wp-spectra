@@ -2,8 +2,8 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSS from "@Controls/generateCSS"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -48,6 +48,10 @@ function styling( props ) {
 		}
 
 		tablet_selectors[" .block-editor-block-list__layout"] = {
+			"flex-direction": "column"
+		}
+
+		mobile_selectors[" .block-editor-block-list__layout"] = {
 			"flex-direction": "column"
 		}
 
@@ -104,9 +108,9 @@ function styling( props ) {
 	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	var styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
 
 	return styling_css
