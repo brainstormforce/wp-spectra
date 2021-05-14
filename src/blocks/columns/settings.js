@@ -1,13 +1,24 @@
 /**
  * BLOCK: Columns - Settings.
  */
-
-import OptionSelectorControl from '../../components/option-selector-control';
-import BoxShadowControl from '../../components/box-shadow';
-import GradientSettings from '../../components/gradient-settings';
-import Columnresponsive from '../../components/typography/column-responsive';
 import UAGB_Block_Icons from "@Controls/block-icons"
 import { __ } from '@wordpress/i18n';
+
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const GradientSettings = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/gradient-settings" */ '../../components/gradient-settings' )
+);
+const Columnresponsive = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/column-responsive" */ '../../components/typography/column-responsive' )
+);
+const OptionSelectorControl = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/option-selector-control" */ '../../components/option-selector-control' )
+);
+const BoxShadowControl = lazy( () =>
+	import( /* webpackChunkName: "chunks/columns/box-shadow" */ '../../components/box-shadow' )
+);
 
 const {
 	BlockControls,
@@ -1998,7 +2009,7 @@ const Settings = props => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControlSettings() }
 			<InspectorControls>
 				{ layoutSettings() }
@@ -2007,7 +2018,7 @@ const Settings = props => {
 				{ shapeDividersSettings() }
 				{ borderSettings() }
 			</InspectorControls>
-		</>
+		</Suspense>
 	);
 }
 

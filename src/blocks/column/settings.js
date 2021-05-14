@@ -3,8 +3,15 @@
  */
 
 import UAGB_Block_Icons from "@Controls/block-icons"
-import GradientSettings from '../../components/gradient-settings';
-import Columnresponsive from '../../components/typography/column-responsive';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const GradientSettings = lazy( () =>
+	import( /* webpackChunkName: "chunks/column/gradient-settings" */ '../../components/gradient-settings' )
+);
+const Columnresponsive = lazy( () =>
+	import( /* webpackChunkName: "chunks/column/column-responsive" */ '../../components/typography/column-responsive' )
+);
 
 const { __ } = wp.i18n;
 
@@ -1077,12 +1084,14 @@ const Settings = props => {
 	};
 
 	return (
-		<InspectorControls>
-			{ layoutSettings() }
-			{ spacingSettings() }
-			{ backgroundSettings() }
-			{ borderSettings() }
-		</InspectorControls>
+		<Suspense fallback={ lazyLoader() }>
+			<InspectorControls>
+				{ layoutSettings() }
+				{ spacingSettings() }
+				{ backgroundSettings() }
+				{ borderSettings() }
+			</InspectorControls>
+		</Suspense>
 	);
 }
 
