@@ -62,6 +62,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
 
 			add_action( 'admin_post_uag_rollback', array( __CLASS__, 'post_uagb_rollback' ) );
+
+			add_action( 'admin_footer', array( __CLASS__, 'rollback_version_popup' ) );
+
 		}
 
 		/**
@@ -600,6 +603,21 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'response' => 200,
 				)
 			);
+		}
+		/**
+		 * UAG version rollback popup.
+		 *
+		 * Rollback to previous UAG version Popup.
+		 *
+		 * Fired by `admin_post_uag_rollback` action.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function rollback_version_popup() {
+
+			$current_screen = get_current_screen();
+
 		}
 	}
 
