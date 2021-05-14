@@ -618,6 +618,23 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			$current_screen = get_current_screen();
 
+			if ( 'settings_page_uag' !== $current_screen->id ) {
+				return;
+			}
+			
+			?>
+			<div class="uagb-confirm-rollback-popup">
+				<div class="uagb-confirm-rollback-popup-overlay"></div>
+				<div class="uagb-confirm-rollback-popup-content">
+					<div class="uagb-confirm-rollback-popup-header">Rollback to Previous Version</div>
+					<div class="uagb-confirm-rollback-popup-message">Are you sure you want to reinstall previous version?</div>
+					<div class="uagb-confirm-rollback-popup-buttons-wrapper">
+						<button class="uagb-confirm-rollback-popup-button confirm-cancel">Cancel</button>
+						<button class="uagb-confirm-rollback-popup-button confirm-ok">Continue</button>
+					</div>
+				</div>
+			</div>
+			<?php
 		}
 	}
 
