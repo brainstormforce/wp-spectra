@@ -1,17 +1,17 @@
 const AuthorImage = ( { attributes } ) => {
-	let url_chk = '';
+	let urlChk = '';
 
 	if (
 		typeof attributes.authorImage !== 'undefined' &&
 		attributes.authorImage !== null &&
 		attributes.authorImage !== ''
 	) {
-		url_chk = attributes.authorImage.url;
+		urlChk = attributes.authorImage.url;
 	}
 
 	let url = '';
 
-	if ( url_chk !== '' ) {
+	if ( urlChk !== '' ) {
 		const size = attributes.authorImage.sizes;
 		const authorImageSize = attributes.authorImageSize;
 
@@ -19,7 +19,7 @@ const AuthorImage = ( { attributes } ) => {
 			typeof size !== 'undefined' &&
 			typeof size[ authorImageSize ] !== 'undefined'
 				? size[ authorImageSize ].url
-				: url_chk;
+				: urlChk;
 
 		return (
 			<div className="uagb-blockquote__author-image">

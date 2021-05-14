@@ -82,16 +82,16 @@ function styling( props ) {
 		quotePaddingMobile,
 	} = props.attributes;
 
-	let author_space = authorSpace;
+	let tmpAuthorSpace = authorSpace;
 
 	if ( align !== 'center' || skinStyle == 'border' ) {
-		author_space = 0;
+		tmpAuthorSpace = 0;
 	}
 	//Set align to left for border style
-	let text_align = align;
+	let textAlign = align;
 
 	if ( skinStyle == 'border' ) {
-		text_align = 'left';
+		textAlign = 'left';
 	}
 
 	const selectors = {
@@ -105,7 +105,7 @@ function styling( props ) {
 			),
 			color: descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
-			'text-align': text_align,
+			'text-align': textAlign,
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -116,7 +116,7 @@ function styling( props ) {
 				authorLineHeightType
 			),
 			color: authorColor,
-			'text-align': text_align,
+			'text-align': textAlign,
 		},
 		' .uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
@@ -155,7 +155,7 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .uagb-blockquote__author-wrap': {
-			'margin-bottom': generateCSSUnit( author_space, 'px' ),
+			'margin-bottom': generateCSSUnit( tmpAuthorSpace, 'px' ),
 		},
 		' .uagb-blockquote__author-image img': {
 			width: generateCSSUnit( authorImageWidth, 'px' ),
@@ -287,7 +287,7 @@ function styling( props ) {
 		};
 	}
 
-	const tablet_selectors = {
+	const tabletSelectors = {
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
@@ -387,28 +387,28 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;
 
-	let styling_css = generateCSS( selectors, base_selector );
+	let stylingCss = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		base_selector,
+	stylingCss += generateCSS(
+		tabletSelectors,
+		baseSelector,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
+	stylingCss += generateCSS(
 		mobile_selectors,
-		base_selector,
+		baseSelector,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

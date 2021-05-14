@@ -1154,6 +1154,15 @@ const Settings = ( props ) => {
 		},
 	];
 
+	let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+	if ( authorImage ) {
+		if ( authorImage.url == null || authorImage.url == '' ) {
+			imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+		} else {
+			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
+		}
+	}
+
 	// Image controls.
 	const imageControls = (
 		<>
@@ -1173,7 +1182,7 @@ const Settings = ( props ) => {
 					value={ authorImage }
 					render={ ( { open } ) => (
 						<Button isSecondary onClick={ open }>
-							{ image_name }
+							{ imageName }
 						</Button>
 					) }
 				/>
@@ -1622,120 +1631,116 @@ const Settings = ( props ) => {
 		</ButtonGroup>
 	);
 
-	let image_name = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-	if ( authorImage ) {
-		if ( authorImage.url == null || authorImage.url == '' ) {
-			image_name = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-		} else {
-			image_name = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
-		}
+	const getTooltipElement = () => {
+		return <>
+			<Toolbar label="Options">
+				<label
+					aria-label={__(
+						'Twitter Username',
+						'ultimate-addons-for-gutenberg'
+					)}
+					className={`${className}__via-label`}
+					htmlFor={`${className}__via`}
+				>
+					{' '}
+					{UAGB_Block_Icons.at_the_rate}
+				</label>
+				<input
+					aria-label={__(
+						'Twitter Username',
+						'ultimate-addons-for-gutenberg'
+					)}
+					className={`${className}__via`}
+					id={`${className}__via`}
+					onChange={(event) =>
+						setAttributes({
+							iconShareVia: event.target.value,
+						})
+					}
+					placeholder={__(
+						'Username',
+						'ultimate-addons-for-gutenberg'
+					)}
+					type="text"
+					value={iconShareVia}
+				/>
+			</Toolbar>
+		</>;
+	}
+
+	const getAlignmentToolbar = () => {
+		return <AlignmentToolbar
+			value={align}
+			onChange={(value) =>
+				setAttributes({align: value})
+			}
+		/>;
+	}
+
+	const getToolbarElement = () => {
+		return <>
+			<Toolbar label="Options">
+				<Tooltip
+					text={__(
+						'Normal Quote',
+						'ultimate-addons-for-gutenberg'
+					)}
+				>
+					<Button
+						className={classnames(
+							'components-icon-button',
+							'components-toolbar__control',
+							{
+								'is-active':
+									quoteStyle === 'style_1',
+							}
+						)}
+						onClick={() =>
+							setAttributes({
+								quoteStyle: 'style_1',
+							})
+						}
+					>
+						{UAGB_Block_Icons.quote_1}
+					</Button>
+				</Tooltip>
+			</Toolbar>
+
+			<Toolbar label="Options">
+				<Tooltip
+					text={__(
+						'Inline Quote',
+						'ultimate-addons-for-gutenberg'
+					)}
+				>
+					<Button
+						className={classnames(
+							'components-icon-button',
+							'components-toolbar__control',
+							{
+								'is-active':
+									quoteStyle === 'style_2',
+							}
+						)}
+						onClick={() =>
+							setAttributes({
+								quoteStyle: 'style_2',
+							})
+						}
+					>
+						{UAGB_Block_Icons.quote_2}
+					</Button>
+				</Tooltip>
+			</Toolbar>
+		</>;
 	}
 
 	return (
 		<>
 			<BlockControls key="controls">
-				{ skinStyle !== 'border' && (
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( value ) =>
-							setAttributes( { align: value } )
-						}
-					/>
-				) }
-				{ skinStyle === 'quotation' && (
-					<>
-						<Toolbar label="Options">
-							<Tooltip
-								text={ __(
-									'Normal Quote',
-									'ultimate-addons-for-gutenberg'
-								) }
-							>
-								<Button
-									className={ classnames(
-										'components-icon-button',
-										'components-toolbar__control',
-										{
-											'is-active':
-												quoteStyle === 'style_1',
-										}
-									) }
-									onClick={ () =>
-										setAttributes( {
-											quoteStyle: 'style_1',
-										} )
-									}
-								>
-									{ UAGB_Block_Icons.quote_1 }
-								</Button>
-							</Tooltip>
-						</Toolbar>
-
-						<Toolbar label="Options">
-							<Tooltip
-								text={ __(
-									'Inline Quote',
-									'ultimate-addons-for-gutenberg'
-								) }
-							>
-								<Button
-									className={ classnames(
-										'components-icon-button',
-										'components-toolbar__control',
-										{
-											'is-active':
-												quoteStyle === 'style_2',
-										}
-									) }
-									onClick={ () =>
-										setAttributes( {
-											quoteStyle: 'style_2',
-										} )
-									}
-								>
-									{ UAGB_Block_Icons.quote_2 }
-								</Button>
-							</Tooltip>
-						</Toolbar>
-					</>
-				) }
-
-				{ enableTweet && (
-					<>
-						<Toolbar label="Options">
-							<label
-								aria-label={ __(
-									'Twitter Username',
-									'ultimate-addons-for-gutenberg'
-								) }
-								className={ `${ className }__via-label` }
-								htmlFor={ `${ className }__via` }
-							>
-								{ ' ' }
-								{ UAGB_Block_Icons.at_the_rate }
-							</label>
-							<input
-								aria-label={ __(
-									'Twitter Username',
-									'ultimate-addons-for-gutenberg'
-								) }
-								className={ `${ className }__via` }
-								id={ `${ className }__via` }
-								onChange={ ( event ) =>
-									setAttributes( {
-										iconShareVia: event.target.value,
-									} )
-								}
-								placeholder={ __(
-									'Username',
-									'ultimate-addons-for-gutenberg'
-								) }
-								type="text"
-								value={ iconShareVia }
-							/>
-						</Toolbar>
-					</>
-				) }
+				{ skinStyle !== 'border' && getAlignmentToolbar() }
+				{ skinStyle === 'quotation' && getToolbarElement() }
+				{ enableTweet && getTooltipElement() }
 			</BlockControls>
 			<InspectorControls>
 				{ skinSettings }
