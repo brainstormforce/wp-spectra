@@ -25,24 +25,22 @@ const Render = props  => {
 		'' == alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
 
 	return (
-		<>
-			<div
-				className={ classnames(
-					className,
-					'uagb-column__wrap',
-					`uagb-column__background-${ backgroundType }`,
-					`uagb-column__edit-${ active }`,
-					alignClass,
-					alignClassMobile,
-					alignClassTablet,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`
-				) }
-			>
-				<div className="uagb-column__overlay"></div>
-				<InnerBlocks templateLock={ false } />
-			</div>
-		</>
+		<div
+			className={ classnames(
+				className,
+				'uagb-column__wrap',
+				`uagb-column__background-${ backgroundType }`,
+				`uagb-column__edit-${ active }`,
+				alignClass,
+				alignClassMobile,
+				alignClassTablet,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`
+			) }
+		>
+			<div className="uagb-column__overlay"></div>
+			<InnerBlocks templateLock={ false } />
+		</div>
 	);
 }
 
