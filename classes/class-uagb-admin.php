@@ -318,7 +318,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			
 			if( 'how-to' === $block_id ){
 				foreach ( $blocks as $slug => $value ) {
-					if('info-box' === $slug && $value !== 'info-box'){
+					if('info-box' === $slug && 'info-box' !== $value){
 						$blocks[ $slug ] = $slug;
 						$blocks    = array_map( 'esc_attr', $blocks );
 					}
@@ -346,7 +346,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if( 'info-box' === $block_id ){
 				foreach ( $blocks as $slug => $value ) {
-					if('how-to' === $slug && $value === 'how-to'){
+					if('how-to' === $slug && 'how-to' === $value){
 							$blocks[ $block_id ] = 'info-box';
 							$blocks              = array_map( 'esc_attr', $blocks );
 						
