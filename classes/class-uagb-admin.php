@@ -64,6 +64,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Activation Reset
 		 */
 		public static function activation_redirect() {
+
 			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
 			if ( $do_redirect ) {
 				update_option( '__uagb_do_redirect', false );
@@ -71,6 +72,20 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
 					exit();
 				}
+			}
+
+			$blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+
+			// We have removed the option to activate/deactivate the Info box Block so to handle backward compatibility for the users who may have deactivated the Info Box block we are activating the block for them.
+
+			// We can remove this code after 2-3 releases.
+
+			if ( 'disabled' === $blocks['info-box'] ) {
+
+				$blocks['info-box'] = 'info-box';
+				// Update blocks.
+				UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
+				UAGB_Admin_Helper::create_specific_stylesheet();
 			}
 		}
 
