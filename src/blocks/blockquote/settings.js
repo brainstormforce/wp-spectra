@@ -1,10 +1,9 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React from 'react';
-import WebfontLoader from '../../components/typography/fontloader';
-import TypographyControl from '../../components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
-import map from 'lodash/map';
 
 const {
 	PanelBody,
@@ -1588,7 +1587,7 @@ const Settings = ( props ) => {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ map( sizeTypes, ( { name, key } ) => (
+			{ sizeTypes.map(  ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -1608,7 +1607,7 @@ const Settings = ( props ) => {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ map( sizeTypes, ( { name, key } ) => (
+			{ sizeTypes.map(  ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
