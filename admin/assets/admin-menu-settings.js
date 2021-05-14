@@ -255,9 +255,6 @@
 				type: "POST",
 				data: data,
 				success: function(data){
-					if(id === 'how-to'){
-						$( "#info-box" ).find(".uagb-activate-widget").text(uagb.deactivate)
-					}
 					// Add active class.
 					$( "#" + id ).addClass("activate").removeClass( "deactivate" )
 					// Change button classes & text.
