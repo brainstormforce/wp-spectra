@@ -315,7 +315,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks              = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 			$blocks[ $block_id ] = $block_id;
 			$blocks              = array_map( 'esc_attr', $blocks );
-
+			
+			if( 'how-to' === $block_id ){
+				foreach ( $blocks as $slug => $value ) {
+					if('info-box' === $slug && $value !== 'info-box'){
+						$blocks[ $slug ] = $slug;
+						$blocks    = array_map( 'esc_attr', $blocks );
+					}
+				}
+			}
+			
 			// Update blocks.
 			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Admin_Helper::create_specific_stylesheet();
@@ -335,6 +344,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$blocks[ $block_id ] = 'disabled';
 			$blocks              = array_map( 'esc_attr', $blocks );
 
+			if( 'info-box' === $block_id ){
+				foreach ( $blocks as $slug => $value ) {
+					if('how-to' === $slug && $value === 'how-to'){
+							$blocks[ $block_id ] = 'info-box';
+							$blocks              = array_map( 'esc_attr', $blocks );
+						
+					}
+				}
+			}
+			
+			
 			// Update blocks.
 			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Admin_Helper::create_specific_stylesheet();
