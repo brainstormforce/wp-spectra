@@ -40,6 +40,9 @@
   "devDependencies": {
     "@wordpress/eslint-plugin": "^7.1.0",
     "@wordpress/scripts": "^12.1.1",
+    "grunt": "^1.4.0",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
     "install": "^0.13.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^6.0.6",
