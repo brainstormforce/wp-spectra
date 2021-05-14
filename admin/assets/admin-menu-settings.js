@@ -100,6 +100,19 @@
 
 			$( document ).on( "click",".uag-beta-updates", UAGBAdmin._betaUpdates )
 
+			$( document ).on( "change",".uagb-rollback-select", UAGBAdmin._selectRollbackVersion ).trigger('change');
+
+		},
+		_selectRollbackVersion: function ( e ) {
+
+			var $this = $( this ),
+				value = $this.val(),
+				rollbackButton = $this.next('.uagb-rollback-button'),
+				placeholderText = rollbackButton.data('placeholder-text'),
+				placeholderUrl = rollbackButton.data('placeholder-url');
+
+			rollbackButton.html(placeholderText.replace('{VERSION}', $this.val()));
+			rollbackButton.attr('href', placeholderUrl.replace('VERSION', $this.val()));
 		},
 		_betaUpdates: function( e ) {
 			

@@ -271,6 +271,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				'installing_text' => __( 'Installing Astra', 'ultimate-addons-for-gutenberg' ),
 				'activating_text' => __( 'Activating Astra', 'ultimate-addons-for-gutenberg' ),
 				'activated_text'  => __( 'Astra Activated!', 'ultimate-addons-for-gutenberg' ),
+				'reinstall_text'  => __( 'Reinstall', 'ultimate-addons-for-gutenberg' ),
 			);
 
 			wp_localize_script( 'uagb-admin-settings', 'uagb', apply_filters( 'uagb_js_localize', $localize ) );
@@ -315,10 +316,13 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
-			$block_id            = sanitize_text_field( $_POST['block_id'] );
-			$blocks              = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+			$block_id = sanitize_text_field( $_POST['block_id'] );
+
+			$blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+
 			$blocks[ $block_id ] = $block_id;
-			$blocks              = array_map( 'esc_attr', $blocks );
+
+			$blocks = array_map( 'esc_attr', $blocks );
 
 			// Update blocks.
 			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );

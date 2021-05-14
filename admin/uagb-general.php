@@ -314,6 +314,50 @@ array_multisort(
 					</div>
 				</div>
 				<div class="postbox">
+					<?php
+						$uagb_beta = get_option( 'uagb_beta', 'no' );
+
+						$beta_updates_button_text = __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' );
+
+						$value = 'yes';
+
+					if ( 'yes' === $uagb_beta ) {
+
+						$beta_updates_button_text = __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' );
+
+						$value = 'no';
+
+					}
+					?>
+					<h2 class="hndle uagb-normal-cusror">
+						<span class="dashicons dashicons-controls-repeat"></span>
+						<span><?php esc_html_e( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ); ?></span>
+					</h2>
+					<div class="inside">
+						<p>
+							<?php esc_html_e( 'Experiencing an issue with Ultimate Addons for Gutenberg current version? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+						<select class="uagb-rollback-select">
+							<?php
+
+								$uag_versions = UAGB_Loader::get_instance()->get_rollback_versions();
+
+							foreach ( $uag_versions as $version ) {
+								?>
+
+									<option value="<?php echo esc_attr( $version ); ?>"><?php echo esc_html( $version ); ?> </option>
+
+								<?php
+							}
+							?>
+						</select>
+						<a data-placeholder-text=" <?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . 'v{VERSION}'; ?>" href="<?php echo esc_url( add_query_arg( 'version', $uag_versions[0], wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ); ?>" data-placeholder-url="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback&version=VERSION' ), 'uag_rollback' ) ); ?>" class="button uagb-rollback-button"><?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . esc_html( $uag_versions[0] ); ?> </a>
+						<p>
+							<?php esc_html_e( 'Warning: Please backup your database before making the rollback.', 'ultimate-addons-for-gutenberg' ); ?>
+						</p>
+					</div>
+				</div>
+				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
 						<span><?php esc_html_e( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ); ?></span>

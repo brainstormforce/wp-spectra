@@ -55,6 +55,112 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			$this->loader();
 
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
+
+			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
+		}
+
+		/**
+		 * UAG version rollback.
+		 *
+		 * Rollback to previous UAG version.
+		 *
+		 * Fired by `admin_post_uag_rollback` action.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public function post_uagb_rollback() {
+
+			check_admin_referer( 'uag_rollback' );
+
+			$rollback_versions = $this->get_rollback_versions();
+
+			if ( empty( $_GET['version'] ) || ! in_array( $_GET['version'], $rollback_versions ) ) { //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+				wp_die( esc_html__( 'Error occurred, The version selected is invalid. Try selecting different version.', 'ultimate-addons-for-gutenberg' ) );
+			}
+
+			$plugin_slug = basename( UAGB_FILE, '.php' );
+
+			$rollback = new UAGB_Rollback(
+				array(
+					'version'     => $_GET['version'],
+					'plugin_name' => UAGB_BASE,
+					'plugin_slug' => $plugin_slug,
+					'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $_GET['version'] ),
+				)
+			);
+
+			$rollback->run();
+
+			wp_die(
+				'',
+				esc_html__( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
+				array(
+					'response' => 200,
+				)
+			);
+		}
+
+		/**
+		 * Get Rollback versions.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 * @access public
+		 */
+		public function get_rollback_versions() {
+
+			$rollback_versions = get_transient( 'uag_rollback_versions_' . UAGB_VER );
+
+			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
+
+				$max_versions = 30;
+
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+				$plugin_information = plugins_api(
+					'plugin_information',
+					array(
+						'slug' => 'ultimate-addons-for-gutenberg',
+					)
+				);
+
+				if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+					return array();
+				}
+
+				krsort( $plugin_information->versions );
+
+				$rollback_versions = array();
+
+				$current_index = 0;
+
+				foreach ( $plugin_information->versions as $version => $download_link ) {
+
+					if ( $max_versions <= $current_index ) {
+						break;
+					}
+
+					$lowercase_version = strtolower( $version );
+
+					$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+
+					if ( ! $is_valid_rollback_version ) {
+						continue;
+					}
+
+					if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+						continue;
+					}
+
+					$current_index++;
+					$rollback_versions[] = $version;
+				}
+
+				set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions, WEEK_IN_SECONDS );
+			}
+
+			return $rollback_versions;
 		}
 
 		/**
@@ -99,6 +205,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
+				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
 		}
 
