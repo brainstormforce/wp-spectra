@@ -43,7 +43,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'init', array( $this, 'register_block_core_table_of_contents' ) );
+			add_action( 'init', array( $this, 'register_table_of_contents' ) );
 			add_action( 'save_post', array( $this, 'update_toc_meta' ), 10, 3 );
 		}
 
@@ -73,7 +73,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return array The list of headings.
 		 */
-		public function block_core_table_of_contents_get_headings_from_content(
+		public function table_of_contents_get_headings_from_content(
 			$content,
 			$mappingHeadersArray
 		) {
@@ -230,12 +230,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return array The list of headings.
 		 */
-		public function block_core_table_of_contents_get_headings(
+		public function table_of_contents_get_headings(
 			$post_id,
 			$current_page_only
 		) {
 
-			return $this->block_core_table_of_contents_get_headings_from_content(
+			return $this->table_of_contents_get_headings_from_content(
 				get_post( $post_id )->post_content,
 				$current_page_only['mappingHeaders']
 			);
@@ -253,7 +253,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return array A hierarchical nested list of heading parameters.
 		 */
-		public function block_core_table_of_contents_linear_to_nested_heading_list(
+		public function table_of_contents_linear_to_nested_heading_list(
 			$heading_list,
 			$index = 0
 		) {
@@ -287,7 +287,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return string The heading list rendered as HTML.
 		 */
-		public function block_core_table_of_contents_render_list(
+		public function table_of_contents_render_list(
 			$nested_heading_list,
 			$page_url,
 			$attributes
@@ -375,7 +375,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return string Rendered block HTML.
 		 */
-		public function render_block_core_table_of_contents( $attributes, $content, $block ) {
+		public function render_table_of_contents( $attributes, $content, $block ) {
 
 			global $post;
 
@@ -387,7 +387,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) ) {
 
-				$uagb_toc_heading_content = $this->block_core_table_of_contents_get_headings(
+				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
 					$post->ID,
 					$attributes
 				);
@@ -433,8 +433,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					<div class="uagb-toc__list-wrap">
 						<?php
 							echo wp_kses_post(
-								$this->block_core_table_of_contents_render_list(
-									$this->block_core_table_of_contents_linear_to_nested_heading_list( $uagb_toc_heading_content ),
+								$this->table_of_contents_render_list(
+									$this->table_of_contents_linear_to_nested_heading_list( $uagb_toc_heading_content ),
 									get_permalink( $post->ID ),
 									$attributes
 								)
@@ -459,11 +459,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @since x.x.x
 		 * @access public
 		 *
-		 * @uses render_block_core_table_of_contents()
+		 * @uses render_table_of_contents()
 		 *
 		 * @throws WP_Error An exception parsing the block definition.
 		 */
-		public function register_block_core_table_of_contents() {
+		public function register_table_of_contents() {
 			$mappingHeadersArray = array_fill_keys( array( 0, 1, 2, 3, 4, 5 ), true );
 
 					register_block_type(
@@ -786,7 +786,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 								)
 							),
-							'render_callback' => array( $this, 'render_block_core_table_of_contents' ),
+							'render_callback' => array( $this, 'render_table_of_contents' ),
 						)
 					);
 		}
