@@ -2809,7 +2809,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(
 							'block_id'           => '',
 							'hidden_field_name'  => __( 'Hidden Field Name', 'ultimate-addons-for-gutenberg' ),
@@ -2822,7 +2821,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-textarea'         => array(
@@ -2830,7 +2828,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(
 							'block_id'     => '',
 							'textareaName' => __( 'Message', 'ultimate-addons-for-gutenberg' ),
@@ -2842,7 +2839,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-radio'            => array(
@@ -2850,7 +2846,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-url'              => array(
@@ -2858,7 +2853,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(
 							'block_id' => '',
 							'name'     => __( 'URL', 'ultimate-addons-for-gutenberg' ),
@@ -2869,7 +2863,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-toggle'           => array(
@@ -2877,7 +2870,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-date'             => array(
@@ -2885,7 +2877,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						''
 						'attributes'  => array(),
 					),
 					'uagb/forms-accept'           => array(
