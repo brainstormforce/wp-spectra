@@ -167,8 +167,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
-### 1.23.0 ###
-* Fix: Blocks throwing an error when deactivate all the UAG blocks except the Multi Buttons or Forms.
+### 1.23.1 ###
+* Fix: Settings conflict issue in Lottie block.
+* Fix: Fixed Alignment issue on front-end in Lottie block.
 
 ### 1.23.0 ###
 * Improvement: Improve the Dynamic Assets loading functionality for better performance.
