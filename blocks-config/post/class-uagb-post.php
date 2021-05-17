@@ -1420,7 +1420,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @param int $post_id post id.
 		 * @param int $length lenght of the excerpt.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 */
 		public function get_excerpt_by_id( $post_id, $length ) {
 			$the_post    = get_post( $post_id ); // Gets post ID.

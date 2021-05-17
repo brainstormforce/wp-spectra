@@ -446,7 +446,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * File Regeneration Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 */
 		public static function file_regeneration() {
 
