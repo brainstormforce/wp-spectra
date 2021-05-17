@@ -1,9 +1,9 @@
 import classnames from 'classnames';
-const { SelectControl, Placeholder } = wp.components;
-
+import { SelectControl, Placeholder } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const gfStylerRender = ( props ) => {
+	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
 	// Setup the attributes.
 	const {

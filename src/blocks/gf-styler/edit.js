@@ -1,9 +1,14 @@
 import styling from './styling';
-import gfStylerRender from './render';
-import gfStylerSetting from './settings';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { withSelect } = wp.data;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/gf-styler/render" */ './render' )
+);
+import { withSelect } from '@wordpress/data';
 
 const UAGBGF = ( props ) => {
 	useEffect( () => {
@@ -33,11 +38,14 @@ const UAGBGF = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );
-	const { isHtml } = props.attributes
+
+	const { isHtml } = props.attributes;
 	return (
 		<>
-			{ isHtml && (gfStylerSetting( props ) )}
-			{ gfStylerRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				{ isHtml && (<Settings parentProps={ props } />)}
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
