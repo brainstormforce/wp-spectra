@@ -3,31 +3,31 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/advanced-heading/typography-control" */ '../../components/typography'
+		/* webpackChunkName: "chunks/advanced-heading/typography-control" */ '@Components/typography'
 	)
 );
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/advanced-heading/web-fornt-loader-control" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/advanced-heading/web-font-loader-control" */ '@Components/typography/fontloader'
 	)
 );
-
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	ColorPalette,
-} = wp.blockEditor;
-const {
+} from '@wordpress/block-editor';
+
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	ButtonGroup,
 	Button,
-} = wp.components;
+} from '@wordpress/components';
 
 // Extend component
 const Settings = ( props ) => {

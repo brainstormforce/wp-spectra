@@ -1,8 +1,6 @@
 /**
  * BLOCK: Advanced Heading
  */
-
-// Import block dependencies and components.
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -17,13 +15,12 @@ const Render = lazy( () =>
 //  Import CSS.
 import './style.scss';
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
-const { compose } = wp.compose;
+import { compose } from '@wordpress/compose';
 
-const HeadingComponent = ( props ) => {
+const UAGBAdvancedHeading = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -67,7 +64,7 @@ const applyWithSelect = withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType,
+		deviceType: deviceType,
 	};
 } );
-export default compose( applyWithSelect )( HeadingComponent );
+export default compose( applyWithSelect )( UAGBAdvancedHeading );

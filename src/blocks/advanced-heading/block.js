@@ -11,7 +11,7 @@ import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType, createBlock } = wp.blocks;
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: uagb_blocks_info.blocks[ 'uagb/advanced-heading' ].title,
