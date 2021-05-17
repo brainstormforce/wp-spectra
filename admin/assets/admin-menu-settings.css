@@ -359,3 +359,6 @@
 .uagb-confirm-rollback-popup-button.confirm-ok {
 	color: #b01b1b;
 }
+.uagb-confirm-rollback-popup.show {
+	display: block;
+}

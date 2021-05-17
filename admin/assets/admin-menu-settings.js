@@ -102,11 +102,36 @@
 
 			$( document ).on( "change",".uagb-rollback-select", UAGBAdmin._selectRollbackVersion ).trigger('change');
 
+			$( document ).on( "click",".uagb-rollback-button", UAGBAdmin._onRollbackClick )
+
+			$( document ).on( "click",".uagb-confirm-rollback-popup-button.confirm-ok", UAGBAdmin._onConfirmClick )
+
+			$( document ).on( "click",".uagb-confirm-rollback-popup-button.confirm-cancel", UAGBAdmin._onCancelClick )
+
+		},
+		_onRollbackClick: function ( e ) {
+			
+			e.preventDefault();
+
+			$( '.uagb-confirm-rollback-popup' ).addClass('show');
+		},
+		_onConfirmClick: function ( e ) {
+			
+			e.preventDefault();
+
+			location.href = $( '.uagb-rollback-button' ).attr('href');
+
+			$( '.uagb-confirm-rollback-popup' ).removeClass('show');
+		},
+		_onCancelClick: function ( e ) {
+			
+			e.preventDefault();
+
+			$( '.uagb-confirm-rollback-popup' ).removeClass('show');
 		},
 		_selectRollbackVersion: function ( e ) {
 
 			var $this = $( this ),
-				value = $this.val(),
 				rollbackButton = $this.next('.uagb-rollback-button'),
 				placeholderText = rollbackButton.data('placeholder-text'),
 				placeholderUrl = rollbackButton.data('placeholder-url');
