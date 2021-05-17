@@ -43,7 +43,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						}
 						?>
 						<h2 class="uagb-normal-cusror">
-							<span class="dashicons dashicons-controls-repeat"></span>
+							<span class="uagb-gen-icon dashicons dashicons-laptop"></span>
 							<span><?php esc_html_e( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ); ?></span>
 						</h2>
 						<div class="inside">
@@ -56,9 +56,9 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 								<?php echo esc_html( $beta_updates_button_text ); ?>
 							</button>
 
-							<p>
+							<p><span style="color: red;">
 								<?php esc_html_e( 'Note: We do not recommend updating to a beta version on production site.', 'ultimate-addons-for-gutenberg' ); ?>
-							</p>
+							</span></p>
 						</div>
 					</div>
 				</div>
@@ -82,12 +82,15 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						}
 						?>
 						<h2 class="uagb-normal-cusror">
-							<span class="dashicons dashicons-controls-repeat"></span>
+							<span class="uagb-gen-icon dashicons dashicons-controls-repeat"></span>
 							<span><?php esc_html_e( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ); ?></span>
 						</h2>
 						<div class="inside">
 							<p>
-								<?php esc_html_e( 'Experiencing an issue with Ultimate Addons for Gutenberg current version? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ); ?>
+								<?php
+								/* translators: %s: UAG version */
+								echo esc_html( sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ) );
+								?>
 							</p>
 							<select class="uagb-rollback-select">
 								<?php
@@ -104,9 +107,9 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 								?>
 							</select>
 							<a data-placeholder-text=" <?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . 'v{VERSION}'; ?>" href="<?php echo esc_url( add_query_arg( 'version', $uag_versions[0], wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ); ?>" data-placeholder-url="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback&version=VERSION' ), 'uag_rollback' ) ); ?>" class="button uagb-rollback-button"><?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . esc_html( $uag_versions[0] ); ?> </a>
-							<p>
+							<p><span style="color: red;">
 								<?php esc_html_e( 'Warning: Please backup your database before making the rollback.', 'ultimate-addons-for-gutenberg' ); ?>
-							</p>
+							</span></p>
 						</div>
 					</div>
 				</div>

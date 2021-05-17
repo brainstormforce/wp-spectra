@@ -48,7 +48,8 @@
 	padding: 20px;
 }
 
-.uagb-intro-section .uagb-intro-icon {
+.uagb-intro-section .uagb-intro-icon,
+.uagb-intro-section .uagb-gen-icon {
 	margin-right: 8px;
 	width: 25px;
 	height: 25px;

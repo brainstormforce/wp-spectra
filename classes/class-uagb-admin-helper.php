@@ -302,7 +302,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
 
-				$max_versions = 30;
+				$max_versions = 10;
 
 				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 
