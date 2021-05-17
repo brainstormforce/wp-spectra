@@ -1004,6 +1004,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
 		}
+
+		/**
+		 * Parse Guten Block.
+		 *
+		 * @since 1.1.0
+		 * @param string $content the content string.
+		 * @deprecated 1.23.0 Use `UAGB_Frontend::parse_blocks()` instead
+		 * @access public
+		 */
+		public function parse( $content ) {
+
+			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->parse_blocks()' );
+
+			UAGB_Frontend::get_instance()->parse_blocks( $content );
+		}
 	}
 
 	/**
