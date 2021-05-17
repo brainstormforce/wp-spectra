@@ -623,7 +623,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			?>
 			<div class="uagb-confirm-rollback-popup">
-				<div class="uagb-confirm-rollback-popup-overlay"></div>
 				<div class="uagb-confirm-rollback-popup-content">
 					<div class="uagb-confirm-rollback-popup-header">Rollback to Previous Version</div>
 					<div class="uagb-confirm-rollback-popup-message">Are you sure you want to reinstall previous version?</div>
