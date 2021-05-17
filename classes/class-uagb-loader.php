@@ -96,6 +96,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			if ( is_admin() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
+				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
+			}
 		}
 
 		/**

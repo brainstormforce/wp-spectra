@@ -9,13 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-17T07:27:27+00:00\n"
+"POT-Creation-Date: 2021-05-17T10:06:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0-alpha-59d879d\n"
+"X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
 #: admin/uagb-general.php:43
+#: admin/uagb-tools.php:26
 msgid "Ultimate Addons for Gutenberg"
 msgstr ""
 
@@ -80,6 +81,7 @@ msgid "View Demos"
 msgstr ""
 
 #: admin/uagb-general.php:23
+#: admin/uagb-tools.php:18
 msgid "Submit a Ticket »"
 msgstr ""
 
@@ -129,6 +131,7 @@ msgstr ""
 
 #: admin/uagb-general.php:69
 #: admin/uagb-general.php:291
+#: admin/uagb-tools.php:129
 msgid "Visit Knowledge Base »"
 msgstr ""
 
@@ -149,12 +152,12 @@ msgid "Reusable Blocks"
 msgstr ""
 
 #: admin/uagb-general.php:135
-#: classes/class-uagb-admin.php:265
+#: classes/class-uagb-admin.php:292
 msgid "Activate"
 msgstr ""
 
 #: admin/uagb-general.php:142
-#: classes/class-uagb-admin.php:266
+#: classes/class-uagb-admin.php:293
 msgid "Deactivate"
 msgstr ""
 
@@ -242,20 +245,67 @@ msgid "You can regenerate your CSS & Javascript assets here."
 msgstr ""
 
 #: admin/uagb-general.php:285
+#: admin/uagb-tools.php:123
 msgid "Knowledge Base"
 msgstr ""
 
 #: admin/uagb-general.php:289
+#: admin/uagb-tools.php:127
 msgid "Not sure how something works? Take a peek at the knowledge base and learn."
 msgstr ""
 
 #: admin/uagb-general.php:297
+#: admin/uagb-tools.php:135
 msgid "Five Star Support"
 msgstr ""
 
 #. translators: %1$s: uagb name.
 #: admin/uagb-general.php:304
+#: admin/uagb-tools.php:142
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
+msgstr ""
+
+#: admin/uagb-tools.php:33
+#: admin/uagb-tools.php:47
+#: admin/uagb-tools.php:72
+#: classes/class-uagb-admin.php:294
+msgid "Enable Beta Updates"
+msgstr ""
+
+#: admin/uagb-tools.php:39
+#: admin/uagb-tools.php:78
+#: classes/class-uagb-admin.php:295
+msgid "Disable Beta Updates"
+msgstr ""
+
+#: admin/uagb-tools.php:51
+msgid "Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available."
+msgstr ""
+
+#: admin/uagb-tools.php:53
+msgid "The beta version will not install automatically. You will always have the option to ignore it."
+msgstr ""
+
+#: admin/uagb-tools.php:60
+msgid "Note: We do not recommend updating to a beta version on production site."
+msgstr ""
+
+#: admin/uagb-tools.php:86
+#: classes/class-uagb-admin.php:631
+msgid "Rollback to Previous Version"
+msgstr ""
+
+#. translators: %s: UAG version
+#: admin/uagb-tools.php:92
+msgid "Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared."
+msgstr ""
+
+#: admin/uagb-tools.php:109
+msgid "Reinstall "
+msgstr ""
+
+#: admin/uagb-tools.php:111
+msgid "Warning: Please backup your database before making the rollback."
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:447
@@ -293,62 +343,68 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: classes/class-uagb-admin.php:131
+#: classes/class-uagb-admin.php:142
 msgid "Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on your website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:132
+#: classes/class-uagb-admin.php:143
 msgid "Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:134
+#: classes/class-uagb-admin.php:145
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:136
+#: classes/class-uagb-admin.php:147
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:137
+#: classes/class-uagb-admin.php:148
 msgid "I already did"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:156
+#: classes/class-uagb-admin.php:167
 msgid "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:267
-msgid "Enable Beta Updates"
+#: classes/class-uagb-admin.php:205
+#: classes/class-uagb-admin.php:206
+msgid "Tools"
 msgstr ""
 
-#: classes/class-uagb-admin.php:268
-msgid "Disable Beta Updates"
-msgstr ""
-
-#: classes/class-uagb-admin.php:269
+#: classes/class-uagb-admin.php:296
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:270
+#: classes/class-uagb-admin.php:297
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:271
+#: classes/class-uagb-admin.php:298
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:427
-#: classes/class-uagb-admin.php:457
+#: classes/class-uagb-admin.php:456
+#: classes/class-uagb-admin.php:481
+#: classes/class-uagb-admin.php:511
 msgid "Access Denied. You don't have enough capabilities to execute this action."
 msgstr ""
 
-#: classes/class-uagb-admin.php:497
+#: classes/class-uagb-admin.php:551
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:516
+#: classes/class-uagb-admin.php:570
 msgid "Theme Successfully Activated"
+msgstr ""
+
+#: classes/class-uagb-admin.php:600
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: classes/class-uagb-admin.php:613
+msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
 #: classes/class-uagb-config.php:55
@@ -885,12 +941,16 @@ msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:168
+#: classes/class-uagb-loader.php:173
 msgid "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:171
+#: classes/class-uagb-loader.php:176
 msgid "Install Gutenberg"
+msgstr ""
+
+#: classes/class-uagb-rollback.php:165
+msgid "Ultimate Addons for Gutenberg Rollback to Previous Version"
 msgstr ""
 
 #: lib/notices/class-astra-notices.php:120
