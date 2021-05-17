@@ -975,6 +975,35 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
 		}
+
+		/** Generates stylesheet in loop.
+		 *
+		 * @since 1.7.0
+		 * @param object $this_post Post Object.
+		 * @deprecated 1.23.0 Use `UAGB_Frontend::prepare_assets()` instead
+		 * @access public
+		 */
+		public function get_generated_stylesheet( $this_post ) {
+
+			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->prepare_assets()' );
+
+			UAGB_Frontend::get_instance()->prepare_assets( $this_post );
+		}
+
+		/**
+		 * Generates stylesheet for reusable blocks.
+		 *
+		 * @since 1.1.0
+		 * @param array $blocks Blocks.
+		 * @deprecated 1.23.0 Use `UAGB_Frontend::get_blocks_assets()` instead
+		 * @access public
+		 */
+		public function get_assets( $blocks ) {
+
+			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_blocks_assets()' );
+
+			UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
+		}
 	}
 
 	/**
