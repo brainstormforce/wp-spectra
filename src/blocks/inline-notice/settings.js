@@ -1,28 +1,40 @@
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/inline-notice/typography-control" */ '@Components/typography'
+	)
+);
 
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/inline-notice/web-fornt-loader-control" */ '@Components/typography/fontloader'
+	)
+);
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	RichText,
 	ColorPalette,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const { PanelBody, RangeControl, SelectControl, ToggleControl } = wp.components;
+import {
+	select
+} from '@wordpress/data'
+
+import { PanelBody, RangeControl, SelectControl, ToggleControl } from '@wordpress/components';
 
 const svg_icons = Object.keys( UAGBIcon );
 
-const inlineNoticeSettings = ( props ) => {
+const Settings = ( props ) => {
+	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
 		icon,
@@ -102,7 +114,7 @@ const inlineNoticeSettings = ( props ) => {
 	}
 
 	const update_cookie_id = ( value ) => {
-		const { getCurrentPostId } = wp.data.select( 'core/editor' );
+		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
 		const timestamp = new Date().getTime();
 
@@ -384,109 +396,113 @@ const inlineNoticeSettings = ( props ) => {
 				) }
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<TypographyControl
-					label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: titleLoadGoogleFonts,
-						label: 'titleLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: titleFontFamily,
-						label: 'titleFontFamily',
-					} }
-					fontWeight={ {
-						value: titleFontWeight,
-						label: 'titleFontWeight',
-					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
-					} }
-					fontSizeType={ {
-						value: titleFontSizeType,
-						label: 'titleFontSizeType',
-					} }
-					fontSize={ {
-						value: titleFontSize,
-						label: 'titleFontSize',
-					} }
-					fontSizeMobile={ {
-						value: titleFontSizeMobile,
-						label: 'titleFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: titleFontSizeTablet,
-						label: 'titleFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: titleLineHeightType,
-						label: 'titleLineHeightType',
-					} }
-					lineHeight={ {
-						value: titleLineHeight,
-						label: 'titleLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: titleLineHeightMobile,
-						label: 'titleLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: titleLineHeightTablet,
-						label: 'titleLineHeightTablet',
-					} }
-				/>
-				<TypographyControl
-					label={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: descLoadGoogleFonts,
-						label: 'descLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: descFontFamily,
-						label: 'descFontFamily',
-					} }
-					fontWeight={ {
-						value: descFontWeight,
-						label: 'descFontWeight',
-					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
-					} }
-					fontSizeType={ {
-						value: descFontSizeType,
-						label: 'descFontSizeType',
-					} }
-					fontSize={ { value: descFontSize, label: 'descFontSize' } }
-					fontSizeMobile={ {
-						value: descFontSizeMobile,
-						label: 'descFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: descFontSizeTablet,
-						label: 'descFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: descLineHeightType,
-						label: 'descLineHeightType',
-					} }
-					lineHeight={ {
-						value: descLineHeight,
-						label: 'descLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: descLineHeightMobile,
-						label: 'descLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: descLineHeightTablet,
-						label: 'descLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: titleLoadGoogleFonts,
+							label: 'titleLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: titleFontFamily,
+							label: 'titleFontFamily',
+						} }
+						fontWeight={ {
+							value: titleFontWeight,
+							label: 'titleFontWeight',
+						} }
+						fontSubset={ {
+							value: titleFontSubset,
+							label: 'titleFontSubset',
+						} }
+						fontSizeType={ {
+							value: titleFontSizeType,
+							label: 'titleFontSizeType',
+						} }
+						fontSize={ {
+							value: titleFontSize,
+							label: 'titleFontSize',
+						} }
+						fontSizeMobile={ {
+							value: titleFontSizeMobile,
+							label: 'titleFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: titleFontSizeTablet,
+							label: 'titleFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: titleLineHeightType,
+							label: 'titleLineHeightType',
+						} }
+						lineHeight={ {
+							value: titleLineHeight,
+							label: 'titleLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: titleLineHeightMobile,
+							label: 'titleLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: titleLineHeightTablet,
+							label: 'titleLineHeightTablet',
+						} }
+					/>
+				</Suspense>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: descLoadGoogleFonts,
+							label: 'descLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: descFontFamily,
+							label: 'descFontFamily',
+						} }
+						fontWeight={ {
+							value: descFontWeight,
+							label: 'descFontWeight',
+						} }
+						fontSubset={ {
+							value: descFontSubset,
+							label: 'descFontSubset',
+						} }
+						fontSizeType={ {
+							value: descFontSizeType,
+							label: 'descFontSizeType',
+						} }
+						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSizeMobile={ {
+							value: descFontSizeMobile,
+							label: 'descFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: descFontSizeTablet,
+							label: 'descFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: descLineHeightType,
+							label: 'descLineHeightType',
+						} }
+						lineHeight={ {
+							value: descLineHeight,
+							label: 'descLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: descLineHeightMobile,
+							label: 'descLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: descLineHeightTablet,
+							label: 'descLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __(
@@ -553,9 +569,12 @@ const inlineNoticeSettings = ( props ) => {
 		<>
 			{ blockControls() }
 			<InspectorControls>{ inlineGeneralSettings() }</InspectorControls>
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadTitleGoogleFonts }
+				{ loadDescriptionGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
-export default inlineNoticeSettings;
+
+export default React.memo( Settings );

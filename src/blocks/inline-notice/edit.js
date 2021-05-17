@@ -4,20 +4,27 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-import inlineNoticeRender from './render';
-import inlineNoticeSettings from './settings';
-import React, { useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, Suspense, lazy } from 'react';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/inline-notice/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/inline-notice/render" */ './render' )
+);
+
 const UAGBInlineNoticeEdit = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
+		const { setAttributes , clientId} = props;
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
 			'id',
-			'uagb-inline-notice-style-' + props.clientId.substr( 0, 8 )
+			'uagb-inline-notice-style-' + clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
 	}, [] );
@@ -35,8 +42,10 @@ const UAGBInlineNoticeEdit = ( props ) => {
 
 	return (
 		<>
-			{ inlineNoticeSettings( props ) }
-			{ inlineNoticeRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

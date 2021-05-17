@@ -1,10 +1,11 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-const { RichText } = wp.blockEditor;
-
+import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-const inlineNoticeRender = ( props ) => {
+
+const Render = ( props ) => {
+	props = props.parentProps;
 	// Setup the attributes
 	const {
 		attributes: {
@@ -67,4 +68,4 @@ const inlineNoticeRender = ( props ) => {
 		</div>
 	);
 };
-export default inlineNoticeRender;
+export default React.memo( Render );
