@@ -308,6 +308,19 @@ class UAGB_Init_Blocks {
 		$disabled_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets    = UAGB_Config::get_block_assets();
 
+		// We have removed the option to activate/deactivate the Info box Block so to handle backward compatibility for the users who may have deactivated the Info Box block we are activating the block for them.
+
+		// We can remove this code after 2-3 releases.
+
+		if ( 'disabled' === $disabled_blocks['info-box'] ) {
+
+			$disabled_blocks['info-box'] = 'info-box';
+
+			// Update blocks.
+			UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $disabled_blocks );
+			UAGB_Admin_Helper::create_specific_stylesheet();
+		}
+
 		foreach ( $blocks as $slug => $value ) {
 			$_slug = str_replace( 'uagb/', '', $slug );
 
