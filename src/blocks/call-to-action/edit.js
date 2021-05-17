@@ -3,7 +3,7 @@
  */
 
 import CtaStyle from './inline-styles';
-import React, { useEffect } from 'react';
+import React, { useEffect , lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Render = lazy( () =>
 	import(
