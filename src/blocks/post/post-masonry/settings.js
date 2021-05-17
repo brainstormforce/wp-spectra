@@ -1,10 +1,8 @@
 import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-
-const { BlockAlignmentToolbar, BlockControls } = wp.blockEditor;
-
-const { ToolbarGroup } = wp.components;
+import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { ToolbarGroup } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { state, togglePreview, inspectorControls } = props;

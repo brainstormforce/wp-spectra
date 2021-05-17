@@ -6,6 +6,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import styling from '.././styling';
+import { compose } from '@wordpress/compose';
 
 const TypographyControl = lazy( () =>
 	import(
@@ -29,11 +30,9 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-masonry/render" */ './render' )
 );
 
-const { compose } = wp.compose;
-
 const MAX_POSTS_COLUMNS = 8;
 
-const {
+import {
 	PanelBody,
 	Placeholder,
 	QueryControls,
@@ -47,11 +46,11 @@ const {
 	Dashicon,
 	TextControl,
 	RadioControl,
-} = wp.components;
+} from '@wordpress/components';
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
 
-const { withSelect, withDispatch } = wp.data;
+import { withSelect, withDispatch } from '@wordpress/data';
 
 const UAGBPostMasonry = ( props ) => {
 	const [ state, setState ] = useState( {

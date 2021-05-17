@@ -5,6 +5,9 @@ import {
 	InnerBlockLayoutContextProvider,
 } from '../function';
 
+import { createBlock } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { Placeholder, Button, Disabled, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -14,12 +17,6 @@ const Blog = lazy( () =>
 		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ './blog'
 	)
 );
-
-const { createBlock } = wp.blocks;
-
-const { InnerBlocks } = wp.blockEditor;
-
-const { Placeholder, Button, Disabled, Tip } = wp.components;
 
 const Render = ( props ) => {
 	const { state, setState, togglePreview } = props;
