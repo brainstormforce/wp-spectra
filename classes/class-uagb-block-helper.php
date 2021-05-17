@@ -5464,6 +5464,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
 					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),
 					'overflow'         => 'hidden',
+					'margin'           => '0px auto',
 					'outline'          => 'none',
 					'background-color' => $attr['backgroundColor'],
 				),
