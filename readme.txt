@@ -167,12 +167,19 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.23.1 =
+* Fix: Settings conflict issue in Lottie block.
+* Fix: Fixed Alignment issue on front-end in Lottie block.
 
 = 1.23.0 =
 * Improvement: Improve the Dynamic Assets loading functionality for better performance.
 * Improvement: Static CSS Optimized by loading block specific CSS on a Page.
-* Fix: Post Grid - Link to complete box redirect to last post when image background set to Top.
+* Improvement: Optimized headings rendering for CLS impact.
+* Fix: Blockquote - Tweet link showing a empty page link and username.
+* Fix: Block condition - Conflicting with Real Media Library plugin.
 * Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
+* Fix: Table of content - HTML validation issue.
+* Fix: Post Grid - Link to complete box redirect to last post when image background set to Top.
 * Fix: Post Layout - Conflicting with the Elvira gallery plugin.
 
 = 1.22.4 =
