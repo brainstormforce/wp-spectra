@@ -31,6 +31,7 @@ import {
 
 // Extend component
 const Settings = ( props ) => {
+	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
 		headingAlign,

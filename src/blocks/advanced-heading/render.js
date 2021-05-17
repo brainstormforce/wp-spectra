@@ -3,6 +3,7 @@ import RichText from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
+	props = props.parentProps;
 	const {
 		attributes: {
 			block_id,
@@ -16,7 +17,7 @@ const Render = ( props ) => {
 		deviceType,
 	} = props;
 
-	const heading = (
+	const headingText = (
 		<RichText
 			tagName={ headingTag }
 			placeholder={ __(
@@ -38,7 +39,7 @@ const Render = ( props ) => {
 		</div>
 	);
 
-	const desc = (
+	const descText = (
 		<RichText
 			tagName="p"
 			placeholder={ __(
@@ -59,9 +60,9 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ heading }
+			{ headingText }
 			{ separator }
-			{ desc }
+			{ descText }
 		</div>
 	);
 }
