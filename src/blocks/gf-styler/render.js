@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-const gfStylerRender = ( props ) => {
+const Render = ( props ) => {
 	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
 	// Setup the attributes.
@@ -104,4 +104,4 @@ const gfStylerRender = ( props ) => {
 		</>
 	);
 };
-export default gfStylerRender;
+export default React.memo( Render );

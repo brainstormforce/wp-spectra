@@ -32,7 +32,7 @@ import {
 	TabPanel,
 } from '@wordpress/components';
 
-const gfStylerRender = ( props ) => {
+const Settings = ( props ) => {
 	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
 
@@ -2133,4 +2133,4 @@ const gfStylerRender = ( props ) => {
 		</>
 	);
 };
-export default gfStylerRender;
+export default React.memo( Settings );
