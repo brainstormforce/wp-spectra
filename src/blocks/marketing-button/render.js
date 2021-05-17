@@ -1,10 +1,9 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 
-const { RichText } = wp.blockEditor;
-
-const MarketingButtonRender = ( props ) => {
+const Render = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -124,4 +123,4 @@ const MarketingButtonRender = ( props ) => {
 		</div>
 	);
 };
-export default MarketingButtonRender;
+export default React.memo( Render );

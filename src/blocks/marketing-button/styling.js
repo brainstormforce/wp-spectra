@@ -72,8 +72,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const icon_color = '' == iconColor ? titleColor : iconColor;
 	const icon_hover_color =
@@ -181,7 +181,7 @@ function styling( props ) {
 		margin_type
 	] = generateCSSUnit( iconSpace, 'px' );
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -214,7 +214,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -252,14 +252,14 @@ function styling( props ) {
 	let styling_css = generateCSS( selectors, id );
 
 	styling_css += generateCSS(
-		tablet_selectors,
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
 	styling_css += generateCSS(
-		mobile_selectors,
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'

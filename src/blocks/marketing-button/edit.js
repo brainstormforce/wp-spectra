@@ -3,16 +3,20 @@
  */
 
 import styling from './styling';
-import MarketingButtonSettings from './settings';
-import MarketingButtonRender from './render';
-import React, { useEffect } from 'react';
-const { withSelect } = wp.data;
+import React, { useEffect, Suspense, lazy } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/marketing-button/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/marketing-button/render" */ './render' )
+);
+import { withSelect } from '@wordpress/data';
 
-const { compose } = wp.compose;
+import { compose } from '@wordpress/compose';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -41,8 +45,10 @@ const UAGBMarketingButtonEdit = ( props ) => {
 
 	return (
 		<>
-			{ MarketingButtonSettings( props ) }
-			{ MarketingButtonRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
@@ -56,7 +62,7 @@ const applyWithSelect = withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType,
+		deviceType: deviceType,
 	};
 } );
 

@@ -1,27 +1,39 @@
 // Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import Columnresponsive from '../../components/typography/column-responsive';
 import UAGB_Block_Icons from '@Controls/block-icons';
-
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+import React, { Suspense, lazy, useState } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/marketing-button/typography-control/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/marketing-button/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/marketing-button/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
+
 const svg_icons = Object.keys( UAGBIcon );
 
-import React, { useState } from 'react';
-const {
+import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
 	PanelColorSettings,
 	ColorPalette,
 	__experimentalLinkControl,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -31,24 +43,20 @@ const {
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
-} = wp.components;
+} from '@wordpress/components';
 
-const MarketingButtonSettings = ( props ) => {
+const Settings = ( props ) => {
 	const [ isURLPickerOpen, setCount ] = useState( false );
 
 	const {
 		attributes,
 		setAttributes,
-		isSelected,
-		className,
 		deviceType,
 	} = props;
 
 	const {
 		align,
 		textAlign,
-		heading,
-		prefix,
 		link,
 		linkTarget,
 		titleSpace,
@@ -289,7 +297,9 @@ const MarketingButtonSettings = ( props ) => {
 							beforeIcon=""
 							allowReset
 						/>
+						<Suspense fallback={ lazyLoader() }>
 						<Columnresponsive />
+						</Suspense>
 						{ 'Desktop' === deviceType && (
 							<>
 								<RangeControl
@@ -417,7 +427,8 @@ const MarketingButtonSettings = ( props ) => {
 				/>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Title', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<TypographyControl
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
 					label={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -472,12 +483,13 @@ const MarketingButtonSettings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
-				/>
+				/></Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<TypographyControl
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
 					label={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -532,7 +544,7 @@ const MarketingButtonSettings = ( props ) => {
 						value: prefixLineHeightTablet,
 						label: 'prefixLineHeightTablet',
 					} }
-				/>
+				/></Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Colors' ) }</h2>
 				<TabPanel
@@ -718,7 +730,9 @@ const MarketingButtonSettings = ( props ) => {
 	const backgroundSettings = () => {
 		return (
 			<PanelBody title={ __( 'Background' ) } initialOpen={ false }>
-				<Columnresponsive />
+				<Suspense fallback={ lazyLoader() }>
+					<Columnresponsive />
+				</Suspense>
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
@@ -1275,10 +1289,12 @@ const MarketingButtonSettings = ( props ) => {
 				{ backgroundSettings() }
 				{ borderSettings() }
 			</InspectorControls>
-			{ loadTitleGoogleFonts }
-			{ loadPrefixGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadTitleGoogleFonts }
+				{ loadPrefixGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
 
-export default MarketingButtonSettings;
+export default React.memo( Settings );
