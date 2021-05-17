@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-17T08:05:04+00:00\n"
+"POT-Creation-Date: 2021-05-17T10:06:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -291,7 +291,7 @@ msgid "Note: We do not recommend updating to a beta version on production site."
 msgstr ""
 
 #: admin/uagb-tools.php:86
-#: classes/class-uagb-admin.php:620
+#: classes/class-uagb-admin.php:631
 msgid "Rollback to Previous Version"
 msgstr ""
 
@@ -399,7 +399,11 @@ msgstr ""
 msgid "Theme Successfully Activated"
 msgstr ""
 
-#: classes/class-uagb-admin.php:602
+#: classes/class-uagb-admin.php:600
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: classes/class-uagb-admin.php:613
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
