@@ -199,7 +199,8 @@
 	animation: rotation 2s infinite linear;
 }
 
-.settings_page_uag  #wpcontent{
+.settings_page_uag  #wpcontent,
+.settings_page_uag-tools  #wpcontent {
 	padding: 0;
 }
 

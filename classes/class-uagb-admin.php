@@ -51,7 +51,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'wp_ajax_uagb_beta_updates', __CLASS__ . '::uagb_beta_updates' );
 
 			// Enqueue admin scripts.
-			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( isset( $_GET['page'] ) && ( UAGB_SLUG === $_GET['page'] || 'uag-tools' === $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
 
 				self::save_settings();
@@ -64,6 +64,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_post_uag_rollback', array( __CLASS__, 'post_uagb_rollback' ) );
 
 			add_action( 'admin_footer', array( __CLASS__, 'rollback_version_popup' ) );
+
+			if ( ! is_customize_preview() ) {
+				add_action( 'admin_head', array( __CLASS__, 'admin_submenu_css' ) );
+			}
 
 		}
 
@@ -192,7 +196,18 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				UAGB_PLUGIN_SHORT_NAME,
 				'manage_options',
 				UAGB_SLUG,
-				__CLASS__ . '::render'
+				__CLASS__ . '::render',
+				10
+			);
+
+			add_submenu_page(
+				'options-general.php',
+				__( 'Tools', 'ultimate-addons-for-gutenberg' ),
+				__( 'Tools', 'ultimate-addons-for-gutenberg' ),
+				'manage_options',
+				'uag-tools',
+				__CLASS__ . '::render',
+				10
 			);
 		}
 
@@ -228,6 +243,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			$action = ( isset( $_GET['action'] ) ) ? sanitize_text_field( $_GET['action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+			if ( isset( $_GET['page'] ) && 'uag-tools' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$action = 'tools';
+			}
+
 			$action = ( ! empty( $action ) && '' !== $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
 
@@ -617,7 +637,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			$current_screen = get_current_screen();
 
-			if ( 'settings_page_uag' !== $current_screen->id ) {
+			if ( 'settings_page_uag-tools' !== $current_screen->id ) {
 				return;
 			}
 
@@ -633,6 +653,21 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				</div>
 			</div>
 			<?php
+		}
+		/**
+		 * Renders Admin Submenu CSS.
+		 *
+		 * @since x.x.x
+		 * @return void
+		 */
+		public static function admin_submenu_css() {
+			echo '<style class="uag-menu-appearance-style">
+				#adminmenu a[href="options-general.php?page=uag-tools"]:before {
+					content: "\21B3";
+					margin-right: 0.5em;
+					opacity: 0.5;
+				}
+			</style>';
 		}
 	}
 

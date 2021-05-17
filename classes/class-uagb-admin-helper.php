@@ -346,10 +346,34 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$rollback_versions[] = $version;
 				}
 
+				usort( $rollback_versions, array( $this, 'sort_rollback_versions' ) );
+
 				set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions, WEEK_IN_SECONDS );
 			}
 
 			return $rollback_versions;
+		}
+		/**
+		 * Sort Rollback versions.
+		 *
+		 * @param string $prev Previous Version.
+		 * @param string $next Next Version.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 * @access public
+		 */
+		public function sort_rollback_versions( $prev, $next ) {
+
+			if ( version_compare( $prev, $next, '==' ) ) {
+				return 0;
+			}
+
+			if ( version_compare( $prev, $next, '>' ) ) {
+				return -1;
+			}
+
+			return 1;
 		}
 
 	}
