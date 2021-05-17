@@ -103,7 +103,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	const BlockControlSettings = () => {
+	const blockControlSettings = () => {
 		return (
 			<BlockControls key="controls">
 				<AlignmentToolbar
@@ -116,7 +116,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const HeadingPanel = () => {
+	const headingPanel = () => {
 		return (
 			<PanelBody
 				title={ __(
@@ -315,7 +315,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const SeperatorSettings = () => {
+	const seperatorSettings = () => {
 		return (
 			<PanelBody
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
@@ -464,7 +464,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const SpacingSettings = () => {
+	const spacingSettings = () => {
 		return (
 			<PanelBody
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
@@ -508,11 +508,11 @@ const Settings = ( props ) => {
 
 	return (
 		<div>
-			{ BlockControlSettings() }
+			{ blockControlSettings() }
 			<InspectorControls>
-				{ HeadingPanel() }
-				{ SeperatorSettings() }
-				{ SpacingSettings() }
+				{ headingPanel() }
+				{ seperatorSettings() }
+				{ spacingSettings() }
 			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>
 				{ loadHeadingGoogleFonts }

@@ -17,7 +17,7 @@ const Render = ( props ) => {
 		deviceType,
 	} = props;
 
-	const heading_html = (
+	const heading = (
 		<RichText
 			tagName={ headingTag }
 			placeholder={ __(
@@ -33,13 +33,13 @@ const Render = ( props ) => {
 		/>
 	);
 
-	const separator_html = seperatorStyle !== 'none' && (
+	const separator = seperatorStyle !== 'none' && (
 		<div className="uagb-separator-wrap">
 			<div className="uagb-separator"></div>
 		</div>
 	);
 
-	const desc_html = (
+	const desc = (
 		<RichText
 			tagName="p"
 			placeholder={ __(
@@ -60,9 +60,9 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ heading_html }
-			{ separator_html }
-			{ desc_html }
+			{ heading }
+			{ separator }
+			{ desc }
 		</div>
 	);
 }
