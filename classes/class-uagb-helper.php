@@ -984,7 +984,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function get_generated_stylesheet( $this_post ) {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->prepare_assets()' );
 
 			UAGB_Frontend::get_instance()->prepare_assets( $this_post );
