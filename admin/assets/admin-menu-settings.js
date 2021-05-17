@@ -106,7 +106,11 @@
 
 			$( document ).on( "click",".uagb-confirm-rollback-popup-button.confirm-ok", UAGBAdmin._onConfirmClick )
 
-			$( document ).on( "click",".uagb-confirm-rollback-popup-button.confirm-cancel", UAGBAdmin._onCancelClick )
+			$( document ).on( "click",".uagb-confirm-rollback-popup-button.confirm-cancel", UAGBAdmin._closeRollbackPopup )
+
+			$( document ).on( "keyup", UAGBAdmin._onEscPressed )
+
+			$( document ).on( "click", UAGBAdmin._onOutsidePopupClick )
 
 		},
 		_onRollbackClick: function ( e ) {
@@ -121,14 +125,29 @@
 
 			location.href = $( '.uagb-rollback-button' ).attr('href');
 
-			$( '.uagb-confirm-rollback-popup' ).removeClass('show');
+			UAGBAdmin._closeRollbackPopup( e );
 		},
-		_onCancelClick: function ( e ) {
+		_onEscPressed: function ( e ) {
 			
-			e.preventDefault();
+			// 27 is keymap for esc key.
+			if ( e.keyCode === 27 ) {
 
-			$( '.uagb-confirm-rollback-popup' ).removeClass('show');
+				UAGBAdmin._closeRollbackPopup( e );
+			}
+			
 		},
+		_onOutsidePopupClick: function ( e ) {
+			var target = e.target,
+			    popup = $( '.uagb-confirm-rollback-popup.show' );
+			
+			if ( target === popup[0] ) {
+				UAGBAdmin._closeRollbackPopup( e );
+			}
+		},
+		_closeRollbackPopup: function ( e ) {
+			e.preventDefault();
+			$( '.uagb-confirm-rollback-popup' ).removeClass('show');
+		},		
 		_selectRollbackVersion: function ( e ) {
 
 			var $this = $( this ),
