@@ -449,7 +449,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function uagb_beta_updates() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
+			if ( ! current_user_can( 'install_plugins' ) ) {
 				wp_send_json_error(
 					array(
 						'success' => false,
@@ -594,7 +594,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function post_uagb_rollback() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
+			if ( ! current_user_can( 'install_plugins' ) ) {
 				wp_die(
 					'',
 					esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ),
