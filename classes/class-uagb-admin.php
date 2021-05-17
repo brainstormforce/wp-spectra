@@ -621,7 +621,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( 'settings_page_uag' !== $current_screen->id ) {
 				return;
 			}
-			
+
 			?>
 			<div class="uagb-confirm-rollback-popup">
 				<div class="uagb-confirm-rollback-popup-overlay"></div>
