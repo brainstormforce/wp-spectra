@@ -1,8 +1,23 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
-
 import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
+import {
+	BlockControls,
+	BlockAlignmentToolbar,
+	ColorPalette,
+	InspectorControls,
+	MediaUpload,
+} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	SelectControl,
+	RangeControl,
+	Button,
+	ButtonGroup,
+	BaseControl,
+	ToggleControl,
+} from '@wordpress/components';
 
 const ColumnResponsive = lazy( () =>
 	import(
@@ -21,24 +36,6 @@ const BoxShadowControl = lazy( () =>
 		/* webpackChunkName: "chunks/section/box-shadow-control" */ '../../components/box-shadow'
 	)
 );
-
-const {
-	BlockControls,
-	BlockAlignmentToolbar,
-	ColorPalette,
-	InspectorControls,
-	MediaUpload,
-} = wp.blockEditor;
-
-const {
-	PanelBody,
-	SelectControl,
-	RangeControl,
-	Button,
-	ButtonGroup,
-	BaseControl,
-	ToggleControl,
-} = wp.components;
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -234,7 +231,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ themeWidth }
-							onChange={ (  ) =>
+							onChange={ () =>
 								setAttributes( { themeWidth: ! themeWidth } )
 							}
 						/>

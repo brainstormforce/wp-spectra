@@ -13,7 +13,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/section/render" */ './render' )
 );
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const UAGBSectionEdit = ( props ) => {
 	useEffect( () => {

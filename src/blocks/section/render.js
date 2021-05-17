@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import React from 'react';
-
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	props = props.parentProps;
