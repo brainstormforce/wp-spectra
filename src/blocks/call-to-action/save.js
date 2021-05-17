@@ -4,12 +4,23 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-
-// Import icon.
-import Title from './components/Title';
-import Description from './components/Description';
 import CtaPositionClasses from './classes';
-import CTA from './components/CTA';
+
+const Title = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/Title" */ './components/Title'
+	)
+);
+const Description = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/description" */ './components/Description'
+	)
+);
+const CTA = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/CTA" */ './components/CTA'
+	)
+);
 
 export default function save( props ) {
 	const {

@@ -4,21 +4,20 @@
 
 import CtaStyle from './inline-styles';
 import React, { useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 const Render = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/call-to-action/Render" */ './components/Render'
+		/* webpackChunkName: "chunks/call-to-action/Render" */ './Render'
 	)
 );
 const Settings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/call-to-action/Settings" */ './components/Settings'
+		/* webpackChunkName: "chunks/call-to-action/Settings" */ './Settings'
 	)
 );
 
 const UAGBCallToAction = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
-
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 

@@ -153,7 +153,7 @@ const Settings = ( props ) => {
 	}
 
 	// Icon properties.
-	const cta_icon_props = {
+	const ctaIconProps = {
 		icons: svg_icons,
 		value: ctaIcon,
 		onChange: ( value ) => {
@@ -314,7 +314,7 @@ const Settings = ( props ) => {
 					<>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( 'Button Icon' ) }</h2>
-						<FontIconPicker { ...cta_icon_props } />
+						<FontIconPicker { ...ctaIconProps } />
 						{ ctaIcon !== '' && (
 							<>
 								<SelectControl
@@ -510,13 +510,13 @@ const Settings = ( props ) => {
 						] }
 					>
 						{ ( tabName ) => {
-							let cta_text_tab;
+							let ctaTextTab;
 							if ( 'normal' === tabName.name ) {
-								cta_text_tab = cta_txt_color;
+								ctaTextTab = ctaTextColor();
 							} else {
-								cta_text_tab = cta_txt_hover_color;
+								ctaTextTab = ctaTxtHoverColor();
 							}
-							return <div>{ cta_text_tab }</div>;
+							return <div>{ ctaTextTab }</div>;
 						} }
 					</TabPanel>
 				) }
@@ -698,7 +698,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const cta_txt_color = () => {
+	const ctaTextColor = () => {
 		return (
 			<>
 				<p className="uagb-setting-label">
@@ -721,7 +721,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const cta_txt_hover_color = () => {
+	const ctaTxtHoverColor = () => {
 		return (
 			<>
 				<p className="uagb-setting-label">
@@ -788,63 +788,64 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: titleLoadGoogleFonts,
-						label: 'titleLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: titleFontFamily,
-						label: 'titleFontFamily',
-					} }
-					fontWeight={ {
-						value: titleFontWeight,
-						label: 'titleFontWeight',
-					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
-					} }
-					fontSizeType={ {
-						value: titleFontSizeType,
-						label: 'titleFontSizeType',
-					} }
-					fontSize={ {
-						value: titleFontSize,
-						label: 'titleFontSize',
-					} }
-					fontSizeMobile={ {
-						value: titleFontSizeMobile,
-						label: 'titleFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: titleFontSizeTablet,
-						label: 'titleFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: titleLineHeightType,
-						label: 'titleLineHeightType',
-					} }
-					lineHeight={ {
-						value: titleLineHeight,
-						label: 'titleLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: titleLineHeightMobile,
-						label: 'titleLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: titleLineHeightTablet,
-						label: 'titleLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: titleLoadGoogleFonts,
+							label: 'titleLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: titleFontFamily,
+							label: 'titleFontFamily',
+						} }
+						fontWeight={ {
+							value: titleFontWeight,
+							label: 'titleFontWeight',
+						} }
+						fontSubset={ {
+							value: titleFontSubset,
+							label: 'titleFontSubset',
+						} }
+						fontSizeType={ {
+							value: titleFontSizeType,
+							label: 'titleFontSizeType',
+						} }
+						fontSize={ {
+							value: titleFontSize,
+							label: 'titleFontSize',
+						} }
+						fontSizeMobile={ {
+							value: titleFontSizeMobile,
+							label: 'titleFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: titleFontSizeTablet,
+							label: 'titleFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: titleLineHeightType,
+							label: 'titleLineHeightType',
+						} }
+						lineHeight={ {
+							value: titleLineHeight,
+							label: 'titleLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: titleLineHeightMobile,
+							label: 'titleLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: titleLineHeightTablet,
+							label: 'titleLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -865,59 +866,61 @@ const Settings = ( props ) => {
 				<h2>
 					{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: descLoadGoogleFonts,
-						label: 'descLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: descFontFamily,
-						label: 'descFontFamily',
-					} }
-					fontWeight={ {
-						value: descFontWeight,
-						label: 'descFontWeight',
-					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
-					} }
-					fontSizeType={ {
-						value: descFontSizeType,
-						label: 'descFontSizeType',
-					} }
-					fontSize={ { value: descFontSize, label: 'descFontSize' } }
-					fontSizeMobile={ {
-						value: descFontSizeMobile,
-						label: 'descFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: descFontSizeTablet,
-						label: 'descFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: descLineHeightType,
-						label: 'descLineHeightType',
-					} }
-					lineHeight={ {
-						value: descLineHeight,
-						label: 'descLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: descLineHeightMobile,
-						label: 'descLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: descLineHeightTablet,
-						label: 'descLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: descLoadGoogleFonts,
+							label: 'descLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: descFontFamily,
+							label: 'descFontFamily',
+						} }
+						fontWeight={ {
+							value: descFontWeight,
+							label: 'descFontWeight',
+						} }
+						fontSubset={ {
+							value: descFontSubset,
+							label: 'descFontSubset',
+						} }
+						fontSizeType={ {
+							value: descFontSizeType,
+							label: 'descFontSizeType',
+						} }
+						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSizeMobile={ {
+							value: descFontSizeMobile,
+							label: 'descFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: descFontSizeTablet,
+							label: 'descFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: descLineHeightType,
+							label: 'descLineHeightType',
+						} }
+						lineHeight={ {
+							value: descLineHeight,
+							label: 'descLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: descLineHeightMobile,
+							label: 'descLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: descLineHeightTablet,
+							label: 'descLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -1157,9 +1160,11 @@ const Settings = ( props ) => {
 				{ ctaSettings() }
 				{ marginSettings() }
 			</InspectorControls>
-			{ loadCtaGoogleFonts }
-			{ loadTitleGoogleFonts }
-			{ loadDescGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadCtaGoogleFonts }
+				{ loadTitleGoogleFonts }
+				{ loadDescGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
