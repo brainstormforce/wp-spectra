@@ -594,6 +594,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function post_uagb_rollback() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			check_admin_referer( 'uag_rollback' );
 
 			$rollback_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
