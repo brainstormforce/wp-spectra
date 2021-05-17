@@ -1,21 +1,40 @@
 import classnames from 'classnames';
-import Title from './components/Title';
-import Description from './components/Description';
-import CtaPositionClasses from './classes';
-import CTA from './components/CTA';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const callToActionRender = ( props ) => {
+const Title = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/Title" */ './components/Title'
+	)
+);
+const Description = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/description" */ './components/Description'
+	)
+);
+const CTA = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/CTA" */ './components/CTA'
+	)
+);
+const CtaPositionClasses = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/classes" */ './components/classes'
+	)
+);
+const Render = ( props ) => {
+	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
 	const { block_id, ctaPosition, ctaType } = attributes;
 
-	const is_cta = (
+	const isCta = (
 		<CTA attributes={ attributes } setAttributes={ setAttributes } />
 	);
 
 	// Get description components.
-	const desc = (
+	const descText = (
 		<div className="uagb-cta-text-wrap">
 			{
 				<Description
@@ -28,7 +47,7 @@ const callToActionRender = ( props ) => {
 	);
 
 	// Get Title components.
-	const title_text = (
+	const titleText = (
 		<div className="uagb-cta__title-wrap">
 			{
 				<Title
@@ -52,19 +71,19 @@ const callToActionRender = ( props ) => {
 					<div className="uagb-cta__content">
 						{ ctaPosition == 'below-title' && (
 							<>
-								{ title_text }
-								{ desc }
-								{ is_cta }
+								{ titleText }
+								{ descText }
+								{ isCta }
 							</>
 						) }
 						{ ctaPosition == 'right' && (
 							<>
-								{ title_text }
-								{ desc }
+								{ titleText }
+								{ descText }
 							</>
 						) }
 					</div>
-					{ ctaPosition == 'right' && is_cta }
+					{ ctaPosition == 'right' && isCta }
 				</div>
 			</div>
 		);
@@ -79,6 +98,7 @@ const callToActionRender = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
+				<Suspense fallback={ lazyLoader() }>
 				{ ctaType == 'all' && (
 					<>
 						<a
@@ -92,8 +112,10 @@ const callToActionRender = ( props ) => {
 					</>
 				) }
 				{ ctaType !== 'all' && output() }
+				</Suspense>
 			</div>
 		</>
 	);
 };
-export default callToActionRender;
+
+export default React.memo( Render );

@@ -15,7 +15,7 @@ import attributes from './attributes';
 
 import { __ } from '@wordpress/i18n';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 const deprecated = [
 	{

@@ -3,9 +3,17 @@
  */
 
 import CtaStyle from './inline-styles';
-import callToActionRender from './render';
-import callToActionSettings from './settings';
 import React, { useEffect } from 'react';
+const Render = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/Render" */ './components/Render'
+	)
+);
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/Settings" */ './components/Settings'
+	)
+);
 
 const UAGBCallToAction = ( props ) => {
 	useEffect( () => {
@@ -38,8 +46,10 @@ const UAGBCallToAction = ( props ) => {
 
 	return (
 		<>
-			{ callToActionSettings( props ) }
-			{ callToActionRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

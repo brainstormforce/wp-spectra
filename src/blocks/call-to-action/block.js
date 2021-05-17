@@ -15,7 +15,7 @@ import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/call-to-action', {
 	title: uagb_blocks_info.blocks[ 'uagb/call-to-action' ].title,

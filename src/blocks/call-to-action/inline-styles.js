@@ -176,7 +176,7 @@ function CtaStyle( props ) {
 		};
 	}
 
-	const tablet_selectors = {
+	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -214,7 +214,7 @@ function CtaStyle( props ) {
 		},
 	};
 
-	const mobile_selectors = {
+	const mobileSelectors = {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -259,9 +259,9 @@ function CtaStyle( props ) {
 
 	let styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, id, true, 'tablet' );
+	styling_css += generateCSS( tabletSelectors, id, true, 'tablet' );
 
-	styling_css += generateCSS( mobile_selectors, id, true, 'mobile' );
+	styling_css += generateCSS( mobileSelectors, id, true, 'mobile' );
 
 	return styling_css;
 }

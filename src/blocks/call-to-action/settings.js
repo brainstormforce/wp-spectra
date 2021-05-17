@@ -3,31 +3,37 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
-
-const {
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/call-to-action/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
+import {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	TabPanel,
 	ToggleControl,
 	TextControl,
-} = wp.components;
+} from '@wordpress/components';
 
 const svg_icons = Object.keys( UAGBIcon );
 
-const callToActionSettings = ( props ) => {
+const Settings = ( props ) => {
+	
+	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
@@ -234,6 +240,7 @@ const callToActionSettings = ( props ) => {
 
 						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
 							( ctaType === 'text' && (
+								<Suspense fallback={ lazyLoader() }>
 								<TypographyControl
 									label={ __(
 										'Typography',
@@ -275,6 +282,7 @@ const callToActionSettings = ( props ) => {
 									} }
 									disableLineHeight={ true }
 								/>
+								</Suspense>
 							) ) }
 					</>
 				) }
@@ -1156,4 +1164,4 @@ const callToActionSettings = ( props ) => {
 	);
 };
 
-export default callToActionSettings;
+export default React.memo( Settings );
