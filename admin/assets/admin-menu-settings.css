@@ -357,7 +357,8 @@
 	border-bottom: 1px solid #e6e9ec;
 }
 .uagb-confirm-rollback-popup-button.confirm-ok {
-	color: #b01b1b;
+	color: rgb(255 255 255);
+	background: #03a9f4;
 }
 .uagb-confirm-rollback-popup.show {
 	display: block;

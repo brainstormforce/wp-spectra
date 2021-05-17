@@ -351,8 +351,7 @@ array_multisort(
 							}
 							?>
 						</select>
-						<a href="https://wpastra.com" class="button uagb-rollback-button">Astra</a>
-						<a data-placeholder-text=" <?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . 'v{VERSION}'; ?>" href="<?php echo esc_url( add_query_arg( 'version', $uag_versions[0], wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ); ?>" data-placeholder-url="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback&version=VERSION' ), 'uag_rollback' ) ); ?>" class="button uagb-rollbackk-button"><?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . esc_html( $uag_versions[0] ); ?> </a>
+						<a data-placeholder-text=" <?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . 'v{VERSION}'; ?>" href="<?php echo esc_url( add_query_arg( 'version', $uag_versions[0], wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ); ?>" data-placeholder-url="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback&version=VERSION' ), 'uag_rollback' ) ); ?>" class="button uagb-rollback-button"><?php echo esc_html__( 'Reinstall ', 'ultimate-addons-for-gutenberg' ) . esc_html( $uag_versions[0] ); ?> </a>
 						<p>
 							<?php esc_html_e( 'Warning: Please backup your database before making the rollback.', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
