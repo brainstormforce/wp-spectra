@@ -3369,6 +3369,6 @@ label.wp-block-uagb-blockquote__via-label svg {
     position:inherit;
 }
 
-.uag-typography-range-options + .components-button-group.uagb-size-type-field {
-    margin-bottom:-33px
+button.components-button.uagb-review-select-btn.is-secondary {
+    margin-bottom:10px;
 }
