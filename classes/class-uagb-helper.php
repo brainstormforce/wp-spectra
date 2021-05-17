@@ -712,7 +712,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get UAG upload dir path.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @return string
 		 */
 		public static function get_uag_upload_dir_path() {
@@ -727,7 +727,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Delete all files from UAG upload dir.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @return string
 		 */
 		public static function delete_all_uag_dir_files() {
