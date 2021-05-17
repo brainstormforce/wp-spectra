@@ -1014,7 +1014,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function parse( $content ) {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->parse_blocks()' );
 
 			UAGB_Frontend::get_instance()->parse_blocks( $content );
@@ -1027,4 +1026,3 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	UAGB_Helper::get_instance();
 }
-
