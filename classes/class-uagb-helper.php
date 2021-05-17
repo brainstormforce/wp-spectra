@@ -999,7 +999,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function get_assets( $blocks ) {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_blocks_assets()' );
 
 			UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
