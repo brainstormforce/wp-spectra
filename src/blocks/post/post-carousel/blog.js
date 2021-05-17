@@ -91,8 +91,6 @@ function Blog( props ) {
 		? 'uagb-post__carousel_equal-height'
 		: '';
 
-	const current = this;
-
 	const settings = {
 		slidesToShow: columns,
 		slidesToScroll: 1,

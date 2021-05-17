@@ -8,9 +8,9 @@ const WebfontLoader = lazy( () =>
 	)
 );
 
-const { BlockAlignmentToolbar, BlockControls } = wp.blockEditor;
+import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
-const { ToolbarGroup } = wp.components;
+import { ToolbarGroup } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { state, inspectorControls, togglePreview } = props;

@@ -8,11 +8,11 @@ import React from 'react';
 import Blog from './blog';
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
-const { Placeholder, Button, Tip, Disabled } = wp.components;
+import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	const { state, setState, togglePreview } = props;

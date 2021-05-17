@@ -6,7 +6,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 
 import styling from '.././styling';
 
-const { compose } = wp.compose;
+import { compose } from '@wordpress/compose';
 
 import { __ } from '@wordpress/i18n';
 
@@ -37,7 +37,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-carousel/render" */ './render' )
 );
 
-const {
+import {
 	PanelBody,
 	Placeholder,
 	QueryControls,
@@ -48,11 +48,11 @@ const {
 	TabPanel,
 	TextControl,
 	RadioControl,
-} = wp.components;
+} from '@wordpress/components';
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
 
-const { withSelect, withDispatch } = wp.data;
+import { withSelect, withDispatch } from '@wordpress/data';
 
 const UAGBPostCarousel = ( props ) => {
 	const [ state, setState ] = useState( {
@@ -122,7 +122,6 @@ const UAGBPostCarousel = ( props ) => {
 		taxonomyList,
 	} = props;
 	const {
-		block_id,
 		displayPostTitle,
 		displayPostDate,
 		displayPostComment,

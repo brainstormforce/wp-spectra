@@ -11,10 +11,10 @@ import '.././style.scss';
 import '.././editor.scss';
 
 // Components
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 // Register block controls
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-carousel', {
