@@ -292,7 +292,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Rollback versions.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @return array
 		 * @access public
 		 */
@@ -358,7 +358,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @param string $prev Previous Version.
 		 * @param string $next Next Version.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @return array
 		 * @access public
 		 */

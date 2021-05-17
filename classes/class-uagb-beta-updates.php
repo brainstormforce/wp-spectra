@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 		 *
 		 * Holds the UAG beta updates transient key.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @access private
 		 * @static
 		 *
@@ -49,7 +49,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 */
 		public function __construct() {
 
@@ -68,7 +68,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 		 *
 		 * Retrieve UAG beta version from wp.org plugin repository.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @access private
 		 *
 		 * @return string|false Beta version or false.
@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Beta_Updates' ) ) {
 		 * Fired by `pre_set_site_transient_update_plugins` filter, before WordPress
 		 * runs the plugin update checker.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @access public
 		 *
 		 * @param object $transient Plugin version data.

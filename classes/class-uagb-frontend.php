@@ -128,7 +128,7 @@ class UAGB_Frontend {
 	/**
 	 * Static CSS Added Array
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @var array
 	 */
 	public static $static_css_blocks = array();
@@ -175,7 +175,7 @@ class UAGB_Frontend {
 	/**
 	 * Define variables.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public function define_vars() {
 		self::$file_generation = UAGB_Helper::$file_generation;
@@ -184,7 +184,7 @@ class UAGB_Frontend {
 	/**
 	 * Set initial required variables.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public function set_initial_vars() {
 		self::$is_allowed_assets_generation = $this->allow_assets_generation();
@@ -193,7 +193,7 @@ class UAGB_Frontend {
 	/**
 	 * This function determines wether to generate new assets or not.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public function allow_assets_generation() {
 
@@ -249,7 +249,7 @@ class UAGB_Frontend {
 	 * This function deletes the Page assets from the Page Meta Key.
 	 *
 	 * @param int $post_id Post Id.
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public function delete_page_assets( $post_id ) {
 
@@ -276,7 +276,7 @@ class UAGB_Frontend {
 	/**
 	 * This function updates the Page assets in the Page Meta Key.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public function update_page_assets() {
 
@@ -1131,7 +1131,7 @@ class UAGB_Frontend {
 	 * @param string $block_name Block Name.
 	 *
 	 * @return string Static CSS.
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function get_block_static_css( $block_name ) {
 

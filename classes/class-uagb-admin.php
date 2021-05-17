@@ -445,7 +445,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Update the Beta updates flag.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 */
 		public static function uagb_beta_updates() {
 
@@ -500,7 +500,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * File Regeneration Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 */
 		public static function file_regeneration() {
 
@@ -589,7 +589,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * Fired by `admin_post_uag_rollback` action.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @access public
 		 */
 		public static function post_uagb_rollback() {
@@ -630,7 +630,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * Fired by `admin_post_uag_rollback` action.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @access public
 		 */
 		public static function rollback_version_popup() {
@@ -657,7 +657,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Renders Admin Submenu CSS.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @return void
 		 */
 		public static function admin_submenu_css() {

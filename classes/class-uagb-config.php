@@ -34,7 +34,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		/**
 		 * Block Assets
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 * @var block_attributes
 		 */
 		public static $block_assets_css = null;
@@ -3009,7 +3009,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		/**
 		 * Get Block Assets.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.0
 		 *
 		 * @return array The Asset List.
 		 */

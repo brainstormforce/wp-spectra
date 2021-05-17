@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * UAG Rollback. handler class is responsible for rolling back UAG to
  * previous version.
  *
- * @since x.x.x
+ * @since 1.23.0
  */
 class UAGB_Rollback {
 
@@ -24,7 +24,7 @@ class UAGB_Rollback {
 	 *
 	 * Holds the package URL.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 *
 	 * @var string Package URL.
@@ -36,7 +36,7 @@ class UAGB_Rollback {
 	 *
 	 * Holds the version.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 *
 	 * @var string Package URL.
@@ -48,7 +48,7 @@ class UAGB_Rollback {
 	 *
 	 * Holds the plugin name.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 *
 	 * @var string Plugin name.
@@ -60,7 +60,7 @@ class UAGB_Rollback {
 	 *
 	 * Holds the plugin slug.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 *
 	 * @var string Plugin slug.
@@ -72,7 +72,7 @@ class UAGB_Rollback {
 	 *
 	 * Initializing UAG Rollback.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access public
 	 *
 	 * @param array $args Optional. UAGB Rollback arguments. Default is an empty array.
@@ -88,7 +88,7 @@ class UAGB_Rollback {
 	 *
 	 * Add an inline CSS to the UAG Rollback page.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access private
 	 */
 	private function print_inline_style() {
@@ -126,7 +126,7 @@ class UAGB_Rollback {
 	 * modifies package data to update the plugin from a specific URL containing
 	 * the version package.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 */
 	protected function apply_package() {
@@ -151,7 +151,7 @@ class UAGB_Rollback {
 	 *
 	 * Run WordPress upgrade to UAGB Rollback to previous version.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access protected
 	 */
 	protected function upgrade() {
@@ -176,7 +176,7 @@ class UAGB_Rollback {
 	 *
 	 * Rollback UAG to previous versions.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 * @access public
 	 */
 	public function run() {
