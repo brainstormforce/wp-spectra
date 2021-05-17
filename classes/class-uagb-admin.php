@@ -276,7 +276,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				'installing_text' => __( 'Installing Astra', 'ultimate-addons-for-gutenberg' ),
 				'activating_text' => __( 'Activating Astra', 'ultimate-addons-for-gutenberg' ),
 				'activated_text'  => __( 'Astra Activated!', 'ultimate-addons-for-gutenberg' ),
-				'reinstall_text'  => __( 'Reinstall', 'ultimate-addons-for-gutenberg' ),
 			);
 
 			wp_localize_script( 'uagb-admin-settings', 'uagb', apply_filters( 'uagb_js_localize', $localize ) );
