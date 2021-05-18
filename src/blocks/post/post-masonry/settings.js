@@ -1,4 +1,4 @@
-import WebfontLoader from '../../../components/typography/fontloader';
+import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';

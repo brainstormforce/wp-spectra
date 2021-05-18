@@ -10,13 +10,13 @@ import { compose } from '@wordpress/compose';
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-masonry/settings" */ '../../../components/typography'
+		/* webpackChunkName: "chunks/post-masonry/typography" */ '@Components/components/typography'
 	)
 );
 
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-masonry/settings" */ '../../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/post-masonry/column-responsive" */ '@Components/typography/column-responsive'
 	)
 );
 
