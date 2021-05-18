@@ -91,7 +91,6 @@ class UAGBTableOfContentsEdit extends Component {
 		if( this.props.attributes.heading && '' !== this.props.attributes.heading ){
 			this.props.setAttributes( { headingTitle: this.props.attributes.heading } )
 		}
-
 		
 	}
 
