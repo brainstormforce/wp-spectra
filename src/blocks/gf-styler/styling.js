@@ -655,7 +655,7 @@ function styling( props ) {
 		},
 	};
 
-	const tablet_selectors = {
+	const tabletSelectors = {
 		' input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
@@ -786,7 +786,7 @@ function styling( props ) {
 		},
 	};
 
-	const mobile_selectors = {
+	const mobileSelectors = {
 		' input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -916,7 +916,7 @@ function styling( props ) {
 		},
 	};
 
-	let styling_css = generateCSS(
+	let stylingCss = generateCSS(
 		selectors,
 		`.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
 			0,
@@ -924,8 +924,8 @@ function styling( props ) {
 		) }`
 	);
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
 			0,
 			8
@@ -934,8 +934,8 @@ function styling( props ) {
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
 			0,
 			8
@@ -944,7 +944,7 @@ function styling( props ) {
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
