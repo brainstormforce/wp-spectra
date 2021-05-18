@@ -125,7 +125,7 @@ function styling( props ) {
 			"padding-bottom": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
 			"background": backgroundColor
 		},
-		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
+		" .uagb-toc__list-wrap ol.uagb-toc__list:first-child" : {
 			"margin-left": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
 			"margin-right": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
 			"margin-top": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
