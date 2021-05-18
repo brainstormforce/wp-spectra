@@ -596,8 +596,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				wp_die(
-					'',
 					esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ),
+					esc_html__( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 					array(
 						'response' => 200,
 					)
