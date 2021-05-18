@@ -2,12 +2,13 @@ import classnames from 'classnames';
 import PositionClasses from './classes';
 import memoize from 'memize';
 import times from 'lodash/times';
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/restaurant-menu-child' ];
 
-const priceListRender = ( props ) => {
-	const { className, setAttributes, attributes, deviceType } = props;
+const Render = ( props ) => {
+	props = props.parentProps;
+	const { className, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const { menu_item_count, rest_menu_item_arr } = attributes;
@@ -58,4 +59,4 @@ const priceListRender = ( props ) => {
 		</div>
 	);
 };
-export default priceListRender;
+export default React.memo( Render );

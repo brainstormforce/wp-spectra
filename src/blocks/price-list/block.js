@@ -12,12 +12,10 @@ import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
-
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
-const { compose, createHigherOrderComponent } = wp.compose;
+import { registerBlockType } from '@wordpress/blocks';
+import { addFilter } from '@wordpress/hooks';
+import { withSelect } from '@wordpress/data';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 /**
  * Override the default block element to add	wrapper props.
@@ -42,9 +40,9 @@ const enhance = compose(
 const withPriceList = createHigherOrderComponent( ( BlockEdit ) => {
 	return enhance( ( { ...props } ) => {
 		return (
-			<Fragment>
+			<>
 				<BlockEdit { ...props } />
-			</Fragment>
+			</>
 		);
 	} );
 }, 'withPriceList' );

@@ -2,20 +2,20 @@
  * BLOCK: Price List - Attributes
  */
 import { __ } from '@wordpress/i18n';
-const ITEM_COUNT = 4;
+const itemCount = 4;
 
-const rest_menu_block = [];
+const restMenuBlock = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
-	const desc_text = __(
+for ( let i = 1; i <= itemCount; i++ ) {
+	const descText = __(
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	);
-	const title_text = __( 'Menu Item ' + i );
-	const price_text = __( '$9' );
-	rest_menu_block.push( {
-		description: desc_text,
-		title: title_text,
-		price: price_text,
+	const titleText = __( 'Menu Item ' + i );
+	const priceText = __( '$9' );
+	restMenuBlock.push( {
+		description: descText,
+		title: titleText,
+		price: priceText,
 		image: '',
 	} );
 }
@@ -31,11 +31,11 @@ const attributes = {
 	},
 	menu_item_count: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	rest_menu_item_arr: {
 		type: 'array',
-		default: rest_menu_block,
+		default: restMenuBlock,
 	},
 	headingAlign: {
 		type: 'string',

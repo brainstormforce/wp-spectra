@@ -3,14 +3,18 @@
  */
 
 import RestMenuStyle from './inline-styles';
-const { select, withSelect } = wp.data;
-import priceListRender from './render';
-import priceListSetting from './settings';
-import React, { useEffect } from 'react';
+import { select, withSelect } from '@wordpress/data';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list/render" */ './render' )
+);
 
 const UAGBRestaurantMenu = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -59,8 +63,10 @@ const UAGBRestaurantMenu = ( props ) => {
 
 	return (
 		<>
-			{ priceListSetting( props ) }
-			{ priceListRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
@@ -75,6 +81,6 @@ export default withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType,
+		deviceType:deviceType,
 	};
 } )( UAGBRestaurantMenu );

@@ -1,33 +1,42 @@
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-import Columnresponsive from '../../components/typography/column-responsive';
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/price-list/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/price-list/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/price-list/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
-const { select } = wp.data;
-const MAX_COLUMNS = 3;
+import { select } from '@wordpress/data';
+const maxColumns = 3;
 
-const {
+import {
 	InspectorControls,
 	PanelColorSettings,
-	ColorPalette,
-	InnerBlocks,
-} = wp.blockEditor;
+	ColorPalette
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	SelectControl,
-	TabPanel,
-	Dashicon,
 	Button,
 	ButtonGroup,
 	Path,
 	SVG,
-} = wp.components;
+} from '@wordpress/components';
 
-const priceListSettings = ( props ) => {
+const Settings = ( props ) => {
+	
+	props = props.parentProps;
 	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
@@ -96,7 +105,6 @@ const priceListSettings = ( props ) => {
 	} = attributes;
 
 	const setcolumns = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -107,7 +115,6 @@ const priceListSettings = ( props ) => {
 		setAttributes( { columns: value } );
 	};
 	const setheadingTag = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -117,9 +124,7 @@ const priceListSettings = ( props ) => {
 		} );
 		setAttributes( { headingTag: value } );
 	};
-
 	const setimagePosition = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -130,7 +135,6 @@ const priceListSettings = ( props ) => {
 		setAttributes( { imagePosition: value } );
 	};
 	const setimageSize = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -142,7 +146,6 @@ const priceListSettings = ( props ) => {
 	};
 
 	const setimageAlignment = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -156,8 +159,6 @@ const priceListSettings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
-
 		setAttributes( { backgroundImage: null } );
 	};
 
@@ -165,7 +166,6 @@ const priceListSettings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
@@ -535,166 +535,168 @@ const priceListSettings = ( props ) => {
 						{ value: 'span', label: __( 'SPAN' ) },
 					] }
 				/>
-				<TypographyControl
-					label={ __( 'Typography' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: titleLoadGoogleFonts,
-						label: 'titleLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: titleFontFamily,
-						label: 'titleFontFamily',
-					} }
-					fontWeight={ {
-						value: titleFontWeight,
-						label: 'titleFontWeight',
-					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
-					} }
-					fontSizeType={ {
-						value: titleFontSizeType,
-						label: 'titleFontSizeType',
-					} }
-					fontSize={ {
-						value: titleFontSize,
-						label: 'titleFontSize',
-					} }
-					fontSizeMobile={ {
-						value: titleFontSizeMobile,
-						label: 'titleFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: titleFontSizeTablet,
-						label: 'titleFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: titleLineHeightType,
-						label: 'titleLineHeightType',
-					} }
-					lineHeight={ {
-						value: titleLineHeight,
-						label: 'titleLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: titleLineHeightMobile,
-						label: 'titleLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: titleLineHeightTablet,
-						label: 'titleLineHeightTablet',
-					} }
-				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Content' ) }</h2>
-				<TypographyControl
-					label={ __( 'Typography' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: descLoadGoogleFonts,
-						label: 'descLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: descFontFamily,
-						label: 'descFontFamily',
-					} }
-					fontWeight={ {
-						value: descFontWeight,
-						label: 'descFontWeight',
-					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
-					} }
-					fontSizeType={ {
-						value: descFontSizeType,
-						label: 'descFontSizeType',
-					} }
-					fontSize={ { value: descFontSize, label: 'descFontSize' } }
-					fontSizeMobile={ {
-						value: descFontSizeMobile,
-						label: 'descFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: descFontSizeTablet,
-						label: 'descFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: descLineHeightType,
-						label: 'descLineHeightType',
-					} }
-					lineHeight={ {
-						value: descLineHeight,
-						label: 'descLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: descLineHeightMobile,
-						label: 'descLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: descLineHeightTablet,
-						label: 'descLineHeightTablet',
-					} }
-				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Price' ) }</h2>
-				<TypographyControl
-					label={ __( 'Typography' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: priceLoadGoogleFonts,
-						label: 'priceLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: priceFontFamily,
-						label: 'priceFontFamily',
-					} }
-					fontWeight={ {
-						value: priceFontWeight,
-						label: 'priceFontWeight',
-					} }
-					fontSubset={ {
-						value: priceFontSubset,
-						label: 'priceFontSubset',
-					} }
-					fontSizeType={ {
-						value: priceFontSizeType,
-						label: 'priceFontSizeType',
-					} }
-					fontSize={ {
-						value: priceFontSize,
-						label: 'priceFontSize',
-					} }
-					fontSizeMobile={ {
-						value: priceFontSizeMobile,
-						label: 'priceFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: priceFontSizeTablet,
-						label: 'priceFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: priceLineHeightType,
-						label: 'priceLineHeightType',
-					} }
-					lineHeight={ {
-						value: priceLineHeight,
-						label: 'priceLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: priceLineHeightMobile,
-						label: 'priceLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: priceLineHeightTablet,
-						label: 'priceLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __( 'Typography' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: titleLoadGoogleFonts,
+							label: 'titleLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: titleFontFamily,
+							label: 'titleFontFamily',
+						} }
+						fontWeight={ {
+							value: titleFontWeight,
+							label: 'titleFontWeight',
+						} }
+						fontSubset={ {
+							value: titleFontSubset,
+							label: 'titleFontSubset',
+						} }
+						fontSizeType={ {
+							value: titleFontSizeType,
+							label: 'titleFontSizeType',
+						} }
+						fontSize={ {
+							value: titleFontSize,
+							label: 'titleFontSize',
+						} }
+						fontSizeMobile={ {
+							value: titleFontSizeMobile,
+							label: 'titleFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: titleFontSizeTablet,
+							label: 'titleFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: titleLineHeightType,
+							label: 'titleLineHeightType',
+						} }
+						lineHeight={ {
+							value: titleLineHeight,
+							label: 'titleLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: titleLineHeightMobile,
+							label: 'titleLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: titleLineHeightTablet,
+							label: 'titleLineHeightTablet',
+						} }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( 'Content' ) }</h2>
+					<TypographyControl
+						label={ __( 'Typography' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: descLoadGoogleFonts,
+							label: 'descLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: descFontFamily,
+							label: 'descFontFamily',
+						} }
+						fontWeight={ {
+							value: descFontWeight,
+							label: 'descFontWeight',
+						} }
+						fontSubset={ {
+							value: descFontSubset,
+							label: 'descFontSubset',
+						} }
+						fontSizeType={ {
+							value: descFontSizeType,
+							label: 'descFontSizeType',
+						} }
+						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSizeMobile={ {
+							value: descFontSizeMobile,
+							label: 'descFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: descFontSizeTablet,
+							label: 'descFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: descLineHeightType,
+							label: 'descLineHeightType',
+						} }
+						lineHeight={ {
+							value: descLineHeight,
+							label: 'descLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: descLineHeightMobile,
+							label: 'descLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: descLineHeightTablet,
+							label: 'descLineHeightTablet',
+						} }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( 'Price' ) }</h2>
+					<TypographyControl
+						label={ __( 'Typography' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: priceLoadGoogleFonts,
+							label: 'priceLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: priceFontFamily,
+							label: 'priceFontFamily',
+						} }
+						fontWeight={ {
+							value: priceFontWeight,
+							label: 'priceFontWeight',
+						} }
+						fontSubset={ {
+							value: priceFontSubset,
+							label: 'priceFontSubset',
+						} }
+						fontSizeType={ {
+							value: priceFontSizeType,
+							label: 'priceFontSizeType',
+						} }
+						fontSize={ {
+							value: priceFontSize,
+							label: 'priceFontSize',
+						} }
+						fontSizeMobile={ {
+							value: priceFontSizeMobile,
+							label: 'priceFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: priceFontSizeTablet,
+							label: 'priceFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: priceLineHeightType,
+							label: 'priceLineHeightType',
+						} }
+						lineHeight={ {
+							value: priceLineHeight,
+							label: 'priceLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: priceLineHeightMobile,
+							label: 'priceLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: priceLineHeightTablet,
+							label: 'priceLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 			</PanelBody>
 		);
 	};
@@ -711,7 +713,7 @@ const priceListSettings = ( props ) => {
 								value={ columns }
 								onChange={ setcolumns }
 								min={ 1 }
-								max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+								max={ Math.min( maxColumns, menu_item_count ) }
 							/>
 						</>
 					) }
@@ -724,7 +726,7 @@ const priceListSettings = ( props ) => {
 									setAttributes( { tcolumns: value } )
 								}
 								min={ 1 }
-								max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+								max={ Math.min( maxColumns, menu_item_count ) }
 							/>
 						</>
 					) }
@@ -737,7 +739,7 @@ const priceListSettings = ( props ) => {
 									setAttributes( { mcolumns: value } )
 								}
 								min={ 1 }
-								max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+								max={ Math.min( maxColumns, menu_item_count ) }
 							/>
 						</>
 					) }
@@ -756,11 +758,13 @@ const priceListSettings = ( props ) => {
 	return (
 		<>
 			{ inspectControl() }
-			{ loadTitleGoogleFonts }
-			{ loadDescGoogleFonts }
-			{ loadPriceGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadTitleGoogleFonts }
+				{ loadDescGoogleFonts }
+				{ loadPriceGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
 
-export default priceListSettings;
+export default React.memo( Settings );

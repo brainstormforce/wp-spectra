@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function RestMenuStyle( props ) {
 	const {
-		classMigrate,
 		headingAlign,
 		priceColor,
 		descColor,
@@ -60,8 +59,8 @@ function RestMenuStyle( props ) {
 		seperatorColor,
 	} = props.attributes;
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	let align = headingAlign;
 	if ( 'left' === align ) {
@@ -154,7 +153,7 @@ function RestMenuStyle( props ) {
 		clear: 'left',
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-rm__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -187,7 +186,7 @@ function RestMenuStyle( props ) {
 		},
 	};
 
-	tablet_selectors[
+	tabletSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
 			columns +
 			':nth-child(' +
@@ -198,7 +197,7 @@ function RestMenuStyle( props ) {
 		clear: 'unset',
 	};
 
-	tablet_selectors[
+	tabletSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__tablet-column-' +
 			tcolumns +
 			':nth-child(' +
@@ -209,7 +208,7 @@ function RestMenuStyle( props ) {
 		clear: 'left',
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-rm__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -242,7 +241,7 @@ function RestMenuStyle( props ) {
 		},
 	};
 
-	mobile_selectors[
+	mobileSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
 			columns +
 			':nth-child(' +
@@ -253,7 +252,7 @@ function RestMenuStyle( props ) {
 		clear: 'unset',
 	};
 
-	mobile_selectors[
+	mobileSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__mobile-column-' +
 			mcolumns +
 			':nth-child(' +
@@ -264,26 +263,26 @@ function RestMenuStyle( props ) {
 		clear: 'left',
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `#wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default RestMenuStyle;
