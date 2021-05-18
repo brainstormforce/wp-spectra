@@ -210,7 +210,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// Replace multiple `_` (underscore) with a single `_` (underscore).
 			$string = preg_replace( '/_+/', '-', $string );
 			// Remove trailing `-` and `_`.
-			$string = rtrim( $string, '-_' );
+			$string = trim( $string, '-_' );
 			return strtolower( preg_replace( '/-+/', '-', $string ) ); // Replaces multiple hyphens with single one.
 		}
 
