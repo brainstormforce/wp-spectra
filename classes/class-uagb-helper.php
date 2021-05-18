@@ -1025,7 +1025,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::generate_asset_files()` instead
 		 */
 		public function generate_asset_files() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->generate_asset_files()' );
 
 			UAGB_Frontend::get_instance()->generate_asset_files();
@@ -1037,7 +1036,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::enqueue_block_assets()` instead
 		 */
 		public function block_assets() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->enqueue_block_assets()' );
 
 			UAGB_Frontend::get_instance()->enqueue_block_assets();
@@ -1050,7 +1048,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::print_script()` instead
 		 */
 		public function print_script() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_script()' );
 
 			UAGB_Frontend::get_instance()->print_script();
@@ -1063,7 +1060,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::print_stylesheet()` instead
 		 */
 		public function print_stylesheet() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_stylesheet()' );
 
 			UAGB_Frontend::get_instance()->print_stylesheet();
@@ -1076,7 +1072,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::print_google_fonts()` instead
 		 */
 		public function frontend_gfonts() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_google_fonts()' );
 
 			UAGB_Frontend::get_instance()->print_google_fonts();
@@ -1090,7 +1085,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::get_block_css_and_js()` instead
 		 */
 		public function get_block_css_and_js( $block ) {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_block_css_and_js()' );
 
 			UAGB_Frontend::get_instance()->get_block_css_and_js( $block );
@@ -1102,7 +1096,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Frontend::generate_assets()` instead
 		 */
 		public function generate_assets() {
-
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->generate_assets()' );
 
 			UAGB_Frontend::get_instance()->generate_assets();
