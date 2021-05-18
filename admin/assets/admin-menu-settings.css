@@ -343,10 +343,12 @@
 .uagb-confirm-rollback-popup-buttons-wrapper {
 	border-top: 1px solid #e6e9ec;
     text-align: center;
+	display: inline-flex;
+    width: 100%;
 }
 .uagb-confirm-rollback-popup-button {
 	font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
-    width: 100%;
+    width: 50%;
     border: none;
     background: none;
     color: #6d7882;
@@ -355,12 +357,14 @@
     padding: 13px 0;
     outline: 0;
 }
+.uagb-confirm-rollback-popup-button:hover {
+	background:#e6e9ec6b
+}
 .uagb-confirm-rollback-popup-button.confirm-cancel {
-	border-bottom: 1px solid #e6e9ec;
+	border-right: 1px solid #e6e9ec;
 }
 .uagb-confirm-rollback-popup-button.confirm-ok {
-	color: rgb(255 255 255);
-	background: #03a9f4;
+	color: #03a9f4;
 }
 .uagb-confirm-rollback-popup.show {
 	display: block;

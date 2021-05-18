@@ -162,7 +162,7 @@ class UAGB_Rollback {
 			'url'    => 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $this->plugin_name ),
 			'plugin' => $this->plugin_name,
 			'nonce'  => 'upgrade-plugin_' . $this->plugin_name,
-			'title'  => __( 'Ultimate Addons for Gutenberg Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
+			'title'  => __( 'Ultimate Addons for Gutenberg <p>Rollback to Previous Version</p>', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		$this->print_inline_style();
