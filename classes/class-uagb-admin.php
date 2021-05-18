@@ -207,7 +207,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				'manage_options',
 				'uag-tools',
 				__CLASS__ . '::render',
-				10
+				11
 			);
 		}
 
