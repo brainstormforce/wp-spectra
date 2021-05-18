@@ -10,7 +10,7 @@ import { compose } from '@wordpress/compose';
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-masonry/typography" */ '@Components/components/typography'
+		/* webpackChunkName: "chunks/post-masonry/typography" */ '@Components/typography'
 	)
 );
 
