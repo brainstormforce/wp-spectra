@@ -78,9 +78,6 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			// Update asset version number.
 			update_option( '__uagb_asset_version', time() );
 
-			// Delete rollback transient.
-			delete_transient( 'uag_rollback_versions_' . UAGB_VER );
-
 			// Update auto saved version number.
 			update_option( 'uagb-version', UAGB_VER );
 
