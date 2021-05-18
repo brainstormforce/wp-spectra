@@ -1,13 +1,31 @@
 import classnames from 'classnames';
-import AuthorName from './components/AuthorName';
-import Company from './components/Company';
-import Description from './components/Description';
-import TestimonialImage from './components/Image';
 import Slider from 'react-slick';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-
-const testimonialRender = ( props ) => {
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const TestimonialImage = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/Image" */ './components/Image'
+	)
+);
+const AuthorName = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/AuthorName" */ './components/AuthorName'
+	)
+);
+const Company = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/Company" */ './components/Company'
+	)
+);
+const Description = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/Description" */ './components/Description'
+	)
+);
+const Render = ( props ) => {
+	props = props.parentProps;
 	const { className, setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
@@ -123,6 +141,7 @@ const testimonialRender = ( props ) => {
 				) }
 				{ ...settings }
 			>
+				<Suspense fallback={ lazyLoader() }>
 				{ test_block.map( ( test, index ) => (
 					<div
 						className={ classnames(
@@ -200,8 +219,9 @@ const testimonialRender = ( props ) => {
 						</div>
 					</div>
 				) ) }
+				</Suspense>
 			</Slider>
 		</div>
 	);
 };
-export default testimonialRender;
+export default React.memo( Render );

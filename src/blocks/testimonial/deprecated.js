@@ -11,9 +11,7 @@ import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/Image';
 
-const { RichText } = wp.blockEditor;
-
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 const deprecated = [
 	{

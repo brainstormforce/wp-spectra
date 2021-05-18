@@ -1,33 +1,44 @@
-import Columnresponsive from '../../components/typography/column-responsive';
-
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
 import times from 'lodash/times';
 import { __ } from '@wordpress/i18n';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/testimonial/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
 	PanelColorSettings,
 	MediaUpload,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
 	BaseControl,
 	Button,
-} = wp.components;
+}from '@wordpress/components';
 
-const testimonialSettings = ( props ) => {
-	const { className, setAttributes, attributes, deviceType } = props;
+const Settings = ( props ) => {
+	props = props.parentProps;
+	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const {
@@ -284,7 +295,8 @@ const testimonialSettings = ( props ) => {
 	const typographySettings = () => {
 		return (
 			<>
-				<PanelBody
+				<Suspense fallback={ lazyLoader() }>
+					<PanelBody
 					title={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -294,6 +306,7 @@ const testimonialSettings = ( props ) => {
 					<h2>
 						{ __( 'Testimonial', 'ultimate-addons-for-gutenberg' ) }
 					</h2>
+					
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -350,7 +363,6 @@ const testimonialSettings = ( props ) => {
 							label: 'descLineHeightTablet',
 						} }
 					/>
-
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( 'Name', 'ultimate-addons-for-gutenberg' ) }</h2>
 					<TypographyControl
@@ -471,7 +483,7 @@ const testimonialSettings = ( props ) => {
 						} }
 					/>
 				</PanelBody>
-
+				</Suspense>
 				<PanelColorSettings
 					title={ __(
 						'Color Settings',
@@ -1203,12 +1215,12 @@ const testimonialSettings = ( props ) => {
 
 	// Set testinomial image panel
 	const tmControls = ( index ) => {
-		let image_val = null;
+		let imageVal = null;
 		if (
 			test_block[ index ] &&
 			typeof test_block[ index ] !== 'undefined'
 		) {
-			image_val = test_block[ index ].image;
+			imageVal = test_block[ index ].image;
 		}
 		return (
 			<PanelBody
@@ -1233,14 +1245,14 @@ const testimonialSettings = ( props ) => {
 							onSelectTestImage( media, index );
 						} }
 						allowedTypes={ [ 'image' ] }
-						value={ image_val }
+						value={ imageVal }
 						render={ ( { open } ) => (
 							<Button isSecondary onClick={ open }>
 								{ getImageName( test_block[ index ].image ) }
 							</Button>
 						) }
 					/>
-					{ image_val &&
+					{ imageVal &&
 						test_block[ index ].image.url !== null &&
 						test_block[ index ].image.url !== '' && (
 							<Button
@@ -1262,9 +1274,9 @@ const testimonialSettings = ( props ) => {
 
 	let cnt = 0;
 	test_block.map( ( item, thisIndex ) => {
-		const image_arr = test_block[ thisIndex ];
-		if ( image_arr && typeof image_arr !== 'undefined' ) {
-			const image = image_arr.image;
+		const imageArray = test_block[ thisIndex ];
+		if ( imageArray && typeof imageArray !== 'undefined' ) {
+			const image = imageArray.image;
 			if (
 				typeof image !== 'undefined' &&
 				image !== null &&
@@ -1576,10 +1588,12 @@ const testimonialSettings = ( props ) => {
 		<>
 			{ blockControls() }
 			{ inspectControl() }
-			{ loadNameGoogleFonts }
-			{ loadCompanyGoogleFonts }
-			{ loadDescGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadNameGoogleFonts }
+				{ loadCompanyGoogleFonts }
+				{ loadDescGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
-export default testimonialSettings;
+export default React.memo( Settings );

@@ -1,8 +1,8 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const AuthorName = ( props ) => {
 	const {
@@ -14,13 +14,13 @@ const AuthorName = ( props ) => {
 		onReplace,
 	} = props;
 
-	const test_arr = attributes.test_block[ index_value ];
+	const testArray = attributes.test_block[ index_value ];
 	let author_name = '';
-	if ( test_arr && typeof test_arr !== 'undefined' ) {
-		author_name = test_arr.name;
+	if ( testArray && typeof testArray !== 'undefined' ) {
+		author_name = testArray.name;
 	}
 
-	const data_copy = [ ...attributes.test_block ];
+	const dataCopy = [ ...attributes.test_block ];
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -34,13 +34,13 @@ const AuthorName = ( props ) => {
 				className="uagb-tm__author-name"
 				onChange={ ( value ) => {
 					const new_content = {
-						description: data_copy[ index_value ].description,
+						description: dataCopy[ index_value ].description,
 						name: value,
-						company: data_copy[ index_value ].company,
-						image: data_copy[ index_value ].image,
+						company: dataCopy[ index_value ].company,
+						image: dataCopy[ index_value ].image,
 					};
-					data_copy[ index_value ] = new_content;
-					setAttributes( { test_block: data_copy } );
+					dataCopy[ index_value ] = new_content;
+					setAttributes( { test_block: dataCopy } );
 				} }
 				onMerge={ mergeBlocks }
 				onSplit={

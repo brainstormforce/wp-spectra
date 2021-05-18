@@ -1,8 +1,8 @@
-const { RichText } = wp.blockEditor;
-
-const { createBlock } = wp.blocks;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
+
+import { createBlock } from '@wordpress/blocks';
 
 const Company = ( props ) => {
 	const {
@@ -14,13 +14,13 @@ const Company = ( props ) => {
 		onReplace,
 	} = props;
 
-	const test_arr = attributes.test_block[ index_value ];
+	const testArray = attributes.test_block[ index_value ];
 	let company = '';
-	if ( test_arr && typeof test_arr !== 'undefined' ) {
-		company = test_arr.company;
+	if ( testArray && typeof testArray !== 'undefined' ) {
+		company = testArray.company;
 	}
 
-	const data_copy = [ ...attributes.test_block ];
+	const dataCopy = [ ...attributes.test_block ];
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -30,13 +30,13 @@ const Company = ( props ) => {
 				className="uagb-tm__company"
 				onChange={ ( value ) => {
 					const new_content = {
-						description: data_copy[ index_value ].description,
-						name: data_copy[ index_value ].name,
+						description: dataCopy[ index_value ].description,
+						name: dataCopy[ index_value ].name,
 						company: value,
-						image: data_copy[ index_value ].image,
+						image: dataCopy[ index_value ].image,
 					};
-					data_copy[ index_value ] = new_content;
-					setAttributes( { test_block: data_copy } );
+					dataCopy[ index_value ] = new_content;
+					setAttributes( { test_block: dataCopy } );
 				} }
 				multiline={ false }
 				placeholder={ __(

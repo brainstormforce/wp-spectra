@@ -1,8 +1,8 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const Description = ( props ) => {
 	const {
@@ -14,13 +14,13 @@ const Description = ( props ) => {
 		onReplace,
 	} = props;
 
-	const test_arr = attributes.test_block[ index_value ];
+	const testArray = attributes.test_block[ index_value ];
 	let description = '';
-	if ( test_arr && typeof test_arr !== 'undefined' ) {
-		description = test_arr.description;
+	if ( testArray && typeof testArray !== 'undefined' ) {
+		description = testArray.description;
 	}
 
-	const data_copy = [ ...attributes.test_block ];
+	const dataCopy = [ ...attributes.test_block ];
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
@@ -35,12 +35,12 @@ const Description = ( props ) => {
 				onChange={ ( value ) => {
 					const new_content = {
 						description: value,
-						name: data_copy[ index_value ].name,
-						company: data_copy[ index_value ].company,
-						image: data_copy[ index_value ].image,
+						name: dataCopy[ index_value ].name,
+						company: dataCopy[ index_value ].company,
+						image: dataCopy[ index_value ].image,
 					};
-					data_copy[ index_value ] = new_content;
-					setAttributes( { test_block: data_copy } );
+					dataCopy[ index_value ] = new_content;
+					setAttributes( { test_block: dataCopy } );
 				} }
 				onMerge={ mergeBlocks }
 				onSplit={

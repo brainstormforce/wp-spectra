@@ -1,19 +1,19 @@
 
 const TestimonialImage = ( props ) => {
 	const { attributes, index_value } = props;
-	let url_check = '';
+	let urlCheck = '';
 
-	const image_arr = attributes.test_block[ index_value ];
+	const imageArray = attributes.test_block[ index_value ];
 
-	if ( image_arr && typeof image_arr !== 'undefined' ) {
-		const image = image_arr.image;
+	if ( imageArray && typeof imageArray !== 'undefined' ) {
+		const image = imageArray.image;
 		let url = '';
 
 		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
-			url_check = image.url;
+			urlCheck = image.url;
 		}
 
-		if ( url_check !== '' ) {
+		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
 			if (
@@ -22,7 +22,7 @@ const TestimonialImage = ( props ) => {
 			) {
 				url = size[ imageSize ].url;
 			} else {
-				url = url_check;
+				url = urlCheck;
 			}
 
 			return (

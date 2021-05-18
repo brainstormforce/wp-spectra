@@ -2,19 +2,19 @@
  * BLOCK: Testimonial - Attributes
  */
 
-const ITEM_COUNT = 3;
+const itemCount = 3;
 
-const testimonial_block = [];
+const testimonialBlock = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
-	const desc_text =
+for ( let i = 1; i <= itemCount; i++ ) {
+	const descText =
 		'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!';
-	const author_text = 'John Doe ';
-	const company_text = 'Company' + i;
-	testimonial_block.push( {
-		description: desc_text,
-		name: author_text,
-		company: company_text,
+	const authorText = 'John Doe ';
+	const companyText = 'Company' + i;
+	testimonialBlock.push( {
+		description: descText,
+		name: authorText,
+		company: companyText,
 		image: '',
 	} );
 }
@@ -22,7 +22,7 @@ for ( let i = 1; i <= ITEM_COUNT; i++ ) {
 const attributes = {
 	test_item_count: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	classMigrate: {
 		type: 'boolean',
@@ -30,7 +30,7 @@ const attributes = {
 	},
 	test_block: {
 		type: 'array',
-		default: testimonial_block,
+		default: testimonialBlock,
 	},
 	headingAlign: {
 		type: 'string',
