@@ -321,13 +321,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 				$rollback_versions = array();
 
-				$current_index = 0;
-
 				foreach ( $plugin_information->versions as $version => $download_link ) {
-
-					if ( $max_versions <= $current_index ) {
-						break;
-					}
 
 					$lowercase_version = strtolower( $version );
 
@@ -341,11 +335,12 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						continue;
 					}
 
-					$current_index++;
 					$rollback_versions[] = $version;
 				}
 
 				usort( $rollback_versions, array( $this, 'sort_rollback_versions' ) );
+
+				$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
 
 				set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions, WEEK_IN_SECONDS );
 			}
