@@ -59,8 +59,8 @@ function styling( props ) {
 		rPadding = titleHrPadding;
 	}
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const selectors = {
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
@@ -141,7 +141,7 @@ function styling( props ) {
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
 	}
-	mobile_selectors = {
+	mobileSelectors = {
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -165,7 +165,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -189,25 +189,25 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`;
+	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`;
 
-	let styling_css = generateCSS( selectors, base_selector );
+	let stylingCss = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		base_selector,
+	stylingCss += generateCSS(
+		tabletSelectors,
+		baseSelector,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		base_selector,
+	stylingCss += generateCSS(
+		mobileSelectors,
+		baseSelector,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
