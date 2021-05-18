@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function TestimonialStyle( props ) {
 	const {
-		classMigrate,
 		headingAlign,
 		companyColor,
 		descColor,
@@ -271,24 +270,24 @@ function TestimonialStyle( props ) {
 		},
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
-	styling_css += generateCSS(
+	stylingCss = generateCSS( selectors, id );
+	stylingCss += generateCSS(
 		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
-	styling_css += generateCSS(
+	stylingCss += generateCSS(
 		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default TestimonialStyle;

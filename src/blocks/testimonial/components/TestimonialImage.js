@@ -1,5 +1,3 @@
-
-
 const TestimonialImage = ( props ) => {
 	const { attributes, index_value } = props;
 	let urlCheck = '';

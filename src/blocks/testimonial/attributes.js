@@ -337,10 +337,6 @@ const attributes = {
 		type: 'number',
 		default: 50,
 	},
-	arrowColor: {
-		type: 'string',
-		default: '#333',
-	},
 	stack: {
 		type: 'string',
 		default: 'tablet',

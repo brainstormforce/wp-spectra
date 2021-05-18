@@ -55,7 +55,6 @@ const Render = ( props ) => {
 				className="slick-next slick-arrow"
 				aria-label="Next"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -75,7 +74,6 @@ const Render = ( props ) => {
 				className="slick-prev slick-arrow"
 				aria-label="Previous"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -142,83 +140,87 @@ const Render = ( props ) => {
 				{ ...settings }
 			>
 				<Suspense fallback={ lazyLoader() }>
-				{ test_block.map( ( test, index ) => (
-					<div
-						className={ classnames(
-							'uagb-testimonial__wrap',
-							...PositionClasses( attributes )
-						) }
-						key={ 'wrap-' + index }
-					>
+					{ test_block.map( ( test, index ) => (
 						<div
-							className="uagb-tm__content"
-							key={ 'tm_content-' + index }
-						>
-							<div className="uagb-tm__overlay"></div>
-							{ ( imagePosition == 'top' ||
-								imagePosition == 'left' ) && (
-								<TestimonialImage
-									attributes={ attributes }
-									index_value={ index }
-								/>
+							className={ classnames(
+								'uagb-testimonial__wrap',
+								...PositionClasses( attributes )
 							) }
+							key={ 'wrap-' + index }
+						>
+							<div
+								className="uagb-tm__content"
+								key={ 'tm_content-' + index }
+							>
+								<div className="uagb-tm__overlay"></div>
+								{ ( imagePosition == 'top' ||
+									imagePosition == 'left' ) && (
+									<TestimonialImage
+										attributes={ attributes }
+										index_value={ index }
+									/>
+								) }
 
-							<div className="uagb-tm__text-wrap">
-								{
-									// Get description.
-									<>
-										<Description
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											props={ props }
-											index_value={ index }
-										/>
-									</>
-								}
-								<div className="uagb-tm__meta-inner">
-									{ imagePosition == 'bottom' && (
-										<TestimonialImage
-											attributes={ attributes }
-											index_value={ index }
-										/>
-									) }
-
+								<div className="uagb-tm__text-wrap">
 									{
+										// Get description.
 										<>
-											<div
-												className="uagb-testimonial-details"
-												key={ 'tm_wraps-' + index }
-											>
-												<AuthorName
-													attributes={ attributes }
-													setAttributes={
-														setAttributes
-													}
-													props={ props }
-													index_value={ index }
-												/>
-												<Company
-													attributes={ attributes }
-													setAttributes={
-														setAttributes
-													}
-													props={ props }
-													index_value={ index }
-												/>
-											</div>
+											<Description
+												attributes={ attributes }
+												setAttributes={ setAttributes }
+												props={ props }
+												index_value={ index }
+											/>
 										</>
 									}
+									<div className="uagb-tm__meta-inner">
+										{ imagePosition == 'bottom' && (
+											<TestimonialImage
+												attributes={ attributes }
+												index_value={ index }
+											/>
+										) }
+
+										{
+											<>
+												<div
+													className="uagb-testimonial-details"
+													key={ 'tm_wraps-' + index }
+												>
+													<AuthorName
+														attributes={
+															attributes
+														}
+														setAttributes={
+															setAttributes
+														}
+														props={ props }
+														index_value={ index }
+													/>
+													<Company
+														attributes={
+															attributes
+														}
+														setAttributes={
+															setAttributes
+														}
+														props={ props }
+														index_value={ index }
+													/>
+												</div>
+											</>
+										}
+									</div>
 								</div>
+								{ imagePosition == 'right' && (
+									<TestimonialImage
+										attributes={ attributes }
+										index_value={ index }
+									/>
+								) }
 							</div>
-							{ imagePosition == 'right' && (
-								<TestimonialImage
-									attributes={ attributes }
-									index_value={ index }
-								/>
-							) }
 						</div>
-					</div>
-				) ) }
+					) ) }
 				</Suspense>
 			</Slider>
 		</div>
