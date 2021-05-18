@@ -13,7 +13,6 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		c_id,
 		noticeTitle,
 		noticeContent,
 		noticeAlignment,
@@ -21,7 +20,6 @@ export default function save( props ) {
 		icon,
 		noticeDismiss,
 		cookies,
-		close_cookie_days,
 	} = attributes;
 
 	let image_icon_html = '';

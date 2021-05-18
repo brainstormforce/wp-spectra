@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import React from 'react';
 
 const Render = ( props ) => {
 	props = props.parentProps;

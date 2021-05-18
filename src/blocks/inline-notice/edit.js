@@ -8,7 +8,9 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, Suspense, lazy } from 'react';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/inline-notice/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/inline-notice/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/inline-notice/render" */ './render' )
@@ -16,7 +18,7 @@ const Render = lazy( () =>
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	useEffect( () => {
-		const { setAttributes , clientId} = props;
+		const { setAttributes, clientId } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 

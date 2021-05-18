@@ -21,15 +21,17 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	RichText,
 	ColorPalette,
 } from '@wordpress/block-editor';
 
-import {
-	select
-} from '@wordpress/data'
+import { select } from '@wordpress/data';
 
-import { PanelBody, RangeControl, SelectControl, ToggleControl } from '@wordpress/components';
+import {
+	PanelBody,
+	RangeControl,
+	SelectControl,
+	ToggleControl,
+} from '@wordpress/components';
 
 const svg_icons = Object.keys( UAGBIcon );
 
@@ -174,7 +176,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ 'simple' == layout && (
+				{ 'simple' === layout && (
 					<RangeControl
 						label={ __(
 							'Highlight width',
@@ -250,7 +252,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ noticeDismiss && (
-					<Fragment>
+					<>
 						<p className="components-base-control__label">
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
@@ -268,7 +270,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						/>
-					</Fragment>
+					</>
 				) }
 				{ noticeDismiss && <hr className="uagb-editor__separator" /> }
 				{ noticeDismiss && (
@@ -453,7 +455,10 @@ const Settings = ( props ) => {
 				</Suspense>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
-						label={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+						label={ __(
+							'Content',
+							'ultimate-addons-for-gutenberg'
+						) }
 						attributes={ attributes }
 						setAttributes={ setAttributes }
 						loadGoogleFonts={ {
@@ -476,7 +481,10 @@ const Settings = ( props ) => {
 							value: descFontSizeType,
 							label: 'descFontSizeType',
 						} }
-						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSize={ {
+							value: descFontSize,
+							label: 'descFontSize',
+						} }
 						fontSizeMobile={ {
 							value: descFontSizeMobile,
 							label: 'descFontSizeMobile',
