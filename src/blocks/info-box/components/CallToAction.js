@@ -84,13 +84,11 @@ const InfoBoxCta = ( props ) => {
 					className="uagb-infobox-cta-link"
 					rel={ rel }
 				>
-					{ attributes.ctaIconPosition === 'before' &&
-						ctaIconOutput }
+					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 					<span className="uagb-inline-editing">
 						{ attributes.ctaText }
 					</span>
-					{ attributes.ctaIconPosition === 'after' &&
-						ctaIconOutput }
+					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 				</a>
 			) }
 

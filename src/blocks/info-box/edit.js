@@ -1,18 +1,14 @@
 /**
  * BLOCK: Info Box - Edit Class
  */
- import React, { lazy, Suspense ,useEffect } from 'react';
- import lazyLoader from '@Controls/lazy-loader';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 import InfoBoxStyle from './inline-styles';
 const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/Render" */ './Render'
-	)
+	import( /* webpackChunkName: "chunks/info-box/Render" */ './Render' )
 );
 const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/Settings" */ './Settings'
-	)
+	import( /* webpackChunkName: "chunks/info-box/Settings" */ './Settings' )
 );
 
 const UAGBInfoBox = ( props ) => {

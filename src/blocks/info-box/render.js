@@ -23,9 +23,7 @@ const InfoBoxSeparator = lazy( () =>
 	)
 );
 const Icon = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/Icon" */ './components/Icon'
-	)
+	import( /* webpackChunkName: "chunks/info-box/Icon" */ './components/Icon' )
 );
 const InfoBoxIconImage = lazy( () =>
 	import(
@@ -38,7 +36,6 @@ const Prefix = lazy( () =>
 	)
 );
 const Render = ( props ) => {
-	
 	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
 
@@ -160,53 +157,54 @@ const Render = ( props ) => {
 				ctaType == 'all' ? ' uagb-infobox_cta-type-all' : '',
 				...InfoBoxPositionClasses( attributes )
 			) }
-		><Suspense fallback={ lazyLoader() }>
-			<div className="uagb-ifb-left-right-wrap">
-				{ iconimgPosition == 'left' && iconImageHtml }
-				<div className="uagb-ifb-content">
-					{ iconimgPosition == 'above-title' && iconImageHtml }
+		>
+			<Suspense fallback={ lazyLoader() }>
+				<div className="uagb-ifb-left-right-wrap">
+					{ iconimgPosition == 'left' && iconImageHtml }
+					<div className="uagb-ifb-content">
+						{ iconimgPosition == 'above-title' && iconImageHtml }
 
-					{ ( iconimgPosition == 'above-title' ||
-						iconimgPosition == 'below-title' ) &&
-						titleText }
+						{ ( iconimgPosition == 'above-title' ||
+							iconimgPosition == 'below-title' ) &&
+							titleText }
 
-					{ iconimgPosition == 'below-title' && iconImageHtml }
+						{ iconimgPosition == 'below-title' && iconImageHtml }
 
-					{ ( iconimgPosition == 'above-title' ||
-						iconimgPosition == 'below-title' ) &&
-						desc }
+						{ ( iconimgPosition == 'above-title' ||
+							iconimgPosition == 'below-title' ) &&
+							desc }
 
-					{ iconimgPosition === 'left-title' && (
-						<>
-							<div className="uagb-ifb-left-title-image">
-								{ iconImageHtml }
+						{ iconimgPosition === 'left-title' && (
+							<>
+								<div className="uagb-ifb-left-title-image">
+									{ iconImageHtml }
+									{ titleText }
+								</div>
+								{ desc }
+							</>
+						) }
+
+						{ iconimgPosition === 'right-title' && (
+							<>
+								<div className="uagb-ifb-right-title-image">
+									{ titleText }
+									{ iconImageHtml }
+								</div>
+								{ desc }
+							</>
+						) }
+
+						{ ( iconimgPosition == 'left' ||
+							iconimgPosition == 'right' ) && (
+							<>
 								{ titleText }
-							</div>
-							{ desc }
-						</>
-					) }
+								{ desc }
+							</>
+						) }
+					</div>
 
-					{ iconimgPosition === 'right-title' && (
-						<>
-							<div className="uagb-ifb-right-title-image">
-								{ titleText }
-								{ iconImageHtml }
-							</div>
-							{ desc }
-						</>
-					) }
-
-					{ ( iconimgPosition == 'left' ||
-						iconimgPosition == 'right' ) && (
-						<>
-							{ titleText }
-							{ desc }
-						</>
-					) }
+					{ iconimgPosition == 'right' && iconImageHtml }
 				</div>
-
-				{ iconimgPosition == 'right' && iconImageHtml }
-			</div>
 			</Suspense>
 		</div>
 	);

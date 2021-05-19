@@ -3,6 +3,8 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 const TypographyControl = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/info-box/typography-control" */ '@Components/typography'
@@ -46,7 +48,6 @@ let imageSizeOptions = [
 ];
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
@@ -820,62 +821,62 @@ const Settings = ( props ) => {
 							] }
 						/>
 						<Suspense fallback={ lazyLoader() }>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: headLoadGoogleFonts,
-								label: 'headLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: headFontFamily,
-								label: 'headFontFamily',
-							} }
-							fontWeight={ {
-								value: headFontWeight,
-								label: 'headFontWeight',
-							} }
-							fontSubset={ {
-								value: headFontSubset,
-								label: 'headFontSubset',
-							} }
-							fontSizeType={ {
-								value: headFontSizeType,
-								label: 'headFontSizeType',
-							} }
-							fontSize={ {
-								value: headFontSize,
-								label: 'headFontSize',
-							} }
-							fontSizeMobile={ {
-								value: headFontSizeMobile,
-								label: 'headFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: headFontSizeTablet,
-								label: 'headFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: headLineHeightType,
-								label: 'headLineHeightType',
-							} }
-							lineHeight={ {
-								value: headLineHeight,
-								label: 'headLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: headLineHeightMobile,
-								label: 'headLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: headLineHeightTablet,
-								label: 'headLineHeightTablet',
-							} }
-						/>
+							<TypographyControl
+								label={ __(
+									'Typography',
+									'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: headLoadGoogleFonts,
+									label: 'headLoadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: headFontFamily,
+									label: 'headFontFamily',
+								} }
+								fontWeight={ {
+									value: headFontWeight,
+									label: 'headFontWeight',
+								} }
+								fontSubset={ {
+									value: headFontSubset,
+									label: 'headFontSubset',
+								} }
+								fontSizeType={ {
+									value: headFontSizeType,
+									label: 'headFontSizeType',
+								} }
+								fontSize={ {
+									value: headFontSize,
+									label: 'headFontSize',
+								} }
+								fontSizeMobile={ {
+									value: headFontSizeMobile,
+									label: 'headFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: headFontSizeTablet,
+									label: 'headFontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: headLineHeightType,
+									label: 'headLineHeightType',
+								} }
+								lineHeight={ {
+									value: headLineHeight,
+									label: 'headLineHeight',
+								} }
+								lineHeightMobile={ {
+									value: headLineHeightMobile,
+									label: 'headLineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: headLineHeightTablet,
+									label: 'headLineHeightTablet',
+								} }
+							/>
 						</Suspense>
 						<p className="uagb-setting-label">
 							{ __(
