@@ -10,7 +10,7 @@ import attributes from './attributes';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/restaurant-menu-child', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.

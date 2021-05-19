@@ -11,7 +11,7 @@ import Description from './components/Description';
 import PositionClasses from '../price-list/classes';
 import RestMenuImage from './components/RestMenuImage';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 const deprecated = [
 	{

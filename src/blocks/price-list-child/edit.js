@@ -1,23 +1,27 @@
 /**
- * BLOCK: Price List - Edit Class
+ * BLOCK: Price List 
  */
 
-import priceListChildRender from './render';
-import priceListChildSettings from './settings';
-import React, { useEffect } from 'react';
-
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/render" */ './render' )
+);
 const UAGBRestaurantMenuChild = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
-
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
 	return (
 		<>
-			{ priceListChildSettings( props ) }
-			{ priceListChildRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

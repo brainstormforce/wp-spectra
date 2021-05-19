@@ -1,27 +1,27 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
 const Title = ( props ) => {
 	const { attributes, setAttributes, index_value } = props;
-	let author_title = '';
+	let authorTitle = '';
 
 	if ( typeof index_value !== 'undefined' ) {
-		const test_arr = attributes.rest_menu_item_arr[ index_value ];
-		if ( test_arr ) {
-			if ( typeof test_arr !== 'undefined' ) {
-				author_title = test_arr.title;
+		const testArr = attributes.rest_menu_item_arr[ index_value ];
+		if ( testArr ) {
+			if ( typeof testArr !== 'undefined' ) {
+				authorTitle = testArr.title;
 			}
 		}
 	} else {
-		author_title = attributes.title;
+		authorTitle = attributes.title;
 	}
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
 			<RichText
 				tagName={ attributes.headingTag }
-				value={ author_title }
+				value={ authorTitle }
 				placeholder={ __( 'Write a Title' ) }
 				className="uagb-rm__title"
 				onChange={ ( value ) => {
@@ -33,7 +33,7 @@ const Title = ( props ) => {
 	return (
 		<RichText.Content
 			tagName={ attributes.headingTag }
-			value={ author_title }
+			value={ authorTitle }
 			className="uagb-rm__title"
 		/>
 	);

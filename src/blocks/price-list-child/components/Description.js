@@ -1,4 +1,4 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
@@ -7,10 +7,10 @@ const Description = ( props ) => {
 
 	let description = '';
 	if ( typeof index_value !== 'undefined' ) {
-		const rest_arr = attributes.rest_menu_item_arr[ index_value ];
-		if ( rest_arr ) {
-			if ( typeof rest_arr !== 'undefined' ) {
-				description = rest_arr.description;
+		const restArray = attributes.rest_menu_item_arr[ index_value ];
+		if ( restArray ) {
+			if ( typeof restArray !== 'undefined' ) {
+				description = restArray.description;
 			}
 		}
 	} else {

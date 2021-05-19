@@ -1,31 +1,31 @@
 const RestMenuImage = ( props ) => {
 	const { attributes, index_value } = props;
-	let url_check = '';
-	let image_arr = '';
+	let urlCheck = '';
+	let imageArr = '';
 
 	if ( typeof index_value !== 'undefined' ) {
-		const image_array = attributes.rest_menu_item_arr[ index_value ];
-		if ( typeof image_array !== 'undefined' ) {
-			image_arr = image_array.image;
+		const imageArray = attributes.rest_menu_item_arr[ index_value ];
+		if ( typeof imageArray !== 'undefined' ) {
+			imageArr = imageArray.image;
 		}
 	} else if ( attributes.image !== '' ) {
-		image_arr = attributes.image;
+		imageArr = attributes.image;
 	}
 
-	if ( image_arr && typeof image_arr !== 'undefined' ) {
+	if ( imageArr && typeof imageArr !== 'undefined' ) {
 		let image = '';
-		if ( typeof image_arr !== 'undefined' ) {
-			image = image_arr;
+		if ( typeof imageArr !== 'undefined' ) {
+			image = imageArr;
 		} else {
 			image = attributes.image;
 		}
 		let url = '';
 
 		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
-			url_check = image.url;
+			urlCheck = image.url;
 		}
 
-		if ( url_check !== '' ) {
+		if ( urlCheck !== '' ) {
 			const size = image.sizes;
 			const imageSize = attributes.imageSize;
 			if (
@@ -34,7 +34,7 @@ const RestMenuImage = ( props ) => {
 			) {
 				url = size[ imageSize ].url;
 			} else {
-				url = url_check;
+				url = urlCheck;
 			}
 
 			return (

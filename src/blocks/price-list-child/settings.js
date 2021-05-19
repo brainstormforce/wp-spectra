@@ -1,34 +1,36 @@
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
-} = wp.blockEditor;
+} from'@wordpress/block-editor';
 
-const { PanelBody, BaseControl, Button } = wp.components;
+import { PanelBody, BaseControl, Button } from '@wordpress/components';
 
-const priceListChildSettings = ( props ) => {
+const Settings = ( props ) => {
+	
+	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
 	const { headingAlign, imagePosition, image } = attributes;
 
 	const onSelectRestImage = ( media ) => {
-		let image_url = null;
+		let imageUrl = null;
 		if ( ! media || ! media.url ) {
-			image_url = null;
+			imageUrl = null;
 		} else {
-			image_url = media;
+			imageUrl = media;
 		}
 
 		if ( ! media.type || 'image' !== media.type ) {
-			image_url = null;
+			imageUrl = null;
 		}
 
 		setAttributes( {
-			image: image_url,
+			image: imageUrl,
 		} );
 	};
 
@@ -36,15 +38,15 @@ const priceListChildSettings = ( props ) => {
 	 * Event to set Image selectot label.
 	 */
 	const getImageName = ( image ) => {
-		let image_title = __( 'Select Image' );
+		let imageTitle = __( 'Select Image' );
 		if ( image ) {
 			if ( image.url == null || image.url == '' ) {
-				image_title = __( 'Select Image' );
+				imageTitle = __( 'Select Image' );
 			} else {
-				image_title = __( 'Replace Image' );
+				imageTitle = __( 'Replace Image' );
 			}
 		}
-		return image_title;
+		return imageTitle;
 	};
 
 	/*
@@ -122,4 +124,4 @@ const priceListChildSettings = ( props ) => {
 		</>
 	);
 };
-export default priceListChildSettings;
+export default React.memo( Settings );

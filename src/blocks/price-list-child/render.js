@@ -1,13 +1,24 @@
-import RestMenuImage from './components/RestMenuImage';
-import Title from './components/Title';
-import Price from './components/Price';
-import Description from './components/Description';
+
 import classnames from 'classnames';
 import PositionClasses from '../price-list/classes';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const RestMenuImage = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/RestMenuImage" */ './components/RestMenuImage' )
+);
+const Title = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/Title" */ './components/Title' )
+);
+const Price = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/Price" */ './components/Price' )
+);
+const Description = lazy( () =>
+	import( /* webpackChunkName: "chunks/price-list-child/render" */ './components/Description' )
+);
+import { select } from '@wordpress/data';
 
-const { select } = wp.data;
-
-const priceListChildRender = ( props ) => {
+const Render = ( props ) => {
+	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
@@ -33,6 +44,7 @@ const priceListChildRender = ( props ) => {
 				...PositionClasses( attributes )
 			) }
 		>
+			<Suspense fallback={ lazyLoader() }>
 			<div className="uagb-rm__content">
 				{ ( position == 'top' || position == 'left' ) && (
 					<RestMenuImage attributes={ attributes } />
@@ -70,10 +82,11 @@ const priceListChildRender = ( props ) => {
 					<RestMenuImage attributes={ attributes } />
 				) }
 			</div>
+			</Suspense>
 			<div className="uagb-rm__separator-parent">
 				<div className="uagb-rm__separator"></div>
 			</div>
 		</div>
 	);
 };
-export default priceListChildRender;
+export default React.memo( Render );
