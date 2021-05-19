@@ -3,6 +3,8 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 const TypographyControl = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/call-to-action/typography-control" */ '@Components/typography'
@@ -32,7 +34,6 @@ import {
 const svg_icons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
@@ -241,47 +242,47 @@ const Settings = ( props ) => {
 						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
 							( ctaType === 'text' && (
 								<Suspense fallback={ lazyLoader() }>
-								<TypographyControl
-									label={ __(
-										'Typography',
-										'ultimate-addons-for-gutenberg'
-									) }
-									attributes={ attributes }
-									setAttributes={ setAttributes }
-									loadGoogleFonts={ {
-										value: ctaLoadGoogleFonts,
-										label: 'ctaLoadGoogleFonts',
-									} }
-									fontFamily={ {
-										value: ctaFontFamily,
-										label: 'ctaFontFamily',
-									} }
-									fontWeight={ {
-										value: ctaFontWeight,
-										label: 'ctaFontWeight',
-									} }
-									fontSubset={ {
-										value: ctaFontSubset,
-										label: 'ctaFontSubset',
-									} }
-									fontSizeType={ {
-										value: ctaFontSizeType,
-										label: 'ctaFontSizeType',
-									} }
-									fontSize={ {
-										value: ctaFontSize,
-										label: 'ctaFontSize',
-									} }
-									fontSizeMobile={ {
-										value: ctaFontSizeMobile,
-										label: 'ctaFontSizeMobile',
-									} }
-									fontSizeTablet={ {
-										value: ctaFontSizeTablet,
-										label: 'ctaFontSizeTablet',
-									} }
-									disableLineHeight={ true }
-								/>
+									<TypographyControl
+										label={ __(
+											'Typography',
+											'ultimate-addons-for-gutenberg'
+										) }
+										attributes={ attributes }
+										setAttributes={ setAttributes }
+										loadGoogleFonts={ {
+											value: ctaLoadGoogleFonts,
+											label: 'ctaLoadGoogleFonts',
+										} }
+										fontFamily={ {
+											value: ctaFontFamily,
+											label: 'ctaFontFamily',
+										} }
+										fontWeight={ {
+											value: ctaFontWeight,
+											label: 'ctaFontWeight',
+										} }
+										fontSubset={ {
+											value: ctaFontSubset,
+											label: 'ctaFontSubset',
+										} }
+										fontSizeType={ {
+											value: ctaFontSizeType,
+											label: 'ctaFontSizeType',
+										} }
+										fontSize={ {
+											value: ctaFontSize,
+											label: 'ctaFontSize',
+										} }
+										fontSizeMobile={ {
+											value: ctaFontSizeMobile,
+											label: 'ctaFontSizeMobile',
+										} }
+										fontSizeTablet={ {
+											value: ctaFontSizeTablet,
+											label: 'ctaFontSizeTablet',
+										} }
+										disableLineHeight={ true }
+									/>
 								</Suspense>
 							) ) }
 					</>
@@ -894,7 +895,10 @@ const Settings = ( props ) => {
 							value: descFontSizeType,
 							label: 'descFontSizeType',
 						} }
-						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSize={ {
+							value: descFontSize,
+							label: 'descFontSize',
+						} }
 						fontSizeMobile={ {
 							value: descFontSizeMobile,
 							label: 'descFontSizeMobile',

@@ -3,31 +3,31 @@
  */
 
 function CtaPositionClasses( attributes ) {
-	let iconimgStyle_class = '';
+	let iconimgStyleClass = '';
 
-	iconimgStyle_class += 'uagb-cta__block' + ' ';
-	iconimgStyle_class +=
+	iconimgStyleClass += 'uagb-cta__block' + ' ';
+	iconimgStyleClass +=
 		'uagb-cta__icon-position-' + attributes.ctaPosition + ' ';
 
 	if ( attributes.ctaPosition === 'right' ) {
-		iconimgStyle_class += 'uagb-cta__content-right' + ' ';
+		iconimgStyleClass += 'uagb-cta__content-right' + ' ';
 	}
 
 	if ( attributes.ctaPosition === 'right' && attributes.stack !== 'none' ) {
-		iconimgStyle_class +=
+		iconimgStyleClass +=
 			'uagb-cta__content-stacked-' + attributes.stack + ' ';
 	}
 
 	if ( attributes.ctaPosition !== 'below-title' ) {
-		iconimgStyle_class +=
+		iconimgStyleClass +=
 			'uagb-cta__button-valign-' + attributes.buttonAlign + ' ';
 	}
 
 	if ( attributes.ctaType !== 'text' && attributes.ctaType !== 'button' ) {
-		iconimgStyle_class += 'uagb-cta__button-type-none' + ' ';
+		iconimgStyleClass += 'uagb-cta__button-type-none' + ' ';
 	}
 
-	return [ iconimgStyle_class ];
+	return [ iconimgStyleClass ];
 }
 
 export default CtaPositionClasses;

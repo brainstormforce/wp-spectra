@@ -9,7 +9,7 @@ const Title = lazy( () =>
 );
 const Description = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/call-to-action/description" */ './components/Description'
+		/* webpackChunkName: "chunks/call-to-action/Description" */ './components/Description'
 	)
 );
 const CTA = lazy( () =>
@@ -94,19 +94,19 @@ const Render = ( props ) => {
 				) }
 			>
 				<Suspense fallback={ lazyLoader() }>
-				{ ctaType == 'all' && (
-					<>
-						<a
-							href="javascript:void(0)"
-							className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
-							rel="noopener noreferrer"
-						>
-							{ ' ' }
-						</a>
-						{ output() }
-					</>
-				) }
-				{ ctaType !== 'all' && output() }
+					{ ctaType == 'all' && (
+						<>
+							<a
+								href="javascript:void(0)"
+								className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
+								rel="noopener noreferrer"
+							>
+								{ ' ' }
+							</a>
+							{ output() }
+						</>
+					) }
+					{ ctaType !== 'all' && output() }
 				</Suspense>
 			</div>
 		</>

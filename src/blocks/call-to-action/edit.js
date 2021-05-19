@@ -3,12 +3,10 @@
  */
 
 import CtaStyle from './inline-styles';
-import React, { useEffect , lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Render = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/Render" */ './Render'
-	)
+	import( /* webpackChunkName: "chunks/call-to-action/Render" */ './Render' )
 );
 const Settings = lazy( () =>
 	import(

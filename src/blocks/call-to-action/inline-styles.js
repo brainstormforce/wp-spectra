@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function CtaStyle( props ) {
 	const {
-		classMigrate,
 		textAlign,
 		titleColor,
 		descColor,
@@ -257,13 +256,13 @@ function CtaStyle( props ) {
 		8
 	) }`;
 
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tabletSelectors, id, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, id, true, 'tablet' );
 
-	styling_css += generateCSS( mobileSelectors, id, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, id, true, 'mobile' );
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default CtaStyle;

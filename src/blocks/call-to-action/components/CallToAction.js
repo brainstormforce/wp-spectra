@@ -13,9 +13,9 @@ const CallToAction = ( props ) => {
 		target = '_blank';
 	}
 
-	let cta_icon_output = '';
+	let ctaIconOutput = '';
 	if ( attributes.ctaIcon !== '' ) {
-		cta_icon_output = (
+		ctaIconOutput = (
 			<span
 				className={ classnames(
 					`uagb-cta-${ attributes.ctaType }-icon`,
@@ -43,12 +43,12 @@ const CallToAction = ( props ) => {
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' &&
-							cta_icon_output }
+							ctaIconOutput }
 						<span className="uagb-cta__link-content-inner">
 							<span>{ attributes.ctaText }</span>
 						</span>
 						{ attributes.ctaIconPosition === 'after' &&
-							cta_icon_output }
+							ctaIconOutput }
 					</a>
 				</div>
 			) }
