@@ -158,13 +158,17 @@
 		type: "number",
 		default : 15
 	},
-	titleVrPadding: {
-		type: "number",
-		default : 15
+	padding: {
+		type: 'array',
+		default: [ '', '', '', '' ],
 	},
-	titleHrPadding: {
-		type: "number",
-		default : 15
+	tabletPadding: {
+		type: 'array',
+		default: [ '', '', '', '' ],
+	},
+	mobilePadding: {
+		type: 'array',
+		default: [ '', '', '', '' ],
 	},
 	layout: {
 		type: "string",

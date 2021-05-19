@@ -13,6 +13,7 @@ import AdvancedPopColorControl from '../../advanced-pop-color-control'
 import AlignButtonsControl from '../../components/align-buttons-control'
 import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
+import MeasurementControls from '../../components/measurement-control/measurement-control.js';
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -127,6 +128,9 @@ class UAGBInlineNoticeEdit extends Component {
 				contentHrPadding,
 				titleVrPadding,
 				titleHrPadding,
+				tabletPadding,
+				mobilePadding,
+				padding,
 				headingTag,
 				layout,
 				highlightWidth,
@@ -198,8 +202,10 @@ class UAGBInlineNoticeEdit extends Component {
 							setAttributes( { noticeAlignment: value } )
 						}
 					/>
+				</PanelBody>
+				<PanelBody title="Layout" initialOpen={false}>
 					<SelectControl
-						label={ __( "Layout", 'ultimate-addons-for-gutenberg' ) }
+						label={ __( "Types", 'ultimate-addons-for-gutenberg' ) }
 						value={ layout }
 						onChange={ ( value ) => setAttributes( { layout: value } ) }
 						options={ [
@@ -278,9 +284,45 @@ class UAGBInlineNoticeEdit extends Component {
 						/>
 					}
 				</PanelBody>
+				<PanelBody title="Spacing" initialOpen={false}>
+					<MeasurementControls
+						label={ __( 'Title Padding', 'kadence-blocks' ) }
+						value={ padding }
+						control={ 'linked' }
+						tabletValue={ tabletPadding }
+						mobileValue={ mobilePadding }
+						onChange={ ( value ) => setAttributes( { padding: value } ) }
+						onChangeTablet={ ( value ) => setAttributes( { tabletPadding: value } ) }
+						onChangeMobile={ ( value ) => setAttributes( { mobilePadding: value } ) }
+						onChangeControl={ 'linked' }
+						min={ 0 }
+						max={ 100 }
+						step={ 1 }
+						unit={ 'px' }
+						units={ [ 'px' ] }
+						showUnit={ true }
+					/>
+					{/* <MeasurementControls
+						label={ __( 'Content Padding', 'kadence-blocks' ) }
+						value={ titleVrPadding }
+						control={ 'linked' }
+						tabletValue={ '' }
+						mobileValue={ '' }
+						onChange={ ( value ) => setAttributes( { titleVrPadding: value } ) }
+						onChangeTablet={ '' }
+						onChangeMobile={ '' }
+						onChangeControl={ 'linked' }
+						min={ 0 }
+						max={ 100 }
+						step={ 1 }
+						unit={ 'px' }
+						units={ [ 'px' ] }
+						showUnit={ true }
+					/> */}
+				</PanelBody>
 				</InspectorTab>
 				<InspectorTab key={'style'}>
-				<PanelBody title="Colors" initialOpen={false}>
+				<PanelBody title="Colors" initialOpen={true}>
 					 <AdvancedPopColorControl
 						label={ __( 'Title Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ ( titleColor ? titleColor : '' ) }

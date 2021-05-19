@@ -38,6 +38,9 @@
          contentHrPadding,
          titleVrPadding,
          titleHrPadding,
+         tabletPadding,
+        mobilePadding,
+        padding,
          noticeDismiss,
          noticeAlignment,
          layout,
@@ -45,21 +48,21 @@
      } = props.attributes
  
  
-     let lPadding;
-     let rPadding;
+    //  let titleLeftPadding;
+    //  let rPadding;
  
-     if ( noticeDismiss ) {
-         if( 'left' === noticeAlignment || 'center' === noticeAlignment ){
-             rPadding = ( titleHrPadding + 13 ) ;
-             lPadding = titleHrPadding;
-         }else{
-             lPadding = ( titleHrPadding + 13 ) ;
-             rPadding = titleHrPadding;
-         }
-     } else {
-         lPadding = titleHrPadding;
-         rPadding = titleHrPadding;
-     }
+    //  if ( noticeDismiss ) {
+    //      if( 'left' === noticeAlignment || 'center' === noticeAlignment ){
+    //          rPadding = ( titleHrPadding + 13 ) ;
+    //          titleLeftPadding = titleHrPadding;
+    //      }else{
+    //          lPadding = ( titleHrPadding + 13 ) ;
+    //          rPadding = titleHrPadding;
+    //      }
+    //  } else {
+    //      lPadding = titleHrPadding;
+    //      rPadding = titleHrPadding;
+    //  }
  
      var tablet_selectors = {}
      var mobile_selectors = {}
@@ -72,10 +75,11 @@
              "font-family": titleFontFamily,
              "line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
              "color": titleColor,
-             "padding-left" : generateCSSUnit( lPadding, "px" ),
-             "padding-right" : generateCSSUnit( rPadding, "px" ),
-             "padding-top" : generateCSSUnit( titleVrPadding, "px" ),
-             "padding-bottom" : generateCSSUnit( titleVrPadding, "px" ),
+             "padding": generateCSSUnit( padding, "px" ),
+            //  "padding-left" : generateCSSUnit( titleLeftPadding, "px" ),
+            //  "padding-right" : generateCSSUnit( titleRightPadding, "px" ),
+            //  "padding-top" : generateCSSUnit( titleTopPadding, "px" ),
+            //  "padding-bottom" : generateCSSUnit( titleTopPadding, "px" ),
              
          },
  
