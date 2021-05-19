@@ -986,7 +986,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_generated_stylesheet( $this_post ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->prepare_assets()' );
 
-			UAGB_Frontend::get_instance()->prepare_assets( $this_post );
+			return UAGB_Frontend::get_instance()->prepare_assets( $this_post );
 		}
 
 		/**
@@ -1000,7 +1000,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_assets( $blocks ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_blocks_assets()' );
 
-			UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
+			return UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
 		}
 
 		/**
@@ -1014,7 +1014,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function parse( $content ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->parse_blocks()' );
 
-			UAGB_Frontend::get_instance()->parse_blocks( $content );
+			return UAGB_Frontend::get_instance()->parse_blocks( $content );
 		}
 		/**
 		 * This is the action where we create dynamic asset files.
@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function generate_asset_files() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->generate_asset_files()' );
 
-			UAGB_Frontend::get_instance()->generate_asset_files();
+			return UAGB_Frontend::get_instance()->generate_asset_files();
 		}
 		/**
 		 * Enqueue Gutenberg block assets for both frontend + backend.
@@ -1038,7 +1038,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function block_assets() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->enqueue_block_assets()' );
 
-			UAGB_Frontend::get_instance()->enqueue_block_assets();
+			return UAGB_Frontend::get_instance()->enqueue_block_assets();
 
 		}
 		/**
@@ -1050,7 +1050,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function print_script() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_script()' );
 
-			UAGB_Frontend::get_instance()->print_script();
+			return UAGB_Frontend::get_instance()->print_script();
 
 		}
 		/**
@@ -1062,7 +1062,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function print_stylesheet() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_stylesheet()' );
 
-			UAGB_Frontend::get_instance()->print_stylesheet();
+			return UAGB_Frontend::get_instance()->print_stylesheet();
 
 		}
 		/**
@@ -1074,7 +1074,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function frontend_gfonts() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->print_google_fonts()' );
 
-			UAGB_Frontend::get_instance()->print_google_fonts();
+			return UAGB_Frontend::get_instance()->print_google_fonts();
 
 		}
 		/**
@@ -1087,7 +1087,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_block_css_and_js( $block ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_block_css_and_js()' );
 
-			UAGB_Frontend::get_instance()->get_block_css_and_js( $block );
+			return UAGB_Frontend::get_instance()->get_block_css_and_js( $block );
 		}
 		/**
 		 * Generates stylesheet and appends in head tag.
@@ -1098,7 +1098,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function generate_assets() {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->generate_assets()' );
 
-			UAGB_Frontend::get_instance()->generate_assets();
+			return UAGB_Frontend::get_instance()->generate_assets();
 		}
 	}
 
