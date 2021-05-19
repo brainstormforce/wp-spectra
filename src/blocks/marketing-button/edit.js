@@ -6,10 +6,14 @@ import styling from './styling';
 import React, { useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/marketing-button/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/marketing-button/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/marketing-button/render" */ './render' )
+	import(
+		/* webpackChunkName: "chunks/marketing-button/render" */ './render'
+	)
 );
 import { withSelect } from '@wordpress/data';
 
@@ -17,7 +21,6 @@ import { compose } from '@wordpress/compose';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	useEffect( () => {
-
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -62,7 +65,7 @@ const applyWithSelect = withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType: deviceType,
+		deviceType:deviceType,
 	};
 } );
 

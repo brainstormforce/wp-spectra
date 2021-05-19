@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
@@ -11,6 +12,7 @@ const Render = ( props ) => {
 		deviceType,
 		mergeBlocks,
 		insertBlocksAfter,
+		createBlock,
 		onReplace,
 	} = props;
 
