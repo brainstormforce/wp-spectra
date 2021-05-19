@@ -13,7 +13,7 @@ import InfoBoxSeparator from './components/InfoBoxSeparator';
 import CallToAction from './components/CallToAction';
 import InfoBoxIconImage from './components/IconImage';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 export default function save( props ) {
 	const {

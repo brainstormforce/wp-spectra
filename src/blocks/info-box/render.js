@@ -9,7 +9,7 @@ const Title = lazy( () =>
 );
 const InfoBoxDesc = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/info-box/description" */ './components/InfoBoxDesc'
+		/* webpackChunkName: "chunks/info-box/InfoBoxDesc" */ './components/InfoBoxDesc'
 	)
 );
 const CallToAction = lazy( () =>
