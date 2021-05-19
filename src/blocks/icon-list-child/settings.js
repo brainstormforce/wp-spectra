@@ -1,9 +1,13 @@
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, MediaUpload, ColorPalette } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	MediaUpload,
+	ColorPalette,
+} from '@wordpress/block-editor';
 
 import {
 	PanelBody,
@@ -17,7 +21,6 @@ import {
 const svg_icons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
@@ -34,7 +37,7 @@ const Settings = ( props ) => {
 		icon_border_hover_color,
 		link,
 		target,
-		disableLink
+		disableLink,
 	} = attributes;
 
 	/*
@@ -369,7 +372,7 @@ const Settings = ( props ) => {
 				{ ( tabName ) => {
 					let color_tab;
 					if ( 'normal' === tabName.name ) {
-						color_tab = color_control;
+						color_tab = colorControl;
 					} else {
 						color_tab = colorControlHover;
 					}

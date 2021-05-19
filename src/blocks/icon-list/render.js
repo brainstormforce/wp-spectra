@@ -22,10 +22,10 @@ const Render = ( props ) => {
 
 	const labelClass = hideLabel ? 'uagb-icon-list__no-label' : '';
 
-	const getIconTemplate = memoize( ( icon_block, icons ) => {
+	const getIconTemplate = memoize( ( icon_block, icon ) => {
 		return times( icon_block, ( n ) => [
 			'uagb/icon-list-child',
-			icons[ n ],
+			icon[ n ],
 		] );
 	} );
 

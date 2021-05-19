@@ -34,7 +34,6 @@ import {
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType, clientId } = props;
 
@@ -270,7 +269,9 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					<Suspense fallback={ lazyLoader() }><Columnresponsive /></Suspense>
+					<Suspense fallback={ lazyLoader() }>
+						<Columnresponsive />
+					</Suspense>
 					{ 'Desktop' === deviceType && (
 						<>
 							{ sizeTypeControls }
@@ -319,61 +320,61 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<hr className="uagb-editor__separator" />		
+					<hr className="uagb-editor__separator" />
 					<Suspense fallback={ lazyLoader() }>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: loadGoogleFonts,
-							label: 'loadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: fontFamily,
-							label: 'fontFamily',
-						} }
-						fontWeight={ {
-							value: fontWeight,
-							label: 'fontWeight',
-						} }
-						fontSubset={ {
-							value: fontSubset,
-							label: 'fontSubset',
-						} }
-						fontSizeType={ {
-							value: fontSizeType,
-							label: 'fontSizeType',
-						} }
-						fontSize={ { value: fontSize, label: 'fontSize' } }
-						fontSizeMobile={ {
-							value: fontSizeMobile,
-							label: 'fontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: fontSizeTablet,
-							label: 'fontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: lineHeightType,
-							label: 'lineHeightType',
-						} }
-						lineHeight={ {
-							value: lineHeight,
-							label: 'lineHeight',
-						} }
-						lineHeightMobile={ {
-							value: lineHeightMobile,
-							label: 'lineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: lineHeightTablet,
-							label: 'lineHeightTablet',
-						} }
-					/>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: loadGoogleFonts,
+								label: 'loadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: fontFamily,
+								label: 'fontFamily',
+							} }
+							fontWeight={ {
+								value: fontWeight,
+								label: 'fontWeight',
+							} }
+							fontSubset={ {
+								value: fontSubset,
+								label: 'fontSubset',
+							} }
+							fontSizeType={ {
+								value: fontSizeType,
+								label: 'fontSizeType',
+							} }
+							fontSize={ { value: fontSize, label: 'fontSize' } }
+							fontSizeMobile={ {
+								value: fontSizeMobile,
+								label: 'fontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: fontSizeTablet,
+								label: 'fontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: lineHeightType,
+								label: 'lineHeightType',
+							} }
+							lineHeight={ {
+								value: lineHeight,
+								label: 'lineHeight',
+							} }
+							lineHeightMobile={ {
+								value: lineHeightMobile,
+								label: 'lineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: lineHeightTablet,
+								label: 'lineHeightTablet',
+							} }
+						/>
 					</Suspense>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
@@ -433,9 +434,7 @@ const Settings = ( props ) => {
 		<>
 			{ blockControls() }
 			{ generalSetting() }
-			<Suspense fallback={ lazyLoader() }>
-			{ googleFonts }
-			</Suspense>
+			<Suspense fallback={ lazyLoader() }>{ googleFonts }</Suspense>
 		</>
 	);
 };

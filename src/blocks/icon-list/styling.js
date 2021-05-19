@@ -34,12 +34,15 @@ function styling( props ) {
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
-	const alignment =
-		align == 'left'
-			? 'flex-start'
-			: align == 'right'
-			? 'flex-end'
-			: 'center';
+	let alignment = '';
+	if ( align == 'left' ) {
+		alignment = 'flex-start';
+	} else if ( align == 'right' ) {
+		alignment = 'flex-end';
+	} else {
+		alignment = 'center';
+	}
+
 	const editorGap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
 
 	selectors = {
