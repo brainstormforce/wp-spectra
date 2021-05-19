@@ -1,3 +1,5 @@
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 const TypographyControl = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/price-list/typography-control" */ '@Components/typography'
@@ -21,7 +23,7 @@ const maxColumns = 3;
 import {
 	InspectorControls,
 	PanelColorSettings,
-	ColorPalette
+	ColorPalette,
 } from '@wordpress/block-editor';
 
 import {
@@ -35,14 +37,12 @@ import {
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const {
 		menu_item_count,
-		rest_menu_item_arr,
 		titleSpace,
 		imgHrPadding,
 		imgVrPadding,
@@ -154,30 +154,6 @@ const Settings = ( props ) => {
 			pricelistChild.attributes.imageAlignment = value;
 		} );
 		setAttributes( { imageAlignment: value } );
-	};
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		setAttributes( { backgroundImage: null } );
-	};
-
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundImage: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' !== media.type ) {
-			setAttributes( { backgroundImage: null } );
-			return;
-		}
-
-		setAttributes( { backgroundImage: media } );
 	};
 
 	let loadTitleGoogleFonts;
@@ -615,7 +591,10 @@ const Settings = ( props ) => {
 							value: descFontSizeType,
 							label: 'descFontSizeType',
 						} }
-						fontSize={ { value: descFontSize, label: 'descFontSize' } }
+						fontSize={ {
+							value: descFontSize,
+							label: 'descFontSize',
+						} }
 						fontSizeMobile={ {
 							value: descFontSizeMobile,
 							label: 'descFontSizeMobile',

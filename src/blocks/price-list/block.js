@@ -61,7 +61,6 @@ registerBlockType( 'uagb/restaurant-menu', {
 	attributes,
 	edit,
 	save,
-	example: {},
 	deprecated,
 } );
 addFilter( 'editor.BlockEdit', 'uagb/restaurant-menu', withPriceList );

@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import PositionClasses from './classes';
 import memoize from 'memize';
 import times from 'lodash/times';
+import React from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/restaurant-menu-child' ];
@@ -12,21 +13,6 @@ const Render = ( props ) => {
 
 	// Setup the attributes.
 	const { menu_item_count, rest_menu_item_arr } = attributes;
-
-	let cnt = 0;
-	rest_menu_item_arr.map( ( item, thisIndex ) => {
-		const image_arr = rest_menu_item_arr[ thisIndex ];
-		if ( image_arr && typeof image_arr !== 'undefined' ) {
-			const image = image_arr.image;
-			if (
-				typeof image !== 'undefined' &&
-				image !== null &&
-				image !== ''
-			) {
-				cnt++;
-			}
-		}
-	} );
 
 	const getPriceListTemplate = memoize(
 		( menu_item_block, rest_menu_item_arr ) => {

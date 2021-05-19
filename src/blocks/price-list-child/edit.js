@@ -1,14 +1,18 @@
 /**
- * BLOCK: Price List 
+ * BLOCK: Price List
  */
 
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/render" */ './render' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/render" */ './render'
+	)
 );
 const UAGBRestaurantMenuChild = ( props ) => {
 	useEffect( () => {

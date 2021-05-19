@@ -1,16 +1,16 @@
 import { __ } from '@wordpress/i18n';
 
+import React from 'react';
 import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
-} from'@wordpress/block-editor';
+} from '@wordpress/block-editor';
 
 import { PanelBody, BaseControl, Button } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
@@ -37,10 +37,10 @@ const Settings = ( props ) => {
 	/*
 	 * Event to set Image selectot label.
 	 */
-	const getImageName = ( image ) => {
+	const getImageName = ( img ) => {
 		let imageTitle = __( 'Select Image' );
-		if ( image ) {
-			if ( image.url == null || image.url == '' ) {
+		if ( img ) {
+			if ( img.url == null || img.url == '' ) {
 				imageTitle = __( 'Select Image' );
 			} else {
 				imageTitle = __( 'Replace Image' );

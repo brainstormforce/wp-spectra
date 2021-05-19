@@ -1,19 +1,26 @@
-
 import classnames from 'classnames';
 import PositionClasses from '../price-list/classes';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const RestMenuImage = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/RestMenuImage" */ './components/RestMenuImage' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/RestMenuImage" */ './components/RestMenuImage'
+	)
 );
 const Title = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/Title" */ './components/Title' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/Title" */ './components/Title'
+	)
 );
 const Price = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/Price" */ './components/Price' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/Price" */ './components/Price'
+	)
 );
 const Description = lazy( () =>
-	import( /* webpackChunkName: "chunks/price-list-child/render" */ './components/Description' )
+	import(
+		/* webpackChunkName: "chunks/price-list-child/render" */ './components/Description'
+	)
 );
 import { select } from '@wordpress/data';
 
@@ -45,43 +52,43 @@ const Render = ( props ) => {
 			) }
 		>
 			<Suspense fallback={ lazyLoader() }>
-			<div className="uagb-rm__content">
-				{ ( position == 'top' || position == 'left' ) && (
-					<RestMenuImage attributes={ attributes } />
-				) }
-				<div className="uagb-rm__text-wrap">
-					{
-						<>
-							<div className="uagb-rm-details">
-								<div className="uagb-rm__title-wrap">
-									<Title
-										attributes={ attributes }
-										setAttributes={ setAttributes }
-										props={ props }
-									/>
-									<div className="uagb-rest-menu-text-wrap">
-										<Description
+				<div className="uagb-rm__content">
+					{ ( position == 'top' || position == 'left' ) && (
+						<RestMenuImage attributes={ attributes } />
+					) }
+					<div className="uagb-rm__text-wrap">
+						{
+							<>
+								<div className="uagb-rm-details">
+									<div className="uagb-rm__title-wrap">
+										<Title
+											attributes={ attributes }
+											setAttributes={ setAttributes }
+											props={ props }
+										/>
+										<div className="uagb-rest-menu-text-wrap">
+											<Description
+												attributes={ attributes }
+												setAttributes={ setAttributes }
+												props={ props }
+											/>
+										</div>
+									</div>
+									<div className="uagb-rm__price-wrap">
+										<Price
 											attributes={ attributes }
 											setAttributes={ setAttributes }
 											props={ props }
 										/>
 									</div>
 								</div>
-								<div className="uagb-rm__price-wrap">
-									<Price
-										attributes={ attributes }
-										setAttributes={ setAttributes }
-										props={ props }
-									/>
-								</div>
-							</div>
-						</>
-					}
+							</>
+						}
+					</div>
+					{ position == 'right' && (
+						<RestMenuImage attributes={ attributes } />
+					) }
 				</div>
-				{ position == 'right' && (
-					<RestMenuImage attributes={ attributes } />
-				) }
-			</div>
 			</Suspense>
 			<div className="uagb-rm__separator-parent">
 				<div className="uagb-rm__separator"></div>

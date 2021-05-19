@@ -11,9 +11,9 @@ import Description from '../price-list-child/components/Description';
 import PositionClasses from './classes';
 import RestMenuImage from '../price-list-child/components/RestMenuImage';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{
