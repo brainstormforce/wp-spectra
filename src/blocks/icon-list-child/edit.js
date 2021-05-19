@@ -3,14 +3,19 @@
  */
 
 // Import classes
-import iconListChildRender from './render';
-import iconListChildSettings from './settings';
 import styling from './styling';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/testimonial/Render" */ './render' )
+);
 
 const UAGBIconListChild = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -35,8 +40,10 @@ const UAGBIconListChild = ( props ) => {
 
 	return (
 		<>
-			{ iconListChildSettings( props ) }
-			{ iconListChildRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };

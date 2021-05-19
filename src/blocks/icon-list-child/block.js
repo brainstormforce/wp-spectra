@@ -10,7 +10,7 @@ import './style.scss';
 import './editor.scss';
 import deprecated from './deprecated';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/icon-list-child', {
 	title: uagb_blocks_info.blocks[ 'uagb/icon-list-child' ].title,

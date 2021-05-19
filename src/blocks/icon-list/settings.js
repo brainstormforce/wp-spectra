@@ -1,29 +1,41 @@
 import map from 'lodash/map';
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-import Columnresponsive from '../../components/typography/column-responsive';
-
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
-
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/icon-list/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/icon-list/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/icon-list/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
 import { __ } from '@wordpress/i18n';
-const { select } = wp.data;
-const {
+import { select } from '@wordpress/data';
+import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	Button,
 	ToggleControl,
 	ButtonGroup,
-} = wp.components;
+} from '@wordpress/components';
 
-const iconlistSettings = ( props ) => {
+const Settings = ( props ) => {
+	
+	props = props.parentProps;
 	const { attributes, setAttributes, deviceType, clientId } = props;
 
 	const {
@@ -258,7 +270,7 @@ const iconlistSettings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					<Columnresponsive />
+					<Suspense fallback={ lazyLoader() }><Columnresponsive /></Suspense>
 					{ 'Desktop' === deviceType && (
 						<>
 							{ sizeTypeControls }
@@ -307,7 +319,8 @@ const iconlistSettings = ( props ) => {
 							/>
 						</>
 					) }
-					<hr className="uagb-editor__separator" />
+					<hr className="uagb-editor__separator" />		
+					<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -361,6 +374,7 @@ const iconlistSettings = ( props ) => {
 							label: 'lineHeightTablet',
 						} }
 					/>
+					</Suspense>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
 						label={ __(
@@ -419,9 +433,11 @@ const iconlistSettings = ( props ) => {
 		<>
 			{ blockControls() }
 			{ generalSetting() }
+			<Suspense fallback={ lazyLoader() }>
 			{ googleFonts }
+			</Suspense>
 		</>
 	);
 };
 
-export default iconlistSettings;
+export default React.memo( Settings );

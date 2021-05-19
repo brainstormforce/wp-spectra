@@ -8,7 +8,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		align,
-		classMigrate,
 		gap,
 		inner_gap,
 		icon_layout,
@@ -33,15 +32,15 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 	const alignment =
 		align == 'left'
 			? 'flex-start'
 			: align == 'right'
 			? 'flex-end'
 			: 'center';
-	const editor_gap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
+	const editorGap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
 
 	selectors = {
 		' .uagb-icon-list__source-wrap': {
@@ -54,7 +53,7 @@ function styling( props ) {
 		'.uagb-icon-list__layout-vertical .wp-block[data-type="uagb/icon-list-child"]': {
 			'margin-left': 0,
 			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editor_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( editorGap, 'px' ),
 		},
 		'.uagb-icon-list__layout-vertical .uagb-icon-list__wrap': {
 			'flex-direction': 'column',
@@ -63,8 +62,8 @@ function styling( props ) {
 			'margin-bottom': 0,
 		},
 		'.uagb-icon-list__layout-horizontal .wp-block[data-type="uagb/icon-list-child"]': {
-			'margin-left': generateCSSUnit( editor_gap / 2, 'px' ),
-			'margin-right': generateCSSUnit( editor_gap / 2, 'px' ),
+			'margin-left': generateCSSUnit( editorGap / 2, 'px' ),
+			'margin-right': generateCSSUnit( editorGap / 2, 'px' ),
 		},
 		'.uagb-icon-list__layout-horizontal .wp-block[data-type="uagb/icon-list-child"]:first-child': {
 			'margin-left': 0,
@@ -97,7 +96,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-icon-list__source-image': {
 			width: generateCSSUnit( sizeMobile, sizeType ),
 		},
@@ -117,7 +116,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-icon-list__source-image': {
 			width: generateCSSUnit( sizeTablet, sizeType ),
 		},
@@ -139,37 +138,37 @@ function styling( props ) {
 
 	if ( 'horizontal' == icon_layout ) {
 		if ( 'tablet' == stack ) {
-			tablet_selectors[
+			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editor_gap, 'px' ),
+				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
 			};
 
-			tablet_selectors[ ' .uagb-icon-list__wrap' ] = {
+			tabletSelectors[ ' .uagb-icon-list__wrap' ] = {
 				'flex-direction': 'column',
 			};
 
-			tablet_selectors[
+			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]:last-child'
 			] = {
 				'margin-bottom': 0,
 			};
 		} else if ( 'mobile' == stack ) {
-			mobile_selectors[
+			mobileSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editor_gap, 'px' ),
+				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
 			};
 
-			mobile_selectors[ ' .uagb-icon-list__wrap' ] = {
+			mobileSelectors[ ' .uagb-icon-list__wrap' ] = {
 				'flex-direction': 'column',
 			};
 
-			mobile_selectors[
+			mobileSelectors[
 				' .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child'
 			] = {
 				'margin-bottom': 0,
@@ -209,36 +208,36 @@ function styling( props ) {
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
-	mobile_selectors[ ' .uagb-icon-list-repeater .uagb-icon-list__label' ] = {
+	mobileSelectors[ ' .uagb-icon-list-repeater .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 	};
 
-	tablet_selectors[ ' .uagb-icon-list-repeater .uagb-icon-list__label' ] = {
+	tabletSelectors[ ' .uagb-icon-list-repeater .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

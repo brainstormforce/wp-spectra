@@ -2,17 +2,20 @@
  * BLOCK: Icon List
  */
 
-// Import classes
-import iconListRender from './render';
-import iconListSettings from './settings';
 import styling from './styling';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/testimonial/Render" */ './render' )
+);
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const UAGBIconList = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -40,8 +43,10 @@ const UAGBIconList = ( props ) => {
 
 	return (
 		<>
-			{ iconListSettings( props ) }
-			{ iconListRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
@@ -56,6 +61,6 @@ export default withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType,
+		deviceType:deviceType,
 	};
 } )( UAGBIconList );

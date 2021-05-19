@@ -2,11 +2,12 @@
 import classnames from 'classnames';
 import times from 'lodash/times';
 import memoize from 'memize';
-const { InnerBlocks } = wp.blockEditor;
-
+import { InnerBlocks } from '@wordpress/block-editor';
+import React from 'react';
 const ALLOWED_BLOCKS = [ 'uagb/icon-list-child' ];
 
-const iconListRender = ( props ) => {
+const Render = ( props ) => {
+	props = props.parentProps;
 	const { attributes, deviceType } = props;
 
 	const {
@@ -51,5 +52,4 @@ const iconListRender = ( props ) => {
 		</div>
 	);
 };
-
-export default iconListRender;
+export default React.memo( Render );

@@ -2,9 +2,10 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
-const iconListChildRender = ( props ) => {
+const Render = ( props ) => {
+	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
 		className,
@@ -19,24 +20,24 @@ const iconListChildRender = ( props ) => {
 		hideLabel,
 	} = attributes;
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( image_icon == 'icon' ) {
 		if ( icon ) {
-			image_icon_html = (
+			imageIconHtml = (
 				<span className="uagb-icon-list__source-icon">
 					{ renderSVG( icon ) }
 				</span>
 			);
 		}
 	} else if ( image && image.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img className="uagb-icon-list__source-image" src={ image.url } />
 		);
 	}
 
-	const target_val = target ? '_blank' : '_self';
-	const link_url = ! disableLink ? link : '/';
+	const targetVal = target ? '_blank' : '_self';
+	const linkUrl = ! disableLink ? link : '/';
 
 	return (
 		<div
@@ -49,15 +50,15 @@ const iconListChildRender = ( props ) => {
 		>
 			{ ! disableLink && (
 				<a
-					target={ target_val }
+					target={ targetVal }
 					rel="noopener noreferrer"
 					aria-label={ label }
-					href={ link_url }
+					href={ linkUrl }
 				></a>
 			) }
 			<div className="uagb-icon-list__content-wrap">
 				<span className="uagb-icon-list__source-wrap">
-					{ image_icon_html }
+					{ imageIconHtml }
 				</span>
 				{ ! hideLabel && '' != label && (
 					<div className="uagb-icon-list__label-wrap">
@@ -86,4 +87,4 @@ const iconListChildRender = ( props ) => {
 		</div>
 	);
 };
-export default iconListChildRender;
+export default React.memo( Render );

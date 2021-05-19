@@ -2,11 +2,11 @@
  * BLOCK: Icon List - Attributes
  */
 
-const ITEM_COUNT = 1;
+const itemCount = 1;
 
 const icons = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
+for ( let i = 1; i <= itemCount; i++ ) {
 	icons.push( {
 		label: '#Label',
 		image_icon: 'icon',
@@ -45,7 +45,7 @@ const attributes = {
 	},
 	icon_count: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	icons: {
 		type: 'array',

@@ -45,12 +45,12 @@ function styling( props ) {
 		},
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
