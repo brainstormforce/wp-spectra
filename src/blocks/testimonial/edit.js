@@ -5,10 +5,10 @@ import TestimonialStyle from './inline-styles';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './Settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/render" */ './render' )
+	import( /* webpackChunkName: "chunks/testimonial/Render" */ './Render' )
 );
 import { withSelect } from '@wordpress/data';
 
@@ -58,6 +58,6 @@ export default withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType:deviceType,
+		deviceType,
 	};
 } )( UAGBtestimonial );

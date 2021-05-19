@@ -177,20 +177,20 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectTestImage = ( media, index ) => {
-		let imag_url = null;
+		let imgUrl = null;
 		if ( ! media || ! media.url ) {
-			imag_url = null;
+			imgUrl = null;
 		} else {
-			imag_url = media;
+			imgUrl = media;
 		}
 
 		if ( ! media.type || 'image' !== media.type ) {
-			imag_url = null;
+			imgUrl = null;
 		}
 
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item.image = imag_url;
+				item.image = imgUrl;
 			}
 			return item;
 		} );
@@ -220,21 +220,21 @@ const Settings = ( props ) => {
 	 * Event to set Image selectot label.
 	 */
 	const getImageName = ( image ) => {
-		let image_name = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+		let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
 		if ( image ) {
 			if ( image.url == null || image.url == '' ) {
-				image_name = __(
+				imageName = __(
 					'Select Image',
 					'ultimate-addons-for-gutenberg'
 				);
 			} else {
-				image_name = __(
+				imageName = __(
 					'Replace Image',
 					'ultimate-addons-for-gutenberg'
 				);
 			}
 		}
-		return image_name;
+		return imageName;
 	};
 
 	const togglePauseOnHover = () => {

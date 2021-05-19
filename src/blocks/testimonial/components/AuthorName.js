@@ -15,9 +15,9 @@ const AuthorName = ( props ) => {
 	} = props;
 
 	const testArray = attributes.test_block[ index_value ];
-	let author_name = '';
+	let authorName = '';
 	if ( testArray && typeof testArray !== 'undefined' ) {
-		author_name = testArray.name;
+		authorName = testArray.name;
 	}
 
 	const dataCopy = [ ...attributes.test_block ];
@@ -26,7 +26,7 @@ const AuthorName = ( props ) => {
 		return (
 			<RichText
 				tagName="div"
-				value={ author_name }
+				value={ authorName }
 				placeholder={ __(
 					'Author Name',
 					'ultimate-addons-for-gutenberg'
@@ -63,7 +63,7 @@ const AuthorName = ( props ) => {
 	return (
 		<RichText.Content
 			tagName="span"
-			value={ author_name }
+			value={ authorName }
 			className="uagb-tm__author-name"
 		/>
 	);
