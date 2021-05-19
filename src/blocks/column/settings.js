@@ -7,13 +7,13 @@ import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const GradientSettings = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/gradient-settings" */ '../../components/gradient-settings' )
+	import( /* webpackChunkName: "chunks/column/gradient-settings" */ '@Components/gradient-settings' )
 );
 const Columnresponsive = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/column-responsive" */ '../../components/typography/column-responsive' )
+	import( /* webpackChunkName: "chunks/column/column-responsive" */ '@Components/typography/column-responsive' )
 );
 
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 const {
 	ColorPalette,

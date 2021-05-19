@@ -8,16 +8,16 @@ import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const GradientSettings = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/gradient-settings" */ '../../components/gradient-settings' )
+	import( /* webpackChunkName: "chunks/columns/gradient-settings" */ '@Components/gradient-settings' )
 );
 const Columnresponsive = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/column-responsive" */ '../../components/typography/column-responsive' )
+	import( /* webpackChunkName: "chunks/columns/column-responsive" */ '@Components/typography/column-responsive' )
 );
 const OptionSelectorControl = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/option-selector-control" */ '../../components/option-selector-control' )
+	import( /* webpackChunkName: "chunks/columns/option-selector-control" */ '@Components/option-selector-control' )
 );
 const BoxShadowControl = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/box-shadow" */ '../../components/box-shadow' )
+	import( /* webpackChunkName: "chunks/columns/box-shadow" */ '@Components/box-shadow' )
 );
 
 const {

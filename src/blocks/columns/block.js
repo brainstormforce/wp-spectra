@@ -11,7 +11,7 @@ import './style.scss';
 import './editor.scss';
 import save from './save';
 
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 const { registerBlockType } = wp.blocks;
 
