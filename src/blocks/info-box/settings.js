@@ -3,23 +3,28 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/typography-control" */ '@Components/typography'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/web-font-loader-control" */ '@Components/typography/fontloader'
+	)
+);
 $ = jQuery;
 const svg_icons = Object.keys( UAGBIcon );
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -29,7 +34,7 @@ const {
 	BaseControl,
 	Button,
 	ButtonGroup,
-} = wp.components;
+} from '@wordpress/components';
 
 let imageSizeOptions = [
 	{
@@ -40,7 +45,9 @@ let imageSizeOptions = [
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
 
-const infoBoxSetting = ( props ) => {
+const Settings = ( props ) => {
+	
+	props = props.parentProps;
 	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
@@ -167,13 +174,13 @@ const infoBoxSetting = ( props ) => {
 	};
 
 	const getImageSize = ( sizes ) => {
-		const size_arr = [];
+		const sizeArr = [];
 		$.each( sizes, function ( index, item ) {
 			const name = index;
 			const p = { value: name, label: name };
-			size_arr.push( p );
+			sizeArr.push( p );
 		} );
-		return size_arr;
+		return sizeArr;
 	};
 
 	/*
@@ -186,12 +193,12 @@ const infoBoxSetting = ( props ) => {
 	if ( iconImage && iconImage.sizes ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
-	let image_name = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+	let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
 	if ( iconImage ) {
 		if ( iconImage.url == null || iconImage.url == '' ) {
-			image_name = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
+			imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
 		} else {
-			image_name = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
+			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
 		}
 	}
 
@@ -587,7 +594,7 @@ const infoBoxSetting = ( props ) => {
 								value={ iconImage }
 								render={ ( { open } ) => (
 									<Button isSecondary onClick={ open }>
-										{ image_name }
+										{ imageName }
 									</Button>
 								) }
 							/>
@@ -701,62 +708,64 @@ const infoBoxSetting = ( props ) => {
 				/>
 				{ showPrefix && (
 					<>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: prefixLoadGoogleFonts,
-								label: 'prefixLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: prefixFontFamily,
-								label: 'prefixFontFamily',
-							} }
-							fontWeight={ {
-								value: prefixFontWeight,
-								label: 'prefixFontWeight',
-							} }
-							fontSubset={ {
-								value: prefixFontSubset,
-								label: 'prefixFontSubset',
-							} }
-							fontSizeType={ {
-								value: prefixFontSizeType,
-								label: 'prefixFontSizeType',
-							} }
-							fontSize={ {
-								value: prefixFontSize,
-								label: 'prefixFontSize',
-							} }
-							fontSizeMobile={ {
-								value: prefixFontSizeMobile,
-								label: 'prefixFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: prefixFontSizeTablet,
-								label: 'prefixFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: prefixLineHeightType,
-								label: 'prefixLineHeightType',
-							} }
-							lineHeight={ {
-								value: prefixLineHeight,
-								label: 'prefixLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: prefixLineHeightMobile,
-								label: 'prefixLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: prefixLineHeightTablet,
-								label: 'prefixLineHeightTablet',
-							} }
-						/>
+						<Suspense fallback={ lazyLoader() }>
+							<TypographyControl
+								label={ __(
+									'Typography',
+									'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: prefixLoadGoogleFonts,
+									label: 'prefixLoadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: prefixFontFamily,
+									label: 'prefixFontFamily',
+								} }
+								fontWeight={ {
+									value: prefixFontWeight,
+									label: 'prefixFontWeight',
+								} }
+								fontSubset={ {
+									value: prefixFontSubset,
+									label: 'prefixFontSubset',
+								} }
+								fontSizeType={ {
+									value: prefixFontSizeType,
+									label: 'prefixFontSizeType',
+								} }
+								fontSize={ {
+									value: prefixFontSize,
+									label: 'prefixFontSize',
+								} }
+								fontSizeMobile={ {
+									value: prefixFontSizeMobile,
+									label: 'prefixFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: prefixFontSizeTablet,
+									label: 'prefixFontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: prefixLineHeightType,
+									label: 'prefixLineHeightType',
+								} }
+								lineHeight={ {
+									value: prefixLineHeight,
+									label: 'prefixLineHeight',
+								} }
+								lineHeightMobile={ {
+									value: prefixLineHeightMobile,
+									label: 'prefixLineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: prefixLineHeightTablet,
+									label: 'prefixLineHeightTablet',
+								} }
+							/>
+						</Suspense>
 						<p className="uagb-setting-label">
 							{ __(
 								'Prefix Color',
@@ -810,6 +819,7 @@ const infoBoxSetting = ( props ) => {
 								{ value: 'h6', label: __( 'H6' ) },
 							] }
 						/>
+						<Suspense fallback={ lazyLoader() }>
 						<TypographyControl
 							label={ __(
 								'Typography',
@@ -866,6 +876,7 @@ const infoBoxSetting = ( props ) => {
 								label: 'headLineHeightTablet',
 							} }
 						/>
+						</Suspense>
 						<p className="uagb-setting-label">
 							{ __(
 								'Title Color',
@@ -900,62 +911,64 @@ const infoBoxSetting = ( props ) => {
 				/>
 				{ showDesc && (
 					<>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: subHeadLoadGoogleFonts,
-								label: 'subHeadLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: subHeadFontFamily,
-								label: 'subHeadFontFamily',
-							} }
-							fontWeight={ {
-								value: subHeadFontWeight,
-								label: 'subHeadFontWeight',
-							} }
-							fontSubset={ {
-								value: subHeadFontSubset,
-								label: 'subHeadFontSubset',
-							} }
-							fontSizeType={ {
-								value: subHeadFontSizeType,
-								label: 'subHeadFontSizeType',
-							} }
-							fontSize={ {
-								value: subHeadFontSize,
-								label: 'subHeadFontSize',
-							} }
-							fontSizeMobile={ {
-								value: subHeadFontSizeMobile,
-								label: 'subHeadFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: subHeadFontSizeTablet,
-								label: 'subHeadFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: subHeadLineHeightType,
-								label: 'subHeadLineHeightType',
-							} }
-							lineHeight={ {
-								value: subHeadLineHeight,
-								label: 'subHeadLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: subHeadLineHeightMobile,
-								label: 'subHeadLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: subHeadLineHeightTablet,
-								label: 'subHeadLineHeightTablet',
-							} }
-						/>
+						<Suspense fallback={ lazyLoader() }>
+							<TypographyControl
+								label={ __(
+									'Typography',
+									'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: subHeadLoadGoogleFonts,
+									label: 'subHeadLoadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: subHeadFontFamily,
+									label: 'subHeadFontFamily',
+								} }
+								fontWeight={ {
+									value: subHeadFontWeight,
+									label: 'subHeadFontWeight',
+								} }
+								fontSubset={ {
+									value: subHeadFontSubset,
+									label: 'subHeadFontSubset',
+								} }
+								fontSizeType={ {
+									value: subHeadFontSizeType,
+									label: 'subHeadFontSizeType',
+								} }
+								fontSize={ {
+									value: subHeadFontSize,
+									label: 'subHeadFontSize',
+								} }
+								fontSizeMobile={ {
+									value: subHeadFontSizeMobile,
+									label: 'subHeadFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: subHeadFontSizeTablet,
+									label: 'subHeadFontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: subHeadLineHeightType,
+									label: 'subHeadLineHeightType',
+								} }
+								lineHeight={ {
+									value: subHeadLineHeight,
+									label: 'subHeadLineHeight',
+								} }
+								lineHeightMobile={ {
+									value: subHeadLineHeightMobile,
+									label: 'subHeadLineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: subHeadLineHeightTablet,
+									label: 'subHeadLineHeightTablet',
+								} }
+							/>
+						</Suspense>
 						<p className="uagb-setting-label">
 							{ __(
 								'Description Color',
@@ -1934,11 +1947,13 @@ const infoBoxSetting = ( props ) => {
 				{ ctaSettings() }
 				{ marginSettings() }
 			</InspectorControls>
-			{ loadPrefixGoogleFonts }
-			{ loadSubHeadGoogleFonts }
-			{ loadCtaGoogleFonts }
-			{ loadHeadGoogleFonts }
+			<Suspense fallback={ lazyLoader() }>
+				{ loadPrefixGoogleFonts }
+				{ loadSubHeadGoogleFonts }
+				{ loadCtaGoogleFonts }
+				{ loadHeadGoogleFonts }
+			</Suspense>
 		</>
 	);
 };
-export default infoBoxSetting;
+export default React.memo( Settings );

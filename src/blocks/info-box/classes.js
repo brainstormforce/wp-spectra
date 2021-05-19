@@ -8,25 +8,25 @@ function InfoBoxPositionClasses( attributes ) {
 		sourceClass = 'uagb-infobox-has-icon';
 	}
 
-	let iconimgStyle_class = '';
+	let iconimgStyleClass = '';
 
-	iconimgStyle_class += 'uagb-infobox' + ' ';
-	iconimgStyle_class += sourceClass + ' ';
-	iconimgStyle_class +=
+	iconimgStyleClass += 'uagb-infobox' + ' ';
+	iconimgStyleClass += sourceClass + ' ';
+	iconimgStyleClass +=
 		'uagb-infobox-icon-' + attributes.iconimgPosition + ' ';
 
 	if (
 		attributes.iconimgPosition === 'left' ||
 		attributes.iconimgPosition === 'left-title'
 	) {
-		iconimgStyle_class += 'uagb-infobox-left' + ' ';
+		iconimgStyleClass += 'uagb-infobox-left' + ' ';
 	}
 
 	if (
 		attributes.iconimgPosition === 'right' ||
 		attributes.iconimgPosition === 'right-title'
 	) {
-		iconimgStyle_class += 'uagb-infobox-right' + ' ';
+		iconimgStyleClass += 'uagb-infobox-right' + ' ';
 	}
 
 	if (
@@ -34,9 +34,9 @@ function InfoBoxPositionClasses( attributes ) {
 			attributes.iconimgPosition === 'right' ) &&
 		attributes.stack !== 'none'
 	) {
-		iconimgStyle_class += 'uagb-infobox-stacked-' + attributes.stack + ' ';
+		iconimgStyleClass += 'uagb-infobox-stacked-' + attributes.stack + ' ';
 		if ( attributes.iconimgPosition === 'right' ) {
-			iconimgStyle_class +=
+			iconimgStyleClass +=
 				'uagb-infobox-reverse-order-' + attributes.stack + ' ';
 		}
 	}
@@ -45,17 +45,17 @@ function InfoBoxPositionClasses( attributes ) {
 		attributes.iconimgPosition !== 'above-title' ||
 		attributes.iconimgPosition !== 'below-title'
 	) {
-		iconimgStyle_class +=
+		iconimgStyleClass +=
 			'uagb-infobox-image-valign-' + attributes.sourceAlign + ' ';
 	}
 
 	if ( attributes.enableBorder ) {
-		iconimgStyle_class += 'uagb-infobox-enable-border' + ' ';
+		iconimgStyleClass += 'uagb-infobox-enable-border' + ' ';
 	}
 
-	iconimgStyle_class += 'uagb-infobox-enable-border-radius' + ' ';
+	iconimgStyleClass += 'uagb-infobox-enable-border-radius' + ' ';
 
-	return [ iconimgStyle_class ];
+	return [ iconimgStyleClass ];
 }
 
 export default InfoBoxPositionClasses;

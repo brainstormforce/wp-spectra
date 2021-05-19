@@ -1,8 +1,8 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const Prefix = ( props ) => {
 	const {

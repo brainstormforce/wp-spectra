@@ -19,7 +19,7 @@ import InfoBoxIconImage from './components/InfoBoxIconImage';
 // Import icon.
 import attributes from './attributes';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
 const deprecated = [
 	{

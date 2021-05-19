@@ -12,7 +12,7 @@ import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/info-box', {
 	title: uagb_blocks_info.blocks[ 'uagb/info-box' ].title,

@@ -1,17 +1,17 @@
 const InfoBoxIconImage = ( props ) => {
 	const { attributes } = props;
 
-	let url_chk = '';
+	let urlCheck = '';
 	if (
 		typeof attributes.iconImage !== 'undefined' &&
 		attributes.iconImage !== null &&
 		attributes.iconImage !== ''
 	) {
-		url_chk = attributes.iconImage.url;
+		urlCheck = attributes.iconImage.url;
 	}
 
 	let url = '';
-	if ( url_chk !== '' ) {
+	if ( urlCheck !== '' ) {
 		const size = attributes.iconImage.sizes;
 		const imageSize = attributes.imageSize;
 
@@ -21,7 +21,7 @@ const InfoBoxIconImage = ( props ) => {
 		) {
 			url = size[ imageSize ].url;
 		} else {
-			url = url_chk;
+			url = urlCheck;
 		}
 
 		return (

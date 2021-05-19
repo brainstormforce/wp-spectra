@@ -1,14 +1,45 @@
 import classnames from 'classnames';
-import Prefix from './components/Prefix';
-import Title from './components/Title';
-import Icon from './components/Icon';
-import InfoBoxDesc from './components/InfoBoxDesc';
 import InfoBoxPositionClasses from './classes';
-import InfoBoxSeparator from './components/InfoBoxSeparator';
-import CallToAction from './components/CallToAction';
-import InfoBoxIconImage from './components/IconImage';
-
-const infoBoxRender = ( props ) => {
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Title = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/Title" */ './components/Title'
+	)
+);
+const InfoBoxDesc = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/description" */ './components/InfoBoxDesc'
+	)
+);
+const CallToAction = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/CallToAction" */ './components/CallToAction'
+	)
+);
+const InfoBoxSeparator = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/InfoBoxSeparator" */ './components/InfoBoxSeparator'
+	)
+);
+const Icon = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/Icon" */ './components/Icon'
+	)
+);
+const InfoBoxIconImage = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/InfoBoxIconImage" */ './components/InfoBoxIconImage'
+	)
+);
+const Prefix = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/info-box/Prefix" */ './components/Prefix'
+	)
+);
+const Render = ( props ) => {
+	
+	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
 
 	// Setup the attributes.
@@ -25,27 +56,27 @@ const infoBoxRender = ( props ) => {
 		block_id,
 	} = attributes;
 	// Get icon/Image components.
-	let is_image = '';
+	let isImage = '';
 	if ( source_type === 'icon' && icon !== '' ) {
-		is_image = <Icon attributes={ attributes } />;
+		isImage = <Icon attributes={ attributes } />;
 	} else {
-		is_image = <InfoBoxIconImage attributes={ attributes } />;
+		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
-	let icon_image_html = is_image;
-	let seperator_position = seperatorPosition;
-	const seperator_html = <InfoBoxSeparator attributes={ attributes } />;
-	let show_seperator = true;
+	let iconImageHtml = isImage;
+	let seperatorPos = seperatorPosition;
+	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
+	let showSeperator = true;
 
 	if (
 		seperatorPosition == 'after_icon' &&
 		( iconimgPosition == 'above-title' || iconimgPosition == 'below-title' )
 	) {
-		show_seperator = false;
-		icon_image_html = (
+		showSeperator = false;
+		iconImageHtml = (
 			<>
-				{ is_image }
-				{ 'none' !== seperatorStyle && seperator_html }
+				{ isImage }
+				{ 'none' !== seperatorStyle && seperatorHtml }
 			</>
 		);
 	}
@@ -55,18 +86,18 @@ const infoBoxRender = ( props ) => {
 		( iconimgPosition !== 'above-title' ||
 			iconimgPosition !== 'below-title' )
 	) {
-		seperator_position = 'after_title';
+		seperatorPos = 'after_title';
 	}
 
 	if (
 		iconimgPosition == 'below-title' &&
 		seperatorPosition == 'after_title'
 	) {
-		show_seperator = false;
-		icon_image_html = (
+		showSeperator = false;
+		iconImageHtml = (
 			<>
-				{ 'none' !== seperatorStyle && seperator_html }
-				{ is_image }
+				{ 'none' !== seperatorStyle && seperatorHtml }
+				{ isImage }
 			</>
 		);
 	}
@@ -75,9 +106,9 @@ const infoBoxRender = ( props ) => {
 	const desc = (
 		<>
 			{ 'none' !== seperatorStyle &&
-				seperator_position == 'after_title' &&
-				show_seperator &&
-				seperator_html }
+				seperatorPos == 'after_title' &&
+				showSeperator &&
+				seperatorHtml }
 			<div className="uagb-ifb-text-wrap">
 				{ showDesc && (
 					<InfoBoxDesc
@@ -87,8 +118,8 @@ const infoBoxRender = ( props ) => {
 					/>
 				) }
 				{ 'none' !== seperatorStyle &&
-					seperator_position == 'after_desc' &&
-					seperator_html }
+					seperatorPos == 'after_desc' &&
+					seperatorHtml }
 				<CallToAction
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -98,7 +129,7 @@ const infoBoxRender = ( props ) => {
 	);
 
 	// Get Title and Prefix components.
-	const title_text = (
+	const titleText = (
 		<>
 			<div className="uagb-ifb-title-wrap">
 				{ showPrefix && (
@@ -109,8 +140,8 @@ const infoBoxRender = ( props ) => {
 					/>
 				) }
 				{ 'none' !== seperatorStyle &&
-					seperator_position == 'after_prefix' &&
-					seperator_html }
+					seperatorPos == 'after_prefix' &&
+					seperatorHtml }
 				{ showTitle && (
 					<Title
 						attributes={ attributes }
@@ -129,17 +160,17 @@ const infoBoxRender = ( props ) => {
 				ctaType == 'all' ? ' uagb-infobox_cta-type-all' : '',
 				...InfoBoxPositionClasses( attributes )
 			) }
-		>
+		><Suspense fallback={ lazyLoader() }>
 			<div className="uagb-ifb-left-right-wrap">
-				{ iconimgPosition == 'left' && icon_image_html }
+				{ iconimgPosition == 'left' && iconImageHtml }
 				<div className="uagb-ifb-content">
-					{ iconimgPosition == 'above-title' && icon_image_html }
+					{ iconimgPosition == 'above-title' && iconImageHtml }
 
 					{ ( iconimgPosition == 'above-title' ||
 						iconimgPosition == 'below-title' ) &&
-						title_text }
+						titleText }
 
-					{ iconimgPosition == 'below-title' && icon_image_html }
+					{ iconimgPosition == 'below-title' && iconImageHtml }
 
 					{ ( iconimgPosition == 'above-title' ||
 						iconimgPosition == 'below-title' ) &&
@@ -148,8 +179,8 @@ const infoBoxRender = ( props ) => {
 					{ iconimgPosition === 'left-title' && (
 						<>
 							<div className="uagb-ifb-left-title-image">
-								{ icon_image_html }
-								{ title_text }
+								{ iconImageHtml }
+								{ titleText }
 							</div>
 							{ desc }
 						</>
@@ -158,8 +189,8 @@ const infoBoxRender = ( props ) => {
 					{ iconimgPosition === 'right-title' && (
 						<>
 							<div className="uagb-ifb-right-title-image">
-								{ title_text }
-								{ icon_image_html }
+								{ titleText }
+								{ iconImageHtml }
 							</div>
 							{ desc }
 						</>
@@ -168,14 +199,15 @@ const infoBoxRender = ( props ) => {
 					{ ( iconimgPosition == 'left' ||
 						iconimgPosition == 'right' ) && (
 						<>
-							{ title_text }
+							{ titleText }
 							{ desc }
 						</>
 					) }
 				</div>
 
-				{ iconimgPosition == 'right' && icon_image_html }
+				{ iconimgPosition == 'right' && iconImageHtml }
 			</div>
+			</Suspense>
 		</div>
 	);
 
@@ -201,4 +233,4 @@ const infoBoxRender = ( props ) => {
 		</div>
 	);
 };
-export default infoBoxRender;
+export default React.memo( Render );

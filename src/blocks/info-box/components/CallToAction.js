@@ -16,9 +16,9 @@ const InfoBoxCta = ( props ) => {
 		target = '_blank';
 	}
 
-	let cta_icon_output = '';
+	let ctaIconOutput = '';
 	if ( attributes.ctaIcon !== '' ) {
-		cta_icon_output = (
+		ctaIconOutput = (
 			<span
 				className={ classnames(
 					`uagb-ifb-${ attributes.ctaType }-icon`,
@@ -40,12 +40,12 @@ const InfoBoxCta = ( props ) => {
 						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' &&
-							cta_icon_output }
+							ctaIconOutput }
 						<span className="uagb-inline-editing">
 							{ attributes.ctaText }
 						</span>
 						{ attributes.ctaIconPosition === 'after' &&
-							cta_icon_output }
+							ctaIconOutput }
 					</a>
 				) }
 
@@ -63,7 +63,7 @@ const InfoBoxCta = ( props ) => {
 							target={ target }
 							rel={ rel }
 						>
-							{ cta_icon_output }
+							{ ctaIconOutput }
 							<span className="uagb-ifb-cta-content-wrapper">
 								<span className="uagb-inline-editing ">
 									{ attributes.ctaText }
@@ -85,12 +85,12 @@ const InfoBoxCta = ( props ) => {
 					rel={ rel }
 				>
 					{ attributes.ctaIconPosition === 'before' &&
-						cta_icon_output }
+						ctaIconOutput }
 					<span className="uagb-inline-editing">
 						{ attributes.ctaText }
 					</span>
 					{ attributes.ctaIconPosition === 'after' &&
-						cta_icon_output }
+						ctaIconOutput }
 				</a>
 			) }
 
@@ -107,7 +107,7 @@ const InfoBoxCta = ( props ) => {
 						target={ target }
 						rel={ rel }
 					>
-						{ cta_icon_output }
+						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">
 							<span className="uagb-inline-editing ">
 								{ attributes.ctaText }

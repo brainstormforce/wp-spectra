@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function InfoBoxStyle( props ) {
 	const {
-		classMigrate,
 		headingAlign,
 		headingColor,
 		subHeadingColor,
@@ -253,7 +252,7 @@ function InfoBoxStyle( props ) {
 		};
 	}
 
-	const tablet_selectors = {
+	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeTablet,
@@ -307,7 +306,7 @@ function InfoBoxStyle( props ) {
 		},
 	};
 
-	const mobile_selectors = {
+	const mobileSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeMobile,
@@ -365,12 +364,12 @@ function InfoBoxStyle( props ) {
 		0,
 		8
 	) }`;
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, id, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, id, true, 'tablet' );
 
-	styling_css += generateCSS( mobile_selectors, id, true, 'mobile' );
-	return styling_css;
+	stylingCss += generateCSS( mobileSelectors, id, true, 'mobile' );
+	return stylingCss;
 }
 
 export default InfoBoxStyle;

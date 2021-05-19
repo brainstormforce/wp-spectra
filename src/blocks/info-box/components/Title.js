@@ -1,8 +1,8 @@
-const { RichText } = wp.blockEditor;
-
-const { createBlock } = wp.blocks;
+import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
+
+import { createBlock } from '@wordpress/blocks';
 
 const Title = ( props ) => {
 	const {
