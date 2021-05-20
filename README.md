@@ -169,7 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.22.5 ###
-* Improvement: Updated Gutenberg library.
+* Improvement: Updated Gutenberg Template Library.
 
 ### 1.22.4 ###
 * Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
