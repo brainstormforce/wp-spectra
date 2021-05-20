@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
-const tabsChildRender = ( props ) => {
+const Render = ( props ) => {
 	const { attributes, className } = props;
 	const { tabActive, id, block_id } = attributes;
 
@@ -27,4 +27,4 @@ const tabsChildRender = ( props ) => {
 		</div>
 	);
 };
-export default tabsChildRender;
+export default React.memo( Render );

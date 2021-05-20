@@ -6,24 +6,31 @@ import renderSVG from '@Controls/renderIcon';
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 
-import Columnresponsive from '../../components/typography/column-responsive';
-
-import TypographyControl from '../../components/typography';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/tabs/typography-control" */ '@Components/typography'
+	)
+);
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/tabs/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
 
 import { __ } from '@wordpress/i18n';
 
 const svg_icons = Object.keys( UAGBIcon );
 
-const {
+import {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	ColorPalette,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const { PanelBody, SelectControl, RangeControl, ToggleControl } = wp.components;
+import { PanelBody, SelectControl, RangeControl, ToggleControl } from '@wordpress/components';
 
-const tabSettings = ( props ) => {
-	const { attributes, setAttributes, className, deviceType } = props;
+const Settings = ( props ) => {
+	const { attributes, setAttributes, deviceType } = props;
 
 	const {
 		tabsStyleD,
@@ -81,7 +88,9 @@ const tabSettings = ( props ) => {
 				title={ __( 'Tabs Style', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
+				<Suspense fallback={ lazyLoader() }>
 				<Columnresponsive />
+				</Suspense>
 				{ 'Desktop' === deviceType && (
 					<>
 						<SelectControl
@@ -682,62 +691,64 @@ const tabSettings = ( props ) => {
 					}
 					allowReset
 				/>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: titleLoadGoogleFonts,
-						label: 'titleLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: titleFontFamily,
-						label: 'titleFontFamily',
-					} }
-					fontWeight={ {
-						value: titleFontWeight,
-						label: 'titleFontWeight',
-					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
-					} }
-					fontSizeType={ {
-						value: titleFontSizeType,
-						label: 'titleFontSizeType',
-					} }
-					fontSize={ {
-						value: titleFontSize,
-						label: 'titleFontSize',
-					} }
-					fontSizeMobile={ {
-						value: titleFontSizeMobile,
-						label: 'titleFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: titleFontSizeTablet,
-						label: 'titleFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: titleLineHeightType,
-						label: 'titleLineHeightType',
-					} }
-					lineHeight={ {
-						value: titleLineHeight,
-						label: 'titleLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: titleLineHeightMobile,
-						label: 'titleLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: titleLineHeightTablet,
-						label: 'titleLineHeightTablet',
-					} }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: titleLoadGoogleFonts,
+							label: 'titleLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: titleFontFamily,
+							label: 'titleFontFamily',
+						} }
+						fontWeight={ {
+							value: titleFontWeight,
+							label: 'titleFontWeight',
+						} }
+						fontSubset={ {
+							value: titleFontSubset,
+							label: 'titleFontSubset',
+						} }
+						fontSizeType={ {
+							value: titleFontSizeType,
+							label: 'titleFontSizeType',
+						} }
+						fontSize={ {
+							value: titleFontSize,
+							label: 'titleFontSize',
+						} }
+						fontSizeMobile={ {
+							value: titleFontSizeMobile,
+							label: 'titleFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: titleFontSizeTablet,
+							label: 'titleFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: titleLineHeightType,
+							label: 'titleLineHeightType',
+						} }
+						lineHeight={ {
+							value: titleLineHeight,
+							label: 'titleLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: titleLineHeightMobile,
+							label: 'titleLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: titleLineHeightTablet,
+							label: 'titleLineHeightTablet',
+						} }
+					/>
+				</Suspense>
 			</PanelBody>
 		);
 	};
@@ -897,4 +908,4 @@ const tabSettings = ( props ) => {
 		</InspectorControls>
 	);
 };
-export default tabSettings;
+export default React.memo( Settings );

@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import attributes from './attributes';
-const { RichText, InnerBlocks } = wp.blockEditor;
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

@@ -3,14 +3,20 @@
  */
 import times from 'lodash/times';
 import styling from './styling';
-import tabSettings from './settings';
-import tabsRender from './render';
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
+);
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/tabs/settings" */ './settings'
+	)
+);
 
-import React, { useEffect } from 'react';
+import { compose } from '@wordpress/compose'
 
-const { compose } = wp.compose;
-
-const { withDispatch, withSelect } = wp.data;
+import { withDispatch, withSelect } from '@wordpress/data';
 
 const UAGBTabsEdit = ( props ) => {
 	useEffect( () => {
@@ -35,8 +41,10 @@ const UAGBTabsEdit = ( props ) => {
 
 	return (
 		<>
-			{ tabSettings( props ) }
-			{ tabsRender( props ) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props } />
+			</Suspense>
 		</>
 	);
 };
@@ -50,7 +58,7 @@ export default compose(
 			? __experimentalGetPreviewDeviceType()
 			: null;
 		return {
-			deviceType,
+			deviceType:deviceType,
 		};
 	} ),
 	withDispatch( ( dispatch, { clientId }, { select } ) => {

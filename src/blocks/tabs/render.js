@@ -4,15 +4,17 @@ import renderSVG from '@Controls/renderIcon';
 
 import { __ } from '@wordpress/i18n';
 
-const { InnerBlocks, RichText } = wp.blockEditor;
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
-const { Tooltip, Dashicon } = wp.components;
+import { Tooltip, Dashicon } from '@wordpress/components';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
-const tabsRender = ( props ) => {
+const Render = ( props ) => {
+	
+	props = props.parentProps;
 	const {
 		attributes,
 		setAttributes,
@@ -306,4 +308,4 @@ const tabsRender = ( props ) => {
 		</>
 	);
 };
-export default tabsRender;
+export default React.memo( Render );

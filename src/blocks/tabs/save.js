@@ -4,7 +4,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-const { InnerBlocks, RichText } = wp.blockEditor;
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;
