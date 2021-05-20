@@ -50,11 +50,7 @@ if ( ! class_exists( 'UAGB_Post_Assets' ) ) {
 
 			$post = get_post( $post_id );
 
-			$uagb_frontend = new UAGB_Frontend(
-				array(
-					'post_id' => $post_id,
-				)
-			);
+			$uagb_frontend = UAGB_Frontend::get_instance( $post_id );
 
 			$uagb_frontend->prepare_assets( $post ); // Prepare the Assets.
 			$uagb_frontend->print_stylesheet(); // Print CSS inline if File Generation Disabled.

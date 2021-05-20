@@ -144,12 +144,18 @@ class UAGB_Frontend {
 	/**
 	 *  Initiator
 	 *
+	 * @param int $post_id Post ID.
 	 * @since 0.0.1
 	 */
-	public static function get_instance() {
+	public static function get_instance( $post_id = '' ) {
 
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self();
+			self::$instance = new self(
+				array(
+					'post_id' => $post_id,
+				)
+			);
+
 		}
 		return self::$instance;
 	}
