@@ -97,10 +97,10 @@ function styling( props ) {
 		' > .uagb-tabs__body-wrap > .block-editor-inner-blocks p': {
 			color: bodyTextColor,
 		},
-		' > .uagb-tabs__icon svg': {
-			height: generateCSSUnit( iconSize, 'px' ),
-			width: generateCSSUnit( iconSize, 'px' ),
-			fill: iconColor,
+		" .uagb-tabs__icon svg" : {
+			"height": generateCSSUnit( iconSize, "px" ),
+			"width": generateCSSUnit( iconSize, "px" ),
+			"fill": iconColor
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
