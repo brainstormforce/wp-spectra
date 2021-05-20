@@ -159,8 +159,8 @@
 		default : 15
 	},
 	padding: {
-		type: 'array',
-		default: [ '', '', '', '' ],
+		type: "number",
+		default : 15
 	},
 	tabletPadding: {
 		type: 'array',
@@ -169,6 +169,26 @@
 	mobilePadding: {
 		type: 'array',
 		default: [ '', '', '', '' ],
+	},
+	paddingUnit: {
+		type: "string",
+		default: "px"
+	},
+	paddingTop: {
+		type: "number",
+		default: 15
+	},
+	paddingBottom: {
+		type: "number",
+		default: 15
+	},
+	paddingLeft: {
+		type: "number",
+		default: 15
+	},
+	paddingRight: {
+		type: "number",
+		default: 15
 	},
 	layout: {
 		type: "string",

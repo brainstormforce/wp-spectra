@@ -41,6 +41,12 @@
          tabletPadding,
         mobilePadding,
         padding,
+        paddingSize,
+				paddingUnit,
+				paddingTop,
+				paddingBottom,
+				paddingLeft,
+				paddingRight,
          noticeDismiss,
          noticeAlignment,
          layout,
@@ -63,6 +69,8 @@
     //      lPadding = titleHrPadding;
     //      rPadding = titleHrPadding;
     //  }
+
+    let rPadding = ( undefined !== padding ? padding[ 1 ] : '' )
  
      var tablet_selectors = {}
      var mobile_selectors = {}
@@ -75,11 +83,11 @@
              "font-family": titleFontFamily,
              "line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
              "color": titleColor,
-             "padding": generateCSSUnit( padding, "px" ),
-            //  "padding-left" : generateCSSUnit( titleLeftPadding, "px" ),
-            //  "padding-right" : generateCSSUnit( titleRightPadding, "px" ),
-            //  "padding-top" : generateCSSUnit( titleTopPadding, "px" ),
-            //  "padding-bottom" : generateCSSUnit( titleTopPadding, "px" ),
+            //  "padding": generateCSSUnit( rPadding, "px" ),
+             "padding-left" : generateCSSUnit( paddingLeft, paddingUnit ),
+             "padding-right" : generateCSSUnit( paddingRight, paddingUnit ),
+             "padding-top" : generateCSSUnit( paddingTop, paddingUnit ),
+             "padding-bottom" : generateCSSUnit( paddingBottom, paddingUnit ),
              
          },
  

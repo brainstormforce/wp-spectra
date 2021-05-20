@@ -13,7 +13,7 @@ import AdvancedPopColorControl from '../../advanced-pop-color-control'
 import AlignButtonsControl from '../../components/align-buttons-control'
 import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
-import MeasurementControls from '../../components/measurement-control/measurement-control.js';
+import DimensionsControl from '../../components/dimention-control';
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -136,6 +136,11 @@ class UAGBInlineNoticeEdit extends Component {
 				highlightWidth,
 				color,
 				colorClass,
+				paddingUnit,
+				paddingTop,
+				paddingBottom,
+				paddingLeft,
+				paddingRight,
 			},
 			setAttributes,
 			className,
@@ -188,6 +193,8 @@ class UAGBInlineNoticeEdit extends Component {
 		if ( noticeDismiss ) {
 			image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
 		}
+
+		
 
 		const inlineGeneralSettings = () => {
 			return (
@@ -285,40 +292,16 @@ class UAGBInlineNoticeEdit extends Component {
 					}
 				</PanelBody>
 				<PanelBody title="Spacing" initialOpen={false}>
-					<MeasurementControls
-						label={ __( 'Title Padding', 'kadence-blocks' ) }
-						value={ padding }
-						control={ 'linked' }
-						tabletValue={ tabletPadding }
-						mobileValue={ mobilePadding }
-						onChange={ ( value ) => setAttributes( { padding: value } ) }
-						onChangeTablet={ ( value ) => setAttributes( { tabletPadding: value } ) }
-						onChangeMobile={ ( value ) => setAttributes( { mobilePadding: value } ) }
-						onChangeControl={ 'linked' }
-						min={ 0 }
-						max={ 100 }
-						step={ 1 }
-						unit={ 'px' }
-						units={ [ 'px' ] }
-						showUnit={ true }
-					/>
-					{/* <MeasurementControls
-						label={ __( 'Content Padding', 'kadence-blocks' ) }
-						value={ titleVrPadding }
-						control={ 'linked' }
-						tabletValue={ '' }
-						mobileValue={ '' }
-						onChange={ ( value ) => setAttributes( { titleVrPadding: value } ) }
-						onChangeTablet={ '' }
-						onChangeMobile={ '' }
-						onChangeControl={ 'linked' }
-						min={ 0 }
-						max={ 100 }
-						step={ 1 }
-						unit={ 'px' }
-						units={ [ 'px' ] }
-						showUnit={ true }
-					/> */}
+					<DimensionsControl { ...this.props }
+							type={ 'padding' }
+							label={ __( 'Padding', 'coblocks' ) }
+							help={ __( 'Space inside of the container.', 'ultimate-addons-for-gutenberg' ) }
+							valueTop={ paddingTop }
+							valueRight={ paddingRight }
+							valueBottom={ paddingBottom }
+							valueLeft={ paddingLeft }
+							unit={ paddingUnit }
+						/>
 				</PanelBody>
 				</InspectorTab>
 				<InspectorTab key={'style'}>
