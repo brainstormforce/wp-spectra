@@ -4,16 +4,22 @@ import renderSVG from '@Controls/renderIcon';
 
 import { __ } from '@wordpress/i18n';
 
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import React from 'react';
+import {
+	InnerBlocks,
+	RichText,
+	updateBlockAttributes,
+	getBlockOrder,
+	getBlock,
+	insertBlock,
+	removeBlock,
+} from '@wordpress/block-editor';
 
 import { Tooltip, Dashicon } from '@wordpress/components';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { select } from '@wordpress/data';
-
 const Render = ( props ) => {
-	
 	props = props.parentProps;
 	const {
 		attributes,
@@ -52,12 +58,6 @@ const Render = ( props ) => {
 		};
 	};
 	const updateTabsTitle = ( header, index ) => {
-		const { updateBlockAttributes } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
 
 		const newHeaders = tabHeaders.map( ( item, idx ) => {
@@ -72,9 +72,6 @@ const Render = ( props ) => {
 		updateTabTitle();
 	};
 	const onMove = ( oldIndex, newIndex ) => {
-		const { getBlock } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const tabsBlock = getBlock( clientId );
 
 		const titles = [ ...tabHeaders ];
@@ -90,12 +87,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const updateTabTitle = () => {
-		const { updateBlockAttributes } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
 
 		childBlocks.forEach( ( childBlockId ) =>
@@ -103,9 +94,6 @@ const Render = ( props ) => {
 		);
 	};
 	const addTab = () => {
-		const { insertBlock } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
 		const tabItemBlock = createBlock( 'uagb/tabs-child' );
 
 		insertBlock( tabItemBlock, tabHeaders.length, clientId );
@@ -115,12 +103,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const removeTab = ( index ) => {
-		const { removeBlock } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
 
 		removeBlock( childBlocks[ index ], false );
@@ -131,12 +113,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const updateTabsAttr = ( attrs ) => {
-		const { updateBlockAttributes } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
 
 		setAttributes( attrs );

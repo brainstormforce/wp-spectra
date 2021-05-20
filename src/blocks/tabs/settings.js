@@ -5,7 +5,8 @@ import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 const TypographyControl = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/tabs/typography-control" */ '@Components/typography'
@@ -27,7 +28,12 @@ import {
 	ColorPalette,
 } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl, RangeControl, ToggleControl } from '@wordpress/components';
+import {
+	PanelBody,
+	SelectControl,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
@@ -46,7 +52,6 @@ const Settings = ( props ) => {
 		activeTabTextColor,
 		bodyBgColor,
 		bodyTextColor,
-		tabActive,
 		tabTitleLeftMargin,
 		tabTitleRightMargin,
 		tabTitleTopMargin,
@@ -89,7 +94,7 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 			>
 				<Suspense fallback={ lazyLoader() }>
-				<Columnresponsive />
+					<Columnresponsive />
 				</Suspense>
 				{ 'Desktop' === deviceType && (
 					<>

@@ -9,12 +9,10 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
 );
 const Settings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/tabs/settings" */ './settings'
-	)
+	import( /* webpackChunkName: "chunks/tabs/settings" */ './settings' )
 );
 
-import { compose } from '@wordpress/compose'
+import { compose } from '@wordpress/compose';
 
 import { withDispatch, withSelect } from '@wordpress/data';
 
@@ -58,7 +56,7 @@ export default compose(
 			? __experimentalGetPreviewDeviceType()
 			: null;
 		return {
-			deviceType:deviceType,
+			deviceType,
 		};
 	} ),
 	withDispatch( ( dispatch, { clientId }, { select } ) => {
@@ -92,7 +90,7 @@ export default compose(
 						tabActive,
 					} );
 				} );
-				resetTabOrder;
+				resetTabOrder();
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition(

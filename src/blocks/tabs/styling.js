@@ -49,8 +49,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tabletSelectors = {};
-	let mobileSelectors = {};
+	const tabletSelectors = {};
+	const mobileSelectors = {};
 	selectors = {
 		' > .uagb-tabs__panel .uagb-tab': {
 			background: headerBgColor,
@@ -97,15 +97,14 @@ function styling( props ) {
 		' > .uagb-tabs__body-wrap > .block-editor-inner-blocks p': {
 			color: bodyTextColor,
 		},
-		" .uagb-tabs__icon svg" : {
-			"height": generateCSSUnit( iconSize, "px" ),
-			"width": generateCSSUnit( iconSize, "px" ),
-			"fill": iconColor
+		' .uagb-tabs__icon svg': {
+			height: generateCSSUnit( iconSize, 'px' ),
+			width: generateCSSUnit( iconSize, 'px' ),
+			fill: iconColor,
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
