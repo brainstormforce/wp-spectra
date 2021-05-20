@@ -3,9 +3,10 @@ import React from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
+	
+	props = props.parentProps;
 	const { attributes, className } = props;
 	const { tabActive, id, block_id } = attributes;
-
 	return (
 		<div
 			className={ `uagb-tabs__body-container uagb-tabs__inner-tab uagb-inner-tab-${ id }` }

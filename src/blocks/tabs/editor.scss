@@ -10,41 +10,6 @@
     }
 }
 .uagb-tabs__wrap{
-    display: flex;
-    margin: 15px;
-        ul.uagb-tabs__panel{
-            list-style-type: none;
-            display: inherit;
-            li.uagb-tab{
-                float: left;
-                position: relative;
-            }
-            .uagb-tabs__icon-position-left{
-                display: inline-flex;
-            }
-            .uagb-tabs__icon-position-top{
-                display: block;
-                .uagb-tabs__icon{
-                    display: block;
-                    text-align: center;
-                }
-            }
-            .uagb-tabs__icon-position-bottom{
-                display: block;
-                .uagb-tabs__icon{
-                    display: block;
-                    text-align: center;
-                }
-            }
-            .uagb-tabs__icon-position-right{
-                display: inline-flex;
-            }
-        }   
-    .uagb-tabs__body-wrap{
-        position:relative;
-        max-width: 100%;
-        padding: 10px;
-    }
     .uagb-tabs-editor-controls{
         left: 0px;
         background-color: #000000;
