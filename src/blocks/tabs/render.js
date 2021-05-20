@@ -10,15 +10,13 @@ import {
 	RichText,
 	updateBlockAttributes,
 	getBlockOrder,
-	getBlock,
-	insertBlock,
-	removeBlock,
 } from '@wordpress/block-editor';
 
 import { Tooltip, Dashicon } from '@wordpress/components';
 
 import { createBlock } from '@wordpress/blocks';
 
+import { select, dispatch } from '@wordpress/data';
 const Render = ( props ) => {
 	props = props.parentProps;
 	const {
@@ -72,16 +70,19 @@ const Render = ( props ) => {
 		updateTabTitle();
 	};
 	const onMove = ( oldIndex, newIndex ) => {
-		const tabsBlock = getBlock( clientId );
+		const { tabHeaders, tabActiveFrontend } = attributes;
+
+		const { getBlock } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const tabsBlock = getBlock(clientId);
 
 		const titles = [ ...tabHeaders ];
 		titles.splice( newIndex, 1, tabHeaders[ oldIndex ] );
 		titles.splice( oldIndex, 1, tabHeaders[ newIndex ] );
-		setAttributes( { tabHeaders: titles } );
-		if ( tabActiveFrontend === oldIndex + 1 ) {
-			setAttributes( { tabActiveFrontend: newIndex + 1 } );
-		} else if ( tabActiveFrontend === newIndex + 1 ) {
-			setAttributes( { tabActiveFrontend: oldIndex + 1 } );
+		setAttributes( { tabHeaders: titles} );
+		if ( tabActiveFrontend === ( oldIndex + 1 ) ) {
+			setAttributes( { tabActiveFrontend: ( newIndex + 1 ) } );
+		} else if ( tabActiveFrontend === ( newIndex + 1 ) ) {
+			setAttributes( { tabActiveFrontend: ( oldIndex + 1 ) } );
 		}
 		props.moveTab( tabsBlock.innerBlocks[ oldIndex ].clientId, newIndex );
 		props.resetTabOrder();
@@ -94,31 +95,37 @@ const Render = ( props ) => {
 		);
 	};
 	const addTab = () => {
-		const tabItemBlock = createBlock( 'uagb/tabs-child' );
+		const { insertBlock } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
+		const tabItemBlock = createBlock('uagb/tabs-child');
 
-		insertBlock( tabItemBlock, tabHeaders.length, clientId );
+		insertBlock(tabItemBlock, attributes.tabHeaders.length, clientId);
 		setAttributes( {
-			tabHeaders: [ ...tabHeaders, 'New Tab' ],
+			tabHeaders: [
+				...attributes.tabHeaders,
+				'New Tab'
+			]
 		} );
 		props.resetTabOrder();
 	};
 	const removeTab = ( index ) => {
-		const childBlocks = getBlockOrder( clientId );
+		const { removeBlock } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
+		const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const childBlocks = getBlockOrder(clientId);
 
-		removeBlock( childBlocks[ index ], false );
+		removeBlock(childBlocks[index], false);
 		setAttributes( {
-			tabHeaders: tabHeaders.filter( ( vl, idx ) => idx !== index ),
+			tabHeaders: attributes.tabHeaders.filter( (vl, idx) => idx !== index )
 		} );
-		updateTabsAttr( { tabActive: 0 } );
+		updateTabsAttr({tabActive: 0});
 		props.resetTabOrder();
 	};
 	const updateTabsAttr = ( attrs ) => {
-		const childBlocks = getBlockOrder( clientId );
+		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
+		const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const childBlocks = getBlockOrder(clientId);
 
 		setAttributes( attrs );
-		childBlocks.forEach( ( childBlockId ) =>
-			updateBlockAttributes( childBlockId, attrs )
-		);
+		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, attrs ) );
 		props.resetTabOrder();
 	};
 	return (

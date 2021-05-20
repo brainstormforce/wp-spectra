@@ -90,7 +90,7 @@ export default compose(
 						tabActive,
 					} );
 				} );
-				resetTabOrder();
+				resetTabOrder;
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition(
