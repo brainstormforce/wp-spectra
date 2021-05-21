@@ -388,7 +388,7 @@ class UAGB_Init_Blocks {
 		/*
 		 To match the editor with frontend */
 		/* Scripts Dependency*/
-		UAGB_Scripts_Utils::enqueue_blocks_dependency();
+		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
 		/* Style*/
 		UAGB_Scripts_Utils::enqueue_blocks_styles();
 		/* RTL Styles */

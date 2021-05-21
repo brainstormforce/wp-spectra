@@ -19,7 +19,7 @@ final class UAGB_Scripts_Utils {
 	 *
 	 * @since x.x.x
 	 */
-	public static function enqueue_blocks_dependency() {
+	public static function enqueue_blocks_dependency_both() {
 
 		$blocks       = UAGB_Config::get_block_attributes();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
