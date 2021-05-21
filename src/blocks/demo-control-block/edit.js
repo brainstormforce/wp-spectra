@@ -294,7 +294,7 @@ class UAGBInlineNoticeEdit extends Component {
 				<PanelBody title="Spacing" initialOpen={false}>
 					<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding', 'coblocks' ) }
+							label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 							help={ __( 'Space inside of the container.', 'ultimate-addons-for-gutenberg' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }

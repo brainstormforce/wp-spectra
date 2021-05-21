@@ -11,13 +11,13 @@
     font-size: 10px;
     height: 30px;
     justify-content: center;
-    left: 0;
-    line-height: 20px;
+    left: 50px;
+    line-height: 12px;
     padding: 0;
     position: absolute;
     text-align: center;
     text-shadow: none;
-    top: 25px;
+    top: -5px;
     width: 26px;
     z-index: 1
 }
@@ -183,4 +183,22 @@ button.components-button.uagb-spacing-reset.is-secondary.is-small {
     display: none;
     margin-bottom: 5px;
     visibility: hidden
+}
+
+.uagb-spacing-reset .dashicons-image-rotate {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+}
+
+.components-uagb-dimensions-control__mobile-controls button[type=button] > span {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+}
+
+.components-panel__body .components-uagb-dimensions-control__mobile-controls-item {
+    box-shadow:unset !important;
+    border-radius:unset;
 }
