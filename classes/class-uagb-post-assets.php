@@ -146,7 +146,7 @@ class UAGB_Post_Assets {
 	 *
 	 * @param int $post_id Post ID.
 	 */
-	public function __construct( $post_id ) {
+	public function __construct( $post_id = '' ) {
 
 		$this->post_id = $post_id;
 
@@ -689,7 +689,7 @@ class UAGB_Post_Assets {
 
 						$reusable_blocks = $this->parse_blocks( $content );
 
-						$assets = $this->get_blocks_static_assets( $reusable_blocks );
+						$assets = $this->get_blocks_assets( $reusable_blocks );
 
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
@@ -831,7 +831,7 @@ class UAGB_Post_Assets {
 				return;
 			}
 
-			$assets = $this->get_blocks_static_assets( $blocks );
+			$assets = $this->get_blocks_assets( $blocks );
 
 			$this->stylesheet .= $assets['css'];
 			$this->script     .= $assets['js'];
@@ -857,7 +857,7 @@ class UAGB_Post_Assets {
 	 * @param array $blocks Blocks array.
 	 * @since 1.1.0
 	 */
-	public function get_blocks_static_assets( $blocks ) {
+	public function get_blocks_assets( $blocks ) {
 
 		$desktop = '';
 		$tablet  = '';
@@ -884,7 +884,7 @@ class UAGB_Post_Assets {
 
 						$reusable_blocks = $this->parse_blocks( $content );
 
-						$assets = $this->get_blocks_static_assets( $reusable_blocks );
+						$assets = $this->get_blocks_assets( $reusable_blocks );
 
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];

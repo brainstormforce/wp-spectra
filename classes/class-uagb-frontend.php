@@ -41,7 +41,6 @@ class UAGB_Frontend {
 	/**
 	 *  Initiator
 	 *
-	 * @param int $post_id Post ID.
 	 * @since 0.0.1
 	 */
 	public static function get_instance() {
@@ -55,8 +54,6 @@ class UAGB_Frontend {
 
 	/**
 	 * Constructor
-	 *
-	 * @param array $args Optional. UAGB Frontend arguments. Default is an empty array.
 	 */
 	public function __construct() {
 
