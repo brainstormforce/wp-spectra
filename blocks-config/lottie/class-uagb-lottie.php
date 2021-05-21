@@ -68,7 +68,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 						'block_id'         => array(
 							'type' => 'string',
 						),
-						'align'        => array(
+						'align'            => array(
 							'type'    => 'string',
 							'default' => 'center',
 						),
@@ -151,7 +151,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 			$main_classes = array(
 				'uagb-block-' . $block_id,
 				'uagb-lottie__outer-wrap',
-				'uagb-lottie__'. $attributes['align']
+				'uagb-lottie__' . $attributes['align'],
 			);
 
 			ob_start();

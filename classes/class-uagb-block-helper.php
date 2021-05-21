@@ -5467,14 +5467,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'outline'          => 'none',
 					'background-color' => $attr['backgroundColor'],
 				),
-				'.uagb-lottie__left' => array(
-					'margin-right'         => 'auto',
+				'.uagb-lottie__left'       => array(
+					'margin-right' => 'auto',
 				),
-				'.uagb-lottie__right' => array(
-					'margin-left'         => 'auto',
+				'.uagb-lottie__right'      => array(
+					'margin-left' => 'auto',
 				),
-				'.uagb-lottie__center' => array(
-					'margin'         => '0 auto',
+				'.uagb-lottie__center'     => array(
+					'margin' => '0 auto',
 				),
 			);
 			$selectors['.uagb-lottie__outer-wrap:hover'] = array(
