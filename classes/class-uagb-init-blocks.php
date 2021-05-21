@@ -326,22 +326,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		if ( file_exists( UAGB_DIR . 'assets/css/custom-style-blocks.css' ) ) {
-			wp_enqueue_style(
-				'uagb-block-css', // Handle.
-				UAGB_URL . 'assets/css/custom-style-blocks.css', // Block style CSS.
-				array(),
-				UAGB_VER
-			);
-		} else {
-			wp_enqueue_style(
-				'uagb-block-css', // Handle.
-				UAGB_URL . 'dist/style-blocks.css', // Block style CSS.
-				array(),
-				UAGB_VER
-			);
-		}
-
 		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'admin/assets/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
 		$blocks       = array();
@@ -400,7 +384,17 @@ class UAGB_Init_Blocks {
 				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
 			)
 		);
-	} // End function editor_assets().
+
+		/*
+		 To match the editor with frontend */
+		/* Scripts Dependency*/
+		UAGB_Scripts_Utils::enqueue_blocks_dependency();
+		/* Style*/
+		UAGB_Scripts_Utils::enqueue_blocks_styles();
+		/* RTL Styles */
+		UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
+	}
+
 	/**
 	 *  Get the User Roles
 	 *

@@ -24,6 +24,13 @@ if ( ! class_exists( 'UAGB_Post_Assets' ) ) {
 		private static $instance;
 
 		/**
+		 * Member Variable
+		 *
+		 * @var instance
+		 */
+		private $post_id;
+
+		/**
 		 *  Initiator
 		 */
 		public static function get_instance() {
@@ -36,7 +43,7 @@ if ( ! class_exists( 'UAGB_Post_Assets' ) ) {
 		/**
 		 * Constructor
 		 */
-		public function __construct() {
+		public function __construct( $post_id ) {
 
 		}
 
