@@ -184,6 +184,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Blocks throwing an error when deactivate all the UAG blocks except the Multi Buttons, Forms & How To.
 * Fix: Settings conflict issue in Lottie block.
 * Fix: Fixed Alignment issue in the editor in Lottie block.
+* Fix: Advanced Column - Stack on Tablet and mobile in preview mode.
+
 
 = 1.22.4 =
 * Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
