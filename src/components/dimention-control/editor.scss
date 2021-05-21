@@ -202,3 +202,44 @@ button.components-button.uagb-spacing-reset.is-secondary.is-small {
     box-shadow:unset !important;
     border-radius:unset;
 }
+
+
+.components-button-group.components-uagb-dimensions-control__units .components-button{
+    cursor: pointer;
+    padding: 0 2px;
+    text-transform: uppercase;
+    font-size: 9px;
+}
+
+.components-button-group.components-uagb-dimensions-control__units .components-button.is-secondary.is-small {
+    box-shadow:unset;
+}
+
+.components-button-group.components-uagb-dimensions-control__units .components-button.is-primary{
+    background:unset;
+    background-color:unset;
+    color:#001ffd;
+}
+
+.components-button-group.components-uagb-dimensions-control__units .components-button.is-secondary, .components-button.is-tertiary{
+     background:unset;
+    background-color:unset;
+    color:#050505;
+}
+
+.components-button-group.components-uagb-dimensions-control__units .components-button.is-primary:hover:not(:disabled){
+    background:unset;
+    background-color:unset;
+    color: #003bff;
+}
+
+.components-button-group.components-uagb-dimensions-control__units .components-button.is-primary{
+     box-shadow:unset;
+}
+
+.components-panel__body .components-uagb-dimensions-control input[type="number"].components-uagb-dimensions-control__number{
+    border-left:1px solid #d5dadf;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-right: 1px solid #d5dadf;
+    border-color:#d5dadf;
+}

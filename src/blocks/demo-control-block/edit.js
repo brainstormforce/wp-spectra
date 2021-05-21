@@ -141,6 +141,14 @@ class UAGBInlineNoticeEdit extends Component {
 				paddingBottom,
 				paddingLeft,
 				paddingRight,
+				paddingTopTablet,
+				paddingRightTablet,
+				paddingBottomTablet,
+				paddingLeftTablet,
+				paddingTopMobile,
+				paddingRightMobile,
+				paddingBottomMobile,
+				paddingLeftMobile,
 			},
 			setAttributes,
 			className,
@@ -300,6 +308,14 @@ class UAGBInlineNoticeEdit extends Component {
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
 							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
 						/>
 				</PanelBody>
