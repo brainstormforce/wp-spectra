@@ -979,8 +979,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Get Post Assets Instance.
 		 */
 		public function get_post_assets_instance() {
-
-			return new UAGB_Post_Assets();
+			return UAGB_Frontend::get_instance()->get_post_assets_obj();
 		}
 
 		/** Generates stylesheet in loop.
@@ -991,7 +990,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function get_generated_stylesheet( $this_post ) {
-			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Post_Assets::prepare_assets()' );
+			_deprecated_function( __METHOD__, '1.23.0' );
 
 			$this->get_post_assets_instance()->prepare_assets( $this_post );
 		}
@@ -1005,7 +1004,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function get_assets( $blocks ) {
-			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Post_Assets::get_blocks_assets()' );
+			_deprecated_function( __METHOD__, '1.23.0' );
 
 			return $this->get_post_assets_instance()->get_blocks_assets( $blocks );
 		}
@@ -1019,7 +1018,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @access public
 		 */
 		public function parse( $content ) {
-			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Post_Assets::parse_blocks()' );
+			_deprecated_function( __METHOD__, '1.23.0', 'parse_blocks()' );
 
 			return $this->get_post_assets_instance()->parse_blocks( $content );
 		}
@@ -1032,7 +1031,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Post_Assets::generate_asset_files()` instead
 		 */
 		public function generate_asset_files() {
-			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Post_Assets::generate_asset_files()' );
+			_deprecated_function( __METHOD__, '1.23.0' );
 
 			$this->get_post_assets_instance()->generate_asset_files();
 		}
@@ -1043,7 +1042,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @deprecated 1.23.0 Use `UAGB_Post_Assets::enqueue_blocks_dependency_frontend()` instead
 		 */
 		public function block_assets() {
-			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Post_Assets::enqueue_blocks_dependency_frontend()' );
+			_deprecated_function( __METHOD__, '1.23.0' );
 
 			$this->get_post_assets_instance()->enqueue_blocks_dependency_frontend();
 

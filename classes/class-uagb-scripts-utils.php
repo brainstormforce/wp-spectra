@@ -149,4 +149,25 @@ final class UAGB_Scripts_Utils {
 			);
 		}
 	}
+
+	/**
+	 * Returns an array of paths for the CSS and JS assets
+	 * of the current post.
+	 *
+	 * @param  var $type    Gets the CSS\JS type.
+	 * @param  var $post_id Post ID.
+	 * @since 1.14.0
+	 * @return array
+	 */
+	public static function get_asset_info( $type, $post_id ) {
+
+		$uploads_dir = UAGB_Helper::get_upload_dir();
+		$info        = array();
+
+		$path                   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
+		$info[ $type ]          = $uploads_dir['path'] . $path;
+		$info[ $type . '_url' ] = $uploads_dir['url'] . $path;
+
+		return $info;
+	}
 }

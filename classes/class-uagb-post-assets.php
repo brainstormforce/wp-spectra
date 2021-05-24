@@ -162,7 +162,7 @@ class UAGB_Post_Assets {
 	 */
 	public function allow_assets_generation() {
 
-		$page_assets = get_post_meta( $this->post_id, '_uagb_page_assets', true );
+		$page_assets = get_post_meta( $this->post_id, '_uag_page_assets', true );
 
 		if ( empty( $page_assets )
 			|| empty( $page_assets['uag_version'] )
@@ -180,12 +180,12 @@ class UAGB_Post_Assets {
 			$js_asset_info  = array();
 
 			if ( ! empty( $post_timestamp_css ) ) {
-				$css_asset_info = $this->get_asset_info( 'css', $this->post_id );
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
 				$css_file_path  = $css_asset_info['css'];
 			}
 
 			if ( ! empty( $post_timestamp_js ) ) {
-				$js_asset_info = $this->get_asset_info( 'js', $this->post_id );
+				$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
 				$js_file_path  = $js_asset_info['js'];
 			}
 
@@ -214,7 +214,7 @@ class UAGB_Post_Assets {
 	 *
 	 * @since 1.23.0
 	 */
-	public function enqueue_all_page_assets() {
+	public function enqueue_scripts() {
 
 		// Global Required assets.
 		if ( has_blocks( $this->post_id ) ) {
@@ -274,7 +274,7 @@ class UAGB_Post_Assets {
 			'uag_version'        => UAGB_ASSET_VER,
 		);
 
-		update_post_meta( $this->post_id, '_uagb_page_assets', $meta_array );
+		update_post_meta( $this->post_id, '_uag_page_assets', $meta_array );
 	}
 	/**
 	 * This is the action where we create dynamic asset files.
@@ -735,67 +735,9 @@ class UAGB_Post_Assets {
 	 */
 	public function generate_assets() {
 
-		$this_post = array();
+		$this_post = get_post( $this->post_id );
 
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			if ( is_cart() ) {
-
-				$id        = get_option( 'woocommerce_cart_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_account_page() ) {
-
-				$id        = get_option( 'woocommerce_myaccount_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_checkout() ) {
-
-				$id        = get_option( 'woocommerce_checkout_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_checkout_pay_page() ) {
-
-				$id        = get_option( 'woocommerce_pay_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_shop() ) {
-
-				$id        = get_option( 'woocommerce_shop_page_id' );
-				$this_post = get_post( $id );
-			}
-
-			if ( is_object( $this_post ) ) {
-				$this->prepare_assets( $this_post );
-			}
-		}
-
-		if ( is_single() || is_page() || is_404() ) {
-
-			$this_post = get_post( $this->post_id );
-
-			if ( ! is_object( $this_post ) ) {
-				return;
-			}
-
-			/**
-			 * Filters the post to build stylesheet for.
-			 *
-			 * @param \WP_Post $this_post The global post.
-			 */
-			$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
-
-			$this->prepare_assets( $this_post );
-
-		} elseif ( is_archive() || is_home() || is_search() ) {
-
-			global $wp_query;
-			$cached_wp_query = $wp_query;
-
-			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-				$this->prepare_assets( $post );
-			}
-		}
+		$this->prepare_assets( $this_post );
 
 		/* Prepare assets and store in static variable */
 		global $content_width;
@@ -929,27 +871,6 @@ class UAGB_Post_Assets {
 	}
 
 	/**
-	 * Returns an array of paths for the CSS and JS assets
-	 * of the current post.
-	 *
-	 * @param  var $type    Gets the CSS\JS type.
-	 * @param  var $post_id Post ID.
-	 * @since 1.14.0
-	 * @return array
-	 */
-	public function get_asset_info( $type, $post_id ) {
-
-		$uploads_dir = UAGB_Helper::get_upload_dir();
-		$info        = array();
-
-		$path                   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
-		$info[ $type ]          = $uploads_dir['path'] . $path;
-		$info[ $type . '_url' ] = $uploads_dir['url'] . $path;
-
-		return $info;
-	}
-
-	/**
 	 * Creates a new file for Dynamic CSS/JS.
 	 *
 	 * @param  string $style_data The data that needs to be copied into the created file.
@@ -1005,7 +926,7 @@ class UAGB_Post_Assets {
 
 		// Get timestamp - Already saved OR new one.
 		$post_timestamp_path = empty( $post_timestamp_path ) ? '' : $post_timestamp_path;
-		$assets_info         = $this->get_asset_info( $type, $this->post_id );
+		$assets_info         = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
 
 		$relative_src_path = $assets_info[ $type ];
 
@@ -1051,7 +972,7 @@ class UAGB_Post_Assets {
 			$did_create = $this->create_file( $style_data, $new_timestamp, $type, 'new' );
 
 			if ( $did_create ) {
-				$new_assets_info           = $this->get_asset_info( $type, $this->post_id );
+				$new_assets_info           = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
 				$this->assets_file_handler = array_merge( $this->assets_file_handler, $new_assets_info );
 			}
 
@@ -1077,7 +998,7 @@ class UAGB_Post_Assets {
 				$did_create = $this->create_file( $style_data, $new_timestamp, $type, 'new' );
 
 				if ( $did_create ) {
-					$new_assets_info           = $this->get_asset_info( $type, $this->post_id );
+					$new_assets_info           = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
 					$this->assets_file_handler = array_merge( $this->assets_file_handler, $new_assets_info );
 				}
 

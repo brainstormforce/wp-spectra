@@ -691,12 +691,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function delete_page_assets( $post_id ) {
 
-			$post_assets = new UAGB_Post_Assets( $post_id );
+			if ( 'disabled' !== UAGB_Helper::$file_generation ) {
 
-			if ( 'disabled' !== $post_assets->file_generation ) {
-
-				$css_asset_info = $post_assets->get_asset_info( 'css', $post_id );
-				$js_asset_info  = $post_assets->get_asset_info( 'js', $post_id );
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
+				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
 
 				$css_file_path = $css_asset_info['css'];
 				$js_file_path  = $js_asset_info['js'];
@@ -709,7 +707,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				}
 			}
 
-			delete_post_meta( $post_id, '_uagb_page_assets' );
+			delete_post_meta( $post_id, '_uag_page_assets' );
 			delete_post_meta( $post_id, '_uag_css_file_name' );
 			delete_post_meta( $post_id, '_uag_js_file_name' );
 		}
