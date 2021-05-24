@@ -161,3 +161,11 @@ class UAGB_Frontend {
  */
 UAGB_Frontend::get_instance();
 
+/**
+ * Get frontend post_assets obj.
+ *
+ * @since 1.23.0
+ */
+function uagb_get_front_post_assets() {
+	return UAGB_Frontend::get_instance()->get_post_assets_obj();
+}

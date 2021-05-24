@@ -48,7 +48,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		public function generate_stylesheet() {
 
 			$panel_count     = twentyseventeen_panel_count();
-			$post_assets_obj = UAGB_Frontend::get_instance()->get_post_assets_obj();
+			$post_assets_obj = uagb_get_front_post_assets();
 			$all_posts       = array();
 
 			for ( $i = 1; $i <= $panel_count; $i++ ) {

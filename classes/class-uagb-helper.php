@@ -979,7 +979,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Get Post Assets Instance.
 		 */
 		public function get_post_assets_instance() {
-			return UAGB_Frontend::get_instance()->get_post_assets_obj();
+			return uagb_get_front_post_assets();
 		}
 
 		/** Generates stylesheet in loop.
