@@ -19,14 +19,14 @@ final class UAGB_Scripts_Utils {
 	 *
 	 * @since x.x.x
 	 */
-	public static function enqueue_blocks_dependency() {
+	public static function enqueue_blocks_dependency_both() {
 
 		$blocks       = UAGB_Config::get_block_attributes();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets = UAGB_Config::get_block_assets();
 
 		// We have removed the option to activate/deactivate the Info box Block so to handle backward compatibility for the users who may have deactivated the Info Box block we are activating the block for them.
-		// We can remove this code after 2-3 releases. Added 1.23.0
+		// We can remove this code after 2-3 releases. Added 1.23.0.
 		if ( isset( $saved_blocks['info-box'] ) && 'disabled' === $saved_blocks['info-box'] ) {
 
 			$saved_blocks['info-box'] = 'info-box';

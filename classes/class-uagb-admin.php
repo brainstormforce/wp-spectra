@@ -69,6 +69,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				add_action( 'admin_head', array( __CLASS__, 'admin_submenu_css' ) );
 			}
 
+			add_action( 'save_post', array( __CLASS__, 'delete_page_assets' ), 10, 1 );
+
 		}
 
 		/**
@@ -679,6 +681,37 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					opacity: 0.5;
 				}
 			</style>';
+		}
+
+		/**
+		 * This function deletes the Page assets from the Page Meta Key.
+		 *
+		 * @param int $post_id Post Id.
+		 * @since 1.23.0
+		 */
+		public static function delete_page_assets( $post_id ) {
+
+			$post_assets = new UAGB_Post_Assets( $post_id );
+
+			if ( 'disabled' !== $post_assets->file_generation ) {
+
+				$css_asset_info = $post_assets->get_asset_info( 'css', $post_id );
+				$js_asset_info  = $post_assets->get_asset_info( 'js', $post_id );
+
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $css_file_path );
+				}
+				if ( file_exists( $js_file_path ) ) {
+					wp_delete_file( $js_file_path );
+				}
+			}
+
+			delete_post_meta( $post_id, '_uagb_page_assets' );
+			delete_post_meta( $post_id, '_uag_css_file_name' );
+			delete_post_meta( $post_id, '_uag_js_file_name' );
 		}
 	}
 
