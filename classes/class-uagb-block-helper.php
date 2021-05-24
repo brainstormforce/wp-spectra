@@ -327,15 +327,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 			if ( 'boxed' === $attr['contentWidth'] ) {
-				if ( 'right' === $attr['align'] ) {
-					$style['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['desktopMarginType'] );
-					$style['margin-left']  = 'auto';
-				} elseif ( 'left' === $attr['align'] ) {
-					$style['margin-right'] = 'auto';
-					$style['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['desktopMarginType'] );
-				} elseif ( 'center' === $attr['align'] ) {
-					$style['margin-right'] = 'auto';
-					$style['margin-left']  = 'auto';
+				switch ( $attr['align'] ) {
+					case 'right':
+						$style['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['desktopMarginType'] );
+						$style['margin-left']  = 'auto';
+						break;
+					case 'left':
+						$style['margin-right'] = 'auto';
+						$style['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['desktopMarginType'] );
+						break;
+					case 'center':
+						$style['margin-right'] = 'auto';
+						$style['margin-left']  = 'auto';
+						break;
 				}
 			}
 			if ( 'full_width' === $attr['contentWidth'] ) {

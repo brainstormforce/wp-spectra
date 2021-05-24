@@ -48,17 +48,21 @@ function inlineStyles( props, isEditor ) {
 		"margin-top":generateCSSUnit( topMargin, desktopMarginType),
 		"margin-bottom": generateCSSUnit( bottomMargin, desktopMarginType)
 	}
-	if( 'boxed' == contentWidth){
-		if ( "right" == align  ) {
-			style["margin-left"] = "auto"
-			style["margin-right"] =  generateCSSUnit( rightMargin, desktopMarginType)
-		} else if ( "left" == align ) {
-			style["margin-right"] = "auto"
-			style["margin-left"] =  generateCSSUnit( leftMargin, desktopMarginType)
-		} else if ( "center" == align  ) {
-			style["margin-right"] = "auto"
-			style["margin-left"] = "auto"
-		} 
+	if( 'boxed' === contentWidth){ 
+		switch( align ){
+			case  'right' :
+				style["margin-left"] = "auto"
+				style["margin-right"] =  generateCSSUnit( rightMargin, desktopMarginType)
+				break;
+			case 'left' :
+				style["margin-right"] = "auto"
+				style["margin-left"] =  generateCSSUnit( leftMargin, desktopMarginType)
+				break;
+			case 'center' :
+				style["margin-right"] = "auto"
+				style["margin-left"] = "auto"
+				break;
+		}
 	}
 
 	if("full_width" == contentWidth){
