@@ -211,7 +211,7 @@ class UAGB_Post_Assets {
 		$this->uag_flag           = $page_assets['uag_flag'];
 		$this->stylesheet         = $page_assets['css'];
 		$this->script             = $page_assets['js'];
-		$this->gfonts			  = $page_assets['gfonts'];
+		$this->gfonts             = $page_assets['gfonts'];
 		return false;
 	}
 
@@ -278,7 +278,7 @@ class UAGB_Post_Assets {
 			'current_block_list' => $this->current_block_list,
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
-			'gfonts'			 => UAGB_Helper::$gfonts
+			'gfonts'             => UAGB_Helper::$gfonts,
 		);
 
 		update_post_meta( $this->post_id, '_uag_page_assets', $meta_array );
