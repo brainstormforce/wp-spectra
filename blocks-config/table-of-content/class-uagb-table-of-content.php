@@ -412,7 +412,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				<div class="uagb-toc__wrap">
 					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-						<?php echo esc_html( $attributes['headingTitle'] ); ?>
+						<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
 						</div>
 						<?php
 						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
