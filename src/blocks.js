@@ -8,7 +8,7 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
-__webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/build/';
+__webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
 import './blocks/extensions/attributes.js';
 import './blocks/advanced-heading/block.js';
