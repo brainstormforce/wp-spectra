@@ -32,15 +32,15 @@ let imageSizeOptions = [
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	PanelColorSettings,
 	MediaUpload,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -48,7 +48,7 @@ const {
 	TextControl,
 	BaseControl,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

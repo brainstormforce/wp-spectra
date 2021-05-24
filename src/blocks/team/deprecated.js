@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/renderIcon';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 function social_html( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';

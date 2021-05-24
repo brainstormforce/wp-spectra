@@ -2,8 +2,8 @@ import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-const { createBlock } = wp.blocks;
-const { RichText } = wp.blockEditor;
+import { createBlock } from '@wordpress/blocks';
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	props = props.parentProps;
