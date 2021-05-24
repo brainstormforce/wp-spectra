@@ -74,8 +74,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	let boxShadowPositionCSS = boxShadowPosition;
 
@@ -178,7 +178,7 @@ function styling( props ) {
 		};
 	}
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		},
@@ -217,7 +217,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		},
@@ -255,26 +255,26 @@ function styling( props ) {
 			),
 		},
 	};
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ block_id }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

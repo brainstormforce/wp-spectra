@@ -4,22 +4,22 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/taxonomy-list/fontloader" */ './../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/taxonomy-list/fontloader" */ '@Components/typography/fontloader'
 	)
 );
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/taxonomy-list/column-responsive" */ '../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/taxonomy-list/column-responsive" */ '@Components/typography/column-responsive'
 	)
 );
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/taxonomy-list/typography" */ '../../components/typography'
+		/* webpackChunkName: "chunks/taxonomy-list/typography" */ '@Components/typography'
 	)
 );
 const BoxShadowControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/taxonomy-list/box-shadow" */ '../../components/box-shadow'
+		/* webpackChunkName: "chunks/taxonomy-list/box-shadow" */ '@Components/box-shadow'
 	)
 );
 
