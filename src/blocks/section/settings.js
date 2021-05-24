@@ -21,19 +21,19 @@ import {
 
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/section/column-responsive" */ '../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/section/column-responsive" */ '@Components/typography/column-responsive'
 	)
 );
 
 const GradientSettings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/section/gradient-settings" */ '../../components/gradient-settings'
+		/* webpackChunkName: "chunks/section/gradient-settings" */ '@Components/gradient-settings'
 	)
 );
 
 const BoxShadowControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/section/box-shadow-control" */ '../../components/box-shadow'
+		/* webpackChunkName: "chunks/section/box-shadow-control" */ '@Components/box-shadow'
 	)
 );
 
