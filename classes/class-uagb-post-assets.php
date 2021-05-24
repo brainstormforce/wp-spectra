@@ -115,7 +115,7 @@ class UAGB_Post_Assets {
 	 *
 	 * @var array
 	 */
-	public static $gfonts = array();
+	public $gfonts = array();
 
 	/**
 	 * Static CSS Added Array
@@ -211,7 +211,7 @@ class UAGB_Post_Assets {
 		$this->uag_flag           = $page_assets['uag_flag'];
 		$this->stylesheet         = $page_assets['css'];
 		$this->script             = $page_assets['js'];
-		self::$gfonts			  = $page_assets['gfonts'];
+		$this->gfonts			  = $page_assets['gfonts'];
 		return false;
 	}
 
@@ -421,7 +421,7 @@ class UAGB_Post_Assets {
 	 */
 	public function print_google_fonts() {
 
-		if ( empty( self::$gfonts ) ) {
+		if ( empty( $this->gfonts ) ) {
 			return;
 		}
 
@@ -431,7 +431,7 @@ class UAGB_Post_Assets {
 		}
 		$link    = '';
 		$subsets = array();
-		foreach ( self::$gfonts as $key => $gfont_values ) {
+		foreach ( $this->gfonts as $key => $gfont_values ) {
 			if ( ! empty( $link ) ) {
 				$link .= '%7C'; // Append a new font to the string.
 			}
