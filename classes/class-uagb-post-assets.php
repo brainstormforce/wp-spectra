@@ -146,13 +146,19 @@ class UAGB_Post_Assets {
 	 *
 	 * @param int $post_id Post ID.
 	 */
-	public function __construct( $post_id = '' ) {
+	public function __construct( $post_id ) {
 
 		$this->post_id = $post_id;
 
 		$this->file_generation = UAGB_Helper::$file_generation;
 
 		$this->is_allowed_assets_generation = $this->allow_assets_generation();
+
+		if ( $this->is_allowed_assets_generation ) {
+			$this_post = get_post( $this->post_id );
+
+			$this->prepare_assets( $this_post );
+		}
 	}
 
 	/**
@@ -735,11 +741,7 @@ class UAGB_Post_Assets {
 	 */
 	public function generate_assets() {
 
-		$this_post = get_post( $this->post_id );
-
-		$this->prepare_assets( $this_post );
-
-		/* Prepare assets and store in static variable */
+		/* Finalize prepared assets and store in static variable */
 		global $content_width;
 
 		$this->stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', $this->stylesheet );
