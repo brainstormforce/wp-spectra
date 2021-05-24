@@ -196,7 +196,7 @@ const Settings = ( props ) => {
 	}
 
 	// All Controls.
-	const color_control = (
+	const colorControl = (
 		<>
 			<h2 className="uagb-setting-label">
 				{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
@@ -240,7 +240,7 @@ const Settings = ( props ) => {
 			) }
 		</>
 	);
-	const color_control_hover = (
+	const colorControlHover = (
 		<>
 			<h2 className="uagb-setting-label">
 				{ __( 'Text Hover Color', 'ultimate-addons-for-gutenberg' ) }
@@ -728,13 +728,13 @@ const Settings = ( props ) => {
 								] }
 							>
 								{ ( tabName ) => {
-									let color_tab;
+									let colorTab;
 									if ( 'normal' === tabName.name ) {
-										color_tab = color_control;
+										colorTab = colorControl;
 									} else {
-										color_tab = color_control_hover;
+										colorTab = colorControlHover;
 									}
-									return <div>{ color_tab }</div>;
+									return <div>{ colorTab }</div>;
 								} }
 							</TabPanel>
 						) }
