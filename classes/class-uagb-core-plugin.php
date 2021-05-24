@@ -47,9 +47,6 @@ class UAGB_Core_Plugin {
 	 * @since 1.0.0
 	 */
 	private function includes() {
-
-		require UAGB_DIR . 'lib/notices/class-astra-notices.php';
-		require UAGB_DIR . 'classes/class-uagb-admin.php';
 		require UAGB_DIR . 'classes/class-uagb-post-assets.php';
 		require UAGB_DIR . 'classes/class-uagb-frontend.php';
 		require UAGB_DIR . 'classes/class-uagb-init-blocks.php';

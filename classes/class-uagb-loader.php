@@ -115,9 +115,15 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->load_textdomain();
 
+			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
+			require_once UAGB_DIR . 'lib/notices/class-astra-notices.php';
+
+			if ( is_admin() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
+			}
+
 			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
-			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
