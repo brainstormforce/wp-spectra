@@ -7,13 +7,13 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/team/typography" */ '../../components/typography'
+		/* webpackChunkName: "chunks/team/typography" */ '@Components/typography'
 	)
 );
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/team/fontloader" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/team/fontloader" */ '@Components/typography/fontloader'
 	)
 );
 
@@ -135,11 +135,11 @@ const Settings = ( props ) => {
 	};
 
 	const getImageSize = ( sizes ) => {
-		const size_arr = [];
+		const sizeArr = [];
 		for ( const item in sizes ) {
-			size_arr.push( { value: item, label: item } );
+			sizeArr.push( { value: item, label: item } );
 		}
-		return size_arr;
+		return sizeArr;
 	};
 
 	const onSelectImage = ( media ) => {
@@ -155,12 +155,12 @@ const Settings = ( props ) => {
 		setAttributes( { image: media } );
 
 		if ( media.sizes ) {
-			const new_img = getImageSize( media.sizes );
-			imageSizeOptions = new_img;
+			const newImg = getImageSize( media.sizes );
+			imageSizeOptions = newImg;
 		}
 	};
 
-	const svg_icons = Object.keys( UAGBIcon );
+	const svgIcons = Object.keys( UAGBIcon );
 
 	if ( image && image.sizes ) {
 		imageSizeOptions = getImageSize( image.sizes );
@@ -486,7 +486,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svg_icons }
+								icons={ svgIcons }
 								renderFunc={ renderSVG }
 								theme="default"
 								value={ twitterIcon }
@@ -527,7 +527,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svg_icons }
+								icons={ svgIcons }
 								renderFunc={ renderSVG }
 								theme="default"
 								value={ fbIcon }
@@ -568,7 +568,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svg_icons }
+								icons={ svgIcons }
 								renderFunc={ renderSVG }
 								noSelectedPlaceholder={ __(
 									'Select Icon',
@@ -609,7 +609,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svg_icons }
+								icons={ svgIcons }
 								renderFunc={ renderSVG }
 								noSelectedPlaceholder={ __(
 									'Select Icon',

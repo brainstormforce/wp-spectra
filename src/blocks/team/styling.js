@@ -55,8 +55,8 @@ function styling( props ) {
 		socialSpace,
 	} = props.attributes;
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -163,7 +163,7 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
@@ -194,7 +194,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
@@ -225,34 +225,34 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors[ ' ' + tag + '.uagb-team__title' ] = {
+	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 	};
 
-	tablet_selectors[ ' ' + tag + '.uagb-team__title' ] = {
+	tabletSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
