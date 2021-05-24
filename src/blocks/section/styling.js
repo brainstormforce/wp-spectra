@@ -63,18 +63,18 @@ function styling( props ) {
 		gradientValue,
 	} = props.attributes;
 
-	let inner_width = '100%';
+	let tmpInneridth = '100%';
 
 	if ( typeof contentWidth !== 'undefined' ) {
 		if ( 'boxed' != contentWidth ) {
 			if ( typeof innerWidth !== 'undefined' ) {
-				inner_width = generateCSSUnit( innerWidth, innerWidthType );
+				tmpInneridth = generateCSSUnit( innerWidth, innerWidthType );
 			}
 		}
 	}
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 	let boxShadowPositionCSS = boxShadowPosition;
 
 	if ( 'outset' === boxShadowPosition ) {
@@ -89,7 +89,7 @@ function styling( props ) {
 					: 0.5,
 		},
 		' .uagb-section__inner-wrap': {
-			'max-width': inner_width,
+			'max-width': tmpInneridth,
 		},
 		'.wp-block-uagb-section': {
 			'box-shadow':
@@ -109,21 +109,51 @@ function styling( props ) {
 
 	selectors[ ' > .uagb-section__overlay' ] = {};
 
-	if ( 'video' == backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ] = {
-			opacity: 1,
-			'background-color': backgroundVideoColor,
-		};
-	} else if ( 'image' == backgroundType ) {
-		if ( 'color' == overlayType ) {
+	switch ( backgroundType ) {
+		case 'video':
+			selectors[ ' > .uagb-section__overlay' ] = {
+				opacity: 1,
+				'background-color': backgroundVideoColor,
+			};
+			break;
+		case 'image':
+			if ( 'color' == overlayType ) {
+				selectors[ ' > .uagb-section__overlay' ] = {
+					opacity:
+						typeof backgroundOpacity !== 'undefined'
+							? backgroundOpacity / 100
+							: 0,
+					'background-color': backgroundImageColor,
+				};
+			} else {
+				selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
+					'transparent';
+				selectors[ ' > .uagb-section__overlay' ].opacity =
+					typeof backgroundOpacity !== 'undefined'
+						? backgroundOpacity / 100
+						: '';
+
+				if ( 'linear' === gradientOverlayType ) {
+					selectors[ ' > .uagb-section__overlay' ][
+						'background-image'
+					] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
+				} else {
+					selectors[ ' > .uagb-section__overlay' ][
+						'background-image'
+					] = `radial-gradient( at ${ gradientOverlayPosition }, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
+				}
+			}
+			break;
+		case 'color':
 			selectors[ ' > .uagb-section__overlay' ] = {
 				opacity:
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
-						: 0,
-				'background-color': backgroundImageColor,
+						: '',
+				'background-color': backgroundColor,
 			};
-		} else {
+			break;
+		case 'gradient':
 			selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
 				'transparent';
 			selectors[ ' > .uagb-section__overlay' ].opacity =
@@ -131,52 +161,27 @@ function styling( props ) {
 					? backgroundOpacity / 100
 					: '';
 
-			if ( 'linear' === gradientOverlayType ) {
+			if ( gradientValue ) {
 				selectors[ ' > .uagb-section__overlay' ][
 					'background-image'
-				] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
+				] = gradientValue;
+			} else if ( 'linear' === gradientType ) {
+				selectors[ ' > .uagb-section__overlay' ][
+					'background-image'
+				] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 			} else {
 				selectors[ ' > .uagb-section__overlay' ][
 					'background-image'
-				] = `radial-gradient( at ${ gradientOverlayPosition }, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
+				] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 			}
-		}
-	} else if ( 'color' == backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ] = {
-			opacity:
-				typeof backgroundOpacity !== 'undefined'
-					? backgroundOpacity / 100
-					: '',
-			'background-color': backgroundColor,
-		};
-	} else if ( 'gradient' === backgroundType ) {
-		selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
-			'transparent';
-		selectors[ ' > .uagb-section__overlay' ].opacity =
-			typeof backgroundOpacity !== 'undefined'
-				? backgroundOpacity / 100
-				: '';
-
-		if ( gradientValue ) {
-			selectors[ ' > .uagb-section__overlay' ][
-				'background-image'
-			] = gradientValue;
-		} else if ( 'linear' === gradientType ) {
-			selectors[ ' > .uagb-section__overlay' ][
-				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		} else {
-			selectors[ ' > .uagb-section__overlay' ][
-				'background-image'
-			] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
-		}
+			break;
 	}
 
 	selectors[ ' > .uagb-section__overlay' ][
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
 
-	tablet_selectors = {
+	tabletSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingTablet,
@@ -197,7 +202,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingMobile,
@@ -218,82 +223,86 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'right' == align ) {
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
+	switch ( align ) {
+		case 'right':
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginMobile, mobileMarginType );
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-right'
+			] = generateCSSUnit( rightMarginMobile, mobileMarginType );
 
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-right'
-		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
-	} else if ( 'left' == align ) {
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-right'
+			] = generateCSSUnit( rightMarginTablet, tabletMarginType );
+			break;
+		case 'left':
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginMobile, mobileMarginType );
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-left'
+			] = generateCSSUnit( leftMarginMobile, mobileMarginType );
 
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-left'
-		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
-	} else {
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-left'
+			] = generateCSSUnit( leftMarginTablet, tabletMarginType );
+			break;
+		default:
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginMobile, mobileMarginType );
+			mobileSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
 
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-top'
-		] = generateCSSUnit( topMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
-			'margin-bottom'
-		] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-top'
+			] = generateCSSUnit( topMarginTablet, tabletMarginType );
+			tabletSelectors[ '.uagb-section__wrap' ][
+				'margin-bottom'
+			] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
+			break;
 	}
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

@@ -18,11 +18,11 @@ export default function save( props ) {
 		align,
 	} = attributes;
 
-	let block_controls_class = '';
+	let blockControlsClass = '';
 
 	if ( 'full_width' == contentWidth ) {
 		if ( align == 'wide' || align == 'full' ) {
-			block_controls_class = 'align' + align;
+			blockControlsClass = 'align' + align;
 		}
 	}
 
@@ -34,7 +34,7 @@ export default function save( props ) {
 				className,
 				'uagb-section__wrap',
 				`uagb-section__background-${ backgroundType }`,
-				block_controls_class,
+				blockControlsClass,
 				`uagb-block-${ block_id }`
 			) }
 		>

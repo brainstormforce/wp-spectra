@@ -38,42 +38,58 @@ function inlineStyles( props, isEditor ) {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 	};
 
-	if ( 'right' == align ) {
-		style[ 'margin-left' ] = 'auto';
-		style[ 'margin-top' ] = generateCSSUnit( topMargin, desktopMarginType );
-		style[ 'margin-bottom' ] = generateCSSUnit(
-			bottomMargin,
-			desktopMarginType
-		);
-		style[ 'margin-right' ] = generateCSSUnit(
-			rightMargin,
-			desktopMarginType
-		);
-	} else if ( 'left' == align ) {
-		style[ 'margin-right' ] = 'auto';
-		style[ 'margin-top' ] = generateCSSUnit( topMargin, desktopMarginType );
-		style[ 'margin-bottom' ] = generateCSSUnit(
-			bottomMargin,
-			desktopMarginType
-		);
-		style[ 'margin-left' ] = generateCSSUnit(
-			leftMargin,
-			desktopMarginType
-		);
-	} else if ( 'center' == align ) {
-		style[ 'margin-right' ] = 'auto';
-		style[ 'margin-left' ] = 'auto';
-		style[ 'margin-top' ] = generateCSSUnit( topMargin, desktopMarginType );
-		style[ 'margin-bottom' ] = generateCSSUnit(
-			bottomMargin,
-			desktopMarginType
-		);
-	} else {
-		style[ 'margin-top' ] = generateCSSUnit( topMargin, desktopMarginType );
-		style[ 'margin-bottom' ] = generateCSSUnit(
-			bottomMargin,
-			desktopMarginType
-		);
+	switch ( align ) {
+		case 'right':
+			style[ 'margin-left' ] = 'auto';
+			style[ 'margin-top' ] = generateCSSUnit(
+				topMargin,
+				desktopMarginType
+			);
+			style[ 'margin-bottom' ] = generateCSSUnit(
+				bottomMargin,
+				desktopMarginType
+			);
+			style[ 'margin-right' ] = generateCSSUnit(
+				rightMargin,
+				desktopMarginType
+			);
+			break;
+		case 'left':
+			style[ 'margin-right' ] = 'auto';
+			style[ 'margin-top' ] = generateCSSUnit(
+				topMargin,
+				desktopMarginType
+			);
+			style[ 'margin-bottom' ] = generateCSSUnit(
+				bottomMargin,
+				desktopMarginType
+			);
+			style[ 'margin-left' ] = generateCSSUnit(
+				leftMargin,
+				desktopMarginType
+			);
+			break;
+		case 'center':
+			style[ 'margin-right' ] = 'auto';
+			style[ 'margin-left' ] = 'auto';
+			style[ 'margin-top' ] = generateCSSUnit(
+				topMargin,
+				desktopMarginType
+			);
+			style[ 'margin-bottom' ] = generateCSSUnit(
+				bottomMargin,
+				desktopMarginType
+			);
+			break;
+		default:
+			style[ 'margin-top' ] = generateCSSUnit(
+				topMargin,
+				desktopMarginType
+			);
+			style[ 'margin-bottom' ] = generateCSSUnit(
+				bottomMargin,
+				desktopMarginType
+			);
 	}
 
 	if ( borderStyle != 'none' ) {
@@ -84,15 +100,15 @@ function inlineStyles( props, isEditor ) {
 
 	const position = backgroundPosition.replace( '-', ' ' );
 
-	let section_width = '100%';
+	let sectionWidth = '100%';
 
 	if ( 'boxed' == contentWidth ) {
 		if ( '' != width ) {
-			section_width = width + 'px';
+			sectionWidth = width + 'px';
 		}
 	}
 
-	style[ 'max-width' ] = section_width;
+	style[ 'max-width' ] = sectionWidth;
 
 	if ( 'image' === backgroundType ) {
 		style[ 'background-image' ] = backgroundImage
