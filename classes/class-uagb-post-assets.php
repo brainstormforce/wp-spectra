@@ -363,12 +363,12 @@ class UAGB_Post_Assets {
 		$file_handler = $this->assets_file_handler;
 
 		if ( isset( $file_handler['css_url'] ) ) {
-			wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), UAGB_VER, 'all' );
+			wp_enqueue_style( 'uag-style-' . $this->post_id, $file_handler['css_url'], array(), UAGB_VER, 'all' );
 		} else {
 			$this->fallback_css = true;
 		}
 		if ( isset( $file_handler['js_url'] ) ) {
-			wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
+			wp_enqueue_script( 'uag-script-' . $this->post_id, $file_handler['js_url'], array(), UAGB_VER, true );
 		} else {
 			$this->fallback_js = true;
 		}
