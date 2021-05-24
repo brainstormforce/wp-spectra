@@ -16,7 +16,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/taxonomy-list/render" */ './render' )
 );
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const UAGBTaxonomyList = ( props ) => {
 	useEffect( () => {

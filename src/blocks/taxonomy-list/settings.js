@@ -23,7 +23,7 @@ const BoxShadowControl = lazy( () =>
 	)
 );
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -32,9 +32,9 @@ const {
 	Button,
 	ButtonGroup,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

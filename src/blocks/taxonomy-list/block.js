@@ -14,7 +14,7 @@ import edit from './edit';
 import { __ } from '@wordpress/i18n';
 
 // Register block controls
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/taxonomy-list', {
