@@ -12,7 +12,7 @@ import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
 // Import registerBlockType() from wp.blocks
-const { registerBlockType, createBlock } = wp.blocks;
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 /**
  * Register: as Gutenberg Block.

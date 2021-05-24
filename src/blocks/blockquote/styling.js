@@ -337,7 +337,7 @@ function styling( props ) {
 		},
 	};
 
-	const mobile_selectors = {
+	const mobileSelectors = {
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
@@ -402,7 +402,7 @@ function styling( props ) {
 	);
 
 	stylingCss += generateCSS(
-		mobile_selectors,
+		mobileSelectors,
 		baseSelector,
 		true,
 		'mobile'

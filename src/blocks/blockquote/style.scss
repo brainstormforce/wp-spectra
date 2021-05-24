@@ -280,10 +280,10 @@
 
 	/* Top Image */
 	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top {
+		flex-direction: column;
 		width: 100%;
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
-		flex-direction: column;
 	}
 
 	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top .uagb-blockquote__author-image,

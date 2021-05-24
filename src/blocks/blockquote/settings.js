@@ -5,7 +5,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -18,15 +18,15 @@ const {
 	TabPanel,
 	ButtonGroup,
 	Dashicon,
-} = wp.components;
+} from '@wordpress/components';
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	ColorPalette,
 	MediaUpload,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

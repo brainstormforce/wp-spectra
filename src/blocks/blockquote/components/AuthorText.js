@@ -1,6 +1,6 @@
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const AuthorText = ( { attributes, setAttributes, props } ) => {
 	if ( setAttributes !== 'not_set' ) {
