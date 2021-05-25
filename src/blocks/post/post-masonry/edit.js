@@ -2409,15 +2409,15 @@ export default compose(
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
 		let categoriesList = [];
-		let rest_base = '';
+		let restBase = '';
 
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+				restBase =
+					currentTax.taxonomy[ taxonomyType ].restBase == false ||
+					currentTax.taxonomy[ taxonomyType ].restBase == null
 						? currentTax.taxonomy[ taxonomyType ].name
-						: currentTax.taxonomy[ taxonomyType ].rest_base;
+						: currentTax.taxonomy[ taxonomyType ].restBase;
 			}
 
 			if ( '' != taxonomyType ) {
@@ -2456,7 +2456,7 @@ export default compose(
 		}
 		const { getBlocks } = select( 'core/block-editor' );
 		if ( undefined !== categories && '' !== categories ) {
-			latestPostsQuery[ rest_base ] =
+			latestPostsQuery[ restBase ] =
 				undefined === categories || '' === categories
 					? categories
 					: category;
