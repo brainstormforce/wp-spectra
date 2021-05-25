@@ -161,7 +161,6 @@
 
 } )( jQuery )
 
-alert("From post.js")
 // Set Carousel Height for Customiser.
 function uagb_carousel_height(  id ) {
 	var wrap            = jQuery("#block-"+id)
