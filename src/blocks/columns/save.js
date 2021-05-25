@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import shapes from './shapes';
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;

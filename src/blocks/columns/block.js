@@ -13,7 +13,7 @@ import save from './save';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+const { registerBlockType } = '@wordpress/blocks';
 
 registerBlockType( 'uagb/columns', {
 	title: uagb_blocks_info.blocks[ 'uagb/columns' ].title,

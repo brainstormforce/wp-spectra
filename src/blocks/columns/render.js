@@ -7,7 +7,7 @@ import shapes from './shapes';
 import React, { useMemo } from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = '@wordpress/block-editor';
 
 const Render = props => {
 

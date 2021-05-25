@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = '@wordpress/block-editor';
 
 const Render = props  => {
 

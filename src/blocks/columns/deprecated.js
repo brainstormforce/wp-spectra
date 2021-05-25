@@ -8,7 +8,7 @@ import shapes from './shapes';
 // Import icon.
 import attributes from './attributes';
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 

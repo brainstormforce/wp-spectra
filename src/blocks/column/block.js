@@ -12,7 +12,7 @@ import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+const { registerBlockType } = '@wordpress/blocks'
 
 registerBlockType( 'uagb/column', {
 	title: uagb_blocks_info.blocks[ 'uagb/column' ].title,
