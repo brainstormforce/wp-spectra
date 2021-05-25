@@ -6,10 +6,10 @@
  */
 
 .block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
-	list-style: none;
 	display: flex;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
 .block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
@@ -18,12 +18,11 @@
 
 .wp-block-uagb-team .components-button:focus:enabled,
 .wp-block-uagb-team .components-button {
+	box-shadow: none;
 	background: transparent;
 	border: none;
-	box-shadow: none;
 }
 
 .wp-block-uagb-team p.uagb-team__desc.block-editor-rich-text__editable {
-	margin: 0;
-	margin-bottom: 10px;
+	margin: 0 0 10px;
 }
