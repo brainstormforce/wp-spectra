@@ -906,6 +906,114 @@ const Settings = ( props ) => {
 		</PanelBody>
 	);
 
+	//Submit button settings.
+	const btn_border_setting = (
+		<>
+			<SelectControl
+				label={ __( 'Border Style', 'ultimate-addons-for-gutenberg' ) }
+				value={ buttonBorderStyle }
+				onChange={ ( value ) =>
+					setAttributes( { buttonBorderStyle: value } )
+				}
+				options={ [
+					{
+						value: 'none',
+						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'solid',
+						label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'dotted',
+						label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'dashed',
+						label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'double',
+						label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'groove',
+						label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'inset',
+						label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'outset',
+						label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'ridge',
+						label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+			/>
+			{ 'none' != buttonBorderStyle && (
+				<RangeControl
+					label={ __(
+						'Border Width (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ buttonBorderWidth }
+					onChange={ ( value ) =>
+						setAttributes( { buttonBorderWidth: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+			) }
+			<ButtonGroup
+				className="uagb-size-type-field"
+				aria-label={ __(
+					'Size Type',
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<Button
+					key={ 'px' }
+					className="uagb-size-btn"
+					isSmall
+					isPrimary={ buttonBorderRadiusType === 'px' }
+					aria-pressed={ buttonBorderRadiusType === 'px' }
+					onClick={ () =>
+						setAttributes( { buttonBorderRadiusType: 'px' } )
+					}
+				>
+					{ 'px' }
+				</Button>
+				<Button
+					key={ '%' }
+					className="uagb-size-btn"
+					isSmall
+					isPrimary={ buttonBorderRadiusType === '%' }
+					aria-pressed={ buttonBorderRadiusType === '%' }
+					onClick={ () =>
+						setAttributes( { buttonBorderRadiusType: '%' } )
+					}
+				>
+					{ '%' }
+				</Button>
+			</ButtonGroup>
+			<RangeControl
+				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
+				value={ buttonBorderRadius }
+				onChange={ ( value ) =>
+					setAttributes( { buttonBorderRadius: value } )
+				}
+				min={ 0 }
+				max={ 100 }
+				allowReset
+			/>
+		</>
+	);
+
 	const msgSettings = (
 		<PanelBody
 			title={ __(
@@ -1549,114 +1657,6 @@ const Settings = ( props ) => {
 				initialPosition={ 10 }
 			/>
 		</PanelBody>
-	);
-
-	//Submit button settings.
-	const btn_border_setting = (
-		<>
-			<SelectControl
-				label={ __( 'Border Style', 'ultimate-addons-for-gutenberg' ) }
-				value={ buttonBorderStyle }
-				onChange={ ( value ) =>
-					setAttributes( { buttonBorderStyle: value } )
-				}
-				options={ [
-					{
-						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'solid',
-						label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'dotted',
-						label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'dashed',
-						label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'double',
-						label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'groove',
-						label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'inset',
-						label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'outset',
-						label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'ridge',
-						label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
-			{ 'none' != buttonBorderStyle && (
-				<RangeControl
-					label={ __(
-						'Border Width (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonBorderWidth }
-					onChange={ ( value ) =>
-						setAttributes( { buttonBorderWidth: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-			) }
-			<ButtonGroup
-				className="uagb-size-type-field"
-				aria-label={ __(
-					'Size Type',
-					'ultimate-addons-for-gutenberg'
-				) }
-			>
-				<Button
-					key={ 'px' }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ buttonBorderRadiusType === 'px' }
-					aria-pressed={ buttonBorderRadiusType === 'px' }
-					onClick={ () =>
-						setAttributes( { buttonBorderRadiusType: 'px' } )
-					}
-				>
-					{ 'px' }
-				</Button>
-				<Button
-					key={ '%' }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ buttonBorderRadiusType === '%' }
-					aria-pressed={ buttonBorderRadiusType === '%' }
-					onClick={ () =>
-						setAttributes( { buttonBorderRadiusType: '%' } )
-					}
-				>
-					{ '%' }
-				</Button>
-			</ButtonGroup>
-			<RangeControl
-				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
-				value={ buttonBorderRadius }
-				onChange={ ( value ) =>
-					setAttributes( { buttonBorderRadius: value } )
-				}
-				min={ 0 }
-				max={ 100 }
-				allowReset
-			/>
-		</>
 	);
 
 	const buttonNormalSettings = (
