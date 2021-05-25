@@ -28,15 +28,15 @@ const BoxShadowControl = lazy( () =>
 	)
 );
 
-const {
+import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	BlockVerticalAlignmentToolbar,
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
-} = '@wordpress/block-editor';
-const {
+} from '@wordpress/block-editor';
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -46,7 +46,7 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-} = '@wordpress/components';
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props.parentProps;

@@ -19,14 +19,14 @@ const Columnresponsive = lazy( () =>
 
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
 	PanelColorSettings,
-} = '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -35,7 +35,7 @@ const {
 	BaseControl,
 	TabPanel,
 	Dashicon,
-} = '@wordpress/components';
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const {

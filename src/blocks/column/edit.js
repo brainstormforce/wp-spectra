@@ -13,7 +13,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/column/render" */ './render' )
 );
 
-const { withSelect } = '@wordpress/data';
+import { withSelect } from '@wordpress/data';
 
 const columnComponent = ( props ) => {
 	useEffect( () => {

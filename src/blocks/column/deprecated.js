@@ -8,7 +8,7 @@ import classnames from 'classnames';
 // Import icon.
 import attributes from './attributes';
 
-const { InnerBlocks } = '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 

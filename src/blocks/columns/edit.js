@@ -18,15 +18,15 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/columns/render" */ './render' )
 );
 
-const { withSelect, useDispatch } = '@wordpress/data';
+import { withSelect, useDispatch } from '@wordpress/data';
 
-const { compose } = '@wordpress/compose';
+import { compose } from '@wordpress/compose';
 
-const { __experimentalBlockVariationPicker } = '@wordpress/block-editor';
+import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 
-const { withNotices } = '@wordpress/components';
+import { withNotices } from '@wordpress/components';
 
-const { createBlock } = '@wordpress/blocks';
+import { createBlock } from '@wordpress/blocks';
 
 const columnsComponent = ( props ) => {
 	useEffect( () => {
