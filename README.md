@@ -178,6 +178,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Table of content - Optimized headings rendering to remove CLS impact.
 * Fix: Advanced Column - Column Gap Setting overlapping issue.
 * Fix: Advanced Column - Column Gap Setting not working in the Editor issue.
+* Fix: Advanced Column - Stack on Tablet and mobile in preview mode.
 * Fix: Blockquote - Tweet link showing an empty page link and username.
 * Fix: Block condition - Conflicting with Real Media Library plugin.
 * Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
@@ -185,8 +186,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Grid - Link to complete box redirect to the last post when image background set to Top.
 * Fix: Post Layout - Conflicting with the Envira Gallery plugin.
 * Fix: Blocks throwing an error when deactivate all the UAG blocks except the Multi Buttons, Forms & How To.
-* Fix: Settings conflict issue in Lottie block.
-* Fix: Fixed Alignment issue in the editor in Lottie block.
+* Fix: Lottie - Settings conflict issue.
+* Fix: Lottie - Alignment issue in the editor in Lottie block.
+
 
 ### 1.22.4 ###
 * Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
