@@ -5,7 +5,8 @@ module.exports = {
 		camelcase: 'off',
 	},
 	globals: {
-		uagb_blocks_info: true,
+		"uagb_blocks_info": true,
+		"UAGB_Block_Icons": true,
 		__webpack_public_path__: true,
 	},
 };
