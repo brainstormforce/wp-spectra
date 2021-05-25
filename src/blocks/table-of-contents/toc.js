@@ -52,7 +52,7 @@ function TableOfContents( props ) {
 	};
 
 	let counter = 0;
-	let ul_counter = 0;
+	let ulCounter = 0;
 
 	const parseList = ( list ) => {
 		const items = [];
@@ -74,10 +74,10 @@ function TableOfContents( props ) {
 					counter++;
 				}
 			} );
-			ul_counter++;
+			ulCounter++;
 			return (
 				<ul
-					key={ counter + '-' + ul_counter }
+					key={ counter + '-' + ulCounter }
 					className="uagb-toc__list"
 				>
 					{ items }
