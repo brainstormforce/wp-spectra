@@ -1,6 +1,6 @@
 <?php
 /**
- * UAGB Helper.
+ * UAGB Front Assets.
  *
  * @package UAGB
  */
@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class UAGB_Frontend.
+ * Class UAGB_Front_Assets.
  */
-class UAGB_Frontend {
+class UAGB_Front_Assets {
 
 	/**
 	 * Member Variable
@@ -156,10 +156,10 @@ class UAGB_Frontend {
 }
 
 /**
- *  Prepare if class 'UAGB_Frontend' exist.
+ *  Prepare if class 'UAGB_Front_Assets' exist.
  *  Kicking this off by calling 'get_instance()' method
  */
-UAGB_Frontend::get_instance();
+UAGB_Front_Assets::get_instance();
 
 /**
  * Get frontend post_assets obj.
@@ -167,5 +167,5 @@ UAGB_Frontend::get_instance();
  * @since 1.23.0
  */
 function uagb_get_front_post_assets() {
-	return UAGB_Frontend::get_instance()->get_post_assets_obj();
+	return UAGB_Front_Assets::get_instance()->get_post_assets_obj();
 }

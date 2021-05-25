@@ -122,7 +122,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
 			}
 
-			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
+			require_once UAGB_DIR . 'classes/class-uagb-post-assets.php';
+			require_once UAGB_DIR . 'classes/class-uagb-front-assets.php';
+			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
