@@ -4,7 +4,9 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-
+ .components-button-group{
+	 z-index: 0;
+ }
 .uagb-columns__wrap:before {
 	content: '';
 	position: absolute;
