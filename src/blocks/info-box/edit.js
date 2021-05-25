@@ -5,10 +5,10 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InfoBoxStyle from './inline-styles';
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/info-box/Render" */ './Render' )
+	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )
 );
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/info-box/Settings" */ './Settings' )
+	import( /* webpackChunkName: "chunks/info-box/settings" */ './settings' )
 );
 
 const UAGBInfoBox = ( props ) => {
