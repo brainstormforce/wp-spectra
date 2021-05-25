@@ -5455,9 +5455,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'            => UAGB_Helper::get_css_value( $attr['width'], 'px' ),
 					'height'           => UAGB_Helper::get_css_value( $attr['height'], 'px' ),
 					'overflow'         => 'hidden',
-					'margin'           => '0px auto',
 					'outline'          => 'none',
 					'background-color' => $attr['backgroundColor'],
+				),
+				'.uagb-lottie__left'       => array(
+					'margin-right' => 'auto',
+				),
+				'.uagb-lottie__right'      => array(
+					'margin-left' => 'auto',
+				),
+				'.uagb-lottie__center'     => array(
+					'margin' => '0 auto',
 				),
 			);
 			$selectors['.uagb-lottie__outer-wrap:hover'] = array(
