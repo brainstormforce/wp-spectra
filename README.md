@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.23.0 ###
+* New: Added Lottie Alignment Option.
 * New: Added an option to rollback to a previous version.
 * New: Added an option to get update notifications for beta versions.
 * Improvement: Frontend optimization by reducing one request of CSS.
