@@ -117,7 +117,7 @@ class UAGB_Front_Assets {
 			 *
 			 * @param \WP_Post $this_post The global post.
 			 */
-			$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
+			$this_post = apply_filters_deprecated( 'uagb_post_for_stylesheet', array( $this_post ), '1.23.0' );
 
 			if ( $this->post_id !== $this_post->ID ) {
 				$this->post_assets->prepare_assets( $this_post );
