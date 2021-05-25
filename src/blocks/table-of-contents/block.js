@@ -11,7 +11,7 @@ import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/table-of-contents', {
 	title: uagb_blocks_info.blocks[ 'uagb/table-of-contents' ].title,

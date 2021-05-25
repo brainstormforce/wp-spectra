@@ -18,8 +18,8 @@ const Render = lazy( () =>
 	)
 );
 
-const { withSelect } = wp.data;
-const { compose } = wp.compose;
+import { withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
 const UAGBTableOfContentsEdit = ( props ) => {
 	useEffect( () => {

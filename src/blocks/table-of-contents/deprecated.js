@@ -8,8 +8,7 @@ import TOC from './deprecated/table-of-contents';
 import TableOfContent from './toc';
 import attributes from './attributes';
 import renderSVG from '@Controls/renderIcon';
-
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

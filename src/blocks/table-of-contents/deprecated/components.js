@@ -1,4 +1,4 @@
-const { select, subscribe } = wp.data;
+import { select, subscribe } from '@wordpress/data';
 import { Component } from 'react';
 import { __ } from '@wordpress/i18n';
 const striptags = require( 'striptags' );

@@ -8,34 +8,34 @@ import lazyLoader from "@Controls/lazy-loader";
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography'
+		/* webpackChunkName: "chunks/table-of-contents/typography" */ '@Components/typography'
 		)
 );
 const FontIconPicker = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ '@fonticonpicker/react-fonticonpicker'
+		/* webpackChunkName: "chunks/table-of-contents/react-fonticonpicker" */ '@fonticonpicker/react-fonticonpicker'
 		)
 );
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/table-of-contents/column-responsive" */ '@Components/typography/column-responsive'
 		)
 );
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/table-of-contents/render" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/table-of-contents/fontloader" */ '@Components/typography/fontloader'
 		)
 );
 
-const {
+import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
 	ColorPalette,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	Button,
 	ButtonGroup,
 	PanelBody,
@@ -43,7 +43,7 @@ const {
 	SelectControl,
 	RangeControl,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

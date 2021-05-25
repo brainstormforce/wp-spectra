@@ -3,8 +3,7 @@ import TableOfContents from './toc';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -21,10 +20,10 @@ const Render = ( props ) => {
 		headingTitle,
 	} = attributes;
 
-	let icon_html = '';
+	let iconHtml = '';
 
 	if ( makeCollapsible && icon ) {
-		icon_html = (
+		iconHtml = (
 			<span className="uag-toc__collapsible-wrap">
 				{ renderSVG( icon ) }
 			</span>
@@ -59,7 +58,7 @@ const Render = ( props ) => {
 							multiline={ false }
 							onRemove={ () => props.onReplace( [] ) }
 						/>
-						{ icon_html }
+						{ iconHtml }
 					</div>
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }

@@ -20,14 +20,12 @@ function styling( props ) {
 		iconColor,
 		bulletColor,
 		iconSize,
-		//Color
 		backgroundColor,
 		linkColor,
 		linkHoverColor,
 		scrollToTopColor,
 		scrollToTopBgColor,
 		headingColor,
-		//Margin
 		vMarginDesktop,
 		hMarginDesktop,
 		marginTypeDesktop,
@@ -37,7 +35,6 @@ function styling( props ) {
 		vMarginTablet,
 		hMarginTablet,
 		marginTypeTablet,
-		//Padding,
 		vPaddingDesktop,
 		vPaddingTablet,
 		vPaddingMobile,
@@ -48,19 +45,16 @@ function styling( props ) {
 		paddingTypeDesktop,
 		paddingTypeTablet,
 		paddingTypeMobile,
-		//Padding,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
 		contentPaddingTypeDesktop,
 		contentPaddingTypeTablet,
 		contentPaddingTypeMobile,
-		//Border
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
-		//Typography
 		fontFamily,
 		fontWeight,
 		fontSize,
@@ -86,8 +80,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	let alignment;
 	if ( headingAlignment == 'left' ) {
@@ -212,7 +206,7 @@ function styling( props ) {
 		};
 	}
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-toc__list-wrap ul li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -284,7 +278,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-toc__list-wrap ul li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
@@ -357,35 +351,35 @@ function styling( props ) {
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
 	if ( '' != scrollToTopColor ) {
-		styling_css +=
+		stylingCss +=
 			'.uagb-toc__scroll-top { color: ' + scrollToTopColor + '; }';
 	}
 
 	if ( '' != scrollToTopBgColor ) {
-		styling_css +=
+		stylingCss +=
 			'.uagb-toc__scroll-top.uagb-toc__show-scroll { background: ' +
 			scrollToTopBgColor +
 			'; }';
 	}
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
