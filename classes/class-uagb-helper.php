@@ -1000,7 +1000,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_assets( $blocks ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_blocks_assets()' );
 
-			UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
+			return UAGB_Frontend::get_instance()->get_blocks_assets( $blocks );
 		}
 
 		/**
@@ -1014,7 +1014,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function parse( $content ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->parse_blocks()' );
 
-			UAGB_Frontend::get_instance()->parse_blocks( $content );
+			return UAGB_Frontend::get_instance()->parse_blocks( $content );
 		}
 		/**
 		 * This is the action where we create dynamic asset files.
@@ -1087,7 +1087,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_block_css_and_js( $block ) {
 			_deprecated_function( __METHOD__, '1.23.0', 'UAGB_Frontend::get_instance()->get_block_css_and_js()' );
 
-			UAGB_Frontend::get_instance()->get_block_css_and_js( $block );
+			return UAGB_Frontend::get_instance()->get_block_css_and_js( $block );
 		}
 		/**
 		 * Generates stylesheet and appends in head tag.

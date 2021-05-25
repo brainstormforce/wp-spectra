@@ -312,7 +312,7 @@ class UAGB_Init_Blocks {
 
 		// We can remove this code after 2-3 releases.
 
-		if ( 'disabled' === $disabled_blocks['info-box'] ) {
+		if ( isset( $disabled_blocks['info-box'] ) && 'disabled' === $disabled_blocks['info-box'] ) {
 
 			$disabled_blocks['info-box'] = 'info-box';
 

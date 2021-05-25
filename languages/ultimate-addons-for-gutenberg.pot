@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-18T12:27:35+00:00\n"
+"POT-Creation-Date: 2021-05-18T12:44:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: admin/uagb-general.php:69
 #: admin/uagb-general.php:291
-#: admin/uagb-tools.php:129
+#: admin/uagb-tools.php:112
 msgid "Visit Knowledge Base »"
 msgstr ""
 
@@ -245,35 +245,33 @@ msgid "You can regenerate your CSS & Javascript assets here."
 msgstr ""
 
 #: admin/uagb-general.php:285
-#: admin/uagb-tools.php:123
+#: admin/uagb-tools.php:106
 msgid "Knowledge Base"
 msgstr ""
 
 #: admin/uagb-general.php:289
-#: admin/uagb-tools.php:127
+#: admin/uagb-tools.php:110
 msgid "Not sure how something works? Take a peek at the knowledge base and learn."
 msgstr ""
 
 #: admin/uagb-general.php:297
-#: admin/uagb-tools.php:135
+#: admin/uagb-tools.php:118
 msgid "Five Star Support"
 msgstr ""
 
 #. translators: %1$s: uagb name.
 #: admin/uagb-general.php:304
-#: admin/uagb-tools.php:142
+#: admin/uagb-tools.php:125
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
 #: admin/uagb-tools.php:33
 #: admin/uagb-tools.php:47
-#: admin/uagb-tools.php:72
 #: classes/class-uagb-admin.php:294
 msgid "Enable Beta Updates"
 msgstr ""
 
 #: admin/uagb-tools.php:39
-#: admin/uagb-tools.php:78
 #: classes/class-uagb-admin.php:295
 msgid "Disable Beta Updates"
 msgstr ""
@@ -290,22 +288,22 @@ msgstr ""
 msgid "Note: We do not recommend updating to a beta version on production site."
 msgstr ""
 
-#: admin/uagb-tools.php:86
+#: admin/uagb-tools.php:71
 #: classes/class-uagb-admin.php:600
 #: classes/class-uagb-admin.php:631
 msgid "Rollback to Previous Version"
 msgstr ""
 
 #. translators: %s: UAG version
-#: admin/uagb-tools.php:92
+#: admin/uagb-tools.php:77
 msgid "Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared."
 msgstr ""
 
-#: admin/uagb-tools.php:109
+#: admin/uagb-tools.php:92
 msgid "Reinstall "
 msgstr ""
 
-#: admin/uagb-tools.php:111
+#: admin/uagb-tools.php:94
 msgid "Warning: Please backup your database before making the rollback."
 msgstr ""
 

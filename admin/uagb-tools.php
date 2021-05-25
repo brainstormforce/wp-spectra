@@ -66,21 +66,6 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 			<div class="widgets postbox">
 				<div class="uagb-intro-section">
 					<div class="uagb-intro-col">
-						<?php
-							$uagb_beta = get_option( 'uagb_beta', 'no' );
-
-							$beta_updates_button_text = __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' );
-
-							$value = 'yes';
-
-						if ( 'yes' === $uagb_beta ) {
-
-							$beta_updates_button_text = __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' );
-
-							$value = 'no';
-
-						}
-						?>
 						<h2 class="uagb-normal-cusror">
 							<span class="uagb-gen-icon dashicons dashicons-controls-repeat"></span>
 							<span><?php esc_html_e( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ); ?></span>
@@ -95,13 +80,11 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 							<select class="uagb-rollback-select">
 								<?php
 
-									$uag_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
+								$uag_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
 
 								foreach ( $uag_versions as $version ) {
 									?>
-
-										<option value="<?php echo esc_attr( $version ); ?>"><?php echo esc_html( $version ); ?> </option>
-
+									<option value="<?php echo esc_attr( $version ); ?>"><?php echo esc_html( $version ); ?> </option>
 									<?php
 								}
 								?>

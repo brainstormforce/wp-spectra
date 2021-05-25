@@ -169,16 +169,17 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.23.1 =
-* Fix: Advanced Column - Fixed Column Gap Setting overlapping issue.
-* Fix: Advanced Column - Fixed Column Gap Setting not working in the Editor issue.
 
 = 1.23.0 =
+* New: Added Lottie Alignment Option.
 * New: Added an option to rollback to a previous version.
 * New: Added an option to get update notifications for beta versions.
 * Improvement: Frontend optimization by reducing one request of CSS.
 * Improvement: Improved the Dynamic Assets loading functionality for better performance.
 * Improvement: Static CSS Optimized by loading only used blocks' CSS on a Page.
 * Improvement: Table of content - Optimized headings rendering to remove CLS impact.
+* Fix: Advanced Column - Column Gap Setting overlapping issue.
+* Fix: Advanced Column - Column Gap Setting not working in the Editor issue.
 * Fix: Blockquote - Tweet link showing an empty page link and username.
 * Fix: Block condition - Conflicting with Real Media Library plugin.
 * Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
