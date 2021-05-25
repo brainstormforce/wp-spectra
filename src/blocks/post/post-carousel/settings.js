@@ -4,7 +4,7 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-carousel/fontloader" */ '../../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/post-carousel/fontloader" */ '@Components/typography/fontloader'
 	)
 );
 

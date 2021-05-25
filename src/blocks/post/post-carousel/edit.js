@@ -18,13 +18,13 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const ColumnResponsive = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-carousel/column-responsive" */ '../../../components/typography/column-responsive'
+		/* webpackChunkName: "chunks/post-carousel/column-responsive" */ '@Components/typography/column-responsive'
 	)
 );
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/post-carousel/typography" */ '../../../components/typography'
+		/* webpackChunkName: "chunks/post-carousel/typography" */ '@Components/typography'
 	)
 );
 
