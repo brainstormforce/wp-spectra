@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import RichText from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
