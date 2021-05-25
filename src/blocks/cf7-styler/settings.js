@@ -268,7 +268,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	const field_settings = (
+	const fieldSettings = (
 		<PanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
 			<SelectControl
 				label={ __( 'Select Form', 'ultimate-addons-for-gutenberg' ) }
@@ -279,7 +279,7 @@ const Settings = ( props ) => {
 		</PanelBody>
 	);
 
-	const field_border_setting = (
+	const fieldBorderSetting = (
 		<PanelBody
 			title={ __(
 				'Field Style & Border',
@@ -440,7 +440,7 @@ const Settings = ( props ) => {
 				allowReset
 			/>
 			{ ( 'none' != fieldBorderStyle || fieldStyle == 'underline' ) && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Border Color',
@@ -460,7 +460,7 @@ const Settings = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 			<p className="uagb-setting-label">
 				{ __( 'Active Border Color', 'ultimate-addons-for-gutenberg' ) }
@@ -481,7 +481,7 @@ const Settings = ( props ) => {
 		</PanelBody>
 	);
 
-	const typography_settings = (
+	const typographySettings = (
 		<PanelBody
 			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
@@ -644,7 +644,7 @@ const Settings = ( props ) => {
 		</PanelBody>
 	);
 
-	const radio_check_setting = (
+	const radioCheckSetting = (
 		<PanelBody
 			title={ __( 'Radio & Checkbox', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
@@ -660,7 +660,7 @@ const Settings = ( props ) => {
 				}
 			/>
 			{ enableOveride && (
-				<Fragment>
+				<>
 					<RangeControl
 						label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 						value={ radioCheckSize }
@@ -799,7 +799,7 @@ const Settings = ( props ) => {
 					/>
 
 					{ fieldBorderStyle !== 'none' && (
-						<Fragment>
+						<>
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
 							<RangeControl
@@ -899,14 +899,14 @@ const Settings = ( props ) => {
 								}
 								allowReset
 							/>
-						</Fragment>
+						</>
 					) }
-				</Fragment>
+				</>
 			) }
 		</PanelBody>
 	);
 
-	const msg_settings = (
+	const msgSettings = (
 		<PanelBody
 			title={ __(
 				'Success / Error Message',
@@ -1025,7 +1025,7 @@ const Settings = ( props ) => {
 			/>
 
 			{ validationMsgPosition === 'bottom_right' && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Message Background Color',
@@ -1049,7 +1049,7 @@ const Settings = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 			<hr className="uagb-editor__separator" />
 			<ToggleControl
@@ -1066,7 +1066,7 @@ const Settings = ( props ) => {
 			/>
 
 			{ enableHighlightBorder && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Highlight Border Color',
@@ -1090,7 +1090,7 @@ const Settings = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
 
 			<hr className="uagb-editor__separator" />
@@ -1347,7 +1347,7 @@ const Settings = ( props ) => {
 			/>
 		</PanelBody>
 	);
-	const btn_setting = (
+	const btnSetting = (
 		<PanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
@@ -1553,7 +1553,7 @@ const Settings = ( props ) => {
 
 	//Submit button settings.
 	const btn_border_setting = (
-		<Fragment>
+		<>
 			<SelectControl
 				label={ __( 'Border Style', 'ultimate-addons-for-gutenberg' ) }
 				value={ buttonBorderStyle }
@@ -1656,11 +1656,11 @@ const Settings = ( props ) => {
 				max={ 100 }
 				allowReset
 			/>
-		</Fragment>
+		</>
 	);
 
 	const buttonNormalSettings = (
-		<Fragment>
+		<>
 			<p className="uagb-setting-label">
 				{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				<span className="components-base-control__label">
@@ -1694,7 +1694,7 @@ const Settings = ( props ) => {
 				allowReset
 			/>
 			{ 'none' != buttonBorderStyle && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Border Color',
@@ -1714,13 +1714,13 @@ const Settings = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	const buttonHoverSettings = (
-		<Fragment>
+		<>
 			<p className="uagb-setting-label">
 				{ __( 'Text Hover Color', 'ultimate-addons-for-gutenberg' ) }
 				<span className="components-base-control__label">
@@ -1757,7 +1757,7 @@ const Settings = ( props ) => {
 				allowReset
 			/>
 			{ 'none' != buttonBorderStyle && (
-				<Fragment>
+				<>
 					<p className="uagb-setting-label">
 						{ __(
 							'Border Hover Color',
@@ -1781,9 +1781,9 @@ const Settings = ( props ) => {
 						}
 						allowReset
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 
 	/*
@@ -1812,12 +1812,12 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>
-				{ field_settings }
-				{ field_border_setting }
-				{ typography_settings }
-				{ radio_check_setting }
-				{ btn_setting }
-				{ msg_settings }
+				{ fieldSettings }
+				{ fieldBorderSetting }
+				{ typographySettings }
+				{ radioCheckSetting }
+				{ btnSetting }
+				{ msgSettings }
 				{ spacing }
 			</InspectorControls>
 			{ loadInputGoogleFonts }

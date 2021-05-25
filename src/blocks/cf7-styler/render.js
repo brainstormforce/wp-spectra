@@ -46,64 +46,60 @@ const Render = ( props ) => {
 
 	if ( formId == 0 ) {
 		return (
-			<>
-				<Placeholder
-					icon="admin-post"
-					label={ __(
-						'Select a Contact Form 7',
-						'ultimate-addons-for-gutenberg'
-					) }
-				>
-					<SelectControl
-						value={ formId }
-						onChange={ onSelectForm }
-						options={ uagb_blocks_info.cf7_forms }
-					/>
-				</Placeholder>
-			</>
+			<Placeholder
+				icon="admin-post"
+				label={ __(
+					'Select a Contact Form 7',
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<SelectControl
+					value={ formId }
+					onChange={ onSelectForm }
+					options={ uagb_blocks_info.cf7_forms }
+				/>
+			</Placeholder>
 		);
 	}
 
 	return (
-		<>
+		<div
+			className={ classnames(
+				className,
+				'uagb-cf7-styler__outer-wrap',
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+			) }
+		>
 			<div
 				className={ classnames(
-					className,
-					'uagb-cf7-styler__outer-wrap',
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+					`uagb-cf7-styler__align-${ align }`,
+					`uagb-cf7-styler__field-style-${ fieldStyle }`,
+					`uagb-cf7-styler__btn-align-${ buttonAlignment }`,
+					`uagb-cf7-styler__highlight-style-${ validationMsgPosition }`,
+					enableOveride
+						? 'uagb-cf7-styler__check-style-enabled'
+						: '',
+					enableHighlightBorder
+						? 'uagb-cf7-styler__highlight-border'
+						: ''
 				) }
 			>
-				<div
-					className={ classnames(
-						`uagb-cf7-styler__align-${ align }`,
-						`uagb-cf7-styler__field-style-${ fieldStyle }`,
-						`uagb-cf7-styler__btn-align-${ buttonAlignment }`,
-						`uagb-cf7-styler__highlight-style-${ validationMsgPosition }`,
-						enableOveride
-							? 'uagb-cf7-styler__check-style-enabled'
-							: '',
-						enableHighlightBorder
-							? 'uagb-cf7-styler__highlight-border'
-							: ''
-					) }
-				>
-					{ isHtml && (
-						<div dangerouslySetInnerHTML={ { __html: html } } />
-					) }
-					{ isHtml == false && (
-						<Placeholder
-							icon="admin-post"
-							label={ __(
-								'Loading',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							<Spinner />
-						</Placeholder>
-					) }
-				</div>
+				{ isHtml && (
+					<div dangerouslySetInnerHTML={ { __html: html } } />
+				) }
+				{ isHtml == false && (
+					<Placeholder
+						icon="admin-post"
+						label={ __(
+							'Loading',
+							'ultimate-addons-for-gutenberg'
+						) }
+					>
+						<Spinner />
+					</Placeholder>
+				) }
 			</div>
-		</>
+		</div>
 	);
 };
 
