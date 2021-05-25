@@ -177,6 +177,447 @@ const Settings = ( props ) => {
 		);
 	}
 
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		const { setAttributes } = props;
+
+		setAttributes( { authorImage: null } );
+	};
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		const { setAttributes } = props;
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { authorImage: null } );
+			return;
+		}
+
+		if ( ! media.type || 'image' != media.type ) {
+			return;
+		}
+
+		setAttributes( { authorImage: media } );
+	};
+
+	// Image controls.
+	const imageControls = (
+		<>
+			<hr className="uagb-editor__separator" />
+			<BaseControl
+				id="blockquote-image-controls"
+				className="editor-bg-image-control"
+				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
+			>
+				<MediaUpload
+					title={ __(
+						'Select Image',
+						'ultimate-addons-for-gutenberg'
+					) }
+					onSelect={ onSelectImage }
+					allowedTypes={ [ 'image' ] }
+					value={ authorImage }
+					render={ ( { open } ) => (
+						<Button isSecondary onClick={ open }>
+							{ imageName }
+						</Button>
+					) }
+				/>
+				{ authorImage &&
+				authorImage.url !== 'null' &&
+				authorImage.url !== '' && (
+					<Button
+						className="uagb-rm-btn"
+						onClick={ onRemoveImage }
+						isLink
+						isDestructive
+					>
+						{ __(
+							'Remove Image',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</Button>
+				) }
+			</BaseControl>
+			{ authorImage &&
+			authorImage.url !== 'null' &&
+			authorImage.url !== '' && (
+				<>
+					<SelectControl
+						label={ __(
+							'Author Image Position',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ authorImgPosition }
+						onChange={ ( value ) =>
+							setAttributes( { authorImgPosition: value } )
+						}
+						options={ [
+							{
+								value: 'left',
+								label: __(
+									'Left',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'right',
+								label: __(
+									'Right',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'top',
+								label: __(
+									'Top',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
+					<SelectControl
+						label={ __(
+							'Author Image Size',
+							'ultimate-addons-for-gutenberg'
+						) }
+						options={ imageSizeOptions }
+						value={ authorImageSize }
+						onChange={ ( value ) =>
+							setAttributes( { authorImageSize: value } )
+						}
+					/>
+					<RangeControl
+						label={ __(
+							'Author Image Width',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ authorImageWidth }
+						onChange={ ( value ) =>
+							setAttributes( { authorImageWidth: value } )
+						}
+						min={ 0 }
+						max={ 500 }
+						beforeIcon=""
+						allowReset
+					/>
+					<RangeControl
+						label={ __(
+							'Author Image Rounded Corners',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ authorImgBorderRadius }
+						onChange={ ( value ) =>
+							setAttributes( {
+								authorImgBorderRadius: value,
+							} )
+						}
+						min={ 0 }
+						max={ 100 }
+						beforeIcon=""
+						allowReset
+					/>
+				</>
+			) }
+		</>
+	);
+
+	const borderSettings = (
+		<>
+			<h2>
+				{ __(
+					'Modern Layout - Styling',
+					'ultimate-addons-for-gutenberg'
+				) }
+			</h2>
+			<SelectControl
+				label={ __(
+					'Quote Border Style',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ borderStyle }
+				onChange={ ( value ) =>
+					setAttributes( { borderStyle: value } )
+				}
+				options={ [
+					{
+						value: 'none',
+						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'solid',
+						label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'dotted',
+						label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'dashed',
+						label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'double',
+						label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'groove',
+						label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'inset',
+						label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'outset',
+						label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'ridge',
+						label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+			/>
+			{ 'none' != borderStyle && (
+				<RangeControl
+					label={ __(
+						'Thickness (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ borderWidth }
+					onChange={ ( value ) =>
+						setAttributes( { borderWidth: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+			) }
+		</>
+	);
+
+	const quoteSettings = (
+		<>
+			<h2>
+				{ __(
+					'Quotation Layout - Styling',
+					'ultimate-addons-for-gutenberg'
+				) }
+			</h2>
+			<TabPanel
+				className="uagb-size-type-field-tabs"
+				activeClass="active-tab"
+				tabs={ [
+					{
+						name: 'desktop',
+						title: <Dashicon icon="desktop" />,
+						className: 'uagb-desktop-tab uagb-responsive-tabs',
+					},
+					{
+						name: 'tablet',
+						title: <Dashicon icon="tablet" />,
+						className: 'uagb-tablet-tab uagb-responsive-tabs',
+					},
+					{
+						name: 'mobile',
+						title: <Dashicon icon="smartphone" />,
+						className: 'uagb-mobile-tab uagb-responsive-tabs',
+					},
+				] }
+			>
+				{ ( tab ) => {
+					let tabout;
+
+					if ( 'mobile' === tab.name ) {
+						tabout = (
+							<>
+								{ quoteSizeTypeControls }
+								<RangeControl
+									label={ __(
+										'Quote Icon Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quoteSizeMobile }
+									onChange={ ( value ) =>
+										setAttributes( {
+											quoteSizeMobile: value,
+										} )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					} else if ( 'tablet' === tab.name ) {
+						tabout = (
+							<>
+								{ quoteSizeTypeControls }
+								<RangeControl
+									label={ __(
+										'Quote Icon Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quoteSizeTablet }
+									onChange={ ( value ) =>
+										setAttributes( {
+											quoteSizeTablet: value,
+										} )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					} else {
+						tabout = (
+							<>
+								{ quoteSizeTypeControls }
+								<RangeControl
+									label={ __(
+										'Quote Icon Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quoteSize }
+									onChange={ ( value ) =>
+										setAttributes( { quoteSize: value } )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					}
+
+					return <div>{ tabout }</div>;
+				} }
+			</TabPanel>
+			<TabPanel
+				className="uagb-size-type-field-tabs"
+				activeClass="active-tab"
+				tabs={ [
+					{
+						name: 'desktop',
+						title: <Dashicon icon="desktop" />,
+						className: 'uagb-desktop-tab uagb-responsive-tabs',
+					},
+					{
+						name: 'tablet',
+						title: <Dashicon icon="tablet" />,
+						className: 'uagb-tablet-tab uagb-responsive-tabs',
+					},
+					{
+						name: 'mobile',
+						title: <Dashicon icon="smartphone" />,
+						className: 'uagb-mobile-tab uagb-responsive-tabs',
+					},
+				] }
+			>
+				{ ( tab ) => {
+					let tabout;
+
+					if ( 'mobile' === tab.name ) {
+						tabout = (
+							<>
+								{ quotePaddingControls }
+								<RangeControl
+									label={ __(
+										'Background Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quotePaddingMobile }
+									onChange={ ( value ) =>
+										setAttributes( {
+											quotePaddingMobile: value,
+										} )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					} else if ( 'tablet' === tab.name ) {
+						tabout = (
+							<>
+								{ quotePaddingControls }
+								<RangeControl
+									label={ __(
+										'Background Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quotePaddingTablet }
+									onChange={ ( value ) =>
+										setAttributes( {
+											quotePaddingTablet: value,
+										} )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					} else {
+						tabout = (
+							<>
+								{ quotePaddingControls }
+								<RangeControl
+									label={ __(
+										'Background Size',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ quotePadding }
+									onChange={ ( value ) =>
+										setAttributes( { quotePadding: value } )
+									}
+									min={ 0 }
+									max={ 500 }
+									beforeIcon="editor-textcolor"
+									allowReset
+									initialPosition={ 30 }
+								/>
+							</>
+						);
+					}
+
+					return <div>{ tabout }</div>;
+				} }
+			</TabPanel>
+			{ quoteBgColor && (
+				<RangeControl
+					label={ __(
+						'Quote Icon Border Radius (%)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ quoteBorderRadius }
+					onChange={ ( value ) =>
+						setAttributes( { quoteBorderRadius: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>
+			) }
+		</>
+	);
+
 	const skinSettings = (
 		<PanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }>
 			<SelectControl
@@ -273,159 +714,157 @@ const Settings = ( props ) => {
 	);
 
 	const typography = (
-		<>
-			<PanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<h2>{ __( 'Quote', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: descLoadGoogleFonts,
-						label: 'descLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: descFontFamily,
-						label: 'descFontFamily',
-					} }
-					fontWeight={ {
-						value: descFontWeight,
-						label: 'descFontWeight',
-					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
-					} }
-					fontSizeType={ {
-						value: descFontSizeType,
-						label: 'descFontSizeType',
-					} }
-					fontSize={ { value: descFontSize, label: 'descFontSize' } }
-					fontSizeMobile={ {
-						value: descFontSizeMobile,
-						label: 'descFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: descFontSizeTablet,
-						label: 'descFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: descLineHeightType,
-						label: 'descLineHeightType',
-					} }
-					lineHeight={ {
-						value: descLineHeight,
-						label: 'descLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: descLineHeightMobile,
-						label: 'descLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: descLineHeightTablet,
-						label: 'descLineHeightTablet',
-					} }
-				/>
-				<p className="uagb-setting-label">
-					{ __( 'Quote Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
+		<PanelBody
+			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<h2>{ __( 'Quote', 'ultimate-addons-for-gutenberg' ) }</h2>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: descLoadGoogleFonts,
+					label: 'descLoadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: descFontFamily,
+					label: 'descFontFamily',
+				} }
+				fontWeight={ {
+					value: descFontWeight,
+					label: 'descFontWeight',
+				} }
+				fontSubset={ {
+					value: descFontSubset,
+					label: 'descFontSubset',
+				} }
+				fontSizeType={ {
+					value: descFontSizeType,
+					label: 'descFontSizeType',
+				} }
+				fontSize={ { value: descFontSize, label: 'descFontSize' } }
+				fontSizeMobile={ {
+					value: descFontSizeMobile,
+					label: 'descFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: descFontSizeTablet,
+					label: 'descFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: descLineHeightType,
+					label: 'descLineHeightType',
+				} }
+				lineHeight={ {
+					value: descLineHeight,
+					label: 'descLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: descLineHeightMobile,
+					label: 'descLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: descLineHeightTablet,
+					label: 'descLineHeightTablet',
+				} }
+			/>
+			<p className="uagb-setting-label">
+				{ __( 'Quote Color', 'ultimate-addons-for-gutenberg' ) }
+				<span className="components-base-control__label">
 						<span
 							className="component-color-indicator"
 							style={ { backgroundColor: descColor } }
 						></span>
 					</span>
-				</p>
-				<ColorPalette
-					value={ descColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { descColor: colorValue } )
-					}
-					allowReset
-				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Author', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: authorLoadGoogleFonts,
-						label: 'authorLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: authorFontFamily,
-						label: 'authorFontFamily',
-					} }
-					fontWeight={ {
-						value: authorFontWeight,
-						label: 'authorFontWeight',
-					} }
-					fontSubset={ {
-						value: authorFontSubset,
-						label: 'authorFontSubset',
-					} }
-					fontSizeType={ {
-						value: authorFontSizeType,
-						label: 'authorFontSizeType',
-					} }
-					fontSize={ {
-						value: authorFontSize,
-						label: 'authorFontSize',
-					} }
-					fontSizeMobile={ {
-						value: authorFontSizeMobile,
-						label: 'authorFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: authorFontSizeTablet,
-						label: 'authorFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: authorLineHeightType,
-						label: 'authorLineHeightType',
-					} }
-					lineHeight={ {
-						value: authorLineHeight,
-						label: 'authorLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: authorLineHeightMobile,
-						label: 'authorLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: authorLineHeightTablet,
-						label: 'authorLineHeightTablet',
-					} }
-				/>
-				<p className="uagb-setting-label">
-					{ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
+			</p>
+			<ColorPalette
+				value={ descColor }
+				onChange={ ( colorValue ) =>
+					setAttributes( { descColor: colorValue } )
+				}
+				allowReset
+			/>
+			<hr className="uagb-editor__separator" />
+			<h2>{ __( 'Author', 'ultimate-addons-for-gutenberg' ) }</h2>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: authorLoadGoogleFonts,
+					label: 'authorLoadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: authorFontFamily,
+					label: 'authorFontFamily',
+				} }
+				fontWeight={ {
+					value: authorFontWeight,
+					label: 'authorFontWeight',
+				} }
+				fontSubset={ {
+					value: authorFontSubset,
+					label: 'authorFontSubset',
+				} }
+				fontSizeType={ {
+					value: authorFontSizeType,
+					label: 'authorFontSizeType',
+				} }
+				fontSize={ {
+					value: authorFontSize,
+					label: 'authorFontSize',
+				} }
+				fontSizeMobile={ {
+					value: authorFontSizeMobile,
+					label: 'authorFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: authorFontSizeTablet,
+					label: 'authorFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: authorLineHeightType,
+					label: 'authorLineHeightType',
+				} }
+				lineHeight={ {
+					value: authorLineHeight,
+					label: 'authorLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: authorLineHeightMobile,
+					label: 'authorLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: authorLineHeightTablet,
+					label: 'authorLineHeightTablet',
+				} }
+			/>
+			<p className="uagb-setting-label">
+				{ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
+				<span className="components-base-control__label">
 						<span
 							className="component-color-indicator"
 							style={ { backgroundColor: authorColor } }
 						></span>
 					</span>
-				</p>
-				<ColorPalette
-					value={ authorColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { authorColor: colorValue } )
-					}
-					allowReset
-				/>
+			</p>
+			<ColorPalette
+				value={ authorColor }
+				onChange={ ( colorValue ) =>
+					setAttributes( { authorColor: colorValue } )
+				}
+				allowReset
+			/>
 
-				{ imageControls }
-			</PanelBody>
-		</>
+			{ imageControls }
+		</PanelBody>
 	);
 
 	const twitterSettings = (
@@ -847,298 +1286,6 @@ const Settings = ( props ) => {
 		</PanelBody>
 	);
 
-	const borderSettings = (
-		<>
-			<h2>
-				{ __(
-					'Modern Layout - Styling',
-					'ultimate-addons-for-gutenberg'
-				) }
-			</h2>
-			<SelectControl
-				label={ __(
-					'Quote Border Style',
-					'ultimate-addons-for-gutenberg'
-				) }
-				value={ borderStyle }
-				onChange={ ( value ) =>
-					setAttributes( { borderStyle: value } )
-				}
-				options={ [
-					{
-						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'solid',
-						label: __( 'Solid', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'dotted',
-						label: __( 'Dotted', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'dashed',
-						label: __( 'Dashed', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'double',
-						label: __( 'Double', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'groove',
-						label: __( 'Groove', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'inset',
-						label: __( 'Inset', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'outset',
-						label: __( 'Outset', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'ridge',
-						label: __( 'Ridge', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
-			{ 'none' != borderStyle && (
-				<RangeControl
-					label={ __(
-						'Thickness (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderWidth }
-					onChange={ ( value ) =>
-						setAttributes( { borderWidth: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-			) }
-		</>
-	);
-
-	const quoteSettings = (
-		<>
-			<h2>
-				{ __(
-					'Quotation Layout - Styling',
-					'ultimate-addons-for-gutenberg'
-				) }
-			</h2>
-			<TabPanel
-				className="uagb-size-type-field-tabs"
-				activeClass="active-tab"
-				tabs={ [
-					{
-						name: 'desktop',
-						title: <Dashicon icon="desktop" />,
-						className: 'uagb-desktop-tab uagb-responsive-tabs',
-					},
-					{
-						name: 'tablet',
-						title: <Dashicon icon="tablet" />,
-						className: 'uagb-tablet-tab uagb-responsive-tabs',
-					},
-					{
-						name: 'mobile',
-						title: <Dashicon icon="smartphone" />,
-						className: 'uagb-mobile-tab uagb-responsive-tabs',
-					},
-				] }
-			>
-				{ ( tab ) => {
-					let tabout;
-
-					if ( 'mobile' === tab.name ) {
-						tabout = (
-							<>
-								{ quoteSizeTypeControls }
-								<RangeControl
-									label={ __(
-										'Quote Icon Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quoteSizeMobile }
-									onChange={ ( value ) =>
-										setAttributes( {
-											quoteSizeMobile: value,
-										} )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					} else if ( 'tablet' === tab.name ) {
-						tabout = (
-							<>
-								{ quoteSizeTypeControls }
-								<RangeControl
-									label={ __(
-										'Quote Icon Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quoteSizeTablet }
-									onChange={ ( value ) =>
-										setAttributes( {
-											quoteSizeTablet: value,
-										} )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					} else {
-						tabout = (
-							<>
-								{ quoteSizeTypeControls }
-								<RangeControl
-									label={ __(
-										'Quote Icon Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quoteSize }
-									onChange={ ( value ) =>
-										setAttributes( { quoteSize: value } )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					}
-
-					return <div>{ tabout }</div>;
-				} }
-			</TabPanel>
-			<TabPanel
-				className="uagb-size-type-field-tabs"
-				activeClass="active-tab"
-				tabs={ [
-					{
-						name: 'desktop',
-						title: <Dashicon icon="desktop" />,
-						className: 'uagb-desktop-tab uagb-responsive-tabs',
-					},
-					{
-						name: 'tablet',
-						title: <Dashicon icon="tablet" />,
-						className: 'uagb-tablet-tab uagb-responsive-tabs',
-					},
-					{
-						name: 'mobile',
-						title: <Dashicon icon="smartphone" />,
-						className: 'uagb-mobile-tab uagb-responsive-tabs',
-					},
-				] }
-			>
-				{ ( tab ) => {
-					let tabout;
-
-					if ( 'mobile' === tab.name ) {
-						tabout = (
-							<>
-								{ quotePaddingControls }
-								<RangeControl
-									label={ __(
-										'Background Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quotePaddingMobile }
-									onChange={ ( value ) =>
-										setAttributes( {
-											quotePaddingMobile: value,
-										} )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					} else if ( 'tablet' === tab.name ) {
-						tabout = (
-							<>
-								{ quotePaddingControls }
-								<RangeControl
-									label={ __(
-										'Background Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quotePaddingTablet }
-									onChange={ ( value ) =>
-										setAttributes( {
-											quotePaddingTablet: value,
-										} )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					} else {
-						tabout = (
-							<>
-								{ quotePaddingControls }
-								<RangeControl
-									label={ __(
-										'Background Size',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ quotePadding }
-									onChange={ ( value ) =>
-										setAttributes( { quotePadding: value } )
-									}
-									min={ 0 }
-									max={ 500 }
-									beforeIcon="editor-textcolor"
-									allowReset
-									initialPosition={ 30 }
-								/>
-							</>
-						);
-					}
-
-					return <div>{ tabout }</div>;
-				} }
-			</TabPanel>
-			{ quoteBgColor && (
-				<RangeControl
-					label={ __(
-						'Quote Icon Border Radius (%)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ quoteBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { quoteBorderRadius: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					allowReset
-				/>
-			) }
-		</>
-	);
-
 	const imageSizeOptions = [
 		{
 			value: 'thumbnail',
@@ -1162,128 +1309,6 @@ const Settings = ( props ) => {
 			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
 		}
 	}
-
-	// Image controls.
-	const imageControls = (
-		<>
-			<hr className="uagb-editor__separator" />
-			<BaseControl
-				id="blockquote-image-controls"
-				className="editor-bg-image-control"
-				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
-			>
-				<MediaUpload
-					title={ __(
-						'Select Image',
-						'ultimate-addons-for-gutenberg'
-					) }
-					onSelect={ onSelectImage }
-					allowedTypes={ [ 'image' ] }
-					value={ authorImage }
-					render={ ( { open } ) => (
-						<Button isSecondary onClick={ open }>
-							{ imageName }
-						</Button>
-					) }
-				/>
-				{ authorImage &&
-					authorImage.url !== 'null' &&
-					authorImage.url !== '' && (
-						<Button
-							className="uagb-rm-btn"
-							onClick={ onRemoveImage }
-							isLink
-							isDestructive
-						>
-							{ __(
-								'Remove Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</Button>
-					) }
-			</BaseControl>
-			{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<>
-						<SelectControl
-							label={ __(
-								'Author Image Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ authorImgPosition }
-							onChange={ ( value ) =>
-								setAttributes( { authorImgPosition: value } )
-							}
-							options={ [
-								{
-									value: 'left',
-									label: __(
-										'Left',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'right',
-									label: __(
-										'Right',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'top',
-									label: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-						<SelectControl
-							label={ __(
-								'Author Image Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							options={ imageSizeOptions }
-							value={ authorImageSize }
-							onChange={ ( value ) =>
-								setAttributes( { authorImageSize: value } )
-							}
-						/>
-						<RangeControl
-							label={ __(
-								'Author Image Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ authorImageWidth }
-							onChange={ ( value ) =>
-								setAttributes( { authorImageWidth: value } )
-							}
-							min={ 0 }
-							max={ 500 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __(
-								'Author Image Rounded Corners',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ authorImgBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( {
-									authorImgBorderRadius: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							beforeIcon=""
-							allowReset
-						/>
-					</>
-				) }
-		</>
-	);
 
 	const colorSettings = (
 		<>
@@ -1563,33 +1588,6 @@ const Settings = ( props ) => {
 			) }
 		</>
 	);
-
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		const { setAttributes } = props;
-
-		setAttributes( { authorImage: null } );
-	};
-
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
-
-		if ( ! media || ! media.url ) {
-			setAttributes( { authorImage: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' != media.type ) {
-			return;
-		}
-
-		setAttributes( { authorImage: media } );
-	};
 
 	const quoteSizeTypeControls = (
 		<ButtonGroup
