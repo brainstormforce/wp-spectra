@@ -290,8 +290,9 @@ class UAGB_Init_Blocks {
 	 */
 	public function block_assets() {
 
-		if ( false === UAGB_Frontend::$uag_flag ) {
-			return;
+		/* In editor, we don't check uag-flag condition */
+		if ( ! is_admin() && false === UAGB_Frontend::$uag_flag ) {
+				return;
 		}
 
 		if ( is_rtl() ) {
@@ -390,7 +391,7 @@ class UAGB_Init_Blocks {
 
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
 
-		$script_dep_path = UAGB_DIR . 'dist/build/blocks.asset.php';
+		$script_dep_path = UAGB_DIR . 'dist/blocks.asset.php';
 		$script_info     = file_exists( $script_dep_path )
 			? include $script_dep_path
 			: array(
@@ -402,7 +403,7 @@ class UAGB_Init_Blocks {
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
-			UAGB_URL . 'dist/build/blocks.js',
+			UAGB_URL . 'dist/blocks.js',
 			$script_dep, // Dependencies, defined above.
 			$script_info['version'], // UAGB_VER.
 			true // Enqueue the script in the footer.
@@ -413,7 +414,7 @@ class UAGB_Init_Blocks {
 		// Styles.
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.
-			UAGB_URL . 'dist/build/blocks.css', // Block editor CSS.
+			UAGB_URL . 'dist/blocks.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
@@ -436,7 +437,7 @@ class UAGB_Init_Blocks {
 		} else {
 			wp_enqueue_style(
 				'uagb-block-css', // Handle.
-				UAGB_URL . 'dist/build/style-blocks.css', // Block style CSS.
+				UAGB_URL . 'dist/style-blocks.css', // Block style CSS.
 				array(),
 				UAGB_VER
 			);
