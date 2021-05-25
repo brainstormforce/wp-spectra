@@ -9,10 +9,10 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
 import './editor.scss';
 import './style.scss';
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 // Import registerBlockType() from wp.blocks
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Register: as Gutenberg Block.

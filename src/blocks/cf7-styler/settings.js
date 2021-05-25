@@ -6,24 +6,24 @@ import lazyLoader from '@Controls/lazy-loader';
 
 const WebfontLoader = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/cf7-styler/fontloader" */ '../../components/typography/fontloader'
+		/* webpackChunkName: "chunks/cf7-styler/fontloader" */ '@Components/typography/fontloader'
 	)
 );
 
 const TypographyControl = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/cf7-styler/typography" */ '../../components/typography'
+		/* webpackChunkName: "chunks/cf7-styler/typography" */ '@Components/typography'
 	)
 );
 
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -31,7 +31,7 @@ const {
 	ToggleControl,
 	ButtonGroup,
 	TabPanel,
-} = wp.components;
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

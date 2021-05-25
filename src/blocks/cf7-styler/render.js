@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const { SelectControl, Placeholder, Spinner } = wp.components;
+import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 
 const Render = ( props ) => {
 	props = props.parentProps;

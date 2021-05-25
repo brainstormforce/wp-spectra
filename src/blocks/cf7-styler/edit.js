@@ -9,7 +9,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/render" */ './render' )
 );
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const UAGBCF7 = ( props ) => {
 	useEffect( () => {
