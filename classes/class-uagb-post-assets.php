@@ -199,7 +199,7 @@ class UAGB_Post_Assets {
 				return true;
 			}
 
-			if ( empty( $js_file_path ) || ! file_exists( $js_file_path ) ) {
+			if ( ! empty( $js_file_path ) && ! file_exists( $js_file_path ) ) {
 				return true;
 			}
 
