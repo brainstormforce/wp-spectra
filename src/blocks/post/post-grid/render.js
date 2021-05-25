@@ -19,15 +19,16 @@ const { Placeholder, Button, Tip, Disabled } = wp.components;
 
 const { InnerBlocks } = wp.blockEditor;
 
-export default function renderPostGrid( props, state, setStateValue ) {
+const Render = ( props ) => {
+
 	const { isEditing } = state;
 
 	// Caching all Props.
-	const { attributes, latestPosts, categoriesList, deviceType } = props;
+	const { attributes, latestPosts, categoriesList, deviceType } = props.parentProps;
 
 	const renderEditMode = () => {
 		const onDone = () => {
-			const { block, setAttributes } = props;
+			const { block, setAttributes } = props.parentProps;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
@@ -36,29 +37,29 @@ export default function renderPostGrid( props, state, setStateValue ) {
 		};
 
 		const onCancel = () => {
-			const { replaceInnerBlocks } = props;
+			const { replaceInnerBlocks } = props.parentProps;
 			const { innerBlocks } = state;
-			replaceInnerBlocks( props.clientId, innerBlocks );
+			replaceInnerBlocks( props.parentProps.clientId, innerBlocks );
 			togglePreview();
 		};
 
 		const onReset = () => {
-			const { block, replaceInnerBlocks } = props;
+			const { block, replaceInnerBlocks } = props.parentProps;
 			const newBlocks = [];
 			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
 				newBlocks.push( createBlock( name, attributes ) );
 				return true;
 			} );
-			replaceInnerBlocks( props.clientId, newBlocks );
+			replaceInnerBlocks( props.parentProps.clientId, newBlocks );
 			setStateValue( { innerBlocks: block } );
 		};
 
 		const InnerBlockProps = {
-			template: props.attributes.layoutConfig,
+			template: props.parentProps.attributes.layoutConfig,
 			templateLock: false,
 			allowedBlocks: Object.keys( getBlockMap( 'uagb/post-grid' ) ),
 		};
-		if ( props.attributes.layoutConfig.length !== 0 ) {
+		if ( props.parentProps.attributes.layoutConfig.length !== 0 ) {
 			InnerBlockProps.renderAppender = false;
 		}
 		return (
@@ -117,9 +118,9 @@ export default function renderPostGrid( props, state, setStateValue ) {
 			<Disabled>
 				<Blog
 					attributes={ attributes }
-					className={ props.className }
+					className={ props.parentProps.className }
 					latestPosts={ latestPosts }
-					block_id={ props.clientId.substr( 0, 8 ) }
+					block_id={ props.parentProps.clientId.substr( 0, 8 ) }
 					categoriesList={ categoriesList }
 					deviceType={ deviceType }
 				/>
@@ -129,3 +130,5 @@ export default function renderPostGrid( props, state, setStateValue ) {
 
 	return <>{ renderViewMode() }</>;
 }
+
+export default React.memo( Settings );

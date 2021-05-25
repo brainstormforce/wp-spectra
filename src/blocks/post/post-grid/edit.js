@@ -2,13 +2,19 @@
  * BLOCK: Post Grid - Edit
  */
 import styling from '.././styling';
-import postGridSettings from './settings';
-import renderPostGrid from './render';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { compose } = wp.compose;
-const { withSelect, withDispatch } = wp.data;
-const { Placeholder, Spinner } = wp.components;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-grid/render" */ './render' )
+);
+
+import { withSelect, withDispatch } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
+import { Placeholder, Spinner } from '@wordpress/components';
 
 const postGridComponent = ( props ) => {
 	const initialState = {
@@ -52,7 +58,7 @@ const postGridComponent = ( props ) => {
 	if ( ! hasPosts ) {
 		return (
 			<>
-				{ postGridSettings( props, state, setStateValue ) }
+				<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
 
 				<Placeholder
 					icon="admin-post"
@@ -69,10 +75,10 @@ const postGridComponent = ( props ) => {
 	}
 
 	return (
-		<>
-			{ postGridSettings( props, state, setStateValue ) }
-			{ renderPostGrid( props, state, setStateValue ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

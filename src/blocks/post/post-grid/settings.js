@@ -22,17 +22,18 @@ const {
 	TextControl,
 	RadioControl,
 	Button,
-} = wp.components;
+} = '@wordpress/components';
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
 	ColorPalette,
-} = wp.blockEditor;
+} = '@wordpress/block-editor';
 
-export default function postGridSettings( props, state, setStateValue ) {
-	// Caching all Props.
+const Settings = ( props ) => {
+
+	// Caching all Props
 	const {
 		attributes,
 		setAttributes,
@@ -40,7 +41,7 @@ export default function postGridSettings( props, state, setStateValue ) {
 		categoriesList,
 		deviceType,
 		taxonomyList,
-	} = props;
+	} = props.parentProps;
 
 	// Caching all attributes.
 	const {
@@ -170,51 +171,51 @@ export default function postGridSettings( props, state, setStateValue ) {
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 	};
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};
 	const onSelectPagination = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { postPagination: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePostsPerPage = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { postsToShow: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePageLimit = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { pageLimit: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePrevText = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { paginationPrevText: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangeNextText = ( value ) => {
-		const { setAttributes } = props;
+		const { setAttributes } = props.parentProps;
 
 		setAttributes( { paginationNextText: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 
 	const togglePreview = () => {
-		setStateValue( { isEditing: ! state.isEditing } );
-		if ( ! state.isEditing ) {
+		props.setStateValue( { isEditing: ! props.state.isEditing } );
+		if ( ! props.state.isEditing ) {
 			__( 'Showing All Post Grid Layout.' );
 		}
 	};
@@ -1861,6 +1862,23 @@ export default function postGridSettings( props, state, setStateValue ) {
 		);
 	};
 
+	const inspectorControlsSettings = () => {
+
+		return (
+
+			<InspectorControls>
+				{ generalSettings() }
+				{ paginationSettings() }
+				{ imageSettings() }
+				{ contentSettings() }
+				{ readMoreLinkSettings() }
+				{ typographySettings() }
+				{ colorsSettings() }
+				{ spacingSettings() }
+			</InspectorControls>
+		);
+	}
+
 	let loadTitleGoogleFonts;
 	let loadMetaGoogleFonts;
 	let loadExcerptGoogleFonts;
@@ -1925,20 +1943,21 @@ export default function postGridSettings( props, state, setStateValue ) {
 			<WebfontLoader config={ ctaconfig }></WebfontLoader>
 		);
 	}
+
+	if ( ! hasPosts ) {
+
+		return (
+			<>
+				{ inspectorControlsSettings() }
+			</>
+		);
+	}
+
 	return (
 		<>
 			{ blockControlsSettings() }
-			<InspectorControls>
-				{ generalSettings() }
-				{ paginationSettings() }
-				{ imageSettings() }
-				{ contentSettings() }
-				{ readMoreLinkSettings() }
-				{ typographySettings() }
-				{ colorsSettings() }
-				{ spacingSettings() }
-			</InspectorControls>
-
+			{ inspectorControlsSettings() }
+			
 			{ loadTitleGoogleFonts }
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
@@ -1946,3 +1965,5 @@ export default function postGridSettings( props, state, setStateValue ) {
 		</>
 	);
 }
+
+export default React.memo( Settings );
