@@ -35,7 +35,7 @@ const {
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
-} = wp.blockEditor;
+} = '@wordpress/block-editor';
 const {
 	PanelBody,
 	SelectControl,
@@ -46,7 +46,7 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-} = wp.components;
+} = '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props.parentProps;

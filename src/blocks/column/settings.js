@@ -24,7 +24,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	PanelColorSettings,
-} = wp.blockEditor;
+} = '@wordpress/block-editor';
 
 const {
 	PanelBody,
@@ -35,7 +35,7 @@ const {
 	BaseControl,
 	TabPanel,
 	Dashicon,
-} = wp.components;
+} = '@wordpress/components';
 
 const Settings = ( props ) => {
 	const {
