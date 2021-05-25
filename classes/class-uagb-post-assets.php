@@ -278,7 +278,7 @@ class UAGB_Post_Assets {
 			'current_block_list' => $this->current_block_list,
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
-			'gfonts'             => UAGB_Helper::$gfonts,
+			'gfonts'             => $this->gfonts,
 		);
 
 		update_post_meta( $this->post_id, '_uag_page_assets', $meta_array );
@@ -781,6 +781,9 @@ class UAGB_Post_Assets {
 
 			$this->stylesheet .= $assets['css'];
 			$this->script     .= $assets['js'];
+
+			// Update fonts.
+			$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
 		}
 	}
 
