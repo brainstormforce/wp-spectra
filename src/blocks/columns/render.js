@@ -9,8 +9,7 @@ import React, { useMemo } from 'react';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 const { InnerBlocks } = '@wordpress/block-editor';
 
-const Render = props => {
-
+const Render = ( props ) => {
 	const { attributes, isSelected, className, deviceType } = props.parentProps;
 
 	const {
@@ -33,16 +32,13 @@ const Render = props => {
 	} = attributes;
 
 	const getColumnsTemplate = useMemo( () => {
+		const childColumns = [];
 
-		let childColumns = [];
-
-		for ( var i = 0; i < columns; i++ ) {
-
-			childColumns.push( [ 'uagb/column', { id: i + 1 } ] ); 
+		for ( let i = 0; i < columns; i++ ) {
+			childColumns.push( [ 'uagb/column', { id: i + 1 } ] );
 		}
 
 		return childColumns;
-
 	}, [ columns ] );
 
 	const topDividerHtml = topType != 'none' && (
@@ -78,9 +74,13 @@ const Render = props => {
 		</div>
 	);
 
-	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
+	const reverseTabletClass = reverseTablet
+		? 'uagb-columns__reverse-tablet'
+		: '';
 
-	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
+	const reverseMobileClass = reverseMobile
+		? 'uagb-columns__reverse-mobile'
+		: '';
 
 	const CustomTag = `${ tag }`;
 
@@ -126,6 +126,6 @@ const Render = props => {
 			{ bottomDividerHtml }
 		</CustomTag>
 	);
-}
+};
 
 export default React.memo( Render );

@@ -65,9 +65,13 @@ export default function save( props ) {
 		</div>
 	);
 
-	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
+	const reverseTabletClass = reverseTablet
+		? 'uagb-columns__reverse-tablet'
+		: '';
 
-	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
+	const reverseMobileClass = reverseMobile
+		? 'uagb-columns__reverse-mobile'
+		: '';
 
 	return (
 		<CustomTag

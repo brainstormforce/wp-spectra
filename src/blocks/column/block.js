@@ -2,7 +2,7 @@
  * BLOCK: Column
  */
 
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
@@ -12,7 +12,7 @@ import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = '@wordpress/blocks'
+const { registerBlockType } = '@wordpress/blocks';
 
 registerBlockType( 'uagb/column', {
 	title: uagb_blocks_info.blocks[ 'uagb/column' ].title,

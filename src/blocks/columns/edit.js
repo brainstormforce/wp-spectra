@@ -5,7 +5,7 @@
 // Import classes
 
 import styling from './styling';
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 
 import React, { useEffect, lazy, Suspense } from 'react';
@@ -21,7 +21,6 @@ const Render = lazy( () =>
 const { withSelect, useDispatch } = '@wordpress/data';
 
 const { compose } = '@wordpress/compose';
-
 
 const { __experimentalBlockVariationPicker } = '@wordpress/block-editor';
 
@@ -76,7 +75,6 @@ const columnsComponent = ( props ) => {
 	};
 
 	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
-		
 		return innerBlocksTemplate.map(
 			( [ name, attributes, innerBlocks = [] ] ) =>
 				createBlock(

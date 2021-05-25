@@ -2,15 +2,19 @@
  * BLOCK: Column - Settings.
  */
 
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const GradientSettings = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/gradient-settings" */ '@Components/gradient-settings' )
+	import(
+		/* webpackChunkName: "chunks/column/gradient-settings" */ '@Components/gradient-settings'
+	)
 );
 const Columnresponsive = lazy( () =>
-	import( /* webpackChunkName: "chunks/column/column-responsive" */ '@Components/typography/column-responsive' )
+	import(
+		/* webpackChunkName: "chunks/column/column-responsive" */ '@Components/typography/column-responsive'
+	)
 );
 
 import { __ } from '@wordpress/i18n';
@@ -33,8 +37,7 @@ const {
 	Dashicon,
 } = wp.components;
 
-const Settings = props => {
-
+const Settings = ( props ) => {
 	const {
 		attributes: {
 			topPadding,
@@ -1093,6 +1096,6 @@ const Settings = props => {
 			</InspectorControls>
 		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

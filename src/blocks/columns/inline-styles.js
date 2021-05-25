@@ -1,7 +1,7 @@
 /**
  * Returns Dynamic Generated CSS
  */
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function inlineStyles( props, isEditor ) {
 	const {

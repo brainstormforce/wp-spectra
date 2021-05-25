@@ -1,23 +1,31 @@
 /**
  * BLOCK: Columns - Settings.
  */
-import UAGB_Block_Icons from "@Controls/block-icons"
+import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const GradientSettings = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/gradient-settings" */ '@Components/gradient-settings' )
+	import(
+		/* webpackChunkName: "chunks/columns/gradient-settings" */ '@Components/gradient-settings'
+	)
 );
 const Columnresponsive = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/column-responsive" */ '@Components/typography/column-responsive' )
+	import(
+		/* webpackChunkName: "chunks/columns/column-responsive" */ '@Components/typography/column-responsive'
+	)
 );
 const OptionSelectorControl = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/option-selector-control" */ '@Components/option-selector-control' )
+	import(
+		/* webpackChunkName: "chunks/columns/option-selector-control" */ '@Components/option-selector-control'
+	)
 );
 const BoxShadowControl = lazy( () =>
-	import( /* webpackChunkName: "chunks/columns/box-shadow" */ '@Components/box-shadow' )
+	import(
+		/* webpackChunkName: "chunks/columns/box-shadow" */ '@Components/box-shadow'
+	)
 );
 
 const {
@@ -40,8 +48,7 @@ const {
 	Dashicon,
 } = wp.components;
 
-const Settings = props => {
-
+const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props.parentProps;
 
 	const {
@@ -2020,6 +2027,6 @@ const Settings = props => {
 			</InspectorControls>
 		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

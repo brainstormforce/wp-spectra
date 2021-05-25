@@ -3,9 +3,9 @@
  */
 
 import inlineStyles from './inline-styles';
-import hexToRgba from "@Controls/hexToRgba"
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import hexToRgba from '@Controls/hexToRgba';
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
@@ -138,7 +138,6 @@ function styling( props ) {
 	selectors[ ' > .uagb-columns__overlay' ] = {};
 
 	switch ( backgroundType ) {
-
 		case 'video':
 			selectors[ ' > .uagb-columns__overlay' ] = {
 				opacity: 1,

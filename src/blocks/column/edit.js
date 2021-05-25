@@ -16,7 +16,6 @@ const Render = lazy( () =>
 const { withSelect } = '@wordpress/data';
 
 const columnComponent = ( props ) => {
-	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 

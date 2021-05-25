@@ -6,8 +6,7 @@ import classnames from 'classnames';
 
 const { InnerBlocks } = '@wordpress/block-editor';
 
-const Render = props  => {
-
+const Render = ( props ) => {
 	const {
 		attributes: { align, backgroundType, alignMobile, alignTablet },
 		deviceType,
@@ -17,8 +16,7 @@ const Render = props  => {
 
 	const active = isSelected ? 'active' : 'not-active';
 
-	const alignClass =
-		'center' == align ? '' : `uagb-column__align-${ align }`;
+	const alignClass = 'center' == align ? '' : `uagb-column__align-${ align }`;
 	const alignClassMobile =
 		'' == alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
 	const alignClassTablet =
@@ -42,6 +40,6 @@ const Render = props  => {
 			<InnerBlocks templateLock={ false } />
 		</div>
 	);
-}
+};
 
 export default React.memo( Render );

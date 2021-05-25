@@ -2,10 +2,9 @@
  * Returns Dynamic Generated CSS
  */
 
- import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function inlineStyles( props, isEditor ) {
-
 	const {
 		backgroundColor,
 		backgroundOpacity,
@@ -31,7 +30,6 @@ function inlineStyles( props, isEditor ) {
 	const style = {};
 
 	switch ( backgroundType ) {
-  
 		case 'image':
 			if ( 'color' == overlayType ) {
 				style.opacity =
@@ -45,7 +43,7 @@ function inlineStyles( props, isEditor ) {
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
 						: '';
-	
+
 				if ( 'linear' === gradientOverlayType ) {
 					style[
 						'background-image'
@@ -75,16 +73,16 @@ function inlineStyles( props, isEditor ) {
 					'background-image'
 				] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 			}
-		break;
+			break;
 		case 'color':
 			style.opacity =
-			typeof backgroundOpacity !== 'undefined'
-				? backgroundOpacity / 100
-				: '';
+				typeof backgroundOpacity !== 'undefined'
+					? backgroundOpacity / 100
+					: '';
 			style[ 'background-color' ] = backgroundColor;
-		break;
+			break;
 	}
-	
+
 	style[ 'border-radius' ] = generateCSSUnit( borderRadius, 'px' );
 
 	return style;
