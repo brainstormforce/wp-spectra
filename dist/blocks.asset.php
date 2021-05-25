@@ -1,4 +1,7 @@
-<?php return array(
-	'dependencies' => array( 'react', 'react-dom', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n', 'wp-polyfill' ),
-	'version'      => '76f9b2eca52bfbf48a5a8c51f589a444',
+<?php
+// @codingStandardsIgnoreStart
+return array(
+	'dependencies' => array( 'react', 'react-dom', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-i18n', 'wp-polyfill' ),
+	'version'      => '5dc15b65e3878b648e5e7cff7b8a4071',
 );
+// @codingStandardsIgnoreEnd
