@@ -5,18 +5,18 @@
  * which makes it higher in priority.
  */
 
-.uagb-section__wrap:before {
-	content: '';
+.uagb-section__wrap::before {
 	position: absolute;
-	border: 1px dashed #03ddff;
 	top: -1px;
 	right: -1px;
 	bottom: -1px;
 	left: -1px;
 	z-index: 0;
- }
+	border: 1px dashed #03ddff;
+	content: "";
+}
 
-.uagb-section__edit-active.uagb-section__wrap:before {
+.uagb-section__edit-active.uagb-section__wrap::before {
 	border-color: #035cff;
 }
 
@@ -31,6 +31,6 @@
 }
 
 .editor-block-list__layout .editor-block-list__block[data-align="full"][data-type="uagb/section"] {
-    margin-left: 0;
-    margin-right: 0;
+	margin-right: 0;
+	margin-left: 0;
 }
