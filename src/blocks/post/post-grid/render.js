@@ -13,15 +13,15 @@ import {
 } from '.././function';
 
 import { __ } from '@wordpress/i18n';
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
-const { Placeholder, Button, Tip, Disabled } = wp.components;
+import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 
-	const { isEditing } = state;
+	const { isEditing } = props.state;
 
 	// Caching all Props.
 	const { attributes, latestPosts, categoriesList, deviceType } = props.parentProps;
@@ -32,13 +32,13 @@ const Render = ( props ) => {
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
-			setStateValue( { innerBlocks: block } );
+			props.setStateValue( { innerBlocks: block } );
 			togglePreview();
 		};
 
 		const onCancel = () => {
 			const { replaceInnerBlocks } = props.parentProps;
-			const { innerBlocks } = state;
+			const { innerBlocks } = props.state;
 			replaceInnerBlocks( props.parentProps.clientId, innerBlocks );
 			togglePreview();
 		};
@@ -51,7 +51,7 @@ const Render = ( props ) => {
 				return true;
 			} );
 			replaceInnerBlocks( props.parentProps.clientId, newBlocks );
-			setStateValue( { innerBlocks: block } );
+			props.setStateValue( { innerBlocks: block } );
 		};
 
 		const InnerBlockProps = {
@@ -131,4 +131,4 @@ const Render = ( props ) => {
 	return <>{ renderViewMode() }</>;
 }
 
-export default React.memo( Settings );
+export default React.memo( Render );

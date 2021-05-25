@@ -17,6 +17,7 @@ import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const postGridComponent = ( props ) => {
+	
 	const initialState = {
 		isEditing: false,
 		innerBlocks: [],
@@ -77,7 +78,7 @@ const postGridComponent = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
-			<Render parentProps={ props } />
+			<Render parentProps={ props } state={ state } setStateValue={ setStateValue } />
 		</Suspense>
 	);
 };

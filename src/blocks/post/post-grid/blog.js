@@ -81,5 +81,5 @@ const Blog = ( props ) => {
 		</div>
 	);
 };
+export default React.memo( Blog );
 
-export default Blog;

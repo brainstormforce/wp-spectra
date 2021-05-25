@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 
 const MAX_POSTS_COLUMNS = 8;
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -22,14 +22,14 @@ const {
 	TextControl,
 	RadioControl,
 	Button,
-} = '@wordpress/components';
+} from '@wordpress/components';
 
-const {
+import {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
 	ColorPalette,
-} = '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 
