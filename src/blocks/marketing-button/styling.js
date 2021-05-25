@@ -75,8 +75,8 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const icon_color = '' == iconColor ? titleColor : iconColor;
-	const icon_hover_color =
+	const setIconColor = '' == iconColor ? titleColor : iconColor;
+	const setIconHoverColor =
 		'' == iconHoverColor ? titleHoverColor : iconHoverColor;
 
 	selectors = {
@@ -94,7 +94,7 @@ function styling( props ) {
 			color: titleColor,
 		},
 		' .uagb-marketing-btn__icon-wrap svg': {
-			fill: icon_color,
+			fill: setIconColor,
 		},
 		' .uagb-marketing-btn__icon-wrap': {
 			width: generateCSSUnit( iconFontSize, iconFontSizeType ),
@@ -117,7 +117,7 @@ function styling( props ) {
 			color: prefixHoverColor,
 		},
 		' .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg': {
-			fill: icon_hover_color,
+			fill: setIconHoverColor,
 		},
 		' .uagb-marketing-btn__link': {
 			'padding-left': generateCSSUnit( hPadding, paddingType ),
@@ -174,11 +174,11 @@ function styling( props ) {
 		}
 	}
 
-	const margin_type =
+	const marginType =
 		'after' == iconPosition ? 'margin-left' : 'margin-right';
 
 	selectors[ ' .uagb-marketing-btn__icon-wrap' ][
-		margin_type
+		marginType
 	] = generateCSSUnit( iconSpace, 'px' );
 
 	tabletSelectors = {
@@ -249,23 +249,23 @@ function styling( props ) {
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
+	stylingCss += generateCSS(
 		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
+	stylingCss += generateCSS(
 		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
