@@ -548,9 +548,9 @@ const Settings = ( props ) => {
 						{ ( tabName ) => {
 							let tabout;
 							if ( 'normal' === tabName.name ) {
-								tabout = ctaNormalSettings;
+								tabout = ctaNormalSettings();
 							} else {
-								tabout = ctaHoverSettings;
+								tabout = ctaHoverSettings();
 							}
 							return <div>{ tabout }</div>;
 						} }
