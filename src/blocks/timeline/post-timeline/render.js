@@ -17,7 +17,10 @@ import { __ } from '@wordpress/i18n';
 
 import { Placeholder, Spinner } from '@wordpress/components';
 
-export default function renderPostTimeline( props ) {
+const Render = ( props ) => {
+
+	props = props.parentProps;
+
 	const { attributes, className, deviceType } = props;
 
 	const { displayPostLink } = attributes;
@@ -40,21 +43,19 @@ export default function renderPostTimeline( props ) {
 
 		if ( ! hasPosts ) {
 			return (
-				<>
-					<Placeholder
-						icon="admin-post"
-						label={
-							uagb_blocks_info.blocks[ 'uagb/post-timeline' ]
-								.title
-						}
-					>
-						{ ! Array.isArray( latestPosts ) ? (
-							<Spinner />
-						) : (
-							__( 'No posts found.' )
-						) }
-					</Placeholder>
-				</>
+				<Placeholder
+					icon="admin-post"
+					label={
+						uagb_blocks_info.blocks[ 'uagb/post-timeline' ]
+							.title
+					}
+				>
+					{ ! Array.isArray( latestPosts ) ? (
+						<Spinner />
+					) : (
+						__( 'No posts found.' )
+					) }
+				</Placeholder>
 			);
 		}
 		// Removing posts from display should be instant.
@@ -63,21 +64,21 @@ export default function renderPostTimeline( props ) {
 				? latestPosts.slice( 0, postsToShow )
 				: latestPosts;
 
-		let content_align_class = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
-		let day_align_class = DayAlignClass( props.attributes, 0 ); // Get classname for day alignment.
-		const data_copy = [ ...latestPosts ];
-		let display_inner_date = false;
+		let contentAlignClass = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
+		let dayAlignClass = DayAlignClass( props.attributes, 0 ); // Get classname for day alignment.
+		const dataCopy = [ ...latestPosts ];
+		let displayInnerDate = false;
 
 		return (
 			<div className="uagb-timeline__days">
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment == 'center' ) {
-						display_inner_date = true;
-						content_align_class = AlignClass(
+						displayInnerDate = true;
+						contentAlignClass = AlignClass(
 							props.attributes,
 							index
 						);
-						day_align_class = DayAlignClass(
+						dayAlignClass = DayAlignClass(
 							props.attributes,
 							index
 						);
@@ -88,10 +89,10 @@ export default function renderPostTimeline( props ) {
 							className="uagb-timeline__field uagb-timeline__field-wrap"
 							key={ index }
 						>
-							<div className={ content_align_class }>
+							<div className={ contentAlignClass }>
 								{ <Icon attributes={ attributes } /> }
 
-								<div className={ day_align_class }>
+								<div className={ dayAlignClass }>
 									<div className="uagb-timeline__events-inner-new">
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
 											{
@@ -143,7 +144,7 @@ export default function renderPostTimeline( props ) {
 										</div>
 									</div>
 								</div>
-								{ display_inner_date && (
+								{ displayInnerDate && (
 									<div className="uagb-timeline__date-new">
 										{
 											<PostDate
@@ -162,10 +163,10 @@ export default function renderPostTimeline( props ) {
 		);
 	};
 
-	let cta_enable = '';
+	let ctaEnable = '';
 
 	if ( displayPostLink ) {
-		cta_enable = 'uagb_timeline__cta-enable';
+		ctaEnable = 'uagb_timeline__cta-enable';
 	}
 
 	return (
@@ -176,7 +177,7 @@ export default function renderPostTimeline( props ) {
 				'uagb-timeline__content-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId }`,
-				cta_enable,
+				ctaEnable,
 				...ContentTmClasses( props.attributes )
 			) }
 		>
@@ -189,3 +190,4 @@ export default function renderPostTimeline( props ) {
 		</div>
 	);
 }
+export default React.memo( Render );

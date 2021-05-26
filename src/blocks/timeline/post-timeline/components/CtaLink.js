@@ -22,4 +22,4 @@ const CtaLink = ( props ) => {
 	return null;
 };
 
-export default CtaLink;
+export default React.memo( CtaLink );

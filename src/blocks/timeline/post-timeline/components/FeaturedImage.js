@@ -1,6 +1,7 @@
 import { decodeEntities } from '@wordpress/html-entities';
 
 const FeaturedImage = ( props ) => {
+	
 	const { post, attributes } = props;
 
 	if (
@@ -38,4 +39,4 @@ const FeaturedImage = ( props ) => {
 	return null;
 };
 
-export default FeaturedImage;
+export default React.memo( FeaturedImage );

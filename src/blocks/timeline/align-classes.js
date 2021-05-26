@@ -7,20 +7,20 @@
  * @param index_val
  */
 function AlignClass( attributes, index_val ) {
-	let align_class = '';
+	let alignClass = '';
 	if ( 'left' == attributes.timelinAlignment ) {
-		align_class = 'uagb-timeline__widget uagb-timeline__left';
+		alignClass = 'uagb-timeline__widget uagb-timeline__left';
 	} else if ( 'right' == attributes.timelinAlignment ) {
-		align_class = 'uagb-timeline__widget uagb-timeline__right';
+		alignClass = 'uagb-timeline__widget uagb-timeline__right';
 	} else if ( 'center' == attributes.timelinAlignment ) {
 		if ( index_val % 2 == '0' ) {
-			align_class = 'uagb-timeline__widget uagb-timeline__right';
+			alignClass = 'uagb-timeline__widget uagb-timeline__right';
 		} else {
-			align_class = 'uagb-timeline__widget uagb-timeline__left';
+			alignClass = 'uagb-timeline__widget uagb-timeline__left';
 		}
 	}
 
-	return [ align_class ];
+	return [ alignClass ];
 }
 
 export default AlignClass;

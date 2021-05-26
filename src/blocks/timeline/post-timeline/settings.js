@@ -1,10 +1,21 @@
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 // Import all of our Text Options requirements.
-import TypographyControl from '../../../components/typography';
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../../components/typography/fontloader';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-timeline/typography" */ '@Components/typography'
+	)
+);
+// Import all of our Text Options requirements.
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-timeline/fontloader" */ '@Components/typography/fontloader'
+	)
+)
+
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
@@ -25,9 +36,12 @@ import {
 	PanelColorSettings,
 } from '@wordpress/block-editor';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
-export default function postTimelineSettings( props ) {
+const Settings = ( props ) => {
+
+	props = props.parentProps;
+
 	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
 
 	const {
@@ -269,8 +283,8 @@ export default function postTimelineSettings( props ) {
 
 	const today = new Date();
 	// Parameters for FontIconPicker.
-	const icon_props = {
-		icons: svg_icons,
+	const iconProps = {
+		icons: svgIcons,
 		value: icon,
 		onChange: getTimelineicon,
 		isMulti: false,
@@ -1095,7 +1109,7 @@ export default function postTimelineSettings( props ) {
 				title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<FontIconPicker { ...icon_props } />
+				<FontIconPicker { ...iconProps } />
 				<RangeControl
 					label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
 					value={ iconSize }
@@ -1586,7 +1600,7 @@ export default function postTimelineSettings( props ) {
 		);
 	};
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
 				{ querySettings() }
@@ -1604,6 +1618,8 @@ export default function postTimelineSettings( props ) {
 			{ loadDateGoogleFonts }
 			{ loadAuthorGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</>
+		</Suspense>
 	);
 }
+
+export default React.memo( Settings );

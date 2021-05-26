@@ -1,5 +1,7 @@
 import { dateI18n, format } from '@wordpress/date';
+
 const PostDate = ( props ) => {
+
 	const { post, attributes, dateClass } = props;
 
 	return (
@@ -19,4 +21,4 @@ const PostDate = ( props ) => {
 	);
 };
 
-export default PostDate;
+export default React.memo( PostDate );

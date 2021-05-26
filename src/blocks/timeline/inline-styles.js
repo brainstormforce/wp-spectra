@@ -100,7 +100,7 @@ function contentTimelineStyle( props ) {
 		ctaBackground,
 	} = props.attributes;
 
-	const resp_selectors = 'left';
+	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading': {
@@ -293,7 +293,7 @@ function contentTimelineStyle( props ) {
 	};
 
 	/* Generate Responsive CSS for timeline */
-	const tablet_selectors = {
+	const tabletSelectors = {
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
@@ -349,31 +349,31 @@ function contentTimelineStyle( props ) {
 			'margin-right': 0,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-new': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-right-color': backgroundColor,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 
 		// CTA AUTHOR.
@@ -406,7 +406,7 @@ function contentTimelineStyle( props ) {
 		},
 	};
 
-	const mobile_selectors = {
+	const mobileSelectors = {
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
@@ -468,31 +468,31 @@ function contentTimelineStyle( props ) {
 			'margin-left': generateCSSUnit( horizontalSpace, 'px' ),
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-new': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-right-color': backgroundColor,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__author': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__link_parent': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a': {
-			'text-align': resp_selectors,
+			'text-align': respSelectors,
 		},
 
 		// CTA  AUthor
@@ -525,26 +525,26 @@ function contentTimelineStyle( props ) {
 		},
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default contentTimelineStyle;

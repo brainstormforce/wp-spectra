@@ -4,25 +4,25 @@
 
 function ContentTmClasses( attributes ) {
 	/* Arrow position */
-	let arrow_align_class = 'uagb-timeline__arrow-top' + ' ';
+	let arrowAlignClass = 'uagb-timeline__arrow-top' + ' ';
 	if ( attributes.arrowlinAlignment == 'center' ) {
-		arrow_align_class = 'uagb-timeline__arrow-center' + ' ';
+		arrowAlignClass = 'uagb-timeline__arrow-center' + ' ';
 	} else if ( attributes.arrowlinAlignment == 'bottom' ) {
-		arrow_align_class = 'uagb-timeline__arrow-bottom' + ' ';
+		arrowAlignClass = 'uagb-timeline__arrow-bottom' + ' ';
 	}
 
 	/* Alignmnet */
-	let align_class = 'uagb-timeline__center-block ' + ' ';
+	let alignClass = 'uagb-timeline__center-block ' + ' ';
 	if ( attributes.timelinAlignment == 'left' ) {
-		align_class = 'uagb-timeline__left-block' + ' ';
+		alignClass = 'uagb-timeline__left-block' + ' ';
 	} else if ( attributes.timelinAlignment == 'right' ) {
-		align_class = 'uagb-timeline__right-block' + ' ';
+		alignClass = 'uagb-timeline__right-block' + ' ';
 	}
-	align_class += arrow_align_class + '';
-	align_class +=
+	alignClass += arrowAlignClass + '';
+	alignClass +=
 		'uagb-timeline__responsive-' + attributes.stack + ' uagb-timeline';
 
-	return [ align_class ];
+	return [ alignClass ];
 }
 
 export default ContentTmClasses;

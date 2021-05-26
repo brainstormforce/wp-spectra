@@ -1,15 +1,22 @@
 /**
  * External dependencies
  */
-import React, { useEffect } from 'react';
-import postTimelineSettings from './settings';
-import renderPostTimeline from './render';
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-timeline/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-timeline/render" */ './render' )
+);
 
 import { withSelect } from '@wordpress/data';
 
 const $ = jQuery;
 
 const postTimelineComponent = ( props ) => {
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store lient id.
@@ -24,9 +31,9 @@ const postTimelineComponent = ( props ) => {
 		} );
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute( 'id', 'uagb-timeline-style-' + props.clientId );
-		document.head.appendChild( $style );
+		const style = document.createElement( 'style' );
+		style.setAttribute( 'id', 'uagb-timeline-style-' + props.clientId );
+		document.head.appendChild( style );
 	}, [] );
 
 	useEffect( () => {
@@ -42,46 +49,47 @@ const postTimelineComponent = ( props ) => {
 
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentBack = ( id ) => {
+
 		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
-		const tm_item = timeline.find( '.uagb-timeline' );
-		const line_inner = timeline.find( '.uagb-timeline__line__inner' );
-		const line_outer = timeline.find( '.uagb-timeline__line' );
-		const $icon_class = timeline.find( '.uagb-timeline__marker' );
-		if ( $icon_class.length > 0 ) {
-			const $card_last = timeline.find(
+		const tmItem = timeline.find( '.uagb-timeline' );
+		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
+		const lineOuter = timeline.find( '.uagb-timeline__line' );
+		const iconClass = timeline.find( '.uagb-timeline__marker' );
+		if ( iconClass.length > 0 ) {
+			const cardLast = timeline.find(
 				'.uagb-timeline__field:last-child'
 			);
-			const timeline_start_icon = $icon_class.first().position();
-			const timeline_end_icon = $icon_class.last().position();
-			line_outer.css( 'top', timeline_start_icon.top );
+			const timelineStartIcon = iconClass.first().position();
+			const timelineEndIcon = iconClass.last().position();
+			lineOuter.css( 'top', timelineStartIcon.top );
 
-			const timeline_card_height = $card_last.height();
-			const last_item_top =
-				$card_last.offset().top - tm_item.offset().top;
-			let $last_item, parent_top;
+			const timelineCardHeight = cardLast.height();
+			const lastItemTop =
+				cardLast.offset().top - tmItem.offset().top;
+			let lastItem, parentTop;
 			const $document = $( document );
 
-			if ( tm_item.hasClass( 'uagb-timeline__arrow-center' ) ) {
-				line_outer.css( 'bottom', timeline_end_icon.top );
+			if ( tmItem.hasClass( 'uagb-timeline__arrow-center' ) ) {
+				lineOuter.css( 'bottom', timelineEndIcon.top );
 
-				parent_top = last_item_top - timeline_start_icon.top;
-				$last_item = parent_top + timeline_end_icon.top;
-			} else if ( tm_item.hasClass( 'uagb-timeline__arrow-top' ) ) {
-				const top_height = timeline_card_height - timeline_end_icon.top;
-				line_outer.css( 'bottom', top_height );
+				parentTop = lastItemTop - timelineStartIcon.top;
+				lastItem = parentTop + timelineEndIcon.top;
+			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-top' ) ) {
+				const topHeight = timelineCardHeight - timelineEndIcon.top;
+				lineOuter.css( 'bottom', topHeight );
 
-				$last_item = last_item_top;
-			} else if ( tm_item.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
-				const bottom_height =
-					timeline_card_height - timeline_end_icon.top;
-				line_outer.css( 'bottom', bottom_height );
+				lastItem = lastItemTop;
+			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
+				const bottomHeight =
+					timelineCardHeight - timelineEndIcon.top;
+				lineOuter.css( 'bottom', bottomHeight );
 
-				parent_top = last_item_top - timeline_start_icon.top;
-				$last_item = parent_top + timeline_end_icon.top;
+				parentTop = lastItemTop - timelineStartIcon.top;
+				lastItem = parentTop + timelineEndIcon.top;
 			}
 
 			let num = 0;
-			const elementEnd = $last_item + 20;
+			const elementEnd = lastItem + 20;
 
 			const connectorHeight =
 				3 * timeline.find( '.uagb-timeline__marker:first' ).height();
@@ -89,11 +97,11 @@ const postTimelineComponent = ( props ) => {
 				document.documentElement.clientHeight + connectorHeight;
 			const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 
-			var elementPos = tm_item.offset().top;
+			var elementPos = tmItem.offset().top;
 
-			const new_elementPos = elementPos + timeline_start_icon.top;
+			const newElementPos = elementPos + timelineStartIcon.top;
 
-			let photoViewportOffsetTop = new_elementPos - $document.scrollTop();
+			let photoViewportOffsetTop = newElementPos - $document.scrollTop();
 
 			if ( photoViewportOffsetTop < 0 ) {
 				photoViewportOffsetTop = Math.abs( photoViewportOffsetTop );
@@ -106,26 +114,26 @@ const postTimelineComponent = ( props ) => {
 					viewportHeightHalf + Math.abs( photoViewportOffsetTop ) <
 					elementEnd
 				) {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
 					);
 				} else if (
 					photoViewportOffsetTop + viewportHeightHalf >=
 					elementEnd
 				) {
-					line_inner.height( elementEnd );
+					lineInner.height( elementEnd );
 				}
 			} else if (
 				photoViewportOffsetTop + viewportHeightHalf <
 				elementEnd
 			) {
 				if ( 0 > photoViewportOffsetTop ) {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
 					++num;
 				} else {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
 					);
 				}
@@ -133,48 +141,48 @@ const postTimelineComponent = ( props ) => {
 				photoViewportOffsetTop + viewportHeightHalf >=
 				elementEnd
 			) {
-				line_inner.height( elementEnd );
+				lineInner.height( elementEnd );
 			}
 
 			//For changing icon background color and icon color.
-			let timeline_icon_pos, timeline_card_pos;
+			let timelineIconPos, timelineCardPos;
 			var elementPos, elementCardPos;
-			let timeline_icon_top, timeline_card_top;
-			const timeline_icon = timeline.find( '.uagb-timeline__marker' ),
-				animate_border = timeline.find( '.uagb-timeline__field-wrap' );
+			let timelineIconTop, timelineCardTop;
+			const timelineIcon = timeline.find( '.uagb-timeline__marker' ),
+				animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
 
-			for ( let i = 0; i < timeline_icon.length; i++ ) {
-				timeline_icon_pos = $( timeline_icon[ i ] ).offset().top;
-				timeline_card_pos = $( animate_border[ i ] ).offset().top;
+			for ( let i = 0; i < timelineIcon.length; i++ ) {
+				timelineIconPos = $( timelineIcon[ i ] ).offset().top;
+				timelineCardPos = $( animateBorder[ i ] ).offset().top;
 				elementPos = timeline.offset().top;
 				elementCardPos = timeline.offset().top;
 
-				timeline_icon_top = timeline_icon_pos - $document.scrollTop();
-				timeline_card_top = timeline_card_pos - $document.scrollTop();
+				timelineIconTop = timelineIconPos - $document.scrollTop();
+				timelineCardTop = timelineCardPos - $document.scrollTop();
 
-				if ( timeline_card_top < viewportHeightHalf ) {
-					animate_border[ i ].classList.remove( 'out-view' );
-					animate_border[ i ].classList.add( 'in-view' );
+				if ( timelineCardTop < viewportHeightHalf ) {
+					animateBorder[ i ].classList.remove( 'out-view' );
+					animateBorder[ i ].classList.add( 'in-view' );
 				} else {
 					// Remove classes if element is below than half of viewport.
-					animate_border[ i ].classList.add( 'out-view' );
-					animate_border[ i ].classList.remove( 'in-view' );
+					animateBorder[ i ].classList.add( 'out-view' );
+					animateBorder[ i ].classList.remove( 'in-view' );
 				}
 
-				if ( timeline_icon_top < viewportHeightHalf ) {
+				if ( timelineIconTop < viewportHeightHalf ) {
 					// Add classes if element is above than half of viewport.
-					timeline_icon[ i ].classList.remove(
+					timelineIcon[ i ].classList.remove(
 						'uagb-timeline__out-view-icon'
 					);
-					timeline_icon[ i ].classList.add(
+					timelineIcon[ i ].classList.add(
 						'uagb-timeline__in-view-icon'
 					);
 				} else {
 					// Remove classes if element is below than half of viewport.
-					timeline_icon[ i ].classList.add(
+					timelineIcon[ i ].classList.add(
 						'uagb-timeline__out-view-icon'
 					);
-					timeline_icon[ i ].classList.remove(
+					timelineIcon[ i ].classList.remove(
 						'uagb-timeline__in-view-icon'
 					);
 				}
@@ -183,10 +191,10 @@ const postTimelineComponent = ( props ) => {
 	};
 
 	return (
-		<>
-			{ postTimelineSettings( props ) }
-			{ renderPostTimeline( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 
@@ -213,15 +221,15 @@ export default withSelect( ( select, props ) => {
 	const currentTax = allTaxonomy[ postType ];
 	const taxonomy = '';
 	let categoriesList = [];
-	let rest_base = '';
+	let restBase = '';
 
 	if ( 'undefined' !== typeof currentTax ) {
 		if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-			rest_base =
-				currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-				currentTax.taxonomy[ taxonomyType ].rest_base == null
+			restBase =
+				currentTax.taxonomy[ taxonomyType ].restBase == false ||
+				currentTax.taxonomy[ taxonomyType ].restBase == null
 					? currentTax.taxonomy[ taxonomyType ].name
-					: currentTax.taxonomy[ taxonomyType ].rest_base;
+					: currentTax.taxonomy[ taxonomyType ].restBase;
 		}
 
 		if ( '' != taxonomyType ) {
@@ -257,7 +265,7 @@ export default withSelect( ( select, props ) => {
 		}
 	}
 	if ( undefined !== categories && '' !== categories ) {
-		latestPostsQuery[ rest_base ] =
+		latestPostsQuery[ restBase ] =
 			undefined === categories || '' === categories
 				? categories
 				: category;

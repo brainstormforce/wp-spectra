@@ -1,4 +1,5 @@
 const Author = ( props ) => {
+
 	const { post, attributes } = props;
 
 	let target = '_self';
@@ -25,4 +26,4 @@ const Author = ( props ) => {
 	);
 };
 
-export default Author;
+export default React.memo( Author );

@@ -1,4 +1,5 @@
 const Excerpt = ( props ) => {
+
 	const { post, attributes } = props;
 
 	if ( attributes.displayPostExcerpt && undefined !== post.uagb_excerpt ) {
@@ -26,4 +27,4 @@ const Excerpt = ( props ) => {
 	return null;
 };
 
-export default Excerpt;
+export default React.memo( Excerpt );
