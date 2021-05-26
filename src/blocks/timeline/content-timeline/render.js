@@ -1,15 +1,17 @@
 import classnames from 'classnames';
-import times from 'lodash/times';
-import memoize from 'memize';
 import ContentTmClasses from '.././classes';
+import React, { useMemo } from 'react';
 
 import { __ } from '@wordpress/i18n';
 
-const { InnerBlocks } = '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 
-export default function renderContentTimeline( props ) {
+const Render = ( props ) => {
+
+	props = props.parentProps
+
 	// Setup the attributes.
 	const {
 		className,
@@ -17,13 +19,17 @@ export default function renderContentTimeline( props ) {
 		attributes: { tm_content, timelineItem },
 	} = props;
 
-	const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
-		return times( icon_block, ( n ) => [
-			'uagb/content-timeline-child',
-			tm_content[ n ],
-		] );
-	} );
+	const getContentTimelineTemplate = useMemo( () => {
 
+		const childTimeline = [];
+
+		for ( let i = 0; i < timelineItem; i++ ) {
+			childTimeline.push( [ 'uagb/content-timeline-child', tm_content[ i ] ] );
+		}
+
+		return childTimeline;
+	}, [ timelineItem, tm_content  ] );
+	
 	return (
 		<div
 			className={ classnames(
@@ -38,10 +44,7 @@ export default function renderContentTimeline( props ) {
 			<div className="uagb-timeline__main">
 				<div className="uagb-timeline__days">
 					<InnerBlocks
-						template={ getContentTimelineTemplate(
-							timelineItem,
-							tm_content
-						) }
+						template={ getContentTimelineTemplate }
 						templateLock={ false }
 						allowedBlocks={ ALLOWED_BLOCKS }
 					/>
@@ -53,3 +56,5 @@ export default function renderContentTimeline( props ) {
 		</div>
 	);
 }
+
+export default React.memo( Render );

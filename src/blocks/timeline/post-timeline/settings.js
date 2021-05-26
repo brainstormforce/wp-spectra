@@ -7,8 +7,8 @@ import TypographyControl from '../../../components/typography';
 import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const { dateI18n } = '@wordpress/date';
-const {
+import { dateI18n } from '@wordpress/date';
+import {
 	PanelBody,
 	QueryControls,
 	RangeControl,
@@ -16,14 +16,14 @@ const {
 	ToggleControl,
 	TabPanel,
 	TextControl,
-} = '@wordpress/components';
-const {
+} from '@wordpress/components';
+import {
 	InspectorControls,
 	ColorPalette,
 	BlockAlignmentToolbar,
 	BlockControls,
 	PanelColorSettings,
-} = '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 
 const svg_icons = Object.keys( UAGBIcon );
 

@@ -1,4 +1,4 @@
-const { dateI18n, format } = '@wordpress/date';
+import { dateI18n, format } from '@wordpress/date';
 const PostDate = ( props ) => {
 	const { post, attributes, dateClass } = props;
 

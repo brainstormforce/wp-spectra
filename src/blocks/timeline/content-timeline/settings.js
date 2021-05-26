@@ -5,36 +5,48 @@
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
-
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 // Import all of our Text Options requirements.
-import TypographyControl from '../../../components/typography';
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/content-timeline/typography" */ '@Components/typography'
+	)
+);
+// Import all of our Text Options requirements.
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/content-timeline/fontloader" */ '@Components/typography/fontloader'
+	)
+);
 
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const { dateI18n } = '@wordpress/date';
-const {
+import { dateI18n } from '@wordpress/date';
+import {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
-} = '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
 	TabPanel,
-} = '@wordpress/components';
+} from '@wordpress/components';
 
-const { select } = '@wordpress/data';
+import { select } from '@wordpress/data';
 
 const svg_icons = Object.keys( UAGBIcon );
 
-export default function contentTimelineSettings( props ) {
+const Settings = ( props ) => {
+
+	props = props.parentProps
+	
 	// Setup the attributes.
 	const {
 		setAttributes,
@@ -1032,7 +1044,7 @@ export default function contentTimelineSettings( props ) {
 		);
 	}
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
 				{ generalSettings() }
@@ -1045,6 +1057,8 @@ export default function contentTimelineSettings( props ) {
 			{ loadHeadGoogleFonts }
 			{ loadSubHeadGoogleFonts }
 			{ loadDateGoogleFonts }
-		</>
+		</Suspense>
 	);
 }
+
+export default React.memo( Settings );

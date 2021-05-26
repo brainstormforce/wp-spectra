@@ -2,12 +2,17 @@
  * BLOCK: Content Timeline.
  */
 import contentTimelineStyle from './styling';
-import contentTimelineSettings from './settings';
-import renderContentTimeline from './render';
 import { __ } from '@wordpress/i18n';
-import React, { useEffect } from 'react';
-
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select, withSelect } from '@wordpress/data';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/content-timeline/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/content-timeline/render" */ './render' )
+);
 
 const $ = jQuery;
 
@@ -43,34 +48,34 @@ const contentTimelineComponent = ( props ) => {
 		select( 'core/block-editor' )
 			.getBlocksByClientId( props.clientId )[ 0 ]
 			.innerBlocks.forEach( function ( block, key ) {
-				let align_class = '';
+				let alignClass = '';
 				if ( 'left' == block.attributes.timelinAlignment ) {
-					align_class = 'uagb-timeline__widget uagb-timeline__left';
+					alignClass = 'uagb-timeline__widget uagb-timeline__left';
 				} else if ( 'right' == block.attributes.timelinAlignment ) {
-					align_class = 'uagb-timeline__widget uagb-timeline__right';
+					alignClass = 'uagb-timeline__widget uagb-timeline__right';
 				} else if ( 'center' == block.attributes.timelinAlignment ) {
 					if ( key % 2 == '0' ) {
-						align_class =
+						alignClass =
 							'uagb-timeline__widget uagb-timeline__right';
 					} else {
-						align_class =
+						alignClass =
 							'uagb-timeline__widget uagb-timeline__left';
 					}
 				}
 
-				let day_align_class = '';
+				let dayAlignClass = '';
 				if ( 'left' == block.attributes.timelinAlignment ) {
-					day_align_class =
+					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-left';
 				} else if ( 'right' == block.attributes.timelinAlignment ) {
-					day_align_class =
+					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-right';
 				} else if ( 'center' == block.attributes.timelinAlignment ) {
 					if ( key % 2 == '0' ) {
-						day_align_class =
+						dayAlignClass =
 							'uagb-timeline__day-new uagb-timeline__day-right';
 					} else {
-						day_align_class =
+						dayAlignClass =
 							'uagb-timeline__day-new uagb-timeline__day-left';
 					}
 				}
@@ -78,13 +83,13 @@ const contentTimelineComponent = ( props ) => {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					block.clientId,
 					{
-						content_class: align_class,
+						content_class: alignClass,
 					}
 				);
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					block.clientId,
 					{
-						dayalign_class: day_align_class,
+						dayalign_class: dayAlignClass,
 					}
 				);
 			} );
@@ -107,45 +112,45 @@ const contentTimelineComponent = ( props ) => {
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentConnector = ( id ) => {
 		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
-		const tm_item = timeline.find( '.uagb-timeline' );
-		const line_inner = timeline.find( '.uagb-timeline__line__inner' );
-		const line_outer = timeline.find( '.uagb-timeline__line' );
-		const $icon_class = timeline.find( '.uagb-timeline__marker' );
-		if ( $icon_class.length > 0 ) {
-			const $card_last = timeline.find(
+		const tmItem = timeline.find( '.uagb-timeline' );
+		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
+		const lineOuter = timeline.find( '.uagb-timeline__line' );
+		const iconClass = timeline.find( '.uagb-timeline__marker' );
+		if ( iconClass.length > 0 ) {
+			const cardLast = timeline.find(
 				'.uagb-timeline__field:last-child'
 			);
-			const timeline_start_icon = $icon_class.first().position();
-			const timeline_end_icon = $icon_class.last().position();
-			line_outer.css( 'top', timeline_start_icon.top );
+			const timelineStartIcon = iconClass.first().position();
+			const timelineEndIcon = iconClass.last().position();
+			lineOuter.css( 'top', timelineStartIcon.top );
 
-			const timeline_card_height = $card_last.height();
-			const last_item_top =
-				$card_last.offset().top - tm_item.offset().top;
-			let $last_item, parent_top;
+			const timelineCardHeight = cardLast.height();
+			const lastItemTop =
+				cardLast.offset().top - tmItem.offset().top;
+			let lastItem, parent_top;
 			const $document = $( document );
 
-			if ( tm_item.hasClass( 'uagb-timeline__arrow-center' ) ) {
-				line_outer.css( 'bottom', timeline_end_icon.top );
+			if ( tmItem.hasClass( 'uagb-timeline__arrow-center' ) ) {
+				lineOuter.css( 'bottom', timelineEndIcon.top );
 
-				parent_top = last_item_top - timeline_start_icon.top;
-				$last_item = parent_top + timeline_end_icon.top;
-			} else if ( tm_item.hasClass( 'uagb-timeline__arrow-top' ) ) {
-				const top_height = timeline_card_height - timeline_end_icon.top;
-				line_outer.css( 'bottom', top_height );
+				parent_top = lastItemTop - timelineStartIcon.top;
+				lastItem = parent_top + timelineEndIcon.top;
+			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-top' ) ) {
+				const topHeight = timelineCardHeight - timelineEndIcon.top;
+				lineOuter.css( 'bottom', topHeight );
 
-				$last_item = last_item_top;
-			} else if ( tm_item.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
+				lastItem = lastItemTop;
+			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
 				const bottom_height =
-					timeline_card_height - timeline_end_icon.top;
-				line_outer.css( 'bottom', bottom_height );
+					timelineCardHeight - timelineEndIcon.top;
+				lineOuter.css( 'bottom', bottom_height );
 
-				parent_top = last_item_top - timeline_start_icon.top;
-				$last_item = parent_top + timeline_end_icon.top;
+				parent_top = lastItemTop - timelineStartIcon.top;
+				lastItem = parent_top + timelineEndIcon.top;
 			}
 
 			let num = 0;
-			const elementEnd = $last_item + 20;
+			const elementEnd = lastItem + 20;
 
 			const connectorHeight =
 				3 * timeline.find( '.uagb-timeline__marker:first' ).height();
@@ -153,11 +158,11 @@ const contentTimelineComponent = ( props ) => {
 				document.documentElement.clientHeight + connectorHeight;
 			const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 
-			const elementPos = tm_item.offset().top;
+			const elementPos = tmItem.offset().top;
 
-			const new_elementPos = elementPos + timeline_start_icon.top;
+			const newElementPos = elementPos + timelineStartIcon.top;
 
-			let photoViewportOffsetTop = new_elementPos - $document.scrollTop();
+			let photoViewportOffsetTop = newElementPos - $document.scrollTop();
 
 			if ( photoViewportOffsetTop < 0 ) {
 				photoViewportOffsetTop = Math.abs( photoViewportOffsetTop );
@@ -170,26 +175,26 @@ const contentTimelineComponent = ( props ) => {
 					viewportHeightHalf + Math.abs( photoViewportOffsetTop ) <
 					elementEnd
 				) {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
 					);
 				} else if (
 					photoViewportOffsetTop + viewportHeightHalf >=
 					elementEnd
 				) {
-					line_inner.height( elementEnd );
+					lineInner.height( elementEnd );
 				}
 			} else if (
 				photoViewportOffsetTop + viewportHeightHalf <
 				elementEnd
 			) {
 				if ( 0 > photoViewportOffsetTop ) {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
 					++num;
 				} else {
-					line_inner.height(
+					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
 					);
 				}
@@ -197,7 +202,7 @@ const contentTimelineComponent = ( props ) => {
 				photoViewportOffsetTop + viewportHeightHalf >=
 				elementEnd
 			) {
-				line_inner.height( elementEnd );
+				lineInner.height( elementEnd );
 			}
 		}
 	};
@@ -211,10 +216,10 @@ const contentTimelineComponent = ( props ) => {
 	}
 
 	return (
-		<>
-			{ contentTimelineSettings( props ) }
-			{ renderContentTimeline( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

@@ -10,7 +10,7 @@ import edit from './edit';
 import { __ } from '@wordpress/i18n';
 
 // Register block controls.
-const { registerBlockType } = '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
 export const name = 'core/latest-posts';
 

@@ -12,7 +12,7 @@ import deprecated from './deprecated';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/content-timeline-child', {
 	title: uagb_blocks_info.blocks[ 'uagb/content-timeline-child' ].title,

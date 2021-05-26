@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
 
-const { InnerBlocks } = '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { block_id } = props.attributes;
