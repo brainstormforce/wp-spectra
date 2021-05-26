@@ -1,8 +1,6 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
-import memoize from 'memize';
-import times from 'lodash/times';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/restaurant-menu-child' ];
@@ -14,14 +12,15 @@ const Render = ( props ) => {
 	// Setup the attributes.
 	const { menu_item_count, rest_menu_item_arr } = attributes;
 
-	const getPriceListTemplate = memoize(
-		( menu_item_block, rest_menu_item_arr ) => {
-			return times( menu_item_block, ( n ) => [
-				'uagb/restaurant-menu-child',
-				rest_menu_item_arr[ n ],
-			] );
+	const getPriceListTemplate = useMemo( () => {
+		const childList = [];
+
+		for ( let i = 0; i < menu_item_count ; i++ ) {
+			childList.push( [ 'uagb/restaurant-menu-child', { id: i + 1 } ] );
 		}
-	);
+
+		return childList;
+	}, [ columns ] );
 
 	return (
 		<div
@@ -34,10 +33,7 @@ const Render = ( props ) => {
 			) }
 		>
 			<InnerBlocks
-				template={ getPriceListTemplate(
-					menu_item_count,
-					rest_menu_item_arr
-				) }
+				template={ getPriceListTemplate }
 				templateLock={ false }
 				allowedBlocks={ ALLOWED_BLOCKS }
 				__experimentalMoverDirection={ 'horizontal' }
