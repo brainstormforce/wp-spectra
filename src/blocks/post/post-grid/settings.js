@@ -213,13 +213,6 @@ const Settings = ( props ) => {
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 
-	const togglePreview = () => {
-		props.setStateValue( { isEditing: ! props.state.isEditing } );
-		if ( ! props.state.isEditing ) {
-			__( 'Showing All Post Grid Layout.' );
-		}
-	};
-
 	const taxonomyListOptions = [];
 
 	const categoryListOptions = [
@@ -1837,7 +1830,7 @@ const Settings = ( props ) => {
 		);
 	};
 	const blockControlsSettings = () => {
-		const { isEditing } = state;
+		const { isEditing } = props.state;
 
 		return (
 			<BlockControls>
@@ -1853,7 +1846,7 @@ const Settings = ( props ) => {
 						{
 							icon: 'edit',
 							title: __( 'Edit' ),
-							onClick: () => togglePreview(),
+							onClick: () => props.togglePreview(),
 							isActive: isEditing,
 						},
 					] }

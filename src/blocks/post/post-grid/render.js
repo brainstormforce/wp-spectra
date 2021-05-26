@@ -27,20 +27,21 @@ const Render = ( props ) => {
 	const { attributes, latestPosts, categoriesList, deviceType } = props.parentProps;
 
 	const renderEditMode = () => {
+
 		const onDone = () => {
 			const { block, setAttributes } = props.parentProps;
 			setAttributes( {
 				layoutConfig: getPostLayoutConfig( block ),
 			} );
 			props.setStateValue( { innerBlocks: block } );
-			togglePreview();
+			props.togglePreview();
 		};
 
 		const onCancel = () => {
 			const { replaceInnerBlocks } = props.parentProps;
 			const { innerBlocks } = props.state;
 			replaceInnerBlocks( props.parentProps.clientId, innerBlocks );
-			togglePreview();
+			props.togglePreview();
 		};
 
 		const onReset = () => {
@@ -59,6 +60,7 @@ const Render = ( props ) => {
 			templateLock: false,
 			allowedBlocks: Object.keys( getBlockMap( 'uagb/post-grid' ) ),
 		};
+
 		if ( props.parentProps.attributes.layoutConfig.length !== 0 ) {
 			InnerBlockProps.renderAppender = false;
 		}
@@ -110,7 +112,11 @@ const Render = ( props ) => {
 	};
 
 	if ( isEditing ) {
-		return { renderEditMode };
+		return (
+			<>
+				{ renderEditMode() } 
+			</>
+		);
 	}
 
 	const renderViewMode = () => {

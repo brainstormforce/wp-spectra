@@ -4,6 +4,7 @@
 import styling from '.././styling';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { __ } from '@wordpress/i18n';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -49,6 +50,13 @@ const postGridComponent = ( props ) => {
 		}
 	}, [ props ] );
 
+	const togglePreview = () => {
+		setStateValue( { isEditing: ! state.isEditing } );
+		if ( ! state.isEditing ) {
+			__( 'Showing All Post Grid Layout.' );
+		}
+	};
+
 	const { attributes, latestPosts } = props;
 
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
@@ -59,7 +67,9 @@ const postGridComponent = ( props ) => {
 	if ( ! hasPosts ) {
 		return (
 			<>
-				<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
+				<Suspense fallback={ lazyLoader() }>
+					<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
+				</Suspense>
 
 				<Placeholder
 					icon="admin-post"
@@ -77,8 +87,8 @@ const postGridComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } />
-			<Render parentProps={ props } state={ state } setStateValue={ setStateValue } />
+			<Settings parentProps={ props } state={ state } setStateValue={ setStateValue } togglePreview={ togglePreview } />
+			<Render parentProps={ props } state={ state } setStateValue={ setStateValue } togglePreview={ togglePreview } />
 		</Suspense>
 	);
 };
