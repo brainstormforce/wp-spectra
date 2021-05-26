@@ -1,4 +1,4 @@
-const { decodeEntities } = wp.htmlEntities;
+const { decodeEntities } = '@wordpress/html-entities';
 
 const FeaturedImage = ( props ) => {
 	const { post, attributes } = props;

@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/renderIcon';
 
-const { dateI18n, __experimentalGetSettings } = wp.date;
+const { dateI18n, __experimentalGetSettings } = '@wordpress/date';
 
-const { RichText } = wp.blockEditor;
+const { RichText } = '@wordpress/block-editor';
 
 const deprecated = [
 	{

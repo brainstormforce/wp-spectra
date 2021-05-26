@@ -5,9 +5,9 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-const { dateI18n } = wp.date;
+const { dateI18n } = '@wordpress/date';
 
-const { RichText } = wp.blockEditor;
+const { RichText } = '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {

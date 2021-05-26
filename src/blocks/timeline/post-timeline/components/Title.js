@@ -1,4 +1,4 @@
-const { decodeEntities } = wp.htmlEntities;
+const { decodeEntities } = '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 
 const Title = ( props ) => {

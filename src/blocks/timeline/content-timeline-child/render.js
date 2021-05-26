@@ -1,13 +1,13 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-const { dateI18n } = wp.date;
+const { dateI18n } = '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
 
-const { createBlock } = wp.blocks;
+const { createBlock } = '@wordpress/blocks';
 
-const { RichText } = wp.blockEditor;
+const { RichText } = '@wordpress/block-editor';
 
 export default function renderContentTimelineChild( props ) {
 	// Setup the attributes.

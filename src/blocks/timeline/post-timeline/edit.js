@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import postTimelineSettings from './settings';
 import renderPostTimeline from './render';
 
-const { withSelect } = wp.data;
+const { withSelect } = '@wordpress/data';
 
 const $ = jQuery;
 

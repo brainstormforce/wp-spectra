@@ -7,7 +7,7 @@ import TypographyControl from '../../../components/typography';
 import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const { dateI18n } = wp.date;
+const { dateI18n } = '@wordpress/date';
 const {
 	PanelBody,
 	QueryControls,
@@ -16,14 +16,15 @@ const {
 	ToggleControl,
 	TabPanel,
 	TextControl,
-} = wp.components;
+} = '@wordpress/components';
 const {
 	InspectorControls,
 	ColorPalette,
 	BlockAlignmentToolbar,
 	BlockControls,
 	PanelColorSettings,
-} = wp.blockEditor;
+} = '@wordpress/block-editor';
+
 const svg_icons = Object.keys( UAGBIcon );
 
 export default function postTimelineSettings( props ) {

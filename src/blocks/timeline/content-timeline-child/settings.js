@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
 
-const { InspectorControls } = wp.blockEditor;
+const { InspectorControls } = '@wordpress/block-editor';
 
-const { PanelBody, TextControl } = wp.components;
+const { PanelBody, TextControl } = '@wordpress/components';
 
 export default function contentTimelineChildSettings( props ) {
 	// Setup the attributes.

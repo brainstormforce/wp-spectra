@@ -15,7 +15,7 @@ import Icon from './components/Icon';
 
 import { __ } from '@wordpress/i18n';
 
-const { Placeholder, Spinner } = wp.components;
+const { Placeholder, Spinner } = '@wordpress/components';
 
 export default function renderPostTimeline( props ) {
 	const { attributes, className, deviceType } = props;

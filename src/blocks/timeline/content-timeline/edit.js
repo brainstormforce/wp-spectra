@@ -7,11 +7,12 @@ import renderContentTimeline from './render';
 import { __ } from '@wordpress/i18n';
 import React, { useEffect } from 'react';
 
-const { dispatch, select, withSelect } = wp.data;
+import { dispatch, select, withSelect } from '@wordpress/data';
 
 const $ = jQuery;
 
 const contentTimelineComponent = ( props ) => {
+	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.

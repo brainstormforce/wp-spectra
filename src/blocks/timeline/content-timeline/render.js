@@ -5,7 +5,7 @@ import ContentTmClasses from '.././classes';
 
 import { __ } from '@wordpress/i18n';
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 

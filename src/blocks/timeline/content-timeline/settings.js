@@ -13,14 +13,14 @@ import TypographyControl from '../../../components/typography';
 import WebfontLoader from '../../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const { dateI18n } = wp.date;
+const { dateI18n } = '@wordpress/date';
 const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
-} = wp.blockEditor;
+} = '@wordpress/block-editor';
 
 const {
 	PanelBody,
@@ -28,9 +28,9 @@ const {
 	RangeControl,
 	ToggleControl,
 	TabPanel,
-} = wp.components;
+} = '@wordpress/components';
 
-const { select } = wp.data;
+const { select } = '@wordpress/data';
 
 const svg_icons = Object.keys( UAGBIcon );
 

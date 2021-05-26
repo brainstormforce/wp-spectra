@@ -23,12 +23,12 @@ import edit from './edit';
 import { __ } from '@wordpress/i18n';
 
 // Register block controls
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
-const { compose, createHigherOrderComponent } = wp.compose;
+import { addFilter } from '@wordpress/hooks';
+import { Fragment } from '@wordpress/element';
+import { withSelect } from '@wordpress/data';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 /**
  * Override the default block element to add	wrapper props.

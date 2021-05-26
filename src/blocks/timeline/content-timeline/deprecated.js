@@ -9,10 +9,8 @@ import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
 import renderSVG from '@Controls/renderIcon';
-const { InnerBlocks } = wp.blockEditor;
-const { dateI18n, __experimentalGetSettings } = wp.date;
-
-const { RichText } = wp.blockEditor;
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
 
 const deprecated = [
 	{
