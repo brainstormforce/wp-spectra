@@ -95,7 +95,7 @@ function styling( props ) {
 		" > .uagb-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"color": bodyTextColor,
 		},
-		" > .uagb-tabs__icon svg" : {
+		" .uagb-tabs__icon svg" : {
 			"height": generateCSSUnit( iconSize, "px" ),
 			"width": generateCSSUnit( iconSize, "px" ),
 			"fill": iconColor
