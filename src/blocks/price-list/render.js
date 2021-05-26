@@ -20,7 +20,7 @@ const Render = ( props ) => {
 		}
 
 		return childList;
-	}, [ columns ] );
+	}, [ menu_item_count ] );
 
 	return (
 		<div
