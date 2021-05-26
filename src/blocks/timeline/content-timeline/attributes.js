@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 const ITEM_COUNT = 5;
 
 const item = [];
-const date_arr = [];
+const dateArr = [];
 
 for ( let i = 1; i <= ITEM_COUNT; i++ ) {
 	item.push( {
@@ -36,7 +36,7 @@ for ( let i = 1; i <= ITEM_COUNT; i++ ) {
 	today = mm + '/' + dd + '/' + yyyy;
 	const p = { title: today };
 
-	date_arr.push( {
+	dateArr.push( {
 		title: today,
 	} );
 }
@@ -305,7 +305,7 @@ const attributes = {
 	},
 	t_date: {
 		type: 'array',
-		default: date_arr,
+		default: dateArr,
 	},
 	displayPostDate: {
 		type: 'boolean',

@@ -4,7 +4,10 @@ import { InspectorControls } from '@wordpress/block-editor';
 
 import { PanelBody, TextControl } from '@wordpress/components';
 
-export default function contentTimelineChildSettings( props ) {
+const Settings = ( props ) => {
+
+	props = props.parentProps;
+	
 	// Setup the attributes.
 	const {
 		setAttributes,
@@ -29,5 +32,11 @@ export default function contentTimelineChildSettings( props ) {
 			</PanelBody>
 		);
 	};
-	return <InspectorControls>{ timelineItemSettings() }</InspectorControls>;
+	return (
+		<InspectorControls>
+			{ timelineItemSettings() }
+		</InspectorControls>
+	);
 }
+
+export default React.memo( Settings );

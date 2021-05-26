@@ -9,7 +9,10 @@ import { createBlock } from '@wordpress/blocks';
 
 import { RichText } from '@wordpress/block-editor';
 
-export default function renderContentTimelineChild( props ) {
+const Render = ( props ) => {
+
+	props = props.parentProps;
+
 	// Setup the attributes.
 	const {
 		setAttributes,
@@ -60,11 +63,11 @@ export default function renderContentTimelineChild( props ) {
 		}
 	};
 
-	let display_inner_date = false;
-	const post_date = t_date;
+	let displayInnerDate = false;
+	const postDate = t_date;
 
 	if ( timelinAlignment == 'center' ) {
-		display_inner_date = true;
+		displayInnerDate = true;
 	}
 
 	return (
@@ -90,8 +93,8 @@ export default function renderContentTimelineChild( props ) {
 									}
 								>
 									{ ( 'custom' != dateFormat &&
-										dateI18n( dateFormat, post_date ) ) ||
-										post_date }
+										dateI18n( dateFormat, postDate ) ) ||
+										postDate }
 								</div>
 							) }
 						</div>
@@ -147,13 +150,13 @@ export default function renderContentTimelineChild( props ) {
 						</div>
 					</div>
 				</div>
-				{ display_inner_date && (
+				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">
 						{ displayPostDate != true && t_date && (
 							<div className={ 'uagb-timeline__date-new' }>
 								{ ( 'custom' != dateFormat &&
-									dateI18n( dateFormat, post_date ) ) ||
-									post_date }
+									dateI18n( dateFormat, postDate ) ) ||
+									postDate }
 							</div>
 						) }
 					</div>
@@ -162,3 +165,5 @@ export default function renderContentTimelineChild( props ) {
 		</article>
 	);
 }
+
+export default React.memo( Render );

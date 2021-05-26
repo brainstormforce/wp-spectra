@@ -22,24 +22,24 @@ export default function save( props ) {
 	} = props.attributes;
 
 	const display_inner_date = true;
-	const icon_class = 'uagb-timeline__icon-new out-view-uagb-timeline__icon ';
-	let post_date = t_date;
+	const iconClass = 'uagb-timeline__icon-new out-view-uagb-timeline__icon ';
+	let postDate = t_date;
 	if ( 'custom' != dateFormat ) {
-		post_date = dateI18n( dateFormat, t_date );
-		if ( post_date === 'Invalid date' ) {
-			post_date = t_date;
+		postDate = dateI18n( dateFormat, t_date );
+		if ( postDate === 'Invalid date' ) {
+			postDate = t_date;
 		}
 	}
 
-	let content_class = '';
-	let dayalign_class = '';
+	let contentClass = '';
+	let dayalignClass = '';
 
 	if (
 		props.attributes.dayalign_class != 'undefined' &&
 		props.attributes.content_class != 'undefined'
 	) {
-		content_class = props.attributes.content_class;
-		dayalign_class = props.attributes.dayalign_class;
+		contentClass = props.attributes.content_class;
+		dayalignClass = props.attributes.dayalign_class;
 	}
 	return (
 		<article
@@ -48,12 +48,12 @@ export default function save( props ) {
 				`uagb-timeline-child-${ block_id }`
 			) }
 		>
-			<div className={ classnames( content_class ) }>
+			<div className={ classnames( contentClass ) }>
 				<div className="uagb-timeline__marker out-view-uagb-timeline__icon">
-					<span className={ icon_class }>{ renderSVG( icon ) }</span>
+					<span className={ iconClass }>{ renderSVG( icon ) }</span>
 				</div>
 
-				<div className={ classnames( dayalign_class ) }>
+				<div className={ classnames( dayalignClass ) }>
 					<div className="uagb-events-new">
 						<div className="uagb-timeline__events-inner-new">
 							<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
@@ -63,7 +63,7 @@ export default function save( props ) {
 											'uagb-timeline__inner-date-new'
 										}
 									>
-										{ post_date }
+										{ postDate }
 									</div>
 								) }
 							</div>
@@ -92,7 +92,7 @@ export default function save( props ) {
 					<div className="uagb-timeline__date-new">
 						{ displayPostDate != true && t_date && (
 							<div className={ 'uagb-timeline__date-new' }>
-								{ post_date }
+								{ postDate }
 							</div>
 						) }
 					</div>
