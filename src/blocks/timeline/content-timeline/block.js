@@ -26,7 +26,6 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 import { addFilter } from '@wordpress/hooks';
-import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -53,9 +52,7 @@ const enhance = compose(
 const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
 	return enhance( ( { ...props } ) => {
 		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-			</Fragment>
+			<BlockEdit { ...props } />
 		);
 	} );
 }, 'withcontentTimeline' );
