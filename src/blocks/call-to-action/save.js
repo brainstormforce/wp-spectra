@@ -23,7 +23,7 @@ export default function save( props ) {
 		description,
 	} = props.attributes;
 
-	const is_cta = (
+	const isCta = (
 		<CTA attributes={ props.attributes } setAttributes="not_set" />
 	);
 
@@ -42,7 +42,7 @@ export default function save( props ) {
 	);
 
 	// Get Title components.
-	const title_text = (
+	const titleText = (
 		<>
 			{ '' !== ctaTitle && (
 				<div className="uagb-cta__title-wrap">
@@ -64,34 +64,34 @@ export default function save( props ) {
 				) }
 			>
 				<div className="uagb-cta__left-right-wrap">
-					{ ctaPosition == 'left' && is_cta }
+					{ ctaPosition == 'left' && isCta }
 					<div className="uagb-cta__content">
 						{ ctaPosition == 'above-title' && (
 							<>
-								{ is_cta }
-								{ title_text }
+								{ isCta }
+								{ titleText }
 								{ desc }
 							</>
 						) }
 
 						{ ctaPosition == 'below-title' && (
 							<>
-								{ title_text }
+								{ titleText }
 								{ desc }
-								{ is_cta }
+								{ isCta }
 							</>
 						) }
 
 						{ ( ctaPosition == 'left' ||
 							ctaPosition == 'right' ) && (
 							<>
-								{ title_text }
+								{ titleText }
 								{ desc }
 							</>
 						) }
 					</div>
 
-					{ ctaPosition == 'right' && is_cta }
+					{ ctaPosition == 'right' && isCta }
 				</div>
 			</div>
 		</>

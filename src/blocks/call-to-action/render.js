@@ -85,7 +85,6 @@ const Render = ( props ) => {
 	};
 
 	return (
-		<>
 			<div
 				className={ classnames(
 					className,
@@ -109,7 +108,6 @@ const Render = ( props ) => {
 					{ ctaType !== 'all' && output() }
 				</Suspense>
 			</div>
-		</>
 	);
 };
 

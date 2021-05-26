@@ -31,7 +31,7 @@ import {
 	TextControl,
 } from '@wordpress/components';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -155,7 +155,7 @@ const Settings = ( props ) => {
 
 	// Icon properties.
 	const ctaIconProps = {
-		icons: svg_icons,
+		icons: svgIcons,
 		value: ctaIcon,
 		onChange: ( value ) => {
 			setAttributes( { ctaIcon: value } );
