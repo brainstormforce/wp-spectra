@@ -6,11 +6,11 @@ import CtaStyle from './inline-styles';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/call-to-action/Render" */ './Render' )
+	import( /* webpackChunkName: "chunks/call-to-action/render" */ './render' )
 );
 const Settings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/call-to-action/Settings" */ './Settings'
+		/* webpackChunkName: "chunks/call-to-action/settings" */ './settings'
 	)
 );
 
