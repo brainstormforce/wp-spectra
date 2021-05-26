@@ -1,9 +1,7 @@
 // Import classes
 import classnames from 'classnames';
-import times from 'lodash/times';
-import memoize from 'memize';
 import { InnerBlocks } from '@wordpress/block-editor';
-import React from 'react';
+import React, { useMemo } from 'react'
 const ALLOWED_BLOCKS = [ 'uagb/icon-list-child' ];
 
 const Render = ( props ) => {
@@ -13,7 +11,6 @@ const Render = ( props ) => {
 	const {
 		className,
 		icon_count,
-		icons,
 		icon_layout,
 		iconPosition,
 		hideLabel,
@@ -22,12 +19,15 @@ const Render = ( props ) => {
 
 	const labelClass = hideLabel ? 'uagb-icon-list__no-label' : '';
 
-	const getIconTemplate = memoize( ( icon_block, icon ) => {
-		return times( icon_block, ( n ) => [
-			'uagb/icon-list-child',
-			icon[ n ],
-		] );
-	} );
+	const getIconTemplate = useMemo( () => {
+		const childIconList = [];
+
+		for ( let i = 0; i < icon_count; i++ ) {
+			childIconList.push( [ 'uagb/icon-list-child', { id: i + 1 } ] );
+		}
+
+		return childIconList;
+	}, [ icon_count ] );
 
 	return (
 		<div
@@ -43,7 +43,7 @@ const Render = ( props ) => {
 		>
 			<div className="uagb-icon-list__wrap">
 				<InnerBlocks
-					template={ getIconTemplate( icon_count, icons ) }
+					template={ getIconTemplate }
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalMoverDirection={ icon_layout }
