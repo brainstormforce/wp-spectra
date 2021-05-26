@@ -10,7 +10,6 @@ import { createBlock } from '@wordpress/blocks';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	// Setup the attributes.
@@ -164,6 +163,6 @@ const Render = ( props ) => {
 			</div>
 		</article>
 	);
-}
+};
 
 export default React.memo( Render );

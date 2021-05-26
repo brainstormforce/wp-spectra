@@ -14,7 +14,7 @@ const WebfontLoader = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-timeline/fontloader" */ '@Components/typography/fontloader'
 	)
-)
+);
 
 import { __ } from '@wordpress/i18n';
 
@@ -39,7 +39,6 @@ import {
 const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
@@ -1620,6 +1619,6 @@ const Settings = ( props ) => {
 			{ loadCtaGoogleFonts }
 		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

@@ -1,7 +1,6 @@
 import renderSVG from '@Controls/renderIcon';
 
 const Icon = ( props ) => {
-	
 	const { attributes } = props;
 
 	return (

@@ -9,8 +9,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 
 const Render = ( props ) => {
-
-	props = props.parentProps
+	props = props.parentProps;
 
 	// Setup the attributes.
 	const {
@@ -20,16 +19,18 @@ const Render = ( props ) => {
 	} = props;
 
 	const getContentTimelineTemplate = useMemo( () => {
-
 		const childTimeline = [];
 
 		for ( let i = 0; i < timelineItem; i++ ) {
-			childTimeline.push( [ 'uagb/content-timeline-child', tm_content[ i ] ] );
+			childTimeline.push( [
+				'uagb/content-timeline-child',
+				tm_content[ i ],
+			] );
 		}
 
 		return childTimeline;
-	}, [ timelineItem, tm_content  ] );
-	
+	}, [ timelineItem, tm_content ] );
+
 	return (
 		<div
 			className={ classnames(
@@ -55,6 +56,6 @@ const Render = ( props ) => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default React.memo( Render );

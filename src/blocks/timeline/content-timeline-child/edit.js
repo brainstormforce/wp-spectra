@@ -7,10 +7,14 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/content-timeline-child/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/content-timeline-child/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/content-timeline-child/render" */ './render' )
+	import(
+		/* webpackChunkName: "chunks/content-timeline-child/render" */ './render'
+	)
 );
 
 const contentTimelineChildComponent = ( props ) => {

@@ -1,5 +1,4 @@
 const Author = ( props ) => {
-
 	const { post, attributes } = props;
 
 	let target = '_self';

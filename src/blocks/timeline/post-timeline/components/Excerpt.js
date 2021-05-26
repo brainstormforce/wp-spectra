@@ -1,5 +1,4 @@
 const Excerpt = ( props ) => {
-
 	const { post, attributes } = props;
 
 	if ( attributes.displayPostExcerpt && undefined !== post.uagb_excerpt ) {

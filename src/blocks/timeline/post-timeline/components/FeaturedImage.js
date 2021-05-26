@@ -1,7 +1,6 @@
 import { decodeEntities } from '@wordpress/html-entities';
 
 const FeaturedImage = ( props ) => {
-	
 	const { post, attributes } = props;
 
 	if (

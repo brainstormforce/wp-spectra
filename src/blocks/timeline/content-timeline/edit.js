@@ -8,16 +8,19 @@ import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select, withSelect } from '@wordpress/data';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/content-timeline/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/content-timeline/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/content-timeline/render" */ './render' )
+	import(
+		/* webpackChunkName: "chunks/content-timeline/render" */ './render'
+	)
 );
 
 const $ = jQuery;
 
 const contentTimelineComponent = ( props ) => {
-	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
@@ -125,8 +128,7 @@ const contentTimelineComponent = ( props ) => {
 			lineOuter.css( 'top', timelineStartIcon.top );
 
 			const timelineCardHeight = cardLast.height();
-			const lastItemTop =
-				cardLast.offset().top - tmItem.offset().top;
+			const lastItemTop = cardLast.offset().top - tmItem.offset().top;
 			let lastItem, parent_top;
 			const $document = $( document );
 
@@ -141,8 +143,7 @@ const contentTimelineComponent = ( props ) => {
 
 				lastItem = lastItemTop;
 			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
-				const bottom_height =
-					timelineCardHeight - timelineEndIcon.top;
+				const bottom_height = timelineCardHeight - timelineEndIcon.top;
 				lineOuter.css( 'bottom', bottom_height );
 
 				parent_top = lastItemTop - timelineStartIcon.top;

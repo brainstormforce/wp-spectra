@@ -44,9 +44,8 @@ import { select } from '@wordpress/data';
 const svg_icons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
+	props = props.parentProps;
 
-	props = props.parentProps
-	
 	// Setup the attributes.
 	const {
 		setAttributes,
@@ -1059,6 +1058,6 @@ const Settings = ( props ) => {
 			{ loadDateGoogleFonts }
 		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

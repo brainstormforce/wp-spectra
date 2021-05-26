@@ -18,7 +18,6 @@ import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes, className, deviceType } = props;
@@ -46,8 +45,7 @@ const Render = ( props ) => {
 				<Placeholder
 					icon="admin-post"
 					label={
-						uagb_blocks_info.blocks[ 'uagb/post-timeline' ]
-							.title
+						uagb_blocks_info.blocks[ 'uagb/post-timeline' ].title
 					}
 				>
 					{ ! Array.isArray( latestPosts ) ? (
@@ -189,5 +187,5 @@ const Render = ( props ) => {
 			</div>
 		</div>
 	);
-}
+};
 export default React.memo( Render );

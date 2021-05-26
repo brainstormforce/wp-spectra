@@ -5,7 +5,9 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/post-timeline/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/post-timeline/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-timeline/render" */ './render' )
@@ -16,7 +18,6 @@ import { withSelect } from '@wordpress/data';
 const $ = jQuery;
 
 const postTimelineComponent = ( props ) => {
-
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store lient id.
@@ -49,7 +50,6 @@ const postTimelineComponent = ( props ) => {
 
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentBack = ( id ) => {
-
 		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
 		const tmItem = timeline.find( '.uagb-timeline' );
 		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
@@ -64,8 +64,7 @@ const postTimelineComponent = ( props ) => {
 			lineOuter.css( 'top', timelineStartIcon.top );
 
 			const timelineCardHeight = cardLast.height();
-			const lastItemTop =
-				cardLast.offset().top - tmItem.offset().top;
+			const lastItemTop = cardLast.offset().top - tmItem.offset().top;
 			let lastItem, parentTop;
 			const $document = $( document );
 
@@ -80,8 +79,7 @@ const postTimelineComponent = ( props ) => {
 
 				lastItem = lastItemTop;
 			} else if ( tmItem.hasClass( 'uagb-timeline__arrow-bottom' ) ) {
-				const bottomHeight =
-					timelineCardHeight - timelineEndIcon.top;
+				const bottomHeight = timelineCardHeight - timelineEndIcon.top;
 				lineOuter.css( 'bottom', bottomHeight );
 
 				parentTop = lastItemTop - timelineStartIcon.top;
