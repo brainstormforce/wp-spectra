@@ -4,10 +4,25 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 
-// Import all of our Text Options requirements.
-import TypographyControl from '../../../components/typography';
-import Columnresponsive from '../../../components/typography/column-responsive';
-import WebfontLoader from '../../../components/typography/fontloader';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-grid/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-grid/fontloader" */ '@Components/typography/fontloader'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/post-grid/typography" */ '@Components/typography'
+	)
+);
+
 import { __ } from '@wordpress/i18n';
 
 const MAX_POSTS_COLUMNS = 8;
@@ -32,7 +47,6 @@ import {
 } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
-
 	// Caching all Props
 	const {
 		attributes,
@@ -1856,9 +1870,7 @@ const Settings = ( props ) => {
 	};
 
 	const inspectorControlsSettings = () => {
-
 		return (
-
 			<InspectorControls>
 				{ generalSettings() }
 				{ paginationSettings() }
@@ -1870,7 +1882,7 @@ const Settings = ( props ) => {
 				{ spacingSettings() }
 			</InspectorControls>
 		);
-	}
+	};
 
 	let loadTitleGoogleFonts;
 	let loadMetaGoogleFonts;
@@ -1938,25 +1950,20 @@ const Settings = ( props ) => {
 	}
 
 	if ( ! hasPosts ) {
-
-		return (
-			<>
-				{ inspectorControlsSettings() }
-			</>
-		);
+		return <>{ inspectorControlsSettings() }</>;
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControlsSettings() }
 			{ inspectorControlsSettings() }
-			
+
 			{ loadTitleGoogleFonts }
 			{ loadMetaGoogleFonts }
 			{ loadExcerptGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</>
+		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

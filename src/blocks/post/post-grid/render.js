@@ -1,9 +1,12 @@
 /**
  * BLOCK: Post Grid - Editor Render.
  */
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-// Import Post Components
-import Blog from './blog';
+const Blog = lazy( () =>
+	import( /* webpackChunkName: "chunks/post-grid/blog" */ './blog' )
+);
 
 import {
 	InnerBlockLayoutContextProvider,
@@ -20,14 +23,17 @@ import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-
 	const { isEditing } = props.state;
 
 	// Caching all Props.
-	const { attributes, latestPosts, categoriesList, deviceType } = props.parentProps;
+	const {
+		attributes,
+		latestPosts,
+		categoriesList,
+		deviceType,
+	} = props.parentProps;
 
 	const renderEditMode = () => {
-
 		const onDone = () => {
 			const { block, setAttributes } = props.parentProps;
 			setAttributes( {
@@ -112,29 +118,27 @@ const Render = ( props ) => {
 	};
 
 	if ( isEditing ) {
-		return (
-			<>
-				{ renderEditMode() } 
-			</>
-		);
+		return <>{ renderEditMode() }</>;
 	}
 
 	const renderViewMode = () => {
 		return (
 			<Disabled>
-				<Blog
-					attributes={ attributes }
-					className={ props.parentProps.className }
-					latestPosts={ latestPosts }
-					block_id={ props.parentProps.clientId.substr( 0, 8 ) }
-					categoriesList={ categoriesList }
-					deviceType={ deviceType }
-				/>
+				<Suspense fallback={ lazyLoader() }>
+					<Blog
+						attributes={ attributes }
+						className={ props.parentProps.className }
+						latestPosts={ latestPosts }
+						block_id={ props.parentProps.clientId.substr( 0, 8 ) }
+						categoriesList={ categoriesList }
+						deviceType={ deviceType }
+					/>
+				</Suspense>
 			</Disabled>
 		);
 	};
 
 	return <>{ renderViewMode() }</>;
-}
+};
 
 export default React.memo( Render );

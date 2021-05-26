@@ -82,4 +82,3 @@ const Blog = ( props ) => {
 	);
 };
 export default React.memo( Blog );
-
