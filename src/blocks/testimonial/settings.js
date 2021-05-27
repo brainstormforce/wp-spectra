@@ -1308,8 +1308,8 @@ const Settings = ( props ) => {
 									newCount - cloneTest_block.length
 								);
 
-								{
-									times( incAmount, () => {
+								
+									for( let i = 0; i < incAmount; i++ ) {
 										cloneTest_block.push( {
 											description:
 												'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!',
@@ -1319,8 +1319,8 @@ const Settings = ( props ) => {
 												( cloneTest_block.length + 1 ),
 											image: '',
 										} );
-									} );
-								}
+									}
+								
 								setAttributes( {
 									test_block: cloneTest_block,
 								} );
