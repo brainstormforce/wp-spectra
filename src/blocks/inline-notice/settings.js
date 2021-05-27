@@ -115,7 +115,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	const update_cookie_id = ( value ) => {
+	const updateCookieId = ( value ) => {
 		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
 		const timestamp = new Date().getTime();
@@ -280,7 +280,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ cookies }
-						onChange={ update_cookie_id() }
+						onChange={ updateCookieId() }
 					/>
 				) }
 				{ cookies && (

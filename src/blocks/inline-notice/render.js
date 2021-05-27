@@ -22,10 +22,10 @@ const Render = ( props ) => {
 		className,
 	} = props;
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<span className="uagb-notice-dismiss">{ renderSVG( icon ) }</span>
 		);
 	}
@@ -39,7 +39,7 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ image_icon_html }
+			{ imageIconHtml }
 			<RichText
 				tagName={ headingTag }
 				placeholder={ __(

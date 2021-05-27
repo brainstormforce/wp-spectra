@@ -22,10 +22,10 @@ export default function save( props ) {
 		cookies,
 	} = attributes;
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<span className="uagb-notice-dismiss">{ renderSVG( icon ) }</span>
 		);
 	}
@@ -45,7 +45,7 @@ export default function save( props ) {
 				`${ active }`
 			) }
 		>
-			{ image_icon_html }
+			{ imageIconHtml }
 			<RichText.Content
 				value={ noticeTitle }
 				tagName={ headingTag }
