@@ -269,9 +269,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					<Suspense fallback={ lazyLoader() }>
-						<Columnresponsive />
-					</Suspense>
+					<Columnresponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							{ sizeTypeControls }
@@ -321,7 +319,6 @@ const Settings = ( props ) => {
 						</>
 					) }
 					<hr className="uagb-editor__separator" />
-					<Suspense fallback={ lazyLoader() }>
 						<TypographyControl
 							label={ __(
 								'Typography',
@@ -375,7 +372,6 @@ const Settings = ( props ) => {
 								label: 'lineHeightTablet',
 							} }
 						/>
-					</Suspense>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
 						label={ __(
@@ -431,11 +427,11 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			{ generalSetting() }
-			<Suspense fallback={ lazyLoader() }>{ googleFonts }</Suspense>
-		</>
+			{ googleFonts }
+		</Suspense>
 	);
 };
 

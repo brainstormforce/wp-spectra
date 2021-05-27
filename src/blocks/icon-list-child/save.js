@@ -39,8 +39,8 @@ export default function save( props ) {
 		);
 	}
 
-	const target_val = target ? '_blank' : '_self';
-	const link_url = ! disableLink ? link : '/';
+	const targetVal = target ? '_blank' : '_self';
+	const linkUrl = ! disableLink ? link : '/';
 
 	return (
 		<div
@@ -53,10 +53,10 @@ export default function save( props ) {
 		>
 			{ ! disableLink && (
 				<a
-					target={ target_val }
+					target={ targetVal }
 					aria-label={ label }
 					rel="noopener noreferrer"
-					href={ link_url }
+					href={ linkUrl }
 				></a>
 			) }
 			<div className="uagb-icon-list__content-wrap">

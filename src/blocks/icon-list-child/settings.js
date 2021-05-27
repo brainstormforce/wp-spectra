@@ -18,7 +18,7 @@ import {
 	TabPanel,
 } from '@wordpress/components';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -381,144 +381,144 @@ const Settings = ( props ) => {
 			</TabPanel>
 		);
 	};
-
-	return (
-		<InspectorControls>
-			<PanelBody
-				title={ __( 'Icon Settings', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-				<SelectControl
-					label={ __(
-						'Image / Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ image_icon }
-					options={ [
-						{
-							value: 'icon',
-							label: __(
-								'Icon',
+	const inspectorControls = () =>{
+		return 	<InspectorControls>
+					<PanelBody
+						title={ __( 'Icon Settings', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ true }
+					>
+						<SelectControl
+							label={ __(
+								'Image / Icon',
 								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'image',
-							label: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					onChange={ ( value ) =>
-						setAttributes( { image_icon: value } )
-					}
-				/>
-				{ 'icon' == image_icon && (
-					<>
-						<p className="components-base-control__label">
-							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<FontIconPicker
-							icons={ svg_icons }
-							renderFunc={ renderSVG }
-							theme="default"
-							value={ icon }
+							) }
+							value={ image_icon }
+							options={ [
+								{
+									value: 'icon',
+									label: __(
+										'Icon',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'image',
+									label: __(
+										'Image',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
 							onChange={ ( value ) =>
-								setAttributes( { icon: value } )
+								setAttributes( { image_icon: value } )
 							}
-							isMulti={ false }
-							noSelectedPlaceholder={ __(
-								'Select Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
 						/>
-					</>
-				) }
-				{ 'image' == image_icon && (
-					<>
-						<MediaUpload
-							title={ __(
-								'Select Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onSelect={ onSelectImage() }
-							allowedTypes={ [ 'image' ] }
-							value={ image }
-							render={ ( { open } ) => (
-								<Button isSecondary onClick={ open }>
-									{ ! image
-										? __( 'Select Image' )
-										: __( 'Replace image' ) }
-								</Button>
-							) }
-						/>
-						{ image && (
-							<Button
-								className="uagb-rm-btn"
-								onClick={ onRemoveImage }
-								isLink
-								isDestructive
-							>
-								{ __(
-									'Remove Image',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</Button>
+						{ 'icon' == image_icon && (
+							<>
+								<p className="components-base-control__label">
+									{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+								</p>
+								<FontIconPicker
+									icons={ svgIcons }
+									renderFunc={ renderSVG }
+									theme="default"
+									value={ icon }
+									onChange={ ( value ) =>
+										setAttributes( { icon: value } )
+									}
+									isMulti={ false }
+									noSelectedPlaceholder={ __(
+										'Select Icon',
+										'ultimate-addons-for-gutenberg'
+									) }
+								/>
+							</>
 						) }
-					</>
-				) }
-				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __( 'List Item Link', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
-				<ToggleControl
-					label={ __(
-						'Disable Link',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ disableLink }
-					onChange={ ( value ) =>
-						setAttributes( { disableLink: ! disableLink } )
-					}
-				/>
-				{ ! disableLink && (
-					<>
-						<p className="components-base-control__label">
-							{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<TextControl
-							value={ link }
-							onChange={ ( value ) =>
-								setAttributes( { link: value } )
-							}
-							placeholder={ __(
-								'Enter URL',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
+						{ 'image' == image_icon && (
+							<>
+								<MediaUpload
+									title={ __(
+										'Select Image',
+										'ultimate-addons-for-gutenberg'
+									) }
+									onSelect={ onSelectImage() }
+									allowedTypes={ [ 'image' ] }
+									value={ image }
+									render={ ( { open } ) => (
+										<Button isSecondary onClick={ open }>
+											{ ! image
+												? __( 'Select Image' )
+												: __( 'Replace image' ) }
+										</Button>
+									) }
+								/>
+								{ image && (
+									<Button
+										className="uagb-rm-btn"
+										onClick={ onRemoveImage }
+										isLink
+										isDestructive
+									>
+										{ __(
+											'Remove Image',
+											'ultimate-addons-for-gutenberg'
+										) }
+									</Button>
+								) }
+							</>
+						) }
+						<hr className="uagb-editor__separator" />
+						<h2>
+							{ __( 'List Item Link', 'ultimate-addons-for-gutenberg' ) }
+						</h2>
 						<ToggleControl
 							label={ __(
-								'Open in New Tab',
+								'Disable Link',
 								'ultimate-addons-for-gutenberg'
 							) }
-							checked={ target }
+							checked={ disableLink }
 							onChange={ ( value ) =>
-								setAttributes( { target: ! target } )
+								setAttributes( { disableLink: ! disableLink } )
 							}
 						/>
-					</>
-				) }
-				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __(
-						'Icon Color Settings',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
-				{ iconColorControls() }
-			</PanelBody>
-		</InspectorControls>
-	);
+						{ ! disableLink && (
+							<>
+								<p className="components-base-control__label">
+									{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
+								</p>
+								<TextControl
+									value={ link }
+									onChange={ ( value ) =>
+										setAttributes( { link: value } )
+									}
+									placeholder={ __(
+										'Enter URL',
+										'ultimate-addons-for-gutenberg'
+									) }
+								/>
+								<ToggleControl
+									label={ __(
+										'Open in New Tab',
+										'ultimate-addons-for-gutenberg'
+									) }
+									checked={ target }
+									onChange={ ( value ) =>
+										setAttributes( { target: ! target } )
+									}
+								/>
+							</>
+						) }
+						<hr className="uagb-editor__separator" />
+						<h2>
+							{ __(
+								'Icon Color Settings',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</h2>
+						{ iconColorControls() }
+					</PanelBody>
+				</InspectorControls>
+	}
+	return inspectorControls();
 };
 export default React.memo( Settings );
