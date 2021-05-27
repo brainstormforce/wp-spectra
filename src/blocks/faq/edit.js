@@ -16,8 +16,6 @@ const Render = lazy( () =>
 import { compose } from '@wordpress/compose';
 import { select, withSelect } from '@wordpress/data';
 
-const faq = [];
-
 let prevState;
 
 const faqComponent = ( props ) => {
@@ -52,14 +50,6 @@ const faqComponent = ( props ) => {
 			'uagb-style-faq-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
-
-		for ( let i = 1; i <= 2; i++ ) {
-			faq.push( {
-				question: 'What is FAQ?',
-				answer:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-			} );
-		}
 
 		if (
 			10 === questionBottomPaddingDesktop &&
