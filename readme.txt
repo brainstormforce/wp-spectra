@@ -189,6 +189,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Layout - Conflicting with the Envira Gallery plugin.
 * Fix: Section - Margin Left/Right not working issue.
 * Fix: Table of content - HTML validation issue.
+* Fix: Social Share - Encoded the Page/Post URl embedded in the Social Share Button Link.
 
 
 = 1.22.4 =
