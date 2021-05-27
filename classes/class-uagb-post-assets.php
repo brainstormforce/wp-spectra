@@ -212,6 +212,11 @@ class UAGB_Post_Assets {
 		$this->stylesheet         = $page_assets['css'];
 		$this->script             = $page_assets['js'];
 		$this->gfonts             = $page_assets['gfonts'];
+
+		if ( isset( $page_assets['uag_faq_layout'] ) ) {
+			$this->uag_faq_layout = $page_assets['uag_faq_layout'];
+		}
+
 		return false;
 	}
 
@@ -279,6 +284,7 @@ class UAGB_Post_Assets {
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
+			'uag_faq_layout'     => $this->uag_faq_layout,
 		);
 
 		update_post_meta( $this->post_id, '_uag_page_assets', $meta_array );
