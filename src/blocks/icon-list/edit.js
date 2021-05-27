@@ -6,10 +6,10 @@ import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/icon-list/settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Render" */ './render' )
+	import( /* webpackChunkName: "chunks/icon-list/render" */ './render' )
 );
 
 import { withSelect } from '@wordpress/data';
@@ -41,12 +41,10 @@ const UAGBIconList = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 

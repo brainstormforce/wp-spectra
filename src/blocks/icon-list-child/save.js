@@ -23,18 +23,18 @@ export default function save( props ) {
 		hideLabel,
 	} = attributes;
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( image_icon == 'icon' ) {
 		if ( icon ) {
-			image_icon_html = (
+			imageIconHtml = (
 				<span className="uagb-icon-list__source-icon">
 					{ renderSVG( icon ) }
 				</span>
 			);
 		}
 	} else if ( image && image.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img className="uagb-icon-list__source-image" src={ image.url } />
 		);
 	}
@@ -61,7 +61,7 @@ export default function save( props ) {
 			) }
 			<div className="uagb-icon-list__content-wrap">
 				<span className="uagb-icon-list__source-wrap">
-					{ image_icon_html }
+					{ imageIconHtml }
 				</span>
 				{ ! hideLabel && '' != label && (
 					<div className="uagb-icon-list__label-wrap">

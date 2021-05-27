@@ -8,10 +8,10 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './settings' )
+	import( /* webpackChunkName: "chunks/icon-list-child/settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Render" */ './render' )
+	import( /* webpackChunkName: "chunks/icon-list-child/render" */ './render' )
 );
 
 const UAGBIconListChild = ( props ) => {
@@ -39,12 +39,10 @@ const UAGBIconListChild = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 
