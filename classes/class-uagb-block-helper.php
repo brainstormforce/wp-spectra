@@ -560,15 +560,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
+			$style['max-width'] = $inner_width;
+
 			$selectors = array(
 				'.uagb-columns__wrap'              => $style,
 				' .uagb-columns__video-wrap'       => array(
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
-				' > .uagb-columns__inner-wrap'     => array(
-					'max-width' => $inner_width,
-				),
-				' .uagb-column__inner-wrap'        => array(
+				' .uagb-column__wrap'              => array(
 					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 				),
 				' .uagb-columns__shape-top svg'    => array(
@@ -837,7 +836,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 
 			$selectors = array(
-				'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
+				' .uagb-heading-text'   => array(
 					'text-align'    => $attr['headingAlign'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
@@ -845,7 +844,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
 				),
-				'.wp-block-uagb-advanced-heading .uagb-desc-text' => array(
+				' .uagb-desc-text'      => array(
 					'text-align' => $attr['headingAlign'],
 					'color'      => $attr['subHeadingColor'],
 				),

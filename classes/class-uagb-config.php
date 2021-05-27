@@ -3074,10 +3074,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/post-masonry'           => array(
 						'name' => 'post',
 					),
-					'uagb/price-list-child'       => array(
+					'uagb/restaurant-menu-child'  => array(
 						'name' => 'price-list-child',
 					),
-					'uagb/price-list'             => array(
+					'uagb/restaurant-menu'        => array(
 						'name' => 'price-list',
 					),
 					'uagb/review'                 => array(
