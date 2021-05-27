@@ -22,7 +22,7 @@ const WebfontLoader = lazy( () =>
 	)
 );
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
 import {
 	BlockControls,
@@ -239,7 +239,7 @@ const Settings = ( props ) => {
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Button Icon' ) }</h2>
 				<FontIconPicker
-					icons={ svg_icons }
+					icons={ svgIcons }
 					renderFunc={ renderSVG }
 					value={ icon }
 					onChange={ ( value ) => setAttributes( { icon: value } ) }
@@ -291,9 +291,7 @@ const Settings = ( props ) => {
 							beforeIcon=""
 							allowReset
 						/>
-						<Suspense fallback={ lazyLoader() }>
 							<Columnresponsive />
-						</Suspense>
 						{ 'Desktop' === deviceType && (
 							<>
 								<RangeControl
@@ -421,7 +419,6 @@ const Settings = ( props ) => {
 				/>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Title', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -478,12 +475,10 @@ const Settings = ( props ) => {
 							label: 'titleLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -540,7 +535,6 @@ const Settings = ( props ) => {
 							label: 'prefixLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Colors' ) }</h2>
 				<TabPanel
@@ -726,9 +720,7 @@ const Settings = ( props ) => {
 	const backgroundSettings = () => {
 		return (
 			<PanelBody title={ __( 'Background' ) } initialOpen={ false }>
-				<Suspense fallback={ lazyLoader() }>
 					<Columnresponsive />
-				</Suspense>
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
@@ -1276,7 +1268,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			{ linkControl }
 			<InspectorControls>
@@ -1285,11 +1277,9 @@ const Settings = ( props ) => {
 				{ backgroundSettings() }
 				{ borderSettings() }
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
 				{ loadTitleGoogleFonts }
 				{ loadPrefixGoogleFonts }
-			</Suspense>
-		</>
+		</Suspense>
 	);
 };
 
