@@ -135,7 +135,7 @@ export default compose(
 		let categoriesList = [];
 		let rest_base = '';
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
-			$.ajax( {
+			jQuery.ajax( {
 				url: uagb_blocks_info.ajax_url,
 				data: {
 					action: 'uagb_post_pagination',
