@@ -293,8 +293,7 @@ const Settings = ( props ) => {
 	const typographySettings = () => {
 		return (
 			<>
-				<Suspense fallback={ lazyLoader() }>
-					<PanelBody
+				<PanelBody
 						title={ __(
 							'Typography',
 							'ultimate-addons-for-gutenberg'
@@ -486,7 +485,6 @@ const Settings = ( props ) => {
 							} }
 						/>
 					</PanelBody>
-				</Suspense>
 				<PanelColorSettings
 					title={ __(
 						'Color Settings',
@@ -1588,15 +1586,13 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			{ inspectControl() }
-			<Suspense fallback={ lazyLoader() }>
-				{ loadNameGoogleFonts }
-				{ loadCompanyGoogleFonts }
-				{ loadDescGoogleFonts }
-			</Suspense>
-		</>
+			{ loadNameGoogleFonts }
+			{ loadCompanyGoogleFonts }
+			{ loadDescGoogleFonts }
+		</Suspense>
 	);
 };
 export default React.memo( Settings );

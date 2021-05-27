@@ -5,10 +5,10 @@ import TestimonialStyle from './inline-styles';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Settings" */ './Settings' )
+	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/testimonial/Render" */ './Render' )
+	import( /* webpackChunkName: "chunks/testimonial/render" */ './render' )
 );
 import { withSelect } from '@wordpress/data';
 
@@ -39,12 +39,10 @@ const UAGBtestimonial = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 

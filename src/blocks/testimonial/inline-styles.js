@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function TestimonialStyle( props ) {
+function testimonialStyle( props ) {
 	const {
 		headingAlign,
 		companyColor,
@@ -290,4 +290,4 @@ function TestimonialStyle( props ) {
 	return stylingCss;
 }
 
-export default TestimonialStyle;
+export default testimonialStyle;

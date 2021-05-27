@@ -11,8 +11,6 @@ import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/Image';
 
-import { Fragment } from '@wordpress/element';
-
 const deprecated = [
 	{
 		attributes,
@@ -34,8 +32,8 @@ const deprecated = [
 				arrowColor,
 			} = props.attributes;
 
-			const sldier_data = [];
-			sldier_data.push( {
+			const sldierData = [];
+			sldierData.push( {
 				block_id,
 				columns,
 				autoplaySpeed,
@@ -50,14 +48,14 @@ const deprecated = [
 			} );
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
 							'uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside'
 						) }
 						id={ `uagb-testimonial-${ block_id }` }
-						data-slider={ JSON.stringify( sldier_data ) }
+						data-slider={ JSON.stringify( sldierData ) }
 					>
 						<div
 							className={ classnames(
@@ -90,7 +88,7 @@ const deprecated = [
 										<div className="uagb-tm__text-wrap">
 											{
 												// Get description.
-												<Fragment>
+												<>
 													<div
 														className="uagb-testinomial-text-wrap"
 														key={
@@ -108,7 +106,7 @@ const deprecated = [
 															}
 														/>
 													</div>
-												</Fragment>
+												</>
 											}
 											<div className="uagb-tm__meta">
 												<div className="uagb-tm__meta-inner">
@@ -126,7 +124,7 @@ const deprecated = [
 
 													{
 														//title_text
-														<Fragment>
+														<>
 															<div
 																className="uagb-testimonial-details"
 																key={
@@ -159,7 +157,7 @@ const deprecated = [
 																	}
 																/>
 															</div>
-														</Fragment>
+														</>
 													}
 												</div>
 											</div>
@@ -175,7 +173,7 @@ const deprecated = [
 							) ) }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -200,7 +198,6 @@ const deprecated = [
 			} = props.attributes;
 
 			return (
-				<Fragment>
 					<div
 						className={ classnames(
 							className,
@@ -239,7 +236,7 @@ const deprecated = [
 										<div className="uagb-tm__text-wrap">
 											{
 												// Get description.
-												<Fragment>
+												<>
 													<div
 														className="uagb-testinomial-text-wrap"
 														key={
@@ -257,7 +254,7 @@ const deprecated = [
 															}
 														/>
 													</div>
-												</Fragment>
+												</>
 											}
 											<div className="uagb-tm__meta">
 												<div className="uagb-tm__meta-inner">
@@ -275,7 +272,7 @@ const deprecated = [
 
 													{
 														//title_text
-														<Fragment>
+														<>
 															<div
 																className="uagb-testimonial-details"
 																key={
@@ -308,7 +305,7 @@ const deprecated = [
 																	}
 																/>
 															</div>
-														</Fragment>
+														</>
 													}
 												</div>
 											</div>
@@ -324,7 +321,6 @@ const deprecated = [
 							) ) }
 						</div>
 					</div>
-				</Fragment>
 			);
 		},
 	},
@@ -349,7 +345,6 @@ const deprecated = [
 			} = props.attributes;
 
 			return (
-				<Fragment>
 					<div
 						className={ classnames(
 							className,
@@ -388,7 +383,7 @@ const deprecated = [
 										<div className="uagb-tm__text-wrap">
 											{
 												// Get description.
-												<Fragment>
+												<>
 													<div
 														className="uagb-testinomial-text-wrap"
 														key={
@@ -406,7 +401,7 @@ const deprecated = [
 															}
 														/>
 													</div>
-												</Fragment>
+												</>
 											}
 											<div className="uagb-tm__meta">
 												<div className="uagb-tm__meta-inner">
@@ -424,7 +419,7 @@ const deprecated = [
 
 													{
 														//title_text
-														<Fragment>
+														<>
 															<div
 																className="uagb-testimonial-details"
 																key={
@@ -457,7 +452,7 @@ const deprecated = [
 																	}
 																/>
 															</div>
-														</Fragment>
+														</>
 													}
 												</div>
 											</div>
@@ -473,7 +468,6 @@ const deprecated = [
 							) ) }
 						</div>
 					</div>
-				</Fragment>
 			);
 		},
 	},
@@ -535,7 +529,7 @@ const deprecated = [
 									<div className="uagb-tm__text-wrap">
 										{
 											// Get description.
-											<Fragment>
+											<>
 												<div
 													className="uagb-testinomial-text-wrap"
 													key={ 'text-wrap-' + index }
@@ -549,7 +543,7 @@ const deprecated = [
 														index_value={ index }
 													/>
 												</div>
-											</Fragment>
+											</>
 										}
 										<div className="uagb-tm__meta">
 											<div className="uagb-tm__meta-inner">
@@ -564,7 +558,7 @@ const deprecated = [
 
 												{
 													//title_text
-													<Fragment>
+													<>
 														<div
 															className="uagb-testimonial-details"
 															key={
@@ -593,7 +587,7 @@ const deprecated = [
 																}
 															/>
 														</div>
-													</Fragment>
+													</>
 												}
 											</div>
 										</div>
