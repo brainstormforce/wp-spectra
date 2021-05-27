@@ -69,6 +69,10 @@ class UAGB_Front_Assets {
 	public function set_initial_variables() {
 		$this->post_id = get_the_ID();
 
+		if ( ! $this->post_id ) {
+			return;
+		}
+
 		$this->post_assets = new UAGB_Post_Assets( $this->post_id );
 
 		if ( ! $this->post_assets->is_allowed_assets_generation ) {
@@ -119,7 +123,7 @@ class UAGB_Front_Assets {
 			 */
 			$this_post = apply_filters_deprecated( 'uagb_post_for_stylesheet', array( $this_post ), '1.23.0' );
 
-			if ( $this->post_id !== $this_post->ID ) {
+			if ( $this_post && $this->post_id !== $this_post->ID ) {
 				$this->post_assets->prepare_assets( $this_post );
 			}
 		} elseif ( is_archive() || is_home() || is_search() ) {

@@ -75,6 +75,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $uag_flag = false;
 
 		/**
+		 * Page Blocks Variable
+		 *
+		 * @since 1.6.0
+		 * @var page_blocks
+		 * @deprecated 1.23.0
+		 */
+		public static $page_blocks;
+
+		/**
+		 * Stylesheet
+		 *
+		 * @since 1.13.4
+		 * @var stylesheet
+		 * @deprecated 1.23.0
+		 */
+		public static $stylesheet = '';
+
+		/**
+		 * Script
+		 *
+		 * @since 1.13.4
+		 * @var script
+		 * @deprecated 1.23.0
+		 */
+		public static $script = '';
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -1058,7 +1085,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( is_array( $block ) ) {
 
-					if ( '' === $block['blockName'] ) {
+					if ( empty( $block['blockName'] ) ) {
 						continue;
 					}
 
