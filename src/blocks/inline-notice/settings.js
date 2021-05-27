@@ -33,7 +33,7 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -257,7 +257,7 @@ const Settings = ( props ) => {
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 						<FontIconPicker
-							icons={ svg_icons }
+							icons={ svgIcons }
 							renderFunc={ renderSVG }
 							theme="default"
 							value={ icon }
@@ -398,7 +398,6 @@ const Settings = ( props ) => {
 				) }
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 						attributes={ attributes }
@@ -452,8 +451,6 @@ const Settings = ( props ) => {
 							label: 'titleLineHeightTablet',
 						} }
 					/>
-				</Suspense>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Content',
@@ -510,7 +507,6 @@ const Settings = ( props ) => {
 							label: 'descLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __(
@@ -576,8 +572,8 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ blockControls() }
-			<InspectorControls>{ inlineGeneralSettings() }</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>
+				<InspectorControls>{ inlineGeneralSettings() }</InspectorControls>
 				{ loadTitleGoogleFonts }
 				{ loadDescriptionGoogleFonts }
 			</Suspense>

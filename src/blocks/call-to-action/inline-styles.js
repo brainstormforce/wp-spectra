@@ -164,7 +164,7 @@ function CtaStyle( props ) {
 		}
 	}
 
-	var tabletSelectors = {
+	var tablet_selectors  = {
 		" .block-editor-rich-text__editable.uagb-cta__title" : {
 			"font-size" : generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
@@ -187,7 +187,7 @@ function CtaStyle( props ) {
 		},
 	}
 
-	var mobileSelectors = {
+	var mobile_selectors  = {
 		" .block-editor-rich-text__editable.uagb-cta__title" : {
 			"font-size" : generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
@@ -214,9 +214,9 @@ function CtaStyle( props ) {
 
 	var styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tabletSelectors, id, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors , id, true, "tablet" )
 
-	styling_css += generateCSS( mobileSelectors, id, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors , id, true, "mobile" )
 
 	return styling_css
 
