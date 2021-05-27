@@ -3,16 +3,19 @@
  */
 
 .uagb-toc__list > p {
+	color: #666;
 	font-size: 13px;
 	font-style: italic;
-	color: #666;
 }
 
 .block-editor-page {
+
 	.uagb-toc__scroll-top {
+
 		&.dashicons {
 			right: 343px;
 		}
+
 		&.uagb-toc__show-scroll {
 			display: inline-table;
 		}
