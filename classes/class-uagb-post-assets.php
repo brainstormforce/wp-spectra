@@ -1,6 +1,6 @@
 <?php
 /**
- * UAGB Helper.
+ * UAGB Post Base.
  *
  * @package UAGB
  */
@@ -10,17 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class UAGB_Frontend.
+ * Class UAGB_Post_Assets.
  */
-class UAGB_Frontend {
-
-	/**
-	 * Member Variable
-	 *
-	 * @since 0.0.1
-	 * @var instance
-	 */
-	private static $instance;
+class UAGB_Post_Assets {
 
 	/**
 	 * Current Block List
@@ -28,7 +20,7 @@ class UAGB_Frontend {
 	 * @since 1.13.4
 	 * @var current_block_list
 	 */
-	public static $current_block_list = array();
+	public $current_block_list = array();
 
 	/**
 	 * UAG Block Flag
@@ -36,7 +28,7 @@ class UAGB_Frontend {
 	 * @since 1.13.4
 	 * @var uag_flag
 	 */
-	public static $uag_flag = false;
+	public $uag_flag = false;
 
 	/**
 	 * UAG FAQ Layout Flag
@@ -44,7 +36,7 @@ class UAGB_Frontend {
 	 * @since 1.18.1
 	 * @var uag_faq_layout
 	 */
-	public static $uag_faq_layout = false;
+	public $uag_faq_layout = false;
 
 	/**
 	 * UAG File Generation Flag
@@ -52,7 +44,7 @@ class UAGB_Frontend {
 	 * @since 1.14.0
 	 * @var file_generation
 	 */
-	public static $file_generation = 'disabled';
+	public $file_generation = 'disabled';
 
 	/**
 	 * UAG File Generation Flag
@@ -60,7 +52,7 @@ class UAGB_Frontend {
 	 * @since 1.14.0
 	 * @var file_generation
 	 */
-	public static $is_allowed_assets_generation = false;
+	public $is_allowed_assets_generation = false;
 
 	/**
 	 * UAG File Generation Fallback Flag for CSS
@@ -68,7 +60,7 @@ class UAGB_Frontend {
 	 * @since 1.15.0
 	 * @var file_generation
 	 */
-	public static $fallback_css = false;
+	public $fallback_css = false;
 
 	/**
 	 * UAG File Generation Fallback Flag for JS
@@ -76,7 +68,7 @@ class UAGB_Frontend {
 	 * @since 1.15.0
 	 * @var file_generation
 	 */
-	public static $fallback_js = false;
+	public $fallback_js = false;
 
 	/**
 	 * Enque Style and Script Variable
@@ -84,7 +76,7 @@ class UAGB_Frontend {
 	 * @since 1.14.0
 	 * @var instance
 	 */
-	public static $assets_file_handler = array();
+	public $assets_file_handler = array();
 
 	/**
 	 * Stylesheet
@@ -92,7 +84,7 @@ class UAGB_Frontend {
 	 * @since 1.13.4
 	 * @var stylesheet
 	 */
-	public static $stylesheet = '';
+	public $stylesheet = '';
 
 	/**
 	 * Script
@@ -100,7 +92,7 @@ class UAGB_Frontend {
 	 * @since 1.13.4
 	 * @var script
 	 */
-	public static $script = '';
+	public $script = '';
 
 	/**
 	 * Store Json variable
@@ -108,7 +100,7 @@ class UAGB_Frontend {
 	 * @since 1.8.1
 	 * @var instance
 	 */
-	public static $icon_json;
+	public $icon_json;
 
 	/**
 	 * Page Blocks Variable
@@ -116,14 +108,14 @@ class UAGB_Frontend {
 	 * @since 1.6.0
 	 * @var instance
 	 */
-	public static $page_blocks;
+	public $page_blocks;
 
 	/**
 	 * Google fonts to enqueue
 	 *
 	 * @var array
 	 */
-	public static $gfonts = array();
+	public $gfonts = array();
 
 	/**
 	 * Static CSS Added Array
@@ -131,63 +123,42 @@ class UAGB_Frontend {
 	 * @since 1.23.0
 	 * @var array
 	 */
-	public static $static_css_blocks = array();
+	public $static_css_blocks = array();
 
 	/**
-	 *  Initiator
+	 * Static CSS Added Array
 	 *
-	 * @since 0.0.1
+	 * @since 1.23.0
+	 * @var array
 	 */
-	public static function get_instance() {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self();
-		}
+	public static $conditional_blocks_printed = false;
 
-		return self::$instance;
-	}
+	/**
+	 * Post ID
+	 *
+	 * @since 1.23.0
+	 * @var array
+	 */
+	protected $post_id;
 
 	/**
 	 * Constructor
-	 */
-	public function __construct() {
-
-		$this->define_vars();
-
-		add_action( 'wp', array( $this, 'set_initial_vars' ), 5 );
-		/* Generated assets */
-		add_action( 'wp', array( $this, 'generate_assets' ), 99 );
-
-		/* Generated assets files*/
-		add_action( 'wp_enqueue_scripts', array( $this, 'generate_asset_files' ), 1 );
-
-		/* Enqueue assets files*/
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_block_assets' ), 10 );
-
-		/* Print fonts */
-		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-		add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
-		add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
-
-		add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
-		add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
-	}
-
-	/**
-	 * Define variables.
 	 *
-	 * @since 1.23.0
+	 * @param int $post_id Post ID.
 	 */
-	public function define_vars() {
-		self::$file_generation = UAGB_Helper::$file_generation;
-	}
+	public function __construct( $post_id ) {
 
-	/**
-	 * Set initial required variables.
-	 *
-	 * @since 1.23.0
-	 */
-	public function set_initial_vars() {
-		self::$is_allowed_assets_generation = $this->allow_assets_generation();
+		$this->post_id = $post_id;
+
+		$this->file_generation = UAGB_Helper::$file_generation;
+
+		$this->is_allowed_assets_generation = $this->allow_assets_generation();
+
+		if ( $this->is_allowed_assets_generation ) {
+			$this_post = get_post( $this->post_id );
+
+			$this->prepare_assets( $this_post );
+		}
 	}
 
 	/**
@@ -197,9 +168,7 @@ class UAGB_Frontend {
 	 */
 	public function allow_assets_generation() {
 
-		$post_id = get_the_ID();
-
-		$page_assets = get_post_meta( $post_id, '_uagb_page_assets', true );
+		$page_assets = get_post_meta( $this->post_id, '_uag_page_assets', true );
 
 		if ( empty( $page_assets )
 			|| empty( $page_assets['uag_version'] )
@@ -208,21 +177,21 @@ class UAGB_Frontend {
 			return true;
 		}
 
-		if ( 'enabled' === self::$file_generation ) {
+		if ( 'enabled' === $this->file_generation ) {
 
-			$post_timestamp_css = get_post_meta( $post_id, '_uag_css_file_name', true );
-			$post_timestamp_js  = get_post_meta( $post_id, '_uag_js_file_name', true );
+			$post_timestamp_css = get_post_meta( $this->post_id, '_uag_css_file_name', true );
+			$post_timestamp_js  = get_post_meta( $this->post_id, '_uag_js_file_name', true );
 
 			$css_asset_info = array();
 			$js_asset_info  = array();
 
 			if ( ! empty( $post_timestamp_css ) ) {
-				$css_asset_info = self::get_asset_info( 'css', $post_id );
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
 				$css_file_path  = $css_asset_info['css'];
 			}
 
 			if ( ! empty( $post_timestamp_js ) ) {
-				$js_asset_info = self::get_asset_info( 'js', $post_id );
+				$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
 				$js_file_path  = $js_asset_info['js'];
 			}
 
@@ -230,49 +199,74 @@ class UAGB_Frontend {
 				return true;
 			}
 
-			if ( empty( $js_file_path ) || ! file_exists( $js_file_path ) ) {
+			if ( ! empty( $js_file_path ) && ! file_exists( $js_file_path ) ) {
 				return true;
 			}
 
-			self::$assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
+			$this->assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
 		}
 
 		// Set required varibled from stored data.
-		self::$current_block_list = $page_assets['current_block_list'];
-		self::$uag_flag           = $page_assets['uag_flag'];
-		self::$stylesheet         = $page_assets['css'];
-		self::$script             = $page_assets['js'];
+		$this->current_block_list = $page_assets['current_block_list'];
+		$this->uag_flag           = $page_assets['uag_flag'];
+		$this->stylesheet         = $page_assets['css'];
+		$this->script             = $page_assets['js'];
+		$this->gfonts             = $page_assets['gfonts'];
+		$this->uag_faq_layout     = $page_assets['uag_faq_layout'];
 
 		return false;
 	}
+
 	/**
-	 * This function deletes the Page assets from the Page Meta Key.
+	 * Enqueue all page assets.
 	 *
-	 * @param int $post_id Post Id.
 	 * @since 1.23.0
 	 */
-	public function delete_page_assets( $post_id ) {
+	public function enqueue_scripts() {
 
-		if ( 'disabled' !== self::$file_generation ) {
-
-			$css_asset_info = self::get_asset_info( 'css', $post_id );
-			$js_asset_info  = self::get_asset_info( 'js', $post_id );
-
-			$css_file_path = $css_asset_info['css'];
-			$js_file_path  = $js_asset_info['js'];
-
-			if ( file_exists( $css_file_path ) ) {
-				wp_delete_file( $css_file_path );
-			}
-			if ( file_exists( $js_file_path ) ) {
-				wp_delete_file( $js_file_path );
-			}
+		// Global Required assets.
+		if ( has_blocks( $this->post_id ) ) {
+			/* Print conditional css for all blocks */
+			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
 		}
 
-		delete_post_meta( $post_id, '_uagb_page_assets' );
-		delete_post_meta( $post_id, '_uag_css_file_name' );
-		delete_post_meta( $post_id, '_uag_js_file_name' );
+		// UAG Flag specific.
+		if ( $this->is_allowed_assets_generation ) {
+			$this->generate_assets();
+			$this->generate_asset_files();
+		}
+
+		if ( $this->uag_flag ) {
+
+			// Register Assets for Frontend & Enqueue for Editor.
+			UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
+
+			// Enqueue all dependency assets.
+			$this->enqueue_blocks_dependency_frontend();
+
+			// RTL Styles Suppport.
+			UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
+
+			// Print google fonts.
+			add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
+
+			if ( 'enabled' === $this->file_generation ) {
+				// Enqueue File Generation Assets Files.
+				$this->enqueue_file_generation_assets();
+			}
+
+			// Print Dynamic CSS.
+			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
+				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			}
+			// Print Dynamic JS.
+			if ( 'disabled' === $this->file_generation || $this->fallback_js ) {
+				add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			}
+		}
 	}
+
+
 	/**
 	 * This function updates the Page assets in the Page Meta Key.
 	 *
@@ -280,17 +274,17 @@ class UAGB_Frontend {
 	 */
 	public function update_page_assets() {
 
-		$post_id = get_the_ID();
-
 		$meta_array = array(
-			'css'                => self::$stylesheet,
-			'js'                 => self::$script,
-			'current_block_list' => self::$current_block_list,
-			'uag_flag'           => self::$uag_flag,
+			'css'                => $this->stylesheet,
+			'js'                 => $this->script,
+			'current_block_list' => $this->current_block_list,
+			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
+			'gfonts'             => $this->gfonts,
+			'uag_faq_layout'     => $this->uag_faq_layout,
 		);
 
-		update_post_meta( $post_id, '_uagb_page_assets', $meta_array );
+		update_post_meta( $this->post_id, '_uag_page_assets', $meta_array );
 	}
 	/**
 	 * This is the action where we create dynamic asset files.
@@ -301,13 +295,9 @@ class UAGB_Frontend {
 	 */
 	public function generate_asset_files() {
 
-		if ( ! self::$is_allowed_assets_generation ) {
-			return;
-		}
-
-		if ( 'enabled' === self::$file_generation ) {
-			self::file_write( self::$stylesheet, 'css' );
-			self::file_write( self::$script, 'js' );
+		if ( 'enabled' === $this->file_generation ) {
+			$this->file_write( $this->stylesheet, 'css', $this->post_id );
+			$this->file_write( $this->script, 'js', $this->post_id );
 		}
 
 		$this->update_page_assets();
@@ -318,9 +308,9 @@ class UAGB_Frontend {
 	 *
 	 * @since 1.13.4
 	 */
-	public function enqueue_block_assets() {
+	public function enqueue_blocks_dependency_frontend() {
 
-		$block_list_for_assets = self::$current_block_list;
+		$block_list_for_assets = $this->current_block_list;
 
 		$blocks = UAGB_Config::get_block_attributes();
 
@@ -333,10 +323,11 @@ class UAGB_Frontend {
 			foreach ( $js_assets as $asset_handle => $val ) {
 				// Scripts.
 				if ( 'uagb-faq-js' === $val ) {
-					if ( self::$uag_faq_layout ) {
+					if ( $this->uag_faq_layout ) {
 						wp_enqueue_script( 'uagb-faq-js' );
 					}
 				} else {
+
 					wp_enqueue_script( $val );
 				}
 			}
@@ -347,37 +338,55 @@ class UAGB_Frontend {
 			}
 		}
 
-		if ( 'enabled' === self::$file_generation ) {
-			$file_handler = self::$assets_file_handler;
+		$uagb_masonry_ajax_nonce = wp_create_nonce( 'uagb_masonry_ajax_nonce' );
+		wp_localize_script(
+			'uagb-post-js',
+			'uagb_data',
+			array(
+				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'uagb_masonry_ajax_nonce' => $uagb_masonry_ajax_nonce,
+			)
+		);
 
-			if ( isset( $file_handler['css_url'] ) ) {
-				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), UAGB_VER, 'all' );
-			} else {
-				self::$fallback_css = true;
-			}
-			if ( isset( $file_handler['js_url'] ) ) {
-				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
-			} else {
-				self::$fallback_js = true;
-			}
-		}
-
+		$uagb_forms_ajax_nonce = wp_create_nonce( 'uagb_forms_ajax_nonce' );
+		wp_localize_script(
+			'uagb-forms-js',
+			'uagb_forms_data',
+			array(
+				'ajax_url'              => admin_url( 'admin-ajax.php' ),
+				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
+			)
+		);
 	}
 
+	/**
+	 * Enqueue File Generation Files.
+	 */
+	public function enqueue_file_generation_assets() {
+
+		$file_handler = $this->assets_file_handler;
+
+		if ( isset( $file_handler['css_url'] ) ) {
+			wp_enqueue_style( 'uag-style-' . $this->post_id, $file_handler['css_url'], array(), UAGB_VER, 'all' );
+		} else {
+			$this->fallback_css = true;
+		}
+		if ( isset( $file_handler['js_url'] ) ) {
+			wp_enqueue_script( 'uag-script-' . $this->post_id, $file_handler['js_url'], array(), UAGB_VER, true );
+		} else {
+			$this->fallback_js = true;
+		}
+	}
 	/**
 	 * Print the Script in footer.
 	 */
 	public function print_script() {
 
-		if ( 'enabled' === self::$file_generation && ! self::$fallback_js ) {
+		if ( empty( $this->script ) ) {
 			return;
 		}
 
-		if ( empty( self::$script ) ) {
-			return;
-		}
-
-		echo '<script type="text/javascript" id="uagb-script-frontend">' . self::$script . '</script>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		echo '<script type="text/javascript" id="uagb-script-frontend-' . $this->post_id . '">' . $this->script . '</script>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -385,17 +394,11 @@ class UAGB_Frontend {
 	 */
 	public function print_stylesheet() {
 
-		$this->print_conditional_css();
-
-		if ( 'enabled' === self::$file_generation && ! self::$fallback_css ) {
+		if ( empty( $this->stylesheet ) ) {
 			return;
 		}
 
-		if ( empty( self::$stylesheet ) ) {
-			return;
-		}
-
-		echo '<style id="uagb-style-frontend">' . self::$stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		echo '<style id="uagb-style-frontend-' . $this->post_id . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -403,9 +406,16 @@ class UAGB_Frontend {
 	 */
 	public function print_conditional_css() {
 
+		if ( self::$conditional_blocks_printed ) {
+			return;
+		}
+
 		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
 
 		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+		self::$conditional_blocks_printed = true;
+
 	}
 
 
@@ -414,16 +424,17 @@ class UAGB_Frontend {
 	 */
 	public function print_google_fonts() {
 
-		if ( empty( UAGB_Helper::$gfonts ) ) {
+		if ( empty( $this->gfonts ) ) {
 			return;
 		}
+
 		$show_google_fonts = apply_filters( 'uagb_blocks_show_google_fonts', true );
 		if ( ! $show_google_fonts ) {
 			return;
 		}
 		$link    = '';
 		$subsets = array();
-		foreach ( UAGB_Helper::$gfonts as $key => $gfont_values ) {
+		foreach ( $this->gfonts as $key => $gfont_values ) {
 			if ( ! empty( $link ) ) {
 				$link .= '%7C'; // Append a new font to the string.
 			}
@@ -483,18 +494,18 @@ class UAGB_Frontend {
 			}
 		}
 
-		self::$current_block_list[] = $name;
+		$this->current_block_list[] = $name;
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {
-			self::$uag_flag = true;
+			$this->uag_flag = true;
 		}
 
 		// Add static css here.
 		$block_css_arr = UAGB_Config::get_block_assets_css();
 
-		if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], self::$static_css_blocks, true ) ) {
+		if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
 			$common_css = array(
-				'common' => self::get_block_static_css( $block_css_arr[ $name ]['name'] ),
+				'common' => $this->get_block_static_css( $block_css_arr[ $name ]['name'] ),
 			);
 			$css       += $common_css;
 		}
@@ -646,8 +657,9 @@ class UAGB_Frontend {
 
 			case 'uagb/faq':
 				$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
+
 				if ( ! isset( $blockattr['layout'] ) ) {
-					self::$uag_faq_layout = true;
+					$this->uag_faq_layout = true;
 				}
 				UAGB_Block_JS::blocks_faq_gfont( $blockattr );
 				break;
@@ -690,8 +702,8 @@ class UAGB_Frontend {
 
 						$assets = $this->get_blocks_assets( $reusable_blocks );
 
-						self::$stylesheet .= $assets['css'];
-						self::$script     .= $assets['js'];
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
 					}
 				} else {
 					// Get CSS for the Block.
@@ -718,7 +730,7 @@ class UAGB_Frontend {
 			}
 		}
 
-		self::$current_block_list = array_unique( self::$current_block_list );
+		$this->current_block_list = array_unique( $this->current_block_list );
 
 		return array(
 			'css' => $css,
@@ -734,80 +746,13 @@ class UAGB_Frontend {
 	 */
 	public function generate_assets() {
 
-		if ( ! self::$is_allowed_assets_generation ) {
-			return;
-		}
-
-		$this_post = array();
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			if ( is_cart() ) {
-
-				$id        = get_option( 'woocommerce_cart_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_account_page() ) {
-
-				$id        = get_option( 'woocommerce_myaccount_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_checkout() ) {
-
-				$id        = get_option( 'woocommerce_checkout_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_checkout_pay_page() ) {
-
-				$id        = get_option( 'woocommerce_pay_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_shop() ) {
-
-				$id        = get_option( 'woocommerce_shop_page_id' );
-				$this_post = get_post( $id );
-			}
-
-			if ( is_object( $this_post ) ) {
-				$this->prepare_assets( $this_post );
-			}
-		}
-
-		if ( is_single() || is_page() || is_404() ) {
-
-			global $post;
-			$this_post = $post;
-
-			if ( ! is_object( $this_post ) ) {
-				return;
-			}
-
-			/**
-			 * Filters the post to build stylesheet for.
-			 *
-			 * @param \WP_Post $this_post The global post.
-			 */
-			$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
-
-			$this->prepare_assets( $this_post );
-
-		} elseif ( is_archive() || is_home() || is_search() ) {
-
-			global $wp_query;
-			$cached_wp_query = $wp_query;
-
-			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-				$this->prepare_assets( $post );
-			}
-		}
-
-		/* Prepare assets and store in static variable */
+		/* Finalize prepared assets and store in static variable */
 		global $content_width;
 
-		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
+		$this->stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', $this->stylesheet );
 
-		if ( '' !== self::$script ) {
-			self::$script = 'document.addEventListener("DOMContentLoaded", function(){ ' . self::$script . ' })';
+		if ( '' !== $this->script ) {
+			$this->script = 'document.addEventListener("DOMContentLoaded", function(){ ' . $this->script . ' })';
 		}
 
 		/* Update page assets */
@@ -829,7 +774,7 @@ class UAGB_Frontend {
 		if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
 
 			$blocks            = $this->parse_blocks( $this_post->post_content );
-			self::$page_blocks = $blocks;
+			$this->page_blocks = $blocks;
 
 			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 				return;
@@ -837,8 +782,11 @@ class UAGB_Frontend {
 
 			$assets = $this->get_blocks_assets( $blocks );
 
-			self::$stylesheet .= $assets['css'];
-			self::$script     .= $assets['js'];
+			$this->stylesheet .= $assets['css'];
+			$this->script     .= $assets['js'];
+
+			// Update fonts.
+			$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
 		}
 	}
 
@@ -890,12 +838,11 @@ class UAGB_Frontend {
 
 						$assets = $this->get_blocks_assets( $reusable_blocks );
 
-						self::$stylesheet .= $assets['css'];
-						self::$script     .= $assets['js'];
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
 
 					}
 				} else {
-
 					// Add your block specif css here.
 					$block_assets = $this->get_block_css_and_js( $block );
 					// Get CSS for the Block.
@@ -934,27 +881,6 @@ class UAGB_Frontend {
 	}
 
 	/**
-	 * Returns an array of paths for the CSS and JS assets
-	 * of the current post.
-	 *
-	 * @param  var $type    Gets the CSS\JS type.
-	 * @param  var $post_id Post ID.
-	 * @since 1.14.0
-	 * @return array
-	 */
-	public static function get_asset_info( $type, $post_id ) {
-
-		$uploads_dir = UAGB_Helper::get_upload_dir();
-		$info        = array();
-
-		$path                   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
-		$info[ $type ]          = $uploads_dir['path'] . $path;
-		$info[ $type . '_url' ] = $uploads_dir['url'] . $path;
-
-		return $info;
-	}
-
-	/**
 	 * Creates a new file for Dynamic CSS/JS.
 	 *
 	 * @param  string $style_data The data that needs to be copied into the created file.
@@ -964,19 +890,14 @@ class UAGB_Frontend {
 	 * @since 1.15.0
 	 * @return boolean true/false
 	 */
-	public static function create_file( $style_data, $timestamp, $type, $file_state ) {
-
-		$post_id = get_the_ID();
-		if ( ! $post_id ) {
-			return false;
-		}
+	public function create_file( $style_data, $timestamp, $type, $file_state ) {
 
 		$uploads_dir = UAGB_Helper::get_upload_dir();
 
 		$file_system = uagb_filesystem();
 
 		// Example 'uag-css-15-1645698679.css'.
-		$path = 'uag-' . $type . '-' . $post_id . '-' . $timestamp . '.' . $type;
+		$path = 'uag-' . $type . '-' . $this->post_id . '-' . $timestamp . '.' . $type;
 
 		if ( 'old' === $file_state ) {
 			$path = $timestamp;
@@ -987,7 +908,7 @@ class UAGB_Frontend {
 
 		if ( $result ) {
 			// Update meta with current timestamp.
-			update_post_meta( $post_id, '_uag_' . $type . '_file_name', $path );
+			update_post_meta( $this->post_id, '_uag_' . $type . '_file_name', $path );
 		}
 
 		return $result;
@@ -998,16 +919,16 @@ class UAGB_Frontend {
 	 *
 	 * @param  var $style_data    Gets the CSS\JS for the current Page.
 	 * @param  var $type    Gets the CSS\JS type.
+	 * @param  var $post_id Post ID.
 	 * @since  1.14.0
 	 */
-	public static function file_write( $style_data, $type = 'css' ) {
+	public function file_write( $style_data, $type = 'css', $post_id = '' ) {
 
-		$post_id = get_the_ID();
-		if ( ! $post_id ) {
+		if ( ! $this->post_id ) {
 			return false;
 		}
 
-		$post_timestamp_path = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
+		$post_timestamp_path = get_post_meta( $this->post_id, '_uag_' . $type . '_file_name', true );
 
 		$date          = new DateTime();
 		$new_timestamp = $date->getTimestamp();
@@ -1015,7 +936,7 @@ class UAGB_Frontend {
 
 		// Get timestamp - Already saved OR new one.
 		$post_timestamp_path = empty( $post_timestamp_path ) ? '' : $post_timestamp_path;
-		$assets_info         = self::get_asset_info( $type, $post_id );
+		$assets_info         = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
 
 		$relative_src_path = $assets_info[ $type ];
 
@@ -1042,10 +963,10 @@ class UAGB_Frontend {
 		 */
 		if ( ! $file_system->exists( $relative_src_path ) && '' !== $post_timestamp_path ) {
 
-			$did_create = self::create_file( $style_data, $post_timestamp_path, $type, 'old' );
+			$did_create = $this->create_file( $style_data, $post_timestamp_path, $type, 'old' );
 
 			if ( $did_create ) {
-				self::$assets_file_handler = array_merge( self::$assets_file_handler, $assets_info );
+				$this->assets_file_handler = array_merge( $this->assets_file_handler, $assets_info );
 			}
 
 			return $did_create;
@@ -1058,11 +979,11 @@ class UAGB_Frontend {
 		if ( '' === $post_timestamp_path ) {
 
 			// Create a new file.
-			$did_create = self::create_file( $style_data, $new_timestamp, $type, 'new' );
+			$did_create = $this->create_file( $style_data, $new_timestamp, $type, 'new' );
 
 			if ( $did_create ) {
-				$new_assets_info           = self::get_asset_info( $type, $post_id );
-				self::$assets_file_handler = array_merge( self::$assets_file_handler, $new_assets_info );
+				$new_assets_info           = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
+				$this->assets_file_handler = array_merge( $this->assets_file_handler, $new_assets_info );
 			}
 
 			return $did_create;
@@ -1084,45 +1005,20 @@ class UAGB_Frontend {
 				wp_delete_file( $relative_src_path );
 
 				// Create a new file.
-				$did_create = self::create_file( $style_data, $new_timestamp, $type, 'new' );
+				$did_create = $this->create_file( $style_data, $new_timestamp, $type, 'new' );
 
 				if ( $did_create ) {
-					$new_assets_info           = self::get_asset_info( $type, $post_id );
-					self::$assets_file_handler = array_merge( self::$assets_file_handler, $new_assets_info );
+					$new_assets_info           = UAGB_Scripts_Utils::get_asset_info( $type, $this->post_id );
+					$this->assets_file_handler = array_merge( $this->assets_file_handler, $new_assets_info );
 				}
 
 				return $did_create;
 			}
 		}
 
-		self::$assets_file_handler = array_merge( self::$assets_file_handler, $assets_info );
+		$this->assets_file_handler = array_merge( $this->assets_file_handler, $assets_info );
 
 		return true;
-	}
-
-	/**
-	 * Disable canonical on Single Post.
-	 *
-	 * @param  string $redirect_url  The redirect URL.
-	 * @param  string $requested_url The requested URL.
-	 * @since  1.14.9
-	 * @return bool|string
-	 */
-	public function override_canonical( $redirect_url, $requested_url ) {
-
-		global $wp_query;
-
-		if ( is_array( $wp_query->query ) ) {
-
-			if ( true === $wp_query->is_singular
-				&& - 1 === $wp_query->current_post
-				&& true === $wp_query->is_paged
-			) {
-				$redirect_url = false;
-			}
-		}
-
-		return $redirect_url;
 	}
 
 	/**
@@ -1133,7 +1029,7 @@ class UAGB_Frontend {
 	 * @return string Static CSS.
 	 * @since 1.23.0
 	 */
-	public static function get_block_static_css( $block_name ) {
+	public function get_block_static_css( $block_name ) {
 
 		$css = '';
 
@@ -1146,15 +1042,9 @@ class UAGB_Frontend {
 			$css = $file_system->get_contents( $block_static_css_path );
 		}
 
-		array_push( self::$static_css_blocks, $block_name );
+		array_push( $this->static_css_blocks, $block_name );
 
 		return $css;
 	}
 }
-
-/**
- *  Prepare if class 'UAGB_Frontend' exist.
- *  Kicking this off by calling 'get_instance()' method
- */
-UAGB_Frontend::get_instance();
 
