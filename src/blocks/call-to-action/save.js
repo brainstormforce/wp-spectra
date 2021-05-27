@@ -56,7 +56,6 @@ export default function save( props ) {
 	);
 
 	const output = (
-		<>
 			<div
 				className={ classnames(
 					'uagb-cta__content-wrap',
@@ -94,7 +93,6 @@ export default function save( props ) {
 					{ ctaPosition == 'right' && isCta }
 				</div>
 			</div>
-		</>
 	);
 
 	let target = '';

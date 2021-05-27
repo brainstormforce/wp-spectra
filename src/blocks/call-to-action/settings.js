@@ -241,7 +241,6 @@ const Settings = ( props ) => {
 
 						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
 							( ctaType === 'text' && (
-								<Suspense fallback={ lazyLoader() }>
 									<TypographyControl
 										label={ __(
 											'Typography',
@@ -283,7 +282,6 @@ const Settings = ( props ) => {
 										} }
 										disableLineHeight={ true }
 									/>
-								</Suspense>
 							) ) }
 					</>
 				) }
@@ -789,7 +787,6 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -846,7 +843,6 @@ const Settings = ( props ) => {
 							label: 'titleLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -867,7 +863,6 @@ const Settings = ( props ) => {
 				<h2>
 					{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -924,7 +919,6 @@ const Settings = ( props ) => {
 							label: 'descLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -1156,7 +1150,7 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
 				{ ctaType !== 'all' && ctaType !== 'none' && layouts() }
@@ -1164,12 +1158,10 @@ const Settings = ( props ) => {
 				{ ctaSettings() }
 				{ marginSettings() }
 			</InspectorControls>
-			<Suspense fallback={ lazyLoader() }>
 				{ loadCtaGoogleFonts }
 				{ loadTitleGoogleFonts }
 				{ loadDescGoogleFonts }
-			</Suspense>
-		</>
+		</Suspense>
 	);
 };
 

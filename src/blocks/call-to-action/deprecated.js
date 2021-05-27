@@ -15,8 +15,6 @@ import attributes from './attributes';
 
 import { __ } from '@wordpress/i18n';
 
-import { Fragment } from '@wordpress/element';
-
 const deprecated = [
 	{
 		attributes,
@@ -32,7 +30,7 @@ const deprecated = [
 				description,
 			} = props.attributes;
 
-			const is_cta = (
+			const isCta = (
 				<CallToAction
 					attributes={ props.attributes }
 					setAttributes="not_set"
@@ -41,7 +39,7 @@ const deprecated = [
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ '' !== description && (
 						<div className="uagb-cta-text-wrap">
 							<Description
@@ -50,12 +48,12 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			// Get Title components.
-			const title_text = (
-				<Fragment>
+			const titleText = (
+				<>
 					{ '' !== ctaTitle && (
 						<div className="uagb-cta__title-wrap">
 							<Title
@@ -64,11 +62,11 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-cta__content-wrap',
@@ -76,37 +74,37 @@ const deprecated = [
 						) }
 					>
 						<div className="uagb-cta__left-right-wrap">
-							{ ctaPosition == 'left' && is_cta }
+							{ ctaPosition == 'left' && isCta }
 							<div className="uagb-cta__content">
 								{ ctaPosition == 'above-title' && (
-									<Fragment>
-										{ is_cta }
-										{ title_text }
+									<>
+										{ isCta }
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ctaPosition == 'below-title' && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-										{ is_cta }
-									</Fragment>
+										{ isCta }
+									</>
 								) }
 
 								{ ( ctaPosition == 'left' ||
 									ctaPosition == 'right' ) && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
-							{ ctaPosition == 'right' && is_cta }
+							{ ctaPosition == 'right' && isCta }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -115,7 +113,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -124,7 +122,7 @@ const deprecated = [
 						id={ `uagb-cta-block-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
@@ -132,11 +130,11 @@ const deprecated = [
 									rel="noopener noreferrer"
 								></a>
 								{ output }
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -154,13 +152,13 @@ const deprecated = [
 				description,
 			} = props.attributes;
 
-			const is_cta = (
+			const isCta = (
 				<CTA attributes={ props.attributes } setAttributes="not_set" />
 			);
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ '' !== description && (
 						<div className="uagb-cta-text-wrap">
 							<Description
@@ -169,12 +167,12 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			// Get Title components.
-			const title_text = (
-				<Fragment>
+			const titleText = (
+				<>
 					{ '' !== ctaTitle && (
 						<div className="uagb-cta__title-wrap">
 							<Title
@@ -183,11 +181,11 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-cta__content-wrap',
@@ -195,37 +193,37 @@ const deprecated = [
 						) }
 					>
 						<div className="uagb-cta__left-right-wrap">
-							{ ctaPosition == 'left' && is_cta }
+							{ ctaPosition == 'left' && isCta }
 							<div className="uagb-cta__content">
 								{ ctaPosition == 'above-title' && (
-									<Fragment>
-										{ is_cta }
-										{ title_text }
+									<>
+										{ isCta }
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ctaPosition == 'below-title' && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-										{ is_cta }
-									</Fragment>
+										{ isCta }
+									</>
 								) }
 
 								{ ( ctaPosition == 'left' ||
 									ctaPosition == 'right' ) && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
-							{ ctaPosition == 'right' && is_cta }
+							{ ctaPosition == 'right' && isCta }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -234,7 +232,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -243,7 +241,7 @@ const deprecated = [
 						id={ `uagb-cta-block-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
@@ -251,11 +249,11 @@ const deprecated = [
 									rel="noopener noreferrer"
 								></a>
 								{ output }
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -273,13 +271,13 @@ const deprecated = [
 				description,
 			} = props.attributes;
 
-			const is_cta = (
+			const isCta = (
 				<CTA attributes={ props.attributes } setAttributes="not_set" />
 			);
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ '' !== description && (
 						<div className="uagb-cta-text-wrap">
 							<Description
@@ -288,12 +286,12 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			// Get Title components.
-			const title_text = (
-				<Fragment>
+			const titleText = (
+				<>
 					{ '' !== ctaTitle && (
 						<div className="uagb-cta__title-wrap">
 							<Title
@@ -302,11 +300,11 @@ const deprecated = [
 							/>
 						</div>
 					) }
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-cta__content-wrap',
@@ -314,37 +312,37 @@ const deprecated = [
 						) }
 					>
 						<div className="uagb-cta__left-right-wrap">
-							{ ctaPosition == 'left' && is_cta }
+							{ ctaPosition == 'left' && isCta }
 							<div className="uagb-cta__content">
 								{ ctaPosition == 'above-title' && (
-									<Fragment>
-										{ is_cta }
-										{ title_text }
+									<>
+										{ isCta }
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ctaPosition == 'below-title' && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-										{ is_cta }
-									</Fragment>
+										{ isCta }
+									</>
 								) }
 
 								{ ( ctaPosition == 'left' ||
 									ctaPosition == 'right' ) && (
-									<Fragment>
-										{ title_text }
+									<>
+										{ titleText }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
-							{ ctaPosition == 'right' && is_cta }
+							{ ctaPosition == 'right' && isCta }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -353,7 +351,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -362,7 +360,7 @@ const deprecated = [
 						) }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
@@ -370,11 +368,11 @@ const deprecated = [
 									rel="noopener noreferrer"
 								></a>
 								{ output }
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},

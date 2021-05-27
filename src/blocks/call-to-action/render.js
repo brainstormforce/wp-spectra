@@ -85,6 +85,7 @@ const Render = ( props ) => {
 	};
 
 	return (
+		<Suspense fallback={ lazyLoader() }>
 			<div
 				className={ classnames(
 					className,
@@ -92,7 +93,6 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-				<Suspense fallback={ lazyLoader() }>
 					{ ctaType == 'all' && (
 						<>
 							<a
@@ -106,8 +106,8 @@ const Render = ( props ) => {
 						</>
 					) }
 					{ ctaType !== 'all' && output() }
-				</Suspense>
 			</div>
+		</Suspense>
 	);
 };
 
