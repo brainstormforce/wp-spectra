@@ -49,7 +49,7 @@ const UAGBCF7 = ( props ) => {
 export default withSelect( ( select, props ) => {
 	const { setAttributes } = props;
 	const { formId, isHtml } = props.attributes;
-	let json_data = '';
+	let jsonData = '';
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
 		$.ajax( {
@@ -64,12 +64,12 @@ export default withSelect( ( select, props ) => {
 			success( data ) {
 				setAttributes( { isHtml: true } );
 				setAttributes( { formJson: data } );
-				json_data = data;
+				jsonData = data;
 			},
 		} );
 	}
 
 	return {
-		formHTML: json_data,
+		formHTML: jsonData,
 	};
 } )( UAGBCF7 );
