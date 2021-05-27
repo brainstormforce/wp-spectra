@@ -5,10 +5,8 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import attributes from './attributes';
-
-const { Fragment } = wp.element;
-
-const { RichText } = wp.blockEditor;
+import { Fragment } from '@wordpress/element';
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

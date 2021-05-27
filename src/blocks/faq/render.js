@@ -3,22 +3,29 @@
  */
 
 import classnames from 'classnames';
-import times from 'lodash/times';
-import memoize from 'memize';
-
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
+import React, { useMemo } from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/faq-child' ];
 
 const faq = [];
+const faqCount = 2;
 
-export default function renderFaq( props ) {
+const Render = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes, deviceType } = props;
 	const { equalHeight } = attributes;
 
-	const getFaqChildTemplate = memoize( ( faq_count, faq ) => {
-		return times( faq_count, ( n ) => [ 'uagb/faq-child', faq[ n ] ] );
-	} );
+	const getFaqChildTemplate = useMemo( () => {
+		const childFaq = [];
+
+		for ( let i = 0; i < faqCount; i++ ) {
+			childFaq.push( [ 'uagb/faq-child', faq[ i ] ] );
+		}
+
+		return childFaq;
+	}, [ faqCount, faq ] );
 
 	const equalHeightClass = equalHeight ? 'uagb-faq-equal-height' : '';
 
@@ -38,11 +45,13 @@ export default function renderFaq( props ) {
 			role="tablist"
 		>
 			<InnerBlocks
-				template={ getFaqChildTemplate( 2, faq ) }
+				template={ getFaqChildTemplate }
 				templateLock={ false }
 				allowedBlocks={ ALLOWED_BLOCKS }
 				__experimentalMoverDirection={ 'vertical' }
 			/>
 		</div>
 	);
-}
+};
+
+export default React.memo( Render );

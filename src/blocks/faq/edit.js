@@ -3,12 +3,18 @@
  */
 
 import styling from './styling';
-import faqSettings from './settings';
-import renderFaq from './render';
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-const { compose } = wp.compose;
-const { select, withSelect } = wp.data;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/faq/render" */ './render' )
+);
+
+import { compose } from '@wordpress/compose';
+import { select, withSelect } from '@wordpress/data';
 
 const faq = [];
 
@@ -140,10 +146,10 @@ const faqComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
-			{ faqSettings( props ) }
-			{ renderFaq( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

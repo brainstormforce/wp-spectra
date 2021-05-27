@@ -76,16 +76,16 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
-	let icon_color = iconColor;
-	let icon_active_color = iconActiveColor;
+	let tabletSelectors = {};
+	let mobileSelectors = {};
+	let iconColorTemp = iconColor;
+	let iconActiveColorTemp = iconActiveColor;
 
 	if ( 'undefined' === typeof iconColor || '' == iconColor ) {
-		icon_color = questionTextColor;
+		iconColorTemp = questionTextColor;
 	}
 	if ( 'undefined' === typeof iconActiveColor || '' == iconActiveColor ) {
-		icon_active_color = questionTextActiveColor;
+		iconActiveColorTemp = questionTextActiveColor;
 	}
 
 	selectors = {
@@ -93,13 +93,13 @@ function styling( props ) {
 			width: generateCSSUnit( iconSize, iconSizeType ),
 			height: generateCSSUnit( iconSize, iconSizeType ),
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			fill: icon_color,
+			fill: iconColorTemp,
 		},
 		' .uagb-icon-active svg': {
 			width: generateCSSUnit( iconSize, iconSizeType ),
 			height: generateCSSUnit( iconSize, iconSizeType ),
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			fill: icon_active_color,
+			fill: iconActiveColorTemp,
 		},
 		' .uagb-faq-child__outer-wrap': {
 			'margin-bottom': generateCSSUnit( rowsGap, 'px' ),
@@ -167,7 +167,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( gapBtwIconQUestion, 'px' ),
 		},
 		' .uagb-faq-item:hover .uagb-icon svg': {
-			fill: icon_active_color,
+			fill: iconActiveColorTemp,
 		},
 		' .uagb-faq-item .uagb-faq-questions-button.uagb-faq-questions': {
 			'flex-direction': iconAlign,
@@ -196,7 +196,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-faq-questions-button': {
 			'padding-top': generateCSSUnit(
 				vquestionPaddingTablet,
@@ -265,7 +265,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-faq-questions-button': {
 			'padding-top': generateCSSUnit(
 				vquestionPaddingMobile,
@@ -390,38 +390,38 @@ function styling( props ) {
 		] = {
 			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
 		};
-		tablet_selectors[
+		tabletSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		};
-		mobile_selectors[
+		mobileSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		};
 	}
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

@@ -2,9 +2,12 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
-export default function renderFaqChild( props, state ) {
+const Render = ( props ) => {
+	const state = props.state;
+	props = props.parentProps;
+
 	const { attributes, setAttributes } = props;
 	const {
 		question,
@@ -85,4 +88,6 @@ export default function renderFaqChild( props, state ) {
 			{ faqRenderHtml() }
 		</div>
 	);
-}
+};
+
+export default React.memo( Render );

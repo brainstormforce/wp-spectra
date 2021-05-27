@@ -6,20 +6,32 @@ import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import Columnresponsive from '../../components/typography/column-responsive';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/faq/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/faq/fontloader" */ '@Components/typography/fontloader'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/faq/typography" */ '@Components/typography'
+	)
+);
 
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
-const { ColorPalette, InspectorControls } = wp.blockEditor;
+import { ColorPalette, InspectorControls } from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -28,11 +40,13 @@ const {
 	Button,
 	Dashicon,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
-export default function faqSettings( props ) {
+const Settings = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		layout,
@@ -749,7 +763,7 @@ export default function faqSettings( props ) {
 					{ __( 'Expand', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 				<FontIconPicker
-					icons={ svg_icons }
+					icons={ svgIcons }
 					renderFunc={ renderSVG }
 					theme="default"
 					value={ icon }
@@ -764,7 +778,7 @@ export default function faqSettings( props ) {
 					{ __( 'Collapse', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 				<FontIconPicker
-					icons={ svg_icons }
+					icons={ svgIcons }
 					renderFunc={ renderSVG }
 					theme="default"
 					value={ iconActive }
@@ -1579,7 +1593,7 @@ export default function faqSettings( props ) {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				{ faqGeneralSettings() }
 				{ faqStylingSettings() }
@@ -1588,6 +1602,8 @@ export default function faqSettings( props ) {
 			</InspectorControls>
 			{ loadQuestionGoogleFonts }
 			{ loadAnswerGoogleFonts }
-		</>
+		</Suspense>
 	);
-}
+};
+
+export default React.memo( Settings );

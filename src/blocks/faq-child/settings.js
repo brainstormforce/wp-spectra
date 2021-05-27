@@ -1,8 +1,10 @@
-const { InspectorControls } = wp.blockEditor;
+import { InspectorControls } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
-export default function faqChildSettings() {
+const Settings = ( props ) => {
+	props = props.parentProps;
+
 	const faqChildControls = () => {
 		return (
 			<p className="uagb-settings-notice">
@@ -14,4 +16,6 @@ export default function faqChildSettings() {
 	};
 
 	return <InspectorControls>{ faqChildControls }</InspectorControls>;
-}
+};
+
+export default React.memo( Settings );

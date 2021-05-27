@@ -4,10 +4,7 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-
-const { Fragment } = wp.element;
-
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { className } = props;
@@ -23,14 +20,14 @@ export default function save( props ) {
 
 	const faqRenderIcon = () => {
 		return (
-			<Fragment>
+			<>
 				<span className="uagb-icon uagb-faq-icon-wrap">
 					{ renderSVG( icon ) }
 				</span>
 				<span className="uagb-icon-active uagb-faq-icon-wrap">
 					{ renderSVG( iconActive ) }
 				</span>
-			</Fragment>
+			</>
 		);
 	};
 	const faqRenderAccordion = () => {
