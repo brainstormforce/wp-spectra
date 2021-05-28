@@ -188,8 +188,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Post Grid - Link to complete box redirect to the last post when image background set to Top.
 * Fix: Post Layout - Conflicting with the Envira Gallery plugin.
 * Fix: Section - Margin Left/Right not working issue.
+* Fix: Social Share - Query string variables was omitted after the first ampersand. Encoded the Page/Post URl.
 * Fix: Table of content - HTML validation issue.
-* Fix: Social Share - Encoded the Page/Post URl embedded in the Social Share Button Link.
 
 
 = 1.22.4 =
