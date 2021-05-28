@@ -6,12 +6,9 @@
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
-
-const { __ } = wp.i18n;
-
-const { InspectorControls, MediaUpload, ColorPalette } = wp.blockEditor;
-
-const { PanelBody, SelectControl, Button, TabPanel } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { InspectorControls, MediaUpload, ColorPalette } from '@wordpress/block-editor';
+import { PanelBody, SelectControl, Button, TabPanel } from '@wordpress/components';
 
 const svg_icons = Object.keys( UAGBIcon );
 

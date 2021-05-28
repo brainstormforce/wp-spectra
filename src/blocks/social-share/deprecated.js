@@ -7,8 +7,7 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/renderIcon';
 import links from './links';
-
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

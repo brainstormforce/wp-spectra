@@ -9,6 +9,7 @@ import rendersocialShareChild from './render';
 import React, { useEffect } from 'react';
 
 const socialShareChildComponent = ( props ) => {
+	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 

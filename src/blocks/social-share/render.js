@@ -5,8 +5,7 @@
 import classnames from 'classnames';
 import times from 'lodash/times';
 import memoize from 'memize';
-
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/social-share-child' ];
 

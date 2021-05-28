@@ -6,19 +6,19 @@ import map from 'lodash/map';
 import Columnresponsive from '../../components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	Button,
 	ButtonGroup,
-} = wp.components;
+} from '@wordpress/components';
 
 export default function socialShareSettings( props ) {
 	const { attributes, setAttributes, deviceType } = props;

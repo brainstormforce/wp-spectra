@@ -5,7 +5,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { className } = props;

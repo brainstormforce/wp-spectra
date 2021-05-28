@@ -5,8 +5,7 @@ import styling from './styling';
 import socialShareSettings from './settings';
 import rendersocialShare from './render';
 import React, { useEffect } from 'react';
-
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const socialShareComponent = ( props ) => {
 	useEffect( () => {

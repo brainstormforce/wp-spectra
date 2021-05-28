@@ -11,8 +11,7 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
-
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/social-share', {
 	title: uagb_blocks_info.blocks[ 'uagb/social-share' ].title,
