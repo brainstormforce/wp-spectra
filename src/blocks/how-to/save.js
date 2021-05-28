@@ -4,7 +4,6 @@
 
 import classnames from 'classnames';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import { Fragment } from '@wordpress/element';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -114,9 +113,9 @@ export default function save( props ) {
 						tagName="h4"
 						className="uagb-howto-timeNeeded-text"
 					/>
-					<Fragment>
+					<>
 						{ timeInYears && (
-							<Fragment>
+							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ ' ' }
 									{ timeInYears }
@@ -125,49 +124,49 @@ export default function save( props ) {
 									{ ' ' }
 									{ yearlabel }
 								</p>
-							</Fragment>
+							</>
 						) }
 						{ timeInMonths && (
-							<Fragment>
+							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ timeInMonths }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ monthlabel }
 								</p>
-							</Fragment>
+							</>
 						) }
 						{ timeInDays && (
-							<Fragment>
+							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ timeInDays }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ daylabel }
 								</p>
-							</Fragment>
+							</>
 						) }
 						{ timeInHours && (
-							<Fragment>
+							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ timeInHours }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ hourlabel }
 								</p>
-							</Fragment>
+							</>
 						) }
 						{ minsValue && (
-							<Fragment>
+							<>
 								<p className="uagb-howto-timeNeeded-value">
 									{ minsValue }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ minslabel }
 								</p>
-							</Fragment>
+							</>
 						) }
-					</Fragment>
+					</>
 				</span>
 			) }
 			{ showEstcost && (
