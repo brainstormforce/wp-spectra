@@ -46,6 +46,7 @@ import {
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
+	props = props.parentProps;
 	const [ isURLPickerOpen, setCount ] = useState( false );
 
 	const { attributes, setAttributes, deviceType } = props;
