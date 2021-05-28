@@ -80,8 +80,7 @@ const Settings = ( props ) => {
 		headingTag,
 		layout,
 		highlightWidth,
-	} = props;
-
+	} = attributes;
 	let loadTitleGoogleFonts;
 	let loadDescriptionGoogleFonts;
 
