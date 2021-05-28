@@ -1,4 +1,3 @@
-import times from 'lodash/times';
 import { __ } from '@wordpress/i18n';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
