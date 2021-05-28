@@ -1131,6 +1131,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$mob_styling_css .= '}';
 			}
 
+			$post_assets_instance = $this->get_post_assets_instance();
+			if ( $post_assets_instance ) {
+
+				$post_assets_instance->stylesheet .= $desktop . $tab_styling_css . $mob_styling_css;
+				$post_assets_instance->script     .= $js;
+			}
+
 			return array(
 				'css' => $desktop . $tab_styling_css . $mob_styling_css,
 				'js'  => $js,
@@ -1172,6 +1179,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				self::file_write( self::$script, 'js' );
 			}
 		}
+
 		/**
 		 * Enqueue Gutenberg block assets for both frontend + backend.
 		 *
