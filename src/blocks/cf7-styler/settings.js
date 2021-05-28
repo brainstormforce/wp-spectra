@@ -3,18 +3,8 @@ import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import lazyLoader from '@Controls/lazy-loader';
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/cf7-styler/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/cf7-styler/typography" */ '@Components/typography'
-	)
-);
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 
 import {
 	AlignmentToolbar,
