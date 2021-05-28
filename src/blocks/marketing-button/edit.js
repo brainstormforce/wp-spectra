@@ -47,12 +47,10 @@ const UAGBMarketingButtonEdit = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 
