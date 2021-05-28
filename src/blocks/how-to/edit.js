@@ -6,12 +6,17 @@ import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
-import howToSchemaSettings from './settings';
-import renderHowToSchema from './render';
-import React, { useEffect } from 'react';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, lazy, Suspense } from 'react';
 
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/how-to/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/how-to/render" */ './render' )
+);
 
 let prevState;
 
@@ -85,7 +90,7 @@ const howToComponent = ( props ) => {
 	const minsValue = timeInMins ? timeInMins : time;
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			<SchemaNotices
 				headingTitle={ headingTitle }
 				headingDesc={ headingDesc }
@@ -105,9 +110,9 @@ const howToComponent = ( props ) => {
 				materials={ materials }
 				clientId={ props.clientId }
 			/>
-			{ howToSchemaSettings( props ) }
-			{ renderHowToSchema( props ) }
-		</>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 
@@ -120,7 +125,7 @@ export default compose(
 			? __experimentalGetPreviewDeviceType()
 			: null;
 
-		let url_chk = '';
+		let urlChk = '';
 		let title = '';
 
 		if (
@@ -128,21 +133,21 @@ export default compose(
 			null !== ownProps.attributes.mainimage &&
 			'' !== ownProps.attributes.mainimage
 		) {
-			url_chk = ownProps.attributes.mainimage.url;
+			urlChk = ownProps.attributes.mainimage.url;
 			title = ownProps.attributes.mainimage.title;
 		}
 
-		let tools_data = {};
-		let materials_data = {};
-		let steps_data = {};
-		const json_data = {
+		let toolsData = {};
+		let materialsData = {};
+		let stepsData = {};
+		const jsonData = {
 			'@context': 'https://schema.org',
 			'@type': 'HowTo',
 			name: ownProps.attributes.headingTitle,
 			description: ownProps.attributes.headingDesc,
 			image: {
 				'@type': 'ImageObject',
-				url: url_chk,
+				url: urlChk,
 				height: '406',
 				width: '305',
 			},
@@ -171,12 +176,12 @@ export default compose(
 			: ownProps.attributes.time;
 
 		if ( ownProps.attributes.showTotaltime ) {
-			json_data.totalTime =
+			jsonData.totalTime =
 				'P' + y + 'Y' + m + 'M' + d + 'DT' + h + 'H' + minutes + 'M';
 		}
 
 		if ( ownProps.attributes.showEstcost ) {
-			json_data.estimatedCost = {
+			jsonData.estimatedCost = {
 				'@type': 'MonetaryAmount',
 				currency: ownProps.attributes.currencyType,
 				value: ownProps.attributes.cost,
@@ -185,21 +190,21 @@ export default compose(
 
 		if ( ownProps.attributes.showTools ) {
 			ownProps.attributes.tools.forEach( ( tools, key ) => {
-				tools_data = {
+				toolsData = {
 					'@type': 'HowToTool',
 					name: tools.add_required_tools,
 				};
-				json_data.tool[ key ] = tools_data;
+				jsonData.tool[ key ] = toolsData;
 			} );
 		}
 
 		if ( ownProps.attributes.showMaterials ) {
 			ownProps.attributes.materials.forEach( ( materials, key ) => {
-				materials_data = {
+				materialsData = {
 					'@type': 'HowToSupply',
 					name: materials.add_required_materials,
 				};
-				json_data.supply[ key ] = materials_data;
+				jsonData.supply[ key ] = materialsData;
 			} );
 		}
 
@@ -208,18 +213,18 @@ export default compose(
 		);
 
 		getChildBlocks.forEach( ( steps, key ) => {
-			steps_data = {
+			stepsData = {
 				'@type': 'HowToStep',
 				url: steps.attributes.ctaLink,
 				name: steps.attributes.infoBoxTitle,
 				text: steps.attributes.headingDesc,
 				image: steps.attributes.iconImage.url,
 			};
-			json_data.step[ key ] = steps_data;
+			jsonData.step[ key ] = stepsData;
 		} );
 
 		return {
-			schemaJsonData: json_data,
+			schemaJsonData: jsonData,
 			deviceType,
 		};
 	} )

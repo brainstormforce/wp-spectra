@@ -5,8 +5,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import attributes from './attributes';
-
-const { RichText, InnerBlocks } = wp.blockEditor;
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

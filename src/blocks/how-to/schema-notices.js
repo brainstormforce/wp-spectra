@@ -3,8 +3,7 @@
  *
  */
 import { __ } from '@wordpress/i18n';
-
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
 const SchemaNotices = ( props ) => {
 	const {
@@ -33,7 +32,7 @@ const SchemaNotices = ( props ) => {
 
 	const steps = select( 'core/block-editor' ).getBlocks( clientId );
 
-	let steps_empty_item_flag = false;
+	let stepsEmptyItemFlag = false;
 
 	steps.forEach( ( step, key ) => {
 		if (
@@ -43,7 +42,7 @@ const SchemaNotices = ( props ) => {
 			'' === step.attributes.headingDesc ||
 			'' === step.attributes.iconImage.url
 		) {
-			steps_empty_item_flag = true;
+			stepsEmptyItemFlag = true;
 		}
 	} );
 
@@ -113,7 +112,7 @@ const SchemaNotices = ( props ) => {
 	if ( 'undefined' === typeof steps || 2 > steps.length ) {
 		emptyItems.push( 'Atleast 2 Steps are required' );
 	}
-	if ( true === steps_empty_item_flag ) {
+	if ( true === stepsEmptyItemFlag ) {
 		emptyItems.push(
 			'The Info Box Heading, Description, Image, Call To Action Link are required for each Step. '
 		);
@@ -157,4 +156,4 @@ const SchemaNotices = ( props ) => {
 	return <>{ schemaNoticeMarkup() }</>;
 };
 
-export default SchemaNotices;
+export default React.memo( SchemaNotices );

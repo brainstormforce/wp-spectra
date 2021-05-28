@@ -1,14 +1,14 @@
 import classnames from 'classnames';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
-
-const { createBlock } = wp.blocks;
-
-const { RichText, InnerBlocks } = wp.blockEditor;
+import { createBlock } from '@wordpress/blocks';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
 
-export default function renderHowToSchema( props ) {
+const Render = ( props ) => {
+	props = props.parentProps;
+
 	// Setup the attributes
 	const {
 		className,
@@ -543,4 +543,6 @@ export default function renderHowToSchema( props ) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default React.memo( Render );

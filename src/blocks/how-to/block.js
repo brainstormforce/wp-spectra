@@ -9,10 +9,8 @@ import save from './save';
 import './style.scss';
 import './editor.scss';
 import deprecated from './deprecated';
-
 import { __ } from '@wordpress/i18n';
-
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/how-to', {
 	title: uagb_blocks_info.blocks[ 'uagb/how-to' ].title,

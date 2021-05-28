@@ -1,27 +1,36 @@
-import times from 'lodash/times';
+import React, { lazy, Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+
 // Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+const WebfontLoader = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/how-to/fontloader" */ '@Components/typography/fontloader'
+	)
+);
+const TypographyControl = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/how-to/typography" */ '@Components/typography'
+	)
+);
+
 import './style.scss';
 import { __ } from '@wordpress/i18n';
-
-const {
+import {
 	AlignmentToolbar,
 	BlockControls,
 	MediaUpload,
 	InspectorControls,
 	ColorPalette,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	Button,
 	ToggleControl,
 	ExternalLink,
-} = wp.components;
+} from '@wordpress/components';
 
 let imageSizeOptions = [
 	{
@@ -32,7 +41,9 @@ let imageSizeOptions = [
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
 
-export default function howToSchemaSettings( props ) {
+const Settings = ( props ) => {
+	props = props.parentProps;
+
 	// Setup the attributes
 	const {
 		attributes,
@@ -159,13 +170,14 @@ export default function howToSchemaSettings( props ) {
 	}
 
 	const getImageSize = ( sizes ) => {
-		const size_arr = [];
-		$.each( sizes, function ( index, item ) {
+		const sizeArr = [];
+
+		sizeTypes.map( ( { index, item } ) => {
 			const name = index;
 			const p = { value: name, label: name };
-			size_arr.push( p );
+			sizeArr.push( p );
 		} );
-		return size_arr;
+		return sizeArr;
 	};
 
 	const generalSettings = () => {
@@ -404,13 +416,13 @@ export default function howToSchemaSettings( props ) {
 								);
 
 								{
-									times( incAmount, ( n ) => {
+									for ( let i = 0; i < incAmount; i++ ) {
 										cloneIcons.push( {
 											add_required_tools:
 												'- A Computer' +
 												( cloneIcons.length + 1 ),
 										} );
-									} );
+									}
 								}
 
 								setAttributes( { tools: cloneIcons } );
@@ -461,13 +473,13 @@ export default function howToSchemaSettings( props ) {
 								);
 
 								{
-									times( incAmount, ( n ) => {
+									for ( let i = 0; i < incAmount; i++ ) {
 										cloneIcons.push( {
 											add_required_materials:
 												'- A WordPress Website' +
 												( cloneIcons.length + 1 ),
 										} );
-									} );
+									}
 								}
 
 								setAttributes( { materials: cloneIcons } );
@@ -786,7 +798,7 @@ export default function howToSchemaSettings( props ) {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
 				{ generalSettings() }
@@ -796,6 +808,8 @@ export default function howToSchemaSettings( props ) {
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
 			{ loadPriceGoogleFonts }
-		</>
+		</Suspense>
 	);
-}
+};
+
+export default React.memo( Settings );

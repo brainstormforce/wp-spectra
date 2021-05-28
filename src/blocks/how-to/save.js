@@ -3,10 +3,8 @@
  */
 
 import classnames from 'classnames';
-
-const { RichText, InnerBlocks } = wp.blockEditor;
-
-const { Fragment } = wp.element;
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { Fragment } from '@wordpress/element';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -40,19 +38,19 @@ export default function save( props ) {
 		timeInYears,
 	} = attributes;
 
-	let url_chk = '';
+	let urlChk = '';
 	let title = '';
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
 		'' !== attributes.mainimage
 	) {
-		url_chk = attributes.mainimage.url;
+		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
 	}
 
 	let url = '';
-	if ( '' !== url_chk ) {
+	if ( '' !== urlChk ) {
 		const size = attributes.mainimage.sizes;
 		const imageSize = attributes.imgSize;
 
@@ -62,14 +60,14 @@ export default function save( props ) {
 		) {
 			url = size[ imageSize ].url;
 		} else {
-			url = url_chk;
+			url = urlChk;
 		}
 	}
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img
 				className="uagb-howto__source-image"
 				src={ url }
@@ -107,9 +105,7 @@ export default function save( props ) {
 				className="uagb-howto-desc-text"
 			/>
 			{ mainimage.url && (
-				<div className="uagb-howto__source-wrap">
-					{ image_icon_html }
-				</div>
+				<div className="uagb-howto__source-wrap">{ imageIconHtml }</div>
 			) }
 			{ showTotaltime && (
 				<span className="uagb-howto__time-wrap">

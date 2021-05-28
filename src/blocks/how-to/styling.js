@@ -49,11 +49,11 @@ function styling( props ) {
 		step_gap,
 	} = props.attributes;
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
-	let s_gap = '' !== step_gap ? step_gap : 0;
-	s_gap += 30;
+	let sGap = '' !== step_gap ? step_gap : 0;
+	sGap += 30;
 
 	const selectors = {
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
@@ -93,7 +93,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 		' .wp-block-uagb-info-box': {
-			'margin-bottom': generateCSSUnit( s_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( sGap, 'px' ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-family': priceFontFamily,
@@ -273,7 +273,7 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .block-editor-rich-text__editable.uagb-howto-heading-text': {
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
@@ -396,7 +396,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-howto-heading-text': {
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
@@ -519,28 +519,28 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;
 
-	let styling_css = generateCSS( selectors, base_selector );
+	let stylingCss = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-tablet`,
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		`${ base_selector }.uagb-editor-preview-mode-mobile`,
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
