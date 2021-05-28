@@ -237,6 +237,14 @@ const Settings = ( props ) => {
 		return imageName;
 	};
 
+	const getImageData = () => {
+		var getImages = [];
+		for ( let i = 0; i < test_item_count; i++ ) {
+			getImages.push(tmControls(i))	
+		}
+		return getImages;
+	}
+
 	const togglePauseOnHover = () => {
 		setAttributes( { pauseOnHover: ! pauseOnHover } );
 	};
@@ -1392,8 +1400,7 @@ const Settings = ( props ) => {
 					title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					{ times( test_item_count, ( n ) => tmControls( n ) ) }
-
+					{ getImageData()}
 					{ cnt > 0 && (
 						<>
 							<hr className="uagb-editor__separator" />
