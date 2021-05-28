@@ -4,12 +4,21 @@
 
 // Import classes
 import styling from './styling';
-import socialShareChildSettings from './settings';
-import rendersocialShareChild from './render';
-import React, { useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, lazy, Suspense } from 'react';
+
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/social-share-child/settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/social-share-child/render" */ './render'
+	)
+);
 
 const socialShareChildComponent = ( props ) => {
-	
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -40,10 +49,10 @@ const socialShareChildComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
-			{ socialShareChildSettings( props ) }
-			{ rendersocialShareChild( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

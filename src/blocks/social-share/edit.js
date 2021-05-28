@@ -2,10 +2,18 @@
  * BLOCK: UAGB - Social Share Edit Class
  */
 import styling from './styling';
-import socialShareSettings from './settings';
-import rendersocialShare from './render';
-import React, { useEffect } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { withSelect } from '@wordpress/data';
+
+const Settings = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/social-share/settings" */ './settings'
+	)
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/social-share/render" */ './render' )
+);
 
 const socialShareComponent = ( props ) => {
 	useEffect( () => {
@@ -37,10 +45,10 @@ const socialShareComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
-			{ socialShareSettings( props ) }
-			{ rendersocialShare( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

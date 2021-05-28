@@ -6,23 +6,25 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-export default function rendersocialShareChild( props ) {
+const Render = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes } = props;
 
 	const { className, image_icon, icon, image } = attributes;
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( image_icon == 'icon' ) {
 		if ( icon ) {
-			image_icon_html = (
+			imageIconHtml = (
 				<span className="uagb-ss__source-icon">
 					{ renderSVG( icon ) }
 				</span>
 			);
 		}
 	} else if ( image && image.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img className="uagb-ss__source-image" src={ image.url } />
 		);
 	}
@@ -37,10 +39,10 @@ export default function rendersocialShareChild( props ) {
 			) }
 		>
 			<a className="uagb-ss__link" href="#" rel="noopener noreferrer">
-				<span className="uagb-ss__source-wrap">
-					{ image_icon_html }
-				</span>
+				<span className="uagb-ss__source-wrap">{ imageIconHtml }</span>
 			</a>
 		</div>
 	);
-}
+};
+
+export default React.memo( Render );

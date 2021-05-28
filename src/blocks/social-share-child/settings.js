@@ -7,12 +7,23 @@ import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, MediaUpload, ColorPalette } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, Button, TabPanel } from '@wordpress/components';
+import {
+	InspectorControls,
+	MediaUpload,
+	ColorPalette,
+} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	SelectControl,
+	Button,
+	TabPanel,
+} from '@wordpress/components';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
-export default function socialShareChildSettings( props ) {
+const Settings = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes, setAttributes } = props;
 
 	const {
@@ -239,7 +250,7 @@ export default function socialShareChildSettings( props ) {
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 						<FontIconPicker
-							icons={ svg_icons }
+							icons={ svgIcons }
 							renderFunc={ renderSVG }
 							theme="default"
 							value={ icon }
@@ -301,11 +312,11 @@ export default function socialShareChildSettings( props ) {
 		);
 	};
 	const iconColorSettings = () => {
-		let color_control = '';
-		let color_control_hover = '';
+		let colorControl = '';
+		let colorControlHover = '';
 
 		if ( 'image' == image_icon ) {
-			color_control = (
+			colorControl = (
 				<>
 					<p className="uagb-setting-label">
 						{ __(
@@ -328,7 +339,7 @@ export default function socialShareChildSettings( props ) {
 					/>
 				</>
 			);
-			color_control_hover = (
+			colorControlHover = (
 				<>
 					<p className="uagb-setting-label">
 						{ __(
@@ -354,7 +365,7 @@ export default function socialShareChildSettings( props ) {
 				</>
 			);
 		} else {
-			color_control = (
+			colorControl = (
 				<>
 					<p className="uagb-setting-label">
 						{ __( 'Icon Color' ) }
@@ -393,7 +404,7 @@ export default function socialShareChildSettings( props ) {
 					/>
 				</>
 			);
-			color_control_hover = (
+			colorControlHover = (
 				<>
 					<p className="uagb-setting-label">
 						{ __(
@@ -467,9 +478,9 @@ export default function socialShareChildSettings( props ) {
 					{ ( tabName ) => {
 						let color_tab;
 						if ( 'normal' === tabName.name ) {
-							color_tab = color_control;
+							color_tab = colorControl;
 						} else {
-							color_tab = color_control_hover;
+							color_tab = colorControlHover;
 						}
 						return <div>{ color_tab }</div>;
 					} }
@@ -483,4 +494,6 @@ export default function socialShareChildSettings( props ) {
 			{ iconColorSettings() }
 		</InspectorControls>
 	);
-}
+};
+
+export default React.memo( Settings );

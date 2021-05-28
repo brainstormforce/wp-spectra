@@ -3,23 +3,30 @@
  */
 
 import classnames from 'classnames';
-import times from 'lodash/times';
-import memoize from 'memize';
 import { InnerBlocks } from '@wordpress/block-editor';
+import React, { useMemo } from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/social-share-child' ];
 
-export default function rendersocialShare( props ) {
+const Render = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes, deviceType } = props;
 
 	const { className, social_count, socials, social_layout } = attributes;
 
-	const getSocialShareTemplate = memoize( ( icon_block, socials ) => {
-		return times( icon_block, ( n ) => [
-			'uagb/social-share-child',
-			socials[ n ],
-		] );
-	} );
+	const getSocialShareTemplate = useMemo( () => {
+		const childSocialShare = [];
+
+		for ( let i = 0; i < social_count; i++ ) {
+			childSocialShare.push( [
+				'uagb/social-share-child',
+				socials[ i ],
+			] );
+		}
+
+		return childSocialShare;
+	}, [ social_count, socials ] );
 
 	return (
 		<div
@@ -32,11 +39,13 @@ export default function rendersocialShare( props ) {
 			) }
 		>
 			<InnerBlocks
-				template={ getSocialShareTemplate( social_count, socials ) }
+				template={ getSocialShareTemplate }
 				templateLock={ false }
 				allowedBlocks={ ALLOWED_BLOCKS }
 				__experimentalMoverDirection={ social_layout }
 			/>
 		</div>
 	);
-}
+};
+
+export default React.memo( Render );

@@ -20,8 +20,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	const selectors = {};
-	const tablet_selectors = {};
-	const mobile_selectors = {};
+	const tabletSelectors = {};
+	const mobileSelectors = {};
 
 	selectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		padding: generateCSSUnit( bgSize, 'px' ),
@@ -110,34 +110,34 @@ function styling( props ) {
 				'align-items': alignment,
 			};
 		} else if ( 'tablet' == stack ) {
-			tablet_selectors[ ' .uagb-ss__wrapper' ] = {
+			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			tablet_selectors[ '.uagb-social-share__outer-wrap' ] = {
+			tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
 				'flex-direction': 'column',
 			};
 
-			tablet_selectors[
+			tabletSelectors[
 				'.uagb-social-share__layout-horizontal .uagb-ss__wrapper'
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
 			};
 		} else if ( 'mobile' == stack ) {
-			mobile_selectors[ ' .uagb-ss__wrapper' ] = {
+			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			mobile_selectors[ '.uagb-social-share__outer-wrap' ] = {
+			mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
 				'flex-direction': 'column',
 			};
 
-			mobile_selectors[
+			mobileSelectors[
 				'.uagb-social-share__layout-horizontal .uagb-ss__wrapper'
 			] = {
 				'margin-left': 0,
@@ -146,70 +146,70 @@ function styling( props ) {
 		}
 	}
 
-	mobile_selectors[ ' .uagb-ss__source-image' ] = {
+	mobileSelectors[ ' .uagb-ss__source-image' ] = {
 		width: generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	mobile_selectors[ ' .uagb-ss__source-wrap' ] = {
+	mobileSelectors[ ' .uagb-ss__source-wrap' ] = {
 		width: generateCSSUnit( sizeMobile, sizeType ),
 		height: generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	mobile_selectors[ ' .uagb-ss__source-wrap svg' ] = {
+	mobileSelectors[ ' .uagb-ss__source-wrap svg' ] = {
 		width: generateCSSUnit( sizeMobile, sizeType ),
 		height: generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	mobile_selectors[ ' .uagb-ss__source-icon' ] = {
+	mobileSelectors[ ' .uagb-ss__source-icon' ] = {
 		width: generateCSSUnit( sizeMobile, sizeType ),
 		height: generateCSSUnit( sizeMobile, sizeType ),
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	tablet_selectors[ ' .uagb-ss__source-image' ] = {
+	tabletSelectors[ ' .uagb-ss__source-image' ] = {
 		width: generateCSSUnit( sizeTablet, sizeType ),
 	};
 
-	tablet_selectors[ ' .uagb-ss__source-wrap' ] = {
+	tabletSelectors[ ' .uagb-ss__source-wrap' ] = {
 		width: generateCSSUnit( sizeTablet, sizeType ),
 		height: generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
-	tablet_selectors[ ' .uagb-ss__source-wrap svg' ] = {
+	tabletSelectors[ ' .uagb-ss__source-wrap svg' ] = {
 		width: generateCSSUnit( sizeTablet, sizeType ),
 		height: generateCSSUnit( sizeTablet, sizeType ),
 	};
 
-	tablet_selectors[ ' .uagb-ss__source-icon' ] = {
+	tabletSelectors[ ' .uagb-ss__source-icon' ] = {
 		width: generateCSSUnit( sizeTablet, sizeType ),
 		height: generateCSSUnit( sizeTablet, sizeType ),
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

@@ -2,8 +2,15 @@
  * BLOCK: Social Share - Settings.
  */
 
-import map from 'lodash/map';
-import Columnresponsive from '../../components/typography/column-responsive';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { lazy, Suspense } from 'react';
+
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/social-share/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
+
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -20,7 +27,9 @@ import {
 	ButtonGroup,
 } from '@wordpress/components';
 
-export default function socialShareSettings( props ) {
+const Settings = ( props ) => {
+	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
@@ -46,7 +55,7 @@ export default function socialShareSettings( props ) {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ map( sizeTypes, ( { name, key } ) => (
+			{ sizeTypes.map( ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -261,9 +270,11 @@ export default function socialShareSettings( props ) {
 	};
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>{ generalSettings() }</InspectorControls>
-		</>
+		</Suspense>
 	);
-}
+};
+
+export default React.memo( Settings );
