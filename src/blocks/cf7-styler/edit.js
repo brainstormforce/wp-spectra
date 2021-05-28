@@ -26,7 +26,7 @@ const UAGBCF7 = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		$( '.wpcf7-submit' ).click( function ( event ) {
+		jQuery( '.wpcf7-submit' ).click( function ( event ) {
 			event.preventDefault();
 		} );
 		const element = document.getElementById(
@@ -52,7 +52,7 @@ export default withSelect( ( select, props ) => {
 	let jsonData = '';
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
-		$.ajax( {
+		jQuery.ajax( {
 			url: uagb_blocks_info.ajax_url,
 			data: {
 				action: 'uagb_cf7_shortcode',
