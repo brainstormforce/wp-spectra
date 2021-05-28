@@ -5,10 +5,8 @@
 import classnames from 'classnames';
 import times from 'lodash/times';
 import attributes from './attributes';
-
 import { __ } from '@wordpress/i18n';
-
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

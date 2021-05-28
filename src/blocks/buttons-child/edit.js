@@ -8,8 +8,7 @@ import { __ } from '@wordpress/i18n';
 import buttonsChildSettings from './settings';
 import renderButtonsChild from './render';
 import React, { useEffect, useState } from 'react';
-
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const buttonsChildComponent = ( props ) => {
 	const initialState = {

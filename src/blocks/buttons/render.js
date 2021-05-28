@@ -2,8 +2,7 @@ import classnames from 'classnames';
 import times from 'lodash/times';
 import memoize from 'memize';
 import { __ } from '@wordpress/i18n';
-
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/buttons-child' ];
 

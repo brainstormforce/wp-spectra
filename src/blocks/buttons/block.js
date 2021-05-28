@@ -9,12 +9,8 @@ import deprecated from './deprecated';
 import save from './save';
 import './style.scss';
 import './editor.scss';
-
 import { __ } from '@wordpress/i18n';
-
-const { registerBlockType } = wp.blocks;
-
-const { RichText } = wp.blockEditor;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/buttons', {
 	title: uagb_blocks_info.blocks[ 'uagb/buttons' ].title,

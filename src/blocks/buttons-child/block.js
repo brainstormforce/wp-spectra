@@ -8,8 +8,7 @@ import deprecated from './deprecated';
 import edit from './edit';
 import save from './save';
 import './style.scss';
-
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/buttons-child', {
 	title: uagb_blocks_info.blocks[ 'uagb/buttons-child' ].title,

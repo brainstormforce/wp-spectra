@@ -5,11 +5,7 @@
 import classnames from 'classnames';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
-
-const { RichText } = wp.blockEditor;
-
-// Extend component
-const { Fragment } = wp.element;
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

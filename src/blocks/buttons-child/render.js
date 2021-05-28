@@ -6,8 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 export default function renderButtonsChild( props ) {
 	const { attributes, setAttributes, deviceType } = props;

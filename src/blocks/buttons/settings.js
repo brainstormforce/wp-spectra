@@ -3,10 +3,8 @@ import TypographyControl from '../../components/typography';
 // Import Web font loader for google fonts.
 import WebfontLoader from '../../components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
-
-const { BlockAlignmentToolbar, InspectorControls } = wp.blockEditor;
-
-const { PanelBody, SelectControl, RangeControl, BaseControl } = wp.components;
+import { BlockAlignmentToolbar, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl, RangeControl, BaseControl } from '@wordpress/components';
 
 export default function buttonsSettings( props ) {
 	const { attributes, setAttributes } = props;
