@@ -2387,67 +2387,93 @@ const UAGBPostMasonry = ( props ) => {
 
 export default compose(
 	withSelect( ( select, props ) => {
+		const {
+			categories,
+			postsToShow,
+			order,
+			orderBy,
+			postType,
+			taxonomyType,
+			excludeCurrentPost,
+		} = props.attributes;
+		const { getEntityRecords } = select( 'core' );
 
-		const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
-		const { getEntityRecords } = select( "core" )
+		const { __experimentalGetPreviewDeviceType = null } = select(
+			'core/edit-post'
+		);
 
-		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+		const deviceType = __experimentalGetPreviewDeviceType
+			? __experimentalGetPreviewDeviceType()
+			: null;
 
-		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		const allTaxonomy = uagb_blocks_info.all_taxonomy;
+		const currentTax = allTaxonomy[ postType ];
+		const taxonomy = '';
+		let categoriesList = [];
+		let rest_base = '';
 
-		let allTaxonomy = uagb_blocks_info.all_taxonomy
-		let currentTax = allTaxonomy[postType]
-		let taxonomy = ""
-		let categoriesList = []
-		let rest_base = ""
-
-		if ( "undefined" != typeof currentTax ) {
-
-			if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
-				rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+		if ( 'undefined' !== typeof currentTax ) {
+			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
+				rest_base =
+					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base == null
+						? currentTax.taxonomy[ taxonomyType ].name
+						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
 
-			if ( "" != taxonomyType ) {
-				if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
-					categoriesList = currentTax["terms"][taxonomyType]
+			if ( '' != taxonomyType ) {
+				if (
+					'undefined' !== typeof currentTax.terms &&
+					'undefined' !== typeof currentTax.terms[ taxonomyType ]
+				) {
+					categoriesList = currentTax.terms[ taxonomyType ];
 				}
 			}
 		}
 
-		let latestPostsQuery = {
-			order: order,
+		const latestPostsQuery = {
+			order,
 			orderby: orderBy,
 			per_page: postsToShow,
-		}
+		};
 
 		if ( excludeCurrentPost ) {
-			latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+			latestPostsQuery.exclude = select(
+				'core/editor'
+			).getCurrentPostId();
 		}
-		var category = [];
-		var temp = parseInt(categories);
-		category.push(temp);
-		var catlenght = categoriesList.length;
-		for(var i=0;i<catlenght;i++){
-			if(categoriesList[i].id == temp){
-				if(categoriesList[i].child.length !== 0){
-					categoriesList[i].child.forEach(element => {
-						category.push(element);
-					});
+		const category = [];
+		const temp = parseInt( categories );
+		category.push( temp );
+		const catlenght = categoriesList.length;
+		for ( let i = 0; i < catlenght; i++ ) {
+			if ( categoriesList[ i ].id == temp ) {
+				if ( categoriesList[ i ].child.length !== 0 ) {
+					categoriesList[ i ].child.forEach( ( element ) => {
+						category.push( element );
+					} );
 				}
 			}
 		}
 		const { getBlocks } = select( 'core/block-editor' );
 		if ( undefined !== categories && '' !== categories ) {
-			latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+			latestPostsQuery[ rest_base ] =
+				undefined === categories || '' === categories
+					? categories
+					: category;
 		}
 		return {
-			latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-			categoriesList: categoriesList,
-			deviceType: deviceType,
-			taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
+			latestPosts: getEntityRecords(
+				'postType',
+				postType,
+				latestPostsQuery
+			),
+			categoriesList,
+			deviceType,
+			taxonomyList:
+				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 			block: getBlocks( props.clientId ),
-		}
-
+		};
 	} ),
 	withDispatch( ( dispatch ) => {
 		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
