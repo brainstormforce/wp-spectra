@@ -131,6 +131,8 @@ const Render = ( props ) => {
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
+			
+			<Suspense fallback={ lazyLoader() }>
 			<Slider
 				className={ classnames(
 					'is-carousel',
@@ -139,7 +141,6 @@ const Render = ( props ) => {
 				) }
 				{ ...settings }
 			>
-				<Suspense fallback={ lazyLoader() }>
 					{ test_block.map( ( test, index ) => (
 						<div
 							className={ classnames(
@@ -221,8 +222,8 @@ const Render = ( props ) => {
 							</div>
 						</div>
 					) ) }
-				</Suspense>
 			</Slider>
+									</Suspense>
 		</div>
 	);
 };
