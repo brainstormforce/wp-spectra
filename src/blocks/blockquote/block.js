@@ -2,23 +2,17 @@
  * BLOCK: Quote
  */
 
-// Import block dependencies and components.
-import UAGB_Block_Icons from "@Controls/block-icons"
-
-// Import icon.
-import edit from "./edit"
-import deprecated from "./deprecated"
-import save from "./save"
-import attributes from "./attributes"
-import "./editor.scss"
-import "./style.scss"
+import UAGB_Block_Icons from '@Controls/block-icons';
+import edit from './edit';
+import save from './save';
+import './editor.scss';
+import './style.scss';
+import deprecated from './deprecated';
+import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
-
 // Import registerBlockType() from wp.blocks
-const {
-	registerBlockType, createBlock
-} = wp.blocks
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 /**
  * Register: as Gutenberg Block.
@@ -32,14 +26,14 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( "uagb/blockquote", {
-	title: uagb_blocks_info.blocks["uagb/blockquote"]["title"],
-	description: uagb_blocks_info.blocks["uagb/blockquote"]["description"],
+registerBlockType( 'uagb/blockquote', {
+	title: uagb_blocks_info.blocks[ 'uagb/blockquote' ].title,
+	description: uagb_blocks_info.blocks[ 'uagb/blockquote' ].description,
 	icon: UAGB_Block_Icons.blockquote,
 	keywords: [
-		__( "blockquote", 'ultimate-addons-for-gutenberg' ),
-		__( "quote", 'ultimate-addons-for-gutenberg' ),
-		__( "uagb", 'ultimate-addons-for-gutenberg' ),
+		__( 'blockquote', 'ultimate-addons-for-gutenberg' ),
+		__( 'quote', 'ultimate-addons-for-gutenberg' ),
+		__( 'uagb', 'ultimate-addons-for-gutenberg' ),
 	],
 	supports: {
 		anchor: true,
@@ -54,48 +48,48 @@ registerBlockType( "uagb/blockquote", {
 		from: [
 			{
 				type: 'block',
-				blocks: ['core/quote'],
-				transform: (attributes) => {
-					return createBlock('uagb/blockquote', {
-						descriptionText : attributes.value,
+				blocks: [ 'core/quote' ],
+				transform: ( attributes ) => {
+					return createBlock( 'uagb/blockquote', {
+						descriptionText: attributes.value,
 						author: attributes.citation,
-						align: attributes.align
-					})
-				}
+						align: attributes.align,
+					} );
+				},
 			},
 			{
 				type: 'block',
-				blocks: ['core/heading'],
-				transform: (attributes) => {
-					return createBlock('uagb/blockquote', {
+				blocks: [ 'core/heading' ],
+				transform: ( attributes ) => {
+					return createBlock( 'uagb/blockquote', {
 						descriptionText: attributes.content,
-						align:attributes.align,
-					})
-				}
+						align: attributes.align,
+					} );
+				},
 			},
 		],
 		to: [
 			{
 				type: 'block',
-				blocks: ['core/quote'],
-				transform: (attributes) => {
-					return createBlock('core/quote', {
-						value : `<p>${ attributes.descriptionText }</p>`,
+				blocks: [ 'core/quote' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/quote', {
+						value: `<p>${ attributes.descriptionText }</p>`,
 						citation: attributes.author,
-						align: attributes.align
-					})
-				}
+						align: attributes.align,
+					} );
+				},
 			},
 			{
 				type: 'block',
-				blocks: ['core/heading'],
-				transform: (attributes) => {
-					return createBlock('core/heading', {
+				blocks: [ 'core/heading' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/heading', {
 						content: attributes.descriptionText,
-						align:attributes.align
-					})
-				}
+						align: attributes.align,
+					} );
+				},
 			},
-		]
+		],
 	},
-} )
+} );
