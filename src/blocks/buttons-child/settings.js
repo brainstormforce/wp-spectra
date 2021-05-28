@@ -39,7 +39,11 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 
-export default function buttonsChildSettings( props, state, setStateValue ) {
+const Settings = ( props ) => {
+	const state = props.state;
+	const setStateValue = props.setStateValue;
+	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
@@ -842,4 +846,6 @@ export default function buttonsChildSettings( props, state, setStateValue ) {
 			<InspectorControls>{ buttonSettings() }</InspectorControls>
 		</Suspense>
 	);
-}
+};
+
+export default React.memo( Settings );

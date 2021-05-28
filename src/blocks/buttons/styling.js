@@ -6,7 +6,6 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
-
 	const { fontFamily, fontWeight, gap, stack, align } = props.attributes;
 
 	const selectors = {};

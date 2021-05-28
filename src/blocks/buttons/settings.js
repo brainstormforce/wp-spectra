@@ -1,20 +1,31 @@
 import lazyLoader from '@Controls/lazy-loader';
 import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import { BlockAlignmentToolbar, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, RangeControl, BaseControl } from '@wordpress/components';
+import {
+	BlockAlignmentToolbar,
+	InspectorControls,
+} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	SelectControl,
+	RangeControl,
+	BaseControl,
+} from '@wordpress/components';
 
 // Import all of our Text Options requirements.
 const TypographyControl = lazy( () =>
-	import( /* webpackChunkName: "chunks/buttons/typography" */ '@Components/typography' )
+	import(
+		/* webpackChunkName: "chunks/buttons/typography" */ '@Components/typography'
+	)
 );
 // Import Web font loader for google fonts.
 const WebfontLoader = lazy( () =>
-	import( /* webpackChunkName: "chunks/buttons/typography" */ '@Components/typography/fontloader' )
+	import(
+		/* webpackChunkName: "chunks/buttons/fontloader" */ '@Components/typography/fontloader'
+	)
 );
 
 const Settings = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
@@ -146,13 +157,11 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<InspectorControls>
-				{ generalSettings() }
-			</InspectorControls>
+			<InspectorControls>{ generalSettings() }</InspectorControls>
 
 			{ loadBtnGoogleFonts }
 		</Suspense>
 	);
-}
+};
 
 export default React.memo( Settings );

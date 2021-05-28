@@ -1,11 +1,11 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
+import React, { useMemo } from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/buttons-child' ];
 
 const Render = ( props ) => {
-
 	props = props.parentProps;
 
 	const { attributes } = props;
@@ -13,14 +13,10 @@ const Render = ( props ) => {
 	const { className, btn_count, buttons, stack } = attributes;
 
 	const getButtonTemplate = useMemo( () => {
-
 		const childButtons = [];
 
 		for ( let i = 0; i < btn_count; i++ ) {
-			childButtons.push( [
-				'uagb/buttons-child',
-				buttons[ i ],
-			] );
+			childButtons.push( [ 'uagb/buttons-child', buttons[ i ] ] );
 		}
 
 		return childButtons;
@@ -51,6 +47,6 @@ const Render = ( props ) => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default React.memo( Render );

@@ -32,8 +32,8 @@ function styling( props ) {
 		iconSpace,
 	} = props.attributes;
 
-	const tablet_selectors = {};
-	const mobile_selectors = {};
+	const tabletSelectors = {};
+	const mobileSelectors = {};
 	let selectors = {};
 
 	if ( ! inheritFromTheme ) {
@@ -70,12 +70,12 @@ function styling( props ) {
 			},
 		};
 
-		mobile_selectors[ ' .uagb-buttons-repeater' ] = {
+		mobileSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeMobile, sizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		};
 
-		tablet_selectors[ ' .uagb-buttons-repeater' ] = {
+		tabletSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeTablet, sizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		};
@@ -97,34 +97,34 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( iconSpace, 'px' ),
 	};
 
-	mobile_selectors[ ' .uagb-button__icon' ] = {
+	mobileSelectors[ ' .uagb-button__icon' ] = {
 		width: generateCSSUnit( sizeMobile, sizeType ),
 		height: generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	tablet_selectors[ ' .uagb-button__icon' ] = {
+	tabletSelectors[ ' .uagb-button__icon' ] = {
 		width: generateCSSUnit( sizeTablet, sizeType ),
 		height: generateCSSUnit( sizeTablet, sizeType ),
 	};
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

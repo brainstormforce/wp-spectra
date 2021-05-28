@@ -10,14 +10,15 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/buttons-child/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/buttons-child/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/buttons-child/render" */ './render' )
 );
 
 const buttonsChildComponent = ( props ) => {
-
 	const initialState = {
 		isURLPickerOpen: false,
 	};
@@ -51,7 +52,11 @@ const buttonsChildComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } state = { state } setStateValue = { setStateValue } />
+			<Settings
+				parentProps={ props }
+				state={ state }
+				setStateValue={ setStateValue }
+			/>
 			<Render parentProps={ props } />
 		</Suspense>
 	);
