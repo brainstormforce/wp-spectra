@@ -5,12 +5,19 @@
 // Import classes
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
-import buttonsChildSettings from './settings';
-import renderButtonsChild from './render';
-import React, { useEffect, useState } from 'react';
 import { withSelect } from '@wordpress/data';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/buttons-child/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/buttons-child/render" */ './render' )
+);
 
 const buttonsChildComponent = ( props ) => {
+
 	const initialState = {
 		isURLPickerOpen: false,
 	};
@@ -43,10 +50,10 @@ const buttonsChildComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
-			{ buttonsChildSettings( props, state, setStateValue ) }
-			{ renderButtonsChild( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } state = { state } setStateValue = { setStateValue } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 export default withSelect( ( select, props ) => {

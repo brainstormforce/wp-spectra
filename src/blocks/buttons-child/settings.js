@@ -7,19 +7,26 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
-import Columnresponsive from '../../components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { lazy, Suspense } from 'react';
 
-const svg_icons = Object.keys( UAGBIcon );
+const Columnresponsive = lazy( () =>
+	import(
+		/* webpackChunkName: "chunks/buttons-child/column-responsive" */ '@Components/typography/column-responsive'
+	)
+);
 
-const {
+const svgIcons = Object.keys( UAGBIcon );
+
+import {
 	BlockControls,
 	InspectorControls,
 	ColorPalette,
 	__experimentalLinkControl,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -30,7 +37,7 @@ const {
 	ToolbarButton,
 	ToolbarGroup,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
 export default function buttonsChildSettings( props, state, setStateValue ) {
 	const { attributes, setAttributes, deviceType } = props;
@@ -87,7 +94,7 @@ export default function buttonsChildSettings( props, state, setStateValue ) {
 
 	const buttonSettings = () => {
 		const icon_props = {
-			icons: svg_icons,
+			icons: svgIcons,
 			value: icon,
 			onChange: ( value ) => setAttributes( { icon: value } ),
 			isMulti: false,
@@ -829,10 +836,10 @@ export default function buttonsChildSettings( props, state, setStateValue ) {
 		);
 	};
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			{ linkControls() }
 			<InspectorControls>{ buttonSettings() }</InspectorControls>
-		</>
+		</Suspense>
 	);
 }

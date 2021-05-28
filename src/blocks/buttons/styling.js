@@ -6,11 +6,12 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
+
 	const { fontFamily, fontWeight, gap, stack, align } = props.attributes;
 
 	const selectors = {};
-	const tablet_selectors = {};
-	const mobile_selectors = {};
+	const tabletSelectors = {};
+	const mobileSelectors = {};
 
 	selectors[ ' .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
 		'font-family': fontFamily,
@@ -33,23 +34,23 @@ function styling( props ) {
 			'flex-direction': 'column',
 		};
 	} else if ( 'tablet' == stack ) {
-		tablet_selectors[ ' .uagb-button__wrapper' ] = {
+		tabletSelectors[ ' .uagb-button__wrapper' ] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
 
-		tablet_selectors[ ' .block-editor-block-list__layout' ] = {
+		tabletSelectors[ ' .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'mobile' == stack ) {
-		mobile_selectors[ ' .uagb-button__wrapper' ] = {
+		mobileSelectors[ ' .uagb-button__wrapper' ] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
 
-		mobile_selectors[ ' .block-editor-block-list__layout' ] = {
+		mobileSelectors[ ' .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 	}
@@ -107,13 +108,13 @@ function styling( props ) {
 	}
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
-	let styling_css = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, id, true, 'tablet' );
+	stylingCss += generateCSS( tabletSelectors, id, true, 'tablet' );
 
-	styling_css += generateCSS( mobile_selectors, id, true, 'mobile' );
+	stylingCss += generateCSS( mobileSelectors, id, true, 'mobile' );
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

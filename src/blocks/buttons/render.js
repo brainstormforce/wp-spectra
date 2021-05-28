@@ -1,22 +1,30 @@
 import classnames from 'classnames';
-import times from 'lodash/times';
-import memoize from 'memize';
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/buttons-child' ];
 
-export default function renderButtons( props ) {
+const Render = ( props ) => {
+
+	props = props.parentProps;
+
 	const { attributes } = props;
 
 	const { className, btn_count, buttons, stack } = attributes;
 
-	const getButtonTemplate = memoize( ( button_block, buttons ) => {
-		return times( button_block, ( n ) => [
-			'uagb/buttons-child',
-			buttons[ n ],
-		] );
-	} );
+	const getButtonTemplate = useMemo( () => {
+
+		const childButtons = [];
+
+		for ( let i = 0; i < btn_count; i++ ) {
+			childButtons.push( [
+				'uagb/buttons-child',
+				buttons[ i ],
+			] );
+		}
+
+		return childButtons;
+	}, [ btn_count, buttons ] );
 
 	return (
 		<div
@@ -33,7 +41,7 @@ export default function renderButtons( props ) {
 				) }
 			>
 				<InnerBlocks
-					template={ getButtonTemplate( btn_count, buttons ) }
+					template={ getButtonTemplate }
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalMoverDirection={
@@ -44,3 +52,5 @@ export default function renderButtons( props ) {
 		</div>
 	);
 }
+
+export default React.memo( Render );

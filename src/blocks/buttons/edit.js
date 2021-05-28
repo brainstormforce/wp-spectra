@@ -4,9 +4,15 @@
 
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
-import buttonsSettings from './settings';
-import renderButtons from './render';
-import React, { useEffect, useState } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/buttons/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/buttons/render" */ './render' )
+);
 
 let prevState;
 
@@ -59,10 +65,10 @@ const buttonsComponent = ( props ) => {
 	}, [ props ] );
 
 	return (
-		<>
-			{ buttonsSettings( props ) }
-			{ renderButtons( props ) }
-		</>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

@@ -8,7 +8,10 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
-export default function renderButtonsChild( props ) {
+const Render = ( props ) => {
+
+	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
@@ -71,3 +74,5 @@ export default function renderButtonsChild( props ) {
 		</div>
 	);
 }
+
+export default React.memo( Render );

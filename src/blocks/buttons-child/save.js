@@ -8,6 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
+
 	const { attributes, className } = props;
 
 	const {
@@ -20,7 +21,7 @@ export default function save( props ) {
 		iconPosition,
 	} = attributes;
 
-	const icon_html = ( curr_position ) => {
+	const iconHtml = ( curr_position ) => {
 		if ( '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span
@@ -55,13 +56,13 @@ export default function save( props ) {
 					rel="noopener noreferrer"
 					target={ target }
 				>
-					{ icon_html( 'before' ) }
+					{ iconHtml( 'before' ) }
 					<RichText.Content
 						value={ label }
 						tagName="div"
 						className="uagb-button__link"
 					/>
-					{ icon_html( 'after' ) }
+					{ iconHtml( 'after' ) }
 				</a>
 			</div>
 		</div>
