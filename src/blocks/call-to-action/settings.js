@@ -3,18 +3,10 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/typography-control" */ '@Components/typography'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 import {
 	AlignmentToolbar,
 	BlockControls,
