@@ -5,18 +5,8 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-const GradientSettings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/column/gradient-settings" */ '@Components/gradient-settings'
-	)
-);
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/column/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-
+import GradientSettings from '@Components/gradient-settings';
+import Columnresponsive from '@Components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
 
 import {

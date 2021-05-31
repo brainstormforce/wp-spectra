@@ -3,30 +3,15 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-
 import styling from '.././styling';
-
 import { compose } from '@wordpress/compose';
-
 import { __ } from '@wordpress/i18n';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import ColumnResponsive from '@Components/typography/column-responsive';
+import TypographyControl from '@Components/typography'
 
 const MAX_POSTS_COLUMNS = 8;
-
-import React, { useState, useEffect, Suspense, lazy } from 'react';
-
-import lazyLoader from '@Controls/lazy-loader';
-
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/typography" */ '@Components/typography'
-	)
-);
 
 const Settings = lazy( () =>
 	import(

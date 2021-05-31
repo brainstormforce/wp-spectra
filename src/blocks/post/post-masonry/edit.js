@@ -7,18 +7,8 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
-
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/typography" */ '@Components/typography'
-	)
-);
-
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-masonry/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import  TypographyControl from '@Components/typography';
+import ColumnResponsive from '@Components/typography/column-responsive';
 
 const Settings = lazy( () =>
 	import(
