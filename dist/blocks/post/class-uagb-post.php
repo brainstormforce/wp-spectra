@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
-					array_push( $terms_list, '<a href=' . esc_url( $category_link ) . '>' . esc_html( $value->name ) . '</a>' );
+					array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
 				}
 				echo wp_kses_post( implode( ', ', $terms_list ) );
 				?>
