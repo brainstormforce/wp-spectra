@@ -57,7 +57,6 @@ const Render = ( props ) => {
 	}
 
 	return (
-		<>
 			<div
 				className={ classnames(
 					className,
@@ -101,7 +100,6 @@ const Render = ( props ) => {
 					) }
 				</div>
 			</div>
-		</>
 	);
 };
 export default React.memo( Render );

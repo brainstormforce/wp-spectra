@@ -34,14 +34,12 @@ import {
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { className, setAttributes, attributes } = props;
+	const { setAttributes, attributes } = props;
 
 	// Setup the attributes.
 	const {
 		formId,
 		align,
-		isHtml,
-		formJson,
 		enableAjax,
 		enableTabSupport,
 		formTabIndex,
@@ -524,7 +522,6 @@ const Settings = ( props ) => {
 						<h2>
 							{ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 						</h2>
-						<Suspense fallback={ lazyLoader() }>
 							<TypographyControl
 								label={ __(
 									'Typography',
@@ -581,7 +578,6 @@ const Settings = ( props ) => {
 									label: 'labelLineHeightTablet',
 								} }
 							/>
-						</Suspense>
 						<p className="uagb-setting-label">
 							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
@@ -604,7 +600,6 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<h2>{ __( 'Input', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __( 'Typography' ) }
 						attributes={ attributes }
@@ -658,7 +653,6 @@ const Settings = ( props ) => {
 							label: 'inputLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -1157,7 +1151,6 @@ const Settings = ( props ) => {
 				<h2>
 					{ __( 'Button Font', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1214,7 +1207,6 @@ const Settings = ( props ) => {
 							label: 'buttonLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<hr className="uagb-editor__separator" />
 				{ btnBorderSetting() }
 				<hr className="uagb-editor__separator" />
@@ -1391,7 +1383,6 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
-						<Suspense fallback={ lazyLoader() }>
 							<TypographyControl
 								label={ __(
 									'Typography',
@@ -1448,7 +1439,6 @@ const Settings = ( props ) => {
 									label: 'radioCheckLineHeightTablet',
 								} }
 							/>
-						</Suspense>
 						<hr className="uagb-editor__separator" />
 						<p className="uagb-setting-label">
 							{ __(
@@ -1670,7 +1660,6 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __( 'Typography' ) }
 						attributes={ attributes }
@@ -1724,7 +1713,6 @@ const Settings = ( props ) => {
 							label: 'validationMsgLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<ToggleControl
 					label={ __(
 						'Advanced Settings',
@@ -1944,7 +1932,6 @@ const Settings = ( props ) => {
 					max={ 200 }
 					allowReset
 				/>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -1998,7 +1985,6 @@ const Settings = ( props ) => {
 							label: 'msgLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __(
@@ -2025,7 +2011,6 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
 							'Success Message Typography',
@@ -2082,7 +2067,6 @@ const Settings = ( props ) => {
 							label: 'successMsgLineHeightTablet',
 						} }
 					/>
-				</Suspense>
 			</PanelBody>
 		);
 	};
@@ -2111,18 +2095,17 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
-			{ blockControls() }
-			<InspectorControls>
-				{ fieldSettings() }
-				{ fieldBorderSetting() }
-				{ typographySettings() }
-				{ radioCheckSetting() }
-				{ btnSetting() }
-				{ msgSettings() }
-				{ spacingSetting() }
-			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>
+				{ blockControls() }
+				<InspectorControls>
+					{ fieldSettings() }
+					{ fieldBorderSetting() }
+					{ typographySettings() }
+					{ radioCheckSetting() }
+					{ btnSetting() }
+					{ msgSettings() }
+					{ spacingSetting() }
+				</InspectorControls>
 				{loadInputGoogleFonts}
 				{loadButtonGoogleFonts}
 				{loadLabelGoogleFonts}
@@ -2130,7 +2113,6 @@ const Settings = ( props ) => {
 				{loadValidationGoogleFonts}
 				{loadMsgGoogleFonts}
 			</Suspense>
-		</>
 	);
 };
 export default React.memo( Settings );

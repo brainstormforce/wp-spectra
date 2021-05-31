@@ -452,9 +452,6 @@ function styling( props ) {
 				fieldBorderRadiusType
 			),
 		},
-		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
-			'border-style': 'solid',
-		},
 		" .uagb-gf-styler__check-style-enabled input[type='radio'] + label:before": {
 			'border-style': 'solid',
 		},
@@ -510,9 +507,7 @@ function styling( props ) {
 				radioCheckBorderRadius,
 				radioCheckBorderRadiusType
 			),
-		},
-		" .uagb-gf-styler__check-style-enabled input[type='checkbox']:checked + label:before": {
-			'border-color': fieldBorderFocusColor,
+			'border-style': 'solid',
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
 			'background-color': radioCheckBgColor,

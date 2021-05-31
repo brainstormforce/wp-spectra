@@ -12,7 +12,6 @@ import { withSelect } from '@wordpress/data';
 
 const UAGBGF = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
 		props.setAttributes( { isHtml: false } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -41,12 +40,10 @@ const UAGBGF = ( props ) => {
 
 	const { isHtml } = props.attributes;
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				{ isHtml && (<Settings parentProps={ props } />)}
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 
