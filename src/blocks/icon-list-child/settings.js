@@ -51,6 +51,7 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
+
 		if ( ! media || ! media.url ) {
 			setAttributes( { image: null } );
 			return;
@@ -441,7 +442,7 @@ const Settings = ( props ) => {
 										'Select Image',
 										'ultimate-addons-for-gutenberg'
 									) }
-									onSelect={ onSelectImage() }
+									onSelect={ onSelectImage }
 									allowedTypes={ [ 'image' ] }
 									value={ image }
 									render={ ( { open } ) => (
