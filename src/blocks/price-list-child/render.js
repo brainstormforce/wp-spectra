@@ -2,26 +2,10 @@ import classnames from 'classnames';
 import PositionClasses from '../price-list/classes';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const RestMenuImage = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/RestMenuImage" */ './components/RestMenuImage'
-	)
-);
-const Title = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/Title" */ './components/Title'
-	)
-);
-const Price = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/Price" */ './components/Price'
-	)
-);
-const Description = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list-child/render" */ './components/Description'
-	)
-);
+import RestMenuImage from './components/RestMenuImage';
+import Title from './components/Title';
+import Price from './components/Price';
+import Description from './components/Description';
 import { select } from '@wordpress/data';
 
 const Render = ( props ) => {

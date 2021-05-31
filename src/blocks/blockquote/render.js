@@ -1,29 +1,11 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-const Description = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/blockquote/description" */ './components/Description'
-	)
-);
-const AuthorImage = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/blockquote/author-image" */ './components/AuthorImage'
-	)
-);
-const AuthorText = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/blockquote/author-text" */ './components/AuthorText'
-	)
-);
-const TweetButtonCTA = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/blockquote/tweet-button-cta" */ './components/TweetButtonCTA'
-	)
-);
+import Description from './components/Description';
+import AuthorImage from './components/AuthorImage';
+import AuthorText from './components/AuthorText';
+import TweetButtonCTA from './components/TweetButtonCTA';
 
 const Render = ( props ) => {
 	props = props.parentProps;
