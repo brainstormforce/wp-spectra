@@ -14,6 +14,7 @@ import AlignButtonsControl from '../../components/align-buttons-control'
 import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
 import DimensionsControl from '../../components/dimention-control';
+import Range from '../../components/range/Range.js';
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -216,6 +217,12 @@ class UAGBInlineNoticeEdit extends Component {
 						onChange={ ( value ) =>
 							setAttributes( { noticeAlignment: value } )
 						}
+					/>
+					<Range 
+						value={contentVrPadding} 
+						onChange={val => setAttributes({ contentVrPadding: parseInt(val) })}
+						min={0} 
+						max={100} 
 					/>
 				</PanelBody>
 				<PanelBody title="Layout" initialOpen={false}>
