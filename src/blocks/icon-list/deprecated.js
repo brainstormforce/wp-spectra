@@ -47,11 +47,11 @@ const deprecated = [
 							}
 
 							const url = '';
-							let image_icon_html = '';
+							let imageIconHtml = '';
 
 							if ( icon.image_icon == 'icon' ) {
 								if ( icon.icon ) {
-									image_icon_html = (
+									imageIconHtml = (
 										<span
 											className={ classnames(
 												icon.icon,
@@ -61,7 +61,7 @@ const deprecated = [
 									);
 								}
 							} else if ( icon.image ) {
-								image_icon_html = (
+								imageIconHtml = (
 									<img
 										className="uagb-icon-list__source-image"
 										src={ icon.image.url }
@@ -70,7 +70,7 @@ const deprecated = [
 							}
 
 							const target = icon.target ? '_blank' : '_self';
-							const link_url = ! disableLink
+							const linkUrl = ! disableLink
 								? icon.link
 								: 'javascript:void(0);';
 
@@ -83,11 +83,11 @@ const deprecated = [
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ link_url }
+									href={ linkUrl }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">
-											{ image_icon_html }
+											{ imageIconHtml }
 										</span>
 										{ ! hideLabel &&
 											'' != icons[ index ].label && (
@@ -143,18 +143,18 @@ const deprecated = [
 							}
 
 							const url = '';
-							let image_icon_html = '';
+							let imageIconHtml = '';
 
 							if ( icon.image_icon == 'icon' ) {
 								if ( icon.icon ) {
-									image_icon_html = (
+									imageIconHtml = (
 										<span className="uagb-icon-list__source-icon">
 											{ renderSVG( icon.icon ) }
 										</span>
 									);
 								}
 							} else if ( icon.image ) {
-								image_icon_html = (
+								imageIconHtml = (
 									<img
 										className="uagb-icon-list__source-image"
 										src={ icon.image.url }
@@ -163,7 +163,7 @@ const deprecated = [
 							}
 
 							const target = icon.target ? '_blank' : '_self';
-							const link_url = ! disableLink
+							const linkUrl = ! disableLink
 								? icon.link
 								: 'javascript:void(0);';
 
@@ -176,11 +176,11 @@ const deprecated = [
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ link_url }
+									href={ linkUrl }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">
-											{ image_icon_html }
+											{ imageIconHtml }
 										</span>
 										{ ! hideLabel &&
 											'' != icons[ index ].label && (
@@ -239,18 +239,18 @@ const deprecated = [
 							}
 
 							const url = '';
-							let image_icon_html = '';
+							let imageIconHtml = '';
 
 							if ( icon.image_icon == 'icon' ) {
 								if ( icon.icon ) {
-									image_icon_html = (
+									imageIconHtml = (
 										<span className="uagb-icon-list__source-icon">
 											{ renderSVG( icon.icon ) }
 										</span>
 									);
 								}
 							} else if ( icon.image ) {
-								image_icon_html = (
+								imageIconHtml = (
 									<img
 										className="uagb-icon-list__source-image"
 										src={ icon.image.url }
@@ -259,7 +259,7 @@ const deprecated = [
 							}
 
 							const target = icon.target ? '_blank' : '_self';
-							const link_url = ! icon.disableLink
+							const linkUrl = ! icon.disableLink
 								? icon.link
 								: 'javascript:void(0);';
 
@@ -272,11 +272,11 @@ const deprecated = [
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ link_url }
+									href={ linkUrl }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">
-											{ image_icon_html }
+											{ imageIconHtml }
 										</span>
 										{ ! hideLabel &&
 											'' != icons[ index ].label && (
@@ -335,18 +335,18 @@ const deprecated = [
 							}
 
 							const url = '';
-							let image_icon_html = '';
+							let imageIconHtml = '';
 
 							if ( icon.image_icon == 'icon' ) {
 								if ( icon.icon ) {
-									image_icon_html = (
+									imageIconHtml = (
 										<span className="uagb-icon-list__source-icon">
 											{ renderSVG( icon.icon ) }
 										</span>
 									);
 								}
 							} else if ( icon.image ) {
-								image_icon_html = (
+								imageIconHtml = (
 									<img
 										className="uagb-icon-list__source-image"
 										src={ icon.image.url }
@@ -355,7 +355,7 @@ const deprecated = [
 							}
 
 							const target = icon.target ? '_blank' : '_self';
-							const link_url = ! icon.disableLink
+							const linkUrl = ! icon.disableLink
 								? icon.link
 								: '/';
 
@@ -368,11 +368,11 @@ const deprecated = [
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ link_url }
+									href={ linkUrl }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">
-											{ image_icon_html }
+											{ imageIconHtml }
 										</span>
 										{ ! hideLabel &&
 											'' != icons[ index ].label && (
@@ -431,11 +431,11 @@ const deprecated = [
 							}
 
 							const url = '';
-							let image_icon_html = '';
+							let imageIconHtml = '';
 
 							if ( icon.image_icon == 'icon' ) {
 								if ( icon.icon ) {
-									image_icon_html = (
+									imageIconHtml = (
 										<span className="uagb-icon-list__source-icon">
 											{ renderSVG( icon.icon ) }
 										</span>
@@ -443,7 +443,7 @@ const deprecated = [
 								}
 							}
 							if ( icon.image ) {
-								image_icon_html = (
+								imageIconHtml = (
 									<img
 										className="uagb-icon-list__source-image"
 										src={ icon.image.url }
@@ -452,7 +452,7 @@ const deprecated = [
 							}
 
 							const target = icon.target ? '_blank' : '_self';
-							const link_url = ! icon.disableLink
+							const linkUrl = ! icon.disableLink
 								? icon.link
 								: '/';
 
@@ -467,7 +467,7 @@ const deprecated = [
 									>
 										<div className="uagb-icon-list__content-wrap">
 											<span className="uagb-icon-list__source-wrap">
-												{ image_icon_html }
+												{ imageIconHtml }
 											</span>
 											{ ! hideLabel &&
 												'' != icons[ index ].label && (
@@ -496,11 +496,11 @@ const deprecated = [
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ link_url }
+									href={ linkUrl }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">
-											{ image_icon_html }
+											{ imageIconHtml }
 										</span>
 										{ ! hideLabel &&
 											'' != icons[ index ].label && (

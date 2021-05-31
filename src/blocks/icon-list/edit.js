@@ -58,6 +58,6 @@ export default withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType,
+		deviceType:deviceType,
 	};
 } )( UAGBIconList );
