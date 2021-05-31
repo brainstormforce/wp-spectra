@@ -94,7 +94,7 @@ class Range extends Component {
                 }
                 <div className="components-uagb-dimensions-control__header">
                 {label &&
-                 <p className={ 'components-uagb-dimensions-control__label' }>{  'Padding' }</p>
+                 <p className={ 'components-uagb-dimensions-control__label' }>{ __( label, 'ultimate-addons-for-gutenberg' ) }</p>
                 }
                 { !isNaN(this.props.value) && (
                     <Button

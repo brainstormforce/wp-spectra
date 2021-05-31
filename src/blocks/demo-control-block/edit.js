@@ -224,6 +224,24 @@ class UAGBInlineNoticeEdit extends Component {
 						min={0} 
 						max={100} 
 					/>
+					<h2>{ __( "Typography", 'ultimate-addons-for-gutenberg' ) }</h2>
+		            <TypographyControl
+							label={ __( "Title", 'ultimate-addons-for-gutenberg' ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
+							fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
+							fontWeight = { { value: titleFontWeight, label: 'titleFontWeight' } }
+							fontSubset = { { value: titleFontSubset, label: 'titleFontSubset' } }
+							fontSizeType = { { value: titleFontSizeType, label: 'titleFontSizeType' } }
+							fontSize = { { value: titleFontSize, label: 'titleFontSize' } }
+							fontSizeMobile = { { value: titleFontSizeMobile, label: 'titleFontSizeMobile' } }
+							fontSizeTablet= { { value: titleFontSizeTablet, label: 'titleFontSizeTablet' } }
+							lineHeightType = { { value: titleLineHeightType, label: 'titleLineHeightType' } }
+							lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
+							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
+							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
+						/>
 				</PanelBody>
 				<PanelBody title="Layout" initialOpen={false}>
 					<SelectControl

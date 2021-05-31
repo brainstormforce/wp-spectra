@@ -90,21 +90,27 @@
 	},
 	titleFontSize: {
 		type: "number",
+		default : 15
 	},
 	titleFontSizeTablet: {
 		type: "number",
+		default : 15
 	},
 	titleFontSizeMobile: {
 		type: "number",
+		default : 15
 	},
 	titleLineHeight: {
 		type: "number",
+		default : 15
 	},
 	titleLineHeightTablet: {
 		type: "number",
+		default : 15
 	},
 	titleLineHeightMobile: {
 		type: "number",
+		default : 15
 	},
 	descFontFamily: {
 		type: "string",
@@ -118,6 +124,7 @@
 	},
 	descFontSize: {
 		type: "number",
+		default : 15
 	},
 	descFontSizeType: {
 		type: "string",
@@ -125,12 +132,15 @@
 	},
 	descFontSizeTablet: {
 		type: "number",
+		default : 15
 	},
 	descFontSizeMobile: {
 		type: "number",
+		default : 15
 	},
 	descLineHeight: {
 		type: "number",
+		default : 15
 	},
 	descLineHeightType: {
 		type: "string",
@@ -138,9 +148,11 @@
 	},
 	descLineHeightTablet: {
 		type: "number",
+		default : 15
 	},
 	descLineHeightMobile: {
 		type: "number",
+		default : 15
 	},
 	titleLoadGoogleFonts: {
 		type: "boolean",

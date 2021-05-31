@@ -2,9 +2,9 @@
  * WordPress dependencies
  */
  import { __ } from '@wordpress/i18n';
+ import Range from '../../components/range/Range.js';
 
 const {
-	RangeControl,
 	ButtonGroup,
 	Button,
 	Dashicon,
@@ -78,48 +78,36 @@ export default function RangeTypographyControl ( props ) {
 	output.Desktop = (
 		<Fragment>
 			{sizeTypesControls}
-			<RangeControl
+			<Range 
 				label={ __( props.sizeText ) }
 				value={ props.size.value || "" }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
-				step={ props.steps }
-				beforeIcon="editor-textcolor"
-				allowReset={true}
-				initialPosition={30}
 			/>
 		</Fragment>
 	);
 	output.Tablet = (
 		<Fragment>
 			{sizeTypesControls}
-			<RangeControl
+			<Range 
 				label={ __( props.sizeTabletText ) }
 				value={ props.sizeTablet.value }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeTabletLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
-				step={ props.steps }
-				beforeIcon="editor-textcolor"
-				allowReset={true}
-				initialPosition={30}
 			/>
 		</Fragment>
 	);
 	output.Mobile = (
 		<Fragment>
 			{sizeTypesControls}
-			<RangeControl
+			<Range 
 				label={ __( props.sizeMobileText ) }
 				value={ props.sizeMobile.value }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeMobileLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
-				step={ props.steps }
-				beforeIcon="editor-textcolor"
-				allowReset={true}
-				initialPosition={30}
 			/>
 		</Fragment>
 	);

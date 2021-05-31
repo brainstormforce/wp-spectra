@@ -62,7 +62,7 @@
                                  onClick={ () => this.props.onColorChange( undefined ) }
                                  isSmall
                              >
-                                 <Dashicon icon="redo" />
+                                 <Dashicon icon="image-rotate" />
                              </Button>
                          </Tooltip>
                      ) }
