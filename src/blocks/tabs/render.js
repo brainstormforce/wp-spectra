@@ -126,7 +126,6 @@ const Render = ( props ) => {
 
 		setAttributes( attrs );
 		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, attrs ) );
-		props.resetTabOrder();
 	};
 	return (
 		<>

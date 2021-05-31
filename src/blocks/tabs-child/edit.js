@@ -27,13 +27,11 @@ const UAGBTabsChildEdit = ( props ) => {
 			} );
 		}
 	}, [] );
-
+	
 	return (
-		<>
 			<Suspense fallback={ lazyLoader() }>
 				<Render parentProps={ props } />
 			</Suspense>
-		</>
 	);
 };
 export default UAGBTabsChildEdit;
