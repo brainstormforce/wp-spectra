@@ -3,26 +3,11 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-grid/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-grid/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-grid/typography" */ '@Components/typography'
-	)
-);
-
+import Columnresponsive from '@Components/typography/column-responsive';
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 
 const MAX_POSTS_COLUMNS = 8;

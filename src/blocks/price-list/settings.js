@@ -1,20 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list/typography-control" */ '@Components/typography'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/price-list/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
+import Columnresponsive from '@Components/typography/column-responsive';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
