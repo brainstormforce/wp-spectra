@@ -1,21 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/typography-control" */ '@Components/typography'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
+import Columnresponsive from '@Components/typography/column-responsive';
 
 import {
 	AlignmentToolbar,
