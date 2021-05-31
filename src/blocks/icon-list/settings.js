@@ -1,21 +1,9 @@
 import map from 'lodash/map';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/icon-list/typography-control" */ '@Components/typography'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/icon-list/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/icon-list/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import Columnresponsive from '@Components/typography/column-responsive';
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import {
