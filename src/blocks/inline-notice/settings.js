@@ -1,20 +1,10 @@
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import React, { lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/inline-notice/typography-control" */ '@Components/typography'
-	)
-);
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/inline-notice/web-fornt-loader-control" */ '@Components/typography/fontloader'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -571,11 +561,9 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ blockControls() }
-			<Suspense fallback={ lazyLoader() }>
-				<InspectorControls>{ inlineGeneralSettings() }</InspectorControls>
-				{ loadTitleGoogleFonts }
-				{ loadDescriptionGoogleFonts }
-			</Suspense>
+			<InspectorControls>{ inlineGeneralSettings() }</InspectorControls>
+			{ loadTitleGoogleFonts }
+			{ loadDescriptionGoogleFonts }
 		</>
 	);
 };
