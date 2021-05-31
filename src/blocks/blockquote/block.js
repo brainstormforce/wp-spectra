@@ -5,7 +5,6 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
 import save from './save';
-import './editor.scss';
 import './style.scss';
 import deprecated from './deprecated';
 import attributes from './attributes';

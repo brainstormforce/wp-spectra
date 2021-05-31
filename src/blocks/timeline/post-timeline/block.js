@@ -3,7 +3,6 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import '.././style.scss';
-import '.././editor.scss';
 import edit from './edit';
 
 // Components.

@@ -1,11 +1,21 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import { __ } from '@wordpress/i18n';
+import styles from "./editor.lazy.scss";
 
 const { Button, ToggleControl } = wp.components;
 const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const { setState } = props;
 
 	props = props.parentProps;

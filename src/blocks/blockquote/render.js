@@ -1,13 +1,22 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, {useLayoutEffect} from 'react';
 import Description from './components/Description';
 import AuthorImage from './components/AuthorImage';
 import AuthorText from './components/AuthorText';
 import TweetButtonCTA from './components/TweetButtonCTA';
+import styles from "./editor.lazy.scss";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 
 	const { className, setAttributes, attributes } = props;
@@ -56,8 +65,7 @@ const Render = ( props ) => {
 							</span>{ ' ' }
 						</div>
 					) }
-					<Suspense fallback={ lazyLoader() }>
-						<div className="uagb-blockquote__content-wrap">
+					<div className="uagb-blockquote__content-wrap">
 							{
 								<Description
 									attributes={ attributes }
@@ -93,7 +101,6 @@ const Render = ( props ) => {
 								) }
 							</footer>
 						</div>
-					</Suspense>
 				</blockquote>
 			</div>
 		</div>

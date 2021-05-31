@@ -2,7 +2,6 @@
  * BLOCK: Lottie
  */
 
-import './editor.scss';
 import edit from './edit';
 import UAGB_Block_Icons from '@Controls/block-icons';
 

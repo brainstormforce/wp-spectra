@@ -4,12 +4,22 @@
 
 import classnames from 'classnames';
 import shapes from './shapes';
-import React, { useMemo } from 'react';
+import React, {useLayoutEffect, useMemo} from 'react';
 
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
+import styles from "./editor.lazy.scss";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const { attributes, isSelected, className, deviceType } = props.parentProps;
 
 	const {

@@ -1,11 +1,21 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
+import styles from "./editor.lazy.scss";
 
 const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;

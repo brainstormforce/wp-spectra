@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import InfoBoxPositionClasses from './classes';
-import React, { lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
+import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CallToAction';
@@ -9,8 +8,18 @@ import InfoBoxSeparator from './components/InfoBoxSeparator';
 import Icon from './components/Icon';
 import InfoBoxIconImage from './components/InfoBoxIconImage';
 import Prefix from './components/Prefix';
+import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
 
@@ -133,8 +142,7 @@ const Render = ( props ) => {
 				...InfoBoxPositionClasses( attributes )
 			) }
 		>
-			<Suspense fallback={ lazyLoader() }>
-				<div className="uagb-ifb-left-right-wrap">
+			<div className="uagb-ifb-left-right-wrap">
 					{ iconimgPosition == 'left' && iconImageHtml }
 					<div className="uagb-ifb-content">
 						{ iconimgPosition == 'above-title' && iconImageHtml }
@@ -180,7 +188,6 @@ const Render = ( props ) => {
 
 					{ iconimgPosition == 'right' && iconImageHtml }
 				</div>
-			</Suspense>
 		</div>
 	);
 

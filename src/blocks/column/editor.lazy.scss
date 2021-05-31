@@ -6,9 +6,7 @@
  */
 
  .wp-block[data-type="uagb/column"]:before {
-	content: "";
 	position: absolute;
-	border: 1px dashed #a3aeb6;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -16,6 +14,8 @@
 	z-index: 0;
 	width: 100%;
 	height: 100%;
+	border: 1px dashed #a3aeb6;
+	content: "";
 }
 
 .is-selected.wp-block[data-type="uagb/column"]:before {
@@ -41,9 +41,9 @@
 }
 
 .uagb-column__wrap .block-editor-block-list__block {
-	margin-left: 0;
-	margin-right: 0;
 	width: 100%;
+	margin-right: 0;
+	margin-left: 0;
 }
 
 .block-editor-page

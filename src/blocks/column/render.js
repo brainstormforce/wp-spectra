@@ -5,8 +5,19 @@
 import classnames from 'classnames';
 
 import { InnerBlocks } from '@wordpress/block-editor';
+import {useLayoutEffect} from "react";
+import styles from "./editor.lazy.scss";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const {
 		attributes: { align, backgroundType, alignMobile, alignTablet },
 		deviceType,

@@ -23,6 +23,29 @@ module.exports = {
 			'@Components': path.resolve( __dirname, 'src/components/' ),
 		},
 	},
+	module: {
+		rules: [
+			defaultConfig.module.rules[0],
+			{
+				test: /\.(scss|css)$/,
+				exclude: [/node_modules/, /style/],
+				use: [
+					{
+						loader: 'style-loader',
+						options: { injectType: 'lazyStyleTag' },
+					},
+					'css-loader',
+					'sass-loader',
+				],
+			},
+			{
+				...defaultConfig.module.rules[
+				defaultConfig.module.rules.length - 1
+					],
+				exclude: [/node_modules/, /editor/],
+			},
+		],
+	},
 	output: {
 		filename: '[name].js',
 		path: __dirname + '/dist',

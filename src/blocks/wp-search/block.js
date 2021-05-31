@@ -3,7 +3,6 @@
  */
 
 import './style.scss';
-import './editor.scss';
 import save from './save';
 import edit from './edit';
 import attributes from './attributes';

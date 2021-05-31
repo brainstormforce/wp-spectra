@@ -8,7 +8,6 @@ import edit from './edit';
 import deprecated from './deprecated';
 import variations from './variations';
 import './style.scss';
-import './editor.scss';
 import save from './save';
 
 import { __ } from '@wordpress/i18n';

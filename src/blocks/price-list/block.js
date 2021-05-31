@@ -8,7 +8,7 @@ import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import './style.scss';
-import './editor.scss';
+
 
 import { __ } from '@wordpress/i18n';
 
