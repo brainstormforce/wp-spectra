@@ -1,28 +1,16 @@
 import classnames from 'classnames';
-import Slider from 'react-slick';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TestimonialImage = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/Image" */ './components/Image'
-	)
-);
-const AuthorName = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/AuthorName" */ './components/AuthorName'
-	)
-);
-const Company = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/Company" */ './components/Company'
-	)
-);
-const Description = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/testimonial/Description" */ './components/Description'
-	)
+import TestimonialImage from './components/Image'
+import AuthorName from './components/AuthorName'
+import Company from './components/Company'
+import Description from './components/Description'
+const Slider = lazy( () =>
+   import(
+      /* webpackChunkName: "chunks/testimonial/react-slick" */ 'react-slick'
+   )
 );
 const Render = ( props ) => {
 	props = props.parentProps;
