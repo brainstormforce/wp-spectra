@@ -14,7 +14,7 @@ const Settings = lazy( () =>
 
 import { compose } from '@wordpress/compose';
 
-import { withDispatch, withSelect } from '@wordpress/data';
+import { withDispatch, withSelect, dispatch, select } from '@wordpress/data';
 
 const UAGBTabsEdit = ( props ) => {
 	useEffect( () => {
@@ -27,6 +27,15 @@ const UAGBTabsEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const updateTabTitle = () => {
+		const { attributes, clientId } = props;
+		const { tabHeaders } = attributes;
+		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
+		const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+		const childBlocks = getBlockOrder(clientId);
+		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, {tabHeaders: tabHeaders} ) );
+	}
+
 	useEffect( () => {
 		const element = document.getElementById(
 			'uagb-style-tab-' + props.clientId.substr( 0, 8 )
@@ -35,6 +44,8 @@ const UAGBTabsEdit = ( props ) => {
 		if ( null !== element && undefined !== element ) {
 			element.innerHTML = styling( props );
 		}
+		updateTabTitle();
+		props.resetTabOrder();
 	}, [ props ] );
 
 	return (
