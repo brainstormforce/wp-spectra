@@ -1,22 +1,11 @@
 import classnames from 'classnames';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import CtaPositionClasses from './classes';
-const Title = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/Title" */ './components/Title'
-	)
-);
-const Description = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/Description" */ './components/Description'
-	)
-);
-const CTA = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/call-to-action/CTA" */ './components/CTA'
-	)
-);
+import Title from './components/Title';
+import Description from './components/Description';
+import CTA from './components/CTA';
+
 const Render = ( props ) => {
 	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
