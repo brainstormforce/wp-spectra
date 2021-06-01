@@ -107,7 +107,7 @@ class UAGB_Front_Assets {
 				$this_post = get_post( $id );
 			}
 
-			if ( is_object( $this_post ) ) {
+			if (  ! empty( $this_post ) && is_object( $this_post ) ) {
 				$this->post_assets->prepare_assets( $this_post );
 			}
 		}

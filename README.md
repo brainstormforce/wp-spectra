@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.7  
-**Stable tag:** 1.23.0-beta.1  
+**Stable tag:** 1.23.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -187,6 +187,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Lottie - Alignment issue in the editor.
 * Fix: Post Grid - Link to complete box redirect to the last post when image background set to Top.
 * Fix: Post Layout - Conflicting with the Envira Gallery plugin.
+* Fix: Post Layout - Invalid HTML markup in Post block.
 * Fix: Section - Margin Left/Right not working issue.
 * Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
 * Fix: Table of content - HTML validation issue.
