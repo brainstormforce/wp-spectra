@@ -65,3 +65,42 @@
 .uagb-advanced-toolbar-control .components-button-group.uagb-toolbar--full-width>button, .uagb-advanced-toolbar-control .components-button-group.uagb-toolbar--full-width>button>svg {
     width: 100%!important;
 }
+
+button.components-button.uagb-button-component.has-icon {
+    box-shadow: unset;
+    box-shadow: unset;
+}
+/* alignment */
+.uagb-toolbar--full-width {
+    border: solid 1px #a4afb7;
+	&:focus:not(:disabled){
+		box-shadow:unset;
+        background:unset;
+	}
+	&.components-button-group { 
+		.uagb-button-component {
+			border-right: none;
+			font-size: 12px;
+			cursor: pointer;
+            &:hover, &[aria-expanded=true]{
+                color:#000;
+            }
+		}
+	}
+	.uagb-button-component.is-primary.has-icon {
+		color: #fff;
+		background-color: #a4afb7;
+		border-color: #a4afb7;
+	}	
+	.components-button.is-primary:focus:not(:disabled){
+		box-shadow:unset;
+	}
+ }
+ /* toggle */
+ .uag-toggle-wrap {
+    display:flex;
+}
+
+label.uag-toggle-label {
+    margin-right:133px
+}

@@ -124,6 +124,8 @@ function FontFamilyControl( props ) {
 		props.setAttributes( { [loadGoogleFonts.label]: value } )
 	}
 
+	console.log(fontSubset);
+
 	return (
 		<div className="uag-typography-font-family-options">
 			<div className="uag-typography-font-family">
@@ -153,8 +155,9 @@ function FontFamilyControl( props ) {
 			{ ( props.fontSubset.label && props.fontSubset.value ) && (
 			 <label className="uag-typography-font-family-subset-label">{ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }</label>
 			) }
+			{ ( props.fontSubset.label && props.fontSubset.value ) && (
 			<SelectControl
-				label={ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }
+				// label={ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }
 				value={ props.fontSubset.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
 				options={
@@ -162,6 +165,7 @@ function FontFamilyControl( props ) {
 				}
 				className="react-select-container"
 			/>
+			) }
 			</div>
 		</div>
 	)

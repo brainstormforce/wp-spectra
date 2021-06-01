@@ -218,6 +218,13 @@ class UAGBInlineNoticeEdit extends Component {
 							setAttributes( { noticeAlignment: value } )
 						}
 					/>
+					<div className="uag-toggle-wrap">
+					<label className="uag-toggle-label">{ __( "Toggle off", 'ultimate-addons-for-gutenberg' )  }</label>
+					<ToggleControl
+							checked={ cookies }
+							onChange={ this.update_cookie_id }
+					/>
+					</div>
 					<Range 
 						value={contentVrPadding} 
 						onChange={val => setAttributes({ contentVrPadding: parseInt(val) })}

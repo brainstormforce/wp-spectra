@@ -10,6 +10,7 @@
  import SVGIconTop from './images/top.svg'
  import SVGIconVerticalCenter from './images/vertical-center.svg'
  import Button from '../button'
+ import css from './editor.scss'
  
  /**
   * External dependencies
