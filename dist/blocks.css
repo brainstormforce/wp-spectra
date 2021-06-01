@@ -46,7 +46,7 @@
 
 #wpwrap .edit-post-visual-editor .uagb-blockquote__skin-quotation blockquote.uagb-blockquote{vertical-align:baseline;padding:0;margin:0;background:transparent;border:0 none;outline:0;font-size:100%;font-style:normal;quotes:none}#wpwrap .edit-post-visual-editor blockquote.uagb-blockquote{padding:0;margin:0}#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-border blockquote{padding-left:10px}#wpwrap .edit-post-visual-editor .uagb-blockquote__content,#wpwrap .edit-post-visual-editor cite.uagb-blockquote__author,#wpwrap .edit-post-visual-editor .uagb-blockquote__author{font-style:normal}#wpwrap .edit-post-visual-editor .uagb-blockquote a{box-shadow:none;color:#1da1f2;text-decoration:none;-webkit-box-shadow:none}#wpwrap .edit-post-visual-editor .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button,#wpwrap .edit-post-visual-editor .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button{color:#fff}#wpwrap .edit-post-visual-editor .uagb-blockquote__align-center a.uagb-blockquote__tweet-button{margin:0 auto}
 
-p.uagb-marketing-btn__prefix.block-editor-rich-text__editable{margin:0 !important}
+p.uagb-marketing-btn__prefix.block-editor-rich-text__editable{margin:0 !important}#wpwrap .edit-post-visual-editor a.uagb-marketing-btn__link{pointer-events:all}
 
 .uagb-toc__list>p{color:#666;font-size:13px;font-style:italic}.block-editor-page .uagb-toc__scroll-top.dashicons{right:343px}.block-editor-page .uagb-toc__scroll-top.uagb-toc__show-scroll{display:inline-table}.uagb-light-font-weight{font-weight:400}
 
