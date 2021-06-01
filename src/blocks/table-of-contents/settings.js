@@ -5,28 +5,10 @@ import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import React, {lazy, Suspense} from 'react';
 import lazyLoader from "@Controls/lazy-loader";
-
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/typography" */ '@Components/typography'
-		)
-);
-const FontIconPicker = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/react-fonticonpicker" */ '@fonticonpicker/react-fonticonpicker'
-		)
-);
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/column-responsive" */ '@Components/typography/column-responsive'
-		)
-);
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/table-of-contents/fontloader" */ '@Components/typography/fontloader'
-		)
-);
+import TypographyControl from '@Components/typography';
+import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+import ColumnResponsive from '@Components/typography/column-responsive'
+import WebfontLoader from '@Components/typography/fontloader';
 
 import {
 	BlockControls,
