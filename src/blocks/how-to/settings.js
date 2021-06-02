@@ -1,17 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-// Import all of our Text Options requirements.
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/how-to/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/how-to/typography" */ '@Components/typography'
-	)
-);
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 
 import './style.scss';
 import { __ } from '@wordpress/i18n';
