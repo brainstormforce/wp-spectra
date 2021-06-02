@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
-
+$ = jQuery;
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import {
@@ -104,6 +104,16 @@ const Settings = ( props ) => {
 		},
 	} = props;
 
+	const getImageSize = ( sizes ) => {
+		const sizeArr = [];
+		$.each( sizes, function ( index, item ) {
+			const name = index;
+			const p = { value: name, label: name };
+			sizeArr.push( p );
+		} );
+		return sizeArr;
+	};
+
 	if ( mainimage && mainimage.sizes ) {
 		imageSizeOptions = getImageSize( mainimage.sizes );
 	}
@@ -158,17 +168,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ pconfig }></WebfontLoader>
 		);
 	}
-
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-
-		sizeTypes.map( ( { index, item } ) => {
-			const name = index;
-			const p = { value: name, label: name };
-			sizeArr.push( p );
-		} );
-		return sizeArr;
-	};
 
 	const generalSettings = () => {
 		return (
