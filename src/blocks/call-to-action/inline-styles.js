@@ -175,6 +175,7 @@ function CtaStyle( props ) {
 		};
 	}
 
+
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
@@ -212,6 +213,7 @@ function CtaStyle( props ) {
 			),
 		},
 	};
+
 
 	const mobileSelectors = {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
