@@ -1,15 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-carousel/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-
+import WebfontLoader from '@Components/typography/fontloader';
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
-
 import { ToolbarGroup } from '@wordpress/components';
 
 const Settings = ( props ) => {

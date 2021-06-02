@@ -2,39 +2,14 @@ import classnames from 'classnames';
 import InfoBoxPositionClasses from './classes';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const Title = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/Title" */ './components/Title'
-	)
-);
-const InfoBoxDesc = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/InfoBoxDesc" */ './components/InfoBoxDesc'
-	)
-);
-const CallToAction = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/CallToAction" */ './components/CallToAction'
-	)
-);
-const InfoBoxSeparator = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/InfoBoxSeparator" */ './components/InfoBoxSeparator'
-	)
-);
-const Icon = lazy( () =>
-	import( /* webpackChunkName: "chunks/info-box/Icon" */ './components/Icon' )
-);
-const InfoBoxIconImage = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/InfoBoxIconImage" */ './components/InfoBoxIconImage'
-	)
-);
-const Prefix = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/Prefix" */ './components/Prefix'
-	)
-);
+import Title from './components/Title';
+import InfoBoxDesc from './components/InfoBoxDesc';
+import CallToAction from './components/CallToAction';
+import InfoBoxSeparator from './components/InfoBoxSeparator';
+import Icon from './components/Icon';
+import InfoBoxIconImage from './components/InfoBoxIconImage';
+import Prefix from './components/Prefix';
+
 const Render = ( props ) => {
 	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;

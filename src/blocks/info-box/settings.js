@@ -5,16 +5,9 @@ import renderSVG from '@Controls/renderIcon';
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/typography-control" */ '@Components/typography'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/info-box/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
+
 $ = jQuery;
 const svg_icons = Object.keys( UAGBIcon );
 
