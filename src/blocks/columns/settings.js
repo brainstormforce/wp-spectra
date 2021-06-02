@@ -3,30 +3,12 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
-
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-const GradientSettings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/columns/gradient-settings" */ '@Components/gradient-settings'
-	)
-);
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/columns/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-const OptionSelectorControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/columns/option-selector-control" */ '@Components/option-selector-control'
-	)
-);
-const BoxShadowControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/columns/box-shadow" */ '@Components/box-shadow'
-	)
-);
+import GradientSettings from '@Components/gradient-settings';
+import Columnresponsive from '@Components/typography/column-responsive';
+import OptionSelectorControl from '@Components/option-selector-control';
+import BoxShadowControl from '@Components/box-shadow';
 
 import {
 	BlockControls,

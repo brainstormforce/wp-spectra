@@ -1,17 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/advanced-heading/typography-control" */ '@Components/typography'
-	)
-);
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/advanced-heading/web-font-loader-control" */ '@Components/typography/fontloader'
-	)
-);
 import { __ } from '@wordpress/i18n';
 
 import {
