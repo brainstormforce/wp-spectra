@@ -178,7 +178,7 @@ const Settings = ( props ) => {
 	const faqGeneralSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Genera', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
