@@ -9,7 +9,6 @@ import deprecated from './deprecated';
 import attributes from './attributes';
 import './style.scss';
 
-
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
