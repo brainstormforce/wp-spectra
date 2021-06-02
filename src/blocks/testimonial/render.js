@@ -1,18 +1,30 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, {lazy, Suspense, useLayoutEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TestimonialImage from './components/Image'
 import AuthorName from './components/AuthorName'
 import Company from './components/Company'
 import Description from './components/Description'
+import styles from "./editor.lazy.scss";
+
 const Slider = lazy( () =>
    import(
       /* webpackChunkName: "chunks/testimonial/react-slick" */ 'react-slick'
    )
 );
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
+
 	props = props.parentProps;
 	const { className, setAttributes, attributes, deviceType } = props;
 
@@ -119,7 +131,7 @@ const Render = ( props ) => {
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
-			
+
 			<Suspense fallback={ lazyLoader() }>
 			<Slider
 				className={ classnames(

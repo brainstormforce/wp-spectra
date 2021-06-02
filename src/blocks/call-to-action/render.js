@@ -1,12 +1,22 @@
 import classnames from 'classnames';
-import React, { Suspense } from 'react';
+import React, {Suspense, useLayoutEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import CtaPositionClasses from './classes';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CTA';
+import styles from "./editor.lazy.scss";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
 
