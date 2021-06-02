@@ -334,9 +334,9 @@ const deprecated = [
 										tagName="h4"
 										className="uagb-howto-timeNeeded-text"
 									/>
-									<Fragment>
+									<>
 										{ timeInYears && (
-											<Fragment>
+											<>
 												<p className="uagb-howto-timeNeeded-value">
 													{ ' ' }
 													{ timeInYears }
@@ -345,49 +345,49 @@ const deprecated = [
 													{ ' ' }
 													{ yearlabel }
 												</p>
-											</Fragment>
+											</>
 										) }
 										{ timeInMonths && (
-											<Fragment>
+											<>
 												<p className="uagb-howto-timeNeeded-value">
 													{ timeInMonths }
 												</p>
 												<p className="uagb-howto-timeINmin-text">
 													{ monthlabel }
 												</p>
-											</Fragment>
+											</>
 										) }
 										{ timeInDays && (
-											<Fragment>
+											<>
 												<p className="uagb-howto-timeNeeded-value">
 													{ timeInDays }
 												</p>
 												<p className="uagb-howto-timeINmin-text">
 													{ daylabel }
 												</p>
-											</Fragment>
+											</>
 										) }
 										{ timeInHours && (
-											<Fragment>
+											<>
 												<p className="uagb-howto-timeNeeded-value">
 													{ timeInHours }
 												</p>
 												<p className="uagb-howto-timeINmin-text">
 													{ hourlabel }
 												</p>
-											</Fragment>
+											</>
 										) }
 										{ minsValue && (
-											<Fragment>
+											<>
 												<p className="uagb-howto-timeNeeded-value">
 													{ minsValue }
 												</p>
 												<p className="uagb-howto-timeINmin-text">
 													{ minslabel }
 												</p>
-											</Fragment>
+											</>
 										) }
-									</Fragment>
+									</>
 								</span>
 							) }
 							{ showEstcost && (
