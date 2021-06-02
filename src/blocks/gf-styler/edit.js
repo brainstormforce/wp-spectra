@@ -9,7 +9,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/render" */ './render' )
 );
 import { withSelect } from '@wordpress/data';
-
+$ = jQuery;
 const UAGBGF = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
