@@ -107,7 +107,7 @@ const Settings = ( props ) => {
 	const updateCookieId = ( value ) => {
 		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
-		const timestamp = new Date().getTime();
+		const timestamp = Date().toLocaleString();
 
 		setAttributes( { c_id: post_id + '-' + timestamp } );
 		setAttributes( { cookies: value } );
