@@ -6,7 +6,6 @@ import attributes from './attributes';
 import edit from './edit';
 import save from './save';
 import './style.scss';
-import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
