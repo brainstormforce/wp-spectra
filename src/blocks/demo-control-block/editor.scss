@@ -113,3 +113,93 @@ label.uag-toggle-label {
 label.uag-border-label {
     margin-right:130px
 }
+/* background */
+.uag-background-wrap {
+    display:flex;
+}
+
+label.uag-background-label {
+    margin-right:47px
+}
+/* Image Position */
+.uag-image-position-wrap {
+    display:flex;
+}
+
+label.uag-image-position-label {
+    margin-right:64px
+}
+/* image-attachment */
+.uag-image-attachment-wrap {
+    display:flex;
+}
+
+label.uag-image-attachment-label {
+    margin-right:42px
+}
+
+.uag-image-attachment-wrap .components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+    margin-right:72px;
+}
+/* Image repeat */
+.uag-image-repeat-wrap {
+    display:flex;
+}
+
+label.uag-image-repeat-label {
+    margin-right:69px
+}
+.uag-image-repeat-wrap .components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+    margin-right:70px;
+}
+/* Image size */
+.uag-image-size-wrap {
+    display:flex;
+}
+
+label.uag-image-size-label {
+    margin-right:85px
+}
+.uag-image-size-wrap .components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+    margin-right:65px;
+}
+/* Image overlay */
+.uag-image-overlay-wrap {
+    display:flex;
+}
+
+label.uag-image-overlay-label {
+    margin-right:33px
+}
+.uag-image-overlay-wrap .components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+    margin-right:59px;
+}
+/* Multi Button */
+.components-button-group {
+    display:flex;
+}
+
+button.components-button.is-secondary {
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+
+.components-button.is-secondary:hover:not(:disabled), .components-button.is-tertiary:hover:not(:disabled){
+    color:#000;
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+.components-button.is-secondary, .components-button.is-tertiary{
+    color:#000;
+}
+
+.components-button.is-primary:focus:not(:disabled){
+    box-shadow:unset;
+}
+/* Box position */
+/* Image size */
+.uag-box-position-wrap {
+    display:flex;
+}
+
+label.uag-box-position-label {
+    margin-right:85px
+}

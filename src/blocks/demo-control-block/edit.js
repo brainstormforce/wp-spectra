@@ -15,6 +15,9 @@ import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
 import DimensionsControl from '../../components/dimention-control';
 import Range from '../../components/range/Range.js';
+import GradientSettings from "../../components/gradient-settings"
+import OptionSelectorControl from '../../components/option-selector-control'
+import BoxShadowControl from "../../components/box-shadow"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -32,6 +35,8 @@ const {
 	InspectorControls,
 	RichText,
 	ColorPalette,
+	MediaUpload,
+	PanelColorSettings,
 } = wp.blockEditor
 
 const {
@@ -39,6 +44,8 @@ const {
 	RangeControl,
 	SelectControl,
 	ToggleControl,
+	BaseControl,
+	Button,
 } = wp.components
 
 const {
@@ -54,6 +61,37 @@ class UAGBInlineNoticeEdit extends Component {
 
 		super( ...arguments )
 		this.update_cookie_id = this.update_cookie_id.bind(this)
+		this.onRemoveImage = this.onRemoveImage.bind( this )
+		this.onSelectImage = this.onSelectImage.bind( this )
+	}
+
+	
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { setAttributes } = this.props
+
+		setAttributes( { backgroundImage: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { backgroundImage: null } )
+			return
+		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
+		setAttributes( { backgroundImage: media } )
 	}
 
 	update_cookie_id( value ) {
@@ -154,6 +192,35 @@ class UAGBInlineNoticeEdit extends Component {
 				borderWidth,
 				borderRadius,
 				borderColor,
+				backgroundType,
+				backgroundImage,
+				backgroundColor,
+				backgroundPosition,
+				backgroundAttachment,
+				backgroundRepeat,
+				backgroundSize,
+				gradientColor1,
+				gradientColor2,
+				gradientLocation1,
+				gradientLocation2,
+				gradientType,
+				gradientAngle,
+				backgroundOpacity,
+				backgroundImageColor,
+				overlayType,
+				gradientOverlayColor1,
+				gradientOverlayColor2,
+				gradientOverlayType,
+				gradientOverlayLocation1,
+				gradientOverlayLocation2,
+				gradientOverlayAngle,
+				columnGap,
+				boxShadowColor,
+				boxShadowHOffset,
+				boxShadowVOffset,
+				boxShadowBlur,
+				boxShadowSpread,
+				boxShadowPosition,
 			},
 			setAttributes,
 			className,
@@ -252,6 +319,31 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
 							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
 							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
+						/>
+						<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow", 'ultimate-addons-for-gutenberg' ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color", 'ultimate-addons-for-gutenberg' ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal", 'ultimate-addons-for-gutenberg' ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical", 'ultimate-addons-for-gutenberg' ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur", 'ultimate-addons-for-gutenberg' ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread", 'ultimate-addons-for-gutenberg' ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position", 'ultimate-addons-for-gutenberg' ) } }
+							
+						/>
+						<OptionSelectorControl
+							label={ __( "Gap", 'ultimate-addons-for-gutenberg' ) }
+							currentOption={ columnGap }
+							options={ [
+								{ value: "10", label: __( "Default", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Default (10px)', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "0", label: __( "None", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'No Gap (0px)', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "5", label: __( "S", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Narrow (5px)', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "15", label: __( "M", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Extended (15px)', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "20", label: __( "L", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Wide (20px)', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "30", label: __( "XL", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Wider (30px)', 'ultimate-addons-for-gutenberg' ), }
+							] }
+							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
+							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
 						/>
 				</PanelBody>
 				<PanelBody title="Layout" initialOpen={false}>
@@ -401,6 +493,205 @@ class UAGBInlineNoticeEdit extends Component {
 							/>
 						</Fragment>
 					) }
+				</PanelBody>
+				<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+					<div className="uag-background-wrap">
+						<label className="uag-background-label">{__( "Background Type", 'ultimate-addons-for-gutenberg' ) }</label>
+						<SelectControl
+							value={ backgroundType }
+							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
+							options={ [
+								{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "color", label: __( "Color", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "gradient", label: __( "Gradient", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "image", label: __( "Image", 'ultimate-addons-for-gutenberg' ) }
+							] }
+						/>
+					</div>
+					{ "color" == backgroundType && (
+						<Fragment>
+							<AdvancedPopColorControl
+								label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+								colorValue={ ( backgroundColor ? backgroundColor : '' ) }
+								colorDefault={ '' }
+								onColorChange={ value => setAttributes( { backgroundColor: value } ) }
+								onColorClassChange={ value => setAttributes( { colorClass: value } ) }
+							/>
+						</Fragment>
+					) }
+					{ "image" == backgroundType &&
+							( <Fragment>
+								<BaseControl
+									className="editor-bg-image-control"
+									label={ __( "Background Image", 'ultimate-addons-for-gutenberg' ) }>
+									<MediaUpload
+										title={ __( "Select Background Image", 'ultimate-addons-for-gutenberg' ) }
+										onSelect={ this.onSelectImage }
+										allowedTypes={ [ "image" ] }
+										value={ backgroundImage }
+										render={ ( { open } ) => (
+											<Button isSecondary onClick={ open }>
+												{ ! backgroundImage ? __( "Select Background Image", 'ultimate-addons-for-gutenberg' ) : __( "Replace image", 'ultimate-addons-for-gutenberg' ) }
+											</Button>
+										) }
+									/>
+									{ backgroundImage &&
+										( <Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+											{ __( "Remove Image", 'ultimate-addons-for-gutenberg' ) }
+										</Button> )
+									}
+								</BaseControl>
+								{ backgroundImage &&
+									( <Fragment>
+										<div className="uag-image-position-wrap">
+										<label className="uag-image-position-label">{ __( "Position", 'ultimate-addons-for-gutenberg' ) }</label>
+										<SelectControl
+											value={ backgroundPosition }
+											onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
+											options={ [
+												{ value: "top-left", label: __( "Top Left", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "top-center", label: __( "Top Center", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "top-right", label: __( "Top Right", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "center-left", label: __( "Center Left", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "center-center", label: __( "Center Center", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "center-right", label: __( "Center Right", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "bottom-left", label: __( "Bottom Left", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "bottom-center", label: __( "Bottom Center", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "bottom-right", label: __( "Bottom Right", 'ultimate-addons-for-gutenberg' ) },
+											] }
+										/>
+										</div>
+										<div className="uag-image-attachment-wrap">
+										<label className="uag-image-attachment-label">{ __( "Attachment", 'ultimate-addons-for-gutenberg' ) }</label>
+										<SelectControl
+											value={ backgroundAttachment }
+											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
+											options={ [
+												{ value: "fixed", label: __( "Fixed", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "scroll", label: __( "Scroll", 'ultimate-addons-for-gutenberg' ) }
+											] }
+										/>
+										</div>
+										<div className="uag-image-repeat-wrap">
+										<label className="uag-image-repeat-label">{ __( "Repeat", 'ultimate-addons-for-gutenberg' ) }</label>
+										<SelectControl
+											value={ backgroundRepeat }
+											onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
+											options={ [
+												{ value: "no-repeat", label: __( "No Repeat", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "repeat", label: __( "Repeat", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "repeat-x", label: __( "Repeat-x", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "repeat-y", label: __( "Repeat-y", 'ultimate-addons-for-gutenberg' ) }
+											] }
+										/>
+										</div>
+										<div className="uag-image-size-wrap">
+										<label className="uag-image-size-label">{ __( "Size", 'ultimate-addons-for-gutenberg' ) }</label>
+										<SelectControl
+											value={ backgroundSize }
+											onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
+											options={ [
+												{ value: "auto", label: __( "Auto", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "cover", label: __( "Cover", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "contain", label: __( "Contain", 'ultimate-addons-for-gutenberg' ) }
+											] }
+										/>
+										</div>
+										<div className="uag-image-overlay-wrap">
+										<label className="uag-image-overlay-label">{  __( "Overlay Type", 'ultimate-addons-for-gutenberg' ) }</label>
+										<SelectControl
+											value={ overlayType }
+											onChange={ ( value ) => setAttributes( { overlayType: value } ) }
+											options={ [
+												{ value: "color", label: __( "Color", 'ultimate-addons-for-gutenberg' ) },
+												{ value: "gradient", label: __( "Gradient", 'ultimate-addons-for-gutenberg' ) },
+											] }
+										/>
+										</div>
+										{ "color" == overlayType &&<Fragment>
+												<AdvancedPopColorControl
+													label={ __( "Image Overlay Color", 'ultimate-addons-for-gutenberg' ) }
+													colorValue={ ( backgroundImageColor ? backgroundImageColor : '' ) }
+													colorDefault={ '' }
+													onColorChange={ value => setAttributes( { backgroundImageColor: value } ) }
+													onColorClassChange={ value => setAttributes( { colorClass: value } ) }
+												/>
+											</Fragment>
+										}
+
+										{ "gradient" == overlayType &&
+											( <Fragment>
+												<PanelColorSettings
+													title={ __( "Color Settings", 'ultimate-addons-for-gutenberg' ) }
+													colorSettings={ [
+														{
+															value: gradientOverlayColor2,
+															onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
+															label: __( "Color 1", 'ultimate-addons-for-gutenberg' ),
+														},
+														{
+															value: gradientOverlayColor1,
+															onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
+															label: __( "Color 2", 'ultimate-addons-for-gutenberg' ),
+														},
+													] }
+												>
+												</PanelColorSettings>
+												<SelectControl
+													label={ __( "Type", 'ultimate-addons-for-gutenberg' ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear", 'ultimate-addons-for-gutenberg' ) },
+														{ value: "radial", label: __( "Radial", 'ultimate-addons-for-gutenberg' ) },
+													] }
+												/>
+												<RangeControl
+													label={ __( "Location 1", 'ultimate-addons-for-gutenberg' ) }
+													value={ gradientOverlayLocation1 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 2", 'ultimate-addons-for-gutenberg' ) }
+													value={ gradientOverlayLocation2 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation2: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Angle", 'ultimate-addons-for-gutenberg' ) }
+													value={ gradientOverlayAngle }
+													onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+													min={ 0 }
+													max={ 360 }
+													allowReset
+												/>
+											</Fragment> )
+										}
+									</Fragment> )
+								}
+							</Fragment> )
+					}
+					{ "gradient" == backgroundType &&
+							( <Fragment>
+								<GradientSettings attributes={ this.props.attributes }	setAttributes={ setAttributes }/>
+							</Fragment> )
+					}
+					{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
+							( 
+							<Range 
+								label={ __( "Opacity", 'ultimate-addons-for-gutenberg' ) }
+								value={backgroundOpacity} 
+								onChange={val => setAttributes({ backgroundOpacity: parseInt(val) })}
+								min={0} 
+								max={100} 
+							/>
+							)
+					}
 				</PanelBody>
 				</InspectorTab>
 				<InspectorTab key={'style'}>

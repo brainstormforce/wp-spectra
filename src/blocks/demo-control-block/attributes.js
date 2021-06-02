@@ -256,6 +256,110 @@
 	borderColor : {
 		type: "string"
 	},
+	backgroundType: {
+		type: "string",
+	},
+	backgroundImage: {
+		type: "object",
+	},
+	backgroundPosition: {
+		type: "string",
+		default: "center-center"
+	},
+	backgroundSize: {
+		type: "string",
+		default: "cover"
+	},
+	backgroundRepeat: {
+		type: "string",
+		default: "no-repeat"
+	},
+	backgroundAttachment: {
+		type: "string",
+		default: "scroll"
+	},
+	backgroundColor: {
+		type: "string",
+	},
+	gradientColor1: {
+		type: "string",
+	},
+	gradientColor2: {
+		type: "string",
+	},
+	gradientType: {
+		type: "string",
+		default: "linear"
+	},
+	gradientLocation1: {
+		type: "number",
+		default: 0
+	},
+	gradientLocation2: {
+		type: "number",
+		default: 100
+	},
+	gradientAngle: {
+		type: "number",
+		default: 0
+	},
+	backgroundOpacity: {
+		type: "number"
+	},
+	backgroundImageColor: {
+		type: "string"
+	},
+	overlayType: {
+		type: "string",
+		default: "color"
+	},
+	gradientOverlayColor1: {
+		type: "string",
+	},
+	gradientOverlayColor2: {
+		type: "string",
+	},
+	gradientOverlayType: {
+		type: "string",
+		default: "linear"
+	},
+	gradientOverlayLocation1: {
+		type: "number",
+		default: 0
+	},
+	gradientOverlayLocation2: {
+		type: "number",
+		default: 100
+	},
+	gradientOverlayAngle: {
+		type: "number",
+		default: 0
+	},
+	columnGap: {
+		type: "string",
+		default: "10"
+	},
+	boxShadowColor: {
+		type: "string"
+	},
+	boxShadowHOffset : {
+		type: "number",
+		default: 0
+	},
+	boxShadowVOffset : {
+		type: "number",
+		default: 0
+	},
+	boxShadowBlur : {
+		type: "number"
+	},
+	boxShadowSpread : {
+		type: "number"
+	},
+	boxShadowPosition: {
+		type: "string",
+		default: "outset"
+	},
 }
 
 export default attributes

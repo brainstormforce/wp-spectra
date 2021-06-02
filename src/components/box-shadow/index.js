@@ -3,6 +3,8 @@
  *
  */
  import { __ } from '@wordpress/i18n';
+ import Range from '../../components/range/Range.js';
+ import AdvancedPopColorControl from '../../advanced-pop-color-control'
 
 const {
 	ColorPalette
@@ -71,63 +73,69 @@ class BoxShadowControl extends Component {
             advancedControls = (
                 <div className="uagb-box-shadow-advanced">
                     <Fragment>
-                    <p className="uagb-setting-label">{ boxShadowColor.label }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor.value }} ></span></span></p>
-                    <ColorPalette
+                    {/* <p className="uagb-setting-label">{ boxShadowColor.label }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor.value }} ></span></span></p> */}
+                    {/* <ColorPalette
                         value={ boxShadowColor.value }
                         onChange={ ( colorValue ) => setAttributes( { boxShadowColor: colorValue } ) }
                         allowReset
+                    /> */}
+                    <AdvancedPopColorControl
+                        label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+                        colorValue={ ( boxShadowColor.value ) }
+                        colorDefault={ '' }
+                        onColorChange={ value => setAttributes( { boxShadowColor: value } ) }
+                        onColorClassChange={ value => setAttributes( { colorClass: value } ) }
                     />
                     </Fragment>
                     <Fragment>
-                    <h2>{ boxShadowHOffset.label }</h2>
-                    <RangeControl
+                    <Range 
+                        label={ boxShadowHOffset.label }
                         value={ boxShadowHOffset.value }
                         onChange={ ( value ) => setAttributes( { boxShadowHOffset: value } ) }
                         min={ -100 }
-                        max={ 100 }
-                        allowReset
+                        max={ 100 } 
                     />
                     </Fragment>
                     <Fragment>
-                    <h2>{ boxShadowVOffset.label }</h2>
-                    <RangeControl
+                    <Range 
+                        label={ boxShadowVOffset.label }
                         value={ boxShadowVOffset.value }
                         onChange={ ( value ) => setAttributes( { boxShadowVOffset: value } ) }
                         min={ -100 }
-                        max={ 100 }
-                        allowReset
+                        max={ 100 } 
                     />
                     </Fragment>
                     <Fragment>
-                    <h2>{ boxShadowBlur.label }</h2>
-                    <RangeControl
+                    <Range 
+                        label={ boxShadowBlur.label }
                         value={ boxShadowBlur.value }
                         onChange={ ( value ) => setAttributes( { boxShadowBlur: value } ) }
                         min={ 0 }
                         max={ 100 }
-                        allowReset
                     />
                     </Fragment>
                     <Fragment>
-                    <h2>{ boxShadowSpread.label }</h2>
-                    <RangeControl
+                    <Range 
+                        label={ boxShadowSpread.label }
                         value={ boxShadowSpread.value }
                         onChange={ ( value ) => setAttributes( { boxShadowSpread: value } ) }
                         min={ 0 }
                         max={ 100 }
-                        allowReset
                     />
                     </Fragment>
                     <Fragment>
-                    <SelectControl
-                        label={ boxShadowPosition.label }
-                        value={ boxShadowPosition.value }
-                        onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
-                        options={ [
-                            { value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
-                            { value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
-                        ] }
-                    />
+                    
+                    <div className="uag-box-position-wrap">
+						<label className="uag-box-position-label">{ boxShadowPosition.label }</label>
+						<SelectControl
+                            value={ boxShadowPosition.value }
+                            onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
+                            options={ [
+                                { value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
+                                { value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+                            ] }
+                        />
+					</div>
                     </Fragment>
                 </div>
             );
