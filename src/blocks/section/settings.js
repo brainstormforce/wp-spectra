@@ -2,6 +2,10 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
+import ColumnResponsive from '@Components/typography/column-responsive';
+import GradientSettings from '@Components/gradient-settings';
+import BoxShadowControl from '@Components/box-shadow';
+
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -18,24 +22,6 @@ import {
 	BaseControl,
 	ToggleControl,
 } from '@wordpress/components';
-
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/section/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-
-const GradientSettings = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/section/gradient-settings" */ '@Components/gradient-settings'
-	)
-);
-
-const BoxShadowControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/section/box-shadow-control" */ '@Components/box-shadow'
-	)
-);
 
 const Settings = ( props ) => {
 	props = props.parentProps;
