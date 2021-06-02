@@ -2,26 +2,10 @@ import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/typography" */ '@Components/typography'
-	)
-);
-const BoxShadowControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/taxonomy-list/box-shadow" */ '@Components/box-shadow'
-	)
-);
+import WebfontLoader from '@Components/typography/fontloader'
+import ColumnResponsive from '@Components/typography/column-responsive'
+import TypographyControl from '@Components/typography'
+import BoxShadowControl from '@Components/box-shadow'
 
 import {
 	PanelBody,
