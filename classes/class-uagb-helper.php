@@ -102,6 +102,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $script = '';
 
 		/**
+		 * UAG FAQ Layout Flag
+		 *
+		 * @since 1.18.1
+		 * @deprecated 1.23.0
+		 * @var uag_faq_layout
+		 */
+		public static $uag_faq_layout = false;
+
+		/**
+		 * UAG TOC Flag
+		 *
+		 * @since 1.18.1
+		 * @deprecated 1.23.0
+		 * @var table_of_contents_flag
+		 */
+		public static $table_of_contents_flag = false;
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
