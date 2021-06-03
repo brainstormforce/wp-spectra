@@ -9,7 +9,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import Columnresponsive from '@Components/typography/column-responsive';
 
 const svgIcons = Object.keys( UAGBIcon );

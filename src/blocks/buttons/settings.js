@@ -1,5 +1,5 @@
 import lazyLoader from '@Controls/lazy-loader';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import {
 	BlockAlignmentToolbar,
@@ -11,7 +11,6 @@ import {
 	RangeControl,
 	BaseControl,
 } from '@wordpress/components';
-
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
