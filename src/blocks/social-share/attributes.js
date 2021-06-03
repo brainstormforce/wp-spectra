@@ -2,11 +2,11 @@
  * BLOCK: UAGB Social Share Attributes
  */
 
-const ITEM_COUNT = 1;
+const itemCount = 1;
 
 const socials = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
+for ( let i = 1; i <= itemCount; i++ ) {
 	socials.push( {
 		type: 'facebook',
 		image_icon: 'icon',
@@ -40,7 +40,7 @@ const attributes = {
 	},
 	social_count: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	socials: {
 		type: 'array',

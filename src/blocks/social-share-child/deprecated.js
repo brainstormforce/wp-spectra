@@ -30,18 +30,18 @@ const deprecated = [
 				url = links[ type ];
 			}
 
-			let image_icon_html = '';
+			let imageIconHtml = '';
 
 			if ( image_icon == 'icon' ) {
 				if ( icon ) {
-					image_icon_html = (
+					imageIconHtml = (
 						<span className="uagb-ss__source-icon">
 							{ renderSVG( icon ) }
 						</span>
 					);
 				}
 			} else if ( image && image.url ) {
-				image_icon_html = (
+				imageIconHtml = (
 					<img className="uagb-ss__source-image" src={ image.url } />
 				);
 			}
@@ -61,7 +61,7 @@ const deprecated = [
 						rel="noopener noreferrer"
 					>
 						<span className="uagb-ss__source-wrap">
-							{ image_icon_html }
+							{ imageIconHtml }
 						</span>
 					</a>
 				</div>

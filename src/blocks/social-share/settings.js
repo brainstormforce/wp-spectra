@@ -4,12 +4,7 @@
 
 import lazyLoader from '@Controls/lazy-loader';
 import React, { lazy, Suspense } from 'react';
-
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/social-share/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import Columnresponsive from "../../components/typography/column-responsive"
 
 import { __ } from '@wordpress/i18n';
 
