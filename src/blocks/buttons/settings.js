@@ -12,18 +12,8 @@ import {
 	BaseControl,
 } from '@wordpress/components';
 
-// Import all of our Text Options requirements.
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/buttons/typography" */ '@Components/typography'
-	)
-);
-// Import Web font loader for google fonts.
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/buttons/fontloader" */ '@Components/typography/fontloader'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
