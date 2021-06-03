@@ -13,36 +13,38 @@ const Render = (
 	props = props.parentProps;
 	// Setup the attributes
 	const {
-		attributes: {
-			block_id,
-			authorName,
-			itemName,
-			description,
-			parts,
-			starCount,
-			summaryTitle,
-			summaryDescription,
-			inactiveStarColor,
-			activeStarColor,
-			ctaLink,
-			ctaTarget,
-			rTitle,
-			rContent,
-			rAuthor,
-			headingTag,
-			mainimage,
-			imgSize,
-			showFeature,
-			showAuthor,
-			starOutlineColor,
-			enableDescription,
-			enableImage,
-		},
+		attributes,
 		setAttributes,
 		isSelected,
-		className,
+		className
 	} = props;
 
+	const {
+		block_id,
+		authorName,
+		itemName,
+		description,
+		parts,
+		starCount,
+		summaryTitle,
+		summaryDescription,
+		inactiveStarColor,
+		activeStarColor,
+		ctaLink,
+		ctaTarget,
+		rTitle,
+		rContent,
+		rAuthor,
+		headingTag,
+		mainimage,
+		imgSize,
+		showFeature,
+		showAuthor,
+		starOutlineColor,
+		enableDescription,
+		enableImage,
+	} = attributes;
+	
 	let urlChk = '';
 	let title = '';
 	if (

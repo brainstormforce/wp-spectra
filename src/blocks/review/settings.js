@@ -31,6 +31,10 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
+export const removeFromArray = (arr, removedElems) =>
+arr.filter((a) =>
+	Array.isArray(removedElems) ? !removedElems.includes(a) : a !== removedElems
+);
 const Settings = ( props ) => {
 	props = props.parentProps;
 	// Setup the attributes

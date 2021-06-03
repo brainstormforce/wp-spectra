@@ -180,13 +180,6 @@ const reviewComponent = ( props ) => {
 	);
 };
 
-export const removeFromArray = ( arr, removedElems ) =>
-	arr.filter( ( a ) =>
-		Array.isArray( removedElems )
-			? ! removedElems.includes( a )
-			: a !== removedElems
-	);
-
 compose( [
 	withState( { editable: '', editedStar: 0 } ),
 	withSelect( ( select, ownProps ) => {
