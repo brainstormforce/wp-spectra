@@ -280,7 +280,7 @@ class UAGBInlineNoticeEdit extends Component {
 			return (
 				<InspectorTabs>
 				<InspectorTab key={'general'}>
-				<PanelBody title="" initialOpen={true}>
+				<PanelBody title="Alignment" initialOpen={false}>
 					<AlignButtonsControl
 						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 						className="uagb--help-tip-alignment-title"
@@ -289,6 +289,8 @@ class UAGBInlineNoticeEdit extends Component {
 							setAttributes( { noticeAlignment: value } )
 						}
 					/>
+					</PanelBody>
+					<PanelBody title="Toggle" initialOpen={false}>
 					<div className="uag-toggle-wrap">
 					<label className="uag-toggle-label">{ __( "Toggle off", 'ultimate-addons-for-gutenberg' )  }</label>
 					<ToggleControl
@@ -296,12 +298,16 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ this.update_cookie_id }
 					/>
 					</div>
+					</PanelBody>
+					<PanelBody title="Slider" initialOpen={false}>
 					<Range 
 						value={contentVrPadding} 
 						onChange={val => setAttributes({ contentVrPadding: parseInt(val) })}
 						min={0} 
 						max={100} 
 					/>
+					</PanelBody>
+					<PanelBody title="Typography" initialOpen={false}>
 					<h2>{ __( "Typography", 'ultimate-addons-for-gutenberg' ) }</h2>
 		            <TypographyControl
 							label={ __( "Title", 'ultimate-addons-for-gutenberg' ) }
@@ -320,6 +326,8 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
 							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
 						/>
+						</PanelBody>
+						<PanelBody title="Box Shadow" initialOpen={false}>
 						<BoxShadowControl
 							setAttributes = { setAttributes }
 							label = { __( "Box Shadow", 'ultimate-addons-for-gutenberg' ) }
@@ -331,6 +339,8 @@ class UAGBInlineNoticeEdit extends Component {
 							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position", 'ultimate-addons-for-gutenberg' ) } }
 							
 						/>
+						</PanelBody>
+						<PanelBody title="Multi Buttons" initialOpen={false}>
 						<OptionSelectorControl
 							label={ __( "Gap", 'ultimate-addons-for-gutenberg' ) }
 							currentOption={ columnGap }
