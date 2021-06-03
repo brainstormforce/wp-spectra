@@ -3,18 +3,8 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-// Import all of our Text Options requirements.
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-timeline/typography" */ '@Components/typography'
-	)
-);
-// Import all of our Text Options requirements.
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/post-timeline/fontloader" */ '@Components/typography/fontloader'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 
 import { __ } from '@wordpress/i18n';
 

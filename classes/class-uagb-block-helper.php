@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_image_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 			$t_image_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-			$selectors[' .uagb-social-share__wrap .block-editor-inner-blocks'] = array(
+			$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 				'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 			);
 
@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-right' => 0,
 			);
 
-			$selectors[' .uagb-social-share__wrap'] = array(
+			$selectors['.uagb-social-share__outer-wrap'] = array(
 				'justify-content'   => $alignment,
 				'-webkit-box-pack'  => $alignment,
 				'-ms-flex-pack'     => $alignment,
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$selectors[' .uagb-social-share__wrap'] = array(
+					$selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1928,7 +1928,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$t_selectors[' .uagb-social-share__wrap'] = array(
+					$t_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1947,7 +1947,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$m_selectors[' .uagb-social-share__wrap'] = array(
+					$m_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -4905,7 +4905,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( 'accordion' === $attr['layout'] && true === $attr['expandFirstItem'] ) {
 
-				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-child__wrapper .uagb-faq-item.uagb-faq-item-active .uagb-faq-content '] = array(
+				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-item.uagb-faq-item-active .uagb-faq-content '] = array(
 					'display' => 'block',
 				);
 			}
