@@ -1,8 +1,8 @@
-const ITEM_COUNT = 2;
+const itemCount = 2;
 
 const buttons = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
+for ( let i = 1; i <= itemCount; i++ ) {
 	const label = '#Click Here';
 	const link = '#';
 	buttons.push( {
@@ -37,7 +37,7 @@ const attributes = {
 	},
 	btn_count: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	buttons: {
 		type: 'array',
