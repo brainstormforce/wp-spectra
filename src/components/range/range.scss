@@ -108,3 +108,11 @@
     width: 100%;
     margin-bottom: 2px
 }
+button.components-button.uagb-spacing-reset.is-secondary.is-small {
+    box-shadow:unset;
+    background: 0 0;
+}
+button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
+    cursor:arrow;
+    color:#767676;
+}

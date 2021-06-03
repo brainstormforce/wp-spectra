@@ -108,6 +108,18 @@ class Range extends Component {
                     </Button>
                      )
                 }
+                { ( isNaN( this.props.value ) ) && (
+                <Button
+                    className="uagb-spacing-reset"
+                    type="button"
+                    onClick={ () => this.onChangeSize( 'no' ) }
+                    isSmall
+                    isSecondary
+                    disabled
+                >
+                    <Dashicon icon="image-rotate" />
+                </Button>
+                )}
                 </div>
                 <div className="uagb-field-child">
                     <div className="uagb-input-range">
