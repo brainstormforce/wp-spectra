@@ -1225,9 +1225,9 @@ const Settings = ( props ) => {
 					{ ( tabName ) => {
 						let tabout;
 						if ( 'normal' === tabName.name ) {
-							tabout = buttonNormalSettings;
+							tabout = buttonNormalSettings();
 						} else {
-							tabout = buttonHoverSettings;
+							tabout  = buttonHoverSettings();
 						}
 						return <div>{ tabout }</div>;
 					} }
