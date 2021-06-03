@@ -706,7 +706,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ formId }
-					onChange={ onSelectForm() }
+					onChange={ onSelectForm }
 					options={ uagb_blocks_info.gf_forms }
 				/>
 				<ToggleControl

@@ -54,7 +54,6 @@ const Render = ( props ) => {
 				</Placeholder>
 		);
 	}
-
 	return (
 			<div
 				className={ classnames(
