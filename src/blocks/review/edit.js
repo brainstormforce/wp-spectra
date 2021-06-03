@@ -5,11 +5,16 @@
 import styling from './styling';
 import SchemaNotices from './schema-notices';
 import { __ } from '@wordpress/i18n';
-import reviewSettings from './settings';
-import renderReview from './render';
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
 import { withState, compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+const Settings = lazy( () =>
+	import( /* webpackChunkName: "chunks/review/settings" */ './settings' )
+);
+const Render = lazy( () =>
+	import( /* webpackChunkName: "chunks/review/render" */ './render' )
+);
 let prevState;
 
 const reviewComponent = ( props ) => {
@@ -166,14 +171,10 @@ const reviewComponent = ( props ) => {
 				operatingSystem={ operatingSystem }
 				reviewPublisher={ reviewPublisher }
 			/>
-			{ reviewSettings( props ) }
-			{ renderReview(
-				props,
-				bodyState,
-				bodySetStateValue,
-				starState,
-				starSetStateValue
-			) }
+			<Suspense fallback={ lazyLoader() }>
+				<Settings parentProps={ props } />
+				<Render parentProps={ props, bodyState, bodySetStateValue, starState, starSetStateValue } />
+			</Suspense>
 		</>
 	);
 };
