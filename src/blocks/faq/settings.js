@@ -8,22 +8,9 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/faq/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/faq/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/faq/typography" */ '@Components/typography'
-	)
-);
+import ColumnResponsive from '@Components/typography/column-responsive';
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
 
 import { __ } from '@wordpress/i18n';
 
@@ -552,7 +539,7 @@ const Settings = ( props ) => {
 						<h2>
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</h2>
-						<Columnresponsive />
+						<ColumnResponsive />
 						{ 'Desktop' === deviceType && (
 							<>
 								<ButtonGroup
@@ -959,7 +946,7 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
@@ -1343,7 +1330,7 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
