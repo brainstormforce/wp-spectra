@@ -70,10 +70,6 @@
     display: flex
 }
 
-.components-panel__body .components-uagb-dimensions-control__inputs {
-    margin-left: 25px
-}
-
 .components-panel__body .components-uagb-dimensions-control input[type="number"].components-uagb-dimensions-control__number {
     border-radius: 0;
     box-shadow: none !important;
@@ -90,7 +86,6 @@
 .components-panel__body .components-uagb-dimensions-control__input-labels {
     display: flex;
     margin-bottom: -3px;
-    margin-left: 26px
 }
 
 .components-panel__body .components-uagb-dimensions-control__input-labels span {
@@ -116,16 +111,13 @@
 
 .components-panel__body .components-uagb-dimensions-control__header {
     justify-content: space-between;
-    margin-bottom: 1px
+    margin-bottom: 5px
 }
 
 .components-panel__body .components-uagb-dimensions-control__actions {
     position: relative;
-    top: -2px
-}
-
-.components-panel__body .components-uagb-dimensions-control__units {
-    margin-right: 3px
+    top: -2px;
+    display: flex;
 }
 
 .components-panel__body .components-uagb-dimensions-control__units .components-button {
@@ -242,4 +234,9 @@ button.components-button.uagb-spacing-reset.is-secondary.is-small {
     -webkit-border-radius: 3px 0 0 3px;
     border-right: 1px solid #d5dadf;
     border-color:#d5dadf;
+}
+
+.components-uagb-dimensions-control__mobile-controls-item.components-uagb-dimensions-control__mobile-controls-item--padding.components-button.is-secondary:active:not(:disabled), .components-uagb-dimensions-control__mobile-controls-item.components-uagb-dimensions-control__mobile-controls-item--padding.components-button.is-tertiary:active:not(:disabled){
+    background:#fff;
+    color:black;
 }

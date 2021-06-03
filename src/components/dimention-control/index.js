@@ -271,7 +271,7 @@
                                              </Tooltip>
                                          ) ) }
                                      </ButtonGroup>
-                                     { ( this.props.valueTop && this.props.valueRight && this.props.valueBottom && this.props.valueLeft ) && (
+                                     { ( this.props.valueTop || this.props.valueRight || this.props.valueBottom || this.props.valueLeft ) && (
                                      <Button
                                          className="uagb-spacing-reset"
                                          type="button"
@@ -297,17 +297,17 @@
 									},
 									{
 										name: 'desktop',
-										title: icons.mobile,
+										title: <Dashicon icon="desktop" />,
 										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--desktop components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
-										title: icons.desktopChrome,
+										title: <Dashicon icon="tablet" />,
 										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--tablet components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
-										title: icons.tablet,
+										title: <Dashicon icon="smartphone" />,
 										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--mobile components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 									},
 								] }>
