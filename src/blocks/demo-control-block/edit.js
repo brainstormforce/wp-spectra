@@ -485,6 +485,7 @@ class UAGBInlineNoticeEdit extends Component {
 							max={100} 
 						/>
 					) }
+					{ "none" != borderStyle && (
 					<Range 
 						label={ __( "Radius", 'ultimate-addons-for-gutenberg' ) }
 						value={borderRadius} 
@@ -492,6 +493,7 @@ class UAGBInlineNoticeEdit extends Component {
 						min={0} 
 						max={100} 
 					/>
+					) }
 					{ "none" != borderStyle && (
 						<Fragment>
 							<AdvancedPopColorControl

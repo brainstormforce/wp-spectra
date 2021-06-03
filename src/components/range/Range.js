@@ -13,7 +13,7 @@ class Range extends Component {
     }
 
     onChangeSize( value ) {
-        this.setSettings( { value: '0' } );
+        this.setSettings( { value: !value } );
     }
 
     _filterValue(type) {
@@ -71,6 +71,7 @@ class Range extends Component {
             label = __( 'Margin', 'ultimate-addons-for-gutenberg' ),
             disabled = false,
             type = 'margin',
+            value
          } = this.props
     
         return (
@@ -96,8 +97,8 @@ class Range extends Component {
                 {label &&
                  <p className={ 'components-uagb-dimensions-control__label' }>{ __( label, 'ultimate-addons-for-gutenberg' ) }</p>
                 }
-                { !isNaN(this.props.value) && (
-                    <Button
+                { ( value ) &&
+                    (<Button
                         className="uagb-spacing-reset"
                         type="button"
                         onClick={ () => this.onChangeSize('no') }
@@ -105,21 +106,21 @@ class Range extends Component {
                         isSecondary
                     >
                         <Dashicon icon="image-rotate" />
-                    </Button>
-                     )
+                    </Button>) 
                 }
-                { ( isNaN( this.props.value ) ) && (
-                <Button
-                    className="uagb-spacing-reset"
-                    type="button"
-                    onClick={ () => this.onChangeSize( 'no' ) }
-                    isSmall
-                    isSecondary
-                    disabled
-                >
-                    <Dashicon icon="image-rotate" />
-                </Button>
-                )}
+                        
+                { ( !value ) && 
+                    (<Button
+                        className="uagb-spacing-reset"
+                        type="button"
+                        onClick={ () => this.onChangeSize( 'no' ) }
+                        isSmall
+                        isSecondary
+                        disabled
+                    >
+                        <Dashicon icon="image-rotate" />
+                    </Button>)
+                }
                 </div>
                 <div className="uagb-field-child">
                     <div className="uagb-input-range">
