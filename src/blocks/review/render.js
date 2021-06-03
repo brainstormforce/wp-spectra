@@ -11,7 +11,6 @@ const Render = (
 	starSetStateValue
 ) => {
 	props = props.parentProps;
-	// Setup the attributes
 	const {
 		attributes: {
 			block_id,
