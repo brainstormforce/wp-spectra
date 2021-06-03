@@ -1,0 +1,131 @@
+.wcf-hide {
+	display: none !important;
+}
+
+.wcf-button {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	text-decoration: none;
+	text-shadow: none;
+	font-size: 14px;
+	min-height: 36px;
+	line-height: 1;
+	line-height: 1.5;
+	padding: 7px 18px;
+	display: inline;
+	display: inline-block;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+
+.wcf-button--small {
+	min-height: 26px;
+	padding: 0 8px;
+	font-size: 11px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	text-decoration: none;
+	text-shadow: none;
+	line-height: 2;
+	display: inline-block;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+}
+
+.wcf-button--primary {
+	background: var( --primary-color );
+	border-color: var( --primary-border-color );
+	color: #fff;
+}
+
+.wcf-button--primary:focus,
+.wcf-button--primary:hover {
+	background: var( --primary-hv-color );
+	border-color: var( --primary-border-color );
+	color: #fff;
+	box-shadow: none;
+	outline: none;
+}
+
+.wcf-button--secondary {
+	background: var( --secondary-color );
+	border-color: var( --secondary-border-color );
+	color: #3a3a3a;
+}
+
+.wcf-button--secondary:focus,
+.wcf-button--secondary:hover {
+	background: var( --secondary-hv-color );
+	border-color: var( --secondary-border-color );
+	color: #3a3a3a;
+	box-shadow: none;
+}
+
+/* Popu header */
+.wcf-popup-header-title {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 500;
+	color: #444;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: none;
+}
+.wcf-popup-header-title .cartflows-logo-icon {
+	padding: 15px;
+}
+
+.wcf-popup-header-action {
+	display: inline-block;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-left: 1px solid #ddd;
+	position: relative;
+	color: #ccc;
+	cursor: pointer;
+
+	.dashicons {
+		line-height: 1;
+	}
+
+	&:after {
+		// content: '\2807';
+		font-size: 25px;
+	}
+
+	&:hover {
+		color: #aaa;
+	}
+}
+
+.wcf-message, 
+.wcf-error-message--toggle, 
+.wcf-error--info{
+	padding: 5px;
+    display: block;
+    font-size: 12px;
+}
+
+.wcf-message--error{
+	color: var( --primary-color );
+}
+
+.wcf-error-message--toggle{
+	cursor: pointer;
+}
+.wcf-error--info{
+	background-color: #f2f2f2;
+    border-radius: 3px;
+    padding: 10px;
+    border: 1px #ccc dashed;
+}

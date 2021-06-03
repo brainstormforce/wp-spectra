@@ -1,0 +1,31 @@
+.wcf-image-selector-field-buttons {
+	display: flex;
+	padding: 7px;
+}
+.wcf-image-selector-field {
+	display: flex;
+}
+.wcf-image-selector-field-button-select,
+.wcf-image-selector-field-button-remove {
+	display: inline;
+	margin-left: 10px;
+}
+.wcf-image-selector-field__input {
+	margin-left: 15px;
+}
+#wcf-image-preview {
+	text-align: center;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+	line-height: 1;
+}
+
+.wcf-image-selector-field__input,
+.wcf-image-selector-field-buttons,
+.wcf-image-selector-field-button-select {
+	margin: 0;
+	padding: 0;
+}
+.wcf-image-selector-field-button-select button.wcf-select-image {
+	font-weight: 500;
+}

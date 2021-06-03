@@ -130,6 +130,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
+
+			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 		}
 
 		/**

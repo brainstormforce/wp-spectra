@@ -1,0 +1,17 @@
+.wcf-textarea-field {
+	label {
+		vertical-align: top;
+	}
+
+	textarea {
+		margin: 0;
+	}
+
+	.wcf-field__data {
+		align-items: flex-start;
+	}
+
+	.wcf-field__data--label {
+		padding: 8px 0 0;
+	}
+}

@@ -1,0 +1,132 @@
+.wcf-product-options-fields__list {
+	margin: 0px;
+
+	.wcf-product-options-fields__list--no-product {
+		color: #666;
+		padding: 10px 25px;
+	}
+}
+
+.wcf-product-option-field {
+	margin-bottom: 10px;
+	display: flex;
+}
+
+.wcf-product-field-item-bar {
+	line-height: 1.5em;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	font-weight: 400;
+	color: #444;
+	font-size: 15px;
+	padding: 12px 20px;
+	height: auto;
+	min-height: 20px;
+	width: auto;
+	line-height: initial;
+
+	.default-label-note {
+		margin-right: 20px;
+		line-height: 1.5;
+		font-size: 16px;
+	}
+}
+
+.wcf-product-options-fields__list--header {
+	line-height: 1.5em;
+    border: 1px solid #f4f4f4;
+    border-radius: 2px;
+    font-weight: 400;
+    color: #444;
+    font-size: 13px;
+    font-style: italic;
+    padding: 12px 10px;
+    height: auto;
+    min-height: 20px;
+    width: 650px;
+    line-height: initial;
+    margin-bottom: 10px;
+    background: #f4f4f4;
+    position: relative;
+
+    &:before{
+	    content: '';
+	    width: 10px;
+	    height: 10px;
+	    border: 1px solid #f4f4f4;
+	    top: -6px;
+	    position: absolute;
+	    transform: rotate(45deg);
+	    border-left: none;
+	    border-top: none;
+	    left: 27px;
+	    background-color: #f4f4f4;
+    }
+	.default-label-note {
+		line-height: 1.5;
+		font-size: 16px;
+	}
+
+	.wcf-default-label {
+		margin-right: 10px;
+	}
+}
+
+.wcf-product-option-default-in-cart {
+	width: auto;
+	line-height: initial;
+	margin-right: 5px;
+
+	input {
+		margin: 0 !important;
+	}
+
+	//
+	margin: 0 25px 0 5px;
+}
+.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.wcf-product-field-item-bar span {
+	display: inline-block;
+	text-align: center;
+	line-height: 1;
+}
+
+.wcf-dashicon {
+	display: inline-flex;
+	float: right;
+	position: relative;
+	top: -1px;
+	cursor: pointer;
+}
+
+.wcf-product-field-item-settings {
+	background: #f5f6f7;
+	border: 1px solid #ececec;
+	border-top: none;
+	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.04 );
+	padding: 20px;
+
+	.wcf-field {
+		margin-bottom: 20px;
+	}
+
+	.wcf-field__desc {
+		line-height: 1.5;
+	}
+
+	.wcf-field.wcf-checkbox-field {
+		margin-bottom: 10px;
+	}
+
+	.wcf-field__data .wcf-field__data--label label {
+		width: 200px;
+	}
+}
+
+.wcf-product-option-fields {
+	width: 650px;
+}

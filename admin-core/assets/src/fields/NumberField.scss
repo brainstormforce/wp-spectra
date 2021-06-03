@@ -1,0 +1,24 @@
+.wcf-number-field input {
+	margin: 0 15px;
+	width: 300px;
+	max-width: 100%;
+
+	&.readonly,
+	&[readonly] {
+		background-color: #eee !important;
+	}
+}
+
+.wcf-number-field input[type='number'] {
+	font-weight: 400;
+	margin: 0;
+	height: 36px;
+	padding: 4px 15px;
+	border-radius: 2px;
+	border: 1px solid #ddd;
+
+	:focus {
+		box-shadow: none;
+		border-color: #aaa;
+	}
+}

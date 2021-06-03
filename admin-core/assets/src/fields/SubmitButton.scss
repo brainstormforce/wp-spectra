@@ -1,0 +1,77 @@
+.wcf-button-style {
+	background: #fff;
+	border: none;
+	border-radius: 3px;
+	text-align: center;
+	text-shadow: none;
+	text-decoration: none;
+	border: 1px solid #f06335;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 400;
+	padding: 6px 20px;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-transition: all 100ms linear;
+	transition: all 100ms linear;
+}
+
+.wcf-btn-primary {
+	background: #f06335;
+	color: #fff;
+	-webkit-transition: all linear 250ms;
+	transition: all linear 250ms;
+}
+
+/* Button Hover Effect */
+.wcf-btn-primary:active,
+.wcf-btn-primary:focus,
+.wcf-btn-primary:hover {
+	color: #fff;
+	background: #f06335;
+}
+
+.wcf-btn-primary:active,
+.wcf-btn-primary:focus,
+.wcf-button-style:hover {
+	outline: 0;
+	text-decoration: none;
+	box-shadow: 0 10px 20px rgba( 0, 0, 0, 0.19 ),
+		0 6px 6px rgba( 0, 0, 0, 0.23 );
+}
+
+@keyframes wcf-saving {
+	0% {
+		background-position: 200px 0;
+	}
+}
+
+.wcf-submit-field {
+	.wcf-success-notice {
+		max-width: 300px;
+		display: inline-block;
+		margin: 0;
+	}
+	.dashicons {
+		vertical-align: middle;
+	}
+	.wcf-success-message {
+		font-weight: 400;
+		font-size: 14px;
+	}
+
+	.wcf-saving {
+		animation: wcf-saving 2.5s linear infinite;
+		opacity: 1;
+		background-size: 100px 100%;
+		background-image: linear-gradient(
+			-45deg,
+			#f06335 28%,
+			#f78860 0,
+			#f78860 72%,
+			#f06335 0
+		);
+	}
+}
