@@ -1,7 +1,11 @@
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { __ } from '@wordpress/i18n';
+import {
+	SelectControl,
+	Placeholder,
+} from '@wordpress/components';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
 );
@@ -10,6 +14,7 @@ const Render = lazy( () =>
 );
 import { withSelect } from '@wordpress/data';
 $ = jQuery;
+
 const UAGBGF = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -38,10 +43,39 @@ const UAGBGF = ( props ) => {
 		}
 	}, [ props ] );
 
-	const { isHtml } = props.attributes;
+	const { formId } = props.attributes;
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		const { setAttributes } = props
+
+		if ( ! id ) {
+			setAttributes( { isHtml: false } )
+			setAttributes( { formId: null } )
+			return
+		}
+
+		setAttributes( { isHtml: false } )
+		setAttributes( { formId: id } )
+	}
+	if ( formId == 0 ) {
+		return (
+				<Placeholder
+					icon="admin-post"
+					label={ __( "Select a Gravity Form",'ultimate-addons-for-gutenberg' ) }
+				>
+					<SelectControl				
+						value={ formId }
+						onChange={ onSelectForm }
+						options={ uagb_blocks_info.gf_forms }
+					/>	
+				</Placeholder>
+		)
+	}
 	return (
 			<Suspense fallback={ lazyLoader() }>
-				{ isHtml && (<Settings parentProps={ props } />)}
+				<Settings parentProps={ props } />
 				<Render parentProps={ props } />
 			</Suspense>
 	);
@@ -50,7 +84,7 @@ const UAGBGF = ( props ) => {
 export default withSelect( ( select, props ) => {
 	const { setAttributes } = props
 	const { formId, isHtml } = props.attributes
-	let json_data = ""
+	let jsonData = ""
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
 
@@ -66,13 +100,13 @@ export default withSelect( ( select, props ) => {
 			success: function( data ) {
 				setAttributes( { isHtml: true } )
 				setAttributes( { formJson: data } )
-				json_data = data
+				jsonData = data
 			}
 		})
 	}
 
 	return {
-		formHTML: json_data
+		formHTML: jsonData
 	}
 } )( UAGBGF )
 

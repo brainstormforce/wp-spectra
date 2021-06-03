@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { SelectControl, Placeholder } from '@wordpress/components';
+import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
@@ -31,6 +31,7 @@ const Render = ( props ) => {
 		setAttributes( { isHtml: false } );
 		setAttributes( { formId: id } );
 	};
+
 	let html = '';
 
 	if ( formJson && formJson.data.html ) {
@@ -38,7 +39,6 @@ const Render = ( props ) => {
 	}
 	if ( formId == 0 ) {
 		return (
-			<>
 				<Placeholder
 					icon="admin-post"
 					label={ __(
@@ -48,11 +48,10 @@ const Render = ( props ) => {
 				>
 					<SelectControl
 						value={ formId }
-						onChange={ onSelectForm() }
+						onChange={ onSelectForm }
 						options={ uagb_blocks_info.gf_forms }
 					/>
 				</Placeholder>
-			</>
 		);
 	}
 
@@ -82,22 +81,14 @@ const Render = ( props ) => {
 					{ isHtml && (
 						<div dangerouslySetInnerHTML={ { __html: html } } />
 					) }
-					{ isHtml == false && (
+					{ isHtml == false &&
 							<Placeholder
-							icon="admin-post"
-							label={ __(
-								'Select a Gravity Form',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							<SelectControl
-								value={ formId }
-								onChange={ onSelectForm() }
-								options={ uagb_blocks_info.gf_forms }
-							/>
-						</Placeholder>
-				
-					) }
+								icon="admin-post"
+								label={ __( "Loading",'ultimate-addons-for-gutenberg' ) }
+							>
+								<Spinner />
+							</Placeholder>
+						}
 				</div>
 			</div>
 	);
