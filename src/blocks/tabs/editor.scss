@@ -1,50 +1,15 @@
-.uagb-tabs-select-style.uagb-size-type-field-tabs .components-tab-panel__tabs{
+.uagb-size-type-field-tabs .components-tab-panel__tabs{
     position: relative;
     z-index: 999999999999;
     margin-right: 0px;
    
 }
-.uagb-tabs-select-style.uagb-size-type-field-tabs .components-tab-panel__tab-content{
+.uagb-size-type-field-tabs .components-tab-panel__tab-content{
     .components-flex.wp-components-flex.components-wp-components-flex.wp-components-wp-components-flex.components-select-control{
         display: block;
     }
 }
 .uagb-tabs__wrap{
-    display: flex;
-    margin: 15px;
-        ul.uagb-tabs__panel{
-            list-style-type: none;
-            display: inherit;
-            li.uagb-tab{
-                float: left;
-                position: relative;
-            }
-            .uagb-tabs__icon-position-left{
-                display: inline-flex;
-            }
-            .uagb-tabs__icon-position-top{
-                display: block;
-                .uagb-tabs__icon{
-                    display: block;
-                    text-align: center;
-                }
-            }
-            .uagb-tabs__icon-position-bottom{
-                display: block;
-                .uagb-tabs__icon{
-                    display: block;
-                    text-align: center;
-                }
-            }
-            .uagb-tabs__icon-position-right{
-                display: inline-flex;
-            }
-        }   
-    .uagb-tabs__body-wrap{
-        position:relative;
-        max-width: 100%;
-        padding: 10px;
-    }
     .uagb-tabs-editor-controls{
         left: 0px;
         background-color: #000000;
@@ -85,14 +50,14 @@
 .edit-post-visual-editor .uagb-tabs__wrap .block-editor-button-block-appender{
     display: none;
 }
-
-
-   //Horizonatal Styles
-   .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
+//Horizonatal Styles
+.uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
         margin-bottom:0px;
         padding:0px;
+        display: flex;
+        flex-direction: row;
     }
     .uagb-tab{  
         border-style: solid;
@@ -110,6 +75,8 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle2-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
+        display: flex;
+        flex-direction: row;
         margin-bottom:0px;
         padding:0px;
         border-bottom-style:solid;
@@ -133,6 +100,8 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle3-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
+        display: flex;
+        flex-direction: row;
         margin-bottom:0px;
         padding:0px;
     }
@@ -155,6 +124,8 @@
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle4-tablet {
     flex-direction: column;
     ul.uagb-tabs__panel{
+        display: flex;
+        flex-direction: row;
         margin-bottom:0px;
         padding:0px;
     }
@@ -175,6 +146,8 @@
     flex-direction: column;
     border-style: solid;
     ul.uagb-tabs__panel{
+        display: flex;
+        flex-direction: row;
        justify-content: space-between;
         margin: 0px;
         padding:0px;
@@ -194,6 +167,7 @@
 }
 //Vertical Styles
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__vstyle6-tablet{   
+    flex-direction: row;
     ul.uagb-tabs__panel{
         margin-bottom:0px;
         padding:0px;
