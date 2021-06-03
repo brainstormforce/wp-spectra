@@ -2,14 +2,9 @@
 import classnames from 'classnames';
 import ReviewBody from './review-body';
 import { __ } from '@wordpress/i18n';
+import React, { useState } from 'react';
+const Render = (props) => {
 
-const Render = (
-	props,
-	bodyState,
-	bodySetStateValue,
-	starState,
-	starSetStateValue
-) => {
 	props = props.parentProps;
 	const {
 		attributes: {
@@ -41,7 +36,23 @@ const Render = (
 		isSelected,
 		className,
 	} = props;
-	
+	const bodyInitialState = {
+	average:
+		props.attributes.parts
+			.map( ( i ) => i.value )
+			.reduce( ( total, v ) => total + v ) /
+		props.attributes.parts.length,
+	};
+
+	const [ bodyState, bodySetStateValue ] = useState( bodyInitialState );
+
+	const starInitialState = {
+		displayValue: props.value,
+		displayColor: props.activeStarColor,
+	};
+
+	const [ starState, starSetStateValue ] = useState( starInitialState );
+
 	let urlChk = '';
 	let title = '';
 	if (
@@ -106,7 +117,7 @@ const Render = (
 				headingTag={ headingTag }
 				mainimage={ mainimage }
 				imgSize={ imgSize }
-				imageIconHtml={ image_icon_html }
+				imageIconHtml={ imageIconHtml }
 				isSelected={ isSelected }
 				authorName={ authorName }
 				itemName={ itemName }

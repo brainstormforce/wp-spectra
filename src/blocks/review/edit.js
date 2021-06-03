@@ -19,23 +19,6 @@ $ = jQuery;
 let prevState;
 
 const reviewComponent = ( props ) => {
-	const bodyInitialState = {
-		average:
-			props.attributes.parts
-				.map( ( i ) => i.value )
-				.reduce( ( total, v ) => total + v ) /
-			props.attributes.parts.length,
-	};
-
-	const [ bodyState, bodySetStateValue ] = useState( bodyInitialState );
-
-	const starInitialState = {
-		displayValue: props.value,
-		displayColor: props.activeStarColor,
-	};
-
-	const [ starState, starSetStateValue ] = useState( starInitialState );
-
 	useEffect( () => {
 
 		// Assigning block_id in the attribute.
@@ -176,7 +159,7 @@ const reviewComponent = ( props ) => {
 			/>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
-				<Render parentProps={ props, bodyState, bodySetStateValue, starState, starSetStateValue } />
+				<Render parentProps={ props} />
 			</Suspense>
 		</>
 	);
