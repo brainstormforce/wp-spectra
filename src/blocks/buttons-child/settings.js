@@ -10,12 +10,7 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { lazy, Suspense } from 'react';
-
-const Columnresponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/buttons-child/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import Columnresponsive from '@Components/typography/column-responsive';
 
 const svgIcons = Object.keys( UAGBIcon );
 
