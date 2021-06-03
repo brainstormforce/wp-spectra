@@ -75,7 +75,7 @@ const Render = ( props ) => {
 		}
 	};
 
-	const savematerials = ( value, index ) => {
+	const saveMaterials = ( value, index ) => {
 		const { attributes, setAttributes } = props;
 		const { materials } = attributes;
 
@@ -92,7 +92,7 @@ const Render = ( props ) => {
 		} );
 	};
 
-	const savetools = ( value, index ) => {
+	const saveTools = ( value, index ) => {
 		const { attributes, setAttributes } = props;
 		const { tools } = attributes;
 
@@ -190,23 +190,23 @@ const Render = ( props ) => {
 	];
 
 	//Time Labels
-	const yearlabel =
+	const yearLabel =
 		timeInYears > 1
 			? __( 'Years', 'ultimate-addons-for-gutenberg' )
 			: __( 'Year', 'ultimate-addons-for-gutenberg' );
-	const monthlabel =
+	const monthLabel =
 		timeInMonths > 1
 			? __( ' Months ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Month ', 'ultimate-addons-for-gutenberg' );
-	const daylabel =
+	const dayLabel =
 		timeInDays > 1
 			? __( ' Days ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Day ', 'ultimate-addons-for-gutenberg' );
-	const hourlabel =
+	const hourLabel =
 		timeInHours > 1
 			? __( 'Hours ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Hour ', 'ultimate-addons-for-gutenberg' );
-	const minslabel =
+	const minsLabel =
 		minsValue > 1
 			? __( ' Minutes ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Minute ', 'ultimate-addons-for-gutenberg' );
@@ -292,7 +292,7 @@ const Render = ( props ) => {
 								</p>
 								<p className="uagb-howto-timeINmin-text">
 									{ ' ' }
-									{ yearlabel }
+									{ yearLabel }
 								</p>
 							</>
 						) }
@@ -302,7 +302,7 @@ const Render = ( props ) => {
 									{ timeInMonths }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
-									{ monthlabel }
+									{ monthLabel }
 								</p>
 							</>
 						) }
@@ -312,7 +312,7 @@ const Render = ( props ) => {
 									{ timeInDays }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
-									{ daylabel }
+									{ dayLabel }
 								</p>
 							</>
 						) }
@@ -322,7 +322,7 @@ const Render = ( props ) => {
 									{ timeInHours }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
-									{ hourlabel }
+									{ hourLabel }
 								</p>
 							</>
 						) }
@@ -332,7 +332,7 @@ const Render = ( props ) => {
 									{ minsValue }
 								</p>
 								<p className="uagb-howto-timeINmin-text">
-									{ minslabel }
+									{ minsLabel }
 								</p>
 							</>
 						) }
@@ -430,7 +430,7 @@ const Render = ( props ) => {
 											) }
 											value={ tools.add_required_tools }
 											onChange={ ( value ) => {
-												savetools(
+												saveTools(
 													{
 														add_required_tools: value,
 													},
@@ -494,7 +494,7 @@ const Render = ( props ) => {
 												materials.add_required_materials
 											}
 											onChange={ ( value ) => {
-												savematerials(
+												saveMaterials(
 													{
 														add_required_materials: value,
 													},

@@ -37,19 +37,19 @@ const deprecated = [
 				showMaterials,
 			} = attributes;
 
-			let url_chk = '';
+			let urlChk = '';
 			let title = '';
 			if (
 				'undefined' !== typeof attributes.mainimage &&
 				null !== attributes.mainimage &&
 				'' !== attributes.mainimage
 			) {
-				url_chk = attributes.mainimage.url;
+				urlChk = attributes.mainimage.url;
 				title = attributes.mainimage.title;
 			}
 
 			let url = '';
-			if ( '' !== url_chk ) {
+			if ( '' !== urlChk ) {
 				const size = attributes.mainimage.sizes;
 				const imageSize = attributes.imgSize;
 
@@ -59,14 +59,14 @@ const deprecated = [
 				) {
 					url = size[ imageSize ].url;
 				} else {
-					url = url_chk;
+					url = urlChk;
 				}
 			}
 
-			let image_icon_html = '';
+			let imageIconHtml = '';
 
 			if ( mainimage && mainimage.url ) {
-				image_icon_html = (
+				imageIconHtml = (
 					<img
 						className="uagb-howto__source-image"
 						src={ url }
@@ -97,7 +97,7 @@ const deprecated = [
 							/>
 							{ mainimage.url && (
 								<div className="uagb-howto__source-wrap">
-									{ image_icon_html }
+									{ imageIconHtml }
 								</div>
 							) }
 							{ showTotaltime && (
@@ -255,19 +255,19 @@ const deprecated = [
 				timeInYears,
 			} = attributes;
 
-			let url_chk = '';
+			let urlChk = '';
 			let title = '';
 			if (
 				'undefined' !== typeof attributes.mainimage &&
 				null !== attributes.mainimage &&
 				'' !== attributes.mainimage
 			) {
-				url_chk = attributes.mainimage.url;
+				urlChk = attributes.mainimage.url;
 				title = attributes.mainimage.title;
 			}
 
 			let url = '';
-			if ( '' !== url_chk ) {
+			if ( '' !== urlChk ) {
 				const size = attributes.mainimage.sizes;
 				const imageSize = attributes.imgSize;
 
@@ -277,14 +277,14 @@ const deprecated = [
 				) {
 					url = size[ imageSize ].url;
 				} else {
-					url = url_chk;
+					url = urlChk;
 				}
 			}
 
-			let image_icon_html = '';
+			let imageIconHtml = '';
 
 			if ( mainimage && mainimage.url ) {
-				image_icon_html = (
+				imageIconHtml = (
 					<img
 						className="uagb-howto__source-image"
 						src={ url }
@@ -324,7 +324,7 @@ const deprecated = [
 							/>
 							{ mainimage.url && (
 								<div className="uagb-howto__source-wrap">
-									{ image_icon_html }
+									{ imageIconHtml }
 								</div>
 							) }
 							{ showTotaltime && (
