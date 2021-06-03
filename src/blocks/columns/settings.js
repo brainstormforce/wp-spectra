@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 import OptionSelectorControl from '@Components/option-selector-control';
 import BoxShadowControl from '@Components/box-shadow';
 
@@ -457,7 +457,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
@@ -708,7 +708,7 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup

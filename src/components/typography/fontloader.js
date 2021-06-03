@@ -1,9 +1,9 @@
 if ( googlefonts === undefined ) {
 	var googlefonts = []
 }
-const {
+import {
 	Component,
-} = wp.element
+} from '@wordpress/element'
 import PropTypes from "prop-types"
 import WebFont from "webfontloader"
 const statuses = {

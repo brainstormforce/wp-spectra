@@ -12,7 +12,7 @@ const TypographyControl = lazy( () =>
 		/* webpackChunkName: "chunks/tabs/typography-control" */ '@Components/typography'
 	)
 );
-const Columnresponsive = lazy( () =>
+const ColumnResponsive = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/tabs/column-responsive" */ '@Components/typography/column-responsive'
 	)
@@ -96,7 +96,7 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 			>
 				<Suspense fallback={ lazyLoader() }>
-					<Columnresponsive />
+					<ColumnResponsive />
 				</Suspense>
 				{ 'Desktop' === deviceType && (
 					<>

@@ -10,7 +10,7 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 
 const svgIcons = Object.keys( UAGBIcon );
 
@@ -461,7 +461,7 @@ const Settings = ( props ) => {
 							max={ 50 }
 						/>
 						<hr className="uagb-editor__separator" />
-						<Columnresponsive />
+						<ColumnResponsive />
 						{ 'Desktop' === deviceType && (
 							<>
 								<ButtonGroup
@@ -612,7 +612,7 @@ const Settings = ( props ) => {
 								/>
 							</>
 						) }
-						<Columnresponsive />
+						<ColumnResponsive />
 						{ 'Desktop' === deviceType && (
 							<>
 								<ButtonGroup

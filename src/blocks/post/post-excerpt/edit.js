@@ -1,5 +1,3 @@
-import truncate from "lodash/truncate"
-
 export const PostExcerpt = (props) =>  {
 		const { post, attributes } = props
 

@@ -8,7 +8,7 @@ import React, { Suspense, useState } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 const svgIcons = Object.keys( UAGBIcon );
 
 import {
@@ -279,7 +279,7 @@ const Settings = ( props ) => {
 							beforeIcon=""
 							allowReset
 						/>
-							<Columnresponsive />
+							<ColumnResponsive />
 						{ 'Desktop' === deviceType && (
 							<>
 								<RangeControl
@@ -708,7 +708,7 @@ const Settings = ( props ) => {
 	const backgroundSettings = () => {
 		return (
 			<PanelBody title={ __( 'Background' ) } initialOpen={ false }>
-					<Columnresponsive />
+					<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup
