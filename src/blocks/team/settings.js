@@ -4,24 +4,9 @@ import { __ } from '@wordpress/i18n';
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 import lazyLoader from '@Controls/lazy-loader';
-
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/team/typography" */ '@Components/typography'
-	)
-);
-
-const WebfontLoader = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/team/fontloader" */ '@Components/typography/fontloader'
-	)
-);
-
-const FontIconPicker = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/team/fontloader" */ '@fonticonpicker/react-fonticonpicker'
-	)
-);
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
+import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 
 let imageSizeOptions = [
 	{
