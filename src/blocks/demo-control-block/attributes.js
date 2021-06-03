@@ -188,51 +188,39 @@
 	},
 	paddingTop: {
 		type: "number",
-		default: 15
 	},
 	paddingBottom: {
 		type: "number",
-		default: 15
 	},
 	paddingLeft: {
 		type: "number",
-		default: 15
 	},
 	paddingRight: {
 		type: "number",
-		default: 15
 	},
 	paddingTopTablet: {
 		type: "number",
-		default: 15
 	},
 	paddingRightTablet: {
 		type: "number",
-		default: 15
 	},
 	paddingBottomTablet: {
 		type: "number",
-		default: 15
 	},
 	paddingLeftTablet: {
 		type: "number",
-		default: 15
 	},
 	paddingTopMobile: {
 		type: "number",
-		default: 15
 	},
 	paddingRightMobile: {
 		type: "number",
-		default: 15
 	},
 	paddingBottomMobile: {
 		type: "number",
-		default: 15
 	},
 	paddingLeftMobile: {
 		type: "number",
-		default: 15
 	},
 	layout: {
 		type: "string",

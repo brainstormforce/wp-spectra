@@ -146,6 +146,10 @@
 
 button.components-button.uagb-spacing-reset.is-secondary.is-small {
     box-shadow:unset;
+    background: 0 0;
+}
+button.components-button.uagb-spacing-reset.is-secondary.is-small.disabled:active {
+    color:#8f9091
 }
 
 .components-panel__body .components-uagb-dimensions-control_sync.components-button.is-small svg {

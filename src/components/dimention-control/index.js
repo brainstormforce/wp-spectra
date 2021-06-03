@@ -271,8 +271,20 @@
                                              </Tooltip>
                                          ) ) }
                                      </ButtonGroup>
-                                     { ( this.props.valueTop || this.props.valueRight || this.props.valueBottom || this.props.valueLeft ) && (
+									 { ( !this.props.valueTop && !this.props.valueRight && !this.props.valueBottom && !this.props.valueLeft ) && (
                                      <Button
+                                         className="uagb-spacing-reset"
+                                         type="button"
+                                         onClick={ () => this.onChangeSize( 'no', -1 ) }
+                                         isSmall
+                                         isSecondary
+										 disabled
+                                     >
+                                        <Dashicon icon="image-rotate" />
+                                     </Button>
+									 )}
+									 { ( this.props.valueTop || this.props.valueRight || this.props.valueBottom || this.props.valueLeft ) && (
+									 <Button
                                          className="uagb-spacing-reset"
                                          type="button"
                                          onClick={ () => this.onChangeSize( 'no', -1 ) }
@@ -281,7 +293,7 @@
                                      >
                                         <Dashicon icon="image-rotate" />
                                      </Button>
-                                     ) }
+									 ) }
                                  </div>
                              </div>
                              <TabPanel
@@ -292,7 +304,7 @@
 								tabs={ [
 									{
 										name: 'default',
-										title: icons.desktopChrome,
+										title: <Dashicon icon="desktop" />,
 										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--default components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
 									},
 									{
@@ -312,11 +324,12 @@
 									},
 								] }>
 								{
-									( tab ) => {
-										if ( 'mobile' === tab.name ) {
-											return (
-												<Fragment>
-													<div className="components-uagb-dimensions-control__inputs">
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<div className="components-uagb-dimensions-control__inputs">
 														<input
 															className="components-uagb-dimensions-control__number"
 															type="number"
@@ -374,12 +387,10 @@
 															data-device-type="Mobile"
 														/>
 													</div>
-												</Fragment>
-											);
-										} else if ( 'tablet' === tab.name ) {
-											return (
-												<Fragment>
-													<div className="components-uagb-dimensions-control__inputs">
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<div className="components-uagb-dimensions-control__inputs">
 														<input
 															className="components-uagb-dimensions-control__number"
 															type="number"
@@ -437,12 +448,10 @@
 															data-device-type="Tablet"
 														/>
 													</div>
-												</Fragment>
-											);
-										}
-										return (
-											<Fragment>
-												<div className="components-uagb-dimensions-control__inputs">
+										)
+									} else {
+										tabout = (
+											<div className="components-uagb-dimensions-control__inputs">
 													<input
 														className="components-uagb-dimensions-control__number"
 														type="number"
@@ -499,10 +508,12 @@
 														data-device-type=""
 													/>
 												</div>
-											</Fragment>
-										);
+										)
 									}
+
+									return <div>{ tabout }</div>
 								}
+							}
 							</TabPanel>
                              <div className="components-uagb-dimensions-control__input-labels">
                                  <span className="components-uagb-dimensions-control__number-label">{ __( 'Top', 'ultimate-addons-for-gutenberg' ) }</span>
