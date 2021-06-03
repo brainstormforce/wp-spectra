@@ -67,6 +67,14 @@
 }
 
 button.components-button.uagb-button-component.has-icon {
+    border-left:1px solid #b2adad;
+}
+
+button.components-button.uagb-button-component.has-icon[value="left"] {
+    border-left:0px
+}
+
+button.components-button.uagb-button-component.has-icon {
     box-shadow: unset;
     box-shadow: unset;
 }
