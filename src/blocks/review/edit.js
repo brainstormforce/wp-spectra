@@ -8,8 +8,8 @@ import { __ } from '@wordpress/i18n';
 import reviewSettings from './settings';
 import renderReview from './render';
 import React, { useEffect, useState } from 'react';
-const { withState, compose } = wp.compose;
-const { withSelect } = wp.data;
+import { withState, compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 let prevState;
 
 const reviewComponent = ( props ) => {
@@ -31,7 +31,6 @@ const reviewComponent = ( props ) => {
 	const [ starState, starSetStateValue ] = useState( starInitialState );
 
 	useEffect( () => {
-		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -222,7 +221,7 @@ export default compose(
 			itemtype = ownProps.attributes.itemType;
 		}
 
-		const json_data = {
+		const jsonData = {
 			'@context': 'http://schema.org/',
 			'@type': 'Review',
 			reviewBody: ownProps.attributes.summaryDescription,
@@ -244,7 +243,7 @@ export default compose(
 
 		switch ( ownProps.attributes.itemType ) {
 			case 'Book':
-				json_data.itemReviewed = {
+				jsonData.itemReviewed = {
 					'@type': itemtype,
 					name: ownProps.attributes.rTitle,
 					description: ownProps.attributes.rContent,
@@ -255,7 +254,7 @@ export default compose(
 				break;
 
 			case 'Course':
-				json_data.itemReviewed = {
+				jsonData.itemReviewed = {
 					'@type': ownProps.attributes.itemType,
 					name: ownProps.attributes.rTitle,
 					description: ownProps.attributes.rContent,
@@ -265,7 +264,7 @@ export default compose(
 				break;
 
 			case 'Product':
-				json_data.itemReviewed = {
+				jsonData.itemReviewed = {
 					'@type': itemtype,
 					name: ownProps.attributes.rTitle,
 					description: ownProps.attributes.rContent,
@@ -280,7 +279,7 @@ export default compose(
 				break;
 
 			case 'Movie':
-				json_data.itemReviewed = {
+				jsonData.itemReviewed = {
 					'@type': ownProps.attributes.itemType,
 					name: ownProps.attributes.rTitle,
 					dateCreated: ownProps.attributes.datecreated,
@@ -292,7 +291,7 @@ export default compose(
 				break;
 
 			case 'SoftwareApplication':
-				json_data.itemReviewed = {
+				jsonData.itemReviewed = {
 					'@type': itemtype,
 					name: ownProps.attributes.rTitle,
 					applicationCategory: ownProps.attributes.appCategory,
@@ -311,13 +310,13 @@ export default compose(
 		}
 
 		if ( ownProps.attributes.mainimage ) {
-			json_data.itemReviewed.image = ownProps.attributes.mainimage.url;
+			jsonData.itemReviewed.image = ownProps.attributes.mainimage.url;
 		}
 
 		if ( ownProps.attributes.itemType == 'Product' ) {
-			json_data.itemReviewed[ ownProps.attributes.identifierType ] =
+			jsonData.itemReviewed[ ownProps.attributes.identifierType ] =
 				ownProps.attributes.identifier;
-			json_data.itemReviewed.offers = {
+			jsonData.itemReviewed.offers = {
 				'@type': ownProps.attributes.offerType,
 				price: ownProps.attributes.offerPrice,
 				url: ownProps.attributes.ctaLink,
@@ -328,7 +327,7 @@ export default compose(
 		}
 
 		return {
-			schemaJsonData: json_data,
+			schemaJsonData: jsonData,
 		};
 	} )
 )( reviewComponent );

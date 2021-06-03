@@ -1,19 +1,18 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
-// Import all of our Text Options requirements.
-import TypographyControl from '../../components/typography';
-// Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+import TypographyControl from '@Components/typography';
+import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
-
-const {
+import React, { Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import {
 	InspectorControls,
 	ColorPalette,
 	MediaUpload,
 	AlignmentToolbar,
 	BlockControls,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -21,7 +20,7 @@ const {
 	Button,
 	TextControl,
 	DateTimePicker,
-} = wp.components;
+} from '@wordpress/components';
 
 let imageSizeOptions = [
 	{
@@ -31,10 +30,11 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
-
-export default function reviewSettings( props ) {
+const Settings = ( props ) => {
+	props = props.parentProps;
 	// Setup the attributes
 	const {
+		attributes,
 		attributes: {
 			enableSchema,
 			itemType,
@@ -174,13 +174,13 @@ export default function reviewSettings( props ) {
 	};
 
 	const getImageSize = ( sizes ) => {
-		const size_arr = [];
+		const sizeArr = [];
 		$.each( sizes, function ( index, item ) {
 			const name = index;
 			const p = { value: name, label: name };
-			size_arr.push( p );
+			sizeArr.push( p );
 		} );
-		return size_arr;
+		return sizeArr;
 	};
 
 	const styleSettings = () => {
@@ -1261,18 +1261,17 @@ export default function reviewSettings( props ) {
 	}
 
 	return (
-		<>
+		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
-
 			<InspectorControls>
 				{ generalSettings() }
 				{ schemaSettings() }
 				{ styleSettings() }
 			</InspectorControls>
-
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
 			{ loadContentGoogleFonts }
-		</>
+		</Suspense>
 	);
 }
+export default React.memo( Settings );

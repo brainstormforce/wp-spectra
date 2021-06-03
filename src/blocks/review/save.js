@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import Stars from './star';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -41,19 +41,19 @@ export default function save( props ) {
 		parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) /
 		parts.length;
 
-	let url_chk = '';
+	let urlChk = '';
 	let title = '';
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
 		'' !== attributes.mainimage
 	) {
-		url_chk = attributes.mainimage.url;
+		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
 	}
 
 	let url = '';
-	if ( '' !== url_chk ) {
+	if ( '' !== urlChk ) {
 		const size = attributes.mainimage.sizes;
 		const imageSize = attributes.imgSize;
 
@@ -63,14 +63,14 @@ export default function save( props ) {
 		) {
 			url = size[ imageSize ].url;
 		} else {
-			url = url_chk;
+			url = urlChk;
 		}
 	}
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img
 				className="uagb-howto__source-image"
 				src={ url }
@@ -125,7 +125,7 @@ export default function save( props ) {
 				) }
 				{ enableImage === true && (
 					<div className="uagb-rating__source-wrap">
-						{ image_icon_html }
+						{ imageIconHtml }
 					</div>
 				) }
 				{ parts.map(

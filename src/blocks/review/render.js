@@ -3,13 +3,14 @@ import classnames from 'classnames';
 import ReviewBody from './review-body';
 import { __ } from '@wordpress/i18n';
 
-export default function renderReview(
+const Render = (
 	props,
 	bodyState,
 	bodySetStateValue,
 	starState,
 	starSetStateValue
-) {
+) => {
+	props = props.parentProps;
 	// Setup the attributes
 	const {
 		attributes: {
@@ -68,10 +69,10 @@ export default function renderReview(
 		}
 	}
 
-	let image_icon_html = '';
+	let imageIconHtml = '';
 
 	if ( mainimage && mainimage.url ) {
-		image_icon_html = (
+		imageIconHtml = (
 			<img
 				className="uagb-review__source-image"
 				src={ url }
@@ -106,7 +107,7 @@ export default function renderReview(
 				headingTag={ headingTag }
 				mainimage={ mainimage }
 				imgSize={ imgSize }
-				image_icon_html={ image_icon_html }
+				imageIconHtml={ image_icon_html }
 				isSelected={ isSelected }
 				authorName={ authorName }
 				itemName={ itemName }
@@ -158,3 +159,4 @@ export default function renderReview(
 		</div>
 	);
 }
+export default React.memo( Render );

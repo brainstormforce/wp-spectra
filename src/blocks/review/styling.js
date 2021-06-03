@@ -51,8 +51,8 @@ function styling( props ) {
 		overallAlignment,
 	} = props.attributes;
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	const selectors = {
 		' .uagb-star-inner-container svg': {
@@ -151,7 +151,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-rating-title, .uagb_review_entry': {
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
@@ -184,7 +184,7 @@ function styling( props ) {
 		},
 	};
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-rating-title, .uagb_review_entry': {
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
@@ -217,28 +217,28 @@ function styling( props ) {
 		},
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id.substr(
+	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id.substr(
 		0,
 		8
 	) }`;
 
-	let styling_css = generateCSS( selectors, base_selector );
+	let stylingCss = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS(
-		tablet_selectors,
-		base_selector,
+	stylingCss += generateCSS(
+		tabletSelectors,
+		baseSelector,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
-		base_selector,
+	stylingCss += generateCSS(
+		mobileSelectors,
+		baseSelector,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
