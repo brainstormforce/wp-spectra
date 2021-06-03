@@ -102,6 +102,24 @@
                              </Button>
                          </Tooltip>
                      ) }
+                     { ( !this.props.colorValue ) && 
+                    (<Button
+                        className="uagb-spacing-reset"
+                        type="button"
+                        onClick={ () => {
+                            this.setState( { currentColor: this.props.colorDefault, isPalette: ( this.props.colorDefault && this.props.colorDefault.startsWith( 'palette' ) ? true : false ) } );
+                            this.props.onColorChange( this.props.colorDefault ? this.props.colorDefault : undefined );
+                            if ( this.props.onColorClassChange ) {
+                                this.props.onColorClassChange( '' );
+                            }
+                        } }
+                        isSmall
+                        isSecondary
+                        disabled
+                    >
+                        <Dashicon icon="image-rotate" />
+                    </Button>)
+                }
                      <div className="uagb-beside-color-click">
                          { this.state.isVisible && (
                              <Popover position="top left" className="uagb-popover-color new-uagb-advanced-colors-pop" onClose={ toggleClose }>

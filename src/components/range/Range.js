@@ -97,7 +97,7 @@ class Range extends Component {
                 {label &&
                  <p className={ 'components-uagb-dimensions-control__label' }>{ __( label, 'ultimate-addons-for-gutenberg' ) }</p>
                 }
-                { ( value ) &&
+                { ( value || value === 1 ) &&
                     (<Button
                         className="uagb-spacing-reset"
                         type="button"
