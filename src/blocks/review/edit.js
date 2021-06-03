@@ -15,6 +15,7 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/render" */ './render' )
 );
+$ = jQuery;
 let prevState;
 
 const reviewComponent = ( props ) => {

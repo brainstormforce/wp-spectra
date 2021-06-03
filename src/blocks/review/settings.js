@@ -12,6 +12,7 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 
+$ = jQuery;
 import {
 	PanelBody,
 	RangeControl,
