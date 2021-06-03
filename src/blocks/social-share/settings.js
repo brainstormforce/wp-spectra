@@ -4,7 +4,7 @@
 
 import lazyLoader from '@Controls/lazy-loader';
 import React, { lazy, Suspense } from 'react';
-import Columnresponsive from "../../components/typography/column-responsive"
+import ColumnResponsive from "../../components/typography/column-responsive"
 
 import { __ } from '@wordpress/i18n';
 
@@ -157,7 +157,7 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						{ sizeTypesControls }

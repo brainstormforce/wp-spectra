@@ -3,17 +3,15 @@
  */
  import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	RangeControl,
 	ButtonGroup,
 	Button,
 	Dashicon,
-} = wp.components
+} from '@wordpress/components'
 
 // Extend component
-const { Fragment } = wp.element
-const { useSelect, useDispatch } = wp.data;
-import map from 'lodash/map';
+import { Fragment } from '@wordpress/element'
 
 /**
  * Build the Measure controls
@@ -60,7 +58,7 @@ export default function RangeTypographyControl ( props ) {
 
 	const sizeTypesControls = (
 		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
-			{ map( sizeTypes, ( { name, key } ) => (
+			{ sizeTypes.map( ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -127,7 +125,7 @@ export default function RangeTypographyControl ( props ) {
 		<div className={ 'uag-typography-range-options' }>
 			<div className="uagb-size-type-field-tabs">
 				<ButtonGroup className="components-tab-panel__tabs" aria-label={ __( 'Device', 'ultimate-addons-for-gutenberg' ) }>
-					{ map( devices, ( { name, key, title, itemClass } ) => (
+					{ devices.map( ( { name, key, title, itemClass } ) => (
 						<Button
 							key={ key }
 							className={ `components-button components-tab-panel__tabs-item ${ itemClass }${ name === deviceType ? ' active-tab' : '' }` }

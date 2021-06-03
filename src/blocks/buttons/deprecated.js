@@ -3,7 +3,6 @@
  */
 
 import classnames from 'classnames';
-import times from 'lodash/times';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
@@ -22,29 +21,26 @@ const deprecated = [
 				btn_count,
 			} = props.attributes;
 
-			const renderButtons = ( index ) => {
-				if ( 'undefined' !== typeof buttons[ index ] ) {
-					return (
-						<div
-							className={ classnames(
-								`uagb-buttons-repeater-${ index }`,
-								'uagb-button__wrapper'
-							) }
-							key={ index }
-						>
-							<RichText.Content
-								placeholder={ __( 'Click Here' ) }
-								value={ buttons[ index ].label }
-								tagName="a"
-								className="uagb-button__link"
-								href={ buttons[ index ].link }
-								rel="noopener noreferrer"
-								target={ buttons[ index ].target }
-							/>
-						</div>
-					);
-				}
-			};
+			const renderButtonsMarkup = buttons.map( ( button, index ) => {
+				return (
+					<div
+						className={ classnames(
+							`uagb-buttons-repeater-${ index }`,
+							'uagb-button__wrapper'
+						) }
+						key={ index }
+					>
+						<RichText.Content
+							value={ button.label }
+							tagName="a"
+							className="uagb-button__link"
+							href={ button.link }
+							rel="noopener noreferrer"
+							target={ button.target }
+						/>
+					</div>
+				)
+			});
 
 			return (
 				<div
@@ -55,7 +51,7 @@ const deprecated = [
 					id={ `uagb-buttons-${ block_id }` }
 				>
 					<div className="uagb-buttons__wrap">
-						{ times( btn_count, ( n ) => renderButtons( n ) ) }
+						{ renderButtonsMarkup }
 					</div>
 				</div>
 			);
@@ -74,28 +70,26 @@ const deprecated = [
 				btn_count,
 			} = props.attributes;
 
-			const renderButtons = ( index ) => {
-				if ( 'undefined' !== typeof buttons[ index ] ) {
-					return (
-						<div
-							className={ classnames(
-								`uagb-buttons-repeater-${ index }`,
-								'uagb-button__wrapper'
-							) }
-							key={ index }
-						>
-							<RichText.Content
-								value={ buttons[ index ].label }
-								tagName="a"
-								className="uagb-button__link"
-								href={ buttons[ index ].link }
-								rel="noopener noreferrer"
-								target={ buttons[ index ].target }
-							/>
-						</div>
-					);
-				}
-			};
+			const renderButtonsMarkup = buttons.map( ( button, index ) => {
+				return (
+					<div
+						className={ classnames(
+							`uagb-buttons-repeater-${ index }`,
+							'uagb-button__wrapper'
+						) }
+						key={ index }
+					>
+						<RichText.Content
+							value={ button.label }
+							tagName="a"
+							className="uagb-button__link"
+							href={ button.link }
+							rel="noopener noreferrer"
+							target={ button.target }
+						/>
+					</div>
+				)
+			});
 
 			return (
 				<div
@@ -106,7 +100,7 @@ const deprecated = [
 					id={ `uagb-buttons-${ block_id }` }
 				>
 					<div className="uagb-buttons__wrap">
-						{ times( btn_count, ( n ) => renderButtons( n ) ) }
+						{ renderButtonsMarkup }
 					</div>
 				</div>
 			);
@@ -125,28 +119,26 @@ const deprecated = [
 				btn_count,
 			} = props.attributes;
 
-			const renderButtons = ( index ) => {
-				if ( 'undefined' !== typeof buttons[ index ] ) {
-					return (
-						<div
-							className={ classnames(
-								`uagb-buttons-repeater-${ index }`,
-								'uagb-button__wrapper'
-							) }
-							key={ index }
-						>
-							<RichText.Content
-								value={ buttons[ index ].label }
-								tagName="a"
-								className="uagb-button__link"
-								href={ buttons[ index ].link }
-								rel="noopener noreferrer"
-								target={ buttons[ index ].target }
-							/>
-						</div>
-					);
-				}
-			};
+			const renderButtonsMarkup = buttons.map( ( button, index ) => {
+				return (
+					<div
+						className={ classnames(
+							`uagb-buttons-repeater-${ index }`,
+							'uagb-button__wrapper'
+						) }
+						key={ index }
+					>
+						<RichText.Content
+							value={ button.label }
+							tagName="a"
+							className="uagb-button__link"
+							href={ button.link }
+							rel="noopener noreferrer"
+							target={ button.target }
+						/>
+					</div>
+				)
+			});
 
 			return (
 				<div
@@ -157,7 +149,7 @@ const deprecated = [
 					) }
 				>
 					<div className="uagb-buttons__wrap">
-						{ times( btn_count, ( n ) => renderButtons( n ) ) }
+						{ renderButtonsMarkup }
 					</div>
 				</div>
 			);

@@ -1,7 +1,6 @@
-import map from 'lodash/map';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
@@ -78,7 +77,7 @@ const Settings = ( props ) => {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ map( sizeTypes, ( { name, key } ) => (
+			{ sizeTypes.map( ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -257,7 +256,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							{ sizeTypeControls }

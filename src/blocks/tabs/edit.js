@@ -1,7 +1,6 @@
 /**
  * BLOCK: Tabs Block
  */
-import times from 'lodash/times';
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -76,29 +75,35 @@ export default compose(
 		);
 
 		const block = getBlock( clientId );
-		const resetTabOrder = times( block.innerBlocks.length, ( n ) => {
-			updateBlockAttributes( block.innerBlocks[ n ].clientId, {
-				id: n,
+
+		for( let i = 0; i < block.innerBlocks.length; i++ ) {
+
+			updateBlockAttributes( block.innerBlocks[ i ].clientId, {
+				id: i,
 			} );
-		} );
+		}
 
 		return {
 			resetTabOrder() {
-				times( block.innerBlocks.length, ( n ) => {
-					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
-						id: n,
+
+				for( let i = 0; i < block.innerBlocks.length; i++ ) {
+
+					updateBlockAttributes( block.innerBlocks[ i ].clientId, {
+						id: i,
 					} );
-				} );
+				}
 			},
 			updateActiveTab( tabActive ) {
 				updateBlockAttributes( block.clientId, {
 					tabActive,
 				} );
-				times( block.innerBlocks.length, ( n ) => {
+
+				for( let i = 0; i < block.innerBlocks.length; i++ ) {
+
 					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
 						tabActive,
 					} );
-				} );
+				}
 				resetTabOrder;
 			},
 			moveTab( tabId, newIndex ) {

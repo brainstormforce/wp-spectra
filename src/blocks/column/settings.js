@@ -7,7 +7,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -196,7 +196,7 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Columnresponsive />
+				<ColumnResponsive />
 				{ 'Desktop' === deviceType && (
 					<>
 						<ButtonGroup

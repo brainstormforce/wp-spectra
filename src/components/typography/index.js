@@ -11,14 +11,14 @@ import RangeTypographyControl from "./range-typography"
 import TypographyStyles from "./inline-styles"
 import "./editor.scss"
 
-const {
+import {
 	Button,
 	Dashicon
-} = wp.components
+} from '@wordpress/components'
 
 
 // Extend component
-const { Component, Fragment } = wp.element
+import { Component, Fragment } from '@wordpress/element'
 
 // Export for ease of importing in individual blocks.
 export {

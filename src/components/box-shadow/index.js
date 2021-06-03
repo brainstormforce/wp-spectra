@@ -4,19 +4,19 @@
  */
  import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	ColorPalette
-} = wp.blockEditor
+} from '@wordpress/block-editor'
 
-const {
+import {
     Button,
 	SelectControl,
     RangeControl,
     Dashicon
-} = wp.components
+} from '@wordpress/components'
 
 // Extend component
-const { Component, Fragment } = wp.element
+import { Component, Fragment } from '@wordpress/element'
 
 class BoxShadowControl extends Component {
 
