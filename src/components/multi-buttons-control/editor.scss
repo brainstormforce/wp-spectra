@@ -1,0 +1,63 @@
+/* Multi Button */
+.components-button-group[aria-label="Gap"] {
+    display:flex;
+}
+
+.components-button-group[aria-label="Gap"] button.components-button.is-secondary {
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+
+.components-button-group[aria-label="Gap"] .components-button.is-secondary:hover:not(:disabled),.components-button-group[aria-label="Gap"] .components-button.is-tertiary:hover:not(:disabled){
+    color:#000;
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+.components-button-group[aria-label="Gap"] .components-button.is-secondary,.components-button-group[aria-label="Gap"] .components-button.is-tertiary{
+    color:#000;
+}
+
+.components-button-group[aria-label="Gap"] .components-button.is-primary:focus:not(:disabled){
+    box-shadow:unset;
+}
+.components-button-group[aria-label="Gap"] .components-button.is-secondary:active:not(:disabled), .components-button-group[aria-label="Gap"] .components-button.is-tertiary:active:not(:disabled){
+    background:#fff;
+    box-shadow: inset 0 0 0 1px #8f9395;
+}
+.components-button-group[aria-label="Gap"] button.components-button.is-primary.is-primary {
+    color: #fff;
+    background-color: #a4afb7;
+    border-color: #a4afb7;
+}
+/* Multi button alignment */
+.components-button-group[aria-label="Alignment"] .components-button.is-primary{
+    background:#a4afb7;
+}
+.components-button-group[aria-label="Alignment"] .components-button.is-primary:hover:not(:disabled){
+    background:#a4afb7;
+}
+.components-button-group[aria-label="Alignment"] .components-button{
+    padding:0px 30px 0px 30px
+}
+
+.components-button-group[aria-label="Alignment"] {
+    display:flex;
+}
+
+.components-button-group[aria-label="Alignment"] button.components-button.is-secondary {
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+
+.components-button-group[aria-label="Alignment"] .components-button.is-secondary:hover:not(:disabled),.components-button-group[aria-label="Alignment"] .components-button.is-tertiary:hover:not(:disabled){
+    color:#000;
+    box-shadow:inset 0 0 0 1px #8f9395;
+}
+.components-button-group[aria-label="Alignment"] .components-button.is-secondary,.components-button-group[aria-label="Alignment"] .components-button.is-tertiary{
+    color:#000;
+}
+
+.components-button-group[aria-label="Alignment"] .components-button.is-primary:focus:not(:disabled){
+    box-shadow:unset;
+}
+.components-button-group[aria-label="Alignment"] .components-button.is-secondary:active:not(:disabled), .components-button-group[aria-label="Alignment"] .components-button.is-tertiary:active:not(:disabled){
+    background:#fff;
+    box-shadow: inset 0 0 0 1px #8f9395;
+}

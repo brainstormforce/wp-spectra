@@ -182,36 +182,7 @@ label.uag-image-overlay-label {
 .uag-image-overlay-wrap .components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
     margin-right:59px;
 }
-/* Multi Button */
-.components-button-group {
-    display:flex;
-}
 
-button.components-button.is-secondary {
-    box-shadow:inset 0 0 0 1px #8f9395;
-}
-
-.components-button.is-secondary:hover:not(:disabled), .components-button.is-tertiary:hover:not(:disabled){
-    color:#000;
-    box-shadow:inset 0 0 0 1px #8f9395;
-}
-.components-button.is-secondary, .components-button.is-tertiary{
-    color:#000;
-}
-
-.components-button.is-primary:focus:not(:disabled){
-    box-shadow:unset;
-}
-.components-button.is-secondary:active:not(:disabled), .components-button.is-tertiary:active:not(:disabled){
-    background:#fff;
-    box-shadow: inset 0 0 0 1px #8f9395;
-}
-.components-button.is-primary{
-    background:#005a87;
-}
-.components-button.is-primary:hover:not(:disabled){
-    background:#005a87;
-}
 /* Box position */
 /* Image size */
 .uag-box-position-wrap {

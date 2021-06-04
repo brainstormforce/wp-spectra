@@ -16,6 +16,10 @@
 } = wp.components
 
 import { __ } from '@wordpress/i18n';
+/**
+ * Import Css
+ */
+import './editor.scss';
 
 /**
  * Constants

@@ -7,7 +7,6 @@
  /**
   * Import Css
   */
-  import icons from './icons';
   import './editor.scss';
  
  /**

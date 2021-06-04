@@ -10,7 +10,6 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import AdvancedPopColorControl from '../../advanced-pop-color-control'
-import AlignButtonsControl from '../../components/align-buttons-control'
 import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
 import DimensionsControl from '../../components/dimention-control';
@@ -280,13 +279,16 @@ class UAGBInlineNoticeEdit extends Component {
 				<InspectorTabs>
 				<InspectorTab key={'general'}>
 				<PanelBody title="Alignment" initialOpen={false}>
-					<AlignButtonsControl
-						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-						className="uagb--help-tip-alignment-title"
-						value={ noticeAlignment }
-						onChange={ ( value ) =>
-							setAttributes( { noticeAlignment: value } )
-						}
+					<MultiButtonsControl
+						label={ __( "Alignment", 'ultimate-addons-for-gutenberg' ) }
+						currentOption={ noticeAlignment }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{ value: "left", label: <Dashicon icon="editor-alignleft" />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "center", label: <Dashicon icon="editor-aligncenter" />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "right", label: <Dashicon icon="editor-alignright" />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
+						] }
+						onChange={ ( noticeAlignment ) => setAttributes( { noticeAlignment } ) }
 					/>
 					</PanelBody>
 					<PanelBody title="Toggle" initialOpen={false}>
@@ -353,16 +355,6 @@ class UAGBInlineNoticeEdit extends Component {
 							] }
 							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
-						/>
-						<MultiButtonsControl
-							label={ __( "Alignment", 'ultimate-addons-for-gutenberg' ) }
-							currentOption={ noticeAlignment }
-							options={ [
-								{ value: "left", label: <Dashicon icon="editor-alignleft" />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
-								{ value: "center", label: <Dashicon icon="editor-aligncenter" />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
-								{ value: "right", label: <Dashicon icon="editor-alignright" />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
-							] }
-							onChange={ ( noticeAlignment ) => setAttributes( { noticeAlignment } ) }
 						/>
 				</PanelBody>
 				<PanelBody title="Layout" initialOpen={false}>
