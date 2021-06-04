@@ -153,7 +153,7 @@ const SchemaNotices = ( props ) => {
 		return '';
 	};
 
-	return  schemaNoticeMarkup();
+	return schemaNoticeMarkup();
 };
 
 export default React.memo( SchemaNotices );

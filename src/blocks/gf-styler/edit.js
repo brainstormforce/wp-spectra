@@ -2,10 +2,7 @@ import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
-import {
-	SelectControl,
-	Placeholder,
-} from '@wordpress/components';
+import { SelectControl, Placeholder } from '@wordpress/components';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
 );
@@ -48,65 +45,66 @@ const UAGBGF = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectForm = ( id ) => {
-		const { setAttributes } = props
+		const { setAttributes } = props;
 
 		if ( ! id ) {
-			setAttributes( { isHtml: false } )
-			setAttributes( { formId: null } )
-			return
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
 		}
 
-		setAttributes( { isHtml: false } )
-		setAttributes( { formId: id } )
-	}
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
 	if ( formId == 0 ) {
 		return (
-				<Placeholder
-					icon="admin-post"
-					label={ __( "Select a Gravity Form",'ultimate-addons-for-gutenberg' ) }
-				>
-					<SelectControl				
-						value={ formId }
-						onChange={ onSelectForm }
-						options={ uagb_blocks_info.gf_forms }
-					/>	
-				</Placeholder>
-		)
+			<Placeholder
+				icon="admin-post"
+				label={ __(
+					'Select a Gravity Form',
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<SelectControl
+					value={ formId }
+					onChange={ onSelectForm }
+					options={ uagb_blocks_info.gf_forms }
+				/>
+			</Placeholder>
+		);
 	}
 	return (
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 
 export default withSelect( ( select, props ) => {
-	const { setAttributes } = props
-	const { formId, isHtml } = props.attributes
-	let jsonData = ""
+	const { setAttributes } = props;
+	const { formId, isHtml } = props.attributes;
+	let jsonData = '';
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
-
-		$.ajax({
+		$.ajax( {
 			url: uagb_blocks_info.ajax_url,
 			data: {
-				action: "uagb_gf_shortcode",
-				formId : formId,
-				nonce: uagb_blocks_info.uagb_ajax_nonce
+				action: 'uagb_gf_shortcode',
+				formId,
+				nonce: uagb_blocks_info.uagb_ajax_nonce,
 			},
-			dataType: "json",
-			type: "POST",
-			success: function( data ) {
-				setAttributes( { isHtml: true } )
-				setAttributes( { formJson: data } )
-				jsonData = data
-			}
-		})
+			dataType: 'json',
+			type: 'POST',
+			success( data ) {
+				setAttributes( { isHtml: true } );
+				setAttributes( { formJson: data } );
+				jsonData = data;
+			},
+		} );
 	}
 
 	return {
-		formHTML: jsonData
-	}
-} )( UAGBGF )
-
+		formHTML: jsonData,
+	};
+} )( UAGBGF );

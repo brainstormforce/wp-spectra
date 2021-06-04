@@ -1,4 +1,3 @@
-
 /**
  * BLOCK: Column - Settings.
  */

@@ -2,10 +2,10 @@ import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 
-import WebfontLoader from '@Components/typography/fontloader'
-import ColumnResponsive from '@Components/typography/column-responsive'
-import TypographyControl from '@Components/typography'
-import BoxShadowControl from '@Components/box-shadow'
+import WebfontLoader from '@Components/typography/fontloader';
+import ColumnResponsive from '@Components/typography/column-responsive';
+import TypographyControl from '@Components/typography';
+import BoxShadowControl from '@Components/box-shadow';
 
 import {
 	PanelBody,

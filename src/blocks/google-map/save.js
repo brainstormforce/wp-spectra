@@ -3,7 +3,6 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
-
 	const { block_id, height, zoom, address, language } = props.attributes;
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';

@@ -16,18 +16,17 @@ import Icon from './components/Icon';
 import { __ } from '@wordpress/i18n';
 
 import { Placeholder, Spinner } from '@wordpress/components';
-import {useLayoutEffect} from "react";
-import styles from "../editor.lazy.scss";
+import { useLayoutEffect } from 'react';
+import styles from '../editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 

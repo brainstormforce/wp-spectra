@@ -306,59 +306,59 @@ const Settings = ( props ) => {
 						</>
 					) }
 					<hr className="uagb-editor__separator" />
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: loadGoogleFonts,
-								label: 'loadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: fontFamily,
-								label: 'fontFamily',
-							} }
-							fontWeight={ {
-								value: fontWeight,
-								label: 'fontWeight',
-							} }
-							fontSubset={ {
-								value: fontSubset,
-								label: 'fontSubset',
-							} }
-							fontSizeType={ {
-								value: fontSizeType,
-								label: 'fontSizeType',
-							} }
-							fontSize={ { value: fontSize, label: 'fontSize' } }
-							fontSizeMobile={ {
-								value: fontSizeMobile,
-								label: 'fontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: fontSizeTablet,
-								label: 'fontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: lineHeightType,
-								label: 'lineHeightType',
-							} }
-							lineHeight={ {
-								value: lineHeight,
-								label: 'lineHeight',
-							} }
-							lineHeightMobile={ {
-								value: lineHeightMobile,
-								label: 'lineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: lineHeightTablet,
-								label: 'lineHeightTablet',
-							} }
-						/>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: loadGoogleFonts,
+							label: 'loadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: fontFamily,
+							label: 'fontFamily',
+						} }
+						fontWeight={ {
+							value: fontWeight,
+							label: 'fontWeight',
+						} }
+						fontSubset={ {
+							value: fontSubset,
+							label: 'fontSubset',
+						} }
+						fontSizeType={ {
+							value: fontSizeType,
+							label: 'fontSizeType',
+						} }
+						fontSize={ { value: fontSize, label: 'fontSize' } }
+						fontSizeMobile={ {
+							value: fontSizeMobile,
+							label: 'fontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: fontSizeTablet,
+							label: 'fontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: lineHeightType,
+							label: 'lineHeightType',
+						} }
+						lineHeight={ {
+							value: lineHeight,
+							label: 'lineHeight',
+						} }
+						lineHeightMobile={ {
+							value: lineHeightMobile,
+							label: 'lineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: lineHeightTablet,
+							label: 'lineHeightTablet',
+						} }
+					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
 						label={ __(

@@ -1,20 +1,19 @@
 import classnames from 'classnames';
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 
 const { RichText } = wp.blockEditor;
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 
@@ -33,7 +32,7 @@ const Render = ( props ) => {
 			return (
 				<form
 					className="uagb-search-wrapper"
-					onSubmit={e => e.preventDefault()}
+					onSubmit={ ( e ) => e.preventDefault() }
 					role="search"
 					action={ uagb_blocks_info.uagb_home_url }
 					method="get"
@@ -95,7 +94,7 @@ const Render = ( props ) => {
 			return (
 				<form
 					className="uagb-search-wrapper"
-					onSubmit={e => e.preventDefault()}
+					onSubmit={ ( e ) => e.preventDefault() }
 					role="search"
 					action={ uagb_blocks_info.uagb_home_url }
 					method="get"
@@ -120,19 +119,17 @@ const Render = ( props ) => {
 	};
 
 	return (
-
-			<div
-				className={ classnames(
-					'uagb-wp-search__outer-wrap',
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ block_id }`,
-					`uagb-layout-${ layout }`
-				) }
-			>
-				{ renderClassic() }
-				{ renderMinimal() }
-			</div>
-
+		<div
+			className={ classnames(
+				'uagb-wp-search__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ block_id }`,
+				`uagb-layout-${ layout }`
+			) }
+		>
+			{ renderClassic() }
+			{ renderMinimal() }
+		</div>
 	);
 };
 

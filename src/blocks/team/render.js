@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { createBlock } from '@wordpress/blocks';
@@ -7,14 +7,13 @@ import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 

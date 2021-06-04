@@ -2,7 +2,7 @@
  * BLOCK: Forms - Toggle - Save Block
  */
 
-import classnames from "classnames"
+import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
 const { RichText } = wp.blockEditor;
@@ -59,7 +59,7 @@ export default function save( props ) {
 					required={ toggleRequired }
 					name={ block_id }
 				/>
-				<span className={`uagb-slider ${layout}`}></span>
+				<span className={ `uagb-slider ${ layout }` }></span>
 			</label>
 		</div>
 	);

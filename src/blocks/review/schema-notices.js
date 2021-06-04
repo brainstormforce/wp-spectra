@@ -294,7 +294,7 @@ const SchemaNotices = ( props ) => {
 		return '';
 	};
 
-	return  schemaNoticeMarkup();
+	return schemaNoticeMarkup();
 };
 
 export default SchemaNotices;

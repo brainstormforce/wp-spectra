@@ -1,19 +1,18 @@
-import React, {lazy, Suspense, useLayoutEffect} from 'react';
+import React, { lazy, Suspense, useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 
 import Lottie from 'react-lottie';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	const { lottieplayer } = props;
 

@@ -42,10 +42,10 @@ const UAGBCallToAction = ( props ) => {
 	}, [ props ] );
 
 	return (
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 

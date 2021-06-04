@@ -7,7 +7,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import TypographyControl from '@Components/typography'
+import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
 import { __ } from '@wordpress/i18n';

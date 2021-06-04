@@ -1,17 +1,16 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import ReviewBody from './review-body';
-import React, {useLayoutEffect, useState} from 'react';
-import styles from "./editor.lazy.scss";
-const Render = (props) => {
-
+import React, { useLayoutEffect, useState } from 'react';
+import styles from './editor.lazy.scss';
+const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 	const {
@@ -45,11 +44,11 @@ const Render = (props) => {
 		className,
 	} = props;
 	const bodyInitialState = {
-	average:
-		props.attributes.parts
-			.map( ( i ) => i.value )
-			.reduce( ( total, v ) => total + v ) /
-		props.attributes.parts.length,
+		average:
+			props.attributes.parts
+				.map( ( i ) => i.value )
+				.reduce( ( total, v ) => total + v ) /
+			props.attributes.parts.length,
 	};
 
 	const [ bodyState, bodySetStateValue ] = useState( bodyInitialState );
@@ -176,5 +175,5 @@ const Render = (props) => {
 			/>
 		</div>
 	);
-}
+};
 export default React.memo( Render );

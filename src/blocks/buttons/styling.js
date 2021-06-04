@@ -29,7 +29,9 @@ function styling( props ) {
 			'margin-bottom'
 		] = generateCSSUnit( gap, 'px' );
 
-		selectors[ ' .uagb-buttons-stack-desktop .block-editor-inner-blocks .block-editor-block-list__layout' ] = {
+		selectors[
+			' .uagb-buttons-stack-desktop .block-editor-inner-blocks .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'tablet' == stack ) {

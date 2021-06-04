@@ -174,8 +174,7 @@ function styling( props ) {
 		}
 	}
 
-	const marginType =
-		'after' == iconPosition ? 'margin-left' : 'margin-right';
+	const marginType = 'after' == iconPosition ? 'margin-left' : 'margin-right';
 
 	selectors[ ' .uagb-marketing-btn__icon-wrap' ][
 		marginType

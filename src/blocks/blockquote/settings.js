@@ -228,101 +228,101 @@ const Settings = ( props ) => {
 					) }
 				/>
 				{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<Button
-						className="uagb-rm-btn"
-						onClick={ onRemoveImage }
-						isLink
-						isDestructive
-					>
-						{ __(
-							'Remove Image',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</Button>
-				) }
+					authorImage.url !== 'null' &&
+					authorImage.url !== '' && (
+						<Button
+							className="uagb-rm-btn"
+							onClick={ onRemoveImage }
+							isLink
+							isDestructive
+						>
+							{ __(
+								'Remove Image',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</Button>
+					) }
 			</BaseControl>
 			{ authorImage &&
-			authorImage.url !== 'null' &&
-			authorImage.url !== '' && (
-				<>
-					<SelectControl
-						label={ __(
-							'Author Image Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { authorImgPosition: value } )
-						}
-						options={ [
-							{
-								value: 'left',
-								label: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								label: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-					/>
-					<SelectControl
-						label={ __(
-							'Author Image Size',
-							'ultimate-addons-for-gutenberg'
-						) }
-						options={ imageSizeOptions }
-						value={ authorImageSize }
-						onChange={ ( value ) =>
-							setAttributes( { authorImageSize: value } )
-						}
-					/>
-					<RangeControl
-						label={ __(
-							'Author Image Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImageWidth }
-						onChange={ ( value ) =>
-							setAttributes( { authorImageWidth: value } )
-						}
-						min={ 0 }
-						max={ 500 }
-						beforeIcon=""
-						allowReset
-					/>
-					<RangeControl
-						label={ __(
-							'Author Image Rounded Corners',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImgBorderRadius }
-						onChange={ ( value ) =>
-							setAttributes( {
-								authorImgBorderRadius: value,
-							} )
-						}
-						min={ 0 }
-						max={ 100 }
-						beforeIcon=""
-						allowReset
-					/>
-				</>
-			) }
+				authorImage.url !== 'null' &&
+				authorImage.url !== '' && (
+					<>
+						<SelectControl
+							label={ __(
+								'Author Image Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImgPosition }
+							onChange={ ( value ) =>
+								setAttributes( { authorImgPosition: value } )
+							}
+							options={ [
+								{
+									value: 'left',
+									label: __(
+										'Left',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'right',
+									label: __(
+										'Right',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'top',
+									label: __(
+										'Top',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+						<SelectControl
+							label={ __(
+								'Author Image Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							options={ imageSizeOptions }
+							value={ authorImageSize }
+							onChange={ ( value ) =>
+								setAttributes( { authorImageSize: value } )
+							}
+						/>
+						<RangeControl
+							label={ __(
+								'Author Image Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImageWidth }
+							onChange={ ( value ) =>
+								setAttributes( { authorImageWidth: value } )
+							}
+							min={ 0 }
+							max={ 500 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label={ __(
+								'Author Image Rounded Corners',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ authorImgBorderRadius }
+							onChange={ ( value ) =>
+								setAttributes( {
+									authorImgBorderRadius: value,
+								} )
+							}
+							min={ 0 }
+							max={ 100 }
+							beforeIcon=""
+							allowReset
+						/>
+					</>
+				) }
 		</>
 	);
 
@@ -720,10 +720,7 @@ const Settings = ( props ) => {
 		>
 			<h2>{ __( 'Quote', 'ultimate-addons-for-gutenberg' ) }</h2>
 			<TypographyControl
-				label={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				loadGoogleFonts={ {
@@ -775,11 +772,11 @@ const Settings = ( props ) => {
 			<p className="uagb-setting-label">
 				{ __( 'Quote Color', 'ultimate-addons-for-gutenberg' ) }
 				<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: descColor } }
-						></span>
-					</span>
+					<span
+						className="component-color-indicator"
+						style={ { backgroundColor: descColor } }
+					></span>
+				</span>
 			</p>
 			<ColorPalette
 				value={ descColor }
@@ -791,10 +788,7 @@ const Settings = ( props ) => {
 			<hr className="uagb-editor__separator" />
 			<h2>{ __( 'Author', 'ultimate-addons-for-gutenberg' ) }</h2>
 			<TypographyControl
-				label={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				loadGoogleFonts={ {
@@ -849,11 +843,11 @@ const Settings = ( props ) => {
 			<p className="uagb-setting-label">
 				{ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
 				<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: authorColor } }
-						></span>
-					</span>
+					<span
+						className="component-color-indicator"
+						style={ { backgroundColor: authorColor } }
+					></span>
+				</span>
 			</p>
 			<ColorPalette
 				value={ authorColor }
@@ -1594,7 +1588,7 @@ const Settings = ( props ) => {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ sizeTypes.map(  ( { name, key } ) => (
+			{ sizeTypes.map( ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -1614,7 +1608,7 @@ const Settings = ( props ) => {
 			className="uagb-size-type-field"
 			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
 		>
-			{ sizeTypes.map(  ( { name, key } ) => (
+			{ sizeTypes.map( ( { name, key } ) => (
 				<Button
 					key={ key }
 					className="uagb-size-btn"
@@ -1630,108 +1624,110 @@ const Settings = ( props ) => {
 	);
 
 	const getTooltipElement = () => {
-		return <>
-			<Toolbar label="Options">
-				<label
-					aria-label={__(
-						'Twitter Username',
-						'ultimate-addons-for-gutenberg'
-					)}
-					className={`${className}__via-label`}
-					htmlFor={`${className}__via`}
-				>
-					{' '}
-					{UAGB_Block_Icons.at_the_rate}
-				</label>
-				<input
-					aria-label={__(
-						'Twitter Username',
-						'ultimate-addons-for-gutenberg'
-					)}
-					className={`${className}__via`}
-					id={`${className}__via`}
-					onChange={(event) =>
-						setAttributes({
-							iconShareVia: event.target.value,
-						})
-					}
-					placeholder={__(
-						'Username',
-						'ultimate-addons-for-gutenberg'
-					)}
-					type="text"
-					value={iconShareVia}
-				/>
-			</Toolbar>
-		</>;
-	}
+		return (
+			<>
+				<Toolbar label="Options">
+					<label
+						aria-label={ __(
+							'Twitter Username',
+							'ultimate-addons-for-gutenberg'
+						) }
+						className={ `${ className }__via-label` }
+						htmlFor={ `${ className }__via` }
+					>
+						{ ' ' }
+						{ UAGB_Block_Icons.at_the_rate }
+					</label>
+					<input
+						aria-label={ __(
+							'Twitter Username',
+							'ultimate-addons-for-gutenberg'
+						) }
+						className={ `${ className }__via` }
+						id={ `${ className }__via` }
+						onChange={ ( event ) =>
+							setAttributes( {
+								iconShareVia: event.target.value,
+							} )
+						}
+						placeholder={ __(
+							'Username',
+							'ultimate-addons-for-gutenberg'
+						) }
+						type="text"
+						value={ iconShareVia }
+					/>
+				</Toolbar>
+			</>
+		);
+	};
 
 	const getAlignmentToolbar = () => {
-		return <AlignmentToolbar
-			value={align}
-			onChange={(value) =>
-				setAttributes({align: value})
-			}
-		/>;
-	}
+		return (
+			<AlignmentToolbar
+				value={ align }
+				onChange={ ( value ) => setAttributes( { align: value } ) }
+			/>
+		);
+	};
 
 	const getToolbarElement = () => {
-		return <>
-			<Toolbar label="Options">
-				<Tooltip
-					text={__(
-						'Normal Quote',
-						'ultimate-addons-for-gutenberg'
-					)}
-				>
-					<Button
-						className={classnames(
-							'components-icon-button',
-							'components-toolbar__control',
-							{
-								'is-active':
-									quoteStyle === 'style_1',
-							}
-						)}
-						onClick={() =>
-							setAttributes({
-								quoteStyle: 'style_1',
-							})
-						}
+		return (
+			<>
+				<Toolbar label="Options">
+					<Tooltip
+						text={ __(
+							'Normal Quote',
+							'ultimate-addons-for-gutenberg'
+						) }
 					>
-						{UAGB_Block_Icons.quote_1}
-					</Button>
-				</Tooltip>
-			</Toolbar>
+						<Button
+							className={ classnames(
+								'components-icon-button',
+								'components-toolbar__control',
+								{
+									'is-active': quoteStyle === 'style_1',
+								}
+							) }
+							onClick={ () =>
+								setAttributes( {
+									quoteStyle: 'style_1',
+								} )
+							}
+						>
+							{ UAGB_Block_Icons.quote_1 }
+						</Button>
+					</Tooltip>
+				</Toolbar>
 
-			<Toolbar label="Options">
-				<Tooltip
-					text={__(
-						'Inline Quote',
-						'ultimate-addons-for-gutenberg'
-					)}
-				>
-					<Button
-						className={classnames(
-							'components-icon-button',
-							'components-toolbar__control',
-							{
-								'is-active':
-									quoteStyle === 'style_2',
-							}
-						)}
-						onClick={() =>
-							setAttributes({
-								quoteStyle: 'style_2',
-							})
-						}
+				<Toolbar label="Options">
+					<Tooltip
+						text={ __(
+							'Inline Quote',
+							'ultimate-addons-for-gutenberg'
+						) }
 					>
-						{UAGB_Block_Icons.quote_2}
-					</Button>
-				</Tooltip>
-			</Toolbar>
-		</>;
-	}
+						<Button
+							className={ classnames(
+								'components-icon-button',
+								'components-toolbar__control',
+								{
+									'is-active': quoteStyle === 'style_2',
+								}
+							) }
+							onClick={ () =>
+								setAttributes( {
+									quoteStyle: 'style_2',
+								} )
+							}
+						>
+							{ UAGB_Block_Icons.quote_2 }
+						</Button>
+					</Tooltip>
+				</Toolbar>
+			</>
+		);
+	};
 
 	return (
 		<>

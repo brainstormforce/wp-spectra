@@ -29,11 +29,17 @@ const UAGBTabsEdit = ( props ) => {
 	const updateTabTitle = () => {
 		const { attributes, clientId } = props;
 		const { tabHeaders } = attributes;
-		const { updateBlockAttributes } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
-		const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
-		const childBlocks = getBlockOrder(clientId);
-		childBlocks.forEach( childBlockId => updateBlockAttributes( childBlockId, {tabHeaders: tabHeaders} ) );
-	}
+		const { updateBlockAttributes } = ! wp.blockEditor
+			? dispatch( 'core/editor' )
+			: dispatch( 'core/block-editor' );
+		const { getBlockOrder } = ! wp.blockEditor
+			? select( 'core/editor' )
+			: select( 'core/block-editor' );
+		const childBlocks = getBlockOrder( clientId );
+		childBlocks.forEach( ( childBlockId ) =>
+			updateBlockAttributes( childBlockId, { tabHeaders } )
+		);
+	};
 
 	useEffect( () => {
 		const element = document.getElementById(
@@ -48,10 +54,10 @@ const UAGBTabsEdit = ( props ) => {
 	}, [ props ] );
 
 	return (
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+		<Suspense fallback={ lazyLoader() }>
+			<Settings parentProps={ props } />
+			<Render parentProps={ props } />
+		</Suspense>
 	);
 };
 
@@ -76,8 +82,7 @@ export default compose(
 
 		const block = getBlock( clientId );
 
-		for( let i = 0; i < block.innerBlocks.length; i++ ) {
-
+		for ( let i = 0; i < block.innerBlocks.length; i++ ) {
 			updateBlockAttributes( block.innerBlocks[ i ].clientId, {
 				id: i,
 			} );
@@ -85,9 +90,7 @@ export default compose(
 
 		return {
 			resetTabOrder() {
-
-				for( let i = 0; i < block.innerBlocks.length; i++ ) {
-
+				for ( let i = 0; i < block.innerBlocks.length; i++ ) {
 					updateBlockAttributes( block.innerBlocks[ i ].clientId, {
 						id: i,
 					} );
@@ -98,8 +101,7 @@ export default compose(
 					tabActive,
 				} );
 
-				for( let i = 0; i < block.innerBlocks.length; i++ ) {
-
+				for ( let i = 0; i < block.innerBlocks.length; i++ ) {
 					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
 						tabActive,
 					} );

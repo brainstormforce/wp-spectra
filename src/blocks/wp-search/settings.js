@@ -1,7 +1,5 @@
-import React, { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
@@ -1032,7 +1030,7 @@ const Settings = ( props ) => {
 	}
 
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			<InspectorControls>
 				{ generalSettings() }
 				{ inputSettings() }
@@ -1041,7 +1039,7 @@ const Settings = ( props ) => {
 			</InspectorControls>
 			{ loadInputGoogleFonts }
 			{ loadButtonGoogleFonts }
-		</Suspense>
+		</>
 	);
 };
 

@@ -36,7 +36,6 @@ import {
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
 

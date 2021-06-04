@@ -1,9 +1,6 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
 import React, { useMemo } from 'react';
-
-import { __ } from '@wordpress/i18n';
-
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];

@@ -1,8 +1,6 @@
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
-import React, { lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
@@ -1589,7 +1587,7 @@ const Settings = ( props ) => {
 		);
 	};
 	return (
-		<Suspense fallback={ lazyLoader() }>
+		<>
 			{ blockControls() }
 			<InspectorControls>
 				{ querySettings() }
@@ -1607,7 +1605,7 @@ const Settings = ( props ) => {
 			{ loadDateGoogleFonts }
 			{ loadAuthorGoogleFonts }
 			{ loadCtaGoogleFonts }
-		</Suspense>
+		</>
 	);
 };
 

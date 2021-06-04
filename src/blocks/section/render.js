@@ -1,19 +1,17 @@
 import classnames from 'classnames';
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
-	
 	props = props.parentProps;
 
 	const { attributes, isSelected, className, deviceType } = props;

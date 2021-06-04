@@ -20,7 +20,6 @@ let prevState;
 
 const reviewComponent = ( props ) => {
 	useEffect( () => {
-
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -67,10 +66,7 @@ const reviewComponent = ( props ) => {
 	}, [ props ] );
 
 	// Setup the attributes
-	const {
-		attributes,
-		setAttributes,
-	} = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		block_id,
@@ -105,7 +101,7 @@ const reviewComponent = ( props ) => {
 		datecreated,
 		directorname,
 	} = attributes;
-	
+
 	if ( block_id === '' ) {
 		setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
@@ -159,7 +155,7 @@ const reviewComponent = ( props ) => {
 			/>
 			<Suspense fallback={ lazyLoader() }>
 				<Settings parentProps={ props } />
-				<Render parentProps={ props} />
+				<Render parentProps={ props } />
 			</Suspense>
 		</>
 	);

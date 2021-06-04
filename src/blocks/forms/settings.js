@@ -5,7 +5,6 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
-
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const {

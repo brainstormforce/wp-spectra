@@ -512,5 +512,5 @@ const Settings = ( props ) => {
 			</Suspense>
 		</div>
 	);
-}
+};
 export default React.memo( Settings );

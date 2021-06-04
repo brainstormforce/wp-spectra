@@ -11,14 +11,13 @@ import Prefix from './components/Prefix';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 	const { className, attributes, setAttributes } = props;
@@ -143,51 +142,51 @@ const Render = ( props ) => {
 			) }
 		>
 			<div className="uagb-ifb-left-right-wrap">
-					{ iconimgPosition == 'left' && iconImageHtml }
-					<div className="uagb-ifb-content">
-						{ iconimgPosition == 'above-title' && iconImageHtml }
+				{ iconimgPosition == 'left' && iconImageHtml }
+				<div className="uagb-ifb-content">
+					{ iconimgPosition == 'above-title' && iconImageHtml }
 
-						{ ( iconimgPosition == 'above-title' ||
-							iconimgPosition == 'below-title' ) &&
-							titleText }
+					{ ( iconimgPosition == 'above-title' ||
+						iconimgPosition == 'below-title' ) &&
+						titleText }
 
-						{ iconimgPosition == 'below-title' && iconImageHtml }
+					{ iconimgPosition == 'below-title' && iconImageHtml }
 
-						{ ( iconimgPosition == 'above-title' ||
-							iconimgPosition == 'below-title' ) &&
-							desc }
+					{ ( iconimgPosition == 'above-title' ||
+						iconimgPosition == 'below-title' ) &&
+						desc }
 
-						{ iconimgPosition === 'left-title' && (
-							<>
-								<div className="uagb-ifb-left-title-image">
-									{ iconImageHtml }
-									{ titleText }
-								</div>
-								{ desc }
-							</>
-						) }
-
-						{ iconimgPosition === 'right-title' && (
-							<>
-								<div className="uagb-ifb-right-title-image">
-									{ titleText }
-									{ iconImageHtml }
-								</div>
-								{ desc }
-							</>
-						) }
-
-						{ ( iconimgPosition == 'left' ||
-							iconimgPosition == 'right' ) && (
-							<>
+					{ iconimgPosition === 'left-title' && (
+						<>
+							<div className="uagb-ifb-left-title-image">
+								{ iconImageHtml }
 								{ titleText }
-								{ desc }
-							</>
-						) }
-					</div>
+							</div>
+							{ desc }
+						</>
+					) }
 
-					{ iconimgPosition == 'right' && iconImageHtml }
+					{ iconimgPosition === 'right-title' && (
+						<>
+							<div className="uagb-ifb-right-title-image">
+								{ titleText }
+								{ iconImageHtml }
+							</div>
+							{ desc }
+						</>
+					) }
+
+					{ ( iconimgPosition == 'left' ||
+						iconimgPosition == 'right' ) && (
+						<>
+							{ titleText }
+							{ desc }
+						</>
+					) }
 				</div>
+
+				{ iconimgPosition == 'right' && iconImageHtml }
+			</div>
 		</div>
 	);
 

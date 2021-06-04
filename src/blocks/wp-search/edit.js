@@ -35,7 +35,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
-	}, [ ] );
+	}, [] );
 
 	// componentDidUpdate.
 	useEffect( () => {

@@ -8,7 +8,6 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 
-
 const { registerBlockType } = wp.blocks;
 
 registerBlockType( 'uagb/forms-toggle', {

@@ -1,22 +1,20 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 import { RichText } from '@wordpress/block-editor';
-import {useLayoutEffect} from "react";
+import { useLayoutEffect } from 'react';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
-
-	let state = props.state;
+	const state = props.state;
 	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;

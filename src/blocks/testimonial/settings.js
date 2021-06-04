@@ -225,12 +225,12 @@ const Settings = ( props ) => {
 	};
 
 	const getImageData = () => {
-		var getImages = [];
+		const getImages = [];
 		for ( let i = 0; i < test_item_count; i++ ) {
-			getImages.push(tmControls(i))	
+			getImages.push( tmControls( i ) );
 		}
 		return getImages;
-	}
+	};
 
 	const togglePauseOnHover = () => {
 		setAttributes( { pauseOnHover: ! pauseOnHover } );
@@ -289,197 +289,192 @@ const Settings = ( props ) => {
 		return (
 			<>
 				<PanelBody
-						title={ __(
+					title={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					initialOpen={ false }
+				>
+					<h2>
+						{ __( 'Testimonial', 'ultimate-addons-for-gutenberg' ) }
+					</h2>
+
+					<TypographyControl
+						label={ __(
 							'Typography',
 							'ultimate-addons-for-gutenberg'
 						) }
-						initialOpen={ false }
-					>
-						<h2>
-							{ __(
-								'Testimonial',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: descLoadGoogleFonts,
+							label: 'descLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: descFontFamily,
+							label: 'descFontFamily',
+						} }
+						fontWeight={ {
+							value: descFontWeight,
+							label: 'descFontWeight',
+						} }
+						fontSubset={ {
+							value: descFontSubset,
+							label: 'descFontSubset',
+						} }
+						fontSizeType={ {
+							value: descFontSizeType,
+							label: 'descFontSizeType',
+						} }
+						fontSize={ {
+							value: descFontSize,
+							label: 'descFontSize',
+						} }
+						fontSizeMobile={ {
+							value: descFontSizeMobile,
+							label: 'descFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: descFontSizeTablet,
+							label: 'descFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: descLineHeightType,
+							label: 'descLineHeightType',
+						} }
+						lineHeight={ {
+							value: descLineHeight,
+							label: 'descLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: descLineHeightMobile,
+							label: 'descLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: descLineHeightTablet,
+							label: 'descLineHeightTablet',
+						} }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( 'Name', 'ultimate-addons-for-gutenberg' ) }</h2>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: nameLoadGoogleFonts,
+							label: 'nameLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: nameFontFamily,
+							label: 'nameFontFamily',
+						} }
+						fontWeight={ {
+							value: nameFontWeight,
+							label: 'nameFontWeight',
+						} }
+						fontSubset={ {
+							value: nameFontSubset,
+							label: 'nameFontSubset',
+						} }
+						fontSizeType={ {
+							value: nameFontSizeType,
+							label: 'nameFontSizeType',
+						} }
+						fontSize={ {
+							value: nameFontSize,
+							label: 'nameFontSize',
+						} }
+						fontSizeMobile={ {
+							value: nameFontSizeMobile,
+							label: 'nameFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: nameFontSizeTablet,
+							label: 'nameFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: nameLineHeightType,
+							label: 'nameLineHeightType',
+						} }
+						lineHeight={ {
+							value: nameLineHeight,
+							label: 'nameLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: nameLineHeightMobile,
+							label: 'nameLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: nameLineHeightTablet,
+							label: 'nameLineHeightTablet',
+						} }
+					/>
 
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: descLoadGoogleFonts,
-								label: 'descLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: descFontFamily,
-								label: 'descFontFamily',
-							} }
-							fontWeight={ {
-								value: descFontWeight,
-								label: 'descFontWeight',
-							} }
-							fontSubset={ {
-								value: descFontSubset,
-								label: 'descFontSubset',
-							} }
-							fontSizeType={ {
-								value: descFontSizeType,
-								label: 'descFontSizeType',
-							} }
-							fontSize={ {
-								value: descFontSize,
-								label: 'descFontSize',
-							} }
-							fontSizeMobile={ {
-								value: descFontSizeMobile,
-								label: 'descFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: descFontSizeTablet,
-								label: 'descFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: descLineHeightType,
-								label: 'descLineHeightType',
-							} }
-							lineHeight={ {
-								value: descLineHeight,
-								label: 'descLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: descLineHeightMobile,
-								label: 'descLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: descLineHeightTablet,
-								label: 'descLineHeightTablet',
-							} }
-						/>
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: nameLoadGoogleFonts,
-								label: 'nameLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: nameFontFamily,
-								label: 'nameFontFamily',
-							} }
-							fontWeight={ {
-								value: nameFontWeight,
-								label: 'nameFontWeight',
-							} }
-							fontSubset={ {
-								value: nameFontSubset,
-								label: 'nameFontSubset',
-							} }
-							fontSizeType={ {
-								value: nameFontSizeType,
-								label: 'nameFontSizeType',
-							} }
-							fontSize={ {
-								value: nameFontSize,
-								label: 'nameFontSize',
-							} }
-							fontSizeMobile={ {
-								value: nameFontSizeMobile,
-								label: 'nameFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: nameFontSizeTablet,
-								label: 'nameFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: nameLineHeightType,
-								label: 'nameLineHeightType',
-							} }
-							lineHeight={ {
-								value: nameLineHeight,
-								label: 'nameLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: nameLineHeightMobile,
-								label: 'nameLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: nameLineHeightTablet,
-								label: 'nameLineHeightTablet',
-							} }
-						/>
-
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'Company', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: companyLoadGoogleFonts,
-								label: 'companyLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: companyFontFamily,
-								label: 'companyFontFamily',
-							} }
-							fontWeight={ {
-								value: companyFontWeight,
-								label: 'companyFontWeight',
-							} }
-							fontSubset={ {
-								value: companyFontSubset,
-								label: 'companyFontSubset',
-							} }
-							fontSizeType={ {
-								value: companyFontSizeType,
-								label: 'companyFontSizeType',
-							} }
-							fontSize={ {
-								value: companyFontSize,
-								label: 'companyFontSize',
-							} }
-							fontSizeMobile={ {
-								value: companyFontSizeMobile,
-								label: 'companyFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: companyFontSizeTablet,
-								label: 'companyFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: companyLineHeightType,
-								label: 'companyLineHeightType',
-							} }
-							lineHeight={ {
-								value: companyLineHeight,
-								label: 'companyLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: companyLineHeightMobile,
-								label: 'companyLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: companyLineHeightTablet,
-								label: 'companyLineHeightTablet',
-							} }
-						/>
-					</PanelBody>
+					<hr className="uagb-editor__separator" />
+					<h2>
+						{ __( 'Company', 'ultimate-addons-for-gutenberg' ) }
+					</h2>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: companyLoadGoogleFonts,
+							label: 'companyLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: companyFontFamily,
+							label: 'companyFontFamily',
+						} }
+						fontWeight={ {
+							value: companyFontWeight,
+							label: 'companyFontWeight',
+						} }
+						fontSubset={ {
+							value: companyFontSubset,
+							label: 'companyFontSubset',
+						} }
+						fontSizeType={ {
+							value: companyFontSizeType,
+							label: 'companyFontSizeType',
+						} }
+						fontSize={ {
+							value: companyFontSize,
+							label: 'companyFontSize',
+						} }
+						fontSizeMobile={ {
+							value: companyFontSizeMobile,
+							label: 'companyFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: companyFontSizeTablet,
+							label: 'companyFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: companyLineHeightType,
+							label: 'companyLineHeightType',
+						} }
+						lineHeight={ {
+							value: companyLineHeight,
+							label: 'companyLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: companyLineHeightMobile,
+							label: 'companyLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: companyLineHeightTablet,
+							label: 'companyLineHeightTablet',
+						} }
+					/>
+				</PanelBody>
 				<PanelColorSettings
 					title={ __(
 						'Color Settings',
@@ -1301,19 +1296,18 @@ const Settings = ( props ) => {
 									newCount - cloneTest_block.length
 								);
 
-								
-									for( let i = 0; i < incAmount; i++ ) {
-										cloneTest_block.push( {
-											description:
-												'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!',
-											name: 'John Doe',
-											company:
-												'Company' +
-												( cloneTest_block.length + 1 ),
-											image: '',
-										} );
-									}
-								
+								for ( let i = 0; i < incAmount; i++ ) {
+									cloneTest_block.push( {
+										description:
+											'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!',
+										name: 'John Doe',
+										company:
+											'Company' +
+											( cloneTest_block.length + 1 ),
+										image: '',
+									} );
+								}
+
 								setAttributes( {
 									test_block: cloneTest_block,
 								} );
@@ -1387,7 +1381,7 @@ const Settings = ( props ) => {
 					title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					{ getImageData()}
+					{ getImageData() }
 					{ cnt > 0 && (
 						<>
 							<hr className="uagb-editor__separator" />

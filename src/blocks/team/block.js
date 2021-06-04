@@ -11,7 +11,7 @@ import './style.scss';
 
 import { __ } from '@wordpress/i18n';
 
-import { registerBlockType } from  '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/team', {
 	title: uagb_blocks_info.blocks[ 'uagb/team' ].title,

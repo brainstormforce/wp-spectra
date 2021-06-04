@@ -512,62 +512,62 @@ const Settings = ( props ) => {
 						<h2>
 							{ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 						</h2>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: labelLoadGoogleFonts,
-									label: 'labelLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: labelFontFamily,
-									label: 'labelFontFamily',
-								} }
-								fontWeight={ {
-									value: labelFontWeight,
-									label: 'labelFontWeight',
-								} }
-								fontSubset={ {
-									value: labelFontSubset,
-									label: 'labelFontSubset',
-								} }
-								fontSizeType={ {
-									value: labelFontSizeType,
-									label: 'labelFontSizeType',
-								} }
-								fontSize={ {
-									value: labelFontSize,
-									label: 'labelFontSize',
-								} }
-								fontSizeMobile={ {
-									value: labelFontSizeMobile,
-									label: 'labelFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: labelFontSizeTablet,
-									label: 'labelFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: labelLineHeightType,
-									label: 'labelLineHeightType',
-								} }
-								lineHeight={ {
-									value: labelLineHeight,
-									label: 'labelLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: labelLineHeightMobile,
-									label: 'labelLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: labelLineHeightTablet,
-									label: 'labelLineHeightTablet',
-								} }
-							/>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: labelLoadGoogleFonts,
+								label: 'labelLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: labelFontFamily,
+								label: 'labelFontFamily',
+							} }
+							fontWeight={ {
+								value: labelFontWeight,
+								label: 'labelFontWeight',
+							} }
+							fontSubset={ {
+								value: labelFontSubset,
+								label: 'labelFontSubset',
+							} }
+							fontSizeType={ {
+								value: labelFontSizeType,
+								label: 'labelFontSizeType',
+							} }
+							fontSize={ {
+								value: labelFontSize,
+								label: 'labelFontSize',
+							} }
+							fontSizeMobile={ {
+								value: labelFontSizeMobile,
+								label: 'labelFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: labelFontSizeTablet,
+								label: 'labelFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: labelLineHeightType,
+								label: 'labelLineHeightType',
+							} }
+							lineHeight={ {
+								value: labelLineHeight,
+								label: 'labelLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: labelLineHeightMobile,
+								label: 'labelLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: labelLineHeightTablet,
+								label: 'labelLineHeightTablet',
+							} }
+						/>
 						<p className="uagb-setting-label">
 							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							<span className="components-base-control__label">
@@ -590,59 +590,59 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<h2>{ __( 'Input', 'ultimate-addons-for-gutenberg' ) }</h2>
-					<TypographyControl
-						label={ __( 'Typography' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: inputLoadGoogleFonts,
-							label: 'inputLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: inputFontFamily,
-							label: 'inputFontFamily',
-						} }
-						fontWeight={ {
-							value: inputFontWeight,
-							label: 'inputFontWeight',
-						} }
-						fontSubset={ {
-							value: inputFontSubset,
-							label: 'inputFontSubset',
-						} }
-						fontSizeType={ {
-							value: inputFontSizeType,
-							label: 'inputFontSizeType',
-						} }
-						fontSize={ {
-							value: inputFontSize,
-							label: 'inputFontSize',
-						} }
-						fontSizeMobile={ {
-							value: inputFontSizeMobile,
-							label: 'inputFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: inputFontSizeTablet,
-							label: 'inputFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: inputLineHeightType,
-							label: 'inputLineHeightType',
-						} }
-						lineHeight={ {
-							value: inputLineHeight,
-							label: 'inputLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: inputLineHeightMobile,
-							label: 'inputLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: inputLineHeightTablet,
-							label: 'inputLineHeightTablet',
-						} }
-					/>
+				<TypographyControl
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: inputLoadGoogleFonts,
+						label: 'inputLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: inputFontFamily,
+						label: 'inputFontFamily',
+					} }
+					fontWeight={ {
+						value: inputFontWeight,
+						label: 'inputFontWeight',
+					} }
+					fontSubset={ {
+						value: inputFontSubset,
+						label: 'inputFontSubset',
+					} }
+					fontSizeType={ {
+						value: inputFontSizeType,
+						label: 'inputFontSizeType',
+					} }
+					fontSize={ {
+						value: inputFontSize,
+						label: 'inputFontSize',
+					} }
+					fontSizeMobile={ {
+						value: inputFontSizeMobile,
+						label: 'inputFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: inputFontSizeTablet,
+						label: 'inputFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: inputLineHeightType,
+						label: 'inputLineHeightType',
+					} }
+					lineHeight={ {
+						value: inputLineHeight,
+						label: 'inputLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: inputLineHeightMobile,
+						label: 'inputLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: inputLineHeightTablet,
+						label: 'inputLineHeightTablet',
+					} }
+				/>
 				<p className="uagb-setting-label">
 					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					<span className="components-base-control__label">
@@ -1141,62 +1141,62 @@ const Settings = ( props ) => {
 				<h2>
 					{ __( 'Button Font', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: buttonLoadGoogleFonts,
-							label: 'buttonLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: buttonFontFamily,
-							label: 'buttonFontFamily',
-						} }
-						fontWeight={ {
-							value: buttonFontWeight,
-							label: 'buttonFontWeight',
-						} }
-						fontSubset={ {
-							value: buttonFontSubset,
-							label: 'buttonFontSubset',
-						} }
-						fontSizeType={ {
-							value: buttonFontSizeType,
-							label: 'buttonFontSizeType',
-						} }
-						fontSize={ {
-							value: buttonFontSize,
-							label: 'buttonFontSize',
-						} }
-						fontSizeMobile={ {
-							value: buttonFontSizeMobile,
-							label: 'buttonFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: buttonFontSizeTablet,
-							label: 'buttonFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: buttonLineHeightType,
-							label: 'buttonLineHeightType',
-						} }
-						lineHeight={ {
-							value: buttonLineHeight,
-							label: 'buttonLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: buttonLineHeightMobile,
-							label: 'buttonLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: buttonLineHeightTablet,
-							label: 'buttonLineHeightTablet',
-						} }
-					/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: buttonLoadGoogleFonts,
+						label: 'buttonLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: buttonFontFamily,
+						label: 'buttonFontFamily',
+					} }
+					fontWeight={ {
+						value: buttonFontWeight,
+						label: 'buttonFontWeight',
+					} }
+					fontSubset={ {
+						value: buttonFontSubset,
+						label: 'buttonFontSubset',
+					} }
+					fontSizeType={ {
+						value: buttonFontSizeType,
+						label: 'buttonFontSizeType',
+					} }
+					fontSize={ {
+						value: buttonFontSize,
+						label: 'buttonFontSize',
+					} }
+					fontSizeMobile={ {
+						value: buttonFontSizeMobile,
+						label: 'buttonFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: buttonFontSizeTablet,
+						label: 'buttonFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: buttonLineHeightType,
+						label: 'buttonLineHeightType',
+					} }
+					lineHeight={ {
+						value: buttonLineHeight,
+						label: 'buttonLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: buttonLineHeightMobile,
+						label: 'buttonLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: buttonLineHeightTablet,
+						label: 'buttonLineHeightTablet',
+					} }
+				/>
 				<hr className="uagb-editor__separator" />
 				{ btnBorderSetting() }
 				<hr className="uagb-editor__separator" />
@@ -1227,7 +1227,7 @@ const Settings = ( props ) => {
 						if ( 'normal' === tabName.name ) {
 							tabout = buttonNormalSettings();
 						} else {
-							tabout  = buttonHoverSettings();
+							tabout = buttonHoverSettings();
 						}
 						return <div>{ tabout }</div>;
 					} }
@@ -1373,62 +1373,62 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: radioCheckLoadGoogleFonts,
-									label: 'radioCheckLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: radioCheckFontFamily,
-									label: 'radioCheckFontFamily',
-								} }
-								fontWeight={ {
-									value: radioCheckFontWeight,
-									label: 'radioCheckFontWeight',
-								} }
-								fontSubset={ {
-									value: radioCheckFontSubset,
-									label: 'radioCheckFontSubset',
-								} }
-								fontSizeType={ {
-									value: radioCheckFontSizeType,
-									label: 'radioCheckFontSizeType',
-								} }
-								fontSize={ {
-									value: radioCheckFontSize,
-									label: 'radioCheckFontSize',
-								} }
-								fontSizeMobile={ {
-									value: radioCheckFontSizeMobile,
-									label: 'radioCheckFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: radioCheckFontSizeTablet,
-									label: 'radioCheckFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: radioCheckLineHeightType,
-									label: 'radioCheckLineHeightType',
-								} }
-								lineHeight={ {
-									value: radioCheckLineHeight,
-									label: 'radioCheckLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: radioCheckLineHeightMobile,
-									label: 'radioCheckLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: radioCheckLineHeightTablet,
-									label: 'radioCheckLineHeightTablet',
-								} }
-							/>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: radioCheckLoadGoogleFonts,
+								label: 'radioCheckLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: radioCheckFontFamily,
+								label: 'radioCheckFontFamily',
+							} }
+							fontWeight={ {
+								value: radioCheckFontWeight,
+								label: 'radioCheckFontWeight',
+							} }
+							fontSubset={ {
+								value: radioCheckFontSubset,
+								label: 'radioCheckFontSubset',
+							} }
+							fontSizeType={ {
+								value: radioCheckFontSizeType,
+								label: 'radioCheckFontSizeType',
+							} }
+							fontSize={ {
+								value: radioCheckFontSize,
+								label: 'radioCheckFontSize',
+							} }
+							fontSizeMobile={ {
+								value: radioCheckFontSizeMobile,
+								label: 'radioCheckFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: radioCheckFontSizeTablet,
+								label: 'radioCheckFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: radioCheckLineHeightType,
+								label: 'radioCheckLineHeightType',
+							} }
+							lineHeight={ {
+								value: radioCheckLineHeight,
+								label: 'radioCheckLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: radioCheckLineHeightMobile,
+								label: 'radioCheckLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: radioCheckLineHeightTablet,
+								label: 'radioCheckLineHeightTablet',
+							} }
+						/>
 						<hr className="uagb-editor__separator" />
 						<p className="uagb-setting-label">
 							{ __(
@@ -1650,59 +1650,59 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-					<TypographyControl
-						label={ __( 'Typography' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: validationMsgLoadGoogleFonts,
-							label: 'validationMsgLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: validationMsgFontFamily,
-							label: 'validationMsgFontFamily',
-						} }
-						fontWeight={ {
-							value: validationMsgFontWeight,
-							label: 'validationMsgFontWeight',
-						} }
-						fontSubset={ {
-							value: validationMsgFontSubset,
-							label: 'validationMsgFontSubset',
-						} }
-						fontSizeType={ {
-							value: validationMsgFontSizeType,
-							label: 'validationMsgFontSizeType',
-						} }
-						fontSize={ {
-							value: validationMsgFontSize,
-							label: 'validationMsgFontSize',
-						} }
-						fontSizeMobile={ {
-							value: validationMsgFontSizeMobile,
-							label: 'validationMsgFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: validationMsgFontSizeTablet,
-							label: 'validationMsgFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: validationMsgLineHeightType,
-							label: 'validationMsgLineHeightType',
-						} }
-						lineHeight={ {
-							value: validationMsgLineHeight,
-							label: 'validationMsgLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: validationMsgLineHeightMobile,
-							label: 'validationMsgLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: validationMsgLineHeightTablet,
-							label: 'validationMsgLineHeightTablet',
-						} }
-					/>
+				<TypographyControl
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: validationMsgLoadGoogleFonts,
+						label: 'validationMsgLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: validationMsgFontFamily,
+						label: 'validationMsgFontFamily',
+					} }
+					fontWeight={ {
+						value: validationMsgFontWeight,
+						label: 'validationMsgFontWeight',
+					} }
+					fontSubset={ {
+						value: validationMsgFontSubset,
+						label: 'validationMsgFontSubset',
+					} }
+					fontSizeType={ {
+						value: validationMsgFontSizeType,
+						label: 'validationMsgFontSizeType',
+					} }
+					fontSize={ {
+						value: validationMsgFontSize,
+						label: 'validationMsgFontSize',
+					} }
+					fontSizeMobile={ {
+						value: validationMsgFontSizeMobile,
+						label: 'validationMsgFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: validationMsgFontSizeTablet,
+						label: 'validationMsgFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: validationMsgLineHeightType,
+						label: 'validationMsgLineHeightType',
+					} }
+					lineHeight={ {
+						value: validationMsgLineHeight,
+						label: 'validationMsgLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: validationMsgLineHeightMobile,
+						label: 'validationMsgLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: validationMsgLineHeightTablet,
+						label: 'validationMsgLineHeightTablet',
+					} }
+				/>
 				<ToggleControl
 					label={ __(
 						'Advanced Settings',
@@ -1922,59 +1922,59 @@ const Settings = ( props ) => {
 					max={ 200 }
 					allowReset
 				/>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: msgLoadGoogleFonts,
-							label: 'msgLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: msgFontFamily,
-							label: 'msgFontFamily',
-						} }
-						fontWeight={ {
-							value: msgFontWeight,
-							label: 'msgFontWeight',
-						} }
-						fontSubset={ {
-							value: msgFontSubset,
-							label: 'msgFontSubset',
-						} }
-						fontSizeType={ {
-							value: msgFontSizeType,
-							label: 'msgFontSizeType',
-						} }
-						fontSize={ { value: msgFontSize, label: 'msgFontSize' } }
-						fontSizeMobile={ {
-							value: msgFontSizeMobile,
-							label: 'msgFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: msgFontSizeTablet,
-							label: 'msgFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: msgLineHeightType,
-							label: 'msgLineHeightType',
-						} }
-						lineHeight={ {
-							value: msgLineHeight,
-							label: 'msgLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: msgLineHeightMobile,
-							label: 'msgLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: msgLineHeightTablet,
-							label: 'msgLineHeightTablet',
-						} }
-					/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: msgLoadGoogleFonts,
+						label: 'msgLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: msgFontFamily,
+						label: 'msgFontFamily',
+					} }
+					fontWeight={ {
+						value: msgFontWeight,
+						label: 'msgFontWeight',
+					} }
+					fontSubset={ {
+						value: msgFontSubset,
+						label: 'msgFontSubset',
+					} }
+					fontSizeType={ {
+						value: msgFontSizeType,
+						label: 'msgFontSizeType',
+					} }
+					fontSize={ { value: msgFontSize, label: 'msgFontSize' } }
+					fontSizeMobile={ {
+						value: msgFontSizeMobile,
+						label: 'msgFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: msgFontSizeTablet,
+						label: 'msgFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: msgLineHeightType,
+						label: 'msgLineHeightType',
+					} }
+					lineHeight={ {
+						value: msgLineHeight,
+						label: 'msgLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: msgLineHeightMobile,
+						label: 'msgLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: msgLineHeightTablet,
+						label: 'msgLineHeightTablet',
+					} }
+				/>
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __(
@@ -2001,62 +2001,62 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-					<TypographyControl
-						label={ __(
-							'Success Message Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: successMsgLoadGoogleFonts,
-							label: 'successMsgLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: successMsgFontFamily,
-							label: 'successMsgFontFamily',
-						} }
-						fontWeight={ {
-							value: successMsgFontWeight,
-							label: 'successMsgFontWeight',
-						} }
-						fontSubset={ {
-							value: successMsgFontSubset,
-							label: 'successMsgFontSubset',
-						} }
-						fontSizeType={ {
-							value: successMsgFontSizeType,
-							label: 'successMsgFontSizeType',
-						} }
-						fontSize={ {
-							value: successMsgFontSize,
-							label: 'successMsgFontSize',
-						} }
-						fontSizeMobile={ {
-							value: successMsgFontSizeMobile,
-							label: 'successMsgFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: successMsgFontSizeTablet,
-							label: 'successMsgFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: successMsgLineHeightType,
-							label: 'successMsgLineHeightType',
-						} }
-						lineHeight={ {
-							value: successMsgLineHeight,
-							label: 'successMsgLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: successMsgLineHeightMobile,
-							label: 'successMsgLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: successMsgLineHeightTablet,
-							label: 'successMsgLineHeightTablet',
-						} }
-					/>
+				<TypographyControl
+					label={ __(
+						'Success Message Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: successMsgLoadGoogleFonts,
+						label: 'successMsgLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: successMsgFontFamily,
+						label: 'successMsgFontFamily',
+					} }
+					fontWeight={ {
+						value: successMsgFontWeight,
+						label: 'successMsgFontWeight',
+					} }
+					fontSubset={ {
+						value: successMsgFontSubset,
+						label: 'successMsgFontSubset',
+					} }
+					fontSizeType={ {
+						value: successMsgFontSizeType,
+						label: 'successMsgFontSizeType',
+					} }
+					fontSize={ {
+						value: successMsgFontSize,
+						label: 'successMsgFontSize',
+					} }
+					fontSizeMobile={ {
+						value: successMsgFontSizeMobile,
+						label: 'successMsgFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: successMsgFontSizeTablet,
+						label: 'successMsgFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: successMsgLineHeightType,
+						label: 'successMsgLineHeightType',
+					} }
+					lineHeight={ {
+						value: successMsgLineHeight,
+						label: 'successMsgLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: successMsgLineHeightMobile,
+						label: 'successMsgLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: successMsgLineHeightTablet,
+						label: 'successMsgLineHeightTablet',
+					} }
+				/>
 			</PanelBody>
 		);
 	};
@@ -2085,24 +2085,24 @@ const Settings = ( props ) => {
 	};
 
 	return (
-			<Suspense fallback={ lazyLoader() }>
-				{ blockControls() }
-				<InspectorControls>
-					{ fieldSettings() }
-					{ fieldBorderSetting() }
-					{ typographySettings() }
-					{ radioCheckSetting() }
-					{ btnSetting() }
-					{ msgSettings() }
-					{ spacingSetting() }
-				</InspectorControls>
-				{loadInputGoogleFonts}
-				{loadButtonGoogleFonts}
-				{loadLabelGoogleFonts}
-				{loadRadioGoogleFonts}
-				{loadValidationGoogleFonts}
-				{loadMsgGoogleFonts}
-			</Suspense>
+		<Suspense fallback={ lazyLoader() }>
+			{ blockControls() }
+			<InspectorControls>
+				{ fieldSettings() }
+				{ fieldBorderSetting() }
+				{ typographySettings() }
+				{ radioCheckSetting() }
+				{ btnSetting() }
+				{ msgSettings() }
+				{ spacingSetting() }
+			</InspectorControls>
+			{ loadInputGoogleFonts }
+			{ loadButtonGoogleFonts }
+			{ loadLabelGoogleFonts }
+			{ loadRadioGoogleFonts }
+			{ loadValidationGoogleFonts }
+			{ loadMsgGoogleFonts }
+		</Suspense>
 	);
 };
 export default React.memo( Settings );

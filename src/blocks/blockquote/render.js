@@ -1,21 +1,20 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import Description from './components/Description';
 import AuthorImage from './components/AuthorImage';
 import AuthorText from './components/AuthorText';
 import TweetButtonCTA from './components/TweetButtonCTA';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 
@@ -66,41 +65,37 @@ const Render = ( props ) => {
 						</div>
 					) }
 					<div className="uagb-blockquote__content-wrap">
-							{
-								<Description
-									attributes={ attributes }
-									setAttributes={ setAttributes }
-									props={ props }
-								/>
-							}
+						{
+							<Description
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								props={ props }
+							/>
+						}
 
-							<footer>
-								<div
-									className={ classnames(
-										'uagb-blockquote__author-wrap',
-										authorImage !== ''
-											? `uagb-blockquote__author-at-${ authorImgPosition }`
-											: ''
-									) }
-								>
-									{
-										<AuthorImage
-											attributes={ attributes }
-										/>
-									}
-									{
-										<AuthorText
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											props={ props }
-										/>
-									}
-								</div>
-								{ enableTweet && (
-									<TweetButtonCTA attributes={ attributes } />
+						<footer>
+							<div
+								className={ classnames(
+									'uagb-blockquote__author-wrap',
+									authorImage !== ''
+										? `uagb-blockquote__author-at-${ authorImgPosition }`
+										: ''
 								) }
-							</footer>
-						</div>
+							>
+								{ <AuthorImage attributes={ attributes } /> }
+								{
+									<AuthorText
+										attributes={ attributes }
+										setAttributes={ setAttributes }
+										props={ props }
+									/>
+								}
+							</div>
+							{ enableTweet && (
+								<TweetButtonCTA attributes={ attributes } />
+							) }
+						</footer>
+					</div>
 				</blockquote>
 			</div>
 		</div>

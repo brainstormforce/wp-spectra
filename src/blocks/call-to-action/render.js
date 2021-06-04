@@ -1,21 +1,20 @@
 import classnames from 'classnames';
-import React, {Suspense, useLayoutEffect} from 'react';
+import React, { Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import CtaPositionClasses from './classes';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CTA';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 
 	props = props.parentProps;
 	const { className, setAttributes, attributes } = props;
@@ -92,19 +91,19 @@ const Render = ( props ) => {
 					`uagb-block-${ block_id }`
 				) }
 			>
-					{ ctaType == 'all' && (
-						<>
-							<a
-								href="javascript:void(0)"
-								className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
-								rel="noopener noreferrer"
-							>
-								{ ' ' }
-							</a>
-							{ output() }
-						</>
-					) }
-					{ ctaType !== 'all' && output() }
+				{ ctaType == 'all' && (
+					<>
+						<a
+							href="javascript:void(0)"
+							className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
+							rel="noopener noreferrer"
+						>
+							{ ' ' }
+						</a>
+						{ output() }
+					</>
+				) }
+				{ ctaType !== 'all' && output() }
 			</div>
 		</Suspense>
 	);

@@ -65,5 +65,5 @@ const Render = ( props ) => {
 			{ descText }
 		</div>
 	);
-}
+};
 export default React.memo( Render );

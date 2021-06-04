@@ -56,43 +56,42 @@ export default function save( props ) {
 	);
 
 	const output = (
-			<div
-				className={ classnames(
-					'uagb-cta__content-wrap',
-					...CtaPositionClasses( props.attributes )
-				) }
-			>
-				<div className="uagb-cta__left-right-wrap">
-					{ ctaPosition == 'left' && isCta }
-					<div className="uagb-cta__content">
-						{ ctaPosition == 'above-title' && (
-							<>
-								{ isCta }
-								{ titleText }
-								{ desc }
-							</>
-						) }
+		<div
+			className={ classnames(
+				'uagb-cta__content-wrap',
+				...CtaPositionClasses( props.attributes )
+			) }
+		>
+			<div className="uagb-cta__left-right-wrap">
+				{ ctaPosition == 'left' && isCta }
+				<div className="uagb-cta__content">
+					{ ctaPosition == 'above-title' && (
+						<>
+							{ isCta }
+							{ titleText }
+							{ desc }
+						</>
+					) }
 
-						{ ctaPosition == 'below-title' && (
-							<>
-								{ titleText }
-								{ desc }
-								{ isCta }
-							</>
-						) }
+					{ ctaPosition == 'below-title' && (
+						<>
+							{ titleText }
+							{ desc }
+							{ isCta }
+						</>
+					) }
 
-						{ ( ctaPosition == 'left' ||
-							ctaPosition == 'right' ) && (
-							<>
-								{ titleText }
-								{ desc }
-							</>
-						) }
-					</div>
-
-					{ ctaPosition == 'right' && isCta }
+					{ ( ctaPosition == 'left' || ctaPosition == 'right' ) && (
+						<>
+							{ titleText }
+							{ desc }
+						</>
+					) }
 				</div>
+
+				{ ctaPosition == 'right' && isCta }
 			</div>
+		</div>
 	);
 
 	let target = '';

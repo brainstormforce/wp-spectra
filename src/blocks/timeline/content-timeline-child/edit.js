@@ -2,7 +2,6 @@
  * BLOCK: Content Timeline child.
  */
 
-import { __ } from '@wordpress/i18n';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 

@@ -1,8 +1,8 @@
-import {useLayoutEffect} from "react";
+import { useLayoutEffect } from 'react';
 
-const { decodeEntities } = wp.htmlEntities
+const { decodeEntities } = wp.htmlEntities;
 import { __ } from '@wordpress/i18n';
-import styles from "./editor.lazy.scss";
+import styles from './editor.lazy.scss';
 
 export const PostImage = (props) =>  {
 
@@ -36,9 +36,9 @@ export const PostImage = (props) =>  {
 					</a>
 				</div>
 			)
-		} else {
+		} 
 
 			return null
-		}
+		
 	}
-
+};

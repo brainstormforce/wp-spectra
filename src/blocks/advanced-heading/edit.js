@@ -6,10 +6,14 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
-	import( /* webpackChunkName: "chunks/advanced-heading/settings" */ './settings' )
+	import(
+		/* webpackChunkName: "chunks/advanced-heading/settings" */ './settings'
+	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/advanced-heading/render" */ './render' )
+	import(
+		/* webpackChunkName: "chunks/advanced-heading/render" */ './render'
+	)
 );
 
 //  Import CSS.
@@ -64,7 +68,7 @@ const applyWithSelect = withSelect( ( select ) => {
 		: null;
 
 	return {
-		deviceType: deviceType,
+		deviceType,
 	};
 } );
 export default compose( applyWithSelect )( UAGBAdvancedHeading );

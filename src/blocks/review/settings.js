@@ -31,18 +31,17 @@ let imageSizeOptions = [
 	{ value: 'medium', label: __( 'Medium', 'ultimate-addons-for-gutenberg' ) },
 	{ value: 'full', label: __( 'Large', 'ultimate-addons-for-gutenberg' ) },
 ];
-export const removeFromArray = (arr, removedElems) =>
-arr.filter((a) =>
-	Array.isArray(removedElems) ? !removedElems.includes(a) : a !== removedElems
-);
+export const removeFromArray = ( arr, removedElems ) =>
+	arr.filter( ( a ) =>
+		Array.isArray( removedElems )
+			? ! removedElems.includes( a )
+			: a !== removedElems
+	);
 const Settings = ( props ) => {
 	props = props.parentProps;
 	// Setup the attributes
-	const {
-		attributes,
-		setAttributes,
-	} = props;
-	
+	const { attributes, setAttributes } = props;
+
 	const {
 		enableSchema,
 		itemType,
@@ -1279,5 +1278,5 @@ const Settings = ( props ) => {
 			{ loadContentGoogleFonts }
 		</Suspense>
 	);
-}
+};
 export default React.memo( Settings );
