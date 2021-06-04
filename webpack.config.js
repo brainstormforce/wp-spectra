@@ -1,13 +1,11 @@
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
-const LodashModuleReplacementPlugin = require( 'lodash-webpack-plugin' );
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	...defaultConfig,
 	plugins: [
 		...defaultConfig.plugins,
-		new LodashModuleReplacementPlugin(),
 		// new BundleAnalyzerPlugin,
 	],
 	entry: {
