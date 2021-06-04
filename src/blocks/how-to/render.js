@@ -3,10 +3,21 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import {useLayoutEffect} from "react";
+import styles from "./editor.lazy.scss";
 
 const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 
 	// Setup the attributes

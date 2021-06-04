@@ -6,7 +6,6 @@
 import {PostImage} from "./edit"
 import save from "./save"
 import UAGB_Block_Icons from "@Controls/block-icons"
-import "./editor.scss"
 // Components
 import { __ } from '@wordpress/i18n';
 

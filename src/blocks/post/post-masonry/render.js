@@ -9,8 +9,9 @@ import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Placeholder, Button, Disabled, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import React, { lazy, Suspense } from 'react';
+import React, {lazy, Suspense, useLayoutEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import styles from ".././editor.lazy.scss";
 
 const Blog = lazy( () =>
 	import(
@@ -19,6 +20,15 @@ const Blog = lazy( () =>
 );
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;

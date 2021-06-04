@@ -4,11 +4,21 @@
 
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import React, { useMemo } from 'react';
+import React, {useLayoutEffect, useMemo} from 'react';
+import styles from "./editor.lazy.scss";
 
 const ALLOWED_BLOCKS = [ 'uagb/social-share-child' ];
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 
 	const { attributes, deviceType } = props;

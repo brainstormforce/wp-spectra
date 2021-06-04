@@ -1,9 +1,18 @@
 import { __ } from '@wordpress/i18n';
 import classnames from "classnames"
+import {useLayoutEffect} from "react";
+import styles from "./editor.lazy.scss";
 
 export const PostButton = (props) =>  {
-	
-	
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 		const { attributes , post } = props
 
 		let target = ( attributes.newTab ) ? "_blank" : "_self"
@@ -13,7 +22,7 @@ export const PostButton = (props) =>  {
 			let cta_text = ( attributes.ctaText ) ? attributes.ctaText : __( "Read More" )
 
 			return (
-				<div className='uagb-post__text'> 
+				<div className='uagb-post__text'>
 					<div className={classnames('uagb-post__cta', ( attributes.inheritFromTheme ) ? 'wp-block-button' : null)}>
 					<a
 						className={classnames(

@@ -8,7 +8,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 
 //  Import CSS.
 import '.././style.scss';
-import '.././editor.scss';
 
 // Components
 import { __ } from '@wordpress/i18n';

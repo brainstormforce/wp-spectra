@@ -1,14 +1,13 @@
 .uagb-post__title {
-    margin-top: 0;
-    margin-bottom: 15px;
     margin-top: 15px;
+    margin-bottom: 15px;
     word-break: break-word;
 }
 .uagb-post__title a {
-    color: inherit;
     box-shadow: none;
-    transition: .3s ease;
+    color: inherit;
     text-decoration: none;
+    transition: .3s ease;
 
     &:hover {
         text-decoration: none;
@@ -32,10 +31,10 @@
 .uagb-post__image-position-background {
 
 	.uagb-post__text {
-		opacity: 1;
 		position: relative;
 		z-index: 10;
-		overflow: hidden;
 		width: 100%;
+		opacity: 1;
+		overflow: hidden;
     }
 }

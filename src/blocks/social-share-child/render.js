@@ -5,8 +5,19 @@
 // Import classes
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
+import styles from "./editor.lazy.scss";
+import {useLayoutEffect} from "react";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	props = props.parentProps;
 
 	const { attributes } = props;

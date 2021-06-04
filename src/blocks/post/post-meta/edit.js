@@ -1,13 +1,24 @@
+import {useLayoutEffect} from "react";
+import styles from "./editor.lazy.scss";
+
 const { dateI18n, format, __experimentalGetSettings } = wp.date
 
 export const PostMeta = (props) =>  {
-		
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 		const { post, attributes, categoriesList } = props
 
 		const dateFormat = __experimentalGetSettings().formats.date
 
 		var list = categoriesList;
-		var cat = post.categories;	
+		var cat = post.categories;
 		var categoriesName = [];
 
 		if(list !== undefined && cat !== undefined){
@@ -19,7 +30,7 @@ export const PostMeta = (props) =>  {
 				}
 			}
 		}
-	
+
 
 		return (
 			<div className=' uagb-post__text '>
@@ -45,7 +56,7 @@ export const PostMeta = (props) =>  {
 					</span>
 				}
 
-				{ attributes.displayPostTaxonomy && 
+				{ attributes.displayPostTaxonomy &&
 					<span className='uagb-post__taxonomy' >
 						<span className="dashicons-tag dashicons"></span>
 						<div dangerouslySetInnerHTML={{__html:categoriesName.join(", ")}}></div>

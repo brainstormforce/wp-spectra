@@ -1,7 +1,7 @@
 /**
  * BLOCK: Post Grid - Editor Render.
  */
-import React, { lazy, Suspense } from 'react';
+import React, {lazy, Suspense, useLayoutEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Blog = lazy( () =>
@@ -21,8 +21,18 @@ import { createBlock } from '@wordpress/blocks';
 import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
+import styles from ".././editor.lazy.scss";
 
 const Render = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const { isEditing } = props.state;
 
 	// Caching all Props.

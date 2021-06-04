@@ -4,7 +4,6 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import './style.scss';
-import './editor.scss';
 import transform from './transform';
 import attributes from './attributes';
 import edit from './edit';

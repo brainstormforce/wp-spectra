@@ -5,7 +5,6 @@
 // Import block dependencies and components.
 import UAGB_Block_Icons from '@Controls/block-icons';
 import edit from './edit';
-import './editor.scss';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 

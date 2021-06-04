@@ -2,6 +2,19 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const wp_rules = defaultConfig.module.rules.filter(function(item){
+
+	if( String(item.test) === String(/\.jsx?$/) ) {
+		return true;
+	}
+
+	if(String(item.test) === String(/\.(sc|sa)ss$/)) {
+		item['exclude'] = [/node_modules/, /editor/];
+		return true;
+	}
+
+});
+
 module.exports = {
 	...defaultConfig,
 	plugins: [
@@ -23,24 +36,21 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			defaultConfig.module.rules[0],
+			...wp_rules,
 			{
 				test: /\.(scss|css)$/,
 				exclude: [/node_modules/, /style/],
 				use: [
 					{
 						loader: 'style-loader',
-						options: { injectType: 'lazyStyleTag' },
+						options: {
+							injectType: 'lazySingletonStyleTag',
+							attributes: { id: 'uagb-editor-styles' }
+						},
 					},
 					'css-loader',
 					'sass-loader',
 				],
-			},
-			{
-				...defaultConfig.module.rules[
-				defaultConfig.module.rules.length - 1
-					],
-				exclude: [/node_modules/, /editor/],
 			},
 		],
 	},

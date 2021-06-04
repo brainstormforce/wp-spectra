@@ -4,7 +4,7 @@ import {
 	getPostLayoutConfig,
 	InnerBlockLayoutContextProvider,
 } from '../function';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import Blog from './blog';
 import { __ } from '@wordpress/i18n';
 
@@ -13,8 +13,18 @@ import { createBlock } from '@wordpress/blocks';
 import { Placeholder, Button, Tip, Disabled } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
+import styles from ".././editor.lazy.scss";
 
 const Render = ( props ) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
+
 	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;
