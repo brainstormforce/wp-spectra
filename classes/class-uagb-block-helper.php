@@ -184,38 +184,38 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 
 			$selectors = array(
-				' .uagb-how-to-main-wrap' => array(
+				'.uagb-how-to-main-wrap'              => array(
 					'text-align' => $attr['overallAlignment'],
 				),
-				' .uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
+				'.uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap .uagb-howto__source-wrap' => array(
+				'.uagb-how-to-main-wrap .uagb-howto__source-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
+				'.uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
+				'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
+				' .uagb-how-to-tools-child__wrapper:last-child' => array(
 					'margin-bottom' => '0px',
 				),
 
-				' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' => array(
+				'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-howto-steps__wrap .wp-block-uagb-info-box' => array(
+				' .wp-block-uagb-info-box'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 				),
 
-				' .uagb-howto-steps__wrap .wp-block-uagb-info-box:last-child' => array(
+				' .wp-block-uagb-info-box:last-child' => array(
 					'margin-bottom' => '0px',
 				),
 
@@ -231,23 +231,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['headingColor'],
 				),
 
-				' p.uagb-howto-desc-text' => array(
+				' p.uagb-howto-desc-text'             => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap p' => array(
+				' span.uagb-howto__time-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap p' => array(
+				' span.uagb-howto__cost-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
+				' span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
+				' span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
@@ -255,7 +255,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				'  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+				' .uagb-howto-req-materials-text'     => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
@@ -264,11 +264,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$selectors[' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper'] = array(
+			$selectors[' .uagb-how-to-tools-child__wrapper'] = array(
 				'color' => $attr['subHeadingColor'],
 			);
 
-			$selectors[' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper'] = array(
+			$selectors[' .uagb-how-to-materials-child__wrapper'] = array(
 				'color' => $attr['subHeadingColor'],
 			);
 
@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_image_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 			$t_image_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-			$selectors[' .uagb-social-share__wrap .block-editor-inner-blocks'] = array(
+			$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 				'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 			);
 
@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-right' => 0,
 			);
 
-			$selectors[' .uagb-social-share__wrap'] = array(
+			$selectors['.uagb-social-share__outer-wrap'] = array(
 				'justify-content'   => $alignment,
 				'-webkit-box-pack'  => $alignment,
 				'-ms-flex-pack'     => $alignment,
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$selectors[' .uagb-social-share__wrap'] = array(
+					$selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1928,7 +1928,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$t_selectors[' .uagb-social-share__wrap'] = array(
+					$t_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1947,7 +1947,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$m_selectors[' .uagb-social-share__wrap'] = array(
+					$m_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,

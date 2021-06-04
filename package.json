@@ -23,8 +23,6 @@
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "@wordpress/icons": "^2.10.1",
     "classnames": "^2.2.6",
-    "lodash-webpack-plugin": "^0.11.6",
-    "memize": "^1.0.5",
     "prop-types": "^15.6.2",
     "re-resizable": "^4.7.1",
     "react-color": "^2.18.0",
@@ -35,13 +33,12 @@
     "react-masonry-component": "^6.2.1",
     "react-select": "^2.2.0",
     "react-slick": "^0.24.0",
-    "react-transition-group": "^2.4.0",
-    "striptags": "^3.1.1"
+    "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@wordpress/eslint-plugin": "^7.1.0",
-    "@wordpress/scripts": "^12.1.1",
+    "@wordpress/scripts": "^16.1.1",
     "install": "^0.13.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^6.0.6",
@@ -55,6 +52,7 @@
     "format:js": "wp-scripts format-js",
     "lint:js": "wp-scripts lint-js",
     "lint:js:fix": "wp-scripts lint-js --fix",
+    "lint:js:fix:tmp": "wp-scripts lint-js ./src/blocks/buttons-child --fix",
     "lint:css": "wp-scripts lint-style",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "check-engines": "wp-scripts check-engines",

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
@@ -672,7 +672,7 @@ const Settings = ( props ) => {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'General' ) } initialOpen={ true }>
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<RangeControl

@@ -1,7 +1,7 @@
 import { select, subscribe } from '@wordpress/data';
 import { Component } from 'react';
 import { __ } from '@wordpress/i18n';
-const striptags = require( 'striptags' );
+// const striptags = require( 'striptags' );
 
 class TableOfContents extends Component {
 	constructor( props ) {
@@ -80,7 +80,7 @@ class TableOfContents extends Component {
 						heading[ contentAnchor ] =
 							key +
 							'-' +
-							striptags( heading[ contentName ] )
+							strip_tags( heading[ contentName ] )
 								.toString()
 								.toLowerCase()
 								.replace( /( |<.+?>|&nbsp;)/g, '-' );

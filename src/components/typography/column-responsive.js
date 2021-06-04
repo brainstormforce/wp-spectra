@@ -3,22 +3,21 @@
  */
  import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	ButtonGroup,
 	Button,
 	Dashicon,
-} = wp.components
+} from '@wordpress/components'
 
 // Extend component
-const { Fragment } = wp.element
-const { useSelect, useDispatch } = wp.data;
-import map from 'lodash/map';
+import { Fragment } from '@wordpress/element'
+import { useSelect, useDispatch } from '@wordpress/data';
 
 /**
  * Build the Measure controls
  * @returns {object} Measure settings.
  */
-export default function Columnresponsive ( props ) {
+export default function ColumnResponsive ( props ) {
 	const deviceType = useSelect( ( select ) => {
 		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
     }, [] );
@@ -60,7 +59,7 @@ export default function Columnresponsive ( props ) {
 		<div className={ 'uag-typography-range-options' }>
 			<div className="uagb-size-type-field-tabs">
 				<ButtonGroup className="components-tab-panel__tabs" aria-label={ __( 'Device', 'ultimate-addons-for-gutenberg' ) }>
-					{ map( devices, ( { name, key, title, itemClass } ) => (
+					{ devices.map( ( { name, key, title, itemClass } ) => (
 						<Button
 							key={ key }
 							className={ `components-button components-tab-panel__tabs-item ${ itemClass }${ name === deviceType ? ' active-tab' : '' }` }

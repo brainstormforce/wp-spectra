@@ -1,19 +1,19 @@
 /**
  * WordPress dependencies
  */
- const {
+ import {
  	Component,
  	Fragment,
- } = wp.element
+ } from '@wordpress/element'
 
- const {
+ import {
 	BaseControl,
 	Button,
 	ButtonGroup,
 	PanelRow,
 	RangeControl,
 	Tooltip,
-} = wp.components
+} from '@wordpress/components'
 
 import { __ } from '@wordpress/i18n';
 

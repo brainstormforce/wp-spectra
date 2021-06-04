@@ -3,17 +3,13 @@
  */
  import { __ } from '@wordpress/i18n';
 
-const {
+ import {
 	SelectControl
-} = wp.components
-
-// Extend component
-const { Component, Fragment } = wp.element
+} from '@wordpress/components'
 
 /**
  * Internal dependencies
  */
-import map from "lodash/map"
 import googleFonts from "./fonts"
 import Select from "react-select"
 

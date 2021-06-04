@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Columnresponsive from '@Components/typography/column-responsive';
+import ColumnResponsive from '@Components/typography/column-responsive';
 
 import {
 	AlignmentToolbar,
@@ -1333,7 +1333,7 @@ const Settings = ( props ) => {
 						max={ 50 }
 						allowReset
 					/>
-					<Columnresponsive />
+					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
 							<RangeControl
