@@ -66,14 +66,16 @@ class Range extends Component {
         return unit == 'em' ? .001 : (this.props.step || 1)
     }
 
+   
+
     render() {
         const { unit, 
             label = __( 'Margin', 'ultimate-addons-for-gutenberg' ),
             disabled = false,
             type = 'margin',
-            value
+            value,
          } = this.props
-    
+
         return (
             <div className={'uagb-field-range uagb-field '}>
                {(label || unit ) &&
@@ -97,7 +99,7 @@ class Range extends Component {
                 {label &&
                  <p className={ 'components-uagb-dimensions-control__label' }>{ __( label, 'ultimate-addons-for-gutenberg' ) }</p>
                 }
-                { ( value || value === 1 ) &&
+                { ( !isNaN( this.props.value ) ) ?
                     (<Button
                         className="uagb-spacing-reset"
                         type="button"
@@ -106,10 +108,7 @@ class Range extends Component {
                         isSecondary
                     >
                         <Dashicon icon="image-rotate" />
-                    </Button>) 
-                }
-                        
-                { ( !value ) && 
+                    </Button>) :
                     (<Button
                         className="uagb-spacing-reset"
                         type="button"
@@ -121,6 +120,7 @@ class Range extends Component {
                         <Dashicon icon="image-rotate" />
                     </Button>)
                 }
+                        
                 </div>
                 <div className="uagb-field-child">
                     <div className="uagb-input-range">

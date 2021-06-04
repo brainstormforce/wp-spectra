@@ -202,6 +202,16 @@ button.components-button.is-secondary {
 .components-button.is-primary:focus:not(:disabled){
     box-shadow:unset;
 }
+.components-button.is-secondary:active:not(:disabled), .components-button.is-tertiary:active:not(:disabled){
+    background:#fff;
+    box-shadow: inset 0 0 0 1px #8f9395;
+}
+.components-button.is-primary{
+    background:#005a87;
+}
+.components-button.is-primary:hover:not(:disabled){
+    background:#005a87;
+}
 /* Box position */
 /* Image size */
 .uag-box-position-wrap {
@@ -215,4 +225,16 @@ label.uag-box-position-label {
 span.dashicon.dashicons.dashicons-image-rotate {
     height: 16px;
    font-size: 14px;
+}
+/* Color popup */
+.components-popover.uagb-popover-color.new-uagb-advanced-colors-pop .components-popover__content {
+    padding: 10px 10px 0;
+}
+
+.components-circular-option-picker {
+    padding: 2px 0 10px 5px;
+}
+
+.components-circular-option-picker .components-circular-option-picker__swatches{
+    margin-right:0px
 }

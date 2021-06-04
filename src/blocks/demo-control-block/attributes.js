@@ -152,6 +152,7 @@
 	},
 	contentVrPadding: {
 		type: "number",
+		default: 15
 	},
 	contentHrPadding: {
 		type: "number",

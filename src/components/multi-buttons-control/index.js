@@ -53,7 +53,7 @@ const NONE_OPTION = {
 	tooltip: __( 'None','ultimate-addons-for-gutenberg' ),
 };
 
-export default class OptionSelectorControl extends Component {
+export default class MultiButtonsControl extends Component {
 	render() {
 		const {
 			advancedMaxValue,

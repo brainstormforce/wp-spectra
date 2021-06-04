@@ -16,7 +16,7 @@ import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
 import DimensionsControl from '../../components/dimention-control';
 import Range from '../../components/range/Range.js';
 import GradientSettings from "../../components/gradient-settings"
-import OptionSelectorControl from '../../components/option-selector-control'
+import MultiButtonsControl from '../../components/multi-buttons-control'
 import BoxShadowControl from "../../components/box-shadow"
 
 // Import all of our Text Options requirements.
@@ -46,6 +46,7 @@ const {
 	ToggleControl,
 	BaseControl,
 	Button,
+	Dashicon
 } = wp.components
 
 const {
@@ -272,9 +273,7 @@ class UAGBInlineNoticeEdit extends Component {
 
 		if ( noticeDismiss ) {
 			image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
-		}
-
-		
+		}		
 
 		const inlineGeneralSettings = () => {
 			return (
@@ -341,7 +340,7 @@ class UAGBInlineNoticeEdit extends Component {
 						/>
 						</PanelBody>
 						<PanelBody title="Multi Buttons" initialOpen={false}>
-						<OptionSelectorControl
+						<MultiButtonsControl
 							label={ __( "Gap", 'ultimate-addons-for-gutenberg' ) }
 							currentOption={ columnGap }
 							options={ [
@@ -354,6 +353,16 @@ class UAGBInlineNoticeEdit extends Component {
 							] }
 							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
+						/>
+						<MultiButtonsControl
+							label={ __( "Alignment", 'ultimate-addons-for-gutenberg' ) }
+							currentOption={ noticeAlignment }
+							options={ [
+								{ value: "left", label: <Dashicon icon="editor-alignleft" />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "center", label: <Dashicon icon="editor-aligncenter" />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
+								{ value: "right", label: <Dashicon icon="editor-alignright" />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
+							] }
+							onChange={ ( noticeAlignment ) => setAttributes( { noticeAlignment } ) }
 						/>
 				</PanelBody>
 				<PanelBody title="Layout" initialOpen={false}>

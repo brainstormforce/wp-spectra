@@ -73,12 +73,6 @@ class BoxShadowControl extends Component {
             advancedControls = (
                 <div className="uagb-box-shadow-advanced">
                     <Fragment>
-                    {/* <p className="uagb-setting-label">{ boxShadowColor.label }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor.value }} ></span></span></p> */}
-                    {/* <ColorPalette
-                        value={ boxShadowColor.value }
-                        onChange={ ( colorValue ) => setAttributes( { boxShadowColor: colorValue } ) }
-                        allowReset
-                    /> */}
                     <AdvancedPopColorControl
                         label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
                         colorValue={ ( boxShadowColor.value ) }

@@ -1,7 +1,7 @@
 /**
  * BLOCK: UAGB - Columns Edit Class
  */
-import OptionSelectorControl from '../../components/option-selector-control'
+import OptionSelectorControl from '../../components/multi-buttons-control'
 
 // Import classes
 import classnames from "classnames"
