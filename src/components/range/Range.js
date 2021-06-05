@@ -1,150 +1,89 @@
-import './range.scss';
-import { Component } from '@wordpress/element';
-import { Button, Dashicon } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-
-class Range extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            current: '',
-        };
-        this.onChangeSize = this.onChangeSize.bind( this );
-    }
-
-    onChangeSize( value ) {
-        this.setSettings( { value: !value } );
-    }
-
-    _filterValue(type) {
-        const { value } = this.props
-        if (type == 'unit') {
-            return value ? (value.unit || 'px') : 'px'
-        } else {
-            return value
+ import {
+  Button, Dashicon, RangeControl, __experimentalNumberControl as NumberControl,
+ } from '@wordpress/components'
+ import { useState } from '@wordpress/element'
+ import { __ } from '@wordpress/i18n'
+ import './range.scss';
+ 
+ const isNumberControlSupported = !! NumberControl
+ 
+ const Range = props => {
+    const {
+        allowReset,
+        withInputField,
+        isShiftStepEnabled,
+        ...propsToPass
+    } = props
+ 
+    const [ value, setValue ] = useState( props.value === '' || isNaN( props.value ) ? '' : props.value )
+ 
+    const handleOnChange = value => {
+        setValue( value )
+        if ( ! isNaN( value ) ) {
+            const parsedValue = parseFloat( value )
+            if ( ! isNaN( parsedValue ) ) {
+                props.onChange( parsedValue )
+                return
+            }
         }
+        props.onChange( props.resetFallbackValue )
+    }
+ 
+    const handleOnReset = () => {
+        setValue( props.resetFallbackValue )
+        props.onChange( props.resetFallbackValue )
     }
 
-    setSettings(val, type) {
+    const initialPosition = props.initialPosition || props.placeholder || '';
 
-        const {
-            min,
-            max,
-            unit,
-            value,
-            onChange, 
-        } = this.props;
-
-        let newValue = {};
-
-        if (typeof value === 'object' && Object.keys(value).length > 0) {
-            newValue = JSON.parse(JSON.stringify(value));
-        }
-
-        if (unit && !newValue.hasOwnProperty('unit')) {
-            newValue.unit = 'px';
-        }
-
-        if ( type === 'unit' ) {
-            newValue.unit = val;
-        } else {
-            newValue = val;
-            newValue = min ? (newValue < min ? min : newValue) : (newValue < 0 ? 0 : newValue);
-            newValue = max ? (newValue > max ? max : newValue) : (newValue > 1000 ? 1000 : newValue);
-        }
-        onChange(newValue);
-        this.setState({ current: newValue });
-    }
-
-    _minMax(type) {
-        let unit = this._filterValue('unit')
-        return (this.props[type] && this.props[type] != 0) ? (unit == 'em' ? Math.round(this.props[type] / 16) : this.props[type]) : 0
-    }
-
-    _steps() {
-        let unit = this._filterValue('unit')
-        return unit == 'em' ? .001 : (this.props.step || 1)
-    }
-
-   
-
-    render() {
-        const { unit, 
-            label = __( 'Margin', 'ultimate-addons-for-gutenberg' ),
-            disabled = false,
-            type = 'margin',
-            value,
-         } = this.props
-
-        return (
-            <div className={'uagb-field-range uagb-field '}>
-               {(label || unit ) &&
-                    <div className="uagb-d-flex uagb-align-center uagb-mb-10">
-                        {unit &&
-                            <div className="uagb-unit-btn-group uagb-ml-auto">
-                                {(typeof unit == 'object' ? unit : ['px', 'em', '%']).map((value) => (
-                                    <button className={(this.props.value && value == this.props.value.unit) ? 'active' : ''}
-                                        onClick={() => {
-                                            this.setSettings(value, 'unit');
-                                        }}
-                                    >
-                                        {value}
-                                    </button>
-                                ))}
-                            </div>
-                        }
-                    </div>
-                }
-                <div className="components-uagb-dimensions-control__header">
-                {label &&
-                 <p className={ 'components-uagb-dimensions-control__label' }>{ __( label, 'ultimate-addons-for-gutenberg' ) }</p>
-                }
-                { ( !isNaN( this.props.value ) ) ?
-                    (<Button
-                        className="uagb-spacing-reset"
-                        type="button"
-                        onClick={ () => this.onChangeSize('no') }
-                        isSmall
-                        isSecondary
-                    >
-                        <Dashicon icon="image-rotate" />
-                    </Button>) :
-                    (<Button
-                        className="uagb-spacing-reset"
-                        type="button"
-                        onClick={ () => this.onChangeSize( 'no' ) }
-                        isSmall
-                        isSecondary
-                        disabled
-                    >
-                        <Dashicon icon="image-rotate" />
-                    </Button>)
-                }
-                        
-                </div>
-                <div className="uagb-field-child">
-                    <div className="uagb-input-range">
-                        <input
-                            type="range"
-                            min={this._minMax('min')}
-                            max={this._minMax('max')}
-                            value={this._filterValue()}
-                            step={this._steps()}
-                            disabled={disabled}
-                            onChange={e => this.setSettings(this._filterValue() == e.target.value ? '' : e.target.value, 'range')}
-                        />
-                        <input
-                            type="number"
-                            step={this._steps()}
-                            onChange={v => this.setSettings(v.target.value, 'range')}
-                            value={this._filterValue() + (this.props.suffix ? this.props.suffix : '')}
-                            disabled={disabled}
-                            {...(this.props.suffix && { disabled: true })}
-                        />
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
-export default Range
+    let disabled = ( allowReset && props.value != props.initialPosition ) ? false : true ;
+ 
+    return <div
+        className='uagb-range-control'>
+        <RangeControl
+            { ...propsToPass }
+            initialPosition={ props.initialPosition }
+            onChange={ handleOnChange }
+            withInputField={ false }
+            allowReset={ false }
+            max={ props.max }
+            min={ props.min }
+        />
+        <Button
+            className="uagb-spacing-reset"
+            disabled={ disabled }
+            isSecondary
+            isSmall
+            onClick={ handleOnReset }
+        >
+            <Dashicon icon="image-rotate" />
+        </Button>
+        { withInputField && isNumberControlSupported && (
+            <NumberControl
+                disabled={ props.disabled }
+                isShiftStepEnabled={ isShiftStepEnabled }
+                max={ props.max }
+                min={ props.min }
+                onChange={ handleOnChange }
+                value={ value }
+                placeholder={ props.placeholder !== null ? props.placeholder : initialPosition }
+            />
+        ) }
+     </div>
+ }
+ 
+ Range.defaultProps = {
+     label: __( 'Margin', 'ultimate-addons-for-gutenberg' ),
+     className: '',
+     allowReset: true,
+     withInputField: true,
+     isShiftStepEnabled: true,
+     max: Infinity,
+     min: -Infinity,
+     resetFallbackValue: '',
+     placeholder: null,
+     initialPosition: 0,
+     onChange: () => {},
+ }
+ 
+ export default Range
