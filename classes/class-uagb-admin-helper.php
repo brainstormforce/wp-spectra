@@ -275,7 +275,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			}
 
-			$combined_path = ABSPATH . 'wp-content/uploads/uag-plugin/custom-style-blocks.css';
+			$wp_upload_dir = wp_upload_dir( null, false );
+			$combined_path = ( $wp_upload_dir['basedir'] ) . '/uag-plugin/custom-style-blocks.css';
 			wp_delete_file( $combined_path );
 
 			$style = '';
