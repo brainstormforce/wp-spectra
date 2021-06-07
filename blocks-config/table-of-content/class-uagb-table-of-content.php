@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @access public
 		 *
 		 * @since 1.23.0
-		 * @param array     $parsed_block Parsed Block.
+		 * @param array $parsed_block Parsed Block.
 		 */
 		public function update_toc_title( $parsed_block ) {
 
@@ -63,8 +63,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$content = $parsed_block['innerHTML'];
 				$matches = array();
 
-				preg_match('/<div class=\"uagb-toc__title\">([^`]*?)<\/div>/', $content, $matches );
-				
+				preg_match( '/<div class=\"uagb-toc__title\">([^`]*?)<\/div>/', $content, $matches );
+
 				$title = $matches[1];
 
 				if ( ! isset( $parsed_block['attrs']['headingTitle'] ) && isset( $title ) ) {
