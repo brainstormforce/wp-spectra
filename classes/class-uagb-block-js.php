@@ -120,7 +120,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 					blockquote__tweet[0].addEventListener("click",function(){
 						var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . <?php $url; ?>. '")+"&text="+content+"&via="+("' . <?php $via; ?> . '"); 
+						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+content+"&via="+("<?php echo esc_html( $via ); ?>"); 
 						window.open( request_url ); 
 					});
 				}
@@ -162,9 +162,9 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						}
 						var  request_url ="";
 						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
-							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
+							request_url = social_url + encodeURIComponent( window.location.href ) + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
 						}else{
-							request_url = social_url + window.location.href;
+							request_url = social_url + encodeURIComponent( window.location.href );
 						}
 						window.open( request_url, target );
 					});
@@ -189,10 +189,15 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
 			$selector      = $base_selector . $id;
 
+			$attrs_needed_in_js = array(
+				'mappingHeaders' => $attr['mappingHeaders'],
+				'scrollToTop'    => $attr['scrollToTop'],
+			);
+
 			ob_start();
 			?>
 			jQuery( document ).ready(function() {
-				UAGBTableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+				UAGBTableOfContents._run( <?php echo wp_json_encode( $attrs_needed_in_js ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 			});
 			<?php
 			return ob_get_clean();

@@ -1,109 +1,107 @@
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 
-function TableOfContents( props ) {
-	const { mappingHeaders, headers } = props;
+function TableOfContents(props) {
+	const {mappingHeaders, headers} = props;
 
-	const makeHeaderArray = ( origHeaders ) => {
-		const arrays = [];
-
-		origHeaders
-			.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
-			.forEach( ( header ) => {
-				let last = arrays.length - 1;
-				if (
-					arrays.length === 0 ||
-					arrays[ last ][ 0 ].tag < header.tag
-				) {
-					arrays.push( [ header ] );
-				} else if ( arrays[ last ][ 0 ].tag === header.tag ) {
-					arrays[ last ].push( header );
-				} else {
-					while ( arrays[ last ][ 0 ].tag > header.tag ) {
-						if ( arrays.length > 1 ) {
-							arrays[ arrays.length - 2 ].push( arrays.pop() );
-							last = arrays.length - 1;
-						} else break;
-					}
-					if ( arrays[ last ][ 0 ].tag === header.tag ) {
-						arrays[ last ].push( header );
-					}
-				}
-			} );
-
-		while (
-			arrays.length > 1 &&
-			arrays[ arrays.length - 1 ][ 0 ].tag >
-				arrays[ arrays.length - 2 ][ 0 ].tag
-		) {
-			arrays[ arrays.length - 2 ].push( arrays.pop() );
-		}
-
-		return arrays[ 0 ];
-	};
-
-	const filterArray = ( origHeaders ) => {
-		const arrays = [];
-		headers.forEach( ( heading, key ) => {
-			if ( mappingHeaders[ heading.tag - 1 ] ) {
-				arrays.push( heading );
+	const filterArray = origHeaders => {
+		let arrays = [];
+		headers.forEach((heading, key) => {
+			if (mappingHeaders[heading.tag - 1]) {
+				arrays.push(heading);
 			}
-		} );
-		return makeHeaderArray( arrays );
+		});
+		return arrays;
 	};
 
-	let counter = 0;
-	let ulCounter = 0;
+	const renderList = headers => {
 
-	const parseList = ( list ) => {
-		const items = [];
-		if ( list !== 'undefined' && list && list.length > 0 ) {
-			list.forEach( ( item ) => {
-				if ( Array.isArray( item ) ) {
-					items.push( parseList( item ) );
-				} else {
-					items.push(
-						<li key={ counter }>
-							<a
-								href={ `#${ item.link }` }
-								dangerouslySetInnerHTML={ {
-									__html: item.text,
-								} }
-							/>
-						</li>
-					);
-					counter++;
+		let lastLevel = '';
+		let parentLevel = '';
+		let firstLevel = '';
+		let toc = '';
+		let str = "</li></ul>";
+		let currentDepth = 0;
+		let depthArray = {
+			1: 0,
+			2: 0,
+			3: 0,
+			4: 0,
+			5: 0,
+			6: 0,
+		};
+		headers.forEach((item, index) => {
+
+			let level = item.tag;
+			let title = item.content;
+
+			if (0 === index) {
+				firstLevel = level;
+			}
+
+			if (level < firstLevel) {
+				return;
+			}
+
+			if ('' === parentLevel || level < parentLevel) {
+				parentLevel = level;
+			}
+
+			if ('' !== lastLevel) {
+
+				if (level > lastLevel) {
+
+					toc += '<ul class="uagb-toc__list">';
+					currentDepth++;
+					depthArray[level] = currentDepth
+				} else if (level === lastLevel && level !== parentLevel) {
+
+					toc += '<li class="uagb-toc__list">';
+					depthArray[level] = currentDepth;
+				} else if (level < lastLevel) {
+
+					let closing = Math.abs(currentDepth - depthArray[level]);
+
+					if (level > parentLevel) {
+
+						toc += str.repeat(closing);
+						currentDepth = Math.abs(currentDepth - closing);
+
+					} else if (level === parentLevel) {
+
+						toc += str.repeat(closing);
+						toc += '</li>';
+					}
 				}
-			} );
-			ulCounter++;
-			return (
-				<ul
-					key={ counter + '-' + ulCounter }
-					className="uagb-toc__list"
-				>
-					{ items }
-				</ul>
-			);
-		}
-	};
+			}
 
-	if (
-		mappingHeaders != 'undefined' &&
-		headers &&
-		headers.length > 0 &&
-		headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
-			.length > 0
-	) {
+			toc += '<li class="uagb-toc__list"><a href="#">' + title + '</a>';
+
+			lastLevel = level;
+
+		});
+
+		toc += str.repeat(lastLevel);
+
+		return <ol class="uagb-toc__list" dangerouslySetInnerHTML={{__html: toc}}></ol>;
+	}
+
+	if (mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0) {
+
 		return (
 			<div className="uagb-toc__list-wrap">
-				{ parseList( filterArray( headers ) ) }
+				{renderList(filterArray(headers))}
 			</div>
 		);
+	} else {
+		return (
+			<p className="uagb_table-of-contents-placeholder">
+				{__(
+					'Add a header to begin generating the table of contents'
+				)}
+			</p>
+		);
 	}
-	return (
-		<p className="uagb_table-of-contents-placeholder">
-			{ __( 'Add a header to begin generating the table of contents' ) }
-		</p>
-	);
+
 }
 
-export default React.memo( TableOfContents );
+export default TableOfContents;

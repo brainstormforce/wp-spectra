@@ -53,3 +53,20 @@ fs.copyFile(src, dest, (error) => {
 
   console.log( "\n\nStyle to Custom-style - Copied Successfully!");
 });
+
+
+// Keep deprecated file for astra.
+// Deprecated at 1.23.0. Deelte this after 2 updates.
+
+// destination for copied content
+const old_dest = paths.pluginDist + "/blocks.style.css";
+
+fs.copyFile(src, old_dest, (error) => {
+  // incase of any error
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log( "\n\nStyle in deprecated file blocks.style.css - Copied Successfully!");
+});

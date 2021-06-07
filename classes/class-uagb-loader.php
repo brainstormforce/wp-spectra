@@ -66,7 +66,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.22.4' );
+			define( 'UAGB_VER', '1.23.0-beta.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -92,10 +92,16 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			if ( is_admin() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
+				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
+			}
 		}
 
 		/**
@@ -109,9 +115,17 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->load_textdomain();
 
-			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
-			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
+			require_once UAGB_DIR . 'lib/notices/class-astra-notices.php';
+
+			if ( is_admin() ) {
+				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
+			}
+
+			require_once UAGB_DIR . 'classes/class-uagb-post-assets.php';
+			require_once UAGB_DIR . 'classes/class-uagb-front-assets.php';
+			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
+			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
