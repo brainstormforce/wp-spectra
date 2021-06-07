@@ -79,78 +79,81 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+		const { __experimentalGetPreviewDeviceType = null } = select(
+			'core/edit-post'
+		);
 
-		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		const deviceType = __experimentalGetPreviewDeviceType
+			? __experimentalGetPreviewDeviceType()
+			: null;
 
 		const parseTocSlug = ( slug ) => {
-
 			// If not have the element then return false!
-			if( ! slug ) {
+			if ( ! slug ) {
 				return slug;
 			}
 
-			var parsedSlug = slug.toString().toLowerCase()
-				.replace(/\…+/g,'')                          // Remove multiple …
-				.replace(/&(amp;)/g, '')					 // Remove &
-				.replace(/&(mdash;)/g, '')					 // Remove long dash
-				.replace(/\u2013|\u2014/g, '')				 // Remove long dash
-				.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
-				.replace(/\s+/g, '-')                        // Replace spaces with -
-				.replace(/[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '')  // Remove special chars
-				.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
-				.replace(/^-+/, '')                          // Trim - from start of text
-				.replace(/-+$/, '');                         // Trim - from end of text
+			const parsedSlug = slug
+				.toString()
+				.toLowerCase()
+				.replace( /\…+/g, '' ) // Remove multiple …
+				.replace( /&(amp;)/g, '' ) // Remove &
+				.replace( /&(mdash;)/g, '' ) // Remove long dash
+				.replace( /\u2013|\u2014/g, '' ) // Remove long dash
+				.replace( /[&]nbsp[;]/gi, '-' ) // Replace inseccable spaces
+				.replace( /\s+/g, '-' ) // Replace spaces with -
+				.replace( /[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '' ) // Remove special chars
+				.replace( /\-\-+/g, '-' ) // Replace multiple - with single -
+				.replace( /^-+/, '' ) // Trim - from start of text
+				.replace( /-+$/, '' ); // Trim - from end of text
 
 			return decodeURI( encodeURIComponent( parsedSlug ) );
-		}
+		};
 
-		var level = 0;
+		let level = 0;
 
-		var headerArray = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
-		let headers = [];
-		if( headerArray != 'undefined' ) {
+		const headerArray = $( 'div.is-root-container' ).find(
+			'h1, h2, h3, h4, h5, h6'
+		);
+		const headers = [];
+		if ( headerArray != 'undefined' ) {
+			headerArray.each( function ( index, value ) {
+				const header = $( this );
+				let excludeHeading;
 
-			headerArray.each( function (index, value){
-				let header = $( this );
-				let excludeHeading ;
-
-				if ( value.className.includes('uagb-toc-hide-heading') ) {
+				if ( value.className.includes( 'uagb-toc-hide-heading' ) ) {
 					excludeHeading = true;
-				} else if ( 0 < header.parents('.uagb-toc-hide-heading').length ) {
+				} else if (
+					0 < header.parents( '.uagb-toc-hide-heading' ).length
+				) {
 					excludeHeading = true;
 				} else {
 					excludeHeading = false;
 				}
 
-				let headerText = parseTocSlug(header.text());
-				var openLevel = header[0].nodeName.replace(/^H+/, '');
-				var titleText = header.text();
+				const headerText = parseTocSlug( header.text() );
+				const openLevel = header[ 0 ].nodeName.replace( /^H+/, '' );
+				const titleText = header.text();
 
-				level = parseInt(openLevel);
+				level = parseInt( openLevel );
 
-				if ( !excludeHeading ) {
-					headers.push(
-						{
-							tag: level,
-							text: titleText,
-							link: headerText,
-							content: header.text(),
-						}
-					);
+				if ( ! excludeHeading ) {
+					headers.push( {
+						tag: level,
+						text: titleText,
+						link: headerText,
+						content: header.text(),
+					} );
 				}
-
-
-			});
+			} );
 		}
 
 		if ( headers !== undefined ) {
-
 			headers.forEach( function ( heading, index ) {
 				heading.level = 0;
 
-				for ( var i = index - 1; i >= 0; i-- ) {
-					var currentOrderedItem = headers[i];
+				for ( let i = index - 1; i >= 0; i-- ) {
+					const currentOrderedItem = headers[ i ];
 
 					if ( currentOrderedItem.tag <= heading.tag ) {
 						heading.level = currentOrderedItem.level;
@@ -161,12 +164,12 @@ export default compose(
 						break;
 					}
 				}
-			});
+			} );
 		}
 
 		return {
-			deviceType: deviceType,
-			headers: headers
+			deviceType,
+			headers,
 		};
 	} )
-) ( UAGBTableOfContentsEdit )
+)( UAGBTableOfContentsEdit );
