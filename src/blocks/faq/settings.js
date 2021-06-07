@@ -2,7 +2,6 @@
  * BLOCK: FAQ
  */
 
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -28,8 +27,6 @@ import {
 	Dashicon,
 	ToggleControl,
 } from '@wordpress/components';
-
-const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -750,7 +747,7 @@ const Settings = ( props ) => {
 					{ __( 'Expand', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 				<FontIconPicker
-					icons={ svgIcons }
+					icons={ wp.UAGBSvgIcons }
 					renderFunc={ renderSVG }
 					theme="default"
 					value={ icon }
@@ -765,7 +762,7 @@ const Settings = ( props ) => {
 					{ __( 'Collapse', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 				<FontIconPicker
-					icons={ svgIcons }
+					icons={ wp.UAGBSvgIcons }
 					renderFunc={ renderSVG }
 					theme="default"
 					value={ iconActive }

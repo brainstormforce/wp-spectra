@@ -2,14 +2,12 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
 $ = jQuery;
-const svg_icons = Object.keys( UAGBIcon );
 
 import {
 	AlignmentToolbar,
@@ -261,26 +259,6 @@ const Settings = ( props ) => {
 		);
 	}
 
-	// // Icon properties.
-	// const icon_props = {
-	//     icons: svg_icons,
-	//     value: icon,
-	//     onChange: ( value ) => ( setAttributes( { icon: value } ) ),
-	//     isMulti: false,
-	//     renderFunc: renderSVG,
-	//     noSelectedPlaceholder: __( "Select Icon", "ultimate-addons-for-gutenberg" )
-	// }
-
-	// // Icon properties.
-	// const cta_icon_props = {
-	//     icons: svg_icons,
-	//     renderFunc: renderSVG,
-	//     value: ctaIcon,
-	//     onChange: ( value ) => ( setAttributes( { ctaIcon: value } ) ),
-	//     isMulti: false,
-	//     noSelectedPlaceholder: __( "Select Icon", "ultimate-addons-for-gutenberg" )
-	// }
-
 	const blockControls = () => {
 		return (
 			<BlockControls key="controls">
@@ -456,7 +434,7 @@ const Settings = ( props ) => {
 				{ source_type == 'icon' && (
 					<>
 						<FontIconPicker
-							icons={ svg_icons }
+							icons={ wp.UAGBSvgIcons }
 							renderFunc={ renderSVG }
 							value={ icon }
 							onChange={ ( value ) =>
@@ -1486,7 +1464,7 @@ const Settings = ( props ) => {
 							) }
 						</h2>
 						<FontIconPicker
-							icons={ svg_icons }
+							icons={ wp.UAGBSvgIcons }
 							renderFunc={ renderSVG }
 							value={ ctaIcon }
 							onChange={ ( value ) =>

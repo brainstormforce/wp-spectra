@@ -10,6 +10,8 @@
  */
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
+wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
+
 import './blocks/extensions/attributes.js';
 import './blocks/advanced-heading/block.js';
 import './blocks/post/block.js';
@@ -67,3 +69,6 @@ import { updateCategory } from '@wordpress/blocks';
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
+
+
+console.log( uagb_blocks_info.uagb_svg_icons )
