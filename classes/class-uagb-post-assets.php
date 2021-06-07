@@ -168,32 +168,26 @@ class UAGB_Post_Assets {
 	 */
 	public function allow_assets_generation() {
 
-		$page_assets = get_post_meta( $this->post_id, '_uag_page_assets', true );
+		$page_assets     = get_post_meta( $this->post_id, '_uag_page_assets', true );
+		$version_updated = false;
+		$css_asset_info  = array();
+		$js_asset_info   = array();
 
-		if ( empty( $page_assets )
-			|| empty( $page_assets['uag_version'] )
-			|| UAGB_ASSET_VER !== $page_assets['uag_version']
-		) {
+		if ( empty( $page_assets ) || empty( $page_assets['uag_version'] ) ) {
 			return true;
+		}
+
+		if ( UAGB_ASSET_VER !== $page_assets['uag_version'] ) {
+			$version_updated = true;
 		}
 
 		if ( 'enabled' === $this->file_generation ) {
 
-			$post_timestamp_css = get_post_meta( $this->post_id, '_uag_css_file_name', true );
-			$post_timestamp_js  = get_post_meta( $this->post_id, '_uag_js_file_name', true );
+			$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
+			$css_file_path  = $css_asset_info['css'];
 
-			$css_asset_info = array();
-			$js_asset_info  = array();
-
-			if ( ! empty( $post_timestamp_css ) ) {
-				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
-				$css_file_path  = $css_asset_info['css'];
-			}
-
-			if ( ! empty( $post_timestamp_js ) ) {
-				$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
-				$js_file_path  = $js_asset_info['js'];
-			}
+			$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
+			$js_file_path  = $js_asset_info['js'];
 
 			if ( empty( $css_file_path ) || ! file_exists( $css_file_path ) ) {
 				return true;
@@ -203,16 +197,30 @@ class UAGB_Post_Assets {
 				return true;
 			}
 
-			$this->assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
+			if ( $version_updated ) {
+				$uagb_filesystem = uagb_filesystem();
+				$uagb_filesystem->delete( $css_file_path );
+				$uagb_filesystem->delete( $js_file_path );
+			}
+		}
+
+		// If version is updated, return true.
+		if ( $version_updated ) {
+			// Delete cached meta.
+			delete_post_meta( $this->post_id, '_uag_page_assets' );
+			delete_post_meta( $this->post_id, '_uag_css_file_name' );
+			delete_post_meta( $this->post_id, '_uag_js_file_name' );
+			return true;
 		}
 
 		// Set required varibled from stored data.
-		$this->current_block_list = $page_assets['current_block_list'];
-		$this->uag_flag           = $page_assets['uag_flag'];
-		$this->stylesheet         = $page_assets['css'];
-		$this->script             = $page_assets['js'];
-		$this->gfonts             = $page_assets['gfonts'];
-		$this->uag_faq_layout     = $page_assets['uag_faq_layout'];
+		$this->current_block_list  = $page_assets['current_block_list'];
+		$this->uag_flag            = $page_assets['uag_flag'];
+		$this->stylesheet          = $page_assets['css'];
+		$this->script              = $page_assets['js'];
+		$this->gfonts              = $page_assets['gfonts'];
+		$this->uag_faq_layout      = $page_assets['uag_faq_layout'];
+		$this->assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
 		return false;
 	}
