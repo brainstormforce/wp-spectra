@@ -69,6 +69,3 @@ import { updateCategory } from '@wordpress/blocks';
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
-
-
-console.log( uagb_blocks_info.uagb_svg_icons )
