@@ -367,60 +367,6 @@ function styling( props ) {
 			'border-color': buttonBorderHoverColor,
 		},
 
-		// Check box Radio.
-		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox']:checked + label:before": {
-			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
-			'border-color': fieldBorderFocusColor,
-		},
-		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before": {
-			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			height: generateCSSUnit( fieldVrPadding, 'px' ),
-			width: generateCSSUnit( fieldVrPadding, 'px' ),
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-			'font-size': 'calc( ' + fieldVrPadding + 'px / 1.2 )',
-		},
-		" .uagb-gf-styler__check-style-enabled input[type='checkbox']:checked + label:before": {
-			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
-			'border-color': fieldBorderFocusColor,
-		},
-		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
-			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			height: generateCSSUnit( fieldVrPadding, 'px' ),
-			width: generateCSSUnit( fieldVrPadding, 'px' ),
-			'font-size': 'calc( ' + fieldVrPadding + 'px / 1.2 )',
-			'border-color': fieldBorderColor,
-			'border-style': fieldBorderStyle,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-		},
-		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
-			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			height: generateCSSUnit( fieldVrPadding, 'px' ),
-			width: generateCSSUnit( fieldVrPadding, 'px' ),
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-		},
-		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio']:checked + label:before": {
-			'border-color': fieldBorderFocusColor,
-		},
-
 		// Underline border.
 		' .uagb-gf-styler__field-style-underline input:not([type=submit])': {
 			'border-style': 'none',
