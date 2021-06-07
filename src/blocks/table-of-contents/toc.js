@@ -84,7 +84,7 @@ class TableOfContents extends React.Component {
 
 			toc += str.repeat( lastLevel );
 
-			return <ol class="uagb-toc__list" dangerouslySetInnerHTML={{__html: toc}} ></ol>;
+			return <ol className="uagb-toc__list" dangerouslySetInnerHTML={{__html: toc}} ></ol>;
 		}
 
 		if ( mappingHeaders != 'undefined' && headers && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0 ) {
