@@ -1,21 +1,8 @@
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-
-
 import renderSVG from '@Controls/renderIcon';
-
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
-const TypographyControl = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/tabs/typography-control" */ '@Components/typography'
-	)
-);
-const ColumnResponsive = lazy( () =>
-	import(
-		/* webpackChunkName: "chunks/tabs/column-responsive" */ '@Components/typography/column-responsive'
-	)
-);
+import TypographyControl from '@Components/typography';
+import ColumnResponsive from '@Components/typography/column-responsive';
 
 import { __ } from '@wordpress/i18n';
 
@@ -91,9 +78,9 @@ const Settings = ( props ) => {
 				title={ __( 'Tabs Style', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<Suspense fallback={ lazyLoader() }>
-					<ColumnResponsive />
-				</Suspense>
+
+				<ColumnResponsive />
+
 				{ 'Desktop' === deviceType && (
 					<>
 						<SelectControl
@@ -694,7 +681,7 @@ const Settings = ( props ) => {
 					}
 					allowReset
 				/>
-				<Suspense fallback={ lazyLoader() }>
+				<>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -751,7 +738,7 @@ const Settings = ( props ) => {
 							label: 'titleLineHeightTablet',
 						} }
 					/>
-				</Suspense>
+				</>
 			</PanelBody>
 		);
 	};
