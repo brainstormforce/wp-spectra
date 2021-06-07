@@ -2,11 +2,6 @@
  * WordPress dependencies
  */
  const {
- 	Component,
- 	Fragment,
- } = wp.element
-
- const {
 	BaseControl,
 	Button,
 	ButtonGroup,
@@ -57,63 +52,65 @@ const NONE_OPTION = {
 	tooltip: __( 'None','ultimate-addons-for-gutenberg' ),
 };
 
-export default class MultiButtonsControl extends Component {
-	render() {
-		const {
-			advancedMaxValue,
-			advancedMinValue,
-			currentOption,
-			label,
-			onChange,
-			options,
-			showAdvancedControls,
-			showIcons,
-			showNoneOption,
-		} = this.props;
+const MultiButtonsControl = props => {
 
-		let buttons = options || DEFAULT_OPTIONS;
+	const {
+		advancedMaxValue,
+		advancedMinValue,
+		currentOption,
+		label,
+		onChange,
+		options,
+		showAdvancedControls,
+		showIcons,
+		showNoneOption,
+	} = props;
 
-		if ( showNoneOption ) {
-			buttons = [ NONE_OPTION, ...buttons ];
-		}
+	let buttons = options || DEFAULT_OPTIONS;
 
-		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
-
-			<RangeControl
-				label={ label }
-				value={ currentOption }
-				onChange={ ( value ) => onChange( value ) }
-				min={ advancedMinValue }
-				max={ advancedMaxValue }
-			/> :
-
-			<BaseControl id={ `uagb-option-selector-${ label }` } label={ label }>
-				<PanelRow>
-					<ButtonGroup aria-label={ label }>
-
-						{ buttons.map( ( option ) => (
-							<Tooltip
-								key={ `option-${ option.value }` }
-								text={ option.tooltip }>
-
-								<Button
-									isLarge
-									isSecondary={ currentOption !== option.value }
-									isPrimary={ currentOption === option.value }
-									aria-pressed={ currentOption === option.value }
-									onClick={ () => onChange( option.value ) }
-									aria-label={ option.tooltip }>
-
-									{ showIcons ? option.icon : option.label }
-
-								</Button>
-
-							</Tooltip>
-						) ) }
-
-					</ButtonGroup>
-				</PanelRow>
-			</BaseControl>
-		);
+	if ( showNoneOption ) {
+		buttons = [ NONE_OPTION, ...buttons ];
 	}
+
+	return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
+
+		<RangeControl
+			label={ label }
+			value={ currentOption }
+			onChange={ ( value ) => onChange( value ) }
+			min={ advancedMinValue }
+			max={ advancedMaxValue }
+		/> :
+
+		<BaseControl id={ `uagb-option-selector-${ label }` } label={ label }>
+			<PanelRow>
+				<ButtonGroup aria-label={ label }>
+
+					{ buttons.map( ( option ) => (
+						<Tooltip
+							key={ `option-${ option.value }` }
+							text={ option.tooltip }>
+
+							<Button
+								isLarge
+								isSecondary={ currentOption !== option.value }
+								isPrimary={ currentOption === option.value }
+								aria-pressed={ currentOption === option.value }
+								onClick={ () => onChange( option.value ) }
+								aria-label={ option.tooltip }>
+
+								{ showIcons ? option.icon : option.label }
+
+							</Button>
+
+						</Tooltip>
+					) ) }
+
+				</ButtonGroup>
+			</PanelRow>
+		</BaseControl>
+	);
+
 }
+
+export default MultiButtonsControl

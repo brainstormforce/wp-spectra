@@ -47,6 +47,7 @@ const {
 	Button,
 	Dashicon,
 	ButtonGroup,
+	Icon,
 } = wp.components
 
 const {
@@ -286,10 +287,11 @@ class UAGBInlineNoticeEdit extends Component {
 						currentOption={ noticeAlignment }
 						className="uagb-multi-button-alignment-control"
 						options={ [
-							{ value: "left", label: <Dashicon icon="editor-alignleft" />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
-							{ value: "center", label: <Dashicon icon="editor-aligncenter" />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
-							{ value: "right", label: <Dashicon icon="editor-alignright" />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "left", icon: <Icon icon={ renderSVG("fa fa-align-left") } />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "center", icon: <Icon icon={ renderSVG("fa fa-align-center") } />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "right", icon: <Icon icon={ renderSVG("fa fa-align-right") } />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
 						] }
+						showIcons={ true }
 						onChange={ ( noticeAlignment ) => setAttributes( { noticeAlignment } ) }
 					/>
 					</PanelBody>
@@ -363,6 +365,7 @@ class UAGBInlineNoticeEdit extends Component {
 								{ value: "30", label: __( "XL", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Wider (30px)', 'ultimate-addons-for-gutenberg' ), }
 							] }
 							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
+							showIcons={ false }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
 						/>
 				</PanelBody>
