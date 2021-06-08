@@ -3,7 +3,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
@@ -146,15 +146,11 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};

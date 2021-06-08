@@ -34,7 +34,6 @@ const Render = ( props ) => {
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
-		tabActiveFrontend,
 		tabHeaders,
 		tabActive,
 		tabAlign,

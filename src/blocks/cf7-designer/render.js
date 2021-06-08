@@ -33,8 +33,7 @@ const Render = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectForm = ( id ) => {
-		const { formId } = props.attributes;
-		const { setAttributes, setState } = props;
+		const { setAttributes } = props;
 
 		if ( ! id ) {
 			setAttributes( { isHtml: false } );

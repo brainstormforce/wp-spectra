@@ -4,6 +4,7 @@ import ColumnResponsive from '@Components/typography/column-responsive';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
+import React from 'react';
 
 const {
 	PanelBody,

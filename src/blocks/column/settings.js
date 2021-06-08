@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
 import ColumnResponsive from '@Components/typography/column-responsive';
@@ -77,8 +77,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { backgroundImage: null } );
 	};
 
@@ -86,8 +84,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props.parentProps;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
 			return;

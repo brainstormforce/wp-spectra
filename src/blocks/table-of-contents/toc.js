@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 function TableOfContents( props ) {
 	const { mappingHeaders, headers } = props;
 
-	const filterArray = ( origHeaders ) => {
+	const filterArray = () => {
 		const arrays = [];
 		headers.forEach( ( heading, key ) => {
 			if ( mappingHeaders[ heading.tag - 1 ] ) {

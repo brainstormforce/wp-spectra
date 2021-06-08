@@ -1,3 +1,4 @@
+import React from 'react';
 const Excerpt = ( props ) => {
 	const { post, attributes } = props;
 

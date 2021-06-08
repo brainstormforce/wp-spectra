@@ -1,5 +1,5 @@
 import renderSVG from '@Controls/renderIcon';
-
+import React from 'react';
 const Icon = ( props ) => {
 	const { attributes } = props;
 

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
+import React, { Suspense, useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -18,7 +18,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { className, setAttributes, attributes } = props;
+	const { className, attributes } = props;
 
 	const { loop, speed, reverse, lottieURl, playOn } = attributes;
 
@@ -43,7 +43,6 @@ const Render = ( props ) => {
 	}
 
 	return (
-		<>
 			<div
 				className={ classnames(
 					className,
@@ -85,7 +84,6 @@ const Render = ( props ) => {
 					/>
 				</Suspense>
 			</div>
-		</>
 	);
 };
 

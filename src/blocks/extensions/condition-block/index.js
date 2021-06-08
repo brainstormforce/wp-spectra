@@ -17,8 +17,6 @@ const UserConditionOptions = ( props ) => {
 		UAGUserRole,
 	} = attributes;
 
-	const user_role = uagb_blocks_info.user_role;
-
 	return (
 		<Fragment>
 			<SelectControl

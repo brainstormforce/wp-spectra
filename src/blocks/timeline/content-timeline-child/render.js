@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-
+import React from 'react';
 import { dateI18n } from '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
@@ -28,19 +28,12 @@ const Render = ( props ) => {
 			dateFormat,
 			time_heading,
 			time_desc,
+			content,
 		},
 	} = props;
 
 	const splitBlock = ( before, after, ...blocks ) => {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = props;
-
 		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
 			// any other blocks being inserted after the current paragraph.
 			blocks.push( createBlock( 'core/paragraph', { content: after } ) );
 		}
@@ -48,8 +41,6 @@ const Render = ( props ) => {
 		if ( blocks.length && insertBlocksAfter ) {
 			insertBlocksAfter( blocks );
 		}
-
-		const { content } = attributes;
 
 		if ( ! before ) {
 			// If before content is omitted, treat as intent to delete block.

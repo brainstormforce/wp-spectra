@@ -23,12 +23,8 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
-	const { state, setState, togglePreview } = props;
-
 	props = props.parentProps;
-
-	const { attributes, categoriesList, latestPosts, deviceType } = props;
+	const { state, setState, togglePreview, attributes, categoriesList, latestPosts, deviceType } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {

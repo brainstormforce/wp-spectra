@@ -14,7 +14,7 @@ const Render = lazy( () =>
 );
 
 const UAGBFormsSelectEdit = ( props ) => {
-	const [ state, setState ] = useState( {
+	const [ setState ] = useState( {
 		optionsstate: [
 			{
 				optiontitle: __(

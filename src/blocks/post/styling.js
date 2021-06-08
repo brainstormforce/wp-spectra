@@ -93,7 +93,6 @@ function styling( props ) {
 		paginationAlignment,
 		inheritFromTheme,
 		postPagination,
-		paginationMarkup,
 		paginationType,
 		paginationEventType,
 		paginationAlign,

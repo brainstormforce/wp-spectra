@@ -3,7 +3,7 @@
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -44,7 +44,6 @@ const Settings = ( props ) => {
 
 	// Caching all attributes.
 	const {
-		block_id,
 		displayPostTitle,
 		displayPostDate,
 		displayPostComment,
@@ -164,50 +163,35 @@ const Settings = ( props ) => {
 		postDisplaytext,
 		displayPostContentRadio,
 		excludeCurrentPost,
-		layoutConfig,
 	} = attributes;
 
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 	};
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};
 	const onSelectPagination = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { postPagination: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePostsPerPage = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { postsToShow: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePageLimit = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { pageLimit: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePrevText = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { paginationPrevText: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangeNextText = ( value ) => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { paginationNextText: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
@@ -228,7 +212,7 @@ const Settings = ( props ) => {
 	}
 
 	if ( '' != categoriesList ) {
-		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
 				label: categoriesList[ item ].name,

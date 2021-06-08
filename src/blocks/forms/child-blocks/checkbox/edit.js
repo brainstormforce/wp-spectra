@@ -16,7 +16,7 @@ const Render = lazy( () =>
 );
 
 const UAGBFormsCheckboxEdit = ( props ) => {
-	const [ state, setState ] = useState( {
+	const [ setState ] = useState( {
 		optionsstate: [
 			{
 				optiontitle: __(

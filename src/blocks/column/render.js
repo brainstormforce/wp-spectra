@@ -3,9 +3,8 @@
  */
 
 import classnames from 'classnames';
-
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {

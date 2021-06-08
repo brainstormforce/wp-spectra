@@ -6,7 +6,7 @@ import { PostMeta } from './post-meta/edit';
 import { PostImage } from './post-image/edit';
 import { PostExcerpt } from './post-excerpt/edit';
 import { PostButton } from './post-button/edit';
-const { createContext, useContext, Suspense } = wp.element;
+import { createContext, useContext, Suspense } from '@wordpress/element';
 const InnerBlockLayoutContext = createContext( {
 	parentName: '',
 	parentClassName: '',
@@ -52,10 +52,9 @@ export const renderPostLayout = (
 
 	const blockMap = getBlockMap( blockName );
 
-	return layoutConfig.map( ( [ name, props = {} ], index ) => {
-		let children = [];
-
+	return layoutConfig.map( ( [ name, props = {} ] ) => {
 		if ( !! props.children && props.children.length > 0 ) {
+			let children = [];
 			children = renderPostLayout(
 				blockName,
 				post,

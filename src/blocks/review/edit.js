@@ -4,8 +4,7 @@
 
 import styling from './styling';
 import SchemaNotices from './schema-notices';
-import { __ } from '@wordpress/i18n';
-import React, { lazy, useEffect, useState, Suspense } from 'react';
+import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { withState, compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
@@ -18,7 +17,7 @@ const Render = lazy( () =>
 $ = jQuery;
 let prevState;
 
-const reviewComponent = ( props ) => {
+const ReviewComponent = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -306,4 +305,4 @@ export default compose(
 			schemaJsonData: jsonData,
 		};
 	} )
-)( reviewComponent );
+)( ReviewComponent );

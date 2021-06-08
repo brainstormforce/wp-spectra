@@ -21,7 +21,7 @@ export default function save( props ) {
 		link,
 		linkTarget,
 		titleTag,
-	} = props.attributes;
+	} = attributes;
 
 	const target = linkTarget ? '_blank' : '';
 

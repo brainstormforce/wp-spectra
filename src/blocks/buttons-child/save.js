@@ -4,7 +4,6 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {

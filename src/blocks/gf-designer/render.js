@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {

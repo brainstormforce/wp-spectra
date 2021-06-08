@@ -83,6 +83,7 @@ const InfoBoxCta = ( props ) => {
 					target={ target }
 					className="uagb-infobox-cta-link"
 					rel={ rel }
+					alt=""
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 					<span className="uagb-inline-editing">
@@ -104,6 +105,7 @@ const InfoBoxCta = ( props ) => {
 						className={ ctaBtnClass }
 						target={ target }
 						rel={ rel }
+						alt=""
 					>
 						{ ctaIconOutput }
 						<span className="uagb-ifb-cta-content-wrapper">

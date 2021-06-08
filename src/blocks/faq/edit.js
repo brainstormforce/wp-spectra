@@ -18,7 +18,7 @@ import { select, withSelect } from '@wordpress/data';
 
 let prevState;
 
-const faqComponent = ( props ) => {
+const FaqComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -144,7 +144,7 @@ const faqComponent = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select, ownProps ) => {
+	withSelect( ( ownProps ) => {
 		const page_url = select( 'core/editor' ).getPermalink();
 		const { __experimentalGetPreviewDeviceType = null } = select(
 			'core/edit-post'
@@ -182,4 +182,4 @@ export default compose(
 			schemaJsonData: json_data,
 		};
 	} )
-)( faqComponent );
+)( FaqComponent );

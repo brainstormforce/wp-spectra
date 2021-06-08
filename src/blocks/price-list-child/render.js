@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import PositionClasses from '../price-list/classes';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import RestMenuImage from './components/RestMenuImage';
 import Title from './components/Title';

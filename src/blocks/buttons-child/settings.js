@@ -67,11 +67,10 @@ const Settings = ( props ) => {
 		icon,
 		iconPosition,
 		iconSpace,
+		target,
 	} = attributes;
 
 	const onClickLinkSettings = () => {
-		const { attributes, setAttributes } = props;
-		const { target } = attributes;
 		if ( '_self' === target ) {
 			setAttributes( { opensInNewTab: false } );
 		} else if ( '_blank' === target ) {

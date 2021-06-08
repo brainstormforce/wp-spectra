@@ -5,7 +5,7 @@
 import UAGBIcon from '@Controls/UAGBIcon.json';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -110,7 +110,6 @@ const Settings = ( props ) => {
 	} = props;
 
 	const getconnectorBgsize = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -122,7 +121,6 @@ const Settings = ( props ) => {
 	};
 
 	const getborderwidth = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -134,7 +132,6 @@ const Settings = ( props ) => {
 	};
 
 	const geticonSize = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -146,7 +143,6 @@ const Settings = ( props ) => {
 	};
 
 	const getseparatorwidth = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -158,7 +154,6 @@ const Settings = ( props ) => {
 	};
 
 	const getdateFormat = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -170,7 +165,6 @@ const Settings = ( props ) => {
 	};
 
 	const getTimelineicon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -182,9 +176,6 @@ const Settings = ( props ) => {
 	};
 
 	const toggleDisplayPostDate = () => {
-		const { displayPostDate } = props.attributes;
-		// const { setAttributes } = props
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);

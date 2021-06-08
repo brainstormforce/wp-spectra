@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import styles from './editor.lazy.scss';
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -35,7 +35,7 @@ const Render = ( props ) => {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } />
+			<img className="uagb-ss__source-image" src={ image.url } alt="" />
 		);
 	}
 

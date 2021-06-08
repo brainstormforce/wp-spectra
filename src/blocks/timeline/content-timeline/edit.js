@@ -2,7 +2,6 @@
  * BLOCK: Content Timeline.
  */
 import contentTimelineStyle from './styling';
-import { __ } from '@wordpress/i18n';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select, withSelect } from '@wordpress/data';
@@ -20,7 +19,7 @@ const Render = lazy( () =>
 
 const $ = jQuery;
 
-const contentTimelineComponent = ( props ) => {
+const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
@@ -235,4 +234,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		deviceType,
 	};
-} )( contentTimelineComponent );
+} )( ContentTimelineComponent );

@@ -70,7 +70,7 @@ const UAGBRestaurantMenu = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
+export default withSelect( ( ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);

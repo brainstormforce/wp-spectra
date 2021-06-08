@@ -6,7 +6,7 @@ import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -115,7 +115,6 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -126,7 +125,6 @@ const Settings = ( props ) => {
 		setAttributes( { icon: value } );
 	};
 	const onchangeActiveIcon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -138,7 +136,6 @@ const Settings = ( props ) => {
 		setAttributes( { iconActive: value } );
 	};
 	const onchangeLayout = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -150,7 +147,6 @@ const Settings = ( props ) => {
 		setAttributes( { layout: value } );
 	};
 	const onchangeTag = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);

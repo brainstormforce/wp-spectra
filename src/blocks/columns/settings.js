@@ -3,7 +3,7 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
 import ColumnResponsive from '@Components/typography/column-responsive';
@@ -115,8 +115,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { backgroundImage: null } );
 	};
 
@@ -124,8 +122,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props.parentProps;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
 			return;
@@ -142,8 +138,6 @@ const Settings = ( props ) => {
 	 * Event to set Video as null while removing.
 	 */
 	const onRemoveVideo = () => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { backgroundVideo: null } );
 	};
 
@@ -151,8 +145,6 @@ const Settings = ( props ) => {
 	 * Event to set Video while adding.
 	 */
 	const onSelectVideo = ( media ) => {
-		const { setAttributes } = props.parentProps;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundVideo: null } );
 			return;
@@ -368,7 +360,9 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
+					onChange={ ( value ) =>
+						setAttributes( { columnGap: value } )
+					}
 					help={ __(
 						'Note: The individual Column Gap can be managed from Column Settings.',
 						'ultimate-addons-for-gutenberg'

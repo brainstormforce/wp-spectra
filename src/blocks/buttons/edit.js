@@ -3,7 +3,6 @@
  */
 
 import styling from './styling';
-import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 
@@ -16,7 +15,7 @@ const Render = lazy( () =>
 
 let prevState;
 
-const buttonsComponent = ( props ) => {
+const ButtonsComponent = ( props ) => {
 	const initialState = {
 		isFocused: 'false',
 		isHovered: 'false',
@@ -72,4 +71,4 @@ const buttonsComponent = ( props ) => {
 	);
 };
 
-export default buttonsComponent;
+export default ButtonsComponent;

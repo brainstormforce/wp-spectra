@@ -4,12 +4,12 @@
 
 import { __ } from '@wordpress/i18n';
 
-const ITEM_COUNT = 5;
+const itemCount = 5;
 
 const item = [];
 const dateArr = [];
 
-for ( let i = 1; i <= ITEM_COUNT; i++ ) {
+for ( let i = 1; i <= itemCount; i++ ) {
 	item.push( {
 		time_heading:
 			__( 'Timeline Heading ', 'ultimate-addons-for-gutenberg' ) + i,
@@ -34,7 +34,6 @@ for ( let i = 1; i <= ITEM_COUNT; i++ ) {
 	}
 
 	today = mm + '/' + dd + '/' + yyyy;
-	const p = { title: today };
 
 	dateArr.push( {
 		title: today,
@@ -281,7 +280,7 @@ const attributes = {
 	},
 	timelineItem: {
 		type: 'number',
-		default: ITEM_COUNT,
+		default: itemCount,
 	},
 	tm_client_id: {
 		type: 'string',

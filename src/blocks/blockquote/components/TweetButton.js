@@ -1,7 +1,7 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 const TweetButton = ( { attributes } ) => (
 	<a
-		href="javascript:void(0)"
+		href="/"
 		className="uagb-blockquote__tweet-button"
 		target="_blank"
 		rel="noopener noreferrer"

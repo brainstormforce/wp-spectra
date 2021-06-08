@@ -5,7 +5,6 @@
 import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
-import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
@@ -20,7 +19,7 @@ const Render = lazy( () =>
 
 let prevState;
 
-const howToComponent = ( props ) => {
+const HowToComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -126,7 +125,6 @@ export default compose(
 			: null;
 
 		let urlChk = '';
-		let title = '';
 
 		if (
 			'undefined' !== ownProps.attributes.mainimage &&
@@ -228,4 +226,4 @@ export default compose(
 			deviceType,
 		};
 	} )
-)( howToComponent );
+)( HowToComponent );

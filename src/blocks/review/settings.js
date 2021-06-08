@@ -172,9 +172,6 @@ const Settings = ( props ) => {
 	}
 
 	const toggleTarget = () => {
-		const { ctaTarget } = props.attributes;
-		const { setAttributes } = props;
-
 		setAttributes( { ctaTarget: ! ctaTarget } );
 	};
 

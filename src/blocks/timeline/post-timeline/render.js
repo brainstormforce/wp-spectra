@@ -14,9 +14,8 @@ import PostDate from './components/PostDate';
 import Icon from './components/Icon';
 
 import { __ } from '@wordpress/i18n';
-
 import { Placeholder, Spinner } from '@wordpress/components';
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from '../editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -30,16 +29,17 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, className, deviceType } = props;
+	const { attributes, className, deviceType, latestPosts } = props;
 
-	const { displayPostLink } = attributes;
+	const {
+		displayPostLink,
+		timelinAlignment,
+		postsToShow,
+		contentPadding,
+	} = attributes;
 
 	/* Render output at backend */
 	const getContent = () => {
-		const { attributes, latestPosts } = props;
-
-		const { timelinAlignment, postsToShow, contentPadding } = attributes;
-
 		// Add CSS.
 		const element = document.getElementById(
 			'uagb-timeline-style-' + props.clientId
@@ -74,7 +74,7 @@ const Render = ( props ) => {
 
 		let contentAlignClass = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
 		let dayAlignClass = DayAlignClass( props.attributes, 0 ); // Get classname for day alignment.
-		const dataCopy = [ ...latestPosts ];
+
 		let displayInnerDate = false;
 
 		return (

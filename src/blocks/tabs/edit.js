@@ -106,7 +106,7 @@ export default compose(
 						tabActive,
 					} );
 				}
-				resetTabOrder;
+				this.resetTabOrder;
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition(

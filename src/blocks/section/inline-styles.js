@@ -3,7 +3,7 @@
  */
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function inlineStyles( props, isEditor ) {
+function inlineStyles( props ) {
 	const {
 		align,
 		contentWidth,
@@ -20,16 +20,8 @@ function inlineStyles( props, isEditor ) {
 		backgroundSize,
 		backgroundAttachment,
 		backgroundImage,
-		backgroundColor,
-		backgroundOpacity,
 		backgroundRepeat,
 		backgroundType,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
 		borderStyle,
 		borderWidth,
 		borderRadius,

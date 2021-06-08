@@ -316,7 +316,6 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectLottieJSON = ( media ) => {
-		const { setAttributes } = props;
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { jsonLottie: null } );
