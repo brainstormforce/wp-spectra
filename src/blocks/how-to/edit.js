@@ -85,7 +85,6 @@ const HowToComponent = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-
 	const minsValue = timeInMins ? timeInMins : time;
 
 	return (
@@ -123,7 +122,7 @@ export default compose(
 		const deviceType = __experimentalGetPreviewDeviceType
 			? __experimentalGetPreviewDeviceType()
 			: null;
-
+		let title = '';
 		let urlChk = '';
 
 		if (

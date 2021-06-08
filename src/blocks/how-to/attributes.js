@@ -78,6 +78,7 @@ const attributes = {
 		type: 'object',
 		default: {
 			url: '',
+			title:''
 		},
 	},
 	estCost: {

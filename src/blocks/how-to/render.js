@@ -54,7 +54,6 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
@@ -109,7 +108,6 @@ const Render = ( props ) => {
 	let urlChk = '';
 	let title = '';
 	let url = '';
-
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
@@ -140,6 +138,7 @@ const Render = ( props ) => {
 			<img
 				className="uagb-howto__source-image"
 				src={ url }
+				title = {title}
 				alt=""
 			/>
 		);

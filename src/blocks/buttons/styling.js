@@ -56,7 +56,7 @@ function styling( props ) {
 		};
 	}
 
-	const alignment = '';
+	let alignment = '';
 	if ( align == 'left' ) {
 		alignment = 'flex-start';
 	} else if ( align == 'right' ) {

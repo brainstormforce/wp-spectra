@@ -52,7 +52,6 @@ const Render = ( props ) => {
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 		/>
 	);
-
 	return (
 		<div
 			className={ classnames(
