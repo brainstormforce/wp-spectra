@@ -10,7 +10,7 @@ import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 wp.uagb_google_api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
 

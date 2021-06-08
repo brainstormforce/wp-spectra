@@ -5,9 +5,9 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -19,7 +19,7 @@ const {
 	TextareaControl,
 	CheckboxControl,
 	ExternalLink,
-} = wp.components;
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

@@ -7,7 +7,7 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/lottie', {
 	title: uagb_blocks_info.blocks[ 'uagb/lottie' ].title,

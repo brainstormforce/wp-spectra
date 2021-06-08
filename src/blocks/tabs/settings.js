@@ -20,7 +20,7 @@ const ColumnResponsive = lazy( () =>
 
 import { __ } from '@wordpress/i18n';
 
-const svg_icons = Object.keys( UAGBIcon );
+const svgIcons = Object.keys( UAGBIcon );
 
 import {
 	BlockAlignmentToolbar,
@@ -458,7 +458,7 @@ const Settings = ( props ) => {
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</h2>
 						<FontIconPicker
-							icons={ svg_icons }
+							icons={ svgIcons }
 							renderFunc={ renderSVG }
 							theme="default"
 							value={ icon }

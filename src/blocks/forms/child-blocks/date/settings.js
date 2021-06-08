@@ -1,8 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const { PanelBody, SelectControl, ToggleControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
+import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+
+import { InspectorControls } from '@wordpress/block-editor';
 
 const YearDefaults = [ { label: 'YYYY', value: '' } ];
 const MonthsDefaults = [ { label: 'MM', value: '' } ];

@@ -3,9 +3,9 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-const { Button, ToggleControl } = wp.components;
+import { Button, ToggleControl } from '@wordpress/components';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.

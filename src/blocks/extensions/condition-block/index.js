@@ -1,10 +1,9 @@
-const { ToggleControl, SelectControl } = wp.components;
+import { ToggleControl, SelectControl } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
-	const { Fragment } = wp.element;
 	const {
 		UAGLoggedIn,
 		UAGLoggedOut,
@@ -18,7 +17,7 @@ const UserConditionOptions = ( props ) => {
 	} = attributes;
 
 	return (
-		<Fragment>
+		<>
 			<SelectControl
 				label={ __( 'Display Conditions' ) }
 				value={ UAGDisplayConditions }
@@ -38,7 +37,7 @@ const UserConditionOptions = ( props ) => {
 				] }
 			/>
 			{ UAGDisplayConditions == 'userstate' && (
-				<Fragment>
+				<>
 					<ToggleControl
 						label={ __( 'Hide From Logged In Users' ) }
 						checked={ UAGLoggedIn }
@@ -57,10 +56,10 @@ const UserConditionOptions = ( props ) => {
 							} )
 						}
 					/>
-				</Fragment>
+				</>
 			) }
 			{ UAGDisplayConditions == 'responsiveVisibility' && (
-				<Fragment>
+				<>
 					<ToggleControl
 						label={ __( 'Hide on Desktop' ) }
 						checked={ UAGHideDesktop }
@@ -88,10 +87,10 @@ const UserConditionOptions = ( props ) => {
 							} )
 						}
 					/>
-				</Fragment>
+				</>
 			) }
 			{ UAGDisplayConditions == 'os' && (
-				<Fragment>
+				<>
 					<SelectControl
 						label={ __( 'Hide on Operating System' ) }
 						value={ UAGSystem }
@@ -109,10 +108,10 @@ const UserConditionOptions = ( props ) => {
 							{ value: 'mac_os', label: __( 'Mac OS' ) },
 						] }
 					/>
-				</Fragment>
+				</>
 			) }
 			{ UAGDisplayConditions == 'browser' && (
-				<Fragment>
+				<>
 					<SelectControl
 						label={ __( 'Hide on Browser' ) }
 						value={ UAGBrowser }
@@ -133,10 +132,10 @@ const UserConditionOptions = ( props ) => {
 							{ value: 'edge', label: __( 'Microsoft Edge' ) },
 						] }
 					/>
-				</Fragment>
+				</>
 			) }
 			{ UAGDisplayConditions == 'userRole' && (
-				<Fragment>
+				<>
 					<SelectControl
 						label={ __( 'Hide for User Role' ) }
 						value={ UAGUserRole }
@@ -145,9 +144,9 @@ const UserConditionOptions = ( props ) => {
 						}
 						options={ uagb_blocks_info.user_role }
 					/>
-				</Fragment>
+				</>
 			) }
-		</Fragment>
+		</>
 	);
 };
 

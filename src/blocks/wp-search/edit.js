@@ -13,7 +13,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/wp-search/render" */ './render' )
 );
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const UAGBWpSearchEdit = ( props ) => {
 	const initState = {

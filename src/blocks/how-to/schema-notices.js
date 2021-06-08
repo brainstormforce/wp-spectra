@@ -4,7 +4,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
 function SchemaNotices( props ) {
 	const {

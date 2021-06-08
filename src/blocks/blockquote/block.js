@@ -10,7 +10,6 @@ import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
-// Import registerBlockType() from wp.blocks
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/blockquote', {
