@@ -82,12 +82,6 @@ export default compose(
 
 		const block = getBlock( clientId );
 
-		for ( let i = 0; i < block.innerBlocks.length; i++ ) {
-			updateBlockAttributes( block.innerBlocks[ i ].clientId, {
-				id: i,
-			} );
-		}
-
 		return {
 			resetTabOrder() {
 				for ( let i = 0; i < block.innerBlocks.length; i++ ) {
@@ -102,7 +96,7 @@ export default compose(
 				} );
 
 				for ( let i = 0; i < block.innerBlocks.length; i++ ) {
-					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
+					updateBlockAttributes( block.innerBlocks[ i ].clientId, {
 						tabActive,
 					} );
 				}
