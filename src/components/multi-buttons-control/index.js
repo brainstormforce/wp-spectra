@@ -14,36 +14,6 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.scss';
 
-/**
- * Constants
- */
-const DefaultOption = [
-	{
-		value: "5",
-		/* translators: abbreviation for small size */
-		label: __( 'S','ultimate-addons-for-gutenberg' ),
-		tooltip: __( 'Small','ultimate-addons-for-gutenberg' ),
-	},
-	{
-		value: "15",
-		/* translators: abbreviation for medium size */
-		label: __( 'M','ultimate-addons-for-gutenberg' ),
-		tooltip: __( 'Medium','ultimate-addons-for-gutenberg' ),
-	},
-	{
-		value: "20",
-		/* translators: abbreviation for large size */
-		label: __( 'L','ultimate-addons-for-gutenberg' ),
-		tooltip: __( 'Large','ultimate-addons-for-gutenberg' ),
-	},
-	{
-		value: "30",
-		/* translators: abbreviation for extra large size */
-		label: __( 'XL','ultimate-addons-for-gutenberg' ),
-		tooltip: __( 'Extra Large','ultimate-addons-for-gutenberg' ),
-	},
-];
-
 const MultiButtonsControl = props => {
 
 	const {
@@ -53,13 +23,19 @@ const MultiButtonsControl = props => {
 		options,
 		showIcons,
 	} = props;
+	
+	if ( !options ){
+		return __( 'Please add a option props to MultiButtonsControl','ultimate-addons-for-gutenberg' );
+	}
 
-	let buttons = options || DefaultOption;
+	let buttons = options;
+
+	let multiButtonLabel = label.toLowerCase();
 
 	return (
-		<BaseControl id={ `uagb-option-selector-${ label }` } label={ label }>
+		<BaseControl id={ `uagb-option-selector-${ multiButtonLabel }` } label={ label }>
 			<PanelRow>
-				<ButtonGroup className={ `uagb-multi-button-${ label.toLowerCase() }-button-group` } aria-label={ label }>
+				<ButtonGroup className={ `uagb-multi-button-${ multiButtonLabel }-button-group` } aria-label={ label }>
 
 					{ buttons.map( ( option ) => (
 						<Tooltip
@@ -67,7 +43,7 @@ const MultiButtonsControl = props => {
 							text={ option.tooltip }>
 
 							<Button
-							    className={ `uagb-multi-button-${ label.toLowerCase() }-button` }
+							    className={ `uagb-multi-button-${ multiButtonLabel }-button` }
 								isLarge
 								isSecondary={ currentOption !== option.value }
 								isPrimary={ currentOption === option.value }
