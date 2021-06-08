@@ -58,7 +58,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 */
 		public function update_toc_title( $parsed_block ) {
 
-			if ( 'uagb/table-of-contents' === $parsed_block['blockName'] ) {
+			if ( 'uagb/table-of-contents' === $parsed_block['blockName'] && ! isset( $parsed_block['attrs']['headingTitle'] ) ) {
 
 				$content = $parsed_block['innerHTML'];
 				$matches = array();
@@ -67,7 +67,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 				$title = $matches[1];
 
-				if ( ! isset( $parsed_block['attrs']['headingTitle'] ) && isset( $title ) ) {
+				if ( ! empty( $title ) ) {
 					$parsed_block['attrs']['headingTitle'] = $title;
 				}
 			}
