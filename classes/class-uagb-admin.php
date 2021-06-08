@@ -497,7 +497,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			if ( 'disabled' === $_POST['value'] ) {
-				UAGB_Helper::delete_upload_dir();
+				UAGB_Helper::delete_all_uag_dir_files();
 			}
 
 			wp_send_json_success(
@@ -700,7 +700,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function delete_page_assets( $post_id ) {
 
-			if ( 'disabled' !== UAGB_Helper::$file_generation ) {
+			if ( 'enabled' === UAGB_Helper::$file_generation ) {
 
 				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
 				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );

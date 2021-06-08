@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.23.0-beta.1
+Stable tag: 1.23.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,7 +168,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.23.0-beta.1 =
+= 1.23.0 =
 * New: Added an option to rollback to a previous version.
 * New: Added an option to get update notifications for beta versions.
 * New: Lottie - Added alignment Option.
@@ -191,6 +191,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Section - Margin Left/Right not working issue.
 * Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
 * Fix: Table of content - HTML validation issue.
+* Fix: Table of Contents - Default heading was displaying instead of previously set heading.
 
 = 1.22.5 =
 * Improvement: Updated Gutenberg Template Library.
