@@ -3,13 +3,11 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import React, { Suspense, useState } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ColumnResponsive from '@Components/typography/column-responsive';
-const svgIcons = Object.keys( UAGBIcon );
 
 import {
 	BlockControls,
@@ -227,7 +225,7 @@ const Settings = ( props ) => {
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Button Icon' ) }</h2>
 				<FontIconPicker
-					icons={ svgIcons }
+					icons={ wp.UAGBSvgIcons }
 					renderFunc={ renderSVG }
 					value={ icon }
 					onChange={ ( value ) => setAttributes( { icon: value } ) }

@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import renderSVG from '@Controls/renderIcon';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
@@ -143,8 +142,6 @@ const Settings = ( props ) => {
 			imageSizeOptions = newImg;
 		}
 	};
-
-	const svgIcons = Object.keys( UAGBIcon );
 
 	if ( image && image.sizes ) {
 		imageSizeOptions = getImageSize( image.sizes );
@@ -470,7 +467,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svgIcons }
+								icons={ wp.UAGBSvgIcons }
 								renderFunc={ renderSVG }
 								theme="default"
 								value={ twitterIcon }
@@ -511,7 +508,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svgIcons }
+								icons={ wp.UAGBSvgIcons }
 								renderFunc={ renderSVG }
 								theme="default"
 								value={ fbIcon }
@@ -552,7 +549,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svgIcons }
+								icons={ wp.UAGBSvgIcons }
 								renderFunc={ renderSVG }
 								noSelectedPlaceholder={ __(
 									'Select Icon',
@@ -593,7 +590,7 @@ const Settings = ( props ) => {
 								) }
 							</p>
 							<FontIconPicker
-								icons={ svgIcons }
+								icons={ wp.UAGBSvgIcons }
 								renderFunc={ renderSVG }
 								noSelectedPlaceholder={ __(
 									'Select Icon',

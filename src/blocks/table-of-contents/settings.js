@@ -2,7 +2,6 @@ import { __ } from '@wordpress/i18n';
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import renderSVG from '@Controls/renderIcon';
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
@@ -123,7 +122,7 @@ const Settings = ( props ) => {
 	};
 
 	const iconProps = {
-		icons: Object.keys( UAGBIcon ),
+		icons: wp.UAGBSvgIcons,
 		value: icon,
 		onChange: getIcon,
 		isMulti: false,

@@ -2,14 +2,12 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import UAGBIcon from '@Controls/UAGBIcon.json';
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
 $ = jQuery;
-const svgIcons = Object.keys( UAGBIcon );
 
 import {
 	AlignmentToolbar,
@@ -436,7 +434,7 @@ const Settings = ( props ) => {
 				{ source_type == 'icon' && (
 					<>
 						<FontIconPicker
-							icons={ svgIcons }
+							icons={ wp.UAGBSvgIcons }
 							renderFunc={ renderSVG }
 							value={ icon }
 							onChange={ ( value ) =>
@@ -1466,7 +1464,7 @@ const Settings = ( props ) => {
 							) }
 						</h2>
 						<FontIconPicker
-							icons={ svgIcons }
+							icons={ wp.UAGBSvgIcons }
 							renderFunc={ renderSVG }
 							value={ ctaIcon }
 							onChange={ ( value ) =>

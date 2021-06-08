@@ -2,7 +2,6 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import React from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import renderSVG from '@Controls/renderIcon';
-import UAGBIcon from '@Controls/UAGBIcon.json';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -22,8 +21,6 @@ import {
 	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
-
-const svgIcons = Object.keys( UAGBIcon );
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -246,7 +243,7 @@ const Settings = ( props ) => {
 							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 						<FontIconPicker
-							icons={ svgIcons }
+							icons={ wp.UAGBSvgIcons }
 							renderFunc={ renderSVG }
 							theme="default"
 							value={ icon }
