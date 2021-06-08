@@ -1193,8 +1193,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( 'enabled' === self::$file_generation ) {
-				self::file_write( self::$stylesheet, 'css' );
-				self::file_write( self::$script, 'js' );
+
+				$post_assets_instance = $this->get_post_assets_instance();
+
+				if ( $post_assets_instance ) {
+					$post_assets_instance->stylesheet .= self::$stylesheet;
+					$post_assets_instance->script     .= self::$script;
+				}
 			}
 		}
 
