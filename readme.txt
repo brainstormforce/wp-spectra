@@ -191,7 +191,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Section - Margin Left/Right not working issue.
 * Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
 * Fix: Table of content - HTML validation issue.
-* Fix: Table of Contents - Default Heading displayed instead of previously set Heading.
+* Fix: Table of Contents - Default heading was displaying instead of previously set heading.
 
 = 1.22.5 =
 * Improvement: Updated Gutenberg Template Library.
