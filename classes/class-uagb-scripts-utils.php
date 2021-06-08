@@ -17,7 +17,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue Gutenberg block assets for both frontend + backend.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_dependency_both() {
 
@@ -102,7 +102,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue block styles.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_styles() {
 
@@ -131,7 +131,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue block rtl styles.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_rtl_styles() {
 		if ( is_rtl() ) {
