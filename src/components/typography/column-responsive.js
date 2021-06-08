@@ -10,7 +10,6 @@ import {
 } from '@wordpress/components'
 
 // Extend component
-import { Fragment } from '@wordpress/element'
 import { useSelect, useDispatch } from '@wordpress/data';
 
 /**
@@ -47,13 +46,13 @@ export default function ColumnResponsive ( props ) {
 	];
 	const output = {};
 	output.Desktop = (
-        <Fragment></Fragment>
+        <></>
 	);
 	output.Tablet = (
-        <Fragment></Fragment>
+        <></>
 	);
 	output.Mobile = (
-        <Fragment></Fragment>
+        <></>
 	);
 	return (
 		<div className={ 'uag-typography-range-options' }>

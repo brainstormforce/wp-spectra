@@ -10,9 +10,7 @@ import {
 	Dashicon,
 } from '@wordpress/components'
 
-// Extend component
-import { Fragment } from '@wordpress/element'
-
+import { useSelect, useDispatch } from '@wordpress/data';
 /**
  * Build the Measure controls
  * @returns {object} Measure settings.
@@ -74,7 +72,7 @@ export default function RangeTypographyControl ( props ) {
 	)
 	const output = {};
 	output.Desktop = (
-		<Fragment>
+		<>
 			{sizeTypesControls}
 			<RangeControl
 				label={ __( props.sizeText ) }
@@ -87,10 +85,10 @@ export default function RangeTypographyControl ( props ) {
 				allowReset={true}
 				initialPosition={30}
 			/>
-		</Fragment>
+		</>
 	);
 	output.Tablet = (
-		<Fragment>
+		<>
 			{sizeTypesControls}
 			<RangeControl
 				label={ __( props.sizeTabletText ) }
@@ -103,10 +101,10 @@ export default function RangeTypographyControl ( props ) {
 				allowReset={true}
 				initialPosition={30}
 			/>
-		</Fragment>
+		</>
 	);
 	output.Mobile = (
-		<Fragment>
+		<>
 			{sizeTypesControls}
 			<RangeControl
 				label={ __( props.sizeMobileText ) }
@@ -119,7 +117,7 @@ export default function RangeTypographyControl ( props ) {
 				allowReset={true}
 				initialPosition={30}
 			/>
-		</Fragment>
+		</>
 	);
 	return (
 		<div className={ 'uag-typography-range-options' }>
