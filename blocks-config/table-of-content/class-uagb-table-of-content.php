@@ -65,10 +65,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 				preg_match( '/<div class=\"uagb-toc__title\">([^`]*?)<\/div>/', $content, $matches );
 
-				$title = $matches[1];
-
-				if ( ! empty( $title ) ) {
-					$parsed_block['attrs']['headingTitle'] = $title;
+				if ( ! empty( $matches[1] ) ) {
+					$parsed_block['attrs']['headingTitle'] = $matches[1];
 				}
 			}
 
