@@ -46,7 +46,9 @@ const ContentTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-
+		if(null == select( 'core/block-editor' ).getBlocksByClientId( props.clientId )[ 0 ]){
+			return
+		}
 		select( 'core/block-editor' )
 			.getBlocksByClientId( props.clientId )[ 0 ]
 			.innerBlocks.forEach( function ( block, key ) {
