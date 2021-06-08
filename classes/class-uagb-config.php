@@ -50,7 +50,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
-					'uagb/demo-control'          => array(
+					'uagb/demo-control'           => array(
 						'slug'        => '',
 						'title'       => __( 'Demo Control', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you find out demo control.', 'ultimate-addons-for-gutenberg' ),
