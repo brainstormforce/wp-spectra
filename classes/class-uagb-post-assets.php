@@ -183,16 +183,29 @@ class UAGB_Post_Assets {
 
 		if ( 'enabled' === $this->file_generation ) {
 
-			$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
-			$css_file_path  = $css_asset_info['css'];
+			$css_file_name = get_post_meta( $this->post_id, '_uag_css_file_name', true );
+			$js_file_name  = get_post_meta( $this->post_id, '_uag_js_file_name', true );
 
-			$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
-			$js_file_path  = $js_asset_info['js'];
+			if ( ! empty( $css_file_name ) ) {
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $this->post_id );
+				$css_file_path  = $css_asset_info['css'];
+			}
+
+			if ( ! empty( $js_file_name ) ) {
+				$js_asset_info = UAGB_Scripts_Utils::get_asset_info( 'js', $this->post_id );
+				$js_file_path  = $js_asset_info['js'];
+			}
 
 			if ( $version_updated ) {
 				$uagb_filesystem = uagb_filesystem();
-				$uagb_filesystem->delete( $css_file_path );
-				$uagb_filesystem->delete( $js_file_path );
+
+				if ( ! empty( $css_file_path ) ) {
+					$uagb_filesystem->delete( $css_file_path );
+				}
+
+				if ( ! empty( $js_file_path ) ) {
+					$uagb_filesystem->delete( $js_file_path );
+				}
 
 				// Delete keys.
 				delete_post_meta( $this->post_id, '_uag_css_file_name' );
