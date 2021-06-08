@@ -18,7 +18,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 //  Import CSS.
 import "./style.scss"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const { compose } = wp.compose
 
@@ -960,7 +960,7 @@ export default compose(
 	withSelect( ( select, ownProps ) => {
 
 		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
-	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 		let url_chk = ''
 		let title = ''
@@ -1037,7 +1037,7 @@ export default compose(
 						"url": steps.attributes.ctaLink,
 						"name": steps.attributes.infoBoxTitle,
 						"text": steps.attributes.headingDesc,
-						"image": steps.attributes.iconImage.url
+						"image": steps.attributes.iconImage?.url
 				}
 				json_data["step"][key] = steps_data;
 			});	

@@ -2,8 +2,8 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSS from "@Controls/generateCSS"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -95,7 +95,7 @@ function styling( props ) {
 		" > .uagb-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"color": bodyTextColor,
 		},
-		" > .uagb-tabs__icon svg" : {
+		" .uagb-tabs__icon svg" : {
 			"height": generateCSSUnit( iconSize, "px" ),
 			"width": generateCSSUnit( iconSize, "px" ),
 			"fill": iconColor

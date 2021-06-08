@@ -2,7 +2,7 @@
  * BLOCK: Content Timeline Child
  */
 
- import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+ import UAGB_Block_Icons from "@Controls/block-icons"
  import ".././style.scss"
  import "./style.scss"
  import save from "./save"
@@ -10,7 +10,7 @@
  import edit from "./edit"
  import deprecated from "./deprecated"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 
 const {
 	registerBlockType

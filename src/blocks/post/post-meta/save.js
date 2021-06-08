@@ -1,4 +1,4 @@
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 export default function save() {
     return <div className='uagb-post-grid-byline'>
             <span className='uagb-post__author'>

@@ -2,8 +2,8 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSS from "@Controls/generateCSS"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -66,7 +66,7 @@ function styling( props ) {
 
 	var selectors = {
 
-		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
+		" .rich-text.block-editor-rich-text__editable.uagb-notice-title" : {
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-weight": titleFontWeight,
 			"font-family": titleFontFamily,
@@ -102,9 +102,9 @@ function styling( props ) {
 	
 	if("modern" == layout){	
 
-		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["background-color"] = noticeColor
-		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["border-top-right-radius"] = "3px"
-		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["border-top-left-radius"] = "3px"
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title"]["background-color"] = noticeColor
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title"]["border-top-right-radius"] = "3px"
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title"]["border-top-left-radius"] = "3px"
 
 		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["background-color"] = contentBgColor
 		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["border"] = "2px solid" + noticeColor
@@ -114,15 +114,15 @@ function styling( props ) {
 
 	}else if("simple" == layout){	
 		
-		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["background-color"] = contentBgColor
-		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus"]["border-left"] =  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title"]["background-color"] = contentBgColor
+		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-title"]["border-left"] =  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor
 
 		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["background-color"] = contentBgColor
 		selectors[" .rich-text.block-editor-rich-text__editable.uagb-notice-text"]["border-left"] =  generateCSSUnit( highlightWidth, "px" ) +" solid " + noticeColor
 		
 	}
 	mobile_selectors = {
-		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
+		" .rich-text.block-editor-rich-text__editable.uagb-notice-title" : {
 			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 		},
@@ -134,7 +134,7 @@ function styling( props ) {
 	}
 
 	tablet_selectors = { 
-			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
+			" .rich-text.block-editor-rich-text__editable.uagb-notice-title" : {
 				"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 				"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 			},

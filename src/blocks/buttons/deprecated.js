@@ -6,7 +6,8 @@ import classnames from "classnames"
 import times from "lodash/times"
 import attributes from "./attributes"
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 const {
 	RichText

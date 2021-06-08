@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components.
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 
 // Import icon.
 import edit from "./edit"
@@ -12,7 +12,8 @@ import save from "./save"
 import attributes from "./attributes"
 import "./editor.scss"
 import "./style.scss"
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
+
 
 // Import registerBlockType() from wp.blocks
 const {
@@ -32,8 +33,8 @@ const {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/blockquote", {
-	title: uagb_blocks_info.blocks["uagb/blockquote"]["title"],
-	description: uagb_blocks_info.blocks["uagb/blockquote"]["description"],
+	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.blockquote,
 	keywords: [
 		__( "blockquote", 'ultimate-addons-for-gutenberg' ),

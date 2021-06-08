@@ -2,7 +2,7 @@
  * How-To Schema Notices component.
  *
  */
-const { __ } = wp.i18n
+ import { __ } from '@wordpress/i18n';
 
 const { select } = wp.data;
 
@@ -42,7 +42,7 @@ class SchemaNotices extends Component {
         var steps = select('core/block-editor').getBlocks( clientId );
         var steps_empty_item_flag = false;
         steps.forEach((step, key) => {
-            if ( '' === step.attributes.ctaLink || '#' === step.attributes.ctaLink || '' === step.attributes.infoBoxTitle || '' === step.attributes.headingDesc || '' === step.attributes.iconImage.url ) {
+            if ( '' === step.attributes.ctaLink || '#' === step.attributes.ctaLink || '' === step.attributes.infoBoxTitle || '' === step.attributes.headingDesc || '' === step.attributes.iconImage?.url ) {
                 steps_empty_item_flag = true;
             }
         });

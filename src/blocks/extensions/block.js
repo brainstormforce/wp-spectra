@@ -1,6 +1,6 @@
 import UserConditionOptions from './condition-block';
 
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const enableConditions = uagb_blocks_info.uagb_display_condition;
 
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {
@@ -15,7 +15,7 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 		
 		const blocks_name = props.name;
 		
-		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
+		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
 			<Fragment>
 				<BlockEdit {...props} />

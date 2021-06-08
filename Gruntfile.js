@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 					"!package.json",
 					"!package-lock.json",
 					"!.gitignore",
+					"!.gitattributes",
 					"!*.zip",
 					"!Optimization.txt",
 					"!composer.json",
@@ -198,7 +199,7 @@ module.exports = function(grunt) {
 
                 var fonts = JSON.parse(body);
 
-                fs.writeFile('dist/blocks/uagb-controls/UAGBIcon.json', JSON.stringify(fonts, null, 4), function (err) {
+                fs.writeFile('blocks-config/uagb-controls/UAGBIcon.json', JSON.stringify(fonts, null, 4), function (err) {
                     if (!err) {
                         console.log("Font-Awesome library updated!");
                     }

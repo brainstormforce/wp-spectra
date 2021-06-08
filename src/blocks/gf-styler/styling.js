@@ -3,8 +3,8 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
-import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
-import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+import generateCSS from "@Controls/generateCSS"
+import generateCSSUnit from "@Controls/generateCSSUnit"
 
 function styling( props ) {
 

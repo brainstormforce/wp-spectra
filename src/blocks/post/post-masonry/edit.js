@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "@Controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
 import Columnresponsive from "../../../components/typography/column-responsive"
@@ -20,7 +20,7 @@ import {
 
 const { compose } = wp.compose
 const { Component, Fragment  } = wp.element
-const { __ } = wp.i18n
+import { __ } from '@wordpress/i18n';
 const MAX_POSTS_COLUMNS = 8
 const { createBlock } = wp.blocks
 const {
