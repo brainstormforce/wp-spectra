@@ -106,10 +106,15 @@ final class UAGB_Scripts_Utils {
 	 */
 	public static function enqueue_blocks_styles() {
 
-		if ( file_exists( UAGB_DIR . 'assets/css/custom-style-blocks.css' ) ) {
+		$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
+
+		if ( file_exists( $wp_upload_dir . 'custom-style-blocks.css' ) ) {
+
+			$wp_upload_url = UAGB_Helper::get_uag_upload_url_path();
+
 			wp_enqueue_style(
 				'uagb-block-css', // Handle.
-				UAGB_URL . 'assets/css/custom-style-blocks.css', // Block style CSS.
+				$wp_upload_url . 'custom-style-blocks.css', // Block style CSS.
 				array(),
 				UAGB_VER
 			);

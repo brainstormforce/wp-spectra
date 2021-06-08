@@ -497,7 +497,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			if ( 'disabled' === $_POST['value'] ) {
-				UAGB_Helper::delete_upload_dir();
+				UAGB_Helper::delete_all_uag_dir_files();
 			}
 
 			wp_send_json_success(

@@ -780,11 +780,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_uag_upload_dir_path() {
 
-			$wp_info  = wp_upload_dir( null, false );
-			$dir_name = 'uag-plugin';
+			$wp_info = self::get_upload_dir();
 
 			// Build the paths.
-			return trailingslashit( $wp_info['basedir'] ) . $dir_name;
+			return $wp_info['path'];
+		}
+
+		/**
+		 * Get UAG upload url path.
+		 *
+		 * @since 1.23.0
+		 * @return string
+		 */
+		public static function get_uag_upload_url_path() {
+
+			$wp_info = self::get_upload_dir();
+
+			// Build the paths.
+			return $wp_info['url'];
 		}
 
 		/**
@@ -797,13 +810,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$dir           = self::get_uag_upload_dir_path();
 			$wp_filesystem = uagb_filesystem();
-			$dir           = trailingslashit( $dir );
 			$filelist      = $wp_filesystem->dirlist( $dir, true );
 			$retval        = true;
 
 			if ( is_array( $filelist ) ) {
 
 				unset( $filelist['index.html'] );
+				unset( $filelist['custom-style-blocks.css'] );
 
 				foreach ( $filelist as $filename => $fileinfo ) {
 					if ( ! $wp_filesystem->delete( $dir . $filename, true, $fileinfo['type'] ) ) {
