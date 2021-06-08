@@ -1,15 +1,13 @@
 /**
  * WordPress dependencies
  */
- const {
+ import {
 	BaseControl,
 	Button,
 	ButtonGroup,
 	PanelRow,
-	RangeControl,
 	Tooltip,
-} = wp.components
-
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 /**
  * Import Css
@@ -19,7 +17,7 @@ import './editor.scss';
 /**
  * Constants
  */
-const DEFAULT_OPTIONS = [
+const DefaultOption = [
 	{
 		value: "5",
 		/* translators: abbreviation for small size */
@@ -46,45 +44,22 @@ const DEFAULT_OPTIONS = [
 	},
 ];
 
-const NONE_OPTION = {
-	value: "0",
-	label: __( 'None','ultimate-addons-for-gutenberg' ),
-	tooltip: __( 'None','ultimate-addons-for-gutenberg' ),
-};
-
 const MultiButtonsControl = props => {
 
 	const {
-		advancedMaxValue,
-		advancedMinValue,
 		currentOption,
 		label,
 		onChange,
 		options,
-		showAdvancedControls,
 		showIcons,
-		showNoneOption,
 	} = props;
 
-	let buttons = options || DEFAULT_OPTIONS;
+	let buttons = options || DefaultOption;
 
-	if ( showNoneOption ) {
-		buttons = [ NONE_OPTION, ...buttons ];
-	}
-
-	return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
-
-		<RangeControl
-			label={ label }
-			value={ currentOption }
-			onChange={ ( value ) => onChange( value ) }
-			min={ advancedMinValue }
-			max={ advancedMaxValue }
-		/> :
-
+	return (
 		<BaseControl id={ `uagb-option-selector-${ label }` } label={ label }>
 			<PanelRow>
-				<ButtonGroup aria-label={ label }>
+				<ButtonGroup className={ `uagb-multi-button-${ label.toLowerCase() }-button-group` } aria-label={ label }>
 
 					{ buttons.map( ( option ) => (
 						<Tooltip
@@ -92,6 +67,7 @@ const MultiButtonsControl = props => {
 							text={ option.tooltip }>
 
 							<Button
+							    className={ `uagb-multi-button-${ label.toLowerCase() }-button` }
 								isLarge
 								isSecondary={ currentOption !== option.value }
 								isPrimary={ currentOption === option.value }
@@ -110,7 +86,6 @@ const MultiButtonsControl = props => {
 			</PanelRow>
 		</BaseControl>
 	);
-
 }
 
 export default MultiButtonsControl
