@@ -5,9 +5,14 @@ coverage
 cypress
 node_modules
 vendor
-
-
+admin/bsf-analytics/
+assets/css/blocks/
+lib/
+dist/
+assets/css/style-blocks.rtl.css
 *.json
 *.js
 *.lock
 *-invalid.*
+*.min.css
+
