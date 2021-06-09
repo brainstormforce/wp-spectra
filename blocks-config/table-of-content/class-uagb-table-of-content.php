@@ -84,7 +84,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @param boolean $update Whether this is an existing post being updated.
 		 */
 		public function delete_toc_meta( $post_id, $post, $update ) {
-			delete_post_meta( $post_id, '_uagb_toc_heading_content' );
+			delete_post_meta( $post_id, '_uagb_toc_options' );
 		}
 
 		/**
