@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.23.0
+Stable tag: 1.23.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,7 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.23.1 =
-* Fix: Table of Contents - Heading replaced with the question symbol.
+* Fix: Broken path while generating assets (CSS/JS).
+* Fix: Table of Contents - Heading convert to question marks on the frontend.
+* Fix: Table of Contents - Unexpected characters in links. Restricted to alphanumeric characters.
 
 = 1.23.0 =
 * New: Added an option to rollback to a previous version.
