@@ -156,11 +156,19 @@ final class UAGB_Scripts_Utils {
 	public static function get_asset_info( $type, $post_id ) {
 
 		$uploads_dir = UAGB_Helper::get_upload_dir();
-		$info        = array();
+		$file_name   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
+		$path        = $type;
+		$url         = $type . '_url';
 
-		$path                   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
-		$info[ $type ]          = $uploads_dir['path'] . $path;
-		$info[ $type . '_url' ] = $uploads_dir['url'] . $path;
+		$info = array(
+			$path => '',
+			$url  => '',
+		);
+
+		if ( ! empty( $file_name ) ) {
+			$info[ $path ] = $uploads_dir['path'] . $file_name;
+			$info[ $url ]  = $uploads_dir['url'] . $file_name;
+		}
 
 		return $info;
 	}
