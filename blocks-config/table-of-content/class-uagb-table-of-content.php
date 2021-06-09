@@ -84,7 +84,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @param boolean $update Whether this is an existing post being updated.
 		 */
 		public function delete_toc_meta( $post_id, $post, $update ) {
-			delete_post_meta( $post_id, '_uagb_toc_heading_content' );
+			delete_post_meta( $post_id, '_uagb_toc_options' );
 		}
 
 		/**
@@ -126,13 +126,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
 				htmlspecialchars_decode(
-					utf8_decode(
-						htmlentities(
-							'<html><body>' . $content . '</body></html>',
-							ENT_COMPAT,
-							'UTF-8',
-							false
-						)
+					htmlentities(
+						'<html><body>' . $content . '</body></html>',
+						ENT_COMPAT,
+						'UTF-8',
+						false
 					),
 					ENT_COMPAT
 				)
@@ -195,7 +193,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
 									'id'      => $this->clean( $heading->textContent ),
-									'content' => $heading->textContent,
+									'content' => utf8_decode( $heading->textContent ),
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
@@ -218,26 +216,24 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @return string $string.
 		 */
 		public function clean( $string ) {
-			$string = str_replace( array( '‘', '’', '“', '”' ), '', $string );
-			$string = str_replace( array( '$', '.', '+', '!', '*', '\'', '(', ')', ',' ), '', $string );
-			$string = str_replace( array( '%', '{', '}', '|', '\\', '^', '~', '[', ']', '`' ), '', $string );
-			$string = str_replace(
-				array( '*', '\'', '(', ')', ';', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']' ),
-				'',
-				$string
-			);
 			$string = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $string );
 			$string = str_replace( array( '&amp;', '&nbsp;' ), ' ', $string );
-			$string = str_replace( array( ':' ), '', $string );
+			// Remove all except alphbets, space, `-` and `_`.
+			$string = preg_replace( '/[^A-Za-z0-9 _-]/', '', $string );
 			// Convert space characters to an `_` (underscore).
 			$string = preg_replace( '/\s+/', '_', $string );
+			// Replace multiple `_` (underscore) with a single `-` (hyphen).
+			$string = preg_replace( '/_+/', '-', $string );
 			// Replace multiple `-` (hyphen) with a single `-` (hyphen).
 			$string = preg_replace( '/-+/', '-', $string );
-			// Replace multiple `_` (underscore) with a single `_` (underscore).
-			$string = preg_replace( '/_+/', '-', $string );
 			// Remove trailing `-` and `_`.
 			$string = trim( $string, '-_' );
-			return strtolower( preg_replace( '/-+/', '-', $string ) ); // Replaces multiple hyphens with single one.
+
+			if ( empty( $string ) ) {
+				$string = 'toc_' . uniqid();
+			}
+
+			return strtolower( $string ); // Replaces multiple hyphens with single one.
 		}
 
 		/**
@@ -409,16 +405,23 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return '';
 			}
 
-			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
+			$uagb_toc_version         = ! empty( $uagb_toc_options['_uagb_toc_version'] ) ? $uagb_toc_options['_uagb_toc_version'] : '';
+			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
-			if ( empty( $uagb_toc_heading_content ) ) {
+			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 
 				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
 					$post->ID,
 					$attributes
 				);
 
-				update_post_meta( $post->ID, '_uagb_toc_heading_content', $uagb_toc_heading_content );
+				$meta_array = array(
+					'_uagb_toc_version'  => UAGB_ASSET_VER,
+					'_uagb_toc_headings' => $uagb_toc_heading_content,
+				);
+
+				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
 
 			}
 
