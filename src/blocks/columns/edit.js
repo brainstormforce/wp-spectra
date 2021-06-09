@@ -2,8 +2,6 @@
  * BLOCK: UAGB - Columns Edit
  */
 
-// Import classes
-
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
@@ -28,7 +26,7 @@ import { withNotices } from '@wordpress/components';
 
 import { createBlock } from '@wordpress/blocks';
 
-const columnsComponent = ( props ) => {
+const ColumnsComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
@@ -114,7 +112,7 @@ const columnsComponent = ( props ) => {
 };
 
 const applyWithSelect = withSelect( ( select, props ) => {
-	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
+	const { getBlocks } = select( 'core/block-editor' );
 	const {
 		getBlockType,
 		getBlockVariations,
@@ -151,4 +149,4 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	};
 } );
 
-export default compose( withNotices, applyWithSelect )( columnsComponent );
+export default compose( withNotices, applyWithSelect )( ColumnsComponent );

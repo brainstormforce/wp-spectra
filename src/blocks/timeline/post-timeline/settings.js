@@ -2,7 +2,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
@@ -143,15 +143,11 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};
@@ -167,7 +163,7 @@ const Settings = ( props ) => {
 	];
 
 	if ( '' != taxonomyList ) {
-		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
 				label: taxonomyList[ item ].label,
@@ -176,7 +172,7 @@ const Settings = ( props ) => {
 	}
 
 	if ( '' != categoriesList ) {
-		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
 				label: categoriesList[ item ].name,
@@ -279,11 +275,6 @@ const Settings = ( props ) => {
 		),
 	};
 
-	const sizeTypes = [
-		{ key: 'px', name: __( 'px', 'ultimate-addons-for-gutenberg' ) },
-		{ key: 'em', name: __( 'em', 'ultimate-addons-for-gutenberg' ) },
-	];
-
 	const querySettings = () => {
 		return (
 			<PanelBody
@@ -327,7 +318,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ excludeCurrentPost }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							excludeCurrentPost: ! excludeCurrentPost,
 						} )
@@ -517,7 +508,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostImage }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostImage: ! displayPostImage,
 						} )
@@ -551,7 +542,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostAuthor }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostAuthor: ! displayPostAuthor,
 						} )
@@ -563,7 +554,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostDate }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostDate: ! displayPostDate } )
 					}
 				/>
@@ -643,7 +634,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostExcerpt }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostExcerpt: ! displayPostExcerpt,
 						} )
@@ -671,7 +662,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostLink }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
@@ -695,7 +686,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ linkTarget }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>

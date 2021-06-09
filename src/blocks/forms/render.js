@@ -18,7 +18,7 @@ const ALLOWED_BLOCKS = [
 	'uagb/forms-accept',
 ];
 
-const { InnerBlocks, RichText } = wp.blockEditor;
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.

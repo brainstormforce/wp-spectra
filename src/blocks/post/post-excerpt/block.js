@@ -6,13 +6,12 @@
 import { PostExcerpt } from './edit';
 import save from './save';
 import UAGB_Block_Icons from '@Controls/block-icons';
-//  Import CSS.
-import './style.scss';
 // Components
 import { __ } from '@wordpress/i18n';
 
 // Register block controls
-const { registerBlockType } = wp.blocks;
+
+import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-excerpt', {

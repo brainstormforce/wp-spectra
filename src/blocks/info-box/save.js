@@ -13,8 +13,6 @@ import InfoBoxSeparator from './components/InfoBoxSeparator';
 import CallToAction from './components/CallToAction';
 import InfoBoxIconImage from './components/IconImage';
 
-import { Fragment } from '@wordpress/element';
-
 export default function save( props ) {
 	const {
 		iconimgPosition,
@@ -36,59 +34,59 @@ export default function save( props ) {
 	} = props.attributes;
 
 	// Get icon/Image components.
-	let is_image = '';
+	let isImage = '';
 
 	if ( source_type === 'icon' && icon !== '' ) {
-		is_image = <Icon attributes={ props.attributes } />;
+		isImage = <Icon attributes={ props.attributes } />;
 	} else {
-		is_image = <InfoBoxIconImage attributes={ props.attributes } />;
+		isImage = <InfoBoxIconImage attributes={ props.attributes } />;
 	}
 
-	let icon_image_html = is_image;
-	let seperator_position = seperatorPosition;
-	const seperator_html = <InfoBoxSeparator attributes={ props.attributes } />;
-	let show_seperator = true;
+	let iconImageHtml = isImage;
+	let position = seperatorPosition;
+	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />;
+	let showSeperator = true;
 
 	if (
-		seperatorPosition == 'after_icon' &&
+		position == 'after_icon' &&
 		( iconimgPosition == 'above-title' || iconimgPosition == 'below-title' )
 	) {
-		show_seperator = false;
-		icon_image_html = (
-			<Fragment>
-				{ is_image }
-				{ 'none' !== seperatorStyle && seperator_html }
-			</Fragment>
+		showSeperator = false;
+		iconImageHtml = (
+			<>
+				{ isImage }
+				{ 'none' !== seperatorStyle && seperatorHtml }
+			</>
 		);
 	}
 
 	if (
-		seperatorPosition == 'after_icon' &&
+		position == 'after_icon' &&
 		( iconimgPosition !== 'above-title' ||
 			iconimgPosition !== 'below-title' )
 	) {
-		seperator_position = 'after_title';
+		position = 'after_title';
 	}
 
 	if (
 		iconimgPosition == 'below-title' &&
-		seperatorPosition == 'after_title'
+		position == 'after_title'
 	) {
-		show_seperator = false;
-		icon_image_html = (
-			<Fragment>
-				{ 'none' !== seperatorStyle && seperator_html }
-				{ is_image }
-			</Fragment>
+		showSeperator = false;
+		iconImageHtml = (
+			<>
+				{ 'none' !== seperatorStyle && seperatorHtml }
+				{ isImage }
+			</>
 		);
 	}
 	// Get description and seperator components.
 	const desc = (
-		<Fragment>
+		<>
 			{ 'none' !== seperatorStyle &&
-				seperator_position == 'after_title' &&
-				show_seperator &&
-				seperator_html }
+				position == 'after_title' &&
+				showSeperator &&
+				seperatorHtml }
 			<div className="uagb-ifb-text-wrap">
 				{ showDesc && '' !== headingDesc && (
 					<InfoBoxDesc
@@ -97,13 +95,13 @@ export default function save( props ) {
 					/>
 				) }
 				{ 'none' !== seperatorStyle &&
-					seperator_position == 'after_desc' &&
-					seperator_html }
+					position == 'after_desc' &&
+					seperatorHtml }
 				{ ctaType !== 'none' && (
 					<CallToAction attributes={ props.attributes } />
 				) }
 			</div>
-		</Fragment>
+		</>
 	);
 
 	// Get Title and Prefix components.
@@ -116,8 +114,8 @@ export default function save( props ) {
 				/>
 			) }
 			{ 'none' !== seperatorStyle &&
-				seperator_position == 'after_prefix' &&
-				seperator_html }
+				position == 'after_prefix' &&
+				seperatorHtml }
 			{ showTitle && '' !== infoBoxTitle && (
 				<Title
 					attributes={ props.attributes }
@@ -136,50 +134,50 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-ifb-left-right-wrap">
-				{ iconimgPosition == 'left' && is_image }
+				{ iconimgPosition == 'left' && isImage }
 				<div className="uagb-ifb-content">
-					{ iconimgPosition == 'above-title' && icon_image_html }
+					{ iconimgPosition == 'above-title' && iconImageHtml }
 
 					{ ( iconimgPosition == 'above-title' ||
 						iconimgPosition == 'below-title' ) &&
 						title_text }
 
-					{ iconimgPosition == 'below-title' && icon_image_html }
+					{ iconimgPosition == 'below-title' && iconImageHtml }
 
 					{ ( iconimgPosition == 'above-title' ||
 						iconimgPosition == 'below-title' ) &&
 						desc }
 
 					{ iconimgPosition === 'left-title' && (
-						<Fragment>
+						<>
 							<div className="uagb-ifb-left-title-image">
-								{ icon_image_html }
+								{ iconImageHtml }
 								{ title_text }
 							</div>
 							{ desc }
-						</Fragment>
+						</>
 					) }
 
 					{ iconimgPosition === 'right-title' && (
-						<Fragment>
+						<>
 							<div className="uagb-ifb-right-title-image">
 								{ title_text }
-								{ icon_image_html }
+								{ iconImageHtml }
 							</div>
 							{ desc }
-						</Fragment>
+						</>
 					) }
 
 					{ ( iconimgPosition == 'left' ||
 						iconimgPosition == 'right' ) && (
-						<Fragment>
+						<>
 							{ title_text }
 							{ desc }
-						</Fragment>
+						</>
 					) }
 				</div>
 
-				{ iconimgPosition == 'right' && icon_image_html }
+				{ iconimgPosition == 'right' && iconImageHtml }
 			</div>
 		</div>
 	);

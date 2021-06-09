@@ -4,7 +4,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
 function SchemaNotices( props ) {
 	const {
@@ -32,7 +32,7 @@ function SchemaNotices( props ) {
 	const emptyItems = [];
 	const steps = select( 'core/block-editor' ).getBlocks( clientId );
 	let steps_empty_item_flag = false;
-	steps.forEach( ( step, key ) => {
+	steps.forEach( ( step ) => {
 		if (
 			'' === step.attributes.ctaLink ||
 			'#' === step.attributes.ctaLink ||

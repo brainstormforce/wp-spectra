@@ -3,8 +3,9 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-const { Button, ToggleControl } = wp.components;
-const { RichText } = wp.blockEditor;
+import { Button, ToggleControl } from '@wordpress/components';
+
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -84,7 +85,7 @@ const Render = ( props ) => {
 	} );
 
 	const RadioView = () => {
-		return options.map( ( option, index ) => {
+		return options.map( ( option ) => {
 			const optionvalue = option.optionvalue;
 			const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 			return (

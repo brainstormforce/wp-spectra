@@ -14,7 +14,7 @@ const Render = lazy( () =>
 
 let prevState;
 
-const faqChildComponent = ( props ) => {
+const FaqChildComponent = ( props ) => {
 	const initialState = {
 		isFocused: 'false',
 	};
@@ -48,10 +48,10 @@ const faqChildComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings />
 			<Render parentProps={ props } state={ state } />
 		</Suspense>
 	);
 };
 
-export default faqChildComponent;
+export default FaqChildComponent;

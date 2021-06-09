@@ -1,5 +1,6 @@
 .uagb-post__image-position-background {
-    .uagb-post__image img {
+
+	.uagb-post__image img {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -8,20 +9,17 @@
 		max-width: none;
 		min-width: 100%;
 		min-height: 100%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 	}
 
+
 	.uagb-post__image {
-		position: relative;
+		position: absolute;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
 		overflow: hidden;
-	}
-
-	.uagb-post__image {
-		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 2;
@@ -36,14 +34,15 @@
 		z-index: 1;
 		width: 100%;
 		height: 100%;
-		background-color: rgba( 255,255,255,0.5 );
-		content: '';
+		background-color: rgba(255, 255, 255, 0.5);
+		content: "";
 	}
 }
+
 .uagb-post__image {
 
-    img {
-        display: block;
-        width: 100%;
-    }
+	img {
+		display: block;
+		width: 100%;
+	}
 }

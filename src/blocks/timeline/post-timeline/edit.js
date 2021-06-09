@@ -3,7 +3,7 @@
  */
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+$ = jQuery;
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-timeline/settings" */ './settings'
@@ -15,9 +15,7 @@ const Render = lazy( () =>
 
 import { withSelect } from '@wordpress/data';
 
-const $ = jQuery;
-
-const postTimelineComponent = ( props ) => {
+const PostTimelineComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store lient id.
@@ -27,7 +25,7 @@ const postTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function ( event ) {
+		$( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 
@@ -43,7 +41,7 @@ const postTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function ( event ) {
+		$( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 	}, [ props ] );
@@ -86,7 +84,6 @@ const postTimelineComponent = ( props ) => {
 				lastItem = parentTop + timelineEndIcon.top;
 			}
 
-			let num = 0;
 			const elementEnd = lastItem + 20;
 
 			const connectorHeight =
@@ -95,7 +92,7 @@ const postTimelineComponent = ( props ) => {
 				document.documentElement.clientHeight + connectorHeight;
 			const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 
-			var elementPos = tmItem.offset().top;
+			let elementPos = tmItem.offset().top;
 
 			const newElementPos = elementPos + timelineStartIcon.top;
 
@@ -106,7 +103,6 @@ const postTimelineComponent = ( props ) => {
 			} else {
 				photoViewportOffsetTop = -Math.abs( photoViewportOffsetTop );
 			}
-
 			if ( elementPos < viewportHeightHalf ) {
 				if (
 					viewportHeightHalf + Math.abs( photoViewportOffsetTop ) <
@@ -129,7 +125,6 @@ const postTimelineComponent = ( props ) => {
 					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
-					++num;
 				} else {
 					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
@@ -144,8 +139,7 @@ const postTimelineComponent = ( props ) => {
 
 			//For changing icon background color and icon color.
 			let timelineIconPos, timelineCardPos;
-			var elementPos, elementCardPos;
-			let timelineIconTop, timelineCardTop;
+			let timelineIconTop, timelineCardTop, elementCardPos;
 			const timelineIcon = timeline.find( '.uagb-timeline__marker' ),
 				animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
 
@@ -217,7 +211,7 @@ export default withSelect( ( select, props ) => {
 
 	const allTaxonomy = uagb_blocks_info.all_taxonomy;
 	const currentTax = allTaxonomy[ postType ];
-	const taxonomy = '';
+
 	let categoriesList = [];
 	let restBase = '';
 
@@ -275,4 +269,4 @@ export default withSelect( ( select, props ) => {
 		taxonomyList:
 			'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 	};
-} )( postTimelineComponent );
+} )( PostTimelineComponent );

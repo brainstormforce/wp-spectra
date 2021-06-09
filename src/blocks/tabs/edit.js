@@ -62,7 +62,7 @@ const UAGBTabsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const { __experimentalGetPreviewDeviceType = null } = select(
 			'core/edit-post'
 		);
@@ -73,7 +73,7 @@ export default compose(
 			deviceType,
 		};
 	} ),
-	withDispatch( ( dispatch, { clientId }, { select } ) => {
+	withDispatch( ( clientId ) => {
 		const { getBlock } = select( 'core/block-editor' );
 
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
@@ -81,12 +81,6 @@ export default compose(
 		);
 
 		const block = getBlock( clientId );
-
-		for ( let i = 0; i < block.innerBlocks.length; i++ ) {
-			updateBlockAttributes( block.innerBlocks[ i ].clientId, {
-				id: i,
-			} );
-		}
 
 		return {
 			resetTabOrder() {
@@ -102,11 +96,11 @@ export default compose(
 				} );
 
 				for ( let i = 0; i < block.innerBlocks.length; i++ ) {
-					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
+					updateBlockAttributes( block.innerBlocks[ i ].clientId, {
 						tabActive,
 					} );
 				}
-				resetTabOrder;
+				this.resetTabOrder();
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition(

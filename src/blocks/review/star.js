@@ -1,5 +1,3 @@
-import { __ } from '@wordpress/i18n';
-
 const Stars = ( props ) => {
 	const mouseHover = ( i ) => {
 		props.setStateValue( {

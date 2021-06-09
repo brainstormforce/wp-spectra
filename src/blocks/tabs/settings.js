@@ -3,7 +3,7 @@ import renderSVG from '@Controls/renderIcon';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TypographyControl from '@Components/typography';
 import ColumnResponsive from '@Components/typography/column-responsive';
-
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -78,7 +78,6 @@ const Settings = ( props ) => {
 				title={ __( 'Tabs Style', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-
 				<ColumnResponsive />
 
 				{ 'Desktop' === deviceType && (
@@ -432,9 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showIcon }
-					onChange={ ( value ) =>
-						setAttributes( { showIcon: ! showIcon } )
-					}
+					onChange={ () => setAttributes( { showIcon: ! showIcon } ) }
 				/>
 				{ showIcon && (
 					<>

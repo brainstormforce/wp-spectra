@@ -23,7 +23,7 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
+	
 	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;
@@ -50,8 +50,8 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
-				newBlocks.push( createBlock( name, attributes ) );
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
 			replaceInnerBlocks( props.clientId, newBlocks );

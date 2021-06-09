@@ -1,19 +1,6 @@
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 import UAGB_Block_Icons from '@Controls/block-icons';
 //  Import CSS.
 import '.././style.scss';
-import './style.scss';
 import deprecated from './deprecated';
 import save from './save';
 import attributes from './attributes';

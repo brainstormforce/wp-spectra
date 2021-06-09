@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import React from 'react';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -51,7 +52,6 @@ const Render = ( props ) => {
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 		/>
 	);
-
 	return (
 		<div
 			className={ classnames(

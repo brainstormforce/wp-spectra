@@ -27,8 +27,8 @@ registerBlockType( 'uagb/section', {
 	},
 	attributes,
 	edit,
-	getEditWrapperProps( attributes ) {
-		const { align, contentWidth } = attributes;
+	getEditWrapperProps( attribute ) {
+		const { align, contentWidth } = attribute;
 		if (
 			'left' === align ||
 			'right' === align ||

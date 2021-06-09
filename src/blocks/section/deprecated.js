@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import attributes from './attributes';
 
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

@@ -89,11 +89,11 @@ const Render = ( props ) => {
 										{ showhierarchy && p.children != null && (
 											<ul className="uagb-taxonomy-list-children">
 												{ Object.keys( p.children ).map(
-													function ( key, index ) {
+													function ( key, i ) {
 														return (
 															<li
 																className="uagb-tax-list"
-																key={ index }
+																key={ i }
 															>
 																<a
 																	className="uagb-tax-link"

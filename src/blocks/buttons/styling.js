@@ -56,12 +56,14 @@ function styling( props ) {
 		};
 	}
 
-	const alignment =
-		align == 'left'
-			? 'flex-start'
-			: align == 'right'
-			? 'flex-end'
-			: 'center';
+	let alignment = '';
+	if ( align == 'left' ) {
+		alignment = 'flex-start';
+	} else if ( align == 'right' ) {
+		alignment = 'flex-end';
+	} else {
+		alignment = 'center';
+	}
 
 	if ( align !== 'full' ) {
 		selectors[ ' .uagb-buttons__wrap' ] = {

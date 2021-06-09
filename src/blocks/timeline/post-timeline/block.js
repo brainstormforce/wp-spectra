@@ -24,9 +24,6 @@ registerBlockType( 'uagb/post-timeline', {
 		__( 'timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	getEditWrapperProps( attributes ) {
-		const { align } = attributes;
-	},
 	example: {},
 	edit,
 	// Render via PHP

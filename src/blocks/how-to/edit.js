@@ -5,7 +5,6 @@
 import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
-import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
@@ -20,7 +19,7 @@ const Render = lazy( () =>
 
 let prevState;
 
-const howToComponent = ( props ) => {
+const HowToComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -86,7 +85,6 @@ const howToComponent = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-
 	const minsValue = timeInMins ? timeInMins : time;
 
 	return (
@@ -124,7 +122,6 @@ export default compose(
 		const deviceType = __experimentalGetPreviewDeviceType
 			? __experimentalGetPreviewDeviceType()
 			: null;
-
 		let urlChk = '';
 		let title = '';
 
@@ -136,7 +133,6 @@ export default compose(
 			urlChk = ownProps.attributes.mainimage.url;
 			title = ownProps.attributes.mainimage.title;
 		}
-
 		let toolsData = {};
 		let materialsData = {};
 		let stepsData = {};
@@ -228,4 +224,4 @@ export default compose(
 			deviceType,
 		};
 	} )
-)( howToComponent );
+)( HowToComponent );

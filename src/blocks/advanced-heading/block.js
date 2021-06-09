@@ -48,10 +48,10 @@ registerBlockType( 'uagb/advanced-heading', {
 			{
 				type: 'block',
 				blocks: [ 'core/heading' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'uagb/advanced-heading', {
-						headingTitle: attributes.content,
-						headingAlign: attributes.align,
+						headingTitle: attribute.content,
+						headingAlign: attribute.align,
 						className: 'uagb-heading-text',
 					} );
 				},
@@ -59,10 +59,10 @@ registerBlockType( 'uagb/advanced-heading', {
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'uagb/advanced-heading', {
-						headingTitle: attributes.value,
-						headingDesc: attributes.citation,
+						headingTitle: attribute.value,
+						headingDesc: attribute.citation,
 						className: 'uagb-heading-text',
 					} );
 				},
@@ -72,10 +72,10 @@ registerBlockType( 'uagb/advanced-heading', {
 			{
 				type: 'block',
 				blocks: [ 'core/heading' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'core/heading', {
-						content: attributes.headingTitle,
-						align: attributes.headingAlign,
+						content: attribute.headingTitle,
+						align: attribute.headingAlign,
 						className: 'uagb-heading-text',
 					} );
 				},
@@ -83,10 +83,10 @@ registerBlockType( 'uagb/advanced-heading', {
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'core/quote', {
-						value: `<p>${ attributes.headingTitle }</p>`,
-						citation: attributes.headingDesc,
+						value: `<p>${ attribute.headingTitle }</p>`,
+						citation: attribute.headingDesc,
 						className: 'uagb-heading-text',
 					} );
 				},

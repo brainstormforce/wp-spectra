@@ -16,7 +16,7 @@ const Render = lazy( () =>
 	)
 );
 
-const contentTimelineChildComponent = ( props ) => {
+const ContentTimelineChildComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -31,4 +31,4 @@ const contentTimelineChildComponent = ( props ) => {
 		</Suspense>
 	);
 };
-export default contentTimelineChildComponent;
+export default ContentTimelineChildComponent;

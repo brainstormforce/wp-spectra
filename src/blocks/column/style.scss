@@ -3,8 +3,8 @@
  *
  * CSS for both Frontend+Backend.
  */
- .uagb-column__wrap,
- .uagb-column__inner-wrap {
+.uagb-column__wrap,
+.uagb-column__inner-wrap {
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -15,13 +15,13 @@
 .uagb-column__wrap {
 
 	position: relative;
-	overflow:hidden;
+	overflow: hidden;
 
 	> * {
 		z-index: 2;
 		padding: 5px;
 	}
-	
+
 	&.uagb-column__align-left {
 		margin-left: 0;
 		margin-right: auto;
@@ -31,6 +31,7 @@
 		margin-left: auto;
 		margin-right: 0;
 	}
+
 	.uagb-column__video-wrap,
 	.uagb-column__overlay {
 		height: 100%;
@@ -64,20 +65,21 @@
 }
 
 .wp-block-uagb-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: -14px;
-    margin-right: -14px;
-    min-width: 0;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    flex-basis: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: -14px;
+	margin-right: -14px;
+	min-width: 0;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	flex-basis: 100%;
 }
 
 @media (max-width: 976px) {
+
 	.uagb-column__align-tablet-left {
 		margin-left: 0;
 		margin-right: auto;
@@ -90,6 +92,7 @@
 }
 
 @media (max-width: 767px) {
+
 	.uagb-column__align-mobile-left {
 		margin-left: 0;
 		margin-right: auto;
@@ -102,7 +105,8 @@
 }
 
 @media (max-width: 449px) {
-	.uagb-columns__wrap.uagb-columns__background-image{
-		background-attachment: scroll!important;
+
+	.uagb-columns__wrap.uagb-columns__background-image {
+		background-attachment: scroll !important;
 	}
 }

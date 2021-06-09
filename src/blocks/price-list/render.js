@@ -19,7 +19,7 @@ const Render = ( props ) => {
 	const { className, attributes, deviceType } = props;
 
 	// Setup the attributes.
-	const { menu_item_count, rest_menu_item_arr } = attributes;
+	const { menu_item_count } = attributes;
 
 	const getPriceListTemplate = useMemo( () => {
 		const childList = [];

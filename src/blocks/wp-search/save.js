@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {

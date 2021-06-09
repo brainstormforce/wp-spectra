@@ -6,6 +6,7 @@
  */
 
 .wp-block-uagb-gf-styler {
+
 	.uagb-gf-styler__gform-heading-none .gform_heading,
 	.uagb-gf-styler__gform-heading-no .gform_heading,
 	.uagb-gf-styler__gform-heading-yes .gform_heading.custom_gform_heading {
@@ -30,11 +31,6 @@
 		-webkit-appearance: checkbox;
 	}
 
-	input[type="checkbox"]:checked:before,
-	input[type="radio"]:checked:before {
-		content: "";
-	}
-
 	input[type="radio"]:focus,
 	input[type="checkbox"]:focus,
 	input[type="radio"]:checked:focus,
@@ -42,8 +38,9 @@
 		box-shadow: none;
 	}
 
-	input[type="radio"]:checked:before,
-	input[type="checkbox"]:checked:before {
+	input[type="radio"]:checked::before,
+	input[type="checkbox"]:checked::before {
+		content: "";
 		display: inline;
 		float: unset;
 	}
@@ -54,6 +51,7 @@
 }
 
 .block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler {
+
 	.button,
 	button,
 	input,

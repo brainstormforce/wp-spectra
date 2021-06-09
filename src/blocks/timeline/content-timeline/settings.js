@@ -4,6 +4,7 @@
 
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
+import React from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 
@@ -27,7 +28,6 @@ import {
 } from '@wordpress/components';
 
 import { select } from '@wordpress/data';
-
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -106,86 +106,77 @@ const Settings = ( props ) => {
 	} = props;
 
 	const getconnectorBgsize = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.connectorBgsize = value;
 		} );
 		setAttributes( { connectorBgsize: value } );
 	};
 
 	const getborderwidth = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
 		} );
 		setAttributes( { borderwidth: value } );
 	};
 
 	const geticonSize = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.iconSize = value;
 		} );
 		setAttributes( { iconSize: value } );
 	};
 
 	const getseparatorwidth = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.separatorwidth = value;
 		} );
 		setAttributes( { separatorwidth: value } );
 	};
 
 	const getdateFormat = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.dateFormat = value;
 		} );
 		setAttributes( { dateFormat: value } );
 	};
 
 	const getTimelineicon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.icon = value;
 		} );
 		setAttributes( { icon: value } );
 	};
 
 	const toggleDisplayPostDate = () => {
-		const { displayPostDate } = props.attributes;
-		// const { setAttributes } = props
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate;
 		} );
 		setAttributes( { displayPostDate: ! displayPostDate } );

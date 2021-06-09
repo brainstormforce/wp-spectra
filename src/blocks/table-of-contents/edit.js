@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-
+$ = jQuery;
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -78,7 +78,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select, ownProps ) => {
+	withSelect( ( select ) => {
 		const { __experimentalGetPreviewDeviceType = null } = select(
 			'core/edit-post'
 		);

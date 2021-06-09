@@ -6,6 +6,7 @@
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
+import React from 'react';
 import {
 	InspectorControls,
 	MediaUpload,
@@ -34,9 +35,7 @@ const Settings = ( props ) => {
 		icon_bg_hover_color,
 	} = attributes;
 
-	const onChangeType = ( type ) => {
-		const { setAttributes } = props;
-
+	const onChangeType = ( value ) => {
 		const icon_mapping = {
 			facebook: 'fab fa-facebook',
 			twitter: 'fab fa-twitter-square',
@@ -60,9 +59,9 @@ const Settings = ( props ) => {
 			buffer: 'fab fa-buffer',
 		};
 
-		setAttributes( { type } );
+		setAttributes( { type: value } );
 
-		setAttributes( { icon: icon_mapping[ type ] } );
+		setAttributes( { icon: icon_mapping[ value ] } );
 	};
 
 	const generalSettings = () => {

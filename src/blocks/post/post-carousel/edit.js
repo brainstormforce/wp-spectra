@@ -228,7 +228,7 @@ const UAGBPostCarousel = ( props ) => {
 	];
 
 	if ( '' != taxonomyList ) {
-		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
 				label: taxonomyList[ item ].label,
@@ -237,7 +237,7 @@ const UAGBPostCarousel = ( props ) => {
 	}
 
 	if ( '' != categoriesList ) {
-		Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
 				label: categoriesList[ item ].name,
@@ -1757,10 +1757,10 @@ const UAGBPostCarousel = ( props ) => {
 				parentProps={ props }
 			/>
 			<Render
+				parentProps={ props }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
-				parentProps={ props }
 			/>
 		</Suspense>
 	);

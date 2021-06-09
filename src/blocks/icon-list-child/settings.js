@@ -484,7 +484,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ disableLink }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( { disableLink: ! disableLink } )
 						}
 					/>
@@ -509,7 +509,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ target }
-								onChange={ ( value ) =>
+								onChange={ ( ) =>
 									setAttributes( { target: ! target } )
 								}
 							/>

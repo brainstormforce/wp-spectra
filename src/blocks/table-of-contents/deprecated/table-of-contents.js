@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-
+import React from 'react';
 class TOC extends React.Component {
 	render() {
 		const { mappingHeaders, headers } = this.props;
@@ -44,9 +44,9 @@ class TOC extends React.Component {
 			return arrays[ 0 ];
 		};
 
-		const filterArray = ( origHeaders ) => {
+		const filterArray = () => {
 			const arrays = [];
-			headers.forEach( ( heading, key ) => {
+			headers.forEach( ( heading ) => {
 				if ( mappingHeaders[ heading.tag - 1 ] ) {
 					arrays.push( heading );
 				}
@@ -54,9 +54,8 @@ class TOC extends React.Component {
 			return makeHeaderArray( arrays );
 		};
 
-		let counter = 0;
-
 		const parseList = ( list ) => {
+			let counter = 0;
 			const items = [];
 			list.forEach( ( item ) => {
 				if ( Array.isArray( item ) ) {

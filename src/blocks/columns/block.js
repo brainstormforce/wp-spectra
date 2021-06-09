@@ -27,9 +27,11 @@ registerBlockType( 'uagb/columns', {
 	attributes,
 	variations,
 	edit,
-	getEditWrapperProps( attributes ) {
-		return { 'data-align': attributes.align };
-		return { 'data-valign': attributes.vAlign };
+	getEditWrapperProps( attribute ) {
+		return {
+			'data-align': attribute.align,
+			'data-valign': attribute.vAlign,
+		};
 	},
 	supports: {
 		// Add EditorsKit block navigator toolbar

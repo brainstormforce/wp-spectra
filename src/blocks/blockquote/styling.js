@@ -84,13 +84,13 @@ function styling( props ) {
 
 	let tmpAuthorSpace = authorSpace;
 
-	if ( align !== 'center' || skinStyle == 'border' ) {
+	if ( align !== 'center' || skinStyle === 'border' ) {
 		tmpAuthorSpace = 0;
 	}
 	//Set align to left for border style
 	let textAlign = align;
 
-	if ( skinStyle == 'border' ) {
+	if ( skinStyle === 'border' ) {
 		textAlign = 'left';
 	}
 

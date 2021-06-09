@@ -1,6 +1,6 @@
 import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
-
+import React from 'react';
 const Title = ( props ) => {
 	const Tag = props.attributes.headingTag;
 

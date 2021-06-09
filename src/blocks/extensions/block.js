@@ -2,19 +2,16 @@ import UserConditionOptions from './condition-block';
 
 import { __ } from '@wordpress/i18n';
 const enableConditions = uagb_blocks_info.uagb_display_condition;
-
+import { InspectorAdvancedControls } from '@wordpress/block-editor';
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent(
 	( BlockEdit ) => {
 		return ( props ) => {
-			const { Fragment } = wp.element;
-
-			const { InspectorAdvancedControls } = wp.blockEditor;
 
 			const { isSelected } = props;
 
-			const blocks_name = props.name;
+			const blocksName = props.name;
 
-			const block_type = [
+			const blockType = [
 				'uagb/buttons-child',
 				'uagb/faq-child',
 				'uagb/icon-list-child',
@@ -35,9 +32,9 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent(
 				'real-media-library/gallery',
 			];
 			return (
-				<Fragment>
+				<>
 					<BlockEdit { ...props } />
-					{ isSelected && ! block_type.includes( blocks_name ) && (
+					{ isSelected && ! blockType.includes( blocksName ) && (
 						<InspectorAdvancedControls>
 							<p className="components-base-control__help">
 								{ __(
@@ -48,7 +45,7 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent(
 							{ UserConditionOptions( props ) }
 						</InspectorAdvancedControls>
 					) }
-				</Fragment>
+				</>
 			);
 		};
 	},

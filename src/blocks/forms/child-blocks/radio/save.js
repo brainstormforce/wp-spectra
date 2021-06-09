@@ -5,7 +5,8 @@
 import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-const { RichText } = wp.blockEditor;
+
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -31,7 +32,7 @@ export default function save( props ) {
 				id={ block_id }
 			/>
 
-			{ options.map( ( o, index ) => {
+			{ options.map( ( o ) => {
 				const optionvalue = o.optionvalue;
 				const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 				return (

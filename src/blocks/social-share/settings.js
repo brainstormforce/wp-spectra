@@ -3,7 +3,7 @@
  */
 
 import lazyLoader from '@Controls/lazy-loader';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import ColumnResponsive from '../../components/typography/column-responsive';
 
 import { __ } from '@wordpress/i18n';

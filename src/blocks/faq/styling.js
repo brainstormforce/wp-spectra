@@ -342,16 +342,16 @@ function styling( props ) {
 		};
 	}
 	if ( 'accordion' === layout && false === inactiveOtherItems ) {
-		( selectors[
+		selectors[
 			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active'
 		] = {
 			display: 'inline-block',
-		} ),
-			( selectors[
-				' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon'
-			] = {
-				display: 'none',
-			} );
+		};
+		selectors[
+			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon'
+		] = {
+			display: 'none',
+		};
 	}
 	if ( 'accordion' === layout && true === expandFirstItem ) {
 		selectors[
@@ -359,16 +359,16 @@ function styling( props ) {
 		] = {
 			display: 'block',
 		};
-		( selectors[
+		selectors[
 			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
 		] = {
 			display: 'inline-block',
-		} ),
-			( selectors[
-				' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon '
-			] = {
-				display: 'none',
-			} );
+		};
+		selectors[
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon '
+		] = {
+			display: 'none',
+		};
 	}
 	if ( true === enableSeparator ) {
 		selectors[

@@ -4,7 +4,6 @@
 
 // Import classes
 import styling from './styling';
-import { __ } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
@@ -18,7 +17,7 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/buttons-child/render" */ './render' )
 );
 
-const buttonsChildComponent = ( props ) => {
+const ButtonsChildComponent = ( props ) => {
 	const initialState = {
 		isURLPickerOpen: false,
 	};
@@ -61,7 +60,7 @@ const buttonsChildComponent = ( props ) => {
 		</Suspense>
 	);
 };
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);
@@ -73,4 +72,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		deviceType,
 	};
-} )( buttonsChildComponent );
+} )( ButtonsChildComponent );

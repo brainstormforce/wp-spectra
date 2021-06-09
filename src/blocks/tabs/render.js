@@ -34,7 +34,6 @@ const Render = ( props ) => {
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
-		tabActiveFrontend,
 		tabHeaders,
 		tabActive,
 		tabAlign,
@@ -74,7 +73,7 @@ const Render = ( props ) => {
 		updateTabTitle();
 	};
 	const onMove = ( oldIndex, newIndex ) => {
-		const { tabHeaders, tabActiveFrontend } = attributes;
+		const { tabActiveFrontend } = attributes;
 
 		const { getBlock } = ! wp.blockEditor
 			? select( 'core/editor' )
@@ -116,9 +115,7 @@ const Render = ( props ) => {
 		const { removeBlock } = ! wp.blockEditor
 			? dispatch( 'core/editor' )
 			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
+
 		const childBlocks = getBlockOrder( clientId );
 
 		removeBlock( childBlocks[ index ], false );
@@ -131,12 +128,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const updateTabsAttr = ( attrs ) => {
-		const { updateBlockAttributes } = ! wp.blockEditor
-			? dispatch( 'core/editor' )
-			: dispatch( 'core/block-editor' );
-		const { getBlockOrder } = ! wp.blockEditor
-			? select( 'core/editor' )
-			: select( 'core/block-editor' );
 		const childBlocks = getBlockOrder( clientId );
 
 		setAttributes( attrs );

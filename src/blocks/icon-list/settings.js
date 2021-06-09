@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -109,7 +109,7 @@ const Settings = ( props ) => {
 			clientId
 		);
 
-		getChildBlocks.forEach( ( iconChild, key ) => {
+		getChildBlocks.forEach( ( iconChild ) => {
 			iconChild.attributes.hideLabel = value;
 		} );
 		setAttributes( { hideLabel: value } );
