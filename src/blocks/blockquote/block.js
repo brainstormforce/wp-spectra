@@ -38,21 +38,21 @@ registerBlockType( 'uagb/blockquote', {
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'uagb/blockquote', {
-						descriptionText: attributes.value,
-						author: attributes.citation,
-						align: attributes.align,
+						descriptionText: attribute.value,
+						author: attribute.citation,
+						align: attribute.align,
 					} );
 				},
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/heading' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'uagb/blockquote', {
-						descriptionText: attributes.content,
-						align: attributes.align,
+						descriptionText: attribute.content,
+						align: attribute.align,
 					} );
 				},
 			},
@@ -61,21 +61,21 @@ registerBlockType( 'uagb/blockquote', {
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'core/quote', {
-						value: `<p>${ attributes.descriptionText }</p>`,
-						citation: attributes.author,
-						align: attributes.align,
+						value: `<p>${ attribute.descriptionText }</p>`,
+						citation: attribute.author,
+						align: attribute.align,
 					} );
 				},
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/heading' ],
-				transform: ( attributes ) => {
+				transform: ( attribute ) => {
 					return createBlock( 'core/heading', {
-						content: attributes.descriptionText,
-						align: attributes.align,
+						content: attribute.descriptionText,
+						align: attribute.align,
 					} );
 				},
 			},

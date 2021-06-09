@@ -115,7 +115,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.icon = value;
 		} );
 
@@ -126,7 +126,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.iconActive = value;
 		} );
 
@@ -137,7 +137,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.layout = value;
 		} );
 
@@ -148,7 +148,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = value;
 		} );
 
@@ -191,7 +191,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ inactiveOtherItems }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									inactiveOtherItems: ! inactiveOtherItems,
 								} )
@@ -204,7 +204,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ expandFirstItem }
-								onChange={ ( value ) =>
+								onChange={ () =>
 									setAttributes( {
 										expandFirstItem: ! expandFirstItem,
 									} )
@@ -217,7 +217,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ enableToggle }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									enableToggle: ! enableToggle,
 								} )
@@ -231,7 +231,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableSchemaSupport }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							enableSchemaSupport: ! enableSchemaSupport,
 						} )
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ equalHeight }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { equalHeight: ! equalHeight } )
 							}
 						/>
@@ -431,7 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableSeparator }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableSeparator: ! enableSeparator } )
 					}
 				/>

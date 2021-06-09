@@ -35,7 +35,11 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-icon-list__source-image" src={ image.url } />
+			<img
+				className="uagb-icon-list__source-image"
+				src={ image.url }
+				alt={ image.alt }
+			/>
 		);
 	}
 
@@ -57,7 +61,9 @@ export default function save( props ) {
 					aria-label={ label }
 					rel="noopener noreferrer"
 					href={ linkUrl }
-				></a>
+				>
+					{ ' ' }
+				</a>
 			) }
 			<div className="uagb-icon-list__content-wrap">
 				<span className="uagb-icon-list__source-wrap">

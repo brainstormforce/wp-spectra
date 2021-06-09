@@ -431,7 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseTablet }
-					onChange={ ( value ) =>
+					onChange={ ( ) =>
 						setAttributes( { reverseTablet: ! reverseTablet } )
 					}
 				/>
@@ -441,7 +441,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseMobile }
-					onChange={ ( value ) =>
+					onChange={ ( ) =>
 						setAttributes( { reverseMobile: ! reverseMobile } )
 					}
 				/>
@@ -973,6 +973,7 @@ const Settings = ( props ) => {
 				{ 'image' == backgroundType && (
 					<>
 						<BaseControl
+							id="Background Image"
 							className="editor-bg-image-control"
 							label={ __(
 								'Background Image',
@@ -1238,6 +1239,7 @@ const Settings = ( props ) => {
 				) }
 				{ 'video' == backgroundType && (
 					<BaseControl
+						id="Background Video"
 						className="editor-bg-video-control"
 						label={ __(
 							'Background Video',
@@ -1587,7 +1589,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topFlip }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( { topFlip: ! topFlip } )
 							}
 						/>
@@ -1597,7 +1599,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topContentAboveShape }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( {
 									topContentAboveShape: ! topContentAboveShape,
 								} )
@@ -1754,7 +1756,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomFlip }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( { bottomFlip: ! bottomFlip } )
 							}
 						/>
@@ -1764,7 +1766,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomContentAboveShape }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( {
 									bottomContentAboveShape: ! bottomContentAboveShape,
 								} )

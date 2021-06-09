@@ -122,17 +122,6 @@ export default compose(
 		const deviceType = __experimentalGetPreviewDeviceType
 			? __experimentalGetPreviewDeviceType()
 			: null;
-		let title = '';
-		let urlChk = '';
-
-		if (
-			'undefined' !== ownProps.attributes.mainimage &&
-			null !== ownProps.attributes.mainimage &&
-			'' !== ownProps.attributes.mainimage
-		) {
-			urlChk = ownProps.attributes.mainimage.url;
-			title = ownProps.attributes.mainimage.title;
-		}
 
 		let toolsData = {};
 		let materialsData = {};

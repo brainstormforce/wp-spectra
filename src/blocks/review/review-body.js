@@ -138,7 +138,7 @@ const ReviewBody = ( props ) => {
 											props.setStateValue( {
 												average:
 													newItems
-														.map( ( i ) => i.value )
+														.map( ( k ) => k.value )
 														.reduce(
 															( total, v ) =>
 																total + v
@@ -163,7 +163,7 @@ const ReviewBody = ( props ) => {
 										props.setStateValue( {
 											average:
 												newArray
-													.map( ( i ) => i.value )
+													.map( ( k ) => k.value )
 													.reduce(
 														( total, v ) =>
 															total + v

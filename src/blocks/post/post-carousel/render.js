@@ -24,7 +24,15 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	props = props.parentProps;
-	const { state, setState, togglePreview, attributes, categoriesList, latestPosts, deviceType } = props;
+	const {
+		state,
+		setState,
+		togglePreview,
+		attributes,
+		categoriesList,
+		latestPosts,
+		deviceType,
+	} = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -46,8 +54,8 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attributes ] ) => {
-				newBlocks.push( createBlock( name, attributes ) );
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
 			replaceInnerBlocks( props.clientId, newBlocks );

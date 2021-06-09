@@ -203,7 +203,7 @@ const Settings = ( props ) => {
 	];
 
 	if ( '' != taxonomyList ) {
-		Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
 				label: taxonomyList[ item ].label,
@@ -262,7 +262,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ excludeCurrentPost }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							excludeCurrentPost: ! excludeCurrentPost,
 						} )
@@ -397,7 +397,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ equalHeight }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { equalHeight: ! equalHeight } )
 					}
 				/>
@@ -446,7 +446,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ inheritFromTheme }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							inheritFromTheme: ! inheritFromTheme,
 						} )
@@ -745,7 +745,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostImage }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostImage: ! displayPostImage,
 						} )
@@ -834,7 +834,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ linkBox }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { linkBox: ! linkBox } )
 							}
 						/>
@@ -855,7 +855,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostTitle }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostTitle: ! displayPostTitle,
 						} )
@@ -867,7 +867,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostAuthor }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostAuthor: ! displayPostAuthor,
 						} )
@@ -876,7 +876,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label={ __( 'Show Date', 'ultimate-addons-for-gutenberg' ) }
 					checked={ displayPostDate }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostDate: ! displayPostDate } )
 					}
 				/>
@@ -886,7 +886,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostComment }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostComment: ! displayPostComment,
 						} )
@@ -898,7 +898,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostTaxonomy }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostTaxonomy: ! displayPostTaxonomy,
 						} )
@@ -910,7 +910,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostExcerpt }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							displayPostExcerpt: ! displayPostExcerpt,
 						} )
@@ -1092,7 +1092,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayPostLink }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { displayPostLink: ! displayPostLink } )
 					}
 				/>
@@ -1104,7 +1104,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ newTab }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>

@@ -824,6 +824,7 @@ const Settings = ( props ) => {
 					{ 'image' == backgroundType && (
 						<>
 							<BaseControl
+								id="Background Image"
 								className="editor-bg-image-control"
 								label={ __(
 									'Background Image',
@@ -1227,6 +1228,7 @@ const Settings = ( props ) => {
 				className={ 'uagb-repeater-panel' }
 			>
 				<BaseControl
+					id=""
 					className="editor-bg-image-control"
 					label={ __( '' ) }
 				>

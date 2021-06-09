@@ -519,6 +519,7 @@ const Settings = ( props ) => {
 					<>
 						<BaseControl
 							className="editor-bg-image-control"
+							id="Background Image"
 							label={ __(
 								'Background Image',
 								'ultimate-addons-for-gutenberg'

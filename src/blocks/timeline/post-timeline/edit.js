@@ -25,7 +25,7 @@ const PostTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function ( event ) {
+		$( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 
@@ -41,7 +41,7 @@ const PostTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function ( event ) {
+		$( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 	}, [ props ] );
@@ -92,7 +92,7 @@ const PostTimelineComponent = ( props ) => {
 				document.documentElement.clientHeight + connectorHeight;
 			const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 
-			var elementPos = tmItem.offset().top;
+			let elementPos = tmItem.offset().top;
 
 			const newElementPos = elementPos + timelineStartIcon.top;
 
@@ -139,8 +139,7 @@ const PostTimelineComponent = ( props ) => {
 
 			//For changing icon background color and icon color.
 			let timelineIconPos, timelineCardPos;
-			var elementPos, elementCardPos;
-			let timelineIconTop, timelineCardTop;
+			let timelineIconTop, timelineCardTop, elementCardPos;
 			const timelineIcon = timeline.find( '.uagb-timeline__marker' ),
 				animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
 

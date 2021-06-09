@@ -51,10 +51,9 @@ export const renderPostLayout = (
 	}
 
 	const blockMap = getBlockMap( blockName );
-
+	let children = [];
 	return layoutConfig.map( ( [ name, props = {} ] ) => {
 		if ( !! props.children && props.children.length > 0 ) {
-			let children = [];
 			children = renderPostLayout(
 				blockName,
 				post,

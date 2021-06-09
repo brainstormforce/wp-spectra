@@ -127,7 +127,6 @@ const Settings = ( props ) => {
 	};
 
 	const onSelectImage = ( media ) => {
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { image: null } );
 			return;

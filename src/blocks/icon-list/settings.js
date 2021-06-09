@@ -109,7 +109,7 @@ const Settings = ( props ) => {
 			clientId
 		);
 
-		getChildBlocks.forEach( ( iconChild, key ) => {
+		getChildBlocks.forEach( ( iconChild ) => {
 			iconChild.attributes.hideLabel = value;
 		} );
 		setAttributes( { hideLabel: value } );

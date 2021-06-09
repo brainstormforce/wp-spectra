@@ -115,7 +115,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ inheritFromTheme }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							inheritFromTheme: ! inheritFromTheme,
 						} )

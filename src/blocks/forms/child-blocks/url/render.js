@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl }from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 

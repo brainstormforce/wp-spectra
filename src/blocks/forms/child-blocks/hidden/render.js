@@ -39,6 +39,7 @@ const Render = ( props ) => {
 					<>
 						<label
 							className={ `uagb-forms-hidden-label uagb-form-hidden-${ hidden_field_label }` }
+							id=""
 						>
 							{ hidden_field_name }
 						</label>

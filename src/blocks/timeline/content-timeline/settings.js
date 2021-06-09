@@ -29,7 +29,6 @@ import {
 
 import { select } from '@wordpress/data';
 
-
 const Settings = ( props ) => {
 	props = props.parentProps;
 
@@ -111,7 +110,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.connectorBgsize = value;
 		} );
 		setAttributes( { connectorBgsize: value } );
@@ -122,7 +121,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
 		} );
 		setAttributes( { borderwidth: value } );
@@ -133,7 +132,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.iconSize = value;
 		} );
 		setAttributes( { iconSize: value } );
@@ -144,7 +143,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.separatorwidth = value;
 		} );
 		setAttributes( { separatorwidth: value } );
@@ -155,7 +154,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.dateFormat = value;
 		} );
 		setAttributes( { dateFormat: value } );
@@ -166,7 +165,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.icon = value;
 		} );
 		setAttributes( { icon: value } );
@@ -177,7 +176,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild, key ) => {
+		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate;
 		} );
 		setAttributes( { displayPostDate: ! displayPostDate } );

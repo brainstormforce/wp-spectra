@@ -5,7 +5,7 @@ function TableOfContents( props ) {
 
 	const filterArray = () => {
 		const arrays = [];
-		headers.forEach( ( heading, key ) => {
+		headers.forEach( ( heading ) => {
 			if ( mappingHeaders[ heading.tag - 1 ] ) {
 				arrays.push( heading );
 			}
@@ -13,7 +13,7 @@ function TableOfContents( props ) {
 		return arrays;
 	};
 
-	const renderList = ( headers ) => {
+	const renderList = ( header ) => {
 		let lastLevel = '';
 		let parentLevel = '';
 		let firstLevel = '';
@@ -28,7 +28,7 @@ function TableOfContents( props ) {
 			5: 0,
 			6: 0,
 		};
-		headers.forEach( ( item, index ) => {
+		header.forEach( ( item, index ) => {
 			const level = item.tag;
 			const title = item.content;
 

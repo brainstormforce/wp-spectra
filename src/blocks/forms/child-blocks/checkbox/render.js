@@ -85,7 +85,7 @@ const Render = ( props ) => {
 	} );
 
 	const CheckboxView = () => {
-		return options.map( ( option, index ) => {
+		return options.map( ( option ) => {
 			const optionvalue = option.optionvalue;
 			const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 			return (

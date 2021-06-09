@@ -119,7 +119,7 @@ const FaqComponent = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = props.attributes.headingTag;
 		} );
 

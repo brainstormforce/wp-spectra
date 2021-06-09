@@ -3,7 +3,12 @@ import { __ } from '@wordpress/i18n';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { PanelBody, RangeControl, TextControl, SelectControl } from '@wordpress/components';
+import {
+	PanelBody,
+	RangeControl,
+	TextControl,
+	SelectControl,
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

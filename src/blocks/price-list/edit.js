@@ -32,7 +32,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
@@ -51,7 +51,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imagePosition =
 				props.attributes.imagePosition;
 			pricelistChild.attributes.columns = props.attributes.columns;
@@ -70,7 +70,7 @@ const UAGBRestaurantMenu = ( props ) => {
 	);
 };
 
-export default withSelect( ( ) => {
+export default withSelect( () => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);

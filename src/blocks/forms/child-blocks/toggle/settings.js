@@ -1,6 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, SelectControl, TextControl } from '@wordpress/components';
+import {
+	PanelBody,
+	ToggleControl,
+	SelectControl,
+	TextControl,
+} from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 

@@ -48,7 +48,7 @@ const Render = ( props ) => {
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
-			<a className="uagb-ss__link" href="#" rel="noopener noreferrer">
+			<a className="uagb-ss__link" href="/" rel="noopener noreferrer">
 				<span className="uagb-ss__source-wrap">{ imageIconHtml }</span>
 			</a>
 		</div>

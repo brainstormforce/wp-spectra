@@ -94,7 +94,7 @@ const Render = ( props ) => {
 				{ ctaType == 'all' && (
 					<>
 						<a
-							href="javascript:void(0)"
+							href="/"
 							className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
 							rel="noopener noreferrer"
 						>
