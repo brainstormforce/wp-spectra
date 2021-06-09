@@ -1757,10 +1757,10 @@ const UAGBPostCarousel = ( props ) => {
 				parentProps={ props }
 			/>
 			<Render
+				parentProps={ props }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
-				parentProps={ props }
 			/>
 		</Suspense>
 	);
