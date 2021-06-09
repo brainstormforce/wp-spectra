@@ -404,21 +404,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function render_table_of_contents( $attributes, $content, $block ) {
 
 			global $post;
-			$version_updated = false;
 
 			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
 
-			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
-			$uag_asset_version        = $uagb_toc_heading_content['_uag_assets_version'];
-			$uagb_toc_heading_content = $uagb_toc_heading_content['_uagb_toc_heading_content'];
+			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
+			$uagb_toc_version         = ! empty( $uagb_toc_options['_uag_toc_version'] ) ? $uagb_toc_options['_uag_toc_version'] : '';
+			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
-			if ( UAGB_ASSET_VER !== $uag_asset_version ) {
-				$version_updated = true;
-			}
-
-			if ( empty( $uagb_toc_heading_content ) || $version_updated ) {
+			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 
 				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
 					$post->ID,
@@ -426,11 +421,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				);
 
 				$meta_array = array(
-					'_uag_assets_version'       => UAGB_ASSET_VER,
-					'_uagb_toc_heading_content' => $uagb_toc_heading_content,
+					'_uag_toc_version'   => UAGB_ASSET_VER,
+					'_uagb_toc_headings' => $uagb_toc_heading_content,
 				);
 
-				update_post_meta( $post->ID, '_uagb_toc_heading_content', $meta_array );
+				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
 
 			}
 
