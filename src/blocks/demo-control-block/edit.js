@@ -45,7 +45,9 @@ const {
 	ToggleControl,
 	BaseControl,
 	Button,
-	Dashicon
+	Dashicon,
+	ButtonGroup,
+	Icon,
 } = wp.components
 
 const {
@@ -221,6 +223,7 @@ class UAGBInlineNoticeEdit extends Component {
 				boxShadowBlur,
 				boxShadowSpread,
 				boxShadowPosition,
+				widthType
 			},
 			setAttributes,
 			className,
@@ -284,10 +287,11 @@ class UAGBInlineNoticeEdit extends Component {
 						currentOption={ noticeAlignment }
 						className="uagb-multi-button-alignment-control"
 						options={ [
-							{ value: "left", label: <Dashicon icon="editor-alignleft" />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
-							{ value: "center", label: <Dashicon icon="editor-aligncenter" />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
-							{ value: "right", label: <Dashicon icon="editor-alignright" />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "left", icon: <Icon icon={ renderSVG("fa fa-align-left") } />, tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "center", icon: <Icon icon={ renderSVG("fa fa-align-center") } />, tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ), },
+							{ value: "right", icon: <Icon icon={ renderSVG("fa fa-align-right") } />, tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ), },
 						] }
+						showIcons={ true }
 						onChange={ ( noticeAlignment ) => setAttributes( { noticeAlignment } ) }
 					/>
 					</PanelBody>
@@ -301,9 +305,16 @@ class UAGBInlineNoticeEdit extends Component {
 					</div>
 					</PanelBody>
 					<PanelBody title="Slider" initialOpen={false}>
+					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
+						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } min={0} max={2000} onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
+						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } min={0} max={100} onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
+					</ButtonGroup>
 					<Range 
+					    label={__( "Padding", 'ultimate-addons-for-gutenberg' )}
+						setAttributes={setAttributes}
 						value={contentVrPadding} 
-						onChange={val => setAttributes({ contentVrPadding: parseInt(val) })}
+						onChange={value => setAttributes({ contentVrPadding: value })}
+						initialPosition={15}
 						min={0} 
 						max={100} 
 					/>
@@ -354,6 +365,7 @@ class UAGBInlineNoticeEdit extends Component {
 								{ value: "30", label: __( "XL", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Wider (30px)', 'ultimate-addons-for-gutenberg' ), }
 							] }
 							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
+							showIcons={ false }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
 						/>
 				</PanelBody>

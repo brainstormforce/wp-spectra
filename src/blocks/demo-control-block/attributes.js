@@ -334,6 +334,10 @@
 		type: "string",
 		default: "outset"
 	},
+	widthType: {
+		type: "string",
+		default: "px"
+	},
 }
 
 export default attributes

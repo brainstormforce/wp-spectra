@@ -124,8 +124,6 @@ function FontFamilyControl( props ) {
 		props.setAttributes( { [loadGoogleFonts.label]: value } )
 	}
 
-	console.log(fontSubset);
-
 	return (
 		<div className="uag-typography-font-family-options">
 			<div className="uag-typography-font-family">

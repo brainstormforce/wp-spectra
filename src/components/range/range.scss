@@ -1,118 +1,68 @@
-.uagb-input-range {
-    display: flex
+.uagb-range-control {
+	width: 100%;
+    margin-bottom: 15px;
+   
 }
 
-.uagb-input-range>*:not(:last-child) {
-    margin-right: 8px
+.uagb-range-control {
+	display: flex;
+	align-items: center;
+	.components-range-control {
+		flex: 1;
+		margin: 0 !important;
+        .components-range-control__root {
+            margin-top: 15px;
+            .components-range-control__wrapper {
+                color: #dadadb;
+                span:nth-child(1) {
+                    background-color:#7a7b7e;
+                }
+            }            
+        }
+	}
+
+	.components-input-control__container {
+		position: relative;
+		border-radius: 2px;
+		padding-top: 0px;
+		box-sizing: border-box;
+		display: inline-block;
+		font-size: 13px;
+		margin-top: 20px;
+		width: 55px;
+		margin-left: 16px;
+	}
+    .uagb-spacing-reset.is-secondary.is-small {
+        box-shadow:unset;
+        background: 0 0;
+        margin-bottom:50px;
+        padding-left: 208px;
+        position: absolute;
+    }
+    .uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
+        cursor:arrow;
+        color:#767676;
+    }
+	.components-base-control__field,
+	.components-base-control {
+		margin-bottom: 0;
+	}
+
+	.components-number-control {
+		width: unset;
+        margin-right: -17px;
+        margin-top: 17px;
+	}
 }
 
-.uagb-input-range input[type="number"] {
-    width: 55px !important
+.uagb-responsive-control-inner .components-button-group.uagb-size-type-field + .uagb-range-control .uagb-spacing-reset.is-secondary.is-small {
+    padding-left: 207px;
 }
 
-.uagb-input-range input[type=range] {
-    -webkit-appearance: none;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    background: transparent
+.components-button-group.uagb-size-type-field + .uagb-range-control .uagb-spacing-reset.is-secondary.is-small {
+    padding-left: 226px;
 }
 
-.uagb-input-range input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    animate: 0.2s;
-    background: #E5E7EA;
-    border-radius: 5px;
-    border: 0px solid #000
-}
-
-.uagb-input-range input[type=range]::-webkit-slider-thumb {
-    border: 1px solid #fff;
-    height: 14px;
-    width: 14px;
-    border-radius: 8px;
-    background: #606871;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -5px
-}
-
-.uagb-input-range input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #f3f4f5
-}
-
-.uagb-input-range input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    animate: 0.2s;
-    background: #E5E7EA;
-    border-radius: 5px;
-    border: 0px solid #000
-}
-
-.uagb-input-range input[type=range]::-moz-range-thumb {
-    border: 1px solid #fff;
-    height: 14px;
-    width: 14px;
-    border-radius: 8px;
-    background: #606871;
-    cursor: pointer
-}
-
-.uagb-input-range input[type=range]::-ms-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    animate: 0.2s;
-    background: transparent;
-    border-color: transparent;
-    border-width: 14px 0;
-    color: transparent
-}
-
-.uagb-input-range input[type=range]::-ms-fill-lower {
-    background: #d7dadf;
-    border: 0px solid #000;
-    border-radius: 10px
-}
-
-.uagb-input-range input[type=range]::-ms-fill-upper {
-    background: #E5E7EA;
-    border: 0px solid #000;
-    border-radius: 10px
-}
-
-.uagb-input-range input[type=range]::-ms-thumb {
-    border: 1px solid #fff;
-    height: 14px;
-    width: 14px;
-    border-radius: 8px;
-    background: #606871;
-    cursor: pointer
-}
-
-.uagb-input-range input[type=range]:focus::-ms-fill-lower {
-    background: #E5E7EA
-}
-
-.uagb-input-range input[type=range]:focus::-ms-fill-upper {
-    background: #f3f4f5
-}
-
-.uagb-field-range>label {
-    width: 100%;
-    margin-bottom: 2px
-}
-button.components-button.uagb-spacing-reset.is-secondary.is-small {
-    box-shadow:unset;
-    background: 0 0;
-}
-button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
-    cursor:arrow;
-    color:#767676;
+.uagb-range-control .uagb-spacing-reset.is-secondary.is-small {
+    padding-left: 207px;
 }

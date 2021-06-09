@@ -50,7 +50,8 @@
          noticeDismiss,
          noticeAlignment,
          layout,
-         highlightWidth
+         highlightWidth,
+         widthType
      } = props.attributes
  
  
@@ -92,10 +93,10 @@
          },
  
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text" : {
-             "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
-             "padding-right" : generateCSSUnit( contentHrPadding, "px" ),
-             "padding-top" : generateCSSUnit( contentVrPadding, "px" ),
-             "padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+             "padding-left" : generateCSSUnit( contentHrPadding, widthType ),
+             "padding-right" : generateCSSUnit( contentHrPadding, widthType ),
+             "padding-top" : generateCSSUnit( contentVrPadding, widthType ),
+             "padding-bottom" : generateCSSUnit( contentVrPadding, widthType ),
              
          },
          
