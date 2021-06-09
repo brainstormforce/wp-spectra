@@ -187,15 +187,13 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 							if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
 
-								$content = utf8_decode( $heading->textContent );
-
 								return array(
 									// A little hacky, but since we know at this point that the tag will
 									// be an h1-h6, we can just grab the 2nd character of the tag name
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
-									'id'      => $this->clean( mb_strtolower( $content ) ),
-									'content' => $content,
+									'id'      => $this->clean( $heading->textContent ),
+									'content' => utf8_decode( $heading->textContent ),
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
@@ -218,26 +216,24 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @return string $string.
 		 */
 		public function clean( $string ) {
-			$string = str_replace( array( '‘', '’', '“', '”' ), '', $string );
-			$string = str_replace( array( '$', '.', '+', '!', '*', '\'', '(', ')', ',' ), '', $string );
-			$string = str_replace( array( '%', '{', '}', '|', '\\', '^', '~', '[', ']', '`' ), '', $string );
-			$string = str_replace(
-				array( '*', '\'', '(', ')', ';', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']' ),
-				'',
-				$string
-			);
 			$string = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $string );
 			$string = str_replace( array( '&amp;', '&nbsp;' ), ' ', $string );
-			$string = str_replace( array( ':' ), '', $string );
+			// Remove all except alphbets, space, `-` and `_`.
+			$string = preg_replace( '/[^A-Za-z0-9 _-]/', '', $string );
 			// Convert space characters to an `_` (underscore).
 			$string = preg_replace( '/\s+/', '_', $string );
+			// Replace multiple `_` (underscore) with a single `-` (hyphen).
+			$string = preg_replace( '/_+/', '-', $string );
 			// Replace multiple `-` (hyphen) with a single `-` (hyphen).
 			$string = preg_replace( '/-+/', '-', $string );
-			// Replace multiple `_` (underscore) with a single `_` (underscore).
-			$string = preg_replace( '/_+/', '-', $string );
 			// Remove trailing `-` and `_`.
 			$string = trim( $string, '-_' );
-			return strtolower( preg_replace( '/-+/', '-', $string ) ); // Replaces multiple hyphens with single one.
+
+			if ( empty( $string ) ) {
+				$string = 'toc_' . uniqid();
+			}
+
+			return strtolower( $string ); // Replaces multiple hyphens with single one.
 		}
 
 		/**
