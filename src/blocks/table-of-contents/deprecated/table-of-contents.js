@@ -46,7 +46,7 @@ class TOC extends React.Component {
 
 		const filterArray = () => {
 			const arrays = [];
-			headers.forEach( ( heading, key ) => {
+			headers.forEach( ( heading ) => {
 				if ( mappingHeaders[ heading.tag - 1 ] ) {
 					arrays.push( heading );
 				}

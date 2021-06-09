@@ -62,7 +62,7 @@ const UAGBTabsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const { __experimentalGetPreviewDeviceType = null } = select(
 			'core/edit-post'
 		);
@@ -73,7 +73,7 @@ export default compose(
 			deviceType,
 		};
 	} ),
-	withDispatch( ( dispatch, { clientId }, { select } ) => {
+	withDispatch( ( clientId ) => {
 		const { getBlock } = select( 'core/block-editor' );
 
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
@@ -100,7 +100,7 @@ export default compose(
 						tabActive,
 					} );
 				}
-				this.resetTabOrder;
+				this.resetTabOrder();
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition(

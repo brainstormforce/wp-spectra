@@ -645,7 +645,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableOveride }
-				onChange={ ( value ) =>
+				onChange={ () =>
 					setAttributes( { enableOveride: ! enableOveride } )
 				}
 			/>
@@ -1156,7 +1156,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableHighlightBorder }
-				onChange={ ( value ) =>
+				onChange={ () =>
 					setAttributes( {
 						enableHighlightBorder: ! enableHighlightBorder,
 					} )

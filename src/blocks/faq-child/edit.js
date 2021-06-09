@@ -48,7 +48,7 @@ const FaqChildComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings />
 			<Render parentProps={ props } state={ state } />
 		</Suspense>
 	);

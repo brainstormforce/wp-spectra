@@ -78,7 +78,7 @@ const attributes = {
 		type: 'object',
 		default: {
 			url: '',
-			title:''
+			title: '',
 		},
 	},
 	estCost: {

@@ -232,6 +232,7 @@ export default function save( props ) {
 					{ materials.map( ( material, index ) => {
 						return (
 							<div
+								key={ index }
 								className={ classnames(
 									`uagb-how-to-materials-${ index }`,
 									'uagb-how-to-materials-child__wrapper'

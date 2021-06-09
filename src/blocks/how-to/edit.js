@@ -122,8 +122,8 @@ export default compose(
 		const deviceType = __experimentalGetPreviewDeviceType
 			? __experimentalGetPreviewDeviceType()
 			: null;
-		let title = '';
 		let urlChk = '';
+		let title = '';
 
 		if (
 			'undefined' !== ownProps.attributes.mainimage &&
@@ -133,7 +133,6 @@ export default compose(
 			urlChk = ownProps.attributes.mainimage.url;
 			title = ownProps.attributes.mainimage.title;
 		}
-
 		let toolsData = {};
 		let materialsData = {};
 		let stepsData = {};

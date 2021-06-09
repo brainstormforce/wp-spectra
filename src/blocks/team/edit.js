@@ -49,7 +49,7 @@ const UAGBTeam = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);

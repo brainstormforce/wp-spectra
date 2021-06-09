@@ -13,11 +13,11 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/form/render" */ './render' )
 );
 
-import { withSelect, useDispatch }from '@wordpress/data';
+import { withSelect, useDispatch } from '@wordpress/data';
 
-import { compose , createHigherOrderComponent} from '@wordpress/compose';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
-import { createBlock }  from '@wordpress/blocks';
+import { createBlock } from '@wordpress/blocks';
 
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 

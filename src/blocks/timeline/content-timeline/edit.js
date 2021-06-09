@@ -31,7 +31,7 @@ const ContentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function ( event ) {
+		$( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 
@@ -46,8 +46,13 @@ const ContentTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		if(null == select( 'core/block-editor' ).getBlocksByClientId( props.clientId )[ 0 ]){
-			return
+		if (
+			null ==
+			select( 'core/block-editor' ).getBlocksByClientId(
+				props.clientId
+			)[ 0 ]
+		) {
+			return;
 		}
 		select( 'core/block-editor' )
 			.getBlocksByClientId( props.clientId )[ 0 ]
@@ -100,7 +105,7 @@ const ContentTimelineComponent = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		getChildBlocks.forEach( ( ctChild, key ) => {
+		getChildBlocks.forEach( ( ctChild ) => {
 			ctChild.attributes.headingTag = props.attributes.headingTag;
 		} );
 
@@ -108,7 +113,7 @@ const ContentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function ( event ) {
+		$( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 	}, [ props ] );
@@ -225,7 +230,7 @@ const ContentTimelineComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
+export default withSelect( () => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);

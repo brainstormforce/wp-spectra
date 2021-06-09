@@ -2,9 +2,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const Settings = ( props ) => {
-	props = props.parentProps;
-
+const Settings = () => {
 	const faqChildControls = () => {
 		return (
 			<p className="uagb-settings-notice">

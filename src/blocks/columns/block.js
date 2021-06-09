@@ -27,10 +27,10 @@ registerBlockType( 'uagb/columns', {
 	attributes,
 	variations,
 	edit,
-	getEditWrapperProps( attributes ) {
+	getEditWrapperProps( attribute ) {
 		return {
-			'data-align': attributes.align,
-			'data-valign': attributes.vAlign,
+			'data-align': attribute.align,
+			'data-valign': attribute.vAlign,
 		};
 	},
 	supports: {

@@ -138,7 +138,7 @@ const Render = ( props ) => {
 			<img
 				className="uagb-howto__source-image"
 				src={ url }
-				title = {title}
+				title={ title }
 				alt=""
 			/>
 		);
