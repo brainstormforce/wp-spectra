@@ -404,14 +404,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		public function render_table_of_contents( $attributes, $content, $block ) {
 
 			global $post;
+			$version_updated = false;
 
 			if ( ! isset( $post->ID ) ) {
 				return '';
 			}
 
 			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+			$uag_asset_version        = get_post_meta( $post->ID, '_uag_page_assets', true );
 
-			if ( empty( $uagb_toc_heading_content ) ) {
+			if ( empty( $uagb_toc_heading_content ) || $uag_asset_version ) {
 
 				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
 					$post->ID,
