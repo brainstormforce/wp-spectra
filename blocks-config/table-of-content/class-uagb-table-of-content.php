@@ -406,7 +406,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			}
 
 			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
-			$uagb_toc_version         = ! empty( $uagb_toc_options['_uag_toc_version'] ) ? $uagb_toc_options['_uag_toc_version'] : '';
+			$uagb_toc_version         = ! empty( $uagb_toc_options['_uagb_toc_version'] ) ? $uagb_toc_options['_uagb_toc_version'] : '';
 			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
@@ -417,7 +417,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				);
 
 				$meta_array = array(
-					'_uag_toc_version'   => UAGB_ASSET_VER,
+					'_uagb_toc_version'   => UAGB_ASSET_VER,
 					'_uagb_toc_headings' => $uagb_toc_heading_content,
 				);
 
