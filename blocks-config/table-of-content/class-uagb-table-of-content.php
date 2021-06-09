@@ -417,7 +417,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				);
 
 				$meta_array = array(
-					'_uagb_toc_version'   => UAGB_ASSET_VER,
+					'_uagb_toc_version'  => UAGB_ASSET_VER,
 					'_uagb_toc_headings' => $uagb_toc_heading_content,
 				);
 
