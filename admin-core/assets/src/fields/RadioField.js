@@ -15,7 +15,7 @@ function RadioField( props ) {
 		setInputvalue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:radio:change', {
+		let changeEvent = new CustomEvent( 'uag:radio:change', {
 			bubbles: true,
 			detail: { e: e, name: props.name, value: e.target.value },
 		} );
@@ -24,15 +24,15 @@ function RadioField( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-radio-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-radio-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
 
-				<div class={ `wcf-field__data--content ` }>
+				<div class={ `uag-field__data--content ` }>
 					{ options &&
 						options.map( function ( option ) {
 							let unique_id =
@@ -42,7 +42,7 @@ function RadioField( props ) {
 							return (
 								<>
 									<div
-										class={ `wcf-radio-field__option ${ child_class }` }
+										class={ `uag-radio-field__option ${ child_class }` }
 									>
 										<input
 											type="radio"
@@ -54,13 +54,13 @@ function RadioField( props ) {
 											id={ unique_id }
 											onClick={ handleRadioClick }
 										/>
-										<span class="wcf-radio-field__option-label">
+										<span class="uag-radio-field__option-label">
 											<label for={ unique_id }>
 												{ option.label }
 											</label>
 										</span>
 										{ option.desc && (
-											<div className="wcf-radio-field__option-desc">
+											<div className="uag-radio-field__option-desc">
 												{ option.desc }
 											</div>
 										) }
@@ -72,7 +72,7 @@ function RadioField( props ) {
 			</div>
 
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

@@ -117,23 +117,6 @@ class AdminMenu {
 			array( $this, 'render' ),
 			10
 		);
-
-		// Add settings menu.
-		/*add_submenu_page(
-			$parent_slug,
-			__( 'Flows', 'ultimate-addons-for-gutenberg' ),
-			__( 'Flows', 'ultimate-addons-for-gutenberg' ),
-			$capability,
-			'admin.php?page=' . $this->menu_slug . '&path=flows'
-		);
-		add_submenu_page(
-			$parent_slug,
-			__( 'Settings', 'ultimate-addons-for-gutenberg' ),
-			__( 'Settings', 'ultimate-addons-for-gutenberg' ),
-			$capability,
-			'admin.php?page=' . $this->menu_slug . '&path=settings'
-		);
-		*/
 	}
 
 	/**
@@ -169,10 +152,8 @@ class AdminMenu {
 		if ( $this->menu_slug === $menu_page_slug ) {
 			if ( $this->is_current_page( $this->menu_slug ) ) {
 				include_once UAG_ADMIN_DIR . 'views/settings-app.php';
-			} elseif ( $this->is_current_page( 'uag', array( 'wcf-edit-flow', 'wcf-edit-step' ) ) ) {
-				include_once UAG_ADMIN_DIR . 'views/editor-app.php';
-			} elseif ( $this->is_current_page( 'uag', array( 'wcf-log' ) ) ) {
-				include_once UAG_ADMIN_DIR . 'inc/wcf-debugger.php';
+			} elseif ( $this->is_current_page( 'uag', array( 'uag-log' ) ) ) {
+				include_once UAG_ADMIN_DIR . 'inc/uag-debugger.php';
 			} else {
 				include_once UAG_ADMIN_DIR . 'views/404-error.php';
 			}
@@ -197,82 +178,6 @@ class AdminMenu {
 
 		wp_enqueue_script( $admin_slug . '-common-script', UAG_ADMIN_URL . 'assets/js/common.js', array( 'jquery' ), UAGB_VER, false );
 
-		$current_flow_steps = array();
-		$flow_id = isset( $_GET['flow_id'] ) ? intval( $_GET['flow_id'] ) : 0; //phpcs:ignore
-		if ( $flow_id ) {
-			$current_flow_steps = AdminHelper::get_flow_meta_options( $flow_id );
-		}
-
-		$product_src = esc_url_raw(
-			add_query_arg(
-				array(
-					'post_type'      => 'product',
-					'wcf-woo-iframe' => 'true',
-				),
-				admin_url( 'post-new.php' )
-			)
-		);
-
-		$page_builder = '';
-
-		// Fixed bulk action.
-		$active_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'draft',
-				'label' => __( 'Move to Draft', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'trash',
-				'label' => __( 'Move to Trash', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'export',
-				'label' => __( 'Export', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'ultimate-addons-for-gutenberg' ),
-			),
-		);
-
-		$trash_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'restore',
-				'label' => __( 'Restore', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'ultimate-addons-for-gutenberg' ),
-			),
-		);
-
-		$draft_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'export',
-				'label' => __( 'Export', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'trash',
-				'label' => __( 'Move to Trash', 'ultimate-addons-for-gutenberg' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'ultimate-addons-for-gutenberg' ),
-			),
-		);
-
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
@@ -290,7 +195,7 @@ class AdminMenu {
 
 		if ( $this->is_current_page( $this->menu_slug ) ) {
 			$this->settings_app_scripts( $localize );
-		} elseif ( $this->is_current_page( 'uag', array( 'wcf-edit-flow', 'wcf-edit-step' ) ) ) {
+		} elseif ( $this->is_current_page( 'uag', array( 'uag-edit-flow', 'uag-edit-step' ) ) ) {
 			wp_enqueue_media();
 			$this->editor_app_scripts( $localize );
 		}
@@ -347,7 +252,7 @@ class AdminMenu {
 	 * @param array $localize Variable names.
 	 */
 	public function editor_app_scripts( $localize ) {
-		$handle            = 'wcf-editor-app';
+		$handle            = 'uag-editor-app';
 		$build_path        = UAG_ADMIN_DIR . 'assets/build/';
 		$build_url         = UAG_ADMIN_URL . 'assets/build/';
 		$script_asset_path = $build_path . 'editor-app.asset.php';
@@ -379,17 +284,6 @@ class AdminMenu {
 
 		wp_enqueue_style( $handle );
 		wp_style_add_data( $handle, 'rtl', 'replace' );
-
-		$localize['flow_id'] = isset( $_GET['flow_id'] ) ? intval( $_GET['flow_id'] ) : 0; //phpcs:ignore
-
-		$step_id = isset( $_GET['step_id'] ) ? intval( $_GET['step_id'] ) : false; //phpcs:ignore
-
-		if ( $step_id ) {
-
-			$meta_options        = AdminHelper::get_step_meta_options( $step_id );
-			$localize['options'] = $meta_options['options'];
-		}
-
 		wp_localize_script( $handle, 'uag_react', $localize );
 	}
 

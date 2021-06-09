@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<div class="wcf-menu-page-wrapper">
-	<div id="wcf-menu-page">
-		<div class="wcf-menu-page-content wcf-clear">
+<div class="uag-menu-page-wrapper">
+	<div id="uag-menu-page">
+		<div class="uag-menu-page-content uag-clear">
 		<?php
 
 			do_action( 'uag_render_admin_page_content', $menu_page_slug, $page_action );

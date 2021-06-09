@@ -1,5 +1,5 @@
 // When the route changes, we need to update wp-admin's menu with the correct section & current link
-window.wcfWpNavMenuChange = function ( path ) {
+window.uagWpNavMenuChange = function ( path ) {
 	const pageSlug = uag_react.admin_base_slug;
 	const pageUrl = path
 		? 'admin.php?page=' + pageSlug + '&path=' + encodeURIComponent( path )
@@ -21,8 +21,8 @@ window.wcfWpNavMenuChange = function ( path ) {
 	} );
 };
 
-window.wcfUnsavedChanges = false;
+window.uagUnsavedChanges = false;
 
 window.onbeforeunload = function () {
-	if ( wcfUnsavedChanges ) return 'Unsaved Changes';
+	if ( uagUnsavedChanges ) return 'Unsaved Changes';
 };

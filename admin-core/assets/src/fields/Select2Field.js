@@ -28,7 +28,7 @@ function Select2Field( props ) {
 		setSelectedValue( value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:select2:change', {
+		let changeEvent = new CustomEvent( 'uag:select2:change', {
 			bubbles: true,
 			detail: { e: {}, name: props.name, value: value },
 		} );
@@ -75,12 +75,12 @@ function Select2Field( props ) {
 	};
 
 	return (
-		<div className="wcf-select2-field">
-			<div className="wcf-selection-field">
+		<div className="uag-select2-field">
+			<div className="uag-selection-field">
 				<label>
 					{ label }
 					{ tooltip && (
-						<span className="wcf-tooltip-icon" data-position="top">
+						<span className="uag-tooltip-icon" data-position="top">
 							<em
 								className="dashicons dashicons-editor-help"
 								title={ tooltip }
@@ -90,8 +90,8 @@ function Select2Field( props ) {
 				</label>
 
 				<AsyncSelect
-					className="wcf-select2-input"
-					classNamePrefix="wcf"
+					className="uag-select2-input"
+					classNamePrefix="uag"
 					name={ name }
 					isClearable={ true }
 					value={ selectedValue }
@@ -105,7 +105,7 @@ function Select2Field( props ) {
 				/>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

@@ -66,7 +66,7 @@ function ProductRepeater( props ) {
 				} );
 
 				if ( is_cf_pro ) {
-					let prod_opt_data = options[ 'wcf-product-options-data' ];
+					let prod_opt_data = options[ 'uag-product-options-data' ];
 					prod_opt_data[ product_data.unique_id ] = {
 						enable_highlight: 'no',
 						highlight_text: '',
@@ -76,7 +76,7 @@ function ProductRepeater( props ) {
 
 					dispatch( {
 						type: 'SET_OPTION',
-						name: 'wcf-product-options-data',
+						name: 'uag-product-options-data',
 						value: prod_opt_data,
 					} );
 				}
@@ -95,21 +95,21 @@ function ProductRepeater( props ) {
 	};
 
 	return (
-		<div className="wcf-checkout-product-selection-field">
+		<div className="uag-checkout-product-selection-field">
 			{ CheckoutProducts.length === 0 && (
 				<input
-					name="wcf-checkout-products"
+					name="uag-checkout-products"
 					type="hidden"
 					value=""
 				></input>
 			) }
 			{ CheckoutProducts.length > 0 && (
 				<>
-					<div className="wcf-checkout-product-selection-field__header">
-						<div className="wcf-column--product">Product</div>
-						<div className="wcf-column--quantity">Quantity</div>
-						<div className="wcf-column--discount">Discount</div>
-						<div className="wcf-column--actions">Actions</div>
+					<div className="uag-checkout-product-selection-field__header">
+						<div className="uag-column--product">Product</div>
+						<div className="uag-column--quantity">Quantity</div>
+						<div className="uag-column--discount">Discount</div>
+						<div className="uag-column--actions">Actions</div>
 					</div>
 					<ReactSortable
 						list={ CheckoutProducts }
@@ -122,10 +122,10 @@ function ProductRepeater( props ) {
 						}
 						direction={ 'vertical' }
 						filter={
-							'.wcf-product-repeater-field__quantity, .wcf-product-repeater-field__discount'
+							'.uag-product-repeater-field__quantity, .uag-product-repeater-field__discount'
 						}
 						preventOnFilter={ false }
-						className="wcf-checkout-product-selection-field__content"
+						className="uag-checkout-product-selection-field__content"
 					>
 						{ CheckoutProducts.map( ( product_data, index ) => {
 							return (
@@ -140,9 +140,9 @@ function ProductRepeater( props ) {
 					</ReactSortable>
 				</>
 			) }
-			<div className="wcf-checkout-product-selection-field__add-new">
+			<div className="uag-checkout-product-selection-field__add-new">
 				<a
-					className="wcf-add-new-product wcf-button wcf-button--primary"
+					className="uag-add-new-product uag-button uag-button--primary"
 					onClick={ addNewProduct }
 				>
 					{ __( 'Add New product', 'ultimate-addons-for-gutenberg' ) }

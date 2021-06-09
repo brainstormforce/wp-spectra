@@ -63,12 +63,12 @@ function ProductRepeaterItem( props ) {
 
 	return (
 		<>
-			<div className="wcf-product-repeater-field__product">
-				<div className="wcf-product-repeater-field__product-data wcf-column--product">
-					<div className="wcf-product-repeater-field__drag">
-						<span class="wcf-drag-handle dashicons dashicons-menu"></span>
+			<div className="uag-product-repeater-field__product">
+				<div className="uag-product-repeater-field__product-data uag-column--product">
+					<div className="uag-product-repeater-field__drag">
+						<span class="uag-drag-handle dashicons dashicons-menu"></span>
 					</div>
-					<div className="wcf-product-repeater-field__product-image">
+					<div className="uag-product-repeater-field__product-image">
 						<img
 							src={
 								product_data && product_data.img_url
@@ -78,45 +78,45 @@ function ProductRepeaterItem( props ) {
 							className="product-image"
 						/>
 					</div>
-					<div className="wcf-product-repeater-field__product-details">
-						<div className="wcf-product-repeater-field__title">
+					<div className="uag-product-repeater-field__product-details">
+						<div className="uag-product-repeater-field__title">
 							{ product_data.name }
 						</div>
-						<div className="wcf-product-repeater-field__reg-price">
+						<div className="uag-product-repeater-field__reg-price">
 							{ __( 'Regular Price :', 'ultimate-addons-for-gutenberg' ) }
 							{ uag_react.woo_currency +
 								product_data.regular_price }
 						</div>
-						<div className="wcf-product-repeater-field__dis-price">
+						<div className="uag-product-repeater-field__dis-price">
 							{ __( 'Discounted Price :', 'ultimate-addons-for-gutenberg' ) }
 							{ uag_react.woo_currency +
 								product_data.sell_price }
 						</div>
 					</div>
 				</div>
-				<div className="wcf-product-repeater-field__quantity wcf-column--quantity">
+				<div className="uag-product-repeater-field__quantity uag-column--quantity">
 					<TextField
 						type="number"
 						id=""
-						name={ `wcf-checkout-products[${ field_index }][quantity]` }
+						name={ `uag-checkout-products[${ field_index }][quantity]` }
 						value={ product_data.quantity }
 						min="1"
 					/>
 				</div>
-				<div className="wcf-product-repeater-field__discount wcf-column--discount">
-					<div className="wcf-product-repeater-field__discount-type">
+				<div className="uag-product-repeater-field__discount uag-column--discount">
+					<div className="uag-product-repeater-field__discount-type">
 						<SelectField
-							name={ `wcf-checkout-products[${ field_index }][discount_type]` }
+							name={ `uag-checkout-products[${ field_index }][discount_type]` }
 							value={ product_data.discount_type }
 							options={ discount_options }
 							callback={ showDiscountvalue }
 						/>
 					</div>
-					<div className="wcf-product-repeater-field__discount-value">
+					<div className="uag-product-repeater-field__discount-value">
 						<TextField
 							type="number"
 							id=""
-							name={ `wcf-checkout-products[${ field_index }][discount_value]` }
+							name={ `uag-checkout-products[${ field_index }][discount_value]` }
 							value={
 								showDiscountValue === 'disable'
 									? ''
@@ -132,21 +132,21 @@ function ProductRepeaterItem( props ) {
 				</div>
 
 				<input
-					name={ `wcf-checkout-products[${ field_index }][product]` }
+					name={ `uag-checkout-products[${ field_index }][product]` }
 					type="hidden"
-					class="wcf-checkout-product-id"
+					class="uag-checkout-product-id"
 					value={ product_data.product }
 				></input>
 				<input
-					name={ `wcf-checkout-products[${ field_index }][unique_id]` }
+					name={ `uag-checkout-products[${ field_index }][unique_id]` }
 					type="hidden"
-					class="wcf-checkout-product-unique"
+					class="uag-checkout-product-unique"
 					value={ product_data.unique_id }
 				></input>
 
-				<div className="wcf-product-repeater-field__action wcf-column--actions">
+				<div className="uag-product-repeater-field__action uag-column--actions">
 					<span
-						className="wcf-remove-product-button dashicons dashicons-trash"
+						className="uag-remove-product-button dashicons dashicons-trash"
 						onClick={ removeProduct }
 					></span>
 				</div>

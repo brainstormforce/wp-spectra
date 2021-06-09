@@ -64,17 +64,17 @@ function ToastElement( props ) {
 	} );
 
 	return (
-		<div class={ `wcf-toast wcf-${ appearance }` }>
-			<div class="wcf-toast__content">
-				<div class="wcf-toast__icon">
+		<div class={ `uag-toast uag-${ appearance }` }>
+			<div class="uag-toast__content">
+				<div class="uag-toast__icon">
 					<i class="fas fa-check-circle" aria-hidden="true"></i>
 				</div>
-				<div class="wcf-toast__text">
-					<div class="wcf-toast__title">{ notice_data?.title }</div>
-					<div class="wcf-toast__desc">{ content }</div>
+				<div class="uag-toast__text">
+					<div class="uag-toast__title">{ notice_data?.title }</div>
+					<div class="uag-toast__desc">{ content }</div>
 				</div>
-				<div class="wcf-toast__dismiss" onClick={ dismiss_toast }>
-					<span class="wcf-toast__dismiss-text"><span className="dashicons dashicons-no"></span></span>
+				<div class="uag-toast__dismiss" onClick={ dismiss_toast }>
+					<span class="uag-toast__dismiss-text"><span className="dashicons dashicons-no"></span></span>
 				</div>
 			</div>
 		</div>

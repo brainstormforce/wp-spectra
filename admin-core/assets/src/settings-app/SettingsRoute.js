@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import HomePage from '@SettingsApp/pages/HomePage';
 import SettingsPage from '@SettingsApp/pages/SettingsPage';
-// import WelcomePage from '@SettingsApp/pages/WelcomePage';
+import ToolsPage from '@SettingsApp/pages/ToolsPage';
 
 function SettingsRoute() {
 	let query = new URLSearchParams( useLocation().search );
@@ -21,12 +21,15 @@ function SettingsRoute() {
 				case 'settings':
 					route_page = <SettingsPage />;
 					break;
+				case 'tools':
+					route_page = <ToolsPage />;
+					break;
 				default:
 					route_page = <HomePage />;
 					break;
 			}
 		}
-		wcfWpNavMenuChange( path );
+		uagWpNavMenuChange( path );
 	}
 
 	return <>{ route_page }</>;

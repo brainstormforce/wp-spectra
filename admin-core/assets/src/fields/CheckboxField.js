@@ -42,7 +42,7 @@ function Checkbox( props ) {
 		}
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:checkbox:change', {
+		let changeEvent = new CustomEvent( 'uag:checkbox:change', {
 			bubbles: true,
 			detail: { e: e, name: name, value: current_value },
 		} );
@@ -72,9 +72,9 @@ function Checkbox( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-checkbox-field">
-			<div className="wcf-field__data">
-				<div class={ `wcf-field__data--content ${ child_class }` }>
+		<div className="uag-field uag-checkbox-field">
+			<div className="uag-field__data">
+				<div class={ `uag-field__data--content ${ child_class }` }>
 					<input
 						type="hidden"
 						className={ props.class }
@@ -94,12 +94,12 @@ function Checkbox( props ) {
 				</div>
 
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label htmlFor={ id ? id : name }>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -114,7 +114,7 @@ function Checkbox( props ) {
 			</div>
 
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

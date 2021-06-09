@@ -15,9 +15,9 @@ function Radio( props ) {
 	var unique_id = name + Math.random().toString( 36 ).substring( 2, 5 );
 
 	return (
-		<div className="wcf-field wcf-radio-button">
-			<div className="wcf-field__data">
-				<div class="wcf-field__data--content">
+		<div className="uag-field uag-radio-button">
+			<div className="uag-field__data">
+				<div class="uag-field__data--content">
 					<input
 						type="radio"
 						name={ name }
@@ -28,14 +28,14 @@ function Radio( props ) {
 					/>
 				</div>
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label for={ id ? id : unique_id }>{ label }</label>
 					</div>
 				) }
 			</div>
 
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

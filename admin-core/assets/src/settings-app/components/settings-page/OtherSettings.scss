@@ -1,4 +1,4 @@
-.wcf-other-settings__form-table {
+.uag-other-settings__form-table {
 	min-width: 200px;
 	height: 34px;
 	line-height: 34px;
@@ -6,29 +6,29 @@
 }
 
 // Common settings for setting page
-.wcf-other-settings__form-table th {
+.uag-other-settings__form-table th {
 	padding: 15px 10px 15px 0;
 }
-.wcf-regenerate-css {
+.uag-regenerate-css {
 	margin-bottom: 20px;
 	border-bottom: 1px solid #dddddd;
 
-	.wcf-regenerate-css__option {
+	.uag-regenerate-css__option {
 		margin-bottom: 20px;
 
-		.wcf-regenerate-css-label {
+		.uag-regenerate-css-label {
 			font-weight: 500;
 		}
-		.wcf-regenerate-css-button {
+		.uag-regenerate-css-button {
 			margin-left: 20px;
 		}
 
-		.wcf-icon {
+		.uag-icon {
 			vertical-align: middle;
 			margin-right: 6px;
 		}
 
-		.wcf-spinner {
+		.uag-spinner {
 			float: none;
 			margin: 0;
 			// vertical-align: middle;
@@ -54,13 +54,13 @@
 			}
 		}
 	}
-	.wcf-regenerate-css__desc {
+	.uag-regenerate-css__desc {
 		margin-bottom: 20px;
 	}
 }
 
-.wcf-field-row-delete_data {
-	.wcf-field__desc {
+.uag-field-row-delete_data {
+	.uag-field__desc {
 		padding: 15px;
 		border-left: 2px solid red;
 		margin: 0 0 15px 6px;

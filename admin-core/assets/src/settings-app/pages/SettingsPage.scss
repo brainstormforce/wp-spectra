@@ -1,11 +1,11 @@
-.wcf-global-settings-metabox {
+.uag-global-settings-metabox {
 	font-size: 14px;
 	max-width: 100%;
 
 	table td {
 		padding: 10px 10px 15px 0;
 
-		.wcf-field__data--label {
+		.uag-field__data--label {
 			font-weight: 500;
 		}
 	}
@@ -32,17 +32,17 @@
 		margin: 25px 0 0;
 	}
 
-	.wcf-select-option label {
+	.uag-select-option label {
 		font-weight: 500;
 	}
 
-	.wcf-field__desc {
+	.uag-field__desc {
 		color: #666;
 		line-height: 1.5;
 		margin-top: 15px;
 	}
 
-	.wcf-global-settings-metabox__tabs nav {
+	.uag-global-settings-metabox__tabs nav {
 		background: #fafafa;
 	}
 
@@ -50,11 +50,11 @@
 		margin-top: 5px;
 	}
 
-	.wcf-settings-form .wcf-submit-settings {
+	.uag-settings-form .uag-submit-settings {
 		min-width: 165px;
 	}
 
-	.wcf-global-settings-metabox__tabs {
+	.uag-global-settings-metabox__tabs {
 		position: relative;
 		width: 100%;
 		display: flex;
@@ -70,7 +70,7 @@
 			}
 		}
 
-		.wcf-global-settings-metabox__tabs-menu {
+		.uag-global-settings-metabox__tabs-menu {
 			a {
 				display: block;
 				border-bottom: 1px solid #dedede;
@@ -86,7 +86,7 @@
 					box-shadow: none;
 					font-weight: normal;
 
-					.wcf-settings-nav__active {
+					.uag-settings-nav__active {
 						background: #ececec;
 					}
 				}
@@ -94,7 +94,7 @@
 		}
 	}
 
-	.wcf-global-settings-metabox__current-tab {
+	.uag-global-settings-metabox__current-tab {
 		background: #fff;
 		padding: 20px 30px;
 		padding-bottom: 250px;
@@ -102,14 +102,14 @@
 		width: 80%;
 		display: unset;
 
-		.wcf-select-option select {
+		.uag-select-option select {
 			margin-left: 20px;
 		}
 		.input-field {
 			font-weight: 400;
 			margin-left: 20px;
 		}
-		.wcf-setting-select-option {
+		.uag-setting-select-option {
 			font-weight: 400;
 			padding: 4px 15px;
 			height: 40px;
@@ -117,7 +117,7 @@
 		}
 	}
 
-	.wcf-button-style {
+	.uag-button-style {
 		line-height: 3.14285714;
 		padding: 0 36px;
 		font-size: 14px;
@@ -144,23 +144,23 @@
 	}
 
 	/* New Css */
-	.wcf-radio-field__option {
+	.uag-radio-field__option {
 		padding: 0 0 25px;
 	}
 
 	/* Field specific css */
-	.wcf-field-row-ga-event-ini-checkout,
-	.wcf-field-row-ga-event-add-to-cart,
-	.wcf-field-row-ga-event-payment-info,
-	.wcf-field-row-ga-event-purchase-complete,
-	.wcf-field-row-pixel-event-ini-checkout,
-	.wcf-field-row-pixel-event-payment-info {
+	.uag-field-row-ga-event-ini-checkout,
+	.uag-field-row-ga-event-add-to-cart,
+	.uag-field-row-ga-event-payment-info,
+	.uag-field-row-ga-event-purchase-complete,
+	.uag-field-row-pixel-event-ini-checkout,
+	.uag-field-row-pixel-event-payment-info {
 		td {
 			padding: 0;
 		}
 	}
 
-	.wcf-field-row-pixel-event-purchase-complete {
+	.uag-field-row-pixel-event-purchase-complete {
 		td {
 			padding-top: 0;
 		}

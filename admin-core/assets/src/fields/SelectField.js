@@ -21,7 +21,7 @@ function SelectField( props ) {
 		setValue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:select:change', {
+		let changeEvent = new CustomEvent( 'uag:select:change', {
 			bubbles: true,
 			detail: { e: e, name: props.name, value: e.target.value },
 		} );
@@ -38,15 +38,15 @@ function SelectField( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-select-option">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-select-option">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -59,7 +59,7 @@ function SelectField( props ) {
 					</div>
 				) }
 
-				<div class="wcf-field__data--content">
+				<div class="uag-field__data--content">
 					<select
 						className={ props.class }
 						name={ name }
@@ -94,7 +94,7 @@ function SelectField( props ) {
 				</div>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

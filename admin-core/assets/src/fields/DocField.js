@@ -6,9 +6,9 @@ function DocField( props ) {
 	const { content } = props;
 
 	return (
-		<div className="wcf-field wcf-doc-field">
+		<div className="uag-field uag-doc-field">
 			{ content && (
-				<div className="wcf-field__doc-content">
+				<div className="uag-field__doc-content">
 					{ ReactHtmlParser( content ) }
 				</div>
 			) }

@@ -6,7 +6,7 @@ export const settingsInitialState = {
 const settingsEvents = ( state, data ) => {
 	switch ( data.status ) {
 		case 'SAVED':
-			window.wcfUnsavedChanges = false;
+			window.uagUnsavedChanges = false;
 			return {
 				...state,
 				settingsProcess: 'saved',

@@ -26,7 +26,7 @@ function NumberField( props ) {
 		setInputvalue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:number:change', {
+		let changeEvent = new CustomEvent( 'uag:number:change', {
 			bubbles: true,
 			detail: { e: e, name: props.name, value: e.target.value },
 		} );
@@ -35,15 +35,15 @@ function NumberField( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-number-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-number-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -56,7 +56,7 @@ function NumberField( props ) {
 					</div>
 				) }
 
-				<div class="wcf-field__data--content">
+				<div class="uag-field__data--content">
 					<input
 						type="number"
 						className={ props.class }
@@ -73,7 +73,7 @@ function NumberField( props ) {
 				</div>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

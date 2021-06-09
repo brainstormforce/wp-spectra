@@ -18,23 +18,23 @@ function SubmitButton( props ) {
 
 	let classes = props.class ? props.class : '';
 
-	let savingState = 'processing' === settingsProcess ? 'wcf-saving' : '';
+	let savingState = 'processing' === settingsProcess ? 'uag-saving' : '';
 
 	const getSuccessNotice = function () {
 		return (
-			<span className="wcf-success-notice">
+			<span className="uag-success-notice">
 				<span className="dashicons dashicons-yes"></span>
-				<span className="wcf-success-message">
+				<span className="uag-success-message">
 					{ __( 'Settings Saved', 'ultimate-addons-for-gutenberg' ) }
 				</span>
 			</span>
 		);
 	};
 	return (
-		<div className="wcf-field wcf-submit wcf-submit-field">
+		<div className="uag-field uag-submit uag-submit-field">
 			<button
 				type="submit"
-				className={ `wcf-button wcf-button--primary ${ savingState } ${ classes }` }
+				className={ `uag-button uag-button--primary ${ savingState } ${ classes }` }
 				onClick={ showMessage }
 			>
 				{ 'saved' === settingsProcess && getSuccessNotice() }

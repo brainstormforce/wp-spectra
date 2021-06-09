@@ -1,4 +1,4 @@
-.wcf-global-nav-menu {
+.uag-global-nav-menu {
 	margin: 0px;
 	padding: 2px 20px 0 20px;
 	display: flex;
@@ -7,7 +7,7 @@
 	border-bottom: 1px solid #ddd;
 	box-shadow: none;
 
-	.wcf-title {
+	.uag-title {
 		max-width: 170px;
 
 		a:focus,
@@ -15,16 +15,16 @@
 			box-shadow: none;
 			outline: 0;
 		}
-		.wcf-logo {
+		.uag-logo {
 			width: 120px;
 		}
 	}
 
-	.wcf-global-nav__items {
+	.uag-global-nav__items {
 		display: flex;
 		align-items: center;
 	}
-	.wcf-global-nav-menu__tab {
+	.uag-global-nav-menu__tab {
 		& {
 			background: transparent;
 			border: none;
@@ -47,7 +47,7 @@
 			color: #f06335;
 			border-bottom: 2px solid #f06335;
 		}
-		&.wcf-global-nav-menu__tab--active {
+		&.uag-global-nav-menu__tab--active {
 			background: none;
 			color: #f06335;
 			border-bottom: 2px solid #f06335;
@@ -57,21 +57,21 @@
 
 /* New FIxed header */
 
-.wcf-menu-page-content {
+.uag-menu-page-content {
 	margin: 0 auto;
 	width: 100%;
 	font-size: 14px;
 	font-weight: 400;
 }
 
-.wcf-global-nav-menu .wcf-title {
+.uag-global-nav-menu .uag-title {
 	max-width: 140px;
 	border-right: 1px solid #dddddd;
 	display: flex;
 	align-items: center;
 }
 
-body.folded .wcf-global-nav-menu {
+body.folded .uag-global-nav-menu {
     position: fixed;
     width: calc(100% - 75px);
     left: 55px;
@@ -79,7 +79,7 @@ body.folded .wcf-global-nav-menu {
     z-index: 2;
 }
 
-.wcf-global-nav-menu {
+.uag-global-nav-menu {
 	position: fixed;
 	width: calc(100% - 160px);
 	left: 160px;

@@ -7,7 +7,7 @@
 		"build": "wp-scripts build",
 		"start": "wp-scripts start",
 		"lint:js": "wp-scripts lint-js admin-core/assets/src",
-		"i18n": "grunt textdomain && wp i18n make-pot . --exclude=\".github,scripts, admin-core/assets/importer-data,admin-core/assets/src,config,modules/gutenberg/src,node_modules,import.js,import.min.js,.vscode,.eslintrc.js,.prettierrc,google-fonts.json,package.json,package-lock.json,*.json\" languages/cartflows.pot --domain=cartflows",
+		"i18n": "grunt textdomain && wp i18n make-pot . --exclude=\".github,scripts, admin-core/assets/importer-data,admin-core/assets/src,config,modules/gutenberg/src,node_modules,import.js,import.min.js,.vscode,.eslintrc.js,.prettierrc,google-fonts.json,package.json,package-lock.json,*.json\" languages/ultimate-addons-for-gutenberg.pot --domain=ultimate-addons-for-gutenberg",
 		"fonts": "node scripts/google-fonts.js && grunt json2php"
 	},
 	"dependencies": {
@@ -60,7 +60,7 @@
 	"prettier": "@wordpress/prettier-config",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cartflows/cartflows.git"
+		"url": "https://github.com/ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.git"
 	},
 	"author": "CartFlows",
 	"license": "ISC"

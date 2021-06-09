@@ -22,8 +22,6 @@ class GlobalSettings {
 	 */
 	public static function get_global_settings_fields() {
 
-		$origin = get_site_url();
-
 		$settings = array(
 			'general'        => array(
 				'title'  => __( 'General ', 'ultimate-addons-for-gutenberg' ),
@@ -33,14 +31,14 @@ class GlobalSettings {
 						'name'  => '_uag_common[global_checkout]',
 						'label' => __( 'Global Checkout', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => sprintf( __( 'Be sure not to add any product in above selected Global Checkout step. %1$sLearn More >>%2$s.', 'ultimate-addons-for-gutenberg' ), '<a href="https://cartflows.com/docs/global-checkout/" target="_blank">', '</a>' ),
+						'desc'  => sprintf( __( 'Be sure not to add any product in above selected Global Checkout step. %1$sLearn More >>%2$s.', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/global-checkout/" target="_blank">', '</a>' ),
 					),
 					'page_builder'    => array(
 						'type'    => 'select',
 						'name'    => '_uag_common[default_page_builder]',
 						'label'   => __( 'Show Ready Templates for', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'    => sprintf( __( 'Flow templates that can be imported in one click. These templates are available in few different page builders. Please choose your preferred page builder from the list so you will only see templates that are made using that page builder. %1$sLearn More >>%2$s', 'ultimate-addons-for-gutenberg' ), '<a href="https://cartflows.com/docs/import-cartflows-templates-for-flows-steps/" target="_blank">', '</a>' ),
+						'desc'    => sprintf( __( 'Flow templates that can be imported in one click. These templates are available in few different page builders. Please choose your preferred page builder from the list so you will only see templates that are made using that page builder. %1$sLearn More >>%2$s', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/import-ultimate-addons-for-gutenberg-templates-for-flows-steps/" target="_blank">', '</a>' ),
 
 						'options' => array(
 							array(
@@ -86,7 +84,7 @@ class GlobalSettings {
 							'message' => __( 'Are you sure? Do you want to delete plugin data while deleting the plugin? Type "DELETE" to confirm!', 'ultimate-addons-for-gutenberg' ),
 						),
 						/* translators: %1$1s: link html start, %2$12: link html end*/
-						'desc'   => sprintf( __( 'This option will delete all the options data on plugin deletion. If you enable this and deletes the plugin, you can\'t restore your saved data.', 'ultimate-addons-for-gutenberg' ), '<a href="https://cartflows.com/docs/delete-plugin-data-while-uninstalling-plugin/" target="_blank">', '</a>' ),
+						'desc'   => sprintf( __( 'This option will delete all the options data on plugin deletion. If you enable this and deletes the plugin, you can\'t restore your saved data.', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/delete-plugin-data-while-uninstalling-plugin/" target="_blank">', '</a>' ),
 					),
 				),
 			),

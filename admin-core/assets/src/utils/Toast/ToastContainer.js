@@ -7,7 +7,7 @@ function ToastContainer( props ) {
 
 	return (
 		<div
-			className={ `wcf-toast-container` }
+			className={ `uag-toast-container` }
 			style={
 				{
 					// padding: 0, //gutter ? gutter : 0,

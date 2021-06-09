@@ -4,7 +4,7 @@ import './Circle.scss';
 
 function CircleSkeleton() {
 	return (
-		<div className="wcf-skeleton wcf-skeleton--circle wcf-skeleton--wave"></div>
+		<div className="uag-skeleton uag-skeleton--circle uag-skeleton--wave"></div>
 	);
 }
 

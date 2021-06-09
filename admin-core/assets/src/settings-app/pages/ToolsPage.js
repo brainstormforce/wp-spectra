@@ -1,19 +1,15 @@
+import './ToolsPage.scss';
+import { __ } from '@wordpress/i18n';
+import ToolsPageSkeleton from '@Admin/settings-app/components/tools-page/ToolsPageSkeleton';
+import Nav from '@SettingsApp/components/tools-page/ToolsNav';
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
-import { __ } from '@wordpress/i18n';
 
-import './SettingsPage.scss';
+function ToolsPage() {
 
-import Nav from '@SettingsApp/components/settings-page/SettingNav';
-import GeneralSettings from '@SettingsApp/components/settings-page/GeneralSettings';
-import OtherSettings from '@SettingsApp/components/settings-page/OtherSettings';
-
-import SettingPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
-
-function SettingsPage() {
-	const [ { globaldata }, dispatch ] = useStateValue();
+    const [ { globaldata }, dispatch ] = useStateValue();
 
 	let loading = true;
 
@@ -49,45 +45,40 @@ function SettingsPage() {
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <SettingPageSkeleton />;
+		return <ToolsPageSkeleton />;
 	} else {
 		switch ( tab ) {
-			case '#general_settings':
+			case '#version_control_tools':
 				current_tab = (
-					<GeneralSettings
-						data={ globaldata.general }
-						list={ globaldata.checkout_list }
-					/>
+					''
 				);
 				break;
-			case '#other_settings':
+			case '#assets_generation_tools':
 				current_tab = (
-					<OtherSettings data={ globaldata.other_setttings } />
+					''
 				);
 
 				break;
 
 			default:
 				current_tab = (
-					<GeneralSettings
-						data={ globaldata.general }
-						list={ globaldata.checkout_list }
-					/>
+					''
 				);
 				break;
 		}
 	}
+
 	return (
 		<div className="uag-global-settings-metabox">
 			<div className="uag-global-settings-metabox__tabs">
 				<nav className="uag-global-settings-metabox__tabs-menu">
 					<Nav
-						title={ __( 'General Settings', 'ultimate-addons-for-gutenberg' ) }
-						slug="#general_settings"
+						title={ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
+						slug="#version_control_tools"
 					/>
 					<Nav
-						title={ __( 'Other Settings', 'ultimate-addons-for-gutenberg' ) }
-						slug="#other_settings"
+						title={ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
+						slug="#assets_generation_tools"
 					/>
 				</nav>
 
@@ -99,4 +90,4 @@ function SettingsPage() {
 	);
 }
 
-export default SettingsPage;
+export default ToolsPage;

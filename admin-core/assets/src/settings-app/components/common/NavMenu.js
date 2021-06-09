@@ -7,7 +7,7 @@ import './NavMenu.scss';
 function NavMenu() {
 	let menus = [
 		{
-			name: __('Home', 'cartflow'),
+			name: __('Home', 'ultimate-addons-for-gutenberg'),
 			slug: uag_react.home_slug,
 			path: '',
 		},
@@ -30,8 +30,8 @@ function NavMenu() {
 	let activePath = query.get('path') ? query.get('path') : '';
 
 	return (
-		<div className="wcf-global-nav-menu">
-			<div class="wcf-title">
+		<div className="uag-global-nav-menu">
+			<div class="uag-title">
 				<Link
 					key={`?page=${uag_react.home_slug}&path=''`}
 					to={{
@@ -43,13 +43,13 @@ function NavMenu() {
 						{__('UAG', 'ultimate-addons-for-gutenberg')}
 					</span>
 					<img
-						class="wcf-logo"
+						class="uag-logo"
 						src={uag_react.logo_url}
 						alt=""
 					/>
 				</Link>
 			</div>
-			<div className="wcf-global-nav__items">
+			<div className="uag-global-nav__items">
 				{menus.map((menu, i) => (
 					<Link
 						key={`?page=${menu.slug}&path=${menu.path}`}
@@ -59,9 +59,9 @@ function NavMenu() {
 								'' !== menu.path ? '&path=' + menu.path : ''
 							}`,
 						}}
-						className={`wcf-global-nav-menu__tab ${
+						className={`uag-global-nav-menu__tab ${
 							activePage === menu.slug && activePath === menu.path
-								? ' wcf-global-nav-menu__tab--active'
+								? ' uag-global-nav-menu__tab--active'
 								: ''
 						}`}
 					>
@@ -69,29 +69,19 @@ function NavMenu() {
 					</Link>
 				))}
 			</div>
-			<div class="wcf-top-links">
+			<div class="uag-top-links">
 				<Link
 					to="//ultimategutenberg.com/docs/"
 					target="_blank"
-					className="wcf-top-links__item"
+					className="uag-top-links__item"
 					title="Knowledge Base"
 				>
 					<span class="dashicons dashicons-book"></span>
 				</Link>
-
-				<Link
-					to="//youtube.com/"
-					target="_blank"
-					className="wcf-top-links__item"
-					title="Community"
-				>
-					<span class="dashicons dashicons-youtube"></span>
-				</Link>
-
 				<Link
 					to="//ultimategutenberg.com/support/"
 					target="_blank"
-					className="wcf-top-links__item"
+					className="uag-top-links__item"
 					title="Support"
 				>
 					<span class="dashicons dashicons-sos"></span>

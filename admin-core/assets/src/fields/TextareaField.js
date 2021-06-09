@@ -10,7 +10,7 @@ function TextareaField( props ) {
 		setInputvalue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:textarea:change', {
+		let changeEvent = new CustomEvent( 'uag:textarea:change', {
 			bubbles: true,
 			detail: { e: e, name: props.name, value: e.target.value },
 		} );
@@ -19,15 +19,15 @@ function TextareaField( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-textarea-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-textarea-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -40,7 +40,7 @@ function TextareaField( props ) {
 					</div>
 				) }
 
-				<div class="wcf-field__data--content">
+				<div class="uag-field__data--content">
 					<textarea
 						className={ props.class }
 						name={ name }
@@ -54,7 +54,7 @@ function TextareaField( props ) {
 				</div>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

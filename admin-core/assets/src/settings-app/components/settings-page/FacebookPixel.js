@@ -51,15 +51,15 @@ function FacebookPixel( props ) {
 	};
 
 	return (
-		<form className="wcf-fb-pixel-settings" onSubmit={ handleFormSubmit }>
-			<h3 className="wcf-fb-pixel-settings__title">
+		<form className="uag-fb-pixel-settings" onSubmit={ handleFormSubmit }>
+			<h3 className="uag-fb-pixel-settings__title">
 				{ __('Facebook Pixel Settings', 'ultimate-addons-for-gutenberg') }
 			</h3>
 			<SettingTable
 				settings={ fb_pixel_settings }
 				meta_key="_uag_facebook"
 			/>
-			<div className="wcf-fb-pixel-settings__save-button">
+			<div className="uag-fb-pixel-settings__save-button">
 				<SubmitButton />
 			</div>
 		</form>

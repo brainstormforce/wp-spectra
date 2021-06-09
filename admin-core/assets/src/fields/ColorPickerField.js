@@ -37,7 +37,7 @@ function ColorPickerField( props ) {
 		}
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:color:change', {
+		let changeEvent = new CustomEvent( 'uag:color:change', {
 			bubbles: true,
 			detail: { e: color, name: props.name, value: color.hex },
 		} );
@@ -46,27 +46,27 @@ function ColorPickerField( props ) {
 	};
 	return (
 		<div
-			className={ `wcf-field wcf-color-field ${
-				! isActive ? 'wcf-hide' : ''
+			className={ `uag-field uag-color-field ${
+				! isActive ? 'uag-hide' : ''
 			}` }
 		>
-			<div className="wcf-field__data">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
-				<div class="wcf-field__data--content">
-					<div className="wcf-colorpicker-selector">
+				<div class="uag-field__data--content">
+					<div className="uag-colorpicker-selector">
 						<div
-							className="wcf-colorpicker-swatch-wrap"
+							className="uag-colorpicker-swatch-wrap"
 							onClick={ handleClick }
 						>
 							<span
-								className="wcf-colorpicker-swatch"
+								className="uag-colorpicker-swatch"
 								style={ styles.color }
 							/>
-							<span className="wcf-colorpicker-label">
+							<span className="uag-colorpicker-label">
 								Select Color
 							</span>
 							<input
@@ -77,18 +77,18 @@ function ColorPickerField( props ) {
 						</div>
 						{ color && (
 							<span
-								className="wcf-colorpicker-reset"
+								className="uag-colorpicker-reset"
 								onClick={ handleResetColor }
 							>
 								Reset
 							</span>
 						) }
 					</div>
-					<div className="wcf-color-picker">
+					<div className="uag-color-picker">
 						{ displayColorPicker ? (
-							<div className="wcf-color-picker-popover">
+							<div className="uag-color-picker-popover">
 								<div
-									className="wcf-color-picker-cover"
+									className="uag-color-picker-cover"
 									onClick={ handleClose }
 								/>
 								<SketchPicker

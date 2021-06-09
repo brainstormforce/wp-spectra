@@ -1,9 +1,9 @@
-.wcf-radio-field {
-	.wcf-field__data {
+.uag-radio-field {
+	.uag-field__data {
 		display: block;
 	}
 
-	.wcf-field__data--label {
+	.uag-field__data--label {
 		padding: 0 0 10px;
 	}
 
@@ -11,7 +11,7 @@
 		margin: 0 7px 0 0;
 	}
 
-	.wcf-radio-field__option-desc {
+	.uag-radio-field__option-desc {
 		color: #777;
 		line-height: 1.5;
 		margin-top: 15px;
@@ -20,7 +20,7 @@
 		font-weight: normal;
 	}
 
-	.wcf-radio-field__option.wcf-child-field {
+	.uag-radio-field__option.uag-child-field {
 		margin-left: 15px;
 	}
 }

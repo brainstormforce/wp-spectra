@@ -9,7 +9,7 @@ function RectSkeleton( props ) {
 
 	return (
 		<div
-			className="wcf-skeleton wcf-skeleton--rect wcf-skeleton--wave"
+			className="uag-skeleton uag-skeleton--rect uag-skeleton--wave"
 			style={ {
 				width,
 				height,

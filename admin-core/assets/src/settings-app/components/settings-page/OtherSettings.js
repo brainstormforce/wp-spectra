@@ -89,29 +89,29 @@ function OtherSettings( props ) {
 	};
 
 	return (
-		<form className="wcf-other-settings" onSubmit={ handleFormSubmit }>
-			<h3 className="wcf-other-settings__title">
+		<form className="uag-other-settings" onSubmit={ handleFormSubmit }>
+			<h3 className="uag-other-settings__title">
 				{ __( 'Other Settings', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
-			<div className="wcf-regenerate-css">
-				<div className="wcf-regenerate-css__option">
-					<label className="wcf-regenerate-css-label">
+			<div className="uag-regenerate-css">
+				<div className="uag-regenerate-css__option">
+					<label className="uag-regenerate-css-label">
 						{ __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
 					</label>
 
 					<a
-						className="wcf-button wcf-button--secondary wcf-regenerate-css-button"
+						className="uag-button uag-button--secondary uag-regenerate-css-button"
 						onClick={ regenerateCSS }
 					>
 						{ ! isProcessing ? (
-							<span className="wcf-icon dashicons dashicons-update"></span>
+							<span className="uag-icon dashicons dashicons-update"></span>
 						) : (
-							<span className="wcf-icon wcf-spinner dashicons dashicons-update is-active"></span>
+							<span className="uag-icon uag-spinner dashicons dashicons-update is-active"></span>
 						) }
 						{ renerate_css_text }
 					</a>
 				</div>
-				<div className="wcf-regenerate-css__desc wcf-field__desc">
+				<div className="uag-regenerate-css__desc uag-field__desc">
 					{ ReactHtmlParser(
 						__(
 							'You can regenerate your CSS & Javascript assets here.',
@@ -122,7 +122,7 @@ function OtherSettings( props ) {
 			</div>
 			<SettingTable settings={ other_settings } />
 
-			<div className="wcf-other-settings__save-button">
+			<div className="uag-other-settings__save-button">
 				<SubmitButton />
 			</div>
 		</form>

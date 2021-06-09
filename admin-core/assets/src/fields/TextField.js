@@ -29,7 +29,7 @@ function TextField( props ) {
 		setInputvalue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:text:change', {
+		let changeEvent = new CustomEvent( 'uag:text:change', {
 			bubbles: true,
 			detail: { e: e, name: props.name, value: e.target.value },
 		} );
@@ -43,15 +43,15 @@ function TextField( props ) {
 
 	const fieldtype = type ? type : 'text';
 	return (
-		<div className="wcf-field wcf-text-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-text-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -64,7 +64,7 @@ function TextField( props ) {
 					</div>
 				) }
 
-				<div class="wcf-field__data--content">
+				<div class="uag-field__data--content">
 					<input
 						{ ...attr }
 						type={ fieldtype }
@@ -81,12 +81,12 @@ function TextField( props ) {
 				</div>
 			</div>
 			{ icon && (
-				<div className="wcf-text-field__icon">
+				<div className="uag-text-field__icon">
 					<span class={ icon }></span>
 				</div>
 			) }
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

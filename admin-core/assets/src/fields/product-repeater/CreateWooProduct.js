@@ -40,22 +40,22 @@ function CreateWooProduct( props ) {
 				.appendChild( window.iFrameElement );
 
 			var ifrm = document.getElementById(
-				'wcf-create-woo-product-iframe'
+				'uag-create-woo-product-iframe'
 			);
 
 			var doc = ifrm.contentDocument
 				? ifrm.contentDocument
 				: ifrm.contentWindow.document;
 
-			doc.body.classList.add( 'wcf-in-iframe' );
+			doc.body.classList.add( 'uag-in-iframe' );
 
 			/* Create Close Button */
 			var args = {
 				element: 'a',
-				id: 'wcf-close-create-woo-product',
-				class: 'wcf-close-create-woo-product close-icon',
+				id: 'uag-close-create-woo-product',
+				class: 'uag-close-create-woo-product close-icon',
 			};
-			_create_html_element( args, 'wcf-create-woo-product-wrap' );
+			_create_html_element( args, 'uag-create-woo-product-wrap' );
 
 			// Display Iframe
 			window.iFrameElement.setAttribute(
@@ -64,14 +64,14 @@ function CreateWooProduct( props ) {
 			);
 
 			var product_wrap = document.getElementById(
-				'wcf-create-woo-product-wrap'
+				'uag-create-woo-product-wrap'
 			);
 
 			product_wrap.classList.add( 'product-loaded' );
 		}
 
 		// Function to destroy the Iframe & close the popup.
-		function wcf_open_create_woo_product_popup( button ) {
+		function uag_open_create_woo_product_popup( button ) {
 			event.preventDefault();
 
 			var create_btn = button;
@@ -82,8 +82,8 @@ function CreateWooProduct( props ) {
 			// Create wrapper div.
 			var args = {
 				element: 'div',
-				id: 'wcf-create-woo-product-overlay',
-				class: 'wcf-create-woo-product-overlay',
+				id: 'uag-create-woo-product-overlay',
+				class: 'uag-create-woo-product-overlay',
 			};
 
 			_create_html_element( args, 'body' );
@@ -91,14 +91,14 @@ function CreateWooProduct( props ) {
 			/* Create frame wrap */
 			var args = {
 				element: 'div',
-				id: 'wcf-create-woo-product-wrap',
-				class: 'wcf-create-woo-product-wrap',
+				id: 'uag-create-woo-product-wrap',
+				class: 'uag-create-woo-product-wrap',
 			};
 
-			_create_html_element( args, 'wcf-create-woo-product-overlay' );
+			_create_html_element( args, 'uag-create-woo-product-overlay' );
 
 			var overlay = document.getElementById(
-				'wcf-create-woo-product-overlay'
+				'uag-create-woo-product-overlay'
 			);
 
 			overlay.classList.add( 'open' );
@@ -106,21 +106,21 @@ function CreateWooProduct( props ) {
 			/* Create Iframe */
 			var args = {
 				element: 'iframe',
-				id: 'wcf-create-woo-product-iframe',
-				class: 'wcf-woo-product-iframe',
+				id: 'uag-create-woo-product-iframe',
+				class: 'uag-woo-product-iframe',
 				border: 0,
 				transparency: 'true',
 				src: uag_react.create_product_src,
 			};
 
-			_create_iframe_element( args, 'wcf-create-woo-product-wrap' );
+			_create_iframe_element( args, 'uag-create-woo-product-wrap' );
 
-			document.body.classList.add( 'wcf-create-woo-iframe-opened' );
+			document.body.classList.add( 'uag-create-woo-iframe-opened' );
 		}
 
 		function _destroy_create_woo_product_iframe( overlay_class ) {
 			var product_wrap = document.getElementById(
-				'wcf-create-woo-product-wrap'
+				'uag-create-woo-product-wrap'
 			);
 
 			window.iFrameElement.setAttribute(
@@ -128,19 +128,19 @@ function CreateWooProduct( props ) {
 				'opacity: 0; visibility:hidden;'
 			);
 
-			document.body.classList.remove( 'wcf-create-woo-iframe-opened' );
+			document.body.classList.remove( 'uag-create-woo-iframe-opened' );
 			overlay_class.classList.remove( 'open' );
 			button.classList.remove( 'updating-message' );
 			product_wrap.classList.remove( 'product-loaded' );
 			overlay_class.remove();
 		}
-		function wcf_close_create_woo_product_popup() {
+		function uag_close_create_woo_product_popup() {
 			var close_icon = document.getElementById(
-				'wcf-close-create-woo-product'
+				'uag-close-create-woo-product'
 			);
 
 			var overlay_class = document.getElementById(
-				'wcf-create-woo-product-overlay'
+				'uag-create-woo-product-overlay'
 			);
 
 			close_icon.addEventListener( 'click', function () {
@@ -159,14 +159,14 @@ function CreateWooProduct( props ) {
 			} );
 		}
 
-		wcf_open_create_woo_product_popup( button );
+		uag_open_create_woo_product_popup( button );
 
-		wcf_close_create_woo_product_popup();
+		uag_close_create_woo_product_popup();
 	};
 
 	return (
 		<a
-			className="wcf-creat-new-product wcf-button wcf-button--secondary"
+			className="uag-creat-new-product uag-button uag-button--secondary"
 			onClick={ createNewProduct }
 		>
 			{ __( 'Create Product', 'ultimate-addons-for-gutenberg' ) }

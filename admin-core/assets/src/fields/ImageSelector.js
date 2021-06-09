@@ -18,7 +18,7 @@ function ImageSelector( props ) {
 
 		var button = event.target;
 
-		window.inputWrapper = button.closest( '.wcf-image-selector-field' );
+		window.inputWrapper = button.closest( '.uag-image-selector-field' );
 		if ( file_frame ) {
 			file_frame.open();
 			return;
@@ -37,11 +37,11 @@ function ImageSelector( props ) {
 				.first()
 				.toJSON();
 
-			var preview = document.getElementById( 'wcf-image-preview' );
+			var preview = document.getElementById( 'uag-image-preview' );
 			// place first attachment in field
 			preview.setAttribute( 'style', 'display:block' );
 
-			var image = document.getElementsByClassName( 'wcf-image' );
+			var image = document.getElementsByClassName( 'uag-image' );
 
 			setImageval( attachment.url );
 			setimageObj( attachment );
@@ -51,7 +51,7 @@ function ImageSelector( props ) {
 
 			// if ( size > 0 ) {
 			// 	window.inputWrapper
-			// 		.find( '.wcf-image-obj' )
+			// 		.find( '.uag-image-obj' )
 			// 		.val( JSON.stringify( attachment ) );
 			// }
 			preview.setAttribute( 'style', 'display:block' );
@@ -70,16 +70,16 @@ function ImageSelector( props ) {
 		setStyle( { display: 'none' } );
 	};
 	return (
-		<div className="wcf-field wcf-image-selector-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-image-selector-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
-				<div class="wcf-field__data--content">
-					<div className="wcf-image-selector-field__input">
-						<div id="wcf-image-preview" style={ style }>
+				<div class="uag-field__data--content">
+					<div className="uag-image-selector-field__input">
+						<div id="uag-image-preview" style={ style }>
 							<img
 								src={ imageval }
 								className="saved-image"
@@ -90,32 +90,32 @@ function ImageSelector( props ) {
 						<input
 							type="hidden"
 							id={ name }
-							class="wcf-image"
+							class="uag-image"
 							name={ name }
 							value={ imageval }
 						></input>
 						<input
 							type="hidden"
 							id={ name + '-obj' }
-							class="wcf-image-obj"
+							class="uag-image-obj"
 							name={ name + '-obj' }
 							value={ JSON.stringify( imageObj ) }
 						/>
-						<div className="wcf-image-selector-field-buttons">
-							<div className="wcf-image-selector-field-button-select">
+						<div className="uag-image-selector-field-buttons">
+							<div className="uag-image-selector-field-button-select">
 								<button
 									type="button"
-									className="wcf-select-image wcf-button wcf-button--secondary"
+									className="uag-select-image uag-button uag-button--secondary"
 									onClick={ showMedia }
 								>
 									{ __( 'Select Image', 'ultimate-addons-for-gutenberg' ) }
 								</button>
 							</div>
 							{ imageval && (
-								<div className="wcf-image-selector-field-button-remove">
+								<div className="uag-image-selector-field-button-remove">
 									<button
 										type="button"
-										className="wcf-remove-image wcf-button wcf-button--secondary"
+										className="uag-remove-image uag-button uag-button--secondary"
 										onClick={ removeImage }
 									>
 										{ __( 'Remove Image', 'ultimate-addons-for-gutenberg' ) }

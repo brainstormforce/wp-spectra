@@ -9,9 +9,9 @@ function ProductOptions( props ) {
 	const [ { options }, dispatch ] = useStateValue();
 	const { products } = props;
 
-	let checkoutProducts = options[ 'wcf-checkout-products' ];
+	let checkoutProducts = options[ 'uag-checkout-products' ];
 
-	let productCondition = options[ 'wcf-product-options' ];
+	let productCondition = options[ 'uag-product-options' ];
 
 	let counter = 0;
 
@@ -115,8 +115,8 @@ function ProductOptions( props ) {
 
 			return (
 				<RadioField
-					class={ `wcf-product-add-to-cart` }
-					name="wcf_default_add_to_cart"
+					class={ `uag-product-add-to-cart` }
+					name="uag_default_add_to_cart"
 					options={ [
 						{
 							value: product.unique_id,
@@ -130,8 +130,8 @@ function ProductOptions( props ) {
 		if ( 'force-all' === productCondition ) {
 			return (
 				<CheckboxField
-					class={ `wcf-product-add-to-cart` }
-					name={ `wcf-product-options-data[${ product.unique_id }][add_to_cart]` }
+					class={ `uag-product-add-to-cart` }
+					name={ `uag-product-options-data[${ product.unique_id }][add_to_cart]` }
 					value="yes"
 				/>
 			);
@@ -140,8 +140,8 @@ function ProductOptions( props ) {
 		if ( 'multiple-selection' === productCondition ) {
 			return (
 				<CheckboxField
-					class={ `wcf-product-add-to-cart` }
-					name={ `wcf-product-options-data[${ product.unique_id }][add_to_cart]` }
+					class={ `uag-product-add-to-cart` }
+					name={ `uag-product-options-data[${ product.unique_id }][add_to_cart]` }
 					value={ product.add_to_cart }
 				/>
 			);
@@ -151,8 +151,8 @@ function ProductOptions( props ) {
 	productOptions = get_product_options();
 
 	return (
-		<div className="wcf-product-options-fields">
-			<ul class="wcf-product-options-fields__list">
+		<div className="uag-product-options-fields">
+			<ul class="uag-product-options-fields__list">
 				{ productOptions.length > 0 &&
 					productOptions.map( ( product, index ) => {
 						let highlight_text_class = '';
@@ -164,13 +164,13 @@ function ProductOptions( props ) {
 
 						return (
 							<li
-								class="wcf-product-option-field"
+								class="uag-product-option-field"
 								data-product-id={ product.product_id }
 							>
-								<div className="wcf-product-option-fields">
-									<div className="wcf-product-field-item-bar">
+								<div className="uag-product-option-fields">
+									<div className="uag-product-field-item-bar">
 										<span
-											className={ `wcf-product-option-default-in-cart ${ default_class }` }
+											className={ `uag-product-option-default-in-cart ${ default_class }` }
 										>
 											{ get_default_column(
 												product,
@@ -178,11 +178,11 @@ function ProductOptions( props ) {
 											) }
 										</span>
 
-										<span className="wcf-product-option-title">
+										<span className="uag-product-option-title">
 											{ product.product_title }
 										</span>
 										<span
-											class="dashicons dashicons-arrow-down wcf-dashicon"
+											class="dashicons dashicons-arrow-down uag-dashicon"
 											index={ index }
 											onClick={ showOptions }
 										></span>
@@ -190,14 +190,14 @@ function ProductOptions( props ) {
 
 									<div
 										className={
-											'wcf-product-field-item-settings hidden'
+											'uag-product-field-item-settings hidden'
 										}
 										id={ 'product-option-index-' + index }
 										data-id={ product.product_id }
 									>
 										<TextField
-											class="wcf-product-name"
-											name={ `wcf-product-options-data[${ product.unique_id }][product_name]` }
+											class="uag-product-name"
+											name={ `uag-product-options-data[${ product.unique_id }][product_name]` }
 											label={ __(
 												'Product Name',
 												'ultimate-addons-for-gutenberg'
@@ -208,8 +208,8 @@ function ProductOptions( props ) {
 											) }
 										/>
 										<TextField
-											class="wcf-product-subtext"
-											name={ `wcf-product-options-data[${ product.unique_id }][product_subtext]` }
+											class="uag-product-subtext"
+											name={ `uag-product-options-data[${ product.unique_id }][product_subtext]` }
 											label={ __(
 												'Subtext',
 												'ultimate-addons-for-gutenberg'
@@ -221,8 +221,8 @@ function ProductOptions( props ) {
 											) }
 										/>
 										<CheckboxField
-											class="wcf-product-enable-hl"
-											name={ `wcf-product-options-data[${ product.unique_id }][enable_highlight]` }
+											class="uag-product-enable-hl"
+											name={ `uag-product-options-data[${ product.unique_id }][enable_highlight]` }
 											label={ __(
 												'Enable Highlight',
 												'ultimate-addons-for-gutenberg'
@@ -234,8 +234,8 @@ function ProductOptions( props ) {
 											className={ `${ highlight_text_class }` }
 										>
 											<TextField
-												class={ `wcf-product-hl-text` }
-												name={ `wcf-product-options-data[${ product.unique_id }][highlight_text]` }
+												class={ `uag-product-hl-text` }
+												name={ `uag-product-options-data[${ product.unique_id }][highlight_text]` }
 												label={ __(
 													'Highlight Text',
 													'ultimate-addons-for-gutenberg'
@@ -245,9 +245,9 @@ function ProductOptions( props ) {
 										</div>
 
 										<input
-											name={ `wcf-product-options-data[${ product.unique_id }][unique_id]` }
+											name={ `uag-product-options-data[${ product.unique_id }][unique_id]` }
 											type="hidden"
-											class="wcf-product-options-unique-id"
+											class="uag-product-options-unique-id"
 											value={ product.unique_id }
 										></input>
 									</div>
@@ -256,8 +256,8 @@ function ProductOptions( props ) {
 						);
 					} ) }
 				{ productOptions.length > 0 && (
-					<div className="wcf-product-options-fields__list--header">
-						<span className="wcf-default-label">
+					<div className="uag-product-options-fields__list--header">
+						<span className="uag-default-label">
 							{ 'force-all' !== productCondition &&
 								__(
 									"Note: Select the default product/s. Selected product's will get added to the cart by default on the checkout step.",

@@ -1,5 +1,5 @@
 /* Convert to Text */
-.wcf-skeleton--text {
+.uag-skeleton--text {
 	height: auto;
 	transform: scale( 1, 0.6 );
 	margin-top: 0;
@@ -9,6 +9,6 @@
 	font-size: 12px;
 	line-height: 1.5em;
 }
-.wcf-skeleton--text:empty:before {
+.uag-skeleton--text:empty:before {
 	content: '\00a0';
 }

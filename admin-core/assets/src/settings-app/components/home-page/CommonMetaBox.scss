@@ -1,4 +1,4 @@
-.wcf-metabox{
+.uag-metabox{
     background: #fff;
     box-shadow: none;
     margin-bottom: 20px;
@@ -11,18 +11,18 @@
         font-weight: 400;
     }
 }
-.wcf-metabox__header,
-.wcf-metabox__body,
-.wcf-metabox__footer{
+.uag-metabox__header,
+.uag-metabox__body,
+.uag-metabox__footer{
     padding: 10px;
     border-bottom: 0;
 }
 
-.wcf-metabox__footer{
+.uag-metabox__footer{
     padding-bottom: 0px;
 }
 
-.wcf-metabox__footer p{
+.uag-metabox__footer p{
     margin-top: 10px;
     font-size: 14px;
 }

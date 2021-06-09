@@ -1,9 +1,9 @@
-#wcf-menu-page {
+#uag-menu-page {
 	padding-top: 65px;
 }
 
 /* Header */
-.wcf-menu-page-header {
+.uag-menu-page-header {
 	background-color: #fff;
 	text-align: center;
 	padding: 20px;
@@ -12,22 +12,22 @@
 	box-shadow: 0 1px 1px 0 rgba( 0, 0, 0, 0.1 );
 	position: relative;
 }
-.wcf-title {
+.uag-title {
 	flex: auto;
 	align-content: flex-start;
 	text-align: right;
 }
-.wcf-logo {
+.uag-logo {
 	max-width: 170px;
 }
-.wcf-top-links {
+.uag-top-links {
 	flex: auto;
 	text-align: left;
 	font-weight: 500;
 	margin-left: -20px;
 }
 
-.wcf-top-links a {
+.uag-top-links a {
 	text-decoration: none;
 	padding: 20px 22px;
 	color: #7d7d7d;
@@ -35,7 +35,7 @@
 	height: 66px;
 	border-right: 1px solid #dddddd;
 }
-.wcf-top-links a:hover {
+.uag-top-links a:hover {
 	color: #444;
 	background: #fdfdfd;
 	border-bottom: 2px solid #ddd;

@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use UagAdmin\Ajax\AjaxBase;
-use UagAdmin\Inc\AdminHelper;
 
 /**
  * Class CommonSettings.

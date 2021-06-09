@@ -62,12 +62,12 @@ function FontFamily( props ) {
 
 		var new_font_weights = {};
 
-		if ( wcf.google_fonts[ font_family ] ) {
-			var variants = wcf.google_fonts[ font_family ][ 'variants' ];
+		if ( uag.google_fonts[ font_family ] ) {
+			var variants = uag.google_fonts[ font_family ][ 'variants' ];
 
 			variants.map( ( index, weight ) => {
 				if ( ! index.includes( 'italic' ) ) {
-					new_font_weights[ index ] = wcf.font_weights[ index ];
+					new_font_weights[ index ] = uag.font_weights[ index ];
 				}
 			} );
 
@@ -78,12 +78,12 @@ function FontFamily( props ) {
 
 			var temp_font_family = font_family.replace( ' ', '+' );
 			google_font_families[ temp_font_family ] = new_font_weights;
-		} else if ( wcf.system_fonts[ font_family ] ) {
-			var variants = wcf.system_fonts[ font_family ][ 'variants' ];
+		} else if ( uag.system_fonts[ font_family ] ) {
+			var variants = uag.system_fonts[ font_family ][ 'variants' ];
 
 			variants.map( ( index, weight ) => {
 				if ( ! index.includes( 'italic' ) ) {
-					new_font_weights[ index ] = wcf.font_weights[ index ];
+					new_font_weights[ index ] = uag.font_weights[ index ];
 				}
 			} );
 
@@ -104,7 +104,7 @@ function FontFamily( props ) {
 		weightList = new_weight_list;
 
 		//Trigger change
-		let changeEvent = new CustomEvent( 'wcf:font:change', {
+		let changeEvent = new CustomEvent( 'uag:font:change', {
 			bubbles: true,
 			detail: { name: props.name, value: currentValue.value },
 		} );
@@ -126,11 +126,11 @@ function FontFamily( props ) {
 	var weightList = prepareweightList( selectedValue );
 
 	return (
-		<div className="wcf-font-family-field">
-			<div className="wcf-selection-field">
+		<div className="uag-font-family-field">
+			<div className="uag-selection-field">
 				<label>{ label }</label>
 				{ tooltip && (
-					<span className="wcf-tooltip-icon" data-position="top">
+					<span className="uag-tooltip-icon" data-position="top">
 						<em
 							className="dashicons dashicons-editor-help"
 							title={ tooltip }
@@ -139,8 +139,8 @@ function FontFamily( props ) {
 				) }
 				<AsyncSelect
 					name={ name }
-					className="wcf-select2-input"
-					classNamePrefix="wcf"
+					className="uag-select2-input"
+					classNamePrefix="uag"
 					cacheOptions
 					defaultOptions={ cf_font_family }
 					value={ selectedValue }
@@ -149,16 +149,16 @@ function FontFamily( props ) {
 				/>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }
 
 			{ '' !== font_weight_name && (
-				<div className="wcf-font-weight-field">
+				<div className="uag-font-weight-field">
 					<SelectField
 						name={ font_weight_name }
-						className="wcf-select-input"
+						className="uag-select-input"
 						value={ weightvalue }
 						onChange={ setWeightValue }
 						options={ weightList }

@@ -33,15 +33,15 @@ function TextField( props ) {
 	}
 
 	return (
-		<div className="wcf-field wcf-date-field">
-			<div className="wcf-field__data">
+		<div className="uag-field uag-date-field">
+			<div className="uag-field__data">
 				{ label && (
-					<div class="wcf-field__data--label">
+					<div class="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
 								<span
-									className="wcf-tooltip-icon"
+									className="uag-tooltip-icon"
 									data-position="top"
 								>
 									<em
@@ -54,7 +54,7 @@ function TextField( props ) {
 					</div>
 				) }
 
-				<div class="wcf-field__data--content">
+				<div class="uag-field__data--content">
 					<DatePicker
 						dateFormat="yyyy-MM-dd"
 						className={ className }
@@ -70,7 +70,7 @@ function TextField( props ) {
 			</div>
 
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

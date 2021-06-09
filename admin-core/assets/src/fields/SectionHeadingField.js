@@ -6,15 +6,15 @@ function SectionHeadingField( props ) {
 	const { label, desc } = props;
 
 	return (
-		<div className="wcf-field wcf-section-heading-field">
+		<div className="uag-field uag-section-heading-field">
 			{ label && (
-				<div class="wcf-field__data--label">
+				<div class="uag-field__data--label">
 					<label>{ label }</label>
 				</div>
 			) }
 
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

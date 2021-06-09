@@ -28,7 +28,7 @@ function ProductField( props ) {
 		setSelectedValue( value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'wcf:product:change', {
+		let changeEvent = new CustomEvent( 'uag:product:change', {
 			bubbles: true,
 			detail: { e: {}, name: props.name, value: value },
 		} );
@@ -66,12 +66,12 @@ function ProductField( props ) {
 	};
 
 	return (
-		<div className="wcf-select2-field wcf-product-field">
-			<div className="wcf-selection-field">
+		<div className="uag-select2-field uag-product-field">
+			<div className="uag-selection-field">
 				<label>
 					{ label }
 					{ tooltip && (
-						<span className="wcf-tooltip-icon" data-position="top">
+						<span className="uag-tooltip-icon" data-position="top">
 							<em
 								className="dashicons dashicons-editor-help"
 								title={ tooltip }
@@ -81,8 +81,8 @@ function ProductField( props ) {
 				</label>
 
 				<AsyncSelect
-					className="wcf-select2-input"
-					classNamePrefix="wcf"
+					className="uag-select2-input"
+					classNamePrefix="uag"
 					name={ `${ name }[]` }
 					isClearable={ true }
 					value={ selectedValue }
@@ -96,7 +96,7 @@ function ProductField( props ) {
 				/>
 			</div>
 			{ desc && (
-				<div className="wcf-field__desc">
+				<div className="uag-field__desc">
 					{ ReactHtmlParser( desc ) }
 				</div>
 			) }

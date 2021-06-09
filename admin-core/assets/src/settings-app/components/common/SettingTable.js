@@ -23,7 +23,7 @@ function SettingTable( props ) {
 	var checkout_list = globaldata.checkout_list;
 
 	return (
-		<table className="wcf-global-settigs-content-table">
+		<table className="uag-global-settigs-content-table">
 			<tbody>
 				{ Object.keys( settings.fields ).map( ( field, i ) => {
 					let data = settings.fields[ field ];
@@ -153,8 +153,8 @@ function SettingTable( props ) {
 					}
 					return (
 						<tr
-							className={ `wcf-field-row-${ field } ${
-								! isActive ? 'wcf-hide' : ''
+							className={ `uag-field-row-${ field } ${
+								! isActive ? 'uag-hide' : ''
 							}` }
 						>
 							<td scope="row">

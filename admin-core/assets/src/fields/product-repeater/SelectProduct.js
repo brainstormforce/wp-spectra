@@ -11,7 +11,7 @@ function SelectProduct( props ) {
 	let [ selectedProduct, setSelectedProduct ] = useState();
 
 	const clickOverlay = function ( e ) {
-		if ( e.target.id === 'wcf-select-product-popup-overlay' ) {
+		if ( e.target.id === 'uag-select-product-popup-overlay' ) {
 			closePopupCB();
 		}
 	};
@@ -32,21 +32,21 @@ function SelectProduct( props ) {
 
 	return (
 		<div
-			className="wcf-select-product-popup-overlay"
-			id="wcf-select-product-popup-overlay"
+			className="uag-select-product-popup-overlay"
+			id="uag-select-product-popup-overlay"
 			onClick={ clickOverlay }
 		>
-			<div className="wcf-select-product-popup-content">
-				<div className="wcf-select-product-header">
-					<div className="wcf-select-product-header__title">
-						<div class="wcf-popup-header-title">
-							<span className="cartflows-logo-icon"></span>
+			<div className="uag-select-product-popup-content">
+				<div className="uag-select-product-header">
+					<div className="uag-select-product-header__title">
+						<div class="uag-popup-header-title">
+							<span className="ultimate-addons-for-gutenberg-logo-icon"></span>
 							{ __( 'Add New Product', 'ultimate-addons-for-gutenberg' ) }
 						</div>
 					</div>
 
 					<div
-						className="wcf-popup-header-action"
+						className="uag-popup-header-action"
 						title="Hide this"
 						onClick={ closePopupCB }
 					>
@@ -54,8 +54,8 @@ function SelectProduct( props ) {
 					</div>
 				</div>
 
-				<div className="wcf-content-wrap">
-					<div className="wcf-select-product-content">
+				<div className="uag-content-wrap">
+					<div className="uag-select-product-content">
 						<Select2Field
 							name=""
 							desc=""
@@ -70,10 +70,10 @@ function SelectProduct( props ) {
 							) }
 							onChangeCB={ setSelectedProduct }
 						/>
-						<span className="wcf-select-product__button">
+						<span className="uag-select-product__button">
 							<a
 								href="#"
-								className="wcf-button wcf-button--primary"
+								className="uag-button uag-button--primary"
 								onClick={ addProduct }
 							>
 								{ addText }

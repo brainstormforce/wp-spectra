@@ -1,10 +1,10 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import './SettingsNav.scss';
+import './ToolsNav.scss';
 
-function SettingsNav( prop ) {
+function ToolsNav( prop ) {
 	let location = useLocation();
-	let tab = '' !== location.hash ? location.hash : '#general_settings';
+	let tab = '' !== location.hash ? location.hash : '#assets_generation_tools';
 	var navClass =
 		prop.slug === tab ? 'uag-settings-nav__active' : 'uag-settings-nav';
 
@@ -15,4 +15,4 @@ function SettingsNav( prop ) {
 	);
 }
 
-export default SettingsNav;
+export default ToolsNav;

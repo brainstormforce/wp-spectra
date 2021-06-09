@@ -1,18 +1,18 @@
-.wcf-product-options-fields__list {
+.uag-product-options-fields__list {
 	margin: 0px;
 
-	.wcf-product-options-fields__list--no-product {
+	.uag-product-options-fields__list--no-product {
 		color: #666;
 		padding: 10px 25px;
 	}
 }
 
-.wcf-product-option-field {
+.uag-product-option-field {
 	margin-bottom: 10px;
 	display: flex;
 }
 
-.wcf-product-field-item-bar {
+.uag-product-field-item-bar {
 	line-height: 1.5em;
 	border: 1px solid #ddd;
 	border-radius: 2px;
@@ -32,7 +32,7 @@
 	}
 }
 
-.wcf-product-options-fields__list--header {
+.uag-product-options-fields__list--header {
 	line-height: 1.5em;
     border: 1px solid #f4f4f4;
     border-radius: 2px;
@@ -67,12 +67,12 @@
 		font-size: 16px;
 	}
 
-	.wcf-default-label {
+	.uag-default-label {
 		margin-right: 10px;
 	}
 }
 
-.wcf-product-option-default-in-cart {
+.uag-product-option-default-in-cart {
 	width: auto;
 	line-height: initial;
 	margin-right: 5px;
@@ -89,13 +89,13 @@
 	pointer-events: none;
 }
 
-.wcf-product-field-item-bar span {
+.uag-product-field-item-bar span {
 	display: inline-block;
 	text-align: center;
 	line-height: 1;
 }
 
-.wcf-dashicon {
+.uag-dashicon {
 	display: inline-flex;
 	float: right;
 	position: relative;
@@ -103,30 +103,30 @@
 	cursor: pointer;
 }
 
-.wcf-product-field-item-settings {
+.uag-product-field-item-settings {
 	background: #f5f6f7;
 	border: 1px solid #ececec;
 	border-top: none;
 	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.04 );
 	padding: 20px;
 
-	.wcf-field {
+	.uag-field {
 		margin-bottom: 20px;
 	}
 
-	.wcf-field__desc {
+	.uag-field__desc {
 		line-height: 1.5;
 	}
 
-	.wcf-field.wcf-checkbox-field {
+	.uag-field.uag-checkbox-field {
 		margin-bottom: 10px;
 	}
 
-	.wcf-field__data .wcf-field__data--label label {
+	.uag-field__data .uag-field__data--label label {
 		width: 200px;
 	}
 }
 
-.wcf-product-option-fields {
+.uag-product-option-fields {
 	width: 650px;
 }

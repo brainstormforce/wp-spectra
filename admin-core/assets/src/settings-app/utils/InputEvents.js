@@ -10,7 +10,7 @@ export default function InputEvents() {
 		const { name, value } = e.detail;
 
 		if ( undefined !== options[ name ] ) {
-			window.wcfUnsavedChanges = true;
+			window.uagUnsavedChanges = true;
 			dispatch( {
 				type: 'SET_OPTION',
 				name: name,
@@ -42,7 +42,7 @@ export default function InputEvents() {
 		if ( options ) {
 			fieldTypes.map( function ( field ) {
 				document.addEventListener(
-					`wcf:${ field.type }:change`,
+					`uag:${ field.type }:change`,
 					baseInputChange
 				);
 			} );
@@ -51,7 +51,7 @@ export default function InputEvents() {
 		return () => {
 			fieldTypes.map( function ( field ) {
 				document.removeEventListener(
-					`wcf:${ field.type }:change`,
+					`uag:${ field.type }:change`,
 					baseInputChange
 				);
 			} );

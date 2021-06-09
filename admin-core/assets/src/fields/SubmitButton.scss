@@ -1,4 +1,4 @@
-.wcf-button-style {
+.uag-button-style {
 	background: #fff;
 	border: none;
 	border-radius: 3px;
@@ -18,7 +18,7 @@
 	transition: all 100ms linear;
 }
 
-.wcf-btn-primary {
+.uag-btn-primary {
 	background: #f06335;
 	color: #fff;
 	-webkit-transition: all linear 250ms;
@@ -26,30 +26,30 @@
 }
 
 /* Button Hover Effect */
-.wcf-btn-primary:active,
-.wcf-btn-primary:focus,
-.wcf-btn-primary:hover {
+.uag-btn-primary:active,
+.uag-btn-primary:focus,
+.uag-btn-primary:hover {
 	color: #fff;
 	background: #f06335;
 }
 
-.wcf-btn-primary:active,
-.wcf-btn-primary:focus,
-.wcf-button-style:hover {
+.uag-btn-primary:active,
+.uag-btn-primary:focus,
+.uag-button-style:hover {
 	outline: 0;
 	text-decoration: none;
 	box-shadow: 0 10px 20px rgba( 0, 0, 0, 0.19 ),
 		0 6px 6px rgba( 0, 0, 0, 0.23 );
 }
 
-@keyframes wcf-saving {
+@keyframes uag-saving {
 	0% {
 		background-position: 200px 0;
 	}
 }
 
-.wcf-submit-field {
-	.wcf-success-notice {
+.uag-submit-field {
+	.uag-success-notice {
 		max-width: 300px;
 		display: inline-block;
 		margin: 0;
@@ -57,13 +57,13 @@
 	.dashicons {
 		vertical-align: middle;
 	}
-	.wcf-success-message {
+	.uag-success-message {
 		font-weight: 400;
 		font-size: 14px;
 	}
 
-	.wcf-saving {
-		animation: wcf-saving 2.5s linear infinite;
+	.uag-saving {
+		animation: uag-saving 2.5s linear infinite;
 		opacity: 1;
 		background-size: 100px 100%;
 		background-image: linear-gradient(

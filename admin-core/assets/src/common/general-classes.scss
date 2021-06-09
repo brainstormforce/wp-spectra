@@ -1,8 +1,8 @@
-.wcf-hide {
+.uag-hide {
 	display: none !important;
 }
 
-.wcf-button {
+.uag-button {
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 2px;
@@ -23,7 +23,7 @@
 	box-sizing: border-box;
 }
 
-.wcf-button--small {
+.uag-button--small {
 	min-height: 26px;
 	padding: 0 8px;
 	font-size: 11px;
@@ -40,14 +40,14 @@
 	margin: 0;
 }
 
-.wcf-button--primary {
+.uag-button--primary {
 	background: var( --primary-color );
 	border-color: var( --primary-border-color );
 	color: #fff;
 }
 
-.wcf-button--primary:focus,
-.wcf-button--primary:hover {
+.uag-button--primary:focus,
+.uag-button--primary:hover {
 	background: var( --primary-hv-color );
 	border-color: var( --primary-border-color );
 	color: #fff;
@@ -55,14 +55,14 @@
 	outline: none;
 }
 
-.wcf-button--secondary {
+.uag-button--secondary {
 	background: var( --secondary-color );
 	border-color: var( --secondary-border-color );
 	color: #3a3a3a;
 }
 
-.wcf-button--secondary:focus,
-.wcf-button--secondary:hover {
+.uag-button--secondary:focus,
+.uag-button--secondary:hover {
 	background: var( --secondary-hv-color );
 	border-color: var( --secondary-border-color );
 	color: #3a3a3a;
@@ -70,7 +70,7 @@
 }
 
 /* Popu header */
-.wcf-popup-header-title {
+.uag-popup-header-title {
 	display: flex;
 	align-items: center;
 	font-size: 15px;
@@ -80,11 +80,11 @@
 	text-transform: none;
 	text-decoration: none;
 }
-.wcf-popup-header-title .cartflows-logo-icon {
+.uag-popup-header-title .ultimate-addons-for-gutenberg-logo-icon {
 	padding: 15px;
 }
 
-.wcf-popup-header-action {
+.uag-popup-header-action {
 	display: inline-block;
 	display: flex;
 	align-items: center;
@@ -108,22 +108,22 @@
 	}
 }
 
-.wcf-message, 
-.wcf-error-message--toggle, 
-.wcf-error--info{
+.uag-message, 
+.uag-error-message--toggle, 
+.uag-error--info{
 	padding: 5px;
     display: block;
     font-size: 12px;
 }
 
-.wcf-message--error{
+.uag-message--error{
 	color: var( --primary-color );
 }
 
-.wcf-error-message--toggle{
+.uag-error-message--toggle{
 	cursor: pointer;
 }
-.wcf-error--info{
+.uag-error--info{
 	background-color: #f2f2f2;
     border-radius: 3px;
     padding: 10px;

@@ -62,15 +62,15 @@ function GeneralSettings( props ) {
 	};
 
 	return (
-		<form className="wcf-general-settings" onSubmit={ handleFormSubmit }>
-			<h3 className="wcf-general-settings__title">
+		<form className="uag-general-settings" onSubmit={ handleFormSubmit }>
+			<h3 className="uag-general-settings__title">
 				{ __( 'General Settings', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<SettingTable
 				settings={ general_settings }
 				meta_key="_uag_common"
 			/>
-			<div className="wcf-general-settings__save-button">
+			<div className="uag-general-settings__save-button">
 				<SubmitButton />
 			</div>
 		</form>

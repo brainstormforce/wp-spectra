@@ -45,23 +45,23 @@
 * *********************
 */
 @font-face {
-	font-family: 'cartflows-logo-icon';
-	src: url( '../fonts/icons/cartflows-logo-icon.eot?kxnn1n' );
-	src: url( '../fonts/icons/cartflows-logo-icon.eot?kxnn1n#iefix' )
+	font-family: 'ultimate-addons-for-gutenberg-logo-icon';
+	src: url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.eot?kxnn1n' );
+	src: url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.eot?kxnn1n#iefix' )
 			format( 'embedded-opentype' ),
-		url( '../fonts/icons/cartflows-logo-icon.ttf?kxnn1n' )
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.ttf?kxnn1n' )
 			format( 'truetype' ),
-		url( '../fonts/icons/cartflows-logo-icon.woff?kxnn1n' ) format( 'woff' ),
-		url( '../fonts/icons/cartflows-logo-icon.svg?kxnn1n#cartflows-logo-icon' )
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.woff?kxnn1n' ) format( 'woff' ),
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.svg?kxnn1n#ultimate-addons-for-gutenberg-logo-icon' )
 			format( 'svg' );
 	font-weight: normal;
 	font-style: normal;
 }
 
-.wcf-cartflows-logo-img [class^="cartflows-icon"], .wcf-cartflows-logo-img [class*=" cartflows-icon"], /* For Pro Compatibility */
-[class^="cartflows-logo-icon"], [class*=" cartflows-logo-icon"] {
+.uag-ultimate-addons-for-gutenberg-logo-img [class^="ultimate-addons-for-gutenberg-icon"], .uag-ultimate-addons-for-gutenberg-logo-img [class*=" ultimate-addons-for-gutenberg-icon"], /* For Pro Compatibility */
+[class^="ultimate-addons-for-gutenberg-logo-icon"], [class*=" ultimate-addons-for-gutenberg-logo-icon"] {
 	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'cartflows-logo-icon' !important;
+	font-family: 'ultimate-addons-for-gutenberg-logo-icon' !important;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -72,8 +72,8 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.wcf-cartflows-logo-img .cartflows-icon:before, /* For Pro Compatibility */
-.cartflows-logo-icon:before {
+.uag-ultimate-addons-for-gutenberg-logo-img .ultimate-addons-for-gutenberg-icon:before, /* For Pro Compatibility */
+.ultimate-addons-for-gutenberg-logo-icon:before {
 	content: '\e900';
 	color: #f16334;
 }
@@ -84,17 +84,17 @@
 * *********************
 */
 
-.wcf-menu-page-wrapper,
-.wcf-menu-page-wrapper * {
+.uag-menu-page-wrapper,
+.uag-menu-page-wrapper * {
 	box-sizing: border-box;
 }
 
-#wpbody-content > .notice:not( .wcf-notice ),
+#wpbody-content > .notice:not( .uag-notice ),
 #wpbody-content > .error {
 	display: none !important;
 }
 
-.wcf-flex {
+.uag-flex {
 	-js-display: flex;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -115,73 +115,73 @@
 	margin-bottom: 30px;
 }
 
-.wcf-container {
+.uag-container {
 	margin: 0 auto;
 	padding: 0px;
 	box-sizing: border-box;
 }
 
-.wcf-menu-page-wrapper p {
+.uag-menu-page-wrapper p {
 	line-height: 1.2;
 	margin: 0.5em 0;
 }
 
-.wcf-menu-page-wrapper a:focus,
-.wcf-menu-page-wrapper button:focus,
-.wcf-menu-page-wrapper input:focus {
+.uag-menu-page-wrapper a:focus,
+.uag-menu-page-wrapper button:focus,
+.uag-menu-page-wrapper input:focus {
 	box-shadow: none;
 	outline: none;
 }
 /* Admin Base */
-.wcf-menu-page-wrapper {
+.uag-menu-page-wrapper {
 	font-family: 'Roboto', sans-serif;
 	left: -20px;
 	position: relative;
 	width: calc( 100% + 20px );
 }
 
-.wcf-menu-page-content {
+.uag-menu-page-content {
 	padding: 20px;
 }
 
 /* Page header */
-.wcf-page-header {
+.uag-page-header {
 	padding: 20px 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.wcf-page-header h2 {
+.uag-page-header h2 {
 	margin: 0;
 }
 
 /* Popup */
-.wcf-json-importer,
-.wcf-name-your-step,
-.wcf-name-your-flow {
+.uag-json-importer,
+.uag-name-your-step,
+.uag-name-your-flow {
 	font-family: 'Roboto', sans-serif;
 }
 
 /* logs page CSS */
 
-.wcf-debug-page #wcf-menu-page {
+.uag-debug-page #uag-menu-page {
 	padding-top: 0px;
 }
 
-.wcf-debug-page .wcf-menu-page-content {
+.uag-debug-page .uag-menu-page-content {
 	padding: 0;
 }
 
-.wcf-debug-page .wcf-top-links {
+.uag-debug-page .uag-top-links {
 	margin: 0;
 }
 
-.wcf-debug-page .wcf-debug-page-content {
+.uag-debug-page .uag-debug-page-content {
 	padding: 0 20px;
 }
 
-.wcf-log__section {
+.uag-log__section {
 	background: #fff;
 	box-shadow: none;
 	margin-bottom: 20px;
@@ -190,7 +190,7 @@
 	border-radius: 2px;
 }
 
-.wcf-log__section .log-viewer-select {
+.uag-log__section .log-viewer-select {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -198,7 +198,7 @@
 	border-bottom: 1px solid #ddd;
 }
 
-.wcf-debug-log__section .wcf-log--select {
+.uag-debug-log__section .uag-log--select {
 	font-weight: 400;
 	max-width: 100%;
 	margin: 0 15px 0 0;
@@ -211,7 +211,7 @@
 	background-position: right 10px top 55%;
 }
 
-.wcf-debug-log__section .wcf-view-log--button {
+.uag-debug-log__section .uag-view-log--button {
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 2px;
@@ -234,13 +234,13 @@
 	border-color: #f06434;
 	color: #fff;
 }
-.wcf-log__section .log-viewer--title {
+.uag-log__section .log-viewer--title {
 	font-size: 18px;
 	margin: 0px;
 	font-weight: 400;
 }
 
-.wcf-debug-log__section .wcf-log-container {
+.uag-debug-log__section .uag-log-container {
 	word-break: break-all;
 	line-height: 1.5;
 	text-align: left;
@@ -252,22 +252,22 @@
 	margin: 20px auto;
 }
 
-.wcf-debug-log__section .wcf-log-container::-webkit-scrollbar {
+.uag-debug-log__section .uag-log-container::-webkit-scrollbar {
 	width: 5px;
 	background-color: #f1f1f1;
 	border-radius: 0;
 }
-.wcf-debug-log__section .wcf-log-container::-webkit-scrollbar-thumb {
+.uag-debug-log__section .uag-log-container::-webkit-scrollbar-thumb {
 	border-radius: 0;
 	background-color: #d8d8d8;
 }
 
-.wcf-debug-log__section .wcf-log-container > pre {
+.uag-debug-log__section .uag-log-container > pre {
 	display: contents;
 	white-space: pre-wrap;
 }
 
-#wcf-menu-page .wcf-delete-log--message {
+#uag-menu-page .uag-delete-log--message {
 	padding: 15px;
 	margin: 5px 0px;
 	border-top: 0;
@@ -275,7 +275,7 @@
 	border-right: 0;
 }
 
-.wcf-license-log__section .log-viewer {
+.uag-license-log__section .log-viewer {
 	padding: 0px 12px;
 }
 /* logs page CSS */

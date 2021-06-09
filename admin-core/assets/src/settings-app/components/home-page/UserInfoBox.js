@@ -6,9 +6,9 @@ import { __ } from '@wordpress/i18n';
 
 function UserInfoBox( props ) {
 	return (
-		<div className="wcf-metabox wcf-user-info">
-			<div className="wcf-metabox__header">
-				<div className="wcf-metabox__title">
+		<div className="uag-metabox uag-user-info">
+			<div className="uag-metabox__header">
+				<div className="uag-metabox__title">
 					<h1>
 						{ __( 'Hello ', 'ultimate-addons-for-gutenberg' ) +
 							uag_react.current_user +
@@ -16,7 +16,7 @@ function UserInfoBox( props ) {
 					</h1>
 				</div>
 			</div>
-			<div class="wcf-metabox__body">
+			<div class="uag-metabox__body">
 				<p>
 					<b>{ __(
 						'Welcome to the Ultimate Addons for Gutenberg!',
