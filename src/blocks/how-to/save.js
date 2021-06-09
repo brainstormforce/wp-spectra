@@ -15,7 +15,6 @@ export default function save( props ) {
 		headingTag,
 		timeNeeded,
 		time,
-		timeIn,
 		estCost,
 		cost,
 		currencyType,
@@ -71,6 +70,7 @@ export default function save( props ) {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
+				alt=""
 			/>
 		);
 	}
@@ -199,7 +199,7 @@ export default function save( props ) {
 			) }
 			{ showTools && (
 				<>
-					{ tools.map( ( tools, index ) => {
+					{ tools.map( ( tool, index ) => {
 						return (
 							<div
 								className={ classnames(
@@ -211,7 +211,7 @@ export default function save( props ) {
 								<div className="uagb-tools">
 									<RichText.Content
 										tagName="div"
-										value={ tools.add_required_tools }
+										value={ tool.add_required_tools }
 										className="uagb-tools__label"
 									/>
 								</div>
@@ -229,9 +229,10 @@ export default function save( props ) {
 			) }
 			{ showMaterials && (
 				<>
-					{ materials.map( ( materials, index ) => {
+					{ materials.map( ( material, index ) => {
 						return (
 							<div
+								key={ index }
 								className={ classnames(
 									`uagb-how-to-materials-${ index }`,
 									'uagb-how-to-materials-child__wrapper'
@@ -241,7 +242,7 @@ export default function save( props ) {
 									<RichText.Content
 										tagName="div"
 										value={
-											materials.add_required_materials
+											material.add_required_materials
 										}
 										className="uagb-materials__label"
 									/>

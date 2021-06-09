@@ -2,7 +2,6 @@
  * BLOCK: Content Timeline.
  */
 import contentTimelineStyle from './styling';
-import { __ } from '@wordpress/i18n';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select, withSelect } from '@wordpress/data';
@@ -20,7 +19,7 @@ const Render = lazy( () =>
 
 const $ = jQuery;
 
-const contentTimelineComponent = ( props ) => {
+const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
@@ -32,7 +31,7 @@ const contentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function ( event ) {
+		$( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 
@@ -47,7 +46,14 @@ const contentTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-
+		if (
+			null ==
+			select( 'core/block-editor' ).getBlocksByClientId(
+				props.clientId
+			)[ 0 ]
+		) {
+			return;
+		}
 		select( 'core/block-editor' )
 			.getBlocksByClientId( props.clientId )[ 0 ]
 			.innerBlocks.forEach( function ( block, key ) {
@@ -99,7 +105,7 @@ const contentTimelineComponent = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		getChildBlocks.forEach( ( ctChild, key ) => {
+		getChildBlocks.forEach( ( ctChild ) => {
 			ctChild.attributes.headingTag = props.attributes.headingTag;
 		} );
 
@@ -107,7 +113,7 @@ const contentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function ( event ) {
+		$( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 	}, [ props ] );
@@ -224,7 +230,7 @@ const contentTimelineComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
+export default withSelect( () => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);
@@ -235,4 +241,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		deviceType,
 	};
-} )( contentTimelineComponent );
+} )( ContentTimelineComponent );

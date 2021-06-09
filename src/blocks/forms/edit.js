@@ -13,15 +13,15 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/form/render" */ './render' )
 );
 
-const { withSelect, useDispatch } = wp.data;
+import { withSelect, useDispatch } from '@wordpress/data';
 
-const { compose, createHigherOrderComponent } = wp.compose;
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
-const { __experimentalBlockVariationPicker } = wp.blockEditor;
+import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 
-const { withNotices } = wp.components;
+import { withNotices } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';

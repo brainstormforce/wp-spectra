@@ -181,8 +181,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
-
 		setAttributes( { authorImage: null } );
 	};
 
@@ -190,8 +188,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { authorImage: null } );
 			return;

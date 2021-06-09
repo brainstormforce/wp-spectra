@@ -172,15 +172,12 @@ const Settings = ( props ) => {
 	}
 
 	const toggleTarget = () => {
-		const { ctaTarget } = props.attributes;
-		const { setAttributes } = props;
-
 		setAttributes( { ctaTarget: ! ctaTarget } );
 	};
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index, item ) {
+		$.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -935,7 +932,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableDescription }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							enableDescription: ! enableDescription,
 						} )
@@ -951,7 +948,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showAuthor }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showAuthor: ! showAuthor } )
 					}
 					help={ __(
@@ -965,7 +962,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableImage }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableImage: ! enableImage } )
 					}
 					help={ __(
@@ -1037,7 +1034,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showFeature }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showFeature: ! showFeature } )
 					}
 					help={ __(
@@ -1051,7 +1048,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableSchema }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableSchema: ! enableSchema } )
 					}
 				/>
@@ -1132,20 +1129,6 @@ const Settings = ( props ) => {
 		],
 	};
 
-	let unusedDefaults = [
-		'bookAuthorName',
-		'isbn',
-		'provider',
-		'brand',
-		'sku',
-		'identifierType',
-		'identifier',
-		'appCategory',
-		'operatingSystem',
-		'directorname',
-		'datecreated',
-	];
-
 	switch ( itemType ) {
 		default:
 			//empty
@@ -1180,10 +1163,6 @@ const Settings = ( props ) => {
 					/>
 				</>
 			);
-			unusedDefaults = removeFromArray( unusedDefaults, [
-				'isbn',
-				'bookAuthorName',
-			] );
 			break;
 
 		case 'Course':
@@ -1201,7 +1180,7 @@ const Settings = ( props ) => {
 					/>
 				</>
 			);
-			unusedDefaults = removeFromArray( unusedDefaults, [ 'provider' ] );
+
 			break;
 
 		case 'SoftwareApplication':
@@ -1229,10 +1208,6 @@ const Settings = ( props ) => {
 					/>
 				</>
 			);
-			unusedDefaults = removeFromArray( unusedDefaults, [
-				'appCategory',
-				'operatingSystem',
-			] );
 			break;
 
 		case 'Movie':
@@ -1258,10 +1233,6 @@ const Settings = ( props ) => {
 					/>
 				</>
 			);
-			unusedDefaults = removeFromArray( unusedDefaults, [
-				'directorname',
-				'datecreated',
-			] );
 			break;
 	}
 

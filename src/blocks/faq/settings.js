@@ -5,7 +5,7 @@
 import renderSVG from '@Controls/renderIcon';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -112,47 +112,43 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.icon = value;
 		} );
 
 		setAttributes( { icon: value } );
 	};
 	const onchangeActiveIcon = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.iconActive = value;
 		} );
 
 		setAttributes( { iconActive: value } );
 	};
 	const onchangeLayout = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.layout = value;
 		} );
 
 		setAttributes( { layout: value } );
 	};
 	const onchangeTag = ( value ) => {
-		const { setAttributes } = props;
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( faqChild, key ) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = value;
 		} );
 
@@ -195,7 +191,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ inactiveOtherItems }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									inactiveOtherItems: ! inactiveOtherItems,
 								} )
@@ -208,7 +204,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ expandFirstItem }
-								onChange={ ( value ) =>
+								onChange={ () =>
 									setAttributes( {
 										expandFirstItem: ! expandFirstItem,
 									} )
@@ -221,7 +217,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ enableToggle }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									enableToggle: ! enableToggle,
 								} )
@@ -235,7 +231,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableSchemaSupport }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							enableSchemaSupport: ! enableSchemaSupport,
 						} )
@@ -423,7 +419,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ equalHeight }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { equalHeight: ! equalHeight } )
 							}
 						/>
@@ -435,7 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableSeparator }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableSeparator: ! enableSeparator } )
 					}
 				/>

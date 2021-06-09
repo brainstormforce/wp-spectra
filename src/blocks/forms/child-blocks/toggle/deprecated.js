@@ -5,11 +5,11 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import attributes from "./attributes"
-const { __ } = wp.i18n
 
-const {
-	RichText
-} = wp.blockEditor
+import { __ } from '@wordpress/i18n';
+
+
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

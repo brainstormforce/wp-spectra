@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
@@ -127,8 +127,6 @@ const Settings = ( props ) => {
 	};
 
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { image: null } );
 			return;

@@ -2,8 +2,9 @@ import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const { ToggleControl } = wp.components;
-const { RichText } = wp.blockEditor;
+import { ToggleControl } from '@wordpress/components';
+
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	props = props.parentProps;

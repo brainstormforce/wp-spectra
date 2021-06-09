@@ -1,3 +1,4 @@
+import React from 'react';
 const CtaLink = ( props ) => {
 	const { post, attributes } = props;
 	let target = '_self';

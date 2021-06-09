@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
+import React, { Suspense, useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -18,7 +18,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { className, setAttributes, attributes } = props;
+	const { className, attributes } = props;
 
 	const { loop, speed, reverse, lottieURl, playOn } = attributes;
 
@@ -43,49 +43,47 @@ const Render = ( props ) => {
 	}
 
 	return (
-		<>
-			<div
-				className={ classnames(
-					className,
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-					'uagb-lottie__outer-wrap'
-				) }
-				onMouseEnter={
-					'hover' === playOn
-						? handleLottieMouseEnter
-						: () => ( play_animation = true )
-				}
-				onMouseLeave={
-					'hover' === playOn
-						? handleLottieMouseLeave
-						: () => ( play_animation = true )
-				}
-				onClick={
-					'click' === playOn
-						? handleLottieMouseEnter
-						: () => ( play_animation = true )
-				}
-			>
-				<Suspense fallback={ lazyLoader() }>
-					<Lottie
-						key={ lottieURl }
-						ref={ lottieplayer }
-						options={ {
-							loop,
-							path: lottieURl,
-							rendererSettings: {
-								preserveAspectRatio: 'xMidYMid',
-								className: 'uagb-lottie-inner-wrap',
-							},
-						} }
-						isStopped={ play_animation }
-						speed={ speed }
-						isClickToPauseDisabled={ true }
-						direction={ reversedir }
-					/>
-				</Suspense>
-			</div>
-		</>
+		<div
+			className={ classnames(
+				className,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				'uagb-lottie__outer-wrap'
+			) }
+			onMouseEnter={
+				'hover' === playOn
+					? handleLottieMouseEnter
+					: () => ( play_animation = true )
+			}
+			onMouseLeave={
+				'hover' === playOn
+					? handleLottieMouseLeave
+					: () => ( play_animation = true )
+			}
+			onClick={
+				'click' === playOn
+					? handleLottieMouseEnter
+					: () => ( play_animation = true )
+			}
+		>
+			<Suspense fallback={ lazyLoader() }>
+				<Lottie
+					key={ lottieURl }
+					ref={ lottieplayer }
+					options={ {
+						loop,
+						path: lottieURl,
+						rendererSettings: {
+							preserveAspectRatio: 'xMidYMid',
+							className: 'uagb-lottie-inner-wrap',
+						},
+					} }
+					isStopped={ play_animation }
+					speed={ speed }
+					isClickToPauseDisabled={ true }
+					direction={ reversedir }
+				/>
+			</Suspense>
+		</div>
 	);
 };
 

@@ -17,7 +17,7 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner } from '@wordpress/components';
 
-const postGridComponent = ( props ) => {
+const PostGridComponent = ( props ) => {
 	const initialState = {
 		isEditing: false,
 		innerBlocks: [],
@@ -118,7 +118,6 @@ export default compose(
 			paginationMarkup,
 			postPagination,
 			excludeCurrentPost,
-			block_id,
 		} = props.attributes;
 		const { setAttributes } = props;
 		const { getEntityRecords } = select( 'core' );
@@ -131,7 +130,6 @@ export default compose(
 			: null;
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
-		const taxonomy = '';
 		let categoriesList = [];
 		let rest_base = '';
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
@@ -215,4 +213,4 @@ export default compose(
 			replaceInnerBlocks,
 		};
 	} )
-)( postGridComponent );
+)( PostGridComponent );

@@ -15,7 +15,7 @@ const Render = lazy( () =>
 
 import { withSelect } from '@wordpress/data';
 
-const columnComponent = ( props ) => {
+const ColumnComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -52,7 +52,7 @@ const columnComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);
@@ -63,4 +63,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		deviceType,
 	};
-} )( columnComponent );
+} )( ColumnComponent );

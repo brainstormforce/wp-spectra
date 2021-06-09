@@ -7,7 +7,7 @@ import attributes from './attributes';
 import edit from './edit';
 import save from './save';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/forms-email', {
 	title: uagb_blocks_info.blocks[ 'uagb/forms-email' ].title,

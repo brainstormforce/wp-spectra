@@ -42,7 +42,7 @@ function Blog( props ) {
 			? latestPosts.slice( 0, postsToShow )
 			: latestPosts;
 
-	function NextArrow( props ) {
+	function NextArrow() {
 		return (
 			<button
 				type="button"
@@ -62,7 +62,7 @@ function Blog( props ) {
 		);
 	}
 
-	function PrevArrow( props ) {
+	function PrevArrow() {
 		return (
 			<button
 				type="button"
@@ -102,7 +102,7 @@ function Blog( props ) {
 		arrows,
 		dots,
 		rtl: false,
-		afterChange: ( current ) => {
+		afterChange: () => {
 			if ( equalHeight ) {
 				uagb_carousel_height( block_id );
 			}

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -272,16 +272,12 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectPostType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
 		setAttributes( { taxonomyType: '' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
-		const { setAttributes } = props;
-
 		setAttributes( { taxonomyType: value } );
 		setAttributes( { categories: '' } );
 	};

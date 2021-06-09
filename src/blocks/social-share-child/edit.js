@@ -18,7 +18,7 @@ const Render = lazy( () =>
 	)
 );
 
-const socialShareChildComponent = ( props ) => {
+const SocialShareChildComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -56,4 +56,4 @@ const socialShareChildComponent = ( props ) => {
 	);
 };
 
-export default socialShareChildComponent;
+export default SocialShareChildComponent;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	InspectorControls,
 	ColorPalette,
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	RangeControl,
 	ToggleControl,
@@ -17,7 +17,7 @@ const {
 	Dashicon,
 	SelectControl,
 	ToolbarGroup,
-} = wp.components;
+} from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const { loopLottie, reverseDirection } = props;
@@ -316,8 +316,6 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectLottieJSON = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { jsonLottie: null } );
 			return;

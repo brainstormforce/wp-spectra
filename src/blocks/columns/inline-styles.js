@@ -3,7 +3,7 @@
  */
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function inlineStyles( props, isEditor ) {
+function inlineStyles( props ) {
 	const {
 		leftPadding,
 		rightPadding,

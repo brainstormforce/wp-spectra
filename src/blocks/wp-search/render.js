@@ -4,7 +4,7 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.

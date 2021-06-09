@@ -4,17 +4,18 @@ import ColumnResponsive from '@Components/typography/column-responsive';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
+import React from 'react';
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	TextControl,
 	ButtonGroup,
 	Button,
-} = wp.components;
+} from '@wordpress/components';
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

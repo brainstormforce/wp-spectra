@@ -1,5 +1,5 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import ColumnResponsive from '@Components/typography/column-responsive';
@@ -107,8 +107,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
-
 		setAttributes( { backgroundImage: null } );
 	};
 
@@ -116,8 +114,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
 			return;
@@ -134,8 +130,6 @@ const Settings = ( props ) => {
 	 * Event to set Video as null while removing.
 	 */
 	const onRemoveVideo = () => {
-		const { setAttributes } = props;
-
 		setAttributes( { backgroundVideo: null } );
 	};
 
@@ -143,8 +137,6 @@ const Settings = ( props ) => {
 	 * Event to set Video while adding.
 	 */
 	const onSelectVideo = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundVideo: null } );
 			return;

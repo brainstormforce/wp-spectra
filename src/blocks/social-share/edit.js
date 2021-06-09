@@ -15,11 +15,8 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/social-share/render" */ './render' )
 );
 
-const socialShareComponent = ( props ) => {
+const SocialShareComponent = ( props ) => {
 	useEffect( () => {
-		// Replacement for componentDidMount.
-
-		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
@@ -52,7 +49,7 @@ const socialShareComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);
@@ -63,4 +60,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		deviceType,
 	};
-} )( socialShareComponent );
+} )( SocialShareComponent );

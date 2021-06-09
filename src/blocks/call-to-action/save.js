@@ -114,7 +114,9 @@ export default function save( props ) {
 						className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
 						target={ target }
 						rel="noopener noreferrer"
-					></a>
+					>
+						{ ' ' }
+					</a>
 					{ output }
 				</>
 			) }

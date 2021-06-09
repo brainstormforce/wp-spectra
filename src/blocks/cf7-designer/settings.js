@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 
 import { __ } from '@wordpress/i18n';
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -645,7 +645,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableOveride }
-				onChange={ ( value ) =>
+				onChange={ () =>
 					setAttributes( { enableOveride: ! enableOveride } )
 				}
 			/>
@@ -1156,7 +1156,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableHighlightBorder }
-				onChange={ ( value ) =>
+				onChange={ () =>
 					setAttributes( {
 						enableHighlightBorder: ! enableHighlightBorder,
 					} )
@@ -1780,9 +1780,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectForm = ( id ) => {
-		const { formId } = props.attributes;
-		const { setAttributes, setState } = props;
-
 		if ( ! id ) {
 			setAttributes( { isHtml: false } );
 			setAttributes( { formId: null } );

@@ -11,7 +11,7 @@ import variations from './variations';
 
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/forms', {
 	title: uagb_blocks_info.blocks[ 'uagb/forms' ].title,

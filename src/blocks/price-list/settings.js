@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -97,7 +97,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.columns = value;
 		} );
 		setAttributes( { columns: value } );
@@ -107,7 +107,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.headingTag = value;
 		} );
 		setAttributes( { headingTag: value } );
@@ -117,7 +117,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imagePosition = value;
 		} );
 		setAttributes( { imagePosition: value } );
@@ -127,7 +127,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageSize = value;
 		} );
 		setAttributes( { imageSize: value } );
@@ -138,7 +138,7 @@ const Settings = ( props ) => {
 			props.clientId
 		);
 
-		getChildBlocks.forEach( ( pricelistChild, key ) => {
+		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageAlignment = value;
 		} );
 		setAttributes( { imageAlignment: value } );

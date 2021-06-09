@@ -36,7 +36,6 @@ function contentTimelineStyle( props ) {
 		iconSize,
 		iconFocus,
 		iconBgFocus,
-		block_id,
 		headFontSizeType,
 		headFontSize,
 		headFontSizeTablet,
@@ -137,14 +136,6 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-left-color': backgroundColor,
-		},
-		' .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		' .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-left-color': backgroundColor,
-		},
-		' .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-right-color': backgroundColor,
 		},
 		' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
@@ -262,9 +253,6 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
 			fill: iconColor,
-		},
-		' .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
-			fill: iconFocus,
 		},
 
 		//Author and CTA

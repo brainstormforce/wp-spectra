@@ -68,6 +68,7 @@ const Settings = ( props ) => {
 				</p>
 				<PanelBody title={ __( 'Image' ) } initialOpen={ true }>
 					<BaseControl
+						id="Image"
 						className="editor-bg-image-control"
 						label={ __( '' ) }
 					>

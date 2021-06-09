@@ -3,7 +3,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 
 const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
@@ -54,15 +54,7 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-
 	const splitBlock = ( before, after, ...blocks ) => {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props;
-
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
 			// any other blocks being inserted after the current paragraph.
@@ -86,9 +78,6 @@ const Render = ( props ) => {
 	};
 
 	const saveMaterials = ( value, index ) => {
-		const { attributes, setAttributes } = props;
-		const { materials } = attributes;
-
 		const newItems = materials.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item = { ...item, ...value };
@@ -103,9 +92,6 @@ const Render = ( props ) => {
 	};
 
 	const saveTools = ( value, index ) => {
-		const { attributes, setAttributes } = props;
-		const { tools } = attributes;
-
 		const newItems = tools.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item = { ...item, ...value };
@@ -122,7 +108,6 @@ const Render = ( props ) => {
 	let urlChk = '';
 	let title = '';
 	let url = '';
-
 	if (
 		'undefined' !== typeof attributes.mainimage &&
 		null !== attributes.mainimage &&
@@ -154,6 +139,7 @@ const Render = ( props ) => {
 				className="uagb-howto__source-image"
 				src={ url }
 				title={ title }
+				alt=""
 			/>
 		);
 	}
@@ -422,7 +408,7 @@ const Render = ( props ) => {
 				) }
 				{ showTools && (
 					<div className="uagb-how-to-tools">
-						{ tools.map( ( tools, index ) => {
+						{ tools.map( ( tool, index ) => {
 							return (
 								<div
 									className={ classnames(
@@ -438,7 +424,7 @@ const Render = ( props ) => {
 												'Requirements Tools:',
 												'ultimate-addons-for-gutenberg'
 											) }
-											value={ tools.add_required_tools }
+											value={ tool.add_required_tools }
 											onChange={ ( value ) => {
 												saveTools(
 													{
@@ -484,7 +470,7 @@ const Render = ( props ) => {
 				) }
 				{ showMaterials && (
 					<>
-						{ materials.map( ( materials, index ) => {
+						{ materials.map( ( material, index ) => {
 							return (
 								<div
 									className={ classnames(
@@ -501,7 +487,7 @@ const Render = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 											value={
-												materials.add_required_materials
+												material.add_required_materials
 											}
 											onChange={ ( value ) => {
 												saveMaterials(

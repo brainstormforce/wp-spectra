@@ -4,15 +4,9 @@ import {
 	renderPostLayout,
 } from '.././function';
 
+import React from 'react';
 const Blog = ( props ) => {
-	const {
-		attributes,
-		className,
-		latestPosts,
-		block_id,
-		categoriesList,
-		deviceType,
-	} = props;
+	const { attributes, className, latestPosts, block_id, deviceType } = props;
 
 	const {
 		columns,

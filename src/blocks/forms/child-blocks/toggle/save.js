@@ -5,7 +5,8 @@
 import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-const { RichText } = wp.blockEditor;
+
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -38,7 +39,7 @@ export default function save( props ) {
 				className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }
 				id={ block_id }
 			/>
-			<label className="uagb-switch">
+			<label className="uagb-switch" id="uag-form">
 				<input
 					type="hidden"
 					className="uagb-forms-toggle-input"

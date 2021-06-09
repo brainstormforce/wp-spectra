@@ -94,6 +94,7 @@ const Render = ( props ) => {
 				className="uagb-review__source-image"
 				src={ url }
 				title={ title }
+				alt=""
 			/>
 		);
 	}
@@ -124,7 +125,7 @@ const Render = ( props ) => {
 				headingTag={ headingTag }
 				mainimage={ mainimage }
 				imgSize={ imgSize }
-				imageIconHtml={ imageIconHtml }
+				image_icon_html={ imageIconHtml }
 				isSelected={ isSelected }
 				authorName={ authorName }
 				itemName={ itemName }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
+import { PanelBody, ToggleControl } from '@wordpress/components';
+
+import { InspectorControls } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

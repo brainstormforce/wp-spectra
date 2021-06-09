@@ -1,5 +1,5 @@
 import { dateI18n, format } from '@wordpress/date';
-
+import React from 'react';
 const PostDate = ( props ) => {
 	const { post, attributes, dateClass } = props;
 

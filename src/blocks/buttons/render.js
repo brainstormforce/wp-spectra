@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect, useMemo } from 'react';
 import styles from './editor.lazy.scss';

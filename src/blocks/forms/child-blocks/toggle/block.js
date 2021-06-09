@@ -8,7 +8,7 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/forms-toggle', {
 	title: uagb_blocks_info.blocks[ 'uagb/forms-toggle' ].title,

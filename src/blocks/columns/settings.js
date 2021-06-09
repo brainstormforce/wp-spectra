@@ -3,7 +3,7 @@
  */
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
 import ColumnResponsive from '@Components/typography/column-responsive';
@@ -115,8 +115,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { backgroundImage: null } );
 	};
 
@@ -124,8 +122,6 @@ const Settings = ( props ) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props.parentProps;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundImage: null } );
 			return;
@@ -142,8 +138,6 @@ const Settings = ( props ) => {
 	 * Event to set Video as null while removing.
 	 */
 	const onRemoveVideo = () => {
-		const { setAttributes } = props.parentProps;
-
 		setAttributes( { backgroundVideo: null } );
 	};
 
@@ -151,8 +145,6 @@ const Settings = ( props ) => {
 	 * Event to set Video while adding.
 	 */
 	const onSelectVideo = ( media ) => {
-		const { setAttributes } = props.parentProps;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundVideo: null } );
 			return;
@@ -368,7 +360,9 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
+					onChange={ ( value ) =>
+						setAttributes( { columnGap: value } )
+					}
 					help={ __(
 						'Note: The individual Column Gap can be managed from Column Settings.',
 						'ultimate-addons-for-gutenberg'
@@ -437,7 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseTablet }
-					onChange={ ( value ) =>
+					onChange={ ( ) =>
 						setAttributes( { reverseTablet: ! reverseTablet } )
 					}
 				/>
@@ -447,7 +441,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseMobile }
-					onChange={ ( value ) =>
+					onChange={ ( ) =>
 						setAttributes( { reverseMobile: ! reverseMobile } )
 					}
 				/>
@@ -979,6 +973,7 @@ const Settings = ( props ) => {
 				{ 'image' == backgroundType && (
 					<>
 						<BaseControl
+							id="Background Image"
 							className="editor-bg-image-control"
 							label={ __(
 								'Background Image',
@@ -1244,6 +1239,7 @@ const Settings = ( props ) => {
 				) }
 				{ 'video' == backgroundType && (
 					<BaseControl
+						id="Background Video"
 						className="editor-bg-video-control"
 						label={ __(
 							'Background Video',
@@ -1593,7 +1589,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topFlip }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( { topFlip: ! topFlip } )
 							}
 						/>
@@ -1603,7 +1599,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topContentAboveShape }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( {
 									topContentAboveShape: ! topContentAboveShape,
 								} )
@@ -1760,7 +1756,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomFlip }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( { bottomFlip: ! bottomFlip } )
 							}
 						/>
@@ -1770,7 +1766,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomContentAboveShape }
-							onChange={ ( value ) =>
+							onChange={ ( ) =>
 								setAttributes( {
 									bottomContentAboveShape: ! bottomContentAboveShape,
 								} )
