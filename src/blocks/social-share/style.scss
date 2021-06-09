@@ -3,12 +3,13 @@
  *
  * CSS for both Frontend+Backend.
  */
- .uagb-social-share__outer-wrap,
- .uagb-social-share__wrap {
+.uagb-social-share__outer-wrap,
+.uagb-social-share__wrap {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
 .uagb-social-share__layout-vertical {
 
 	&.uagb-social-share__outer-wrap,

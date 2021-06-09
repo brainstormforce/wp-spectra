@@ -13,8 +13,9 @@
 	ul.uagb-toc__list,
 	ol.uagb-toc__list {
 		padding-left: 0;
-		margin-bottom:0;
-		margin-left:2.2em;
+		margin-bottom: 0;
+		margin-left: 2.2em;
+
 		li {
 			margin: 0;
 		}
@@ -64,10 +65,12 @@
 .uagb-toc__list ul {
 	list-style-type: circle;
 }
+
 ol.uagb-toc__list > ul,
 ol.uagb-toc__list > li {
 	list-style-type: disc;
 }
+
 .uagb-toc__scroll-top {
 
 	&.dashicons {
