@@ -1,0 +1,13 @@
+/vendor/
+/node_modules/
+build
+coverage
+cypress
+node_modules
+vendor
+
+
+*.json
+*.js
+*.lock
+*-invalid.*
