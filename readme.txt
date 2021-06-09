@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.23.1 =
+* Fix: Table of Contents - Heading replaced with the question symbol.
+
 = 1.23.0 =
 * New: Added an option to rollback to a previous version.
 * New: Added an option to get update notifications for beta versions.

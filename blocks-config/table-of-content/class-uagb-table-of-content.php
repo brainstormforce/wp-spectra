@@ -126,13 +126,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
 				htmlspecialchars_decode(
-					utf8_decode(
-						htmlentities(
-							'<html><body>' . $content . '</body></html>',
-							ENT_COMPAT,
-							'UTF-8',
-							false
-						)
+					htmlentities(
+						'<html><body>' . $content . '</body></html>',
+						ENT_COMPAT,
+						'UTF-8',
+						false
 					),
 					ENT_COMPAT
 				)
@@ -189,13 +187,15 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 							if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
 
+								$content = utf8_decode( $heading->textContent );
+
 								return array(
 									// A little hacky, but since we know at this point that the tag will
 									// be an h1-h6, we can just grab the 2nd character of the tag name
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
-									'id'      => $this->clean( $heading->textContent ),
-									'content' => $heading->textContent,
+									'id'      => $this->clean( mb_strtolower( $content ) ),
+									'content' => $content,
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
