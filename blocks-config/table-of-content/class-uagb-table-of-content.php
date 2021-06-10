@@ -125,15 +125,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// supported by ISO-8859-1 as HTML entities. However, this function also
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
-				htmlspecialchars_decode(
-					htmlentities(
-						'<html><body>' . $content . '</body></html>',
-						ENT_COMPAT,
-						'UTF-8',
-						false
-					),
-					ENT_COMPAT
-				)
+				'<html><body>' . $content . '</body></html>'
 			);
 
 			// We're done parsing, so we can disable user error handling. This also
@@ -158,7 +150,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// Get all non-empty heading elements in the post content.
 			$headings = iterator_to_array(
 				$xpath->query(
-					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
+					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]'
 				)
 			);
 
@@ -216,6 +208,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @return string $string.
 		 */
 		public function clean( $string ) {
+
 			$string = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $string );
 			$string = str_replace( array( '&amp;', '&nbsp;' ), ' ', $string );
 			// Remove all except alphbets, space, `-` and `_`.
