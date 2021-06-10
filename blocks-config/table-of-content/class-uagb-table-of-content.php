@@ -215,8 +215,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			$string = preg_replace( '/[^A-Za-z0-9 _-]/', '', $string );
 			// Convert space characters to an `_` (underscore).
 			$string = preg_replace( '/\s+/', '_', $string );
-			// Convert ; characters to an ''.
-			$string = str_replace( ';', '', $string );
 			// Replace multiple `_` (underscore) with a single `-` (hyphen).
 			$string = preg_replace( '/_+/', '-', $string );
 			// Replace multiple `-` (hyphen) with a single `-` (hyphen).
