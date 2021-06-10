@@ -169,7 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.23.2 ###
-* Fix: Table of Contents: Headings with other tags inside them are not visible on frontend.
+* Fix: Table of Contents: Headings with HTML tags are not visible on the frontend..
+* Fix: Table of Contents - Question marks are rendered in place of UTF-8 characters for few languages in Heading.
+* Fix: Section - Full-Width option not being applied on the front-end according to theme content width.
 
 ### 1.23.1 ###
 * Fix: Broken path while generating assets (CSS/JS).
