@@ -169,7 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.23.2 ###
-* Fix: Section - Full-Width issue on front-end.
+* Fix: Section - Full-Width option not being applied on the front-end according to theme content width.
 
 ### 1.23.1 ###
 * Fix: Broken path while generating assets (CSS/JS).
