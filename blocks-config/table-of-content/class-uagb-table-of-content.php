@@ -125,15 +125,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// supported by ISO-8859-1 as HTML entities. However, this function also
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
-				htmlspecialchars_decode(
-					htmlentities(
-						'<html><body>' . $content . '</body></html>',
-						ENT_COMPAT,
-						'UTF-8',
-						false
-					),
-					ENT_COMPAT
-				)
+				htmlspecialchars_decode( '<html><body>' . $content . '</body></html>', ENT_COMPAT )
 			);
 
 			// We're done parsing, so we can disable user error handling. This also
