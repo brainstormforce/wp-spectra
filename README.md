@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 1.23.2 ###
+* Fix: Post layout - Excerpt logic broken issue.
+
 ### 1.23.1 ###
 * Fix: Broken path while generating assets (CSS/JS).
 * Fix: Table of Contents - Heading convert to question marks on the frontend.
