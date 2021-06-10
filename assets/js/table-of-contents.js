@@ -21,7 +21,7 @@
 			.replace(/[^a-z0-9 -_]/gi,'')                	// Keep only alphnumeric, space, -, _
 			.replace(/&(mdash;)/g, '')					 	// Remove long dash
 			.replace(/\s+/g, '-')                        	// Replace spaces with -
-			.replace(/[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '')  // Remove special chars
+			.replace(/[&\/\\#,^!+()$~%.\[\]'":*?;<>{}@‘’”“|]/g, '')  // Remove special chars
 			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
 			.replace(/^-+/, '')                          	// Trim - from start of text
 			.replace(/-+$/, '');                         	// Trim - from end of text
