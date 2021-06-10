@@ -95,4 +95,98 @@ class AdminHelper {
 
 		return $options;
 	}
+
+	/**
+	 * Get Rollback versions.
+	 *
+	 * @since 1.23.0
+	 * @return array
+	 * @access public
+	 */
+	public static function get_rollback_versions() {
+
+		$rollback_versions_options = get_transient( 'uag_rollback_versions_' . UAGB_VER );
+		
+		if ( ! $rollback_versions_options || empty( $rollback_versions_options ) ) {
+
+			$max_versions = 10;
+
+			require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+			$plugin_information = plugins_api(
+				'plugin_information',
+				array(
+					'slug' => 'ultimate-addons-for-gutenberg',
+				)
+			);
+
+			if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+				return array();
+			}
+
+			krsort( $plugin_information->versions );
+
+			$rollback_versions = array();
+
+			foreach ( $plugin_information->versions as $version => $download_link ) {
+
+				$lowercase_version = strtolower( $version );
+
+				$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+
+				if ( ! $is_valid_rollback_version ) {
+					continue;
+				}
+
+				if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+					continue;
+				}
+
+				$rollback_versions[] = $version;
+			}
+
+			usort( $rollback_versions, array( __CLASS__, 'sort_rollback_versions' ) );
+
+			$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
+
+			$rollback_versions_options = array();
+
+			foreach( $rollback_versions as $version ) {
+
+				$version = array(
+					'label' => $version,
+					'value' => $version,
+
+				);
+
+				$rollback_versions_options[] = $version;
+			}
+
+			set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions_options, WEEK_IN_SECONDS );
+		}
+
+		return $rollback_versions_options;
+	}
+	/**
+	 * Sort Rollback versions.
+	 *
+	 * @param string $prev Previous Version.
+	 * @param string $next Next Version.
+	 *
+	 * @since 1.23.0
+	 * @return array
+	 * @access public
+	 */
+	public static function sort_rollback_versions( $prev, $next ) {
+
+		if ( version_compare( $prev, $next, '==' ) ) {
+			return 0;
+		}
+
+		if ( version_compare( $prev, $next, '>' ) ) {
+			return -1;
+		}
+
+		return 1;
+	}
 }

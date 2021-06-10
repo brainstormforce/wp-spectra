@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { useStateValue } from '@Utils/StateProvider';
 import { useSettingsValue } from '@Utils/SettingsProvider';
-import { SubmitButton } from '@Fields';
-
+import { NormalButton } from '@Fields';
 import apiFetch from '@wordpress/api-fetch';
-
 import { __ } from '@wordpress/i18n';
-
 import './VersionControl.scss';
 import SettingTable from '../common/SettingTable';
 
@@ -19,43 +16,23 @@ function VersionControl( props ) {
 	const [ { settingsProcess }, setSettingsStatus ] = useSettingsValue();
 	var version_control = globaldata.settings[ 'version_control' ];
 
-	const handleFormSubmit = function ( event ) {
+	const handleRollbackVersion = function ( event ) {
+
 		event.preventDefault();
 
-		let formData = new window.FormData( event.target );
-
-		formData.append( 'action', 'uag_save_global_settings' );
-		formData.append(
-			'security',
-			uag_react.save_global_settings_nonce
-		);
-		formData.append( 'setting_tab', 'version_control' );
+        let data = {
+            action : 'uag_rollback_version',
+            security : uag_react.rollback_version_nonce
+        }
 
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
-			body: formData,
+			body: data,
 		} ).then( ( data ) => {
-			/* Update settings state */
-			setSettingsStatus( { status: 'SAVED' } );
 
 			if ( data.success ) {
-				apiFetch( {
-					path: '/uag/v1/admin/commonsettings/',
-				} ).then( ( data ) => {
-					console.log( data );
-					dispatch( {
-						type: 'SET_SETTINGS',
-						commondata: data,
-					} );
-					dispatch( {
-						type: 'SET_PAGE_BUILDER',
-						pagebuilder:
-							data.options[
-								'_uag_common[default_page_builder]'
-							],
-					} );
-				} );
+				
 			} else {
 				console.log( 'Error' );
 			}
@@ -63,16 +40,19 @@ function VersionControl( props ) {
 	};
 
 	return (
-		<form className="uag-general-settings" onSubmit={ handleFormSubmit }>
-			<h3 className="uag-general-settings__title">
+		<form className="uag-version-control" onSubmit={ handleRollbackVersion }>
+			<h3 className="uag-version-settings__title">
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<SettingTable
 				settings={ version_control }
 				meta_key="_uag_common"
 			/>
-			<div className="uag-general-settings__save-button">
-				<SubmitButton />
+			<div className="uag-version-control-button">
+				<NormalButton
+                    label = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
+                    onClick = { handleRollbackVersion }
+                />
 			</div>
 		</form>
 	);

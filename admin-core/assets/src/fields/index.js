@@ -19,6 +19,7 @@ import DocField from '@Fields/DocField';
 import SectionHeadingField from '@Fields/SectionHeadingField';
 import ProductField from '@Fields/ProductField';
 import CouponField from '@Fields/CouponField';
+import NormalButton from '@Fields/NormalButton';
 
 export {
 	CheckboxField,
@@ -40,4 +41,5 @@ export {
 	SectionHeadingField,
 	ProductField,
 	CouponField,
+	NormalButton
 };

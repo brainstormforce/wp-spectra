@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
+import VersionControl from '@SettingsApp/components/tools-page/VersionControl';
 
 function ToolsPage() {
 
@@ -50,7 +51,7 @@ function ToolsPage() {
 		switch ( tab ) {
 			case '#version_control_tools':
 				current_tab = (
-					''
+					<VersionControl/>
 				);
 				break;
 			case '#assets_generation_tools':

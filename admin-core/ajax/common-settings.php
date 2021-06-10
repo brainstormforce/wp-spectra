@@ -49,7 +49,7 @@ class CommonSettings extends AjaxBase {
 	public function register_ajax_events() {
 
 		$ajax_events = array(
-			'save_global_settings',
+			'rollback_version',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -60,7 +60,7 @@ class CommonSettings extends AjaxBase {
 	 *
 	 * @return void
 	 */
-	public function save_global_settings() {
+	public function rollback_version() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
@@ -71,7 +71,7 @@ class CommonSettings extends AjaxBase {
 		/**
 		 * Nonce verification
 		 */
-		if ( ! check_ajax_referer( 'uag_save_global_settings', 'security', false ) ) {
+		if ( ! check_ajax_referer( 'uag_rollback_version', 'security', false ) ) {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
@@ -83,22 +83,7 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 
-			$setting_tab = isset( $_POST['setting_tab'] ) ? sanitize_text_field( wp_unslash( $_POST['setting_tab'] ) ) : '';
-
-			switch ( $setting_tab ) {
-
-				case 'general_settings':
-					$this->save_general_settings();
-					break;
-
-				case 'other_settings':
-					$this->save_other_settings();
-					break;
-
-				default:
-					$this->save_general_settings();
-
-			}
+			// var_dump($_POST);
 		}
 
 		$response_data = array(

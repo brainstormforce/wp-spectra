@@ -54,9 +54,9 @@ abstract class AjaxBase {
 
 			foreach ( $ajax_events as $ajax_event ) {
 				add_action( 'wp_ajax_' . $this->prefix . '_' . $ajax_event, array( $this, $ajax_event ) );
-
+				
 				$this->localize_ajax_action_nonce( $ajax_event );
-			}
+			}	
 		}
 	}
 
