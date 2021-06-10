@@ -1455,7 +1455,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
-				$excerpt = strip_shortcodes( get_the_content() );
+				$excerpt = get_the_content();
 			} else {
 				$excerpt = $this->get_excerpt_by_id( $post->ID, $length );
 			}
