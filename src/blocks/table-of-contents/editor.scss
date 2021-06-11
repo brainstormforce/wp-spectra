@@ -10,8 +10,21 @@
 
 .block-editor-page {
 	.uagb-toc__scroll-top {
-		&.dashicons {
-			right: 343px;
+		display: none;
+		position: fixed;
+		bottom: 50px;
+		padding: 10px;
+		background: #ccd0d4;
+		cursor: pointer;
+		font-size: 1rem;
+		right: 343px;
+		line-height: 1.85714285714286;
+		svg {
+			margin-left: 0px;
+			transform: translate(0, -20%) rotate(180deg);
+			width: 1.6em;
+			height: .6em;
+			fill: currentColor;
 		}
 		&.uagb-toc__show-scroll {
 			display: inline-table;
