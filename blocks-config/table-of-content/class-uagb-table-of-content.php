@@ -137,6 +137,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// We can't use foreach directly on the $templates DOMNodeList because it's a
 			// dynamic list, and removing nodes confuses the foreach iterator. So
 			// instead, we convert the iterator to an array and then iterate over that.
+
+			if ( ! isset( $doc->documentElement ) || ! is_object( $doc->documentElement ) ) {
+
+				return array();
+			}
+
 			$templates = iterator_to_array(
 				$doc->documentElement->getElementsByTagName( 'template' )
 			);
