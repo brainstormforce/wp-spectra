@@ -185,7 +185,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
 									'id'      => $this->clean( $heading->textContent ),
-									'content' => $heading->textContent,
+									'content' => wp_strip_all_tags( $heading->textContent ),
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
