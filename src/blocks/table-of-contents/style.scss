@@ -79,6 +79,13 @@ ol.uagb-toc__list > li {
 	cursor: pointer;
 	font-size: 1rem;
 
+	svg {
+		margin-left: 0px;
+		transform: translate(0, -20%) rotate(180deg);
+		width: 1.6em;
+		height: .6em;
+	}
+
 	&.uagb-toc__show-scroll {
 		display: inline-table;
 	}
