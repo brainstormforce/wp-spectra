@@ -70,16 +70,14 @@ ol.uagb-toc__list > li {
 	list-style-type: disc;
 }
 .uagb-toc__scroll-top {
-
-	&.dashicons {
-		display: none;
-		position: fixed;
-		bottom: 50px;
-		right: 50px;
-		padding: 10px;
-		background: #ccd0d4;
-		cursor: pointer;
-	}
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	padding: 10px;
+	background: #ccd0d4;
+	cursor: pointer;
+	font-size: 1rem;
 
 	&.uagb-toc__show-scroll {
 		display: inline-table;
