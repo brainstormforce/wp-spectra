@@ -125,7 +125,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// supported by ISO-8859-1 as HTML entities. However, this function also
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
-				'<html><body>' . $content . '</body></html>'
+				'<html><head><meta charset="UTF-8"></head><body>' . $content . '</body></html>'
 			);
 
 			// We're done parsing, so we can disable user error handling. This also
@@ -185,7 +185,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
 									'id'      => $this->clean( $heading->textContent ),
-									'content' => utf8_decode( $heading->textContent ),
+									'content' => $heading->textContent,
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
