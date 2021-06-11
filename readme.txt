@@ -171,6 +171,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 = 1.23.3 =
 * Fix: Table of Contents - UTF-8 encoding on frontend.
 * Fix: Table of Contents - Fatal error when $doc->documentElement is null in some cases on frontend.
+* Fix: Table of Contents - Scroll to Top icon not visible on frontend.
 * Fix: Posts - "B7" displayed in place of " . " icon on frontend when file generation is disabled.
 
 = 1.23.2 =
