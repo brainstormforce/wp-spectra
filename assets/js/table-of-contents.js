@@ -160,7 +160,7 @@
 				$( "body" ).append( "<div class=\"uagb-toc__scroll-top\"> " + scrollToTopSvg + "</div>" );
 				scroll_element = $( ".uagb-toc__scroll-top" );
 			}
-console.log(scroll_to_top);
+
 			if ( scroll_to_top ) {
 				scroll_element.addClass( "uagb-toc__show-scroll" );
 			} else {
