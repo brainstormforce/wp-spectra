@@ -108,7 +108,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// Disabled because of PHP DOMDocument and DOMXPath APIs using camelCase.
 
 			// Create a document to load the post content into.
-			$doc = new DOMDocument();
+			$doc = new DOMDocument( '1.0', 'UTF-8' );
 
 			// Enable user error handling for the HTML parsing. HTML5 elements aren't
 			// supported (as of PHP 7.4) and There's no way to guarantee that the markup
