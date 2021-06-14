@@ -68,10 +68,7 @@ export default function save( props ) {
 		position = 'after_title';
 	}
 
-	if (
-		iconimgPosition == 'below-title' &&
-		position == 'after_title'
-	) {
+	if ( iconimgPosition == 'below-title' && position == 'after_title' ) {
 		showSeperator = false;
 		iconImageHtml = (
 			<>

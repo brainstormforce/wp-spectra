@@ -70,17 +70,12 @@ updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
 
-
-setTimeout(async function () {
-
+setTimeout( async function () {
 	// Sort the Blocks based on title.
-	wp.blocks.getBlockTypes().sort((blockA,blockB)=> {
-		if( 'uagb' === blockA.category && 'uagb' === blockB.category ) {
+	wp.blocks.getBlockTypes().sort( ( blockA, blockB ) => {
+		if ( 'uagb' === blockA.category && 'uagb' === blockB.category ) {
 			return blockA.title > blockB.title ? 1 : -1;
 		}
 		return 0;
 	} );
-
-}, 50)
-
-
+}, 50 );

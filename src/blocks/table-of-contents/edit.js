@@ -28,13 +28,19 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		props.setAttributes( { classMigrate: true } );
 
+		const scroll_element = jQuery( '.uagb-toc__scroll-top' );
+
 		// Pushing Scroll To Top div
-		const $scrollTop = document.createElement( 'div' );
-		$scrollTop.setAttribute(
-			'class',
-			'uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2'
-		);
-		document.body.insertBefore( $scrollTop, document.body.lastChild );
+		const scrollToTopSvg =
+			'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
+
+		if ( 0 == scroll_element.length ) {
+			jQuery( 'body' ).append(
+				'<div class="uagb-toc__scroll-top"> ' +
+					scrollToTopSvg +
+					'</div>'
+			);
+		}
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );

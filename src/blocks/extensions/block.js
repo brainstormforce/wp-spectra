@@ -6,7 +6,6 @@ import { InspectorAdvancedControls } from '@wordpress/block-editor';
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent(
 	( BlockEdit ) => {
 		return ( props ) => {
-
 			const { isSelected } = props;
 
 			const blocksName = props.name;

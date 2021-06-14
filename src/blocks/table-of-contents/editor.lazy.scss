@@ -11,9 +11,22 @@
 .block-editor-page {
 
 	.uagb-toc__scroll-top {
+		position: fixed;
+		right: 343px;
+		bottom: 50px;
+		display: none;
+		padding: 10px;
+		background: #ccd0d4;
+		cursor: pointer;
+		font-size: 1rem;
+		line-height: 1.85714285714286;
 
-		&.dashicons {
-			right: 343px;
+		svg {
+			width: 1.6em;
+			height: 0.6em;
+			margin-left: 0;
+			transform: translate(0, -20%) rotate(180deg);
+			fill: currentColor;
 		}
 
 		&.uagb-toc__show-scroll {
