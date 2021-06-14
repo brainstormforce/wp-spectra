@@ -39,7 +39,7 @@ function SelectProduct( props ) {
 			<div className="uag-select-product-popup-content">
 				<div className="uag-select-product-header">
 					<div className="uag-select-product-header__title">
-						<div class="uag-popup-header-title">
+						<div className="uag-popup-header-title">
 							<span className="ultimate-addons-for-gutenberg-logo-icon"></span>
 							{ __( 'Add New Product', 'ultimate-addons-for-gutenberg' ) }
 						</div>
@@ -50,7 +50,7 @@ function SelectProduct( props ) {
 						title="Hide this"
 						onClick={ closePopupCB }
 					>
-						<span class="dashicons dashicons-no"></span>
+						<span className="dashicons dashicons-no"></span>
 					</div>
 				</div>
 

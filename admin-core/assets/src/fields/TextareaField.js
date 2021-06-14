@@ -22,7 +22,7 @@ function TextareaField( props ) {
 		<div className="uag-field uag-textarea-field">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
@@ -40,7 +40,7 @@ function TextareaField( props ) {
 					</div>
 				) }
 
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<textarea
 						className={ props.class }
 						name={ name }

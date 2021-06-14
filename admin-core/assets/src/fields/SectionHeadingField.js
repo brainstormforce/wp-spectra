@@ -8,7 +8,7 @@ function SectionHeadingField( props ) {
 	return (
 		<div className="uag-field uag-section-heading-field">
 			{ label && (
-				<div class="uag-field__data--label">
+				<div className="uag-field__data--label">
 					<label>{ label }</label>
 				</div>
 			) }

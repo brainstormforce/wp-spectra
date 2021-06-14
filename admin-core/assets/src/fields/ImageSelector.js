@@ -73,11 +73,11 @@ function ImageSelector( props ) {
 		<div className="uag-field uag-image-selector-field">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<div className="uag-image-selector-field__input">
 						<div id="uag-image-preview" style={ style }>
 							<img
@@ -90,14 +90,14 @@ function ImageSelector( props ) {
 						<input
 							type="hidden"
 							id={ name }
-							class="uag-image"
+							className="uag-image"
 							name={ name }
 							value={ imageval }
 						></input>
 						<input
 							type="hidden"
 							id={ name + '-obj' }
-							class="uag-image-obj"
+							className="uag-image-obj"
 							name={ name + '-obj' }
 							value={ JSON.stringify( imageObj ) }
 						/>

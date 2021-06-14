@@ -52,11 +52,11 @@ function ColorPickerField( props ) {
 		>
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<div className="uag-colorpicker-selector">
 						<div
 							className="uag-colorpicker-swatch-wrap"

@@ -64,17 +64,17 @@ function ToastElement( props ) {
 	} );
 
 	return (
-		<div class={ `uag-toast uag-${ appearance }` }>
-			<div class="uag-toast__content">
-				<div class="uag-toast__icon">
-					<i class="fas fa-check-circle" aria-hidden="true"></i>
+		<div className={ `uag-toast uag-${ appearance }` }>
+			<div className="uag-toast__content">
+				<div className="uag-toast__icon">
+					<i className="fas fa-check-circle" aria-hidden="true"></i>
 				</div>
-				<div class="uag-toast__text">
-					<div class="uag-toast__title">{ notice_data?.title }</div>
-					<div class="uag-toast__desc">{ content }</div>
+				<div className="uag-toast__text">
+					<div className="uag-toast__title">{ notice_data?.title }</div>
+					<div className="uag-toast__desc">{ content }</div>
 				</div>
-				<div class="uag-toast__dismiss" onClick={ dismiss_toast }>
-					<span class="uag-toast__dismiss-text"><span className="dashicons dashicons-no"></span></span>
+				<div className="uag-toast__dismiss" onClick={ dismiss_toast }>
+					<span className="uag-toast__dismiss-text"><span className="dashicons dashicons-no"></span></span>
 				</div>
 			</div>
 		</div>

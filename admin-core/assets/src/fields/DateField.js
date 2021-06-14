@@ -36,7 +36,7 @@ function TextField( props ) {
 		<div className="uag-field uag-date-field">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
@@ -54,7 +54,7 @@ function TextField( props ) {
 					</div>
 				) }
 
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<DatePicker
 						dateFormat="yyyy-MM-dd"
 						className={ className }

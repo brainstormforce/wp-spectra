@@ -17,7 +17,7 @@ function Radio( props ) {
 	return (
 		<div className="uag-field uag-radio-button">
 			<div className="uag-field__data">
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<input
 						type="radio"
 						name={ name }
@@ -28,7 +28,7 @@ function Radio( props ) {
 					/>
 				</div>
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label for={ id ? id : unique_id }>{ label }</label>
 					</div>
 				) }

@@ -74,7 +74,7 @@ function Checkbox( props ) {
 	return (
 		<div className="uag-field uag-checkbox-field">
 			<div className="uag-field__data">
-				<div class={ `uag-field__data--content ${ child_class }` }>
+				<div className={ `uag-field__data--content ${ child_class }` }>
 					<input
 						type="hidden"
 						className={ props.class }
@@ -94,7 +94,7 @@ function Checkbox( props ) {
 				</div>
 
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label htmlFor={ id ? id : name }>
 							{ label }
 							{ tooltip && (

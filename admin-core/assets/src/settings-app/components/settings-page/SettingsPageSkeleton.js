@@ -26,7 +26,7 @@ function FlowRowSkeleton() {
 					.fill()
 					.map( ( i ) => {
 						return (
-							<div className="uag-settings-nav__tab">
+							<div key={ i } className="uag-settings-nav__tab">
 								<RectSkeleton height="45px" />
 							</div>
 						);

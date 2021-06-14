@@ -176,8 +176,6 @@ class AdminMenu {
 		wp_enqueue_style( $admin_slug . '-header', UAG_ADMIN_URL . 'assets/css/header.css', array(), UAGB_VER );
 		wp_style_add_data( $admin_slug . '-header', 'rtl', 'replace' );
 
-		wp_enqueue_script( $admin_slug . '-common-script', UAG_ADMIN_URL . 'assets/js/common.js', array( 'jquery' ), UAGB_VER, false );
-
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(

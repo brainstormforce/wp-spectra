@@ -115,7 +115,7 @@ function ProductOptions( props ) {
 
 			return (
 				<RadioField
-					class={ `uag-product-add-to-cart` }
+					className={ `uag-product-add-to-cart` }
 					name="uag_default_add_to_cart"
 					options={ [
 						{
@@ -130,7 +130,7 @@ function ProductOptions( props ) {
 		if ( 'force-all' === productCondition ) {
 			return (
 				<CheckboxField
-					class={ `uag-product-add-to-cart` }
+					className={ `uag-product-add-to-cart` }
 					name={ `uag-product-options-data[${ product.unique_id }][add_to_cart]` }
 					value="yes"
 				/>
@@ -140,7 +140,7 @@ function ProductOptions( props ) {
 		if ( 'multiple-selection' === productCondition ) {
 			return (
 				<CheckboxField
-					class={ `uag-product-add-to-cart` }
+					className={ `uag-product-add-to-cart` }
 					name={ `uag-product-options-data[${ product.unique_id }][add_to_cart]` }
 					value={ product.add_to_cart }
 				/>
@@ -152,7 +152,7 @@ function ProductOptions( props ) {
 
 	return (
 		<div className="uag-product-options-fields">
-			<ul class="uag-product-options-fields__list">
+			<ul className="uag-product-options-fields__list">
 				{ productOptions.length > 0 &&
 					productOptions.map( ( product, index ) => {
 						let highlight_text_class = '';
@@ -164,7 +164,7 @@ function ProductOptions( props ) {
 
 						return (
 							<li
-								class="uag-product-option-field"
+								className="uag-product-option-field"
 								data-product-id={ product.product_id }
 							>
 								<div className="uag-product-option-fields">
@@ -182,7 +182,7 @@ function ProductOptions( props ) {
 											{ product.product_title }
 										</span>
 										<span
-											class="dashicons dashicons-arrow-down uag-dashicon"
+											className="dashicons dashicons-arrow-down uag-dashicon"
 											index={ index }
 											onClick={ showOptions }
 										></span>
@@ -196,7 +196,7 @@ function ProductOptions( props ) {
 										data-id={ product.product_id }
 									>
 										<TextField
-											class="uag-product-name"
+											className="uag-product-name"
 											name={ `uag-product-options-data[${ product.unique_id }][product_name]` }
 											label={ __(
 												'Product Name',
@@ -208,7 +208,7 @@ function ProductOptions( props ) {
 											) }
 										/>
 										<TextField
-											class="uag-product-subtext"
+											className="uag-product-subtext"
 											name={ `uag-product-options-data[${ product.unique_id }][product_subtext]` }
 											label={ __(
 												'Subtext',
@@ -221,7 +221,7 @@ function ProductOptions( props ) {
 											) }
 										/>
 										<CheckboxField
-											class="uag-product-enable-hl"
+											className="uag-product-enable-hl"
 											name={ `uag-product-options-data[${ product.unique_id }][enable_highlight]` }
 											label={ __(
 												'Enable Highlight',
@@ -234,7 +234,7 @@ function ProductOptions( props ) {
 											className={ `${ highlight_text_class }` }
 										>
 											<TextField
-												class={ `uag-product-hl-text` }
+												className={ `uag-product-hl-text` }
 												name={ `uag-product-options-data[${ product.unique_id }][highlight_text]` }
 												label={ __(
 													'Highlight Text',
@@ -247,7 +247,7 @@ function ProductOptions( props ) {
 										<input
 											name={ `uag-product-options-data[${ product.unique_id }][unique_id]` }
 											type="hidden"
-											class="uag-product-options-unique-id"
+											className="uag-product-options-unique-id"
 											value={ product.unique_id }
 										></input>
 									</div>

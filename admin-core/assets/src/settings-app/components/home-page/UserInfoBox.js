@@ -16,7 +16,7 @@ function UserInfoBox( props ) {
 					</h1>
 				</div>
 			</div>
-			<div class="uag-metabox__body">
+			<div className="uag-metabox__body">
 				<p>
 					<b>{ __(
 						'Welcome to the Ultimate Addons for Gutenberg!',

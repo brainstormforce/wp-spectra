@@ -49,7 +49,7 @@ function SettingTable( props ) {
 									readonly={ data.readonly }
 									desc={ data.desc }
 									tooltip={ data.tooltip }
-									class={ data.class }
+									className={ data.class }
 								/>
 							);
 
@@ -82,7 +82,7 @@ function SettingTable( props ) {
 									label={ data.label }
 									desc={ data.desc }
 									tooltip={ data.tooltip }
-									child_class={ data.child_class }
+									child_className={ data.child_class }
 									backComp={ true }
 									notice={ data.notice }
 								/>
@@ -153,6 +153,7 @@ function SettingTable( props ) {
 					}
 					return (
 						<tr
+							key={ i }
 							className={ `uag-field-row-${ field } ${
 								! isActive ? 'uag-hide' : ''
 							}` }

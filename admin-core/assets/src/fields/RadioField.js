@@ -27,12 +27,12 @@ function RadioField( props ) {
 		<div className="uag-field uag-radio-field">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>{ label }</label>
 					</div>
 				) }
 
-				<div class={ `uag-field__data--content ` }>
+				<div className={ `uag-field__data--content ` }>
 					{ options &&
 						options.map( function ( option ) {
 							let unique_id =
@@ -42,7 +42,7 @@ function RadioField( props ) {
 							return (
 								<>
 									<div
-										class={ `uag-radio-field__option ${ child_class }` }
+										className={ `uag-radio-field__option ${ child_class }` }
 									>
 										<input
 											type="radio"
@@ -54,7 +54,7 @@ function RadioField( props ) {
 											id={ unique_id }
 											onClick={ handleRadioClick }
 										/>
-										<span class="uag-radio-field__option-label">
+										<span className="uag-radio-field__option-label">
 											<label for={ unique_id }>
 												{ option.label }
 											</label>

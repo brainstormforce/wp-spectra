@@ -46,7 +46,7 @@ function TextField( props ) {
 		<div className="uag-field uag-text-field">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
@@ -64,7 +64,7 @@ function TextField( props ) {
 					</div>
 				) }
 
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<input
 						{ ...attr }
 						type={ fieldtype }
@@ -82,7 +82,7 @@ function TextField( props ) {
 			</div>
 			{ icon && (
 				<div className="uag-text-field__icon">
-					<span class={ icon }></span>
+					<span className={ icon }></span>
 				</div>
 			) }
 			{ desc && (

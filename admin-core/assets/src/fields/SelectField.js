@@ -41,7 +41,7 @@ function SelectField( props ) {
 		<div className="uag-field uag-select-option">
 			<div className="uag-field__data">
 				{ label && (
-					<div class="uag-field__data--label">
+					<div className="uag-field__data--label">
 						<label>
 							{ label }
 							{ tooltip && (
@@ -59,7 +59,7 @@ function SelectField( props ) {
 					</div>
 				) }
 
-				<div class="uag-field__data--content">
+				<div className="uag-field__data--content">
 					<select
 						className={ props.class }
 						name={ name }
@@ -82,6 +82,7 @@ function SelectField( props ) {
 								}
 								return (
 									<option
+										key={ i }
 										value={ option.value }
 										disabled={ disabled }
 									>

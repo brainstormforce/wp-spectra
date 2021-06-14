@@ -66,7 +66,7 @@ function ProductRepeaterItem( props ) {
 			<div className="uag-product-repeater-field__product">
 				<div className="uag-product-repeater-field__product-data uag-column--product">
 					<div className="uag-product-repeater-field__drag">
-						<span class="uag-drag-handle dashicons dashicons-menu"></span>
+						<span className="uag-drag-handle dashicons dashicons-menu"></span>
 					</div>
 					<div className="uag-product-repeater-field__product-image">
 						<img
@@ -134,13 +134,13 @@ function ProductRepeaterItem( props ) {
 				<input
 					name={ `uag-checkout-products[${ field_index }][product]` }
 					type="hidden"
-					class="uag-checkout-product-id"
+					className="uag-checkout-product-id"
 					value={ product_data.product }
 				></input>
 				<input
 					name={ `uag-checkout-products[${ field_index }][unique_id]` }
 					type="hidden"
-					class="uag-checkout-product-unique"
+					className="uag-checkout-product-unique"
 					value={ product_data.unique_id }
 				></input>
 
