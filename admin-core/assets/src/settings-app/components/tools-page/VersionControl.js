@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useStateValue } from '@Utils/StateProvider';
-import { useSettingsValue } from '@Utils/SettingsProvider';
 import { NormalButton } from '@Fields';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
@@ -10,33 +9,18 @@ import SettingTable from '../common/SettingTable';
 function VersionControl( props ) {
 
 	const [
-		{ globaldata },
-		dispatch,
+		{ globaldata, options },
 	] = useStateValue();
-	const [ { settingsProcess }, setSettingsStatus ] = useSettingsValue();
-	var version_control = globaldata.settings[ 'version_control' ];
+	
+	var versionControl = globaldata.settings[ 'version_control' ];
 
 	const handleRollbackVersion = function ( event ) {
 
 		event.preventDefault();
 
-        let data = {
-            action : 'uag_rollback_version',
-            security : uag_react.rollback_version_nonce
-        }
+		let rollbackUrl = uag_react.rollback_url.replace( 'VERSION', options['_uag_common[rollback_to_previous_version]']);
 
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: data,
-		} ).then( ( data ) => {
-
-			if ( data.success ) {
-				
-			} else {
-				console.log( 'Error' );
-			}
-		} );
+		location.href = rollbackUrl;
 	};
 
 	return (
@@ -45,7 +29,7 @@ function VersionControl( props ) {
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<SettingTable
-				settings={ version_control }
+				settings={ versionControl }
 				meta_key="_uag_common"
 			/>
 			<div className="uag-version-control-button">

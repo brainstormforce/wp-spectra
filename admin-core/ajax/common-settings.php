@@ -83,7 +83,7 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 
-			// var_dump($_POST);
+			var_dump($_POST);
 		}
 
 		$response_data = array(

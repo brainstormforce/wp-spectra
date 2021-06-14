@@ -188,6 +188,7 @@ class AdminMenu {
 				'admin_url'                       => admin_url( 'admin.php' ),
 				'ajax_url'                        => admin_url( 'admin-ajax.php' ),
 				'home_slug'                       => $this->menu_slug,
+				'rollback_url' => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) )
 			)
 		);
 

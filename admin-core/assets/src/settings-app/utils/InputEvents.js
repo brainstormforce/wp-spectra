@@ -8,7 +8,6 @@ export default function InputEvents() {
 
 	const baseInputChange = function ( e ) {
 		const { name, value } = e.detail;
-
 		if ( undefined !== options[ name ] ) {
 			window.uagUnsavedChanges = true;
 			dispatch( {
@@ -16,11 +15,6 @@ export default function InputEvents() {
 				name: name,
 				value: value,
 			} );
-
-			// setSettingsStatus( {
-			// 	status: 'UNSAVED_CHANGES',
-			// 	trigger: 'change',
-			// } );
 		}
 	};
 

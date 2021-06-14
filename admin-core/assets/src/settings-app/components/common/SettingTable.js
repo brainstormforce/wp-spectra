@@ -124,12 +124,7 @@ function SettingTable( props ) {
 									name={ data.name }
 									value={ value }
 									label={ data.label }
-									options={
-										'_uag_common[global_checkout]' ===
-										data.name
-											? checkout_list
-											: data.options
-									}
+									options={ data.options }
 									desc={ data.desc }
 									tooltip={ data.tooltip }
 								/>

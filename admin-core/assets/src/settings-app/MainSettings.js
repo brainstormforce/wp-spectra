@@ -10,12 +10,12 @@ import '@SettingsApp/MainSettings.scss';
 import NavMenu from '@SettingsApp/components/common/NavMenu';
 import SettingsRoute from '@SettingsApp/SettingsRoute';
 
-// import InputEvents from '@SettingsApp/utils/InputEvents';
+import InputEvents from '@SettingsApp/utils/InputEvents';
 
 function MainSettings() {
 	const [ { globaldata }, dispatch ] = useStateValue();
 
-	// InputEvents();
+	InputEvents();
 
 	useEffect( () => {
 		let isActive = true;

@@ -40,12 +40,15 @@ class AdminHelper {
 
 		$options = array();
 
+		$uag_versions = self::get_rollback_versions();
+
 		$common_default = apply_filters(
 			'uag_common_settings_default',
 			array(
 				'disallow_indexing'    => 'disable',
 				'global_checkout'      => '',
 				'default_page_builder' => 'elementor',
+				'rollback_to_previous_version' => $uag_versions[0]['value']
 			)
 		);
 
