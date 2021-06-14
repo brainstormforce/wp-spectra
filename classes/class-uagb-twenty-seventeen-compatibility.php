@@ -58,6 +58,14 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 				array_push( $all_posts, $post );
 			}
 
+			if( ! is_object( $post_assets_obj ) ){
+				
+				if ( $post_id ) {
+					$post_assets_obj = new UAGB_Post_Assets( $post_id );
+				}
+
+			}
+
 			foreach ( $all_posts as $post ) {
 				$post_assets_obj->prepare_assets( $post );
 			}
