@@ -169,7 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.23.4 =
-* Fix: Twenty Seventeen - Uncaught Error on pages.
+* Fix: Twenty Seventeen Compatibility - Uncaught Error on pages.
 
 = 1.23.3 =
 * Fix: Table of Contents - UTF-8 encoding on frontend.

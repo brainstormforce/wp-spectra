@@ -58,7 +58,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 				array_push( $all_posts, $post );
 			}
 
-			if( !is_object( $post_assets_obj ) ){
+			if ( ! is_object( $post_assets_obj ) ) {
 				return;
 			}
 
