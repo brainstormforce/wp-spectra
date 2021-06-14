@@ -38,21 +38,6 @@ fs.readdir(paths.pluginSrc + "/blocks", function(error, items) {
 // Copy generated style file content to custom style file
 // source to copy content
 const src = paths.pluginDist + "/style-blocks.css";
-// destination for copied content
-const dest = paths.pluginDir + "/assets/css/custom-style-blocks.css";
-
-// use copyFile() function
-// to copy contents from source file
-// and write to destination file asynchronously
-fs.copyFile(src, dest, (error) => {
-  // incase of any error
-  if (error) {
-    console.error(error);
-    return;
-  }
-
-  console.log( "\n\nStyle to Custom-style - Copied Successfully!");
-});
 
 
 // Keep deprecated file for astra.

@@ -44,7 +44,33 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_table_of_contents' ) );
-			add_action( 'save_post', array( $this, 'update_toc_meta' ), 10, 3 );
+			add_action( 'save_post', array( $this, 'delete_toc_meta' ), 10, 3 );
+			add_filter( 'render_block_data', array( $this, 'update_toc_title' ) );
+		}
+
+		/**
+		 * Update Toc tile if old title is set.
+		 *
+		 * @access public
+		 *
+		 * @since 1.23.0
+		 * @param array $parsed_block Parsed Block.
+		 */
+		public function update_toc_title( $parsed_block ) {
+
+			if ( 'uagb/table-of-contents' === $parsed_block['blockName'] && ! isset( $parsed_block['attrs']['headingTitle'] ) ) {
+
+				$content = $parsed_block['innerHTML'];
+				$matches = array();
+
+				preg_match( '/<div class=\"uagb-toc__title\">([^`]*?)<\/div>/', $content, $matches );
+
+				if ( ! empty( $matches[1] ) ) {
+					$parsed_block['attrs']['headingTitle'] = $matches[1];
+				}
+			}
+
+			return $parsed_block;
 		}
 
 		/**
@@ -57,8 +83,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @param object  $post Post object.
 		 * @param boolean $update Whether this is an existing post being updated.
 		 */
-		public function update_toc_meta( $post_id, $post, $update ) {
-			delete_post_meta( $post_id, '_uagb_toc_heading_content' );
+		public function delete_toc_meta( $post_id, $post, $update ) {
+			delete_post_meta( $post_id, '_uagb_toc_options' );
 		}
 
 		/**
@@ -82,7 +108,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// Disabled because of PHP DOMDocument and DOMXPath APIs using camelCase.
 
 			// Create a document to load the post content into.
-			$doc = new DOMDocument();
+			$doc = new DOMDocument( '1.0', 'UTF-8' );
 
 			// Enable user error handling for the HTML parsing. HTML5 elements aren't
 			// supported (as of PHP 7.4) and There's no way to guarantee that the markup
@@ -99,17 +125,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				// supported by ISO-8859-1 as HTML entities. However, this function also
 				// converts all special characters like < or > to HTML entities, so we use
 				// htmlspecialchars_decode to decode them.
-				htmlspecialchars_decode(
-					utf8_decode(
-						htmlentities(
-							'<html><body>' . $content . '</body></html>',
-							ENT_COMPAT,
-							'UTF-8',
-							false
-						)
-					),
-					ENT_COMPAT
-				)
+				'<html><head><meta charset="UTF-8"></head><body>' . $content . '</body></html>'
 			);
 
 			// We're done parsing, so we can disable user error handling. This also
@@ -121,6 +137,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// We can't use foreach directly on the $templates DOMNodeList because it's a
 			// dynamic list, and removing nodes confuses the foreach iterator. So
 			// instead, we convert the iterator to an array and then iterate over that.
+
+			if ( ! isset( $doc->documentElement ) || ! is_object( $doc->documentElement ) ) {
+
+				return array();
+			}
+
 			$templates = iterator_to_array(
 				$doc->documentElement->getElementsByTagName( 'template' )
 			);
@@ -134,7 +156,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			// Get all non-empty heading elements in the post content.
 			$headings = iterator_to_array(
 				$xpath->query(
-					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][text()!=""]'
+					'//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]'
 				)
 			);
 
@@ -169,7 +191,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									// and convert it to an integer. Should be faster than conditionals.
 									'level'   => (int) $heading->nodeName[1],
 									'id'      => $this->clean( $heading->textContent ),
-									'content' => $heading->textContent,
+									'content' => wp_strip_all_tags( $heading->textContent ),
 									'depth'   => intval( substr( $heading->tagName, 1 ) ),
 								);
 							}
@@ -192,26 +214,25 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @return string $string.
 		 */
 		public function clean( $string ) {
-			$string = str_replace( array( '‘', '’', '“', '”' ), '', $string );
-			$string = str_replace( array( '$', '.', '+', '!', '*', '\'', '(', ')', ',' ), '', $string );
-			$string = str_replace( array( '%', '{', '}', '|', '\\', '^', '~', '[', ']', '`' ), '', $string );
-			$string = str_replace(
-				array( '*', '\'', '(', ')', ';', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']' ),
-				'',
-				$string
-			);
+
 			$string = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $string );
 			$string = str_replace( array( '&amp;', '&nbsp;' ), ' ', $string );
-			$string = str_replace( array( ':' ), '', $string );
+			// Remove all except alphbets, space, `-` and `_`.
+			$string = preg_replace( '/[^A-Za-z0-9 _-]/', '', $string );
 			// Convert space characters to an `_` (underscore).
 			$string = preg_replace( '/\s+/', '_', $string );
+			// Replace multiple `_` (underscore) with a single `-` (hyphen).
+			$string = preg_replace( '/_+/', '-', $string );
 			// Replace multiple `-` (hyphen) with a single `-` (hyphen).
 			$string = preg_replace( '/-+/', '-', $string );
-			// Replace multiple `_` (underscore) with a single `_` (underscore).
-			$string = preg_replace( '/_+/', '-', $string );
 			// Remove trailing `-` and `_`.
 			$string = trim( $string, '-_' );
-			return strtolower( preg_replace( '/-+/', '-', $string ) ); // Replaces multiple hyphens with single one.
+
+			if ( empty( $string ) ) {
+				$string = 'toc_' . uniqid();
+			}
+
+			return strtolower( $string ); // Replaces multiple hyphens with single one.
 		}
 
 		/**
@@ -383,16 +404,23 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return '';
 			}
 
-			$uagb_toc_heading_content = get_post_meta( $post->ID, '_uagb_toc_heading_content', true );
+			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
+			$uagb_toc_version         = ! empty( $uagb_toc_options['_uagb_toc_version'] ) ? $uagb_toc_options['_uagb_toc_version'] : '';
+			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 
-			if ( empty( $uagb_toc_heading_content ) ) {
+			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 
 				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
 					$post->ID,
 					$attributes
 				);
 
-				update_post_meta( $post->ID, '_uagb_toc_heading_content', $uagb_toc_heading_content );
+				$meta_array = array(
+					'_uagb_toc_version'  => UAGB_ASSET_VER,
+					'_uagb_toc_headings' => $uagb_toc_heading_content,
+				);
+
+				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
 
 			}
 

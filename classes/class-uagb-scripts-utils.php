@@ -17,7 +17,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue Gutenberg block assets for both frontend + backend.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_dependency_both() {
 
@@ -102,14 +102,19 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue block styles.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_styles() {
 
-		if ( file_exists( UAGB_DIR . 'assets/css/custom-style-blocks.css' ) ) {
+		$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
+
+		if ( file_exists( $wp_upload_dir . 'custom-style-blocks.css' ) ) {
+
+			$wp_upload_url = UAGB_Helper::get_uag_upload_url_path();
+
 			wp_enqueue_style(
 				'uagb-block-css', // Handle.
-				UAGB_URL . 'assets/css/custom-style-blocks.css', // Block style CSS.
+				$wp_upload_url . 'custom-style-blocks.css', // Block style CSS.
 				array(),
 				UAGB_VER
 			);
@@ -126,7 +131,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Enqueue block rtl styles.
 	 *
-	 * @since x.x.x
+	 * @since 1.23.0
 	 */
 	public static function enqueue_blocks_rtl_styles() {
 		if ( is_rtl() ) {
@@ -151,11 +156,19 @@ final class UAGB_Scripts_Utils {
 	public static function get_asset_info( $type, $post_id ) {
 
 		$uploads_dir = UAGB_Helper::get_upload_dir();
-		$info        = array();
+		$file_name   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
+		$path        = $type;
+		$url         = $type . '_url';
 
-		$path                   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
-		$info[ $type ]          = $uploads_dir['path'] . $path;
-		$info[ $type . '_url' ] = $uploads_dir['url'] . $path;
+		$info = array(
+			$path => '',
+			$url  => '',
+		);
+
+		if ( ! empty( $file_name ) ) {
+			$info[ $path ] = $uploads_dir['path'] . $file_name;
+			$info[ $url ]  = $uploads_dir['url'] . $file_name;
+		}
 
 		return $info;
 	}

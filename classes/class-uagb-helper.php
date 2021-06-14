@@ -102,6 +102,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $script = '';
 
 		/**
+		 * UAG FAQ Layout Flag
+		 *
+		 * @since 1.18.1
+		 * @deprecated 1.23.0
+		 * @var uag_faq_layout
+		 */
+		public static $uag_faq_layout = false;
+
+		/**
+		 * UAG TOC Flag
+		 *
+		 * @since 1.18.1
+		 * @deprecated 1.23.0
+		 * @var table_of_contents_flag
+		 */
+		public static $table_of_contents_flag = false;
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -762,11 +780,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_uag_upload_dir_path() {
 
-			$wp_info  = wp_upload_dir( null, false );
-			$dir_name = 'uag-plugin';
+			$wp_info = self::get_upload_dir();
 
 			// Build the paths.
-			return trailingslashit( $wp_info['basedir'] ) . $dir_name;
+			return $wp_info['path'];
+		}
+
+		/**
+		 * Get UAG upload url path.
+		 *
+		 * @since 1.23.0
+		 * @return string
+		 */
+		public static function get_uag_upload_url_path() {
+
+			$wp_info = self::get_upload_dir();
+
+			// Build the paths.
+			return $wp_info['url'];
 		}
 
 		/**
@@ -779,13 +810,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$dir           = self::get_uag_upload_dir_path();
 			$wp_filesystem = uagb_filesystem();
-			$dir           = trailingslashit( $dir );
 			$filelist      = $wp_filesystem->dirlist( $dir, true );
 			$retval        = true;
 
 			if ( is_array( $filelist ) ) {
 
 				unset( $filelist['index.html'] );
+				unset( $filelist['custom-style-blocks.css'] );
 
 				foreach ( $filelist as $filename => $fileinfo ) {
 					if ( ! $wp_filesystem->delete( $dir . $filename, true, $fileinfo['type'] ) ) {
@@ -1175,8 +1206,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( 'enabled' === self::$file_generation ) {
-				self::file_write( self::$stylesheet, 'css' );
-				self::file_write( self::$script, 'js' );
+
+				$post_assets_instance = $this->get_post_assets_instance();
+
+				if ( $post_assets_instance ) {
+					$post_assets_instance->stylesheet .= self::$stylesheet;
+					$post_assets_instance->script     .= self::$script;
+				}
 			}
 		}
 

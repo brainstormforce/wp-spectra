@@ -15,12 +15,13 @@
 
 		var parsedSlug = slug.toString().toLowerCase()
 			.replace(/\…+/g,'')                             // Remove multiple …
-			.replace(/&(amp;)/g, '')					 	// Remove &
-			.replace(/&(mdash;)/g, '')					 	// Remove long dash
 			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
+			.replace(/&(amp;)/g, '')					 	// Remove &
 			.replace(/[&]nbsp[;]/gi, '-')                	// Replace inseccable spaces
+			.replace(/[^a-z0-9 -_]/gi,'')                	// Keep only alphnumeric, space, -, _
+			.replace(/&(mdash;)/g, '')					 	// Remove long dash
 			.replace(/\s+/g, '-')                        	// Replace spaces with -
-			.replace(/[&\/\\#,^!+()$~%.\[\]'":*?<>{}@‘’”“|]/g, '')  // Remove special chars
+			.replace(/[&\/\\#,^!+()$~%.\[\]'":*?;-_<>{}@‘’”“|]/g, '')  // Remove special chars
 			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
 			.replace(/^-+/, '')                          	// Trim - from start of text
 			.replace(/-+$/, '');                         	// Trim - from end of text
@@ -131,19 +132,32 @@
 			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
 
 			if ( 0 !== all_header.length ) {
-	
+
+				let toc_list_wrap = $('.uagb-toc__list-wrap');
+
 				all_header.each( function (index,value){
 					let header = $( this );
-					let header_text = parseTocSlug(header.text());
-					$( this ).before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');					
+					let header_text = parseTocSlug( header.text() );
+
+					if ( header_text.length < 1 ) {
+						let list_heading = toc_list_wrap.find('a:contains("' + header.text() +  '")');
+
+						if ( list_heading.length > 0 ) {
+							header_text = list_heading.attr('href').replace(/#/g, '');
+						}
+					}
+
+					header.before('<span id="'+ header_text +'" class="uag-toc__heading-anchor"></span>');
 				});				
 			}
 
 			scroll_to_top = attr.scrollToTop;
 
+			var scrollToTopSvg = '<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Layer_1\" x=\"0px\" y=\"0px\" width=\"26px\" height=\"16.043px\" viewBox=\"57 35.171 26 16.043\" enable-background=\"new 57 35.171 26 16.043\" xml:space=\"preserve\"><path d=\"M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z\"/></svg>';
+
 			scroll_element = $( ".uagb-toc__scroll-top" );
 			if ( 0 == scroll_element.length ) {
-				$( "body" ).append( "<div class=\"uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2\"></div>" );
+				$( "body" ).append( "<div class=\"uagb-toc__scroll-top\"> " + scrollToTopSvg + "</div>" );
 				scroll_element = $( ".uagb-toc__scroll-top" );
 			}
 
