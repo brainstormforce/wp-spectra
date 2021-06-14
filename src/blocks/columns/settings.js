@@ -431,7 +431,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseTablet }
-					onChange={ ( ) =>
+					onChange={ () =>
 						setAttributes( { reverseTablet: ! reverseTablet } )
 					}
 				/>
@@ -441,7 +441,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ reverseMobile }
-					onChange={ ( ) =>
+					onChange={ () =>
 						setAttributes( { reverseMobile: ! reverseMobile } )
 					}
 				/>
@@ -1589,7 +1589,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topFlip }
-							onChange={ ( ) =>
+							onChange={ () =>
 								setAttributes( { topFlip: ! topFlip } )
 							}
 						/>
@@ -1599,7 +1599,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ topContentAboveShape }
-							onChange={ ( ) =>
+							onChange={ () =>
 								setAttributes( {
 									topContentAboveShape: ! topContentAboveShape,
 								} )
@@ -1756,7 +1756,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomFlip }
-							onChange={ ( ) =>
+							onChange={ () =>
 								setAttributes( { bottomFlip: ! bottomFlip } )
 							}
 						/>
@@ -1766,7 +1766,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ bottomContentAboveShape }
-							onChange={ ( ) =>
+							onChange={ () =>
 								setAttributes( {
 									bottomContentAboveShape: ! bottomContentAboveShape,
 								} )

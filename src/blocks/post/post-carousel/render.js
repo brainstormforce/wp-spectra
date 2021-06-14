@@ -23,7 +23,7 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	
+
 	const { state, setState, togglePreview } = props;
 
 	props = props.parentProps;

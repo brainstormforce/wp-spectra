@@ -298,7 +298,7 @@ class UAGB_Post_Assets {
 	public function update_page_assets() {
 
 		$meta_array = array(
-			'css'                => $this->stylesheet,
+			'css'                => wp_slash( $this->stylesheet ),
 			'js'                 => $this->script,
 			'current_block_list' => $this->current_block_list,
 			'uag_flag'           => $this->uag_flag,

@@ -509,7 +509,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								checked={ target }
-								onChange={ ( ) =>
+								onChange={ () =>
 									setAttributes( { target: ! target } )
 								}
 							/>
