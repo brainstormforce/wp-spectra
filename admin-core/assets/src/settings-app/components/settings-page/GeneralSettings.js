@@ -29,7 +29,7 @@ function GeneralSettings( props ) {
 			uag_react.save_global_settings_nonce
 		);
 		formData.append( 'setting_tab', 'general_settings' );
-console.log(formData);
+
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',

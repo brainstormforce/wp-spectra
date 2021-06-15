@@ -30,6 +30,7 @@ export default function InputEvents() {
 		{ type: 'font' },
 		{ type: 'product' },
 		{ type: 'coupon' },
+		{ type: 'toggle' },
 	];
 
 	useEffect( () => {

@@ -174,6 +174,7 @@ class AdminMenu {
 		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
 
 		wp_enqueue_style( $admin_slug . '-header', UAG_ADMIN_URL . 'assets/css/header.css', array(), UAGB_VER );
+		wp_enqueue_style( 'wp-components' );
 		wp_style_add_data( $admin_slug . '-header', 'rtl', 'replace' );
 
 		$localize = apply_filters(

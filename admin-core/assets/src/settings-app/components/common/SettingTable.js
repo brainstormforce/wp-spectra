@@ -13,6 +13,7 @@ import {
 	SubmitButton,
 	DocField,
 	SectionHeadingField,
+	ToggleField
 } from '@Fields';
 
 function SettingTable( props ) {
@@ -88,6 +89,21 @@ function SettingTable( props ) {
 								/>
 							);
 
+							break;
+						case 'toggle':
+							component = (
+								<ToggleField
+									id={ data.name }
+									name={ data.name }
+									value={ value }
+									label={ data.label }
+									desc={ data.desc }
+									tooltip={ data.tooltip }
+									child_className={ data.child_class }
+									backComp={ true }
+									notice={ data.notice }
+								/>
+							);
 							break;
 						case 'radio':
 							component = (

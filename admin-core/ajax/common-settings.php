@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use UagAdmin\Ajax\AjaxBase;
+use UagAdmin\Inc\AdminHelper;
 
 /**
  * Class CommonSettings.
@@ -49,7 +50,7 @@ class CommonSettings extends AjaxBase {
 	public function register_ajax_events() {
 
 		$ajax_events = array(
-			'rollback_version',
+			'enable_beta_updates'
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -60,7 +61,7 @@ class CommonSettings extends AjaxBase {
 	 *
 	 * @return void
 	 */
-	public function rollback_version() {
+	public function enable_beta_updates() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
@@ -71,7 +72,7 @@ class CommonSettings extends AjaxBase {
 		/**
 		 * Nonce verification
 		 */
-		if ( ! check_ajax_referer( 'uag_rollback_version', 'security', false ) ) {
+		if ( ! check_ajax_referer( 'uag_enable_beta_updates', 'security', false ) ) {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
@@ -83,7 +84,10 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 
-			var_dump($_POST);
+			AdminHelper::set_common_settings( 'enable_beta_updates', $_POST['value'] );
+
+			update_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+
 		}
 
 		$response_data = array(

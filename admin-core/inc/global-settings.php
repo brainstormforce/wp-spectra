@@ -23,7 +23,7 @@ class GlobalSettings {
 	public static function get_global_settings_fields() {
 
 		$settings = array(
-			'version_control' => array (
+			'rollback_to_previous_version' => array (
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'rollback_to_previous_version' => array(
@@ -33,6 +33,22 @@ class GlobalSettings {
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
 						'options' => AdminHelper::get_rollback_versions()
+					),
+				),
+			),
+			'enable_beta_updates' => array (
+				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
+				'fields' => array(
+					'enable_beta_updates' => array(
+						'type'  => 'toggle',
+						'name'  => '_uag_common[enable_beta_updates]',
+						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+						/* translators: %1$s: link html start, %2$s: link html end*/
+						'desc'  => __( 'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.
+
+						The beta version will not install automatically. You will always have the option to ignore it.
+						
+						', 'ultimate-addons-for-gutenberg' )
 					),
 				),
 			),
