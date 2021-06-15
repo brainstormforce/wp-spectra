@@ -503,7 +503,7 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label="Hide Label?"
 					checked={ enableLabel }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableLabel: ! enableLabel } )
 					}
 				/>
@@ -712,14 +712,14 @@ const Settings = ( props ) => {
 				<ToggleControl
 					label="Enable AJAX Form Submission"
 					checked={ enableAjax }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableAjax: ! enableAjax } )
 					}
 				/>
 				<ToggleControl
 					label="Using Multiple Gravity Forms"
 					checked={ enableTabSupport }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							enableTabSupport: ! enableTabSupport,
 						} )
@@ -1347,7 +1347,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableOveride }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { enableOveride: ! enableOveride } )
 					}
 				/>
@@ -1709,7 +1709,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ advancedValidationSettings }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( {
 							advancedValidationSettings: ! advancedValidationSettings,
 						} )

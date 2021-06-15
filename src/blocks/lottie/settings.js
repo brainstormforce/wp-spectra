@@ -7,7 +7,7 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
-	BlockAlignmentToolbar
+	BlockAlignmentToolbar,
 } from '@wordpress/block-editor';
 
 import {
@@ -280,7 +280,7 @@ const Settings = ( props ) => {
 				} }
 			</TabPanel>
 			<br></br>
-			<h2>{ __( "Alignment"  , 'ultimate-addons-for-gutenberg') }</h2>
+			<h2>{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }</h2>
 			<BlockAlignmentToolbar
 				value={ align }
 				onChange={ ( value ) =>
@@ -290,7 +290,7 @@ const Settings = ( props ) => {
 				}
 				controls={ [ 'left', 'center', 'right' ] }
 				isCollapsed={ false }
-			/>	
+			/>
 			<br></br>
 			<p className="uagb-setting-label">
 				{ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }

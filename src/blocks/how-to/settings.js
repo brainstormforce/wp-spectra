@@ -106,7 +106,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index, item ) {
+		$.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -266,7 +266,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showTotaltime }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showTotaltime: ! showTotaltime } )
 					}
 					help={ __(
@@ -356,7 +356,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showEstcost }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showEstcost: ! showEstcost } )
 					}
 					help={ __(
@@ -381,7 +381,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showTools }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showTools: ! showTools } )
 					}
 					help={ __(
@@ -438,7 +438,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showMaterials }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showMaterials: ! showMaterials } )
 					}
 					help={ __(

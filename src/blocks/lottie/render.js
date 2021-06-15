@@ -20,7 +20,7 @@ const Render = ( props ) => {
 
 	const { className, attributes } = props;
 
-	const { loop, speed, reverse, lottieURl, playOn, align} = attributes;
+	const { loop, speed, reverse, lottieURl, playOn, align } = attributes;
 
 	const handleLottieMouseEnter = () => {
 		lottieplayer.current.anim.play();
@@ -48,7 +48,7 @@ const Render = ( props ) => {
 				className,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'uagb-lottie__outer-wrap',
-				`uagb-lottie__${align}`
+				`uagb-lottie__${ align }`
 			) }
 			onMouseEnter={
 				'hover' === playOn

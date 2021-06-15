@@ -204,6 +204,7 @@ const Render = ( props ) => {
 						className="uagb-infobox-link-wrap uagb-infbox__link-to-all"
 						aria-label={ 'Infobox Link' }
 						rel="noopener noreferrer"
+						href="/"
 					></a>
 					{ output }
 				</>
