@@ -93,11 +93,10 @@
          },
  
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text" : {
-             "padding-left" : generateCSSUnit( contentHrPadding, widthType ),
-             "padding-right" : generateCSSUnit( contentHrPadding, widthType ),
-             "padding-top" : generateCSSUnit( contentVrPadding, widthType ),
-             "padding-bottom" : generateCSSUnit( contentVrPadding, widthType ),
-             
+             "padding-left" : generateCSSUnit( contentHrPadding, paddingUnit ),
+             "padding-right" : generateCSSUnit( contentHrPadding, paddingUnit ),
+             "padding-top" : generateCSSUnit( contentVrPadding, paddingUnit ),
+             "padding-bottom" : generateCSSUnit( contentVrPadding, paddingUnit ),             
          },
          
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
