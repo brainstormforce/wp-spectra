@@ -1,12 +1,14 @@
  import {
     ButtonGroup, Button, Tooltip, Dashicon, RangeControl, __experimentalNumberControl as NumberControl,
  } from '@wordpress/components'
- import { useState } from '@wordpress/element'
+ import { useState, useEffect, useRef } from '@wordpress/element'
  import { __ } from '@wordpress/i18n'
  import './range.scss';
  import map from 'lodash/map';
  import classnames from 'classnames';
  import { Fragment } from '@wordpress/element';
+
+
  
  const isNumberControlSupported = !! NumberControl
  
@@ -17,17 +19,21 @@
         isShiftStepEnabled,
         ...propsToPass
     } = props
+
+    const valuesRef = useRef(props.value);
+
+    useEffect(() => {
+        valuesRef.current = props.value;
+    }, [props.value]);
  
     const [ value, setValue ] = useState( props.value === '' || isNaN( props.value ) ? '' : props.value )
 
     const unitSizes = [
         {
-            /* translators: a unit of size (px) for css markup */
             name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
             unitValue: 'px',
         },
         {
-            /* translators: a unit of size (em) for css markup */
             name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
             unitValue: 'em',
         }
@@ -44,11 +50,11 @@
         }
         props.onChange( props.resetFallbackValue )
     }
- 
-    const handleOnReset = () => {
+
+    const updateValues = ( newVal ) => {
         setValue( props.resetFallbackValue )
         props.onChange( props.resetFallbackValue )
-    }
+	};
 
     const onChangeUnits = ( value ) => {
         setValue( value )
@@ -57,8 +63,6 @@
     }
 
     const initialPosition = props.initialPosition || props.placeholder || '';
-
-    let disabled = ( allowReset && props.value != props.initialPosition ) ? false : true ;
 
     const classes = classnames(
         'components-base-control',
@@ -70,10 +74,10 @@
       <Fragment>
       <div className={ classes }>
       <Fragment>
-        <div className="uagb-range-control__header">
+        <div className='uagb-range-control__header'>
             { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
-            <div className="uagb-range-control__actions">
-                <ButtonGroup className="uagb-range-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
+            <div className='uagb-range-control__actions'>
+                <ButtonGroup className='uagb-range-control__units' aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
                 { map( unitSizes, ( { unitValue, name } ) => (
                     <Tooltip text={ sprintf(
                         __( '%s units', 'ultimate-addons-for-gutenberg' ),
@@ -97,18 +101,21 @@
                     </Tooltip>
                 ) ) }
                 </ButtonGroup>
-                <Button
-                className="uagb-spacing-reset"
-                disabled={ disabled }
+            <Button
+                className='uagb-spacing-reset'
+                disabled={ JSON.stringify( props.value ) === JSON.stringify( valuesRef.current )} 
                 isSecondary
                 isSmall
-                onClick={ handleOnReset }
-            >
-                <Dashicon icon="image-rotate" />
+                onClick={ e => {
+                e.preventDefault();
+                let value = JSON.parse(JSON.stringify( valuesRef.current ));
+                updateValues(value);
+            }}>
+                <Dashicon icon='image-rotate'/>
             </Button>
             </div>
         </div>
-        <div className="uagb-range-control__mobile-controls">
+        <div className='uagb-range-control__mobile-controls'>
         <RangeControl
             initialPosition={ props.initialPosition }
             onChange={ handleOnChange }
