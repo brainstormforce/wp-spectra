@@ -105,8 +105,8 @@ class AdminMenu {
 			return;
 		}
 
-		$menu_slug = $this->menu_slug;
-		$capability  = 'manage_options';
+		$menu_slug  = $this->menu_slug;
+		$capability = 'manage_options';
 
 		add_submenu_page(
 			'options-general.php',
@@ -126,7 +126,7 @@ class AdminMenu {
 	 * @return void
 	 */
 	public function render() {
-		
+
 		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore
 		$page_action    = '';
 
@@ -148,7 +148,7 @@ class AdminMenu {
 	 * @return void
 	 */
 	public function render_content( $menu_page_slug, $page_action ) {
-		
+
 		if ( $this->menu_slug === $menu_page_slug ) {
 			if ( $this->is_current_page( $this->menu_slug ) ) {
 				include_once UAG_ADMIN_DIR . 'views/settings-app.php';
@@ -180,16 +180,16 @@ class AdminMenu {
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
-				'current_user'                    => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
-				'default_page_builder'            => '',
-				'admin_base_slug'                 => $this->menu_slug,
-				'admin_base_url'                  => admin_url(),
-				'plugin_dir'                      => UAGB_URL,
-				'logo_url'                        => UAGB_URL . 'admin/assets/images/uagb_logo.svg',
-				'admin_url'                       => admin_url( 'admin.php' ),
-				'ajax_url'                        => admin_url( 'admin-ajax.php' ),
-				'home_slug'                       => $this->menu_slug,
-				'rollback_url' => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) )
+				'current_user'         => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
+				'default_page_builder' => '',
+				'admin_base_slug'      => $this->menu_slug,
+				'admin_base_url'       => admin_url(),
+				'plugin_dir'           => UAGB_URL,
+				'logo_url'             => UAGB_URL . 'admin/assets/images/uagb_logo.svg',
+				'admin_url'            => admin_url( 'admin.php' ),
+				'ajax_url'             => admin_url( 'admin-ajax.php' ),
+				'home_slug'            => $this->menu_slug,
+				'rollback_url'         => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
 			)
 		);
 
@@ -243,7 +243,7 @@ class AdminMenu {
 		wp_style_add_data( $handle, 'rtl', 'replace' );
 		wp_localize_script( $handle, 'uag_admin_react', $localize );
 		wp_localize_script( $handle, 'uag_react', $localize );
-		
+
 	}
 
 	/**

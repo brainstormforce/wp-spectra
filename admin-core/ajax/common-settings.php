@@ -52,7 +52,7 @@ class CommonSettings extends AjaxBase {
 		$ajax_events = array(
 			'enable_beta_updates',
 			'enable_file_generation',
-			'regenerate_assets'
+			'regenerate_assets',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -224,7 +224,7 @@ class CommonSettings extends AjaxBase {
 		$this->update_admin_settings_option( '_uag_common', $new_settings, false );
 	}
 
-	
+
 
 	/**
 	 * Update admin settings.

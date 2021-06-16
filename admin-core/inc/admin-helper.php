@@ -45,12 +45,12 @@ class AdminHelper {
 		$common_default = apply_filters(
 			'uag_common_settings_default',
 			array(
-				'disallow_indexing'    => 'disable',
-				'global_checkout'      => '',
-				'default_page_builder' => 'elementor',
+				'disallow_indexing'            => 'disable',
+				'global_checkout'              => '',
+				'default_page_builder'         => 'elementor',
 				'rollback_to_previous_version' => $uag_versions[0]['value'],
-				'enable_beta_updates' => 'no',
-				'enable_file_generation' => 'no'
+				'enable_beta_updates'          => 'no',
+				'enable_file_generation'       => 'no',
 			)
 		);
 
@@ -71,8 +71,8 @@ class AdminHelper {
 	 */
 	public static function set_common_settings( $key, $value ) {
 
-		$common = self::get_admin_settings_option( '_uag_common', false, false );
-		$common[$key] = $value;
+		$common         = self::get_admin_settings_option( '_uag_common', false, false );
+		$common[ $key ] = $value;
 
 		update_option( '_uag_common', $common );
 	}
@@ -104,7 +104,7 @@ class AdminHelper {
 	 */
 	public static function get_options() {
 
-		$general_settings   = self::get_common_settings();
+		$general_settings = self::get_common_settings();
 
 		$options = $general_settings;
 
@@ -123,7 +123,7 @@ class AdminHelper {
 	public static function get_rollback_versions() {
 
 		$rollback_versions_options = get_transient( 'uag_rollback_versions_' . UAGB_VER );
-		
+
 		if ( ! $rollback_versions_options || empty( $rollback_versions_options ) ) {
 
 			$max_versions = 10;
@@ -168,7 +168,7 @@ class AdminHelper {
 
 			$rollback_versions_options = array();
 
-			foreach( $rollback_versions as $version ) {
+			foreach ( $rollback_versions as $version ) {
 
 				$version = array(
 					'label' => $version,

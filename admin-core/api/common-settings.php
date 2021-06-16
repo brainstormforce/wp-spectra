@@ -82,12 +82,12 @@ class CommonSettings extends ApiBase {
 	 */
 	public function get_common_settings( $request ) {
 
-		$settings      = GlobalSettings::get_global_settings_fields();
-		$options       = AdminHelper::get_options();
+		$settings = GlobalSettings::get_global_settings_fields();
+		$options  = AdminHelper::get_options();
 
 		return array(
-			'settings'      => $settings,
-			'options'       => $options,
+			'settings' => $settings,
+			'options'  => $options,
 		);
 	}
 

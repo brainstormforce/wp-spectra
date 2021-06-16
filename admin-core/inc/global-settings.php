@@ -23,20 +23,20 @@ class GlobalSettings {
 	public static function get_global_settings_fields() {
 
 		$settings = array(
-			'rollback_to_previous_version' => array (
+			'rollback_to_previous_version' => array(
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'rollback_to_previous_version' => array(
-						'type'  => 'select',
-						'name'  => '_uag_common[rollback_to_previous_version]',
-						'label' => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
+						'type'    => 'select',
+						'name'    => '_uag_common[rollback_to_previous_version]',
+						'label'   => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
-						'options' => AdminHelper::get_rollback_versions()
+						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
+						'options' => AdminHelper::get_rollback_versions(),
 					),
 				),
 			),
-			'enable_beta_updates' => array (
+			'enable_beta_updates'          => array(
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_beta_updates' => array(
@@ -44,15 +44,18 @@ class GlobalSettings {
 						'name'  => '_uag_common[enable_beta_updates]',
 						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => __( 'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.
+						'desc'  => __(
+							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.
 
 						The beta version will not install automatically. You will always have the option to ignore it.
 						
-						', 'ultimate-addons-for-gutenberg' )
+						',
+							'ultimate-addons-for-gutenberg'
+						),
 					),
 				),
 			),
-			'enable_file_generation' => array (
+			'enable_file_generation'       => array(
 				'title'  => __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_file_generation' => array(
@@ -60,11 +63,17 @@ class GlobalSettings {
 						'name'  => '_uag_common[enable_file_generation]',
 						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => sprintf( __( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.
+						'desc'  => sprintf(
+							__(
+								'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.
 
 						Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.
 						
-						', 'ultimate-addons-for-gutenberg' ), esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' ) )
+						',
+								'ultimate-addons-for-gutenberg'
+							),
+							esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' )
+						),
 					),
 				),
 			),
