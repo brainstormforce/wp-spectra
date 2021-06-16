@@ -915,5 +915,19 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight, $label_font_subset );
 			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
 		}
+
+		/**
+		 * Masonry Gallery
+		 */
+		public static function get_masonry_gallery_js( $attr, $id ) {
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				jQuery( '.wp-block-gallery.uag-masonry .blocks-gallery-grid' ).isotope();
+			});
+			<?php
+			return ob_get_clean();
+
+		}
 	}
 }

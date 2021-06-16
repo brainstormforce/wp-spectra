@@ -2,6 +2,7 @@ import UserConditionOptions from './condition-block';
 
 import { __ } from '@wordpress/i18n';
 const enableConditions = uagb_blocks_info.uagb_display_condition;
+const enableMasonryGallery = uagb_blocks_info.enableMasonryGallery;
 
 const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {
 
@@ -30,6 +31,39 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 	};
 }, 'AdvancedControlsBlock');
 
+const MasonryGallery = wp.compose.createHigherOrderComponent((BlockEdit) => {
+
+	return (props) => {
+		
+		const { Fragment } = wp.element;
+		const { attributes, setAttributes, isSelected } = props;
+		const { InspectorAdvancedControls } = wp.blockEditor;
+		const {
+			ToggleControl
+		} = wp.components;
+		const blocks_name = props.name;
+		const block_type = [ 'core/gallery' ];
+		return (
+			<Fragment>
+				<BlockEdit {...props} />
+				{isSelected && block_type.includes(blocks_name) &&
+					<InspectorAdvancedControls>
+						<hr />
+						<p><strong>{ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) }</strong></p>
+						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
+						<ToggleControl
+							label={ __('Enable Masonry Layout')}
+							checked={attributes.masonry}
+							onChange={(value) => setAttributes({ masonry: !attributes.masonry })}
+						/>
+						<hr />			
+					</InspectorAdvancedControls>
+				}
+			</Fragment>
+		);
+	};
+}, 'MasonryGallery');
+
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
 	const { 
@@ -54,6 +88,10 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		
 	}
 
+	if ( 'core/gallery' === blockType.name && attributes.masonry ) {
+		extraProps.className = extraProps.className + ' uag-masonry';
+	}
+
 	return extraProps;
 }
 wp.hooks.addFilter(
@@ -68,4 +106,12 @@ if(enableConditions){
 		AdvancedControlsBlock
 	);
 	
+	if ( enableMasonryGallery ) {
+		wp.hooks.addFilter(
+			'editor.BlockEdit',
+			'uagb/masonry-gallery',
+			MasonryGallery,
+			999
+		);
+	}
 }

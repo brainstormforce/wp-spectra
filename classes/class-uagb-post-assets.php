@@ -23,6 +23,14 @@ class UAGB_Post_Assets {
 	public $current_block_list = array();
 
 	/**
+	 * Masonry asset flag
+	 *
+	 * @since x.x.x
+	 * @var masonry_flag
+	 */
+	public $masonry_flag = array();
+
+	/**
 	 * UAG Block Flag
 	 *
 	 * @since 1.13.4
@@ -231,6 +239,7 @@ class UAGB_Post_Assets {
 		// Set required varibled from stored data.
 		$this->current_block_list  = $page_assets['current_block_list'];
 		$this->uag_flag            = $page_assets['uag_flag'];
+		$this->masonry_flag        = $page_assets['masonry_flag'];
 		$this->stylesheet          = $page_assets['css'];
 		$this->script              = $page_assets['js'];
 		$this->gfonts              = $page_assets['gfonts'];
@@ -301,6 +310,7 @@ class UAGB_Post_Assets {
 			'css'                => wp_slash( $this->stylesheet ),
 			'js'                 => $this->script,
 			'current_block_list' => $this->current_block_list,
+			'masonry_flag'		 => $this->masonry_flag,
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
@@ -352,6 +362,7 @@ class UAGB_Post_Assets {
 				} else {
 
 					wp_enqueue_script( $val );
+					var_dump($val);
 				}
 			}
 
@@ -518,6 +529,13 @@ class UAGB_Post_Assets {
 		}
 
 		$this->current_block_list[] = $name;
+
+		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
+			$this->masonry_flag = true;
+			$js .= UAGB_Block_JS::get_masonry_gallery_js( $blockattr, $block_id );
+			$this->current_block_list[] = 'uagb/masonry-gallery';
+			$this->uag_flag = true;
+		}
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$this->uag_flag = true;
