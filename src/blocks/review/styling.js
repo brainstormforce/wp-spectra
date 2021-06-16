@@ -61,7 +61,7 @@ function styling( props ) {
 		' .uagb-avg-review-star-inner-container svg': {
 			fill: starColor,
 		},
-		' .uagb-rating-title.keep-placeholder-on-focus': {
+		' .uagb-rating-title': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-weight': headFontWeight,
 			'font-family': headFontFamily,
@@ -80,7 +80,7 @@ function styling( props ) {
 				headLineHeightType
 			),
 		},
-		' .uagb-rating-desc.keep-placeholder-on-focus': {
+		' .uagb-rating-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
 				subHeadFontSizeType
@@ -93,7 +93,7 @@ function styling( props ) {
 			),
 			color: descColor,
 		},
-		' .uagb-rating-author.keep-placeholder-on-focus': {
+		' .uagb-rating-author': {
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
 				subHeadFontSizeType

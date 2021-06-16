@@ -2,7 +2,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -167,7 +167,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index, item ) {
+		$.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -555,6 +555,10 @@ const Settings = ( props ) => {
 								'Image',
 								'ultimate-addons-for-gutenberg'
 							) }
+							id={ __(
+								'Image',
+								'ultimate-addons-for-gutenberg'
+							) }
 						>
 							<MediaUpload
 								title={ __(
@@ -609,7 +613,7 @@ const Settings = ( props ) => {
 											'ultimate-addons-for-gutenberg'
 										) }
 										checked={ imageWidthType }
-										onChange={ ( value ) =>
+										onChange={ () =>
 											setAttributes( {
 												imageWidthType: ! imageWidthType,
 											} )
@@ -674,7 +678,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showPrefix }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showPrefix: ! showPrefix } )
 					}
 				/>
@@ -767,7 +771,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showTitle }
-					onChange={ ( value ) =>
+					onChange={ () =>
 						setAttributes( { showTitle: ! showTitle } )
 					}
 				/>
@@ -877,9 +881,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showDesc }
-					onChange={ ( value ) =>
-						setAttributes( { showDesc: ! showDesc } )
-					}
+					onChange={ () => setAttributes( { showDesc: ! showDesc } ) }
 				/>
 				{ showDesc && (
 					<>
@@ -1336,7 +1338,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ inheritFromTheme }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( {
 									inheritFromTheme: ! inheritFromTheme,
 								} )
@@ -1448,7 +1450,7 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							checked={ ctaTarget }
-							onChange={ ( value ) =>
+							onChange={ () =>
 								setAttributes( { ctaTarget: ! ctaTarget } )
 							}
 						/>

@@ -73,8 +73,8 @@ function styling( props ) {
 		}
 	}
 
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 	let boxShadowPositionCSS = boxShadowPosition;
 
 	if ( 'outset' === boxShadowPosition ) {
@@ -176,7 +176,7 @@ function styling( props ) {
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
 
-	tablet_selectors = {
+	tabletSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingTablet,
@@ -197,7 +197,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
 				topPaddingMobile,
@@ -217,70 +217,70 @@ function styling( props ) {
 			),
 		},
 	};
-	tablet_selectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
+	tabletSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
 		topMarginTablet,
 		tabletMarginType
 	);
-	tablet_selectors[ '.uagb-section__wrap' ][
+	tabletSelectors[ '.uagb-section__wrap' ][
 		'margin-bottom'
 	] = generateCSSUnit( bottomMarginTablet, tabletMarginType );
-	mobile_selectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
+	mobileSelectors[ '.uagb-section__wrap' ][ 'margin-top' ] = generateCSSUnit(
 		topMarginMobile,
 		mobileMarginType
 	);
-	mobile_selectors[ '.uagb-section__wrap' ][
+	mobileSelectors[ '.uagb-section__wrap' ][
 		'margin-bottom'
 	] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
 
 	if ( 'right' == align && 'boxed' == contentWidth ) {
-		mobile_selectors[ '.uagb-section__wrap' ][
+		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
+		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
 	} else if ( 'left' == align && 'boxed' == contentWidth ) {
-		mobile_selectors[ '.uagb-section__wrap' ][
+		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
+		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
 	}
 	if ( 'full_width' == contentWidth ) {
-		tablet_selectors[ '.uagb-section__wrap' ][
+		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
-		tablet_selectors[ '.uagb-section__wrap' ][
+		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
+		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
-		mobile_selectors[ '.uagb-section__wrap' ][
+		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
 	}
-	let styling_css = '';
+	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss = generateCSS( selectors, id );
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
