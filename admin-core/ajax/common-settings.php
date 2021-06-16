@@ -50,7 +50,9 @@ class CommonSettings extends AjaxBase {
 	public function register_ajax_events() {
 
 		$ajax_events = array(
-			'enable_beta_updates'
+			'enable_beta_updates',
+			'enable_file_generation',
+			'regenerate_assets'
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -87,6 +89,98 @@ class CommonSettings extends AjaxBase {
 			AdminHelper::set_common_settings( 'enable_beta_updates', $_POST['value'] );
 
 			update_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function enable_file_generation() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_enable_file_generation', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( isset( $_POST ) ) {
+
+			AdminHelper::set_common_settings( 'enable_file_generation', $_POST['value'] );
+
+			$allow_file_generation = 'enabled';
+
+			if ( 'no' === $_POST['value'] ) {
+				$allow_file_generation = 'disabled';
+			}
+
+			update_option( '_uagb_allow_file_generation', sanitize_text_field( $allow_file_generation ) );
+
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function regenerate_assets() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_regenerate_assets', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( isset( $_POST['value'] ) && $_POST['value'] ) {
+
+			$file_generation = \UAGB_Helper::allow_file_generation();
+
+			if ( 'enabled' === $file_generation ) {
+
+				\UAGB_Helper::delete_all_uag_dir_files();
+			}
+
+			/* Update the asset version */
+			update_option( '__uagb_asset_version', time() );
 
 		}
 

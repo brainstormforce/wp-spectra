@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
 import VersionControl from '@SettingsApp/components/tools-page/VersionControl';
+import AssetsGeneration from '@SettingsApp/components/tools-page/AssetsGeneration';
 
 function ToolsPage() {
 
@@ -56,7 +57,7 @@ function ToolsPage() {
 				break;
 			case '#assets_generation_tools':
 				current_tab = (
-					''
+					<AssetsGeneration/>
 				);
 
 				break;

@@ -52,68 +52,19 @@ class GlobalSettings {
 					),
 				),
 			),
-			'general'        => array(
-				'title'  => __( 'General ', 'ultimate-addons-for-gutenberg' ),
+			'enable_file_generation' => array (
+				'title'  => __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
-					'global_checkout' => array(
-						'type'  => 'select',
-						'name'  => '_uag_common[global_checkout]',
-						'label' => __( 'Global Checkout', 'ultimate-addons-for-gutenberg' ),
+					'enable_file_generation' => array(
+						'type'  => 'toggle',
+						'name'  => '_uag_common[enable_file_generation]',
+						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => sprintf( __( 'Be sure not to add any product in above selected Global Checkout step. %1$sLearn More >>%2$s.', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/global-checkout/" target="_blank">', '</a>' ),
-					),
-					'page_builder'    => array(
-						'type'    => 'select',
-						'name'    => '_uag_common[default_page_builder]',
-						'label'   => __( 'Show Ready Templates for', 'ultimate-addons-for-gutenberg' ),
-						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'    => sprintf( __( 'Flow templates that can be imported in one click. These templates are available in few different page builders. Please choose your preferred page builder from the list so you will only see templates that are made using that page builder. %1$sLearn More >>%2$s', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/import-ultimate-addons-for-gutenberg-templates-for-flows-steps/" target="_blank">', '</a>' ),
+						'desc'  => sprintf( __( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.
 
-						'options' => array(
-							array(
-								'value' => 'elementor',
-								'label' => __( 'Elementor', 'ultimate-addons-for-gutenberg' ),
-							),
-							array(
-								'value' => 'beaver-builder',
-								'label' => __( 'Beaver Builder', 'ultimate-addons-for-gutenberg' ),
-							),
-							array(
-								'value' => 'divi',
-								'label' => __( 'Divi', 'ultimate-addons-for-gutenberg' ),
-							),
-							array(
-								'value' => 'gutenberg',
-								'label' => __( 'Gutenberg', 'ultimate-addons-for-gutenberg' ),
-							),
-							array(
-								'value' => 'other',
-								'label' => __( 'Other', 'ultimate-addons-for-gutenberg' ),
-							),
-						),
-
-					),
-					'search_engine'   => array(
-						'type'  => 'checkbox',
-						'name'  => '_uag_common[disallow_indexing]',
-						'label' => __( 'Disallow search engine from indexing flows.', 'ultimate-addons-for-gutenberg' ),
-					),
-				),
-			),
-			'other-settings' => array(
-				'title'  => __( 'Other', 'ultimate-addons-for-gutenberg' ),
-				'fields' => array(
-					'delete_data' => array(
-						'type'   => 'checkbox',
-						'name'   => 'uag_delete_plugin_data',
-						'label'  => __( 'Delete plugin data on plugin deletion', 'ultimate-addons-for-gutenberg' ),
-						'notice' => array(
-							'type'    => 'prompt',
-							'check'   => 'delete',
-							'message' => __( 'Are you sure? Do you want to delete plugin data while deleting the plugin? Type "DELETE" to confirm!', 'ultimate-addons-for-gutenberg' ),
-						),
-						/* translators: %1$1s: link html start, %2$12: link html end*/
-						'desc'   => sprintf( __( 'This option will delete all the options data on plugin deletion. If you enable this and deletes the plugin, you can\'t restore your saved data.', 'ultimate-addons-for-gutenberg' ), '<a href="https://ultimate-addons-for-gutenberg.com/docs/delete-plugin-data-while-uninstalling-plugin/" target="_blank">', '</a>' ),
+						Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.
+						
+						', 'ultimate-addons-for-gutenberg' ), esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' ) )
 					),
 				),
 			),
