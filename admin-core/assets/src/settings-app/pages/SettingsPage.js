@@ -7,8 +7,6 @@ import { __ } from '@wordpress/i18n';
 import './SettingsPage.scss';
 
 import Nav from '@SettingsApp/components/settings-page/SettingNav';
-import GeneralSettings from '@SettingsApp/components/settings-page/GeneralSettings';
-import OtherSettings from '@SettingsApp/components/settings-page/OtherSettings';
 
 import SettingPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
 
@@ -54,25 +52,19 @@ function SettingsPage() {
 		switch ( tab ) {
 			case '#general_settings':
 				current_tab = (
-					<GeneralSettings
-						data={ globaldata.general }
-						list={ globaldata.checkout_list }
-					/>
+					''
 				);
 				break;
 			case '#other_settings':
 				current_tab = (
-					<OtherSettings data={ globaldata.other_setttings } />
+					''
 				);
 
 				break;
 
 			default:
 				current_tab = (
-					<GeneralSettings
-						data={ globaldata.general }
-						list={ globaldata.checkout_list }
-					/>
+					''
 				);
 				break;
 		}

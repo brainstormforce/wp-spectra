@@ -64,7 +64,7 @@ function ToolsPage() {
 
 			default:
 				current_tab = (
-					''
+					<AssetsGeneration/>
 				);
 				break;
 		}
@@ -75,12 +75,12 @@ function ToolsPage() {
 			<div className="uag-global-settings-metabox__tabs">
 				<nav className="uag-global-settings-metabox__tabs-menu">
 					<Nav
-						title={ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
-						slug="#version_control_tools"
-					/>
-					<Nav
 						title={ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
 						slug="#assets_generation_tools"
+					/>
+					<Nav
+						title={ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
+						slug="#version_control_tools"
 					/>
 				</nav>
 
