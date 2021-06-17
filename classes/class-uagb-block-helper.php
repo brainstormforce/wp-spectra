@@ -25,7 +25,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_star_rating_css( $attr, $id ) {
-			$defaults = UAGB_Helper::$block_list['uagb/review']['attributes'];
+			$defaults = UAGB_Helper::$block_list['uagb/star-rating']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
 
@@ -35,36 +35,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$alignment = 'flex-start';
 			if ( '' !== $attr['align'] ) {
-				if ( 'right' === $attr['align'] ) 
+				if ( 'right' === $attr['align'] ) {
 					$alignment = 'flex-end';
-				if ( 'center' === $attr['align'] ) 
+				}
+				if ( 'center' === $attr['align'] ) {
 					$alignment = 'center';
-				if ( 'full' === $attr['align'] ) 
+				}
+				if ( 'full' === $attr['align'] ) {
 					$alignment = 'space-between';
+				}
 			}
 
 			$selectors = array(
-				" .uag-star-rating" => array(
-					"font-size" => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
+				' .uag-star-rating'                   => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
 				),
-				" .uag-star-rating > i" => array(
-					"margin-right" => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
-					"color" => $attr['unmarkedColor']
+				' .uag-star-rating > i'               => array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+					'color'        => $attr['unmarkedColor'],
 				),
-				" .uag-star-rating > i.uag-star-full" => array(
-					"color" => $attr['color'],
+				' .uag-star-rating > i.uag-star-full' => array(
+					'color' => $attr['color'],
 				),
-				" .uag-star-rating__title" => array(
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-					"font-family" => $attr['fontFamily'],
-					"font-weight" => $attr['fontWeight'],
-					"line-height" => UAGB_Helper::get_css_value($attr['lineHeight'],$attr['lineHeightType'] ),
-					"color" => $attr['titleColor'],
-					"margin-right" => UAGB_Helper::get_css_value( $attr['titleGap'], "px" ),
+				' .uag-star-rating__title'            => array(
+					'font-size'    => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+					'font-family'  => $attr['fontFamily'],
+					'font-weight'  => $attr['fontWeight'],
+					'line-height'  => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+					'color'        => $attr['titleColor'],
+					'margin-right' => UAGB_Helper::get_css_value( $attr['titleGap'], 'px' ),
 				),
-				".uag-star-rating__wrapper" => array(
-					'justify-content' => $alignment
-				)
+				'.uag-star-rating__wrapper'           => array(
+					'justify-content' => $alignment,
+				),
 			);
 
 			$combined_selectors = array(
@@ -74,6 +77,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, '', ' .uag-star-rating__title', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
 		}
 
 		/**

@@ -8,13 +8,14 @@ import styling from "./styling"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
-
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
+import { __ } from '@wordpress/i18n';
 
 //  Import CSS.
 import "./style.scss"
-import { __ } from '@wordpress/i18n';
+import "./editor.scss"
+
 
 
 const {
