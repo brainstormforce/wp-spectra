@@ -571,7 +571,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-columns__shape-bottom svg' => array(
 					'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' ),
 				),
-				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
+				' .uagb-columns__shape.uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
 					'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 				),
 				'.wp-block-uagb-columns'           => array(
