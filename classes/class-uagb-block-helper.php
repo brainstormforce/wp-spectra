@@ -565,7 +565,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-columns__shape-top svg'    => array(
 					'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
 				),
-				' .uagb-columns__shape-top .uagb-columns__shape-fill' => array(
+				' .uagb-columns__shape.uagb-columns__shape-top .uagb-columns__shape-fill' => array(
 					'fill' => UAGB_Helper::hex2rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
 				),
 				' .uagb-columns__shape-bottom svg' => array(
