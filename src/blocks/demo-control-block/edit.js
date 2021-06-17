@@ -310,7 +310,6 @@ class UAGBInlineNoticeEdit extends Component {
 						setAttributes={setAttributes}
 						value={contentVrPadding} 
 						onChange={value => setAttributes({ contentVrPadding: value })}
-						initialPosition={contentVrPadding}
 						min={0} 
 						max={100}
 						unit={ paddingUnit } 

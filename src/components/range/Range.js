@@ -1,15 +1,12 @@
  import {
     ButtonGroup, Button, Tooltip, Dashicon, RangeControl, __experimentalNumberControl as NumberControl,
  } from '@wordpress/components'
- import { useState, useEffect, useRef } from '@wordpress/element'
+ import { useState, useEffect, Fragment } from '@wordpress/element'
  import { __ } from '@wordpress/i18n'
  import './range.scss';
  import map from 'lodash/map';
  import classnames from 'classnames';
- import { Fragment } from '@wordpress/element';
 
-
- 
  const isNumberControlSupported = !! NumberControl
  
  let cachedValue = 'initial';
@@ -24,11 +21,11 @@
     } = props
 
     useEffect(() => {
-        cachedValue = props.value
+        cachedValue = props.value;
         resetStateDisabled = true;
     }, []);
 
-    const [ value, setValue ] = useState( isNaN( props.value ) ? '' : props.value )
+    const [ value, setValue ] = useState( props.value );
     
 
     const unitSizes = [
@@ -42,37 +39,28 @@
         }
     ];
  
-    const handleOnChange = value => {
-        
+    const handleOnChange = ( value ) => {
         setValue( value );
-
-        if ( ! isNaN( value ) ) {
-            const parsedValue = parseFloat( value )
-            if ( ! isNaN( parsedValue ) ) {
-                props.onChange( parsedValue )
-                return;
-            }
-        }
+        const parsedValue = parseFloat( value );
+        props.onChange( parsedValue );
+        return;
     }
 
     const resetValues = () => {
-        setValue( cachedValue) 
-        props.onChange( cachedValue )
-        resetStateDisabled = true
+        setValue( cachedValue);
+        props.onChange( cachedValue );
+        resetStateDisabled = true;
 	};
 
     const onChangeUnits = ( value ) => {
-        setValue( value )
-        props.onChange( value )
+        setValue( value );
+        props.onChange( value );
         props.setAttributes( { paddingUnit: value } );
     }
 
-    const initialPosition = props.initialPosition || props.placeholder || '';
-
     const classes = classnames(
         'components-base-control',
-        'uagb-range-control', {
-        }
+        'uagb-range-control'
     );
     
     if ( 'initial' === cachedValue ) {
@@ -83,7 +71,7 @@
 
         resetStateDisabled = false;
     }
-
+    
     return (
       <Fragment>
       <div className={ classes }>
@@ -130,7 +118,7 @@
         </div>
         <div className='uagb-range-control__mobile-controls'>
         <RangeControl
-            initialPosition={ props.initialPosition }
+            value={ propsToPass.value }
             onChange={ handleOnChange }
             withInputField={ false }
             allowReset={ false }
@@ -145,7 +133,6 @@
                 min={ props.min }
                 onChange={ handleOnChange }
                 value={ value }
-                placeholder={ props.placeholder !== null ? props.placeholder : initialPosition }
             />
         ) }
         </div>
