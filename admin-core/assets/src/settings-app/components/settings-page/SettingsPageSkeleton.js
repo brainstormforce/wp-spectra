@@ -10,15 +10,7 @@ import Skeleton, {
 import './SettingsPageSkeleton.scss';
 
 function FlowRowSkeleton() {
-	/*return (
-		<div>
-			<Skeleton />
-			<TextSkeleton />
-			<RectSkeleton />
-			<CircleSkeleton />
-		</div>
-	);*/
-
+	
 	return (
 		<div className="uag-settings-nav">
 			<div className="uag-settings-nav__tabs">

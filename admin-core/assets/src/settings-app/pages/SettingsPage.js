@@ -50,18 +50,11 @@ function SettingsPage() {
 		return <SettingPageSkeleton />;
 	} else {
 		switch ( tab ) {
-			case '#general_settings':
+			case '#blocks_settings':
 				current_tab = (
 					''
 				);
 				break;
-			case '#other_settings':
-				current_tab = (
-					''
-				);
-
-				break;
-
 			default:
 				current_tab = (
 					''
@@ -74,12 +67,8 @@ function SettingsPage() {
 			<div className="uag-global-settings-metabox__tabs">
 				<nav className="uag-global-settings-metabox__tabs-menu">
 					<Nav
-						title={ __( 'General Settings', 'ultimate-addons-for-gutenberg' ) }
-						slug="#general_settings"
-					/>
-					<Nav
-						title={ __( 'Other Settings', 'ultimate-addons-for-gutenberg' ) }
-						slug="#other_settings"
+						title={ __( 'Blocks Settings', 'ultimate-addons-for-gutenberg' ) }
+						slug="#blocks_settings"
 					/>
 				</nav>
 

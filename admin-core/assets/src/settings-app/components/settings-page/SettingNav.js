@@ -4,7 +4,7 @@ import './SettingsNav.scss';
 
 function SettingsNav( prop ) {
 	let location = useLocation();
-	let tab = '' !== location.hash ? location.hash : '#general_settings';
+	let tab = '' !== location.hash ? location.hash : '#blocks_settings';
 	var navClass =
 		prop.slug === tab ? 'uag-settings-nav__active' : 'uag-settings-nav';
 
