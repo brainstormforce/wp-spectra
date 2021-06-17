@@ -264,7 +264,6 @@ class UAGBStarRating extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { attributes } = props
 	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
 	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
