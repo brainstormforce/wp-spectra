@@ -12,6 +12,9 @@
  
  const isNumberControlSupported = !! NumberControl
  
+ let cachedValue = 'initial';
+ let resetStateDisabled = true;
+
  const Range = props => {
     const {
         allowReset,
@@ -20,13 +23,13 @@
         ...propsToPass
     } = props
 
-    const valuesRef = useRef(props.value);
-
     useEffect(() => {
-        valuesRef.current = props.value;
-    }, [props.value]);
- 
-    const [ value, setValue ] = useState( props.value === '' || isNaN( props.value ) ? '' : props.value )
+        cachedValue = props.value
+        resetStateDisabled = true;
+    }, []);
+
+    const [ value, setValue ] = useState( isNaN( props.value ) ? '' : props.value )
+    
 
     const unitSizes = [
         {
@@ -40,20 +43,22 @@
     ];
  
     const handleOnChange = value => {
-        setValue( value )
+        
+        setValue( value );
+
         if ( ! isNaN( value ) ) {
             const parsedValue = parseFloat( value )
             if ( ! isNaN( parsedValue ) ) {
                 props.onChange( parsedValue )
-                return
+                return;
             }
         }
-        props.onChange( props.resetFallbackValue )
     }
 
-    const updateValues = ( newVal ) => {
-        setValue( props.resetFallbackValue )
-        props.onChange( props.resetFallbackValue )
+    const resetValues = () => {
+        setValue( cachedValue) 
+        props.onChange( cachedValue )
+        resetStateDisabled = true
 	};
 
     const onChangeUnits = ( value ) => {
@@ -69,7 +74,16 @@
         'uagb-range-control', {
         }
     );
- 
+    
+    if ( 'initial' === cachedValue ) {
+        cachedValue = props.value;
+    }
+    
+    if ( JSON.stringify( props.value ) !== JSON.stringify( cachedValue ) ) {
+
+        resetStateDisabled = false;
+    }
+
     return (
       <Fragment>
       <div className={ classes }>
@@ -103,13 +117,12 @@
                 </ButtonGroup>
             <Button
                 className='uagb-spacing-reset'
-                disabled={ JSON.stringify( props.value ) === JSON.stringify( valuesRef.current )} 
+                disabled={ resetStateDisabled } 
                 isSecondary
                 isSmall
                 onClick={ e => {
                 e.preventDefault();
-                let value = JSON.parse(JSON.stringify( valuesRef.current ));
-                updateValues(value);
+                resetValues();
             }}>
                 <Dashicon icon='image-rotate'/>
             </Button>
