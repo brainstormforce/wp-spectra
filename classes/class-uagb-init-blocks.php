@@ -382,7 +382,7 @@ class UAGB_Init_Blocks {
 				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'          => UAGB_URI,
 				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
-				'enableMasonryGallery'	 => apply_filters( 'enable_masonry_gallery', true ),
+				'enableMasonryGallery'   => apply_filters( 'enable_masonry_gallery', true ),
 			)
 		);
 

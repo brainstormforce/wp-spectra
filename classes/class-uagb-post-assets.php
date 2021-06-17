@@ -310,7 +310,7 @@ class UAGB_Post_Assets {
 			'css'                => wp_slash( $this->stylesheet ),
 			'js'                 => $this->script,
 			'current_block_list' => $this->current_block_list,
-			'masonry_flag'		 => $this->masonry_flag,
+			'masonry_flag'       => $this->masonry_flag,
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
@@ -362,7 +362,6 @@ class UAGB_Post_Assets {
 				} else {
 
 					wp_enqueue_script( $val );
-					var_dump($val);
 				}
 			}
 
@@ -531,10 +530,10 @@ class UAGB_Post_Assets {
 		$this->current_block_list[] = $name;
 
 		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
-			$this->masonry_flag = true;
-			$js .= UAGB_Block_JS::get_masonry_gallery_js( $blockattr, $block_id );
+			$this->masonry_flag         = true;
+			$js                        .= UAGB_Block_JS::get_masonry_gallery_js( $blockattr, $block_id );
 			$this->current_block_list[] = 'uagb/masonry-gallery';
-			$this->uag_flag = true;
+			$this->uag_flag             = true;
 		}
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {

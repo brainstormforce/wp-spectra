@@ -99,19 +99,17 @@ wp.hooks.addFilter(
 	'uagb/apply-extra-class',
 	ApplyExtraClass,
 );
+if ( enableMasonryGallery ) {
+	wp.hooks.addFilter(
+		'editor.BlockEdit',
+		'uagb/masonry-gallery',
+		MasonryGallery,
+	);
+}
 if(enableConditions){
 	wp.hooks.addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
-		AdvancedControlsBlock
+		AdvancedControlsBlock,
 	);
-	
-	if ( enableMasonryGallery ) {
-		wp.hooks.addFilter(
-			'editor.BlockEdit',
-			'uagb/masonry-gallery',
-			MasonryGallery,
-			999
-		);
-	}
 }
