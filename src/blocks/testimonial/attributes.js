@@ -281,7 +281,7 @@ const attributes = {
 	},
 	arrowColor: {
 		type: 'string',
-		default: '#aaaaaa',
+		default: '#333',
 	},
 	rowGap: {
 		type: 'number',
