@@ -269,7 +269,6 @@ export default withSelect( ( select, props ) => {
 	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	return {
-		anchor: attributes.headingId,
 		deviceType: deviceType
 	}
 } )( UAGBStarRating )
