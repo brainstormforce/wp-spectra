@@ -3,104 +3,53 @@
  */
  import classnames from 'classnames';
  import map from 'lodash/map';
- 
- /**
-  * Import Css
-  */
-  import './editor.scss';
- 
- /**
-  * WordPress dependencies
-  */
+ import './editor.scss';
  import { __, sprintf } from '@wordpress/i18n';
- import { withInstanceId } from '@wordpress/compose';
- import { Component, Fragment } from '@wordpress/element';
+ import { Fragment  } from '@wordpress/element';
  import { ButtonGroup, Button, TabPanel, Tooltip, Dashicon } from '@wordpress/components';
  
- class DimensionsControl extends Component {
-     constructor( props ) {
-         super( ...arguments );
-         this.onChangeTop = this.onChangeTop.bind( this );
-         this.onChangeRight = this.onChangeRight.bind( this );
-         this.onChangeBottom = this.onChangeBottom.bind( this );
-         this.onChangeLeft = this.onChangeLeft.bind( this );
-         this.onChangeAll = this.onChangeAll.bind( this );
-         this.onChangeUnits = this.onChangeUnits.bind( this );
-         this.onChangeSize = this.onChangeSize.bind( this );
+ const DimensionsControl = props =>  {
+    
+    const onChangeTop = ( value, device ) => {
+        if ( props.type === 'padding' ) {
+            props.setAttributes( { [ 'paddingTop' + device  ]: value } );
+        } else {
+            props.setAttributes( { [ 'marginTop' + device  ]: value } );
+        }
      }
  
-     onChangeTop( value, device ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { [ 'paddingTop' + device  ]: value } );
-         } else {
-             this.props.setAttributes( { [ 'marginTop' + device  ]: value } );
-         }
+	const onChangeRight = ( value, device ) => {
+        if ( props.type === 'padding' ) {
+            props.setAttributes( { [ 'paddingRight' + device  ]: value } );
+        } else {
+            props.setAttributes( { [ 'marginRight' + device  ]: value } );
+        }
      }
  
-     onChangeRight( value, device ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { [ 'paddingRight' + device  ]: value } );
-         } else {
-             this.props.setAttributes( { [ 'marginRight' + device  ]: value } );
-         }
+	const onChangeBottom = ( value, device ) => {
+        if ( props.type === 'padding' ) {
+            props.setAttributes( { [ 'paddingBottom' + device  ]: value } );
+        } else {
+            props.setAttributes( { [ 'marginBottom' + device  ]: value } );
+        }
      }
  
-     onChangeBottom( value, device ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { [ 'paddingBottom' + device  ]: value } );
-         } else {
-             this.props.setAttributes( { [ 'marginBottom' + device  ]: value } );
-         }
-     }
- 
-     onChangeLeft( value, device ) {
-        if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingLeft' + device ]: value } );
+	 const onChangeLeft = ( value, device ) => {
+        if ( props.type === 'padding' ) {
+			props.setAttributes( { [ 'paddingLeft' + device ]: value } );
 		} else {
-			this.props.setAttributes( { [ 'marginLeft' + device ]: value } );
+			props.setAttributes( { [ 'marginLeft' + device ]: value } );
 		}
      }
  
-     onChangeAll( value, device ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { [ 'paddingTop' + device  ]: value, [ 'paddingRight' + device  ]: value, [ 'paddingBottom' + device  ]: value, [ 'paddingLeft' + device  ]: value } );
-         } else {
-             this.props.setAttributes( { [ 'marginTop' + device  ]: value, [ 'marginRight' + device  ]: value, [ 'marginBottom' + device  ]: value, [ 'marginLeft' + device  ]: value } );
-         }
+	 const onChangeUnits = ( value ) => {
+        if ( props.type === 'padding' ) {
+            props.setAttributes( { paddingUnit: value } );
+        } else {
+            props.setAttributes( { marginUnit: value } );
+        }
      }
  
-     onChangeUnits( value ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { paddingUnit: value } );
-         } else {
-             this.props.setAttributes( { marginUnit: value } );
-         }
- 
-     }
- 
-     onChangeSize( value, size ) {
-         if ( this.props.type === 'padding' ) {
-             this.props.setAttributes( { paddingSyncUnits: true } );
-             this.props.setAttributes( { paddingSize: value } );
-             if ( size ) {
-                 if ( size < 0 ) {
-                     size = '';
-                 }
-                 this.props.setAttributes( { paddingTop: size, paddingRight: size, paddingBottom: size, paddingLeft: size, paddingUnit: 'px' } );
-             }
-         } else {
-             this.props.setAttributes( { marginSize: value } );
-             if ( size ) {
-                 if ( size < 0 ) {
-                     size = '';
-                 }
-                 this.props.setAttributes( { marginTop: size, marginRight: 0, marginBottom: size, marginLeft: 0, marginUnit: 'px' } );
-             }
-         }
- 
-     }
- 
-     render() {
          const {
              help,
              instanceId,
@@ -120,17 +69,16 @@
              valueRightMobile,
              valueTopMobile,
              setAttributes,
-         } = this.props;
+         } = props;
  
-         const { paddingSize, marginSize } = this.props.attributes;
+         const { paddingSize, marginSize } = props.attributes;
  
          const classes = classnames(
              'components-base-control',
-             'components-uagb-dimensions-control', {
-             }
+             'uagb-spacing-control'
          );
  
-         const id = `inspector-uagb-dimensions-control-${ instanceId }`;
+         const id = `inspector-uagb-spacing-control-${ instanceId }`;
  
          const onChangeTopValue = ( event ) => {
              const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
@@ -140,7 +88,7 @@
                  device = event.target.getAttribute( 'data-device-type' );
              }
  
-                 this.onChangeTop( newValue, device );
+                 onChangeTop( newValue, device );
          };
  
          const onChangeRightValue = ( event ) => {
@@ -151,7 +99,7 @@
                  device = event.target.getAttribute( 'data-device-type' );
              }
  
-                 this.onChangeRight( newValue, device );
+                 onChangeRight( newValue, device );
          };
  
          const onChangeBottomValue = ( event ) => {
@@ -162,7 +110,7 @@
 				device = event.target.getAttribute( 'data-device-type' );
 			}
  
-                 this.onChangeBottom( newValue, device );
+                 onChangeBottom( newValue, device );
          };
  
          const onChangeLeftValue = ( event ) => {
@@ -173,7 +121,7 @@
 				device = event.target.getAttribute( 'data-device-type' );
 			}
 
-            this.onChangeLeft( newValue, device );
+            onChangeLeft( newValue, device );
          };
  
          const unitSizes = [
@@ -222,16 +170,16 @@
 			}
 
 			//Reset z-index
-			const buttons = document.getElementsByClassName( `components-uagb-dimensions-control__mobile-controls-item--${ this.props.type }` );
+			const buttons = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item--${ props.type }` );
 
 			for ( let i = 0; i < buttons.length; i++ ) {
 				buttons[ i ].style.display = 'none';
 			}
 			if ( tabName === 'default' ) {
-				const button = document.getElementsByClassName( `components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--tablet` );
+				const button = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item-${ props.type }--tablet` );
 				button[ 0 ].click();
 			} else {
-				const button = document.getElementsByClassName( `components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }` );
+				const button = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item-${ props.type }--${ selected }` );
 				button[ 0 ].style.display = 'block';
 			}
 		};
@@ -241,62 +189,37 @@
              <Fragment>
                  <div className={ classes }>
                          <Fragment>
-                             <div className="components-uagb-dimensions-control__header">
-                                 { label && <p className={ 'components-uagb-dimensions-control__label' }>{ label }</p> }
-                                 <div className="components-uagb-dimensions-control__actions">
-                                     <ButtonGroup className="components-uagb-dimensions-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
+                             <div className="uagb-spacing-control__header">
+                                 { label && <p className={ 'uagb-spacing-control__label' }>{ label }</p> }
+                                 <div className="uagb-spacing-control__actions">
+                                     <ButtonGroup className="uagb-spacing-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
                                          { map( unitSizes, ( { unitValue, name } ) => (
                                              <Tooltip text={ sprintf(
-                                                 /* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
                                                  __( '%s units', 'ultimate-addons-for-gutenberg' ),
                                                  name
                                              ) }>
                                                  <Button
                                                      key={ unitValue }
-                                                     className={ 'components-uagb-dimensions-control__units--' + name }
+                                                     className={ 'uagb-spacing-control__units--' + name }
                                                      isSmall
                                                      isPrimary={ unit === unitValue }
                                                      isSecondary={ unit !== unitValue }
                                                      aria-pressed={ unit === unitValue }
                                                      aria-label={ sprintf(
-                                                         /* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
                                                          __( '%s units', 'ultimate-addons-for-gutenberg' ),
                                                          name
                                                      ) }
-                                                     onClick={ () => this.onChangeUnits( unitValue ) }
+                                                     onClick={ () => onChangeUnits( unitValue ) }
                                                  >
                                                      { unitValue }
                                                  </Button>
                                              </Tooltip>
                                          ) ) }
                                      </ButtonGroup>
-									 { ( !this.props.valueTop && !this.props.valueRight && !this.props.valueBottom && !this.props.valueLeft ) && (
-                                     <Button
-                                         className="uagb-spacing-reset"
-                                         type="button"
-                                         onClick={ () => this.onChangeSize( 'no', -1 ) }
-                                         isSmall
-                                         isSecondary
-										 disabled
-                                     >
-                                        <Dashicon icon="image-rotate" />
-                                     </Button>
-									 )}
-									 { ( this.props.valueTop || this.props.valueRight || this.props.valueBottom || this.props.valueLeft ) && (
-									 <Button
-                                         className="uagb-spacing-reset"
-                                         type="button"
-                                         onClick={ () => this.onChangeSize( 'no', -1 ) }
-                                         isSmall
-                                         isSecondary
-                                     >
-                                        <Dashicon icon="image-rotate" />
-                                     </Button>
-									 ) }
                                  </div>
                              </div>
                              <TabPanel
-								className="components-uagb-dimensions-control__mobile-controls"
+								className="uagb-spacing-control__mobile-controls"
 								activeClass="is-active"
 								initialTabName="default"
 								onSelect={ onSelect }
@@ -304,22 +227,22 @@
 									{
 										name: 'default',
 										title: <Dashicon icon="desktop" />,
-										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--default components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
+										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--default uagb-spacing-control__mobile-controls-item-${ props.type }--default`,
 									},
 									{
 										name: 'desktop',
 										title: <Dashicon icon="desktop" />,
-										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--desktop components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
+										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--desktop uagb-spacing-control__mobile-controls-item-${ props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
 										title: <Dashicon icon="tablet" />,
-										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--tablet components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
+										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--tablet uagb-spacing-control__mobile-controls-item-${ props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
 										title: <Dashicon icon="smartphone" />,
-										className: `components-uagb-dimensions-control__mobile-controls-item components-uagb-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-uagb-dimensions-control__mobile-controls-item--mobile components-uagb-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
+										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--mobile uagb-spacing-control__mobile-controls-item-${ props.type }--mobile`,
 									},
 								] }>
 								{
@@ -328,13 +251,12 @@
 
 									if ( "mobile" === tab.name ) {
 										tabout = (
-											<div className="components-uagb-dimensions-control__inputs">
+											<div className="uagb-spacing-control__inputs">
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s top', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -344,11 +266,10 @@
 															data-device-type="Mobile"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s right', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -358,11 +279,10 @@
 															data-device-type="Mobile"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -372,11 +292,10 @@
 															data-device-type="Mobile"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s left', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -389,13 +308,12 @@
 										)
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
-											<div className="components-uagb-dimensions-control__inputs">
+											<div className="uagb-spacing-control__inputs">
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
 															aria-label={ sprintf(
-																/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s top', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -405,11 +323,10 @@
 															data-device-type="Tablet"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s right', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -419,11 +336,10 @@
 															data-device-type="Tablet"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -433,11 +349,10 @@
 															data-device-type="Tablet"
 														/>
 														<input
-															className="components-uagb-dimensions-control__number"
+															className="uagb-spacing-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
 															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 																__( '%s left', 'ultimate-addons-for-gutenberg' ),
 																label
 															) }
@@ -450,13 +365,12 @@
 										)
 									} else {
 										tabout = (
-											<div className="components-uagb-dimensions-control__inputs">
+											<div className="uagb-spacing-control__inputs">
 													<input
-														className="components-uagb-dimensions-control__number"
+														className="uagb-spacing-control__number"
 														type="number"
 														onChange={ onChangeTopValue }
 														aria-label={ sprintf(
-															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 															__( '%s top', 'ultimate-addons-for-gutenberg' ),
 															label
 														) }
@@ -466,11 +380,10 @@
 														data-device-type=""
 													/>
 													<input
-														className="components-uagb-dimensions-control__number"
+														className="uagb-spacing-control__number"
 														type="number"
 														onChange={ onChangeRightValue }
 														aria-label={ sprintf(
-															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
 															__( '%s right', 'ultimate-addons-for-gutenberg' ),
 															label
 														) }
@@ -480,11 +393,10 @@
 														data-device-type=""
 													/>
 													<input
-														className="components-uagb-dimensions-control__number"
+														className="uagb-spacing-control__number"
 														type="number"
 														onChange={ onChangeBottomValue }
 														aria-label={ sprintf(
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
 															label
 														) }
@@ -494,11 +406,10 @@
 														data-device-type=""
 													/>
 													<input
-														className="components-uagb-dimensions-control__number"
+														className="uagb-spacing-control__number"
 														type="number"
 														onChange={ onChangeLeftValue }
 														aria-label={ sprintf(
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															__( '%s left', 'ultimate-addons-for-gutenberg' ), label
 														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
@@ -514,18 +425,17 @@
 								}
 							}
 							</TabPanel>
-                             <div className="components-uagb-dimensions-control__input-labels">
-                                 <span className="components-uagb-dimensions-control__number-label">{ __( 'Top', 'ultimate-addons-for-gutenberg' ) }</span>
-                                 <span className="components-uagb-dimensions-control__number-label">{ __( 'Right', 'ultimate-addons-for-gutenberg' ) }</span>
-                                 <span className="components-uagb-dimensions-control__number-label">{ __( 'Bottom', 'ultimate-addons-for-gutenberg' ) }</span>
-                                 <span className="components-uagb-dimensions-control__number-label">{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }</span>
-                                 <span className="components-uagb-dimensions-control__number-label-blank"></span>
+                             <div className="uagb-spacing-control__input-labels">
+                                 <span className="uagb-spacing-control__number-label">{ __( 'Top', 'ultimate-addons-for-gutenberg' ) }</span>
+                                 <span className="uagb-spacing-control__number-label">{ __( 'Right', 'ultimate-addons-for-gutenberg' ) }</span>
+                                 <span className="uagb-spacing-control__number-label">{ __( 'Bottom', 'ultimate-addons-for-gutenberg' ) }</span>
+                                 <span className="uagb-spacing-control__number-label">{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }</span>
+                                 <span className="uagb-spacing-control__number-label-blank"></span>
                              </div>
                          </Fragment>
                 </div>
             </Fragment>
          );
-     }
  }
- 
- export default withInstanceId( DimensionsControl );
+
+export default DimensionsControl
