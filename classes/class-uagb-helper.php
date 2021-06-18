@@ -1356,7 +1356,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/tabs':
 					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-					$js .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':
