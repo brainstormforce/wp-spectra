@@ -445,6 +445,10 @@ class UAGB_Post_Assets {
 
 		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
 
+		if ( in_array( 'uagb/masonry-gallery', $this->current_block_list, true ) ) {
+			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css( $this->masonry_flag );
+		}
+
 		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 
 		self::$conditional_blocks_printed = true;
@@ -530,8 +534,7 @@ class UAGB_Post_Assets {
 		$this->current_block_list[] = $name;
 
 		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
-			$this->masonry_flag         = true;
-			$js                        .= UAGB_Block_JS::get_masonry_gallery_js( $blockattr, $block_id );
+			$this->masonry_flag         = $block;
 			$this->current_block_list[] = 'uagb/masonry-gallery';
 			$this->uag_flag             = true;
 		}

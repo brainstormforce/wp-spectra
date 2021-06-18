@@ -5514,5 +5514,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
 		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @param array $block The block array.
+		 * @since x.x.x
+		 */
+		public static function get_masonry_gallery_css( $block ) {
+			$col = ( isset( $block['attrs']['columns'] ) ) ? $block['attrs']['columns'] : 3;
+
+			$css = '.uag-masonry.columns-' . $col . ' .blocks-gallery-grid .blocks-gallery-item { margin: 0; display: grid; grid-template-rows: 1fr auto; margin-bottom: 1em; break-inside: avoid; width: unset; } .uag-masonry .blocks-gallery-grid { column-count: ' . $col . '; column-gap: 1em; display: unset; }';
+
+			return $css;
+		}
 	}
 }
