@@ -98,10 +98,6 @@ function SettingTable( props ) {
 									value={ value }
 									label={ data.label }
 									desc={ data.desc }
-									tooltip={ data.tooltip }
-									child_className={ data.child_class }
-									backComp={ true }
-									notice={ data.notice }
 								/>
 							);
 							break;

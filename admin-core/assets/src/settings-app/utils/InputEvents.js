@@ -7,8 +7,14 @@ export default function InputEvents() {
 	const [ { unsavedChanges }, setSettingsStatus ] = useSettingsValue();
 
 	const baseInputChange = function ( e ) {
-		const { name, value } = e.detail;
+		let { name, value, id } = e.detail;
 		if ( undefined !== options[ name ] ) {
+			if ( '_uag_common[blocks_activation_and_deactivation]' === name ) {
+				
+				let optionsClone =  { ...options[ name ] };
+				optionsClone[ id ] = value;
+				value = optionsClone;
+			}
 			window.uagUnsavedChanges = true;
 			dispatch( {
 				type: 'SET_OPTION',

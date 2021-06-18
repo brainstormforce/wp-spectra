@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 import './SettingsPage.scss';
 
 import Nav from '@SettingsApp/components/settings-page/SettingNav';
-
+import BlocksSettings from '@SettingsApp/components/settings-page/BlocksSettings';
 import SettingPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
 
 function SettingsPage() {
@@ -52,12 +52,12 @@ function SettingsPage() {
 		switch ( tab ) {
 			case '#blocks_settings':
 				current_tab = (
-					''
+					<BlocksSettings />
 				);
 				break;
 			default:
 				current_tab = (
-					''
+					<BlocksSettings />
 				);
 				break;
 		}

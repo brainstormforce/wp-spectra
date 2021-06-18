@@ -77,6 +77,9 @@ class GlobalSettings {
 					),
 				),
 			),
+			'blocks_activation_and_deactivation'       => array(
+				'title' => __( 'Blocks Activation & Deactivation', 'ultimate-addons-for-gutenberg' ),
+			)
 
 		);
 

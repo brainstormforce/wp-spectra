@@ -168,6 +168,7 @@ class AdminMenu {
 	public function styles_scripts() {
 
 		$admin_slug = 'uag-admin';
+		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
 
 		// Styles.
 		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
@@ -190,6 +191,7 @@ class AdminMenu {
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),
 				'home_slug'            => $this->menu_slug,
 				'rollback_url'         => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
+				'blocks_info' => $blocks_info
 			)
 		);
 
@@ -199,6 +201,81 @@ class AdminMenu {
 			wp_enqueue_media();
 			$this->editor_app_scripts( $localize );
 		}
+	}
+
+	/**
+	 * Create an Array of Blocks info which we need to show in Admin dashboard.
+	 * 
+	 */
+	public function get_blocks_info_for_activation_deactivation() {
+
+		$blocks                = \UAGB_Admin_Helper::get_block_options();
+
+		array_multisort(
+			array_map(
+				function( $element ) {
+					return $element['title'];
+				},
+				$blocks
+			),
+			SORT_ASC,
+			$blocks
+		);
+
+		if ( is_array( $blocks ) && ! empty( $blocks ) ) {
+
+			$blocks_names = array();
+
+			foreach ( $blocks as $addon => $info ) {
+
+				$addon = str_replace( 'uagb/', '', $addon );
+
+				$child_blocks = array(
+					'column',
+					'icon-list-child',
+					'social-share-child',
+					'buttons-child',
+					'faq-child',
+					'forms-name',
+					'forms-email',
+					'forms-hidden',
+					'forms-phone',
+					'forms-textarea',
+					'forms-url',
+					'forms-select',
+					'forms-radio',
+					'forms-checkbox',
+					'forms-upload',
+					'forms-toggle',
+					'forms-date',
+					'forms-accept',
+					'post-title',
+					'post-image',
+					'post-button',
+					'post-excerpt',
+					'post-meta',
+					'restaurant-menu-child',
+					'content-timeline-child',
+					'tabs-child',
+				);
+
+				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
+					continue;
+				}
+
+				if ( in_array( $addon, $child_blocks, true ) ) {
+					continue;
+				}
+				$info['slug'] = $addon;
+				$blocks_names[] = $info;
+
+			}
+			
+			return $blocks_names;
+		}
+
+		return array();
+
 	}
 
 	/**

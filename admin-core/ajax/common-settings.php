@@ -53,9 +53,50 @@ class CommonSettings extends AjaxBase {
 			'enable_beta_updates',
 			'enable_file_generation',
 			'regenerate_assets',
+			'blocks_activation_and_deactivation'
 		);
 
 		$this->init_ajax_events( $ajax_events );
+	}
+
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function blocks_activation_and_deactivation() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_blocks_activation_and_deactivation', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( isset( $_POST ) ) {
+			var_dump($_POST['value']);
+			// AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['value'] );
+
+			// update_option( '_uagb_blocks', sanitize_text_field( $_POST['value'] ) );
+
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
 	}
 
 	/**
@@ -88,7 +129,13 @@ class CommonSettings extends AjaxBase {
 
 			AdminHelper::set_common_settings( 'enable_beta_updates', $_POST['value'] );
 
-			update_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+			$enable_beta = 'yes';
+
+			if ( 'disabled' === $_POST['value'] ) {
+				$enable_beta = 'no';
+			}
+
+			update_option( 'uagb_beta', sanitize_text_field( $enable_beta ) );
 
 		}
 
@@ -128,13 +175,7 @@ class CommonSettings extends AjaxBase {
 
 			AdminHelper::set_common_settings( 'enable_file_generation', $_POST['value'] );
 
-			$allow_file_generation = 'enabled';
-
-			if ( 'no' === $_POST['value'] ) {
-				$allow_file_generation = 'disabled';
-			}
-
-			update_option( '_uagb_allow_file_generation', sanitize_text_field( $allow_file_generation ) );
+			update_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 
 		}
 

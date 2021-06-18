@@ -1,13 +1,23 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
 import './BlocksSettings.scss';
+import IndividualBlockSetting from './IndividualBlockSetting';
+
+const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings( prop ) {
+
+	const renderBlocksMetaBoxes = blocksInfo.map( ( block ) => {
+		
+		return (
+			<IndividualBlockSetting
+				blockInfo = { block }
+			/>
+		);
+	} );
 	
 	return (
-		<a href={ prop.slug } className={ navClass }>
-			{ prop.title }
-		</a>
+		<div className="uag-blocks-settings">
+			{ renderBlocksMetaBoxes }
+		</div>
 	);
 }
 
