@@ -28,6 +28,8 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 import { __ } from '@wordpress/i18n';
 
+const { withSelect } = wp.data
+
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -225,6 +227,7 @@ class UAGBInlineNoticeEdit extends Component {
 				boxShadowPosition,
 				widthType
 			},
+			deviceType,
 			setAttributes,
 			className,
 			attributes,
@@ -464,6 +467,7 @@ class UAGBInlineNoticeEdit extends Component {
 							valueBottomMobile={ paddingBottomMobile }
 							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
+							deviceType={ deviceType }
 						/>
 				</PanelBody>
 				<PanelBody title={ __( "Border", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -860,6 +864,7 @@ class UAGBInlineNoticeEdit extends Component {
 					"uagb-inline_notice__outer-wrap",
 					`${ noticeDismiss }`,
 					`uagb-inline_notice__align-${ noticeAlignment }`,
+					`uagb-editor-preview-mode-${deviceType.toLowerCase()}`,
 					`uagb-block-${ block_id }`
 					) }
 				>
@@ -892,4 +897,11 @@ class UAGBInlineNoticeEdit extends Component {
 	}
 }
 
-export default UAGBInlineNoticeEdit
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+} )( UAGBInlineNoticeEdit )

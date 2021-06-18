@@ -71,8 +71,6 @@
              setAttributes,
          } = props;
  
-         const { paddingSize, marginSize } = props.attributes;
- 
          const classes = classnames(
              'components-base-control',
              'uagb-spacing-control'
@@ -126,29 +124,12 @@
  
          const unitSizes = [
              {
-                 /* translators: a unit of size (px) for css markup */
                  name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
                  unitValue: 'px',
              },
              {
-                 /* translators: a unit of size (em) for css markup */
                  name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
                  unitValue: 'em',
-             },
-             {
-                 /* translators: a unit of size (vw) for css markup */
-                 name: __( 'Viewport width', 'ultimate-addons-for-gutenberg' ),
-                 unitValue: 'vw',
-             },
-             {
-                 /* translators: a unit of size (vh) for css markup */
-                 name: __( 'Viewport height', 'ultimate-addons-for-gutenberg' ),
-                 unitValue: 'vh',
-             },
-             {
-                 /* translators: a unit of size for css markup */
-                 name: __( 'Percentage', 'ultimate-addons-for-gutenberg' ),
-                 unitValue: '%',
              },
          ];
 
@@ -172,15 +153,22 @@
 			//Reset z-index
 			const buttons = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item--${ props.type }` );
 
-			for ( let i = 0; i < buttons.length; i++ ) {
+			for( let i = 0; i < buttons.length; i++ ) {
+
 				buttons[ i ].style.display = 'none';
+
 			}
+
 			if ( tabName === 'default' ) {
+
 				const button = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item-${ props.type }--tablet` );
 				button[ 0 ].click();
+
 			} else {
+
 				const button = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item-${ props.type }--${ selected }` );
 				button[ 0 ].style.display = 'block';
+
 			}
 		};
 
@@ -192,6 +180,7 @@
                              <div className="uagb-spacing-control__header">
                                  { label && <p className={ 'uagb-spacing-control__label' }>{ label }</p> }
                                  <div className="uagb-spacing-control__actions">
+								
                                      <ButtonGroup className="uagb-spacing-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
                                          { map( unitSizes, ( { unitValue, name } ) => (
                                              <Tooltip text={ sprintf(
@@ -230,25 +219,24 @@
 										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--default uagb-spacing-control__mobile-controls-item-${ props.type }--default`,
 									},
 									{
-										name: 'desktop',
-										title: <Dashicon icon="desktop" />,
+										name: "desktop",
+										title: <Dashicon icon="smartphone" />,
 										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--desktop uagb-spacing-control__mobile-controls-item-${ props.type }--desktop`,
 									},
 									{
-										name: 'tablet',
-										title: <Dashicon icon="tablet" />,
+										name: "tablet",
+										title: <Dashicon icon="desktop" />,
 										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--tablet uagb-spacing-control__mobile-controls-item-${ props.type }--tablet`,
 									},
 									{
-										name: 'mobile',
-										title: <Dashicon icon="smartphone" />,
+										name: "mobile",
+										title: <Dashicon icon="tablet" />,
 										className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--mobile uagb-spacing-control__mobile-controls-item-${ props.type }--mobile`,
 									},
 								] }>
 								{
 								( tab ) => {
 									let tabout
-
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<div className="uagb-spacing-control__inputs">

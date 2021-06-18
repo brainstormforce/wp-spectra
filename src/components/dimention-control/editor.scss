@@ -64,6 +64,12 @@
             background:#fff;
             color:black;
         }
+        &.components-button {
+            &.is-secondary:hover:not(:disabled), &.is-tertiary:hover:not(:disabled){
+                color:unset;
+                background:unset;
+            }
+        }
     }
     
     .uagb-spacing-control__mobile-controls-item--default svg {
@@ -103,9 +109,10 @@
 .components-panel__body .uagb-spacing-control__number-label {
     color: #6c7781;
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 1px;
     margin-top: 3px;
+    margin-left: 18px;
 }
 
 .components-panel__body .uagb-spacing-control__label {
@@ -201,6 +208,7 @@ button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disa
 .components-panel__body .uagb-spacing-control__mobile-controls-item {
     box-shadow:unset !important;
     border-radius:unset;
+    color:unset;
 }
 
 

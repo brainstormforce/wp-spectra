@@ -47,6 +47,14 @@
 				paddingBottom,
 				paddingLeft,
 				paddingRight,
+                paddingTopTablet,
+				paddingRightTablet,
+				paddingBottomTablet,
+				paddingLeftTablet,
+				paddingTopMobile,
+				paddingRightMobile,
+				paddingBottomMobile,
+				paddingLeftMobile,
          noticeDismiss,
          noticeAlignment,
          layout,
@@ -137,6 +145,10 @@
          " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
              "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
              "line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
+             "padding-left" : generateCSSUnit( paddingLeftMobile, paddingUnit ),
+             "padding-right" : generateCSSUnit( paddingRightMobile, paddingUnit ),
+             "padding-top" : generateCSSUnit( paddingTopMobile, paddingUnit ),
+             "padding-bottom" : generateCSSUnit( paddingBottomMobile, paddingUnit ),
          },
          
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -149,6 +161,10 @@
              " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
                  "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
                  "line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
+                 "padding-left" : generateCSSUnit( paddingLeftTablet, paddingUnit ),
+                "padding-right" : generateCSSUnit( paddingRightTablet, paddingUnit ),
+                "padding-top" : generateCSSUnit( paddingTopTablet, paddingUnit ),
+                "padding-bottom" : generateCSSUnit( paddingBottomTablet, paddingUnit ),
              },
  
              " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -161,9 +177,9 @@
  
      var styling_css = generateCSS( selectors, base_selector )
  
-     styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+     styling_css += generateCSS( tablet_selectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, "tablet" )
  
-     styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
+     styling_css += generateCSS( mobile_selectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, "mobile" )
  
      return styling_css
  }
