@@ -30,7 +30,7 @@ function styling( props ) {
 		] = generateCSSUnit( gap, 'px' );
 
 		selectors[
-			'.uagb-editor-preview-mode-desktop .block-editor-block-list__layout'
+			' .block-editor-block-list__layout'
 		] = {
 			'flex-direction': 'column',
 		};
@@ -42,6 +42,9 @@ function styling( props ) {
 		};
 
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'mobile' == stack ) {
