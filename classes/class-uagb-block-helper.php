@@ -5518,7 +5518,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Masonry Gallery CSS.
 		 *
-		 * @param array $block The block array.
 		 * @since x.x.x
 		 */
 		public static function get_masonry_gallery_css() {
