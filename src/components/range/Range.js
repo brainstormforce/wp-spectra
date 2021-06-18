@@ -53,8 +53,8 @@
 	};
 
     const onChangeUnits = ( value ) => {
-        setValue( value );
-        props.onChange( value );
+        setValue( cachedValue);
+        props.onChange( cachedValue );
         props.setAttributes( { paddingUnit: value } );
     }
 
