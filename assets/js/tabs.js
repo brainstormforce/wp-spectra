@@ -1,6 +1,3 @@
-// window.addEventListener( 'load', function () { uagbTabInit(); anchorTabId(); });
-// window.addEventListener( 'hashchange', anchorTabId, false );
-
 UAGBTabs = {
 
     init: function ( $selector ) {
