@@ -23,14 +23,6 @@ class UAGB_Post_Assets {
 	public $current_block_list = array();
 
 	/**
-	 * Masonry asset flag
-	 *
-	 * @since x.x.x
-	 * @var masonry_flag
-	 */
-	public $masonry_flag = array();
-
-	/**
 	 * UAG Block Flag
 	 *
 	 * @since 1.13.4
@@ -239,7 +231,6 @@ class UAGB_Post_Assets {
 		// Set required varibled from stored data.
 		$this->current_block_list  = $page_assets['current_block_list'];
 		$this->uag_flag            = $page_assets['uag_flag'];
-		$this->masonry_flag        = $page_assets['masonry_flag'];
 		$this->stylesheet          = $page_assets['css'];
 		$this->script              = $page_assets['js'];
 		$this->gfonts              = $page_assets['gfonts'];
@@ -310,7 +301,6 @@ class UAGB_Post_Assets {
 			'css'                => wp_slash( $this->stylesheet ),
 			'js'                 => $this->script,
 			'current_block_list' => $this->current_block_list,
-			'masonry_flag'       => $this->masonry_flag,
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
@@ -446,7 +436,7 @@ class UAGB_Post_Assets {
 		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
 
 		if ( in_array( 'uagb/masonry-gallery', $this->current_block_list, true ) ) {
-			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css( $this->masonry_flag );
+			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css();
 		}
 
 		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
@@ -534,7 +524,6 @@ class UAGB_Post_Assets {
 		$this->current_block_list[] = $name;
 
 		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
-			$this->masonry_flag         = $block;
 			$this->current_block_list[] = 'uagb/masonry-gallery';
 			$this->uag_flag             = true;
 		}

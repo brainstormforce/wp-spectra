@@ -5521,12 +5521,86 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $block The block array.
 		 * @since x.x.x
 		 */
-		public static function get_masonry_gallery_css( $block ) {
-			$col = ( isset( $block['attrs']['columns'] ) ) ? $block['attrs']['columns'] : 3;
+		public static function get_masonry_gallery_css() {
 
-			$css = '.uag-masonry.columns-' . $col . ' .blocks-gallery-grid .blocks-gallery-item { margin: 0; display: grid; grid-template-rows: 1fr auto; margin-bottom: 1em; break-inside: avoid; width: unset; } .uag-masonry .blocks-gallery-grid { column-count: ' . $col . '; column-gap: 1em; display: unset; }';
+			$selectors = array(
+				' .blocks-gallery-grid .blocks-gallery-item' => array(
+					'margin'             => 0,
+					'display'            => 'grid',
+					'grid-template-rows' => '1fr auto',
+					'margin-bottom'      => '1em',
+					'break-inside'       => 'avoid',
+					'width'              => 'unset',
+				),
+				'[class*="columns-"].wp-block-gallery .blocks-gallery-grid' => array(
+					'column-gap' => '1em',
+					'display'    => 'unset',
+				),
+				'.columns-1 .blocks-gallery-grid' => array(
+					'column-count' => '1',
+				),
+				'.columns-2 .blocks-gallery-grid' => array(
+					'column-count' => '2',
+				),
+				'.columns-3 .blocks-gallery-grid' => array(
+					'column-count' => '3',
+				),
+				'.columns-4 .blocks-gallery-grid' => array(
+					'column-count' => '4',
+				),
+				'.columns-5 .blocks-gallery-grid' => array(
+					'column-count' => '5',
+				),
+				'.columns-6 .blocks-gallery-grid' => array(
+					'column-count' => '6',
+				),
+				'.columns-7 .blocks-gallery-grid' => array(
+					'column-count' => '7',
+				),
+				'.columns-8 .blocks-gallery-grid' => array(
+					'column-count' => '8',
+				),
+			);
 
-			return $css;
+			$m_selectors = array(
+				'[class*="columns-"].wp-block-gallery .blocks-gallery-grid' => array(
+					'column-count' => '2',
+					'column-gap'   => '1em',
+					'display'      => 'unset',
+				),
+				'.columns-1 .blocks-gallery-grid' => array(
+					'column-count' => '1',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => array(),
+				'mobile'  => $m_selectors,
+			);
+
+			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uag-masonry' );
+
+			$desktop = $css['desktop'];
+			$tablet  = $css['tablet'];
+			$mobile  = $css['mobile'];
+
+			$tab_styling_css = '';
+			$mob_styling_css = '';
+
+			if ( ! empty( $tablet ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= $tablet;
+				$tab_styling_css .= '}';
+			}
+
+			if ( ! empty( $mobile ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= $mobile;
+				$mob_styling_css .= '}';
+			}
+
+			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
 	}
 }
