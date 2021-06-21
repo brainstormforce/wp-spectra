@@ -15,9 +15,6 @@ import { __ } from '@wordpress/i18n';
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
-
-
-
 const {
 	BlockAlignmentToolbar,
 	InspectorControls,
