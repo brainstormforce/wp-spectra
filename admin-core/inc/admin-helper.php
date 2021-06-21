@@ -72,7 +72,7 @@ class AdminHelper {
 	 */
 	public static function set_common_settings( $key, $value ) {
 
-		$common         = self::get_admin_settings_option( '_uag_common', false, false );
+		$common         = self::get_common_settings();
 		$common[ $key ] = $value;
 
 		update_option( '_uag_common', $common );

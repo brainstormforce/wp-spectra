@@ -9,11 +9,11 @@ let blocksCachedValue;
 function IndividualBlockSetting( props ) {
 	
     const [
-		{ globaldata, options },
+		{ options },
 	] = useStateValue();
 
     let blocksValue = options['_uag_common[blocks_activation_and_deactivation]'];
-console.log(options);
+	
     useEffect( () => {
 		window.onbeforeunload = null;
 		blocksCachedValue = options['_uag_common[blocks_activation_and_deactivation]']
@@ -28,7 +28,7 @@ console.log(options);
 				'action' : 'uag_blocks_activation_and_deactivation',
 				'security' : uag_react.blocks_activation_and_deactivation_nonce
 			}
-			console.log(blocksValue);
+			
 			jQuery.ajax( {
 				type: 'POST',
 				data: data,
@@ -37,11 +37,8 @@ console.log(options);
 				withCredentials: true,
 				},
 				success( response ) {
-
-				console.log(response);
 				},
 			} ).done( function () {
-				
 			} );
 
 			blocksCachedValue = options['_uag_common[blocks_activation_and_deactivation]'];
