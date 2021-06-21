@@ -2,13 +2,21 @@
  * External dependencies
  */
  import classnames from 'classnames';
- import map from 'lodash/map';
  import './editor.scss';
  import { __, sprintf } from '@wordpress/i18n';
- import { Fragment  } from '@wordpress/element';
+ import {   } from '@wordpress/element';
  import { ButtonGroup, Button, TabPanel, Tooltip, Dashicon } from '@wordpress/components';
+ import { useDispatch } from '@wordpress/data';
  
  const DimensionsControl = props =>  {
+
+	const {
+		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
+	} = useDispatch( 'core/edit-post' );
+
+	const customSetPreviewDeviceType = ( device ) => {
+		setPreviewDeviceType( device );
+    };
     
     const onChangeTop = ( value, device ) => {
         if ( props.type === 'padding' ) {
@@ -139,12 +147,15 @@
 			switch ( tabName ) {
 				case 'desktop':
 					selected = 'tablet';
+					customSetPreviewDeviceType( 'Desktop' )
 					break;
 				case 'tablet':
 					selected = 'mobile';
+					customSetPreviewDeviceType( 'Tablet' )
 					break;
 				case 'mobile':
 					selected = 'desktop';
+					customSetPreviewDeviceType( 'Mobile' )
 					break;
 				default:
 					break;
@@ -172,38 +183,44 @@
 			}
 		};
 
- 
+		const onUnitSizeClick = ( unitSizes ) => {
+			const items = [];
+			unitSizes
+		.forEach( key => items.push(
+			<Tooltip text={ sprintf(
+				__( '%s units', 'ultimate-addons-for-gutenberg' ),
+				key.name
+			) }>
+				<Button
+					key={ key.unitValue }
+					className={ 'uagb-range-control__units--' + key.name }
+					isSmall
+					isPrimary={ props.unit === key.unitValue }
+					isSecondary={ props.unit !== key.unitValue }
+					aria-pressed={ props.unit === key.unitValue }
+					aria-label={ sprintf(
+						__( '%s units', 'ultimate-addons-for-gutenberg' ),
+						key.name
+					) }
+					onClick={ () => onChangeUnits( key.unitValue ) }
+				>
+					{ key.unitValue }
+				</Button>
+			</Tooltip>)
+			)
+	
+			return( items );
+		}
+	
          return (
-             <Fragment>
+             <>
                  <div className={ classes }>
-                         <Fragment>
+                         <>
                              <div className="uagb-spacing-control__header">
                                  { label && <p className={ 'uagb-spacing-control__label' }>{ label }</p> }
                                  <div className="uagb-spacing-control__actions">
-								
                                      <ButtonGroup className="uagb-spacing-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
-                                         { map( unitSizes, ( { unitValue, name } ) => (
-                                             <Tooltip text={ sprintf(
-                                                 __( '%s units', 'ultimate-addons-for-gutenberg' ),
-                                                 name
-                                             ) }>
-                                                 <Button
-                                                     key={ unitValue }
-                                                     className={ 'uagb-spacing-control__units--' + name }
-                                                     isSmall
-                                                     isPrimary={ unit === unitValue }
-                                                     isSecondary={ unit !== unitValue }
-                                                     aria-pressed={ unit === unitValue }
-                                                     aria-label={ sprintf(
-                                                         __( '%s units', 'ultimate-addons-for-gutenberg' ),
-                                                         name
-                                                     ) }
-                                                     onClick={ () => onChangeUnits( unitValue ) }
-                                                 >
-                                                     { unitValue }
-                                                 </Button>
-                                             </Tooltip>
-                                         ) ) }
+									 { onUnitSizeClick( unitSizes ) }
                                      </ButtonGroup>
                                  </div>
                              </div>
@@ -240,172 +257,172 @@
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<div className="uagb-spacing-control__inputs">
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeTopValue }
-															aria-label={ sprintf(
-																__( '%s top', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopMobile !== '' ? valueTopMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeRightValue }
-															aria-label={ sprintf(
-																__( '%s right', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightMobile !== '' ? valueRightMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeBottomValue }
-															aria-label={ sprintf(
-																__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomMobile !== '' ? valueBottomMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeLeftValue }
-															aria-label={ sprintf(
-																__( '%s left', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftMobile !== '' ? valueLeftMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-													</div>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeTopValue }
+													aria-label={ sprintf(
+														__( '%s top', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueTopMobile !== '' ? valueTopMobile : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Mobile"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeRightValue }
+													aria-label={ sprintf(
+														__( '%s right', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueRightMobile !== '' ? valueRightMobile : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Mobile"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeBottomValue }
+													aria-label={ sprintf(
+														__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueBottomMobile !== '' ? valueBottomMobile : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Mobile"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeLeftValue }
+													aria-label={ sprintf(
+														__( '%s left', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueLeftMobile !== '' ? valueLeftMobile : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Mobile"
+												/>
+											</div>
 										)
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<div className="uagb-spacing-control__inputs">
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeTopValue }
-															aria-label={ sprintf(
-																__( '%s top', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopTablet !== '' ? valueTopTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeRightValue }
-															aria-label={ sprintf(
-																__( '%s right', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightTablet !== '' ? valueRightTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeBottomValue }
-															aria-label={ sprintf(
-																__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomTablet !== '' ? valueBottomTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="uagb-spacing-control__number"
-															type="number"
-															onChange={ onChangeLeftValue }
-															aria-label={ sprintf(
-																__( '%s left', 'ultimate-addons-for-gutenberg' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftTablet !== '' ? valueLeftTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-													</div>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeTopValue }
+													aria-label={ sprintf(
+														__( '%s top', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueTopTablet !== '' ? valueTopTablet : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Tablet"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeRightValue }
+													aria-label={ sprintf(
+														__( '%s right', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueRightTablet !== '' ? valueRightTablet : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Tablet"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeBottomValue }
+													aria-label={ sprintf(
+														__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueBottomTablet !== '' ? valueBottomTablet : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Tablet"
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeLeftValue }
+													aria-label={ sprintf(
+														__( '%s left', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueLeftTablet !== '' ? valueLeftTablet : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type="Tablet"
+												/>
+											</div>
 										)
 									} else {
 										tabout = (
 											<div className="uagb-spacing-control__inputs">
-													<input
-														className="uagb-spacing-control__number"
-														type="number"
-														onChange={ onChangeTopValue }
-														aria-label={ sprintf(
-															__( '%s top', 'ultimate-addons-for-gutenberg' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueTop !== '' ? valueTop : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="uagb-spacing-control__number"
-														type="number"
-														onChange={ onChangeRightValue }
-														aria-label={ sprintf(
-															__( '%s right', 'ultimate-addons-for-gutenberg' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueRight !== '' ? valueRight : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="uagb-spacing-control__number"
-														type="number"
-														onChange={ onChangeBottomValue }
-														aria-label={ sprintf(
-															__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueBottom !== '' ? valueBottom : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="uagb-spacing-control__number"
-														type="number"
-														onChange={ onChangeLeftValue }
-														aria-label={ sprintf(
-															__( '%s left', 'ultimate-addons-for-gutenberg' ), label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueLeft !== '' ? valueLeft : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-												</div>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeTopValue }
+													aria-label={ sprintf(
+														__( '%s top', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueTop !== '' ? valueTop : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type=""
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeRightValue }
+													aria-label={ sprintf(
+														__( '%s right', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueRight !== '' ? valueRight : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type=""
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeBottomValue }
+													aria-label={ sprintf(
+														__( '%s bottom', 'ultimate-addons-for-gutenberg' ),
+														label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueBottom !== '' ? valueBottom : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type=""
+												/>
+												<input
+													className="uagb-spacing-control__number"
+													type="number"
+													onChange={ onChangeLeftValue }
+													aria-label={ sprintf(
+														__( '%s left', 'ultimate-addons-for-gutenberg' ), label
+													) }
+													aria-describedby={ !! help ? id + '__help' : undefined }
+													value={ valueLeft !== '' ? valueLeft : '' }
+													min={ type === 'padding' ? 0 : undefined }
+													data-device-type=""
+												/>
+											</div>
 										)
 									}
 
@@ -420,9 +437,9 @@
                                  <span className="uagb-spacing-control__number-label">{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }</span>
                                  <span className="uagb-spacing-control__number-label-blank"></span>
                              </div>
-                         </Fragment>
+                         </>
                 </div>
-            </Fragment>
+            </>
          );
  }
 
