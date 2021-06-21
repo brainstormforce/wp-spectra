@@ -284,7 +284,7 @@ class UAGBInlineNoticeEdit extends Component {
 			return (
 				<InspectorTabs>
 				<InspectorTab key={'general'}>
-				<PanelBody title="Alignment" initialOpen={false}>
+				<PanelBody title="Alignment" initialOpen={true}>
 					<MultiButtonsControl
 						label={ __( "Alignment", 'ultimate-addons-for-gutenberg' ) }
 						currentOption={ noticeAlignment }
@@ -367,87 +367,6 @@ class UAGBInlineNoticeEdit extends Component {
 							showIcons={ false }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings.", 'ultimate-addons-for-gutenberg' ) }
 						/>
-				</PanelBody>
-				<PanelBody title="Layout" initialOpen={false}>
-					<SelectControl
-						label={ __( "Types", 'ultimate-addons-for-gutenberg' ) }
-						value={ layout }
-						onChange={ ( value ) => setAttributes( { layout: value } ) }
-						options={ [
-							{ value: "modern", label: __( "Modern", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "simple", label: __( "Default", 'ultimate-addons-for-gutenberg' ) },							
-						] }
-					/>
-					{ "simple" == layout  &&
-						<RangeControl
-							label={ __( "Highlight width", 'ultimate-addons-for-gutenberg' ) }
-							value={ highlightWidth }
-							onChange={ ( value ) => setAttributes( { highlightWidth: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-					}
-					<h2>{ __( "Primary Heading", 'ultimate-addons-for-gutenberg' ) }</h2>
-					<SelectControl
-						label={ __( "Tag" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1",'ultimate-addons-for-gutenberg' ) },
-							{ value: "h2", label: __( "H2", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "h3", label: __( "H3", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "h4", label: __( "H4", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "h5", label: __( "H5", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "h6", label: __( "H6", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "span", label: __( "span", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "p", label: __( "p", 'ultimate-addons-for-gutenberg' ) },
-						] }
-					/>
-					<SelectControl
-							label={ __( 'Notice Display', 'ultimate-addons-for-gutenberg' ) }
-							options={ noticeDismissOptions }
-							value={ noticeDismiss }
-							onChange={ ( value ) =>
-								this.props.setAttributes( {
-									noticeDismiss: value,
-								} )
-							}
-					/>
-					{ noticeDismiss &&
-						<Fragment>
-							<p className="components-base-control__label">{__( "Icon", 'ultimate-addons-for-gutenberg' )}</p>
-							<FontIconPicker
-								icons={svg_icons}
-								renderFunc= {renderSVG}
-								theme="default"
-								value={icon}
-								onChange={ ( value ) => setAttributes( { icon: value } ) }
-								isMulti={false}
-								noSelectedPlaceholder= { __( "Select Icon", 'ultimate-addons-for-gutenberg' ) }
-							/>
-						</Fragment>
-					}
-					{ noticeDismiss &&
-						<hr className="uagb-editor__separator" />
-					}
-					{ noticeDismiss &&
-						<ToggleControl
-							label={ __( "Enable Cookies", 'ultimate-addons-for-gutenberg' ) }
-							checked={ cookies }
-							onChange={ this.update_cookie_id }
-						/>
-					}
-					{ cookies &&
-						<RangeControl
-							label={ __( "Show Closed Notice After (Days)", 'ultimate-addons-for-gutenberg' ) }
-							value={ close_cookie_days }
-							onChange={ ( value ) => setAttributes( { close_cookie_days: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-					}
 				</PanelBody>
 				<PanelBody title="Spacing" initialOpen={false}>
 					<DimensionsControl { ...this.props }
@@ -761,6 +680,15 @@ class UAGBInlineNoticeEdit extends Component {
 				</PanelBody>
 				</InspectorTab>
 				<InspectorTab key={'advance'}>
+				<PanelBody title="UAG Advanced Option" initialOpen={true}>
+				<Range 
+					label={ __( "Opacity", 'ultimate-addons-for-gutenberg' ) }
+					value={backgroundOpacity} 
+					onChange={val => setAttributes({ backgroundOpacity: parseInt(val) })}
+					min={0} 
+					max={100} 
+				/>
+				</PanelBody>
 				</InspectorTab>
 				</InspectorTabs>
 				)
