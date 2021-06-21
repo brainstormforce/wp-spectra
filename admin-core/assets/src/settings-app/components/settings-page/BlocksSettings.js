@@ -5,10 +5,11 @@ const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings( prop ) {
 
-	const renderBlocksMetaBoxes = blocksInfo.map( ( block ) => {
+	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
 		
 		return (
 			<IndividualBlockSetting
+				key = { index }
 				blockInfo = { block }
 			/>
 		);
