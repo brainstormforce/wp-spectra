@@ -11,28 +11,26 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 import { __ } from '@wordpress/i18n';
-
-//  Import CSS.
-import "./style.scss"
-import "./editor.scss"
-const {
+import {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	RichText,
 	ColorPalette,
-} = wp.blockEditor
+} from "@wordpress/block-editor"
 
-const {
+import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
 	BaseControl
-} = wp.components
+} from "@wordpress/components"
 
-const { withSelect } = wp.data
+import { withSelect } from  "@wordpress/data"
+import { Component, Fragment } from "@wordpress/element"
 
-const { Component, Fragment } = wp.element
-
+//  Import CSS.
+import "./style.scss"
+import "./editor.scss"
 class UAGBStarRating extends Component {
 
 	constructor() {
