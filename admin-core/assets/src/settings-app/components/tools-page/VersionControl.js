@@ -82,22 +82,26 @@ function VersionControl( props ) {
 			<h3 className="uag-version-settings__title">
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
-			<SettingTable
-				settings={ rollbackSettings }
-				meta_key="_uag_common"
-			/>
-			<div className="uag-version-control-button">
-				<NormalButton
-					label = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
-					onClick = { handleRollbackVersion }
-				/>
+			<div className="uag-row">
+				<div className="uag-col-md-6">
+					<SettingTable
+						settings={ rollbackSettings }
+						meta_key="_uag_common"
+					/>
+					<div className="uag-version-control-button">
+						<NormalButton
+							buttonText = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
+							onClick = { handleRollbackVersion }
+						/>
+					</div>
+				</div>
+				<div className="uag-col-md-6">
+					<SettingTable
+						settings={ enableBetaUpdatesSettings }
+						meta_key="_uag_common"
+					/>
+				</div>
 			</div>
-
-			<SettingTable
-				settings={ enableBetaUpdatesSettings }
-				meta_key="_uag_common"
-			/>
-
 			<ConfirmPopup
 				showPopup={ showPopup }
 				setshowPopup={ setshowPopup }

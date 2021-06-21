@@ -41,15 +41,15 @@
 }
 
 .uag-button--primary {
-	background: var( --primary-color );
-	border-color: var( --primary-border-color );
+	background: #2F4F4F;;
+	border-color: #2F4F4F;
 	color: #fff;
 }
 
 .uag-button--primary:focus,
 .uag-button--primary:hover {
-	background: var( --primary-hv-color );
-	border-color: var( --primary-border-color );
+	background: #2F4F4F;
+	border-color: #2F4F4F;
 	color: #fff;
 	box-shadow: none;
 	outline: none;

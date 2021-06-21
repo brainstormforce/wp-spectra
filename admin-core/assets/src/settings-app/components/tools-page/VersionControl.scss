@@ -9,3 +9,13 @@
 .uag-general-settings__form-table th {
 	padding: 15px 10px 15px 0;
 }
+.uag-field-row-rollback_to_previous_version {
+	.uag-field__data {
+		display: block;
+	}
+	.uag-field__data--label {
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 10px;
+	}
+}

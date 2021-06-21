@@ -5,7 +5,7 @@
 	text-align: center;
 	text-shadow: none;
 	text-decoration: none;
-	border: 1px solid #f06335;
+	border: 1px solid #2F4F4F;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 15px;
@@ -19,7 +19,7 @@
 }
 
 .uag-btn-primary {
-	background: #f06335;
+	background: #2F4F4F;
 	color: #fff;
 	-webkit-transition: all linear 250ms;
 	transition: all linear 250ms;
@@ -30,7 +30,7 @@
 .uag-btn-primary:focus,
 .uag-btn-primary:hover {
 	color: #fff;
-	background: #f06335;
+	background: #2F4F4F;
 }
 
 .uag-btn-primary:active,
@@ -68,10 +68,10 @@
 		background-size: 100px 100%;
 		background-image: linear-gradient(
 			-45deg,
-			#f06335 28%,
-			#f78860 0,
-			#f78860 72%,
-			#f06335 0
+			#2F4F4F 28%,
+			#426F6F 0,
+			#426F6F 72%,
+			#2F4F4F 0
 		);
 	}
 }

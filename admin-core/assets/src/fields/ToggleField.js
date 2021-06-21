@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { ToggleControl } from '@wordpress/components';
+import './ToggleField.scss';
 
 function ToggleField( props ) {
 	const {

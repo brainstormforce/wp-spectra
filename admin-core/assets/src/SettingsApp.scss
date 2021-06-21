@@ -1,11 +1,29 @@
-// .uag-settings-app {
-//     padding: 20px;
-//     margin: 20px 0;
-//     background: rgb(18, 167, 75);
-// }
-
-/** Commaon **/
+/** Common **/
 
 .uag-icon {
 	vertical-align: middle;
+}
+
+.uag-label {
+	font-size: 18px;
+	vertical-align: middle;
+	display: block;
+	&.bottom-space {
+		margin-bottom: 20px;
+	}
+}
+
+/** Row & Columns CSS */
+.uag-row {
+	display: flex;
+	width: 100%;
+
+	.uag-col-md-6 {
+		width: 50%;
+		background: #fff;
+		padding: 15px;
+	}
+	.uag-col-md-6:nth-of-type(odd) {
+		margin-right: 30px;
+	}
 }

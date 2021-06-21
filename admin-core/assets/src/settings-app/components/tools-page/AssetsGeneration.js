@@ -86,15 +86,23 @@ function AssetsGeneration( props ) {
             <h3 className="uag-version-settings__title">
 				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
-			<SettingTable
-				settings={ enableFileGenerationSettings }
-				meta_key="_uag_common"
-			/>
-            <NormalButton
-                label = { __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
-                onClick = { handleRegenerateAssets }
-                saving = { savingState }
-            />
+			<div className="uag-row">
+				<div className="uag-col-md-6">
+					<SettingTable
+						settings={ enableFileGenerationSettings }
+						meta_key="_uag_common"
+					/>
+				</div>
+				<div className="uag-col-md-6">
+					<label className="uag-label bottom-space"> { __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ) } </label>
+					<NormalButton
+						buttonText = { __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
+						onClick = { handleRegenerateAssets }
+						saving = { savingState }
+						desc = { __( 'You can regenerate your CSS & Javascript assets here.', 'ultimate-addons-for-gutenberg' ) }
+					/>
+				</div>
+			</div>
 		</>
 	);
 }

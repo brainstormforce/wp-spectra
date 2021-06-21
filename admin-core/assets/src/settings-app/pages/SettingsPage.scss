@@ -4,10 +4,6 @@
 
 	table td {
 		padding: 10px 10px 15px 0;
-
-		.uag-field__data--label {
-			font-weight: 500;
-		}
 	}
 
 	table th:first-child {
@@ -71,6 +67,7 @@
 		}
 
 		.uag-global-settings-metabox__tabs-menu {
+			border-right: 1px solid #dedede;
 			a {
 				display: block;
 				border-bottom: 1px solid #dedede;
@@ -95,16 +92,13 @@
 	}
 
 	.uag-global-settings-metabox__current-tab {
-		background: #fff;
+		background: #f7f8fa;
 		padding: 20px 30px;
 		padding-bottom: 250px;
 		float: unset;
 		width: 80%;
 		display: unset;
 
-		.uag-select-option select {
-			margin-left: 20px;
-		}
 		.input-field {
 			font-weight: 400;
 			margin-left: 20px;
