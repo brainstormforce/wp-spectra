@@ -128,13 +128,13 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 		
 		const { isSelected } = props;
 		
-		const blocks_name = props.name;
+		const blockName = props.name;
 		
-		const block_type = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
+		const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && ! block_type.includes(blocks_name) &&
+				{isSelected && ! blockType.includes(blockName) &&
 					<InspectorAdvancedControls>
 						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
 						{ UserConditionOptions( props ) }						
