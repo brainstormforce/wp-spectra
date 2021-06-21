@@ -86,10 +86,11 @@ class CommonSettings extends AjaxBase {
 		}
 
 		if ( isset( $_POST ) ) {
-			var_dump($_POST['value']);
-			// AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['value'] );
+			
 
-			// update_option( '_uagb_blocks', sanitize_text_field( $_POST['value'] ) );
+			AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['blocksValue'] );
+
+			update_option( '_uagb_blocks', $_POST['value'] );
 
 		}
 

@@ -23,26 +23,25 @@ console.log(options);
 
 		if ( JSON.stringify(blocksCachedValue) !== JSON.stringify(blocksValue) ) {
 
-			let formData = new window.FormData();
-            let data = JSON.stringify(blocksValue)
-			formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
-			formData.append(
-				'security',
-				uag_react.blocks_activation_and_deactivation_nonce
-			);
-			formData.append( 'value', data );
-	console.log(options['_uag_common[blocks_activation_and_deactivation]']);
-			apiFetch( {
+			let data = {
+				'blocksValue' : blocksValue,
+				'action' : 'uag_blocks_activation_and_deactivation',
+				'security' : uag_react.blocks_activation_and_deactivation_nonce
+			}
+			console.log(blocksValue);
+			jQuery.ajax( {
+				type: 'POST',
+				data: data,
 				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
+				xhrFields: {
+				withCredentials: true,
+				},
+				success( response ) {
+
+				console.log(response);
+				},
+			} ).done( function () {
 				
-				if ( data.success ) {
-					
-				} else {
-					console.log( 'Error' );
-				}
 			} );
 
 			blocksCachedValue = options['_uag_common[blocks_activation_and_deactivation]'];
