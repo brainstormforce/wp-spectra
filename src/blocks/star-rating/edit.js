@@ -45,9 +45,9 @@ class UAGBStarRating extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-star-rating-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+		const style = document.createElement( "style" )
+		style.setAttribute( "id", "uagb-star-rating-style-" + this.props.clientId.substr( 0, 8 ) )
+		document.head.appendChild( style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {
