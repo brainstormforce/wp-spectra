@@ -20,8 +20,7 @@ export default function save( props ) {
 	let range_value = parseInt(range);
 	var stars = [];
 	for (var i = 1; i <= range_value; i++) {
-		let star_class = ( i <= rating ) ? 'uag-star-full' : 'uag-star-empty'
-		stars.push(<i class={star_class}>★</i>);
+		stars.push(<i class="uag-star">★</i>);
 	}
 	return (
 		<div
@@ -31,16 +30,15 @@ export default function save( props ) {
 				`uagb-block-${block_id}`,
 			) }
 		>
-			<RichText.Content
-				tagName="p"
-				value={ title }
-				className='uag-star-rating__title'
-			/>
-			<div class="uag-star-rating" title={`${rating}/${range}`} itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating">
+			{ title &&
+				<RichText.Content
+					tagName="p"
+					value={ title }
+					className='uag-star-rating__title'
+				/>
+			}
+			<div class="uag-star-rating" title={`${rating}/${range}`}>
 				{ stars }
-				<span itemprop="ratingValue" class="uag-screen-only">
-					{`${rating}/${range}`}
-				</span>
 			</div>
 		</div>
 	)

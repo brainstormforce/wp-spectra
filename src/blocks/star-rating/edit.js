@@ -110,8 +110,7 @@ class UAGBStarRating extends Component {
 		let range_value = parseInt(range);
 		var stars = [];
 		for (var i = 1; i <= range_value; i++) {
-			let star_class = ( i <= rating ) ? 'uag-star-full' : 'uag-star-empty'
-			stars.push(<i class={star_class}>★</i>);
+			stars.push(<i class="uag-star">★</i>);
     	}
 
 		return (
@@ -247,11 +246,8 @@ class UAGBStarRating extends Component {
 						className='uag-star-rating__title'
 						onChange={ ( value ) => setAttributes( { title: value } ) }
 					/>
-					<div class="uag-star-rating" title={`${rating}/${range}`} itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating">
+					<div class="uag-star-rating" title={`${rating}/${range}`}>
 						{ stars }
-						<span itemprop="ratingValue" class="uag-screen-only">
-							{`${rating}/${range}`}
-						</span>
 					</div>
 				</div>
 				{ loadTitleGoogleFonts }

@@ -8,6 +8,7 @@ import generateCSSUnit from "@Controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		rating,
 		size,
 		align,
 		gap,
@@ -45,9 +46,6 @@ function styling( props ) {
 			"margin-right": generateCSSUnit( gap, 'px' ),
 			"color": unmarkedColor
 		},
-		" .uag-star-rating > i.uag-star-full": {
-			"color": color,
-		},
 		" .uag-star-rating__title.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( fontSize, fontSizeType ),
 			"font-family": fontFamily,
@@ -59,6 +57,10 @@ function styling( props ) {
 		".uag-star-rating__wrapper" : {
 			'justify-content': alignment
 		}
+	}
+
+	selectors[" .uag-star:nth-child(-n+" + rating + ")"] = {
+		"color": color,
 	}
 
 	var tablet_selectors = {

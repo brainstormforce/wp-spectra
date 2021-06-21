@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					'color'        => $attr['unmarkedColor'],
 				),
-				' .uag-star-rating > i.uag-star-full' => array(
+				' .uag-star:nth-child(-n+' . $attr['rating'] . ')' => array(
 					'color' => $attr['color'],
 				),
 				' .uag-star-rating__title'            => array(
