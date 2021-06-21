@@ -1,10 +1,9 @@
  import {
     ButtonGroup, Button, Tooltip, Dashicon, RangeControl, __experimentalNumberControl as NumberControl,
  } from '@wordpress/components'
- import { useState, useEffect, Fragment } from '@wordpress/element'
+ import { useState, useEffect } from '@wordpress/element'
  import { __ } from '@wordpress/i18n'
  import './range.scss';
- import map from 'lodash/map';
  import classnames from 'classnames';
 
  const isNumberControlSupported = !! NumberControl
@@ -53,7 +52,7 @@
 	};
 
     const onChangeUnits = ( value ) => {
-        setValue( cachedValue);
+        setValue( cachedValue );
         props.onChange( cachedValue );
         props.setAttributes( { paddingUnit: value } );
     }
@@ -71,37 +70,45 @@
 
         resetStateDisabled = false;
     }
-    
+
+    const onUnitSizeClick = ( unitSizes ) => {
+        const items = [];
+        unitSizes
+    .forEach( key => items.push(
+        <Tooltip text={ sprintf(
+            __( '%s units', 'ultimate-addons-for-gutenberg' ),
+            key.name
+        ) }>
+            <Button
+                key={ key.unitValue }
+                className={ 'uagb-range-control__units--' + key.name }
+                isSmall
+                isPrimary={ props.unit === key.unitValue }
+                isSecondary={ props.unit !== key.unitValue }
+                aria-pressed={ props.unit === key.unitValue }
+                aria-label={ sprintf(
+                    __( '%s units', 'ultimate-addons-for-gutenberg' ),
+                    key.name
+                ) }
+                onClick={ () => onChangeUnits( key.unitValue ) }
+            >
+                { key.unitValue }
+            </Button>
+        </Tooltip>)
+        )
+
+        return( items );
+    }
+
     return (
-      <Fragment>
+        <>
       <div className={ classes }>
-      <Fragment>
+        <>
         <div className='uagb-range-control__header'>
             { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
             <div className='uagb-range-control__actions'>
                 <ButtonGroup className='uagb-range-control__units' aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
-                { map( unitSizes, ( { unitValue, name } ) => (
-                    <Tooltip text={ sprintf(
-                        __( '%s units', 'ultimate-addons-for-gutenberg' ),
-                        name
-                    ) }>
-                        <Button
-                            key={ unitValue }
-                            className={ 'uagb-range-control__units--' + name }
-                            isSmall
-                            isPrimary={ props.unit === unitValue }
-                            isSecondary={ props.unit !== unitValue }
-                            aria-pressed={ props.unit === unitValue }
-                            aria-label={ sprintf(
-                                __( '%s units', 'ultimate-addons-for-gutenberg' ),
-                                name
-                            ) }
-                            onClick={ () => onChangeUnits( unitValue ) }
-                        >
-                            { unitValue }
-                        </Button>
-                    </Tooltip>
-                ) ) }
+               { onUnitSizeClick( unitSizes ) }
                 </ButtonGroup>
             <Button
                 className='uagb-spacing-reset'
@@ -136,9 +143,9 @@
             />
         ) }
         </div>
-        </Fragment>
+        </>
      </div>
-     </Fragment>
+     </>
      );
  }
  
