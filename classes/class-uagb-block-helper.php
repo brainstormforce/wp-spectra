@@ -47,17 +47,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				' .uag-star-rating'                   => array(
+				' .uag-star-rating'         => array(
 					'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
 				),
-				' .uag-star-rating > i'               => array(
+				' .uag-star-rating > i'     => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					'color'        => $attr['unmarkedColor'],
 				),
 				' .uag-star:nth-child(-n+' . $attr['rating'] . ')' => array(
 					'color' => $attr['color'],
 				),
-				' .uag-star-rating__title'            => array(
+				' .uag-star-rating__title'  => array(
 					'font-size'    => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 					'font-family'  => $attr['fontFamily'],
 					'font-weight'  => $attr['fontWeight'],
@@ -65,7 +65,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'        => $attr['titleColor'],
 					'margin-right' => UAGB_Helper::get_css_value( $attr['titleGap'], 'px' ),
 				),
-				'.uag-star-rating__wrapper'           => array(
+				'.uag-star-rating__wrapper' => array(
 					'justify-content' => $alignment,
 				),
 			);
