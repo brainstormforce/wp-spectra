@@ -1,11 +1,8 @@
 import { __ } from '@wordpress/i18n';
-
-const { Fragment } = wp.element;
-const { InspectorAdvancedControls } = wp.blockEditor;
-const {
-    ToggleControl
-} = wp.components;
-const enableMasonryGallery = uagb_blocks_info.enableMasonryGallery;
+import { Fragment } from "@wordpress/element";
+import { InspectorAdvancedControls } from "@wordpress/block-editor";
+import { ToggleControl } from "@wordpress/components";
+const { enableMasonryGallery } = uagb_blocks_info;
 
 const MasonryGallery = wp.compose.createHigherOrderComponent((BlockEdit) => {
 
@@ -34,7 +31,7 @@ const MasonryGallery = wp.compose.createHigherOrderComponent((BlockEdit) => {
 	};
 }, 'MasonryGallery');
 
-if ( enableMasonryGallery ) {
+if ( '1' === enableMasonryGallery ) {
 	wp.hooks.addFilter(
 		'editor.BlockEdit',
 		'uagb/masonry-gallery',
