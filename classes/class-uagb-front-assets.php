@@ -57,7 +57,7 @@ class UAGB_Front_Assets {
 	 */
 	public function __construct() {
 
-		add_action( 'wp', array( $this, 'set_initial_variables' ), 5 );
+		add_action( 'wp', array( $this, 'set_initial_variables' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_asset_files' ) );
 	}
 
@@ -129,7 +129,7 @@ class UAGB_Front_Assets {
 		} elseif ( is_archive() || is_home() || is_search() ) {
 
 			global $wp_query;
-			$cached_wp_query = $wp_query;
+			$cached_wp_query = $wp_query->posts;
 
 			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 				$this->post_assets->prepare_assets( $post );

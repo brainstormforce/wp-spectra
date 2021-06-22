@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.23.0-beta.1
+Stable tag: 1.23.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,10 +168,29 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.23.1 =
+= 1.23.4 =
 * Fix: Core button Block alignment is not working in advanced column block.
+* Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
+* Fix: Assets Generation on Archive Pages not working for all Posts on frontend.
 
-= 1.23.0-beta.1 =
+= 1.23.3 =
+* Fix: Table of Contents - UTF-8 encoding on frontend.
+* Fix: Table of Contents - Fatal error when $doc->documentElement is null in some cases on frontend.
+* Fix: Table of Contents - Scroll to Top icon not visible on frontend.
+* Fix: Posts - "B7" displayed in place of " . " icon on frontend when file generation is disabled.
+
+= 1.23.2 =
+* Fix: Table of Contents: Headings with HTML tags are not visible on the frontend.
+* Fix: Table of Contents - Question marks are rendered in place of UTF-8 characters for few languages in Heading.
+* Fix: Section - Full-Width option not being applied on the front-end according to theme content width.
+* Fix: Post Layouts - Showing post content instead of post except on the front-end.
+
+= 1.23.1 =
+* Fix: Broken path while generating assets (CSS/JS).
+* Fix: Table of Contents - Heading convert to question marks on the frontend.
+* Fix: Table of Contents - Unexpected characters in links. Restricted to alphanumeric characters.
+
+= 1.23.0 =
 * New: Added an option to rollback to a previous version.
 * New: Added an option to get update notifications for beta versions.
 * New: Lottie - Added alignment Option.
@@ -194,6 +213,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Section - Margin Left/Right not working issue.
 * Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
 * Fix: Table of content - HTML validation issue.
+* Fix: Table of Contents - Default heading was displaying instead of previously set heading.
 
 = 1.22.5 =
 * Improvement: Updated Gutenberg Template Library.

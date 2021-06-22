@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.23.0-beta.1\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.23.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-31T04:12:18+00:00\n"
+"POT-Creation-Date: 2021-06-08T06:52:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0-alpha-59d879d\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
@@ -324,14 +324,14 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:517
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:521
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:543
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:547
 #: classes/class-uagb-config.php:2275
 #: dist/blocks.js:9
 msgid "Table Of Contents"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:785
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:811
 #: classes/class-uagb-config.php:2276
 #: dist/blocks.js:9
 msgid "Add a header to begin generating the table of contents"
@@ -902,7 +902,7 @@ msgstr ""
 msgid "This block helps you add Lottie animation and customize it as required."
 msgstr ""
 
-#: classes/class-uagb-helper.php:415
+#: classes/class-uagb-helper.php:433
 #: dist/blocks.js:9
 msgid "Full"
 msgstr ""

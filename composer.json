@@ -6,7 +6,7 @@
     "wp-coding-standards/wpcs": "^2.2",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
     "phpcompatibility/php-compatibility": "^9.3",
-    "wp-cli/wp-cli-bundle": "^2.4"
+    "wp-cli/wp-cli-bundle": "^2.5"
   },
   "scripts": {
     "format": "phpcbf",
