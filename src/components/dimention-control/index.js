@@ -186,7 +186,7 @@
 		const onUnitSizeClick = ( unitSizes ) => {
 			const items = [];
 			unitSizes
-		.forEach( key => items.push(
+		.map( key => items.push(
 			<Tooltip text={ sprintf(
 				__( '%s units', 'ultimate-addons-for-gutenberg' ),
 				key.name
@@ -213,7 +213,6 @@
 		}
 	
          return (
-             <>
                  <div className={ classes }>
                          <>
                              <div className="uagb-spacing-control__header">
@@ -439,7 +438,6 @@
                              </div>
                          </>
                 </div>
-            </>
          );
  }
 
