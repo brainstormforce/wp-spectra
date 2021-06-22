@@ -58,8 +58,7 @@
     }
 
     const classes = classnames(
-        'components-base-control',
-        'uagb-range-control'
+        'components-base-control'
     );
     
     if ( 'initial' === cachedValue ) {
@@ -101,7 +100,6 @@
 
     return (
       <div className={ classes }>
-        <>
             <div className='uagb-range-control__header'>
                 { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
                 <div className='uagb-range-control__actions'>
@@ -141,7 +139,6 @@
                     />
                 ) }
             </div>
-        </>
      </div>
     );
  }
