@@ -4,7 +4,6 @@
  import { useState, useEffect } from '@wordpress/element'
  import { __ } from '@wordpress/i18n'
  import './range.scss';
- import classnames from 'classnames';
 
  const isNumberControlSupported = !! NumberControl
  
@@ -56,10 +55,6 @@
         props.onChange( cachedValue );
         props.setAttributes( { paddingUnit: value } );
     }
-
-    const classes = classnames(
-        'components-base-control'
-    );
     
     if ( 'initial' === cachedValue ) {
         cachedValue = props.value;
@@ -99,7 +94,7 @@
     }
 
     return (
-      <div className={ classes }>
+      <div className='components-base-control'>
             <div className='uagb-range-control__header'>
                 { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
                 <div className='uagb-range-control__actions'>
