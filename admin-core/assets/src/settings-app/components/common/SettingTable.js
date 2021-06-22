@@ -1,27 +1,17 @@
 import React from 'react';
 import { useStateValue } from '@Utils/StateProvider';
 import './SettingTable.scss';
-import { conditions } from '@Utils/Helpers';
 
 import {
-	TextField,
-	CheckboxField,
 	SelectField,
-	RadioField,
-	TextareaField,
-	NumberField,
-	SubmitButton,
-	DocField,
 	SectionHeadingField,
 	ToggleField
 } from '@Fields';
 
 function SettingTable( props ) {
-	const { data, settings } = props;
+	const { settings } = props;
 
-	const [ { globaldata, options }, dispatch ] = useStateValue();
-
-	var checkout_list = globaldata.checkout_list;
+	const [ { options } ] = useStateValue();
 
 	return (
 		<table className="uag-global-settigs-content-table">
@@ -35,61 +25,7 @@ function SettingTable( props ) {
 						? options[ data.name ]
 						: value;
 
-					let isActive = conditions.isActiveControl( data, options );
-
 					switch ( input_type ) {
-						case 'text':
-							component = (
-								<TextField
-									type={ data.type }
-									id={ data.name }
-									name={ data.name }
-									value={ data.readonly ? data.value : value }
-									label={ data.label }
-									placeholder={ data.placeholder }
-									readonly={ data.readonly }
-									desc={ data.desc }
-									tooltip={ data.tooltip }
-									className={ data.class }
-								/>
-							);
-
-							break;
-
-						case 'number':
-							component = (
-								<NumberField
-									type={ data.type }
-									id={ data.name }
-									name={ data.name }
-									value={ value }
-									label={ data.label }
-									placeholder={ data.placeholder }
-									readonly={ data.readonly }
-									min={ data.min }
-									max={ data.max }
-									desc={ data.desc }
-									tooltip={ data.tooltip }
-								/>
-							);
-
-							break;
-						case 'checkbox':
-							component = (
-								<CheckboxField
-									id={ data.name }
-									name={ data.name }
-									value={ value }
-									label={ data.label }
-									desc={ data.desc }
-									tooltip={ data.tooltip }
-									child_className={ data.child_class }
-									backComp={ true }
-									notice={ data.notice }
-								/>
-							);
-
-							break;
 						case 'toggle':
 							component = (
 								<ToggleField
@@ -98,34 +34,6 @@ function SettingTable( props ) {
 									value={ value }
 									label={ data.label }
 									desc={ data.desc }
-								/>
-							);
-							break;
-						case 'radio':
-							component = (
-								<RadioField
-									name={ data.name }
-									value={
-										'undefined' === typeof value
-											? ''
-											: value
-									}
-									label={ data.label }
-									desc={ data.desc }
-									tooltip={ data.tooltip }
-									options={ data.options }
-								/>
-							);
-							break;
-						case 'textarea':
-							component = (
-								<TextareaField
-									id={ data.name }
-									name={ data.name }
-									value={ value }
-									label={ data.label }
-									desc={ data.desc }
-									tooltip={ data.tooltip }
 								/>
 							);
 							break;
@@ -142,10 +50,6 @@ function SettingTable( props ) {
 								/>
 							);
 							break;
-
-						case 'doc':
-							component = <DocField content={ data.content } />;
-							break;
 						case 'heading':
 							component = (
 								<SectionHeadingField
@@ -161,15 +65,11 @@ function SettingTable( props ) {
 					return (
 						<tr
 							key={ i }
-							className={ `uag-field-row-${ field } ${
-								! isActive ? 'uag-hide' : ''
-							}` }
+							className={ `uag-field-row-${ field }` }
 						>
 							<td scope="row">
 								<>{ component }</>
 							</td>
-							{ /* <th scope="row">
-							</th> */ }
 						</tr>
 					);
 				} ) }
