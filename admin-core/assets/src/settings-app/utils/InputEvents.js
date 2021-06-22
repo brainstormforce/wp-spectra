@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useStateValue } from '@Utils/StateProvider';
-import { useSettingsValue } from '@Utils/SettingsProvider';
 
 export default function InputEvents() {
 	const [ { options }, dispatch ] = useStateValue();
-	const [ { unsavedChanges }, setSettingsStatus ] = useSettingsValue();
-
+	
 	const baseInputChange = function ( e ) {
 		let { name, value, id } = e.detail;
 		if ( undefined !== options[ name ] ) {
@@ -26,16 +24,6 @@ export default function InputEvents() {
 
 	const fieldTypes = [
 		{ type: 'select' },
-		{ type: 'select2' },
-		{ type: 'checkbox' },
-		{ type: 'text' },
-		{ type: 'textarea' },
-		{ type: 'number' },
-		{ type: 'radio' },
-		{ type: 'color' },
-		{ type: 'font' },
-		{ type: 'product' },
-		{ type: 'coupon' },
 		{ type: 'toggle' },
 	];
 
