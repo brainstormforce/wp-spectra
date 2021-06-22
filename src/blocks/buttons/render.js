@@ -16,7 +16,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes } = props;
+	const { attributes , deviceType } = props;
 
 	const { className, btn_count, buttons, stack } = attributes;
 
@@ -35,6 +35,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-buttons__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>

@@ -2456,7 +2456,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
@@ -2468,16 +2468,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
-				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'         => array(
@@ -3567,7 +3567,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
@@ -3579,10 +3579,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
-				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'               => array(
@@ -3654,10 +3654,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left'  => 0,
 					'margin-right' => 0,
 				),
-				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(

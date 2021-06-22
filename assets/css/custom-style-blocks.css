@@ -3578,10 +3578,6 @@ a.uagb-timeline__link {
 	background-size: cover;
 }
 
-.uagb-columns__wrap .uagb-column__wrap {
-	display: flex;
-}
-
 .uagb-columns__wrap .uagb-columns__shape {
 	overflow: hidden;
 	position: absolute;
