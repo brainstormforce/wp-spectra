@@ -73,95 +73,92 @@
 
     const onUnitSizeClick = ( unitSizes ) => {
         const items = [];
-        unitSizes
-    .forEach( key => items.push(
-        <Tooltip text={ sprintf(
-            __( '%s units', 'ultimate-addons-for-gutenberg' ),
-            key.name
-        ) }>
-            <Button
-                key={ key.unitValue }
-                className={ 'uagb-range-control__units--' + key.name }
-                isSmall
-                isPrimary={ props.unit === key.unitValue }
-                isSecondary={ props.unit !== key.unitValue }
-                aria-pressed={ props.unit === key.unitValue }
-                aria-label={ sprintf(
-                    __( '%s units', 'ultimate-addons-for-gutenberg' ),
-                    key.name
-                ) }
-                onClick={ () => onChangeUnits( key.unitValue ) }
-            >
-                { key.unitValue }
-            </Button>
-        </Tooltip>)
-        )
+        unitSizes.map( key => items.push(
+            <Tooltip text={ sprintf(
+                __( '%s units', 'ultimate-addons-for-gutenberg' ),
+                key.name
+            ) }>
+                <Button
+                    key={ key.unitValue }
+                    className={ 'uagb-range-control__units--' + key.name }
+                    isSmall
+                    isPrimary={ props.unit === key.unitValue }
+                    isSecondary={ props.unit !== key.unitValue }
+                    aria-pressed={ props.unit === key.unitValue }
+                    aria-label={ sprintf(
+                        __( '%s units', 'ultimate-addons-for-gutenberg' ),
+                        key.name
+                    ) }
+                    onClick={ () => onChangeUnits( key.unitValue ) }
+                >
+                    { key.unitValue }
+                </Button>
+            </Tooltip>
+        ))
 
         return( items );
     }
 
     return (
-        <>
       <div className={ classes }>
         <>
-        <div className='uagb-range-control__header'>
-            { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
-            <div className='uagb-range-control__actions'>
-                <ButtonGroup className='uagb-range-control__units' aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
-               { onUnitSizeClick( unitSizes ) }
-                </ButtonGroup>
-            <Button
-                className='uagb-spacing-reset'
-                disabled={ resetStateDisabled } 
-                isSecondary
-                isSmall
-                onClick={ e => {
-                e.preventDefault();
-                resetValues();
-            }}>
-                <Dashicon icon='image-rotate'/>
-            </Button>
+            <div className='uagb-range-control__header'>
+                { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
+                <div className='uagb-range-control__actions'>
+                    <ButtonGroup className='uagb-range-control__units' aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
+                        { onUnitSizeClick( unitSizes ) }
+                    </ButtonGroup>
+                    <Button
+                        className='uagb-spacing-reset'
+                        disabled={ resetStateDisabled } 
+                        isSecondary
+                        isSmall
+                        onClick={ e => {
+                        e.preventDefault();
+                        resetValues();
+                    }}>
+                        <Dashicon icon='image-rotate'/>
+                    </Button>
+                </div>
             </div>
-        </div>
-        <div className='uagb-range-control__mobile-controls'>
-        <RangeControl
-            value={ propsToPass.value }
-            onChange={ handleOnChange }
-            withInputField={ false }
-            allowReset={ false }
-            max={ props.max }
-            min={ props.min }
-        />
-        { withInputField && isNumberControlSupported && (
-            <NumberControl
-                disabled={ props.disabled }
-                isShiftStepEnabled={ isShiftStepEnabled }
-                max={ props.max }
-                min={ props.min }
-                onChange={ handleOnChange }
-                value={ value }
-            />
-        ) }
-        </div>
+            <div className='uagb-range-control__mobile-controls'>
+                <RangeControl
+                    value={ propsToPass.value }
+                    onChange={ handleOnChange }
+                    withInputField={ false }
+                    allowReset={ false }
+                    max={ props.max }
+                    min={ props.min }
+                />
+                { withInputField && isNumberControlSupported && (
+                    <NumberControl
+                        disabled={ props.disabled }
+                        isShiftStepEnabled={ isShiftStepEnabled }
+                        max={ props.max }
+                        min={ props.min }
+                        onChange={ handleOnChange }
+                        value={ value }
+                    />
+                ) }
+            </div>
         </>
      </div>
-     </>
-     );
+    );
  }
  
  Range.defaultProps = {
-     label: __( 'Margin', 'ultimate-addons-for-gutenberg' ),
-     className: '',
-     allowReset: true,
-     withInputField: true,
-     isShiftStepEnabled: true,
-     max: Infinity,
-     min: -Infinity,
-     resetFallbackValue: '',
-     placeholder: null,
-     initialPosition: 0,
-     unit:["px","em"],
-     onChange: () => {},
+    label: __( 'Margin', 'ultimate-addons-for-gutenberg' ),
+    className: '',
+    allowReset: true,
+    withInputField: true,
+    isShiftStepEnabled: true,
+    max: Infinity,
+    min: -Infinity,
+    resetFallbackValue: '',
+    placeholder: null,
+    initialPosition: 0,
+    unit:["px","em"],
+    onChange: () => {},
  }
  
  export default Range
