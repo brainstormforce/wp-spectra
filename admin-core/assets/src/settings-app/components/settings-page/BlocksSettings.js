@@ -9,7 +9,7 @@ const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings( prop ) {
 
-	const [ savingStateActivate, setssavingStateActicate ] = useState( false );
+	const [ savingStateActivate, setssavingStateActivate ] = useState( false );
 	const [ savingStateDeactivate, setssavingStateDeactivate ] = useState( false );
 
 	const [ { options }, dispatch ] = useStateValue();
@@ -28,7 +28,7 @@ function BlocksSettings( prop ) {
 	
 	const activateAllBlocks = ( e ) => {
 
-		setssavingStateActicate( true );
+		setssavingStateActivate( true );
 
 		window.uagUnsavedChanges = true;
 
@@ -47,7 +47,7 @@ function BlocksSettings( prop ) {
 		} );
 
 		let data = {
-			'action' : 'uag_activate_all_blocks',
+			'action' : 'uag_activate_deactivate_all_blocks',
 			'security' : uag_react.activate_all_blocks_nonce,
 			'value' : value
 		}
@@ -57,7 +57,7 @@ function BlocksSettings( prop ) {
 			data: data,
 			url: uag_react.ajax_url,
 			success( response ) {
-				setssavingStateActicate( false );
+				setssavingStateActivate( false );
 			},
 		} ).done( function () {
 		} );
