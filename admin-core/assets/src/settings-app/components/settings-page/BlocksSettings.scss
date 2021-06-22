@@ -1,0 +1,23 @@
+.uag-blocks-settings {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+
+    .uag-individual-block-settings-metabox {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .uag-individual-block-settings-metabox:nth-of-type(odd) {
+        margin-right: 30px;
+    }
+    .uag-toggle-field .components-toggle-control {
+        width: 100%;
+        .components-form-toggle {
+            width: 10%;
+        }
+        .components-toggle-control__label {
+            width: 80%;
+        }
+    }
+}
