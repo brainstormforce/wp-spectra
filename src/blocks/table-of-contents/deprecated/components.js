@@ -12,11 +12,6 @@ class TableOfContents extends Component {
 	}
 
 	componentDidMount() {
-		const getHeaderBlocks = () =>
-			select( 'core/block-editor' )
-				.getBlocks()
-				.filter( ( block ) => block.name === 'core/heading' );
-
 		const getData = ( headerData, a ) => {
 			headerData.map( ( header ) => {
 				const innerBlock = header.innerBlocks;

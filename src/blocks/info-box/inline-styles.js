@@ -81,7 +81,6 @@ function InfoBoxStyle( props ) {
 		ctaBorderhoverColor,
 		ctaIconSpace,
 	} = props.attributes;
-
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-icon': {
@@ -220,12 +219,6 @@ function InfoBoxStyle( props ) {
 		},
 		' .uagb-ifb-separator-parent': {
 			'margin-bottom': generateCSSUnit( seperatorSpace, 'px' ),
-		},
-		' .uagb-ifb-content': {
-			padding:
-				typeof blockPadding !== 'undefined'
-					? blockPadding + 'px'
-					: 'inherit',
 		},
 		' .uagb-ifb-align-icon-after': {
 			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),

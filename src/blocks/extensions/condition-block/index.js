@@ -41,7 +41,7 @@ const UserConditionOptions = ( props ) => {
 					<ToggleControl
 						label={ __( 'Hide From Logged In Users' ) }
 						checked={ UAGLoggedIn }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								UAGLoggedIn: ! attributes.UAGLoggedIn,
 							} )
@@ -50,7 +50,7 @@ const UserConditionOptions = ( props ) => {
 					<ToggleControl
 						label={ __( 'Hide From Logged Out Users' ) }
 						checked={ UAGLoggedOut }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								UAGLoggedOut: ! attributes.UAGLoggedOut,
 							} )
@@ -63,7 +63,7 @@ const UserConditionOptions = ( props ) => {
 					<ToggleControl
 						label={ __( 'Hide on Desktop' ) }
 						checked={ UAGHideDesktop }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								UAGHideDesktop: ! attributes.UAGHideDesktop,
 							} )
@@ -72,7 +72,7 @@ const UserConditionOptions = ( props ) => {
 					<ToggleControl
 						label={ __( 'Hide on Tablet' ) }
 						checked={ UAGHideTab }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								UAGHideTab: ! attributes.UAGHideTab,
 							} )
@@ -81,7 +81,7 @@ const UserConditionOptions = ( props ) => {
 					<ToggleControl
 						label={ __( 'Hide on Mobile' ) }
 						checked={ UAGHideMob }
-						onChange={ ( value ) =>
+						onChange={ () =>
 							setAttributes( {
 								UAGHideMob: ! attributes.UAGHideMob,
 							} )

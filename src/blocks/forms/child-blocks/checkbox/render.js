@@ -49,7 +49,7 @@ const Render = ( props ) => {
 					value={ option.optiontitle }
 					id={ option.optiontitle }
 				/>
-				<label htmlFor={ option.optiontitle }></label>
+				<label htmlFor={ option.optiontitle }> </label>
 				<input
 					className="uagb-inner-input-view"
 					aria-label={ option.optiontitle }

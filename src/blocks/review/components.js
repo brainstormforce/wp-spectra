@@ -270,7 +270,7 @@ export class ReviewBody extends Component {
 													average:
 														newItems
 															.map(
-																( i ) => i.value
+																( k ) => k.value
 															)
 															.reduce(
 																( total, v ) =>
@@ -299,7 +299,7 @@ export class ReviewBody extends Component {
 											this.setState( {
 												average:
 													newArray
-														.map( ( i ) => i.value )
+														.map( ( k ) => k.value )
 														.reduce(
 															( total, v ) =>
 																total + v

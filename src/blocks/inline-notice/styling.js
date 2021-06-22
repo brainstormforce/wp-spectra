@@ -63,7 +63,7 @@ function styling( props ) {
 	let mobileSelectors = {};
 
 	const selectors = {
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-weight': titleFontWeight,
 			'font-family': titleFontFamily,
@@ -103,13 +103,13 @@ function styling( props ) {
 
 	if ( 'modern' == layout ) {
 		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus'
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = noticeColor;
 		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus'
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-top-right-radius' ] = '3px';
 		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus'
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-top-left-radius' ] = '3px';
 
 		selectors[
@@ -126,10 +126,10 @@ function styling( props ) {
 		][ 'border-bottom-right-radius' ] = '3px';
 	} else if ( 'simple' == layout ) {
 		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus'
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = contentBgColor;
 		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus'
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
 
@@ -142,7 +142,7 @@ function styling( props ) {
 			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
 	}
 	mobileSelectors = {
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
 				titleFontSizeType
@@ -166,7 +166,7 @@ function styling( props ) {
 	};
 
 	tabletSelectors = {
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
 				titleFontSizeType

@@ -67,7 +67,9 @@ const Render = ( props ) => {
 					rel="noopener noreferrer"
 					aria-label={ label }
 					href={ linkUrl }
-				></a>
+				>
+					{ ' ' }
+				</a>
 			) }
 			<div className="uagb-icon-list__content-wrap">
 				<span className="uagb-icon-list__source-wrap">
