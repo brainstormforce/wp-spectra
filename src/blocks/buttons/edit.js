@@ -4,6 +4,7 @@
 
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
+import { withSelect } from '@wordpress/data';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 
 const Settings = lazy( () =>
@@ -71,4 +72,16 @@ const ButtonsComponent = ( props ) => {
 	);
 };
 
-export default ButtonsComponent;
+export default withSelect( ( select ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select(
+		'core/edit-post'
+	);
+
+	const deviceType = __experimentalGetPreviewDeviceType
+		? __experimentalGetPreviewDeviceType()
+		: null;
+
+	return {
+		deviceType,
+	};
+} )( ButtonsComponent );
