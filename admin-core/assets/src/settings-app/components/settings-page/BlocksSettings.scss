@@ -21,3 +21,12 @@
         }
     }
 }
+.uag-bulk-blocks-settings-wrap {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    .uag-button-field:nth-of-type(odd) {
+        margin-right: 20px;
+    }
+}

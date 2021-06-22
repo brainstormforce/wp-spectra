@@ -44,7 +44,7 @@ function IndividualBlockSetting( props ) {
 			blocksCachedValue = options['_uag_common[blocks_activation_and_deactivation]'];
 		}
 	}, [ options['_uag_common[blocks_activation_and_deactivation]'] ] );
-
+	
 	return (
 		<div className="uag-individual-block-settings-metabox">
             <ToggleField
