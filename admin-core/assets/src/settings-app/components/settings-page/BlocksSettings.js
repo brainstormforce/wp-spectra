@@ -98,6 +98,11 @@ function BlocksSettings( prop ) {
 		} ).done( function () {
 		} );
 	}
+
+	const onReusableBlocksClick = () => {
+
+		location.href = uag_react.reusable_url;
+	}
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
@@ -110,6 +115,11 @@ function BlocksSettings( prop ) {
 					buttonText = { __( 'Deactivate All', 'ultimate-addons-for-gutenberg' ) }
 					onClick = { deactivateAllBlocks }
 					saving = { savingStateDeactivate }
+				/>
+				<NormalButton
+					buttonText = { __( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ) }
+					onClick = { onReusableBlocksClick }
+					saving = { false }
 				/>
 			</div>
 			<div className="uag-blocks-settings">

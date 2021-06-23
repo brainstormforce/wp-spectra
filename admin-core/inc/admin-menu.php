@@ -191,7 +191,8 @@ class AdminMenu {
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),
 				'home_slug'            => $this->menu_slug,
 				'rollback_url'         => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
-				'blocks_info' => $blocks_info
+				'blocks_info' => $blocks_info,
+				'reusable_url' => esc_url( admin_url( 'edit.php?post_type=wp_block' ) )
 			)
 		);
 

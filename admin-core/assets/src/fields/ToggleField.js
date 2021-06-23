@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { ToggleControl } from '@wordpress/components';
 import './ToggleField.scss';
@@ -12,10 +11,7 @@ function ToggleField( props ) {
 		desc,
 	} = props;
 
-    
-	const [ inputvalue, setInputvalue ] = useState( value );
-
-    let checked = 'disabled' ===  inputvalue ? false : true;
+    let checked = 'disabled' ===  value ? false : true;
 
 	function handleCheckboxClick( e ) {
 
@@ -27,10 +23,8 @@ function ToggleField( props ) {
 		} );
 
 		document.dispatchEvent( changeEvent );
-
-        setInputvalue( checkedValue );
 	}
-
+	
 	return (
 		<div className="uag-field uag-toggle-field">
 			<div className="uag-field__data">
