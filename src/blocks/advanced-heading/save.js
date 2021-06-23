@@ -16,14 +16,25 @@ export default function save( props ) {
 		headingId,
 	} = props.attributes;
 
-	let seprator_output = '';
+	let seprator = '';
 	if ( seperatorStyle !== 'none' ) {
-		seprator_output = (
+		seprator = (
 			<div className="uagb-separator-wrap">
 				<div className="uagb-separator"></div>
 			</div>
 		);
 	}
+	let descText = '';
+	
+	if ( headingDesc !== '' ) {
+
+		descText = <RichText.Content
+					tagName="p"
+					value={ headingDesc }
+					className="uagb-desc-text"
+				/>
+	}
+	
 	return (
 		<div
 			className={ classnames(
@@ -37,12 +48,8 @@ export default function save( props ) {
 				className="uagb-heading-text"
 				id={ headingId }
 			/>
-			{ seprator_output }
-			<RichText.Content
-				tagName="p"
-				value={ headingDesc }
-				className="uagb-desc-text"
-			/>
+			{ seprator }
+			{ descText }
 		</div>
 	);
 }
