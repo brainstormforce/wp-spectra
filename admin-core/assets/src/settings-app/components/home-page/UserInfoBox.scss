@@ -23,4 +23,19 @@
 			margin-top: 10px;
 		}
 	}
+	.uag-metabox__elements {
+		display: flex;
+		width: 100%;
+	}
+	.uag-metabox__element {
+		background-color: #fff;
+		padding: 15px;
+		margin: 10px;
+
+		.uag-button {
+			background: #2F4F4F;
+			color: #fff;
+			margin: 10px 0px;
+		}
+	}
 }

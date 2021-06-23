@@ -2,8 +2,9 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import HomePage from '@SettingsApp/pages/HomePage';
-import SettingsPage from '@SettingsApp/pages/SettingsPage';
+import BlocksPage from '@SettingsApp/pages/BlocksPage';
 import ToolsPage from '@SettingsApp/pages/ToolsPage';
+import SettingsPage from '@SettingsApp/pages/SettingsPage';
 
 function SettingsRoute() {
 	let query = new URLSearchParams( useLocation().search );
@@ -18,11 +19,14 @@ function SettingsRoute() {
 			route_page = <WelcomePage />;
 		} else {
 			switch ( path ) {
-				case 'settings':
-					route_page = <SettingsPage />;
+				case 'blocks':
+					route_page = <BlocksPage />;
 					break;
 				case 'tools':
 					route_page = <ToolsPage />;
+					break;
+				case 'settings':
+					route_page = <SettingsPage />;
 					break;
 				default:
 					route_page = <HomePage />;

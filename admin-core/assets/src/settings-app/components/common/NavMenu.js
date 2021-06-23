@@ -17,6 +17,11 @@ function NavMenu() {
 			path: 'tools',
 		},
 		{
+			name: __('Blocks', 'ultimate-addons-for-gutenberg'),
+			slug: uag_react.home_slug,
+			path: 'blocks',
+		},
+		{
 			name: __('Settings', 'ultimate-addons-for-gutenberg'),
 			slug: uag_react.home_slug,
 			path: 'settings',

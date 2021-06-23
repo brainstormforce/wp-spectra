@@ -51,7 +51,8 @@ class AdminHelper {
 				'rollback_to_previous_version' => $uag_versions[0]['value'],
 				'enable_beta_updates'          => 'no',
 				'enable_file_generation'       => 'no',
-				'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() )
+				'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() ),
+				'enable_templates_button' => 'disabled',
 			)
 		);
 

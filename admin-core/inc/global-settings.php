@@ -79,7 +79,17 @@ class GlobalSettings {
 			),
 			'blocks_activation_and_deactivation'       => array(
 				'title' => __( 'Blocks Activation & Deactivation', 'ultimate-addons-for-gutenberg' ),
-			)
+			),
+			'enable_templates_button'       => array(
+				'title'  => __( 'Templates', 'ultimate-addons-for-gutenberg' ),
+				'fields' => array(
+					'enable_templates_button' => array(
+						'type'  => 'toggle',
+						'name'  => '_uag_common[enable_templates_button]',
+						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
+					),
+				),
+			),
 
 		);
 

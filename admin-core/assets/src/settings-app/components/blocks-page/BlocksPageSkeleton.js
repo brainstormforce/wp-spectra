@@ -7,16 +7,16 @@ import Skeleton, {
 	CircleSkeleton,
 } from '@Skeleton';
 
-import './SettingsPageSkeleton.scss';
+import './BlocksPageSkeleton.scss';
 
 function FlowRowSkeleton() {
+	
 	return (
 		<div className="uag-settings-nav">
 			<div className="uag-settings-nav__tabs">
 				{ Array( 5 )
 					.fill()
-					.map( ( i,j ) => {
-						
+					.map( ( i, j ) => {
 						return (
 							<div key={ j } className="uag-settings-nav__tab">
 								<RectSkeleton height="45px" />

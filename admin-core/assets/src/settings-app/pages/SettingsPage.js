@@ -1,17 +1,15 @@
+import { __ } from '@wordpress/i18n';
+import SettingsPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
+import Nav from '@SettingsApp/components/settings-page/SettingsNav';
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
-import { __ } from '@wordpress/i18n';
-
-import './SettingsPage.scss';
-
-import Nav from '@SettingsApp/components/settings-page/SettingNav';
-import BlocksSettings from '@SettingsApp/components/settings-page/BlocksSettings';
-import SettingPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
+import TemplatesButton from '@SettingsApp/components/settings-page/TemplatesButton';
 
 function SettingsPage() {
-	const [ { globaldata }, dispatch ] = useStateValue();
+
+    const [ { globaldata }, dispatch ] = useStateValue();
 
 	let loading = true;
 
@@ -47,28 +45,29 @@ function SettingsPage() {
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <SettingPageSkeleton />;
+		return <SettingsPageSkeleton />;
 	} else {
 		switch ( tab ) {
-			case '#blocks_settings':
+			case '#templates_settings':
 				current_tab = (
-					<BlocksSettings />
+					<TemplatesButton />
 				);
 				break;
 			default:
 				current_tab = (
-					<BlocksSettings />
+					<TemplatesButton />
 				);
 				break;
 		}
 	}
+
 	return (
 		<div className="uag-global-settings-metabox">
 			<div className="uag-global-settings-metabox__tabs">
 				<nav className="uag-global-settings-metabox__tabs-menu">
 					<Nav
-						title={ __( 'Blocks Settings', 'ultimate-addons-for-gutenberg' ) }
-						slug="#blocks_settings"
+						title={ __( 'Templates', 'ultimate-addons-for-gutenberg' ) }
+						slug="#templates_settings"
 					/>
 				</nav>
 

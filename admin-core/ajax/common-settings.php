@@ -54,10 +54,46 @@ class CommonSettings extends AjaxBase {
 			'enable_file_generation',
 			'regenerate_assets',
 			'blocks_activation_and_deactivation',
-			'activate_deactivate_all_blocks'
+			'activate_deactivate_all_blocks',
+			'enable_templates_button'
 		);
 
 		$this->init_ajax_events( $ajax_events );
+	}
+	
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function enable_templates_button() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_enable_templates_button', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		AdminHelper::set_common_settings( 'enable_templates_button', $_POST['value'] );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
 	}
 
 	/**
