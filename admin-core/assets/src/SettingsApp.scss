@@ -15,15 +15,12 @@
 
 /** Row & Columns CSS */
 .uag-row {
-	display: flex;
-	width: 100%;
-
-	.uag-col-md-6 {
-		width: 50%;
+	.uag-col {
+		width: 100%;
 		background: #fff;
 		padding: 15px;
 	}
-	.uag-col-md-6:nth-of-type(odd) {
-		margin-right: 30px;
+	.uag-col:nth-of-type(odd) {
+		margin-bottom: 30px;
 	}
 }

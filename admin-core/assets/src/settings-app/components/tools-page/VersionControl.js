@@ -83,7 +83,7 @@ function VersionControl( props ) {
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<div className="uag-row">
-				<div className="uag-col-md-6">
+				<div className="uag-col">
 					<SettingTable
 						settings={ rollbackSettings }
 						meta_key="_uag_common"
@@ -95,7 +95,7 @@ function VersionControl( props ) {
 						/>
 					</div>
 				</div>
-				<div className="uag-col-md-6">
+				<div className="uag-col">
 					<SettingTable
 						settings={ enableBetaUpdatesSettings }
 						meta_key="_uag_common"

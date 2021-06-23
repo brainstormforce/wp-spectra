@@ -87,13 +87,13 @@ function AssetsGeneration( props ) {
 				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
 			</h3>
 			<div className="uag-row">
-				<div className="uag-col-md-6">
+				<div className="uag-col">
 					<SettingTable
 						settings={ enableFileGenerationSettings }
 						meta_key="_uag_common"
 					/>
 				</div>
-				<div className="uag-col-md-6">
+				<div className="uag-col">
 					<label className="uag-label bottom-space"> { __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ) } </label>
 					<NormalButton
 						buttonText = { __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
