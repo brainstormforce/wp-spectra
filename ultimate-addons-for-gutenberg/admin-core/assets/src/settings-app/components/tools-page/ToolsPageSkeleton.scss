@@ -1,0 +1,22 @@
+.uag-settings-nav {
+	display: flex;
+}
+
+.uag-settings-nav__tabs {
+	width: 250px;
+	background: #f7f8fa;
+	padding: 15px;
+}
+.uag-settings-nav__tab {
+	padding: 0 0 10px 0;
+
+	&:last-child {
+		padding: 0;
+	}
+}
+
+.uag-settings-nav__content {
+	padding: 25px;
+	background: #ffffff;
+	width: calc( 100% - 250px );
+}

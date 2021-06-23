@@ -1,0 +1,131 @@
+.uag-hide {
+	display: none !important;
+}
+
+.uag-button {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	text-decoration: none;
+	text-shadow: none;
+	font-size: 14px;
+	min-height: 36px;
+	line-height: 1;
+	line-height: 1.5;
+	padding: 7px 18px;
+	display: inline;
+	display: inline-block;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+
+.uag-button--small {
+	min-height: 26px;
+	padding: 0 8px;
+	font-size: 11px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	text-decoration: none;
+	text-shadow: none;
+	line-height: 2;
+	display: inline-block;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+}
+
+.uag-button--primary {
+	background: #2F4F4F;;
+	border-color: #2F4F4F;
+	color: #fff;
+}
+
+.uag-button--primary:focus,
+.uag-button--primary:hover {
+	background: #2F4F4F;
+	border-color: #2F4F4F;
+	color: #fff;
+	box-shadow: none;
+	outline: none;
+}
+
+.uag-button--secondary {
+	background: var( --secondary-color );
+	border-color: var( --secondary-border-color );
+	color: #3a3a3a;
+}
+
+.uag-button--secondary:focus,
+.uag-button--secondary:hover {
+	background: var( --secondary-hv-color );
+	border-color: var( --secondary-border-color );
+	color: #3a3a3a;
+	box-shadow: none;
+}
+
+/* Popu header */
+.uag-popup-header-title {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 500;
+	color: #444;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: none;
+}
+.uag-popup-header-title .ultimate-addons-for-gutenberg-logo-icon {
+	padding: 15px;
+}
+
+.uag-popup-header-action {
+	display: inline-block;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-left: 1px solid #ddd;
+	position: relative;
+	color: #ccc;
+	cursor: pointer;
+
+	.dashicons {
+		line-height: 1;
+	}
+
+	&:after {
+		// content: '\2807';
+		font-size: 25px;
+	}
+
+	&:hover {
+		color: #aaa;
+	}
+}
+
+.uag-message, 
+.uag-error-message--toggle, 
+.uag-error--info{
+	padding: 5px;
+    display: block;
+    font-size: 12px;
+}
+
+.uag-message--error{
+	color: var( --primary-color );
+}
+
+.uag-error-message--toggle{
+	cursor: pointer;
+}
+.uag-error--info{
+	background-color: #f2f2f2;
+    border-radius: 3px;
+    padding: 10px;
+    border: 1px #ccc dashed;
+}
