@@ -3,7 +3,6 @@
  */
  import './editor.scss';
  import { __, sprintf } from '@wordpress/i18n';
- import {   } from '@wordpress/element';
  import { ButtonGroup, Button, TabPanel, Tooltip, Dashicon } from '@wordpress/components';
  import { useDispatch } from '@wordpress/data';
  
@@ -51,69 +50,83 @@
  
 	 const onChangeUnits = ( value ) => {
         if ( props.type === 'padding' ) {
-            props.setAttributes( { paddingUnit: value } );
+			if( 'mobile' === value.className ){
+				props.setAttributes( { mobilePaddingUnit: value.unitValue } );
+			}else if( 'tablet' === value.className ){
+				props.setAttributes( { tabletPaddingUnit: value.unitValue } );
+			}else {
+				props.setAttributes( { paddingUnit: value.unitValue } );
+			}
         } else {
-            props.setAttributes( { marginUnit: value } );
+			if( 'mobile' === value.className ){
+				props.setAttributes( { mobileMarginUnit: value.unitValue } );
+			}else if( 'tablet' === value.className ){
+				props.setAttributes( { tabletMarginUnit: value.unitValue } );
+			}else {
+				props.setAttributes( { marginUnit: value.unitValue } );
+			}
         }
      }
  
-         const {
-             help,
-             instanceId,
-             label = __( 'Margin', 'ultimate-addons-for-gutenberg' ),
-             type = 'margin',
-             unit,
-             valueBottom,
-             valueLeft,
-             valueRight,
-             valueTop,
-             valueBottomTablet,
-             valueLeftTablet,
-             valueRightTablet,
-             valueTopTablet,
-             valueBottomMobile,
-             valueLeftMobile,
-             valueRightMobile,
-             valueTopMobile,
-             setAttributes,
-         } = props;
+        const {
+            help,
+            instanceId,
+            label = __( 'Margin', 'ultimate-addons-for-gutenberg' ),
+            type = 'margin',
+            unit,
+			mUnit,
+			tUnit,
+            valueBottom,
+            valueLeft,
+            valueRight,
+            valueTop,
+            valueBottomTablet,
+            valueLeftTablet,
+            valueRightTablet,
+            valueTopTablet,
+            valueBottomMobile,
+            valueLeftMobile,
+            valueRightMobile,
+            valueTopMobile,
+			deviceType,
+        } = props;
  
-         const id = `inspector-uagb-spacing-control-${ instanceId }`;
+        const id = `inspector-uagb-spacing-control-${ instanceId }`;
  
-         const onChangeTopValue = ( event ) => {
-             const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+        const onChangeTopValue = ( event ) => {
+            const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
                 
-             let device = '';
-             if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-                 device = event.target.getAttribute( 'data-device-type' );
-             }
+            let device = '';
+            if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+                device = event.target.getAttribute( 'data-device-type' );
+            }
  
-                 onChangeTop( newValue, device );
-         };
+            onChangeTop( newValue, device );
+        };
  
-         const onChangeRightValue = ( event ) => {
-             const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+        const onChangeRightValue = ( event ) => {
+            const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
-             let device = '';
-             if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-                 device = event.target.getAttribute( 'data-device-type' );
-             }
+            let device = '';
+            if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+                device = event.target.getAttribute( 'data-device-type' );
+            }
  
-                 onChangeRight( newValue, device );
-         };
+            onChangeRight( newValue, device );
+        };
  
-         const onChangeBottomValue = ( event ) => {
-             const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+        const onChangeBottomValue = ( event ) => {
+            const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
             let device = '';
 			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
 				device = event.target.getAttribute( 'data-device-type' );
 			}
  
-                 onChangeBottom( newValue, device );
-         };
+            onChangeBottom( newValue, device );
+        };
  
-         const onChangeLeftValue = ( event ) => {
+        const onChangeLeftValue = ( event ) => {
             const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
 			let device = '';
@@ -122,22 +135,48 @@
 			}
 
             onChangeLeft( newValue, device );
-         };
- 
-         const unitSizes = [
-             {
-                 name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-                 unitValue: 'px',
-             },
-             {
-                 name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-                 unitValue: 'em',
-             },
-         ];
+        };
 
-         const onSelect = ( tabName ) => {
+		const unitSizes = [
+			{
+				name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'px',
+				className: 'desktop'
+			},
+			{
+				name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'em',
+				className: 'desktop'
+			},
+		];
+		const mobilePaddingType = [
+			{
+				name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'px',
+				className: 'mobile'
+			},
+			{
+				name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'em',
+				className: 'mobile'
+			},
+		];
+
+		const tabletPaddingType = [
+			{
+				name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'px',
+				className: 'tablet'
+			},
+			{
+				name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+				unitValue: 'em',
+				className: 'tablet'
+			},
+		];
+
+        const onSelect = ( tabName ) => {
 			let selected = 'desktop';
-
 			switch ( tabName ) {
 				case 'desktop':
 					selected = 'tablet';
@@ -155,7 +194,6 @@
 					break;
 			}
 
-			//Reset z-index
 			const buttons = document.getElementsByClassName( `uagb-spacing-control__mobile-controls-item--${ props.type }` );
 
 			for( let i = 0; i < buttons.length; i++ ) {
@@ -182,14 +220,15 @@
 						key={ key.unitValue }
 						className={ 'uagb-range-control__units--' + key.name }
 						isSmall
-						isPrimary={ props.unit === key.unitValue }
-						isSecondary={ props.unit !== key.unitValue }
-						aria-pressed={ props.unit === key.unitValue }
+						isPrimary={ ( 'desktop' === key.className && unit === key.unitValue ) || ( 'mobile' === key.className && mUnit === key.unitValue ) || ( 'tablet' === key.className && tUnit === key.unitValue ) }
+						isSecondary={ unit !== key.unitValue || mUnit !== key.unitValue || tUnit !== key.unitValue }
+						aria-pressed={ ( 'desktop' === key.className && unit === key.unitValue ) || ( 'mobile' === key.className && mUnit === key.unitValue ) || ( 'tablet' === key.className && tUnit === key.unitValue )  }
+						data-device-type={ deviceType }
 						aria-label={ sprintf(
 							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
 						) }
-						onClick={ () => onChangeUnits( key.unitValue ) }
+						onClick={ () => onChangeUnits( key ) }
 					>
 						{ key.unitValue }
 					</Button>
@@ -197,14 +236,16 @@
 				));
 			return( items );
 		}
-	
-         return (
+
+        return (
 				<div className='components-base-control uagb-spacing-control'>
 				<div className="uagb-spacing-control__header">
 					{ label && <p className={ 'uagb-spacing-control__label' }>{ label }</p> }
 					<div className="uagb-spacing-control__actions">
 						<ButtonGroup className="uagb-spacing-control__units" aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
-						{ onUnitSizeClick( unitSizes ) }
+						{ deviceType == 'Desktop' && onUnitSizeClick( unitSizes ) }
+						{ deviceType == 'Mobile' && onUnitSizeClick( mobilePaddingType ) }
+						{ deviceType == 'Tablet' && onUnitSizeClick( tabletPaddingType ) }
 						</ButtonGroup>
 					</div>
 				</div>
@@ -235,8 +276,7 @@
 						className: `uagb-spacing-control__mobile-controls-item uagb-spacing-control__mobile-controls-item--${ props.type } components-button is-button is-default is-secondary uagb-spacing-control__mobile-controls-item--mobile uagb-spacing-control__mobile-controls-item-${ props.type }--mobile`,
 					},
 				] }>
-				{
-				( tab ) => {
+				{ ( tab ) => {
 					let tabout
 					if ( "mobile" === tab.name ) {
 						tabout = (
@@ -422,7 +462,7 @@
 					<span className="uagb-spacing-control__number-label-blank"></span>
 				</div>
 			</div>
-         );
+        );
  }
 
 export default DimensionsControl

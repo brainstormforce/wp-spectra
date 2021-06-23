@@ -59,7 +59,9 @@
          noticeAlignment,
          layout,
          highlightWidth,
-         widthType
+         widthType,
+         tabletPaddingUnit,
+         mobilePaddingUnit
      } = props.attributes
  
  
@@ -145,10 +147,10 @@
          " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
              "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
              "line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
-             "padding-left" : generateCSSUnit( paddingLeftMobile, paddingUnit ),
-             "padding-right" : generateCSSUnit( paddingRightMobile, paddingUnit ),
-             "padding-top" : generateCSSUnit( paddingTopMobile, paddingUnit ),
-             "padding-bottom" : generateCSSUnit( paddingBottomMobile, paddingUnit ),
+             "padding-left" : generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+             "padding-right" : generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+             "padding-top" : generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
+             "padding-bottom" : generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
          },
          
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -161,10 +163,10 @@
              " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
                  "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
                  "line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
-                 "padding-left" : generateCSSUnit( paddingLeftTablet, paddingUnit ),
-                "padding-right" : generateCSSUnit( paddingRightTablet, paddingUnit ),
-                "padding-top" : generateCSSUnit( paddingTopTablet, paddingUnit ),
-                "padding-bottom" : generateCSSUnit( paddingBottomTablet, paddingUnit ),
+                 "padding-left" : generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+                "padding-right" : generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+                "padding-top" : generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
+                "padding-bottom" : generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
              },
  
              " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {

@@ -180,6 +180,8 @@ class UAGBInlineNoticeEdit extends Component {
 				color,
 				colorClass,
 				paddingUnit,
+				mobilePaddingUnit,
+				tabletPaddingUnit,
 				paddingTop,
 				paddingBottom,
 				paddingLeft,
@@ -386,6 +388,8 @@ class UAGBInlineNoticeEdit extends Component {
 							valueBottomMobile={ paddingBottomMobile }
 							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
+							mUnit={ mobilePaddingUnit }
+							tUnit={ tabletPaddingUnit }
 							deviceType={ deviceType }
 						/>
 				</PanelBody>
