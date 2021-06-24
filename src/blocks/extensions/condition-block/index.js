@@ -147,10 +147,43 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 	};
 }, 'AdvancedControlsBlock');
 
+function ApplyExtraClass(extraProps, blockType, attributes) {
+
+	const { 
+		UAGHideDesktop,
+		UAGHideTab,
+		UAGHideMob,
+		UAGDisplayConditions,
+	} = attributes;
+
+	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
+		if ( UAGHideDesktop ) {
+			extraProps.className = extraProps.className + ' uag-hide-desktop';
+		}
+	
+		if ( UAGHideTab ) {	
+			extraProps.className = extraProps.className + ' uag-hide-tab';
+		}
+	
+		if ( UAGHideMob ) {	
+			extraProps.className = extraProps.className + ' uag-hide-mob';
+		}
+		
+	}
+
+	return extraProps;
+}
+
 if( '1' === enableConditions ){
 	addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
 		AdvancedControlsBlock,
 	);
+
+    addFilter(
+        'blocks.getSaveContent.extraProps',
+        'uagb/apply-extra-class',
+        ApplyExtraClass,
+    );
 }

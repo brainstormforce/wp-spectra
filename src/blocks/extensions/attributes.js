@@ -62,6 +62,9 @@ if ( "1" === enableMasonryGallery ) {
 						type: "boolean",
 						default: false
 					},
+					masonryGutter: {
+						type: "number",
+					}
 				} );		
 			}
 		}
