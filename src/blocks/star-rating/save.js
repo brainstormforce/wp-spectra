@@ -3,9 +3,7 @@
  */
 
 import classnames from "classnames"
-import {
-	RichText,
-} from "@wordpress/block-editor"
+import { RichText } from "@wordpress/block-editor"
 
 export default function save( props ) {
 	

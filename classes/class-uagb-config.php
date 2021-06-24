@@ -2927,7 +2927,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block helps you add Star Rating and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'js_assets'   => array(),
-						'extension'   => false,
 						'attributes'  => array(
 							'block_id'         => '',
 							'range'            => '5',
