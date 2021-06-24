@@ -9,6 +9,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
+		stack,
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
@@ -252,6 +253,22 @@ function styling( props ) {
 		},
 	};
 
+	if ( 'tablet' == stack ) {
+	
+
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+	} else if ( 'mobile' == stack ) {
+
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+
+	}
 	let stylingCss = '';
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
