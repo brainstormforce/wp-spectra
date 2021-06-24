@@ -116,10 +116,12 @@ function styling( props ) {
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
+			tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
-
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+				'flex-direction': 'column',
+			};
 			tabletSelectors[
 				'.uagb-social-share__layout-horizontal .uagb-ss__wrapper'
 			] = {
@@ -133,7 +135,7 @@ function styling( props ) {
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
 
