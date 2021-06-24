@@ -5559,43 +5559,43 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'break-inside'       => 'avoid',
 					'width'              => 'unset',
 				),
-				'[class*="columns-"].wp-block-gallery .blocks-gallery-grid' => array(
+				'.wp-block-gallery .blocks-gallery-grid' => array(
 					'column-gap' => '1em',
 					'display'    => 'unset',
 				),
-				'.columns-1 .blocks-gallery-grid' => array(
+				'.columns-1 .blocks-gallery-grid'        => array(
 					'column-count' => '1',
 				),
-				'.columns-2 .blocks-gallery-grid' => array(
+				'.columns-2 .blocks-gallery-grid'        => array(
 					'column-count' => '2',
 				),
-				'.columns-3 .blocks-gallery-grid' => array(
+				'.columns-3 .blocks-gallery-grid'        => array(
 					'column-count' => '3',
 				),
-				'.columns-4 .blocks-gallery-grid' => array(
+				'.columns-4 .blocks-gallery-grid'        => array(
 					'column-count' => '4',
 				),
-				'.columns-5 .blocks-gallery-grid' => array(
+				'.columns-5 .blocks-gallery-grid'        => array(
 					'column-count' => '5',
 				),
-				'.columns-6 .blocks-gallery-grid' => array(
+				'.columns-6 .blocks-gallery-grid'        => array(
 					'column-count' => '6',
 				),
-				'.columns-7 .blocks-gallery-grid' => array(
+				'.columns-7 .blocks-gallery-grid'        => array(
 					'column-count' => '7',
 				),
-				'.columns-8 .blocks-gallery-grid' => array(
+				'.columns-8 .blocks-gallery-grid'        => array(
 					'column-count' => '8',
 				),
 			);
 
 			$m_selectors = array(
-				'[class*="columns-"].wp-block-gallery .blocks-gallery-grid' => array(
+				'.wp-block-gallery .blocks-gallery-grid' => array(
 					'column-count' => '2',
 					'column-gap'   => '1em',
 					'display'      => 'unset',
 				),
-				'.columns-1 .blocks-gallery-grid' => array(
+				'.columns-1 .blocks-gallery-grid'        => array(
 					'column-count' => '1',
 				),
 			);
