@@ -5520,6 +5520,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @since x.x.x
 		 */
+		public static function get_gallery_css( $attr, $id ) {
+			if ( isset( $attr['masonry'] ) && true === $attr['masonry'] && isset( $attr['masonryGutter'] ) && '' !== $attr['masonryGutter'] ) {
+				$col_count = ( isset( $attr['columns'] ) ) ? $attr['columns'] : 3;
+				$selectors = array(
+					'.wp-block-gallery.columns-' . $col_count . ' ul.blocks-gallery-grid' => array(
+						'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+					),
+					'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item' => array(
+						'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+					),
+				);
+			}
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => array(),
+				'mobile'  => array(),
+			);
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uag-masonry' );
+		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @since x.x.x
+		 */
 		public static function get_masonry_gallery_css() {
 
 			$selectors = array(

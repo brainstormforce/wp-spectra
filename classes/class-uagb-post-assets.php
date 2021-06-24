@@ -526,6 +526,7 @@ class UAGB_Post_Assets {
 		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
 			$this->current_block_list[] = 'uagb/masonry-gallery';
 			$this->uag_flag             = true;
+			$css                       += UAGB_Block_Helper::get_gallery_css( $blockattr, $block_id );
 		}
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {
