@@ -38,7 +38,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 */
 		public function __construct() {
 
-			add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 101 );
 		}
 		/**
 		 * Generates stylesheet and appends in head tag.
@@ -56,6 +56,10 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 				$post_id = get_theme_mod( $mod_key );
 				$post    = get_post( $post_id );
 				array_push( $all_posts, $post );
+			}
+
+			if ( ! is_object( $post_assets_obj ) ) {
+				return;
 			}
 
 			foreach ( $all_posts as $post ) {
