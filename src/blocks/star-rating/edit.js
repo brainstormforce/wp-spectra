@@ -105,16 +105,15 @@ class UAGBStarRating extends Component {
 			)
 		}
 
-		let range_value = parseInt(range);
-		var stars = [];
-		for (var i = 1; i <= range_value; i++) {
-			stars.push(<i class="uag-star">★</i>);
-    	}
-
 		/**
 		 * Generates the markup for Edit.
 		 */
 		const renderMarkup = () => {
+			let range_value = parseInt(range);
+			var stars = [];
+			for (var i = 1; i <= range_value; i++) {
+				stars.push(<i class="uag-star">★</i>);
+			}
 			return (
 				<div
 					className={ classnames(
