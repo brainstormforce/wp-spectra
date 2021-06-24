@@ -1,5 +1,7 @@
 import './masonry-gallery';
 import './condition-block';
+import "./editor.scss"
+import { addFilter } from "@wordpress/hooks";
 
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
@@ -25,13 +27,13 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		
 	}
 
-	if ( 'core/gallery' === blockType.name && attributes.masonry ) {
-		extraProps.className = extraProps.className + ' uag-masonry';
-	}
+	// if ( 'core/gallery' === blockType.name && attributes.masonry ) {
+	// 	extraProps.className = extraProps.className + ' uag-masonry';
+	// }
 
 	return extraProps;
 }
-wp.hooks.addFilter(
+addFilter(
 	'blocks.getSaveContent.extraProps',
 	'uagb/apply-extra-class',
 	ApplyExtraClass,

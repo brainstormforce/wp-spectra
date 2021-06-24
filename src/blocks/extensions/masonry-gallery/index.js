@@ -1,30 +1,43 @@
 import { __ } from '@wordpress/i18n';
 import { Fragment } from "@wordpress/element";
-import { InspectorAdvancedControls } from "@wordpress/block-editor";
-import { ToggleControl } from "@wordpress/components";
+import { InspectorControls } from "@wordpress/block-editor";
+import { ToggleControl, PanelBody } from "@wordpress/components";
+import { createHigherOrderComponent } from "@wordpress/compose";
+import { addFilter } from "@wordpress/hooks";
 const { enableMasonryGallery } = uagb_blocks_info;
 
-const MasonryGallery = wp.compose.createHigherOrderComponent((BlockEdit) => {
+const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 
 	return (props) => {
+
 		const { attributes, setAttributes, isSelected } = props;
 		const blockName = props.name;
 		const blockType = [ 'core/gallery' ];
+
+		const update = ( value ) => {
+			if ( value ) {
+				setAttributes({ className: 'uag-masonry' })
+			} else {
+				let classNameList = attributes.className;
+				classNameList = classNameList.replace( "uag-masonry", "" );
+				setAttributes({ className: classNameList })
+			}
+			setAttributes({ masonry: !attributes.masonry })
+		}
+		
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
 				{isSelected && blockType.includes(blockName) &&
-					<InspectorAdvancedControls>
-						<hr />
-						<p><strong>{ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) }</strong></p>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
-						<ToggleControl
-							label={ __('Enable Masonry Layout')}
-							checked={attributes.masonry}
-							onChange={(value) => setAttributes({ masonry: !attributes.masonry })}
-						/>
-						<hr />			
-					</InspectorAdvancedControls>
+					<InspectorControls>
+						<PanelBody title={ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+							<ToggleControl
+								label={ __('Enable Masonry Layout')}
+								checked={attributes.masonry}
+								onChange={(value) => update( value )}
+							/>
+						</PanelBody>	
+					</InspectorControls>
 				}
 			</Fragment>
 		);
@@ -32,9 +45,10 @@ const MasonryGallery = wp.compose.createHigherOrderComponent((BlockEdit) => {
 }, 'MasonryGallery');
 
 if ( '1' === enableMasonryGallery ) {
-	wp.hooks.addFilter(
+	addFilter(
 		'editor.BlockEdit',
 		'uagb/masonry-gallery',
 		MasonryGallery,
+		999
 	);
 }

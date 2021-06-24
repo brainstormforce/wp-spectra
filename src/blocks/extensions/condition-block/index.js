@@ -1,5 +1,7 @@
 import { ToggleControl, SelectControl } from "@wordpress/components"
 import { __ } from '@wordpress/i18n';
+import { createHigherOrderComponent } from "@wordpress/compose";
+import { addFilter } from "@wordpress/hooks";
 const { enableConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -118,7 +120,7 @@ const UserConditionOptions = ( props ) => {
     );
 }
 
-const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) => {
+const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 	return (props) => {
 		
@@ -146,7 +148,7 @@ const AdvancedControlsBlock = wp.compose.createHigherOrderComponent((BlockEdit) 
 }, 'AdvancedControlsBlock');
 
 if( '1' === enableConditions ){
-	wp.hooks.addFilter(
+	addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
 		AdvancedControlsBlock,
