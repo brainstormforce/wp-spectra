@@ -5519,6 +5519,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Masonry Gallery CSS.
 		 *
 		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
 		 */
 		public static function get_gallery_css( $attr, $id ) {
 			if ( isset( $attr['masonry'] ) && true === $attr['masonry'] && isset( $attr['masonryGutter'] ) && '' !== $attr['masonryGutter'] ) {
@@ -5538,7 +5540,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => array(),
 			);
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, '.uag-masonry' );
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
 
 		/**

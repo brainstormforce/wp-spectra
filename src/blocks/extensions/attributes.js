@@ -64,6 +64,9 @@ if ( "1" === enableMasonryGallery ) {
 					},
 					masonryGutter: {
 						type: "number",
+					},
+					block_id : {
+						type: "string"
 					}
 				} );		
 			}

@@ -29,14 +29,14 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 					"margin-bottom" : generateCSSUnit( attributes.masonryGutter, 'px' )
 				},
 			}
-			const styling = generateCSS( selectors, '.uag-masonry' );
+			const styling = generateCSS( selectors, '#block-' + props.clientId );
 			if ( attributes.masonry ) {
-				var element = document.getElementById( "uag-gallery-masonry-style" )
+				let element = document.getElementById( "uag-gallery-masonry-style-" + props.clientId.substr( 0, 8 ) )
 				if( null !== element && undefined !== element ) {
 					element.innerHTML = styling;
 				} else {
 					const style = document.createElement( "style" )
-					style.setAttribute( "id", "uag-gallery-masonry-style" )
+					style.setAttribute( "id", "uag-gallery-masonry-style-" + props.clientId.substr( 0, 8 ) )
 					style.innerHTML = styling;
 					document.head.appendChild( style )
 				}
@@ -56,6 +56,7 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 				setAttributes({ className: classNameList })
 			}
 			setAttributes({ masonry: !attributes.masonry })
+			setAttributes({ block_id: props.clientId.substr( 0, 8 ) })
 		}
 
 		/**
@@ -101,6 +102,15 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 	};
 }, 'MasonryGallery');
 
+function ApplyUniqueClass(extraProps, blockType, attributes) {
+
+	if ( 'core/gallery' === blockType.name && attributes.masonry ) {
+		extraProps.className = extraProps.className + ' uagb-block-' + attributes.block_id;
+	}
+
+	return extraProps;
+}
+
 if ( '1' === enableMasonryGallery ) {
 	addFilter(
 		'editor.BlockEdit',
@@ -108,4 +118,10 @@ if ( '1' === enableMasonryGallery ) {
 		MasonryGallery,
 		999
 	);
+
+	addFilter(
+        'blocks.getSaveContent.extraProps',
+        'uagb/apply-extra-class',
+        ApplyUniqueClass,
+    );
 }
