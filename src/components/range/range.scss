@@ -81,6 +81,16 @@
                 color: #003bff;
             }
         }
+        .components-button.is-secondary:hover:not(:disabled){
+            background:0 0;
+            box-shadow:0 0;
+        }
+        .components-button.is-secondary:disabled{
+            background:0 0;
+        }
+        .components-button.is-secondary{
+            box-shadow:0 0;
+        }
     }
 }
 
