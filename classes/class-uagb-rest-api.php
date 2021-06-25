@@ -42,8 +42,38 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			add_action( 'rest_api_init', array( $this, 'blocks_register_rest_fields' ) );
 			add_action( 'init', array( $this, 'register_rest_orderby_fields' ) );
 			add_filter( 'register_post_type_args', array( $this, 'add_cpts_to_api' ), 10, 2 );
-		}
 
+			// We have added this action here to support both the ways of post updations, Rest API & Normal.
+			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
+		}
+		/**
+		 * This function deletes the Page assets from the Page Meta Key.
+		 *
+		 * @param int $post_id Post Id.
+		 * @since 1.23.0
+		 */
+		public function delete_page_assets( $post_id ) {
+
+			if ( 'enabled' === UAGB_Helper::$file_generation ) {
+
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
+				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
+
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $css_file_path );
+				}
+				if ( file_exists( $js_file_path ) ) {
+					wp_delete_file( $js_file_path );
+				}
+			}
+
+			delete_post_meta( $post_id, '_uag_page_assets' );
+			delete_post_meta( $post_id, '_uag_css_file_name' );
+			delete_post_meta( $post_id, '_uag_js_file_name' );
+		}
 		/**
 		 * Create API fields for additional info
 		 *
