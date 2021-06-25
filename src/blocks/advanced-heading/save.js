@@ -24,17 +24,17 @@ export default function save( props ) {
 			</div>
 		);
 	}
-	let heading = '';
+	let headingText = '';
 	if ( headingTitle !== '' ) {
 
-		heading = <RichText.Content
+		headingText = <RichText.Content
 						tagName={ headingTag }
 						value={ headingTitle }
 						className="uagb-heading-text"
 						id={ headingId }
 					/>
 	}
-	
+	console.log(headingTitle);
 	let descText = '';
 	
 	if ( headingDesc !== '' ) {
@@ -53,7 +53,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ heading }
+			{ headingText }
 			{ seprator }
 			{ descText }
 		</div>
