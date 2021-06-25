@@ -372,26 +372,26 @@ class UAGBInlineNoticeEdit extends Component {
 				</PanelBody>
 				<PanelBody title="Spacing" initialOpen={false}>
 					<DimensionsControl { ...this.props }
-							type={ 'padding' }
-							label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-							help={ __( 'Space inside of the container.', 'ultimate-addons-for-gutenberg' ) }
-							valueTop={ paddingTop }
-							valueRight={ paddingRight }
-							valueBottom={ paddingBottom }
-							valueLeft={ paddingLeft }
-							valueTopTablet={ paddingTopTablet }
-							valueRightTablet={ paddingRightTablet }
-							valueBottomTablet={ paddingBottomTablet }
-							valueLeftTablet={ paddingLeftTablet }
-							valueTopMobile={ paddingTopMobile }
-							valueRightMobile={ paddingRightMobile }
-							valueBottomMobile={ paddingBottomMobile }
-							valueLeftMobile={ paddingLeftMobile }
-							unit={ paddingUnit }
-							mUnit={ mobilePaddingUnit }
-							tUnit={ tabletPaddingUnit }
-							deviceType={ deviceType }
-						/>
+						label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+						valueTop={ { value: paddingTop, label: 'paddingTop' } }
+						valueRight={ { value: paddingRight, label: 'paddingRight' } }
+						valueBottom={ { value: paddingBottom, label: 'paddingBottom' } }
+						valueLeft={ { value: paddingLeft, label: 'paddingLeft' } }
+						valueTopTablet={ { value: paddingTopTablet, label: 'paddingTopTablet' } }
+						valueRightTablet={ { value: paddingRightTablet, label: 'paddingRightTablet' } }
+						valueBottomTablet={ { value: paddingBottomTablet, label: 'paddingBottomTablet' } }
+						valueLeftTablet={ { value: paddingLeftTablet, label: 'paddingLeftTablet' } }
+						valueTopMobile={ { value: paddingTopMobile, label: 'paddingTopMobile' } }
+						valueRightMobile={ { value: paddingRightMobile, label: 'paddingRightMobile' } }
+						valueBottomMobile={ { value: paddingBottomMobile, label: 'paddingBottomMobile' } }
+						valueLeftMobile={ { value: paddingLeftMobile, label: 'paddingLeftMobile' } }
+						unit={ { value: paddingUnit, label: 'paddingUnit' } }
+						mUnit={ { value: mobilePaddingUnit, label: 'mobilePaddingUnit' } }
+						tUnit={ { value: tabletPaddingUnit, label: 'tabletPaddingUnit' } }
+						deviceType={ deviceType }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Border", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<div className="uag-border-wrap">
