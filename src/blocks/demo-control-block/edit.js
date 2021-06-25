@@ -9,7 +9,7 @@ import renderSVG from "@Controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import UAGB_Block_Icons from "@Controls/block-icons"
-import AdvancedPopColorControl from '../../advanced-pop-color-control'
+import AdvancedPopColorControl from '../../components/color-control/advanced-pop-color-control.js'
 import InspectorTabs from '../../components/inspector-tabs/InspectorTabs.js'
 import InspectorTab from '../../components/inspector-tabs/InspectorTab.js'
 import DimensionsControl from '../../components/dimention-control';

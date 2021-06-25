@@ -8,17 +8,6 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
-import AdvancedColorControl from './advanced-color-control.js';
-window.uagb = {
-	// Sidebar controls.
-	controls: {
-		AdvancedColorControl,
-		// TypographyControls,
-		// BoxShadowControl,
-		// IconControl,
-		// IconRender,
-	},
-};
 import "./blocks/extensions/attributes.js"
 import "./blocks/advanced-heading/block.js"
 import "./blocks/post/block.js"
