@@ -1,13 +1,19 @@
+import classnames from 'classnames';
+
 const InspectorTab = props => {
-    const {children, isActive, key} = props;
+
+    const { children, isActive, key } = props;
+
+    let activeClass = isActive ? 'active' : '';
+
     return (
         <div
-            style={{
-                display: isActive ? 'block' : 'none'
-            }}
-            className='uagb-inspector-tab'
+            className = { classnames(
+                'uagb-inspector-tab',
+                activeClass
+            )}
         >
-            {Array.isArray(children) ? children.map(item => item) : children}
+            { Array.isArray(children) ? children.map( item => item ) : children } 
         </div>
     )
 }
