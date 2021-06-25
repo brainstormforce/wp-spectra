@@ -1,79 +1,69 @@
 if ( googlefonts === undefined ) {
 	var googlefonts = []
 }
-const {
-	Component,
-} = wp.element
 import PropTypes from "prop-types"
 import WebFont from "webfontloader"
+import { useState, useEffect } from '@wordpress/element'
 const statuses = {
 	inactive: "inactive",
 	active: "active",
 	loading: "loading",
 }
-
 const noop = () => {}
 
-class WebfontLoader extends Component {
+const WebfontLoader = props => {
 
-	constructor(props) {
-	    super(props)
+	const [ value, setValue ] = useState( [] );
 
-	    this.state = {
-			status: undefined,
-	    }
+	let status = undefined;
 
-		this.handleLoading = () => {
-			this.setState( { status: statuses.loading } )
-		}
-		
-		this.addFont = ( font ) => {
-			if ( ! googlefonts.includes( font ) ) {
-				googlefonts.push( font )
-			}
-		}
-		
-		this.handleActive = () => {
-			this.setState( { status: statuses.active } )
-		}
+	useEffect(() => {
+        loadFonts();
+    }, []);
 
-		this.handleInactive = () => {
-			this.setState( { status: statuses.inactive } )
-		}
-
-		this.loadFonts = () => {
-			//if ( ! this.state.fonts.includes( this.props.config.google.families[ 0 ] ) ) {
-			if ( ! googlefonts.includes( this.props.config.google.families[ 0 ] ) ) {
-				WebFont.load( {
-					...this.props.config,
-					loading: this.handleLoading,
-					active: this.handleActive,
-					inactive: this.handleInactive,
-				} )
-				this.addFont( this.props.config.google.families[ 0 ] )
-			}
+	const handleLoading = () => {
+		setValue( { status: statuses.loading } )
+	}
+	
+	const addFont = ( font ) => {
+		if ( ! googlefonts.includes( font ) ) {
+			googlefonts.push( font )
 		}
 	}
-
-	componentDidMount() {
-		this.loadFonts()
+	
+	const handleActive = () => {
+		setValue( { status: statuses.active } )
 	}
 
-	componentDidUpdate( prevProps, prevState ) {
-		const { onStatus, config } = this.props
+	const handleInactive = () => {
+		setValue( { status: statuses.inactive } )
+	}
 
-		if ( prevState.status !== this.state.status ) {
-			onStatus( this.state.status )
+	const loadFonts = () => {
+		if ( ! googlefonts.includes( props.config.google.families[ 0 ] ) ) {
+			WebFont.load( {
+				...props.config,
+				loading: handleLoading,
+				active: handleActive,
+				inactive: handleInactive,
+			} )
+			addFont( props.config.google.families[ 0 ] )
 		}
-		if ( prevProps.config !== config ) {
-			this.loadFonts()
-		}
 	}
+	
+	useEffect(() => {
+        const { onStatus, config } = props
 
-	render() {
-		const { children } = this.props
-		return children || null
-	}
+		if ( status !== value.status ) {
+			onStatus( value.status )
+		}
+		if ( config !== value.config ) {
+			loadFonts()
+		}
+    }, [status]);
+
+	const { children } = props
+	return children || null
 }
 
 WebfontLoader.propTypes = {
