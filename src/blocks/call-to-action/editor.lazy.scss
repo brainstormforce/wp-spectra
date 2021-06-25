@@ -57,5 +57,16 @@
 				}
 			}
 		}
+		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+			.uagb-cta__link-wrapper{
+				width: 100%;
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
 	}
 }
