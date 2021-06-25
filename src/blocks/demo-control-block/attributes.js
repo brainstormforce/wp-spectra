@@ -156,6 +156,7 @@
 	},
 	contentHrPadding: {
 		type: "number",
+		default: 15
 	},
 	padding: {
 		type: "number",
@@ -169,6 +170,14 @@
 		default: [ '', '', '', '' ],
 	},
 	paddingUnit: {
+		type: "string",
+		default: "px"
+	},
+	mobilePaddingUnit: {
+		type: "string",
+		default: "px"
+	},
+	tabletPaddingUnit:{
 		type: "string",
 		default: "px"
 	},
