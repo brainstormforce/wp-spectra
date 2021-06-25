@@ -89,6 +89,7 @@ function contentTimelineStyle( props ) {
 	const resp_selectors = 'left';
 
 	const selectors = {
+		
 		' .uagb-timeline__heading.rich-text': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-family': headFontFamily,
@@ -160,13 +161,15 @@ function contentTimelineStyle( props ) {
 			'background-color': separatorColor,
 			width: generateCSSUnit( separatorwidth, 'px' ),
 		},
-		' .uagb-timeline__right-block .uagb-timeline__line': {
+		'.uagb-timeline__right-block .uagb-timeline__line': {
 			right: 'calc( ' + connectorBgsize + 'px / 2 )',
+			'margin-right': '20px',
 		},
-		' .uagb-timeline__left-block .uagb-timeline__line': {
+		'.uagb-timeline__left-block .uagb-timeline__line': {
 			left: 'calc( ' + connectorBgsize + 'px / 2 )',
+			'margin-left': '20px',
 		},
-		' .uagb-timeline__center-block .uagb-timeline__line': {
+		'.uagb-timeline__center-block .uagb-timeline__line': {
 			right: 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
