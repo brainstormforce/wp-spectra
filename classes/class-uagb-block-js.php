@@ -108,7 +108,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 			$selector      = $base_selector . $id;
-
+		
 			ob_start();
 			?>
 			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
@@ -120,7 +120,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 					blockquote__tweet[0].addEventListener("click",function(){
 						var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+content+"&via="+("<?php echo esc_html( $via ); ?>"); 
+						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+("<?php echo $attr['descriptionText'] ?>")+"&via="+("<?php echo esc_html( $via ); ?>"); 
 						window.open( request_url ); 
 					});
 				}
