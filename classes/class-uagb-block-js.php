@@ -119,8 +119,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 				if ( blockquote__tweet.length > 0 ) {
 
 					blockquote__tweet[0].addEventListener("click",function(){
-						var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+("<?php echo $attr['descriptionText'] ?>")+"&via="+("<?php echo esc_html( $via ); ?>"); 
+						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+("<?php echo esc_html($attr['descriptionText']) ?>")+"&via="+("<?php echo esc_html( $via ); ?>"); 
 						window.open( request_url ); 
 					});
 				}
