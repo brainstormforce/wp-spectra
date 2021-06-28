@@ -108,7 +108,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 			$selector      = $base_selector . $id;
-
 			ob_start();
 			?>
 			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
