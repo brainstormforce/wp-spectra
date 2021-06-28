@@ -57,7 +57,7 @@ function styling( props ) {
 				'border-color': borderHColor,
 			},
 			' .uagb-buttons-repeater a.uagb-button__link': {
-				color,
+				color:color,
 			},
 			' .uagb-buttons-repeater:hover a.uagb-button__link': {
 				color: hColor,
@@ -65,8 +65,11 @@ function styling( props ) {
 			' .uagb-buttons-repeater:hover .uagb-button__link': {
 				color: hColor,
 			},
+			' .uagb-buttons-repeater:hover .uagb-button__icon': {
+				color: hColor,
+			},
 			' .uagb-buttons-repeater .uagb-button__link': {
-				color,
+				color: color,
 			},
 		};
 

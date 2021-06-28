@@ -88,18 +88,7 @@ const Settings = ( props ) => {
 	};
 
 	const buttonSettings = () => {
-		const icon_props = {
-			icons: wp.svgIcons,
-			value: icon,
-			onChange: ( value ) => setAttributes( { icon: value } ),
-			isMulti: false,
-			renderFunc: renderSVG,
-			noSelectedPlaceholder: __(
-				'Select Icon',
-				'ultimate-addons-for-gutenberg'
-			),
-		};
-
+	
 		return (
 			<PanelBody
 				title={ __(
@@ -124,7 +113,18 @@ const Settings = ( props ) => {
 				<h2>
 					{ __( 'Button Icon', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
-				<FontIconPicker { ...icon_props } />
+				<FontIconPicker 
+					icons={ wp.UAGBSvgIcons }
+					renderFunc={ renderSVG }
+					theme="default"
+					value={ icon }
+					onChange={ ( value ) => ( setAttributes( { icon: value } ) )}
+					isMulti={ false }
+					noSelectedPlaceholder={ __(
+						'Select Icon',
+						'ultimate-addons-for-gutenberg'
+					) } 
+				/>
 				{ '' !== icon && (
 					<>
 						<SelectControl

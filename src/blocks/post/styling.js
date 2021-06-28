@@ -233,6 +233,7 @@ function styling( props ) {
 			),
 		};
 		selectors[ ' .uagb-post__cta' ] = {
+			'pointer-events': 'visible',
 			color: ctaColor,
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
@@ -249,12 +250,12 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			padding: btnVPadding + 'px ' + btnHPadding + 'px',
 		};
-		selectors[ ' .uagb-post__cta:hover' ] = {
+		selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 			color: ctaHColor,
 			background: ctaBgHColor,
 			'border-color': borderHColor,
 		};
-		selectors[ ' .uagb-post__cta:hover a' ] = {
+		selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 			color: ctaHColor,
 		};
 	}
