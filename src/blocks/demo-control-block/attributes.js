@@ -239,6 +239,9 @@
 	borderColor : {
 		type: "string"
 	},
+	borderHoverColor : {
+		type: "string"
+	},
 	backgroundType: {
 		type: "string",
 	},
