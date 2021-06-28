@@ -12,14 +12,11 @@
 
  const Range = props => {
     const {
-        allowReset,
         withInputField,
         isShiftStepEnabled,
-        ...propsToPass
     } = props
 
     useEffect(() => {
-        cachedValue = props.value;
         resetStateDisabled = true;
     }, []);
 
@@ -50,16 +47,14 @@
 	};
 
     const onChangeUnits = ( value ) => {
-        setValue( cachedValue );
-        props.onChange( cachedValue );
         props.setAttributes( { paddingUnit: value } );
     }
     
-    if ( 'initial' === cachedValue ) {
-        cachedValue = props.value;
+    if ( 'initial' === cachedValue && undefined !== value ) {
+        cachedValue = value;
     }
     
-    if ( JSON.stringify( props.value ) !== JSON.stringify( cachedValue ) ) {
+    if ( JSON.stringify( value ) !== JSON.stringify( cachedValue ) ) {
 
         resetStateDisabled = false;
     }
@@ -117,7 +112,7 @@
             </div>
             <div className='uagb-range-control__mobile-controls'>
                 <RangeControl
-                    value={ propsToPass.value }
+                    value={ value }
                     onChange={ handleOnChange }
                     withInputField={ false }
                     allowReset={ false }

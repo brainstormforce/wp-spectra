@@ -3374,6 +3374,15 @@ label.wp-block-uagb-blockquote__via-label svg {
 }
 
 button.components-button.uagb-spacing-reset.is-secondary.is-small {
-    color:unset;
+    color:#827d7d;
     background:0 0;
+}
+
+button.components-button.components-color-palette__clear.is-small:hover{
+    color: #003bff;
+    box-shadow:0 0;
+}
+button.components-button.components-color-palette__clear.is-small{
+    color: #003bff;
+    box-shadow:0 0;
 }
