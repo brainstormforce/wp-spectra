@@ -700,6 +700,21 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function delete_page_assets( $post_id ) {
 
+			$does_post_contain_reusable_blocks = self::does_post_contain_reusable_blocks( $post_id );
+
+			if ( true === $does_post_contain_reusable_blocks ) {
+
+				if ( 'enabled' === UAGB_Helper::$file_generation ) {
+
+					UAGB_Helper::delete_all_uag_dir_files();
+				}
+
+				/* Update the asset version */
+				update_option( '__uagb_asset_version', time() );
+
+				return;
+			}
+
 			if ( 'enabled' === UAGB_Helper::$file_generation ) {
 
 				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
@@ -719,6 +734,29 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			delete_post_meta( $post_id, '_uag_page_assets' );
 			delete_post_meta( $post_id, '_uag_css_file_name' );
 			delete_post_meta( $post_id, '_uag_js_file_name' );
+
+		}
+		/**
+		 * Does Post contains reusable blocks.
+		 *
+		 * @param int $post_id Post ID.
+		 *
+		 * @since x.x.x
+		 *
+		 * @return boolean Wether the Post contains any Reusable blocks or not.
+		 */
+		public static function does_post_contain_reusable_blocks( $post_id ) {
+
+			$post_content = get_post_field( 'post_content', $post_id, 'raw' );
+			$tag          = '<!-- wp:block';
+			$flag         = strpos( $post_content, $tag );
+
+			if ( false !== $flag ) {
+
+				return true;
+			}
+
+			return false;
 		}
 	}
 
