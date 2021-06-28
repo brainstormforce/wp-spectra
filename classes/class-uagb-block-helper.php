@@ -3947,12 +3947,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 				),
-				' .wpcf7-response-output.wpcf7-validation-errors' => array(
+				' .wpcf7 form.failed .wpcf7-response-output' => array(
 					'background-color' => $attr['errorMsgBgColor'],
 					'border-color'     => $attr['errorMsgBorderColor'],
 					'color'            => $attr['errorMsgColor'],
 				),
-				' .wpcf7-response-output.wpcf7-validation- success' => array(
+				' .wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output' => array(
+					'background-color' => $attr['errorMsgBgColor'],
+					'border-color'     => $attr['errorMsgBorderColor'],
+					'color'            => $attr['errorMsgColor'],
+				),
+				' .wpcf7 form.success .wpcf7-response-output' => array(
 					'background-color' => $attr['successMsgBgColor'],
 					'border-color'     => $attr['successMsgBorderColor'],
 					'color'            => $attr['successMsgColor'],

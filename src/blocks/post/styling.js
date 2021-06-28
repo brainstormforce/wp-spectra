@@ -581,6 +581,7 @@ function styling( props ) {
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
 			] = {
+				'pointer-events':'visible',
 				color: paginationTextHoverColor,
 				'background-color': paginationBgHoverColor,
 			};
