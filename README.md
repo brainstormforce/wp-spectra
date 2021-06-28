@@ -168,6 +168,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 1.23.5 ###
+* Fix: Assets not regenerated for frontend when post conatining reusable blocks is updated.
+
 ### 1.23.4 ###
 * Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
 * Fix: Assets Generation on Archive Pages not working for all Posts on frontend.
