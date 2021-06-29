@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 				src: [
 					"**",
 					"!node_modules/**",
+					"!admin-core/node_modules/**",
 					"!.git/**",
 					"!*.sh",
 					"!*.zip",
