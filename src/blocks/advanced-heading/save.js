@@ -34,7 +34,6 @@ export default function save( props ) {
 						id={ headingId }
 					/>
 	}
-	console.log(headingTitle);
 	let descText = '';
 	
 	if ( headingDesc !== '' ) {
