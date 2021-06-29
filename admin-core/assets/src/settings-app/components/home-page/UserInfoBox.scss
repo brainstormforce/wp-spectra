@@ -41,8 +41,7 @@
 		padding: 20px;
 		margin: 15px;
 	}
-	.uag-starter-site__metabox{
-		width: 100%;
+	.uag-starter-site__elements{
 		padding: 20px;
 		display: flex;
 		margin: 15px;
@@ -54,13 +53,12 @@
 	.uag-column{
 		width:50%;
 	}
-	.uag-astra__metabox{
-		width: 100%;
+	.uag-astra-theme__elements{
 		padding: 20px;
 		display: flex;
 		margin: 15px;
 		background-color: #fff;
-		.uag-astra__details{
+		.uag-astra__content{
 			width:70%;
 		}
 		.uag-astra__cta{

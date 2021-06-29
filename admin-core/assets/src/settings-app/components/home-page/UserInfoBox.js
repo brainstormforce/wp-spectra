@@ -30,7 +30,7 @@ function UserInfoBox( props ) {
 			<div className="uag-metabox__body">
 				<p>
 					{ __(
-						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of <br> advanced and creative blocks to build a stunning website and blog faster than ever before!',
+						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of advanced and creative blocks to build a stunning website and blog faster than ever before!',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -84,7 +84,7 @@ function UserInfoBox( props ) {
 						/>
 					</div>
 				</div>
-				<div className="uag-starter-site__metabox">
+				<div className="uag-starter-site__elements">
 					<div className="uag-column uag-starter-tmp__img">
 						<img
 							className="uag-logo"
@@ -108,8 +108,8 @@ function UserInfoBox( props ) {
 						/>
 						</div>
 				</div>
-				<div className="uag-astra__metabox">
-					<div className="uag-astra__details">
+				<div className="uag-astra-theme__elements">
+					<div className="uag-astra__content">
 						<h3>
 							{ __( 'UAG Works best with free ASTRA theme! ', 'ultimate-addons-for-gutenberg' ) }
 						</h3>
