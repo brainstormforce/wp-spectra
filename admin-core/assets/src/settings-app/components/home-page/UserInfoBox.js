@@ -86,11 +86,7 @@ function UserInfoBox( props ) {
 				</div>
 				<div className="uag-starter-site__elements">
 					<div className="uag-column uag-starter-tmp__img">
-						<img
-							className="uag-logo"
-							src={uag_react.logo_url}
-							alt=""
-						/>
+						<img src={uag_react.plugin_dir +'admin-core/assets/images/astra-starter-sites.jpg'} />
 					</div>
 					<div className="uag-column uag-starter-tmp__details">
 						<h3>
