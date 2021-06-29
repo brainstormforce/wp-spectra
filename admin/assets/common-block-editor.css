@@ -42,7 +42,9 @@ hr.uagb-editor__separator {
 .uagb-inspect-tabs.uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button {
 	width: 50%;
 }
-
+.uagb-size-type-field-tabs .components-tab-panel__tabs, .DayPickerNavigation, .DayPicker_weekHeader, .components-button-group .components-button.is-primary, .components-button-group .components-button:focus, .components-toolbar .components-button, .components-toolbar .components-button:before{
+	z-index: unset;
+}
 .uagb-inspect-tabs .components-tab-panel__tabs {
 	margin-bottom: 15px;
 }
@@ -161,7 +163,7 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field-tabs {
 	margin-top: 20px;
-	margin-bottom: -20px;
+	margin-bottom: 0px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
@@ -324,7 +326,6 @@ hr.uagb-editor__separator {
 }
 
 .uag-typography-font-family-options > div {
-	z-index: 2;
 	margin: 0.2em 0 1.5em 0;
 }
 
@@ -3348,7 +3349,6 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-typography-advanced .uag-typography-range-options .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field {
 	display: block;
 }
-
 .uagb-forms-button-group {
 	margin-bottom: 15px;
 }
