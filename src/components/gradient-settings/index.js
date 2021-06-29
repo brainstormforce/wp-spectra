@@ -14,7 +14,6 @@ function GradientSettings({ attributes, setAttributes }) {
 		gradientType
 	} = attributes;
 
-    
 	//set the gradient value to settings if new gradientvalue is not set
 	if ( "" === gradientValue) {
         const rgb_gradientColor1 = hexToRgba(gradientColor1);
