@@ -4050,7 +4050,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['buttonBgHoverColor'],
 					'border-color'     => $attr['buttonBorderHoverColor'],
 				),
-				' select'                                => array(
+				' .gform_wrapper select '                                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],
