@@ -23,16 +23,14 @@ function UserInfoBox( props ) {
 			<div className="uag-metabox__header">
 				<div className="uag-metabox__title">
 					<h1>
-						{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) +
-							uag_react.current_user +
-							'!' }
+						{ __( 'Welcome! ', 'ultimate-addons-for-gutenberg' ) }
 					</h1>
 				</div>
 			</div>
 			<div className="uag-metabox__body">
 				<p>
 					{ __(
-						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of advanced and creative blocks to build a stunning website and blog faster than ever before!',
+						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of <br> advanced and creative blocks to build a stunning website and blog faster than ever before!',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -82,6 +80,49 @@ function UserInfoBox( props ) {
 						<NormalButton
 							buttonText = { __( 'Get Support', 'ultimate-addons-for-gutenberg' ) }
 							onClick = { onGetSupportClick }
+							saving = { false }
+						/>
+					</div>
+				</div>
+				<div className="uag-starter-site__metabox">
+					<div className="uag-column uag-starter-tmp__img">
+						<img
+							className="uag-logo"
+							src={uag_react.logo_url}
+							alt=""
+						/>
+					</div>
+					<div className="uag-column uag-starter-tmp__details">
+						<h3>
+							{ __( 'Get Ready to use, Full Demo Websites ', 'ultimate-addons-for-gutenberg' ) }
+						</h3>
+						<p>
+							{ __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</p>
+						<NormalButton
+							buttonText = { __( 'Get Starter Sites', 'ultimate-addons-for-gutenberg' ) }
+							saving = { false }
+						/>
+						</div>
+				</div>
+				<div className="uag-astra__metabox">
+					<div className="uag-astra__details">
+						<h3>
+							{ __( 'UAG Works best with free ASTRA theme! ', 'ultimate-addons-for-gutenberg' ) }
+						</h3>
+						<p>
+							{ __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</p>
+					</div>
+					<div className="uag-astra__cta">
+						<NormalButton
+							buttonText = { __( 'Install ASTRA Now!', 'ultimate-addons-for-gutenberg' ) }
 							saving = { false }
 						/>
 					</div>

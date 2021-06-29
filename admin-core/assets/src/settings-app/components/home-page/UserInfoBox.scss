@@ -3,10 +3,10 @@
 	padding-bottom: 50px;
 
 	.uag-metabox__title h1 {
+		margin: 15px;
 		font-size: 32px;
 		font-weight: 400;
 		padding: 4px 0;
-		margin: 0;
 		line-height: 1;
 	}
 
@@ -20,7 +20,16 @@
 		p {
 			color: #555;
 			font-size: 15px;
-			margin-top: 10px;
+			margin: 15px;
+		}
+		.uag-button {
+			background: #2F4F4F;
+			color: #fff;
+			border-radius: 5px;
+			margin: 15px;
+		}
+		h3{
+			margin: 15px;
 		}
 	}
 	.uag-metabox__elements {
@@ -29,13 +38,35 @@
 	}
 	.uag-metabox__element {
 		background-color: #fff;
-		padding: 15px;
-		margin: 10px;
-
-		.uag-button {
-			background: #2F4F4F;
-			color: #fff;
-			margin: 10px 0px;
+		padding: 20px;
+		margin: 15px;
+	}
+	.uag-starter-site__metabox{
+		width: 100%;
+		padding: 20px;
+		display: flex;
+		margin: 15px;
+		.uag-starter-tmp__img{
+			text-align: center;
+    		align-self: center;
+		}
+	}
+	.uag-column{
+		width:50%;
+	}
+	.uag-astra__metabox{
+		width: 100%;
+		padding: 20px;
+		display: flex;
+		margin: 15px;
+		background-color: #fff;
+		.uag-astra__details{
+			width:70%;
+		}
+		.uag-astra__cta{
+			width: 30%;
+			text-align: center;
+    		align-self: center;
 		}
 	}
 }
