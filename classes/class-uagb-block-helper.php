@@ -3957,7 +3957,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['errorMsgBorderColor'],
 					'color'            => $attr['errorMsgColor'],
 				),
-				' .wpcf7 form.success .wpcf7-response-output' => array(
+				' .wpcf7 form.sent .wpcf7-response-output' => array(
 					'background-color' => $attr['successMsgBgColor'],
 					'border-color'     => $attr['successMsgBorderColor'],
 					'color'            => $attr['successMsgColor'],
