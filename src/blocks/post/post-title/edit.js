@@ -1,30 +1,43 @@
-const { decodeEntities } = wp.htmlEntities
-const { __ } = wp.i18n
+import { useLayoutEffect } from 'react';
 
-export const PostTitle = (props) => {
-		
-		const { attributes ,post } = props
-		
-		const Tag = attributes.titleTag
+const { decodeEntities } = wp.htmlEntities;
+import { __ } from '@wordpress/i18n';
+import styles from './editor.lazy.scss';
 
-		let target = ( attributes.newTab ) ? "_blank" : "_self"
+export const PostTitle = ( props ) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 
-		if ( undefined == post.title ) {
-			return null
-		}
+	const { attributes, post } = props;
 
-		if ( attributes.displayPostTitle ) {
+	const Tag = attributes.titleTag;
 
-			return (
-				<div className='uagb-post__text'>
-					<Tag className={ "uagb-post__title"}>
-						<a href={ post.link } target={ target } rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
-					</Tag>
-				</div>
-			)
-		} else {
-			return null
-		}
+	const target = attributes.newTab ? '_blank' : '_self';
 
-}
-	
+	if ( undefined == post.title ) {
+		return null;
+	}
+
+	if ( attributes.displayPostTitle ) {
+		return (
+			<div className="uagb-post__text">
+				<Tag className={ 'uagb-post__title' }>
+					<a
+						href={ post.link }
+						target={ target }
+						rel="noopener noreferrer"
+					>
+						{ decodeEntities( post.title.rendered.trim() ) ||
+							__( '(Untitled)' ) }
+					</a>
+				</Tag>
+			</div>
+		);
+	}
+	return null;
+};

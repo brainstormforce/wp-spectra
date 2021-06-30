@@ -30,6 +30,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static $block_assets = null;
 
+
+		/**
+		 * Block Assets
+		 *
+		 * @since 1.23.0
+		 * @var block_attributes
+		 */
+		public static $block_assets_css = null;
+
 		/**
 		 * Get Widget List.
 		 *
@@ -282,8 +291,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'authorFontFamily'         => '',
 							'authorFontWeight'         => '',
 							'authorFontSubset'         => '',
-							'authorLineHeightType'     => 'em
-							',
+							'authorLineHeightType'     => 'em',
 							'authorLineHeight'         => '',
 							'authorLineHeightTablet'   => '',
 							'authorLineHeightMobile'   => '',
@@ -343,6 +351,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quotePaddingType'         => 'px',
 							'quotePaddingTablet'       => '',
 							'quotePaddingMobile'       => '',
+							'descriptionText'          => 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
 						),
 					),
 					'uagb/call-to-action'         => array(
@@ -1336,6 +1345,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Button', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'extension'   => false,
 						'attributes'  => array(
 							'inheritFromTheme' => false,
@@ -2188,6 +2198,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-tabs-js' ),
 						'attributes'  => array(
 							'tabHeaders'            => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
+							'tabAlign'              => 'left',
 							'tabActive'             => 0,
 							'tabActiveFrontend'     => 0,
 							'tabsStyleD'            => 'hstyle1',
@@ -2590,6 +2601,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'              => '',
 							'postType'              => 'post',
 							'taxonomyType'          => 'category',
+							'titleTag'              => '',
 							'categories'            => '',
 							'order'                 => 'desc',
 							'orderBy'               => 'date',
@@ -2706,7 +2718,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'afterSubmitToEmail'         => '',
 							'afterSubmitBccEmail'        => '',
 							'afterSubmitCcEmail'         => '',
-							'afterSubmitEmailSubject'    => '',
+							'afterSubmitEmailSubject'    => __( 'Form Submission', 'ultimate-addons-for-gutenberg' ),
 							'submitTextFontFamily'       => 'Default',
 							'submitTextFontWeight'       => '',
 							'submitTextFontSubset'       => '',
@@ -2783,6 +2795,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Name', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Name field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-email'            => array(
@@ -2790,6 +2803,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Email', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Email field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-hidden'           => array(
@@ -2797,6 +2811,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'           => '',
 							'hidden_field_name'  => __( 'Hidden Field Name', 'ultimate-addons-for-gutenberg' ),
@@ -2809,6 +2824,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-textarea'         => array(
@@ -2816,6 +2832,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id'     => '',
 							'textareaName' => __( 'Message', 'ultimate-addons-for-gutenberg' ),
@@ -2827,6 +2844,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-radio'            => array(
@@ -2834,6 +2852,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-url'              => array(
@@ -2841,6 +2860,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(
 							'block_id' => '',
 							'name'     => __( 'URL', 'ultimate-addons-for-gutenberg' ),
@@ -2851,6 +2871,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-toggle'           => array(
@@ -2858,6 +2879,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-date'             => array(
@@ -2865,6 +2887,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_child'    => true,
 						'attributes'  => array(),
 					),
 					'uagb/forms-accept'           => array(
@@ -2912,6 +2935,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static function get_block_assets() {
 
+			$blocks      = UAGB_Admin_Helper::get_block_options();
+			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
+
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
 					'uagb-timeline-js'       => array(
@@ -2940,7 +2966,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_URL . 'assets/js/post.js',
-						'dep' => array( 'jquery', 'uagb-slick-js' ),
+						'dep' => $post_js_dep,
 					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_URL . 'assets/js/faq.js',
@@ -2978,6 +3004,139 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				);
 			}
 			return self::$block_assets;
+		}
+
+		/**
+		 * Get Block Assets.
+		 *
+		 * @since 1.23.0
+		 *
+		 * @return array The Asset List.
+		 */
+		public static function get_block_assets_css() {
+
+			if ( null === self::$block_assets_css ) {
+				self::$block_assets_css = array(
+					'uagb/table-of-contents'      => array(
+						'name' => 'table-of-contents',
+					),
+					'uagb/advanced-heading'       => array(
+						'name' => 'advanced-heading',
+					),
+					'uagb/blockquote'             => array(
+						'name' => 'blockquote',
+					),
+					'uagb/buttons-child'          => array(
+						'name' => 'buttons-child',
+					),
+					'uagb/buttons'                => array(
+						'name' => 'buttons',
+					),
+					'uagb/call-to-action'         => array(
+						'name' => 'call-to-action',
+					),
+					'uagb/cf7-styler'             => array(
+						'name' => 'cf7-styler',
+					),
+					'uagb/column'                 => array(
+						'name' => 'column',
+					),
+					'uagb/columns'                => array(
+						'name' => 'columns',
+					),
+					'uagb/faq-child'              => array(
+						'name' => 'faq-child',
+					),
+					'uagb/faq'                    => array(
+						'name' => 'faq',
+					),
+					'uagb/forms'                  => array(
+						'name' => 'forms',
+					),
+					'uagb/gf-styler'              => array(
+						'name' => 'gf-styler',
+					),
+					'uagb/google-map'             => array(
+						'name' => 'google-map',
+					),
+					'uagb/how-to'                 => array(
+						'name' => 'how-to',
+					),
+					'uagb/icon-list-child'        => array(
+						'name' => 'icon-list-child',
+					),
+					'uagb/icon-list'              => array(
+						'name' => 'icon-list',
+					),
+					'uagb/info-box'               => array(
+						'name' => 'info-box',
+					),
+					'uagb/inline-notice'          => array(
+						'name' => 'inline-notice',
+					),
+					'uagb/marketing-button'       => array(
+						'name' => 'marketing-button',
+					),
+					'uagb/post-grid'              => array(
+						'name' => 'post',
+					),
+					'uagb/post-carousel'          => array(
+						'name' => 'post',
+					),
+					'uagb/post-masonry'           => array(
+						'name' => 'post',
+					),
+					'uagb/restaurant-menu-child'  => array(
+						'name' => 'price-list-child',
+					),
+					'uagb/restaurant-menu'        => array(
+						'name' => 'price-list',
+					),
+					'uagb/review'                 => array(
+						'name' => 'review',
+					),
+					'uagb/section'                => array(
+						'name' => 'section',
+					),
+					'uagb/social-share-child'     => array(
+						'name' => 'social-share-child',
+					),
+					'uagb/social-share'           => array(
+						'name' => 'social-share',
+					),
+					'uagb/table-of-contents'      => array(
+						'name' => 'table-of-contents',
+					),
+					'uagb/tabs-child'             => array(
+						'name' => 'tabs-child',
+					),
+					'uagb/tabs'                   => array(
+						'name' => 'tabs',
+					),
+					'uagb/taxonomy-list'          => array(
+						'name' => 'taxonomy-list',
+					),
+					'uagb/team'                   => array(
+						'name' => 'team',
+					),
+					'uagb/testimonial'            => array(
+						'name' => 'testimonial',
+					),
+					'uagb/content-timeline'       => array(
+						'name' => 'timeline',
+					),
+					'uagb/content-timeline-child' => array(
+						'name' => 'timeline',
+					),
+					'uagb/post-timeline'          => array(
+						'name' => 'timeline',
+					),
+					'uagb/wp-search'              => array(
+						'name' => 'wp-search',
+					),
+				);
+			}
+			return self::$block_assets_css;
 		}
 	}
 }

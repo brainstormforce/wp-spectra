@@ -43,6 +43,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __construct() {
+			add_action( 'wp_ajax_ast-block-templates-import-categories', array( $this, 'ajax_import_categories' ) );
 			add_action( 'wp_ajax_ast-block-templates-get-sites-request-count', array( $this, 'ajax_sites_requests_count' ) );
 			add_action( 'wp_ajax_ast-block-templates-import-sites', array( $this, 'ajax_import_sites' ) );
 			add_action( 'wp_ajax_ast-block-templates-get-blocks-request-count', array( $this, 'ajax_blocks_requests_count' ) );
@@ -50,6 +51,43 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 			add_action( 'wp_ajax_ast-block-templates-check-sync-library-status', array( $this, 'check_sync_status' ) );
 			add_action( 'wp_ajax_ast-block-templates-update-sync-library-status', array( $this, 'update_library_complete' ) );
 			add_action( 'admin_head', array( $this, 'setup_templates' ) );
+		}
+
+		/**
+		 * Auto Sync the library
+		 *
+		 * @since 1.0.6
+		 * @return void
+		 */
+		public function auto_sync() {
+
+			// Flush the data to the browsers.
+			if ( function_exists( 'fastcgi_finish_request' ) ) {
+				/**
+				 *
+				 * Any kind of output flush after fastcgi_finish_request is treated as exit;
+				 * Hence, If any PHP Warnings/Notices after this can also terminate the execution.
+				 * ignore_user_abort disables this and does not terminate the script on PHP Warnings/Notices.
+				 * https://stackoverflow.com/questions/14191947/php-fpm-fastcgi-finish-request-reliable
+				 */
+				ignore_user_abort( true );
+				fastcgi_finish_request();
+			}
+			ast_block_templates_log( 'Sync process for Gutenberg Blocks has started.' );
+			$this->import_categories();
+			$blocks = $this->get_total_blocks_requests();
+
+			for ( $i = 1; $i <= $blocks; $i++ ) {
+				$sites_and_pages = $this->import_blocks( $i );
+			}
+
+			$sites = $this->get_total_sites_count();
+
+			for ( $i = 1; $i <= $sites; $i++ ) {
+				$sites_and_pages = $this->import_sites( $i );
+			}
+			ast_block_templates_log( 'Sync process for Gutenberg Blocks is done.' );
+			$this->update_latest_checksums();
 		}
 
 		/**
@@ -61,9 +99,23 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		public function setup_templates() {
 			$is_fresh_site = get_site_option( 'ast_block_templates_fresh_site', 'yes' );
 
+			$this->process_sync();
+
 			if ( 'no' === $is_fresh_site ) {
 				return;
 			}
+
+			$this->set_default_assets();
+
+			update_site_option( 'ast_block_templates_fresh_site', 'no' );
+		}
+
+		/**
+		 * Set default assets
+		 *
+		 * @since 1.0.2
+		 */
+		public function set_default_assets() {
 
 			$dir        = AST_BLOCK_TEMPLATES_DIR . 'dist/json';
 			$list_files = $this->get_default_assets();
@@ -76,7 +128,34 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				}
 			}
 
-			update_site_option( 'ast_block_templates_fresh_site', 'no' );
+		}
+
+		/**
+		 * Process Import
+		 *
+		 * @since 1.0.6
+		 *
+		 * @return mixed Null if process is already started.
+		 */
+		public function process_sync() {
+
+			// Check if last sync and this sync has a gap of 24 hours.
+			$last_check_time = get_site_option( 'ast-block-templates-last-export-checksums-time', 0 );
+			if ( ( time() - $last_check_time ) < 86400 ) {
+				return;
+			}
+
+			$current_screen = get_current_screen();
+
+			// Bail if not on Blok editor screen.
+			if ( true !== $current_screen->is_block_editor ) {
+				return;
+			}
+
+			// Process sync.
+			if ( 'yes' === $this->get_last_export_checksums() ) {
+				add_action( 'shutdown', array( $this, 'auto_sync' ) );
+			}
 		}
 
 		/**
@@ -87,6 +166,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function get_default_assets() {
 			return array(
+				'ast-block-templates-categories',
 				'ast-block-templates-sites-1',
 				'ast-block-templates-site-requests',
 				'ast-block-templates-blocks-1',
@@ -236,6 +316,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		public function update_latest_checksums() {
 			$latest_checksums = get_site_option( 'ast-block-templates-last-export-checksums-latest', '' );
 			update_site_option( 'ast-block-templates-last-export-checksums', $latest_checksums, 'no' );
+			update_site_option( 'ast-block-templates-last-export-checksums-time', time(), 'no' );
 		}
 
 		/**
@@ -268,6 +349,28 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 					'data'    => '',
 				)
 			);
+		}
+
+		/**
+		 * Import Categories
+		 *
+		 * @since 1.0.3
+		 * @return void
+		 */
+		public function ajax_import_categories() {
+
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+			$categories = $this->import_categories();
+			wp_send_json_success(
+				array(
+					'message' => 'Success imported categories',
+					'status'  => true,
+					'data'    => $categories,
+				)
+			);
+
 		}
 
 		/**
@@ -508,6 +611,62 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 			}
 
 			ast_block_templates_log( 'SITE: Completed request ' . $page );
+		}
+
+		/**
+		 * Import Categories
+		 *
+		 * @since 1.0.3
+		 * @return void
+		 */
+		public function import_categories() {
+
+			ast_block_templates_log( 'CATEGORY:Importing categories..' );
+			$api_args = array(
+				'timeout' => 30,
+			);
+
+			$query_args = apply_filters(
+				'ast_block_templates_get_category_args',
+				array(
+					'per_page'   => 100,
+					'_fields'    => 'id,count,name,slug,parent',
+					'hide_empty' => true,
+				)
+			);
+
+			$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/wp/v2/blocks-category/' );
+
+			$response = wp_remote_get( $api_url, $api_args );
+
+			if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+				$all_categories = json_decode( wp_remote_retrieve_body( $response ), true );
+
+				if ( isset( $all_categories['code'] ) ) {
+					$message = isset( $all_categories['message'] ) ? $all_categories['message'] : '';
+					if ( ! empty( $message ) ) {
+						ast_block_templates_log( 'CATEGORY:HTTP Request Error: ' . $message );
+					} else {
+						ast_block_templates_log( 'CATEGORY:HTTP Request Error!' );
+					}
+				} else {
+
+					$option_name = 'ast-block-templates-categories';
+					ast_block_templates_log( 'CATEGORY:Storing in option ' . $option_name );
+
+					update_site_option( $option_name, $all_categories, 'no' );
+
+					do_action( 'ast_block_templates_sync_categories', $all_categories );
+
+					if ( ast_block_templates_doing_wp_cli() ) {
+						ast_block_templates_log( 'CATEGORY:Generating ' . $option_name . '.json file' );
+					}
+				}
+			} else {
+				ast_block_templates_log( 'CATEGORY:API Error: ' . $response->get_error_message() );
+			}
+
+			ast_block_templates_log( 'CATEGORY:Completed category import.' );
 		}
 
 		/**

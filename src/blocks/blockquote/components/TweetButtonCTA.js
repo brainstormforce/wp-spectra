@@ -1,31 +1,38 @@
-const { Fragment } = wp.element
-import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
-class TweetButtonCTA extends React.Component {
+import UAGB_Block_Icons from '@Controls/block-icons';
 
-	render() {
+function TweetButtonCTA( props ) {
+	const { attributes } = props;
 
-		const { attributes} = this.props
-	
-		return (			
-			<a href="/" className='uagb-blockquote__tweet-button' target='_blank' rel ='noopener noreferrer'>
-	      		{ ( attributes.iconView === "icon_text" ) && <Fragment>
-	      			{ UAGB_Block_Icons.quote_tweet_icon }
-		      			<span className="uagb-blockquote__tweet-label">{attributes.iconLabel}</span>
-		      		</Fragment>
-		      	}
+	return (
+		<a
+			onClick={ ( e ) => e.preventDefault() }
+			href="/"
+			className="uagb-blockquote__tweet-button"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			{ attributes.iconView === 'icon_text' && (
+				<>
+					{ UAGB_Block_Icons.quote_tweet_icon }
+					<span className="uagb-blockquote__tweet-label">
+						{ attributes.iconLabel }
+					</span>
+				</>
+			) }
 
-		      	{ ( attributes.iconView ==="icon" ) && <Fragment>
-	      			{ UAGB_Block_Icons.quote_tweet_icon }		      			
-		      		</Fragment>
-		      	}
+			{ attributes.iconView === 'icon' && (
+				<>{ UAGB_Block_Icons.quote_tweet_icon }</>
+			) }
 
-		      	{ ( attributes.iconView === "text" ) && <Fragment>	      			
-		      			<span className="uagb-blockquote__tweet-label">{attributes.iconLabel}</span>
-		      		</Fragment>
-		      	}
-	      	</a>    	
-		)
-	}
+			{ attributes.iconView === 'text' && (
+				<>
+					<span className="uagb-blockquote__tweet-label">
+						{ attributes.iconLabel }
+					</span>
+				</>
+			) }
+		</a>
+	);
 }
 
-export default TweetButtonCTA
+export default TweetButtonCTA;

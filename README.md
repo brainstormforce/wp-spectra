@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.7  
-**Stable tag:** 1.22.2  
+**Stable tag:** 1.23.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -168,11 +168,95 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
-### 1.22.3 ###
+### 1.23.5 ###
 * Improvement: Reduce the size of static CSS.
+* Fix: Multiple blockquote post same content after clicking on tweet button.
+
+### 1.23.4 ###
+* Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
+* Fix: Assets Generation on Archive Pages not working for all Posts on frontend.
+* Fix: Core button Block alignment is not working in advanced column block.
+* Fix: Twenty Seventeen Compatibility - Uncaught Error on pages.
+
+### 1.23.3 ###
+* Fix: Table of Contents - UTF-8 encoding on frontend.
+* Fix: Table of Contents - Fatal error when $doc->documentElement is null in some cases on frontend.
+* Fix: Table of Contents - Scroll to Top icon not visible on frontend.
+* Fix: Posts - "B7" displayed in place of " . " icon on frontend when file generation is disabled.
+
+### 1.23.2 ###
+* Fix: Table of Contents: Headings with HTML tags are not visible on the frontend.
+* Fix: Table of Contents - Question marks are rendered in place of UTF-8 characters for few languages in Heading.
+* Fix: Section - Full-Width option not being applied on the front-end according to theme content width.
+* Fix: Post Layouts - Showing post content instead of post except on the front-end.
+
+### 1.23.1 ###
+* Fix: Broken path while generating assets (CSS/JS).
+* Fix: Table of Contents - Heading convert to question marks on the frontend.
+* Fix: Table of Contents - Unexpected characters in links. Restricted to alphanumeric characters.
+
+### 1.23.0 ###
+* New: Added an option to rollback to a previous version.
+* New: Added an option to get update notifications for beta versions.
+* New: Lottie - Added alignment Option.
+* Improvement: Frontend optimization by reducing one request of CSS.
+* Improvement: Improved the Dynamic Assets loading functionality for better performance.
+* Improvement: Static CSS Optimized by loading only used blocks' CSS on a Page.
+* Improvement: Table of content - Optimized headings rendering to remove CLS impact.
+* Fix: Advanced Column - Column Gap Setting overlapping issue.
+* Fix: Advanced Column - Column Gap Setting not working in the Editor issue.
+* Fix: Advanced Column - Stack on tablet and mobile in preview mode.
+* Fix: Blockquote - Tweet link showing an empty page link and username.
+* Fix: Block condition - Conflicting with Real Media Library plugin.
+* Fix: Blocks throwing an error when deactivate all the UAG blocks except the Multi Buttons, Forms & How To.
+* Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
+* Fix: Lottie - Settings conflict issue.
+* Fix: Lottie - Alignment issue in the editor.
+* Fix: Post Grid - Link to complete box redirect to the last post when image background set to Top.
+* Fix: Post Layout - Conflicting with the Envira Gallery plugin.
+* Fix: Post Layout - Invalid HTML markup of a post meta link.
+* Fix: Section - Margin Left/Right not working issue.
+* Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
+* Fix: Table of content - HTML validation issue.
+* Fix: Table of Contents - Default heading was displaying instead of previously set heading.
+
+### 1.22.5 ###
+* Improvement: Updated Gutenberg Template Library.
+
+### 1.22.4 ###
+* Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
+* Fix: Blockquote - Javascript console error when Twitter Icon is disabled.
+* Fix: Table of Contents - Not allowed HTML tags in title and JS minification issue.
+
+### 1.22.3 ###
+* Improvement: Advanced Column - Added two more shapes dividers for top and bottom.
+* Improvement: Added filter to disable block conditions from the editor. [Read More](https://ultimategutenberg.com/docs/display-conditions-blocks/)
+* Improvement: Block preview on responsive devices in the editor.
+* Improvement: First letter Capitalize instead of all Meta in post layout. 
+* Improvement: Forms - Resolved after adding v3 ReCaptcha in forms block needs to click twice on button to submit the form.
+* Improvement: Tabs - Added alignment option to the tab headers.
+* Improvement: Tabs - Added option to update the tabs order by moving it left or right.
+* Improvement: Taxonomy List - Added Html Tag Selector to set Tag of list title.
+* Fix: Block Conditions - Resolved some conflicts with the LifterLMS and Formidable forms.
+* Fix: Block Conditions - Resolved Invalid block issue of core widget blocks.
+* Fix: Content Timeline - Fixed Connector layout on mobile devices issue.
+* Fix: Display Condition - Added body tag instead of "entry-content" class in CSS to hide the block.
+* Fix: Forms - Resolved subject is not attached in the mail issue. 
+* Fix: Google Map - Added some padding for the editor to improve a Google Map selection experience.
+* Fix: Social Share - Fixed the jQuery undefined error.
+* Fix: Tabs - Nested tab layout breaking all the tab functionality.
+* Fix: Tabs - Tabs body generating multiple times.
+* Fix: Tabs - Tab Anchors in the page link Are Ignored.
+* Fix: Table of Contents - Conflict with Mediavine Ad Script.
+* Fix: Table of Contents - Scrolling to the heading issue when smooth scroll was disabled.
+* Fix: Marketing Button - Fix Icon size setting issue.
+* Fix: Marketing button - Text color and hover color overriding the block-library style.
+* Fix: Post Masonry - Fixed the JS UAGBPostMasonry is not defined error.
+* Fix: Post Timeline - Fixed Heading and Sub-heading color issue on front-end.
+* Fix: Post Layout - Conflicting with NextGen Gallery plugin.
+* Fix: Posts Layout - On disabling the "Show Excerpt" option  "Read More" setting was hidden.
 * Fix: Resolved RangeControl Slider issue in responsive modes.
-* Fix: When disabling the "Show Excerpt" option, the option to enable/disable the "Read More" link is Removed.
-* Fix: Google Map - Added some padding for the editor to improve the experience of a selection of Google Map.
+* Fix: Fix taxonomy special character issue in all post layouts.
 
 ### 1.22.2 ###
 * Fix: Advanced Columns - Column not stacking on tablet & mobile devices.

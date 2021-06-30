@@ -198,7 +198,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_icon_list = false;
 			$is_already_button    = false;
 			$is_already_faq       = false;
-
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
@@ -276,18 +275,100 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			}
 
-			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
+			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
+			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
 			wp_delete_file( $combined_path );
 
 			$style = '';
 
-			$wp_filesystem = UAGB_Helper::get_instance()->get_filesystem();
+			$wp_filesystem = uagb_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
-				$style .= $wp_filesystem->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
+				$style .= $wp_filesystem->get_contents( UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
 			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
+		}
+
+		/**
+		 * Get Rollback versions.
+		 *
+		 * @since 1.23.0
+		 * @return array
+		 * @access public
+		 */
+		public function get_rollback_versions() {
+
+			$rollback_versions = get_transient( 'uag_rollback_versions_' . UAGB_VER );
+
+			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
+
+				$max_versions = 10;
+
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+				$plugin_information = plugins_api(
+					'plugin_information',
+					array(
+						'slug' => 'ultimate-addons-for-gutenberg',
+					)
+				);
+
+				if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+					return array();
+				}
+
+				krsort( $plugin_information->versions );
+
+				$rollback_versions = array();
+
+				foreach ( $plugin_information->versions as $version => $download_link ) {
+
+					$lowercase_version = strtolower( $version );
+
+					$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+
+					if ( ! $is_valid_rollback_version ) {
+						continue;
+					}
+
+					if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+						continue;
+					}
+
+					$rollback_versions[] = $version;
+				}
+
+				usort( $rollback_versions, array( $this, 'sort_rollback_versions' ) );
+
+				$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
+
+				set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions, WEEK_IN_SECONDS );
+			}
+
+			return $rollback_versions;
+		}
+		/**
+		 * Sort Rollback versions.
+		 *
+		 * @param string $prev Previous Version.
+		 * @param string $next Next Version.
+		 *
+		 * @since 1.23.0
+		 * @return array
+		 * @access public
+		 */
+		public function sort_rollback_versions( $prev, $next ) {
+
+			if ( version_compare( $prev, $next, '==' ) ) {
+				return 0;
+			}
+
+			if ( version_compare( $prev, $next, '>' ) ) {
+				return -1;
+			}
+
+			return 1;
 		}
 
 	}

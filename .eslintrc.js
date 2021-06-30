@@ -1,35 +1,12 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
-    }
+	extends: [ 'plugin:@wordpress/eslint-plugin/recommended' ],
+	ignorePatterns: [ 'deprecated.js' ],
+	rules: {
+		camelcase: 'off',
+	},
+	globals: {
+		uagb_blocks_info: true,
+		UAGB_Block_Icons: true,
+		__webpack_public_path__: true,
+	},
 };

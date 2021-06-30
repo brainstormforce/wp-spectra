@@ -1,33 +1,48 @@
-const { decodeEntities } = wp.htmlEntities
-const { __ } = wp.i18n
+import { useLayoutEffect } from 'react';
 
-export const PostImage = (props) =>  {
-		
-		const { post, attributes } = props
+const { decodeEntities } = wp.htmlEntities;
+import { __ } from '@wordpress/i18n';
+import styles from './editor.lazy.scss';
 
-		let target = ( attributes.newTab ) ? "_blank" : "_self"
+export const PostImage = ( props ) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 
-		if (
-			attributes.displayPostImage &&
-			undefined !== post.uagb_featured_image_src &&
-			attributes.imgSize &&
-			post.uagb_featured_image_src[attributes.imgSize]
-		) {
-			var src = post.uagb_featured_image_src[attributes.imgSize]
+	const { post, attributes } = props;
 
-			return (
-				<div className='uagb-post__image'>
-					<a href={ post.link } target={ target } rel ="noopener noreferrer">
-						<img
-							src={ src[0] }
-							alt={ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }
-						/>
-					</a>
-				</div>
-			)
-		} else {
+	const target = attributes.newTab ? '_blank' : '_self';
 
-			return null
-		}
+	if (
+		attributes.displayPostImage &&
+		undefined !== post.uagb_featured_image_src &&
+		attributes.imgSize &&
+		post.uagb_featured_image_src[ attributes.imgSize ]
+	) {
+		const src = post.uagb_featured_image_src[ attributes.imgSize ];
+
+		return (
+			<div className="uagb-post__image">
+				<a
+					href={ post.link }
+					target={ target }
+					rel="noopener noreferrer"
+				>
+					<img
+						src={ src[ 0 ] }
+						alt={
+							decodeEntities( post.title.rendered.trim() ) ||
+							__( '(Untitled)' )
+						}
+					/>
+				</a>
+			</div>
+		);
 	}
 
+	return null;
+};

@@ -3,6 +3,7 @@
 .editorconfig
 .git
 .gitignore
+.gitattributes
 .gitlab-ci.yml
 .travis.yml
 .DS_Store
@@ -35,3 +36,6 @@ scripts
 config
 .github
 .wordpress-org
+.eslintignore
+.eslintrc.js
+artifact

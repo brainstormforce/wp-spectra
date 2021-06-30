@@ -41,8 +41,6 @@ class UAGB_Init_Blocks {
 	 * Constructor
 	 */
 	public function __construct() {
-		// Hook: Frontend assets.
-		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
@@ -284,135 +282,6 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
-	 * Enqueue Gutenberg block assets for both frontend + backend.
-	 *
-	 * @since 1.0.0
-	 */
-	public function block_assets() {
-
-		if ( ! is_admin() ) {
-
-			if ( class_exists( 'WooCommerce' ) ) {
-
-				if ( false === UAGB_Helper::$uag_flag ) {
-					return;
-				}
-			} else {
-
-				$post = get_post();
-
-				/**
-				 * Filters the post to build stylesheet for.
-				 *
-				 * @param \WP_Post $post The global post.
-				 */
-				$post = apply_filters( 'uagb_post_for_stylesheet', $post );
-
-				if ( false === has_blocks( $post ) ) {
-					return;
-				}
-
-				if ( false === UAGB_Helper::$uag_flag ) {
-					return;
-				}
-			}
-		}
-
-		wp_enqueue_style(
-			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
-			array(),
-			UAGB_VER
-		);
-
-		if ( is_rtl() ) {
-			wp_enqueue_style(
-				'uagb-style-rtl', // Handle.
-				UAGB_URL . 'dist/blocks.style.rtl.css', // RTL style CSS.
-				array(),
-				UAGB_VER
-			);
-		}
-
-		$blocks          = UAGB_Config::get_block_attributes();
-		$disabled_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
-		$block_assets    = UAGB_Config::get_block_assets();
-
-		foreach ( $blocks as $slug => $value ) {
-			$_slug = str_replace( 'uagb/', '', $slug );
-
-			if ( ! ( isset( $disabled_blocks[ $_slug ] ) && 'disabled' === $disabled_blocks[ $_slug ] ) ) {
-
-				$js_assets = ( isset( $blocks[ $slug ]['js_assets'] ) ) ? $blocks[ $slug ]['js_assets'] : array();
-
-				$css_assets = ( isset( $blocks[ $slug ]['css_assets'] ) ) ? $blocks[ $slug ]['css_assets'] : array();
-
-				if ( 'cf7-styler' === $_slug ) {
-					if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
-						wp_enqueue_script( 'contact-form-7' );
-					}
-
-					if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
-						wp_enqueue_script( ' wpcf7-admin' );
-					}
-				}
-
-				foreach ( $js_assets as $asset_handle => $val ) {
-					// Scripts.
-					wp_register_script(
-						$val, // Handle.
-						$block_assets[ $val ]['src'],
-						$block_assets[ $val ]['dep'],
-						UAGB_VER,
-						true
-					);
-
-					$skip_editor = isset( $block_assets[ $val ]['skipEditor'] ) ? $block_assets[ $val ]['skipEditor'] : false;
-
-					if ( is_admin() && false === $skip_editor ) {
-						wp_enqueue_script( $val );
-					}
-				}
-
-				foreach ( $css_assets as $asset_handle => $val ) {
-					// Styles.
-					wp_register_style(
-						$val, // Handle.
-						$block_assets[ $val ]['src'],
-						$block_assets[ $val ]['dep'],
-						UAGB_VER
-					);
-
-					if ( is_admin() ) {
-						wp_enqueue_style( $val );
-					}
-				}
-			}
-		}
-
-		$uagb_masonry_ajax_nonce = wp_create_nonce( 'uagb_masonry_ajax_nonce' );
-		wp_localize_script(
-			'uagb-post-js',
-			'uagb_data',
-			array(
-				'ajax_url'                => admin_url( 'admin-ajax.php' ),
-				'uagb_masonry_ajax_nonce' => $uagb_masonry_ajax_nonce,
-			)
-		);
-
-		$uagb_forms_ajax_nonce = wp_create_nonce( 'uagb_forms_ajax_nonce' );
-		wp_localize_script(
-			'uagb-forms-js',
-			'uagb_forms_data',
-			array(
-				'ajax_url'              => admin_url( 'admin-ajax.php' ),
-				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
-			)
-		);
-
-	} // End function editor_assets().
-
-	/**
 	 * Enqueue Gutenberg block assets for backend editor.
 	 *
 	 * @since 1.0.0
@@ -420,34 +289,36 @@ class UAGB_Init_Blocks {
 	public function editor_assets() {
 
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
+
+		$script_dep_path = UAGB_DIR . 'dist/blocks.asset.php';
+		$script_info     = file_exists( $script_dep_path )
+			? include $script_dep_path
+			: array(
+				'dependencies' => array(),
+				'version'      => UAGB_VER,
+			);
+		$script_dep      = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ) );
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
-			UAGB_URL . 'dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ), // Dependencies, defined above.
-			UAGB_VER,
+			UAGB_URL . 'dist/blocks.js',
+			$script_dep, // Dependencies, defined above.
+			$script_info['version'], // UAGB_VER.
 			true // Enqueue the script in the footer.
 		);
 
 		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
 
-		// Styles.
-		wp_enqueue_style(
-			'uagb-block-editor-css', // Handle.
-			UAGB_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
-			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-			UAGB_VER
-		);
-
 		// Common Editor style.
 		wp_enqueue_style(
 			'uagb-block-common-editor-css', // Handle.
-			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
+			UAGB_URL . 'admin/assets/common-block-editor.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
-		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'dist/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
+		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'admin/assets/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
 		$blocks       = array();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
@@ -485,26 +356,37 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'            => UAGB_Config::get_block_attributes(),
-				'category'          => 'uagb',
-				'ajax_url'          => admin_url( 'admin-ajax.php' ),
-				'cf7_forms'         => $this->get_cf7_forms(),
-				'gf_forms'          => $this->get_gravity_forms(),
-				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
-				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'       => UAGB_Helper::get_image_sizes(),
-				'post_types'        => UAGB_Helper::get_post_types(),
-				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
-				'taxonomy_list'     => UAGB_Helper::get_taxonomy_list(),
-				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
-				'uagb_home_url'     => home_url(),
-				'user_role'         => $this->get_user_role(),
-				'uagb_url'          => UAGB_URL,
-				'uagb_mime_type'    => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'     => UAGB_URI,
+				'blocks'                 => UAGB_Config::get_block_attributes(),
+				'category'               => 'uagb',
+				'ajax_url'               => admin_url( 'admin-ajax.php' ),
+				'cf7_forms'              => $this->get_cf7_forms(),
+				'gf_forms'               => $this->get_gravity_forms(),
+				'tablet_breakpoint'      => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint'      => UAGB_MOBILE_BREAKPOINT,
+				'image_sizes'            => UAGB_Helper::get_image_sizes(),
+				'post_types'             => UAGB_Helper::get_post_types(),
+				'all_taxonomy'           => UAGB_Helper::get_related_taxonomy(),
+				'taxonomy_list'          => UAGB_Helper::get_taxonomy_list(),
+				'uagb_ajax_nonce'        => $uagb_ajax_nonce,
+				'uagb_home_url'          => home_url(),
+				'user_role'              => $this->get_user_role(),
+				'uagb_url'               => UAGB_URL,
+				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
+				'uagb_site_url'          => UAGB_URI,
+				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
+				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
 			)
 		);
-	} // End function editor_assets().
+
+		// To match the editor with frontend.
+		// Scripts Dependency.
+		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
+		// Style.
+		UAGB_Scripts_Utils::enqueue_blocks_styles();
+		// RTL Styles.
+		UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
+	}
+
 	/**
 	 *  Get the User Roles
 	 *
