@@ -2,9 +2,9 @@ import { CustomPicker } from 'react-color';
 import { Hue, Saturation, Alpha, Checkboard } from 'react-color/lib/components/common';
 import { ChromePointerCircle } from 'react-color/lib/components/chrome/ChromePointerCircle';
 import { ChromePointer } from 'react-color/lib/components/chrome/ChromePointer';
-import UagbPickerFields from './uagb-color-picker-fields';
+import UAGBPickerFields from './uagb-color-picker-fields';
 
-export const UagbColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) => {
+export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) => {
 	const styles = {
 		picker: {
 			width: 300,
@@ -77,51 +77,51 @@ export const UagbColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 		},
 	};
 	return (
-		<div style={ styles.picker } className={ 'uagb-picker' }>
-			<div style={ styles.saturation }>
-				<Saturation
-					style={ styles.Saturation }
-					hsl={ hsl }
-					hsv={ hsv }
-					pointer={ ChromePointerCircle }
-					onChange={ onChange }
-				/>
-			</div>
-			<div style={ styles.body }>
-				<div style={ styles.controls } className="flexbox-fix">
-					<div style={ styles.sliders }>
-						<div style={ styles.hue }>
-							<Hue
-								style={ styles.Hue }
-								hsl={ hsl }
-								onChange={ onChange }
-								pointer={ ChromePointer }
-							/>
-						</div>
-						<div style={ styles.alpha }>
-							<Alpha
-								style={ styles.Alpha }
-								rgb={ rgb }
-								hsl={ hsl }
-								renderers={ renderers }
-								pointer={ ChromePointer }
-								onChange={ onChange }
-							/>
-						</div>
-					</div>
-					<div style={ styles.color }>
-						<Checkboard />
-						<div style={ styles.activeColor } />
-					</div>
-				</div>
-			</div>
-			<UagbPickerFields
-				rgb={ rgb }
+	<div style={ styles.picker } className={ 'uagb-picker' }>
+		<div style={ styles.saturation }>
+			<Saturation
+				style={ styles.Saturation }
 				hsl={ hsl }
-				hex={ hex }
+				hsv={ hsv }
+				pointer={ ChromePointerCircle }
 				onChange={ onChange }
 			/>
 		</div>
+		<div style={ styles.body }>
+			<div style={ styles.controls } className="flexbox-fix">
+				<div style={ styles.sliders }>
+					<div style={ styles.hue }>
+						<Hue
+							style={ styles.Hue }
+							hsl={ hsl }
+							onChange={ onChange }
+							pointer={ ChromePointer }
+						/>
+					</div>
+					<div style={ styles.alpha }>
+						<Alpha
+							style={ styles.Alpha }
+							rgb={ rgb }
+							hsl={ hsl }
+							renderers={ renderers }
+							pointer={ ChromePointer }
+							onChange={ onChange }
+						/>
+					</div>
+				</div>
+				<div style={ styles.color }>
+					<Checkboard />
+					<div style={ styles.activeColor } />
+				</div>
+			</div>
+		</div>
+		<UAGBPickerFields
+			rgb={ rgb }
+			hsl={ hsl }
+			hex={ hex }
+			onChange={ onChange }
+		/>
+	</div>
 	);
 };
-export default CustomPicker( UagbColorPicker );
+export default CustomPicker( UAGBColorPicker );

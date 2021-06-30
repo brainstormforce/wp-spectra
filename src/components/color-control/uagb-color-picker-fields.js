@@ -3,7 +3,7 @@ import { EditableInput } from 'react-color/lib/components/common';
 import { Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element'
 
-const UagbPickerFields = props => {
+const UAGBPickerFields = props => {
 	
 	const [ value, setValue ] = useState( {
 		view: 'rgb',
@@ -99,104 +99,104 @@ const UagbPickerFields = props => {
 	};
 
 	return (
-		<div style={ styles.fields } className="flexbox-fix">
-			<div style={ styles.double }>
-				<EditableInput
-					style={ { input: styles.input, label: styles.label } }
-					label="hex"
-					value={ props.hex.replace( '#', '' ) }
-					onChange={ handleChange }
-				/>
-			</div>
-			{ value.view === 'rgb' && (
-				<>
-					<div style={ styles.single }>
-						<EditableInput
-							style={{ input: styles.input, label: styles.label }}
-							label="r"
-							value={ props.rgb.r }
-							onChange={ handleChange }
-							dragLabel="true"
-							dragMax="255"
-						/>
-					</div>
-					<div style={ styles.single }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="g"
-							value={ props.rgb.g }
-							onChange={ handleChange }
-							dragLabel="true"
-							dragMax="255"
-						/>
-					</div>
-					<div style={ styles.single }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="b"
-							value={ props.rgb.b }
-							onChange={ handleChange }
-							dragLabel="true"
-							dragMax="255"
-						/>
-					</div>
-					<div style={ styles.alpha }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="a"
-							value={ props.rgb.a }
-							arrowOffset={ 0.01 }
-							onChange={ handleChange }
-						/>
-					</div>
-				</>
-			) }
-			{ value.view === 'hsl' && (
-				<>
-					<div style={ styles.single }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="h"
-							value={ Math.round( props.hsl.h ) }
-							onChange={ handleChange }
-							dragLabel="true"
-							dragMax="359"
-						/>
-					</div>
-					<div style={ styles.single }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="s"
-							value={ `${ Math.round( props.hsl.s * 100 ) }` }
-							onChange={ handleChange }
-						/>
-					</div>
-					<div style={ styles.single }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="l"
-							value={ `${ Math.round( props.hsl.l * 100 ) }` }
-							onChange={ handleChange }
-						/>
-					</div>
-					<div style={ styles.alpha }>
-						<EditableInput
-							style={ { input: styles.input, label: styles.label } }
-							label="a"
-							value={ props.hsl.a }
-							arrowOffset={ 0.01 }
-							onChange={ handleChange }
-						/>
-					</div>
-				</>
-			) }
-			<div style={ styles.toggle }>
-				<div className="toggle-icons" style={ styles.icon } onClick={ toggleViews } ref={ (icon) => icon = icon }>
-					<Dashicon icon="arrow-up-alt2" />
-					<Dashicon icon="arrow-down-alt2" />
+	<div style={ styles.fields } className="flexbox-fix">
+		<div style={ styles.double }>
+			<EditableInput
+				style={ { input: styles.input, label: styles.label } }
+				label="hex"
+				value={ props.hex.replace( '#', '' ) }
+				onChange={ handleChange }
+			/>
+		</div>
+		{ value.view === 'rgb' && (
+			<>
+				<div style={ styles.single }>
+					<EditableInput
+						style={{ input: styles.input, label: styles.label }}
+						label="r"
+						value={ props.rgb.r }
+						onChange={ handleChange }
+						dragLabel="true"
+						dragMax="255"
+					/>
 				</div>
+				<div style={ styles.single }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="g"
+						value={ props.rgb.g }
+						onChange={ handleChange }
+						dragLabel="true"
+						dragMax="255"
+					/>
+				</div>
+				<div style={ styles.single }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="b"
+						value={ props.rgb.b }
+						onChange={ handleChange }
+						dragLabel="true"
+						dragMax="255"
+					/>
+				</div>
+				<div style={ styles.alpha }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="a"
+						value={ props.rgb.a }
+						arrowOffset={ 0.01 }
+						onChange={ handleChange }
+					/>
+				</div>
+			</>
+		) }
+		{ value.view === 'hsl' && (
+			<>
+				<div style={ styles.single }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="h"
+						value={ Math.round( props.hsl.h ) }
+						onChange={ handleChange }
+						dragLabel="true"
+						dragMax="359"
+					/>
+				</div>
+				<div style={ styles.single }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="s"
+						value={ `${ Math.round( props.hsl.s * 100 ) }` }
+						onChange={ handleChange }
+					/>
+				</div>
+				<div style={ styles.single }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="l"
+						value={ `${ Math.round( props.hsl.l * 100 ) }` }
+						onChange={ handleChange }
+					/>
+				</div>
+				<div style={ styles.alpha }>
+					<EditableInput
+						style={ { input: styles.input, label: styles.label } }
+						label="a"
+						value={ props.hsl.a }
+						arrowOffset={ 0.01 }
+						onChange={ handleChange }
+					/>
+				</div>
+			</>
+		) }
+		<div style={ styles.toggle }>
+			<div className="toggle-icons" style={ styles.icon } onClick={ toggleViews } ref={ (icon) => icon = icon }>
+				<Dashicon icon="arrow-up-alt2" />
+				<Dashicon icon="arrow-down-alt2" />
 			</div>
 		</div>
+	</div>
 	);
 }
-export default UagbPickerFields;
+export default UAGBPickerFields;
