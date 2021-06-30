@@ -5563,12 +5563,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .blocks-gallery-grid .blocks-gallery-item' => array(
-					'margin'             => 0,
-					'display'            => 'grid',
-					'grid-template-rows' => '1fr auto',
-					'margin-bottom'      => '1em',
-					'break-inside'       => 'avoid',
-					'width'              => 'unset',
+					'margin'        => 0,
+					'display'       => 'block',
+					'margin-bottom' => '1em',
+					'width'         => 'unset',
 				),
 				'.wp-block-gallery .blocks-gallery-grid' => array(
 					'column-gap' => '1em',

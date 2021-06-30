@@ -5,10 +5,8 @@
         display: block;
         li.blocks-gallery-item {
             margin: 0;
-            display: grid;
-            grid-template-rows: 1fr auto;
+            display: block;
             margin-bottom: 1em;
-            break-inside: avoid;
             width: unset;
         }
     }
