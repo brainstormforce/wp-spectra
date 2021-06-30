@@ -1,13 +1,17 @@
 .uag-user-info {
-	padding-top: 50px;
-	padding-bottom: 50px;
-
-	.uag-metabox__title h1 {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	.uag-metabox__title h1, p , .uag-button, h3,h2, .uag-metabox__element, .uag-starter-tmp__img , .uag-starter-tmp__details,.uag-astra-theme__elements{
 		margin: 15px;
+	}
+	.uag-metabox__title h1 {
 		font-size: 32px;
 		font-weight: 400;
 		padding: 4px 0;
 		line-height: 1;
+	}
+	h2{
+		font-size: 25px;
 	}
 
 	.uag-metabox__header {
@@ -18,60 +22,53 @@
 		padding-top: 0px;
 
 		p {
+			line-height: 25px;
 			color: #555;
 			font-size: 15px;
-			margin: 15px;
 		}
 		.uag-button {
 			background: #2F4F4F;
 			color: #fff;
 			border-radius: 5px;
-			margin: 15px;
-		}
-		h3{
-			margin: 15px;
 		}
 	}
 	.uag-metabox__elements {
 		display: flex;
-		width: 100%;
 	}
 	.uag-metabox__element {
+		box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 		background-color: #fff;
 		padding: 20px;
-		margin: 15px;
 	}
 	.uag-starter-site__elements{
-		padding: 20px;
 		display: flex;
-		margin: 15px;
-		.uag-starter-tmp__img{
-			text-align: center;
-			padding-left: 20px;
-    		padding-right: 20px;
-    		align-self: center;
-			img{
-				width:80%;
-			}
-		}
 		.uag-starter-tmp__details{
 			align-self: center;
 		}
-	}
-	.uag-column{
-		width:50%;
+		.uag-starter-tmp__img , .uag-starter-tmp__details{
+			padding: 20px;
+			width: 50%;
+		}
+		.uag-starter-tmp__img{
+			text-align: center;
+			img{
+				max-width: 80%;
+				height: auto;
+			}
+		}
 	}
 	.uag-astra-theme__elements{
+		border-radius: 2px;
+		box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 		padding: 20px;
 		display: flex;
-		margin: 15px;
 		background-color: #fff;
 		.uag-astra__content{
 			width:70%;
 		}
 		.uag-astra__cta{
 			width: 30%;
-			text-align: center;
+			text-align: right;
     		align-self: center;
 		}
 	}

@@ -85,13 +85,13 @@ function UserInfoBox( props ) {
 					</div>
 				</div>
 				<div className="uag-starter-site__elements">
-					<div className="uag-column uag-starter-tmp__img">
+					<div className="uag-starter-tmp__img">
 						<img src={uag_react.plugin_dir +'admin-core/assets/images/astra-starter-sites.jpg'} />
 					</div>
-					<div className="uag-column uag-starter-tmp__details">
-						<h3>
+					<div className="uag-starter-tmp__details">
+						<h2>
 							{ __( 'Get Ready to use, Full Demo Websites ', 'ultimate-addons-for-gutenberg' ) }
-						</h3>
+						</h2>
 						<p>
 							{ __(
 								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -106,9 +106,9 @@ function UserInfoBox( props ) {
 				</div>
 				<div className="uag-astra-theme__elements">
 					<div className="uag-astra__content">
-						<h3>
+						<h2>
 							{ __( 'UAG Works best with free ASTRA theme! ', 'ultimate-addons-for-gutenberg' ) }
-						</h3>
+						</h2>
 						<p>
 							{ __(
 								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
