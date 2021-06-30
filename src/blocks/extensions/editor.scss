@@ -6,7 +6,9 @@
         li.blocks-gallery-item {
             margin: 0;
             display: block;
+            grid-template-rows: 1fr auto;
             margin-bottom: 1em;
+            break-inside: avoid;
             width: unset;
         }
     }
