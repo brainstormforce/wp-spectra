@@ -11,20 +11,48 @@ import { withSelect } from '@wordpress/data';
 const { ColorPalette } = wp.blockEditor
 import { useState, useEffect } from '@wordpress/element'
 
-let cachedValue = 'initial';
-let resetStateDisabled = true;
 const AdvancedPopColorControl = props => {
    
     const [ value, setValue ] = useState( {
         alpha: false === props.alpha ? false : true,
         colors: [],
         classSat: 'first',
-        currentColor: '',
+        currentColor: props.colorValue,
         inherit: false,
         currentOpacity: props.opacityValue !== undefined ? props.opacityValue : 1,
         isPalette: ( ( props.colorValue && props.colorValue.startsWith( 'palette' ) ) || ( props.colorDefault && props.colorDefault.startsWith( 'palette' ) ) ? true : false ),
     } );
     const [ visible, setVisible ] = useState( { isVisible: false } );
+
+
+    let defaultCache = {
+        value : value,
+        resetDisabled : true
+    }
+
+    const [ cachedValue, setCacheValue ] = useState( defaultCache );
+
+    useEffect(() => {
+
+        let cachedValueUpdate = { ...cachedValue }
+
+        if ( undefined !== value ) {
+
+            cachedValueUpdate['value'] = value
+            setCacheValue( cachedValueUpdate );
+        }
+    }, []);
+
+    useEffect(() => {
+
+        let cachedValueUpdate = { ...cachedValue }
+
+        if ( JSON.stringify( value ) !== JSON.stringify( cachedValueUpdate.value ) ) {
+    
+            cachedValueUpdate['resetDisabled'] = false;
+            setCacheValue( cachedValueUpdate );
+        }
+    }, [ value ]);
 
     const onChangeState = ( color, palette ) => {
         
@@ -93,13 +121,16 @@ const AdvancedPopColorControl = props => {
         }
     };
 
-    useEffect(() => {
-        cachedValue = props.colorValue;
-        resetStateDisabled = true;
-    }, []);
-
     const resetValues = () => {
         
+        let cachedValueUpdate = { ...cachedValue }
+
+        setValue( cachedValueUpdate.value );
+        
+        props.onColorChange( cachedValueUpdate.value.currentColor );
+        
+        cachedValueUpdate['resetDisabled'] = true;
+        setCacheValue( cachedValueUpdate );
 	};
    
     const unConvertOpacity = ( value ) => {
@@ -128,16 +159,7 @@ const AdvancedPopColorControl = props => {
     if ( props.onOpacityChange && ! value.isPalette ) {
         colorVal = hexToRGBA( ( undefined === colorVal ? '' : colorVal ), ( convertedOpacityValue !== undefined && convertedOpacityValue !== '' ? convertedOpacityValue : 1 ) );
     }
-
-    if ( 'initial' === cachedValue ) {
-        cachedValue = props.colorValue;
-    }
-
-    if ( props.colorValue !== cachedValue ) {
-
-        resetStateDisabled = false;
-    }
-         
+     
     return (
     <div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
         <div className="uagb-advanced-color-settings-container">
@@ -146,7 +168,7 @@ const AdvancedPopColorControl = props => {
             ) }
             <Button
                 className='uagb-spacing-reset'
-                disabled={ resetStateDisabled } 
+                disabled={ cachedValue.resetDisabled } 
                 isSecondary
                 isSmall
                 onClick={ e => {
