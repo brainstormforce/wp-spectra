@@ -294,8 +294,26 @@ class UAGBColumnEdit extends Component {
 					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-				<Columnresponsive/>
-					{ "Desktop" === deviceType && (
+				<Columnresponsive
+					topPadding = { topPadding }
+					bottomPadding = { bottomPadding }
+					leftPadding = { leftPadding }
+					rightPadding = {  rightPadding }
+					topPaddingTablet = { topPaddingTablet }
+					bottomPaddingTablet = { bottomPaddingTablet }
+					leftPaddingTablet = { leftPaddingTablet }
+					rightPaddingTablet = { rightPaddingTablet }
+					topPaddingMobile={ topPaddingMobile }
+					bottomPaddingMobile={ bottomPaddingMobile }
+					leftPaddingMobile={ leftPaddingMobile }
+					rightPaddingMobile={ rightPaddingMobile }
+					desktopPaddingType={ desktopPaddingType }
+					tabletPaddingType={ tabletPaddingType }
+					mobilePaddingType={ mobilePaddingType }
+					deviceType={ deviceType }
+					setAttributes={ setAttributes }
+				/>
+					{/* { "Desktop" === deviceType && (
 						<Fragment>
 							<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
 								<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
@@ -429,7 +447,7 @@ class UAGBColumnEdit extends Component {
 								allowReset
 							/>
 						</Fragment>
-					)}
+					)} */}
 				</PanelBody>
 				<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<SelectControl
