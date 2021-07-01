@@ -241,6 +241,7 @@ import GradientSettings from "../../components/gradient-settings"
 					onChange={ val => setAttributes( { backgroundOpacity: parseInt(val) } ) }
 					min={ 0 } 
 					max={ 100 } 
+					displayUnit={ false }
 				/>)
 			}
 		</>
