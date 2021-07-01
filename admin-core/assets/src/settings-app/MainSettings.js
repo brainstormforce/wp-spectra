@@ -8,6 +8,7 @@ import '@SettingsApp/MainSettings.scss';
 
 /* Component */
 import NavMenu from '@SettingsApp/components/common/NavMenu';
+import Footer from '@SettingsApp/components/common/Footer';
 import SettingsRoute from '@SettingsApp/SettingsRoute';
 
 import InputEvents from '@SettingsApp/utils/InputEvents';
@@ -58,6 +59,7 @@ function MainSettings() {
 					</Route>
 				</Switch>
 			</div>
+			<Footer/>
 		</Router>
 	);
 }
