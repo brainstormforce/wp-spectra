@@ -1,6 +1,4 @@
-#uag-menu-page {
-	padding-top: 82px;
-}
+
 /* Header */
 .uag-admin-header {
 	position: fixed;
@@ -64,12 +62,6 @@
 }
 
 /* Extra */
-.uag-title {
-	flex: auto;
-	align-content: flex-start;
-	text-align: right;
-}
-
 .uag-logo {
-	max-width: 170px;
+	max-width: 250px;
 }

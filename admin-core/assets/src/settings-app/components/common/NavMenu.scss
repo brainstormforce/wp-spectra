@@ -1,28 +1,25 @@
 .uag-global-nav-menu {
 	margin: 0px;
-	padding: 2px 20px 0 20px;
-	display: flex;
 	background: #ffffff;
 	align-items: center;
-	border-bottom: 1px solid #ddd;
 	box-shadow: none;
 
-	.uag-title {
-		max-width: 170px;
-
+	.uag-global-nav__title{
 		a:focus,
 		a:hover {
 			box-shadow: none;
 			outline: 0;
 		}
 		.uag-logo {
-			width: 120px;
+			width: 250px;
 		}
 	}
-
+	.uag-global-nav__desc{
+		padding: 10px;
+	}
 	.uag-global-nav__items {
-		display: flex;
-		align-items: center;
+		display: inline-flex;
+		padding: 15px 15px 0px 15px;
 	}
 	.uag-global-nav-menu__tab {
 		& {
@@ -30,7 +27,7 @@
 			border: none;
 			color: #444;
 			cursor: pointer;
-			padding: 25px 30px 23px 30px;
+			padding: 15px 25px 15px 25px;
 			font-size: 14px;
 			line-height: 1;
 			letter-spacing: 0.225px;
@@ -41,16 +38,13 @@
 			text-decoration: none;
 			outline: none;
 			box-shadow: none;
-			border-bottom: 2px solid #ffffff00;
 		}
 		&:hover {
 			color: #2F4F4F;
-			border-bottom: 2px solid #2F4F4F;
 		}
 		&.uag-global-nav-menu__tab--active {
-			background: none;
+			background: var(--background-light-color);
 			color: #2F4F4F;
-			border-bottom: 2px solid #2F4F4F;
 		}
 	}
 }
@@ -64,11 +58,9 @@
 	font-weight: 400;
 }
 
-.uag-global-nav-menu .uag-title {
-	max-width: 140px;
-	border-right: 1px solid #dddddd;
-	display: flex;
-	align-items: center;
+.uag-global-nav-menu .uag-global-nav__title {
+	max-width: 100%;
+	padding: 10px;
 }
 
 body.folded .uag-global-nav-menu {
@@ -80,10 +72,8 @@ body.folded .uag-global-nav-menu {
 }
 
 .uag-global-nav-menu {
-	position: fixed;
-	width: calc(100% - 160px);
-	left: 160px;
-	top: 32px;
+	padding: 35px 35px 0px 35px;
 	z-index: 2;
+	text-align: center;
 }
 /* New FIxed header End */

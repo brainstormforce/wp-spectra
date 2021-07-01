@@ -111,27 +111,6 @@
 		}
 	}
 
-	.uag-button-style {
-		line-height: 3.14285714;
-		padding: 0 36px;
-		font-size: 14px;
-		min-height: 46px;
-		text-transform: none;
-		margin: 15px 0;
-		box-shadow: none;
-		border: 0;
-
-		&:hover {
-			box-shadow: none;
-			border: 0;
-			background: #ee4710;
-		}
-
-		&:last-child {
-			margin-left: 15px;
-		}
-	}
-
 	h3 {
 		font-weight: 500;
 		color: #444;

@@ -23,17 +23,17 @@ function UserInfoBox( props ) {
 			<div className="uag-metabox__header">
 				<div className="uag-metabox__title">
 					<h1>
-						{ __( 'Welcome! ', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) + uag_react.current_user }
 					</h1>
 				</div>
-			</div>
-			<div className="uag-metabox__body">
 				<p>
 					{ __(
 						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of advanced and creative blocks to build a stunning website and blog faster than ever before!',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
+			</div>
+			<div className="uag-metabox__body">
 				<div className="uag-metabox__elements">
 					<div className="uag-metabox__element">
 						<h3>
@@ -99,7 +99,7 @@ function UserInfoBox( props ) {
 							) }
 						</p>
 						<NormalButton
-							buttonText = { __( 'Get Starter Sites', 'ultimate-addons-for-gutenberg' ) }
+							buttonText = { __( 'Get Starter Templates', 'ultimate-addons-for-gutenberg' ) }
 							saving = { false }
 						/>
 						</div>
@@ -119,6 +119,10 @@ function UserInfoBox( props ) {
 					<div className="uag-astra__cta">
 						<NormalButton
 							buttonText = { __( 'Install ASTRA Now!', 'ultimate-addons-for-gutenberg' ) }
+							saving = { false }
+						/>
+						<NormalButton
+							buttonText = { __( 'Read Full Guide', 'ultimate-addons-for-gutenberg' ) }
 							saving = { false }
 						/>
 					</div>

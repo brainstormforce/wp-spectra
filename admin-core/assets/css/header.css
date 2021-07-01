@@ -1,6 +1,3 @@
-#uag-menu-page {
-	padding-top: 65px;
-}
 
 /* Header */
 .uag-menu-page-header {
@@ -12,13 +9,8 @@
 	box-shadow: 0 1px 1px 0 rgba( 0, 0, 0, 0.1 );
 	position: relative;
 }
-.uag-title {
-	flex: auto;
-	align-content: flex-start;
-	text-align: left;
-}
 .uag-logo {
-	max-width: 170px;
+	max-width: 250px;
 }
 .uag-top-links {
 	flex: auto;

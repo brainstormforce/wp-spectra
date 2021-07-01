@@ -36,7 +36,7 @@ function NavMenu() {
 
 	return (
 		<div className="uag-global-nav-menu">
-			<div className="uag-title">
+			<div className="uag-global-nav__title">
 				<Link
 					key={`?page=${uag_react.home_slug}&path=''`}
 					to={{
@@ -53,6 +53,9 @@ function NavMenu() {
 						alt=""
 					/>
 				</Link>
+			</div>
+			<div className="uag-global-nav__desc">
+				{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ultimate-addons-for-gutenberg')}
 			</div>
 			<div className="uag-global-nav__items">
 				{menus.map((menu, i) => (
@@ -73,24 +76,6 @@ function NavMenu() {
 						{menu.name}
 					</Link>
 				))}
-			</div>
-			<div className="uag-top-links">
-				<Link
-					to="//ultimategutenberg.com/docs/"
-					target="_blank"
-					className="uag-top-links__item"
-					title="Knowledge Base"
-				>
-					<span className="dashicons dashicons-book"></span>
-				</Link>
-				<Link
-					to="//ultimategutenberg.com/support/"
-					target="_blank"
-					className="uag-top-links__item"
-					title="Support"
-				>
-					<span className="dashicons dashicons-sos"></span>
-				</Link>
 			</div>
 		</div>
 	);
