@@ -46,7 +46,6 @@
     }, [ props.value ]);
 
     
-
     const unitSizes = [
         {
             name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
@@ -113,9 +112,11 @@
             <div className='uagb-range-control__header'>
                 { props.label && <p className={ 'uagb-range-control__label' }>{ props.label }</p> }
                 <div className='uagb-range-control__actions'>
+                    { props.displayUnit &&
                     <ButtonGroup className='uagb-range-control__units' aria-label={ __( 'Select Units', 'ultimate-addons-for-gutenberg' ) }>
                         { onUnitSizeClick( unitSizes ) }
                     </ButtonGroup>
+                    }
                     <Button
                         className='uagb-spacing-reset'
                         disabled={ cachedValue.resetDisabled } 
@@ -165,6 +166,7 @@
     placeholder: null,
     initialPosition: 0,
     unit:["px","em"],
+    displayUnit: true,
     onChange: () => {},
  }
  

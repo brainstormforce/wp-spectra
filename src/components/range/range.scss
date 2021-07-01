@@ -1,6 +1,6 @@
 .uagb-range-control__mobile-controls {
     display:flex;
-    width: 133%;
+    width: 129%;
     margin-left: -6px;
     .components-base-control.components-range-control.css-wdf2ti-Wrapper.e1puf3u0 {
         -webkit-tap-highlight-color: transparent;
@@ -87,8 +87,10 @@
         }
         .components-button.is-secondary:disabled{
             background:0 0;
+            color:#827d7d;
         }
         .components-button.is-secondary{
+            color: #003bff;
             box-shadow:0 0;
         }
     }
