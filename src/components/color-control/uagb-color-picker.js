@@ -3,7 +3,7 @@ import { Hue, Saturation, Alpha, Checkboard } from 'react-color/lib/components/c
 import { ChromePointerCircle } from 'react-color/lib/components/chrome/ChromePointerCircle';
 import { ChromePointer } from 'react-color/lib/components/chrome/ChromePointer';
 import UAGBPickerFields from './uagb-color-picker-fields';
-import editor from './editor.scss';
+import './editor.scss';
 
 export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) => {
 	const styles = {
@@ -38,7 +38,7 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 		},
 	};
 	return (
-	<div className='uagb-picker'>
+		<div className='uagb-picker'>
 		<div className='uagb-picker-saturation'>
 			<Saturation
 				style={ styles.Saturation }
