@@ -15,7 +15,7 @@ const NormalButton = ( props ) => {
 	let savingState = saving ? 'uag-saving' : '';
 	
 	return (
-		<div className="uag-field uag-button-control uag-button-field">
+		<div className="uag-field uag-normal-button-control uag-button-field">
 			<button
 				className={ `uag-button uag-button--primary ${ savingState } ${ classes }` }
 				onClick = { props.onClick }

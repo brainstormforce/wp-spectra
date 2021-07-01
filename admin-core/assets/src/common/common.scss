@@ -1,0 +1,46 @@
+.uag-menu-page-wrapper {
+
+    // Button CSS.
+    .uag-normal-button-control {
+
+        .uag-button {
+            background: var(--accent-color);
+            color: var(--background-light-color);
+            border-radius: 5px;
+            padding: 7px 18px;
+            display: inline-block;
+            vertical-align: middle;
+            align-items: center;
+            cursor: pointer;
+            margin: 0;
+            border: none;
+            font-family: Roboto;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 13px;
+            letter-spacing: 0em;
+            text-align: center;
+        }
+        .uag-button:hover,
+        .uag-button:focus,
+        .uag-button:active {
+            background:var(--accent-hv-color);
+        }
+    }
+
+    // Headings CSS.
+    h1 {
+        color: var(--heading-color);
+    }
+    h3 {
+        color: var(--heading-color);
+    }
+
+    // Paragraph CSS.
+    p {
+        color: var(--content-color);
+        line-height: 1.2;
+        margin: 0.5em 0;
+    }
+}
