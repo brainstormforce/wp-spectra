@@ -59,19 +59,3 @@ label.uag-typography-font-family-subset-label {
 .block-editor-block-inspector .components-base-control:last-child{
     margin-bottom:0px;
 }
-
-.components-panel__body {
-    .uagb-typography-advanced { 
-        .uagb-spacing-control__mobile-controls-item{
-            left:65px;
-            top:6px;
-            font-size:13px;
-        }
-        .uagb-spacing-control__mobile-controls button[type=button] > span {
-            cursor: pointer;
-            width: 15px;
-            height: 15px;
-            font-size: 15px;
-        }
-    }
-}

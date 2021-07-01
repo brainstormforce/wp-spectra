@@ -1,8 +1,19 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { SelectControl } from '@wordpress/components';
+ import { __ } from '@wordpress/i18n';
+
+const {
+	SelectControl
+} = wp.components
+
+// Extend component
+const { Component, Fragment } = wp.element
+
+/**
+ * Internal dependencies
+ */
+import map from "lodash/map"
 import googleFonts from "./fonts"
 import Select from "react-select"
 
@@ -144,6 +155,7 @@ function FontFamilyControl( props ) {
 			) }
 			{ ( props.fontSubset.label && props.fontSubset.value ) && (
 			<SelectControl
+				// label={ __( "Font Subset",'ultimate-addons-for-gutenberg' ) }
 				value={ props.fontSubset.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
 				options={
