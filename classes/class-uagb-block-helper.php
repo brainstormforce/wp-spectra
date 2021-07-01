@@ -5601,12 +5601,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$m_selectors = array(
-				'.wp-block-gallery .blocks-gallery-grid' => array(
+				'.wp-block-gallery[class*="columns-"] .blocks-gallery-grid' => array(
 					'column-count' => '2',
 					'column-gap'   => '1em',
 					'display'      => 'unset',
 				),
-				'.columns-1 .blocks-gallery-grid'        => array(
+				'.wp-block-gallery.columns-1 .blocks-gallery-grid'        => array(
 					'column-count' => '1',
 				),
 			);
