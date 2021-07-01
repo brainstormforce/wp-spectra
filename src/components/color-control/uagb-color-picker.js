@@ -3,25 +3,12 @@ import { Hue, Saturation, Alpha, Checkboard } from 'react-color/lib/components/c
 import { ChromePointerCircle } from 'react-color/lib/components/chrome/ChromePointerCircle';
 import { ChromePointer } from 'react-color/lib/components/chrome/ChromePointer';
 import UAGBPickerFields from './uagb-color-picker-fields';
+import editor from './editor.scss';
 
 export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) => {
 	const styles = {
-		picker: {
-			width: 300,
-			position: 'relative',
-			marginBottom: 10,
-		},
-		hue: {
-			height: 10,
-			position: 'relative',
-			marginBottom: '8px',
-		},
 		Hue: {
 			radius: '2px',
-		},
-		alpha: {
-			height: '10px',
-			position: 'relative',
 		},
 		Alpha: {
 			radius: '2px',
@@ -31,39 +18,13 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 			border: `1px solid ${ hex }`,
 			paddingLeft: 10,
 		},
-		body: {
-			padding: '10px 0',
-		},
-		controls: {
-			display: 'flex',
-		},
-		color: {
-			width: '30px',
-			height: '30px',
-			position: 'relative',
-			marginTop: '3px',
-			marginLeft: '10px',
-			borderRadius: '50%',
-			overflow: 'hidden',
-		},
 		activeColor: {
-			position: 'absolute',
-			left: 0,
-			right: 0,
-			top: 0,
-			bottom: 0,
-			borderRadius: '50%',
 			background: `rgba(${ rgb.r },${ rgb.g },${ rgb.b },${ rgb.a })`,
-			boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
 		},
 		swatch: {
 			width: 54,
 			height: 38,
 			background: hex,
-		},
-		sliders: {
-			padding: '4px 0',
-			flex: '1',
 		},
 		saturation: {
 			width: '100%',
@@ -77,8 +38,8 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 		},
 	};
 	return (
-	<div style={ styles.picker } className={ 'uagb-picker' }>
-		<div style={ styles.saturation }>
+	<div className='uagb-picker'>
+		<div className='uagb-picker-saturation'>
 			<Saturation
 				style={ styles.Saturation }
 				hsl={ hsl }
@@ -87,10 +48,10 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 				onChange={ onChange }
 			/>
 		</div>
-		<div style={ styles.body }>
-			<div style={ styles.controls } className="flexbox-fix">
-				<div style={ styles.sliders }>
-					<div style={ styles.hue }>
+		<div className='uagb-flexbox-fix-wrap'>
+			<div className="uagb-flexbox-fix">
+				<div className='uagb-flexbox-fix-slider-wrap'>
+					<div className='uagb-hue-wrap'>
 						<Hue
 							style={ styles.Hue }
 							hsl={ hsl }
@@ -98,7 +59,7 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 							pointer={ ChromePointer }
 						/>
 					</div>
-					<div style={ styles.alpha }>
+					<div className='uagb-alpha-wrap'>
 						<Alpha
 							style={ styles.Alpha }
 							rgb={ rgb }
@@ -109,9 +70,9 @@ export const UAGBColorPicker = ( { rgb, hex, hsv, hsl, onChange, renderers } ) =
 						/>
 					</div>
 				</div>
-				<div style={ styles.color }>
+				<div className='uagb-flexbox-fix-color-wrap'>
 					<Checkboard />
-					<div style={ styles.activeColor } />
+					<div style={ styles.activeColor } className='uagb-flexbox-fix-active-color-wrap'/>
 				</div>
 			</div>
 		</div>

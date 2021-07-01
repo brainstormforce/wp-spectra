@@ -58,92 +58,47 @@ const UAGBPickerFields = props => {
 		}
 	};
 
-	const styles = {
-		fields: {
-			display: 'flex',
-			paddingTop: '4px',
-		},
-		single: {
-			flex: '1',
-			paddingLeft: '6px',
-		},
-		alpha: {
-			flex: '1',
-			paddingLeft: '6px',
-		},
-		double: {
-			flex: '2',
-		},
-		input: {
-			width: '100%',
-			padding: '4px 10% 3px',
-			border: 'none',
-			borderRadius: '2px',
-			boxShadow: 'rgb(218, 218, 218) 0px 0px 0px 1px inset',
-			fontSize: '11px',
-		},
-		label: {
-			display: 'block',
-			textAlign: 'center',
-			fontSize: '11px',
-			color: '#222',
-			paddingTop: '3px',
-			paddingBottom: '4px',
-			textTransform: 'capitalize',
-		},
-		toggle: {
-			width: '32px',
-			textAlign: 'right',
-			position: 'relative',
-		},
-	};
-
 	return (
-	<div style={ styles.fields } className="flexbox-fix">
-		<div style={ styles.double }>
+	<div className='uagb-flexbox-fix'>
+		<div className='uagb-double-wrap'>
 			<EditableInput
-				style={ { input: styles.input, label: styles.label } }
-				label="hex"
+				label='hex'
 				value={ props.hex.replace( '#', '' ) }
 				onChange={ handleChange }
 			/>
 		</div>
 		{ value.view === 'rgb' && (
 			<>
-				<div style={ styles.single }>
+				<div className='uagb-single-rgb-r-input'>
 					<EditableInput
-						style={{ input: styles.input, label: styles.label }}
-						label="r"
+						label='r'
 						value={ props.rgb.r }
 						onChange={ handleChange }
-						dragLabel="true"
-						dragMax="255"
+						dragLabel='true'
+						dragMax='255'
 					/>
 				</div>
-				<div style={ styles.single }>
+				<div className='uagb-single-rgb-g-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="g"
+						label='g'
 						value={ props.rgb.g }
 						onChange={ handleChange }
-						dragLabel="true"
-						dragMax="255"
+						dragLabel='true'
+						dragMax='255'
 					/>
 				</div>
-				<div style={ styles.single }>
+				<div className='uagb-single-rgb-b-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="b"
+						label='b'
 						value={ props.rgb.b }
 						onChange={ handleChange }
-						dragLabel="true"
-						dragMax="255"
+						dragLabel='true'
+						dragMax='255'
 					/>
 				</div>
-				<div style={ styles.alpha }>
+				<div className='uagb-single-rgb-alpha-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="a"
+						label='a'
 						value={ props.rgb.a }
 						arrowOffset={ 0.01 }
 						onChange={ handleChange }
@@ -153,36 +108,32 @@ const UAGBPickerFields = props => {
 		) }
 		{ value.view === 'hsl' && (
 			<>
-				<div style={ styles.single }>
+				<div className='uagb-single-hsl-h-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="h"
+						label='h'
 						value={ Math.round( props.hsl.h ) }
 						onChange={ handleChange }
-						dragLabel="true"
-						dragMax="359"
+						dragLabel='true'
+						dragMax='359'
 					/>
 				</div>
-				<div style={ styles.single }>
+				<div className='uagb-single-hsl-s-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="s"
+						label='s'
 						value={ `${ Math.round( props.hsl.s * 100 ) }` }
 						onChange={ handleChange }
 					/>
 				</div>
-				<div style={ styles.single }>
+				<div className='uagb-single-hsl-l-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="l"
+						label='l'
 						value={ `${ Math.round( props.hsl.l * 100 ) }` }
 						onChange={ handleChange }
 					/>
 				</div>
-				<div style={ styles.alpha }>
+				<div className='uagb-single-hsl-alpha-input'>
 					<EditableInput
-						style={ { input: styles.input, label: styles.label } }
-						label="a"
+						label='a'
 						value={ props.hsl.a }
 						arrowOffset={ 0.01 }
 						onChange={ handleChange }
@@ -190,10 +141,10 @@ const UAGBPickerFields = props => {
 				</div>
 			</>
 		) }
-		<div style={ styles.toggle }>
-			<div className="toggle-icons" style={ styles.icon } onClick={ toggleViews } ref={ (icon) => icon = icon }>
-				<Dashicon icon="arrow-up-alt2" />
-				<Dashicon icon="arrow-down-alt2" />
+		<div className='uagb-single-toggle'>
+			<div className='toggle-icons' onClick={ toggleViews } ref={ (icon) => icon = icon }>
+				<Dashicon icon='arrow-up-alt2' />
+				<Dashicon icon='arrow-down-alt2' />
 			</div>
 		</div>
 	</div>
