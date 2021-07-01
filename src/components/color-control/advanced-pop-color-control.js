@@ -11,7 +11,8 @@ import { withSelect } from '@wordpress/data';
 const { ColorPalette } = wp.blockEditor
 import { useState, useEffect } from '@wordpress/element'
 
-
+let cachedValue = 'initial';
+let resetStateDisabled = true;
 const AdvancedPopColorControl = props => {
    
     const [ value, setValue ] = useState( {
