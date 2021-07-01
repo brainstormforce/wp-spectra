@@ -34,15 +34,7 @@
     // Headings CSS.
     h1 {
         color: var(--heading-color);
-    }
-    h3 {
-        margin-top: 0px;
-        color: var(--heading-color);
-        font-family: Roboto;
-        font-style: normal;
         font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
     }
     h2{
         font-family: Roboto;
@@ -51,6 +43,15 @@
         font-size: 24px;
         line-height: 32px;
         color: var(--heading-color);
+    }
+    h3 {
+        margin-top: 0px;
+        color: var(--heading-color);
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
     }
     .uag-field{
         border-radius: 2px; 

@@ -59,7 +59,7 @@
 		nav {
 			float: unset;
 			width: 20%;
-			background: #f7f8fa;
+			background: var(--background-light-color);
 
 			a:focus {
 				box-shadow: none;
@@ -92,7 +92,7 @@
 	}
 
 	.uag-global-settings-metabox__current-tab {
-		background: #f7f8fa;
+		background: var(--background-light-color);
 		padding: 20px 30px;
 		padding-bottom: 250px;
 		float: unset;
@@ -140,7 +140,7 @@
 	}
 }
 .uag-blocks-settings-metabox {
-	background: #f7f8fa;
+	background: var(--background-light-color);
     padding: 20px 30px;
     padding-bottom: 250px;
     float: unset;
