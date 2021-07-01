@@ -28,12 +28,28 @@
             background:var(--accent-hv-color);
         }
     }
-
+    .uag-setting{
+        background-color: black;
+    }
     // Headings CSS.
     h1 {
         color: var(--heading-color);
     }
     h3 {
+        margin-top: 0px;
+        color: var(--heading-color);
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    h2{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
         color: var(--heading-color);
     }
     .uag-field{
@@ -43,11 +59,10 @@
     p {
         color: var(--content-color);
         line-height: 1.2;
-        margin: 0.5em 0;
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 20px;
     }
 }

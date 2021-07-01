@@ -123,7 +123,8 @@
 
 .uag-menu-page-wrapper p {
 	line-height: 1.2;
-	margin: 0.5em 0;
+	margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 .uag-menu-page-wrapper a:focus,
