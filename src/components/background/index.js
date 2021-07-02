@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
- import Range from '../../components/range/Range.js';
- import AdvancedPopColorControl from '../../advanced-pop-color-control';
- import { SelectControl, BaseControl, Button } from '@wordpress/components';
- const { MediaUpload, PanelColorSettings } = wp.blockEditor;
+import Range from '../../components/range/Range.js';
+import AdvancedPopColorControl from '../../components/color-control/advanced-pop-color-control.js'
+import { SelectControl, BaseControl, Button } from '@wordpress/components';
+import { MediaUpload } from '@wordpress/block-editor';
 import './editor.scss';
 import GradientSettings from "../../components/gradient-settings"
 
@@ -19,12 +19,6 @@ import GradientSettings from "../../components/gradient-settings"
         backgroundImage,
         backgroundColor,
         backgroundType,
-		gradientOverlayColor2,
-		gradientOverlayColor1,
-		gradientOverlayType,
-		gradientOverlayLocation1,
-		gradientOverlayLocation2,
-		gradientOverlayAngle,
 		backgroundOpacity,
     } = props;
 
@@ -175,53 +169,7 @@ import GradientSettings from "../../components/gradient-settings"
 							}
 							{ "gradient" == overlayType.value &&
 								( <>
-									<PanelColorSettings
-										title={ __( "Color Settings", 'ultimate-addons-for-gutenberg' ) }
-										colorSettings={ [
-											{
-												value: gradientOverlayColor2.value,
-												onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
-												label: __( "Color 1", 'ultimate-addons-for-gutenberg' ),
-											},
-											{
-												value: gradientOverlayColor1.value,
-												onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
-												label: __( "Color 2", 'ultimate-addons-for-gutenberg' ),
-											},
-										] }
-									>
-									</PanelColorSettings>
-									<SelectControl
-										label={ __( "Type", 'ultimate-addons-for-gutenberg' ) }
-										value={ gradientOverlayType.value }
-										onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
-										options={ [
-											{ value: "linear", label: __( "Linear", 'ultimate-addons-for-gutenberg' ) },
-											{ value: "radial", label: __( "Radial", 'ultimate-addons-for-gutenberg' ) },
-										] }
-										className="uagb-bg-color-type-control"
-									/>
-									<Range 
-										label={ __( "Location 1", 'ultimate-addons-for-gutenberg' ) }
-										value={ gradientOverlayLocation1.value } 
-										onChange={ val => setAttributes( { gradientOverlayLocation1: parseInt(val) } ) }
-										min={ 0 } 
-										max={ 100 } 
-									/>
-									<Range 
-										label={ __( "Location 2", 'ultimate-addons-for-gutenberg' ) }
-										value={ gradientOverlayLocation2.value } 
-										onChange={ val => setAttributes( { gradientOverlayLocation2: parseInt(val) } ) }
-										min={ 0 } 
-										max={ 100 } 
-									/>
-									<Range 
-										label={ __( "Angle", 'ultimate-addons-for-gutenberg' ) }
-										value={ gradientOverlayAngle.value } 
-										onChange={ val => setAttributes( { gradientOverlayAngle: parseInt(val) } ) }
-										min={ 0 } 
-										max={ 360 } 
-									/>
+									<GradientSettings attributes={ props.attributes }	setAttributes={ setAttributes }/>
 								</> )
 							}
 						</> )
@@ -231,7 +179,7 @@ import GradientSettings from "../../components/gradient-settings"
 			}
 			{ "gradient" === backgroundType.value &&
 				( <>
-					<GradientSettings attributes={ props }	setAttributes={ setAttributes }/>
+					<GradientSettings attributes={ props.attributes }	setAttributes={ props.setAttributes }/>
 				</> )
 			}
 			{ ( "color" == backgroundType.value || ( "image" == backgroundType.value && backgroundImage.value ) || "gradient" == backgroundType.value ) &&

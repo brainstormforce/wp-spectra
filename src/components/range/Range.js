@@ -1,4 +1,4 @@
- import {
+import {
     ButtonGroup, Button, Tooltip, Dashicon, RangeControl, __experimentalNumberControl as NumberControl,
  } from '@wordpress/components'
  import { useState, useEffect } from '@wordpress/element'
@@ -118,7 +118,7 @@
                     </ButtonGroup>
                     }
                     <Button
-                        className='uagb-spacing-reset'
+                        className='uagb-reset'
                         disabled={ cachedValue.resetDisabled } 
                         isSecondary
                         isSmall
