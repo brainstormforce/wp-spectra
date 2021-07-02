@@ -172,6 +172,14 @@
 		type: "string",
 		default: "px"
 	},
+	mobilePaddingUnit: {
+		type: "string",
+		default: "px"
+	},
+	tabletPaddingUnit:{
+		type: "string",
+		default: "px"
+	},
 	paddingTop: {
 		type: "number",
 	},
