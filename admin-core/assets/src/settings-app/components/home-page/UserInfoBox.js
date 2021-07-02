@@ -121,12 +121,11 @@ function UserInfoBox( props ) {
 							buttonText = { __( 'Install ASTRA Now!', 'ultimate-addons-for-gutenberg' ) }
 							saving = { false }
 						/>
-						<div className="uag-secondary">
-							<NormalButton
-								buttonText = { __( 'Read Full Guide', 'ultimate-addons-for-gutenberg' ) }
-								saving = { false }
-							/>
-						</div>
+						<NormalButton
+							buttonText = { __( 'Read Full Guide', 'ultimate-addons-for-gutenberg' ) }
+							saving = { false }
+							classes = "uag-button--secondary"
+						/>
 					</div>
 				</div>
 			</div>

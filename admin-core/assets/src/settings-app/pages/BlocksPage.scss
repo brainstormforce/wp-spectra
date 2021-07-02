@@ -2,10 +2,6 @@
 	font-size: 14px;
 	max-width: 100%;
 
-	table td {
-		padding: 15px;
-	}
-
 	table th:first-child {
 		font-weight: 500;
 	}
@@ -19,6 +15,7 @@
 	}
 
 	h3 {
+		text-align: left;
 		padding: 20px 10px 20px 10px
 	}
 
@@ -52,7 +49,6 @@
 		position: relative;
 		width: 1100px;
    	 	margin: 0 auto;
-		display: flex;
 
 		.uag-global-settings-metabox__tabs-menu {
 			border-right: 1px solid #dedede;
@@ -89,7 +85,7 @@
 			display: flex;
 		}
 		label{
-			font-family: Roboto;
+			font-family: var(--heading-font-family);
 			font-style: normal;
 			font-weight: 500;
 			font-size: 18px;

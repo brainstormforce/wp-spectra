@@ -1,13 +1,10 @@
 import './ToolsPage.scss';
 import { __ } from '@wordpress/i18n';
 import ToolsPageSkeleton from '@Admin/settings-app/components/tools-page/ToolsPageSkeleton';
-import Nav from '@SettingsApp/components/tools-page/ToolsNav';
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
 import VersionControl from '@SettingsApp/components/tools-page/VersionControl';
-import AssetsGeneration from '@SettingsApp/components/tools-page/AssetsGeneration';
 
 function ToolsPage() {
 
@@ -42,7 +39,6 @@ function ToolsPage() {
 		};
 	}, [] );
 
-	let location = useLocation();
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
@@ -50,7 +46,6 @@ function ToolsPage() {
 	} else {
 		current_tab = (
 			<>
-			<AssetsGeneration/>
 			<VersionControl/>
 			</>
 		);

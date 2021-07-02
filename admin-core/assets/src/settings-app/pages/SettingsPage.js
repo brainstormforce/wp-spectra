@@ -1,11 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import SettingsPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
-import Nav from '@SettingsApp/components/settings-page/SettingsNav';
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
 import TemplatesButton from '@SettingsApp/components/settings-page/TemplatesButton';
+import AssetsGeneration from '@SettingsApp/components/tools-page/AssetsGeneration';
 
 function SettingsPage() {
 
@@ -64,15 +64,9 @@ function SettingsPage() {
 	return (
 		<div className="uag-global-settings-metabox">
 			<div className="uag-global-settings-metabox__tabs">
-				<nav className="uag-global-settings-metabox__tabs-menu">
-					<Nav
-						title={ __( 'Templates', 'ultimate-addons-for-gutenberg' ) }
-						slug="#templates_settings"
-					/>
-				</nav>
-
 				<div className="uag-global-settings-metabox__current-tab">
-					<>{ current_tab }</>
+					<AssetsGeneration/>
+					<>{ current_tab }</>		
 				</div>
 			</div>
 		</div>

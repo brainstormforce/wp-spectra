@@ -83,26 +83,31 @@ function VersionControl( props ) {
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-row">
+					<div className="uag-col">		
+						<h3>{ __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' )}</h3>
+						<p>{__( 'Experiencing an issue with Ultimate Addons for Gutenberg version 1.23.3 Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' )}</p>
+						<SettingTable
+							settings={ rollbackSettings }
+							meta_key="_uag_common"
+						/>
+						<div className="uag-version-control-button">
+							<NormalButton
+								buttonText = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
+								onClick = { handleRollbackVersion }
+							/>
+					</div>
+				</div>
+		
 				<div className="uag-col">
+					<h3>{ __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' )}</h3>
+					<p>{__( 'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available. The beta version will not install automatically. You will always have the option to ignore it.', 'ultimate-addons-for-gutenberg' )}</p>
+					
 					<SettingTable
 						settings={ enableBetaUpdatesSettings }
 						meta_key="_uag_common"
 					/>
 				</div>
-		
-				<div className="uag-col">
-					<SettingTable
-						settings={ rollbackSettings }
-						meta_key="_uag_common"
-					/>
-					<div className="uag-version-control-button">
-						<NormalButton
-							buttonText = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
-							onClick = { handleRollbackVersion }
-						/>
-					</div>
-				</div>
-				</div>
+			</div>
 			<ConfirmPopup
 				showPopup={ showPopup }
 				setshowPopup={ setshowPopup }

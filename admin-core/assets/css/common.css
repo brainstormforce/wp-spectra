@@ -75,7 +75,7 @@
 }
 /* Admin Base */
 .uag-menu-page-wrapper {
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--heading-font-family);
 	left: -20px;
 	position: relative;
 	width: calc( 100% + 20px );
@@ -97,7 +97,7 @@
 .uag-json-importer,
 .uag-name-your-step,
 .uag-name-your-flow {
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--heading-font-family);
 }
 
 /* logs page CSS */

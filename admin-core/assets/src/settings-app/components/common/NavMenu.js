@@ -12,20 +12,20 @@ function NavMenu() {
 			path: '',
 		},
 		{
-			name: __('Tools', 'ultimate-addons-for-gutenberg'),
-			slug: uag_react.home_slug,
-			path: 'tools',
-		},
-		{
 			name: __('Blocks', 'ultimate-addons-for-gutenberg'),
 			slug: uag_react.home_slug,
 			path: 'blocks',
 		},
 		{
+			name: __('Tools', 'ultimate-addons-for-gutenberg'),
+			slug: uag_react.home_slug,
+			path: 'tools',
+		},
+		{
 			name: __('Settings', 'ultimate-addons-for-gutenberg'),
 			slug: uag_react.home_slug,
 			path: 'settings',
-		},
+		}
 	];
 
 	let query = new URLSearchParams(useLocation()?.search);
@@ -76,6 +76,7 @@ function NavMenu() {
 						{menu.name}
 					</Link>
 				))}
+				<a href="/" className='uag-global-nav-menu__tab'>Documentation</a>
 			</div>
 		</div>
 	);

@@ -2,7 +2,7 @@ import SettingTable from '../common/SettingTable';
 import React, { useEffect, useState } from 'react';
 import { useStateValue } from '@Utils/StateProvider';
 import apiFetch from '@wordpress/api-fetch';
-
+import { __ } from '@wordpress/i18n';
 let enableTemplatesButton;
 
 function TemplatesButton( props ) {
@@ -49,10 +49,19 @@ function TemplatesButton( props ) {
 	}, [ options['_uag_common[enable_templates_button]'] ] );
 
     return (
-        <SettingTable
-            settings={ enableTemplatesButtonSettings }
-            meta_key="_uag_common"
-        />
+		<>
+		<h2 className="uag-version-settings__title">
+		{ __( 'Starter Template', 'ultimate-addons-for-gutenberg' ) }
+		</h2>
+		<div className="uag-row">
+			<div className="uag-col">
+				<SettingTable
+					settings={ enableTemplatesButtonSettings }
+					meta_key="_uag_common"
+				/>
+			</div>
+		</div>
+		</>
     );
 }
 

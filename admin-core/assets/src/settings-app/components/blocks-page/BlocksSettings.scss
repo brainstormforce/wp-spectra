@@ -4,7 +4,7 @@
     grid-template-columns: auto auto auto;
     width: 100%;
     .components-toggle-control__label{
-        font-family: Roboto;
+        font-family: var(--heading-font-family);
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -12,7 +12,7 @@
     } 
     a{
         margin-bottom: 0px;
-        font-family: Roboto;
+        font-family: var(--heading-font-family);
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
@@ -46,9 +46,11 @@
     margin-left: 10px;
     display: flex;
     white-space:pre;
+    align-items: center;
     :last-child {
         margin-left: auto;
         padding-left: 10px;
+        display: flex;
     }
     .components-base-control__field{
         align-items: flex-start;
