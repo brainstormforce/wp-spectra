@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-const { __experimentalPanelColorGradientSettings } = wp.blockEditor;
+import { __experimentalGradientPicker } from '@wordpress/components';
 
 function GradientSettings(props) {
 	
@@ -17,16 +17,9 @@ function GradientSettings(props) {
     };
 
 	return (
-		<__experimentalPanelColorGradientSettings
-			title={__("Color Settings",'ultimate-addons-for-gutenberg')}
-			initialOpen={true}
-			settings={[
-				{
-					label: __("Overlay Color",'ultimate-addons-for-gutenberg'),
-					gradientValue,
-					onGradientChange
-				}
-			]}
+		<__experimentalGradientPicker
+			value={ gradientValue }
+			onChange={ onGradientChange }
 		/>
 	);
 }
