@@ -15,12 +15,10 @@
 
 /** Row & Columns CSS */
 .uag-row {
+	column-gap: 20px;
 	.uag-col {
 		width: 100%;
 		background: #fff;
 		padding: 15px;
-	}
-	.uag-col:nth-of-type(odd) {
-		margin-bottom: 30px;
 	}
 }

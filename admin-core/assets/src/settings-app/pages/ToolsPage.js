@@ -43,46 +43,23 @@ function ToolsPage() {
 	}, [] );
 
 	let location = useLocation();
-	let tab = location.hash;
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
 		return <ToolsPageSkeleton />;
 	} else {
-		switch ( tab ) {
-			case '#version_control_tools':
-				current_tab = (
-					<VersionControl/>
-				);
-				break;
-			case '#assets_generation_tools':
-				current_tab = (
-					<AssetsGeneration/>
-				);
-
-				break;
-
-			default:
-				current_tab = (
-					<AssetsGeneration/>
-				);
-				break;
-		}
+		current_tab = (
+			<>
+			<AssetsGeneration/>
+			<VersionControl/>
+			</>
+		);
 	}
+	
 
 	return (
 		<div className="uag-global-settings-metabox">
 			<div className="uag-global-settings-metabox__tabs">
-				<nav className="uag-global-settings-metabox__tabs-menu">
-					<Nav
-						title={ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
-						slug="#assets_generation_tools"
-					/>
-					<Nav
-						title={ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
-						slug="#version_control_tools"
-					/>
-				</nav>
 
 				<div className="uag-global-settings-metabox__current-tab">
 					<>{ current_tab }</>

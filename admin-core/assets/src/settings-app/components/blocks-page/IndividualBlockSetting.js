@@ -52,6 +52,8 @@ function IndividualBlockSetting( props ) {
                 value={ blocksValue[ props.blockInfo.slug ] }
                 label={ props.blockInfo.title }
             />
+			<a>Live Demo</a>
+			<a>Documentation</a>
         </div>
 	);
 }

@@ -83,9 +83,9 @@ function AssetsGeneration( props ) {
 
 	return (
 		<>
-            <h3 className="uag-version-settings__title">
+            <h2 className="uag-version-settings__title">
 				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
-			</h3>
+			</h2>
 			<div className="uag-row">
 				<div className="uag-col">
 					<SettingTable

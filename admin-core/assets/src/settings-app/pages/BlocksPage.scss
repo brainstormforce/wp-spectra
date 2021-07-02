@@ -3,7 +3,7 @@
 	max-width: 100%;
 
 	table td {
-		padding: 10px 10px 15px 0;
+		padding: 15px;
 	}
 
 	table th:first-child {
@@ -19,9 +19,7 @@
 	}
 
 	h3 {
-		border-bottom: 1px solid #ddd;
-		padding: 0px 10px 20px;
-		margin: 30px 0 25px;
+		padding: 20px 10px 20px 10px
 	}
 
 	h4 {
@@ -42,8 +40,8 @@
 		background: #fafafa;
 	}
 
-	h3:first-child {
-		margin-top: 5px;
+	h3{
+		text-align: center;
 	}
 
 	.uag-settings-form .uag-submit-settings {
@@ -52,19 +50,9 @@
 
 	.uag-global-settings-metabox__tabs {
 		position: relative;
-		width: 100%;
+		width: 1100px;
+   	 	margin: 0 auto;
 		display: flex;
-		min-height: 750px;
-
-		nav {
-			float: unset;
-			width: 20%;
-			background: var(--background-light-color);
-
-			a:focus {
-				box-shadow: none;
-			}
-		}
 
 		.uag-global-settings-metabox__tabs-menu {
 			border-right: 1px solid #dedede;
@@ -93,12 +81,20 @@
 
 	.uag-global-settings-metabox__current-tab {
 		background: var(--background-light-color);
-		padding: 20px 30px;
-		padding-bottom: 250px;
-		float: unset;
-		width: 80%;
-		display: unset;
-
+		padding: 30px 30px;
+		h2{
+		text-align: center;
+		}
+		.uag-row{
+			display: flex;
+		}
+		label{
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+		}
 		.input-field {
 			font-weight: 400;
 			margin-left: 20px;
@@ -110,12 +106,6 @@
 			border-color: #ccc;
 		}
 	}
-
-	h3 {
-		font-weight: 500;
-		color: #444;
-	}
-
 	/* New Css */
 	.uag-radio-field__option {
 		padding: 0 0 25px;
@@ -141,8 +131,7 @@
 }
 .uag-blocks-settings-metabox {
 	background: var(--background-light-color);
-    padding: 20px 30px;
-    padding-bottom: 250px;
-    float: unset;
-    width: 100%;
+    padding: 50px 30px;
+    width: 1100px;
+    margin: 0 auto;
 }

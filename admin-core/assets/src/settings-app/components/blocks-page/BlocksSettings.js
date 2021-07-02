@@ -3,6 +3,7 @@ import IndividualBlockSetting from './IndividualBlockSetting';
 import { NormalButton } from '@Fields';
 import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
+import { ToggleField } from '@Fields';
 import { useStateValue } from '@Utils/StateProvider';
 
 const blocksInfo = uag_react.blocks_info;
@@ -106,21 +107,14 @@ function BlocksSettings( prop ) {
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
-				<NormalButton
-					buttonText = { __( 'Activate All', 'ultimate-addons-for-gutenberg' ) }
-					onClick = { activateAllBlocks }
-					saving = { savingStateActivate }
-				/>
-				<NormalButton
-					buttonText = { __( 'Deactivate All', 'ultimate-addons-for-gutenberg' ) }
-					onClick = { deactivateAllBlocks }
-					saving = { savingStateDeactivate }
-				/>
-				<NormalButton
-					buttonText = { __( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ) }
-					onClick = { onReusableBlocksClick }
-					saving = { false }
-				/>
+				<a>All Blocks </a>|
+				<a href={onReusableBlocksClick}> Reusable Blocks</a>
+				<ToggleField
+						id={ 'Activate' }
+						name={ 'activateAllBlocks'}
+						value={ activateAllBlocks }
+						label={ 'Activate All' }
+					/>
 			</div>
 			<div className="uag-blocks-settings">
 				{ renderBlocksMetaBoxes }
