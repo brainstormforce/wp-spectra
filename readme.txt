@@ -170,6 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.23.5 =
 * Fix: Assets Generation issue on frontend when Twenty Twentyone theme is active.
+* Fix: Assets not regenerated for frontend when post conatining reusable blocks is updated.
 
 = 1.23.4 =
 * Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
