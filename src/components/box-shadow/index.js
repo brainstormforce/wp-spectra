@@ -4,7 +4,7 @@
  */
  import { __ } from '@wordpress/i18n';
  import Range from '../../components/range/Range.js';
- import AdvancedPopColorControl from '../../components/color-control/advanced-pop-color-control.js'
+ import AdvancedPopColorControl from '../color-control/advanced-pop-color-control'
  import { Button, SelectControl, Dashicon } from '@wordpress/components';
  import { useState } from '@wordpress/element';
 
