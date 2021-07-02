@@ -58,7 +58,7 @@
                     label={ boxShadowHOffset.label }
                     value={ boxShadowHOffset.value }
                     onChange={ ( value ) => setAttributes( { boxShadowHOffset: value } ) }
-                    min={ -100 }
+                    min={ 0 }
                     max={ 100 }
                     displayUnit= { false }
                 />
@@ -68,7 +68,7 @@
                     label={ boxShadowVOffset.label }
                     value={ boxShadowVOffset.value }
                     onChange={ ( value ) => setAttributes( { boxShadowVOffset: value } ) }
-                    min={ -100 }
+                    min={ 0 }
                     max={ 100 } 
                     displayUnit= { false }
                 />
