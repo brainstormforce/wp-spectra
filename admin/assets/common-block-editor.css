@@ -3372,7 +3372,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uag-typography-range-options + .components-button-group.uagb-size-type-field {
     margin-bottom:-33px
 }
-
+/* Common uagb reset CSS start here */
 button.components-button.uagb-reset.is-secondary.is-small:not([aria-disabled=true]):active{
 	color:#003bff;
 	cursor:arrow;
@@ -3393,3 +3393,4 @@ button.components-button.uagb-reset.is-secondary.is-small {
     box-shadow:unset;
     background: 0 0;
 }
+/* Common uagb reset CSS end here */
