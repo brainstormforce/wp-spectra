@@ -8,7 +8,7 @@ import hexToRGBA from './hex-to-rgba';
 import { __ } from '@wordpress/i18n';
 import { Button, Popover, ColorIndicator, Tooltip, Dashicon } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-const { ColorPalette } = wp.blockEditor
+import { ColorPalette } from '@wordpress/block-editor';
 import { useState, useEffect } from '@wordpress/element'
 
 const AdvancedPopColorControl = props => {

@@ -17,6 +17,7 @@ import Range from '../../components/range/Range.js';
 import GradientSettings from "../../components/gradient-settings"
 import MultiButtonsControl from '../../components/multi-buttons-control'
 import BoxShadowControl from "../../components/box-shadow"
+import Background from "../../components/background"
 import Border from "../../components/border"
 
 // Import all of our Text Options requirements.
@@ -211,6 +212,7 @@ class UAGBInlineNoticeEdit extends Component {
 				gradientLocation2,
 				gradientType,
 				gradientAngle,
+				gradientValue,
 				backgroundOpacity,
 				backgroundImageColor,
 				overlayType,
@@ -486,7 +488,21 @@ class UAGBInlineNoticeEdit extends Component {
 				/>
 				</PanelBody>
 				<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-					<div className="uag-background-wrap">
+					<Background
+						setAttributes = { setAttributes }
+						backgroundImageColor = { { value: backgroundImageColor, label: __( "Background Image Color", 'ultimate-addons-for-gutenberg' ) } }
+						overlayType = { { value: overlayType, label: __( "Overlay Type", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundSize = { { value: backgroundSize, label: __( "Background Size", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundRepeat = { { value: backgroundRepeat, label: __( "Background Repeat", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundAttachment = { { value: backgroundAttachment, label: __( "Background Attachement", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundPosition = { { value: backgroundPosition, label: __( "Background Image", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundImage = { { value: backgroundImage, label: __( "Background Image", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundColor = { { value: backgroundColor, label: __( "Background Color", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundType = { { value: backgroundType, label: __( "Background Type", 'ultimate-addons-for-gutenberg' ) } }
+						backgroundOpacity = { { value: backgroundOpacity, label: __( "Opacity", 'ultimate-addons-for-gutenberg' ) } }
+						{...this.props}
+					/>
+					{/* <div className="uag-background-wrap">
 						<label className="uag-background-label">{__( "Background Type", 'ultimate-addons-for-gutenberg' ) }</label>
 						<SelectControl
 							value={ backgroundType }
@@ -608,8 +624,8 @@ class UAGBInlineNoticeEdit extends Component {
 													onColorClassChange={ value => setAttributes( { colorClass: value } ) }
 												/>
 											</Fragment>
-										}
-
+										} */}
+{/* 
 										{ "gradient" == overlayType &&
 											( <Fragment>
 												<PanelColorSettings
@@ -682,7 +698,7 @@ class UAGBInlineNoticeEdit extends Component {
 								max={100} 
 							/>
 							)
-					}
+					} */}
 				</PanelBody>
 				</InspectorTab>
 				<InspectorTab key={'style'}>
