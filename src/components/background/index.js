@@ -44,10 +44,9 @@ import GradientSettings from "../../components/gradient-settings"
 		setAttributes( { backgroundImage: media } )
 	}
     
-    var advancedControls;
 
-        advancedControls = (
-			<>
+	let advancedControls = (
+		<>
 			<div className="uag-background-wrap">
 				<label className="uag-background-label">{__( "Background Type", 'ultimate-addons-for-gutenberg' ) }</label>
 				<SelectControl
