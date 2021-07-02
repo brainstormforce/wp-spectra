@@ -167,7 +167,6 @@ module.exports = function(grunt) {
 
 	/* Register task started */
 	grunt.registerTask("release", ["clean:zip", "copy","compress","clean:main"])
-	grunt.registerTask('release-no-clean', ['clean:zip', 'copy']);
 	grunt.registerTask("i18n", ["addtextdomain", "makepot"])
 
 	// Default
