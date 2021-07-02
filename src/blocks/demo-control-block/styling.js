@@ -47,21 +47,11 @@
 				paddingBottom,
 				paddingLeft,
 				paddingRight,
-                paddingTopTablet,
-				paddingRightTablet,
-				paddingBottomTablet,
-				paddingLeftTablet,
-				paddingTopMobile,
-				paddingRightMobile,
-				paddingBottomMobile,
-				paddingLeftMobile,
          noticeDismiss,
          noticeAlignment,
          layout,
          highlightWidth,
-         widthType,
-         tabletPaddingUnit,
-         mobilePaddingUnit
+         widthType
      } = props.attributes
  
  
@@ -103,10 +93,11 @@
          },
  
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text" : {
-             "padding-left" : generateCSSUnit( contentHrPadding, paddingUnit ),
-             "padding-right" : generateCSSUnit( contentHrPadding, paddingUnit ),
-             "padding-top" : generateCSSUnit( contentVrPadding, paddingUnit ),
-             "padding-bottom" : generateCSSUnit( contentVrPadding, paddingUnit ),             
+             "padding-left" : generateCSSUnit( contentHrPadding, widthType ),
+             "padding-right" : generateCSSUnit( contentHrPadding, widthType ),
+             "padding-top" : generateCSSUnit( contentVrPadding, widthType ),
+             "padding-bottom" : generateCSSUnit( contentVrPadding, widthType ),
+             
          },
          
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -147,10 +138,6 @@
          " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
              "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
              "line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
-             "padding-left" : generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
-             "padding-right" : generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
-             "padding-top" : generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-             "padding-bottom" : generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
          },
          
          " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -163,10 +150,6 @@
              " .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
                  "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
                  "line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
-                 "padding-left" : generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
-                "padding-right" : generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
-                "padding-top" : generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-                "padding-bottom" : generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
              },
  
              " .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -179,9 +162,9 @@
  
      var styling_css = generateCSS( selectors, base_selector )
  
-     styling_css += generateCSS( tablet_selectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, "tablet" )
+     styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
  
-     styling_css += generateCSS( mobile_selectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, "mobile" )
+     styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
  
      return styling_css
  }
