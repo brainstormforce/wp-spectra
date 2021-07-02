@@ -57,7 +57,7 @@ const {
 } = wp.element
 
 let svg_icons = Object.keys( UAGBIcon )
-
+const { withSelect } = wp.data
 class UAGBInlineNoticeEdit extends Component {
 
 	constructor() {
@@ -179,6 +179,8 @@ class UAGBInlineNoticeEdit extends Component {
 				color,
 				colorClass,
 				paddingUnit,
+				mobilePaddingUnit,
+				tabletPaddingUnit,
 				paddingTop,
 				paddingBottom,
 				paddingLeft,
@@ -230,6 +232,7 @@ class UAGBInlineNoticeEdit extends Component {
 			setAttributes,
 			className,
 			attributes,
+			deviceType
 		} = this.props;
 
 	   	// Notice dismiss options
@@ -450,24 +453,27 @@ class UAGBInlineNoticeEdit extends Component {
 					}
 				</PanelBody>
 				<PanelBody title="Spacing" initialOpen={false}>
-					<DimensionsControl { ...this.props }
-							type={ 'padding' }
-							label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-							help={ __( 'Space inside of the container.', 'ultimate-addons-for-gutenberg' ) }
-							valueTop={ paddingTop }
-							valueRight={ paddingRight }
-							valueBottom={ paddingBottom }
-							valueLeft={ paddingLeft }
-							valueTopTablet={ paddingTopTablet }
-							valueRightTablet={ paddingRightTablet }
-							valueBottomTablet={ paddingBottomTablet }
-							valueLeftTablet={ paddingLeftTablet }
-							valueTopMobile={ paddingTopMobile }
-							valueRightMobile={ paddingRightMobile }
-							valueBottomMobile={ paddingBottomMobile }
-							valueLeftMobile={ paddingLeftMobile }
-							unit={ paddingUnit }
-						/>
+				<DimensionsControl { ...this.props }
+						label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+						valueTop={ { value: paddingTop, label: 'paddingTop' } }
+						valueRight={ { value: paddingRight, label: 'paddingRight' } }
+						valueBottom={ { value: paddingBottom, label: 'paddingBottom' } }
+						valueLeft={ { value: paddingLeft, label: 'paddingLeft' } }
+						valueTopTablet={ { value: paddingTopTablet, label: 'paddingTopTablet' } }
+						valueRightTablet={ { value: paddingRightTablet, label: 'paddingRightTablet' } }
+						valueBottomTablet={ { value: paddingBottomTablet, label: 'paddingBottomTablet' } }
+						valueLeftTablet={ { value: paddingLeftTablet, label: 'paddingLeftTablet' } }
+						valueTopMobile={ { value: paddingTopMobile, label: 'paddingTopMobile' } }
+						valueRightMobile={ { value: paddingRightMobile, label: 'paddingRightMobile' } }
+						valueBottomMobile={ { value: paddingBottomMobile, label: 'paddingBottomMobile' } }
+						valueLeftMobile={ { value: paddingLeftMobile, label: 'paddingLeftMobile' } }
+						unit={ { value: paddingUnit, label: 'paddingUnit' } }
+						mUnit={ { value: mobilePaddingUnit, label: 'mobilePaddingUnit' } }
+						tUnit={ { value: tabletPaddingUnit, label: 'tabletPaddingUnit' } }
+						deviceType={ deviceType }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Border", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<Border
@@ -856,4 +862,11 @@ class UAGBInlineNoticeEdit extends Component {
 	}
 }
 
-export default UAGBInlineNoticeEdit
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+	}
+} )( UAGBInlineNoticeEdit )
