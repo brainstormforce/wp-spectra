@@ -3375,6 +3375,8 @@ label.wp-block-uagb-blockquote__via-label svg {
 
 button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
 	color:#003bff;
+	cursor:arrow;
+    color:#767676;
 }
 
 .components-panel__body .components-button.uagb-spacing-reset.is-secondary.is-small[aria-disabled=true]{
@@ -3390,9 +3392,4 @@ button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disa
 button.components-button.uagb-spacing-reset.is-secondary.is-small {
     box-shadow:unset;
     background: 0 0;
-}
-
-button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
-    cursor:arrow;
-    color:#767676;
 }
