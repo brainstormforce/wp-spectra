@@ -20,6 +20,7 @@ import map from 'lodash/map';
  * @returns {object} Measure settings.
  */
 export default function RangeTypographyControl ( props ) {
+	
 	const deviceType = useSelect( ( select ) => {
 		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
 	}, [] );
@@ -77,37 +78,40 @@ export default function RangeTypographyControl ( props ) {
 	const output = {};
 	output.Desktop = (
 		<Fragment>
-			{sizeTypesControls}
 			<Range 
+				{ ...props }
 				label={ __( props.sizeText ) }
 				value={ props.size.value || "" }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
+				unit = { props.type.value }
 			/>
 		</Fragment>
 	);
 	output.Tablet = (
 		<Fragment>
-			{sizeTypesControls}
 			<Range 
+				{ ...props }
 				label={ __( props.sizeTabletText ) }
 				value={ props.sizeTablet.value }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeTabletLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
+				unit = { props.type.value }
 			/>
 		</Fragment>
 	);
 	output.Mobile = (
 		<Fragment>
-			{sizeTypesControls}
 			<Range 
+				{ ...props }
 				label={ __( props.sizeMobileText ) }
 				value={ props.sizeMobile.value }
 				onChange={ ( value ) => props.setAttributes( { [props.sizeMobileLabel]: value } ) }
 				min={ 0 }
 				max={ 100 }
+				unit = { props.type.value }
 			/>
 		</Fragment>
 	);
