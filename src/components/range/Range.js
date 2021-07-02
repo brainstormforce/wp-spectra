@@ -118,7 +118,7 @@ import {
                     </ButtonGroup>
                     }
                     <Button
-                        className='uagb-spacing-reset'
+                        className='uagb-reset'
                         disabled={ cachedValue.resetDisabled } 
                         isSecondary
                         isSmall

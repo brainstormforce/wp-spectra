@@ -167,7 +167,7 @@ const AdvancedPopColorControl = props => {
                 <h2 className="uagb-beside-color-label">{ props.label }</h2>
             ) }
             <Button
-                className='uagb-spacing-reset'
+                className='uagb-reset'
                 disabled={ cachedValue.resetDisabled } 
                 isSecondary
                 isSmall
