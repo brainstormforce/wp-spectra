@@ -305,10 +305,6 @@ class UAGBInlineNoticeEdit extends Component {
 					</div>
 					</PanelBody>
 					<PanelBody title="Slider" initialOpen={false}>
-					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type", 'ultimate-addons-for-gutenberg' ) }>
-						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } min={0} max={2000} onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
-						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } min={0} max={100} onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
-					</ButtonGroup>
 					<Range 
 					    label={__( "Padding", 'ultimate-addons-for-gutenberg' )}
 						setAttributes={setAttributes}

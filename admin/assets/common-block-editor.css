@@ -3373,16 +3373,26 @@ label.wp-block-uagb-blockquote__via-label svg {
     margin-bottom:-33px
 }
 
-button.components-button.uagb-spacing-reset.is-secondary.is-small {
-    color:#827d7d;
-    background:0 0;
+button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
+	color:#003bff;
 }
 
-button.components-button.components-color-palette__clear.is-small:hover{
-    color: #003bff;
-    box-shadow:0 0;
+.components-panel__body .components-button.uagb-spacing-reset.is-secondary.is-small[aria-disabled=true]{
+  color:#909395; 
 }
-button.components-button.components-color-palette__clear.is-small{
-    color: #003bff;
-    box-shadow:0 0;
+
+.uagb-spacing-reset .dashicons-image-rotate {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+}
+
+button.components-button.uagb-spacing-reset.is-secondary.is-small {
+    box-shadow:unset;
+    background: 0 0;
+}
+
+button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
+    cursor:arrow;
+    color:#767676;
 }
