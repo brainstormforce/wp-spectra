@@ -3373,23 +3373,23 @@ label.wp-block-uagb-blockquote__via-label svg {
     margin-bottom:-33px
 }
 
-button.components-button.uagb-spacing-reset.is-secondary.is-small:not([aria-disabled=true]):active{
+button.components-button.uagb-reset.is-secondary.is-small:not([aria-disabled=true]):active{
 	color:#003bff;
 	cursor:arrow;
     color:#767676;
 }
 
-.components-panel__body .components-button.uagb-spacing-reset.is-secondary.is-small[aria-disabled=true]{
+.components-panel__body .components-button.uagb-reset.is-secondary.is-small[aria-disabled=true]{
   color:#909395; 
 }
 
-.uagb-spacing-reset .dashicons-image-rotate {
+.uagb-reset .dashicons-image-rotate {
     width: 12px;
     height: 12px;
     font-size: 12px;
 }
 
-button.components-button.uagb-spacing-reset.is-secondary.is-small {
+button.components-button.uagb-reset.is-secondary.is-small {
     box-shadow:unset;
     background: 0 0;
 }

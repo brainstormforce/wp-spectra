@@ -272,7 +272,7 @@
                                      </ButtonGroup>
 									 { ( !this.props.valueTop && !this.props.valueRight && !this.props.valueBottom && !this.props.valueLeft ) && (
                                      <Button
-                                         className="uagb-spacing-reset"
+                                         className="uagb-reset"
                                          type="button"
                                          onClick={ () => this.onChangeSize( 'no', -1 ) }
                                          isSmall
@@ -284,7 +284,7 @@
 									 )}
 									 { ( this.props.valueTop || this.props.valueRight || this.props.valueBottom || this.props.valueLeft ) && (
 									 <Button
-                                         className="uagb-spacing-reset"
+                                         className="uagb-reset"
                                          type="button"
                                          onClick={ () => this.onChangeSize( 'no', -1 ) }
                                          isSmall
