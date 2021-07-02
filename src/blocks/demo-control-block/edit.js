@@ -17,6 +17,7 @@ import Range from '../../components/range/Range.js';
 import GradientSettings from "../../components/gradient-settings"
 import MultiButtonsControl from '../../components/multi-buttons-control'
 import BoxShadowControl from "../../components/box-shadow"
+import Border from "../../components/border"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -194,6 +195,7 @@ class UAGBInlineNoticeEdit extends Component {
 				borderWidth,
 				borderRadius,
 				borderColor,
+				borderHoverColor,
 				backgroundType,
 				backgroundImage,
 				backgroundColor,
@@ -468,53 +470,14 @@ class UAGBInlineNoticeEdit extends Component {
 						/>
 				</PanelBody>
 				<PanelBody title={ __( "Border", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-					<div className="uag-border-wrap">
-					<label className="uag-border-label">{ __( "Style",'ultimate-addons-for-gutenberg' ) }</label>
-					<SelectControl
-						value={ borderStyle }
-						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "groove", label: __( "Groove", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ) },
-							{ value: "ridge", label: __( "Ridge", 'ultimate-addons-for-gutenberg' ) },
-						] }
-					/>
-					</div>
-					{ "none" != borderStyle && (
-						<Range 
-							label={ __( "Width", 'ultimate-addons-for-gutenberg' ) }
-							value={borderWidth} 
-							onChange={val => setAttributes({ borderWidth: parseInt(val) })}
-							min={0} 
-							max={100} 
-						/>
-					) }
-					{ "none" != borderStyle && (
-					<Range 
-						label={ __( "Radius", 'ultimate-addons-for-gutenberg' ) }
-						value={borderRadius} 
-						onChange={val => setAttributes({ borderRadius: parseInt(val) })}
-						min={0} 
-						max={100} 
-					/>
-					) }
-					{ "none" != borderStyle && (
-						<Fragment>
-							<AdvancedPopColorControl
-								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-								colorValue={ ( borderColor ? borderColor : '' ) }
-								colorDefault={ '' }
-								onColorChange={ value => setAttributes( { borderColor: value } ) }
-								onColorClassChange={ value => setAttributes( { colorClass: value } ) }
-							/>
-						</Fragment>
-					) }
+				<Border
+					setAttributes = { setAttributes }
+					borderStyle = { { value: borderStyle, label: __( "Style", 'ultimate-addons-for-gutenberg' ) } }
+					borderWidth = { { value: borderWidth, label: __( "Width", 'ultimate-addons-for-gutenberg' ) } }
+					borderRadius = { { value: borderRadius, label: __( "Radius", 'ultimate-addons-for-gutenberg' ) } }
+					borderColor = { { value: borderColor, label: __( "Color", 'ultimate-addons-for-gutenberg' ) } }
+					borderHoverColor= { { value: borderHoverColor, label: __( "Hover Color", 'ultimate-addons-for-gutenberg' ) } }
+				/>
 				</PanelBody>
 				<PanelBody title={ __( "Background", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					<div className="uag-background-wrap">
