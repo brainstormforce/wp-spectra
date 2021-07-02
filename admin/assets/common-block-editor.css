@@ -3388,3 +3388,22 @@ button.components-button.uagb-reset.is-secondary.is-small {
 	background: 0 0;
 }
 /* Common uagb reset CSS end here */
+
+/* Common CSS for border start here */
+.uagb-border-width {
+    margin-bottom:-15px;
+}
+
+.uagb-border-wrap {
+	display:flex;
+    margin-bottom:5px
+}
+
+.uagb-border-radius {
+    margin-bottom: -20px;
+}
+
+label.uagb-border-label {
+    margin-right:130px
+}
+/* Common CSS for border start here */

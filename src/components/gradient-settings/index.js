@@ -22,7 +22,7 @@ function GradientSettings({ attributes, setAttributes }) {
 		}
 	}
     
-    const onGradientChange = value => {        
+    const onGradientChange = value => {
 		setAttributes({ gradientValue: value });
         setAttributes({ gradientAngle: "" ,gradientColor1: "",gradientColor2: "",gradientLocation1: "",gradientLocation2: "",});
 	
