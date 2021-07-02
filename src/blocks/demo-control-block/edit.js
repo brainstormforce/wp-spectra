@@ -313,6 +313,7 @@ class UAGBInlineNoticeEdit extends Component {
 						initialPosition={15}
 						min={0} 
 						max={100} 
+						unit = { paddingUnit }
 					/>
 					</PanelBody>
 					<PanelBody title="Typography" initialOpen={false}>
