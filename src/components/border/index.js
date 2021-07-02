@@ -4,7 +4,7 @@
  */
  import { __ } from '@wordpress/i18n';
  import Range from '../../components/range/Range.js';
- import AdvancedPopColorControl from '../../advanced-pop-color-control';
+ import AdvancedPopColorControl from '../../components/color-control/advanced-pop-color-control.js'
  import { SelectControl} from '@wordpress/components';
 
  const Border = props => {
@@ -22,8 +22,8 @@
 
         advancedControls = (
             <>
-            <div className="uag-border-wrap">
-            <label className="uag-border-label">{ borderStyle.label }</label>
+            <div className="uagb-border-wrap">
+            <label className="uagb-border-label">{ borderStyle.label }</label>
                 <SelectControl
                     value={ borderStyle.value }
                     onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
@@ -41,7 +41,7 @@
                 />
             </div>
             { 'none' !== borderStyle.value && (
-            <div className="uag-border-width">
+            <div className="uagb-border-width">
                 <Range 
                     label={ borderWidth.label }
                     value={ borderWidth.value }
@@ -53,7 +53,7 @@
             </div>
             ) }
             { 'none' !== borderStyle.value && (
-            <div className="uag-border-radius">
+            <div className="uagb-border-radius">
                 <Range 
                     label={ borderRadius.label }
                     value={ borderRadius.value }
