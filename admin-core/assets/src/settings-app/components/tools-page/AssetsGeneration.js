@@ -1,6 +1,7 @@
 import { useStateValue } from '@Utils/StateProvider';
 import { NormalButton } from '@Fields';
 import { __ } from '@wordpress/i18n';
+import ReactHtmlParser from 'react-html-parser';
 import './AssetsGeneration.scss';
 import SettingTable from '../common/SettingTable';
 import React, { useEffect, useState } from 'react';
@@ -51,8 +52,6 @@ function AssetsGeneration( props ) {
 
     const [ savingState, setssavingState ] = useState( false );
 
-    var enableFileGenerationSettings = globaldata.settings[ 'enable_file_generation' ];
-
     const handleRegenerateAssets = () => {
 
         let formData = new window.FormData();
@@ -81,26 +80,34 @@ function AssetsGeneration( props ) {
 
     }
 
+	var enableFileGenerationlabel = globaldata.settings[ 'enable_file_generation' ]['fields']['enable_file_generation'].label;
+	var enableFileGenerationdesc = globaldata.settings[ 'enable_file_generation' ]['fields']['enable_file_generation'].desc;
+
 	return (
 		<>
             <h2 className="uag-version-settings__title">
 				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
-			<div className="uag-row">
-				<div className="uag-col">
-					<SettingTable
-						settings={ enableFileGenerationSettings }
-						meta_key="_uag_common"
-					/>
+			<div className="uag-version-control__elements">
+				<div className="uag-version-control__element">	
+					<h3>{ReactHtmlParser(enableFileGenerationlabel)}</h3>
+					<p>{ReactHtmlParser(enableFileGenerationdesc)}</p>
+					<div className="uag-version-control-button">
+						<NormalButton
+							buttonText = { __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+						/>
+					</div>	
 				</div>
-				<div className="uag-col">
-					<label className="uag-label bottom-space"> { __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ) } </label>
-					<NormalButton
-						buttonText = { __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
-						onClick = { handleRegenerateAssets }
-						saving = { savingState }
-						desc = { __( 'You can regenerate your CSS & Javascript assets here.', 'ultimate-addons-for-gutenberg' ) }
-					/>
+				<div className="uag-version-control__element">
+					<h3> { __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ) } </h3>
+					<p>  { __( 'You can regenerate your CSS & Javascript assets here.', 'ultimate-addons-for-gutenberg' ) } </p>
+					<div className="uag-version-control-button">
+						<NormalButton
+							buttonText = { __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
+							onClick = { handleRegenerateAssets }
+							saving = { savingState }
+						/>
+					</div>
 				</div>
 			</div>
 		</>

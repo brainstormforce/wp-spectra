@@ -14,8 +14,7 @@ function SettingTable( props ) {
 	const [ { options } ] = useStateValue();
 
 	return (
-		<table className="uag-global-settigs-content-table">
-			<tbody>
+			<>
 				{ Object.keys( settings.fields ).map( ( field, i ) => {
 					let data = settings.fields[ field ];
 					let input_type = data.type;
@@ -62,19 +61,9 @@ function SettingTable( props ) {
 						default:
 							break;
 					}
-					return (
-						<tr
-							key={ i }
-							className={ `uag-field-row-${ field }` }
-						>
-							<td scope="row">
-								<>{ component }</>
-							</td>
-						</tr>
-					);
+					return component;
 				} ) }
-			</tbody>
-		</table>
+			</>
 	);
 }
 

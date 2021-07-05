@@ -29,7 +29,9 @@ class GlobalSettings {
 					'rollback_to_previous_version' => array(
 						'type'    => 'select',
 						'name'    => '_uag_common[rollback_to_previous_version]',
+						'label'   => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
+						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
 						'options' => AdminHelper::get_rollback_versions(),
 					),
 				),
@@ -43,11 +45,7 @@ class GlobalSettings {
 						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => __(
-							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.
-
-						The beta version will not install automatically. You will always have the option to ignore it.
-						
-						',
+							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.The beta version will not install automatically. You will always have the option to ignore it.',
 							'ultimate-addons-for-gutenberg'
 						),
 					),

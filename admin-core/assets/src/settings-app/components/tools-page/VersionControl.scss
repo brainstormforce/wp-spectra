@@ -1,18 +1,4 @@
-.uag-general-settings__form-table {
-	min-width: 200px;
-	height: 34px;
-	line-height: 34px;
-	text-align: left;
-}
-.uag-global-settings-metabox__tabs{
-	h3{
-		text-align: left;
-	}
-}
-// Common settings for setting page
-.uag-general-settings__form-table th {
-	padding: 15px 10px 15px 0;
-}
+
 .uag-field-row-rollback_to_previous_version {
 	.uag-field__data {
 		display: block;
@@ -24,5 +10,34 @@
 	}
 }
 .uag-version-control-button{
-	padding: 15px;
+	background-color: #F9FBFD;
+	display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+	margin-left: -25px;
+	margin-right: -25px;
+	margin-bottom: -25px;
+	margin-top:10px;
+    padding: 20px;
+	column-gap: 25px;
+	.uag-button{
+		margin-top: 15px;
+		margin-bottom:15px;
+	}
+}
+.uag-version-control__elements{
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	.uag-version-control__element{
+		width: 50%;
+		flex: 1 0 0%;
+		box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
+		border-radius: 2px;
+		background: var(--metabox-background-color);
+		text-align: left;
+		padding: 25px;
+		padding-bottom: 0px;
+		margin-bottom: 50px;
+	}
 }

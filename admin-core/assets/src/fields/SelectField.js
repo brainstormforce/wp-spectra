@@ -6,10 +6,6 @@ function SelectField( props ) {
 	const {
 		name,
 		id,
-		label,
-		title,
-		desc,
-		tooltip,
 		options,
 		onSelect,
 		prodata,
@@ -40,25 +36,6 @@ function SelectField( props ) {
 	return (
 		<div className="uag-field uag-select-option">
 			<div className="uag-field__data">
-				{ label && (
-					<div className="uag-field__data--label">
-						<label>
-							{ label }
-							{ tooltip && (
-								<span
-									className="uag-tooltip-icon"
-									data-position="top"
-								>
-									<em
-										className="dashicons dashicons-editor-help"
-										title={ tooltip }
-									></em>
-								</span>
-							) }
-						</label>
-					</div>
-				) }
-
 				<div className="uag-field__data--content">
 					<select
 						className={ props.class }
@@ -94,11 +71,6 @@ function SelectField( props ) {
 					</select>
 				</div>
 			</div>
-			{ desc && (
-				<div className="uag-field__desc">
-					{ ReactHtmlParser( desc ) }
-				</div>
-			) }
 		</div>
 	);
 }

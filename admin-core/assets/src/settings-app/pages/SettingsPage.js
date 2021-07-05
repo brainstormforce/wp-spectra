@@ -63,12 +63,8 @@ function SettingsPage() {
 
 	return (
 		<div className="uag-global-settings-metabox">
-			<div className="uag-global-settings-metabox__tabs">
-				<div className="uag-global-settings-metabox__current-tab">
-					<AssetsGeneration/>
-					<>{ current_tab }</>		
-				</div>
-			</div>
+			<AssetsGeneration/>
+			<>{ current_tab }</>		
 		</div>
 	);
 }

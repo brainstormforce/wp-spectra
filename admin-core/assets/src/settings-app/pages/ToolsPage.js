@@ -44,22 +44,13 @@ function ToolsPage() {
 	if ( loading ) {
 		return <ToolsPageSkeleton />;
 	} else {
-		current_tab = (
-			<>
-			<VersionControl/>
-			</>
-		);
+		current_tab = <VersionControl/>
 	}
 	
 
 	return (
 		<div className="uag-global-settings-metabox">
-			<div className="uag-global-settings-metabox__tabs">
-
-				<div className="uag-global-settings-metabox__current-tab">
-					<>{ current_tab }</>
-				</div>
-			</div>
+			{ current_tab }
 		</div>
 	);
 }

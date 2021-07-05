@@ -2,6 +2,7 @@ import { useStateValue } from '@Utils/StateProvider';
 import { NormalButton } from '@Fields';
 import { __ } from '@wordpress/i18n';
 import './VersionControl.scss';
+import ReactHtmlParser from 'react-html-parser';
 import SettingTable from '../common/SettingTable';
 import React, { useEffect, useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
@@ -10,7 +11,6 @@ import ConfirmPopup from './ConfirmPopup';
 let enableBetaCachedValue;
 
 function VersionControl( props ) {
-
 	const [
 		{ globaldata, options },
 	] = useStateValue();
@@ -54,8 +54,11 @@ function VersionControl( props ) {
 
 	var rollbackSettings = globaldata.settings[ 'rollback_to_previous_version' ];
 	var enableBetaUpdatesSettings = globaldata.settings[ 'enable_beta_updates' ];
-	
-	
+
+	var rollbacklabel = globaldata.settings[ 'rollback_to_previous_version' ]['fields']['rollback_to_previous_version'].label;
+	var rollbackdesc = globaldata.settings[ 'rollback_to_previous_version' ]['fields']['rollback_to_previous_version'].desc;
+	var enableBetaUpdateslabel = globaldata.settings[ 'enable_beta_updates' ]['fields']['enable_beta_updates'].label;
+	var enableBetaUpdatesdesc = globaldata.settings[ 'enable_beta_updates' ]['fields']['enable_beta_updates'].desc;
 	const handleRollbackVersion = function ( event ) {
 
 		event.preventDefault();
@@ -77,35 +80,38 @@ function VersionControl( props ) {
 		setshowPopup( false );
 	}
 
+	const enableVersionControl = () => {
+		
+	}
 	return (
 		<>
 			<h2 className="uag-version-settings__title">
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
-			<div className="uag-row">
-					<div className="uag-col">		
-						<h3>{ __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' )}</h3>
-						<p>{__( 'Experiencing an issue with Ultimate Addons for Gutenberg version 1.23.3 Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' )}</p>
+			<div className="uag-version-control__elements">
+				<div className="uag-version-control__element">		
+					<h3>{ReactHtmlParser(rollbacklabel)}</h3>
+					<p>{ReactHtmlParser(rollbackdesc)}</p>
+					<div className="uag-version-control-button">
 						<SettingTable
 							settings={ rollbackSettings }
 							meta_key="_uag_common"
 						/>
-						<div className="uag-version-control-button">
-							<NormalButton
-								buttonText = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
-								onClick = { handleRollbackVersion }
-							/>
+						<NormalButton
+							buttonText = { __( 'Rollback', 'ultimate-addons-for-gutenberg' ) }
+							onClick = { handleRollbackVersion }
+						/>
 					</div>
 				</div>
-		
-				<div className="uag-col">
-					<h3>{ __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' )}</h3>
-					<p>{__( 'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available. The beta version will not install automatically. You will always have the option to ignore it.', 'ultimate-addons-for-gutenberg' )}</p>
-					
-					<SettingTable
-						settings={ enableBetaUpdatesSettings }
-						meta_key="_uag_common"
-					/>
+				<div className="uag-version-control__element">
+					<h3>{ReactHtmlParser(enableBetaUpdateslabel)}</h3>
+					<p>{ReactHtmlParser(enableBetaUpdatesdesc)}</p>
+					<div className="uag-version-control-button">
+						<NormalButton
+							buttonText = { __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+							onClick = { enableVersionControl }
+						/>
+					</div>
 				</div>
 			</div>
 			<ConfirmPopup

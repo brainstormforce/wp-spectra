@@ -19,6 +19,8 @@
 	}
 	.uag-global-nav__items {
 		display: inline-flex;
+		justify-content: center;
+    	flex-wrap: wrap;
 		padding: 15px 15px 0px 15px;
 	}
 	.uag-global-nav-menu__tab {

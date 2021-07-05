@@ -1,7 +1,7 @@
 .uag-blocks-settings {
     margin-top: 10px;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: inline-flex;
+    flex-wrap: wrap;
     width: 100%;
     .components-toggle-control__label{
         font-family: var(--heading-font-family);
@@ -19,6 +19,7 @@
         line-height: 16px;
     }
     .uag-individual-block-settings-metabox {
+        flex:1 0 0%;
         background: #fff;
         padding: 15px;
         margin: 10px;
