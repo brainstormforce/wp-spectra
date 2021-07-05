@@ -27,33 +27,6 @@
 		min-width: 165px;
 	}
 
-	.uag-global-settings-metabox__current-tab {
-		background: var(--background-light-color);
-		padding: 30px 30px;
-		h2{
-		text-align: center;
-		}
-		.uag-row{
-			display: flex;
-		}
-		label{
-			font-family: var(--heading-font-family);
-			font-style: normal;
-			font-weight: 500;
-			font-size: 18px;
-			line-height: 24px;
-		}
-		.input-field {
-			font-weight: 400;
-			margin-left: 20px;
-		}
-		.uag-setting-select-option {
-			font-weight: 400;
-			padding: 4px 15px;
-			height: 40px;
-			border-color: #ccc;
-		}
-	}
 	/* New Css */
 	.uag-radio-field__option {
 		padding: 0 0 25px;

@@ -1,8 +1,9 @@
 .uag-blocks-settings {
     margin-top: 10px;
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     width: 100%;
+    justify-content: center;
     .components-toggle-control__label{
         font-family: var(--heading-font-family);
         font-style: normal;
@@ -19,7 +20,6 @@
         line-height: 16px;
     }
     .uag-individual-block-settings-metabox {
-        flex:1 0 0%;
         background: #fff;
         padding: 15px;
         margin: 10px;
@@ -47,11 +47,17 @@
     margin-left: 10px;
     display: flex;
     white-space:pre;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     :last-child {
         margin-left: auto;
         padding-left: 10px;
         display: flex;
+        padding-bottom: 10px;
+    }
+    a{
+        padding-bottom: 10px;
     }
     .components-base-control__field{
         align-items: flex-start;
