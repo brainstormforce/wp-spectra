@@ -41,7 +41,7 @@ function ToggleField( props ) {
 			{ name == '_uag_common[blocks_activation_and_deactivation]' && (
 				<>
 					<a>{__('Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
-					<a>{__('Documentation', 'ultimate-addons-for-gutenberg' )}</a>
+					<a target='_blank'>{__('Documentation', 'ultimate-addons-for-gutenberg' )}</a>
 				</>
 			)}
 			

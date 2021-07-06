@@ -76,7 +76,7 @@ function NavMenu() {
 						{menu.name}
 					</Link>
 				))}
-				<a href="https://ultimategutenberg.com/" className='uag-global-nav-menu__tab'>Documentation</a>
+				<a href="https://ultimategutenberg.com/" className='uag-global-nav-menu__tab' target='_blank'>Documentation</a>
 			</div>
 		</div>
 	);
