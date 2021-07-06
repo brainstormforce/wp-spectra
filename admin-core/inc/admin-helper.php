@@ -60,10 +60,9 @@ class AdminHelper {
 
 		$common = wp_parse_args( $common, $common_default );
 
-		foreach ( $common as $key => $data ) {
+		foreach ( $common as $key => $data ) {	
 			$options[ '_uag_common[' . $key . ']' ] = $data;
 		}
-
 		return $options;
 	}
 	/**

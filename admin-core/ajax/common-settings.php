@@ -86,8 +86,12 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
+		$enable_template_button = 'yes';
 
-		AdminHelper::set_common_settings( 'enable_templates_button', $_POST['value'] );
+		if ( 'disabled' === $_POST['value'] ) {
+			$enable_template_button = 'no';
+		}
+		AdminHelper::set_common_settings( 'enable_templates_button', $enable_template_button );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -202,16 +206,9 @@ class CommonSettings extends AjaxBase {
 		}
 
 		if ( isset( $_POST ) ) {
-
 			AdminHelper::set_common_settings( 'enable_beta_updates', $_POST['value'] );
-
-			$enable_beta = 'yes';
-
-			if ( 'disabled' === $_POST['value'] ) {
-				$enable_beta = 'no';
-			}
-
-			update_option( 'uagb_beta', sanitize_text_field( $enable_beta ) );
+			
+			update_option( 'uagb_beta', sanitize_text_field($_POST['value'] ) );
 
 		}
 

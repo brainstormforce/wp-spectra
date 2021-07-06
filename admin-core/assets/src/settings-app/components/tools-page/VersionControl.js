@@ -4,59 +4,26 @@ import { __ } from '@wordpress/i18n';
 import './VersionControl.scss';
 import ReactHtmlParser from 'react-html-parser';
 import SettingTable from '../common/SettingTable';
-import React, { useEffect, useState } from 'react';
-import apiFetch from '@wordpress/api-fetch';
+import React, { useState } from 'react';
 import ConfirmPopup from './ConfirmPopup';
-
-let enableBetaCachedValue;
 
 function VersionControl( props ) {
 	const [
-		{ globaldata, options },
+		{ globaldata, options }, dispatch
 	] = useStateValue();
-	
-	useEffect( () => {
-		window.onbeforeunload = null;
-		enableBetaCachedValue = options['_uag_common[enable_beta_updates]']
-	}, [] );
 
-	useEffect( () => {
 
-		if ( enableBetaCachedValue !== options['_uag_common[enable_beta_updates]'] ) {
-		
-			let formData = new window.FormData();
-	
-			formData.append( 'action', 'uag_enable_beta_updates' );
-			formData.append(
-				'security',
-				uag_react.enable_beta_updates_nonce
-			);
-			formData.append( 'value', options['_uag_common[enable_beta_updates]'] );
-	
-			apiFetch( {
-				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				
-				if ( data.success ) {
-					
-				} else {
-					console.log( 'Error' );
-				}
-			} );
-
-			enableBetaCachedValue = options['_uag_common[enable_beta_updates]'];
-		}
-	}, [ options['_uag_common[enable_beta_updates]'] ] );
+    const [ savingState, setssavingState ] = useState( false );
 
 	const [ showPopup, setshowPopup ] = useState( false );
+	
+	const [ enableBeta, setenableBeta ] = useState( options['_uag_common[enable_beta_updates]'] );
 
 	var rollbackSettings = globaldata.settings[ 'rollback_to_previous_version' ];
-	var enableBetaUpdatesSettings = globaldata.settings[ 'enable_beta_updates' ];
 
 	var rollbacklabel = globaldata.settings[ 'rollback_to_previous_version' ]['fields']['rollback_to_previous_version'].label;
 	var rollbackdesc = globaldata.settings[ 'rollback_to_previous_version' ]['fields']['rollback_to_previous_version'].desc;
+
 	var enableBetaUpdateslabel = globaldata.settings[ 'enable_beta_updates' ]['fields']['enable_beta_updates'].label;
 	var enableBetaUpdatesdesc = globaldata.settings[ 'enable_beta_updates' ]['fields']['enable_beta_updates'].desc;
 	const handleRollbackVersion = function ( event ) {
@@ -79,10 +46,37 @@ function VersionControl( props ) {
 
 		setshowPopup( false );
 	}
-
-	const enableVersionControl = () => {
+	const enableBetaUpdate = () => {
+		setssavingState( true );
+		let status;
+		if(enableBeta == 'no' ){
+			status = 'yes';
+		}else{
+			status = 'no';
+		}
+		setenableBeta( status );
+		dispatch( {
+			type: 'SET_OPTION',
+			name: '_uag_common[enable_beta_updates]',
+			value: status,
+		} );
+		let data = {
+			'action' : 'uag_enable_beta_updates',
+			'security' : uag_react.enable_beta_updates_nonce,
+			'value' : status,
+		}
 		
+		jQuery.ajax( {
+			type: 'POST',
+			data: data,
+			url: uag_react.ajax_url,
+			success(  ) {
+                setssavingState( false );
+			},
+		} ).done( function () {
+		} );
 	}
+
 	return (
 		<>
 			<h2 className="uag-version-settings__title">
@@ -108,12 +102,13 @@ function VersionControl( props ) {
 					<p>{ReactHtmlParser(enableBetaUpdatesdesc)}</p>
 					<div className="uag-version-control-button">
 						<NormalButton
-							buttonText = { __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
-							onClick = { enableVersionControl }
+							buttonText = { enableBeta == 'yes' ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' )}
+							onClick = { enableBetaUpdate }
+							saving = { savingState }
 						/>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<ConfirmPopup
 				showPopup={ showPopup }
 				setshowPopup={ setshowPopup }

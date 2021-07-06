@@ -10,46 +10,45 @@ let enableTemplatesButton;
 function TemplatesButton( props ) {
 
     const [
-		{ globaldata, options },
+		{ globaldata, options }, dispatch
 	] = useStateValue();
+	const [ savingState, setssavingState ] = useState( false );
 
-    useEffect( () => {
-		window.onbeforeunload = null;
-		enableTemplatesButton = options['_uag_common[enable_templates_button]']
-	}, [] );
+	const [ enableTemplate, setenableStarterTemplate ] = useState( options['_uag_common[enable_templates_button]'] );
 
-    useEffect( () => {
-
-		if ( enableTemplatesButton !== options['_uag_common[enable_templates_button]'] ) {
-		
-			let formData = new window.FormData();
-	
-			formData.append( 'action', 'uag_enable_templates_button' );
-			formData.append(
-				'security',
-				uag_react.enable_templates_button_nonce
-			);
-			formData.append( 'value', options['_uag_common[enable_templates_button]'] );
-	
-			apiFetch( {
-				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				
-				if ( data.success ) {
-					
-				} else {
-					console.log( 'Error' );
-				}
-			} );
-
-			enableTemplatesButton = options['_uag_common[enable_templates_button]'];
-		}
-	}, [ options['_uag_common[enable_templates_button]'] ] );
 	var enableTemplatesButtonlabel = globaldata.settings[ 'enable_templates_button' ]['fields']['enable_templates_button'].label;
 	var enableTemplatesButtondesc = globaldata.settings[ 'enable_templates_button' ]['fields']['enable_templates_button'].desc;
-
+	
+	const enableStarterTemplate = () => {
+		setssavingState( true );
+		let status;
+		if(enableTemplate == 'no' || enableTemplate == 'disable' ){
+			status = 'yes';
+		}else{
+			status = 'no';
+		}
+		setenableStarterTemplate( status );
+		dispatch( {
+			type: 'SET_OPTION',
+			name: '_uag_common[enable_templates_button]',
+			value: status,
+		} );
+		let data = {
+			'action' : 'uag_enable_templates_button',
+			'security' : uag_react.enable_templates_button_nonce,
+			'value' : status,
+		}
+		
+		jQuery.ajax( {
+			type: 'POST',
+			data: data,
+			url: uag_react.ajax_url,
+			success(  ) {
+                setssavingState( false );
+			},
+		} ).done( function () {
+		} );
+	}
     return (
 		<>
 		<h2 className="uag-version-settings__title">
@@ -61,7 +60,9 @@ function TemplatesButton( props ) {
 					<p>{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ultimate-addons-for-gutenberg')}</p>
 					<div className="uag-version-control-button">
 						<NormalButton
-							buttonText = { __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+							buttonText = { enableTemplate == 'yes' ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' )}
+							onClick = { enableStarterTemplate }
+							saving = { savingState }
 						/>
 					</div>
 			</div>

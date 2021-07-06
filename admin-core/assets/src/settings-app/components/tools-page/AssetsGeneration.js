@@ -7,48 +7,13 @@ import SettingTable from '../common/SettingTable';
 import React, { useEffect, useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 
-let enableFileGenerationCachedValue;
-
 function AssetsGeneration( props ) {
 
 	const [
-		{ globaldata, options },
+			{ globaldata, options }, dispatch
 	] = useStateValue();
-	
-    useEffect( () => {
-		window.onbeforeunload = null;
-		enableFileGenerationCachedValue = options['_uag_common[enable_file_generation]']
-	}, [] );
 
-    useEffect( () => {
-
-		if ( enableFileGenerationCachedValue !== options['_uag_common[enable_file_generation]'] ) {
-		
-			let formData = new window.FormData();
-	
-			formData.append( 'action', 'uag_enable_file_generation' );
-			formData.append(
-				'security',
-				uag_react.enable_file_generation_nonce
-			);
-			formData.append( 'value', options['_uag_common[enable_file_generation]'] );
-	
-			apiFetch( {
-				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				
-				if ( data.success ) {
-					
-				} else {
-					console.log( 'Error' );
-				}
-			} );
-
-			enableFileGenerationCachedValue = options['_uag_common[enable_file_generation]'];
-		}
-	}, [ options['_uag_common[enable_file_generation]'] ] );
+	const [ enableFileGeneration, setenableFileGeneration ] = useState( options['_uag_common[enable_file_generation]'] );
 
     const [ savingState, setssavingState ] = useState( false );
 
@@ -79,7 +44,37 @@ function AssetsGeneration( props ) {
         } );
 
     }
-
+	const handleAssetGeneration = () =>{
+		
+        setssavingState( true );
+		let status;
+		if(enableFileGeneration == 'no' ){
+			status = 'yes';
+		}else{
+			status = 'no';
+		}
+		setenableFileGeneration( status );
+		dispatch( {
+			type: 'SET_OPTION',
+			name: '_uag_common[enable_file_generation]',
+			value: status,
+		} );
+		let data = {
+			'action' : 'uag_enable_file_generation',
+			'security' : uag_react.enable_file_generation_nonce,
+			'value' : status,
+		}
+		
+		jQuery.ajax( {
+			type: 'POST',
+			data: data,
+			url: uag_react.ajax_url,
+			success(  ) {
+                setssavingState( false );
+			},
+		} ).done( function () {
+		} );
+	}
 	var enableFileGenerationlabel = globaldata.settings[ 'enable_file_generation' ]['fields']['enable_file_generation'].label;
 	var enableFileGenerationdesc = globaldata.settings[ 'enable_file_generation' ]['fields']['enable_file_generation'].desc;
 
@@ -94,7 +89,9 @@ function AssetsGeneration( props ) {
 					<p>{ReactHtmlParser(enableFileGenerationdesc)}</p>
 					<div className="uag-version-control-button">
 						<NormalButton
-							buttonText = { __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+							buttonText = { enableFileGeneration == 'yes' ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+							onClick = { handleAssetGeneration }
+							saving = { savingState }
 						/>
 					</div>	
 				</div>
