@@ -55,7 +55,7 @@ function TemplatesButton( props ) {
 		<h2 className="uag-version-settings__title">
 		{ __( 'Starter Template', 'ultimate-addons-for-gutenberg' ) }
 		</h2>
-		<div className="uag-version-control__elements">
+		<div className="uag-starter-template__button uag-version-control__elements">
 			<div className="uag-version-control__element">
 				<h3>{ReactHtmlParser(enableTemplatesButtonlabel)}</h3>
 					<p>{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ultimate-addons-for-gutenberg')}</p>

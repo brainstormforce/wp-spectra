@@ -16,7 +16,8 @@
 	}
 	.uag-metabox__body {
 		padding-top: 0px;	
-		width: 80%;
+		max-width: 1100px;
+		min-height: 500px;
     	margin: 0 auto;
 	}
 	.uag-metabox__elements {

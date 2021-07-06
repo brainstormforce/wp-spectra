@@ -1,6 +1,7 @@
 .uag-global-settings-metabox {
     position: relative;
-    width: 80%;
+    max-width: 1100px;
+	min-height: 500px;
     margin: 0 auto;
     background: var(--background-light-color);
     padding: 30px 30px;

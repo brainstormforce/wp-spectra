@@ -1,7 +1,7 @@
 .uag-blocks-settings {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     width: 100%;
     justify-content: center;
     .components-toggle-control__label{
@@ -41,6 +41,11 @@
         .components-toggle-control__label {
             width: 80%;
         }
+    }
+}
+@media (min-width: 783px){
+    .uag-blocks-settings {
+        grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
     }
 }
 .uag-bulk-blocks-settings-wrap {
