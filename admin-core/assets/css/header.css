@@ -1,7 +1,7 @@
 
 /* Header */
 .uag-menu-page-header {
-	background-color: #fff;
+	background-color: var(--metabox-background-color);
 	text-align: center;
 	padding: 20px;
 	margin-bottom: 20px;

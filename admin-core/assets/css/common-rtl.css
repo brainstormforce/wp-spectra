@@ -179,7 +179,7 @@
 }
 
 .uag-log__section {
-	background: #fff;
+	background: var(--metabox-background-color);
 	box-shadow: none;
 	margin-bottom: 20px;
 	border: 0;
@@ -229,7 +229,7 @@
 	box-sizing: border-box;
 	background: #f06434;
 	border-color: #f06434;
-	color: #fff;
+	color: var(--metabox-background-color);
 }
 .uag-log__section .log-viewer--title {
 	font-size: 18px;
@@ -241,7 +241,7 @@
 	word-break: break-all;
 	line-height: 1.5;
 	text-align: right;
-	background-color: #fff;
+	background-color: var(--metabox-background-color);
 	padding: 15px;
 	border-radius: 3px;
 	max-height: 400px;

@@ -5,7 +5,7 @@
 	width: calc( 100% - 160px );
 	left: 160px;
 	top: 32px;
-	background-color: #fff;
+	background-color: var(--metabox-background-color);
 	text-align: center;
 	padding: 0 20px;
 	/* margin: 0; */
