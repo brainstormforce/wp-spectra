@@ -45,7 +45,7 @@ function SettingsPage() {
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <SettingsPageSkeleton />;
+		return <div className="uag-global-settings-metabox"><SettingsPageSkeleton /></div>;
 	} else {
 		switch ( tab ) {
 			case '#templates_settings':

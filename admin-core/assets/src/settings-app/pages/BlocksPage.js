@@ -39,7 +39,9 @@ function BlocksPage() {
 	}, [] );
 
 	if ( loading ) {
-		return <SettingPageSkeleton />;
+		return <div className="uag-blocks-settings-metabox">
+					<SettingPageSkeleton />
+				</div>;
 	}
 	return (
 		<div className="uag-blocks-settings-metabox">

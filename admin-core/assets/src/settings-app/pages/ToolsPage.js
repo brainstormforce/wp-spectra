@@ -42,7 +42,7 @@ function ToolsPage() {
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <ToolsPageSkeleton />;
+		return <div className="uag-global-settings-metabox"><ToolsPageSkeleton /></div>;
 	} else {
 		current_tab = <VersionControl/>
 	}

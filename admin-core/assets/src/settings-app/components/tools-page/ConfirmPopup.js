@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import './ConfirmPopup.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 function ConfirmPopup( props ) {
 

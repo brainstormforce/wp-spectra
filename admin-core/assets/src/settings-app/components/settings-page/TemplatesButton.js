@@ -1,11 +1,8 @@
-import SettingTable from '../common/SettingTable';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NormalButton } from '@Fields';
 import ReactHtmlParser from 'react-html-parser';
 import { useStateValue } from '@Utils/StateProvider';
-import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
-let enableTemplatesButton;
 
 function TemplatesButton( props ) {
 

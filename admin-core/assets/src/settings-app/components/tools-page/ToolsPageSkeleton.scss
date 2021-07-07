@@ -1,22 +1,16 @@
-.uag-settings-nav {
-	display: flex;
+.uag-tools-nav__contents {
+	display: grid;
+	grid-template-columns: auto auto;
+	row-gap: 20px;
+    column-gap: 20px;
 }
-
-.uag-settings-nav__tabs {
-	width: 250px;
-	background: var(--background-light-color);
-	padding: 15px;
-}
-.uag-settings-nav__tab {
-	padding: 0 0 10px 0;
-
-	&:last-child {
-		padding: 0;
+.uag-tools-page-heading { 
+	margin: 30px;
+	.uag-skeleton{
+    	margin: 0 auto;
 	}
 }
-
-.uag-settings-nav__content {
+.uag-tools-nav__content {
 	padding: 25px;
 	background: var(--metabox-background-color);
-	width: calc( 100% - 250px );
 }

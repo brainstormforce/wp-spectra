@@ -3,8 +3,7 @@ import { NormalButton } from '@Fields';
 import { __ } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
 import './AssetsGeneration.scss';
-import SettingTable from '../common/SettingTable';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 
 function AssetsGeneration( props ) {
@@ -16,7 +15,8 @@ function AssetsGeneration( props ) {
 	const [ enableFileGeneration, setenableFileGeneration ] = useState( options['_uag_common[enable_file_generation]'] );
 
     const [ savingState, setssavingState ] = useState( false );
-
+    const [ savingAssetGenState, setssavingAssetGenState ] = useState( false );
+	
     const handleRegenerateAssets = () => {
 
         let formData = new window.FormData();
@@ -46,7 +46,7 @@ function AssetsGeneration( props ) {
     }
 	const handleAssetGeneration = () =>{
 		
-        setssavingState( true );
+        setssavingAssetGenState( true );
 		let status;
 		if(enableFileGeneration == 'no' ){
 			status = 'yes';
@@ -70,7 +70,7 @@ function AssetsGeneration( props ) {
 			data: data,
 			url: uag_react.ajax_url,
 			success(  ) {
-                setssavingState( false );
+                setssavingAssetGenState( false );
 			},
 		} ).done( function () {
 		} );
@@ -91,7 +91,7 @@ function AssetsGeneration( props ) {
 						<NormalButton
 							buttonText = { enableFileGeneration == 'yes' ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
 							onClick = { handleAssetGeneration }
-							saving = { savingState }
+							saving = { savingAssetGenState }
 						/>
 					</div>	
 				</div>

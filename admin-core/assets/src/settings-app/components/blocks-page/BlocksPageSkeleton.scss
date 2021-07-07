@@ -1,22 +1,11 @@
-.uag-settings-nav {
-	display: flex;
-}
 
-.uag-settings-nav__tabs {
-	width: 250px;
-	background: var(--background-light-color);
-	padding: 15px;
+.uag-blocks-nav__contents{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	column-gap: 20px;
+	row-gap:20px;
 }
-.uag-settings-nav__tab {
-	padding: 0 0 10px 0;
-
-	&:last-child {
-		padding: 0;
-	}
-}
-
-.uag-settings-nav__content {
+.uag-blocks-nav__content {
 	padding: 25px;
 	background: var(--metabox-background-color);
-	width: calc( 100% - 250px );
 }
