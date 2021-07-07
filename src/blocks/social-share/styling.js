@@ -77,7 +77,7 @@ function styling( props ) {
 		'text-align': align,
 	};
 
-	selectors[ '.uagb-social-share__outer-wrap' ] = {
+	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks > .block-editor-block-list__layout' ] = {
 		'justify-content': alignment,
 		'-webkit-box-pack': alignment,
 		'-ms-flex-pack': alignment,
