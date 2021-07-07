@@ -61,6 +61,9 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
+		borderStyle,
+		borderWidth,
+		borderColor
 	} = props.attributes;
 
 	let inner_width = '100%';
@@ -175,7 +178,11 @@ function styling( props ) {
 	selectors[ ' > .uagb-section__overlay' ][
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
-
+	if ( borderStyle != 'none' ) {
+		selectors[ ' > .uagb-section__overlay'][ 'border-style' ] = borderStyle;
+		selectors[ ' > .uagb-section__overlay'][ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
+		selectors[ ' > .uagb-section__overlay'][ 'border-color' ] = borderColor;
+	}
 	tabletSelectors = {
 		'.uagb-section__wrap': {
 			'padding-top': generateCSSUnit(
