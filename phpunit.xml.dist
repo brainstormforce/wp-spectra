@@ -10,6 +10,7 @@
 	<testsuites>
 		<testsuite name="main">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
+			<exclude>./tests/test-sample.php</exclude>
 		</testsuite>
 	</testsuites>
 </phpunit>
