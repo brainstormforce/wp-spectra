@@ -17,10 +17,7 @@ function inlineStyles( props ) {
 		backgroundImage,
 		backgroundRepeat,
 		backgroundType,
-		borderStyle,
-		borderWidth,
 		borderRadius,
-		borderColor,
 		desktopMarginType,
 		desktopPaddingType,
 	} = props.attributes;
@@ -35,11 +32,6 @@ function inlineStyles( props ) {
 		'border-radius': generateCSSUnit( borderRadius, desktopMarginType ),
 	};
 
-	if ( borderStyle != 'none' ) {
-		style[ 'border-style' ] = borderStyle;
-		style[ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
-		style[ 'border-color' ] = borderColor;
-	}
 
 	const position = backgroundPosition.replace( '-', ' ' );
 

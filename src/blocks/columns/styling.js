@@ -16,7 +16,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderRadius,
 		contentWidth,
 		width,
 		widthType,
@@ -63,6 +62,10 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor,
 	} = props.attributes;
 
 	let max_width = '100%';
@@ -134,8 +137,13 @@ function styling( props ) {
 				boxShadowPositionCSS,
 		},
 	};
-
-	selectors[ ' > .uagb-columns__overlay' ] = {};
+	if ( borderStyle != 'none' ) {
+		selectors[ ' .uagb-columns__overlay' ] = {
+			'border-style' : borderStyle,
+			'border-width' : generateCSSUnit( borderWidth, 'px' ),
+			'border-color' : borderColor
+		} 
+	}
 
 	switch ( backgroundType ) {
 		case 'video':
