@@ -16,14 +16,35 @@ export default function save( props ) {
 		headingId,
 	} = props.attributes;
 
-	let seprator_output = '';
+	let seprator = '';
 	if ( seperatorStyle !== 'none' ) {
-		seprator_output = (
+		seprator = (
 			<div className="uagb-separator-wrap">
 				<div className="uagb-separator"></div>
 			</div>
 		);
 	}
+	let headingText = '';
+	if ( headingTitle !== '' ) {
+
+		headingText = <RichText.Content
+						tagName={ headingTag }
+						value={ headingTitle }
+						className="uagb-heading-text"
+						id={ headingId }
+					/>
+	}
+	let descText = '';
+	
+	if ( headingDesc !== '' ) {
+
+		descText = <RichText.Content
+					tagName="p"
+					value={ headingDesc }
+					className="uagb-desc-text"
+				/>
+	}
+	
 	return (
 		<div
 			className={ classnames(
@@ -31,18 +52,9 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			<RichText.Content
-				tagName={ headingTag }
-				value={ headingTitle }
-				className="uagb-heading-text"
-				id={ headingId }
-			/>
-			{ seprator_output }
-			<RichText.Content
-				tagName="p"
-				value={ headingDesc }
-				className="uagb-desc-text"
-			/>
+			{ headingText }
+			{ seprator }
+			{ descText }
 		</div>
 	);
 }
