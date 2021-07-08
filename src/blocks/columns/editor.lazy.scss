@@ -280,6 +280,12 @@
 		> .block-editor-block-list__layout {
 		flex-direction: row-reverse;
 }
+.uagb-editor-preview-mode-mobile.uagb-columns__reverse-mobile.uagb-columns__stack-tablet.wp-block-uagb-columns
+		> .block-editor-inner-blocks
+		> .block-editor-block-list__layout {
+		flex-direction: column-reverse;
+
+}
 .uagb-editor-preview-mode-tablet.uagb-columns__reverse-tablet.uagb-columns__stack-tablet.wp-block-uagb-columns
 	> .block-editor-inner-blocks
 	> .block-editor-block-list__layout {

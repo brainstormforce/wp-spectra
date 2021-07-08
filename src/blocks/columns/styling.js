@@ -193,10 +193,6 @@ function styling( props ) {
 			break;
 	}
 
-	selectors[ ' > .uagb-columns__overlay' ][
-		'border-radius'
-	] = generateCSSUnit( borderRadius, 'px' );
-
 	tabletSelectors = {
 		'.uagb-columns__wrap': {
 			'padding-top': generateCSSUnit(
