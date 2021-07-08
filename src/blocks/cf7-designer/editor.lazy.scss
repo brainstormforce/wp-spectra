@@ -190,6 +190,11 @@
 	div.wpcf7 .wpcf7-submit:disabled {
 		cursor: not-allowed;
 	}
+	.wpcf7-acceptance input[type="checkbox"]:checked + span::before,
+	.wpcf7-checkbox input[type="checkbox"]:checked + span::before {
+		line-height: 1.2;
+		content: "\2714";
+	}
 }
 
 .block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-cf7-styler .button,
