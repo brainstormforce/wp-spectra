@@ -1332,18 +1332,20 @@ const Settings = ( props ) => {
 								setAttributes( { ctaText: value } )
 							}
 						/>
-						<ToggleControl
-							label={ __(
-								'Inherit from Theme',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ inheritFromTheme }
-							onChange={ () =>
-								setAttributes( {
-									inheritFromTheme: ! inheritFromTheme,
-								} )
-							}
-						/>
+						{ ctaType === 'button' && (
+							<ToggleControl
+								label={ __(
+									'Inherit from Theme',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ inheritFromTheme }
+								onChange={ () =>
+									setAttributes( {
+										inheritFromTheme: ! inheritFromTheme,
+									} )
+								}
+							/>
+						)}
 						{ ctaType === 'text' && (
 							<TypographyControl
 								label={ __(
