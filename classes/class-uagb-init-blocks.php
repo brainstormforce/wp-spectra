@@ -41,14 +41,13 @@ class UAGB_Init_Blocks {
 	 * Constructor
 	 */
 	public function __construct() {
-		global $wp_version;
 
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
-		if( '5.8.0' === $wp_version ){
+		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
 			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
-		} else{
+		} else {
 			add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
 		}
 
