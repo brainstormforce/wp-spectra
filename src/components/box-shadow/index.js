@@ -7,6 +7,7 @@
  import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
  import { Button, SelectControl, Dashicon } from '@wordpress/components';
  import { useState } from '@wordpress/element';
+ import MultiButtonsControl from '../multi-buttons-control/index';
 
  const BoxShadowControl = props => {
 
@@ -47,7 +48,7 @@
         advancedControls = (
             <div className="uagb-box-shadow-advanced">
                 <AdvancedPopColorControl
-                    label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+                    label={ __( 'Shadow Color', 'ultimate-addons-for-gutenberg' ) }
                     colorValue={ ( boxShadowColor.value ) }
                     colorDefault={ '' }
                     onColorChange={ value => setAttributes( { boxShadowColor: value } ) }
@@ -94,14 +95,15 @@
                 />
                 </div>
                 <div className="uag-box-position-wrap">
-                    <label className="uag-box-position-label">{ boxShadowPosition.label }</label>
-                    <SelectControl
-                        value={ boxShadowPosition.value }
-                        onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
+                    <MultiButtonsControl
+                        label={ __( "Position", 'ultimate-addons-for-gutenberg' ) }
+                        currentOption={ boxShadowPosition.value }
                         options={ [
-                            { value: "inset", label: __( "Inset",'ultimate-addons-for-gutenberg' ) },
-                            { value: "outset", label: __( "Outset",'ultimate-addons-for-gutenberg' ) },
+                            { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Inset (10px)', 'ultimate-addons-for-gutenberg' ), },
+                            { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Outset', 'ultimate-addons-for-gutenberg' ), },
                         ] }
+                        onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
+                        showIcons={ false }
                     />
                 </div>
             </div>

@@ -336,10 +336,12 @@
 		default: 0
 	},
 	boxShadowBlur : {
-		type: "number"
+		type: "number",
+		default: 0
 	},
 	boxShadowSpread : {
-		type: "number"
+		type: "number",
+		default: 0
 	},
 	boxShadowPosition: {
 		type: "string",

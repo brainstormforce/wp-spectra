@@ -17,21 +17,7 @@
         width:50%
     }
     .components-range-control__wrapper {
-        color: #dadadb;
-        span[aria-hidden="true"] {
-            background-color:rgb(215, 218, 222);
-        }
-        span > span[aria-hidden="true"] {
-            background-color: rgb(87, 87, 87);
-            height:60%;
-            width:60%;
-        }
-    } 
-    button[type=button] > span {
-        cursor: pointer;
-        width: 15px;
-        height: 15px;
-        font-size: 15px;
+        margin-left: 7px;
     }
 }
 

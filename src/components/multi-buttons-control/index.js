@@ -24,43 +24,33 @@ const MultiButtonsControl = props => {
 		showIcons,
 	} = props;
 	
-	if ( !options ){
+	if ( ! options ){
 		return __( 'Please add a option props to MultiButtonsControl','ultimate-addons-for-gutenberg' );
 	}
 
-	let buttons = options;
-
-	let multiButtonLabel = label.toLowerCase();
-
 	return (
-		<BaseControl id={ `uagb-option-selector-${ multiButtonLabel }` } label={ label }>
-			<PanelRow>
-				<ButtonGroup className={ `uagb-multi-button-${ multiButtonLabel }-button-group` } aria-label={ label }>
+		<ButtonGroup className={ `uagb-multi-button-button-group` } aria-label={ label }>
+			{ options.map( ( option ) => (
+				<Tooltip
+					key={ `option-${ option.value }` }
+					text={ option.tooltip }>
 
-					{ buttons.map( ( option ) => (
-						<Tooltip
-							key={ `option-${ option.value }` }
-							text={ option.tooltip }>
+					<Button
+						className={ `uagb-multi-button` }
+						isLarge
+						isSecondary={ currentOption !== option.value }
+						isPrimary={ currentOption === option.value }
+						aria-pressed={ currentOption === option.value }
+						onClick={ () => onChange( option.value ) }
+						aria-label={ option.tooltip }>
 
-							<Button
-							    className={ `uagb-multi-button-${ multiButtonLabel }-button` }
-								isLarge
-								isSecondary={ currentOption !== option.value }
-								isPrimary={ currentOption === option.value }
-								aria-pressed={ currentOption === option.value }
-								onClick={ () => onChange( option.value ) }
-								aria-label={ option.tooltip }>
+						{ showIcons ? option.icon : option.label }
 
-								{ showIcons ? option.icon : option.label }
+					</Button>
 
-							</Button>
-
-						</Tooltip>
-					) ) }
-
-				</ButtonGroup>
-			</PanelRow>
-		</BaseControl>
+				</Tooltip>
+			) ) }
+		</ButtonGroup>
 	);
 }
 
