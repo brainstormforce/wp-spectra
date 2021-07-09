@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // var {registerObserver} = require('react-perf-devtool');
 
-import '@Admin/SettingsApp.scss';
-
 /* State Provider */
 import { StateProvider } from '@Utils/StateProvider';
 import reducer, { initialState } from '@SettingsApp/data/reducer';

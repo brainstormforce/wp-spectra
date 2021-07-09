@@ -2,7 +2,6 @@ import { useStateValue } from '@Utils/StateProvider';
 import { NormalButton } from '@Fields';
 import { __ } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
-import './AssetsGeneration.scss';
 import React, { useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -80,7 +79,7 @@ function AssetsGeneration( props ) {
 
 	return (
 		<>
-            <h2 className="uag-version-settings__title">
+            <h2>
 				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-version-control__elements">

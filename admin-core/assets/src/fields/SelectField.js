@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import './SelectField.scss';
 
 function SelectField( props ) {

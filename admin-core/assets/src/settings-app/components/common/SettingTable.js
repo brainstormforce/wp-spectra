@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStateValue } from '@Utils/StateProvider';
-import './SettingTable.scss';
 
 import {
 	SelectField,

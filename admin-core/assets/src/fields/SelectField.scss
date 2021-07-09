@@ -1,7 +1,7 @@
 .uag-select-option select {
-	font-weight: 400;
+	font-weight: var(--heading-weight-400);
 	max-width: 100%;
-	height: 33px;
+	height: 35px;
 	padding: 4px 15px;
 	border: 1px solid #ddd;
 	border-radius: 2px;

@@ -5,7 +5,7 @@
 	}
 	.uag-field__data--label {
 		font-size: 18px;
-		font-weight: 400;
+		font-weight: var(--heading-weight-400);
 		margin-bottom: 10px;
 	}
 }
@@ -14,10 +14,8 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	row-gap: 20px;
-	
+	column-gap: 40px;
 	.uag-version-control__element{
-		margin-left: 10px;
-		margin-right: 10px;
 		display: flex;
     	flex-direction: column;
 		box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
@@ -27,19 +25,24 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			margin: 30px 0 15px 0;
-			padding: 0 25px;
+			padding: 30px 30px 20px 30px;
 		}
-		.uag-version-control-button{
-			
+		p{
+			padding: 0px 30px 0px 30px;;
+		}
+		.uag-version-control-button{	
 			background-color: #F9FBFD;
 			display: flex;
 			justify-content: space-between;
 			margin-top: auto;
-			padding: 20px 13px 20px 25px;
+			padding: 30px;
+			.uag-field{
+				margin:0px;
+			}
 		}
 	}
 }
+
 @media (min-width: 783px){
 	.uag-global-settings-metabox .uag-starter-template__button{
 		width:50%;

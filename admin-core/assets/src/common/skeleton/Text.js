@@ -3,7 +3,7 @@ import React from 'react';
 import './Text.scss';
 
 function TextSkeleton( props ) {
-	const { animation = 'wave', fontSize, width, style } = props;
+	const { fontSize, width, style } = props;
 
 	return (
 		<div

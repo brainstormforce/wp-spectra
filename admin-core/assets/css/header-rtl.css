@@ -16,7 +16,7 @@
 .uag-top-links {
 	flex: auto;
 	text-align: left;
-	font-weight: 500;
+	font-weight: var(--heading-weight-500);
 	margin-left: -20px;
 }
 

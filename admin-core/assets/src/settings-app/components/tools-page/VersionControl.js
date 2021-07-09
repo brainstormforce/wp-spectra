@@ -79,7 +79,7 @@ function VersionControl( props ) {
 
 	return (
 		<>
-			<h2 className="uag-version-settings__title">
+			<h2>
 				{ __( 'Version Control', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-version-control__elements">

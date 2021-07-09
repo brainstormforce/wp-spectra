@@ -48,7 +48,7 @@ function TemplatesButton( props ) {
 	}
     return (
 		<>
-		<h2 className="uag-version-settings__title">
+		<h2>
 		{ __( 'Starter Template', 'ultimate-addons-for-gutenberg' ) }
 		</h2>
 		<div className="uag-starter-template__button uag-version-control__elements">

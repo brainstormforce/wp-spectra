@@ -1,6 +1,5 @@
 import { useStateValue } from '@Utils/StateProvider';
 import React, { useEffect } from 'react';
-import './IndividualBlockSetting.scss';
 import { ToggleField } from '@Fields';
 
 let blocksCachedValue;
