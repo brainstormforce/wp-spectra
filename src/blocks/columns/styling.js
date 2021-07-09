@@ -16,7 +16,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderRadius,
 		contentWidth,
 		width,
 		widthType,
@@ -63,6 +62,10 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		gradientValue,
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor,
 	} = props.attributes;
 
 	let max_width = '100%';
@@ -133,10 +136,14 @@ function styling( props ) {
 				' ' +
 				boxShadowPositionCSS,
 		},
+		' .uagb-columns__overlay' : {
+			'border-style' : borderStyle,
+			'border-width' : generateCSSUnit( borderWidth, 'px' ),
+			'border-color' : borderColor,
+			'border-radius' : generateCSSUnit( borderRadius, 'px' ),
+		} 
 	};
-
-	selectors[ ' > .uagb-columns__overlay' ] = {};
-
+	
 	switch ( backgroundType ) {
 		case 'video':
 			selectors[ ' > .uagb-columns__overlay' ] = {
@@ -184,10 +191,6 @@ function styling( props ) {
 			}
 			break;
 	}
-
-	selectors[ ' > .uagb-columns__overlay' ][
-		'border-radius'
-	] = generateCSSUnit( borderRadius, 'px' );
 
 	tabletSelectors = {
 		'.uagb-columns__wrap': {

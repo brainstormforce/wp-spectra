@@ -520,14 +520,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['desktopPaddingType'] ),
 				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['desktopMarginType'] ),
 				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
-				'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
 			);
-
-			if ( 'none' !== $attr['borderStyle'] ) {
-				$style['border-style'] = $attr['borderStyle'];
-				$style['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-				$style['border-color'] = $attr['borderColor'];
-			}
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -576,8 +569,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-uagb-columns'           => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				),
+				' .uagb-columns__overlay'          => array(
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
+				),
 			);
-
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors[' .uagb-columns__overlay']['border-style'] = $attr['borderStyle'];
+				$selectors[' .uagb-columns__overlay']['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
+				$selectors[' .uagb-columns__overlay']['border-color'] = $attr['borderColor'];
+			}
 			if ( '' !== $attr['topWidth'] ) {
 				$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 			}
@@ -1082,12 +1082,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['color'],
 				);
 
-				$selectors[ $wrapper . ':hover' ] = array(
+				$selectors[ $wrapper . ':hover' ]                    = array(
 					'background'   => $attr['hBackground'],
 					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color' => $attr['borderHColor'],
 					'border-style' => $attr['borderStyle'],
 					'color'        => $attr['hColor'],
+				);
+				$selectors[ $wrapper . ':hover .uagb-button__icon' ] = array(
+					'color' => $attr['hColor'],
 				);
 
 				$m_selectors[ $wrapper ] = array(
@@ -2456,7 +2459,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
@@ -2468,16 +2471,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'         => array(
@@ -2498,12 +2501,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__main .uagb-timeline__icon-new' => array(
 					'color' => $attr['iconColor'],
 					'width' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-				),
-				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
-					'fill' => $attr['iconFocus'],
-				),
-				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
-					'color' => $attr['iconFocus'],
 				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon' => array(
 					'background'   => $attr['iconBgFocus'],
@@ -3687,13 +3684,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$field_vr_padding = UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' );
 
 			$selectors = array(
-				' .wpcf7 .wpcf7-form'                => array(
+				' .wpcf7 .wpcf7-form'                      => array(
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 form.wpcf7-form:not(input)' => array(
+				' .wpcf7 form.wpcf7-form:not(input)'       => array(
 					'color' => $attr['fieldLabelColor'],
 				),
-				' .wpcf7 input:not([type=submit])'   => array(
+				' .wpcf7 input:not([type=submit])'         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3708,7 +3705,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 select'                     => array(
+				' .wpcf7 select'                           => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldLabelColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3731,7 +3728,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => $field_vr_padding,
 					'padding-bottom' => $field_vr_padding,
 				),
-				' .wpcf7 textarea'                   => array(
+				' .wpcf7 textarea'                         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-color'     => $attr['fieldBorderColor'],
@@ -3746,11 +3743,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 textarea::placeholder'      => array(
+				' .wpcf7 textarea::placeholder'            => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 input::placeholder'         => array(
+				' .wpcf7 input::placeholder'               => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
@@ -3759,10 +3756,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7 form input:not([type=submit]):focus' => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 form select:focus'          => array(
+				' .wpcf7 form select:focus'                => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 textarea:focus'             => array(
+				' .wpcf7 textarea:focus'                   => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
 
@@ -3930,7 +3927,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label' => array(
 					'color' => $attr['radioCheckLableColor'],
 				),
-				' span.wpcf7-not-valid-tip'          => array(
+				' span.wpcf7-not-valid-tip'                => array(
 					'color' => $attr['validationMsgColor'],
 				),
 				' .uagb-cf7-styler__highlight-border input.wpcf7-form-control.wpcf7-not-valid' => array(
@@ -3942,7 +3939,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
 					'background-color' => $attr['validationMsgBgColor'],
 				),
-				' .wpcf7-response-output'            => array(
+				' .wpcf7-response-output'                  => array(
 					'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], 'px' ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgVrPadding'], 'px' ),
@@ -3950,12 +3947,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 				),
-				' .wpcf7-response-output.wpcf7-validation-errors' => array(
+				' .wpcf7 form.failed .wpcf7-response-output' => array(
 					'background-color' => $attr['errorMsgBgColor'],
 					'border-color'     => $attr['errorMsgBorderColor'],
 					'color'            => $attr['errorMsgColor'],
 				),
-				' .wpcf7-response-output.wpcf7-validation- success' => array(
+				' .wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output' => array(
+					'background-color' => $attr['errorMsgBgColor'],
+					'border-color'     => $attr['errorMsgBorderColor'],
+					'color'            => $attr['errorMsgColor'],
+				),
+				' .wpcf7 form.sent .wpcf7-response-output' => array(
 					'background-color' => $attr['successMsgBgColor'],
 					'border-color'     => $attr['successMsgBorderColor'],
 					'color'            => $attr['successMsgColor'],
@@ -4048,7 +4050,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['buttonBgHoverColor'],
 					'border-color'     => $attr['buttonBorderHoverColor'],
 				),
-				' select'                                => array(
+				' .gform_wrapper select '                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],

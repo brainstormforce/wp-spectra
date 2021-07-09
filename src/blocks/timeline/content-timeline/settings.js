@@ -459,7 +459,7 @@ const Settings = ( props ) => {
 				<h2>{ __( 'Content', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
 					label={ __(
-						'Content Tag',
+						'Typography',
 						'ultimate-addons-for-gutenberg'
 					) }
 					attributes={ props.attributes }
@@ -518,7 +518,7 @@ const Settings = ( props ) => {
 						<hr className="uagb-editor__separator" />
 						<h2>
 							{ __(
-								'Date Typography',
+								'Date',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
@@ -720,7 +720,7 @@ const Settings = ( props ) => {
 			>
 				<SelectControl
 					label={ __(
-						'Typography',
+						'Heading Tag',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ headingTag }
