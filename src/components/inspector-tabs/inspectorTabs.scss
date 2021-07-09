@@ -70,8 +70,6 @@ $border-color: #D6D9DD;
       bottom: 50%;
       border: 1px solid transparent;
       border-bottom: none;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
       pointer-events: none;
     }
     &::after{
@@ -80,7 +78,6 @@ $border-color: #D6D9DD;
       border-color: $border-color;
       border-bottom: 1px solid $border-color;
       border-top: none;
-      border-radius: 0 0 10px 10px;
     }
     &:not(.uagb-active)::after{
       background: #fff;
@@ -91,6 +88,8 @@ $border-color: #D6D9DD;
       border-bottom-right-radius: 0;
       &::before{
         border-color: $border-color;
+        border-top-color: #0085ba;
+        border-top-width: 4px;
       }
       &::after{
         border-color: transparent;
@@ -153,11 +152,11 @@ $border-color: #D6D9DD;
       z-index: 2;
     }
     &.uagb-active h5{
-      color: #2184F9;
+      color: #0085ba;
     }
     &:focus path,
     &.uagb-active path{
-      fill: #2184F9;
+      fill: #0085ba;
     }
   }
 
@@ -207,7 +206,7 @@ $border-color: #D6D9DD;
         }
         &::after{
           border-radius: 0;
-          background: #2184F9;
+          background: #0085ba;
           height: 3px;
           top: auto;
           bottom: -1px;
