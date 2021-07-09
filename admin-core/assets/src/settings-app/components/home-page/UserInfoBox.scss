@@ -1,14 +1,15 @@
 .uag-user-info {
 	padding-top: 25px;
 	padding-bottom: 25px;
-	.uag-metabox__element, .uag-starter-tmp__img , .uag-starter-tmp__details,.uag-astra-theme__elements{
+	.uag-metabox__element, .uag-starter-tmp__img , .uag-starter-tmp__details,.uag-theme__metabox{
 		margin: 15px;
 	}
 	.uag-metabox__header{
 		margin-top: 20px;
-		margin-bottom: 20px;
+		margin-bottom: 45px;
 		text-align: center;
 			p{
+			margin-bottom: 0;
 			max-width: 100%;
 			width: 50%;
 			display: inline-block;
@@ -16,7 +17,7 @@
 	}
 	.uag-metabox__body {
 		padding-top: 0px;	
-		max-width: 1100px;
+		max-width: 80%;
 		min-height: 500px;
     	margin: 0 auto;
 	}
@@ -29,7 +30,7 @@
 		box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
 		border-radius: 2px;
 		background-color: var(--metabox-background-color);
-		padding: 25px;
+		padding: 30px;
 	}
 	.uag-starter-site__elements{
 		display: inline-flex;
@@ -41,25 +42,25 @@
 		}
 		.uag-starter-tmp__details{
 			align-self: center;
+			.uag-field{
+				margin:0px;
+			}
 		}
 		.uag-starter-tmp__img , .uag-starter-tmp__details{
 			padding: 20px;
 			flex: 1 0 1%;
 		}
 	}
-	.uag-astra-theme__elements{
+	.uag-theme__metabox{
 		text-align: center;
 		background: var(--metabox-background-color);
 		box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
 		border-radius: 2px;
 		padding: 20px;
-		.uag-astra__cta{
+		.uag-theme__cta{
 			justify-content: center;
 			display: inline-flex;
 			flex-wrap: wrap;	
-			.uag-field{
-				margin:10px;
-			}
 		}
 		p{
 			text-align: center;

@@ -61,12 +61,6 @@
 	box-sizing: border-box;
 }
 
-.uag-menu-page-wrapper p {
-	line-height: 1.2;
-	margin-top: 0px;
-    margin-bottom: 20px;
-}
-
 .uag-menu-page-wrapper a:focus,
 .uag-menu-page-wrapper button:focus,
 .uag-menu-page-wrapper input:focus {

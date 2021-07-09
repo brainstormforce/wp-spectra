@@ -1,8 +1,8 @@
 .uag-global-nav-menu {
-	margin: 0px;
 	background: var(--metabox-background-color);
-	align-items: center;
-	box-shadow: none;
+	padding: 20px 20px 0px 20px;
+	z-index: 2;
+	text-align: center;
 
 	.uag-global-nav__title{
 		a:focus,
@@ -31,7 +31,7 @@
 			cursor: pointer;
 			padding: 15px 25px 15px 25px;
 			font-size: 14px;
-			line-height: 1;
+			line-height: 1em;
 			letter-spacing: 0.225px;
 			font-weight: 400;
 			margin: 0 0 -1px 0;
@@ -54,14 +54,11 @@
 /* New FIxed header */
 
 .uag-menu-page-content {
-	margin: 0 auto;
-	width: 100%;
 	font-size: 14px;
 	font-weight: 400;
 }
 
 .uag-global-nav-menu .uag-global-nav__title {
-	max-width: 100%;
 	padding: 10px;
 }
 
@@ -73,9 +70,4 @@ body.folded .uag-global-nav-menu {
     z-index: 2;
 }
 
-.uag-global-nav-menu {
-	padding: 35px 35px 0px 35px;
-	z-index: 2;
-	text-align: center;
-}
 /* New FIxed header End */

@@ -104,8 +104,8 @@ function UserInfoBox( props ) {
 						/>
 						</div>
 				</div>
-				<div className="uag-astra-theme__elements">
-					<div className="uag-astra__content">
+				<div className="uag-theme__metabox">
+					<div className="uag-theme__content">
 						<h2>
 							{ __( 'UAG Works best with free ASTRA theme! ', 'ultimate-addons-for-gutenberg' ) }
 						</h2>
@@ -116,7 +116,7 @@ function UserInfoBox( props ) {
 							) }
 						</p>
 					</div>
-					<div className="uag-astra__cta">
+					<div className="uag-theme__cta">
 						<NormalButton
 							buttonText = { __( 'Install ASTRA Now!', 'ultimate-addons-for-gutenberg' ) }
 							saving = { false }

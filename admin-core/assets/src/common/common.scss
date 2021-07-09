@@ -4,19 +4,11 @@
     .uag-normal-button-control {
 
         .uag-button {
-            padding: 10px 25px;
+            padding: 11px 22px;
             display: inline-block;
-            vertical-align: middle;
-            align-items: center;
-            cursor: pointer;
-            margin: 0;
-            letter-spacing: 0em;
-            text-align: center;
             font-family: var(--heading-font-family);
-            font-style: normal;
-            font-weight: normal;
             font-size: 13px;
-            line-height: 13px;
+            line-height: 1em;
         }
     	
     }
@@ -29,41 +21,37 @@
         font-weight: 500;
     }
     h2{
-        font-family: var(--heading-font-family);
-        font-style: normal;
+        font-family: var(--heading-font-family);    
         font-weight: 500;
         font-size: 24px;
-        line-height: 32px;
+        margin:0px 0px 10px 0px;
         color: var(--heading-color);
     }
     h3 {
-        margin-top: 0px;
+        margin: 0px;
+        margin-bottom:10px;
         color: var(--heading-color);
         font-family: var(--heading-font-family);
-        font-style: normal;
         font-weight: 500;
         font-size: 18px;
-        line-height: 24px;
     }
     .uag-field{
+        margin:0px 10px 0px 10px;
         border-radius: 2px; 
     }
     // Paragraph CSS.
     p {
         color: var(--content-color);
-        line-height: 1.2;
         font-family: var(--heading-font-family);
-        font-style: normal;
-        font-weight: normal;
         font-size: 14px;
-        line-height: 20px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        line-height: 1.55em;
     }
     .components-base-control__field {
         font-family: var(--heading-font-family);
-        font-style: normal;
         font-weight: 500;
         font-size: 16px;
-        line-height: 24px;
     }
 }
 .uag-button--primary:hover,
@@ -93,6 +81,7 @@
     border-color: #0a4b78;
     color: #0a4b78;
 }
-#wpbody-content{
-    padding-bottom: 0px;
+
+#wpwrap{
+    background: var(--background-light-color);
 }

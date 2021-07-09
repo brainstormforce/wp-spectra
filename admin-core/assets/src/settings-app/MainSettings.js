@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useStateValue } from '@Utils/StateProvider';
 import apiFetch from '@wordpress/api-fetch';
 
-/* Css */
-import '@SettingsApp/MainSettings.scss';
-
 /* Component */
 import NavMenu from '@SettingsApp/components/common/NavMenu';
 import Footer from '@SettingsApp/components/common/Footer';
@@ -52,13 +49,11 @@ function MainSettings() {
 	return (
 		<Router>
 			<NavMenu />
-			<div className="mainSettings">
 				<Switch>
 					<Route path="/">
 						<SettingsRoute />
 					</Route>
 				</Switch>
-			</div>
 			<Footer/>
 		</Router>
 	);

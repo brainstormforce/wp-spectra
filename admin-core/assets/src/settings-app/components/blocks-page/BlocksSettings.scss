@@ -6,18 +6,16 @@
     justify-content: center;
     .components-toggle-control__label{
         font-family: var(--heading-font-family);
-        font-style: normal;
         font-weight: 500;
         font-size: 18px;
-        line-height: 24px;
+        line-height: 1.5em;
     } 
     a{
         margin-bottom: 0px;
         font-family: var(--heading-font-family);
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
-        line-height: 14px;
+        line-height: 1.5em;
     }
     .uag-individual-block-settings-metabox {
         background: var(--metabox-background-color);
@@ -49,21 +47,22 @@
     }
 }
 .uag-bulk-blocks-settings-wrap {
-    margin-left: 10px;
+    margin: 0px 0px 20px 10px;
     display: flex;
     white-space:pre;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    row-gap: 10px;
     :last-child {
         margin-left: auto;
-        padding-left: 10px;
         display: flex;
-        padding-bottom: 10px;
     }
-    a{
-        padding-bottom: 10px;
+    .uag-bulk-blocks-action-btn{
+        align-items: center;
+        column-gap: 10px;
     }
+    
     .components-base-control__field{
         align-items: flex-start;
     }

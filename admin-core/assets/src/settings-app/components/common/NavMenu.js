@@ -7,7 +7,7 @@ import './NavMenu.scss';
 function NavMenu() {
 	let menus = [
 		{
-			name: __('Home', 'ultimate-addons-for-gutenberg'),
+			name: __('Getting Started', 'ultimate-addons-for-gutenberg'),
 			slug: uag_react.home_slug,
 			path: '',
 		},
