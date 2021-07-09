@@ -40,7 +40,6 @@
         line-height: 1.30em;
     }
     .uag-field{
-        margin:0px 10px 0px 10px;
         border-radius: 2px; 
     }
     // Paragraph CSS.
@@ -51,6 +50,7 @@
         margin-top: 0px;
         margin-bottom: 20px;
         line-height: 1.55em;
+        text-align: justify;
     }
     .components-base-control__field {
         font-family: var(--heading-font-family);
@@ -69,6 +69,8 @@
     background: var(--accent-color);
     color: var(--background-light-color);
     border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
 }
 .uag-button--secondary{
     color: var(--link-color);
@@ -88,4 +90,7 @@
 
 #wpwrap{
     background: var(--background-light-color);
+}
+#wpbody-content{
+    padding-bottom: 0;
 }

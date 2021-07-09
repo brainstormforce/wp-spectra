@@ -52,7 +52,6 @@
   line-height: 1.30em; }
 
 .uag-menu-page-wrapper .uag-field {
-  margin: 0px 10px 0px 10px;
   border-radius: 2px; }
 
 .uag-menu-page-wrapper p {
@@ -63,7 +62,8 @@
   font-size: 14px;
   margin-top: 0px;
   margin-bottom: 20px;
-  line-height: 1.55em; }
+  line-height: 1.55em;
+  text-align: justify; }
 
 .uag-menu-page-wrapper .components-base-control__field {
   font-family: 'Roboto';
@@ -86,7 +86,9 @@
   background: var(--accent-color);
   color: #f7f8fa;
   color: var(--background-light-color);
-  border-radius: 2px; }
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid; }
 
 .uag-button--secondary {
   color: #2271B1;
@@ -109,6 +111,9 @@
 #wpwrap {
   background: #f7f8fa;
   background: var(--background-light-color); }
+
+#wpbody-content {
+  padding-bottom: 0; }
 
 :root {
   --heading-font-family: 'Roboto';
@@ -180,9 +185,10 @@ body.folded .uag-global-nav-menu {
   bottom: 0;
   width: 100%;
   text-align: center;
-  padding: 20px;
+  padding: 50px 30px;
   background: var(--background-light-color); }
   .uag-global-footer p {
+    text-align: unset;
     margin-bottom: 0px; }
 
 .uag-metabox {
@@ -251,7 +257,9 @@ body.folded .uag-global-nav-menu {
     .uag-user-info .uag-theme__metabox .uag-theme__cta {
       justify-content: center;
       display: inline-flex;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      -moz-column-gap: 15px;
+           column-gap: 15px; }
     .uag-user-info .uag-theme__metabox p {
       text-align: center;
       display: inline-block;
@@ -362,7 +370,7 @@ body.folded .uag-global-nav-menu {
   .uag-blocks-settings .components-toggle-control__label {
     font-family: var(--heading-font-family);
     font-weight: var(--heading-weight-500);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5em; }
   .uag-blocks-settings a {
     margin-bottom: 0px;
@@ -393,7 +401,7 @@ body.folded .uag-global-nav-menu {
     grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr)); } }
 
 .uag-bulk-blocks-settings-wrap {
-  margin: 0px 0px 20px 10px;
+  margin: 0px 10px 20px 10px;
   display: flex;
   white-space: pre;
   flex-wrap: wrap;

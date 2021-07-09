@@ -2,9 +2,10 @@
     bottom: 0;
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 50px 30px;
     background: var(--background-light-color);
     p{
+        text-align: unset;
         margin-bottom: 0px;
     }
 }
