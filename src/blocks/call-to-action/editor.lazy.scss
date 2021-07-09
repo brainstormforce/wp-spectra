@@ -31,3 +31,42 @@
 .wp-block-uagb-call-to-action.uagb-cta__outer-wrap a.uagb-cta__link-to-all {
 	z-index: 0;
 }
+.block-editor-page #wpwrap{
+	.uagb-editor-preview-mode-tablet{
+		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+			.uagb-cta__link-wrapper{
+				width: 100%;
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+	.uagb-editor-preview-mode-mobile{
+		.uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+			.uagb-cta__link-wrapper{
+				width: 100%;
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+			.uagb-cta__link-wrapper{
+				width: 100%;
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}

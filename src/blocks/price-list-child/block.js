@@ -7,7 +7,6 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
-
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';

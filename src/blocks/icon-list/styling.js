@@ -149,10 +149,12 @@ function styling( props ) {
 				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
 			};
 
-			tabletSelectors[ ' .uagb-icon-list__wrap' ] = {
+			tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
-
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+				'flex-direction': 'column',
+			};
 			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]:last-child'
 			] = {
@@ -167,7 +169,7 @@ function styling( props ) {
 				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
 			};
 
-			mobileSelectors[ ' .uagb-icon-list__wrap' ] = {
+			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
 			};
 

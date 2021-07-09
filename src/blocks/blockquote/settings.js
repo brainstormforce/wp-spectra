@@ -596,6 +596,7 @@ const Settings = ( props ) => {
 					return <div>{ tabout }</div>;
 				} }
 			</TabPanel>
+			<br></br>
 			{ quoteBgColor && (
 				<RangeControl
 					label={ __(
@@ -1396,7 +1397,7 @@ const Settings = ( props ) => {
 			{ skinStyle == 'quotation' && (
 				<>
 					<p className="uagb-setting-label">
-						{ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Icon Hover Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
 							<span
 								className="component-color-indicator"
@@ -1413,7 +1414,7 @@ const Settings = ( props ) => {
 					/>
 					<p className="uagb-setting-label">
 						{ __(
-							'Background Hover Color',
+							'Icon Background Hover Color',
 							'ultimate-addons-for-gutenberg'
 						) }
 						<span className="components-base-control__label">

@@ -761,7 +761,7 @@ const UAGBPostMasonry = ( props ) => {
 								} }
 							</TabPanel>
 							<TabPanel
-								className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								className="uagb-margin-control uagb-inspect-tabs uagb-inspect-tabs-col-2"
 								activeClass="active-tab"
 								tabs={ [
 									{
