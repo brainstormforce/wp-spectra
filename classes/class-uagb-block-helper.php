@@ -569,8 +569,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-uagb-columns'           => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				),
-				' .uagb-columns__overlay' => array(
-					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
+				' .uagb-columns__overlay'          => array(
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
 				),
 			);
 			if ( 'none' !== $attr['borderStyle'] ) {
@@ -972,7 +972,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'-webkit-box-align' => $alignment,
 					'-ms-flex-align'    => $alignment,
 					'align-items'       => $alignment,
-				);	
+				);
 				if ( 'left' === $attr['align'] ) {
 					$selectors[' .uagb-buttons__outer-wrap:first-child .uagb-button__wrapper'] = array(
 						'margin-left' => 0,
@@ -1082,7 +1082,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['color'],
 				);
 
-				$selectors[ $wrapper . ':hover' ] = array(
+				$selectors[ $wrapper . ':hover' ]                    = array(
 					'background'   => $attr['hBackground'],
 					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color' => $attr['borderHColor'],
@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'        => $attr['hColor'],
 				);
 				$selectors[ $wrapper . ':hover .uagb-button__icon' ] = array(
-					'color'        => $attr['hColor'],
+					'color' => $attr['hColor'],
 				);
 
 				$m_selectors[ $wrapper ] = array(
@@ -3684,13 +3684,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$field_vr_padding = UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' );
 
 			$selectors = array(
-				' .wpcf7 .wpcf7-form'                => array(
+				' .wpcf7 .wpcf7-form'                      => array(
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 form.wpcf7-form:not(input)' => array(
+				' .wpcf7 form.wpcf7-form:not(input)'       => array(
 					'color' => $attr['fieldLabelColor'],
 				),
-				' .wpcf7 input:not([type=submit])'   => array(
+				' .wpcf7 input:not([type=submit])'         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3705,7 +3705,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 select'                     => array(
+				' .wpcf7 select'                           => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldLabelColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3728,7 +3728,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => $field_vr_padding,
 					'padding-bottom' => $field_vr_padding,
 				),
-				' .wpcf7 textarea'                   => array(
+				' .wpcf7 textarea'                         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-color'     => $attr['fieldBorderColor'],
@@ -3743,11 +3743,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 textarea::placeholder'      => array(
+				' .wpcf7 textarea::placeholder'            => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 input::placeholder'         => array(
+				' .wpcf7 input::placeholder'               => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
@@ -3756,10 +3756,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7 form input:not([type=submit]):focus' => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 form select:focus'          => array(
+				' .wpcf7 form select:focus'                => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 textarea:focus'             => array(
+				' .wpcf7 textarea:focus'                   => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
 
@@ -3927,7 +3927,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label' => array(
 					'color' => $attr['radioCheckLableColor'],
 				),
-				' span.wpcf7-not-valid-tip'          => array(
+				' span.wpcf7-not-valid-tip'                => array(
 					'color' => $attr['validationMsgColor'],
 				),
 				' .uagb-cf7-styler__highlight-border input.wpcf7-form-control.wpcf7-not-valid' => array(
@@ -3939,7 +3939,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
 					'background-color' => $attr['validationMsgBgColor'],
 				),
-				' .wpcf7-response-output'            => array(
+				' .wpcf7-response-output'                  => array(
 					'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], 'px' ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgVrPadding'], 'px' ),
@@ -4050,7 +4050,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['buttonBgHoverColor'],
 					'border-color'     => $attr['buttonBorderHoverColor'],
 				),
-				' .gform_wrapper select '                                => array(
+				' .gform_wrapper select '                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],
