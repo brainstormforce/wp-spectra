@@ -142,10 +142,11 @@ function styling( props ) {
 			'border-style' : borderStyle,
 			'border-width' : generateCSSUnit( borderWidth, 'px' ),
 			'border-color' : borderColor,
-			'border-radius' : borderRadius
 		} 
 	}
-
+	selectors[ ' .uagb-columns__overlay' ] = {
+		'border-radius' : generateCSSUnit( borderRadius, 'px' ),
+	} 
 	switch ( backgroundType ) {
 		case 'video':
 			selectors[ ' > .uagb-columns__overlay' ] = {
