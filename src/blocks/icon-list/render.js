@@ -56,7 +56,7 @@ const Render = ( props ) => {
 					template={ getIconTemplate }
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
-					__experimentalMoverDirection={ icon_layout }
+					orientation = { icon_layout }
 				/>
 			</div>
 		</div>

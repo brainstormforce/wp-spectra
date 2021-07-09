@@ -89,11 +89,8 @@
 		text-align: right;
 	}
 
-	&.uagb-marketing-btn__icon-after .uagb-marketing-btn__title-wrap {
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: reverse;
-		-ms-flex-direction: row-reverse;
-		flex-direction: row-reverse;
+	&.uagb-marketing-btn__icon-after .uagb-marketing-btn__icon-wrap {
+		order: 2;
 	}
 }
 

@@ -212,50 +212,52 @@ const Settings = ( props ) => {
 						max={ 100 }
 					/>
 					{ ! hideLabel && (
-						<RangeControl
-							label={ __(
-								'Gap between Icon and Label',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ inner_gap }
-							onChange={ ( value ) =>
-								setAttributes( { inner_gap: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-						/>
+						<>
+							<RangeControl
+								label={ __(
+									'Gap between Icon and Label',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ inner_gap }
+								onChange={ ( value ) =>
+									setAttributes( { inner_gap: value } )
+								}
+								min={ 0 }
+								max={ 100 }
+							/>
+							<hr className="uagb-editor__separator" />
+							<SelectControl
+								label={ __(
+									'Icon Alignment',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ iconPosition }
+								options={ [
+									{
+										value: 'top',
+										label: __(
+											'Top',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'middle',
+										label: __(
+											'Middle',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+								onChange={ ( value ) =>
+									setAttributes( { iconPosition: value } )
+								}
+								help={ __(
+									'Note: This manages the Icon Position with respect to the Label.',
+									'ultimate-addons-for-gutenberg'
+								) }
+							/>
+						</>
 					) }
-					<hr className="uagb-editor__separator" />
-					<SelectControl
-						label={ __(
-							'Icon Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ iconPosition }
-						options={ [
-							{
-								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'middle',
-								label: __(
-									'Middle',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						onChange={ ( value ) =>
-							setAttributes( { iconPosition: value } )
-						}
-						help={ __(
-							'Note: This manages the Icon Position with respect to the Label.',
-							'ultimate-addons-for-gutenberg'
-						) }
-					/>
 					<ColumnResponsive />
 					{ 'Desktop' === deviceType && (
 						<>
@@ -306,60 +308,64 @@ const Settings = ( props ) => {
 						</>
 					) }
 					<hr className="uagb-editor__separator" />
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: loadGoogleFonts,
-							label: 'loadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: fontFamily,
-							label: 'fontFamily',
-						} }
-						fontWeight={ {
-							value: fontWeight,
-							label: 'fontWeight',
-						} }
-						fontSubset={ {
-							value: fontSubset,
-							label: 'fontSubset',
-						} }
-						fontSizeType={ {
-							value: fontSizeType,
-							label: 'fontSizeType',
-						} }
-						fontSize={ { value: fontSize, label: 'fontSize' } }
-						fontSizeMobile={ {
-							value: fontSizeMobile,
-							label: 'fontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: fontSizeTablet,
-							label: 'fontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: lineHeightType,
-							label: 'lineHeightType',
-						} }
-						lineHeight={ {
-							value: lineHeight,
-							label: 'lineHeight',
-						} }
-						lineHeightMobile={ {
-							value: lineHeightMobile,
-							label: 'lineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: lineHeightTablet,
-							label: 'lineHeightTablet',
-						} }
-					/>
-					<hr className="uagb-editor__separator" />
+					{ ! hideLabel && (
+						<>
+							<TypographyControl
+								label={ __(
+									'Typography',
+									'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: loadGoogleFonts,
+									label: 'loadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: fontFamily,
+									label: 'fontFamily',
+								} }
+								fontWeight={ {
+									value: fontWeight,
+									label: 'fontWeight',
+								} }
+								fontSubset={ {
+									value: fontSubset,
+									label: 'fontSubset',
+								} }
+								fontSizeType={ {
+									value: fontSizeType,
+									label: 'fontSizeType',
+								} }
+								fontSize={ { value: fontSize, label: 'fontSize' } }
+								fontSizeMobile={ {
+									value: fontSizeMobile,
+									label: 'fontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: fontSizeTablet,
+									label: 'fontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: lineHeightType,
+									label: 'lineHeightType',
+								} }
+								lineHeight={ {
+									value: lineHeight,
+									label: 'lineHeight',
+								} }
+								lineHeightMobile={ {
+									value: lineHeightMobile,
+									label: 'lineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: lineHeightTablet,
+									label: 'lineHeightTablet',
+								} }
+							/>
+							<hr className="uagb-editor__separator" />
+						</>
+					)}
 					<RangeControl
 						label={ __(
 							'Background Size',
