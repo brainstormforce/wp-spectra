@@ -54,9 +54,6 @@ function NavMenu() {
 					/>
 				</Link>
 			</div>
-			<div className="uag-global-nav__desc">
-				{__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ultimate-addons-for-gutenberg')}
-			</div>
 			<div className="uag-global-nav__items">
 				{menus.map((menu, i) => (
 					<Link

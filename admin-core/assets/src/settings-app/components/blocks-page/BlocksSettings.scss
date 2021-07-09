@@ -10,13 +10,6 @@
         font-size: 16px;
         line-height: 1.5em;
     } 
-    a{
-        margin-bottom: 0px;
-        font-family: var(--heading-font-family);
-        font-weight: var(--heading-weight-400);
-        font-size: 14px;
-        line-height: 1.5em;
-    }
     .uag-individual-block-settings-metabox {
         background: var(--metabox-background-color);
         padding: 15px;
@@ -57,6 +50,14 @@
     :last-child {
         margin-left: auto;
         display: flex;
+    }
+    a{
+        text-decoration: unset;
+        margin-bottom: 0px;
+        font-family: var(--heading-font-family);
+        font-weight: var(--heading-weight-400);
+        font-size: 14px;
+        line-height: 1.5em;
     }
     .uag-bulk-blocks-action-btn{
         align-items: center;
