@@ -18,6 +18,8 @@ import {
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
+
+	const hideLabel = props.hideLabel;
 	props = props.parentProps;
 	const { attributes, setAttributes } = props;
 	const {
@@ -36,7 +38,6 @@ const Settings = ( props ) => {
 		target,
 		disableLink,
 	} = attributes;
-
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -67,22 +68,26 @@ const Settings = ( props ) => {
 		if ( 'image' == image_icon ) {
 			colorControl = (
 				<>
-					<p className="uagb-setting-label">
-						{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: label_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ label_color }
-						onChange={ ( value ) =>
-							setAttributes( { label_color: value } )
-						}
-						allowReset
-					/>
+					{ ! hideLabel && (
+						<>
+							<p className="uagb-setting-label">
+								{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+								<span className="components-base-control__label">
+									<span
+										className="component-color-indicator"
+										style={ { backgroundColor: label_color } }
+									></span>
+								</span>
+							</p>
+							<ColorPalette
+								value={ label_color }
+								onChange={ ( value ) =>
+									setAttributes( { label_color: value } )
+								}
+								allowReset
+							/>
+						</>
+					)}
 					<p className="uagb-setting-label">
 						{ __(
 							'Image Background Color',
@@ -125,25 +130,29 @@ const Settings = ( props ) => {
 			);
 			colorControlHover = (
 				<>
-					<p className="uagb-setting-label">
-						{ __(
-							'Text Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: label_hover_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ label_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { label_hover_color: value } )
-						}
-						allowReset
-					/>
+					{ ! hideLabel && (
+						<>
+							<p className="uagb-setting-label">
+								{ __(
+									'Text Hover Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								<span className="components-base-control__label">
+									<span
+										className="component-color-indicator"
+										style={ { backgroundColor: label_hover_color } }
+									></span>
+								</span>
+							</p>
+							<ColorPalette
+								value={ label_hover_color }
+								onChange={ ( value ) =>
+									setAttributes( { label_hover_color: value } )
+								}
+								allowReset
+							/>
+						</>
+					)}
 					<p className="uagb-setting-label">
 						{ __(
 							'Image Background Hover Color',
@@ -191,22 +200,26 @@ const Settings = ( props ) => {
 		} else {
 			colorControl = (
 				<>
-					<p className="uagb-setting-label">
-						{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: label_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ label_color }
-						onChange={ ( value ) =>
-							setAttributes( { label_color: value } )
-						}
-						allowReset
-					/>
+					{ ! hideLabel && (
+						<>
+							<p className="uagb-setting-label">
+								{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+								<span className="components-base-control__label">
+									<span
+										className="component-color-indicator"
+										style={ { backgroundColor: label_color } }
+									></span>
+								</span>
+							</p>
+							<ColorPalette
+								value={ label_color }
+								onChange={ ( value ) =>
+									setAttributes( { label_color: value } )
+								}
+								allowReset
+							/>
+						</>
+					)}
 					<p className="uagb-setting-label">
 						{ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 						<span className="components-base-control__label">
@@ -265,25 +278,29 @@ const Settings = ( props ) => {
 			);
 			colorControlHover = (
 				<>
-					<p className="uagb-setting-label">
-						{ __(
-							'Text Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: label_hover_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ label_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { label_hover_color: value } )
-						}
-						allowReset
-					/>
+					{ ! hideLabel && (
+						<>
+							<p className="uagb-setting-label">
+								{ __(
+									'Text Hover Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								<span className="components-base-control__label">
+									<span
+										className="component-color-indicator"
+										style={ { backgroundColor: label_hover_color } }
+									></span>
+								</span>
+							</p>
+							<ColorPalette
+								value={ label_hover_color }
+								onChange={ ( value ) =>
+									setAttributes( { label_hover_color: value } )
+								}
+								allowReset
+							/>
+						</>
+					)}
 					<p className="uagb-setting-label">
 						{ __(
 							'Icon Hover Color',
