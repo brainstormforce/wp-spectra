@@ -136,13 +136,14 @@ function styling( props ) {
 				' ' +
 				boxShadowPositionCSS,
 		},
+		' .uagb-columns__overlay' : {
+			'border-style' : borderStyle,
+			'border-width' : generateCSSUnit( borderWidth, 'px' ),
+			'border-color' : borderColor,
+			'border-radius' : generateCSSUnit( borderRadius, 'px' ),
+		} 
 	};
-	selectors[ ' .uagb-columns__overlay' ] = {
-		'border-style' : borderStyle,
-		'border-width' : generateCSSUnit( borderWidth, 'px' ),
-		'border-color' : borderColor,
-		'border-radius' : generateCSSUnit( borderRadius, 'px' ),
-	} 
+	
 	switch ( backgroundType ) {
 		case 'video':
 			selectors[ ' > .uagb-columns__overlay' ] = {
