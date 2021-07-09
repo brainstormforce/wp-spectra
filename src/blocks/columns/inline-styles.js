@@ -17,7 +17,6 @@ function inlineStyles( props ) {
 		backgroundImage,
 		backgroundRepeat,
 		backgroundType,
-		borderRadius,
 		desktopMarginType,
 		desktopPaddingType,
 	} = props.attributes;
@@ -29,7 +28,6 @@ function inlineStyles( props ) {
 		'padding-right': generateCSSUnit( rightPadding, desktopPaddingType ),
 		'margin-top': generateCSSUnit( topMargin, desktopMarginType ),
 		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
-		'border-radius': generateCSSUnit( borderRadius, desktopMarginType ),
 	};
 
 

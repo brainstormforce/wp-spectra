@@ -520,14 +520,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['desktopPaddingType'] ),
 				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['desktopMarginType'] ),
 				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
-				'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
 			);
-
-			if ( 'none' !== $attr['borderStyle'] ) {
-				$style['border-style'] = $attr['borderStyle'];
-				$style['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-				$style['border-color'] = $attr['borderColor'];
-			}
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -576,8 +569,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-uagb-columns'           => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				),
+				' .uagb-columns__overlay' => array(
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
+				),
 			);
-
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors[' .uagb-columns__overlay']['border-style'] = $attr['borderStyle'];
+				$selectors[' .uagb-columns__overlay']['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
+				$selectors[' .uagb-columns__overlay']['border-color'] = $attr['borderColor'];
+			}
 			if ( '' !== $attr['topWidth'] ) {
 				$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 			}

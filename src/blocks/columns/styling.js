@@ -141,7 +141,8 @@ function styling( props ) {
 		selectors[ ' .uagb-columns__overlay' ] = {
 			'border-style' : borderStyle,
 			'border-width' : generateCSSUnit( borderWidth, 'px' ),
-			'border-color' : borderColor
+			'border-color' : borderColor,
+			'border-radius' : borderRadius
 		} 
 	}
 
