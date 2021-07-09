@@ -137,14 +137,10 @@ function styling( props ) {
 				boxShadowPositionCSS,
 		},
 	};
-	if ( borderStyle != 'none' ) {
-		selectors[ ' .uagb-columns__overlay' ] = {
-			'border-style' : borderStyle,
-			'border-width' : generateCSSUnit( borderWidth, 'px' ),
-			'border-color' : borderColor,
-		} 
-	}
 	selectors[ ' .uagb-columns__overlay' ] = {
+		'border-style' : borderStyle,
+		'border-width' : generateCSSUnit( borderWidth, 'px' ),
+		'border-color' : borderColor,
 		'border-radius' : generateCSSUnit( borderRadius, 'px' ),
 	} 
 	switch ( backgroundType ) {

@@ -163,11 +163,9 @@ function contentTimelineStyle( props ) {
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
 			right: 'calc( ' + connectorBgsize + 'px / 2 )',
-			'margin-right': '20px',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
 			left: 'calc( ' + connectorBgsize + 'px / 2 )',
-			'margin-left': '20px',
 		},
 		'.uagb-timeline__center-block .uagb-timeline__line': {
 			right: 'calc( ' + connectorBgsize + 'px / 2 )',
