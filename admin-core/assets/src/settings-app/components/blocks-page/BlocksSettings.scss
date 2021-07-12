@@ -26,9 +26,7 @@
     }
     .uag-toggle-field .components-toggle-control {
         width: 100%;
-        .components-form-toggle {
-            width: 10%;
-        }
+       
         .components-toggle-control__label {
             width: 80%;
         }
@@ -42,9 +40,14 @@
     align-items: center;
     justify-content: center;
     row-gap: 10px;
+    column-gap: 10px;
     :last-child {
         margin-left: auto;
         display: flex;
+    }
+    a:first-child{
+        padding-right: 10px;
+        border-right: 1px solid #ddd;
     }
     a{
         text-decoration: unset;

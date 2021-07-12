@@ -49,7 +49,7 @@ function TemplatesButton( props ) {
     return (
 		<>
 		<h2>
-		{ __( 'Starter Template', 'ultimate-addons-for-gutenberg' ) }
+		{ __( 'Starter Templates', 'ultimate-addons-for-gutenberg' ) }
 		</h2>
 		<div className="uag-starter-template__button uag-version-control__elements">
 			<div className="uag-version-control__element">
@@ -64,6 +64,7 @@ function TemplatesButton( props ) {
 						<span className={`uag-control__status-${enableTemplate}`}>{ enableTemplate == 'yes' ? __( 'Enabled', 'ultimate-addons-for-gutenberg' ) : __( 'Disabled', 'ultimate-addons-for-gutenberg' ) }</span>	
 					</div>
 				</div>
+				<div className="uag-starter-template__button"></div>
 		</div>
 		</>
     );

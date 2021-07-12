@@ -1,7 +1,7 @@
 .uag-toggle-field {
     .components-form-toggle {
-        order: 2;
-        margin-left: 15px;
+        order: 2;    
+        margin-left: auto;
     }
     .components-toggle-control__label {
         font-size: 18px;
@@ -12,4 +12,7 @@
     .components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
         box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--link-color);
     }
+}
+#wpwrap .components-toggle-control .components-base-control__field .components-form-toggle{
+    margin-right: 0px;
 }
