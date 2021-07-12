@@ -16,28 +16,28 @@
         borderRadius,
         borderStyle,
         borderHoverColor,
+        label
     } = props
     
     let advancedControls = (
-        <>
-        <div className="uagb-border-wrap">
-        <label className="uagb-border-label">{ borderStyle.label }</label>
-            <SelectControl
-                value={ borderStyle.value }
-                onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-                options={ [
-                    { value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "groove", label: __( "Groove", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ) },
-                    { value: "ridge", label: __( "Ridge", 'ultimate-addons-for-gutenberg' ) },
-                ] }
-            />
-        </div>
+    <>
+        <SelectControl
+            label = { borderStyle.label }
+            labelPosition = 'top'
+            value={ borderStyle.value }
+            onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+            options={ [
+                { value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
+                { value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
+                { value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
+                { value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
+                { value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
+                { value: "groove", label: __( "Groove", 'ultimate-addons-for-gutenberg' ) },
+                { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ) },
+                { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ) },
+                { value: "ridge", label: __( "Ridge", 'ultimate-addons-for-gutenberg' ) },
+            ] }
+        />
         { 'none' !== borderStyle.value && (
         <div className="uagb-border-width">
             <Range 
@@ -85,7 +85,6 @@
 
     return(
         <div className='uag-typography-option-actions'>
-            <span>{ props.label }</span>
             { advancedControls }
         </div>
     )
