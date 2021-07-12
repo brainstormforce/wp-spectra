@@ -350,7 +350,6 @@
 				<span className="uagb-spacing-control__number-label">{ __( 'Right', 'ultimate-addons-for-gutenberg' ) }</span>
 				<span className="uagb-spacing-control__number-label">{ __( 'Bottom', 'ultimate-addons-for-gutenberg' ) }</span>
 				<span className="uagb-spacing-control__number-label">{ __( 'Left', 'ultimate-addons-for-gutenberg' ) }</span>
-				<span className="uagb-spacing-control__number-label-blank"></span>
 			</div>
 		</div>
 	);
