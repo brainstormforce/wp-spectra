@@ -5,7 +5,6 @@ import apiFetch from '@wordpress/api-fetch';
 
 /* Component */
 import NavMenu from '@SettingsApp/components/common/NavMenu';
-import Footer from '@SettingsApp/components/common/Footer';
 import SettingsRoute from '@SettingsApp/SettingsRoute';
 
 import InputEvents from '@SettingsApp/utils/InputEvents';
@@ -54,7 +53,6 @@ function MainSettings() {
 						<SettingsRoute />
 					</Route>
 				</Switch>
-			<Footer/>
 		</Router>
 	);
 }

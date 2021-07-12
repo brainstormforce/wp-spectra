@@ -19,7 +19,6 @@
 	.uag-metabox__body {
 		padding-top: 0px;	
 		max-width: 80%;
-		min-height: 500px;
     	margin: 0 auto;
 	}
 	.uag-metabox__elements {
@@ -34,9 +33,8 @@
 		padding: 30px;
 	}
 	.uag-starter-site__elements{
-		display: inline-flex;
-		flex-wrap: wrap;
-		flex-direction: row;
+		display: grid;
+    	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		img{
 			height: auto;
 			max-width: 100%;
@@ -49,7 +47,9 @@
 		}
 		.uag-starter-tmp__img , .uag-starter-tmp__details{
 			padding: 20px;
-			flex: 1 0 1%;
+		}
+		.uag-starter-tmp__img{
+			text-align: center;
 		}
 	}
 	.uag-theme__metabox{
@@ -63,6 +63,7 @@
 			display: inline-flex;
 			flex-wrap: wrap;	
 			column-gap: 15px;
+			row-gap: 10px;
 		}
 		p{
 			text-align: center;

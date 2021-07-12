@@ -34,11 +34,6 @@
         }
     }
 }
-@media (min-width: 783px){
-    .uag-blocks-settings {
-        grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
-    }
-}
 .uag-bulk-blocks-settings-wrap {
     margin: 0px 10px 20px 10px;
     display: flex;
@@ -69,5 +64,10 @@
     }
     .components-toggle-control__label{
         font-size: 16px;
+    }
+}
+@media (min-width: 783px){
+    .uag-blocks-settings {
+        grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
     }
 }

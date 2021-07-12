@@ -36,6 +36,7 @@
 			justify-content: space-between;
 			margin-top: auto;
 			padding: 30px;
+			column-gap: 10px;
 			.uag-field{
 				margin:0px;
 			}
@@ -45,6 +46,7 @@
 
 @media (min-width: 783px){
 	.uag-global-settings-metabox .uag-starter-template__button{
+		margin-bottom: 20px;
 		width:50%;
 		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	}

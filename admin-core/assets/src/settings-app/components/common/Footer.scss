@@ -1,11 +1,17 @@
 .uag-global-footer{
-    bottom: 0;
-    width: 100%;
     text-align: center;
-    padding: 50px 30px;
-    background: var(--background-light-color);
     p{
         text-align: unset;
         margin-bottom: 0px;
+        color: var(--content-color);
+        font-family: var(--heading-font-family);
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 960px){
+     #wpfooter {
+        display: block;
+        position: relative;
+        margin-left: 0px!important;
     }
 }

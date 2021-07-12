@@ -9,6 +9,7 @@
             font-family: var(--heading-font-family);
             font-size: 13px;
             line-height: 1em;
+            height: 100%;
         }
     	
     }
@@ -87,10 +88,18 @@
     border-color: #0a4b78;
     color: #0a4b78;
 }
-
+.uag-control__status-yes{
+    padding-top: 11px;
+    padding-bottom: 11px;
+    color:#629000;
+}
+.uag-control__status-no, .uag-control__status-disabled{
+    padding-top: 11px;
+    padding-bottom: 11px;
+    color:#FF0000;
+}
 #wpwrap{
     background: var(--background-light-color);
 }
-#wpbody-content{
-    padding-bottom: 0;
-}
+
+

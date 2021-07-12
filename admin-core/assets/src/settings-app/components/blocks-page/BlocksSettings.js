@@ -98,15 +98,11 @@ function BlocksSettings( prop ) {
 		} ).done( function () {
 		} );
 	}
-
-	const onReusableBlocksClick = () => {
-
-		location.href = uag_react.reusable_url;
-	}
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
 				<a>{__('All Blocks  | ', 'ultimate-addons-for-gutenberg' )} </a>
+				<a>{__('Extension Links  | ', 'ultimate-addons-for-gutenberg' )} </a>
 				<a href={uag_react.reusable_url}>{__( ' Reusable Blocks', 'ultimate-addons-for-gutenberg' )}</a>
 				<div className="uag-bulk-blocks-action-btn">
 					<NormalButton

@@ -61,8 +61,9 @@ function TemplatesButton( props ) {
 							onClick = { enableStarterTemplate }
 							saving = { savingState }
 						/>
+						<span className={`uag-control__status-${enableTemplate}`}>{ enableTemplate == 'yes' ? __( 'Enabled', 'ultimate-addons-for-gutenberg' ) : __( 'Disabled', 'ultimate-addons-for-gutenberg' ) }</span>	
 					</div>
-			</div>
+				</div>
 		</div>
 		</>
     );

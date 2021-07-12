@@ -106,6 +106,7 @@ function VersionControl( props ) {
 							onClick = { enableBetaUpdate }
 							saving = { savingState }
 						/>
+						<span className={`uag-control__status-${enableBeta}`}>{ enableBeta == 'yes' ? __( 'Enabled', 'ultimate-addons-for-gutenberg' ) : __( 'Disabled', 'ultimate-addons-for-gutenberg' ) }</span>	
 					</div>
 				</div>
 			</div> 

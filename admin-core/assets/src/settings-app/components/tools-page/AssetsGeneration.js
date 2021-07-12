@@ -92,7 +92,8 @@ function AssetsGeneration( props ) {
 							onClick = { handleAssetGeneration }
 							saving = { savingAssetGenState }
 						/>
-					</div>	
+						<span className={`uag-control__status-${enableFileGeneration}`}>{ enableFileGeneration == 'yes' ? __( 'Enabled', 'ultimate-addons-for-gutenberg' ) : __( 'Disabled', 'ultimate-addons-for-gutenberg' ) }</span>	
+					</div>
 				</div>
 				<div className="uag-version-control__element">
 					<h3> { __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ) } </h3>
