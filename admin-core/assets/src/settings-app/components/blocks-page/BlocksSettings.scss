@@ -9,20 +9,6 @@
         font-weight: var(--heading-weight-500);
         font-size: 16px;
         line-height: 1.5em;
-    } 
-    .uag-individual-block-settings-metabox {
-        background: var(--metabox-background-color);
-        padding: 15px;
-        margin: 10px;
-        box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
-        border-radius: 2px;
-        a:not(:last-child) {
-            padding-right: 10px;
-            border-right: 1px solid #ddd;
-        }
-        a:last-child {
-            padding-left: 10px;
-        }
     }
     .uag-toggle-field .components-toggle-control {
         width: 100%;
@@ -30,6 +16,20 @@
         .components-toggle-control__label {
             width: 80%;
         }
+    }
+}
+.uag-individual-block-settings-metabox {
+    background: var(--metabox-background-color);
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
+    border-radius: 2px;
+    a:not(:last-child) {
+        padding-right: 10px;
+        border-right: 1px solid #ddd;
+    }
+    a:last-child {
+        padding-left: 10px;
     }
 }
 .uag-bulk-blocks-settings-wrap {
