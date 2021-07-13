@@ -76,7 +76,7 @@ import {
 	};
 
     const onChangeUnits = ( value ) => {
-        props.setAttributes( { paddingUnit: value } );
+        props.setAttributes( { [props.unit.label]: value } );
     }
     
     const onUnitSizeClick = ( unitSizes ) => {
@@ -90,9 +90,9 @@ import {
                     key={ key.unitValue }
                     className={ 'uagb-range-control__units--' + key.name }
                     isSmall
-                    isPrimary={ props.unit === key.unitValue }
-                    isSecondary={ props.unit !== key.unitValue }
-                    aria-pressed={ props.unit === key.unitValue }
+                    isPrimary={ props.unit.value === key.unitValue }
+                    isSecondary={ props.unit.value !== key.unitValue }
+                    aria-pressed={ props.unit.value === key.unitValue }
                     aria-label={ sprintf(
                         __( '%s units', 'ultimate-addons-for-gutenberg' ),
                         key.name

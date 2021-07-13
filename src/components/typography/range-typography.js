@@ -59,22 +59,6 @@ export default function RangeTypographyControl ( props ) {
 		]
 	}
 
-	const sizeTypesControls = (
-		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type",'ultimate-addons-for-gutenberg' ) }>
-			{ map( sizeTypes, ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ props.type.value === key }
-					aria-pressed={ props.type.value === key }
-					onClick={ () => props.setAttributes( { [props.typeLabel]: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	)
 	const output = {};
 	output.Desktop = (
 		<Fragment>

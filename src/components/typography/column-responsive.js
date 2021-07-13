@@ -2,17 +2,8 @@
  * WordPress dependencies
  */
  import { __ } from '@wordpress/i18n';
-
-const {
-	ButtonGroup,
-	Button,
-	Dashicon,
-} = wp.components
-
-// Extend component
-const { Fragment } = wp.element
-const { useSelect, useDispatch } = wp.data;
-import map from 'lodash/map';
+ import { ButtonGroup, Button, Dashicon } from '@wordpress/components';
+ import { useSelect, useDispatch } from '@wordpress/data';
 
 /**
  * Build the Measure controls
@@ -48,28 +39,36 @@ export default function Columnresponsive ( props ) {
 	];
 	const output = {};
 	output.Desktop = (
-        <Fragment></Fragment>
+        <></>
 	);
 	output.Tablet = (
-        <Fragment></Fragment>
+        <></>
 	);
 	output.Mobile = (
-        <Fragment></Fragment>
+        <></>
 	);
+
+	const deviceControls = ( devices ) => {
+		const items = [];
+        devices.map( key => items.push(
+			<Button
+				key={ key.key }
+				className={ `components-button components-tab-panel__tabs-item ${ key.itemClass }${ key.name === deviceType ? ' active-tab' : '' }` }
+				aria-pressed={ deviceType === key.name }
+				onClick={ () => customSetPreviewDeviceType( key.name ) }
+			>
+				{ key.title }
+			</Button>
+        ))
+
+        return( items );
+	}
+
 	return (
 		<div className={ 'uag-typography-range-options' }>
 			<div className="uagb-size-type-field-tabs">
 				<ButtonGroup className="components-tab-panel__tabs" aria-label={ __( 'Device', 'ultimate-addons-for-gutenberg' ) }>
-					{ map( devices, ( { name, key, title, itemClass } ) => (
-						<Button
-							key={ key }
-							className={ `components-button components-tab-panel__tabs-item ${ itemClass }${ name === deviceType ? ' active-tab' : '' }` }
-							aria-pressed={ deviceType === name }
-							onClick={ () => customSetPreviewDeviceType( name ) }
-						>
-							{ title }
-						</Button>
-					) ) }
+					{ deviceControls( devices ) }
 				</ButtonGroup>
 				<div className="uagb-responsive-control-inner">
 				{ ( output[ deviceType ] ? output[ deviceType ] : output.Desktop ) }
