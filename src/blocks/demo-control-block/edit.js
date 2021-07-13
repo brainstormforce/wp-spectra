@@ -325,7 +325,6 @@ class UAGBInlineNoticeEdit extends Component {
 					/>
 					</PanelBody>
 					<PanelBody title="Typography" initialOpen={false}>
-					<h2>{ __( "Typography", 'ultimate-addons-for-gutenberg' ) }</h2>
 		            <TypographyControl
 							label={ __( "Title", 'ultimate-addons-for-gutenberg' ) }
 							attributes = { attributes }
