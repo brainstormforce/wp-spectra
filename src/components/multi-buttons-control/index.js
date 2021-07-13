@@ -29,28 +29,31 @@ const MultiButtonsControl = props => {
 	}
 
 	return (
-		<ButtonGroup className={ `uagb-multi-button-button-group` } aria-label={ label }>
-			{ options.map( ( option ) => (
-				<Tooltip
-					key={ `option-${ option.value }` }
-					text={ option.tooltip }>
+		<>
+			<p class="uagb-multi-buttons-control__label">{ label }</p>
+			<ButtonGroup className={ `uagb-multi-button-button-group` } aria-label={ label }>
+				{ options.map( ( option ) => (
+					<Tooltip
+						key={ `option-${ option.value }` }
+						text={ option.tooltip }>
 
-					<Button
-						className={ `uagb-multi-button` }
-						isLarge
-						isSecondary={ currentOption !== option.value }
-						isPrimary={ currentOption === option.value }
-						aria-pressed={ currentOption === option.value }
-						onClick={ () => onChange( option.value ) }
-						aria-label={ option.tooltip }>
+						<Button
+							className={ `uagb-multi-button` }
+							isLarge
+							isSecondary={ currentOption !== option.value }
+							isPrimary={ currentOption === option.value }
+							aria-pressed={ currentOption === option.value }
+							onClick={ () => onChange( option.value ) }
+							aria-label={ option.tooltip }>
 
-						{ showIcons ? option.icon : option.label }
+							{ showIcons ? option.icon : option.label }
 
-					</Button>
+						</Button>
 
-				</Tooltip>
-			) ) }
-		</ButtonGroup>
+					</Tooltip>
+				) ) }
+			</ButtonGroup>
+		</>
 	);
 }
 

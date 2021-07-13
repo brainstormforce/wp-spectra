@@ -27,7 +27,9 @@ $border-color: #D6D9DD;
     }
   }
 }
-
+.components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced {
+  border-color: transparent;
+}
 .uagb-inspector-tabs{
   display: flex;
   //margin-left: -16px;

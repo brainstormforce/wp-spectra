@@ -318,11 +318,6 @@ hr.uagb-editor__separator {
 	margin-top: 1.5em;
 }
 
-.uag-typography-font-family-options .components-base-control__field {
-	display: flex;
-    align-items: center;
-}
-
 .uag-typography-font-family-options .components-base-control__label,
 .uag-typography-font-family-options .components-select-control__input {
 	width: 50%;

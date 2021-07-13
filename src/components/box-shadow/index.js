@@ -47,6 +47,16 @@
     if( value !== null && true === value.showAdvancedControls ) {
         advancedControls = (
             <div className="uagb-box-shadow-advanced">
+                    <MultiButtonsControl
+                        label={ __( "Position", 'ultimate-addons-for-gutenberg' ) }
+                        currentOption={ boxShadowPosition.value }
+                        options={ [
+                            { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Inset (10px)', 'ultimate-addons-for-gutenberg' ), },
+                            { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Outset', 'ultimate-addons-for-gutenberg' ), },
+                        ] }
+                        onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
+                        showIcons={ false }
+                    />
                 <AdvancedPopColorControl
                     label={ __( 'Shadow Color', 'ultimate-addons-for-gutenberg' ) }
                     colorValue={ ( boxShadowColor.value ) }
@@ -93,18 +103,6 @@
                     max={ 100 }
                     displayUnit= { false }
                 />
-                </div>
-                <div className="uag-box-position-wrap">
-                    <MultiButtonsControl
-                        label={ __( "Position", 'ultimate-addons-for-gutenberg' ) }
-                        currentOption={ boxShadowPosition.value }
-                        options={ [
-                            { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Inset (10px)', 'ultimate-addons-for-gutenberg' ), },
-                            { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ), tooltip: __( 'Outset', 'ultimate-addons-for-gutenberg' ), },
-                        ] }
-                        onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
-                        showIcons={ false }
-                    />
                 </div>
             </div>
         );
