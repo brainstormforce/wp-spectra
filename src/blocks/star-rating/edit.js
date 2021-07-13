@@ -112,7 +112,7 @@ class UAGBStarRating extends Component {
 			let range_value = parseInt(range);
 			var stars = [];
 			for (var i = 1; i <= range_value; i++) {
-				stars.push(<i class="uag-star">★</i>);
+				stars.push(<span class="uag-star">★</span>);
 			}
 			return (
 				<div
@@ -159,6 +159,7 @@ class UAGBStarRating extends Component {
 						max={ range }
 						beforeIcon=""
 						allowReset
+						step={ 0.1 }
 						initialPosition={0}
 					/>
 					<hr/>
