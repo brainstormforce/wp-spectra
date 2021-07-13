@@ -63,6 +63,7 @@ class UAGBStarRating extends Component {
 			className,
 			attributes,
 			setAttributes,
+			deviceType,
 			attributes: {
 				rating,
 				range,
@@ -118,6 +119,7 @@ class UAGBStarRating extends Component {
 				<div
 					className={ classnames(
 						className,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 						"uag-star-rating__wrapper",
 						`uagb-block-${this.props.clientId.substr( 0, 8 )}`,
 					) }
