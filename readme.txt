@@ -169,6 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 
 = 1.23.5 =
+* Improvement: Table of content - Added scroll to specific anchor tag feature.
 * Fix: Assets Generation issue on frontend when Twenty Twentyone theme is active.
 * Fix: Assets not regenerated for frontend when post conatining reusable blocks is updated.
 * Fix: Post Grid: The Block shifts to left on frontend when Twenty Twenty theme is active.
