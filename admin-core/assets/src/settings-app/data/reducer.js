@@ -14,7 +14,7 @@ const reducer = ( state, data ) => {
 				options: data.commondata.options,
 			};
 		case 'SET_OPTION':
-			let newOptions = state.options;
+			const newOptions = state.options;
 			newOptions[ data.name ] = data.value;
 			return {
 				...state,

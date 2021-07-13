@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-	SpacerSkeleton,
-	TextSkeleton
-} from '@Skeleton';
+import { SpacerSkeleton, TextSkeleton } from '@Skeleton';
 
 import './SettingsPageSkeleton.scss';
 

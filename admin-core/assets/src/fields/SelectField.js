@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import './SelectField.scss';
 
 function SelectField( props ) {
-	const {
-		name,
-		id,
-		options,
-		onSelect,
-		prodata,
-	} = props;
+	const { name, id, options, onSelect, prodata } = props;
 
 	const [ value, setValue ] = useState( props.value );
 
@@ -16,9 +10,9 @@ function SelectField( props ) {
 		setValue( e.target.value );
 
 		// Trigger change
-		let changeEvent = new CustomEvent( 'uag:select:change', {
+		const changeEvent = new CustomEvent( 'uag:select:change', {
 			bubbles: true,
-			detail: { e: e, name: props.name, value: e.target.value },
+			detail: { e, name: props.name, value: e.target.value },
 		} );
 
 		document.dispatchEvent( changeEvent );

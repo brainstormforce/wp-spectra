@@ -48,11 +48,11 @@ function MainSettings() {
 	return (
 		<Router>
 			<NavMenu />
-				<Switch>
-					<Route path="/">
-						<SettingsRoute />
-					</Route>
-				</Switch>
+			<Switch>
+				<Route path="/">
+					<SettingsRoute />
+				</Route>
+			</Switch>
 		</Router>
 	);
 }

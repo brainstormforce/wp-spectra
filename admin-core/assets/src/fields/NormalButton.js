@@ -4,21 +4,15 @@ import ReactHtmlParser from 'react-html-parser';
 import { __ } from '@wordpress/i18n';
 
 const NormalButton = ( props ) => {
+	const { classes, saving, buttonText, desc } = props;
 
-	let {
-		classes,
-		saving,
-		buttonText,
-		desc
-	} = props;
-
-	let savingState = saving ? 'uag-saving' : '';
-	let btnClass = classes ? classes : 'uag-button--primary';
+	const savingState = saving ? 'uag-saving' : '';
+	const btnClass = classes ? classes : 'uag-button--primary';
 	return (
 		<div className="uag-field uag-normal-button-control uag-button-field">
 			<button
 				className={ `uag-button  ${ savingState } ${ btnClass }` }
-				onClick = { props.onClick }
+				onClick={ props.onClick }
 			>
 				{ buttonText }
 			</button>
@@ -29,6 +23,6 @@ const NormalButton = ( props ) => {
 			) }
 		</div>
 	);
-}
+};
 
 export default NormalButton;

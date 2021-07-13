@@ -3,29 +3,25 @@ import { useStateValue } from '@Utils/StateProvider';
 
 export default function InputEvents() {
 	const [ { options }, dispatch ] = useStateValue();
-	
+
 	const baseInputChange = function ( e ) {
 		let { name, value, id } = e.detail;
 		if ( undefined !== options[ name ] ) {
 			if ( '_uag_common[blocks_activation_and_deactivation]' === name ) {
-				
-				let optionsClone =  { ...options[ name ] };
+				const optionsClone = { ...options[ name ] };
 				optionsClone[ id ] = value;
 				value = optionsClone;
 			}
 			window.uagUnsavedChanges = true;
 			dispatch( {
 				type: 'SET_OPTION',
-				name: name,
-				value: value,
+				name,
+				value,
 			} );
 		}
 	};
 
-	const fieldTypes = [
-		{ type: 'select' },
-		{ type: 'toggle' },
-	];
+	const fieldTypes = [ { type: 'select' }, { type: 'toggle' } ];
 
 	useEffect( () => {
 		if ( options ) {
@@ -46,6 +42,4 @@ export default function InputEvents() {
 			} );
 		};
 	}, [ options ] );
-
-	return;
 }

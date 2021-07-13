@@ -7,10 +7,10 @@ import ToolsPage from '@SettingsApp/pages/ToolsPage';
 import SettingsPage from '@SettingsApp/pages/SettingsPage';
 
 function SettingsRoute() {
-	let query = new URLSearchParams( useLocation().search );
-	let page = query.get( 'page' );
-	let path = query.get( 'path' );
-	let current_event = query.get( 'event' );
+	const query = new URLSearchParams( useLocation().search );
+	const page = query.get( 'page' );
+	const path = query.get( 'path' );
+	const current_event = query.get( 'event' );
 
 	let route_page = <p>Default route fallback</p>;
 

@@ -12,7 +12,11 @@ function CommonMetaBox( props ) {
 			</div>
 			<div className="uag-metabox__footer">
 				<p>
-					<a href={ props.footerLink } target="_blank" rel="noopener">
+					<a
+						href={ props.footerLink }
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						{ props.footerText }
 					</a>
 				</p>

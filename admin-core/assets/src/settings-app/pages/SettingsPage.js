@@ -8,8 +8,7 @@ import TemplatesButton from '@SettingsApp/components/settings-page/TemplatesButt
 import AssetsGeneration from '@SettingsApp/components/tools-page/AssetsGeneration';
 
 function SettingsPage() {
-
-    const [ { globaldata }, dispatch ] = useStateValue();
+	const [ { globaldata }, dispatch ] = useStateValue();
 
 	let loading = true;
 
@@ -40,31 +39,30 @@ function SettingsPage() {
 		};
 	}, [] );
 
-	let location = useLocation();
-	let tab = location.hash;
+	const location = useLocation();
+	const tab = location.hash;
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <div className="uag-global-settings-metabox"><SettingsPageSkeleton /></div>;
-	} else {
-		switch ( tab ) {
-			case '#templates_settings':
-				current_tab = (
-					<TemplatesButton />
-				);
-				break;
-			default:
-				current_tab = (
-					<TemplatesButton />
-				);
-				break;
-		}
+		return (
+			<div className="uag-global-settings-metabox">
+				<SettingsPageSkeleton />
+			</div>
+		);
+	}
+	switch ( tab ) {
+		case '#templates_settings':
+			current_tab = <TemplatesButton />;
+			break;
+		default:
+			current_tab = <TemplatesButton />;
+			break;
 	}
 
 	return (
 		<div className="uag-global-settings-metabox">
-			<AssetsGeneration/>
-			<>{ current_tab }</>		
+			<AssetsGeneration />
+			<>{ current_tab }</>
 		</div>
 	);
 }
