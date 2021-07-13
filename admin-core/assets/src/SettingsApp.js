@@ -32,7 +32,4 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById( 'uag-settings-app' )
 );
-ReactDOM.render(
-	<Footer />,
-	document.getElementById('wpfooter')
-  );
+ReactDOM.render( <Footer />, document.getElementById( 'wpfooter' ) );

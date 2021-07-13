@@ -1,14 +1,10 @@
 import React from 'react';
 
-import {
-	SpacerSkeleton,
-	TextSkeleton
-} from '@Skeleton';
+import { SpacerSkeleton, TextSkeleton } from '@Skeleton';
 
 import './BlocksPageSkeleton.scss';
 
 function FlowRowSkeleton() {
-	
 	return (
 		<>
 			<div className="uag-blocks-nav__contents">
@@ -17,25 +13,33 @@ function FlowRowSkeleton() {
 					.map( ( i, j ) => {
 						return (
 							<>
-							<div className="uag-settings-nav__content">
-								<TextSkeleton fontSize="20px" width="225px" />
-								<TextSkeleton width="80%" />
-								<SpacerSkeleton />
-							</div>
-							<div className="uag-settings-nav__content">
-								<TextSkeleton fontSize="20px" width="225px" />
-								<TextSkeleton width="80%" />
-								<SpacerSkeleton />
-							</div>
-							<div className="uag-settings-nav__content">
-								<TextSkeleton fontSize="20px" width="225px" />
-								<TextSkeleton width="80%" />
-								<SpacerSkeleton />
-							</div>
+								<div className="uag-settings-nav__content">
+									<TextSkeleton
+										fontSize="20px"
+										width="225px"
+									/>
+									<TextSkeleton width="80%" />
+									<SpacerSkeleton />
+								</div>
+								<div className="uag-settings-nav__content">
+									<TextSkeleton
+										fontSize="20px"
+										width="225px"
+									/>
+									<TextSkeleton width="80%" />
+									<SpacerSkeleton />
+								</div>
+								<div className="uag-settings-nav__content">
+									<TextSkeleton
+										fontSize="20px"
+										width="225px"
+									/>
+									<TextSkeleton width="80%" />
+									<SpacerSkeleton />
+								</div>
 							</>
 						);
-					} )
-				}
+					} ) }
 			</div>
 		</>
 	);

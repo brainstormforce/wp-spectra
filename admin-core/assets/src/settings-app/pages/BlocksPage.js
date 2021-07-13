@@ -40,9 +40,11 @@ function BlocksPage() {
 	}, [] );
 
 	if ( loading ) {
-		return <div className="uag-blocks-settings-metabox">
-					<SettingPageSkeleton />
-				</div>;
+		return (
+			<div className="uag-blocks-settings-metabox">
+				<SettingPageSkeleton />
+			</div>
+		);
 	}
 	return (
 		<>
@@ -53,8 +55,8 @@ function BlocksPage() {
 					<div className="uag-individual-block-settings-metabox">
 						<ToggleField
 							id={ '' }
-							name='_uag_common[blocks_activation_and_deactivation]'
-							label={ 'Display Condition'}
+							name="_uag_common[blocks_activation_and_deactivation]"
+							label={ 'Display Condition' }
 						/>
 					</div>
 				</div>

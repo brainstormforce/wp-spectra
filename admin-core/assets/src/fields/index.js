@@ -5,9 +5,4 @@ import SectionHeadingField from '@Fields/SectionHeadingField';
 import NormalButton from '@Fields/NormalButton';
 import ToggleField from '@Fields/ToggleField';
 
-export {
-	SelectField,
-	SectionHeadingField,
-	NormalButton,
-	ToggleField
-};
+export { SelectField, SectionHeadingField, NormalButton, ToggleField };

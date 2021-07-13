@@ -7,8 +7,7 @@ import { useStateValue } from '@Utils/StateProvider';
 import VersionControl from '@SettingsApp/components/tools-page/VersionControl';
 
 function ToolsPage() {
-
-    const [ { globaldata }, dispatch ] = useStateValue();
+	const [ { globaldata }, dispatch ] = useStateValue();
 
 	let loading = true;
 
@@ -42,17 +41,15 @@ function ToolsPage() {
 	let current_tab = <p>Default Tab</p>;
 
 	if ( loading ) {
-		return <div className="uag-global-settings-metabox"><ToolsPageSkeleton /></div>;
-	} else {
-		current_tab = <VersionControl/>
+		return (
+			<div className="uag-global-settings-metabox">
+				<ToolsPageSkeleton />
+			</div>
+		);
 	}
-	
+	current_tab = <VersionControl />;
 
-	return (
-		<div className="uag-global-settings-metabox">
-			{ current_tab }
-		</div>
-	);
+	return <div className="uag-global-settings-metabox">{ current_tab }</div>;
 }
 
 export default ToolsPage;

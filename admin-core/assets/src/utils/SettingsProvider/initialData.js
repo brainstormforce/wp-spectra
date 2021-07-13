@@ -27,12 +27,12 @@ const settingsEvents = ( state, data ) => {
 					...state,
 					unsavedChanges: true,
 				};
-			} else {
-				return {
-					...state,
-					unsavedChanges: false,
-				};
 			}
+			return {
+				...state,
+				unsavedChanges: false,
+			};
+
 		default:
 			return state;
 	}

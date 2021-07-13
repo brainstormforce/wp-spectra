@@ -5,11 +5,7 @@
 	"main": "Gruntfile.js",
 	"scripts": {
 		"build": "wp-scripts build",
-		"start": "wp-scripts start",
-		"lint-js": "wp-scripts lint-js",
-    	"lint-js:fix": "npm run lint-js -- --fix",
-		"i18n": "grunt textdomain && wp i18n make-pot . --exclude=\".github,scripts, admin-core/assets/importer-data,admin-core/assets/src,config,modules/gutenberg/src,node_modules,import.js,import.min.js,.vscode,.eslintrc.js,.prettierrc,google-fonts.json,package.json,package-lock.json,*.json\" languages/ultimate-addons-for-gutenberg.pot --domain=ultimate-addons-for-gutenberg",
-		"fonts": "node scripts/google-fonts.js && grunt json2php"
+		"start": "wp-scripts start"
 	},
 	"dependencies": {
 		"autoprefixer": "^9.8.6",
