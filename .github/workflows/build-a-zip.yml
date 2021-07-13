@@ -9,6 +9,7 @@ on:
 
 jobs:
   build-zip:
+    if: contains(toJson(github.event.commits), '[skip-zip]') != false
     name: "Build a zip and upload to server"
     runs-on: ubuntu-latest
     outputs:
