@@ -35,7 +35,7 @@ function IndividualBlockSetting( props ) {
 					xhrFields: {
 						withCredentials: true,
 					},
-					success( response ) {},
+					success( ) {},
 				} )
 				.done( function () {} );
 

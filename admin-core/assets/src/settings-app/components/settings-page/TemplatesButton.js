@@ -4,7 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { useStateValue } from '@Utils/StateProvider';
 import { __ } from '@wordpress/i18n';
 
-function TemplatesButton( props ) {
+function TemplatesButton( ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 	const [ savingState, setssavingState ] = useState( false );
 
@@ -59,10 +59,7 @@ function TemplatesButton( props ) {
 				<div className="uag-version-control__element">
 					<h3>{ ReactHtmlParser( enableTemplatesButtonlabel ) }</h3>
 					<p>
-						{ __(
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-							'ultimate-addons-for-gutenberg'
-						) }
+						{ ReactHtmlParser(enableTemplatesButtondesc)}
 					</p>
 					<div className="uag-version-control-button">
 						<NormalButton

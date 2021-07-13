@@ -10,16 +10,16 @@ function SettingTable( props ) {
 
 	return (
 		<>
-			{ Object.keys( settings.fields ).map( ( field, i ) => {
+			{ Object.keys( settings.fields ).map( ( field ) => {
 				const data = settings.fields[ field ];
-				const input_type = data.type;
+				const inputType = data.type;
 				let component = '';
 
 				const value = options[ data.name ]
 					? options[ data.name ]
 					: value;
 
-				switch ( input_type ) {
+				switch ( inputType ) {
 					case 'toggle':
 						component = (
 							<ToggleField

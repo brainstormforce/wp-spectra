@@ -31,9 +31,7 @@ function AssetsGeneration( props ) {
 		} ).then( ( data ) => {
 			if ( data.success ) {
 				setssavingState( false );
-			} else {
-				console.log( 'Error' );
-			}
+			} 
 		} );
 	};
 	const handleAssetGeneration = () => {

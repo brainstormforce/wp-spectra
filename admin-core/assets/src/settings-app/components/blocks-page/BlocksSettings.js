@@ -7,7 +7,7 @@ import { useStateValue } from '@Utils/StateProvider';
 
 const blocksInfo = uag_react.blocks_info;
 
-function BlocksSettings( prop ) {
+function BlocksSettings( ) {
 	const [ savingStateActivate, setssavingStateActivate ] = useState( false );
 	const [ savingStateDeactivate, setssavingStateDeactivate ] = useState(
 		false
@@ -22,7 +22,7 @@ function BlocksSettings( prop ) {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } />;
 	} );
 
-	const activateAllBlocks = ( e ) => {
+	const activateAllBlocks = ( ) => {
 		setssavingStateActivate( true );
 
 		window.uagUnsavedChanges = true;
@@ -52,7 +52,7 @@ function BlocksSettings( prop ) {
 				type: 'POST',
 				data,
 				url: uag_react.ajax_url,
-				success( response ) {
+				success( ) {
 					setssavingStateActivate( false );
 				},
 			} )
