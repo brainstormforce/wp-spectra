@@ -51,7 +51,7 @@ jobs:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
           switches: -avzr
           path: ./artifact/
-          remote_path: ${{ secrets.SSH_PATH }}
+          remote_path: ${{ secrets.SSH_ZIP_PATH }}
           remote_host: ${{ secrets.SSH_HOST }}
           remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USER }}
@@ -85,7 +85,7 @@ jobs:
         id: get-comment-body
         run: |
           body="Plugin zip for ${{ github.event.pull_request.head.sha }} is ready :bellhop_bell:!
-          - Download the plugin [zip](http://uag-dev.cvh6svsgwm-gok67yw2r652.p.runcloud.link/wp-content/uploads/uag-gh/${{ needs.build-zip.outputs.branch-name }}/ultimate-addons-for-gutenberg.zip)"
+          - Download the plugin [zip](http://uag-dev.xka9ibwowp-jqp3vd915350.p.runcloud.link/wp-content/uploads/uag-gh/${{ needs.build-zip.outputs.branch-name }}/ultimate-addons-for-gutenberg.zip)"
           body="${body//$'\n'/'%0A'}"
           echo "::set-output name=body::$body"
       - name: Create comment on PR with links to plugin zip
