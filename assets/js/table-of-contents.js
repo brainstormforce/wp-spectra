@@ -42,7 +42,7 @@
 
 		hyperLinks: function() {
 			var hash = window.location.hash.substring(0);
-			if ( '' === hash && ! /[^a-z0-9-_]/.test( hash ) ) { 
+			if ( '' === hash || (/[^a-z0-9_-]$/).test( hash ) ) { 
 				return;
 			}
 			var hashId = encodeURI( hash.substring( 0 ) );
