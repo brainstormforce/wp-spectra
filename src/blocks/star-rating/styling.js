@@ -102,8 +102,6 @@ function styling( props ) {
 
 	styling_css += generateCSS( mobile_selectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
-	console.log(styling_css);
-
 	return styling_css
 }
 
