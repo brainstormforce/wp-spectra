@@ -1,7 +1,7 @@
 import { useStateValue } from '@Utils/StateProvider';
 import React, { useEffect } from 'react';
 import { ToggleField } from '@Fields';
-
+import apiFetch from '@wordpress/api-fetch';
 let blocksCachedValue;
 
 function IndividualBlockSetting( props ) {
@@ -21,23 +21,25 @@ function IndividualBlockSetting( props ) {
 			JSON.stringify( blocksCachedValue ) !==
 			JSON.stringify( blocksValue )
 		) {
-			const data = {
-				blocksValue,
-				action: 'uag_blocks_activation_and_deactivation',
-				security: uag_react.blocks_activation_and_deactivation_nonce,
-			};
 
-			jQuery
-				.ajax( {
-					type: 'POST',
-					data,
+				var action = 'uag_blocks_activation_and_deactivation',
+				nonce = uag_react.blocks_activation_and_deactivation_nonce;
+		
+				let formData = new window.FormData();
+		
+				formData.append( 'action', action );
+				formData.append( 'security', nonce );
+				formData.append( 'data', blocksValue );
+		
+				apiFetch( {
 					url: uag_react.ajax_url,
+					method: 'POST',
+					body: formData,
 					xhrFields: {
 						withCredentials: true,
 					},
-					success( ) {},
-				} )
-				.done( function () {} );
+				} ).then( ( ) => {
+				} );
 
 			blocksCachedValue =
 				options[ '_uag_common[blocks_activation_and_deactivation]' ];

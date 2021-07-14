@@ -159,7 +159,7 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-
+		var_dump($_POST['value']);
 		AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['value'] );
 
 		// Update new_extensions.

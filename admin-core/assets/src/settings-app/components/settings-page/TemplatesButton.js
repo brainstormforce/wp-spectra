@@ -3,6 +3,7 @@ import { NormalButton } from '@Fields';
 import ReactHtmlParser from 'react-html-parser';
 import { useStateValue } from '@Utils/StateProvider';
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 
 function TemplatesButton( ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
@@ -33,22 +34,23 @@ function TemplatesButton( ) {
 			name: '_uag_common[enable_templates_button]',
 			value: status,
 		} );
-		const data = {
-			action: 'uag_enable_templates_button',
-			security: uag_react.enable_templates_button_nonce,
-			value: status,
-		};
+		
+		var action = 'uag_enable_templates_button',
+		nonce = uag_react.enable_templates_button_nonce;
 
-		jQuery
-			.ajax( {
-				type: 'POST',
-				data,
-				url: uag_react.ajax_url,
-				success() {
-					setssavingState( false );
-				},
-			} )
-			.done( function () {} );
+		let formData = new window.FormData();
+
+		formData.append( 'action', action );
+		formData.append( 'security', nonce );
+		formData.append( 'value', status );
+
+		apiFetch( {
+			url: uag_react.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {
+			setssavingState( false );
+		} );
 	};
 	return (
 		<>

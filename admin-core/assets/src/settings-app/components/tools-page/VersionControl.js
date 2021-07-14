@@ -6,7 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 import SettingTable from '../common/SettingTable';
 import React, { useState } from 'react';
 import ConfirmPopup from './ConfirmPopup';
-
+import apiFetch from '@wordpress/api-fetch';
 function VersionControl( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
@@ -32,6 +32,7 @@ function VersionControl( props ) {
 			.label;
 	const enableBetaUpdatesdesc =
 		globaldata.settings.enable_beta_updates.fields.enable_beta_updates.desc;
+
 	const handleRollbackVersion = function ( event ) {
 		event.preventDefault();
 		setshowPopup( true );
@@ -51,6 +52,7 @@ function VersionControl( props ) {
 	const cancelPopup = () => {
 		setshowPopup( false );
 	};
+
 	const enableBetaUpdate = () => {
 		setssavingState( true );
 		let status;
@@ -65,22 +67,23 @@ function VersionControl( props ) {
 			name: '_uag_common[enable_beta_updates]',
 			value: status,
 		} );
-		const data = {
-			action: 'uag_enable_beta_updates',
-			security: uag_react.enable_beta_updates_nonce,
-			value: status,
-		};
 
-		jQuery
-			.ajax( {
-				type: 'POST',
-				data,
-				url: uag_react.ajax_url,
-				success() {
-					setssavingState( false );
-				},
-			} )
-			.done( function () {} );
+		var action = 'uag_enable_beta_updates',
+		nonce = uag_react.enable_beta_updates_nonce;
+
+		let formData = new window.FormData();
+
+		formData.append( 'action', action );
+		formData.append( 'security', nonce );
+		formData.append( 'value', status );
+
+		apiFetch( {
+			url: uag_react.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {
+			setssavingState( false );
+		} );
 	};
 
 	return (
