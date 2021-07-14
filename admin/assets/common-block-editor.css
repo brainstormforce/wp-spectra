@@ -3376,8 +3376,3 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uag-typography-font-family-options{
     margin-top: 24px;
 }
-
-/* select field for UAG broken */
-.components-base-control .components-select-control {
-    height:11%;
-}
