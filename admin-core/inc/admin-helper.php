@@ -53,6 +53,7 @@ class AdminHelper {
 				'enable_file_generation'       => 'no',
 				'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() ),
 				'enable_templates_button' => 'disabled',
+				'enable_block_condition' => 'true'
 			)
 		);
 
