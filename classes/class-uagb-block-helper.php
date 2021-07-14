@@ -33,7 +33,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
-			$alignment = 'flex-start';
+			$alignment       = 'flex-start';
+			$stack_alignment = $attr['align'];
 			if ( '' !== $attr['align'] ) {
 				if ( 'right' === $attr['align'] ) {
 					$alignment = 'flex-end';
@@ -42,7 +43,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$alignment = 'center';
 				}
 				if ( 'full' === $attr['align'] ) {
-					$alignment = 'space-between';
+					$alignment       = 'space-between';
+					$stack_alignment = 'left';
 				}
 			}
 
@@ -58,17 +60,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['color'],
 				),
 				' .uag-star-rating__title'  => array(
-					'font-size'    => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-					'font-family'  => $attr['fontFamily'],
-					'font-weight'  => $attr['fontWeight'],
-					'line-height'  => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-					'color'        => $attr['titleColor'],
-					'margin-right' => UAGB_Helper::get_css_value( $attr['titleGap'], 'px' ),
+					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+					'font-family' => $attr['fontFamily'],
+					'font-weight' => $attr['fontWeight'],
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+					'color'       => $attr['titleColor'],
 				),
 				'.uag-star-rating__wrapper' => array(
 					'justify-content' => $alignment,
+					'text-align'      => $stack_alignment,
 				),
 			);
+
+			$index = 'margin-right';
+			if ( 'stack' === $attr['layout'] ) {
+				$index = 'margin-bottom';
+			}
+
+			$selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
 
 			$remainder = ( $attr['rating'] - floor( $attr['rating'] ) );
 			$width     = $remainder * 100;

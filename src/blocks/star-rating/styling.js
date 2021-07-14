@@ -9,6 +9,7 @@ function styling( props ) {
 
 	const {
 		range,
+		layout,
 		rating,
 		size,
 		align,
@@ -30,6 +31,7 @@ function styling( props ) {
 	} = props.attributes
 
 	let alignment = 'flex-start';
+	let stack_alignment = align;
 	if ( align ) {
 		if ( 'right' === align ) 
 			alignment = 'flex-end';
@@ -37,6 +39,7 @@ function styling( props ) {
 			alignment = 'center';
 		if ( 'full' === align ) 
 			alignment = 'space-between';
+			stack_alignment = 'left';
 	}
 
 	let remainder = ( rating % 1 ).toFixed(1);
@@ -56,12 +59,18 @@ function styling( props ) {
 			"font-weight": fontWeight,
 			"line-height": generateCSSUnit(lineHeight,lineHeightType ),
 			"color": titleColor,
-			"margin-right": generateCSSUnit( titleGap, "px" ),
 		},
 		".uag-star-rating__wrapper" : {
-			'justify-content': alignment
+			'justify-content': alignment,
+			'text-align' : stack_alignment,
 		}
 	}
+
+	var index = "margin-right";
+	if ( 'stack' === layout ) {
+		index = "margin-bottom";
+	}
+	selectors[" .uag-star-rating__title.block-editor-rich-text__editable"][index] = generateCSSUnit( titleGap, "px" );
 
 	if ( 0 !== width ) {
 		selectors[" .uag-star:nth-child(" + Math.ceil( rating ) + "):before"] = {

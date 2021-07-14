@@ -2933,6 +2933,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'rating'           => '4',
 							'size'             => '',
 							'align'            => 'left',
+							'layout'           => 'inline',
 							'gap'              => '',
 							'unmarkedColor'    => '#ccd6df',
 							'color'            => '#f0ad4e',

@@ -9,6 +9,7 @@ export default function save( props ) {
 	
 	const {
 		block_id,
+		layout,
 		title,
 		rating,
 		range,
@@ -25,6 +26,7 @@ export default function save( props ) {
 				props.className,
 				"uag-star-rating__wrapper",
 				`uagb-block-${block_id}`,
+				`uag-star-rating__layout-${ layout }`,
 			) }
 		>
 			{ title &&

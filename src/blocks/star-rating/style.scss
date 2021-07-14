@@ -7,9 +7,11 @@
 .uag-star-rating__wrapper {
 	display: flex;
 	align-items: center;
+	&.uag-star-rating__layout-stack {
+		display: block;
+	}
 	.uag-star-rating__title{
 		margin: 0;
-		margin-right: 10px;
 	}
 	.uag-star {
 		color: #ccd6df;

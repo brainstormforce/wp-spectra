@@ -2,6 +2,10 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	layout: {
+		type: "string",
+		default: "inline"
+	},
 	rating: {
 		type: "number",
 		default: 4

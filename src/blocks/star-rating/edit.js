@@ -67,6 +67,7 @@ class UAGBStarRating extends Component {
 			attributes: {
 				rating,
 				range,
+				layout,
 				align,
 				size,
 				gap,
@@ -120,6 +121,7 @@ class UAGBStarRating extends Component {
 					className={ classnames(
 						className,
 						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+						`uag-star-rating__layout-${ layout }`,
 						"uag-star-rating__wrapper",
 						`uagb-block-${this.props.clientId.substr( 0, 8 )}`,
 					) }
@@ -136,6 +138,16 @@ class UAGBStarRating extends Component {
 					</div>
 				</div>
 			)
+		}
+
+		let alignment_options = [ 'left', 'center', 'right', 'full' ];
+		if ( 'stack' === layout ) {
+			alignment_options = [ 'left', 'center', 'right' ];
+			if ( 'full' === align ) {
+				setAttributes( {
+					align: 'left',
+				} )
+			}
 		}
 
 		/**
@@ -166,6 +178,15 @@ class UAGBStarRating extends Component {
 					/>
 					<hr/>
 					<BaseControl>
+						<SelectControl
+							label={ __( "Layout", 'ultimate-addons-for-gutenberg' ) }
+							value={ layout }
+							onChange={ ( value ) => setAttributes( { layout: value } ) }
+							options={ [
+								{ value: "inline", label: __( "Inline", 'ultimate-addons-for-gutenberg' ) },
+								{ value: "stack", label: __( "Stack", 'ultimate-addons-for-gutenberg' ) },
+							] }
+						/>
 						<BaseControl.VisualLabel>
 							{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 						</BaseControl.VisualLabel>
@@ -176,7 +197,7 @@ class UAGBStarRating extends Component {
 									align: value,
 								} )
 							}
-							controls={ [ 'left', 'center', 'right', 'full' ] }
+							controls={ alignment_options }
 							isCollapsed={ false }
 						/>
 					</BaseControl>
