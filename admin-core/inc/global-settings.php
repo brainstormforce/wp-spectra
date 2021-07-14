@@ -40,9 +40,23 @@ class GlobalSettings {
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_beta_updates' => array(
-						'type'  => 'toggle',
 						'name'  => '_uag_common[enable_beta_updates]',
 						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+						/* translators: %1$s: link html start, %2$s: link html end*/
+						'desc'  => __(
+							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.The beta version will not install automatically. You will always have the option to ignore it.',
+							'ultimate-addons-for-gutenberg'
+						),
+					),
+				),
+			),
+			'enable_block_condition'          => array(
+				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
+				'fields' => array(
+					'enable_block_condition' => array(
+						'type'    => 'toggle',
+						'name'  => '_uag_common[enable_block_condition]',
+						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => __(
 							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.The beta version will not install automatically. You will always have the option to ignore it.',
