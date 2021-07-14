@@ -42,24 +42,22 @@
 
 		hyperLinks: function() {
 			var hash = window.location.hash.substring(0);
-			if ( '' !== hash && /[^a-z0-9-_]/.test( hash ) ) {
-				var hashId = encodeURI( hash.substring( 0 ) );
-				var selectedAnchor = document.querySelector( hashId );
-				if ( null === selectedAnchor ){
-					return;
-				}
-				var node = $( document ).find( '.wp-block-uagb-table-of-contents' );
-				scroll_offset = node.data( 'offset' );
-				var offset = $( decodeURIComponent( hash ) ).offset();
-				scroll_delay = node.data( 'delay' );
-				if ( "undefined" != typeof offset ) {
-					$( "html, body" ).animate( {
-						scrollTop: ( offset.top - scroll_offset )
-					}, scroll_delay )
-				}
-			}
-			if ( ' ' === hash && ! /[^a-z0-9-_]/.test( hash ) ) { 
+			if ( '' === hash && ! /[^a-z0-9-_]/.test( hash ) ) { 
 				return;
+			}
+			var hashId = encodeURI( hash.substring( 0 ) );
+			var selectedAnchor = document.querySelector( hashId );
+			if ( null === selectedAnchor ){
+				return;
+			}
+			var node = $( document ).find( '.wp-block-uagb-table-of-contents' );
+			scroll_offset = node.data( 'offset' );
+			var offset = $( decodeURIComponent( hash ) ).offset();
+			scroll_delay = node.data( 'delay' );
+			if ( "undefined" != typeof offset ) {
+				$( "html, body" ).animate( {
+					scrollTop: ( offset.top - scroll_offset )
+				}, scroll_delay )
 			}
 		},
 
