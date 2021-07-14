@@ -67,15 +67,10 @@ class UAGB_Front_Assets {
 	 * @since 1.23.0
 	 */
 	public function set_initial_variables() {
+
 		$this->post_id = get_the_ID();
 
 		if ( ! $this->post_id ) {
-			return;
-		}
-
-		$this->post_assets = new UAGB_Post_Assets( $this->post_id );
-
-		if ( ! $this->post_assets->is_allowed_assets_generation ) {
 			return;
 		}
 
@@ -83,33 +78,30 @@ class UAGB_Front_Assets {
 
 			if ( is_cart() ) {
 
-				$id        = get_option( 'woocommerce_cart_page_id' );
-				$this_post = get_post( $id );
-
+				$id = get_option( 'woocommerce_cart_page_id' );
 			} elseif ( is_account_page() ) {
 
-				$id        = get_option( 'woocommerce_myaccount_page_id' );
-				$this_post = get_post( $id );
-
+				$id = get_option( 'woocommerce_myaccount_page_id' );
 			} elseif ( is_checkout() ) {
 
-				$id        = get_option( 'woocommerce_checkout_page_id' );
-				$this_post = get_post( $id );
-
+				$id = get_option( 'woocommerce_checkout_page_id' );
 			} elseif ( is_checkout_pay_page() ) {
 
-				$id        = get_option( 'woocommerce_pay_page_id' );
-				$this_post = get_post( $id );
-
+				$id = get_option( 'woocommerce_pay_page_id' );
 			} elseif ( is_shop() ) {
 
-				$id        = get_option( 'woocommerce_shop_page_id' );
-				$this_post = get_post( $id );
+				$id = get_option( 'woocommerce_shop_page_id' );
 			}
 
-			if ( ! empty( $this_post ) && is_object( $this_post ) ) {
-				$this->post_assets->prepare_assets( $this_post );
+			if ( isset( $id ) ) {
+				$this->post_id = $id;
 			}
+		}
+
+		$this->post_assets = new UAGB_Post_Assets( $this->post_id );
+
+		if ( ! $this->post_assets->is_allowed_assets_generation ) {
+			return;
 		}
 
 		if ( is_single() || is_page() || is_404() ) {
