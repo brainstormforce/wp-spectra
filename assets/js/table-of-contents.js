@@ -57,7 +57,8 @@
 						scrollTop: ( offset.top - scroll_offset )
 					}, scroll_delay )
 				}
-			}else{
+			}
+			if ( ' ' === hash && ! /[^a-z0-9-_]/.test( hash ) ) { 
 				return;
 			}
 		},
