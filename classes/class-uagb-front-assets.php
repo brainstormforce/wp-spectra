@@ -68,10 +68,10 @@ class UAGB_Front_Assets {
 	 */
 	public function set_initial_variables() {
 
-		$this->post_id = get_the_ID();
+		$this->post_id = false;
 
-		if ( ! $this->post_id ) {
-			return;
+		if ( is_single() || is_page() || is_404() ) {
+			$this->post_id = get_the_ID();
 		}
 
 		if ( class_exists( 'WooCommerce' ) ) {
@@ -93,9 +93,13 @@ class UAGB_Front_Assets {
 				$id = get_option( 'woocommerce_shop_page_id' );
 			}
 
-			if ( isset( $id ) ) {
-				$this->post_id = $id;
+			if ( ! empty( $id ) ) {
+				$this->post_id = intval( $id );
 			}
+		}
+
+		if ( ! $this->post_id ) {
+			return;
 		}
 
 		$this->post_assets = new UAGB_Post_Assets( $this->post_id );
@@ -118,14 +122,6 @@ class UAGB_Front_Assets {
 			if ( $this_post && $this->post_id !== $this_post->ID ) {
 				$this->post_assets->prepare_assets( $this_post );
 			}
-		} elseif ( is_archive() || is_home() || is_search() ) {
-
-			global $wp_query;
-			$cached_wp_query = $wp_query->posts;
-
-			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-				$this->post_assets->prepare_assets( $post );
-			}
 		}
 	}
 
@@ -138,6 +134,21 @@ class UAGB_Front_Assets {
 
 		if ( $this->post_assets ) {
 			$this->post_assets->enqueue_scripts();
+		}
+
+		/* Archive compatibility */
+		if ( is_archive() || is_home() || is_search() ) {
+
+			global $wp_query;
+			$cached_wp_query = $wp_query->posts;
+
+			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+
+				$current_post_assets = new UAGB_Post_Assets( $post->ID );
+
+				$current_post_assets->enqueue_scripts();
+
+			}
 		}
 	}
 
