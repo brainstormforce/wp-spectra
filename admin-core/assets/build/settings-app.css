@@ -287,12 +287,6 @@ body.folded .uag-global-nav-menu {
 .uag-select-option {
   width: 100%; }
 
-.uag-section-heading-field .uag-field__data--label {
-  padding: 25px 0 0; }
-  .uag-section-heading-field .uag-field__data--label label {
-    font-size: 15px;
-    font-weight: var(--heading-weight-600); }
-
 @keyframes uag-saving {
   0% {
     background-position: 200px 0; } }

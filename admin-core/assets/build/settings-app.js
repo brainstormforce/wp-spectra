@@ -483,55 +483,6 @@ var NormalButton = function NormalButton(props) {
 
 /***/ }),
 
-/***/ "./assets/src/fields/SectionHeadingField.js":
-/*!**************************************************!*\
-  !*** ./assets/src/fields/SectionHeadingField.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-html-parser */ "./node_modules/react-html-parser/lib/index.js");
-/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_html_parser__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _SectionHeadingField_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SectionHeadingField.scss */ "./assets/src/fields/SectionHeadingField.scss");
-/* harmony import */ var _SectionHeadingField_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_SectionHeadingField_scss__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-
-function SectionHeadingField(props) {
-  var label = props.label,
-      desc = props.desc;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "uag-field uag-section-heading-field"
-  }, label && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "uag-field__data--label"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", null, label)), desc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "uag-field__desc"
-  }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(desc)));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (SectionHeadingField);
-
-/***/ }),
-
-/***/ "./assets/src/fields/SectionHeadingField.scss":
-/*!****************************************************!*\
-  !*** ./assets/src/fields/SectionHeadingField.scss ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "./assets/src/fields/SelectField.js":
 /*!******************************************!*\
   !*** ./assets/src/fields/SelectField.js ***!
@@ -723,7 +674,7 @@ function ToggleField(props) {
 /*!************************************!*\
   !*** ./assets/src/fields/index.js ***!
   \************************************/
-/*! exports provided: SelectField, SectionHeadingField, NormalButton, ToggleField */
+/*! exports provided: SelectField, NormalButton, ToggleField */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -733,15 +684,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Fields_SelectField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Fields/SelectField */ "./assets/src/fields/SelectField.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectField", function() { return _Fields_SelectField__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _Fields_SectionHeadingField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Fields/SectionHeadingField */ "./assets/src/fields/SectionHeadingField.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SectionHeadingField", function() { return _Fields_SectionHeadingField__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _Fields_NormalButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Fields/NormalButton */ "./assets/src/fields/NormalButton.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NormalButton", function() { return _Fields_NormalButton__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _Fields_NormalButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Fields/NormalButton */ "./assets/src/fields/NormalButton.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NormalButton", function() { return _Fields_NormalButton__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _Fields_ToggleField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @Fields/ToggleField */ "./assets/src/fields/ToggleField.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleField", function() { return _Fields_ToggleField__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
+/* harmony import */ var _Fields_ToggleField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Fields/ToggleField */ "./assets/src/fields/ToggleField.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleField", function() { return _Fields_ToggleField__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
 
 
@@ -1517,13 +1464,6 @@ function SettingTable(props) {
           options: data.options,
           desc: data.desc,
           tooltip: data.tooltip
-        });
-        break;
-
-      case 'heading':
-        component = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_4__["SectionHeadingField"], {
-          label: data.label,
-          desc: data.desc
         });
         break;
 
