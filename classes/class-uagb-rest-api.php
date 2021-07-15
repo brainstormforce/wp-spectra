@@ -88,7 +88,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 *
 		 * @param int $post_id Post ID.
 		 *
-		 * @since x.x.x
+		 * @since 1.23.5
 		 *
 		 * @return boolean Wether the Post contains any Reusable blocks or not.
 		 */

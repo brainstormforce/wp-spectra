@@ -1,6 +1,6 @@
 {
   "name": "ultimate-addons-for-gutenberg",
-  "version": "1.23.4",
+  "version": "1.23.5",
   "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
   "author": "Brainstorm Force",
   "license": "ISC",
@@ -55,7 +55,7 @@
   },
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build && node scripts/generate-assets-files.js",
+    "build": "wp-scripts build && node scripts/generate-assets-files.js && npm run build:placeholder",
     "build:placeholder": "node scripts/generate-blocks-placeholder.js",
     "format:js": "wp-scripts format-js",
     "lint:js": "wp-scripts lint-js",
