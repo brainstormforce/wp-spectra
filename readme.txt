@@ -170,10 +170,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 = 1.23.5 =
 * Improvement: Added compatibility with WordPress v5.8.
-* Fix: Assets Generation issue on frontend when Twenty Twentyone theme is active.
-* Fix: Assets not regenerated for frontend when post conatining reusable blocks is updated.
+* Fix: Assets Generation issue on frontend when Twenty Twenty-one theme is active.
+* Fix: Assets not regenerated for frontend when post containing reusable blocks is updated.
 * Fix: Post Grid: The Block shifts to left on frontend when Twenty Twenty theme is active.
-* Fix: Woocommerce shop page frontend styling gets removed when page is saved from editor.
+* Fix: WooCommerce shop page frontend styling gets removed when page is saved from editor.
 
 = 1.23.4 =
 * Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
