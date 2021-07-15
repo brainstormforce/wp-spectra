@@ -56,6 +56,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_ajax_nopriv_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
+			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		}
 
 		/**
@@ -1358,7 +1359,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
-					array_push( $terms_list, '<a href=' . esc_url( $category_link ) . '>' . esc_html( $value->name ) . '</a>' );
+					array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
 				}
 				echo wp_kses_post( implode( ', ', $terms_list ) );
 				?>
@@ -1417,6 +1418,29 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Render Post Excerpt HTML.
 		 *
+		 * @param int $post_id post id.
+		 * @param int $length lenght of the excerpt.
+		 *
+		 * @since 1.23.0
+		 */
+		public function get_excerpt_by_id( $post_id, $length ) {
+			$the_post    = get_post( $post_id ); // Gets post ID.
+			$the_excerpt = ( ( $the_post->post_excerpt ) ? $the_post->post_excerpt : $the_post->post_content ); // Gets post_content to be used as a basis for the excerpt.
+			$the_excerpt = wp_strip_all_tags( strip_shortcodes( $the_excerpt ) ); // Strips tags and images.
+			$words       = explode( ' ', $the_excerpt, $length + 1 );
+
+			if ( count( $words ) > $length ) :
+				array_pop( $words );
+				array_push( $words, '…' );
+				$the_excerpt = implode( ' ', $words );
+			endif;
+
+			return $the_excerpt;
+		}
+
+		/**
+		 * Render Post Excerpt HTML.
+		 *
 		 * @param array $attributes Array of block attributes.
 		 *
 		 * @since 0.0.1
@@ -1428,14 +1452,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			global $post;
 
-			$post_excerpt = ( '' === $post->post_excerpt ) ? get_the_content() : $post->post_excerpt;
-
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$excerpt = get_the_content();
 			} else {
-				$excerpt = wp_trim_words( $post_excerpt, $length );
+				$excerpt = $this->get_excerpt_by_id( $post->ID, $length );
 			}
 
 			if ( ! $excerpt ) {
@@ -1495,6 +1517,31 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			?>
 			<a class="uagb-post__link-complete-box" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"></a>
 			<?php
+		}
+
+		/**
+		 * Disable canonical on Single Post.
+		 *
+		 * @param  string $redirect_url  The redirect URL.
+		 * @param  string $requested_url The requested URL.
+		 * @since  1.14.9
+		 * @return bool|string
+		 */
+		public function override_canonical( $redirect_url, $requested_url ) {
+
+			global $wp_query;
+
+			if ( is_array( $wp_query->query ) ) {
+
+				if ( true === $wp_query->is_singular
+					&& - 1 === $wp_query->current_post
+					&& true === $wp_query->is_paged
+				) {
+					$redirect_url = false;
+				}
+			}
+
+			return $redirect_url;
 		}
 	}
 

@@ -3477,3 +3477,10 @@ label.uagb-border-label {
 .uagb-inspector-tab .components-select-control {
 	height: auto;
 }
+button.components-button.uagb-review-select-btn.is-secondary {
+	margin-bottom: 10px;
+}
+
+.uag-typography-font-family-options {
+	margin-top: 24px;
+}

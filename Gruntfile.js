@@ -21,15 +21,19 @@ module.exports = function(grunt) {
 					"!package.json",
 					"!package-lock.json",
 					"!.gitignore",
+					"!.gitattributes",
 					"!*.zip",
 					"!Optimization.txt",
 					"!composer.json",
 					"!composer.lock",
 					"!phpcs.xml.dist",
+					"!phpunit.xml.dist",
 					"!vendor/**",
 					"!src/**",
 					"!scripts/**",
-					"!config/**"
+					"!config/**",
+					"!tests/**",
+					"!bin/**"
 				],
 				dest: "ultimate-addons-for-gutenberg/"
 			}

@@ -38,7 +38,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 */
 		public function __construct() {
 
-			add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 101 );
 		}
 		/**
 		 * Generates stylesheet and appends in head tag.
@@ -47,9 +47,9 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 */
 		public function generate_stylesheet() {
 
-			$panel_count = twentyseventeen_panel_count();
-
-			$all_posts = array();
+			$panel_count     = twentyseventeen_panel_count();
+			$post_assets_obj = uagb_get_front_post_assets();
+			$all_posts       = array();
 
 			for ( $i = 1; $i <= $panel_count; $i++ ) {
 				$mod_key = 'panel_' . $i;
@@ -58,12 +58,12 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 				array_push( $all_posts, $post );
 			}
 
-			foreach ( $all_posts as $post ) {
-
-				UAGB_Frontend::get_instance()->prepare_assets( $post );
+			if ( ! is_object( $post_assets_obj ) ) {
+				return;
 			}
-			if ( 'enabled' === UAGB_Helper::$file_generation ) {
-				UAGB_Frontend::file_write( UAGB_Frontend::$stylesheet, 'css' );
+
+			foreach ( $all_posts as $post ) {
+				$post_assets_obj->prepare_assets( $post );
 			}
 		}
 	}

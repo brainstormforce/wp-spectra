@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.22.3
+Stable tag: 1.23.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,9 +168,66 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.23.5 =
+* Fix: Assets Generation issue on frontend when Twenty Twentyone theme is active.
+* Fix: Assets not regenerated for frontend when post conatining reusable blocks is updated.
+* Fix: Post Grid: The Block shifts to left on frontend when Twenty Twenty theme is active.
+
+= 1.23.4 =
+* Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.
+* Fix: Assets Generation on Archive Pages not working for all Posts on frontend.
+* Fix: Core button Block alignment is not working in advanced column block.
+* Fix: Twenty Seventeen Compatibility - Uncaught Error on pages.
+
+= 1.23.3 =
+* Fix: Table of Contents - UTF-8 encoding on frontend.
+* Fix: Table of Contents - Fatal error when $doc->documentElement is null in some cases on frontend.
+* Fix: Table of Contents - Scroll to Top icon not visible on frontend.
+* Fix: Posts - "B7" displayed in place of " . " icon on frontend when file generation is disabled.
+
+= 1.23.2 =
+* Fix: Table of Contents: Headings with HTML tags are not visible on the frontend.
+* Fix: Table of Contents - Question marks are rendered in place of UTF-8 characters for few languages in Heading.
+* Fix: Section - Full-Width option not being applied on the front-end according to theme content width.
+* Fix: Post Layouts - Showing post content instead of post except on the front-end.
+
+= 1.23.1 =
+* Fix: Broken path while generating assets (CSS/JS).
+* Fix: Table of Contents - Heading convert to question marks on the frontend.
+* Fix: Table of Contents - Unexpected characters in links. Restricted to alphanumeric characters.
+
 = 1.23.0 =
-* Improvement: Improve the Dynamic Assets loading functionality for better performance.
-* Improvement: Static CSS Optimized by loading block specific CSS on a Page.
+* New: Added an option to rollback to a previous version.
+* New: Added an option to get update notifications for beta versions.
+* New: Lottie - Added alignment Option.
+* Improvement: Frontend optimization by reducing one request of CSS.
+* Improvement: Improved the Dynamic Assets loading functionality for better performance.
+* Improvement: Static CSS Optimized by loading only used blocks' CSS on a Page.
+* Improvement: Table of content - Optimized headings rendering to remove CLS impact.
+* Fix: Advanced Column - Column Gap Setting overlapping issue.
+* Fix: Advanced Column - Column Gap Setting not working in the Editor issue.
+* Fix: Advanced Column - Stack on tablet and mobile in preview mode.
+* Fix: Blockquote - Tweet link showing an empty page link and username.
+* Fix: Block condition - Conflicting with Real Media Library plugin.
+* Fix: Blocks throwing an error when deactivate all the UAG blocks except the Multi Buttons, Forms & How To.
+* Fix: Inline Notice and Review Schema block UI broken if Gutenberg plugin is activated.
+* Fix: Lottie - Settings conflict issue.
+* Fix: Lottie - Alignment issue in the editor.
+* Fix: Post Grid - Link to complete box redirect to the last post when image background set to Top.
+* Fix: Post Layout - Conflicting with the Envira Gallery plugin.
+* Fix: Post Layout - Invalid HTML markup of a post meta link.
+* Fix: Section - Margin Left/Right not working issue.
+* Fix: Social Share - Query string variables were omitted after the first ampersand. Encoded the Page/Post URL.
+* Fix: Table of content - HTML validation issue.
+* Fix: Table of Contents - Default heading was displaying instead of previously set heading.
+
+= 1.22.5 =
+* Improvement: Updated Gutenberg Template Library.
+
+= 1.22.4 =
+* Fix: Advanced Columns - Margin option missing in spacing setting for inner column.
+* Fix: Blockquote - Javascript console error when Twitter Icon is disabled.
+* Fix: Table of Contents - Not allowed HTML tags in title and JS minification issue.
 
 = 1.22.3 =
 * Improvement: Advanced Column - Added two more shapes dividers for top and bottom.

@@ -10,8 +10,21 @@
 
 .block-editor-page {
 	.uagb-toc__scroll-top {
-		&.dashicons {
-			right: 343px;
+		display: none;
+		position: fixed;
+		bottom: 50px;
+		padding: 10px;
+		background: #ccd0d4;
+		cursor: pointer;
+		font-size: 1rem;
+		right: 343px;
+		line-height: 1.85714285714286;
+		svg {
+			margin-left: 0px;
+			transform: translate(0, -20%) rotate(180deg);
+			width: 1.6em;
+			height: .6em;
+			fill: currentColor;
 		}
 		&.uagb-toc__show-scroll {
 			display: inline-table;
@@ -21,4 +34,16 @@
 
 .uagb-light-font-weight {
 	font-weight: 400;
+}
+
+
+.block-editor-block-list__block .wp-block-uagb-table-of-contents {
+	ol.uagb-toc__list li.uagb-toc__list ul,
+	ol.uagb-toc__list ul.uagb-toc__list ul {
+		list-style-type: circle;
+	}
+	ol.uagb-toc__list > ul,
+	ol.uagb-toc__list > li {
+		list-style-type: disc;
+	}
 }

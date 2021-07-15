@@ -3,6 +3,7 @@
 .editorconfig
 .git
 .gitignore
+.gitattributes
 .gitlab-ci.yml
 .travis.yml
 .DS_Store
@@ -20,6 +21,7 @@ multisite.xml
 multisite.xml.dist
 phpcs.xml
 phpcs.xml.dist
+phpunit.xml.dist
 README.md
 wp-cli.local.yml
 tests

@@ -45,8 +45,8 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 					'arrows'         => $arrows,
 					'dots'           => $dots,
 					'rtl'            => is_rtl(),
-					'prevArrow'      => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '"  ><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg></button>',
-					'nextArrow'      => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: ' . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . 'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="' . $attr['arrowSize'] . '" width = "' . $attr['arrowSize'] . '" fill ="' . $attr['arrowColor'] . '" ><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg></button>',
+					'prevArrow'      => "<button type='button' data-role='none' class='slick-prev' aria-label='Previous' tabindex='0' role='button' style='border-color: " . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . "px'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512' height ='" . $attr['arrowSize'] . "' width = '" . $attr['arrowSize'] . "' fill ='" . $attr['arrowColor'] . "'  ><path d='M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z'></path></svg></button>",
+					'nextArrow'      => "<button type='button' data-role='none' class='slick-next' aria-label='Next' tabindex='0' role='button' style='border-color: " . $attr['arrowColor'] . ';border-radius:' . $attr['arrowBorderRadius'] . 'px;border-width:' . $attr['arrowBorderSize'] . "px'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512' height ='" . $attr['arrowSize'] . "' width = '" . $attr['arrowSize'] . "' fill ='" . $attr['arrowColor'] . "' ><path d='M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z'></path></svg></button>",
 					'responsive'     => array(
 						array(
 							'breakpoint' => 1024,
@@ -89,6 +89,10 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			if ( ! $attr['enableTweet'] ) {
+				return '';
+			}
+
 			$target = $attr['iconTargetUrl'];
 
 			$url = '';
@@ -108,12 +112,19 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			ob_start();
 			?>
 			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
-			var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
-			blockquote__tweet[0].addEventListener("click",function(){
-				var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-				var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . <?php $url; ?>. '")+"&text="+content+"&via="+("' . <?php $via; ?> . '"); 
-				window.open( request_url ); 
-			});
+			if ( selector.length > 0 ) {
+
+				var blockquote__tweet = selector[0].getElementsByClassName("uagb-blockquote__tweet-button");
+
+				if ( blockquote__tweet.length > 0 ) {
+
+					blockquote__tweet[0].addEventListener("click",function(){
+						var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
+						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+content+"&via="+("<?php echo esc_html( $via ); ?>"); 
+						window.open( request_url ); 
+					});
+				}
+			}
 			<?php
 			return ob_get_clean();
 
@@ -151,9 +162,9 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						}
 						var  request_url ="";
 						if( social_url.indexOf("/pin/create/link/?url=") !== -1) {
-							request_url = social_url + window.location.href + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
+							request_url = social_url + encodeURIComponent( window.location.href ) + "&media=" + '<?php echo esc_url( $thumbnail ); ?>';
 						}else{
-							request_url = social_url + window.location.href;
+							request_url = social_url + encodeURIComponent( window.location.href );
 						}
 						window.open( request_url, target );
 					});
@@ -178,10 +189,15 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
 			$selector      = $base_selector . $id;
 
+			$attrs_needed_in_js = array(
+				'mappingHeaders' => $attr['mappingHeaders'],
+				'scrollToTop'    => $attr['scrollToTop'],
+			);
+
 			ob_start();
 			?>
 			jQuery( document ).ready(function() {
-				UAGBTableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+				UAGBTableOfContents._run( <?php echo wp_json_encode( $attrs_needed_in_js ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 			});
 			<?php
 			return ob_get_clean();
@@ -255,6 +271,32 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			jQuery( document ).ready(function() {
 				UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 			});
+			<?php
+			return ob_get_clean();
+
+		}
+		/**
+		 * Get Tabs Js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_tabs_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
+
+			$attr     = array_merge( $defaults, (array) $attr );
+			$selector = '.uagb-block-' . $id;
+			ob_start();
+			?>
+			window.addEventListener( 'load', function() {
+				UAGBTabs.init( '<?php echo esc_attr( $selector ); ?>' );
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			});
+			window.addEventListener( 'hashchange', function() {
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			}, false );
 			<?php
 			return ob_get_clean();
 
