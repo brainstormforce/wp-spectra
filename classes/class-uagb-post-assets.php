@@ -148,7 +148,7 @@ class UAGB_Post_Assets {
 	 */
 	public function __construct( $post_id ) {
 
-		$this->post_id = $post_id;
+		$this->post_id = intval( $post_id );
 
 		$this->file_generation = UAGB_Helper::$file_generation;
 
