@@ -278,7 +278,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Get Tabs Js
 		 *
-		 * @since x.x.x
+		 * @since 1.23.5
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */

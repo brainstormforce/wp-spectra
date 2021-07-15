@@ -45,7 +45,11 @@ class UAGB_Init_Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
-		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
+			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+		} else {
+			add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		}
 
 		add_action( 'wp_ajax_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
