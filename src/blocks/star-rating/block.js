@@ -14,7 +14,7 @@ import { registerBlockType } from '@wordpress/blocks';
 registerBlockType( "uagb/star-rating", {
 	title: __( 'Star Rating', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block lets you add a star rating.', 'ultimate-addons-for-gutenberg' ),
-	icon: UAGB_Block_Icons.advanced_heading,
+	icon: UAGB_Block_Icons.star_rating,
 	keywords: [
 		__( "rating", 'ultimate-addons-for-gutenberg' ),
 		__( "star rating", 'ultimate-addons-for-gutenberg' ),
