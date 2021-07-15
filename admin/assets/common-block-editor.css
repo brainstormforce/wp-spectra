@@ -212,6 +212,7 @@ hr.uagb-editor__separator {
 	color: #23282d;
 	background-color: #e4e5e5;
 	box-shadow: none;
+	border-radius: 2px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
