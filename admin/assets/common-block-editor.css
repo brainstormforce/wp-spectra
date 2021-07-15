@@ -3484,3 +3484,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uag-typography-font-family-options {
 	margin-top: 24px;
 }
+.uagb-spacing-control__actions .uagb-size-type-field-tabs {
+	margin: 0;
+}
