@@ -76,7 +76,7 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && blockType.includes(blockName) &&
+				{isSelected && blockType.includes(blockName) && attributes.ids && attributes.ids.length !== 0 &&
 					<InspectorControls>
 						<PanelBody title={ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 							<ToggleControl
