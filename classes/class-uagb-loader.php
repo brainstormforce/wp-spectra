@@ -116,7 +116,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			$this->load_textdomain();
 
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
-			require_once UAGB_DIR . 'lib/notices/class-astra-notices.php';
+			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
