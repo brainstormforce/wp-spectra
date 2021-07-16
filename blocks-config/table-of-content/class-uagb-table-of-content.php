@@ -353,25 +353,29 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 */
 		public function filter_headings_by_mapping_headers( $headings, $mapping_headers_array ) {
 
-			return array_map(
-				function ( $heading ) use ( $mapping_headers_array ) {
+			$filtered_headings = array();
 
-					$mapping_header = 0;
-					foreach ( $mapping_headers_array as $key => $value ) {
+			foreach ( $headings as $heading ) {
 
-						if ( $mapping_headers_array[ $key ] ) {
+				$mapping_header = 0;
 
-							$mapping_header = ( $key + 1 );
-						}
+				foreach ( $mapping_headers_array as $key => $value ) {
 
-						if ( isset( $heading ) && $mapping_header === $heading['level'] ) {
+					if ( $mapping_headers_array[ $key ] ) {
 
-							return $heading;
-						}
+						$mapping_header = ( $key + 1 );
 					}
-				},
-				$headings
-			);
+
+					if ( isset( $heading ) && $mapping_header === $heading['level'] ) {
+
+						$filtered_headings[] = $heading;
+						break;
+					}
+				}
+			}
+
+			return $filtered_headings;
+
 		}
 		/**
 		 * Renders the UAGB Table Of Contents block.
