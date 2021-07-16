@@ -3488,3 +3488,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-spacing-control__actions .uagb-size-type-field-tabs {
 	margin: 0;
 }
+.components-toggle-control__label {
+	line-height: 2;
+}
