@@ -1714,6 +1714,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 						),
 					),
+					'uagb/masonry-gallery'        => array(
+						'slug'        => '',
+						'title'       => __( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block fetches the Core Gallery and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'extension'   => true,
+						'js_assets'   => array(),
+						'attributes'  => array(),
+					),
 					'uagb/post-title'             => array(
 						'slug'        => '',
 						'title'       => __( 'Post Title', 'ultimate-addons-for-gutenberg' ),

@@ -5605,5 +5605,131 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
 		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_gallery_css( $attr, $id ) {
+			if ( isset( $attr['masonry'] ) && true === $attr['masonry'] ) {
+				$col_count = ( isset( $attr['columns'] ) ) ? $attr['columns'] : 3;
+				$selectors = array();
+				if ( isset( $attr['masonryGutter'] ) && '' !== $attr['masonryGutter'] ) {
+					$selectors = array(
+						'.wp-block-gallery.columns-' . $col_count . ' ul.blocks-gallery-grid' => array(
+							'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+						'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item' => array(
+							'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+					);
+				}
+				$t_selectors = array();
+				if ( $col_count > 3 ) {
+					$t_selectors = array(
+						'.wp-block-gallery.columns-' . $col_count . ' .blocks-gallery-grid' => array(
+							'column-count' => '3',
+						),
+					);
+				}
+			}
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => array(),
+			);
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @since x.x.x
+		 */
+		public static function get_masonry_gallery_css() {
+
+			$selectors = array(
+				' .blocks-gallery-grid .blocks-gallery-item' => array(
+					'margin'             => 0,
+					'display'            => 'block',
+					'grid-template-rows' => '1fr auto',
+					'margin-bottom'      => '1em',
+					'break-inside'       => 'avoid',
+					'width'              => 'unset',
+				),
+				'.wp-block-gallery .blocks-gallery-grid' => array(
+					'column-gap' => '1em',
+					'display'    => 'unset',
+				),
+				'.columns-1 .blocks-gallery-grid'        => array(
+					'column-count' => '1',
+				),
+				'.columns-2 .blocks-gallery-grid'        => array(
+					'column-count' => '2',
+				),
+				'.columns-3 .blocks-gallery-grid'        => array(
+					'column-count' => '3',
+				),
+				'.columns-4 .blocks-gallery-grid'        => array(
+					'column-count' => '4',
+				),
+				'.columns-5 .blocks-gallery-grid'        => array(
+					'column-count' => '5',
+				),
+				'.columns-6 .blocks-gallery-grid'        => array(
+					'column-count' => '6',
+				),
+				'.columns-7 .blocks-gallery-grid'        => array(
+					'column-count' => '7',
+				),
+				'.columns-8 .blocks-gallery-grid'        => array(
+					'column-count' => '8',
+				),
+			);
+
+			$m_selectors = array(
+				'.wp-block-gallery[class*="columns-"] .blocks-gallery-grid' => array(
+					'column-count' => '2',
+					'column-gap'   => '1em',
+					'display'      => 'unset',
+				),
+				'.wp-block-gallery.columns-1 .blocks-gallery-grid'        => array(
+					'column-count' => '1',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => array(),
+				'mobile'  => $m_selectors,
+			);
+
+			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uag-masonry' );
+
+			$desktop = $css['desktop'];
+			$tablet  = $css['tablet'];
+			$mobile  = $css['mobile'];
+
+			$tab_styling_css = '';
+			$mob_styling_css = '';
+
+			if ( ! empty( $tablet ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= $tablet;
+				$tab_styling_css .= '}';
+			}
+
+			if ( ! empty( $mobile ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= $mobile;
+				$mob_styling_css .= '}';
+			}
+
+			return $desktop . $tab_styling_css . $mob_styling_css;
+		}
 	}
 }
