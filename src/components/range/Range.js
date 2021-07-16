@@ -7,8 +7,11 @@ import {
 	__experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
+const { useSelect, useDispatch } = wp.data;
+
 import { __ } from "@wordpress/i18n";
 import "./range.scss";
+import map from "lodash/map";
 
 const isNumberControlSupported = !!NumberControl;
 
@@ -41,6 +44,34 @@ const Range = (props) => {
 			setCacheValue(cachedValueUpdate);
 		}
 	}, [props.value]);
+
+	const {
+		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
+	} = useDispatch("core/edit-post");
+	const customSetPreviewDeviceType = (device) => {
+		setPreviewDeviceType(device);
+	};
+	const deviceType = useSelect((select) => {
+		return select("core/edit-post").__experimentalGetPreviewDeviceType();
+	}, []);
+	const devices = [
+		{
+			name: "Desktop",
+			title: <Dashicon icon="desktop" />,
+			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
+		},
+		{
+			name: "Tablet",
+			title: <Dashicon icon="tablet" />,
+			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
+		},
+		{
+			name: "Mobile",
+			key: "mobile",
+			title: <Dashicon icon="smartphone" />,
+			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
+		},
+	];
 
 	const unitSizes = [
 		{
@@ -113,6 +144,30 @@ const Range = (props) => {
 					<p className={"uagb-range-control__label"}>{props.label}</p>
 				)}
 				<div className="uagb-range-control__actions">
+					{props.responsive && (
+						<ButtonGroup
+							className="uagb-range-control-responsive components-tab-panel__tabs"
+							aria-label={__(
+								"Device",
+								"ultimate-addons-for-gutenberg"
+							)}
+						>
+							{map(devices, ({ name, key, title, itemClass }) => (
+								<Button
+									key={key}
+									className={`components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${itemClass}${
+										name === deviceType ? " active-tab" : ""
+									}`}
+									aria-pressed={deviceType === name}
+									onClick={() =>
+										customSetPreviewDeviceType(name)
+									}
+								>
+									{title}
+								</Button>
+							))}
+						</ButtonGroup>
+					)}
 					<Button
 						className="uagb-reset"
 						disabled={cachedValue.resetDisabled}
@@ -140,7 +195,7 @@ const Range = (props) => {
 			</div>
 			<div className="uagb-range-control__mobile-controls">
 				<RangeControl
-					value={props.value}
+					value={props.value || ""}
 					onChange={handleOnChange}
 					withInputField={false}
 					allowReset={false}
@@ -154,7 +209,7 @@ const Range = (props) => {
 						max={props.max}
 						min={props.min}
 						onChange={handleOnChange}
-						value={props.value}
+						value={props.value || ""}
 					/>
 				)}
 			</div>
@@ -175,6 +230,7 @@ Range.defaultProps = {
 	initialPosition: 0,
 	unit: ["px", "em"],
 	displayUnit: true,
+	responsive: false,
 	onChange: () => {},
 };
 

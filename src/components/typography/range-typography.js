@@ -3,13 +3,9 @@
  */
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
-
-const { ButtonGroup, Button, Dashicon } = wp.components;
-
 // Extend component
 const { Fragment } = wp.element;
 const { useSelect, useDispatch } = wp.data;
-import map from "lodash/map";
 
 /**
  * Build the Measure controls
@@ -19,30 +15,7 @@ export default function RangeTypographyControl(props) {
 	const deviceType = useSelect((select) => {
 		return select("core/edit-post").__experimentalGetPreviewDeviceType();
 	}, []);
-	const {
-		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-	} = useDispatch("core/edit-post");
-	const customSetPreviewDeviceType = (device) => {
-		setPreviewDeviceType(device);
-	};
-	const devices = [
-		{
-			name: "Desktop",
-			title: <Dashicon icon="desktop" />,
-			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
-		},
-		{
-			name: "Tablet",
-			title: <Dashicon icon="tablet" />,
-			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
-		},
-		{
-			name: "Mobile",
-			key: "mobile",
-			title: <Dashicon icon="smartphone" />,
-			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
-		},
-	];
+
 	let sizeTypes;
 
 	if ("sizeTypes" in props) {
@@ -55,6 +28,7 @@ export default function RangeTypographyControl(props) {
 	}
 
 	const output = {};
+
 	output.Desktop = (
 		<Fragment>
 			<Range
@@ -67,6 +41,7 @@ export default function RangeTypographyControl(props) {
 				min={0}
 				max={100}
 				unit={props.type}
+				responsive={true}
 			/>
 		</Fragment>
 	);
@@ -82,6 +57,7 @@ export default function RangeTypographyControl(props) {
 				min={0}
 				max={100}
 				unit={props.type}
+				responsive={true}
 			/>
 		</Fragment>
 	);
@@ -97,6 +73,7 @@ export default function RangeTypographyControl(props) {
 				min={0}
 				max={100}
 				unit={props.type}
+				responsive={true}
 			/>
 		</Fragment>
 	);
@@ -104,23 +81,6 @@ export default function RangeTypographyControl(props) {
 	return (
 		<div className={"uag-typography-range-options"}>
 			<div className="uagb-size-type-field-tabs">
-				<ButtonGroup
-					className="components-tab-panel__tabs"
-					aria-label={__("Device", "ultimate-addons-for-gutenberg")}
-				>
-					{map(devices, ({ name, key, title, itemClass }) => (
-						<Button
-							key={key}
-							className={`components-button components-tab-panel__tabs-item ${itemClass}${
-								name === deviceType ? " active-tab" : ""
-							}`}
-							aria-pressed={deviceType === name}
-							onClick={() => customSetPreviewDeviceType(name)}
-						>
-							{title}
-						</Button>
-					))}
-				</ButtonGroup>
 				<div className="uagb-responsive-control-inner">
 					{output[deviceType] ? output[deviceType] : output.Desktop}
 				</div>

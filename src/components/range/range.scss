@@ -29,6 +29,12 @@
 	.uagb-range-control__label {
 		margin-bottom: 0;
 	}
+	.uagb-range-control-responsive {
+		display: flex;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+	}
 	.uagb-range-control__actions {
 		position: relative;
 		top: -2px;
