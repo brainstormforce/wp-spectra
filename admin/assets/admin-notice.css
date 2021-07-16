@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+#uagb-admin-rating .notice-container{
+    display:flex;
+}
+
 .astra-notice .notice-content {
 	margin-left: 15px;
 }
