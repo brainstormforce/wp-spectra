@@ -113,17 +113,6 @@ const Range = (props) => {
 					<p className={"uagb-range-control__label"}>{props.label}</p>
 				)}
 				<div className="uagb-range-control__actions">
-					{props.displayUnit && (
-						<ButtonGroup
-							className="uagb-range-control__units"
-							aria-label={__(
-								"Select Units",
-								"ultimate-addons-for-gutenberg"
-							)}
-						>
-							{onUnitSizeClick(unitSizes)}
-						</ButtonGroup>
-					)}
 					<Button
 						className="uagb-reset"
 						disabled={cachedValue.resetDisabled}
@@ -136,6 +125,17 @@ const Range = (props) => {
 					>
 						<Dashicon icon="image-rotate" />
 					</Button>
+					{props.displayUnit && (
+						<ButtonGroup
+							className="uagb-range-control__units"
+							aria-label={__(
+								"Select Units",
+								"ultimate-addons-for-gutenberg"
+							)}
+						>
+							{onUnitSizeClick(unitSizes)}
+						</ButtonGroup>
+					)}
 				</div>
 			</div>
 			<div className="uagb-range-control__mobile-controls">
