@@ -99,10 +99,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 *
 		 * @return array The list of headings.
 		 */
-		public function table_of_contents_get_headings_from_content(
-			$content,
-			$mapping_headers_array
-		) {
+		public function table_of_contents_get_headings_from_content( $content ) {
 
 			/* phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase */
 			// Disabled because of PHP DOMDocument and DOMXPath APIs using camelCase.
@@ -369,7 +366,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							$mapping_header = ( $key + 1 );
 						}
 
-						if ( $mapping_header === $heading['level'] ) {
+						if ( isset( $heading ) && $mapping_header === $heading['level'] ) {
 
 							return $heading;
 						}
@@ -404,10 +401,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 
-				$uagb_toc_heading_content = $this->table_of_contents_get_headings_from_content(
-					get_post( $post->ID )->post_content,
-					$attributes['mappingHeaders']
-				);
+				$uagb_toc_heading_content = $this->table_of_contents_get_headings_from_content( get_post( $post->ID )->post_content );
 
 				$meta_array = array(
 					'_uagb_toc_version'  => UAGB_ASSET_VER,
