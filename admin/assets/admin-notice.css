@@ -1,7 +1,7 @@
 .astra-notice .notice-container{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	display: flex;
+	display: block;
 	justify-content: left;
 	align-items: center;
 }
