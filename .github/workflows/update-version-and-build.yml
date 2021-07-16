@@ -16,7 +16,6 @@ jobs:
     outputs:
       old_version: ${{ steps.get_version.outputs.old_version }}
       new_version: ${{ steps.get_version.outputs.new_version }}
-      release_branch: ${{ steps.get_version.outputs.release_branch }}
     steps:
       - name: Setup PHP without xdebug
         uses: shivammathur/setup-php@v2
@@ -33,6 +32,8 @@ jobs:
 
       - name: "Checkout"
         uses: actions/checkout@master
+        with:
+          ref: next-release
 
       - name: Initialize mandatory git config
         run: |
@@ -80,8 +81,8 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Auto build generated
-          base: 'next-release'
+          commit-message: Version & build files updated
+          base: next-release
           branch: ${{ VERSION }}-build
           delete-branch: true
           title: 'Updated version and build files'
