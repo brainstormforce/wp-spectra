@@ -16,5 +16,12 @@
   },
   "require": {
     "brainstormforce/astra-notices": "^1.1"
+  },
+  "extra": {
+    "installer-paths": {
+        "lib/{$name}/": [
+            "brainstormforce/astra-notices"
+        ]
+    }
   }
 }
