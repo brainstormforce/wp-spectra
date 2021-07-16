@@ -709,6 +709,10 @@ class UAGB_Post_Assets {
 				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 				break;
 
+			case 'uagb/star-rating':
+				$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
+				break;
+
 			default:
 				// Nothing to do here.
 				break;
