@@ -53,10 +53,10 @@ class CommonSettings extends AjaxBase {
 			'enable_beta_updates',
 			'enable_file_generation',
 			'regenerate_assets',
+			'enable_templates_button',
+			'enable_block_condition',
 			'blocks_activation_and_deactivation',
 			'activate_deactivate_all_blocks',
-			'enable_templates_button',
-			'enable_block_condition'
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -87,7 +87,7 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 		
-		AdminHelper::set_common_settings( 'enable_block_condition', $_POST['value'] );
+		$this->update_admin_settings_option( 'enable_block_condition',  sanitize_text_field($_POST['value']) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -125,7 +125,7 @@ class CommonSettings extends AjaxBase {
 		if ( 'disabled' === $_POST['value'] ) {
 			$enable_template_button = 'no';
 		}
-		AdminHelper::set_common_settings( 'enable_templates_button', $enable_template_button );
+		$this->update_admin_settings_option( 'enable_templates_button',  sanitize_text_field($enable_template_button) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -239,10 +239,8 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( isset( $_POST ) ) {
-			AdminHelper::set_common_settings( 'enable_beta_updates', $_POST['value'] );
-			
-			update_option( 'uagb_beta', sanitize_text_field($_POST['value'] ) );
+		if ( isset( $_POST ) ) {		
+			$this->update_admin_settings_option( 'uagb_beta', sanitize_text_field($_POST['value'] ) );
 
 		}
 
@@ -280,9 +278,8 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 
-			AdminHelper::set_common_settings( 'enable_file_generation', $_POST['value'] );
 
-			update_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
+			$this->update_admin_settings_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 
 		}
 
@@ -328,7 +325,7 @@ class CommonSettings extends AjaxBase {
 			}
 
 			/* Update the asset version */
-			update_option( '__uagb_asset_version', time() );
+			$this->update_admin_settings_option( '__uagb_asset_version', time() );
 
 		}
 
@@ -354,25 +351,6 @@ class CommonSettings extends AjaxBase {
 
 		$this->update_admin_settings_option( 'uag_delete_plugin_data', $new_settings, false );
 	}
-
-	/**
-	 * Save settings.
-	 *
-	 * @return void
-	 */
-	public function save_general_settings() {
-
-		$new_settings = array();
-
-		if ( isset( $_POST['_uag_common'] ) ) { //phpcs:ignore
-			// Loop through the input and sanitize each of the values.
-			$new_settings = $this->sanitize_form_inputs( wp_unslash( $_POST['_uag_common'] ) ); //phpcs:ignore
-		}
-
-		$this->update_admin_settings_option( '_uag_common', $new_settings, false );
-	}
-
-
 
 	/**
 	 * Update admin settings.

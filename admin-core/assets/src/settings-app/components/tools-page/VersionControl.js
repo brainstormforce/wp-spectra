@@ -10,7 +10,7 @@ import apiFetch from '@wordpress/api-fetch';
 function VersionControl( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
-	const [ savingState, setssavingState ] = useState( false );
+	const [ savingState, setsavingState ] = useState( false );
 
 	const [ showPopup, setshowPopup ] = useState( false );
 
@@ -52,38 +52,37 @@ function VersionControl( props ) {
 	const cancelPopup = () => {
 		setshowPopup( false );
 	};
-
-	const enableBetaUpdate = () => {
-		setssavingState( true );
+	const enableBetaUpdate = ( e ) => {
+		e.preventDefault();
+		setsavingState( true );
 		let status;
 		if ( enableBeta == 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
 		}
-		setenableBeta( status );
 		dispatch( {
 			type: 'SET_OPTION',
 			name: '_uag_common[enable_beta_updates]',
 			value: status,
 		} );
-
-		var action = 'uag_enable_beta_updates',
-		nonce = uag_react.enable_beta_updates_nonce;
-
 		let formData = new window.FormData();
 
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
+		formData.append( 'action', 'uag_enable_beta_updates' );
+		formData.append( 'security', uag_react.enable_beta_updates_nonce );
 		formData.append( 'value', status );
-
+		
+		setenableBeta( status );
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingState( false );
+			if(data.success){
+				setsavingState( false );
+			}
 		} );
+		
 	};
 
 	return (

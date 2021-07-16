@@ -774,10 +774,6 @@ function MainSettings() {
                         type: 'SET_SETTINGS',
                         commondata: data
                       });
-                      dispatch({
-                        type: 'SET_PAGE_BUILDER',
-                        pagebuilder: data.options['_uag_common[default_page_builder]']
-                      });
                     }
                   });
 
@@ -1289,11 +1285,11 @@ function Footer() {
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "uag-global-footer"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Please rate UAG Blocks ", stars, " on", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Please rate UAG Blocks ", stars, " on ", ' ', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
     target: "_blank",
     href: "https://wordpress.org/plugins/ultimate-addons-for-gutenberg/",
     rel: "noreferrer"
-  }, "WordPress.org"), "If this product helped you."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Thank you for your support!"));
+  }, "WordPress.org"), ' ', "If this product helped you."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Thank you for your support!"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -2115,7 +2111,7 @@ function VersionControl(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])(false),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
       savingState = _useState2[0],
-      setssavingState = _useState2[1];
+      setsavingState = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])(false),
       _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState3, 2),
@@ -2148,8 +2144,9 @@ function VersionControl(props) {
     setshowPopup(false);
   };
 
-  var enableBetaUpdate = function enableBetaUpdate() {
-    setssavingState(true);
+  var enableBetaUpdate = function enableBetaUpdate(e) {
+    e.preventDefault();
+    setsavingState(true);
     var status;
 
     if (enableBeta == 'no') {
@@ -2158,24 +2155,24 @@ function VersionControl(props) {
       status = 'no';
     }
 
-    setenableBeta(status);
     dispatch({
       type: 'SET_OPTION',
       name: '_uag_common[enable_beta_updates]',
       value: status
     });
-    var action = 'uag_enable_beta_updates',
-        nonce = uag_react.enable_beta_updates_nonce;
     var formData = new window.FormData();
-    formData.append('action', action);
-    formData.append('security', nonce);
+    formData.append('action', 'uag_enable_beta_updates');
+    formData.append('security', uag_react.enable_beta_updates_nonce);
     formData.append('value', status);
+    setenableBeta(status);
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_10___default()({
       url: uag_react.ajax_url,
       method: 'POST',
       body: formData
     }).then(function (data) {
-      setssavingState(false);
+      if (data.success) {
+        setsavingState(false);
+      }
     });
   };
 
@@ -2608,39 +2605,36 @@ function ToolsPage() {
   Object(react__WEBPACK_IMPORTED_MODULE_6__["useEffect"])(function () {
     var isActive = true;
 
-    if (globaldata.length < 1) {
-      var getsettings = /*#__PURE__*/function () {
-        var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.mark(function _callee() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7___default()({
-                    path: '/uag/v1/admin/commonsettings/'
-                  }).then(function (data) {
-                    if (isActive) {
-                      dispatch({
-                        type: 'SET_SETTINGS',
-                        commondata: data
-                      });
-                    }
-                  });
+    var getsettings = /*#__PURE__*/function () {
+      var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7___default()({
+                  path: '/uag/v1/admin/commonsettings/'
+                }).then(function (data) {
+                  if (isActive) {
+                    dispatch({
+                      type: 'SET_SETTINGS',
+                      commondata: data
+                    });
+                  }
+                });
+                getsettings();
 
-                case 1:
-                case "end":
-                  return _context.stop();
-              }
+              case 2:
+              case "end":
+                return _context.stop();
             }
-          }, _callee);
-        }));
+          }
+        }, _callee);
+      }));
 
-        return function getsettings() {
-          return _ref.apply(this, arguments);
-        };
-      }();
-
-      getsettings();
-    }
+      return function getsettings() {
+        return _ref.apply(this, arguments);
+      };
+    }();
 
     return function () {
       isActive = false;
