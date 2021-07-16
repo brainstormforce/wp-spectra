@@ -94,8 +94,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @access public
 		 *
 		 * @param string $content       The post content to extract headings from.
-		 * @param int    $mapping_headers_array The page of the post where the headings are
-		 *                              located.
 		 *
 		 * @return array The list of headings.
 		 */
