@@ -159,11 +159,9 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		var_dump($_POST['value']);
-		AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['value'] );
-
+		
 		// Update new_extensions.
-		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $_POST['value'] );
+		$this->update_admin_settings_option( '_uagb_blocks', $_POST['value'] );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -200,10 +198,7 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 			
-
-			AdminHelper::set_common_settings( 'blocks_activation_and_deactivation', $_POST['blocksValue'] );
-
-			update_option( '_uagb_blocks', $_POST['blocksValue'] );
+			$this->update_admin_settings_option( '_uagb_blocks', $_POST['blocksValue'] );
 
 		}
 
