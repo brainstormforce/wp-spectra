@@ -13,5 +13,8 @@
     "format": "phpcbf",
     "lint": "phpcs",
     "test": "vendor/bin/phpunit"
+  },
+  "require": {
+    "brainstormforce/astra-notices": "^1.1"
   }
 }
