@@ -3,10 +3,10 @@ name: Create a release tag
 on:
   push:
     branches:
-      - release-actions
+      - master
     paths:
         # Release happens only if the version number in main file is updated.
-        #- 'ultimate-addons-for-gutenberg.php'
+        - 'ultimate-addons-for-gutenberg.php'
 
 jobs:
   build-artifact:
