@@ -150,6 +150,21 @@ class UAGB_Front_Assets {
 
 			}
 		}
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			global $wp_query;
+			$cached_wp_query = $wp_query->posts;
+
+			foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+
+				$current_post_assets = new UAGB_Post_Assets( $post->ID );
+
+				$current_post_assets->enqueue_scripts();
+
+			}
+		}
+
 	}
 
 	/**
