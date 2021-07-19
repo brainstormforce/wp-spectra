@@ -32,14 +32,18 @@ function styling( props ) {
 
 	let alignment = 'flex-start';
 	let stack_alignment = align;
+	
 	if ( align ) {
-		if ( 'right' === align ) 
+		if ( 'right' === align ) {
 			alignment = 'flex-end';
-		if ( 'center' === align ) 
+		}
+		if ( 'center' === align ) {
 			alignment = 'center';
-		if ( 'full' === align ) 
+		}
+		if ( 'full' === align ) {
 			alignment = 'space-between';
 			stack_alignment = 'left';
+		}
 	}
 
 	let remainder = ( rating % 1 ).toFixed(1);
