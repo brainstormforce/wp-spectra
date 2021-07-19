@@ -76,14 +76,12 @@ jobs:
         run: npm run makepot
 
       - name: Create Pull Request
-        env:
-          VERSION: ${{ steps.get_version.outputs.new_version }}
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Version & build files updated
           base: next-release
-          branch: ${{ VERSION }}-build
+          branch: ${{ steps.get_version.outputs.new_version }}-build
           delete-branch: true
           title: 'Updated version and build files'
           body: |
