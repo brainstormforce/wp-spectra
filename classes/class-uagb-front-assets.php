@@ -154,7 +154,7 @@ class UAGB_Front_Assets {
 			if ( ! $this->post_id ) {
 				return;
 			}
-	
+
 			$this->post_assets = new UAGB_Post_Assets( $this->post_id );
 
 			$this->post_assets->enqueue_scripts();
