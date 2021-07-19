@@ -48,7 +48,7 @@ jobs:
       - name: Set Release Version
         id: get_release_version
         env:
-          VERSION: ${{ needs.build-artifact.outputs.new_version }}
+          VERSION: ${{ needs.build-artifact.outputs.current_version }}
         run: echo ::set-output name=version::$(echo $VERSION | cut -d / -f 3 | sed 's/-rc./ RC/' )
 
       - name: Download Plugin Zip Artifact
@@ -63,19 +63,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: Version ${{ steps.get_release_version.outputs.version }}
-          tag_name: "v${{ needs.build-artifact.outputs.new_version }}"
+          tag_name: "v${{ steps.get_release_version.outputs.version }}"
           target_commitish: master
           draft: true
           prerelease: false
           body: 'Replace changelog here'
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./ultimate-addons-for-gutenberg.zip
-          asset_name: ultimate-addons-for-gutenberg.zip
-          asset_content_type: application/zip
+          files: ./ultimate-addons-for-gutenberg.zip
