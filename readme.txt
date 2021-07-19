@@ -174,6 +174,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * New: Added Masonry option to core Gallery block.
 * Improvement: Table of Contents - Added scroll to specific anchor tag feature.
 * Fix: Table of Contents - Headings were not displaying correctly when multiple blocks were used on the same page.
+* Fix: Asset generation conflicts with WooCommerce pages.
 
 = 1.23.5 =
 * Improvement: Added compatibility with WordPress v5.8.
