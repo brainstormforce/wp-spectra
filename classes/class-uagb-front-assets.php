@@ -132,7 +132,7 @@ class UAGB_Front_Assets {
 	 */
 	public function enqueue_asset_files() {
 
-		if ( isset( $_REQUEST['preview'], $_REQUEST['preview_nonce'] ) ) {
+		if ( isset( $_REQUEST['preview'], $_REQUEST['preview_nonce'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			add_action( 'wp_head', array( $this, 'print_preview_stylesheet' ) );
 			add_action( 'wp_footer', array( $this, 'print_preview_script' ) );
 		}
@@ -159,6 +159,8 @@ class UAGB_Front_Assets {
 
 	/**
 	 * Print the frontend preview stylesheet in header.
+	 *
+	 * @since x.x.x
 	 */
 	public function print_preview_stylesheet() {
 
@@ -173,6 +175,8 @@ class UAGB_Front_Assets {
 
 	/**
 	 * Print the frontend preview Script in footer.
+	 *
+	 * @since x.x.x
 	 */
 	public function print_preview_script() {
 
