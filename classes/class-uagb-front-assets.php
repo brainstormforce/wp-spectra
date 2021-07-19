@@ -148,16 +148,9 @@ class UAGB_Front_Assets {
 			}
 
 			if ( ! empty( $id ) ) {
-				$this->post_id = intval( $id );
+				$current_post_assets = new UAGB_Post_Assets( intval( $id ) );
+				$current_post_assets->enqueue_scripts();
 			}
-
-			if ( ! $this->post_id ) {
-				return;
-			}
-
-			$this->post_assets = new UAGB_Post_Assets( $this->post_id );
-
-			$this->post_assets->enqueue_scripts();
 		}
 
 	}
