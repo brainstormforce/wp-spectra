@@ -33,21 +33,26 @@ function BlocksSettings( ) {
 		for ( const block in blocksValue ) {
 			value[ block ] = block;
 		}
-		var activeAction = 'uag_activate_deactivate_all_blocks',
-		activeNonce = uag_react.activate_deactivate_all_blocks_nonce;
+		dispatch( {
+			type: 'SET_OPTION',
+			name: '_uag_common[blocks_activation_and_deactivation]',
+			value: value,
+		} );
 
-		let activateFormData = new window.FormData();
+		let data = {
+			'action' : 'uag_blocks_activation_and_deactivation',
+			'security' : uag_react.blocks_activation_and_deactivation_nonce,
+			'value' : value
+		}
 
-		activateFormData.append( 'action', activeAction );
-		activateFormData.append( 'security', activeNonce );
-		activateFormData.append( 'value', value );
-
-		apiFetch( {
+		jQuery.ajax( {
+			type: 'POST',
+			data: data,
 			url: uag_react.ajax_url,
-			method: 'POST',
-			body: activateFormData,
-		} ).then( ( data ) => {
-			setssavingStateActivate( false );
+			success( response ) {
+				setssavingStateActivate( false );
+			},
+		} ).done( function () {
 		} );
 
 	};
@@ -61,21 +66,27 @@ function BlocksSettings( ) {
 		for ( const block in blocksValue ) {
 			value[ block ] = 'disabled';
 		}
-		var action = 'uag_activate_deactivate_all_blocks',
-		nonce = uag_react.activate_deactivate_all_blocks_nonce;
 
-		let formData = new window.FormData();
+		dispatch( {
+			type: 'SET_OPTION',
+			name: '_uag_common[blocks_activation_and_deactivation]',
+			value: value,
+		} );
 
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', value );
+		let data = {
+			'action' : 'uag_blocks_activation_and_deactivation',
+			'security' : uag_react.blocks_activation_and_deactivation_nonce,
+			'value' : value
+		}
 
-		apiFetch( {
+		jQuery.ajax( {
+			type: 'POST',
+			data: data,
 			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			setssavingStateDeactivate( false );
+			success( response ) {
+				setssavingStateDeactivate( false );
+			},
+		} ).done( function () {
 		} );
 			
 	};

@@ -56,7 +56,6 @@ class CommonSettings extends AjaxBase {
 			'enable_templates_button',
 			'enable_block_condition',
 			'blocks_activation_and_deactivation',
-			'activate_deactivate_all_blocks',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -139,42 +138,6 @@ class CommonSettings extends AjaxBase {
 	 *
 	 * @return void
 	 */
-	public function activate_deactivate_all_blocks() {
-
-		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification
-		 */
-		if ( ! check_ajax_referer( 'uag_activate_deactivate_all_blocks', 'security', false ) ) {
-			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
-			wp_send_json_error( $response_data );
-		}
-		
-		// Update new_extensions.
-		$this->update_admin_settings_option( '_uagb_blocks', $_POST['value'] );
-
-		$response_data = array(
-			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
-		);
-		wp_send_json_success( $response_data );
-
-	}
-
-	/**
-	 * Save settings.
-	 *
-	 * @return void
-	 */
 	public function blocks_activation_and_deactivation() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
@@ -196,9 +159,8 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( isset( $_POST ) ) {
-			
-			$this->update_admin_settings_option( '_uagb_blocks', $_POST['blocksValue'] );
+		if ( isset( $_POST ) ) {	
+			$this->update_admin_settings_option( '_uagb_blocks', $_POST['value'] );
 
 		}
 
