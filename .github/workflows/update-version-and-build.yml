@@ -11,8 +11,7 @@ jobs:
     name: "Update version"
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'workflow_dispatch' &&
-      github.ref == 'refs/heads/next-release'
+      github.event_name == 'workflow_dispatch'
     outputs:
       old_version: ${{ steps.get_version.outputs.old_version }}
       new_version: ${{ steps.get_version.outputs.new_version }}
