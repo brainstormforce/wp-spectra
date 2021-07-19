@@ -1,0 +1,98 @@
+name: Update version, run build commands & create a PR
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Enter version number'
+        required: true
+
+jobs:
+  update-version:
+    name: "Update version"
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/next-release'
+    outputs:
+      old_version: ${{ steps.get_version.outputs.old_version }}
+      new_version: ${{ steps.get_version.outputs.new_version }}
+    steps:
+      - name: Setup PHP without xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+
+      - name: Install wp-cli
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          php wp-cli.phar --info
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+
+      - name: "Checkout"
+        uses: actions/checkout@master
+        with:
+          ref: next-release
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "Sandesh - Automation"
+          git config user.email "sandeshj+automation@bsf.io"
+
+      - name: Compute old and new version
+        id: get_version
+        run: |
+          OLD_VERSION=$(jq --raw-output '.version' package.json)
+          echo "::set-output name=old_version::$(echo $OLD_VERSION)"
+          NEW_VERSION=${{ github.event.inputs.version }}
+          echo "::set-output name=new_version::$(echo $NEW_VERSION)"
+
+      - name: Update plugin version
+        env:
+          VERSION: ${{ steps.get_version.outputs.new_version }}
+        run: |
+          cat <<< $(jq --tab --arg version "${VERSION}" '.version = $version' package.json) > package.json
+          cat <<< $(jq --tab --arg version "${VERSION}" '.version = $version' package-lock.json) > package-lock.json
+          sed -i "s/${{ steps.get_version.outputs.old_version }}/${VERSION}/g" ultimate-addons-for-gutenberg.php
+          sed -i "s/${{ steps.get_version.outputs.old_version }}/${VERSION}/g" readme.txt
+
+      - name: Cache node modules
+        id: cache-node
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies and build
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run i18n
+        run: npm run makepot
+
+      - name: Create Pull Request
+        env:
+          VERSION: ${{ steps.get_version.outputs.new_version }}
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Version & build files updated
+          base: next-release
+          branch: ${{ VERSION }}-build
+          delete-branch: true
+          title: 'Updated version and build files'
+          body: |
+              Update report
+              Hi!
+                This PR was created in response to manual workflow.
+                I've updated the version & build files.
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
