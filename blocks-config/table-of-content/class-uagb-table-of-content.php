@@ -343,7 +343,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		/**
 		 * Filters the Headings according to Mapping Headers Array.
 		 *
-		 * @since x.x.x
+		 * @since 1.24.0
 		 * @access public
 		 *
 		 * @param  array $headings Headings.
