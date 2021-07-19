@@ -96,22 +96,6 @@ module.exports = function(grunt) {
 			file: "package.json"
 		},
 		replace: {
-			functions_comment: {
-                src: [
-                    '*.php',
-                    '**/*.php',
-                    '!node_modules/**',
-                    '!php-tests/**',
-                    '!bin/**',
-                ],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: 'x.x.x',
-                        to: '<%=pkg.version %>'
-                    }
-                ]
-            },
             stable_tag: {
                 src: ['readme.txt'],
                 overwrite: true,
@@ -132,6 +116,22 @@ module.exports = function(grunt) {
 					}
 				]
 			},
+            plugin_function_comment: {
+                src: [
+                    '*.php',
+                    '**/*.php',
+                    '!node_modules/**',
+                    '!php-tests/**',
+                    '!bin/**',
+                ],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: 'x.x.x',
+                        to: '<%=pkg.version %>'
+                    }
+                ]
+            },
 			plugin_main: {
 				src: [ "ultimate-addons-for-gutenberg.php" ],
 				overwrite: true,
@@ -142,6 +142,8 @@ module.exports = function(grunt) {
 					}
 				]
 			},
+
+
 		},
 		wp_readme_to_markdown: {
 			your_target: {
@@ -169,7 +171,7 @@ module.exports = function(grunt) {
 	/* Register task started */
 	grunt.registerTask("release", ["clean:zip", "copy","compress","clean:main"])
 	grunt.registerTask('release-no-clean', ['clean:zip', 'copy']);
-	grunt.registerTask('textdomain', [ 'addtextdomain' ] );
+	grunt.registerTask( 'textdomain', [ 'addtextdomain' ] );
 	grunt.registerTask("i18n", ["addtextdomain", "makepot"])
 
 	// Default
@@ -184,7 +186,7 @@ module.exports = function(grunt) {
             newVersion = newVersion ? newVersion : 'patch';
 
             grunt.task.run('bumpup:' + newVersion);
-            grunt.task.run('replace:functions_comment');
+            grunt.task.run('replace');
         }
 	} )
 

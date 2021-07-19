@@ -54,9 +54,6 @@ jobs:
         run: |
           cat <<< $(jq --tab --arg version "${VERSION}" '.version = $version' package.json) > package.json
           cat <<< $(jq --tab --arg version "${VERSION}" '.version = $version' package-lock.json) > package-lock.json
-          sed -i "s/Version: \bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?(?:\+[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?\b/Version: ${VERSION}/g" ultimate-addons-for-gutenberg.php
-          sed -i "s/UAGB_VER', '.*?'/UAGB_VER', '${VERSION}'/g" classes/class-uagb-loader.php
-          sed -i "s/Stable tag: ${{ steps.get_version.outputs.old_version }}/Stable tag: ${VERSION}/g" readme.txt
 
       - name: Cache node modules
         id: cache-node
@@ -71,10 +68,10 @@ jobs:
         run: npm install
 
       - name: Run build
-        run: npm run build
+        run: grunt bump-version --ver=${{ steps.get_version.outputs.new_version }}
 
-      - name: Run replace functions comment
-        run: grunt replace:functions_comment
+      - name: Run build
+        run: npm run build
 
       - name: Run i18n
         run: npm run makepot
