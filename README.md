@@ -169,7 +169,8 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 ## Changelog ##
 
 ### 1.24.0 ###
-* Improvement: Table of content - Added scroll to specific anchor tag feature.
+* Improvement: Table of Contents - Added scroll to specific anchor tag feature.
+* Fix: Table of Contents - Headings not displayed properly when multiple Table of Contents blocks are added on same page.
 
 ### 1.23.5 ###
 * Improvement: Added compatibility with WordPress v5.8.
