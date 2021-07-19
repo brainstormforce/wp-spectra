@@ -1,0 +1,81 @@
+name: Create a release tag
+
+on:
+  push:
+    branches:
+      - release-actions
+    paths:
+        # Release happens only if the version number in main file is updated.
+        #- 'ultimate-addons-for-gutenberg.php'
+
+jobs:
+  build-artifact:
+    name: Build Release Artifact
+    runs-on: ubuntu-latest
+    outputs:
+      current_version: ${{ steps.get_version.outputs.current_version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+        with:
+          ref: master
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "Sandesh - Automation"
+          git config user.email "sandeshj+automation@bsf.io"
+
+      - name: Compute current version
+        id: get_version
+        run: |
+          CURRENT_VERSION=$(jq --raw-output '.version' package.json)
+          echo "::set-output name=current_version::$(echo $CURRENT_VERSION)"
+
+      - name: Build UAG plugin ZIP file
+        run: bash ./bin/build-zip.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: uag-plugin
+          path: ./artifact/ultimate-addons-for-gutenberg.zip
+
+  create-release:
+    name: Create Release Draft and Attach Asset
+    needs: [build-artifact]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Release Version
+        id: get_release_version
+        env:
+          VERSION: ${{ needs.build-artifact.outputs.new_version }}
+        run: echo ::set-output name=version::$(echo $VERSION | cut -d / -f 3 | sed 's/-rc./ RC/' )
+
+      - name: Download Plugin Zip Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: uag-plugin
+
+      - name: Create Release Draft
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: Version ${{ steps.get_release_version.outputs.version }}
+          tag_name: "v${{ needs.build-artifact.outputs.new_version }}"
+          target_commitish: master
+          draft: true
+          prerelease: false
+          body: 'Replace changelog here'
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ultimate-addons-for-gutenberg.zip
+          asset_name: ultimate-addons-for-gutenberg.zip
+          asset_content_type: application/zip
