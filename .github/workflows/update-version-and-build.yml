@@ -67,7 +67,7 @@ jobs:
       - name: Install dependencies and build
         run: npm install
 
-      - name: Run build
+      - name: Bump version
         run: grunt bump-version --ver=${{ steps.get_version.outputs.new_version }}
 
       - name: Run build
