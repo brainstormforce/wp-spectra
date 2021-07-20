@@ -5,7 +5,6 @@ import './BlocksPage.scss';
 import BlocksSettings from '@SettingsApp/components/blocks-page/BlocksSettings';
 import DisplayCondition from '@SettingsApp/components/blocks-page/DisplayCondition';
 import SettingPageSkeleton from '@Admin/settings-app/components/blocks-page/BlocksPageSkeleton';
-import { ToggleField } from '@Fields';
 
 function BlocksPage() {
 	const [ { globaldata }, dispatch ] = useStateValue();

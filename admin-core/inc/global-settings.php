@@ -55,7 +55,7 @@ class GlobalSettings {
 				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_block_condition' => array(
-						'type'  => 'button',
+						'type'  => 'toggle',
 						'name'  => 'enable_block_condition',
 						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/

@@ -59,7 +59,10 @@
 .uag-extension__metabox{
 	margin: 20px 0px;
 	.uag-individual-block-settings-metabox{
-		width: 30%;
+		width: 32%;
+		.components-toggle-control .components-base-control__field{
+			margin-bottom: 0px;
+		}
 	}
 	h2{
 		margin:10px;

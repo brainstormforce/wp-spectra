@@ -1134,14 +1134,14 @@ function DisplayCondition() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     window.onbeforeunload = null;
-    enableBlockConditionCachedValue = options['_uag_common[enable_block_condition]'];
+    enableBlockConditionCachedValue = options['enable_block_condition'];
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    if (enableBlockConditionCachedValue !== options['_uag_common[enable_block_condition]']) {
+    if (enableBlockConditionCachedValue !== options['enable_block_condition']) {
       var formData = new window.FormData();
       formData.append('action', 'uag_enable_block_condition');
       formData.append('security', uag_react.enable_block_condition_nonce);
-      formData.append('value', options['_uag_common[enable_block_condition]']);
+      formData.append('value', options['enable_block_condition']);
       _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_5___default()({
         url: uag_react.ajax_url,
         method: 'POST',
@@ -1151,17 +1151,16 @@ function DisplayCondition() {
           console.log('Error');
         }
       });
-      enableBlockConditionCachedValue = options['_uag_common[enable_block_condition]'];
+      enableBlockConditionCachedValue = options['enable_block_condition'];
     }
-  }, [options['_uag_common[enable_block_condition]']]);
+  }, [options['enable_block_condition']]);
   var enableDisplayConditionSettings = globaldata.settings['enable_block_condition'];
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "uag-extension__metabox"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", null, "Extension"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "uag-individual-block-settings-metabox"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_common_SettingTable__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    settings: enableDisplayConditionSettings,
-    meta_key: "_uag_common"
+    settings: enableDisplayConditionSettings
   })));
 }
 
@@ -1553,7 +1552,7 @@ function UserInfoBox() {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "uag-starter-tmp__img"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-    src: uag_react.plugin_dir + 'admin-core/assets/images/astra-starter-sites.jpg'
+    src: uag_react.plugin_dir + 'admin-core/assets/images/astra-starter-sites.png'
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "uag-starter-tmp__details"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Get Ready to use, Full Demo Websites ', 'ultimate-addons-for-gutenberg')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'ultimate-addons-for-gutenberg')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_4__["NormalButton"], {
@@ -2304,8 +2303,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SettingsApp_components_blocks_page_BlocksSettings__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @SettingsApp/components/blocks-page/BlocksSettings */ "./assets/src/settings-app/components/blocks-page/BlocksSettings.js");
 /* harmony import */ var _SettingsApp_components_blocks_page_DisplayCondition__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @SettingsApp/components/blocks-page/DisplayCondition */ "./assets/src/settings-app/components/blocks-page/DisplayCondition.js");
 /* harmony import */ var _Admin_settings_app_components_blocks_page_BlocksPageSkeleton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @Admin/settings-app/components/blocks-page/BlocksPageSkeleton */ "./assets/src/settings-app/components/blocks-page/BlocksPageSkeleton.js");
-/* harmony import */ var _Fields__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @Fields */ "./assets/src/fields/index.js");
-
 
 
 
