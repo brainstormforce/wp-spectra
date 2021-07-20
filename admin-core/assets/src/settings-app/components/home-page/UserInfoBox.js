@@ -5,7 +5,7 @@ import './UserInfoBox.scss';
 import { __ } from '@wordpress/i18n';
 import { NormalButton } from '@Fields';
 
-function UserInfoBox( props ) {
+function UserInfoBox( ) {
 	const onJointheCommunityClick = () => {
 		location.href = 'https://ultimategutenberg.com/';
 	};
@@ -106,7 +106,7 @@ function UserInfoBox( props ) {
 						<img
 							src={
 								uag_react.plugin_dir +
-								'admin-core/assets/images/astra-starter-sites.jpg'
+								'admin-core/assets/images/astra-starter-sites.png'
 							}
 						/>
 					</div>

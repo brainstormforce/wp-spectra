@@ -45,38 +45,35 @@ class AdminHelper {
 		$common_default = apply_filters(
 			'uag_common_settings_default',
 			array(
-				'disallow_indexing'            => 'disable',
-				'global_checkout'              => '',
-				'default_page_builder'         => 'elementor',
-				'rollback_to_previous_version' => $uag_versions[0]['value'],
-				'enable_beta_updates'          => 'no',
-				'enable_file_generation'       => 'no',
+				'disallow_indexing'                  => 'disable',
+				'global_checkout'                    => '',
+				'default_page_builder'               => 'elementor',
+				'rollback_to_previous_version'       => $uag_versions[0]['value'],
+				'enable_beta_updates'                => 'no',
+				'enable_file_generation'             => 'no',
 				'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() ),
-				'enable_templates_button' => 'disabled',
-				'enable_block_condition' => 'true'
+				'enable_templates_button'            => 'disabled',
+				'enable_block_condition'             => true,
 			)
 		);
+		$updatedStatus  = array(
+			'disallow_indexing'                  => 'disable',
+			'global_checkout'                    => '',
+			'default_page_builder'               => 'elementor',
+			'rollback_to_previous_version'       => $uag_versions[0]['value'],
+			'enable_beta_updates'                => self::get_admin_settings_option( 'uagb_beta', false, false ),
+			'enable_file_generation'             => self::get_admin_settings_option( '_uagb_allow_file_generation', false, false ),
+			'blocks_activation_and_deactivation' => self::get_admin_settings_option( '_uagb_blocks', array() ),
+			'enable_templates_button'            => self::get_admin_settings_option( 'enable_templates_button', false, false ),
+			'enable_block_condition'             => self::get_admin_settings_option( 'enable_block_condition', false, false ),
+		);
 
-		$common = self::get_admin_settings_option( '_uag_common', false, false );
+		$common = wp_parse_args( $common_default, $updatedStatus );
 
-		$common = wp_parse_args( $common, $common_default );
-
-		foreach ( $common as $key => $data ) {	
-			$options[ '_uag_common[' . $key . ']' ] = $data;
+		foreach ( $common as $key => $data ) {
+			$options[ $key ] = $data;
 		}
 		return $options;
-	}
-	/**
-	 * Set Common settings.
-	 *
-	 * @return array.
-	 */
-	public static function set_common_settings( $key, $value ) {
-
-		$common         = self::get_common_settings();
-		$common[ $key ] = $value;
-
-		update_option( '_uag_common', $common );
 	}
 
 	/**

@@ -167,7 +167,7 @@ class AdminMenu {
 	 */
 	public function styles_scripts() {
 
-		$admin_slug = 'uag-admin';
+		$admin_slug  = 'uag-admin';
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
 
 		// Styles.
@@ -191,8 +191,8 @@ class AdminMenu {
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),
 				'home_slug'            => $this->menu_slug,
 				'rollback_url'         => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
-				'blocks_info' => $blocks_info,
-				'reusable_url' => esc_url( admin_url( 'edit.php?post_type=wp_block' ) )
+				'blocks_info'          => $blocks_info,
+				'reusable_url'         => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 			)
 		);
 
@@ -206,11 +206,10 @@ class AdminMenu {
 
 	/**
 	 * Create an Array of Blocks info which we need to show in Admin dashboard.
-	 * 
 	 */
 	public function get_blocks_info_for_activation_deactivation() {
 
-		$blocks                = \UAGB_Admin_Helper::get_block_options();
+		$blocks = \UAGB_Admin_Helper::get_block_options();
 
 		array_multisort(
 			array_map(
@@ -267,11 +266,11 @@ class AdminMenu {
 				if ( in_array( $addon, $child_blocks, true ) ) {
 					continue;
 				}
-				$info['slug'] = $addon;
+				$info['slug']   = $addon;
 				$blocks_names[] = $info;
 
 			}
-			
+
 			return $blocks_names;
 		}
 
@@ -402,7 +401,7 @@ class AdminMenu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG</a></span> | <a href="' . $logs_page_url . '">Logs</a>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG</a></span> | <a href="' . esc_url( $logs_page_url ) . '">Logs</a>';
 	}
 
 }

@@ -3,7 +3,7 @@ import { ToggleControl } from '@wordpress/components';
 import './ToggleField.scss';
 import { __ } from '@wordpress/i18n';
 function ToggleField( props ) {
-	const { name, id, label, value, desc, blocks } = props;
+	const { name, id, label, value, desc } = props;
 
 	const checked = 'disabled' === value ? false : true;
 
@@ -30,7 +30,7 @@ function ToggleField( props ) {
 					onChange={ handleCheckboxClick }
 				/>
 			</div>
-			{ name == '_uag_common[blocks_activation_and_deactivation]' && (
+			{ name == 'blocks_activation_and_deactivation' && (
 				<>
 					<a>
 						{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }

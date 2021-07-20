@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useStateValue } from '@Utils/StateProvider';
 
 export default function InputEvents() {
@@ -7,7 +7,7 @@ export default function InputEvents() {
 	const baseInputChange = function ( e ) {
 		let { name, value, id } = e.detail;
 		if ( undefined !== options[ name ] ) {
-			if ( '_uag_common[blocks_activation_and_deactivation]' === name ) {
+			if ( 'blocks_activation_and_deactivation' === name ) {
 				const optionsClone = { ...options[ name ] };
 				optionsClone[ id ] = value;
 				value = optionsClone;

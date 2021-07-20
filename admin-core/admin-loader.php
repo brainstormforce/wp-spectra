@@ -111,5 +111,4 @@ class Admin_Loader {
 		}
 	}
 }
-
 Admin_Loader::get_instance();
