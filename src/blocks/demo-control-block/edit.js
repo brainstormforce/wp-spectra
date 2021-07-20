@@ -495,11 +495,26 @@ class UAGBInlineNoticeEdit extends Component {
 						</PanelBody>
 						<PanelBody title="Multi Buttons" initialOpen={false}>
 							<MultiButtonsControl
+								setAttributes={setAttributes}
+								responsive={true}
 								label={__(
 									"Gap",
 									"ultimate-addons-for-gutenberg"
 								)}
-								currentOption={columnGap}
+								data={{
+									desktop: {
+										value: columnGap,
+										label: "columnGap",
+									},
+									tablet: {
+										value: columnGap,
+										label: "columnGap",
+									},
+									mobile: {
+										value: columnGap,
+										label: "columnGap",
+									},
+								}}
 								options={[
 									{
 										value: "10",
