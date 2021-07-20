@@ -317,11 +317,9 @@ const DimensionsControl = (props) => {
 
 	return (
 		<div className="components-base-control uagb-spacing-control">
-			<div className="uagb-spacing-control__header">
-				{label && (
-					<p className={"uagb-spacing-control__label"}>{label}</p>
-				)}
-				<div className="uagb-spacing-control__actions">
+			<div className="uagb-control__header">
+				{label && <p className={"uagb-control__label"}>{label}</p>}
+				<div className="uagb-control__actions">
 					<div className="uagb-size-type-field-tabs">
 						<ButtonGroup
 							className="components-tab-panel__tabs"

@@ -295,11 +295,15 @@ class UAGBInlineNoticeEdit extends Component {
 					<InspectorTab key={"general"}>
 						<PanelBody title="Alignment" initialOpen={false}>
 							<MultiButtonsControl
+								setAttributes={setAttributes}
 								label={__(
 									"Alignment",
 									"ultimate-addons-for-gutenberg"
 								)}
-								currentOption={noticeAlignment}
+								data={{
+									value: noticeAlignment,
+									label: "noticeAlignment",
+								}}
 								className="uagb-multi-button-alignment-control"
 								options={[
 									{

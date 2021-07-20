@@ -48,3 +48,13 @@
 .uagb-multi-buttons-control__label {
 	margin-bottom: 8px;
 }
+.uagb-multibuttons-header {
+	.uagb-size-type-field-tabs {
+		display: flex;
+		align-items: flex-end;
+		.components-tab-panel__tabs {
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
