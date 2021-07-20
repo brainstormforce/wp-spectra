@@ -218,7 +218,6 @@ const Background = (props) => {
 										),
 									},
 								]}
-								className="uagb-bg-image-position-control"
 							/>
 							<SelectControl
 								label={__(
@@ -247,7 +246,6 @@ const Background = (props) => {
 										),
 									},
 								]}
-								className="uagb-bg-image-attachment-control"
 							/>
 							<SelectControl
 								label={__(
@@ -288,7 +286,6 @@ const Background = (props) => {
 										),
 									},
 								]}
-								className="uagb-bg-image-repeat-control"
 							/>
 							<SelectControl
 								label={__(
@@ -322,7 +319,6 @@ const Background = (props) => {
 										),
 									},
 								]}
-								className="uagb-bg-image-size-control"
 							/>
 							<SelectControl
 								label={__(
@@ -349,7 +345,6 @@ const Background = (props) => {
 										),
 									},
 								]}
-								className="uagb-bg-image-overlay-type-control"
 							/>
 							{"color" == overlayType.value && (
 								<>
