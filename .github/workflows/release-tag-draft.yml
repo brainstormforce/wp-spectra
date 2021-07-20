@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-    paths:
+    #paths:
         # Release happens only if the version number in main file is updated.
-        - 'ultimate-addons-for-gutenberg.php'
+        #- 'ultimate-addons-for-gutenberg.php'
 
 jobs:
   build-artifact:
