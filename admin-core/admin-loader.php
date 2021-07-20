@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 /**
- * Class Admin_Loader.
+ * Class AdminLoader.
  */
-class Admin_Loader {
+class AdminLoader {
 
 	/**
 	 * Instance
@@ -112,4 +112,4 @@ class Admin_Loader {
 	}
 }
 
-Admin_Loader::get_instance();
+AdminLoader::get_instance();

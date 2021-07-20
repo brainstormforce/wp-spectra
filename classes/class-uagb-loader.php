@@ -91,7 +91,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function loader() {
 
-			
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
@@ -100,7 +99,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( '_uag_common', false );
-			
+
 			if ( isset( $enable_templates_button['enable_templates_button'] ) && 'enabled' === $enable_templates_button['enable_templates_button'] ) {
 
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';

@@ -47,7 +47,7 @@ function IndividualBlockSetting( props ) {
 				options[ 'blocks_activation_and_deactivation' ];
 		}
 	}, [ options[ 'blocks_activation_and_deactivation' ] ] );
-	
+
 	return (
 		<div className="uag-individual-block-settings-metabox">
 			<ToggleField

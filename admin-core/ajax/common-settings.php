@@ -85,8 +85,8 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		
-		$this->update_admin_settings_option( 'enable_block_condition',  sanitize_text_field($_POST['value']) );
+
+		$this->update_admin_settings_option( 'enable_block_condition', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -124,7 +124,7 @@ class CommonSettings extends AjaxBase {
 		if ( 'disabled' === $_POST['value'] ) {
 			$enable_template_button = 'no';
 		}
-		$this->update_admin_settings_option( 'enable_templates_button',  sanitize_text_field($enable_template_button) );
+		$this->update_admin_settings_option( 'enable_templates_button', sanitize_text_field( $enable_template_button ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -158,10 +158,10 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-			
+
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
-		
-		$this->update_admin_settings_option( '_uagb_blocks', sanitize_text_field($value) );
+
+		$this->update_admin_settings_option( '_uagb_blocks', $value );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -195,8 +195,8 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		if ( isset( $_POST ) ) {		
-			$this->update_admin_settings_option( 'uagb_beta', sanitize_text_field($_POST['value'] ) );
+		if ( isset( $_POST ) ) {
+			$this->update_admin_settings_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 
 		}
 
@@ -233,7 +233,6 @@ class CommonSettings extends AjaxBase {
 		}
 
 		if ( isset( $_POST ) ) {
-
 
 			$this->update_admin_settings_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 

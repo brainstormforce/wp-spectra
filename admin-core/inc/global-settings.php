@@ -23,7 +23,7 @@ class GlobalSettings {
 	public static function get_global_settings_fields() {
 
 		$settings = array(
-			'rollback_to_previous_version' => array(
+			'rollback_to_previous_version'       => array(
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'rollback_to_previous_version' => array(
@@ -36,11 +36,11 @@ class GlobalSettings {
 					),
 				),
 			),
-			'enable_beta_updates'          => array(
+			'enable_beta_updates'                => array(
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_beta_updates' => array(
-						'type'    => 'button',
+						'type'  => 'button',
 						'name'  => 'enable_beta_updates',
 						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
@@ -51,18 +51,18 @@ class GlobalSettings {
 					),
 				),
 			),
-			'enable_block_condition'          => array(
+			'enable_block_condition'             => array(
 				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_block_condition' => array(
-						'type'    => 'button',
+						'type'  => 'button',
 						'name'  => 'enable_block_condition',
 						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 					),
 				),
 			),
-			'enable_file_generation'       => array(
+			'enable_file_generation'             => array(
 				'title'  => __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_file_generation' => array(
@@ -84,10 +84,10 @@ class GlobalSettings {
 					),
 				),
 			),
-			'blocks_activation_and_deactivation'       => array(
+			'blocks_activation_and_deactivation' => array(
 				'title' => __( 'Blocks Activation & Deactivation', 'ultimate-addons-for-gutenberg' ),
 			),
-			'enable_templates_button'       => array(
+			'enable_templates_button'            => array(
 				'title'  => __( 'Templates', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_templates_button' => array(
@@ -95,8 +95,8 @@ class GlobalSettings {
 						'name'  => 'enable_templates_button',
 						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => sprintf(
-							__('Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.','ultimate-addons-for-gutenberg'),
-						)
+							__( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.', 'ultimate-addons-for-gutenberg' ),
+						),
 					),
 				),
 			),

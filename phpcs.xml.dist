@@ -26,4 +26,5 @@
 	<exclude-pattern>*/scripts/*</exclude-pattern>
 	<exclude-pattern>*/admin/assets/*</exclude-pattern>
 	<exclude-pattern>*/admin/bsf-analytics/*</exclude-pattern>
+	<exclude-pattern>*/admin-core/*</exclude-pattern>
 </ruleset>
