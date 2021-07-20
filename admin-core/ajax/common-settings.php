@@ -160,8 +160,8 @@ class CommonSettings extends AjaxBase {
 		}
 
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
-		
-		$this->update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs($value) );
+
+		$this->update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),

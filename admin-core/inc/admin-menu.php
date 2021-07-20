@@ -401,7 +401,7 @@ class AdminMenu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG</a></span> | <a href="' . $logs_page_url . '">Logs</a>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG</a></span> | <a href="' . esc_url( $logs_page_url ) . '">Logs</a>';
 	}
 
 }

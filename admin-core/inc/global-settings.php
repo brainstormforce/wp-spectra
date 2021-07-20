@@ -69,16 +69,9 @@ class GlobalSettings {
 						'type'  => 'button',
 						'name'  => 'enable_file_generation',
 						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
-						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => sprintf(
-							__(
-								'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.
-
-						Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.
-						
-						',
-								'ultimate-addons-for-gutenberg'
-							),
+							/* translators: %1$s: link html start, %2$s: link html end*/
+							__( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page. Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.', 'ultimate-addons-for-gutenberg' ),
 							esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' )
 						),
 					),
@@ -94,9 +87,7 @@ class GlobalSettings {
 						'type'  => 'button',
 						'name'  => 'enable_templates_button',
 						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
-						'desc'  => sprintf(
-							__( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.', 'ultimate-addons-for-gutenberg' ),
-						),
+						'desc'  => __( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),

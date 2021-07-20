@@ -352,9 +352,16 @@ body.folded .uag-global-nav-menu {
   margin: 0 auto; }
 
 .uag-extension__metabox {
-  margin: 20px 0px; }
+  margin: 20px 0px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr); }
   .uag-extension__metabox .uag-individual-block-settings-metabox {
-    width: 32%; }
+    -ms-grid-row: 3;
+        grid-row-start: 3;
+    -ms-grid-column: 1;
+        grid-column-start: 1; }
     .uag-extension__metabox .uag-individual-block-settings-metabox .components-toggle-control .components-base-control__field {
       margin-bottom: 0px; }
   .uag-extension__metabox h2 {

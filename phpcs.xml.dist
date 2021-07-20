@@ -8,11 +8,13 @@
 	<rule ref="WordPress-Docs" />
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress.Security.EscapeOutput" />
-
 	<!-- Check all PHP files in directory tree by default. -->
 	<arg name="extensions" value="php"/>
 	<file>.</file>
-
+	<!-- Skip classname issues in admin-core dir-->
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>*/admin-core/*</exclude-pattern>
+	</rule>
 	<!-- Show sniff codes in all reports -->
 	<arg value="s"/>
 	<exclude-pattern>*/src/*</exclude-pattern>
@@ -26,5 +28,5 @@
 	<exclude-pattern>*/scripts/*</exclude-pattern>
 	<exclude-pattern>*/admin/assets/*</exclude-pattern>
 	<exclude-pattern>*/admin/bsf-analytics/*</exclude-pattern>
-	<exclude-pattern>*/admin-core/*</exclude-pattern>
 </ruleset>
+

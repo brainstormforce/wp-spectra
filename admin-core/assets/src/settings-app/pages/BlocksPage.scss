@@ -58,8 +58,11 @@
 }
 .uag-extension__metabox{
 	margin: 20px 0px;
+	display: grid;
+    grid-template-columns: repeat(3,1fr);
 	.uag-individual-block-settings-metabox{
-		width: 32%;
+		grid-row-start: 3;
+		grid-column-start: 1;
 		.components-toggle-control .components-base-control__field{
 			margin-bottom: 0px;
 		}
