@@ -31,6 +31,8 @@ const DimensionsControl = (props) => {
 		valueRightMobile,
 		valueTopMobile,
 		deviceType,
+		link,
+		setAttributes,
 	} = props;
 
 	const {
@@ -43,24 +45,44 @@ const DimensionsControl = (props) => {
 
 	const onChangeUnits = (value) => {
 		if ("mobile" === value.className) {
-			props.setAttributes({ [mUnit.label]: value.unitValue });
+			setAttributes({ [mUnit.label]: value.unitValue });
 		} else if ("tablet" === value.className) {
-			props.setAttributes({ [tUnit.label]: value.unitValue });
+			setAttributes({ [tUnit.label]: value.unitValue });
 		} else {
-			props.setAttributes({ [unit.label]: value.unitValue });
+			setAttributes({ [unit.label]: value.unitValue });
 		}
 	};
-
+	const changeLinkedValues = (newValue, device) => {
+		if ("desktop" === device) {
+			setAttributes({ [valueTop.label]: newValue });
+			setAttributes({ [valueRight.label]: newValue });
+			setAttributes({ [valueBottom.label]: newValue });
+			setAttributes({ [valueLeft.label]: newValue });
+		} else if ("tablet" === device) {
+			setAttributes({ [valueTopTablet.label]: newValue });
+			setAttributes({ [valueRightTablet.label]: newValue });
+			setAttributes({ [valueBottomTablet.label]: newValue });
+			setAttributes({ [valueLeftTablet.label]: newValue });
+		} else if ("mobile" === device) {
+			setAttributes({ [valueTopMobile.label]: newValue });
+			setAttributes({ [valueRightMobile.label]: newValue });
+			setAttributes({ [valueBottomMobile.label]: newValue });
+			setAttributes({ [valueLeftMobile.label]: newValue });
+		}
+	};
 	const onChangeTopValue = (event, device) => {
 		const newValue =
 			event.target.value === "" ? undefined : Number(event.target.value);
 
+		if (link.value) {
+			changeLinkedValues(newValue, device);
+		}
 		if ("desktop" === device) {
-			props.setAttributes({ [valueTop.label]: newValue });
+			setAttributes({ [valueTop.label]: newValue });
 		} else if ("tablet" === device) {
-			props.setAttributes({ [valueTopTablet.label]: newValue });
+			setAttributes({ [valueTopTablet.label]: newValue });
 		} else if ("mobile" === device) {
-			props.setAttributes({ [valueTopMobile.label]: newValue });
+			setAttributes({ [valueTopMobile.label]: newValue });
 		}
 	};
 
@@ -68,12 +90,16 @@ const DimensionsControl = (props) => {
 		const newValue =
 			event.target.value === "" ? undefined : Number(event.target.value);
 
+		if (link.value) {
+			changeLinkedValues(newValue, device);
+		}
+
 		if ("desktop" === device) {
-			props.setAttributes({ [valueRight.label]: newValue });
+			setAttributes({ [valueRight.label]: newValue });
 		} else if ("tablet" === device) {
-			props.setAttributes({ [valueRightTablet.label]: newValue });
+			setAttributes({ [valueRightTablet.label]: newValue });
 		} else if ("mobile" === device) {
-			props.setAttributes({ [valueRightMobile.label]: newValue });
+			setAttributes({ [valueRightMobile.label]: newValue });
 		}
 	};
 
@@ -81,12 +107,16 @@ const DimensionsControl = (props) => {
 		const newValue =
 			event.target.value === "" ? undefined : Number(event.target.value);
 
+		if (link.value) {
+			changeLinkedValues(newValue, device);
+		}
+
 		if ("desktop" === device) {
-			props.setAttributes({ [valueBottom.label]: newValue });
+			setAttributes({ [valueBottom.label]: newValue });
 		} else if ("tablet" === device) {
-			props.setAttributes({ [valueBottomTablet.label]: newValue });
+			setAttributes({ [valueBottomTablet.label]: newValue });
 		} else if ("mobile" === device) {
-			props.setAttributes({ [valueBottomMobile.label]: newValue });
+			setAttributes({ [valueBottomMobile.label]: newValue });
 		}
 	};
 
@@ -94,12 +124,16 @@ const DimensionsControl = (props) => {
 		const newValue =
 			event.target.value === "" ? undefined : Number(event.target.value);
 
+		if (link.value) {
+			changeLinkedValues(newValue, device);
+		}
+
 		if ("desktop" === device) {
-			props.setAttributes({ [valueLeft.label]: newValue });
+			setAttributes({ [valueLeft.label]: newValue });
 		} else if ("tablet" === device) {
-			props.setAttributes({ [valueLeftTablet.label]: newValue });
+			setAttributes({ [valueLeftTablet.label]: newValue });
 		} else if ("mobile" === device) {
-			props.setAttributes({ [valueLeftMobile.label]: newValue });
+			setAttributes({ [valueLeftMobile.label]: newValue });
 		}
 	};
 
@@ -211,6 +245,30 @@ const DimensionsControl = (props) => {
 		return items;
 	};
 
+	let linkHtml = "";
+
+	if (link) {
+		linkHtml = (
+			<span
+				className="uagb-spacing-control__link uagb-spacing-control-connected dashicons dashicons-admin-links "
+				onClick={() => {
+					setAttributes({ [link.label]: false });
+				}}
+			></span>
+		);
+
+		if (!link.value) {
+			linkHtml = (
+				<span
+					className="uagb-spacing-control__link uagb-spacing-control-disconnected dashicons dashicons-editor-unlink"
+					onClick={() => {
+						setAttributes({ [link.label]: true });
+					}}
+				></span>
+			);
+		}
+	}
+
 	const output = {};
 	output.Desktop = (
 		<>
@@ -243,6 +301,7 @@ const DimensionsControl = (props) => {
 					value={valueLeft.value}
 					min={0}
 				/>
+				{linkHtml}
 			</div>
 		</>
 	);
@@ -277,6 +336,7 @@ const DimensionsControl = (props) => {
 					value={valueLeftTablet.value}
 					min={0}
 				/>
+				{linkHtml}
 			</div>
 		</>
 	);
@@ -311,6 +371,7 @@ const DimensionsControl = (props) => {
 					value={valueLeftMobile.value}
 					min={0}
 				/>
+				{linkHtml}
 			</div>
 		</>
 	);

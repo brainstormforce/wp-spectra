@@ -2,30 +2,29 @@
  * BLOCK: UAGB Demo Control Block Attributes
  */
 
-
- const attributes = {
+const attributes = {
 	block_id: {
 		type: "string",
 	},
 	c_id: {
 		type: "string",
-		default : null,
+		default: null,
 	},
 	color: {
-		type: 'string',
+		type: "string",
 	},
 	colorClass: {
-		type: 'string',
+		type: "string",
 	},
 	noticeTitle: {
-		type:"string",
-		source: "html",					
-		selector: ".uagb-notice-title",		
+		type: "string",
+		source: "html",
+		selector: ".uagb-notice-title",
 		default: "Notice Title",
 	},
 	headingTag: {
 		type: "string",
-		default: "h4"
+		default: "h4",
 	},
 	noticeContent: {
 		type: "string",
@@ -37,38 +36,38 @@
 	},
 	cookies: {
 		type: "boolean",
-		default: false
+		default: false,
 	},
 	close_cookie_days: {
 		type: "number",
-		default: 1
+		default: 1,
 	},
 	textColor: {
 		type: "string",
-		default: ""
+		default: "",
 	},
 	titleColor: {
 		type: "string",
-		default: ""
+		default: "",
 	},
 	noticeColor: {
 		type: "string",
-		default: "#FFD54F"
+		default: "#FFD54F",
 	},
 	contentBgColor: {
 		type: "string",
 	},
 	noticeDismissColor: {
 		type: "string",
-		default: ""
+		default: "",
 	},
 	icon: {
 		type: "string",
-		default: "fa fa-window-close"
+		default: "fa fa-window-close",
 	},
 	noticeAlignment: {
 		type: "string",
-		default: "left"
+		default: "left",
 	},
 	titleFontFamily: {
 		type: "string",
@@ -82,11 +81,11 @@
 	},
 	titleFontSizeType: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	titleLineHeightType: {
 		type: "string",
-		default: "em"
+		default: "em",
 	},
 	titleFontSize: {
 		type: "number",
@@ -121,7 +120,7 @@
 	},
 	descFontSizeType: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	descFontSizeTablet: {
 		type: "number",
@@ -134,7 +133,7 @@
 	},
 	descLineHeightType: {
 		type: "string",
-		default: "em"
+		default: "em",
 	},
 	descLineHeightTablet: {
 		type: "number",
@@ -144,15 +143,15 @@
 	},
 	titleLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false,
 	},
 	descLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false,
 	},
 	contentVrPadding: {
 		type: "number",
-		default: 15
+		default: 15,
 	},
 	contentHrPadding: {
 		type: "number",
@@ -161,24 +160,24 @@
 		type: "number",
 	},
 	tabletPadding: {
-		type: 'array',
-		default: [ '', '', '', '' ],
+		type: "array",
+		default: ["", "", "", ""],
 	},
 	mobilePadding: {
-		type: 'array',
-		default: [ '', '', '', '' ],
+		type: "array",
+		default: ["", "", "", ""],
 	},
 	paddingUnit: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	mobilePaddingUnit: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
-	tabletPaddingUnit:{
+	tabletPaddingUnit: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	paddingTop: {
 		type: "number",
@@ -218,28 +217,28 @@
 	},
 	layout: {
 		type: "string",
-		default : "modern",
+		default: "modern",
 	},
 	highlightWidth: {
 		type: "number",
-		default : 10
+		default: 10,
 	},
-	borderStyle : {
+	borderStyle: {
 		type: "string",
-		default: "none"
+		default: "none",
 	},
-	borderWidth : {
+	borderWidth: {
 		type: "number",
-		default: 1
+		default: 1,
 	},
-	borderRadius : {
-		type: "number"
+	borderRadius: {
+		type: "number",
 	},
-	borderColor : {
-		type: "string"
+	borderColor: {
+		type: "string",
 	},
-	borderHoverColor : {
-		type: "string"
+	borderHoverColor: {
+		type: "string",
 	},
 	backgroundType: {
 		type: "string",
@@ -249,19 +248,19 @@
 	},
 	backgroundPosition: {
 		type: "string",
-		default: "center-center"
+		default: "center-center",
 	},
 	backgroundSize: {
 		type: "string",
-		default: "cover"
+		default: "cover",
 	},
 	backgroundRepeat: {
 		type: "string",
-		default: "no-repeat"
+		default: "no-repeat",
 	},
 	backgroundAttachment: {
 		type: "string",
-		default: "scroll"
+		default: "scroll",
 	},
 	backgroundColor: {
 		type: "string",
@@ -274,29 +273,29 @@
 	},
 	gradientType: {
 		type: "string",
-		default: "linear"
+		default: "linear",
 	},
 	gradientLocation1: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
 	gradientLocation2: {
 		type: "number",
-		default: 100
+		default: 100,
 	},
 	gradientAngle: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
 	backgroundOpacity: {
-		type: "number"
+		type: "number",
 	},
 	backgroundImageColor: {
-		type: "string"
+		type: "string",
 	},
 	overlayType: {
 		type: "string",
-		default: "color"
+		default: "color",
 	},
 	gradientOverlayColor1: {
 		type: "string",
@@ -306,56 +305,59 @@
 	},
 	gradientOverlayType: {
 		type: "string",
-		default: "linear"
+		default: "linear",
 	},
 	gradientOverlayLocation1: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
 	gradientOverlayLocation2: {
 		type: "number",
-		default: 100
+		default: 100,
 	},
 	gradientOverlayAngle: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
 	columnGap: {
 		type: "string",
-		default: "10"
+		default: "10",
 	},
 	boxShadowColor: {
-		type: "string"
+		type: "string",
 	},
-	boxShadowHOffset : {
+	boxShadowHOffset: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
-	boxShadowVOffset : {
+	boxShadowVOffset: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
-	boxShadowBlur : {
+	boxShadowBlur: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
-	boxShadowSpread : {
+	boxShadowSpread: {
 		type: "number",
-		default: 0
+		default: 0,
 	},
 	boxShadowPosition: {
 		type: "string",
-		default: "outset"
+		default: "outset",
 	},
 	widthType: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	gradientValue: {
 		type: "string",
 		default: "",
 	},
-}
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
+};
 
-export default attributes
-
+export default attributes;

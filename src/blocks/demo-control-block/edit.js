@@ -229,6 +229,7 @@ class UAGBInlineNoticeEdit extends Component {
 				boxShadowSpread,
 				boxShadowPosition,
 				widthType,
+				spacingLink,
 			},
 			setAttributes,
 			className,
@@ -848,6 +849,10 @@ class UAGBInlineNoticeEdit extends Component {
 								deviceType={deviceType}
 								attributes={attributes}
 								setAttributes={setAttributes}
+								link={{
+									value: spacingLink,
+									label: "spacingLink",
+								}}
 							/>
 						</PanelBody>
 						<PanelBody
