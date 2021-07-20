@@ -31,7 +31,9 @@
 		p{
 			padding: 0px 30px 0px 30px;
 		}
-		.uag-version-control-button{	
+		.uag-version-control-button{
+			box-shadow: 0 10px 20px 0px #d5d5d555;
+			border-top: 1px solid #eeeeee;	
 			background-color: #F9FBFD;
 			display: flex;
 			justify-content: space-between;

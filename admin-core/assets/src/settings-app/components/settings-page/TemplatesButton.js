@@ -10,7 +10,7 @@ function TemplatesButton( ) {
 	const [ savingState, setssavingState ] = useState( false );
 
 	const [ enableTemplate, setenableStarterTemplate ] = useState(
-		options[ '_uag_common[enable_templates_button]' ]
+		options[ 'enable_templates_button' ]
 	);
 
 	const enableTemplatesButtonlabel =
@@ -31,7 +31,7 @@ function TemplatesButton( ) {
 		setenableStarterTemplate( status );
 		dispatch( {
 			type: 'SET_OPTION',
-			name: '_uag_common[enable_templates_button]',
+			name: 'enable_templates_button',
 			value: status,
 		} );
 		

@@ -9,7 +9,7 @@ function AssetsGeneration( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	const [ enableFileGeneration, setenableFileGeneration ] = useState(
-		options[ '_uag_common[enable_file_generation]' ]
+		options[ 'enable_file_generation' ]
 	);
 
 	const [ savingState, setssavingState ] = useState( false );
@@ -45,7 +45,7 @@ function AssetsGeneration( props ) {
 		setenableFileGeneration( status );
 		dispatch( {
 			type: 'SET_OPTION',
-			name: '_uag_common[enable_file_generation]',
+			name: 'enable_file_generation',
 			value: status,
 		} );
 		

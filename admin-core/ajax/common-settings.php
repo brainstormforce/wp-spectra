@@ -158,11 +158,10 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-
-		if ( isset( $_POST ) ) {	
-			$this->update_admin_settings_option( '_uagb_blocks', $_POST['value'] );
-
-		}
+			
+		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
+		
+		$this->update_admin_settings_option( '_uagb_blocks', sanitize_text_field($value) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),

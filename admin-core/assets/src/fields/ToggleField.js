@@ -30,7 +30,7 @@ function ToggleField( props ) {
 					onChange={ handleCheckboxClick }
 				/>
 			</div>
-			{ name == '_uag_common[blocks_activation_and_deactivation]' && (
+			{ name == 'blocks_activation_and_deactivation' && (
 				<>
 					<a>
 						{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }

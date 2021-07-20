@@ -15,7 +15,7 @@ function VersionControl( props ) {
 	const [ showPopup, setshowPopup ] = useState( false );
 
 	const [ enableBeta, setenableBeta ] = useState(
-		options[ '_uag_common[enable_beta_updates]' ]
+		options[ 'enable_beta_updates' ]
 	);
 
 	const rollbackSettings = globaldata.settings.rollback_to_previous_version;
@@ -41,7 +41,7 @@ function VersionControl( props ) {
 	const confirmPopup = () => {
 		const rollbackUrl = uag_react.rollback_url.replace(
 			'VERSION',
-			options[ '_uag_common[rollback_to_previous_version]' ]
+			options[ 'rollback_to_previous_version' ]
 		);
 
 		setshowPopup( false );
@@ -63,7 +63,7 @@ function VersionControl( props ) {
 		}
 		dispatch( {
 			type: 'SET_OPTION',
-			name: '_uag_common[enable_beta_updates]',
+			name: 'enable_beta_updates',
 			value: status,
 		} );
 		let formData = new window.FormData();
@@ -97,7 +97,6 @@ function VersionControl( props ) {
 					<div className="uag-version-control-button">
 						<SettingTable
 							settings={ rollbackSettings }
-							meta_key="_uag_common"
 						/>
 						<NormalButton
 							buttonText={ __(

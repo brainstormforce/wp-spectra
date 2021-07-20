@@ -28,7 +28,7 @@ class GlobalSettings {
 				'fields' => array(
 					'rollback_to_previous_version' => array(
 						'type'    => 'select',
-						'name'    => '_uag_common[rollback_to_previous_version]',
+						'name'    => 'rollback_to_previous_version',
 						'label'   => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
@@ -40,7 +40,8 @@ class GlobalSettings {
 				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_beta_updates' => array(
-						'name'  => '_uag_common[enable_beta_updates]',
+						'type'    => 'button',
+						'name'  => 'enable_beta_updates',
 						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => __(
@@ -54,8 +55,8 @@ class GlobalSettings {
 				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_block_condition' => array(
-						'type'    => 'toggle',
-						'name'  => '_uag_common[enable_block_condition]',
+						'type'    => 'button',
+						'name'  => 'enable_block_condition',
 						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 					),
@@ -65,8 +66,8 @@ class GlobalSettings {
 				'title'  => __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_file_generation' => array(
-						'type'  => 'toggle',
-						'name'  => '_uag_common[enable_file_generation]',
+						'type'  => 'button',
+						'name'  => 'enable_file_generation',
 						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => sprintf(
@@ -90,8 +91,8 @@ class GlobalSettings {
 				'title'  => __( 'Templates', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_templates_button' => array(
-						'type'  => 'toggle',
-						'name'  => '_uag_common[enable_templates_button]',
+						'type'  => 'button',
+						'name'  => 'enable_templates_button',
 						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => sprintf(
 							__('Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.','ultimate-addons-for-gutenberg'),
