@@ -12,7 +12,7 @@ import UAGB_Block_Icons from "@Controls/block-icons";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
-import DimensionsControl from "../../components/dimention-control";
+import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import GradientSettings from "../../components/gradient-settings";
 import MultiButtonsControl from "../../components/multi-buttons-control";
@@ -780,7 +780,7 @@ class UAGBInlineNoticeEdit extends Component {
 							)}
 						</PanelBody>
 						<PanelBody title="Spacing" initialOpen={false}>
-							<DimensionsControl
+							<SpacingControl
 								{...this.props}
 								label={__(
 									"Padding",

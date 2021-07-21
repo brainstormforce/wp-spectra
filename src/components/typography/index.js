@@ -132,8 +132,8 @@ const TypographyControl = (props) => {
 	} else {
 		showAdvancedFontControls = (
 			<>
-				{fontSize}
 				{fontFamily}
+				{fontSize}
 				{fontWeight}
 			</>
 		);
@@ -142,8 +142,8 @@ const TypographyControl = (props) => {
 	if (value !== null && value.showAdvancedControls === true) {
 		showAdvancedFontControls = (
 			<div className="uagb-typography-advanced">
-				{fontSize}
 				{fontFamily}
+				{fontSize}
 				{fontWeight}
 			</div>
 		);

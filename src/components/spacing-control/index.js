@@ -13,7 +13,7 @@ import {
 } from "@wordpress/components";
 import { useDispatch } from "@wordpress/data";
 
-const DimensionsControl = (props) => {
+const SpacingControl = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect(() => {
 		styles.use();
@@ -448,4 +448,4 @@ const DimensionsControl = (props) => {
 	);
 };
 
-export default DimensionsControl;
+export default SpacingControl;
