@@ -360,27 +360,6 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-<<<<<<< HEAD
-				'blocks'                 => UAGB_Config::get_block_attributes(),
-				'category'               => 'uagb',
-				'ajax_url'               => admin_url( 'admin-ajax.php' ),
-				'cf7_forms'              => $this->get_cf7_forms(),
-				'gf_forms'               => $this->get_gravity_forms(),
-				'tablet_breakpoint'      => UAGB_TABLET_BREAKPOINT,
-				'mobile_breakpoint'      => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'            => UAGB_Helper::get_image_sizes(),
-				'post_types'             => UAGB_Helper::get_post_types(),
-				'all_taxonomy'           => UAGB_Helper::get_related_taxonomy(),
-				'taxonomy_list'          => UAGB_Helper::get_taxonomy_list(),
-				'uagb_ajax_nonce'        => $uagb_ajax_nonce,
-				'uagb_home_url'          => home_url(),
-				'user_role'              => $this->get_user_role(),
-				'uagb_url'               => UAGB_URL,
-				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'          => UAGB_URI,
-				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
-				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
-=======
 				'blocks'               => UAGB_Config::get_block_attributes(),
 				'category'             => 'uagb',
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),
@@ -400,7 +379,6 @@ class UAGB_Init_Blocks {
 				'uagb_site_url'        => UAGB_URI,
 				'enableConditions'     => apply_filters_deprecated( 'enable_block_condition', array( true ), '1.23.4', 'uag_enable_block_condition' ),
 				'enableMasonryGallery' => apply_filters( 'uag_enable_masonry_gallery', true ),
->>>>>>> a8c50c77041f2df76b56376946ab83fd19db05a9
 			)
 		);
 
