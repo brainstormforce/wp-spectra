@@ -45,7 +45,10 @@ const BoxShadowControl = (props) => {
 			<div className="uagb-box-shadow-advanced">
 				<MultiButtonsControl
 					label={__("Position", "ultimate-addons-for-gutenberg")}
-					currentOption={boxShadowPosition.value}
+					data={{
+						value: boxShadowPosition.value,
+						label: "boxShadowPosition",
+					}}
 					options={[
 						{
 							value: "inset",
@@ -83,7 +86,7 @@ const BoxShadowControl = (props) => {
 						setAttributes({ colorClass: value })
 					}
 				/>
-				<div clasName="uagb-horizontal-wrap">
+				<div className="uagb-horizontal-wrap">
 					<Range
 						label={boxShadowHOffset.label}
 						value={boxShadowHOffset.value}
@@ -95,7 +98,7 @@ const BoxShadowControl = (props) => {
 						displayUnit={false}
 					/>
 				</div>
-				<div clasName="uagb-vertical-wrap">
+				<div className="uagb-vertical-wrap">
 					<Range
 						label={boxShadowVOffset.label}
 						value={boxShadowVOffset.value}
@@ -107,7 +110,7 @@ const BoxShadowControl = (props) => {
 						displayUnit={false}
 					/>
 				</div>
-				<div clasName="uagb-blur-wrap">
+				<div className="uagb-blur-wrap">
 					<Range
 						label={boxShadowBlur.label}
 						value={boxShadowBlur.value}
@@ -119,7 +122,7 @@ const BoxShadowControl = (props) => {
 						displayUnit={false}
 					/>
 				</div>
-				<div clasName="uagb-spread-wrap">
+				<div className="uagb-spread-wrap">
 					<Range
 						label={boxShadowSpread.label}
 						value={boxShadowSpread.value}

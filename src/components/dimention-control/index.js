@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import "./editor.scss";
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 import { __, sprintf } from "@wordpress/i18n";
 import {
 	ButtonGroup,
@@ -13,6 +14,14 @@ import {
 import { useDispatch } from "@wordpress/data";
 
 const DimensionsControl = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const {
 		label,
 		unit,

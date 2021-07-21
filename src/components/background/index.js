@@ -3,10 +3,19 @@ import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import { SelectControl, BaseControl, Button } from "@wordpress/components";
 import { MediaUpload } from "@wordpress/block-editor";
-import "./editor.scss";
+import styles from "./editor.lazy.scss";
 import GradientSettings from "../../components/gradient-settings";
+import React, { useLayoutEffect } from "react";
 
 const Background = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+
 	const {
 		setAttributes,
 		backgroundImageColor,

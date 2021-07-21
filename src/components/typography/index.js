@@ -11,12 +11,20 @@ import { useState } from "@wordpress/element";
 import FontFamilyControl from "./font-typography";
 import RangeTypographyControl from "./range-typography";
 import TypographyStyles from "./inline-styles";
-import "./editor.scss";
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
 
 const TypographyControl = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
 	const [value, setValue] = useState([]);
 
 	const onAdvancedControlClick = () => {

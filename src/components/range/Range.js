@@ -10,12 +10,20 @@ import { useState, useEffect } from "@wordpress/element";
 const { useSelect, useDispatch } = wp.data;
 
 import { __ } from "@wordpress/i18n";
-import "./editor.scss";
 import map from "lodash/map";
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 
 const isNumberControlSupported = !!NumberControl;
 
 const Range = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
 	const { withInputField, isShiftStepEnabled } = props;
 
 	const [value, setValue] = useState(props.value);

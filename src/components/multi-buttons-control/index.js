@@ -14,9 +14,17 @@ const { useSelect, useDispatch } = wp.data;
 /**
  * Import Css
  */
-import "./editor.scss";
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 
 const MultiButtonsControl = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
 	const {
 		data,
 		label,

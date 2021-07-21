@@ -379,6 +379,7 @@ class UAGB_Init_Blocks {
 				'uagb_site_url'        => UAGB_URI,
 				'enableConditions'     => apply_filters_deprecated( 'enable_block_condition', array( true ), '1.23.4', 'uag_enable_block_condition' ),
 				'enableMasonryGallery' => apply_filters( 'uag_enable_masonry_gallery', true ),
+				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
 			)
 		);
 

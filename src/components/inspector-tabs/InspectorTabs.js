@@ -1,4 +1,5 @@
-import "./editor.scss";
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 import classnames from "classnames";
 const { __ } = wp.i18n;
 const { Fragment, cloneElement, Children } = wp.element;
@@ -10,6 +11,13 @@ const { useState, useRef, useEffect } = wp.element,
 	ADVANCE = "advance";
 
 const InspectorTabs = (props) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
 	const { defaultTab, children, tabs } = props,
 		[currentTab, setCurrentTab] = useState(
 			defaultTab ? defaultTab : tabs[0]
