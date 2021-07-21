@@ -235,7 +235,8 @@ body.folded .uag-global-nav-menu {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .uag-user-info .uag-starter-site__elements img {
       height: auto;
-      max-width: 100%; }
+      max-width: 100%;
+      width: 100%; }
     .uag-user-info .uag-starter-site__elements .uag-starter-tmp__details {
       -ms-grid-row-align: center;
           align-self: center; }
@@ -243,8 +244,6 @@ body.folded .uag-global-nav-menu {
         margin: 0px; }
     .uag-user-info .uag-starter-site__elements .uag-starter-tmp__details {
       padding: 20px; }
-    .uag-user-info .uag-starter-site__elements .uag-starter-tmp__img {
-      text-align: center; }
   .uag-user-info .uag-theme__metabox {
     text-align: center;
     background: var(--metabox-background-color);
