@@ -274,6 +274,32 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 		}
 		/**
+		 * Get Tabs Js
+		 *
+		 * @since 1.23.5
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_tabs_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
+
+			$attr     = array_merge( $defaults, (array) $attr );
+			$selector = '.uagb-block-' . $id;
+			ob_start();
+			?>
+			window.addEventListener( 'load', function() {
+				UAGBTabs.init( '<?php echo esc_attr( $selector ); ?>' );
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			});
+			window.addEventListener( 'hashchange', function() {
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			}, false );
+			<?php
+			return ob_get_clean();
+
+		}
+		/**
 		 * Get UAGB Lottie Js
 		 *
 		 * @since 1.20.0
