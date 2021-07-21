@@ -896,7 +896,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-column-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-column.uagb-block-' : '#uagb-column-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -924,7 +924,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' .uagb-separator-wrap' => array(
+				'.wp-block-uagb-advanced-heading .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
 				),
 				'.wp-block-uagb-advanced-heading .uagb-desc-text' => array(
