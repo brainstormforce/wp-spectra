@@ -1,10 +1,9 @@
 /**
  * Returns Dynamic Generated CSS
  */
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function inlineStyles( props, isEditor ) {
-
+function inlineStyles( props ) {
 	const {
 		leftPadding,
 		rightPadding,
@@ -18,43 +17,33 @@ function inlineStyles( props, isEditor ) {
 		backgroundImage,
 		backgroundRepeat,
 		backgroundType,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		desktopMarginType,
 		desktopPaddingType,
-	} = props.attributes
+	} = props.attributes;
 
-	var style = {
-		"padding-top": generateCSSUnit( topPadding , desktopPaddingType),
-		"padding-bottom": generateCSSUnit( bottomPadding , desktopPaddingType),
-		"padding-left": generateCSSUnit( leftPadding , desktopPaddingType),
-		"padding-right": generateCSSUnit( rightPadding , desktopPaddingType),
-		"margin-top": generateCSSUnit( topMargin , desktopMarginType),
-		"margin-bottom": generateCSSUnit( bottomMargin , desktopMarginType),
-		"border-radius": generateCSSUnit( borderRadius , desktopMarginType),
+	const style = {
+		'padding-top': generateCSSUnit( topPadding, desktopPaddingType ),
+		'padding-bottom': generateCSSUnit( bottomPadding, desktopPaddingType ),
+		'padding-left': generateCSSUnit( leftPadding, desktopPaddingType ),
+		'padding-right': generateCSSUnit( rightPadding, desktopPaddingType ),
+		'margin-top': generateCSSUnit( topMargin, desktopMarginType ),
+		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
+	};
+
+
+	const position = backgroundPosition.replace( '-', ' ' );
+
+	if ( 'image' === backgroundType ) {
+		style[ 'background-image' ] = backgroundImage
+			? `url(${ backgroundImage.url })`
+			: null;
+		style[ 'background-position' ] = position;
+		style[ 'background-attachment' ] = backgroundAttachment;
+		style[ 'background-repeat' ] = backgroundRepeat;
+		style[ 'background-size' ] = backgroundSize;
 	}
 
-	if ( borderStyle != "none" ) {
-		style["border-style"] = borderStyle
-		style["border-width"] = generateCSSUnit( borderWidth, "px" )
-		style["border-color"] =  borderColor
-	}
-
-	var position = backgroundPosition.replace( "-", " " )
-
-	if ( "image" === backgroundType ) {
-
-		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
-		style["background-position"] = position
-		style["background-attachment"] = backgroundAttachment
-		style["background-repeat"] = backgroundRepeat
-		style["background-size"] = backgroundSize
-
-	}
-
-	return style
+	return style;
 }
 
-export default inlineStyles
+export default inlineStyles;

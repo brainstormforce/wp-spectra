@@ -10,7 +10,7 @@ import { useState, useEffect } from "@wordpress/element";
 const { useSelect, useDispatch } = wp.data;
 
 import { __ } from "@wordpress/i18n";
-import "./range.scss";
+import "./editor.scss";
 import map from "lodash/map";
 
 const isNumberControlSupported = !!NumberControl;

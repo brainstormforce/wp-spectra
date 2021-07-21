@@ -44,7 +44,15 @@ hr.uagb-editor__separator {
 	button {
 	width: 50%;
 }
-
+.uagb-size-type-field-tabs .components-tab-panel__tabs,
+.DayPickerNavigation,
+.DayPicker_weekHeader,
+.components-button-group .components-button.is-primary,
+.components-button-group .components-button:focus,
+.components-toolbar .components-button,
+.components-toolbar .components-button:before {
+	z-index: unset;
+}
 .uagb-inspect-tabs .components-tab-panel__tabs {
 	margin-bottom: 15px;
 }
@@ -52,6 +60,7 @@ hr.uagb-editor__separator {
 .uagb-inspect-tabs-col-3 > .components-tab-panel__tabs button {
 	width: 33.33%;
 }
+
 .uagb-settings-notice {
 	color: #478a3b;
 	background-color: #e5fce3;
@@ -61,12 +70,14 @@ hr.uagb-editor__separator {
 	line-height: 1.5;
 	text-align: left;
 }
+
 .uagb-note,
 .components-base-control__help {
+	color: #a4afb7;
 	font-size: 12px;
 	font-style: italic;
-	color: #a4afb7;
 }
+
 .components-range-control.uagb-margin-control .components-base-control__label {
 	width: 30px;
 }
@@ -78,31 +89,31 @@ hr.uagb-editor__separator {
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+	padding: 1em;
+	margin: 0;
+	border: 1px solid #f1f1f1;
+	cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	line-height: 16px;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-moz-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-moz-box-pack: center;
 	-ms-flex-pack: center;
-	justify-content: center;
-	float: left;
-	cursor: pointer;
-	padding: 1em;
-	line-height: 1em;
-	font-size: 1em;
-	border: 1px solid #f1f1f1;
-	margin: 0;
-	text-align: center;
 }
 
 .uagb-icons-list {
 	display: inline-block;
-	margin: 1em 0 0 0;
-	padding: 0;
 	max-height: 200px;
+	padding: 0;
+	margin: 1em 0 0 0;
 	overflow: auto;
 }
 
@@ -113,18 +124,21 @@ hr.uagb-editor__separator {
 
 .uagb-icon-picker-wrap {
 	position: relative;
-	margin: 8px 0;
-	width: 100%;
 	vertical-align: middle;
+	width: 100%;
+	margin: 8px 0;
 }
 
 .uagb-icon-picker-wrap .search-icon {
+	width: 100%;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
 	width: 100%;
 }
 
 .components-button-group.uagb-size-type-field {
+	display: flex;
+	justify-content: flex-end;
 	margin: 0;
 	text-align: right;
 	display: flex;
@@ -144,6 +158,7 @@ hr.uagb-editor__separator {
 	.components-base-control__label {
 	width: auto;
 	display: block;
+	width: auto;
 }
 
 .uagb-size-type-field-tabs
@@ -151,6 +166,7 @@ hr.uagb-editor__separator {
 	.components-range-control__slider {
 	margin-bottom: 0;
 	padding-bottom: 2px;
+	margin-bottom: 0;
 }
 
 .uagb-size-type-field-tabs .components-range-control .dashicon {
@@ -165,7 +181,6 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs {
-	margin-bottom: 20px;
 	margin-top: 20px;
 }
 
@@ -174,6 +189,9 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
+	display: block;
+	margin-right: 30px;
+	margin-bottom: -20px;
 	border-bottom: 0;
 	text-align: right;
 	padding-right: 28px;
@@ -209,6 +227,8 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
+	box-shadow: none;
+	background-color: #e4e5e5;
 	color: #23282d;
 	background-color: #e4e5e5;
 	box-shadow: none;
@@ -264,12 +284,16 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field__common-tabs .components-tab-panel__tabs {
-	margin-bottom: -34px;
 	display: block;
+	margin-bottom: -34px;
 }
 
 .uagb-typography-advanced,
 .uagb-box-shadow-advanced {
+	position: relative;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
 	border: 1px solid #e2e4e7;
 	background: #fff;
@@ -281,58 +305,48 @@ hr.uagb-editor__separator {
 
 .uagb-typography-advanced::before,
 .uagb-box-shadow-advanced::before {
-	border: 8px solid #e2e4e7;
-
-	content: "";
 	position: absolute;
-	height: 0;
-	width: 0;
-	line-height: 0;
 
 	top: -8px;
 	right: 5%;
+	width: 0;
+	height: 0;
+	margin-left: -10px;
+	border: 8px solid #e2e4e7;
+	border-top: none;
+	border-right-color: transparent;
+	border-left-color: transparent;
 
 	border-bottom-style: solid;
-	border-left-color: transparent;
-	border-right-color: transparent;
-	border-top: none;
-	margin-left: -10px;
+	line-height: 0;
+
+	content: "";
 }
 
 .uagb-typography-advanced::after,
 .uagb-box-shadow-advanced::after {
-	border: 8px solid #fff;
-
-	content: "";
 	position: absolute;
-	height: 0;
-	width: 0;
-	line-height: 0;
 
 	top: -6px;
 	right: 5%;
+	width: 0;
+	height: 0;
+	margin-left: -10px;
+	border: 8px solid #fff;
+	border-top: none;
+	border-right-color: transparent;
+	border-left-color: transparent;
 
 	border-bottom-style: solid;
-	border-left-color: transparent;
-	border-right-color: transparent;
-	border-top: none;
-	margin-left: -10px;
-}
+	line-height: 0;
 
-/*.uag-typography-option-actions .components-button.is-default.uagb-typography-reset-btn {
-    background: transparent;
-    border-color: transparent;
-    box-shadow: inset 0 1px 0 transparent;
-    float: right;
+	content: "";
 }
-.uag-typography-option-actions .components-button.is-default.uagb-typography-reset-btn:hover {
-	border-color: #cccccc;
-}*/
 
 .uag-typography-option-actions,
 .uag-box-shadow-option-actions {
-	margin-bottom: 1.5em;
 	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 .uag-typography-font-family-options .components-base-control__label,
@@ -342,7 +356,6 @@ hr.uagb-editor__separator {
 
 .uag-typography-font-family-options > div {
 	margin: 0.2em 0 1.5em 0;
-	z-index: 2;
 }
 
 .uag-typography-font-family-options input[type="text"]:focus {
@@ -350,22 +363,22 @@ hr.uagb-editor__separator {
 }
 
 .uag-typography-option-actions button {
-	margin: 0;
 	float: right;
+	margin: 0;
 }
 
 .uag-typography-option-actions .uagb-typography-reset-btn,
 .uag-typography-option-actions .uagb-typography-reset-btn:hover,
 .uag-typography-option-actions .uagb-typography-reset-btn:active:enabled {
+	float: right;
+	box-shadow: none;
 	background: none;
 	border: none;
-	box-shadow: none;
-	float: right;
 }
 
 .uag-typography-option-actions button svg {
-	height: 15px;
 	width: 15px;
+	height: 15px;
 }
 
 .uag-typography-option-actions button svg:hover {
@@ -373,8 +386,8 @@ hr.uagb-editor__separator {
 }
 
 .uag-typography-option-actions button.uagb-typography-reset-btn svg {
-	height: 13px;
 	width: 13px;
+	height: 13px;
 	fill: #777;
 }
 
@@ -453,8 +466,9 @@ hr.uagb-editor__separator {
 .rfipbtn *,
 .rfipdropdown,
 .rfipdropdown * {
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
@@ -468,16 +482,25 @@ hr.uagb-editor__separator {
 
 .rfip {
 	position: relative;
-	margin: 8px 0;
+	vertical-align: middle;
 	width: 100%;
 	vertical-align: middle;
 }
 
 .rfipbtn {
-	width: 136px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	width: 136px;
+	height: 40px;
+	min-height: 50px;
+	border-radius: 2px;
+	outline: 0 none;
+	cursor: pointer;
+	user-select: none;
+	transition: border-color 0.25s, -webkit-box-shadow 0.25s;
+	transition: box-shadow 0.25s, border-color 0.25s;
+	transition: box-shadow 0.25s, border-color 0.25s, -webkit-box-shadow 0.25s;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row nowrap;
@@ -493,8 +516,6 @@ hr.uagb-editor__separator {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
-	height: 40px;
 }
 
 .rfipbtn--open {
@@ -502,14 +523,19 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn__button {
-	width: 48px;
-	margin-left: auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: auto;
+	margin-left: auto;
+	transition: background 0.25s, -webkit-box-shadow 0.25s;
+	transition: background 0.25s, box-shadow 0.25s;
+	transition: background 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
@@ -542,16 +568,18 @@ hr.uagb-editor__separator {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	flex: 0 0 86px;
+	justify-content: center;
+	align-items: center;
+	padding: 2px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row nowrap;
 	flex-flow: row nowrap;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
-	justify-content: center;
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 86px;
 	flex: 0 0 86px;
@@ -567,9 +595,10 @@ hr.uagb-editor__separator {
 	flex-flow: row wrap;
 	-webkit-box-pack: start;
 	-ms-flex-pack: start;
-	justify-content: flex-start;
-	-ms-flex-preferred-size: 212px;
 	flex-basis: 212px;
+	justify-content: flex-start;
+	align-content: center;
+	-ms-flex-preferred-size: 212px;
 	-ms-flex-line-pack: center;
 	align-content: center;
 }
@@ -581,18 +610,20 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn__icon {
-	margin: 2px;
-	padding: 0;
-	height: 28px;
-	width: 48px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 48px;
+	height: 28px;
+	padding: 0;
+	margin: 2px;
+	border-radius: 2px;
 	-ms-flex-flow: row nowrap;
 	flex-flow: row nowrap;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: justify;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
@@ -600,8 +631,6 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn__icon--empty {
-	font-size: 14px;
-	line-height: 16px;
 	margin-left: 8px;
 	text-align: center;
 	text-transform: lowercase;
@@ -612,11 +641,13 @@ hr.uagb-editor__separator {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	height: 28px;
+	justify-content: center;
+	align-items: center;
 	width: 28px;
+	height: 28px;
+	font-size: 18px;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
@@ -625,8 +656,8 @@ hr.uagb-editor__separator {
 
 .rfipbtn__elm img,
 .rfipbtn__elm svg {
-	height: 18px;
 	width: 18px;
+	height: 18px;
 }
 
 .rfipbtn__elm svg {
@@ -634,14 +665,17 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn__del {
-	width: 18px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 18px;
 	height: 28px;
+	cursor: pointer;
+	transition: background-color 0.25s;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
@@ -651,17 +685,23 @@ hr.uagb-editor__separator {
 }
 
 .rfipcategory {
+	position: relative;
 	width: 100%;
 	margin: 0 0 8px;
 	position: relative;
 }
 
 .rfipcategory select {
-	width: 100%;
 	display: block;
+	width: 100%;
 	height: 32px;
-	line-height: 32px;
+	background-color: transparent !important;
 	border-radius: 0;
+	appearance: none;
+	line-height: 32px;
+	transition: border 0.25s, -webkit-box-shadow 0.25s;
+	transition: border 0.25s, box-shadow 0.25s;
+	transition: border 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -674,23 +714,23 @@ hr.uagb-editor__separator {
 
 .rfipcategory i {
 	position: absolute;
-	right: 2px;
 	top: 0;
+	right: 2px;
+	z-index: -1;
 	font-size: 16px;
 	line-height: 32px;
 	z-index: -1;
 }
 
 .rfipdropdown {
-	width: 352px;
 	position: absolute;
 	left: 0;
-	margin-top: -1px;
 	z-index: 100000001;
 	border-radius: 0 1px 4px 4px;
 }
 
 .rfipdropdown__selector {
+	padding: 16px;
 	overflow: hidden;
 	padding: 16px;
 }
@@ -706,12 +746,14 @@ hr.uagb-editor__separator {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	align-items: center;
+	height: 24px;
+	margin-bottom: 8px;
+	line-height: 24px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row nowrap;
 	flex-flow: row nowrap;
-	height: 24px;
-	line-height: 24px;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -726,6 +768,7 @@ hr.uagb-editor__separator {
 .rfipicons__cp {
 	width: 32px;
 	height: 24px;
+	text-align: right;
 	line-height: 24px;
 	text-align: right;
 }
@@ -737,22 +780,23 @@ hr.uagb-editor__separator {
 }
 
 .rfipicons__arrow {
-	margin-left: auto;
-	width: 56px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 56px;
+	height: 24px;
+	margin-left: auto;
+	user-select: none;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row nowrap;
 	flex-flow: row nowrap;
 	-webkit-box-pack: end;
 	-ms-flex-pack: end;
-	justify-content: flex-end;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
-	height: 24px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -765,7 +809,7 @@ hr.uagb-editor__separator {
 
 .rfipicons__left,
 .rfipicons__right {
-	cursor: pointer;
+	position: relative;
 	width: 24px;
 	height: 24px;
 	position: relative;
@@ -777,20 +821,22 @@ hr.uagb-editor__separator {
 }
 
 .rfipicons__label {
-	height: 22px;
-	width: 22px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 22px;
+	height: 22px;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 }
 
 .rfipicons__label img {
+	width: 18px;
 	height: 18px;
 	width: 18px;
 }
@@ -799,12 +845,13 @@ hr.uagb-editor__separator {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 1 20%;
 	flex: 1 1 20%;
+	justify-content: flex-start;
+	align-content: center;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 	-ms-flex-line-pack: center;
-	align-content: center;
 	-webkit-box-pack: start;
 	-ms-flex-pack: start;
 	justify-content: flex-start;
@@ -820,11 +867,8 @@ hr.uagb-editor__separator {
 .rfipicons__ibox {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	height: 100%;
+	align-items: center;
 	width: 100%;
 	-webkit-transition: background-color 0.25s, border 0.25s;
 	transition: background-color 0.25s, border 0.25s;
@@ -835,9 +879,9 @@ hr.uagb-editor__separator {
 
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
-	max-height: 24px;
-	height: 18px;
 	width: 18px;
+	height: 18px;
+	max-height: 24px;
 }
 
 .rfipicons__ibox svg {
@@ -861,15 +905,17 @@ hr.uagb-editor__separator {
 }
 
 .rfipicons__icon {
-	width: 20%;
-	height: 64px;
-	padding: 1px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20%;
+	height: 64px;
+	padding: 1px;
+	cursor: pointer;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
@@ -878,6 +924,7 @@ hr.uagb-editor__separator {
 
 .rfipicons__icon--error {
 	display: block;
+	width: 100%;
 	text-align: center;
 	font-size: 16px;
 	width: 100%;
@@ -890,8 +937,8 @@ hr.uagb-editor__separator {
 }
 
 .rfipsearch input {
-	width: 100%;
 	display: block;
+	width: 100%;
 	height: 32px;
 	line-height: 32px;
 }
@@ -910,6 +957,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--green .rfipbtn__button {
+	background-color: #c8e6c9;
 	border: 0 none transparent;
 	border-left: 1px solid #81c784;
 	background-color: #c8e6c9;
@@ -973,7 +1021,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--green .rfipcategory select:active,
 .rfipdropdown--green .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #4caf50;
 	border-bottom-color: #4caf50;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #4caf50;
 	box-shadow: 0 1px 0 0 #4caf50;
 	outline: 0 none;
@@ -990,7 +1040,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--green .rfipicons__cp:active,
 .rfipdropdown--green .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #4caf50;
 	border-bottom-color: #4caf50;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #4caf50;
 	box-shadow: 0 1px 0 0 #4caf50;
 	outline: 0 none;
@@ -1051,7 +1103,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--green .rfipsearch input:active,
 .rfipdropdown--green .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #4caf50;
 	border-bottom-color: #4caf50;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #4caf50;
 	box-shadow: 0 1px 0 0 #4caf50;
 	outline: 0 none;
@@ -1071,6 +1125,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--bluegrey .rfipbtn__button {
+	background-color: #cfd8dc;
 	border: 0 none transparent;
 	border-left: 1px solid #90a4ae;
 	background-color: #cfd8dc;
@@ -1134,7 +1189,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--bluegrey .rfipcategory select:active,
 .rfipdropdown--bluegrey .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #607d8b;
 	border-bottom-color: #607d8b;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #607d8b;
 	box-shadow: 0 1px 0 0 #607d8b;
 	outline: 0 none;
@@ -1151,7 +1208,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--bluegrey .rfipicons__cp:active,
 .rfipdropdown--bluegrey .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #607d8b;
 	border-bottom-color: #607d8b;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #607d8b;
 	box-shadow: 0 1px 0 0 #607d8b;
 	outline: 0 none;
@@ -1212,7 +1271,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--bluegrey .rfipsearch input:active,
 .rfipdropdown--bluegrey .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #607d8b;
 	border-bottom-color: #607d8b;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #607d8b;
 	box-shadow: 0 1px 0 0 #607d8b;
 	outline: 0 none;
@@ -1232,6 +1293,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--brown .rfipbtn__button {
+	background-color: #d7ccc8;
 	border: 0 none transparent;
 	border-left: 1px solid #a1887f;
 	background-color: #d7ccc8;
@@ -1295,7 +1357,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--brown .rfipcategory select:active,
 .rfipdropdown--brown .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #795548;
 	border-bottom-color: #795548;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #795548;
 	box-shadow: 0 1px 0 0 #795548;
 	outline: 0 none;
@@ -1312,7 +1376,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--brown .rfipicons__cp:active,
 .rfipdropdown--brown .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #795548;
 	border-bottom-color: #795548;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #795548;
 	box-shadow: 0 1px 0 0 #795548;
 	outline: 0 none;
@@ -1373,7 +1439,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--brown .rfipsearch input:active,
 .rfipdropdown--brown .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #795548;
 	border-bottom-color: #795548;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #795548;
 	box-shadow: 0 1px 0 0 #795548;
 	outline: 0 none;
@@ -1393,6 +1461,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--cyan .rfipbtn__button {
+	background-color: #b2ebf2;
 	border: 0 none transparent;
 	border-left: 1px solid #4dd0e1;
 	background-color: #b2ebf2;
@@ -1456,7 +1525,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--cyan .rfipcategory select:active,
 .rfipdropdown--cyan .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #00bcd4;
 	border-bottom-color: #00bcd4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #00bcd4;
 	box-shadow: 0 1px 0 0 #00bcd4;
 	outline: 0 none;
@@ -1473,7 +1544,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--cyan .rfipicons__cp:active,
 .rfipdropdown--cyan .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #00bcd4;
 	border-bottom-color: #00bcd4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #00bcd4;
 	box-shadow: 0 1px 0 0 #00bcd4;
 	outline: 0 none;
@@ -1534,7 +1607,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--cyan .rfipsearch input:active,
 .rfipdropdown--cyan .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #00bcd4;
 	border-bottom-color: #00bcd4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #00bcd4;
 	box-shadow: 0 1px 0 0 #00bcd4;
 	outline: 0 none;
@@ -1554,6 +1629,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--deeporange .rfipbtn__button {
+	background-color: #ffccbc;
 	border: 0 none transparent;
 	border-left: 1px solid #ff8a65;
 	background-color: #ffccbc;
@@ -1617,7 +1693,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeporange .rfipcategory select:active,
 .rfipdropdown--deeporange .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #ff5722;
 	border-bottom-color: #ff5722;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff5722;
 	box-shadow: 0 1px 0 0 #ff5722;
 	outline: 0 none;
@@ -1634,7 +1712,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeporange .rfipicons__cp:active,
 .rfipdropdown--deeporange .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #ff5722;
 	border-bottom-color: #ff5722;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff5722;
 	box-shadow: 0 1px 0 0 #ff5722;
 	outline: 0 none;
@@ -1695,7 +1775,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeporange .rfipsearch input:active,
 .rfipdropdown--deeporange .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #ff5722;
 	border-bottom-color: #ff5722;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff5722;
 	box-shadow: 0 1px 0 0 #ff5722;
 	outline: 0 none;
@@ -1715,6 +1797,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--deeppurple .rfipbtn__button {
+	background-color: #d1c4e9;
 	border: 0 none transparent;
 	border-left: 1px solid #9575cd;
 	background-color: #d1c4e9;
@@ -1778,7 +1861,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeppurple .rfipcategory select:active,
 .rfipdropdown--deeppurple .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #673ab7;
 	border-bottom-color: #673ab7;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #673ab7;
 	box-shadow: 0 1px 0 0 #673ab7;
 	outline: 0 none;
@@ -1795,7 +1880,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeppurple .rfipicons__cp:active,
 .rfipdropdown--deeppurple .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #673ab7;
 	border-bottom-color: #673ab7;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #673ab7;
 	box-shadow: 0 1px 0 0 #673ab7;
 	outline: 0 none;
@@ -1856,16 +1943,18 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--deeppurple .rfipsearch input:active,
 .rfipdropdown--deeppurple .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #673ab7;
 	border-bottom-color: #673ab7;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #673ab7;
 	box-shadow: 0 1px 0 0 #673ab7;
 	outline: 0 none;
 }
 
 .rfipbtn--default {
+	width: 100%;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
-	width: 100%;
 }
 
 .rfipbtn--default:active,
@@ -1877,6 +1966,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--default .rfipbtn__button {
+	background-color: #f5f5f5;
 	border: 0 none transparent;
 	border-left: 1px solid #e0e0e0;
 	background-color: #f5f5f5;
@@ -1940,7 +2030,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--default .rfipcategory select:active,
 .rfipdropdown--default .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #9e9e9e;
 	border-bottom-color: #9e9e9e;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9e9e9e;
 	box-shadow: 0 1px 0 0 #9e9e9e;
 	outline: 0 none;
@@ -1957,7 +2049,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--default .rfipicons__cp:active,
 .rfipdropdown--default .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #9e9e9e;
 	border-bottom-color: #9e9e9e;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9e9e9e;
 	box-shadow: 0 1px 0 0 #9e9e9e;
 	outline: 0 none;
@@ -2014,7 +2108,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--default .rfipsearch input:active,
 .rfipdropdown--default .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #9e9e9e;
 	border-bottom-color: #9e9e9e;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9e9e9e;
 	box-shadow: 0 1px 0 0 #9e9e9e;
 	outline: 0 none;
@@ -2034,6 +2130,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--blue .rfipbtn__button {
+	background-color: #bbdefb;
 	border: 0 none transparent;
 	border-left: 1px solid #64b5f6;
 	background-color: #bbdefb;
@@ -2097,7 +2194,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--blue .rfipcategory select:active,
 .rfipdropdown--blue .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #2196f3;
 	border-bottom-color: #2196f3;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #2196f3;
 	box-shadow: 0 1px 0 0 #2196f3;
 	outline: 0 none;
@@ -2114,7 +2213,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--blue .rfipicons__cp:active,
 .rfipdropdown--blue .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #2196f3;
 	border-bottom-color: #2196f3;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #2196f3;
 	box-shadow: 0 1px 0 0 #2196f3;
 	outline: 0 none;
@@ -2175,7 +2276,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--blue .rfipsearch input:active,
 .rfipdropdown--blue .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #2196f3;
 	border-bottom-color: #2196f3;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #2196f3;
 	box-shadow: 0 1px 0 0 #2196f3;
 	outline: 0 none;
@@ -2195,6 +2298,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--indigo .rfipbtn__button {
+	background-color: #c5cae9;
 	border: 0 none transparent;
 	border-left: 1px solid #7986cb;
 	background-color: #c5cae9;
@@ -2258,7 +2362,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--indigo .rfipcategory select:active,
 .rfipdropdown--indigo .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #3f51b5;
 	border-bottom-color: #3f51b5;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #3f51b5;
 	box-shadow: 0 1px 0 0 #3f51b5;
 	outline: 0 none;
@@ -2275,7 +2381,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--indigo .rfipicons__cp:active,
 .rfipdropdown--indigo .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #3f51b5;
 	border-bottom-color: #3f51b5;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #3f51b5;
 	box-shadow: 0 1px 0 0 #3f51b5;
 	outline: 0 none;
@@ -2336,7 +2444,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--indigo .rfipsearch input:active,
 .rfipdropdown--indigo .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #3f51b5;
 	border-bottom-color: #3f51b5;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #3f51b5;
 	box-shadow: 0 1px 0 0 #3f51b5;
 	outline: 0 none;
@@ -2356,6 +2466,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--lightblue .rfipbtn__button {
+	background-color: #b3e5fc;
 	border: 0 none transparent;
 	border-left: 1px solid #4fc3f7;
 	background-color: #b3e5fc;
@@ -2419,7 +2530,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--lightblue .rfipcategory select:active,
 .rfipdropdown--lightblue .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #03a9f4;
 	border-bottom-color: #03a9f4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #03a9f4;
 	box-shadow: 0 1px 0 0 #03a9f4;
 	outline: 0 none;
@@ -2436,7 +2549,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--lightblue .rfipicons__cp:active,
 .rfipdropdown--lightblue .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #03a9f4;
 	border-bottom-color: #03a9f4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #03a9f4;
 	box-shadow: 0 1px 0 0 #03a9f4;
 	outline: 0 none;
@@ -2497,7 +2612,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--lightblue .rfipsearch input:active,
 .rfipdropdown--lightblue .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #03a9f4;
 	border-bottom-color: #03a9f4;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #03a9f4;
 	box-shadow: 0 1px 0 0 #03a9f4;
 	outline: 0 none;
@@ -2517,6 +2634,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--pink .rfipbtn__button {
+	background-color: #f8bbd0;
 	border: 0 none transparent;
 	border-left: 1px solid #f06292;
 	background-color: #f8bbd0;
@@ -2580,7 +2698,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--pink .rfipcategory select:active,
 .rfipdropdown--pink .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #e91e63;
 	border-bottom-color: #e91e63;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #e91e63;
 	box-shadow: 0 1px 0 0 #e91e63;
 	outline: 0 none;
@@ -2597,7 +2717,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--pink .rfipicons__cp:active,
 .rfipdropdown--pink .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #e91e63;
 	border-bottom-color: #e91e63;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #e91e63;
 	box-shadow: 0 1px 0 0 #e91e63;
 	outline: 0 none;
@@ -2658,7 +2780,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--pink .rfipsearch input:active,
 .rfipdropdown--pink .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #e91e63;
 	border-bottom-color: #e91e63;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #e91e63;
 	box-shadow: 0 1px 0 0 #e91e63;
 	outline: 0 none;
@@ -2678,6 +2802,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--orange .rfipbtn__button {
+	background-color: #ffe0b2;
 	border: 0 none transparent;
 	border-left: 1px solid #ffb74d;
 	background-color: #ffe0b2;
@@ -2741,7 +2866,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--orange .rfipcategory select:active,
 .rfipdropdown--orange .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #ff9800;
 	border-bottom-color: #ff9800;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff9800;
 	box-shadow: 0 1px 0 0 #ff9800;
 	outline: 0 none;
@@ -2758,7 +2885,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--orange .rfipicons__cp:active,
 .rfipdropdown--orange .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #ff9800;
 	border-bottom-color: #ff9800;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff9800;
 	box-shadow: 0 1px 0 0 #ff9800;
 	outline: 0 none;
@@ -2819,7 +2948,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--orange .rfipsearch input:active,
 .rfipdropdown--orange .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #ff9800;
 	border-bottom-color: #ff9800;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #ff9800;
 	box-shadow: 0 1px 0 0 #ff9800;
 	outline: 0 none;
@@ -2839,6 +2970,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--purple .rfipbtn__button {
+	background-color: #e1bee7;
 	border: 0 none transparent;
 	border-left: 1px solid #ba68c8;
 	background-color: #e1bee7;
@@ -2902,7 +3034,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--purple .rfipcategory select:active,
 .rfipdropdown--purple .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #9c27b0;
 	border-bottom-color: #9c27b0;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9c27b0;
 	box-shadow: 0 1px 0 0 #9c27b0;
 	outline: 0 none;
@@ -2919,7 +3053,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--purple .rfipicons__cp:active,
 .rfipdropdown--purple .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #9c27b0;
 	border-bottom-color: #9c27b0;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9c27b0;
 	box-shadow: 0 1px 0 0 #9c27b0;
 	outline: 0 none;
@@ -2980,7 +3116,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--purple .rfipsearch input:active,
 .rfipdropdown--purple .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #9c27b0;
 	border-bottom-color: #9c27b0;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #9c27b0;
 	box-shadow: 0 1px 0 0 #9c27b0;
 	outline: 0 none;
@@ -3000,6 +3138,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--red .rfipbtn__button {
+	background-color: #ffcdd2;
 	border: 0 none transparent;
 	border-left: 1px solid #e57373;
 	background-color: #ffcdd2;
@@ -3063,7 +3202,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--red .rfipcategory select:active,
 .rfipdropdown--red .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #f44336;
 	border-bottom-color: #f44336;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #f44336;
 	box-shadow: 0 1px 0 0 #f44336;
 	outline: 0 none;
@@ -3080,7 +3221,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--red .rfipicons__cp:active,
 .rfipdropdown--red .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #f44336;
 	border-bottom-color: #f44336;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #f44336;
 	box-shadow: 0 1px 0 0 #f44336;
 	outline: 0 none;
@@ -3141,7 +3284,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--red .rfipsearch input:active,
 .rfipdropdown--red .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #f44336;
 	border-bottom-color: #f44336;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #f44336;
 	box-shadow: 0 1px 0 0 #f44336;
 	outline: 0 none;
@@ -3161,6 +3306,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--teal .rfipbtn__button {
+	background-color: #b2dfdb;
 	border: 0 none transparent;
 	border-left: 1px solid #4db6ac;
 	background-color: #b2dfdb;
@@ -3224,7 +3370,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--teal .rfipcategory select:active,
 .rfipdropdown--teal .rfipcategory select:focus {
+	box-shadow: 0 1px 0 0 #009688;
 	border-bottom-color: #009688;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #009688;
 	box-shadow: 0 1px 0 0 #009688;
 	outline: 0 none;
@@ -3241,7 +3389,9 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--teal .rfipicons__cp:active,
 .rfipdropdown--teal .rfipicons__cp:focus {
+	box-shadow: 0 1px 0 0 #009688;
 	border-bottom-color: #009688;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #009688;
 	box-shadow: 0 1px 0 0 #009688;
 	outline: 0 none;
@@ -3302,19 +3452,23 @@ hr.uagb-editor__separator {
 
 .rfipdropdown--teal .rfipsearch input:active,
 .rfipdropdown--teal .rfipsearch input:focus {
+	box-shadow: 0 1px 0 0 #009688;
 	border-bottom-color: #009688;
+	outline: 0 none;
 	-webkit-box-shadow: 0 1px 0 0 #009688;
 	box-shadow: 0 1px 0 0 #009688;
 	outline: 0 none;
 }
 
 .rfipbtn--default .rfipbtn__icon {
-	border: 0;
+	color: #424242;
 	height: 40px;
+	border: 0;
 }
 
 .rfipbtn--default .rfipbtn__del {
 	height: 18px;
+	background-color: #eee;
 }
 
 [class^="fipicon-"] {
@@ -3322,30 +3476,30 @@ hr.uagb-editor__separator {
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
-	text-transform: none;
 	line-height: 1;
+	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-i.fipicon-angle-down:before {
+i.fipicon-angle-down::before {
+	font-family: dashicons, serif;
 	content: "\f140";
-	font-family: dashicons;
 }
 
-i.fipicon-angle-up:before {
+i.fipicon-angle-up::before {
+	font-family: dashicons, serif;
 	content: "\f142";
-	font-family: dashicons;
 }
 
-i.fipicon-angle-right:before {
+i.fipicon-angle-right::before {
+	font-family: dashicons, serif;
 	content: "\f345";
-	font-family: dashicons;
 }
 
-i.fipicon-angle-left:before {
+i.fipicon-angle-left::before {
+	font-family: dashicons, serif;
 	content: "\f341";
-	font-family: dashicons;
 }
 
 label.wp-block-uagb-blockquote__via-label svg {
@@ -3358,6 +3512,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .components-select-control__input {
 	text-transform: capitalize;
 }
+
 .components-panel__body.uagb-repeater-panel {
 	max-width: 100%;
 	margin: 0 auto;
@@ -3370,9 +3525,11 @@ label.wp-block-uagb-blockquote__via-label svg {
 	.components-panel__body.uagb-repeater-panel:last-child {
 	margin-bottom: 1em;
 }
+
 .uagb-inline-margin .uagb-margin-control label.components-base-control__label {
 	display: inline-block;
 }
+
 .uagb-inline-margin .components-button-group.uagb-size-type-field {
 	display: inline-block;
 	float: right;
@@ -3416,6 +3573,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-forms-button-group {
 	margin-bottom: 15px;
 }
+
 /* WP 5.6 typography icon css */
 .uag-typography-option-actions button .dashicons,
 .uag-typography-option-actions button .dashicons-before:before {

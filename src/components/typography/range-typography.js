@@ -4,12 +4,12 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 // Extend component
-const { Fragment } = wp.element;
-const { useSelect, useDispatch } = wp.data;
-
+import { useSelect, useDispatch } from "@wordpress/data";
 /**
  * Build the Measure controls
- * @returns {object} Measure settings.
+ *
+ * @param props
+ * @return {Object} Measure settings.
  */
 export default function RangeTypographyControl(props) {
 	const deviceType = useSelect((select) => {
@@ -30,7 +30,7 @@ export default function RangeTypographyControl(props) {
 	const output = {};
 
 	output.Desktop = (
-		<Fragment>
+		<>
 			<Range
 				{...props}
 				label={__(props.sizeText)}
@@ -43,10 +43,10 @@ export default function RangeTypographyControl(props) {
 				unit={props.type}
 				responsive={true}
 			/>
-		</Fragment>
+		</>
 	);
 	output.Tablet = (
-		<Fragment>
+		<>
 			<Range
 				{...props}
 				label={__(props.sizeTabletText)}
@@ -59,10 +59,10 @@ export default function RangeTypographyControl(props) {
 				unit={props.type}
 				responsive={true}
 			/>
-		</Fragment>
+		</>
 	);
 	output.Mobile = (
-		<Fragment>
+		<>
 			<Range
 				{...props}
 				label={__(props.sizeMobileText)}
@@ -75,7 +75,7 @@ export default function RangeTypographyControl(props) {
 				unit={props.type}
 				responsive={true}
 			/>
-		</Fragment>
+		</>
 	);
 
 	return (
