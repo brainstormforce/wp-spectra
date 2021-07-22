@@ -15,12 +15,23 @@
     "test": "vendor/bin/phpunit"
   },
   "require": {
-    "brainstormforce/astra-notices": "^1.1"
+    "brainstormforce/astra-notices": "^1.1",
+    "brainstormforce/gutenberg-templates": "^1"
   },
+	"repositories": [
+		{
+      "name": "brainstormforce/gutenberg-templates",
+		  "type": "vcs",
+		  "url": "git@github.com:brainstormforce/gutenberg-templates.git"
+		}
+	],
   "extra": {
     "installer-paths": {
         "lib/{$name}/": [
             "brainstormforce/astra-notices"
+        ],
+        "inc/lib/ast-block-templates/": [
+            "brainstormforce/gutenberg-templates"
         ]
     }
   }
