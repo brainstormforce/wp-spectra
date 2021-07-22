@@ -977,19 +977,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$already_selectors_tablet  = ( isset( $combined_selectors['tablet'][ $selector ] ) ) ? $combined_selectors['tablet'][ $selector ] : array();
 			$already_selectors_mobile  = ( isset( $combined_selectors['mobile'][ $selector ] ) ) ? $combined_selectors['mobile'][ $selector ] : array();
 
-			$family_slug = ( '' === $slug ) ? 'fontFamily' : $slug . 'FontFamily';
-			$weight_slug = ( '' === $slug ) ? 'fontWeight' : $slug . 'FontWeight';
+			$family_slug     = ( '' === $slug ) ? 'fontFamily' : $slug . 'FontFamily';
+			$weight_slug     = ( '' === $slug ) ? 'fontWeight' : $slug . 'FontWeight';
+			$transform_slug  = ( '' === $slug ) ? 'fontTransform' : $slug . 'Transform';
+			$decoration_slug = ( '' === $slug ) ? 'fontTransform' : $slug . 'Decoration';
 
 			$l_ht_slug      = ( '' === $slug ) ? 'lineHeight' : $slug . 'LineHeight';
 			$f_sz_slug      = ( '' === $slug ) ? 'fontSize' : $slug . 'FontSize';
 			$l_ht_type_slug = ( '' === $slug ) ? 'lineHeightType' : $slug . 'LineHeightType';
 			$f_sz_type_slug = ( '' === $slug ) ? 'fontSizeType' : $slug . 'FontSizeType';
 
+			$text_transform  = isset( $attr[ $transform_slug ] ) ? $attr[ $transform_slug ] : 'normal';
+			$text_decoration = isset( $attr[ $decoration_slug ] ) ? $attr[ $decoration_slug ] : 'none';
+
 			$typo_css_desktop[ $selector ] = array(
-				'font-family' => $attr[ $family_slug ],
-				'font-weight' => $attr[ $weight_slug ],
-				'font-size'   => ( isset( $attr[ $f_sz_slug ] ) ) ? self::get_css_value( $attr[ $f_sz_slug ], $attr[ $f_sz_type_slug ] ) : '',
-				'line-height' => ( isset( $attr[ $l_ht_slug ] ) ) ? self::get_css_value( $attr[ $l_ht_slug ], $attr[ $l_ht_type_slug ] ) : '',
+				'font-family'     => $attr[ $family_slug ],
+				'text-transform'  => $text_transform,
+				'text-decoration' => $text_decoration,
+				'font-weight'     => $attr[ $weight_slug ],
+				'font-size'       => ( isset( $attr[ $f_sz_slug ] ) ) ? self::get_css_value( $attr[ $f_sz_slug ], $attr[ $f_sz_type_slug ] ) : '',
+				'line-height'     => ( isset( $attr[ $l_ht_slug ] ) ) ? self::get_css_value( $attr[ $l_ht_slug ], $attr[ $l_ht_type_slug ] ) : '',
 			);
 
 			$typo_css_desktop[ $selector ] = array_merge(
