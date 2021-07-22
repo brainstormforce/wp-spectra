@@ -3649,3 +3649,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .components-toggle-control__label {
 	line-height: 2;
 }
+.uagb-control__header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+.components-panel__body .uagb-control__label {
+	margin-bottom: 0;
+}
