@@ -295,6 +295,10 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;
