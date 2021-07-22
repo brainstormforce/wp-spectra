@@ -30,7 +30,7 @@
         "lib/{$name}/": [
             "brainstormforce/astra-notices"
         ],
-        "inc/lib/ast-block-templates/": [
+        "lib/ast-block-templates/": [
             "brainstormforce/gutenberg-templates"
         ]
     }
