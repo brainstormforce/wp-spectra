@@ -235,7 +235,6 @@ Range.defaultProps = {
 	min: -Infinity,
 	resetFallbackValue: "",
 	placeholder: null,
-	initialPosition: 0,
 	unit: ["px", "em"],
 	displayUnit: true,
 	responsive: false,
