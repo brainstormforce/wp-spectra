@@ -147,6 +147,8 @@ class UAGBInlineNoticeEdit extends Component {
 				titleFontSubset,
 				titleFontSizeType,
 				titleLineHeightType,
+				titleTransform,
+				titleDecoration,
 				titleFontSize,
 				titleFontSizeTablet,
 				titleFontSizeMobile,
@@ -444,6 +446,14 @@ class UAGBInlineNoticeEdit extends Component {
 								lineHeightTablet={{
 									value: titleLineHeightTablet,
 									label: "titleLineHeightTablet",
+								}}
+								transform={{
+									value: titleTransform,
+									label: "titleTransform",
+								}}
+								decoration={{
+									value: titleDecoration,
+									label: "titleDecoration",
 								}}
 							/>
 						</PanelBody>
