@@ -77,7 +77,7 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 		 */
 		public function version_check() {
 
-			$file = realpath( dirname( __FILE__ ) . '/ast-block-templates/version.json' );
+			$file = realpath( dirname( __FILE__ ) . '/gutenberg-templates/version.json' );
 
 			// Is file exist?
 			if ( is_file( $file ) ) {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 				$file_data = json_decode( file_get_contents( $file ), true );
 				// @codingStandardsIgnoreEnd
 				global $ast_block_templates_version, $ast_block_templates_init;
-				$path    = realpath( dirname( __FILE__ ) . '/ast-block-templates/ast-block-templates.php' );
+				$path    = realpath( dirname( __FILE__ ) . '/gutenberg-templates/ast-block-templates.php' );
 				$version = isset( $file_data['ast-block-templates'] ) ? $file_data['ast-block-templates'] : 0;
 
 				// Compare versions.
