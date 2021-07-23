@@ -2273,6 +2273,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderWidth'                 => 1,
 							'borderColor'                 => '#e0e0e0',
 							'borderRadius'                => '',
+							'borderStyle'                 => '',
+							'borderHoverColor'            => '',
 							'activeTabBgColor'            => '#007cba',
 							'activeTabTextColor'          => '#fff',
 							'activeiconColor'             => '#fff',
