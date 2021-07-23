@@ -3326,7 +3326,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRighrPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 					'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 					'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 					'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
@@ -3345,14 +3345,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$t_selectors = array(
 				' .uagb-tabs__panel .uagb-tab ' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingTablet'], $attr['tabletabTitlePaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingTablet'], $attr['tabletabTitlePaddingUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingTablet'], $attr['tabletabTitlePaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRighrPaddingTablet'], $attr['tabletabTitlePaddingUnit'] ),
-					'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginTablet'], $attr['tabletabTitleMarginUnit'] ),
-					'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginTablet'], $attr['tabletabTitleMarginUnit'] ),
-					'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginTablet'], $attr['tabletabTitleMarginUnit'] ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabTitleBottomMarginTablet'], $attr['tabletabTitleMarginUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
+					'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
+					'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
+					'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
+					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabTitleBottomMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 				),
 				' .uagb-tabs__body-wrap '       => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['tabBodyTopPaddingTablet'], $attr['tablettabBodyPaddingUnit'] ),

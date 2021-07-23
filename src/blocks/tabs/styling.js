@@ -99,8 +99,8 @@ function styling(props) {
 	} = props.attributes;
 
 	let selectors = {};
-	const tabletSelectors = {};
-	const mobileSelectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 	selectors = {
 		" > .uagb-tabs__panel .uagb-tab": {
 			background: headerBgColor,
