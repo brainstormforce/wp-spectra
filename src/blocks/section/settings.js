@@ -1,4 +1,4 @@
-import UAGB_Block_Icons from '@Controls/block-icons';
+
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
@@ -10,21 +10,14 @@ import Range from "../../components/range/Range.js";
 import Background from "../../components/background";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import GradientSettings from "../../components/gradient-settings";
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
-	ColorPalette,
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	Button,
-	ButtonGroup,
-	BaseControl,
 	ToggleControl,
 } from '@wordpress/components';
 
@@ -109,37 +102,7 @@ const Settings = ( props ) => {
 		blockControls = [ 'wide', 'full' ];
 	}
 
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		setAttributes( { backgroundImage: null } );
-	};
-
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundImage: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' != media.type ) {
-			return;
-		}
-
-		setAttributes( { backgroundImage: media } );
-	};
-
-	/*
-	 * Event to set Video as null while removing.
-	 */
-	const onRemoveVideo = () => {
-		setAttributes( { backgroundVideo: null } );
-	};
-
-	/*
+		/*
 	 * Event to set Video while adding.
 	 */
 	const onSelectVideo = ( media ) => {
@@ -186,15 +149,19 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ contentWidth == 'boxed' && (
-					<RangeControl
-						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-						value={ width }
-						min={ 0 }
-						max={ 2000 }
-						onChange={ ( value ) =>
-							setAttributes( { width: value } )
+					
+					<Range
+						label={__(
+							'Width',
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={width}
+						onChange={(value) =>
+							setAttributes({ width: value })
 						}
-						allowReset
+						min={0}
+						max={2000}
 					/>
 				) }
 				{ contentWidth !== 'boxed' && (
@@ -220,7 +187,6 @@ const Settings = ( props ) => {
 						onChange={(value) =>
 							setAttributes({ innerWidth: value })
 						}
-						initialPosition={15}
 						min={0}
 						max={2000}
 						unit={{
@@ -530,124 +496,93 @@ const Settings = ( props ) => {
 				/>	
 				{ 'video' == backgroundType && backgroundVideo && (
 					<>
-						<p className="uagb-setting-label">
-							{ __( 'Video Overlay Color' ) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: backgroundVideoColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ backgroundVideoColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									backgroundVideoColor: colorValue,
-								} )
+						<AdvancedPopColorControl
+							label={__(
+								'Video Overlay Color',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={backgroundVideoColor ? backgroundVideoColor : ""}
+							colorDefault={""}
+							onColorChange={(value) =>
+								setAttributes({ backgroundVideoColor: value })
 							}
-							allowReset
+							onColorClassChange={(value) =>
+								setAttributes({ colorClass: value })
+							}
 						/>
 					</>
 				) }
 				{ 'video' == backgroundType && backgroundVideo && (
-					<RangeControl
-						label={ __(
+					<Range
+						label={__(
 							'Opacity',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ backgroundVideoOpacity }
-						onChange={ ( value ) =>
-							setAttributes( {
-								backgroundVideoOpacity: value,
-							} )
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={backgroundVideoOpacity}
+						onChange={(value) =>
+							setAttributes({ backgroundVideoOpacity: value })
 						}
-						min={ 0 }
-						max={ 100 }
-						allowReset
-						initialPosition={ 50 }
+						min={0}
+						max={100}
 					/>
 				) }	
 				{ 'gradient' == overlayType && (
 					<>
-						<p className="uagb-setting-label">
-							{ __(
+						<AdvancedPopColorControl
+							label={__(
 								'Color 1',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: backgroundVideoColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ gradientOverlayColor1 }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									gradientOverlayColor1: colorValue,
-								} )
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={gradientOverlayColor1 ? gradientOverlayColor1 : ""}
+							colorDefault={""}
+							onColorChange={(value) =>
+								setAttributes({ gradientOverlayColor1: value })
 							}
-							allowReset
-						/>
-						<RangeControl
-							label={ __(
-								'Location 1',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ gradientOverlayLocation1 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientOverlayLocation1: value,
-								} )
+							onColorClassChange={(value) =>
+								setAttributes({ colorClass: value })
 							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
 						/>
-						<p className="uagb-setting-label">
-							{ __(
+						<Range
+								label={__(
+									'Location 1',
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={gradientOverlayLocation1}
+								onChange={(value) =>
+									setAttributes({ gradientOverlayLocation1: value })
+								}
+								min={0}
+								max={100}
+							/>
+						<AdvancedPopColorControl
+							label={__(
 								'Color 2',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: backgroundVideoColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ gradientOverlayColor2 }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									gradientOverlayColor2: colorValue,
-								} )
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={gradientOverlayColor2 ? gradientOverlayColor2 : ""}
+							colorDefault={""}
+							onColorChange={(value) =>
+								setAttributes({ gradientOverlayColor2: value })
 							}
-							allowReset
-						/>
-						<RangeControl
-							label={ __(
-								'Location 2',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ gradientOverlayLocation2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientOverlayLocation2: value,
-								} )
+							onColorClassChange={(value) =>
+								setAttributes({ colorClass: value })
 							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
 						/>
+						<Range
+								label={__(
+									'Location 2',
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={gradientOverlayLocation2}
+								onChange={(value) =>
+									setAttributes({ gradientOverlayLocation2: value })
+								}
+								min={0}
+								max={100}
+							/>
 						<SelectControl
 							label={ __(
 								'Type',
@@ -677,20 +612,18 @@ const Settings = ( props ) => {
 							] }
 						/>
 						{ 'linear' == gradientOverlayType && (
-							<RangeControl
-								label={ __(
+							<Range
+								label={__(
 									'Angle',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ gradientOverlayAngle }
-								onChange={ ( value ) =>
-									setAttributes( {
-										gradientOverlayAngle: value,
-									} )
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={gradientOverlayAngle}
+								onChange={(value) =>
+									setAttributes({ gradientOverlayAngle: value })
 								}
-								min={ 0 }
-								max={ 360 }
-								allowReset
+								min={0}
+								max={360}
 							/>
 						) }
 						{ 'radial' == gradientOverlayType && (
