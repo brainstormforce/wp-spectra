@@ -5,17 +5,18 @@
 
         .uag-button {
             cursor: pointer;
-            padding: 11px 22px;
+            padding: 13px 18px;
             display: inline-block;
             font-family: var(--heading-font-family);
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1em;
             height: 100%;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 2px;          
+            border-color: var(--link-color);
         }
     	
-    }
-    .uag-setting{
-        background-color: black;
     }
     // Headings CSS.
     h1 {
@@ -67,26 +68,17 @@
     color: var(--metabox-background-color);
 }
 .uag-button--primary{
-    border: none;
     background: var(--accent-color);
     color: var(--background-light-color);
-    border-radius: 2px;
-    border-width: 1px;
-    border-style: solid;
 }
 .uag-button--secondary{
     color: var(--link-color);
-    border-color: var(--link-color);
-    background: transparent;
-    border-width: 1px;
-    border-style: solid;    
-    border-radius: 3px;
+    background: transparent;   
 }
 .uag-button--secondary:hover,
 .uag-button--secondary:focus,
 .uag-button--secondary:active {
     background: #f0f0f1;
-    border-color: #0a4b78;
     color: #0a4b78;
 }
 .uag-control__status-yes{

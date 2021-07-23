@@ -10,16 +10,18 @@
 
 .uag-menu-page-wrapper .uag-normal-button-control .uag-button {
   cursor: pointer;
-  padding: 11px 22px;
+  padding: 13px 18px;
   display: inline-block;
   font-family: 'Roboto' sans-serif;
   font-family: var(--heading-font-family);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1em;
-  height: 100%; }
-
-.uag-menu-page-wrapper .uag-setting {
-  background-color: black; }
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: #2271B1;
+  border-color: var(--link-color); }
 
 .uag-menu-page-wrapper h1 {
   font-family: 'Roboto' sans-serif;
@@ -83,30 +85,20 @@
   color: var(--metabox-background-color); }
 
 .uag-button--primary {
-  border: none;
   background: #2271B1;
   background: var(--accent-color);
   color: #f7f8fa;
-  color: var(--background-light-color);
-  border-radius: 2px;
-  border-width: 1px;
-  border-style: solid; }
+  color: var(--background-light-color); }
 
 .uag-button--secondary {
   color: #2271B1;
   color: var(--link-color);
-  border-color: #2271B1;
-  border-color: var(--link-color);
-  background: transparent;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 3px; }
+  background: transparent; }
 
 .uag-button--secondary:hover,
 .uag-button--secondary:focus,
 .uag-button--secondary:active {
   background: #f0f0f1;
-  border-color: #0a4b78;
   color: #0a4b78; }
 
 .uag-control__status-yes {
