@@ -70,7 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
-	<li><a href="https://ultimategutenberg.com/" target="_blank">Star Rating </a>: This block helps you add Star Rating and customize it as required.</li>
+	<li><a href="https://ultimategutenberg.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
 	<li><a href="https://ultimategutenberg.com/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
 	<li><a href="https://ultimategutenberg.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
 	<li><a href="https://ultimategutenberg.com/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
