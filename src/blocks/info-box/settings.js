@@ -142,6 +142,17 @@ const Settings = ( props ) => {
 		iconRightMargin,
 		iconTopMargin,
 		iconBottomMargin,
+		iconMarginTopTablet,
+		iconMarginRightTablet,
+		iconMarginBottomTablet,
+		iconMarginLeftTablet,
+		iconMarginTopMobile,
+		iconMarginRightMobile,
+		iconMarginBottomMobile,
+		iconMarginLeftMobile,
+		iconMarginUnit,
+		iconMobilePaddingUnit,
+		iconTabletPaddingUnit,
 		iconImage,
 		imageSize,
 		imageWidth,
@@ -460,104 +471,19 @@ const Settings = ( props ) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 						/>
-						<RangeControl
-							label={ __(
+						<Range
+							label={__(
 								'Icon Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ iconSize }
-							onChange={ ( value ) =>
-								setAttributes( { iconSize: value } )
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={iconSize}
+							onChange={(value) =>
+								setAttributes({ iconSize: value })
 							}
-							min={ 10 }
-							max={ 300 }
-							beforeIcon=""
-							allowReset
+							min={0}
+							max={300}
 						/>
-						<TabPanel
-							className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: 'normal',
-									title: __(
-										'Normal',
-										'ultimate-addons-for-gutenberg'
-									),
-									className: 'uagb-normal-tab',
-								},
-								{
-									name: 'hover',
-									title: __(
-										'Hover',
-										'ultimate-addons-for-gutenberg'
-									),
-									className: 'uagb-focus-tab',
-								},
-							] }
-						>
-							{ ( tabName ) => {
-								let tabout_icon;
-								if ( 'normal' === tabName.name ) {
-									tabout_icon = (
-										<>
-											<p className="uagb-setting-label">
-												{ __(
-													'Icon Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												<span className="components-base-control__label">
-													<span
-														className="component-color-indicator"
-														style={ {
-															backgroundColor: iconColor,
-														} }
-													></span>
-												</span>
-											</p>
-											<ColorPalette
-												value={ iconColor }
-												onChange={ ( colorValue ) =>
-													setAttributes( {
-														iconColor: colorValue,
-													} )
-												}
-												allowReset
-											/>
-										</>
-									);
-								} else {
-									tabout_icon = (
-										<>
-											<p className="uagb-setting-label">
-												{ __(
-													'Icon Hover Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												<span className="components-base-control__label">
-													<span
-														className="component-color-indicator"
-														style={ {
-															backgroundColor: iconHover,
-														} }
-													></span>
-												</span>
-											</p>
-											<ColorPalette
-												value={ iconHover }
-												onChange={ ( colorValue ) =>
-													setAttributes( {
-														iconHover: colorValue,
-													} )
-												}
-												allowReset
-											/>
-										</>
-									);
-								}
-								return <div>{ tabout_icon }</div>;
-							} }
-						</TabPanel>
 					</>
 				) }
 
@@ -1021,7 +947,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 								label={__(
-									"Padding",
+									"Width",
 									"ultimate-addons-for-gutenberg"
 								)}
 								setAttributes={setAttributes}
@@ -1110,7 +1036,6 @@ const Settings = ( props ) => {
 					/>
 				) }
 				<SpacingControl
-					{...props}
 					label={__(
 						'Image/Icon Margin (px)',
 						"ultimate-addons-for-gutenberg"
@@ -1131,9 +1056,52 @@ const Settings = ( props ) => {
 						value: iconLeftMargin,
 						label: "iconLeftMargin",
 					}}
+					valueTopTablet={{
+						value: iconMarginTopTablet,
+						label: "iconMarginTopTablet",
+					}}
+					valueRightTablet={{
+						value: iconMarginRightTablet,
+						label: "iconMarginRightTablet",
+					}}
+					valueBottomTablet={{
+						value: iconMarginBottomTablet,
+						label: "iconMarginBottomTablet",
+					}}
+					valueLeftTablet={{
+						value: iconMarginLeftTablet,
+						label: "iconMarginLeftTablet",
+					}}
+					valueTopMobile={{
+						value: iconMarginTopMobile,
+						label: "iconMarginTopMobile",
+					}}
+					valueRightMobile={{
+						value: iconMarginRightMobile,
+						label: "iconMarginRightMobile",
+					}}
+					valueBottomMobile={{
+						value: iconMarginBottomMobile,
+						label: "iconMarginBottomMobile",
+					}}
+					valueLeftMobile={{
+						value: iconMarginLeftMobile,
+						label: "iconMarginLeftMobile",
+					}}
+					unit={{
+						value: iconMarginUnit,
+						label: "iconMarginUnit",
+					}}
+					mUnit={{
+						value: iconMobilePaddingUnit,
+						label: "iconMobilePaddingUnit",
+					}}
+					tUnit={{
+						value: iconTabletPaddingUnit,
+						label: "iconTabletPaddingUnit",
+					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
-					
 				/>
 			</PanelBody>
 		);
@@ -1661,6 +1629,38 @@ const Settings = ( props ) => {
 					/>
 				</>
 			)}
+			<AdvancedPopColorControl
+				label={__(
+					'Icon Color',
+					'ultimate-addons-for-gutenberg'
+				)}
+				colorValue={
+					iconColor ? iconColor : ""
+				}
+				colorDefault={""}
+				onColorChange={(value) =>
+					setAttributes({ iconColor: value })
+				}
+				onColorClassChange={(value) =>
+					setAttributes({ colorClass: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					'Icon Hover Color',
+					'ultimate-addons-for-gutenberg'
+				)}
+				colorValue={
+					iconHover ? iconHover : ""
+				}
+				colorDefault={""}
+				onColorChange={(value) =>
+					setAttributes({ iconHover: value })
+				}
+				onColorClassChange={(value) =>
+					setAttributes({ colorClass: value })
+				}
+			/>
 		</PanelBody>
 	}
 	return (

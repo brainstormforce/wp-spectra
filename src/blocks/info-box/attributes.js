@@ -402,6 +402,39 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	iconMarginTopTablet: {
+		type: 'number'
+	},
+	iconMarginRightTablet: {
+		type: 'number'
+	},
+	iconMarginBottomTablet: {
+		type: 'number'
+	},
+	iconMarginLeftTablet: {
+		type: 'number'
+	},
+	iconMarginTopMobile: {
+		type: 'number'
+	},
+	iconMarginRightMobile: {
+		type: 'number'
+	},
+	iconMarginBottomMobile: {
+		type: 'number'
+	},
+	iconMarginLeftMobile: {
+		type: 'number'
+	},
+	iconMarginUnit: {
+		type: 'string'
+	},
+	iconMobilePaddingUnit:{
+		type: 'string'
+	},
+	iconTabletPaddingUnit:{
+		type: 'string'
+	}
 };
 
 export default attributes;

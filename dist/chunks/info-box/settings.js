@@ -32,8 +32,6 @@ var _Controls_UAGBIcon_json__WEBPACK_IMPORTED_MODULE_8___namespace = /*#__PURE__
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__);
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 
 
 
@@ -160,6 +158,17 @@ var Settings = function Settings(props) {
       iconRightMargin = attributes.iconRightMargin,
       iconTopMargin = attributes.iconTopMargin,
       iconBottomMargin = attributes.iconBottomMargin,
+      iconMarginTopTablet = attributes.iconMarginTopTablet,
+      iconMarginRightTablet = attributes.iconMarginRightTablet,
+      iconMarginBottomTablet = attributes.iconMarginBottomTablet,
+      iconMarginLeftTablet = attributes.iconMarginLeftTablet,
+      iconMarginTopMobile = attributes.iconMarginTopMobile,
+      iconMarginRightMobile = attributes.iconMarginRightMobile,
+      iconMarginBottomMobile = attributes.iconMarginBottomMobile,
+      iconMarginLeftMobile = attributes.iconMarginLeftMobile,
+      iconMarginUnit = attributes.iconMarginUnit,
+      iconMobilePaddingUnit = attributes.iconMobilePaddingUnit,
+      iconTabletPaddingUnit = attributes.iconTabletPaddingUnit,
       iconImage = attributes.iconImage,
       imageSize = attributes.imageSize,
       imageWidth = attributes.imageWidth,
@@ -392,74 +401,17 @@ var Settings = function Settings(props) {
       },
       isMulti: false,
       noSelectedPlaceholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Select Icon", "ultimate-addons-for-gutenberg")
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["RangeControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Size', 'ultimate-addons-for-gutenberg'),
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_range_Range_js__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Size', "ultimate-addons-for-gutenberg"),
+      setAttributes: setAttributes,
       value: iconSize,
       onChange: function onChange(value) {
         return setAttributes({
           iconSize: value
         });
       },
-      min: 10,
-      max: 300,
-      beforeIcon: "",
-      allowReset: true
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["TabPanel"], {
-      className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-      activeClass: "active-tab",
-      tabs: [{
-        name: 'normal',
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Normal', 'ultimate-addons-for-gutenberg'),
-        className: 'uagb-normal-tab'
-      }, {
-        name: 'hover',
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Hover', 'ultimate-addons-for-gutenberg'),
-        className: 'uagb-focus-tab'
-      }]
-    }, function (tabName) {
-      var tabout_icon;
-
-      if ('normal' === tabName.name) {
-        tabout_icon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("p", {
-          className: "uagb-setting-label"
-        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Color', 'ultimate-addons-for-gutenberg'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
-          className: "components-base-control__label"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
-          className: "component-color-indicator",
-          style: {
-            backgroundColor: iconColor
-          }
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["ColorPalette"], {
-          value: iconColor,
-          onChange: function onChange(colorValue) {
-            return setAttributes({
-              iconColor: colorValue
-            });
-          },
-          allowReset: true
-        }));
-      } else {
-        tabout_icon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("p", {
-          className: "uagb-setting-label"
-        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Hover Color', 'ultimate-addons-for-gutenberg'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
-          className: "components-base-control__label"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
-          className: "component-color-indicator",
-          style: {
-            backgroundColor: iconHover
-          }
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["ColorPalette"], {
-          value: iconHover,
-          onChange: function onChange(colorValue) {
-            return setAttributes({
-              iconHover: colorValue
-            });
-          },
-          allowReset: true
-        }));
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, tabout_icon);
+      min: 0,
+      max: 300
     })), source_type == 'image' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["BaseControl"], {
       className: "editor-bg-image-control",
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Image', 'ultimate-addons-for-gutenberg'),
@@ -809,7 +761,7 @@ var Settings = function Settings(props) {
       min: 0,
       max: 10
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_range_Range_js__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Padding", "ultimate-addons-for-gutenberg"),
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Width", "ultimate-addons-for-gutenberg"),
       setAttributes: setAttributes,
       value: seperatorWidth,
       onChange: function onChange(value) {
@@ -875,7 +827,7 @@ var Settings = function Settings(props) {
       },
       min: 0,
       max: 50
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_spacing_control__WEBPACK_IMPORTED_MODULE_13__["default"], _extends({}, props, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_spacing_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Image/Icon Margin (px)', "ultimate-addons-for-gutenberg"),
       valueTop: {
         value: iconTopMargin,
@@ -893,9 +845,53 @@ var Settings = function Settings(props) {
         value: iconLeftMargin,
         label: "iconLeftMargin"
       },
+      valueTopTablet: {
+        value: iconMarginTopTablet,
+        label: "iconMarginTopTablet"
+      },
+      valueRightTablet: {
+        value: iconMarginRightTablet,
+        label: "iconMarginRightTablet"
+      },
+      valueBottomTablet: {
+        value: iconMarginBottomTablet,
+        label: "iconMarginBottomTablet"
+      },
+      valueLeftTablet: {
+        value: iconMarginLeftTablet,
+        label: "iconMarginLeftTablet"
+      },
+      valueTopMobile: {
+        value: iconMarginTopMobile,
+        label: "iconMarginTopMobile"
+      },
+      valueRightMobile: {
+        value: iconMarginRightMobile,
+        label: "iconMarginRightMobile"
+      },
+      valueBottomMobile: {
+        value: iconMarginBottomMobile,
+        label: "iconMarginBottomMobile"
+      },
+      valueLeftMobile: {
+        value: iconMarginLeftMobile,
+        label: "iconMarginLeftMobile"
+      },
+      unit: {
+        value: iconMarginUnit,
+        label: "iconMarginUnit"
+      },
+      mUnit: {
+        value: iconMobilePaddingUnit,
+        label: "iconMobilePaddingUnit"
+      },
+      tUnit: {
+        value: iconTabletPaddingUnit,
+        label: "iconTabletPaddingUnit"
+      },
       attributes: attributes,
       setAttributes: setAttributes
-    })));
+    }));
   };
 
   var ctaSettings = function ctaSettings() {
@@ -1264,7 +1260,35 @@ var Settings = function Settings(props) {
           colorClass: value
         });
       }
-    })));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Color', 'ultimate-addons-for-gutenberg'),
+      colorValue: iconColor ? iconColor : "",
+      colorDefault: "",
+      onColorChange: function onColorChange(value) {
+        return setAttributes({
+          iconColor: value
+        });
+      },
+      onColorClassChange: function onColorClassChange(value) {
+        return setAttributes({
+          colorClass: value
+        });
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Icon Hover Color', 'ultimate-addons-for-gutenberg'),
+      colorValue: iconHover ? iconHover : "",
+      colorDefault: "",
+      onColorChange: function onColorChange(value) {
+        return setAttributes({
+          iconHover: value
+        });
+      },
+      onColorClassChange: function onColorClassChange(value) {
+        return setAttributes({
+          colorClass: value
+        });
+      }
+    }));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, (iconimgPosition == 'above-title' || iconimgPosition == 'below-title') && blockControls(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
