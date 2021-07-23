@@ -28,9 +28,7 @@
   "extra": {
     "installer-paths": {
         "lib/{$name}/": [
-            "brainstormforce/astra-notices"
-        ],
-        "lib/ast-block-templates/": [
+            "brainstormforce/astra-notices",
             "brainstormforce/gutenberg-templates"
         ]
     }
