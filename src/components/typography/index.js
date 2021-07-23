@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-import { Button, Dashicon } from "@wordpress/components";
+import { Button, Dashicon, SelectControl } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
 /**
@@ -48,11 +48,15 @@ const TypographyControl = (props) => {
 	let fontAdvancedControls;
 	let fontTypoAdvancedControls;
 	let showAdvancedFontControls;
+	let transform;
+	let decoration;
 
 	const {
 		disableFontFamily,
 		disableFontSize,
 		disableLineHeight,
+		disableTransform,
+		disableDecoration,
 		disableAdvancedOptions = false,
 	} = props;
 
@@ -118,6 +122,70 @@ const TypographyControl = (props) => {
 		);
 	}
 
+	if (!disableTransform && props.transform) {
+		transform = (
+			<SelectControl
+				label={__("Transform", "ultimate-addons-for-gutenberg")}
+				value={props.transform.value}
+				onChange={(value) =>
+					props.setAttributes({ [props.transform.label]: value })
+				}
+				options={[
+					{
+						value: "normal",
+						label: __("Normal", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "capitalize",
+						label: __(
+							"Capitalize",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						value: "uppercase",
+						label: __("Uppercase", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "lowercase",
+						label: __("Lowercase", "ultimate-addons-for-gutenberg"),
+					},
+				]}
+			/>
+		);
+	}
+	if (!disableDecoration && props.decoration) {
+		decoration = (
+			<SelectControl
+				label={__("Decoration", "ultimate-addons-for-gutenberg")}
+				value={props.decoration.value}
+				onChange={(value) =>
+					props.setAttributes({ [props.decoration.label]: value })
+				}
+				options={[
+					{
+						value: "none",
+						label: __("None", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "underline",
+						label: __("Underline", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "overline",
+						label: __("Overline", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "linethrough",
+						label: __(
+							"Line Through",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+			/>
+		);
+	}
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontAdvancedControls = (
 			<Button
@@ -135,6 +203,8 @@ const TypographyControl = (props) => {
 				{fontFamily}
 				{fontSize}
 				{fontWeight}
+				{transform}
+				{decoration}
 			</>
 		);
 	}
@@ -145,6 +215,8 @@ const TypographyControl = (props) => {
 				{fontFamily}
 				{fontSize}
 				{fontWeight}
+				{transform}
+				{decoration}
 			</div>
 		);
 	}
