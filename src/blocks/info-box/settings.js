@@ -1280,7 +1280,6 @@ const Settings = ( props ) => {
 							}
 						/>
 						<div className="uag-toggle-wrap">
-							{/* <label className="uag-toggle-label">{ __( "Toggle off", 'ultimate-addons-for-gutenberg' )  }</label> */}
 							<ToggleControl
 								checked={ctaTarget}
 								onChange={ () =>

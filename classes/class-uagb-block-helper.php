@@ -1399,6 +1399,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $m_cta_icon_size,
 					'line-height' => $m_cta_icon_size,
 				),
+				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginTopMobile'], 'px' ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], 'px' ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginBottomMobile'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], 'px' ),
+				),
 			);
 
 			$t_selectors = array(
@@ -1413,6 +1419,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height'      => $t_cta_icon_size,
 					'width'       => $t_cta_icon_size,
 					'line-height' => $t_cta_icon_size,
+				),
+				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], 'px' ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], 'px' ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginTopTablet'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomTablet'], 'px' ),
 				),
 			);
 

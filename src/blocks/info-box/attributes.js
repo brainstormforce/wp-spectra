@@ -427,13 +427,16 @@ const attributes = {
 		type: 'number'
 	},
 	iconMarginUnit: {
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	iconMobilePaddingUnit:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	iconTabletPaddingUnit:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	}
 };
 

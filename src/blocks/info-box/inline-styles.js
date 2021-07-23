@@ -74,6 +74,17 @@ function InfoBoxStyle( props ) {
 		iconRightMargin,
 		iconTopMargin,
 		iconBottomMargin,
+		iconMarginTopTablet,
+		iconMarginRightTablet,
+		iconMarginBottomTablet,
+		iconMarginLeftTablet,
+		iconMarginTopMobile,
+		iconMarginRightMobile,
+		iconMarginBottomMobile,
+		iconMarginLeftMobile,
+		iconMarginUnit,
+		iconMobilePaddingUnit,
+		iconTabletPaddingUnit,
 		imageWidth,
 		imageWidthType,
 		ctaLinkHoverColor,
@@ -109,10 +120,10 @@ function InfoBoxStyle( props ) {
 			fill: iconHover,
 		},
 		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
-			'margin-left': generateCSSUnit( iconLeftMargin, 'px' ),
-			'margin-right': generateCSSUnit( iconRightMargin, 'px' ),
-			'margin-top': generateCSSUnit( iconTopMargin, 'px' ),
-			'margin-bottom': generateCSSUnit( iconBottomMargin, 'px' ),
+			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		},
 		' .uagb-infobox .uagb-ifb-image-content img': {
 			'border-radius': generateCSSUnit( iconimgBorderRadius, 'px' ),
@@ -246,6 +257,12 @@ function InfoBoxStyle( props ) {
 	}
 
 	const tabletSelectors = {
+		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
+			'margin-top': generateCSSUnit(iconMarginTopTablet , iconTabletPaddingUnit),
+			'margin-right': generateCSSUnit(iconMarginRightTablet , iconTabletPaddingUnit),
+			'margin-bottom': generateCSSUnit(iconMarginBottomTablet , iconTabletPaddingUnit),
+			'margin-left': generateCSSUnit(iconMarginLeftTablet , iconTabletPaddingUnit),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeTablet,
@@ -300,6 +317,12 @@ function InfoBoxStyle( props ) {
 	};
 
 	const mobileSelectors = {
+		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
+			'margin-top': generateCSSUnit(iconMarginTopMobile , iconMobilePaddingUnit),
+			'margin-right': generateCSSUnit(iconMarginRightMobile , iconMobilePaddingUnit),
+			'margin-bottom': generateCSSUnit(iconMarginBottomMobile , iconMobilePaddingUnit),
+			'margin-left': generateCSSUnit(iconMarginLeftMobile , iconMobilePaddingUnit),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeMobile,
