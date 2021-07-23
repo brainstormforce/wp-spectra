@@ -87,6 +87,14 @@ const attributes = {
 		type: "string",
 		default: "em",
 	},
+	titleTransform: {
+		type: "string",
+		default: "normal",
+	},
+	titleDecoration: {
+		type: "string",
+		default: "none",
+	},
 	titleFontSize: {
 		type: "number",
 	},
