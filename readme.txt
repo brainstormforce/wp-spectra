@@ -169,6 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.24.1 =
+* Fix: Table of contents - Uncaught TypeError with the load function.
+
 = 1.24.0 =
 * New: Introduced Star Rating block.
 * New: Added Masonry option to core Gallery block.

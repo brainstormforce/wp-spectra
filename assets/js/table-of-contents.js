@@ -196,7 +196,7 @@
 		UAGBTableOfContents.init();
 	})
 
-	$( window ).load(function() {
+	$(window).on('load', function(){
 		UAGBTableOfContents.hyperLinks();
 	})
 
