@@ -437,7 +437,63 @@ const attributes = {
 	iconTabletPaddingUnit:{
 		type: 'string',
 		default: 'px'
-	}
+	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
+	paddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobilePaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletPaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	paddingBtnTop: {
+		type: "number",
+		default: 10,
+	},
+	paddingBtnBottom: {
+		type: "number",
+		default: 10,
+	},
+	paddingBtnLeft: {
+		type: "number",
+		default: 14,
+	},
+	paddingBtnRight: {
+		type: "number",
+		default: 14,
+	},
+	paddingBtnTopTablet: {
+		type: "number",
+	},
+	paddingBtnRightTablet: {
+		type: "number",
+	},
+	paddingBtnBottomTablet: {
+		type: "number",
+	},
+	paddingBtnLeftTablet: {
+		type: "number",
+	},
+	paddingBtnTopMobile: {
+		type: "number",
+	},
+	paddingBtnRightMobile: {
+		type: "number",
+	},
+	paddingBtnBottomMobile: {
+		type: "number",
+	},
+	paddingBtnLeftMobile: {
+		type: "number",
+	},
 };
 
 export default attributes;

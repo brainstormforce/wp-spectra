@@ -1,1 +1,277 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[28],{432:function(e,t,n){"use strict";var a=n(18),o=n.n(a)()((function(e){return e[1]}));o.push([e.i,'.uagb-forms-checkbox-wrap input[type="checkbox"],\n.uagb-form-checkbox-option input[type="checkbox"] {\n  vertical-align: middle;\n  margin-right: 15px; }\n\n.uagb-forms-checkbox-controls {\n  margin-top: 10px; }\n\n.uagb-form-checkbox-option-delete.has-icon {\n  vertical-align: middle;\n  padding: 10px;\n  margin: 0; }\n',""]),t.a=o},632:function(e,t,n){"use strict";n.r(t);var a,o=n(4),r=n.n(o),c=n(1),i=n.n(c),l=n(2),u=n(17),s=n.n(u),b=n(432),p=0,m={injectType:"lazySingletonStyleTag",attributes:{id:"uagb-editor-styles"},insert:"head",singleton:!0},g={};g.locals=b.a.locals||{},g.use=function(){return p++||(a=s()(b.a,m)),g},g.unuse=function(){p>0&&!--p&&(a(),a=null)};var f=g,d=n(3),h=n(5);function v(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);t&&(a=a.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,a)}return n}function k(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?v(Object(n),!0).forEach((function(t){O(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):v(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function O(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var x=function(e){Object(c.useLayoutEffect)((function(){return f.use(),function(){f.unuse()}}),[]);var t=e.setState,n=e=e.parentProps,a=n.attributes,o=n.setAttributes,u=n.isSelected,s=a.block_id,b=a.checkboxRequired,p=a.options,m=a.checkboxName,g=p.map((function(e,t){return i.a.createElement("div",{key:t,className:"uagb-form-checkbox-option"},i.a.createElement("input",{type:"checkbox",name:"checkbox-".concat(s),value:e.optiontitle,id:e.optiontitle}),i.a.createElement("label",{htmlFor:e.optiontitle}," "),i.a.createElement("input",{className:"uagb-inner-input-view","aria-label":e.optiontitle,onChange:function(e){return O({optiontitle:e.target.value,optionvalue:e.target.value},t)},type:"text",value:e.optiontitle}),i.a.createElement("input",{className:"uagb-inner-input-view","aria-label":e.optionvalue,onChange:function(e){return O({optionvalue:e.target.value},t)},type:"text",value:e.optionvalue}),i.a.createElement(d.Button,{className:"uagb-form-checkbox-option-delete",icon:"trash",label:"Remove",onClick:function(){return x(t)}}))})),v=function(){return p.map((function(e){var t=e.optionvalue.replace(/\s+/g,"-").toLowerCase();return i.a.createElement(i.a.Fragment,null,i.a.createElement("input",{type:"checkbox",className:"uagb-forms-checkbox",id:"checkbox-".concat(t,"-").concat(s),name:"".concat(m,"[]"),value:t,required:b}),i.a.createElement("label",{htmlFor:"checkbox-".concat(t,"-").concat(s)},e.optiontitle),i.a.createElement("br",null))}))},O=function(e,n){var a=p.map((function(t,a){return n===a&&(t=k(k({},t),e)),t}));o({options:a}),t({optionsstate:a})},x=function(e){var n=p.map((function(t,n){return e===n&&(p.splice(e,1),t={options:p}),t}));t({optionsstate:n}),o({deleteOptions:n})},y=b?Object(l.__)("required","ultimate-addons-for-gutenberg"):"";return i.a.createElement(i.a.Fragment,null,i.a.createElement("div",{className:r()("uagb-forms-checkbox-wrap","uagb-forms-field-set","uagb-block-".concat(s))},u&&i.a.createElement("div",{className:"uagb-forms-required-wrap"},i.a.createElement(d.ToggleControl,{label:Object(l.__)("Required","ultimate-addons-for-gutenberg"),checked:b,onChange:function(){return o({checkboxRequired:!b})}})),i.a.createElement(h.RichText,{tagName:"div",placeholder:Object(l.__)("Checkbox Title","ultimate-addons-for-gutenberg"),value:m,onChange:function(e){return o({checkboxName:e})},className:"uagb-forms-checkbox-label ".concat(y," uagb-forms-input-label"),multiline:!1,id:s}),u&&i.a.createElement(i.a.Fragment,null,g,i.a.createElement("div",{className:"uagb-forms-checkbox-controls"},i.a.createElement("div",null,i.a.createElement(d.Button,{isSecondary:!0,onClick:function(){var e={optiontitle:Object(l.__)("Option Name ","ultimate-addons-for-gutenberg")+"".concat(p.length+1),optionvalue:Object(l.__)("Option Value ","ultimate-addons-for-gutenberg")+"".concat(p.length+1)};p[p.length]=e;var n=p.map((function(e){return e}));o({options:n}),t({optionsstate:n})}},Object(l.__)(" + Add Option ","ultimate-addons-for-gutenberg"))))),!u&&i.a.createElement(v,null)))};t.default=i.a.memo(x)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/form/checkbox-render"],{
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss":
+/*!************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss ***!
+  \************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".uagb-forms-checkbox-wrap input[type=\"checkbox\"],\n.uagb-form-checkbox-option input[type=\"checkbox\"] {\n  vertical-align: middle;\n  margin-right: 15px; }\n\n.uagb-forms-checkbox-controls {\n  margin-top: 10px; }\n\n.uagb-form-checkbox-option-delete.has-icon {\n  vertical-align: middle;\n  padding: 10px;\n  margin: 0; }\n", "",{"version":3,"sources":["webpack://./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss"],"names":[],"mappings":"AAAA;;EAEE,sBAAsB;EACtB,kBAAkB,EAAE;;AAEtB;EACE,gBAAgB,EAAE;;AAEpB;EACE,sBAAsB;EACtB,aAAa;EACb,SAAS,EAAE","sourcesContent":[".uagb-forms-checkbox-wrap input[type=\"checkbox\"],\n.uagb-form-checkbox-option input[type=\"checkbox\"] {\n  vertical-align: middle;\n  margin-right: 15px; }\n\n.uagb-forms-checkbox-controls {\n  margin-top: 10px; }\n\n.uagb-form-checkbox-option-delete.has-icon {\n  vertical-align: middle;\n  padding: 10px;\n  margin: 0; }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss":
+/*!*****************************************************************!*\
+  !*** ./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/sass-loader/lib/loader.js!./editor.lazy.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss");
+
+            
+
+var refs = 0;
+var update;
+var options = {"injectType":"lazySingletonStyleTag","attributes":{"id":"uagb-editor-styles"}};
+
+options.insert = "head";
+options.singleton = true;
+
+var exported = {};
+
+exported.locals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {};
+exported.use = function() {
+  if (!(refs++)) {
+    update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+  }
+
+  return exported;
+};
+exported.unuse = function() {
+  if (refs > 0 && !--refs) {
+    update();
+    update = null;
+  }
+};
+
+
+
+;
+       /* harmony default export */ __webpack_exports__["default"] = (exported);
+
+
+/***/ }),
+
+/***/ "./src/blocks/forms/child-blocks/checkbox/render.js":
+/*!**********************************************************!*\
+  !*** ./src/blocks/forms/child-blocks/checkbox/render.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.lazy.scss */ "./src/blocks/forms/child-blocks/checkbox/editor.lazy.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var Render = function Render(props) {
+  // Add and remove the CSS on the drop and remove of the component.
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useLayoutEffect"])(function () {
+    _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__["default"].use();
+    return function () {
+      _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__["default"].unuse();
+    };
+  }, []);
+  var _props = props,
+      setState = _props.setState;
+  props = props.parentProps;
+  var _props2 = props,
+      attributes = _props2.attributes,
+      setAttributes = _props2.setAttributes,
+      isSelected = _props2.isSelected;
+  var block_id = attributes.block_id,
+      checkboxRequired = attributes.checkboxRequired,
+      options = attributes.options,
+      checkboxName = attributes.checkboxName;
+
+  var addOption = function addOption() {
+    var newOption = {
+      optiontitle: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Option Name ', 'ultimate-addons-for-gutenberg') + "".concat(options.length + 1),
+      optionvalue: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Option Value ', 'ultimate-addons-for-gutenberg') + "".concat(options.length + 1)
+    };
+    options[options.length] = newOption;
+    var addnewOptions = options.map(function (item) {
+      return item;
+    });
+    setAttributes({
+      options: addnewOptions
+    });
+    setState({
+      optionsstate: addnewOptions
+    });
+  };
+
+  var editView = options.map(function (option, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      key: index,
+      className: "uagb-form-checkbox-option"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      type: "checkbox",
+      name: "checkbox-".concat(block_id),
+      value: option.optiontitle,
+      id: option.optiontitle
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+      htmlFor: option.optiontitle
+    }, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      className: "uagb-inner-input-view",
+      "aria-label": option.optiontitle,
+      onChange: function onChange(e) {
+        return changeOption({
+          optiontitle: e.target.value,
+          optionvalue: e.target.value
+        }, index);
+      },
+      type: "text",
+      value: option.optiontitle
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      className: "uagb-inner-input-view",
+      "aria-label": option.optionvalue,
+      onChange: function onChange(e) {
+        return changeOption({
+          optionvalue: e.target.value
+        }, index);
+      },
+      type: "text",
+      value: option.optionvalue
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      className: "uagb-form-checkbox-option-delete",
+      icon: "trash",
+      label: "Remove",
+      onClick: function onClick() {
+        return deleteOption(index);
+      }
+    }));
+  });
+
+  var CheckboxView = function CheckboxView() {
+    return options.map(function (option) {
+      var optionvalue = option.optionvalue;
+      var value = optionvalue.replace(/\s+/g, '-').toLowerCase();
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "checkbox",
+        className: "uagb-forms-checkbox",
+        id: "checkbox-".concat(value, "-").concat(block_id),
+        name: "".concat(checkboxName, "[]"),
+        value: value,
+        required: checkboxRequired
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "checkbox-".concat(value, "-").concat(block_id)
+      }, option.optiontitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null));
+    });
+  };
+
+  var changeOption = function changeOption(e, index) {
+    var editOptions = options.map(function (item, thisIndex) {
+      if (index === thisIndex) {
+        item = _objectSpread(_objectSpread({}, item), e);
+      }
+
+      return item;
+    });
+    setAttributes({
+      options: editOptions
+    });
+    setState({
+      optionsstate: editOptions
+    });
+  };
+
+  var deleteOption = function deleteOption(index) {
+    var deleteOptions = options.map(function (item, thisIndex) {
+      if (index === thisIndex) {
+        options.splice(index, 1);
+        item = {
+          options: options
+        };
+      }
+
+      return item;
+    });
+    setState({
+      optionsstate: deleteOptions
+    });
+    setAttributes({
+      deleteOptions: deleteOptions
+    });
+  };
+
+  var isRequired = checkboxRequired ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('required', 'ultimate-addons-for-gutenberg') : '';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()('uagb-forms-checkbox-wrap', 'uagb-forms-field-set', "uagb-block-".concat(block_id))
+  }, isSelected && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "uagb-forms-required-wrap"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Required', 'ultimate-addons-for-gutenberg'),
+    checked: checkboxRequired,
+    onChange: function onChange() {
+      return setAttributes({
+        checkboxRequired: !checkboxRequired
+      });
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"], {
+    tagName: "div",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Checkbox Title', 'ultimate-addons-for-gutenberg'),
+    value: checkboxName,
+    onChange: function onChange(value) {
+      return setAttributes({
+        checkboxName: value
+      });
+    },
+    className: "uagb-forms-checkbox-label ".concat(isRequired, " uagb-forms-input-label"),
+    multiline: false,
+    id: block_id
+  }), isSelected && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, editView, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "uagb-forms-checkbox-controls"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+    isSecondary: true,
+    onClick: addOption
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])(' + Add Option ', 'ultimate-addons-for-gutenberg'))))), !isSelected && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(CheckboxView, null)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.memo(Render));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=checkbox-render.js.map

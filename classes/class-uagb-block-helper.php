@@ -1250,6 +1250,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 			$icon_size       = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
 
+			$btnPaddingTop    = ( isset( $attr['ctaBtnVertPadding'] ) ) ? $attr['ctaBtnVertPadding'] : $attr['paddingBtnTop'];
+			$btnPaddingBottom = ( isset( $attr['ctaBtnVertPadding'] ) ) ? $attr['ctaBtnVertPadding'] : $attr['paddingBtnBottom'];
+			$btnPaddingLeft   = ( isset( $attr['ctaBtnHrPadding'] ) ) ? $attr['ctaBtnHrPadding'] : $attr['paddingBtnLeft'];
+			$btnPaddingRight  = ( isset( $attr['ctaBtnHrPadding'] ) ) ? $attr['ctaBtnHrPadding'] : $attr['paddingBtnRight'];
+
 			$selectors = array(
 				' .uagb-ifb-icon'                       => array(
 					'height'      => $icon_size,
@@ -1353,10 +1358,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['ctaBorderColor'],
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 					'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['ctaBtnVertPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['ctaBtnVertPadding'], 'px' ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['ctaBtnHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['ctaBtnHrPadding'], 'px' ),
+					'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
+					'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
+					'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
 
 				);
 				$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg']       = array(
@@ -1405,9 +1410,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginBottomMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], 'px' ),
 				),
+				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
+
+				),
 			);
 
 			$t_selectors = array(
+				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
+
+				),
 				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
 					'font-size'   => $t_cta_icon_size,
 					'height'      => $t_cta_icon_size,

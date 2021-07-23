@@ -65,6 +65,21 @@ function InfoBoxStyle( props ) {
 		ctaBgColor,
 		ctaBtnVertPadding,
 		ctaBtnHrPadding,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
 		ctaBorderStyle,
 		ctaBorderColor,
 		ctaBorderWidth,
@@ -92,6 +107,12 @@ function InfoBoxStyle( props ) {
 		ctaBorderhoverColor,
 		ctaIconSpace,
 	} = props.attributes;
+
+	let btnPaddingTop = ( ctaBtnVertPadding && ctaBtnVertPadding !== '10' ) ? ctaBtnVertPadding : paddingBtnTop;
+	let btnPaddingBottom = ( ctaBtnVertPadding && ctaBtnVertPadding !== '10' ) ? ctaBtnVertPadding : paddingBtnBottom;
+	let btnPaddingLeft = ctaBtnHrPadding ? ctaBtnHrPadding : paddingBtnLeft;
+	let btnPaddingRight = ctaBtnHrPadding ? ctaBtnHrPadding : paddingBtnRight;
+	
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-icon': {
@@ -163,10 +184,10 @@ function InfoBoxStyle( props ) {
 			'border-color': ctaBorderColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-			'padding-top': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-left': generateCSSUnit( ctaBtnHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( ctaBtnHrPadding, 'px' ),
+			'padding-top': generateCSSUnit( btnPaddingTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( btnPaddingBottom, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( btnPaddingLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( btnPaddingRight, paddingBtnUnit ),
 		},
 		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
 			color: ctaLinkHoverColor,
@@ -273,6 +294,12 @@ function InfoBoxStyle( props ) {
 				subHeadLineHeightType
 			),
 		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
@@ -322,6 +349,12 @@ function InfoBoxStyle( props ) {
 			'margin-right': generateCSSUnit(iconMarginRightMobile , iconMobilePaddingUnit),
 			'margin-bottom': generateCSSUnit(iconMarginBottomMobile , iconMobilePaddingUnit),
 			'margin-left': generateCSSUnit(iconMarginLeftMobile , iconMobilePaddingUnit),
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(

@@ -52,6 +52,7 @@ const Settings = ( props ) => {
 
 	// Setup the attributes.
 	const {
+		deviceType,
 		headingAlign,
 		headingColor,
 		subHeadingColor,
@@ -130,8 +131,21 @@ const Settings = ( props ) => {
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBgColor,
-		ctaBtnVertPadding,
-		ctaBtnHrPadding,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
 		ctaBorderStyle,
 		ctaBorderColor,
 		ctaBorderhoverColor,
@@ -162,6 +176,7 @@ const Settings = ( props ) => {
 		showTitle,
 		showDesc,
 		inheritFromTheme,
+		spacingLink
 	} = attributes;
 
 	/*
@@ -1100,8 +1115,13 @@ const Settings = ( props ) => {
 						value: iconTabletPaddingUnit,
 						label: "iconTabletPaddingUnit",
 					}}
+					deviceType={deviceType}
 					attributes={attributes}
 					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
+					}}
 				/>
 			</PanelBody>
 		);
@@ -1363,33 +1383,79 @@ const Settings = ( props ) => {
 				) }
 				{ ! inheritFromTheme && ctaType == 'button' && (
 					<>
-						<p>
-							{ __(
-								'Button Padding',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							value={ ctaBtnVertPadding }
-							onChange={ ( value ) =>
-								setAttributes( { ctaBtnVertPadding: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							className={ 'uagb-margin-control' }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							value={ ctaBtnHrPadding }
-							onChange={ ( value ) =>
-								setAttributes( { ctaBtnHrPadding: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							className={ 'uagb-margin-control' }
-							allowReset
+						<SpacingControl
+							{...props}
+							label={__(
+								"Button Padding",
+								"ultimate-addons-for-gutenberg"
+							)}
+							valueTop={{
+								value: paddingBtnTop,
+								label: "paddingBtnTop",
+							}}
+							valueRight={{
+								value: paddingBtnRight,
+								label: "paddingBtnRight",
+							}}
+							valueBottom={{
+								value: paddingBtnBottom,
+								label: "paddingBtnBottom",
+							}}
+							valueLeft={{
+								value: paddingBtnLeft,
+								label: "paddingBtnLeft",
+							}}
+							valueTopTablet={{
+								value: paddingBtnTopTablet,
+								label: "paddingBtnTopTablet",
+							}}
+							valueRightTablet={{
+								value: paddingBtnRightTablet,
+								label: "paddingBtnRightTablet",
+							}}
+							valueBottomTablet={{
+								value: paddingBtnBottomTablet,
+								label: "paddingBtnBottomTablet",
+							}}
+							valueLeftTablet={{
+								value: paddingBtnLeftTablet,
+								label: "paddingBtnLeftTablet",
+							}}
+							valueTopMobile={{
+								value: paddingBtnTopMobile,
+								label: "paddingBtnTopMobile",
+							}}
+							valueRightMobile={{
+								value: paddingBtnRightMobile,
+								label: "paddingBtnRightMobile",
+							}}
+							valueBottomMobile={{
+								value: paddingBtnBottomMobile,
+								label: "paddingBtnBottomMobile",
+							}}
+							valueLeftMobile={{
+								value: paddingBtnLeftMobile,
+								label: "paddingBtnLeftMobile",
+							}}
+							unit={{
+								value: paddingBtnUnit,
+								label: "paddingBtnUnit",
+							}}
+							mUnit={{
+								value: mobilePaddingBtnUnit,
+								label: "mobilePaddingBtnUnit",
+							}}
+							tUnit={{
+								value: tabletPaddingBtnUnit,
+								label: "tabletPaddingBtnUnit",
+							}}
+							deviceType={deviceType}
+							attributes={attributes}
+							setAttributes={setAttributes}
+							link={{
+								value: spacingLink,
+								label: "spacingLink",
+							}}
 						/>
 						<p>
 							{ __(

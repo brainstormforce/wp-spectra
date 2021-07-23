@@ -4,6 +4,9 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InfoBoxStyle from './inline-styles';
+
+const { withSelect } = wp.data;
+
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )
 );
@@ -47,4 +50,15 @@ const UAGBInfoBox = ( props ) => {
 		</>
 	);
 };
-export default UAGBInfoBox;
+export default withSelect((select, props) => {
+	const { __experimentalGetPreviewDeviceType = null } = select(
+		"core/edit-post"
+	);
+	let deviceType = __experimentalGetPreviewDeviceType
+		? __experimentalGetPreviewDeviceType()
+		: null;
+
+	return {
+		deviceType: deviceType,
+	};
+})(UAGBInfoBox);
