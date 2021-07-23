@@ -108,11 +108,6 @@ function InfoBoxStyle( props ) {
 		ctaIconSpace,
 	} = props.attributes;
 
-	let btnPaddingTop = ( ctaBtnVertPadding && ctaBtnVertPadding !== '10' ) ? ctaBtnVertPadding : paddingBtnTop;
-	let btnPaddingBottom = ( ctaBtnVertPadding && ctaBtnVertPadding !== '10' ) ? ctaBtnVertPadding : paddingBtnBottom;
-	let btnPaddingLeft = ctaBtnHrPadding ? ctaBtnHrPadding : paddingBtnLeft;
-	let btnPaddingRight = ctaBtnHrPadding ? ctaBtnHrPadding : paddingBtnRight;
-	
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-icon': {
@@ -184,10 +179,10 @@ function InfoBoxStyle( props ) {
 			'border-color': ctaBorderColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-			'padding-top': generateCSSUnit( btnPaddingTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( btnPaddingBottom, paddingBtnUnit ),
-			'padding-left': generateCSSUnit( btnPaddingLeft, paddingBtnUnit ),
-			'padding-right': generateCSSUnit( btnPaddingRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
 		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
 			color: ctaLinkHoverColor,

@@ -568,8 +568,10 @@ var Settings = function Settings(props) {
       className: "uag-toggle-wrap"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["ToggleControl"], {
       checked: showTitle,
-      onChange: {
-        showTitle: !showTitle
+      onChange: function onChange() {
+        return setAttributes({
+          showTitle: !showTitle
+        });
       },
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Enable Title', 'ultimate-addons-for-gutenberg')
     })), showTitle && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["SelectControl"], {

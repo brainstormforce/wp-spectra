@@ -698,7 +698,7 @@ const Settings = ( props ) => {
 				<div className="uag-toggle-wrap">
 					<ToggleControl
 						checked={showTitle}
-						onChange={{ showTitle: ! showTitle }}
+						onChange={() => setAttributes({ showTitle: ! showTitle })}
 						label={ __(
 							'Enable Title',
 							'ultimate-addons-for-gutenberg'

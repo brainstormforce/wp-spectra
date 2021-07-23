@@ -28,6 +28,32 @@ const UAGBInfoBox = ( props ) => {
 			'uagb-info-box-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			ctaBtnVertPadding,
+			ctaBtnHrPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+		} = props.attributes;
+
+		if (ctaBtnVertPadding) {
+			if (!paddingBtnTop) {
+				setAttributes({ paddingBtnTop: ctaBtnVertPadding });
+			}
+			if (!paddingBtnBottom) {
+				setAttributes({ paddingBtnBottom: ctaBtnVertPadding });
+			}
+		}
+		if (ctaBtnHrPadding) {
+			if (!paddingBtnRight) {
+				setAttributes({ paddingBtnRight: ctaBtnHrPadding });
+			}
+			if (!paddingBtnLeft) {
+				setAttributes({ paddingBtnLeft: ctaBtnHrPadding });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

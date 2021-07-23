@@ -1250,10 +1250,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 			$icon_size       = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
 
-			$btnPaddingTop    = ( isset( $attr['ctaBtnVertPadding'] ) ) ? $attr['ctaBtnVertPadding'] : $attr['paddingBtnTop'];
-			$btnPaddingBottom = ( isset( $attr['ctaBtnVertPadding'] ) ) ? $attr['ctaBtnVertPadding'] : $attr['paddingBtnBottom'];
-			$btnPaddingLeft   = ( isset( $attr['ctaBtnHrPadding'] ) ) ? $attr['ctaBtnHrPadding'] : $attr['paddingBtnLeft'];
-			$btnPaddingRight  = ( isset( $attr['ctaBtnHrPadding'] ) ) ? $attr['ctaBtnHrPadding'] : $attr['paddingBtnRight'];
+			$btnPaddingTop    = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['ctaBtnVertPadding'];
+			$btnPaddingBottom = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['ctaBtnVertPadding'];
+			$btnPaddingLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] : $attr['ctaBtnHrPadding'];
+			$btnPaddingRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['ctaBtnHrPadding'];
 
 			$selectors = array(
 				' .uagb-ifb-icon'                       => array(
