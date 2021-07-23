@@ -485,6 +485,7 @@ hr.uagb-editor__separator {
 	vertical-align: middle;
 	width: 100%;
 	vertical-align: middle;
+	margin-bottom: 18px;
 }
 
 .rfipbtn {
@@ -3656,4 +3657,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .components-panel__body .uagb-control__label {
 	margin-bottom: 0;
+}
+.uagb-components-base-control {
+	margin-bottom: 18px;
 }

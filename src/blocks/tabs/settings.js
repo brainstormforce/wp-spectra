@@ -1,22 +1,22 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import renderSVG from "@Controls/renderIcon";
-import UAGB_Block_Icons from "@Controls/block-icons";
 import TypographyControl from "@Components/typography";
 import ResponsiveSelectControl from "@Components/responsive-select";
+import MultiButtonsControl from "../../components/multi-buttons-control";
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "../../components/spacing-control";
+import Range from "../../components/range/Range.js";
+import Border from "../../components/border";
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
-import {
-	BlockAlignmentToolbar,
-	InspectorControls,
-	ColorPalette,
-} from "@wordpress/block-editor";
+import { InspectorControls } from "@wordpress/block-editor";
 
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	ToggleControl,
+	Icon,
 } from "@wordpress/components";
 
 const Settings = (props) => {
@@ -30,8 +30,11 @@ const Settings = (props) => {
 		tabActiveFrontend,
 		tabHeaders,
 		headerBgColor,
+		borderStyle,
 		borderWidth,
+		borderRadius,
 		borderColor,
+		borderHoverColor,
 		headerTextColor,
 		activeTabBgColor,
 		activeTabTextColor,
@@ -41,14 +44,66 @@ const Settings = (props) => {
 		tabTitleRightMargin,
 		tabTitleTopMargin,
 		tabTitleBottomMargin,
+		tabTitleLeftMarginTablet,
+		tabTitleRightMarginTablet,
+		tabTitleTopMarginTablet,
+		tabTitleBottomMarginTablet,
+		tabTitleLeftMarginMobile,
+		tabTitleRightMarginMobile,
+		tabTitleTopMarginMobile,
+		tabTitleBottomMarginMobile,
+		tabTitleMarginUnit,
+		mobiletabTitleMarginUnit,
+		tablettabTitleMarginUnit,
+		tabTitleMarginLink,
+		tabTitleTopPadding,
+		tabTitleRightPadding,
+		tabTitleBottomPadding,
+		tabTitleLeftPadding,
+		tabTitleTopPaddingTablet,
+		tabTitleRightPaddingTablet,
+		tabTitleBottomPaddingTablet,
+		tabTitleLeftPaddingTablet,
+		tabTitleTopPaddingMobile,
+		tabTitleRightPaddingMobile,
+		tabTitleBottomPaddingMobile,
+		tabTitleLeftPaddingMobile,
+		tabTitlePaddingUnit,
+		mobiletabTitlePaddingUnit,
+		tablettabTitlePaddingUnit,
+		tabTitlePaddingLink,
 		tabBodyLeftMargin,
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
-		tabBodyVertPadding,
-		tabBodyHrPadding,
-		tabTitleVertPadding,
-		tabTitleHrPadding,
+		tabBodyLeftMarginTablet,
+		tabBodyRightMarginTablet,
+		tabBodyTopMarginTablet,
+		tabBodyBottomMarginTablet,
+		tabBodyLeftMarginMobile,
+		tabBodyRightMarginMobile,
+		tabBodyTopMarginMobile,
+		tabBodyBottomMarginMobile,
+		tabBodyMarginUnit,
+		mobiletabBodyMarginUnit,
+		tablettabBodyMarginUnit,
+		tabBodyMarginLink,
+		tabBodyTopPadding,
+		tabBodyRightPadding,
+		tabBodyBottomPadding,
+		tabBodyLeftPadding,
+		tabBodyTopPaddingTablet,
+		tabBodyRightPaddingTablet,
+		tabBodyBottomPaddingTablet,
+		tabBodyLeftPaddingTablet,
+		tabBodyTopPaddingMobile,
+		tabBodyRightPaddingMobile,
+		tabBodyBottomPaddingMobile,
+		tabBodyLeftPaddingMobile,
+		tabBodyPaddingUnit,
+		mobiletabBodyPaddingUnit,
+		tablettabBodyPaddingUnit,
+		tabBodyPaddingLink,
 		titleLoadGoogleFonts,
 		titleFontFamily,
 		titleFontWeight,
@@ -61,6 +116,8 @@ const Settings = (props) => {
 		titleLineHeight,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleTransform,
+		titleDecoration,
 		titleAlign,
 		tabAlign,
 		showIcon,
@@ -370,29 +427,88 @@ const Settings = (props) => {
 						})
 					}
 				/>
-				<h2>{__("Tab Alignment", "ultimate-addons-for-gutenberg")}</h2>
-				<BlockAlignmentToolbar
-					value={tabAlign}
-					onChange={(value) =>
-						setAttributes({
-							tabAlign: value,
-						})
-					}
-					controls={["left", "center", "right"]}
-					isCollapsed={false}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Tab Alignment", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: tabAlign,
+						label: "tabAlign",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
+						{
+							value: "left",
+							icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+							tooltip: __(
+								"Left",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "center",
+							icon: (
+								<Icon icon={renderSVG("fa fa-align-center")} />
+							),
+							tooltip: __(
+								"Center",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "right",
+							icon: (
+								<Icon icon={renderSVG("fa fa-align-right")} />
+							),
+							tooltip: __(
+								"Right",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					showIcons={true}
 				/>
-				<h2>
-					{__("Tab Text Alignment", "ultimate-addons-for-gutenberg")}
-				</h2>
-				<BlockAlignmentToolbar
-					value={titleAlign}
-					onChange={(value) =>
-						setAttributes({
-							titleAlign: value,
-						})
-					}
-					controls={["left", "center", "right"]}
-					isCollapsed={false}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Tab Text Alignment",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: titleAlign,
+						label: "titleAlign",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
+						{
+							value: "left",
+							icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+							tooltip: __(
+								"Left",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "center",
+							icon: (
+								<Icon icon={renderSVG("fa fa-align-center")} />
+							),
+							tooltip: __(
+								"Center",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "right",
+							icon: (
+								<Icon icon={renderSVG("fa fa-align-right")} />
+							),
+							tooltip: __(
+								"Right",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					showIcons={true}
 				/>
 				<ToggleControl
 					label={__("Enable Icon", "ultimate-addons-for-gutenberg")}
@@ -456,239 +572,298 @@ const Settings = (props) => {
 								setAttributes({ iconPosition: value })
 							}
 						/>
-						<h2>
-							{__(
+						<Range
+							label={__(
 								"Icon Spacing",
 								"ultimate-addons-for-gutenberg"
 							)}
-						</h2>
-						<RangeControl
-							className={"uagb-tabs__icon"}
+							setAttributes={setAttributes}
 							value={iconSpacing}
 							onChange={(value) =>
 								setAttributes({ iconSpacing: value })
 							}
 							min={0}
 							max={500}
-							allowReset
+							displayUnit={false}
 						/>
-						<h2>
-							{__("Icon Color", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<ColorPalette
-							value={iconColor}
-							onChange={(value) =>
+						<AdvancedPopColorControl
+							label={__(
+								"Icon Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={iconColor}
+							onColorChange={(value) =>
 								setAttributes({ iconColor: value })
 							}
-							allowReset
 						/>
-						<h2>
-							{__(
+						<AdvancedPopColorControl
+							label={__(
 								"Active Icon Color",
 								"ultimate-addons-for-gutenberg"
 							)}
-						</h2>
-						<ColorPalette
-							value={activeiconColor}
-							onChange={(value) =>
+							colorValue={activeiconColor}
+							onColorChange={(value) =>
 								setAttributes({ activeiconColor: value })
 							}
-							allowReset
 						/>
-						<h2>
-							{__("Icon Size", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<RangeControl
-							className={"uagb-tabs__icon"}
+						<Range
+							label={__(
+								"Icon Size",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
 							value={iconSize}
 							onChange={(value) =>
 								setAttributes({ iconSize: value })
 							}
 							min={0}
 							max={500}
-							allowReset
+							displayUnit={false}
 						/>
 					</>
 				)}
-				<h2>
-					{__(
-						"Tab Title Margin (px)",
-						"ultimate-addons-for-gutenberg"
-					)}
-				</h2>
-				<RangeControl
-					label={UAGB_Block_Icons.left_margin}
-					className={"uagb-margin-control"}
-					value={tabTitleLeftMargin}
-					onChange={(value) =>
-						setAttributes({ tabTitleLeftMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
+				<SpacingControl
+					{...props}
+					label={__("Title Margin", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: tabTitleTopMargin,
+						label: "tabTitleTopMargin",
+					}}
+					valueRight={{
+						value: tabTitleRightMargin,
+						label: "tabTitleRightMargin",
+					}}
+					valueBottom={{
+						value: tabTitleBottomMargin,
+						label: "tabTitleBottomMargin",
+					}}
+					valueLeft={{
+						value: tabTitleLeftMargin,
+						label: "tabTitleLeftMargin",
+					}}
+					valueTopTablet={{
+						value: tabTitleTopMarginTablet,
+						label: "tabTitleTopMarginTablet",
+					}}
+					valueRightTablet={{
+						value: tabTitleRightMarginTablet,
+						label: "tabTitleRightMarginTablet",
+					}}
+					valueBottomTablet={{
+						value: tabTitleBottomMarginTablet,
+						label: "tabTitleBottomMarginTablet",
+					}}
+					valueLeftTablet={{
+						value: tabTitleLeftMarginTablet,
+						label: "tabTitleLeftMarginTablet",
+					}}
+					valueTopMobile={{
+						value: tabTitleTopMarginMobile,
+						label: "tabTitleTopMarginMobile",
+					}}
+					valueRightMobile={{
+						value: tabTitleRightMarginMobile,
+						label: "tabTitleRightMarginMobile",
+					}}
+					valueBottomMobile={{
+						value: tabTitleBottomMarginMobile,
+						label: "tabTitleBottomMarginMobile",
+					}}
+					valueLeftMobile={{
+						value: tabTitleLeftMarginMobile,
+						label: "tabTitleLeftMarginMobile",
+					}}
+					unit={{
+						value: tabTitleMarginUnit,
+						label: "tabTitleMarginUnit",
+					}}
+					mUnit={{
+						value: mobiletabTitleMarginUnit,
+						label: "mobiletabTitleMarginUnit",
+					}}
+					tUnit={{
+						value: tablettabTitleMarginUnit,
+						label: "tablettabTitleMarginUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabTitleMarginLink,
+						label: "tabTitleMarginLink",
+					}}
 				/>
-				<RangeControl
-					label={UAGB_Block_Icons.right_margin}
-					className={"uagb-margin-control"}
-					value={tabTitleRightMargin}
-					onChange={(value) =>
-						setAttributes({ tabTitleRightMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
+				<SpacingControl
+					{...props}
+					label={__("Title Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: tabTitleTopPadding,
+						label: "tabTitleTopPadding",
+					}}
+					valueRight={{
+						value: tabTitleRightPadding,
+						label: "tabTitleRightPadding",
+					}}
+					valueBottom={{
+						value: tabTitleBottomPadding,
+						label: "tabTitleBottomPadding",
+					}}
+					valueLeft={{
+						value: tabTitleLeftPadding,
+						label: "tabTitleLeftPadding",
+					}}
+					valueTopTablet={{
+						value: tabTitleTopPaddingTablet,
+						label: "tabTitleTopPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: tabTitleRightPaddingTablet,
+						label: "tabTitleRightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: tabTitleBottomPaddingTablet,
+						label: "tabTitleBottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: tabTitleLeftPaddingTablet,
+						label: "tabTitleLeftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: tabTitleTopPaddingMobile,
+						label: "tabTitleTopPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: tabTitleRightPaddingMobile,
+						label: "tabTitleRightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: tabTitleBottomPaddingMobile,
+						label: "tabTitleBottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: tabTitleLeftPaddingMobile,
+						label: "tabTitleLeftPaddingMobile",
+					}}
+					unit={{
+						value: tabTitlePaddingUnit,
+						label: "tabTitlePaddingUnit",
+					}}
+					mUnit={{
+						value: mobiletabTitlePaddingUnit,
+						label: "mobiletabTitlePaddingUnit",
+					}}
+					tUnit={{
+						value: tablettabTitlePaddingUnit,
+						label: "tablettabTitlePaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabTitlePaddingLink,
+						label: "tabTitlePaddingLink",
+					}}
 				/>
-				<RangeControl
-					label={UAGB_Block_Icons.top_margin}
-					value={tabTitleTopMargin}
-					onChange={(value) =>
-						setAttributes({ tabTitleTopMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
-				/>
-				<RangeControl
-					label={UAGB_Block_Icons.bottom_margin}
-					className={"uagb-margin-control"}
-					value={tabTitleBottomMargin}
-					onChange={(value) =>
-						setAttributes({ tabTitleBottomMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
-				/>
-				<h2>{__("Title Padding", "ultimate-addons-for-gutenberg")}</h2>
-				<RangeControl
-					label={UAGB_Block_Icons.vertical_spacing}
-					value={tabTitleVertPadding}
-					onChange={(value) =>
-						setAttributes({ tabTitleVertPadding: value })
-					}
-					min={0}
-					max={500}
-					className={"uagb-margin-control"}
-					allowReset
-				/>
-				<RangeControl
-					label={UAGB_Block_Icons.horizontal_spacing}
-					value={tabTitleHrPadding}
-					onChange={(value) =>
-						setAttributes({ tabTitleHrPadding: value })
-					}
-					min={0}
-					max={500}
-					className={"uagb-margin-control"}
-					allowReset
-				/>
-				<h2>
-					{__(
+				<AdvancedPopColorControl
+					label={__(
 						"Title Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
-				</h2>
-				<ColorPalette
-					value={headerBgColor}
-					onChange={(value) =>
+					colorValue={headerBgColor}
+					onColorChange={(value) =>
 						setAttributes({ headerBgColor: value })
 					}
-					allowReset
 				/>
-				<h2>
-					{__("Title Text Color", "ultimate-addons-for-gutenberg")}
-				</h2>
-				<ColorPalette
-					value={headerTextColor}
-					onChange={(value) =>
+				<AdvancedPopColorControl
+					label={__(
+						"Title Text Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={headerTextColor}
+					onColorChange={(value) =>
 						setAttributes({ headerTextColor: value })
 					}
-					allowReset
 				/>
-				<h2>
-					{__(
+				<AdvancedPopColorControl
+					label={__(
 						"Active Tab Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
-				</h2>
-				<ColorPalette
-					value={activeTabBgColor}
-					onChange={(value) =>
+					colorValue={activeTabBgColor}
+					onColorChange={(value) =>
 						setAttributes({ activeTabBgColor: value })
 					}
-					allowReset
 				/>
-				<h2>
-					{__(
+				<AdvancedPopColorControl
+					label={__(
 						"Active Tab Text Color",
 						"ultimate-addons-for-gutenberg"
 					)}
-				</h2>
-				<ColorPalette
-					value={activeTabTextColor}
-					onChange={(value) =>
+					colorValue={activeTabTextColor}
+					onColorChange={(value) =>
 						setAttributes({ activeTabTextColor: value })
 					}
-					allowReset
 				/>
-				<>
-					<TypographyControl
-						label={__(
-							"Typography",
-							"ultimate-addons-for-gutenberg"
-						)}
-						attributes={attributes}
-						setAttributes={setAttributes}
-						loadGoogleFonts={{
-							value: titleLoadGoogleFonts,
-							label: "titleLoadGoogleFonts",
-						}}
-						fontFamily={{
-							value: titleFontFamily,
-							label: "titleFontFamily",
-						}}
-						fontWeight={{
-							value: titleFontWeight,
-							label: "titleFontWeight",
-						}}
-						fontSubset={{
-							value: titleFontSubset,
-							label: "titleFontSubset",
-						}}
-						fontSizeType={{
-							value: titleFontSizeType,
-							label: "titleFontSizeType",
-						}}
-						fontSize={{
-							value: titleFontSize,
-							label: "titleFontSize",
-						}}
-						fontSizeMobile={{
-							value: titleFontSizeMobile,
-							label: "titleFontSizeMobile",
-						}}
-						fontSizeTablet={{
-							value: titleFontSizeTablet,
-							label: "titleFontSizeTablet",
-						}}
-						lineHeightType={{
-							value: titleLineHeightType,
-							label: "titleLineHeightType",
-						}}
-						lineHeight={{
-							value: titleLineHeight,
-							label: "titleLineHeight",
-						}}
-						lineHeightMobile={{
-							value: titleLineHeightMobile,
-							label: "titleLineHeightMobile",
-						}}
-						lineHeightTablet={{
-							value: titleLineHeightTablet,
-							label: "titleLineHeightTablet",
-						}}
-					/>
-				</>
+
+				<TypographyControl
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					loadGoogleFonts={{
+						value: titleLoadGoogleFonts,
+						label: "titleLoadGoogleFonts",
+					}}
+					fontFamily={{
+						value: titleFontFamily,
+						label: "titleFontFamily",
+					}}
+					fontWeight={{
+						value: titleFontWeight,
+						label: "titleFontWeight",
+					}}
+					fontSubset={{
+						value: titleFontSubset,
+						label: "titleFontSubset",
+					}}
+					fontSizeType={{
+						value: titleFontSizeType,
+						label: "titleFontSizeType",
+					}}
+					fontSize={{
+						value: titleFontSize,
+						label: "titleFontSize",
+					}}
+					fontSizeMobile={{
+						value: titleFontSizeMobile,
+						label: "titleFontSizeMobile",
+					}}
+					fontSizeTablet={{
+						value: titleFontSizeTablet,
+						label: "titleFontSizeTablet",
+					}}
+					lineHeightType={{
+						value: titleLineHeightType,
+						label: "titleLineHeightType",
+					}}
+					lineHeight={{
+						value: titleLineHeight,
+						label: "titleLineHeight",
+					}}
+					lineHeightMobile={{
+						value: titleLineHeightMobile,
+						label: "titleLineHeightMobile",
+					}}
+					lineHeightTablet={{
+						value: titleLineHeightTablet,
+						label: "titleLineHeightTablet",
+					}}
+					transform={{
+						value: titleTransform,
+						label: "titleTransform",
+					}}
+					decoration={{
+						value: titleDecoration,
+						label: "titleDecoration",
+					}}
+				/>
 			</PanelBody>
 		);
 	};
@@ -698,20 +873,31 @@ const Settings = (props) => {
 				title={__("Border Settings", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
-				<p className="uagb-setting-label">
-					{__("Border Color", "ultimate-addons-for-gutenberg")}
-				</p>
-				<ColorPalette
-					value={borderColor}
-					onChange={(value) => setAttributes({ borderColor: value })}
-					allowReset
-				/>
-				<RangeControl
-					label={__("Border width", "ultimate-addons-for-gutenberg")}
-					value={borderWidth}
-					min={1}
-					max={500}
-					onChange={(value) => setAttributes({ borderWidth: value })}
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: __("Style", "ultimate-addons-for-gutenberg"),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: __("Width", "ultimate-addons-for-gutenberg"),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: __("Radius", "ultimate-addons-for-gutenberg"),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: __("Color", "ultimate-addons-for-gutenberg"),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 				/>
 			</PanelBody>
 		);
@@ -725,101 +911,168 @@ const Settings = (props) => {
 				)}
 				initialOpen={false}
 			>
-				<h2>
-					{__(
+				<AdvancedPopColorControl
+					label={__(
 						"Body Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
-				</h2>
-				<ColorPalette
-					value={bodyBgColor}
-					onChange={(value) => setAttributes({ bodyBgColor: value })}
-					allowReset
-				/>
-				<h2>
-					{__("Body Text Color", "ultimate-addons-for-gutenberg")}
-				</h2>
-				<ColorPalette
-					value={bodyTextColor}
-					onChange={(value) =>
-						setAttributes({ bodyTextColor: value })
+					colorValue={bodyBgColor}
+					onColorChange={(value) =>
+						setAttributes({ bodyBgColor: value })
 					}
-					allowReset
 				/>
-				<h2>
-					{__(
-						"Tab Body Margin (px)",
+				<AdvancedPopColorControl
+					label={__(
+						"Body Text Color",
 						"ultimate-addons-for-gutenberg"
 					)}
-				</h2>
-				<RangeControl
-					label={UAGB_Block_Icons.left_margin}
-					className={"uagb-margin-control"}
-					value={tabBodyLeftMargin}
-					onChange={(value) =>
-						setAttributes({ tabBodyLeftMargin: value })
+					colorValue={bodyTextColor}
+					onColorChange={(value) =>
+						setAttributes({ bodyTextColor: value })
 					}
-					min={0}
-					max={500}
-					allowReset
 				/>
-				<RangeControl
-					label={UAGB_Block_Icons.right_margin}
-					className={"uagb-margin-control"}
-					value={tabBodyRightMargin}
-					onChange={(value) =>
-						setAttributes({ tabBodyRightMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
+				<SpacingControl
+					{...props}
+					label={__(
+						"Tab Body Margin",
+						"ultimate-addons-for-gutenberg"
+					)}
+					valueTop={{
+						value: tabBodyTopMargin,
+						label: "tabBodyTopMargin",
+					}}
+					valueRight={{
+						value: tabBodyRightMargin,
+						label: "tabBodyRightMargin",
+					}}
+					valueBottom={{
+						value: tabBodyBottomMargin,
+						label: "tabBodyBottomMargin",
+					}}
+					valueLeft={{
+						value: tabBodyLeftMargin,
+						label: "tabBodyLeftMargin",
+					}}
+					valueTopTablet={{
+						value: tabBodyTopMarginTablet,
+						label: "tabBodyTopMarginTablet",
+					}}
+					valueRightTablet={{
+						value: tabBodyRightMarginTablet,
+						label: "tabBodyRightMarginTablet",
+					}}
+					valueBottomTablet={{
+						value: tabBodyBottomMarginTablet,
+						label: "tabBodyBottomMarginTablet",
+					}}
+					valueLeftTablet={{
+						value: tabBodyLeftMarginTablet,
+						label: "tabBodyLeftMarginTablet",
+					}}
+					valueTopMobile={{
+						value: tabBodyTopMarginMobile,
+						label: "tabBodyTopMarginMobile",
+					}}
+					valueRightMobile={{
+						value: tabBodyRightMarginMobile,
+						label: "tabBodyRightMarginMobile",
+					}}
+					valueBottomMobile={{
+						value: tabBodyBottomMarginMobile,
+						label: "tabBodyBottomMarginMobile",
+					}}
+					valueLeftMobile={{
+						value: tabBodyLeftMarginMobile,
+						label: "tabBodyLeftMarginMobile",
+					}}
+					unit={{
+						value: tabBodyMarginUnit,
+						label: "tabBodyMarginUnit",
+					}}
+					mUnit={{
+						value: mobiletabBodyMarginUnit,
+						label: "mobiletabBodyMarginUnit",
+					}}
+					tUnit={{
+						value: tablettabBodyMarginUnit,
+						label: "tablettabBodyMarginUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabBodyMarginLink,
+						label: "tabBodyMarginLink",
+					}}
 				/>
-				<RangeControl
-					label={UAGB_Block_Icons.top_margin}
-					className={"uagb-margin-control"}
-					value={tabBodyTopMargin}
-					onChange={(value) =>
-						setAttributes({ tabBodyTopMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
-				/>
-				<RangeControl
-					label={UAGB_Block_Icons.bottom_margin}
-					className={"uagb-margin-control"}
-					value={tabBodyBottomMargin}
-					onChange={(value) =>
-						setAttributes({ tabBodyBottomMargin: value })
-					}
-					min={0}
-					max={500}
-					allowReset
-				/>
-				<h2>{__("Body Padding", "ultimate-addons-for-gutenberg")}</h2>
-				<RangeControl
-					label={UAGB_Block_Icons.vertical_spacing}
-					value={tabBodyVertPadding}
-					onChange={(value) =>
-						setAttributes({
-							tabBodyVertPadding: value,
-						})
-					}
-					min={0}
-					max={500}
-					className={"uagb-margin-control"}
-					allowReset
-				/>
-				<RangeControl
-					label={UAGB_Block_Icons.horizontal_spacing}
-					value={tabBodyHrPadding}
-					onChange={(value) =>
-						setAttributes({ tabBodyHrPadding: value })
-					}
-					min={0}
-					max={500}
-					className={"uagb-margin-control"}
-					allowReset
+				<SpacingControl
+					{...props}
+					label={__("Body Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: tabBodyTopPadding,
+						label: "tabBodyTopPadding",
+					}}
+					valueRight={{
+						value: tabBodyRightPadding,
+						label: "tabBodyRightPadding",
+					}}
+					valueBottom={{
+						value: tabBodyBottomPadding,
+						label: "tabBodyBottomPadding",
+					}}
+					valueLeft={{
+						value: tabBodyLeftPadding,
+						label: "tabBodyLeftPadding",
+					}}
+					valueTopTablet={{
+						value: tabBodyTopPaddingTablet,
+						label: "tabBodyTopPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: tabBodyRightPaddingTablet,
+						label: "tabBodyRightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: tabBodyBottomPaddingTablet,
+						label: "tabBodyBottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: tabBodyLeftPaddingTablet,
+						label: "tabBodyLeftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: tabBodyTopPaddingMobile,
+						label: "tabBodyTopPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: tabBodyRightPaddingMobile,
+						label: "tabBodyRightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: tabBodyBottomPaddingMobile,
+						label: "tabBodyBottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: tabBodyLeftPaddingMobile,
+						label: "tabBodyLeftPaddingMobile",
+					}}
+					unit={{
+						value: tabBodyPaddingUnit,
+						label: "tabBodyPaddingUnit",
+					}}
+					mUnit={{
+						value: mobiletabBodyPaddingUnit,
+						label: "mobiletabBodyPaddingUnit",
+					}}
+					tUnit={{
+						value: tablettabBodyPaddingUnit,
+						label: "tablettabBodyPaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabBodyPaddingLink,
+						label: "tabBodyPaddingLink",
+					}}
 				/>
 			</PanelBody>
 		);
