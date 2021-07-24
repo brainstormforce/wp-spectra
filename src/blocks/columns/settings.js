@@ -12,6 +12,8 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 import SpacingControl from "../../components/spacing-control";
 import Background from "../../components/background";
 import Border from "../../components/border";
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import Range from "../../components/range/Range.js";
 
 import {
 	BlockControls,
@@ -195,6 +197,20 @@ const Settings = ( props ) => {
 						setAttributes( { columns: value } )
 					}
 				/>
+				{/* <Range
+					label={__(
+						"Columns",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={columns}
+					onChange={(value) =>
+						setAttributes({ columns: value })
+					}
+					min={ 0 }
+					max={ 6 }
+					displayUnit={false}
+				/> */}
 				<SelectControl
 					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
 					value={ stack }
@@ -303,25 +319,31 @@ const Settings = ( props ) => {
 								setAttributes( { width: value } )
 							}
 						/>
+						{/* <Range
+							label={__(
+								'Inner Width',
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={width}
+							onChange={(value) =>
+								setAttributes({ width: value })
+							}
+							min={ 0 }
+							max={ '%' == widthType ? 100 : 2000 }
+							displayUnit={true}
+						/> */}
 					</>
 				) }
 				<MultiButtonsControl
 					setAttributes={setAttributes}
-					responsive={true}
+					responsive={false}
 					label={__(
 						"Gap",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
 						desktop: {
-							value: columnGap,
-							label: "columnGap",
-						},
-						tablet: {
-							value: columnGap,
-							label: "columnGap",
-						},
-						mobile: {
 							value: columnGap,
 							label: "columnGap",
 						},
@@ -1264,47 +1286,43 @@ const Settings = ( props ) => {
 				/>
 				{ topType != 'none' && (
 					<>
-						<p className="uagb-setting-label">
-							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { topColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ topColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { topColor: colorValue } )
+						 <AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={topColor}
+							onColorChange={(value) =>
+								setAttributes({ topColor: value })
 							}
-							allowReset
 						/>
-						<RangeControl
-							label={ __(
+						<Range
+							label={__(
 								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ topDividerOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { topDividerOpacity: value } )
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={topDividerOpacity}
+							onChange={(value) =>
+								setAttributes({ topDividerOpacity: value })
 							}
 							min={ 0 }
 							max={ 100 }
-							allowReset
+							displayUnit={false}
 						/>
-						<RangeControl
-							label={ __(
+						<Range
+							label={__(
 								'Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={topWidth}
+							onChange={(value) =>
+								setAttributes({ topWidth: value })
 							}
 							min={ 100 }
 							max={ 2000 }
-							allowReset
+							displayUnit={false}
 						/>
 						<TabPanel
 							className="uagb-size-type-field-tabs uagb-without-size-type"
@@ -1335,56 +1353,53 @@ const Settings = ( props ) => {
 
 								if ( 'mobile' === tab.name ) {
 									tabout = (
-										<RangeControl
-											label={ __(
+										<Range
+											label={__(
 												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ topHeightMobile }
-											onChange={ ( value ) =>
-												setAttributes( {
-													topHeightMobile: value,
-												} )
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={topHeightMobile}
+											onChange={(value) =>
+												setAttributes({ topHeightMobile: value })
 											}
 											min={ 0 }
 											max={ 500 }
-											allowReset
+											displayUnit={false}
 										/>
 									);
 								} else if ( 'tablet' === tab.name ) {
 									tabout = (
-										<RangeControl
-											label={ __(
+										<Range
+											label={__(
 												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ topHeightTablet }
-											onChange={ ( value ) =>
-												setAttributes( {
-													topHeightTablet: value,
-												} )
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={topHeightTablet}
+											onChange={(value) =>
+												setAttributes({ topHeightTablet: value })
 											}
 											min={ 0 }
 											max={ 500 }
-											allowReset
+											displayUnit={false}
 										/>
 									);
 								} else {
 									tabout = (
-										<RangeControl
-											label={ __(
+										<Range
+											label={__(
 												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ topHeight }
-											onChange={ ( value ) =>
-												setAttributes( {
-													topHeight: value,
-												} )
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={topHeight}
+											onChange={(value) =>
+												setAttributes({ topHeight: value })
 											}
 											min={ 0 }
 											max={ 500 }
-											allowReset
+											displayUnit={false}
 										/>
 									);
 								}
@@ -1431,47 +1446,43 @@ const Settings = ( props ) => {
 				/>
 				{ bottomType != 'none' && (
 					<>
-						<p className="uagb-setting-label">
-							{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { bottomColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ bottomColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { bottomColor: colorValue } )
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={bottomColor}
+							onColorChange={(value) =>
+								setAttributes({ bottomColor: value })
 							}
-							allowReset
 						/>
-						<RangeControl
-							label={ __(
-								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ bottomDividerOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { bottomDividerOpacity: value } )
+						<Range
+							label={__(
+								"Opacity",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={bottomDividerOpacity}
+							onChange={(value) =>
+								setAttributes({ bottomDividerOpacity: value })
 							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
+							min={0}
+							max={100}
+							displayUnit={false}
 						/>
-						<RangeControl
-							label={ __(
-								'Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
+						<Range
+							label={__(
+								"Width",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={bottomWidth}
+							onChange={(value) =>
+								setAttributes({ bottomWidth: value })
 							}
-							min={ 100 }
-							max={ 2000 }
-							allowReset
+							min={100}
+							max={2000}
+							displayUnit={false}
 						/>
 						<TabPanel
 							className="uagb-size-type-field-tabs uagb-without-size-type"
@@ -1502,56 +1513,53 @@ const Settings = ( props ) => {
 
 								if ( 'mobile' === tab.name ) {
 									tabout = (
-										<RangeControl
-											label={ __(
-												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ bottomHeightMobile }
-											onChange={ ( value ) =>
-												setAttributes( {
-													bottomHeightMobile: value,
-												} )
+										<Range
+											label={__(
+												"Height",
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={bottomHeightMobile}
+											onChange={(value) =>
+												setAttributes({ bottomHeightMobile: value })
 											}
-											min={ 0 }
-											max={ 500 }
-											allowReset
+											min={0}
+											max={500}
+											displayUnit={false}
 										/>
 									);
 								} else if ( 'tablet' === tab.name ) {
 									tabout = (
-										<RangeControl
-											label={ __(
-												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ bottomHeightTablet }
-											onChange={ ( value ) =>
-												setAttributes( {
-													bottomHeightTablet: value,
-												} )
+										<Range
+											label={__(
+												"Height",
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={bottomHeightTablet}
+											onChange={(value) =>
+												setAttributes({ bottomHeightTablet: value })
 											}
-											min={ 0 }
-											max={ 500 }
-											allowReset
+											min={0}
+											max={500}
+											displayUnit={false}
 										/>
 									);
 								} else {
 									tabout = (
-										<RangeControl
-											label={ __(
-												'Height',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ bottomHeight }
-											onChange={ ( value ) =>
-												setAttributes( {
-													bottomHeight: value,
-												} )
+										<Range
+											label={__(
+												"Height",
+												"ultimate-addons-for-gutenberg"
+											)}
+											setAttributes={setAttributes}
+											value={bottomHeight}
+											onChange={(value) =>
+												setAttributes({ bottomHeight: value })
 											}
-											min={ 0 }
-											max={ 500 }
-											allowReset
+											min={0}
+											max={500}
+											displayUnit={false}
 										/>
 									);
 								}
@@ -1632,132 +1640,6 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <SelectControl
-					label={ __(
-						'Border Style',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { borderStyle: value } )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				{ 'none' != borderStyle && (
-					<RangeControl
-						label={ __(
-							'Border Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ borderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { borderWidth: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				) }
-				<RangeControl
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 1000 }
-					allowReset
-				/>
-				{ 'none' != borderStyle && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: borderColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ borderColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { borderColor: colorValue } )
-							}
-							allowReset
-						/>
-					</>
-				) } */}
 				<Border
 					setAttributes={setAttributes}
 					borderStyle={{
@@ -1796,46 +1678,6 @@ const Settings = ( props ) => {
 						),
 					}}
 				/>
-				{/* <BoxShadowControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
-					boxShadowColor={ {
-						value: boxShadowColor,
-						label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowHOffset={ {
-						value: boxShadowHOffset,
-						label: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowVOffset={ {
-						value: boxShadowVOffset,
-						label: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowBlur={ {
-						value: boxShadowBlur,
-						label: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowSpread={ {
-						value: boxShadowSpread,
-						label: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowPosition={ {
-						value: boxShadowPosition,
-						label: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-				/> */}
 				<BoxShadowControl
 					setAttributes={setAttributes}
 					label={__(

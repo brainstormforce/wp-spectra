@@ -217,12 +217,12 @@ const MultiButtonsControl = (props) => {
 						<Button
 							className={`uagb-multi-button`}
 							isLarge
-							isSecondary={data.value !== option.value}
-							isPrimary={data.value === option.value}
-							aria-pressed={data.value === option.value}
+							isSecondary={data.desktop.value !== option.value}
+							isPrimary={data.desktop.value === option.value}
+							aria-pressed={data.desktop.value === option.value}
 							onClick={() =>
 								setAttributes({
-									[data.label]: option.value,
+									[data.desktop.label]: option.value,
 								})
 							}
 							aria-label={option.tooltip}
