@@ -3649,3 +3649,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .components-toggle-control__label {
 	line-height: 2;
 }
+
+/* Multi-button bottom css */
+.components-button-group.uagb-multi-button-button-group {
+    margin-bottom:20px;
+}

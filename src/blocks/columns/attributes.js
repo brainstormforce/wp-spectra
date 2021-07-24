@@ -132,6 +132,10 @@ const attributes = {
 	backgroundColor: {
 		type: 'string',
 	},
+	overlayType: {
+		type: "string",
+		default: "color",
+	},
 	gradientColor1: {
 		type: 'string',
 	},
@@ -183,6 +187,9 @@ const attributes = {
 		type: 'number',
 	},
 	borderColor: {
+		type: 'string',
+	},
+	borderHoverColor: {
 		type: 'string',
 	},
 	bottomType: {
@@ -279,6 +286,14 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	paddingLink: {
+		type: "boolean",
+		default: false,
+	},
+	marginLink: {
+		type: "boolean",
+		default: false,
+	},
 	boxShadowColor: {
 		type: 'string',
 	},
@@ -301,8 +316,8 @@ const attributes = {
 		default: 'outset',
 	},
 	gradientValue: {
-		type: 'string',
-		default: '',
+		type: "string",
+		default: "",
 	},
 };
 
