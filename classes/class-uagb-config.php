@@ -1257,6 +1257,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaBgHoverColor'         => '',
 							'ctaBorderhoverColor'     => '',
 							'ctaIconSpace'            => '5',
+							'ctaIconSpaceType'        => 'px',
 							'ctaTextTransform'        => 'normal',
 							'ctaTextDecoration'       => 'none',
 							'prefixTextTransform'     => 'normal',

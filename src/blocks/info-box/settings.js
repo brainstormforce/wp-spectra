@@ -119,6 +119,7 @@ const Settings = ( props ) => {
 		ctaIcon,
 		ctaIconPosition,
 		ctaIconSpace,
+		ctaIconSpaceType,
 		ctaLinkColor,
 		ctaFontSize,
 		ctaFontSizeType,
@@ -1457,6 +1458,10 @@ const Settings = ( props ) => {
 									}
 									min={ 0 }
 									max={ 50 }
+									unit={{
+										value: ctaIconSpaceType,
+										label: "ctaIconSpaceType",
+									}}
 								/>
 							</>
 						) }

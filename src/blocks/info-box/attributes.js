@@ -264,6 +264,10 @@ const attributes = {
 		type: 'number',
 		default: 5,
 	},
+	ctaIconSpaceType:{
+		type: 'string',
+		default: 'px',
+	},
 	seperatorPosition: {
 		type: 'string',
 		default: 'after_title',
