@@ -1234,7 +1234,58 @@ const Settings = ( props ) => {
 								/>
 							</div>
 						)}
-						{ ! inheritFromTheme && ctaType === 'button' || ctaType === 'text' && (
+						{ ctaType === 'text' && (
+							<TypographyControl
+								label={ __(
+									'Typography',
+									'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: ctaLoadGoogleFonts,
+									label: 'ctaLoadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: ctaFontFamily,
+									label: 'ctaFontFamily',
+								} }
+								fontWeight={ {
+									value: ctaFontWeight,
+									label: 'ctaFontWeight',
+								} }
+								fontSubset={ {
+									value: ctaFontSubset,
+									label: 'ctaFontSubset',
+								} }
+								fontSizeType={ {
+									value: ctaFontSizeType,
+									label: 'ctaFontSizeType',
+								} }
+								fontSize={ {
+									value: ctaFontSize,
+									label: 'ctaFontSize',
+								} }
+								fontSizeMobile={ {
+									value: ctaFontSizeMobile,
+									label: 'ctaFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: ctaFontSizeTablet,
+									label: 'ctaFontSizeTablet',
+								} }
+								transform={{
+									value: ctaTextTransform,
+									label: "ctaTextTransform",
+								}}
+								decoration={{
+									value: ctaTextDecoration,
+									label: "ctaTextDecoration",
+								}}
+								disableLineHeight={ true }
+							/>
+						) }
+						{ ! inheritFromTheme && ctaType === 'button' && (
 							<TypographyControl
 								label={ __(
 									'Typography',
