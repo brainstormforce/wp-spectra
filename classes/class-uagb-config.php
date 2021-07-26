@@ -1265,6 +1265,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headLineDecoration'      => 'none',
 							'subHeadLineTransform'    => 'normal',
 							'subHeadLineDecoration'   => 'none',
+							'prefixSpaceUnit'         => 'px',
+							'headSpaceUnit'           => 'px',
+							'seperatorSpaceUnit'      => 'px',
+							'subHeadSpaceUnit'        => 'px',
+							'imageWidthUnit'          => 'px',
+							'iconimgBorderRadiusUnit' => 'px',
 						),
 					),
 					'uagb/inline-notice'          => array(

@@ -50,6 +50,7 @@ function InfoBoxStyle( props ) {
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		seperatorStyle,
 		seperatorWidth,
 		seperatorColor,
@@ -65,8 +66,6 @@ function InfoBoxStyle( props ) {
 		ctaFontWeight,
 		ctaBtnLinkColor,
 		ctaBgColor,
-		ctaBtnVertPadding,
-		ctaBtnHrPadding,
 		paddingBtnUnit,
 		mobilePaddingBtnUnit,
 		tabletPaddingBtnUnit,
@@ -104,6 +103,7 @@ function InfoBoxStyle( props ) {
 		iconTabletPaddingUnit,
 		imageWidth,
 		imageWidthType,
+		imageWidthUnit,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
@@ -116,6 +116,10 @@ function InfoBoxStyle( props ) {
 		headLineDecoration,
 		subHeadLineTransform,
 		subHeadLineDecoration,
+		prefixSpaceUnit,
+		headSpaceUnit,
+		seperatorSpaceUnit,
+		subHeadSpaceUnit,
 	} = props.attributes;
 
 	const selectors = {
@@ -152,7 +156,7 @@ function InfoBoxStyle( props ) {
 			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		},
 		' .uagb-infobox .uagb-ifb-image-content img': {
-			'border-radius': generateCSSUnit( iconimgBorderRadius, 'px' ),
+			'border-radius': generateCSSUnit( iconimgBorderRadius, iconimgBorderRadiusUnit ),
 		},
 		// CTA style
 		' .uagb-infobox-cta-link': {
@@ -219,7 +223,7 @@ function InfoBoxStyle( props ) {
 			'text-decoration':prefixTextDecoration,
 			'text-transform': prefixTextTransform,
 			color: prefixColor,
-			'margin-bottom': generateCSSUnit( prefixSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
 		},
 		// Title Style
 		' .block-editor-rich-text__editable.uagb-ifb-title a': {
@@ -236,7 +240,7 @@ function InfoBoxStyle( props ) {
 			'text-decoration':headLineDecoration,
 			'text-transform': headLineTransform,
 			color: headingColor,
-			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
 		},
 		// Description Style
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
@@ -253,7 +257,7 @@ function InfoBoxStyle( props ) {
 			'text-decoration': subHeadLineDecoration,
 			'text-transform': subHeadLineTransform,
 			color: subHeadingColor,
-			'margin-bottom': generateCSSUnit( subHeadSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
 		},
 		// Seperator
 		' .uagb-ifb-separator': {
@@ -263,7 +267,7 @@ function InfoBoxStyle( props ) {
 			'border-top-style': seperatorStyle,
 		},
 		' .uagb-ifb-separator-parent': {
-			'margin-bottom': generateCSSUnit( seperatorSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
 		},
 		' .uagb-ifb-align-icon-after': {
 			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
@@ -276,8 +280,8 @@ function InfoBoxStyle( props ) {
 	if ( imageWidthType ) {
 		// Image
 		selectors[ ' .uagb-ifb-image-content img' ] = {
-			width: generateCSSUnit( imageWidth, 'px' ),
-			'max-width': generateCSSUnit( imageWidth, 'px' ),
+			width: generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 	}
 

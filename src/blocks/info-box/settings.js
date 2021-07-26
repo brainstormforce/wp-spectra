@@ -103,6 +103,7 @@ const Settings = ( props ) => {
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		source_type,
 		sourceAlign,
 		seperatorPosition,
@@ -173,6 +174,7 @@ const Settings = ( props ) => {
 		imageSize,
 		imageWidth,
 		imageWidthType,
+		imageWidthUnit,
 		stack,
 		showPrefix,
 		showTitle,
@@ -181,6 +183,10 @@ const Settings = ( props ) => {
 		spacingLink,
 		headLineTransform,
 		headLineDecoration,
+		prefixSpaceUnit,
+		headSpaceUnit,
+		seperatorSpaceUnit,
+		subHeadSpaceUnit,
 	} = attributes;
 
 	/*
@@ -601,6 +607,10 @@ const Settings = ( props ) => {
 											}
 											min={0}
 											max={500}
+											unit={{
+												value: imageWidthUnit,
+												label: "imageWidthUnit",
+											}}
 										/>
 									) }
 									<Range
@@ -615,6 +625,10 @@ const Settings = ( props ) => {
 										}
 										min={0}
 										max={500}
+										unit={{
+											value: iconimgBorderRadiusUnit,
+											label: "iconimgBorderRadiusUnit",
+										}}
 									/>
 								</>
 							) }
@@ -1037,6 +1051,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={50}
+						unit={{
+							value: prefixSpaceUnit,
+							label: "prefixSpaceUnit",
+						}}
 					/>
 				) }
 				{ showTitle && (
@@ -1052,6 +1070,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={50}
+						unit={{
+							value: headSpaceUnit,
+							label: "prefixSpaceUnit",
+						}}
 					/>
 				) }
 				{ 'none' !== seperatorStyle && (
@@ -1067,6 +1089,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={50}
+						unit={{
+							value: seperatorSpaceUnit,
+							label: "seperatorSpaceUnit",
+						}}
 					/>
 				) }
 				{ showDesc && (
@@ -1082,6 +1108,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={50}
+						unit={{
+							value: subHeadSpaceUnit,
+							label: "subHeadSpaceUnit",
+						}}
 					/>
 				) }
 				<SpacingControl

@@ -1289,23 +1289,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 				),
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
-					'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], 'px' ),
+					'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 				),
 				// Prefix Style.
 				' .uagb-ifb-title-prefix'               => array(
 					'color'         => $attr['prefixColor'],
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixSpace'], $attr['prefixSpaceUnit'] ),
 				),
 				// Title Style.
 
 				' .uagb-ifb-title-wrap .uagb-ifb-title' => array(
 					'color'         => $attr['headingColor'],
-					'margin-bottom' => $attr['headSpace'] . 'px',
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], $attr['headSpaceUnit'] ),
 				),
 				// Description Style.
 				' .uagb-ifb-text-wrap .uagb-ifb-desc'   => array(
 					'color'         => $attr['subHeadingColor'],
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['subHeadSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['subHeadSpace'], $attr['subHeadSpaceUnit'] ),
 				),
 				// Seperator.
 				' .uagb-ifb-separator'                  => array(
@@ -1315,7 +1315,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-top-style' => $attr['seperatorStyle'],
 				),
 				' .uagb-ifb-separator-parent'           => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['seperatorSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['seperatorSpace'], $attr['seperatorUnit'] ),
 				),
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after'           => array(
@@ -1380,8 +1380,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( $attr['imageWidthType'] ) {
 				// Image.
 				$selectors[' .uagb-ifb-image-content > img'] = array(
-					'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
-					'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
+					'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+					'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 				);
 			}
 

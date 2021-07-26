@@ -534,6 +534,30 @@ const attributes = {
 	paddingBtnLeftMobile: {
 		type: "number",
 	},
+	prefixSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	headSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	seperatorSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	subHeadSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	imageWidthUnit:{
+		type: 'string',
+		default:'px'
+	},
+	iconimgBorderRadiusUnit:{
+		type: 'string',
+		default:'px'
+	},
 };
 
 export default attributes;
