@@ -82,6 +82,7 @@ const Settings = ( props ) => {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor,
 		mobileMarginType,
 		tabletMarginType,
 		desktopMarginType,
@@ -750,6 +751,13 @@ const Settings = ( props ) => {
 							value: borderColor,
 							label: __(
 								"Color",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+						borderHoverColor={{
+							value: borderHoverColor,
+							label: __(
+								"Hover Color",
 								"ultimate-addons-for-gutenberg"
 							),
 						}}

@@ -478,7 +478,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-
+			
 			$selectors = array(
 				'.uagb-section__wrap'          => $style,
 				' > .uagb-section__video-wrap' => array(
@@ -490,6 +490,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-uagb-section'       => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				),
+				'.uagb-section__wrap:hover' => array(
+					'border-color' => $attr['borderHoverColor'],
+				)
 			);
 
 			if ( 'video' === $bg_type ) {
@@ -535,8 +538,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-
-			$selectors[' > .uagb-section__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
 
 			$m_selectors = array(
 				'.uagb-section__wrap' => array(

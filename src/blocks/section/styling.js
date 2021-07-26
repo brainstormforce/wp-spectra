@@ -63,7 +63,8 @@ function styling( props ) {
 		gradientValue,
 		borderStyle,
 		borderWidth,
-		borderColor
+		borderColor,
+		borderHoverColor
 	} = props.attributes;
 
 	let inner_width = '100%';
@@ -107,6 +108,9 @@ function styling( props ) {
 				boxShadowColor +
 				' ' +
 				boxShadowPositionCSS,
+		},
+		' > .uagb-section__overlay:hover': {
+			'border-color': borderHoverColor,
 		},
 	};
 
@@ -178,6 +182,7 @@ function styling( props ) {
 	selectors[ ' > .uagb-section__overlay' ][
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
+
 	if ( borderStyle != 'none' ) {
 		selectors[ ' > .uagb-section__overlay'][ 'border-style' ] = borderStyle;
 		selectors[ ' > .uagb-section__overlay'][ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );

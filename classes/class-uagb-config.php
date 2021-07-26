@@ -2172,6 +2172,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderWidth'              => '1',
 							'borderRadius'             => '',
 							'borderColor'              => '',
+							'borderHoverColor'         => '',
 							'themeWidth'               => false,
 							'mobileMarginType'         => 'px',
 							'tabletMarginType'         => 'px',
