@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.8
-Stable tag: x.x.x
+Stable tag: 1.24.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,7 +169,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.24.1 =
+= 1.24.1 – TUESDAY, 27TH JULY 2021 =
 * Fix: Table of contents - Uncaught TypeError with the load function.
 * Fix: Tabs - Responsive icons were not clickable in the editor.
 * Fix: Updated the CSS priority, to resolve the UAG blocks style issue with custom layout.
