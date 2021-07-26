@@ -986,7 +986,7 @@ class UAGBInlineNoticeEdit extends Component {
 									),
 								}}
 								backgroundVideoType={{
-									value: false,
+									value: true,
 								}}
 								backgroundVideo={{
 									value: backgroundVideo,
