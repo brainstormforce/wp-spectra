@@ -108,6 +108,14 @@ function InfoBoxStyle( props ) {
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaTextTransform,
+		ctaTextDecoration,
+		prefixTextTransform,
+		prefixTextDecoration,
+		headLineTransform,
+		headLineDecoration,
+		subHeadLineTransform,
+		subHeadLineDecoration,
 	} = props.attributes;
 
 	const selectors = {
@@ -152,6 +160,8 @@ function InfoBoxStyle( props ) {
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			color: ctaLinkColor,
+			'text-decoration':ctaTextDecoration,
+			'text-transform': ctaTextTransform
 		},
 		' .uagb-infobox-cta-link:hover': {
 			color: ctaLinkHoverColor,
@@ -206,6 +216,8 @@ function InfoBoxStyle( props ) {
 				prefixLineHeight,
 				prefixLineHeightType
 			),
+			'text-decoration':prefixTextDecoration,
+			'text-transform': prefixTextTransform,
 			color: prefixColor,
 			'margin-bottom': generateCSSUnit( prefixSpace, 'px' ),
 		},
@@ -221,6 +233,8 @@ function InfoBoxStyle( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
+			'text-decoration':headLineDecoration,
+			'text-transform': headLineTransform,
 			color: headingColor,
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 		},
@@ -236,6 +250,8 @@ function InfoBoxStyle( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'text-decoration': subHeadLineDecoration,
+			'text-transform': subHeadLineTransform,
 			color: subHeadingColor,
 			'margin-bottom': generateCSSUnit( subHeadSpace, 'px' ),
 		},

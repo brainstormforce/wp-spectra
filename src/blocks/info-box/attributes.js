@@ -105,6 +105,14 @@ const attributes = {
 	prefixLineHeightTablet: {
 		type: 'number',
 	},
+	prefixTextTransform:{
+		type: "string",
+		default: "none",
+	},
+	prefixTextDecoration:{
+		type: "string",
+		default: "none",
+	},
 	prefixLineHeightMobile: {
 		type: 'number',
 	},
@@ -138,6 +146,22 @@ const attributes = {
 	},
 	headFontSubset: {
 		type: 'string',
+	},
+	headLineTransform:{
+		type:'string',
+		default:'none'
+	},
+	headLineDecoration:{
+		type:'string',
+		default:'none'
+	},
+	subHeadLineTransform:{
+		type:'string',
+		default:'none'
+	},
+	subHeadLineDecoration:{
+		type:'string',
+		default:'none'
 	},
 	headLineHeightType: {
 		type: 'string',
@@ -283,6 +307,14 @@ const attributes = {
 	ctaLinkColor: {
 		type: 'string',
 		default: '#333',
+	},
+	ctaTextTransform:{
+		type:'string',
+		default:'none'
+	},
+	ctaTextDecoration:{
+		type:'string',
+		default:'none'
 	},
 	ctaFontSize: {
 		type: 'number',
