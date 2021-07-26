@@ -50,6 +50,12 @@ label.uag-typography-font-family-subset-label {
 .block-editor-block-inspector .components-base-control:last-child {
 	margin-bottom: 0px;
 }
-.uagb-typography-advanced .components-select-control {
-	height: auto;
+.uagb-typography-advanced {
+	.components-select-control {
+		height: auto;
+	}
+	.components-base-control {
+		margin-top: 16px;
+		margin-bottom: 0;
+	}
 }

@@ -32,6 +32,8 @@ function styling(props) {
 		titleLineHeightType,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleTransform,
+		titleDecoration,
 		//Border
 		borderWidth,
 		borderColor,
@@ -150,6 +152,8 @@ function styling(props) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			"text-transform": titleTransform,
+			"text-decoration": titleDecoration,
 		},
 		" > .uagb-tabs__panel .uagb-tab.uagb-tabs__active ": {
 			background: activeTabBgColor,

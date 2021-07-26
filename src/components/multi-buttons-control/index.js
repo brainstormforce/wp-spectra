@@ -28,7 +28,6 @@ const MultiButtonsControl = (props) => {
 	const {
 		data,
 		label,
-		onChange,
 		options,
 		showIcons,
 		setAttributes,
