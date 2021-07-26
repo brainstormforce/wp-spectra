@@ -46,13 +46,16 @@ function InfoBoxStyle( props ) {
 		subHeadSpace,
 		iconColor,
 		iconSize,
+		iconSizeType,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
+		iconimgBorderRadiusUnit,
 		seperatorStyle,
 		seperatorWidth,
 		seperatorColor,
 		seperatorThickness,
+		thicknessUnit,
 		seperatorSpace,
 		ctaLinkColor,
 		ctaFontSize,
@@ -63,8 +66,21 @@ function InfoBoxStyle( props ) {
 		ctaFontWeight,
 		ctaBtnLinkColor,
 		ctaBgColor,
-		ctaBtnVertPadding,
-		ctaBtnHrPadding,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
 		ctaBorderStyle,
 		ctaBorderColor,
 		ctaBorderWidth,
@@ -74,27 +90,53 @@ function InfoBoxStyle( props ) {
 		iconRightMargin,
 		iconTopMargin,
 		iconBottomMargin,
+		iconMarginTopTablet,
+		iconMarginRightTablet,
+		iconMarginBottomTablet,
+		iconMarginLeftTablet,
+		iconMarginTopMobile,
+		iconMarginRightMobile,
+		iconMarginBottomMobile,
+		iconMarginLeftMobile,
+		iconMarginUnit,
+		iconMobilePaddingUnit,
+		iconTabletPaddingUnit,
 		imageWidth,
 		imageWidthType,
+		imageWidthUnit,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaIconSpaceType,
+		ctaTextTransform,
+		ctaTextDecoration,
+		prefixTextTransform,
+		prefixTextDecoration,
+		headLineTransform,
+		headLineDecoration,
+		subHeadLineTransform,
+		subHeadLineDecoration,
+		prefixSpaceUnit,
+		headSpaceUnit,
+		seperatorSpaceUnit,
+		subHeadSpaceUnit,
 	} = props.attributes;
+
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-icon': {
-			height: generateCSSUnit( iconSize, 'px' ),
-			width: generateCSSUnit( iconSize, 'px' ),
-			'line-height': generateCSSUnit( iconSize, 'px' ),
+			height: generateCSSUnit( iconSize, iconSizeType ),
+			width: generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
 		},
 		' .uagb-ifb-icon > span': {
-			'font-size': generateCSSUnit( iconSize, 'px' ),
-			height: generateCSSUnit( iconSize, 'px' ),
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			height: generateCSSUnit( iconSize, iconSizeType ),
 			color: iconColor,
 			fill: iconColor,
-			width: generateCSSUnit( iconSize, 'px' ),
-			'line-height': generateCSSUnit( iconSize, 'px' ),
+			width: generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
 		},
 		' .uagb-ifb-icon > svg': {
 			fill: iconColor,
@@ -109,13 +151,13 @@ function InfoBoxStyle( props ) {
 			fill: iconHover,
 		},
 		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
-			'margin-left': generateCSSUnit( iconLeftMargin, 'px' ),
-			'margin-right': generateCSSUnit( iconRightMargin, 'px' ),
-			'margin-top': generateCSSUnit( iconTopMargin, 'px' ),
-			'margin-bottom': generateCSSUnit( iconBottomMargin, 'px' ),
+			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
 		},
 		' .uagb-infobox .uagb-ifb-image-content img': {
-			'border-radius': generateCSSUnit( iconimgBorderRadius, 'px' ),
+			'border-radius': generateCSSUnit( iconimgBorderRadius, iconimgBorderRadiusUnit ),
 		},
 		// CTA style
 		' .uagb-infobox-cta-link': {
@@ -123,6 +165,8 @@ function InfoBoxStyle( props ) {
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			color: ctaLinkColor,
+			'text-decoration':ctaTextDecoration,
+			'text-transform': ctaTextTransform
 		},
 		' .uagb-infobox-cta-link:hover': {
 			color: ctaLinkHoverColor,
@@ -152,10 +196,10 @@ function InfoBoxStyle( props ) {
 			'border-color': ctaBorderColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-			'padding-top': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-left': generateCSSUnit( ctaBtnHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( ctaBtnHrPadding, 'px' ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
 		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
 			color: ctaLinkHoverColor,
@@ -177,8 +221,10 @@ function InfoBoxStyle( props ) {
 				prefixLineHeight,
 				prefixLineHeightType
 			),
+			'text-decoration':prefixTextDecoration,
+			'text-transform': prefixTextTransform,
 			color: prefixColor,
-			'margin-bottom': generateCSSUnit( prefixSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
 		},
 		// Title Style
 		' .block-editor-rich-text__editable.uagb-ifb-title a': {
@@ -192,8 +238,10 @@ function InfoBoxStyle( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
+			'text-decoration':headLineDecoration,
+			'text-transform': headLineTransform,
 			color: headingColor,
-			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
 		},
 		// Description Style
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
@@ -207,32 +255,34 @@ function InfoBoxStyle( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'text-decoration': subHeadLineDecoration,
+			'text-transform': subHeadLineTransform,
 			color: subHeadingColor,
-			'margin-bottom': generateCSSUnit( subHeadSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
 		},
 		// Seperator
 		' .uagb-ifb-separator': {
 			width: generateCSSUnit( seperatorWidth, separatorWidthType ),
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'border-top-width': generateCSSUnit( seperatorThickness, thicknessUnit ),
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 		},
 		' .uagb-ifb-separator-parent': {
-			'margin-bottom': generateCSSUnit( seperatorSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
 		},
 		' .uagb-ifb-align-icon-after': {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
 		},
 		' .uagb-ifb-align-icon-before': {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
 		},
 	};
 
 	if ( imageWidthType ) {
 		// Image
 		selectors[ ' .uagb-ifb-image-content img' ] = {
-			width: generateCSSUnit( imageWidth, 'px' ),
-			'max-width': generateCSSUnit( imageWidth, 'px' ),
+			width: generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 	}
 
@@ -246,6 +296,12 @@ function InfoBoxStyle( props ) {
 	}
 
 	const tabletSelectors = {
+		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
+			'margin-top': generateCSSUnit(iconMarginTopTablet , iconTabletPaddingUnit),
+			'margin-right': generateCSSUnit(iconMarginRightTablet , iconTabletPaddingUnit),
+			'margin-bottom': generateCSSUnit(iconMarginBottomTablet , iconTabletPaddingUnit),
+			'margin-left': generateCSSUnit(iconMarginLeftTablet , iconTabletPaddingUnit),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeTablet,
@@ -255,6 +311,12 @@ function InfoBoxStyle( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
 			'font-size': generateCSSUnit(
@@ -300,6 +362,18 @@ function InfoBoxStyle( props ) {
 	};
 
 	const mobileSelectors = {
+		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
+			'margin-top': generateCSSUnit(iconMarginTopMobile , iconMobilePaddingUnit),
+			'margin-right': generateCSSUnit(iconMarginRightMobile , iconMobilePaddingUnit),
+			'margin-bottom': generateCSSUnit(iconMarginBottomMobile , iconMobilePaddingUnit),
+			'margin-left': generateCSSUnit(iconMarginLeftMobile , iconMobilePaddingUnit),
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
 				subHeadFontSizeMobile,
