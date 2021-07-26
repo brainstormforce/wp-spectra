@@ -71,54 +71,34 @@ const Background = (props) => {
 	};
 
 	let bgOptions = [];
-		if ( !backgroundVideoType.value || !backgroundVideo || !backgroundVideoOpacity || !backgroundVideoColor ) { 
-			bgOptions=[
-				{
-					value: "none",
-					label: __("None", "ultimate-addons-for-gutenberg"),
-				},
-				{
-					value: "color",
-					label: __("Color", "ultimate-addons-for-gutenberg"),
-				},
-				{
-					value: "gradient",
-					label: __(
-						"Gradient",
-						"ultimate-addons-for-gutenberg"
-					),
-				},
-				{
-					value: "image",
-					label: __("Image", "ultimate-addons-for-gutenberg"),
-				}
-			] 
-		} else{
-			bgOptions=[
-				{
-					value: "none",
-					label: __("None", "ultimate-addons-for-gutenberg"),
-				},
-				{
-					value: "color",
-					label: __("Color", "ultimate-addons-for-gutenberg"),
-				},
-				{
-					value: "gradient",
-					label: __(
-						"Gradient",
-						"ultimate-addons-for-gutenberg"
-					),
-				},
-				{
-					value: "image",
-					label: __("Image", "ultimate-addons-for-gutenberg"),
-				},
-				{
+
+		bgOptions=[
+			{
+				value: "none",
+				label: __("None", "ultimate-addons-for-gutenberg"),
+			},
+			{
+				value: "color",
+				label: __("Color", "ultimate-addons-for-gutenberg"),
+			},
+			{
+				value: "gradient",
+				label: __(
+					"Gradient",
+					"ultimate-addons-for-gutenberg"
+				),
+			},
+			{
+				value: "image",
+				label: __("Image", "ultimate-addons-for-gutenberg"),
+			}
+		];
+
+		if ( backgroundVideoType.value ){
+			bgOptions.push({
 					value: "video",
-					label: __("Video", "ultimate-addons-for-gutenberg"),
-				}
-			]
+					label: __("Video", "ultimate-addons-for-gutenberg")
+			});
 		}
 
 	let advancedControls = (
