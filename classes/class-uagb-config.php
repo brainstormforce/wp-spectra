@@ -2147,6 +2147,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'rightMarginTablet'        => '',
 							'contentWidth'             => 'boxed',
 							'width'                    => '900',
+							'widthUnit'                => 'px',
 							'innerWidth'               => '1140',
 							'innerWidthType'           => 'px',
 							'tag'                      => 'section',

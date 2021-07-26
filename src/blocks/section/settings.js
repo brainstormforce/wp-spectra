@@ -30,6 +30,7 @@ const Settings = ( props ) => {
 		align,
 		contentWidth,
 		width,
+		widthUnit,
 		innerWidth,
 		innerWidthType,
 		tag,
@@ -95,7 +96,11 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		spacingLink
+		spacingLink,
+		gradientOverlayLocation1Unit,
+		backgroundVideoOpacityUnit,
+		gradientOverlayAngleUnit,
+		gradientOverlayLocation2Unit,
 	} = attributes;
 
 	let blockControls = [ 'left', 'center', 'right' ];
@@ -163,6 +168,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={2000}
+						unit={{
+							value: widthUnit,
+							label: "widthUnit",
+						}}
 					/>
 				) }
 				{ contentWidth !== 'boxed' && (
@@ -526,6 +535,10 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={100}
+						unit={{
+							value: backgroundVideoOpacityUnit,
+							label: "backgroundVideoOpacityUnit",
+						}}
 					/>
 				) }	
 				{ 'gradient' == overlayType && (
@@ -556,6 +569,10 @@ const Settings = ( props ) => {
 								}
 								min={0}
 								max={100}
+								unit={{
+									value: gradientOverlayLocation1Unit,
+									label: "gradientOverlayLocation1Unit",
+								}}
 							/>
 						<AdvancedPopColorControl
 							label={__(
@@ -583,6 +600,10 @@ const Settings = ( props ) => {
 								}
 								min={0}
 								max={100}
+								unit={{
+									value: gradientOverlayLocation2Unit,
+									label: "gradientOverlayLocation2Unit",
+								}}
 							/>
 						<SelectControl
 							label={ __(
@@ -625,6 +646,10 @@ const Settings = ( props ) => {
 								}
 								min={0}
 								max={360}
+								unit={{
+									value: gradientOverlayAngleUnit,
+									label: "gradientOverlayAngleUnit",
+								}}
 							/>
 						) }
 						{ 'radial' == gradientOverlayType && (
