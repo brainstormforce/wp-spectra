@@ -583,7 +583,7 @@ const Settings = ( props ) => {
 									{ imageWidthType && (
 										<Range
 											label={__(
-												'Width (px)',
+												'Width ',
 												"ultimate-addons-for-gutenberg"
 											)}
 											setAttributes={setAttributes}
@@ -1051,8 +1051,9 @@ const Settings = ( props ) => {
 					/>
 				) }
 				<SpacingControl
+					{...props}
 					label={__(
-						'Image/Icon Margin (px)',
+						'Image/Icon Margin',
 						"ultimate-addons-for-gutenberg"
 					)}
 					valueTop={{
