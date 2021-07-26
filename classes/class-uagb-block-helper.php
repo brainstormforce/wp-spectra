@@ -1319,10 +1319,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after'           => array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+					'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
 				),
 				' .uagb-ifb-align-icon-before'          => array(
-					'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
 				),
 			);
 

@@ -108,6 +108,7 @@ function InfoBoxStyle( props ) {
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaIconSpaceType,
 		ctaTextTransform,
 		ctaTextDecoration,
 		prefixTextTransform,
@@ -270,10 +271,10 @@ function InfoBoxStyle( props ) {
 			'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
 		},
 		' .uagb-ifb-align-icon-after': {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
 		},
 		' .uagb-ifb-align-icon-before': {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
 		},
 	};
 
