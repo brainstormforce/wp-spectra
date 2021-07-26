@@ -52,6 +52,10 @@ const attributes = {
 		type: 'number',
 		default: 40,
 	},
+	iconSizeType:{
+		type: 'String',
+		default : 'px'
+	},
 	iconHover: {
 		type: 'string',
 		default: '',
@@ -259,6 +263,10 @@ const attributes = {
 	seperatorThickness: {
 		type: 'number',
 		default: 2,
+	},
+	thicknessUnit:{
+		type: 'string',
+		default: 'px',
 	},
 	ctaType: {
 		type: 'string',

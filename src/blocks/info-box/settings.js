@@ -48,11 +48,10 @@ let imageSizeOptions = [
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { setAttributes, attributes } = props;
+	const { setAttributes, attributes, deviceType} = props;
 
 	// Setup the attributes.
 	const {
-		deviceType,
 		headingAlign,
 		headingColor,
 		subHeadingColor,
@@ -101,6 +100,7 @@ const Settings = ( props ) => {
 		icon,
 		iconColor,
 		iconSize,
+		iconSizeType,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -111,6 +111,7 @@ const Settings = ( props ) => {
 		seperatorWidth,
 		seperatorColor,
 		seperatorThickness,
+		thicknessUnit,
 		ctaType,
 		ctaText,
 		ctaLink,
@@ -498,6 +499,10 @@ const Settings = ( props ) => {
 							}
 							min={0}
 							max={300}
+							unit={{
+								value: iconSizeType,
+								label: "iconSizeType",
+							}}
 						/>
 					</>
 				) }
@@ -959,6 +964,10 @@ const Settings = ( props ) => {
 							}
 							min={0}
 							max={10}
+							unit={{
+								value: thicknessUnit,
+								label: "thicknessUnit",
+							}}
 						/>
 						<Range
 								label={__(

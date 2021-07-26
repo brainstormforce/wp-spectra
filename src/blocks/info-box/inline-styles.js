@@ -46,6 +46,7 @@ function InfoBoxStyle( props ) {
 		subHeadSpace,
 		iconColor,
 		iconSize,
+		iconSizeType,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -53,6 +54,7 @@ function InfoBoxStyle( props ) {
 		seperatorWidth,
 		seperatorColor,
 		seperatorThickness,
+		thicknessUnit,
 		seperatorSpace,
 		ctaLinkColor,
 		ctaFontSize,
@@ -111,17 +113,17 @@ function InfoBoxStyle( props ) {
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-icon': {
-			height: generateCSSUnit( iconSize, 'px' ),
-			width: generateCSSUnit( iconSize, 'px' ),
-			'line-height': generateCSSUnit( iconSize, 'px' ),
+			height: generateCSSUnit( iconSize, iconSizeType ),
+			width: generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
 		},
 		' .uagb-ifb-icon > span': {
-			'font-size': generateCSSUnit( iconSize, 'px' ),
-			height: generateCSSUnit( iconSize, 'px' ),
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			height: generateCSSUnit( iconSize, iconSizeType ),
 			color: iconColor,
 			fill: iconColor,
-			width: generateCSSUnit( iconSize, 'px' ),
-			'line-height': generateCSSUnit( iconSize, 'px' ),
+			width: generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
 		},
 		' .uagb-ifb-icon > svg': {
 			fill: iconColor,
@@ -240,7 +242,7 @@ function InfoBoxStyle( props ) {
 		// Seperator
 		' .uagb-ifb-separator': {
 			width: generateCSSUnit( seperatorWidth, separatorWidthType ),
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'border-top-width': generateCSSUnit( seperatorThickness, thicknessUnit ),
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 		},
