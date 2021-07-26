@@ -985,6 +985,9 @@ class UAGBInlineNoticeEdit extends Component {
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
+								backgroundVideoType={{
+									value: false,
+								}}
 								backgroundVideo={{
 									value: backgroundVideo,
 									label: __(

@@ -26,6 +26,7 @@ const Background = (props) => {
 		backgroundPosition,
 		backgroundImage,
 		backgroundColor,
+		backgroundVideoType,
 		backgroundType,
 		backgroundOpacity,
 		backgroundVideo,
@@ -72,6 +73,40 @@ const Background = (props) => {
 	let advancedControls = (
 		<>
 			<div className="uag-background-wrap">
+			{ !backgroundVideoType.value && (
+				<SelectControl
+					value={backgroundType.value}
+					onChange={(value) =>
+						setAttributes({ backgroundType: value })
+					}
+					options={[
+						{
+							value: "none",
+							label: __("None", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "color",
+							label: __("Color", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "gradient",
+							label: __(
+								"Gradient",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "image",
+							label: __("Image", "ultimate-addons-for-gutenberg"),
+						}
+					]}
+					label={__(
+						"Background Type",
+						"ultimate-addons-for-gutenberg"
+					)}
+				/>
+				)}
+				{ backgroundVideoType.value && (
 				<SelectControl
 					value={backgroundType.value}
 					onChange={(value) =>
@@ -100,13 +135,14 @@ const Background = (props) => {
 						{
 							value: "video",
 							label: __("Video", "ultimate-addons-for-gutenberg"),
-						},
+						}
 					]}
 					label={__(
 						"Background Type",
 						"ultimate-addons-for-gutenberg"
 					)}
 				/>
+				)}
 			</div>
 			{"color" === backgroundType.value && (
 				<AdvancedPopColorControl
@@ -431,7 +467,7 @@ const Background = (props) => {
 					displayUnit={false}
 				/>
 			)}
-			{"video" === backgroundType.value && (
+			{"video" === backgroundType.value && backgroundVideoType.value && (
 			<BaseControl
 						className="editor-bg-image-control"
 						label={__(
@@ -479,7 +515,7 @@ const Background = (props) => {
 				</BaseControl>
 				
 			)}
-			{ 'video' == backgroundType.value && backgroundVideo.value && (
+			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
 				<>
 					<AdvancedPopColorControl
 						label={__(
@@ -499,7 +535,7 @@ const Background = (props) => {
 					/>
 				</>
 			)}
-			{ 'video' == backgroundType.value && backgroundVideo.value && (
+			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
 				<Range
 					label={__("Opacity", "ultimate-addons-for-gutenberg")}
 					value={backgroundVideoOpacity.value}

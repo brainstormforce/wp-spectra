@@ -366,6 +366,10 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	backgroundVideoType: {
+		type: "boolean",
+		default: true,
+	},
 	backgroundVideo: {
 		type: 'object',
 	},
