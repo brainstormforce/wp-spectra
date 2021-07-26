@@ -6,6 +6,8 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import GradientSettings from '@Components/gradient-settings';
+import Background from "../../components/background";
+import Border from "../../components/border";
 import ColumnResponsive from '@Components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
 
@@ -55,6 +57,7 @@ const Settings = ( props ) => {
 			borderWidth,
 			borderRadius,
 			borderColor,
+			borderHoverColor,
 			overlayType,
 			gradientOverlayColor1,
 			gradientOverlayColor2,
@@ -450,7 +453,7 @@ const Settings = ( props ) => {
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
+				{/* <SelectControl
 					label={ __(
 						'Background Type',
 						'ultimate-addons-for-gutenberg'
@@ -932,7 +935,81 @@ const Settings = ( props ) => {
 						allowReset
 						initialPosition={ 0 }
 					/>
-				) }
+				) } */}
+				<Background
+					setAttributes={setAttributes}
+					backgroundImageColor={{
+						value: backgroundImageColor,
+						label: __(
+							"Background Image Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					overlayType={{
+						value: overlayType,
+						label: __(
+							"Overlay Type",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundSize={{
+						value: backgroundSize,
+						label: __(
+							"Background Size",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundRepeat={{
+						value: backgroundRepeat,
+						label: __(
+							"Background Repeat",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundAttachment={{
+						value: backgroundAttachment,
+						label: __(
+							"Background Attachement",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundPosition={{
+						value: backgroundPosition,
+						label: __(
+							"Background Image",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundImage={{
+						value: backgroundImage,
+						label: __(
+							"Background Image",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundColor={{
+						value: backgroundColor,
+						label: __(
+							"Background Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundType={{
+						value: backgroundType,
+						label: __(
+							"Background Type",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundOpacity={{
+						value: backgroundOpacity,
+						label: __(
+							"Opacity",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					{...props}
+				/>
 			</PanelBody>
 		);
 	};
@@ -943,132 +1020,44 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __(
-						'Border Style',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { borderStyle: value } )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: __(
+							"Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: __(
+							"Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: __(
+							"Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: __(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 				/>
-				{ 'none' != borderStyle && (
-					<RangeControl
-						label={ __(
-							'Border Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ borderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { borderWidth: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				) }
-				<RangeControl
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					allowReset
-				/>
-				{ 'none' != borderStyle && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: borderColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ borderColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { borderColor: colorValue } )
-							}
-							allowReset
-						/>
-					</>
-				) }
 			</PanelBody>
 		);
 	};

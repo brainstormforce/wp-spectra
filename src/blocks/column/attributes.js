@@ -198,6 +198,9 @@ const attributes = {
 	borderColor: {
 		type: 'string',
 	},
+	borderHoverColor: {
+		type: 'string',
+	},
 	overlayType: {
 		type: 'string',
 		default: 'color',
