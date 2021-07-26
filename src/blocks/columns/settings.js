@@ -337,17 +337,15 @@ const Settings = ( props ) => {
 				) }
 				<MultiButtonsControl
 					setAttributes={setAttributes}
-					responsive={false}
 					label={__(
 						"Gap",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
-						desktop: {
-							value: columnGap,
-							label: "columnGap",
-						},
+						value: columnGap,
+						label: "columnGap",
 					}}
+					className="uagb-multi-button-alignment-control"
 					options={[
 						{
 							value: "10",
