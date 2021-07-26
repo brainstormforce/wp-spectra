@@ -725,7 +725,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
-					{...props}
+					{...props.parentProps}
 				/>
 			</PanelBody>
 		);

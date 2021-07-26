@@ -103,6 +103,14 @@ const attributes = {
 		type: 'number',
 		default: '',
 	},
+	paddingLink: {
+		type: "boolean",
+		default: false,
+	},
+	marginLink: {
+		type: "boolean",
+		default: false,
+	},
 	topMarginMobile: {
 		type: 'number',
 		default: '',
