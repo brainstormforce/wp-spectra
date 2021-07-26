@@ -70,79 +70,71 @@ const Background = (props) => {
 		setAttributes( { backgroundVideo: media } );
 	};
 
+	let bgOptions = [];
+		if ( !backgroundVideoType.value || !backgroundVideo || !backgroundVideoOpacity || !backgroundVideoColor ) { 
+			bgOptions=[
+				{
+					value: "none",
+					label: __("None", "ultimate-addons-for-gutenberg"),
+				},
+				{
+					value: "color",
+					label: __("Color", "ultimate-addons-for-gutenberg"),
+				},
+				{
+					value: "gradient",
+					label: __(
+						"Gradient",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				{
+					value: "image",
+					label: __("Image", "ultimate-addons-for-gutenberg"),
+				}
+			] 
+		} else{
+			bgOptions=[
+				{
+					value: "none",
+					label: __("None", "ultimate-addons-for-gutenberg"),
+				},
+				{
+					value: "color",
+					label: __("Color", "ultimate-addons-for-gutenberg"),
+				},
+				{
+					value: "gradient",
+					label: __(
+						"Gradient",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				{
+					value: "image",
+					label: __("Image", "ultimate-addons-for-gutenberg"),
+				},
+				{
+					value: "video",
+					label: __("Video", "ultimate-addons-for-gutenberg"),
+				}
+			]
+		}
+
 	let advancedControls = (
 		<>
 			<div className="uag-background-wrap">
-			{ !backgroundVideoType.value && (
 				<SelectControl
 					value={backgroundType.value}
 					onChange={(value) =>
 						setAttributes({ backgroundType: value })
 					}
-					options={[
-						{
-							value: "none",
-							label: __("None", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "color",
-							label: __("Color", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "gradient",
-							label: __(
-								"Gradient",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "image",
-							label: __("Image", "ultimate-addons-for-gutenberg"),
-						}
-					]}
+					options={ bgOptions }
 					label={__(
 						"Background Type",
 						"ultimate-addons-for-gutenberg"
 					)}
 				/>
-				)}
-				{ backgroundVideoType.value && (
-				<SelectControl
-					value={backgroundType.value}
-					onChange={(value) =>
-						setAttributes({ backgroundType: value })
-					}
-					options={[
-						{
-							value: "none",
-							label: __("None", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "color",
-							label: __("Color", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "gradient",
-							label: __(
-								"Gradient",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "image",
-							label: __("Image", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "video",
-							label: __("Video", "ultimate-addons-for-gutenberg"),
-						}
-					]}
-					label={__(
-						"Background Type",
-						"ultimate-addons-for-gutenberg"
-					)}
-				/>
-				)}
 			</div>
 			{"color" === backgroundType.value && (
 				<AdvancedPopColorControl
