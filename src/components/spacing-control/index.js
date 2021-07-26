@@ -11,7 +11,7 @@ import {
 	Tooltip,
 	Dashicon,
 } from "@wordpress/components";
-import { useDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
 
 const SpacingControl = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -20,6 +20,10 @@ const SpacingControl = (props) => {
 		return () => {
 			styles.unuse();
 		};
+	}, []);
+
+	const deviceType = useSelect((select) => {
+		return select("core/edit-post").__experimentalGetPreviewDeviceType();
 	}, []);
 
 	const {
@@ -39,7 +43,6 @@ const SpacingControl = (props) => {
 		valueLeftMobile,
 		valueRightMobile,
 		valueTopMobile,
-		deviceType,
 		link,
 		setAttributes,
 	} = props;
@@ -443,6 +446,7 @@ const SpacingControl = (props) => {
 				<span className="uagb-spacing-control__number-label">
 					{__("Left", "ultimate-addons-for-gutenberg")}
 				</span>
+				<span className="uagb-spacing-control__number-label"></span>
 			</div>
 		</div>
 	);

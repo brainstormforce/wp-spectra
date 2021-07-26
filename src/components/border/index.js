@@ -2,92 +2,128 @@
  * Border component.
  *
  */
- import { __ } from '@wordpress/i18n';
- import Range from '../../components/range/Range.js';
- import AdvancedPopColorControl from '../../components/color-control/advanced-pop-color-control.js'
- import { SelectControl} from '@wordpress/components';
+import { __ } from "@wordpress/i18n";
+import Range from "../../components/range/Range.js";
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import { SelectControl } from "@wordpress/components";
 
- const Border = props => {
+const Border = (props) => {
+	const {
+		setAttributes,
+		borderColor,
+		borderWidth,
+		borderRadius,
+		borderStyle,
+		borderHoverColor,
+	} = props;
 
-    const { 
-        setAttributes,
-        borderColor,
-        borderWidth,
-        borderRadius,
-        borderStyle,
-        borderHoverColor,
-        label
-    } = props
-    
-    let advancedControls = (
-    <>
-        <SelectControl
-            label = { borderStyle.label }
-            labelPosition = 'top'
-            value={ borderStyle.value }
-            onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-            options={ [
-                { value: "none", label: __( "None", 'ultimate-addons-for-gutenberg' ) },
-                { value: "solid", label: __( "Solid", 'ultimate-addons-for-gutenberg' ) },
-                { value: "dotted", label: __( "Dotted", 'ultimate-addons-for-gutenberg' ) },
-                { value: "dashed", label: __( "Dashed", 'ultimate-addons-for-gutenberg' ) },
-                { value: "double", label: __( "Double", 'ultimate-addons-for-gutenberg' ) },
-                { value: "groove", label: __( "Groove", 'ultimate-addons-for-gutenberg' ) },
-                { value: "inset", label: __( "Inset", 'ultimate-addons-for-gutenberg' ) },
-                { value: "outset", label: __( "Outset", 'ultimate-addons-for-gutenberg' ) },
-                { value: "ridge", label: __( "Ridge", 'ultimate-addons-for-gutenberg' ) },
-            ] }
-        />
-        { 'none' !== borderStyle.value && (
-        <div className="uagb-border-width">
-            <Range 
-                label={ borderWidth.label }
-                value={ borderWidth.value }
-                onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-                min={ 0 }
-                max={ 100 }
-                displayUnit= { false }
-            />
-        </div>
-        ) }
-        { 'none' !== borderStyle.value && (
-        <div className="uagb-border-radius">
-            <Range 
-                label={ borderRadius.label }
-                value={ borderRadius.value }
-                onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-                min={ 0 }
-                max={ 100 } 
-                displayUnit= { false }
-            />
-        </div>
-        ) }
-        { 'none' !== borderStyle.value && (
-            <AdvancedPopColorControl
-                label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-                colorValue={ ( borderColor.value ) }
-                colorDefault={ '' }
-                onColorChange={ value => setAttributes( { borderColor: value } ) }
-                onColorClassChange={ value => setAttributes( { colorClass: value } ) }
-            />
-        ) }
-        { 'none' !== borderStyle.value && (
-            <AdvancedPopColorControl
-                label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-                colorValue={ ( borderHoverColor.value ) }
-                colorDefault={ '' }
-                onColorChange={ value => setAttributes( { borderHoverColor: value } ) }
-                onColorClassChange={ value => setAttributes( { colorClass: value } ) }
-            />
-        ) }
-        </>
-    );
+	let advancedControls = (
+		<>
+			<SelectControl
+				label={borderStyle.title}
+				labelPosition="top"
+				value={borderStyle.value}
+				onChange={(value) =>
+					setAttributes({
+						[borderStyle.label]: value,
+					})
+				}
+				options={[
+					{
+						value: "none",
+						label: __("None", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "solid",
+						label: __("Solid", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "dotted",
+						label: __("Dotted", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "dashed",
+						label: __("Dashed", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "double",
+						label: __("Double", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "groove",
+						label: __("Groove", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "inset",
+						label: __("Inset", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "outset",
+						label: __("Outset", "ultimate-addons-for-gutenberg"),
+					},
+					{
+						value: "ridge",
+						label: __("Ridge", "ultimate-addons-for-gutenberg"),
+					},
+				]}
+			/>
 
-    return(
-        <div className='uag-typography-option-actions'>
-            { advancedControls }
-        </div>
-    )
-}
+			{"none" !== borderStyle.value && (
+				<Range
+					label={borderWidth.title}
+					value={borderWidth.value}
+					onChange={(value) =>
+						setAttributes({ [borderWidth.label]: value })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
+				/>
+			)}
+			{"none" !== borderStyle.value && (
+				<Range
+					label={borderRadius.title}
+					value={borderRadius.value}
+					onChange={(value) =>
+						setAttributes({ [borderRadius.label]: value })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
+				/>
+			)}
+			{"none" !== borderStyle.value && (
+				<AdvancedPopColorControl
+					label={borderColor.title}
+					colorValue={borderColor.value}
+					colorDefault={""}
+					onColorChange={(value) =>
+						setAttributes({ [borderColor.label]: value })
+					}
+					onColorClassChange={(value) =>
+						setAttributes({ [colorClass.label]: value })
+					}
+				/>
+			)}
+			{"none" !== borderStyle.value && (
+				<AdvancedPopColorControl
+					label={borderHoverColor.title}
+					colorValue={borderHoverColor.value}
+					colorDefault={""}
+					onColorChange={(value) =>
+						setAttributes({ [borderHoverColor.label]: value })
+					}
+					onColorClassChange={(value) =>
+						setAttributes({ [colorClass.label]: value })
+					}
+				/>
+			)}
+		</>
+	);
 
-export default Border
+	return (
+		<div className="uag-typography-option-actions">{advancedControls}</div>
+	);
+};
+
+export default Border;
