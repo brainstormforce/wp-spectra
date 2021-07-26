@@ -203,7 +203,7 @@ function styling(props) {
 		".uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab": {
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 			"border-color": borderColor,
 		},
 		".uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover": {
@@ -212,7 +212,7 @@ function styling(props) {
 		".uagb-tabs__wrap > .uagb-tabs__body-wrap": {
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 			"border-color": borderColor,
 		},
 		".uagb-tabs__wrap > .uagb-tabs__body-wrap:hover": {
@@ -398,7 +398,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		selectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover"] = {
 			"border-color": borderHoverColor,
@@ -410,7 +410,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		selectors[".uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover"] = {
 			"border-color": borderHoverColor,
@@ -422,7 +422,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		tabletSelectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover"] = {
 			"border-color": borderHoverColor,
@@ -434,7 +434,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		tabletSelectors[".uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover"] = {
 			"border-color": borderHoverColor,
@@ -446,7 +446,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		mobileSelectors[".uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover"] = {
 			"border-color": borderHoverColor,
@@ -458,7 +458,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		mobileSelectors[".uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover"] = {
 			"border-color": borderHoverColor,
@@ -470,7 +470,7 @@ function styling(props) {
 			"border-color": borderColor,
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-style": borderStyle,
-			"border-radius": borderRadius,
+			"border-radius": generateCSSUnit(borderRadius, "px"),
 		};
 		mobileSelectors[".uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover"] = {
 			"border-color": borderHoverColor,

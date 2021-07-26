@@ -7,6 +7,8 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Border from "../../components/border";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
@@ -877,23 +879,28 @@ const Settings = (props) => {
 					setAttributes={setAttributes}
 					borderStyle={{
 						value: borderStyle,
-						label: __("Style", "ultimate-addons-for-gutenberg"),
+						label: "borderStyle",
+						title: __("Style", "ultimate-addons-for-gutenberg"),
 					}}
 					borderWidth={{
 						value: borderWidth,
-						label: __("Width", "ultimate-addons-for-gutenberg"),
+						label: "borderWidth",
+						title: __("Width", "ultimate-addons-for-gutenberg"),
 					}}
 					borderRadius={{
 						value: borderRadius,
-						label: __("Radius", "ultimate-addons-for-gutenberg"),
+						label: "borderRadius",
+						title: __("Radius", "ultimate-addons-for-gutenberg"),
 					}}
 					borderColor={{
 						value: borderColor,
-						label: __("Color", "ultimate-addons-for-gutenberg"),
+						label: "borderColor",
+						title: __("Color", "ultimate-addons-for-gutenberg"),
 					}}
 					borderHoverColor={{
 						value: borderHoverColor,
-						label: __(
+						label: "borderHoverColor",
+						title: __(
 							"Hover Color",
 							"ultimate-addons-for-gutenberg"
 						),
@@ -1080,10 +1087,15 @@ const Settings = (props) => {
 
 	return (
 		<InspectorControls>
-			{tabStyleSettings()}
-			{tabTitleSettings()}
-			{tabBodySettings()}
-			{tabBorderSettings()}
+			<InspectorTabs>
+				<InspectorTab key={"general"}>
+					{tabStyleSettings()}
+					{tabTitleSettings()}
+					{tabBodySettings()}
+					{tabBorderSettings()}
+				</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
 		</InspectorControls>
 	);
 };

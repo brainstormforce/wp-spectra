@@ -3272,7 +3272,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'   => $attr['borderColor'],
 					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'   => $attr['borderStyle'],
-					'border-radius'  => $attr['borderRadius'],
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				),
 				' .uagb-tabs__panel .uagb-tab:hover ' => array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3304,7 +3304,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'   => $attr['borderColor'],
 					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'   => $attr['borderStyle'],
-					'border-radius'  => $attr['borderRadius'],
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				),
 				' .uagb-tabs__body-wrap:hover '       => array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3382,7 +3382,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3394,7 +3394,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3407,7 +3407,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$m_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3419,7 +3419,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$m_selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3431,7 +3431,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$m_selectors['.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3444,7 +3444,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$t_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],
@@ -3456,7 +3456,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'  => $attr['borderColor'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-style'  => $attr['borderStyle'],
-					'border-radius' => $attr['borderRadius'],
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				);
 				$t_selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'] = array(
 					'border-color' => $attr['borderHoverColor'],

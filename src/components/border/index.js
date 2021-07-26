@@ -15,16 +15,19 @@ const Border = (props) => {
 		borderRadius,
 		borderStyle,
 		borderHoverColor,
-		label,
 	} = props;
 
 	let advancedControls = (
 		<>
 			<SelectControl
-				label={borderStyle.label}
+				label={borderStyle.title}
 				labelPosition="top"
 				value={borderStyle.value}
-				onChange={(value) => setAttributes({ borderStyle: value })}
+				onChange={(value) =>
+					setAttributes({
+						[borderStyle.label]: value,
+					})
+				}
 				options={[
 					{
 						value: "none",
@@ -64,11 +67,14 @@ const Border = (props) => {
 					},
 				]}
 			/>
+
 			{"none" !== borderStyle.value && (
 				<Range
-					label={borderWidth.label}
+					label={borderWidth.title}
 					value={borderWidth.value}
-					onChange={(value) => setAttributes({ borderWidth: value })}
+					onChange={(value) =>
+						setAttributes({ [borderWidth.label]: value })
+					}
 					min={0}
 					max={100}
 					displayUnit={false}
@@ -76,9 +82,11 @@ const Border = (props) => {
 			)}
 			{"none" !== borderStyle.value && (
 				<Range
-					label={borderRadius.label}
+					label={borderRadius.title}
 					value={borderRadius.value}
-					onChange={(value) => setAttributes({ borderRadius: value })}
+					onChange={(value) =>
+						setAttributes({ [borderRadius.label]: value })
+					}
 					min={0}
 					max={100}
 					displayUnit={false}
@@ -86,27 +94,27 @@ const Border = (props) => {
 			)}
 			{"none" !== borderStyle.value && (
 				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
+					label={borderColor.title}
 					colorValue={borderColor.value}
 					colorDefault={""}
 					onColorChange={(value) =>
-						setAttributes({ borderColor: value })
+						setAttributes({ [borderColor.label]: value })
 					}
 					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
+						setAttributes({ [colorClass.label]: value })
 					}
 				/>
 			)}
 			{"none" !== borderStyle.value && (
 				<AdvancedPopColorControl
-					label={__("Hover Color", "ultimate-addons-for-gutenberg")}
+					label={borderHoverColor.title}
 					colorValue={borderHoverColor.value}
 					colorDefault={""}
 					onColorChange={(value) =>
-						setAttributes({ borderHoverColor: value })
+						setAttributes({ [borderHoverColor.label]: value })
 					}
 					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
+						setAttributes({ [colorClass.label]: value })
 					}
 				/>
 			)}
