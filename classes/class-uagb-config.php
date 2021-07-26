@@ -2359,6 +2359,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleLineHeightMobile'       => '',
 							'titleLoadGoogleFonts'        => false,
 							'titleAlign'                  => 'center',
+							'titleTransform'              => '',
+							'titleDecoration'             => '',
 							'showIcon'                    => false,
 							'icon'                        => '',
 							'iconColor'                   => '',
