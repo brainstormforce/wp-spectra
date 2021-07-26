@@ -107,7 +107,7 @@ const attributes = {
 	},
 	prefixTextTransform:{
 		type: "string",
-		default: "none",
+		default: "normal",
 	},
 	prefixTextDecoration:{
 		type: "string",
@@ -149,7 +149,7 @@ const attributes = {
 	},
 	headLineTransform:{
 		type:'string',
-		default:'none'
+		default:'normal'
 	},
 	headLineDecoration:{
 		type:'string',
@@ -157,7 +157,7 @@ const attributes = {
 	},
 	subHeadLineTransform:{
 		type:'string',
-		default:'none'
+		default:'normal'
 	},
 	subHeadLineDecoration:{
 		type:'string',
@@ -310,7 +310,7 @@ const attributes = {
 	},
 	ctaTextTransform:{
 		type:'string',
-		default:'none'
+		default:'normal'
 	},
 	ctaTextDecoration:{
 		type:'string',
