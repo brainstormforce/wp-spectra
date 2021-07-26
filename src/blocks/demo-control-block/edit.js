@@ -232,6 +232,9 @@ class UAGBInlineNoticeEdit extends Component {
 				boxShadowPosition,
 				widthType,
 				spacingLink,
+				backgroundVideo,
+				backgroundVideoOpacity,
+				backgroundVideoColor,
 			},
 			setAttributes,
 			className,
@@ -979,6 +982,27 @@ class UAGBInlineNoticeEdit extends Component {
 									value: backgroundOpacity,
 									label: __(
 										"Opacity",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								backgroundVideo={{
+									value: backgroundVideo,
+									label: __(
+										"Background Video",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								backgroundVideoColor={{
+									value: backgroundVideoColor,
+									label: __(
+										"Video Color",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								backgroundVideoOpacity={{
+									value: backgroundVideoOpacity,
+									label: __(
+										"Video Opacity",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}

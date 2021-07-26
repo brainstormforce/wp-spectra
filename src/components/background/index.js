@@ -28,6 +28,9 @@ const Background = (props) => {
 		backgroundColor,
 		backgroundType,
 		backgroundOpacity,
+		backgroundVideo,
+		backgroundVideoOpacity,
+		backgroundVideoColor,
 	} = props;
 
 	const onRemoveImage = () => {
@@ -49,6 +52,21 @@ const Background = (props) => {
 		}
 
 		setAttributes({ backgroundImage: media });
+	};
+
+	const onRemoveVideo = () => {
+		setAttributes( { backgroundVideo: null } );
+	};
+
+	const onSelectVideo = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { backgroundVideo: null } );
+			return;
+		}
+		if ( ! media.type || 'video' != media.type ) {
+			return;
+		}
+		setAttributes( { backgroundVideo: media } );
 	};
 
 	let advancedControls = (
@@ -78,6 +96,10 @@ const Background = (props) => {
 						{
 							value: "image",
 							label: __("Image", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "video",
+							label: __("Video", "ultimate-addons-for-gutenberg"),
 						},
 					]}
 					label={__(
@@ -409,6 +431,86 @@ const Background = (props) => {
 					displayUnit={false}
 				/>
 			)}
+			{"video" === backgroundType.value && (
+			<BaseControl
+						className="editor-bg-image-control"
+						label={__(
+							"Background Video",
+							"ultimate-addons-for-gutenberg"
+						)}
+					>
+					<div className="uagb-bg-image">
+						<MediaUpload
+							title={__(
+								"Select Background Video",
+								"ultimate-addons-for-gutenberg"
+							)}
+							onSelect={onSelectVideo}
+							allowedTypes={["video"]}
+							value={backgroundVideo.value}
+							render={({ open }) => (
+								<Button isSecondary onClick={open}>
+									{!backgroundVideo.value
+										? __(
+												"Select Background video",
+												"ultimate-addons-for-gutenberg"
+											)
+										: __(
+												"Replace video",
+												"ultimate-addons-for-gutenberg"
+											)}
+								</Button>
+							)}
+						/>
+						{backgroundVideo.value && (
+							<Button
+								className="uagb-rm-btn"
+								onClick={onRemoveVideo}
+								isLink
+								isDestructive
+							>
+								{__(
+									"Remove Video",
+									"ultimate-addons-for-gutenberg"
+								)}
+							</Button>
+						)}
+					</div>
+				</BaseControl>
+				
+			)}
+			{ 'video' == backgroundType.value && backgroundVideo.value && (
+				<>
+					<AdvancedPopColorControl
+						label={__(
+							"Video Overlay Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={backgroundVideoColor.value}
+						colorDefault={""}
+						onColorChange={(value) =>
+							setAttributes({
+								backgroundVideoColor: value,
+							})
+						}
+						onColorClassChange={(value) =>
+							setAttributes({ colorClass: value })
+						}
+					/>
+				</>
+			)}
+			{ 'video' == backgroundType.value && backgroundVideo.value && (
+				<Range
+					label={__("Opacity", "ultimate-addons-for-gutenberg")}
+					value={backgroundVideoOpacity.value}
+					onChange={(val) =>
+						setAttributes({ backgroundVideoOpacity: parseInt(val) })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
+				/>
+			) }
 		</>
 	);
 
