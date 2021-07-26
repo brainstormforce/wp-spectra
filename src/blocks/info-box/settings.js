@@ -1518,35 +1518,40 @@ const Settings = ( props ) => {
 							setAttributes={setAttributes}
 							borderStyle={{
 								value: ctaBorderStyle,
-								label: __(
+								label: 'ctaBorderStyle',
+								title: __(
 									"Style",
 									"ultimate-addons-for-gutenberg"
 								),
 							}}
 							borderWidth={{
 								value: ctaBorderWidth,
-								label: __(
+								label: 'ctaBorderWidth',
+								title: __(
 									"Width",
 									"ultimate-addons-for-gutenberg"
 								),
 							}}
 							borderRadius={{
 								value: ctaBorderRadius,
-								label: __(
+								label: 'ctaBorderRadius',
+								title: __(
 									"Radius",
 									"ultimate-addons-for-gutenberg"
 								),
 							}}
 							borderColor={{
 								value: ctaBorderColor,
-								label: __(
+								label: 'ctaBorderColor',
+								title: __(
 									"Color",
 									"ultimate-addons-for-gutenberg"
 								),
 							}}
 							borderHoverColor={{
 								value: ctaBorderhoverColor,
-								label: __(
+								label: 'ctaBorderhoverColor',
+								title: __(
 									"Hover Color",
 									"ultimate-addons-for-gutenberg"
 								),
