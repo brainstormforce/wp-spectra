@@ -17,6 +17,13 @@
 		flex: 0 0 0%;
 		width: 50%;
 	}
+	.components-number-control {
+		width: 35%;
+		.components-input-control__input {
+			padding: 0 4px !important;
+			text-align: center;
+		}
+	}
 }
 
 .components-panel__body .uagb-range-control__header {
