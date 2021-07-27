@@ -55,6 +55,7 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
+		borderHoverColor
 	} = props.attributes;
 
 	const position = backgroundPosition.replace( '-', ' ' );
@@ -178,6 +179,12 @@ function styling( props ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
 			width: colWidthMobile + '%',
 		};
+	}
+
+	if ( 'none' !== borderStyle ) {
+		selectors['.block-editor-block-list__block:hover'] = {
+			'border-color' : borderHoverColor,
+		}
 	}
 
 	let stylingCss = '';

@@ -2,30 +2,20 @@
  * BLOCK: Column - Settings.
  */
 
-import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import GradientSettings from '@Components/gradient-settings';
 import Background from "../../components/background";
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
-import ColumnResponsive from '@Components/typography/column-responsive';
 import { __ } from '@wordpress/i18n';
 
 import {
-	ColorPalette,
 	InspectorControls,
-	MediaUpload,
-	PanelColorSettings,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	RangeControl,
-	SelectControl,
-	Button,
-	ButtonGroup,
-	BaseControl,
 	TabPanel,
 	Dashicon,
 } from '@wordpress/components';
@@ -72,12 +62,6 @@ const Settings = ( props ) => {
 			borderColor,
 			borderHoverColor,
 			overlayType,
-			gradientOverlayColor1,
-			gradientOverlayColor2,
-			gradientOverlayType,
-			gradientOverlayLocation1,
-			gradientOverlayLocation2,
-			gradientOverlayAngle,
 			mobilePaddingType,
 			tabletPaddingType,
 			desktopPaddingType,
@@ -93,29 +77,6 @@ const Settings = ( props ) => {
 		setAttributes,
 		deviceType,
 	} = props.parentProps;
-
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		setAttributes( { backgroundImage: null } );
-	};
-
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundImage: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' != media.type ) {
-			return;
-		}
-
-		setAttributes( { backgroundImage: media } );
-	};
 
 	const layoutSettings = () => {
 		return (
@@ -363,157 +324,83 @@ const Settings = ( props ) => {
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <Background
-					setAttributes={setAttributes}
-					backgroundImageColor={{
-						value: backgroundImageColor,
-						label: __(
-							"Background Image Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					overlayType={{
-						value: overlayType,
-						label: __(
-							"Overlay Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundSize={{
-						value: backgroundSize,
-						label: __(
-							"Background Size",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundRepeat={{
-						value: backgroundRepeat,
-						label: __(
-							"Background Repeat",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundAttachment={{
-						value: backgroundAttachment,
-						label: __(
-							"Background Attachement",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundPosition={{
-						value: backgroundPosition,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundImage={{
-						value: backgroundImage,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundColor={{
-						value: backgroundColor,
-						label: __(
-							"Background Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundType={{
-						value: backgroundType,
-						label: __(
-							"Background Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundOpacity={{
-						value: backgroundOpacity,
-						label: __(
-							"Opacity",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					{...props.parentProps}
-				/> */}
-				<Background
-					setAttributes={setAttributes}
-					backgroundImageColor={{
-						value: backgroundImageColor,
-						label: __(
-							"Background Image Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					overlayType={{
-						value: overlayType,
-						label: __(
-							"Overlay Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundSize={{
-						value: backgroundSize,
-						label: __(
-							"Background Size",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundRepeat={{
-						value: backgroundRepeat,
-						label: __(
-							"Background Repeat",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundAttachment={{
-						value: backgroundAttachment,
-						label: __(
-							"Background Attachement",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundPosition={{
-						value: backgroundPosition,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundImage={{
-						value: backgroundImage,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundColor={{
-						value: backgroundColor,
-						label: __(
-							"Background Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundType={{
-						value: backgroundType,
-						label: __(
-							"Background Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundOpacity={{
-						value: backgroundOpacity,
-						label: __(
-							"Opacity",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundVideoType={{
-						value: false,
-					}}
-					{...props.parentProps}
-				/>
+			<Background
+				setAttributes={setAttributes}
+				backgroundImageColor={{
+					value: backgroundImageColor,
+					label: __(
+						"Background Image Color",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				overlayType={{
+					value: overlayType,
+					label: __(
+						"Overlay Type",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundSize={{
+					value: backgroundSize,
+					label: __(
+						"Background Size",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundRepeat={{
+					value: backgroundRepeat,
+					label: __(
+						"Background Repeat",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundAttachment={{
+					value: backgroundAttachment,
+					label: __(
+						"Background Attachement",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundPosition={{
+					value: backgroundPosition,
+					label: __(
+						"Background Image",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundImage={{
+					value: backgroundImage,
+					label: __(
+						"Background Image",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundColor={{
+					value: backgroundColor,
+					label: __(
+						"Background Color",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundType={{
+					value: backgroundType,
+					label: __(
+						"Background Type",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundOpacity={{
+					value: backgroundOpacity,
+					label: __(
+						"Opacity",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				backgroundVideoType={{
+					value: false,
+				}}
+				{...props.parentProps}
+			/>
 			</PanelBody>
 		);
 	};
@@ -524,44 +411,49 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: borderStyle,
-						label: __(
-							"Style",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderWidth={{
-						value: borderWidth,
-						label: __(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderRadius={{
-						value: borderRadius,
-						label: __(
-							"Radius",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderColor={{
-						value: borderColor,
-						label: __(
-							"Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderHoverColor={{
-						value: borderHoverColor,
-						label: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-				/>
+			<Border
+				setAttributes={setAttributes}
+				borderStyle={{
+					value: borderStyle,
+					label: "borderStyle",
+					title: __(
+						"Style",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				borderWidth={{
+					value: borderWidth,
+					label: "borderWidth",
+					title: __(
+						"Width",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				borderRadius={{
+					value: borderRadius,
+					label: "borderRadius",
+					title: __(
+						"Radius",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				borderColor={{
+					value: borderColor,
+					label: "borderColor",
+					title: __(
+						"Color",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+				borderHoverColor={{
+					value: borderHoverColor,
+					label: "borderHoverColor",
+					title: __(
+						"Hover Color",
+						"ultimate-addons-for-gutenberg"
+					),
+				}}
+			/>
 			</PanelBody>
 		);
 	};

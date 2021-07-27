@@ -665,9 +665,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[' .uagb-columns__overlay']['border-style'] = $attr['borderStyle'];
-				$selectors[' .uagb-columns__overlay']['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-				$selectors[' .uagb-columns__overlay']['border-color'] = $attr['borderColor'];
+				$selectors[' .uagb-columns__overlay']['border-style']       = $attr['borderStyle'];
+				$selectors[' .uagb-columns__overlay']['border-width']       = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
+				$selectors[' .uagb-columns__overlay']['border-color']       = $attr['borderColor'];
+				$selectors[' .uagb-columns__overlay:hover']['border-color'] = $attr['borderHoverColor'];
 			}
 			if ( '' !== $attr['topWidth'] ) {
 				$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
@@ -809,6 +810,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				'.uagb-column__wrap' => $style,
 			);
+
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors['.uagb-column__wrap:hover'] = array(
+					'border-color' => $attr['borderHoverColor'],
+				);
+			}
 
 			if ( 'image' === $bg_type ) {
 				if ( 'color' === $overlay_type ) {

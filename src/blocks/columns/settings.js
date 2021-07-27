@@ -1,12 +1,9 @@
 /**
  * BLOCK: Columns - Settings.
  */
-import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import GradientSettings from '@Components/gradient-settings';
-import ColumnResponsive from '@Components/typography/column-responsive';
 import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import SpacingControl from "../../components/spacing-control";
@@ -19,17 +16,12 @@ import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	BlockVerticalAlignmentToolbar,
-	ColorPalette,
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	Button,
-	ButtonGroup,
-	BaseControl,
 	ToggleControl,
 	TabPanel,
 	Dashicon,
@@ -120,50 +112,6 @@ const Settings = ( props ) => {
 		boxShadowPosition,
 	} = attributes;
 
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		setAttributes( { backgroundImage: null } );
-	};
-
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundImage: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' != media.type ) {
-			return;
-		}
-
-		setAttributes( { backgroundImage: media } );
-	};
-
-	/*
-	 * Event to set Video as null while removing.
-	 */
-	const onRemoveVideo = () => {
-		setAttributes( { backgroundVideo: null } );
-	};
-
-	/*
-	 * Event to set Video while adding.
-	 */
-	const onSelectVideo = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundVideo: null } );
-			return;
-		}
-		if ( ! media.type || 'video' != media.type ) {
-			return;
-		}
-		setAttributes( { backgroundVideo: media } );
-	};
-
 	const blockControlSettings = () => {
 		return (
 			<BlockControls>
@@ -197,20 +145,6 @@ const Settings = ( props ) => {
 						setAttributes( { columns: value } )
 					}
 				/>
-				{/* <Range
-					label={__(
-						"Columns",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={columns}
-					onChange={(value) =>
-						setAttributes({ columns: value })
-					}
-					min={ 0 }
-					max={ 6 }
-					displayUnit={false}
-				/> */}
 				<SelectControl
 					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
 					value={ stack }
@@ -271,68 +205,36 @@ const Settings = ( props ) => {
 				/>
 				{ contentWidth == 'custom' && (
 					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __(
-								'Size Type',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthType === 'px' }
-								aria-pressed={ widthType === 'px' }
-								min={ 0 }
-								max={ 2000 }
-								onClick={ () =>
-									setAttributes( { widthType: 'px' } )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthType === '%' }
-								aria-pressed={ widthType === '%' }
-								min={ 0 }
-								max={ 100 }
-								onClick={ () =>
-									setAttributes( { widthType: '%' } )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<RangeControl
-							label={ __(
-								'Inner Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ width }
-							min={ 0 }
-							max={ '%' == widthType ? 100 : 2000 }
-							onChange={ ( value ) =>
-								setAttributes( { width: value } )
-							}
-						/>
-						{/* <Range
-							label={__(
-								'Inner Width',
-								"ultimate-addons-for-gutenberg"
-							)}
+						<Range
+							label={__('Inner Width', "ultimate-addons-for-gutenberg")}
 							setAttributes={setAttributes}
 							value={width}
 							onChange={(value) =>
 								setAttributes({ width: value })
 							}
-							min={ 0 }
-							max={ '%' == widthType ? 100 : 2000 }
-							displayUnit={true}
-						/> */}
+							min={0}
+							max={"%" == widthType ? 100 : 2000}
+							unit={{
+								value: widthType,
+								label: "widthType",
+							}}
+							units={[
+								{
+									name: __(
+										"Pixel",
+										"ultimate-addons-for-gutenberg"
+									),
+									unitValue: "px",
+								},
+								{
+									name: __(
+										"%",
+										"ultimate-addons-for-gutenberg"
+									),
+									unitValue: "%",
+								},
+							]}
+						/>
 					</>
 				) }
 				<MultiButtonsControl
@@ -653,80 +555,6 @@ const Settings = ( props ) => {
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <Background
-					setAttributes={setAttributes}
-					backgroundImageColor={{
-						value: backgroundImageColor,
-						label: __(
-							"Background Image Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					overlayType={{
-						value: overlayType,
-						label: __(
-							"Overlay Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundSize={{
-						value: backgroundSize,
-						label: __(
-							"Background Size",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundRepeat={{
-						value: backgroundRepeat,
-						label: __(
-							"Background Repeat",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundAttachment={{
-						value: backgroundAttachment,
-						label: __(
-							"Background Attachement",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundPosition={{
-						value: backgroundPosition,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundImage={{
-						value: backgroundImage,
-						label: __(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundColor={{
-						value: backgroundColor,
-						label: __(
-							"Background Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundType={{
-						value: backgroundType,
-						label: __(
-							"Background Type",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					backgroundOpacity={{
-						value: backgroundOpacity,
-						label: __(
-							"Opacity",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					{...props.parentProps}
-				/> */}
 				<Background
 					setAttributes={setAttributes}
 					backgroundImageColor={{

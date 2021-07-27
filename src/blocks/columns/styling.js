@@ -66,6 +66,7 @@ function styling( props ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor
 	} = props.attributes;
 
 	let max_width = '100%';
@@ -141,7 +142,10 @@ function styling( props ) {
 			'border-width' : generateCSSUnit( borderWidth, 'px' ),
 			'border-color' : borderColor,
 			'border-radius' : generateCSSUnit( borderRadius, 'px' ),
-		} 
+		},
+		' .uagb-columns__overlay:hover' : {
+			'border-color' : borderHoverColor,
+		}
 	};
 	
 	switch ( backgroundType ) {
@@ -170,24 +174,20 @@ function styling( props ) {
 			};
 			break;
 		case 'gradient':
-			selectors[ ' > .uagb-columns__overlay' ][ 'background-color' ] =
-				'transparent';
-			selectors[ ' > .uagb-columns__overlay' ].opacity =
-				typeof backgroundOpacity !== 'undefined'
+			selectors[ ' > .uagb-columns__overlay' ] = {
+			'background-color': 'transparent',
+			opacity: typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
-					: '';
+					: '',
+				}
 			if ( gradientValue ) {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = gradientValue;
+				selectors[ ' > .uagb-columns__overlay' ] = { 
+					'background-image' : gradientValue, 
+				};
 			} else if ( 'linear' === gradientType ) {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+				selectors[ ' > .uagb-columns__overlay' ] = { 'background-image' : `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`};
 			} else {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+				selectors[ ' > .uagb-columns__overlay' ] = { 'background-image' : `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`};
 			}
 			break;
 	}
