@@ -4,6 +4,9 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InfoBoxStyle from './inline-styles';
+
+const { withSelect } = wp.data;
+
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )
 );
@@ -25,6 +28,32 @@ const UAGBInfoBox = ( props ) => {
 			'uagb-info-box-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			ctaBtnVertPadding,
+			ctaBtnHrPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+		} = props.attributes;
+
+		if (ctaBtnVertPadding) {
+			if (!paddingBtnTop) {
+				setAttributes({ paddingBtnTop: ctaBtnVertPadding });
+			}
+			if (!paddingBtnBottom) {
+				setAttributes({ paddingBtnBottom: ctaBtnVertPadding });
+			}
+		}
+		if (ctaBtnHrPadding) {
+			if (!paddingBtnRight) {
+				setAttributes({ paddingBtnRight: ctaBtnHrPadding });
+			}
+			if (!paddingBtnLeft) {
+				setAttributes({ paddingBtnLeft: ctaBtnHrPadding });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -47,4 +76,15 @@ const UAGBInfoBox = ( props ) => {
 		</>
 	);
 };
-export default UAGBInfoBox;
+export default withSelect((select, props) => {
+	const { __experimentalGetPreviewDeviceType = null } = select(
+		"core/edit-post"
+	);
+	let deviceType = __experimentalGetPreviewDeviceType
+		? __experimentalGetPreviewDeviceType()
+		: null;
+
+	return {
+		deviceType: deviceType,
+	};
+})(UAGBInfoBox);

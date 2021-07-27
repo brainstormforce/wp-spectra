@@ -52,6 +52,10 @@ const attributes = {
 		type: 'number',
 		default: 40,
 	},
+	iconSizeType:{
+		type: 'String',
+		default : 'px'
+	},
 	iconHover: {
 		type: 'string',
 		default: '',
@@ -101,6 +105,14 @@ const attributes = {
 	prefixLineHeightTablet: {
 		type: 'number',
 	},
+	prefixTextTransform:{
+		type: "string",
+		default: "normal",
+	},
+	prefixTextDecoration:{
+		type: "string",
+		default: "none",
+	},
 	prefixLineHeightMobile: {
 		type: 'number',
 	},
@@ -134,6 +146,22 @@ const attributes = {
 	},
 	headFontSubset: {
 		type: 'string',
+	},
+	headLineTransform:{
+		type:'string',
+		default:'normal'
+	},
+	headLineDecoration:{
+		type:'string',
+		default:'none'
+	},
+	subHeadLineTransform:{
+		type:'string',
+		default:'normal'
+	},
+	subHeadLineDecoration:{
+		type:'string',
+		default:'none'
 	},
 	headLineHeightType: {
 		type: 'string',
@@ -236,6 +264,10 @@ const attributes = {
 		type: 'number',
 		default: 5,
 	},
+	ctaIconSpaceType:{
+		type: 'string',
+		default: 'px',
+	},
 	seperatorPosition: {
 		type: 'string',
 		default: 'after_title',
@@ -260,6 +292,10 @@ const attributes = {
 		type: 'number',
 		default: 2,
 	},
+	thicknessUnit:{
+		type: 'string',
+		default: 'px',
+	},
 	ctaType: {
 		type: 'string',
 		default: 'none',
@@ -275,6 +311,14 @@ const attributes = {
 	ctaLinkColor: {
 		type: 'string',
 		default: '#333',
+	},
+	ctaTextTransform:{
+		type:'string',
+		default:'normal'
+	},
+	ctaTextDecoration:{
+		type:'string',
+		default:'none'
 	},
 	ctaFontSize: {
 		type: 'number',
@@ -401,6 +445,122 @@ const attributes = {
 	showDesc: {
 		type: 'boolean',
 		default: true,
+	},
+	iconMarginTopTablet: {
+		type: 'number'
+	},
+	iconMarginRightTablet: {
+		type: 'number'
+	},
+	iconMarginBottomTablet: {
+		type: 'number'
+	},
+	iconMarginLeftTablet: {
+		type: 'number'
+	},
+	iconMarginTopMobile: {
+		type: 'number'
+	},
+	iconMarginRightMobile: {
+		type: 'number'
+	},
+	iconMarginBottomMobile: {
+		type: 'number'
+	},
+	iconMarginLeftMobile: {
+		type: 'number'
+	},
+	iconMarginUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	iconMobilePaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	iconTabletPaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
+	paddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobilePaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletPaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	paddingBtnTop: {
+		type: "number",
+		default: 10,
+	},
+	paddingBtnBottom: {
+		type: "number",
+		default: 10,
+	},
+	paddingBtnLeft: {
+		type: "number",
+		default: 14,
+	},
+	paddingBtnRight: {
+		type: "number",
+		default: 14,
+	},
+	paddingBtnTopTablet: {
+		type: "number",
+	},
+	paddingBtnRightTablet: {
+		type: "number",
+	},
+	paddingBtnBottomTablet: {
+		type: "number",
+	},
+	paddingBtnLeftTablet: {
+		type: "number",
+	},
+	paddingBtnTopMobile: {
+		type: "number",
+	},
+	paddingBtnRightMobile: {
+		type: "number",
+	},
+	paddingBtnBottomMobile: {
+		type: "number",
+	},
+	paddingBtnLeftMobile: {
+		type: "number",
+	},
+	prefixSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	headSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	seperatorSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	subHeadSpaceUnit:{
+		type: 'string',
+		default:'px'
+	},
+	imageWidthUnit:{
+		type: 'string',
+		default:'px'
+	},
+	iconimgBorderRadiusUnit:{
+		type: 'string',
+		default:'px'
 	},
 };
 
