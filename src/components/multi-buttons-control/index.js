@@ -28,7 +28,6 @@ const MultiButtonsControl = (props) => {
 	const {
 		data,
 		label,
-		onChange,
 		options,
 		showIcons,
 		setAttributes,
@@ -203,8 +202,8 @@ const MultiButtonsControl = (props) => {
 	}
 
 	return (
-		<>
-			<p class="uagb-multi-buttons-control__label">{label}</p>
+		<div className="uagb-components-base-control">
+			<p className="uagb-multi-buttons-control__label">{label}</p>
 			<ButtonGroup
 				className={`uagb-multi-button-button-group`}
 				aria-label={label}
@@ -232,7 +231,7 @@ const MultiButtonsControl = (props) => {
 					</Tooltip>
 				))}
 			</ButtonGroup>
-		</>
+		</div>
 	);
 };
 

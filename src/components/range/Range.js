@@ -81,7 +81,7 @@ const Range = (props) => {
 		},
 	];
 
-	const unitSizes = [
+	let unitSizes = [
 		{
 			name: __("Pixel", "ultimate-addons-for-gutenberg"),
 			unitValue: "px",
@@ -91,6 +91,10 @@ const Range = (props) => {
 			unitValue: "em",
 		},
 	];
+
+	if (props.units) {
+		unitSizes = props.units;
+	}
 
 	const handleOnChange = (value) => {
 		setValue(value);

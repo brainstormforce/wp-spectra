@@ -56,6 +56,10 @@
 			-webkit-border-radius: 0 3px 3px 0;
 			border-radius: 0 3px 3px 0;
 		}
+		.uagb-control__actions .components-tab-panel__tabs {
+			padding-right: 4px;
+			margin-right: 0;
+		}
 	}
 
 	.uagb-control__header,
@@ -136,6 +140,7 @@
 
 	.uagb-control__label {
 		margin-bottom: 0;
+		width: 50%;
 	}
 	.uagb-control__header {
 		justify-content: space-between;

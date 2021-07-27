@@ -464,42 +464,48 @@ class UAGBInlineNoticeEdit extends Component {
 								)}
 								boxShadowColor={{
 									value: boxShadowColor,
-									label: __(
+									label: "boxShadowColor",
+									title: __(
 										"Color",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
 								boxShadowHOffset={{
 									value: boxShadowHOffset,
-									label: __(
+									label: "boxShadowHOffset",
+									title: __(
 										"Horizontal",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
 								boxShadowVOffset={{
 									value: boxShadowVOffset,
-									label: __(
+									label: "boxShadowVOffset",
+									title: __(
 										"Vertical",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
 								boxShadowBlur={{
 									value: boxShadowBlur,
-									label: __(
+									label: "boxShadowBlur",
+									title: __(
 										"Blur",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
 								boxShadowSpread={{
 									value: boxShadowSpread,
-									label: __(
+									label: "boxShadowSpread",
+									title: __(
 										"Spread",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
 								boxShadowPosition={{
 									value: boxShadowPosition,
-									label: __(
+									label: "boxShadowPosition",
+									title: __(
 										"Position",
 										"ultimate-addons-for-gutenberg"
 									),
