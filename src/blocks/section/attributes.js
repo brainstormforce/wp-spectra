@@ -143,6 +143,10 @@ const attributes = {
 		type: 'number',
 		default: 900,
 	},
+	widthUnit:{
+		type: 'string',
+		default: '%',
+	},
 	innerWidth: {
 		type: 'number',
 		default: 1140,
@@ -240,6 +244,9 @@ const attributes = {
 	borderColor: {
 		type: 'string',
 	},
+	borderHoverColor: {
+		type: 'string',
+	},
 	overlayType: {
 		type: 'string',
 		default: 'color',
@@ -294,6 +301,10 @@ const attributes = {
 	gradientValue: {
 		type: 'string',
 		default: '',
+	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
 	},
 };
 
