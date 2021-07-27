@@ -161,6 +161,29 @@ const Settings = ( props ) => {
 							value: widthUnit,
 							label: "widthUnit",
 						}}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __(
+									"Em",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "em",
+							},
+							{
+								name: __(
+									"%",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "%",
+							},
+						]}
 					/>
 				) }
 				{ contentWidth !== 'boxed' && (
@@ -535,7 +558,7 @@ const Settings = ( props ) => {
 						setAttributes={setAttributes}
 						borderStyle={{
 							value: borderStyle,
-							label: borderStyle,
+							label: 'borderStyle',
 							title: __(
 								"Style",
 								"ultimate-addons-for-gutenberg"
@@ -543,7 +566,7 @@ const Settings = ( props ) => {
 						}}
 						borderWidth={{
 							value: borderWidth,
-							label: borderWidth,
+							label: 'borderWidth',
 							title: __(
 								"Width",
 								"ultimate-addons-for-gutenberg"
@@ -551,7 +574,7 @@ const Settings = ( props ) => {
 						}}
 						borderRadius={{
 							value: borderRadius,
-							label: borderRadius,
+							label: 'borderRadius',
 							title: __(
 								"Radius",
 								"ultimate-addons-for-gutenberg"
@@ -559,7 +582,7 @@ const Settings = ( props ) => {
 						}}
 						borderColor={{
 							value: borderColor,
-							label: borderColor,
+							label: 'borderColor',
 							title: __(
 								"Color",
 								"ultimate-addons-for-gutenberg"
@@ -567,7 +590,7 @@ const Settings = ( props ) => {
 						}}
 						borderHoverColor={{
 							value: borderHoverColor,
-							label: borderHoverColor,
+							label: 'borderHoverColor',
 							title: __(
 								"Hover Color",
 								"ultimate-addons-for-gutenberg"
@@ -584,7 +607,7 @@ const Settings = ( props ) => {
 					)}
 					boxShadowColor={{
 						value: boxShadowColor,
-						label: boxShadowColor,
+						label: 'boxShadowColor',
 						title: __(
 							"Color",
 							"ultimate-addons-for-gutenberg"
@@ -592,7 +615,7 @@ const Settings = ( props ) => {
 					}}
 					boxShadowHOffset={{
 						value: boxShadowHOffset,
-						label: boxShadowHOffset,
+						label: 'boxShadowHOffset',
 						title: __(
 							"Horizontal",
 							"ultimate-addons-for-gutenberg"
@@ -600,7 +623,7 @@ const Settings = ( props ) => {
 					}}
 					boxShadowVOffset={{
 						value: boxShadowVOffset,
-						label: boxShadowVOffset,
+						label: 'boxShadowVOffset',
 						title: __(
 							"Vertical",
 							"ultimate-addons-for-gutenberg"
@@ -608,7 +631,7 @@ const Settings = ( props ) => {
 					}}
 					boxShadowBlur={{
 						value: boxShadowBlur,
-						label: boxShadowBlur,
+						label: 'boxShadowBlur',
 						title: __(
 							"Blur",
 							"ultimate-addons-for-gutenberg"
@@ -616,7 +639,7 @@ const Settings = ( props ) => {
 					}}
 					boxShadowSpread={{
 						value: boxShadowSpread,
-						label: boxShadowSpread,
+						label: 'boxShadowSpread',
 						title: __(
 							"Spread",
 							"ultimate-addons-for-gutenberg"
@@ -624,7 +647,7 @@ const Settings = ( props ) => {
 					}}
 					boxShadowPosition={{
 						value: boxShadowPosition,
-						label: boxShadowPosition,
+						label: 'boxShadowPosition',
 						title: __(
 							"Position",
 							"ultimate-addons-for-gutenberg"
@@ -637,7 +660,7 @@ const Settings = ( props ) => {
 	};
 
 	const generalSetting = () => {
-		return  <InspectorTabs>
+		return  <InspectorTabs tabs={['general','advance']}>
 					<InspectorTab key={"general"}>
 						{ getLayoutPanelBody() }
 						{ getSpacingPanelBody() }
