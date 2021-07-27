@@ -11,6 +11,8 @@ import Background from "../../components/background";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 
 import {
 	BlockControls,
@@ -1225,12 +1227,17 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControlSettings() }
 			<InspectorControls>
+			<InspectorTabs tabs={["general", "advance"]}>
+				<InspectorTab key={"general"}>
 				{ layoutSettings() }
 				{ spacingSettings() }
 				{ backgroundSettings() }
 				{ shapeDividersSettings() }
 				{ borderSettings() }
-			</InspectorControls>
+				</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 		</Suspense>
 	);
 };

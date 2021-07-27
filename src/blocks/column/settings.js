@@ -8,6 +8,8 @@ import Background from "../../components/background";
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import { __ } from '@wordpress/i18n';
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 
 import {
 	InspectorControls,
@@ -461,10 +463,15 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
+			<InspectorTabs tabs={["general", "advance"]}>
+				<InspectorTab key={"general"}>
 				{ layoutSettings() }
 				{ spacingSettings() }
 				{ backgroundSettings() }
 				{ borderSettings() }
+				</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>
 	);
