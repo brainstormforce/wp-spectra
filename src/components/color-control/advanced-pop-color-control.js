@@ -3,7 +3,6 @@
  *
  */
 import cIcons from "./uagb-color-icons";
-import UAGBColorPicker from "./uagb-color-picker";
 import hexToRGBA from "./hex-to-rgba";
 import { __ } from "@wordpress/i18n";
 import {
@@ -12,9 +11,10 @@ import {
 	ColorIndicator,
 	Tooltip,
 	Dashicon,
+	ColorPicker,
+	ColorPalette,
 } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";
-import { ColorPalette } from "@wordpress/block-editor";
 import { useState, useEffect } from "@wordpress/element";
 import styles from "./editor.lazy.scss";
 import React, { useLayoutEffect } from "react";
@@ -245,39 +245,16 @@ const AdvancedPopColorControl = (props) => {
 							className="uagb-popover-color new-uagb-advanced-colors-pop"
 							onClose={toggleClose}
 						>
-							{value.classSat === "first" &&
-								!props.disableCustomColors && (
-									<UAGBColorPicker
-										color={colorVal}
-										onChange={(color) =>
-											onChangeState(color, "")
-										}
-										onChangeComplete={(color) => {
-											onChangeComplete(color, "");
-											if (props.onColorClassChange) {
-												props.onColorClassChange("");
-											}
-										}}
-									/>
-								)}
-							{value.classSat !== "first" &&
-								!props.disableCustomColors && (
-									<UAGBColorPicker
-										color={colorVal}
-										onChange={(color) =>
-											onChangeState(color, "")
-										}
-										onChangeComplete={(color) => {
-											onChangeComplete(color, "");
-											if (props.onColorClassChange) {
-												props.onColorClassChange("");
-											}
-										}}
-									/>
-								)}
+							<ColorPicker
+								color={colorVal}
+								onChangeComplete={(color) =>
+									onChangeComplete(color, "")
+								}
+							/>
 							{props.colors && (
 								<ColorPalette
 									color={colorVal}
+									colors={props.colors}
 									onChange={(color) =>
 										onChangeComplete(color, true)
 									}
