@@ -72,13 +72,6 @@ const Settings = ( props ) => {
 		backgroundVideoOpacity,
 		backgroundImageColor,
 		overlayType,
-		gradientOverlayColor1,
-		gradientOverlayColor2,
-		gradientOverlayType,
-		gradientOverlayLocation1,
-		gradientOverlayLocation2,
-		gradientOverlayAngle,
-		gradientOverlayPosition,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -97,10 +90,6 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 		spacingLink,
-		gradientOverlayLocation1Unit,
-		backgroundVideoOpacityUnit,
-		gradientOverlayAngleUnit,
-		gradientOverlayLocation2Unit,
 	} = attributes;
 
 	let blockControls = [ 'left', 'center', 'right' ];
@@ -502,239 +491,32 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					backgroundVideoType={{
+						value: true,
+					}}
+					backgroundVideo={{
+						value: backgroundVideo,
+						label: __(
+							"Background Video",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundVideoColor={{
+						value: backgroundVideoColor,
+						label: __(
+							"Video Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					backgroundVideoOpacity={{
+						value: backgroundVideoOpacity,
+						label: __(
+							"Video Opacity",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 					{...props}
 				/>	
-				{ 'video' == backgroundType && backgroundVideo && (
-					<>
-						<AdvancedPopColorControl
-							label={__(
-								'Video Overlay Color',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={backgroundVideoColor ? backgroundVideoColor : ""}
-							colorDefault={""}
-							onColorChange={(value) =>
-								setAttributes({ backgroundVideoColor: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
-							}
-						/>
-					</>
-				) }
-				{ 'video' == backgroundType && backgroundVideo && (
-					<Range
-						label={__(
-							'Opacity',
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={backgroundVideoOpacity}
-						onChange={(value) =>
-							setAttributes({ backgroundVideoOpacity: value })
-						}
-						min={0}
-						max={100}
-						unit={{
-							value: backgroundVideoOpacityUnit,
-							label: "backgroundVideoOpacityUnit",
-						}}
-					/>
-				) }	
-				{ 'gradient' == overlayType && (
-					<>
-						<AdvancedPopColorControl
-							label={__(
-								'Color 1',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={gradientOverlayColor1 ? gradientOverlayColor1 : ""}
-							colorDefault={""}
-							onColorChange={(value) =>
-								setAttributes({ gradientOverlayColor1: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
-							}
-						/>
-						<Range
-								label={__(
-									'Location 1',
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={gradientOverlayLocation1}
-								onChange={(value) =>
-									setAttributes({ gradientOverlayLocation1: value })
-								}
-								min={0}
-								max={100}
-								unit={{
-									value: gradientOverlayLocation1Unit,
-									label: "gradientOverlayLocation1Unit",
-								}}
-							/>
-						<AdvancedPopColorControl
-							label={__(
-								'Color 2',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={gradientOverlayColor2 ? gradientOverlayColor2 : ""}
-							colorDefault={""}
-							onColorChange={(value) =>
-								setAttributes({ gradientOverlayColor2: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
-							}
-						/>
-						<Range
-								label={__(
-									'Location 2',
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={gradientOverlayLocation2}
-								onChange={(value) =>
-									setAttributes({ gradientOverlayLocation2: value })
-								}
-								min={0}
-								max={100}
-								unit={{
-									value: gradientOverlayLocation2Unit,
-									label: "gradientOverlayLocation2Unit",
-								}}
-							/>
-						<SelectControl
-							label={ __(
-								'Type',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ gradientOverlayType }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientOverlayType: value,
-								} )
-							}
-							options={ [
-								{
-									value: 'linear',
-									label: __(
-										'Linear',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'radial',
-									label: __(
-										'Radial',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-						{ 'linear' == gradientOverlayType && (
-							<Range
-								label={__(
-									'Angle',
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={gradientOverlayAngle}
-								onChange={(value) =>
-									setAttributes({ gradientOverlayAngle: value })
-								}
-								min={0}
-								max={360}
-								unit={{
-									value: gradientOverlayAngleUnit,
-									label: "gradientOverlayAngleUnit",
-								}}
-							/>
-						) }
-						{ 'radial' == gradientOverlayType && (
-							<SelectControl
-								label={ __(
-									'Type',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={
-									gradientOverlayPosition
-								}
-								onChange={ ( value ) =>
-									setAttributes( {
-										gradientOverlayPosition: value,
-									} )
-								}
-								options={ [
-									{
-										value: 'center center',
-										label: __(
-											'Center Center',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'center left',
-										label: __(
-											'Center Left',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'center right',
-										label: __(
-											'Center Right',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'top center',
-										label: __(
-											'Top Center',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'top left',
-										label: __(
-											'Top Left',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'top right',
-										label: __(
-											'Top Right',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'bottom center',
-										label: __(
-											'Bottom Center',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'bottom left',
-										label: __(
-											'Bottom Left',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'bottom right',
-										label: __(
-											'Bottom Right',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-								] }
-							/>
-						) }
-					</>
-				) }
 			</PanelBody>
 		);
 	};

@@ -147,22 +147,6 @@ const attributes = {
 		type: 'string',
 		default: '%',
 	},
-	gradientOverlayLocation1Unit:{
-		type: 'string',
-		default: '%',
-	},
-	backgroundVideoOpacityUnit:{
-		type: 'string',
-		default: '%',
-	},
-	gradientOverlayAngleUnit:{
-		type: 'string',
-		default: '%',
-	},
-	gradientOverlayLocation2Unit:{
-		type: 'string',
-		default: '%',
-	},
 	innerWidth: {
 		type: 'number',
 		default: 1140,
