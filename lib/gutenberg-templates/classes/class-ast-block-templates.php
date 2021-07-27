@@ -190,8 +190,6 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function get_content( $content = '' ) {
 
-			$content = stripslashes( $content );
-
 			// Extract all links.
 			preg_match_all( '#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $content, $match );
 
@@ -366,6 +364,11 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		public function template_assets() {
+
+			if ( ! is_admin() ) {
+				return;
+			}
+
 			wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
 			wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
 
@@ -380,7 +383,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
 						'ajax_url'                => admin_url( 'admin-ajax.php' ),
 						'uri'                     => AST_BLOCK_TEMPLATES_URI,
-						'white_label_name'        => '',
+						'white_label_name'        => $this->get_white_label(),
 						'allBlocks'               => $this->get_all_blocks(),
 						'allSites'                => $this->get_all_sites(),
 						'allCategories'           => get_site_option( 'ast-block-templates-categories', array() ),
@@ -398,6 +401,27 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				)
 			);
 
+		}
+
+		/**
+		 * Get white label name
+		 *
+		 * @since 1.0.7
+		 *
+		 * @return string
+		 */
+		public function get_white_label() {
+			if ( ! is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
+				return '';
+			}
+
+			$name = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'astra-sites', 'name' );
+
+			if ( ! empty( $name ) ) {
+				return $name;
+			}
+
+			return '';
 		}
 
 		/**

@@ -139,6 +139,10 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function process_sync() {
 
+			if ( apply_filters( 'ast_block_templates_disable_auto_sync', false ) ) {
+				return;
+			}
+
 			// Check if last sync and this sync has a gap of 24 hours.
 			$last_check_time = get_site_option( 'ast-block-templates-last-export-checksums-time', 0 );
 			if ( ( time() - $last_check_time ) < 86400 ) {
