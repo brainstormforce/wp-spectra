@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.24.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.24.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-19T12:29:09+00:00\n"
+"POT-Creation-Date: 2021-07-26T12:22:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -973,12 +973,12 @@ msgstr ""
 msgid "Ultimate Addons for Gutenberg <p>Rollback to Previous Version</p>"
 msgstr ""
 
-#: lib/ast-block-templates/classes/class-ast-block-templates.php:390
-msgid "Starter Templates"
-msgstr ""
-
 #: lib/astra-notices/class-astra-notices.php:119
 msgid "WordPress Nonce not validated."
+msgstr ""
+
+#: lib/gutenberg-templates/classes/class-ast-block-templates.php:393
+msgid "Starter Templates"
 msgstr ""
 
 #. translators: %s: PHP version
