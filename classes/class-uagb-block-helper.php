@@ -895,7 +895,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-column-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-column.uagb-block-' : '#uagb-column-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -923,7 +923,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' .uagb-separator-wrap' => array(
+				'.wp-block-uagb-advanced-heading .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
 				),
 				' .uagb-desc-text'      => array(
@@ -936,7 +936,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 
 			if ( 'none' !== $seperatorStyle ) {
-				$selectors[' .uagb-separator'] = array(
+				$selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['separatorHeight'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
@@ -2369,7 +2369,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-icon-list-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-icon-list.uagb-block-' : '#uagb-icon-list-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
