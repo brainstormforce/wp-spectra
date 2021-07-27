@@ -26,8 +26,12 @@ const Background = (props) => {
 		backgroundPosition,
 		backgroundImage,
 		backgroundColor,
+		backgroundVideoType,
 		backgroundType,
 		backgroundOpacity,
+		backgroundVideo,
+		backgroundVideoOpacity,
+		backgroundVideoColor,
 	} = props;
 
 	const onRemoveImage = () => {
@@ -51,6 +55,52 @@ const Background = (props) => {
 		setAttributes({ backgroundImage: media });
 	};
 
+	const onRemoveVideo = () => {
+		setAttributes( { backgroundVideo: null } );
+	};
+
+	const onSelectVideo = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { backgroundVideo: null } );
+			return;
+		}
+		if ( ! media.type || 'video' != media.type ) {
+			return;
+		}
+		setAttributes( { backgroundVideo: media } );
+	};
+
+	let bgOptions = [];
+
+		bgOptions=[
+			{
+				value: "none",
+				label: __("None", "ultimate-addons-for-gutenberg"),
+			},
+			{
+				value: "color",
+				label: __("Color", "ultimate-addons-for-gutenberg"),
+			},
+			{
+				value: "gradient",
+				label: __(
+					"Gradient",
+					"ultimate-addons-for-gutenberg"
+				),
+			},
+			{
+				value: "image",
+				label: __("Image", "ultimate-addons-for-gutenberg"),
+			}
+		];
+
+		if ( backgroundVideoType.value ){
+			bgOptions.push({
+					value: "video",
+					label: __("Video", "ultimate-addons-for-gutenberg")
+			});
+		}
+
 	let advancedControls = (
 		<>
 			<div className="uag-background-wrap">
@@ -59,27 +109,7 @@ const Background = (props) => {
 					onChange={(value) =>
 						setAttributes({ backgroundType: value })
 					}
-					options={[
-						{
-							value: "none",
-							label: __("None", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "color",
-							label: __("Color", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "gradient",
-							label: __(
-								"Gradient",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "image",
-							label: __("Image", "ultimate-addons-for-gutenberg"),
-						},
-					]}
+					options={ bgOptions }
 					label={__(
 						"Background Type",
 						"ultimate-addons-for-gutenberg"
@@ -409,6 +439,86 @@ const Background = (props) => {
 					displayUnit={false}
 				/>
 			)}
+			{"video" === backgroundType.value && backgroundVideoType.value && (
+			<BaseControl
+						className="editor-bg-image-control"
+						label={__(
+							"Background Video",
+							"ultimate-addons-for-gutenberg"
+						)}
+					>
+					<div className="uagb-bg-image">
+						<MediaUpload
+							title={__(
+								"Select Background Video",
+								"ultimate-addons-for-gutenberg"
+							)}
+							onSelect={onSelectVideo}
+							allowedTypes={["video"]}
+							value={backgroundVideo.value}
+							render={({ open }) => (
+								<Button isSecondary onClick={open}>
+									{!backgroundVideo.value
+										? __(
+												"Select Background video",
+												"ultimate-addons-for-gutenberg"
+											)
+										: __(
+												"Replace video",
+												"ultimate-addons-for-gutenberg"
+											)}
+								</Button>
+							)}
+						/>
+						{backgroundVideo.value && (
+							<Button
+								className="uagb-rm-btn"
+								onClick={onRemoveVideo}
+								isLink
+								isDestructive
+							>
+								{__(
+									"Remove Video",
+									"ultimate-addons-for-gutenberg"
+								)}
+							</Button>
+						)}
+					</div>
+				</BaseControl>
+				
+			)}
+			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
+				<>
+					<AdvancedPopColorControl
+						label={__(
+							"Video Overlay Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={backgroundVideoColor.value}
+						colorDefault={""}
+						onColorChange={(value) =>
+							setAttributes({
+								backgroundVideoColor: value,
+							})
+						}
+						onColorClassChange={(value) =>
+							setAttributes({ colorClass: value })
+						}
+					/>
+				</>
+			)}
+			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
+				<Range
+					label={__("Opacity", "ultimate-addons-for-gutenberg")}
+					value={backgroundVideoOpacity.value}
+					onChange={(val) =>
+						setAttributes({ backgroundVideoOpacity: parseInt(val) })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
+				/>
+			) }
 		</>
 	);
 
