@@ -10,6 +10,8 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 
 import {
 	BlockControls,
@@ -1087,10 +1089,15 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>
+			<InspectorTabs tabs={["general", "advance"]}>
+				<InspectorTab key={"general"}>
 				{ getGeneralPanelBody() }
 				{ getScrollPanelBody() }
 				{ getContentPanelBody() }
 				{ getStylePanelBody() }
+				</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
 			</InspectorControls>
 			{ loadGFonts }
 			{ headingloadGFonts }
