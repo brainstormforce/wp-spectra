@@ -2,7 +2,7 @@
 	display: flex;
 	width: 100%;
 	margin-left: -6px;
-	.components-base-control.components-range-control.css-wdf2ti-Wrapper.e1puf3u0 {
+	.components-base-control.components-range-control {
 		-webkit-tap-highlight-color: transparent;
 		box-sizing: border-box;
 		align-items: flex-start;
@@ -13,9 +13,16 @@
 		width: 120%;
 		margin-bottom: 0;
 	}
-	.components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+	.components-input-control__container {
 		flex: 0 0 0%;
-		width: 50%;
+		width: 100%;
+	}
+	.components-number-control {
+		width: 35%;
+		.components-input-control__input {
+			padding: 0 4px !important;
+			text-align: center;
+		}
 	}
 }
 

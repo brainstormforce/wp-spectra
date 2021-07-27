@@ -156,7 +156,6 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs
 	.components-range-control
 	.components-base-control__label {
-	width: auto;
 	display: block;
 	width: auto;
 }
@@ -258,6 +257,10 @@ hr.uagb-editor__separator {
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
 .uagb-size-type-field
 	button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
+	box-shadow: none;
+	background: transparent;
+	border: none;
+	outline: none;
 	color: #000;
 	text-decoration: underline;
 	background: transparent;
@@ -276,6 +279,7 @@ hr.uagb-editor__separator {
 .uagb-size-type-field
 	button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
 	color: #000;
+	box-shadow: none;
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -455,8 +459,10 @@ hr.uagb-editor__separator {
 
 .rfipbtn,
 .rfipdropdown {
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	vertical-align: baseline;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
 	font-size: 14px;
 	line-height: 1.71429;
 	vertical-align: baseline;
@@ -3660,4 +3666,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .uagb-components-base-control {
 	margin-bottom: 18px;
+
+.uag-typography-range-options
+	+ .components-base-control
+	.components-flex.components-select-control {
+	position: unset;
 }

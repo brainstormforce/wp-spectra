@@ -366,6 +366,16 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	backgroundVideo: {
+		type: 'object',
+	},
+	backgroundVideoOpacity: {
+		type: 'number',
+		default: 50,
+	},
+	backgroundVideoColor: {
+		type: 'string',
+	},
 };
 
 export default attributes;

@@ -232,6 +232,9 @@ class UAGBInlineNoticeEdit extends Component {
 				boxShadowPosition,
 				widthType,
 				spacingLink,
+				backgroundVideo,
+				backgroundVideoOpacity,
+				backgroundVideoColor,
 			},
 			setAttributes,
 			className,
@@ -988,6 +991,30 @@ class UAGBInlineNoticeEdit extends Component {
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
+								backgroundVideoType={{
+									value: true,
+								}}
+								backgroundVideo={{
+									value: backgroundVideo,
+									label: __(
+										"Background Video",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								backgroundVideoColor={{
+									value: backgroundVideoColor,
+									label: __(
+										"Video Color",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								backgroundVideoOpacity={{
+									value: backgroundVideoOpacity,
+									label: __(
+										"Video Opacity",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
 								{...this.props}
 							/>
 						</PanelBody>
@@ -1000,12 +1027,8 @@ class UAGBInlineNoticeEdit extends Component {
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={titleColor ? titleColor : ""}
-								colorDefault={""}
 								onColorChange={(value) =>
 									setAttributes({ titleColor: value })
-								}
-								onColorClassChange={(value) =>
-									setAttributes({ colorClass: value })
 								}
 							/>
 							<AdvancedPopColorControl
@@ -1014,12 +1037,8 @@ class UAGBInlineNoticeEdit extends Component {
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={noticeColor ? noticeColor : ""}
-								colorDefault={""}
 								onColorChange={(value) =>
 									setAttributes({ noticeColor: value })
-								}
-								onColorClassChange={(value) =>
-									setAttributes({ colorClass: value })
 								}
 							/>
 							<AdvancedPopColorControl
@@ -1028,12 +1047,8 @@ class UAGBInlineNoticeEdit extends Component {
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={textColor ? textColor : ""}
-								colorDefault={""}
 								onColorChange={(value) =>
 									setAttributes({ textColor: value })
-								}
-								onColorClassChange={(value) =>
-									setAttributes({ colorClass: value })
 								}
 							/>
 							<AdvancedPopColorControl
@@ -1044,12 +1059,8 @@ class UAGBInlineNoticeEdit extends Component {
 								colorValue={
 									contentBgColor ? contentBgColor : ""
 								}
-								colorDefault={""}
 								onColorChange={(value) =>
 									setAttributes({ contentBgColor: value })
-								}
-								onColorClassChange={(value) =>
-									setAttributes({ colorClass: value })
 								}
 							/>
 							{noticeDismiss && (
@@ -1063,14 +1074,10 @@ class UAGBInlineNoticeEdit extends Component {
 											? noticeDismissColor
 											: ""
 									}
-									colorDefault={""}
 									onColorChange={(value) =>
 										setAttributes({
 											noticeDismissColor: value,
 										})
-									}
-									onColorClassChange={(value) =>
-										setAttributes({ colorClass: value })
 									}
 								/>
 							)}
