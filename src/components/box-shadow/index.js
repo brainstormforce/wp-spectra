@@ -76,7 +76,6 @@ const BoxShadowControl = (props) => {
 				<AdvancedPopColorControl
 					label={boxShadowColor.title}
 					colorValue={boxShadowColor.value}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ [boxShadowColor.label]: value })
 					}

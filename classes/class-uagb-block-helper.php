@@ -448,7 +448,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$section_width = '100%';
 
 			if ( isset( $attr['contentWidth'] ) && ( 'boxed' === $attr['contentWidth'] && isset( $attr['width'] ) ) ) {
-				$section_width = UAGB_Helper::get_css_value( $attr['width'], 'px' );
+				$section_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthUnit'] );
 			}
 
 			if ( 'wide' !== $attr['align'] && 'full' !== $attr['align'] ) {
@@ -489,6 +489,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				'.wp-block-uagb-section'       => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+				),
+				'.uagb-section__wrap:hover'    => array(
+					'border-color' => $attr['borderHoverColor'],
 				),
 			);
 
@@ -535,8 +538,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					}
 				}
 			}
-
-			$selectors[' > .uagb-section__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
 
 			$m_selectors = array(
 				'.uagb-section__wrap' => array(
