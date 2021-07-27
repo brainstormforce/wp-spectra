@@ -184,6 +184,14 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	marginLink: {
+		type: "boolean",
+		default: false,
+	},
+	paddingLink: {
+		type: "boolean",
+		default: false,
+	},
 	headingBottom: {
 		type: 'number',
 	},
@@ -236,6 +244,10 @@ const attributes = {
 		type: 'number',
 	},
 	borderColor: {
+		type: 'string',
+		default: '#333',
+	},
+	borderHoverColor: {
 		type: 'string',
 		default: '#333',
 	},

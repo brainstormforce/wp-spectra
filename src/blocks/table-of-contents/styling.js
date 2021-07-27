@@ -83,6 +83,7 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
+		borderHoverColor
 	} = props.attributes;
 
 	let selectors = {};
@@ -146,6 +147,9 @@ function styling( props ) {
 				paddingTypeDesktop
 			),
 			background: backgroundColor,
+		},
+		' .uagb-toc__wrap:hover': {
+			'border-color': borderHoverColor,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
 			'margin-left': generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
@@ -431,7 +435,7 @@ function styling( props ) {
 
 	if ( '' != scrollToTopBgColor ) {
 		styling_css +=
-			'.uagb-toc__scroll-top.uagb-toc__show-scroll { background: ' +
+			'.block-editor-page .uagb-toc__scroll-top.uagb-toc__show-scroll.uagb-toc__show-scroll { background: ' +
 			scrollToTopBgColor +
 			'; }';
 	}
