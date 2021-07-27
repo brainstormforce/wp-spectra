@@ -44,10 +44,11 @@ const BoxShadowControl = (props) => {
 		advancedControls = (
 			<div className="uagb-box-shadow-advanced">
 				<MultiButtonsControl
-					label={__("Position", "ultimate-addons-for-gutenberg")}
+					setAttributes={setAttributes}
+					label={boxShadowPosition.title}
 					data={{
 						value: boxShadowPosition.value,
-						label: "boxShadowPosition",
+						label: boxShadowPosition.label,
 					}}
 					options={[
 						{
@@ -70,28 +71,22 @@ const BoxShadowControl = (props) => {
 							),
 						},
 					]}
-					onChange={(value) =>
-						setAttributes({ boxShadowPosition: value })
-					}
 					showIcons={false}
 				/>
 				<AdvancedPopColorControl
-					label={__("Shadow Color", "ultimate-addons-for-gutenberg")}
+					label={boxShadowColor.title}
 					colorValue={boxShadowColor.value}
 					colorDefault={""}
 					onColorChange={(value) =>
-						setAttributes({ boxShadowColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
+						setAttributes({ [boxShadowColor.label]: value })
 					}
 				/>
 				<div className="uagb-horizontal-wrap">
 					<Range
-						label={boxShadowHOffset.label}
+						label={boxShadowHOffset.title}
 						value={boxShadowHOffset.value}
 						onChange={(value) =>
-							setAttributes({ boxShadowHOffset: value })
+							setAttributes({ [boxShadowHOffset.label]: value })
 						}
 						min={0}
 						max={100}
@@ -100,10 +95,10 @@ const BoxShadowControl = (props) => {
 				</div>
 				<div className="uagb-vertical-wrap">
 					<Range
-						label={boxShadowVOffset.label}
+						label={boxShadowVOffset.title}
 						value={boxShadowVOffset.value}
 						onChange={(value) =>
-							setAttributes({ boxShadowVOffset: value })
+							setAttributes({ [boxShadowVOffset.label]: value })
 						}
 						min={0}
 						max={100}
@@ -112,10 +107,10 @@ const BoxShadowControl = (props) => {
 				</div>
 				<div className="uagb-blur-wrap">
 					<Range
-						label={boxShadowBlur.label}
+						label={boxShadowBlur.title}
 						value={boxShadowBlur.value}
 						onChange={(value) =>
-							setAttributes({ boxShadowBlur: value })
+							setAttributes({ [boxShadowBlur.label]: value })
 						}
 						min={0}
 						max={100}
@@ -124,10 +119,10 @@ const BoxShadowControl = (props) => {
 				</div>
 				<div className="uagb-spread-wrap">
 					<Range
-						label={boxShadowSpread.label}
+						label={boxShadowSpread.title}
 						value={boxShadowSpread.value}
 						onChange={(value) =>
-							setAttributes({ boxShadowSpread: value })
+							setAttributes({ [boxShadowSpread.label]: value })
 						}
 						min={0}
 						max={100}
