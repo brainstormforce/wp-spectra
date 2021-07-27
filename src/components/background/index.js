@@ -56,50 +56,47 @@ const Background = (props) => {
 	};
 
 	const onRemoveVideo = () => {
-		setAttributes( { backgroundVideo: null } );
+		setAttributes({ backgroundVideo: null });
 	};
 
-	const onSelectVideo = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundVideo: null } );
+	const onSelectVideo = (media) => {
+		if (!media || !media.url) {
+			setAttributes({ backgroundVideo: null });
 			return;
 		}
-		if ( ! media.type || 'video' != media.type ) {
+		if (!media.type || "video" != media.type) {
 			return;
 		}
-		setAttributes( { backgroundVideo: media } );
+		setAttributes({ backgroundVideo: media });
 	};
 
 	let bgOptions = [];
 
-		bgOptions=[
-			{
-				value: "none",
-				label: __("None", "ultimate-addons-for-gutenberg"),
-			},
-			{
-				value: "color",
-				label: __("Color", "ultimate-addons-for-gutenberg"),
-			},
-			{
-				value: "gradient",
-				label: __(
-					"Gradient",
-					"ultimate-addons-for-gutenberg"
-				),
-			},
-			{
-				value: "image",
-				label: __("Image", "ultimate-addons-for-gutenberg"),
-			}
-		];
+	bgOptions = [
+		{
+			value: "none",
+			label: __("None", "ultimate-addons-for-gutenberg"),
+		},
+		{
+			value: "color",
+			label: __("Color", "ultimate-addons-for-gutenberg"),
+		},
+		{
+			value: "gradient",
+			label: __("Gradient", "ultimate-addons-for-gutenberg"),
+		},
+		{
+			value: "image",
+			label: __("Image", "ultimate-addons-for-gutenberg"),
+		},
+	];
 
-		if ( backgroundVideoType.value ){
-			bgOptions.push({
-					value: "video",
-					label: __("Video", "ultimate-addons-for-gutenberg")
-			});
-		}
+	if (backgroundVideoType.value) {
+		bgOptions.push({
+			value: "video",
+			label: __("Video", "ultimate-addons-for-gutenberg"),
+		});
+	}
 
 	let advancedControls = (
 		<>
@@ -109,7 +106,7 @@ const Background = (props) => {
 					onChange={(value) =>
 						setAttributes({ backgroundType: value })
 					}
-					options={ bgOptions }
+					options={bgOptions}
 					label={__(
 						"Background Type",
 						"ultimate-addons-for-gutenberg"
@@ -125,12 +122,8 @@ const Background = (props) => {
 					colorValue={
 						backgroundColor.value ? backgroundColor.value : ""
 					}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ backgroundColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 			)}
@@ -393,14 +386,10 @@ const Background = (props) => {
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={backgroundImageColor.value}
-										colorDefault={""}
 										onColorChange={(value) =>
 											setAttributes({
 												backgroundImageColor: value,
 											})
-										}
-										onColorClassChange={(value) =>
-											setAttributes({ colorClass: value })
 										}
 									/>
 								</>
@@ -440,13 +429,13 @@ const Background = (props) => {
 				/>
 			)}
 			{"video" === backgroundType.value && backgroundVideoType.value && (
-			<BaseControl
-						className="editor-bg-image-control"
-						label={__(
-							"Background Video",
-							"ultimate-addons-for-gutenberg"
-						)}
-					>
+				<BaseControl
+					className="editor-bg-image-control"
+					label={__(
+						"Background Video",
+						"ultimate-addons-for-gutenberg"
+					)}
+				>
 					<div className="uagb-bg-image">
 						<MediaUpload
 							title={__(
@@ -462,11 +451,11 @@ const Background = (props) => {
 										? __(
 												"Select Background video",
 												"ultimate-addons-for-gutenberg"
-											)
+										  )
 										: __(
 												"Replace video",
 												"ultimate-addons-for-gutenberg"
-											)}
+										  )}
 								</Button>
 							)}
 						/>
@@ -485,40 +474,41 @@ const Background = (props) => {
 						)}
 					</div>
 				</BaseControl>
-				
 			)}
-			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
-				<>
-					<AdvancedPopColorControl
-						label={__(
-							"Video Overlay Color",
-							"ultimate-addons-for-gutenberg"
-						)}
-						colorValue={backgroundVideoColor.value}
-						colorDefault={""}
-						onColorChange={(value) =>
+			{"video" == backgroundType.value &&
+				backgroundVideo.value &&
+				backgroundVideoType.value && (
+					<>
+						<AdvancedPopColorControl
+							label={__(
+								"Video Overlay Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={backgroundVideoColor.value}
+							onColorChange={(value) =>
+								setAttributes({
+									backgroundVideoColor: value,
+								})
+							}
+						/>
+					</>
+				)}
+			{"video" == backgroundType.value &&
+				backgroundVideo.value &&
+				backgroundVideoType.value && (
+					<Range
+						label={__("Opacity", "ultimate-addons-for-gutenberg")}
+						value={backgroundVideoOpacity.value}
+						onChange={(val) =>
 							setAttributes({
-								backgroundVideoColor: value,
+								backgroundVideoOpacity: parseInt(val),
 							})
 						}
-						onColorClassChange={(value) =>
-							setAttributes({ colorClass: value })
-						}
+						min={0}
+						max={100}
+						displayUnit={false}
 					/>
-				</>
-			)}
-			{ 'video' == backgroundType.value && backgroundVideo.value && backgroundVideoType.value && (
-				<Range
-					label={__("Opacity", "ultimate-addons-for-gutenberg")}
-					value={backgroundVideoOpacity.value}
-					onChange={(val) =>
-						setAttributes({ backgroundVideoOpacity: parseInt(val) })
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-				/>
-			) }
+				)}
 		</>
 	);
 

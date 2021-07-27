@@ -37,8 +37,7 @@ const AdvancedPopColorControl = (props) => {
 		currentOpacity:
 			props.opacityValue !== undefined ? props.opacityValue : 1,
 		isPalette:
-			(props.colorValue && props.colorValue.startsWith("palette")) ||
-			(props.colorDefault && props.colorDefault.startsWith("palette"))
+			props.colorValue && props.colorValue.startsWith("palette")
 				? true
 				: false,
 	});
@@ -68,49 +67,6 @@ const AdvancedPopColorControl = (props) => {
 			setCacheValue(cachedValueUpdate);
 		}
 	}, [value]);
-
-	const onChangeState = (color, palette) => {
-		let opacity = 100 === props.opacityUnit ? 100 : 1;
-		let newColor;
-		if (palette) {
-			newColor = color;
-		} else if (
-			undefined !== color.rgb &&
-			undefined !== color.rgb.a &&
-			1 !== color.rgb.a
-		) {
-			if (props.onOpacityChange) {
-				newColor = color.hex;
-				opacity =
-					100 === props.opacityUnit
-						? unConvertOpacity(color.rgb.a)
-						: color.rgb.a;
-			} else {
-				newColor =
-					"rgba(" +
-					color.rgb.r +
-					"," +
-					color.rgb.g +
-					"," +
-					color.rgb.b +
-					"," +
-					color.rgb.a +
-					")";
-			}
-		} else if (undefined !== color.hex) {
-			newColor = color.hex;
-		} else {
-			newColor = color;
-		}
-		if (undefined !== props.onChange) {
-			props.onChange(newColor);
-		}
-		setValue({
-			currentColor: newColor,
-			currentOpacity: opacity,
-			isPalette: palette ? true : false,
-		});
-	};
 
 	const onChangeComplete = (color, palette) => {
 		let opacity = 100 === props.opacityUnit ? 100 : 1;
@@ -207,10 +163,6 @@ const AdvancedPopColorControl = (props) => {
 			: props.opacityValue;
 	let colorVal = value.currentColor ? value.currentColor : props.colorValue;
 
-	if ("" === colorVal) {
-		colorVal = props.colorDefault;
-	}
-
 	if (props.onOpacityChange && !value.isPalette) {
 		colorVal = hexToRGBA(
 			undefined === colorVal ? "" : colorVal,
@@ -283,16 +235,12 @@ const AdvancedPopColorControl = (props) => {
 										{cIcons.inherit}
 									</span>
 								)}
-								{((props.colorValue &&
-									props.colorValue.startsWith("palette")) ||
-									(props.colorDefault &&
-										props.colorDefault.startsWith(
-											"palette"
-										))) && (
-									<span className="color-indicator-icon">
-										{<Dashicon icon="admin-site" />}
-									</span>
-								)}
+								{props.colorValue &&
+									props.colorValue.startsWith("palette") && (
+										<span className="color-indicator-icon">
+											{<Dashicon icon="admin-site" />}
+										</span>
+									)}
 							</Button>
 						</Tooltip>
 					)}
@@ -315,16 +263,12 @@ const AdvancedPopColorControl = (props) => {
 										{cIcons.inherit}
 									</span>
 								)}
-								{((props.colorValue &&
-									props.colorValue.startsWith("palette")) ||
-									(props.colorDefault &&
-										props.colorDefault.startsWith(
-											"palette"
-										))) && (
-									<span className="color-indicator-icon">
-										{<Dashicon icon="admin-site" />}
-									</span>
-								)}
+								{props.colorValue &&
+									props.colorValue.startsWith("palette") && (
+										<span className="color-indicator-icon">
+											{<Dashicon icon="admin-site" />}
+										</span>
+									)}
 							</Button>
 						</Tooltip>
 					)}
@@ -337,9 +281,5 @@ const AdvancedPopColorControl = (props) => {
 export default withSelect((select, ownProps) => {
 	const settings = select("core/block-editor").getSettings();
 	const colors = settings.colors;
-	const disableCustomColors =
-		ownProps.disableCustomColors === undefined
-			? settings.disableCustomColors
-			: ownProps.disableCustomColors;
-	return { colors, disableCustomColors };
+	return { colors };
 })(AdvancedPopColorControl);
