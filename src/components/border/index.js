@@ -96,12 +96,8 @@ const Border = (props) => {
 				<AdvancedPopColorControl
 					label={borderColor.title}
 					colorValue={borderColor.value}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ [borderColor.label]: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ [colorClass.label]: value })
 					}
 				/>
 			)}
@@ -109,12 +105,8 @@ const Border = (props) => {
 				<AdvancedPopColorControl
 					label={borderHoverColor.title}
 					colorValue={borderHoverColor.value}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ [borderHoverColor.label]: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ [colorClass.label]: value })
 					}
 				/>
 			)}

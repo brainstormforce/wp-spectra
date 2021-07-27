@@ -1575,23 +1575,15 @@ const Settings = (props) => {
 				<AdvancedPopColorControl
 					label={__("Prefix Color", "ultimate-addons-for-gutenberg")}
 					colorValue={prefixColor ? prefixColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ prefixColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<AdvancedPopColorControl
 					label={__("Title Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ headingColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<AdvancedPopColorControl
@@ -1600,12 +1592,8 @@ const Settings = (props) => {
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={subHeadingColor ? subHeadingColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ subHeadingColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<AdvancedPopColorControl
@@ -1614,12 +1602,8 @@ const Settings = (props) => {
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={seperatorColor ? seperatorColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ seperatorColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				{ctaType === "text" && (
@@ -1630,14 +1614,10 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={ctaLinkColor ? ctaLinkColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaLinkColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 						<AdvancedPopColorControl
@@ -1648,14 +1628,10 @@ const Settings = (props) => {
 							colorValue={
 								ctaLinkHoverColor ? ctaLinkHoverColor : ""
 							}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaLinkHoverColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 					</>
@@ -1668,14 +1644,10 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={ctaBtnLinkColor ? ctaBtnLinkColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaBtnLinkColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 						<AdvancedPopColorControl
@@ -1686,14 +1658,10 @@ const Settings = (props) => {
 							colorValue={
 								ctaLinkHoverColor ? ctaLinkHoverColor : ""
 							}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaLinkHoverColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 						<AdvancedPopColorControl
@@ -1702,14 +1670,10 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={ctaBgColor ? ctaBgColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaBgColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 						<AdvancedPopColorControl
@@ -1718,14 +1682,10 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={ctaBgHoverColor ? ctaBgHoverColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({
 									ctaBgHoverColor: value,
 								})
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 					</>
@@ -1733,12 +1693,8 @@ const Settings = (props) => {
 				<AdvancedPopColorControl
 					label={__("Icon Color", "ultimate-addons-for-gutenberg")}
 					colorValue={iconColor ? iconColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ iconColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<AdvancedPopColorControl
@@ -1747,12 +1703,8 @@ const Settings = (props) => {
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={iconHover ? iconHover : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ iconHover: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 			</PanelBody>

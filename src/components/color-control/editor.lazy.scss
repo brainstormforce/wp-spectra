@@ -125,3 +125,17 @@
 	flex-grow: 1;
 	font-weight: 400;
 }
+
+.components-popover.uagb-popover-color.new-uagb-advanced-colors-pop
+	.components-popover__content {
+	padding: 16px;
+}
+
+.components-circular-option-picker {
+	padding: 2px 0 10px 5px;
+}
+
+.components-circular-option-picker
+	.components-circular-option-picker__swatches {
+	margin-right: 0px;
+}
