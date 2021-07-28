@@ -367,14 +367,23 @@ const attributes = {
 		default: false,
 	},
 	backgroundVideo: {
-		type: 'object',
+		type: "object",
 	},
 	backgroundVideoOpacity: {
-		type: 'number',
+		type: "number",
 		default: 50,
 	},
 	backgroundVideoColor: {
-		type: 'string',
+		type: "string",
+	},
+	desktopValue: {
+		type: "number",
+	},
+	tabletValue: {
+		type: "number",
+	},
+	mobileValue: {
+		type: "number",
 	},
 };
 
