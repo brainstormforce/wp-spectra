@@ -1,21 +1,81 @@
-import React from 'react';
+import React,  { useState }  from 'react';
 
 import './UserInfoBox.scss';
 
 import { __ } from '@wordpress/i18n';
 import { NormalButton } from '@Fields';
-
+import apiFetch from '@wordpress/api-fetch';
 function UserInfoBox( ) {
+	
+	const [ savingState, setssavingState ] = useState( false );
+
 	const onJointheCommunityClick = () => {
-		location.href = 'https://ultimategutenberg.com/';
+		window.open(
+			'https://ultimategutenberg.com/',
+			'_blank' 
+		);
 	};
 	const onKnowledgebaseClick = () => {
-		location.href = 'https://ultimategutenberg.com/';
+		window.open(
+			'https://ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
+			'_blank' 
+		);
 	};
 	const onGetSupportClick = () => {
-		location.href = 'https://ultimategutenberg.com/';
+		window.open(
+			'https://ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
+			'_blank' 
+		);
 	};
 
+	let astraThemeButton = '';
+	if('' !== uag_react.astra_theme_root){
+		astraThemeButton = 	<NormalButton
+								buttonText={ __(
+									'Activate ASTRA Now!',
+									'ultimate-addons-for-gutenberg'
+								) }
+								saving={ savingState }
+								onClick={ activateAstraClick }
+							/>
+	}
+	if(!uag_react.wp_theme.astra){
+		astraThemeButton = 	<NormalButton
+								buttonText={ __(
+									'Install ASTRA Now!',
+									'ultimate-addons-for-gutenberg'
+								) }
+								onClick={ installAstraClick }
+							/>
+	}
+	const activateAstraClick = () => {
+		const formData = new window.FormData();
+
+		setssavingState( true );
+
+		formData.append( 'action', 'uag_theme_activate' );
+		formData.append( 'security', uag_react.uag_theme_activate_nonce );
+		formData.append( 'value', 'astra' );
+
+		apiFetch( {
+			url: uag_react.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {
+			if ( data.success ) {
+				setssavingState( false );
+			} 
+		} );
+	}		
+	const installAstraClick = () => {
+
+	}
+	const learnMoreAstraClick = () => {
+		window.open(
+			'https://wpastra.com/',
+			'_blank' 
+		);
+	}
 	return (
 		<div className="uag-metabox uag-user-info">
 			<div className="uag-metabox__header">
@@ -148,13 +208,14 @@ function UserInfoBox( ) {
 						</p>
 					</div>
 					<div className="uag-theme__cta">
-						<NormalButton
-							buttonText={ __(
-								'Install ASTRA Now!',
-								'ultimate-addons-for-gutenberg'
-							) }
-							saving={ false }
-						/>
+					<NormalButton
+								buttonText={ __(
+									'Activate ASTRA Now!',
+									'ultimate-addons-for-gutenberg'
+								) }
+								saving={ savingState }
+								onClick={ activateAstraClick }
+							/>
 						<NormalButton
 							buttonText={ __(
 								'Learn More About Astra',
@@ -162,6 +223,7 @@ function UserInfoBox( ) {
 							) }
 							saving={ false }
 							classes="uag-button--secondary"
+							onClick={ learnMoreAstraClick }
 						/>
 					</div>
 				</div>

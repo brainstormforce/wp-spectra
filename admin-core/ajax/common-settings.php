@@ -56,10 +56,49 @@ class CommonSettings extends AjaxBase {
 			'enable_templates_button',
 			'enable_block_condition',
 			'blocks_activation_and_deactivation',
+			'uag_theme_activate'
 		);
 
 		$this->init_ajax_events( $ajax_events );
 	}
+	/**
+		 * Required Plugin Activate
+		 *
+		 * @since 1.8.2
+		 */
+		public static function uag_theme_activate() {
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			$theme_slug = ( isset( $_POST['value'] ) ) ? sanitize_text_field( $_POST['value'] ) : '';
+
+			if ( ! current_user_can( 'switch_themes' ) || ! $theme_slug ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'No Theme specified', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
+
+			$activate = switch_theme( $theme_slug );
+
+			if ( is_wp_error( $activate ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $activate->get_error_message(),
+					)
+				);
+			}
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
 	/**
 	 * Save settings.
 	 *
