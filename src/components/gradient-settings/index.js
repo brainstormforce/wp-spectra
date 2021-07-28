@@ -2,16 +2,15 @@ import { __ } from "@wordpress/i18n";
 import { __experimentalGradientPicker } from "@wordpress/components";
 
 function GradientSettings(props) {
-	const { attributes, setAttributes } = props;
-	const { gradientValue } = attributes;
+	const { setAttributes, backgroundGradient } = props;
 
 	const onGradientChange = (value) => {
-		setAttributes({ gradientValue: value });
+		setAttributes({ [backgroundGradient.label]: value });
 	};
 
 	return (
 		<__experimentalGradientPicker
-			value={gradientValue}
+			value={backgroundGradient.value}
 			onChange={onGradientChange}
 		/>
 	);
