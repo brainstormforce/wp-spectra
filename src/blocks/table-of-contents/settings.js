@@ -7,6 +7,7 @@ import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import ResponsiveSlider from "../../components/responsive-slider";
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
@@ -504,110 +505,45 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<Range
-							label={__("Gap Between Lists", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={contentPaddingDesktop}
-							onChange={(value) =>
-								setAttributes({ contentPaddingDesktop: value })
-							}
-							min={0}
-							max={100}
-							unit={{
-								value: contentPaddingTypeDesktop,
-								label: "contentPaddingTypeDesktop",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<Range
-							label={__("Gap Between Lists", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={contentPaddingTablet}
-							onChange={(value) =>
-								setAttributes({ contentPaddingTablet: value })
-							}
-							min={0}
-							max={100}
-							unit={{
-								value: contentPaddingTypeTablet,
-								label: "contentPaddingTypeTablet",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<Range
-							label={__("Gap Between Lists", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={contentPaddingMobile}
-							onChange={(value) =>
-								setAttributes({ contentPaddingMobile: value })
-							}
-							min={0}
-							max={100}
-							unit={{
-								value: contentPaddingTypeMobile,
-								label: "contentPaddingTypeMobile",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
+				<ResponsiveSlider
+					label={__(
+						"Gap Between Lists",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						desktop: {
+							value: contentPaddingDesktop,
+							label: "contentPaddingDesktop",
+						},
+						tablet: {
+							value: contentPaddingTablet,
+							label: "contentPaddingTablet",
+						},
+						mobile: {
+							value: contentPaddingMobile,
+							label: "contentPaddingMobile",
+						},
+					}}
+					min={0}
+					max={100}
+					unit={[
+						{
+							name: __(
+								"Pixel",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "px",
+						},
+						{
+							name: __(
+								"%",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "%",
+						},
+					]}
+					setAttributes={setAttributes}
+				/>
 
 				<TypographyControl
 					label={ __(
@@ -721,164 +657,71 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				{ customWidth && <ColumnResponsive /> }
-				{ 'Desktop' === deviceType && customWidth && (
-					<>
-						<Range
-							label={__("Width", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={widthDesktop}
-							onChange={(value) =>
-								setAttributes({ widthDesktop: value })
-							}
-							min={0}
-							max={'%' == widthTypeDesktop ? 100 : 1000}
-							unit={{
-								value: widthTypeDesktop,
-								label: "widthTypeDesktop",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && customWidth && (
-					<>
-						<Range
-							label={__("Width", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={widthTablet}
-							onChange={(value) =>
-								setAttributes({ widthTablet: value })
-							}
-							min={0}
-							max={'%' == widthTypeTablet ? 100 : 1000}
-							unit={{
-								value: widthTypeTablet,
-								label: "widthTypeTablet",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && customWidth && (
-					<>
-						<Range
-							label={__("Width", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={widthMobile}
-							onChange={(value) =>
-								setAttributes({ widthMobile: value })
-							}
-							min={0}
-							max={'%' == widthTypeMobile ? 100 : 1000}
-							unit={{
-								value: widthTypeMobile,
-								label: "widthTypeMobile",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				) }
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<Range
-							label={__(
-								'Columns',
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={tColumnsDesktop}
-							onChange={(value) =>
-								setAttributes({ tColumnsDesktop: value })
-							}
-							min={1}
-							max={10}
-							displayUnit={false}
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<Range
-							label={__(
-								'Columns',
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={tColumnsTablet}
-							onChange={(value) =>
-								setAttributes({ tColumnsTablet: value })
-							}
-							min={1}
-							max={10}
-							displayUnit={false}
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<Range
-							label={__(
-								'Columns',
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={tColumnsMobile}
-							onChange={(value) =>
-								setAttributes({ tColumnsMobile: value })
-							}
-							min={1}
-							max={10}
-							displayUnit={false}
-						/>
-					</>
-				) }
+				{ customWidth &&
+					<ResponsiveSlider
+						label={__(
+							"Width",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							desktop: {
+								value: widthDesktop,
+								label: "widthDesktop",
+							},
+							tablet: {
+								value: widthTablet,
+								label: "widthTablet",
+							},
+							mobile: {
+								value: widthMobile,
+								label: "widthMobile",
+							},
+						}}
+						min={0}
+						max={100}
+						unit={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __(
+									"%",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "%",
+							},
+						]}
+						setAttributes={setAttributes}
+					/>
+				}
+				<ResponsiveSlider
+					label={__(
+						"Columns",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						desktop: {
+							value: tColumnsDesktop,
+							label: "tColumnsDesktop",
+						},
+						tablet: {
+							value: tColumnsTablet,
+							label: "tColumnsTablet",
+						},
+						mobile: {
+							value: tColumnsMobile,
+							label: "tColumnsMobile",
+						},
+					}}
+					min={1}
+					max={10}
+					displayUnit={false}
+					setAttributes={setAttributes}
+				/>
 				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props}
