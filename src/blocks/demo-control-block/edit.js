@@ -19,7 +19,7 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 import BoxShadowControl from "../../components/box-shadow";
 import Background from "../../components/background";
 import Border from "../../components/border";
-
+import ResponsiveSlider from "../../components/responsive-slider";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography";
 
@@ -235,6 +235,9 @@ class UAGBInlineNoticeEdit extends Component {
 				backgroundVideo,
 				backgroundVideoOpacity,
 				backgroundVideoColor,
+				desktopValue,
+				tabletValue,
+				mobileValue,
 			},
 			setAttributes,
 			className,
@@ -387,6 +390,33 @@ class UAGBInlineNoticeEdit extends Component {
 									value: paddingUnit,
 									label: "paddingUnit",
 								}}
+							/>
+							<ResponsiveSlider
+								label={__(
+									"Responsive Slider",
+									"ultimate-addons-for-gutenberg"
+								)}
+								data={{
+									desktop: {
+										value: desktopValue,
+										label: "desktopValue",
+									},
+									tablet: {
+										value: tabletValue,
+										label: "tabletValue",
+									},
+									mobile: {
+										value: mobileValue,
+										label: "mobileValue",
+									},
+								}}
+								min={0}
+								max={100}
+								unit={{
+									value: paddingUnit,
+									label: "paddingUnit",
+								}}
+								setAttributes={setAttributes}
 							/>
 						</PanelBody>
 						<PanelBody title="Typography" initialOpen={false}>
