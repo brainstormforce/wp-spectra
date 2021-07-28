@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
 import './BlocksPage.scss';
+import { __ } from '@wordpress/i18n';
 import BlocksSettings from '@SettingsApp/components/blocks-page/BlocksSettings';
 import DisplayCondition from '@SettingsApp/components/blocks-page/DisplayCondition';
 import SettingPageSkeleton from '@Admin/settings-app/components/blocks-page/BlocksPageSkeleton';
@@ -48,6 +49,12 @@ function BlocksPage() {
 	return (
 		<>
 			<div className="uag-blocks-settings-metabox">
+				<p>
+					{ __(
+						'Below is the list of all blocks included within Ultimate Addons for Gutenberg. Activate the blocks you want to use and deactivate the rest to get the best performance. Activated blocks will appear in the Gutenberg block editor.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 				<BlocksSettings />
 				<DisplayCondition/>
 			</div>

@@ -76,10 +76,28 @@ class AdminMenu {
 	public function initialize_hooks() {
 		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
-
+		
+		add_filter( 'plugin_action_links_' . UAGB_BASE, array( $this, 'add_action_links' ) );
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
+	}
+
+	/**
+	 * Show action on plugin page.
+	 *
+	 * @param  array $links links.
+	 * @return array
+	 */
+	public function add_action_links( $links ) {
+
+		$default_url = admin_url( 'options-general.php?page=uagb');
+
+		$mylinks = array(
+			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
+		);
+
+		return array_merge( $links, $mylinks );
 	}
 
 	/**
@@ -186,6 +204,7 @@ class AdminMenu {
 				'admin_base_slug'      => $this->menu_slug,
 				'admin_base_url'       => admin_url(),
 				'plugin_dir'           => UAGB_URL,
+				'plugin_ver'           => UAGB_VER,
 				'logo_url'             => UAGB_URL . 'admin/assets/images/uagb_logo.svg',
 				'admin_url'            => admin_url( 'admin.php' ),
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),

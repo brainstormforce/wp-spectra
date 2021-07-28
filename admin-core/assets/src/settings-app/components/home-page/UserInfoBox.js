@@ -27,7 +27,7 @@ function UserInfoBox( ) {
 				</div>
 				<p>
 					{ __(
-						' Thank you for choosing Ultimate Addons for Gutenberg - the most comprehensive library of advanced and creative blocks to build a stunning website and blog faster than ever before!',
+						'Thank you for choosing Ultimate Addons for Gutenberg (UAG)! Start building stunning websites faster than ever before with the most comprehensive library of advanced and creative blocks.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -43,13 +43,13 @@ function UserInfoBox( ) {
 						</h3>
 						<p>
 							{ __(
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community. Get the latest news, updates, tutorials and tips and participate in discussions. We/\'d love it if you joined the conversation! ',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
 						<NormalButton
 							buttonText={ __(
-								'Join the community',
+								'Join Now',
 								'ultimate-addons-for-gutenberg'
 							) }
 							onClick={ onJointheCommunityClick }
@@ -59,13 +59,13 @@ function UserInfoBox( ) {
 					<div className="uag-metabox__element">
 						<h3>
 							{ __(
-								'Knowledgebase',
+								'Knowledge Base',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h3>
 						<p>
 							{ __(
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'Learn everything you need to know about the UAG plugin! Our comprehensive documentation includes information about installation, blocks, core filters, functions, and more.',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -87,13 +87,13 @@ function UserInfoBox( ) {
 						</h3>
 						<p>
 							{ __(
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'Need some help? Our awesome support team is here to help you with any question you have about Ultimate Addons for Gutenberg. Just send us your query to get fast answers from plugin experts.',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
 						<NormalButton
 							buttonText={ __(
-								'Get Support',
+								'Ask Us!',
 								'ultimate-addons-for-gutenberg'
 							) }
 							onClick={ onGetSupportClick }
@@ -113,19 +113,19 @@ function UserInfoBox( ) {
 					<div className="uag-starter-tmp__details">
 						<h2>
 							{ __(
-								'Get Ready to use, Full Demo Websites ',
+								'Get Expert-built Readymade Website Templates for Free ',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
 						<p>
 							{ __(
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. These templates are easy to customize and are optimized for conversion. Just import, tweak and deliver projects faster than ever before!',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
 						<NormalButton
 							buttonText={ __(
-								'Get Starter Templates',
+								'Import a Starter Template',
 								'ultimate-addons-for-gutenberg'
 							) }
 							saving={ false }
@@ -136,13 +136,13 @@ function UserInfoBox( ) {
 					<div className="uag-theme__content">
 						<h2>
 							{ __(
-								'UAG Works best with free ASTRA theme! ',
+								'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
 						<p>
 							{ __(
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+								'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -157,7 +157,7 @@ function UserInfoBox( ) {
 						/>
 						<NormalButton
 							buttonText={ __(
-								'Read Full Guide',
+								'Learn More About Astra',
 								'ultimate-addons-for-gutenberg'
 							) }
 							saving={ false }

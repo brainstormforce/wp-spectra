@@ -7,7 +7,7 @@ import './NavMenu.scss';
 function NavMenu() {
 	const menus = [
 		{
-			name: __( 'Getting Started', 'ultimate-addons-for-gutenberg' ),
+			name: __( 'Welcome', 'ultimate-addons-for-gutenberg' ),
 			slug: uag_react.home_slug,
 			path: '',
 		},
@@ -52,6 +52,7 @@ function NavMenu() {
 						src={ uag_react.logo_url }
 						alt=""
 					/>
+					<span class="uagb-plugin-version">{uag_react.plugin_ver}</span>
 				</Link>
 			</div>
 			<div className="uag-global-nav__items">
@@ -73,14 +74,6 @@ function NavMenu() {
 						{ menu.name }
 					</Link>
 				) ) }
-				<a
-					href="https://ultimategutenberg.com/docs/"
-					className="uag-global-nav-menu__tab"
-					target="_blank"
-					rel="noreferrer"
-				>
-					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
-				</a>
 			</div>
 		</div>
 	);
