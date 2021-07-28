@@ -52,6 +52,151 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		if ( props.attributes.heading && '' !== props.attributes.heading ) {
 			props.setAttributes( { headingTitle: props.attributes.heading } );
 		}
+
+		const { attributes, setAttributes } = props;
+		const {
+			vPaddingDesktop,
+			vPaddingTablet,
+			vPaddingMobile,
+			hPaddingDesktop,
+			hPaddingTablet,
+			hPaddingMobile,
+			vMarginDesktop,
+			vMarginTablet,
+			vMarginMobile,
+			hMarginDesktop,
+			hMarginTablet,
+			hMarginMobile,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			topMarginTablet,
+			rightMarginTablet,
+			bottomMarginTablet,
+			leftMarginTablet,
+			topMarginMobile,
+			rightMarginMobile,
+			bottomMarginMobile,
+			leftMarginMobile,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+			topPaddingTablet,
+			rightPaddingTablet,
+			bottomPaddingTablet,
+			leftPaddingTablet,
+			topPaddingMobile,
+			rightPaddingMobile,
+			bottomPaddingMobile,
+			leftPaddingMobile,
+		} = attributes;
+
+		//Padding
+		if (vPaddingDesktop) {
+			if (!topPadding) {
+				setAttributes({ topPadding: vPaddingDesktop });
+			}
+			if (!bottomPadding) {
+				setAttributes({ bottomPadding: vPaddingDesktop });
+			}
+		}
+		if (hPaddingDesktop) {
+			if (!rightPadding) {
+				setAttributes({ rightPadding: hPaddingDesktop });
+			}
+			if (!leftPadding) {
+				setAttributes({ leftPadding: hPaddingDesktop });
+			}
+		}
+
+		if (vPaddingMobile) {
+			if (!topPaddingMobile) {
+				setAttributes({ topPaddingMobile: vPaddingMobile });
+			}
+			if (!bottomPaddingMobile) {
+				setAttributes({ bottomPaddingMobile: vPaddingMobile });
+			}
+		}
+		if (hPaddingMobile) {
+			if (!rightPaddingMobile) {
+				setAttributes({ rightPaddingMobile: hPaddingMobile });
+			}
+			if (!leftPaddingMobile) {
+				setAttributes({ leftPaddingMobile: hPaddingMobile });
+			}
+		}
+
+		if (vPaddingTablet) {
+			if (!topPaddingTablet) {
+				setAttributes({ topPaddingTablet: topPaddingTablet });
+			}
+			if (!bottomPaddingTablet) {
+				setAttributes({ bottomPaddingTablet: topPaddingTablet });
+			}
+		}
+		if (hPaddingTablet) {
+			if (!rightPaddingTablet) {
+				setAttributes({ rightPaddingTablet: rightPaddingTablet });
+			}
+			if (!leftPaddingTablet) {
+				setAttributes({ leftPaddingTablet: rightPaddingTablet });
+			}
+		}
+
+		//Margin
+		if (vMarginDesktop) {
+			if (!topMargin) {
+				setAttributes({ topMargin: vMarginDesktop });
+			}
+			if (!bottomMargin) {
+				setAttributes({ bottomMargin: vMarginDesktop });
+			}
+		}
+		if (hMarginDesktop) {
+			if (!rightMargin) {
+				setAttributes({ rightMargin: hMarginDesktop });
+			}
+			if (!leftMargin) {
+				setAttributes({ leftMargin: hMarginDesktop });
+			}
+		}
+
+		if (vMarginMobile) {
+			if (!topMarginMobile) {
+				setAttributes({ topMarginMobile: vMarginMobile });
+			}
+			if (!bottomMarginMobile) {
+				setAttributes({ bottomMarginMobile: vMarginMobile });
+			}
+		}
+		if (hMarginMobile) {
+			if (!rightMarginMobile) {
+				setAttributes({ rightMarginMobile: hMarginMobile });
+			}
+			if (!leftMarginMobile) {
+				setAttributes({ leftMarginMobile: hMarginMobile });
+			}
+		}
+
+		if (vMarginTablet) {
+			if (!topMarginTablet) {
+				setAttributes({ topMarginTablet: vMarginTablet });
+			}
+			if (!bottomMarginTablet) {
+				setAttributes({ bottomMarginTablet: vMarginTablet });
+			}
+		}
+		if (hMarginTablet) {
+			if (!rightMarginTablet) {
+				setAttributes({ rightMarginTablet: hMarginTablet });
+			}
+			if (!leftMarginTablet) {
+				setAttributes({ leftMarginTablet: hMarginTablet });
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {
@@ -63,6 +208,8 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );
+
+	
 
 	const { scrollToTop } = props.attributes;
 

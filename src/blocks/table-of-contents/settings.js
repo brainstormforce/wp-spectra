@@ -61,24 +61,21 @@ const Settings = ( props ) => {
 		linkColor,
 		linkHoverColor,
 		headingColor,
-		vPaddingDesktop,
-		vPaddingTablet,
-		vPaddingMobile,
-		hPaddingDesktop,
-		hPaddingTablet,
-		hPaddingMobile,
 		paddingTypeMobile,
 		paddingTypeTablet,
 		paddingTypeDesktop,
-		vMarginDesktop,
-		vMarginTablet,
-		vMarginMobile,
-		hMarginDesktop,
-		hMarginTablet,
-		hMarginMobile,
-		marginTypeMobile,
-		marginTypeTablet,
-		marginTypeDesktop,
+		topPadding,
+		rightPadding,
+		bottomPadding,
+		leftPadding,
+		topPaddingTablet,
+		rightPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		topPaddingMobile,
+		rightPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
 		marginLink,
 		paddingLink,
 		headingBottom,
@@ -88,6 +85,21 @@ const Settings = ( props ) => {
 		contentPaddingTypeMobile,
 		contentPaddingTypeTablet,
 		contentPaddingTypeDesktop,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		marginTypeMobile,
+		marginTypeTablet,
+		marginTypeDesktop,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -526,22 +538,20 @@ const Settings = ( props ) => {
 					}}
 					min={0}
 					max={100}
-					unit={[
+					unit={
 						{
-							name: __(
-								"Pixel",
-								"ultimate-addons-for-gutenberg"
-							),
-							unitValue: "px",
+						value: contentPaddingTypeDesktop,
+						label: "contentPaddingTypeDesktop",
 						},
 						{
-							name: __(
-								"%",
-								"ultimate-addons-for-gutenberg"
-							),
-							unitValue: "%",
+							value: contentPaddingTypeTablet,
+							label: "contentPaddingTypeTablet",
 						},
-					]}
+						{
+							value: contentPaddingTypeMobile,
+							label: "contentPaddingTypeMobile",
+						}
+					}
 					setAttributes={setAttributes}
 				/>
 
@@ -679,22 +689,20 @@ const Settings = ( props ) => {
 						}}
 						min={0}
 						max={100}
-						unit={[
+						unit={
 							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
+							value: widthTypeDesktop,
+							label: "widthTypeDesktop",
 							},
 							{
-								name: __(
-									"%",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "%",
+								value: widthTypeTablet,
+								label: "widthTypeTablet",
 							},
-						]}
+							{
+								value: widthTypeMobile,
+								label: "widthTypeMobile",
+							}
+						}
 						setAttributes={setAttributes}
 					/>
 				}
@@ -730,52 +738,52 @@ const Settings = ( props ) => {
 						"ultimate-addons-for-gutenberg"
 					)}
 					valueTop={{
-						value: vPaddingDesktop,
-						label: "vPaddingDesktop",
+						value: topPadding,
+						label: "topPadding",
 					}}
 					valueRight={{
-						value: vPaddingDesktop,
-						label: "vPaddingDesktop",
+						value: rightPadding,
+						label: "rightPadding",
 					}}
 					valueBottom={{
-						value: hPaddingDesktop,
-						label: "hPaddingDesktop",
+						value: bottomPadding,
+						label: "bottomPadding",
 					}}
 					valueLeft={{
-						value: hPaddingDesktop,
-						label: "hPaddingDesktop",
+						value: leftPadding,
+						label: "leftPadding",
 					}}
 					valueTopTablet={{
-						value: vPaddingTablet,
-						label: "vPaddingTablet",
+						value: topPaddingTablet,
+						label: "topPaddingTablet",
 					}}
 					valueRightTablet={{
-						value: vPaddingTablet,
-						label: "vPaddingTablet",
+						value: rightPaddingTablet,
+						label: "rightPaddingTablet",
 					}}
 					valueBottomTablet={{
-						value: hPaddingTablet,
-						label: "hPaddingTablet",
+						value: bottomPaddingTablet,
+						label: "bottomPaddingTablet",
 					}}
 					valueLeftTablet={{
-						value: hPaddingTablet,
-						label: "hPaddingTablet",
+						value: leftPaddingTablet,
+						label: "leftPaddingTablet",
 					}}
 					valueTopMobile={{
-						value: vPaddingMobile,
-						label: "vPaddingMobile",
+						value: topPaddingMobile,
+						label: "topPaddingMobile",
 					}}
 					valueRightMobile={{
-						value: vPaddingMobile,
-						label: "vPaddingMobile",
+						value: rightPaddingMobile,
+						label: "rightPaddingMobile",
 					}}
 					valueBottomMobile={{
-						value: hPaddingMobile,
-						label: "hPaddingMobile",
+						value: bottomPaddingMobile,
+						label: "bottomPaddingMobile",
 					}}
 					valueLeftMobile={{
-						value: hPaddingMobile,
-						label: "hPaddingMobile",
+						value: leftPaddingMobile,
+						label: "leftPaddingMobile",
 					}}
 					unit={{
 						value: paddingTypeDesktop,
@@ -797,7 +805,7 @@ const Settings = ( props ) => {
 						label: "paddingLink",
 					}}
 				/>
-				<SpacingControl
+				{/* <SpacingControl
 					{...props}
 					label={__(
 						"List Margin",
@@ -850,6 +858,80 @@ const Settings = ( props ) => {
 					valueLeftMobile={{
 						value: hMarginMobile,
 						label: "hMarginMobile",
+					}}
+					unit={{
+						value: marginTypeDesktop,
+						label: "marginTypeDesktop",
+					}}
+					mUnit={{
+						value: marginTypeMobile,
+						label: "marginTypeMobile",
+					}}
+					tUnit={{
+						value: marginTypeTablet,
+						label: "marginTypeTablet",
+					}}
+					deviceType={deviceType}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: marginLink,
+						label: "marginLink",
+					}}
+				/> */}
+				<SpacingControl
+					{...props}
+					label={__(
+						"Margin",
+						"ultimate-addons-for-gutenberg"
+					)}
+					valueTop={{
+						value: topMargin,
+						label: "topMargin",
+					}}
+					valueRight={{
+						value: rightMargin,
+						label: "rightMargin",
+					}}
+					valueBottom={{
+						value: bottomMargin,
+						label: "bottomMargin",
+					}}
+					valueLeft={{
+						value: leftMargin,
+						label: "leftMargin",
+					}}
+					valueTopTablet={{
+						value: topMarginTablet,
+						label: "topMarginTablet",
+					}}
+					valueRightTablet={{
+						value: rightMarginTablet,
+						label: "rightMarginTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomMarginTablet,
+						label: "bottomMarginTablet",
+					}}
+					valueLeftTablet={{
+						value: leftMarginTablet,
+						label: "leftMarginTablet",
+					}}
+					valueTopMobile={{
+						value: topMarginMobile,
+						label: "topMarginMobile",
+					}}
+					valueRightMobile={{
+						value: rightMarginMobile,
+						label: "rightMarginMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomMarginMobile,
+						label: "bottomMarginMobile",
+					}}
+					valueLeftMobile={{
+						value: leftMarginMobile,
+						label: "leftMarginMobile",
 					}}
 					unit={{
 						value: marginTypeDesktop,

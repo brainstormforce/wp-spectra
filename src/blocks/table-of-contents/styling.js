@@ -28,27 +28,45 @@ function styling( props ) {
 		scrollToTopBgColor,
 		headingColor,
 		//Margin
-		vMarginDesktop,
-		hMarginDesktop,
+		// vMarginDesktop,
+		// hMarginDesktop,
 		marginTypeDesktop,
-		hMarginMobile,
-		vMarginMobile,
+		// hMarginMobile,
+		// vMarginMobile,
 		marginTypeMobile,
-		vMarginTablet,
-		hMarginTablet,
+		// vMarginTablet,
+		// hMarginTablet,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
 		marginTypeTablet,
 		//Padding,
-		vPaddingDesktop,
-		vPaddingTablet,
-		vPaddingMobile,
-		hPaddingDesktop,
-		hPaddingTablet,
-		hPaddingMobile,
-		headingBottom,
-		paddingTypeDesktop,
-		paddingTypeTablet,
+		topPadding,
+		rightPadding,
+		bottomPadding,
+		leftPadding,
+		topPaddingTablet,
+		rightPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		topPaddingMobile,
+		rightPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
 		paddingTypeMobile,
+		paddingTypeTablet,
+		paddingTypeDesktop,
 		//Padding,
+		headingBottom,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
@@ -131,19 +149,19 @@ function styling( props ) {
 			'border-color': borderColor,
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 			'padding-left': generateCSSUnit(
-				hPaddingDesktop,
+				leftPadding,
 				paddingTypeDesktop
 			),
 			'padding-right': generateCSSUnit(
-				hPaddingDesktop,
+				rightPadding,
 				paddingTypeDesktop
 			),
 			'padding-top': generateCSSUnit(
-				vPaddingDesktop,
+				topPadding,
 				paddingTypeDesktop
 			),
 			'padding-bottom': generateCSSUnit(
-				vPaddingDesktop,
+				bottomPadding,
 				paddingTypeDesktop
 			),
 			background: backgroundColor,
@@ -152,14 +170,14 @@ function styling( props ) {
 			'border-color': borderHoverColor,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
+			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
 			'margin-right': generateCSSUnit(
-				hMarginDesktop,
+				rightMargin,
 				marginTypeDesktop
 			),
-			'margin-top': generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
+			'margin-top': generateCSSUnit( topMargin, marginTypeDesktop ),
 			'margin-bottom': generateCSSUnit(
-				vMarginDesktop,
+				bottomMargin,
 				marginTypeDesktop
 			),
 		},
@@ -253,24 +271,24 @@ function styling( props ) {
 		' .uagb-toc__wrap': {
 			width: generateCSSUnit( widthTablet, widthTypeTablet ),
 			'padding-left': generateCSSUnit(
-				hPaddingTablet,
+				leftPaddingTablet,
 				paddingTypeTablet
 			),
 			'padding-right': generateCSSUnit(
-				hPaddingTablet,
+				rightPaddingTablet,
 				paddingTypeTablet
 			),
-			'padding-top': generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
+			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit(
-				vPaddingTablet,
+				bottomPaddingTablet,
 				paddingTypeTablet
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( hMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( hMarginTablet, marginTypeTablet ),
-			'margin-top': generateCSSUnit( vMarginTablet, marginTypeTablet ),
-			'margin-bottom': generateCSSUnit( vMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
+			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsTablet,
@@ -341,24 +359,24 @@ function styling( props ) {
 		' .uagb-toc__wrap': {
 			width: generateCSSUnit( widthMobile, widthTypeMobile ),
 			'padding-left': generateCSSUnit(
-				hPaddingMobile,
+				leftPaddingMobile,
 				paddingTypeMobile
 			),
 			'padding-right': generateCSSUnit(
-				hPaddingMobile,
+				rightPaddingMobile,
 				paddingTypeMobile
 			),
-			'padding-top': generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
+			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit(
-				vPaddingMobile,
+				bottomPaddingMobile,
 				paddingTypeMobile
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( hMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( hMarginMobile, marginTypeMobile ),
-			'margin-top': generateCSSUnit( vMarginMobile, marginTypeMobile ),
-			'margin-bottom': generateCSSUnit( vMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsMobile,
