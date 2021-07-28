@@ -187,42 +187,89 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
-			$lPadding = 0;
-			$rPadding = 0;
+			$lPadding       = 0;
+			$rPadding       = 0;
+			$lPaddingMobile = 0;
+			$rPaddingMobile = 0;
+			$lPaddingTablet = 0;
+			$rPaddingTablet = 0;
 
 			if ( $attr['noticeDismiss'] ) {
 				if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
-					$rPadding = ( $attr['titleHrPadding'] + '13' );
-					$lPadding = $attr['titleHrPadding'];
+					$rPadding       = ( $attr['titleRightPadding'] + '13' );
+					$lPadding       = $attr['titleLeftPadding'];
+					$lPaddingMobile = $attr['titleLeftPaddingMobile'];
+					$rPaddingMobile = ( $attr['titleRightPaddingMobile'] + '13' );
+					$lPaddingTablet = $attr['titleLeftPaddingTablet'];
+					$rPaddingTablet = ( $attr['titleRightPaddingTablet'] + '13' );
 				} else {
-					$lPadding = ( $attr['titleHrPadding'] + '13' );
-					$rPadding = $attr['titleHrPadding'];
+					$lPadding       = ( $attr['titleLeftPadding'] + '13' );
+					$rPadding       = $attr['titleRightPadding'];
+					$lPaddingMobile = ( $attr['titleLeftPaddingMobile'] + '13' );
+					$rPaddingMobile = $attr['titleRightPaddingMobile'];
+					$lPaddingTablet = ( $attr['titleLeftPaddingTablet'] + '13' );
+					$rPaddingTablet = $attr['titleRightPaddingTablet'];
 				}
 			} else {
-				$lPadding = $attr['titleHrPadding'];
-				$rPadding = $attr['titleHrPadding'];
+				$lPadding       = $attr['titleLeftPadding'];
+				$rPadding       = $attr['titleRightPadding'];
+				$lPaddingMobile = $attr['titleLeftPaddingMobile'];
+				$rPaddingMobile = $attr['titleRightPaddingMobile'];
+				$lPaddingTablet = $attr['titleLeftPaddingTablet'];
+				$rPaddingTablet = $attr['titleRightPaddingTablet'];
 			}
 
 			$selectors = array(
 				' .uagb-notice-title'           => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, $attr['titlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, $attr['titlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleTopPadding'], $attr['titlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomPadding'], $attr['titlePaddingUnit'] ),
 				),
 				'.uagb-inline_notice__outer-wrap .uagb-notice-title' => array(
 					'color' => $attr['titleColor'],
 				),
 				' .uagb-notice-text'            => array(
 					'color'          => $attr['textColor'],
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentLeftPadding'], $attr['contentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentRightPadding'], $attr['contentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentTopPadding'], $attr['contentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentBottomPadding'], $attr['contentPaddingUnit'] ),
 				),
 				' span.uagb-notice-dismiss svg' => array(
 					'fill'  => $attr['noticeDismissColor'],
 					'color' => $attr['noticeDismissColor'],
+				),
+			);
+
+			$m_selectors = array(
+				' .uagb-notice-text'  => array(
+					'color'          => $attr['textColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentLeftPaddingMobile'], $attr['mobileContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentRightPaddingMobile'], $attr['mobileContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentTopPaddingMobile'], $attr['mobileContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentBottomPaddingMobile'], $attr['mobileContentPaddingUnit'] ),
+				),
+				' .uagb-notice-title' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $lPaddingMobile, $attr['mobileTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $rPaddingMobile, $attr['mobileTitlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleTopPaddingMobile'], $attr['mobileTitlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomPaddingMobile'], $attr['mobileTitlePaddingUnit'] ),
+				),
+			);
+
+			$t_selectors = array(
+				' .uagb-notice-text'  => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentLeftPaddingTablet'], $attr['tabletContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentRightPaddingTablet'], $attr['tabletContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentTopPaddingTablet'], $attr['tabletContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentBottomPaddingTablet'], $attr['tabletContentPaddingUnit'] ),
+				),
+				' .uagb-notice-title' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $lPaddingTablet, $attr['tabletTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $rPaddingTablet, $attr['tabletTitlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleTopPaddingTablet'], $attr['tabletTitlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomPaddingTablet'], $attr['tabletTitlePaddingUnit'] ),
 				),
 			);
 

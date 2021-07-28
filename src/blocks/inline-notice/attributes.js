@@ -143,21 +143,61 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	contentVrPadding: {
-		type: 'number',
+	titleLeftPadding: {
+		type: "number",
 		default: 15,
 	},
-	contentHrPadding: {
-		type: 'number',
+	titleRightPadding: {
+		type: "number",
 		default: 15,
 	},
-	titleVrPadding: {
-		type: 'number',
+	titleTopPadding: {
+		type: "number",
 		default: 15,
 	},
-	titleHrPadding: {
-		type: 'number',
+	titleBottomPadding: {
+		type: "number",
 		default: 15,
+	},
+	titleLeftPaddingTablet: {
+		type: "number",
+	},
+	titleRightPaddingTablet: {
+		type: "number",
+	},
+	titleTopPaddingTablet: {
+		type: "number",
+	},
+	titleBottomPaddingTablet: {
+		type: "number",
+	},
+	titleLeftPaddingMobile: {
+		type: "number",
+	},
+	titleRightPaddingMobile: {
+		type: "number",
+	},
+	titleTopPaddingMobile: {
+		type: "number",
+	},
+	titleBottomPaddingMobile: {
+		type: "number",
+	},
+	titlePaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobileTitlePaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletTitlePaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	titlePaddingLink: {
+		type: "boolean",
+		default: false,
 	},
 	layout: {
 		type: 'string',
@@ -166,6 +206,62 @@ const attributes = {
 	highlightWidth: {
 		type: 'number',
 		default: 10,
+	},
+	contentLeftPadding: {
+		type: "number",
+		default: 15,
+	},
+	contentRightPadding: {
+		type: "number",
+		default: 15,
+	},
+	contentTopPadding: {
+		type: "number",
+		default: 15,
+	},
+	contentBottomPadding: {
+		type: "number",
+		default: 15,
+	},
+	contentLeftPaddingTablet: {
+		type: "number",
+	},
+	contentRightPaddingTablet: {
+		type: "number",
+	},
+	contentTopPaddingTablet: {
+		type: "number",
+	},
+	contentBottomPaddingTablet: {
+		type: "number",
+	},
+	contentLeftPaddingMobile: {
+		type: "number",
+	},
+	contentRightPaddingMobile: {
+		type: "number",
+	},
+	contentTopPaddingMobile: {
+		type: "number",
+	},
+	contentBottomPaddingMobile: {
+		type: "number",
+	},
+	contentPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobileContentPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletContentPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	contentPaddingLink: {
+		type: "boolean",
+		default: false,
 	},
 };
 
