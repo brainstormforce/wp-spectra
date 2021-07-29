@@ -211,19 +211,15 @@ const attributes = {
 	},
 	leftPadding: {
 		type: "number",
-		default: 15,
 	},
 	rightPadding: {
 		type: "number",
-		default: 15,
 	},
 	topPadding: {
 		type: "number",
-		default: 15,
 	},
 	bottomPadding: {
 		type: "number",
-		default: 15,
 	},
 	leftPaddingTablet: {
 		type: "number",
@@ -286,19 +282,15 @@ const attributes = {
 	},
 	leftMargin: {
 		type: "number",
-		default: 15,
 	},
 	rightMargin: {
 		type: "number",
-		default: 15,
 	},
 	topMargin: {
 		type: "number",
-		default: 15,
 	},
 	bottomMargin: {
 		type: "number",
-		default: 15,
 	},
 	leftMarginTablet: {
 		type: "number",

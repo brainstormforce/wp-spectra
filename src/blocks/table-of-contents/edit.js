@@ -130,18 +130,18 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		if (vPaddingTablet) {
 			if (!topPaddingTablet) {
-				setAttributes({ topPaddingTablet: topPaddingTablet });
+				setAttributes({ topPaddingTablet: vPaddingTablet });
 			}
 			if (!bottomPaddingTablet) {
-				setAttributes({ bottomPaddingTablet: topPaddingTablet });
+				setAttributes({ bottomPaddingTablet: vPaddingTablet });
 			}
 		}
 		if (hPaddingTablet) {
 			if (!rightPaddingTablet) {
-				setAttributes({ rightPaddingTablet: rightPaddingTablet });
+				setAttributes({ rightPaddingTablet: hPaddingTablet });
 			}
 			if (!leftPaddingTablet) {
-				setAttributes({ leftPaddingTablet: rightPaddingTablet });
+				setAttributes({ leftPaddingTablet: hPaddingTablet });
 			}
 		}
 
