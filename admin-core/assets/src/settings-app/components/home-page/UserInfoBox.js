@@ -29,25 +29,7 @@ function UserInfoBox( ) {
 	};
 
 	let astraThemeButton = '';
-	if('' !== uag_react.astra_theme_root){
-		astraThemeButton = 	<NormalButton
-								buttonText={ __(
-									'Activate ASTRA Now!',
-									'ultimate-addons-for-gutenberg'
-								) }
-								saving={ savingState }
-								onClick={ activateAstraClick }
-							/>
-	}
-	if(!uag_react.wp_theme.astra){
-		astraThemeButton = 	<NormalButton
-								buttonText={ __(
-									'Install ASTRA Now!',
-									'ultimate-addons-for-gutenberg'
-								) }
-								onClick={ installAstraClick }
-							/>
-	}
+	
 	const activateAstraClick = () => {
 		const formData = new window.FormData();
 
