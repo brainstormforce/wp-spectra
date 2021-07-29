@@ -63,7 +63,6 @@ function styling( props ) {
 		titlePaddingUnit,
 		mobileTitlePaddingUnit,
 		tabletTitlePaddingUnit,
-		titlePaddingLink,
 		noticeDismiss,
 		noticeAlignment,
 		layout,

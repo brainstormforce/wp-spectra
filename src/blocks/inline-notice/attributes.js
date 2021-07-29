@@ -145,19 +145,15 @@ const attributes = {
 	},
 	titleLeftPadding: {
 		type: "number",
-		default: 15,
 	},
 	titleRightPadding: {
 		type: "number",
-		default: 15,
 	},
 	titleTopPadding: {
 		type: "number",
-		default: 15,
 	},
 	titleBottomPadding: {
 		type: "number",
-		default: 15,
 	},
 	titleLeftPaddingTablet: {
 		type: "number",
@@ -209,19 +205,15 @@ const attributes = {
 	},
 	contentLeftPadding: {
 		type: "number",
-		default: 15,
 	},
 	contentRightPadding: {
 		type: "number",
-		default: 15,
 	},
 	contentTopPadding: {
 		type: "number",
-		default: 15,
 	},
 	contentBottomPadding: {
 		type: "number",
-		default: 15,
 	},
 	contentLeftPaddingTablet: {
 		type: "number",
@@ -262,6 +254,22 @@ const attributes = {
 	contentPaddingLink: {
 		type: "boolean",
 		default: false,
+	},
+	contentVrPadding: {
+		type: "number",
+		default : 15
+	},
+	contentHrPadding: {
+		type: "number",
+		default : 15
+	},
+	titleVrPadding: {
+		type: "number",
+		default : 15
+	},
+	titleHrPadding: {
+		type: "number",
+		default : 15
 	},
 };
 
