@@ -886,43 +886,6 @@ const Settings = (props) => {
 				initialOpen={false}
 			>
 				<SelectControl
-					label={__("Position", "ultimate-addons-for-gutenberg")}
-					value={seperatorPosition}
-					onChange={(value) =>
-						setAttributes({ seperatorPosition: value })
-					}
-					options={[
-						{
-							value: "after_icon",
-							label: __(
-								"After Icon/Image",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "after_prefix",
-							label: __(
-								"After Prefix",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "after_title",
-							label: __(
-								"After Title",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "after_desc",
-							label: __(
-								"After Description",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-				/>
-				<SelectControl
 					label={__("Style")}
 					value={seperatorStyle}
 					onChange={(value) =>
@@ -955,6 +918,43 @@ const Settings = (props) => {
 							value: "dotted",
 							label: __(
 								"Dotted",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+				/>
+				<SelectControl
+					label={__("Position", "ultimate-addons-for-gutenberg")}
+					value={seperatorPosition}
+					onChange={(value) =>
+						setAttributes({ seperatorPosition: value })
+					}
+					options={[
+						{
+							value: "after_icon",
+							label: __(
+								"After Icon/Image",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "after_prefix",
+							label: __(
+								"After Prefix",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "after_title",
+							label: __(
+								"After Title",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "after_desc",
+							label: __(
+								"After Description",
 								"ultimate-addons-for-gutenberg"
 							),
 						},
