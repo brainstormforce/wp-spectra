@@ -153,40 +153,15 @@ const SpacingControl = (props) => {
 		{
 			name: __("Pixel", "ultimate-addons-for-gutenberg"),
 			unitValue: "px",
-			className: "desktop",
 		},
 		{
 			name: __("Em", "ultimate-addons-for-gutenberg"),
 			unitValue: "em",
-			className: "desktop",
 		},
 	];
-	const mobileUnitSizes = [
-		{
-			name: __("Pixel", "ultimate-addons-for-gutenberg"),
-			unitValue: "px",
-			className: "mobile",
-		},
-		{
-			name: __("Em", "ultimate-addons-for-gutenberg"),
-			unitValue: "em",
-			className: "mobile",
-		},
-	];
-
-	const tabletUnitSizes = [
-		{
-			name: __("Pixel", "ultimate-addons-for-gutenberg"),
-			unitValue: "px",
-			className: "tablet",
-		},
-		{
-			name: __("Em", "ultimate-addons-for-gutenberg"),
-			unitValue: "em",
-			className: "tablet",
-		},
-	];
-
+	if (props.units) {
+		unitSizes = props.units;
+	}
 	const devices = [
 		{
 			name: "Desktop",
@@ -222,11 +197,11 @@ const SpacingControl = (props) => {
 						className={"uagb-range-control__units--" + key.name}
 						isSmall
 						isPrimary={
-							("desktop" === key.className &&
+							("Desktop" === deviceType &&
 								unit.value === key.unitValue) ||
-							("mobile" === key.className &&
+							("Mobile" === deviceType &&
 								mUnit.value === key.unitValue) ||
-							("tablet" === key.className &&
+							("Tablet" === deviceType &&
 								tUnit.value === key.unitValue)
 						}
 						isSecondary={
@@ -235,11 +210,11 @@ const SpacingControl = (props) => {
 							tUnit.value !== key.unitValue
 						}
 						aria-pressed={
-							("desktop" === key.className &&
+							("Desktop" === deviceType &&
 								unit.value === key.unitValue) ||
-							("mobile" === key.className &&
+							("Mobile" === deviceType &&
 								mUnit.value === key.unitValue) ||
-							("tablet" === key.className &&
+							("Tablet" === deviceType &&
 								tUnit.value === key.unitValue)
 						}
 						data-device-type={deviceType}
@@ -424,11 +399,7 @@ const SpacingControl = (props) => {
 							"ultimate-addons-for-gutenberg"
 						)}
 					>
-						{deviceType == "Desktop" && onUnitSizeClick(unitSizes)}
-						{deviceType == "Mobile" &&
-							onUnitSizeClick(mobileUnitSizes)}
-						{deviceType == "Tablet" &&
-							onUnitSizeClick(tabletUnitSizes)}
+						{onUnitSizeClick(unitSizes)}
 					</ButtonGroup>
 				</div>
 			</div>
