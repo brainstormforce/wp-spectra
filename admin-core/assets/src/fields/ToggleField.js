@@ -1,7 +1,6 @@
-import ReactHtmlParser from 'react-html-parser';
 import { ToggleControl } from '@wordpress/components';
 import './ToggleField.scss';
-import { __ } from '@wordpress/i18n';
+
 function ToggleField( props ) {
 	const { name, id, label, value, desc } = props;
 
@@ -30,25 +29,6 @@ function ToggleField( props ) {
 					onChange={ handleCheckboxClick }
 				/>
 			</div>
-			{ name == 'blocks_activation_and_deactivation' && (
-				<>
-					<a>
-						{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
-					</a>
-					<a target="_blank">
-						{ __(
-							'Documentation',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</a>
-				</>
-			) }
-
-			{ desc && (
-				<div className="uag-field__desc">
-					{ ReactHtmlParser( desc ) }
-				</div>
-			) }
 		</div>
 	);
 }

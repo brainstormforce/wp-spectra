@@ -49,12 +49,6 @@ function BlocksPage() {
 	return (
 		<>
 			<div className="uag-blocks-settings-metabox">
-				<p>
-					{ __(
-						'Below is the list of all blocks included within Ultimate Addons for Gutenberg. Activate the blocks you want to use and deactivate the rest to get the best performance. Activated blocks will appear in the Gutenberg block editor.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</p>
 				<BlocksSettings />
 				<DisplayCondition/>
 			</div>

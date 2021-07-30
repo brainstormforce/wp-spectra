@@ -2,6 +2,8 @@ import { useStateValue } from '@Utils/StateProvider';
 import React , { useEffect }from 'react';
 import SettingTable from '../common/SettingTable';
 import apiFetch from '@wordpress/api-fetch';
+import { __ } from '@wordpress/i18n';
+import { ToggleField } from '@Fields';
 let enableBlockConditionCachedValue;
 function DisplayCondition( ) {
 	const [
@@ -47,9 +49,15 @@ function DisplayCondition( ) {
 			<div className="uag-extension__metabox">
 				<h2>Extension</h2>
 				<div className="uag-individual-block-settings-metabox">
-				<SettingTable
+					<SettingTable
 						settings={ enableDisplayConditionSettings  }
 					/>
+					<a href="https://ultimategutenberg.com/docs/display-conditions-blocks/" target="_blank">
+						{ __(
+							'Documentation',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</a>
 				</div>
 				
 		</div>

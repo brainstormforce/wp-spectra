@@ -1,6 +1,7 @@
 .uag-global-settings-metabox {
     max-width: 80%;
     margin: 0 auto;
+	border-top: 1px solid #eee;
     background: var(--background-light-color);
     h2{
         text-align: left;
@@ -8,6 +9,6 @@
         margin:0px;
     }
     p{
-        text-align: justify;
+        text-align: left;
     }
 }

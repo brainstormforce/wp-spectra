@@ -19,7 +19,7 @@ function TemplatesButton( ) {
 	const enableTemplatesButtondesc =
 		globaldata.settings.enable_templates_button.fields
 			.enable_templates_button.desc;
-
+	
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
@@ -84,13 +84,19 @@ function TemplatesButton( ) {
 						>
 							{ enableTemplate == 'yes'
 								? __(
-										'Enabled',
+										'Enabled ',
 										'ultimate-addons-for-gutenberg'
 								  )
 								: __(
 										'Disabled',
 										'ultimate-addons-for-gutenberg'
 								  ) }
+								<img
+									src={
+										uag_react.plugin_dir +
+										'admin-core/assets/images/check.svg'
+									}
+								/>
 						</span>
 					</div>
 				</div>

@@ -27,8 +27,6 @@ function UserInfoBox( ) {
 			'_blank' 
 		);
 	};
-
-	let astraThemeButton = '';
 	
 	const activateAstraClick = () => {
 		const formData = new window.FormData();
@@ -58,6 +56,30 @@ function UserInfoBox( ) {
 			'_blank' 
 		);
 	}
+
+	const activateThemeButton = () => {
+		if(!uag_react.theme_file){
+			return <NormalButton
+					buttonText={ __(
+						'Install ASTRA Now!',
+						'ultimate-addons-for-gutenberg'
+					) }
+					saving={ savingState }
+					onClick={ activateAstraClick }
+					/>
+		}else if('Astra' !== uag_react.current_theme && uag_react.theme_file ){
+			return <NormalButton
+						buttonText={ __(
+							'Activate ASTRA Now!',
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ savingState }
+						onClick={ activateAstraClick }
+						data-slug="astra" data-init="astra/astra.php"
+					/>
+		}
+		return null;
+	}
 	return (
 		<div className="uag-metabox uag-user-info">
 			<div className="uag-metabox__header">
@@ -69,7 +91,7 @@ function UserInfoBox( ) {
 				</div>
 				<p>
 					{ __(
-						'Thank you for choosing Ultimate Addons for Gutenberg (UAG)! Start building stunning websites faster than ever before with the most comprehensive library of advanced and creative blocks.',
+						'Thank you for choosing Ultimate Addons for Gutenberg! Start building stunning websites faster than ever before with the most comprehensive library of advanced and creative blocks.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -96,6 +118,7 @@ function UserInfoBox( ) {
 							) }
 							onClick={ onJointheCommunityClick }
 							saving={ false }
+							classes="uag-button--secondary"
 						/>
 					</div>
 					<div className="uag-metabox__element">
@@ -113,11 +136,12 @@ function UserInfoBox( ) {
 						</p>
 						<NormalButton
 							buttonText={ __(
-								'Browse Documentation',
+								'Browse Now',
 								'ultimate-addons-for-gutenberg'
 							) }
 							onClick={ onKnowledgebaseClick }
 							saving={ false }
+							classes="uag-button--secondary"
 						/>
 					</div>
 					<div className="uag-metabox__element">
@@ -135,11 +159,12 @@ function UserInfoBox( ) {
 						</p>
 						<NormalButton
 							buttonText={ __(
-								'Ask Us!',
+								'Get Support',
 								'ultimate-addons-for-gutenberg'
 							) }
 							onClick={ onGetSupportClick }
 							saving={ false }
+							classes="uag-button--secondary"
 						/>
 					</div>
 				</div>
@@ -155,7 +180,7 @@ function UserInfoBox( ) {
 					<div className="uag-starter-tmp__details">
 						<h2>
 							{ __(
-								'Get Expert-built Readymade Website Templates for Free ',
+								'Get Readymade Website Templates for Free ',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
@@ -190,14 +215,7 @@ function UserInfoBox( ) {
 						</p>
 					</div>
 					<div className="uag-theme__cta">
-					<NormalButton
-								buttonText={ __(
-									'Activate ASTRA Now!',
-									'ultimate-addons-for-gutenberg'
-								) }
-								saving={ savingState }
-								onClick={ activateAstraClick }
-							/>
+						{activateThemeButton()}
 						<NormalButton
 							buttonText={ __(
 								'Learn More About Astra',

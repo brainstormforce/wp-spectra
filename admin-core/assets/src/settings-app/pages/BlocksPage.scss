@@ -1,6 +1,7 @@
 .uag-global-settings-metabox {
 	font-size: 14px;
 	max-width: 100%;
+	border-top: 1px solid #eee;
 	form {
 		margin: 0;
 	}
@@ -23,41 +24,13 @@
 		margin-top: 15px;
 	}
 
-	.uag-settings-form .uag-submit-settings {
-		min-width: 165px;
-	}
-
-	/* New Css */
-	.uag-radio-field__option {
-		padding: 0 0 25px;
-	}
-
-	/* Field specific css */
-	.uag-field-row-ga-event-ini-checkout,
-	.uag-field-row-ga-event-add-to-cart,
-	.uag-field-row-ga-event-payment-info,
-	.uag-field-row-ga-event-purchase-complete,
-	.uag-field-row-pixel-event-ini-checkout,
-	.uag-field-row-pixel-event-payment-info {
-		td {
-			padding: 0;
-		}
-	}
-
-	.uag-field-row-pixel-event-purchase-complete {
-		td {
-			padding-top: 0;
-		}
-	}
 }
 .uag-blocks-settings-metabox {
 	background: var(--background-light-color);
     padding: 50px 30px;
     width: 80%;
     margin: 0 auto;
-	p{
-		text-align: center;
-	}
+	border-top: 1px solid #eee;
 }
 .uag-extension__metabox{
 	margin: 20px 0px;
@@ -66,11 +39,8 @@
 	.uag-individual-block-settings-metabox{
 		grid-row-start: 3;
 		grid-column-start: 1;
-		.components-toggle-control .components-base-control__field{
-			margin-bottom: 0px;
-		}
 	}
 	h2{
-		margin:10px;
+		margin:15px;
 	}
 }

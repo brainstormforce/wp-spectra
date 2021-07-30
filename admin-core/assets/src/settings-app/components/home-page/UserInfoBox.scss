@@ -1,6 +1,7 @@
 .uag-user-info {
 	padding-top: 25px;
 	padding-bottom: 25px;
+	border-top: 1px solid #eee;
 	.uag-metabox__element, .uag-starter-tmp__img , .uag-starter-tmp__details,.uag-theme__metabox{
 		margin: 15px;
 	}
@@ -11,7 +12,7 @@
 			p{
 			margin-bottom: 0;
 			max-width: 100%;
-			width: 50%;
+			width: 40%;
 			display: inline-block;
 			text-align: unset;
 		}
@@ -27,7 +28,7 @@
 	}
 	.uag-metabox__element {
 		flex: 1 0 0%;
-		box-shadow: 0px 3px 15px rgba(190, 190, 190, 0.08);
+		box-shadow: 0px 3px 20px rgba(190, 190, 190, 0.15);
 		border-radius: 2px;
 		background-color: var(--metabox-background-color);
 		padding: 30px;
@@ -42,6 +43,7 @@
 	.uag-starter-site__elements{
 		display: grid;
     	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		padding:40px 0;
 		img{
 			height: auto;
 			max-width: 100%;
@@ -74,7 +76,7 @@
 			text-align: center;
 			display: inline-block;		
 			max-width: 100%;
-			width: 85%;
+			width: 70%;
 		}
 	}
 }

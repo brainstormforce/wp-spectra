@@ -20,6 +20,7 @@ function BlocksSettings( ) {
 		options[ 'blocks_activation_and_deactivation' ];
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
+		
 		return <IndividualBlockSetting key={ index } blockInfo={ block } />;
 	} );
 	

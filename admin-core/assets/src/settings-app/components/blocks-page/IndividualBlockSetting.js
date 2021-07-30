@@ -2,6 +2,8 @@ import { useStateValue } from '@Utils/StateProvider';
 import React, { useEffect } from 'react';
 import { ToggleField } from '@Fields';
 import apiFetch from '@wordpress/api-fetch';
+import { __ } from '@wordpress/i18n';
+
 let blocksCachedValue;
 
 function IndividualBlockSetting( props ) {
@@ -56,6 +58,15 @@ function IndividualBlockSetting( props ) {
 				value={ blocksValue[ props.blockInfo.slug ] }
 				label={ props.blockInfo.title }
 			/>
+			<a href={`https://ultimategutenberg.com/blocks/${props.blockInfo.slug}`} target="_blank">
+				{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
+			</a>
+			<a href={`https://ultimategutenberg.com/docs/${props.blockInfo.doc}`} target="_blank">
+				{ __(
+					'Documentation',
+					'ultimate-addons-for-gutenberg'
+				) }
+			</a>
 		</div>
 	);
 }

@@ -57,6 +57,8 @@
 		&.uag-global-nav-menu__tab--active {
 			background: var(--background-light-color);
 			color: #2F4F4F;
+			border: 1px solid #eee;
+			border-bottom: 0;	
 		}
 	}
 }

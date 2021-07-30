@@ -187,7 +187,7 @@ class AdminMenu {
 
 		$admin_slug  = 'uag-admin';
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
-
+		
 		// Styles.
 		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
 		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
@@ -195,6 +195,7 @@ class AdminMenu {
 		wp_enqueue_style( $admin_slug . '-header', UAG_ADMIN_URL . 'assets/css/header.css', array(), UAGB_VER );
 		wp_enqueue_style( 'wp-components' );
 		wp_style_add_data( $admin_slug . '-header', 'rtl', 'replace' );
+		$theme = wp_get_theme();
 
 		$localize = apply_filters(
 			'uag_react_admin_localize',
@@ -203,9 +204,11 @@ class AdminMenu {
 				'default_page_builder' => '',
 				'admin_base_slug'      => $this->menu_slug,
 				'admin_base_url'       => admin_url(),
+				'current_theme'    => $theme->name,
+				'theme_file' => file_exists( get_theme_root() . '/astra/functions.php' ),
 				'plugin_dir'           => UAGB_URL,
 				'plugin_ver'           => UAGB_VER,
-				'logo_url'             => UAGB_URL . 'admin/assets/images/uagb_logo.svg',
+				'logo_url'             => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
 				'admin_url'            => admin_url( 'admin.php' ),
 				'ajax_url'             => admin_url( 'admin-ajax.php' ),
 				'home_slug'            => $this->menu_slug,
@@ -229,7 +232,7 @@ class AdminMenu {
 	public function get_blocks_info_for_activation_deactivation() {
 
 		$blocks = \UAGB_Admin_Helper::get_block_options();
-
+		
 		array_multisort(
 			array_map(
 				function( $element ) {
@@ -285,7 +288,7 @@ class AdminMenu {
 				if ( in_array( $addon, $child_blocks, true ) ) {
 					continue;
 				}
-				$info['slug']   = $addon;
+				
 				$blocks_names[] = $info;
 
 			}

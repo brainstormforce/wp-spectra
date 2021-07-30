@@ -138,6 +138,12 @@ function VersionControl( props ) {
 										'Disabled',
 										'ultimate-addons-for-gutenberg'
 								  ) }
+								<img
+									src={
+										uag_react.plugin_dir +
+										'admin-core/assets/images/check.svg'
+									}
+								/>
 						</span>
 					</div>
 				</div>

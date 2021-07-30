@@ -42,7 +42,7 @@ class GlobalSettings {
 					'enable_beta_updates' => array(
 						'type'  => 'button',
 						'name'  => 'enable_beta_updates',
-						'label' => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Enable Beta', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => __(
 							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.The beta version will not install automatically. You will always have the option to ignore it.',
