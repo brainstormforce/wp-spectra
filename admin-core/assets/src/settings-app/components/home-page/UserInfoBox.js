@@ -1,13 +1,15 @@
 import React,  { useState }  from 'react';
-
 import './UserInfoBox.scss';
-
 import { __ } from '@wordpress/i18n';
 import { NormalButton } from '@Fields';
 import apiFetch from '@wordpress/api-fetch';
+
 function UserInfoBox( ) {
 	
-	const [ savingState, setssavingState ] = useState( false );
+	const [ installingThemeText, setsinstallingThemeText ] = useState( 'Install ASTRA Now!' );
+	const [ activateThemeText, setsactivateThemeText ] = useState( 'Activate ASTRA Now!' );
+	const [ installingTheme, setsinstallingTheme ] = useState( false );
+	const [ activateTheme, setsactivateTheme ] = useState( false );
 
 	const onJointheCommunityClick = () => {
 		window.open(
@@ -29,57 +31,77 @@ function UserInfoBox( ) {
 	};
 	
 	const activateAstraClick = () => {
-		const formData = new window.FormData();
+		
+		setsactivateTheme( true );
+		setsactivateThemeText('Activating Astra');
+		setTimeout( function() {
+			const formData = new window.FormData();
+			formData.append( 'action', 'uag_theme_activate' );
+			formData.append( 'security', uag_react.theme_activate_nonce );
+			formData.append( 'slug', 'astra' );
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( ( data ) => {
+				if ( data.success ) {
+					setsactivateTheme( false );
+					setsactivateThemeText('Astra Activated!');
+					window.location.reload();
+				} 
+			} );
+		}, 1200 )
+	};		
+	const installAstraClick = ( ) => {
+			setsinstallingTheme( true );
+			setsinstallingThemeText( 'Installing Astra' );
 
-		setssavingState( true );
+			if ( wp.updates.shouldRequestFilesystemCredentials && ! wp.updates.ajaxLocked ) {
+				wp.updates.requestFilesystemCredentials( event )
 
-		formData.append( 'action', 'uag_theme_activate' );
-		formData.append( 'security', uag_react.uag_theme_activate_nonce );
-		formData.append( 'value', 'astra' );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			if ( data.success ) {
-				setssavingState( false );
-			} 
-		} );
-	}		
-	const installAstraClick = () => {
-
-	}
+				$document.on( "credential-modal-cancel", function() {
+					wp.a11y.speak( wp.updates.l10n.updateCancel, "polite" )
+				} )
+			}
+			
+			wp.updates.installTheme( {
+				slug:   'astra'
+			}).then(function(e){
+				setsinstallingTheme( false );
+				setsinstallingThemeText( 'Installed Astra!' );
+				window.location.reload();
+			})
+	};
 	const learnMoreAstraClick = () => {
 		window.open(
 			'https://wpastra.com/',
 			'_blank' 
 		);
-	}
-
-	const activateThemeButton = () => {
+	};
+	const astraThemeButton = () => {
 		if(!uag_react.theme_file){
 			return <NormalButton
 					buttonText={ __(
-						'Install ASTRA Now!',
+						installingThemeText,
 						'ultimate-addons-for-gutenberg'
 					) }
-					saving={ savingState }
-					onClick={ activateAstraClick }
+					saving={ installingTheme }
+					onClick={  installAstraClick }
 					/>
 		}else if('Astra' !== uag_react.current_theme && uag_react.theme_file ){
 			return <NormalButton
 						buttonText={ __(
-							'Activate ASTRA Now!',
+							activateThemeText,
 							'ultimate-addons-for-gutenberg'
 						) }
-						saving={ savingState }
+						saving={ activateTheme }
 						onClick={ activateAstraClick }
 						data-slug="astra" data-init="astra/astra.php"
 					/>
 		}
 		return null;
-	}
+	};
+
 	return (
 		<div className="uag-metabox uag-user-info">
 			<div className="uag-metabox__header">
@@ -215,7 +237,7 @@ function UserInfoBox( ) {
 						</p>
 					</div>
 					<div className="uag-theme__cta">
-						{activateThemeButton()}
+						{astraThemeButton()}
 						<NormalButton
 							buttonText={ __(
 								'Learn More About Astra',

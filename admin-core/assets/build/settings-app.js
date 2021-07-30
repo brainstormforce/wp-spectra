@@ -1517,10 +1517,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function UserInfoBox() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])('Install ASTRA Now!'),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
-      savingState = _useState2[0],
-      setssavingState = _useState2[1];
+      installingThemeText = _useState2[0],
+      setsinstallingThemeText = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])('Activate ASTRA Now!'),
+      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState3, 2),
+      activateThemeText = _useState4[0],
+      setsactivateThemeText = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      _useState6 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState5, 2),
+      installingTheme = _useState6[0],
+      setsinstallingTheme = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      _useState8 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState7, 2),
+      activateTheme = _useState8[0],
+      setsactivateTheme = _useState8[1];
 
   var onJointheCommunityClick = function onJointheCommunityClick() {
     window.open('https://ultimategutenberg.com/', '_blank');
@@ -1535,39 +1550,62 @@ function UserInfoBox() {
   };
 
   var activateAstraClick = function activateAstraClick() {
-    var formData = new window.FormData();
-    setssavingState(true);
-    formData.append('action', 'uag_theme_activate');
-    formData.append('security', uag_react.uag_theme_activate_nonce);
-    formData.append('value', 'astra');
-    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_6___default()({
-      url: uag_react.ajax_url,
-      method: 'POST',
-      body: formData
-    }).then(function (data) {
-      if (data.success) {
-        setssavingState(false);
-      }
-    });
+    setsactivateTheme(true);
+    setsactivateThemeText('Activating Astra');
+    setTimeout(function () {
+      var formData = new window.FormData();
+      formData.append('action', 'uag_theme_activate');
+      formData.append('security', uag_react.theme_activate_nonce);
+      formData.append('slug', 'astra');
+      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_6___default()({
+        url: uag_react.ajax_url,
+        method: 'POST',
+        body: formData
+      }).then(function (data) {
+        if (data.success) {
+          setsactivateTheme(false);
+          setsactivateThemeText('Astra Activated!');
+          window.location.reload();
+        }
+      });
+    }, 1200);
   };
 
-  var installAstraClick = function installAstraClick() {};
+  var installAstraClick = function installAstraClick() {
+    setsinstallingTheme(true);
+    setsinstallingThemeText('Installing Astra');
+
+    if (wp.updates.shouldRequestFilesystemCredentials && !wp.updates.ajaxLocked) {
+      wp.updates.requestFilesystemCredentials(event);
+      $document.on("credential-modal-cancel", function () {
+        wp.a11y.speak(wp.updates.l10n.updateCancel, "polite");
+      });
+    }
+
+    wp.updates.installTheme({
+      slug: 'astra'
+    }).then(function (e) {
+      setsinstallingTheme(false);
+      setsinstallingThemeText('Installed Astra!');
+      window.location.reload();
+    });
+  };
 
   var learnMoreAstraClick = function learnMoreAstraClick() {
     window.open('https://wpastra.com/', '_blank');
   };
 
-  var activateThemeButton = function activateThemeButton() {
+  var astraThemeButton = function astraThemeButton() {
     if (!uag_react.theme_file) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_5__["NormalButton"], {
-        buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Install ASTRA Now!', 'ultimate-addons-for-gutenberg'),
-        saving: savingState,
-        onClick: activateAstraClick
+        buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])(installingThemeText, 'ultimate-addons-for-gutenberg'),
+        saving: installingTheme,
+        onClick: installAstraClick
       });
     } else if ('Astra' !== uag_react.current_theme && uag_react.theme_file) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_5__["NormalButton"], {
-        buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate ASTRA Now!', 'ultimate-addons-for-gutenberg'),
-        saving: savingState,
+        buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])(activateThemeText, 'ultimate-addons-for-gutenberg'),
+        saving: activateTheme,
         onClick: activateAstraClick,
         "data-slug": "astra",
         "data-init": "astra/astra.php"
@@ -1625,7 +1663,7 @@ function UserInfoBox() {
     className: "uag-theme__content"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Pair UAG With the Best Gutenberg WordPress Theme - Astra!', 'ultimate-addons-for-gutenberg')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.', 'ultimate-addons-for-gutenberg'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "uag-theme__cta"
-  }, activateThemeButton(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_5__["NormalButton"], {
+  }, astraThemeButton(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_Fields__WEBPACK_IMPORTED_MODULE_5__["NormalButton"], {
     buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Learn More About Astra', 'ultimate-addons-for-gutenberg'),
     saving: false,
     classes: "uag-button--secondary",
