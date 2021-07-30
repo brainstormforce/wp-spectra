@@ -51,7 +51,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
 					'uagb/advanced-heading'       => array(
-						'slug'        => '',
+						'slug'        => 'advanced-heading',
+						'doc' => 'advanced-heading',
 						'title'       => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block lets you add a combination of a heading and a sub-heading with a separator in between.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -95,7 +96,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/columns'                => array(
-						'slug'        => '',
+						'doc' => 'advanced-columns',
+						'slug'        => 'advanced-columns',
 						'title'       => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -259,7 +261,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/blockquote'             => array(
-						'slug'        => '',
+						'doc' => 'blockquote',
+						'slug'        => 'blockquote',
 						'title'       => __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -355,7 +358,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/call-to-action'         => array(
-						'slug'        => '',
+						'slug'        => 'call-to-action',
 						'title'       => __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -428,7 +431,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/cf7-styler'             => array(
-						'slug'        => '',
+						'doc' => 'contact-form-7-styler',
+						'slug'        => 'contact-form-7-styler',
 						'title'       => __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
 						'is_active'   => class_exists( 'WPCF7_ContactForm' ),
@@ -565,7 +569,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/content-timeline'       => array(
-						'slug'        => '',
+						'doc' => 'content-timeline',
+						'slug'        => 'content-timeline',
 						'title'       => __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -664,7 +669,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/faq'                    => array(
-						'slug'        => '',
+						'doc' => 'faq-schema-or-accordion',
+						'slug'        => 'faq',
 						'title'       => __( 'FAQ - Schema', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -775,7 +781,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/gf-styler'              => array(
-						'slug'        => '',
+						'doc' => 'gravity-form',
+						'slug'        => 'gravity-form-styler',
 						'title'       => __( 'Gravity Form Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Gravity Forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -929,7 +936,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/google-map'             => array(
-						'slug'        => '',
+						'doc' => 'google-map',
+						'slug'        => 'google-map',
 						'title'       => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -941,7 +949,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/how-to'                 => array(
-						'slug'        => '',
+						'doc' => 'how-to-schema',
+						'slug'        => 'how-to-schema',
 						'title'       => __( 'How-to Schema', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1015,7 +1024,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/icon-list'              => array(
-						'slug'        => '',
+						'doc'        => 'icon-list',
+						'slug'        => 'icon-list',
 						'title'       => __( 'Icon List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1092,7 +1102,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/info-box'               => array(
-						'slug'        => '',
+						'doc' => 'infobox',
+						'slug'        => 'info-box',
 						'title'       => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1190,7 +1201,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/inline-notice'          => array(
-						'slug'        => '',
+						'doc'  => 'inline-notice',
+						'slug'        => 'inline-notice',
 						'title'       => __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1244,7 +1256,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/marketing-button'       => array(
-						'slug'        => '',
+						'doc' => 'marketing-button',
+						'slug'        => 'marketing-button',
 						'title'       => __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1320,7 +1333,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/buttons'                => array(
-						'slug'        => '',
+						'doc' => 'multi-buttons',
+						'slug'        => 'multi-buttons',
 						'title'       => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1379,7 +1393,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/post-carousel'          => array(
-						'slug'        => '',
+						'doc' => 'post-carousel',
+						'slug'        => 'post-layouts',
 						'title'       => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1482,7 +1497,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/post-grid'              => array(
-						'slug'        => '',
+						'doc'       => 'post-grid',
+						'slug'        => 'post-layouts',
 						'title'       => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1594,7 +1610,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/post-masonry'           => array(
-						'slug'        => '',
+						'doc' => 'post-masonry',
+						'slug'        => 'post-layouts',
 						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1750,7 +1767,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 					),
 					'uagb/post-timeline'          => array(
-						'slug'        => '',
+						'doc' => 'post-timeline',
+						'slug'        => 'post-timeline',
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1852,7 +1870,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/restaurant-menu'        => array(
-						'slug'        => '',
+						'doc'        => 'price-list',
+						'slug'        => 'price-list',
 						'title'       => __( 'Price List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -1926,7 +1945,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/review'                 => array(
-						'slug'        => '',
+						'doc'  => 'review-schema',
+						'slug'        => 'review-schema',
 						'title'       => __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2052,7 +2072,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/section'                => array(
-						'slug'        => '',
+						'doc' => 'section',
+						'slug'        => 'sections',
 						'title'       => __( 'Section', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2135,7 +2156,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/social-share'           => array(
-						'slug'        => '',
+						'doc' => 'social-share',
+						'slug'        => 'social-share',
 						'title'       => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2190,7 +2212,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/tabs'                   => array(
-						'slug'        => '',
+						'slug'        => 'tabs',
+						'doc'    => 'tabs-block',
 						'title'       => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2263,7 +2286,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/table-of-contents'      => array(
-						'slug'        => '',
+						'doc' => 'table-of-contents',
+						'slug'        => 'table-of-contents',
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2365,7 +2389,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/team'                   => array(
-						'slug'        => '',
+						'doc' => 'team',
+						'slug'        => 'team',
 						'title'       => __( 'Team', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2438,7 +2463,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/testimonial'            => array(
-						'slug'        => '',
+						'doc' => 'testimonial',
+						'slug'        => 'testimonials',
 						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2524,7 +2550,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/wp-search'              => array(
-						'slug'        => '',
+						'doc' => 'wp-search',
+						'slug'        => 'wp-search',
 						'title'       => __( 'WP - Search', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2593,7 +2620,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/taxonomy-list'          => array(
-						'slug'        => '',
+						'doc' => 'taxonomy-list',
+						'slug'        => 'taxonomy',
 						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2684,7 +2712,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/forms'                  => array(
-						'slug'        => '',
+						'slug'        => 'forms',
+						'doc' => 'uag-forms-block',
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
@@ -2898,7 +2927,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(),
 					),
 					'uagb/lottie'                 => array(
-						'slug'        => '',
+						'doc'  => 'lottie',
+						'slug'        => 'lottie',
 						'title'       => __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add Lottie animation and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
