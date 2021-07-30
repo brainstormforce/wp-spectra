@@ -7,13 +7,13 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import UAGB_Block_Icons from "@Controls/block-icons";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
-import ColumnResponsive from "@Components/typography/column-responsive";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
 import ResponsiveSlider from "../../components/responsive-slider";
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
+import SpacingControl from "../../components/spacing-control";
 
 import { __ } from "@wordpress/i18n";
 
@@ -114,6 +114,20 @@ const Settings = (props) => {
 		vquestionPaddingMobile,
 		questionBottomPaddingMobile,
 		headingTag,
+		answerSpacingLink,
+		questionSpacingLink,
+		answerTopPadding,
+		answerRightPadding,
+		answerBottomPadding,
+		answerLeftPadding,
+		answerTopPaddingTablet,
+		answerRightPaddingTablet,
+		answerBottomPaddingTablet,
+		answerLeftPaddingTablet,
+		answerTopPaddingMobile,
+		answerRightPaddingMobile,
+		answerBottomPaddingMobile,
+		answerLeftPaddingMobile,
 	} = attributes;
 
 	const onchangeIcon = (value) => {
@@ -735,7 +749,7 @@ const Settings = (props) => {
 					}
 				/>
 				<SpacingControl
-					{...this.props}
+					{...props}
 					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: vquestionPaddingDesktop,
@@ -877,222 +891,93 @@ const Settings = (props) => {
 						label: "answerLineHeightTablet",
 					}}
 				/>
-				<p className="uagb-setting-label">
-					{__("Text Color", "ultimate-addons-for-gutenberg")}
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={{ backgroundColor: answerTextColor }}
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={answerTextColor}
-					onChange={(value) =>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={answerTextColor}
+					onColorChange={(value) =>
 						setAttributes({ answerTextColor: value })
 					}
-					allowReset
 				/>
-				<ColumnResponsive />
-				{"Desktop" === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={__(
-								"Size Type",
-								"ultimate-addons-for-gutenberg"
-							)}
-						>
-							<Button
-								key={"px"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "px"}
-								aria-pressed={answerPaddingTypeDesktop === "px"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "px",
-									})
-								}
-							>
-								{"px"}
-							</Button>
-							<Button
-								key={"%"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "%"}
-								aria-pressed={answerPaddingTypeDesktop === "%"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "%",
-									})
-								}
-							>
-								{"%"}
-							</Button>
-						</ButtonGroup>
-						<h2>
-							{__("Padding", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<RangeControl
-							label={UAGB_Block_Icons.vertical_spacing}
-							className={"uagb-margin-control"}
-							value={vanswerPaddingDesktop}
-							onChange={(value) =>
-								setAttributes({
-									vanswerPaddingDesktop: value,
-								})
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-						<RangeControl
-							label={UAGB_Block_Icons.horizontal_spacing}
-							className={"uagb-margin-control"}
-							value={hanswerPaddingDesktop}
-							onChange={(value) =>
-								setAttributes({
-									hanswerPaddingDesktop: value,
-								})
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-					</>
-				)}
-				{"Tablet" === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={__(
-								"Size Type",
-								"ultimate-addons-for-gutenberg"
-							)}
-						>
-							<Button
-								key={"px"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "px"}
-								aria-pressed={answerPaddingTypeDesktop === "px"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "px",
-									})
-								}
-							>
-								{"px"}
-							</Button>
-							<Button
-								key={"%"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "%"}
-								aria-pressed={answerPaddingTypeDesktop === "%"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "%",
-									})
-								}
-							>
-								{"%"}
-							</Button>
-						</ButtonGroup>
-						<h2>
-							{__("Padding", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<RangeControl
-							label={UAGB_Block_Icons.vertical_spacing}
-							className={"uagb-margin-control"}
-							value={vanswerPaddingTablet}
-							onChange={(value) =>
-								setAttributes({ vanswerPaddingTablet: value })
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-						<RangeControl
-							label={UAGB_Block_Icons.horizontal_spacing}
-							className={"uagb-margin-control"}
-							value={hanswerPaddingTablet}
-							onChange={(value) =>
-								setAttributes({ hanswerPaddingTablet: value })
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-					</>
-				)}
-				{"Mobile" === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={__(
-								"Size Type",
-								"ultimate-addons-for-gutenberg"
-							)}
-						>
-							<Button
-								key={"px"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "px"}
-								aria-pressed={answerPaddingTypeDesktop === "px"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "px",
-									})
-								}
-							>
-								{"px"}
-							</Button>
-							<Button
-								key={"%"}
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={answerPaddingTypeDesktop === "%"}
-								aria-pressed={answerPaddingTypeDesktop === "%"}
-								onClick={() =>
-									setAttributes({
-										answerPaddingTypeDesktop: "%",
-									})
-								}
-							>
-								{"%"}
-							</Button>
-						</ButtonGroup>
-						<h2>
-							{__("Padding", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<RangeControl
-							label={UAGB_Block_Icons.vertical_spacing}
-							className={"uagb-margin-control"}
-							value={vanswerPaddingMobile}
-							onChange={(value) =>
-								setAttributes({ vanswerPaddingMobile: value })
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-						<RangeControl
-							label={UAGB_Block_Icons.horizontal_spacing}
-							className={"uagb-margin-control"}
-							value={hanswerPaddingMobile}
-							onChange={(value) =>
-								setAttributes({ hanswerPaddingMobile: value })
-							}
-							min={0}
-							max={100}
-							allowReset
-						/>
-					</>
-				)}
+				<SpacingControl
+					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: answerTopPadding,
+						label: "answerTopPadding",
+					}}
+					valueRight={{
+						value: answerRightPadding,
+						label: "answerRightPadding",
+					}}
+					valueBottom={{
+						value: answerBottomPadding,
+						label: "answerBottomPadding",
+					}}
+					valueLeft={{
+						value: answerLeftPadding,
+						label: "answerLeftPadding",
+					}}
+					valueTopTablet={{
+						value: answerTopPaddingTablet,
+						label: "answerTopPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: answerRightPaddingTablet,
+						label: "answerRightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: answerBottomPaddingTablet,
+						label: "answerBottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: answerLeftPaddingTablet,
+						label: "answerLeftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: answerTopPaddingMobile,
+						label: "answerTopPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: answerRightPaddingMobile,
+						label: "answerRightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: answerBottomPaddingMobile,
+						label: "answerBottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: answerLeftPaddingMobile,
+						label: "answerLeftPaddingMobile",
+					}}
+					unit={{
+						value: answerPaddingTypeDesktop,
+						label: "answerPaddingTypeDesktop",
+					}}
+					mUnit={{
+						value: answerPaddingTypeDesktop,
+						label: "answerPaddingTypeDesktop",
+					}}
+					tUnit={{
+						value: answerPaddingTypeDesktop,
+						label: "answerPaddingTypeDesktop",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: answerSpacingLink,
+						label: "answerSpacingLink",
+					}}
+					units={[
+						{
+							name: __("Pixel", "ultimate-addons-for-gutenberg"),
+							unitValue: "px",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
+				/>
 			</PanelBody>
 		);
 	};

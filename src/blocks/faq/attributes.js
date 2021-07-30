@@ -333,5 +333,45 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	answerSpacingLink: {
+		type: "boolean",
+		default: false,
+	},
+	answerTopPadding: {
+		type: "number",
+	},
+	answerRightPadding: {
+		type: "number",
+	},
+	answerBottomPadding: {
+		type: "number",
+	},
+	answerLeftPadding: {
+		type: "number",
+	},
+	answerTopPaddingTablet: {
+		type: "number",
+	},
+	answerRightPaddingTablet: {
+		type: "number",
+	},
+	answerBottomPaddingTablet: {
+		type: "number",
+	},
+	answerLeftPaddingTablet: {
+		type: "number",
+	},
+	answerTopPaddingMobile: {
+		type: "number",
+	},
+	answerRightPaddingMobile: {
+		type: "number",
+	},
+	answerBottomPaddingMobile: {
+		type: "number",
+	},
+	answerLeftPaddingMobile: {
+		type: "number",
+	},
 };
 export default attributes;

@@ -5009,6 +5009,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] );
 			$m_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] );
 
+			$answer_top_padding_desktop    = isset( $attr['answerTopPadding'] ) ? $attr['answerTopPadding'] : $attr['vanswerPaddingDesktop'];
+			$answer_bottom_padding_desktop = isset( $attr['answerBottomPadding'] ) ? $attr['answerBottomPadding'] : $attr['vanswerPaddingDesktop'];
+			$answer_left_padding_desktop   = isset( $attr['answerLeftPadding'] ) ? $attr['answerLeftPadding'] : $attr['hanswerPaddingDesktop'];
+			$answer_right_padding_desktop  = isset( $attr['answerRightPadding'] ) ? $attr['answerRightPadding'] : $attr['hanswerPaddingDesktop'];
+
+			$answer_top_padding_tablet    = isset( $attr['answerTopPaddingTablet'] ) ? $attr['answerTopPaddingTablet'] : $attr['vanswerPaddingTablet'];
+			$answer_bottom_padding_tablet = isset( $attr['answerBottomPaddingTablet'] ) ? $attr['answerBottomPaddingTablet'] : $attr['vanswerPaddingTablet'];
+			$answer_left_padding_tablet   = isset( $attr['answerLeftPaddingTablet'] ) ? $attr['answerLeftPaddingTablet'] : $attr['hanswerPaddingTablet'];
+			$answer_right_padding_tablet  = isset( $attr['answerRightPaddingTablet'] ) ? $attr['answerRightPaddingTablet'] : $attr['hanswerPaddingTablet'];
+
+			$answer_top_padding_mobile    = isset( $attr['answerTopPaddingMobile'] ) ? $attr['answerTopPaddingMobile'] : $attr['vanswerPaddingMobile'];
+			$answer_bottom_padding_mobile = isset( $attr['answerBottomPaddingMobile'] ) ? $attr['answerBottomPaddingMobile'] : $attr['vanswerPaddingMobile'];
+			$answer_left_padding_mobile   = isset( $attr['answerLeftPaddingMobile'] ) ? $attr['answerLeftPaddingMobile'] : $attr['hanswerPaddingMobile'];
+			$answer_right_padding_mobile  = isset( $attr['answerRightPaddingMobile'] ) ? $attr['answerRightPaddingMobile'] : $attr['hanswerPaddingMobile'];
+
 			$selectors = array(
 				' .uagb-icon svg'                      => array(
 					'width'     => $icon_size,
@@ -5048,10 +5063,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'              => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
 				),
 				'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestion'], 'px' ),
@@ -5078,10 +5093,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingTablet'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'     => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
 				),
 				' .uagb-icon svg'             => array(
 					'width'     => $t_icon_size,
@@ -5102,10 +5117,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingMobile'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'     => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
 				),
 				' .uagb-icon svg'             => array(
 					'width'     => $m_icon_size,

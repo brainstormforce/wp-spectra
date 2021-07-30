@@ -149,7 +149,7 @@ const SpacingControl = (props) => {
 		}
 	};
 
-	const unitSizes = [
+	let unitSizes = [
 		{
 			name: __("Pixel", "ultimate-addons-for-gutenberg"),
 			unitValue: "px",
