@@ -2025,8 +2025,6 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default .rfipicons__ibox {
-	background-color: #f5f5f5;
-	border: 1px solid #f5f5f5;
 	color: #424242;
 }
 
@@ -3498,9 +3496,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
 
-.uag-typography-font-family-options {
-	margin-top: 24px;
-}
 .uagb-control__actions .uagb-size-type-field-tabs {
 	margin: 0;
 }
