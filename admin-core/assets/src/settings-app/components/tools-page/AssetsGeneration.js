@@ -14,12 +14,11 @@ function AssetsGeneration( props ) {
 
 	const [ savingState, setssavingState ] = useState( false );
 	const [ savingAssetGenState, setssavingAssetGenState ] = useState( false );
-
+	const [ updateStatus, setUpdateStatus ] = useState( false );
+	
 	const handleRegenerateAssets = () => {
 		const formData = new window.FormData();
-
-		setssavingState( true );
-
+		setUpdateStatus('Processing....');
 		formData.append( 'action', 'uag_regenerate_assets' );
 		formData.append( 'security', uag_react.regenerate_assets_nonce );
 		formData.append( 'value', true );
@@ -31,6 +30,7 @@ function AssetsGeneration( props ) {
 		} ).then( ( data ) => {
 			if ( data.success ) {
 				setssavingState( false );
+				setUpdateStatus('Asset Regenerated!');
 			} 
 		} );
 	};
@@ -144,6 +144,11 @@ function AssetsGeneration( props ) {
 							onClick={ handleRegenerateAssets }
 							saving={ savingState }
 						/>
+						<span
+							className={ `uag-control__status-yes` }
+						>
+							{updateStatus}
+						</span>
 					</div>
 				</div>
 			</div>

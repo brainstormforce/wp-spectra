@@ -1903,9 +1903,14 @@ function AssetsGeneration(props) {
       savingAssetGenState = _useState6[0],
       setssavingAssetGenState = _useState6[1];
 
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_6__["useState"])(false),
+      _useState8 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState7, 2),
+      updateStatus = _useState8[0],
+      setUpdateStatus = _useState8[1];
+
   var handleRegenerateAssets = function handleRegenerateAssets() {
     var formData = new window.FormData();
-    setssavingState(true);
+    setUpdateStatus('Processing....');
     formData.append('action', 'uag_regenerate_assets');
     formData.append('security', uag_react.regenerate_assets_nonce);
     formData.append('value', true);
@@ -1916,6 +1921,7 @@ function AssetsGeneration(props) {
     }).then(function (data) {
       if (data.success) {
         setssavingState(false);
+        setUpdateStatus('Asset Regenerated!');
       }
     });
   };
@@ -1975,7 +1981,9 @@ function AssetsGeneration(props) {
     buttonText: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Regenerate Assets', 'ultimate-addons-for-gutenberg'),
     onClick: handleRegenerateAssets,
     saving: savingState
-  })))));
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+    className: "uag-control__status-yes"
+  }, updateStatus)))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AssetsGeneration);
