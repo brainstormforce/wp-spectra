@@ -4795,35 +4795,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPaddingDesktop'];
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPaddingDesktop'];
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPaddingDesktop'];
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPaddingDesktop'];
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['vPaddingDesktop'] : $attr['topPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['vPaddingDesktop'] : $attr['bottomPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['hPaddingDesktop'] : $attr['leftPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['hPaddingDesktop'] : $attr['rightPadding'];
 
-			$mobile_top_padding    = isset( $attr['topPaddingMobile'] ) ? $attr['topPaddingMobile'] : $attr['vPaddingMobile'];
-			$mobile_bottom_padding = isset( $attr['bottomPaddingMobile'] ) ? $attr['bottomPaddingMobile'] : $attr['vPaddingMobile'];
-			$mobile_left_padding   = isset( $attr['leftPaddingMobile'] ) ? $attr['leftPaddingMobile'] : $attr['hPaddingMobile'];
-			$mobile_right_padding  = isset( $attr['rightPaddingMobile'] ) ? $attr['rightPaddingMobile'] : $attr['hPaddingMobile'];
+			$mobile_top_padding    = isset( $attr['topPaddingMobile'] ) ? $attr['vPaddingMobile'] : $attr['topPaddingMobile'];
+			$mobile_bottom_padding = isset( $attr['bottomPaddingMobile'] ) ? $attr['vPaddingMobile'] : $attr['bottomPaddingMobile'];
+			$mobile_left_padding   = isset( $attr['leftPaddingMobile'] ) ? $attr['hPaddingMobile'] : $attr['leftPaddingMobile'];
+			$mobile_right_padding  = isset( $attr['rightPaddingMobile'] ) ? $attr['hPaddingMobile'] : $attr['rightPaddingMobile'];
 
-			$tablet_top_padding    = isset( $attr['topPaddingTablet'] ) ? $attr['topPaddingTablet'] : $attr['vPaddingTablet'];
-			$tablet_bottom_padding = isset( $attr['bottomPaddingTablet'] ) ? $attr['bottomPaddingTablet'] : $attr['vPaddingTablet'];
-			$tablet_left_padding   = isset( $attr['leftPaddingTablet'] ) ? $attr['leftPaddingTablet'] : $attr['hPaddingTablet'];
-			$tablet_right_padding  = isset( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : $attr['hPaddingTablet'];
+			$tablet_top_padding    = isset( $attr['topPaddingTablet'] ) ? $attr['vPaddingTablet'] : $attr['topPaddingTablet'];
+			$tablet_bottom_padding = isset( $attr['bottomPaddingTablet'] ) ? $attr['vPaddingTablet'] : $attr['bottomPaddingTablet'];
+			$tablet_left_padding   = isset( $attr['leftPaddingTablet'] ) ? $attr['hPaddingTablet'] : $attr['leftPaddingTablet'];
+			$tablet_right_padding  = isset( $attr['rightPaddingTablet'] ) ? $attr['hPaddingTablet'] : $attr['rightPaddingTablet'];
 
-			$top_margin    = isset( $attr['topMargin'] ) ? $attr['topMargin'] : $attr['vMarginDesktop'];
-			$bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['bottomMargin'] : $attr['vMarginDesktop'];
-			$left_margin   = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['hMarginDesktop'];
-			$right_margin  = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['hMarginDesktop'];
+			$top_margin    = isset( $attr['topMargin'] ) ? $attr['vMarginDesktop'] : $attr['topMargin'];
+			$bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['vMarginDesktop'] : $attr['bottomMargin'];
+			$left_margin   = isset( $attr['leftMargin'] ) ? $attr['hMarginDesktop'] : $attr['leftMargin'];
+			$right_margin  = isset( $attr['rightMargin'] ) ? $attr['hMarginDesktop'] : $attr['rightMargin'];
 
-			$mobile_top_margin    = isset( $attr['topMarginMobile'] ) ? $attr['topMarginMobile'] : $attr['vMarginMobile'];
-			$mobile_bottom_margin = isset( $attr['bottomMarginMobile'] ) ? $attr['bottomMarginMobile'] : $attr['vMarginMobile'];
-			$mobile_left_margin   = isset( $attr['leftMarginMobile'] ) ? $attr['leftMarginMobile'] : $attr['hMarginMobile'];
-			$mobile_right_margin  = isset( $attr['rightMarginMobile'] ) ? $attr['rightMarginMobile'] : $attr['hMarginMobile'];
+			$mobile_top_margin    = isset( $attr['topMarginMobile'] ) ? $attr['vMarginMobile'] : $attr['topMarginMobile'];
+			$mobile_bottom_margin = isset( $attr['bottomMarginMobile'] ) ? $attr['vMarginMobile'] : $attr['bottomMarginMobile'];
+			$mobile_left_margin   = isset( $attr['leftMarginMobile'] ) ? $attr['hMarginMobile'] : $attr['leftMarginMobile'];
+			$mobile_right_margin  = isset( $attr['rightMarginMobile'] ) ? $attr['hMarginMobile'] : $attr['rightMarginMobile'];
 
-			$tablet_top_margin    = isset( $attr['topMarginTablet'] ) ? $attr['topMarginTablet'] : $attr['vMarginTablet'];
-			$tablet_bottom_margin = isset( $attr['bottomMarginTablet'] ) ? $attr['bottomMarginTablet'] : $attr['vMarginTablet'];
-			$tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['leftMarginTablet'] : $attr['hMarginTablet'];
-			$tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['rightMarginTablet'] : $attr['hMarginTablet'];
+			$tablet_top_margin    = isset( $attr['topMarginTablet'] ) ? $attr['vMarginTablet'] : $attr['topMarginTablet'];
+			$tablet_bottom_margin = isset( $attr['bottomMarginTablet'] ) ? $attr['vMarginTablet'] : $attr['bottomMarginTablet'];
+			$tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['hMarginTablet'] : $attr['leftMarginTablet'];
+			$tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['hMarginTablet'] : $attr['rightMarginTablet'];
 
 			$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
 
