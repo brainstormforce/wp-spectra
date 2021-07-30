@@ -18,7 +18,7 @@ const Render = lazy( () =>
 
 const UAGBInlineNoticeEdit = ( props ) => {
 	useEffect( () => {
-		const { setAttributes, clientId } = props;
+		const { setAttributes, clientId, attributes } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
@@ -29,6 +29,56 @@ const UAGBInlineNoticeEdit = ( props ) => {
 			'uagb-inline-notice-style-' + clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			contentVrPadding,
+			contentHrPadding,
+			titleVrPadding,
+			titleHrPadding,
+			titleTopPadding,
+			titleRightPadding,
+			titleBottomPadding,
+			titleLeftPadding,
+			contentTopPadding,
+			contentRightPadding,
+			contentBottomPadding,
+			contentLeftPadding,
+		} = attributes;
+
+		if (titleVrPadding) {
+			if (!titleTopPadding) {
+				setAttributes({ titleTopPadding: titleVrPadding });
+			}
+			if (!titleBottomPadding) {
+				setAttributes({ titleBottomPadding: titleVrPadding });
+			}
+		}
+		if (titleHrPadding) {
+			if (!titleRightPadding) {
+				setAttributes({ titleRightPadding: titleHrPadding });
+			}
+			if (!titleLeftPadding) {
+				setAttributes({ titleLeftPadding: titleHrPadding });
+			}
+		}
+
+		if (contentVrPadding) {
+			if (!contentTopPadding) {
+				setAttributes({ contentTopPadding: contentVrPadding });
+			}
+			if (!contentBottomPadding) {
+				setAttributes({ contentBottomPadding: contentVrPadding });
+			}
+		}
+		if (contentHrPadding) {
+			if (!contentRightPadding) {
+				setAttributes({ contentRightPadding: contentHrPadding });
+			}
+			if (!contentLeftPadding) {
+				setAttributes({ contentLeftPadding: contentHrPadding });
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {
