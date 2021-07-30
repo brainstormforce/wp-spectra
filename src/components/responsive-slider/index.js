@@ -19,10 +19,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.desktop.label]: value })
 				}
-				min={props.min}
-				max={props.max}
-				unit={props.unit}
+				min={ props.data.desktop.min || props.min }
+				max={ props.data.desktop.max || props.max }
+				unit={ props.data.desktop.unit || props.unit }
 				responsive={true}
+				units={ props.units }
 			/>
 		</>
 	);
@@ -35,10 +36,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.tablet.label]: value })
 				}
-				min={props.min}
-				max={props.max}
-				unit={props.unit}
+				min={ props.data.tablet.min || props.min }
+				max={ props.data.tablet.max || props.max }
+				unit={ props.data.tablet.unit || props.unit }
 				responsive={true}
+				units={ props.units }
 			/>
 		</>
 	);
@@ -51,10 +53,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.mobile.label]: value })
 				}
-				min={props.min}
-				max={props.max}
-				unit={props.unit}
+				min={ props.data.mobile.min || props.min }
+				max={ props.data.mobile.max || props.max }
+				unit={ props.data.mobile.unit || props.unit }
 				responsive={true}
+				units={ props.units }
 			/>
 		</>
 	);

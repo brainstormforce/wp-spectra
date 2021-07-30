@@ -526,32 +526,43 @@ const Settings = ( props ) => {
 						desktop: {
 							value: contentPaddingDesktop,
 							label: "contentPaddingDesktop",
+							unit: {
+								value: contentPaddingTypeDesktop,
+								label: "contentPaddingTypeDesktop",
+							}
 						},
 						tablet: {
 							value: contentPaddingTablet,
 							label: "contentPaddingTablet",
+							unit:{
+								value: contentPaddingTypeTablet,
+								label: "contentPaddingTypeTablet",
+							}
 						},
 						mobile: {
 							value: contentPaddingMobile,
 							label: "contentPaddingMobile",
+							unit:{
+								value: contentPaddingTypeMobile,
+								label: "contentPaddingTypeMobile",
+							}
 						},
 					}}
 					min={0}
 					max={100}
-					unit={
+					units={[
 						{
-						value: contentPaddingTypeDesktop,
-						label: "contentPaddingTypeDesktop",
+							name: __(
+								"Pixel",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "px",
 						},
 						{
-							value: contentPaddingTypeTablet,
-							label: "contentPaddingTypeTablet",
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
 						},
-						{
-							value: contentPaddingTypeMobile,
-							label: "contentPaddingTypeMobile",
-						}
-					}
+					]}
 					setAttributes={setAttributes}
 				/>
 
@@ -677,32 +688,48 @@ const Settings = ( props ) => {
 							desktop: {
 								value: widthDesktop,
 								label: "widthDesktop",
+								unit: {
+									value: widthTypeDesktop,
+									label: "widthTypeDesktop",
+								},
+								min: 0,
+								max: ( "%" == widthTypeDesktop ) ? 100 : 1000
 							},
 							tablet: {
 								value: widthTablet,
 								label: "widthTablet",
+								unit: {
+									value: widthTypeTablet,
+									label: "widthTypeTablet",
+								},
+								min: 0,
+								max: ( "%" == widthTypeTablet ) ? 100 : 1000
+								
 							},
 							mobile: {
 								value: widthMobile,
 								label: "widthMobile",
+								unit: {
+									value: widthTypeMobile,
+									label: "widthTypeMobile",
+								},
+								min: 0,
+								max: ( "%" == widthTypeMobile ) ? 100 : 1000,
 							},
 						}}
-						min={0}
-						max={100}
-						unit={
+						units={[
 							{
-							value: widthTypeDesktop,
-							label: "widthTypeDesktop",
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
 							},
 							{
-								value: widthTypeTablet,
-								label: "widthTypeTablet",
+								name: __("%", "ultimate-addons-for-gutenberg"),
+								unitValue: "%",
 							},
-							{
-								value: widthTypeMobile,
-								label: "widthTypeMobile",
-							}
-						}
+						]}
 						setAttributes={setAttributes}
 					/>
 				}
