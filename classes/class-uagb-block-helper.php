@@ -187,42 +187,119 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
-			$lPadding = 0;
-			$rPadding = 0;
+			$left_padding         = 0;
+			$right_padding        = 0;
+			$left_padding_mobile  = 0;
+			$right_padding_mobile = 0;
+			$left_padding_tablet  = 0;
+			$right_padding_tablet = 0;
+
+			$title_top_padding    = isset( $attr['titleTopPadding'] ) ? $attr['titleVrPadding'] : $attr['titleTopPadding'];
+			$title_bottom_padding = isset( $attr['titleBottomPadding'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPadding'];
+			$title_left_padding   = isset( $attr['titleLeftPadding'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPadding'];
+			$title_right_padding  = isset( $attr['titleRightPadding'] ) ? $attr['titleHrPadding'] : $attr['titleRightPadding'];
+
+			$title_top_padding_mobile    = isset( $attr['titleTopPaddingMobile'] ) ? $attr['titleVrPadding'] : $attr['titleTopPaddingMobile'];
+			$title_bottom_padding_mobile = isset( $attr['titleBottomPaddingMobile'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPaddingMobile'];
+			$title_left_padding_mobile   = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPaddingMobile'];
+			$title_right_padding_mobile  = isset( $attr['titleRightPaddingMobile'] ) ? $attr['titleHrPadding'] : $attr['titleRightPaddingMobile'];
+
+			$title_top_padding_tablet    = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleVrPadding'] : $attr['titleTopPaddingTablet'];
+			$title_bottom_padding_tablet = isset( $attr['titleBottomPaddingTablet'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPaddingTablet'];
+			$title_left_padding_tablet   = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPaddingTablet'];
+			$title_right_padding_tablet  = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleHrPadding'] : $attr['titleRightPaddingTablet'];
+
+			$content_top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentVrPadding'] : $attr['contentTopPadding'];
+			$content_bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPadding'];
+			$content_left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPadding'];
+			$content_right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentHrPadding'] : $attr['contentRightPadding'];
+
+			$content_top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentVrPadding'] : $attr['contentTopPaddingMobile'];
+			$content_bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPaddingMobile'];
+			$content_left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPaddingMobile'];
+			$content_right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentHrPadding'] : $attr['contentRightPaddingMobile'];
+
+			$content_top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentVrPadding'] : $attr['contentTopPaddingTablet'];
+			$content_bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPaddingTablet'];
+			$content_left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPaddingTablet'];
+			$content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentHrPadding'] : $attr['contentRightPaddingTablet'];
 
 			if ( $attr['noticeDismiss'] ) {
 				if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
-					$rPadding = ( $attr['titleHrPadding'] + '13' );
-					$lPadding = $attr['titleHrPadding'];
+					$rPadding             = ( $title_right_padding + '13' );
+					$left_padding         = $title_left_padding;
+					$left_padding_mobile  = $title_left_padding_mobile;
+					$right_padding_mobile = ( $title_right_padding_mobile + '13' );
+					$left_padding_tablet  = $title_left_padding_tablet;
+					$right_padding_tablet = ( $title_right_padding_tablet + '13' );
 				} else {
-					$lPadding = ( $attr['titleHrPadding'] + '13' );
-					$rPadding = $attr['titleHrPadding'];
+					$left_padding         = ( $title_left_padding + '13' );
+					$right_padding        = $title_right_padding;
+					$left_padding_mobile  = ( $title_left_padding_mobile + '13' );
+					$right_padding_mobile = $title_right_padding_mobile;
+					$left_padding_tablet  = ( $title_left_padding_tablet + '13' );
+					$right_padding_tablet = $title_right_padding_tablet;
 				}
 			} else {
-				$lPadding = $attr['titleHrPadding'];
-				$rPadding = $attr['titleHrPadding'];
+				$left_padding         = $title_left_padding;
+				$right_padding        = $title_right_padding;
+				$left_padding_mobile  = $title_left_padding_mobile;
+				$right_padding_mobile = $title_right_padding_mobile;
+				$left_padding_tablet  = $title_left_padding_tablet;
+				$right_padding_tablet = $title_right_padding_tablet;
 			}
 
 			$selectors = array(
 				' .uagb-notice-title'           => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $lPadding, 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $rPadding, 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['titlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['titlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding, $attr['titlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding, $attr['titlePaddingUnit'] ),
 				),
 				'.uagb-inline_notice__outer-wrap .uagb-notice-title' => array(
 					'color' => $attr['titleColor'],
 				),
 				' .uagb-notice-text'            => array(
 					'color'          => $attr['textColor'],
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $content_left_padding, $attr['contentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding, $attr['contentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding, $attr['contentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding, $attr['contentPaddingUnit'] ),
 				),
 				' span.uagb-notice-dismiss svg' => array(
 					'fill'  => $attr['noticeDismissColor'],
 					'color' => $attr['noticeDismissColor'],
+				),
+			);
+
+			$m_selectors = array(
+				' .uagb-notice-text'  => array(
+					'color'          => $attr['textColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $content_left_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+				),
+				' .uagb-notice-title' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
+				),
+			);
+
+			$t_selectors = array(
+				' .uagb-notice-text'  => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $content_left_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+				),
+				' .uagb-notice-title' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
 				),
 			);
 
