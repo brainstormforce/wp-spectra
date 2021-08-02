@@ -352,6 +352,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quotePaddingType'         => 'px',
 							'quotePaddingTablet'       => '',
 							'quotePaddingMobile'       => '',
+							'descriptionText'          => 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
 						),
 					),
 					'uagb/call-to-action'         => array(
