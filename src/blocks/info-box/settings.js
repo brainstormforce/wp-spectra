@@ -94,7 +94,11 @@ const Settings = (props) => {
 		subHeadLoadGoogleFonts,
 		separatorWidthType,
 		seperatorSpace,
+		seperatorTabletSpace,
+		seperatorMobileSpace,
 		headSpace,
+		headTabletSpace,
+		headMobileSpace,
 		subHeadSpace,
 		icon,
 		iconColor,
@@ -156,6 +160,8 @@ const Settings = (props) => {
 		ctaBorderWidth,
 		ctaBorderRadius,
 		prefixSpace,
+		prefixTabletSpace,
+		prefixMobileSpace,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -1030,79 +1036,119 @@ const Settings = (props) => {
 				initialOpen={false}
 			>
 				{showPrefix && (
-					<Range
+					<ResponsiveSlider
 						label={__(
 							"Prefix Bottom Margin",
 							"ultimate-addons-for-gutenberg"
 						)}
-						setAttributes={setAttributes}
-						value={prefixSpace}
-						onChange={(value) =>
-							setAttributes({ prefixSpace: value })
-						}
+						data={{
+							desktop: {
+								value: prefixSpace,
+								label: "prefixSpace",
+							},
+							tablet: {
+								value: prefixTabletSpace,
+								label: "prefixTabletSpace",
+							},
+							mobile: {
+								value: prefixMobileSpace,
+								label: "prefixMobileSpace",
+							},
+						}}
 						min={0}
 						max={50}
 						unit={{
 							value: prefixSpaceUnit,
 							label: "prefixSpaceUnit",
 						}}
+						setAttributes={setAttributes}
 					/>
 				)}
 				{showTitle && (
-					<Range
+					<ResponsiveSlider
 						label={__(
-							"Title Bottom Margin",
+							"Prefix Bottom Margin",
 							"ultimate-addons-for-gutenberg"
 						)}
-						setAttributes={setAttributes}
-						value={headSpace}
-						onChange={(value) =>
-							setAttributes({ headSpace: value })
-						}
+						data={{
+							desktop: {
+								value: headSpace,
+								label: "headSpace",
+							},
+							tablet: {
+								value: headTabletSpace,
+								label: "headTabletSpace",
+							},
+							mobile: {
+								value: headMobileSpace,
+								label: "headMobileSpace",
+							},
+						}}
 						min={0}
 						max={50}
 						unit={{
 							value: headSpaceUnit,
-							label: "prefixSpaceUnit",
+							label: "headSpaceUnit",
 						}}
+						setAttributes={setAttributes}
 					/>
 				)}
 				{"none" !== seperatorStyle && (
-					<Range
+					<ResponsiveSlider
 						label={__(
 							"Separator Bottom Margin",
 							"ultimate-addons-for-gutenberg"
 						)}
-						setAttributes={setAttributes}
-						value={seperatorSpace}
-						onChange={(value) =>
-							setAttributes({ seperatorSpace: value })
-						}
+						data={{
+							desktop: {
+								value: seperatorSpace,
+								label: "seperatorSpace",
+							},
+							tablet: {
+								value: seperatorTabletSpace,
+								label: "seperatorTabletSpace",
+							},
+							mobile: {
+								value: seperatorMobileSpace,
+								label: "seperatorMobileSpace",
+							},
+						}}
 						min={0}
 						max={50}
 						unit={{
 							value: seperatorSpaceUnit,
 							label: "seperatorSpaceUnit",
 						}}
+						setAttributes={setAttributes}
 					/>
 				)}
 				{showDesc && (
-					<Range
+					<ResponsiveSlider
 						label={__(
 							"Description Bottom Margin",
 							"ultimate-addons-for-gutenberg"
 						)}
-						setAttributes={setAttributes}
-						value={subHeadSpace}
-						onChange={(value) =>
-							setAttributes({ subHeadSpace: value })
-						}
+						data={{
+							desktop: {
+								value: subHeadSpace,
+								label: "subHeadSpace",
+							},
+							tablet: {
+								value: subHeadTabletSpace,
+								label: "subHeadTabletSpace",
+							},
+							mobile: {
+								value: subHeadMobileSpace,
+								label: "subHeadMobileSpace",
+							},
+						}}
 						min={0}
 						max={50}
 						unit={{
 							value: subHeadSpaceUnit,
 							label: "subHeadSpaceUnit",
 						}}
+						setAttributes={setAttributes}
 					/>
 				)}
 				<SpacingControl
