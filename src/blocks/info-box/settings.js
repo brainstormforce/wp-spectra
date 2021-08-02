@@ -12,7 +12,7 @@ import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
-
+import ResponsiveSlider from "../../components/responsive-slider";
 $ = jQuery;
 
 import {
@@ -194,6 +194,8 @@ const Settings = (props) => {
 		headSpaceUnit,
 		seperatorSpaceUnit,
 		subHeadSpaceUnit,
+		subHeadTabletSpace,
+		subHeadMobileSpace,
 	} = attributes;
 
 	/*
@@ -477,23 +479,6 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 						/>
-						<Range
-							label={__(
-								"Icon Size",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={iconSize}
-							onChange={(value) =>
-								setAttributes({ iconSize: value })
-							}
-							min={0}
-							max={300}
-							unit={{
-								value: iconSizeType,
-								label: "iconSizeType",
-							}}
-						/>
 					</>
 				)}
 
@@ -636,74 +621,7 @@ const Settings = (props) => {
 						)}
 					/>
 				</div>
-				{showPrefix && (
-					<>
-						<TypographyControl
-							label={__(
-								"Typography",
-								"ultimate-addons-for-gutenberg"
-							)}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							loadGoogleFonts={{
-								value: prefixLoadGoogleFonts,
-								label: "prefixLoadGoogleFonts",
-							}}
-							fontFamily={{
-								value: prefixFontFamily,
-								label: "prefixFontFamily",
-							}}
-							fontWeight={{
-								value: prefixFontWeight,
-								label: "prefixFontWeight",
-							}}
-							fontSubset={{
-								value: prefixFontSubset,
-								label: "prefixFontSubset",
-							}}
-							fontSizeType={{
-								value: prefixFontSizeType,
-								label: "prefixFontSizeType",
-							}}
-							fontSize={{
-								value: prefixFontSize,
-								label: "prefixFontSize",
-							}}
-							fontSizeMobile={{
-								value: prefixFontSizeMobile,
-								label: "prefixFontSizeMobile",
-							}}
-							fontSizeTablet={{
-								value: prefixFontSizeTablet,
-								label: "prefixFontSizeTablet",
-							}}
-							lineHeightType={{
-								value: prefixLineHeightType,
-								label: "prefixLineHeightType",
-							}}
-							lineHeight={{
-								value: prefixLineHeight,
-								label: "prefixLineHeight",
-							}}
-							lineHeightMobile={{
-								value: prefixLineHeightMobile,
-								label: "prefixLineHeightMobile",
-							}}
-							lineHeightTablet={{
-								value: prefixLineHeightTablet,
-								label: "prefixLineHeightTablet",
-							}}
-							transform={{
-								value: prefixTextTransform,
-								label: "prefixTextTransform",
-							}}
-							decoration={{
-								value: prefixTextDecoration,
-								label: "prefixTextDecoration",
-							}}
-						/>
-					</>
-				)}
+				
 				<div className="uag-toggle-wrap">
 					<ToggleControl
 						checked={showTitle}
@@ -736,70 +654,7 @@ const Settings = (props) => {
 								{ value: "h6", label: __("H6") },
 							]}
 						/>
-						<TypographyControl
-							label={__(
-								"Typography",
-								"ultimate-addons-for-gutenberg"
-							)}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							loadGoogleFonts={{
-								value: headLoadGoogleFonts,
-								label: "headLoadGoogleFonts",
-							}}
-							fontFamily={{
-								value: headFontFamily,
-								label: "headFontFamily",
-							}}
-							fontWeight={{
-								value: headFontWeight,
-								label: "headFontWeight",
-							}}
-							fontSubset={{
-								value: headFontSubset,
-								label: "headFontSubset",
-							}}
-							fontSizeType={{
-								value: headFontSizeType,
-								label: "headFontSizeType",
-							}}
-							fontSize={{
-								value: headFontSize,
-								label: "headFontSize",
-							}}
-							fontSizeMobile={{
-								value: headFontSizeMobile,
-								label: "headFontSizeMobile",
-							}}
-							fontSizeTablet={{
-								value: headFontSizeTablet,
-								label: "headFontSizeTablet",
-							}}
-							lineHeightType={{
-								value: headLineHeightType,
-								label: "headLineHeightType",
-							}}
-							lineHeight={{
-								value: headLineHeight,
-								label: "headLineHeight",
-							}}
-							lineHeightMobile={{
-								value: headLineHeightMobile,
-								label: "headLineHeightMobile",
-							}}
-							lineHeightTablet={{
-								value: headLineHeightTablet,
-								label: "headLineHeightTablet",
-							}}
-							transform={{
-								value: headLineTransform,
-								label: "headLineTransform",
-							}}
-							decoration={{
-								value: headLineDecoration,
-								label: "headLineDecoration",
-							}}
-						/>
+						
 					</>
 				)}
 				<div className="uag-toggle-wrap">
@@ -812,74 +667,7 @@ const Settings = (props) => {
 						)}
 					/>
 				</div>
-				{showDesc && (
-					<>
-						<TypographyControl
-							label={__(
-								"Typography",
-								"ultimate-addons-for-gutenberg"
-							)}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							loadGoogleFonts={{
-								value: subHeadLoadGoogleFonts,
-								label: "subHeadLoadGoogleFonts",
-							}}
-							fontFamily={{
-								value: subHeadFontFamily,
-								label: "subHeadFontFamily",
-							}}
-							fontWeight={{
-								value: subHeadFontWeight,
-								label: "subHeadFontWeight",
-							}}
-							fontSubset={{
-								value: subHeadFontSubset,
-								label: "subHeadFontSubset",
-							}}
-							fontSizeType={{
-								value: subHeadFontSizeType,
-								label: "subHeadFontSizeType",
-							}}
-							fontSize={{
-								value: subHeadFontSize,
-								label: "subHeadFontSize",
-							}}
-							fontSizeMobile={{
-								value: subHeadFontSizeMobile,
-								label: "subHeadFontSizeMobile",
-							}}
-							fontSizeTablet={{
-								value: subHeadFontSizeTablet,
-								label: "subHeadFontSizeTablet",
-							}}
-							lineHeightType={{
-								value: subHeadLineHeightType,
-								label: "subHeadLineHeightType",
-							}}
-							lineHeight={{
-								value: subHeadLineHeight,
-								label: "subHeadLineHeight",
-							}}
-							lineHeightMobile={{
-								value: subHeadLineHeightMobile,
-								label: "subHeadLineHeightMobile",
-							}}
-							lineHeightTablet={{
-								value: subHeadLineHeightTablet,
-								label: "subHeadLineHeightTablet",
-							}}
-							transform={{
-								value: subHeadLineTransform,
-								label: "subHeadLineTransform",
-							}}
-							decoration={{
-								value: subHeadLineDecoration,
-								label: "subHeadLineDecoration",
-							}}
-						/>
-					</>
-				)}
+				
 			</PanelBody>
 		);
 	};
@@ -966,268 +754,10 @@ const Settings = (props) => {
 						},
 					]}
 				/>
-				{"none" !== seperatorStyle && (
-					<>
-						<Range
-							label={__(
-								"Thickness",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={seperatorThickness}
-							onChange={(value) =>
-								setAttributes({ seperatorThickness: value })
-							}
-							min={0}
-							max={10}
-							unit={{
-								value: thicknessUnit,
-								label: "thicknessUnit",
-							}}
-						/>
-						<Range
-							label={__("Width", "ultimate-addons-for-gutenberg")}
-							setAttributes={setAttributes}
-							value={seperatorWidth}
-							onChange={(value) =>
-								setAttributes({ seperatorWidth: value })
-							}
-							min={0}
-							max={"%" == separatorWidthType ? 100 : 500}
-							unit={{
-								value: separatorWidthType,
-								label: "separatorWidthType",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"Em",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "em",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-						/>
-					</>
-				)}
 			</PanelBody>
 		);
 	};
 
-	// Margin Settings.
-	const marginSettings = () => {
-		return (
-			<PanelBody
-				title={__("Spacing", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
-			>
-				{showPrefix && (
-					<ResponsiveSlider
-						label={__(
-							"Prefix Bottom Margin",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: prefixSpace,
-								label: "prefixSpace",
-							},
-							tablet: {
-								value: prefixTabletSpace,
-								label: "prefixTabletSpace",
-							},
-							mobile: {
-								value: prefixMobileSpace,
-								label: "prefixMobileSpace",
-							},
-						}}
-						min={0}
-						max={50}
-						unit={{
-							value: prefixSpaceUnit,
-							label: "prefixSpaceUnit",
-						}}
-						setAttributes={setAttributes}
-					/>
-				)}
-				{showTitle && (
-					<ResponsiveSlider
-						label={__(
-							"Prefix Bottom Margin",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: headSpace,
-								label: "headSpace",
-							},
-							tablet: {
-								value: headTabletSpace,
-								label: "headTabletSpace",
-							},
-							mobile: {
-								value: headMobileSpace,
-								label: "headMobileSpace",
-							},
-						}}
-						min={0}
-						max={50}
-						unit={{
-							value: headSpaceUnit,
-							label: "headSpaceUnit",
-						}}
-						setAttributes={setAttributes}
-					/>
-				)}
-				{"none" !== seperatorStyle && (
-					<ResponsiveSlider
-						label={__(
-							"Separator Bottom Margin",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: seperatorSpace,
-								label: "seperatorSpace",
-							},
-							tablet: {
-								value: seperatorTabletSpace,
-								label: "seperatorTabletSpace",
-							},
-							mobile: {
-								value: seperatorMobileSpace,
-								label: "seperatorMobileSpace",
-							},
-						}}
-						min={0}
-						max={50}
-						unit={{
-							value: seperatorSpaceUnit,
-							label: "seperatorSpaceUnit",
-						}}
-						setAttributes={setAttributes}
-					/>
-				)}
-				{showDesc && (
-					<ResponsiveSlider
-						label={__(
-							"Description Bottom Margin",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: subHeadSpace,
-								label: "subHeadSpace",
-							},
-							tablet: {
-								value: subHeadTabletSpace,
-								label: "subHeadTabletSpace",
-							},
-							mobile: {
-								value: subHeadMobileSpace,
-								label: "subHeadMobileSpace",
-							},
-						}}
-						min={0}
-						max={50}
-						unit={{
-							value: subHeadSpaceUnit,
-							label: "subHeadSpaceUnit",
-						}}
-						setAttributes={setAttributes}
-					/>
-				)}
-				<SpacingControl
-					{...props}
-					label={__(
-						"Image/Icon Margin",
-						"ultimate-addons-for-gutenberg"
-					)}
-					valueTop={{
-						value: iconTopMargin,
-						label: "iconTopMargin",
-					}}
-					valueRight={{
-						value: iconRightMargin,
-						label: "iconRightMargin",
-					}}
-					valueBottom={{
-						value: iconBottomMargin,
-						label: "iconBottomMargin",
-					}}
-					valueLeft={{
-						value: iconLeftMargin,
-						label: "iconLeftMargin",
-					}}
-					valueTopTablet={{
-						value: iconMarginTopTablet,
-						label: "iconMarginTopTablet",
-					}}
-					valueRightTablet={{
-						value: iconMarginRightTablet,
-						label: "iconMarginRightTablet",
-					}}
-					valueBottomTablet={{
-						value: iconMarginBottomTablet,
-						label: "iconMarginBottomTablet",
-					}}
-					valueLeftTablet={{
-						value: iconMarginLeftTablet,
-						label: "iconMarginLeftTablet",
-					}}
-					valueTopMobile={{
-						value: iconMarginTopMobile,
-						label: "iconMarginTopMobile",
-					}}
-					valueRightMobile={{
-						value: iconMarginRightMobile,
-						label: "iconMarginRightMobile",
-					}}
-					valueBottomMobile={{
-						value: iconMarginBottomMobile,
-						label: "iconMarginBottomMobile",
-					}}
-					valueLeftMobile={{
-						value: iconMarginLeftMobile,
-						label: "iconMarginLeftMobile",
-					}}
-					unit={{
-						value: iconMarginUnit,
-						label: "iconMarginUnit",
-					}}
-					mUnit={{
-						value: iconMobilePaddingUnit,
-						label: "iconMobilePaddingUnit",
-					}}
-					tUnit={{
-						value: iconTabletPaddingUnit,
-						label: "iconTabletPaddingUnit",
-					}}
-					deviceType={deviceType}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: spacingLink,
-						label: "spacingLink",
-					}}
-				/>
-			</PanelBody>
-		);
-	};
 	const ctaSettings = () => {
 		return (
 			<PanelBody
@@ -1288,108 +818,7 @@ const Settings = (props) => {
 								/>
 							</div>
 						)}
-						{ctaType === "text" && (
-							<TypographyControl
-								label={__(
-									"Typography",
-									"ultimate-addons-for-gutenberg"
-								)}
-								attributes={attributes}
-								setAttributes={setAttributes}
-								loadGoogleFonts={{
-									value: ctaLoadGoogleFonts,
-									label: "ctaLoadGoogleFonts",
-								}}
-								fontFamily={{
-									value: ctaFontFamily,
-									label: "ctaFontFamily",
-								}}
-								fontWeight={{
-									value: ctaFontWeight,
-									label: "ctaFontWeight",
-								}}
-								fontSubset={{
-									value: ctaFontSubset,
-									label: "ctaFontSubset",
-								}}
-								fontSizeType={{
-									value: ctaFontSizeType,
-									label: "ctaFontSizeType",
-								}}
-								fontSize={{
-									value: ctaFontSize,
-									label: "ctaFontSize",
-								}}
-								fontSizeMobile={{
-									value: ctaFontSizeMobile,
-									label: "ctaFontSizeMobile",
-								}}
-								fontSizeTablet={{
-									value: ctaFontSizeTablet,
-									label: "ctaFontSizeTablet",
-								}}
-								transform={{
-									value: ctaTextTransform,
-									label: "ctaTextTransform",
-								}}
-								decoration={{
-									value: ctaTextDecoration,
-									label: "ctaTextDecoration",
-								}}
-								disableLineHeight={true}
-							/>
-						)}
-						{!inheritFromTheme && ctaType === "button" && (
-							<TypographyControl
-								label={__(
-									"Typography",
-									"ultimate-addons-for-gutenberg"
-								)}
-								attributes={attributes}
-								setAttributes={setAttributes}
-								loadGoogleFonts={{
-									value: ctaLoadGoogleFonts,
-									label: "ctaLoadGoogleFonts",
-								}}
-								fontFamily={{
-									value: ctaFontFamily,
-									label: "ctaFontFamily",
-								}}
-								fontWeight={{
-									value: ctaFontWeight,
-									label: "ctaFontWeight",
-								}}
-								fontSubset={{
-									value: ctaFontSubset,
-									label: "ctaFontSubset",
-								}}
-								fontSizeType={{
-									value: ctaFontSizeType,
-									label: "ctaFontSizeType",
-								}}
-								fontSize={{
-									value: ctaFontSize,
-									label: "ctaFontSize",
-								}}
-								fontSizeMobile={{
-									value: ctaFontSizeMobile,
-									label: "ctaFontSizeMobile",
-								}}
-								fontSizeTablet={{
-									value: ctaFontSizeTablet,
-									label: "ctaFontSizeTablet",
-								}}
-								transform={{
-									value: ctaTextTransform,
-									label: "ctaTextTransform",
-								}}
-								decoration={{
-									value: ctaTextDecoration,
-									label: "ctaTextDecoration",
-								}}
-								disableLineHeight={true}
-							/>
-						)}
+						
 					</>
 				)}
 				{ctaType !== "none" && (
@@ -1485,277 +914,553 @@ const Settings = (props) => {
 						)}
 					</>
 				)}
-				{!inheritFromTheme && ctaType == "button" && (
-					<>
-						<SpacingControl
-							{...props}
-							label={__(
-								"Button Padding",
-								"ultimate-addons-for-gutenberg"
-							)}
-							valueTop={{
-								value: paddingBtnTop,
-								label: "paddingBtnTop",
-							}}
-							valueRight={{
-								value: paddingBtnRight,
-								label: "paddingBtnRight",
-							}}
-							valueBottom={{
-								value: paddingBtnBottom,
-								label: "paddingBtnBottom",
-							}}
-							valueLeft={{
-								value: paddingBtnLeft,
-								label: "paddingBtnLeft",
-							}}
-							valueTopTablet={{
-								value: paddingBtnTopTablet,
-								label: "paddingBtnTopTablet",
-							}}
-							valueRightTablet={{
-								value: paddingBtnRightTablet,
-								label: "paddingBtnRightTablet",
-							}}
-							valueBottomTablet={{
-								value: paddingBtnBottomTablet,
-								label: "paddingBtnBottomTablet",
-							}}
-							valueLeftTablet={{
-								value: paddingBtnLeftTablet,
-								label: "paddingBtnLeftTablet",
-							}}
-							valueTopMobile={{
-								value: paddingBtnTopMobile,
-								label: "paddingBtnTopMobile",
-							}}
-							valueRightMobile={{
-								value: paddingBtnRightMobile,
-								label: "paddingBtnRightMobile",
-							}}
-							valueBottomMobile={{
-								value: paddingBtnBottomMobile,
-								label: "paddingBtnBottomMobile",
-							}}
-							valueLeftMobile={{
-								value: paddingBtnLeftMobile,
-								label: "paddingBtnLeftMobile",
-							}}
-							unit={{
-								value: paddingBtnUnit,
-								label: "paddingBtnUnit",
-							}}
-							mUnit={{
-								value: mobilePaddingBtnUnit,
-								label: "mobilePaddingBtnUnit",
-							}}
-							tUnit={{
-								value: tabletPaddingBtnUnit,
-								label: "tabletPaddingBtnUnit",
-							}}
-							deviceType={deviceType}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							link={{
-								value: spacingLink,
-								label: "spacingLink",
-							}}
-						/>
-						<p>
-							{__(
-								"Button Border",
-								"ultimate-addons-for-gutenberg"
-							)}
-						</p>
-						<Border
-							setAttributes={setAttributes}
-							borderStyle={{
-								value: ctaBorderStyle,
-								label: "ctaBorderStyle",
-								title: __(
-									"Style",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-							borderWidth={{
-								value: ctaBorderWidth,
-								label: "ctaBorderWidth",
-								title: __(
-									"Width",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-							borderRadius={{
-								value: ctaBorderRadius,
-								label: "ctaBorderRadius",
-								title: __(
-									"Radius",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-							borderColor={{
-								value: ctaBorderColor,
-								label: "ctaBorderColor",
-								title: __(
-									"Color",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-							borderHoverColor={{
-								value: ctaBorderhoverColor,
-								label: "ctaBorderhoverColor",
-								title: __(
-									"Hover Color",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-						/>
-					</>
-				)}
 			</PanelBody>
 		);
 	};
 	const styleSettings = () => {
 		return (
-			<PanelBody title="Colors" initialOpen={true}>
-				<AdvancedPopColorControl
-					label={__("Prefix Color", "ultimate-addons-for-gutenberg")}
-					colorValue={prefixColor ? prefixColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ prefixColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__("Title Color", "ultimate-addons-for-gutenberg")}
-					colorValue={headingColor ? headingColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ headingColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Description Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={subHeadingColor ? subHeadingColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ subHeadingColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Separator Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={seperatorColor ? seperatorColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ seperatorColor: value })
-					}
-				/>
-				{ctaType === "text" && (
+			<>
+				<PanelBody title="Title" initialOpen={true}>
+							<>
+								<AdvancedPopColorControl
+									label={__("Title Color", "ultimate-addons-for-gutenberg")}
+									colorValue={headingColor ? headingColor : ""}
+									onColorChange={(value) =>
+										setAttributes({ headingColor: value })
+									}
+								/>
+								<TypographyControl
+									label={__(
+										"Typography",
+										"ultimate-addons-for-gutenberg"
+									)}
+									attributes={attributes}
+									setAttributes={setAttributes}
+									loadGoogleFonts={{
+										value: headLoadGoogleFonts,
+										label: "headLoadGoogleFonts",
+									}}
+									fontFamily={{
+										value: headFontFamily,
+										label: "headFontFamily",
+									}}
+									fontWeight={{
+										value: headFontWeight,
+										label: "headFontWeight",
+									}}
+									fontSubset={{
+										value: headFontSubset,
+										label: "headFontSubset",
+									}}
+									fontSizeType={{
+										value: headFontSizeType,
+										label: "headFontSizeType",
+									}}
+									fontSize={{
+										value: headFontSize,
+										label: "headFontSize",
+									}}
+									fontSizeMobile={{
+										value: headFontSizeMobile,
+										label: "headFontSizeMobile",
+									}}
+									fontSizeTablet={{
+										value: headFontSizeTablet,
+										label: "headFontSizeTablet",
+									}}
+									lineHeightType={{
+										value: headLineHeightType,
+										label: "headLineHeightType",
+									}}
+									lineHeight={{
+										value: headLineHeight,
+										label: "headLineHeight",
+									}}
+									lineHeightMobile={{
+										value: headLineHeightMobile,
+										label: "headLineHeightMobile",
+									}}
+									lineHeightTablet={{
+										value: headLineHeightTablet,
+										label: "headLineHeightTablet",
+									}}
+									transform={{
+										value: headLineTransform,
+										label: "headLineTransform",
+									}}
+									decoration={{
+										value: headLineDecoration,
+										label: "headLineDecoration",
+									}}
+								/>
+							</>
+				</PanelBody>
+				<PanelBody title="Prefix" initialOpen={false}>
+					<>
+						{showPrefix && (
+							<>
+								<AdvancedPopColorControl
+									label={__("Prefix Color", "ultimate-addons-for-gutenberg")}
+									colorValue={prefixColor ? prefixColor : ""}
+									onColorChange={(value) =>
+										setAttributes({ prefixColor: value })
+									}
+								/>
+								<TypographyControl
+									label={__(
+										"Typography",
+										"ultimate-addons-for-gutenberg"
+									)}
+									attributes={attributes}
+									setAttributes={setAttributes}
+									loadGoogleFonts={{
+										value: prefixLoadGoogleFonts,
+										label: "prefixLoadGoogleFonts",
+									}}
+									fontFamily={{
+										value: prefixFontFamily,
+										label: "prefixFontFamily",
+									}}
+									fontWeight={{
+										value: prefixFontWeight,
+										label: "prefixFontWeight",
+									}}
+									fontSubset={{
+										value: prefixFontSubset,
+										label: "prefixFontSubset",
+									}}
+									fontSizeType={{
+										value: prefixFontSizeType,
+										label: "prefixFontSizeType",
+									}}
+									fontSize={{
+										value: prefixFontSize,
+										label: "prefixFontSize",
+									}}
+									fontSizeMobile={{
+										value: prefixFontSizeMobile,
+										label: "prefixFontSizeMobile",
+									}}
+									fontSizeTablet={{
+										value: prefixFontSizeTablet,
+										label: "prefixFontSizeTablet",
+									}}
+									lineHeightType={{
+										value: prefixLineHeightType,
+										label: "prefixLineHeightType",
+									}}
+									lineHeight={{
+										value: prefixLineHeight,
+										label: "prefixLineHeight",
+									}}
+									lineHeightMobile={{
+										value: prefixLineHeightMobile,
+										label: "prefixLineHeightMobile",
+									}}
+									lineHeightTablet={{
+										value: prefixLineHeightTablet,
+										label: "prefixLineHeightTablet",
+									}}
+									transform={{
+										value: prefixTextTransform,
+										label: "prefixTextTransform",
+									}}
+									decoration={{
+										value: prefixTextDecoration,
+										label: "prefixTextDecoration",
+									}}
+								/>
+							</>
+						)}
+					</>
+				</PanelBody>
+				<PanelBody title="Icon/Image" initialOpen={false}>
+					<>
+						<AdvancedPopColorControl
+							label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+							colorValue={iconColor ? iconColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ iconColor: value })
+							}
+						/>
+						<AdvancedPopColorControl
+							label={__(
+								"Icon Hover Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={iconHover ? iconHover : ""}
+							onColorChange={(value) =>
+								setAttributes({ iconHover: value })
+							}
+						/>
+						<Range
+							label={__(
+								"Icon Size",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={iconSize}
+							onChange={(value) =>
+								setAttributes({ iconSize: value })
+							}
+							min={0}
+							max={300}
+							unit={{
+								value: iconSizeType,
+								label: "iconSizeType",
+							}}
+						/>
+					</>
+				</PanelBody>
+				<PanelBody title="Description" initialOpen={false}> 
+					<>
+						<AdvancedPopColorControl
+						label={__(
+							"Description Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={subHeadingColor ? subHeadingColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ subHeadingColor: value })
+						}
+						/>
+						{showDesc && (
+						<>
+							<TypographyControl
+								label={__(
+									"Typography",
+									"ultimate-addons-for-gutenberg"
+								)}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								loadGoogleFonts={{
+									value: subHeadLoadGoogleFonts,
+									label: "subHeadLoadGoogleFonts",
+								}}
+								fontFamily={{
+									value: subHeadFontFamily,
+									label: "subHeadFontFamily",
+								}}
+								fontWeight={{
+									value: subHeadFontWeight,
+									label: "subHeadFontWeight",
+								}}
+								fontSubset={{
+									value: subHeadFontSubset,
+									label: "subHeadFontSubset",
+								}}
+								fontSizeType={{
+									value: subHeadFontSizeType,
+									label: "subHeadFontSizeType",
+								}}
+								fontSize={{
+									value: subHeadFontSize,
+									label: "subHeadFontSize",
+								}}
+								fontSizeMobile={{
+									value: subHeadFontSizeMobile,
+									label: "subHeadFontSizeMobile",
+								}}
+								fontSizeTablet={{
+									value: subHeadFontSizeTablet,
+									label: "subHeadFontSizeTablet",
+								}}
+								lineHeightType={{
+									value: subHeadLineHeightType,
+									label: "subHeadLineHeightType",
+								}}
+								lineHeight={{
+									value: subHeadLineHeight,
+									label: "subHeadLineHeight",
+								}}
+								lineHeightMobile={{
+									value: subHeadLineHeightMobile,
+									label: "subHeadLineHeightMobile",
+								}}
+								lineHeightTablet={{
+									value: subHeadLineHeightTablet,
+									label: "subHeadLineHeightTablet",
+								}}
+								transform={{
+									value: subHeadLineTransform,
+									label: "subHeadLineTransform",
+								}}
+								decoration={{
+									value: subHeadLineDecoration,
+									label: "subHeadLineDecoration",
+								}}
+							/>
+						</>
+						)}
+					</>
+				</PanelBody>
+				<PanelBody title="Separator" initialOpen={false}>
 					<>
 						<AdvancedPopColorControl
 							label={__(
-								"CTA Text Color",
+								"Separator Color",
 								"ultimate-addons-for-gutenberg"
 							)}
-							colorValue={ctaLinkColor ? ctaLinkColor : ""}
+							colorValue={seperatorColor ? seperatorColor : ""}
 							onColorChange={(value) =>
-								setAttributes({
-									ctaLinkColor: value,
-								})
+								setAttributes({ seperatorColor: value })
 							}
 						/>
-						<AdvancedPopColorControl
-							label={__(
-								"CTA Text Hover Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={
-								ctaLinkHoverColor ? ctaLinkHoverColor : ""
-							}
-							onColorChange={(value) =>
-								setAttributes({
-									ctaLinkHoverColor: value,
-								})
-							}
-						/>
+						{"none" !== seperatorStyle && (
+							<>
+								<Range
+									label={__(
+										"Thickness",
+										"ultimate-addons-for-gutenberg"
+									)}
+									setAttributes={setAttributes}
+									value={seperatorThickness}
+									onChange={(value) =>
+										setAttributes({ seperatorThickness: value })
+									}
+									min={0}
+									max={10}
+									unit={{
+										value: thicknessUnit,
+										label: "thicknessUnit",
+									}}
+								/>
+								<Range
+									label={__("Width", "ultimate-addons-for-gutenberg")}
+									setAttributes={setAttributes}
+									value={seperatorWidth}
+									onChange={(value) =>
+										setAttributes({ seperatorWidth: value })
+									}
+									min={0}
+									max={"%" == separatorWidthType ? 100 : 500}
+									unit={{
+										value: separatorWidthType,
+										label: "separatorWidthType",
+									}}
+									units={[
+										{
+											name: __(
+												"Pixel",
+												"ultimate-addons-for-gutenberg"
+											),
+											unitValue: "px",
+										},
+										{
+											name: __(
+												"Em",
+												"ultimate-addons-for-gutenberg"
+											),
+											unitValue: "em",
+										},
+										{
+											name: __(
+												"%",
+												"ultimate-addons-for-gutenberg"
+											),
+											unitValue: "%",
+										},
+									]}
+								/>
+							</>
+						)}
 					</>
-				)}
-				{!inheritFromTheme && ctaType === "button" && (
+				</PanelBody>
+				<PanelBody title="CTA" initialOpen={false}>
 					<>
-						<AdvancedPopColorControl
-							label={__(
-								"CTA Button Text Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={ctaBtnLinkColor ? ctaBtnLinkColor : ""}
-							onColorChange={(value) =>
-								setAttributes({
-									ctaBtnLinkColor: value,
-								})
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Button Text Hover Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={
-								ctaLinkHoverColor ? ctaLinkHoverColor : ""
-							}
-							onColorChange={(value) =>
-								setAttributes({
-									ctaLinkHoverColor: value,
-								})
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Background Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={ctaBgColor ? ctaBgColor : ""}
-							onColorChange={(value) =>
-								setAttributes({
-									ctaBgColor: value,
-								})
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Background Hover Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={ctaBgHoverColor ? ctaBgHoverColor : ""}
-							onColorChange={(value) =>
-								setAttributes({
-									ctaBgHoverColor: value,
-								})
-							}
-						/>
+						{ctaType === "text" && (
+							<>
+								<AdvancedPopColorControl
+									label={__(
+										"CTA Text Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={ctaLinkColor ? ctaLinkColor : ""}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaLinkColor: value,
+										})
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"CTA Text Hover Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={
+										ctaLinkHoverColor ? ctaLinkHoverColor : ""
+									}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaLinkHoverColor: value,
+										})
+									}
+								/>
+							</>
+						)}
+						{!inheritFromTheme && ctaType === "button" && (
+							<>
+								<AdvancedPopColorControl
+									label={__(
+										"CTA Button Text Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={ctaBtnLinkColor ? ctaBtnLinkColor : ""}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaBtnLinkColor: value,
+										})
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"Button Text Hover Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={
+										ctaLinkHoverColor ? ctaLinkHoverColor : ""
+									}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaLinkHoverColor: value,
+										})
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"Background Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={ctaBgColor ? ctaBgColor : ""}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaBgColor: value,
+										})
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"Background Hover Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={ctaBgHoverColor ? ctaBgHoverColor : ""}
+									onColorChange={(value) =>
+										setAttributes({
+											ctaBgHoverColor: value,
+										})
+									}
+								/>
+							</>
+						)}
+						{ctaType === "text" && (
+							<>
+								<TypographyControl
+										label={__(
+											"Typography",
+											"ultimate-addons-for-gutenberg"
+										)}
+										attributes={attributes}
+										setAttributes={setAttributes}
+										loadGoogleFonts={{
+											value: ctaLoadGoogleFonts,
+											label: "ctaLoadGoogleFonts",
+										}}
+										fontFamily={{
+											value: ctaFontFamily,
+											label: "ctaFontFamily",
+										}}
+										fontWeight={{
+											value: ctaFontWeight,
+											label: "ctaFontWeight",
+										}}
+										fontSubset={{
+											value: ctaFontSubset,
+											label: "ctaFontSubset",
+										}}
+										fontSizeType={{
+											value: ctaFontSizeType,
+											label: "ctaFontSizeType",
+										}}
+										fontSize={{
+											value: ctaFontSize,
+											label: "ctaFontSize",
+										}}
+										fontSizeMobile={{
+											value: ctaFontSizeMobile,
+											label: "ctaFontSizeMobile",
+										}}
+										fontSizeTablet={{
+											value: ctaFontSizeTablet,
+											label: "ctaFontSizeTablet",
+										}}
+										transform={{
+											value: ctaTextTransform,
+											label: "ctaTextTransform",
+										}}
+										decoration={{
+											value: ctaTextDecoration,
+											label: "ctaTextDecoration",
+										}}
+										disableLineHeight={true}
+									/>
+								{!inheritFromTheme && ctaType === "button" && (
+									<TypographyControl
+										label={__(
+											"Typography",
+											"ultimate-addons-for-gutenberg"
+										)}
+										attributes={attributes}
+										setAttributes={setAttributes}
+										loadGoogleFonts={{
+											value: ctaLoadGoogleFonts,
+											label: "ctaLoadGoogleFonts",
+										}}
+										fontFamily={{
+											value: ctaFontFamily,
+											label: "ctaFontFamily",
+										}}
+										fontWeight={{
+											value: ctaFontWeight,
+											label: "ctaFontWeight",
+										}}
+										fontSubset={{
+											value: ctaFontSubset,
+											label: "ctaFontSubset",
+										}}
+										fontSizeType={{
+											value: ctaFontSizeType,
+											label: "ctaFontSizeType",
+										}}
+										fontSize={{
+											value: ctaFontSize,
+											label: "ctaFontSize",
+										}}
+										fontSizeMobile={{
+											value: ctaFontSizeMobile,
+											label: "ctaFontSizeMobile",
+										}}
+										fontSizeTablet={{
+											value: ctaFontSizeTablet,
+											label: "ctaFontSizeTablet",
+										}}
+										transform={{
+											value: ctaTextTransform,
+											label: "ctaTextTransform",
+										}}
+										decoration={{
+											value: ctaTextDecoration,
+											label: "ctaTextDecoration",
+										}}
+										disableLineHeight={true}
+									/>
+								)}
+							</>
+						)}
 					</>
-				)}
-				<AdvancedPopColorControl
-					label={__("Icon Color", "ultimate-addons-for-gutenberg")}
-					colorValue={iconColor ? iconColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ iconColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Icon Hover Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={iconHover ? iconHover : ""}
-					onColorChange={(value) =>
-						setAttributes({ iconHover: value })
-					}
-				/>
-			</PanelBody>
+				</PanelBody>
+			</>
 		);
-	};
+	}
 	return (
 		<>
 			{(iconimgPosition == "above-title" ||
@@ -1768,12 +1473,331 @@ const Settings = (props) => {
 						{typographySettings()}
 						{seperatorSettings()}
 						{ctaSettings()}
-						{marginSettings()}
 					</InspectorTab>
 					<InspectorTab key={"style"}>{styleSettings()}</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab key={"advance"}>
+						<PanelBody title="Icon/Image Margin" initialOpen={true}>
+							<SpacingControl
+								{...props}
+								label={__(
+									"Image/Icon Margin",
+									"ultimate-addons-for-gutenberg"
+								)}
+								valueTop={{
+									value: iconTopMargin,
+									label: "iconTopMargin",
+								}}
+								valueRight={{
+									value: iconRightMargin,
+									label: "iconRightMargin",
+								}}
+								valueBottom={{
+									value: iconBottomMargin,
+									label: "iconBottomMargin",
+								}}
+								valueLeft={{
+									value: iconLeftMargin,
+									label: "iconLeftMargin",
+								}}
+								valueTopTablet={{
+									value: iconMarginTopTablet,
+									label: "iconMarginTopTablet",
+								}}
+								valueRightTablet={{
+									value: iconMarginRightTablet,
+									label: "iconMarginRightTablet",
+								}}
+								valueBottomTablet={{
+									value: iconMarginBottomTablet,
+									label: "iconMarginBottomTablet",
+								}}
+								valueLeftTablet={{
+									value: iconMarginLeftTablet,
+									label: "iconMarginLeftTablet",
+								}}
+								valueTopMobile={{
+									value: iconMarginTopMobile,
+									label: "iconMarginTopMobile",
+								}}
+								valueRightMobile={{
+									value: iconMarginRightMobile,
+									label: "iconMarginRightMobile",
+								}}
+								valueBottomMobile={{
+									value: iconMarginBottomMobile,
+									label: "iconMarginBottomMobile",
+								}}
+								valueLeftMobile={{
+									value: iconMarginLeftMobile,
+									label: "iconMarginLeftMobile",
+								}}
+								unit={{
+									value: iconMarginUnit,
+									label: "iconMarginUnit",
+								}}
+								mUnit={{
+									value: iconMobilePaddingUnit,
+									label: "iconMobilePaddingUnit",
+								}}
+								tUnit={{
+									value: iconTabletPaddingUnit,
+									label: "iconTabletPaddingUnit",
+								}}
+								deviceType={deviceType}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								link={{
+									value: spacingLink,
+									label: "spacingLink",
+								}}
+							/>
+						</PanelBody>
+						<PanelBody title="Spacing" initialOpen={false}>
+							{showPrefix && (
+								<ResponsiveSlider
+									label={__(
+										"Prefix Bottom Margin",
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										desktop: {
+											value: prefixSpace,
+											label: "prefixSpace",
+										},
+										tablet: {
+											value: prefixTabletSpace,
+											label: "prefixTabletSpace",
+										},
+										mobile: {
+											value: prefixMobileSpace,
+											label: "prefixMobileSpace",
+										},
+									}}
+									min={0}
+									max={50}
+									unit={{
+										value: prefixSpaceUnit,
+										label: "prefixSpaceUnit",
+									}}
+									setAttributes={setAttributes}
+								/>
+							)}
+							{showTitle && (
+								<ResponsiveSlider
+									label={__(
+										"Prefix Bottom Margin",
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										desktop: {
+											value: headSpace,
+											label: "headSpace",
+										},
+										tablet: {
+											value: headTabletSpace,
+											label: "headTabletSpace",
+										},
+										mobile: {
+											value: headMobileSpace,
+											label: "headMobileSpace",
+										},
+									}}
+									min={0}
+									max={50}
+									unit={{
+										value: headSpaceUnit,
+										label: "headSpaceUnit",
+									}}
+									setAttributes={setAttributes}
+								/>
+							)}
+							{"none" !== seperatorStyle && (
+								<ResponsiveSlider
+									label={__(
+										"Separator Bottom Margin",
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										desktop: {
+											value: seperatorSpace,
+											label: "seperatorSpace",
+										},
+										tablet: {
+											value: seperatorTabletSpace,
+											label: "seperatorTabletSpace",
+										},
+										mobile: {
+											value: seperatorMobileSpace,
+											label: "seperatorMobileSpace",
+										},
+									}}
+									min={0}
+									max={50}
+									unit={{
+										value: seperatorSpaceUnit,
+										label: "seperatorSpaceUnit",
+									}}
+									setAttributes={setAttributes}
+								/>
+							)}
+							{showDesc && (
+								<ResponsiveSlider
+									label={__(
+										"Description Bottom Margin",
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										desktop: {
+											value: subHeadSpace,
+											label: "subHeadSpace",
+										},
+										tablet: {
+											value: subHeadTabletSpace,
+											label: "subHeadTabletSpace",
+										},
+										mobile: {
+											value: subHeadMobileSpace,
+											label: "subHeadMobileSpace",
+										},
+									}}
+									min={0}
+									max={50}
+									unit={{
+										value: subHeadSpaceUnit,
+										label: "subHeadSpaceUnit",
+									}}
+									setAttributes={setAttributes}
+								/>
+							)}
+						</PanelBody>
+						<PanelBody title="CTA Padding" initialOpen={false}>
+							{!inheritFromTheme && ctaType == "button" && (
+								<SpacingControl
+									{...props}
+									label={__(
+										"Button Padding",
+										"ultimate-addons-for-gutenberg"
+									)}
+									valueTop={{
+										value: paddingBtnTop,
+										label: "paddingBtnTop",
+									}}
+									valueRight={{
+										value: paddingBtnRight,
+										label: "paddingBtnRight",
+									}}
+									valueBottom={{
+										value: paddingBtnBottom,
+										label: "paddingBtnBottom",
+									}}
+									valueLeft={{
+										value: paddingBtnLeft,
+										label: "paddingBtnLeft",
+									}}
+									valueTopTablet={{
+										value: paddingBtnTopTablet,
+										label: "paddingBtnTopTablet",
+									}}
+									valueRightTablet={{
+										value: paddingBtnRightTablet,
+										label: "paddingBtnRightTablet",
+									}}
+									valueBottomTablet={{
+										value: paddingBtnBottomTablet,
+										label: "paddingBtnBottomTablet",
+									}}
+									valueLeftTablet={{
+										value: paddingBtnLeftTablet,
+										label: "paddingBtnLeftTablet",
+									}}
+									valueTopMobile={{
+										value: paddingBtnTopMobile,
+										label: "paddingBtnTopMobile",
+									}}
+									valueRightMobile={{
+										value: paddingBtnRightMobile,
+										label: "paddingBtnRightMobile",
+									}}
+									valueBottomMobile={{
+										value: paddingBtnBottomMobile,
+										label: "paddingBtnBottomMobile",
+									}}
+									valueLeftMobile={{
+										value: paddingBtnLeftMobile,
+										label: "paddingBtnLeftMobile",
+									}}
+									unit={{
+										value: paddingBtnUnit,
+										label: "paddingBtnUnit",
+									}}
+									mUnit={{
+										value: mobilePaddingBtnUnit,
+										label: "mobilePaddingBtnUnit",
+									}}
+									tUnit={{
+										value: tabletPaddingBtnUnit,
+										label: "tabletPaddingBtnUnit",
+									}}
+									deviceType={deviceType}
+									attributes={attributes}
+									setAttributes={setAttributes}
+									link={{
+										value: spacingLink,
+										label: "spacingLink",
+									}}
+								/>
+							)}
+						</PanelBody>
+						<PanelBody title="CTA Border" initialOpen={false}>
+							{!inheritFromTheme && ctaType == "button" && (
+								<Border
+									setAttributes={setAttributes}
+									borderStyle={{
+										value: ctaBorderStyle,
+										label: "ctaBorderStyle",
+										title: __(
+											"Style",
+											"ultimate-addons-for-gutenberg"
+										),
+									}}
+									borderWidth={{
+										value: ctaBorderWidth,
+										label: "ctaBorderWidth",
+										title: __(
+											"Width",
+											"ultimate-addons-for-gutenberg"
+										),
+									}}
+									borderRadius={{
+										value: ctaBorderRadius,
+										label: "ctaBorderRadius",
+										title: __(
+											"Radius",
+											"ultimate-addons-for-gutenberg"
+										),
+									}}
+									borderColor={{
+										value: ctaBorderColor,
+										label: "ctaBorderColor",
+										title: __(
+											"Color",
+											"ultimate-addons-for-gutenberg"
+										),
+									}}
+									borderHoverColor={{
+										value: ctaBorderhoverColor,
+										label: "ctaBorderhoverColor",
+										title: __(
+											"Hover Color",
+											"ultimate-addons-for-gutenberg"
+										),
+									}}
+								/>
+							)}
+						</PanelBody>
+					</InspectorTab>
 				</InspectorTabs>
-			</InspectorControls>
+				</InspectorControls>
 			<Suspense fallback={lazyLoader()}>
 				{loadPrefixGoogleFonts}
 				{loadSubHeadGoogleFonts}
