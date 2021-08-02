@@ -10,6 +10,10 @@ const ResponsiveSlider = (props) => {
 
 	const output = {};
 
+	let maxDesk = ( undefined !== props.data.desktop.max ) ? props.data.desktop.max.value : props.data.desktop.max;
+	let maxTab = ( undefined !== props.data.tablet.max ) ? props.data.tablet.max.value : props.data.tablet.max;
+	let maxMob = ( undefined !== props.data.mobile.max ) ? props.data.mobile.max.value : props.data.mobile.max;
+
 	output.Desktop = (
 		<>
 			<Range
@@ -19,11 +23,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.desktop.label]: value })
 				}
-				min={ props.data.desktop.min || props.min }
-				max={ props.data.desktop.max || props.max }
-				unit={ props.data.desktop.unit || props.unit }
+				min={props.data.desktop.min || props.min}
+				max={maxDesk || props.max}
+				unit={props.data.desktop.unit || props.unit}
 				responsive={true}
-				units={ props.units }
+				units={props.units}
 			/>
 		</>
 	);
@@ -36,11 +40,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.tablet.label]: value })
 				}
-				min={ props.data.tablet.min || props.min }
-				max={ props.data.tablet.max || props.max }
-				unit={ props.data.tablet.unit || props.unit }
+				min={props.data.tablet.min || props.min}
+				max={maxTab || props.max}
+				unit={props.data.tablet.unit || props.unit}
 				responsive={true}
-				units={ props.units }
+				units={props.units}
 			/>
 		</>
 	);
@@ -53,11 +57,11 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.mobile.label]: value })
 				}
-				min={ props.data.mobile.min || props.min }
-				max={ props.data.mobile.max || props.max }
-				unit={ props.data.mobile.unit || props.unit }
+				min={props.data.mobile.min || props.min}
+				max={maxMob || props.max}
+				unit={props.data.mobile.unit || props.unit}
 				responsive={true}
-				units={ props.units }
+				units={props.units}
 			/>
 		</>
 	);

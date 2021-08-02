@@ -644,6 +644,10 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
+	
+	let maxDesk = ( ( '%' == widthTypeDesktop ) ? 100 : 1000 );
+	let maxTab = ( ( '%' == widthTypeTablet ) ? 100 : 1000 );
+	let maxMob = ( ( '%' == widthTypeMobile ) ? 100 : 1000 );
 
 	const getStylePanelBody = () => {
 		return (
@@ -692,8 +696,14 @@ const Settings = ( props ) => {
 									value: widthTypeDesktop,
 									label: "widthTypeDesktop",
 								},
-								min: 0,
-								max: ( "%" == widthTypeDesktop ) ? 100 : 1000
+								min: {
+									value: 0,
+									label: "widthTypeDesktop",
+								},
+								max: {
+									value: maxDesk,
+									label: "widthTypeDesktop",
+								},
 							},
 							tablet: {
 								value: widthTablet,
@@ -702,9 +712,14 @@ const Settings = ( props ) => {
 									value: widthTypeTablet,
 									label: "widthTypeTablet",
 								},
-								min: 0,
-								max: ( "%" == widthTypeTablet ) ? 100 : 1000
-								
+								min: {
+									value: 0,
+									label: "widthTypeTablet",
+								},
+								max: {
+									value: maxTab,
+									label: "widthTypeTablet",
+								},							
 							},
 							mobile: {
 								value: widthMobile,
@@ -713,8 +728,14 @@ const Settings = ( props ) => {
 									value: widthTypeMobile,
 									label: "widthTypeMobile",
 								},
-								min: 0,
-								max: ( "%" == widthTypeMobile ) ? 100 : 1000,
+								min: {
+									value: 0,
+									label: "widthTypeMobile",
+								},
+								max: {
+									value: maxMob,
+									label: "widthTypeMobile",
+								},
 							},
 						}}
 						units={[
