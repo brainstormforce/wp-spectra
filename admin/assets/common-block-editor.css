@@ -211,7 +211,7 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
 	border: 0;
 	border-bottom: 0;
-	padding: 3px 3px 0px 0px;
+	padding: 4px 4px 0px 0px;
 	margin-bottom: 0;
 	outline: 0;
 	width: auto;
@@ -227,11 +227,10 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
-	background-color: #e4e5e5;
-	color: #23282d;
-	background-color: #e4e5e5;
+	background-color: #bfdeee;
+	color: #007cba;
 	box-shadow: none;
-	border-radius: 2px;
+	border-radius: 8px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
@@ -292,7 +291,6 @@ hr.uagb-editor__separator {
 	margin-bottom: -34px;
 }
 
-.uagb-typography-advanced,
 .uagb-box-shadow-advanced {
 	position: relative;
 	padding: 10px;
@@ -353,19 +351,6 @@ hr.uagb-editor__separator {
 	margin-bottom: 2em;
 }
 
-.uag-typography-font-family-options .components-base-control__label,
-.uag-typography-font-family-options .components-select-control__input {
-	width: 50%;
-}
-
-.uag-typography-font-family-options > div {
-	margin: 0.2em 0 1.5em 0;
-}
-
-.uag-typography-font-family-options input[type="text"]:focus {
-	box-shadow: none;
-}
-
 .uag-typography-option-actions button {
 	float: right;
 	margin: 0;
@@ -394,25 +379,6 @@ hr.uagb-editor__separator {
 	height: 13px;
 	fill: #777;
 }
-
-.uag-typography-font-family-options .react-select__control,
-.uag-typography-font-family-options .react-select__indicators,
-.uag-typography-font-family-options .react-select__value-container {
-	min-height: 28px;
-	height: 28px;
-	padding-top: 0;
-	padding-bottom: 0;
-	border-color: #8d96a0;
-}
-
-.uag-typography-font-family-options .react-select__indicator-separator {
-	display: none;
-}
-
-.uag-typography-font-family-options .react-select__dropdown-indicator svg {
-	fill: #555d66;
-}
-
 .uagb__url-panel-body .block-editor-url-input input {
 	width: 100%;
 }

@@ -2,7 +2,12 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-import { Button, Dashicon, SelectControl } from "@wordpress/components";
+import {
+	Button,
+	Dashicon,
+	SelectControl,
+	ToggleControl,
+} from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
 /**
@@ -25,22 +30,7 @@ const TypographyControl = (props) => {
 			styles.unuse();
 		};
 	}, []);
-	const [value, setValue] = useState([]);
-
-	const onAdvancedControlClick = () => {
-		let control = true;
-		let label = __("Hide Advanced", "ultimate-addons-for-gutenberg");
-
-		if (value !== null && value.showAdvancedControls === true) {
-			control = false;
-			label = __("Advanced", "ultimate-addons-for-gutenberg");
-		}
-
-		setValue({
-			showAdvancedControls: control,
-			showAdvancedControlsLabel: label,
-		});
-	};
+	const [showAdvancedControls, toggleAdvancedControls] = useState(false);
 
 	let fontSize;
 	let fontWeight;
@@ -50,6 +40,7 @@ const TypographyControl = (props) => {
 	let showAdvancedFontControls;
 	let transform;
 	let decoration;
+	let activeClass = showAdvancedControls ? "active" : "";
 
 	const {
 		disableFontFamily,
@@ -124,78 +115,94 @@ const TypographyControl = (props) => {
 
 	if (!disableTransform && props.transform) {
 		transform = (
-			<SelectControl
-				label={__("Transform", "ultimate-addons-for-gutenberg")}
-				value={props.transform.value}
-				onChange={(value) =>
-					props.setAttributes({ [props.transform.label]: value })
-				}
-				options={[
-					{
-						value: "normal",
-						label: __("Normal", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "capitalize",
-						label: __(
-							"Capitalize",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-					{
-						value: "uppercase",
-						label: __("Uppercase", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "lowercase",
-						label: __("Lowercase", "ultimate-addons-for-gutenberg"),
-					},
-				]}
-			/>
+			<div className="uag-typography-transform">
+				<SelectControl
+					label={__("Transform", "ultimate-addons-for-gutenberg")}
+					value={props.transform.value}
+					onChange={(value) =>
+						props.setAttributes({ [props.transform.label]: value })
+					}
+					options={[
+						{
+							value: "normal",
+							label: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "capitalize",
+							label: __(
+								"Capitalize",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "uppercase",
+							label: __(
+								"Uppercase",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "lowercase",
+							label: __(
+								"Lowercase",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+				/>
+			</div>
 		);
 	}
 	if (!disableDecoration && props.decoration) {
 		decoration = (
-			<SelectControl
-				label={__("Decoration", "ultimate-addons-for-gutenberg")}
-				value={props.decoration.value}
-				onChange={(value) =>
-					props.setAttributes({ [props.decoration.label]: value })
-				}
-				options={[
-					{
-						value: "none",
-						label: __("None", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "underline",
-						label: __("Underline", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "overline",
-						label: __("Overline", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "linethrough",
-						label: __(
-							"Line Through",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-				]}
-			/>
+			<div className="uag-typography-decoration">
+				<SelectControl
+					label={__("Decoration", "ultimate-addons-for-gutenberg")}
+					value={props.decoration.value}
+					onChange={(value) =>
+						props.setAttributes({ [props.decoration.label]: value })
+					}
+					options={[
+						{
+							value: "none",
+							label: __("None", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "underline",
+							label: __(
+								"Underline",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "overline",
+							label: __(
+								"Overline",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "linethrough",
+							label: __(
+								"Line Through",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+				/>
+			</div>
 		);
 	}
+
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontAdvancedControls = (
-			<Button
-				className="uagb-size-btn uagb-typography-control-btn"
-				isSmall
-				aria-pressed={value !== null}
-				onClick={onAdvancedControlClick}
-			>
-				<Dashicon icon="admin-tools" />
-			</Button>
+			<ToggleControl
+				checked={showAdvancedControls}
+				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
+			/>
 		);
 	} else {
 		showAdvancedFontControls = (
@@ -209,7 +216,7 @@ const TypographyControl = (props) => {
 		);
 	}
 
-	if (value !== null && value.showAdvancedControls === true) {
+	if (showAdvancedControls === true) {
 		showAdvancedFontControls = (
 			<div className="uagb-typography-advanced">
 				{fontFamily}
@@ -231,7 +238,7 @@ const TypographyControl = (props) => {
 	}
 
 	return (
-		<div className="uag-typography-options">
+		<div className={`uag-typography-options ${activeClass}`}>
 			{!disableAdvancedOptions && (
 				<>
 					{fontTypoAdvancedControls}

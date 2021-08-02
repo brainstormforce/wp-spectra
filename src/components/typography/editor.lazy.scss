@@ -55,3 +55,57 @@ label.uag-typography-font-family-subset-label {
 .uagb-typography-advanced .components-select-control {
 	height: auto;
 }
+/** Typography & Box Shadow Popup CSS*/
+.uag-typography-option-actions {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	align-items: center;
+	& > .components-base-control {
+		.components-base-control__field {
+			margin: 5px 0 0 0;
+		}
+	}
+}
+.uag-typography-options {
+	border: 1px solid lightgrey;
+	border-radius: 8px;
+	padding: 10px;
+	margin: 1.5em 0;
+}
+.uag-typography-options.active {
+	margin: 1.5em 0;
+	.uag-typography-option-actions {
+		margin: unset;
+	}
+	.uag-typography-font-family-options {
+		.components-base-control {
+			width: 100%;
+		}
+	}
+	.uag-typography-font-family {
+		width: 100%;
+		margin: 0.5em 0px;
+	}
+	.uag-typography-font-family-weight {
+		width: 45%;
+		display: inline-flex;
+		margin-right: 10%;
+	}
+	.uag-typography-font-family-subset {
+		width: 45%;
+		display: inline-flex;
+	}
+	.uag-typography-decoration,
+	.uag-typography-transform {
+		display: inline-flex;
+		margin: 0;
+	}
+	.uag-typography-transform {
+		width: 45%;
+		margin-right: 5%;
+	}
+	.uag-typography-decoration {
+		width: 50%;
+	}
+}
