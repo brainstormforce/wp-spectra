@@ -144,7 +144,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Preview
 	 *
-	 * @since 1.13.4
+	 * @since x.x.x
 	 * @var preview
 	 */
 	public $preview = '';
