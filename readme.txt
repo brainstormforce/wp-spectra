@@ -170,6 +170,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 == Changelog ==
 = 1.24.2 =
 * Fix: Blockquote - Multiple blockquote post same content after clicking on tweet button.
+* Fix: UAG Styling not applying on preview of page.
 
 = 1.24.1 – TUESDAY, 27TH JULY 2021 =
 * Fix: Table of contents - Uncaught TypeError with the load function.
