@@ -362,16 +362,14 @@ class UAGBInlineNoticeEdit extends Component {
 							/>
 						</PanelBody>
 						<PanelBody title="Toggle" initialOpen={false}>
-							<div className="uag-toggle-wrap">
-								<ToggleControl
-									checked={cookies}
-									onChange={this.update_cookie_id}
-									label={__(
-										"Toggle off",
-										"ultimate-addons-for-gutenberg"
-									)}
-								/>
-							</div>
+							<ToggleControl
+								checked={cookies}
+								onChange={this.update_cookie_id}
+								label={__(
+									"Toggle off",
+									"ultimate-addons-for-gutenberg"
+								)}
+							/>
 						</PanelBody>
 						<PanelBody title="Slider" initialOpen={false}>
 							<Range

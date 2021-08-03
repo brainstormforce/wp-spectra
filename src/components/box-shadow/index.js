@@ -144,7 +144,7 @@ const BoxShadowControl = (props) => {
 	);
 
 	return (
-		<div className="uag-typography-option-actions">
+		<div className="uag-box-shadow-option-actions">
 			<span>{props.label}</span>
 			{boxShadowAdvancedControls}
 			{advancedControls}

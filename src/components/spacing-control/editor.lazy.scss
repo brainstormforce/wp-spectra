@@ -172,7 +172,7 @@
 	&.is-primary.is-small {
 		background: unset;
 		background-color: unset;
-		color: #001ffd;
+		color: #007cba;
 	}
 	&.is-secondary,
 	&.is-tertiary {
@@ -183,7 +183,7 @@
 	&.is-primary:hover:not(:disabled) {
 		background: unset;
 		background-color: unset;
-		color: #003bff;
+		color: #007cba;
 	}
 	&.is-primary {
 		box-shadow: unset;
