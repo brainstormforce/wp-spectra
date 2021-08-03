@@ -170,11 +170,7 @@ class UAGB_Post_Assets {
 
 		if ( $this->is_allowed_assets_generation ) {
 			global $post;
-			if ( $this->preview ) {
-				$this_post = $post;
-			} else {
-				$this_post = get_post( $this->post_id );
-			}
+			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
 		}
 	}
