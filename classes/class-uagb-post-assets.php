@@ -147,7 +147,7 @@ class UAGB_Post_Assets {
 	 * @since x.x.x
 	 * @var preview
 	 */
-	public $preview = '';
+	public $preview = false;
 
 	/**
 	 * Constructor
@@ -1104,4 +1104,3 @@ class UAGB_Post_Assets {
 		return $css;
 	}
 }
-
