@@ -184,7 +184,9 @@ class AdminMenu {
 	 * @since 1.0.0
 	 */
 	public function styles_scripts() {
-
+ 
+		wp_enqueue_style( 'uagb-admin-font', 'https://fonts.googleapis.com/css?family=Roboto', false ); 
+			
 		$admin_slug  = 'uag-admin';
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
 		

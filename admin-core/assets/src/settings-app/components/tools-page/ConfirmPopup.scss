@@ -13,8 +13,9 @@
 	display: none;
 }
 .uagb-confirm-rollback-popup__content {
-	top: 151px;
-    left: 532.5px;
+	top: 40%;
+    left: 35%;
+    right: 35%;
 	margin: auto;
     width: 375px;
 	background-color: var(--metabox-background-color);
@@ -45,12 +46,14 @@
 	display: inline-flex;
     width: 100%;
 }
+.uagb-confirm-rollback-popup__button.confirm-ok {
+    color:var(--link-color);
+}
 .uagb-confirm-rollback-popup__button {
-	font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
+	font-family: var(--heading-font-family);
     width: 50%;
     border: none;
     background: none;
-    color: #6d7882;
     font-size: 15px;
     cursor: pointer;
     padding: 13px 0;
@@ -62,9 +65,14 @@
 .uagb-confirm-rollback-popup__button.confirm-cancel {
 	border-right: 1px solid #e6e9ec;
 }
-.uagb-confirm-rollback-popup__button.confirm-ok {
-	color: rgb(74, 0, 224);
-}
 .uagb-confirm-rollback-popup.show {
 	display: block;
+}
+@media screen and (max-width: 960px){
+    .uagb-confirm-rollback-popup__content {
+        top: 40%;
+        left: 20%;
+        right: 20%;
+        width: auto;
+    }
 }

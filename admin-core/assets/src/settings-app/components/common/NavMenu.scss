@@ -48,15 +48,10 @@
 			max-width: 100%;
 			text-align: center;
 			text-decoration: none;
-			outline: none;
-			box-shadow: none;
-		}
-		&:hover {
-			color: #2F4F4F;
+			box-sizing: unset;
 		}
 		&.uag-global-nav-menu__tab--active {
 			background: var(--background-light-color);
-			color: #2F4F4F;
 			border: 1px solid #eee;
 			border-bottom: 0;	
 		}
