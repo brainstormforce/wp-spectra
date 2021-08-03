@@ -36,7 +36,8 @@
 	.uag-global-nav-menu__tab {
 		& {
 			background: transparent;
-			border: none;
+			border: 1px solid #fff;
+    		border-bottom: 0;
 			color: #444;
 			cursor: pointer;
 			padding: 15px 25px 15px 25px;
