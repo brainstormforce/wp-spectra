@@ -142,6 +142,14 @@ class UAGB_Post_Assets {
 	protected $post_id;
 
 	/**
+	 * Preview
+	 *
+	 * @since 1.13.4
+	 * @var preview
+	 */
+	public $preview = '';
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -150,13 +158,23 @@ class UAGB_Post_Assets {
 
 		$this->post_id = intval( $post_id );
 
-		$this->file_generation = UAGB_Helper::$file_generation;
+		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		if ( $this->preview ) {
+			$this->file_generation              = 'disabled';
+			$this->is_allowed_assets_generation = true;
+		} else {
+			$this->file_generation              = UAGB_Helper::$file_generation;
+			$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		}
 
 		if ( $this->is_allowed_assets_generation ) {
-			$this_post = get_post( $this->post_id );
-
+			global $post;
+			if ( $this->preview ) {
+				$this_post = $post;
+			} else {
+				$this_post = get_post( $this->post_id );
+			}
 			$this->prepare_assets( $this_post );
 		}
 	}
@@ -278,15 +296,13 @@ class UAGB_Post_Assets {
 				$this->enqueue_file_generation_assets();
 			}
 
-			if ( empty( $_REQUEST['preview'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				// Print Dynamic CSS.
-				if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
-					add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-				}
-				// Print Dynamic JS.
-				if ( 'disabled' === $this->file_generation || $this->fallback_js ) {
-					add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
-				}
+			// Print Dynamic CSS.
+			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
+				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			}
+			// Print Dynamic JS.
+			if ( 'disabled' === $this->file_generation || $this->fallback_js ) {
+				add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 			}
 		}
 	}
@@ -298,6 +314,10 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function update_page_assets() {
+
+		if ( $this->preview ) {
+			return;
+		}
 
 		$meta_array = array(
 			'css'                => wp_slash( $this->stylesheet ),
