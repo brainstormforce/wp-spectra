@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.8
-Stable tag: 1.24.1
+Stable tag: 1.24.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,8 +169,9 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
-= 1.24.2 =
+= 1.24.2 – WEDNESDAY, 04th AUGUST 2021 =
 * Fix: Blockquote - Multiple blockquote post same content after clicking on tweet button.
+* Fix: Table of content - Hyperlink was not working on safari and firefox browser.
 * Fix: Styling was not applying on the preview page.
 
 = 1.24.1 – TUESDAY, 27TH JULY 2021 =
