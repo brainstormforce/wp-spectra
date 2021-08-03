@@ -151,18 +151,24 @@
 	margin-bottom: 0;
 	outline: 0;
 	font-size: 8px;
-	background: transparent;
 	display: inline-block;
 	height: 20px;
 	width: 20px;
 	cursor: pointer;
 	margin-left: 15px;
 	font-weight: 500;
-	transition: box-shadow 0.1s linear;
 	.dashicon {
 		font-size: 15px;
 	}
 }
+.components-button.uag-responsive-common-button:hover,
+.components-button.uag-responsive-common-button:focus,
+.components-button.uag-responsive-common-button:active {
+	box-shadow: none;
+	outline: none;
+	color: #007cba;
+}
+
 .uag-responsive-label-wrap {
 	display: flex;
 	align-items: center;
