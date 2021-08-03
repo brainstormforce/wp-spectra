@@ -168,8 +168,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
 = 1.24.2 =
 * Fix: Blockquote - Multiple blockquote post same content after clicking on tweet button.
+* Fix: Table of content - Hyperlink was not working on safari and firefox browser.
 
 = 1.24.1 – TUESDAY, 27TH JULY 2021 =
 * Fix: Table of contents - Uncaught TypeError with the load function.
