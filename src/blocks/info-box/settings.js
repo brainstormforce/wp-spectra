@@ -545,24 +545,24 @@ const Settings = (props) => {
 											})
 										}
 									/>
-									<div className="uag-toggle-wrap">
-										<ToggleControl
-											checked={imageWidthType}
-											onChange={() =>
-												setAttributes({
-													imageWidthType: !imageWidthType,
-												})
-											}
-											label={__(
-												"Custom Width",
-												"ultimate-addons-for-gutenberg"
-											)}
-											help={__(
-												"Turn this off to inherit the natural width of Image.",
-												"ultimate-addons-for-gutenberg"
-											)}
-										/>
-									</div>
+
+									<ToggleControl
+										checked={imageWidthType}
+										onChange={() =>
+											setAttributes({
+												imageWidthType: !imageWidthType,
+											})
+										}
+										label={__(
+											"Custom Width",
+											"ultimate-addons-for-gutenberg"
+										)}
+										help={__(
+											"Turn this off to inherit the natural width of Image.",
+											"ultimate-addons-for-gutenberg"
+										)}
+									/>
+
 									{imageWidthType && (
 										<Range
 											label={__(
@@ -618,18 +618,12 @@ const Settings = (props) => {
 				title={__("Content", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
-				<div className="uag-toggle-wrap">
-					<ToggleControl
-						checked={showPrefix}
-						onChange={() =>
-							setAttributes({ showPrefix: !showPrefix })
-						}
-						label={__(
-							"Enable Prefix",
-							"ultimate-addons-for-gutenberg"
-						)}
-					/>
-				</div>
+				<ToggleControl
+					checked={showPrefix}
+					onChange={() => setAttributes({ showPrefix: !showPrefix })}
+					label={__("Enable Prefix", "ultimate-addons-for-gutenberg")}
+				/>
+
 				{showPrefix && (
 					<>
 						<TypographyControl
@@ -698,18 +692,13 @@ const Settings = (props) => {
 						/>
 					</>
 				)}
-				<div className="uag-toggle-wrap">
-					<ToggleControl
-						checked={showTitle}
-						onChange={() =>
-							setAttributes({ showTitle: !showTitle })
-						}
-						label={__(
-							"Enable Title",
-							"ultimate-addons-for-gutenberg"
-						)}
-					/>
-				</div>
+
+				<ToggleControl
+					checked={showTitle}
+					onChange={() => setAttributes({ showTitle: !showTitle })}
+					label={__("Enable Title", "ultimate-addons-for-gutenberg")}
+				/>
+
 				{showTitle && (
 					<>
 						<SelectControl
@@ -796,16 +785,16 @@ const Settings = (props) => {
 						/>
 					</>
 				)}
-				<div className="uag-toggle-wrap">
-					<ToggleControl
-						checked={showDesc}
-						onChange={() => setAttributes({ showDesc: !showDesc })}
-						label={__(
-							"Enable Description",
-							"ultimate-addons-for-gutenberg"
-						)}
-					/>
-				</div>
+
+				<ToggleControl
+					checked={showDesc}
+					onChange={() => setAttributes({ showDesc: !showDesc })}
+					label={__(
+						"Enable Description",
+						"ultimate-addons-for-gutenberg"
+					)}
+				/>
+
 				{showDesc && (
 					<>
 						<TypographyControl
@@ -1227,20 +1216,18 @@ const Settings = (props) => {
 							}
 						/>
 						{ctaType === "button" && (
-							<div className="uag-toggle-wrap">
-								<ToggleControl
-									checked={inheritFromTheme}
-									onChange={() =>
-										setAttributes({
-											inheritFromTheme: !inheritFromTheme,
-										})
-									}
-									label={__(
-										"Inherit from Theme",
-										"ultimate-addons-for-gutenberg"
-									)}
-								/>
-							</div>
+							<ToggleControl
+								checked={inheritFromTheme}
+								onChange={() =>
+									setAttributes({
+										inheritFromTheme: !inheritFromTheme,
+									})
+								}
+								label={__(
+									"Inherit from Theme",
+									"ultimate-addons-for-gutenberg"
+								)}
+							/>
 						)}
 						{ctaType === "text" && (
 							<TypographyControl
@@ -1355,18 +1342,17 @@ const Settings = (props) => {
 								setAttributes({ ctaLink: value })
 							}
 						/>
-						<div className="uag-toggle-wrap">
-							<ToggleControl
-								checked={ctaTarget}
-								onChange={() =>
-									setAttributes({ ctaTarget: !ctaTarget })
-								}
-								label={__(
-									"Open in new Window",
-									"ultimate-addons-for-gutenberg"
-								)}
-							/>
-						</div>
+
+						<ToggleControl
+							checked={ctaTarget}
+							onChange={() =>
+								setAttributes({ ctaTarget: !ctaTarget })
+							}
+							label={__(
+								"Open in new Window",
+								"ultimate-addons-for-gutenberg"
+							)}
+						/>
 					</>
 				)}
 				{ctaType !== "all" && ctaType !== "none" && (

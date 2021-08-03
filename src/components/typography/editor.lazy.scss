@@ -70,8 +70,30 @@ label.uag-typography-font-family-subset-label {
 .uag-typography-options {
 	border: 1px solid lightgrey;
 	border-radius: 8px;
-	padding: 10px;
+	padding: 15px;
 	margin: 1.5em 0;
+	.components-toggle-control
+		.components-base-control__field
+		.components-form-toggle {
+		padding: 0;
+		margin: 0;
+	}
+	.uag-typography-main-label {
+		font-weight: bold;
+		font-size: 13px;
+	}
+}
+.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
+	.components-base-control {
+		padding: 0;
+		width: 100%;
+	}
+}
+.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
+	.components-base-control.components-toggle-control {
+		padding: 0;
+		width: auto;
+	}
 }
 .uag-typography-options.active {
 	margin: 1.5em 0;
@@ -87,25 +109,19 @@ label.uag-typography-font-family-subset-label {
 		width: 100%;
 		margin: 0.5em 0px;
 	}
-	.uag-typography-font-family-weight {
-		width: 45%;
-		display: inline-flex;
-		margin-right: 10%;
+	.uag-typography-weight-subset-wrap,
+	.uag-typography-transform-decoration-wrap {
+		display: flex;
+		justify-content: space-between;
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
 	}
-	.uag-typography-font-family-subset {
-		width: 45%;
-		display: inline-flex;
-	}
+	.uag-typography-transform,
 	.uag-typography-decoration,
-	.uag-typography-transform {
-		display: inline-flex;
-		margin: 0;
-	}
-	.uag-typography-transform {
-		width: 45%;
-		margin-right: 5%;
-	}
-	.uag-typography-decoration {
-		width: 50%;
+	.uag-typography-font-family-weight,
+	.uag-typography-font-family-subset {
+		display: flex;
+		width: 48%;
 	}
 }

@@ -1,7 +1,6 @@
 .uagb-range-control__mobile-controls {
 	display: flex;
 	width: 100%;
-	margin-left: -6px;
 	.components-base-control.components-range-control {
 		-webkit-tap-highlight-color: transparent;
 		box-sizing: border-box;
@@ -42,13 +41,14 @@
 		align-items: center;
 		padding: 0;
 		margin: 0;
+		margin-left: 15px;
 	}
 	.uagb-range-control__actions {
 		position: relative;
 		top: -2px;
 		display: flex;
 		.uagb-reset {
-			padding: 0px 4px;
+			padding: 0;
 		}
 		.uagb-range-control__units .components-button {
 			font-size: 10px;
@@ -80,7 +80,7 @@
 			&.is-primary:hover:not(:disabled) {
 				background: unset;
 				background-color: unset;
-				color: #003bff;
+				color: #007cba;
 			}
 		}
 		.components-button.is-secondary:hover:not(:disabled) {
@@ -92,7 +92,7 @@
 			color: #827d7d;
 		}
 		.components-button.is-secondary {
-			color: #003bff;
+			color: #007cba;
 			box-shadow: 0 0;
 		}
 	}
@@ -139,4 +139,31 @@
 			color: black;
 		}
 	}
+}
+.uag-responsive-common-button {
+	box-shadow: inset 0 0 0 1px #fff;
+	background-color: #bfdeee;
+	color: #007cba;
+	border-radius: 8px;
+	border: 0;
+	border-bottom: 0;
+	padding: 4px 4px 0px 0px;
+	margin-bottom: 0;
+	outline: 0;
+	font-size: 8px;
+	background: transparent;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	margin-left: 15px;
+	font-weight: 500;
+	transition: box-shadow 0.1s linear;
+	.dashicon {
+		font-size: 15px;
+	}
+}
+.uag-responsive-label-wrap {
+	display: flex;
+	align-items: center;
 }

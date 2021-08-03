@@ -3495,3 +3495,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	> .components-panel__body-title {
 	margin-bottom: 16px;
 }
+.uagb-inspector-tab .components-panel__body.is-opened {
+	padding: 10px;
+}
+.uagb-inspector-tab .components-panel__body.is-opened label {
+	font-size: 12px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	.components-select-control__input {
+	font-size: 11px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control,
+.uagb-inspector-tab .components-panel__body.is-opened > .rfip,
+.uagb-inspector-tab .components-panel__body.is-opened > p {
+	padding: 0 15px;
+}

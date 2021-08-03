@@ -210,8 +210,10 @@ const TypographyControl = (props) => {
 				{fontFamily}
 				{fontSize}
 				{fontWeight}
-				{transform}
-				{decoration}
+				<div className="uag-typography-transform-decoration-wrap">
+					{transform}
+					{decoration}
+				</div>
 			</>
 		);
 	}
@@ -222,8 +224,10 @@ const TypographyControl = (props) => {
 				{fontFamily}
 				{fontSize}
 				{fontWeight}
-				{transform}
-				{decoration}
+				<div className="uag-typography-transform-decoration-wrap">
+					{transform}
+					{decoration}
+				</div>
 			</div>
 		);
 	}
@@ -231,7 +235,7 @@ const TypographyControl = (props) => {
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontTypoAdvancedControls = (
 			<div className="uag-typography-option-actions">
-				<span>{props.label}</span>
+				<span className="uag-typography-main-label">{props.label}</span>
 				{fontAdvancedControls}
 			</div>
 		);
