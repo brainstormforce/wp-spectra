@@ -4,7 +4,6 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import ColumnResponsive from '@Components/typography/column-responsive';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -696,14 +695,8 @@ const Settings = ( props ) => {
 									value: widthTypeDesktop,
 									label: "widthTypeDesktop",
 								},
-								min: {
-									value: 0,
-									label: "widthTypeDesktop",
-								},
-								max: {
-									value: maxDesk,
-									label: "widthTypeDesktop",
-								},
+								min: 0,
+								max: maxDesk,
 							},
 							tablet: {
 								value: widthTablet,
@@ -712,14 +705,8 @@ const Settings = ( props ) => {
 									value: widthTypeTablet,
 									label: "widthTypeTablet",
 								},
-								min: {
-									value: 0,
-									label: "widthTypeTablet",
-								},
-								max: {
-									value: maxTab,
-									label: "widthTypeTablet",
-								},							
+								min: 0,
+								max: maxTab,						
 							},
 							mobile: {
 								value: widthMobile,
@@ -728,14 +715,8 @@ const Settings = ( props ) => {
 									value: widthTypeMobile,
 									label: "widthTypeMobile",
 								},
-								min: {
-									value: 0,
-									label: "widthTypeMobile",
-								},
-								max: {
-									value: maxMob,
-									label: "widthTypeMobile",
-								},
+								min: 0,
+								max: maxMob,
 							},
 						}}
 						units={[
@@ -853,80 +834,6 @@ const Settings = ( props ) => {
 						label: "paddingLink",
 					}}
 				/>
-				{/* <SpacingControl
-					{...props}
-					label={__(
-						"List Margin",
-						"ultimate-addons-for-gutenberg"
-					)}
-					valueTop={{
-						value: vMarginDesktop,
-						label: "vMarginDesktop",
-					}}
-					valueRight={{
-						value: vMarginDesktop,
-						label: "vMarginDesktop",
-					}}
-					valueBottom={{
-						value: hMarginDesktop,
-						label: "hMarginDesktop",
-					}}
-					valueLeft={{
-						value: hMarginDesktop,
-						label: "hMarginDesktop",
-					}}
-					valueTopTablet={{
-						value: vMarginTablet,
-						label: "vMarginTablet",
-					}}
-					valueRightTablet={{
-						value: vMarginTablet,
-						label: "vMarginTablet",
-					}}
-					valueBottomTablet={{
-						value: hMarginTablet,
-						label: "hMarginTablet",
-					}}
-					valueLeftTablet={{
-						value: hMarginTablet,
-						label: "hMarginTablet",
-					}}
-					valueTopMobile={{
-						value: vMarginMobile,
-						label: "vMarginMobile",
-					}}
-					valueRightMobile={{
-						value: vMarginMobile,
-						label: "vMarginMobile",
-					}}
-					valueBottomMobile={{
-						value: hMarginMobile,
-						label: "hMarginMobile",
-					}}
-					valueLeftMobile={{
-						value: hMarginMobile,
-						label: "hMarginMobile",
-					}}
-					unit={{
-						value: marginTypeDesktop,
-						label: "marginTypeDesktop",
-					}}
-					mUnit={{
-						value: marginTypeMobile,
-						label: "marginTypeMobile",
-					}}
-					tUnit={{
-						value: marginTypeTablet,
-						label: "marginTypeTablet",
-					}}
-					deviceType={deviceType}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: marginLink,
-						label: "marginLink",
-					}}
-				/> */}
 				<SpacingControl
 					{...props}
 					label={__(
