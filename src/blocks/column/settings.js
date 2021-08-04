@@ -58,6 +58,7 @@ const Settings = ( props ) => {
 			backgroundSize,
 			backgroundOpacity,
 			backgroundImageColor,
+			gradientValue,
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -328,75 +329,49 @@ const Settings = ( props ) => {
 			>
 			<Background
 				setAttributes={setAttributes}
+				backgroundGradient={{
+					value: gradientValue,
+					label: "gradientValue",
+				}}
 				backgroundImageColor={{
 					value: backgroundImageColor,
-					label: __(
-						"Background Image Color",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundImageColor",
 				}}
 				overlayType={{
 					value: overlayType,
-					label: __(
-						"Overlay Type",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "overlayType",
 				}}
 				backgroundSize={{
 					value: backgroundSize,
-					label: __(
-						"Background Size",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundSize",
 				}}
 				backgroundRepeat={{
 					value: backgroundRepeat,
-					label: __(
-						"Background Repeat",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundRepeat",
 				}}
 				backgroundAttachment={{
 					value: backgroundAttachment,
-					label: __(
-						"Background Attachement",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundAttachment",
 				}}
 				backgroundPosition={{
 					value: backgroundPosition,
-					label: __(
-						"Background Image",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundPosition",
 				}}
 				backgroundImage={{
 					value: backgroundImage,
-					label: __(
-						"Background Image",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundImage",
 				}}
 				backgroundColor={{
 					value: backgroundColor,
-					label: __(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundColor",
 				}}
 				backgroundType={{
 					value: backgroundType,
-					label: __(
-						"Background Type",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundType",
 				}}
 				backgroundOpacity={{
 					value: backgroundOpacity,
-					label: __(
-						"Opacity",
-						"ultimate-addons-for-gutenberg"
-					),
+					label: "backgroundOpacity",
 				}}
 				backgroundVideoType={{
 					value: false,
