@@ -1,6 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 
 import { PanelBody, TextControl } from '@wordpress/components';
 
@@ -31,7 +33,14 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	return <InspectorControls>{ timelineItemSettings() }</InspectorControls>;
+	return (
+	<InspectorControls>
+		<InspectorTabs tabs={["general", "advance"]}>
+		<InspectorTab key={"general"}>{ timelineItemSettings() }</InspectorTab>
+		<InspectorTab key={"advance"}></InspectorTab>
+		</InspectorTabs>
+	</InspectorControls>
+	);
 };
 
 export default React.memo( Settings );

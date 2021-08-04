@@ -7,22 +7,23 @@ import renderSVG from '@Controls/renderIcon';
 import React from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
 
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
 import {
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	BlockAlignmentToolbar,
-	PanelColorSettings,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	ToggleControl,
 	TabPanel,
 } from '@wordpress/components';
@@ -385,18 +386,19 @@ const Settings = ( props ) => {
 					/>
 				) }
 				{ displayPostDate && timelinAlignment !== 'center' && (
-					<RangeControl
-						label={ __(
-							'Date Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ dateBottomspace }
-						onChange={ ( value ) =>
-							setAttributes( { dateBottomspace: value } )
+					<Range
+						label={__(
+							"Date Bottom Spacing",
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={dateBottomspace}
+						onChange={(value) =>
+							setAttributes({ dateBottomspace: value })
 						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
+						min={0}
+						max={50}
+						displayUnit={false}
 					/>
 				) }
 				<hr className="uagb-editor__separator" />
@@ -578,26 +580,6 @@ const Settings = ( props ) => {
 								label: 'dateLineHeightTablet',
 							} }
 						/>
-						<hr className="uagb-editor__separator" />
-						<p className="uagb-setting-label">
-							{ __(
-								'Date Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: dateColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ dateColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { dateColor: colorValue } )
-							}
-							allowReset
-						/>
 					</>
 				) }
 			</PanelBody>
@@ -609,44 +591,47 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<RangeControl
-					label={ __(
-						'Horizontal Space',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ horizontalSpace }
-					onChange={ ( value ) =>
-						setAttributes( { horizontalSpace: value } )
+				<Range
+					label={__(
+						"Horizontal Space",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={horizontalSpace}
+					onChange={(value) =>
+						setAttributes({ horizontalSpace: value })
 					}
-					min={ 1 }
-					max={ 50 }
-					allowReset
+					min={0}
+					max={50}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __(
-						'Vertical Space',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ verticalSpace }
-					onChange={ ( value ) =>
-						setAttributes( { verticalSpace: value } )
+				<Range
+					label={__(
+						"Vertical Space",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={verticalSpace}
+					onChange={(value) =>
+						setAttributes({ verticalSpace: value })
 					}
-					min={ 1 }
-					max={ 100 }
-					allowReset
+					min={0}
+					max={50}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __(
-						'Heading Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
+				<Range
+					label={__(
+						"Heading Bottom Spacing",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={headSpace}
+					onChange={(value) =>
+						setAttributes({ headSpace: value })
 					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
+					min={0}
+					max={50}
+					displayUnit={false}
 				/>
 			</PanelBody>
 		);
@@ -668,46 +653,53 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<RangeControl
-					label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
-					value={ iconSize }
-					onChange={ geticonSize }
-					min={ 0 }
-					max={ 30 }
-					allowReset
+				<Range
+					label={__(
+						"Icon Size",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={iconSize}
+					onChange={geticonSize}
+					min={0}
+					max={30}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __(
-						'Icon Background Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ connectorBgsize }
-					onChange={ getconnectorBgsize }
-					min={ 25 }
-					max={ 90 }
-					allowReset
+				<Range
+					label={__(
+						"Icon Background Size",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={connectorBgsize}
+					onChange={getconnectorBgsize}
+					min={25}
+					max={90}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __(
-						'Border Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderwidth }
-					onChange={ getborderwidth }
-					min={ 1 }
-					max={ 10 }
-					allowReset
+				<Range
+					label={__(
+						"Border Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={borderwidth}
+					onChange={getborderwidth}
+					min={1}
+					max={10}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __(
-						'Connector Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ separatorwidth }
-					onChange={ getseparatorwidth }
-					min={ 1 }
-					max={ 10 }
-					allowReset
+				<Range
+					label={__(
+						"Connector Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={separatorwidth}
+					onChange={getseparatorwidth}
+					min={1}
+					max={10}
+					displayUnit={false}
 				/>
 			</PanelBody>
 		);
@@ -765,166 +757,154 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<RangeControl
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
+				<Range
+					label={__(
+						"Rounded Corners",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={borderRadius}
+					onChange={(value) =>
+						setAttributes({ borderRadius: value })
 					}
-					min={ 0 }
-					initialPosition={ 10 }
-					max={ 50 }
-					allowReset
+					min={0}
+					max={50}
+					displayUnit={false}
 				/>
-				<RangeControl
-					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-					value={ bgPadding }
-					onChange={ ( value ) =>
-						setAttributes( { bgPadding: value } )
+				<Range
+					label={__(
+						"Padding",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={bgPadding}
+					onChange={(value) =>
+						setAttributes({ bgPadding: value })
 					}
-					min={ 1 }
-					initialPosition={ 10 }
-					max={ 50 }
-					allowReset
+					min={1}
+					max={50}
+					displayUnit={false}
 				/>
 			</PanelBody>
 		);
 	};
 	const colorSettings = () => {
 		return (
-			<PanelColorSettings
-				title={ __( 'Colors', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				colorSettings={ [
-					{
-						value: headingColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { headingColor: colorValue } ),
-						label: __(
-							'Heading Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: subHeadingColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { subHeadingColor: colorValue } ),
-						label: __(
-							'Content Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: backgroundColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { backgroundColor: colorValue } ),
-						label: __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			></PanelColorSettings>
+			<PanelBody
+				title={ __(
+					'Color Settings',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
+			<AdvancedPopColorControl
+				label={__("Heading Color", "ultimate-addons-for-gutenberg")}
+				colorValue={headingColor ? headingColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ headingColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Content Color", "ultimate-addons-for-gutenberg")}
+				colorValue={subHeadingColor ? subHeadingColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ subHeadingColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Background Color", "ultimate-addons-for-gutenberg")}
+				colorValue={backgroundColor ? backgroundColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ backgroundColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Date Color", "ultimate-addons-for-gutenberg")}
+				colorValue={dateColor ? dateColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ dateColor: value })
+				}
+			/>
+			</PanelBody>
 		);
 	};
 	const connectorColorSettings = () => {
 		const iconColorSettings = (
-			<PanelColorSettings
+			<PanelBody
 				title={ __(
 					'Color Settings',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
-				colorSettings={ [
-					{
-						value: separatorColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { separatorColor: colorValue } ),
-						label: __(
-							'Line Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: iconColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { iconColor: colorValue } ),
-						label: __(
-							'Icon Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: separatorBg,
-						onChange: ( colorValue ) =>
-							setAttributes( { separatorBg: colorValue } ),
-						label: __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: separatorBorder,
-						onChange: ( colorValue ) =>
-							setAttributes( { separatorBorder: colorValue } ),
-						label: __(
-							'Border Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			></PanelColorSettings>
+			>
+			<AdvancedPopColorControl
+				label={__("Line Color", "ultimate-addons-for-gutenberg")}
+				colorValue={separatorColor ? separatorColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ separatorColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+				colorValue={iconColor ? iconColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ iconColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Background Color", "ultimate-addons-for-gutenberg")}
+				colorValue={separatorBg ? separatorBg : ""}
+				onColorChange={(value) =>
+					setAttributes({ separatorBg: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Border Color", "ultimate-addons-for-gutenberg")}
+				colorValue={separatorBorder ? separatorBorder : ""}
+				onColorChange={(value) =>
+					setAttributes({ separatorBorder: value })
+				}
+			/>
+			</PanelBody>
 		);
 
 		const iconFocusSettings = (
-			<PanelColorSettings
+			<PanelBody
 				title={ __(
 					'Color Settings',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
-				colorSettings={ [
-					{
-						value: separatorFillColor,
-						onChange: ( colorValue ) =>
-							setAttributes( { separatorFillColor: colorValue } ),
-						label: __(
-							'Line Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: iconFocus,
-						onChange: ( colorValue ) =>
-							setAttributes( { iconFocus: colorValue } ),
-						label: __(
-							'Icon Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: iconBgFocus,
-						onChange: ( colorValue ) =>
-							setAttributes( { iconBgFocus: colorValue } ),
-						label: __(
-							'Background Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: borderFocus,
-						onChange: ( colorValue ) =>
-							setAttributes( { borderFocus: colorValue } ),
-						label: __(
-							'Border Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-			></PanelColorSettings>
+			>
+			<AdvancedPopColorControl
+				label={__("Line Color", "ultimate-addons-for-gutenberg")}
+				colorValue={separatorFillColor ? separatorFillColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ separatorFillColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+				colorValue={iconFocus ? iconFocus : ""}
+				onColorChange={(value) =>
+					setAttributes({ iconFocus: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Background Color", "ultimate-addons-for-gutenberg")}
+				colorValue={iconBgFocus ? iconBgFocus : ""}
+				onColorChange={(value) =>
+					setAttributes({ iconBgFocus: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Border Color", "ultimate-addons-for-gutenberg")}
+				colorValue={borderFocus ? borderFocus : ""}
+				onColorChange={(value) =>
+					setAttributes({ borderFocus: value })
+				}
+			/>
+			</PanelBody>
 		);
 
 		return (
@@ -1023,12 +1003,20 @@ const Settings = ( props ) => {
 		<>
 			{ blockControls() }
 			<InspectorControls>
-				{ generalSettings() }
-				{ spacingSettings() }
-				{ connectorSettings() }
-				{ connectorColorSettings() }
-				{ timelineItemSettings() }
-				{ colorSettings() }
+			<InspectorTabs>
+				<InspectorTab key={"general"}>
+					{ generalSettings() }
+					{ timelineItemSettings() }
+					{ connectorSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
+					{ connectorColorSettings() }
+					{ colorSettings() }
+				</InspectorTab>
+				<InspectorTab key={"advance"}>
+					{ spacingSettings() }
+				</InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{ loadHeadGoogleFonts }
 			{ loadSubHeadGoogleFonts }
