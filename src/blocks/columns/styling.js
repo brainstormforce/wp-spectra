@@ -46,8 +46,12 @@ function styling( props ) {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		topMarginMobile,
+		rightMarginMobile,
+		leftMarginMobile,
 		bottomMarginMobile,
 		topMarginTablet,
+		rightMarginTablet,
+		leftMarginTablet,
 		bottomMarginTablet,
 		topDividerOpacity,
 		bottomDividerOpacity,
@@ -215,6 +219,11 @@ function styling( props ) {
 				bottomMarginTablet,
 				tabletMarginType
 			),
+			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginType ),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginType
+			),
 		},
 		' .uagb-columns__shape-top svg': {
 			height: generateCSSUnit( topHeightTablet, 'px' ),
@@ -245,6 +254,11 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginType ),
 			'margin-bottom': generateCSSUnit(
 				bottomMarginMobile,
+				mobileMarginType
+			),
+			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginType ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
 				mobileMarginType
 			),
 		},

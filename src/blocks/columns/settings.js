@@ -41,11 +41,17 @@ const Settings = ( props ) => {
 		widthType,
 		tag,
 		columnGap,
-		topMargin,
-		bottomMargin,
+		topMarginDesktop,
+		rightMarginDesktop,
+		leftMarginDesktop,
+		bottomMarginDesktop,
 		topMarginMobile,
+		rightMarginMobile,
+		leftMarginMobile,
 		bottomMarginMobile,
 		topMarginTablet,
+		rightMarginTablet,
+		leftMarginTablet,
 		bottomMarginTablet,
 		topPadding,
 		bottomPadding,
@@ -482,52 +488,52 @@ const Settings = ( props ) => {
 					{...props.parentProps}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
-						value: topMargin,
-						label: "topMargin",
+						value: topMarginDesktop,
+						label: "topMarginDesktop",
 					}}
 					valueRight={{
-						value: topMargin,
-						label: "topMargin",
+						value: rightMarginDesktop,
+						label: "rightMarginDesktop",
 					}}
 					valueBottom={{
-						value: bottomMargin,
-						label: "bottomMargin",
+						value: bottomMarginDesktop,
+						label: "bottomMarginDesktop",
 					}}
 					valueLeft={{
-						value: bottomMargin,
-						label: "bottomMargin",
+						value: leftMarginDesktop,
+						label: "leftMarginDesktop",
 					}}
 					valueTopTablet={{
 						value: topMarginTablet,
 						label: "topMarginTablet",
 					}}
 					valueRightTablet={{
-						value: topMarginTablet,
-						label: "topMarginTablet",
+						value: rightMarginTablet,
+						label: "rightMarginTablet",
 					}}
 					valueBottomTablet={{
 						value: bottomMarginTablet,
 						label: "bottomMarginTablet",
 					}}
 					valueLeftTablet={{
-						value: bottomMarginTablet,
-						label: "bottomMarginTablet",
+						value: leftMarginTablet,
+						label: "leftMarginTablet",
 					}}
 					valueTopMobile={{
 						value: topMarginMobile,
 						label: "topMarginMobile",
 					}}
 					valueRightMobile={{
-						value: topMarginMobile,
-						label: "topMarginMobile",
+						value: rightMarginMobile,
+						label: "rightMarginMobile",
 					}}
 					valueBottomMobile={{
 						value: bottomMarginMobile,
 						label: "bottomMarginMobile",
 					}}
 					valueLeftMobile={{
-						value: bottomMarginMobile,
-						label: "bottomMarginMobile",
+						value: leftMarginMobile,
+						label: "leftMarginMobile",
 					}}
 					unit={{
 						value: desktopMarginType,

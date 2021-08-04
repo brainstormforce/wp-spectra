@@ -34,6 +34,7 @@ const Range = (props) => {
 	};
 
 	const [cachedValue, setCacheValue] = useState(defaultCache);
+	const [displayResponsive, toggleResponsive] = useState(false);
 
 	useEffect(() => {
 		let cachedValueUpdate = { ...cachedValue };
@@ -58,6 +59,7 @@ const Range = (props) => {
 	} = useDispatch("core/edit-post");
 	const customSetPreviewDeviceType = (device) => {
 		setPreviewDeviceType(device);
+		toggleResponsive(!displayResponsive);
 	};
 	const deviceType = useSelect((select) => {
 		return select("core/edit-post").__experimentalGetPreviewDeviceType();
@@ -149,14 +151,35 @@ const Range = (props) => {
 		return items;
 	};
 
+	const commonResponsiveHandler = () => {
+		toggleResponsive(!displayResponsive);
+	};
+
 	return (
 		<div className="components-base-control">
 			<div className="uagb-range-control__header">
-				{props.label && (
-					<p className={"uagb-range-control__label"}>{props.label}</p>
-				)}
-				<div className="uagb-range-control__actions">
-					{props.responsive && (
+				<div className="uag-responsive-label-wrap">
+					{props.label && (
+						<label className={"uagb-range-control__label"}>
+							{props.label}
+						</label>
+					)}
+					{!displayResponsive && props.responsive && (
+						<Button
+							key="uag-responsive-common-button"
+							className="uag-responsive-common-button"
+							onClick={commonResponsiveHandler}
+						>
+							<Dashicon
+								icon={
+									"Mobile" === deviceType
+										? "smartphone"
+										: deviceType.toLowerCase()
+								}
+							/>
+						</Button>
+					)}
+					{displayResponsive && props.responsive && (
 						<ButtonGroup
 							className="uagb-range-control-responsive components-tab-panel__tabs"
 							aria-label={__(
@@ -180,6 +203,8 @@ const Range = (props) => {
 							))}
 						</ButtonGroup>
 					)}
+				</div>
+				<div className="uagb-range-control__actions">
 					<Button
 						className="uagb-reset"
 						disabled={cachedValue.resetDisabled}

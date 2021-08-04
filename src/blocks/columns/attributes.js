@@ -68,21 +68,41 @@ const attributes = {
 	rightPaddingMobile: {
 		type: 'number',
 	},
-	topMargin: {
+	topMarginDesktop: {
 		type: 'number',
 		default: 0,
 	},
-	bottomMargin: {
+	rightMarginDesktop: {
+		type: 'number',
+		default: 0,
+	},
+	leftMarginDesktop: {
+		type: 'number',
+		default: 0,
+	},
+	bottomMarginDesktop: {
 		type: 'number',
 		default: 0,
 	},
 	topMarginMobile: {
 		type: 'number',
 	},
+	rightMarginMobile: {
+		type: 'number',
+	},
+	leftMarginMobile: {
+		type: 'number',
+	},
 	bottomMarginMobile: {
 		type: 'number',
 	},
 	topMarginTablet: {
+		type: 'number',
+	},
+	rightMarginTablet: {
+		type: 'number',
+	},
+	leftMarginTablet: {
 		type: 'number',
 	},
 	bottomMarginTablet: {

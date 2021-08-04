@@ -113,9 +113,7 @@ const Border = (props) => {
 		</>
 	);
 
-	return (
-		<div className="uag-typography-option-actions">{advancedControls}</div>
-	);
+	return advancedControls;
 };
 
 export default Border;

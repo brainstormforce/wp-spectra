@@ -211,7 +211,7 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
 	border: 0;
 	border-bottom: 0;
-	padding: 3px 3px 0px 0px;
+	padding: 4px 4px 0px 0px;
 	margin-bottom: 0;
 	outline: 0;
 	width: auto;
@@ -227,11 +227,10 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
-	background-color: #e4e5e5;
-	color: #23282d;
-	background-color: #e4e5e5;
+	background-color: #bfdeee;
+	color: #007cba;
 	box-shadow: none;
-	border-radius: 2px;
+	border-radius: 8px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
@@ -292,7 +291,6 @@ hr.uagb-editor__separator {
 	margin-bottom: -34px;
 }
 
-.uagb-typography-advanced,
 .uagb-box-shadow-advanced {
 	position: relative;
 	padding: 10px;
@@ -350,20 +348,7 @@ hr.uagb-editor__separator {
 .uag-typography-option-actions,
 .uag-box-shadow-option-actions {
 	margin-top: 1.5em;
-	margin-bottom: 1.5em;
-}
-
-.uag-typography-font-family-options .components-base-control__label,
-.uag-typography-font-family-options .components-select-control__input {
-	width: 50%;
-}
-
-.uag-typography-font-family-options > div {
-	margin: 0.2em 0 1.5em 0;
-}
-
-.uag-typography-font-family-options input[type="text"]:focus {
-	box-shadow: none;
+	margin-bottom: 2em;
 }
 
 .uag-typography-option-actions button {
@@ -394,25 +379,6 @@ hr.uagb-editor__separator {
 	height: 13px;
 	fill: #777;
 }
-
-.uag-typography-font-family-options .react-select__control,
-.uag-typography-font-family-options .react-select__indicators,
-.uag-typography-font-family-options .react-select__value-container {
-	min-height: 28px;
-	height: 28px;
-	padding-top: 0;
-	padding-bottom: 0;
-	border-color: #8d96a0;
-}
-
-.uag-typography-font-family-options .react-select__indicator-separator {
-	display: none;
-}
-
-.uag-typography-font-family-options .react-select__dropdown-indicator svg {
-	fill: #555d66;
-}
-
 .uagb__url-panel-body .block-editor-url-input input {
 	width: 100%;
 }
@@ -436,7 +402,7 @@ hr.uagb-editor__separator {
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
 	left: 0 !important;
-	width: 230px;
+	width: 100%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -1081,16 +1047,6 @@ hr.uagb-editor__separator {
 	color: #2e7d32;
 }
 
-.rfipdropdown--green .rfipicons__ibox:hover {
-	background-color: #66bb6a;
-	border: 1px solid #66bb6a;
-}
-
-.rfipdropdown--green .rfipicons__ibox:active,
-.rfipdropdown--green .rfipicons__ibox:focus {
-	border: 1px solid #66bb6a;
-}
-
 .rfipdropdown--green .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -1247,16 +1203,6 @@ hr.uagb-editor__separator {
 	background-color: #cfd8dc;
 	border: 1px solid #cfd8dc;
 	color: #37474f;
-}
-
-.rfipdropdown--bluegrey .rfipicons__ibox:hover {
-	background-color: #78909c;
-	border: 1px solid #78909c;
-}
-
-.rfipdropdown--bluegrey .rfipicons__ibox:active,
-.rfipdropdown--bluegrey .rfipicons__ibox:focus {
-	border: 1px solid #78909c;
 }
 
 .rfipdropdown--bluegrey .rfipicons__ibox--error {
@@ -1417,16 +1363,6 @@ hr.uagb-editor__separator {
 	color: #4e342e;
 }
 
-.rfipdropdown--brown .rfipicons__ibox:hover {
-	background-color: #8d6e63;
-	border: 1px solid #8d6e63;
-}
-
-.rfipdropdown--brown .rfipicons__ibox:active,
-.rfipdropdown--brown .rfipicons__ibox:focus {
-	border: 1px solid #8d6e63;
-}
-
 .rfipdropdown--brown .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -1583,16 +1519,6 @@ hr.uagb-editor__separator {
 	background-color: #b2ebf2;
 	border: 1px solid #b2ebf2;
 	color: #00838f;
-}
-
-.rfipdropdown--cyan .rfipicons__ibox:hover {
-	background-color: #26c6da;
-	border: 1px solid #26c6da;
-}
-
-.rfipdropdown--cyan .rfipicons__ibox:active,
-.rfipdropdown--cyan .rfipicons__ibox:focus {
-	border: 1px solid #26c6da;
 }
 
 .rfipdropdown--cyan .rfipicons__ibox--error {
@@ -1753,16 +1679,6 @@ hr.uagb-editor__separator {
 	color: #d84315;
 }
 
-.rfipdropdown--deeporange .rfipicons__ibox:hover {
-	background-color: #ff7043;
-	border: 1px solid #ff7043;
-}
-
-.rfipdropdown--deeporange .rfipicons__ibox:active,
-.rfipdropdown--deeporange .rfipicons__ibox:focus {
-	border: 1px solid #ff7043;
-}
-
 .rfipdropdown--deeporange .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -1921,16 +1837,6 @@ hr.uagb-editor__separator {
 	color: #4527a0;
 }
 
-.rfipdropdown--deeppurple .rfipicons__ibox:hover {
-	background-color: #7e57c2;
-	border: 1px solid #7e57c2;
-}
-
-.rfipdropdown--deeppurple .rfipicons__ibox:active,
-.rfipdropdown--deeppurple .rfipicons__ibox:focus {
-	border: 1px solid #7e57c2;
-}
-
 .rfipdropdown--deeppurple .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -2046,8 +1952,8 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default .rfipicons__cp {
-	border: 0 none;
-	border-bottom: 1px solid #bdbdbd;
+	border: 1px solid #dddddd;
+	border-radius: 2px;
 	-webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
 	transition: border 0.25s, -webkit-box-shadow 0.25s;
 	transition: box-shadow 0.25s, border 0.25s;
@@ -2085,19 +1991,7 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default .rfipicons__ibox {
-	background-color: #f5f5f5;
-	border: 1px solid #f5f5f5;
 	color: #424242;
-}
-
-.rfipdropdown--default .rfipicons__ibox:hover {
-	background-color: #bdbdbd;
-	border: 1px solid #bdbdbd;
-}
-
-.rfipdropdown--default .rfipicons__ibox:active,
-.rfipdropdown--default .rfipicons__ibox:focus {
-	border: 1px solid #bdbdbd;
 }
 
 .rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox {
@@ -2105,8 +1999,8 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default .rfipsearch input {
-	border: 0 none;
-	border-bottom: 1px solid #bdbdbd;
+	border: 1px solid #dddddd;
+	border-radius: 2px;
 	-webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
 	transition: border 0.25s, -webkit-box-shadow 0.25s;
 	transition: box-shadow 0.25s, border 0.25s;
@@ -2252,16 +2146,6 @@ hr.uagb-editor__separator {
 	background-color: #bbdefb;
 	border: 1px solid #bbdefb;
 	color: #1565c0;
-}
-
-.rfipdropdown--blue .rfipicons__ibox:hover {
-	background-color: #42a5f5;
-	border: 1px solid #42a5f5;
-}
-
-.rfipdropdown--blue .rfipicons__ibox:active,
-.rfipdropdown--blue .rfipicons__ibox:focus {
-	border: 1px solid #42a5f5;
 }
 
 .rfipdropdown--blue .rfipicons__ibox--error {
@@ -2422,16 +2306,6 @@ hr.uagb-editor__separator {
 	color: #283593;
 }
 
-.rfipdropdown--indigo .rfipicons__ibox:hover {
-	background-color: #5c6bc0;
-	border: 1px solid #5c6bc0;
-}
-
-.rfipdropdown--indigo .rfipicons__ibox:active,
-.rfipdropdown--indigo .rfipicons__ibox:focus {
-	border: 1px solid #5c6bc0;
-}
-
 .rfipdropdown--indigo .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -2588,16 +2462,6 @@ hr.uagb-editor__separator {
 	background-color: #b3e5fc;
 	border: 1px solid #b3e5fc;
 	color: #0277bd;
-}
-
-.rfipdropdown--lightblue .rfipicons__ibox:hover {
-	background-color: #29b6f6;
-	border: 1px solid #29b6f6;
-}
-
-.rfipdropdown--lightblue .rfipicons__ibox:active,
-.rfipdropdown--lightblue .rfipicons__ibox:focus {
-	border: 1px solid #29b6f6;
 }
 
 .rfipdropdown--lightblue .rfipicons__ibox--error {
@@ -2758,16 +2622,6 @@ hr.uagb-editor__separator {
 	color: #ad1457;
 }
 
-.rfipdropdown--pink .rfipicons__ibox:hover {
-	background-color: #ec407a;
-	border: 1px solid #ec407a;
-}
-
-.rfipdropdown--pink .rfipicons__ibox:active,
-.rfipdropdown--pink .rfipicons__ibox:focus {
-	border: 1px solid #ec407a;
-}
-
 .rfipdropdown--pink .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -2924,16 +2778,6 @@ hr.uagb-editor__separator {
 	background-color: #ffe0b2;
 	border: 1px solid #ffe0b2;
 	color: #ef6c00;
-}
-
-.rfipdropdown--orange .rfipicons__ibox:hover {
-	background-color: #ffa726;
-	border: 1px solid #ffa726;
-}
-
-.rfipdropdown--orange .rfipicons__ibox:active,
-.rfipdropdown--orange .rfipicons__ibox:focus {
-	border: 1px solid #ffa726;
 }
 
 .rfipdropdown--orange .rfipicons__ibox--error {
@@ -3094,16 +2938,6 @@ hr.uagb-editor__separator {
 	color: #6a1b9a;
 }
 
-.rfipdropdown--purple .rfipicons__ibox:hover {
-	background-color: #ab47bc;
-	border: 1px solid #ab47bc;
-}
-
-.rfipdropdown--purple .rfipicons__ibox:active,
-.rfipdropdown--purple .rfipicons__ibox:focus {
-	border: 1px solid #ab47bc;
-}
-
 .rfipdropdown--purple .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -3260,16 +3094,6 @@ hr.uagb-editor__separator {
 	background-color: #ffcdd2;
 	border: 1px solid #ffcdd2;
 	color: #c62828;
-}
-
-.rfipdropdown--red .rfipicons__ibox:hover {
-	background-color: #ef5350;
-	border: 1px solid #ef5350;
-}
-
-.rfipdropdown--red .rfipicons__ibox:active,
-.rfipdropdown--red .rfipicons__ibox:focus {
-	border: 1px solid #ef5350;
 }
 
 .rfipdropdown--red .rfipicons__ibox--error {
@@ -3430,16 +3254,6 @@ hr.uagb-editor__separator {
 	color: #00695c;
 }
 
-.rfipdropdown--teal .rfipicons__ibox:hover {
-	background-color: #26a69a;
-	border: 1px solid #26a69a;
-}
-
-.rfipdropdown--teal .rfipicons__ibox:active,
-.rfipdropdown--teal .rfipicons__ibox:focus {
-	border: 1px solid #26a69a;
-}
-
 .rfipdropdown--teal .rfipicons__ibox--error {
 	color: #ef9a9a;
 }
@@ -3487,6 +3301,7 @@ hr.uagb-editor__separator {
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	display: flex;
 }
 
 i.fipicon-angle-down::before {
@@ -3647,9 +3462,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
 
-.uag-typography-font-family-options {
-	margin-top: 24px;
-}
 .uagb-control__actions .uagb-size-type-field-tabs {
 	margin: 0;
 }
@@ -3672,9 +3484,38 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .uagb-components-base-control {
 	margin-bottom: 18px;
-
+}
 .uag-typography-range-options
-	+ .components-base-control
+	.components-base-control
 	.components-flex.components-select-control {
 	position: unset;
+}
+.uag-typography-option-actions
+	.uagb-typography-control-btn.components-button:focus:not(:disabled) {
+	box-shadow: unset;
+	outline: none;
+	color: #2e92c4;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-panel__body-title {
+	margin-bottom: 16px;
+}
+.uagb-inspector-tab .components-panel__body.is-opened {
+	padding: 10px;
+}
+.uagb-inspector-tab .components-panel__body.is-opened label {
+	font-size: 12px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	.components-select-control__input {
+	font-size: 11px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control,
+.uagb-inspector-tab .components-panel__body.is-opened > .rfip,
+.uagb-inspector-tab .components-panel__body.is-opened > p {
+	padding: 0 15px;
 }

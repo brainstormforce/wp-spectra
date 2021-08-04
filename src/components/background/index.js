@@ -37,14 +37,14 @@ const Background = (props) => {
 	const onRemoveImage = () => {
 		const { setAttributes } = props;
 
-		setAttributes({ backgroundImage: null });
+		setAttributes({ [backgroundImage.label]: null });
 	};
 
 	const onSelectImage = (media) => {
 		const { setAttributes } = props;
 
 		if (!media || !media.url) {
-			setAttributes({ backgroundImage: null });
+			setAttributes({ [backgroundImage.label]: null });
 			return;
 		}
 
@@ -52,22 +52,22 @@ const Background = (props) => {
 			return;
 		}
 
-		setAttributes({ backgroundImage: media });
+		setAttributes({ [backgroundImage.label]: media });
 	};
 
 	const onRemoveVideo = () => {
-		setAttributes({ backgroundVideo: null });
+		setAttributes({ [backgroundVideo.label]: null });
 	};
 
 	const onSelectVideo = (media) => {
 		if (!media || !media.url) {
-			setAttributes({ backgroundVideo: null });
+			setAttributes({ [backgroundVideo.label]: null });
 			return;
 		}
 		if (!media.type || "video" != media.type) {
 			return;
 		}
-		setAttributes({ backgroundVideo: media });
+		setAttributes({ [backgroundVideo.label]: media });
 	};
 
 	let bgOptions = [];
@@ -104,7 +104,7 @@ const Background = (props) => {
 				<SelectControl
 					value={backgroundType.value}
 					onChange={(value) =>
-						setAttributes({ backgroundType: value })
+						setAttributes({ [backgroundType.label]: value })
 					}
 					options={bgOptions}
 					label={__(
@@ -123,7 +123,7 @@ const Background = (props) => {
 						backgroundColor.value ? backgroundColor.value : ""
 					}
 					onColorChange={(value) =>
-						setAttributes({ backgroundColor: value })
+						setAttributes({ [backgroundColor.label]: value })
 					}
 				/>
 			)}
@@ -183,7 +183,9 @@ const Background = (props) => {
 								)}
 								value={backgroundPosition.value}
 								onChange={(value) =>
-									setAttributes({ backgroundPosition: value })
+									setAttributes({
+										[backgroundPosition.label]: value,
+									})
 								}
 								options={[
 									{
@@ -259,7 +261,7 @@ const Background = (props) => {
 								value={backgroundAttachment.value}
 								onChange={(value) =>
 									setAttributes({
-										backgroundAttachment: value,
+										[backgroundAttachment.label]: value,
 									})
 								}
 								options={[
@@ -286,7 +288,9 @@ const Background = (props) => {
 								)}
 								value={backgroundRepeat.value}
 								onChange={(value) =>
-									setAttributes({ backgroundRepeat: value })
+									setAttributes({
+										[backgroundRepeat.label]: value,
+									})
 								}
 								options={[
 									{
@@ -326,7 +330,9 @@ const Background = (props) => {
 								)}
 								value={backgroundSize.value}
 								onChange={(value) =>
-									setAttributes({ backgroundSize: value })
+									setAttributes({
+										[backgroundSize.label]: value,
+									})
 								}
 								options={[
 									{
@@ -359,7 +365,9 @@ const Background = (props) => {
 								)}
 								value={overlayType.value}
 								onChange={(value) =>
-									setAttributes({ overlayType: value })
+									setAttributes({
+										[overlayType.label]: value,
+									})
 								}
 								options={[
 									{
@@ -388,7 +396,7 @@ const Background = (props) => {
 										colorValue={backgroundImageColor.value}
 										onColorChange={(value) =>
 											setAttributes({
-												backgroundImageColor: value,
+												[backgroundImageColor.label]: value,
 											})
 										}
 									/>
@@ -397,7 +405,9 @@ const Background = (props) => {
 							{"gradient" == overlayType.value && (
 								<>
 									<GradientSettings
-										attributes={props.attributes}
+										backgroundGradient={
+											props.backgroundGradient
+										}
 										setAttributes={setAttributes}
 									/>
 								</>
@@ -409,7 +419,7 @@ const Background = (props) => {
 			{"gradient" === backgroundType.value && (
 				<>
 					<GradientSettings
-						attributes={props.attributes}
+						backgroundGradient={props.backgroundGradient}
 						setAttributes={props.setAttributes}
 					/>
 				</>
@@ -421,7 +431,9 @@ const Background = (props) => {
 					label={__("Opacity", "ultimate-addons-for-gutenberg")}
 					value={backgroundOpacity.value}
 					onChange={(val) =>
-						setAttributes({ backgroundOpacity: parseInt(val) })
+						setAttributes({
+							[backgroundOpacity.label]: parseInt(val),
+						})
 					}
 					min={0}
 					max={100}
@@ -487,7 +499,7 @@ const Background = (props) => {
 							colorValue={backgroundVideoColor.value}
 							onColorChange={(value) =>
 								setAttributes({
-									backgroundVideoColor: value,
+									[backgroundVideoColor.label]: value,
 								})
 							}
 						/>
@@ -501,7 +513,7 @@ const Background = (props) => {
 						value={backgroundVideoOpacity.value}
 						onChange={(val) =>
 							setAttributes({
-								backgroundVideoOpacity: parseInt(val),
+								[backgroundVideoOpacity.label]: parseInt(val),
 							})
 						}
 						min={0}
@@ -513,10 +525,7 @@ const Background = (props) => {
 	);
 
 	return (
-		<div className="uag-typography-option-actions">
-			<span>{props.label}</span>
-			{advancedControls}
-		</div>
+		<div className="uag-background-option-actions">{advancedControls}</div>
 	);
 };
 

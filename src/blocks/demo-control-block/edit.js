@@ -19,7 +19,7 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 import BoxShadowControl from "../../components/box-shadow";
 import Background from "../../components/background";
 import Border from "../../components/border";
-
+import ResponsiveSlider from "../../components/responsive-slider";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography";
 
@@ -235,6 +235,9 @@ class UAGBInlineNoticeEdit extends Component {
 				backgroundVideo,
 				backgroundVideoOpacity,
 				backgroundVideoColor,
+				desktopValue,
+				tabletValue,
+				mobileValue,
 			},
 			setAttributes,
 			className,
@@ -359,16 +362,14 @@ class UAGBInlineNoticeEdit extends Component {
 							/>
 						</PanelBody>
 						<PanelBody title="Toggle" initialOpen={false}>
-							<div className="uag-toggle-wrap">
-								<ToggleControl
-									checked={cookies}
-									onChange={this.update_cookie_id}
-									label={__(
-										"Toggle off",
-										"ultimate-addons-for-gutenberg"
-									)}
-								/>
-							</div>
+							<ToggleControl
+								checked={cookies}
+								onChange={this.update_cookie_id}
+								label={__(
+									"Toggle off",
+									"ultimate-addons-for-gutenberg"
+								)}
+							/>
 						</PanelBody>
 						<PanelBody title="Slider" initialOpen={false}>
 							<Range
@@ -387,6 +388,33 @@ class UAGBInlineNoticeEdit extends Component {
 									value: paddingUnit,
 									label: "paddingUnit",
 								}}
+							/>
+							<ResponsiveSlider
+								label={__(
+									"Responsive Slider",
+									"ultimate-addons-for-gutenberg"
+								)}
+								data={{
+									desktop: {
+										value: desktopValue,
+										label: "desktopValue",
+									},
+									tablet: {
+										value: tabletValue,
+										label: "tabletValue",
+									},
+									mobile: {
+										value: mobileValue,
+										label: "mobileValue",
+									},
+								}}
+								min={0}
+								max={100}
+								unit={{
+									value: paddingUnit,
+									label: "paddingUnit",
+								}}
+								setAttributes={setAttributes}
 							/>
 						</PanelBody>
 						<PanelBody title="Typography" initialOpen={false}>
@@ -921,99 +949,64 @@ class UAGBInlineNoticeEdit extends Component {
 						>
 							<Background
 								setAttributes={setAttributes}
+								backgroundGradient={{
+									value: gradientValue,
+									label: "gradientValue",
+								}}
 								backgroundImageColor={{
 									value: backgroundImageColor,
-									label: __(
-										"Background Image Color",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundImageColor",
 								}}
 								overlayType={{
 									value: overlayType,
-									label: __(
-										"Overlay Type",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "overlayType",
 								}}
 								backgroundSize={{
 									value: backgroundSize,
-									label: __(
-										"Background Size",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundSize",
 								}}
 								backgroundRepeat={{
 									value: backgroundRepeat,
-									label: __(
-										"Background Repeat",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundRepeat",
 								}}
 								backgroundAttachment={{
 									value: backgroundAttachment,
-									label: __(
-										"Background Attachement",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundAttachment",
 								}}
 								backgroundPosition={{
 									value: backgroundPosition,
-									label: __(
-										"Background Image",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundPosition",
 								}}
 								backgroundImage={{
 									value: backgroundImage,
-									label: __(
-										"Background Image",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundImage",
 								}}
 								backgroundColor={{
 									value: backgroundColor,
-									label: __(
-										"Background Color",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundColor",
 								}}
 								backgroundType={{
 									value: backgroundType,
-									label: __(
-										"Background Type",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundType",
 								}}
 								backgroundOpacity={{
 									value: backgroundOpacity,
-									label: __(
-										"Opacity",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundOpacity",
 								}}
 								backgroundVideoType={{
 									value: true,
 								}}
 								backgroundVideo={{
 									value: backgroundVideo,
-									label: __(
-										"Background Video",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundVideo",
 								}}
 								backgroundVideoColor={{
 									value: backgroundVideoColor,
-									label: __(
-										"Video Color",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundVideoColor",
 								}}
 								backgroundVideoOpacity={{
 									value: backgroundVideoOpacity,
-									label: __(
-										"Video Opacity",
-										"ultimate-addons-for-gutenberg"
-									),
+									label: "backgroundVideoOpacity",
 								}}
 								{...this.props}
 							/>

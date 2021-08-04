@@ -44,6 +44,76 @@ const ColumnsComponent = (props) => {
 			"uagb-columns-style-" + props.clientId.substr(0, 8)
 		);
 		document.head.appendChild($style);
+
+		const { attributes, setAttributes } = props;
+		const {
+			topMargin,
+			bottomMargin,
+			topMarginDesktop,
+			rightMarginDesktop,
+			leftMarginDesktop,
+			bottomMarginDesktop,
+			topMarginMobile,
+			rightMarginMobile,
+			leftMarginMobile,
+			bottomMarginMobile,
+			topMarginTablet,
+			rightMarginTablet,
+			leftMarginTablet,
+			bottomMarginTablet,
+		} = attributes;
+
+		//Margin
+		if (topMargin) {
+			if (!topMarginDesktop) {
+				setAttributes({ topMarginDesktop: topMargin });
+			}
+			if (!bottomMarginDesktop) {
+				setAttributes({ bottomMarginDesktop: bottomMargin });
+			}
+		}
+		if (bottomMargin) {
+			if (!leftMarginDesktop) {
+				setAttributes({ leftMarginDesktop: bottomMargin });
+			}
+			if (!rightMarginDesktop) {
+				setAttributes({ rightMarginDesktop: bottomMargin });
+			}
+		}
+
+		if (topMarginMobile) {
+			if (!topMarginMobile) {
+				setAttributes({ topMarginMobile: topMarginMobile });
+			}
+			if (!bottomMarginMobile) {
+				setAttributes({ bottomMarginMobile: topMarginMobile });
+			}
+		}
+		if (bottomMarginMobile) {
+			if (!rightMarginMobile) {
+				setAttributes({ rightMarginMobile: bottomMarginMobile });
+			}
+			if (!leftMarginMobile) {
+				setAttributes({ leftMarginMobile: bottomMarginMobile });
+			}
+		}
+
+		if (topMarginTablet) {
+			if (!topMarginTablet) {
+				setAttributes({ topMarginTablet: topMarginTablet });
+			}
+			if (!bottomMarginTablet) {
+				setAttributes({ bottomMarginTablet: topMarginTablet });
+			}
+		}
+		if (bottomMarginTablet) {
+			if (!rightMarginTablet) {
+				setAttributes({ rightMarginTablet: bottomMarginTablet });
+			}
+			if (!leftMarginTablet) {
+				setAttributes({ leftMarginTablet: bottomMarginTablet });
+			}
+		}
 	}, []);
 
 	useEffect(() => {
