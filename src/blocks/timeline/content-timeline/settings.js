@@ -615,7 +615,7 @@ const Settings = ( props ) => {
 					onChange={(value) =>
 						setAttributes({ verticalSpace: value })
 					}
-					min={0}
+					min={1}
 					max={50}
 					displayUnit={false}
 				/>
