@@ -204,8 +204,8 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
-	width: 14px;
-	height: 14px;
+	width: 12px;
+	height: 11px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
@@ -230,7 +230,10 @@ hr.uagb-editor__separator {
 	background-color: #bfdeee;
 	color: #007cba;
 	box-shadow: none;
-	border-radius: 8px;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	line-height: 0;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
@@ -3427,9 +3430,12 @@ button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 .uagb-reset .dashicons-image-rotate {
 	width: 12px;
 	height: 12px;
-	font-size: 12px;
+	font-size: 9px;
 }
-
+.uagb-reset {
+	margin-top: 0.3em;
+	height: auto;
+}
 button.components-button.uagb-reset.is-secondary.is-small {
 	box-shadow: unset;
 	background: 0 0;
@@ -3518,4 +3524,74 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab .components-panel__body.is-opened > .rfip,
 .uagb-inspector-tab .components-panel__body.is-opened > p {
 	padding: 0 15px;
+}
+.uag-responsive-common-button {
+	box-shadow: inset 0 0 0 1px #fff;
+	background-color: #bfdeee;
+	color: #007cba;
+	border-radius: 100%;
+	border: 0;
+	border-bottom: 0;
+	outline: 0;
+	font-size: 8px;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 0;
+	margin: 0;
+	line-height: 0;
+	margin-left: 5px;
+}
+.uag-responsive-common-button .dashicon {
+	font-size: 15px;
+}
+.components-button.uag-responsive-common-button:hover,
+.components-button.uag-responsive-common-button:focus,
+.components-button.uag-responsive-common-button:active {
+	box-shadow: none;
+	outline: none;
+	color: #007cba;
+}
+
+.uag-responsive-label-wrap {
+	display: flex;
+	align-items: center;
+}
+.components-panel__body.is-opened .uagb-range-control-responsive {
+	display: flex;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	margin-left: 5px;
+}
+.uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
+	width: 12px;
+	height: 11px;
+}
+.components-base-control
+	.uagb-control__header
+	.uagb-range-control-responsive
+	.uagb-responsive-tabs {
+	margin: 0;
+	padding: 0;
+}
+.uagb-inspector-tab
+	.components-base-control
+	.components-range-control__wrapper {
+	margin-left: 0px;
+}
+.components-range-control__slider {
+	align-items: center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.uagb-inspector-tab span[CLASS*="-ThumbWrapper"] {
+	left: 0%;
+	height: 17px;
+	width: 17px;
+	top: 2px;
+	margin-left: 0px;
 }
