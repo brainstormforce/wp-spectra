@@ -601,7 +601,7 @@ const Settings = ( props ) => {
 					onChange={(value) =>
 						setAttributes({ horizontalSpace: value })
 					}
-					min={0}
+					min={1}
 					max={50}
 					displayUnit={false}
 				/>
