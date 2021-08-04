@@ -3571,3 +3571,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin: 0;
 	padding: 0;
 }
+.uagb-inspector-tab
+	.components-base-control
+	.components-range-control__wrapper {
+	margin-left: 0px;
+}
+.components-range-control__slider {
+	align-items: center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.uagb-inspector-tab span[CLASS*="-ThumbWrapper"] {
+	left: 0%;
+	height: 17px;
+	width: 17px;
+	top: 2px;
+	margin-left: 0px;
+}
