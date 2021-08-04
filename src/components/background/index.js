@@ -525,7 +525,7 @@ const Background = (props) => {
 	);
 
 	return (
-		<div className="uag-typography-option-actions">{advancedControls}</div>
+		<div className="uag-background-option-actions">{advancedControls}</div>
 	);
 };
 
