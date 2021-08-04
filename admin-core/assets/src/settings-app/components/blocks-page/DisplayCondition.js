@@ -3,7 +3,6 @@ import React , { useEffect }from 'react';
 import SettingTable from '../common/SettingTable';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
-import { ToggleField } from '@Fields';
 let enableBlockConditionCachedValue;
 function DisplayCondition( ) {
 	const [

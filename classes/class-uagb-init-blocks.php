@@ -381,10 +381,9 @@ class UAGB_Init_Blocks {
 				'uagb_url'               => UAGB_URL,
 				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'          => UAGB_URI,
-				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
+				'uagb_display_condition' => get_option( 'enable_block_condition', false, false ),
 			)
 		);
-
 		// To match the editor with frontend.
 		// Scripts Dependency.
 		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
