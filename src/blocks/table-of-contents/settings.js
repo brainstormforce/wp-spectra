@@ -286,23 +286,15 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={__("Icon Color", "ultimate-addons-for-gutenberg")}
 							colorValue={scrollToTopColor ? scrollToTopColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({ scrollToTopColor: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 						<AdvancedPopColorControl
 							label={__("Background Color", "ultimate-addons-for-gutenberg")}
 							colorValue={scrollToTopBgColor ? scrollToTopBgColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({ scrollToTopBgColor: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 					</>
@@ -421,12 +413,8 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={__("Heading Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ headingColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<hr className="uagb-editor__separator" />
@@ -477,12 +465,8 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={__("Icon Color", "ultimate-addons-for-gutenberg")}
 							colorValue={iconColor ? iconColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({ iconColor: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 					</>
@@ -506,12 +490,8 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={__("Bullet Points Color", "ultimate-addons-for-gutenberg")}
 							colorValue={bulletColor ? bulletColor : ""}
-							colorDefault={""}
 							onColorChange={(value) =>
 								setAttributes({ bulletColor: value })
-							}
-							onColorClassChange={(value) =>
-								setAttributes({ colorClass: value })
 							}
 						/>
 					</>
@@ -621,23 +601,15 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={__("Content Color", "ultimate-addons-for-gutenberg")}
 					colorValue={linkColor ? linkColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ linkColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<AdvancedPopColorControl
 					label={__("Content Hover Color", "ultimate-addons-for-gutenberg")}
 					colorValue={linkHoverColor ? linkHoverColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ linkHoverColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 			</PanelBody>
@@ -658,12 +630,8 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={__("Background Color", "ultimate-addons-for-gutenberg")}
 					colorValue={backgroundColor ? backgroundColor : ""}
-					colorDefault={""}
 					onColorChange={(value) =>
 						setAttributes({ backgroundColor: value })
-					}
-					onColorClassChange={(value) =>
-						setAttributes({ colorClass: value })
 					}
 				/>
 				<hr className="uagb-editor__separator" />
