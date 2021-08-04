@@ -776,20 +776,6 @@ const Settings = (props) => {
 						/>
 					</>
 				)}
-				{ctaType !== "none" && (
-					<div className="uag-toggle-wrap">
-					<ToggleControl
-						checked={ctaTarget}
-						onChange={() =>
-							setAttributes({ ctaTarget: !ctaTarget })
-						}
-						label={__(
-							"Open in new Window",
-							"ultimate-addons-for-gutenberg"
-						)}
-					/>
-				</div>
-				)}
 				{ctaType === "button" && (
 					<div className="uag-toggle-wrap">
 						<ToggleControl
@@ -854,6 +840,20 @@ const Settings = (props) => {
 							}}
 						/>
 					</>
+				)}
+				{ctaType !== "none" && (
+					<div className="uag-toggle-wrap">
+						<ToggleControl
+							checked={ctaTarget}
+							onChange={() =>
+								setAttributes({ ctaTarget: !ctaTarget })
+							}
+							label={__(
+								"Open in new Window",
+								"ultimate-addons-for-gutenberg"
+							)}
+						/>
+					</div>
 				)}
 			</PanelBody>
 		);
@@ -1259,33 +1259,6 @@ const Settings = (props) => {
 				{showDesc && (
 				<PanelBody title="Description" initialOpen={false}> 
 					<>
-						<ResponsiveSlider
-							label={__(
-								"Bottom Margin",
-								"ultimate-addons-for-gutenberg"
-							)}
-							data={{
-								desktop: {
-									value: subHeadSpace,
-									label: "subHeadSpace",
-								},
-								tablet: {
-									value: subHeadTabletSpace,
-									label: "subHeadTabletSpace",
-								},
-								mobile: {
-									value: subHeadMobileSpace,
-									label: "subHeadMobileSpace",
-								},
-							}}
-							min={0}
-							max={50}
-							unit={{
-								value: subHeadSpaceUnit,
-								label: "subHeadSpaceUnit",
-							}}
-							setAttributes={setAttributes}
-						/>
 						<AdvancedPopColorControl
 							label={__(
 								"Color",
@@ -1360,49 +1333,39 @@ const Settings = (props) => {
 								label: "subHeadLineDecoration",
 							}}
 						/>
+						<ResponsiveSlider
+							label={__(
+								"Bottom Margin",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								desktop: {
+									value: subHeadSpace,
+									label: "subHeadSpace",
+								},
+								tablet: {
+									value: subHeadTabletSpace,
+									label: "subHeadTabletSpace",
+								},
+								mobile: {
+									value: subHeadMobileSpace,
+									label: "subHeadMobileSpace",
+								},
+							}}
+							min={0}
+							max={50}
+							unit={{
+								value: subHeadSpaceUnit,
+								label: "subHeadSpaceUnit",
+							}}
+							setAttributes={setAttributes}
+						/>
 					</>
 				</PanelBody>
 				)}
 				{'null' !== seperatorStyle && (
 				<PanelBody title="Separator" initialOpen={false}>
 					<>
-					<ResponsiveSlider
-									label={__(
-										"Bottom Margin",
-										"ultimate-addons-for-gutenberg"
-									)}
-									data={{
-										desktop: {
-											value: seperatorSpace,
-											label: "seperatorSpace",
-										},
-										tablet: {
-											value: seperatorTabletSpace,
-											label: "seperatorTabletSpace",
-										},
-										mobile: {
-											value: seperatorMobileSpace,
-											label: "seperatorMobileSpace",
-										},
-									}}
-									min={0}
-									max={50}
-									unit={{
-										value: seperatorSpaceUnit,
-										label: "seperatorSpaceUnit",
-									}}
-									setAttributes={setAttributes}
-								/>
-						<AdvancedPopColorControl
-							label={__(
-								"Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={seperatorColor ? seperatorColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ seperatorColor: value })
-							}
-						/>
 						{"none" !== seperatorStyle && (
 							<>
 								<Range
@@ -1461,10 +1424,47 @@ const Settings = (props) => {
 								/>
 							</>
 						)}
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={seperatorColor ? seperatorColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ seperatorColor: value })
+							}
+						/>
+						<ResponsiveSlider
+									label={__(
+										"Bottom Margin",
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										desktop: {
+											value: seperatorSpace,
+											label: "seperatorSpace",
+										},
+										tablet: {
+											value: seperatorTabletSpace,
+											label: "seperatorTabletSpace",
+										},
+										mobile: {
+											value: seperatorMobileSpace,
+											label: "seperatorMobileSpace",
+										},
+									}}
+									min={0}
+									max={50}
+									unit={{
+										value: seperatorSpaceUnit,
+										label: "seperatorSpaceUnit",
+									}}
+									setAttributes={setAttributes}
+						/>
 					</>
 				</PanelBody>
 				)}
-				{'none' !== ctaType && (
+				{'none' !== ctaType && ('all' !== ctaType && (
 				<PanelBody title="CTA" initialOpen={false}>
 					<>
 						{ctaType === "text" && (
@@ -1736,7 +1736,7 @@ const Settings = (props) => {
 									value: ctaBorderStyle,
 									label: "ctaBorderStyle",
 									title: __(
-										"Style",
+										"Border Style",
 										"ultimate-addons-for-gutenberg"
 									),
 								}}
@@ -1776,7 +1776,7 @@ const Settings = (props) => {
 						)}
 					</>
 				</PanelBody>
-				)}
+				))}
 			</>
 		);
 	}
