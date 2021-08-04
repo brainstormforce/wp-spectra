@@ -68,6 +68,14 @@ const attributes = {
 	rightPaddingMobile: {
 		type: 'number',
 	},
+	topMargin: {
+		type: 'number',
+		default: 0,
+	},
+	bottomMargin: {
+		type: 'number',
+		default: 0,
+	},
 	topMarginDesktop: {
 		type: 'number',
 		default: 0,
