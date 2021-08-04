@@ -7,7 +7,7 @@
 	}
 	.uag-metabox__header{
 		margin-top: 20px;
-		margin-bottom: 25px;
+		margin-bottom: 20px;
 		text-align: center;
 			p{
 			margin-bottom: 0;
@@ -43,7 +43,7 @@
 	.uag-starter-site__elements{
 		display: grid;
     	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		padding:40px 0;
+		padding: 55px 0;
 		img{
 			height: auto;
 			max-width: 100%;
@@ -67,7 +67,7 @@
 		padding: 40px 20px;
 		.uag-theme__cta{
 			justify-content: center;
-			display: inline-flex;
+			display: flex;
 			flex-wrap: wrap;	
 			column-gap: 15px;
 			row-gap: 10px;
@@ -76,7 +76,7 @@
 			text-align: center;
 			display: inline-block;		
 			max-width: 100%;
-			width: 70%;
+			width: 75%;
 		}
 	}
 }

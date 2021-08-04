@@ -36,7 +36,7 @@
 			background-color: #F9FBFD;
 			display: flex;
 			margin-top: auto;
-			padding: 30px;
+			padding: 20px 30px;
 			column-gap: 20px;
 			.uag-field{
 				margin:0px;
@@ -47,7 +47,7 @@
 
 @media (min-width: 783px){
 	.uag-global-settings-metabox .uag-starter-template__button{
-		margin-bottom: 20px;
+		margin-bottom: 55px;
 		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	}
 }

@@ -36,7 +36,8 @@
 	.uag-global-nav-menu__tab {
 		& {
 			background: transparent;
-			border: 1px solid #fff;
+			border-top: 1px solid #fff;
+			border-bottom: 1px solid #fff;
     		border-bottom: 0;
 			color: #444;
 			cursor: pointer;
@@ -59,7 +60,9 @@
 	}
 }
 a.uag-global-nav-menu__tab:hover{
+	border: 1px solid #eee;
     background:#f8fafb;
+	border-bottom: 0;
 }
 /* New FIxed header */
 

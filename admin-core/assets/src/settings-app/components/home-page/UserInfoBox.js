@@ -123,13 +123,13 @@ function UserInfoBox( ) {
 					<div className="uag-metabox__element">
 						<h3>
 							{ __(
-								'Join the community ',
+								'Join the Community ',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h3>
 						<p>
 							{ __(
-								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community. Get the latest news, updates, tutorials and tips and participate in discussions. We/\'d love it if you joined the conversation! ',
+								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community and get the latest news, updates, tips. We\’d love it if you joined the conversation!',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -222,20 +222,18 @@ function UserInfoBox( ) {
 					</div>
 				</div>
 				<div className="uag-theme__metabox">
-					<div className="uag-theme__content">
-						<h2>
-							{ __(
-								'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
-						<p>
-							{ __(
-								'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-					</div>
+					<h2>
+						{ __(
+							'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</h2>
+					<p>
+						{ __(
+							'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</p>
 					<div className="uag-theme__cta">
 						{astraThemeButton()}
 						<NormalButton
