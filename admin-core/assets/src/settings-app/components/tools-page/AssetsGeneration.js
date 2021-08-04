@@ -8,17 +8,18 @@ import apiFetch from '@wordpress/api-fetch';
 function AssetsGeneration( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
-	const [ enableFileGeneration, setenableFileGeneration ] = useState(
+	const [ enableFileGeneration, setEnableFileGeneration ] = useState(
 		options[ 'enable_file_generation' ]
 	);
 
-	const [ savingState, setssavingState ] = useState( false );
-	const [ savingAssetGenState, setssavingAssetGenState ] = useState( false );
-	const [ updateStatus, setUpdateStatus ] = useState( false );
+	const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
+	const [ savingAssetGenState, setAssetGenState ] = useState( false );
+	const [ status, setStatus ] = useState( false );
 	
 	const handleRegenerateAssets = () => {
+
+		setStatus('Processing....');
 		const formData = new window.FormData();
-		setUpdateStatus('Processing....');
 		formData.append( 'action', 'uag_regenerate_assets' );
 		formData.append( 'security', uag_react.regenerate_assets_nonce );
 		formData.append( 'value', true );
@@ -29,20 +30,22 @@ function AssetsGeneration( props ) {
 			body: formData,
 		} ).then( ( data ) => {
 			if ( data.success ) {
-				setssavingState( false );
-				setUpdateStatus('Asset Regenerated!');
+				setRegenerateAssetsState( false );
+				setStatus('Assets Regenerated!');
+				setTimeout(function(){ setStatus(false); }, 10000);
 			} 
 		} );
 	};
+	
 	const handleAssetGeneration = () => {
-		setssavingAssetGenState( true );
+		setAssetGenState( true );
 		let status;
 		if ( enableFileGeneration == 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
 		}
-		setenableFileGeneration( status );
+		setEnableFileGeneration( status );
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_file_generation',
@@ -63,7 +66,7 @@ function AssetsGeneration( props ) {
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingAssetGenState( false );
+			setAssetGenState( false );
 		} );
 		
 	};
@@ -142,12 +145,12 @@ function AssetsGeneration( props ) {
 								'ultimate-addons-for-gutenberg'
 							) }
 							onClick={ handleRegenerateAssets }
-							saving={ savingState }
+							saving={ regenerateAssetsState }
 						/>
 						<span
 							className={ `uag-control__status-yes` }
 						>
-							{updateStatus}
+							{status}
 						</span>
 					</div>
 				</div>

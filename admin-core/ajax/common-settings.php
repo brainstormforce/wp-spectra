@@ -56,7 +56,7 @@ class CommonSettings extends AjaxBase {
 			'enable_templates_button',
 			'enable_block_condition',
 			'blocks_activation_and_deactivation',
-			'theme_activate'
+			'theme_activate',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -67,7 +67,6 @@ class CommonSettings extends AjaxBase {
 	 * @return void
 	 */
 	public static function theme_activate() {
-	
 
 		$theme_slug = ( isset( $_POST['slug'] ) ) ? sanitize_text_field( $_POST['slug'] ) : '';
 
@@ -81,7 +80,7 @@ class CommonSettings extends AjaxBase {
 		}
 
 		$activate = switch_theme( $theme_slug );
-		
+
 		if ( is_wp_error( $activate ) ) {
 			wp_send_json_error(
 				array(
@@ -157,7 +156,7 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->update_admin_settings_option( 'enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
@@ -228,7 +227,7 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		if ( isset( $_POST ) ) {
 			$this->update_admin_settings_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 

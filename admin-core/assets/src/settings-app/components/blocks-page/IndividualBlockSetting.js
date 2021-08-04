@@ -49,7 +49,7 @@ function IndividualBlockSetting( props ) {
 				options[ 'blocks_activation_and_deactivation' ];
 		}
 	}, [ options[ 'blocks_activation_and_deactivation' ] ] );
-
+	
 	return (
 		<div className="uag-individual-block-settings-metabox">
 			<ToggleField
@@ -58,7 +58,7 @@ function IndividualBlockSetting( props ) {
 				value={ blocksValue[ props.blockInfo.slug ] }
 				label={ props.blockInfo.title }
 			/>
-			<a href={`https://ultimategutenberg.com/blocks/${props.blockInfo.slug}`} target="_blank">
+			<a href={`https://ultimategutenberg.com/blocks/${props.blockInfo.link}`} target="_blank">
 				{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
 			</a>
 			<a href={`https://ultimategutenberg.com/docs/${props.blockInfo.doc}`} target="_blank">

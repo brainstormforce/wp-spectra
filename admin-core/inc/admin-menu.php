@@ -76,7 +76,7 @@ class AdminMenu {
 	public function initialize_hooks() {
 		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
-		
+
 		add_filter( 'plugin_action_links_' . UAGB_BASE, array( $this, 'add_action_links' ) );
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
@@ -91,7 +91,7 @@ class AdminMenu {
 	 */
 	public function add_action_links( $links ) {
 
-		$default_url = admin_url( 'options-general.php?page=uagb');
+		$default_url = admin_url( 'options-general.php?page=uagb' );
 
 		$mylinks = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
@@ -184,12 +184,12 @@ class AdminMenu {
 	 * @since 1.0.0
 	 */
 	public function styles_scripts() {
- 
-		wp_enqueue_style( 'uagb-admin-font', 'https://fonts.googleapis.com/css?family=Roboto', false ); 
-			
+
+		wp_enqueue_style( 'uagb-admin-font', 'https://fonts.googleapis.com/css?family=Roboto', array(), UAGB_VER );
+
 		$admin_slug  = 'uag-admin';
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
-		
+
 		// Styles.
 		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
 		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
@@ -206,8 +206,8 @@ class AdminMenu {
 				'default_page_builder' => '',
 				'admin_base_slug'      => $this->menu_slug,
 				'admin_base_url'       => admin_url(),
-				'current_theme'    => $theme->name,
-				'theme_file' => file_exists( get_theme_root() . '/astra/functions.php' ),
+				'current_theme'        => $theme->name,
+				'theme_file'           => file_exists( get_theme_root() . '/astra/functions.php' ),
 				'plugin_dir'           => UAGB_URL,
 				'plugin_ver'           => UAGB_VER,
 				'logo_url'             => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
@@ -234,7 +234,7 @@ class AdminMenu {
 	public function get_blocks_info_for_activation_deactivation() {
 
 		$blocks = \UAGB_Admin_Helper::get_block_options();
-		
+
 		array_multisort(
 			array_map(
 				function( $element ) {
@@ -290,7 +290,7 @@ class AdminMenu {
 				if ( in_array( $addon, $child_blocks, true ) ) {
 					continue;
 				}
-				
+				$info['slug']   = $addon;
 				$blocks_names[] = $info;
 
 			}
