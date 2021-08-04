@@ -1108,7 +1108,7 @@ const Settings = (props) => {
 							/>
 						</>
 						)}
-						{iconImage &&
+						{source_type == 'image' && iconImage &&
 						iconImage.url !== "null" &&
 						iconImage.url !== "" && (
 							<>
