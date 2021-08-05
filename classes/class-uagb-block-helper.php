@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixTabletSpace'], $attr['prefixSpaceUnit'] ),
 				),
 				' .uagb-ifb-title-wrap .uagb-ifb-title' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value($attr['headTabletSpace'] . $attr['headSpaceUnit']),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headTabletSpace'] . $attr['headSpaceUnit'] ),
 				),
 				' .uagb-ifb-text-wrap .uagb-ifb-desc'   => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['subHeadTabletSpace'], $attr['subHeadSpaceUnit'] ),
