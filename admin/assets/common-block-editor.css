@@ -3503,6 +3503,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .uagb-inspector-tab .components-panel__body.is-opened {
 	padding: 10px;
+	margin: 16px 0px;
 }
 .uagb-inspector-tab .components-panel__body.is-opened label {
 	font-size: 12px;
