@@ -8,6 +8,8 @@ on:
       - next-release
 env:
   ZIP_URL: http://uag-dev.xka9ibwowp-jqp3vd915350.p.runcloud.link/wp-content/uploads/uag-gh/
+  PLUGIN_SLUG: ${{ github.event.repository.name }}
+  ZIP_NAME: "${{ github.event.repository.name }}.zip"
 
 jobs:
   build-zip:
@@ -20,11 +22,11 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@master
 
-      - name: Ger repo name & set it as plugin slug
-        # run: echo "PLUGIN_SLUG=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        run: |
-          echo "PLUGIN_SLUG=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "ZIP_NAME=${{ github.event.repository.name }}.zip" >> $GITHUB_ENV
+      # - name: Ger repo name & set it as plugin slug
+      #   # run: echo "PLUGIN_SLUG=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+      #   run: |
+      #     echo "PLUGIN_SLUG=${{ github.event.repository.name }}" >> $GITHUB_ENV
+      #     echo "ZIP_NAME=${{ github.event.repository.name }}.zip" >> $GITHUB_ENV
 
       - name: Extract current branch name
         id: get_current_branch
