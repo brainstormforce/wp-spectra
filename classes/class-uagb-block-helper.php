@@ -1235,10 +1235,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['vPadding'] : $attr['topPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['vPadding'] : $attr['bottomPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['hPadding'] : $attr['leftPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['hPadding'] : $attr['rightPadding'];
 
 			if ( ! $attr['inheritFromTheme'] ) {
 				$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
@@ -1273,10 +1273,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$m_selectors[ $wrapper ] = array(
 					'font-size'      => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 					'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['mobilePaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['mobilePaddingUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['mobilePaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['mobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
 				);
 
 				$t_selectors[ $wrapper ] = array(
