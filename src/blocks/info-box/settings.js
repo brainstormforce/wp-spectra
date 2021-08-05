@@ -776,7 +776,7 @@ const Settings = (props) => {
 						/>
 					</>
 				)}
-				{ctaIcon !== "" && ctaType == "button" && (
+				{ctaIcon !== "" && ( ctaType !== "all" && ctaType !== "none" ) && (
 					<>
 						<SelectControl
 							label={__(
