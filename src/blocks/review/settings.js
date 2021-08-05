@@ -6,11 +6,11 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import {
 	InspectorControls,
-	ColorPalette,
 	MediaUpload,
 	AlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 
 $ = jQuery;
 import {
@@ -244,21 +244,15 @@ const Settings = ( props ) => {
 						label: 'headLineHeightTablet',
 					} }
 				/>
-				<p className="uagb-setting-label">
-					{ __( 'Title Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: titleColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ titleColor }
-					onChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Title Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={titleColor}
+					onColorChange={(value) =>
+						setAttributes({ titleColor: value })
 					}
-					allowReset
 				/>
 				{ enableDescription === true && (
 					<>
@@ -319,72 +313,45 @@ const Settings = ( props ) => {
 								label: 'subHeadLineHeightTablet',
 							} }
 						/>
-						<p className="uagb-setting-label">
-							{ __(
-								'Description Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: descColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ descColor }
-							onChange={ ( value ) =>
-								setAttributes( { descColor: value } )
+						<AdvancedPopColorControl
+							label={__(
+								"Description Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={descColor}
+							onColorChange={(value) =>
+								setAttributes({ descColor: value })
 							}
-							allowReset
 						/>
 					</>
 				) }
 				{ showAuthor === true && (
 					<>
 						<hr className="uagb-editor__separator" />
-						<p className="uagb-setting-label">
-							{ __(
-								'Author Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: authorColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ authorColor }
-							onChange={ ( value ) =>
-								setAttributes( { authorColor: value } )
+						<AdvancedPopColorControl
+							label={__(
+								"Author Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={authorColor}
+							onColorChange={(value) =>
+								setAttributes({ authorColor: value })
 							}
-							allowReset
 						/>
 					</>
 				) }
 				{ showFeature === true && (
 					<>
 						<hr className="uagb-editor__separator" />
-						<p className="uagb-setting-label">
-							{ __(
-								'Content Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: contentColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ contentColor }
-							onChange={ ( value ) =>
-								setAttributes( { contentColor: value } )
+						<AdvancedPopColorControl
+							label={__(
+								"Content Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={contentColor}
+							onColorChange={(value) =>
+								setAttributes({ contentColor: value })
 							}
-							allowReset
 						/>
 					</>
 				) }
@@ -445,81 +412,48 @@ const Settings = ( props ) => {
 						label: 'contentLineHeightTablet',
 					} }
 				/>
-				<p className="uagb-setting-label">
-					{ __( 'Summary Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: summaryColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ summaryColor }
-					onChange={ ( value ) =>
-						setAttributes( { summaryColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Summary Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={summaryColor}
+					onColorChange={(value) =>
+						setAttributes({ summaryColor: value })
 					}
-					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<p className="uagb-setting-label">
-					{ __(
-						'Active Star Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: starColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ starColor }
-					onChange={ ( value ) =>
-						setAttributes( { starColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Active Star Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={starColor}
+					onColorChange={(value) =>
+						setAttributes({ starColor: value })
 					}
-					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<p className="uagb-setting-label">
-					{ __(
-						'Inactive Star Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: starActiveColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ starActiveColor }
-					onChange={ ( value ) =>
-						setAttributes( { starActiveColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Inactive Star Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={starActiveColor}
+					onColorChange={(value) =>
+						setAttributes({ starActiveColor: value })
 					}
-					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<p className="uagb-setting-label">
-					{ __(
-						'Star Outline Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: starOutlineColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ starOutlineColor }
-					onChange={ ( value ) =>
-						setAttributes( { starOutlineColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Star Outline Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={starOutlineColor}
+					onColorChange={(value) =>
+						setAttributes({ starOutlineColor: value })
 					}
-					allowReset
 				/>
 				<h2>
 					{ __(
@@ -972,60 +906,61 @@ const Settings = ( props ) => {
 				/>
 				{ enableImage === true && (
 					<>
-						<h2>{ __( 'Image' ) }</h2>
-						<MediaUpload
-							title={ __(
-								'Select Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onSelect={ ( value ) =>
-								setAttributes( { mainimage: value } )
-							}
-							allowedTypes={ [ 'image' ] }
-							value={ mainimage }
-							render={ ( { open } ) => (
-								<Button isSecondary onClick={ open }>
-									{ ! mainimage.url
-										? __(
-												'Select Image',
-												'ultimate-addons-for-gutenberg'
-										  )
-										: __(
-												'Replace image',
-												'ultimate-addons-for-gutenberg'
-										  ) }
-								</Button>
-							) }
-						/>
-
-						{ mainimage.url && (
-							<Button
-								className="uagb-rm-btn"
-								onClick={ () =>
-									setAttributes( { mainimage: '' } )
-								}
-								isLink
-								isDestructive
-							>
-								{ __(
-									'Remove Image',
-									'ultimate-addons-for-gutenberg'
-								) }
+					<h2>{ __( 'Image' ) }</h2>
+					<div className="uagb-bg-image">
+					<MediaUpload
+						title={__(
+							"Select Background Image",
+							"ultimate-addons-for-gutenberg"
+						)}
+						onSelect={ ( value ) =>
+							setAttributes( { mainimage: value } )
+						}
+						allowedTypes={["image"]}
+						value={mainimage}
+						render={ ( { open } ) => (
+							<Button isSecondary onClick={ open }>
+								{ ! mainimage.url
+									? __(
+											'Select Image',
+											'ultimate-addons-for-gutenberg'
+									  )
+									: __(
+											'Replace image',
+											'ultimate-addons-for-gutenberg'
+									  ) }
 							</Button>
 						) }
-						{ mainimage.url && (
-							<SelectControl
-								label={ __(
-									'Size',
-									'ultimate-addons-for-gutenberg'
-								) }
-								options={ imageSizeOptions }
-								value={ imgSize }
-								onChange={ ( value ) =>
-									setAttributes( { imgSize: value } )
-								}
-							/>
-						) }
+					/>
+					{ mainimage.url && (
+						<Button
+							className="uagb-rm-btn"
+							onClick={ () =>
+								setAttributes( { mainimage: null } )
+							}
+							isLink
+							isDestructive
+						>
+							{ __(
+								'Remove Image',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</Button>
+					) }
+					</div>
+					{ mainimage.url && (
+						<SelectControl
+							label={ __(
+								'Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							options={ imageSizeOptions }
+							value={ imgSize }
+							onChange={ ( value ) =>
+								setAttributes( { imgSize: value } )
+							}
+						/>
+					) }
 					</>
 				) }
 				<ToggleControl
