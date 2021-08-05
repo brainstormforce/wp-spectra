@@ -11,6 +11,8 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 
 $ = jQuery;
 import {
@@ -189,7 +191,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TypographyControl
 					label={ __(
@@ -845,21 +847,6 @@ const Settings = ( props ) => {
 						{ value: 'h6', label: __( 'H6' ) },
 					] }
 				/>
-				<h2>{ __( 'Link' ) }</h2>
-				<TextControl
-					value={ ctaLink }
-					onChange={ ( value ) =>
-						setAttributes( { ctaLink: value } )
-					}
-				/>
-				<ToggleControl
-					label={ __(
-						'Open in new window',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ ctaTarget }
-					onChange={ toggleTarget }
-				/>
 				<ToggleControl
 					label={ __(
 						'Show review description',
@@ -889,6 +876,30 @@ const Settings = ( props ) => {
 						'Note: This is a mandatory field for the Review schema.',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/>
+				<ToggleControl
+					label={ __(
+						'Show ratings',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showFeature }
+					onChange={ () =>
+						setAttributes( { showFeature: ! showFeature } )
+					}
+					help={ __(
+						'Note: Add feature/section ratings separately.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				<ToggleControl
+					label={ __(
+						'Enable schema support',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableSchema }
+					onChange={ () =>
+						setAttributes( { enableSchema: ! enableSchema } )
+					}
 				/>
 				<ToggleControl
 					label={ __(
@@ -963,29 +974,20 @@ const Settings = ( props ) => {
 					) }
 					</>
 				) }
-				<ToggleControl
-					label={ __(
-						'Show ratings',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ showFeature }
-					onChange={ () =>
-						setAttributes( { showFeature: ! showFeature } )
+				<h2>{ __( 'Link' ) }</h2>
+				<TextControl
+					value={ ctaLink }
+					onChange={ ( value ) =>
+						setAttributes( { ctaLink: value } )
 					}
-					help={ __(
-						'Note: Add feature/section ratings separately.',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 				<ToggleControl
 					label={ __(
-						'Enable schema support',
+						'Open in new window',
 						'ultimate-addons-for-gutenberg'
 					) }
-					checked={ enableSchema }
-					onChange={ () =>
-						setAttributes( { enableSchema: ! enableSchema } )
-					}
+					checked={ ctaTarget }
+					onChange={ toggleTarget }
 				/>
 			</PanelBody>
 		);
@@ -1175,9 +1177,15 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
+				<InspectorTabs>
+				<InspectorTab key={"general"}>
 				{ generalSettings() }
 				{ schemaSettings() }
-				{ styleSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>{ styleSettings() }</InspectorTab>
+				<InspectorTab key={"advance"}>
+				</InspectorTab>
+			</InspectorTabs>
 			</InspectorControls>
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
