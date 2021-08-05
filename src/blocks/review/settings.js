@@ -1,4 +1,3 @@
-import UAGB_Block_Icons from '@Controls/block-icons';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
@@ -13,11 +12,11 @@ import {
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
 
 $ = jQuery;
 import {
 	PanelBody,
-	RangeControl,
 	SelectControl,
 	ToggleControl,
 	Button,
@@ -105,8 +104,24 @@ const Settings = ( props ) => {
 		contentLineHeight,
 		contentLineHeightTablet,
 		contentLineHeightMobile,
-		contentVrPadding,
-		contentHrPadding,
+		topPadding,
+		bottomPadding,
+		rightPadding,
+		leftPadding,
+		//Mobile
+		paddingTopMobile,
+		paddingBottomMobile,
+		paddingRightMobile,
+		paddingLeftMobile,
+		//Tablet
+		paddingTopTablet,
+		paddingBottomTablet,
+		paddingRightTablet,
+		paddingLeftTablet,
+		spacingLink,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
 		authorColor,
 		summaryColor,
 		starActiveColor,
@@ -457,33 +472,78 @@ const Settings = ( props ) => {
 						setAttributes({ starOutlineColor: value })
 					}
 				/>
-				<h2>
-					{ __(
-						'Overall Padding (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</h2>
-				<RangeControl
-					label={ UAGB_Block_Icons.vertical_spacing }
-					className={ 'uagb-margin-control' }
-					value={ contentVrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentVrPadding: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-				<RangeControl
-					label={ UAGB_Block_Icons.horizontal_spacing }
-					className={ 'uagb-margin-control' }
-					value={ contentHrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentHrPadding: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
+				<SpacingControl
+					{...props}
+					label={__(
+						"Overall Padding",
+						"ultimate-addons-for-gutenberg"
+					)}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: paddingTopTablet,
+						label: "paddingTopTablet",
+					}}
+					valueRightTablet={{
+						value: paddingRightTablet,
+						label: "paddingRightTablet",
+					}}
+					valueBottomTablet={{
+						value: paddingBottomTablet,
+						label: "paddingBottomTablet",
+					}}
+					valueLeftTablet={{
+						value: paddingLeftTablet,
+						label: "paddingLeftTablet",
+					}}
+					valueTopMobile={{
+						value: paddingTopMobile,
+						label: "paddingTopMobile",
+					}}
+					valueRightMobile={{
+						value: paddingRightMobile,
+						label: "paddingRightMobile",
+					}}
+					valueBottomMobile={{
+						value: paddingBottomMobile,
+						label: "paddingBottomMobile",
+					}}
+					valueLeftMobile={{
+						value: paddingLeftMobile,
+						label: "paddingLeftMobile",
+					}}
+					unit={{
+						value: paddingUnit,
+						label: "paddingUnit",
+					}}
+					mUnit={{
+						value: mobilePaddingUnit,
+						label: "mobilePaddingUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingUnit,
+						label: "tabletPaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
+					}}
 				/>
 			</PanelBody>
 		);

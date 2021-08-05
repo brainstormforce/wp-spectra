@@ -42,8 +42,23 @@ function styling( props ) {
 		contentLineHeight,
 		contentLineHeightTablet,
 		contentLineHeightMobile,
-		contentVrPadding,
-		contentHrPadding,
+		topPadding,
+		bottomPadding,
+		rightPadding,
+		leftPadding,
+		//Mobile
+		paddingTopMobile,
+		paddingBottomMobile,
+		paddingRightMobile,
+		paddingLeftMobile,
+		//Tablet
+		paddingTopTablet,
+		paddingBottomTablet,
+		paddingRightTablet,
+		paddingLeftTablet,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
 		authorColor,
 		summaryColor,
 		starActiveColor,
@@ -120,10 +135,10 @@ function styling( props ) {
 			color: descColor,
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( contentVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( contentVrPadding, 'px' ),
+			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
+			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
+			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 			'text-align': overallAlignment,
 		},
 		' .uagb_review_summary, p.rich-text.block-editor-rich-text__editable.uagb_review_summary_title': {
@@ -182,6 +197,12 @@ function styling( props ) {
 				contentLineHeightType
 			),
 		},
+		' .uagb_review_block': {
+			'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+			'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+		},
 	};
 
 	tabletSelectors = {
@@ -214,6 +235,12 @@ function styling( props ) {
 				contentLineHeightTablet,
 				contentLineHeightType
 			),
+		},
+		' .uagb_review_block': {
+			'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+			'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
 		},
 	};
 

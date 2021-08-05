@@ -33,8 +33,34 @@ const ReviewComponent = ( props ) => {
 			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
-
 		prevState = props.schemaJsonData;
+		const { attributes, setAttributes } = props;
+		const {
+			contentVrPadding,
+			contentHrPadding,
+			topPadding,
+			bottomPadding,
+			rightPadding,
+			leftPadding,
+		} = attributes;
+
+		if ( contentHrPadding ){
+			if ( !topPadding ){
+				setAttributes( { topPadding: contentHrPadding } );
+			}
+			if ( !bottomPadding ){
+				setAttributes( { bottomPadding: contentHrPadding } );
+			}
+		}
+
+		if( contentVrPadding ){
+			if( !rightPadding ){
+				setAttributes( { rightPadding: contentVrPadding } );
+			}
+			if( !leftPadding ){
+				setAttributes( { leftPadding: contentVrPadding } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -62,6 +88,7 @@ const ReviewComponent = ( props ) => {
 		$( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
 			event.preventDefault();
 		} );
+		
 	}, [ props ] );
 
 	// Setup the attributes
