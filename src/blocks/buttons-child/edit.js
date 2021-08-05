@@ -52,14 +52,14 @@ const ButtonsChildComponent = ( props ) => {
 			if(!topPadding){
 				setAttributes( { topPadding: vPadding } );
 			}
-			if(!rightPadding){
-				setAttributes( { rightPadding: vPadding } );
+			if(!bottomPadding){
+				setAttributes( { bottomPadding: vPadding } );
 			}
 		}
 
 		if(hPadding){
-			if(!bottomPadding){
-				setAttributes( { bottomPadding: hPadding } );
+			if(!rightPadding){
+				setAttributes( { rightPadding: hPadding } );
 			}
 			if(!leftPadding){
 				setAttributes( { leftPadding: hPadding } );

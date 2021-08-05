@@ -42,8 +42,6 @@ const Settings = ( props ) => {
 	const {
 		link,
 		size,
-		vPadding,
-		hPadding,
 		topPadding,
 		rightPadding,
 		bottomPadding,
