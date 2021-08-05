@@ -7,6 +7,7 @@ import styling from './styling';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
+import attributes from './attributes';
 
 const Settings = lazy( () =>
 	import(
@@ -36,6 +37,35 @@ const ButtonsChildComponent = ( props ) => {
 			'uagb-style-button-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const { attributes, setAttributes } = props;
+		const {
+			vPadding,
+			hPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+		} = attributes;
+
+		if(vPadding){
+			if(!topPadding){
+				setAttributes( { topPadding: vPadding } );
+			}
+			if(!rightPadding){
+				setAttributes( { rightPadding: vPadding } );
+			}
+		}
+
+		if(hPadding){
+			if(!bottomPadding){
+				setAttributes( { bottomPadding: hPadding } );
+			}
+			if(!leftPadding){
+				setAttributes( { leftPadding: hPadding } );
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {
