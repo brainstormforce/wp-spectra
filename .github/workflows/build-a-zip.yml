@@ -22,12 +22,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@master
 
-      # - name: Ger repo name & set it as plugin slug
-      #   # run: echo "PLUGIN_SLUG=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-      #   run: |
-      #     echo "PLUGIN_SLUG=${{ github.event.repository.name }}" >> $GITHUB_ENV
-      #     echo "ZIP_NAME=${{ github.event.repository.name }}.zip" >> $GITHUB_ENV
-
       - name: Extract current branch name
         id: get_current_branch
         run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
@@ -130,6 +124,7 @@ jobs:
           echo ${{ steps.get_current_branch.outputs.branch_name }}
 
       - name: Execute a delete command using password
+        if: ${{ steps.get_current_branch.outputs.branch_name != '' }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
