@@ -776,23 +776,7 @@ const Settings = (props) => {
 						/>
 					</>
 				)}
-				{ctaType === "button" && (
-					<div className="uag-toggle-wrap">
-						<ToggleControl
-							checked={inheritFromTheme}
-							onChange={() =>
-								setAttributes({
-									inheritFromTheme: !inheritFromTheme,
-								})
-							}
-							label={__(
-								"Inherit from Theme",
-								"ultimate-addons-for-gutenberg"
-							)}
-						/>
-					</div>
-				)}
-				{ctaIcon !== "" && (
+				{ctaIcon !== "" && ctaType == "button" && (
 					<>
 						<SelectControl
 							label={__(
@@ -840,6 +824,22 @@ const Settings = (props) => {
 							}}
 						/>
 					</>
+				)}
+				{ctaType === "button" && (
+					<div className="uag-toggle-wrap">
+						<ToggleControl
+							checked={inheritFromTheme}
+							onChange={() =>
+								setAttributes({
+									inheritFromTheme: !inheritFromTheme,
+								})
+							}
+							label={__(
+								"Inherit from Theme",
+								"ultimate-addons-for-gutenberg"
+							)}
+						/>
+					</div>
 				)}
 				{ctaType !== "none" && (
 					<div className="uag-toggle-wrap">
@@ -1369,23 +1369,6 @@ const Settings = (props) => {
 						{"none" !== seperatorStyle && (
 							<>
 								<Range
-									label={__(
-										"Thickness",
-										"ultimate-addons-for-gutenberg"
-									)}
-									setAttributes={setAttributes}
-									value={seperatorThickness}
-									onChange={(value) =>
-										setAttributes({ seperatorThickness: value })
-									}
-									min={0}
-									max={10}
-									unit={{
-										value: thicknessUnit,
-										label: "thicknessUnit",
-									}}
-								/>
-								<Range
 									label={__("Width", "ultimate-addons-for-gutenberg")}
 									setAttributes={setAttributes}
 									value={seperatorWidth}
@@ -1422,6 +1405,23 @@ const Settings = (props) => {
 										},
 									]}
 								/>
+								<Range
+									label={__(
+										"Thickness",
+										"ultimate-addons-for-gutenberg"
+									)}
+									setAttributes={setAttributes}
+									value={seperatorThickness}
+									onChange={(value) =>
+										setAttributes({ seperatorThickness: value })
+									}
+									min={0}
+									max={10}
+									unit={{
+										value: thicknessUnit,
+										label: "thicknessUnit",
+									}}
+								/>
 							</>
 						)}
 						<AdvancedPopColorControl
@@ -1435,31 +1435,31 @@ const Settings = (props) => {
 							}
 						/>
 						<ResponsiveSlider
-									label={__(
-										"Bottom Margin",
-										"ultimate-addons-for-gutenberg"
-									)}
-									data={{
-										desktop: {
-											value: seperatorSpace,
-											label: "seperatorSpace",
-										},
-										tablet: {
-											value: seperatorTabletSpace,
-											label: "seperatorTabletSpace",
-										},
-										mobile: {
-											value: seperatorMobileSpace,
-											label: "seperatorMobileSpace",
-										},
-									}}
-									min={0}
-									max={50}
-									unit={{
-										value: seperatorSpaceUnit,
-										label: "seperatorSpaceUnit",
-									}}
-									setAttributes={setAttributes}
+							label={__(
+								"Bottom Margin",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								desktop: {
+									value: seperatorSpace,
+									label: "seperatorSpace",
+								},
+								tablet: {
+									value: seperatorTabletSpace,
+									label: "seperatorTabletSpace",
+								},
+								mobile: {
+									value: seperatorMobileSpace,
+									label: "seperatorMobileSpace",
+								},
+							}}
+							min={0}
+							max={50}
+							unit={{
+								value: seperatorSpaceUnit,
+								label: "seperatorSpaceUnit",
+							}}
+							setAttributes={setAttributes}
 						/>
 					</>
 				</PanelBody>
