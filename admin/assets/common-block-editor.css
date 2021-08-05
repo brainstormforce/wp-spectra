@@ -404,8 +404,8 @@ hr.uagb-editor__separator {
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
-	left: 0 !important;
-	width: 100%;
+	left: 13px !important;
+	width: 90%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -3503,6 +3503,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .uagb-inspector-tab .components-panel__body.is-opened {
 	padding: 10px;
+	margin: 16px 0px;
 }
 .uagb-inspector-tab .components-panel__body.is-opened label {
 	font-size: 12px;
