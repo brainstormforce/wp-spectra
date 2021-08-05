@@ -3589,3 +3589,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	top: 2px;
 	margin-left: 0px;
 }
+
+.uagb-responsive-control-inner {
+    padding: 0 15px;
+}
+
+.uagb-size-type-field-tabs{
+    margin-bottom:25px;
+}

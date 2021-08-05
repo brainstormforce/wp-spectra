@@ -4,7 +4,10 @@
 
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
-import ColumnResponsive from '../../components/typography/column-responsive';
+import Range from "../../components/range/Range.js";
+import ResponsiveSlider from "../../components/responsive-slider";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 
 import { __ } from '@wordpress/i18n';
 
@@ -17,7 +20,6 @@ import {
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	Button,
 	ButtonGroup,
 } from '@wordpress/components';
@@ -157,108 +159,72 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						{ sizeTypesControls }
-						<RangeControl
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ size }
-							onChange={ ( value ) =>
-								setAttributes( { size: value } )
-							}
-							min={ 0 }
-							max={ 500 }
-							allowReset
-							initialPosition={ 40 }
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						{ sizeTypesControls }
-						<RangeControl
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ sizeTablet }
-							onChange={ ( value ) =>
-								setAttributes( { sizeTablet: value } )
-							}
-							min={ 0 }
-							max={ 500 }
-							allowReset
-							initialPosition={ 40 }
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						{ sizeTypesControls }
-						<RangeControl
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ sizeMobile }
-							onChange={ ( value ) =>
-								setAttributes( { sizeMobile: value } )
-							}
-							min={ 0 }
-							max={ 500 }
-							allowReset
-							initialPosition={ 40 }
-						/>
-					</>
-				) }
-				<RangeControl
-					label={ __(
-						'Background Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ bgSize }
-					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
-					help={ __(
-						'Note: Background Size option is useful when one adds background color to the icons.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					min={ 0 }
-					max={ 500 }
+				<ResponsiveSlider
+					label={__(
+						"Size",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						desktop: {
+							value: size,
+							label: "size",
+						},
+						tablet: {
+							value: sizeTablet,
+							label: "sizeTablet",
+						},
+						mobile: {
+							value: sizeMobile,
+							label: "sizeMobile",
+						},
+					}}
+					min={0}
+					max={500}
+					displayUnit={false}
+					setAttributes={setAttributes}
 				/>
-				<RangeControl
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
+				<Range
+					label={__(
+						"Background Size",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={bgSize}
+					onChange={(value) =>
+						setAttributes({ bgSize: value })
 					}
-					help={ __(
-						'Note: Border Radius option is useful when one adds background color to the icons.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					min={ 0 }
-					max={ 500 }
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+				<Range
+					label={__(
+						"Border Radius",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={borderRadius}
+					onChange={(value) =>
+						setAttributes({ borderRadius: value })
+					}
+					min={0}
+					max={500}
+					displayUnit={false}
 				/>
 				<hr className="uagb-editor__separator" />
-				<RangeControl
-					label={ __(
-						'Gap between Items',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ gap }
-					onChange={ ( value ) => setAttributes( { gap: value } ) }
-					help={ __(
-						'Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					min={ 0 }
-					max={ 100 }
+				<Range
+					label={__(
+						"Gap between Items",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={gap}
+					onChange={(value) =>
+						setAttributes({ gap: value })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
 				/>
 			</PanelBody>
 		);
@@ -267,7 +233,12 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
-			<InspectorControls>{ generalSettings() }</InspectorControls>
+			<InspectorControls>
+			<InspectorTabs tabs={["general","advance"]}>
+				<InspectorTab key={"general"}>{ generalSettings() }</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
+			</InspectorControls>
 		</Suspense>
 	);
 };

@@ -10,7 +10,6 @@ import React from 'react';
 import {
 	InspectorControls,
 	MediaUpload,
-	ColorPalette,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
@@ -18,6 +17,9 @@ import {
 	Button,
 	TabPanel,
 } from '@wordpress/components';
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -263,31 +265,32 @@ const Settings = ( props ) => {
 				) }
 				{ 'image' == image_icon && (
 					<>
-						<MediaUpload
-							title={ __(
-								'Select Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onSelect={ ( value ) =>
-								setAttributes( { image: value } )
-							}
-							allowedTypes={ [ 'image' ] }
-							value={ image }
-							render={ ( { open } ) => (
-								<Button isSecondary onClick={ open }>
-									{ ! image
-										? __(
-												'Select Image',
-												'ultimate-addons-for-gutenberg'
-										  )
-										: __(
-												'Replace image',
-												'ultimate-addons-for-gutenberg'
-										  ) }
-								</Button>
-							) }
-						/>
-						{ image && (
+					<div className="uagb-bg-image">
+					<MediaUpload
+						title={__(
+							"Select Background Image",
+							"ultimate-addons-for-gutenberg"
+						)}
+						onSelect={ ( value ) =>
+							setAttributes( { image: value } )
+						}
+						allowedTypes={["image"]}
+						value={image}
+						render={ ( { open } ) => (
+							<Button isSecondary onClick={ open }>
+								{ ! image
+									? __(
+											'Select Image',
+											'ultimate-addons-for-gutenberg'
+									  )
+									: __(
+											'Replace image',
+											'ultimate-addons-for-gutenberg'
+									  ) }
+							</Button>
+						) }
+					/>
+					{ image && (
 							<Button
 								className="uagb-rm-btn"
 								onClick={ () =>
@@ -302,6 +305,7 @@ const Settings = ( props ) => {
 								) }
 							</Button>
 						) }
+					</div>
 					</>
 				) }
 			</PanelBody>
@@ -314,133 +318,60 @@ const Settings = ( props ) => {
 		if ( 'image' == image_icon ) {
 			colorControl = (
 				<>
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_bg_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
+					<AdvancedPopColorControl
+						label={__("Image Background Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_bg_color ? icon_bg_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_color: value })
 						}
-						allowReset
 					/>
 				</>
 			);
 			colorControlHover = (
 				<>
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Background Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_bg_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
+					<AdvancedPopColorControl
+						label={__("Image Background Hover Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_hover_color: value })
 						}
-						allowReset
 					/>
 				</>
 			);
 		} else {
 			colorControl = (
 				<>
-					<p className="uagb-setting-label">
-						{ __( 'Icon Color' ) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_color: value } )
+					<AdvancedPopColorControl
+						label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_color ? icon_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_color: value })
 						}
-						allowReset
 					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_bg_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
+					<AdvancedPopColorControl
+						label={__("Icon Background Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_bg_color ? icon_bg_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_color: value })
 						}
-						allowReset
 					/>
 				</>
 			);
 			colorControlHover = (
 				<>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_hover_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_hover_color: value } )
+					<AdvancedPopColorControl
+						label={__("Icon Hover Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_hover_color ? icon_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_hover_color: value })
 						}
-						allowReset
 					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Background Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_bg_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
+					<AdvancedPopColorControl
+						label={__("Icon Background Hover Color", "ultimate-addons-for-gutenberg")}
+						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_hover_color: value })
 						}
-						allowReset
 					/>
 				</>
 			);
@@ -486,8 +417,13 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
-			{ generalSettings() }
-			{ iconColorSettings() }
+			<InspectorTabs tabs={["general","advance"]}>
+				<InspectorTab key={"general"}>
+					{ generalSettings() }
+					{ iconColorSettings() }
+				</InspectorTab>
+				<InspectorTab key={"advance"}></InspectorTab>
+			</InspectorTabs>
 		</InspectorControls>
 	);
 };
