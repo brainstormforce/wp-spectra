@@ -202,7 +202,7 @@ const MultiButtonsControl = (props) => {
 	}
 
 	return (
-		<div className="uagb-components-base-control">
+		<div className="components-base-control">
 			<p className="uagb-multi-buttons-control__label">{label}</p>
 			<ButtonGroup
 				className={`uagb-multi-button-button-group`}
