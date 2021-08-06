@@ -627,7 +627,7 @@ const Settings = (props) => {
 			>
 				<AdvancedPopColorControl
 					label={__(
-						"Body Background Color",
+						"Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={bodyBgColor}
@@ -636,10 +636,7 @@ const Settings = (props) => {
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__(
-						"Body Text Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
 					colorValue={bodyTextColor}
 					onColorChange={(value) =>
 						setAttributes({ bodyTextColor: value })
@@ -647,10 +644,7 @@ const Settings = (props) => {
 				/>
 				<SpacingControl
 					{...props}
-					label={__(
-						"Tab Body Margin",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabBodyTopMargin,
 						label: "tabBodyTopMargin",
@@ -720,7 +714,7 @@ const Settings = (props) => {
 				/>
 				<SpacingControl
 					{...props}
-					label={__("Body Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabBodyTopPadding,
 						label: "tabBodyTopPadding",
@@ -800,7 +794,7 @@ const Settings = (props) => {
 			>
 				<SpacingControl
 					{...props}
-					label={__("Title Margin", "ultimate-addons-for-gutenberg")}
+					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabTitleTopMargin,
 						label: "tabTitleTopMargin",
@@ -870,7 +864,7 @@ const Settings = (props) => {
 				/>
 				<SpacingControl
 					{...props}
-					label={__("Title Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabTitleTopPadding,
 						label: "tabTitleTopPadding",
@@ -940,7 +934,7 @@ const Settings = (props) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						"Title Background Color",
+						"Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={headerBgColor}
@@ -949,10 +943,7 @@ const Settings = (props) => {
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__(
-						"Title Text Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headerTextColor}
 					onColorChange={(value) =>
 						setAttributes({ headerTextColor: value })
@@ -1055,7 +1046,7 @@ const Settings = (props) => {
 				initialOpen={false}
 			>
 				<Range
-					label={__("Icon Spacing", "ultimate-addons-for-gutenberg")}
+					label={__("Spacing", "ultimate-addons-for-gutenberg")}
 					setAttributes={setAttributes}
 					value={iconSpacing}
 					onChange={(value) => setAttributes({ iconSpacing: value })}
@@ -1064,24 +1055,21 @@ const Settings = (props) => {
 					displayUnit={false}
 				/>
 				<AdvancedPopColorControl
-					label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={iconColor}
 					onColorChange={(value) =>
 						setAttributes({ iconColor: value })
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__(
-						"Active Icon Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Active Color", "ultimate-addons-for-gutenberg")}
 					colorValue={activeiconColor}
 					onColorChange={(value) =>
 						setAttributes({ activeiconColor: value })
 					}
 				/>
 				<Range
-					label={__("Icon Size", "ultimate-addons-for-gutenberg")}
+					label={__("Size", "ultimate-addons-for-gutenberg")}
 					setAttributes={setAttributes}
 					value={iconSize}
 					onChange={(value) => setAttributes({ iconSize: value })}
