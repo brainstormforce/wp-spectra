@@ -35,10 +35,7 @@
 	}
 	.uag-global-nav-menu__tab {
 		& {
-			background: transparent;
-			border-top: 1px solid #fff;
-			border-bottom: 1px solid #fff;
-    		border-bottom: 0;
+			border: 1px solid #fff;
 			color: #444;
 			cursor: pointer;
 			padding: 15px 25px 15px 25px;
@@ -55,14 +52,16 @@
 		&.uag-global-nav-menu__tab--active {
 			background: var(--background-light-color);
 			border: 1px solid #eee;
-			border-bottom: 0;	
+			border-bottom: 1px solid #f7f8fa;	
 		}
 	}
 }
-a.uag-global-nav-menu__tab:hover{
+a.uag-global-nav-menu__tab:hover,
+a.uag-global-nav-menu__tab:focus,
+a.uag-global-nav-menu__tab:active{
+	background: var(--background-light-color);
 	border: 1px solid #eee;
-    background:#f8fafb;
-	border-bottom: 0;
+	border-bottom: 1px solid #f7f8fa;
 }
 /* New FIxed header */
 
