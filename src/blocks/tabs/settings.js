@@ -380,7 +380,7 @@ const Settings = (props) => {
 		};
 		return (
 			<PanelBody
-				title={__("Tabs Style", "ultimate-addons-for-gutenberg")}
+				title={__("Layout", "ultimate-addons-for-gutenberg")}
 				initialOpen={true}
 			>
 				<ResponsiveSelectControl
@@ -472,7 +472,7 @@ const Settings = (props) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Tab Text Alignment",
+						"Text Alignment",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -622,7 +622,7 @@ const Settings = (props) => {
 	const tabBodySettings = () => {
 		return (
 			<PanelBody
-				title={__("Tabs Body", "ultimate-addons-for-gutenberg")}
+				title={__("Body", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
 				<AdvancedPopColorControl
@@ -789,7 +789,7 @@ const Settings = (props) => {
 	const tabTitleStyle = () => {
 		return (
 			<PanelBody
-				title={__("Tabs Title", "ultimate-addons-for-gutenberg")}
+				title={__("Title", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
 				<SpacingControl
@@ -1042,7 +1042,7 @@ const Settings = (props) => {
 
 		return (
 			<PanelBody
-				title={__("Tabs Title Icon", "ultimate-addons-for-gutenberg")}
+				title={__("Icon", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
 				<Range
