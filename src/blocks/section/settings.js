@@ -558,11 +558,12 @@ const Settings = (props) => {
 			<InspectorTabs tabs={["general", "advance"]}>
 				<InspectorTab key={"general"}>
 					{getLayoutPanelBody()}
+				</InspectorTab>
+				<InspectorTab key={"advance"}>
 					{getSpacingPanelBody()}
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>
 		);
 	};
