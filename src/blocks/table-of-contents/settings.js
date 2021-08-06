@@ -264,9 +264,8 @@ const Settings = ( props ) => {
 							max={5000}
 							displayUnit={false}
 						/>
-					</>
-				) }
-				<hr className="uagb-editor__separator" />
+					</>)
+				}
 				<ToggleControl
 					label={ __(
 						'Show Scroll To Top',
@@ -281,24 +280,6 @@ const Settings = ( props ) => {
 						setAttributes( { scrollToTop: ! scrollToTop } )
 					}
 				/>
-				{ scrollToTop && (
-					<>
-						<AdvancedPopColorControl
-							label={__("Icon Color", "ultimate-addons-for-gutenberg")}
-							colorValue={scrollToTopColor ? scrollToTopColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ scrollToTopColor: value })
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__("Background Color", "ultimate-addons-for-gutenberg")}
-							colorValue={scrollToTopBgColor ? scrollToTopBgColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ scrollToTopBgColor: value })
-							}
-						/>
-					</>
-				) }
 			</PanelBody>
 		);
 	};
@@ -354,69 +335,7 @@ const Settings = ( props ) => {
 					max={50}
 					displayUnit={false}
 				/>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: headingLoadGoogleFonts,
-						label: 'headingLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: headingFontFamily,
-						label: 'headingFontFamily',
-					} }
-					fontWeight={ {
-						value: headingFontWeight,
-						label: 'headingFontWeight',
-					} }
-					fontSubset={ {
-						value: headingFontSubset,
-						label: 'headingFontSubset',
-					} }
-					fontSizeType={ {
-						value: headingFontSizeType,
-						label: 'headingFontSizeType',
-					} }
-					fontSize={ {
-						value: headingFontSize,
-						label: 'headingFontSize',
-					} }
-					fontSizeMobile={ {
-						value: headingFontSizeMobile,
-						label: 'headingFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: headingFontSizeTablet,
-						label: 'headingFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: headingLineHeightType,
-						label: 'headingLineHeightType',
-					} }
-					lineHeight={ {
-						value: headingLineHeight,
-						label: 'headingLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: headingLineHeightMobile,
-						label: 'headingLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: headingLineHeightTablet,
-						label: 'headingLineHeightTablet',
-					} }
-				/>
-				<AdvancedPopColorControl
-					label={__("Heading Color", "ultimate-addons-for-gutenberg")}
-					colorValue={headingColor ? headingColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ headingColor: value })
-					}
-				/>
+				
 				<hr className="uagb-editor__separator" />
 				<h2>
 					{ __( 'Collapsible', 'ultimate-addons-for-gutenberg' ) }
@@ -624,8 +543,93 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
+				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: headingLoadGoogleFonts,
+						label: 'headingLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: headingFontFamily,
+						label: 'headingFontFamily',
+					} }
+					fontWeight={ {
+						value: headingFontWeight,
+						label: 'headingFontWeight',
+					} }
+					fontSubset={ {
+						value: headingFontSubset,
+						label: 'headingFontSubset',
+					} }
+					fontSizeType={ {
+						value: headingFontSizeType,
+						label: 'headingFontSizeType',
+					} }
+					fontSize={ {
+						value: headingFontSize,
+						label: 'headingFontSize',
+					} }
+					fontSizeMobile={ {
+						value: headingFontSizeMobile,
+						label: 'headingFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: headingFontSizeTablet,
+						label: 'headingFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: headingLineHeightType,
+						label: 'headingLineHeightType',
+					} }
+					lineHeight={ {
+						value: headingLineHeight,
+						label: 'headingLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: headingLineHeightMobile,
+						label: 'headingLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: headingLineHeightTablet,
+						label: 'headingLineHeightTablet',
+					} }
+				/>
+				<AdvancedPopColorControl
+					label={__("Heading Color", "ultimate-addons-for-gutenberg")}
+					colorValue={headingColor ? headingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ headingColor: value })
+					}
+				/>
+				<hr className="uagb-editor__separator" />
+				{ scrollToTop && (
+					<>
+					<h2>{ __( 'Scroll To Top', 'ultimate-addons-for-gutenberg' ) }</h2>
+						<AdvancedPopColorControl
+							label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+							colorValue={scrollToTopColor ? scrollToTopColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ scrollToTopColor: value })
+							}
+						/>
+						<AdvancedPopColorControl
+							label={__("Background Color", "ultimate-addons-for-gutenberg")}
+							colorValue={scrollToTopBgColor ? scrollToTopBgColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ scrollToTopBgColor: value })
+							}
+						/>
+					<hr className="uagb-editor__separator" />
+					</>
+				) }
 				<h2>{ __( 'Background', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<AdvancedPopColorControl
 					label={__("Background Color", "ultimate-addons-for-gutenberg")}
@@ -726,6 +730,51 @@ const Settings = ( props ) => {
 					max={10}
 					displayUnit={false}
 					setAttributes={setAttributes}
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: "borderStyle",
+						title: __(
+							"Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: "borderWidth",
+						title: __(
+							"Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: "borderRadius",
+						title: __(
+							"Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: "borderColor",
+						title: __(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: "borderHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 				/>
 				<hr className="uagb-editor__separator" />
 				<SpacingControl
@@ -876,51 +925,6 @@ const Settings = ( props ) => {
 						label: "marginLink",
 					}}
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: borderStyle,
-						label: "borderStyle",
-						title: __(
-							"Style",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderWidth={{
-						value: borderWidth,
-						label: "borderWidth",
-						title: __(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderRadius={{
-						value: borderRadius,
-						label: "borderRadius",
-						title: __(
-							"Radius",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderColor={{
-						value: borderColor,
-						label: "borderColor",
-						title: __(
-							"Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderHoverColor={{
-						value: borderHoverColor,
-						label: "borderHoverColor",
-						title: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-				/>
 			</PanelBody>
 		);
 	};
@@ -937,11 +941,13 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 				{ getGeneralPanelBody() }
 				{ getScrollPanelBody() }
 				{ getContentPanelBody() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
 				{ getStylePanelBody() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
