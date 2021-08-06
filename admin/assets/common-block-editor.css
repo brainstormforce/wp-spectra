@@ -3440,7 +3440,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab
 	.components-panel__body.is-opened
 	> .components-panel__body-title {
+	margin: -10px;
+	padding: 16px 16px 16px 16px;
 	margin-bottom: 16px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-panel__body-title
+	.components-button.components-panel__body-toggle {
+	padding: 0;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-panel__body-title
+	.components-button.components-panel__body-toggle:focus {
+	box-shadow: none;
 }
 .uagb-inspector-tab .components-panel__body.is-opened {
 	padding: 10px;
