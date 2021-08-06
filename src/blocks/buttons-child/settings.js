@@ -14,6 +14,7 @@ import SpacingControl from "@Components/spacing-control";
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 import TypographyControl from '@Components/typography';
+import Range from "@Components/range/Range.js";
 
 import {
 	BlockControls,
@@ -24,7 +25,6 @@ import {
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	TabPanel,
 	Popover,
 	ToolbarButton,
@@ -170,30 +170,38 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<RangeControl
-							label={ __(
-								'Icon Spacing',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ iconSpace }
-							onChange={ ( value ) =>
-								setAttributes( { iconSpace: value } )
+						<Range
+							label={__(
+								"Icon Spacing",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={iconSpace}
+							onChange={(value) =>
+								setAttributes({ iconSpace: value })
 							}
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
+							min={0}
+							max={50}
+							displayUnit={false}
 						/>
 					</>
 				) }
+			</PanelBody>
+		);
+	};
+
+	const textSettings = () => {
+	
+		return (
+			<PanelBody
+				title={ __(
+					'Text',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
 				{ ! inheritFromTheme && (
 					<>
-						<h2>
-							{ __(
-								' Color Settings',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
 						<TabPanel
 							className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 							activeClass="active-tab"
@@ -272,155 +280,178 @@ const Settings = ( props ) => {
 								return <div>{ btn_color_tab }</div>;
 							} }
 						</TabPanel>
-						<hr className="uagb-editor__separator" />
-						<Border
-							setAttributes={setAttributes}
-							borderStyle={{
-								value: borderStyle,
-								label: "borderStyle",
-								title: __("Style", "ultimate-addons-for-gutenberg"),
-							}}
-							borderWidth={{
-								value: borderWidth,
-								label: "borderWidth",
-								title: __("Width", "ultimate-addons-for-gutenberg"),
-							}}
-							borderRadius={{
-								value: borderRadius,
-								label: "borderRadius",
-								title: __("Radius", "ultimate-addons-for-gutenberg"),
-							}}
-							borderColor={{
-								value: borderColor,
-								label: "borderColor",
-								title: __("Color", "ultimate-addons-for-gutenberg"),
-							}}
-							borderHoverColor={{
-								value: borderHColor,
-								label: "borderHColor",
-								title: __(
-									"Hover Color",
-									"ultimate-addons-for-gutenberg"
-								),
-							}}
-						/>
-						<hr className="uagb-editor__separator" />
-						<TypographyControl
-							label={__("Typography", "ultimate-addons-for-gutenberg")}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							disableFontFamily={true}
-							disableFontWeight={true}
-							disableFontSubset={true}
-							fontSizeType={{
-								value: sizeType,
-								label: "sizeType",
-							}}
-							fontSize={{
-								value: size,
-								label: "size",
-							}}
-							fontSizeMobile={{
-								value: sizeMobile,
-								label: "sizeMobile",
-							}}
-							fontSizeTablet={{
-								value: sizeTablet,
-								label: "sizeTablet",
-							}}
-							lineHeightType={{
-								value: lineHeightType,
-								label: "lineHeightType",
-							}}
-							lineHeight={{
-								value: lineHeight,
-								label: "lineHeight",
-							}}
-							lineHeightMobile={{
-								value: lineHeightMobile,
-								label: "lineHeightMobile",
-							}}
-							lineHeightTablet={{
-								value: lineHeightTablet,
-								label: "lineHeightTablet",
-							}}
-						/>
-						<hr className="uagb-editor__separator" />
-						<SpacingControl
-							{...props}
-							label={__("Padding", "ultimate-addons-for-gutenberg")}
-							valueTop={{
-								value: topPadding,
-								label: "topPadding",
-							}}
-							valueRight={{
-								value: rightPadding,
-								label: "rightPadding",
-							}}
-							valueBottom={{
-								value: bottomPadding,
-								label: "bottomPadding",
-							}}
-							valueLeft={{
-								value: leftPadding,
-								label: "leftPadding",
-							}}
-							valueTopTablet={{
-								value: topTabletPadding,
-								label: "topTabletPadding",
-							}}
-							valueRightTablet={{
-								value: rightTabletPadding,
-								label: "rightTabletPadding",
-							}}
-							valueBottomTablet={{
-								value: bottomTabletPadding,
-								label: "bottomTabletPadding",
-							}}
-							valueLeftTablet={{
-								value: leftTabletPadding,
-								label: "leftTabletPadding",
-							}}
-							valueTopMobile={{
-								value: topMobilePadding,
-								label: "topMobilePadding",
-							}}
-							valueRightMobile={{
-								value: rightMobilePadding,
-								label: "rightMobilePadding",
-							}}
-							valueBottomMobile={{
-								value: bottomMobilePadding,
-								label: "bottomMobilePadding",
-							}}
-							valueLeftMobile={{
-								value: leftMobilePadding,
-								label: "leftMobilePadding",
-							}}
-							unit={{
-								value: paddingUnit,
-								label: "paddingUnit",
-							}}
-							mUnit={{
-								value: mobilePaddingUnit,
-								label: "mobilePaddingUnit",
-							}}
-							tUnit={{
-								value: tabletPaddingUnit,
-								label: "tabletPaddingUnit",
-							}}
-							attributes={attributes}
-							setAttributes={setAttributes}
-							link={{
-								value: paddingLink,
-								label: "paddingLink",
-							}}
-						/>
 					</>
-				) }
+				)}
+				<TypographyControl
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					disableFontFamily={true}
+					disableFontWeight={true}
+					disableFontSubset={true}
+					fontSizeType={{
+						value: sizeType,
+						label: "sizeType",
+					}}
+					fontSize={{
+						value: size,
+						label: "size",
+					}}
+					fontSizeMobile={{
+						value: sizeMobile,
+						label: "sizeMobile",
+					}}
+					fontSizeTablet={{
+						value: sizeTablet,
+						label: "sizeTablet",
+					}}
+					lineHeightType={{
+						value: lineHeightType,
+						label: "lineHeightType",
+					}}
+					lineHeight={{
+						value: lineHeight,
+						label: "lineHeight",
+					}}
+					lineHeightMobile={{
+						value: lineHeightMobile,
+						label: "lineHeightMobile",
+					}}
+					lineHeightTablet={{
+						value: lineHeightTablet,
+						label: "lineHeightTablet",
+					}}
+				/>
 			</PanelBody>
-		);
-	};
+		)
+	}
+
+	const borderSettings = () => {
+	
+		return (
+			<PanelBody
+				title={ __(
+					'Border',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: "borderStyle",
+						title: __("Style", "ultimate-addons-for-gutenberg"),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: "borderWidth",
+						title: __("Width", "ultimate-addons-for-gutenberg"),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: "borderRadius",
+						title: __("Radius", "ultimate-addons-for-gutenberg"),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: "borderColor",
+						title: __("Color", "ultimate-addons-for-gutenberg"),
+					}}
+					borderHoverColor={{
+						value: borderHColor,
+						label: "borderHColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+				/>
+			</PanelBody>
+		)};
+
+	const spacingSettings = () => {
+
+		return (
+			<PanelBody
+				title={ __(
+					'Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>				
+			<SpacingControl
+				{...props}
+				label={__("Padding", "ultimate-addons-for-gutenberg")}
+				valueTop={{
+					value: topPadding,
+					label: "topPadding",
+				}}
+				valueRight={{
+					value: rightPadding,
+					label: "rightPadding",
+				}}
+				valueBottom={{
+					value: bottomPadding,
+					label: "bottomPadding",
+				}}
+				valueLeft={{
+					value: leftPadding,
+					label: "leftPadding",
+				}}
+				valueTopTablet={{
+					value: topTabletPadding,
+					label: "topTabletPadding",
+				}}
+				valueRightTablet={{
+					value: rightTabletPadding,
+					label: "rightTabletPadding",
+				}}
+				valueBottomTablet={{
+					value: bottomTabletPadding,
+					label: "bottomTabletPadding",
+				}}
+				valueLeftTablet={{
+					value: leftTabletPadding,
+					label: "leftTabletPadding",
+				}}
+				valueTopMobile={{
+					value: topMobilePadding,
+					label: "topMobilePadding",
+				}}
+				valueRightMobile={{
+					value: rightMobilePadding,
+					label: "rightMobilePadding",
+				}}
+				valueBottomMobile={{
+					value: bottomMobilePadding,
+					label: "bottomMobilePadding",
+				}}
+				valueLeftMobile={{
+					value: leftMobilePadding,
+					label: "leftMobilePadding",
+				}}
+				unit={{
+					value: paddingUnit,
+					label: "paddingUnit",
+				}}
+				mUnit={{
+					value: mobilePaddingUnit,
+					label: "mobilePaddingUnit",
+				}}
+				tUnit={{
+					value: tabletPaddingUnit,
+					label: "tabletPaddingUnit",
+				}}
+				attributes={attributes}
+				setAttributes={setAttributes}
+				link={{
+					value: paddingLink,
+					label: "paddingLink",
+				}}
+			/>
+			</PanelBody>
+		)};
 
 	const blockControls = () => {
 		return (
@@ -470,9 +501,14 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			{ linkControls() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 				{ buttonSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
+				{ textSettings() }
+				{ borderSettings() }
+				{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>

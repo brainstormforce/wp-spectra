@@ -54,6 +54,68 @@ const Settings = ( props ) => {
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
+				<SelectControl
+					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
+					value={ stack }
+					options={ [
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'desktop',
+							label: __(
+								'Desktop',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'tablet',
+							label: __(
+								'Tablet',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'mobile',
+							label: __(
+								'Mobile',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					onChange={ ( value ) => setAttributes( { stack: value } ) }
+					help={ __(
+						'Note: Choose on what breakpoint the buttons will stack.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				<Range
+					label={__(
+						"Gap Between Buttons",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={gap}
+					onChange={(value) =>
+						setAttributes({ gap: value })
+					}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+			</PanelBody>
+		);
+	};
+
+	const styleSettings = () => {
+		return (
+			<PanelBody
+				initialOpen={ true }
+			>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
@@ -125,63 +187,6 @@ const Settings = ( props ) => {
 					]}
 					showIcons={true}
 				/>
-				<h2>{ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<Range
-					label={__(
-						"Gap Between Buttons",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={gap}
-					onChange={(value) =>
-						setAttributes({ gap: value })
-					}
-					min={0}
-					max={500}
-					displayUnit={false}
-				/>
-				<hr className="uagb-editor__separator" />
-				<SelectControl
-					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
-					value={ stack }
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'desktop',
-							label: __(
-								'Desktop',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'tablet',
-							label: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'mobile',
-							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					onChange={ ( value ) => setAttributes( { stack: value } ) }
-					help={ __(
-						'Note: Choose on what breakpoint the buttons will stack.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -206,9 +211,12 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 				{ generalSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
+				{ styleSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>
