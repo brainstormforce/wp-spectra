@@ -97,7 +97,7 @@ const Settings = (props) => {
 		return (
 			<PanelBody
 				title={__("Layout", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				initialOpen={true}
 			>
 				<SelectControl
 					label={__("Content Width", "ultimate-addons-for-gutenberg")}
