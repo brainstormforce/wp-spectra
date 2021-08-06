@@ -3516,6 +3516,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.uagb-responsive-tabs {
 	margin: 0;
 	padding: 0;
+	line-height: 0;
 }
 .uagb-inspector-tab
 	.components-base-control
