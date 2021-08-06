@@ -348,10 +348,8 @@ const Settings = ( props ) => {
 						}
 					/>
 				) }
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -403,10 +401,9 @@ const Settings = ( props ) => {
 						label: 'titleLineHeightTablet',
 					} }
 				/>
-				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props}
-					label={__("Title Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: titleTopPadding,
 						label: "titleTopPadding",
@@ -498,10 +495,8 @@ const Settings = ( props ) => {
 						setAttributes({ contentBgColor: value })
 					}
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -553,10 +548,9 @@ const Settings = ( props ) => {
 						label: 'descLineHeightTablet',
 					} }
 				/>
-				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props}
-					label={__("Content Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: contentTopPadding,
 						label: "contentTopPadding",
