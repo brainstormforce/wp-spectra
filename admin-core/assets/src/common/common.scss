@@ -6,14 +6,10 @@
         .uag-button {
             display: inline-block;
             text-decoration: none;
-            font-size: 13px;
-            line-height: 2.15384615;
-            min-height: 30px;
+            font-size: 14px;
             margin: 0;
-            padding: 0 10px;
+            padding: 10px 16px;
             cursor: pointer;
-            border-width: 1px;
-            border-style: solid;
             -webkit-appearance: none;
             border-radius: 3px;
             white-space: nowrap;
@@ -25,12 +21,12 @@
     h1 {
         font-family: var(--heading-font-family); 
         color: var(--heading-color);
-        font-weight: var(--heading-weight-500);
+        font-weight: var(--heading-weight-600);
         line-height: 1.30em;
     }
     h2{
         font-family: var(--heading-font-family);    
-        font-weight: var(--heading-weight-500);
+        font-weight: var(--heading-weight-600);
         font-size: 24px;
         margin:0px 0px 15px 0px;
         color: var(--heading-color);
@@ -41,7 +37,7 @@
         margin-bottom:10px;
         color: var(--heading-color);
         font-family: var(--heading-font-family);
-        font-weight: var(--heading-weight-500);
+        font-weight: var(--heading-weight-600);
         font-size: 18px;
         line-height: 1.30em;
     }
@@ -59,8 +55,6 @@
         text-align: left;
     }
     .components-base-control__field {
-        font-family: var(--heading-font-family);
-        font-weight: var(--heading-weight-500);
         font-size: 16px;
     }
 }
@@ -71,12 +65,13 @@
     color: var(--metabox-background-color);
 }
 .uag-button--primary{
+    border-width: 0px;
     background: var(--accent-color);
     color: var(--background-light-color);
 }
 .uag-button--secondary{
     color: var(--accent-color);
-    border-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
     background: #f6f7f7;
     vertical-align: top;  
 }
