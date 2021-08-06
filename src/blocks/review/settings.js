@@ -202,149 +202,15 @@ const Settings = ( props ) => {
 		return sizeArr;
 	};
 
-	const styleSettings = () => {
+	const summarySettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Summary', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<TypographyControl
-					label={ __(
-						'Title Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ props.attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: headLoadGoogleFonts,
-						label: 'headLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: headFontFamily,
-						label: 'headFontFamily',
-					} }
-					fontWeight={ {
-						value: headFontWeight,
-						label: 'headFontWeight',
-					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
-					} }
-					fontSizeType={ {
-						value: headFontSizeType,
-						label: 'headFontSizeType',
-					} }
-					fontSize={ { value: headFontSize, label: 'headFontSize' } }
-					fontSizeMobile={ {
-						value: headFontSizeMobile,
-						label: 'headFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: headFontSizeTablet,
-						label: 'headFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: headLineHeightType,
-						label: 'headLineHeightType',
-					} }
-					lineHeight={ {
-						value: headLineHeight,
-						label: 'headLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: headLineHeightMobile,
-						label: 'headLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: headLineHeightTablet,
-						label: 'headLineHeightTablet',
-					} }
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Title Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={titleColor}
-					onColorChange={(value) =>
-						setAttributes({ titleColor: value })
-					}
-				/>
-				{ enableDescription === true && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<TypographyControl
-							label={ __(
-								'Description Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ props.attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: subHeadLoadGoogleFonts,
-								label: 'subHeadLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: subHeadFontFamily,
-								label: 'subHeadFontFamily',
-							} }
-							fontWeight={ {
-								value: subHeadFontWeight,
-								label: 'subHeadFontWeight',
-							} }
-							fontSubset={ {
-								value: subHeadFontSubset,
-								label: 'subHeadFontSubset',
-							} }
-							fontSizeType={ {
-								value: subHeadFontSizeType,
-								label: 'subHeadFontSizeType',
-							} }
-							fontSize={ {
-								value: subHeadFontSize,
-								label: 'subHeadFontSize',
-							} }
-							fontSizeMobile={ {
-								value: subHeadFontSizeMobile,
-								label: 'subHeadFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: subHeadFontSizeTablet,
-								label: 'subHeadFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: subHeadLineHeightType,
-								label: 'subHeadLineHeightType',
-							} }
-							lineHeight={ {
-								value: subHeadLineHeight,
-								label: 'subHeadLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: subHeadLineHeightMobile,
-								label: 'subHeadLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: subHeadLineHeightTablet,
-								label: 'subHeadLineHeightTablet',
-							} }
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Description Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={descColor}
-							onColorChange={(value) =>
-								setAttributes({ descColor: value })
-							}
-						/>
-					</>
-				) }
 				{ showAuthor === true && (
 					<>
-						<hr className="uagb-editor__separator" />
+	
 						<AdvancedPopColorControl
 							label={__(
 								"Author Color",
@@ -359,7 +225,7 @@ const Settings = ( props ) => {
 				) }
 				{ showFeature === true && (
 					<>
-						<hr className="uagb-editor__separator" />
+	
 						<AdvancedPopColorControl
 							label={__(
 								"Content Color",
@@ -372,10 +238,19 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				<hr className="uagb-editor__separator" />
+				<AdvancedPopColorControl
+					label={__(
+						"Summary Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={summaryColor}
+					onColorChange={(value) =>
+						setAttributes({ summaryColor: value })
+					}
+				/>
 				<TypographyControl
 					label={ __(
-						'Summary Typography',
+						'Typography',
 						'ultimate-addons-for-gutenberg'
 					) }
 					attributes={ props.attributes }
@@ -429,125 +304,202 @@ const Settings = ( props ) => {
 						label: 'contentLineHeightTablet',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Summary Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={summaryColor}
-					onColorChange={(value) =>
-						setAttributes({ summaryColor: value })
-					}
-				/>
-				<hr className="uagb-editor__separator" />
-				<AdvancedPopColorControl
-					label={__(
-						"Active Star Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={starColor}
-					onColorChange={(value) =>
-						setAttributes({ starColor: value })
-					}
-				/>
-				<hr className="uagb-editor__separator" />
-				<AdvancedPopColorControl
-					label={__(
-						"Inactive Star Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={starActiveColor}
-					onColorChange={(value) =>
-						setAttributes({ starActiveColor: value })
-					}
-				/>
-				<hr className="uagb-editor__separator" />
-				<AdvancedPopColorControl
-					label={__(
-						"Star Outline Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={starOutlineColor}
-					onColorChange={(value) =>
-						setAttributes({ starOutlineColor: value })
-					}
-				/>
-				<SpacingControl
-					{...props}
-					label={__(
-						"Overall Padding",
-						"ultimate-addons-for-gutenberg"
-					)}
-					valueTop={{
-						value: topPadding,
-						label: "topPadding",
-					}}
-					valueRight={{
-						value: rightPadding,
-						label: "rightPadding",
-					}}
-					valueBottom={{
-						value: bottomPadding,
-						label: "bottomPadding",
-					}}
-					valueLeft={{
-						value: leftPadding,
-						label: "leftPadding",
-					}}
-					valueTopTablet={{
-						value: paddingTopTablet,
-						label: "paddingTopTablet",
-					}}
-					valueRightTablet={{
-						value: paddingRightTablet,
-						label: "paddingRightTablet",
-					}}
-					valueBottomTablet={{
-						value: paddingBottomTablet,
-						label: "paddingBottomTablet",
-					}}
-					valueLeftTablet={{
-						value: paddingLeftTablet,
-						label: "paddingLeftTablet",
-					}}
-					valueTopMobile={{
-						value: paddingTopMobile,
-						label: "paddingTopMobile",
-					}}
-					valueRightMobile={{
-						value: paddingRightMobile,
-						label: "paddingRightMobile",
-					}}
-					valueBottomMobile={{
-						value: paddingBottomMobile,
-						label: "paddingBottomMobile",
-					}}
-					valueLeftMobile={{
-						value: paddingLeftMobile,
-						label: "paddingLeftMobile",
-					}}
-					unit={{
-						value: paddingUnit,
-						label: "paddingUnit",
-					}}
-					mUnit={{
-						value: mobilePaddingUnit,
-						label: "mobilePaddingUnit",
-					}}
-					tUnit={{
-						value: tabletPaddingUnit,
-						label: "tabletPaddingUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: spacingLink,
-						label: "spacingLink",
-					}}
-				/>
 			</PanelBody>
 		);
 	};
+
+	const starSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+			<AdvancedPopColorControl
+				label={__(
+					"Active Star Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={starColor}
+				onColorChange={(value) =>
+					setAttributes({ starColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					"Inactive Star Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={starActiveColor}
+				onColorChange={(value) =>
+					setAttributes({ starActiveColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					"Star Outline Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={starOutlineColor}
+				onColorChange={(value) =>
+					setAttributes({ starOutlineColor: value })
+				}
+			/>
+		</PanelBody>
+		);
+	};
+
+	const titleSettings = () => {
+			return (
+				<PanelBody
+					title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<AdvancedPopColorControl
+					label={__(
+						"Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={titleColor}
+					onColorChange={(value) =>
+						setAttributes({ titleColor: value })
+					}
+				/>
+					<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: headLoadGoogleFonts,
+						label: 'headLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: headFontFamily,
+						label: 'headFontFamily',
+					} }
+					fontWeight={ {
+						value: headFontWeight,
+						label: 'headFontWeight',
+					} }
+					fontSubset={ {
+						value: headFontSubset,
+						label: 'headFontSubset',
+					} }
+					fontSizeType={ {
+						value: headFontSizeType,
+						label: 'headFontSizeType',
+					} }
+					fontSize={ { value: headFontSize, label: 'headFontSize' } }
+					fontSizeMobile={ {
+						value: headFontSizeMobile,
+						label: 'headFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: headFontSizeTablet,
+						label: 'headFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: headLineHeightType,
+						label: 'headLineHeightType',
+					} }
+					lineHeight={ {
+						value: headLineHeight,
+						label: 'headLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: headLineHeightMobile,
+						label: 'headLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: headLineHeightTablet,
+						label: 'headLineHeightTablet',
+					} }
+				/>
+				</PanelBody>
+			)
+	};
+
+	const descriptionSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+			{ enableDescription === true && (
+					<>
+					<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={descColor}
+							onColorChange={(value) =>
+								setAttributes({ descColor: value })
+							}
+						/>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ props.attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: subHeadLoadGoogleFonts,
+								label: 'subHeadLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: subHeadFontFamily,
+								label: 'subHeadFontFamily',
+							} }
+							fontWeight={ {
+								value: subHeadFontWeight,
+								label: 'subHeadFontWeight',
+							} }
+							fontSubset={ {
+								value: subHeadFontSubset,
+								label: 'subHeadFontSubset',
+							} }
+							fontSizeType={ {
+								value: subHeadFontSizeType,
+								label: 'subHeadFontSizeType',
+							} }
+							fontSize={ {
+								value: subHeadFontSize,
+								label: 'subHeadFontSize',
+							} }
+							fontSizeMobile={ {
+								value: subHeadFontSizeMobile,
+								label: 'subHeadFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: subHeadFontSizeTablet,
+								label: 'subHeadFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: subHeadLineHeightType,
+								label: 'subHeadLineHeightType',
+							} }
+							lineHeight={ {
+								value: subHeadLineHeight,
+								label: 'subHeadLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: subHeadLineHeightMobile,
+								label: 'subHeadLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: subHeadLineHeightTablet,
+								label: 'subHeadLineHeightTablet',
+							} }
+						/>
+					</>
+				) }
+			</PanelBody>
+		)
+};
 
 	const schemaSettings = () => {
 		if ( true === enableSchema ) {
@@ -643,7 +595,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					) }
-					<hr className="uagb-editor__separator" />
+
 					{ itemTypeExtras }
 					<TextControl
 						label={ __(
@@ -878,6 +830,89 @@ const Settings = ( props ) => {
 			);
 		}
 	};
+
+	const overallPadding = () => {
+		return(
+		<PanelBody 
+		title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+		initialOpen={ false }
+		>
+			<SpacingControl
+					{...props}
+					label={__(
+						"Overall Padding",
+						"ultimate-addons-for-gutenberg"
+					)}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: paddingTopTablet,
+						label: "paddingTopTablet",
+					}}
+					valueRightTablet={{
+						value: paddingRightTablet,
+						label: "paddingRightTablet",
+					}}
+					valueBottomTablet={{
+						value: paddingBottomTablet,
+						label: "paddingBottomTablet",
+					}}
+					valueLeftTablet={{
+						value: paddingLeftTablet,
+						label: "paddingLeftTablet",
+					}}
+					valueTopMobile={{
+						value: paddingTopMobile,
+						label: "paddingTopMobile",
+					}}
+					valueRightMobile={{
+						value: paddingRightMobile,
+						label: "paddingRightMobile",
+					}}
+					valueBottomMobile={{
+						value: paddingBottomMobile,
+						label: "paddingBottomMobile",
+					}}
+					valueLeftMobile={{
+						value: paddingLeftMobile,
+						label: "paddingLeftMobile",
+					}}
+					unit={{
+						value: paddingUnit,
+						label: "paddingUnit",
+					}}
+					mUnit={{
+						value: mobilePaddingUnit,
+						label: "mobilePaddingUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingUnit,
+						label: "tabletPaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
+					}}
+				/>
+		</PanelBody>
+		)
+	}
 
 	const generalSettings = () => {
 		if ( mainimage && mainimage.sizes ) {
@@ -1242,7 +1277,13 @@ const Settings = ( props ) => {
 				{ generalSettings() }
 				{ schemaSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>{ styleSettings() }</InspectorTab>
+				<InspectorTab key={"style"}>
+				{ titleSettings() }
+				{ enableDescription && ( descriptionSettings() ) }
+				{ summarySettings() }
+				{ starSettings() }
+				{ overallPadding() }
+				</InspectorTab>
 				<InspectorTab key={"advance"}>
 				</InspectorTab>
 			</InspectorTabs>
