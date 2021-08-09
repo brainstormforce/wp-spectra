@@ -197,26 +197,12 @@ const TypographyControl = (props) => {
 		);
 	}
 
-	if (true !== disableFontFamily && true !== disableFontSize) {
-		fontAdvancedControls = (
-			<ToggleControl
-				checked={showAdvancedControls}
-				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
-			/>
-		);
-	} else {
-		showAdvancedFontControls = (
-			<>
-				{fontFamily}
-				{fontSize}
-				{fontWeight}
-				<div className="uag-typography-transform-decoration-wrap">
-					{transform}
-					{decoration}
-				</div>
-			</>
-		);
-	}
+	fontAdvancedControls = (
+		<ToggleControl
+			checked={showAdvancedControls}
+			onChange={() => toggleAdvancedControls(!showAdvancedControls)}
+		/>
+	);
 
 	if (showAdvancedControls === true) {
 		showAdvancedFontControls = (
@@ -232,14 +218,12 @@ const TypographyControl = (props) => {
 		);
 	}
 
-	if (true !== disableFontFamily && true !== disableFontSize) {
-		fontTypoAdvancedControls = (
-			<div className="uag-typography-option-actions">
-				<span className="uag-typography-main-label">{props.label}</span>
-				{fontAdvancedControls}
-			</div>
-		);
-	}
+	fontTypoAdvancedControls = (
+		<div className="uag-typography-option-actions">
+			<span className="uag-typography-main-label">{props.label}</span>
+			{fontAdvancedControls}
+		</div>
+	);
 
 	return (
 		<div className={`uag-typography-options ${activeClass}`}>
