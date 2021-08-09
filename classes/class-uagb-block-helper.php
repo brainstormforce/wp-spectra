@@ -1235,10 +1235,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['vPadding'] : $attr['topPadding'];
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['vPadding'] : $attr['bottomPadding'];
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['hPadding'] : $attr['leftPadding'];
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['hPadding'] : $attr['rightPadding'];
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
 
 			if ( ! $attr['inheritFromTheme'] ) {
 				$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
