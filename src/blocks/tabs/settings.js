@@ -380,7 +380,7 @@ const Settings = (props) => {
 		};
 		return (
 			<PanelBody
-				title={__("Tabs Style", "ultimate-addons-for-gutenberg")}
+				title={__("Layout", "ultimate-addons-for-gutenberg")}
 				initialOpen={true}
 			>
 				<ResponsiveSelectControl
@@ -472,7 +472,7 @@ const Settings = (props) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Tab Text Alignment",
+						"Text Alignment",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -574,59 +574,227 @@ const Settings = (props) => {
 								setAttributes({ iconPosition: value })
 							}
 						/>
-						<Range
-							label={__(
-								"Icon Spacing",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={iconSpacing}
-							onChange={(value) =>
-								setAttributes({ iconSpacing: value })
-							}
-							min={0}
-							max={500}
-							displayUnit={false}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Icon Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={iconColor}
-							onColorChange={(value) =>
-								setAttributes({ iconColor: value })
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Active Icon Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={activeiconColor}
-							onColorChange={(value) =>
-								setAttributes({ activeiconColor: value })
-							}
-						/>
-						<Range
-							label={__(
-								"Icon Size",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={iconSize}
-							onChange={(value) =>
-								setAttributes({ iconSize: value })
-							}
-							min={0}
-							max={500}
-							displayUnit={false}
-						/>
 					</>
 				)}
+			</PanelBody>
+		);
+	};
+	const tabBorderSettings = () => {
+		return (
+			<PanelBody
+				title={__("Border", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: "borderStyle",
+						title: __("Style", "ultimate-addons-for-gutenberg"),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: "borderWidth",
+						title: __("Width", "ultimate-addons-for-gutenberg"),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: "borderRadius",
+						title: __("Radius", "ultimate-addons-for-gutenberg"),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: "borderColor",
+						title: __("Color", "ultimate-addons-for-gutenberg"),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: "borderHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+				/>
+			</PanelBody>
+		);
+	};
+	const tabBodySettings = () => {
+		return (
+			<PanelBody
+				title={__("Body", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<AdvancedPopColorControl
+					label={__(
+						"Background Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={bodyBgColor}
+					onColorChange={(value) =>
+						setAttributes({ bodyBgColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={bodyTextColor}
+					onColorChange={(value) =>
+						setAttributes({ bodyTextColor: value })
+					}
+				/>
 				<SpacingControl
 					{...props}
-					label={__("Title Margin", "ultimate-addons-for-gutenberg")}
+					label={__("Margin", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: tabBodyTopMargin,
+						label: "tabBodyTopMargin",
+					}}
+					valueRight={{
+						value: tabBodyRightMargin,
+						label: "tabBodyRightMargin",
+					}}
+					valueBottom={{
+						value: tabBodyBottomMargin,
+						label: "tabBodyBottomMargin",
+					}}
+					valueLeft={{
+						value: tabBodyLeftMargin,
+						label: "tabBodyLeftMargin",
+					}}
+					valueTopTablet={{
+						value: tabBodyTopMarginTablet,
+						label: "tabBodyTopMarginTablet",
+					}}
+					valueRightTablet={{
+						value: tabBodyRightMarginTablet,
+						label: "tabBodyRightMarginTablet",
+					}}
+					valueBottomTablet={{
+						value: tabBodyBottomMarginTablet,
+						label: "tabBodyBottomMarginTablet",
+					}}
+					valueLeftTablet={{
+						value: tabBodyLeftMarginTablet,
+						label: "tabBodyLeftMarginTablet",
+					}}
+					valueTopMobile={{
+						value: tabBodyTopMarginMobile,
+						label: "tabBodyTopMarginMobile",
+					}}
+					valueRightMobile={{
+						value: tabBodyRightMarginMobile,
+						label: "tabBodyRightMarginMobile",
+					}}
+					valueBottomMobile={{
+						value: tabBodyBottomMarginMobile,
+						label: "tabBodyBottomMarginMobile",
+					}}
+					valueLeftMobile={{
+						value: tabBodyLeftMarginMobile,
+						label: "tabBodyLeftMarginMobile",
+					}}
+					unit={{
+						value: tabBodyMarginUnit,
+						label: "tabBodyMarginUnit",
+					}}
+					mUnit={{
+						value: mobiletabBodyMarginUnit,
+						label: "mobiletabBodyMarginUnit",
+					}}
+					tUnit={{
+						value: tablettabBodyMarginUnit,
+						label: "tablettabBodyMarginUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabBodyMarginLink,
+						label: "tabBodyMarginLink",
+					}}
+				/>
+				<SpacingControl
+					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: tabBodyTopPadding,
+						label: "tabBodyTopPadding",
+					}}
+					valueRight={{
+						value: tabBodyRightPadding,
+						label: "tabBodyRightPadding",
+					}}
+					valueBottom={{
+						value: tabBodyBottomPadding,
+						label: "tabBodyBottomPadding",
+					}}
+					valueLeft={{
+						value: tabBodyLeftPadding,
+						label: "tabBodyLeftPadding",
+					}}
+					valueTopTablet={{
+						value: tabBodyTopPaddingTablet,
+						label: "tabBodyTopPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: tabBodyRightPaddingTablet,
+						label: "tabBodyRightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: tabBodyBottomPaddingTablet,
+						label: "tabBodyBottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: tabBodyLeftPaddingTablet,
+						label: "tabBodyLeftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: tabBodyTopPaddingMobile,
+						label: "tabBodyTopPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: tabBodyRightPaddingMobile,
+						label: "tabBodyRightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: tabBodyBottomPaddingMobile,
+						label: "tabBodyBottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: tabBodyLeftPaddingMobile,
+						label: "tabBodyLeftPaddingMobile",
+					}}
+					unit={{
+						value: tabBodyPaddingUnit,
+						label: "tabBodyPaddingUnit",
+					}}
+					mUnit={{
+						value: mobiletabBodyPaddingUnit,
+						label: "mobiletabBodyPaddingUnit",
+					}}
+					tUnit={{
+						value: tablettabBodyPaddingUnit,
+						label: "tablettabBodyPaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: tabBodyPaddingLink,
+						label: "tabBodyPaddingLink",
+					}}
+				/>
+			</PanelBody>
+		);
+	};
+
+	const tabTitleStyle = () => {
+		return (
+			<PanelBody
+				title={__("Title", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<SpacingControl
+					{...props}
+					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabTitleTopMargin,
 						label: "tabTitleTopMargin",
@@ -696,7 +864,7 @@ const Settings = (props) => {
 				/>
 				<SpacingControl
 					{...props}
-					label={__("Title Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: tabTitleTopPadding,
 						label: "tabTitleTopPadding",
@@ -766,7 +934,7 @@ const Settings = (props) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						"Title Background Color",
+						"Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={headerBgColor}
@@ -775,10 +943,7 @@ const Settings = (props) => {
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__(
-						"Title Text Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headerTextColor}
 					onColorChange={(value) =>
 						setAttributes({ headerTextColor: value })
@@ -869,228 +1034,62 @@ const Settings = (props) => {
 			</PanelBody>
 		);
 	};
-	const tabBorderSettings = () => {
-		return (
-			<PanelBody
-				title={__("Border Settings", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
-			>
-				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: borderStyle,
-						label: "borderStyle",
-						title: __("Style", "ultimate-addons-for-gutenberg"),
-					}}
-					borderWidth={{
-						value: borderWidth,
-						label: "borderWidth",
-						title: __("Width", "ultimate-addons-for-gutenberg"),
-					}}
-					borderRadius={{
-						value: borderRadius,
-						label: "borderRadius",
-						title: __("Radius", "ultimate-addons-for-gutenberg"),
-					}}
-					borderColor={{
-						value: borderColor,
-						label: "borderColor",
-						title: __("Color", "ultimate-addons-for-gutenberg"),
-					}}
-					borderHoverColor={{
-						value: borderHoverColor,
-						label: "borderHoverColor",
-						title: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-				/>
-			</PanelBody>
-		);
-	};
-	const tabBodySettings = () => {
-		return (
-			<PanelBody
-				title={__(
-					"Tabs Body Settings",
-					"ultimate-addons-for-gutenberg"
-				)}
-				initialOpen={false}
-			>
-				<AdvancedPopColorControl
-					label={__(
-						"Body Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={bodyBgColor}
-					onColorChange={(value) =>
-						setAttributes({ bodyBgColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Body Text Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={bodyTextColor}
-					onColorChange={(value) =>
-						setAttributes({ bodyTextColor: value })
-					}
-				/>
-				<SpacingControl
-					{...props}
-					label={__(
-						"Tab Body Margin",
-						"ultimate-addons-for-gutenberg"
-					)}
-					valueTop={{
-						value: tabBodyTopMargin,
-						label: "tabBodyTopMargin",
-					}}
-					valueRight={{
-						value: tabBodyRightMargin,
-						label: "tabBodyRightMargin",
-					}}
-					valueBottom={{
-						value: tabBodyBottomMargin,
-						label: "tabBodyBottomMargin",
-					}}
-					valueLeft={{
-						value: tabBodyLeftMargin,
-						label: "tabBodyLeftMargin",
-					}}
-					valueTopTablet={{
-						value: tabBodyTopMarginTablet,
-						label: "tabBodyTopMarginTablet",
-					}}
-					valueRightTablet={{
-						value: tabBodyRightMarginTablet,
-						label: "tabBodyRightMarginTablet",
-					}}
-					valueBottomTablet={{
-						value: tabBodyBottomMarginTablet,
-						label: "tabBodyBottomMarginTablet",
-					}}
-					valueLeftTablet={{
-						value: tabBodyLeftMarginTablet,
-						label: "tabBodyLeftMarginTablet",
-					}}
-					valueTopMobile={{
-						value: tabBodyTopMarginMobile,
-						label: "tabBodyTopMarginMobile",
-					}}
-					valueRightMobile={{
-						value: tabBodyRightMarginMobile,
-						label: "tabBodyRightMarginMobile",
-					}}
-					valueBottomMobile={{
-						value: tabBodyBottomMarginMobile,
-						label: "tabBodyBottomMarginMobile",
-					}}
-					valueLeftMobile={{
-						value: tabBodyLeftMarginMobile,
-						label: "tabBodyLeftMarginMobile",
-					}}
-					unit={{
-						value: tabBodyMarginUnit,
-						label: "tabBodyMarginUnit",
-					}}
-					mUnit={{
-						value: mobiletabBodyMarginUnit,
-						label: "mobiletabBodyMarginUnit",
-					}}
-					tUnit={{
-						value: tablettabBodyMarginUnit,
-						label: "tablettabBodyMarginUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: tabBodyMarginLink,
-						label: "tabBodyMarginLink",
-					}}
-				/>
-				<SpacingControl
-					{...props}
-					label={__("Body Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
-						value: tabBodyTopPadding,
-						label: "tabBodyTopPadding",
-					}}
-					valueRight={{
-						value: tabBodyRightPadding,
-						label: "tabBodyRightPadding",
-					}}
-					valueBottom={{
-						value: tabBodyBottomPadding,
-						label: "tabBodyBottomPadding",
-					}}
-					valueLeft={{
-						value: tabBodyLeftPadding,
-						label: "tabBodyLeftPadding",
-					}}
-					valueTopTablet={{
-						value: tabBodyTopPaddingTablet,
-						label: "tabBodyTopPaddingTablet",
-					}}
-					valueRightTablet={{
-						value: tabBodyRightPaddingTablet,
-						label: "tabBodyRightPaddingTablet",
-					}}
-					valueBottomTablet={{
-						value: tabBodyBottomPaddingTablet,
-						label: "tabBodyBottomPaddingTablet",
-					}}
-					valueLeftTablet={{
-						value: tabBodyLeftPaddingTablet,
-						label: "tabBodyLeftPaddingTablet",
-					}}
-					valueTopMobile={{
-						value: tabBodyTopPaddingMobile,
-						label: "tabBodyTopPaddingMobile",
-					}}
-					valueRightMobile={{
-						value: tabBodyRightPaddingMobile,
-						label: "tabBodyRightPaddingMobile",
-					}}
-					valueBottomMobile={{
-						value: tabBodyBottomPaddingMobile,
-						label: "tabBodyBottomPaddingMobile",
-					}}
-					valueLeftMobile={{
-						value: tabBodyLeftPaddingMobile,
-						label: "tabBodyLeftPaddingMobile",
-					}}
-					unit={{
-						value: tabBodyPaddingUnit,
-						label: "tabBodyPaddingUnit",
-					}}
-					mUnit={{
-						value: mobiletabBodyPaddingUnit,
-						label: "mobiletabBodyPaddingUnit",
-					}}
-					tUnit={{
-						value: tablettabBodyPaddingUnit,
-						label: "tablettabBodyPaddingUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: tabBodyPaddingLink,
-						label: "tabBodyPaddingLink",
-					}}
-				/>
-			</PanelBody>
-		);
-	};
 
+	const tabIconStyle = () => {
+		if (!showIcon) {
+			return "";
+		}
+
+		return (
+			<PanelBody
+				title={__("Icon", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<Range
+					label={__("Spacing", "ultimate-addons-for-gutenberg")}
+					setAttributes={setAttributes}
+					value={iconSpacing}
+					onChange={(value) => setAttributes({ iconSpacing: value })}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={iconColor}
+					onColorChange={(value) =>
+						setAttributes({ iconColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Active Color", "ultimate-addons-for-gutenberg")}
+					colorValue={activeiconColor}
+					onColorChange={(value) =>
+						setAttributes({ activeiconColor: value })
+					}
+				/>
+				<Range
+					label={__("Size", "ultimate-addons-for-gutenberg")}
+					setAttributes={setAttributes}
+					value={iconSize}
+					onChange={(value) => setAttributes({ iconSize: value })}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+			</PanelBody>
+		);
+	};
 	return (
 		<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs>
 				<InspectorTab key={"general"}>
 					{tabStyleSettings()}
 					{tabTitleSettings()}
+				</InspectorTab>
+				<InspectorTab key={"style"}>
+					{tabTitleStyle()}
+					{tabIconStyle()}
 					{tabBodySettings()}
 					{tabBorderSettings()}
 				</InspectorTab>
