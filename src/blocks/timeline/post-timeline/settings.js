@@ -497,40 +497,6 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	const imageSettings = () => {
-		return (
-			<PanelBody
-				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<ToggleControl
-					label={ __(
-						'Display Featured Image',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ displayPostImage }
-					onChange={ () =>
-						setAttributes( {
-							displayPostImage: ! displayPostImage,
-						} )
-					}
-				/>
-				{ displayPostImage && (
-					<SelectControl
-						label={ __(
-							'Featured Image Style',
-							'ultimate-addons-for-gutenberg'
-						) }
-						options={ uagb_blocks_info.image_sizes }
-						value={ imageSize }
-						onChange={ ( value ) =>
-							props.setAttributes( { imageSize: value } )
-						}
-					/>
-				) }
-			</PanelBody>
-		);
-	};
 	const contentSettings = () => {
 		return (
 			<PanelBody
@@ -695,391 +661,6 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	const timelineItemSettings = () => {
-		return (
-			<PanelBody
-				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<SelectControl
-					label={ __(
-						'Heading Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'SPAN',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ props.attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: headLoadGoogleFonts,
-						label: 'headLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: headFontFamily,
-						label: 'headFontFamily',
-					} }
-					fontWeight={ {
-						value: headFontWeight,
-						label: 'headFontWeight',
-					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
-					} }
-					fontSizeType={ {
-						value: headFontSizeType,
-						label: 'headFontSizeType',
-					} }
-					fontSize={ { value: headFontSize, label: 'headFontSize' } }
-					fontSizeMobile={ {
-						value: headFontSizeMobile,
-						label: 'headFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: headFontSizeTablet,
-						label: 'headFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: headLineHeightType,
-						label: 'headLineHeightType',
-					} }
-					lineHeight={ {
-						value: headLineHeight,
-						label: 'headLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: headLineHeightMobile,
-						label: 'headLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: headLineHeightTablet,
-						label: 'headLineHeightTablet',
-					} }
-				/>
-				{ displayPostExcerpt && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ props.attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: subHeadLoadGoogleFonts,
-								label: 'subHeadLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: subHeadFontFamily,
-								label: 'subHeadFontFamily',
-							} }
-							fontWeight={ {
-								value: subHeadFontWeight,
-								label: 'subHeadFontWeight',
-							} }
-							fontSubset={ {
-								value: subHeadFontSubset,
-								label: 'subHeadFontSubset',
-							} }
-							fontSizeType={ {
-								value: subHeadFontSizeType,
-								label: 'subHeadFontSizeType',
-							} }
-							fontSize={ {
-								value: subHeadFontSize,
-								label: 'subHeadFontSize',
-							} }
-							fontSizeMobile={ {
-								value: subHeadFontSizeMobile,
-								label: 'subHeadFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: subHeadFontSizeTablet,
-								label: 'subHeadFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: subHeadLineHeightType,
-								label: 'subHeadLineHeightType',
-							} }
-							lineHeight={ {
-								value: subHeadLineHeight,
-								label: 'subHeadLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: subHeadLineHeightMobile,
-								label: 'subHeadLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: subHeadLineHeightTablet,
-								label: 'subHeadLineHeightTablet',
-							} }
-						/>
-					</>
-				) }
-
-				{ displayPostDate && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ props.attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: dateLoadGoogleFonts,
-								label: 'dateLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: dateFontFamily,
-								label: 'dateFontFamily',
-							} }
-							fontWeight={ {
-								value: dateFontWeight,
-								label: 'dateFontWeight',
-							} }
-							fontSubset={ {
-								value: dateFontSubset,
-								label: 'dateFontSubset',
-							} }
-							fontSizeType={ {
-								value: dateFontsizeType,
-								label: 'dateFontsizeType',
-							} }
-							fontSize={ {
-								value: dateFontsize,
-								label: 'dateFontsize',
-							} }
-							fontSizeMobile={ {
-								value: dateFontsizeMobile,
-								label: 'dateFontsizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: dateFontsizeTablet,
-								label: 'dateFontsizeTablet',
-							} }
-							lineHeightType={ {
-								value: dateLineHeightType,
-								label: 'dateLineHeightType',
-							} }
-							lineHeight={ {
-								value: dateLineHeight,
-								label: 'dateLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: dateLineHeightMobile,
-								label: 'dateLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: dateLineHeightTablet,
-								label: 'dateLineHeightTablet',
-							} }
-						/>
-					</>
-				) }
-
-				{ displayPostAuthor && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'Author', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: authorLoadGoogleFonts,
-								label: 'authorLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: authorFontFamily,
-								label: 'authorFontFamily',
-							} }
-							fontWeight={ {
-								value: authorFontWeight,
-								label: 'authorFontWeight',
-							} }
-							fontSubset={ {
-								value: authorFontSubset,
-								label: 'authorFontSubset',
-							} }
-							fontSizeType={ {
-								value: authorFontSizeType,
-								label: 'authorFontSizeType',
-							} }
-							fontSize={ {
-								value: authorFontSize,
-								label: 'authorFontSize',
-							} }
-							fontSizeMobile={ {
-								value: authorFontSizeMobile,
-								label: 'authorFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: authorFontSizeTablet,
-								label: 'authorFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: authorLineHeightType,
-								label: 'authorLineHeightType',
-							} }
-							lineHeight={ {
-								value: authorLineHeight,
-								label: 'authorLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: authorLineHeightMobile,
-								label: 'authorLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: authorLineHeightTablet,
-								label: 'authorLineHeightTablet',
-							} }
-						/>
-					</>
-				) }
-
-				{ displayPostLink && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<h2>
-							{ __( 'CTA', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: ctaLoadGoogleFonts,
-								label: 'ctaLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: ctaFontFamily,
-								label: 'ctaFontFamily',
-							} }
-							fontWeight={ {
-								value: ctaFontWeight,
-								label: 'ctaFontWeight',
-							} }
-							fontSubset={ {
-								value: ctaFontSubset,
-								label: 'ctaFontSubset',
-							} }
-							fontSizeType={ {
-								value: ctaFontSizeType,
-								label: 'ctaFontSizeType',
-							} }
-							fontSize={ {
-								value: ctaFontSize,
-								label: 'ctaFontSize',
-							} }
-							fontSizeMobile={ {
-								value: ctaFontSizeMobile,
-								label: 'ctaFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: ctaFontSizeTablet,
-								label: 'ctaFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: ctaLineHeightType,
-								label: 'ctaLineHeightType',
-							} }
-							lineHeight={ {
-								value: ctaLineHeight,
-								label: 'ctaLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: ctaLineHeightMobile,
-								label: 'ctaLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: ctaLineHeightTablet,
-								label: 'ctaLineHeightTablet',
-							} }
-						/>
-					</>
-				) }
-				<hr className="uagb-editor__separator" />
-				<Range
-					label={__(
-						"Rounded Corners",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={borderRadius}
-					onChange={(value) =>
-						setAttributes({ borderRadius: value })
-					}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/>
-			</PanelBody>
-		);
-	};
 	const connectorSettings = () => {
 		return (
 			<PanelBody
@@ -1150,7 +731,7 @@ const Settings = ( props ) => {
 		const iconColorSettings = (
 			<PanelBody
 				title={ __(
-					'Color Settings',
+					'Color',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
@@ -1228,7 +809,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __(
-					'Connector Colors',
+					'Connector',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
@@ -1268,66 +849,378 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	const colorSettings = () => {
-		return (
-			<PanelBody
-			title={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+	const headingStyleSettings = () => {
+		return ( <PanelBody
+				title={ __(
+					'Title',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
 			>
+				<SelectControl
+					label={ __(
+						'Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ headingTag }
+					onChange={ ( value ) =>
+						setAttributes( { headingTag: value } )
+					}
+					options={ [
+						{
+							value: 'h1',
+							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h2',
+							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h3',
+							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h4',
+							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h5',
+							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h6',
+							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'p',
+							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'span',
+							label: __(
+								'SPAN',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
 				<AdvancedPopColorControl
-					label={__("Background Color", "ultimate-addons-for-gutenberg")}
-					colorValue={backgroundColor ? backgroundColor : ""}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={headingColor ? headingColor : ""}
 					onColorChange={(value) =>
-						setAttributes({ backgroundColor: value })
+						setAttributes({ headingColor: value })
 					}
 				/>
-				{ displayPostDate && (
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: headLoadGoogleFonts,
+						label: 'headLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: headFontFamily,
+						label: 'headFontFamily',
+					} }
+					fontWeight={ {
+						value: headFontWeight,
+						label: 'headFontWeight',
+					} }
+					fontSubset={ {
+						value: headFontSubset,
+						label: 'headFontSubset',
+					} }
+					fontSizeType={ {
+						value: headFontSizeType,
+						label: 'headFontSizeType',
+					} }
+					fontSize={ { value: headFontSize, label: 'headFontSize' } }
+					fontSizeMobile={ {
+						value: headFontSizeMobile,
+						label: 'headFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: headFontSizeTablet,
+						label: 'headFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: headLineHeightType,
+						label: 'headLineHeightType',
+					} }
+					lineHeight={ {
+						value: headLineHeight,
+						label: 'headLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: headLineHeightMobile,
+						label: 'headLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: headLineHeightTablet,
+						label: 'headLineHeightTablet',
+					} }
+				/>
+			</PanelBody>)
+	};
+	const authorStyleSettings = () => {
+		return (<PanelBody
+				title={ __(
+					'Author',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
+			{ displayPostAuthor && (
+				<>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={authorColor ? authorColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ authorColor: value })
+					}
+				/>
+				{ displayPostAuthor && (
+					<>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: authorLoadGoogleFonts,
+							label: 'authorLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: authorFontFamily,
+							label: 'authorFontFamily',
+						} }
+						fontWeight={ {
+							value: authorFontWeight,
+							label: 'authorFontWeight',
+						} }
+						fontSubset={ {
+							value: authorFontSubset,
+							label: 'authorFontSubset',
+						} }
+						fontSizeType={ {
+							value: authorFontSizeType,
+							label: 'authorFontSizeType',
+						} }
+						fontSize={ {
+							value: authorFontSize,
+							label: 'authorFontSize',
+						} }
+						fontSizeMobile={ {
+							value: authorFontSizeMobile,
+							label: 'authorFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: authorFontSizeTablet,
+							label: 'authorFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: authorLineHeightType,
+							label: 'authorLineHeightType',
+						} }
+						lineHeight={ {
+							value: authorLineHeight,
+							label: 'authorLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: authorLineHeightMobile,
+							label: 'authorLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: authorLineHeightTablet,
+							label: 'authorLineHeightTablet',
+						} }
+					/>
+					</>
+				) }
+				</>
+				) }
+			</PanelBody>)
+	};
+	const contentStyleSettings = () => {
+		return (<PanelBody
+			title={ __(
+				'Content',
+				'ultimate-addons-for-gutenberg'
+			) }
+			initialOpen={ true }
+		>
+			{ displayPostExcerpt && (
+			<>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={subHeadingColor ? subHeadingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ subHeadingColor: value })
+					}
+				/>
+				{ displayPostExcerpt && (
+				<>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: subHeadLoadGoogleFonts,
+						label: 'subHeadLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: subHeadFontFamily,
+						label: 'subHeadFontFamily',
+					} }
+					fontWeight={ {
+						value: subHeadFontWeight,
+						label: 'subHeadFontWeight',
+					} }
+					fontSubset={ {
+						value: subHeadFontSubset,
+						label: 'subHeadFontSubset',
+					} }
+					fontSizeType={ {
+						value: subHeadFontSizeType,
+						label: 'subHeadFontSizeType',
+					} }
+					fontSize={ {
+						value: subHeadFontSize,
+						label: 'subHeadFontSize',
+					} }
+					fontSizeMobile={ {
+						value: subHeadFontSizeMobile,
+						label: 'subHeadFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: subHeadFontSizeTablet,
+						label: 'subHeadFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: subHeadLineHeightType,
+						label: 'subHeadLineHeightType',
+					} }
+					lineHeight={ {
+						value: subHeadLineHeight,
+						label: 'subHeadLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: subHeadLineHeightMobile,
+						label: 'subHeadLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: subHeadLineHeightTablet,
+						label: 'subHeadLineHeightTablet',
+					} }
+				/>
+			</>
+			) }
+			</>
+		) }
+		</PanelBody>)
+	};
+	const dateStyleSettings = () => {
+		return (<PanelBody
+			title={ __(
+				'Date',
+				'ultimate-addons-for-gutenberg'
+			) }
+			initialOpen={ true }
+		>
+			{ displayPostDate && (
 					<>
 						<AdvancedPopColorControl
-							label={__("Date Color", "ultimate-addons-for-gutenberg")}
+							label={__("Color", "ultimate-addons-for-gutenberg")}
 							colorValue={dateColor ? dateColor : ""}
 							onColorChange={(value) =>
 								setAttributes({ dateColor: value })
 							}
 						/>
-					</>
-				) }
-				<>
-					<AdvancedPopColorControl
-						label={__("Heading Color", "ultimate-addons-for-gutenberg")}
-						colorValue={headingColor ? headingColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ headingColor: value })
-						}
-					/>
-				</>
-				{ displayPostAuthor && (
-					<>
-						<AdvancedPopColorControl
-							label={__("Author Color", "ultimate-addons-for-gutenberg")}
-							colorValue={authorColor ? authorColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ authorColor: value })
-							}
+						{ displayPostDate && (
+						<>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ props.attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: dateLoadGoogleFonts,
+								label: 'dateLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: dateFontFamily,
+								label: 'dateFontFamily',
+							} }
+							fontWeight={ {
+								value: dateFontWeight,
+								label: 'dateFontWeight',
+							} }
+							fontSubset={ {
+								value: dateFontSubset,
+								label: 'dateFontSubset',
+							} }
+							fontSizeType={ {
+								value: dateFontsizeType,
+								label: 'dateFontsizeType',
+							} }
+							fontSize={ {
+								value: dateFontsize,
+								label: 'dateFontsize',
+							} }
+							fontSizeMobile={ {
+								value: dateFontsizeMobile,
+								label: 'dateFontsizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: dateFontsizeTablet,
+								label: 'dateFontsizeTablet',
+							} }
+							lineHeightType={ {
+								value: dateLineHeightType,
+								label: 'dateLineHeightType',
+							} }
+							lineHeight={ {
+								value: dateLineHeight,
+								label: 'dateLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: dateLineHeightMobile,
+								label: 'dateLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: dateLineHeightTablet,
+								label: 'dateLineHeightTablet',
+							} }
 						/>
+						</>
+					) }
 					</>
 				) }
-				{ displayPostExcerpt && (
+		</PanelBody>)
+	};
+	const ctaStyleSettings = () => {
+		return (<PanelBody
+			title={ __(
+				'CTA',
+				'ultimate-addons-for-gutenberg'
+			) }
+			initialOpen={ true }
+		>
+			{ displayPostLink && (
 					<>
 						<AdvancedPopColorControl
-							label={__("Content Color", "ultimate-addons-for-gutenberg")}
-							colorValue={subHeadingColor ? subHeadingColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ subHeadingColor: value })
-							}
-						/>
-					</>
-				) }
-
-				{ displayPostLink && (
-					<>
-						<AdvancedPopColorControl
-							label={__("CTA Color", "ultimate-addons-for-gutenberg")}
+							label={__("Color", "ultimate-addons-for-gutenberg")}
 							colorValue={ctaColor ? ctaColor : ""}
 							onColorChange={(value) =>
 								setAttributes({ ctaColor: value })
@@ -1339,9 +1232,109 @@ const Settings = ( props ) => {
 							onColorChange={(value) =>
 								setAttributes({ ctaBackground: value })
 							}
+						/>	
+					{ displayPostLink && (
+						<>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: ctaLoadGoogleFonts,
+								label: 'ctaLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: ctaFontFamily,
+								label: 'ctaFontFamily',
+							} }
+							fontWeight={ {
+								value: ctaFontWeight,
+								label: 'ctaFontWeight',
+							} }
+							fontSubset={ {
+								value: ctaFontSubset,
+								label: 'ctaFontSubset',
+							} }
+							fontSizeType={ {
+								value: ctaFontSizeType,
+								label: 'ctaFontSizeType',
+							} }
+							fontSize={ {
+								value: ctaFontSize,
+								label: 'ctaFontSize',
+							} }
+							fontSizeMobile={ {
+								value: ctaFontSizeMobile,
+								label: 'ctaFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: ctaFontSizeTablet,
+								label: 'ctaFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: ctaLineHeightType,
+								label: 'ctaLineHeightType',
+							} }
+							lineHeight={ {
+								value: ctaLineHeight,
+								label: 'ctaLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: ctaLineHeightMobile,
+								label: 'ctaLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: ctaLineHeightTablet,
+								label: 'ctaLineHeightTablet',
+							} }
 						/>
+						</>
+					) }
 					</>
 				) }
+		</PanelBody>)
+	};
+	const backgroundColorSettings = () => {
+		return (
+			<PanelBody
+			title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
+			>
+				<ToggleControl
+					label={ __(
+						'Display Featured Image',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ displayPostImage }
+					onChange={ () =>
+						setAttributes( {
+							displayPostImage: ! displayPostImage,
+						} )
+					}
+				/>
+				{ displayPostImage && (
+					<SelectControl
+						label={ __(
+							'Featured Image Style',
+							'ultimate-addons-for-gutenberg'
+						) }
+						options={ uagb_blocks_info.image_sizes }
+						value={ imageSize }
+						onChange={ ( value ) =>
+							props.setAttributes( { imageSize: value } )
+						}
+					/>
+				) }
+				<AdvancedPopColorControl
+					label={__("Background Color", "ultimate-addons-for-gutenberg")}
+					colorValue={backgroundColor ? backgroundColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ backgroundColor: value })
+					}
+				/>
 			</PanelBody>
 		);
 	};
@@ -1351,6 +1344,20 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<Range
+					label={__(
+						"Rounded Corners",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={borderRadius}
+					onChange={(value) =>
+						setAttributes({ borderRadius: value })
+					}
+					min={0}
+					max={50}
+					displayUnit={false}
+				/>
 				<Range
 					label={__(
 						"Block Padding",
@@ -1494,17 +1501,20 @@ const Settings = ( props ) => {
 				<InspectorTab key={"general"}>
 					{ querySettings() }
 					{ layoutSettings() }
-					{ imageSettings() }
 					{ contentSettings() }
-					{ timelineItemSettings() }
 					{ connectorSettings() }
 				</InspectorTab>
 				<InspectorTab key={"style"}>
+					{ headingStyleSettings() }
+					{ authorStyleSettings() }
+					{ contentStyleSettings() }
+					{ dateStyleSettings() }
+					{ ctaStyleSettings() }
+					{ backgroundColorSettings() }
 					{ connectorColorsSettings() }
-					{ colorSettings() }
+					{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}>
-					{ spacingSettings() }
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
