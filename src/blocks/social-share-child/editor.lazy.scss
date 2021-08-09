@@ -12,36 +12,3 @@
 	margin-top: 0;
 	margin-left: 20px;
 }
-
-.uagb-bg-image {
-    border-radius: 2px;
-    background-color: #f0f0f0;
-    min-height: 90px;
-    padding: 8px 0;
-    text-align: center;
-    display: block;
-    width: 100%;
-    transition: all .1s ease-out;
-    box-shadow: 0 0 0 0 #0085ba;
-    margin-top:10px;
-    button.components-button.is-secondary {
-        margin-top:20px;
-        margin-right:30px;
-    }
-    button.components-button.uagb-rm-btn.is-link.is-destructive {
-        margin-top:28px
-    }
-    .components-button:focus:not(:disabled){
-        box-shadow:0 0;
-        color:0 0;
-    }
-    
-    .components-button.is-secondary:hover:not(:disabled), .components-button.is-tertiary:hover:not(:disabled){
-        box-shadow:0 0;
-        color:0 0;
-    }
-    .components-button.is-secondary, .components-button.is-tertiary{
-        box-shadow:0 0;
-        color:0 0;
-    }
-}
