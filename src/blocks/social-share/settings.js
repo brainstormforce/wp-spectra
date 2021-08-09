@@ -158,7 +158,16 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				<hr className="uagb-editor__separator" />
+			</PanelBody>
+		);
+	};
+
+	const spacingSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
 				<ResponsiveSlider
 					label={__(
 						"Size",
@@ -211,7 +220,6 @@ const Settings = ( props ) => {
 					max={500}
 					displayUnit={false}
 				/>
-				<hr className="uagb-editor__separator" />
 				<Range
 					label={__(
 						"Gap between Items",
@@ -234,8 +242,9 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general","advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>{ generalSettings() }</InspectorTab>
+				<InspectorTab key={"style"}>{ spacingSettings() }</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>

@@ -417,9 +417,11 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
-			<InspectorTabs tabs={["general","advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 					{ generalSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
 					{ iconColorSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
