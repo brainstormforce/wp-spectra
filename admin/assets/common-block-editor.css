@@ -19,10 +19,6 @@
 	transition: all 0.2s;
 }
 
-button.components-button.components-button.components-tab-panel__tabs-item.uagb-responsive-tabs {
-	box-shadow: inset 0 0 0 1px #fff;
-}
-
 hr.uagb-editor__separator {
 	border-bottom: 1px solid #e2e4e7;
 }
@@ -204,14 +200,14 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
-	width: 12px;
-	height: 11px;
+	width: 10px;
+	height: 10px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
 	border: 0;
 	border-bottom: 0;
-	padding: 4px 4px 0px 0px;
+	padding: 4px;
 	margin-bottom: 0;
 	outline: 0;
 	width: auto;
@@ -219,8 +215,8 @@ hr.uagb-editor__separator {
 	background: transparent;
 	color: #999;
 	display: inline-block;
-	height: 20px;
-	width: 20px;
+	height: 22px;
+	width: 22px;
 	margin-right: 3px;
 }
 
@@ -293,61 +289,6 @@ hr.uagb-editor__separator {
 	display: block;
 	margin-bottom: -34px;
 }
-
-.uagb-box-shadow-advanced {
-	position: relative;
-	padding: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
-	border: 1px solid #e2e4e7;
-	background: #fff;
-	padding: 15px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	position: relative;
-}
-
-.uagb-typography-advanced::before,
-.uagb-box-shadow-advanced::before {
-	position: absolute;
-
-	top: -8px;
-	right: 5%;
-	width: 0;
-	height: 0;
-	margin-left: -10px;
-	border: 8px solid #e2e4e7;
-	border-top: none;
-	border-right-color: transparent;
-	border-left-color: transparent;
-
-	border-bottom-style: solid;
-	line-height: 0;
-
-	content: "";
-}
-
-.uagb-typography-advanced::after,
-.uagb-box-shadow-advanced::after {
-	position: absolute;
-
-	top: -6px;
-	right: 5%;
-	width: 0;
-	height: 0;
-	margin-left: -10px;
-	border: 8px solid #fff;
-	border-top: none;
-	border-right-color: transparent;
-	border-left-color: transparent;
-
-	border-bottom-style: solid;
-	line-height: 0;
-
-	content: "";
-}
-
 .uag-typography-option-actions,
 .uag-box-shadow-option-actions {
 	margin-top: 1.5em;
@@ -404,8 +345,8 @@ hr.uagb-editor__separator {
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
-	left: 0 !important;
-	width: 100%;
+	left: 13px !important;
+	width: 90%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -3505,10 +3446,25 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab
 	.components-panel__body.is-opened
 	> .components-panel__body-title {
+	margin: -10px;
+	padding: 16px 16px 16px 16px;
 	margin-bottom: 16px;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-panel__body-title
+	.components-button.components-panel__body-toggle {
+	padding: 0;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-panel__body-title
+	.components-button.components-panel__body-toggle:focus {
+	box-shadow: none;
 }
 .uagb-inspector-tab .components-panel__body.is-opened {
 	padding: 10px;
+	margin: 16px 0px;
 }
 .uagb-inspector-tab .components-panel__body.is-opened label {
 	font-size: 12px;
@@ -3516,7 +3472,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab
 	.components-panel__body.is-opened
 	.components-select-control__input {
-	font-size: 11px;
+	font-size: 12px;
 }
 .uagb-inspector-tab
 	.components-panel__body.is-opened
@@ -3526,7 +3482,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	padding: 0 15px;
 }
 .uag-responsive-common-button {
-	box-shadow: inset 0 0 0 1px #fff;
+	box-shadow: none;
 	background-color: #bfdeee;
 	color: #007cba;
 	border-radius: 100%;
@@ -3535,11 +3491,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	outline: 0;
 	font-size: 8px;
 	display: inline-block;
-	height: 20px;
-	width: 20px;
+	height: 22px;
+	width: 22px;
 	cursor: pointer;
 	font-weight: 500;
-	padding: 0;
+	padding: 4px;
 	margin: 0;
 	line-height: 0;
 	margin-left: 5px;
@@ -3567,15 +3523,17 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-left: 5px;
 }
 .uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
-	width: 12px;
-	height: 11px;
+	width: 10px;
+	height: 10px;
 }
 .components-base-control
 	.uagb-control__header
 	.uagb-range-control-responsive
 	.uagb-responsive-tabs {
 	margin: 0;
-	padding: 0;
+	padding: 4px;
+	line-height: 0;
+	box-shadow: none;
 }
 .uagb-inspector-tab
 	.components-base-control

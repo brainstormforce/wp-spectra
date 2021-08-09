@@ -97,7 +97,7 @@ const Settings = (props) => {
 		return (
 			<PanelBody
 				title={__("Layout", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				initialOpen={true}
 			>
 				<SelectControl
 					label={__("Content Width", "ultimate-addons-for-gutenberg")}
@@ -555,14 +555,17 @@ const Settings = (props) => {
 
 	const generalSetting = () => {
 		return (
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs>
 				<InspectorTab key={"general"}>
 					{getLayoutPanelBody()}
+				</InspectorTab>
+				<InspectorTab key={"style"}>
 					{getSpacingPanelBody()}
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab key={"advance"}>
+				</InspectorTab>
 			</InspectorTabs>
 		);
 	};
