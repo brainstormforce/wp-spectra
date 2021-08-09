@@ -484,7 +484,6 @@ const Settings = ( props ) => {
 						label: "paddingLink",
 					}}
 				/>
-				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props.parentProps}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
@@ -1199,13 +1198,15 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControlSettings() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 				{ layoutSettings() }
-				{ spacingSettings() }
-				{ backgroundSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
 				{ shapeDividersSettings() }
+				{ backgroundSettings() }
 				{ borderSettings() }
+				{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>

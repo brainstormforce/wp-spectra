@@ -10,6 +10,7 @@ import SpacingControl from "../../components/spacing-control";
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "../../components/responsive-slider";
 
 import {
 	InspectorControls,
@@ -17,9 +18,6 @@ import {
 
 import {
 	PanelBody,
-	RangeControl,
-	TabPanel,
-	Dashicon,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -86,86 +84,30 @@ const Settings = ( props ) => {
 			<PanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 			>
-				<TabPanel
-					className="uagb-size-type-field-tabs uagb-without-size-type"
-					activeClass="active-tab"
-					tabs={ [
-						{
-							name: 'desktop',
-							title: <Dashicon icon="desktop" />,
-							className: 'uagb-desktop-tab uagb-responsive-tabs',
-						},
-						{
-							name: 'tablet',
-							title: <Dashicon icon="tablet" />,
-							className: 'uagb-tablet-tab uagb-responsive-tabs',
-						},
-						{
-							name: 'mobile',
-							title: <Dashicon icon="smartphone" />,
-							className: 'uagb-mobile-tab uagb-responsive-tabs',
-						},
-					] }
-				>
-					{ ( tab ) => {
-						let tabout;
-
-						if ( 'mobile' === tab.name ) {
-							tabout = (
-								<RangeControl
-									label={ __(
-										'Content Width (%)',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ colWidthMobile }
-									onChange={ ( value ) => {
-										setAttributes( {
-											colWidthMobile: value,
-										} );
-									} }
-									min={ 0 }
-									max={ 100 }
-								/>
-							);
-						} else if ( 'tablet' === tab.name ) {
-							tabout = (
-								<RangeControl
-									label={ __(
-										'Content Width (%)',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ colWidthTablet }
-									onChange={ ( value ) => {
-										setAttributes( {
-											colWidthTablet: value,
-										} );
-									} }
-									min={ 0 }
-									max={ 100 }
-								/>
-							);
-						} else {
-							tabout = (
-								<RangeControl
-									label={ __(
-										'Content Width (%)',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ colWidth }
-									onChange={ ( value ) => {
-										setAttributes( {
-											colWidth: value,
-										} );
-									} }
-									min={ 0 }
-									max={ 100 }
-								/>
-							);
-						}
-
-						return <div>{ tabout }</div>;
-					} }
-				</TabPanel>
+			<ResponsiveSlider
+				label={__(
+					"Content Width (%)",
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					desktop: {
+						value: colWidth,
+						label: "colWidth",
+					},
+					tablet: {
+						value: colWidthTablet,
+						label: "colWidthTablet",
+					},
+					mobile: {
+						value: colWidthMobile,
+						label: "colWidthMobile",
+					},
+				}}
+				min={0}
+				max={100}
+				displayUnit={false}
+				setAttributes={setAttributes}
+			/>
 			</PanelBody>
 		);
 	};
@@ -438,12 +380,14 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
 				<InspectorTab key={"general"}>
 				{ layoutSettings() }
-				{ spacingSettings() }
+				</InspectorTab>
+				<InspectorTab key={"style"}>
 				{ backgroundSettings() }
 				{ borderSettings() }
+				{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>
