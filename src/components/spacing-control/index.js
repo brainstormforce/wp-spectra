@@ -12,6 +12,7 @@ import {
 	Dashicon,
 } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
+import { useState } from "@wordpress/element";
 
 const SpacingControl = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -47,12 +48,15 @@ const SpacingControl = (props) => {
 		setAttributes,
 	} = props;
 
+	const [displayResponsive, toggleResponsive] = useState(false);
+
 	const {
 		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
 	} = useDispatch("core/edit-post");
 
 	const customSetPreviewDeviceType = (device) => {
 		setPreviewDeviceType(device);
+		toggleResponsive(!displayResponsive);
 	};
 
 	const onChangeUnits = (value) => {
@@ -165,18 +169,18 @@ const SpacingControl = (props) => {
 	const devices = [
 		{
 			name: "Desktop",
-			title: <Dashicon icon="desktop" />,
+			title: devicesSvgs.desktop,
 			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
 		},
 		{
 			name: "Tablet",
-			title: <Dashicon icon="tablet" />,
+			title: devicesSvgs.tablet,
 			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
 		},
 		{
 			name: "Mobile",
 			key: "mobile",
-			title: <Dashicon icon="smartphone" />,
+			title: devicesSvgs.mobile,
 			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
 		},
 	];
@@ -363,61 +367,86 @@ const SpacingControl = (props) => {
 		</>
 	);
 
+	const commonResponsiveHandler = () => {
+		toggleResponsive(!displayResponsive);
+	};
+
 	return (
 		<div className="components-base-control uagb-spacing-control">
-			<div className="uagb-control__header">
-				{label && <p className={"uagb-control__label"}>{label}</p>}
-				<div className="uagb-control__actions">
-					<div className="uagb-size-type-field-tabs">
+			<div className="uagb-size-type-field-tabs">
+				<div className="uagb-control__header">
+					<div className="uag-responsive-label-wrap">
+						{label && (
+							<label className={"uagb-range-control__label"}>
+								{label}
+							</label>
+						)}
+						{!displayResponsive && (
+							<Button
+								key="uag-responsive-common-button"
+								className="uag-responsive-common-button"
+								onClick={commonResponsiveHandler}
+							>
+								{devicesSvgs[deviceType.toLowerCase()]}
+							</Button>
+						)}
+						{displayResponsive && (
+							<ButtonGroup
+								className="uagb-range-control-responsive components-tab-panel__tabs"
+								aria-label={__(
+									"Device",
+									"ultimate-addons-for-gutenberg"
+								)}
+							>
+								{devices.map(
+									({ name, key, title, itemClass }) => (
+										<Button
+											key={key}
+											className={`components-button components-tab-panel__tabs-item ${itemClass}${
+												name === deviceType
+													? " active-tab"
+													: ""
+											}`}
+											aria-pressed={deviceType === name}
+											onClick={() =>
+												customSetPreviewDeviceType(name)
+											}
+										>
+											{title}
+										</Button>
+									)
+								)}
+							</ButtonGroup>
+						)}
+					</div>
+					<div className="uagb-control__actions">
 						<ButtonGroup
-							className="components-tab-panel__tabs"
+							className="uagb-spacing-control__units"
 							aria-label={__(
-								"Device",
+								"Select Units",
 								"ultimate-addons-for-gutenberg"
 							)}
 						>
-							{devices.map(({ name, key, title, itemClass }) => (
-								<Button
-									key={key}
-									className={`components-button components-tab-panel__tabs-item ${itemClass}${
-										name === deviceType ? " active-tab" : ""
-									}`}
-									aria-pressed={deviceType === name}
-									onClick={() =>
-										customSetPreviewDeviceType(name)
-									}
-								>
-									{title}
-								</Button>
-							))}
+							{onUnitSizeClick(unitSizes)}
 						</ButtonGroup>
 					</div>
-					<ButtonGroup
-						className="uagb-spacing-control__units"
-						aria-label={__(
-							"Select Units",
-							"ultimate-addons-for-gutenberg"
-						)}
-					>
-						{onUnitSizeClick(unitSizes)}
-					</ButtonGroup>
 				</div>
-			</div>
-			{output[deviceType] ? output[deviceType] : output.Desktop}
-			<div className="uagb-spacing-control__input-labels">
-				<span className="uagb-spacing-control__number-label">
-					{__("Top", "ultimate-addons-for-gutenberg")}
-				</span>
-				<span className="uagb-spacing-control__number-label">
-					{__("Right", "ultimate-addons-for-gutenberg")}
-				</span>
-				<span className="uagb-spacing-control__number-label">
-					{__("Bottom", "ultimate-addons-for-gutenberg")}
-				</span>
-				<span className="uagb-spacing-control__number-label">
-					{__("Left", "ultimate-addons-for-gutenberg")}
-				</span>
-				<span className="uagb-spacing-control__number-label"></span>
+				{output[deviceType] ? output[deviceType] : output.Desktop}
+				<div className="uagb-spacing-control__input-labels">
+					<span className="uagb-spacing-control__number-label">
+						{__("Top", "ultimate-addons-for-gutenberg")}
+					</span>
+					<span className="uagb-spacing-control__number-label">
+						{__("Right", "ultimate-addons-for-gutenberg")}
+					</span>
+					<span className="uagb-spacing-control__number-label">
+						{__("Bottom", "ultimate-addons-for-gutenberg")}
+					</span>
+					<span className="uagb-spacing-control__number-label">
+						{__("Left", "ultimate-addons-for-gutenberg")}
+					</span>
+					<span className="uagb-spacing-control__number-label"></span>
+				</div>
 			</div>
 		</div>
 	);

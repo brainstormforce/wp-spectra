@@ -113,9 +113,12 @@ function FontFamilyControl(props) {
 		fontWeightObj.push({ value: item, label: item });
 	});
 
-	const fontSubsetObj = [];
+	let fontSubsetObj = [
+		{ value: "test", label: __("Latin", "ultimate-addons-for-gutenberg") },
+	];
 
 	if (typeof fontSubset == "object") {
+		fontSubsetObj = [];
 		fontSubset.forEach(function (item) {
 			fontSubsetObj.push({ value: item, label: item });
 		});
@@ -189,19 +192,21 @@ function FontFamilyControl(props) {
 					className="react-select-container"
 				/>
 			</div>
-			<div className="uag-typography-font-family-weight">
-				<SelectControl
-					label={__("Weight", "ultimate-addons-for-gutenberg")}
-					value={props.fontWeight.value}
-					onChange={(value) =>
-						props.setAttributes({ [props.fontWeight.label]: value })
-					}
-					options={fontWeightObj}
-					className="react-select-container"
-				/>
-			</div>
-			<div className="uag-typography-font-family-subset">
-				{props.fontSubset.label && props.fontSubset.value && (
+			<div className="uag-typography-weight-subset-wrap">
+				<div className="uag-typography-font-family-weight">
+					<SelectControl
+						label={__("Weight", "ultimate-addons-for-gutenberg")}
+						value={props.fontWeight.value}
+						onChange={(value) =>
+							props.setAttributes({
+								[props.fontWeight.label]: value,
+							})
+						}
+						options={fontWeightObj}
+						className="react-select-container"
+					/>
+				</div>
+				<div className="uag-typography-font-family-subset">
 					<SelectControl
 						label={__("Subset", "ultimate-addons-for-gutenberg")}
 						value={props.fontSubset.value}
@@ -212,8 +217,11 @@ function FontFamilyControl(props) {
 						}
 						options={fontSubsetObj}
 						className="react-select-container"
+						disabled={
+							!props.fontSubset.label || !props.fontSubset.value
+						}
 					/>
-				)}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 // Extend component
-import { useSelect, useDispatch } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 
 const ResponsiveSlider = (props) => {
 	const deviceType = useSelect((select) => {
@@ -9,6 +9,31 @@ const ResponsiveSlider = (props) => {
 	}, []);
 
 	const output = {};
+
+	let maxDesk =
+		undefined !== props.data.desktop.max
+			? props.data.desktop.max
+			: props.max;
+	let maxTab =
+		undefined !== props.data.tablet.max
+			? props.data.tablet.max.value
+			: props.max;
+	let maxMob =
+		undefined !== props.data.mobile.max
+			? props.data.mobile.max.value
+			: props.max;
+	let minDesk =
+		undefined !== props.data.desktop.min
+			? props.data.desktop.min
+			: props.min;
+	let minTab =
+		undefined !== props.data.tablet.min
+			? props.data.tablet.min.value
+			: props.min;
+	let minMob =
+		undefined !== props.data.mobile.min
+			? props.data.mobile.min.value
+			: props.min;
 
 	output.Desktop = (
 		<>
@@ -19,8 +44,8 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.desktop.label]: value })
 				}
-				min={props.data.desktop.min || props.min}
-				max={props.data.desktop.min || props.max}
+				min={minDesk}
+				max={maxDesk}
 				unit={props.data.desktop.unit || props.unit}
 				responsive={true}
 				units={props.units}
@@ -36,8 +61,8 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.tablet.label]: value })
 				}
-				min={props.data.tablet.min || props.min}
-				max={props.data.tablet.min || props.max}
+				min={minTab}
+				max={maxTab}
 				unit={props.data.tablet.unit || props.unit}
 				responsive={true}
 				units={props.units}
@@ -53,8 +78,8 @@ const ResponsiveSlider = (props) => {
 				onChange={(value) =>
 					props.setAttributes({ [props.data.mobile.label]: value })
 				}
-				min={props.data.mobile.min || props.min}
-				max={props.data.mobile.min || props.max}
+				min={minMob}
+				max={maxMob}
 				unit={props.data.mobile.unit || props.unit}
 				responsive={true}
 				units={props.units}
@@ -63,7 +88,7 @@ const ResponsiveSlider = (props) => {
 	);
 
 	return (
-		<div className="uagb-size-type-field-tabs">
+		<div className="components-base-control uagb-size-type-field-tabs">
 			<div className="uagb-responsive-control-inner">
 				{output[deviceType] ? output[deviceType] : output.Desktop}
 			</div>

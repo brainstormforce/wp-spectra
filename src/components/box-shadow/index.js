@@ -5,27 +5,20 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../color-control/advanced-pop-color-control";
-import { Button, SelectControl, Dashicon } from "@wordpress/components";
+import { ToggleControl } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import MultiButtonsControl from "../multi-buttons-control/index";
-
+import styles from "./editor.lazy.scss";
+import React, { useLayoutEffect } from "react";
 const BoxShadowControl = (props) => {
-	const [value, setValue] = useState(props);
-
-	const onAdvancedControlClick = () => {
-		let control = true;
-		let label = __("Hide Advanced", "ultimate-addons-for-gutenberg");
-
-		if (value !== null && value.showAdvancedControls === true) {
-			control = false;
-			label = __("Advanced", "ultimate-addons-for-gutenberg");
-		}
-
-		setValue({
-			showAdvancedControls: control,
-			showAdvancedControlsLabel: label,
-		});
-	};
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
+	const [showAdvancedControls, toggleAdvancedControls] = useState(false);
 
 	const {
 		setAttributes,
@@ -39,8 +32,9 @@ const BoxShadowControl = (props) => {
 
 	var advancedControls;
 	var boxShadowAdvancedControls;
+	let activeClass = showAdvancedControls ? "active" : "";
 
-	if (value !== null && true === value.showAdvancedControls) {
+	if (showAdvancedControls) {
 		advancedControls = (
 			<div className="uagb-box-shadow-advanced">
 				<MultiButtonsControl
@@ -133,21 +127,19 @@ const BoxShadowControl = (props) => {
 	}
 
 	boxShadowAdvancedControls = (
-		<Button
-			className="uagb-size-btn uagb-typography-control-btn"
-			isSmall
-			aria-pressed={value !== null}
-			onClick={onAdvancedControlClick}
-		>
-			<Dashicon icon="admin-tools" />
-		</Button>
+		<div className="uag-typography-option-actions">
+			<span className="uag-typography-main-label">{props.label}</span>
+			<ToggleControl
+				checked={showAdvancedControls}
+				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
+			/>
+		</div>
 	);
 
 	return (
-		<div className="uag-typography-option-actions">
-			<span>{props.label}</span>
+		<div className={`uag-typography-options ${activeClass}`}>
 			{boxShadowAdvancedControls}
-			{advancedControls}
+			{showAdvancedControls && advancedControls}
 		</div>
 	);
 };
