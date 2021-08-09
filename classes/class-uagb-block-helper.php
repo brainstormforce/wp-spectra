@@ -1235,10 +1235,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
+			$top_padding    = ( isset( $attr['topPadding'] ) && ! empty( $attr['topPadding'] ) ) ? $attr['topPadding'] : $attr['vPadding'];
+			$bottom_padding = ( isset( $attr['bottomPadding'] ) && ! empty( $attr['bottomPadding'] ) ) ? $attr['bottomPadding'] : $attr['vPadding'];
+			$left_padding   = ( isset( $attr['leftPadding'] ) && ! empty( $attr['leftPadding'] ) ) ? $attr['leftPadding'] : $attr['hPadding'];
+			$right_padding  = ( isset( $attr['rightPadding'] ) && ! empty( $attr['rightPadding'] ) ) ? $attr['rightPadding'] : $attr['hPadding'];
 
 			if ( ! $attr['inheritFromTheme'] ) {
 				$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
