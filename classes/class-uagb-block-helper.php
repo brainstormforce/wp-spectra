@@ -124,10 +124,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['contentHrPadding'] : $top_padding;
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['contentHrPadding'] : $bottom_padding;
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['contentVrPadding'] : $left_padding;
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['contentVrPadding'] : $right_padding;
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['contentHrPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['contentHrPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['contentVrPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['contentVrPadding'];
 
 			$selectors = array(
 				' .uagb_review_block .uagb-rating-title'  => array(
