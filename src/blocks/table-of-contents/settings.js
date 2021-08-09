@@ -219,7 +219,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Scroll', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ToggleControl
 					label={ __(
@@ -433,7 +433,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 			<ToggleControl
 				label={ __(
@@ -631,7 +631,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Scroll To Top', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<>
 					<AdvancedPopColorControl
@@ -661,7 +661,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
 					label={__("Color", "ultimate-addons-for-gutenberg")}
@@ -770,7 +770,7 @@ const Settings = ( props ) => {
 		return(
 			<PanelBody 
 			title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 			>
 				<Border
 					setAttributes={setAttributes}
@@ -823,7 +823,7 @@ const Settings = ( props ) => {
 		return(
 			<PanelBody 
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 			>
 				<SpacingControl
 					{...props}
