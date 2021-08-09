@@ -202,7 +202,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<h2>{ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<SelectControl
@@ -300,7 +300,6 @@ const Settings = ( props ) => {
 					) }
 					onChange={ ( value ) => setAttributes( { stack: value } ) }
 				/>
-				<hr className="uagb-editor__separator" />
 				<h2>{ __( 'Date' ) }</h2>
 				<ToggleControl
 					label={ __(
@@ -607,17 +606,17 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	const colorSettings = () => {
+	const headingColorSettings = () => {
 		return (
 			<PanelBody
 				title={ __(
-					'Color Settings',
+					'Title',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
 			>
 			<AdvancedPopColorControl
-				label={__("Heading Color", "ultimate-addons-for-gutenberg")}
+				label={__("Color", "ultimate-addons-for-gutenberg")}
 				colorValue={headingColor ? headingColor : ""}
 				onColorChange={(value) =>
 					setAttributes({ headingColor: value })
@@ -676,78 +675,95 @@ const Settings = ( props ) => {
 					label: 'headLineHeightTablet',
 				} }
 			/>
-			<AdvancedPopColorControl
-				label={__("Content Color", "ultimate-addons-for-gutenberg")}
-				colorValue={subHeadingColor ? subHeadingColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ subHeadingColor: value })
-				}
-			/>
-			<TypographyControl
-				label={ __(
-					'Typography',
+			</PanelBody>
+			)
+	}
+	const contentColorSettings = () => {
+			return (
+				<PanelBody
+					title={ __(
+						'Content',
+						'ultimate-addons-for-gutenberg'
+					) }
+					initialOpen={ false }
+				>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={subHeadingColor ? subHeadingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ subHeadingColor: value })
+					}
+				/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: subHeadLoadGoogleFonts,
+						label: 'subHeadLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: subHeadFontFamily,
+						label: 'subHeadFontFamily',
+					} }
+					fontWeight={ {
+						value: subHeadFontWeight,
+						label: 'subHeadFontWeight',
+					} }
+					fontSubset={ {
+						value: subHeadFontSubset,
+						label: 'subHeadFontSubset',
+					} }
+					fontSizeType={ {
+						value: subHeadFontSizeType,
+						label: 'subHeadFontSizeType',
+					} }
+					fontSize={ {
+						value: subHeadFontSize,
+						label: 'subHeadFontSize',
+					} }
+					fontSizeMobile={ {
+						value: subHeadFontSizeMobile,
+						label: 'subHeadFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: subHeadFontSizeTablet,
+						label: 'subHeadFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: subHeadLineHeightType,
+						label: 'subHeadLineHeightType',
+					} }
+					lineHeight={ {
+						value: subHeadLineHeight,
+						label: 'subHeadLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: subHeadLineHeightMobile,
+						label: 'subHeadLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: subHeadLineHeightTablet,
+						label: 'subHeadLineHeightTablet',
+					} }
+				/>
+				</PanelBody>
+			)
+	}
+	const dateColorSettings = () => {
+		return (
+			<PanelBody
+				title={ __(
+					'Date',
 					'ultimate-addons-for-gutenberg'
 				) }
-				attributes={ props.attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: subHeadLoadGoogleFonts,
-					label: 'subHeadLoadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: subHeadFontFamily,
-					label: 'subHeadFontFamily',
-				} }
-				fontWeight={ {
-					value: subHeadFontWeight,
-					label: 'subHeadFontWeight',
-				} }
-				fontSubset={ {
-					value: subHeadFontSubset,
-					label: 'subHeadFontSubset',
-				} }
-				fontSizeType={ {
-					value: subHeadFontSizeType,
-					label: 'subHeadFontSizeType',
-				} }
-				fontSize={ {
-					value: subHeadFontSize,
-					label: 'subHeadFontSize',
-				} }
-				fontSizeMobile={ {
-					value: subHeadFontSizeMobile,
-					label: 'subHeadFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: subHeadFontSizeTablet,
-					label: 'subHeadFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: subHeadLineHeightType,
-					label: 'subHeadLineHeightType',
-				} }
-				lineHeight={ {
-					value: subHeadLineHeight,
-					label: 'subHeadLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: subHeadLineHeightMobile,
-					label: 'subHeadLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: subHeadLineHeightTablet,
-					label: 'subHeadLineHeightTablet',
-				} }
-			/>
+				initialOpen={ false }
+			>
 			<AdvancedPopColorControl
-				label={__("Background Color", "ultimate-addons-for-gutenberg")}
-				colorValue={backgroundColor ? backgroundColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ backgroundColor: value })
-				}
-			/>
-			<AdvancedPopColorControl
-				label={__("Date Color", "ultimate-addons-for-gutenberg")}
+				label={__("Color", "ultimate-addons-for-gutenberg")}
 				colorValue={dateColor ? dateColor : ""}
 				onColorChange={(value) =>
 					setAttributes({ dateColor: value })
@@ -816,6 +832,25 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
+	const backgroundColorSetting = () => {
+		return(
+			<PanelBody
+			title={ __(
+				'Background',
+				'ultimate-addons-for-gutenberg'
+			) }
+			initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={backgroundColor ? backgroundColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ backgroundColor: value })
+					}
+				/>
+			</PanelBody>
+		)
+	}
 	const connectorColorSettings = () => {
 		const iconColorSettings = (
 			<PanelBody
@@ -898,10 +933,10 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __(
-					'Connector Colors',
+					'Connector',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<TabPanel
 					className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
@@ -998,11 +1033,14 @@ const Settings = ( props ) => {
 					{ connectorSettings() }
 				</InspectorTab>
 				<InspectorTab key={"style"}>
-					{ colorSettings() }
-					{ connectorColorSettings() }
+				{ headingColorSettings() }
+				{ contentColorSettings() }
+				{ dateColorSettings() }
+				{ backgroundColorSetting() }
+				{ connectorColorSettings() }
+				{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab key={"advance"}>
-					{ spacingSettings() }
 				</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
