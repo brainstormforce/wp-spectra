@@ -202,18 +202,17 @@ const Settings = ( props ) => {
 		return sizeArr;
 	};
 
-	const summarySettings = () => {
+	const authorSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Summary', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				title={ __( 'Author', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
-				{ showAuthor === true && (
 					<>
 	
 						<AdvancedPopColorControl
 							label={__(
-								"Author Color",
+								"Color",
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={authorColor}
@@ -222,22 +221,37 @@ const Settings = ( props ) => {
 							}
 						/>
 					</>
-				) }
-				{ showFeature === true && (
-					<>
-	
-						<AdvancedPopColorControl
-							label={__(
-								"Content Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={contentColor}
-							onColorChange={(value) =>
-								setAttributes({ contentColor: value })
-							}
-						/>
-					</>
-				) }
+			</PanelBody>
+		)
+	}
+
+	const contentSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<>
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={contentColor}
+						onColorChange={(value) =>
+							setAttributes({ contentColor: value })
+						}
+					/>
+				</>
+			</PanelBody>
+		)}
+
+	const summarySettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Summary', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<AdvancedPopColorControl
 					label={__(
 						"Summary Color",
@@ -312,11 +326,11 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 			<AdvancedPopColorControl
 				label={__(
-					"Active Star Color",
+					"Active Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={starColor}
@@ -326,7 +340,7 @@ const Settings = ( props ) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Inactive Star Color",
+					"Inactive Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={starActiveColor}
@@ -336,7 +350,7 @@ const Settings = ( props ) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Star Outline Color",
+					"Outline Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={starOutlineColor}
@@ -425,7 +439,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 			{ enableDescription === true && (
 					<>
@@ -840,7 +854,7 @@ const Settings = ( props ) => {
 			<SpacingControl
 					{...props}
 					label={__(
-						"Overall Padding",
+						"Padding",
 						"ultimate-addons-for-gutenberg"
 					)}
 					valueTop={{
@@ -1010,9 +1024,32 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				{ enableImage === true && (
+				<h2>{ __( 'Link' ) }</h2>
+				<TextControl
+					value={ ctaLink }
+					onChange={ ( value ) =>
+						setAttributes( { ctaLink: value } )
+					}
+				/>
+				<ToggleControl
+					label={ __(
+						'Open in new window',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ ctaTarget }
+					onChange={ toggleTarget }
+				/>
+			</PanelBody>
+		);
+	};
+
+	const imageSettings = () => {
+		return(
+			<PanelBody
+				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
 					<>
-					<h2>{ __( 'Image' ) }</h2>
 					<div className="uagb-bg-image">
 					<MediaUpload
 						title={__(
@@ -1068,25 +1105,9 @@ const Settings = ( props ) => {
 						/>
 					) }
 					</>
-				) }
-				<h2>{ __( 'Link' ) }</h2>
-				<TextControl
-					value={ ctaLink }
-					onChange={ ( value ) =>
-						setAttributes( { ctaLink: value } )
-					}
-				/>
-				<ToggleControl
-					label={ __(
-						'Open in new window',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ ctaTarget }
-					onChange={ toggleTarget }
-				/>
 			</PanelBody>
-		);
-	};
+		)
+	}
 
 	const blockControls = () => {
 		return (
@@ -1275,11 +1296,14 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 				<InspectorTab key={"general"}>
 				{ generalSettings() }
+				{ enableImage === true && ( imageSettings() ) }
 				{ schemaSettings() }
 				</InspectorTab>
 				<InspectorTab key={"style"}>
 				{ titleSettings() }
 				{ enableDescription && ( descriptionSettings() ) }
+				{ showAuthor === true && ( authorSettings() ) }
+				{ showFeature === true && ( contentSettings() ) }
 				{ summarySettings() }
 				{ starSettings() }
 				{ overallPadding() }
