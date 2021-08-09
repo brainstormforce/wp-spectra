@@ -158,9 +158,11 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 		
 		const { Fragment } = wp.element;
 		
-		const { InspectorAdvancedControls } = wp.blockEditor;
+		const { InspectorControls } = wp.blockEditor;
 		
 		const { isSelected } = props;
+
+		const { PanelBody } = wp.components;
 		
 		const blockName = props.name;
 		
@@ -169,11 +171,18 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 			<Fragment>
 				<BlockEdit {...props} />
 				{isSelected && ! blockType.includes(blockName) &&
-					<InspectorAdvancedControls>
+				<InspectorControls>
+					<PanelBody
+						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
 						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
 						{ UserConditionOptions( props ) }						
-					</InspectorAdvancedControls>
+					</PanelBody>
+				</InspectorControls>
 				}
+				
 			</Fragment>
 		);
 	};
