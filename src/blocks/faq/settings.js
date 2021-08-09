@@ -4,7 +4,6 @@
 
 import renderSVG from "@Controls/renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import UAGB_Block_Icons from "@Controls/block-icons";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
@@ -14,21 +13,17 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
 import SpacingControl from "../../components/spacing-control";
-
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import { __ } from "@wordpress/i18n";
-
+import Border from "../../components/border";
 import { select } from "@wordpress/data";
 
-import { ColorPalette, InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls } from "@wordpress/block-editor";
 
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
 	ToggleControl,
 	Icon,
 } from "@wordpress/components";
@@ -51,17 +46,12 @@ const Settings = (props) => {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor,
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
 		answerTextColor,
 		answerPaddingTypeDesktop,
-		vanswerPaddingMobile,
-		vanswerPaddingTablet,
-		vanswerPaddingDesktop,
-		hanswerPaddingMobile,
-		hanswerPaddingTablet,
-		hanswerPaddingDesktop,
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
@@ -253,6 +243,55 @@ const Settings = (props) => {
 						})
 					}
 				/>
+				<ToggleControl
+					label={__(
+						"Enable Separator",
+						"ultimate-addons-for-gutenberg"
+					)}
+					checked={enableSeparator}
+					onChange={() =>
+						setAttributes({ enableSeparator: !enableSeparator })
+					}
+				/>
+				<SelectControl
+					label={__("Question Tag", "ultimate-addons-for-gutenberg")}
+					value={headingTag}
+					onChange={(value) => onchangeTag(value)}
+					options={[
+						{
+							value: "span",
+							label: __("Span", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "p",
+							label: __("P", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h1",
+							label: __("H1", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h2",
+							label: __("H2", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h3",
+							label: __("H3", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h4",
+							label: __("H4", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h5",
+							label: __("H5", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h6",
+							label: __("H6", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+				/>
 				<hr className="uagb-editor__separator" />
 				{"grid" === layout && (
 					<ResponsiveSlider
@@ -336,232 +375,6 @@ const Settings = (props) => {
 		);
 	};
 
-	const faqStylingSettings = () => {
-		return (
-			<PanelBody
-				title={__("Style", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
-				className="uagb__url-panel-body"
-			>
-				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={boxBgColor}
-					onColorChange={(value) =>
-						setAttributes({ boxBgColor: value })
-					}
-				/>
-				<Range
-					label={__("Rows Gap (px)", "ultimate-addons-for-gutenberg")}
-					setAttributes={setAttributes}
-					value={rowsGap}
-					onChange={(value) => setAttributes({ rowsGap: value })}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/>
-				{"grid" === layout && (
-					<>
-						<Range
-							label={__(
-								"Columns Gap (px)",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={columnsGap}
-							onChange={(value) =>
-								setAttributes({ columnsGap: value })
-							}
-							min={0}
-							max={50}
-							displayUnit={false}
-						/>
-						<ToggleControl
-							label={__(
-								"Equal Height",
-								"ultimate-addons-for-gutenberg"
-							)}
-							checked={equalHeight}
-							onChange={() =>
-								setAttributes({ equalHeight: !equalHeight })
-							}
-						/>
-					</>
-				)}
-				<ToggleControl
-					label={__(
-						"Enable Separator",
-						"ultimate-addons-for-gutenberg"
-					)}
-					checked={enableSeparator}
-					onChange={() =>
-						setAttributes({ enableSeparator: !enableSeparator })
-					}
-				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{__("Border", "ultimate-addons-for-gutenberg")}</h2>
-				<SelectControl
-					label={__("Style", "ultimate-addons-for-gutenberg")}
-					value={borderStyle}
-					options={[
-						{
-							value: "none",
-							label: __("None", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "solid",
-							label: __("Solid", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "dotted",
-							label: __(
-								"Dotted",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "dashed",
-							label: __(
-								"Dashed",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "double",
-							label: __(
-								"Double",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-					onChange={(value) => {
-						setAttributes({ borderStyle: value });
-					}}
-				/>
-				{"none" !== borderStyle && (
-					<Range
-						label={__(
-							"Thickness Gap (px)",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={borderWidth}
-						onChange={(value) =>
-							setAttributes({ borderWidth: value })
-						}
-						min={0}
-						max={20}
-						displayUnit={false}
-					/>
-				)}
-				{"none" !== borderStyle && (
-					<Range
-						label={__(
-							"Rounded Corners (px)",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={borderRadius}
-						onChange={(value) =>
-							setAttributes({ borderRadius: value })
-						}
-						min={0}
-						max={50}
-						displayUnit={false}
-					/>
-				)}
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={borderColor}
-					onColorChange={(value) =>
-						setAttributes({ borderColor: value })
-					}
-				/>
-				{"accordion" === layout && (
-					<>
-						<hr className="uagb-editor__separator" />
-						<h2>{__("Icon", "ultimate-addons-for-gutenberg")}</h2>
-						<ResponsiveSlider
-							label={__("Size", "ultimate-addons-for-gutenberg")}
-							data={{
-								desktop: {
-									value: iconSize,
-									label: "iconSize",
-								},
-								tablet: {
-									value: iconSizeTablet,
-									label: "iconSizeTablet",
-								},
-								mobile: {
-									value: iconSizeMobile,
-									label: "iconSizeMobile",
-								},
-							}}
-							min={0}
-							max={100}
-							unit={{
-								value: iconSizeType,
-								label: "iconSizeType",
-							}}
-							units={[
-								{
-									name: __(
-										"Pixel",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "px",
-								},
-								{
-									name: __(
-										"%",
-										"ultimate-addons-for-gutenberg"
-									),
-									unitValue: "%",
-								},
-							]}
-							setAttributes={setAttributes}
-						/>
-						<Range
-							label={__(
-								"Gap between Icon and Question",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={gapBtwIconQUestion}
-							onChange={(value) =>
-								setAttributes({ gapBtwIconQUestion: value })
-							}
-							min={0}
-							max={100}
-							displayUnit={false}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Expand Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={iconColor}
-							onColorChange={(value) =>
-								setAttributes({ iconColor: value })
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__(
-								"Collapse Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={iconActiveColor}
-							onColorChange={(value) =>
-								setAttributes({ iconActiveColor: value })
-							}
-						/>
-					</>
-				)}
-			</PanelBody>
-		);
-	};
 	const faqIconSettings = () => {
 		return (
 			<>
@@ -639,45 +452,6 @@ const Settings = (props) => {
 				initialOpen={false}
 				className="uagb__url-panel-body"
 			>
-				<SelectControl
-					label={__("Question Tag", "ultimate-addons-for-gutenberg")}
-					value={headingTag}
-					onChange={(value) => onchangeTag(value)}
-					options={[
-						{
-							value: "span",
-							label: __("Span", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "p",
-							label: __("P", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h1",
-							label: __("H1", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h2",
-							label: __("H2", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h3",
-							label: __("H3", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h4",
-							label: __("H4", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h5",
-							label: __("H5", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h6",
-							label: __("H6", "ultimate-addons-for-gutenberg"),
-						},
-					]}
-				/>
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
 					attributes={attributes}
@@ -981,6 +755,174 @@ const Settings = (props) => {
 			</PanelBody>
 		);
 	};
+	const commonStyle = () => {
+		return (
+			<PanelBody
+				title={__("Common", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+				className="uagb__url-panel-body"
+			>
+				<AdvancedPopColorControl
+					label={__(
+						"Background Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={boxBgColor}
+					onColorChange={(value) =>
+						setAttributes({ boxBgColor: value })
+					}
+				/>
+				<Range
+					label={__("Rows Gap (px)", "ultimate-addons-for-gutenberg")}
+					setAttributes={setAttributes}
+					value={rowsGap}
+					onChange={(value) => setAttributes({ rowsGap: value })}
+					min={0}
+					max={50}
+					displayUnit={false}
+				/>
+				{"grid" === layout && (
+					<>
+						<Range
+							label={__(
+								"Columns Gap (px)",
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={columnsGap}
+							onChange={(value) =>
+								setAttributes({ columnsGap: value })
+							}
+							min={0}
+							max={50}
+							displayUnit={false}
+						/>
+						<ToggleControl
+							label={__(
+								"Equal Height",
+								"ultimate-addons-for-gutenberg"
+							)}
+							checked={equalHeight}
+							onChange={() =>
+								setAttributes({ equalHeight: !equalHeight })
+							}
+						/>
+					</>
+				)}
+				<hr className="uagb-editor__separator" />
+				<h2>{__("Border", "ultimate-addons-for-gutenberg")}</h2>
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: "borderStyle",
+						title: __("Style", "ultimate-addons-for-gutenberg"),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: "borderWidth",
+						title: __("Width", "ultimate-addons-for-gutenberg"),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: "borderRadius",
+						title: __("Radius", "ultimate-addons-for-gutenberg"),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: "borderColor",
+						title: __("Color", "ultimate-addons-for-gutenberg"),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: "borderHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+				/>
+			</PanelBody>
+		);
+	};
+	const iconStyle = () => {
+		if ("accordion" !== layout) {
+			return "";
+		}
+		return (
+			<PanelBody
+				title={__("Icon", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+				className="uagb__url-panel-body"
+			>
+				<ResponsiveSlider
+					label={__("Size", "ultimate-addons-for-gutenberg")}
+					data={{
+						desktop: {
+							value: iconSize,
+							label: "iconSize",
+						},
+						tablet: {
+							value: iconSizeTablet,
+							label: "iconSizeTablet",
+						},
+						mobile: {
+							value: iconSizeMobile,
+							label: "iconSizeMobile",
+						},
+					}}
+					min={0}
+					max={100}
+					unit={{
+						value: iconSizeType,
+						label: "iconSizeType",
+					}}
+					units={[
+						{
+							name: __("Pixel", "ultimate-addons-for-gutenberg"),
+							unitValue: "px",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
+					setAttributes={setAttributes}
+				/>
+				<Range
+					label={__(
+						"Gap between Icon and Question",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={gapBtwIconQUestion}
+					onChange={(value) =>
+						setAttributes({ gapBtwIconQUestion: value })
+					}
+					min={0}
+					max={100}
+					displayUnit={false}
+				/>
+				<AdvancedPopColorControl
+					label={__("Expand Color", "ultimate-addons-for-gutenberg")}
+					colorValue={iconColor}
+					onColorChange={(value) =>
+						setAttributes({ iconColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						"Collapse Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={iconActiveColor}
+					onColorChange={(value) =>
+						setAttributes({ iconActiveColor: value })
+					}
+				/>
+			</PanelBody>
+		);
+	};
 
 	let loadQuestionGoogleFonts;
 	let loadAnswerGoogleFonts;
@@ -1018,10 +960,18 @@ const Settings = (props) => {
 	return (
 		<Suspense fallback={lazyLoader()}>
 			<InspectorControls>
-				{faqGeneralSettings()}
-				{faqStylingSettings()}
-				{faqQuestionSettings()}
-				{faqAnswerSettings()}
+				<InspectorTabs>
+					<InspectorTab key={"general"}>
+						{faqGeneralSettings()}
+					</InspectorTab>
+					<InspectorTab key={"style"}>
+						{commonStyle()}
+						{iconStyle()}
+						{faqQuestionSettings()}
+						{faqAnswerSettings()}
+					</InspectorTab>
+					<InspectorTab key={"advance"}></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{loadQuestionGoogleFonts}
 			{loadAnswerGoogleFonts}

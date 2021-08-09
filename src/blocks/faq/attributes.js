@@ -90,6 +90,10 @@ const attributes = {
 		type: "string",
 		default: "#D2D2D2",
 	},
+	borderHoverColor: {
+		type: "string",
+		default: "#D2D2D2",
+	},
 	questionTextColor: {
 		type: "string",
 		default: "#313131",

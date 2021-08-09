@@ -5155,6 +5155,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 					'border-color'     => $attr['borderColor'],
 				),
+				' .uagb-faq-item:hover'                => array(
+					'border-color' => $attr['borderHoverColor'],
+				),
 				' .uagb-faq-item .uagb-question'       => array(
 					'color' => $attr['questionTextColor'],
 				),

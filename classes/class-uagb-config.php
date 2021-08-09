@@ -747,6 +747,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderWidth'                  => 1,
 							'borderRadius'                 => 2,
 							'borderColor'                  => '#D2D2D2',
+							'borderHoverColor'             => '#D2D2D2',
 							'questionTextColor'            => '#313131',
 							'questionTextActiveColor'      => '#656565',
 							'questionPaddingTypeDesktop'   => 'px',
