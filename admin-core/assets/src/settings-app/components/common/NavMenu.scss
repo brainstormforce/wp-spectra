@@ -37,7 +37,7 @@
 		margin-bottom: -1px;
 		background: var(--background-light-color);
 		border: 1px solid #eee;
-		border-bottom: 1px solid #f7f8fa;	
+		border-bottom: 1px solid var(--background-light-color);	
 	}
 	.uag-global-nav-menu__tab {
 		margin: 0 5px 0 5px;
@@ -57,10 +57,10 @@
 	a.uag-global-nav-menu__tab:hover,
 	a.uag-global-nav-menu__tab:focus,
 	a.uag-global-nav-menu__tab:active{
-		background: #f7f8fa;
+		background: var(--background-light-color);
     	margin-bottom: -1px;
 		border: 1px solid #eee;
-		border-bottom: 1px solid #f7f8fa;
+		border-bottom: 1px solid var(--background-light-color);
 	}
 }
 
