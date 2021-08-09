@@ -288,7 +288,6 @@ const Settings = ( props ) => {
 					onChange={ ( value ) => onSelectPostType( value ) }
 					options={ uagb_blocks_info.post_types }
 				/>
-				<hr className="uagb-editor__separator" />
 				{ '' != taxonomyList && (
 					<SelectControl
 						label={ __(
@@ -310,7 +309,6 @@ const Settings = ( props ) => {
 							}
 							options={ categoryListOptions }
 						/>
-						<hr className="uagb-editor__separator" />
 					</>
 				) }
 				<ToggleControl
@@ -497,12 +495,93 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
+	const ImageSetting = () => {
+		return(
+			<PanelBody
+				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+			<ToggleControl
+				label={ __(
+					'Display Featured Image',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ displayPostImage }
+				onChange={ () =>
+					setAttributes( {
+						displayPostImage: ! displayPostImage,
+					} )
+				}
+			/>
+			{ displayPostImage && (
+				<SelectControl
+					label={ __(
+						'Featured Image Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					options={ uagb_blocks_info.image_sizes }
+					value={ imageSize }
+					onChange={ ( value ) =>
+						props.setAttributes( { imageSize: value } )
+					}
+				/>
+			) }
+			</PanelBody>
+		)
+	}
 	const contentSettings = () => {
 		return (
 			<PanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<SelectControl
+					label={ __(
+						'Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ headingTag }
+					onChange={ ( value ) =>
+						setAttributes( { headingTag: value } )
+					}
+					options={ [
+						{
+							value: 'h1',
+							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h2',
+							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h3',
+							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h4',
+							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h5',
+							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h6',
+							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'p',
+							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'span',
+							label: __(
+								'SPAN',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
 				<ToggleControl
 					label={ __(
 						'Display Post Author',
@@ -857,53 +936,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __(
-						'Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'SPAN',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
 				<AdvancedPopColorControl
 					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
@@ -972,7 +1004,7 @@ const Settings = ( props ) => {
 					'Author',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 			{ displayPostAuthor && (
 				<>
@@ -1053,7 +1085,7 @@ const Settings = ( props ) => {
 				'Content',
 				'ultimate-addons-for-gutenberg'
 			) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{ displayPostExcerpt && (
 			<>
@@ -1134,7 +1166,7 @@ const Settings = ( props ) => {
 				'Date',
 				'ultimate-addons-for-gutenberg'
 			) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{ displayPostDate && (
 					<>
@@ -1215,7 +1247,7 @@ const Settings = ( props ) => {
 				'CTA',
 				'ultimate-addons-for-gutenberg'
 			) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{ displayPostLink && (
 					<>
@@ -1227,7 +1259,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<AdvancedPopColorControl
-							label={__("CTA Color", "ultimate-addons-for-gutenberg")}
+							label={__("Background Color", "ultimate-addons-for-gutenberg")}
 							colorValue={ctaBackground ? ctaBackground : ""}
 							onColorChange={(value) =>
 								setAttributes({ ctaBackground: value })
@@ -1301,35 +1333,10 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 			title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 			>
-				<ToggleControl
-					label={ __(
-						'Display Featured Image',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ displayPostImage }
-					onChange={ () =>
-						setAttributes( {
-							displayPostImage: ! displayPostImage,
-						} )
-					}
-				/>
-				{ displayPostImage && (
-					<SelectControl
-						label={ __(
-							'Featured Image Style',
-							'ultimate-addons-for-gutenberg'
-						) }
-						options={ uagb_blocks_info.image_sizes }
-						value={ imageSize }
-						onChange={ ( value ) =>
-							props.setAttributes( { imageSize: value } )
-						}
-					/>
-				) }
 				<AdvancedPopColorControl
-					label={__("Background Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={backgroundColor ? backgroundColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ backgroundColor: value })
@@ -1501,6 +1508,7 @@ const Settings = ( props ) => {
 				<InspectorTab key={"general"}>
 					{ querySettings() }
 					{ layoutSettings() }
+					{ ImageSetting() }
 					{ contentSettings() }
 					{ connectorSettings() }
 				</InspectorTab>
