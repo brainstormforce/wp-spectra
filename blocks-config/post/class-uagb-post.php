@@ -508,6 +508,34 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'rowGapUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'columnGapUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'imageBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'titleBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'metaBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'ctaBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'excerptBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
 				'bgColor'                 => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
@@ -724,7 +752,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPaddingUnit'          => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
 				'contentPaddingMobile'    => array(
+					'type' => 'number',
+				),
+				'contentPaddingTablet'    => array(
 					'type' => 'number',
 				),
 				'ctaBottomSpace'          => array(

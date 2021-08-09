@@ -16,6 +16,7 @@ function styling( props ) {
 		bgColor,
 		contentPadding,
 		contentPaddingMobile,
+		contentPaddingTablet,
 		titleColor,
 		titleFontSize,
 		titleFontSizeType,
@@ -68,6 +69,7 @@ function styling( props ) {
 		imageBottomSpace,
 		metaBottomSpace,
 		excerptBottomSpace,
+		excerptBottomSpaceUnit,
 		overlayOpacity,
 		bgOverlayColor,
 		borderWidth,
@@ -115,6 +117,13 @@ function styling( props ) {
 		hpaginationButtonPaddingTablet,
 		hpaginationButtonPaddingDesktop,
 		imgPosition,
+		rowGapUnit,
+		columnGapUnit,
+		contentPaddingUnit,
+		imageBottomSpaceUnit,
+		titleBottomSpaceUnit,
+		metaBottomSpaceUnit,
+		ctaBottomSpaceUnit
 	} = props.attributes;
 
 	let mobile_selectors = {};
@@ -122,33 +131,33 @@ function styling( props ) {
 
 	const selectors = {
 		' .uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGap / 2, 'px' ),
-			'margin-left': generateCSSUnit( -rowGap / 2, 'px' ),
+			'margin-right': generateCSSUnit( -rowGap / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGap / 2, rowGapUnit ),
 		},
 		' .uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGap / 2, 'px' ),
-			'padding-left': generateCSSUnit( rowGap / 2, 'px' ),
-			'margin-bottom': generateCSSUnit( columnGap, 'px' ),
+			'padding-right': generateCSSUnit( rowGap / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGap / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit  ),
 		},
 		' .uagb-post__inner-wrap': {
 			background: bgColor,
-			padding: generateCSSUnit( contentPadding, 'px' ),
+			padding: generateCSSUnit( contentPadding, contentPaddingUnit ),
 			'text-align': align,
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
-			'margin-bottom': generateCSSUnit( ctaBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( ctaBottomSpace, ctaBottomSpaceUnit  ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
-			'margin-bottom': generateCSSUnit( imageBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( imageBottomSpace, imageBottomSpaceUnit  ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
-			'margin-bottom': generateCSSUnit( titleBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( titleBottomSpace, titleBottomSpaceUnit  ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
-			'margin-bottom': generateCSSUnit( metaBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( metaBottomSpace, metaBottomSpaceUnit  ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
-			'margin-bottom': generateCSSUnit( excerptBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( excerptBottomSpace, excerptBottomSpaceUnit  ),
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
@@ -163,9 +172,9 @@ function styling( props ) {
 		selectors[
 			' .uagb-post__inner-wrap  > .uagb-post__image:first-child'
 		] = {
-			'margin-top': generateCSSUnit( -contentPadding, 'px' ),
-			'margin-left': generateCSSUnit( -contentPadding, 'px' ),
-			'margin-right': generateCSSUnit( -contentPadding, 'px' ),
+			'margin-top': generateCSSUnit( -contentPadding, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( -contentPadding, contentPaddingUnit ),
+			'margin-right': generateCSSUnit( -contentPadding, contentPaddingUnit ),
 		};
 	}
 	if ( ! inheritFromTheme ) {
@@ -633,16 +642,18 @@ function styling( props ) {
 			};
 		}
 	}
-
+	tablet_selectors[ ' .uagb-post__inner-wrap' ] = {
+		padding: contentPaddingTablet + contentPaddingUnit,
+	};
 	mobile_selectors[ ' .uagb-post__inner-wrap' ] = {
-		padding: contentPaddingMobile + 'px',
+		padding: contentPaddingMobile + contentPaddingUnit,
 	};
 	mobile_selectors[
 		'.uagb-post__inner-wrap  > .uagb-post__image:first-child'
 	] = {
-		'margin-top': -contentPadding + 'px',
-		'margin-left': -contentPadding + 'px',
-		'margin-right': -contentPadding + 'px',
+		'margin-top': -contentPadding + contentPaddingUnit,
+		'margin-left': -contentPadding + contentPaddingUnit,
+		'margin-right': -contentPadding + contentPaddingUnit,
 	};
 	let styling_css = '';
 
