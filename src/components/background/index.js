@@ -100,19 +100,14 @@ const Background = (props) => {
 
 	let advancedControls = (
 		<>
-			<div className="uag-background-wrap">
-				<SelectControl
-					value={backgroundType.value}
-					onChange={(value) =>
-						setAttributes({ [backgroundType.label]: value })
-					}
-					options={bgOptions}
-					label={__(
-						"Background Type",
-						"ultimate-addons-for-gutenberg"
-					)}
-				/>
-			</div>
+			<SelectControl
+				value={backgroundType.value}
+				onChange={(value) =>
+					setAttributes({ [backgroundType.label]: value })
+				}
+				options={bgOptions}
+				label={__("Background Type", "ultimate-addons-for-gutenberg")}
+			/>
 			{"color" === backgroundType.value && (
 				<AdvancedPopColorControl
 					label={__(
@@ -524,9 +519,7 @@ const Background = (props) => {
 		</>
 	);
 
-	return (
-		<div className="uag-background-option-actions">{advancedControls}</div>
-	);
+	return advancedControls;
 };
 
 export default Background;
