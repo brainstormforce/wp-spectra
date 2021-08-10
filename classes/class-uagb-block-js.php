@@ -108,7 +108,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 			$selector      = $base_selector . $id;
-
 			ob_start();
 			?>
 			var selector = document.querySelectorAll( '<?php echo esc_attr( $selector ); ?>' );
@@ -119,8 +118,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 				if ( blockquote__tweet.length > 0 ) {
 
 					blockquote__tweet[0].addEventListener("click",function(){
-						var content = selector[0].getElementsByClassName("uagb-blockquote__content")[0].innerText;
-						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+content+"&via="+("<?php echo esc_html( $via ); ?>"); 
+						var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+("<?php echo esc_html( $attr['descriptionText'] ); ?>")+"&via="+("<?php echo esc_html( $via ); ?>"); 
 						window.open( request_url ); 
 					});
 				}
@@ -271,6 +269,32 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			jQuery( document ).ready(function() {
 				UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 			});
+			<?php
+			return ob_get_clean();
+
+		}
+		/**
+		 * Get Tabs Js
+		 *
+		 * @since 1.23.5
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_tabs_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
+
+			$attr     = array_merge( $defaults, (array) $attr );
+			$selector = '.uagb-block-' . $id;
+			ob_start();
+			?>
+			window.addEventListener( 'load', function() {
+				UAGBTabs.init( '<?php echo esc_attr( $selector ); ?>' );
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			});
+			window.addEventListener( 'hashchange', function() {
+				UAGBTabs.anchorTabId( '<?php echo esc_attr( $selector ); ?>' );
+			}, false );
 			<?php
 			return ob_get_clean();
 

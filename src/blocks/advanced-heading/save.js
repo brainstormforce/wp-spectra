@@ -2,46 +2,59 @@
  * BLOCK: Advanced Heading - Save Block
  */
 
-import classnames from "classnames"
+import classnames from 'classnames';
 
-const {
-	RichText
-} = wp.blockEditor
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	
 	const {
 		block_id,
 		headingTitle,
 		headingDesc,
 		headingTag,
 		seperatorStyle,
-		headingId
-	} = props.attributes
+		headingId,
+	} = props.attributes;
 
-	var seprator_output =  ""
-	if( seperatorStyle !== "none" ){
-		seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
+	let seprator = '';
+	if ( seperatorStyle !== 'none' ) {
+		seprator = (
+			<div className="uagb-separator-wrap">
+				<div className="uagb-separator"></div>
+			</div>
+		);
 	}
+	let headingText = '';
+	if ( headingTitle !== '' ) {
+
+		headingText = <RichText.Content
+						tagName={ headingTag }
+						value={ headingTitle }
+						className="uagb-heading-text"
+						id={ headingId }
+					/>
+	}
+	let descText = '';
+	
+	if ( headingDesc !== '' ) {
+
+		descText = <RichText.Content
+					tagName="p"
+					value={ headingDesc }
+					className="uagb-desc-text"
+				/>
+	}
+	
 	return (
 		<div
 			className={ classnames(
 				props.className,
-				`uagb-block-${block_id}`,					
+				`uagb-block-${ block_id }`
 			) }
 		>
-			<RichText.Content
-				tagName={ headingTag }
-				value={ headingTitle }
-				className='uagb-heading-text'	
-				id = { headingId }				
-			/>
-			{seprator_output}
-			<RichText.Content
-				tagName="p"
-				value={ headingDesc }
-				className='uagb-desc-text'					
-			/>
+			{ headingText }
+			{ seprator }
+			{ descText }
 		</div>
-	)
+	);
 }

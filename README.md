@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.7  
-**Stable tag:** 1.23.4  
+**Tested up to:** 5.8  
+**Stable tag:** 1.24.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -70,6 +70,7 @@ We also have an informative and detailed article that will help you to <a href="
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
+	<li><a href="https://ultimategutenberg.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
 	<li><a href="https://ultimategutenberg.com/forms/" target="_blank">Forms </a>: The Forms block allow you to create interactive contact form, newsletter, suggestion, etc easily. You can add various fields like name, email, message box, phone number, checkboxes to your form and get more leads.</li>
 	<li><a href="https://ultimategutenberg.com/docs/tabs-block/" target="_blank">Tabs </a>: The Tabs block offers an easy way to display tabbed content and enables you to add long content in a smaller place to enhances the user experience.</li>
 	<li><a href="https://ultimategutenberg.com/lottie/" target="_blank">Lottie </a>: Add attractive animation to your page design. Get a total control with advanced options like animation speed,  animation trigger etc, You can reverse the animation, manage the size and do much more.</li>
@@ -167,6 +168,29 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.24.2 ###
+* Improvement: Reduce the size of static CSS.
+* Fix: Multiple blockquote post same content after clicking on tweet button.
+
+### 1.24.1 – TUESDAY, 27TH JULY 2021 ###
+* Fix: Table of contents - Uncaught TypeError with the load function.
+* Fix: Tabs - Responsive icons were not clickable in the editor.
+* Fix: Updated the CSS priority, to resolve the UAG blocks style issue with custom layout.
+
+### 1.24.0 ###
+* New: Introduced Star Rating block.
+* New: Added Masonry option to core Gallery block.
+* Improvement: Table of Contents - Added scroll to specific anchor tag feature.
+* Fix: Table of Contents - Headings were not displaying correctly when multiple blocks were used on the same page.
+* Fix: Asset generation conflicts with WooCommerce pages.
+
+### 1.23.5 ###
+* Improvement: Added compatibility with WordPress v5.8.
+* Fix: Assets generation issue on frontend when Twenty Twenty-one theme was active.
+* Fix: Assets were not regenerated on the frontend when the post containing reusable blocks is updated.
+* Fix: Post Grid: The block shifts to the left on the frontend when the Twenty Twenty-One theme was active.
+* Fix: WooCommerce shop page styling was not working on the frontend when a page is saved from the editor.
 
 ### 1.23.4 ###
 * Fix: Advanced column - Shape Divider issue when using with the Astra Custom Layout.

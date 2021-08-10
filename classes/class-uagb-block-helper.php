@@ -17,6 +17,97 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Get Star Rating block CSS
+		 *
+		 * @since 1.24.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_star_rating_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/star-rating']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$t_selectors = array();
+			$m_selectors = array();
+			$selectors   = array();
+
+			$alignment       = 'flex-start';
+			$stack_alignment = $attr['align'];
+			if ( '' !== $attr['align'] ) {
+				if ( 'right' === $attr['align'] ) {
+					$alignment = 'flex-end';
+				}
+				if ( 'center' === $attr['align'] ) {
+					$alignment = 'center';
+				}
+				if ( 'full' === $attr['align'] ) {
+					$alignment       = 'space-between';
+					$stack_alignment = 'left';
+				}
+			}
+
+			$selectors = array(
+				' .uag-star-rating'         => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
+				),
+				' .uag-star-rating > span'  => array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+					'color'        => $attr['unmarkedColor'],
+				),
+				' .uag-star:nth-child(-n+' . floor( $attr['rating'] ) . ')' => array(
+					'color' => $attr['color'],
+				),
+				' .uag-star-rating__title'  => array(
+					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+					'font-family' => $attr['fontFamily'],
+					'font-weight' => $attr['fontWeight'],
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+					'color'       => $attr['titleColor'],
+				),
+				'.uag-star-rating__wrapper' => array(
+					'justify-content' => $alignment,
+					'text-align'      => $stack_alignment,
+				),
+			);
+
+			$index = 'margin-right';
+			if ( 'stack' === $attr['layout'] ) {
+				$index = 'margin-bottom';
+			}
+
+			$selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
+
+			$remainder = ( $attr['rating'] - floor( $attr['rating'] ) );
+			$width     = $remainder * 100;
+
+			if ( 0 !== $width ) {
+				$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . '):before' ] = array(
+					'color'    => $attr['color'],
+					'width'    => UAGB_Helper::get_css_value( $width, '%' ),
+					'position' => 'absolute',
+					'content'  => "'★'",
+					'overflow' => 'hidden',
+				);
+
+				$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . ')' ] = array(
+					'position' => 'relative',
+				);
+			}
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, '', ' .uag-star-rating__title', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . substr( $attr['block_id'], 0, 8 ) );
+		}
+
+		/**
 		 * Get review block CSS
 		 *
 		 * @since 1.19.0
@@ -184,38 +275,38 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 
 			$selectors = array(
-				' .uagb-how-to-main-wrap' => array(
+				'.uagb-how-to-main-wrap'              => array(
 					'text-align' => $attr['overallAlignment'],
 				),
-				' .uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
+				'.uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap .uagb-howto__source-wrap' => array(
+				'.uagb-how-to-main-wrap .uagb-howto__source-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
+				'.uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
+				'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
+				' .uagb-how-to-tools-child__wrapper:last-child' => array(
 					'margin-bottom' => '0px',
 				),
 
-				' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' => array(
+				'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 				),
 
-				' .uagb-howto-steps__wrap .wp-block-uagb-info-box' => array(
+				' .wp-block-uagb-info-box'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 				),
 
-				' .uagb-howto-steps__wrap .wp-block-uagb-info-box:last-child' => array(
+				' .wp-block-uagb-info-box:last-child' => array(
 					'margin-bottom' => '0px',
 				),
 
@@ -231,23 +322,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['headingColor'],
 				),
 
-				' p.uagb-howto-desc-text' => array(
+				' p.uagb-howto-desc-text'             => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap p' => array(
+				' span.uagb-howto__time-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap p' => array(
+				' span.uagb-howto__cost-wrap p'       => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
+				' span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
+				' span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
@@ -255,7 +346,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				'  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+				' .uagb-howto-req-materials-text'     => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
@@ -264,11 +355,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$selectors[' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper'] = array(
+			$selectors[' .uagb-how-to-tools-child__wrapper'] = array(
 				'color' => $attr['subHeadingColor'],
 			);
 
-			$selectors[' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper'] = array(
+			$selectors[' .uagb-how-to-materials-child__wrapper'] = array(
 				'color' => $attr['subHeadingColor'],
 			);
 
@@ -520,14 +611,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['desktopPaddingType'] ),
 				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['desktopMarginType'] ),
 				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
-				'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
 			);
-
-			if ( 'none' !== $attr['borderStyle'] ) {
-				$style['border-style'] = $attr['borderStyle'];
-				$style['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-				$style['border-color'] = $attr['borderColor'];
-			}
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -551,15 +635,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
+			$style['max-width'] = $inner_width;
+
 			$selectors = array(
 				'.uagb-columns__wrap'              => $style,
 				' .uagb-columns__video-wrap'       => array(
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
-				' > .uagb-columns__inner-wrap'     => array(
-					'max-width' => $inner_width,
-				),
-				' .uagb-column__inner-wrap'        => array(
+				' .uagb-column__wrap'              => array(
 					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 				),
 				' .uagb-columns__shape-top svg'    => array(
@@ -577,8 +660,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-uagb-columns'           => array(
 					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				),
+				' .uagb-columns__overlay'          => array(
+					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
+				),
 			);
-
+			if ( 'none' !== $attr['borderStyle'] ) {
+				$selectors[' .uagb-columns__overlay']['border-style'] = $attr['borderStyle'];
+				$selectors[' .uagb-columns__overlay']['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
+				$selectors[' .uagb-columns__overlay']['border-color'] = $attr['borderColor'];
+			}
 			if ( '' !== $attr['topWidth'] ) {
 				$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 			}
@@ -805,7 +895,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-column-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-column.uagb-block-' : '#uagb-column-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -828,15 +918,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 
 			$selectors = array(
-				'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
+				' .uagb-heading-text' => array(
 					'text-align'    => $attr['headingAlign'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' .uagb-separator-wrap' => array(
+				'.wp-block-uagb-advanced-heading .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
 				),
-				'.wp-block-uagb-advanced-heading .uagb-desc-text' => array(
+				' .uagb-desc-text'    => array(
 					'text-align' => $attr['headingAlign'],
 					'color'      => $attr['subHeadingColor'],
 				),
@@ -846,7 +936,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 
 			if ( 'none' !== $seperatorStyle ) {
-				$selectors[' .uagb-separator'] = array(
+				$selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['separatorHeight'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
@@ -1083,12 +1173,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['color'],
 				);
 
-				$selectors[ $wrapper . ':hover' ] = array(
+				$selectors[ $wrapper . ':hover' ]                    = array(
 					'background'   => $attr['hBackground'],
 					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color' => $attr['borderHColor'],
 					'border-style' => $attr['borderStyle'],
 					'color'        => $attr['hColor'],
+				);
+				$selectors[ $wrapper . ':hover .uagb-button__icon' ] = array(
+					'color' => $attr['hColor'],
 				);
 
 				$m_selectors[ $wrapper ] = array(
@@ -1771,7 +1864,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_image_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 			$t_image_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-			$selectors[' .uagb-social-share__wrap .block-editor-inner-blocks'] = array(
+			$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 				'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 			);
 
@@ -1860,7 +1953,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-right' => 0,
 			);
 
-			$selectors[' .uagb-social-share__wrap'] = array(
+			$selectors['.uagb-social-share__outer-wrap'] = array(
 				'justify-content'   => $alignment,
 				'-webkit-box-pack'  => $alignment,
 				'-ms-flex-pack'     => $alignment,
@@ -1901,7 +1994,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$selectors[' .uagb-social-share__wrap'] = array(
+					$selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1920,7 +2013,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$t_selectors[' .uagb-social-share__wrap'] = array(
+					$t_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -1939,7 +2032,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 					);
 
-					$m_selectors[' .uagb-social-share__wrap'] = array(
+					$m_selectors['.uagb-social-share__outer-wrap'] = array(
 						'flex-direction'    => 'column',
 						'justify-content'   => $alignment,
 						'-webkit-box-pack'  => $alignment,
@@ -2276,7 +2369,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-icon-list-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-icon-list.uagb-block-' : '#uagb-icon-list-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -2392,7 +2485,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
-				' .uagb-timeline__events-new'       => array(
+				' .uagb-timeline__day-new'          => array(
 					'text-align' => $attr['align'],
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -2407,19 +2500,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				' .uagb-timeline__line__inner'      => array(
@@ -2429,13 +2522,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['separatorColor'],
 					'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__line' => array(
+				'.uagb-timeline__right-block .uagb-timeline__line' => array(
 					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
-				' .uagb-timeline__left-block .uagb-timeline__line' => array(
+				'.uagb-timeline__left-block .uagb-timeline__line' => array(
 					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
-				' .uagb-timeline__center-block .uagb-timeline__line' => array(
+				'.uagb-timeline__center-block .uagb-timeline__line' => array(
 					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
 				' .uagb-timeline__marker'           => array(
@@ -2445,19 +2538,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height'      => $connector_size,
 					'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 				),
-				' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
+				'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
+				'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
+				'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
+				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
@@ -2469,26 +2562,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'         => array(
 					'color'     => $attr['dateColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+				'.uagb-timeline__right-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
-				' .uagb-timeline__left-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+				'.uagb-timeline__left-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
 				' .uagb-timeline__events-inner-new' => array(
@@ -2500,12 +2593,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['iconColor'],
 					'width' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 				),
-				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
-					'fill' => $attr['iconFocus'],
-				),
-				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
-					'color' => $attr['iconFocus'],
-				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon' => array(
 					'background'   => $attr['iconBgFocus'],
 					'border-color' => $attr['borderFocus'],
@@ -2516,20 +2603,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$m_selectors = array(
-				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
 				),
 			);
 
 			$t_selectors = array(
-				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
 				),
@@ -2598,7 +2685,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading-text'            => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
-				' .uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
+				'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 				),
 				' .uagb-content'                           => array(
@@ -2614,13 +2701,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeTablet'], $attr['authorFontSizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightTablet'], $attr['authorLineHeightType'] ),
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
 					'text-align' => 'left',
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
 					'text-align' => 'left',
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a' => array(
 					'text-align' => 'left',
 				),
 			);
@@ -2637,13 +2724,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading' => array(
 					'text-align' => $attr['align'],
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
 					'text-align' => 'left',
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
 					'text-align' => 'left',
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a' => array(
 					'text-align' => 'left',
 				),
 			);
@@ -3518,7 +3605,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
 				),
-				' .uagb-timeline__events-new'             => array(
+				' .uagb-timeline__day-new'                => array(
 					'text-align' => $attr['align'],
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -3540,13 +3627,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['separatorColor'],
 					'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__line' => array(
+				'.uagb-timeline__right-block .uagb-timeline__line' => array(
 					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
-				' .uagb-timeline__left-block .uagb-timeline__line' => array(
+				'.uagb-timeline__left-block .uagb-timeline__line' => array(
 					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
-				' .uagb-timeline__center-block .uagb-timeline__line' => array(
+				'.uagb-timeline__center-block .uagb-timeline__line' => array(
 					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
 				' .uagb-timeline__marker'                 => array(
@@ -3556,16 +3643,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height'      => $connector_size,
 					'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 				),
-				' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
+				'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
+				'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
+				'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				' .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
+				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
@@ -3627,14 +3714,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_timeline_tablet_selectors( $attr ) {
 			$tablet_selector = array(
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line' => array(
 					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
 			);
@@ -3651,7 +3738,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_timeline_mobile_selectors( $attr ) {
 			$m_selectors = array(
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
 				),
@@ -3661,10 +3748,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line' => array(
+				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line' => array(
 					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 				),
 			);
@@ -3688,13 +3775,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$field_vr_padding = UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' );
 
 			$selectors = array(
-				' .wpcf7 .wpcf7-form'                => array(
+				' .wpcf7 .wpcf7-form'                      => array(
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 form.wpcf7-form:not(input)' => array(
+				' .wpcf7 form.wpcf7-form:not(input)'       => array(
 					'color' => $attr['fieldLabelColor'],
 				),
-				' .wpcf7 input:not([type=submit])'   => array(
+				' .wpcf7 input:not([type=submit])'         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3709,7 +3796,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 select'                     => array(
+				' .wpcf7 select'                           => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldLabelColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
@@ -3732,7 +3819,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => $field_vr_padding,
 					'padding-bottom' => $field_vr_padding,
 				),
-				' .wpcf7 textarea'                   => array(
+				' .wpcf7 textarea'                         => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
 					'border-color'     => $attr['fieldBorderColor'],
@@ -3747,11 +3834,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
 				),
-				' .wpcf7 textarea::placeholder'      => array(
+				' .wpcf7 textarea::placeholder'            => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
-				' .wpcf7 input::placeholder'         => array(
+				' .wpcf7 input::placeholder'               => array(
 					'color'      => $attr['fieldInputColor'],
 					'text-align' => $attr['align'],
 				),
@@ -3760,10 +3847,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7 form input:not([type=submit]):focus' => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 form select:focus'          => array(
+				' .wpcf7 form select:focus'                => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
-				' .wpcf7 textarea:focus'             => array(
+				' .wpcf7 textarea:focus'                   => array(
 					'border-color' => $attr['fieldBorderFocusColor'],
 				),
 
@@ -3931,7 +4018,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label' => array(
 					'color' => $attr['radioCheckLableColor'],
 				),
-				' span.wpcf7-not-valid-tip'          => array(
+				' span.wpcf7-not-valid-tip'                => array(
 					'color' => $attr['validationMsgColor'],
 				),
 				' .uagb-cf7-styler__highlight-border input.wpcf7-form-control.wpcf7-not-valid' => array(
@@ -3943,7 +4030,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
 					'background-color' => $attr['validationMsgBgColor'],
 				),
-				' .wpcf7-response-output'            => array(
+				' .wpcf7-response-output'                  => array(
 					'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], 'px' ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgVrPadding'], 'px' ),
@@ -3951,12 +4038,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
 				),
-				' .wpcf7-response-output.wpcf7-validation-errors' => array(
+				' .wpcf7 form.failed .wpcf7-response-output' => array(
 					'background-color' => $attr['errorMsgBgColor'],
 					'border-color'     => $attr['errorMsgBorderColor'],
 					'color'            => $attr['errorMsgColor'],
 				),
-				' .wpcf7-response-output.wpcf7-validation- success' => array(
+				' .wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output' => array(
+					'background-color' => $attr['errorMsgBgColor'],
+					'border-color'     => $attr['errorMsgBorderColor'],
+					'color'            => $attr['errorMsgColor'],
+				),
+				' .wpcf7 form.sent .wpcf7-response-output' => array(
 					'background-color' => $attr['successMsgBgColor'],
 					'border-color'     => $attr['successMsgBorderColor'],
 					'color'            => $attr['successMsgColor'],
@@ -4049,7 +4141,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['buttonBgHoverColor'],
 					'border-color'     => $attr['buttonBorderHoverColor'],
 				),
-				' select'                                => array(
+				' .gform_wrapper select '                => array(
 					'background-color' => $attr['fieldBgColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],
@@ -4907,7 +4999,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( 'accordion' === $attr['layout'] && true === $attr['expandFirstItem'] ) {
 
-				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-child__wrapper .uagb-faq-item.uagb-faq-item-active .uagb-faq-content '] = array(
+				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-item.uagb-faq-item-active .uagb-faq-content '] = array(
 					'display' => 'block',
 				);
 			}
@@ -5513,6 +5605,132 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_condition_block_css() {
 
 			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
+		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @since 1.24.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_gallery_css( $attr, $id ) {
+			if ( isset( $attr['masonry'] ) && true === $attr['masonry'] ) {
+				$col_count = ( isset( $attr['columns'] ) ) ? $attr['columns'] : 3;
+				$selectors = array();
+				if ( isset( $attr['masonryGutter'] ) && '' !== $attr['masonryGutter'] ) {
+					$selectors = array(
+						'.wp-block-gallery.columns-' . $col_count . ' ul.blocks-gallery-grid' => array(
+							'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+						'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item' => array(
+							'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+					);
+				}
+				$t_selectors = array();
+				if ( $col_count > 3 ) {
+					$t_selectors = array(
+						'.wp-block-gallery.columns-' . $col_count . ' .blocks-gallery-grid' => array(
+							'column-count' => '3',
+						),
+					);
+				}
+			}
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => array(),
+			);
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+		}
+
+		/**
+		 * Get Masonry Gallery CSS.
+		 *
+		 * @since 1.24.0
+		 */
+		public static function get_masonry_gallery_css() {
+
+			$selectors = array(
+				' .blocks-gallery-grid .blocks-gallery-item' => array(
+					'margin'             => 0,
+					'display'            => 'block',
+					'grid-template-rows' => '1fr auto',
+					'margin-bottom'      => '1em',
+					'break-inside'       => 'avoid',
+					'width'              => 'unset',
+				),
+				'.wp-block-gallery .blocks-gallery-grid' => array(
+					'column-gap' => '1em',
+					'display'    => 'unset',
+				),
+				'.columns-1 .blocks-gallery-grid'        => array(
+					'column-count' => '1',
+				),
+				'.columns-2 .blocks-gallery-grid'        => array(
+					'column-count' => '2',
+				),
+				'.columns-3 .blocks-gallery-grid'        => array(
+					'column-count' => '3',
+				),
+				'.columns-4 .blocks-gallery-grid'        => array(
+					'column-count' => '4',
+				),
+				'.columns-5 .blocks-gallery-grid'        => array(
+					'column-count' => '5',
+				),
+				'.columns-6 .blocks-gallery-grid'        => array(
+					'column-count' => '6',
+				),
+				'.columns-7 .blocks-gallery-grid'        => array(
+					'column-count' => '7',
+				),
+				'.columns-8 .blocks-gallery-grid'        => array(
+					'column-count' => '8',
+				),
+			);
+
+			$m_selectors = array(
+				'.wp-block-gallery[class*="columns-"] .blocks-gallery-grid' => array(
+					'column-count' => '2',
+					'column-gap'   => '1em',
+					'display'      => 'unset',
+				),
+				'.wp-block-gallery.columns-1 .blocks-gallery-grid'        => array(
+					'column-count' => '1',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => array(),
+				'mobile'  => $m_selectors,
+			);
+
+			$css = UAGB_Helper::generate_all_css( $combined_selectors, '.uag-masonry' );
+
+			$desktop = $css['desktop'];
+			$tablet  = $css['tablet'];
+			$mobile  = $css['mobile'];
+
+			$tab_styling_css = '';
+			$mob_styling_css = '';
+
+			if ( ! empty( $tablet ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= $tablet;
+				$tab_styling_css .= '}';
+			}
+
+			if ( ! empty( $mobile ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= $mobile;
+				$mob_styling_css .= '}';
+			}
+
+			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
 	}
 }

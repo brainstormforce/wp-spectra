@@ -1,0 +1,26 @@
+{
+    "name": "brainstormforce/gutenberg-templates",
+    "type": "wordpress-plugin",
+    "description": "Gutenberg single page templates, and blocks library to imported your website easily.",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+      {
+        "name": "Brainstorm Force",
+        "email": "hello@bsf.io"
+      }
+    ],
+    "require": {
+      "composer/installers": "^1.11"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "wp-cli/dist-archive-command": "^2.0",
+        "wp-coding-standards/wpcs": "dev-master"
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+        "lint": "phpcs --standard=phpcs.xml.dist --report-summary --report-source"
+    }
+}

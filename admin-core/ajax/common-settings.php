@@ -79,6 +79,15 @@ class CommonSettings extends AjaxBase {
 			);
 		}
 
+		/**
+		 * Nonce verification
+		 */
+
+		if ( ! check_ajax_referer( 'uag_theme_activate', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
+			wp_send_json_error( $response_data );
+		}
+
 		$activate = switch_theme( $theme_slug );
 
 		if ( is_wp_error( $activate ) ) {
@@ -122,9 +131,9 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		
-		$this->update_admin_settings_option( 'enable_block_condition', sanitize_text_field( $_POST['value'] ) );
-		
+
+		$this->update_admin_settings_option( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
+
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);
@@ -156,7 +165,7 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$this->update_admin_settings_option( 'enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(

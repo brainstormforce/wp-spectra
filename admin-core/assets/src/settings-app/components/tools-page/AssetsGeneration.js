@@ -17,7 +17,7 @@ function AssetsGeneration( props ) {
 	const [ status, setStatus ] = useState( false );
 	
 	const handleRegenerateAssets = () => {
-
+		setRegenerateAssetsState( true );
 		setStatus('Processing....');
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_regenerate_assets' );
@@ -30,9 +30,9 @@ function AssetsGeneration( props ) {
 			body: formData,
 		} ).then( ( data ) => {
 			if ( data.success ) {
-				setRegenerateAssetsState( false );
 				setStatus('Assets Regenerated!');
 				setTimeout(function(){ setStatus(false); }, 10000);
+				setRegenerateAssetsState( false );
 			} 
 		} );
 	};

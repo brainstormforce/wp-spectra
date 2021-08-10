@@ -258,29 +258,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$default = array();
 
 			for ( $i = 1; $i <= 2; $i++ ) {
-				array_push(
-					$default,
-					array(
-						'size'             => '',
-						'vPadding'         => 10,
-						'hPadding'         => 14,
-						'borderWidth'      => 1,
-						'borderRadius'     => 2,
-						'borderStyle'      => 'solid',
-						'borderColor'      => '#333',
-						'borderHColor'     => '#333',
-						'color'            => '#333',
-						'background'       => '',
-						'hColor'           => '#333',
-						'hBackground'      => '',
-						'sizeType'         => 'px',
-						'sizeMobile'       => '',
-						'sizeTablet'       => '',
-						'lineHeightType'   => 'em',
-						'lineHeight'       => '',
-						'lineHeightMobile' => '',
-						'lineHeightTablet' => '',
-					)
+				$default[] = array(
+					'size'             => '',
+					'vPadding'         => 10,
+					'hPadding'         => 14,
+					'borderWidth'      => 1,
+					'borderRadius'     => 2,
+					'borderStyle'      => 'solid',
+					'borderColor'      => '#333',
+					'borderHColor'     => '#333',
+					'color'            => '#333',
+					'background'       => '',
+					'hColor'           => '#333',
+					'hBackground'      => '',
+					'sizeType'         => 'px',
+					'sizeMobile'       => '',
+					'sizeTablet'       => '',
+					'lineHeightType'   => 'em',
+					'lineHeight'       => '',
+					'lineHeightMobile' => '',
+					'lineHeightTablet' => '',
 				);
 			}
 
@@ -331,7 +328,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$view = implode( ' ', $view );
 			}
 			?>
-			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
 			<?php
 		}
 
@@ -1356,6 +1353,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/tabs':
 					$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
+					$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':
