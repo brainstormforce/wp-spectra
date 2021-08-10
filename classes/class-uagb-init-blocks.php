@@ -376,10 +376,9 @@ class UAGB_Init_Blocks {
 				'user_role'              => $this->get_user_role(),
 				'uagb_url'               => UAGB_URL,
 				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'          => UAGB_URI,
+				'uagb_site_url'          => UAGB_URI,				
 				'enableConditions'       => apply_filters_deprecated( 'enable_block_condition', array( true ), '1.23.4', 'uag_enable_block_condition' ),
 				'enableMasonryGallery'   => apply_filters( 'uag_enable_masonry_gallery', true ),
-				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
 				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
 			)
 		);

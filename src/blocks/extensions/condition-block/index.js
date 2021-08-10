@@ -206,7 +206,7 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 	return extraProps;
 }
 
-if( '1' === enableConditions ){
+if( '1' === enableConditions || 'enabled' === enableConditions ){
 	addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',

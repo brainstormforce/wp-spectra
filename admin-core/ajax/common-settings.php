@@ -54,7 +54,7 @@ class CommonSettings extends AjaxBase {
 			'enable_file_generation',
 			'regenerate_assets',
 			'enable_templates_button',
-			'uag_enable_block_condition',
+			'enable_block_condition',
 			'blocks_activation_and_deactivation',
 			'theme_activate',
 		);
@@ -111,7 +111,7 @@ class CommonSettings extends AjaxBase {
 	 *
 	 * @return void
 	 */
-	public function uag_enable_block_condition() {
+	public function enable_block_condition() {
 
 		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
 
@@ -122,7 +122,7 @@ class CommonSettings extends AjaxBase {
 		/**
 		 * Nonce verification
 		 */
-		if ( ! check_ajax_referer( 'uag_uag_enable_block_condition', 'security', false ) ) {
+		if ( ! check_ajax_referer( 'uag_enable_block_condition', 'security', false ) ) {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}

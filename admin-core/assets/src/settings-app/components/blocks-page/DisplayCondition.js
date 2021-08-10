@@ -11,20 +11,20 @@ function DisplayCondition( ) {
 
 	useEffect( () => {
 		window.onbeforeunload = null;
-		enableBlockConditionCachedValue = options['uag_enable_block_condition']
+		enableBlockConditionCachedValue = options['enable_block_condition']
 	}, [] );
 
     useEffect( () => {
 
-		if ( enableBlockConditionCachedValue !== options['uag_enable_block_condition'] ) {
+		if ( enableBlockConditionCachedValue !== options['enable_block_condition'] ) {
 			let formData = new window.FormData();
 
-			formData.append( 'action', 'uag_uag_enable_block_condition' );
+			formData.append( 'action', 'uag_enable_block_condition' );
 			formData.append(
 				'security',
-				uag_react.uag_enable_block_condition_nonce
+				uag_react.enable_block_condition_nonce
 			);
-			formData.append( 'value', options['uag_enable_block_condition'] );
+			formData.append( 'value', options['enable_block_condition'] );
 			apiFetch( {
 				url: uag_react.ajax_url,
 				method: 'POST',
@@ -38,11 +38,11 @@ function DisplayCondition( ) {
 				}
 			} );
 
-			enableBlockConditionCachedValue = options['uag_enable_block_condition'];
+			enableBlockConditionCachedValue = options['enable_block_condition'];
 		}
-	}, [ options['uag_enable_block_condition'] ] );
+	}, [ options['enable_block_condition'] ] );
 
-	var enableDisplayConditionSettings  = globaldata.settings[ 'uag_enable_block_condition' ];
+	var enableDisplayConditionSettings  = globaldata.settings[ 'enable_block_condition' ];
 
 	return (
 			<div className="uag-extension__metabox">
