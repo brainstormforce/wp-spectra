@@ -9,12 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'UAGB_Old_Admin' ) ) {
+if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 
 	/**
-	 * Class UAGB_Old_Admin.
+	 * Class UAGB_Legacy_Admin.
 	 */
-	final class UAGB_Old_Admin {
+	final class UAGB_Legacy_Admin {
 
 		/**
 		 * Calls on initialization
@@ -586,5 +586,5 @@ if ( ! class_exists( 'UAGB_Old_Admin' ) ) {
 		}
 	}
 
-	UAGB_Old_Admin::init();
+	UAGB_Legacy_Admin::init();
 }
