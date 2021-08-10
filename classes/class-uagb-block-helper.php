@@ -676,20 +676,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
-			$top_margin    = isset( $attr['topMarginDesktop'] ) ? $attr['topMargin'] : $attr['topMarginDesktop'];
-			$bottom_margin = isset( $attr['bottomMarginDesktop'] ) ? $attr['bottomMargin'] : $attr['bottomMarginDesktop'];
-			$left_margin   = isset( $attr['leftMarginDesktop'] ) ? $attr['bottomMargin'] : $attr['leftMarginDesktop'];
-			$right_margin  = isset( $attr['rightMarginDesktop'] ) ? $attr['topMargin'] : $attr['rightMarginDesktop'];
+			$top_margin    = isset( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : $attr['topMargin'];
+			$bottom_margin = isset( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : $attr['bottomMargin'];
+			$left_margin   = isset( $attr['leftMarginDesktop'] ) ? $attr['leftMarginDesktop'] : $attr['bottomMargin'];
+			$right_margin  = isset( $attr['rightMarginDesktop'] ) ? $attr['rightMarginDesktop'] : $attr['topMargin'];
 
 			$mobile_top_margin    = isset( $attr['topMarginMobile'] ) ? $attr['topMarginMobile'] : $attr['topMarginMobile'];
 			$mobile_bottom_margin = isset( $attr['bottomMarginMobile'] ) ? $attr['bottomMarginMobile'] : $attr['bottomMarginMobile'];
-			$mobile_left_margin   = isset( $attr['leftMarginMobile'] ) ? $attr['bottomMarginMobile'] : $attr['leftMarginMobile'];
-			$mobile_right_margin  = isset( $attr['rightMarginMobile'] ) ? $attr['topMarginMobile'] : $attr['rightMarginMobile'];
+			$mobile_left_margin   = isset( $attr['leftMarginMobile'] ) ? $attr['leftMarginMobile'] : $attr['bottomMarginMobile'];
+			$mobile_right_margin  = isset( $attr['rightMarginMobile'] ) ? $attr['rightMarginMobile'] : $attr['topMarginMobile'];
 
 			$tablet_top_margin    = isset( $attr['topMarginTablet'] ) ? $attr['topMarginTablet'] : $attr['topMarginTablet'];
 			$tablet_bottom_margin = isset( $attr['bottomMarginTablet'] ) ? $attr['bottomMarginTablet'] : $attr['bottomMarginTablet'];
-			$tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['bottomMarginTablet'] : $attr['leftMarginTablet'];
-			$tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['topMarginTablet'] : $attr['rightMarginTablet'];
+			$tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['leftMarginTablet'] : $attr['bottomMarginTablet'];
+			$tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['rightMarginTablet'] : $attr['topMarginTablet'];
 
 			$m_selectors          = array();
 			$t_selectors          = array();
