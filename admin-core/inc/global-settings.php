@@ -51,12 +51,12 @@ class GlobalSettings {
 					),
 				),
 			),
-			'uag_enable_block_condition'             => array(
+			'enable_block_condition'             => array(
 				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
-					'uag_enable_block_condition' => array(
+					'enable_block_condition' => array(
 						'type'  => 'toggle',
-						'name'  => 'uag_enable_block_condition',
+						'name'  => 'enable_block_condition',
 						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 					),

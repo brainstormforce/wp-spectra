@@ -19,7 +19,7 @@ function DisplayCondition( ) {
 		if ( enableBlockConditionCachedValue !== options['enable_block_condition'] ) {
 			let formData = new window.FormData();
 
-			formData.append( 'action', 'uag_enable_block_condition' );
+			formData.append( 'action', 'enable_block_condition' );
 			formData.append(
 				'security',
 				uag_react.enable_block_condition_nonce
