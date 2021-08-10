@@ -485,7 +485,6 @@ hr.uagb-editor__separator {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	flex: 0 0 86px;
 	justify-content: center;
 	align-items: center;
 	padding: 2px;
@@ -498,8 +497,8 @@ hr.uagb-editor__separator {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	-webkit-box-flex: 0;
-	-ms-flex: 0 0 86px;
-	flex: 0 0 86px;
+	-ms-flex: 0 0 70px;
+	flex: 0 0 70px;
 	padding: 2px;
 }
 
@@ -3232,8 +3231,14 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--default .rfipbtn__del {
-	height: 18px;
-	background-color: #eee;
+	height: 7px;
+    background-color: #007cba33;
+    color: #007cba;
+    font-weight: bold;
+    padding: 8px 8px 10px 8px;
+    border-radius: 100%;
+    margin-left: 10px;
+}
 }
 
 [class^="fipicon-"] {
@@ -3442,6 +3447,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	> .components-panel__body-title {
 	margin: -10px;
 	margin-bottom: 16px;
+}
+.uagb-inspector-tab
+	.components-panel__body
+	> .components-panel__body-title
+	.components-panel__body-toggle {
+	padding: 16px 48px 16px 26px;
 }
 .uagb-inspector-tab
 	.components-panel__body.is-opened
