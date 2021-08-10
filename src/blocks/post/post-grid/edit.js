@@ -30,6 +30,88 @@ const PostGridComponent = ( props ) => {
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		const {
+			btnVPadding,
+			btnHPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+			contentPadding,
+			contentPaddingMobile,
+			contentPaddingTablet,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
+		} = props.attributes;
+
+		if (btnVPadding) {
+			if (!paddingBtnTop) {
+				props.setAttributes({ paddingBtnTop: btnVPadding });
+			}
+			if (!paddingBtnBottom) {
+				props.setAttributes({ paddingBtnBottom: btnVPadding });
+			}
+		}
+		if (btnHPadding) {
+			if (!paddingBtnRight) {
+				props.setAttributes({ paddingBtnRight: btnHPadding });
+			}
+			if (!paddingBtnLeft) {
+				props.setAttributes({ paddingBtnLeft: btnHPadding });
+			}
+		}
+		if (contentPadding) {
+			if (!paddingTop) {
+				props.setAttributes({ paddingTop: contentPadding });
+			}
+			if (!paddingBottom) {
+				props.setAttributes({ paddingBottom: contentPadding });
+			}
+			if (!paddingRight) {
+				props.setAttributes({ paddingRight: contentPadding });
+			}
+			if (!paddingLeft) {
+				props.setAttributes({ paddingLeft: contentPadding });
+			}
+		}
+		if (contentPaddingTablet) {
+			if (!paddingTopTablet) {
+				props.setAttributes({ paddingTopTablet: contentPaddingTablet });
+			}
+			if (!paddingBottomTablet) {
+				props.setAttributes({ paddingBottomTablet: contentPaddingTablet });
+			}
+			if (!paddingRightTablet) {
+				props.setAttributes({ paddingRightTablet: contentPaddingTablet });
+			}
+			if (!paddingLeftTablet) {
+				props.setAttributes({ paddingLeftTablet: contentPaddingTablet });
+			}
+		}
+		if (contentPaddingMobile) {
+			if (!paddingTopMobile) {
+				props.setAttributes({ paddingTopMobile: contentPaddingMobile });
+			}
+			if (!paddingBottomMobile) {
+				props.setAttributes({ paddingBottomMobile: contentPaddingMobile });
+			}
+			if (!paddingRightMobile) {
+				props.setAttributes({ paddingRightMobile: contentPaddingMobile });
+			}
+			if (!paddingLeftMobile) {
+				props.setAttributes({ paddingLeftMobile: contentPaddingMobile });
+			}
+		}
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
 			'id',

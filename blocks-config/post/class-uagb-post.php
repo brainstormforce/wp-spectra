@@ -787,6 +787,155 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'rowGapUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'columnGapUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'imageBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'titleBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'metaBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'ctaBottomSpaceUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'titleTransform' => array(
+					'type' => 'string'
+				),
+				'metaLinkTransform' => array(
+					'type' => 'string'
+				),
+				'excerptTransform' => array(
+					'type' => 'string'
+				),
+				'ctaTransform' => array(
+					'type' => 'string'
+				),
+				'titleDecoration' => array(
+					'type' => 'string'
+				),
+				'metaLinkDecoration' => array(
+					'type' => 'string'
+				),
+				'excerptDecoration' => array(
+					'type' => 'string'
+				),
+				'ctaDecoration' => array(
+					'type' => 'string'
+				),
+				'paddingBtnTop' => array(
+					'type' => 'number'
+				),
+				'paddingBtnBottom' => array(
+					'type' => 'number'
+				),
+				'paddingBtnLeft' => array(
+					'type' => 'number'
+				),
+				'paddingBtnRight' => array(
+					'type' => 'number'
+				),
+				'paddingBtnTopTablet' => array(
+					'type' => 'number'
+				),
+				'paddingBtnRightTablet' => array(
+					'type' => 'number'
+				),
+				'paddingBtnBottomTablet' => array(
+					'type' => 'number'
+				),
+				'paddingBtnLeftTablet' => array(
+					'type' => 'number'
+				),
+				'paddingBtnTopMobile' => array(
+					'type' => 'number'
+				),
+				'paddingBtnRightMobile' => array(
+					'type' => 'number'
+				),
+				'paddingBtnBottomMobile' => array(
+					'type' => 'number'
+				),
+				'paddingBtnLeftMobile' => array(
+					'type' => 'number'
+				),
+				'paddingBtnUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'mobilePaddingBtnUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'tabletPaddingBtnUnit' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'spacingLink' => array(
+					'type' => 'string',
+					'default' => 'px'
+				),
+				'paddingTop' => array(
+					'type' => 'number',
+					'default' => 20,
+				),
+				'paddingBottom' => array(
+					'type' => 'number',
+					'default' => 20,
+				),
+				'paddingLeft' => array(
+					'type' => 'number',
+					'default' => 20,
+				),
+				'paddingRight' => array(
+					'type' => 'number',
+					'default' => 20,
+				),
+				'paddingTopTablet' => array(
+					'type' => 'number'
+				),
+				'paddingRightTablet' => array(
+					'type' => 'number'
+				),
+				'paddingBottomTablet' => array(
+					'type' => 'number'
+				),
+				'paddingLeftTablet' => array(
+					'type' => 'number'
+				),
+				'paddingTopMobile' => array(
+					'type' => 'number'
+				),
+				'paddingRightMobile' => array(
+					'type' => 'number'
+				),
+				'paddingBottomMobile' => array(
+					'type' => 'number'
+				),
+				'paddingLeftMobile' => array(
+					'type' => 'number'
+				),
+				'paddingUnit' => array(
+					'type' => 'string'
+				),
+				'mobilePaddingUnit' => array(
+					'type' => 'string'
+				),
+				'tabletPaddingUnit' => array(
+					'type' => 'string'
+				),
 			);
 		}
 

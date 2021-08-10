@@ -5,7 +5,6 @@
  import UAGB_Block_Icons from '@Controls/block-icons';
  import React, { Suspense } from 'react';
  import lazyLoader from '@Controls/lazy-loader';
- import ColumnResponsive from '@Components/typography/column-responsive';
  import WebfontLoader from '@Components/typography/fontloader';
  import TypographyControl from '@Components/typography';
  import { __ } from '@wordpress/i18n';
@@ -35,8 +34,7 @@
  import {
 	 InspectorControls,
 	 BlockAlignmentToolbar,
-	 BlockControls,
-	 ColorPalette,
+	 BlockControls
  } from '@wordpress/block-editor';
  
  const Settings = ( props ) => {
@@ -179,7 +177,46 @@
 		 imageBottomSpaceUnit,
 		 titleBottomSpaceUnit,
 		 metaBottomSpaceUnit,
-		 ctaBottomSpaceUnit
+		 ctaBottomSpaceUnit,
+		 titleTransform,
+		metaLinkTransform,
+		excerptTransform,
+		ctaTransform,
+		titleDecoration,
+		metaLinkDecoration,
+		excerptDecoration,
+		ctaDecoration,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		spacingLink,
+		paddingTop,
+		paddingBottom,
+		paddingLeft,
+		paddingRight,
+		paddingTopTablet,
+		paddingRightTablet,
+		paddingBottomTablet,
+		paddingLeftTablet,
+		paddingTopMobile,
+		paddingRightMobile,
+		paddingBottomMobile,
+		paddingLeftMobile,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
 	 } = attributes;
  
 	 const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
@@ -331,6 +368,7 @@
 		return (
 			<PanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<SelectControl
 					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
@@ -373,15 +411,17 @@
 						} )
 					}
 				/>
-				<RangeControl
-					label={ __(
+				<Range
+					label={__(
 						'Posts Per Page',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ postsToShow }
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={postsToShow}
 					onChange={ onChangePostsPerPage }
-					min={ 0 }
-					max={ 500 }
+					min={0}
+					max={500}
+					displayUnit = { false }
 				/>
 				<SelectControl
 					label={ __( 'Order By' ) }
@@ -489,15 +529,17 @@
 					onChange={ onSelectPagination }
 				/>
 				{ postPagination == true && (
-					<RangeControl
-						label={ __(
+					<Range
+						label={__(
 							'Page Limit',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ pageLimit }
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={pageLimit}
 						onChange={ onChangePageLimit }
-						min={ 0 }
-						max={ 100 }
+						min={0}
+						max={100}
+						displayUnit = { false }
 					/>
 				) }
 				<h2>
@@ -610,186 +652,105 @@
 						aria-pressed={ 'right' === paginationAlignment }
 						isPrimary={ 'right' === paginationAlignment }
 					/>
-					<hr className="uagb-editor__separator" />
+					
 					{ paginationLayout == 'filled' && (
 						<>
-							<p className="uagb-setting-label">
-								{ __(
+							<AdvancedPopColorControl
+								label={__(
 									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: paginationBgColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ paginationBgColor }
-								onChange={ ( colorValue ) =>
-									setAttributes( {
-										paginationBgColor: colorValue,
-									} )
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationBgColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationBgColor: value })
 								}
-							/>
-							<p className="uagb-setting-label">
-								{ __(
+							/> 
+							<AdvancedPopColorControl
+								label={__(
 									'Background Active Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: paginationBgActiveColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ paginationBgActiveColor }
-								onChange={ ( colorValue ) =>
-									setAttributes( {
-										paginationBgActiveColor: colorValue,
-									} )
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationBgActiveColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationBgActiveColor: value })
 								}
-							/>
+							/> 
 						</>
 					) }
 					{ paginationLayout == 'border' && (
-						<>
-							<RangeControl
-								label={ __(
+						<Border
+							setAttributes={setAttributes}
+							borderWidth={{
+								value: paginationBorderSize,
+								label: 'paginationBorderSize',
+								title: __(
 									'Border Size',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ paginationBorderSize }
-								onChange={ ( value ) =>
-									setAttributes( {
-										paginationBorderSize: value,
-									} )
-								}
-								min={ 0 }
-								max={ 10 }
-							/>
-							<RangeControl
-								label={ __(
-									'Border Radius',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ paginationBorderRadius }
-								onChange={ ( value ) =>
-									setAttributes( {
-										paginationBorderRadius: value,
-									} )
-								}
-								min={ 0 }
-								max={ 500 }
-							/>
-							<p className="uagb-setting-label">
-								{ __(
-									'Border Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: paginationBorderColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ paginationBorderColor }
-								onChange={ ( colorValue ) =>
-									setAttributes( {
-										paginationBorderColor: colorValue,
-									} )
-								}
-							/>
-							<p className="uagb-setting-label">
-								{ __(
-									'Border Active Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: paginationBorderActiveColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ paginationBorderActiveColor }
-								onChange={ ( colorValue ) =>
-									setAttributes( {
-										paginationBorderActiveColor: colorValue,
-									} )
-								}
-							/>
-						</>
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+							borderRadius={{
+								value: paginationBorderRadius,
+								label: 'paginationBorderRadius',
+								title: __(
+									"Radius",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+							borderColor={{
+								value: paginationBorderColor,
+								label: 'paginationBorderColor',
+								title: __(
+									"Color",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+							borderHoverColor={{
+								value: paginationBorderActiveColor,
+								label: 'paginationBorderActiveColor',
+								title: __(
+									"Hover Color",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+						/>
 					) }
-					<p className="uagb-setting-label">
-						{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: paginationColor } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ paginationColor }
-						onChange={ ( colorValue ) =>
-							setAttributes( { paginationColor: colorValue } )
-						}
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Text Active Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: paginationActiveColor,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ paginationActiveColor }
-						onChange={ ( colorValue ) =>
-							setAttributes( {
-								paginationActiveColor: colorValue,
-							} )
-						}
-					/>
-					<hr className="uagb-editor__separator" />
-					<RangeControl
-						label={ __(
-							'Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ paginationSpacing }
-						onChange={ ( value ) =>
-							setAttributes( { paginationSpacing: value } )
-						}
-						help={ __(
-							'This spacing is between the Post Grid and the Pagination',
-							'ultimate-addons-for-gutenberg'
-						) }
-						min={ 0 }
-						max={ 500 }
-					/>
-					<hr className="uagb-editor__separator" />
+					<AdvancedPopColorControl
+								label={__(
+									'Text Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationColor: value })
+								}
+							/> 
+							<AdvancedPopColorControl
+								label={__(
+									'Text Active Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationActiveColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationActiveColor: value })
+								}
+							/>
+							<Range
+								label={__(
+									'Spacing',
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={ paginationSpacing }
+								onChange={ ( value ) =>
+									setAttributes( { paginationSpacing: value } )
+								}
+								help={ __(
+									'This spacing is between the Post Grid and the Pagination',
+									'ultimate-addons-for-gutenberg'
+								) }
+								min={0}
+								max={500}
+							/>
 					<TextControl
 						label={ __(
 							'Previous Text',
@@ -986,18 +947,18 @@
 				) }
 				{ displayPostExcerpt &&
 					displayPostContentRadio === 'excerpt' && (
-						<RangeControl
-							label={ __(
+						<Range
+							label={__(
 								'Max number of words in excerpt',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={excerptLength}
+							onChange={(value) =>
+								setAttributes({ excerptLength: value })
 							}
-							min={ 1 }
-							max={ 100 }
-							allowReset
+							min={1}
+							max={100}
 						/>
 					) }
 			</PanelBody>
@@ -1034,12 +995,6 @@
 								setAttributes( { newTab: ! newTab } )
 							}
 						/>
-						<h2>
-							{ __(
-								'Button Text',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
 						<TextControl
 							label={ __(
 								'Text',
@@ -1094,34 +1049,81 @@
 						value: columnGapUnit,
 						label: "columnGapUnit",
 					}}
-				/>
-				<ResponsiveSlider
+				/>     
+				<SpacingControl
+					{...props}
 					label={__(
 						"Content Padding",
 						"ultimate-addons-for-gutenberg"
 					)}
-					data={{
-						desktop: {
-							value: contentPadding,
-							label: "contentPadding",
-						},
-						tablet: {
-							value: contentPaddingTablet,
-							label: "contentPaddingTablet",
-						},
-						mobile: {
-							value: contentPaddingMobile,
-							label: "contentPaddingMobile",
-						},
+					valueTop={{
+						value: paddingTop,
+						label: "paddingTop",
 					}}
-					min={0}
-					max={500}
+					valueRight={{
+						value: paddingRight,
+						label: "paddingRight",
+					}}
+					valueBottom={{
+						value: paddingBottom,
+						label: "paddingBottom",
+					}}
+					valueLeft={{
+						value: paddingLeft,
+						label: "paddingLeft",
+					}}
+					valueTopTablet={{
+						value: paddingTopTablet,
+						label: "paddingTopTablet",
+					}}
+					valueRightTablet={{
+						value: paddingRightTablet,
+						label: "paddingRightTablet",
+					}}
+					valueBottomTablet={{
+						value: paddingBottomTablet,
+						label: "paddingBottomTablet",
+					}}
+					valueLeftTablet={{
+						value: paddingLeftTablet,
+						label: "paddingLeftTablet",
+					}}
+					valueTopMobile={{
+						value: paddingTopMobile,
+						label: "paddingTopMobile",
+					}}
+					valueRightMobile={{
+						value: paddingRightMobile,
+						label: "paddingRightMobile",
+					}}
+					valueBottomMobile={{
+						value: paddingBottomMobile,
+						label: "paddingBottomMobile",
+					}}
+					valueLeftMobile={{
+						value: paddingLeftMobile,
+						label: "paddingLeftMobile",
+					}}
 					unit={{
-						value: contentPaddingUnit,
-						label: "contentPaddingUnit",
+						value: paddingUnit,
+						label: "paddingUnit",
 					}}
+					mUnit={{
+						value: mobilePaddingUnit,
+						label: "mobilePaddingUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingUnit,
+						label: "tabletPaddingUnit",
+					}}
+					deviceType={deviceType}
+					attributes={attributes}
 					setAttributes={setAttributes}
-				/>         
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
+					}}
+				/>
 			</PanelBody>
 		);
 	};
@@ -1129,39 +1131,28 @@
 	const imageStyle = () => {
 		return displayPostImage == true && imgPosition == 'background' && (
 			<>
-				<p className="uagb-setting-label">
-					{ __(
+				<AdvancedPopColorControl
+					label={__(
 						'Background Overlay Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ {
-								backgroundColor: bgOverlayColor,
-							} }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ bgOverlayColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { bgOverlayColor: colorValue } )
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={bgOverlayColor}
+					onColorChange={(value) =>
+						setAttributes({ bgOverlayColor: value })
 					}
-					allowReset
-				/>
-				<RangeControl
-					label={ __(
+				/> 
+				<Range
+					label={__(
 						'Overlay Opacity',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ overlayOpacity }
-					onChange={ ( value ) =>
-						setAttributes( { overlayOpacity: value } )
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={overlayOpacity}
+					onChange={(value) =>
+						setAttributes({ overlayOpacity: value })
 					}
-					min={ 0 }
-					max={ 100 }
-					allowReset
+					min={0}
+					max={100}
 				/>
 				<Range
 					label={__(
@@ -1186,10 +1177,10 @@
 	const titleStyle = () => {
 		return  <PanelBody
 					title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
 				>
-					<h2>{ __( 'Title', 'ultimate-addons-for-gutenberg' ) }</h2>
 					<SelectControl
-						label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Html Tag', 'ultimate-addons-for-gutenberg' ) }
 						value={ titleTag }
 						onChange={ ( value ) =>
 							setAttributes( { titleTag: value } )
@@ -1236,7 +1227,7 @@
 						<>
 							<AdvancedPopColorControl
 								label={__(
-									'Title Color',
+									'Color',
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={titleColor}
@@ -1245,64 +1236,72 @@
 								}
 							/> 
 							<TypographyControl
-							label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-							value: titleLoadGoogleFonts,
-							label: 'titleLoadGoogleFonts',
-							} }
-							fontFamily={ {
-							value: titleFontFamily,
-							label: 'titleFontFamily',
-							} }
-							fontWeight={ {
-							value: titleFontWeight,
-							label: 'titleFontWeight',
-							} }
-							fontSubset={ {
-							value: titleFontSubset,
-							label: 'titleFontSubset',
-							} }
-							fontSizeType={ {
-							value: titleFontSizeType,
-							label: 'titleFontSizeType',
-							} }
-							fontSize={ {
-							value: titleFontSize,
-							label: 'titleFontSize',
-							} }
-							fontSizeMobile={ {
-							value: titleFontSizeMobile,
-							label: 'titleFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-							value: titleFontSizeTablet,
-							label: 'titleFontSizeTablet',
-							} }
-							lineHeightType={ {
-							value: titleLineHeightType,
-							label: 'titleLineHeightType',
-							} }
-							lineHeight={ {
-							value: titleLineHeight,
-							label: 'titleLineHeight',
-							} }
-							lineHeightMobile={ {
-							value: titleLineHeightMobile,
-							label: 'titleLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-							value: titleLineHeightTablet,
-							label: 'titleLineHeightTablet',
-							} }
+								label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+								) }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								loadGoogleFonts={ {
+									value: titleLoadGoogleFonts,
+									label: 'titleLoadGoogleFonts',
+								} }
+								fontFamily={ {
+									value: titleFontFamily,
+									label: 'titleFontFamily',
+								} }
+								fontWeight={ {
+									value: titleFontWeight,
+									label: 'titleFontWeight',
+								} }
+								fontSubset={ {
+									value: titleFontSubset,
+									label: 'titleFontSubset',
+								} }
+								fontSizeType={ {
+									value: titleFontSizeType,
+									label: 'titleFontSizeType',
+								} }
+								fontSize={ {
+									value: titleFontSize,
+									label: 'titleFontSize',
+								} }
+								fontSizeMobile={ {
+									value: titleFontSizeMobile,
+									label: 'titleFontSizeMobile',
+								} }
+								fontSizeTablet={ {
+									value: titleFontSizeTablet,
+									label: 'titleFontSizeTablet',
+								} }
+								lineHeightType={ {
+									value: titleLineHeightType,
+									label: 'titleLineHeightType',
+								} }
+								lineHeight={ {
+									value: titleLineHeight,
+									label: 'titleLineHeight',
+								} }
+								lineHeightMobile={ {
+									value: titleLineHeightMobile,
+									label: 'titleLineHeightMobile',
+								} }
+								lineHeightTablet={ {
+									value: titleLineHeightTablet,
+									label: 'titleLineHeightTablet',
+								} }
+								transform={{
+									value: titleTransform,
+									label: "titleTransform",
+								}}
+								decoration={{
+									value: titleDecoration,
+									label: "titleDecoration",
+								}}
 							/>
 							<Range
 								label={__(
-									'Title Bottom Spacing',
+									'Bottom Spacing',
 									"ultimate-addons-for-gutenberg"
 								)}
 								setAttributes={setAttributes}
@@ -1324,10 +1323,11 @@
 	const metaStyle = () => {
 		return  <PanelBody
 						title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ false }
 					>
 					<AdvancedPopColorControl
 						label={__(
-							'Meta Color',
+							'Color',
 							"ultimate-addons-for-gutenberg"
 						)}
 						colorValue={metaColor}
@@ -1335,79 +1335,75 @@
 							setAttributes({ metaColor: value })
 						}
 					/>
-					{ ( displayPostAuthor ||
-					displayPostDate ||
-					displayPostComment ||
-					displayPostTaxonomy ) && (
-						<>
-							<hr className="uagb-editor__separator" />
-							<h2>
-								{ __(
-									'Meta',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</h2>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: metaLoadGoogleFonts,
-									label: 'metaLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: metaFontFamily,
-									label: 'metaFontFamily',
-								} }
-								fontWeight={ {
-									value: metaFontWeight,
-									label: 'metaFontWeight',
-								} }
-								fontSubset={ {
-									value: metaFontSubset,
-									label: 'metaFontSubset',
-								} }
-								fontSizeType={ {
-									value: metaFontSizeType,
-									label: 'metaFontSizeType',
-								} }
-								fontSize={ {
-									value: metaFontSize,
-									label: 'metaFontSize',
-								} }
-								fontSizeMobile={ {
-									value: metaFontSizeMobile,
-									label: 'metaFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: metaFontSizeTablet,
-									label: 'metaFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: metaLineHeightType,
-									label: 'metaLineHeightType',
-								} }
-								lineHeight={ {
-									value: metaLineHeight,
-									label: 'metaLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: metaLineHeightMobile,
-									label: 'metaLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: metaLineHeightTablet,
-									label: 'metaLineHeightTablet',
-								} }
-							/>
-						</>
-					) }
+				
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: metaLoadGoogleFonts,
+							label: 'metaLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: metaFontFamily,
+							label: 'metaFontFamily',
+						} }
+						fontWeight={ {
+							value: metaFontWeight,
+							label: 'metaFontWeight',
+						} }
+						fontSubset={ {
+							value: metaFontSubset,
+							label: 'metaFontSubset',
+						} }
+						fontSizeType={ {
+							value: metaFontSizeType,
+							label: 'metaFontSizeType',
+						} }
+						fontSize={ {
+							value: metaFontSize,
+							label: 'metaFontSize',
+						} }
+						fontSizeMobile={ {
+							value: metaFontSizeMobile,
+							label: 'metaFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: metaFontSizeTablet,
+							label: 'metaFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: metaLineHeightType,
+							label: 'metaLineHeightType',
+						} }
+						lineHeight={ {
+							value: metaLineHeight,
+							label: 'metaLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: metaLineHeightMobile,
+							label: 'metaLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: metaLineHeightTablet,
+							label: 'metaLineHeightTablet',
+						} }
+						transform={{
+							value: metaLinkTransform,
+							label: "metaLinkTransform",
+						}}
+						decoration={{
+							value: metaLinkDecoration,
+							label: "metaLinkDecoration",
+						}}
+					/>
+						
 					<Range
 						label={__(
-						'Meta Bottom Spacing',
+						'Bottom Spacing',
 						"ultimate-addons-for-gutenberg"
 					)}
 					setAttributes={setAttributes}
@@ -1427,218 +1423,103 @@
 	const excerptStyle = () => {
 		return <PanelBody
 					title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
 				>
-					{! inheritFromTheme &&  displayPostExcerpt && (
-						<>
-							<hr className="uagb-editor__separator" />
-							<h2>
-								{ __(
-									'Excerpt',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</h2>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: excerptLoadGoogleFonts,
-									label: 'excerptLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: excerptFontFamily,
-									label: 'excerptFontFamily',
-								} }
-								fontWeight={ {
-									value: excerptFontWeight,
-									label: 'excerptFontWeight',
-								} }
-								fontSubset={ {
-									value: excerptFontSubset,
-									label: 'excerptFontSubset',
-								} }
-								fontSizeType={ {
-									value: excerptFontSizeType,
-									label: 'excerptFontSizeType',
-								} }
-								fontSize={ {
-									value: excerptFontSize,
-									label: 'excerptFontSize',
-								} }
-								fontSizeMobile={ {
-									value: excerptFontSizeMobile,
-									label: 'excerptFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: excerptFontSizeTablet,
-									label: 'excerptFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: excerptLineHeightType,
-									label: 'excerptLineHeightType',
-								} }
-								lineHeight={ {
-									value: excerptLineHeight,
-									label: 'excerptLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: excerptLineHeightMobile,
-									label: 'excerptLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: excerptLineHeightTablet,
-									label: 'excerptLineHeightTablet',
-								} }
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Excerpt Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={excerptColor}
-								onColorChange={(value) =>
-									setAttributes({ excerptColor: value })
-								}
-							/>
-							<Range
-								label={__(
-									'Excerpt Bottom Spacing',
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={excerptBottomSpace}
-								onChange={(value) =>
-									setAttributes({ excerptBottomSpace: value })
-								}
-								min={0}
-								max={50}
-								unit={{
-									value: excerptBottomSpaceUnit,
-									label: "excerptBottomSpaceUnit",
-								}}
-							/>
-						</>
-					)}
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: excerptLoadGoogleFonts,
+							label: 'excerptLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: excerptFontFamily,
+							label: 'excerptFontFamily',
+						} }
+						fontWeight={ {
+							value: excerptFontWeight,
+							label: 'excerptFontWeight',
+						} }
+						fontSubset={ {
+							value: excerptFontSubset,
+							label: 'excerptFontSubset',
+						} }
+						fontSizeType={ {
+							value: excerptFontSizeType,
+							label: 'excerptFontSizeType',
+						} }
+						fontSize={ {
+							value: excerptFontSize,
+							label: 'excerptFontSize',
+						} }
+						fontSizeMobile={ {
+							value: excerptFontSizeMobile,
+							label: 'excerptFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: excerptFontSizeTablet,
+							label: 'excerptFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: excerptLineHeightType,
+							label: 'excerptLineHeightType',
+						} }
+						lineHeight={ {
+							value: excerptLineHeight,
+							label: 'excerptLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: excerptLineHeightMobile,
+							label: 'excerptLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: excerptLineHeightTablet,
+							label: 'excerptLineHeightTablet',
+						} }
+						transform={{
+							value: excerptTransform,
+							label: "excerptTransform",
+						}}
+						decoration={{
+							value: excerptDecoration,
+							label: "excerptDecoration",
+						}}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							'Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={excerptColor}
+						onColorChange={(value) =>
+							setAttributes({ excerptColor: value })
+						}
+					/>
+					<Range
+						label={__(
+							'Bottom Spacing',
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={excerptBottomSpace}
+						onChange={(value) =>
+							setAttributes({ excerptBottomSpace: value })
+						}
+						min={0}
+						max={50}
+						unit={{
+							value: excerptBottomSpaceUnit,
+							label: "excerptBottomSpaceUnit",
+						}}
+					/>
+					
 				</PanelBody>
 	}
 	const readMoreLinkStyleSettings = () => {
-		const hoverSettings = (
-			<>
-				<p className="uagb-setting-label">
-					{ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: ctaHColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ ctaHColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { ctaHColor: colorValue } )
-					}
-					allowReset
-				/>
-				<p className="uagb-setting-label">
-					{ __(
-						'Background Hover Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: ctaBgHColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ ctaBgHColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { ctaBgHColor: colorValue } )
-					}
-					allowReset
-				/>
-				<p className="uagb-setting-label">
-					{ __(
-						'Border Hover Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: borderHColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ borderHColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { borderHColor: colorValue } )
-					}
-					allowReset
-				/>
-			</>
-		);
-	
-		const normalSettings = (
-			<>
-				<p className="uagb-setting-label">
-					{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: ctaColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ ctaColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { ctaColor: colorValue } )
-					}
-					allowReset
-				/>
-				<p className="uagb-setting-label">
-					{ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: ctaBgColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ ctaBgColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { ctaBgColor: colorValue } )
-					}
-					allowReset
-				/>
-				<p className="uagb-setting-label">
-					{ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: borderColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ borderColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { borderColor: colorValue } )
-					}
-					allowReset
-				/>
-			</>
-		);
 	
 		return (
 			<PanelBody
@@ -1648,237 +1529,244 @@
 				) }
 				initialOpen={ false }
 			>
-				{ displayPostLink && (
-					<>			
-						{ ! inheritFromTheme && (
-							<>
-								<TypographyControl
-									label={ __(
-										'Typography',
-										'ultimate-addons-for-gutenberg'
-									) }
-									attributes={ attributes }
-									setAttributes={ setAttributes }
-									loadGoogleFonts={ {
-										value: ctaLoadGoogleFonts,
-										label: 'ctaLoadGoogleFonts',
-									} }
-									fontFamily={ {
-										value: ctaFontFamily,
-										label: 'ctaFontFamily',
-									} }
-									fontWeight={ {
-										value: ctaFontWeight,
-										label: 'ctaFontWeight',
-									} }
-									fontSubset={ {
-										value: ctaFontSubset,
-										label: 'ctaFontSubset',
-									} }
-									fontSizeType={ {
-										value: ctaFontSizeType,
-										label: 'ctaFontSizeType',
-									} }
-									fontSize={ {
-										value: ctaFontSize,
-										label: 'ctaFontSize',
-									} }
-									fontSizeMobile={ {
-										value: ctaFontSizeMobile,
-										label: 'ctaFontSizeMobile',
-									} }
-									fontSizeTablet={ {
-										value: ctaFontSizeTablet,
-										label: 'ctaFontSizeTablet',
-									} }
-									lineHeightType={ {
-										value: ctaLineHeightType,
-										label: 'ctaLineHeightType',
-									} }
-									lineHeight={ {
-										value: ctaLineHeight,
-										label: 'ctaLineHeight',
-									} }
-									lineHeightMobile={ {
-										value: ctaLineHeightMobile,
-										label: 'ctaLineHeightMobile',
-									} }
-									lineHeightTablet={ {
-										value: ctaLineHeightTablet,
-										label: 'ctaLineHeightTablet',
-									} }
-								/>
-								 <Range
-									label={__(
-										'CTA Bottom Spacing',
-										"ultimate-addons-for-gutenberg"
-									)}
-									setAttributes={setAttributes}
-									value={ctaBottomSpace}
-									onChange={(value) =>
-										setAttributes({ ctaBottomSpace: value })
-									}
-									min={0}
-									max={500}
-									unit={{
-										value: ctaBottomSpaceUnit,
-										label: "ctaBottomSpaceUnit",
-									}}
-									displayUnit={false}
-								/>
-								<h2>
-									{ __(
-										'Button Border',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</h2>
-								<SelectControl
-									label={ __(
-										'Style',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ borderStyle }
-									onChange={ ( value ) =>
-										setAttributes( { borderStyle: value } )
-									}
-									options={ [
-										{
-											value: 'none',
-											label: __(
-												'None',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'solid',
-											label: __(
-												'Solid',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'dashed',
-											label: __(
-												'Dashed',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'dotted',
-											label: __(
-												'Dotted',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'double',
-											label: __(
-												'Double',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }
-								/>
-								<RangeControl
-									label={ __(
-										'Width',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ borderWidth }
-									onChange={ ( value ) =>
-										setAttributes( { borderWidth: value } )
-									}
-									min={ 0 }
-									max={ 10 }
-									allowReset
-								/>
-								<RangeControl
-									label={ __(
-										'Rounded Corner',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ borderRadius }
-									onChange={ ( value ) =>
-										setAttributes( { borderRadius: value } )
-									}
-									min={ 0 }
-									max={ 50 }
-									allowReset
-								/>
-								<hr className="uagb-editor__separator" />
-								<h2>
-									{ __(
-										'Button Padding (px)',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</h2>
-								<RangeControl
-									label={ UAGB_Block_Icons.vertical_spacing }
-									className={ 'uagb-margin-control' }
-									value={ btnVPadding }
-									onChange={ ( value ) =>
-										setAttributes( { btnVPadding: value } )
-									}
-									min={ 0 }
-									max={ 50 }
-									allowReset
-								/>
-								<RangeControl
-									label={
-										UAGB_Block_Icons.horizontal_spacing
-									}
-									className={ 'uagb-margin-control' }
-									value={ btnHPadding }
-									onChange={ ( value ) =>
-										setAttributes( { btnHPadding: value } )
-									}
-									min={ 0 }
-									max={ 50 }
-									allowReset
-								/>
-								<hr className="uagb-editor__separator" />
-								<h2>
-									{ __(
-										'Button Colors',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</h2>
-								<TabPanel
-									className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-									activeClass="active-tab"
-									tabs={ [
-										{
-											name: 'normal',
-											title: __(
-												'Normal',
-												'ultimate-addons-for-gutenberg'
-											),
-											className: 'uagb-normal-tab',
-										},
-										{
-											name: 'hover',
-											title: __(
-												'Hover',
-												'ultimate-addons-for-gutenberg'
-											),
-											className: 'uagb-hover-tab',
-										},
-									] }
-								>
-									{ ( tabName ) => {
-										let tabout;
-										if ( 'hover' === tabName.name ) {
-											tabout = hoverSettings;
-										} else {
-											tabout = normalSettings;
-										}
-										return <div>{ tabout }</div>;
-									} }
-								</TabPanel>
-							</>
-						) }
-					</>
-				) }
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: ctaLoadGoogleFonts,
+						label: 'ctaLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: ctaFontFamily,
+						label: 'ctaFontFamily',
+					} }
+					fontWeight={ {
+						value: ctaFontWeight,
+						label: 'ctaFontWeight',
+					} }
+					fontSubset={ {
+						value: ctaFontSubset,
+						label: 'ctaFontSubset',
+					} }
+					fontSizeType={ {
+						value: ctaFontSizeType,
+						label: 'ctaFontSizeType',
+					} }
+					fontSize={ {
+						value: ctaFontSize,
+						label: 'ctaFontSize',
+					} }
+					fontSizeMobile={ {
+						value: ctaFontSizeMobile,
+						label: 'ctaFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: ctaFontSizeTablet,
+						label: 'ctaFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: ctaLineHeightType,
+						label: 'ctaLineHeightType',
+					} }
+					lineHeight={ {
+						value: ctaLineHeight,
+						label: 'ctaLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: ctaLineHeightMobile,
+						label: 'ctaLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: ctaLineHeightTablet,
+						label: 'ctaLineHeightTablet',
+					} }
+					transform={{
+						value: ctaTransform,
+						label: "ctaTransform",
+					}}
+					decoration={{
+						value: ctaDecoration,
+						label: "ctaDecoration",
+					}}
+				/>
+					<Range
+					label={__(
+						'Bottom Spacing',
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={ctaBottomSpace}
+					onChange={(value) =>
+						setAttributes({ ctaBottomSpace: value })
+					}
+					min={0}
+					max={500}
+					unit={{
+						value: ctaBottomSpaceUnit,
+						label: "ctaBottomSpaceUnit",
+					}}
+				/>
+				<Border
+						setAttributes={setAttributes}
+						borderStyle={{
+							value: borderStyle,
+							label: 'borderStyle',
+							title: __(
+								"Border Style",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+						borderWidth={{
+							value: borderWidth,
+							label: 'borderWidth',
+							title: __(
+								"Border Width",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+						borderRadius={{
+							value: borderRadius,
+							label: 'borderRadius',
+							title: __(
+								"Border Radius",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+						borderColor={{
+							value: borderColor,
+							label: 'borderColor',
+							title: __(
+								"Border Color",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+						borderHoverColor={{
+							value: borderHColor,
+							label: 'borderHColor',
+							title: __(
+								"Border Hover Color",
+								"ultimate-addons-for-gutenberg"
+							),
+						}}
+					/>
+				<SpacingControl
+					{...props}
+					label={__(
+						"Button Padding",
+						"ultimate-addons-for-gutenberg"
+					)}
+					valueTop={{
+						value: paddingBtnTop,
+						label: "paddingBtnTop",
+					}}
+					valueRight={{
+						value: paddingBtnRight,
+						label: "paddingBtnRight",
+					}}
+					valueBottom={{
+						value: paddingBtnBottom,
+						label: "paddingBtnBottom",
+					}}
+					valueLeft={{
+						value: paddingBtnLeft,
+						label: "paddingBtnLeft",
+					}}
+					valueTopTablet={{
+						value: paddingBtnTopTablet,
+						label: "paddingBtnTopTablet",
+					}}
+					valueRightTablet={{
+						value: paddingBtnRightTablet,
+						label: "paddingBtnRightTablet",
+					}}
+					valueBottomTablet={{
+						value: paddingBtnBottomTablet,
+						label: "paddingBtnBottomTablet",
+					}}
+					valueLeftTablet={{
+						value: paddingBtnLeftTablet,
+						label: "paddingBtnLeftTablet",
+					}}
+					valueTopMobile={{
+						value: paddingBtnTopMobile,
+						label: "paddingBtnTopMobile",
+					}}
+					valueRightMobile={{
+						value: paddingBtnRightMobile,
+						label: "paddingBtnRightMobile",
+					}}
+					valueBottomMobile={{
+						value: paddingBtnBottomMobile,
+						label: "paddingBtnBottomMobile",
+					}}
+					valueLeftMobile={{
+						value: paddingBtnLeftMobile,
+						label: "paddingBtnLeftMobile",
+					}}
+					unit={{
+						value: paddingBtnUnit,
+						label: "paddingBtnUnit",
+					}}
+					mUnit={{
+						value: mobilePaddingBtnUnit,
+						label: "mobilePaddingBtnUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingBtnUnit,
+						label: "tabletPaddingBtnUnit",
+					}}
+					deviceType={deviceType}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
+					}}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaColor: value })
+					}
+				/>	
+				<AdvancedPopColorControl
+					label={__(
+						'Hover Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaHColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaHColor: value })
+					}
+				/>   
+				<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgColor: value })
+					}
+				/>	
+				<AdvancedPopColorControl
+					label={__(
+						'Background Hover Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgHColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgHColor: value })
+					}
+				/>								
 			</PanelBody>
 		);
 	};
@@ -1894,11 +1782,28 @@
 						{ readMoreLinkSettings() }
 					</InspectorTab>
 						<InspectorTab key={"style"}>
-							{ titleStyle() }
-							{ metaStyle() }
-							{ excerptStyle() }
-							{ imageStyle() }
-							{ readMoreLinkStyleSettings() }
+						{ ! inheritFromTheme && (
+							<>
+								{ displayPostTitle && (
+									titleStyle() 
+								)}
+								{ ( displayPostAuthor ||
+								displayPostDate ||
+								displayPostComment ||
+								displayPostTaxonomy ) && (
+									metaStyle() 	
+								)}	
+								{ displayPostExcerpt && (
+									excerptStyle()
+								)}
+								{ displayPostLink && (
+									readMoreLinkStyleSettings()
+								)}
+								</>
+							)}
+							{displayPostImage && (
+								imageStyle() 
+							)}
 							{ spacingSettings() }
 						</InspectorTab>
 						<InspectorTab key={"advance"}></InspectorTab>
