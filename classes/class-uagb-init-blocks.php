@@ -45,7 +45,11 @@ class UAGB_Init_Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
-		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
+			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+		} else {
+			add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		}
 
 		add_action( 'wp_ajax_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
@@ -310,14 +314,6 @@ class UAGB_Init_Blocks {
 
 		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
 
-		// Styles.
-		wp_enqueue_style(
-			'uagb-block-editor-css', // Handle.
-			UAGB_URL . 'dist/blocks.css', // Block editor CSS.
-			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-			UAGB_VER
-		);
-
 		// Common Editor style.
 		wp_enqueue_style(
 			'uagb-block-common-editor-css', // Handle.
@@ -381,7 +377,10 @@ class UAGB_Init_Blocks {
 				'uagb_url'               => UAGB_URL,
 				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'          => UAGB_URI,
-				'uagb_display_condition' => get_option( 'enable_block_condition', false, false ),
+				'enableConditions'       => apply_filters_deprecated( 'enable_block_condition', array( true ), '1.23.4', 'uag_enable_block_condition' ),
+				'enableMasonryGallery'   => apply_filters( 'uag_enable_masonry_gallery', true ),
+				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
+				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
 			)
 		);
 		// To match the editor with frontend.
