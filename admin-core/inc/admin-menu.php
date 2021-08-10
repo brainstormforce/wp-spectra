@@ -179,9 +179,6 @@ class AdminMenu {
 		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
 		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
 
-		wp_enqueue_style( $admin_slug . '-header', UAG_ADMIN_URL . 'assets/css/header.css', array(), UAGB_VER );
-		wp_style_add_data( $admin_slug . '-header', 'rtl', 'replace' );
-
 		wp_enqueue_style( 'wp-components' );
 
 		$theme = wp_get_theme();
