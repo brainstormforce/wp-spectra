@@ -254,7 +254,7 @@ const Settings = ( props ) => {
 			>
 				<AdvancedPopColorControl
 					label={__(
-						"Summary Color",
+						"Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={summaryColor}
