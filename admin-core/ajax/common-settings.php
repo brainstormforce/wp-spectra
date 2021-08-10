@@ -166,7 +166,7 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		$this->update_admin_settings_option( 'enable_templates_button', sanitize_text_field( $_POST['value'] ) );
+		$this->update_admin_settings_option( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
