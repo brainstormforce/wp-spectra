@@ -59,7 +59,7 @@ class AdminHelper {
 			'enable_file_generation'             => self::get_admin_settings_option( '_uagb_allow_file_generation', false, false ),
 			'blocks_activation_and_deactivation' => self::get_admin_settings_option( '_uagb_blocks', array() ),
 			'enable_templates_button'            => self::get_admin_settings_option( 'enable_templates_button', false, false ),
-			'enable_block_condition'         => self::get_admin_settings_option( 'uag_enable_block_condition', false, false ),
+			'enable_block_condition'             => self::get_admin_settings_option( 'uag_enable_block_condition', false, false ),
 		);
 
 		$common = wp_parse_args( $updatedStatus, $common_default );

@@ -167,7 +167,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			return $plugins;
 		}
 
-		
+
 	}
 
 	UAGB_Admin::init();
