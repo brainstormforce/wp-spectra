@@ -3416,11 +3416,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	line-height: 2;
 }
 
-/* Multi-button bottom css */
-.components-button-group.uagb-multi-button-button-group {
-    margin-bottom:20px;
-}
-
 .uagb-control__header {
 	display: flex;
 	justify-content: space-between;
