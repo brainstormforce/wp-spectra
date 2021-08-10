@@ -363,7 +363,7 @@ const Settings = ( props ) => {
 					displayUnit={false}
 				/>
 				<AdvancedPopColorControl
-					label={__("Heading Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ headingColor: value })
@@ -536,141 +536,10 @@ const Settings = ( props ) => {
 						max={300}
 						displayUnit={false}
 					/>
-					<AdvancedPopColorControl
-						label={__("Icon Color", "ultimate-addons-for-gutenberg")}
-						colorValue={iconColor ? iconColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ iconColor: value })
-						}
-					/>
+					
 				</>
 			) }
-			{ ! disableBullets && (
-				<>
-					<AdvancedPopColorControl
-						label={__("Bullet Points Color", "ultimate-addons-for-gutenberg")}
-						colorValue={bulletColor ? bulletColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ bulletColor: value })
-						}
-					/>
-				</>
-			) }
-			<AdvancedPopColorControl
-				label={__("Content Color", "ultimate-addons-for-gutenberg")}
-				colorValue={linkColor ? linkColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ linkColor: value })
-				}
-			/>
-			<AdvancedPopColorControl
-				label={__("Content Hover Color", "ultimate-addons-for-gutenberg")}
-				colorValue={linkHoverColor ? linkHoverColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ linkHoverColor: value })
-				}
-			/>	
-			<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: loadGoogleFonts,
-						label: 'loadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: fontFamily,
-						label: 'fontFamily',
-					} }
-					fontWeight={ {
-						value: fontWeight,
-						label: 'fontWeight',
-					} }
-					fontSubset={ {
-						value: fontSubset,
-						label: 'fontSubset',
-					} }
-					fontSizeType={ {
-						value: fontSizeType,
-						label: 'fontSizeType',
-					} }
-					fontSize={ { value: fontSize, label: 'fontSize' } }
-					fontSizeMobile={ {
-						value: fontSizeMobile,
-						label: 'fontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: fontSizeTablet,
-						label: 'fontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: lineHeightType,
-						label: 'lineHeightType',
-					} }
-					lineHeight={ {
-						value: lineHeight,
-						label: 'lineHeight',
-					} }
-					lineHeightMobile={ {
-						value: lineHeightMobile,
-						label: 'lineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: lineHeightTablet,
-						label: 'lineHeightTablet',
-					} }
-				/>	
-			</PanelBody>
-		)
-	};
-
-	const getScrollToTop = () => {
-		return (
-			<PanelBody
-				title={ __( 'Scroll To Top', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<>
-					<AdvancedPopColorControl
-						label={__("Icon Color", "ultimate-addons-for-gutenberg")}
-						colorValue={scrollToTopColor ? scrollToTopColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ scrollToTopColor: value })
-						}
-					/>
-					<AdvancedPopColorControl
-						label={__("Background Color", "ultimate-addons-for-gutenberg")}
-						colorValue={scrollToTopBgColor ? scrollToTopBgColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ scrollToTopBgColor: value })
-						}
-					/>
-				</>
-			</PanelBody>
-		)
-	};
-		
-	let maxDesk = ( ( '%' == widthTypeDesktop ) ? 100 : 1000 );
-	let maxTab = ( ( '%' == widthTypeTablet ) ? 100 : 1000 );
-	let maxMob = ( ( '%' == widthTypeMobile ) ? 100 : 1000 );
-
-	const getBackground = () => {
-		return (
-			<PanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={backgroundColor ? backgroundColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ backgroundColor: value })
-					}
-				/>
-				<ToggleControl
+			<ToggleControl
 					label={ __(
 						'Custom Width',
 						'ultimate-addons-for-gutenberg'
@@ -761,6 +630,164 @@ const Settings = ( props ) => {
 					max={10}
 					displayUnit={false}
 					setAttributes={setAttributes}
+				/>
+			</PanelBody>
+		)
+	};
+
+	const getBulletStyle = () => {
+		return (
+			<PanelBody
+				title={ __( 'Bullet Points', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={bulletColor ? bulletColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ bulletColor: value })
+					}
+				/>
+			</PanelBody>
+		)
+	}
+
+	const getIconStyle = () => {
+		return (
+			<PanelBody
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={iconColor ? iconColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ iconColor: value })
+					}
+				/>
+			</PanelBody>
+		)
+	}
+
+	const getContentStyle = () => {
+		return (
+			<PanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+				label={__("Color", "ultimate-addons-for-gutenberg")}
+				colorValue={linkColor ? linkColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ linkColor: value })
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__("Hover Color", "ultimate-addons-for-gutenberg")}
+				colorValue={linkHoverColor ? linkHoverColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ linkHoverColor: value })
+				}
+			/>	
+			<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: loadGoogleFonts,
+						label: 'loadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: fontFamily,
+						label: 'fontFamily',
+					} }
+					fontWeight={ {
+						value: fontWeight,
+						label: 'fontWeight',
+					} }
+					fontSubset={ {
+						value: fontSubset,
+						label: 'fontSubset',
+					} }
+					fontSizeType={ {
+						value: fontSizeType,
+						label: 'fontSizeType',
+					} }
+					fontSize={ { value: fontSize, label: 'fontSize' } }
+					fontSizeMobile={ {
+						value: fontSizeMobile,
+						label: 'fontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: fontSizeTablet,
+						label: 'fontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: lineHeightType,
+						label: 'lineHeightType',
+					} }
+					lineHeight={ {
+						value: lineHeight,
+						label: 'lineHeight',
+					} }
+					lineHeightMobile={ {
+						value: lineHeightMobile,
+						label: 'lineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: lineHeightTablet,
+						label: 'lineHeightTablet',
+					} }
+				/>
+			</PanelBody>
+		)
+	}
+
+	const getScrollToTop = () => {
+		return (
+			<PanelBody
+				title={ __( 'Scroll To Top', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<>
+					<AdvancedPopColorControl
+						label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+						colorValue={scrollToTopColor ? scrollToTopColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ scrollToTopColor: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__("Background Color", "ultimate-addons-for-gutenberg")}
+						colorValue={scrollToTopBgColor ? scrollToTopBgColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ scrollToTopBgColor: value })
+						}
+					/>
+				</>
+			</PanelBody>
+		)
+	};
+		
+	let maxDesk = ( ( '%' == widthTypeDesktop ) ? 100 : 1000 );
+	let maxTab = ( ( '%' == widthTypeTablet ) ? 100 : 1000 );
+	let maxMob = ( ( '%' == widthTypeMobile ) ? 100 : 1000 );
+
+	const getBackground = () => {
+		return (
+			<PanelBody
+				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={backgroundColor ? backgroundColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ backgroundColor: value })
+					}
 				/>
 			</PanelBody>
 		);
@@ -993,10 +1020,13 @@ const Settings = ( props ) => {
 				<InspectorTab key={"general"}>
 				{ getGeneralPanelBody() }
 				{ getScrollPanelBody() }
+				{ getContent() }
 				</InspectorTab>
 				<InspectorTab key={"style"}>
 				{ getTitle() }
-				{ getContent() }
+				{ getContentStyle() }
+				{ ! disableBullets && ( getBulletStyle() ) }
+				{ makeCollapsible && ( getIconStyle() ) }
 				{ scrollToTop && ( getScrollToTop() )}
 				{ getBackground() }
 				{ getBorder() }
