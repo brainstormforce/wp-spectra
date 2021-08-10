@@ -44,21 +44,21 @@ const ReviewComponent = ( props ) => {
 			leftPadding,
 		} = attributes;
 
-		if ( contentHrPadding ){
+		if ( contentVrPadding ){
 			if ( !topPadding ){
-				setAttributes( { topPadding: contentHrPadding } );
+				setAttributes( { topPadding: contentVrPadding } );
 			}
 			if ( !bottomPadding ){
-				setAttributes( { bottomPadding: contentHrPadding } );
+				setAttributes( { bottomPadding: contentVrPadding } );
 			}
 		}
 
-		if( contentVrPadding ){
+		if( contentHrPadding ){
 			if( !rightPadding ){
-				setAttributes( { rightPadding: contentVrPadding } );
+				setAttributes( { rightPadding: contentHrPadding } );
 			}
 			if( !leftPadding ){
-				setAttributes( { leftPadding: contentVrPadding } );
+				setAttributes( { leftPadding: contentHrPadding } );
 			}
 		}
 	}, [] );
