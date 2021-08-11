@@ -39,11 +39,13 @@ function AssetsGeneration( props ) {
 	
 	const handleAssetGeneration = () => {
 		setAssetGenState( true );
-		let status = 'enabled';;
-		if ( enableFileGeneration !== 'enabled' ) {
+		let status;
+		if ( enableFileGeneration == 'disabled' ) {
+			status = 'enabled';
+		}else{
 			status = 'disabled';
-		} 
-		setEnableFileGeneration( status );
+		}
+		
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_file_generation',
@@ -64,7 +66,11 @@ function AssetsGeneration( props ) {
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setAssetGenState( false );
+			if( data.success ){
+				setAssetGenState( false );	
+				console.log(status);
+				setEnableFileGeneration( status );
+			}
 		} );
 		
 	};
