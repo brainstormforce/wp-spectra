@@ -1,40 +1,39 @@
-import React,  { useState }  from 'react';
+import React, { useState } from 'react';
 import './UserInfoBox.scss';
 import { __ } from '@wordpress/i18n';
 import { NormalButton } from '@Fields';
 import apiFetch from '@wordpress/api-fetch';
 
-function UserInfoBox( ) {
-	
-	const [ installingThemeText, setsinstallingThemeText ] = useState( 'Install ASTRA Now!' );
-	const [ activateThemeText, setsactivateThemeText ] = useState( 'Activate ASTRA Now!' );
+function UserInfoBox() {
+	const [ installingThemeText, setsinstallingThemeText ] = useState(
+		'Install ASTRA Now!'
+	);
+	const [ activateThemeText, setsactivateThemeText ] = useState(
+		'Activate ASTRA Now!'
+	);
 	const [ installingTheme, setsinstallingTheme ] = useState( false );
 	const [ activateTheme, setsactivateTheme ] = useState( false );
 
 	const onJointheCommunityClick = () => {
-		window.open(
-			'https://ultimategutenberg.com/',
-			'_blank' 
-		);
+		window.open( 'https://ultimategutenberg.com/', '_blank' );
 	};
 	const onKnowledgebaseClick = () => {
 		window.open(
 			'https://ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			'_blank' 
+			'_blank'
 		);
 	};
 	const onGetSupportClick = () => {
 		window.open(
 			'https://ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
-			'_blank' 
+			'_blank'
 		);
 	};
-	
+
 	const activateAstraClick = () => {
-		
 		setsactivateTheme( true );
-		setsactivateThemeText('Activating Astra');
-		setTimeout( function() {
+		setsactivateThemeText( 'Activating Astra' );
+		setTimeout( function () {
 			const formData = new window.FormData();
 			formData.append( 'action', 'uag_theme_activate' );
 			formData.append( 'security', uag_react.theme_activate_nonce );
@@ -46,58 +45,68 @@ function UserInfoBox( ) {
 			} ).then( ( data ) => {
 				if ( data.success ) {
 					setsactivateTheme( false );
-					setsactivateThemeText('Astra Activated!');
+					setsactivateThemeText( 'Astra Activated!' );
 					window.location.reload();
-				} 
+				}
 			} );
-		}, 1200 )
-	};		
-	const installAstraClick = ( ) => {
-			setsinstallingTheme( true );
-			setsinstallingThemeText( 'Installing Astra' );
+		}, 1200 );
+	};
+	const installAstraClick = () => {
+		setsinstallingTheme( true );
+		setsinstallingThemeText( 'Installing Astra' );
 
-			if ( wp.updates.shouldRequestFilesystemCredentials && ! wp.updates.ajaxLocked ) {
-				wp.updates.requestFilesystemCredentials( event )
+		if (
+			wp.updates.shouldRequestFilesystemCredentials &&
+			! wp.updates.ajaxLocked
+		) {
+			wp.updates.requestFilesystemCredentials( event );
 
-				$document.on( "credential-modal-cancel", function() {
-					wp.a11y.speak( wp.updates.l10n.updateCancel, "polite" )
-				} )
-			}
-			
-			wp.updates.installTheme( {
-				slug:   'astra'
-			}).then(function(e){
+			$document.on( 'credential-modal-cancel', function () {
+				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
+			} );
+		}
+
+		wp.updates
+			.installTheme( {
+				slug: 'astra',
+			} )
+			.then( function ( e ) {
 				setsinstallingTheme( false );
 				setsinstallingThemeText( 'Installed Astra!' );
 				window.location.reload();
-			})
+			} );
 	};
 	const learnMoreAstraClick = () => {
-		window.open(
-			'https://wpastra.com/',
-			'_blank' 
-		);
+		window.open( 'https://wpastra.com/', '_blank' );
 	};
 	const astraThemeButton = () => {
-		if(!uag_react.theme_file){
-			return <NormalButton
+		if ( ! uag_react.theme_file ) {
+			return (
+				<NormalButton
 					buttonText={ __(
 						installingThemeText,
 						'ultimate-addons-for-gutenberg'
 					) }
 					saving={ installingTheme }
-					onClick={  installAstraClick }
-					/>
-		}else if('Astra' !== uag_react.current_theme && uag_react.theme_file ){
-			return <NormalButton
-						buttonText={ __(
-							activateThemeText,
-							'ultimate-addons-for-gutenberg'
-						) }
-						saving={ activateTheme }
-						onClick={ activateAstraClick }
-						data-slug="astra" data-init="astra/astra.php"
-					/>
+					onClick={ installAstraClick }
+				/>
+			);
+		} else if (
+			'Astra' !== uag_react.current_theme &&
+			uag_react.theme_file
+		) {
+			return (
+				<NormalButton
+					buttonText={ __(
+						activateThemeText,
+						'ultimate-addons-for-gutenberg'
+					) }
+					saving={ activateTheme }
+					onClick={ activateAstraClick }
+					data-slug="astra"
+					data-init="astra/astra.php"
+				/>
+			);
 		}
 		return null;
 	};
@@ -129,7 +138,7 @@ function UserInfoBox( ) {
 						</h3>
 						<p>
 							{ __(
-								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community and get the latest news, updates, tips. We\’d love it if you joined the conversation!',
+								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community and get the latest news, updates, tips. We’d love it if you joined the conversation!',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -235,7 +244,7 @@ function UserInfoBox( ) {
 						) }
 					</p>
 					<div className="uag-theme__cta">
-						{astraThemeButton()}
+						{ astraThemeButton() }
 						<NormalButton
 							buttonText={ __(
 								'Learn More About Astra',

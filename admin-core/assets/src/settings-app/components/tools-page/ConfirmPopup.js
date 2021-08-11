@@ -1,4 +1,3 @@
-
 import './ConfirmPopup.scss';
 import React, { useEffect } from 'react';
 

@@ -8,7 +8,7 @@ import apiFetch from '@wordpress/api-fetch';
 
 const blocksInfo = uag_react.blocks_info;
 
-function BlocksSettings( ) {
+function BlocksSettings() {
 	const [ savingStateActivate, setssavingStateActivate ] = useState( false );
 	const [ savingStateDeactivate, setssavingStateDeactivate ] = useState(
 		false
@@ -16,47 +16,44 @@ function BlocksSettings( ) {
 
 	const [ { options }, dispatch ] = useStateValue();
 
-	const blocksValue =
-		options[ 'blocks_activation_and_deactivation' ];
+	const blocksValue = options.blocks_activation_and_deactivation;
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
-		
 		return <IndividualBlockSetting key={ index } blockInfo={ block } />;
 	} );
-	
+
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault();
 		setssavingStateActivate( true );
 
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
-		
+
 		for ( const block in blocksValue ) {
 			value[ block ] = block;
 		}
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'blocks_activation_and_deactivation',
-			value: value,
+			value,
 		} );
 
-		let formData = new window.FormData(  );
+		const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
 		formData.append(
 			'security',
 			uag_react.blocks_activation_and_deactivation_nonce
 		);
-		formData.append( 'value', JSON.stringify(value) );
+		formData.append( 'value', JSON.stringify( value ) );
 
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingStateActivate( false );	
-		} );	
-
+			setssavingStateActivate( false );
+		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
@@ -72,16 +69,16 @@ function BlocksSettings( ) {
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'blocks_activation_and_deactivation',
-			value: value,
+			value,
 		} );
-		let formData = new window.FormData(  );
+		const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
 		formData.append(
 			'security',
 			uag_react.blocks_activation_and_deactivation_nonce
 		);
-		formData.append( 'value', JSON.stringify(value) );
+		formData.append( 'value', JSON.stringify( value ) );
 
 		apiFetch( {
 			url: uag_react.ajax_url,
@@ -89,7 +86,7 @@ function BlocksSettings( ) {
 			body: formData,
 		} ).then( ( data ) => {
 			setssavingStateDeactivate( false );
-		} );	
+		} );
 	};
 	return (
 		<>

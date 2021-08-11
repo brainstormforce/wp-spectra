@@ -15,7 +15,7 @@ function VersionControl( props ) {
 	const [ showPopup, setshowPopup ] = useState( false );
 
 	const [ enableBeta, setenableBeta ] = useState(
-		options[ 'enable_beta_updates' ]
+		options.enable_beta_updates
 	);
 
 	const rollbackSettings = globaldata.settings.rollback_to_previous_version;
@@ -41,7 +41,7 @@ function VersionControl( props ) {
 	const confirmPopup = () => {
 		const rollbackUrl = uag_react.rollback_url.replace(
 			'VERSION',
-			options[ 'rollback_to_previous_version' ]
+			options.rollback_to_previous_version
 		);
 
 		setshowPopup( false );
@@ -66,23 +66,22 @@ function VersionControl( props ) {
 			name: 'enable_beta_updates',
 			value: status,
 		} );
-		let formData = new window.FormData();
+		const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_enable_beta_updates' );
 		formData.append( 'security', uag_react.enable_beta_updates_nonce );
 		formData.append( 'value', status );
-		
+
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			if(data.success){
+			if ( data.success ) {
 				setenableBeta( status );
 				setsavingState( false );
 			}
 		} );
-		
 	};
 
 	return (
@@ -95,9 +94,7 @@ function VersionControl( props ) {
 					<h3>{ ReactHtmlParser( rollbacklabel ) }</h3>
 					<p>{ ReactHtmlParser( rollbackdesc ) }</p>
 					<div className="uag-version-control-button">
-						<SettingTable
-							settings={ rollbackSettings }
-						/>
+						<SettingTable settings={ rollbackSettings } />
 						<NormalButton
 							buttonText={ __(
 								'Rollback',
@@ -138,12 +135,12 @@ function VersionControl( props ) {
 										'Disabled',
 										'ultimate-addons-for-gutenberg'
 								  ) }
-								<img
-									src={
-										uag_react.plugin_dir +
-										'admin-core/assets/images/check.svg'
-									}
-								/>
+							<img
+								src={
+									uag_react.plugin_dir +
+									'admin-core/assets/images/check.svg'
+								}
+							/>
 						</span>
 					</div>
 				</div>

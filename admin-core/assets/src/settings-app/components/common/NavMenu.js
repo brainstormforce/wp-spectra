@@ -52,7 +52,9 @@ function NavMenu() {
 						src={ uag_react.logo_url }
 						alt=""
 					/>
-					<span className="uagb-plugin-version">{uag_react.plugin_ver}</span>
+					<span className="uagb-plugin-version">
+						{ uag_react.plugin_ver }
+					</span>
 				</Link>
 			</div>
 			<div className="uag-global-nav__items">

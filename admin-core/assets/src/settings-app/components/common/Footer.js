@@ -1,5 +1,4 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 import './Footer.scss';
 
@@ -39,14 +38,15 @@ function Footer() {
 	return (
 		<div className="uag-global-footer">
 			<p>
-			Loving Ultimate Addons? We really appreciate if leave us {stars} rating on {' '}
-			<a
-				target="_blank"
-				href="https://wordpress.org/plugins/ultimate-addons-for-gutenberg/"
-				rel="noreferrer"
-			>
-				WordPress.org.
-			</a>
+				Loving Ultimate Addons? We really appreciate if leave us{ ' ' }
+				{ stars } rating on{ ' ' }
+				<a
+					target="_blank"
+					href="https://wordpress.org/plugins/ultimate-addons-for-gutenberg/"
+					rel="noreferrer"
+				>
+					WordPress.org.
+				</a>
 			</p>
 			<p>Thank you for your support!</p>
 		</div>

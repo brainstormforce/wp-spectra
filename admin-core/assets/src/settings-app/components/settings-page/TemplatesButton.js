@@ -5,12 +5,12 @@ import { useStateValue } from '@Utils/StateProvider';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 
-function TemplatesButton( ) {
+function TemplatesButton() {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 	const [ savingState, setssavingState ] = useState( false );
 
 	const [ enableTemplate, setenableStarterTemplate ] = useState(
-		options[ 'enable_templates_button' ]
+		options.enable_templates_button
 	);
 
 	const enableTemplatesButtonlabel =
@@ -19,7 +19,7 @@ function TemplatesButton( ) {
 	const enableTemplatesButtondesc =
 		globaldata.settings.enable_templates_button.fields
 			.enable_templates_button.desc;
-	
+
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
@@ -33,11 +33,11 @@ function TemplatesButton( ) {
 			name: 'enable_templates_button',
 			value: status,
 		} );
-		
-		var action = 'uag_enable_templates_button',
-		nonce = uag_react.enable_templates_button_nonce;
 
-		let formData = new window.FormData();
+		const action = 'uag_enable_templates_button',
+			nonce = uag_react.enable_templates_button_nonce;
+
+		const formData = new window.FormData();
 
 		formData.append( 'action', action );
 		formData.append( 'security', nonce );
@@ -54,7 +54,6 @@ function TemplatesButton( ) {
 			} else {
 				console.log( 'Error' );
 			}
-			
 		} );
 	};
 	return (
@@ -65,9 +64,7 @@ function TemplatesButton( ) {
 			<div className="uag-starter-template__button uag-version-control__elements">
 				<div className="uag-version-control__element">
 					<h3>{ ReactHtmlParser( enableTemplatesButtonlabel ) }</h3>
-					<p>
-						{ ReactHtmlParser(enableTemplatesButtondesc)}
-					</p>
+					<p>{ ReactHtmlParser( enableTemplatesButtondesc ) }</p>
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
@@ -96,12 +93,12 @@ function TemplatesButton( ) {
 										'Disabled',
 										'ultimate-addons-for-gutenberg'
 								  ) }
-								<img
-									src={
-										uag_react.plugin_dir +
-										'admin-core/assets/images/check.svg'
-									}
-								/>
+							<img
+								src={
+									uag_react.plugin_dir +
+									'admin-core/assets/images/check.svg'
+								}
+							/>
 						</span>
 					</div>
 				</div>

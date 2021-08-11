@@ -9,16 +9,18 @@ function AssetsGeneration( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	const [ enableFileGeneration, setEnableFileGeneration ] = useState(
-		options[ 'enable_file_generation' ]
+		options.enable_file_generation
 	);
 
-	const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
+	const [ regenerateAssetsState, setRegenerateAssetsState ] = useState(
+		false
+	);
 	const [ savingAssetGenState, setAssetGenState ] = useState( false );
 	const [ status, setStatus ] = useState( false );
-	
+
 	const handleRegenerateAssets = () => {
 		setRegenerateAssetsState( true );
-		setStatus('Processing....');
+		setStatus( 'Processing....' );
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_regenerate_assets' );
 		formData.append( 'security', uag_react.regenerate_assets_nonce );
@@ -30,48 +32,49 @@ function AssetsGeneration( props ) {
 			body: formData,
 		} ).then( ( data ) => {
 			if ( data.success ) {
-				setStatus('Assets Regenerated!');
-				setTimeout(function(){ setStatus(false); }, 10000);
+				setStatus( 'Assets Regenerated!' );
+				setTimeout( function () {
+					setStatus( false );
+				}, 10000 );
 				setRegenerateAssetsState( false );
-			} 
+			}
 		} );
 	};
-	
+
 	const handleAssetGeneration = () => {
 		setAssetGenState( true );
-		let status;
+		let assetStatus;
 		if ( enableFileGeneration == 'disabled' ) {
-			status = 'enabled';
-		}else{
-			status = 'disabled';
+			assetStatus = 'enabled';
+		} else {
+			assetStatus = 'disabled';
 		}
-		
+
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_file_generation',
-			value: status,
+			value: assetStatus,
 		} );
-		
-		var action = 'uag_enable_file_generation',
-		nonce = uag_react.enable_file_generation_nonce;
 
-		let formData = new window.FormData();
+		const action = 'uag_enable_file_generation',
+			nonce = uag_react.enable_file_generation_nonce;
+
+		const formData = new window.FormData();
 
 		formData.append( 'action', action );
 		formData.append( 'security', nonce );
-		formData.append( 'value', status );
+		formData.append( 'value', assetStatus );
 
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			if( data.success ){
-				setAssetGenState( false );	
-				setEnableFileGeneration( status );
+			if ( data.success ) {
+				setAssetGenState( false );
+				setEnableFileGeneration( assetStatus );
 			}
 		} );
-		
 	};
 	const enableFileGenerationlabel =
 		globaldata.settings.enable_file_generation.fields.enable_file_generation
@@ -106,7 +109,11 @@ function AssetsGeneration( props ) {
 							saving={ savingAssetGenState }
 						/>
 						<span
-							className={ `uag-control__status-${ enableFileGeneration === 'enabled' ? 'yes' : 'no' }` }
+							className={ `uag-control__status-${
+								enableFileGeneration === 'enabled'
+									? 'yes'
+									: 'no'
+							}` }
 						>
 							{ enableFileGeneration == 'enabled'
 								? __(
@@ -117,12 +124,12 @@ function AssetsGeneration( props ) {
 										'Disabled',
 										'ultimate-addons-for-gutenberg'
 								  ) }
-								<img
-									src={
-										uag_react.plugin_dir +
-										'admin-core/assets/images/check.svg'
-									}
-								/>
+							<img
+								src={
+									uag_react.plugin_dir +
+									'admin-core/assets/images/check.svg'
+								}
+							/>
 						</span>
 					</div>
 				</div>
@@ -150,10 +157,8 @@ function AssetsGeneration( props ) {
 							onClick={ handleRegenerateAssets }
 							saving={ regenerateAssetsState }
 						/>
-						<span
-							className={ `uag-control__status-yes` }
-						>
-							{status}
+						<span className={ `uag-control__status-yes` }>
+							{ status }
 						</span>
 					</div>
 				</div>

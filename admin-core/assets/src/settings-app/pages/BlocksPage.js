@@ -49,7 +49,7 @@ function BlocksPage() {
 		<>
 			<div className="uag-blocks-settings-metabox">
 				<BlocksSettings />
-				<DisplayCondition/>
+				<DisplayCondition />
 			</div>
 		</>
 	);
