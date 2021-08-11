@@ -50,17 +50,7 @@ const ColumnsComponent = (props) => {
 			topMargin,
 			bottomMargin,
 			topMarginDesktop,
-			rightMarginDesktop,
-			leftMarginDesktop,
 			bottomMarginDesktop,
-			topMarginMobile,
-			rightMarginMobile,
-			leftMarginMobile,
-			bottomMarginMobile,
-			topMarginTablet,
-			rightMarginTablet,
-			leftMarginTablet,
-			bottomMarginTablet,
 		} = attributes;
 
 		//Margin
@@ -68,52 +58,14 @@ const ColumnsComponent = (props) => {
 			if (!topMarginDesktop) {
 				setAttributes({ topMarginDesktop: topMargin });
 			}
-			if (!bottomMarginDesktop) {
-				setAttributes({ bottomMarginDesktop: topMargin });
-			}
 		}
+
 		if (bottomMargin) {
-			if (!leftMarginDesktop) {
-				setAttributes({ leftMarginDesktop: bottomMargin });
-			}
-			if (!rightMarginDesktop) {
-				setAttributes({ rightMarginDesktop: bottomMargin });
+			if (!bottomMarginDesktop) {
+				setAttributes({ bottomMarginDesktop: bottomMargin });
 			}
 		}
-
-		if (topMarginMobile) {
-			if (!topMarginMobile) {
-				setAttributes({ topMarginMobile: topMarginMobile });
-			}
-			if (!bottomMarginMobile) {
-				setAttributes({ bottomMarginMobile: topMarginMobile });
-			}
-		}
-		if (bottomMarginMobile) {
-			if (!rightMarginMobile) {
-				setAttributes({ rightMarginMobile: bottomMarginMobile });
-			}
-			if (!leftMarginMobile) {
-				setAttributes({ leftMarginMobile: bottomMarginMobile });
-			}
-		}
-
-		if (topMarginTablet) {
-			if (!topMarginTablet) {
-				setAttributes({ topMarginTablet: topMarginTablet });
-			}
-			if (!bottomMarginTablet) {
-				setAttributes({ bottomMarginTablet: topMarginTablet });
-			}
-		}
-		if (bottomMarginTablet) {
-			if (!rightMarginTablet) {
-				setAttributes({ rightMarginTablet: bottomMarginTablet });
-			}
-			if (!leftMarginTablet) {
-				setAttributes({ leftMarginTablet: bottomMarginTablet });
-			}
-		}
+		
 	}, []);
 
 	useEffect(() => {
