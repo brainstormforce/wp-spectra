@@ -84,7 +84,7 @@ class AdminMenu {
 	 */
 	public function add_action_links( $links ) {
 
-		$default_url = admin_url( 'options-general.php?page=uagb' );
+		$default_url = admin_url( 'options-general.php?page=' . $this->menu_slug );
 
 		$mylinks = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',

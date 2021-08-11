@@ -6,6 +6,7 @@ on:
       - master
       - dev
       - next-release
+      - milestone
 
 jobs:
   build-zip:

@@ -17,27 +17,43 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 	final class UAGB_Admin {
 
 		/**
-		 * Calls on initialization
+		 * Member Variable
 		 *
-		 * @since 0.0.1
+		 * @var instance
 		 */
-		public static function init() {
+		private static $instance;
+
+		/**
+		 *  Initiator
+		 */
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+		}
+
+		/**
+		 * Constructor
+		 */
+		public function __construct() {
 
 			if ( ! is_admin() ) {
 				return;
 			}
 
-			add_action( 'admin_notices', __CLASS__ . '::register_notices' );
+			add_action( 'admin_notices', array( $this, 'register_notices' ) );
 
-			add_filter( 'wp_kses_allowed_html', __CLASS__ . '::add_data_attributes', 10, 2 );
+			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 
-			add_action( 'admin_enqueue_scripts', __CLASS__ . '::notice_styles_scripts' );
+			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
 
-			add_filter( 'rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
+			add_filter( 'rank_math/researches/toc_plugins', array( $this, 'toc_plugin' ) );
+
 			// Activation hook.
-			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
-			
-			add_action( 'admin_post_uag_rollback', array( __CLASS__, 'post_uagb_rollback' ) );
+			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
+
+			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
 
 		}
 		/**
@@ -50,7 +66,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.23.0
 		 * @access public
 		 */
-		public static function post_uagb_rollback() {
+		public function post_uagb_rollback() {
 
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				wp_die(
@@ -95,10 +111,14 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Activation Reset
 		 */
-		public static function activation_redirect() {
+		public function activation_redirect() {
+
 			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
+
 			if ( $do_redirect ) {
+
 				update_option( '__uagb_do_redirect', false );
+
 				if ( ! is_multisite() ) {
 					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
 					exit();
@@ -114,7 +134,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.8.0
 		 * @return Array
 		 */
-		public static function add_data_attributes( $allowedposttags, $context ) {
+		public function add_data_attributes( $allowedposttags, $context ) {
 			$allowedposttags['a']['data-repeat-notice-after'] = true;
 
 			return $allowedposttags;
@@ -125,7 +145,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * @since 1.8.0
 		 */
-		public static function register_notices() {
+		public function register_notices() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
@@ -200,11 +220,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		}
 
 		/**
-		 * Enqueues the needed CSS/JS for the builder's admin settings page.
+		 * Enqueue the needed CSS/JS for the builder's admin settings page.
 		 *
 		 * @since 1.8.0
 		 */
-		public static function notice_styles_scripts() {
+		public function notice_styles_scripts() {
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
@@ -215,7 +235,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * @param array $plugins TOC plugins.
 		 */
-		public static function toc_plugin( $plugins ) {
+		public function toc_plugin( $plugins ) {
 			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
 			return $plugins;
 		}
@@ -223,5 +243,5 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 	}
 
-	UAGB_Admin::init();
+	UAGB_Admin::get_instance();
 }

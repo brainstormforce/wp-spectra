@@ -46,10 +46,10 @@ class AdminHelper {
 			$_slug                = str_replace( 'uagb/', '', $slug );
 			$new_blocks[ $_slug ] = $_slug;
 		}
-		
+
 		// Escape attrs.
 		$new_blocks = array_map( 'esc_attr', $new_blocks );
-		
+
 		$uag_versions = self::get_rollback_versions();
 
 		$options = array(
