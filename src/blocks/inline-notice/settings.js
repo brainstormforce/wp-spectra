@@ -9,7 +9,7 @@ import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
-
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -167,31 +167,33 @@ const Settings = ( props ) => {
 
 	const inlineGeneralSettings = () => {
 		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-				<SelectControl
-					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-					value={ layout }
-					onChange={ ( value ) => setAttributes( { layout: value } ) }
-					options={ [
+			<>
+			<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Layout",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: layout,
+						label: "layout",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
-							value: 'modern',
-							label: __(
-								'Modern',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "simmple",
+							label: 'Default'
+							
 						},
 						{
-							value: 'simple',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "modern",
+							label: 'Modern',
 						},
-					] }
+						
+					]}
+					showIcons={false}
 				/>
+				
 				{ 'simple' === layout && (
 					<Range
 						label={ __(
@@ -315,7 +317,7 @@ const Settings = ( props ) => {
 					/>
 				) }
 				
-			</PanelBody>
+			</>
 		);
 	};
 

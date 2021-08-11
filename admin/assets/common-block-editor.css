@@ -177,10 +177,7 @@ hr.uagb-editor__separator {
 
 .uagb-size-type-field-tabs {
 	margin-top: 20px;
-}
-
-.uagb-size-type-field-tabs {
-	margin-bottom: -20px;
+	margin-bottom: 20px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
@@ -3449,6 +3446,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	> .components-panel__body-title
 	.components-button.components-panel__body-toggle {
 	padding: 0;
+}
+.uagb-inspector-tab > .components-base-control,
+.uagb-inspector-tab > h2{
+	padding: 0 10px;
 }
 .uagb-inspector-tab
 	.components-panel__body.is-opened
