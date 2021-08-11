@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'https://www.ultimategutenberg.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
-			include_once UAGB_DIR . 'admin-legacy/uagb-admin.php';
+			include_once UAGB_DIR . 'legacy-admin/uagb-admin.php';
 		}
 
 		/**
@@ -137,7 +137,7 @@ if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
-			$base_path = realpath( UAGB_DIR . '/admin-legacy' );
+			$base_path = realpath( UAGB_DIR . '/legacy=admin' );
 			$path      = realpath( $base_path . '/uagb-' . $action . '.php' );
 			if ( $path && $base_path && strpos( $path, $base_path ) === 0 ) {
 				include_once $path;
