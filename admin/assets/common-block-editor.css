@@ -3475,7 +3475,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	> .components-base-control,
 .uagb-inspector-tab .components-panel__body.is-opened > .rfip,
 .uagb-inspector-tab .components-panel__body.is-opened > p,
-.uagb-inspector-tab .components-panel__body.is-opened > h2 {
+.uagb-inspector-tab .components-panel__body.is-opened > h2:not(.components-panel__body-title) {
 	padding: 0 15px;
 }
 .uag-responsive-common-button {
@@ -3581,4 +3581,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-bg-image .components-button.is-secondary, .components-button.is-tertiary{
 	box-shadow:0 0;
 	color:0 0;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control.uagb-spacing-control,
+	.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control.uagb-responsive-select-control {
+	padding-bottom: 20px;
 }
