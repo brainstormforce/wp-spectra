@@ -23,12 +23,11 @@ function TemplatesButton( ) {
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
-		if ( enableTemplate == 'no' || enableTemplate == 'disable' ) {
+		if ( enableTemplate == 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
 		}
-		setenableStarterTemplate( status );
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_templates_button',
@@ -49,7 +48,13 @@ function TemplatesButton( ) {
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingState( false );
+			if ( data.success ) {
+				setssavingState( false );
+				setenableStarterTemplate( status );
+			} else {
+				console.log( 'Error' );
+			}
+			
 		} );
 	};
 	return (

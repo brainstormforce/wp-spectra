@@ -72,13 +72,13 @@ function VersionControl( props ) {
 		formData.append( 'security', uag_react.enable_beta_updates_nonce );
 		formData.append( 'value', status );
 		
-		setenableBeta( status );
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
 			if(data.success){
+				setenableBeta( status );
 				setsavingState( false );
 			}
 		} );

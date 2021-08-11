@@ -132,7 +132,7 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		$this->update_admin_settings_option( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_block_condition', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -166,7 +166,7 @@ class CommonSettings extends AjaxBase {
 			wp_send_json_error( $response_data );
 		}
 
-		$this->update_admin_settings_option( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_templates_button', sanitize_text_field( $_POST['value'] ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -203,7 +203,7 @@ class CommonSettings extends AjaxBase {
 
 		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); // phpcs:ignore
 
-		$this->update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -238,7 +238,7 @@ class CommonSettings extends AjaxBase {
 		}
 
 		if ( isset( $_POST ) ) {
-			$this->update_admin_settings_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uagb_beta', sanitize_text_field( $_POST['value'] ) );
 
 		}
 
@@ -276,7 +276,7 @@ class CommonSettings extends AjaxBase {
 
 		if ( isset( $_POST ) ) {
 
-			$this->update_admin_settings_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
+			\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_allow_file_generation', sanitize_text_field( $_POST['value'] ) );
 
 		}
 
@@ -322,7 +322,7 @@ class CommonSettings extends AjaxBase {
 			}
 
 			/* Update the asset version */
-			$this->update_admin_settings_option( '__uagb_asset_version', time() );
+			\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
 
 		}
 
@@ -335,55 +335,24 @@ class CommonSettings extends AjaxBase {
 	/**
 	 * Save settings.
 	 *
-	 * @return void
-	 */
-	public function save_other_settings() {
-
-		$new_settings = '';
-
-		if ( isset( $_POST['uag_delete_plugin_data'] ) ) { //phpcs:ignore
-			$new_settings = sanitize_text_field( $_POST['uag_delete_plugin_data'] ); //phpcs:ignore
-
-		}
-
-		$this->update_admin_settings_option( 'uag_delete_plugin_data', $new_settings, false );
-	}
-
-	/**
-	 * Update admin settings.
-	 *
-	 * @param string $key key.
-	 * @param bool   $value key.
-	 * @param bool   $network network.
-	 */
-	public function update_admin_settings_option( $key, $value, $network = false ) {
-
-		// Update the site-wide option since we're in the network admin.
-		if ( $network && is_multisite() ) {
-			update_site_option( $key, $value );
-		} else {
-			update_option( $key, $value );
-		}
-
-	}
-
-	/**
-	 * Save settings.
-	 *
 	 * @param array $input_settings settimg data.
 	 */
 	public function sanitize_form_inputs( $input_settings = array() ) {
 		$new_settings = array();
-		foreach ( $input_settings as $key => $val ) {
 
-			if ( is_array( $val ) ) {
-				foreach ( $val as $k => $v ) {
-					$new_settings[ $key ][ $k ] = ( isset( $val[ $k ] ) ) ? sanitize_text_field( $v ) : '';
+		if ( ! empty( $input_settings ) ) {
+			foreach ( $input_settings as $key => $value ) {
+
+				$new_key = sanitize_text_field( $key );
+
+				if ( is_array( $value ) ) {
+					$new_settings[ $new_key ] = $this->sanitize_form_inputs( $value );
+				} else {
+					$new_settings[ $new_key ] = sanitize_text_field( $value );
 				}
-			} else {
-				$new_settings[ $key ] = ( isset( $input_settings[ $key ] ) ) ? sanitize_text_field( $val ) : '';
 			}
 		}
+
 		return $new_settings;
 	}
 }

@@ -29,13 +29,6 @@ class AdminMenu {
 	private static $instance;
 
 	/**
-	 * For Gutenberg
-	 *
-	 * @var $is_gutenberg_editor_active
-	 */
-	private $is_gutenberg_editor_active = false;
-
-	/**
 	 * Initiator
 	 *
 	 * @since 1.0.0
@@ -55,7 +48,7 @@ class AdminMenu {
 	 * @var string Class object.
 	 * @since 1.0.0
 	 */
-	private $menu_slug = 'uagb';
+	private $menu_slug = 'uag';
 
 	/**
 	 * Constructor
@@ -128,8 +121,8 @@ class AdminMenu {
 
 		add_submenu_page(
 			'options-general.php',
-			'UAGB',
-			'UAGB',
+			'UAG',
+			'UAG',
 			$capability,
 			$menu_slug,
 			array( $this, 'render' ),
@@ -168,13 +161,7 @@ class AdminMenu {
 	public function render_content( $menu_page_slug, $page_action ) {
 
 		if ( $this->menu_slug === $menu_page_slug ) {
-			if ( $this->is_current_page( $this->menu_slug ) ) {
-				include_once UAG_ADMIN_DIR . 'views/settings-app.php';
-			} elseif ( $this->is_current_page( 'uag', array( 'uag-log' ) ) ) {
-				include_once UAG_ADMIN_DIR . 'inc/uag-debugger.php';
-			} else {
-				include_once UAG_ADMIN_DIR . 'views/404-error.php';
-			}
+			include_once UAG_ADMIN_DIR . 'views/settings-app.php';
 		}
 	}
 
@@ -192,38 +179,31 @@ class AdminMenu {
 		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
 		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
 
-		wp_enqueue_style( $admin_slug . '-header', UAG_ADMIN_URL . 'assets/css/header.css', array(), UAGB_VER );
 		wp_enqueue_style( 'wp-components' );
-		wp_style_add_data( $admin_slug . '-header', 'rtl', 'replace' );
+
 		$theme = wp_get_theme();
 
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
-				'current_user'         => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
-				'default_page_builder' => '',
-				'admin_base_slug'      => $this->menu_slug,
-				'admin_base_url'       => admin_url(),
-				'current_theme'        => $theme->name,
-				'theme_file'           => file_exists( get_theme_root() . '/astra/functions.php' ),
-				'plugin_dir'           => UAGB_URL,
-				'plugin_ver'           => UAGB_VER,
-				'logo_url'             => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
-				'admin_url'            => admin_url( 'admin.php' ),
-				'ajax_url'             => admin_url( 'admin-ajax.php' ),
-				'home_slug'            => $this->menu_slug,
-				'rollback_url'         => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
-				'blocks_info'          => $blocks_info,
-				'reusable_url'         => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
+				'current_user'    => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
+				'admin_base_slug' => $this->menu_slug,
+				'admin_base_url'  => admin_url(),
+				'current_theme'   => $theme->name,
+				'theme_file'      => file_exists( get_theme_root() . '/astra/functions.php' ),
+				'plugin_dir'      => UAGB_URL,
+				'plugin_ver'      => UAGB_VER,
+				'logo_url'        => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
+				'admin_url'       => admin_url( 'admin.php' ),
+				'ajax_url'        => admin_url( 'admin-ajax.php' ),
+				'home_slug'       => $this->menu_slug,
+				'rollback_url'    => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
+				'blocks_info'     => $blocks_info,
+				'reusable_url'    => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 			)
 		);
 
-		if ( $this->is_current_page( $this->menu_slug ) ) {
-			$this->settings_app_scripts( $localize );
-		} elseif ( $this->is_current_page( 'uag', array( 'uag-edit-flow', 'uag-edit-step' ) ) ) {
-			wp_enqueue_media();
-			$this->editor_app_scripts( $localize );
-		}
+		$this->settings_app_scripts( $localize );
 	}
 
 	/**
@@ -343,77 +323,6 @@ class AdminMenu {
 		wp_localize_script( $handle, 'uag_admin_react', $localize );
 		wp_localize_script( $handle, 'uag_react', $localize );
 
-	}
-
-	/**
-	 * Settings app scripts
-	 *
-	 * @param array $localize Variable names.
-	 */
-	public function editor_app_scripts( $localize ) {
-		$handle            = 'uag-editor-app';
-		$build_path        = UAG_ADMIN_DIR . 'assets/build/';
-		$build_url         = UAG_ADMIN_URL . 'assets/build/';
-		$script_asset_path = $build_path . 'editor-app.asset.php';
-		$script_info       = file_exists( $script_asset_path )
-			? include $script_asset_path
-			: array(
-				'dependencies' => array(),
-				'version'      => UAGB_VER,
-			);
-
-		wp_register_script(
-			$handle,
-			$build_url . 'editor-app.js',
-			$script_info['dependencies'],
-			$script_info['version'],
-			true
-		);
-
-		wp_register_style(
-			$handle,
-			$build_url . 'editor-app.css',
-			array(),
-			UAGB_VER
-		);
-
-		wp_enqueue_script( $handle );
-
-		wp_set_script_translations( $handle, 'ultimate-addons-for-gutenberg' );
-
-		wp_enqueue_style( $handle );
-		wp_style_add_data( $handle, 'rtl', 'replace' );
-		wp_localize_script( $handle, 'uag_react', $localize );
-	}
-
-	/**
-	 * CHeck if it is current page by parameters
-	 *
-	 * @param string $page_slug Menu name.
-	 * @param string $action Menu name.
-	 *
-	 * @return  string page url
-	 */
-	public function is_current_page( $page_slug = '', $action = '' ) {
-
-		$page_matched = false;
-
-		if ( empty( $page_slug ) ) {
-			return false;
-		}
-
-		$current_page_slug = ! empty( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : ''; //phpcs:ignore
-		$current_action = ! empty( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] ) : ''; //phpcs:ignore
-
-		if ( ! is_array( $action ) ) {
-			$action = explode( ' ', $action );
-		}
-
-		if ( $page_slug === $current_page_slug && in_array( $current_action, $action, true ) ) {
-			$page_matched = true;
-		}
-
-		return $page_matched;
 	}
 
 	/**
