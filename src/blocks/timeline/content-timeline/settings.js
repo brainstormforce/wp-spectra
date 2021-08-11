@@ -11,6 +11,7 @@ import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import Range from "@Components/range/Range.js";
+import SpacingControl from "../../../components/spacing-control";
 
 import { __ } from '@wordpress/i18n';
 
@@ -103,6 +104,22 @@ const Settings = ( props ) => {
 			displayPostDate,
 			stack,
 			dateFormat,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+			topPaddingTablet,
+			rightPaddingTablet,
+			bottomPaddingTablet,
+			leftPaddingTablet,
+			topPaddingMobile,
+			rightPaddingMobile,
+			bottomPaddingMobile,
+			leftPaddingMobile,
+			paddingUnit,
+			mobilePaddingUnit,
+			tabletPaddingUnit,
+			paddingLink,
 		},
 	} = props;
 
@@ -409,7 +426,7 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
+				{/* <Range
 					label={__(
 						"Horizontal Space",
 						"ultimate-addons-for-gutenberg"
@@ -436,6 +453,76 @@ const Settings = ( props ) => {
 					min={1}
 					max={50}
 					displayUnit={false}
+				/> */}
+				<SpacingControl
+					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: topPaddingTablet,
+						label: "topPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: rightPaddingTablet,
+						label: "rightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomPaddingTablet,
+						label: "bottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: leftPaddingTablet,
+						label: "leftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: topPaddingMobile,
+						label: "topPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: rightPaddingMobile,
+						label: "rightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomPaddingMobile,
+						label: "bottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: leftPaddingMobile,
+						label: "leftPaddingMobile",
+					}}
+					unit={{
+						value: paddingUnit,
+						label: "paddingUnit",
+					}}
+					mUnit={{
+						value: mobilePaddingUnit,
+						label: "mobilePaddingUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingUnit,
+						label: "tabletPaddingUnit",
+					}}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: paddingLink,
+						label: "paddingLink",
+					}}
 				/>
 				<Range
 					label={__(
