@@ -5041,10 +5041,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-toc__wrap'      => array(
 					'width'          => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $mobile_left_padding, $attr['paddingTypeTablet'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $mobile_right_padding, $attr['paddingTypeTablet'] ),
-					'padding-top'    => UAGB_Helper::get_css_value( $mobile_top_padding, $attr['paddingTypeTablet'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $mobile_bottom_padding, $attr['paddingTypeTablet'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $tablet_left_padding, $attr['paddingTypeTablet'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $tablet_right_padding, $attr['paddingTypeTablet'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $tablet_top_padding, $attr['paddingTypeTablet'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $tablet_bottom_padding, $attr['paddingTypeTablet'] ),
 				),
 				' .uagb-toc__list-wrap ol.uagb-toc__list:first-child' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $tablet_left_margin, $attr['marginTypeTablet'] ),
