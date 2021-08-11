@@ -46,7 +46,7 @@ class AdminHelper {
 			'enable_file_generation'             =>  \UAGB_Admin_Helper::get_admin_settings_option('_uagb_allow_file_generation', 'enabled' ),
 			'blocks_activation_and_deactivation' =>  \UAGB_Admin_Helper::get_admin_settings_option('_uagb_blocks', array() ),
 			'enable_templates_button'            =>  \UAGB_Admin_Helper::get_admin_settings_option('uag_enable_templates_button', 'yes' ),
-			'enable_block_condition'             =>  \UAGB_Admin_Helper::get_admin_settings_option('uag_enable_block_condition', true ),
+			'enable_block_condition'             =>  \UAGB_Admin_Helper::get_admin_settings_option('uag_enable_block_condition', 'enabled' ),
 		);
 		return $options;
 	}

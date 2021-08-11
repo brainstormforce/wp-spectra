@@ -355,7 +355,7 @@ class UAGB_Init_Blocks {
 				'deactivated_blocks' => $blocks,
 			)
 		);
-		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', true );
+		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' );
 
 		wp_localize_script(
 			'uagb-block-editor-js',

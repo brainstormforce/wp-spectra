@@ -100,7 +100,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
-			if ( isset( $enable_templates_button ) && 'yes' === $enable_templates_button ) {
+			if ( 'yes' === $enable_templates_button ) {
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
 			}else{
 				add_filter( 'ast_block_templates_disable', '__return_true' );
