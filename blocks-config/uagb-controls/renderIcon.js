@@ -24,43 +24,31 @@ function renderSVG(svg) {
 		switch (svg) {
 			case "align-center":
 				return (
-					<svg
-						viewBox="0 0 18 12"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
+					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
 						<path
-							d="M14 1H4M18 6H0M14 11H4"
-							stroke="#B1B1B1"
-							stroke-width="2"
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M4 2H14V0H4V2ZM0 7H18V5H0V7ZM4 12H14V10H4V12Z"
 						/>
 					</svg>
 				);
 			case "align-left":
 				return (
-					<svg
-						viewBox="0 0 18 12"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
+					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
 						<path
-							d="M0 1H10M0 6H18M0 11H10"
-							stroke="#007CBA"
-							stroke-width="2"
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M10 2H0V0H10V2ZM18 7H0V5H18V7ZM10 12H0V10H10V12Z"
 						/>
 					</svg>
 				);
 			case "align-right":
 				return (
-					<svg
-						viewBox="0 0 18 12"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
+					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
 						<path
-							d="M18 1H8M18 6H0M18 11H8"
-							stroke="#B1B1B1"
-							stroke-width="2"
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M8 2H18V0H8V2ZM0 7H18V5H0V7ZM8 12H18V10H8V12Z"
 						/>
 					</svg>
 				);
