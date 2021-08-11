@@ -339,16 +339,20 @@ class CommonSettings extends AjaxBase {
 	 */
 	public function sanitize_form_inputs( $input_settings = array() ) {
 		$new_settings = array();
-		foreach ( $input_settings as $key => $val ) {
 
-			if ( is_array( $val ) ) {
-				foreach ( $val as $k => $v ) {
-					$new_settings[ $key ][ $k ] = ( isset( $val[ $k ] ) ) ? sanitize_text_field( $v ) : '';
+		if ( ! empty( $input_settings ) ) {
+			foreach ( $input_settings as $key => $value ) {
+
+				$new_key = sanitize_text_field( $key );
+
+				if ( is_array( $value ) ) {
+					$new_settings[ $new_key ] = $this->sanitize_form_inputs( $value );
+				} else {
+					$new_settings[ $new_key ] = sanitize_text_field( $value );
 				}
-			} else {
-				$new_settings[ $key ] = ( isset( $input_settings[ $key ] ) ) ? sanitize_text_field( $val ) : '';
 			}
 		}
+
 		return $new_settings;
 	}
 }

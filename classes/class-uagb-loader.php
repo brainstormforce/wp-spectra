@@ -102,7 +102,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( 'yes' === $enable_templates_button ) {
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-			}else{
+			} else {
 				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
 

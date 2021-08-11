@@ -42,11 +42,11 @@ class AdminHelper {
 
 		$options = array(
 			'rollback_to_previous_version'       => $uag_versions[0]['value'],
-			'enable_beta_updates'                =>  \UAGB_Admin_Helper::get_admin_settings_option('uagb_beta', 'no' ),
-			'enable_file_generation'             =>  \UAGB_Admin_Helper::get_admin_settings_option('_uagb_allow_file_generation', 'enabled' ),
-			'blocks_activation_and_deactivation' =>  \UAGB_Admin_Helper::get_admin_settings_option('_uagb_blocks', array() ),
-			'enable_templates_button'            =>  \UAGB_Admin_Helper::get_admin_settings_option('uag_enable_templates_button', 'yes' ),
-			'enable_block_condition'             =>  \UAGB_Admin_Helper::get_admin_settings_option('uag_enable_block_condition', 'enabled' ),
+			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
+			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
+			'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() ),
+			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
+			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' ),
 		);
 		return $options;
 	}
