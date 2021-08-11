@@ -1477,8 +1477,88 @@ const Settings = (props) => {
 						</>
 					</PanelBody>
 				)}
-
-				{"none" !== ctaType && "all" !== ctaType && (
+				{inheritFromTheme && ctaType === "text" && (
+					<PanelBody title="CTA" initialOpen={false}>
+						<>
+							<AdvancedPopColorControl
+								label={__(
+									"Text Color",
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={ctaLinkColor ? ctaLinkColor : ""}
+								onColorChange={(value) =>
+									setAttributes({
+										ctaLinkColor: value,
+									})
+								}
+							/>
+							<AdvancedPopColorControl
+								label={__(
+									"Text Hover Color",
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={
+									ctaLinkHoverColor ? ctaLinkHoverColor : ""
+								}
+								onColorChange={(value) =>
+									setAttributes({
+										ctaLinkHoverColor: value,
+									})
+								}
+							/>
+							<TypographyControl
+								label={__(
+									"Typography",
+									"ultimate-addons-for-gutenberg"
+								)}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								loadGoogleFonts={{
+									value: ctaLoadGoogleFonts,
+									label: "ctaLoadGoogleFonts",
+								}}
+								fontFamily={{
+									value: ctaFontFamily,
+									label: "ctaFontFamily",
+								}}
+								fontWeight={{
+									value: ctaFontWeight,
+									label: "ctaFontWeight",
+								}}
+								fontSubset={{
+									value: ctaFontSubset,
+									label: "ctaFontSubset",
+								}}
+								fontSizeType={{
+									value: ctaFontSizeType,
+									label: "ctaFontSizeType",
+								}}
+								fontSize={{
+									value: ctaFontSize,
+									label: "ctaFontSize",
+								}}
+								fontSizeMobile={{
+									value: ctaFontSizeMobile,
+									label: "ctaFontSizeMobile",
+								}}
+								fontSizeTablet={{
+									value: ctaFontSizeTablet,
+									label: "ctaFontSizeTablet",
+								}}
+								transform={{
+									value: ctaTextTransform,
+									label: "ctaTextTransform",
+								}}
+								decoration={{
+									value: ctaTextDecoration,
+									label: "ctaTextDecoration",
+								}}
+								disableLineHeight={true}
+							/>
+						</>
+					</PanelBody>
+				)}
+				{!inheritFromTheme && "none" !== ctaType && "all" !== ctaType && (
 					<PanelBody title="CTA" initialOpen={false}>
 						<>
 							{ctaType === "text" && (

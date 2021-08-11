@@ -345,8 +345,8 @@ hr.uagb-editor__separator {
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
-	left: 13px !important;
-	width: 90%;
+	left: 15px !important;
+    width: 88.5%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -795,13 +795,13 @@ hr.uagb-editor__separator {
 
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	max-height: 24px;
 }
 
 .rfipicons__ibox svg {
-	fill: #333;
+	fill: #585858;
 }
 
 .rfipicons__ibox > * {
@@ -1861,9 +1861,8 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default {
-	-webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
-		0 19px 76px rgba(0, 0, 0, 0.3);
-	box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
+	box-shadow:0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
 	color: #424242;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
@@ -1937,8 +1936,8 @@ hr.uagb-editor__separator {
 	color: #424242;
 }
 
-.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox {
-	background-color: #eee;
+.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
+	fill: #007cba;
 }
 
 .rfipdropdown--default .rfipsearch input {
