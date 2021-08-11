@@ -69,7 +69,7 @@ const ColumnsComponent = (props) => {
 				setAttributes({ topMarginDesktop: topMargin });
 			}
 			if (!bottomMarginDesktop) {
-				setAttributes({ bottomMarginDesktop: bottomMargin });
+				setAttributes({ bottomMarginDesktop: topMargin });
 			}
 		}
 		if (bottomMargin) {
