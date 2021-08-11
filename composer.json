@@ -7,7 +7,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
     "phpcompatibility/php-compatibility": "^9.3",
     "wp-cli/wp-cli-bundle": "^2.5",
-    "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5"
+    "phpunit/phpunit": "^8",
+    "yoast/phpunit-polyfills": "^1"
   },
   "scripts": {
     "format": "phpcbf",

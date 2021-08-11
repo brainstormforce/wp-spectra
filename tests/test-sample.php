@@ -5,10 +5,11 @@
  * @package Ultimate_Addons_For_Gutenberg
  */
 
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 /**
  * Sample test case.
  */
-class SampleTest extends WP_UnitTestCase {
+class SampleTest extends TestCase {
 
 	/**
 	 * A single example test.
