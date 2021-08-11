@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 let enableBlockConditionCachedValue;
 function DisplayCondition( ) {
 	const [
-		{ globaldata , options },
+		{ globaldata , options }, dispatch
 	] = useStateValue();
 
 	useEffect( () => {
@@ -19,12 +19,17 @@ function DisplayCondition( ) {
 		if ( enableBlockConditionCachedValue !== options['enable_block_condition'] ) {
 			let formData = new window.FormData();
 
-			formData.append( 'action', 'enable_block_condition' );
+			formData.append( 'action', 'uag_enable_block_condition' );
 			formData.append(
 				'security',
 				uag_react.enable_block_condition_nonce
 			);
 			formData.append( 'value', options['enable_block_condition'] );
+			dispatch( {
+				type: 'SET_OPTION',
+				name: 'enable_block_condition',
+				value: options['enable_block_condition'] ,
+			} );
 			apiFetch( {
 				url: uag_react.ajax_url,
 				method: 'POST',
@@ -42,8 +47,7 @@ function DisplayCondition( ) {
 		}
 	}, [ options['enable_block_condition'] ] );
 
-	var enableDisplayConditionSettings  = globaldata.settings[ 'enable_block_condition' ];
-
+	var enableDisplayConditionSettings  = globaldata.settings[ 'enable_block_condition' ];	
 	return (
 			<div className="uag-extension__metabox">
 				<h2>Extension</h2>

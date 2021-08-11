@@ -98,11 +98,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
 
-			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( '_uag_common', false );
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
-			if ( isset( $enable_templates_button['enable_templates_button'] ) && 'enabled' === $enable_templates_button['enable_templates_button'] ) {
-
+			if ( isset( $enable_templates_button ) && 'yes' === $enable_templates_button ) {
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			}else{
+				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
 
 			if ( is_admin() ) {

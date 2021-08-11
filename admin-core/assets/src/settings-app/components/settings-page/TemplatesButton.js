@@ -23,7 +23,7 @@ function TemplatesButton( ) {
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
-		if ( enableTemplate == 'no' || enableTemplate == 'disable' ) {
+		if ( enableTemplate == 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';

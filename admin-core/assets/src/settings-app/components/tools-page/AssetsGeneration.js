@@ -39,12 +39,10 @@ function AssetsGeneration( props ) {
 	
 	const handleAssetGeneration = () => {
 		setAssetGenState( true );
-		let status;
-		if ( enableFileGeneration == 'no' ) {
-			status = 'yes';
-		} else {
-			status = 'no';
-		}
+		let status = 'enabled';;
+		if ( enableFileGeneration !== 'enabled' ) {
+			status = 'disabled';
+		} 
 		setEnableFileGeneration( status );
 		dispatch( {
 			type: 'SET_OPTION',
@@ -89,7 +87,7 @@ function AssetsGeneration( props ) {
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
-								enableFileGeneration == 'yes'
+								enableFileGeneration == 'enabled'
 									? __(
 											'Disable',
 											'ultimate-addons-for-gutenberg'
@@ -103,9 +101,9 @@ function AssetsGeneration( props ) {
 							saving={ savingAssetGenState }
 						/>
 						<span
-							className={ `uag-control__status-${ enableFileGeneration }` }
+							className={ `uag-control__status-${ enableFileGeneration === 'enabled' ? 'yes' : 'no' }` }
 						>
-							{ enableFileGeneration == 'yes'
+							{ enableFileGeneration == 'enabled'
 								? __(
 										'Enabled',
 										'ultimate-addons-for-gutenberg'
