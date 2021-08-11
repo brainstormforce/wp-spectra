@@ -137,7 +137,7 @@ if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
-			$base_path = realpath( UAGB_DIR . '/legacy=admin' );
+			$base_path = realpath( UAGB_DIR . '/legacy-admin' );
 			$path      = realpath( $base_path . '/uagb-' . $action . '.php' );
 			if ( $path && $base_path && strpos( $path, $base_path ) === 0 ) {
 				include_once $path;
