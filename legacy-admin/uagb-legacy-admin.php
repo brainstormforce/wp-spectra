@@ -51,8 +51,6 @@ if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 				self::save_settings();
 			}
 
-			add_action( 'admin_post_uag_rollback', array( __CLASS__, 'post_uagb_rollback' ) );
-
 			add_action( 'admin_footer', array( __CLASS__, 'rollback_version_popup' ) );
 
 			if ( ! is_customize_preview() ) {
@@ -455,58 +453,6 @@ if ( ! class_exists( 'UAGB_Legacy_Admin' ) ) {
 			);
 		}
 
-		/**
-		 * UAG version rollback.
-		 *
-		 * Rollback to previous UAG version.
-		 *
-		 * Fired by `admin_post_uag_rollback` action.
-		 *
-		 * @since 1.23.0
-		 * @access public
-		 */
-		public static function post_uagb_rollback() {
-
-			if ( ! current_user_can( 'install_plugins' ) ) {
-				wp_die(
-					esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ),
-					esc_html__( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
-					array(
-						'response' => 200,
-					)
-				);
-			}
-
-			check_admin_referer( 'uag_rollback' );
-
-			$rollback_versions = UAGB_Admin_Helper::get_instance()->get_rollback_versions();
-			$update_version    = sanitize_text_field( $_GET['version'] );
-
-			if ( empty( $update_version ) || ! in_array( $update_version, $rollback_versions ) ) { //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-				wp_die( esc_html__( 'Error occurred, The version selected is invalid. Try selecting different version.', 'ultimate-addons-for-gutenberg' ) );
-			}
-
-			$plugin_slug = basename( UAGB_FILE, '.php' );
-
-			$rollback = new UAGB_Rollback(
-				array(
-					'version'     => $update_version,
-					'plugin_name' => UAGB_BASE,
-					'plugin_slug' => $plugin_slug,
-					'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version ),
-				)
-			);
-
-			$rollback->run();
-
-			wp_die(
-				'',
-				esc_html__( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
-				array(
-					'response' => 200,
-				)
-			);
-		}
 		/**
 		 * UAG version rollback popup.
 		 *
