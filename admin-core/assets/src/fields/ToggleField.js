@@ -2,7 +2,7 @@ import { ToggleControl } from '@wordpress/components';
 import './ToggleField.scss';
 
 function ToggleField( props ) {
-	const { name, id, label, value, desc } = props;
+	const { name, id, label, value } = props;
 
 	const checked = 'disabled' === value ? false : true;
 

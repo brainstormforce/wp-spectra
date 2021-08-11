@@ -37,20 +37,31 @@ class AdminHelper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
+		// Get all extensions.
+		$old_blocks = \UAGB_Helper::$block_list;
+		$new_blocks = array();
 
+		// Set all extension to enabled.
+		foreach ( $old_blocks as $slug => $value ) {
+			$_slug                = str_replace( 'uagb/', '', $slug );
+			$new_blocks[ $_slug ] = $_slug;
+		}
+		
+		// Escape attrs.
+		$new_blocks = array_map( 'esc_attr', $new_blocks );
+		
 		$uag_versions = self::get_rollback_versions();
 
 		$options = array(
 			'rollback_to_previous_version'       => $uag_versions[0]['value'],
 			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
 			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
-			'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() ),
+			'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', $new_blocks ),
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' ),
 		);
 		return $options;
 	}
-
 	/**
 	 * Get options.
 	 */

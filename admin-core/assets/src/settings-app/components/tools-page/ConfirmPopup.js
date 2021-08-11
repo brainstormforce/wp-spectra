@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+
 import './ConfirmPopup.scss';
 import React, { useEffect } from 'react';
 
