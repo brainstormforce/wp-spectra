@@ -69,7 +69,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<SelectControl
@@ -319,7 +318,7 @@ const Settings = ( props ) => {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Image Background Color", "ultimate-addons-for-gutenberg")}
+						label={__("Background Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_bg_color ? icon_bg_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_bg_color: value })
@@ -330,7 +329,7 @@ const Settings = ( props ) => {
 			colorControlHover = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Image Background Hover Color", "ultimate-addons-for-gutenberg")}
+						label={__("Background Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_bg_hover_color: value })
@@ -342,14 +341,14 @@ const Settings = ( props ) => {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Icon Color", "ultimate-addons-for-gutenberg")}
+						label={__("Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_color ? icon_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_color: value })
 						}
 					/>
 					<AdvancedPopColorControl
-						label={__("Icon Background Color", "ultimate-addons-for-gutenberg")}
+						label={__("Background Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_bg_color ? icon_bg_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_bg_color: value })
@@ -360,14 +359,14 @@ const Settings = ( props ) => {
 			colorControlHover = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Icon Hover Color", "ultimate-addons-for-gutenberg")}
+						label={__("Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_hover_color ? icon_hover_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_hover_color: value })
 						}
 					/>
 					<AdvancedPopColorControl
-						label={__("Icon Background Hover Color", "ultimate-addons-for-gutenberg")}
+						label={__("Background Color", "ultimate-addons-for-gutenberg")}
 						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
 						onColorChange={(value) =>
 							setAttributes({ icon_bg_hover_color: value })
