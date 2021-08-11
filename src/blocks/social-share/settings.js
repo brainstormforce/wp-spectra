@@ -42,31 +42,6 @@ const Settings = ( props ) => {
 		bgSize,
 	} = attributes;
 
-	const sizeTypes = [
-		{ key: 'px', name: __( 'px', 'ultimate-addons-for-gutenberg' ) },
-		{ key: 'em', name: __( 'em', 'ultimate-addons-for-gutenberg' ) },
-	];
-
-	const sizeTypesControls = (
-		<ButtonGroup
-			className="uagb-size-type-field"
-			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
-		>
-			{ sizeTypes.map( ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ sizeType === key }
-					aria-pressed={ sizeType === key }
-					onClick={ () => setAttributes( { sizeType: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	);
-
 	const blockControls = () => {
 		return (
 			<BlockControls>
@@ -84,7 +59,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<SelectControl
@@ -165,7 +139,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<ResponsiveSlider
@@ -189,7 +163,10 @@ const Settings = ( props ) => {
 					}}
 					min={0}
 					max={500}
-					displayUnit={false}
+					unit={{
+						value: sizeType,
+						label: "sizeType",
+					}}
 					setAttributes={setAttributes}
 				/>
 				<Range
