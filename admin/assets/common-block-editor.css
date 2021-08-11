@@ -3474,7 +3474,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.components-panel__body.is-opened
 	> .components-base-control,
 .uagb-inspector-tab .components-panel__body.is-opened > .rfip,
-.uagb-inspector-tab .components-panel__body.is-opened > p {
+.uagb-inspector-tab .components-panel__body.is-opened > p,
+.uagb-inspector-tab .components-panel__body.is-opened > h2 {
 	padding: 0 15px;
 }
 .uag-responsive-common-button {
