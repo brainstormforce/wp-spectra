@@ -68,7 +68,6 @@ function AssetsGeneration( props ) {
 		} ).then( ( data ) => {
 			if( data.success ){
 				setAssetGenState( false );	
-				console.log(status);
 				setEnableFileGeneration( status );
 			}
 		} );
