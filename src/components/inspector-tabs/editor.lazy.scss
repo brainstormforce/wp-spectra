@@ -233,3 +233,12 @@ $border-color: #d6d9dd;
 	margin-top: 0;
 	border-top: none !important;
 }
+
+.uagb-inspector-tab{
+    &.uagb-active-tab {
+        display:block;
+    }
+    &.uagb-inactive-tab {
+        display:none;
+    }
+}
