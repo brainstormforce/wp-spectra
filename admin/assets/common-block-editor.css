@@ -3558,7 +3558,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	box-shadow:0 0;
 	color:0 0;
 }
-.interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced{
+.interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab{
 	border: none;
 	border-bottom: 1px solid #e0e0e0;
 }
