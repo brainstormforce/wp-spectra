@@ -3,8 +3,12 @@
 	display: block;
 	margin-bottom: 8px;
 }
-.uag-typography-range-options {
+.uag-typography-range-options{
 	margin-bottom: 16px;
+}
+.uag-typography-font-family-options {
+	margin-bottom: 16px;
+	margin-top: 16px;
 }
 .components-button-group.components-tab-panel__tabs {
 	padding-right: 26px;
@@ -70,8 +74,12 @@ label.uag-typography-font-family-subset-label {
 .uag-typography-options {
 	border: 1px solid lightgrey;
 	border-radius: 8px;
-	padding: 15px;
-	margin: 1.5em 0;
+	padding: 15px 8px;
+    margin: 1.5em -8px;
+	.components-button:focus:not(:disabled){
+		box-shadow: none;
+    	outline: none;
+	}
 	.components-toggle-control
 		.components-base-control__field
 		.components-form-toggle {
@@ -79,7 +87,6 @@ label.uag-typography-font-family-subset-label {
 		margin: 0;
 	}
 	.uag-typography-main-label {
-		font-weight: bold;
 		font-size: 13px;
 	}
 }
@@ -95,8 +102,11 @@ label.uag-typography-font-family-subset-label {
 		width: auto;
 	}
 }
+.uag-typography-option-actions .dashicons-edit{
+		font-size: 20px;
+}
 .uag-typography-options.active {
-	margin: 1.5em 0;
+	
 	.uag-typography-option-actions {
 		margin: unset;
 	}
@@ -123,5 +133,8 @@ label.uag-typography-font-family-subset-label {
 	.uag-typography-font-family-subset {
 		display: flex;
 		width: 48%;
+	}
+	.uag-typography-main-label {
+		margin: 0 0 10px;
 	}
 }
