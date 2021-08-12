@@ -200,7 +200,7 @@ const TypographyControl = (props) => {
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontAdvancedControls = (
 			<Button
-					isSmall
+					className='uag-typography-button'
 					aria-pressed={ showAdvancedControls }
 					onClick={() => toggleAdvancedControls(!showAdvancedControls)}
 				><Dashicon icon="edit" /></Button>

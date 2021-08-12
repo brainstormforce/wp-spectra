@@ -282,18 +282,13 @@ hr.uagb-editor__separator {
 	display: block;
 	margin-bottom: -34px;
 }
-.uag-typography-option-actions,
+
 .uag-box-shadow-option-actions {
 	margin-top: 1.5em;
 	margin-bottom: 2em;
 }
 
-.uag-typography-option-actions button {
-	float: right;
-	margin: 0;
-}
-
-.uag-typography-option-actions .uagb-typography-reset-btn,
+/*.uag-typography-option-actions .uagb-typography-reset-btn,
 .uag-typography-option-actions .uagb-typography-reset-btn:hover,
 .uag-typography-option-actions .uagb-typography-reset-btn:active:enabled {
 	float: right;
@@ -315,7 +310,8 @@ hr.uagb-editor__separator {
 	width: 13px;
 	height: 13px;
 	fill: #777;
-}
+}*/
+
 .uagb__url-panel-body .block-editor-url-input input {
 	width: 100%;
 }
