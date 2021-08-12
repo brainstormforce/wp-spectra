@@ -534,12 +534,17 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 						/>
-						<SelectControl
+						<MultiButtonsControl
+							setAttributes={setAttributes}
 							label={__(
 								"Icon Position",
 								"ultimate-addons-for-gutenberg"
 							)}
-							value={iconPosition}
+							data={{
+								value: iconPosition,
+								label: "iconPosition",
+							}}
+							className="uagb-multi-button-alignment-control"
 							options={[
 								{
 									value: "left",
@@ -570,9 +575,6 @@ const Settings = (props) => {
 									),
 								},
 							]}
-							onChange={(value) =>
-								setAttributes({ iconPosition: value })
-							}
 						/>
 					</>
 				)}

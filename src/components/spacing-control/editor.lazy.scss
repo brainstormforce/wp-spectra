@@ -1,7 +1,6 @@
 .components-panel__body {
 	.uagb-spacing-control {
 		position: relative;
-		margin-bottom: 1.5em;
 		.uagb-spacing-control__link {
 			border: 1px solid #8c8f94;
 			background-color: #fff;
@@ -32,6 +31,10 @@
 			padding-right: 1px;
 			width: 25%;
 		}
+		.uagb-spacing-control__link {
+			width: 12%;
+			background: #d5dadf;
+		}
 		input[type="number"].uagb-spacing-control__number:focus,
 		.uagb-spacing-control__link {
 			z-index: 1;
@@ -48,7 +51,8 @@
 			height: 15px;
 			font-size: 15px;
 		}
-		.uagb-spacing-control__inputs > :first-child {
+		.uagb-spacing-control__inputs
+			> :first-child.uagb-spacing-control__number {
 			-webkit-border-radius: 3px 0 0 3px;
 			border-radius: 3px 0 0 3px;
 		}
@@ -136,8 +140,10 @@
 			text-align: center;
 			width: 25%;
 		}
+		.uagb-spacing-control__link-label {
+			width: 10%;
+		}
 	}
-
 	.uagb-control__label {
 		margin-bottom: 0;
 		width: 50%;
@@ -160,32 +166,37 @@
 	}
 }
 
-.components-button-group.uagb-spacing-control__units .components-button {
-	cursor: pointer;
-	padding: 0 2px;
-	text-transform: uppercase;
-	font-size: 9px;
-	&.is-small {
-		box-shadow: unset;
-		margin-right: 10px;
+.components-button-group.uagb-spacing-control__units {
+	.components-button:last-child {
+		padding: 0;
 	}
-	&.is-primary.is-small {
-		background: unset;
-		background-color: unset;
-		color: #007cba;
-	}
-	&.is-secondary,
-	&.is-tertiary {
-		background: unset;
-		background-color: unset;
-		color: #050505;
-	}
-	&.is-primary:hover:not(:disabled) {
-		background: unset;
-		background-color: unset;
-		color: #007cba;
-	}
-	&.is-primary {
-		box-shadow: unset;
+	.components-button {
+		cursor: pointer;
+		padding: 0;
+		padding-right: 4px;
+		text-transform: uppercase;
+		font-size: 9px;
+		&.is-small {
+			box-shadow: unset;
+		}
+		&.is-primary.is-small {
+			background: unset;
+			background-color: unset;
+			color: #007cba;
+		}
+		&.is-secondary,
+		&.is-tertiary {
+			background: unset;
+			background-color: unset;
+			color: #050505;
+		}
+		&.is-primary:hover:not(:disabled) {
+			background: unset;
+			background-color: unset;
+			color: #007cba;
+		}
+		&.is-primary {
+			box-shadow: unset;
+		}
 	}
 }

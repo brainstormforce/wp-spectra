@@ -129,7 +129,7 @@
 
 .components-popover.uagb-popover-color.new-uagb-advanced-colors-pop
 	.components-popover__content {
-	padding: 16px;
+	overflow: hidden;
 }
 
 .components-circular-option-picker {
@@ -139,4 +139,5 @@
 .components-circular-option-picker
 	.components-circular-option-picker__swatches {
 	margin-right: 0px;
+	text-align: center;
 }

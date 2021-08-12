@@ -342,8 +342,8 @@ hr.uagb-editor__separator {
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
-	left: 13px !important;
-	width: 90%;
+	left: 15px !important;
+    width: 88.5%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -482,7 +482,6 @@ hr.uagb-editor__separator {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	flex: 0 0 86px;
 	justify-content: center;
 	align-items: center;
 	padding: 2px;
@@ -495,8 +494,8 @@ hr.uagb-editor__separator {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	-webkit-box-flex: 0;
-	-ms-flex: 0 0 86px;
-	flex: 0 0 86px;
+	-ms-flex: 0 0 70px;
+	flex: 0 0 70px;
 	padding: 2px;
 }
 
@@ -793,13 +792,13 @@ hr.uagb-editor__separator {
 
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	max-height: 24px;
 }
 
 .rfipicons__ibox svg {
-	fill: #333;
+	fill: #585858;
 }
 
 .rfipicons__ibox > * {
@@ -1859,9 +1858,8 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default {
-	-webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
-		0 19px 76px rgba(0, 0, 0, 0.3);
-	box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
+	box-shadow:0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
 	color: #424242;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
@@ -1935,8 +1933,8 @@ hr.uagb-editor__separator {
 	color: #424242;
 }
 
-.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox {
-	background-color: #eee;
+.rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
+	fill: #007cba;
 }
 
 .rfipdropdown--default .rfipsearch input {
@@ -3229,8 +3227,14 @@ hr.uagb-editor__separator {
 }
 
 .rfipbtn--default .rfipbtn__del {
-	height: 18px;
-	background-color: #eee;
+	height: 7px;
+    background-color: #007cba33;
+    color: #007cba;
+    font-weight: bold;
+    padding: 8px 8px 10px 8px;
+    border-radius: 100%;
+    margin-left: 10px;
+}
 }
 
 [class^="fipicon-"] {
@@ -3443,6 +3447,14 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab > .components-base-control,
 .uagb-inspector-tab > h2{
 	padding: 0 10px;
+	margin: -10px;
+	margin-bottom: 16px;
+}
+.uagb-inspector-tab
+	.components-panel__body
+	> .components-panel__body-title
+	.components-panel__body-toggle {
+	padding: 16px 48px 16px 26px;
 }
 .uagb-inspector-tab
 	.components-panel__body.is-opened
@@ -3458,7 +3470,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.components-select-control__input {
 	font-size: 12px;
 }
-
 .uag-responsive-common-button {
 	box-shadow: none;
 	background-color: #bfdeee;
@@ -3564,4 +3575,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced{
 	border: none;
 	border-bottom: 1px solid #e0e0e0;
+}
+.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control.uagb-spacing-control,
+	.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control.uagb-responsive-select-control {
+	padding-bottom: 20px;
 }
