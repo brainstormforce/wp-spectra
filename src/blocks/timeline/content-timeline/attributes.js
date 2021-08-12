@@ -316,19 +316,15 @@ const attributes = {
 	},
 	leftMargin: {
 		type: "number",
-		default: 10,
 	},
 	rightMargin: {
 		type: "number",
-		default: 10,
 	},
 	topMargin: {
 		type: "number",
-		default: 15,
 	},
 	bottomMargin: {
 		type: "number",
-		default: 15,
 	},
 	leftMarginTablet: {
 		type: "number",
