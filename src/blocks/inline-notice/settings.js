@@ -157,7 +157,7 @@ const Settings = ( props ) => {
 	const noticeDismissOptions = [
 		{
 			value: '',
-			label: __( 'Allow Always', 'ultimate-addons-for-gutenberg' ),
+			label: __( 'Display Always', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'uagb-dismissable',
@@ -167,8 +167,9 @@ const Settings = ( props ) => {
 
 	const inlineGeneralSettings = () => {
 		return (
-			<>
-			<MultiButtonsControl
+			<PanelBody 
+				initialOpen={ true }>
+				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
 						"Layout",
@@ -209,11 +210,8 @@ const Settings = ( props ) => {
 						displayUnit={false}
 					/>
 				) }
-				<h2>
-					{ __( 'Primary Heading', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
 				<SelectControl
-					label={ __( 'Tag' ) }
+					label={ __( 'Title Tag' ) }
 					value={ headingTag }
 					onChange={ ( value ) =>
 						setAttributes( { headingTag: value } )
@@ -290,7 +288,6 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ noticeDismiss && <hr className="uagb-editor__separator" /> }
 				{ noticeDismiss && (
 					<ToggleControl
 						label={ __(
@@ -317,7 +314,7 @@ const Settings = ( props ) => {
 					/>
 				) }
 				
-			</>
+			</PanelBody>
 		);
 	};
 

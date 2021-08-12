@@ -177,14 +177,16 @@ var Settings = function Settings(props) {
 
   var noticeDismissOptions = [{
     value: '',
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Allow Always', 'ultimate-addons-for-gutenberg')
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Display Always', 'ultimate-addons-for-gutenberg')
   }, {
     value: 'uagb-dismissable',
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Allow to Dismiss', 'ultimate-addons-for-gutenberg')
   }];
 
   var inlineGeneralSettings = function inlineGeneralSettings() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_14__["PanelBody"], {
+      initialOpen: true
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
       setAttributes: setAttributes,
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])("Layout", "ultimate-addons-for-gutenberg"),
       data: {
@@ -211,8 +213,8 @@ var Settings = function Settings(props) {
       min: 0,
       max: 50,
       displayUnit: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Primary Heading', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_14__["SelectControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Tag'),
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_14__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Title Tag'),
       value: headingTag,
       onChange: function onChange(value) {
         return setAttributes({
@@ -267,9 +269,7 @@ var Settings = function Settings(props) {
       },
       isMulti: false,
       noSelectedPlaceholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Select Icon', 'ultimate-addons-for-gutenberg')
-    })), noticeDismiss && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", {
-      className: "uagb-editor__separator"
-    }), noticeDismiss && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_14__["ToggleControl"], {
+    })), noticeDismiss && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_14__["ToggleControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Enable Cookies', 'ultimate-addons-for-gutenberg'),
       checked: cookies,
       onChange: updateCookieId

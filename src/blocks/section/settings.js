@@ -8,7 +8,7 @@ import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Background from "../../components/background";
 import Border from "../../components/border";
-
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -96,26 +96,32 @@ const Settings = (props) => {
 	const getLayoutPanelBody = () => {
 		return (
 			<PanelBody
-				title={__("Layout", "ultimate-addons-for-gutenberg")}
 				initialOpen={true}
 			>
-				<SelectControl
-					label={__("Content Width", "ultimate-addons-for-gutenberg")}
-					value={contentWidth}
-					onChange={(value) => setAttributes({ contentWidth: value })}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Content Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: contentWidth,
+						label: "contentWidth",
+					}}
+					className="uagb-multi-button-alignment-control"
 					options={[
 						{
 							value: "boxed",
-							label: __("Boxed", "ultimate-addons-for-gutenberg"),
+							label: 'Boxed'
+							
 						},
 						{
 							value: "full_width",
-							label: __(
-								"Full Width",
-								"ultimate-addons-for-gutenberg"
-							),
+							label: 'Full Width',
 						},
+						
 					]}
+					showIcons={false}
 				/>
 				{contentWidth == "boxed" && (
 					<Range

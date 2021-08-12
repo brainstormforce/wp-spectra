@@ -144,7 +144,7 @@ var Render = function Render(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
     tagName: "div",
     multiline: "p",
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Add notice text…', 'ultimate-addons-for-gutenberg'),
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Add Content…', 'ultimate-addons-for-gutenberg'),
     value: noticeContent,
     className: "uagb-notice-text",
     onChange: function onChange(value) {
