@@ -4,6 +4,7 @@ import lazyLoader from "@Controls/lazy-loader";
 import BoxShadowControl from "@Components/box-shadow";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import Tabs from "../../components/inspector-tabs/tabObject.js"
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Background from "../../components/background";
@@ -562,15 +563,15 @@ const Settings = (props) => {
 	const generalSetting = () => {
 		return (
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...Tabs.general}>
 					{getLayoutPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...Tabs.style}>
 					{getSpacingPanelBody()}
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...Tabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 		);

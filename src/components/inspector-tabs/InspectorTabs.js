@@ -152,7 +152,7 @@ const InspectorTabs = (props) => {
 					}
 					return cloneElement(child, {
 						index,
-						isActive: ( child.key === currentTab ) ? `uagb-${currentTab}-tab uagb-active-tab` : `uagb-inactive-tab`,
+						isActive: child.key === currentTab,
 					});
 				})}
 		</Fragment>

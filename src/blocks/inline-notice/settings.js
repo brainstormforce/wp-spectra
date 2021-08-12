@@ -6,6 +6,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import Tabs from "../../components/inspector-tabs/tabObject.js"
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
@@ -626,14 +627,14 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			<InspectorControls>
 			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			   <InspectorTab {...Tabs.general}>
 				{ inlineGeneralSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...Tabs.style}>
 				{ inlineTitleSettings() }
 				{ inlineContentSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...Tabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>

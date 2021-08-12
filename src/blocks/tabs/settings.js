@@ -9,6 +9,7 @@ import Range from "../../components/range/Range.js";
 import Border from "../../components/border";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import Tabs from "../../components/inspector-tabs/tabObject.js"
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
@@ -1085,17 +1086,17 @@ const Settings = (props) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...Tabs.general}>
 					{tabStyleSettings()}
 					{tabTitleSettings()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...Tabs.style}>
 					{tabTitleStyle()}
 					{tabIconStyle()}
 					{tabBodySettings()}
 					{tabBorderSettings()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...Tabs.advance}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

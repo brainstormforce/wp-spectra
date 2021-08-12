@@ -10,6 +10,7 @@ import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import Tabs from "../../components/inspector-tabs/tabObject.js"
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -1897,14 +1898,14 @@ const Settings = (props) => {
 				blockControls()}
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab key={"general"}>
+					<InspectorTab {...Tabs.general}>
 						{imageIconPanel()}
 						{typographySettings()}
 						{seperatorSettings()}
 						{ctaSettings()}
 					</InspectorTab>
-					<InspectorTab key={"style"}>{styleSettings()}</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab {...Tabs.style}>{styleSettings()}</InspectorTab>
+					<InspectorTab {...Tabs.advance}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={lazyLoader()}>
