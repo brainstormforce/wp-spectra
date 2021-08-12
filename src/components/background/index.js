@@ -148,7 +148,7 @@ const Background = (props) => {
 													"ultimate-addons-for-gutenberg"
 											  )
 											: __(
-													"Replace image",
+													"Replace Image",
 													"ultimate-addons-for-gutenberg"
 											  )}
 									</Button>
