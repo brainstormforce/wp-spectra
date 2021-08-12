@@ -185,7 +185,7 @@ const TypographyControl = (props) => {
 							),
 						},
 						{
-							value: "linethrough",
+							value: "line-through",
 							label: __(
 								"Line Through",
 								"ultimate-addons-for-gutenberg"
