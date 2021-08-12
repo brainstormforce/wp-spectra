@@ -5,7 +5,7 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../color-control/advanced-pop-color-control";
-import { ToggleControl } from "@wordpress/components";
+import { Button , Dashicon } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import MultiButtonsControl from "../multi-buttons-control/index";
 import styles from "./editor.lazy.scss";
@@ -129,10 +129,11 @@ const BoxShadowControl = (props) => {
 	boxShadowAdvancedControls = (
 		<div className="uag-typography-option-actions">
 			<span className="uag-typography-main-label">Enable Shadow</span>
-			<ToggleControl
-				checked={showAdvancedControls}
-				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
-			/>
+			<Button
+				isSmall
+				aria-pressed={ showAdvancedControls }
+				onClick={() => toggleAdvancedControls(!showAdvancedControls)}
+			><Dashicon icon="edit" /></Button>
 		</div>
 	);
 

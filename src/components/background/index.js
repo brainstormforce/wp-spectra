@@ -519,7 +519,7 @@ const Background = (props) => {
 		</>
 	);
 
-	return advancedControls;
+	return <div className="uag-bg-select-control">{advancedControls}</div>;
 };
 
 export default Background;

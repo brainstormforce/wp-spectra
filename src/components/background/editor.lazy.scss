@@ -1,4 +1,4 @@
-.components-base-control__field {
+.uag-bg-select-control .components-base-control__field {
     .uagb-bg-image-position-control, .uagb-bg-image-attachment-control, .uagb-bg-image-repeat-control, .uagb-bg-image-size-control, .uagb-bg-image-overlay-type-control, .uagb-bg-color-type-control {
         flex-direction:row;
     }
@@ -31,6 +31,6 @@
     }
 }
 /* editor-bg-image-control is our class */
-.editor-bg-image-control .components-base-control__field {
+.editor-bg-image-control .uag-bg-select-control .components-base-control__field {
     margin-top:10px;
 }
