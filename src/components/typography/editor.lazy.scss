@@ -76,6 +76,10 @@ label.uag-typography-font-family-subset-label {
 	border-radius: 8px;
 	padding: 15px 8px;
     margin: 1.5em -8px;
+	.components-button:focus:not(:disabled){
+		box-shadow: none;
+    	outline: none;
+	}
 	.components-toggle-control
 		.components-base-control__field
 		.components-form-toggle {
@@ -98,6 +102,9 @@ label.uag-typography-font-family-subset-label {
 		padding: 0;
 		width: auto;
 	}
+}
+.uag-typography-option-actions .dashicons-edit{
+		font-size: 20px;
 }
 .uag-typography-options.active {
 	

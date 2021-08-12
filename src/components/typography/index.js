@@ -199,10 +199,11 @@ const TypographyControl = (props) => {
 
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontAdvancedControls = (
-			<ToggleControl
-				checked={showAdvancedControls}
-				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
-			/>
+			<Button
+					isSmall
+					aria-pressed={ showAdvancedControls }
+					onClick={() => toggleAdvancedControls(!showAdvancedControls)}
+				><Dashicon icon="edit" /></Button>
 		);
 	} else {
 		showAdvancedFontControls = (
