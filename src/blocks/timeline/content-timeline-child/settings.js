@@ -22,8 +22,7 @@ const Settings = ( props ) => {
 
 		return (
 			<PanelBody
-				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TextControl
 					label={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }

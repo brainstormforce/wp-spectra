@@ -104,22 +104,22 @@ const Settings = ( props ) => {
 			displayPostDate,
 			stack,
 			dateFormat,
-			topPadding,
-			rightPadding,
-			bottomPadding,
-			leftPadding,
-			topPaddingTablet,
-			rightPaddingTablet,
-			bottomPaddingTablet,
-			leftPaddingTablet,
-			topPaddingMobile,
-			rightPaddingMobile,
-			bottomPaddingMobile,
-			leftPaddingMobile,
-			paddingUnit,
-			mobilePaddingUnit,
-			tabletPaddingUnit,
-			paddingLink,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			topMarginTablet,
+			rightMarginTablet,
+			bottomMarginTablet,
+			leftMarginTablet,
+			topMarginMobile,
+			rightMarginMobile,
+			bottomMarginMobile,
+			leftMarginMobile,
+			marginUnit,
+			mobileMarginUnit,
+			tabletMarginUnit,
+			marginLink,
 		},
 	} = props;
 
@@ -218,7 +218,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<h2>{ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }</h2>
@@ -426,104 +425,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <Range
-					label={__(
-						"Horizontal Space",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={horizontalSpace}
-					onChange={(value) =>
-						setAttributes({ horizontalSpace: value })
-					}
-					min={1}
-					max={50}
-					displayUnit={false}
-				/>
-				<Range
-					label={__(
-						"Vertical Space",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={verticalSpace}
-					onChange={(value) =>
-						setAttributes({ verticalSpace: value })
-					}
-					min={1}
-					max={50}
-					displayUnit={false}
-				/> */}
-				<SpacingControl
-					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
-						value: topPadding,
-						label: "topPadding",
-					}}
-					valueRight={{
-						value: rightPadding,
-						label: "rightPadding",
-					}}
-					valueBottom={{
-						value: bottomPadding,
-						label: "bottomPadding",
-					}}
-					valueLeft={{
-						value: leftPadding,
-						label: "leftPadding",
-					}}
-					valueTopTablet={{
-						value: topPaddingTablet,
-						label: "topPaddingTablet",
-					}}
-					valueRightTablet={{
-						value: rightPaddingTablet,
-						label: "rightPaddingTablet",
-					}}
-					valueBottomTablet={{
-						value: bottomPaddingTablet,
-						label: "bottomPaddingTablet",
-					}}
-					valueLeftTablet={{
-						value: leftPaddingTablet,
-						label: "leftPaddingTablet",
-					}}
-					valueTopMobile={{
-						value: topPaddingMobile,
-						label: "topPaddingMobile",
-					}}
-					valueRightMobile={{
-						value: rightPaddingMobile,
-						label: "rightPaddingMobile",
-					}}
-					valueBottomMobile={{
-						value: bottomPaddingMobile,
-						label: "bottomPaddingMobile",
-					}}
-					valueLeftMobile={{
-						value: leftPaddingMobile,
-						label: "leftPaddingMobile",
-					}}
-					unit={{
-						value: paddingUnit,
-						label: "paddingUnit",
-					}}
-					mUnit={{
-						value: mobilePaddingUnit,
-						label: "mobilePaddingUnit",
-					}}
-					tUnit={{
-						value: tabletPaddingUnit,
-						label: "tabletPaddingUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: paddingLink,
-						label: "paddingLink",
-					}}
-				/>
 				<Range
 					label={__(
 						"Heading Bottom Spacing",
@@ -537,6 +438,76 @@ const Settings = ( props ) => {
 					min={0}
 					max={50}
 					displayUnit={false}
+				/>
+				<SpacingControl
+					{...props}
+					label={__("Margin", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: topMargin,
+						label: "topMargin",
+					}}
+					valueRight={{
+						value: rightMargin,
+						label: "rightMargin",
+					}}
+					valueBottom={{
+						value: bottomMargin,
+						label: "bottomMargin",
+					}}
+					valueLeft={{
+						value: leftMargin,
+						label: "leftMargin",
+					}}
+					valueTopTablet={{
+						value: topMarginTablet,
+						label: "topMarginTablet",
+					}}
+					valueRightTablet={{
+						value: rightMarginTablet,
+						label: "rightMarginTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomMarginTablet,
+						label: "bottomMarginTablet",
+					}}
+					valueLeftTablet={{
+						value: leftMarginTablet,
+						label: "leftMarginTablet",
+					}}
+					valueTopMobile={{
+						value: topMarginMobile,
+						label: "topMarginMobile",
+					}}
+					valueRightMobile={{
+						value: rightMarginMobile,
+						label: "rightMarginMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomMarginMobile,
+						label: "bottomMarginMobile",
+					}}
+					valueLeftMobile={{
+						value: leftMarginMobile,
+						label: "leftMarginMobile",
+					}}
+					unit={{
+						value: marginUnit,
+						label: "marginUnit",
+					}}
+					mUnit={{
+						value: mobileMarginUnit,
+						label: "mobileMarginUnit",
+					}}
+					tUnit={{
+						value: tabletMarginUnit,
+						label: "tabletMarginUnit",
+					}}
+					attributes={props}
+					setAttributes={setAttributes}
+					link={{
+						value: marginLink,
+						label: "marginLink",
+					}}
 				/>
 			</PanelBody>
 		);

@@ -314,55 +314,59 @@ const attributes = {
 		type: 'string',
 		default: 'tablet',
 	},
-	leftPadding: {
+	leftMargin: {
+		type: "number",
+		default: 10,
+	},
+	rightMargin: {
+		type: "number",
+		default: 10,
+	},
+	topMargin: {
+		type: "number",
+		default: 15,
+	},
+	bottomMargin: {
+		type: "number",
+		default: 15,
+	},
+	leftMarginTablet: {
 		type: "number",
 	},
-	rightPadding: {
+	rightMarginTablet: {
 		type: "number",
 	},
-	topPadding: {
+	topMarginTablet: {
 		type: "number",
 	},
-	bottomPadding: {
+	bottomMarginTablet: {
 		type: "number",
 	},
-	leftPaddingTablet: {
+	leftMarginMobile: {
 		type: "number",
 	},
-	rightPaddingTablet: {
+	rightMarginMobile: {
 		type: "number",
 	},
-	topPaddingTablet: {
+	topMarginMobile: {
 		type: "number",
 	},
-	bottomPaddingTablet: {
+	bottomMarginMobile: {
 		type: "number",
 	},
-	leftPaddingMobile: {
-		type: "number",
-	},
-	rightPaddingMobile: {
-		type: "number",
-	},
-	topPaddingMobile: {
-		type: "number",
-	},
-	bottomPaddingMobile: {
-		type: "number",
-	},
-	paddingUnit: {
+	marginUnit: {
 		type: "string",
 		default: "px",
 	},
-	mobilePaddingUnit: {
+	mobileMarginUnit: {
 		type: "string",
 		default: "px",
 	},
-	tabletPaddingUnit: {
+	tabletMarginUnit: {
 		type: "string",
 		default: "px",
 	},
-	paddingLink: {
+	marginLink: {
 		type: "boolean",
 		default: false,
 	},
