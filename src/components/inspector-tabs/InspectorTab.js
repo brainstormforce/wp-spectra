@@ -1,13 +1,13 @@
 
 const InspectorTab = props => {
-    const {children, isActive, key} = props;
-    
+    const {children, isActive, className} = props;
+
     return (
-        <div 
+        <div
             style={{
                 display: isActive ? 'block' : 'none'
             }}
-            className={`uagb-inspector-tab uagb-${props.className}-tab-content`}
+            className={`uagb-inspector-tab uagb-tab-content-${className}`}
         >
             {Array.isArray(children) ? children.map(item => item) : children}
         </div>
@@ -15,3 +15,20 @@ const InspectorTab = props => {
 }
 
 export default InspectorTab
+
+
+export const UAGTabs = {
+
+	general: {
+		key: 'general',
+		className: 'general',
+	},
+	style: {
+		key: 'style',
+		className: 'style',
+	},
+	advance: {
+		key: 'advance',
+		className: 'advance',
+	},
+};

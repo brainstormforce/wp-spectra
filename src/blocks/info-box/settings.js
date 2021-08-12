@@ -9,8 +9,7 @@ import UAGBIcon from "@Controls/UAGBIcon.json";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
-import Tabs from "../../components/inspector-tabs/tabObject.js"
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -1898,14 +1897,14 @@ const Settings = (props) => {
 				blockControls()}
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab {...Tabs.general}>
+					<InspectorTab {...UAGTabs.general}>
 						{imageIconPanel()}
 						{typographySettings()}
 						{seperatorSettings()}
 						{ctaSettings()}
 					</InspectorTab>
-					<InspectorTab {...Tabs.style}>{styleSettings()}</InspectorTab>
-					<InspectorTab {...Tabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.style}>{styleSettings()}</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={lazyLoader()}>
