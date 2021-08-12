@@ -121,7 +121,7 @@ const Border = (props) => {
 		</>
 	);
 
-	return advancedControls;
+	return <div className="uag-border-select-control">{advancedControls}</div>;;
 };
 
 export default Border;
