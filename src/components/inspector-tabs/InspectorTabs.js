@@ -3,7 +3,6 @@ import React, { useLayoutEffect } from "react";
 import classnames from "classnames";
 const { __ } = wp.i18n;
 const { Fragment, cloneElement, Children } = wp.element;
-const { Tooltip } = wp.components;
 
 const { useState, useRef, useEffect } = wp.element,
 	LAYOUT = "general",
@@ -142,6 +141,7 @@ const InspectorTabs = (props) => {
 					)}
 				</div>
 			</div>
+			
 			{Array.isArray(children) &&
 				Children.map(children, (child, index) => {
 					if (!child.key) {

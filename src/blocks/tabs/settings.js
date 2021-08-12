@@ -8,7 +8,7 @@ import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Border from "../../components/border";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
@@ -1085,17 +1085,17 @@ const Settings = (props) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 					{tabStyleSettings()}
 					{tabTitleSettings()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 					{tabTitleStyle()}
 					{tabIconStyle()}
 					{tabBodySettings()}
 					{tabBorderSettings()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
