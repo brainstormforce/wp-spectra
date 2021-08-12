@@ -1,6 +1,8 @@
 .components-panel__body {
 	.uagb-spacing-control {
 		position: relative;
+		margin: 15px 0;
+		display: inline-block;
 		.uagb-spacing-control__link {
 			border: 1px solid #8c8f94;
 			background-color: #fff;
@@ -165,7 +167,9 @@
 		display: flex;
 	}
 }
-
+.components-panel .block-editor-block-inspector .components-base-control:last-child{
+	margin-bottom: 20px;
+}
 .components-button-group.uagb-spacing-control__units {
 	.components-button:last-child {
 		padding: 0;
