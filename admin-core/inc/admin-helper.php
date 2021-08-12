@@ -37,31 +37,43 @@ class AdminHelper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
-		// Get all extensions.
-		$old_blocks = \UAGB_Helper::$block_list;
-		$new_blocks = array();
 
-		// Set all extension to enabled.
-		foreach ( $old_blocks as $slug => $value ) {
-			$_slug                = str_replace( 'uagb/', '', $slug );
-			$new_blocks[ $_slug ] = $_slug;
-		}
-
-		// Escape attrs.
-		$new_blocks = array_map( 'esc_attr', $new_blocks );
-
-		$uag_versions = self::get_rollback_versions();
+		$uag_versions = self::get_rollback_versions_options();
 
 		$options = array(
-			'rollback_to_previous_version'       => $uag_versions[0]['value'],
+			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
 			'enable_beta_updates'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_beta', 'no' ),
 			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
-			'blocks_activation_and_deactivation' => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', $new_blocks ),
+			'blocks_activation_and_deactivation' => self::get_blocks(),
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' ),
 		);
+
 		return $options;
 	}
+
+	/**
+	 * Get blocks.
+	 */
+	public static function get_blocks() {
+
+		// Get all blocks.
+		$list_blocks    = \UAGB_Helper::$block_list;
+		$default_blocks = array();
+
+		// Set all extension to enabled.
+		foreach ( $list_blocks as $slug => $value ) {
+			$_slug                    = str_replace( 'uagb/', '', $slug );
+			$default_blocks[ $_slug ] = $_slug;
+		}
+
+		// Escape attrs.
+		$default_blocks = array_map( 'esc_attr', $default_blocks );
+		$saved_blocks   = \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+
+		return wp_parse_args( $saved_blocks, $default_blocks );
+	}
+
 	/**
 	 * Get options.
 	 */
@@ -83,66 +95,21 @@ class AdminHelper {
 	 * @return array
 	 * @access public
 	 */
-	public static function get_rollback_versions() {
+	public static function get_rollback_versions_options() {
 
-		$rollback_versions_options = get_transient( 'uag_rollback_versions_' . UAGB_VER );
+		$rollback_versions = \UAGB_Admin_Helper::get_instance()->get_rollback_versions();
 
-		if ( ! $rollback_versions_options || empty( $rollback_versions_options ) ) {
+		$rollback_versions_options = array();
 
-			$max_versions = 10;
+		foreach ( $rollback_versions as $version ) {
 
-			require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+			$version = array(
+				'label' => $version,
+				'value' => $version,
 
-			$plugin_information = plugins_api(
-				'plugin_information',
-				array(
-					'slug' => 'ultimate-addons-for-gutenberg',
-				)
 			);
 
-			if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
-				return array();
-			}
-
-			krsort( $plugin_information->versions );
-
-			$rollback_versions = array();
-
-			foreach ( $plugin_information->versions as $version => $download_link ) {
-
-				$lowercase_version = strtolower( $version );
-
-				$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
-
-				if ( ! $is_valid_rollback_version ) {
-					continue;
-				}
-
-				if ( version_compare( $version, UAGB_VER, '>=' ) ) {
-					continue;
-				}
-
-				$rollback_versions[] = $version;
-			}
-
-			usort( $rollback_versions, array( __CLASS__, 'sort_rollback_versions' ) );
-
-			$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
-
-			$rollback_versions_options = array();
-
-			foreach ( $rollback_versions as $version ) {
-
-				$version = array(
-					'label' => $version,
-					'value' => $version,
-
-				);
-
-				$rollback_versions_options[] = $version;
-			}
-
-			set_transient( 'uag_rollback_versions_' . UAGB_VER, $rollback_versions_options, WEEK_IN_SECONDS );
+			$rollback_versions_options[] = $version;
 		}
 
 		return $rollback_versions_options;

@@ -301,7 +301,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$rollback_versions = get_transient( 'uag_rollback_versions_' . UAGB_VER );
 
-			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
+			if ( empty( $rollback_versions ) ) {
 
 				$max_versions = 10;
 
