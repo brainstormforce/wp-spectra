@@ -23,6 +23,12 @@
     .uagb-bg-color-type-control .components-flex__item {
         padding-right: 70px;
     }
+    .components-flex.components-select-control {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        
+    }
 }
 /* editor-bg-image-control is our class */
 .editor-bg-image-control .components-base-control__field {

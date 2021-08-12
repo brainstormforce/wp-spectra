@@ -175,13 +175,6 @@ hr.uagb-editor__separator {
 	margin-top: 30px;
 }
 
-.uagb-size-type-field-tabs {
-	margin-top: 20px;
-}
-
-.uagb-size-type-field-tabs {
-	margin-bottom: -20px;
-}
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	display: block;
@@ -487,7 +480,7 @@ hr.uagb-editor__separator {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 2px;
+	padding: 5px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row nowrap;
@@ -497,9 +490,6 @@ hr.uagb-editor__separator {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	-webkit-box-flex: 0;
-	-ms-flex: 0 0 70px;
-	flex: 0 0 70px;
-	padding: 2px;
 }
 
 .rfipbtn--multi {
@@ -3238,7 +3228,6 @@ hr.uagb-editor__separator {
     border-radius: 100%;
     margin-left: 10px;
 }
-}
 
 [class^="fipicon-"] {
 	speak: none;
@@ -3444,23 +3433,20 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-inspector-tab
 	.components-panel__body.is-opened
 	> .components-panel__body-title {
-	margin: -10px;
 	margin-bottom: 16px;
 }
-.uagb-inspector-tab
-	.components-panel__body
-	> .components-panel__body-title
-	.components-panel__body-toggle {
-	padding: 16px 48px 16px 26px;
+
+.uagb-inspector-tab > .components-base-control,
+.uagb-inspector-tab > h2{
+	padding: 0 10px;
+	margin: -10px;
+	margin-bottom: 16px;
 }
 .uagb-inspector-tab
 	.components-panel__body.is-opened
 	> .components-panel__body-title
 	.components-button.components-panel__body-toggle:focus {
 	box-shadow: none;
-}
-.uagb-inspector-tab .components-panel__body.is-opened {
-	padding: 10px;
 }
 .uagb-inspector-tab .components-panel__body.is-opened label {
 	font-size: 12px;
@@ -3469,14 +3455,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.components-panel__body.is-opened
 	.components-select-control__input {
 	font-size: 12px;
-}
-.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-base-control,
-.uagb-inspector-tab .components-panel__body.is-opened > .rfip,
-.uagb-inspector-tab .components-panel__body.is-opened > p,
-.uagb-inspector-tab .components-panel__body.is-opened > h2:not(.components-panel__body-title) {
-	padding: 0 15px;
 }
 .uag-responsive-common-button {
 	box-shadow: none;
@@ -3547,8 +3525,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	left: 0%;
 	height: 17px;
 	width: 17px;
-	top: 2px;
-	margin-left: 0px;
 }
 
 .uagb-bg-image {
@@ -3582,11 +3558,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	box-shadow:0 0;
 	color:0 0;
 }
-.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-base-control.uagb-spacing-control,
-	.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-base-control.uagb-responsive-select-control {
-	padding-bottom: 20px;
+.interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab{
+	border: none;
+	border-bottom: 1px solid #e0e0e0;
 }

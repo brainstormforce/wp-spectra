@@ -128,7 +128,7 @@ const BoxShadowControl = (props) => {
 
 	boxShadowAdvancedControls = (
 		<div className="uag-typography-option-actions">
-			<span className="uag-typography-main-label">{props.label}</span>
+			<span className="uag-typography-main-label">Enable Shadow</span>
 			<ToggleControl
 				checked={showAdvancedControls}
 				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
