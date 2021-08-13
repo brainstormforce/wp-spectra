@@ -127,8 +127,8 @@ const BoxShadowControl = (props) => {
 	}
 
 	boxShadowAdvancedControls = (
-		<div className="uag-typography-option-actions">
-			<span className="uag-typography-main-label">Enable Shadow</span>
+		<div className="uag-box-shadow-option-actions">
+			<span className="uag-box-shadow-main-label">Enable Shadow</span>
 			<Button
 				isSmall
 				aria-pressed={ showAdvancedControls }
@@ -138,7 +138,7 @@ const BoxShadowControl = (props) => {
 	);
 
 	return (
-		<div className={`uag-typography-options ${activeClass}`}>
+		<div className={`uag-box-shadow-options ${activeClass}`}>
 			{boxShadowAdvancedControls}
 			{showAdvancedControls && advancedControls}
 		</div>
