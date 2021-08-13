@@ -115,21 +115,35 @@
 		.components-select-control {
 			height: auto;
 		}
+
+		&:after,
+		&:before {
+			bottom: 100%;
+			right: 8px;
+			border: solid transparent;
+			content: "";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		&:after{
+			right: 9px;
+		}
+		&:after {
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #fff;
+			border-width: 5px;
+			margin-left: -5px;
+		}
+		&:before {
+			border-color: rgba(211, 211, 211, 0);
+			border-bottom-color: #d3d3d3;
+			border-width: 6px;
+			margin-left: -6px;
+		}
 	}
 
-	.uagb-typography-advanced:before {
-		bottom: 100%;
-		right: -1px;
-		border: 1px solid #d3d3d3;
-		content: "";
-		height: 14px;
-		width: 28px;
-		position: absolute;
-		pointer-events: none;
-		background: #fff;
-		border-top: 0;
-		border-bottom: 0;
-	}
 
 	/* Font options common */
 	.uag-typography-weight-subset-wrap,
