@@ -12,6 +12,13 @@ if ( PHP_MAJOR_VERSION >= 8 ) {
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
+/**
+ * Load PHPUnit Polyfills for the WP testing suite.
+ *
+ * @see https://github.com/WordPress/wordpress-develop/pull/1563/
+ */
+define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__, 2 ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php' );
+
 if ( ! $_tests_dir ) {
 	$_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
 }
