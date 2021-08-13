@@ -1,6 +1,37 @@
-.uag-border-select-control .components-base-control .components-flex.components-select-control {
-    align-items: center;
-    display: grid;
-    grid-template-columns: 30% 70%;
+.uag-border-select-control {
+    .components-base-control .components-flex.components-select-control {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+    .components-input-control__container.css-bmkl3j-Container{
+        margin-right:10px; 
+    }
+    .components-select-control__input{
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    .components-select-control{
+        height: auto;
+    }
+    .components-input-control__label {
+        font-size: 12px;
+    }
+    .uag-responsive-label-wrap {
+        display: flex;
+        align-items: center;
+    }
+    .uagb-reset {
+        margin-top: 0.3em;
+        .dashicons-image-rotate {
+            width: 12px;
+            height: 12px;
+            font-size: 9px;
+        }
+    }
+    .uagb-reset.is-secondary.is-small{
+        box-shadow: unset;
+        background: 0 0;
+    }
     
 }
