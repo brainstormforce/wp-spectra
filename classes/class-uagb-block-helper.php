@@ -194,35 +194,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$left_padding_tablet  = 0;
 			$right_padding_tablet = 0;
 
-			$title_top_padding    = isset( $attr['titleTopPadding'] ) ? $attr['titleVrPadding'] : $attr['titleTopPadding'];
-			$title_bottom_padding = isset( $attr['titleBottomPadding'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPadding'];
-			$title_left_padding   = isset( $attr['titleLeftPadding'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPadding'];
-			$title_right_padding  = isset( $attr['titleRightPadding'] ) ? $attr['titleHrPadding'] : $attr['titleRightPadding'];
+			$title_top_padding    = isset( $attr['titleTopPadding'] ) ? $attr['titleTopPadding'] : $attr['titleVrPadding'];
+			$title_bottom_padding = isset( $attr['titleBottomPadding'] ) ? $attr['titleBottomPadding'] : $attr['titleVrPadding'];
+			$title_left_padding   = isset( $attr['titleLeftPadding'] ) ? $attr['titleLeftPadding'] : $attr['titleHrPadding'];
+			$title_right_padding  = isset( $attr['titleRightPadding'] ) ? $attr['titleRightPadding'] : $attr['titleHrPadding'];
 
-			$title_top_padding_mobile    = isset( $attr['titleTopPaddingMobile'] ) ? $attr['titleVrPadding'] : $attr['titleTopPaddingMobile'];
-			$title_bottom_padding_mobile = isset( $attr['titleBottomPaddingMobile'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPaddingMobile'];
-			$title_left_padding_mobile   = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPaddingMobile'];
-			$title_right_padding_mobile  = isset( $attr['titleRightPaddingMobile'] ) ? $attr['titleHrPadding'] : $attr['titleRightPaddingMobile'];
+			$title_top_padding_mobile    = isset( $attr['titleTopPaddingMobile'] ) ? $attr['titleTopPaddingMobile'] : $attr['titleVrPadding'];
+			$title_bottom_padding_mobile = isset( $attr['titleBottomPaddingMobile'] ) ? $attr['titleBottomPaddingMobile'] : $attr['titleVrPadding'];
+			$title_left_padding_mobile   = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['titleLeftPaddingMobile'] : $attr['titleHrPadding'];
+			$title_right_padding_mobile  = isset( $attr['titleRightPaddingMobile'] ) ? $attr['titleRightPaddingMobile'] : $attr['titleHrPadding'];
 
-			$title_top_padding_tablet    = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleVrPadding'] : $attr['titleTopPaddingTablet'];
-			$title_bottom_padding_tablet = isset( $attr['titleBottomPaddingTablet'] ) ? $attr['titleVrPadding'] : $attr['titleBottomPaddingTablet'];
-			$title_left_padding_tablet   = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleHrPadding'] : $attr['titleLeftPaddingTablet'];
-			$title_right_padding_tablet  = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleHrPadding'] : $attr['titleRightPaddingTablet'];
+			$title_top_padding_tablet    = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleTopPaddingTablet'] : $attr['titleVrPadding'];
+			$title_bottom_padding_tablet = isset( $attr['titleBottomPaddingTablet'] ) ? $attr['titleBottomPaddingTablet'] : $attr['titleVrPadding'];
+			$title_left_padding_tablet   = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleLeftPaddingTablet'] : $attr['titleHrPadding'];
+			$title_right_padding_tablet  = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleRightPaddingTablet'] : $attr['titleHrPadding'];
 
-			$content_top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentVrPadding'] : $attr['contentTopPadding'];
-			$content_bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPadding'];
-			$content_left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPadding'];
-			$content_right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentHrPadding'] : $attr['contentRightPadding'];
+			$content_top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentTopPadding'] : $attr['contentVrPadding'];
+			$content_bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentBottomPadding'] : $attr['contentVrPadding'];
+			$content_left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentLeftPadding'] : $attr['contentHrPadding'];
+			$content_right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentRightPadding'] : $attr['contentHrPadding'];
 
-			$content_top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentVrPadding'] : $attr['contentTopPaddingMobile'];
-			$content_bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPaddingMobile'];
-			$content_left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPaddingMobile'];
-			$content_right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentHrPadding'] : $attr['contentRightPaddingMobile'];
+			$content_top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentTopPaddingMobile'] : $attr['contentVrPadding'];
+			$content_bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentBottomPaddingMobile'] : $attr['contentVrPadding'];
+			$content_left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentLeftPaddingMobile'] : $attr['contentHrPadding'];
+			$content_right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentRightPaddingMobile'] : $attr['contentHrPadding'];
 
-			$content_top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentVrPadding'] : $attr['contentTopPaddingTablet'];
-			$content_bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentVrPadding'] : $attr['contentBottomPaddingTablet'];
-			$content_left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentHrPadding'] : $attr['contentLeftPaddingTablet'];
-			$content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentHrPadding'] : $attr['contentRightPaddingTablet'];
+			$content_top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentTopPaddingTablet'] : $attr['contentVrPadding'];
+			$content_bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentBottomPaddingTablet'] : $attr['contentVrPadding'];
+			$content_left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentLeftPaddingTablet'] : $attr['contentHrPadding'];
+			$content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentRightPaddingTablet'] : $attr['contentHrPadding'];
 
 			if ( $attr['noticeDismiss'] ) {
 				if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
@@ -1393,7 +1393,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-top-style' => $attr['seperatorStyle'],
 				),
 				' .uagb-ifb-separator-parent'           => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['seperatorSpace'], $attr['seperatorUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['seperatorSpace'], $attr['seperatorSpaceUnit'] ),
 				),
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after'           => array(
@@ -1502,10 +1502,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height' => $m_cta_icon_size,
 				),
 				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginTopMobile'], 'px' ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], 'px' ),
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginBottomMobile'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], 'px' ),
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginTopMobile'], $attr['iconMobilePaddingUnit'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobilePaddingUnit'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginBottomMobile'], $attr['iconMobilePaddingUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobilePaddingUnit'] ),
 				),
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
@@ -1549,10 +1549,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height' => $t_cta_icon_size,
 				),
 				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], 'px' ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], 'px' ),
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginTopTablet'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomTablet'], 'px' ),
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletPaddingUnit'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletPaddingUnit'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconMarginTopTablet'], $attr['iconTabletPaddingUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomTablet'], $attr['iconTabletPaddingUnit'] ),
 				),
 			);
 

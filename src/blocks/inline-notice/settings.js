@@ -5,11 +5,11 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
-
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -157,7 +157,7 @@ const Settings = ( props ) => {
 	const noticeDismissOptions = [
 		{
 			value: '',
-			label: __( 'Allow Always', 'ultimate-addons-for-gutenberg' ),
+			label: __( 'Display Always', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'uagb-dismissable',
@@ -168,30 +168,33 @@ const Settings = ( props ) => {
 	const inlineGeneralSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-				<SelectControl
-					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-					value={ layout }
-					onChange={ ( value ) => setAttributes( { layout: value } ) }
-					options={ [
+				initialOpen={ true }>
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Layout",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: layout,
+						label: "layout",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
-							value: 'modern',
-							label: __(
-								'Modern',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "simmple",
+							label: 'Default'
+
 						},
 						{
-							value: 'simple',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "modern",
+							label: 'Modern',
 						},
-					] }
+
+					]}
+					showIcons={false}
 				/>
+
 				{ 'simple' === layout && (
 					<Range
 						label={ __(
@@ -207,11 +210,8 @@ const Settings = ( props ) => {
 						displayUnit={false}
 					/>
 				) }
-				<h2>
-					{ __( 'Primary Heading', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
 				<SelectControl
-					label={ __( 'Tag' ) }
+					label={ __( 'Title Tag' ) }
 					value={ headingTag }
 					onChange={ ( value ) =>
 						setAttributes( { headingTag: value } )
@@ -288,7 +288,6 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ noticeDismiss && <hr className="uagb-editor__separator" /> }
 				{ noticeDismiss && (
 					<ToggleControl
 						label={ __(
@@ -314,16 +313,24 @@ const Settings = ( props ) => {
 						displayUnit={false}
 					/>
 				) }
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Colors', 'ultimate-addons-for-gutenberg' ) }</h2>
+
+			</PanelBody>
+		);
+	};
+
+	const inlineTitleSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
 				<AdvancedPopColorControl
-					label={__("Title Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={titleColor ? titleColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ titleColor: value })
 					}
 				/>
-				<hr className="uagb-editor__separator" />
 				<AdvancedPopColorControl
 					label={__("Highlight Color", "ultimate-addons-for-gutenberg")}
 					colorValue={noticeColor ? noticeColor : ""}
@@ -331,36 +338,17 @@ const Settings = ( props ) => {
 						setAttributes({ noticeColor: value })
 					}
 				/>
-				<hr className="uagb-editor__separator" />
-				<AdvancedPopColorControl
-					label={__("Content Color", "ultimate-addons-for-gutenberg")}
-					colorValue={textColor ? textColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ textColor: value })
-					}
-				/>
-				<hr className="uagb-editor__separator" />
-				<AdvancedPopColorControl
-					label={__("Content Background Color", "ultimate-addons-for-gutenberg")}
-					colorValue={contentBgColor ? contentBgColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ contentBgColor: value })
-					}
-				/>
-				{ noticeDismiss && <hr className="uagb-editor__separator" /> }
 				{ noticeDismiss && (
 					<AdvancedPopColorControl
-						label={__("Content Background Color", "ultimate-addons-for-gutenberg")}
+						label={__("Dismiss Icon Color", "ultimate-addons-for-gutenberg")}
 						colorValue={noticeDismissColor ? noticeDismissColor : ""}
 						onColorChange={(value) =>
 							setAttributes({ noticeDismissColor: value })
 						}
 					/>
 				) }
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<TypographyControl
-					label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
@@ -412,63 +400,9 @@ const Settings = ( props ) => {
 						label: 'titleLineHeightTablet',
 					} }
 				/>
-				<TypographyControl
-					label={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: descLoadGoogleFonts,
-						label: 'descLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: descFontFamily,
-						label: 'descFontFamily',
-					} }
-					fontWeight={ {
-						value: descFontWeight,
-						label: 'descFontWeight',
-					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
-					} }
-					fontSizeType={ {
-						value: descFontSizeType,
-						label: 'descFontSizeType',
-					} }
-					fontSize={ {
-						value: descFontSize,
-						label: 'descFontSize',
-					} }
-					fontSizeMobile={ {
-						value: descFontSizeMobile,
-						label: 'descFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: descFontSizeTablet,
-						label: 'descFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: descLineHeightType,
-						label: 'descLineHeightType',
-					} }
-					lineHeight={ {
-						value: descLineHeight,
-						label: 'descLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: descLineHeightMobile,
-						label: 'descLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: descLineHeightTablet,
-						label: 'descLineHeightTablet',
-					} }
-				/>
-				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props}
-					label={__("Title Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: titleTopPadding,
 						label: "titleTopPadding",
@@ -536,10 +470,86 @@ const Settings = ( props ) => {
 						label: "titlePaddingLink",
 					}}
 				/>
-				<hr className="uagb-editor__separator" />
+			</PanelBody>
+		)
+	};
+
+	const inlineContentSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={textColor ? textColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ textColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Background Color", "ultimate-addons-for-gutenberg")}
+					colorValue={contentBgColor ? contentBgColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ contentBgColor: value })
+					}
+				/>
+				<TypographyControl
+					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: descLoadGoogleFonts,
+						label: 'descLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: descFontFamily,
+						label: 'descFontFamily',
+					} }
+					fontWeight={ {
+						value: descFontWeight,
+						label: 'descFontWeight',
+					} }
+					fontSubset={ {
+						value: descFontSubset,
+						label: 'descFontSubset',
+					} }
+					fontSizeType={ {
+						value: descFontSizeType,
+						label: 'descFontSizeType',
+					} }
+					fontSize={ {
+						value: descFontSize,
+						label: 'descFontSize',
+					} }
+					fontSizeMobile={ {
+						value: descFontSizeMobile,
+						label: 'descFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: descFontSizeTablet,
+						label: 'descFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: descLineHeightType,
+						label: 'descLineHeightType',
+					} }
+					lineHeight={ {
+						value: descLineHeight,
+						label: 'descLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: descLineHeightMobile,
+						label: 'descLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: descLineHeightTablet,
+						label: 'descLineHeightTablet',
+					} }
+				/>
 				<SpacingControl
 					{...props}
-					label={__("Content Padding", "ultimate-addons-for-gutenberg")}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: contentTopPadding,
 						label: "contentTopPadding",
@@ -608,18 +618,22 @@ const Settings = ( props ) => {
 					}}
 				/>
 			</PanelBody>
-		);
+		)
 	};
 
 	return (
 		<>
 			{ blockControls() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs tabs={["general", "style", "advance"]}>
+			   <InspectorTab {...UAGTabs.general}>
 				{ inlineGeneralSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.style}>
+				{ inlineTitleSettings() }
+				{ inlineContentSettings() }
+				</InspectorTab>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
