@@ -333,8 +333,8 @@ hr.uagb-editor__separator {
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
-	left: 15px !important;
-	width: 88.5%;
+	left: 0;
+	width: 100%;
 }
 
 .components-panel .rfipicons__ibox {
