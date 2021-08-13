@@ -5525,18 +5525,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'none' !== $attr['seperatorStyle'] ) {
-				$selectors[' .uagb-layout-list .uagb-tax-separator'] = array(
+				$selectors[' .uagb-layout-list .uagb-tax-separator']       = array(
 					'border-top-color' => $attr['seperatorColor'],
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
 				);
+				$selectors[' .uagb-layout-list .uagb-tax-separator:hover'] = array(
+					'border-top-color' => $attr['seperatorHoverColor'],
+				);
 			}
 
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[' .uagb-taxomony-box'] = array(
+				$selectors[' .uagb-taxomony-box']       = array(
 					'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
 					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				);
+				$selectors[' .uagb-taxomony-box:hover'] = array(
+					'border-color' => $attr['borderHoverColor'],
 				);
 			}
 

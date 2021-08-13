@@ -2808,6 +2808,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorWidth'           => 100,
 							'seperatorThickness'       => 1,
 							'seperatorColor'           => '#b2b4b5',
+							'seperatorHoverColor'      => '#b2b4b5',
 							'boxShadowColor'           => '',
 							'boxShadowHOffset'         => 0,
 							'boxShadowVOffset'         => 0,
