@@ -175,7 +175,6 @@ hr.uagb-editor__separator {
 	margin-top: 30px;
 }
 
-
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	display: block;
 	margin-right: 30px;
@@ -335,7 +334,7 @@ hr.uagb-editor__separator {
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
 	left: 15px !important;
-    width: 88.5%;
+	width: 88.5%;
 }
 
 .components-panel .rfipicons__ibox {
@@ -1847,8 +1846,9 @@ hr.uagb-editor__separator {
 }
 
 .rfipdropdown--default {
-	-webkit-box-shadow: 0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
-	box-shadow:0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
+	-webkit-box-shadow: 0 15px 30px rgb(0 0 0 / 10%),
+		0 10px 15px rgb(0 0 0 / 5%);
+	box-shadow: 0 15px 30px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 5%);
 	color: #424242;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
@@ -3217,12 +3217,12 @@ hr.uagb-editor__separator {
 
 .rfipbtn--default .rfipbtn__del {
 	height: 7px;
-    background-color: #007cba33;
-    color: #007cba;
-    font-weight: bold;
-    padding: 8px 8px 10px 8px;
-    border-radius: 100%;
-    margin-left: 10px;
+	background-color: #007cba33;
+	color: #007cba;
+	font-weight: bold;
+	padding: 8px 8px 10px 8px;
+	border-radius: 100%;
+	margin-left: 10px;
 }
 
 [class^="fipicon-"] {
@@ -3329,7 +3329,6 @@ label.wp-block-uagb-blockquote__via-label svg {
 	margin-bottom: 15px;
 }
 
-
 .uagb-size-type-field-tabs
 	.components-tab-panel__tabs
 	button
@@ -3428,7 +3427,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .uagb-inspector-tab > .components-base-control,
-.uagb-inspector-tab > h2{
+.uagb-inspector-tab > h2 {
 	padding: 0 10px;
 	margin: -10px;
 	margin-bottom: 16px;
@@ -3516,40 +3515,45 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	left: 0%;
 	height: 17px;
 	width: 17px;
+	margin-left: 0px;
 }
 
 .uagb-bg-image {
-    border-radius: 2px;
-    background-color: #f0f0f0;
-    min-height: 90px;
-    padding: 8px 0;
-    text-align: center;
-    display: block;
-    width: 100%;
-    transition: all .1s ease-out;
-    box-shadow: 0 0 0 0 #0085ba;
-    margin-top:10px;
+	border-radius: 2px;
+	background-color: #f0f0f0;
+	min-height: 90px;
+	padding: 8px 0;
+	text-align: center;
+	display: block;
+	width: 100%;
+	transition: all 0.1s ease-out;
+	box-shadow: 0 0 0 0 #0085ba;
+	margin-top: 10px;
 }
 .uagb-bg-image button.components-button.is-secondary {
-	margin-top:20px;
-	margin-right:30px;
+	margin-top: 20px;
+	margin-right: 30px;
 }
 .uagb-bg-image button.components-button.uagb-rm-btn.is-link.is-destructive {
-	margin-top:28px
+	margin-top: 28px;
 }
-.uagb-bg-image .components-button:focus:not(:disabled){
-	box-shadow:0 0;
-	color:0 0;
+.uagb-bg-image .components-button:focus:not(:disabled) {
+	box-shadow: 0 0;
+	color: 0 0;
 }
-.uagb-bg-image .components-button.is-secondary:hover:not(:disabled), .components-button.is-tertiary:hover:not(:disabled){
-	box-shadow:0 0;
-	color:0 0;
+.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),
+.components-button.is-tertiary:hover:not(:disabled) {
+	box-shadow: 0 0;
+	color: 0 0;
 }
-.uagb-bg-image .components-button.is-secondary, .components-button.is-tertiary{
-	box-shadow:0 0;
-	color:0 0;
+.uagb-bg-image .components-button.is-secondary,
+.components-button.is-tertiary {
+	box-shadow: 0 0;
+	color: 0 0;
 }
-.interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab{
+.interface-interface-skeleton__sidebar
+	.components-panel[data-uagb-tab="advance"]
+	.block-editor-block-inspector__advanced.uagb-extention-tab {
 	border: none;
 	border-bottom: 1px solid #e0e0e0;
 }

@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import BoxShadowControl from "@Components/box-shadow";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Background from "../../components/background";
@@ -113,13 +113,13 @@ const Settings = (props) => {
 						{
 							value: "boxed",
 							label: 'Boxed'
-							
+
 						},
 						{
 							value: "full_width",
 							label: 'Full Width',
 						},
-						
+
 					]}
 					showIcons={false}
 				/>
@@ -562,15 +562,15 @@ const Settings = (props) => {
 	const generalSetting = () => {
 		return (
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 					{getLayoutPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 					{getSpacingPanelBody()}
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 		);
