@@ -1,36 +1,13 @@
 .uag-bg-select-control .components-base-control__field {
-    .uagb-bg-image-position-control, .uagb-bg-image-attachment-control, .uagb-bg-image-repeat-control, .uagb-bg-image-size-control, .uagb-bg-image-overlay-type-control, .uagb-bg-color-type-control {
-        flex-direction:row;
-    }
-    .uagb-bg-image-position-control .components-flex__item {
-        padding-right: 15px;
-    }
-    .components-input-control__container.css-bmkl3j-Container{
-        margin-right:10px; 
-    }
-    .uagb-bg-image-attachment-control .components-flex__item {
-        padding-right: 30px;
-    }
-    .uagb-bg-image-repeat-control .components-flex__item {
-        padding-right: 57px;
-    }
-    .uagb-bg-image-size-control .components-flex__item {
-        padding-right: 75px;
-    }
-    .uagb-bg-image-overlay-type-control .components-flex__item {
-        padding-right: 25px;
-    }
-    .uagb-bg-color-type-control .components-flex__item {
-        padding-right: 70px;
-    }
-    .components-flex.components-select-control {
-        align-items: center;
-        display: grid;
-        grid-template-columns: 30% 70%;
-        
-    }
+	.components-flex.components-select-control {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
 }
 /* editor-bg-image-control is our class */
-.editor-bg-image-control .uag-bg-select-control .components-base-control__field {
-    margin-top:10px;
+.editor-bg-image-control
+	.uag-bg-select-control
+	.components-base-control__field {
+	margin-top: 10px;
 }
