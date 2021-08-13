@@ -29,6 +29,68 @@ const UAGBTaxonomyList = ( props ) => {
 			'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			contentPadding,
+			contentPaddingMobile,
+			contentPaddingTablet,
+			contentTopPadding,
+			contentRightPadding,
+			contentBottomPadding,
+			contentLeftPadding,
+			contentTopPaddingTablet,
+			contentRightPaddingTablet,
+			contentBottomPaddingTablet,
+			contentLeftPaddingTablet,
+			contentTopPaddingMobile,
+			contentRightPaddingMobile,
+			contentBottomPaddingMobile,
+			contentLeftPaddingMobile,
+		} = attributes;
+
+		if (contentPadding) {
+			if (!contentTopPadding) {
+				setAttributes({ contentTopPadding: contentPadding });
+			}
+			if (!contentBottomPadding) {
+				setAttributes({ contentBottomPadding: contentPadding });
+			}
+			if (!contentLeftPadding) {
+				setAttributes({ contentLeftPadding: contentPadding });
+			}
+			if (!contentRightPadding) {
+				setAttributes({ contentRightPadding: contentPadding });
+			}
+		}
+		if (contentPaddingMobile) {
+			if (!contentTopPaddingMobile) {
+				setAttributes({ contentTopPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentBottomPaddingMobile) {
+				setAttributes({ contentBottomPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentLeftPaddingMobile) {
+				setAttributes({ contentLeftPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentRightPaddingMobile) {
+				setAttributes({ contentRightPaddingMobile: contentPaddingMobile });
+			}
+		}
+		if (contentPaddingTablet) {
+			if (!contentTopPaddingTablet) {
+				setAttributes({ contentTopPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentBottomPaddingTablet) {
+				setAttributes({ contentBottomPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentLeftPaddingTablet) {
+				setAttributes({ contentLeftPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentRightPaddingTablet) {
+				setAttributes({ contentRightPaddingTablet: contentPaddingTablet });
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {
