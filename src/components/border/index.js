@@ -6,8 +6,16 @@ import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import { SelectControl } from "@wordpress/components";
+import styles from "./editor.lazy.scss";
 
+import React, { useLayoutEffect } from "react";
 const Border = (props) => {
+	useLayoutEffect(() => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, []);
 	const {
 		setAttributes,
 		borderColor,
@@ -113,7 +121,7 @@ const Border = (props) => {
 		</>
 	);
 
-	return advancedControls;
+	return <div className="uag-border-select-control">{advancedControls}</div>;;
 };
 
 export default Border;

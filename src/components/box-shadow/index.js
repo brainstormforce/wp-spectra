@@ -5,7 +5,7 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../color-control/advanced-pop-color-control";
-import { ToggleControl } from "@wordpress/components";
+import { Button, Dashicon } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import MultiButtonsControl from "../multi-buttons-control/index";
 import styles from "./editor.lazy.scss";
@@ -46,14 +46,6 @@ const BoxShadowControl = (props) => {
 					}}
 					options={[
 						{
-							value: "inset",
-							label: __("Inset", "ultimate-addons-for-gutenberg"),
-							tooltip: __(
-								"Inset (10px)",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
 							value: "outset",
 							label: __(
 								"Outset",
@@ -61,6 +53,14 @@ const BoxShadowControl = (props) => {
 							),
 							tooltip: __(
 								"Outset",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "inset",
+							label: __("Inset", "ultimate-addons-for-gutenberg"),
+							tooltip: __(
+								"Inset (10px)",
 								"ultimate-addons-for-gutenberg"
 							),
 						},
@@ -127,17 +127,20 @@ const BoxShadowControl = (props) => {
 	}
 
 	boxShadowAdvancedControls = (
-		<div className="uag-typography-option-actions">
-			<span className="uag-typography-main-label">{props.label}</span>
-			<ToggleControl
-				checked={showAdvancedControls}
-				onChange={() => toggleAdvancedControls(!showAdvancedControls)}
-			/>
+		<div className="uag-box-shadow-option-actions">
+			<span className="uag-box-shadow-main-label">Enable Shadow</span>
+			<Button
+				className={"uag-box-shadow-button"}
+				aria-pressed={showAdvancedControls}
+				onClick={() => toggleAdvancedControls(!showAdvancedControls)}
+			>
+				<Dashicon icon="edit" />
+			</Button>
 		</div>
 	);
 
 	return (
-		<div className={`uag-typography-options ${activeClass}`}>
+		<div className={`uag-box-shadow-options ${activeClass}`}>
 			{boxShadowAdvancedControls}
 			{showAdvancedControls && advancedControls}
 		</div>

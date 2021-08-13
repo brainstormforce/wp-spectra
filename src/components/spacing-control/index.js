@@ -507,7 +507,7 @@ const SpacingControl = (props) => {
 					<span className="uagb-spacing-control__number-label">
 						{__("Left", "ultimate-addons-for-gutenberg")}
 					</span>
-					<span className="uagb-spacing-control__number-label"></span>
+					<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
 				</div>
 			</div>
 		</div>

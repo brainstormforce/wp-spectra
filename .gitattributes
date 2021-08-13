@@ -1,2 +1,2 @@
-dist/* -diff
+dist/** -diff
 assets/css/custom-style-blocks.css -diff

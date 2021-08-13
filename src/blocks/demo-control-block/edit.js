@@ -11,7 +11,7 @@ import UAGBIcon from "@Controls/UAGBIcon.json";
 import UAGB_Block_Icons from "@Controls/block-icons";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import GradientSettings from "../../components/gradient-settings";
@@ -301,7 +301,7 @@ class UAGBInlineNoticeEdit extends Component {
 		const inlineGeneralSettings = () => {
 			return (
 				<InspectorTabs>
-					<InspectorTab key={"general"}>
+					<InspectorTab {...UAGTabs.general}>
 						<PanelBody title="Alignment" initialOpen={false}>
 							<MultiButtonsControl
 								setAttributes={setAttributes}
@@ -1012,7 +1012,7 @@ class UAGBInlineNoticeEdit extends Component {
 							/>
 						</PanelBody>
 					</InspectorTab>
-					<InspectorTab key={"style"}>
+					<InspectorTab {...UAGTabs.style}>
 						<PanelBody title="Colors" initialOpen={true}>
 							<AdvancedPopColorControl
 								label={__(
@@ -1076,7 +1076,7 @@ class UAGBInlineNoticeEdit extends Component {
 							)}
 						</PanelBody>
 					</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
 				</InspectorTabs>
 			);
 		};
