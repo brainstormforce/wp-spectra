@@ -4,6 +4,23 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+
+/* ------------------------------------------------------------------------------------------------*/
+/* Gutenberg Reset CSS */
+.block-editor-block-inspector
+	.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control {
+	margin-bottom: 24px;
+}
+.block-editor-block-inspector
+	.uagb-inspector-tab
+	.components-panel__body.is-opened
+	> .components-base-control:last-child {
+	margin-bottom: 0;
+}
+/* ------------------------------------------------------------------------------------------------*/
+
 .uagb-inspect-tabs .components-tab-panel__tabs button {
 	padding: 10px;
 	background: transparent;

@@ -110,10 +110,7 @@ const Background = (props) => {
 			/>
 			{"color" === backgroundType.value && (
 				<AdvancedPopColorControl
-					label={__(
-						 "Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={
 						backgroundColor.value ? backgroundColor.value : ""
 					}
@@ -126,10 +123,7 @@ const Background = (props) => {
 				<>
 					<BaseControl
 						className="editor-bg-image-control"
-						label={__(
-							"Image",
-							"ultimate-addons-for-gutenberg"
-						)}
+						label={__("Image", "ultimate-addons-for-gutenberg")}
 					>
 						<div className="uagb-bg-image">
 							<MediaUpload
@@ -438,10 +432,7 @@ const Background = (props) => {
 			{"video" === backgroundType.value && backgroundVideoType.value && (
 				<BaseControl
 					className="editor-bg-image-control"
-					label={__(
-						"Video",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Video", "ultimate-addons-for-gutenberg")}
 				>
 					<div className="uagb-bg-image">
 						<MediaUpload
@@ -519,7 +510,11 @@ const Background = (props) => {
 		</>
 	);
 
-	return <div className="uag-bg-select-control">{advancedControls}</div>;
+	return (
+		<div className="uag-bg-select-control components-base-control">
+			{advancedControls}
+		</div>
+	);
 };
 
 export default Background;

@@ -140,7 +140,9 @@ const BoxShadowControl = (props) => {
 	);
 
 	return (
-		<div className={`uag-box-shadow-options ${activeClass}`}>
+		<div
+			className={`components-base-control uag-box-shadow-options ${activeClass}`}
+		>
 			{boxShadowAdvancedControls}
 			{showAdvancedControls && advancedControls}
 		</div>
