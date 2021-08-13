@@ -1,5 +1,8 @@
 $border-color: #d6d9dd;
+
 .components-panel[data-uagb-tab] {
+	z-index: 99;
+
 	&:not([data-uagb-tab="advance"])
 		.components-panel__body.block-editor-block-inspector__advanced,
 	&:not([data-uagb-tab="advance"])
