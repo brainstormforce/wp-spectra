@@ -130,7 +130,7 @@ const BoxShadowControl = (props) => {
 		<div className="uag-box-shadow-option-actions">
 			<span className="uag-box-shadow-main-label">Enable Shadow</span>
 			<Button
-				isSmall
+				className={'uag-box-shadow-button'}
 				aria-pressed={ showAdvancedControls }
 				onClick={() => toggleAdvancedControls(!showAdvancedControls)}
 			><Dashicon icon="edit" /></Button>
