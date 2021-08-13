@@ -1,4 +1,4 @@
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import UAGIconPicker from "../../components/icon-picker";
 import { __ } from "@wordpress/i18n";
 import renderSVG from "@Controls/renderIcon";
 import React, { Suspense } from "react";
@@ -9,7 +9,9 @@ import UAGBIcon from "@Controls/UAGBIcon.json";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -468,7 +470,7 @@ const Settings = (props) => {
 						<p className="components-base-control__label">
 							{__("Icon", "ultimate-addons-for-gutenberg")}
 						</p>
-						<FontIconPicker
+						<UAGIconPicker
 							icons={svg_icons}
 							renderFunc={renderSVG}
 							theme="default"
@@ -746,7 +748,7 @@ const Settings = (props) => {
 						<p>
 							{__("Button Icon", "ultimate-addons-for-gutenberg")}
 						</p>
-						<FontIconPicker
+						<UAGIconPicker
 							icons={svg_icons}
 							renderFunc={renderSVG}
 							theme="default"
@@ -1903,7 +1905,9 @@ const Settings = (props) => {
 						{seperatorSettings()}
 						{ctaSettings()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.style}>{styleSettings()}</InspectorTab>
+					<InspectorTab {...UAGTabs.style}>
+						{styleSettings()}
+					</InspectorTab>
 					<InspectorTab {...UAGTabs.advance}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
