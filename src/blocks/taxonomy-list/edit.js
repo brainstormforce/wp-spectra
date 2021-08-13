@@ -46,48 +46,48 @@ const UAGBTaxonomyList = ( props ) => {
 			contentRightPaddingMobile,
 			contentBottomPaddingMobile,
 			contentLeftPaddingMobile,
-		} = attributes;
+		} = props.attributes;
 
 		if (contentPadding) {
 			if (!contentTopPadding) {
-				setAttributes({ contentTopPadding: contentPadding });
+				props.setAttributes({ contentTopPadding: contentPadding });
 			}
 			if (!contentBottomPadding) {
-				setAttributes({ contentBottomPadding: contentPadding });
+				props.setAttributes({ contentBottomPadding: contentPadding });
 			}
 			if (!contentLeftPadding) {
-				setAttributes({ contentLeftPadding: contentPadding });
+				props.setAttributes({ contentLeftPadding: contentPadding });
 			}
 			if (!contentRightPadding) {
-				setAttributes({ contentRightPadding: contentPadding });
+				props.setAttributes({ contentRightPadding: contentPadding });
 			}
 		}
 		if (contentPaddingMobile) {
 			if (!contentTopPaddingMobile) {
-				setAttributes({ contentTopPaddingMobile: contentPaddingMobile });
+				props.setAttributes({ contentTopPaddingMobile: contentPaddingMobile });
 			}
 			if (!contentBottomPaddingMobile) {
-				setAttributes({ contentBottomPaddingMobile: contentPaddingMobile });
+				props.setAttributes({ contentBottomPaddingMobile: contentPaddingMobile });
 			}
 			if (!contentLeftPaddingMobile) {
-				setAttributes({ contentLeftPaddingMobile: contentPaddingMobile });
+				props.setAttributes({ contentLeftPaddingMobile: contentPaddingMobile });
 			}
 			if (!contentRightPaddingMobile) {
-				setAttributes({ contentRightPaddingMobile: contentPaddingMobile });
+				props.setAttributes({ contentRightPaddingMobile: contentPaddingMobile });
 			}
 		}
 		if (contentPaddingTablet) {
 			if (!contentTopPaddingTablet) {
-				setAttributes({ contentTopPaddingTablet: contentPaddingTablet });
+				props.setAttributes({ contentTopPaddingTablet: contentPaddingTablet });
 			}
 			if (!contentBottomPaddingTablet) {
-				setAttributes({ contentBottomPaddingTablet: contentPaddingTablet });
+				props.setAttributes({ contentBottomPaddingTablet: contentPaddingTablet });
 			}
 			if (!contentLeftPaddingTablet) {
-				setAttributes({ contentLeftPaddingTablet: contentPaddingTablet });
+				props.setAttributes({ contentLeftPaddingTablet: contentPaddingTablet });
 			}
 			if (!contentRightPaddingTablet) {
-				setAttributes({ contentRightPaddingTablet: contentPaddingTablet });
+				props.setAttributes({ contentRightPaddingTablet: contentPaddingTablet });
 			}
 		}
 
