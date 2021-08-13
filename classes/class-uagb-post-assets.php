@@ -142,6 +142,14 @@ class UAGB_Post_Assets {
 	protected $post_id;
 
 	/**
+	 * Preview
+	 *
+	 * @since 1.24.2
+	 * @var preview
+	 */
+	public $preview = false;
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -150,13 +158,19 @@ class UAGB_Post_Assets {
 
 		$this->post_id = intval( $post_id );
 
-		$this->file_generation = UAGB_Helper::$file_generation;
+		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		if ( $this->preview ) {
+			$this->file_generation              = 'disabled';
+			$this->is_allowed_assets_generation = true;
+		} else {
+			$this->file_generation              = UAGB_Helper::$file_generation;
+			$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		}
 
 		if ( $this->is_allowed_assets_generation ) {
-			$this_post = get_post( $this->post_id );
-
+			global $post;
+			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
 		}
 	}
@@ -296,6 +310,10 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function update_page_assets() {
+
+		if ( $this->preview ) {
+			return;
+		}
 
 		$meta_array = array(
 			'css'                => wp_slash( $this->stylesheet ),
@@ -1082,4 +1100,3 @@ class UAGB_Post_Assets {
 		return $css;
 	}
 }
-
