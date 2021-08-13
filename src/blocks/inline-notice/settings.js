@@ -5,7 +5,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
@@ -167,7 +167,7 @@ const Settings = ( props ) => {
 
 	const inlineGeneralSettings = () => {
 		return (
-			<PanelBody 
+			<PanelBody
 				initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
@@ -184,17 +184,17 @@ const Settings = ( props ) => {
 						{
 							value: "simmple",
 							label: 'Default'
-							
+
 						},
 						{
 							value: "modern",
 							label: 'Modern',
 						},
-						
+
 					]}
 					showIcons={false}
 				/>
-				
+
 				{ 'simple' === layout && (
 					<Range
 						label={ __(
@@ -313,7 +313,7 @@ const Settings = ( props ) => {
 						displayUnit={false}
 					/>
 				) }
-				
+
 			</PanelBody>
 		);
 	};
@@ -626,14 +626,14 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			<InspectorControls>
 			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			   <InspectorTab {...UAGTabs.general}>
 				{ inlineGeneralSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ inlineTitleSettings() }
 				{ inlineContentSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
