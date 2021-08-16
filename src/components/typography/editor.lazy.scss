@@ -1,122 +1,201 @@
-.uag-typography-range-options .components-base-control__label {
-	width: auto;
-	display: block;
-	margin-bottom: 8px;
-}
-.uag-typography-range-options {
-	margin-bottom: 16px;
-}
-.components-button-group.components-tab-panel__tabs {
+/*.components-button-group.components-tab-panel__tabs {
 	padding-right: 26px;
-}
+}*/
 
-.components-button-group.uagb-size-type-field {
-	padding-right: 26px;
-}
 
-.uagb-field-child {
+/*.uagb-field-child {
 	padding-top: 12px;
 	padding-bottom: 16px;
-}
+}*/
 
-.uag-typography-font-family {
-	display: flex;
-}
-
-label.uag-typography-font-family-label {
+/*label.uag-typography-font-family-label {
 	margin-top: 10px;
 	margin-right: 88px;
-}
+}*/
 
-.css-1pcexqc-container.react-select-container {
+/*.css-1pcexqc-container.react-select-container {
 	margin-top: 10px;
 	width: 100px;
-}
+}*/
 
-.components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
+/*.components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
 	margin-right: 20px;
-}
+}*/
 
-label.uag-typography-font-family-weight-label {
+/*label.uag-typography-font-family-weight-label {
 	margin-right: 84px;
-}
+}*/
 
-.uag-typography-font-family-subset {
-	display: flex;
-}
 
-label.uag-typography-font-family-subset-label {
+/*label.uag-typography-font-family-subset-label {
 	margin-right: 86px;
-}
+}*/
 
-.block-editor-block-inspector .components-base-control:last-child {
+/*.block-editor-block-inspector .components-base-control:last-child {
 	margin-bottom: 0px;
-}
-.uagb-typography-advanced .components-select-control {
-	height: auto;
-}
-/** Typography & Box Shadow Popup CSS*/
-.uag-typography-option-actions {
-	display: flex;
-	justify-content: space-between;
-	margin: 0;
-	align-items: center;
-	& > .components-base-control {
-		.components-base-control__field {
-			margin: 0;
-		}
-	}
-}
-.uag-typography-options {
-	border: 1px solid lightgrey;
-	border-radius: 8px;
-	padding: 15px;
-	margin: 1.5em 0;
-	.components-toggle-control
-		.components-base-control__field
-		.components-form-toggle {
-		padding: 0;
+}*/
+
+/* Reset Gutenberg Css */
+.block-editor-block-inspector .uag-typography-options{
+	.components-base-control,
+	.components-base-control__field {
 		margin: 0;
 	}
-	.uag-typography-main-label {
-		font-weight: bold;
-		font-size: 13px;
-	}
-}
-.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
+
 	.components-base-control {
 		padding: 0;
 		width: 100%;
 	}
 }
-.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
+
+/*.uagb-inspector-tab .components-panel__body .uag-typography-options {
+	.components-base-control {
+		padding: 0;
+		width: 100%;
+	}
+}*/
+/*.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
 	.components-base-control.components-toggle-control {
 		padding: 0;
 		width: auto;
 	}
-}
-.uag-typography-options.active {
-	margin: 1.5em 0;
-	.uag-typography-option-actions {
-		margin: unset;
-	}
-	.uag-typography-font-family-options {
-		.components-base-control {
-			width: 100%;
+}*/
+
+.uag-typography-options {
+
+	margin-bottom: 24px;
+
+	/* Label & actions */
+	.uag-typography-option-actions{
+
+		/** Typography & Box Shadow Popup CSS*/
+		display: flex;
+		justify-content: space-between;
+		margin: 0 0 15px 0;
+		align-items: center;
+		/*& > .components-base-control {
+			.components-base-control__field {
+				margin: 0;
+			}
+		}*/
+
+		.uag-typography-main-label {
+			font-size: 13px;
+		}
+
+		.uag-typography-button {
+			margin: 0;
+			height: 28px;
+			width: 28px;
+			padding: 5px;
+			border: 1px solid #d3d3d3;
+			border-radius: 3px;
+
+			.dashicons-edit {
+				font-size: 15px;
+				line-height: 20px;
+			}
+
+			&:focus:not(:disabled){
+				box-shadow: none;
+				outline: none;
+			}
 		}
 	}
-	.uag-typography-font-family {
-		width: 100%;
-		margin: 0.5em 0px;
+
+	/* Advanced panel */
+	.uagb-typography-advanced {
+		border: 1px solid #d3d3d3;
+		border-radius: 3px;
+		padding: 15px;
+		margin: 10px 0;
+		position: relative;
+
+		/* Common component control css */
+		.components-select-control {
+			height: auto;
+		}
+
+		&:after,
+		&:before {
+			bottom: 100%;
+			right: 8px;
+			border: solid transparent;
+			content: "";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		&:after{
+			right: 9px;
+		}
+		&:after {
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #fff;
+			border-width: 5px;
+			margin-left: -5px;
+		}
+		&:before {
+			border-color: rgba(211, 211, 211, 0);
+			border-bottom-color: #d3d3d3;
+			border-width: 6px;
+			margin-left: -6px;
+		}
 	}
+
+
+	/* Font options common */
 	.uag-typography-weight-subset-wrap,
 	.uag-typography-transform-decoration-wrap {
 		display: flex;
 		justify-content: space-between;
-		.components-base-control__field {
+		/*.components-base-control__field {
 			margin-bottom: 0;
+		}*/
+	}
+	/* Font options - family width subset */
+	.uag-typography-font-family-options {
+
+		margin: 0 0 20px;
+
+		.uag-typography-font-family {
+			display: flex;
+			width: 100%;
+		}
+
+		.uag-typography-font-family-subset {
+			display: flex;
+		}
+
+		.uag-typography-font-family,
+		.uag-typography-weight-subset-wrap {
+			margin: 0 0 16px;
 		}
 	}
+
+	/*.components-toggle-control
+		.components-base-control__field
+		.components-form-toggle {
+		padding: 0;
+		margin: 0;
+	}*/
+
+	/* Range options */
+	.uag-typography-range-options{
+
+		margin-bottom: 16px;
+
+		/*.components-base-control__label {
+			width: auto;
+			display: block;
+			margin-bottom: 8px;
+		}*/
+	}
+	/*.components-button-group.uagb-size-type-field {
+		padding-right: 26px;
+	}*/
+
 	.uag-typography-transform,
 	.uag-typography-decoration,
 	.uag-typography-font-family-weight,
@@ -124,4 +203,11 @@ label.uag-typography-font-family-subset-label {
 		display: flex;
 		width: 48%;
 	}
+}
+
+.uag-typography-options.active {
+
+	/*.uag-typography-option-actions {
+		margin: unset;
+	}*/
 }

@@ -185,7 +185,7 @@ const TypographyControl = (props) => {
 							),
 						},
 						{
-							value: "linethrough",
+							value: "line-through",
 							label: __(
 								"Line Through",
 								"ultimate-addons-for-gutenberg"
@@ -197,12 +197,29 @@ const TypographyControl = (props) => {
 		);
 	}
 
-	fontAdvancedControls = (
-		<ToggleControl
-			checked={showAdvancedControls}
-			onChange={() => toggleAdvancedControls(!showAdvancedControls)}
-		/>
-	);
+	if (true !== disableFontFamily && true !== disableFontSize) {
+		fontAdvancedControls = (
+			<Button
+				className="uag-typography-button"
+				aria-pressed={showAdvancedControls}
+				onClick={() => toggleAdvancedControls(!showAdvancedControls)}
+			>
+				<Dashicon icon="edit" />
+			</Button>
+		);
+	} else {
+		showAdvancedFontControls = (
+			<>
+				{fontFamily}
+				{fontSize}
+				{fontWeight}
+				<div className="uag-typography-transform-decoration-wrap">
+					{transform}
+					{decoration}
+				</div>
+			</>
+		);
+	}
 
 	if (showAdvancedControls === true) {
 		showAdvancedFontControls = (
@@ -226,7 +243,9 @@ const TypographyControl = (props) => {
 	);
 
 	return (
-		<div className={`uag-typography-options ${activeClass}`}>
+		<div
+			className={`components-base-control uag-typography-options ${activeClass}`}
+		>
 			{!disableAdvancedOptions && (
 				<>
 					{fontTypoAdvancedControls}

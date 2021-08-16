@@ -108,10 +108,6 @@ const Settings = ( props ) => {
 	
 		return (
 			<PanelBody
-				title={ __(
-					'Button Settings',
-					'ultimate-addons-for-gutenberg'
-				) }
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
@@ -200,6 +196,46 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ true }
 			>
+				<TypographyControl
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					disableFontFamily={true}
+					disableFontWeight={true}
+					disableFontSubset={true}
+					fontSizeType={{
+						value: sizeType,
+						label: "sizeType",
+					}}
+					fontSize={{
+						value: size,
+						label: "size",
+					}}
+					fontSizeMobile={{
+						value: sizeMobile,
+						label: "sizeMobile",
+					}}
+					fontSizeTablet={{
+						value: sizeTablet,
+						label: "sizeTablet",
+					}}
+					lineHeightType={{
+						value: lineHeightType,
+						label: "lineHeightType",
+					}}
+					lineHeight={{
+						value: lineHeight,
+						label: "lineHeight",
+					}}
+					lineHeightMobile={{
+						value: lineHeightMobile,
+						label: "lineHeightMobile",
+					}}
+					lineHeightTablet={{
+						value: lineHeightTablet,
+						label: "lineHeightTablet",
+					}}
+				/>
 				{ ! inheritFromTheme && (
 					<>
 						<TabPanel
@@ -256,7 +292,7 @@ const Settings = ( props ) => {
 										<>
 											<AdvancedPopColorControl
 												label={__(
-													"Text Hover Color",
+													"Text Color",
 													"ultimate-addons-for-gutenberg"
 												)}
 												colorValue={hColor ? hColor : ""}
@@ -266,7 +302,7 @@ const Settings = ( props ) => {
 											/>
 											<AdvancedPopColorControl
 												label={__(
-													"Background Hover Color",
+													"Background Color",
 													"ultimate-addons-for-gutenberg"
 												)}
 												colorValue={hBackground ? hBackground : ""}
@@ -282,46 +318,6 @@ const Settings = ( props ) => {
 						</TabPanel>
 					</>
 				)}
-				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					disableFontFamily={true}
-					disableFontWeight={true}
-					disableFontSubset={true}
-					fontSizeType={{
-						value: sizeType,
-						label: "sizeType",
-					}}
-					fontSize={{
-						value: size,
-						label: "size",
-					}}
-					fontSizeMobile={{
-						value: sizeMobile,
-						label: "sizeMobile",
-					}}
-					fontSizeTablet={{
-						value: sizeTablet,
-						label: "sizeTablet",
-					}}
-					lineHeightType={{
-						value: lineHeightType,
-						label: "lineHeightType",
-					}}
-					lineHeight={{
-						value: lineHeight,
-						label: "lineHeight",
-					}}
-					lineHeightMobile={{
-						value: lineHeightMobile,
-						label: "lineHeightMobile",
-					}}
-					lineHeightTablet={{
-						value: lineHeightTablet,
-						label: "lineHeightTablet",
-					}}
-				/>
 			</PanelBody>
 		)
 	}
@@ -334,7 +330,7 @@ const Settings = ( props ) => {
 					'Border',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<Border
 					setAttributes={setAttributes}
@@ -378,7 +374,7 @@ const Settings = ( props ) => {
 					'Spacing',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>				
 			<SpacingControl
 				{...props}

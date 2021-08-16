@@ -51,7 +51,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<SelectControl

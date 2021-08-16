@@ -62,32 +62,32 @@ function styling( props ) {
 				'border-style': borderStyle,
 				'border-color': borderColor,
 				'border-radius': generateCSSUnit( borderRadius, 'px' ),
-				background,
+				'background': background,
 				'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 				'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 				'padding-top': generateCSSUnit( topPadding, paddingUnit ),
 				'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 			},
 			' .uagb-buttons-repeater:hover': {
-				background: hBackground,
+				'background': hBackground,
 				'border-width': generateCSSUnit( borderWidth, 'px' ),
 				'border-style': borderStyle,
 				'border-color': borderHColor,
 			},
 			' .uagb-buttons-repeater a.uagb-button__link': {
-				color:color,
+				'color': color,
 			},
 			' .uagb-buttons-repeater:hover a.uagb-button__link': {
-				color: hColor,
+				'color': hColor,
 			},
 			' .uagb-buttons-repeater:hover .uagb-button__link': {
-				color: hColor,
+				'color': hColor,
 			},
 			' .uagb-buttons-repeater:hover .uagb-button__icon': {
-				color: hColor,
+				'color': hColor,
 			},
 			' .uagb-buttons-repeater .uagb-button__link': {
-				color: color,
+				'color': color,
 			},
 		};
 
@@ -111,7 +111,7 @@ function styling( props ) {
 	}
 
 	selectors[ ' .uagb-button__icon' ] = {
-		width: generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( size, sizeType ),
 	};
 
 	if ( ! inheritFromTheme ) {
@@ -127,13 +127,13 @@ function styling( props ) {
 	};
 
 	mobileSelectors[ ' .uagb-button__icon' ] = {
-		width: generateCSSUnit( sizeMobile, sizeType ),
-		height: generateCSSUnit( sizeMobile, sizeType ),
+		'width': generateCSSUnit( sizeMobile, sizeType ),
+		'height': generateCSSUnit( sizeMobile, sizeType ),
 	};
 
 	tabletSelectors[ ' .uagb-button__icon' ] = {
-		width: generateCSSUnit( sizeTablet, sizeType ),
-		height: generateCSSUnit( sizeTablet, sizeType ),
+		'width': generateCSSUnit( sizeTablet, sizeType ),
+		'height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;

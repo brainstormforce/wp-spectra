@@ -1,62 +1,13 @@
-.uagb-bg-image {
-    border-radius: 2px;
-    background-color: #f0f0f0;
-    min-height: 90px;
-    padding: 8px 0;
-    text-align: center;
-    display: block;
-    width: 100%;
-    transition: all .1s ease-out;
-    box-shadow: 0 0 0 0 #0085ba;
-    margin-top:10px;
-    button.components-button.is-secondary {
-        margin-top:20px;
-        margin-right:30px;
-    }
-    button.components-button.uagb-rm-btn.is-link.is-destructive {
-        margin-top:28px
-    }
-    .components-button:focus:not(:disabled){
-        box-shadow:0 0;
-        color:0 0;
-    }
-    
-    .components-button.is-secondary:hover:not(:disabled), .components-button.is-tertiary:hover:not(:disabled){
-        box-shadow:0 0;
-        color:0 0;
-    }
-    .components-button.is-secondary, .components-button.is-tertiary{
-        box-shadow:0 0;
-        color:0 0;
-    }
-}
-.components-base-control__field {
-    .uagb-bg-image-position-control, .uagb-bg-image-attachment-control, .uagb-bg-image-repeat-control, .uagb-bg-image-size-control, .uagb-bg-image-overlay-type-control, .uagb-bg-color-type-control {
-        flex-direction:row;
-    }
-    .uagb-bg-image-position-control .components-flex__item {
-        padding-right: 15px;
-    }
-    .components-input-control__container.css-bmkl3j-Container{
-        margin-right:10px; 
-    }
-    .uagb-bg-image-attachment-control .components-flex__item {
-        padding-right: 30px;
-    }
-    .uagb-bg-image-repeat-control .components-flex__item {
-        padding-right: 57px;
-    }
-    .uagb-bg-image-size-control .components-flex__item {
-        padding-right: 75px;
-    }
-    .uagb-bg-image-overlay-type-control .components-flex__item {
-        padding-right: 25px;
-    }
-    .uagb-bg-color-type-control .components-flex__item {
-        padding-right: 70px;
-    }
+.uag-bg-select-control .components-base-control__field {
+	.components-flex.components-select-control {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
 }
 /* editor-bg-image-control is our class */
-.editor-bg-image-control .components-base-control__field {
-    margin-top:10px;
+.editor-bg-image-control
+	.uag-bg-select-control
+	.components-base-control__field {
+	margin-top: 10px;
 }
