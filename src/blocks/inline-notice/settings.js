@@ -182,12 +182,12 @@ const Settings = ( props ) => {
 					className="uagb-multi-button-alignment-control"
 					options={[
 						{
-							value: "simmple",
+							value: 'simple',
 							label: 'Default'
 
 						},
 						{
-							value: "modern",
+							value: 'modern',
 							label: 'Modern',
 						},
 
