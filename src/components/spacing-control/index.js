@@ -69,21 +69,28 @@ const SpacingControl = (props) => {
 		}
 	};
 	const changeLinkedValues = (newValue, device) => {
-		if ("desktop" === device) {
-			setAttributes({ [valueTop.label]: newValue });
-			setAttributes({ [valueRight.label]: newValue });
-			setAttributes({ [valueBottom.label]: newValue });
-			setAttributes({ [valueLeft.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueTopTablet.label]: newValue });
-			setAttributes({ [valueRightTablet.label]: newValue });
-			setAttributes({ [valueBottomTablet.label]: newValue });
-			setAttributes({ [valueLeftTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueTopMobile.label]: newValue });
-			setAttributes({ [valueRightMobile.label]: newValue });
-			setAttributes({ [valueBottomMobile.label]: newValue });
-			setAttributes({ [valueLeftMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				// code block
+				setAttributes({ [valueTop.label]: newValue });
+				setAttributes({ [valueRight.label]: newValue });
+				setAttributes({ [valueBottom.label]: newValue });
+				setAttributes({ [valueLeft.label]: newValue });
+				break;
+			case "tablet":
+				// code block
+				setAttributes({ [valueTopTablet.label]: newValue });
+				setAttributes({ [valueRightTablet.label]: newValue });
+				setAttributes({ [valueBottomTablet.label]: newValue });
+				setAttributes({ [valueLeftTablet.label]: newValue });
+				break;
+			case "mobile":
+				// code block
+				setAttributes({ [valueTopMobile.label]: newValue });
+				setAttributes({ [valueRightMobile.label]: newValue });
+				setAttributes({ [valueBottomMobile.label]: newValue });
+				setAttributes({ [valueLeftMobile.label]: newValue });
+				break;
 		}
 	};
 	const onChangeTopValue = (event, device) => {
@@ -93,12 +100,16 @@ const SpacingControl = (props) => {
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
-		if ("desktop" === device) {
-			setAttributes({ [valueTop.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueTopTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueTopMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueTop.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueTopTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueTopMobile.label]: newValue });
+				break;
 		}
 	};
 
@@ -110,12 +121,16 @@ const SpacingControl = (props) => {
 			changeLinkedValues(newValue, device);
 		}
 
-		if ("desktop" === device) {
-			setAttributes({ [valueRight.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueRightTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueRightMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueRight.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueRightTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueRightMobile.label]: newValue });
+				break;
 		}
 	};
 
@@ -127,12 +142,16 @@ const SpacingControl = (props) => {
 			changeLinkedValues(newValue, device);
 		}
 
-		if ("desktop" === device) {
-			setAttributes({ [valueBottom.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueBottomTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueBottomMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueBottom.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueBottomTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueBottomMobile.label]: newValue });
+				break;
 		}
 	};
 
@@ -143,13 +162,16 @@ const SpacingControl = (props) => {
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
-
-		if ("desktop" === device) {
-			setAttributes({ [valueLeft.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueLeftTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueLeftMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueLeft.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueLeftTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueLeftMobile.label]: newValue });
+				break;
 		}
 	};
 
@@ -310,13 +332,30 @@ const SpacingControl = (props) => {
 				<span
 					className="uagb-spacing-control__link uagb-spacing-control-disconnected dashicons dashicons-editor-unlink"
 					onClick={() => {
+						onLinkClickHandler();
 						setAttributes({ [link.label]: true });
 					}}
 				></span>
 			);
 		}
 	}
+	const onLinkClickHandler = () => {
+		let linkValue;
+		let device = deviceType.toLowerCase();
 
+		switch (device) {
+			case "desktop":
+				linkValue = valueTop.value;
+				break;
+			case "tablet":
+				linkValue = valueTopTablet.value;
+				break;
+			case "mobile":
+				linkValue = valueTopMobile.value;
+				break;
+		}
+		changeLinkedValues(linkValue, device);
+	};
 	const output = {};
 	output.Desktop = (
 		<>
