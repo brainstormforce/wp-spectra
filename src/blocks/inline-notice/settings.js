@@ -182,13 +182,21 @@ const Settings = ( props ) => {
 					className="uagb-multi-button-alignment-control"
 					options={[
 						{
-							value: "simmple",
-							label: 'Default'
+							value: 'simple',
+							label: 'Default',
+							tooltip: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
 
 						},
 						{
-							value: "modern",
+							value: 'modern',
 							label: 'Modern',
+							tooltip: __(
+								'Modern',
+								'ultimate-addons-for-gutenberg'
+							),
 						},
 
 					]}
