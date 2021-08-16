@@ -157,11 +157,11 @@ const Settings = ( props ) => {
 	const noticeDismissOptions = [
 		{
 			value: '',
-			label: __( 'Display Always', 'ultimate-addons-for-gutenberg' ),
+			label: __( 'Always Show', 'ultimate-addons-for-gutenberg' ),
 		},
 		{
 			value: 'uagb-dismissable',
-			label: __( 'Allow to Dismiss', 'ultimate-addons-for-gutenberg' ),
+			label: __( 'Dismissible', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
 
@@ -183,9 +183,9 @@ const Settings = ( props ) => {
 					options={[
 						{
 							value: 'simple',
-							label: 'Default',
+							label: 'Classic',
 							tooltip: __(
-								'Default',
+								'Classic',
 								'ultimate-addons-for-gutenberg'
 							),
 
