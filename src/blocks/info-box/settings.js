@@ -489,6 +489,7 @@ const Settings = (props) => {
 							label={__("Image", "ultimate-addons-for-gutenberg")}
 							id={__("Image", "ultimate-addons-for-gutenberg")}
 						>
+							<div className="uagb-bg-image">
 							<MediaUpload
 								title={__(
 									"Select Image",
@@ -503,6 +504,7 @@ const Settings = (props) => {
 									</Button>
 								)}
 							/>
+							</div>
 							{iconImage &&
 								iconImage.url !== "null" &&
 								iconImage.url !== "" && (
