@@ -39,7 +39,6 @@ const UAGBTeam = ( props ) => {
 			'uagb-team-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
-
 		const {
 			imgLeftMargin,
 			imgRightMargin,

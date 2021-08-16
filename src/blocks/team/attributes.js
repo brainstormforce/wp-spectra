@@ -282,19 +282,15 @@ const attributes = {
 	},
 	imageLeftMargin: {
 		type: 'number',
-		default: 20,
 	},
 	imageRightMargin: {
 		type: 'number',
-		default: 20,
 	},
 	imageTopMargin: {
 		type: 'number',
-		default: 15,
 	},
 	imageBottomMargin: {
 		type: 'number',
-		default: 15,
 	},
 	imageMarginTopTablet: {
 		type: 'number'
