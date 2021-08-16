@@ -183,12 +183,20 @@ const Settings = ( props ) => {
 					options={[
 						{
 							value: 'simple',
-							label: 'Default'
+							label: 'Default',
+							tooltip: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
 
 						},
 						{
 							value: 'modern',
 							label: 'Modern',
+							tooltip: __(
+								'Modern',
+								'ultimate-addons-for-gutenberg'
+							),
 						},
 
 					]}

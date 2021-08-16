@@ -135,7 +135,7 @@ function styling( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: textColor,
+			'color': textColor,
 		},
 
 		' span.uagb-notice-dismiss': {
