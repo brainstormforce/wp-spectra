@@ -1,1 +1,768 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[15],{530:function(e,a,t){"use strict";t.r(a);var n=t(6),l=t(1),o=t.n(l),r=t(10),i=t(67),u=t(60),g=t(2),c=t(5),b=t(4),d=function(e){var a=e.parentProps,t=a.attributes,d=t.topPadding,m=t.bottomPadding,s=t.leftPadding,_=t.rightPadding,f=t.topPaddingTablet,p=t.bottomPaddingTablet,C=t.leftPaddingTablet,v=t.rightPaddingTablet,O=t.topPaddingMobile,E=t.bottomPaddingMobile,h=t.leftPaddingMobile,y=t.rightPaddingMobile,j=t.backgroundType,R=t.backgroundImage,P=t.backgroundColor,k=t.backgroundPosition,x=t.backgroundAttachment,N=t.backgroundRepeat,T=t.backgroundSize,S=t.backgroundOpacity,B=t.backgroundImageColor,w=t.borderStyle,z=t.borderWidth,I=t.borderRadius,L=t.borderColor,M=t.overlayType,W=t.gradientOverlayColor1,F=t.gradientOverlayColor2,A=t.gradientOverlayType,D=t.gradientOverlayLocation1,G=t.gradientOverlayLocation2,J=t.gradientOverlayAngle,U=t.mobilePaddingType,q=t.tabletPaddingType,H=t.desktopPaddingType,K=t.colWidthMobile,Q=t.colWidthTablet,V=t.colWidth,X=a.setAttributes,Y=a.deviceType;return o.a.createElement(l.Suspense,{fallback:Object(r.a)()},o.a.createElement(c.InspectorControls,null,o.a.createElement(b.PanelBody,{title:Object(g.__)("Layout","ultimate-addons-for-gutenberg")},o.a.createElement(b.TabPanel,{className:"uagb-size-type-field-tabs uagb-without-size-type",activeClass:"active-tab",tabs:[{name:"desktop",title:o.a.createElement(b.Dashicon,{icon:"desktop"}),className:"uagb-desktop-tab uagb-responsive-tabs"},{name:"tablet",title:o.a.createElement(b.Dashicon,{icon:"tablet"}),className:"uagb-tablet-tab uagb-responsive-tabs"},{name:"mobile",title:o.a.createElement(b.Dashicon,{icon:"smartphone"}),className:"uagb-mobile-tab uagb-responsive-tabs"}]},(function(e){var a;return a="mobile"===e.name?o.a.createElement(b.RangeControl,{label:Object(g.__)("Content Width (%)","ultimate-addons-for-gutenberg"),value:K,onChange:function(e){X({colWidthMobile:e})},min:0,max:100}):"tablet"===e.name?o.a.createElement(b.RangeControl,{label:Object(g.__)("Content Width (%)","ultimate-addons-for-gutenberg"),value:Q,onChange:function(e){X({colWidthTablet:e})},min:0,max:100}):o.a.createElement(b.RangeControl,{label:Object(g.__)("Content Width (%)","ultimate-addons-for-gutenberg"),value:V,onChange:function(e){X({colWidth:e})},min:0,max:100}),o.a.createElement("div",null,a)}))),o.a.createElement(b.PanelBody,{title:Object(g.__)("Spacing","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(u.a,null),"Desktop"===Y&&o.a.createElement(o.a.Fragment,null,o.a.createElement(b.ButtonGroup,{className:"uagb-size-type-field","aria-label":Object(g.__)("Size Type","ultimate-addons-for-gutenberg")},o.a.createElement(b.Button,{key:"px",className:"uagb-size-btn",isSmall:!0,isPrimary:"px"===H,"aria-pressed":"px"===H,onClick:function(){return X({desktopPaddingType:"px"})}},"px"),o.a.createElement(b.Button,{key:"%",className:"uagb-size-btn",isSmall:!0,isPrimary:"%"===H,"aria-pressed":"%"===H,onClick:function(){return X({desktopPaddingType:"%"})}},"%")),o.a.createElement("h2",null,Object(g.__)("Padding","ultimate-addons-for-gutenberg")),o.a.createElement(b.RangeControl,{label:n.a.top_margin,className:"uagb-margin-control",value:d,onChange:function(e){return X({topPadding:e})},min:0,max:"%"==H?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.bottom_margin,className:"uagb-margin-control",value:m,onChange:function(e){return X({bottomPadding:e})},min:0,max:"%"==H?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.left_margin,className:"uagb-margin-control",value:s,onChange:function(e){return X({leftPadding:e})},min:0,max:"%"==H?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.right_margin,className:"uagb-margin-control",value:_,onChange:function(e){return X({rightPadding:e})},min:0,max:"%"==H?100:2e3,allowReset:!0})),"Tablet"===Y&&o.a.createElement(o.a.Fragment,null,o.a.createElement(b.ButtonGroup,{className:"uagb-size-type-field","aria-label":Object(g.__)("Size Type","ultimate-addons-for-gutenberg")},o.a.createElement(b.Button,{key:"px",className:"uagb-size-btn",isSmall:!0,isPrimary:"px"===q,"aria-pressed":"px"===q,onClick:function(){return X({tabletPaddingType:"px"})}},"px"),o.a.createElement(b.Button,{key:"%",className:"uagb-size-btn",isSmall:!0,isPrimary:"%"===q,"aria-pressed":"%"===q,onClick:function(){return X({tabletPaddingType:"%"})}},"%")),o.a.createElement("h2",null,Object(g.__)("Padding","ultimate-addons-for-gutenberg")),o.a.createElement(b.RangeControl,{label:n.a.top_margin,className:"uagb-margin-control",value:f,onChange:function(e){return X({topPaddingTablet:e})},min:0,max:"%"==q?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.bottom_margin,className:"uagb-margin-control",value:p,onChange:function(e){return X({bottomPaddingTablet:e})},min:0,max:"%"==q?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.left_margin,className:"uagb-margin-control",value:C,onChange:function(e){return X({leftPaddingTablet:e})},min:0,max:"%"==q?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.right_margin,className:"uagb-margin-control",value:v,onChange:function(e){return X({rightPaddingTablet:e})},min:0,max:"%"==q?100:2e3,allowReset:!0})),"Mobile"===Y&&o.a.createElement(o.a.Fragment,null,o.a.createElement(b.ButtonGroup,{className:"uagb-size-type-field","aria-label":Object(g.__)("Size Type")},o.a.createElement(b.Button,{key:"px",className:"uagb-size-btn",isSmall:!0,isPrimary:"px"===U,"aria-pressed":"px"===U,onClick:function(){return X({mobilePaddingType:"px"})}},"px"),o.a.createElement(b.Button,{key:"%",className:"uagb-size-btn",isSmall:!0,isPrimary:"%"===U,"aria-pressed":"%"===U,onClick:function(){return X({mobilePaddingType:"%"})}},"%")),o.a.createElement("h2",null,Object(g.__)("Padding","ultimate-addons-for-gutenberg")),o.a.createElement(b.RangeControl,{label:n.a.top_margin,className:"uagb-margin-control",value:O,onChange:function(e){return X({topPaddingMobile:e})},min:0,max:"%"==U?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.bottom_margin,className:"uagb-margin-control",value:E,onChange:function(e){return X({bottomPaddingMobile:e})},min:0,max:"%"==U?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.left_margin,className:"uagb-margin-control",value:h,onChange:function(e){return X({leftPaddingMobile:e})},min:0,max:"%"==U?100:2e3,allowReset:!0}),o.a.createElement(b.RangeControl,{label:n.a.right_margin,className:"uagb-margin-control",value:y,onChange:function(e){return X({rightPaddingMobile:e})},min:0,max:"%"==U?100:2e3,allowReset:!0}))),o.a.createElement(b.PanelBody,{title:Object(g.__)("Background","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(b.SelectControl,{label:Object(g.__)("Background Type","ultimate-addons-for-gutenberg"),value:j,onChange:function(e){return X({backgroundType:e})},options:[{value:"none",label:Object(g.__)("None","ultimate-addons-for-gutenberg")},{value:"color",label:Object(g.__)("Color","ultimate-addons-for-gutenberg")},{value:"gradient",label:Object(g.__)("Gradient","ultimate-addons-for-gutenberg")},{value:"image",label:Object(g.__)("Image","ultimate-addons-for-gutenberg")}]}),"color"==j&&o.a.createElement(o.a.Fragment,null,o.a.createElement("p",{className:"uagb-setting-label"},Object(g.__)("Background Color","ultimate-addons-for-gutenberg"),o.a.createElement("span",{className:"components-base-control__label"},o.a.createElement("span",{className:"component-color-indicator",style:{backgroundColor:P}}))),o.a.createElement(c.ColorPalette,{value:P,onChange:function(e){return X({backgroundColor:e})},allowReset:!0})),"image"==j&&o.a.createElement(o.a.Fragment,null,o.a.createElement(b.BaseControl,{className:"editor-bg-image-control",id:"Background Image",label:Object(g.__)("Background Image","ultimate-addons-for-gutenberg")},o.a.createElement(c.MediaUpload,{title:Object(g.__)("Select Background Image","ultimate-addons-for-gutenberg"),onSelect:function(e){e&&e.url?e.type&&"image"==e.type&&X({backgroundImage:e}):X({backgroundImage:null})},allowedTypes:["image"],value:R,render:function(e){var a=e.open;return o.a.createElement(b.Button,{isSecondary:!0,onClick:a},R?Object(g.__)("Replace image","ultimate-addons-for-gutenberg"):Object(g.__)("Select Background Image","ultimate-addons-for-gutenberg"))}}),R&&o.a.createElement(b.Button,{className:"uagb-rm-btn",onClick:function(){X({backgroundImage:null})},isLink:!0,isDestructive:!0},Object(g.__)("Remove Image","ultimate-addons-for-gutenberg"))),R&&o.a.createElement(o.a.Fragment,null,o.a.createElement(b.SelectControl,{label:Object(g.__)("Image Position","ultimate-addons-for-gutenberg"),value:k,onChange:function(e){return X({backgroundPosition:e})},options:[{value:"top-left",label:Object(g.__)("Top Left","ultimate-addons-for-gutenberg")},{value:"top-center",label:Object(g.__)("Top Center","ultimate-addons-for-gutenberg")},{value:"top-right",label:Object(g.__)("Top Right","ultimate-addons-for-gutenberg")},{value:"center-left",label:Object(g.__)("Center Left","ultimate-addons-for-gutenberg")},{value:"center-center",label:Object(g.__)("Center Center","ultimate-addons-for-gutenberg")},{value:"center-right",label:Object(g.__)("Center Right","ultimate-addons-for-gutenberg")},{value:"bottom-left",label:Object(g.__)("Bottom Left","ultimate-addons-for-gutenberg")},{value:"bottom-center",label:Object(g.__)("Bottom Center","ultimate-addons-for-gutenberg")},{value:"bottom-right",label:Object(g.__)("Bottom Right","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.SelectControl,{label:Object(g.__)("Attachment","ultimate-addons-for-gutenberg"),value:x,onChange:function(e){return X({backgroundAttachment:e})},options:[{value:"fixed",label:Object(g.__)("Fixed","ultimate-addons-for-gutenberg")},{value:"scroll",label:Object(g.__)("Scroll","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.SelectControl,{label:Object(g.__)("Repeat","ultimate-addons-for-gutenberg"),value:N,onChange:function(e){return X({backgroundRepeat:e})},options:[{value:"no-repeat",label:Object(g.__)("No Repeat","ultimate-addons-for-gutenberg")},{value:"repeat",label:Object(g.__)("Repeat","ultimate-addons-for-gutenberg")},{value:"repeat-x",label:Object(g.__)("Repeat-x","ultimate-addons-for-gutenberg")},{value:"repeat-y",label:Object(g.__)("Repeat-y","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.SelectControl,{label:Object(g.__)("Size","ultimate-addons-for-gutenberg"),value:T,onChange:function(e){return X({backgroundSize:e})},options:[{value:"auto",label:Object(g.__)("Auto","ultimate-addons-for-gutenberg")},{value:"cover",label:Object(g.__)("Cover","ultimate-addons-for-gutenberg")},{value:"contain",label:Object(g.__)("Contain","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.SelectControl,{label:Object(g.__)("Image Overlay Type","ultimate-addons-for-gutenberg"),value:M,onChange:function(e){return X({overlayType:e})},options:[{value:"color",label:Object(g.__)("Color","ultimate-addons-for-gutenberg")},{value:"gradient",label:Object(g.__)("Gradient","ultimate-addons-for-gutenberg")}]}),"color"==M&&o.a.createElement(o.a.Fragment,null,o.a.createElement("p",{className:"uagb-setting-label"},Object(g.__)("Image Overlay Color","ultimate-addons-for-gutenberg"),o.a.createElement("span",{className:"components-base-control__label"},o.a.createElement("span",{className:"component-color-indicator",style:{backgroundColor:B}}))),o.a.createElement(c.ColorPalette,{value:B,onChange:function(e){return X({backgroundImageColor:e})},allowReset:!0})),"gradient"==M&&o.a.createElement(o.a.Fragment,null,o.a.createElement(c.PanelColorSettings,{title:Object(g.__)("Color Settings","ultimate-addons-for-gutenberg"),colorSettings:[{value:F,onChange:function(e){return X({gradientOverlayColor2:e})},label:Object(g.__)("Color 1","ultimate-addons-for-gutenberg")},{value:W,onChange:function(e){return X({gradientOverlayColor1:e})},label:Object(g.__)("Color 2","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.SelectControl,{label:Object(g.__)("Type","ultimate-addons-for-gutenberg"),value:A,onChange:function(e){return X({gradientOverlayType:e})},options:[{value:"linear",label:Object(g.__)("Linear","ultimate-addons-for-gutenberg")},{value:"radial",label:Object(g.__)("Radial","ultimate-addons-for-gutenberg")}]}),o.a.createElement(b.RangeControl,{label:Object(g.__)("Location 1","ultimate-addons-for-gutenberg"),value:D,onChange:function(e){return X({gradientOverlayLocation1:e})},min:0,max:100,allowReset:!0}),o.a.createElement(b.RangeControl,{label:Object(g.__)("Location 2","ultimate-addons-for-gutenberg"),value:G,onChange:function(e){return X({gradientOverlayLocation2:e})},min:0,max:100,allowReset:!0}),o.a.createElement(b.RangeControl,{label:Object(g.__)("Angle","ultimate-addons-for-gutenberg"),value:J,onChange:function(e){return X({gradientOverlayAngle:e})},min:0,max:360,allowReset:!0})))),"gradient"==j&&o.a.createElement(o.a.Fragment,null,o.a.createElement(i.a,{attributes:e.parentProps.attributes,setAttributes:X})),("color"==j||"image"==j&&R||"gradient"==j)&&o.a.createElement(b.RangeControl,{label:Object(g.__)("Opacity"),value:S,onChange:function(e){return X({backgroundOpacity:e})},min:0,max:100,allowReset:!0,initialPosition:0})),o.a.createElement(b.PanelBody,{title:Object(g.__)("Border","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(b.SelectControl,{label:Object(g.__)("Border Style","ultimate-addons-for-gutenberg"),value:w,onChange:function(e){return X({borderStyle:e})},options:[{value:"none",label:Object(g.__)("None","ultimate-addons-for-gutenberg")},{value:"solid",label:Object(g.__)("Solid","ultimate-addons-for-gutenberg")},{value:"dotted",label:Object(g.__)("Dotted","ultimate-addons-for-gutenberg")},{value:"dashed",label:Object(g.__)("Dashed","ultimate-addons-for-gutenberg")},{value:"double",label:Object(g.__)("Double","ultimate-addons-for-gutenberg")},{value:"groove",label:Object(g.__)("Groove","ultimate-addons-for-gutenberg")},{value:"inset",label:Object(g.__)("Inset","ultimate-addons-for-gutenberg")},{value:"outset",label:Object(g.__)("Outset","ultimate-addons-for-gutenberg")},{value:"ridge",label:Object(g.__)("Ridge","ultimate-addons-for-gutenberg")}]}),"none"!=w&&o.a.createElement(b.RangeControl,{label:Object(g.__)("Border Width","ultimate-addons-for-gutenberg"),value:z,onChange:function(e){return X({borderWidth:e})},min:0,max:50,allowReset:!0}),o.a.createElement(b.RangeControl,{label:Object(g.__)("Border Radius","ultimate-addons-for-gutenberg"),value:I,onChange:function(e){return X({borderRadius:e})},min:0,max:100,allowReset:!0}),"none"!=w&&o.a.createElement(o.a.Fragment,null,o.a.createElement("p",{className:"uagb-setting-label"},Object(g.__)("Border Color","ultimate-addons-for-gutenberg"),o.a.createElement("span",{className:"components-base-control__label"},o.a.createElement("span",{className:"component-color-indicator",style:{backgroundColor:L}}))),o.a.createElement(c.ColorPalette,{value:L,onChange:function(e){return X({borderColor:e})},allowReset:!0})))))};a.default=o.a.memo(d)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/column/settings"],{
+
+/***/ "./src/blocks/column/settings.js":
+/*!***************************************!*\
+  !*** ./src/blocks/column/settings.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @Controls/block-icons */ "./blocks-config/uagb-controls/block-icons.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Controls_lazy_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Controls/lazy-loader */ "./blocks-config/uagb-controls/lazy-loader.js");
+/* harmony import */ var _Components_gradient_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Components/gradient-settings */ "./src/components/gradient-settings/index.js");
+/* harmony import */ var _Components_typography_column_responsive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @Components/typography/column-responsive */ "./src/components/typography/column-responsive.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+/**
+ * BLOCK: Column - Settings.
+ */
+
+
+
+
+
+
+
+
+
+var Settings = function Settings(props) {
+  var _props$parentProps = props.parentProps,
+      _props$parentProps$at = _props$parentProps.attributes,
+      topPadding = _props$parentProps$at.topPadding,
+      bottomPadding = _props$parentProps$at.bottomPadding,
+      leftPadding = _props$parentProps$at.leftPadding,
+      rightPadding = _props$parentProps$at.rightPadding,
+      topPaddingTablet = _props$parentProps$at.topPaddingTablet,
+      bottomPaddingTablet = _props$parentProps$at.bottomPaddingTablet,
+      leftPaddingTablet = _props$parentProps$at.leftPaddingTablet,
+      rightPaddingTablet = _props$parentProps$at.rightPaddingTablet,
+      topPaddingMobile = _props$parentProps$at.topPaddingMobile,
+      bottomPaddingMobile = _props$parentProps$at.bottomPaddingMobile,
+      leftPaddingMobile = _props$parentProps$at.leftPaddingMobile,
+      rightPaddingMobile = _props$parentProps$at.rightPaddingMobile,
+      backgroundType = _props$parentProps$at.backgroundType,
+      backgroundImage = _props$parentProps$at.backgroundImage,
+      backgroundColor = _props$parentProps$at.backgroundColor,
+      backgroundPosition = _props$parentProps$at.backgroundPosition,
+      backgroundAttachment = _props$parentProps$at.backgroundAttachment,
+      backgroundRepeat = _props$parentProps$at.backgroundRepeat,
+      backgroundSize = _props$parentProps$at.backgroundSize,
+      backgroundOpacity = _props$parentProps$at.backgroundOpacity,
+      backgroundImageColor = _props$parentProps$at.backgroundImageColor,
+      borderStyle = _props$parentProps$at.borderStyle,
+      borderWidth = _props$parentProps$at.borderWidth,
+      borderRadius = _props$parentProps$at.borderRadius,
+      borderColor = _props$parentProps$at.borderColor,
+      overlayType = _props$parentProps$at.overlayType,
+      gradientOverlayColor1 = _props$parentProps$at.gradientOverlayColor1,
+      gradientOverlayColor2 = _props$parentProps$at.gradientOverlayColor2,
+      gradientOverlayType = _props$parentProps$at.gradientOverlayType,
+      gradientOverlayLocation1 = _props$parentProps$at.gradientOverlayLocation1,
+      gradientOverlayLocation2 = _props$parentProps$at.gradientOverlayLocation2,
+      gradientOverlayAngle = _props$parentProps$at.gradientOverlayAngle,
+      mobilePaddingType = _props$parentProps$at.mobilePaddingType,
+      tabletPaddingType = _props$parentProps$at.tabletPaddingType,
+      desktopPaddingType = _props$parentProps$at.desktopPaddingType,
+      colWidthMobile = _props$parentProps$at.colWidthMobile,
+      colWidthTablet = _props$parentProps$at.colWidthTablet,
+      colWidth = _props$parentProps$at.colWidth,
+      setAttributes = _props$parentProps.setAttributes,
+      deviceType = _props$parentProps.deviceType;
+  /*
+   * Event to set Image as null while removing.
+   */
+
+  var onRemoveImage = function onRemoveImage() {
+    setAttributes({
+      backgroundImage: null
+    });
+  };
+  /*
+   * Event to set Image as while adding.
+   */
+
+
+  var onSelectImage = function onSelectImage(media) {
+    if (!media || !media.url) {
+      setAttributes({
+        backgroundImage: null
+      });
+      return;
+    }
+
+    if (!media.type || 'image' != media.type) {
+      return;
+    }
+
+    setAttributes({
+      backgroundImage: media
+    });
+  };
+
+  var layoutSettings = function layoutSettings() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Layout', 'ultimate-addons-for-gutenberg')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["TabPanel"], {
+      className: "uagb-size-type-field-tabs uagb-without-size-type",
+      activeClass: "active-tab",
+      tabs: [{
+        name: 'desktop',
+        title: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dashicon"], {
+          icon: "desktop"
+        }),
+        className: 'uagb-desktop-tab uagb-responsive-tabs'
+      }, {
+        name: 'tablet',
+        title: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dashicon"], {
+          icon: "tablet"
+        }),
+        className: 'uagb-tablet-tab uagb-responsive-tabs'
+      }, {
+        name: 'mobile',
+        title: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dashicon"], {
+          icon: "smartphone"
+        }),
+        className: 'uagb-mobile-tab uagb-responsive-tabs'
+      }]
+    }, function (tab) {
+      var tabout;
+
+      if ('mobile' === tab.name) {
+        tabout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Width (%)', 'ultimate-addons-for-gutenberg'),
+          value: colWidthMobile,
+          onChange: function onChange(value) {
+            setAttributes({
+              colWidthMobile: value
+            });
+          },
+          min: 0,
+          max: 100
+        });
+      } else if ('tablet' === tab.name) {
+        tabout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Width (%)', 'ultimate-addons-for-gutenberg'),
+          value: colWidthTablet,
+          onChange: function onChange(value) {
+            setAttributes({
+              colWidthTablet: value
+            });
+          },
+          min: 0,
+          max: 100
+        });
+      } else {
+        tabout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Width (%)', 'ultimate-addons-for-gutenberg'),
+          value: colWidth,
+          onChange: function onChange(value) {
+            setAttributes({
+              colWidth: value
+            });
+          },
+          min: 0,
+          max: 100
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, tabout);
+    }));
+  };
+
+  var spacingSettings = function spacingSettings() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Spacing', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_typography_column_responsive__WEBPACK_IMPORTED_MODULE_4__["default"], null), 'Desktop' === deviceType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ButtonGroup"], {
+      className: "uagb-size-type-field",
+      "aria-label": Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Size Type', 'ultimate-addons-for-gutenberg')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: 'px',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: desktopPaddingType === 'px',
+      "aria-pressed": desktopPaddingType === 'px',
+      onClick: function onClick() {
+        return setAttributes({
+          desktopPaddingType: 'px'
+        });
+      }
+    }, 'px'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: '%',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: desktopPaddingType === '%',
+      "aria-pressed": desktopPaddingType === '%',
+      onClick: function onClick() {
+        return setAttributes({
+          desktopPaddingType: '%'
+        });
+      }
+    }, '%')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Padding', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].top_margin,
+      className: 'uagb-margin-control',
+      value: topPadding,
+      onChange: function onChange(value) {
+        return setAttributes({
+          topPadding: value
+        });
+      },
+      min: 0,
+      max: '%' == desktopPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].bottom_margin,
+      className: 'uagb-margin-control',
+      value: bottomPadding,
+      onChange: function onChange(value) {
+        return setAttributes({
+          bottomPadding: value
+        });
+      },
+      min: 0,
+      max: '%' == desktopPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].left_margin,
+      className: 'uagb-margin-control',
+      value: leftPadding,
+      onChange: function onChange(value) {
+        return setAttributes({
+          leftPadding: value
+        });
+      },
+      min: 0,
+      max: '%' == desktopPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].right_margin,
+      className: 'uagb-margin-control',
+      value: rightPadding,
+      onChange: function onChange(value) {
+        return setAttributes({
+          rightPadding: value
+        });
+      },
+      min: 0,
+      max: '%' == desktopPaddingType ? 100 : 2000,
+      allowReset: true
+    })), 'Tablet' === deviceType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ButtonGroup"], {
+      className: "uagb-size-type-field",
+      "aria-label": Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Size Type', 'ultimate-addons-for-gutenberg')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: 'px',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: tabletPaddingType === 'px',
+      "aria-pressed": tabletPaddingType === 'px',
+      onClick: function onClick() {
+        return setAttributes({
+          tabletPaddingType: 'px'
+        });
+      }
+    }, 'px'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: '%',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: tabletPaddingType === '%',
+      "aria-pressed": tabletPaddingType === '%',
+      onClick: function onClick() {
+        return setAttributes({
+          tabletPaddingType: '%'
+        });
+      }
+    }, '%')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Padding', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].top_margin,
+      className: 'uagb-margin-control',
+      value: topPaddingTablet,
+      onChange: function onChange(value) {
+        return setAttributes({
+          topPaddingTablet: value
+        });
+      },
+      min: 0,
+      max: '%' == tabletPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].bottom_margin,
+      className: 'uagb-margin-control',
+      value: bottomPaddingTablet,
+      onChange: function onChange(value) {
+        return setAttributes({
+          bottomPaddingTablet: value
+        });
+      },
+      min: 0,
+      max: '%' == tabletPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].left_margin,
+      className: 'uagb-margin-control',
+      value: leftPaddingTablet,
+      onChange: function onChange(value) {
+        return setAttributes({
+          leftPaddingTablet: value
+        });
+      },
+      min: 0,
+      max: '%' == tabletPaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].right_margin,
+      className: 'uagb-margin-control',
+      value: rightPaddingTablet,
+      onChange: function onChange(value) {
+        return setAttributes({
+          rightPaddingTablet: value
+        });
+      },
+      min: 0,
+      max: '%' == tabletPaddingType ? 100 : 2000,
+      allowReset: true
+    })), 'Mobile' === deviceType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ButtonGroup"], {
+      className: "uagb-size-type-field",
+      "aria-label": Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Size Type')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: 'px',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: mobilePaddingType === 'px',
+      "aria-pressed": mobilePaddingType === 'px',
+      onClick: function onClick() {
+        return setAttributes({
+          mobilePaddingType: 'px'
+        });
+      }
+    }, 'px'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      key: '%',
+      className: "uagb-size-btn",
+      isSmall: true,
+      isPrimary: mobilePaddingType === '%',
+      "aria-pressed": mobilePaddingType === '%',
+      onClick: function onClick() {
+        return setAttributes({
+          mobilePaddingType: '%'
+        });
+      }
+    }, '%')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Padding', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].top_margin,
+      className: 'uagb-margin-control',
+      value: topPaddingMobile,
+      onChange: function onChange(value) {
+        return setAttributes({
+          topPaddingMobile: value
+        });
+      },
+      min: 0,
+      max: '%' == mobilePaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].bottom_margin,
+      className: 'uagb-margin-control',
+      value: bottomPaddingMobile,
+      onChange: function onChange(value) {
+        return setAttributes({
+          bottomPaddingMobile: value
+        });
+      },
+      min: 0,
+      max: '%' == mobilePaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].left_margin,
+      className: 'uagb-margin-control',
+      value: leftPaddingMobile,
+      onChange: function onChange(value) {
+        return setAttributes({
+          leftPaddingMobile: value
+        });
+      },
+      min: 0,
+      max: '%' == mobilePaddingType ? 100 : 2000,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: _Controls_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].right_margin,
+      className: 'uagb-margin-control',
+      value: rightPaddingMobile,
+      onChange: function onChange(value) {
+        return setAttributes({
+          rightPaddingMobile: value
+        });
+      },
+      min: 0,
+      max: '%' == mobilePaddingType ? 100 : 2000,
+      allowReset: true
+    })));
+  };
+
+  var backgroundSettings = function backgroundSettings() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Background', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Background Type', 'ultimate-addons-for-gutenberg'),
+      value: backgroundType,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundType: value
+        });
+      },
+      options: [{
+        value: 'none',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('None', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'color',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'gradient',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Gradient', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'image',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Image', 'ultimate-addons-for-gutenberg')
+      }]
+    }), 'color' == backgroundType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "uagb-setting-label"
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Background Color', 'ultimate-addons-for-gutenberg'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "components-base-control__label"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "component-color-indicator",
+      style: {
+        backgroundColor: backgroundColor
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["ColorPalette"], {
+      value: backgroundColor,
+      onChange: function onChange(colorValue) {
+        return setAttributes({
+          backgroundColor: colorValue
+        });
+      },
+      allowReset: true
+    })), 'image' == backgroundType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["BaseControl"], {
+      className: "editor-bg-image-control",
+      id: "Background Image",
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Background Image', 'ultimate-addons-for-gutenberg')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["MediaUpload"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Select Background Image', 'ultimate-addons-for-gutenberg'),
+      onSelect: onSelectImage,
+      allowedTypes: ['image'],
+      value: backgroundImage,
+      render: function render(_ref) {
+        var open = _ref.open;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+          isSecondary: true,
+          onClick: open
+        }, !backgroundImage ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Select Background Image', 'ultimate-addons-for-gutenberg') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Replace image', 'ultimate-addons-for-gutenberg'));
+      }
+    }), backgroundImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      className: "uagb-rm-btn",
+      onClick: onRemoveImage,
+      isLink: true,
+      isDestructive: true
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Remove Image', 'ultimate-addons-for-gutenberg'))), backgroundImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Image Position', 'ultimate-addons-for-gutenberg'),
+      value: backgroundPosition,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundPosition: value
+        });
+      },
+      options: [{
+        value: 'top-left',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Top Left', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'top-center',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Top Center', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'top-right',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Top Right', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'center-left',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Center Left', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'center-center',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Center Center', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'center-right',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Center Right', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'bottom-left',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bottom Left', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'bottom-center',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bottom Center', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'bottom-right',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bottom Right', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Attachment', 'ultimate-addons-for-gutenberg'),
+      value: backgroundAttachment,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundAttachment: value
+        });
+      },
+      options: [{
+        value: 'fixed',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Fixed', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'scroll',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Scroll', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Repeat', 'ultimate-addons-for-gutenberg'),
+      value: backgroundRepeat,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundRepeat: value
+        });
+      },
+      options: [{
+        value: 'no-repeat',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('No Repeat', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Repeat', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat-x',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Repeat-x', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat-y',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Repeat-y', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Size', 'ultimate-addons-for-gutenberg'),
+      value: backgroundSize,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundSize: value
+        });
+      },
+      options: [{
+        value: 'auto',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Auto', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'cover',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Cover', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'contain',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Contain', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Image Overlay Type', 'ultimate-addons-for-gutenberg'),
+      value: overlayType,
+      onChange: function onChange(value) {
+        return setAttributes({
+          overlayType: value
+        });
+      },
+      options: [{
+        value: 'color',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'gradient',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Gradient', 'ultimate-addons-for-gutenberg')
+      }]
+    }), 'color' == overlayType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "uagb-setting-label"
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Image Overlay Color', 'ultimate-addons-for-gutenberg'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "components-base-control__label"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "component-color-indicator",
+      style: {
+        backgroundColor: backgroundImageColor
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["ColorPalette"], {
+      value: backgroundImageColor,
+      onChange: function onChange(colorValue) {
+        return setAttributes({
+          backgroundImageColor: colorValue
+        });
+      },
+      allowReset: true
+    })), 'gradient' == overlayType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["PanelColorSettings"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color Settings', 'ultimate-addons-for-gutenberg'),
+      colorSettings: [{
+        value: gradientOverlayColor2,
+        onChange: function onChange(value) {
+          return setAttributes({
+            gradientOverlayColor2: value
+          });
+        },
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color 1', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: gradientOverlayColor1,
+        onChange: function onChange(value) {
+          return setAttributes({
+            gradientOverlayColor1: value
+          });
+        },
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color 2', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Type', 'ultimate-addons-for-gutenberg'),
+      value: gradientOverlayType,
+      onChange: function onChange(value) {
+        return setAttributes({
+          gradientOverlayType: value
+        });
+      },
+      options: [{
+        value: 'linear',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Linear', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'radial',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Radial', 'ultimate-addons-for-gutenberg')
+      }]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Location 1', 'ultimate-addons-for-gutenberg'),
+      value: gradientOverlayLocation1,
+      onChange: function onChange(value) {
+        return setAttributes({
+          gradientOverlayLocation1: value
+        });
+      },
+      min: 0,
+      max: 100,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Location 2', 'ultimate-addons-for-gutenberg'),
+      value: gradientOverlayLocation2,
+      onChange: function onChange(value) {
+        return setAttributes({
+          gradientOverlayLocation2: value
+        });
+      },
+      min: 0,
+      max: 100,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Angle', 'ultimate-addons-for-gutenberg'),
+      value: gradientOverlayAngle,
+      onChange: function onChange(value) {
+        return setAttributes({
+          gradientOverlayAngle: value
+        });
+      },
+      min: 0,
+      max: 360,
+      allowReset: true
+    })))), 'gradient' == backgroundType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_gradient_settings__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      attributes: props.parentProps.attributes,
+      setAttributes: setAttributes
+    })), ('color' == backgroundType || 'image' == backgroundType && backgroundImage || 'gradient' == backgroundType) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Opacity'),
+      value: backgroundOpacity,
+      onChange: function onChange(value) {
+        return setAttributes({
+          backgroundOpacity: value
+        });
+      },
+      min: 0,
+      max: 100,
+      allowReset: true,
+      initialPosition: 0
+    }));
+  };
+
+  var borderSettings = function borderSettings() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border Style', 'ultimate-addons-for-gutenberg'),
+      value: borderStyle,
+      onChange: function onChange(value) {
+        return setAttributes({
+          borderStyle: value
+        });
+      },
+      options: [{
+        value: 'none',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('None', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'solid',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Solid', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'dotted',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Dotted', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'dashed',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Dashed', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'double',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Double', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'groove',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Groove', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'inset',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Inset', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'outset',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Outset', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'ridge',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Ridge', 'ultimate-addons-for-gutenberg')
+      }]
+    }), 'none' != borderStyle && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border Width', 'ultimate-addons-for-gutenberg'),
+      value: borderWidth,
+      onChange: function onChange(value) {
+        return setAttributes({
+          borderWidth: value
+        });
+      },
+      min: 0,
+      max: 50,
+      allowReset: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border Radius', 'ultimate-addons-for-gutenberg'),
+      value: borderRadius,
+      onChange: function onChange(value) {
+        return setAttributes({
+          borderRadius: value
+        });
+      },
+      min: 0,
+      max: 100,
+      allowReset: true
+    }), 'none' != borderStyle && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "uagb-setting-label"
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border Color', 'ultimate-addons-for-gutenberg'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "components-base-control__label"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+      className: "component-color-indicator",
+      style: {
+        backgroundColor: borderColor
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["ColorPalette"], {
+      value: borderColor,
+      onChange: function onChange(colorValue) {
+        return setAttributes({
+          borderColor: colorValue
+        });
+      },
+      allowReset: true
+    })));
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Suspense"], {
+    fallback: Object(_Controls_lazy_loader__WEBPACK_IMPORTED_MODULE_2__["default"])()
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], null, layoutSettings(), spacingSettings(), backgroundSettings(), borderSettings()));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.memo(Settings));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=settings.js.map
