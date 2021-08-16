@@ -138,7 +138,7 @@ function UserInfoBox() {
 						</h3>
 						<p>
 							{ __(
-								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community and get the latest news, updates, tips. We’d love it if you joined the conversation!',
+								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -161,7 +161,7 @@ function UserInfoBox() {
 						</h3>
 						<p>
 							{ __(
-								'Learn everything you need to know about the UAG plugin! Our comprehensive documentation includes information about installation, blocks, core filters, functions, and more.',
+								'Learn everything you need to know about the UAG plugin in our comprehensive documentation.',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -184,7 +184,7 @@ function UserInfoBox() {
 						</h3>
 						<p>
 							{ __(
-								'Need some help? Our awesome support team is here to help you with any question you have about Ultimate Addons for Gutenberg. Just send us your query to get fast answers from plugin experts.',
+								'Need some help? Our awesome support team is here to help you with any question you have.',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
