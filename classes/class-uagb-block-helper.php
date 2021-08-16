@@ -1858,6 +1858,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$image_top_margin    = isset( $attr['imageTopMargin'] ) ? $attr['imageTopMargin'] : $attr['imgTopMargin'];
+			$image_bottom_margin = isset( $attr['imageBottomMargin'] ) ? $attr['imageBottomMargin'] : $attr['imgBottomMargin'];
+			$image_left_margin   = isset( $attr['imageLeftMargin'] ) ? $attr['imageLeftMargin'] : $attr['imgLeftMargin'];
+			$image_right_margin  = isset( $attr['imageRightMargin'] ) ? $attr['imageRightMargin'] : $attr['imgRightMargin'];
+
 			$icon_size   = UAGB_Helper::get_css_value( $attr['socialFontSize'], $attr['socialFontSizeType'] );
 			$m_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeMobile'], $attr['socialFontSizeType'] );
 			$t_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeTablet'], $attr['socialFontSizeType'] );
@@ -1912,10 +1917,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 				),
 				' .uagb-team__image-wrap'            => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['imgTopMargin'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imgBottomMargin'], 'px' ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['imgLeftMargin'], 'px' ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['imgRightMargin'], 'px' ),
+					'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 					'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 				),
 			);
@@ -1951,7 +1956,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => $m_icon_size,
 					'height' => $m_icon_size,
 				),
+				' .uagb-team__image-wrap'      => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['imageMarginUnit'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['imageMarginUnit'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['imageMarginUnit'] ),
+				),
 			);
+			if ( 'above' === $attr['imgPosition'] ) {
+				if ( 'center' === $attr['align'] ) {
+					$m_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
+					$m_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+				} elseif ( 'left' === $attr['align'] ) {
+					$m_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+				} elseif ( 'right' === $attr['align'] ) {
+					$m_selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
+				}
+			}
 
 			$t_selectors = array(
 				' .uagb-team__social-icon a'   => array(
@@ -1964,7 +1985,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => $t_icon_size,
 					'height' => $t_icon_size,
 				),
+				' .uagb-team__image-wrap'      => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['imageMarginUnit'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['imageMarginUnit'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['imageMarginUnit'] ),
+				),
 			);
+			if ( 'above' === $attr['imgPosition'] ) {
+				if ( 'center' === $attr['align'] ) {
+					$t_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
+					$t_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+				} elseif ( 'left' === $attr['align'] ) {
+					$t_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+				} elseif ( 'right' === $attr['align'] ) {
+					$t_selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
+				}
+			}
 
 			$combined_selectors = array(
 				'desktop' => $selectors,

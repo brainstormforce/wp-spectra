@@ -46,13 +46,22 @@ function styling( props ) {
 		titleSpace,
 		descSpace,
 		prefixSpace,
-		imgLeftMargin,
-		imgRightMargin,
-		imgTopMargin,
-		imgBottomMargin,
 		socialColor,
 		socialHoverColor,
 		socialSpace,
+		imageLeftMargin,
+		imageRightMargin,
+		imageTopMargin,
+		imageBottomMargin,
+		imageMarginTopTablet,
+		imageMarginRightTablet,
+		imageMarginBottomTablet,
+		imageMarginLeftTablet,
+		imageMarginTopMobile,
+		imageMarginRightMobile,
+		imageMarginBottomMobile,
+		imageMarginLeftMobile,
+		imageMarginUnit,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -67,7 +76,7 @@ function styling( props ) {
 			),
 			'font-family': descFontFamily,
 			'font-weight': descFontWeight,
-			color: descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
@@ -78,31 +87,31 @@ function styling( props ) {
 				prefixLineHeight,
 				prefixLineHeightType
 			),
-			color: prefixColor,
+			'color': prefixColor,
 		},
 		' .uagb-team__desc-wrap': {
 			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
 		},
 		' .uagb-team__social-icon a': {
-			color: socialColor,
+			'color': socialColor,
 			'font-size': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			width: generateCSSUnit( socialFontSize, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSize,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			fill: socialColor,
-			width: generateCSSUnit( socialFontSize, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'fill': socialColor,
+			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon:hover a': {
-			color: socialHoverColor,
+			'color': socialHoverColor,
 		},
 		' .uagb-team__social-icon:hover svg': {
-			fill: socialHoverColor,
+			'fill': socialHoverColor,
 		},
 		'.uagb-team__image-position-left .uagb-team__social-icon': {
 			'margin-right': generateCSSUnit( socialSpace, 'px' ),
@@ -125,14 +134,14 @@ function styling( props ) {
 			'margin-right': '0',
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imgTopMargin, 'px' ),
-			'margin-bottom': generateCSSUnit( imgBottomMargin, 'px' ),
-			'margin-left': generateCSSUnit( imgLeftMargin, 'px' ),
-			'margin-right': generateCSSUnit( imgRightMargin, 'px' ),
-			width: generateCSSUnit( imgWidth, 'px' ),
+			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
+			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
+			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
+			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
-
+	
 	if ( 'above' == imgPosition ) {
 		if ( 'center' == align ) {
 			selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
@@ -159,7 +168,7 @@ function styling( props ) {
 		'font-weight': titleFontWeight,
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		color: titleColor,
+		'color': titleColor,
 		'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
 	};
 
@@ -181,18 +190,35 @@ function styling( props ) {
 				socialFontSizeMobile,
 				socialFontSizeType
 			),
-			width: generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSizeMobile,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			width: generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+		},
+		' .uagb-team__image-wrap': {
+			'margin-top': generateCSSUnit( imageMarginTopMobile, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, imageMarginUnit ),
+			'margin-left': generateCSSUnit( imageMarginLeftMobile, imageMarginUnit ),
+			'margin-right': generateCSSUnit( imageMarginRightMobile, imageMarginUnit ),
 		},
 	};
+
+	if ( 'above' == imgPosition ) {
+		if ( 'center' == align ) {
+			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+		} else if ( 'left' == align ) {
+			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+		} else if ( 'right' == align ) {
+			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+		}
+	}
 
 	tabletSelectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -212,18 +238,35 @@ function styling( props ) {
 				socialFontSizeTablet,
 				socialFontSizeType
 			),
-			width: generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSizeTablet,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			width: generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
-			height: generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+		},
+		' .uagb-team__image-wrap': {
+			'margin-top': generateCSSUnit( imageMarginTopTablet, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, imageMarginUnit ),
+			'margin-left': generateCSSUnit( imageMarginLeftTablet, imageMarginUnit ),
+			'margin-right': generateCSSUnit( imageMarginRightTablet, imageMarginUnit ),
 		},
 	};
+
+	if ( 'above' == imgPosition ) {
+		if ( 'center' == align ) {
+			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+		} else if ( 'left' == align ) {
+			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+		} else if ( 'right' == align ) {
+			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+		}
+	}
 
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
