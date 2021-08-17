@@ -8,7 +8,7 @@ import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
-
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -19,9 +19,6 @@ import {
 
 import {
 	PanelBody,
-	SelectControl,
-	Button,
-	ButtonGroup,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -61,15 +58,27 @@ const Settings = ( props ) => {
 			<PanelBody
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-					value={ social_layout }
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Layout",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: social_layout,
+						label: "social_layout",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'horizontal',
 							label: __(
 								'Horizontal',
 								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"Horizontal",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
@@ -78,26 +87,37 @@ const Settings = ( props ) => {
 								'Vertical',
 								'ultimate-addons-for-gutenberg'
 							),
+							tooltip: __(
+								"Vertical",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
-					] }
-					onChange={ ( value ) =>
-						setAttributes( { social_layout: value } )
-					}
+					]}
+					showIcons={false}
 				/>
 				{ 'horizontal' == social_layout && (
 					<>
-						<SelectControl
-							label={ __(
-								'Stack on',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ stack }
-							options={ [
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__(
+								"Stack On",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								value: stack,
+								label: "stack",
+							}}
+							className="uagb-multi-button-alignment-control"
+							options={[
 								{
 									value: 'none',
 									label: __(
 										'None',
 										'ultimate-addons-for-gutenberg'
+									),
+									tooltip: __(
+										"None",
+										"ultimate-addons-for-gutenberg"
 									),
 								},
 								{
@@ -106,12 +126,20 @@ const Settings = ( props ) => {
 										'Desktop',
 										'ultimate-addons-for-gutenberg'
 									),
+									tooltip: __(
+										"Desktop",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
 								{
 									value: 'tablet',
 									label: __(
 										'Tablet',
 										'ultimate-addons-for-gutenberg'
+									),
+									tooltip: __(
+										"Tablet",
+										"ultimate-addons-for-gutenberg"
 									),
 								},
 								{
@@ -120,11 +148,13 @@ const Settings = ( props ) => {
 										'Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
+									tooltip: __(
+										"Mobile",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
-							] }
-							onChange={ ( value ) =>
-								setAttributes( { stack: value } )
-							}
+							]}
+							showIcons={false}
 							help={ __(
 								'Note: Choose on what breakpoint the Icons will stack.',
 								'ultimate-addons-for-gutenberg'

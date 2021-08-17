@@ -20,6 +20,7 @@ import {
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -215,7 +216,7 @@ const Settings = ( props ) => {
 					] }
 					onChange={ onChangeType }
 				/>
-				<SelectControl
+				{/* <SelectControl
 					label={ __(
 						'Image / Icon',
 						'ultimate-addons-for-gutenberg'
@@ -240,6 +241,43 @@ const Settings = ( props ) => {
 					onChange={ ( value ) =>
 						setAttributes( { image_icon: value } )
 					}
+				/> */}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Image / Icon",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: image_icon,
+						label: "image_icon",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
+						{
+							value: "icon",
+							label: __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"Icon",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "image",
+							label: __(
+								'Image',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"Image",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					showIcons={false}
 				/>
 				{ 'icon' == image_icon && (
 					<>
