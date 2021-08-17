@@ -2,6 +2,13 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
+import Border from "../../components/border";
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import Range from "../../components/range/Range.js";
 
 import { __ } from '@wordpress/i18n';
 
@@ -60,6 +67,7 @@ const Settings = ( props ) => {
 		separatorSpace,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts,
+		separatorHoverColor
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -108,15 +116,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const headingPanel = () => {
+	const generalPanel = () => {
 		return (
-			<PanelBody
-				title={ __(
-					'Advanced Heading',
-					'ultimate-addons-for-gutenberg'
-				) }
-			>
-				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
+			<PanelBody>
 				<SelectControl
 					label={ __(
 						'Heading Tag',
@@ -153,6 +155,19 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+			</PanelBody>
+		);
+	};
+
+	const headingPanel = () => {
+		return (
+			<PanelBody
+				title={ __(
+					'Heading',
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<Suspense fallback={ lazyLoader() }>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -206,26 +221,44 @@ const Settings = ( props ) => {
 						label: 'headLineHeightTablet',
 					} }
 				/>
-				<p className="uagb-setting-label">
-					{ __( 'Heading Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: headingColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ headingColor }
-					onChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
+				</Suspense>
+				<AdvancedPopColorControl
+					label={__(
+						"Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={headingColor ? headingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ headingColor: value })
 					}
-					allowReset
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __( 'Sub-Heading', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
+				<Range
+					label={__(
+						"Heading Bottom Spacing (px)",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={headSpace}
+					onChange={(value) =>
+						setAttributes({ headSpace: value })
+					}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+			</PanelBody>
+		);
+	};
+
+	const subheadingPanel = () => {
+		return (
+			<PanelBody
+				title={ __(
+					'Description',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ false }
+			>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
@@ -284,24 +317,15 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
-				<p className="uagb-setting-label">
-					{ __(
-						'Sub Heading Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: subHeadingColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ subHeadingColor }
-					onChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
+				<AdvancedPopColorControl
+					label={__(
+						"Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={subHeadingColor ? subHeadingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ subHeadingColor: value })
 					}
-					allowReset
 				/>
 			</PanelBody>
 		);
@@ -313,198 +337,85 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: seperatorStyle,
+						label: "seperatorStyle",
+						title: __(
+							"Border Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: separatorWidth,
+						label: "separatorWidth",
+						title: __(
+							"Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: separatorHeight,
+						label: "separatorHeight",
+						title: __(
+							"Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: separatorColor,
+						label: "separatorColor",
+						title: __(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: separatorHoverColor,
+						label: "separatorHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 				/>
 				{ seperatorStyle !== 'none' && (
-					<>
-						<RangeControl
-							label={ __(
-								'Thickness (px)',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ separatorHeight }
-							onChange={ ( value ) =>
-								setAttributes( { separatorHeight: value } )
-							}
-							min={ 0 }
-							max={ 20 }
-							beforeIcon=""
-							allowReset
-							initialPosition={ 3 }
-						/>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __(
-								'Size Type',
-								'ultimate-addons-for-gutenberg'
-							) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ separatorWidthType === 'px' }
-								aria-pressed={ separatorWidthType === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										separatorWidthType: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ separatorWidthType === '%' }
-								aria-pressed={ separatorWidthType === '%' }
-								onClick={ () =>
-									setAttributes( { separatorWidthType: '%' } )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<RangeControl
-							label={ __(
-								'Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ separatorWidth }
-							onChange={ ( value ) =>
-								setAttributes( { separatorWidth: value } )
-							}
-							min={ 0 }
-							max={ '%' === separatorWidthType ? 100 : 500 }
-							beforeIcon=""
-							allowReset
-							initialPosition={ 20 }
-						/>
-						{ seperatorStyle !== 'none' && (
-							<>
-								<p className="uagb-setting-label">
-									{ __(
-										'Separator Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									<span className="components-base-control__label">
-										<span
-											className="component-color-indicator"
-											style={ {
-												backgroundColor: separatorColor,
-											} }
-										></span>
-									</span>
-								</p>
-								<ColorPalette
-									value={ separatorColor }
-									onChange={ ( colorValue ) =>
-										setAttributes( {
-											separatorColor: colorValue,
-										} )
-									}
-									allowReset
-								/>
-							</>
-						) }
-					</>
-				) }
-			</PanelBody>
-		);
-	};
-
-	const spacingSettings = () => {
-		return (
-			<PanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<RangeControl
-					label={ __(
-						'Heading Bottom Spacing (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
-					}
-					min={ 0 }
-					max={ 500 }
-					beforeIcon=""
-					allowReset
-					initialPosition={ 0 }
-				/>
-				{ seperatorStyle !== 'none' && (
-					<RangeControl
-						label={ __(
-							'Separator Bottom Spacing (px)',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ separatorSpace }
-						onChange={ ( value ) =>
-							setAttributes( { separatorSpace: value } )
+					<Range
+						label={__(
+							"Separator Bottom Spacing (px)",
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={separatorSpace}
+						onChange={(value) =>
+							setAttributes({ separatorSpace: value })
 						}
-						min={ 0 }
-						max={ 500 }
-						beforeIcon=""
-						allowReset
-						initialPosition={ 0 }
+						min={0}
+						max={500}
+						displayUnit={false}
 					/>
 				) }
 			</PanelBody>
 		);
 	};
+	
 
 	return (
 		<div>
 			{ blockControlSettings() }
 			<InspectorControls>
-				{ headingPanel() }
-				{ seperatorSettings() }
-				{ spacingSettings() }
+				<InspectorTabs>
+					<InspectorTab {...UAGTabs.general}>
+					{ generalPanel() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.style}>
+					{ headingPanel()}
+					{ subheadingPanel()}
+					{ seperatorSettings() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>
 				{ loadHeadingGoogleFonts }
