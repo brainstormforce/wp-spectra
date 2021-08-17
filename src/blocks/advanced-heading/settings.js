@@ -16,15 +16,11 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	ColorPalette,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	ButtonGroup,
-	Button,
 } from '@wordpress/components';
 
 // Extend component
