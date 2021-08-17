@@ -169,218 +169,228 @@ const Background = (props) => {
 					</BaseControl>
 					{backgroundImage.value && (
 						<>
-							<SelectControl
-								label={__(
-									"Image Position",
-									"ultimate-addons-for-gutenberg"
-								)}
-								value={backgroundPosition.value}
-								onChange={(value) =>
-									setAttributes({
-										[backgroundPosition.label]: value,
-									})
-								}
-								options={[
-									{
-										value: "top-left",
-										label: __(
-											"Top Left",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "top-center",
-										label: __(
-											"Top Center",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "top-right",
-										label: __(
-											"Top Right",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "center-left",
-										label: __(
-											"Center Left",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "center-center",
-										label: __(
-											"Center Center",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "center-right",
-										label: __(
-											"Center Right",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "bottom-left",
-										label: __(
-											"Bottom Left",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "bottom-center",
-										label: __(
-											"Bottom Center",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "bottom-right",
-										label: __(
-											"Bottom Right",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-								]}
-							/>
-							<SelectControl
-								label={__(
-									"Attachment",
-									"ultimate-addons-for-gutenberg"
-								)}
-								value={backgroundAttachment.value}
-								onChange={(value) =>
-									setAttributes({
-										[backgroundAttachment.label]: value,
-									})
-								}
-								options={[
-									{
-										value: "fixed",
-										label: __(
-											"Fixed",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "scroll",
-										label: __(
-											"Scroll",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-								]}
-							/>
-							<SelectControl
-								label={__(
-									"Repeat",
-									"ultimate-addons-for-gutenberg"
-								)}
-								value={backgroundRepeat.value}
-								onChange={(value) =>
-									setAttributes({
-										[backgroundRepeat.label]: value,
-									})
-								}
-								options={[
-									{
-										value: "no-repeat",
-										label: __(
-											"No Repeat",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "repeat",
-										label: __(
-											"Repeat",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "repeat-x",
-										label: __(
-											"Repeat-x",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "repeat-y",
-										label: __(
-											"Repeat-y",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-								]}
-							/>
-							<SelectControl
-								label={__(
-									"Size",
-									"ultimate-addons-for-gutenberg"
-								)}
-								value={backgroundSize.value}
-								onChange={(value) =>
-									setAttributes({
-										[backgroundSize.label]: value,
-									})
-								}
-								options={[
-									{
-										value: "auto",
-										label: __(
-											"Auto",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "cover",
-										label: __(
-											"Cover",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "contain",
-										label: __(
-											"Contain",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-								]}
-							/>
-							<SelectControl
-								label={__(
-									"Overlay Type",
-									"ultimate-addons-for-gutenberg"
-								)}
-								value={overlayType.value}
-								onChange={(value) =>
-									setAttributes({
-										[overlayType.label]: value,
-									})
-								}
-								options={[
-									{
-										value: "color",
-										label: __(
-											"Color",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
-										value: "gradient",
-										label: __(
-											"Gradient",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-								]}
-							/>
+							<div className="uag-background-image-position">
+								<SelectControl
+									label={__(
+										"Image Position",
+										"ultimate-addons-for-gutenberg"
+									)}
+									value={backgroundPosition.value}
+									onChange={(value) =>
+										setAttributes({
+											[backgroundPosition.label]: value,
+										})
+									}
+									options={[
+										{
+											value: "top-left",
+											label: __(
+												"Top Left",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "top-center",
+											label: __(
+												"Top Center",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "top-right",
+											label: __(
+												"Top Right",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "center-left",
+											label: __(
+												"Center Left",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "center-center",
+											label: __(
+												"Center Center",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "center-right",
+											label: __(
+												"Center Right",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "bottom-left",
+											label: __(
+												"Bottom Left",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "bottom-center",
+											label: __(
+												"Bottom Center",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "bottom-right",
+											label: __(
+												"Bottom Right",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+									]}
+								/>
+							</div>
+							<div className="uag-background-image-attachment">
+								<SelectControl
+									label={__(
+										"Attachment",
+										"ultimate-addons-for-gutenberg"
+									)}
+									value={backgroundAttachment.value}
+									onChange={(value) =>
+										setAttributes({
+											[backgroundAttachment.label]: value,
+										})
+									}
+									options={[
+										{
+											value: "fixed",
+											label: __(
+												"Fixed",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "scroll",
+											label: __(
+												"Scroll",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+									]}
+								/>
+							</div>
+							<div className="uag-background-image-repeat">
+								<SelectControl
+									label={__(
+										"Repeat",
+										"ultimate-addons-for-gutenberg"
+									)}
+									value={backgroundRepeat.value}
+									onChange={(value) =>
+										setAttributes({
+											[backgroundRepeat.label]: value,
+										})
+									}
+									options={[
+										{
+											value: "no-repeat",
+											label: __(
+												"No Repeat",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "repeat",
+											label: __(
+												"Repeat",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "repeat-x",
+											label: __(
+												"Repeat-x",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "repeat-y",
+											label: __(
+												"Repeat-y",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+									]}
+								/>
+							</div>
+							<div className="uag-background-image-size">
+								<SelectControl
+									label={__(
+										"Size",
+										"ultimate-addons-for-gutenberg"
+									)}
+									value={backgroundSize.value}
+									onChange={(value) =>
+										setAttributes({
+											[backgroundSize.label]: value,
+										})
+									}
+									options={[
+										{
+											value: "auto",
+											label: __(
+												"Auto",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "cover",
+											label: __(
+												"Cover",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "contain",
+											label: __(
+												"Contain",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+									]}
+								/>
+							</div>
+							<div className="uag-background-image-overlay-type">
+								<SelectControl
+									label={__(
+										"Overlay Type",
+										"ultimate-addons-for-gutenberg"
+									)}
+									value={overlayType.value}
+									onChange={(value) =>
+										setAttributes({
+											[overlayType.label]: value,
+										})
+									}
+									options={[
+										{
+											value: "color",
+											label: __(
+												"Color",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+										{
+											value: "gradient",
+											label: __(
+												"Gradient",
+												"ultimate-addons-for-gutenberg"
+											),
+										},
+									]}
+								/>
+							</div>
 							{"color" == overlayType.value && (
-								<>
+								<div className="uag-background-image-overlay-color">
 									<AdvancedPopColorControl
 										label={__(
 											"Image Overlay Color",
@@ -393,17 +403,17 @@ const Background = (props) => {
 											})
 										}
 									/>
-								</>
+								</div>
 							)}
 							{"gradient" == overlayType.value && (
-								<>
+								<div className="uag-background-image-overlay-gradient">
 									<GradientSettings
 										backgroundGradient={
 											props.backgroundGradient
 										}
 										setAttributes={setAttributes}
 									/>
-								</>
+								</div>
 							)}
 						</>
 					)}
@@ -421,18 +431,18 @@ const Background = (props) => {
 				("image" == backgroundType.value && backgroundImage.value) ||
 				"gradient" == backgroundType.value) && (
 				<div className="uag-background-opacity">
-						<Range
-							label={__("Opacity", "ultimate-addons-for-gutenberg")}
-							value={backgroundOpacity.value}
-							onChange={(val) =>
-								setAttributes({
-									[backgroundOpacity.label]: parseInt(val),
-								})
-							}
-							min={0}
-							max={100}
-							displayUnit={false}
-						/>
+					<Range
+						label={__("Opacity", "ultimate-addons-for-gutenberg")}
+						value={backgroundOpacity.value}
+						onChange={(val) =>
+							setAttributes({
+								[backgroundOpacity.label]: parseInt(val),
+							})
+						}
+						min={0}
+						max={100}
+						displayUnit={false}
+					/>
 				</div>
 			)}
 			{"video" === backgroundType.value && backgroundVideoType.value && (
@@ -456,11 +466,11 @@ const Background = (props) => {
 											? __(
 													"Select video",
 													"ultimate-addons-for-gutenberg"
-											)
+											  )
 											: __(
 													"Replace video",
 													"ultimate-addons-for-gutenberg"
-											)}
+											  )}
 									</Button>
 								)}
 							/>
@@ -504,11 +514,16 @@ const Background = (props) => {
 				backgroundVideoType.value && (
 					<div className="uag-background-video-opacity">
 						<Range
-							label={__("Opacity", "ultimate-addons-for-gutenberg")}
+							label={__(
+								"Opacity",
+								"ultimate-addons-for-gutenberg"
+							)}
 							value={backgroundVideoOpacity.value}
 							onChange={(val) =>
 								setAttributes({
-									[backgroundVideoOpacity.label]: parseInt(val),
+									[backgroundVideoOpacity.label]: parseInt(
+										val
+									),
 								})
 							}
 							min={0}
