@@ -572,6 +572,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.components-panel__body.is-opened
 	.components-select-control__input {
 	font-size: 12px;
+	line-height: normal;
 }
 .uag-responsive-common-button {
 	box-shadow: none;
@@ -684,3 +685,4 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	border: none;
 	border-bottom: 1px solid #e0e0e0;
 }
+ 

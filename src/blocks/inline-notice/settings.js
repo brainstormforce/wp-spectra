@@ -1,6 +1,5 @@
 import UAGIconPicker from "../../components/icon-picker";
 import React from "react";
-import renderSVG from "@Controls/renderIcon";
 import TypographyControl from "@Components/typography";
 import WebfontLoader from "@Components/typography/fontloader";
 import { __ } from "@wordpress/i18n";
@@ -153,11 +152,11 @@ const Settings = (props) => {
 	const noticeDismissOptions = [
 		{
 			value: "",
-			label: __("Display Always", "ultimate-addons-for-gutenberg"),
+			label: __("Always Show", "ultimate-addons-for-gutenberg"),
 		},
 		{
 			value: "uagb-dismissable",
-			label: __("Allow to Dismiss", "ultimate-addons-for-gutenberg"),
+			label: __("Dismissible", "ultimate-addons-for-gutenberg"),
 		},
 	];
 
@@ -174,12 +173,20 @@ const Settings = (props) => {
 					className="uagb-multi-button-alignment-control"
 					options={[
 						{
-							value: "simmple",
-							label: "Default",
+							value: "simple",
+							label: "Classic",
+							tooltip: __(
+								"Classic",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "modern",
 							label: "Modern",
+							tooltip: __(
+								"Modern",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 					]}
 					showIcons={false}
