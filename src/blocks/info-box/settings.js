@@ -464,10 +464,8 @@ const Settings = (props) => {
 					)}
 				{source_type == "icon" && (
 					<>
-						<p className="components-base-control__label">
-							{__("Icon", "ultimate-addons-for-gutenberg")}
-						</p>
 						<UAGIconPicker
+							label={__("Icon", "ultimate-addons-for-gutenberg")}
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
 						/>
@@ -736,10 +734,8 @@ const Settings = (props) => {
 				)}
 				{ctaType !== "all" && ctaType !== "none" && (
 					<>
-						<p>
-							{__("Button Icon", "ultimate-addons-for-gutenberg")}
-						</p>
 						<UAGIconPicker
+							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
 							value={ctaIcon}
 							onChange={(value) =>
 								setAttributes({ ctaIcon: value })

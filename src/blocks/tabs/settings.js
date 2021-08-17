@@ -521,10 +521,8 @@ const Settings = (props) => {
 				/>
 				{showIcon && (
 					<>
-						<h2 className="components-base-control__label">
-							{__("Icon", "ultimate-addons-for-gutenberg")}
-						</h2>
 						<UAGIconPicker
+							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
 						/>

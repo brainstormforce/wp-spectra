@@ -15,8 +15,11 @@ const UAGIconPicker = (props) => {
 
 	return (
 		<div className="components-base-control uag-icon-picker">
+			<label className="components-base-control__label uag-icon-picker__label">
+				{  props?.label || __("Icon", "ultimate-addons-for-gutenberg") }
+			</label>
 			<FontIconPicker
-				icons={props.icons || wp.UAGBSvgIcons}
+				icons={props?.icons || wp.UAGBSvgIcons}
 				renderFunc={renderSVG}
 				theme="default"
 				value={props.value}
