@@ -5,12 +5,14 @@ import { __ } from '@wordpress/i18n';
 import {
 	InspectorControls,
 	MediaUpload,
-	ColorPalette,
 } from '@wordpress/block-editor';
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 import {
 	PanelBody,
-	SelectControl,
 	Button,
 	TextControl,
 	ToggleControl,
@@ -38,398 +40,163 @@ const Settings = ( props ) => {
 		target,
 		disableLink,
 	} = attributes;
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	const onRemoveImage = () => {
-		setAttributes( { image: null } );
-	};
 
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectImage = ( media ) => {
-		if ( ! media || ! media.url ) {
-			setAttributes( { image: null } );
-			return;
-		}
-
-		if ( ! media.type || 'image' != media.type ) {
-			return;
-		}
-
-		setAttributes( { image: media } );
-	};
-
-	const iconColorControls = () => {
-		let colorControl = '';
-		let colorControlHover = '';
-
-		if ( 'image' == image_icon ) {
-			colorControl = (
-				<>
-					{ ! hideLabel && (
-						<>
-							<p className="uagb-setting-label">
-								{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ { backgroundColor: label_color } }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ label_color }
-								onChange={ ( value ) =>
-									setAttributes( { label_color: value } )
-								}
-								allowReset
-							/>
-						</>
-					)}
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_bg_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Border Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_border_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_border_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_border_color: value } )
-						}
-						allowReset
-					/>
-				</>
-			);
-			colorControlHover = (
-				<>
-					{ ! hideLabel && (
-						<>
-							<p className="uagb-setting-label">
-								{ __(
-									'Text Hover Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ { backgroundColor: label_hover_color } }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ label_hover_color }
-								onChange={ ( value ) =>
-									setAttributes( { label_hover_color: value } )
-								}
-								allowReset
-							/>
-						</>
-					)}
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Background Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_bg_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Image Border Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_border_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_border_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_border_hover_color: value } )
-						}
-						allowReset
-					/>
-				</>
-			);
-		} else {
-			colorControl = (
-				<>
-					{ ! hideLabel && (
-						<>
-							<p className="uagb-setting-label">
-								{ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ { backgroundColor: label_color } }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ label_color }
-								onChange={ ( value ) =>
-									setAttributes( { label_color: value } )
-								}
-								allowReset
-							/>
-						</>
-					)}
-					<p className="uagb-setting-label">
-						{ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Background Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_bg_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Border Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_border_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_border_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_border_color: value } )
-						}
-						allowReset
-					/>
-				</>
-			);
-			colorControlHover = (
-				<>
-					{ ! hideLabel && (
-						<>
-							<p className="uagb-setting-label">
-								{ __(
-									'Text Hover Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ { backgroundColor: label_hover_color } }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ label_hover_color }
-								onChange={ ( value ) =>
-									setAttributes( { label_hover_color: value } )
-								}
-								allowReset
-							/>
-						</>
-					)}
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ { backgroundColor: icon_hover_color } }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_hover_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Background Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_bg_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_bg_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
-						allowReset
-					/>
-					<p className="uagb-setting-label">
-						{ __(
-							'Icon Border Hover Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={ {
-									backgroundColor: icon_border_hover_color,
-								} }
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={ icon_border_hover_color }
-						onChange={ ( value ) =>
-							setAttributes( { icon_border_hover_color: value } )
-						}
-						allowReset
-					/>
-				</>
-			);
-		}
-
+	const textColorControls = () => {
 		return (
-			<TabPanel
-				className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-				activeClass="active-tab"
-				tabs={ [
-					{
-						name: 'normal',
-						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-						className: 'uagb-normal-tab',
-					},
-					{
-						name: 'hover',
-						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-						className: 'uagb-hover-tab',
-					},
-				] }
-			>
-				{ ( tabName ) => {
-					let color_tab;
-					if ( 'normal' === tabName.name ) {
-						color_tab = colorControl;
-					} else {
-						color_tab = colorControlHover;
-					}
-					return <div>{ color_tab }</div>;
-				} }
-			</TabPanel>
-		);
-	};
-	const inspectorControls = () => {
-		return (
-			<InspectorControls>
 				<PanelBody
-					title={ __(
-						'Icon Settings',
-						'ultimate-addons-for-gutenberg'
-					) }
+					title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 				>
-					<SelectControl
-						label={ __(
-							'Image / Icon',
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={label_color ? label_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ label_color: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={label_hover_color ? label_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ label_hover_color: value })
+						}
+					/>
+				</PanelBody>
+		);
+	};
+
+	const iconStyleControls = () => {
+		return (
+				<PanelBody
+				    title={ __( 'Colors', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					{ 'icon' == image_icon && (
+						<p className="components-base-control__label">
+							{ __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</p>
+					)}
+					{ 'icon' == image_icon && (
+						<AdvancedPopColorControl
+							label={__(
+								'Color',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={icon_color ? icon_color : ""}
+							onColorChange={(value) =>
+								setAttributes({ icon_color: value })
+							}
+						/>
+					)}
+					{ 'icon' == image_icon && (
+						<AdvancedPopColorControl
+							label={__(
+								'Hover',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={icon_hover_color ? icon_hover_color : ""}
+							onColorChange={(value) =>
+								setAttributes({ icon_hover_color: value })
+							}
+						/>
+					)}
+					<p className="components-base-control__label">
+						{ __(
+							'Background',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ image_icon }
-						options={ [
-							{
-								value: 'icon',
-								label: __(
-									'Icon',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'image',
-								label: __(
-									'Image',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						onChange={ ( value ) =>
-							setAttributes( { image_icon: value } )
+					</p>
+					<AdvancedPopColorControl
+						label={__(
+							'Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_bg_color ? icon_bg_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_color: value })
 						}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_bg_hover_color: value })
+						}
+					/>
+					<p className="components-base-control__label">
+						{ __(
+							'Border',
+							'ultimate-addons-for-gutenberg'
+						) }
+					</p>
+					<AdvancedPopColorControl
+						label={__(
+							'Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_border_color ? icon_border_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_border_color: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_border_hover_color ? icon_border_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_border_hover_color: value })
+						}
+					/>
+				</PanelBody>
+		);
+	};
+
+	const iconControls = () => {
+		return (
+				<PanelBody
+					initialOpen={ true }
+				>
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__("Type", "ultimate-addons-for-gutenberg")}
+						data={{
+							value: image_icon,
+							label: "image_icon",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+							{
+								value: "icon",
+								label: ("Icon"),
+								tooltip: __(
+									"Icon",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								value: "image",
+								label: ("Image"),
+								tooltip: __(
+									"Image",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						showIcons={false}
 					/>
 					{ 'icon' == image_icon && (
 						<>
@@ -457,38 +224,49 @@ const Settings = ( props ) => {
 					) }
 					{ 'image' == image_icon && (
 						<>
+							<div className="uagb-bg-image">
 							<MediaUpload
-								title={ __(
-									'Select Image',
-									'ultimate-addons-for-gutenberg'
-								) }
-								onSelect={ onSelectImage }
-								allowedTypes={ [ 'image' ] }
-								value={ image }
+								title={__(
+									"Select Image",
+									"ultimate-addons-for-gutenberg"
+								)}
+								onSelect={ ( value ) =>
+									setAttributes( { image: value } )
+								}
+								allowedTypes={["image"]}
+								value={image}
 								render={ ( { open } ) => (
 									<Button isSecondary onClick={ open }>
 										{ ! image
-											? __( 'Select Image' )
-											: __( 'Replace image' ) }
+											? __(
+													'Select Image',
+													'ultimate-addons-for-gutenberg'
+											)
+											: __(
+													'Replace image',
+													'ultimate-addons-for-gutenberg'
+											) }
 									</Button>
 								) }
 							/>
 							{ image && (
-								<Button
-									className="uagb-rm-btn"
-									onClick={ onRemoveImage }
-									isLink
-									isDestructive
-								>
-									{ __(
-										'Remove Image',
-										'ultimate-addons-for-gutenberg'
-									) }
-								</Button>
-							) }
+									<Button
+										className="uagb-rm-btn"
+										onClick={ () =>
+											setAttributes( { image: null } )
+										}
+										isLink
+										isDestructive
+									>
+										{ __(
+											'Remove Image',
+											'ultimate-addons-for-gutenberg'
+										) }
+									</Button>
+								) }
+							</div>
 						</>
 					) }
-					<hr className="uagb-editor__separator" />
 					<h2>
 						{ __(
 							'List Item Link',
@@ -532,18 +310,23 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<hr className="uagb-editor__separator" />
-					<h2>
-						{ __(
-							'Icon Color Settings',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</h2>
-					{ iconColorControls() }
 				</PanelBody>
-			</InspectorControls>
 		);
 	};
-	return inspectorControls();
+
+	return (
+		<InspectorControls>
+		<InspectorTabs>
+			<InspectorTab {...UAGTabs.general}>
+			{ iconControls() }
+			</InspectorTab>
+			<InspectorTab {...UAGTabs.style}>
+			{ ! hideLabel && ( textColorControls()) }
+			{  iconStyleControls() }
+			</InspectorTab>
+			<InspectorTab {...UAGTabs.advance}></InspectorTab>
+		</InspectorTabs>
+		</InspectorControls>
+	)
 };
 export default React.memo( Settings );
