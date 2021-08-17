@@ -3,8 +3,7 @@
  */
 
 // Import classes
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import renderSVG from '@Controls/renderIcon';
+import UAGIconPicker from "../../components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import {
@@ -16,6 +15,7 @@ import {
 	SelectControl,
 	Button,
 	TabPanel,
+	BaseControl,
 } from '@wordpress/components';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
@@ -216,32 +216,6 @@ const Settings = ( props ) => {
 					] }
 					onChange={ onChangeType }
 				/>
-				{/* <SelectControl
-					label={ __(
-						'Image / Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ image_icon }
-					options={ [
-						{
-							value: 'icon',
-							label: __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'image',
-							label: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					onChange={ ( value ) =>
-						setAttributes( { image_icon: value } )
-					}
-				/> */}
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
@@ -281,68 +255,62 @@ const Settings = ( props ) => {
 				/>
 				{ 'icon' == image_icon && (
 					<>
-						<p className="components-base-control__label">
-							{ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<FontIconPicker
-							icons={ wp.UAGBSvgIcons }
-							renderFunc={ renderSVG }
-							theme="default"
-							value={ icon }
-							onChange={ ( value ) =>
-								setAttributes( { icon: value } )
-							}
-							isMulti={ false }
-							noSelectedPlaceholder={ __(
-								'Select Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
+						<UAGIconPicker
+							label={__("Icon", "ultimate-addons-for-gutenberg")}
+							value={icon}
+							onChange={(value) => setAttributes({ icon: value })}
 						/>
 					</>
 				) }
 				{ 'image' == image_icon && (
 					<>
-					<div className="uagb-bg-image">
-					<MediaUpload
-						title={__(
-							"Select Background Image",
-							"ultimate-addons-for-gutenberg"
-						)}
-						onSelect={ ( value ) =>
-							setAttributes( { image: value } )
-						}
-						allowedTypes={["image"]}
-						value={image}
-						render={ ( { open } ) => (
-							<Button isSecondary onClick={ open }>
-								{ ! image
-									? __(
-											'Select Image',
-											'ultimate-addons-for-gutenberg'
-									  )
-									: __(
-											'Replace image',
-											'ultimate-addons-for-gutenberg'
-									  ) }
-							</Button>
-						) }
-					/>
-					{ image && (
-							<Button
-								className="uagb-rm-btn"
-								onClick={ () =>
-									setAttributes( { image: null } )
+					<BaseControl
+						className="editor-bg-image-control"
+						label={__("Image", "ultimate-addons-for-gutenberg")}
+						id={__("Image", "ultimate-addons-for-gutenberg")}
+					>
+						<div className="uagb-bg-image">
+							<MediaUpload
+								title={__(
+									"Select Image",
+									"ultimate-addons-for-gutenberg"
+								)}
+								onSelect={ ( value ) =>
+									setAttributes( { image: value } )
 								}
-								isLink
-								isDestructive
-							>
-								{ __(
-									'Remove Image',
-									'ultimate-addons-for-gutenberg'
+								allowedTypes={["image"]}
+								value={image}
+								render={ ( { open } ) => (
+									<Button isSecondary onClick={ open }>
+										{ ! image
+											? __(
+													'Select Image',
+													'ultimate-addons-for-gutenberg'
+											)
+											: __(
+													'Replace image',
+													'ultimate-addons-for-gutenberg'
+											) }
+									</Button>
 								) }
-							</Button>
-						) }
-					</div>
+							/>
+						</div>
+					</BaseControl>
+					{ image && (
+						<Button
+							className="uagb-rm-btn"
+							onClick={ () =>
+								setAttributes( { image: null } )
+							}
+							isLink
+							isDestructive
+						>
+							{ __(
+								'Remove Image',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</Button>
+					) }
 					</>
 				) }
 			</PanelBody>

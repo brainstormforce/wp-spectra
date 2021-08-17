@@ -106,14 +106,11 @@ const Background = (props) => {
 					setAttributes({ [backgroundType.label]: value })
 				}
 				options={bgOptions}
-				label={__("Background Type", "ultimate-addons-for-gutenberg")}
+				label={__("Type", "ultimate-addons-for-gutenberg")}
 			/>
 			{"color" === backgroundType.value && (
 				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={
 						backgroundColor.value ? backgroundColor.value : ""
 					}
@@ -126,15 +123,12 @@ const Background = (props) => {
 				<>
 					<BaseControl
 						className="editor-bg-image-control"
-						label={__(
-							"Background Image",
-							"ultimate-addons-for-gutenberg"
-						)}
+						label={__("Image", "ultimate-addons-for-gutenberg")}
 					>
 						<div className="uagb-bg-image">
 							<MediaUpload
 								title={__(
-									"Select Background Image",
+									"Select Image",
 									"ultimate-addons-for-gutenberg"
 								)}
 								onSelect={onSelectImage}
@@ -144,11 +138,11 @@ const Background = (props) => {
 									<Button isSecondary onClick={open}>
 										{!backgroundImage.value
 											? __(
-													"Select Background Image",
+													"Select Image",
 													"ultimate-addons-for-gutenberg"
 											  )
 											: __(
-													"Replace image",
+													"Replace Image",
 													"ultimate-addons-for-gutenberg"
 											  )}
 									</Button>
@@ -438,15 +432,12 @@ const Background = (props) => {
 			{"video" === backgroundType.value && backgroundVideoType.value && (
 				<BaseControl
 					className="editor-bg-image-control"
-					label={__(
-						"Background Video",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Video", "ultimate-addons-for-gutenberg")}
 				>
 					<div className="uagb-bg-image">
 						<MediaUpload
 							title={__(
-								"Select Background Video",
+								"Select Video",
 								"ultimate-addons-for-gutenberg"
 							)}
 							onSelect={onSelectVideo}
@@ -456,7 +447,7 @@ const Background = (props) => {
 								<Button isSecondary onClick={open}>
 									{!backgroundVideo.value
 										? __(
-												"Select Background video",
+												"Select video",
 												"ultimate-addons-for-gutenberg"
 										  )
 										: __(
@@ -519,7 +510,11 @@ const Background = (props) => {
 		</>
 	);
 
-	return advancedControls;
+	return (
+		<div className="uag-bg-select-control components-base-control">
+			{advancedControls}
+		</div>
+	);
 };
 
 export default Background;

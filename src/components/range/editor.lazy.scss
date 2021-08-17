@@ -9,8 +9,11 @@
 		justify-content: flex-start;
 		margin-right: 20px;
 		position: relative;
-		width: 120%;
+		width: 100%;
 		margin-bottom: 0;
+		.components-range-control__tooltip {
+			left: 45%;
+		}
 	}
 	.components-input-control__container {
 		flex: 0 0 0%;
@@ -28,7 +31,7 @@
 .components-panel__body .uagb-control__header {
 	justify-content: space-between;
 	margin-bottom: 5px;
-	margin-right: 3px;
+	margin-right: 0px;
 	display: flex;
 	.uagb-range-control__inputs {
 		display: flex;
@@ -42,6 +45,7 @@
 		display: flex;
 		.uagb-reset {
 			padding: 0;
+			margin-right: 4px;
 		}
 		.uagb-range-control__units {
 			display: flex;
@@ -53,10 +57,9 @@
 				text-align: center;
 				text-shadow: none;
 				text-transform: uppercase;
-				width: 20px;
+				width: 100%;
 				cursor: pointer;
-				padding: 0 2px;
-				text-transform: uppercase;
+				padding-right: 4px;
 				font-size: 9px;
 				&.is-secondary.is-small {
 					box-shadow: unset;
@@ -78,6 +81,9 @@
 					background-color: unset;
 					color: #007cba;
 				}
+			}
+			.components-button:last-child {
+				padding: 0;
 			}
 		}
 		.components-button.is-secondary:hover:not(:disabled) {
