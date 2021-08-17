@@ -1,5 +1,4 @@
-import renderSVG from '@Controls/renderIcon';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+import UAGIconPicker from "../../components/icon-picker";
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import {
@@ -16,7 +15,6 @@ import {
 	Button,
 	TextControl,
 	ToggleControl,
-	TabPanel,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -74,47 +72,38 @@ const Settings = ( props ) => {
 	const iconStyleControls = () => {
 		return (
 				<PanelBody
-				    title={ __( 'Colors', 'ultimate-addons-for-gutenberg' ) }
+				    title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					{ 'icon' == image_icon && (
-						<p className="components-base-control__label">
-							{ __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-					)}
-					{ 'icon' == image_icon && (
-						<AdvancedPopColorControl
-							label={__(
-								'Color',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={icon_color ? icon_color : ""}
-							onColorChange={(value) =>
-								setAttributes({ icon_color: value })
-							}
-						/>
-					)}
-					{ 'icon' == image_icon && (
-						<AdvancedPopColorControl
-							label={__(
-								'Hover',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={icon_hover_color ? icon_hover_color : ""}
-							onColorChange={(value) =>
-								setAttributes({ icon_hover_color: value })
-							}
-						/>
-					)}
-					<p className="components-base-control__label">
-						{ __(
-							'Background',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</p>
+					<AdvancedPopColorControl
+						label={__(
+							'Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_color ? icon_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_color: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							'Hover',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={icon_hover_color ? icon_hover_color : ""}
+						onColorChange={(value) =>
+							setAttributes({ icon_hover_color: value })
+						}
+					/>
+				</PanelBody>
+		);
+	};
+	const bgStyleControls = () => {
+		return (
+				<PanelBody
+				    title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
 					<AdvancedPopColorControl
 						label={__(
 							'Color',
@@ -135,12 +124,15 @@ const Settings = ( props ) => {
 							setAttributes({ icon_bg_hover_color: value })
 						}
 					/>
-					<p className="components-base-control__label">
-						{ __(
-							'Border',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</p>
+					</PanelBody>
+		);
+	};
+	const borderStyleControls = () => {
+		return (
+				<PanelBody
+				    title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
 					<AdvancedPopColorControl
 						label={__(
 							'Color',
@@ -200,25 +192,10 @@ const Settings = ( props ) => {
 					/>
 					{ 'icon' == image_icon && (
 						<>
-							<p className="components-base-control__label">
-								{ __(
-									'Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</p>
-							<FontIconPicker
-								icons={ wp.UAGBSvgIcons }
-								renderFunc={ renderSVG }
-								theme="default"
-								value={ icon }
-								onChange={ ( value ) =>
-									setAttributes( { icon: value } )
-								}
-								isMulti={ false }
-								noSelectedPlaceholder={ __(
-									'Select Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
+							<UAGIconPicker
+								label={__("Icon", "ultimate-addons-for-gutenberg")}
+								value={icon}
+								onChange={(value) => setAttributes({ icon: value })}
 							/>
 						</>
 					) }
@@ -249,22 +226,22 @@ const Settings = ( props ) => {
 									</Button>
 								) }
 							/>
-							{ image && (
-									<Button
-										className="uagb-rm-btn"
-										onClick={ () =>
-											setAttributes( { image: null } )
-										}
-										isLink
-										isDestructive
-									>
-										{ __(
-											'Remove Image',
-											'ultimate-addons-for-gutenberg'
-										) }
-									</Button>
-								) }
 							</div>
+							{ image && (
+								<Button
+									className="uagb-rm-btn"
+									onClick={ () =>
+										setAttributes( { image: null } )
+									}
+									isLink
+									isDestructive
+								>
+									{ __(
+										'Remove Image',
+										'ultimate-addons-for-gutenberg'
+									) }
+								</Button>
+							) }
 						</>
 					) }
 					<h2>
@@ -322,7 +299,9 @@ const Settings = ( props ) => {
 			</InspectorTab>
 			<InspectorTab {...UAGTabs.style}>
 			{ ! hideLabel && ( textColorControls()) }
-			{  iconStyleControls() }
+			{ 'icon' == image_icon && '' !== icon && ( iconStyleControls() ) }
+			{ bgStyleControls() }
+			{ borderStyleControls() }
 			</InspectorTab>
 			<InspectorTab {...UAGTabs.advance}></InspectorTab>
 		</InspectorTabs>

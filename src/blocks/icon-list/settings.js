@@ -132,18 +132,27 @@ const Settings = ( props ) => {
 						/>
 					</>
 					)}
-					<SelectControl
-						label={ __(
-							'Layout',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ icon_layout }
-						options={ [
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							"Layout",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: icon_layout,
+							label: "icon_layout",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'horizontal',
 								label: __(
 									'Horizontal',
 									'ultimate-addons-for-gutenberg'
+								),
+								tooltip: __(
+									"Horizontal",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
@@ -152,23 +161,48 @@ const Settings = ( props ) => {
 									'Vertical',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Vertical",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
-						] }
-						onChange={ ( value ) =>
-							setAttributes( { icon_layout: value } )
-						}
+						]}
+						showIcons={false}
 					/>
 					{ 'horizontal' == icon_layout && (
 						<>
-							<SelectControl
-								label={ __( 'Stack On' ) }
-								value={ stack }
-								options={ [
+							<MultiButtonsControl
+								setAttributes={setAttributes}
+								label={__(
+									"Stack On",
+									"ultimate-addons-for-gutenberg"
+								)}
+								data={{
+									value: stack,
+									label: "stack",
+								}}
+								className="uagb-multi-button-alignment-control"
+								options={[
 									{
 										value: 'none',
 										label: __(
 											'None',
 											'ultimate-addons-for-gutenberg'
+										),
+										tooltip: __(
+											"None",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										value: 'desktop',
+										label: __(
+											'Desktop',
+											'ultimate-addons-for-gutenberg'
+										),
+										tooltip: __(
+											"Desktop",
+											"ultimate-addons-for-gutenberg"
 										),
 									},
 									{
@@ -177,6 +211,10 @@ const Settings = ( props ) => {
 											'Tablet',
 											'ultimate-addons-for-gutenberg'
 										),
+										tooltip: __(
+											"Tablet",
+											"ultimate-addons-for-gutenberg"
+										),
 									},
 									{
 										value: 'mobile',
@@ -184,11 +222,13 @@ const Settings = ( props ) => {
 											'Mobile',
 											'ultimate-addons-for-gutenberg'
 										),
+										tooltip: __(
+											"Mobile",
+											"ultimate-addons-for-gutenberg"
+										),
 									},
-								] }
-								onChange={ ( value ) =>
-									setAttributes( { stack: value } )
-								}
+								]}
+								showIcons={false}
 								help={ __(
 									'Note: Choose on what breakpoint the Icons will stack.',
 									'ultimate-addons-for-gutenberg'
