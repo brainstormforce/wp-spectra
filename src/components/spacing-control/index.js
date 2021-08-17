@@ -515,6 +515,10 @@ const SpacingControl = (props) => {
 	const resetValues = () => {
 		let device = deviceType.toLowerCase();
 
+		let cachedValueUpdate = { ...cachedValue };
+		cachedValueUpdate["resetDisabled"] = true;
+		setCacheValue(cachedValueUpdate);
+
 		switch (device) {
 			case "desktop":
 				onChangeTopValue("", "desktop", cachedValue.valueTop.value);

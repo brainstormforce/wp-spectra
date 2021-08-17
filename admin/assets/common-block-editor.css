@@ -19,6 +19,23 @@
 	> .components-base-control:last-child {
 	margin-bottom: 0;
 }
+
+/* Reset CSS*/
+.components-panel__body
+	.uagb-control__header
+	.uagb-control__actions
+	.uagb-reset {
+	padding: 0;
+	margin-right: 4px;
+}
+/* Spacing control Units CSS*/
+.components-panel__body
+	.uagb-control__header
+	.uagb-control__actions
+	.uagb-spacing-control__units {
+	display: flex;
+	align-items: center;
+}
 /* ------------------------------------------------------------------------------------------------*/
 
 .uagb-inspect-tabs .components-tab-panel__tabs button {
@@ -685,4 +702,3 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	border: none;
 	border-bottom: 1px solid #e0e0e0;
 }
- 
