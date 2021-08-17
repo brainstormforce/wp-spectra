@@ -1,6 +1,8 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import React, { useLayoutEffect } from "react";
 import styles from "./editor.lazy.scss";
+import renderSVG from "@Controls/renderIcon";
+import { __ } from "@wordpress/i18n";
 
 const UAGIconPicker = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,7 +15,18 @@ const UAGIconPicker = (props) => {
 
 	return (
 		<div className="components-base-control uag-icon-picker">
-			<FontIconPicker {...props} />
+			<FontIconPicker
+				icons={props.icons || wp.UAGBSvgIcons}
+				renderFunc={renderSVG}
+				theme="default"
+				value={props.value}
+				onChange={props.onChange}
+				isMulti={props.isMulti || false}
+				noSelectedPlaceholder={
+					props.noSelectedPlaceholder ||
+					__("Select Icon", "ultimate-addons-for-gutenberg")
+				}
+			/>
 		</div>
 	);
 };

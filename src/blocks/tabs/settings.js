@@ -525,16 +525,8 @@ const Settings = (props) => {
 							{__("Icon", "ultimate-addons-for-gutenberg")}
 						</h2>
 						<UAGIconPicker
-							icons={wp.UAGBSvgIcons}
-							renderFunc={renderSVG}
-							theme="default"
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
 						<MultiButtonsControl
 							setAttributes={setAttributes}

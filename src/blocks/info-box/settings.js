@@ -1,11 +1,9 @@
 import UAGIconPicker from "../../components/icon-picker";
 import { __ } from "@wordpress/i18n";
-import renderSVG from "@Controls/renderIcon";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import TypographyControl from "@Components/typography";
 import WebfontLoader from "@Components/typography/fontloader";
-import UAGBIcon from "@Controls/UAGBIcon.json";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
@@ -33,7 +31,6 @@ import {
 	Button,
 } from "@wordpress/components";
 
-let svg_icons = Object.keys(UAGBIcon);
 let imageSizeOptions = [
 	{
 		value: "thumbnail",
@@ -471,16 +468,8 @@ const Settings = (props) => {
 							{__("Icon", "ultimate-addons-for-gutenberg")}
 						</p>
 						<UAGIconPicker
-							icons={svg_icons}
-							renderFunc={renderSVG}
-							theme="default"
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
 					</>
 				)}
@@ -749,18 +738,10 @@ const Settings = (props) => {
 							{__("Button Icon", "ultimate-addons-for-gutenberg")}
 						</p>
 						<UAGIconPicker
-							icons={svg_icons}
-							renderFunc={renderSVG}
-							theme="default"
 							value={ctaIcon}
 							onChange={(value) =>
 								setAttributes({ ctaIcon: value })
 							}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
 					</>
 				)}
