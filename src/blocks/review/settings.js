@@ -938,6 +938,16 @@ const Settings = ( props ) => {
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
+				<ToggleControl
+					label={ __(
+						'Enable Schema Support',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableSchema }
+					onChange={ () =>
+						setAttributes( { enableSchema: ! enableSchema } )
+					}
+				/>
 				<h2>
 					{ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
 				</h2>
@@ -958,7 +968,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Show review description',
+						'Show Review Description',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableDescription }
@@ -974,7 +984,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Show review author',
+						'Show Review Author',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showAuthor }
@@ -988,7 +998,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Show ratings',
+						'Show Ratings',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ showFeature }
@@ -1002,17 +1012,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Enable schema support',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ enableSchema }
-					onChange={ () =>
-						setAttributes( { enableSchema: ! enableSchema } )
-					}
-				/>
-				<ToggleControl
-					label={ __(
-						'Show review image',
+						'Show Review Image',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableImage }
@@ -1075,6 +1075,7 @@ const Settings = ( props ) => {
 							</Button>
 						) }
 					/>
+					</div>
 					{ mainimage.url && (
 						<Button
 							className="uagb-rm-btn"
@@ -1090,7 +1091,6 @@ const Settings = ( props ) => {
 							) }
 						</Button>
 					) }
-					</div>
 					{ mainimage.url && (
 						<SelectControl
 							label={ __(
