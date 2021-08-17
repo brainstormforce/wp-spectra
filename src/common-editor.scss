@@ -7,18 +7,32 @@
 
 /* ------------------------------------------------------------------------------------------------*/
 /* Gutenberg Reset CSS */
-.block-editor-block-inspector
-	.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-base-control {
-	margin-bottom: 24px;
+.block-editor-block-inspector {
+	.uagb-inspector-tab {
+		.components-panel__body {
+
+			> .components-base-control {
+				margin-bottom: 24px;
+
+				.components-base-control,
+				.components-base-control__field {
+					margin-bottom: 0;
+				}
+			}
+
+			> .components-base-control:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+	}
 }
-.block-editor-block-inspector
+/*.block-editor-block-inspector
 	.uagb-inspector-tab
 	.components-panel__body.is-opened
 	> .components-base-control:last-child {
 	margin-bottom: 0;
-}
+}*/
 /* ------------------------------------------------------------------------------------------------*/
 
 .uagb-inspect-tabs .components-tab-panel__tabs button {

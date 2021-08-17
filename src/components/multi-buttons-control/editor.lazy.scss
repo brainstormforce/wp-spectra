@@ -49,17 +49,20 @@
 		fill: #585858;
 	}
 }
-.uagb-multi-buttons-control__label {
-	margin-bottom: 8px;
-}
-.uagb-multibuttons-header {
-	.uagb-size-type-field-tabs {
-		display: flex;
-		align-items: flex-end;
+
+.uagb-multi-buttons-control {
+	.uagb-multi-buttons-control__label {
+		margin-bottom: 8px;
 	}
-}
-.uagb-control__header {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 5px;
+	.uagb-control__header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 8px;
+	}
+	.uagb-multibuttons-header {
+		.uagb-size-type-field-tabs {
+			display: flex;
+			align-items: flex-end;
+		}
+	}
 }
