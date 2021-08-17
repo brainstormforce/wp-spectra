@@ -196,46 +196,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ true }
 			>
-				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					disableFontFamily={true}
-					disableFontWeight={true}
-					disableFontSubset={true}
-					fontSizeType={{
-						value: sizeType,
-						label: "sizeType",
-					}}
-					fontSize={{
-						value: size,
-						label: "size",
-					}}
-					fontSizeMobile={{
-						value: sizeMobile,
-						label: "sizeMobile",
-					}}
-					fontSizeTablet={{
-						value: sizeTablet,
-						label: "sizeTablet",
-					}}
-					lineHeightType={{
-						value: lineHeightType,
-						label: "lineHeightType",
-					}}
-					lineHeight={{
-						value: lineHeight,
-						label: "lineHeight",
-					}}
-					lineHeightMobile={{
-						value: lineHeightMobile,
-						label: "lineHeightMobile",
-					}}
-					lineHeightTablet={{
-						value: lineHeightTablet,
-						label: "lineHeightTablet",
-					}}
-				/>
 				{ ! inheritFromTheme && (
 					<>
 						<TabPanel
@@ -316,10 +276,83 @@ const Settings = ( props ) => {
 								return <div>{ btn_color_tab }</div>;
 							} }
 						</TabPanel>
+						<br></br>
+						<TypographyControl
+							label={__("Typography", "ultimate-addons-for-gutenberg")}
+							attributes={attributes}
+							setAttributes={setAttributes}
+							disableFontFamily={true}
+							disableFontWeight={true}
+							disableFontSubset={true}
+							fontSizeType={{
+								value: sizeType,
+								label: "sizeType",
+							}}
+							fontSize={{
+								value: size,
+								label: "size",
+							}}
+							fontSizeMobile={{
+								value: sizeMobile,
+								label: "sizeMobile",
+							}}
+							fontSizeTablet={{
+								value: sizeTablet,
+								label: "sizeTablet",
+							}}
+							lineHeightType={{
+								value: lineHeightType,
+								label: "lineHeightType",
+							}}
+							lineHeight={{
+								value: lineHeight,
+								label: "lineHeight",
+							}}
+							lineHeightMobile={{
+								value: lineHeightMobile,
+								label: "lineHeightMobile",
+							}}
+							lineHeightTablet={{
+								value: lineHeightTablet,
+								label: "lineHeightTablet",
+							}}
+						/>
 					</>
 				)}
 			</PanelBody>
 		)
+	}
+
+	const IconSettings = () => {
+	
+		return (
+			<PanelBody
+				title={ __(
+					'Icon',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
+				<Range
+					label={__(
+						"Size",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={size}
+					onChange={(value) =>
+						setAttributes({ size: value })
+					}
+					min={0}
+					max={50}
+					unit={{
+						value: sizeType,
+						label: "sizeType",
+					}}
+				/>
+			</PanelBody>
+		)
+
 	}
 
 	const borderSettings = () => {
@@ -502,9 +535,17 @@ const Settings = ( props ) => {
 				{ buttonSettings() }
 				</InspectorTab>
 				<InspectorTab key={"style"}>
-				{ textSettings() }
-				{ borderSettings() }
-				{ spacingSettings() }
+				{ ! inheritFromTheme && ( textSettings() ) }
+				{ ( '' !== icon && inheritFromTheme ) && ( IconSettings() ) }
+				{ ! inheritFromTheme && ( borderSettings() ) }
+				{ ! inheritFromTheme && ( spacingSettings() ) }
+				{ ( '' == icon && inheritFromTheme ) && ( 
+					<div class="components-notice is-warning">
+						<div class="components-notice__content">
+						<h2>{ __( 'Currently No Style Available for Selected Option.', 'ultimate-addons-for-gutenberg' ) }</h2>
+						</div>
+					</div>
+				) }
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>
