@@ -100,27 +100,31 @@ const Background = (props) => {
 
 	let advancedControls = (
 		<>
-			<SelectControl
-				value={backgroundType.value}
-				onChange={(value) =>
-					setAttributes({ [backgroundType.label]: value })
-				}
-				options={bgOptions}
-				label={__("Type", "ultimate-addons-for-gutenberg")}
-			/>
-			{"color" === backgroundType.value && (
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={
-						backgroundColor.value ? backgroundColor.value : ""
+			<div className="uag-background-type">
+				<SelectControl
+					value={backgroundType.value}
+					onChange={(value) =>
+						setAttributes({ [backgroundType.label]: value })
 					}
-					onColorChange={(value) =>
-						setAttributes({ [backgroundColor.label]: value })
-					}
+					options={bgOptions}
+					label={__("Type", "ultimate-addons-for-gutenberg")}
 				/>
+			</div>
+			{"color" === backgroundType.value && (
+				<div className="uag-background-color">
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={
+							backgroundColor.value ? backgroundColor.value : ""
+						}
+						onColorChange={(value) =>
+							setAttributes({ [backgroundColor.label]: value })
+						}
+					/>
+				</div>
 			)}
 			{"image" === backgroundType.value && (
-				<>
+				<div className="uag-background-image">
 					<BaseControl
 						className="editor-bg-image-control"
 						label={__("Image", "ultimate-addons-for-gutenberg")}
@@ -403,80 +407,84 @@ const Background = (props) => {
 							)}
 						</>
 					)}
-				</>
+				</div>
 			)}
 			{"gradient" === backgroundType.value && (
-				<>
+				<div className="uag-background-gradient">
 					<GradientSettings
 						backgroundGradient={props.backgroundGradient}
 						setAttributes={props.setAttributes}
 					/>
-				</>
+				</div>
 			)}
 			{("color" == backgroundType.value ||
 				("image" == backgroundType.value && backgroundImage.value) ||
 				"gradient" == backgroundType.value) && (
-				<Range
-					label={__("Opacity", "ultimate-addons-for-gutenberg")}
-					value={backgroundOpacity.value}
-					onChange={(val) =>
-						setAttributes({
-							[backgroundOpacity.label]: parseInt(val),
-						})
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-				/>
+				<div className="uag-background-opacity">
+						<Range
+							label={__("Opacity", "ultimate-addons-for-gutenberg")}
+							value={backgroundOpacity.value}
+							onChange={(val) =>
+								setAttributes({
+									[backgroundOpacity.label]: parseInt(val),
+								})
+							}
+							min={0}
+							max={100}
+							displayUnit={false}
+						/>
+				</div>
 			)}
 			{"video" === backgroundType.value && backgroundVideoType.value && (
-				<BaseControl
-					className="editor-bg-image-control"
-					label={__("Video", "ultimate-addons-for-gutenberg")}
-				>
-					<div className="uagb-bg-image">
-						<MediaUpload
-							title={__(
-								"Select Video",
-								"ultimate-addons-for-gutenberg"
-							)}
-							onSelect={onSelectVideo}
-							allowedTypes={["video"]}
-							value={backgroundVideo.value}
-							render={({ open }) => (
-								<Button isSecondary onClick={open}>
-									{!backgroundVideo.value
-										? __(
-												"Select video",
-												"ultimate-addons-for-gutenberg"
-										  )
-										: __(
-												"Replace video",
-												"ultimate-addons-for-gutenberg"
-										  )}
-								</Button>
-							)}
-						/>
-						{backgroundVideo.value && (
-							<Button
-								className="uagb-rm-btn"
-								onClick={onRemoveVideo}
-								isLink
-								isDestructive
-							>
-								{__(
-									"Remove Video",
+				<div className="uag-background-video">
+					<BaseControl
+						className="editor-bg-image-control"
+						label={__("Video", "ultimate-addons-for-gutenberg")}
+					>
+						<div className="uagb-bg-image">
+							<MediaUpload
+								title={__(
+									"Select Video",
 									"ultimate-addons-for-gutenberg"
 								)}
-							</Button>
-						)}
-					</div>
-				</BaseControl>
+								onSelect={onSelectVideo}
+								allowedTypes={["video"]}
+								value={backgroundVideo.value}
+								render={({ open }) => (
+									<Button isSecondary onClick={open}>
+										{!backgroundVideo.value
+											? __(
+													"Select video",
+													"ultimate-addons-for-gutenberg"
+											)
+											: __(
+													"Replace video",
+													"ultimate-addons-for-gutenberg"
+											)}
+									</Button>
+								)}
+							/>
+							{backgroundVideo.value && (
+								<Button
+									className="uagb-rm-btn"
+									onClick={onRemoveVideo}
+									isLink
+									isDestructive
+								>
+									{__(
+										"Remove Video",
+										"ultimate-addons-for-gutenberg"
+									)}
+								</Button>
+							)}
+						</div>
+					</BaseControl>
+				</div>
 			)}
 			{"video" == backgroundType.value &&
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
-					<>
+					<div className="uag-background-video-overlay">
 						<AdvancedPopColorControl
 							label={__(
 								"Video Overlay Color",
@@ -489,23 +497,25 @@ const Background = (props) => {
 								})
 							}
 						/>
-					</>
+					</div>
 				)}
 			{"video" == backgroundType.value &&
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
-					<Range
-						label={__("Opacity", "ultimate-addons-for-gutenberg")}
-						value={backgroundVideoOpacity.value}
-						onChange={(val) =>
-							setAttributes({
-								[backgroundVideoOpacity.label]: parseInt(val),
-							})
-						}
-						min={0}
-						max={100}
-						displayUnit={false}
-					/>
+					<div className="uag-background-video-opacity">
+						<Range
+							label={__("Opacity", "ultimate-addons-for-gutenberg")}
+							value={backgroundVideoOpacity.value}
+							onChange={(val) =>
+								setAttributes({
+									[backgroundVideoOpacity.label]: parseInt(val),
+								})
+							}
+							min={0}
+							max={100}
+							displayUnit={false}
+						/>
+					</div>
 				)}
 		</>
 	);
