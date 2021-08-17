@@ -1042,7 +1042,6 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-
 	const imageSettings = () => {
 		return(
 			<PanelBody
@@ -1063,7 +1062,7 @@ const Settings = ( props ) => {
 						value={mainimage}
 						render={ ( { open } ) => (
 							<Button isSecondary onClick={ open }>
-								{ ! mainimage.url
+								{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" )
 									? __(
 											'Select Image',
 											'ultimate-addons-for-gutenberg'
@@ -1076,7 +1075,7 @@ const Settings = ( props ) => {
 						) }
 					/>
 					</div>
-					{ mainimage.url && (
+					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
 						<Button
 							className="uagb-rm-btn"
 							onClick={ () =>
@@ -1091,12 +1090,14 @@ const Settings = ( props ) => {
 							) }
 						</Button>
 					) }
-					{ mainimage.url && (
+					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
+						<h2>
+							{ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+						</h2>
+					) }
+					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
 						<SelectControl
-							label={ __(
-								'Size',
-								'ultimate-addons-for-gutenberg'
-							) }
+							label={ '' }
 							options={ imageSizeOptions }
 							value={ imgSize }
 							onChange={ ( value ) =>
