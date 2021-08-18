@@ -31,6 +31,65 @@
 	> .components-base-control:last-child {
 	margin-bottom: 0;
 }*/
+
+/* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+	z-index: unset;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+	display: block;
+	border-bottom: 0;
+	text-align: right;
+	padding-right: 28px;
+	margin-right: 45px;
+	margin-bottom: -20px;
+	display: block;
+}
+.uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
+	width: 10px;
+	height: 10px;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button {
+	border: 0;
+	border-bottom: 0;
+	padding: 4px;
+	margin-bottom: 0;
+	outline: 0;
+	width: auto;
+	font-size: 8px;
+	background: transparent;
+	color: #999;
+	display: inline-block;
+	height: 22px;
+	width: 22px;
+	margin-right: 3px;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
+	box-shadow: none;
+	background-color: #bfdeee;
+	color: #007cba;
+	box-shadow: none;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	line-height: 0;
+}
+
+.uagb-size-type-field-tabs
+	.components-tab-panel__tabs
+	button
+	span.dashicon.dashicons {
+	font-size: 15px;
+}
+
+.uagb-control__actions .uagb-size-type-field-tabs {
+	margin: 0;
+}
+/* Tabs Pabel CSS for .uagb-size-type-field-tabs END*/
 /* ------------------------------------------------------------------------------------------------*/
 
 .uagb-inspect-tabs .components-tab-panel__tabs button {
@@ -69,7 +128,6 @@ hr.uagb-editor__separator {
 	button {
 	width: 50%;
 }
-.uagb-size-type-field-tabs .components-tab-panel__tabs,
 .DayPickerNavigation,
 .DayPicker_weekHeader,
 .components-button-group .components-button.is-primary,
@@ -170,89 +228,12 @@ hr.uagb-editor__separator {
 	justify-content: flex-end;
 	margin-bottom: -18px;
 }
-
-.uagb-size-type-field-tabs
-	.components-range-control
-	.components-base-control__field {
-	display: block;
-	flex-wrap: unset;
-}
-
-.uagb-size-type-field-tabs
-	.components-range-control
-	.components-base-control__label {
-	display: block;
-	width: auto;
-}
-
-.uagb-size-type-field-tabs
-	.components-range-control
-	.components-range-control__slider {
-	margin-bottom: 0;
-	padding-bottom: 2px;
-	margin-bottom: 0;
-}
-
-.uagb-size-type-field-tabs .components-range-control .dashicon {
-	vertical-align: middle;
-}
-
 .edit-post-sidebar h2.uagb-size-type-field-title {
 	font-size: 14px;
 	margin-bottom: 0;
 	color: #555d66;
 	margin-top: 30px;
 }
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs {
-	display: block;
-	margin-right: 30px;
-	margin-bottom: -20px;
-	border-bottom: 0;
-	text-align: right;
-	padding-right: 28px;
-	margin-right: 45px;
-	margin-bottom: -20px;
-	display: block;
-}
-
-.uagb-size-type-field-tabs.uagb-without-size-type .components-tab-panel__tabs {
-	margin-right: 0;
-}
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
-	width: 10px;
-	height: 10px;
-}
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs button {
-	border: 0;
-	border-bottom: 0;
-	padding: 4px;
-	margin-bottom: 0;
-	outline: 0;
-	width: auto;
-	font-size: 8px;
-	background: transparent;
-	color: #999;
-	display: inline-block;
-	height: 22px;
-	width: 22px;
-	margin-right: 3px;
-}
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
-.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
-	box-shadow: none;
-	background-color: #bfdeee;
-	color: #007cba;
-	box-shadow: none;
-	border-radius: 100%;
-	padding: 0;
-	margin: 0;
-	line-height: 0;
-}
-
 .uagb-size-type-field button.components-button.uagb-size-btn {
 	background: transparent;
 	color: #777;
@@ -429,52 +410,9 @@ label.wp-block-uagb-blockquote__via-label svg {
 	float: right;
 }
 
-/* Reset Button Alignment */
-.uagb-size-type-field-tabs.uagb-size-type-field__common-tabs
-	.components-base-control.components-range-control.uagb-margin-control
-	.components-base-control__field {
-	display: flex;
-}
-
-.uagb-size-type-field-tabs.uagb-inline-margin
-	.components-range-control
-	.components-base-control__field {
-	display: unset;
-}
-
-.uag-typography-range-options
-	.uagb-size-type-field-tabs
-	.components-tab-panel__tab-content
-	.components-base-control.components-range-control
-	.components-base-control__field {
-	display: block;
-}
-
-.uagb-size-type-field-tabs
-	.components-tab-panel__tab-content
-	div.components-base-control
-	.components-base-control__field {
-	display: block;
-}
-
-.uagb-typography-advanced
-	.uag-typography-range-options
-	.uagb-size-type-field-tabs
-	.components-base-control.components-range-control
-	.components-base-control__field {
-	display: block;
-}
 .uagb-forms-button-group {
 	margin-bottom: 15px;
 }
-
-.uagb-size-type-field-tabs
-	.components-tab-panel__tabs
-	button
-	span.dashicon.dashicons {
-	font-size: 15px;
-}
-
 .uag-typography-range-options
 	+ .components-base-control
 	.components-base-control__field
@@ -531,9 +469,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
 
-.uagb-control__actions .uagb-size-type-field-tabs {
-	margin: 0;
-}
 .components-toggle-control__label {
 	line-height: 2;
 }
@@ -626,10 +561,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	padding: 0;
 	margin: 0;
 	margin-left: 5px;
-}
-.uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
-	width: 10px;
-	height: 10px;
 }
 .components-base-control
 	.uagb-control__header
