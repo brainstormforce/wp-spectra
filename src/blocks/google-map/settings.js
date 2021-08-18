@@ -59,7 +59,6 @@ const Settings = ( props ) => {
 						}
 						min={ 1 }
 						max={ 22 }
-						beforeIcon="editor-textcolor"
 						displayUnit = {false}
 					/>
 					<Range
