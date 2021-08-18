@@ -969,6 +969,10 @@ const Settings = ( props ) => {
 							},
 						]}
 						showIcons={false}
+						help={ __(
+							'Note: Choose on what breakpoint the CTA button will stack.',
+							'ultimate-addons-for-gutenberg'
+						) }
 					/>
 				) }
 
