@@ -250,9 +250,9 @@ const Settings = ( props ) => {
 							"Bullet/Numbers Color",
 							"ultimate-addons-for-gutenberg"
 						)}
-						colorValue={hoverlistTextColor ? hoverlistTextColor : ""}
+						colorValue={hoverlistStyleColor  ? hoverlistStyleColor  : ""}
 						onColorChange={(value) =>
-							setAttributes({ hoverlistTextColor: value })
+							setAttributes({ hoverlistStyleColor : value })
 						}
 					/>
 				</>
@@ -931,13 +931,13 @@ const Settings = ( props ) => {
 					borderWidth={{
 						value: borderThickness,
 						label: "borderThickness",
-						title: __("Width", "ultimate-addons-for-gutenberg"),
+						title: __("Thickness", "ultimate-addons-for-gutenberg"),
 					}}
 					borderRadius={{
 						value: borderRadius,
 						label: "borderRadius",
 						title: __(
-							"Radius",
+							"Rounded Corners",
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
@@ -1162,14 +1162,22 @@ const Settings = ( props ) => {
 				{ postQueryPanel() }
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
-				{ ( 'dropdown' !== listDisplayStyle && 'list' !== layout ) && ( titleColorPanel() ) }
-				{ ( 'dropdown' !== listDisplayStyle && showCount && 'list' !== layout ) && ( countColorPanel() ) }
-				{ ( 'dropdown' !== listDisplayStyle && 'list' !== layout ) && ( bgColorPanel() )}
-				{ ( 'dropdown' !== listDisplayStyle && 'list' !== layout ) && ( boxShadowPanel() )}
-				{ 'grid' == layout && ( borderPanel() ) }
-				{ 'list' == layout && ( listPanel() ) }
-				{ 'list' == layout && ( separatorPanel() ) }
-				{ spacingPanel() }
+				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( titleColorPanel() ) }
+				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle && showCount ) && ( countColorPanel() ) }
+				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( bgColorPanel() )}
+				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( boxShadowPanel() )}
+				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( borderPanel() ) }
+				{ ( 'list' === layout && 'dropdown' !== listDisplayStyle ) && ( listPanel() ) }
+				{ ( 'list' === layout && 'dropdown' !== listDisplayStyle ) && ( separatorPanel() ) }
+				{ ( 'dropdown' !== listDisplayStyle ) && ( spacingPanel() ) }
+				{ ( 'list' === layout && 'dropdown' === listDisplayStyle ) && (
+					<p className="uagb-settings-notice">
+						{ __(
+							"There is no style available for the currently selected layout.",
+							'ultimate-addons-for-gutenberg'
+						) }
+					</p>)
+				}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
