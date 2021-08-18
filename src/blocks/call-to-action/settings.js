@@ -284,50 +284,6 @@ const Settings = ( props ) => {
 								}
 							/>
 						) }
-						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
-							( ctaType === 'text' && (
-								<TypographyControl
-									label={ __(
-										'Typography',
-										'ultimate-addons-for-gutenberg'
-									) }
-									attributes={ attributes }
-									setAttributes={ setAttributes }
-									loadGoogleFonts={ {
-										value: ctaLoadGoogleFonts,
-										label: 'ctaLoadGoogleFonts',
-									} }
-									fontFamily={ {
-										value: ctaFontFamily,
-										label: 'ctaFontFamily',
-									} }
-									fontWeight={ {
-										value: ctaFontWeight,
-										label: 'ctaFontWeight',
-									} }
-									fontSubset={ {
-										value: ctaFontSubset,
-										label: 'ctaFontSubset',
-									} }
-									fontSizeType={ {
-										value: ctaFontSizeType,
-										label: 'ctaFontSizeType',
-									} }
-									fontSize={ {
-										value: ctaFontSize,
-										label: 'ctaFontSize',
-									} }
-									fontSizeMobile={ {
-										value: ctaFontSizeMobile,
-										label: 'ctaFontSizeMobile',
-									} }
-									fontSizeTablet={ {
-										value: ctaFontSizeTablet,
-										label: 'ctaFontSizeTablet',
-									} }
-									disableLineHeight={ true }
-								/>
-							) ) }
 					</>
 				) }
 				{ ctaType !== 'none' && (
@@ -421,6 +377,64 @@ const Settings = ( props ) => {
 						) }
 					</>
 				) }
+			</PanelBody>
+		);
+	};
+
+	const ctaStyleSettings = () => {
+		return (
+			<PanelBody
+				title={ __( 'CTA', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+					<>
+						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
+							( ctaType === 'text' && (
+								<TypographyControl
+									label={ __(
+										'Typography',
+										'ultimate-addons-for-gutenberg'
+									) }
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									loadGoogleFonts={ {
+										value: ctaLoadGoogleFonts,
+										label: 'ctaLoadGoogleFonts',
+									} }
+									fontFamily={ {
+										value: ctaFontFamily,
+										label: 'ctaFontFamily',
+									} }
+									fontWeight={ {
+										value: ctaFontWeight,
+										label: 'ctaFontWeight',
+									} }
+									fontSubset={ {
+										value: ctaFontSubset,
+										label: 'ctaFontSubset',
+									} }
+									fontSizeType={ {
+										value: ctaFontSizeType,
+										label: 'ctaFontSizeType',
+									} }
+									fontSize={ {
+										value: ctaFontSize,
+										label: 'ctaFontSize',
+									} }
+									fontSizeMobile={ {
+										value: ctaFontSizeMobile,
+										label: 'ctaFontSizeMobile',
+									} }
+									fontSizeTablet={ {
+										value: ctaFontSizeTablet,
+										label: 'ctaFontSizeTablet',
+									} }
+									disableLineHeight={ true }
+								/>
+							) ) }
+					</>
+				) }
 				{ ctaType === 'text' && (
 					<TabPanel
 						className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
@@ -455,7 +469,6 @@ const Settings = ( props ) => {
 						} }
 					</TabPanel>
 				) }
-
 				{ ctaType === 'button' && ! inheritFromTheme && (
 					<TabPanel
 						className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
@@ -1094,11 +1107,12 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab {...UAGTabs.general}>
 					{ ctaType !== 'all' && ctaType !== 'none' && layouts() }
+					{ ctaSettings() }
 					</InspectorTab>
 					<InspectorTab {...UAGTabs.style}>
 					{ headingSettings() }
 					{ descriptionSettings() }
-					{ ctaSettings() }
+					{ ! inheritFromTheme && ( ctaStyleSettings() ) }
 					{ ctaType == 'button' && ! inheritFromTheme && ( ctaBorderSettings())}
 					{ marginSettings() }
 					</InspectorTab>
