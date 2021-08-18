@@ -40,7 +40,8 @@
   display: block;
 }
 
-.uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
+.uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
+.uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
   width: 10px;
   height: 10px;
 }
