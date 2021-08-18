@@ -632,6 +632,7 @@ const Settings = ( props ) => {
 						) }
 					</h2>
 					<DateTimePicker
+						className="uagb-date-picker"
 						currentDate={ datepublish }
 						onChange={ ( value ) =>
 							setAttributes( { datepublish: value } )
@@ -828,6 +829,7 @@ const Settings = ( props ) => {
 										) }
 									</h2>
 									<DateTimePicker
+										className="uagb-date-picker"
 										currentDate={ offerExpiry }
 										onChange={ ( value ) =>
 											setAttributes( {
