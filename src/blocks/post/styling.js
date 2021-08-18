@@ -703,11 +703,11 @@ function styling( props ) {
 					mobilepaginationButtonPaddingType
 				),
 				'padding-bottom': generateCSSUnit(
-					paginationButtonPaddingRightMobile,
+					paginationButtonPaddingBottomMobile,
 					mobilepaginationButtonPaddingType
 				),
 				'padding-right': generateCSSUnit(
-					paginationButtonPaddingBottomMobile,
+					paginationButtonPaddingRightMobile,
 					mobilepaginationButtonPaddingType
 				),
 				'padding-left': generateCSSUnit(

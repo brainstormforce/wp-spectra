@@ -3204,28 +3204,63 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-width'     => UAGB_Helper::get_css_value( $attr['paginationMasonryBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['paginationMasonryBorderRadius'], 'px' ),
 					'border-color'     => $attr['paginationMasonryBorderColor'],
-					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-
+					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], $attr['paginationFontSizeUnit'] ),
+					'padding-top' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingTop'],
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-bottom' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingBottom'],
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-right' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingRight'],
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-left' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingLeft'],
+						$attr['paginationButtonPaddingType']
+					),
 				);
 				$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'] = array(
 					'color'            => $attr['paginationTextHoverColor'],
 					'background-color' => $attr['paginationBgHoverColor'],
 				);
 				$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
+					'padding-top' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingTopMobile'],
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-right' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingRightMobile'],
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-bottom' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingBottomMobile'],
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-left' => UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingLeftMobile'],
+						$attr['mobilepaginationButtonPaddingType']
+					),
 				);
 				$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
+					'padding-top'=> UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingTopTablet'],
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-bottom'=> UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingRightTablet'],
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-right'=> UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingBottomTablet'],
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-left'=> UAGB_Helper::get_css_value(
+						$attr['paginationButtonPaddingLeftTablet'],
+						$attr['tabletpaginationButtonPaddingType']
+					),
 				);
 
 				$selectors['.uagb-post-grid .uagb-post-inf-loader div'] = array(
