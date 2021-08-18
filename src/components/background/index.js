@@ -6,6 +6,7 @@ import { MediaUpload } from "@wordpress/block-editor";
 import styles from "./editor.lazy.scss";
 import GradientSettings from "../../components/gradient-settings";
 import React, { useLayoutEffect } from "react";
+import UAGImage from "../../components/image";
 
 const Background = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -125,48 +126,11 @@ const Background = (props) => {
 			)}
 			{"image" === backgroundType.value && (
 				<div className="uag-background-image">
-					<BaseControl
-						className="editor-bg-image-control"
-						label={__("Image", "ultimate-addons-for-gutenberg")}
-					>
-						<div className="uagb-bg-image">
-							<MediaUpload
-								title={__(
-									"Select Image",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={onSelectImage}
-								allowedTypes={["image"]}
-								value={backgroundImage.value}
-								render={({ open }) => (
-									<Button isSecondary onClick={open}>
-										{!backgroundImage.value
-											? __(
-													"Select Image",
-													"ultimate-addons-for-gutenberg"
-											  )
-											: __(
-													"Replace Image",
-													"ultimate-addons-for-gutenberg"
-											  )}
-									</Button>
-								)}
-							/>
-							{backgroundImage.value && (
-								<Button
-									className="uagb-rm-btn"
-									onClick={onRemoveImage}
-									isLink
-									isDestructive
-								>
-									{__(
-										"Remove Image",
-										"ultimate-addons-for-gutenberg"
-									)}
-								</Button>
-							)}
-						</div>
-					</BaseControl>
+					<UAGImage
+						onSelectImage={onSelectImage}
+						backgroundImage={backgroundImage.value}
+						onRemoveImage={onRemoveImage}
+					/>
 					{backgroundImage.value && (
 						<>
 							<div className="uag-background-image-position">
@@ -447,48 +411,12 @@ const Background = (props) => {
 			)}
 			{"video" === backgroundType.value && backgroundVideoType.value && (
 				<div className="uag-background-video">
-					<BaseControl
-						className="editor-bg-image-control"
-						label={__("Video", "ultimate-addons-for-gutenberg")}
-					>
-						<div className="uagb-bg-image">
-							<MediaUpload
-								title={__(
-									"Select Video",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={onSelectVideo}
-								allowedTypes={["video"]}
-								value={backgroundVideo.value}
-								render={({ open }) => (
-									<Button isSecondary onClick={open}>
-										{!backgroundVideo.value
-											? __(
-													"Select video",
-													"ultimate-addons-for-gutenberg"
-											  )
-											: __(
-													"Replace video",
-													"ultimate-addons-for-gutenberg"
-											  )}
-									</Button>
-								)}
-							/>
-							{backgroundVideo.value && (
-								<Button
-									className="uagb-rm-btn"
-									onClick={onRemoveVideo}
-									isLink
-									isDestructive
-								>
-									{__(
-										"Remove Video",
-										"ultimate-addons-for-gutenberg"
-									)}
-								</Button>
-							)}
-						</div>
-					</BaseControl>
+					<UAGImage
+						onSelectImage={onSelectVideo}
+						backgroundImage={backgroundVideo.value}
+						onRemoveImage={onRemoveVideo}
+						showVideoInput={true}
+					/>
 				</div>
 			)}
 			{"video" == backgroundType.value &&

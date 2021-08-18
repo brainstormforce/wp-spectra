@@ -13,6 +13,8 @@ import InspectorTab, {
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGImage from "../../components/image";
+
 $ = jQuery;
 
 import {
@@ -473,43 +475,11 @@ const Settings = (props) => {
 				)}
 				{source_type == "image" && (
 					<>
-						<BaseControl
-							className="editor-bg-image-control"
-							label={__("Image", "ultimate-addons-for-gutenberg")}
-							id={__("Image", "ultimate-addons-for-gutenberg")}
-						>
-							<div className="uagb-bg-image">
-							<MediaUpload
-								title={__(
-									"Select Image",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={onSelectImage}
-								allowedTypes={["image"]}
-								value={iconImage}
-								render={({ open }) => (
-									<Button isSecondary onClick={open}>
-										{imageName}
-									</Button>
-								)}
-							/>
-							</div>
-							{iconImage &&
-								iconImage.url !== "null" &&
-								iconImage.url !== "" && (
-									<Button
-										className="uagb-rm-btn"
-										onClick={onRemoveImage}
-										isLink
-										isDestructive
-									>
-										{__(
-											"Remove Image",
-											"ultimate-addons-for-gutenberg"
-										)}
-									</Button>
-								)}
-						</BaseControl>
+						<UAGImage
+							onSelectImage={onSelectImage}
+							backgroundImage={iconImage}
+							onRemoveImage={onRemoveImage}
+						/>
 						{iconImage &&
 							iconImage.url !== "null" &&
 							iconImage.url !== "" && (
@@ -735,7 +705,10 @@ const Settings = (props) => {
 				{ctaType !== "all" && ctaType !== "none" && (
 					<>
 						<UAGIconPicker
-							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
+							label={__(
+								"Button Icon",
+								"ultimate-addons-for-gutenberg"
+							)}
 							value={ctaIcon}
 							onChange={(value) =>
 								setAttributes({ ctaIcon: value })
