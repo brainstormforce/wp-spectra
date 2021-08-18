@@ -524,7 +524,7 @@ const Settings = ( props ) => {
 				>
 					<SelectControl
 						label={ __(
-							'Item type',
+							'Item Type',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ itemType }
@@ -588,7 +588,7 @@ const Settings = ( props ) => {
 					{ subtypeCategories.hasOwnProperty( itemType ) && (
 						<SelectControl
 							label={ __(
-								'Item subtype',
+								'Item Subtype',
 								'ultimate-addons-for-gutenberg'
 							) }
 							options={ [
@@ -613,7 +613,7 @@ const Settings = ( props ) => {
 					{ itemTypeExtras }
 					<TextControl
 						label={ __(
-							'Review publisher',
+							'Review Publisher',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ reviewPublisher }
@@ -627,7 +627,7 @@ const Settings = ( props ) => {
 					/>
 					<h2>
 						{ __(
-							'Date of publish',
+							'Date Of Publish',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</h2>
@@ -678,7 +678,7 @@ const Settings = ( props ) => {
 									/>
 									<SelectControl
 										label={ __(
-											'Identifier type',
+											'Identifier Type',
 											'ultimate-addons-for-gutenberg'
 										) }
 										value={ identifierType }
@@ -935,7 +935,6 @@ const Settings = ( props ) => {
 
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<ToggleControl
@@ -1064,13 +1063,14 @@ const Settings = ( props ) => {
 							<Button isSecondary onClick={ open }>
 								{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" )
 									? __(
-											'Select Image',
-											'ultimate-addons-for-gutenberg'
-									  )
+										'Replace image',
+										'ultimate-addons-for-gutenberg'
+								  )
 									: __(
-											'Replace image',
-											'ultimate-addons-for-gutenberg'
-									  ) }
+										'Select Image',
+										'ultimate-addons-for-gutenberg'
+								  ) 
+								}
 							</Button>
 						) }
 					/>
