@@ -291,6 +291,7 @@ const UAGBPostCarousel = ( props ) => {
 		transitionSpeed,
 		arrowDots,
 		arrowSize,
+		arrowSizeUnit,
 		arrowBorderSize,
 		arrowBorderRadius,
 		excerptLength,
@@ -747,7 +748,7 @@ const UAGBPostCarousel = ( props ) => {
 				</h2>
 				<SelectControl
 					label={ __(
-						'Show Arrows & Dots',
+						'Select Type',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ arrowDots }
@@ -793,6 +794,10 @@ const UAGBPostCarousel = ( props ) => {
 							max={ 50 }
 							setAttributes={setAttributes}
 							displayUnit={false}
+							unit={{
+								value: arrowSizeUnit,
+								label: "arrowSizeUnit",
+							}}
 						/>
 						<Range
 							label={ __(

@@ -8,7 +8,6 @@
  import styling from '.././styling';
  import { compose } from '@wordpress/compose';
  import TypographyControl from '@Components/typography';
- import ColumnResponsive from '@Components/typography/column-responsive';
  import Border from "../../../components/border";
  import AdvancedPopColorControl from "../../../components/color-control/advanced-pop-color-control.js";
  import InspectorTabs from "../../../components/inspector-tabs/InspectorTabs.js";
@@ -17,6 +16,8 @@
  import Range from "../../../components/range/Range.js";
  import ResponsiveSlider from "../../../components/responsive-slider";
  
+ import renderSVG from "@Controls/renderIcon";
+ import MultiButtonsControl from "../../../components/multi-buttons-control";
  const Settings = lazy( () =>
 	 import(
 		 /* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
@@ -33,19 +34,15 @@
 	 PanelBody,
 	 Placeholder,
 	 QueryControls,
-	 RangeControl,
 	 SelectControl,
 	 Spinner,
 	 ToggleControl,
-	 TabPanel,
-	 ButtonGroup,
-	 Button,
-	 Dashicon,
 	 TextControl,
+	 Icon,
 	 RadioControl,
  } from '@wordpress/components';
  
- import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
+ import { InspectorControls } from '@wordpress/block-editor';
  
  import { withSelect, withDispatch } from '@wordpress/data';
  
@@ -79,8 +76,73 @@
 			paddingRightMobile,
 			paddingBottomMobile,
 			paddingLeftMobile,
+			vpaginationButtonPaddingMobile,
+			vpaginationButtonPaddingTablet,
+			vpaginationButtonPaddingDesktop,
+			hpaginationButtonPaddingMobile,
+			hpaginationButtonPaddingTablet,
+			hpaginationButtonPaddingDesktop,
+			paginationButtonPaddingTopTablet,
+			paginationButtonPaddingRightTablet,
+			paginationButtonPaddingBottomTablet,
+			paginationButtonPaddingLeftTablet,
+			paginationButtonPaddingTopMobile,
+			paginationButtonPaddingRightMobile,
+			paginationButtonPaddingBottomMobile,
+			paginationButtonPaddingLeftMobile,
+			paginationButtonPaddingTop,
+			paginationButtonPaddingRight,
+			paginationButtonPaddingBottom,
+			paginationButtonPaddingLeft
 		} = props.attributes;
-
+		if (vpaginationButtonPaddingDesktop) {
+			if (!paginationButtonPaddingTop) {
+				props.setAttributes({ paginationButtonPaddingTop: vpaginationButtonPaddingDesktop });
+			}
+			if (!paginationButtonPaddingBottom) {
+				props.setAttributes({ paginationButtonPaddingBottom: vpaginationButtonPaddingDesktop });
+			}
+		}
+		if (hpaginationButtonPaddingDesktop) {
+			if (!paginationButtonPaddingRight) {
+				props.setAttributes({ paginationButtonPaddingRight: hpaginationButtonPaddingDesktop });
+			}
+			if (!paginationButtonPaddingLeft) {
+				props.setAttributes({ paginationButtonPaddingLeft: hpaginationButtonPaddingDesktop });
+			}
+		}
+		if (vpaginationButtonPaddingTablet) {
+			if (!paginationButtonPaddingTopTablet) {
+				props.setAttributes({ paginationButtonPaddingTopTablet: vpaginationButtonPaddingTablet });
+			}
+			if (!paginationButtonPaddingBottomTablet) {
+				props.setAttributes({ paginationButtonPaddingBottomTablet: vpaginationButtonPaddingTablet });
+			}
+		}
+		if (hpaginationButtonPaddingTablet) {
+			if (!paginationButtonPaddingRightTablet) {
+				props.setAttributes({ paginationButtonPaddingRightTablet: hpaginationButtonPaddingTablet });
+			}
+			if (!paginationButtonPaddingLeftTablet) {
+				props.setAttributes({ paginationButtonPaddingLeftTablet: hpaginationButtonPaddingTablet });
+			}
+		}
+		if (vpaginationButtonPaddingMobile) {
+			if (!paginationButtonPaddingTopMobile) {
+				props.setAttributes({ paginationButtonPaddingTopMobile: vpaginationButtonPaddingMobile });
+			}
+			if (!paginationButtonPaddingBottomMobile) {
+				props.setAttributes({ paginationButtonPaddingBottomMobile: vpaginationButtonPaddingMobile });
+			}
+		}
+		if (hpaginationButtonPaddingMobile) {
+			if (!paginationButtonPaddingRightMobile) {
+				props.setAttributes({ paginationButtonPaddingRightMobile: hpaginationButtonPaddingMobile });
+			}
+			if (!paginationButtonPaddingLeftMobile) {
+				props.setAttributes({ paginationButtonPaddingLeftMobile: hpaginationButtonPaddingMobile });
+			}
+		}
 		if (btnVPadding) {
 			if (!paddingBtnTop) {
 				props.setAttributes({ paddingBtnTop: btnVPadding });
@@ -300,16 +362,27 @@
 		 paginationMasonryBorderWidth,
 		 paginationMasonryBorderRadius,
 		 paginationMasonryBorderColor,
+		 paginationMasonryBorderHColor,
 		 paginationFontSize,
+		 paginationFontSizeUnit,
 		 loaderColor,
 		 loaderSize,
+		 loaderSizeUnit,
+		paginationButtonPaddingDesktopTop,
+		paginationButtonPaddingDesktopRight,
+		paginationButtonPaddingDesktopBottom,
+		paginationButtonPaddingDesktopLeft,
+		paginationButtonPaddingTopTablet,
+		paginationButtonPaddingRightTablet,
+		paginationButtonPaddingBottomTablet,
+		paginationButtonPaddingLeftTablet,
+		paginationButtonPaddingTopMobile,
+		paginationButtonPaddingRightMobile,
+		paginationButtonPaddingBottomMobile,
+		paginationButtonPaddingLeftMobile,
+		mobilepaginationButtonPaddingType,
+		tabletpaginationButtonPaddingType,
 		 paginationButtonPaddingType,
-		 vpaginationButtonPaddingMobile,
-		 vpaginationButtonPaddingTablet,
-		 vpaginationButtonPaddingDesktop,
-		 hpaginationButtonPaddingMobile,
-		 hpaginationButtonPaddingTablet,
-		 hpaginationButtonPaddingDesktop,
 		 displayPostContentRadio,
 		 excludeCurrentPost,
 		 rowGapUnit,
@@ -358,6 +431,8 @@
 		paddingUnit,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
+		excerptBottomSpaceUnit,
+		contentPaddingUnit,
 	 } = attributes;
  
 	 const taxonomyListOptions = [];
@@ -524,6 +599,15 @@
 					displayUnit={false}
 					setAttributes={setAttributes}
 				/>
+				<SelectControl
+					label={ __( "Pagination",'ultimate-addons-for-gutenberg' ) }
+					value={ paginationType }
+					onChange={ ( value ) => setAttributes( { paginationType: value } ) }
+					options={ [
+						{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
+						{ value: "infinite", label: __( "Infinite",'ultimate-addons-for-gutenberg' ) },
+					] }
+				/>
 				{ 'infinite' === paginationType &&
 						'button' === paginationEventType && (
 							<TextControl
@@ -587,676 +671,251 @@
 				>
 					{ 'button' === paginationEventType && (
 						<>
-							<h2>
-								{ ' ' }
-								{ __(
-									'Alignment',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</h2>
-							<Button
-								key={ 'left' }
-								icon="editor-alignleft"
-								label="Left"
-								onClick={ () =>
-									setAttributes( { paginationAlign: 'left' } )
-								}
-								aria-pressed={ 'left' === paginationAlign }
-								isPrimary={ 'left' === paginationAlign }
-							/>
-							<Button
-								key={ 'center' }
-								icon="editor-aligncenter"
-								label="Right"
-								onClick={ () =>
-									setAttributes( {
-										paginationAlign: 'center',
-									} )
-								}
-								aria-pressed={ 'center' === paginationAlign }
-								isPrimary={ 'center' === paginationAlign }
-							/>
-							<Button
-								key={ 'right' }
-								icon="editor-alignright"
-								label="Right"
-								onClick={ () =>
-									setAttributes( {
-										paginationAlign: 'right',
-									} )
-								}
-								aria-pressed={ 'right' === paginationAlign }
-								isPrimary={ 'right' === paginationAlign }
-							/>
-							<h2>
-								{ ' ' }
-								{ __(
-									'Font Size (px) ',
-									'ultimate-addons-for-gutenberg'
-								) }{ ' ' }
-							</h2>
-							<RangeControl
+								<MultiButtonsControl
+									setAttributes={setAttributes}
+									label={__('Alignment', "ultimate-addons-for-gutenberg")}
+									data={{
+									value: paginationAlign,
+									label: "paginationAlign",
+									}}
+									className="uagb-multi-button-alignment-control"
+									options={[
+									{
+										value: "left",
+										icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+										tooltip: __(
+											"Left",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										value: "center",
+										icon: (
+											<Icon icon={renderSVG("fa fa-align-center")} />
+										),
+										tooltip: __(
+											"Center",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										value: "right",
+										icon: (
+											<Icon icon={renderSVG("fa fa-align-right")} />
+										),
+										tooltip: __(
+											"Right",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+								]}
+								showIcons={true}
+						/>
+							<Range
+								label={__(
+									'Font Size',
+									"ultimate-addons-for-gutenberg"
+								)}
 								value={ paginationFontSize }
 								onChange={ ( value ) =>
 									setAttributes( {
 										paginationFontSize: value,
 									} )
 								}
+								setAttributes={setAttributes}
 								min={ 0 }
 								max={ 100 }
-								allowReset
+								unit={{
+									value: paginationFontSizeUnit,
+									label: "paginationFontSizeUnit",
+								}}
 							/>
-							<TabPanel
-								className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: 'desktop',
-										title: <Dashicon icon="desktop" />,
-										className:
-											'uagb-desktop-tab uagb-responsive-tabs',
-									},
-									{
-										name: 'tablet',
-										title: <Dashicon icon="tablet" />,
-										className:
-											'uagb-tablet-tab uagb-responsive-tabs',
-									},
-									{
-										name: 'mobile',
-										title: <Dashicon icon="smartphone" />,
-										className:
-											'uagb-mobile-tab uagb-responsive-tabs',
-									},
-								] }
-							>
-								{ ( tab ) => {
-									let tabout;
-
-									if ( 'mobile' === tab.name ) {
-										tabout = (
-											<>
-												<ButtonGroup
-													className="uagb-size-type-field"
-													aria-label={ __(
-														'Size Type',
-														'ultimate-addons-for-gutenberg'
-													) }
-												>
-													<Button
-														key={ 'px' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'px',
-															} )
-														}
-													>
-														{ 'px' }
-													</Button>
-													<Button
-														key={ '%' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'%',
-															} )
-														}
-													>
-														{ '%' }
-													</Button>
-												</ButtonGroup>
-												<h2>
-													{ __(
-														'Padding',
-														'ultimate-addons-for-gutenberg'
-													) }
-												</h2>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.vertical_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														vpaginationButtonPaddingMobile
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															vpaginationButtonPaddingMobile: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.horizontal_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														hpaginationButtonPaddingMobile
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															hpaginationButtonPaddingMobile: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</>
-										);
-									} else if ( 'tablet' === tab.name ) {
-										tabout = (
-											<>
-												<ButtonGroup
-													className="uagb-size-type-field"
-													aria-label={ __(
-														'Size Type',
-														'ultimate-addons-for-gutenberg'
-													) }
-												>
-													<Button
-														key={ 'px' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'px',
-															} )
-														}
-													>
-														{ 'px' }
-													</Button>
-													<Button
-														key={ '%' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'%',
-															} )
-														}
-													>
-														{ '%' }
-													</Button>
-												</ButtonGroup>
-												<h2>
-													{ __(
-														'Padding',
-														'ultimate-addons-for-gutenberg'
-													) }
-												</h2>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.vertical_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														vpaginationButtonPaddingTablet
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															vpaginationButtonPaddingTablet: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.horizontal_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														hpaginationButtonPaddingTablet
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															hpaginationButtonPaddingTablet: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</>
-										);
-									} else {
-										tabout = (
-											<>
-												<ButtonGroup
-													className="uagb-size-type-field"
-													aria-label={ __(
-														'Size Type',
-														'ultimate-addons-for-gutenberg'
-													) }
-												>
-													<Button
-														key={ 'px' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'px'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'px',
-															} )
-														}
-													>
-														{ 'px' }
-													</Button>
-													<Button
-														key={ '%' }
-														className="uagb-size-btn"
-														isSmall
-														isPrimary={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														aria-pressed={
-															paginationButtonPaddingType ===
-															'%'
-														}
-														onClick={ () =>
-															setAttributes( {
-																paginationButtonPaddingType:
-																	'%',
-															} )
-														}
-													>
-														{ '%' }
-													</Button>
-												</ButtonGroup>
-												<h2>
-													{ __(
-														'Padding',
-														'ultimate-addons-for-gutenberg'
-													) }
-												</h2>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.vertical_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														vpaginationButtonPaddingDesktop
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															vpaginationButtonPaddingDesktop: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={
-														UAGB_Block_Icons.horizontal_spacing
-													}
-													className={
-														'uagb-margin-control'
-													}
-													value={
-														hpaginationButtonPaddingDesktop
-													}
-													onChange={ ( value ) =>
-														setAttributes( {
-															hpaginationButtonPaddingDesktop: value,
-														} )
-													}
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</>
-										);
-									}
-
-									return <div>{ tabout }</div>;
-								} }
-							</TabPanel>
-							<TabPanel
-								className="uagb-margin-control uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: 'normal',
-										title: __(
-											'Normal',
-											'ultimate-addons-for-gutenberg'
-										),
-										className: 'uagb-normal-tab',
-									},
-									{
-										name: 'hover',
-										title: __(
-											'Hover',
-											'ultimate-addons-for-gutenberg'
-										),
-										className: 'uagb-hover-tab',
-									},
-								] }
-							>
-								{ ( tabName ) => {
-									if ( 'normal' === tabName.name ) {
-										return (
-											<>
-												<p className="uagb-setting-label">
-													{ __(
-														'Text Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													<span className="components-base-control__label">
-														<span
-															className="component-color-indicator"
-															style={ {
-																backgroundColor: paginationTextColor,
-															} }
-														></span>
-													</span>
-												</p>
-												<ColorPalette
-													value={
-														paginationTextColor
-													}
-													onChange={ ( colorValue ) =>
-														setAttributes( {
-															paginationTextColor: colorValue,
-														} )
-													}
-													allowReset
-												/>
-												<p className="uagb-setting-label">
-													{ __(
-														'Background Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													<span className="components-base-control__label">
-														<span
-															className="component-color-indicator"
-															style={ {
-																backgroundColor: paginationMasonryBgColor,
-															} }
-														></span>
-													</span>
-												</p>
-												<ColorPalette
-													value={
-														paginationMasonryBgColor
-													}
-													onChange={ ( colorValue ) =>
-														setAttributes( {
-															paginationMasonryBgColor: colorValue,
-														} )
-													}
-													allowReset
-												/>
-											</>
-										);
-									}
-									return (
-										<>
-											<p className="uagb-setting-label">
-												{ __(
-													'Text Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												<span className="components-base-control__label">
-													<span
-														className="component-color-indicator"
-														style={ {
-															backgroundColor: paginationTextHoverColor,
-														} }
-													></span>
-												</span>
-											</p>
-											<ColorPalette
-												value={
-													paginationTextHoverColor
-												}
-												onChange={ ( colorValue ) =>
-													setAttributes( {
-														paginationTextHoverColor: colorValue,
-													} )
-												}
-												allowReset
-											/>
-
-											<p className="uagb-setting-label">
-												{ __(
-													'Background Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												<span className="components-base-control__label">
-													<span
-														className="component-color-indicator"
-														style={ {
-															backgroundColor: paginationBgHoverColor,
-														} }
-													></span>
-												</span>
-											</p>
-											<ColorPalette
-												value={ paginationBgHoverColor }
-												onChange={ ( colorValue ) =>
-													setAttributes( {
-														paginationBgHoverColor: colorValue,
-													} )
-												}
-												allowReset
-											/>
-										</>
-									);
-								} }
-							</TabPanel>
-							<hr className="uagb-editor__separator" />
-							<h2>
-								{ ' ' }
-								{ __(
-									'Border',
-									'ultimate-addons-for-gutenberg'
-								) }{ ' ' }
-							</h2>
-							<SelectControl
-								label={ __(
-									'Style',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ paginationMasonryBorderStyle }
-								options={ [
-									{
-										value: 'none',
-										label: __(
-											'None',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'solid',
-										label: __(
-											'Solid',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'dotted',
-										label: __(
-											'Dotted',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'dashed',
-										label: __(
-											'Dashed',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'double',
-										label: __(
-											'Double',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-								] }
-								onChange={ ( value ) => {
-									setAttributes( {
-										paginationMasonryBorderStyle: value,
-									} );
-								} }
+							<SpacingControl
+							{...props}
+							label={__(
+							"Button Padding",
+							"ultimate-addons-for-gutenberg"
+							)}
+							valueTop={{
+								value: paginationButtonPaddingDesktopTop,
+								label: "paginationButtonPaddingDesktopTop",
+							}}
+							valueRight={{
+								value: paginationButtonPaddingDesktopRight,
+								label: "paginationButtonPaddingDesktopRight",
+							}}
+							valueBottom={{
+								value: paginationButtonPaddingDesktopBottom,
+								label: "paginationButtonPaddingDesktopBottom",
+							}}
+							valueLeft={{
+								value: paginationButtonPaddingDesktopLeft,
+								label: "paginationButtonPaddingDesktopLeft",
+							}}
+							valueTopTablet={{
+								value: paginationButtonPaddingTopTablet,
+								label: "paginationButtonPaddingTopTablet",
+							}}
+							valueRightTablet={{
+								value: paginationButtonPaddingRightTablet,
+								label: "paginationButtonPaddingRightTablet",
+							}}
+							valueBottomTablet={{
+								value: paginationButtonPaddingBottomTablet,
+								label: "paginationButtonPaddingBottomTablet",
+							}}
+							valueLeftTablet={{
+								value: paginationButtonPaddingLeftTablet,
+								label: "paginationButtonPaddingLeftTablet",
+							}}
+							valueTopMobile={{
+								value: paginationButtonPaddingTopMobile,
+								label: "paginationButtonPaddingTopMobile",
+							}}
+							valueRightMobile={{
+								value: paginationButtonPaddingRightMobile,
+								label: "paginationButtonPaddingRightMobile",
+							}}
+							valueBottomMobile={{
+								value: paginationButtonPaddingBottomMobile,
+								label: "paginationButtonPaddingBottomMobile",
+							}}
+							valueLeftMobile={{
+								value: paginationButtonPaddingLeftMobile,
+								label: "paginationButtonPaddingLeftMobile",
+							}}
+							unit={{
+								value: paginationButtonPaddingType,
+								label: "paginationButtonPaddingType",
+							}}
+							mUnit={{
+								value: mobilepaginationButtonPaddingType,
+								label: "mobilepaginationButtonPaddingType",
+							}}
+							tUnit={{
+								value: tabletpaginationButtonPaddingType,
+								label: "tabletpaginationButtonPaddingType",
+							}}
+							deviceType={deviceType}
+							attributes={attributes}
+							setAttributes={setAttributes}
+							link={{
+								value: spacingLink,
+								label: "spacingLink",
+							}}
 							/>
-							{ 'none' !== paginationMasonryBorderStyle && (
-								<>
-									<RangeControl
-										label={ __(
-											'Thickness (px)',
-											'ultimate-addons-for-gutenberg'
-										) }
-										value={ paginationMasonryBorderWidth }
-										onChange={ ( value ) => {
-											setAttributes( {
-												paginationMasonryBorderWidth: value,
-											} );
-										} }
-										min={ 0 }
-										max={ 20 }
-									/>
-									<RangeControl
-										label={ __(
-											'Rounded Corners (px)',
-											'ultimate-addons-for-gutenberg'
-										) }
-										value={ paginationMasonryBorderRadius }
-										onChange={ ( value ) => {
-											setAttributes( {
-												paginationMasonryBorderRadius: value,
-											} );
-										} }
-										min={ 0 }
-										max={ 50 }
-									/>
-									<p className="uagb-setting-label">
-										{ __(
-											'Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										<span className="components-base-control__label">
-											<span
-												className="component-color-indicator"
-												style={ {
-													backgroundColor: paginationMasonryBorderColor,
-												} }
-											></span>
-										</span>
-									</p>
-									<ColorPalette
-										value={ paginationMasonryBorderColor }
-										onChange={ ( value ) =>
-											setAttributes( {
-												paginationMasonryBorderColor: value,
-											} )
-										}
-										allowReset
-									/>
-								</>
-							) }
+							<AdvancedPopColorControl
+								label={__(
+									'Text Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationTextColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationTextColor: value })
+								}
+							/> 
+							<AdvancedPopColorControl
+								label={__(
+									'Text Hover Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationTextHoverColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationTextHoverColor: value })
+								}
+							/> 
+							<AdvancedPopColorControl
+								label={__(
+									'Background Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationMasonryBgColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationMasonryBgColor: value })
+								}
+							/> 
+							<AdvancedPopColorControl
+								label={__(
+									'Background Hover Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={paginationBgHoverColor}
+								onColorChange={(value) =>
+									setAttributes({ paginationBgHoverColor: value })
+								}
+							/> 
+							<Border
+								setAttributes={setAttributes}
+								borderStyle={{
+									value: paginationMasonryBorderStyle,
+									label: 'paginationMasonryBorderStyle',
+									title: __(
+										"Border Style",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								borderWidth={{
+									value: paginationMasonryBorderWidth,
+									label: 'paginationMasonryBorderWidth',
+									title: __(
+										"Border Width",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								borderRadius={{
+									value: paginationMasonryBorderRadius,
+									label: 'paginationMasonryBorderRadius',
+									title: __(
+										"Border Radius",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								borderColor={{
+									value: paginationMasonryBorderColor,
+									label: 'paginationMasonryBorderColor',
+									title: __(
+										"Border Color",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+								borderHoverColor={{
+									value: paginationMasonryBorderHColor,
+									label: 'paginationMasonryBorderHColor',
+									title: __(
+										"Border Hover Color",
+										"ultimate-addons-for-gutenberg"
+									),
+								}}
+							/>
 						</>
 					) }
 					{ 'scroll' === paginationEventType && (
 						<>
-							<p className="uagb-setting-label">
-								{ __(
-									' Loader Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: loaderColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ loaderColor }
-								onChange={ ( value ) =>
-									setAttributes( { loaderColor: value } )
+							<AdvancedPopColorControl
+								label={__('Loader Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={loaderColor}
+								onColorChange={(value) =>
+									setAttributes({ loaderColor: value })
 								}
-								allowReset
 							/>
-							<RangeControl
+							<Range
 								label={ __(
 									'Loader Size',
 									'ultimate-addons-for-gutenberg'
 								) }
+								setAttributes={setAttributes}
 								value={ loaderSize }
 								onChange={ ( value ) =>
 									setAttributes( { loaderSize: value } )
 								}
 								min={ 1 }
 								max={ 50 }
+								unit={{
+									value: loaderSizeUnit,
+									label: "loaderSizeUnit",
+								}}
 							/>
 						</>
 					) }

@@ -3276,24 +3276,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__inner-wrap'    => array(
 					'background' => $attr['bgColor'],
-					'padding'    => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
+					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingTop'] , $attr['contentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingBottom'] , $attr['contentPaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingLeft'] , $attr['contentPaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingRight'] , $attr['contentPaddingUnit']  ),
 					'text-align' => $attr['align'],
 				),
 
 				' .uagb-post__cta'           => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image'         => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__title'         => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post-grid-byline'    => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__excerpt'       => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], $attr['excerptBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image:before'  => array(
 					'background-color' => $attr['bgOverlayColor'],
@@ -3302,9 +3305,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			if ( 'background' !== $attr['imgPosition'] ) {
 				$selectors[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
-					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['paddingTop'] ), $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['paddingLeft'] ), $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['paddingRight'] ), $attr['contentPaddingUnit'] ),
 				);
 			}
 			if ( ! $attr['inheritFromTheme'] ) {
@@ -3330,7 +3333,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 				$selectors[' .uagb-post__text .uagb-post__cta a']                           = array(
 					'color'   => $attr['ctaColor'],
-					'padding' => ( $attr['btnVPadding'] ) . 'px ' . ( $attr['btnHPadding'] ) . 'px',
+					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTop'] , $attr['paddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottom'] , $attr['paddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeft'] , $attr['paddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRight'] , $attr['paddingBtnUnit']  ),
+		
 				);
 				$selectors[' .uagb-post__text .uagb-post__cta:hover']                       = array(
 					'color'        => $attr['ctaHColor'],
@@ -3356,7 +3363,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return array(
 				' .uagb-post__inner-wrap' => array(
-					'padding' => ( $attr['contentPaddingMobile'] ) . 'px',
+					'padding-top' => UAGB_Helper::get_css_value( $attr[' paddingTopMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingRightMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $attr[' paddingBottomMobile'], $attr['mobilePaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $attr[' paddingLeftMobile'], $attr['mobilePaddingUnit']  ),
+				
+				),
+				' .uagb-post__cta a'=>  array(
+					'padding-top' => UAGB_Helper::get_css_value(  $attr['paddingBtnTopMobile'] , $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value(  $attr['paddingBtnBottomMobile'] , $attr['mobilePaddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value(  $attr['paddingBtnLeftMobile'] , $attr['mobilePaddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value(  $attr['paddingBtnRightMobile'] , $attr['mobilePaddingBtnUnit']  ),
 				),
 			);
 
@@ -3369,8 +3386,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
-			return array();
-
+			
+				return array(
+				' .uagb-post__inner-wrap' => array(
+					'padding-top' =>( $attr[' paddingTopTablet']. $attr['tabletPaddingUnit'] ),
+					'padding-bottom' =>( $attr[' paddingRightTablet']. $attr['tabletPaddingUnit'] ),
+					'padding-left' =>( $attr[' paddingBottomTablet']. $attr['tabletPaddingUnit']  ),
+					'padding-right' =>( $attr[' paddingLeftTablet']. $attr['tabletPaddingUnit']  ),
+				),
+				' .uagb-post__cta a'=>  array(
+					'padding-top' => UAGB_Helper::get_css_value(  $attr['paddingBtnTopTablet'] , $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value(  $attr['paddingBtnBottomTablet'] , $attr['tabletPaddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value(  $attr['paddingBtnLeftTablet'] , $attr['tabletPaddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value(  $attr['paddingBtnRightTablet'] , $attr['tabletPaddingBtnUnit']  ),
+				),
+			);
 		}
 		/**
 		 * Get Tabs CSS

@@ -118,6 +118,7 @@ function styling( props ) {
 		paginationBorderColor,
 		paginationBorderActiveColor,
 		paginationSpacing,
+		paginationSpacingUnit,
 		paginationAlignment,
 		
 		paddingBtnTop,
@@ -156,7 +157,39 @@ function styling( props ) {
 		contentPaddingTablet,
 		arrowColor,
 		arrowSize,
-		paginationType 
+		arrowSizeUnit,
+		paginationType,
+		paginationFontSizeUnit,
+		paginationFontSize,
+		paginationEventType,
+		paginationAlign,
+		paginationTextColor,
+		paginationMasonryBgColor,
+		paginationMasonryBorderStyle,
+		paginationMasonryBorderWidth,
+		paginationMasonryBorderRadius,
+		paginationMasonryBorderColor,
+		paginationButtonPaddingType,
+		paginationTextHoverColor,
+		paginationBgHoverColor,
+		paginationButtonPaddingTopTablet,
+		paginationButtonPaddingRightTablet,
+		paginationButtonPaddingBottomTablet,
+		paginationButtonPaddingLeftTablet,
+		paginationButtonPaddingTopMobile,
+		paginationButtonPaddingRightMobile,
+		paginationButtonPaddingBottomMobile,
+		paginationButtonPaddingLeftMobile,
+		paginationButtonPaddingTop,
+		paginationButtonPaddingRight,
+		paginationButtonPaddingBottom,
+		paginationButtonPaddingLeft,
+		mobilepaginationButtonPaddingType,
+		tabletpaginationButtonPaddingType,
+		loaderSize,
+		loaderSizeUnit,
+		loaderColor,
+		
 	} = props.attributes;
 	
 	let mobile_selectors = {};
@@ -200,7 +233,7 @@ function styling( props ) {
 			opacity: overlayOpacity / 100,
 		},
 		' .uagb-post-pagination-wrap': {
-			'margin-top': generateCSSUnit( paginationSpacing, 'px' ),
+			'margin-top': generateCSSUnit( paginationSpacing, paginationSpacingUnit ),
 			'text-align': paginationAlignment,
 		},
 	};
@@ -208,9 +241,9 @@ function styling( props ) {
 		selectors[
 			' .uagb-post__inner-wrap  > .uagb-post__image:first-child'
 		] = {
-			'margin-top': generateCSSUnit( -contentPadding, contentPaddingUnit ),
-			'margin-left': generateCSSUnit( -contentPadding, contentPaddingUnit ),
-			'margin-right': generateCSSUnit( -contentPadding, contentPaddingUnit ),
+			'margin-top': generateCSSUnit( -paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( -paddingLeft, contentPaddingUnit ),
+			'margin-right': generateCSSUnit( -paddingRight, contentPaddingUnit ),
 		};
 	}
 	if ( ! inheritFromTheme ) {
@@ -473,8 +506,8 @@ function styling( props ) {
 
 	selectors[ ' .slick-arrow svg' ] = {
 		fill: arrowColor,
-		height: generateCSSUnit( arrowSize, 'px' ),
-		width: generateCSSUnit( arrowSize, 'px' ),
+		height: generateCSSUnit( arrowSize, arrowSizeUnit ),
+		width: generateCSSUnit( arrowSize, arrowSizeUnit ),
 	};
 
 	if ( ! inheritFromTheme ) {
@@ -638,21 +671,21 @@ function styling( props ) {
 					'px'
 				),
 				'border-color': paginationMasonryBorderColor,
-				'font-size': generateCSSUnit( paginationFontSize, 'px' ),
+				'font-size': generateCSSUnit( paginationFontSize, paginationFontSizeUnit ),
 				'padding-top': generateCSSUnit(
-					vpaginationButtonPaddingDesktop,
+					paginationButtonPaddingTop,
 					paginationButtonPaddingType
 				),
 				'padding-bottom': generateCSSUnit(
-					vpaginationButtonPaddingDesktop,
+					paginationButtonPaddingBottom,
 					paginationButtonPaddingType
 				),
 				'padding-right': generateCSSUnit(
-					hpaginationButtonPaddingDesktop,
+					paginationButtonPaddingRight,
 					paginationButtonPaddingType
 				),
 				'padding-left': generateCSSUnit(
-					hpaginationButtonPaddingDesktop,
+					paginationButtonPaddingLeft,
 					paginationButtonPaddingType
 				),
 			};
@@ -666,47 +699,47 @@ function styling( props ) {
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
 			] = {
 				'padding-top': generateCSSUnit(
-					vpaginationButtonPaddingMobile,
-					paginationButtonPaddingType
+					paginationButtonPaddingTopMobile,
+					mobilepaginationButtonPaddingType
 				),
 				'padding-bottom': generateCSSUnit(
-					vpaginationButtonPaddingMobile,
-					paginationButtonPaddingType
+					paginationButtonPaddingRightMobile,
+					mobilepaginationButtonPaddingType
 				),
 				'padding-right': generateCSSUnit(
-					hpaginationButtonPaddingMobile,
-					paginationButtonPaddingType
+					paginationButtonPaddingBottomMobile,
+					mobilepaginationButtonPaddingType
 				),
 				'padding-left': generateCSSUnit(
-					hpaginationButtonPaddingMobile,
-					paginationButtonPaddingType
+					paginationButtonPaddingLeftMobile,
+					mobilepaginationButtonPaddingType
 				),
 			};
 			tablet_selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
 			] = {
 				'padding-top': generateCSSUnit(
-					vpaginationButtonPaddingTablet,
-					paginationButtonPaddingType
+					paginationButtonPaddingTopTablet,
+					tabletpaginationButtonPaddingType
 				),
 				'padding-bottom': generateCSSUnit(
-					vpaginationButtonPaddingTablet,
-					paginationButtonPaddingType
+					paginationButtonPaddingRightTablet,
+					tabletpaginationButtonPaddingType
 				),
 				'padding-right': generateCSSUnit(
-					hpaginationButtonPaddingTablet,
-					paginationButtonPaddingType
+					paginationButtonPaddingBottomTablet,
+					tabletpaginationButtonPaddingType
 				),
 				'padding-left': generateCSSUnit(
-					hpaginationButtonPaddingTablet,
-					paginationButtonPaddingType
+					paginationButtonPaddingLeftTablet,
+					tabletpaginationButtonPaddingType
 				),
 			};
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				width: generateCSSUnit( loaderSize, 'px' ),
-				height: generateCSSUnit( loaderSize, 'px' ),
+				width: generateCSSUnit( loaderSize, loaderSizeUnit ),
+				height: generateCSSUnit( loaderSize, loaderSizeUnit ),
 				'background-color': loaderColor,
 			};
 		}

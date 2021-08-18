@@ -14,19 +14,18 @@
  import SpacingControl from "../../../components/spacing-control";
  import Range from "../../../components/range/Range.js";
  import ResponsiveSlider from "../../../components/responsive-slider";
- 
+ import MultiButtonsControl from "../../../components/multi-buttons-control";
+ import renderSVG from "@Controls/renderIcon";
  const MAX_POSTS_COLUMNS = 8;
  
  import {
 	 PanelBody,
-	 RangeControl,
 	 SelectControl,
 	 ToggleControl,
-	 TabPanel,
 	 ToolbarGroup,
 	 TextControl,
 	 RadioControl,
-	 Button,
+	 Icon,
  } from '@wordpress/components';
  
  import {
@@ -163,6 +162,7 @@
 		 paginationBorderColor,
 		 paginationBorderActiveColor,
 		 paginationSpacing,
+		 paginationSpacingUnit,
 		 paginationAlignment,
 		 paginationPrevText,
 		 paginationNextText,
@@ -217,8 +217,6 @@
 		mobilePaddingUnit,
 		tabletPaddingUnit,
 	 } = attributes;
- 
-	 const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
  
 	 const onSelectPostType = ( value ) => {
 		 setAttributes( { postType: value } );
@@ -614,44 +612,46 @@
 							},
 						] }
 					/>
-					<h2>
-						{ ' ' }
-						{ __(
-							'Pagination Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</h2>
-					<Button
-						key={ 'left' }
-						icon="editor-alignleft"
-						label="Left"
-						onClick={ () =>
-							setAttributes( { paginationAlignment: 'left' } )
-						}
-						aria-pressed={ 'left' === paginationAlignment }
-						isPrimary={ 'left' === paginationAlignment }
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__('Pagination Alignment', "ultimate-addons-for-gutenberg")}
+						data={{
+							value: paginationAlignment,
+							label: "paginationAlignment",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+							{
+								value: "left",
+								icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+								tooltip: __(
+									"Left",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								value: "center",
+								icon: (
+									<Icon icon={renderSVG("fa fa-align-center")} />
+								),
+								tooltip: __(
+									"Center",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								value: "right",
+								icon: (
+									<Icon icon={renderSVG("fa fa-align-right")} />
+								),
+								tooltip: __(
+									"Right",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						showIcons={true}
 					/>
-					<Button
-						key={ 'center' }
-						icon="editor-aligncenter"
-						label="Right"
-						onClick={ () =>
-							setAttributes( { paginationAlignment: 'center' } )
-						}
-						aria-pressed={ 'center' === paginationAlignment }
-						isPrimary={ 'center' === paginationAlignment }
-					/>
-					<Button
-						key={ 'right' }
-						icon="editor-alignright"
-						label="Right"
-						onClick={ () =>
-							setAttributes( { paginationAlignment: 'right' } )
-						}
-						aria-pressed={ 'right' === paginationAlignment }
-						isPrimary={ 'right' === paginationAlignment }
-					/>
-					
 					{ paginationLayout == 'filled' && (
 						<>
 							<AdvancedPopColorControl
@@ -749,6 +749,10 @@
 								) }
 								min={0}
 								max={500}
+								unit={{
+									value: paginationSpacingUnit,
+									label: "paginationSpacingUnit",
+								}}
 							/>
 					<TextControl
 						label={ __(
@@ -791,7 +795,7 @@
 				{ displayPostImage == true && (
 					<SelectControl
 						label={ __(
-							'Image Sizes',
+							'Sizes',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ imgSize }
@@ -804,7 +808,7 @@
 				{ displayPostImage == true && (
 					<SelectControl
 						label={ __(
-							'Image Position',
+							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ imgPosition }
@@ -1165,7 +1169,7 @@
 			/>
 			<Range
 				label={__(
-					'Image Bottom Spacing',
+					'Bottom Spacing',
 					"ultimate-addons-for-gutenberg"
 				)}
 				setAttributes={setAttributes}
@@ -1819,7 +1823,8 @@
 					</InspectorTabs>
 				</InspectorControls>
 	}
-
+	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+ 
 	 if ( ! hasPosts ) {
 		 return <>{ inspectorControlsSettings() }</>;
 	 }
