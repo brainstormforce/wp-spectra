@@ -1,8 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import { SelectControl, BaseControl, Button } from "@wordpress/components";
-import { MediaUpload } from "@wordpress/block-editor";
+import { SelectControl } from "@wordpress/components";
 import styles from "./editor.lazy.scss";
 import GradientSettings from "../../components/gradient-settings";
 import React, { useLayoutEffect } from "react";

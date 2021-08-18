@@ -21,7 +21,6 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from "@wordpress/block-editor";
 
 import {
@@ -29,8 +28,6 @@ import {
 	SelectControl,
 	ToggleControl,
 	TextControl,
-	BaseControl,
-	Button,
 } from "@wordpress/components";
 
 let imageSizeOptions = [
