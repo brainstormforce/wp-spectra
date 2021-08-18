@@ -598,6 +598,7 @@
 						options={ [
 							{
 								value: 'border',
+								title: 'border',
 								label: __(
 									'Border',
 									'ultimate-addons-for-gutenberg'
@@ -605,6 +606,7 @@
 							},
 							{
 								value: 'filled',
+								title: 'filled',
 								label: __(
 									'Filled',
 									'ultimate-addons-for-gutenberg'

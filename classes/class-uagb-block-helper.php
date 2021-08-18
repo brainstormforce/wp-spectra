@@ -3027,7 +3027,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// Pagination CSS.
 			$selectors[' .uagb-post-pagination-wrap'] = array(
 
-				'margin-top' => UAGB_Helper::get_css_value( $attr['paginationSpacing'], 'px' ),
+				'margin-top' => UAGB_Helper::get_css_value( $attr['paginationSpacing'], $attr['paginationSpacingUnit'] ),
 				'text-align' => $attr['paginationAlignment'],
 			);
 			if ( 'filled' === $attr['paginationLayout'] ) {
@@ -3250,11 +3250,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-bottom'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingRightTablet'],
+						$attr['paginationButtonPaddingBottomTablet'],
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-right'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingBottomTablet'],
+						$attr['paginationButtonPaddingRightTablet'],
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-left'=> UAGB_Helper::get_css_value(
@@ -3301,13 +3301,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_post_selectors( $attr ) {
 			$selectors = array(
 				' .uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit']  ),
 				),
 				' .uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), 'px' ),
+					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit']  ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit']  ),
+					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), $attr['columnGapUnit']  ),
 				),
 				' .uagb-post__inner-wrap'    => array(
 					'background' => $attr['bgColor'],
@@ -3399,9 +3399,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return array(
 				' .uagb-post__inner-wrap' => array(
 					'padding-top' => UAGB_Helper::get_css_value( $attr[' paddingTopMobile'], $attr['mobilePaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingRightMobile'], $attr['mobilePaddingUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value( $attr[' paddingBottomMobile'], $attr['mobilePaddingUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr[' paddingLeftMobile'], $attr['mobilePaddingUnit']  ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $attr[' paddingLeftMobile'], $attr['mobilePaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $attr[' paddingRightMobile'], $attr['mobilePaddingUnit']  ),
 				
 				),
 				' .uagb-post__cta a'=>  array(
@@ -3425,9 +3425,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				return array(
 				' .uagb-post__inner-wrap' => array(
 					'padding-top' =>( $attr[' paddingTopTablet']. $attr['tabletPaddingUnit'] ),
-					'padding-bottom' =>( $attr[' paddingRightTablet']. $attr['tabletPaddingUnit'] ),
-					'padding-left' =>( $attr[' paddingBottomTablet']. $attr['tabletPaddingUnit']  ),
-					'padding-right' =>( $attr[' paddingLeftTablet']. $attr['tabletPaddingUnit']  ),
+					'padding-bottom' =>( $attr[' paddingBottomTablet']. $attr['tabletPaddingUnit'] ),
+					'padding-left' =>( $attr[' paddingLeftTablet']. $attr['tabletPaddingUnit']  ),
+					'padding-right' =>( $attr[' paddingRightTablet']. $attr['tabletPaddingUnit']  ),
 				),
 				' .uagb-post__cta a'=>  array(
 					'padding-top' => UAGB_Helper::get_css_value(  $attr['paddingBtnTopTablet'] , $attr['tabletPaddingBtnUnit'] ),
