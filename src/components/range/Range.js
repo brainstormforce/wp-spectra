@@ -188,7 +188,7 @@ const Range = (props) => {
 	};
 
 	return (
-		<div className="components-base-control">
+		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
 				<div className="uag-responsive-label-wrap">
 					{props.label && (
