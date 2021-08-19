@@ -6,6 +6,7 @@ import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/Inspector
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import ResponsiveSlider from "../../components/responsive-slider";
+import Range from "../../components/range/Range.js";
 
 import {
 	InspectorControls,
@@ -16,7 +17,6 @@ import {
 
 import {
 	PanelBody,
-	RangeControl,
 	ToggleControl,
 	SelectControl,
 	ToolbarGroup,
@@ -100,13 +100,19 @@ const Settings = ( props ) => {
 					"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
 				) }
 			/>
-			<RangeControl
-				label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
-				value={ speed }
-				onChange={ ( value ) => setAttributes( { speed: value } ) }
-				min={ 1 }
-				max={ 50 }
-				allowReset
+			<Range
+				label={__(
+					"Speed",
+					"ultimate-addons-for-gutenberg"
+				)}
+				setAttributes={setAttributes}
+				value={speed}
+				onChange={(value) =>
+					setAttributes({ speed: value })
+				}
+				min={1}
+				max={50}
+				displayUnit={false}
 			/>
 			{ loop && (
 				<ToggleControl
