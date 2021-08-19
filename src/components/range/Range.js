@@ -31,6 +31,7 @@ const Range = (props) => {
 	let defaultCache = {
 		value: props.value,
 		resetDisabled: true,
+		unit: props.unit.value,
 	};
 
 	const [cachedValue, setCacheValue] = useState(defaultCache);
@@ -43,6 +44,10 @@ const Range = (props) => {
 			cachedValueUpdate["value"] = value;
 			setCacheValue(cachedValueUpdate);
 		}
+		if (undefined !== props.unit.value) {
+			cachedValueUpdate["unit"] = props.unit.value;
+			setCacheValue(cachedValueUpdate);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -53,6 +58,18 @@ const Range = (props) => {
 			setCacheValue(cachedValueUpdate);
 		}
 	}, [props.value]);
+
+	useEffect(() => {
+		let cachedValueUpdate = { ...cachedValue };
+
+		if (
+			JSON.stringify(props.unit.value) !==
+			JSON.stringify(cachedValueUpdate.unit)
+		) {
+			cachedValueUpdate["resetDisabled"] = false;
+			setCacheValue(cachedValueUpdate);
+		}
+	}, [props.unit]);
 
 	const {
 		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
@@ -142,6 +159,7 @@ const Range = (props) => {
 
 		setValue(cachedValueUpdate.value);
 		props.onChange(cachedValueUpdate.value);
+		onChangeUnits(cachedValueUpdate.unit);
 
 		cachedValueUpdate["resetDisabled"] = true;
 		setCacheValue(cachedValueUpdate);
@@ -188,7 +206,7 @@ const Range = (props) => {
 	};
 
 	return (
-		<div className="components-base-control">
+		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
 				<div className="uag-responsive-label-wrap">
 					{props.label && (

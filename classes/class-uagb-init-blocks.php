@@ -317,7 +317,8 @@ class UAGB_Init_Blocks {
 		// Common Editor style.
 		wp_enqueue_style(
 			'uagb-block-common-editor-css', // Handle.
-			UAGB_URL . 'admin/assets/common-block-editor.css', // Block editor CSS.
+			// UAGB_URL . 'admin/assets/common-block-editor.css', // Block editor CSS.
+			UAGB_URL . 'dist/common-editor.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
