@@ -319,11 +319,6 @@ const Settings = ( props ) => {
 					) }
 				/>
 				{ showTotaltime && (
-					<PanelBody
-						title={ __( 'Time', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ true }
-						className="uagb-editor-howto-timepanel"
-					>
 						<>
 							<Range
 								label={__(
@@ -396,7 +391,6 @@ const Settings = ( props ) => {
 								displayUnit={false}
 							/>
 						</>
-					</PanelBody>
 				) }
 				</PanelBody>
 		);
