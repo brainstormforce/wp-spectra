@@ -18,7 +18,6 @@ import {
 import {
 	PanelBody,
 	ToggleControl,
-	SelectControl,
 	ToolbarGroup,
 	Icon,
 } from '@wordpress/components';
@@ -52,37 +51,63 @@ const Settings = ( props ) => {
 		<PanelBody
 			initialOpen={ true }
 		>
-			<SelectControl
-				label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }
-				value={ playOn }
-				onChange={ ( value ) => setAttributes( { playOn: value } ) }
-				options={ [
+			<MultiButtonsControl
+				setAttributes={setAttributes}
+				label={__(
+					"Play On",
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					value: playOn,
+					label: "playOn",
+				}}
+				className="uagb-multi-button-alignment-control"
+				options={[
 					{
-						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+						value: "none",
+						label: __(
+							"Default",
+							"ultimate-addons-for-gutenberg"
+						),
+						tooltip: __(
+							'Default',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
-						value: 'hover',
+						value: "hover",
 						label: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+						tooltip: __(
 							'On Hover',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
-						value: 'click',
+						value: "click",
 						label: __(
+							"Click",
+							"ultimate-addons-for-gutenberg"
+						),
+						tooltip: __(
 							'On Click',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
-						value: 'scroll',
+						value: "scroll",
 						label: __(
+							"Viewport",
+							"ultimate-addons-for-gutenberg"
+						),
+						tooltip: __(
 							'Viewport',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
-				] }
+				]}
 				help={
 					'scroll' === playOn
 						? __(
