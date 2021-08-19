@@ -545,7 +545,7 @@ const Settings = ( props ) => {
 							setAttributes( { noTaxDisplaytext: value } )
 						}
 						help={ __(
-							'If Taxonomy Not Found',
+							'If taxonomy Not Found',
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
@@ -562,7 +562,7 @@ const Settings = ( props ) => {
 							showEmptyTaxonomy: ! showEmptyTaxonomy,
 						} )
 					}
-					help={ __( 'Show Empty Taxonomy in list ' ) }
+					help={ __( 'Show empty taxonomy in list ' ) }
 				/>
 				<ToggleControl
 					label={ __(
@@ -574,7 +574,7 @@ const Settings = ( props ) => {
 						setAttributes( { showCount: ! showCount } )
 					}
 					help={ __(
-						'Show Count of taxonomy ',
+						'Show count of taxonomy ',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
@@ -593,7 +593,7 @@ const Settings = ( props ) => {
 							} )
 						}
 						help={ __(
-							'Show Hierarchy of taxonomy ',
+							'Show hierarchy of taxonomy ',
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
@@ -1056,7 +1056,7 @@ const Settings = ( props ) => {
 	}
 	const separatorPanel = () => {
 		return (<PanelBody
-			title={ __( 'Seprator', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<Border
@@ -1075,7 +1075,7 @@ const Settings = ( props ) => {
 					value: seperatorThickness,
 					label: "seperatorThickness",
 					title: __(
-						"Radius",
+						"Thickness",
 						"ultimate-addons-for-gutenberg"
 					),
 				}}
