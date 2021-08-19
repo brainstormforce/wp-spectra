@@ -32,6 +32,22 @@
 	margin-bottom: 0;
 }*/
 
+/* Reset CSS*/
+.components-panel__body
+	.uagb-control__header
+	.uagb-control__actions
+	.uagb-reset {
+	padding: 0;
+	margin-right: 4px;
+}
+/* Spacing control Units CSS*/
+.components-panel__body
+	.uagb-control__header
+	.uagb-control__actions
+	.uagb-spacing-control__units {
+	display: flex;
+	align-items: center;
+}
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	z-index: unset;
