@@ -538,7 +538,7 @@ const Settings = ( props ) => {
 			<>
 				<AdvancedPopColorControl
 					label={__(
-						"Text Hover Color",
+						"Text Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={ctaLinkHoverColor ? ctaLinkHoverColor : ""}
@@ -548,7 +548,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						"Background Hover Color",
+						"Background Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={ctaBgHoverColor ? ctaBgHoverColor : ""}
@@ -565,7 +565,7 @@ const Settings = ( props ) => {
 			<>
 				<AdvancedPopColorControl
 					label={__(
-						"CTA Text Color",
+						"Text Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={ctaBtnLinkColor ? ctaBtnLinkColor : ""}
@@ -581,7 +581,7 @@ const Settings = ( props ) => {
 			<>
 				<AdvancedPopColorControl
 					label={__(
-						"CTA Text Hover Color",
+						"Text Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={ctaLinkHoverColor ? ctaLinkHoverColor : ""}
@@ -674,9 +674,6 @@ const Settings = ( props ) => {
 				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<h2>
-					{ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
 				<TypographyControl
 					label={ __(
 						'Typography',
