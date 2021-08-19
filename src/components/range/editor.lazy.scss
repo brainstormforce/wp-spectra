@@ -1,5 +1,4 @@
 .uag-range-control {
-
 	.uagb-control__header {
 		justify-content: space-between;
 		margin-bottom: 5px;
@@ -97,6 +96,7 @@
 		}
 		.components-number-control {
 			width: 35%;
+			margin-left: 10px;
 			.components-input-control__input {
 				padding: 0 4px !important;
 				text-align: center;
@@ -104,7 +104,6 @@
 		}
 	}
 }
-
 
 /*.components-panel__body {
 	.components-font-size-picker__controls {
