@@ -8,6 +8,13 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import ColumnResponsive from '@Components/typography/column-responsive';
+import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "../../components/spacing-control";
+import Border from "../../components/border";
 
 import {
 	BlockControls,
@@ -550,7 +557,7 @@ const Settings = ( props ) => {
 						if ( 'normal' === tabName.name ) {
 							tabout_color = (
 								<>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Title Color',
 											'ultimate-addons-for-gutenberg'
@@ -572,8 +579,18 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Title Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={titleColor ? titleColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ titleColor: value })
+										}
 									/>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Icon Color',
 											'ultimate-addons-for-gutenberg'
@@ -595,8 +612,18 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Icon Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={iconColor ? iconColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ iconColor: value })
+										}
 									/>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Description Color',
 											'ultimate-addons-for-gutenberg'
@@ -618,13 +645,23 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Description Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={prefixColor ? prefixColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ prefixColor: value })
+										}
 									/>
 								</>
 							);
 						} else {
 							tabout_color = (
 								<>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Title Hover Color',
 											'ultimate-addons-for-gutenberg'
@@ -646,8 +683,18 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Title Hover Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={titleHoverColor ? titleHoverColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ titleHoverColor: value })
+										}
 									/>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Icon Hover Color',
 											'ultimate-addons-for-gutenberg'
@@ -669,8 +716,18 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Icon Hover Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={iconHoverColor ? iconHoverColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ iconHoverColor: value })
+										}
 									/>
-									<p className="uagb-setting-label">
+									{/* <p className="uagb-setting-label">
 										{ __(
 											'Description Hover Color',
 											'ultimate-addons-for-gutenberg'
@@ -692,6 +749,16 @@ const Settings = ( props ) => {
 											} )
 										}
 										allowReset
+									/> */}
+									<AdvancedPopColorControl
+										label={__(
+											"Description Hover Color",
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={prefixHoverColor ? prefixHoverColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ prefixHoverColor: value })
+										}
 									/>
 								</>
 							);
@@ -1100,155 +1167,49 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __(
-						'Border Style',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { borderStyle: value } )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: "borderStyle",
+						title: __(
+							"Border Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: "borderWidth",
+						title: __(
+							"Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: "borderRadius",
+						title: __(
+							"Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: "borderColor",
+						title: __(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: borderHoverColor,
+						label: "borderHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
 				/>
-				{ 'none' !== borderStyle && (
-					<RangeControl
-						label={ __(
-							'Border Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ borderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { borderWidth: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				) }
-				<RangeControl
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 1000 }
-					allowReset
-				/>
-				{ 'none' !== borderStyle && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ { backgroundColor: borderColor } }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ borderColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { borderColor: colorValue } )
-							}
-							allowReset
-						/>
-						<p className="uagb-setting-label">
-							{ __(
-								'Border Hover Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: borderHoverColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ borderHoverColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									borderHoverColor: colorValue,
-								} )
-							}
-							allowReset
-						/>
-					</>
-				) }
 			</PanelBody>
 		);
 	};
@@ -1258,10 +1219,17 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			{ linkControl }
 			<InspectorControls>
-				{ generalSettings() }
-				{ contentSettings() }
-				{ backgroundSettings() }
-				{ borderSettings() }
+				<InspectorTabs>
+					<InspectorTab {...UAGTabs.general}>
+					{ generalSettings() }
+					{ contentSettings() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.style}>
+					{ backgroundSettings() }
+					{ borderSettings() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{ loadTitleGoogleFonts }
 			{ loadPrefixGoogleFonts }
