@@ -126,26 +126,7 @@ const Settings = ( props ) => {
 		imageMarginUnit,
 		spacingLink,
 	} = attributes;
-
-	// if ( 'above' == imgPosition ) {
-	// 	if ( 'center' == align ) {
-	// 		setAttributes({ imageLeftMargin: '' });
-	// 		setAttributes({ imageRightMargin: '' });
-	// 		setAttributes({ imageMarginLeftMobile: '' });
-	// 		setAttributes({ imageMarginRightMobile: '' });
-	// 		setAttributes({ imageMarginLeftTablet: '' });
-	// 		setAttributes({ imageMarginRightTablet: '' });
-	// 	} else if ( 'left' == align ) {
-	// 		setAttributes({ imageRightMargin: '' });
-	// 		setAttributes({ imageMarginRightMobile: '' });
-	// 		setAttributes({ imageMarginRightTablet: '' });
-	// 	} else if ( 'right' == align ) {
-	// 		setAttributes({ imageLeftMargin: '' });
-	// 		setAttributes({ imageMarginLeftMobile: '' });
-	// 		setAttributes({ imageMarginLeftTablet: '' });
-	// 	}
-	// }
-
+	
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
 		for ( const item in sizes ) {

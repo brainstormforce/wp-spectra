@@ -66,6 +66,13 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
+	let autoImageLeftMargin        = ( 'auto' === imageLeftMargin ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+	let autoImageRightMargin       = ( 'auto' === imageRightMargin ) ? 'auto' : generateCSSUnit( imageRightMargin, imageMarginUnit );
+	let autoImageLeftMarginMobile  = ( 'auto' === imageMarginLeftMobile ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+	let autoImageRightMarginMobile = ( 'auto' === imageMarginRightMobile ) ? 'auto' : generateCSSUnit( imageMarginRightMobile, imageMarginUnit );
+	let autoImageLeftMarginTablet  = ( 'auto' === imageMarginLeftTablet ) ? 'auto' : generateCSSUnit( imageMarginLeftTablet, imageMarginUnit );
+	let autoImageRightMarginTablet = ( 'auto' === imageMarginRightTablet ) ? 'auto' : generateCSSUnit( imageMarginRightTablet, imageMarginUnit )
+
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
@@ -135,17 +142,11 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
+			'margin-left': autoImageLeftMargin,
+			'margin-right': autoImageRightMargin,
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
-
-	if( 'auto' === imageLeftMargin || 'auto' === imageRightMargin ){
-		selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-	}else{
-		selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageLeftMargin, imageMarginUnit );
-		selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageRightMargin, imageMarginUnit );
-	}
 
 	if ( 'above' != imgPosition ) {
 		if ( 'middle' == imgAlign ) {
@@ -198,16 +199,10 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageMarginTopMobile, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, imageMarginUnit ),
+			'margin-left': autoImageLeftMarginMobile,
+			'margin-right': autoImageRightMarginMobile,
 		},
 	};
-
-	if( 'auto' === imageMarginLeftMobile || 'auto' === imageMarginRightMobile ){
-		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-	}else{
-		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
-		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageMarginRightMobile, imageMarginUnit );
-	}
 
 	tabletSelectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -241,16 +236,10 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageMarginTopTablet, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, imageMarginUnit ),
+			'margin-left': autoImageLeftMarginTablet,
+			'margin-right': autoImageRightMarginTablet,
 		},
 	};
-
-	if( 'auto' === imageMarginLeftTablet || 'auto' === imageMarginRightTablet ){
-		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-	}else{
-		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageMarginLeftTablet, imageMarginUnit );
-		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageMarginRightTablet, imageMarginUnit );
-	}
 
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
