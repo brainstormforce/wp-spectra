@@ -39,9 +39,8 @@
 			fill: #fff;
 		}
 	}
-	button.uagb-multi-button.is-secondary {
-		font-size: 13px;
-		// font-family:'Inter';
+	button.uagb-multi-button {
+		font-size: 11px;
 		font-weight: 400;
 	}
 	svg {
@@ -52,7 +51,9 @@
 
 .uagb-multi-buttons-control {
 	.uagb-multi-buttons-control__label {
-		line-height: 1.8;
+		line-height: 1.4;
+		display: inline-block;
+		padding-bottom: 5px;
 	}
 	.uagb-control__header {
 		display: flex;

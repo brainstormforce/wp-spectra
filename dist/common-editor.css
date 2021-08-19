@@ -43,6 +43,7 @@
 .uagb-inspector-tab .components-panel__body label,
 .uagb-extention-tab label {
   font-size: 13px;
+  line-height: 1.4;
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
