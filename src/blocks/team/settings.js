@@ -1,15 +1,16 @@
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import renderSVG from '@Controls/renderIcon';
+import UAGIconPicker from "../../components/icon-picker";
+import renderSVG from "@Controls/renderIcon";
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
 import SpacingControl from "../../components/spacing-control";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 let imageSizeOptions = [
 	{
@@ -33,6 +34,7 @@ import {
 	Button,
 	TextControl,
 	ToggleControl,
+	Icon
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -218,7 +220,38 @@ const Settings = ( props ) => {
 
 	const getImagePanelBody = () => {
 		return (
-			<PanelBody title={ __( 'Image' ) }>
+			<PanelBody >
+				<SelectControl
+					label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
+					value={ tag }
+					onChange={ ( value ) => setAttributes( { tag: value } ) }
+					options={ [
+						{
+							value: 'h1',
+							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h2',
+							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h3',
+							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h4',
+							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h5',
+							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h6',
+							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+				/>
 				<div className="uagb-bg-image">
 				<MediaUpload
 					title={__(
@@ -244,6 +277,7 @@ const Settings = ( props ) => {
 						</Button>
 					) }
 				/>
+				</div>
 				{ image && (
 					<Button
 						className="uagb-rm-btn"
@@ -259,55 +293,70 @@ const Settings = ( props ) => {
 						) }
 					</Button>
 				) }
-				</div>
 				{ image && (
-					<SelectControl
-						label={ __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { imgPosition: value } )
-						}
-						options={ [
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__("Position", "ultimate-addons-for-gutenberg")}
+						data={{
+							value: imgPosition,
+							label: "imgPosition",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
-								value: 'above',
-								label: __(
-									'Above',
-									'ultimate-addons-for-gutenberg'
+								value: "left",
+								icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+								tooltip: __(
+									"Left",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
-								value: 'left',
-								label: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
+								value: "above",
+								icon: (
+									<Icon icon={renderSVG("fa fa-align-center")} />
+								),
+								tooltip: __(
+									"Above",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
-								value: 'right',
-								label: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
+								value: "right",
+								icon: (
+									<Icon icon={renderSVG("fa fa-align-right")} />
+								),
+								tooltip: __(
+									"Right",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
-						] }
+						]}
+						showIcons={true}
 					/>
 				) }
 				{ imgPosition != 'above' && image && (
-					<SelectControl
-						label={ __(
-							'Stack on',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ stack }
-						options={ [
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							"Stack On",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: stack,
+							label: "stack",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'none',
 								label: __(
 									'None',
 									'ultimate-addons-for-gutenberg'
+								),
+								tooltip: __(
+									"None",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
@@ -316,6 +365,10 @@ const Settings = ( props ) => {
 									'Tablet',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Tablet",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
 							{
 								value: 'mobile',
@@ -323,32 +376,36 @@ const Settings = ( props ) => {
 									'Mobile',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Mobile",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
-						] }
-						help={ __(
-							'Note: Choose on what breakpoint the Team will stack.'
-						) }
-						onChange={ ( value ) =>
-							setAttributes( { stack: value } )
-						}
+						]}
 					/>
 				) }
 				{ image && (
-					<SelectControl
-						label={ __(
-							'Image Style',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgStyle }
-						onChange={ ( value ) =>
-							setAttributes( { imgStyle: value } )
-						}
-						options={ [
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							"Style",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: imgStyle,
+							label: "imgStyle",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'normal',
 								label: __(
 									'Normal',
 									'ultimate-addons-for-gutenberg'
+								),
+								tooltip: __(
+									"Normal",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
@@ -357,6 +414,10 @@ const Settings = ( props ) => {
 									'Circle',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Circle",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
 							{
 								value: 'square',
@@ -364,27 +425,37 @@ const Settings = ( props ) => {
 									'Square',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Square",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
-						] }
+						]}
 					/>
 				) }
 
 				{ imgPosition && imgPosition !== 'above' && image && (
-					<SelectControl
-						label={ __(
-							'Vertical Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgAlign }
-						onChange={ ( value ) =>
-							setAttributes( { imgAlign: value } )
-						}
-						options={ [
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							"Vertical Alignment",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: imgAlign,
+							label: "imgAlign",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'top',
 								label: __(
 									'Top',
 									'ultimate-addons-for-gutenberg'
+								),
+								tooltip: __(
+									"Top",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
@@ -393,8 +464,12 @@ const Settings = ( props ) => {
 									'Middle',
 									'ultimate-addons-for-gutenberg'
 								),
+								tooltip: __(
+									"Middle",
+									"ultimate-addons-for-gutenberg"
+								),
 							},
-						] }
+						]}
 					/>
 				) }
 				{ image && (
@@ -462,74 +537,49 @@ const Settings = ( props ) => {
 								} )
 							}
 						/>
-						<PanelBody
-							title={ __(
-								'Twitter',
-								'ultimate-addons-for-gutenberg'
-							) }
-							initialOpen={ false }
-						>
+						<hr className="uagb-editor__separator" />
+						<p className="components-base-control__label">
+								{ __(
+									'Twitter',
+									'ultimate-addons-for-gutenberg'
+								) }
+							</p>
+							<UAGIconPicker
+								label={__("Icon", "ultimate-addons-for-gutenberg")}
+								value={twitterIcon}
+								onChange={(value) => setAttributes({ twitterIcon: value })}
+							/>
+							{ twitterIcon &&
+							<>
+								<p className="components-base-control__label">
+									{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
+								</p>
+								<TextControl
+									value={ twitterLink }
+									onChange={ ( value ) =>
+										setAttributes( { twitterLink: value } )
+									}
+									placeholder={ __(
+										'Enter Twitter URL',
+										'ultimate-addons-for-gutenberg'
+									) }
+								/>
+							</>
+							}
+							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
-									'Icon',
+									'Facebook',
 									'ultimate-addons-for-gutenberg'
 								) }
 							</p>
-							<FontIconPicker
-								icons={ wp.UAGBSvgIcons }
-								renderFunc={ renderSVG }
-								theme="default"
-								value={ twitterIcon }
-								onChange={ ( value ) =>
-									setAttributes( { twitterIcon: value } )
-								}
-								isMulti={ false }
-								noSelectedPlaceholder={ __(
-									'Select Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
+							<UAGIconPicker
+								label={__("Icon", "ultimate-addons-for-gutenberg")}
+								value={fbIcon}
+								onChange={(value) => setAttributes({ fbIcon: value })}
 							/>
-							<p className="components-base-control__label">
-								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
-							</p>
-							<TextControl
-								value={ twitterLink }
-								onChange={ ( value ) =>
-									setAttributes( { twitterLink: value } )
-								}
-								placeholder={ __(
-									'Enter Twitter URL',
-									'ultimate-addons-for-gutenberg'
-								) }
-							/>
-						</PanelBody>
-						<PanelBody
-							title={ __(
-								'Facebook',
-								'ultimate-addons-for-gutenberg'
-							) }
-							initialOpen={ false }
-						>
-							<p className="components-base-control__label">
-								{ __(
-									'Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</p>
-							<FontIconPicker
-								icons={ wp.UAGBSvgIcons }
-								renderFunc={ renderSVG }
-								theme="default"
-								value={ fbIcon }
-								onChange={ ( value ) =>
-									setAttributes( { fbIcon: value } )
-								}
-								isMulti={ false }
-								noSelectedPlaceholder={ __(
-									'Select Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
-							/>
+							{ fbIcon &&
+							<>
 							<p className="components-base-control__label">
 								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 							</p>
@@ -543,34 +593,22 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 							/>
-						</PanelBody>
-						<PanelBody
-							title={ __(
-								'LinkedIn',
-								'ultimate-addons-for-gutenberg'
-							) }
-							initialOpen={ false }
-						>
+							</>
+							}
+							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
-									'Icon',
+									'LinkedIn',
 									'ultimate-addons-for-gutenberg'
 								) }
 							</p>
-							<FontIconPicker
-								icons={ wp.UAGBSvgIcons }
-								renderFunc={ renderSVG }
-								noSelectedPlaceholder={ __(
-									'Select Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
-								theme="default"
-								value={ linkedinIcon }
-								onChange={ ( value ) =>
-									setAttributes( { linkedinIcon: value } )
-								}
-								isMulti={ false }
+							<UAGIconPicker
+								label={__("Icon", "ultimate-addons-for-gutenberg")}
+								value={linkedinIcon}
+								onChange={(value) => setAttributes({ linkedinIcon: value })}
 							/>
+							{ linkedinIcon &&
+							<>
 							<p className="components-base-control__label">
 								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 							</p>
@@ -584,34 +622,22 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 							/>
-						</PanelBody>
-						<PanelBody
-							title={ __(
-								'Pinterest',
-								'ultimate-addons-for-gutenberg'
-							) }
-							initialOpen={ false }
-						>
+							</>
+							}
+							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
-									'Icon',
+									'Pinterest',
 									'ultimate-addons-for-gutenberg'
 								) }
 							</p>
-							<FontIconPicker
-								icons={ wp.UAGBSvgIcons }
-								renderFunc={ renderSVG }
-								noSelectedPlaceholder={ __(
-									'Select Icon',
-									'ultimate-addons-for-gutenberg'
-								) }
-								theme="default"
-								value={ pinIcon }
-								onChange={ ( value ) =>
-									setAttributes( { pinIcon: value } )
-								}
-								isMulti={ false }
+							<UAGIconPicker
+								label={__("Icon", "ultimate-addons-for-gutenberg")}
+								value={pinIcon}
+								onChange={(value) => setAttributes({ pinIcon: value })}
 							/>
+							{ pinIcon &&
+							<>
 							<p className="components-base-control__label">
 								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }
 							</p>
@@ -625,7 +651,8 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 							/>
-						</PanelBody>
+							</>
+							}
 					</>
 				) }
 			</PanelBody>
@@ -641,37 +668,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>	
-				<SelectControl
-					label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
 				<AdvancedPopColorControl
 					label={__(
 						"Color",

@@ -3,6 +3,30 @@ const paths = require( './paths' );
 const fs = require( 'fs' );
 const sass = require( 'node-sass' );
 
+
+/* Generate common editor */
+sass.render( {
+		file: paths.pluginSrc + '/common-editor.scss',
+		outputStyle: 'expanded',
+		outFile: paths.pluginDist + '/common-editor.css',
+		sourceMap: false,
+	},
+	function ( error, result ) {
+		if ( null !== result && ! error ) {
+			fs.writeFile(
+				paths.pluginDist + '/common-editor.css',
+				result.css,
+				function ( err ) {
+
+					if ( err ) throw err;
+
+					console.log( "\n\nCommon editor generated!" );
+				}
+			);
+		}
+	}
+);
+
 //Generate individual block's css files
 fs.readdir( paths.pluginSrc + '/blocks', function ( error, items ) {
 	for ( let index = 0; index < items.length; index++ ) {
