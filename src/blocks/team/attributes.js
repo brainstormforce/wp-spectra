@@ -282,9 +282,11 @@ const attributes = {
 	},
 	imageLeftMargin: {
 		type: 'number',
+		default: 'auto',
 	},
 	imageRightMargin: {
 		type: 'number',
+		default: 'auto',
 	},
 	imageTopMargin: {
 		type: 'number',
@@ -296,25 +298,29 @@ const attributes = {
 		type: 'number'
 	},
 	imageMarginRightTablet: {
-		type: 'number'
+		type: 'number',
+		default: 'auto',
 	},
 	imageMarginBottomTablet: {
 		type: 'number'
 	},
 	imageMarginLeftTablet: {
-		type: 'number'
+		type: 'number',
+		default: 'auto',
 	},
 	imageMarginTopMobile: {
 		type: 'number'
 	},
 	imageMarginRightMobile: {
-		type: 'number'
+		type: 'number',
+		default: 'auto',
 	},
 	imageMarginBottomMobile: {
 		type: 'number'
 	},
 	imageMarginLeftMobile: {
-		type: 'number'
+		type: 'number',
+		default: 'auto',
 	},
 	imageMarginUnit: {
 		type: 'string',

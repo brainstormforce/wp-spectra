@@ -8,7 +8,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		tag,
-		align,
 		titleColor,
 		prefixColor,
 		descColor,
@@ -136,21 +135,16 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
-			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
-			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
-	
-	if ( 'above' == imgPosition ) {
-		if ( 'center' == align ) {
-			selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-			selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'left' == align ) {
-			selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'right' == align ) {
-			selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		}
+
+	if( 'auto' === imageLeftMargin || 'auto' === imageRightMargin ){
+		selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+		selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+	}else{
+		selectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageLeftMargin, imageMarginUnit );
+		selectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageRightMargin, imageMarginUnit );
 	}
 
 	if ( 'above' != imgPosition ) {
@@ -204,20 +198,15 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageMarginTopMobile, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, imageMarginUnit ),
-			'margin-left': generateCSSUnit( imageMarginLeftMobile, imageMarginUnit ),
-			'margin-right': generateCSSUnit( imageMarginRightMobile, imageMarginUnit ),
 		},
 	};
 
-	if ( 'above' == imgPosition ) {
-		if ( 'center' == align ) {
-			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'left' == align ) {
-			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'right' == align ) {
-			mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		}
+	if( 'auto' === imageMarginLeftMobile || 'auto' === imageMarginRightMobile ){
+		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+	}else{
+		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+		mobileSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageMarginRightMobile, imageMarginUnit );
 	}
 
 	tabletSelectors = {
@@ -252,20 +241,15 @@ function styling( props ) {
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageMarginTopTablet, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, imageMarginUnit ),
-			'margin-left': generateCSSUnit( imageMarginLeftTablet, imageMarginUnit ),
-			'margin-right': generateCSSUnit( imageMarginRightTablet, imageMarginUnit ),
 		},
 	};
 
-	if ( 'above' == imgPosition ) {
-		if ( 'center' == align ) {
-			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'left' == align ) {
-			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
-		} else if ( 'right' == align ) {
-			tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
-		}
+	if( 'auto' === imageMarginLeftTablet || 'auto' === imageMarginRightTablet ){
+		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = 'auto';
+		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = 'auto';
+	}else{
+		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-left' ] = generateCSSUnit( imageMarginLeftTablet, imageMarginUnit );
+		tabletSelectors[ ' .uagb-team__image-wrap' ][ 'margin-right' ] = generateCSSUnit( imageMarginRightTablet, imageMarginUnit );
 	}
 
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {

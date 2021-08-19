@@ -1919,21 +1919,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-team__image-wrap'            => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 					'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 				),
 			);
 
-			if ( 'above' === $attr['imgPosition'] ) {
-				if ( 'center' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
-					$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'left' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'right' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
-				}
+			if ( 'auto' === $image_left_margin || 'auto' === $image_right_margin ) {
+				$selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
+				$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+			} else {
+				$selectors[' .uagb-team__image-wrap']['margin-left']  = UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] );
+				$selectors[' .uagb-team__image-wrap']['margin-right'] = UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] );
 			}
 
 			if ( 'above' !== $attr['imgPosition'] && 'middle' === $attr['imgAlign'] ) {
@@ -1959,19 +1954,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-team__image-wrap'      => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['imageMarginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['imageMarginUnit'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['imageMarginUnit'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['imageMarginUnit'] ),
 				),
 			);
-			if ( 'above' === $attr['imgPosition'] ) {
-				if ( 'center' === $attr['align'] ) {
-					$m_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
-					$m_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'left' === $attr['align'] ) {
-					$m_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'right' === $attr['align'] ) {
-					$m_selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
-				}
+
+			if ( 'auto' === $attr['imageMarginLeftMobile'] || 'auto' === $attr['imageMarginRightMobile'] ) {
+				$m_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
+				$m_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+			} else {
+				$m_selectors[' .uagb-team__image-wrap']['margin-left']  = UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['imageMarginUnit'] );
+				$m_selectors[' .uagb-team__image-wrap']['margin-right'] = UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['imageMarginUnit'] );
 			}
 
 			$t_selectors = array(
@@ -1988,19 +1979,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-team__image-wrap'      => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['imageMarginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['imageMarginUnit'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['imageMarginUnit'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['imageMarginUnit'] ),
 				),
 			);
-			if ( 'above' === $attr['imgPosition'] ) {
-				if ( 'center' === $attr['align'] ) {
-					$t_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
-					$t_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'left' === $attr['align'] ) {
-					$t_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'right' === $attr['align'] ) {
-					$t_selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
-				}
+			if ( 'auto' === $attr['imageMarginLeftTablet'] || 'auto' === $attr['imageMarginRightTablet'] ) {
+				$t_selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
+				$t_selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+			} else {
+				$t_selectors[' .uagb-team__image-wrap']['margin-left']  = UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['imageMarginUnit'] );
+				$t_selectors[' .uagb-team__image-wrap']['margin-right'] = UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['imageMarginUnit'] );
 			}
 
 			$combined_selectors = array(
