@@ -200,11 +200,11 @@ const MultiButtonsControl = (props) => {
 			toggleResponsive(!displayResponsive);
 		};
 		return (
-			<div className="components-base-control">
+			<div className="components-base-control uagb-multi-buttons-control">
 				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
 					<div className="uag-responsive-label-wrap">
 						{label && (
-							<label className={"uagb-range-control__label"}>
+							<label className={"uagb-control__label"}>
 								{label}
 							</label>
 						)}
@@ -253,8 +253,8 @@ const MultiButtonsControl = (props) => {
 	}
 
 	return (
-		<div className="components-base-control">
-			<p className="uagb-multi-buttons-control__label">{label}</p>
+		<div className="components-base-control uagb-multi-buttons-control">
+			<label className="uagb-multi-buttons-control__label">{label}</label>
 			<ButtonGroup
 				className={`uagb-multi-button-button-group`}
 				aria-label={label}
