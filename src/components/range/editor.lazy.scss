@@ -12,7 +12,7 @@
 		}
 		.uagb-range-control__actions {
 			position: relative;
-			bottom: -8px;
+			top: 0px;
 			display: flex;
 			.uagb-reset {
 				padding: 0;
@@ -86,6 +86,7 @@
 			position: relative;
 			width: 100%;
 			margin-bottom: 0;
+			max-height: 30px;
 			.components-range-control__tooltip {
 				left: 45%;
 			}

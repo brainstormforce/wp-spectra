@@ -48,7 +48,7 @@ const MultiButtonsControl = (props) => {
 		setPreviewDeviceType(device);
 		toggleResponsive(!displayResponsive);
 	};
-
+	let iconsClass = showIcons ? "uag-multibutton-icons" : "";
 	const devicesSvgs = {
 		desktop: (
 			<svg
@@ -200,7 +200,9 @@ const MultiButtonsControl = (props) => {
 			toggleResponsive(!displayResponsive);
 		};
 		return (
-			<div className="components-base-control uagb-multi-buttons-control">
+			<div
+				className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+			>
 				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
 					<div className="uag-responsive-label-wrap">
 						{label && (
@@ -251,7 +253,9 @@ const MultiButtonsControl = (props) => {
 	}
 
 	return (
-		<div className="components-base-control uagb-multi-buttons-control">
+		<div
+			className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+		>
 			<span className="uagb-multi-buttons-control__label uag-control-label">
 				{label}
 			</span>
