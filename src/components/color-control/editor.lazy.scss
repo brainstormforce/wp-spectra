@@ -41,7 +41,8 @@
 
 .components-popover.uagb-popover-color.new-uagb-advanced-colors-pop
 	.components-popover__content {
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .components-circular-option-picker {
