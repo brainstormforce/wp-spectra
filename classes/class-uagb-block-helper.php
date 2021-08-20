@@ -5259,7 +5259,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( true === $attr['enableSeparator'] ) {
 
-				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] = array(
+				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']       = array(
 					'border-style'        => 'solid',
 					'border-top-color'    => $attr['borderColor'],
 					'border-top-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
@@ -5268,7 +5268,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-left-width'   => '0px',
 				);
 				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content:hover '] = array(
-					'border-top-color'    => $attr['borderHoverColor'],
+					'border-top-color' => $attr['borderHoverColor'],
 				);
 			}
 			if ( 'grid' === $attr['layout'] ) {
