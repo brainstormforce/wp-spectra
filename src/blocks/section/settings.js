@@ -3,12 +3,12 @@ import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import BoxShadowControl from "@Components/box-shadow";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Background from "../../components/background";
 import Border from "../../components/border";
-
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -96,26 +96,32 @@ const Settings = (props) => {
 	const getLayoutPanelBody = () => {
 		return (
 			<PanelBody
-				title={__("Layout", "ultimate-addons-for-gutenberg")}
 				initialOpen={true}
 			>
-				<SelectControl
-					label={__("Content Width", "ultimate-addons-for-gutenberg")}
-					value={contentWidth}
-					onChange={(value) => setAttributes({ contentWidth: value })}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Content Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: contentWidth,
+						label: "contentWidth",
+					}}
+					className="uagb-multi-button-alignment-control"
 					options={[
 						{
 							value: "boxed",
-							label: __("Boxed", "ultimate-addons-for-gutenberg"),
+							label: 'Boxed'
+
 						},
 						{
 							value: "full_width",
-							label: __(
-								"Full Width",
-								"ultimate-addons-for-gutenberg"
-							),
+							label: 'Full Width',
 						},
+
 					]}
+					showIcons={false}
 				/>
 				{contentWidth == "boxed" && (
 					<Range
@@ -125,27 +131,7 @@ const Settings = (props) => {
 						onChange={(value) => setAttributes({ width: value })}
 						min={0}
 						max={2000}
-						unit={{
-							value: widthUnit,
-							label: "widthUnit",
-						}}
-						units={[
-							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
-							},
-							{
-								name: __("Em", "ultimate-addons-for-gutenberg"),
-								unitValue: "em",
-							},
-							{
-								name: __("%", "ultimate-addons-for-gutenberg"),
-								unitValue: "%",
-							},
-						]}
+						displayUnit = {false}
 					/>
 				)}
 				{contentWidth !== "boxed" && (
@@ -177,6 +163,23 @@ const Settings = (props) => {
 							value: innerWidthType,
 							label: "innerWidthType",
 						}}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __("Em", "ultimate-addons-for-gutenberg"),
+								unitValue: "em",
+							},
+							{
+								name: __("%", "ultimate-addons-for-gutenberg"),
+								unitValue: "%",
+							},
+						]}
 					/>
 				)}
 				<SelectControl
@@ -556,15 +559,15 @@ const Settings = (props) => {
 	const generalSetting = () => {
 		return (
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 					{getLayoutPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 					{getSpacingPanelBody()}
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 		);

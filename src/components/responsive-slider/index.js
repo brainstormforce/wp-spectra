@@ -88,7 +88,7 @@ const ResponsiveSlider = (props) => {
 	);
 
 	return (
-		<div className="components-base-control uagb-size-type-field-tabs">
+		<div className="components-base-control uagb-responsive-range">
 			<div className="uagb-responsive-control-inner">
 				{output[deviceType] ? output[deviceType] : output.Desktop}
 			</div>
