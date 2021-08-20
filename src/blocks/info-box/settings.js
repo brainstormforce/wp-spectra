@@ -13,13 +13,15 @@ import InspectorTab, {
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGImage from "../../components/image";
+import MultiButtonsControl from "../../components/multi-buttons-control";
+
 $ = jQuery;
 
 import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from "@wordpress/block-editor";
 
 import {
@@ -27,8 +29,6 @@ import {
 	SelectControl,
 	ToggleControl,
 	TextControl,
-	BaseControl,
-	Button,
 } from "@wordpress/components";
 
 let imageSizeOptions = [
@@ -473,43 +473,11 @@ const Settings = (props) => {
 				)}
 				{source_type == "image" && (
 					<>
-						<BaseControl
-							className="editor-bg-image-control"
-							label={__("Image", "ultimate-addons-for-gutenberg")}
-							id={__("Image", "ultimate-addons-for-gutenberg")}
-						>
-							<div className="uagb-bg-image">
-							<MediaUpload
-								title={__(
-									"Select Image",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={onSelectImage}
-								allowedTypes={["image"]}
-								value={iconImage}
-								render={({ open }) => (
-									<Button isSecondary onClick={open}>
-										{imageName}
-									</Button>
-								)}
-							/>
-							</div>
-							{iconImage &&
-								iconImage.url !== "null" &&
-								iconImage.url !== "" && (
-									<Button
-										className="uagb-rm-btn"
-										onClick={onRemoveImage}
-										isLink
-										isDestructive
-									>
-										{__(
-											"Remove Image",
-											"ultimate-addons-for-gutenberg"
-										)}
-									</Button>
-								)}
-						</BaseControl>
+						<UAGImage
+							onSelectImage={onSelectImage}
+							backgroundImage={iconImage}
+							onRemoveImage={onRemoveImage}
+						/>
 						{iconImage &&
 							iconImage.url !== "null" &&
 							iconImage.url !== "" && (
@@ -563,6 +531,25 @@ const Settings = (props) => {
 							onChange={(value) =>
 								setAttributes({ headingTag: value })
 							}
+							options={[
+								{ value: "h1", label: __("H1") },
+								{ value: "h2", label: __("H2") },
+								{ value: "h3", label: __("H3") },
+								{ value: "h4", label: __("H4") },
+								{ value: "h5", label: __("H5") },
+								{ value: "h6", label: __("H6") },
+							]}
+						/>
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__(
+								"Title Tag (Temp)",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								value: headingTag,
+								label: "headingTag",
+							}}
 							options={[
 								{ value: "h1", label: __("H1") },
 								{ value: "h2", label: __("H2") },
@@ -735,7 +722,10 @@ const Settings = (props) => {
 				{ctaType !== "all" && ctaType !== "none" && (
 					<>
 						<UAGIconPicker
-							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
+							label={__(
+								"Button Icon",
+								"ultimate-addons-for-gutenberg"
+							)}
 							value={ctaIcon}
 							onChange={(value) =>
 								setAttributes({ ctaIcon: value })
