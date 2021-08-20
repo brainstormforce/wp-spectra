@@ -192,8 +192,8 @@ function styling( props ) {
 		
 	} = props.attributes;
 	
-	let mobile_selectors = {};
-	let tablet_selectors = {};
+	let mobileSelectors = {};
+	let tabletSelectors = {};
 
 	const selectors = {
 		' .uagb-post__items': {
@@ -206,7 +206,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit  ),
 		},
 		' .uagb-post__inner-wrap': {
-			background: bgColor,
+			'background': bgColor,
 			'padding-top': generateCSSUnit( paddingTop , contentPaddingUnit ),
 			'padding-bottom': generateCSSUnit(  paddingBottom , contentPaddingUnit ),
 			'padding-left': generateCSSUnit( paddingLeft , contentPaddingUnit  ),
@@ -230,7 +230,7 @@ function styling( props ) {
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
-			opacity: overlayOpacity / 100,
+			'opacity': overlayOpacity / 100,
 		},
 		' .uagb-post-pagination-wrap': {
 			'margin-top': generateCSSUnit( paginationSpacing, paginationSpacingUnit ),
@@ -248,7 +248,7 @@ function styling( props ) {
 	}
 	if ( ! inheritFromTheme ) {
 		selectors[ ' .uagb-post__title' ] = {
-			color: titleColor,
+			'color': titleColor,
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
@@ -260,7 +260,7 @@ function styling( props ) {
 			'text-decoration': titleDecoration,
 		};
 		selectors[ ' .uagb-post__title a' ] = {
-			color: titleColor,
+			'color': titleColor,
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
@@ -270,7 +270,7 @@ function styling( props ) {
 			),
 		};
 		selectors[ ' .uagb-post-grid-byline' ] = {
-			color: metaColor,
+			'color': metaColor,
 			'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 			'font-family': metaFontFamily,
 			'font-weight': metaFontWeight,
@@ -282,7 +282,7 @@ function styling( props ) {
 			'text-decoration': metaLinkDecoration,
 		};
 		selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
-			color: metaColor,
+			'color': metaColor,
 			'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 			'font-family': metaFontFamily,
 			'font-weight': metaFontWeight,
@@ -292,7 +292,7 @@ function styling( props ) {
 			),
 		};
 		selectors[ ' .uagb-post-grid-byline .uagb-post__author a' ] = {
-			color: metaColor,
+			'color': metaColor,
 			'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 			'font-family': metaFontFamily,
 			'font-weight': metaFontWeight,
@@ -302,7 +302,7 @@ function styling( props ) {
 			),
 		};
 		selectors[ ' .uagb-post__excerpt' ] = {
-			color: excerptColor,
+			'color': excerptColor,
 			'font-size': generateCSSUnit(
 				excerptFontSize,
 				excerptFontSizeType
@@ -319,21 +319,21 @@ function styling( props ) {
 		};
 		selectors[ ' .uagb-post__cta' ] = {
 			'pointer-events': 'visible',
-			color: ctaColor,
+			'color': ctaColor,
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
 			'text-transform': ctaTransform,
 			'text-decoration': ctaDecoration,
-			background: ctaBgColor,
+			'background': ctaBgColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 			'border-color': borderColor,
 			'border-style': borderStyle,
 		};
 		selectors[ ' .uagb-post__cta a' ] = {
-			color: ctaColor,
+			'color': ctaColor,
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'padding-top': generateCSSUnit( paddingBtnTop , paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottom , paddingBtnUnit ),
@@ -341,12 +341,12 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( paddingBtnRight , paddingBtnUnit  ),
 		};
 		selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
-			color: ctaHColor,
-			background: ctaBgHColor,
+			'color': ctaHColor,
+			'background': ctaBgHColor,
 			'border-color': borderHColor,
 		};
 		selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
-			color: ctaHColor,
+			'color': ctaHColor,
 		};
 	}
 
@@ -354,7 +354,7 @@ function styling( props ) {
 		if ( 'filled' == paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'background-color': paginationBgColor,
-				color: paginationColor,
+				'color': paginationColor,
 			};
 			if (
 				'undefined' === typeof paginationBgActiveColor &&
@@ -364,7 +364,7 @@ function styling( props ) {
 					' .uagb-post-pagination-wrap .page-numbers.current'
 				] = {
 					'background-color': paginationBgColor,
-					color: paginationColor,
+					'color': paginationColor,
 				};
 			}
 			if (
@@ -375,7 +375,7 @@ function styling( props ) {
 					' .uagb-post-pagination-wrap .page-numbers.current'
 				] = {
 					'background-color': paginationBgColor,
-					color: paginationActiveColor,
+					'color': paginationActiveColor,
 				};
 			}
 			if (
@@ -386,7 +386,7 @@ function styling( props ) {
 					' .uagb-post-pagination-wrap .page-numbers.current'
 				] = {
 					'background-color': paginationBgActiveColor,
-					color: paginationColor,
+					'color': paginationColor,
 				};
 			}
 			if (
@@ -397,7 +397,7 @@ function styling( props ) {
 					' .uagb-post-pagination-wrap .page-numbers.current'
 				] = {
 					'background-color': paginationBgActiveColor,
-					color: paginationActiveColor,
+					'color': paginationActiveColor,
 				};
 			}
 		}
@@ -410,7 +410,7 @@ function styling( props ) {
 					paginationBorderRadius,
 					'px'
 				),
-				color: paginationColor,
+				'color': paginationColor,
 				'background-color': 'transparent',
 			};
 			if (
@@ -430,7 +430,7 @@ function styling( props ) {
 						paginationBorderRadius,
 						'px'
 					),
-					color: paginationActiveColor,
+					'color': paginationActiveColor,
 					'background-color': 'transparent',
 				};
 			}
@@ -451,7 +451,7 @@ function styling( props ) {
 						paginationBorderRadius,
 						'px'
 					),
-					color: paginationActiveColor,
+					'color': paginationActiveColor,
 					'background-color': 'transparent',
 				};
 			}
@@ -472,7 +472,7 @@ function styling( props ) {
 						paginationBorderRadius,
 						'px'
 					),
-					color: paginationColor,
+					'color': paginationColor,
 					'background-color': 'transparent',
 				};
 			}
@@ -493,7 +493,7 @@ function styling( props ) {
 						paginationBorderRadius,
 						'px'
 					),
-					color: paginationColor,
+					'color': paginationColor,
 					'background-color': 'transparent',
 				};
 			}
@@ -505,13 +505,13 @@ function styling( props ) {
 	}
 
 	selectors[ ' .slick-arrow svg' ] = {
-		fill: arrowColor,
-		height: generateCSSUnit( arrowSize, arrowSizeUnit ),
-		width: generateCSSUnit( arrowSize, arrowSizeUnit ),
+		'fill': arrowColor,
+		'height': generateCSSUnit( arrowSize, arrowSizeUnit ),
+		'width': generateCSSUnit( arrowSize, arrowSizeUnit ),
 	};
 
 	if ( ! inheritFromTheme ) {
-		mobile_selectors = {
+		mobileSelectors = {
 			' .uagb-post__title': {
 				'font-size': generateCSSUnit(
 					titleFontSizeMobile,
@@ -581,7 +581,7 @@ function styling( props ) {
 			},
 		};
 
-		tablet_selectors = {
+		tabletSelectors = {
 			' .uagb-post__title': {
 				'font-size': generateCSSUnit(
 					titleFontSizeTablet,
@@ -659,7 +659,7 @@ function styling( props ) {
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
 			] = {
-				color: paginationTextColor,
+				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
 				'border-style': paginationMasonryBorderStyle,
 				'border-width': generateCSSUnit(
@@ -692,10 +692,10 @@ function styling( props ) {
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
 			] = {
-				color: paginationTextHoverColor,
+				'color': paginationTextHoverColor,
 				'background-color': paginationBgHoverColor,
 			};
-			mobile_selectors[
+			mobileSelectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
 			] = {
 				'padding-top': generateCSSUnit(
@@ -715,7 +715,7 @@ function styling( props ) {
 					mobilepaginationButtonPaddingType
 				),
 			};
-			tablet_selectors[
+			tabletSelectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'
 			] = {
 				'padding-top': generateCSSUnit(
@@ -738,34 +738,34 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				width: generateCSSUnit( loaderSize, loaderSizeUnit ),
-				height: generateCSSUnit( loaderSize, loaderSizeUnit ),
+				'width': generateCSSUnit( loaderSize, loaderSizeUnit ),
+				'height': generateCSSUnit( loaderSize, loaderSizeUnit ),
 				'background-color': loaderColor,
 			};
 		}
 	}
-	tablet_selectors[ ' .uagb-post__inner-wrap' ] = {
-		padding: contentPaddingTablet + contentPaddingUnit,
+	tabletSelectors[ ' .uagb-post__inner-wrap' ] = {
+		'padding': contentPaddingTablet + contentPaddingUnit,
 	};
-	mobile_selectors[ ' .uagb-post__inner-wrap' ] = {
-		padding: contentPaddingMobile + contentPaddingUnit,
+	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
+		'padding': contentPaddingMobile + contentPaddingUnit,
 	};
-	mobile_selectors[
+	mobileSelectors[
 		'.uagb-post__inner-wrap  > .uagb-post__image:first-child'
 	] = {
 		'margin-top': -contentPadding + contentPaddingUnit,
 		'margin-left': -contentPadding + contentPaddingUnit,
 		'margin-right': -contentPadding + contentPaddingUnit,
 	};
-	let styling_css = '';
+	let stylingCss = '';
 
-	styling_css = generateCSS(
+	stylingCss = generateCSS(
 		selectors,
 		`.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	);
 
-	styling_css += generateCSS(
-		tablet_selectors,
+	stylingCss += generateCSS(
+		tabletSelectors,
 		`.uagb-block-${ props.clientId.substr(
 			0,
 			8
@@ -774,8 +774,8 @@ function styling( props ) {
 		'tablet'
 	);
 
-	styling_css += generateCSS(
-		mobile_selectors,
+	stylingCss += generateCSS(
+		mobileSelectors,
 		`.uagb-block-${ props.clientId.substr(
 			0,
 			8
@@ -784,7 +784,7 @@ function styling( props ) {
 		'mobile'
 	);
 
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;

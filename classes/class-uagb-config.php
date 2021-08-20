@@ -1695,6 +1695,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationBorderRadius'      => '',
 							'paginationBorderSize'        => 1,
 							'paginationSpacing'           => 20,
+							'paginationSpacingUnit'       => 'px',
 							'paginationAlignment'         => 'left',
 							'paginationNextText'          => '« Previous',
 							'paginationPrevText'          => 'Next »',

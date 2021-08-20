@@ -132,6 +132,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => 20,
 							),
+							'paginationSpacingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
 							'paginationAlignment'         => array(
 								'type'    => 'string',
 								'default' => 'left',
