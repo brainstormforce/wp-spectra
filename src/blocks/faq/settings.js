@@ -193,24 +193,6 @@ const Settings = (props) => {
 						},
 					]}
 				/>
-				<SelectControl
-					label={__("Layout", "ultimate-addons-for-gutenberg")}
-					value={layout}
-					options={[
-						{
-							value: "accordion",
-							label: __(
-								"Accordion",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "grid",
-							label: __("Grid", "ultimate-addons-for-gutenberg"),
-						},
-					]}
-					onChange={(value) => onchangeLayout(value)}
-				/>
 				{"accordion" === layout && (
 					<>
 						<ToggleControl
