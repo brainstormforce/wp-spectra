@@ -3,7 +3,6 @@
  */
 
 import renderSVG from "@Controls/renderIcon";
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
@@ -18,6 +17,7 @@ import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import { __ } from "@wordpress/i18n";
 import Border from "../../components/border";
 import { select } from "@wordpress/data";
+import UAGIconPicker from "../../components/icon-picker";
 
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -383,35 +383,15 @@ const Settings = (props) => {
 		return (
 			<>
 				<h2> {__("Icon", "ultimate-addons-for-gutenberg")} </h2>
-				<p className="components-base-control__label">
-					{__("Expand", "ultimate-addons-for-gutenberg")}
-				</p>
-				<FontIconPicker
-					icons={wp.UAGBSvgIcons}
-					renderFunc={renderSVG}
-					theme="default"
+				<UAGIconPicker
+					label={__("Expand", "ultimate-addons-for-gutenberg")}
 					value={icon}
 					onChange={(value) => onchangeIcon(value)}
-					isMulti={false}
-					noSelectedPlaceholder={__(
-						"Select Icon",
-						"ultimate-addons-for-gutenberg"
-					)}
 				/>
-				<p className="components-base-control__label">
-					{__("Collapse", "ultimate-addons-for-gutenberg")}
-				</p>
-				<FontIconPicker
-					icons={wp.UAGBSvgIcons}
-					renderFunc={renderSVG}
-					theme="default"
+				<UAGIconPicker
+					label={__("Collapse", "ultimate-addons-for-gutenberg")}
 					value={iconActive}
 					onChange={(value) => onchangeActiveIcon(value)}
-					isMulti={false}
-					noSelectedPlaceholder={__(
-						"Select Icon",
-						"ultimate-addons-for-gutenberg"
-					)}
 				/>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
