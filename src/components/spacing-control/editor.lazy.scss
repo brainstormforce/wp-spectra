@@ -51,8 +51,7 @@
 		height: 15px;
 		font-size: 15px;
 	}
-	.uagb-spacing-control__inputs
-		> :first-child.uagb-spacing-control__number {
+	.uagb-spacing-control__inputs > :first-child.uagb-spacing-control__number {
 		-webkit-border-radius: 3px 0 0 3px;
 		border-radius: 3px 0 0 3px;
 	}
@@ -162,7 +161,7 @@
 	}
 	.uagb-control__actions {
 		position: relative;
-		bottom: -8px;
+		top: 0px;
 		display: flex;
 	}
 
@@ -204,4 +203,3 @@
 /*.components-panel .block-editor-block-inspector .uagb-inspector-tab .uagb-spacing-control.components-base-control:last-child{
 	margin-bottom: 15px;
 }*/
-
