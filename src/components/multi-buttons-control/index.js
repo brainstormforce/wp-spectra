@@ -27,6 +27,7 @@ const MultiButtonsControl = (props) => {
 		showIcons,
 		setAttributes,
 		responsive,
+		onChange,
 	} = props;
 
 	const deviceType = useSelect((select) => {
@@ -230,6 +231,15 @@ const MultiButtonsControl = (props) => {
 		);
 	}
 
+	const onClickHandler = (value) => {
+		if (onChange) {
+			onChange(value);
+			return;
+		}
+		setAttributes({
+			[data.label]: value,
+		});
+	};
 	return (
 		<div
 			className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
@@ -248,11 +258,7 @@ const MultiButtonsControl = (props) => {
 						isSecondary={data.value !== option.value}
 						isPrimary={data.value === option.value}
 						aria-pressed={data.value === option.value}
-						onClick={() =>
-							setAttributes({
-								[data.label]: option.value,
-							})
-						}
+						onClick={() => onClickHandler(option.value)}
 						aria-label={option.tooltip}
 					>
 						{showIcons ? option.icon : option.label}

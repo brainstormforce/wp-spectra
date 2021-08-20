@@ -5267,6 +5267,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-bottom-width' => '0px',
 					'border-left-width'   => '0px',
 				);
+				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content:hover '] = array(
+					'border-top-color'    => $attr['borderHoverColor'],
+				);
 			}
 			if ( 'grid' === $attr['layout'] ) {
 

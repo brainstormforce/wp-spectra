@@ -19,6 +19,7 @@ function styling(props) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor,
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
@@ -120,6 +121,9 @@ function styling(props) {
 			"border-width": generateCSSUnit(borderWidth, "px"),
 			"border-radius": generateCSSUnit(borderRadius, "px"),
 			"border-color": borderColor,
+		},
+		" .uagb-faq-item:hover": {
+			"border-color": borderHoverColor,
 		},
 		" .uagb-faq-item .uagb-question": {
 			color: questionTextColor,
@@ -383,6 +387,11 @@ function styling(props) {
 			"border-style": "solid",
 			"border-top-color": borderColor,
 			"border-top-width": generateCSSUnit(borderWidth, "px"),
+		};
+		selectors[
+			".uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover "
+		] = {
+			"border-top-color": borderHoverColor,
 		};
 	}
 	if ("grid" === layout) {

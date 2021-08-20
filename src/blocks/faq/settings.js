@@ -171,6 +171,28 @@ const Settings = (props) => {
 				initialOpen={true}
 				className="uagb__url-panel-body"
 			>
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Layout", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: layout,
+						label: "layout",
+					}}
+					onChange={onchangeLayout}
+					options={[
+						{
+							value: "accordion",
+							label: __(
+								"Accordion",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "grid",
+							label: __("Grid", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+				/>
 				<SelectControl
 					label={__("Layout", "ultimate-addons-for-gutenberg")}
 					value={layout}
