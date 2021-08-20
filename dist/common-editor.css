@@ -46,6 +46,50 @@
   line-height: 1.4;
 }
 
+/* Panel Body CSS*/
+.uagb-inspector-tab .components-panel__body-title .components-button,
+[data-uagb-tab="advance"] .components-panel__body-title .components-button {
+  font-size: 14px;
+}
+
+/* GB Select Control CSS*/
+.uagb-inspector-tab .components-select-control {
+  height: auto;
+}
+
+.uagb-inspector-tab .components-select-control .components-input-control__label {
+  padding-bottom: 8px;
+}
+
+/* Normal & Hover Tabs CSS*/
+.uag-control-tabs {
+  width: 100%;
+}
+
+.uag-control-tabs .components-tab-panel__tabs {
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.uag-control-tabs .components-tab-panel__tabs > .components-button {
+  width: 47%;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid #dddddd;
+  color: #3a3a3a;
+  max-height: 30px;
+  font-size: 13px;
+}
+
+.uag-control-tabs .components-tab-panel__tabs > .components-button:focus:not(:disabled) {
+  box-shadow: none;
+}
+
+.uag-control-tabs .components-tab-panel__tabs > .components-button.active-tab {
+  border-bottom: 0;
+  color: #007cba;
+}
+
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
   z-index: unset;
@@ -486,10 +530,6 @@ label.uagb-border-label {
 }
 
 /* Common CSS for border ens here */
-.uagb-inspector-tab .components-select-control {
-  height: auto;
-}
-
 button.components-button.uagb-review-select-btn.is-secondary {
   margin-bottom: 10px;
 }
