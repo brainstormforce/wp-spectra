@@ -176,7 +176,9 @@ const AdvancedPopColorControl = (props) => {
 		<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
 			<div className="uagb-advanced-color-settings-container">
 				{props.label && (
-					<h2 className="uagb-beside-color-label">{props.label}</h2>
+					<span className="uagb-beside-color-label uag-control-label">
+						{props.label}
+					</span>
 				)}
 				<Button
 					className="uagb-reset"
