@@ -70,6 +70,10 @@ const attributes = {
 		type: 'number',
 		default: 20,
 	},
+	descSpaceUnit: {
+		type: 'string',
+		default: 'px'
+	},
 	author: {
 		selector: '.uagb-blockquote__author',
 		default: 'Author',
@@ -122,6 +126,10 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
+	authorSpaceUnit: {
+		type: 'string',
+		default: 'px'
+	},
 	authorImage: {
 		type: 'object',
 		default: {
@@ -137,9 +145,17 @@ const attributes = {
 		type: 'number',
 		default: 40,
 	},
+	authorImageWidthUnit: {
+		type: 'string',
+		default: 'px'
+	},
 	authorImgBorderRadius: {
 		type: 'number',
 		default: 100,
+	},
+	authorImgBorderRadiusUnit: {
+		type: 'string',
+		default: '%'
 	},
 	authorImgPosition: {
 		type: 'string',
@@ -216,6 +232,12 @@ const attributes = {
 	tweetBtnFontWeight: {
 		type: 'string',
 	},
+	tweetBtnTransform: {
+		type: 'string',
+	},
+	tweetBtnDecoration: {
+		type: 'string',
+	},
 	tweetBtnFontSubset: {
 		type: 'string',
 	},
@@ -248,6 +270,10 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
+	tweetIconSpacingUnit:{
+		type: "string",
+		default: 'px'
+	},
 	borderColor: {
 		type: 'string',
 		default: '#abb8c3',
@@ -264,8 +290,16 @@ const attributes = {
 		type: 'number',
 		default: 15,
 	},
+	borderGapUnit:{
+		type: 'string',
+		default: 'px'
+	},
 	verticalPadding: {
 		type: 'number',
+	},
+	verticalPaddingUnit:{
+		type: 'string',
+		default: 'px'
 	},
 	quoteStyle: {
 		type: 'string',
@@ -293,6 +327,10 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
+	quoteUnit:{
+		type: 'string',
+		default: 'px',
+	},
 	quotePaddingType: {
 		type: 'string',
 		default: 'px',
@@ -306,6 +344,10 @@ const attributes = {
 	quoteBorderRadius: {
 		type: 'number',
 		default: 100,
+	},
+	quoteBorderRadiusUnit:{
+		type: 'string',
+		default: '%'
 	},
 	quoteBgColor: {
 		type: 'string',
@@ -324,6 +366,38 @@ const attributes = {
 		type: 'number',
 		default: 20,
 	},
+	quoteTopMarginTablet:{
+		type: 'number'
+	},
+	quoteBottomMarginTablet:{
+		type: 'number'
+	},
+	quoteLeftMarginTablet:{
+		type: 'number'
+	},
+	quoteRightMarginTablet:{
+		type: 'number'
+	},
+	quoteTopMarginMobile:{
+		type: 'number'
+	},
+	quoteBottomMarginMobile:{
+		type: 'number'
+	},
+	quoteLeftMarginMobile:{
+		type: 'number'
+	},
+	quoteRightMarginMobile:{
+		type: 'number'
+	},
+	quotemobileUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	quotetabletUnit:{
+		type: 'string',
+		default: 'px'
+	},
 	quoteHoverColor: {
 		type: 'string',
 	},
@@ -332,6 +406,58 @@ const attributes = {
 	},
 	borderHoverColor: {
 		type: 'string',
+	},
+	borderWidthUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	paddingBtnTop: {
+		type: 'string'
+	},
+	paddingBtnBottom: {
+		type: 'string'
+	},
+	paddingBtnLeft: {
+		type: 'string'
+	},
+	paddingBtnRight: {
+		type: 'string'
+	},
+	paddingBtnTopTablet: {
+		type: 'string'
+	},
+	paddingBtnRightTablet: {
+		type: 'string'
+	},
+	paddingBtnBottomTablet: {
+		type: 'string'
+	},
+	paddingBtnLeftTablet: {
+		type: 'string'
+	},
+	paddingBtnTopMobile: {
+		type: 'string'
+	},
+	paddingBtnRightMobile: {
+		type: 'string'
+	},
+	paddingBtnBottomMobile: {
+		type: 'string'
+	},
+	paddingBtnLeftMobile: {
+		type: 'string'
+	},
+	paddingBtnUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	mobilePaddingBtnUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	tabletPaddingBtnUnit: {
+		type: 'string',
+		default: 'px'
 	},
 };
 

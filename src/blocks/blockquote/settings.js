@@ -133,8 +133,6 @@ const Settings = ( props ) => {
 		borderHoverColor,
 		authorImgBorderRadiusUnit,
 		borderWidthUnit,
-		quoteSizeUnit,
-		quotePaddingUnit,
 		quoteBorderRadiusUnit,
 		quoteUnit,
 		quotemobileUnit,
@@ -166,8 +164,15 @@ const Settings = ( props ) => {
 		descDecoration,
 		authorDecoration,
 		tweetBtnDecoration,
+		quoteTopMarginTablet,
+		quoteBottomMarginTablet,
+		quoteLeftMarginTablet,
+		quoteRightMarginTablet,
+		quoteTopMarginMobile,
+		quoteBottomMarginMobile,
+		quoteLeftMarginMobile,
+		quoteRightMarginMobile,
 	} = attributes;
-
 	let loadDescGoogleFonts;
 	let loadAuthorGoogleFonts;
 	let loadTweetGoogleFonts;
@@ -395,8 +400,8 @@ const Settings = ( props ) => {
 				min={0}
 				max={50}
 				unit={{
-					value: quoteSizeUnit,
-					label: "quoteSizeUnit",
+					value: quoteSizeType,
+					label: "quoteSizeType",
 				}}
 				setAttributes={setAttributes}
 			/>
@@ -424,8 +429,8 @@ const Settings = ( props ) => {
 					min={0}
 					max={500}
 					unit={{
-						value: quotePaddingUnit,
-						label: "quotePaddingUnit",
+						value: quotePaddingType,
+						label: "quotePaddingType",
 					}}
 					setAttributes={setAttributes}
 				/>
@@ -943,46 +948,6 @@ const Settings = ( props ) => {
 			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
 		}
 	}
-
-	const quoteSizeTypeControls = (
-		<ButtonGroup
-			className="uagb-size-type-field"
-			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
-		>
-			{ sizeTypes.map( ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ quoteSizeType === key }
-					aria-pressed={ quoteSizeType === key }
-					onClick={ () => setAttributes( { quoteSizeType: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	);
-
-	const quotePaddingControls = (
-		<ButtonGroup
-			className="uagb-size-type-field"
-			aria-label={ __( 'Size Type', 'ultimate-addons-for-gutenberg' ) }
-		>
-			{ sizeTypes.map( ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ quotePaddingType === key }
-					aria-pressed={ quotePaddingType === key }
-					onClick={ () => setAttributes( { quotePaddingType: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	);
 
 	const getTooltipElement = () => {
 		return (
