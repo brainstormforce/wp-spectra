@@ -5300,22 +5300,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$boxShadowPositionCSS = '';
 			}
-			$paddingInputTop = isset($attr['vinputPaddingDesktop']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputTop'], $attr['inputPaddingTypeDesktop'] );
-			$paddingInputRight = isset($attr['hinputPaddingDesktop']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputRight'], $attr['inputPaddingTypeDesktop'] );
-			$paddingInputBottom = isset($attr['vinputPaddingDesktop']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputBottom'], $attr['inputPaddingTypeDesktop'] );
-			$paddingInputLeft = isset($attr['hinputPaddingDesktop']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputLeft'], $attr['inputPaddingTypeDesktop'] );
-			$paddingInputTopTablet = isset($attr['vinputPaddingTablet']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputTopTablet'], $attr['tabletPaddingInputUnit'] );
-			$paddingInputRightTablet = isset($attr['hinputPaddingTablet']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputRightTablet'], $attr['tabletPaddingInputUnit'] );
-			$paddingInputBottomTablet = isset($attr['vinputPaddingTablet']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputBottomTablet'], $attr['tabletPaddingInputUnit'] );
-			$paddingInputLeftTablet = isset($attr['hinputPaddingTablet']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputLeftTablet'], $attr['tabletPaddingInputUnit'] );
-			$paddingInputTopMobile = isset($attr['vinputPaddingMobile']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputTopMobile'], $attr['mobilePaddingInputUnit'] );
-			$paddingInputRightMobile = isset($attr['hinputPaddingMobile']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputRightMobile'], $attr['mobilePaddingInputUnit'] );
-			$paddingInputBottomMobile = isset($attr['vinputPaddingMobile']) ? UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] );
-			$paddingInputLeftMobile = isset($attr['hinputPaddingMobile']) ? UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] );
-			
-			$iconSize             = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
-			$buttonIconSize       = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
-			$inputCSS             = array(
+			$paddingInputTop          = isset( $attr['paddingInputTop'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRight        = isset( $attr['paddingInputRight'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRight'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottom       = isset( $attr['paddingInputBottom'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottom'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeft         = isset( $attr['paddingInputLeft'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeft'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopTablet    = isset( $attr['paddingInputTopTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightTablet  = isset( $attr['paddingInputRightTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomTablet = isset( $attr['paddingInputBottomTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftTablet   = isset( $attr['paddingInputLeftTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopMobile    = isset( $attr['paddingInputTopMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightMobile  = isset( $attr['paddingInputRightMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomMobile = isset( $attr['paddingInputBottomMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftMobile   = isset( $attr['paddingInputLeftMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+
+			$iconSize       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+			$buttonIconSize = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
+			$inputCSS       = array(
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
 				'border'           => 0,
@@ -5327,7 +5327,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'    => $paddingInputRight,
 				'padding-left'     => $paddingInputLeft,
 			);
-			$boxCSS               = array(
+			$boxCSS         = array(
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
