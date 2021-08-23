@@ -61,41 +61,6 @@
   padding-bottom: 8px;
 }
 
-/* Normal & Hover Tabs CSS*/
-.uag-control-tabs {
-  width: 100%;
-}
-
-.uag-control-tabs .components-tab-panel__tabs {
-  justify-content: space-between;
-  margin-bottom: 24px;
-  margin-left: -16px;
-  margin-right: -16px;
-  padding: 0 16px;
-  border-bottom: 1px solid #ddd;
-}
-
-.uag-control-tabs .components-tab-panel__tabs > .components-button {
-  width: 47%;
-  text-align: center;
-  justify-content: center;
-  border: 1px solid #dddddd;
-  color: #3a3a3a;
-  max-height: 30px;
-  font-size: 13px;
-  border-bottom: 0;
-  margin-bottom: -1px;
-}
-
-.uag-control-tabs .components-tab-panel__tabs > .components-button:focus:not(:disabled) {
-  box-shadow: none;
-}
-
-.uag-control-tabs .components-tab-panel__tabs > .components-button.active-tab {
-  color: #007cba;
-  background: #fff;
-}
-
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
   z-index: unset;

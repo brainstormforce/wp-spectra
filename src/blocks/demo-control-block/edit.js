@@ -22,6 +22,7 @@ import BoxShadowControl from "../../components/box-shadow";
 import Background from "../../components/background";
 import Border from "../../components/border";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGTabsControl from "../../components/tabs";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography";
 
@@ -302,13 +303,33 @@ class UAGBInlineNoticeEdit extends Component {
 		}
 
 		const inlineGeneralSettings = () => {
+			let tabOutputNormal = (
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={titleColor ? titleColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							titleColor: value,
+						})
+					}
+				/>
+			);
+			let tabOutputHover = (
+				<AdvancedPopColorControl
+					label={__("Hover Color", "ultimate-addons-for-gutenberg")}
+					colorValue={titleColor ? titleColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							titleColor: value,
+						})
+					}
+				/>
+			);
 			return (
 				<InspectorTabs>
 					<InspectorTab {...UAGTabs.general}>
 						<PanelBody title="Tabs Normal/Hover">
-							<TabPanel
-								className="uag-control-tabs"
-								activeClass="active-tab"
+							<UAGTabsControl
 								tabs={[
 									{
 										name: "normal",
@@ -325,48 +346,9 @@ class UAGBInlineNoticeEdit extends Component {
 										),
 									},
 								]}
-							>
-								{(tabName) => {
-									let tabOutput;
-
-									if ("normal" === tabName.name) {
-										tabOutput = (
-											<AdvancedPopColorControl
-												label={__(
-													"Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={
-													titleColor ? titleColor : ""
-												}
-												onColorChange={(value) =>
-													setAttributes({
-														titleColor: value,
-													})
-												}
-											/>
-										);
-									} else {
-										tabOutput = (
-											<AdvancedPopColorControl
-												label={__(
-													"Hover Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={
-													titleColor ? titleColor : ""
-												}
-												onColorChange={(value) =>
-													setAttributes({
-														titleColor: value,
-													})
-												}
-											/>
-										);
-									}
-									return <div>{tabOutput}</div>;
-								}}
-							</TabPanel>
+								normal={tabOutputNormal}
+								hover={tabOutputHover}
+							/>
 						</PanelBody>
 						<PanelBody title="Alignment" initialOpen={false}>
 							<MultiButtonsControl
