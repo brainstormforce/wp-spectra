@@ -69,6 +69,10 @@
 .uag-control-tabs .components-tab-panel__tabs {
   justify-content: space-between;
   margin-bottom: 24px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 0 16px;
+  border-bottom: 1px solid #ddd;
 }
 
 .uag-control-tabs .components-tab-panel__tabs > .components-button {
@@ -79,6 +83,7 @@
   color: #3a3a3a;
   max-height: 30px;
   font-size: 13px;
+  border-bottom: 0;
 }
 
 .uag-control-tabs .components-tab-panel__tabs > .components-button:focus:not(:disabled) {
@@ -86,7 +91,6 @@
 }
 
 .uag-control-tabs .components-tab-panel__tabs > .components-button.active-tab {
-  border-bottom: 0;
   color: #007cba;
 }
 
