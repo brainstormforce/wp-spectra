@@ -14,6 +14,7 @@ import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import UAGImage from "../../components/image";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 $ = jQuery;
 
@@ -530,6 +531,25 @@ const Settings = (props) => {
 							onChange={(value) =>
 								setAttributes({ headingTag: value })
 							}
+							options={[
+								{ value: "h1", label: __("H1") },
+								{ value: "h2", label: __("H2") },
+								{ value: "h3", label: __("H3") },
+								{ value: "h4", label: __("H4") },
+								{ value: "h5", label: __("H5") },
+								{ value: "h6", label: __("H6") },
+							]}
+						/>
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__(
+								"Title Tag (Temp)",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								value: headingTag,
+								label: "headingTag",
+							}}
 							options={[
 								{ value: "h1", label: __("H1") },
 								{ value: "h2", label: __("H2") },

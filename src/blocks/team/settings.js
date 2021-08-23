@@ -11,6 +11,7 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import Range from "../../components/range/Range.js";
 import SpacingControl from "../../components/spacing-control";
 import MultiButtonsControl from "../../components/multi-buttons-control";
+import UAGImage from "../../components/image";
 
 let imageSizeOptions = [
 	{
@@ -126,18 +127,68 @@ const Settings = ( props ) => {
 		imageMarginUnit,
 		spacingLink,
 	} = attributes;
-	
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-		for ( const item in sizes ) {
-			sizeArr.push( { value: item, label: item } );
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = (media) => {
+		if (!media || !media.url) {
+			setAttributes({ image: null });
+			return;
 		}
+
+		if (!media.type || "image" !== media.type) {
+			setAttributes({ image: null });
+			return;
+		}
+		if (media.sizes) {
+			const new_img = getImageSize(media.sizes);
+			imageSizeOptions = new_img;
+		}
+		setAttributes({ image: media });
+	};
+
+	const getImageSize = (sizes) => {
+		const sizeArr = [];
+		$.each(sizes, function (index) {
+			const name = index;
+			const p = { value: name, label: name };
+			sizeArr.push(p);
+		});
 		return sizeArr;
 	};
 
-	if ( image && image.sizes ) {
-		imageSizeOptions = getImageSize( image.sizes );
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes({ image: "" });
+	};
+
+	if (image && image.sizes) {
+		imageSizeOptions = getImageSize(image.sizes);
 	}
+
+	let imageName = __("Select Image", "ultimate-addons-for-gutenberg");
+	if (image) {
+		if (image.url == null || image.url == "") {
+			imageName = __("Select Image", "ultimate-addons-for-gutenberg");
+		} else {
+			imageName = __("Replace Image", "ultimate-addons-for-gutenberg");
+		}
+	}
+	
+	// const getImageSize = ( sizes ) => {
+	// 	const sizeArr = [];
+	// 	for ( const item in sizes ) {
+	// 		sizeArr.push( { value: item, label: item } );
+	// 	}
+	// 	return sizeArr;
+	// };
+
+	// if ( image && image.sizes ) {
+	// 	imageSizeOptions = getImageSize( image.sizes );
+	// }
 
 	let loadTitleGoogleFonts;
 	let loadPrefixGoogleFonts;
@@ -233,7 +284,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<div className="uagb-bg-image">
+				{/* <div className="uagb-bg-image">
 				<MediaUpload
 					title={__(
 						"Select Background Image",
@@ -273,11 +324,16 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					</Button>
-				) }
+				) } */}
+				<UAGImage
+					onSelectImage={onSelectImage}
+					backgroundImage={image}
+					onRemoveImage={onRemoveImage}
+				/>
 				{ image && (
 					<MultiButtonsControl
 						setAttributes={setAttributes}
-						label={__("Position", "ultimate-addons-for-gutenberg")}
+						label={__("Image Position", "ultimate-addons-for-gutenberg")}
 						data={{
 							value: imgPosition,
 							label: "imgPosition",
@@ -369,7 +425,7 @@ const Settings = ( props ) => {
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Style",
+							"Image Style",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
