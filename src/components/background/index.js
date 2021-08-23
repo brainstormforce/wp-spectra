@@ -127,7 +127,7 @@ const Background = (props) => {
 				<div className="uag-background-image">
 					<UAGImage
 						onSelectImage={onSelectImage}
-						backgroundImage={backgroundImage}
+						backgroundImage={backgroundImage.value}
 						onRemoveImage={onRemoveImage}
 					/>
 					{backgroundImage.value && (
@@ -412,7 +412,7 @@ const Background = (props) => {
 				<div className="uag-background-video">
 					<UAGImage
 						onSelectImage={onSelectVideo}
-						backgroundImage={backgroundVideo}
+						backgroundImage={backgroundVideo.value}
 						onRemoveImage={onRemoveVideo}
 						showVideoInput={true}
 					/>
