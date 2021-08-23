@@ -48,7 +48,7 @@
 
 /* Panel Body CSS*/
 .uagb-inspector-tab .components-panel__body-title .components-button,
-[data-uagb-tab="advance"] .components-panel__body-title .components-button {
+[data-uagb-tab] .components-panel__body-title .components-button {
   font-size: 14px;
 }
 

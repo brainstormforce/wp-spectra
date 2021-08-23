@@ -55,7 +55,7 @@ import "./blocks/inline-notice/block.js";
 // import "./blocks/forms/child-blocks/toggle/block.js";
 // import "./blocks/forms/child-blocks/date/block.js";
 // import "./blocks/forms/child-blocks/accept/block.js";
-// import "./blocks/extensions/block.js";
+import "./blocks/extensions/block.js";
 import "./blocks/tabs/block.js";
 import "./blocks/tabs-child/block.js";
 // import "./blocks/lottie/block.js";
