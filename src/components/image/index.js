@@ -39,6 +39,7 @@ const UAGImage = (props) => {
 		removeImageLabel = __("Remove Video", "ultimate-addons-for-gutenberg");
 		allowedTypes = ["video"];
 	}
+	
 	return (
 		<BaseControl className="editor-bg-image-control" label={label}>
 			<div className="uagb-bg-image">
@@ -49,13 +50,14 @@ const UAGImage = (props) => {
 					value={backgroundImage}
 					render={({ open }) => (
 						<Button isSecondary onClick={open}>
-							{!backgroundImage.url
-								? selectImageLabel
-								: replaceImageLabel}
+							{ !backgroundImage.value
+								? selectImageLabel 
+								: replaceImageLabel
+							}
 						</Button>
 					)}
 				/>
-				{backgroundImage.url && (
+				{ backgroundImage.value && (
 					<Button
 						className="uagb-rm-btn"
 						onClick={onRemoveImage}

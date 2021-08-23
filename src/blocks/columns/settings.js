@@ -13,6 +13,7 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import Range from "../../components/range/Range.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "../../components/responsive-slider";
 
 import {
 	BlockControls,
@@ -26,7 +27,6 @@ import {
 	RangeControl,
 	ToggleControl,
 	TabPanel,
-	Dashicon,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -120,7 +120,7 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 	} = attributes;
-
+	
 	const blockControlSettings = () => {
 		return (
 			<BlockControls>
@@ -807,89 +807,30 @@ const Settings = ( props ) => {
 							max={ 2000 }
 							displayUnit={false}
 						/>
-						<TabPanel
-							className="uagb-size-type-field-tabs uagb-without-size-type"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: 'desktop',
-									title: <Dashicon icon="desktop" />,
-									className:
-										'uagb-desktop-tab uagb-responsive-tabs',
+						<ResponsiveSlider
+							label={__(
+								"Height",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								desktop: {
+									value: topHeight,
+									label: "topHeight",
 								},
-								{
-									name: 'tablet',
-									title: <Dashicon icon="tablet" />,
-									className:
-										'uagb-tablet-tab uagb-responsive-tabs',
+								tablet: {
+									value: topHeightTablet,
+									label: "topHeightTablet",
 								},
-								{
-									name: 'mobile',
-									title: <Dashicon icon="smartphone" />,
-									className:
-										'uagb-mobile-tab uagb-responsive-tabs',
+								mobile: {
+									value: topHeightMobile,
+									label: "topHeightMobile",
 								},
-							] }
-						>
-							{ ( tab ) => {
-								let tabout;
-
-								if ( 'mobile' === tab.name ) {
-									tabout = (
-										<Range
-											label={__(
-												'Height',
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={topHeightMobile}
-											onChange={(value) =>
-												setAttributes({ topHeightMobile: value })
-											}
-											min={ 0 }
-											max={ 500 }
-											displayUnit={false}
-										/>
-									);
-								} else if ( 'tablet' === tab.name ) {
-									tabout = (
-										<Range
-											label={__(
-												'Height',
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={topHeightTablet}
-											onChange={(value) =>
-												setAttributes({ topHeightTablet: value })
-											}
-											min={ 0 }
-											max={ 500 }
-											displayUnit={false}
-										/>
-									);
-								} else {
-									tabout = (
-										<Range
-											label={__(
-												'Height',
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={topHeight}
-											onChange={(value) =>
-												setAttributes({ topHeight: value })
-											}
-											min={ 0 }
-											max={ 500 }
-											displayUnit={false}
-										/>
-									);
-								}
-
-								return <div>{ tabout }</div>;
-							} }
-						</TabPanel>
+							}}
+							min={ 0 }
+							max={ 500 }
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
 						<ToggleControl
 							label={ __(
 								'Flip',
@@ -967,89 +908,30 @@ const Settings = ( props ) => {
 							max={2000}
 							displayUnit={false}
 						/>
-						<TabPanel
-							className="uagb-size-type-field-tabs uagb-without-size-type"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: 'desktop',
-									title: <Dashicon icon="desktop" />,
-									className:
-										'uagb-desktop-tab uagb-responsive-tabs',
+						<ResponsiveSlider
+							label={__(
+								"Height",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								desktop: {
+									value: bottomHeight,
+									label: "bottomHeight",
 								},
-								{
-									name: 'tablet',
-									title: <Dashicon icon="tablet" />,
-									className:
-										'uagb-tablet-tab uagb-responsive-tabs',
+								tablet: {
+									value: bottomHeightTablet,
+									label: "bottomHeightTablet",
 								},
-								{
-									name: 'mobile',
-									title: <Dashicon icon="smartphone" />,
-									className:
-										'uagb-mobile-tab uagb-responsive-tabs',
+								mobile: {
+									value: bottomHeightMobile,
+									label: "bottomHeightMobile",
 								},
-							] }
-						>
-							{ ( tab ) => {
-								let tabout;
-
-								if ( 'mobile' === tab.name ) {
-									tabout = (
-										<Range
-											label={__(
-												"Height",
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={bottomHeightMobile}
-											onChange={(value) =>
-												setAttributes({ bottomHeightMobile: value })
-											}
-											min={0}
-											max={500}
-											displayUnit={false}
-										/>
-									);
-								} else if ( 'tablet' === tab.name ) {
-									tabout = (
-										<Range
-											label={__(
-												"Height",
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={bottomHeightTablet}
-											onChange={(value) =>
-												setAttributes({ bottomHeightTablet: value })
-											}
-											min={0}
-											max={500}
-											displayUnit={false}
-										/>
-									);
-								} else {
-									tabout = (
-										<Range
-											label={__(
-												"Height",
-												"ultimate-addons-for-gutenberg"
-											)}
-											setAttributes={setAttributes}
-											value={bottomHeight}
-											onChange={(value) =>
-												setAttributes({ bottomHeight: value })
-											}
-											min={0}
-											max={500}
-											displayUnit={false}
-										/>
-									);
-								}
-
-								return <div>{ tabout }</div>;
-							} }
-						</TabPanel>
+							}}
+							min={ 0 }
+							max={ 500 }
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
 						<ToggleControl
 							label={ __(
 								'Flip',
