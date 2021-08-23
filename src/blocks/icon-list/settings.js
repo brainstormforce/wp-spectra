@@ -100,38 +100,6 @@ const Settings = ( props ) => {
 				<PanelBody
 					initialOpen={ true }
 				>
-					{ ! hideLabel && (
-					<>
-						<MultiButtonsControl
-							setAttributes={setAttributes}
-							label={__("Alignment", "ultimate-addons-for-gutenberg")}
-							data={{
-								value: iconPosition,
-								label: "iconPosition",
-							}}
-							className="uagb-multi-button-alignment-control"
-							options={[
-								{
-									value: "top",
-									label: ("Top"),
-									tooltip: __(
-										"Top",
-										"ultimate-addons-for-gutenberg"
-									),
-								},
-								{
-									value: "middle",
-									label: ("Middle"),
-									tooltip: __(
-										"Middle",
-										"ultimate-addons-for-gutenberg"
-									),
-								},
-							]}
-							showIcons={false}
-						/>
-					</>
-					)}
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
@@ -244,6 +212,39 @@ const Settings = ( props ) => {
 						checked={ hideLabel }
 						onChange={ ( value ) => changeChildAttr( value ) }
 					/>
+					{ ! hideLabel && (
+					<>
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__("Icon Alignment", "ultimate-addons-for-gutenberg")}
+							data={{
+								value: iconPosition,
+								label: "iconPosition",
+							}}
+							className="uagb-multi-button-alignment-control"
+							options={[
+								{
+									value: "top",
+									label: ("Top"),
+									tooltip: __(
+										"Top",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+								{
+									value: "middle",
+									label: ("Middle"),
+									tooltip: __(
+										"Middle",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+							]}
+							showIcons={false}
+							help={ __( "Note: This manages the Icon Position with respect to the Label.", 'ultimate-addons-for-gutenberg' ) }
+						/>
+					</>
+					)}
 				</PanelBody>
 		);
 	};
@@ -267,6 +268,7 @@ const Settings = ( props ) => {
 						min={0}
 						max={100}
 						displayUnit={false}
+						help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ ! hideLabel && (
 						<>
@@ -405,6 +407,7 @@ const Settings = ( props ) => {
 						min={0}
 						max={500}
 						displayUnit={false}
+						help={ __( "Note: Background Size option is useful when one adds background color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<Range
 						label={__(
@@ -419,6 +422,7 @@ const Settings = ( props ) => {
 						min={0}
 						max={10}
 						displayUnit={false}
+						help={ __( "Note: Border option is useful when one adds border color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<Range
 						label={__(
@@ -433,6 +437,7 @@ const Settings = ( props ) => {
 						min={0}
 						max={500}
 						displayUnit={false}
+						help={ __( "Note: Border Radius option is useful when one adds background color to the icons.", 'ultimate-addons-for-gutenberg' ) }
 					/>
 				</PanelBody>
 		)
