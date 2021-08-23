@@ -1,0 +1,14 @@
+.uag-border-select-control {
+	.uag-border-type .components-select-control {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
+
+	.uag-border-width,
+	.uag-border-radius,
+	.uag-border-color,
+	.uag-border-hv-color {
+		margin-top: 24px;
+	}
+}

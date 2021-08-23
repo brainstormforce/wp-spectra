@@ -1,94 +1,7 @@
-.uagb-picker {
-	width: 300px;
-	position: relative;
-	margin-bottom: 10px;
-	.uagb-picker-saturation {
-		width: 100%;
-		padding-bottom: 50%;
-		position: relative;
-		overflow: hidden;
-	}
-	.uagb-flexbox-fix-wrap {
-		padding: 10px 0;
-		.uagb-flexbox-fix {
-			display: flex;
-			.uagb-flexbox-fix-slider-wrap {
-				padding: 4px 0;
-				flex: 1;
-				.uagb-hue-wrap {
-					height: 10px;
-					position: relative;
-					margin-bottom: 8px;
-				}
-				.uagb-alpha-wrap {
-					height: 10px;
-					position: relative;
-				}
-			}
-			.uagb-flexbox-fix-color-wrap {
-				width: 30px;
-				height: 30px;
-				position: relative;
-				margin-top: 3px;
-				margin-left: 10px;
-				border-radius: 50%;
-				overflow: hidden;
-				.uagb-flexbox-fix-active-color-wrap {
-					position: absolute;
-					left: 0;
-					right: 0;
-					top: 0;
-					bottom: 0;
-					border-radius: 50%;
-					box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-				}
-			}
-		}
-	}
-	.uagb-flexbox-fix {
-		display: flex;
-		padding-top: 4px;
-		.uagb-single-rgb-r-input,
-		.uagb-single-rgb-b-input,
-		.uagb-single-rgb-g-input,
-		.uagb-single-hsl-h-input,
-		.uagb-single-hsl-s-input,
-		.uagb-single-hsl-h-input {
-			flex: 1;
-			padding-left: 6px;
-		}
-		.uagb-single-rgb-alpha-input,
-		.uagb-single-hsl-alpha-input {
-			flex: 1;
-			padding-left: 6px;
-		}
-		.uagb-double-wrap {
-			flex: 2;
-		}
-		input {
-			width: 100%;
-			padding: 4px 10% 3px;
-			border: none;
-			border-radius: 2px;
-			box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;
-			font-size: 11px;
-		}
-		label {
-			display: block;
-			text-align: center;
-			font-size: 11px;
-			color: #222;
-			padding-top: 3px;
-			padding-bottom: 4px;
-			text-transform: capitalize;
-		}
-		.uagb-single-toggle {
-			width: 32px;
-			text-align: right;
-			position: relative;
-		}
-	}
-}
+/*.uagb-popover-color .components-popover__content {
+	width: 250px;
+}*/
+
 .uagb-advanced-color-settings-container {
 	display: flex;
 	align-items: center;
@@ -121,15 +34,15 @@
 	border-radius: 50%;
 	margin: 0;
 }
-.uagb-advanced-color-settings-container h2.uagb-beside-color-label {
+.uagb-advanced-color-settings-container .uagb-beside-color-label {
 	flex-grow: 1;
-	font-weight: 400;
 	margin: 0;
 }
 
 .components-popover.uagb-popover-color.new-uagb-advanced-colors-pop
 	.components-popover__content {
-	padding: 16px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .components-circular-option-picker {
@@ -139,4 +52,5 @@
 .components-circular-option-picker
 	.components-circular-option-picker__swatches {
 	margin-right: 0px;
+	text-align: center;
 }

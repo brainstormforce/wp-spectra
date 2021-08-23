@@ -1,4 +1,4 @@
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import UAGIconPicker from "../../components/icon-picker";
 import renderSVG from "@Controls/renderIcon";
 import TypographyControl from "@Components/typography";
 import ResponsiveSelectControl from "@Components/responsive-select";
@@ -8,7 +8,9 @@ import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import Border from "../../components/border";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
@@ -519,27 +521,22 @@ const Settings = (props) => {
 				/>
 				{showIcon && (
 					<>
-						<h2 className="components-base-control__label">
-							{__("Icon", "ultimate-addons-for-gutenberg")}
-						</h2>
-						<FontIconPicker
-							icons={wp.UAGBSvgIcons}
-							renderFunc={renderSVG}
-							theme="default"
+						<UAGIconPicker
+							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
-						<SelectControl
+						<MultiButtonsControl
+							setAttributes={setAttributes}
 							label={__(
 								"Icon Position",
 								"ultimate-addons-for-gutenberg"
 							)}
-							value={iconPosition}
+							data={{
+								value: iconPosition,
+								label: "iconPosition",
+							}}
+							className="uagb-multi-button-alignment-control"
 							options={[
 								{
 									value: "left",
@@ -570,9 +567,6 @@ const Settings = (props) => {
 									),
 								},
 							]}
-							onChange={(value) =>
-								setAttributes({ iconPosition: value })
-							}
 						/>
 					</>
 				)}
@@ -1083,17 +1077,17 @@ const Settings = (props) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 					{tabStyleSettings()}
 					{tabTitleSettings()}
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 					{tabTitleStyle()}
 					{tabIconStyle()}
 					{tabBodySettings()}
 					{tabBorderSettings()}
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
