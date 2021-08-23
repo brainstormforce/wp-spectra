@@ -58,7 +58,7 @@
 }
 
 .uagb-inspector-tab .components-select-control .components-input-control__label {
-  padding-bottom: 8px;
+  padding-bottom: 8px !important;
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
@@ -101,7 +101,6 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
   box-shadow: none;
-  background-color: #bfdeee;
   color: #007cba;
   box-shadow: none;
   border-radius: 100%;
@@ -563,7 +562,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 .uag-responsive-common-button {
   box-shadow: none;
-  background-color: #bfdeee;
   color: #007cba;
   border-radius: 100%;
   border: 0;
