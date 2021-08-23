@@ -300,7 +300,7 @@ const Settings = ( props ) => {
 	const buttonSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<UAGIconPicker
@@ -693,21 +693,27 @@ const Settings = ( props ) => {
 	const backgroundSettings = () => {
 		return (
 			<PanelBody title={ __( 'Background' ) } initialOpen={ false }>
-				<SelectControl
-					label={ __(
-						'Type',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ backgroundType }
-					onChange={ ( value ) =>
-						setAttributes( { backgroundType: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Type",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: backgroundType,
+						label: "backgroundType",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'transparent',
 							label: __(
 								'Transparent',
 								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"Transparent",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
@@ -716,6 +722,10 @@ const Settings = ( props ) => {
 								'Color',
 								'ultimate-addons-for-gutenberg'
 							),
+							tooltip: __(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: 'gradient',
@@ -723,8 +733,12 @@ const Settings = ( props ) => {
 								'Gradient',
 								'ultimate-addons-for-gutenberg'
 							),
+							tooltip: __(
+								"Gradient",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
-					] }
+					]}
 				/>
 				{ 'color' == backgroundType && (
 					<>
@@ -762,21 +776,27 @@ const Settings = ( props ) => {
 								setAttributes({ gradientColor1: value })
 							}
 						/>
-						<SelectControl
-							label={ __(
-								'Type',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ gradientType }
-							onChange={ ( value ) =>
-								setAttributes( { gradientType: value } )
-							}
-							options={ [
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__(
+								"Type",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								value: gradientType,
+								label: "gradientType",
+							}}
+							className="uagb-multi-button-alignment-control"
+							options={[
 								{
 									value: 'linear',
 									label: __(
 										'Linear',
 										'ultimate-addons-for-gutenberg'
+									),
+									tooltip: __(
+										"Linear",
+										"ultimate-addons-for-gutenberg"
 									),
 								},
 								{
@@ -785,8 +805,12 @@ const Settings = ( props ) => {
 										'Radial',
 										'ultimate-addons-for-gutenberg'
 									),
+									tooltip: __(
+										"Radial",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
-							] }
+							]}
 						/>
 						<Range
 							label={__(
@@ -860,7 +884,7 @@ const Settings = ( props ) => {
 					<>
 						<AdvancedPopColorControl
 							label={__(
-								"Color",
+								"Hover",
 								"ultimate-addons-for-gutenberg"
 							)}
 							colorValue={backgroundHoverColor ? backgroundHoverColor : ""}
