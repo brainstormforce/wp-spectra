@@ -49,13 +49,13 @@ const UAGImage = (props) => {
 					value={backgroundImage}
 					render={({ open }) => (
 						<Button isSecondary onClick={open}>
-							{!backgroundImage.url
+							{ !backgroundImage.value
 								? selectImageLabel
 								: replaceImageLabel}
 						</Button>
 					)}
 				/>
-				{backgroundImage.url && (
+				{ backgroundImage.value && (
 					<Button
 						className="uagb-rm-btn"
 						onClick={onRemoveImage}
