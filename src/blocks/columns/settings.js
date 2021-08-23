@@ -154,15 +154,27 @@ const Settings = ( props ) => {
 						setAttributes( { columns: value } )
 					}
 				/>
-				<SelectControl
-					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
-					value={ stack }
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Stack On",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: stack,
+						label: "stack",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'none',
 							label: __(
 								'None',
 								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"None",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
@@ -171,6 +183,10 @@ const Settings = ( props ) => {
 								'Tablet & Mobile',
 								'ultimate-addons-for-gutenberg'
 							),
+							tooltip: __(
+								"Tablet & Mobile",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: 'mobile',
@@ -178,29 +194,39 @@ const Settings = ( props ) => {
 								'Mobile',
 								'ultimate-addons-for-gutenberg'
 							),
-						},
-					] }
-					onChange={ ( value ) => setAttributes( { stack: value } ) }
+							tooltip: __(
+								"Mobile",
+								"ultimate-addons-for-gutenberg"
+							),
+						}
+					]}
+					showIcons={false}
 					help={ __(
 						'Note: Choose on what breakpoint the columns will stack.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<SelectControl
-					label={ __(
-						'Container Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ contentWidth }
-					onChange={ ( value ) =>
-						setAttributes( { contentWidth: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Container Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: contentWidth,
+						label: "contentWidth",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'theme',
 							label: __(
 								'Theme Container Width',
 								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								"Theme Container Width",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
@@ -209,8 +235,13 @@ const Settings = ( props ) => {
 								'Custom',
 								'ultimate-addons-for-gutenberg'
 							),
-						},
-					] }
+							tooltip: __(
+								"Custom",
+								"ultimate-addons-for-gutenberg"
+							),
+						}
+					]}
+					showIcons={false}
 				/>
 				{ contentWidth == 'custom' && (
 					<>
