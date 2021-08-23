@@ -428,7 +428,6 @@
 		paddingRightMobile,
 		paddingBottomMobile,
 		paddingLeftMobile,
-		paddingUnit,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
 		excerptBottomSpaceUnit,

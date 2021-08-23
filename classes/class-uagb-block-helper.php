@@ -3023,7 +3023,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
-
 			// Pagination CSS.
 			$selectors[' .uagb-post-pagination-wrap'] = array(
 
@@ -3299,6 +3298,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.4.0
 		 */
 		public static function get_post_selectors( $attr ) {
+			
+			$paddingTop = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingTop'];
+			$paddingBottom = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingBottom'];
+			$paddingLeft = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingLeft'];
+			$paddingRight = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingRight'];
+
+			$paddingBtnTop = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBtnTop'];
+			$paddingBtnBottom = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBtnBottom'];
+			$paddingBtnLeft = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingBtnLeft'];
+			$paddingBtnRight = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingBtnRight'];
+		
 			$selectors = array(
 				' .uagb-post__items'         => array(
 					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
@@ -3311,10 +3321,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__inner-wrap'    => array(
 					'background' => $attr['bgColor'],
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingTop'] , $attr['contentPaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingBottom'] , $attr['contentPaddingUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingLeft'] , $attr['contentPaddingUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingRight'] , $attr['contentPaddingUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value( $paddingTop , $attr['contentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottom , $attr['contentPaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $paddingLeft , $attr['contentPaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $paddingRight , $attr['contentPaddingUnit']  ),
 					'text-align' => $attr['align'],
 				),
 
@@ -3340,9 +3350,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			if ( 'background' !== $attr['imgPosition'] ) {
 				$selectors[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
-					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['paddingTop'] ), $attr['contentPaddingUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['paddingLeft'] ), $attr['contentPaddingUnit'] ),
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['paddingRight'] ), $attr['contentPaddingUnit'] ),
+					'margin-top'   => UAGB_Helper::get_css_value( -$paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( -$paddingLeft, $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( -$paddingRight, $attr['contentPaddingUnit'] ),
 				);
 			}
 			if ( ! $attr['inheritFromTheme'] ) {
@@ -3368,10 +3378,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 				$selectors[' .uagb-post__text .uagb-post__cta a']                           = array(
 					'color'   => $attr['ctaColor'],
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTop'] , $attr['paddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottom'] , $attr['paddingBtnUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeft'] , $attr['paddingBtnUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRight'] , $attr['paddingBtnUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value( $paddingBtnTop , $attr['paddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom , $attr['paddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $paddingBtnLeft , $attr['paddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $paddingBtnRight , $attr['paddingBtnUnit']  ),
 		
 				);
 				$selectors[' .uagb-post__text .uagb-post__cta:hover']                       = array(
@@ -3395,23 +3405,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
-
+			$paddingTopMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingTopMobile'];
+			$paddingBottomMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingBottomMobile'];
+			$paddingLeftMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingLeftMobile'];
+			$paddingRightMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingRightMobile'];
+			
+			$paddingBtnTopMobile = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingTopMobile'];
+			$paddingBtnBottomMobile = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBottomMobile'];
+			$paddingBtnLeftMobile = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingLeftMobile'];
+			$paddingBtnRightMobile = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingRightMobile'];
+			
 			return array(
 				' .uagb-post__inner-wrap' => array(
-					'padding-top' => UAGB_Helper::get_css_value( $attr[' paddingTopMobile'], $attr['mobilePaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr[' paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value( $attr[' paddingLeftMobile'], $attr['mobilePaddingUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr[' paddingRightMobile'], $attr['mobilePaddingUnit']  ),
-				
+					'padding-top' => UAGB_Helper::get_css_value( $paddingTopMobile , $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomMobile , $attr['tabletPaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $paddingLeftMobile , $attr['tabletPaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $paddingRightMobile , $attr['tabletPaddingUnit']  ),
 				),
 				' .uagb-post__cta a'=>  array(
-					'padding-top' => UAGB_Helper::get_css_value(  $attr['paddingBtnTopMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value(  $attr['paddingBtnBottomMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value(  $attr['paddingBtnLeftMobile'] , $attr['mobilePaddingBtnUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value(  $attr['paddingBtnRightMobile'] , $attr['mobilePaddingBtnUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value(  $paddingBtnTopMobile , $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value(  $paddingBtnBottomMobile , $attr['tabletPaddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value(  $paddingBtnLeftMobile , $attr['tabletPaddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value(  $paddingBtnRightMobile , $attr['tabletPaddingBtnUnit']  ),
 				),
 			);
-
 		}
 
 		/**
@@ -3421,19 +3438,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
+			$paddingTopTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingTopTablet'];
+			$paddingBottomTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingBottomTablet'];
+			$paddingLeftTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingLeftTablet'];
+			$paddingRightTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingRightTablet'];
 			
-				return array(
+			$paddingBtnTopTablet = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingTopTablet'];
+			$paddingBtnBottomTablet = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBottomTablet'];
+			$paddingBtnLeftTablet = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingLeftTablet'];
+			$paddingBtnRightTablet = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingRightTablet'];
+			
+			return array(
 				' .uagb-post__inner-wrap' => array(
-					'padding-top' =>( $attr[' paddingTopTablet']. $attr['tabletPaddingUnit'] ),
-					'padding-bottom' =>( $attr[' paddingBottomTablet']. $attr['tabletPaddingUnit'] ),
-					'padding-left' =>( $attr[' paddingLeftTablet']. $attr['tabletPaddingUnit']  ),
-					'padding-right' =>( $attr[' paddingRightTablet']. $attr['tabletPaddingUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value( $paddingTopTablet , $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomTablet , $attr['tabletPaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $paddingLeftTablet , $attr['tabletPaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $paddingRightTablet , $attr['tabletPaddingUnit']  ),
 				),
 				' .uagb-post__cta a'=>  array(
-					'padding-top' => UAGB_Helper::get_css_value(  $attr['paddingBtnTopTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value(  $attr['paddingBtnBottomTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value(  $attr['paddingBtnLeftTablet'] , $attr['tabletPaddingBtnUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value(  $attr['paddingBtnRightTablet'] , $attr['tabletPaddingBtnUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value(  $paddingBtnTopTablet , $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value(  $paddingBtnBottomTablet , $attr['tabletPaddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value(  $paddingBtnLeftTablet , $attr['tabletPaddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value(  $paddingBtnRightTablet , $attr['tabletPaddingBtnUnit']  ),
 				),
 			);
 		}
