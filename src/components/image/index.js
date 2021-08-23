@@ -51,9 +51,8 @@ const UAGImage = (props) => {
 					render={({ open }) => (
 						<Button isSecondary onClick={open}>
 							{ !backgroundImage?.url
-								? selectImageLabel 
-								: replaceImageLabel
-							}
+								? selectImageLabel
+								: replaceImageLabel}
 						</Button>
 					)}
 				/>
