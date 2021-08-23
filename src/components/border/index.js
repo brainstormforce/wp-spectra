@@ -48,19 +48,31 @@ const Border = (props) => {
 						},
 						{
 							value: "dotted",
-							label: __("Dotted", "ultimate-addons-for-gutenberg"),
+							label: __(
+								"Dotted",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "dashed",
-							label: __("Dashed", "ultimate-addons-for-gutenberg"),
+							label: __(
+								"Dashed",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "double",
-							label: __("Double", "ultimate-addons-for-gutenberg"),
+							label: __(
+								"Double",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "groove",
-							label: __("Groove", "ultimate-addons-for-gutenberg"),
+							label: __(
+								"Groove",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "inset",
@@ -68,7 +80,10 @@ const Border = (props) => {
 						},
 						{
 							value: "outset",
-							label: __("Outset", "ultimate-addons-for-gutenberg"),
+							label: __(
+								"Outset",
+								"ultimate-addons-for-gutenberg"
+							),
 						},
 						{
 							value: "ridge",
@@ -102,7 +117,22 @@ const Border = (props) => {
 						}
 						min={0}
 						max={100}
-						displayUnit={false}
+						displayUnit={borderRadius?.displayUnit || false}
+						unit={borderRadius?.unit || false}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __("%", "ultimate-addons-for-gutenberg"),
+								unitValue: "%",
+							},
+						]}
+						setAttributes={setAttributes}
 					/>
 				</div>
 			)}
