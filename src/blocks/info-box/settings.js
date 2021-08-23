@@ -522,28 +522,10 @@ const Settings = (props) => {
 
 				{showTitle && (
 					<>
-						<SelectControl
-							label={__(
-								"Title Tag",
-								"ultimate-addons-for-gutenberg"
-							)}
-							value={headingTag}
-							onChange={(value) =>
-								setAttributes({ headingTag: value })
-							}
-							options={[
-								{ value: "h1", label: __("H1") },
-								{ value: "h2", label: __("H2") },
-								{ value: "h3", label: __("H3") },
-								{ value: "h4", label: __("H4") },
-								{ value: "h5", label: __("H5") },
-								{ value: "h6", label: __("H6") },
-							]}
-						/>
 						<MultiButtonsControl
 							setAttributes={setAttributes}
 							label={__(
-								"Title Tag (Temp)",
+								"Title Tag",
 								"ultimate-addons-for-gutenberg"
 							)}
 							data={{
@@ -557,6 +539,7 @@ const Settings = (props) => {
 								{ value: "h4", label: __("H4") },
 								{ value: "h5", label: __("H5") },
 								{ value: "h6", label: __("H6") },
+								{ value: "p", label: __("P") },
 							]}
 						/>
 					</>

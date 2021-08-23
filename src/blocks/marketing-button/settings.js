@@ -16,6 +16,7 @@ import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import Border from "../../components/border";
 import MultiButtonsControl from "../../components/multi-buttons-control";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	BlockControls,
@@ -470,24 +471,46 @@ const Settings = ( props ) => {
 						label: 'titleLineHeightTablet',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={titleColor ? titleColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ titleColor: value })
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __(
+								"Hover",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={titleColor ? titleColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ titleColor: value })
+							}
+						/>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Hover",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={titleHoverColor ? titleHoverColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ titleHoverColor: value })
+					hover={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={titleHoverColor ? titleHoverColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ titleHoverColor: value })
+							}
+						/>
 					}
 				/>
 			</PanelBody>
@@ -556,24 +579,46 @@ const Settings = ( props ) => {
 						label: 'prefixLineHeightTablet',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={prefixColor ? prefixColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ prefixColor: value })
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __(
+								"Hover",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={prefixColor ? prefixColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ prefixColor: value })
+							}
+						/>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Hover",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={prefixHoverColor ? prefixHoverColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ prefixHoverColor: value })
+					hover={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={prefixHoverColor ? prefixHoverColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ prefixHoverColor: value })
+							}
+						/>
 					}
 				/>
 			</PanelBody>
@@ -586,24 +631,46 @@ const Settings = ( props ) => {
 				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-			<AdvancedPopColorControl
-				label={__(
-					"Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={iconColor ? iconColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ iconColor: value })
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "normal",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "hover",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				normal={
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={iconColor ? iconColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ iconColor: value })
+						}
+					/>
 				}
-			/>
-			<AdvancedPopColorControl
-				label={__(
-					"Hover",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={iconHoverColor ? iconHoverColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ iconHoverColor: value })
+				hover={
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={iconHoverColor ? iconHoverColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ iconHoverColor: value })
+						}
+					/>
 				}
 			/>
 			</PanelBody>

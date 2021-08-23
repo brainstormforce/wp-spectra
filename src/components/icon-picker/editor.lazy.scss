@@ -667,11 +667,14 @@ $theme: default;
 	fill: #585858;
 }
 
-
 /* Override default CSS - UAG */
 
 .uag-icon-picker {
 	.rfip {
 		margin: 4px 0 0;
+	}
+	.uag-control-label {
+		padding-bottom: 4px;
+		display: block;
 	}
 }
