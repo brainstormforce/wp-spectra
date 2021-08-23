@@ -19,12 +19,6 @@
   margin-bottom: 0;
 }
 
-/*.block-editor-block-inspector
-	.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-base-control:last-child {
-	margin-bottom: 0;
-}*/
 /* Reset CSS*/
 .components-panel__body
 .uagb-control__header
@@ -41,6 +35,15 @@
 .uagb-spacing-control__units {
   display: flex;
   align-items: center;
+}
+
+/* UAG Control Label CSS*/
+.uag-control-label,
+.uagb-inspector-tab .components-base-control__label,
+.uagb-inspector-tab .components-panel__body label,
+.uagb-extention-tab label {
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
@@ -536,19 +539,13 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .uagb-inspector-tab
-.components-panel__body.is-opened
+.components-panel__body
 > .components-panel__body-title
 .components-button.components-panel__body-toggle:focus {
   box-shadow: none;
 }
 
-.uagb-inspector-tab .components-panel__body.is-opened label {
-  font-size: 12px;
-}
-
-.uagb-inspector-tab
-.components-panel__body.is-opened
-.components-select-control__input {
+.uagb-inspector-tab .components-panel__body .components-select-control__input {
   font-size: 12px;
   line-height: normal;
 }
@@ -626,6 +623,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
   height: 17px;
   width: 17px;
   margin-left: 0px;
+  margin-top: 6px;
 }
 
 .uagb-bg-image {
@@ -647,7 +645,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .uagb-bg-image button.components-button.uagb-rm-btn.is-link.is-destructive {
-  margin-top: 28px;
+  margin-top: 18px;
 }
 
 .uagb-bg-image .components-button:focus:not(:disabled) {

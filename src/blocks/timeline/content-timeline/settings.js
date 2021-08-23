@@ -4,6 +4,7 @@
 
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 import renderSVG from '@Controls/renderIcon';
+import UAGIconPicker from "../../../components/icon-picker";
 import React from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -518,7 +519,7 @@ const Settings = ( props ) => {
 				title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<FontIconPicker
+				{/* <FontIconPicker
 					icons={ wp.UAGBSvgIcons }
 					value={ icon }
 					onChange={ getTimelineicon }
@@ -528,6 +529,11 @@ const Settings = ( props ) => {
 						'Select Icon',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/> */}
+				<UAGIconPicker
+					label={__("Icon", "ultimate-addons-for-gutenberg")}
+					value={icon}
+					onChange={getTimelineicon}
 				/>
 				<Range
 					label={__(

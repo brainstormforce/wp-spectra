@@ -585,9 +585,7 @@ const SpacingControl = (props) => {
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
 						{label && (
-							<label className={"uagb-range-control__label"}>
-								{label}
-							</label>
+							<span className="uag-control-label">{label}</span>
 						)}
 						{!displayResponsive && (
 							<Button

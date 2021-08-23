@@ -210,9 +210,7 @@ const Range = (props) => {
 			<div className="uagb-control__header">
 				<div className="uag-responsive-label-wrap">
 					{props.label && (
-						<label className={"uagb-range-control__label"}>
-							{props.label}
-						</label>
+						<span className="uag-control-label">{props.label}</span>
 					)}
 					{!displayResponsive && props.responsive && (
 						<Button
