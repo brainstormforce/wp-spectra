@@ -2,8 +2,8 @@
  * BLOCK: Content Timeline.
  */
 
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import renderSVG from '@Controls/renderIcon';
+// import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+// import renderSVG from '@Controls/renderIcon';
 import UAGIconPicker from "../../../components/icon-picker";
 import React from 'react';
 import TypographyControl from '@Components/typography';
@@ -13,6 +13,7 @@ import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import Range from "@Components/range/Range.js";
 import SpacingControl from "../../../components/spacing-control";
+import UAGTabsControl from "../../../components/tabs";
 
 import { __ } from '@wordpress/i18n';
 
@@ -27,7 +28,6 @@ import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
-	TabPanel,
 } from '@wordpress/components';
 
 import { select } from '@wordpress/data';
@@ -917,13 +917,7 @@ const Settings = ( props ) => {
 	}
 	const connectorColorSettings = () => {
 		const iconColorSettings = (
-			<PanelBody
-				title={ __(
-					'Color Settings',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ true }
-			>
+			<PanelBody>
 			<AdvancedPopColorControl
 				label={__("Line Color", "ultimate-addons-for-gutenberg")}
 				colorValue={separatorColor ? separatorColor : ""}
@@ -956,13 +950,7 @@ const Settings = ( props ) => {
 		);
 
 		const iconFocusSettings = (
-			<PanelBody
-				title={ __(
-					'Color Settings',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ true }
-			>
+			<PanelBody>
 			<AdvancedPopColorControl
 				label={__("Line Color", "ultimate-addons-for-gutenberg")}
 				colorValue={separatorFillColor ? separatorFillColor : ""}
@@ -993,7 +981,7 @@ const Settings = ( props ) => {
 			/>
 			</PanelBody>
 		);
-
+		
 		return (
 			<PanelBody
 				title={ __(
@@ -1002,38 +990,26 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<TabPanel
-					className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
+				<UAGTabsControl
+					tabs={[
 						{
-							name: 'normal',
+							name: "normal",
 							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
+								"Normal",
+								"ultimate-addons-for-gutenberg"
 							),
-							className: 'uagb-normal-tab',
 						},
 						{
-							name: 'focus',
+							name: "focus",
 							title: __(
-								'Focus',
-								'ultimate-addons-for-gutenberg'
+								"Focus",
+								"ultimate-addons-for-gutenberg"
 							),
-							className: 'uagb-focus-tab',
 						},
-					] }
-				>
-					{ ( tabName ) => {
-						let tabout;
-						if ( 'focus' === tabName.name ) {
-							tabout = iconFocusSettings;
-						} else {
-							tabout = iconColorSettings;
-						}
-						return <div>{ tabout }</div>;
-					} }
-				</TabPanel>
+					]}
+					normal={iconColorSettings}
+					focus={iconFocusSettings}
+				/>
 			</PanelBody>
 		);
 	};
