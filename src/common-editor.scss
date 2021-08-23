@@ -83,12 +83,14 @@
 			max-height: 30px;
 			font-size: 13px;
 			border-bottom: 0;
+			margin-bottom: -1px;
 		}
 		& > .components-button:focus:not(:disabled) {
 			box-shadow: none;
 		}
 		& > .components-button.active-tab {
 			color: #007cba;
+			background: #fff;
 		}
 	}
 }

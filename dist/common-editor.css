@@ -84,6 +84,7 @@
   max-height: 30px;
   font-size: 13px;
   border-bottom: 0;
+  margin-bottom: -1px;
 }
 
 .uag-control-tabs .components-tab-panel__tabs > .components-button:focus:not(:disabled) {
@@ -92,6 +93,7 @@
 
 .uag-control-tabs .components-tab-panel__tabs > .components-button.active-tab {
   color: #007cba;
+  background: #fff;
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
