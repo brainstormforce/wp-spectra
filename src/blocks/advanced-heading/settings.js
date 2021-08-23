@@ -333,65 +333,133 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: seperatorStyle,
-						label: "seperatorStyle",
-						title: __(
-							"Border Style",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderWidth={{
-						value: separatorWidth,
-						label: "separatorWidth",
-						title: __(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderRadius={{
-						value: separatorHeight,
-						label: "separatorHeight",
-						title: __(
-							"Radius",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderColor={{
-						value: separatorColor,
-						label: "separatorColor",
-						title: __(
-							"Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderHoverColor={{
-						value: separatorHoverColor,
-						label: "separatorHoverColor",
-						title: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
+				<SelectControl
+					label={__("Style", "ultimate-addons-for-gutenberg" )}
+					value={seperatorStyle}
+					onChange={(value) =>
+						setAttributes({ seperatorStyle: value })
+					}
+					options={[
+						{
+							value: "none",
+							label: __("None", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "solid",
+							label: __("Solid", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "double",
+							label: __(
+								"Double",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "dashed",
+							label: __(
+								"Dashed",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "dotted",
+							label: __(
+								"Dotted",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
 				/>
-				{ seperatorStyle !== 'none' && (
+				{"none" !== seperatorStyle && (
+				<>
 					<Range
 						label={__(
-							"Separator Bottom Spacing (px)",
+							"Width",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
-						value={separatorSpace}
+						value={separatorWidth}
 						onChange={(value) =>
-							setAttributes({ separatorSpace: value })
+							setAttributes({
+								separatorWidth: value,
+							})
 						}
 						min={0}
-						max={500}
+						max={
+							"%" == separatorWidthType
+								? 100
+								: 500
+						}
+						unit={{
+							value: separatorWidthType,
+							label: "separatorWidthType",
+						}}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __(
+									"%",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "%",
+							},
+						]}
+					/>
+					<Range
+						label={__(
+							"Thickness(px)",
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={separatorHeight}
+						onChange={(value) =>
+							setAttributes({
+								separatorHeight: value,
+							})
+						}
+						min={ 0 }
+						max={ 20 }
 						displayUnit={false}
 					/>
-				) }
+					<AdvancedPopColorControl
+						label={__( "Color", "ultimate-addons-for-gutenberg" )}
+						colorValue={ separatorColor ? separatorColor : "" }
+						onColorChange={(value) =>
+							setAttributes({ separatorColor: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__( "Hover", "ultimate-addons-for-gutenberg" )}
+						colorValue={ separatorHoverColor ? separatorHoverColor : "" }
+						onColorChange={(value) =>
+							setAttributes({ separatorHoverColor: value })
+						}
+					/>
+				</>
+			)}	
+			{ seperatorStyle !== 'none' && (
+				<Range
+					label={__(
+						"Separator Bottom Spacing (px)",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={separatorSpace}
+					onChange={(value) =>
+						setAttributes({ separatorSpace: value })
+					}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+			) }
 			</PanelBody>
 		);
 	};
