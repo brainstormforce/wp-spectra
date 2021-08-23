@@ -49,7 +49,75 @@ const UAGBWpSearchEdit = ( props ) => {
 				isFocused: true,
 			} );
 		}
+		const {
+			vinputPaddingMobile,
+			vinputPaddingTablet,
+			vinputPaddingDesktop,
+			hinputPaddingMobile,
+			hinputPaddingTablet,
+			hinputPaddingDesktop,
+			paddingInputTop,
+			paddingInputRight,
+			paddingInputBottom,
+			paddingInputLeft,
+			paddingInputTopTablet,
+			paddingInputBottomTablet,
+			paddingInputRightTablet,
+			paddingInputLeftTablet,
+			paddingInputTopMobile,
+			paddingInputRightMobile,
+			paddingInputBottomMobile,
+			paddingInputLeftMobile,
+		} = attributes;
 
+		if (vinputPaddingDesktop) {
+			if (!paddingInputTop) {
+				setAttributes({ paddingInputTop: vinputPaddingDesktop });
+			}
+			if (!paddingInputBottom) {
+				setAttributes({ paddingInputBottom: vinputPaddingDesktop });
+			}
+		}
+		if (hinputPaddingDesktop) {
+			if (!paddingInputRight) {
+				setAttributes({ paddingInputRight: hinputPaddingDesktop });
+			}
+			if (!paddingInputLeft) {
+				setAttributes({ paddingInputLeft: hinputPaddingDesktop });
+			}
+		}
+		if (vinputPaddingTablet) {
+			if (!paddingInputTopTablet) {
+				setAttributes({ paddingInputTopTablet: vinputPaddingTablet });
+			}
+			if (!paddingInputBottomTablet) {
+				setAttributes({ paddingInputBottomTablet: vinputPaddingTablet });
+			}
+		}
+		if (hinputPaddingTablet) {
+			if (!paddingInputRightTablet) {
+				setAttributes({ paddingInputRightTablet: hinputPaddingTablet });
+			}
+			if (!paddingInputLeftTablet) {
+				setAttributes({ paddingInputLeftTablet: hinputPaddingTablet });
+			}
+		}
+		if (vinputPaddingMobile) {
+			if (!paddingInputTopMobile) {
+				setAttributes({ paddingInputTopMobile: vinputPaddingMobile });
+			}
+			if (!paddingInputBottomMobile) {
+				setAttributes({ paddingInputBottomMobile: vinputPaddingMobile });
+			}
+		}
+		if (hinputPaddingMobile) {
+			if (!paddingInputRightMobile) {
+				setAttributes({ paddingInputRightMobile: hinputPaddingMobile });
+			}
+			if (!paddingInputLeftMobile) {
+				setAttributes({ paddingInputLeftMobile: hinputPaddingMobile });
+			}
+		}
 		const element = document.getElementById(
 			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
 		);
