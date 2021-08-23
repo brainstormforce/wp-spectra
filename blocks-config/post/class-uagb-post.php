@@ -936,9 +936,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'mobilePaddingUnit'       => array(
 					'type' => 'string',
+					'default' => 'px'
 				),
 				'tabletPaddingUnit'       => array(
 					'type' => 'string',
+					'default' => 'px'
 				),
 			);
 		}

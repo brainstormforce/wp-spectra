@@ -3109,7 +3109,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = self::get_post_tablet_selectors( $attr );
 
 			$arrow_size = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
-
 			$selectors[' .slick-arrow'] = array(
 				'border-color' => $attr['arrowColor'],
 			);
@@ -3188,7 +3187,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
-
+			$paginationpaddingTop = isset($attr['vpaginationButtonPaddingDesktop']) ? $attr['vpaginationButtonPaddingDesktop'] : $attr['paginationButtonPaddingTop'];
+			$paginationpaddingBottom = isset($attr['vpaginationButtonPaddingDesktop']) ? $attr['vpaginationButtonPaddingDesktop'] : $attr['paginationButtonPaddingBottom'];
+			$paginationpaddingLeft = isset($attr['hpaginationButtonPaddingDesktop']) ? $attr['hpaginationButtonPaddingDesktop'] : $attr['paginationButtonPaddingLeft'];
+			$paginationpaddingRight = isset($attr['hpaginationButtonPaddingDesktop']) ? $attr['hpaginationButtonPaddingDesktop'] : $attr['paginationButtonPaddingRight'];
+			
+			$paginationButtonPaddingTopTablet = isset($attr['paginationButtonPaddingTopMobile']) ? $attr['vpaginationButtonPaddingTablet'] : $attr['paginationButtonPaddingTopTablet'];
+			$paginationButtonPaddingBottomTablet = isset($attr['vpaginationButtonPaddingTablet']) ? $attr['vpaginationButtonPaddingTablet'] : $attr['paginationButtonPaddingBottomTablet'];
+			$paginationButtonPaddingLeftTablet = isset($attr['hpaginationButtonPaddingTablet']) ? $attr['hpaginationButtonPaddingTablet'] : $attr['paginationButtonPaddingLeftTablet'];
+			$paginationButtonPaddingRightTablet = isset($attr['hpaginationButtonPaddingTablet']) ? $attr['hpaginationButtonPaddingTablet'] : $attr['paginationButtonPaddingRightTablet'];
+		
+			$paginationButtonPaddingTopMobile = isset($attr['vpaginationButtonPaddingMobile']) ? $attr['vpaginationButtonPaddingMobile'] : $attr['paginationButtonPaddingTopMobile'];
+			$paginationButtonPaddingBottomMobile = isset($attr['vpaginationButtonPaddingMobile']) ? $attr['vpaginationButtonPaddingMobile'] : $attr['paginationButtonPaddingBottomMobile'];
+			$paginationButtonPaddingLeftMobile = isset($attr['hpaginationButtonPaddingMobile']) ? $attr['hpaginationButtonPaddingMobile'] : $attr['paginationButtonPaddingLeftMobile'];
+			$paginationButtonPaddingRightMobile = isset($attr['hpaginationButtonPaddingMobile']) ? $attr['hpaginationButtonPaddingMobile'] : $attr['paginationButtonPaddingRightMobile'];
+		
 			if ( 'infinite' === $attr['paginationType'] ) {
 
 				$selectors[' .uagb-post__load-more-wrap'] = array(
@@ -3205,19 +3218,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['paginationMasonryBorderColor'],
 					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], $attr['paginationFontSizeUnit'] ),
 					'padding-top' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingTop'],
+						$paginationpaddingTop,
 						$attr['paginationButtonPaddingType']
 					),
 					'padding-bottom' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingBottom'],
+						$paginationpaddingBottom,
 						$attr['paginationButtonPaddingType']
 					),
 					'padding-right' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingRight'],
+						$paginationpaddingRight,
 						$attr['paginationButtonPaddingType']
 					),
 					'padding-left' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingLeft'],
+						$paginationpaddingLeft,
 						$attr['paginationButtonPaddingType']
 					),
 				);
@@ -3227,37 +3240,37 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 				$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
 					'padding-top' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingTopMobile'],
+						$paginationButtonPaddingTopMobile,
 						$attr['mobilepaginationButtonPaddingType']
 					),
 					'padding-right' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingRightMobile'],
+						$paginationButtonPaddingRightMobile,
 						$attr['mobilepaginationButtonPaddingType']
 					),
 					'padding-bottom' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingBottomMobile'],
+						$paginationButtonPaddingBottomMobile,
 						$attr['mobilepaginationButtonPaddingType']
 					),
 					'padding-left' => UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingLeftMobile'],
+						$paginationButtonPaddingLeftMobile,
 						$attr['mobilepaginationButtonPaddingType']
 					),
 				);
 				$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
 					'padding-top'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingTopTablet'],
+						$paginationButtonPaddingTopTablet,
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-bottom'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingBottomTablet'],
+						$paginationButtonPaddingBottomTablet,
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-right'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingRightTablet'],
+						$paginationButtonPaddingRightTablet,
 						$attr['tabletpaginationButtonPaddingType']
 					),
 					'padding-left'=> UAGB_Helper::get_css_value(
-						$attr['paginationButtonPaddingLeftTablet'],
+						$paginationButtonPaddingLeftTablet,
 						$attr['tabletpaginationButtonPaddingType']
 					),
 				);
@@ -3299,15 +3312,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 			
-			$paddingTop = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingTop'];
-			$paddingBottom = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingBottom'];
-			$paddingLeft = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingLeft'];
-			$paddingRight = isset($attr['contentPadding']) ? $attr['contentPadding'] : $attr['paddingRight'];
+			$paddingTop = isset($attr['paddingTop']) ? $attr['paddingTop'] : $attr['contentPadding'];
+			$paddingBottom = isset($attr['paddingBottom']) ? $attr['paddingBottom'] : $attr['contentPadding'];
+			$paddingLeft = isset($attr['paddingLeft']) ? $attr['paddingLeft'] : $attr['contentPadding'];
+			$paddingRight = isset($attr['paddingRight']) ? $attr['paddingRight'] : $attr['contentPadding'];
 
-			$paddingBtnTop = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBtnTop'];
-			$paddingBtnBottom = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBtnBottom'];
-			$paddingBtnLeft = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingBtnLeft'];
-			$paddingBtnRight = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingBtnRight'];
+			$paddingBtnTop = isset($attr['paddingBtnTop']) ? $attr['paddingBtnTop'] : $attr['btnVPadding'];
+			$paddingBtnBottom = isset($attr['paddingBtnBottom']) ? $attr['paddingBtnBottom'] : $attr['btnVPadding'];
+			$paddingBtnLeft = isset($attr['paddingBtnLeft']) ? $attr['paddingBtnLeft'] : $attr['btnHPadding'];
+			$paddingBtnRight = isset($attr['paddingBtnRight']) ? $attr['paddingBtnRight'] : $attr['btnHPadding'];
 		
 			$selectors = array(
 				' .uagb-post__items'         => array(
@@ -3405,28 +3418,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
-			$paddingTopMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingTopMobile'];
-			$paddingBottomMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingBottomMobile'];
-			$paddingLeftMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingLeftMobile'];
-			$paddingRightMobile = isset($attr['contentPaddingMobile']) ? $attr['contentPaddingMobile'] : $attr['paddingRightMobile'];
+			$paddingTopMobile = isset($attr['paddingTopMobile']) ? $attr['paddingTopMobile'] : $attr['contentPaddingMobile'];
+			$paddingBottomMobile = isset($attr['paddingBottomMobile']) ? $attr['paddingBottomMobile'] : $attr['contentPaddingMobile'];
+			$paddingLeftMobile = isset($attr['paddingLeftMobile']) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
+			$paddingRightMobile = isset($attr['paddingRightMobile']) ? $attr['paddingRightMobile'] : $attr['contentPaddingMobile'];
 			
-			$paddingBtnTopMobile = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingTopMobile'];
-			$paddingBtnBottomMobile = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBottomMobile'];
-			$paddingBtnLeftMobile = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingLeftMobile'];
-			$paddingBtnRightMobile = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingRightMobile'];
+			$paddingBtnTopMobile = isset($attr['paddingTopMobile']) ? $attr['paddingTopMobile'] : $attr['btnVPadding'];
+			$paddingBtnBottomMobile = isset($attr['paddingBottomMobile']) ? $attr['paddingBottomMobile'] : $attr['btnVPadding'];
+			$paddingBtnLeftMobile = isset($attr['paddingLeftMobile']) ? $attr['paddingLeftMobile'] : $attr['btnHPadding'];
+			$paddingBtnRightMobile = isset($attr['paddingRightMobile']) ? $attr['paddingRightMobile'] : $attr['btnHPadding'];
 			
 			return array(
 				' .uagb-post__inner-wrap' => array(
-					'padding-top' => UAGB_Helper::get_css_value( $paddingTopMobile , $attr['tabletPaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomMobile , $attr['tabletPaddingUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value( $paddingLeftMobile , $attr['tabletPaddingUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value( $paddingRightMobile , $attr['tabletPaddingUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value( $paddingTopMobile , $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomMobile , $attr['mobilePaddingUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value( $paddingLeftMobile , $attr['mobilePaddingUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value( $paddingRightMobile , $attr['mobilePaddingUnit']  ),
 				),
 				' .uagb-post__cta a'=>  array(
-					'padding-top' => UAGB_Helper::get_css_value(  $paddingBtnTopMobile , $attr['tabletPaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value(  $paddingBtnBottomMobile , $attr['tabletPaddingBtnUnit'] ),
-					'padding-left' => UAGB_Helper::get_css_value(  $paddingBtnLeftMobile , $attr['tabletPaddingBtnUnit']  ),
-					'padding-right' => UAGB_Helper::get_css_value(  $paddingBtnRightMobile , $attr['tabletPaddingBtnUnit']  ),
+					'padding-top' => UAGB_Helper::get_css_value(  $paddingBtnTopMobile , $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value(  $paddingBtnBottomMobile , $attr['mobilePaddingBtnUnit'] ),
+					'padding-left' => UAGB_Helper::get_css_value(  $paddingBtnLeftMobile , $attr['mobilePaddingBtnUnit']  ),
+					'padding-right' => UAGB_Helper::get_css_value(  $paddingBtnRightMobile , $attr['mobilePaddingBtnUnit']  ),
 				),
 			);
 		}
@@ -3438,15 +3451,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
-			$paddingTopTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingTopTablet'];
-			$paddingBottomTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingBottomTablet'];
-			$paddingLeftTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingLeftTablet'];
-			$paddingRightTablet = isset($attr['contentPaddingTablet']) ? $attr['contentPaddingTablet'] : $attr['paddingRightTablet'];
+			$paddingTopTablet = isset($attr['paddingTopTablet']) ? $attr['paddingTopTablet'] : $attr['contentPaddingTablet'];
+			$paddingBottomTablet = isset($attr['paddingBottomTablet']) ? $attr['paddingBottomTablet'] : $attr['contentPaddingTablet'];
+			$paddingLeftTablet = isset($attr['paddingLeftTablet']) ? $attr['paddingLeftTablet'] : $attr['contentPaddingTablet'];
+			$paddingRightTablet = isset($attr['paddingRightTablet']) ? $attr['paddingRightTablet'] : $attr['contentPaddingTablet'];
 			
-			$paddingBtnTopTablet = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingTopTablet'];
-			$paddingBtnBottomTablet = isset($attr['btnVPadding']) ? $attr['btnVPadding'] : $attr['paddingBottomTablet'];
-			$paddingBtnLeftTablet = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingLeftTablet'];
-			$paddingBtnRightTablet = isset($attr['btnHPadding']) ? $attr['btnHPadding'] : $attr['paddingRightTablet'];
+			$paddingBtnTopTablet = isset($attr['paddingTopTablet']) ? $attr['paddingTopTablet'] : $attr['btnVPadding'];
+			$paddingBtnBottomTablet = isset($attr['paddingBottomTablet']) ? $attr['paddingBottomTablet'] : $attr['btnVPadding'];
+			$paddingBtnLeftTablet = isset($attr['paddingLeftTablet']) ? $attr['paddingLeftTablet'] : $attr['btnHPadding'];
+			$paddingBtnRightTablet = isset($attr['paddingRightTablet']) ? $attr['paddingRightTablet'] : $attr['btnHPadding'];
 			
 			return array(
 				' .uagb-post__inner-wrap' => array(

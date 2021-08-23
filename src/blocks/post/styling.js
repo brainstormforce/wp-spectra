@@ -573,12 +573,6 @@ function styling( props ) {
 				'padding-left': generateCSSUnit( paddingBtnLeftMobile , mobilePaddingBtnUnit  ),
 				'padding-right': generateCSSUnit( paddingBtnRightMobile , mobilePaddingBtnUnit  ),
 			},
-			' .uagb-post__inner-wrap': {
-				'padding-top': generateCSSUnit( paddingTopMobile , mobilePaddingUnit ),
-				'padding-bottom': generateCSSUnit( paddingBottomMobile , mobilePaddingUnit ),
-				'padding-left': generateCSSUnit( paddingLeftMobile , mobilePaddingUnit  ),
-				'padding-right': generateCSSUnit( paddingRightMobile , mobilePaddingUnit  ),
-			},
 		};
 
 		tabletSelectors = {
@@ -588,12 +582,6 @@ function styling( props ) {
 					titleFontSizeType
 				),
 				'line-height': titleLineHeightTablet + titleLineHeightType,
-			},
-			' .uagb-post__inner-wrap': {
-				'padding-top': generateCSSUnit( paddingTopTablet , tabletPaddingUnit ),
-				'padding-bottom': generateCSSUnit( paddingRightTablet , tabletPaddingUnit ),
-				'padding-left': generateCSSUnit( paddingBottomTablet , tabletPaddingUnit  ),
-				'padding-right': generateCSSUnit( paddingLeftTablet , tabletPaddingUnit  ),
 			},
 			' .uagb-post__title a': {
 				'font-size': generateCSSUnit(
@@ -745,10 +733,16 @@ function styling( props ) {
 		}
 	}
 	tabletSelectors[ ' .uagb-post__inner-wrap' ] = {
-		'padding': contentPaddingTablet + contentPaddingUnit,
+		'padding-top': generateCSSUnit( paddingTopTablet , tabletPaddingUnit ),
+		'padding-bottom': generateCSSUnit( paddingBottomTablet , tabletPaddingUnit ),
+		'padding-left': generateCSSUnit( paddingLeftTablet , tabletPaddingUnit  ),
+		'padding-right': generateCSSUnit( paddingRightTablet , tabletPaddingUnit  ),
 	};
 	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
-		'padding': contentPaddingMobile + contentPaddingUnit,
+		'padding-top': generateCSSUnit( paddingTopMobile , mobilePaddingUnit ),
+		'padding-bottom': generateCSSUnit( paddingBottomMobile , mobilePaddingUnit ),
+		'padding-left': generateCSSUnit( paddingLeftMobile , mobilePaddingUnit  ),
+		'padding-right': generateCSSUnit( paddingRightMobile , mobilePaddingUnit  ),
 	};
 	mobileSelectors[
 		'.uagb-post__inner-wrap  > .uagb-post__image:first-child'
