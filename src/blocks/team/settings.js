@@ -12,6 +12,7 @@ import Range from "../../components/range/Range.js";
 import SpacingControl from "../../components/spacing-control";
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import UAGImage from "../../components/image";
+import UAGTabsControl from "../../components/tabs";
 
 let imageSizeOptions = [
 	{
@@ -990,26 +991,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={socialColor ? socialColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ socialColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Hover",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={socialHoverColor ? socialHoverColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ socialHoverColor: value })
-					}
-				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1051,6 +1032,48 @@ const Settings = ( props ) => {
 					min={0}
 					max={50}
 					displayUnit={false}
+				/>
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __(
+								"Hover",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={socialColor ? socialColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ socialColor: value })
+							}
+						/>
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={__(
+								"Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={socialHoverColor ? socialHoverColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ socialHoverColor: value })
+							}
+						/>
+					}
 				/>
 			</PanelBody>
 		);
