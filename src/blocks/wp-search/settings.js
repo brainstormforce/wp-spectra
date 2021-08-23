@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import TypographyControl from '@Components/typography';
 import BoxShadowControl from '@Components/box-shadow';
+import MultiButtonsControl from "../../components/multi-buttons-control";
 import WebfontLoader from '@Components/typography/fontloader';
 import React from 'react';
 import Border from "../../components/border";
@@ -115,32 +116,31 @@ const Settings = ( props ) => {
 			<PanelBody
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-					value={ layout }
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Layout",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: layout,
+						label: "layout",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
-							value: 'input-button',
-							label: __(
-								'Classic',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "input-button",
+							label: 'Classic',
+
 						},
 						{
-							value: 'input',
-							label: __(
-								'Minimal',
-								'ultimate-addons-for-gutenberg'
-							),
+							value: "input",
+							label: 'Minimal',
 						},
-					] }
-					onChange={ ( value ) =>
-						setAttributes( {
-							layout: value,
-						} )
-					}
+
+					]}
+					showIcons={false}
 				/>
-				<>
 					<TextControl
 						label={ __(
 							'Placeholder',
@@ -165,38 +165,59 @@ const Settings = ( props ) => {
 						}
 						min={0}
 						max={300}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __(
+									"Em",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "em",
+							},
+							{
+								name: __(
+									"%",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "%",
+							},
+						]}
 						unit={{
 							value: inputSizeType,
 							label: "inputSizeType",
 						}}
 					/>
-					<SelectControl
-						label={ __(
-							'Button Type',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ buttonType }
-						options={ [
-							{
-								value: 'icon',
-								label: __(
-									'Icon',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'text',
-								label: __(
-									'Text',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						onChange={ ( value ) => {
-							setAttributes( {
-								buttonType: value,
-							} );
-						} }
+					
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							"Button Type",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: buttonType,
+							label: "buttonType",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+						{
+							value: "icon",
+							label: 'Icon',
+
+						},
+						{
+							value: "text",
+							label: 'Text',
+						},
+
+						]}
+						showIcons={false}
 					/>
 					{ 'text' === buttonType && (
 						<>
@@ -211,7 +232,7 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-				</>
+				
 			</PanelBody>
 		);
 	};
@@ -535,7 +556,7 @@ const Settings = ( props ) => {
 							/>
 							<AdvancedPopColorControl
 								label={__(
-									'Text over Color',
+									'Text Hover Color',
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={buttonTextHoverColor ? buttonTextHoverColor : ""}
