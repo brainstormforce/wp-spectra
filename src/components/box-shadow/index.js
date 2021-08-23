@@ -136,7 +136,7 @@ const BoxShadowControl = (props) => {
 	boxShadowAdvancedControls = (
 		<div className="uag-box-shadow-option-actions">
 			<span className="uag-control-label">
-				{__("Enable Shadow", "ultimate-addons-for-gutenberg")}
+				{__("Box Shadow", "ultimate-addons-for-gutenberg")}
 			</span>
 			<Button
 				className={"uag-box-shadow-button"}
