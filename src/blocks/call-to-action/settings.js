@@ -323,7 +323,7 @@ const Settings = ( props ) => {
 								<MultiButtonsControl
 									setAttributes={setAttributes}
 									label={__(
-										"Verticle Alignment",
+										"Icon Position",
 										"ultimate-addons-for-gutenberg"
 									)}
 									data={{
@@ -935,7 +935,7 @@ const Settings = ( props ) => {
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Stak On",
+							"Stack On",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
@@ -1011,7 +1011,7 @@ const Settings = ( props ) => {
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Verticle Alignment",
+							"Vertical Alignment",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
