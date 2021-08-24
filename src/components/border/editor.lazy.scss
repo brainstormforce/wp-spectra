@@ -2,7 +2,7 @@
 	.uag-border-type .components-select-control {
 		align-items: center;
 		display: grid;
-		grid-template-columns: 30% 70%;
+		grid-template-columns: 50% 50%;
 	}
 
 	.uag-border-width,
@@ -10,5 +10,8 @@
 	.uag-border-color,
 	.uag-border-hv-color {
 		margin-top: 24px;
+	}
+	.uag-border-radius {
+		margin-bottom: 24px;
 	}
 }

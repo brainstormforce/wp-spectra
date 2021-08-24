@@ -1,10 +1,7 @@
 .uag-range-control {
-
 	.uagb-control__header {
-		justify-content: space-between;
 		margin-bottom: 5px;
 		margin-right: 0px;
-		display: flex;
 		.uagb-range-control__inputs {
 			display: flex;
 		}
@@ -13,7 +10,7 @@
 		}
 		.uagb-range-control__actions {
 			position: relative;
-			bottom: -8px;
+			top: 0px;
 			display: flex;
 			.uagb-reset {
 				padding: 0;
@@ -87,6 +84,7 @@
 			position: relative;
 			width: 100%;
 			margin-bottom: 0;
+			max-height: 30px;
 			.components-range-control__tooltip {
 				left: 45%;
 			}
@@ -97,6 +95,7 @@
 		}
 		.components-number-control {
 			width: 35%;
+			margin-left: 10px;
 			.components-input-control__input {
 				padding: 0 4px !important;
 				text-align: center;
@@ -104,7 +103,6 @@
 		}
 	}
 }
-
 
 /*.components-panel__body {
 	.components-font-size-picker__controls {

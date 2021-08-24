@@ -5,21 +5,22 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import {
 	InspectorControls,
-	MediaUpload,
 	AlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import UAGTabsControl from "../../components/tabs";
+import UAGImage from "../../components/image";
 import SpacingControl from "@Components/spacing-control";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 $ = jQuery;
 import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
-	Button,
 	TextControl,
 	DateTimePicker,
 } from '@wordpress/components';
@@ -138,6 +139,30 @@ const Settings = ( props ) => {
 		datecreated,
 		directorname,
 	} = attributes;
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = (media) => {
+		if (!media || !media.url) {
+			setAttributes({ mainimage: null });
+			return;
+		}
+
+		if (!media.type || "image" !== media.type) {
+			setAttributes({ mainimage: null });
+			return;
+		}
+		
+		setAttributes({ mainimage: media });
+	};
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes({ mainimage: "" });
+	};
 
 	let loadContentGoogleFonts;
 	let loadHeadingGoogleFonts;
@@ -328,35 +353,67 @@ const Settings = ( props ) => {
 				title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-			<AdvancedPopColorControl
-				label={__(
-					"Active Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={starColor}
-				onColorChange={(value) =>
-					setAttributes({ starColor: value })
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "active",
+						title: __(
+							"Active",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "inactive",
+						title: __(
+							"Inactive",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "outline",
+						title: __(
+							"Outline",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				active={
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={starColor}
+						onColorChange={(value) =>
+							setAttributes({ starColor: value })
+						}
+					/>
 				}
-			/>
-			<AdvancedPopColorControl
-				label={__(
-					"Inactive Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={starActiveColor}
-				onColorChange={(value) =>
-					setAttributes({ starActiveColor: value })
+				outline={
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={starActiveColor}
+						onColorChange={(value) =>
+							setAttributes({ starActiveColor: value })
+						}
+					/>
 				}
-			/>
-			<AdvancedPopColorControl
-				label={__(
-					"Outline Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={starOutlineColor}
-				onColorChange={(value) =>
-					setAttributes({ starOutlineColor: value })
+				inactive={
+					<AdvancedPopColorControl
+						label={__(
+							"Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={starOutlineColor}
+						onColorChange={(value) =>
+							setAttributes({ starOutlineColor: value })
+						}
+					/>
 				}
+				disableBottomSeparator={true}
 			/>
 		</PanelBody>
 		);
@@ -949,23 +1006,24 @@ const Settings = ( props ) => {
 						setAttributes( { enableSchema: ! enableSchema } )
 					}
 				/>
-				<h2>
-					{ __( 'Review Title', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
-				<SelectControl
-					label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
-						{ value: 'h1', label: __( 'H1' ) },
-						{ value: 'h2', label: __( 'H2' ) },
-						{ value: 'h3', label: __( 'H3' ) },
-						{ value: 'h4', label: __( 'H4' ) },
-						{ value: 'h5', label: __( 'H5' ) },
-						{ value: 'h6', label: __( 'H6' ) },
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Review Title Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: headingTag,
+						label: "headingTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
 				<ToggleControl
 					label={ __(
@@ -1050,7 +1108,7 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 			>
 					<>
-					<div className="uagb-bg-image">
+					{/* <div className="uagb-bg-image">
 					<MediaUpload
 						title={__(
 							"Select Background Image",
@@ -1091,7 +1149,12 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						</Button>
-					) }
+					) } */}
+					<UAGImage
+						onSelectImage={onSelectImage}
+						backgroundImage={mainimage}
+						onRemoveImage={onRemoveImage}
+					/>
 					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
 						<h2>
 							{ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
@@ -1297,12 +1360,12 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 				{ generalSettings() }
 				{ enableImage === true && ( imageSettings() ) }
 				{ schemaSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ titleSettings() }
 				{ enableDescription && ( descriptionSettings() ) }
 				{ showAuthor === true && ( authorSettings() ) }
@@ -1311,7 +1374,7 @@ const Settings = ( props ) => {
 				{ starSettings() }
 				{ overallPadding() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
