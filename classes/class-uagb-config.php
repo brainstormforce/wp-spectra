@@ -145,6 +145,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'subHeadLineHeightMobile' => '',
 							'headSpace'               => 15,
 							'separatorSpace'          => 15,
+							'separatorHoverColor'     => '',
 						),
 					),
 					'uagb/columns'                => array(

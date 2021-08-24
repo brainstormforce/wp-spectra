@@ -280,6 +280,7 @@ const Range = (props) => {
 					allowReset={false}
 					max={props.max}
 					min={props.min}
+					initialPosition={0}
 				/>
 				{withInputField && isNumberControlSupported && (
 					<NumberControl
