@@ -39,7 +39,7 @@ import "./blocks/info-box/block.js";
 // import "./blocks/faq/block.js";
 // import "./blocks/faq-child/block.js";
 import "./blocks/inline-notice/block.js";
-// import "./blocks/wp-search/block.js";
+import "./blocks/wp-search/block.js";
 // import "./blocks/review/block.js";
 // import "./blocks/taxonomy-list/block.js";
 // import "./blocks/forms/block.js";

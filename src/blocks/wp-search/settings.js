@@ -7,6 +7,7 @@ import React from 'react';
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
+import UAGTabsControl from "../../components/tabs";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
@@ -496,6 +497,82 @@ const Settings = ( props ) => {
 	};
 
 	const buttonSettings = () => {
+		let tabOutputNormal = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={buttonBgColor ? buttonBgColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ buttonBgColor: value })
+					}
+				/>
+				{ 'text' === buttonType && (
+					<AdvancedPopColorControl
+						label={__(
+							'Text Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={buttonTextColor ? buttonTextColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ buttonTextColor: value })
+						}
+					/>
+				)}
+				{ 'icon' === buttonType && (
+					<AdvancedPopColorControl
+						label={__(
+							'Icon Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={buttonIconColor ? buttonIconColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ buttonIconColor: value })
+						}
+					/>
+				)}
+			</>
+		);
+		let tabOutputHover = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						'Background Hover Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={buttonBgHoverColor ? buttonBgHoverColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ buttonBgHoverColor: value })
+					}
+				/>
+				{ 'text' === buttonType && (		
+					<AdvancedPopColorControl
+						label={__(
+							'Text Hover Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={buttonTextHoverColor ? buttonTextHoverColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ buttonTextHoverColor: value })
+						}
+					/>
+				) }
+				{ 'icon' === buttonType && (
+					<AdvancedPopColorControl
+						label={__(
+							'Icon Hover Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={buttonIconHoverColor ? buttonIconHoverColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ buttonIconHoverColor: value })
+						}
+					/>
+				)}
+			</>
+		);
 		if ( 'input-button' === layout ) {
 			return (
 				<PanelBody
@@ -522,114 +599,70 @@ const Settings = ( props ) => {
 							label: "buttonWidthType",
 						}}
 					/>
-					<AdvancedPopColorControl
-						label={__(
-							'Background Color',
-							"ultimate-addons-for-gutenberg"
-						)}
-						colorValue={buttonBgColor ? buttonBgColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ buttonBgColor: value })
-						}
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: buttonloadGoogleFonts,
+							label: 'buttonloadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: buttonFontFamily,
+							label: 'buttonFontFamily',
+						} }
+						fontWeight={ {
+							value: buttonFontWeight,
+							label: 'buttonFontWeight',
+						} }
+						fontSubset={ {
+							value: buttonFontSubset,
+							label: 'buttonFontSubset',
+						} }
+						fontSizeType={ {
+							value: buttonFontSizeType,
+							label: 'buttonFontSizeType',
+						} }
+						fontSize={ {
+							value: buttonFontSize,
+							label: 'buttonFontSize',
+						} }
+						fontSizeMobile={ {
+							value: buttonFontSizeMobile,
+							label: 'buttonFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: buttonFontSizeTablet,
+							label: 'buttonFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: buttonLineHeightType,
+							label: 'buttonLineHeightType',
+						} }
+						lineHeight={ {
+							value: buttonLineHeight,
+							label: 'buttonLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: buttonLineHeightMobile,
+							label: 'buttonLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: buttonLineHeightTablet,
+							label: 'buttonLineHeightTablet',
+						} }
+						transform={{
+							value: buttonTransform,
+							label: "buttonTransform",
+						}}
+						decoration={{
+							value: buttonDecoration,
+							label: "buttonDecoration",
+						}}
 					/>
-					<AdvancedPopColorControl
-						label={__(
-							'Background Hover Color',
-							"ultimate-addons-for-gutenberg"
-						)}
-						colorValue={buttonBgHoverColor ? buttonBgHoverColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ buttonBgHoverColor: value })
-						}
-					/>
-					{ 'text' === buttonType && (
-						<>
-							<AdvancedPopColorControl
-								label={__(
-									'Text Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={buttonTextColor ? buttonTextColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ buttonTextColor: value })
-								}
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Text Hover Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={buttonTextHoverColor ? buttonTextHoverColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ buttonTextHoverColor: value })
-								}
-							/>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: buttonloadGoogleFonts,
-									label: 'buttonloadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: buttonFontFamily,
-									label: 'buttonFontFamily',
-								} }
-								fontWeight={ {
-									value: buttonFontWeight,
-									label: 'buttonFontWeight',
-								} }
-								fontSubset={ {
-									value: buttonFontSubset,
-									label: 'buttonFontSubset',
-								} }
-								fontSizeType={ {
-									value: buttonFontSizeType,
-									label: 'buttonFontSizeType',
-								} }
-								fontSize={ {
-									value: buttonFontSize,
-									label: 'buttonFontSize',
-								} }
-								fontSizeMobile={ {
-									value: buttonFontSizeMobile,
-									label: 'buttonFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: buttonFontSizeTablet,
-									label: 'buttonFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: buttonLineHeightType,
-									label: 'buttonLineHeightType',
-								} }
-								lineHeight={ {
-									value: buttonLineHeight,
-									label: 'buttonLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: buttonLineHeightMobile,
-									label: 'buttonLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: buttonLineHeightTablet,
-									label: 'buttonLineHeightTablet',
-								} }
-								transform={{
-									value: buttonTransform,
-									label: "buttonTransform",
-								}}
-								decoration={{
-									value: buttonDecoration,
-									label: "buttonDecoration",
-								}}
-							/>
-						</>
-					) }
 					{ 'icon' === buttonType && (
 						<>
 							<Range
@@ -652,28 +685,28 @@ const Settings = ( props ) => {
 									label: "buttonIconSizeType",
 								}}
 							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Icon Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={buttonIconColor ? buttonIconColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ buttonIconColor: value })
-								}
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Icon Hover Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={buttonIconHoverColor ? buttonIconHoverColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ buttonIconHoverColor: value })
-								}
-							/>
 						</>
 					) }
+					<UAGTabsControl
+						tabs={[
+							{
+								name: "normal",
+								title: __(
+									"Normal",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								name: "hover",
+								title: __(
+									"Hover",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						normal={tabOutputNormal}
+						hover={tabOutputHover}
+					/>
 				</PanelBody>
 			);
 		}
