@@ -221,7 +221,7 @@ const Settings = ( props ) => {
 							showIcons={false}
 						/>
 					)}
-					{ 'text' === buttonType && (
+					{ layout == 'input-button' && 'text' === buttonType && (
 						<>
 							<TextControl
 								label="Text"
