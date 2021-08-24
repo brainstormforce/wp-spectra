@@ -9,6 +9,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
 import UAGTabsControl from "../../components/tabs";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 import { __ } from '@wordpress/i18n';
 
@@ -115,41 +116,24 @@ const Settings = ( props ) => {
 	const generalPanel = () => {
 		return (
 			<PanelBody>
-				<SelectControl
-					label={ __(
-						'Heading Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingTag }
-					onChange={ ( value ) => {
-						setAttributes( { headingTag: value } );
-					} }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Heading Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: headingTag,
+						label: "headingTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
 			</PanelBody>
 		);
