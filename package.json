@@ -58,6 +58,7 @@
     "start": "wp-scripts start",
     "build": "wp-scripts build && node scripts/generate-assets-files.js",
     "build:assets": "wp-scripts build && node scripts/generate-assets-files.js",
+    "build:sass": "node scripts/generate-assets-files.js",
     "build:placeholder": "node scripts/generate-blocks-placeholder.js",
     "format:js": "wp-scripts format-js",
     "lint:js": "wp-scripts lint-js",

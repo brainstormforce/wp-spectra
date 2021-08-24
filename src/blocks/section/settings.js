@@ -131,27 +131,7 @@ const Settings = (props) => {
 						onChange={(value) => setAttributes({ width: value })}
 						min={0}
 						max={2000}
-						unit={{
-							value: widthUnit,
-							label: "widthUnit",
-						}}
-						units={[
-							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
-							},
-							{
-								name: __("Em", "ultimate-addons-for-gutenberg"),
-								unitValue: "em",
-							},
-							{
-								name: __("%", "ultimate-addons-for-gutenberg"),
-								unitValue: "%",
-							},
-						]}
+						displayUnit = {false}
 					/>
 				)}
 				{contentWidth !== "boxed" && (
@@ -183,6 +163,23 @@ const Settings = (props) => {
 							value: innerWidthType,
 							label: "innerWidthType",
 						}}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __("Em", "ultimate-addons-for-gutenberg"),
+								unitValue: "em",
+							},
+							{
+								name: __("%", "ultimate-addons-for-gutenberg"),
+								unitValue: "%",
+							},
+						]}
 					/>
 				)}
 				<SelectControl

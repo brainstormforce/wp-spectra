@@ -7,6 +7,7 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import Range from "../../components/range/Range.js";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	InspectorControls,
@@ -253,19 +254,42 @@ const Settings = ( props ) => {
 				displayUnit={false}
 				setAttributes={setAttributes}
 			/>
-			<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
-				colorValue={backgroundColor ? backgroundColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ backgroundColor: value })
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "normal",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "hover",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				normal={
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={backgroundColor ? backgroundColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ backgroundColor: value })
+						}
+					/>
 				}
-			/>
-			<AdvancedPopColorControl
-				label={__("Hover", "ultimate-addons-for-gutenberg")}
-				colorValue={backgroundHColor ? backgroundHColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ backgroundHColor: value })
+				hover={
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={backgroundHColor ? backgroundHColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ backgroundHColor: value })
+						}
+					/>
 				}
+				disableBottomSeparator={true}
 			/>
 		</PanelBody>
 	);
