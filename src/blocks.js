@@ -21,7 +21,7 @@ import "./blocks/info-box/block.js";
 // import "./blocks/team/block.js";
 // import "./blocks/social-share/block.js";
 // import "./blocks/social-share-child/block.js";
-// import "./blocks/google-map/block.js";
+import "./blocks/google-map/block.js";
 import "./blocks/icon-list/block.js";
 import "./blocks/icon-list-child/block.js";
 // import "./blocks/price-list/block.js";
