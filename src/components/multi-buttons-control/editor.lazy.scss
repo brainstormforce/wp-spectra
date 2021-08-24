@@ -6,7 +6,7 @@
 		width: 100%;
 		justify-content: center;
 		height: unset;
-		padding: 10px 10px;
+		padding: 6px;
 	}
 	button.uagb-multi-button.is-secondary {
 		box-shadow: inset 0 0 0 1px #8f9395;
@@ -39,9 +39,8 @@
 			fill: #fff;
 		}
 	}
-	button.uagb-multi-button.is-secondary {
+	button.uagb-multi-button {
 		font-size: 13px;
-		// font-family:'Inter';
 		font-weight: 400;
 	}
 	svg {
@@ -49,17 +48,14 @@
 		fill: #585858;
 	}
 }
-.uagb-multi-buttons-control__label {
-	margin-bottom: 8px;
-}
-.uagb-multibuttons-header {
-	.uagb-size-type-field-tabs {
-		display: flex;
-		align-items: flex-end;
+
+.uagb-multi-buttons-control {
+	.uagb-multi-buttons-control__label {
+		line-height: 1.4;
+		display: inline-block;
+		padding-bottom: 8px;
 	}
-}
-.uagb-control__header {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 5px;
+	&.uag-multibutton-icons .uagb-multi-button {
+		padding: 3px;
+	}
 }

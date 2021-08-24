@@ -8,19 +8,19 @@ import { __ } from '@wordpress/i18n';
 import React from 'react';
 import {
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	SelectControl,
-	Button,
-	TabPanel,
-	BaseControl,
 } from '@wordpress/components';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import MultiButtonsControl from "../../components/multi-buttons-control";
+import UAGTabsControl from "../../components/tabs";
+import UAGImage from "../../components/image";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -37,6 +37,30 @@ const Settings = ( props ) => {
 		icon_bg_color,
 		icon_bg_hover_color,
 	} = attributes;
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = (media) => {
+		if (!media || !media.url) {
+			setAttributes({ image: null });
+			return;
+		}
+
+		if (!media.type || "image" !== media.type) {
+			setAttributes({ image: null });
+			return;
+		}
+		
+		setAttributes({ image: media });
+	};
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes({ image: "" });
+	};
 
 	const onChangeType = ( value ) => {
 		const icon_mapping = {
@@ -264,53 +288,11 @@ const Settings = ( props ) => {
 				) }
 				{ 'image' == image_icon && (
 					<>
-					<BaseControl
-						className="editor-bg-image-control"
-						label={__("Image", "ultimate-addons-for-gutenberg")}
-						id={__("Image", "ultimate-addons-for-gutenberg")}
-					>
-						<div className="uagb-bg-image">
-							<MediaUpload
-								title={__(
-									"Select Image",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={ ( value ) =>
-									setAttributes( { image: value } )
-								}
-								allowedTypes={["image"]}
-								value={image}
-								render={ ( { open } ) => (
-									<Button isSecondary onClick={ open }>
-										{ ! image
-											? __(
-													'Select Image',
-													'ultimate-addons-for-gutenberg'
-											)
-											: __(
-													'Replace image',
-													'ultimate-addons-for-gutenberg'
-											) }
-									</Button>
-								) }
-							/>
-						</div>
-					</BaseControl>
-					{ image && (
-						<Button
-							className="uagb-rm-btn"
-							onClick={ () =>
-								setAttributes( { image: null } )
-							}
-							isLink
-							isDestructive
-						>
-							{ __(
-								'Remove Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</Button>
-					) }
+						<UAGImage
+							onSelectImage={onSelectImage}
+							backgroundImage={image}
+							onRemoveImage={onRemoveImage}
+						/>
 					</>
 				) }
 			</PanelBody>
@@ -385,51 +367,40 @@ const Settings = ( props ) => {
 			<PanelBody
 				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 			>
-				<TabPanel
-					className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
+				<UAGTabsControl
+					tabs={[
 						{
-							name: 'normal',
+							name: "normal",
 							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
+								"Normal",
+								"ultimate-addons-for-gutenberg"
 							),
-							className: 'uagb-normal-tab',
 						},
 						{
-							name: 'hover',
+							name: "hover",
 							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
+								"Hover",
+								"ultimate-addons-for-gutenberg"
 							),
-							className: 'uagb-hover-tab',
 						},
-					] }
-				>
-					{ ( tabName ) => {
-						let color_tab;
-						if ( 'normal' === tabName.name ) {
-							color_tab = colorControl;
-						} else {
-							color_tab = colorControlHover;
-						}
-						return <div>{ color_tab }</div>;
-					} }
-				</TabPanel>
+					]}
+					normal={colorControl}
+					hover={colorControlHover}
+					disableBottomSeparator={true}
+				/>
 			</PanelBody>
 		);
 	};
 	return (
 		<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 					{ generalSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 					{ iconColorSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

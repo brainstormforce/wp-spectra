@@ -11,7 +11,9 @@ import UAGBIcon from "@Controls/UAGBIcon.json";
 import UAGB_Block_Icons from "@Controls/block-icons";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import GradientSettings from "../../components/gradient-settings";
@@ -20,6 +22,7 @@ import BoxShadowControl from "../../components/box-shadow";
 import Background from "../../components/background";
 import Border from "../../components/border";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGTabsControl from "../../components/tabs";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography";
 
@@ -50,6 +53,7 @@ const {
 	Dashicon,
 	ButtonGroup,
 	Icon,
+	TabPanel,
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
@@ -299,9 +303,54 @@ class UAGBInlineNoticeEdit extends Component {
 		}
 
 		const inlineGeneralSettings = () => {
+			let tabOutputNormal = (
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={titleColor ? titleColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							titleColor: value,
+						})
+					}
+				/>
+			);
+			let tabOutputHover = (
+				<AdvancedPopColorControl
+					label={__("Hover Color", "ultimate-addons-for-gutenberg")}
+					colorValue={titleColor ? titleColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							titleColor: value,
+						})
+					}
+				/>
+			);
 			return (
 				<InspectorTabs>
 					<InspectorTab {...UAGTabs.general}>
+						<PanelBody title="Tabs Normal/Hover">
+							<UAGTabsControl
+								tabs={[
+									{
+										name: "normal",
+										title: __(
+											"Normal",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										name: "hover",
+										title: __(
+											"Hover",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+								]}
+								normal={tabOutputNormal}
+								hover={tabOutputHover}
+								disableBottomSeparator={true}
+							/>
+						</PanelBody>
 						<PanelBody title="Alignment" initialOpen={false}>
 							<MultiButtonsControl
 								setAttributes={setAttributes}

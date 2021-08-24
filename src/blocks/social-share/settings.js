@@ -7,7 +7,9 @@ import React, { Suspense } from 'react';
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import { __ } from '@wordpress/i18n';
 
@@ -252,10 +254,10 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>{ generalSettings() }</InspectorTab>
-				<InspectorTab key={"style"}>{ spacingSettings() }</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>{ generalSettings() }</InspectorTab>
+				<InspectorTab {...UAGTabs.style}>{ spacingSettings() }</InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>
