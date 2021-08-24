@@ -412,40 +412,40 @@ const attributes = {
 		default: 'px'
 	},
 	paddingBtnTop: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnBottom: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnLeft: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnRight: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnTopTablet: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnRightTablet: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnBottomTablet: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnLeftTablet: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnTopMobile: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnRightMobile: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnBottomMobile: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnLeftMobile: {
-		type: 'string'
+		type: 'number'
 	},
 	paddingBtnUnit: {
 		type: 'string',
@@ -458,6 +458,14 @@ const attributes = {
 	tabletPaddingBtnUnit: {
 		type: 'string',
 		default: 'px'
+	},
+	btnspacingLink: {
+		type: "boolean",
+		default: false,
+	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
 	},
 };
 

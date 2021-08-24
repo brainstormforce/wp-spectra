@@ -330,7 +330,6 @@ function styling( props ) {
 			'border-right-color': tweetBtnBgHoverColor,
 		};
 	}
-
 	const tabletSelectors = {
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
 			'margin-top': generateCSSUnit( quoteTopMarginTablet, quotetabletUnit ),
@@ -385,14 +384,12 @@ function styling( props ) {
 			'width': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 			'height': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 		},
-	};
-	tabletSelectors[
-		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
-	] = {
-		'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
-		'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
-		'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
-		'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+		}
 	};
 	const mobileSelectors = {
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
@@ -448,15 +445,12 @@ function styling( props ) {
 			'width': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 			'height': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 		},
-	};
-
-	mobileSelectors[
-		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
-	] = {
-		'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
-		'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
-		'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
-		'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+		},
 	};
 	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
 		0,
