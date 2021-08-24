@@ -12,19 +12,22 @@ const UAGTabsControl = (props) => {
 	}, []);
 
 	return (
-		<TabPanel
-			className="uag-control-tabs"
-			activeClass="active-tab"
-			tabs={props.tabs}
-		>
-			{(tabName) => {
-				return (
-					<div className="uag-control-tabs-output">
-						{props[tabName.name]}
-					</div>
-				);
-			}}
-		</TabPanel>
+		<>
+			<TabPanel
+				className="uag-control-tabs"
+				activeClass="active-tab"
+				tabs={props.tabs}
+			>
+				{(tabName) => {
+					return (
+						<div className="uag-control-tabs-output">
+							{props[tabName.name]}
+						</div>
+					);
+				}}
+			</TabPanel>
+			<hr className="uagb-editor__separator" />
+		</>
 	);
 };
 export default UAGTabsControl;

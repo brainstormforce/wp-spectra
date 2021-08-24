@@ -11,6 +11,8 @@ import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
+import UAGTabsControl from "../../components/tabs";
+
 import React from "react";
 import { __ } from "@wordpress/i18n";
 
@@ -522,7 +524,10 @@ const Settings = (props) => {
 				{showIcon && (
 					<>
 						<UAGIconPicker
-							label={__("Button Icon", "ultimate-addons-for-gutenberg")}
+							label={__(
+								"Button Icon",
+								"ultimate-addons-for-gutenberg"
+							)}
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
 						/>
@@ -781,6 +786,48 @@ const Settings = (props) => {
 	};
 
 	const tabTitleStyle = () => {
+		let tabOutputNormal = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						"Background Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={headerBgColor}
+					onColorChange={(value) =>
+						setAttributes({ headerBgColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={headerTextColor}
+					onColorChange={(value) =>
+						setAttributes({ headerTextColor: value })
+					}
+				/>
+			</>
+		);
+		let tabOutputActive = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						"Background Color",
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={activeTabBgColor}
+					onColorChange={(value) =>
+						setAttributes({ activeTabBgColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={activeTabTextColor}
+					onColorChange={(value) =>
+						setAttributes({ activeTabTextColor: value })
+					}
+				/>
+			</>
+		);
 		return (
 			<PanelBody
 				title={__("Title", "ultimate-addons-for-gutenberg")}
@@ -926,44 +973,26 @@ const Settings = (props) => {
 						label: "tabTitlePaddingLink",
 					}}
 				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={headerBgColor}
-					onColorChange={(value) =>
-						setAttributes({ headerBgColor: value })
-					}
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "active",
+							title: __(
+								"Active",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={tabOutputNormal}
+					active={tabOutputActive}
 				/>
-				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={headerTextColor}
-					onColorChange={(value) =>
-						setAttributes({ headerTextColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Active Tab Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={activeTabBgColor}
-					onColorChange={(value) =>
-						setAttributes({ activeTabBgColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Active Tab Text Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={activeTabTextColor}
-					onColorChange={(value) =>
-						setAttributes({ activeTabTextColor: value })
-					}
-				/>
-
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
 					attributes={attributes}
@@ -1033,7 +1062,22 @@ const Settings = (props) => {
 		if (!showIcon) {
 			return "";
 		}
-
+		let tabOutputNormal = (
+			<AdvancedPopColorControl
+				label={__("Color", "ultimate-addons-for-gutenberg")}
+				colorValue={iconColor}
+				onColorChange={(value) => setAttributes({ iconColor: value })}
+			/>
+		);
+		let tabOutputActive = (
+			<AdvancedPopColorControl
+				label={__("Color", "ultimate-addons-for-gutenberg")}
+				colorValue={activeiconColor}
+				onColorChange={(value) =>
+					setAttributes({ activeiconColor: value })
+				}
+			/>
+		);
 		return (
 			<PanelBody
 				title={__("Icon", "ultimate-addons-for-gutenberg")}
@@ -1048,19 +1092,25 @@ const Settings = (props) => {
 					max={500}
 					displayUnit={false}
 				/>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={iconColor}
-					onColorChange={(value) =>
-						setAttributes({ iconColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__("Active Color", "ultimate-addons-for-gutenberg")}
-					colorValue={activeiconColor}
-					onColorChange={(value) =>
-						setAttributes({ activeiconColor: value })
-					}
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "active",
+							title: __(
+								"Active",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={tabOutputNormal}
+					active={tabOutputActive}
 				/>
 				<Range
 					label={__("Size", "ultimate-addons-for-gutenberg")}
