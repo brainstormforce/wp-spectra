@@ -1084,7 +1084,7 @@ const Settings = ( props ) => {
 			<>
 				<AdvancedPopColorControl
 					label={__(
-						'Icon Hover Color',
+						'Icon Color',
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={quoteHoverColor ? quoteHoverColor : ""}
@@ -1094,7 +1094,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						'Icon Background Hover Color',
+						'Icon Background Color',
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={quoteBgHoverColor ? quoteBgHoverColor : ""}
@@ -1148,7 +1148,7 @@ const Settings = ( props ) => {
 		let tabOutputHover = (
 			<AdvancedPopColorControl
 				label={__(
-					'Border Hover Color',
+					'Border Color',
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={borderHoverColor ? borderHoverColor : ""}
@@ -1486,7 +1486,7 @@ const Settings = ( props ) => {
 							hover={
 								<AdvancedPopColorControl
 									label={__(
-										'Tweet Hover Color',
+										'Tweet Color',
 										"ultimate-addons-for-gutenberg"
 									)}
 									colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
@@ -1544,7 +1544,7 @@ const Settings = ( props ) => {
 								<>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Background Hover Color',
+											'Tweet Background Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnBgHoverColor ? tweetBtnBgHoverColor : ""}
@@ -1554,7 +1554,7 @@ const Settings = ( props ) => {
 									/>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Link Hover Color',
+											'Tweet Link Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
