@@ -194,7 +194,7 @@ const Settings = ( props ) => {
 							label: "inputSizeType",
 						}}
 					/>
-					{ layout == 'input' && (
+					{ layout == 'input-button' && (
 						<MultiButtonsControl
 							setAttributes={setAttributes}
 							label={__(
