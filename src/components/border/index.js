@@ -6,6 +6,8 @@ import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import { SelectControl } from "@wordpress/components";
+import UAGTabsControl from "../../components/tabs";
+
 import styles from "./editor.lazy.scss";
 
 import React, { useLayoutEffect } from "react";
@@ -25,97 +27,138 @@ const Border = (props) => {
 		borderHoverColor,
 	} = props;
 
+	let tabOutputNormal = (
+		<AdvancedPopColorControl
+			label={__("Color", "ultimate-addons-for-gutenberg")}
+			colorValue={borderColor.value}
+			onColorChange={(value) =>
+				setAttributes({ [borderColor.label]: value })
+			}
+		/>
+	);
+	let tabOutputHover = (
+		<AdvancedPopColorControl
+			label={__("Color", "ultimate-addons-for-gutenberg")}
+			colorValue={borderHoverColor.value}
+			onColorChange={(value) =>
+				setAttributes({ [borderHoverColor.label]: value })
+			}
+		/>
+	);
 	let advancedControls = (
 		<>
-			<SelectControl
-				label={borderStyle.title}
-				labelPosition="top"
-				value={borderStyle.value}
-				onChange={(value) =>
-					setAttributes({
-						[borderStyle.label]: value,
-					})
-				}
-				options={[
-					{
-						value: "none",
-						label: __("None", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "solid",
-						label: __("Solid", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "dotted",
-						label: __("Dotted", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "dashed",
-						label: __("Dashed", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "double",
-						label: __("Double", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "groove",
-						label: __("Groove", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "inset",
-						label: __("Inset", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "outset",
-						label: __("Outset", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "ridge",
-						label: __("Ridge", "ultimate-addons-for-gutenberg"),
-					},
-				]}
-			/>
+			<div className="uag-border-type">
+				<SelectControl
+					label={borderStyle.title}
+					labelPosition="top"
+					value={borderStyle.value}
+					onChange={(value) =>
+						setAttributes({
+							[borderStyle.label]: value,
+						})
+					}
+					options={[
+						{
+							value: "none",
+							label: __("None", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "solid",
+							label: __("Solid", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "dotted",
+							label: __(
+								"Dotted",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "dashed",
+							label: __(
+								"Dashed",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "double",
+							label: __(
+								"Double",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "groove",
+							label: __(
+								"Groove",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "inset",
+							label: __("Inset", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "outset",
+							label: __(
+								"Outset",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "ridge",
+							label: __("Ridge", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+				/>
+			</div>
 
 			{"none" !== borderStyle.value && (
-				<Range
-					label={borderWidth.title}
-					value={borderWidth.value}
-					onChange={(value) =>
-						setAttributes({ [borderWidth.label]: value })
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-				/>
+				<div className="uag-border-width">
+					<Range
+						label={borderWidth.title}
+						value={borderWidth.value}
+						onChange={(value) =>
+							setAttributes({ [borderWidth.label]: value })
+						}
+						min={0}
+						max={100}
+						displayUnit={false}
+					/>
+				</div>
 			)}
 			{"none" !== borderStyle.value && (
-				<Range
-					label={borderRadius.title}
-					value={borderRadius.value}
-					onChange={(value) =>
-						setAttributes({ [borderRadius.label]: value })
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-				/>
+				<div className="uag-border-radius">
+					<Range
+						label={borderRadius.title}
+						value={borderRadius.value}
+						onChange={(value) =>
+							setAttributes({ [borderRadius.label]: value })
+						}
+						min={0}
+						max={100}
+						displayUnit={false}
+					/>
+				</div>
 			)}
 			{"none" !== borderStyle.value && (
-				<AdvancedPopColorControl
-					label={borderColor.title}
-					colorValue={borderColor.value}
-					onColorChange={(value) =>
-						setAttributes({ [borderColor.label]: value })
-					}
-				/>
-			)}
-			{"none" !== borderStyle.value && (
-				<AdvancedPopColorControl
-					label={borderHoverColor.title}
-					colorValue={borderHoverColor.value}
-					onColorChange={(value) =>
-						setAttributes({ [borderHoverColor.label]: value })
-					}
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __("Hover", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+					normal={tabOutputNormal}
+					hover={tabOutputHover}
+					disableBottomSeparator={props.disableBottomSeparator}
 				/>
 			)}
 		</>

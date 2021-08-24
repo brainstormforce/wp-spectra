@@ -37,43 +37,15 @@ const BoxShadowControl = (props) => {
 	if (showAdvancedControls) {
 		advancedControls = (
 			<div className="uagb-box-shadow-advanced">
-				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={boxShadowPosition.title}
-					data={{
-						value: boxShadowPosition.value,
-						label: boxShadowPosition.label,
-					}}
-					options={[
-						{
-							value: "outset",
-							label: __(
-								"Outset",
-								"ultimate-addons-for-gutenberg"
-							),
-							tooltip: __(
-								"Outset",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "inset",
-							label: __("Inset", "ultimate-addons-for-gutenberg"),
-							tooltip: __(
-								"Inset (10px)",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-					showIcons={false}
-				/>
-				<AdvancedPopColorControl
-					label={boxShadowColor.title}
-					colorValue={boxShadowColor.value}
-					onColorChange={(value) =>
-						setAttributes({ [boxShadowColor.label]: value })
-					}
-				/>
+				<div className="uagb-shadow-color">
+					<AdvancedPopColorControl
+						label={boxShadowColor.title}
+						colorValue={boxShadowColor.value}
+						onColorChange={(value) =>
+							setAttributes({ [boxShadowColor.label]: value })
+						}
+					/>
+				</div>
 				<div className="uagb-horizontal-wrap">
 					<Range
 						label={boxShadowHOffset.title}
@@ -122,13 +94,50 @@ const BoxShadowControl = (props) => {
 						displayUnit={false}
 					/>
 				</div>
+				<div className="uagb-shadow-type">
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={boxShadowPosition.title}
+						data={{
+							value: boxShadowPosition.value,
+							label: boxShadowPosition.label,
+						}}
+						options={[
+							{
+								value: "outset",
+								label: __(
+									"Outset",
+									"ultimate-addons-for-gutenberg"
+								),
+								tooltip: __(
+									"Outset",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								value: "inset",
+								label: __(
+									"Inset",
+									"ultimate-addons-for-gutenberg"
+								),
+								tooltip: __(
+									"Inset (10px)",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						showIcons={false}
+					/>
+				</div>
 			</div>
 		);
 	}
 
 	boxShadowAdvancedControls = (
 		<div className="uag-box-shadow-option-actions">
-			<span className="uag-box-shadow-main-label">Enable Shadow</span>
+			<span className="uag-control-label">
+				{__("Box Shadow", "ultimate-addons-for-gutenberg")}
+			</span>
 			<Button
 				className={"uag-box-shadow-button"}
 				aria-pressed={showAdvancedControls}

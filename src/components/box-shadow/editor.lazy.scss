@@ -83,9 +83,15 @@
 			border-width: 6px;
 			margin-left: -6px;
 		}
+
+		.uagb-shadow-color,
+		.uagb-horizontal-wrap,
+		.uagb-vertical-wrap,
+		.uagb-blur-wrap,
+		.uagb-spread-wrap {
+			margin-bottom: 16px;
+		}
 	}
-
-
 }
 
 // .uagb-inspector-tab .components-panel__body.is-opened .uag-box-shadow-options {
