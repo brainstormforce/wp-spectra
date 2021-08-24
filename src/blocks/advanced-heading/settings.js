@@ -6,9 +6,9 @@ import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
-import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
+import UAGTabsControl from "../../components/tabs";
 
 import { __ } from '@wordpress/i18n';
 
@@ -428,18 +428,40 @@ const Settings = ( props ) => {
 						max={ 20 }
 						displayUnit={false}
 					/>
-					<AdvancedPopColorControl
-						label={__( "Color", "ultimate-addons-for-gutenberg" )}
-						colorValue={ separatorColor ? separatorColor : "" }
-						onColorChange={(value) =>
-							setAttributes({ separatorColor: value })
+					<UAGTabsControl
+						tabs={[
+							{
+								name: "normal",
+								title: __(
+									"Normal",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								name: "hover",
+								title: __(
+									"Hover",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						normal={
+							<AdvancedPopColorControl
+								label={__( "Color", "ultimate-addons-for-gutenberg" )}
+								colorValue={ separatorColor ? separatorColor : "" }
+								onColorChange={(value) =>
+									setAttributes({ separatorColor: value })
+								}
+							/>
 						}
-					/>
-					<AdvancedPopColorControl
-						label={__( "Hover", "ultimate-addons-for-gutenberg" )}
-						colorValue={ separatorHoverColor ? separatorHoverColor : "" }
-						onColorChange={(value) =>
-							setAttributes({ separatorHoverColor: value })
+						hover={
+							<AdvancedPopColorControl
+								label={__( "Color", "ultimate-addons-for-gutenberg" )}
+								colorValue={ separatorHoverColor ? separatorHoverColor : "" }
+								onColorChange={(value) =>
+									setAttributes({ separatorHoverColor: value })
+								}
+							/>
 						}
 					/>
 				</>
