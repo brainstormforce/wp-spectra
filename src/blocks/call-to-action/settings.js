@@ -18,11 +18,10 @@ import Range from "../../components/range/Range.js";
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	PanelBody,
-	SelectControl,
-	TabPanel,
 	ToggleControl,
 	TextControl,
 } from '@wordpress/components';
@@ -209,6 +208,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		)
@@ -221,16 +221,25 @@ const Settings = ( props ) => {
 				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ ctaType }
-					onChange={ ( value ) =>
-						setAttributes( { ctaType: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Type",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: ctaType,
+						label: "ctaType",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'none',
 							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
 								'None',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -241,10 +250,18 @@ const Settings = ( props ) => {
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							),
+							tooltip: __(
+								'Text',
+								'ultimate-addons-for-gutenberg'
+							),
 						},
 						{
 							value: 'button',
 							label: __(
+								'Button',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
 								'Button',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -255,8 +272,13 @@ const Settings = ( props ) => {
 								'Complete Box',
 								'ultimate-addons-for-gutenberg'
 							),
-						},
-					] }
+							tooltip: __(
+								'Complete Box',
+								'ultimate-addons-for-gutenberg'
+							),
+						}
+					]}
+					showIcons={false}
 				/>
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
@@ -436,72 +458,50 @@ const Settings = ( props ) => {
 					</>
 				) }
 				{ ctaType === 'text' && (
-					<TabPanel
-						className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
+					<UAGTabsControl
+						tabs={[
 							{
-								name: 'normal',
+								name: "normal",
 								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
+									"Normal",
+									"ultimate-addons-for-gutenberg"
 								),
-								className: 'uagb-normal-tab',
 							},
 							{
-								name: 'hover',
+								name: "hover",
 								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
+									"Hover",
+									"ultimate-addons-for-gutenberg"
 								),
-								className: 'uagb-hover-tab',
 							},
-						] }
-					>
-						{ ( tabName ) => {
-							let ctaTextTab;
-							if ( 'normal' === tabName.name ) {
-								ctaTextTab = ctaTextColor();
-							} else {
-								ctaTextTab = ctaTxtHoverColor();
-							}
-							return <div>{ ctaTextTab }</div>;
-						} }
-					</TabPanel>
+						]}
+						normal={ctaTextColor()}
+						hover={ctaTxtHoverColor()}
+						disableBottomSeparator={true}
+					/>
 				) }
 				{ ctaType === 'button' && ! inheritFromTheme && (
-					<TabPanel
-						className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
+					<UAGTabsControl
+						tabs={[
 							{
-								name: 'normal',
+								name: "normal",
 								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
+									"Normal",
+									"ultimate-addons-for-gutenberg"
 								),
-								className: 'uagb-normal-tab',
 							},
 							{
-								name: 'hover',
+								name: "hover",
 								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
+									"Hover",
+									"ultimate-addons-for-gutenberg"
 								),
-								className: 'uagb-focus-tab',
 							},
-						] }
-					>
-						{ ( tabName ) => {
-							let tabout;
-							if ( 'normal' === tabName.name ) {
-								tabout = ctaNormalSettings();
-							} else {
-								tabout = ctaHoverSettings();
-							}
-							return <div>{ tabout }</div>;
-						} }
-					</TabPanel>
+						]}
+						normal={ctaNormalSettings()}
+						hover={ctaHoverSettings()}
+						disableBottomSeparator={true}
+					/>
 				) }
 			</PanelBody>
 		);
@@ -1046,39 +1046,24 @@ const Settings = ( props ) => {
 						showIcons={false}
 					/>
 				) }
-				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<SelectControl
-					label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ titleTag }
-					onChange={ ( value ) =>
-						setAttributes( { titleTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Heading Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: titleTag,
+						label: "titleTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
 			</PanelBody>
 		);
