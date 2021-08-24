@@ -194,32 +194,33 @@ const Settings = ( props ) => {
 							label: "inputSizeType",
 						}}
 					/>
-					
-					<MultiButtonsControl
-						setAttributes={setAttributes}
-						label={__(
-							"Button Type",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							value: buttonType,
-							label: "buttonType",
-						}}
-						className="uagb-multi-button-alignment-control"
-						options={[
-						{
-							value: "icon",
-							label: 'Icon',
+					{ layout == 'input' && (
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__(
+								"Button Type",
+								"ultimate-addons-for-gutenberg"
+							)}
+							data={{
+								value: buttonType,
+								label: "buttonType",
+							}}
+							className="uagb-multi-button-alignment-control"
+							options={[
+							{
+								value: "icon",
+								label: 'Icon',
 
-						},
-						{
-							value: "text",
-							label: 'Text',
-						},
+							},
+							{
+								value: "text",
+								label: 'Text',
+							},
 
-						]}
-						showIcons={false}
-					/>
+							]}
+							showIcons={false}
+						/>
+					)}
 					{ 'text' === buttonType && (
 						<>
 							<TextControl
