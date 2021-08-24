@@ -10,6 +10,7 @@ import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 import SpacingControl from "../../components/spacing-control";
+import UAGTabsControl from "../../components/tabs";
 import {
 	PanelBody,
 	SelectControl,
@@ -1055,84 +1056,107 @@ const Settings = ( props ) => {
 		);
 	};
 	const generalStyle = () => {
+		let tabOutputNormal = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						'Icon Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={quoteColor ? quoteColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ quoteColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Icon Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={quoteBgColor ? quoteBgColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ quoteBgColor: value })
+					}
+				/>
+			</>
+		);
+		let tabOutputHover = (
+			<>
+				<AdvancedPopColorControl
+					label={__(
+						'Icon Hover Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={quoteHoverColor ? quoteHoverColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ quoteHoverColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Icon Background Hover Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={quoteBgHoverColor ? quoteBgHoverColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ quoteBgHoverColor: value })
+					}
+				/>
+			</>
+		);
 		return <PanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }>
 					{ skinStyle === 'border' && borderStyleSetting() }
 					{ skinStyle === 'quotation' && quoteSettings }
 					{ skinStyle == 'quotation' && (
-						<>
-							<AdvancedPopColorControl
-								label={__(
-									'Icon Hover Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={quoteHoverColor ? quoteHoverColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ quoteHoverColor: value })
-								}
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Icon Background Hover Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={quoteBgHoverColor ? quoteBgHoverColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ quoteBgHoverColor: value })
-								}
-							/>
-						</>
-					) }
-					{ 'none' != borderStyle && skinStyle == 'border' && (
-						<>
-							<AdvancedPopColorControl
-								label={__(
-									'Border Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={borderColor ? borderColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ borderColor: value })
-								}
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Border Hover Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={borderHoverColor ? borderHoverColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ borderHoverColor: value })
-								}
-							/>
-						</>
-					) }
-					{ skinStyle == 'quotation' && (
-						<>
-							<AdvancedPopColorControl
-								label={__(
-									'Icon Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={quoteColor ? quoteColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ quoteColor: value })
-								}
-							/>
-						<AdvancedPopColorControl
-							label={__(
-								'Icon Background Color',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={quoteBgColor ? quoteBgColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ quoteBgColor: value })
-							}
+						<UAGTabsControl
+							tabs={[
+								{
+									name: "normal",
+									title: __(
+										"Normal",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+								{
+									name: "hover",
+									title: __(
+										"Hover",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+							]}
+							normal={tabOutputNormal}
+							hover={tabOutputHover}
+							disableBottomSeparator={true}
 						/>
-						</>
 					) }
 				</PanelBody>
 	};
 	const borderStyleSetting = () => {
+		let tabOutputNormal = (
+			<AdvancedPopColorControl
+				label={__(
+					'Border Color',
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={borderColor ? borderColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ borderColor: value })
+				}
+			/>	
+		);
+		let tabOutputHover = (
+			<AdvancedPopColorControl
+				label={__(
+					'Border Hover Color',
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={borderHoverColor ? borderHoverColor : ""}
+				onColorChange={(value) =>
+					setAttributes({ borderHoverColor: value })
+				}
+			/>
+		);
 		return  <>
 					<SelectControl
 						label={ __(
@@ -1183,23 +1207,46 @@ const Settings = ( props ) => {
 						] }
 					/>
 					{ 'none' != borderStyle && (
-						<Range
-							label={ __(
-								'Thickness',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={setAttributes}
-							value={ borderWidth }
-							onChange={ ( value ) =>
-								setAttributes( { borderWidth: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							unit={{
-								value: borderWidthUnit,
-								label: "borderWidthUnit",
-							}}
-						/>
+						<>
+							<Range
+								label={ __(
+									'Thickness',
+									'ultimate-addons-for-gutenberg'
+								) }
+								setAttributes={setAttributes}
+								value={ borderWidth }
+								onChange={ ( value ) =>
+									setAttributes( { borderWidth: value } )
+								}
+								min={ 0 }
+								max={ 50 }
+								unit={{
+									value: borderWidthUnit,
+									label: "borderWidthUnit",
+								}}
+							/>
+							<UAGTabsControl
+								tabs={[
+									{
+										name: "normal",
+										title: __(
+											"Normal",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										name: "hover",
+										title: __(
+											"Hover",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+								]}
+								normal={tabOutputNormal}
+								hover={tabOutputHover}
+								disableBottomSeparator={true}
+							/>
+						</>
 					) }
 				</>
 	}
@@ -1208,113 +1255,109 @@ const Settings = ( props ) => {
 					title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					{ enableTweet && (
-						<>
-							<TypographyControl
-								label={ __(
-									'Typography',
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: tweetBtnLoadGoogleFonts,
+							label: 'tweetBtnLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: tweetBtnFontFamily,
+							label: 'tweetBtnFontFamily',
+						} }
+						fontWeight={ {
+							value: tweetBtnFontWeight,
+							label: 'tweetBtnFontWeight',
+						} }
+						fontSubset={ {
+							value: tweetBtnFontSubset,
+							label: 'tweetBtnFontSubset',
+						} }
+						fontSizeType={ {
+							value: tweetBtnFontSizeType,
+							label: 'tweetBtnFontSizeType',
+						} }
+						fontSize={ {
+							value: tweetBtnFontSize,
+							label: 'tweetBtnFontSize',
+						} }
+						fontSizeMobile={ {
+							value: tweetBtnFontSizeMobile,
+							label: 'tweetBtnFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: tweetBtnFontSizeTablet,
+							label: 'tweetBtnFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: tweetBtnLineHeightType,
+							label: 'tweetBtnLineHeightType',
+						} }
+						lineHeight={ {
+							value: tweetBtnLineHeight,
+							label: 'tweetBtnLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: tweetBtnLineHeightMobile,
+							label: 'tweetBtnLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: tweetBtnLineHeightTablet,
+							label: 'tweetBtnLineHeightTablet',
+						} }
+						transform={{
+							value: tweetBtnTransform,
+							label: "tweetBtnTransform",
+						}}
+						decoration={{
+							value: tweetBtnDecoration,
+							label: "tweetBtnDecoration",
+						}}
+					/>
+					<SelectControl
+						label={ __(
+							'Target URL',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ iconTargetUrl }
+						onChange={ ( value ) =>
+							setAttributes( { iconTargetUrl: value } )
+						}
+						options={ [
+							{
+								value: 'current',
+								label: __(
+									'Current Page',
 									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: tweetBtnLoadGoogleFonts,
-									label: 'tweetBtnLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: tweetBtnFontFamily,
-									label: 'tweetBtnFontFamily',
-								} }
-								fontWeight={ {
-									value: tweetBtnFontWeight,
-									label: 'tweetBtnFontWeight',
-								} }
-								fontSubset={ {
-									value: tweetBtnFontSubset,
-									label: 'tweetBtnFontSubset',
-								} }
-								fontSizeType={ {
-									value: tweetBtnFontSizeType,
-									label: 'tweetBtnFontSizeType',
-								} }
-								fontSize={ {
-									value: tweetBtnFontSize,
-									label: 'tweetBtnFontSize',
-								} }
-								fontSizeMobile={ {
-									value: tweetBtnFontSizeMobile,
-									label: 'tweetBtnFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: tweetBtnFontSizeTablet,
-									label: 'tweetBtnFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: tweetBtnLineHeightType,
-									label: 'tweetBtnLineHeightType',
-								} }
-								lineHeight={ {
-									value: tweetBtnLineHeight,
-									label: 'tweetBtnLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: tweetBtnLineHeightMobile,
-									label: 'tweetBtnLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: tweetBtnLineHeightTablet,
-									label: 'tweetBtnLineHeightTablet',
-								} }
-								transform={{
-									value: tweetBtnTransform,
-									label: "tweetBtnTransform",
-								}}
-								decoration={{
-									value: tweetBtnDecoration,
-									label: "tweetBtnDecoration",
-								}}
-							/>
-							<SelectControl
-								label={ __(
-									'Target URL',
+								),
+							},
+							{
+								value: 'custom',
+								label: __(
+									'Custom URL',
 									'ultimate-addons-for-gutenberg'
-								) }
-								value={ iconTargetUrl }
-								onChange={ ( value ) =>
-									setAttributes( { iconTargetUrl: value } )
-								}
-								options={ [
-									{
-										value: 'current',
-										label: __(
-											'Current Page',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'custom',
-										label: __(
-											'Custom URL',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-								] }
-							/>
-							{ iconTargetUrl == 'custom' && (
-								<TextControl
-									label={ __(
-										'URL',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ customUrl }
-									onChange={ ( value ) =>
-										setAttributes( { customUrl: value } )
-									}
-								/>
+								),
+							},
+						] }
+					/>
+					{ iconTargetUrl == 'custom' && (
+						<TextControl
+							label={ __(
+								'URL',
+								'ultimate-addons-for-gutenberg'
 							) }
-						</>
+							value={ customUrl }
+							onChange={ ( value ) =>
+								setAttributes( { customUrl: value } )
+							}
+						/>
 					) }
-					{ enableTweet && iconSkin !== 'link' && (
+					{ iconSkin !== 'link' && (
 						<SpacingControl
 						{...props}
 						label={__(
@@ -1390,7 +1433,7 @@ const Settings = ( props ) => {
 						}}
 					/>
 					) }
-					{ enableTweet && iconView == 'icon_text' && (
+					{ iconView == 'icon_text' && (
 						<>
 							<Range
 								label={ __(
@@ -1412,80 +1455,72 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					{ enableTweet && (
+					{ iconSkin == 'link' && (
 						<>
-							{ iconSkin == 'link' && (
-								<>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetLinkColor ? tweetLinkColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetLinkColor: value })
-										}
-									/>
-								</>
-							) }
-							{ iconSkin == 'link' && (
-								<>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Hover Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnHoverColor: value })
-										}
-									/>
-								</>
-							) }
-							{ iconSkin !== 'link' && (
-								<>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnColor ? tweetBtnColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnColor: value })
-										}
-									/>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Link Hover Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnHoverColor: value })
-										}
-									/>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Background Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnBgColor ? tweetBtnBgColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnBgColor: value })
-										}
-									/>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Background Hover Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnBgHoverColor ? tweetBtnBgHoverColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnBgHoverColor: value })
-										}
-									/>
-								</>
-							) }
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetLinkColor ? tweetLinkColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetLinkColor: value })
+								}
+							/>
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Hover Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetBtnHoverColor: value })
+								}
+							/>
+						</>
+					) }
+					{ iconSkin !== 'link' && (
+						<>
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetBtnColor ? tweetBtnColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetBtnColor: value })
+								}
+							/>
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Link Hover Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetBtnHoverColor: value })
+								}
+							/>
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Background Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetBtnBgColor ? tweetBtnBgColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetBtnBgColor: value })
+								}
+							/>
+							<AdvancedPopColorControl
+								label={__(
+									'Tweet Background Hover Color',
+									"ultimate-addons-for-gutenberg"
+								)}
+								colorValue={tweetBtnBgHoverColor ? tweetBtnBgHoverColor : ""}
+								onColorChange={(value) =>
+									setAttributes({ tweetBtnBgHoverColor: value })
+								}
+							/>
 						</>
 					) }
 			</PanelBody>
@@ -1505,7 +1540,7 @@ const Settings = ( props ) => {
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
 					{ generalStyle() }
-					{ iconStyleSetting() }
+					{ enableTweet &&  iconStyleSetting() }
 					{ contentStyling }
 					{ spacingSettings }
 				</InspectorTab>
