@@ -11,10 +11,14 @@ const UAGTabsControl = (props) => {
 		};
 	}, []);
 
+	let bottomSeparatorClass = !props?.disableBottomSeparator
+		? "uag-control-tabs-bottom-separator"
+		: "";
+
 	return (
 		<>
 			<TabPanel
-				className="uag-control-tabs"
+				className={`uag-control-tabs ${bottomSeparatorClass}`}
 				activeClass="active-tab"
 				tabs={props.tabs}
 			>
@@ -26,7 +30,6 @@ const UAGTabsControl = (props) => {
 					);
 				}}
 			</TabPanel>
-			<hr className="uagb-editor__separator" />
 		</>
 	);
 };

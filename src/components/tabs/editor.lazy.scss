@@ -1,7 +1,11 @@
 /* Normal & Hover Tabs CSS*/
 .uag-control-tabs {
 	width: 100%;
-	margin-bottom: 24px;
+	&.uag-control-tabs-bottom-separator {
+		margin-bottom: 24px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #ddd;
+	}
 	.components-tab-panel__tabs {
 		justify-content: space-between;
 		margin-bottom: 24px;
