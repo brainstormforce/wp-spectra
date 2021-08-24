@@ -706,7 +706,7 @@ const Settings = ( props ) => {
 						]}
 						normal={tabOutputNormal}
 						hover={tabOutputHover}
-						disableBottomSeparator = {false}
+						disableBottomSeparator = {true}
 					/>
 				</PanelBody>
 			);
