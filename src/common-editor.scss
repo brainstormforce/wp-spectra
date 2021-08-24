@@ -50,6 +50,21 @@
 	font-size: 13px;
 	line-height: 1.4;
 }
+/* Panel Body CSS*/
+.uagb-inspector-tab,
+[data-uagb-tab] {
+	.components-panel__body-title .components-button {
+		font-size: 14px;
+	}
+}
+/* GB Select Control CSS*/
+.uagb-inspector-tab .components-select-control {
+	height: auto;
+	.components-input-control__label {
+		padding-bottom: 8px !important;
+	}
+}
+
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	z-index: unset;
@@ -89,7 +104,6 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
-	background-color: #bfdeee;
 	color: #007cba;
 	box-shadow: none;
 	border-radius: 100%;
@@ -481,9 +495,6 @@ label.uagb-border-label {
 }
 /* Common CSS for border ens here */
 
-.uagb-inspector-tab .components-select-control {
-	height: auto;
-}
 button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
@@ -537,7 +548,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 .uag-responsive-common-button {
 	box-shadow: none;
-	background-color: #bfdeee;
 	color: #007cba;
 	border-radius: 100%;
 	border: 0;
