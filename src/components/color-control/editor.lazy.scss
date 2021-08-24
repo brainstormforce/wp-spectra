@@ -1,6 +1,6 @@
-.uagb-popover-color .components-popover__content {
-    width: 250px;
-}
+/*.uagb-popover-color .components-popover__content {
+	width: 250px;
+}*/
 
 .uagb-advanced-color-settings-container {
 	display: flex;
@@ -34,15 +34,15 @@
 	border-radius: 50%;
 	margin: 0;
 }
-.uagb-advanced-color-settings-container h2.uagb-beside-color-label {
+.uagb-advanced-color-settings-container .uagb-beside-color-label {
 	flex-grow: 1;
-	font-weight: 400;
 	margin: 0;
 }
 
 .components-popover.uagb-popover-color.new-uagb-advanced-colors-pop
 	.components-popover__content {
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .components-circular-option-picker {

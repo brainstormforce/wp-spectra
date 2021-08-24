@@ -16,7 +16,6 @@ const ResponsiveSlider = (props) => {
 	let minDesk = ( undefined !== props.data.desktop.min ) ? props.data.desktop.min : props.min;
 	let minTab = ( undefined !== props.data.tablet.min ) ? props.data.tablet.min : props.min;
 	let minMob = ( undefined !== props.data.mobile.min ) ? props.data.mobile.min : props.min;
-	
 
 	output.Desktop = (
 		<>
@@ -71,7 +70,7 @@ const ResponsiveSlider = (props) => {
 	);
 
 	return (
-		<div className="components-base-control uagb-size-type-field-tabs">
+		<div className="components-base-control uagb-responsive-range">
 			<div className="uagb-responsive-control-inner">
 				{output[deviceType] ? output[deviceType] : output.Desktop}
 			</div>
