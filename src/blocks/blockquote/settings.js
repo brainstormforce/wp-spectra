@@ -1544,6 +1544,16 @@ const Settings = ( props ) => {
 								<>
 									<AdvancedPopColorControl
 										label={__(
+											'Tweet Color',
+											"ultimate-addons-for-gutenberg"
+										)}
+										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
+										onColorChange={(value) =>
+											setAttributes({ tweetBtnHoverColor: value })
+										}
+									/>
+									<AdvancedPopColorControl
+										label={__(
 											'Tweet Background Color',
 											"ultimate-addons-for-gutenberg"
 										)}
@@ -1552,19 +1562,9 @@ const Settings = ( props ) => {
 											setAttributes({ tweetBtnBgHoverColor: value })
 										}
 									/>
-									<AdvancedPopColorControl
-										label={__(
-											'Tweet Link Color',
-											"ultimate-addons-for-gutenberg"
-										)}
-										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
-										onColorChange={(value) =>
-											setAttributes({ tweetBtnHoverColor: value })
-										}
-									/>
 								</>
 							}
-							disableBottomSeparator={false}
+							disableBottomSeparator={true}
 						/>
 					) }
 			</PanelBody>
