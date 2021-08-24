@@ -38,6 +38,7 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
+		separatorHoverColor
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -81,6 +82,9 @@ function styling( props ) {
 			width: generateCSSUnit( separatorWidth, separatorWidthType ),
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit( separatorSpace, 'px' ),
+		};
+		selectors[ ' .uagb-separator:hover' ] = {
+			'border-color': separatorHoverColor,
 		};
 	}
 

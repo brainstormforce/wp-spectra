@@ -116,7 +116,10 @@ const BoxShadowControl = (props) => {
 							},
 							{
 								value: "inset",
-								label: __("Inset", "ultimate-addons-for-gutenberg"),
+								label: __(
+									"Inset",
+									"ultimate-addons-for-gutenberg"
+								),
 								tooltip: __(
 									"Inset (10px)",
 									"ultimate-addons-for-gutenberg"
@@ -132,7 +135,9 @@ const BoxShadowControl = (props) => {
 
 	boxShadowAdvancedControls = (
 		<div className="uag-box-shadow-option-actions">
-			<span className="uag-box-shadow-main-label">Enable Shadow</span>
+			<span className="uag-control-label">
+				{__("Box Shadow", "ultimate-addons-for-gutenberg")}
+			</span>
 			<Button
 				className={"uag-box-shadow-button"}
 				aria-pressed={showAdvancedControls}
