@@ -348,9 +348,8 @@ const Settings = (props) => {
 			title={__("Content", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
 		>
-			<h2>{__("Label", "ultimate-addons-for-gutenberg")}</h2>
 			<TypographyControl
-				label={__("Typography", "ultimate-addons-for-gutenberg")}
+				label={__("Label Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
 				setAttributes={setAttributes}
 				loadGoogleFonts={{
@@ -399,26 +398,15 @@ const Settings = (props) => {
 					label: "labelLineHeightTablet",
 				}}
 			/>
-			<p className="uagb-setting-label">
-				{__("Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: fieldLabelColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={fieldLabelColor}
-				onChange={(colorValue) =>
-					setAttributes({ fieldLabelColor: colorValue })
+			<AdvancedPopColorControl
+				label={__("Color", "ultimate-addons-for-gutenberg")}
+				colorValue={fieldLabelColor}
+				onColorChange={(value) =>
+					setAttributes({ fieldLabelColor: value })
 				}
-				allowReset
 			/>
-			<hr className="uagb-editor__separator" />
-			<h2>{__("Input", "ultimate-addons-for-gutenberg")}</h2>
 			<TypographyControl
-				label={__("Typography", "ultimate-addons-for-gutenberg")}
+				label={__("Input Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
 				setAttributes={setAttributes}
 				loadGoogleFonts={{
