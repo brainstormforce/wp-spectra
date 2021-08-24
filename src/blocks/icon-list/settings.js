@@ -17,10 +17,7 @@ import MultiButtonsControl from "../../components/multi-buttons-control";
 
 import {
 	PanelBody,
-	SelectControl,
-	Button,
 	ToggleControl,
-	ButtonGroup,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -430,9 +427,9 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
-						value={border}
+						value={borderRadius}
 						onChange={(value) =>
-							setAttributes({ border: value })
+							setAttributes({ borderRadius: value })
 						}
 						min={0}
 						max={500}
