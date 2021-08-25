@@ -6,7 +6,6 @@ import {
 	Button,
 	Dashicon,
 	SelectControl,
-	ToggleControl,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
@@ -235,12 +234,14 @@ const TypographyControl = (props) => {
 		);
 	}
 
-	fontTypoAdvancedControls = (
-		<div className="uag-typography-option-actions">
-			<span className="uag-typography-main-label">{props.label}</span>
-			{fontAdvancedControls}
-		</div>
-	);
+	if (true !== disableFontFamily && true !== disableFontSize) {
+		fontTypoAdvancedControls = (
+			<div className="uag-typography-option-actions">
+				<span className="uag-control-label">{props.label}</span>
+				{fontAdvancedControls}
+			</div>
+		);
+	}
 
 	return (
 		<div

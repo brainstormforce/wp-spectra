@@ -3,18 +3,20 @@
  */
 
 // Import classes
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import renderSVG from '@Controls/renderIcon';
+import UAGIconPicker from "../../components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import Border from "@Components/border";
 import SpacingControl from "@Components/spacing-control";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import TypographyControl from '@Components/typography';
 import Range from "@Components/range/Range.js";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	BlockControls,
@@ -25,7 +27,6 @@ import {
 import {
 	PanelBody,
 	SelectControl,
-	TabPanel,
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
@@ -108,8 +109,11 @@ const Settings = ( props ) => {
 	
 		return (
 			<PanelBody
+				title={ __(
+					'Button',
+					'ultimate-addons-for-gutenberg'
+				) }
 				initialOpen={ true }
-				className="uagb__url-panel-body"
 			>
 				<ToggleControl
 					label={ __(
@@ -123,20 +127,10 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<h2>
-					{ __( 'Button Icon', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
-				<FontIconPicker 
-					icons={ wp.UAGBSvgIcons }
-					renderFunc={ renderSVG }
-					theme="default"
-					value={ icon }
-					onChange={ ( value ) => ( setAttributes( { icon: value } ) )}
-					isMulti={ false }
-					noSelectedPlaceholder={ __(
-						'Select Icon',
-						'ultimate-addons-for-gutenberg'
-					) } 
+				<UAGIconPicker
+					label={__("Icon", "ultimate-addons-for-gutenberg")}
+					value={icon}
+					onChange={(value) => setAttributes({ icon: value })}
 				/>
 				{ '' !== icon && (
 					<>
@@ -198,85 +192,72 @@ const Settings = ( props ) => {
 			>
 				{ ! inheritFromTheme && (
 					<>
-						<TabPanel
-							className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-							activeClass="active-tab"
-							tabs={ [
+						<UAGTabsControl
+							tabs={[
 								{
-									name: 'normal',
+									name: "normal",
 									title: __(
-										'Normal',
-										'ultimate-addons-for-gutenberg'
+										"Normal",
+										"ultimate-addons-for-gutenberg"
 									),
-									className: 'uagb-normal-tab',
 								},
 								{
-									name: 'hover',
+									name: "hover",
 									title: __(
-										'Hover',
-										'ultimate-addons-for-gutenberg'
+										"Hover",
+										"ultimate-addons-for-gutenberg"
 									),
-									className: 'uagb-hover-tab',
 								},
-							] }
-						>
-							{ ( tabName ) => {
-								let btn_color_tab;
-								if ( 'normal' === tabName.name ) {
-									btn_color_tab = (
-										<>
-											<AdvancedPopColorControl
-												label={__(
-													"Text Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={color ? color : ""}
-												onColorChange={(value) =>
-													setAttributes({ color: value })
-												}
-											/>
-											<AdvancedPopColorControl
-												label={__(
-													"Background Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={background ? background : ""}
-												onColorChange={(value) =>
-													setAttributes({ background: value })
-												}
-											/>
-										</>
-									);
-								} else {
-									btn_color_tab = (
-										<>
-											<AdvancedPopColorControl
-												label={__(
-													"Text Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={hColor ? hColor : ""}
-												onColorChange={(value) =>
-													setAttributes({ hColor: value })
-												}
-											/>
-											<AdvancedPopColorControl
-												label={__(
-													"Background Color",
-													"ultimate-addons-for-gutenberg"
-												)}
-												colorValue={hBackground ? hBackground : ""}
-												onColorChange={(value) =>
-													setAttributes({ hBackground: value })
-												}
-											/>
-										</>
-									);
-								}
-								return <div>{ btn_color_tab }</div>;
-							} }
-						</TabPanel>
-						<br></br>
+							]}
+							normal={
+								<>
+								<AdvancedPopColorControl
+									label={__(
+										"Text Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={color ? color : ""}
+									onColorChange={(value) =>
+										setAttributes({ color: value })
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"Background Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={background ? background : ""}
+									onColorChange={(value) =>
+										setAttributes({ background: value })
+									}
+								/>
+								</>
+							}
+							hover={
+								<>
+								<AdvancedPopColorControl
+									label={__(
+										"Text Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={hColor ? hColor : ""}
+									onColorChange={(value) =>
+										setAttributes({ hColor: value })
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										"Background Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={hBackground ? hBackground : ""}
+									onColorChange={(value) =>
+										setAttributes({ hBackground: value })
+									}
+								/>
+								</>
+							}
+						/>
 						<TypographyControl
 							label={__("Typography", "ultimate-addons-for-gutenberg")}
 							attributes={attributes}
@@ -395,6 +376,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		)};
@@ -530,24 +512,25 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			{ linkControls() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 				{ buttonSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ ! inheritFromTheme && ( textSettings() ) }
 				{ ( '' !== icon && inheritFromTheme ) && ( IconSettings() ) }
 				{ ! inheritFromTheme && ( borderSettings() ) }
 				{ ! inheritFromTheme && ( spacingSettings() ) }
 				{ ( '' == icon && inheritFromTheme ) && ( 
-					<div class="components-notice is-warning">
-						<div class="components-notice__content">
-						<h2>{ __( 'Currently No Style Available for Selected Option.', 'ultimate-addons-for-gutenberg' ) }</h2>
-						</div>
-					</div>
+					<p className="uagb-settings-notice">
+						{__(
+							"There is no style available for the inheritFromTheme option.",
+							"ultimate-addons-for-gutenberg"
+						)}
+					</p>
 				) }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>

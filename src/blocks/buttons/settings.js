@@ -6,7 +6,6 @@ import {
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
-	SelectControl,
 	Icon,
 } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
@@ -14,8 +13,10 @@ import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import renderSVG from "@Controls/renderIcon";
 import Range from "../../components/range/Range.js";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -51,6 +52,10 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
+				title={ __(
+					'Common',
+					'ultimate-addons-for-gutenberg'
+				) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl
@@ -124,40 +129,22 @@ const Settings = ( props ) => {
 					]}
 					showIcons={true}
 				/>
-				<SelectControl
-					label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
-					value={ stack }
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'desktop',
-							label: __(
-								'Desktop',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'tablet',
-							label: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'mobile',
-							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					onChange={ ( value ) => setAttributes( { stack: value } ) }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Stack On",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: stack,
+						label: "stack",
+					}}
+					options={[
+						{ value: "none", label: __("None", "ultimate-addons-for-gutenberg") },
+						{ value: "desktop", label: __("Desktop", "ultimate-addons-for-gutenberg") },
+						{ value: "tablet", label: __("Tablet", "ultimate-addons-for-gutenberg") },
+						{ value: "mobile", label: __("Mobile", "ultimate-addons-for-gutenberg") },
+					]}
 					help={ __(
 						'Note: Choose on what breakpoint the buttons will stack.',
 						'ultimate-addons-for-gutenberg'
@@ -184,6 +171,10 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<PanelBody
+				title={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
 				initialOpen={ true }
 			>
 				<TypographyControl
@@ -210,14 +201,14 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 				{ generalSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ styleSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 			{ loadBtnGoogleFonts }
