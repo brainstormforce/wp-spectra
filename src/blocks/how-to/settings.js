@@ -197,10 +197,10 @@ const Settings = ( props ) => {
 		);
 	}
 
-	const generalSettings = () => {
+	const titleSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl
@@ -222,6 +222,15 @@ const Settings = ( props ) => {
 						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
 					]}
 				/>
+			</PanelBody>
+		);
+	};	
+		const imageSettings = () => {
+			return (
+				<PanelBody
+					title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
 				<UAGImage
 					onSelectImage={onSelectImage}
 					backgroundImage={mainimage}
@@ -821,7 +830,8 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab {...UAGTabs.general}>
-					{ generalSettings() }
+					{ titleSettings() }
+					{ imageSettings() }
 					{ timeSettings() }
 					{ costSettings() }
 					{ toolsSettings() }
