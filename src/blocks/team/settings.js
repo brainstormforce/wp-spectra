@@ -27,13 +27,11 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
-	Button,
 	TextControl,
 	ToggleControl,
 	Icon
@@ -1074,6 +1072,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);

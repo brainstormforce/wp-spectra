@@ -11,7 +11,7 @@
 __webpack_public_path__ = uagb_blocks_info.uagb_url + "dist/";
 
 import "./blocks/extensions/attributes.js";
-// import "./blocks/advanced-heading/block.js";
+import "./blocks/advanced-heading/block.js";
 // import "./blocks/post/block.js";
 import "./blocks/section/block.js";
 // import "./blocks/buttons/block.js";
@@ -27,7 +27,7 @@ import "./blocks/team/block.js";
 // import "./blocks/price-list/block.js";
 // import "./blocks/price-list-child/block.js";
 // import "./blocks/timeline/block.js";
-// import "./blocks/call-to-action/block.js";
+import "./blocks/call-to-action/block.js";
 // import "./blocks/column/block.js";
 // import "./blocks/columns/block.js";
 // import "./blocks/cf7-designer/block.js";
@@ -40,8 +40,8 @@ import "./blocks/team/block.js";
 // import "./blocks/faq-child/block.js";
 import "./blocks/inline-notice/block.js";
 // import "./blocks/wp-search/block.js";
-// import "./blocks/review/block.js";
-// import "./blocks/taxonomy-list/block.js";
+import "./blocks/taxonomy-list/block.js";
+import "./blocks/review/block.js";
 // import "./blocks/forms/block.js";
 // import "./blocks/forms/child-blocks/name/block.js";
 // import "./blocks/forms/child-blocks/email/block.js";
@@ -58,7 +58,7 @@ import "./blocks/inline-notice/block.js";
 import "./blocks/extensions/block.js";
 import "./blocks/tabs/block.js";
 import "./blocks/tabs-child/block.js";
-// import "./blocks/lottie/block.js";
+import "./blocks/lottie/block.js";
 // import "./blocks/star-rating/block.js";
 import "./blocks/demo-control-block/block.js";
 
