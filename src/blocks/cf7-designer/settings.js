@@ -165,6 +165,35 @@ const Settings = (props) => {
 		msgBorderRadiusType,
 		fieldBorderRadiusType,
 		buttonBorderRadiusType,
+		messageTopPaddingDesktop,
+		messageRightPaddingDesktop,
+		messageBottomPaddingDesktop,
+		messageLeftPaddingDesktop,
+		messageTopPaddingTablet,
+		messageRightPaddingTablet,
+		messageBottomPaddingTablet,
+		messageLeftPaddingTablet,
+		messageTopPaddingMobile,
+		messageRightPaddingMobile,
+		messageBottomPaddingMobile,
+		messageLeftPaddingMobile,
+		messagePaddingTypeDesktop,
+		messageSpacingLink,
+
+		buttonTopPaddingDesktop,
+		buttonRightPaddingDesktop,
+		buttonBottomPaddingDesktop,
+		buttonLeftPaddingDesktop,
+		buttonTopPaddingTablet,
+		buttonRightPaddingTablet,
+		buttonBottomPaddingTablet,
+		buttonLeftPaddingTablet,
+		buttonTopPaddingMobile,
+		buttonRightPaddingMobile,
+		buttonBottomPaddingMobile,
+		buttonLeftPaddingMobile,
+		buttonPaddingTypeDesktop,
+		buttonSpacingLink,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -658,45 +687,6 @@ const Settings = (props) => {
 		</PanelBody>
 	);
 
-	//Submit button settings.
-	const btn_border_setting = (
-		<>
-			<Border
-				setAttributes={setAttributes}
-				borderStyle={{
-					value: buttonBorderStyle,
-					label: "buttonBorderStyle",
-					title: __("Border Style", "ultimate-addons-for-gutenberg"),
-				}}
-				borderWidth={{
-					value: buttonBorderWidth,
-					label: "buttonBorderWidth",
-					title: __("Width", "ultimate-addons-for-gutenberg"),
-				}}
-				borderRadius={{
-					value: buttonBorderRadius,
-					label: "buttonBorderRadius",
-					title: __("Radius", "ultimate-addons-for-gutenberg"),
-					displayUnit: true,
-					unit: {
-						value: buttonBorderRadiusType,
-						label: "buttonBorderRadiusType",
-					},
-				}}
-				borderColor={{
-					value: buttonBorderColor,
-					label: "buttonBorderColor",
-					title: __("Color", "ultimate-addons-for-gutenberg"),
-				}}
-				borderHoverColor={{
-					value: buttonBorderHoverColor,
-					label: "buttonBorderHoverColor",
-					title: __("Hover Color", "ultimate-addons-for-gutenberg"),
-				}}
-			/>
-		</>
-	);
-
 	const msgSettings = (
 		<PanelBody
 			title={__(
@@ -963,8 +953,6 @@ const Settings = (props) => {
 					})
 				}
 			/>
-
-			<hr className="uagb-editor__separator" />
 			<Range
 				label={__(
 					"Message Border Width (px)",
@@ -1009,27 +997,75 @@ const Settings = (props) => {
 					},
 				]}
 			/>
-			<hr className="uagb-editor__separator" />
-			<h2>
-				{__("Message Padding (px)", "ultimate-addons-for-gutenberg")}
-			</h2>
-			<RangeControl
-				label={UAGB_Block_Icons.vertical_spacing}
-				className={"uagb-margin-control"}
-				value={msgVrPadding}
-				onChange={(value) => setAttributes({ msgVrPadding: value })}
-				min={0}
-				max={100}
-				allowReset
-			/>
-			<RangeControl
-				label={UAGB_Block_Icons.horizontal_spacing}
-				className={"uagb-margin-control"}
-				value={msgHrPadding}
-				onChange={(value) => setAttributes({ msgHrPadding: value })}
-				min={0}
-				max={100}
-				allowReset
+			<SpacingControl
+				{...props}
+				label={__("Message Padding", "ultimate-addons-for-gutenberg")}
+				valueTop={{
+					value: messageTopPaddingDesktop,
+					label: "messageTopPaddingDesktop",
+				}}
+				valueRight={{
+					value: messageRightPaddingDesktop,
+					label: "messageRightPaddingDesktop",
+				}}
+				valueBottom={{
+					value: messageBottomPaddingDesktop,
+					label: "messageBottomPaddingDesktop",
+				}}
+				valueLeft={{
+					value: messageLeftPaddingDesktop,
+					label: "messageLeftPaddingDesktop",
+				}}
+				valueTopTablet={{
+					value: messageTopPaddingTablet,
+					label: "messageTopPaddingTablet",
+				}}
+				valueRightTablet={{
+					value: messageRightPaddingTablet,
+					label: "messageRightPaddingTablet",
+				}}
+				valueBottomTablet={{
+					value: messageBottomPaddingTablet,
+					label: "messageBottomPaddingTablet",
+				}}
+				valueLeftTablet={{
+					value: messageLeftPaddingTablet,
+					label: "messageLeftPaddingTablet",
+				}}
+				valueTopMobile={{
+					value: messageTopPaddingMobile,
+					label: "messageTopPaddingMobile",
+				}}
+				valueRightMobile={{
+					value: messageRightPaddingMobile,
+					label: "messageRightPaddingMobile",
+				}}
+				valueBottomMobile={{
+					value: messageBottomPaddingMobile,
+					label: "messageBottomPaddingMobile",
+				}}
+				valueLeftMobile={{
+					value: messageLeftPaddingMobile,
+					label: "messageLeftPaddingMobile",
+				}}
+				unit={{
+					value: messagePaddingTypeDesktop,
+					label: "messagePaddingTypeDesktop",
+				}}
+				mUnit={{
+					value: messagePaddingTypeDesktop,
+					label: "messagePaddingTypeDesktop",
+				}}
+				tUnit={{
+					value: messagePaddingTypeDesktop,
+					label: "messagePaddingTypeDesktop",
+				}}
+				attributes={attributes}
+				setAttributes={setAttributes}
+				link={{
+					value: messageSpacingLink,
+					label: "messageSpacingLink",
+				}}
 			/>
 		</PanelBody>
 	);
@@ -1061,9 +1097,8 @@ const Settings = (props) => {
 					},
 				]}
 			/>
-			<h2>{__("Button Font", "ultimate-addons-for-gutenberg")}</h2>
 			<TypographyControl
-				label={__("Typography", "ultimate-addons-for-gutenberg")}
+				label={__("Button Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
 				setAttributes={setAttributes}
 				loadGoogleFonts={{
@@ -1112,56 +1147,128 @@ const Settings = (props) => {
 					label: "buttonLineHeightTablet",
 				}}
 			/>
-			<hr className="uagb-editor__separator" />
-			{btn_border_setting}
-			<hr className="uagb-editor__separator" />
-			<TabPanel
-				className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-				activeClass="active-tab"
+			<Border
+				setAttributes={setAttributes}
+				borderStyle={{
+					value: buttonBorderStyle,
+					label: "buttonBorderStyle",
+					title: __("Border Style", "ultimate-addons-for-gutenberg"),
+				}}
+				borderWidth={{
+					value: buttonBorderWidth,
+					label: "buttonBorderWidth",
+					title: __("Width", "ultimate-addons-for-gutenberg"),
+				}}
+				borderRadius={{
+					value: buttonBorderRadius,
+					label: "buttonBorderRadius",
+					title: __("Radius", "ultimate-addons-for-gutenberg"),
+					displayUnit: true,
+					unit: {
+						value: buttonBorderRadiusType,
+						label: "buttonBorderRadiusType",
+					},
+				}}
+				borderColor={{
+					value: buttonBorderColor,
+					label: "buttonBorderColor",
+					title: __("Color", "ultimate-addons-for-gutenberg"),
+				}}
+				borderHoverColor={{
+					value: buttonBorderHoverColor,
+					label: "buttonBorderHoverColor",
+					title: __("Hover Color", "ultimate-addons-for-gutenberg"),
+				}}
+			/>
+			<UAGTabsControl
 				tabs={[
 					{
 						name: "normal",
-						title: __("Normal", "ultimate-addons-for-gutenberg"),
-						className: "uagb-normal-tab",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 					{
 						name: "hover",
-						title: __("Hover", "ultimate-addons-for-gutenberg"),
-						className: "uagb-focus-tab",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 				]}
-			>
-				{(tabName) => {
-					let tabout;
-					if ("normal" === tabName.name) {
-						tabout = buttonNormalSettings;
-					} else {
-						tabout = buttonHoverSettings;
-					}
-					return <div>{tabout}</div>;
-				}}
-			</TabPanel>
-			<hr className="uagb-editor__separator" />
-			<h2>
-				{__("Button Padding (px)", "ultimate-addons-for-gutenberg")}
-			</h2>
-			<RangeControl
-				label={UAGB_Block_Icons.vertical_spacing}
-				className={"uagb-margin-control"}
-				value={buttonVrPadding}
-				onChange={(value) => setAttributes({ buttonVrPadding: value })}
-				min={0}
-				max={200}
-				initialPosition={10}
+				normal={buttonNormalSettings}
+				hover={buttonHoverSettings}
 			/>
-			<RangeControl
-				label={UAGB_Block_Icons.horizontal_spacing}
-				className={"uagb-margin-control"}
-				value={buttonHrPadding}
-				onChange={(value) => setAttributes({ buttonHrPadding: value })}
-				min={0}
-				max={200}
-				initialPosition={10}
+			<SpacingControl
+				{...props}
+				label={__("Button Padding", "ultimate-addons-for-gutenberg")}
+				valueTop={{
+					value: buttonTopPaddingDesktop,
+					label: "buttonTopPaddingDesktop",
+				}}
+				valueRight={{
+					value: buttonRightPaddingDesktop,
+					label: "buttonRightPaddingDesktop",
+				}}
+				valueBottom={{
+					value: buttonBottomPaddingDesktop,
+					label: "buttonBottomPaddingDesktop",
+				}}
+				valueLeft={{
+					value: buttonLeftPaddingDesktop,
+					label: "buttonLeftPaddingDesktop",
+				}}
+				valueTopTablet={{
+					value: buttonTopPaddingTablet,
+					label: "buttonTopPaddingTablet",
+				}}
+				valueRightTablet={{
+					value: buttonRightPaddingTablet,
+					label: "buttonRightPaddingTablet",
+				}}
+				valueBottomTablet={{
+					value: buttonBottomPaddingTablet,
+					label: "buttonBottomPaddingTablet",
+				}}
+				valueLeftTablet={{
+					value: buttonLeftPaddingTablet,
+					label: "buttonLeftPaddingTablet",
+				}}
+				valueTopMobile={{
+					value: buttonTopPaddingMobile,
+					label: "buttonTopPaddingMobile",
+				}}
+				valueRightMobile={{
+					value: buttonRightPaddingMobile,
+					label: "buttonRightPaddingMobile",
+				}}
+				valueBottomMobile={{
+					value: buttonBottomPaddingMobile,
+					label: "buttonBottomPaddingMobile",
+				}}
+				valueLeftMobile={{
+					value: buttonLeftPaddingMobile,
+					label: "buttonLeftPaddingMobile",
+				}}
+				unit={{
+					value: buttonPaddingTypeDesktop,
+					label: "buttonPaddingTypeDesktop",
+				}}
+				mUnit={{
+					value: buttonPaddingTypeDesktop,
+					label: "buttonPaddingTypeDesktop",
+				}}
+				tUnit={{
+					value: buttonPaddingTypeDesktop,
+					label: "buttonPaddingTypeDesktop",
+				}}
+				attributes={attributes}
+				setAttributes={setAttributes}
+				link={{
+					value: buttonSpacingLink,
+					label: "buttonSpacingLink",
+				}}
 			/>
 		</PanelBody>
 	);

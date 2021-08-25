@@ -23,6 +23,57 @@ const UAGBCF7 = ( props ) => {
 			'uagb-cf7-styler-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const { attributes, setAttributes } = props;
+		const {
+			msgVrPadding,
+			msgHrPadding,
+			messageTopPaddingDesktop,
+			messageBottomPaddingDesktop,
+			messageRightPaddingDesktop,
+			messageLeftPaddingDesktop,
+
+			buttonVrPadding,
+			buttonHrPadding,
+			buttonTopPaddingDesktop,
+			buttonBottomPaddingDesktop,
+			buttonRightPaddingDesktop,
+			buttonLeftPaddingDesktop,
+		} = attributes;
+
+		if (msgVrPadding) {
+			if (!messageTopPaddingDesktop) {
+				setAttributes({ messageTopPaddingDesktop: msgVrPadding });
+			}
+			if (!messageBottomPaddingDesktop) {
+				setAttributes({ messageBottomPaddingDesktop: msgVrPadding });
+			}
+		}
+		if (msgHrPadding) {
+			if (!messageRightPaddingDesktop) {
+				setAttributes({ messageRightPaddingDesktop: msgHrPadding });
+			}
+			if (!messageLeftPaddingDesktop) {
+				setAttributes({ messageLeftPaddingDesktop: msgHrPadding });
+			}
+		}
+
+		if (buttonVrPadding) {
+			if (!buttonTopPaddingDesktop) {
+				setAttributes({ buttonTopPaddingDesktop: buttonVrPadding });
+			}
+			if (!buttonBottomPaddingDesktop) {
+				setAttributes({ buttonBottomPaddingDesktop: buttonVrPadding });
+			}
+		}
+		if (buttonHrPadding) {
+			if (!buttonRightPaddingDesktop) {
+				setAttributes({ buttonRightPaddingDesktop: buttonHrPadding });
+			}
+			if (!buttonLeftPaddingDesktop) {
+				setAttributes({ buttonLeftPaddingDesktop: buttonHrPadding });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

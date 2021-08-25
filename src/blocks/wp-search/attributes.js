@@ -216,6 +216,81 @@ const attributes = {
 		type: 'string',
 		default: '%',
 	},
+	paddingInputTop:{
+		type: 'number'
+	},
+	paddingInputRight:{
+		type: 'number'
+	},
+	paddingInputBottom:{
+		type: 'number'
+	},
+	paddingInputLeft:{
+		type: 'number'
+	},
+	paddingInputTopTablet:{
+		type: 'number'
+	},
+	paddingInputRightTablet:{
+		type: 'number'
+	},
+	paddingInputBottomTablet:{
+		type: 'number'
+	},
+	paddingInputLeftTablet:{
+		type: 'number'
+	},
+	paddingInputTopMobile:{
+		type: 'number'
+	},
+	paddingInputRightMobile:{
+		type: 'number'
+	},
+	paddingInputBottomMobile:{
+		type: 'number'
+	},
+	paddingInputLeftMobile:{
+		type: 'number'
+	},
+	paddingInputUnit:{
+		type: 'number'
+	},
+	mobilePaddingInputUnit:{
+		type: 'number'
+	},
+	tabletPaddingInputUnit:{
+		type: 'number'
+	},
+	spacingLink:{
+		type: 'string'
+	},
+	iconSizeType:{
+		type: 'string',
+		default: 'px'
+	},
+	inputTransform:{
+		type: 'string'
+	},
+	inputDecoration:{
+		type: 'string'
+	},
+	buttonTransform:{
+		type: 'string'
+	},
+	buttonDecoration:{
+		type: 'string'
+	},
+	borderHColor:{
+		type: 'string'
+	},
+	buttonIconSizeType:{
+		type: 'string',
+		default: 'px'
+	},
+	buttonWidthType:{
+		type: 'string',
+		default: 'px'
+	},
 };
 
 export default attributes;
