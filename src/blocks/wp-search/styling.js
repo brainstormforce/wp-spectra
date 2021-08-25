@@ -199,7 +199,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-search-wrapper .uagb-search-form__container:hover'
 		] = {
-			'borderColor':borderHColor
+			'border-color':borderHColor
 		};
 		if ( 'inset' === boxShadowPosition ) {
 			selectors[ ' .uagb-search-wrapper .uagb-search-form__input' ] = {
