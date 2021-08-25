@@ -21,8 +21,10 @@
     h1 {
         font-family: var(--heading-font-family); 
         color: var(--heading-color);
-        font-weight: var(--heading-weight-600);
-        line-height: 1.30em;
+        font-weight: var(--heading-weight-600);    
+        margin-bottom: 10px;
+        margin-top: 0px;
+        line-height: normal;
     }
     h2{
         font-family: var(--heading-font-family);    

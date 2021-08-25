@@ -112,8 +112,8 @@ function UserInfoBox() {
 	};
 
 	return (
-		<div className="uag-metabox uag-user-info">
-			<div className="uag-metabox__header">
+		<div className="uag-user-info">
+			<div className="uag-metabox uag-metabox__header">
 				<div className="uag-metabox__title">
 					<h1>
 						{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) +
@@ -126,137 +126,140 @@ function UserInfoBox() {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
+				<NormalButton
+					buttonText={ __(
+						'Let\'s Get Started',
+						'ultimate-addons-for-gutenberg'
+					) }
+					saving={ false }
+				/>
 			</div>
-			<div className="uag-metabox__body">
-				<div className="uag-metabox__elements">
-					<div className="uag-metabox__element">
-						<h3>
-							{ __(
-								'Join the Community ',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h3>
-						<p>
-							{ __(
-								'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-						<NormalButton
-							buttonText={ __(
-								'Join Now',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onClick={ onJointheCommunityClick }
-							saving={ false }
-							classes="uag-button--secondary"
-						/>
-					</div>
-					<div className="uag-metabox__element">
-						<h3>
-							{ __(
-								'Knowledge Base',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h3>
-						<p>
-							{ __(
-								'Learn everything you need to know about the UAG plugin in our comprehensive documentation.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-						<NormalButton
-							buttonText={ __(
-								'Browse Now',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onClick={ onKnowledgebaseClick }
-							saving={ false }
-							classes="uag-button--secondary"
-						/>
-					</div>
-					<div className="uag-metabox__element">
-						<h3>
-							{ __(
-								'Get 5-star Support ',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h3>
-						<p>
-							{ __(
-								'Need some help? Our awesome support team is here to help you with any question you have.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-						<NormalButton
-							buttonText={ __(
-								'Get Support',
-								'ultimate-addons-for-gutenberg'
-							) }
-							onClick={ onGetSupportClick }
-							saving={ false }
-							classes="uag-button--secondary"
-						/>
-					</div>
+			<div className="uag-metabox uag-metabox__element">
+				<h3>
+					{ __(
+						'Knowledge Base',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h3>
+				<p>
+					{ __(
+						'Learn everything you need to know about the UAG plugin in our comprehensive documentation.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<NormalButton
+					buttonText={ __(
+						'Browse Now',
+						'ultimate-addons-for-gutenberg'
+					) }
+					onClick={ onKnowledgebaseClick }
+					saving={ false }
+					classes="uag-button--secondary"
+				/>
+			</div>
+			<div className="uag-metabox uag-theme__metabox">
+				<h2>
+					{ __(
+						'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
+				<p>
+					{ __(
+						'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<div className="uag-theme__cta">
+					{ astraThemeButton() }
+					<NormalButton
+						buttonText={ __(
+							'Learn More About Astra',
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ false }
+						classes="uag-button--secondary"
+						onClick={ learnMoreAstraClick }
+					/>
 				</div>
-				<div className="uag-starter-site__elements">
-					<div className="uag-starter-tmp__img">
-						<img
-							src={
-								uag_react.plugin_dir +
-								'admin-core/assets/images/astra-starter-sites.png'
-							}
-						/>
-					</div>
-					<div className="uag-starter-tmp__details">
-						<h2>
-							{ __(
-								'Get Readymade Website Templates for Free ',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</h2>
-						<p>
-							{ __(
-								'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. These templates are easy to customize and are optimized for conversion. Just import, tweak and deliver projects faster than ever before!',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</p>
-						<NormalButton
-							buttonText={ __(
-								'Import a Starter Template',
-								'ultimate-addons-for-gutenberg'
-							) }
-							saving={ false }
-						/>
-					</div>
+			</div>
+			<div className="uag-metabox uag-metabox__element">
+				<h3>
+					{ __(
+						'Get 5-star Support ',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h3>
+				<p>
+					{ __(
+						'Need some help? Our awesome support team is here to help you with any question you have.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<NormalButton
+					buttonText={ __(
+						'Get Support',
+						'ultimate-addons-for-gutenberg'
+					) }
+					onClick={ onGetSupportClick }
+					saving={ false }
+					classes="uag-button--secondary"
+				/>
+			</div>
+			<div className="uag-metabox uag-starter-site__elements">
+				<div className="uag-starter-tmp__img">
+					<img
+						src={
+							uag_react.plugin_dir +
+							'admin-core/assets/images/astra-starter-sites.png'
+						}
+					/>
 				</div>
-				<div className="uag-theme__metabox">
+				<div className="uag-starter-tmp__details">
 					<h2>
 						{ __(
-							'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
+							'Get Readymade Website Templates for Free ',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</h2>
 					<p>
 						{ __(
-							'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
+							'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. These templates are easy to customize and are optimized for conversion. Just import, tweak and deliver projects faster than ever before!',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</p>
-					<div className="uag-theme__cta">
-						{ astraThemeButton() }
-						<NormalButton
-							buttonText={ __(
-								'Learn More About Astra',
-								'ultimate-addons-for-gutenberg'
-							) }
-							saving={ false }
-							classes="uag-button--secondary"
-							onClick={ learnMoreAstraClick }
-						/>
-					</div>
+					<NormalButton
+						buttonText={ __(
+							'Import a Starter Template',
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ false }
+					/>
 				</div>
 			</div>
+			<div className="uag-metabox uag-metabox__element">
+				<h3>
+					{ __(
+						'Join the Community ',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h3>
+				<p>
+					{ __(
+						'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<NormalButton
+					buttonText={ __(
+						'Join Now',
+						'ultimate-addons-for-gutenberg'
+					) }
+					onClick={ onJointheCommunityClick }
+					saving={ false }
+					classes="uag-button--secondary"
+				/>
+			</div>	
 		</div>
 	);
 }
