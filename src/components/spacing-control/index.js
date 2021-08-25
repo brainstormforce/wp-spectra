@@ -12,7 +12,7 @@ import {
 	Dashicon,
 } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
-import { useState } from "@wordpress/element";
+import { useState, useEffect } from "@wordpress/element";
 
 const SpacingControl = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -26,6 +26,13 @@ const SpacingControl = (props) => {
 	const deviceType = useSelect((select) => {
 		return select("core/edit-post").__experimentalGetPreviewDeviceType();
 	}, []);
+
+	let defaultCache = {
+		...props,
+		resetDisabled: true,
+	};
+
+	const [cachedValue, setCacheValue] = useState(defaultCache);
 
 	const {
 		label,
@@ -47,6 +54,24 @@ const SpacingControl = (props) => {
 		link,
 		setAttributes,
 	} = props;
+
+	useEffect(() => {
+		let cachedValueUpdate = { ...cachedValue };
+
+		if (undefined !== props) {
+			cachedValueUpdate = { ...props, ...cachedValue };
+			setCacheValue(cachedValueUpdate);
+		}
+	}, []);
+
+	useEffect(() => {
+		let cachedValueUpdate = { ...cachedValue };
+		let propsValue = { ...props, resetDisabled: true };
+		if (JSON.stringify(cachedValueUpdate) !== JSON.stringify(propsValue)) {
+			cachedValueUpdate["resetDisabled"] = false;
+			setCacheValue(cachedValueUpdate);
+		}
+	}, [props]);
 
 	const [displayResponsive, toggleResponsive] = useState(false);
 
@@ -93,9 +118,15 @@ const SpacingControl = (props) => {
 				break;
 		}
 	};
-	const onChangeTopValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeTopValue = (event, device, value = "") => {
+		let newValue = value;
+
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 
 		if (link.value) {
 			changeLinkedValues(newValue, device);
@@ -113,10 +144,15 @@ const SpacingControl = (props) => {
 		}
 	};
 
-	const onChangeRightValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeRightValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
@@ -134,10 +170,15 @@ const SpacingControl = (props) => {
 		}
 	};
 
-	const onChangeBottomValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeBottomValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
@@ -155,10 +196,15 @@ const SpacingControl = (props) => {
 		}
 	};
 
-	const onChangeLeftValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeLeftValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
@@ -466,16 +512,80 @@ const SpacingControl = (props) => {
 	const commonResponsiveHandler = () => {
 		toggleResponsive(!displayResponsive);
 	};
+	const resetValues = () => {
+		let device = deviceType.toLowerCase();
 
+		let cachedValueUpdate = { ...cachedValue };
+		cachedValueUpdate["resetDisabled"] = true;
+		setCacheValue(cachedValueUpdate);
+
+		switch (device) {
+			case "desktop":
+				onChangeTopValue("", "desktop", cachedValue.valueTop.value);
+				onChangeRightValue("", "desktop", cachedValue.valueRight.value);
+				onChangeBottomValue(
+					"",
+					"desktop",
+					cachedValue.valueBottom.value
+				);
+				onChangeLeftValue("", "desktop", cachedValue.valueLeft.value);
+				setAttributes({ [unit.label]: cachedValue.unit.value });
+				break;
+			case "tablet":
+				onChangeTopValue(
+					"",
+					"tablet",
+					cachedValue.valueTopTablet.value
+				);
+				onChangeRightValue(
+					"",
+					"tablet",
+					cachedValue.valueRightTablet.value
+				);
+				onChangeBottomValue(
+					"",
+					"tablet",
+					cachedValue.valueBottomTablet.value
+				);
+				onChangeLeftValue(
+					"",
+					"tablet",
+					cachedValue.valueLeftTablet.value
+				);
+				setAttributes({ [tUnit.label]: cachedValue.tUnit.value });
+				break;
+			case "mobile":
+				onChangeTopValue(
+					"",
+					"mobile",
+					cachedValue.valueTopMobile.value
+				);
+				onChangeRightValue(
+					"",
+					"mobile",
+					cachedValue.valueRightMobile.value
+				);
+				onChangeBottomValue(
+					"",
+					"mobile",
+					cachedValue.valueBottomMobile.value
+				);
+				onChangeLeftValue(
+					"",
+					"mobile",
+					cachedValue.valueLeftMobile.value
+				);
+				setAttributes({ [mUnit.label]: cachedValue.mUnit.value });
+				break;
+		}
+	};
 	return (
 		<div className="components-base-control uagb-spacing-control">
 			<div className="uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
 						{label && (
-							<label className={"uagb-range-control__label"}>
-								{label}
-							</label>
+							<span className="uag-control-label">{label}</span>
 						)}
 						{!displayResponsive && (
 							<Button
@@ -516,6 +626,18 @@ const SpacingControl = (props) => {
 						)}
 					</div>
 					<div className="uagb-control__actions">
+						<Button
+							className="uagb-reset"
+							disabled={cachedValue.resetDisabled}
+							isSecondary
+							isSmall
+							onClick={(e) => {
+								e.preventDefault();
+								resetValues();
+							}}
+						>
+							<Dashicon icon="image-rotate" />
+						</Button>
 						<ButtonGroup
 							className="uagb-spacing-control__units"
 							aria-label={__(

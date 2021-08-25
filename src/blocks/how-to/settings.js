@@ -8,7 +8,6 @@ import { __ } from '@wordpress/i18n';
 import {
 	AlignmentToolbar,
 	BlockControls,
-	MediaUpload,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
@@ -17,15 +16,15 @@ import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
 import Range from "../../components/range/Range.js";
+import UAGImage from "../../components/image";
 
 import {
 	PanelBody,
 	SelectControl,
-	Button,
 	ToggleControl,
 	ExternalLink,
-	BaseControl
 } from '@wordpress/components';
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 let imageSizeOptions = [
 	{
@@ -109,6 +108,30 @@ const Settings = ( props ) => {
 		},
 	} = props;
 
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = (media) => {
+		if (!media || !media.url) {
+			setAttributes({ mainimage: null });
+			return;
+		}
+
+		if (!media.type || "image" !== media.type) {
+			setAttributes({ mainimage: null });
+			return;
+		}
+		
+		setAttributes({ mainimage: media });
+	};
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes({ mainimage: "" });
+	};
+
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
 		$.each( sizes, function ( index ) {
@@ -177,106 +200,33 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
+				title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Tag' ) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: headingTag,
+						label: "headingTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
-				<BaseControl
-					className="editor-bg-image-control"
-					label={__("Image", "ultimate-addons-for-gutenberg")}
-					id={__("Image", "ultimate-addons-for-gutenberg")}
-				>
-					<div className="uagb-bg-image">
-					<MediaUpload
-						title={__(
-							"Select Background Image",
-							"ultimate-addons-for-gutenberg"
-						)}
-						onSelect={ ( value ) =>
-							setAttributes( { mainimage: value } )
-						}
-						allowedTypes={["image"]}
-						value={mainimage}
-						render={ ( { open } ) => (
-							<Button isSecondary onClick={ open }>
-								{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" )
-									? 
-									__(
-										'Replace image',
-										'ultimate-addons-for-gutenberg'
-									)
-									:   
-									__(
-										'Select Image',
-										'ultimate-addons-for-gutenberg'
-									)
-								}
-							</Button>
-						) }
-					/>
-					</div>
-					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
-						<Button
-							className="uagb-rm-btn"
-							onClick={ () =>
-								setAttributes( { mainimage: null } )
-							}
-							isLink
-							isDestructive
-						>
-							{ __(
-								'Remove Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</Button>
-					) }
-					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
-						<h2>
-							{ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
-					) }
-					{ ( mainimage && mainimage !== "null" && mainimage.url !== "null" && mainimage.url !== "" ) && (
-						<SelectControl
-							label={ '' }
-							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) =>
-								setAttributes( { imgSize: value } )
-							}
-						/>
-					) }
-				</BaseControl>
+				<UAGImage
+					onSelectImage={onSelectImage}
+					backgroundImage={mainimage}
+					onRemoveImage={onRemoveImage}
+				/>
 				{mainimage &&
 				mainimage.url !== "null" &&
 				mainimage.url !== "" && (
