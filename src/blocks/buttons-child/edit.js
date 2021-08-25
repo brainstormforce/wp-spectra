@@ -7,7 +7,6 @@ import styling from './styling';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-import attributes from './attributes';
 
 const Settings = lazy( () =>
 	import(
