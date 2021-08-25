@@ -422,7 +422,7 @@ function styling( props ) {
 		},
 	};
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let styling_css = generateCSS( selectors, id );
 
