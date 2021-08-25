@@ -5342,27 +5342,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$boxShadowPositionCSS = '';
 			}
-			$vInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
-			$vInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
-			$vInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
-			$iconSize             = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
-			$buttonIconSize       = UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' );
-			$inputCSS             = array(
+			$paddingInputTop          = isset( $attr['paddingInputTop'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRight        = isset( $attr['paddingInputRight'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRight'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottom       = isset( $attr['paddingInputBottom'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottom'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeft         = isset( $attr['paddingInputLeft'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeft'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopTablet    = isset( $attr['paddingInputTopTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightTablet  = isset( $attr['paddingInputRightTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomTablet = isset( $attr['paddingInputBottomTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftTablet   = isset( $attr['paddingInputLeftTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopMobile    = isset( $attr['paddingInputTopMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightMobile  = isset( $attr['paddingInputRightMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomMobile = isset( $attr['paddingInputBottomMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftMobile   = isset( $attr['paddingInputLeftMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+
+			$iconSize       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+			$buttonIconSize = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
+			$inputCSS       = array(
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
 				'border'           => 0,
 				'border-radius'    => '0px',
 				'margin'           => 0,
 				'outline'          => 'unset',
-				'padding-top'      => $vInputPaddingDesktop,
-				'padding-bottom'   => $vInputPaddingDesktop,
-				'padding-right'    => $hInputPaddingDesktop,
-				'padding-left'     => $hInputPaddingDesktop,
+				'padding-top'      => $paddingInputTop,
+				'padding-bottom'   => $paddingInputBottom,
+				'padding-right'    => $paddingInputRight,
+				'padding-left'     => $paddingInputLeft,
 			);
-			$boxCSS               = array(
+			$boxCSS         = array(
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
@@ -5384,7 +5391,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .uagb-search-form__container .uagb-search-submit' => array(
-					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),
+					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], $attr['buttonWidthType'] ),
 					'padding' => 0,
 					'border'  => 0,
 				),
@@ -5429,9 +5436,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-search-form__container .uagb-wp-search-icon-wrap'] = array(
 					'background-color' => $attr['inputBgColor'],
-					'padding-top'      => $vInputPaddingDesktop,
-					'padding-bottom'   => $vInputPaddingDesktop,
-					'padding-left'     => $hInputPaddingDesktop,
+					'padding-top'      => $paddingInputTop,
+					'padding-bottom'   => $paddingInputBottom,
+					'padding-left'     => $paddingInputLeft,
 				);
 			}
 
@@ -5444,29 +5451,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => $vInputPaddingMobile,
-					'padding-bottom' => $vInputPaddingMobile,
-					'padding-right'  => $hInputPaddingMobile,
-					'padding-left'   => $hInputPaddingMobile,
+					'padding-top'    => $paddingInputTopMobile,
+					'padding-bottom' => $paddingInputBottomMobile,
+					'padding-right'  => $paddingInputRightMobile,
+					'padding-left'   => $paddingInputLeftMobile,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => $vInputPaddingMobile,
-					'padding-bottom' => $vInputPaddingMobile,
-					'padding-left'   => $hInputPaddingMobile,
+					'padding-top'    => $paddingInputTopMobile,
+					'padding-bottom' => $paddingInputBottomMobile,
+					'padding-left'   => $paddingInputLeftMobile,
 				),
 			);
 
 			$t_selectors        = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => $vInputPaddingTablet,
-					'padding-bottom' => $vInputPaddingTablet,
-					'padding-right'  => $hInputPaddingTablet,
-					'padding-left'   => $hInputPaddingTablet,
+					'padding-top'    => $paddingInputTopTablet,
+					'padding-bottom' => $paddingInputBottomTablet,
+					'padding-right'  => $paddingInputRightTablet,
+					'padding-left'   => $paddingInputLeftTablet,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => $vInputPaddingTablet,
-					'padding-bottom' => $vInputPaddingTablet,
-					'padding-left'   => $hInputPaddingTablet,
+					'padding-top'    => $paddingInputTopTablet,
+					'padding-bottom' => $paddingInputBottomTablet,
+					'padding-left'   => $paddingInputLeftTablet,
 				),
 			);
 			$combined_selectors = array(
