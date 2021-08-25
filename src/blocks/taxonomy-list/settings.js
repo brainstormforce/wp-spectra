@@ -279,7 +279,10 @@ const Settings = (props) => {
 			}
 		}
 		return (
-			<PanelBody>
+			<PanelBody
+				title={__("Layout", "ultimate-addons-for-gutenberg")}
+				initialOpen={true}
+			>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__("Heading Tag", "ultimate-addons-for-gutenberg")}
@@ -288,10 +291,6 @@ const Settings = (props) => {
 						label: "titleTag",
 					}}
 					options={[
-						{
-							value: "div",
-							label: __("Div", "ultimate-addons-for-gutenberg"),
-						},
 						{
 							value: "h1",
 							label: __("H1", "ultimate-addons-for-gutenberg"),
@@ -315,6 +314,10 @@ const Settings = (props) => {
 						{
 							value: "h6",
 							label: __("H6", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "div",
+							label: __("Div", "ultimate-addons-for-gutenberg"),
 						},
 					]}
 				/>
@@ -528,7 +531,7 @@ const Settings = (props) => {
 		return (
 			<PanelBody
 				title={__("Query", "ultimate-addons-for-gutenberg")}
-				initialOpen={true}
+				initialOpen={false}
 			>
 				<SelectControl
 					label={__("Post Type", "ultimate-addons-for-gutenberg")}
