@@ -22,6 +22,16 @@
 			> .components-base-control:last-child {
 				margin-bottom: 0;
 			}
+			/* Gutenberg DatePicker CSS */
+			.components-datetime {
+				.components-datetime__buttons {
+					margin:10px 0 10px 0;
+					/* Unset box-shadow */
+					.components-button:focus:not(:disabled){
+						box-shadow:unset;
+					}
+				}
+			} 
 		}
 	}
 }
