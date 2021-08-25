@@ -18,6 +18,7 @@ import { __ } from "@wordpress/i18n";
 import Border from "../../components/border";
 import { select } from "@wordpress/data";
 import UAGIconPicker from "../../components/icon-picker";
+import UAGTabsControl from "../../components/tabs";
 
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -489,21 +490,48 @@ const Settings = (props) => {
 						label: "questionLineHeightTablet",
 					}}
 				/>
-				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={questionTextColor}
-					onColorChange={(value) =>
-						setAttributes({ questionTextColor: value })
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "active",
+							title: __(
+								"Active/Hover",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={
+						<AdvancedPopColorControl
+							label={__(
+								"Text Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={questionTextColor}
+							onColorChange={(value) =>
+								setAttributes({ questionTextColor: value })
+							}
+						/>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						"Text Active/Hover Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={questionTextActiveColor}
-					onColorChange={(value) =>
-						setAttributes({ questionTextActiveColor: value })
+					active={
+						<AdvancedPopColorControl
+							label={__(
+								"Text Color",
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={questionTextActiveColor}
+							onColorChange={(value) =>
+								setAttributes({
+									questionTextActiveColor: value,
+								})
+							}
+						/>
 					}
 				/>
 				<SpacingControl
@@ -825,6 +853,7 @@ const Settings = (props) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
