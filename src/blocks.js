@@ -40,7 +40,7 @@ import "./blocks/call-to-action/block.js";
 // import "./blocks/faq-child/block.js";
 import "./blocks/inline-notice/block.js";
 // import "./blocks/wp-search/block.js";
-// import "./blocks/review/block.js";
+import "./blocks/review/block.js";
 // import "./blocks/taxonomy-list/block.js";
 // import "./blocks/forms/block.js";
 // import "./blocks/forms/child-blocks/name/block.js";

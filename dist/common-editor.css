@@ -6,6 +6,10 @@
 */
 /* ------------------------------------------------------------------------------------------------*/
 /* Gutenberg Reset CSS */
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body {
+  /* Gutenberg DatePicker CSS */
+}
+
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body > .components-base-control {
   margin-bottom: 24px;
 }
@@ -17,6 +21,15 @@
 
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body > .components-base-control:last-child {
   margin-bottom: 0;
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-datetime .components-datetime__buttons {
+  margin: 10px 0 10px 0;
+  /* Unset box-shadow */
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-datetime .components-datetime__buttons .components-button:focus:not(:disabled) {
+  box-shadow: unset;
 }
 
 /* Reset CSS*/
