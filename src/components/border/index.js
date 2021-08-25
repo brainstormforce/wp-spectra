@@ -6,6 +6,8 @@ import { __ } from "@wordpress/i18n";
 import Range from "../../components/range/Range.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import { SelectControl } from "@wordpress/components";
+import UAGTabsControl from "../../components/tabs";
+
 import styles from "./editor.lazy.scss";
 
 import React, { useLayoutEffect } from "react";
@@ -25,6 +27,24 @@ const Border = (props) => {
 		borderHoverColor,
 	} = props;
 
+	let tabOutputNormal = (
+		<AdvancedPopColorControl
+			label={__("Color", "ultimate-addons-for-gutenberg")}
+			colorValue={borderColor.value}
+			onColorChange={(value) =>
+				setAttributes({ [borderColor.label]: value })
+			}
+		/>
+	);
+	let tabOutputHover = (
+		<AdvancedPopColorControl
+			label={__("Color", "ultimate-addons-for-gutenberg")}
+			colorValue={borderHoverColor.value}
+			onColorChange={(value) =>
+				setAttributes({ [borderHoverColor.label]: value })
+			}
+		/>
+	);
 	let advancedControls = (
 		<>
 			<div className="uag-border-type">
@@ -137,26 +157,24 @@ const Border = (props) => {
 				</div>
 			)}
 			{"none" !== borderStyle.value && (
-				<div className="uag-border-color">
-					<AdvancedPopColorControl
-						label={borderColor.title}
-						colorValue={borderColor.value}
-						onColorChange={(value) =>
-							setAttributes({ [borderColor.label]: value })
-						}
-					/>
-				</div>
-			)}
-			{"none" !== borderStyle.value && (
-				<div className="uag-border-hv-color">
-					<AdvancedPopColorControl
-						label={borderHoverColor.title}
-						colorValue={borderHoverColor.value}
-						onColorChange={(value) =>
-							setAttributes({ [borderHoverColor.label]: value })
-						}
-					/>
-				</div>
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __("Hover", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+					normal={tabOutputNormal}
+					hover={tabOutputHover}
+					disableBottomSeparator={props.disableBottomSeparator}
+				/>
 			)}
 		</>
 	);
