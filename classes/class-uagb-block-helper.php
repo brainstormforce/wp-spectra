@@ -5497,6 +5497,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
+			$top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentTopPadding'] : $attr['contentPadding'];
+			$bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentBottomPadding'] : $attr['contentPadding'];
+			$left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentLeftPadding'] : $attr['contentPadding'];
+			$right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentRightPadding'] : $attr['contentPadding'];
+
+			$top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentTopPaddingMobile'] : $attr['contentPaddingMobile'];
+			$bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentBottomPaddingMobile'] : $attr['contentPaddingMobile'];
+			$left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentLeftPaddingMobile'] : $attr['contentPaddingMobile'];
+			$right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentRightPaddingMobile'] : $attr['contentPaddingMobile'];
+
+			$top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentTopPaddingTablet'] : $attr['contentPaddingTablet'];
+			$bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentBottomPaddingTablet'] : $attr['contentPaddingTablet'];
+			$left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentLeftPaddingTablet'] : $attr['contentPaddingTablet'];
+			$right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentRightPaddingTablet'] : $attr['contentPaddingTablet'];
+
 			$boxShadowPositionCSS = $attr['boxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -5512,7 +5527,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				),
 				' .uagb-layout-grid .uagb-taxomony-box'   => array(
-					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
+					'padding-left'     => UAGB_Helper::get_css_value( $left_padding, $attr['contentPaddingUnit'] ),
+					'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['contentPaddingUnit'] ),
+					'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['contentPaddingUnit'] ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['contentPaddingUnit'] ),
 					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 					'background-color' => $attr['bgColor'],
 					'text-align'       => $attr['alignment'],
@@ -5549,18 +5567,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'none' !== $attr['seperatorStyle'] ) {
-				$selectors[' .uagb-layout-list .uagb-tax-separator'] = array(
+				$selectors[' .uagb-layout-list .uagb-tax-separator']       = array(
 					'border-top-color' => $attr['seperatorColor'],
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
 				);
+				$selectors[' .uagb-layout-list .uagb-tax-separator:hover'] = array(
+					'border-top-color' => $attr['seperatorHoverColor'],
+				);
 			}
 
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[' .uagb-taxomony-box'] = array(
+				$selectors[' .uagb-taxomony-box']       = array(
 					'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
 					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				);
+				$selectors[' .uagb-taxomony-box:hover'] = array(
+					'border-color' => $attr['borderHoverColor'],
 				);
 			}
 
@@ -5569,7 +5593,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
 				),
 				' .uagb-layout-grid .uagb-taxomony-box' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 				),
 			);
 
@@ -5578,7 +5605,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
 				),
 				' .uagb-layout-grid .uagb-taxomony-box' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 				),
 			);
 
