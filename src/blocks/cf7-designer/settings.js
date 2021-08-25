@@ -399,7 +399,7 @@ const Settings = (props) => {
 				}}
 			/>
 			<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
+				label={__("Label Color", "ultimate-addons-for-gutenberg")}
 				colorValue={fieldLabelColor}
 				onColorChange={(value) =>
 					setAttributes({ fieldLabelColor: value })
@@ -455,38 +455,19 @@ const Settings = (props) => {
 					label: "inputLineHeightTablet",
 				}}
 			/>
-			<p className="uagb-setting-label">
-				{__("Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: fieldInputColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={fieldInputColor}
-				onChange={(colorValue) =>
-					setAttributes({ fieldInputColor: colorValue })
+			<AdvancedPopColorControl
+				label={__("Input Color", "ultimate-addons-for-gutenberg")}
+				colorValue={fieldInputColor}
+				onColorChange={(value) =>
+					setAttributes({ fieldInputColor: value })
 				}
-				allowReset
 			/>
-			<hr className="uagb-editor__separator" />
-			<p className="uagb-setting-label">
-				{__("Field Background Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: fieldBgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={fieldBgColor}
-				onChange={(colorValue) =>
-					setAttributes({ fieldBgColor: colorValue })
+			<AdvancedPopColorControl
+				label={__("Background Color", "ultimate-addons-for-gutenberg")}
+				colorValue={fieldBgColor}
+				onColorChange={(value) =>
+					setAttributes({ fieldBgColor: value })
 				}
-				allowReset
 			/>
 		</PanelBody>
 	);
@@ -508,26 +489,20 @@ const Settings = (props) => {
 			/>
 			{enableOveride && (
 				<>
-					<RangeControl
+					<Range
 						label={__("Size", "ultimate-addons-for-gutenberg")}
+						setAttributes={setAttributes}
 						value={radioCheckSize}
 						onChange={(value) =>
 							setAttributes({ radioCheckSize: value })
 						}
 						min={0}
 						max={50}
-						allowReset
+						displayUnit={false}
 					/>
-					<hr className="uagb-editor__separator" />
-					<h2>
-						{__(
-							"Radio & Checkbox Label",
-							"ultimate-addons-for-gutenberg"
-						)}
-					</h2>
 					<TypographyControl
 						label={__(
-							"Typography",
+							"Label Typography",
 							"ultimate-addons-for-gutenberg"
 						)}
 						attributes={attributes}
@@ -581,67 +556,36 @@ const Settings = (props) => {
 							label: "radioCheckLineHeightTablet",
 						}}
 					/>
-					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">
-						{__("Label Color", "ultimate-addons-for-gutenberg")}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{
-									backgroundColor: radioCheckLableColor,
-								}}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={radioCheckLableColor}
-						onChange={(colorValue) =>
-							setAttributes({
-								radioCheckLableColor: colorValue,
-							})
+					<AdvancedPopColorControl
+						label={__(
+							"Label Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={radioCheckLableColor}
+						onColorChange={(value) =>
+							setAttributes({ radioCheckLableColor: value })
 						}
-						allowReset
 					/>
-					<p className="uagb-setting-label">
-						{__(
+					<AdvancedPopColorControl
+						label={__(
 							"Background Color",
 							"ultimate-addons-for-gutenberg"
 						)}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{ backgroundColor: radioCheckBgColor }}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={radioCheckBgColor}
-						onChange={(colorValue) =>
-							setAttributes({ radioCheckBgColor: colorValue })
+						colorValue={radioCheckBgColor}
+						onColorChange={(value) =>
+							setAttributes({ radioCheckBgColor: value })
 						}
-						allowReset
 					/>
-					<p className="uagb-setting-label">
-						{__("Selected Color", "ultimate-addons-for-gutenberg")}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{
-									backgroundColor: radioCheckSelectColor,
-								}}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={radioCheckSelectColor}
-						onChange={(colorValue) =>
-							setAttributes({
-								radioCheckSelectColor: colorValue,
-							})
+					<AdvancedPopColorControl
+						label={__(
+							"Selected Color",
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={radioCheckSelectColor}
+						onColorChange={(value) =>
+							setAttributes({ radioCheckSelectColor: value })
 						}
-						allowReset
 					/>
-
 					{fieldBorderStyle !== "none" && (
 						<>
 							<hr className="uagb-editor__separator" />
