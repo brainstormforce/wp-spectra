@@ -891,22 +891,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'paddingTop'              => array(
-					'type'    => 'number',
-					'default' => 20,
-				),
-				'paddingBottom'           => array(
-					'type'    => 'number',
-					'default' => 20,
-				),
-				'paddingLeft'             => array(
-					'type'    => 'number',
-					'default' => 20,
-				),
-				'paddingRight'            => array(
-					'type'    => 'number',
-					'default' => 20,
-				),
 				'paddingTopTablet'        => array(
 					'type' => 'number',
 				),
@@ -918,21 +902,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'paddingLeftTablet'       => array(
 					'type' => 'number',
-				),
-				'paddingTopMobile'        => array(
-					'type' => 'number',
-				),
-				'paddingRightMobile'      => array(
-					'type' => 'number',
-				),
-				'paddingBottomMobile'     => array(
-					'type' => 'number',
-				),
-				'paddingLeftMobile'       => array(
-					'type' => 'number',
-				),
-				'paddingUnit'             => array(
-					'type' => 'string',
 				),
 				'mobilePaddingUnit'       => array(
 					'type' => 'string',

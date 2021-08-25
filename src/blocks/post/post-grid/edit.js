@@ -39,15 +39,10 @@ const PostGridComponent = ( props ) => {
 			paddingBtnLeft,
 			contentPadding,
 			contentPaddingMobile,
-			contentPaddingTablet,
 			paddingTop,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
-			paddingTopTablet,
-			paddingRightTablet,
-			paddingBottomTablet,
-			paddingLeftTablet,
 			paddingTopMobile,
 			paddingRightMobile,
 			paddingBottomMobile,
@@ -84,20 +79,7 @@ const PostGridComponent = ( props ) => {
 				props.setAttributes({ paddingLeft: contentPadding });
 			}
 		}
-		if (contentPaddingTablet) {
-			if (!paddingTopTablet) {
-				props.setAttributes({ paddingTopTablet: contentPaddingTablet });
-			}
-			if (!paddingBottomTablet) {
-				props.setAttributes({ paddingBottomTablet: contentPaddingTablet });
-			}
-			if (!paddingRightTablet) {
-				props.setAttributes({ paddingRightTablet: contentPaddingTablet });
-			}
-			if (!paddingLeftTablet) {
-				props.setAttributes({ paddingLeftTablet: contentPaddingTablet });
-			}
-		}
+		
 		if (contentPaddingMobile) {
 			if (!paddingTopMobile) {
 				props.setAttributes({ paddingTopMobile: contentPaddingMobile });
