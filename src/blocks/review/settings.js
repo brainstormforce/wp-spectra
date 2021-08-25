@@ -343,58 +343,26 @@ const Settings = (props) => {
 				title={__("Star", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
-				<UAGTabsControl
-					tabs={[
-						{
-							name: "active",
-							title: __(
-								"Active",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							name: "inactive",
-							title: __(
-								"Inactive",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							name: "outline",
-							title: __(
-								"Outline",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-					active={
-						<AdvancedPopColorControl
-							label={__("Color", "ultimate-addons-for-gutenberg")}
-							colorValue={starColor}
-							onColorChange={(value) =>
-								setAttributes({ starColor: value })
-							}
-						/>
+				<AdvancedPopColorControl
+					label={__("Active Color", "ultimate-addons-for-gutenberg")}
+					colorValue={starColor}
+					onColorChange={(value) =>
+						setAttributes({ starColor: value })
 					}
-					outline={
-						<AdvancedPopColorControl
-							label={__("Color", "ultimate-addons-for-gutenberg")}
-							colorValue={starActiveColor}
-							onColorChange={(value) =>
-								setAttributes({ starActiveColor: value })
-							}
-						/>
+				/>
+				<AdvancedPopColorControl
+					label={__("Inactive Color", "ultimate-addons-for-gutenberg")}
+					colorValue={starActiveColor}
+					onColorChange={(value) =>
+						setAttributes({ starActiveColor: value })
 					}
-					inactive={
-						<AdvancedPopColorControl
-							label={__("Color", "ultimate-addons-for-gutenberg")}
-							colorValue={starOutlineColor}
-							onColorChange={(value) =>
-								setAttributes({ starOutlineColor: value })
-							}
-						/>
+				/>
+				<AdvancedPopColorControl
+					label={__("Outline Color", "ultimate-addons-for-gutenberg")}
+					colorValue={starOutlineColor}
+					onColorChange={(value) =>
+						setAttributes({ starOutlineColor: value })
 					}
-					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
