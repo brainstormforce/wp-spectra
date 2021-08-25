@@ -119,9 +119,9 @@ const ResponsiveSelectControl = (props) => {
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
 						{props.label && (
-							<label className={"uagb-range-control__label"}>
+							<span className="uag-control-label">
 								{props.label}
-							</label>
+							</span>
 						)}
 						{!displayResponsive && (
 							<Button

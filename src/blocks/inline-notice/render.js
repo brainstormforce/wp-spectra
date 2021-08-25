@@ -66,7 +66,7 @@ const Render = ( props ) => {
 				tagName="div"
 				multiline="p"
 				placeholder={ __(
-					'Add notice text…',
+					'Add Content…',
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ noticeContent }

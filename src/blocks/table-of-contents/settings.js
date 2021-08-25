@@ -1,9 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import renderSVG from '@Controls/renderIcon';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
+import UAGIconPicker from "../../components/icon-picker";
+import renderSVG from '@Controls/renderIcon';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -11,8 +11,11 @@ import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import MultiButtonsControl from "../../components/multi-buttons-control";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	BlockControls,
@@ -133,22 +136,6 @@ const Settings = ( props ) => {
 		headingAlignment,
 	} = attributes;
 
-	const getIcon = ( value ) => {
-		props.setAttributes( { icon: value } );
-	};
-
-	const iconProps = {
-		icons: wp.UAGBSvgIcons,
-		value: icon,
-		onChange: getIcon,
-		isMulti: false,
-		renderFunc: renderSVG,
-		noSelectedPlaceholder: __(
-			'Select Icon',
-			'ultimate-addons-for-gutenberg'
-		),
-	};
-
 	let loadGFonts;
 	let headingloadGFonts;
 
@@ -228,7 +215,7 @@ const Settings = ( props ) => {
 					) }
 					checked={ smoothScroll }
 					help={ __(
-						'This will be in Action only in Front End.',
+						'This will be in action only in Front End.',
 						'ultimate-addons-for-gutenberg'
 					) }
 					onChange={ () =>
@@ -274,7 +261,7 @@ const Settings = ( props ) => {
 					) }
 					checked={ scrollToTop }
 					help={ __(
-						'This will add a Scroll to Top arrow at the bottom of page.',
+						'This will add a scroll to top arrow at the bottom of page.',
 						'ultimate-addons-for-gutenberg'
 					) }
 					onChange={ () =>
@@ -521,7 +508,11 @@ const Settings = ( props ) => {
 							} )
 						}
 					/>
-					<FontIconPicker { ...iconProps } />
+					<UAGIconPicker
+						label={__("Icon", "ultimate-addons-for-gutenberg")}
+						value={icon}
+						onChange={(value) => setAttributes({ icon: value })}
+					/>
 					<Range
 						label={__(
 							'Icon Size',
@@ -675,20 +666,42 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
-				colorValue={linkColor ? linkColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ linkColor: value })
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "normal",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "hover",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				normal={
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={linkColor ? linkColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ linkColor: value })
+						}
+					/>
+				}
+				hover={
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={linkHoverColor ? linkHoverColor : ""}
+						onColorChange={(value) =>
+							setAttributes({ linkHoverColor: value })
+						}
+					/>
 				}
 			/>
-			<AdvancedPopColorControl
-				label={__("Hover Color", "ultimate-addons-for-gutenberg")}
-				colorValue={linkHoverColor ? linkHoverColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ linkHoverColor: value })
-				}
-			/>	
 			<TypographyControl
 					label={ __(
 						'Typography',
@@ -841,6 +854,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		)
@@ -1016,13 +1030,13 @@ const Settings = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 				{ getGeneralPanelBody() }
 				{ getScrollPanelBody() }
 				{ getContent() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ getTitle() }
 				{ getContentStyle() }
 				{ ! disableBullets && ( getBulletStyle() ) }
@@ -1032,7 +1046,7 @@ const Settings = ( props ) => {
 				{ getBorder() }
 				{ getSpacing() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 			{ loadGFonts }
