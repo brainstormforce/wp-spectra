@@ -6,6 +6,10 @@
 */
 /* ------------------------------------------------------------------------------------------------*/
 /* Gutenberg Reset CSS */
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body {
+  /* Gutenberg DatePicker CSS */
+}
+
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body > .components-base-control {
   margin-bottom: 24px;
 }
@@ -17,6 +21,15 @@
 
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body > .components-base-control:last-child {
   margin-bottom: 0;
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-datetime .components-datetime__buttons {
+  margin: 10px 0 10px 0;
+  /* Unset box-shadow */
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-datetime .components-datetime__buttons .components-button:focus:not(:disabled) {
+  box-shadow: unset;
 }
 
 /* Reset CSS*/
@@ -44,6 +57,21 @@
 .uagb-extention-tab label {
   font-size: 13px;
   line-height: 1.4;
+}
+
+/* Panel Body CSS*/
+.uagb-inspector-tab .components-panel__body-title .components-button,
+[data-uagb-tab] .components-panel__body-title .components-button {
+  font-size: 14px;
+}
+
+/* GB Select Control CSS*/
+.uagb-inspector-tab .components-select-control {
+  height: auto;
+}
+
+.uagb-inspector-tab .components-select-control .components-input-control__label {
+  padding-bottom: 8px !important;
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
@@ -78,7 +106,7 @@
   background: transparent;
   color: #999;
   display: inline-block;
-  height: 22px;
+  height: 16px;
   width: 22px;
   margin-right: 3px;
 }
@@ -86,7 +114,6 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
   box-shadow: none;
-  background-color: #bfdeee;
   color: #007cba;
   box-shadow: none;
   border-radius: 100%;
@@ -452,7 +479,7 @@ button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 
 .uagb-reset .dashicons-image-rotate {
   width: 12px;
-  height: 12px;
+  height: 11px;
   font-size: 9px;
 }
 
@@ -486,10 +513,6 @@ label.uagb-border-label {
 }
 
 /* Common CSS for border ens here */
-.uagb-inspector-tab .components-select-control {
-  height: auto;
-}
-
 button.components-button.uagb-review-select-btn.is-secondary {
   margin-bottom: 10px;
 }
@@ -501,7 +524,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-control__header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .components-panel__body .uagb-control__label {
@@ -552,7 +575,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 .uag-responsive-common-button {
   box-shadow: none;
-  background-color: #bfdeee;
   color: #007cba;
   border-radius: 100%;
   border: 0;
@@ -560,7 +582,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
   outline: 0;
   font-size: 8px;
   display: inline-block;
-  height: 22px;
+  height: 16px;
   width: 22px;
   cursor: pointer;
   font-weight: 500;

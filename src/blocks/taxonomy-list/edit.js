@@ -29,6 +29,68 @@ const UAGBTaxonomyList = ( props ) => {
 			'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			contentPadding,
+			contentPaddingMobile,
+			contentPaddingTablet,
+			contentTopPadding,
+			contentRightPadding,
+			contentBottomPadding,
+			contentLeftPadding,
+			contentTopPaddingTablet,
+			contentRightPaddingTablet,
+			contentBottomPaddingTablet,
+			contentLeftPaddingTablet,
+			contentTopPaddingMobile,
+			contentRightPaddingMobile,
+			contentBottomPaddingMobile,
+			contentLeftPaddingMobile,
+		} = props.attributes;
+
+		if (contentPadding) {
+			if (!contentTopPadding) {
+				props.setAttributes({ contentTopPadding: contentPadding });
+			}
+			if (!contentBottomPadding) {
+				props.setAttributes({ contentBottomPadding: contentPadding });
+			}
+			if (!contentLeftPadding) {
+				props.setAttributes({ contentLeftPadding: contentPadding });
+			}
+			if (!contentRightPadding) {
+				props.setAttributes({ contentRightPadding: contentPadding });
+			}
+		}
+		if (contentPaddingMobile) {
+			if (!contentTopPaddingMobile) {
+				props.setAttributes({ contentTopPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentBottomPaddingMobile) {
+				props.setAttributes({ contentBottomPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentLeftPaddingMobile) {
+				props.setAttributes({ contentLeftPaddingMobile: contentPaddingMobile });
+			}
+			if (!contentRightPaddingMobile) {
+				props.setAttributes({ contentRightPaddingMobile: contentPaddingMobile });
+			}
+		}
+		if (contentPaddingTablet) {
+			if (!contentTopPaddingTablet) {
+				props.setAttributes({ contentTopPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentBottomPaddingTablet) {
+				props.setAttributes({ contentBottomPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentLeftPaddingTablet) {
+				props.setAttributes({ contentLeftPaddingTablet: contentPaddingTablet });
+			}
+			if (!contentRightPaddingTablet) {
+				props.setAttributes({ contentRightPaddingTablet: contentPaddingTablet });
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {

@@ -9,7 +9,9 @@ import Border from "../../components/border";
 import SpacingControl from "../../components/spacing-control";
 import { __ } from '@wordpress/i18n';
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import ResponsiveSlider from "../../components/responsive-slider";
 
 import {
@@ -372,6 +374,7 @@ const Settings = ( props ) => {
 						"ultimate-addons-for-gutenberg"
 					),
 				}}
+				disableBottomSeparator={true}
 			/>
 			</PanelBody>
 		);
@@ -380,16 +383,16 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 				{ layoutSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ backgroundSettings() }
 				{ borderSettings() }
 				{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>

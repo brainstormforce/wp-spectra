@@ -12,8 +12,11 @@ import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import Range from "../../components/range/Range.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGTabsControl from "../../components/tabs";
 
 import {
 	BlockControls,
@@ -26,7 +29,6 @@ import {
 	SelectControl,
 	RangeControl,
 	ToggleControl,
-	TabPanel,
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -967,35 +969,27 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<TabPanel
-					className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
+				<UAGTabsControl
+					tabs={[
 						{
-							name: 'top',
-							title: __( 'Top', 'ultimate-addons-for-gutenberg' ),
-							className: 'uagb-top-tab',
-						},
-						{
-							name: 'bottom',
+							name: "top",
 							title: __(
-								'Bottom',
-								'ultimate-addons-for-gutenberg'
+								"Top",
+								"ultimate-addons-for-gutenberg"
 							),
-							className: 'uagb-bottom-tab',
 						},
-					] }
-				>
-					{ ( tabName ) => {
-						let tabout;
-						if ( 'bottom' === tabName.name ) {
-							tabout = bottomSettings;
-						} else {
-							tabout = topSettings;
-						}
-						return <div>{ tabout }</div>;
-					} }
-				</TabPanel>
+						{
+							name: "bottom",
+							title: __(
+								"Bottom",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					top={topSettings}
+					bottom={bottomSettings}
+					disableBottomSeparator={true}
+				/>
 			</PanelBody>
 		);
 	};
@@ -1111,17 +1105,17 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControlSettings() }
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "style", "advance"]}>
-				<InspectorTab key={"general"}>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
 				{ layoutSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ shapeDividersSettings() }
 				{ backgroundSettings() }
 				{ borderSettings() }
 				{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 		</Suspense>
