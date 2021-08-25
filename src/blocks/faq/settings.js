@@ -297,7 +297,6 @@ const Settings = (props) => {
 						},
 					]}
 				/>
-				<hr className="uagb-editor__separator" />
 				{"grid" === layout && (
 					<ResponsiveSlider
 						label={__("Columns", "ultimate-addons-for-gutenberg")}
@@ -375,15 +374,17 @@ const Settings = (props) => {
 						showIcons={true}
 					/>
 				)}
-				{"accordion" === layout && faqIconSettings()}
 			</PanelBody>
 		);
 	};
 
 	const faqIconSettings = () => {
 		return (
-			<>
-				<h2> {__("Icon", "ultimate-addons-for-gutenberg")} </h2>
+			<PanelBody
+				title={__("Icon", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+				className="uagb__url-panel-body"
+			>
 				<UAGIconPicker
 					label={__("Expand", "ultimate-addons-for-gutenberg")}
 					value={icon}
@@ -427,7 +428,7 @@ const Settings = (props) => {
 					]}
 					showIcons={true}
 				/>
-			</>
+			</PanelBody>
 		);
 	};
 	const faqQuestionSettings = () => {
@@ -976,6 +977,7 @@ const Settings = (props) => {
 				<InspectorTabs>
 					<InspectorTab key={"general"}>
 						{faqGeneralSettings()}
+						{"accordion" === layout && faqIconSettings()}
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						{commonStyle()}
