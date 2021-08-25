@@ -276,6 +276,119 @@ const attributes = {
 		type: 'number',
 		default: '',
 	},
+	imageWidthType:{
+		type: 'string'
+	},
+	seperatorWidthType:{
+		type: 'string'
+	},
+	rowGapType:{
+		type: 'string'
+	},
+	columnGapType:{
+		type: 'string'
+	},
+	titleSpaceType:{
+		type: 'string'
+	},
+	contentPaddingTopTablet:{
+		type: 'number'
+	},
+	contentPaddingRightTablet:{
+		type: 'number'
+	},
+	contentPaddingBottomTablet:{
+		type: 'number'
+	},
+	contentPaddingLeftTablet:{
+		type: 'number'
+	},
+	contentPaddingTopMobile:{
+		type: 'number'
+	},
+	contentPaddingRightMobile:{
+		type: 'number'
+	},
+	contentPaddingBottomMobile:{
+		type: 'number'
+	},
+	contentPaddingLeftMobile:{
+		type: 'number'
+	},
+	contentPaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	contentMobilePaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	contentTabletPaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	contentSpacingLink:{
+		type: "boolean",
+		default: false,
+	},
+	imgPaddingTopTablet:{
+		type: 'number'
+	},
+	imgPaddingRightTablet:{
+		type: 'number'
+	},
+	imgPaddingBottomTablet:{
+		type: 'number'
+	},
+	imgPaddingLeftTablet:{
+		type: 'number'
+	},
+	imgPaddingTopMobile:{
+		type: 'number'
+	},
+	imgPaddingRightMobile:{
+		type: 'number'
+	},
+	imgPaddingBottomMobile:{
+		type: 'number'
+	},
+	imgPaddingLeftMobile:{
+		type: 'number'
+	},
+	imgPaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	imgMobilePaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	imgTabletPaddingUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	imgSpacingLink:{
+		type: "boolean",
+		default: false,
+	},
+	titleTransform:{
+		type: 'string'
+	},
+	titleDecoration:{
+		type: 'string'
+	},
+	descTransform:{
+		type: 'string'
+	},
+	descDecoration:{
+		type: 'string'
+	},
+	priceTransform:{
+		type: 'string'
+	},
+	priceDecoration:{
+		type: 'string'
+	},
 };
 
 export default attributes;

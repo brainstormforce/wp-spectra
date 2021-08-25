@@ -101,26 +101,32 @@ const Settings = (props) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Content Width",
+						'Stack on',
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
-						value: contentWidth,
-						label: "contentWidth",
+						value: stack,
+						label: "stack",
 					}}
 					className="uagb-multi-button-alignment-control"
 					options={[
 						{
-							value: "boxed",
-							label: 'Boxed'
+							value: "none",
+							label: 'None'
 
 						},
 						{
-							value: "full_width",
-							label: 'Full Width',
+							value: "tablet",
+							label: 'Tablet',
 						},
-
+						{
+							value: "mobile",
+							label: 'Mobile',
+						},
 					]}
+					help={ __(
+						'Note: Choose on what breakpoint the Images will stack.'
+					) }
 					showIcons={false}
 				/>
 				{contentWidth == "boxed" && (

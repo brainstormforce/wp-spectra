@@ -7,8 +7,11 @@ import {
 	InspectorControls,
 	MediaUpload,
 } from '@wordpress/block-editor';
-
-import { PanelBody, BaseControl, Button } from '@wordpress/components';
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
+import { BaseControl, Button, PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -58,49 +61,6 @@ const Settings = ( props ) => {
 		} );
 	};
 
-	const inspectControl = () => {
-		return (
-			<InspectorControls>
-				<p className="uagb-settings-notice">
-					{ __(
-						'For the common styling options please select the Parent Block of this Price List Item.'
-					) }
-				</p>
-				<PanelBody title={ __( 'Image' ) } initialOpen={ true }>
-					<BaseControl
-						id="Image"
-						className="editor-bg-image-control"
-						label={ __( '' ) }
-					>
-						<MediaUpload
-							title={ __( 'Select Image' ) }
-							onSelect={ ( media ) => {
-								onSelectRestImage( media );
-							} }
-							allowedTypes={ [ 'image' ] }
-							value={ image }
-							render={ ( { open } ) => (
-								<Button isSecondary onClick={ open }>
-									{ getImageName( image ) }
-								</Button>
-							) }
-						/>
-						{ image && (
-							<Button
-								className="uagb-rm-btn"
-								onClick={ onRemoveRestImage }
-								isLink
-								isDestructive
-							>
-								{ __( 'Remove Image' ) }
-							</Button>
-						) }
-					</BaseControl>
-				</PanelBody>
-			</InspectorControls>
-		);
-	};
-
 	const blockControls = () => {
 		return (
 			<>
@@ -121,7 +81,51 @@ const Settings = ( props ) => {
 	return (
 		<>
 			{ blockControls() }
-			{ inspectControl() }
+			<InspectorControls>
+				<InspectorTabs tabs={["general", "advance"]}>
+					<InspectorTab {...UAGTabs.general}>
+						<PanelBody
+							initialOpen = {true}
+						>
+							<p className="uagb-settings-notice">
+								{ __(
+									'For the common styling options please select the Parent Block of this Price List Item.'
+								) }
+							</p>
+							<BaseControl
+								id="Image"
+								className="editor-bg-image-control"
+								label={ __( 'Image' ) }
+							>
+							<MediaUpload
+								title={ __( 'Select Image' ) }
+								onSelect={ ( media ) => {
+									onSelectRestImage( media );
+								} }
+								allowedTypes={ [ 'image' ] }
+								value={ image }
+								render={ ( { open } ) => (
+									<Button isSecondary onClick={ open }>
+										{ getImageName( image ) }
+									</Button>
+								) }
+							/>
+							{ image && (
+								<Button
+									className="uagb-rm-btn"
+									onClick={ onRemoveRestImage }
+									isLink
+									isDestructive
+								>
+									{ __( 'Remove Image' ) }
+								</Button>
+							) }
+						</BaseControl>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				</InspectorTabs>
+			</InspectorControls>
 		</>
 	);
 };
