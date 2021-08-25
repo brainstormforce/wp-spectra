@@ -9,13 +9,23 @@ const ResponsiveSlider = (props) => {
 	}, []);
 
 	const output = {};
-	
-	let maxDesk = ( undefined !== props.data.desktop.max ) ? props.data.desktop.max : props.max;
-	let maxTab = ( undefined !== props.data.tablet.max ) ? props.data.tablet.max : props.max;
-	let maxMob = ( undefined !== props.data.mobile.max ) ? props.data.mobile.max : props.max;
-	let minDesk = ( undefined !== props.data.desktop.min ) ? props.data.desktop.min : props.min;
-	let minTab = ( undefined !== props.data.tablet.min ) ? props.data.tablet.min : props.min;
-	let minMob = ( undefined !== props.data.mobile.min ) ? props.data.mobile.min : props.min;
+
+	let maxDesk =
+		undefined !== props.data.desktop.max
+			? props.data.desktop.max
+			: props.max;
+	let maxTab =
+		undefined !== props.data.tablet.max ? props.data.tablet.max : props.max;
+	let maxMob =
+		undefined !== props.data.mobile.max ? props.data.mobile.max : props.max;
+	let minDesk =
+		undefined !== props.data.desktop.min
+			? props.data.desktop.min
+			: props.min;
+	let minTab =
+		undefined !== props.data.tablet.min ? props.data.tablet.min : props.min;
+	let minMob =
+		undefined !== props.data.mobile.min ? props.data.mobile.min : props.min;
 
 	output.Desktop = (
 		<>
