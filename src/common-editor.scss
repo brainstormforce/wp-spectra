@@ -22,6 +22,16 @@
 			> .components-base-control:last-child {
 				margin-bottom: 0;
 			}
+			/* Gutenberg DatePicker CSS */
+			.components-datetime {
+				.components-datetime__buttons {
+					margin:10px 0 10px 0;
+					/* Unset box-shadow */
+					.components-button:focus:not(:disabled){
+						box-shadow:unset;
+					}
+				}
+			} 
 		}
 	}
 }
@@ -96,7 +106,7 @@
 	background: transparent;
 	color: #999;
 	display: inline-block;
-	height: 22px;
+	height: 16px;
 	width: 22px;
 	margin-right: 3px;
 }
@@ -463,7 +473,7 @@ button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 
 .uagb-reset .dashicons-image-rotate {
 	width: 12px;
-	height: 12px;
+	height: 11px;
 	font-size: 9px;
 }
 .uagb-reset {
@@ -505,7 +515,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .uagb-control__header {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 }
 .components-panel__body .uagb-control__label {
 	margin-bottom: 0;
@@ -555,7 +565,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	outline: 0;
 	font-size: 8px;
 	display: inline-block;
-	height: 22px;
+	height: 16px;
 	width: 22px;
 	cursor: pointer;
 	font-weight: 500;

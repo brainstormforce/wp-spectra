@@ -251,49 +251,26 @@ const Settings = ( props ) => {
 					]}
 					showIcons={true}
 				/>
-				<SelectControl
-					label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ titleTag }
-					onChange={ ( value ) =>
-						setAttributes( { titleTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'span',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'p',
-							label: __( 'p', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Title Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: titleTag,
+						label: "titleTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+						{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
+						{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
 			</PanelBody>
 		);
@@ -512,6 +489,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
@@ -620,6 +598,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
@@ -672,6 +651,7 @@ const Settings = ( props ) => {
 						}
 					/>
 				}
+				disableBottomSeparator={true}
 			/>
 			</PanelBody>
 		);
@@ -809,15 +789,84 @@ const Settings = ( props ) => {
 				/>
 				{ 'color' == backgroundType && (
 					<>
-						<AdvancedPopColorControl
-							label={__(
-								"Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={backgroundColor ? backgroundColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ backgroundColor: value })
+						<UAGTabsControl
+							tabs={[
+								{
+									name: "normal",
+									title: __(
+										"Normal",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+								{
+									name: "hover",
+									title: __(
+										"Hover",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+							]}
+							normal={
+								<>
+								<AdvancedPopColorControl
+									label={__(
+										"Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={backgroundColor ? backgroundColor : ""}
+									onColorChange={(value) =>
+										setAttributes({ backgroundColor: value })
+									}
+								/>
+								<Range
+									label={__(
+										"Opacity",
+										"ultimate-addons-for-gutenberg"
+									)}
+									setAttributes={setAttributes}
+									value={backgroundOpacity}
+									onChange={(value) =>
+										setAttributes({
+											backgroundOpacity: value,
+										})
+									}
+									min={0}
+									max={100}
+									displayUnit={false}
+								/>
+								</>
 							}
+							hover={
+								<>
+								<AdvancedPopColorControl
+									label={__(
+										"Color",
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={backgroundHoverColor ? backgroundHoverColor : ""}
+									onColorChange={(value) =>
+										setAttributes({ backgroundHoverColor: value })
+									}
+								/>
+								<Range
+									label={__(
+									"Opacity",
+									"ultimate-addons-for-gutenberg"
+									)}
+									setAttributes={setAttributes}
+									value={backgroundHoverOpacity}
+									onChange={(value) =>
+									setAttributes({
+									backgroundHoverOpacity: value,
+									})
+									}
+									min={0}
+									max={100}
+									displayUnit={false}
+								/>
+								</>
+							}
+							disableBottomSeparator={true}
 						/>
 					</>
 				) }
@@ -927,49 +976,17 @@ const Settings = ( props ) => {
 							max={360}
 							displayUnit={false}
 						/>
-					</>
-				) }
-				{ 'transparent' !== backgroundType && (
-					<Range
-						label={__(
-							"Opacity",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={backgroundOpacity}
-						onChange={(value) =>
-							setAttributes({
-								backgroundOpacity: value,
-							})
-						}
-						min={0}
-						max={100}
-						displayUnit={false}
-					/>
-				) }
-				{ 'color' == backgroundType && (
-					<>
-						<AdvancedPopColorControl
-							label={__(
-								"Hover",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={backgroundHoverColor ? backgroundHoverColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ backgroundHoverColor: value })
-							}
-						/>
 						<Range
 							label={__(
-							"Opacity",
-							"ultimate-addons-for-gutenberg"
+								"Opacity",
+								"ultimate-addons-for-gutenberg"
 							)}
 							setAttributes={setAttributes}
-							value={backgroundHoverOpacity}
+							value={backgroundOpacity}
 							onChange={(value) =>
-							setAttributes({
-							backgroundHoverOpacity: value,
-							})
+								setAttributes({
+									backgroundOpacity: value,
+								})
 							}
 							min={0}
 							max={100}
@@ -1029,6 +1046,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);

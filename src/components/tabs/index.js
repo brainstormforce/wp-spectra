@@ -11,20 +11,26 @@ const UAGTabsControl = (props) => {
 		};
 	}, []);
 
+	let bottomSeparatorClass = !props?.disableBottomSeparator
+		? "uag-control-tabs-bottom-separator"
+		: "";
+
 	return (
-		<TabPanel
-			className="uag-control-tabs"
-			activeClass="active-tab"
-			tabs={props.tabs}
-		>
-			{(tabName) => {
-				return (
-					<div className="uag-control-tabs-output">
-						{props[tabName.name]}
-					</div>
-				);
-			}}
-		</TabPanel>
+		<>
+			<TabPanel
+				className={`uag-control-tabs ${bottomSeparatorClass}`}
+				activeClass="active-tab"
+				tabs={props.tabs}
+			>
+				{(tabName) => {
+					return (
+						<div className="uag-control-tabs-output">
+							{props[tabName.name]}
+						</div>
+					);
+				}}
+			</TabPanel>
+		</>
 	);
 };
 export default UAGTabsControl;

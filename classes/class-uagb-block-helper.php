@@ -124,6 +124,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['contentVrPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['contentVrPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['contentHrPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['contentHrPadding'];
+
 			$selectors = array(
 				' .uagb_review_block .uagb-rating-title'  => array(
 					'color' => $attr['titleColor'],
@@ -138,10 +143,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['contentColor'],
 				),
 				' .uagb_review_block'                     => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
 					'text-align'     => $attr['overallAlignment'],
 				),
 				' .uagb_review_summary'                   => array(
@@ -153,6 +158,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb_review_entry path, .uagb_review_average_stars path' => array(
 					'stroke' => $attr['starOutlineColor'],
 					'fill'   => $attr['starActiveColor'],
+				),
+			);
+
+			$m_selectors = array(
+				' .uagb_review_block' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopMobile'], $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
+				),
+			);
+
+			$t_selectors = array(
+				' .uagb_review_block' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
 				),
 			);
 
@@ -1014,14 +1037,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 
 			if ( 'none' !== $seperatorStyle ) {
-				$selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
+				$selectors['.wp-block-uagb-advanced-heading .uagb-separator']       = array(
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['separatorHeight'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
 					'border-color'     => $attr['separatorColor'],
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], 'px' ),
 				);
-
+				$selectors['.wp-block-uagb-advanced-heading .uagb-separator:hover'] = array(
+					'border-color' => $attr['separatorHoverColor'],
+				);
 			}
 
 			$combined_selectors = array(
@@ -1594,6 +1619,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
 			$t_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 
+			$btnPaddingTop    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $attr['ctaBtnVertPadding'];
+			$btnPaddingBottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
+			$btnPaddingLeft   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
+			$btnPaddingRight  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
+
 			$selectors = array(
 				' .uagb-cta__button-wrapper .uagb-cta-with-svg' => array(
 					'font-size'   => $svg_size,
@@ -1641,10 +1671,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['ctaBorderColor'],
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 					'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['ctaBtnVertPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['ctaBtnVertPadding'], 'px' ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['ctaBtnHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['ctaBtnHrPadding'], 'px' ),
+					'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['ctaPaddingUnit'] ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
+					'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
+					'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
 				);
 				$selectors[' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button'] = array(
 					'color'            => $attr['ctaLinkHoverColor'],
@@ -1688,6 +1718,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height'      => $t_svg_size,
 					'line-height' => $t_svg_size,
 				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['ctaTopPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['ctaLeftPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['ctaRightPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
+				),
 			);
 
 			$m_selectors = array(
@@ -1696,6 +1732,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $m_svg_size,
 					'height'      => $m_svg_size,
 					'line-height' => $m_svg_size,
+				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['ctaTopPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['ctaLeftPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['ctaRightPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
 				),
 			);
 
@@ -5132,6 +5174,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] );
 			$m_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] );
 
+			$answer_top_padding_desktop    = isset( $attr['answerTopPadding'] ) ? $attr['answerTopPadding'] : $attr['vanswerPaddingDesktop'];
+			$answer_bottom_padding_desktop = isset( $attr['answerBottomPadding'] ) ? $attr['answerBottomPadding'] : $attr['vanswerPaddingDesktop'];
+			$answer_left_padding_desktop   = isset( $attr['answerLeftPadding'] ) ? $attr['answerLeftPadding'] : $attr['hanswerPaddingDesktop'];
+			$answer_right_padding_desktop  = isset( $attr['answerRightPadding'] ) ? $attr['answerRightPadding'] : $attr['hanswerPaddingDesktop'];
+
+			$answer_top_padding_tablet    = isset( $attr['answerTopPaddingTablet'] ) ? $attr['answerTopPaddingTablet'] : $attr['vanswerPaddingTablet'];
+			$answer_bottom_padding_tablet = isset( $attr['answerBottomPaddingTablet'] ) ? $attr['answerBottomPaddingTablet'] : $attr['vanswerPaddingTablet'];
+			$answer_left_padding_tablet   = isset( $attr['answerLeftPaddingTablet'] ) ? $attr['answerLeftPaddingTablet'] : $attr['hanswerPaddingTablet'];
+			$answer_right_padding_tablet  = isset( $attr['answerRightPaddingTablet'] ) ? $attr['answerRightPaddingTablet'] : $attr['hanswerPaddingTablet'];
+
+			$answer_top_padding_mobile    = isset( $attr['answerTopPaddingMobile'] ) ? $attr['answerTopPaddingMobile'] : $attr['vanswerPaddingMobile'];
+			$answer_bottom_padding_mobile = isset( $attr['answerBottomPaddingMobile'] ) ? $attr['answerBottomPaddingMobile'] : $attr['vanswerPaddingMobile'];
+			$answer_left_padding_mobile   = isset( $attr['answerLeftPaddingMobile'] ) ? $attr['answerLeftPaddingMobile'] : $attr['hanswerPaddingMobile'];
+			$answer_right_padding_mobile  = isset( $attr['answerRightPaddingMobile'] ) ? $attr['answerRightPaddingMobile'] : $attr['hanswerPaddingMobile'];
+
 			$selectors = array(
 				' .uagb-icon svg'                      => array(
 					'width'     => $icon_size,
@@ -5155,6 +5212,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 					'border-color'     => $attr['borderColor'],
 				),
+				' .uagb-faq-item:hover'                => array(
+					'border-color' => $attr['borderHoverColor'],
+				),
 				' .uagb-faq-item .uagb-question'       => array(
 					'color' => $attr['questionTextColor'],
 				),
@@ -5171,10 +5231,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'              => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingDesktop'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
 				),
 				'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestion'], 'px' ),
@@ -5201,10 +5261,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingTablet'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'     => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingTablet'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_tablet, $attr['answerPaddingTypeDesktop'] ),
 				),
 				' .uagb-icon svg'             => array(
 					'width'     => $t_icon_size,
@@ -5225,10 +5285,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingMobile'], $attr['questionPaddingTypeDesktop'] ),
 				),
 				' .uagb-faq-content span'     => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['vanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['vanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['hanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['hanswerPaddingMobile'], $attr['answerPaddingTypeDesktop'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $answer_top_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $answer_bottom_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-right'  => UAGB_Helper::get_css_value( $answer_right_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
+					'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_mobile, $attr['answerPaddingTypeDesktop'] ),
 				),
 				' .uagb-icon svg'             => array(
 					'width'     => $m_icon_size,
@@ -5256,13 +5316,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( true === $attr['enableSeparator'] ) {
 
-				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] = array(
+				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']       = array(
 					'border-style'        => 'solid',
 					'border-top-color'    => $attr['borderColor'],
 					'border-top-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-right-width'  => '0px',
 					'border-bottom-width' => '0px',
 					'border-left-width'   => '0px',
+				);
+				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content:hover '] = array(
+					'border-top-color' => $attr['borderHoverColor'],
 				);
 			}
 			if ( 'grid' === $attr['layout'] ) {
@@ -5315,27 +5378,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$boxShadowPositionCSS = '';
 			}
-			$vInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
-			$vInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
-			$vInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
-			$hInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
-			$iconSize             = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
-			$buttonIconSize       = UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' );
-			$inputCSS             = array(
+			$paddingInputTop          = isset( $attr['paddingInputTop'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTop'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRight        = isset( $attr['paddingInputRight'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRight'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottom       = isset( $attr['paddingInputBottom'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottom'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeft         = isset( $attr['paddingInputLeft'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeft'], $attr['inputPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopTablet    = isset( $attr['paddingInputTopTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightTablet  = isset( $attr['paddingInputRightTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomTablet = isset( $attr['paddingInputBottomTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftTablet   = isset( $attr['paddingInputLeftTablet'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftTablet'], $attr['tabletPaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputTopMobile    = isset( $attr['paddingInputTopMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputTopMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputRightMobile  = isset( $attr['paddingInputRightMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputRightMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputBottomMobile = isset( $attr['paddingInputBottomMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputBottomMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$paddingInputLeftMobile   = isset( $attr['paddingInputLeftMobile'] ) ? UAGB_Helper::get_css_value( $attr['paddingInputLeftMobile'], $attr['mobilePaddingInputUnit'] ) : UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+
+			$iconSize       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+			$buttonIconSize = UAGB_Helper::get_css_value( $attr['buttonIconSize'], $attr['buttonIconSizeType'] );
+			$inputCSS       = array(
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
 				'border'           => 0,
 				'border-radius'    => '0px',
 				'margin'           => 0,
 				'outline'          => 'unset',
-				'padding-top'      => $vInputPaddingDesktop,
-				'padding-bottom'   => $vInputPaddingDesktop,
-				'padding-right'    => $hInputPaddingDesktop,
-				'padding-left'     => $hInputPaddingDesktop,
+				'padding-top'      => $paddingInputTop,
+				'padding-bottom'   => $paddingInputBottom,
+				'padding-right'    => $paddingInputRight,
+				'padding-left'     => $paddingInputLeft,
 			);
-			$boxCSS               = array(
+			$boxCSS         = array(
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
@@ -5357,7 +5427,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .uagb-search-form__container .uagb-search-submit' => array(
-					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),
+					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], $attr['buttonWidthType'] ),
 					'padding' => 0,
 					'border'  => 0,
 				),
@@ -5402,9 +5472,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-search-form__container .uagb-wp-search-icon-wrap'] = array(
 					'background-color' => $attr['inputBgColor'],
-					'padding-top'      => $vInputPaddingDesktop,
-					'padding-bottom'   => $vInputPaddingDesktop,
-					'padding-left'     => $hInputPaddingDesktop,
+					'padding-top'      => $paddingInputTop,
+					'padding-bottom'   => $paddingInputBottom,
+					'padding-left'     => $paddingInputLeft,
 				);
 			}
 
@@ -5417,29 +5487,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => $vInputPaddingMobile,
-					'padding-bottom' => $vInputPaddingMobile,
-					'padding-right'  => $hInputPaddingMobile,
-					'padding-left'   => $hInputPaddingMobile,
+					'padding-top'    => $paddingInputTopMobile,
+					'padding-bottom' => $paddingInputBottomMobile,
+					'padding-right'  => $paddingInputRightMobile,
+					'padding-left'   => $paddingInputLeftMobile,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => $vInputPaddingMobile,
-					'padding-bottom' => $vInputPaddingMobile,
-					'padding-left'   => $hInputPaddingMobile,
+					'padding-top'    => $paddingInputTopMobile,
+					'padding-bottom' => $paddingInputBottomMobile,
+					'padding-left'   => $paddingInputLeftMobile,
 				),
 			);
 
 			$t_selectors        = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => $vInputPaddingTablet,
-					'padding-bottom' => $vInputPaddingTablet,
-					'padding-right'  => $hInputPaddingTablet,
-					'padding-left'   => $hInputPaddingTablet,
+					'padding-top'    => $paddingInputTopTablet,
+					'padding-bottom' => $paddingInputBottomTablet,
+					'padding-right'  => $paddingInputRightTablet,
+					'padding-left'   => $paddingInputLeftTablet,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => $vInputPaddingTablet,
-					'padding-bottom' => $vInputPaddingTablet,
-					'padding-left'   => $hInputPaddingTablet,
+					'padding-top'    => $paddingInputTopTablet,
+					'padding-bottom' => $paddingInputBottomTablet,
+					'padding-left'   => $paddingInputLeftTablet,
 				),
 			);
 			$combined_selectors = array(
@@ -5470,6 +5540,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$m_selectors = array();
 
+			$top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentTopPadding'] : $attr['contentPadding'];
+			$bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentBottomPadding'] : $attr['contentPadding'];
+			$left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentLeftPadding'] : $attr['contentPadding'];
+			$right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentRightPadding'] : $attr['contentPadding'];
+
+			$top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentTopPaddingMobile'] : $attr['contentPaddingMobile'];
+			$bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentBottomPaddingMobile'] : $attr['contentPaddingMobile'];
+			$left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentLeftPaddingMobile'] : $attr['contentPaddingMobile'];
+			$right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentRightPaddingMobile'] : $attr['contentPaddingMobile'];
+
+			$top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentTopPaddingTablet'] : $attr['contentPaddingTablet'];
+			$bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentBottomPaddingTablet'] : $attr['contentPaddingTablet'];
+			$left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentLeftPaddingTablet'] : $attr['contentPaddingTablet'];
+			$right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentRightPaddingTablet'] : $attr['contentPaddingTablet'];
+
 			$boxShadowPositionCSS = $attr['boxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -5485,7 +5570,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				),
 				' .uagb-layout-grid .uagb-taxomony-box'   => array(
-					'padding'          => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
+					'padding-left'     => UAGB_Helper::get_css_value( $left_padding, $attr['contentPaddingUnit'] ),
+					'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['contentPaddingUnit'] ),
+					'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['contentPaddingUnit'] ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['contentPaddingUnit'] ),
 					'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 					'background-color' => $attr['bgColor'],
 					'text-align'       => $attr['alignment'],
@@ -5522,18 +5610,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'none' !== $attr['seperatorStyle'] ) {
-				$selectors[' .uagb-layout-list .uagb-tax-separator'] = array(
+				$selectors[' .uagb-layout-list .uagb-tax-separator']       = array(
 					'border-top-color' => $attr['seperatorColor'],
 					'border-top-style' => $attr['seperatorStyle'],
 					'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], '%' ),
 				);
+				$selectors[' .uagb-layout-list .uagb-tax-separator:hover'] = array(
+					'border-top-color' => $attr['seperatorHoverColor'],
+				);
 			}
 
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[' .uagb-taxomony-box'] = array(
+				$selectors[' .uagb-taxomony-box']       = array(
 					'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
 					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				);
+				$selectors[' .uagb-taxomony-box:hover'] = array(
+					'border-color' => $attr['borderHoverColor'],
 				);
 			}
 
@@ -5542,7 +5636,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
 				),
 				' .uagb-layout-grid .uagb-taxomony-box' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 				),
 			);
 
@@ -5551,7 +5648,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
 				),
 				' .uagb-layout-grid .uagb-taxomony-box' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 				),
 			);
 
