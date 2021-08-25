@@ -1,14 +1,16 @@
-import React, { Suspense } from 'react';
-import { __ } from '@wordpress/i18n';
-import lazyLoader from '@Controls/lazy-loader';
-import WebfontLoader from '@Components/typography/fontloader';
+import React, { Suspense } from "react";
+import { __ } from "@wordpress/i18n";
+import lazyLoader from "@Controls/lazy-loader";
+import WebfontLoader from "@Components/typography/fontloader";
 import renderSVG from "@Controls/renderIcon";
-import TypographyControl from '@Components/typography';
-import BoxShadowControl from '@Components/box-shadow';
+import TypographyControl from "@Components/typography";
+import BoxShadowControl from "@Components/box-shadow";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
@@ -20,10 +22,10 @@ import {
 	TextControl,
 	Icon,
 	ToggleControl,
-} from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+} from "@wordpress/components";
+import { InspectorControls } from "@wordpress/block-editor";
 
-const Settings = ( props ) => {
+const Settings = (props) => {
 	props = props.parentProps;
 
 	// Caching all Props.
@@ -138,65 +140,65 @@ const Settings = ( props ) => {
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
 	const taxonomyListOptions = [
 		{
-			value: '',
-			label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
+			value: "",
+			label: __("Select Taxonomy", "ultimate-addons-for-gutenberg"),
 		},
 	];
-	if ( '' != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
-		Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
-			return taxonomyListOptions.push( {
-				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
-			} );
-		} );
+	if ("" != taxonomy_list_setting && undefined != taxonomy_list_setting) {
+		Object.keys(taxonomy_list_setting).map((item, thisIndex) => {
+			return taxonomyListOptions.push({
+				value: taxonomyList[item].name,
+				label: taxonomyList[item].label,
+			});
+		});
 	}
 
 	let loadTitleGoogleFonts;
 	let loadCountGoogleFonts;
 	let loadListGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if (titleLoadGoogleFonts == true) {
 		const titleconfig = {
 			google: {
 				families: [
 					titleFontFamily +
-						( titleFontWeight ? ':' + titleFontWeight : '' ),
+						(titleFontWeight ? ":" + titleFontWeight : ""),
 				],
 			},
 		};
 
 		loadTitleGoogleFonts = (
-			<WebfontLoader config={ titleconfig }></WebfontLoader>
+			<WebfontLoader config={titleconfig}></WebfontLoader>
 		);
 	}
 
-	if ( countLoadGoogleFonts == true ) {
+	if (countLoadGoogleFonts == true) {
 		const countconfig = {
 			google: {
 				families: [
 					countFontFamily +
-						( countFontWeight ? ':' + countFontWeight : '' ),
+						(countFontWeight ? ":" + countFontWeight : ""),
 				],
 			},
 		};
 
 		loadCountGoogleFonts = (
-			<WebfontLoader config={ countconfig }></WebfontLoader>
+			<WebfontLoader config={countconfig}></WebfontLoader>
 		);
 	}
 
-	if ( listLoadGoogleFonts == true ) {
+	if (listLoadGoogleFonts == true) {
 		const listconfig = {
 			google: {
 				families: [
 					listFontFamily +
-						( listFontWeight ? ':' + listFontWeight : '' ),
+						(listFontWeight ? ":" + listFontWeight : ""),
 				],
 			},
 		};
 
 		loadListGoogleFonts = (
-			<WebfontLoader config={ listconfig }></WebfontLoader>
+			<WebfontLoader config={listconfig}></WebfontLoader>
 		);
 	}
 
@@ -204,17 +206,14 @@ const Settings = ( props ) => {
 	const colorControl = (
 		<>
 			<AdvancedPopColorControl
-				label={__(
-					"Text Color",
-					"ultimate-addons-for-gutenberg"
-				)}
+				label={__("Text Color", "ultimate-addons-for-gutenberg")}
 				colorValue={listTextColor ? listTextColor : ""}
 				onColorChange={(value) =>
 					setAttributes({ listTextColor: value })
 				}
 			/>
 			<br />
-			{ 'none' != listStyle && (
+			{"none" != listStyle && (
 				<>
 					<AdvancedPopColorControl
 						label={__(
@@ -227,79 +226,101 @@ const Settings = ( props ) => {
 						}
 					/>
 				</>
-			) }
+			)}
 		</>
 	);
 	const colorControlHover = (
 		<>
 			<AdvancedPopColorControl
-				label={__(
-					"Text Color",
-					"ultimate-addons-for-gutenberg"
-				)}
+				label={__("Text Color", "ultimate-addons-for-gutenberg")}
 				colorValue={hoverlistTextColor ? hoverlistTextColor : ""}
 				onColorChange={(value) =>
 					setAttributes({ hoverlistTextColor: value })
 				}
 			/>
 			<br />
-			{ 'none' != listStyle && (
+			{"none" != listStyle && (
 				<>
 					<AdvancedPopColorControl
 						label={__(
 							"Bullet/Numbers Color",
 							"ultimate-addons-for-gutenberg"
 						)}
-						colorValue={hoverlistStyleColor  ? hoverlistStyleColor  : ""}
+						colorValue={
+							hoverlistStyleColor ? hoverlistStyleColor : ""
+						}
 						onColorChange={(value) =>
-							setAttributes({ hoverlistStyleColor : value })
+							setAttributes({ hoverlistStyleColor: value })
 						}
 					/>
 				</>
-			) }
+			)}
 		</>
 	);
 
-	const onSelectPostType = ( value ) => {
-		setAttributes( { postType: value } );
-		setAttributes( { categories: '' } );
-		setAttributes( { taxonomyType: '' } );
+	const onSelectPostType = (value) => {
+		setAttributes({ postType: value });
+		setAttributes({ categories: "" });
+		setAttributes({ taxonomyType: "" });
 	};
 
-	const onSelectTaxonomyType = ( value ) => {
-		setAttributes( { taxonomyType: value } );
-		setAttributes( { categories: '' } );
+	const onSelectTaxonomyType = (value) => {
+		setAttributes({ taxonomyType: value });
+		setAttributes({ categories: "" });
 	};
 
 	const generalPanel = () => {
+		let tempTitleTag = titleTag;
+		if ("" === titleTag) {
+			tempTitleTag = "h4";
+
+			if ("list" === layout) {
+				tempTitleTag = "div";
+			}
+		}
 		return (
 			<PanelBody>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
-					label={__(
-						"Heading Tag",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Heading Tag", "ultimate-addons-for-gutenberg")}
 					data={{
-						value: titleTag,
+						value: tempTitleTag,
 						label: "titleTag",
 					}}
 					options={[
-						{ value: "div", label: __("Div", "ultimate-addons-for-gutenberg") },
-						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
-						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
-						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
-						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
-						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
-						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+						{
+							value: "div",
+							label: __("Div", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h1",
+							label: __("H1", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h2",
+							label: __("H2", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h3",
+							label: __("H3", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h4",
+							label: __("H4", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h5",
+							label: __("H5", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "h6",
+							label: __("H6", "ultimate-addons-for-gutenberg"),
+						},
 					]}
 				/>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
-					label={__(
-						"Layout",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Layout", "ultimate-addons-for-gutenberg")}
 					data={{
 						value: layout,
 						label: "layout",
@@ -308,7 +329,7 @@ const Settings = ( props ) => {
 					options={[
 						{
 							value: "grid",
-							label: 'Grid',
+							label: "Grid",
 							tooltip: __(
 								"Grid",
 								"ultimate-addons-for-gutenberg"
@@ -316,47 +337,43 @@ const Settings = ( props ) => {
 						},
 						{
 							value: "list",
-							label: 'List',
+							label: "List",
 							tooltip: __(
 								"List",
 								"ultimate-addons-for-gutenberg"
 							),
 						},
-
 					]}
 					showIcons={false}
 				/>
-				{ 'grid' === layout && (
-				<ResponsiveSlider
-					label={__(
-						"Columns",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
-						desktop: {
-							value: columns,
-							label: "columns",
-							min: 1,
-							max: 4,
-						},
-						tablet: {
-							value: tcolumns,
-							label: "tcolumns",
-							min: 1,
-							max: 3,
-						},
-						mobile: {
-							value: mcolumns,
-							label: "mcolumns",
-							min: 1,
-							max: 2,
-						},
-					}}
-					displayUnit={false}
-					setAttributes={setAttributes}
-				/>)
-				}
-				{ 'list' == layout && (
+				{"grid" === layout && (
+					<ResponsiveSlider
+						label={__("Columns", "ultimate-addons-for-gutenberg")}
+						data={{
+							desktop: {
+								value: columns,
+								label: "columns",
+								min: 1,
+								max: 4,
+							},
+							tablet: {
+								value: tcolumns,
+								label: "tcolumns",
+								min: 1,
+								max: 3,
+							},
+							mobile: {
+								value: mcolumns,
+								label: "mcolumns",
+								min: 1,
+								max: 2,
+							},
+						}}
+						displayUnit={false}
+						setAttributes={setAttributes}
+					/>
+				)}
+				{"list" == layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={setAttributes}
@@ -372,16 +389,15 @@ const Settings = ( props ) => {
 							options={[
 								{
 									value: "list",
-									label: 'List',
+									label: "List",
 									tooltip: __(
 										"List",
 										"ultimate-addons-for-gutenberg"
 									),
-
 								},
 								{
 									value: "dropdown",
-									label: 'Dropdown',
+									label: "Dropdown",
 									tooltip: __(
 										"Dropdown",
 										"ultimate-addons-for-gutenberg"
@@ -391,12 +407,15 @@ const Settings = ( props ) => {
 							showIcons={false}
 						/>
 					</>
-				) }
-				{ 'grid' == layout && (
+				)}
+				{"grid" == layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={setAttributes}
-							label={__("Alignment", "ultimate-addons-for-gutenberg")}
+							label={__(
+								"Alignment",
+								"ultimate-addons-for-gutenberg"
+							)}
 							data={{
 								value: alignment,
 								label: "alignment",
@@ -405,7 +424,11 @@ const Settings = ( props ) => {
 							options={[
 								{
 									value: "left",
-									icon: <Icon icon={renderSVG("fa fa-align-left")} />,
+									icon: (
+										<Icon
+											icon={renderSVG("fa fa-align-left")}
+										/>
+									),
 									tooltip: __(
 										"Left",
 										"ultimate-addons-for-gutenberg"
@@ -414,7 +437,11 @@ const Settings = ( props ) => {
 								{
 									value: "center",
 									icon: (
-										<Icon icon={renderSVG("fa fa-align-center")} />
+										<Icon
+											icon={renderSVG(
+												"fa fa-align-center"
+											)}
+										/>
 									),
 									tooltip: __(
 										"Center",
@@ -424,7 +451,11 @@ const Settings = ( props ) => {
 								{
 									value: "right",
 									icon: (
-										<Icon icon={renderSVG("fa fa-align-right")} />
+										<Icon
+											icon={renderSVG(
+												"fa fa-align-right"
+											)}
+										/>
 									),
 									tooltip: __(
 										"Right",
@@ -435,9 +466,9 @@ const Settings = ( props ) => {
 							showIcons={true}
 						/>
 					</>
-				) }
+				)}
 
-				{ 'list' == layout && 'dropdown' !== listDisplayStyle && (
+				{"list" == layout && "dropdown" !== listDisplayStyle && (
 					<>
 						<MultiButtonsControl
 							setAttributes={setAttributes}
@@ -454,18 +485,21 @@ const Settings = ( props ) => {
 								{
 									value: "disc",
 									icon: (
-										<Icon icon={renderSVG("fa fa-list-ul")}/>
+										<Icon
+											icon={renderSVG("fa fa-list-ul")}
+										/>
 									),
 									tooltip: __(
 										"Bullet",
 										"ultimate-addons-for-gutenberg"
 									),
-
 								},
 								{
 									value: "decimal",
 									icon: (
-										<Icon icon={renderSVG("fa fa-list-ol")}/>
+										<Icon
+											icon={renderSVG("fa fa-list-ol")}
+										/>
 									),
 									tooltip: __(
 										"Numbers",
@@ -474,8 +508,8 @@ const Settings = ( props ) => {
 								},
 								{
 									value: "none",
-									icon:(
-										<Icon icon={renderSVG("fa fa-bars")}/>
+									icon: (
+										<Icon icon={renderSVG("fa fa-bars")} />
 									),
 									tooltip: __(
 										"None",
@@ -486,280 +520,255 @@ const Settings = ( props ) => {
 							showIcons={true}
 						/>
 					</>
-				) }
+				)}
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const postQueryPanel = () => {
-		return(
+		return (
 			<PanelBody
-			title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+				title={__("Query", "ultimate-addons-for-gutenberg")}
+				initialOpen={true}
 			>
 				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
-					options={ uagb_blocks_info.post_types }
+					label={__("Post Type", "ultimate-addons-for-gutenberg")}
+					value={postType}
+					onChange={(value) => onSelectPostType(value)}
+					options={uagb_blocks_info.post_types}
 				/>
-				{ '' != taxonomyList && (
+				{"" != taxonomyList && (
 					<SelectControl
-						label={ __(
-							'Taxonomy',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
-						options={ taxonomyListOptions }
+						label={__("Taxonomy", "ultimate-addons-for-gutenberg")}
+						value={taxonomyType}
+						onChange={(value) => onSelectTaxonomyType(value)}
+						options={taxonomyListOptions}
 					/>
-				) }
-				{ '' == taxonomyList && (
+				)}
+				{"" == taxonomyList && (
 					<TextControl
 						autoComplete="off"
-						label={ __(
-							'Display Message',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ noTaxDisplaytext }
-						onChange={ ( value ) =>
-							setAttributes( { noTaxDisplaytext: value } )
+						label={__(
+							"Display Message",
+							"ultimate-addons-for-gutenberg"
+						)}
+						value={noTaxDisplaytext}
+						onChange={(value) =>
+							setAttributes({ noTaxDisplaytext: value })
 						}
-						help={ __(
-							'If taxonomy Not Found',
-							'ultimate-addons-for-gutenberg'
-						) }
+						help={__(
+							"If taxonomy Not Found",
+							"ultimate-addons-for-gutenberg"
+						)}
 					/>
-				) }
-				
+				)}
+
 				<ToggleControl
-					label={ __(
-						'Show Empty Taxonomy',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ showEmptyTaxonomy }
-					onChange={ () =>
-						setAttributes( {
-							showEmptyTaxonomy: ! showEmptyTaxonomy,
-						} )
+					label={__(
+						"Show Empty Taxonomy",
+						"ultimate-addons-for-gutenberg"
+					)}
+					checked={showEmptyTaxonomy}
+					onChange={() =>
+						setAttributes({
+							showEmptyTaxonomy: !showEmptyTaxonomy,
+						})
 					}
-					help={ __( 'Show empty taxonomy in list ' ) }
+					help={__("Show empty taxonomy in list ")}
 				/>
 				<ToggleControl
-					label={ __(
-						'Show Posts Count',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ showCount }
-					onChange={ () =>
-						setAttributes( { showCount: ! showCount } )
-					}
-					help={ __(
-						'Show count of taxonomy ',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={__(
+						"Show Posts Count",
+						"ultimate-addons-for-gutenberg"
+					)}
+					checked={showCount}
+					onChange={() => setAttributes({ showCount: !showCount })}
+					help={__(
+						"Show count of taxonomy ",
+						"ultimate-addons-for-gutenberg"
+					)}
 				/>
-				{ 'list' == layout &&
-				'list' == listDisplayStyle &&
-				'post_tag' !== taxonomyType && (
-					<ToggleControl
-						label={ __(
-							'Show Hierarchy',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ showhierarchy }
-						onChange={ () =>
-							setAttributes( {
-								showhierarchy: ! showhierarchy,
-							} )
-						}
-						help={ __(
-							'Show hierarchy of taxonomy ',
-							'ultimate-addons-for-gutenberg'
-						) }
-					/>
-				) }
+				{"list" == layout &&
+					"list" == listDisplayStyle &&
+					"post_tag" !== taxonomyType && (
+						<ToggleControl
+							label={__(
+								"Show Hierarchy",
+								"ultimate-addons-for-gutenberg"
+							)}
+							checked={showhierarchy}
+							onChange={() =>
+								setAttributes({
+									showhierarchy: !showhierarchy,
+								})
+							}
+							help={__(
+								"Show hierarchy of taxonomy ",
+								"ultimate-addons-for-gutenberg"
+							)}
+						/>
+					)}
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const titleColorPanel = () => {
 		return (
 			<PanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				title={__("Title", "ultimate-addons-for-gutenberg")}
+				initialOpen={true}
 			>
 				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={titleColor ? titleColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ titleColor: value })
 					}
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					loadGoogleFonts={{
 						value: titleLoadGoogleFonts,
-						label: 'titleLoadGoogleFonts',
-					} }
-					fontFamily={ {
+						label: "titleLoadGoogleFonts",
+					}}
+					fontFamily={{
 						value: titleFontFamily,
-						label: 'titleFontFamily',
-					} }
-					fontWeight={ {
+						label: "titleFontFamily",
+					}}
+					fontWeight={{
 						value: titleFontWeight,
-						label: 'titleFontWeight',
-					} }
-					fontSubset={ {
+						label: "titleFontWeight",
+					}}
+					fontSubset={{
 						value: titleFontSubset,
-						label: 'titleFontSubset',
-					} }
-					fontSizeType={ {
+						label: "titleFontSubset",
+					}}
+					fontSizeType={{
 						value: titleFontSizeType,
-						label: 'titleFontSizeType',
-					} }
-					fontSize={ {
+						label: "titleFontSizeType",
+					}}
+					fontSize={{
 						value: titleFontSize,
-						label: 'titleFontSize',
-					} }
-					fontSizeMobile={ {
+						label: "titleFontSize",
+					}}
+					fontSizeMobile={{
 						value: titleFontSizeMobile,
-						label: 'titleFontSizeMobile',
-					} }
-					fontSizeTablet={ {
+						label: "titleFontSizeMobile",
+					}}
+					fontSizeTablet={{
 						value: titleFontSizeTablet,
-						label: 'titleFontSizeTablet',
-					} }
-					lineHeightType={ {
+						label: "titleFontSizeTablet",
+					}}
+					lineHeightType={{
 						value: titleLineHeightType,
-						label: 'titleLineHeightType',
-					} }
-					lineHeight={ {
+						label: "titleLineHeightType",
+					}}
+					lineHeight={{
 						value: titleLineHeight,
-						label: 'titleLineHeight',
-					} }
-					lineHeightMobile={ {
+						label: "titleLineHeight",
+					}}
+					lineHeightMobile={{
 						value: titleLineHeightMobile,
-						label: 'titleLineHeightMobile',
-					} }
-					lineHeightTablet={ {
+						label: "titleLineHeightMobile",
+					}}
+					lineHeightTablet={{
 						value: titleLineHeightTablet,
-						label: 'titleLineHeightTablet',
-					} }
+						label: "titleLineHeightTablet",
+					}}
 				/>
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const countColorPanel = () => {
 		return (
 			<PanelBody
-				title={ __( 'Count', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={__("Count", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
 			>
 				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={countColor ? countColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ countColor: value })
 					}
 				/>
 				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					loadGoogleFonts={{
 						value: countLoadGoogleFonts,
-						label: 'countLoadGoogleFonts',
-					} }
-					fontFamily={ {
+						label: "countLoadGoogleFonts",
+					}}
+					fontFamily={{
 						value: countFontFamily,
-						label: 'countFontFamily',
-					} }
-					fontWeight={ {
+						label: "countFontFamily",
+					}}
+					fontWeight={{
 						value: countFontWeight,
-						label: 'countFontWeight',
-					} }
-					fontSubset={ {
+						label: "countFontWeight",
+					}}
+					fontSubset={{
 						value: countFontSubset,
-						label: 'countFontSubset',
-					} }
-					fontSizeType={ {
+						label: "countFontSubset",
+					}}
+					fontSizeType={{
 						value: countFontSizeType,
-						label: 'countFontSizeType',
-					} }
-					fontSize={ {
+						label: "countFontSizeType",
+					}}
+					fontSize={{
 						value: countFontSize,
-						label: 'countFontSize',
-					} }
-					fontSizeMobile={ {
+						label: "countFontSize",
+					}}
+					fontSizeMobile={{
 						value: countFontSizeMobile,
-						label: 'countFontSizeMobile',
-					} }
-					fontSizeTablet={ {
+						label: "countFontSizeMobile",
+					}}
+					fontSizeTablet={{
 						value: countFontSizeTablet,
-						label: 'countFontSizeTablet',
-					} }
-					lineHeightType={ {
+						label: "countFontSizeTablet",
+					}}
+					lineHeightType={{
 						value: countLineHeightType,
-						label: 'countLineHeightType',
-					} }
-					lineHeight={ {
+						label: "countLineHeightType",
+					}}
+					lineHeight={{
 						value: countLineHeight,
-						label: 'countLineHeight',
-					} }
-					lineHeightMobile={ {
+						label: "countLineHeight",
+					}}
+					lineHeightMobile={{
 						value: countLineHeightMobile,
-						label: 'countLineHeightMobile',
-					} }
-					lineHeightTablet={ {
+						label: "countLineHeightMobile",
+					}}
+					lineHeightTablet={{
 						value: countLineHeightTablet,
-						label: 'countLineHeightTablet',
-					} }
+						label: "countLineHeightTablet",
+					}}
 				/>
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const bgColorPanel = () => {
 		return (
 			<PanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={__("Background", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
 			>
 				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={bgColor ? bgColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ bgColor: value })
-					}
+					onColorChange={(value) => setAttributes({ bgColor: value })}
 				/>
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const spacingPanel = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Spacing',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ false }
+				title={__("Spacing", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
 			>
-				{ 'grid' == layout && (
+				{"grid" == layout && (
 					<>
 						<Range
 							label={__(
@@ -789,7 +798,7 @@ const Settings = ( props ) => {
 							max={50}
 							displayUnit={false}
 						/>
-						{ showCount && (
+						{showCount && (
 							<Range
 								label={__(
 									"Bottom Spacing",
@@ -804,7 +813,7 @@ const Settings = ( props ) => {
 								max={50}
 								displayUnit={false}
 							/>
-						) }
+						)}
 						<SpacingControl
 							{...props}
 							label={__(
@@ -880,26 +889,31 @@ const Settings = ( props ) => {
 							}}
 						/>
 					</>
-				) }
-				{ 'list' == layout && (
+				)}
+				{"list" == layout && (
 					<Range
-						label={__("Bottom Margin", "ultimate-addons-for-gutenberg")}
+						label={__(
+							"Bottom Margin",
+							"ultimate-addons-for-gutenberg"
+						)}
 						setAttributes={setAttributes}
 						value={listBottomMargin}
-						onChange={(value) => setAttributes({ listBottomMargin: value })}
-						min={ 0 }
-						max={ 100 }
+						onChange={(value) =>
+							setAttributes({ listBottomMargin: value })
+						}
+						min={0}
+						max={100}
 						displayUnit={false}
 					/>
-				) }
+				)}
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const borderPanel = () => {
 		return (
 			<PanelBody
-				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={__("Border", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
 			>
 				<Border
 					setAttributes={setAttributes}
@@ -937,147 +951,138 @@ const Settings = ( props ) => {
 					disableBottomSeparator={true}
 				/>
 			</PanelBody>
-		)
-	}
+		);
+	};
 	const listPanel = () => {
-		return (<PanelBody
-			title={ __( 'List', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
-			<TypographyControl
-				label={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: listLoadGoogleFonts,
-					label: 'listLoadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: listFontFamily,
-					label: 'listFontFamily',
-				} }
-				fontWeight={ {
-					value: listFontWeight,
-					label: 'listFontWeight',
-				} }
-				fontSubset={ {
-					value: listFontSubset,
-					label: 'listFontSubset',
-				} }
-				fontSizeType={ {
-					value: listFontSizeType,
-					label: 'listFontSizeType',
-				} }
-				fontSize={ {
-					value: listFontSize,
-					label: 'listFontSize',
-				} }
-				fontSizeMobile={ {
-					value: listFontSizeMobile,
-					label: 'listFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: listFontSizeTablet,
-					label: 'listFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: listLineHeightType,
-					label: 'listLineHeightType',
-				} }
-				lineHeight={ {
-					value: listLineHeight,
-					label: 'listLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: listLineHeightMobile,
-					label: 'listLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: listLineHeightTablet,
-					label: 'listLineHeightTablet',
-				} }
-			/>
-			<UAGTabsControl
-				tabs={[
-					{
-						name: "normal",
-						title: __(
-							"Normal",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-					{
-						name: "hover",
-						title: __(
-							"Hover",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-				]}
-				normal={colorControl}
-				hover={colorControlHover}
-				disableBottomSeparator={true}
-			/>
-		</PanelBody>
-		)
-	}
+		return (
+			<PanelBody
+				title={__("List", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<TypographyControl
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					loadGoogleFonts={{
+						value: listLoadGoogleFonts,
+						label: "listLoadGoogleFonts",
+					}}
+					fontFamily={{
+						value: listFontFamily,
+						label: "listFontFamily",
+					}}
+					fontWeight={{
+						value: listFontWeight,
+						label: "listFontWeight",
+					}}
+					fontSubset={{
+						value: listFontSubset,
+						label: "listFontSubset",
+					}}
+					fontSizeType={{
+						value: listFontSizeType,
+						label: "listFontSizeType",
+					}}
+					fontSize={{
+						value: listFontSize,
+						label: "listFontSize",
+					}}
+					fontSizeMobile={{
+						value: listFontSizeMobile,
+						label: "listFontSizeMobile",
+					}}
+					fontSizeTablet={{
+						value: listFontSizeTablet,
+						label: "listFontSizeTablet",
+					}}
+					lineHeightType={{
+						value: listLineHeightType,
+						label: "listLineHeightType",
+					}}
+					lineHeight={{
+						value: listLineHeight,
+						label: "listLineHeight",
+					}}
+					lineHeightMobile={{
+						value: listLineHeightMobile,
+						label: "listLineHeightMobile",
+					}}
+					lineHeightTablet={{
+						value: listLineHeightTablet,
+						label: "listLineHeightTablet",
+					}}
+				/>
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __("Hover", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+					normal={colorControl}
+					hover={colorControlHover}
+					disableBottomSeparator={true}
+				/>
+			</PanelBody>
+		);
+	};
 	const separatorPanel = () => {
-		return (<PanelBody
-			title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
-		>
-			<Border
-				setAttributes={setAttributes}
-				borderStyle={{
-					value: seperatorStyle,
-					label: "seperatorStyle",
-					title: __("Style", "ultimate-addons-for-gutenberg"),
-				}}
-				borderWidth={{
-					value: seperatorWidth,
-					label: "seperatorWidth",
-					title: __("Width", "ultimate-addons-for-gutenberg"),
-				}}
-				borderRadius={{
-					value: seperatorThickness,
-					label: "seperatorThickness",
-					title: __(
-						"Thickness",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				borderColor={{
-					value: seperatorColor,
-					label: "seperatorColor",
-					title: __("Color", "ultimate-addons-for-gutenberg"),
-				}}
-				borderHoverColor={{
-					value: seperatorHoverColor,
-					label: "seperatorHoverColor",
-					title: __(
-						"Hover Color",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				disableBottomSeparator={true}
-			/>
-		</PanelBody>)
-	}
+		return (
+			<PanelBody
+				title={__("Separator", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
+			>
+				<Border
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: seperatorStyle,
+						label: "seperatorStyle",
+						title: __("Style", "ultimate-addons-for-gutenberg"),
+					}}
+					borderWidth={{
+						value: seperatorWidth,
+						label: "seperatorWidth",
+						title: __("Width", "ultimate-addons-for-gutenberg"),
+					}}
+					borderRadius={{
+						value: seperatorThickness,
+						label: "seperatorThickness",
+						title: __("Thickness", "ultimate-addons-for-gutenberg"),
+					}}
+					borderColor={{
+						value: seperatorColor,
+						label: "seperatorColor",
+						title: __("Color", "ultimate-addons-for-gutenberg"),
+					}}
+					borderHoverColor={{
+						value: seperatorHoverColor,
+						label: "seperatorHoverColor",
+						title: __(
+							"Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					disableBottomSeparator={true}
+				/>
+			</PanelBody>
+		);
+	};
 	const boxShadowPanel = () => {
 		return (
 			<PanelBody
-				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={__("Box Shadow", "ultimate-addons-for-gutenberg")}
+				initialOpen={false}
 			>
 				<BoxShadowControl
 					setAttributes={setAttributes}
-					label={__(
-						"Box Shadow",
-						"ultimate-addons-for-gutenberg"
-					)}
+					label={__("Box Shadow", "ultimate-addons-for-gutenberg")}
 					boxShadowColor={{
 						value: boxShadowColor,
 						label: "boxShadowColor",
@@ -1094,10 +1099,7 @@ const Settings = ( props ) => {
 					boxShadowVOffset={{
 						value: boxShadowVOffset,
 						label: "boxShadowVOffset",
-						title: __(
-							"Vertical",
-							"ultimate-addons-for-gutenberg"
-						),
+						title: __("Vertical", "ultimate-addons-for-gutenberg"),
 					}}
 					boxShadowBlur={{
 						value: boxShadowBlur,
@@ -1107,48 +1109,57 @@ const Settings = ( props ) => {
 					boxShadowSpread={{
 						value: boxShadowSpread,
 						label: "boxShadowSpread",
-						title: __(
-							"Spread",
-							"ultimate-addons-for-gutenberg"
-						),
+						title: __("Spread", "ultimate-addons-for-gutenberg"),
 					}}
 					boxShadowPosition={{
 						value: boxShadowPosition,
 						label: "boxShadowPosition",
-						title: __(
-							"Position",
-							"ultimate-addons-for-gutenberg"
-						),
+						title: __("Position", "ultimate-addons-for-gutenberg"),
 					}}
 				/>
 			</PanelBody>
-		)
-	}
+		);
+	};
 
 	const inspectorControlsSettings = (
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab {...UAGTabs.general}>
-				{ generalPanel() }
-				{ postQueryPanel() }
+					{generalPanel()}
+					{postQueryPanel()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
-				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( titleColorPanel() ) }
-				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle && showCount ) && ( countColorPanel() ) }
-				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( bgColorPanel() )}
-				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( boxShadowPanel() )}
-				{ ( 'grid' === layout && 'dropdown' !== listDisplayStyle ) && ( borderPanel() ) }
-				{ ( 'list' === layout && 'dropdown' !== listDisplayStyle ) && ( listPanel() ) }
-				{ ( 'list' === layout && 'dropdown' !== listDisplayStyle ) && ( separatorPanel() ) }
-				{ ( 'dropdown' !== listDisplayStyle ) && ( spacingPanel() ) }
-				{ ( 'list' === layout && 'dropdown' === listDisplayStyle ) && (
-					<p className="uagb-settings-notice">
-						{ __(
-							"There is no style available for the currently selected layout.",
-							'ultimate-addons-for-gutenberg'
-						) }
-					</p>)
-				}
+					{"grid" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						titleColorPanel()}
+					{"grid" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						showCount &&
+						countColorPanel()}
+					{"grid" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						bgColorPanel()}
+					{"grid" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						boxShadowPanel()}
+					{"grid" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						borderPanel()}
+					{"list" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						listPanel()}
+					{"list" === layout &&
+						"dropdown" !== listDisplayStyle &&
+						separatorPanel()}
+					{"dropdown" !== listDisplayStyle && spacingPanel()}
+					{"list" === layout && "dropdown" === listDisplayStyle && (
+						<p className="uagb-settings-notice">
+							{__(
+								"There is no style available for the currently selected layout.",
+								"ultimate-addons-for-gutenberg"
+							)}
+						</p>
+					)}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.advance}></InspectorTab>
 			</InspectorTabs>
@@ -1157,14 +1168,14 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				{ inspectorControlsSettings }
-				{ loadTitleGoogleFonts }
-				{ loadCountGoogleFonts }
-				{ loadListGoogleFonts }
+			<Suspense fallback={lazyLoader()}>
+				{inspectorControlsSettings}
+				{loadTitleGoogleFonts}
+				{loadCountGoogleFonts}
+				{loadListGoogleFonts}
 			</Suspense>
 		</>
 	);
 };
 
-export default React.memo( Settings );
+export default React.memo(Settings);
