@@ -348,6 +348,7 @@ class UAGBInlineNoticeEdit extends Component {
 								]}
 								normal={tabOutputNormal}
 								hover={tabOutputHover}
+								disableBottomSeparator={true}
 							/>
 						</PanelBody>
 						<PanelBody title="Alignment" initialOpen={false}>
