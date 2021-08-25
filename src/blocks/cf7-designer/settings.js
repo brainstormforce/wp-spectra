@@ -588,13 +588,12 @@ const Settings = (props) => {
 					/>
 					{fieldBorderStyle !== "none" && (
 						<>
-							<hr className="uagb-editor__separator" />
-							<h2>{__("Radio & Checkbox Border")}</h2>
-							<RangeControl
+							<Range
 								label={__(
 									"Border Width (px)",
 									"ultimate-addons-for-gutenberg"
 								)}
+								setAttributes={setAttributes}
 								value={radioCheckBorderWidth}
 								onChange={(value) =>
 									setAttributes({
@@ -603,57 +602,14 @@ const Settings = (props) => {
 								}
 								min={0}
 								max={50}
-								allowReset
+								displayUnit={false}
 							/>
-							<ButtonGroup
-								className="uagb-size-type-field"
-								aria-label={__(
-									"Size Type",
-									"ultimate-addons-for-gutenberg"
-								)}
-							>
-								<Button
-									key={"px"}
-									className="uagb-size-btn"
-									isSmall
-									isPrimary={
-										radioCheckBorderRadiusType === "px"
-									}
-									aria-pressed={
-										radioCheckBorderRadiusType === "px"
-									}
-									onClick={() =>
-										setAttributes({
-											radioCheckBorderRadiusType: "px",
-										})
-									}
-								>
-									{"px"}
-								</Button>
-								<Button
-									key={"%"}
-									className="uagb-size-btn"
-									isSmall
-									isPrimary={
-										radioCheckBorderRadiusType === "%"
-									}
-									aria-pressed={
-										radioCheckBorderRadiusType === "%"
-									}
-									onClick={() =>
-										setAttributes({
-											radioCheckBorderRadiusType: "%",
-										})
-									}
-								>
-									{"%"}
-								</Button>
-							</ButtonGroup>
-							<RangeControl
+							<Range
 								label={__(
 									"Border Radius",
 									"ultimate-addons-for-gutenberg"
 								)}
+								setAttributes={setAttributes}
 								value={radioCheckBorderRadius}
 								onChange={(value) =>
 									setAttributes({
@@ -662,30 +618,38 @@ const Settings = (props) => {
 								}
 								min={0}
 								max={100}
-								allowReset
+								unit={{
+									value: radioCheckBorderRadiusType,
+									label: "radioCheckBorderRadiusType",
+								}}
+								units={[
+									{
+										name: __(
+											"Pixel",
+											"ultimate-addons-for-gutenberg"
+										),
+										unitValue: "px",
+									},
+									{
+										name: __(
+											"%",
+											"ultimate-addons-for-gutenberg"
+										),
+										unitValue: "%",
+									},
+								]}
 							/>
-							<p className="uagb-setting-label">
-								{__(
-									"Border Color",
+							<AdvancedPopColorControl
+								label={__(
+									"Color",
 									"ultimate-addons-for-gutenberg"
 								)}
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={{
-											backgroundColor: radioCheckBorderColor,
-										}}
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={radioCheckBorderColor}
-								onChange={(colorValue) =>
+								colorValue={radioCheckBorderColor}
+								onColorChange={(value) =>
 									setAttributes({
-										radioCheckBorderColor: colorValue,
+										radioCheckBorderColor: value,
 									})
 								}
-								allowReset
 							/>
 						</>
 					)}
@@ -697,104 +661,38 @@ const Settings = (props) => {
 	//Submit button settings.
 	const btn_border_setting = (
 		<>
-			<SelectControl
-				label={__("Border Style", "ultimate-addons-for-gutenberg")}
-				value={buttonBorderStyle}
-				onChange={(value) =>
-					setAttributes({ buttonBorderStyle: value })
-				}
-				options={[
-					{
-						value: "none",
-						label: __("None", "ultimate-addons-for-gutenberg"),
+			<Border
+				setAttributes={setAttributes}
+				borderStyle={{
+					value: buttonBorderStyle,
+					label: "buttonBorderStyle",
+					title: __("Border Style", "ultimate-addons-for-gutenberg"),
+				}}
+				borderWidth={{
+					value: buttonBorderWidth,
+					label: "buttonBorderWidth",
+					title: __("Width", "ultimate-addons-for-gutenberg"),
+				}}
+				borderRadius={{
+					value: buttonBorderRadius,
+					label: "buttonBorderRadius",
+					title: __("Radius", "ultimate-addons-for-gutenberg"),
+					displayUnit: true,
+					unit: {
+						value: buttonBorderRadiusType,
+						label: "buttonBorderRadiusType",
 					},
-					{
-						value: "solid",
-						label: __("Solid", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "dotted",
-						label: __("Dotted", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "dashed",
-						label: __("Dashed", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "double",
-						label: __("Double", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "groove",
-						label: __("Groove", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "inset",
-						label: __("Inset", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "outset",
-						label: __("Outset", "ultimate-addons-for-gutenberg"),
-					},
-					{
-						value: "ridge",
-						label: __("Ridge", "ultimate-addons-for-gutenberg"),
-					},
-				]}
-			/>
-			{"none" != buttonBorderStyle && (
-				<RangeControl
-					label={__(
-						"Border Width (px)",
-						"ultimate-addons-for-gutenberg"
-					)}
-					value={buttonBorderWidth}
-					onChange={(value) =>
-						setAttributes({ buttonBorderWidth: value })
-					}
-					min={0}
-					max={50}
-					allowReset
-				/>
-			)}
-			<ButtonGroup
-				className="uagb-size-type-field"
-				aria-label={__("Size Type", "ultimate-addons-for-gutenberg")}
-			>
-				<Button
-					key={"px"}
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={buttonBorderRadiusType === "px"}
-					aria-pressed={buttonBorderRadiusType === "px"}
-					onClick={() =>
-						setAttributes({ buttonBorderRadiusType: "px" })
-					}
-				>
-					{"px"}
-				</Button>
-				<Button
-					key={"%"}
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={buttonBorderRadiusType === "%"}
-					aria-pressed={buttonBorderRadiusType === "%"}
-					onClick={() =>
-						setAttributes({ buttonBorderRadiusType: "%" })
-					}
-				>
-					{"%"}
-				</Button>
-			</ButtonGroup>
-			<RangeControl
-				label={__("Border Radius", "ultimate-addons-for-gutenberg")}
-				value={buttonBorderRadius}
-				onChange={(value) =>
-					setAttributes({ buttonBorderRadius: value })
-				}
-				min={0}
-				max={100}
-				allowReset
+				}}
+				borderColor={{
+					value: buttonBorderColor,
+					label: "buttonBorderColor",
+					title: __("Color", "ultimate-addons-for-gutenberg"),
+				}}
+				borderHoverColor={{
+					value: buttonBorderHoverColor,
+					label: "buttonBorderHoverColor",
+					title: __("Hover Color", "ultimate-addons-for-gutenberg"),
+				}}
 			/>
 		</>
 	);
@@ -813,9 +711,6 @@ const Settings = (props) => {
 					"ultimate-addons-for-gutenberg"
 				)}
 			</p>
-			<hr className="uagb-editor__separator" />
-			<h2>{__("Field Validation", "ultimate-addons-for-gutenberg")}</h2>
-
 			<SelectControl
 				label={__(
 					"Validation Message Position",
@@ -839,9 +734,11 @@ const Settings = (props) => {
 					},
 				]}
 			/>
-			<h2>{__("Validation Font", "ultimate-addons-for-gutenberg")}</h2>
 			<TypographyControl
-				label={__("Typography", "ultimate-addons-for-gutenberg")}
+				label={__(
+					"Validation Typography",
+					"ultimate-addons-for-gutenberg"
+				)}
 				attributes={attributes}
 				setAttributes={setAttributes}
 				loadGoogleFonts={{
@@ -893,50 +790,31 @@ const Settings = (props) => {
 					label: "validationMsgLineHeightTablet",
 				}}
 			/>
-			<p className="uagb-setting-label">
-				{__(
+			<AdvancedPopColorControl
+				label={__(
 					"Validation Message Color",
 					"ultimate-addons-for-gutenberg"
 				)}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: validationMsgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={validationMsgColor}
-				onChange={(colorValue) =>
-					setAttributes({ validationMsgColor: colorValue })
+				colorValue={validationMsgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						validationMsgColor: value,
+					})
 				}
-				allowReset
 			/>
-
 			{validationMsgPosition === "bottom_right" && (
 				<>
-					<p className="uagb-setting-label">
-						{__(
+					<AdvancedPopColorControl
+						label={__(
 							"Message Background Color",
 							"ultimate-addons-for-gutenberg"
 						)}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{
-									backgroundColor: validationMsgBgColor,
-								}}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={validationMsgBgColor}
-						onChange={(colorValue) =>
+						colorValue={validationMsgBgColor}
+						onColorChange={(value) =>
 							setAttributes({
-								validationMsgBgColor: colorValue,
+								validationMsgBgColor: value,
 							})
 						}
-						allowReset
 					/>
 				</>
 			)}
@@ -953,28 +831,17 @@ const Settings = (props) => {
 
 			{enableHighlightBorder && (
 				<>
-					<p className="uagb-setting-label">
-						{__(
+					<AdvancedPopColorControl
+						label={__(
 							"Highlight Border Color",
 							"ultimate-addons-for-gutenberg"
 						)}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{
-									backgroundColor: highlightBorderColor,
-								}}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={highlightBorderColor}
-						onChange={(colorValue) =>
+						colorValue={highlightBorderColor}
+						onColorChange={(value) =>
 							setAttributes({
-								highlightBorderColor: colorValue,
+								highlightBorderColor: value,
 							})
 						}
-						allowReset
 					/>
 				</>
 			)}
@@ -1024,164 +891,123 @@ const Settings = (props) => {
 					label: "msgLineHeightTablet",
 				}}
 			/>
+
 			<hr className="uagb-editor__separator" />
 			<h2>{__("Success Message", "ultimate-addons-for-gutenberg")}</h2>
-			<p className="uagb-setting-label">
-				{__("Message Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: successMsgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={successMsgColor}
-				onChange={(colorValue) =>
-					setAttributes({ successMsgColor: colorValue })
+			<AdvancedPopColorControl
+				label={__("Message Color", "ultimate-addons-for-gutenberg")}
+				colorValue={successMsgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						successMsgColor: value,
+					})
 				}
-				allowReset
 			/>
-
-			<p className="uagb-setting-label">
-				{__(
+			<AdvancedPopColorControl
+				label={__(
 					"Message Background Color",
 					"ultimate-addons-for-gutenberg"
 				)}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: successMsgBgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={successMsgBgColor}
-				onChange={(colorValue) =>
-					setAttributes({ successMsgBgColor: colorValue })
+				colorValue={successMsgBgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						successMsgBgColor: value,
+					})
 				}
-				allowReset
 			/>
-
-			<p className="uagb-setting-label">
-				{__("Message Border Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: successMsgBorderColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={successMsgBorderColor}
-				onChange={(colorValue) =>
-					setAttributes({ successMsgBorderColor: colorValue })
-				}
-				allowReset
-			/>
-			<hr className="uagb-editor__separator" />
-			<h2>{__("Error Message", "ultimate-addons-for-gutenberg")}</h2>
-			<p className="uagb-setting-label">
-				{__("Message Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: errorMsgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={errorMsgColor}
-				onChange={(colorValue) =>
-					setAttributes({ errorMsgColor: colorValue })
-				}
-				allowReset
-			/>
-
-			<p className="uagb-setting-label">
-				{__(
-					"Message Background Color",
+			<AdvancedPopColorControl
+				label={__(
+					"Message Border Color",
 					"ultimate-addons-for-gutenberg"
 				)}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: errorMsgBgColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={errorMsgBgColor}
-				onChange={(colorValue) =>
-					setAttributes({ errorMsgBgColor: colorValue })
+				colorValue={successMsgBorderColor}
+				onColorChange={(value) =>
+					setAttributes({
+						successMsgBorderColor: value,
+					})
 				}
-				allowReset
-			/>
-
-			<p className="uagb-setting-label">
-				{__("Message Border Color", "ultimate-addons-for-gutenberg")}
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={{ backgroundColor: errorMsgBorderColor }}
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={errorMsgBorderColor}
-				onChange={(colorValue) =>
-					setAttributes({ errorMsgBorderColor: colorValue })
-				}
-				allowReset
 			/>
 
 			<hr className="uagb-editor__separator" />
-			<RangeControl
+			<h2>{__("Error Message", "ultimate-addons-for-gutenberg")}</h2>
+			<AdvancedPopColorControl
+				label={__("Message Color", "ultimate-addons-for-gutenberg")}
+				colorValue={errorMsgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						errorMsgColor: value,
+					})
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					"Message Background Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={errorMsgBgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						errorMsgBgColor: value,
+					})
+				}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					"Message Border Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={errorMsgBorderColor}
+				onColorChange={(value) =>
+					setAttributes({
+						errorMsgBorderColor: value,
+					})
+				}
+			/>
+
+			<hr className="uagb-editor__separator" />
+			<Range
 				label={__(
 					"Message Border Width (px)",
 					"ultimate-addons-for-gutenberg"
 				)}
+				setAttributes={setAttributes}
 				value={msgBorderSize}
-				onChange={(value) => setAttributes({ msgBorderSize: value })}
+				onChange={(value) =>
+					setAttributes({
+						msgBorderSize: value,
+					})
+				}
 				min={0}
 				max={50}
-				allowReset
 			/>
-			<ButtonGroup
-				className="uagb-size-type-field"
-				aria-label={__("Size Type", "ultimate-addons-for-gutenberg")}
-			>
-				<Button
-					key={"px"}
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={msgBorderRadiusType === "px"}
-					aria-pressed={msgBorderRadiusType === "px"}
-					onClick={() => setAttributes({ msgBorderRadiusType: "px" })}
-				>
-					{"px"}
-				</Button>
-				<Button
-					key={"%"}
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={msgBorderRadiusType === "%"}
-					aria-pressed={msgBorderRadiusType === "%"}
-					onClick={() => setAttributes({ msgBorderRadiusType: "%" })}
-				>
-					{"%"}
-				</Button>
-			</ButtonGroup>
-			<RangeControl
+			<Range
 				label={__(
 					"Message Border Radius",
 					"ultimate-addons-for-gutenberg"
 				)}
+				setAttributes={setAttributes}
 				value={msgBorderRadius}
-				onChange={(value) => setAttributes({ msgBorderRadius: value })}
+				onChange={(value) =>
+					setAttributes({
+						msgBorderRadius: value,
+					})
+				}
 				min={0}
 				max={100}
-				allowReset
+				unit={{
+					value: msgBorderRadiusType,
+					label: "msgBorderRadiusType",
+				}}
+				units={[
+					{
+						name: __("Pixel", "ultimate-addons-for-gutenberg"),
+						unitValue: "px",
+					},
+					{
+						name: __("%", "ultimate-addons-for-gutenberg"),
+						unitValue: "%",
+					},
+				]}
 			/>
 			<hr className="uagb-editor__separator" />
 			<h2>
@@ -1425,26 +1251,6 @@ const Settings = (props) => {
 				}
 				allowReset
 			/>
-			{"none" != buttonBorderStyle && (
-				<>
-					<p className="uagb-setting-label">
-						{__("Border Color", "ultimate-addons-for-gutenberg")}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{ backgroundColor: buttonBorderColor }}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={buttonBorderColor}
-						onChange={(colorValue) =>
-							setAttributes({ buttonBorderColor: colorValue })
-						}
-						allowReset
-					/>
-				</>
-			)}
 		</>
 	);
 
@@ -1482,33 +1288,6 @@ const Settings = (props) => {
 				}
 				allowReset
 			/>
-			{"none" != buttonBorderStyle && (
-				<>
-					<p className="uagb-setting-label">
-						{__(
-							"Border Hover Color",
-							"ultimate-addons-for-gutenberg"
-						)}
-						<span className="components-base-control__label">
-							<span
-								className="component-color-indicator"
-								style={{
-									backgroundColor: buttonBorderHoverColor,
-								}}
-							></span>
-						</span>
-					</p>
-					<ColorPalette
-						value={buttonBorderHoverColor}
-						onChange={(colorValue) =>
-							setAttributes({
-								buttonBorderHoverColor: colorValue,
-							})
-						}
-						allowReset
-					/>
-				</>
-			)}
 		</>
 	);
 
