@@ -209,9 +209,7 @@ const SchemaNotices = ( props ) => {
 			emptyItems.push( msg );
 		}
 		if (
-			'undefined' === typeof mainimage.url ||
-			null === mainimage.url ||
-			'' === mainimage.url ||
+			! mainimage || mainimage === "null" || mainimage.url === "null" || mainimage.url === "" ||
 			false == enableImage
 		) {
 			msg = __( 'Missing review Image', 'ultimate-addons-for-gutenberg' );
