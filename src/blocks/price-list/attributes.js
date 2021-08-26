@@ -282,7 +282,7 @@ const attributes = {
 	},
 	seperatorWidthType:{
 		type: 'string',
-		default: 'px'
+		default: '%'
 	},
 	rowGapType:{
 		type: 'string',
