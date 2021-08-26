@@ -17,6 +17,7 @@ import InspectorTab, {
 import TypographyControl from '@Components/typography';
 import Range from "@Components/range/Range.js";
 import UAGTabsControl from "../../components/tabs";
+import MultiButtonsControl from "../../components/multi-buttons-control";
 
 import {
 	BlockControls,
@@ -26,7 +27,6 @@ import {
 
 import {
 	PanelBody,
-	SelectControl,
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
@@ -134,31 +134,33 @@ const Settings = ( props ) => {
 				/>
 				{ '' !== icon && (
 					<>
-						<SelectControl
-							label={ __(
-								'Icon Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ iconPosition }
-							onChange={ ( value ) =>
-								setAttributes( { iconPosition: value } )
-							}
-							options={ [
+						<MultiButtonsControl
+							setAttributes={setAttributes}
+							label={__("Icon Position", "ultimate-addons-for-gutenberg")}
+							data={{
+								value: iconPosition,
+								label: "iconPosition",
+							}}
+							className="uagb-multi-button-alignment-control"
+							options={[
 								{
-									value: 'before',
-									label: __(
-										'Before Text',
-										'ultimate-addons-for-gutenberg'
+									value: "before",
+									label: ("Before Text"),
+									tooltip: __(
+										"Before Text",
+										"ultimate-addons-for-gutenberg"
 									),
 								},
 								{
-									value: 'after',
-									label: __(
-										'After Text',
-										'ultimate-addons-for-gutenberg'
+									value: "after",
+									label: ("After Text"),
+									tooltip: __(
+										"After Text",
+										"ultimate-addons-for-gutenberg"
 									),
 								},
-							] }
+							]}
+							showIcons={false}
 						/>
 						<Range
 							label={__(
