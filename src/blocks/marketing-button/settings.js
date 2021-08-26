@@ -206,6 +206,7 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
+			    title={ __( 'Heading' ) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl
@@ -733,6 +734,22 @@ const Settings = ( props ) => {
 						value: spacingLink,
 						label: "spacingLink",
 					}}
+					units={[
+						{
+							name: __(
+								"Pixel",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "px",
+						},
+						{
+							name: __(
+								"%",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "%",
+						},
+					]}
 				/>
 				</PanelBody>
 		);
