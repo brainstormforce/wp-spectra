@@ -1916,6 +1916,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$image_top_margin    = isset( $attr['imageTopMargin'] ) ? $attr['imageTopMargin'] : $attr['imgTopMargin'];
+			$image_bottom_margin = isset( $attr['imageBottomMargin'] ) ? $attr['imageBottomMargin'] : $attr['imgBottomMargin'];
+			$image_left_margin   = isset( $attr['imageLeftMargin'] ) ? $attr['imageLeftMargin'] : $attr['imgLeftMargin'];
+			$image_right_margin  = isset( $attr['imageRightMargin'] ) ? $attr['imageRightMargin'] : $attr['imgRightMargin'];
+
+			$auto_image_left_margin         = ( 'auto' === $image_left_margin ) ? 'auto' : UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] );
+			$auto_image_right_margin        = ( 'auto' === $image_right_margin ) ? 'auto' : UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] );
+			$auto_image_left_margin_mobile  = ( 'auto' === $attr['imageMarginLeftMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['imageMarginUnit'] );
+			$auto_image_right_margin_mobile = ( 'auto' === $attr['imageMarginRightMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['imageMarginUnit'] );
+			$auto_image_left_margin_tablet  = ( 'auto' === $attr['imageMarginLeftTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['imageMarginUnit'] );
+			$auto_image_right_margin_tablet = ( 'auto' === $attr['imageMarginRightTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['imageMarginUnit'] );
+
 			$icon_size   = UAGB_Helper::get_css_value( $attr['socialFontSize'], $attr['socialFontSizeType'] );
 			$m_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeMobile'], $attr['socialFontSizeType'] );
 			$t_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeTablet'], $attr['socialFontSizeType'] );
@@ -1970,24 +1982,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 				),
 				' .uagb-team__image-wrap'            => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['imgTopMargin'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imgBottomMargin'], 'px' ),
-					'margin-left'   => UAGB_Helper::get_css_value( $attr['imgLeftMargin'], 'px' ),
-					'margin-right'  => UAGB_Helper::get_css_value( $attr['imgRightMargin'], 'px' ),
+					'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
+					'margin-left'   => $auto_image_left_margin,
+					'margin-right'  => $auto_image_right_margin,
 					'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 				),
 			);
-
-			if ( 'above' === $attr['imgPosition'] ) {
-				if ( 'center' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
-					$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'left' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
-				} elseif ( 'right' === $attr['align'] ) {
-					$selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
-				}
-			}
 
 			if ( 'above' !== $attr['imgPosition'] && 'middle' === $attr['imgAlign'] ) {
 				$selectors[' .uagb-team__image-wrap']['align-self'] = 'center';
@@ -2009,6 +2010,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'  => $m_icon_size,
 					'height' => $m_icon_size,
 				),
+				' .uagb-team__image-wrap'      => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['imageMarginUnit'] ),
+					'margin-left'   => $auto_image_left_margin_mobile,
+					'margin-right'  => $auto_image_right_margin_mobile,
+				),
 			);
 
 			$t_selectors = array(
@@ -2021,6 +2028,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-team__social-icon svg' => array(
 					'width'  => $t_icon_size,
 					'height' => $t_icon_size,
+				),
+				' .uagb-team__image-wrap'      => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['imageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['imageMarginUnit'] ),
+					'margin-left'   => $auto_image_left_margin_tablet,
+					'margin-right'  => $auto_image_right_margin_tablet,
 				),
 			);
 
