@@ -1285,7 +1285,7 @@ const Settings = ( props ) => {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'General' ) } initialOpen={ true }>
-					<RangeControl
+					<Range
 						label={ __(
 							'Number of Testimonials',
 							'ultimate-addons-for-gutenberg'
@@ -1327,57 +1327,36 @@ const Settings = ( props ) => {
 						} }
 						min={ 0 }
 						max={ 50 }
-						allowReset
+						setAttributes={setAttributes}
+						displayUnit = {false}
 					/>
-					<ColumnResponsive />
-					{ 'Desktop' === deviceType && (
-						<>
-							<RangeControl
-								label={ __(
-									'Columns',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ columns }
-								onChange={ ( value ) =>
-									setAttributes( { columns: value } )
-								}
-								min={ 1 }
-								max={ test_item_count }
-							/>
-						</>
-					) }
-					{ 'Tablet' === deviceType && (
-						<>
-							<RangeControl
-								label={ __(
-									'Columns',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ tcolumns }
-								onChange={ ( value ) =>
-									setAttributes( { tcolumns: value } )
-								}
-								min={ 1 }
-								max={ test_item_count }
-							/>
-						</>
-					) }
-					{ 'Mobile' === deviceType && (
-						<>
-							<RangeControl
-								label={ __(
-									'Columns',
-									'ultimate-addons-for-gutenberg'
-								) }
-								value={ mcolumns }
-								onChange={ ( value ) =>
-									setAttributes( { mcolumns: value } )
-								}
-								min={ 1 }
-								max={ test_item_count }
-							/>
-						</>
-					) }
+					<ResponsiveSlider
+						label={__(
+							"Columns",
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							desktop: {
+								value: columns,
+								label: "columns",
+							},
+							tablet: {
+								value: tcolumns,
+								label: "tcolumns",
+							},
+							mobile: {
+								value: mcolumns,
+								label: "mcolumns",
+							},
+						}}
+						min={1}
+						max={test_item_count}
+						unit={{
+							value: columnsUnit,
+							label: "columnsUnit",
+						}}
+						setAttributes={setAttributes}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
