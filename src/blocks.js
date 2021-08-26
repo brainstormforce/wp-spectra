@@ -35,7 +35,7 @@ import "./blocks/call-to-action/block.js";
 // import "./blocks/blockquote/block.js";
 // import "./blocks/marketing-button/block.js";
 import "./blocks/table-of-contents/block.js";
-// import "./blocks/how-to/block.js";
+import "./blocks/how-to/block.js";
 import "./blocks/faq/block.js";
 import "./blocks/faq-child/block.js";
 import "./blocks/inline-notice/block.js";
