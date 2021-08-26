@@ -4,15 +4,14 @@ import React from 'react';
 import {
 	AlignmentToolbar,
 	BlockControls,
-	InspectorControls,
-	MediaUpload,
+	InspectorControls
 } from '@wordpress/block-editor';
 import UAGImage from "../../components/image";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
-import { BaseControl, Button, PanelBody } from '@wordpress/components';
+import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -83,16 +82,6 @@ const Settings = ( props ) => {
 								backgroundImage={image}
 								onRemoveImage={onRemoveRestImage}
 							/>
-							{ image && (
-								<Button
-									className="uagb-rm-btn"
-									onClick={ onRemoveRestImage }
-									isLink
-									isDestructive
-								>
-									{ __( 'Remove Image' ) }
-								</Button>
-							) }
 						</PanelBody>
 					</InspectorTab>
 					<InspectorTab {...UAGTabs.advance}></InspectorTab>
