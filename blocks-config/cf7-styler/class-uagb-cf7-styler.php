@@ -533,143 +533,143 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'messageTopPaddingDesktop'           => array(
+						'messageTopPaddingDesktop'      => array(
 							'type' => 'number',
 						),
-						'messageBottomPaddingDesktop'           => array(
+						'messageBottomPaddingDesktop'   => array(
 							'type' => 'number',
 						),
-						'messageLeftPaddingDesktop'           => array(
+						'messageLeftPaddingDesktop'     => array(
 							'type' => 'number',
 						),
-						'messageRightPaddingDesktop'           => array(
-							'type' => 'number',
-						),
-						
-						'messageTopPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'messageBottomPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'messageLeftPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'messageRightPaddingTablet'           => array(
+						'messageRightPaddingDesktop'    => array(
 							'type' => 'number',
 						),
 
-						'messageTopPaddingMobile'           => array(
+						'messageTopPaddingTablet'       => array(
 							'type' => 'number',
 						),
-						'messageBottomPaddingMobile'           => array(
+						'messageBottomPaddingTablet'    => array(
 							'type' => 'number',
 						),
-						'messageLeftPaddingMobile'           => array(
+						'messageLeftPaddingTablet'      => array(
 							'type' => 'number',
 						),
-						'messageRightPaddingMobile'           => array(
+						'messageRightPaddingTablet'     => array(
 							'type' => 'number',
 						),
-						'messagePaddingTypeDesktop'    => array(
+
+						'messageTopPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingMobile'    => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'messagePaddingTypeDesktop'     => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'messageSpacingLink'    => array(
+						'messageSpacingLink'            => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
 
-						'buttonTopPaddingDesktop'           => array(
+						'buttonTopPaddingDesktop'       => array(
 							'type' => 'number',
 						),
-						'buttonBottomPaddingDesktop'           => array(
+						'buttonBottomPaddingDesktop'    => array(
 							'type' => 'number',
 						),
-						'buttonLeftPaddingDesktop'           => array(
+						'buttonLeftPaddingDesktop'      => array(
 							'type' => 'number',
 						),
-						'buttonRightPaddingDesktop'           => array(
-							'type' => 'number',
-						),
-						
-						'buttonTopPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'buttonBottomPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'buttonLeftPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'buttonRightPaddingTablet'           => array(
+						'buttonRightPaddingDesktop'     => array(
 							'type' => 'number',
 						),
 
-						'buttonTopPaddingMobile'           => array(
+						'buttonTopPaddingTablet'        => array(
 							'type' => 'number',
 						),
-						'buttonBottomPaddingMobile'           => array(
+						'buttonBottomPaddingTablet'     => array(
 							'type' => 'number',
 						),
-						'buttonLeftPaddingMobile'           => array(
+						'buttonLeftPaddingTablet'       => array(
 							'type' => 'number',
 						),
-						'buttonRightPaddingMobile'           => array(
+						'buttonRightPaddingTablet'      => array(
 							'type' => 'number',
 						),
-						'buttonPaddingTypeDesktop'    => array(
+
+						'buttonTopPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'buttonPaddingTypeDesktop'      => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonSpacingLink'    => array(
+						'buttonSpacingLink'             => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
 
-						'fieldTopPaddingDesktop'           => array(
+						'fieldTopPaddingDesktop'        => array(
 							'type' => 'number',
 						),
-						'fieldBottomPaddingDesktop'           => array(
+						'fieldBottomPaddingDesktop'     => array(
 							'type' => 'number',
 						),
-						'fieldLeftPaddingDesktop'           => array(
+						'fieldLeftPaddingDesktop'       => array(
 							'type' => 'number',
 						),
-						'fieldRightPaddingDesktop'           => array(
-							'type' => 'number',
-						),
-						
-						'fieldTopPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'fieldBottomPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'fieldLeftPaddingTablet'           => array(
-							'type' => 'number',
-						),
-						'fieldRightPaddingTablet'           => array(
+						'fieldRightPaddingDesktop'      => array(
 							'type' => 'number',
 						),
 
-						'fieldTopPaddingMobile'           => array(
+						'fieldTopPaddingTablet'         => array(
 							'type' => 'number',
 						),
-						'fieldBottomPaddingMobile'           => array(
+						'fieldBottomPaddingTablet'      => array(
 							'type' => 'number',
 						),
-						'fieldLeftPaddingMobile'           => array(
+						'fieldLeftPaddingTablet'        => array(
 							'type' => 'number',
 						),
-						'fieldRightPaddingMobile'           => array(
+						'fieldRightPaddingTablet'       => array(
 							'type' => 'number',
 						),
-						'fieldPaddingTypeDesktop'    => array(
+
+						'fieldTopPaddingMobile'         => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'fieldPaddingTypeDesktop'       => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldSpacingLink'    => array(
+						'fieldSpacingLink'              => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
