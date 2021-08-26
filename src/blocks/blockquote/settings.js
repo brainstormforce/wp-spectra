@@ -11,6 +11,7 @@ import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/Inspector
 import ResponsiveSlider from "../../components/responsive-slider";
 import SpacingControl from "../../components/spacing-control";
 import UAGTabsControl from "../../components/tabs";
+import UAGImage from "../../components/image";
 import {
 	PanelBody,
 	SelectControl,
@@ -249,45 +250,11 @@ const Settings = ( props ) => {
 	// Image controls.
 	const imageControls = (
 		<>
-			
-			<BaseControl
-				id="blockquote-image-controls"
-				className="editor-bg-image-control"
-				label={ __( 'Author Image', 'ultimate-addons-for-gutenberg' ) }
-			>
-				
-				<div className="uagb-bg-image">
-					<MediaUpload
-						title={ __(
-							'Select Image',
-							'ultimate-addons-for-gutenberg'
-						) }
-						onSelect={ onSelectImage }
-						allowedTypes={ [ 'image' ] }
-						value={ authorImage }
-						render={ ( { open } ) => (
-							<Button isSecondary onClick={ open }>
-								{ imageName }
-							</Button>
-						) }
-					/>
-				</div>
-				{ authorImage &&
-					authorImage.url !== 'null' &&
-					authorImage.url !== '' && (
-						<Button
-							className="uagb-rm-btn"
-							onClick={ onRemoveImage }
-							isLink
-							isDestructive
-						>
-							{ __(
-								'Remove Image',
-								'ultimate-addons-for-gutenberg'
-							) }
-						</Button>
-					) }
-			</BaseControl>
+			<UAGImage
+				onSelectImage={onSelectImage}
+				backgroundImage={authorImage}
+				onRemoveImage={onRemoveImage}
+			/>
 			{ authorImage &&
 			authorImage.url !== 'null' &&
 			authorImage.url !== '' && (
