@@ -626,6 +626,53 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+
+						'fieldTopPaddingDesktop'           => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingDesktop'           => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingDesktop'           => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingDesktop'           => array(
+							'type' => 'number',
+						),
+						
+						'fieldTopPaddingTablet'           => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingTablet'           => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingTablet'           => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingTablet'           => array(
+							'type' => 'number',
+						),
+
+						'fieldTopPaddingMobile'           => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingMobile'           => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingMobile'           => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingMobile'           => array(
+							'type' => 'number',
+						),
+						'fieldPaddingTypeDesktop'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldSpacingLink'    => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)
