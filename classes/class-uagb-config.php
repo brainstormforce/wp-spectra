@@ -2076,7 +2076,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorThickness'         => '1',
 							'seperatorColor'             => '#b2b4b5',
 							'imageWidthType'             => 'px',
-							'seperatorWidthType'         => 'px',
+							'seperatorWidthType'         => '%',
 							'rowGapType'                 => 'px',
 							'columnGapType'              => 'px',
 							'titleSpaceType'             => 'px',
