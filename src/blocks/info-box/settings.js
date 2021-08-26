@@ -1,25 +1,27 @@
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import UAGIconPicker from "../../components/icon-picker";
 import { __ } from "@wordpress/i18n";
-import renderSVG from "@Controls/renderIcon";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import TypographyControl from "@Components/typography";
 import WebfontLoader from "@Components/typography/fontloader";
-import UAGBIcon from "@Controls/UAGBIcon.json";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
 import ResponsiveSlider from "../../components/responsive-slider";
+import UAGImage from "../../components/image";
+import MultiButtonsControl from "../../components/multi-buttons-control";
+
 $ = jQuery;
 
 import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from "@wordpress/block-editor";
 
 import {
@@ -27,11 +29,8 @@ import {
 	SelectControl,
 	ToggleControl,
 	TextControl,
-	BaseControl,
-	Button,
 } from "@wordpress/components";
 
-let svg_icons = Object.keys(UAGBIcon);
 let imageSizeOptions = [
 	{
 		value: "thumbnail",
@@ -465,60 +464,20 @@ const Settings = (props) => {
 					)}
 				{source_type == "icon" && (
 					<>
-						<p className="components-base-control__label">
-							{__("Icon", "ultimate-addons-for-gutenberg")}
-						</p>
-						<FontIconPicker
-							icons={svg_icons}
-							renderFunc={renderSVG}
-							theme="default"
+						<UAGIconPicker
+							label={__("Icon", "ultimate-addons-for-gutenberg")}
 							value={icon}
 							onChange={(value) => setAttributes({ icon: value })}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
 					</>
 				)}
 				{source_type == "image" && (
 					<>
-						<BaseControl
-							className="editor-bg-image-control"
-							label={__("Image", "ultimate-addons-for-gutenberg")}
-							id={__("Image", "ultimate-addons-for-gutenberg")}
-						>
-							<MediaUpload
-								title={__(
-									"Select Image",
-									"ultimate-addons-for-gutenberg"
-								)}
-								onSelect={onSelectImage}
-								allowedTypes={["image"]}
-								value={iconImage}
-								render={({ open }) => (
-									<Button isSecondary onClick={open}>
-										{imageName}
-									</Button>
-								)}
-							/>
-							{iconImage &&
-								iconImage.url !== "null" &&
-								iconImage.url !== "" && (
-									<Button
-										className="uagb-rm-btn"
-										onClick={onRemoveImage}
-										isLink
-										isDestructive
-									>
-										{__(
-											"Remove Image",
-											"ultimate-addons-for-gutenberg"
-										)}
-									</Button>
-								)}
-						</BaseControl>
+						<UAGImage
+							onSelectImage={onSelectImage}
+							backgroundImage={iconImage}
+							onRemoveImage={onRemoveImage}
+						/>
 						{iconImage &&
 							iconImage.url !== "null" &&
 							iconImage.url !== "" && (
@@ -563,15 +522,16 @@ const Settings = (props) => {
 
 				{showTitle && (
 					<>
-						<SelectControl
+						<MultiButtonsControl
+							setAttributes={setAttributes}
 							label={__(
 								"Title Tag",
 								"ultimate-addons-for-gutenberg"
 							)}
-							value={headingTag}
-							onChange={(value) =>
-								setAttributes({ headingTag: value })
-							}
+							data={{
+								value: headingTag,
+								label: "headingTag",
+							}}
 							options={[
 								{ value: "h1", label: __("H1") },
 								{ value: "h2", label: __("H2") },
@@ -579,6 +539,7 @@ const Settings = (props) => {
 								{ value: "h4", label: __("H4") },
 								{ value: "h5", label: __("H5") },
 								{ value: "h6", label: __("H6") },
+								{ value: "p", label: __("P") },
 							]}
 						/>
 					</>
@@ -743,22 +704,15 @@ const Settings = (props) => {
 				)}
 				{ctaType !== "all" && ctaType !== "none" && (
 					<>
-						<p>
-							{__("Button Icon", "ultimate-addons-for-gutenberg")}
-						</p>
-						<FontIconPicker
-							icons={svg_icons}
-							renderFunc={renderSVG}
-							theme="default"
+						<UAGIconPicker
+							label={__(
+								"Button Icon",
+								"ultimate-addons-for-gutenberg"
+							)}
 							value={ctaIcon}
 							onChange={(value) =>
 								setAttributes({ ctaIcon: value })
 							}
-							isMulti={false}
-							noSelectedPlaceholder={__(
-								"Select Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
 						/>
 					</>
 				)}
@@ -1903,7 +1857,9 @@ const Settings = (props) => {
 						{seperatorSettings()}
 						{ctaSettings()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.style}>{styleSettings()}</InspectorTab>
+					<InspectorTab {...UAGTabs.style}>
+						{styleSettings()}
+					</InspectorTab>
 					<InspectorTab {...UAGTabs.advance}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

@@ -223,9 +223,6 @@ const Settings = ( props ) => {
 						}
 					/>
 				) }
-				<h2>
-					{ __( 'Primary Heading', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
 				<SelectControl
 					label={ __( 'Tag' ) }
 					value={ headingTag }

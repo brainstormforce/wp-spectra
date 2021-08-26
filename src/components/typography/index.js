@@ -200,10 +200,12 @@ const TypographyControl = (props) => {
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontAdvancedControls = (
 			<Button
-					className='uag-typography-button'
-					aria-pressed={ showAdvancedControls }
-					onClick={() => toggleAdvancedControls(!showAdvancedControls)}
-				><Dashicon icon="edit" /></Button>
+				className="uag-typography-button"
+				aria-pressed={showAdvancedControls}
+				onClick={() => toggleAdvancedControls(!showAdvancedControls)}
+			>
+				<Dashicon icon="edit" />
+			</Button>
 		);
 	} else {
 		showAdvancedFontControls = (
@@ -236,14 +238,16 @@ const TypographyControl = (props) => {
 	if (true !== disableFontFamily && true !== disableFontSize) {
 		fontTypoAdvancedControls = (
 			<div className="uag-typography-option-actions">
-				<span className="uag-typography-main-label">{props.label}</span>
+				<span className="uag-control-label">{props.label}</span>
 				{fontAdvancedControls}
 			</div>
 		);
 	}
 
 	return (
-		<div className={`uag-typography-options ${activeClass}`}>
+		<div
+			className={`components-base-control uag-typography-options ${activeClass}`}
+		>
 			{!disableAdvancedOptions && (
 				<>
 					{fontTypoAdvancedControls}

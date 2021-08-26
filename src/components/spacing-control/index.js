@@ -12,7 +12,7 @@ import {
 	Dashicon,
 } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
-import { useState } from "@wordpress/element";
+import { useState, useEffect } from "@wordpress/element";
 
 const SpacingControl = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -26,6 +26,13 @@ const SpacingControl = (props) => {
 	const deviceType = useSelect((select) => {
 		return select("core/edit-post").__experimentalGetPreviewDeviceType();
 	}, []);
+
+	let defaultCache = {
+		...props,
+		resetDisabled: true,
+	};
+
+	const [cachedValue, setCacheValue] = useState(defaultCache);
 
 	const {
 		label,
@@ -48,6 +55,24 @@ const SpacingControl = (props) => {
 		setAttributes,
 	} = props;
 
+	useEffect(() => {
+		let cachedValueUpdate = { ...cachedValue };
+
+		if (undefined !== props) {
+			cachedValueUpdate = { ...props, ...cachedValue };
+			setCacheValue(cachedValueUpdate);
+		}
+	}, []);
+
+	useEffect(() => {
+		let cachedValueUpdate = { ...cachedValue };
+		let propsValue = { ...props, resetDisabled: true };
+		if (JSON.stringify(cachedValueUpdate) !== JSON.stringify(propsValue)) {
+			cachedValueUpdate["resetDisabled"] = false;
+			setCacheValue(cachedValueUpdate);
+		}
+	}, [props]);
+
 	const [displayResponsive, toggleResponsive] = useState(false);
 
 	const {
@@ -69,128 +94,146 @@ const SpacingControl = (props) => {
 		}
 	};
 	const changeLinkedValues = (newValue, device) => {
-		if ("desktop" === device) {
-			setAttributes({ [valueTop.label]: newValue });
-			setAttributes({ [valueRight.label]: newValue });
-			setAttributes({ [valueBottom.label]: newValue });
-			setAttributes({ [valueLeft.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueTopTablet.label]: newValue });
-			setAttributes({ [valueRightTablet.label]: newValue });
-			setAttributes({ [valueBottomTablet.label]: newValue });
-			setAttributes({ [valueLeftTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueTopMobile.label]: newValue });
-			setAttributes({ [valueRightMobile.label]: newValue });
-			setAttributes({ [valueBottomMobile.label]: newValue });
-			setAttributes({ [valueLeftMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				// code block
+				setAttributes({ [valueTop.label]: newValue });
+				setAttributes({ [valueRight.label]: newValue });
+				setAttributes({ [valueBottom.label]: newValue });
+				setAttributes({ [valueLeft.label]: newValue });
+				break;
+			case "tablet":
+				// code block
+				setAttributes({ [valueTopTablet.label]: newValue });
+				setAttributes({ [valueRightTablet.label]: newValue });
+				setAttributes({ [valueBottomTablet.label]: newValue });
+				setAttributes({ [valueLeftTablet.label]: newValue });
+				break;
+			case "mobile":
+				// code block
+				setAttributes({ [valueTopMobile.label]: newValue });
+				setAttributes({ [valueRightMobile.label]: newValue });
+				setAttributes({ [valueBottomMobile.label]: newValue });
+				setAttributes({ [valueLeftMobile.label]: newValue });
+				break;
 		}
 	};
-	const onChangeTopValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeTopValue = (event, device, value = "") => {
+		let newValue = value;
+
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
-		if ("desktop" === device) {
-			setAttributes({ [valueTop.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueTopTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueTopMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueTop.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueTopTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueTopMobile.label]: newValue });
+				break;
 		}
 	};
 
-	const onChangeRightValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeRightValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
 
-		if ("desktop" === device) {
-			setAttributes({ [valueRight.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueRightTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueRightMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueRight.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueRightTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueRightMobile.label]: newValue });
+				break;
 		}
 	};
 
-	const onChangeBottomValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeBottomValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
 
-		if ("desktop" === device) {
-			setAttributes({ [valueBottom.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueBottomTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueBottomMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueBottom.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueBottomTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueBottomMobile.label]: newValue });
+				break;
 		}
 	};
 
-	const onChangeLeftValue = (event, device) => {
-		const newValue =
-			event.target.value === "" ? undefined : Number(event.target.value);
+	const onChangeLeftValue = (event, device, value = "") => {
+		let newValue = value;
 
+		if ("" === value) {
+			newValue =
+				event.target.value === ""
+					? undefined
+					: Number(event.target.value);
+		}
 		if (link.value) {
 			changeLinkedValues(newValue, device);
 		}
-
-		if ("desktop" === device) {
-			setAttributes({ [valueLeft.label]: newValue });
-		} else if ("tablet" === device) {
-			setAttributes({ [valueLeftTablet.label]: newValue });
-		} else if ("mobile" === device) {
-			setAttributes({ [valueLeftMobile.label]: newValue });
+		switch (device) {
+			case "desktop":
+				setAttributes({ [valueLeft.label]: newValue });
+				break;
+			case "tablet":
+				setAttributes({ [valueLeftTablet.label]: newValue });
+				break;
+			case "mobile":
+				setAttributes({ [valueLeftMobile.label]: newValue });
+				break;
 		}
 	};
 
-	const unitSizes = [
+	let unitSizes = [
 		{
 			name: __("Pixel", "ultimate-addons-for-gutenberg"),
 			unitValue: "px",
-			className: "desktop",
 		},
 		{
 			name: __("Em", "ultimate-addons-for-gutenberg"),
 			unitValue: "em",
-			className: "desktop",
 		},
 	];
-	const mobileUnitSizes = [
-		{
-			name: __("Pixel", "ultimate-addons-for-gutenberg"),
-			unitValue: "px",
-			className: "mobile",
-		},
-		{
-			name: __("Em", "ultimate-addons-for-gutenberg"),
-			unitValue: "em",
-			className: "mobile",
-		},
-	];
-
-	const tabletUnitSizes = [
-		{
-			name: __("Pixel", "ultimate-addons-for-gutenberg"),
-			unitValue: "px",
-			className: "tablet",
-		},
-		{
-			name: __("Em", "ultimate-addons-for-gutenberg"),
-			unitValue: "em",
-			className: "tablet",
-		},
-	];
-
+	if (props.units) {
+		unitSizes = props.units;
+	}
 	const devicesSvgs = {
 		desktop: (
 			<svg
@@ -258,11 +301,11 @@ const SpacingControl = (props) => {
 						className={"uagb-range-control__units--" + key.name}
 						isSmall
 						isPrimary={
-							("desktop" === key.className &&
+							("Desktop" === deviceType &&
 								unit.value === key.unitValue) ||
-							("mobile" === key.className &&
+							("Mobile" === deviceType &&
 								mUnit.value === key.unitValue) ||
-							("tablet" === key.className &&
+							("Tablet" === deviceType &&
 								tUnit.value === key.unitValue)
 						}
 						isSecondary={
@@ -271,11 +314,11 @@ const SpacingControl = (props) => {
 							tUnit.value !== key.unitValue
 						}
 						aria-pressed={
-							("desktop" === key.className &&
+							("Desktop" === deviceType &&
 								unit.value === key.unitValue) ||
-							("mobile" === key.className &&
+							("Mobile" === deviceType &&
 								mUnit.value === key.unitValue) ||
-							("tablet" === key.className &&
+							("Tablet" === deviceType &&
 								tUnit.value === key.unitValue)
 						}
 						data-device-type={deviceType}
@@ -310,13 +353,30 @@ const SpacingControl = (props) => {
 				<span
 					className="uagb-spacing-control__link uagb-spacing-control-disconnected dashicons dashicons-editor-unlink"
 					onClick={() => {
+						onLinkClickHandler();
 						setAttributes({ [link.label]: true });
 					}}
 				></span>
 			);
 		}
 	}
+	const onLinkClickHandler = () => {
+		let linkValue;
+		let device = deviceType.toLowerCase();
 
+		switch (device) {
+			case "desktop":
+				linkValue = valueTop.value;
+				break;
+			case "tablet":
+				linkValue = valueTopTablet.value;
+				break;
+			case "mobile":
+				linkValue = valueTopMobile.value;
+				break;
+		}
+		changeLinkedValues(linkValue, device);
+	};
 	const output = {};
 	output.Desktop = (
 		<>
@@ -427,16 +487,80 @@ const SpacingControl = (props) => {
 	const commonResponsiveHandler = () => {
 		toggleResponsive(!displayResponsive);
 	};
+	const resetValues = () => {
+		let device = deviceType.toLowerCase();
 
+		let cachedValueUpdate = { ...cachedValue };
+		cachedValueUpdate["resetDisabled"] = true;
+		setCacheValue(cachedValueUpdate);
+
+		switch (device) {
+			case "desktop":
+				onChangeTopValue("", "desktop", cachedValue.valueTop.value);
+				onChangeRightValue("", "desktop", cachedValue.valueRight.value);
+				onChangeBottomValue(
+					"",
+					"desktop",
+					cachedValue.valueBottom.value
+				);
+				onChangeLeftValue("", "desktop", cachedValue.valueLeft.value);
+				setAttributes({ [unit.label]: cachedValue.unit.value });
+				break;
+			case "tablet":
+				onChangeTopValue(
+					"",
+					"tablet",
+					cachedValue.valueTopTablet.value
+				);
+				onChangeRightValue(
+					"",
+					"tablet",
+					cachedValue.valueRightTablet.value
+				);
+				onChangeBottomValue(
+					"",
+					"tablet",
+					cachedValue.valueBottomTablet.value
+				);
+				onChangeLeftValue(
+					"",
+					"tablet",
+					cachedValue.valueLeftTablet.value
+				);
+				setAttributes({ [tUnit.label]: cachedValue.tUnit.value });
+				break;
+			case "mobile":
+				onChangeTopValue(
+					"",
+					"mobile",
+					cachedValue.valueTopMobile.value
+				);
+				onChangeRightValue(
+					"",
+					"mobile",
+					cachedValue.valueRightMobile.value
+				);
+				onChangeBottomValue(
+					"",
+					"mobile",
+					cachedValue.valueBottomMobile.value
+				);
+				onChangeLeftValue(
+					"",
+					"mobile",
+					cachedValue.valueLeftMobile.value
+				);
+				setAttributes({ [mUnit.label]: cachedValue.mUnit.value });
+				break;
+		}
+	};
 	return (
 		<div className="components-base-control uagb-spacing-control">
 			<div className="uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
 						{label && (
-							<label className={"uagb-range-control__label"}>
-								{label}
-							</label>
+							<span className="uag-control-label">{label}</span>
 						)}
 						{!displayResponsive && (
 							<Button
@@ -477,6 +601,18 @@ const SpacingControl = (props) => {
 						)}
 					</div>
 					<div className="uagb-control__actions">
+						<Button
+							className="uagb-reset"
+							disabled={cachedValue.resetDisabled}
+							isSecondary
+							isSmall
+							onClick={(e) => {
+								e.preventDefault();
+								resetValues();
+							}}
+						>
+							<Dashicon icon="image-rotate" />
+						</Button>
 						<ButtonGroup
 							className="uagb-spacing-control__units"
 							aria-label={__(
@@ -484,12 +620,7 @@ const SpacingControl = (props) => {
 								"ultimate-addons-for-gutenberg"
 							)}
 						>
-							{deviceType == "Desktop" &&
-								onUnitSizeClick(unitSizes)}
-							{deviceType == "Mobile" &&
-								onUnitSizeClick(mobileUnitSizes)}
-							{deviceType == "Tablet" &&
-								onUnitSizeClick(tabletUnitSizes)}
+							{onUnitSizeClick(unitSizes)}
 						</ButtonGroup>
 					</div>
 				</div>

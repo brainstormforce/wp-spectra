@@ -1,14 +1,7 @@
 /**
  * WordPress dependencies
  */
-import {
-	BaseControl,
-	Button,
-	ButtonGroup,
-	PanelRow,
-	Tooltip,
-	Dashicon,
-} from "@wordpress/components";
+import { Button, ButtonGroup } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 const { useSelect, useDispatch } = wp.data;
 import { useState } from "@wordpress/element";
@@ -34,6 +27,7 @@ const MultiButtonsControl = (props) => {
 		showIcons,
 		setAttributes,
 		responsive,
+		onChange,
 	} = props;
 
 	const deviceType = useSelect((select) => {
@@ -48,7 +42,7 @@ const MultiButtonsControl = (props) => {
 		setPreviewDeviceType(device);
 		toggleResponsive(!displayResponsive);
 	};
-
+	let iconsClass = showIcons ? "uag-multibutton-icons" : "";
 	const devicesSvgs = {
 		desktop: (
 			<svg
@@ -115,26 +109,21 @@ const MultiButtonsControl = (props) => {
 				aria-label={label}
 			>
 				{options.map((option) => (
-					<Tooltip
-						key={`option-${option.value}`}
-						text={option.tooltip}
+					<Button
+						className={`uagb-multi-button`}
+						isLarge
+						isSecondary={data.desktop.value !== option.value}
+						isPrimary={data.desktop.value === option.value}
+						aria-pressed={data.desktop.value === option.value}
+						onClick={() =>
+							setAttributes({
+								[data.desktop.label]: option.value,
+							})
+						}
+						aria-label={option.tooltip}
 					>
-						<Button
-							className={`uagb-multi-button`}
-							isLarge
-							isSecondary={data.desktop.value !== option.value}
-							isPrimary={data.desktop.value === option.value}
-							aria-pressed={data.desktop.value === option.value}
-							onClick={() =>
-								setAttributes({
-									[data.desktop.label]: option.value,
-								})
-							}
-							aria-label={option.tooltip}
-						>
-							{showIcons ? option.icon : option.label}
-						</Button>
-					</Tooltip>
+						{showIcons ? option.icon : option.label}
+					</Button>
 				))}
 			</ButtonGroup>
 		);
@@ -144,26 +133,21 @@ const MultiButtonsControl = (props) => {
 				aria-label={label}
 			>
 				{options.map((option) => (
-					<Tooltip
-						key={`option-${option.value}`}
-						text={option.tooltip}
+					<Button
+						className={`uagb-multi-button`}
+						isLarge
+						isSecondary={data.tablet.value !== option.value}
+						isPrimary={data.tablet.value === option.value}
+						aria-pressed={data.tablet.value === option.value}
+						onClick={() =>
+							setAttributes({
+								[data.tablet.label]: option.value,
+							})
+						}
+						aria-label={option.tooltip}
 					>
-						<Button
-							className={`uagb-multi-button`}
-							isLarge
-							isSecondary={data.tablet.value !== option.value}
-							isPrimary={data.tablet.value === option.value}
-							aria-pressed={data.tablet.value === option.value}
-							onClick={() =>
-								setAttributes({
-									[data.tablet.label]: option.value,
-								})
-							}
-							aria-label={option.tooltip}
-						>
-							{showIcons ? option.icon : option.label}
-						</Button>
-					</Tooltip>
+						{showIcons ? option.icon : option.label}
+					</Button>
 				))}
 			</ButtonGroup>
 		);
@@ -173,26 +157,21 @@ const MultiButtonsControl = (props) => {
 				aria-label={label}
 			>
 				{options.map((option) => (
-					<Tooltip
-						key={`option-${option.value}`}
-						text={option.tooltip}
+					<Button
+						className={`uagb-multi-button`}
+						isLarge
+						isSecondary={data.mobile.value !== option.value}
+						isPrimary={data.mobile.value === option.value}
+						aria-pressed={data.mobile.value === option.value}
+						onClick={() =>
+							setAttributes({
+								[data.mobile.label]: option.value,
+							})
+						}
+						aria-label={option.tooltip}
 					>
-						<Button
-							className={`uagb-multi-button`}
-							isLarge
-							isSecondary={data.mobile.value !== option.value}
-							isPrimary={data.mobile.value === option.value}
-							aria-pressed={data.mobile.value === option.value}
-							onClick={() =>
-								setAttributes({
-									[data.mobile.label]: option.value,
-								})
-							}
-							aria-label={option.tooltip}
-						>
-							{showIcons ? option.icon : option.label}
-						</Button>
-					</Tooltip>
+						{showIcons ? option.icon : option.label}
+					</Button>
 				))}
 			</ButtonGroup>
 		);
@@ -200,13 +179,13 @@ const MultiButtonsControl = (props) => {
 			toggleResponsive(!displayResponsive);
 		};
 		return (
-			<div className="components-base-control">
+			<div
+				className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+			>
 				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
 					<div className="uag-responsive-label-wrap">
 						{label && (
-							<label className={"uagb-range-control__label"}>
-								{label}
-							</label>
+							<span className="uag-control-label">{label}</span>
 						)}
 						{!displayResponsive && (
 							<Button
@@ -252,34 +231,38 @@ const MultiButtonsControl = (props) => {
 		);
 	}
 
+	const onClickHandler = (value) => {
+		if (onChange) {
+			onChange(value);
+			return;
+		}
+		setAttributes({
+			[data.label]: value,
+		});
+	};
 	return (
-		<div className="components-base-control">
-			<p className="uagb-multi-buttons-control__label">{label}</p>
+		<div
+			className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+		>
+			<span className="uagb-multi-buttons-control__label uag-control-label">
+				{label}
+			</span>
 			<ButtonGroup
 				className={`uagb-multi-button-button-group`}
 				aria-label={label}
 			>
 				{options.map((option) => (
-					<Tooltip
-						key={`option-${option.value}`}
-						text={option.tooltip}
+					<Button
+						className={`uagb-multi-button`}
+						isLarge
+						isSecondary={data.value !== option.value}
+						isPrimary={data.value === option.value}
+						aria-pressed={data.value === option.value}
+						onClick={() => onClickHandler(option.value)}
+						aria-label={option.tooltip}
 					>
-						<Button
-							className={`uagb-multi-button`}
-							isLarge
-							isSecondary={data.value !== option.value}
-							isPrimary={data.value === option.value}
-							aria-pressed={data.value === option.value}
-							onClick={() =>
-								setAttributes({
-									[data.label]: option.value,
-								})
-							}
-							aria-label={option.tooltip}
-						>
-							{showIcons ? option.icon : option.label}
-						</Button>
-					</Tooltip>
+						{showIcons ? option.icon : option.label}
+					</Button>
 				))}
 			</ButtonGroup>
 		</div>
