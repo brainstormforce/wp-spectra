@@ -176,18 +176,6 @@ const Settings = ( props ) => {
 			imageName = __("Replace Image", "ultimate-addons-for-gutenberg");
 		}
 	}
-	
-	// const getImageSize = ( sizes ) => {
-	// 	const sizeArr = [];
-	// 	for ( const item in sizes ) {
-	// 		sizeArr.push( { value: item, label: item } );
-	// 	}
-	// 	return sizeArr;
-	// };
-
-	// if ( image && image.sizes ) {
-	// 	imageSizeOptions = getImageSize( image.sizes );
-	// }
 
 	let loadTitleGoogleFonts;
 	let loadPrefixGoogleFonts;
@@ -252,78 +240,25 @@ const Settings = ( props ) => {
 	const getImagePanelBody = () => {
 		return (
 			<PanelBody >
-				<SelectControl
-					label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
-				{/* <div className="uagb-bg-image">
-				<MediaUpload
-					title={__(
-						"Select Background Image",
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Title Tag",
 						"ultimate-addons-for-gutenberg"
 					)}
-					onSelect={ ( value ) =>
-						setAttributes( { image: value } )
-					}
-					allowedTypes={["image"]}
-					value={image}
-					render={ ( { open } ) => (
-						<Button isSecondary onClick={ open }>
-							{ ! image
-								? __(
-										'Select Image',
-										'ultimate-addons-for-gutenberg'
-									)
-								: __(
-										'Replace image',
-										'ultimate-addons-for-gutenberg'
-									) }
-						</Button>
-					) }
+					data={{
+						value: tag,
+						label: "tag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
-				</div>
-				{ image && (
-					<Button
-						className="uagb-rm-btn"
-						onClick={ () =>
-							setAttributes( { image: null } )
-						}
-						isLink
-						isDestructive
-					>
-						{ __(
-							'Remove Image',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</Button>
-				) } */}
 				<UAGImage
 					onSelectImage={onSelectImage}
 					backgroundImage={image}
