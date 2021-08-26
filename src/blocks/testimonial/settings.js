@@ -3,7 +3,8 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import ColumnResponsive from '@Components/typography/column-responsive';
+import Range from "../../components/range/Range.js";
+import ResponsiveSlider from "../../components/responsive-slider";
 
 import {
 	AlignmentToolbar,
@@ -109,6 +110,11 @@ const Settings = ( props ) => {
 		borderRadius,
 		borderColor,
 		stack,
+
+		columnsUnit,
+		imageWidthType,
+		arrowSizeType,
+		arrowBorderSizeType
 	} = attributes;
 
 	let loadNameGoogleFonts;
@@ -544,17 +550,19 @@ const Settings = ( props ) => {
 					onChange={ toggleAutoplay }
 				/>
 				{ autoplay == true && (
-					<RangeControl
+					<Range
 						label={ __(
 							'Autoplay Speed (ms)',
 							'ultimate-addons-for-gutenberg'
 						) }
+						setAttributes={setAttributes}
 						value={ autoplaySpeed }
 						onChange={ ( value ) =>
 							setAttributes( { autoplaySpeed: value } )
 						}
 						min={ 100 }
 						max={ 10000 }
+						displayUnit = {false}
 					/>
 				) }
 				<ToggleControl
@@ -565,17 +573,19 @@ const Settings = ( props ) => {
 					checked={ infiniteLoop }
 					onChange={ toggleInfiniteLoop }
 				/>
-				<RangeControl
+				<Range
 					label={ __(
 						'Transition Speed (ms)',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={setAttributes}
 					value={ transitionSpeed }
 					onChange={ ( value ) =>
 						setAttributes( { transitionSpeed: value } )
 					}
 					min={ 100 }
 					max={ 5000 }
+					displayUnit = {false}
 				/>
 				<SelectControl
 					label={ __(
@@ -612,41 +622,53 @@ const Settings = ( props ) => {
 				/>
 				{ 'dots' != arrowDots && (
 					<>
-						<RangeControl
+						<Range
 							label={ __(
 								'Arrow Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={setAttributes}
 							value={ arrowSize }
 							onChange={ ( value ) =>
 								setAttributes( { arrowSize: value } )
 							}
 							min={ 0 }
 							max={ 50 }
+							unit={{
+								value: arrowSizeType,
+								label: "arrowSizeType",
+							}}
 						/>
-						<RangeControl
+						<Range
 							label={ __(
 								'Arrow Border Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={setAttributes}
 							value={ arrowBorderSize }
 							onChange={ ( value ) =>
 								setAttributes( { arrowBorderSize: value } )
 							}
 							min={ 0 }
 							max={ 50 }
+							unit={{
+								value: arrowBorderSizeType,
+								label: "arrowBorderSizeType",
+							}}
 						/>
-						<RangeControl
+						<Range
 							label={ __(
 								'Arrow Border Radius',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={setAttributes}
 							value={ arrowBorderRadius }
 							onChange={ ( value ) =>
 								setAttributes( { arrowBorderRadius: value } )
 							}
 							min={ 0 }
 							max={ 50 }
+							displayUnit = {false}
 						/>
 					</>
 				) }
@@ -661,16 +683,20 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<RangeControl
+				<Range
 					label={ __(
 						'Gap Between Content & Dots',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ rowGap }
+					setAttributes={setAttributes}
 					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 					min={ 0 }
 					max={ 50 }
-					allowReset
+					unit={{
+						value: rowGapType,
+						label: "rowGapType",
+					}}
 				/>
 				<RangeControl
 					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
@@ -1365,7 +1391,6 @@ const Settings = ( props ) => {
 					{ getImageData() }
 					{ cnt > 0 && (
 						<>
-							<hr className="uagb-editor__separator" />
 							<SelectControl
 								label={ __( 'Image Position' ) }
 								value={ imagePosition }
@@ -1517,18 +1542,22 @@ const Settings = ( props ) => {
 									setAttributes( { imageSize: value } )
 								}
 							/>
-							<RangeControl
+							<Range
 								label={ __(
 									'Width',
 									'ultimate-addons-for-gutenberg'
 								) }
+								setAttributes={setAttributes}
 								value={ imageWidth }
 								onChange={ ( value ) =>
 									setAttributes( { imageWidth: value } )
 								}
 								min={ 0 }
 								max={ 500 }
-								allowReset
+								unit={{
+									value: imageWidthType,
+									label: "imageWidthType",
+								}}
 							/>
 						</>
 					) }
