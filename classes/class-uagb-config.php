@@ -2554,6 +2554,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderStyle'               => 'solid',
 							'borderWidth'               => 1,
 							'borderRadius'              => '',
+							'borderHoverColor'          => '',
 							'borderColor'               => '#333',
 							'loadGoogleFonts'           => false,
 							'fontFamily'                => '',
