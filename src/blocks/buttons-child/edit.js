@@ -36,6 +36,35 @@ const ButtonsChildComponent = ( props ) => {
 			'uagb-style-button-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const { attributes, setAttributes } = props;
+		const {
+			vPadding,
+			hPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+		} = attributes;
+
+		if(vPadding){
+			if(!topPadding){
+				setAttributes( { topPadding: vPadding } );
+			}
+			if(!bottomPadding){
+				setAttributes( { bottomPadding: vPadding } );
+			}
+		}
+
+		if(hPadding){
+			if(!rightPadding){
+				setAttributes( { rightPadding: hPadding } );
+			}
+			if(!leftPadding){
+				setAttributes( { leftPadding: hPadding } );
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {

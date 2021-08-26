@@ -6,7 +6,6 @@ import {
 	Button,
 	Dashicon,
 	SelectControl,
-	ToggleControl,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
