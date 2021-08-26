@@ -166,6 +166,10 @@ function contentTimelineStyle( props ) {
 			'border-left-color': backgroundColor,
 			'border-right-color': backgroundColor,
 		},
+		' .uagb-timeline__day-left .uagb-timeline__arrow:after': {
+			'border-left-color': backgroundColor,
+			'border-right-color': backgroundColor,
+		},
 		' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-left-color': backgroundColor,
 		},
