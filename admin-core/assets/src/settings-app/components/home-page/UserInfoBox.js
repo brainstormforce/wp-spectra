@@ -158,12 +158,12 @@ function UserInfoBox() {
 				/>
 			</div>
 			<div className="uag-metabox uag-theme__metabox">
-				<h2>
+				<h3>
 					{ __(
 						'Pair UAG With the Best Gutenberg WordPress Theme - Astra!',
 						'ultimate-addons-for-gutenberg'
 					) }
-				</h2>
+				</h3>
 				<p>
 					{ __(
 						'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
@@ -216,12 +216,12 @@ function UserInfoBox() {
 					/>
 				</div>
 				<div className="uag-starter-tmp__details">
-					<h2>
+					<h3>
 						{ __(
 							'Get Readymade Website Templates for Free ',
 							'ultimate-addons-for-gutenberg'
 						) }
-					</h2>
+					</h3>
 					<p>
 						{ __(
 							'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. These templates are easy to customize and are optimized for conversion. Just import, tweak and deliver projects faster than ever before!',
