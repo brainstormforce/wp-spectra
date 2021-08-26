@@ -441,22 +441,6 @@ const Settings = ( props ) => {
 						] }
 					/>
 				) }
-				{ displayPostDate && timelinAlignment !== 'center' && (
-					<Range
-						label={__(
-							"Date Bottom Spacing",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={dateBottomspace}
-						onChange={(value) =>
-							setAttributes({ dateBottomspace: value })
-						}
-						min={0}
-						max={50}
-						displayUnit={false}
-					/>
-				) }
 			</PanelBody>
 		);
 	};
@@ -480,6 +464,22 @@ const Settings = ( props ) => {
 					max={50}
 					displayUnit={false}
 				/>
+				{ displayPostDate && timelinAlignment !== 'center' && (
+					<Range
+						label={__(
+							"Date Bottom Spacing",
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={dateBottomspace}
+						onChange={(value) =>
+							setAttributes({ dateBottomspace: value })
+						}
+						min={0}
+						max={50}
+						displayUnit={false}
+					/>
+				) }
 				<SpacingControl
 					{...props}
 					label={__("Padding", "ultimate-addons-for-gutenberg")}
@@ -634,7 +634,7 @@ const Settings = ( props ) => {
 					value={icon}
 					onChange={getTimelineicon}
 				/>
-				{ !icon && (
+				{ icon && (
 				<Range
 					label={__(
 						"Icon Size",
