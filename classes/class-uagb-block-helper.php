@@ -2680,41 +2680,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__day-new'          => array(
 					'text-align' => $attr['align'],
 				),
-				// ' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
-				// 	'border-left-color'=> $attr['backgroundColor'],
-				// 	'border-right-color'=> $attr['backgroundColor'],
-				// ),
-				// ' .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
-				// 	'border-left-color'=> $attr['backgroundColor'],
-				// 	'border-right-color'=> $attr['backgroundColor'],
-				// ),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 					'border-right-color' => $attr['backgroundColor'],
 				),
-				// ' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
-				// 	'border-right-color' => $attr['backgroundColor'],
-				// ),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				// Old timeline CSS
-				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
-					'border-left-color' => $attr['backgroundColor'],
-				),
-				' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
-					'border-left-color' => $attr['backgroundColor'],
-				),
-				' .uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
-					'border-left-color' => $attr['backgroundColor'],
-				),
-				' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
-					'border-right-color' => $attr['backgroundColor'],
-				),
-				' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
-					'border-right-color' => $attr['backgroundColor'],
-				),
+				// ' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				// 	'border-left-color' => $attr['backgroundColor'],
+				// ),
+				// ' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+				// 	'border-left-color' => $attr['backgroundColor'],
+				// ),
+				// ' .uagb-timeline__right-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				// 	'border-left-color' => $attr['backgroundColor'],
+				// ),
+				// ' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				// 	'border-right-color' => $attr['backgroundColor'],
+				// ),
+				// ' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
+				// 	'border-right-color' => $attr['backgroundColor'],
+				// ),
 				/* Old timeline CSS End */
 				// New timeline CSS
 				'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
