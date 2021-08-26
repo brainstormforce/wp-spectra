@@ -32,14 +32,12 @@ const UAGBCF7 = ( props ) => {
 			messageBottomPaddingDesktop,
 			messageRightPaddingDesktop,
 			messageLeftPaddingDesktop,
-
 			buttonVrPadding,
 			buttonHrPadding,
 			buttonTopPaddingDesktop,
 			buttonBottomPaddingDesktop,
 			buttonRightPaddingDesktop,
 			buttonLeftPaddingDesktop,
-
 			fieldVrPadding,
 			fieldHrPadding,
 			fieldTopPaddingDesktop,

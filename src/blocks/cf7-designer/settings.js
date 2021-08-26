@@ -1,38 +1,28 @@
 import React, { Suspense } from "react";
 
 import { __ } from "@wordpress/i18n";
-import UAGB_Block_Icons from "@Controls/block-icons";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
 import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, {
-	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../components/spacing-control";
 import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import UAGImage from "../../components/image";
 import MultiButtonsControl from "../../components/multi-buttons-control";
 import UAGTabsControl from "../../components/tabs";
 
 import {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 } from "@wordpress/block-editor";
 
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	Button,
 	ToggleControl,
-	ButtonGroup,
-	TabPanel,
 } from "@wordpress/components";
 
 const Settings = (props) => {
@@ -44,8 +34,6 @@ const Settings = (props) => {
 		formId,
 		align,
 		fieldStyle,
-		fieldVrPadding,
-		fieldHrPadding,
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
@@ -55,8 +43,6 @@ const Settings = (props) => {
 		fieldBorderColor,
 		fieldBorderFocusColor,
 		buttonAlignment,
-		buttonVrPadding,
-		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -149,8 +135,6 @@ const Settings = (props) => {
 		errorMsgBorderColor,
 		msgBorderSize,
 		msgBorderRadius,
-		msgVrPadding,
-		msgHrPadding,
 		msgFontSize,
 		msgFontSizeType,
 		msgFontSizeTablet,
@@ -181,7 +165,6 @@ const Settings = (props) => {
 		messageLeftPaddingMobile,
 		messagePaddingTypeDesktop,
 		messageSpacingLink,
-
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
 		buttonBottomPaddingDesktop,
@@ -196,7 +179,6 @@ const Settings = (props) => {
 		buttonLeftPaddingMobile,
 		buttonPaddingTypeDesktop,
 		buttonSpacingLink,
-
 		fieldTopPaddingDesktop,
 		fieldRightPaddingDesktop,
 		fieldBottomPaddingDesktop,
@@ -385,7 +367,7 @@ const Settings = (props) => {
 		>
 			<MultiButtonsControl
 				setAttributes={setAttributes}
-				label={__("Field Style", "ultimate-addons-for-gutenberg")}
+				label={__("Style", "ultimate-addons-for-gutenberg")}
 				data={{
 					value: fieldStyle,
 					label: "fieldStyle",
@@ -475,10 +457,13 @@ const Settings = (props) => {
 			title={__("Submit Button", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
 		>
-			<SelectControl
-				label={__("Button Alignment", "ultimate-addons-for-gutenberg")}
-				value={buttonAlignment}
-				onChange={(value) => setAttributes({ buttonAlignment: value })}
+			<MultiButtonsControl
+				setAttributes={setAttributes}
+				label={__("Alignment", "ultimate-addons-for-gutenberg")}
+				data={{
+					value: buttonAlignment,
+					label: "buttonAlignment",
+				}}
 				options={[
 					{
 						value: "center",
@@ -955,7 +940,7 @@ const Settings = (props) => {
 			initialOpen={false}
 		>
 			<TypographyControl
-				label={__("Button Typography", "ultimate-addons-for-gutenberg")}
+				label={__("Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
 				setAttributes={setAttributes}
 				loadGoogleFonts={{
@@ -1059,7 +1044,7 @@ const Settings = (props) => {
 			/>
 			<SpacingControl
 				{...props}
-				label={__("Button Padding", "ultimate-addons-for-gutenberg")}
+				label={__("Padding", "ultimate-addons-for-gutenberg")}
 				valueTop={{
 					value: buttonTopPaddingDesktop,
 					label: "buttonTopPaddingDesktop",
@@ -1295,7 +1280,7 @@ const Settings = (props) => {
 			<hr className="uagb-editor__separator" />
 			<h2>{__("Success Message", "ultimate-addons-for-gutenberg")}</h2>
 			<AdvancedPopColorControl
-				label={__("Message Color", "ultimate-addons-for-gutenberg")}
+				label={__("Color", "ultimate-addons-for-gutenberg")}
 				colorValue={successMsgColor}
 				onColorChange={(value) =>
 					setAttributes({
@@ -1305,7 +1290,7 @@ const Settings = (props) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Message Background Color",
+					"Background Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={successMsgBgColor}
@@ -1317,7 +1302,7 @@ const Settings = (props) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Message Border Color",
+					"Border Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={successMsgBorderColor}
@@ -1331,7 +1316,7 @@ const Settings = (props) => {
 			<hr className="uagb-editor__separator" />
 			<h2>{__("Error Message", "ultimate-addons-for-gutenberg")}</h2>
 			<AdvancedPopColorControl
-				label={__("Message Color", "ultimate-addons-for-gutenberg")}
+				label={__("Color", "ultimate-addons-for-gutenberg")}
 				colorValue={errorMsgColor}
 				onColorChange={(value) =>
 					setAttributes({
@@ -1341,7 +1326,7 @@ const Settings = (props) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Message Background Color",
+					"Background Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={errorMsgBgColor}
@@ -1353,7 +1338,7 @@ const Settings = (props) => {
 			/>
 			<AdvancedPopColorControl
 				label={__(
-					"Message Border Color",
+					"Border Color",
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={errorMsgBorderColor}
@@ -1365,7 +1350,7 @@ const Settings = (props) => {
 			/>
 			<Range
 				label={__(
-					"Message Border Width (px)",
+					"Border Width (px)",
 					"ultimate-addons-for-gutenberg"
 				)}
 				setAttributes={setAttributes}
@@ -1381,7 +1366,7 @@ const Settings = (props) => {
 			/>
 			<Range
 				label={__(
-					"Message Border Radius",
+					"Border Radius",
 					"ultimate-addons-for-gutenberg"
 				)}
 				setAttributes={setAttributes}
@@ -1410,7 +1395,7 @@ const Settings = (props) => {
 			/>
 			<SpacingControl
 				{...props}
-				label={__("Message Padding", "ultimate-addons-for-gutenberg")}
+				label={__("Padding", "ultimate-addons-for-gutenberg")}
 				valueTop={{
 					value: messageTopPaddingDesktop,
 					label: "messageTopPaddingDesktop",
