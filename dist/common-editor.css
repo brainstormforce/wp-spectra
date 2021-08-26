@@ -74,6 +74,11 @@
   padding-bottom: 8px !important;
 }
 
+.uagb-inspector-tab .components-select-control .components-select-control__input {
+  font-size: 12px !important;
+  line-height: 2 !important;
+}
+
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
   z-index: unset;
@@ -566,11 +571,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 > .components-panel__body-title
 .components-button.components-panel__body-toggle:focus {
   box-shadow: none;
-}
-
-.uagb-inspector-tab .components-panel__body .components-select-control__input {
-  font-size: 12px;
-  line-height: normal;
 }
 
 .uag-responsive-common-button {
