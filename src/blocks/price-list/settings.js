@@ -39,7 +39,6 @@ const Settings = ( props ) => {
 		columns,
 		tcolumns,
 		mcolumns,
-		columnUnit,
 		rowGap,
 		columnGap,
 		contentHrPadding,
@@ -357,7 +356,7 @@ const Settings = ( props ) => {
 	//Image Setting
 	const imageSettings = () => {
 		return (
-			<PanelBody title={ __( 'Image' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
 				{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
 						<MultiButtonsControl
 							setAttributes={setAttributes}
@@ -486,7 +485,7 @@ const Settings = ( props ) => {
 	//Color settings
 	const contentSettings = () => {
 		return (
-			<PanelBody title={ __( 'Content' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Content' ) } initialOpen={ false }>
 				
 				<AdvancedPopColorControl
 					label={__("Color", "ultimate-addons-for-gutenberg")}
@@ -565,7 +564,7 @@ const Settings = ( props ) => {
 	//seperator setting
 	const separatorSettings = () => {
 		return (	
-			<PanelBody title={ __( 'Separator' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Separator' ) } initialOpen={ false }>
 				<SelectControl
 					label={ __( 'Style' ) }
 					value={ seperatorStyle }
@@ -856,10 +855,7 @@ const Settings = ( props ) => {
 								}}
 								min={1}
 								max={ Math.min( maxColumns, menu_item_count ) }
-								unit={{
-									value: columnUnit,
-									label: "columnUnit",
-								}}
+								displayUnit = {false}
 								setAttributes={setAttributes}
 							/>
 							<MultiButtonsControl

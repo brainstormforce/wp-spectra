@@ -277,19 +277,24 @@ const attributes = {
 		default: '',
 	},
 	imageWidthType:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	seperatorWidthType:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	rowGapType:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	columnGapType:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	titleSpaceType:{
-		type: 'string'
+		type: 'string',
+		default: 'px'
 	},
 	contentPaddingTopTablet:{
 		type: 'number'

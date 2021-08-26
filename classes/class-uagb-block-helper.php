@@ -1796,10 +1796,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
 				),
 				' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
-					'padding-left'   => UAGB_Helper::get_css_value( $imgPaddingLeft, $attr['imgPaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $imgPaddingRight, $attr['imgPaddingUnit'] ),
-					'padding-top'    => UAGB_Helper::get_css_value( $imgPaddingTop, $attr['imgPaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $imgPaddingBottom, $attr['imgPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['imgHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['imgHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['imgVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgVrPadding'], 'px' ),
 				),
 				' .uagb-tm__image img'            => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
