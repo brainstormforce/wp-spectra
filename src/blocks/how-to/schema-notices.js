@@ -51,9 +51,7 @@ function SchemaNotices( props ) {
 		emptyItems.push( 'Description' );
 	}
 	if (
-		'undefined' === typeof mainimage.url ||
-		null === mainimage.url ||
-		'' === mainimage.url
+		! mainimage || mainimage === "null" || mainimage.url === "null" || mainimage.url === ""
 	) {
 		emptyItems.push( 'Image' );
 	}

@@ -280,6 +280,56 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	imageLeftMargin: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageRightMargin: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageTopMargin: {
+		type: 'number',
+	},
+	imageBottomMargin: {
+		type: 'number',
+	},
+	imageMarginTopTablet: {
+		type: 'number'
+	},
+	imageMarginRightTablet: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageMarginBottomTablet: {
+		type: 'number'
+	},
+	imageMarginLeftTablet: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageMarginTopMobile: {
+		type: 'number'
+	},
+	imageMarginRightMobile: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageMarginBottomMobile: {
+		type: 'number'
+	},
+	imageMarginLeftMobile: {
+		type: 'number',
+		default: 'auto',
+	},
+	imageMarginUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;
