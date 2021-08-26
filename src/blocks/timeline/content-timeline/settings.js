@@ -2,18 +2,20 @@
  * BLOCK: Content Timeline.
  */
 
-// import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-// import renderSVG from '@Controls/renderIcon';
-import UAGIconPicker from "../../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import React from 'react';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "@Components/inspector-tabs/InspectorTab.js";
+import renderSVG from "@Controls/renderIcon";
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import Range from "@Components/range/Range.js";
-import SpacingControl from "../../../components/spacing-control";
-import UAGTabsControl from "../../../components/tabs";
+import SpacingControl from "@Components/spacing-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 
 import { __ } from '@wordpress/i18n';
 
@@ -28,6 +30,7 @@ import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
+	Icon,
 } from '@wordpress/components';
 
 import { select } from '@wordpress/data';
@@ -75,8 +78,6 @@ const Settings = ( props ) => {
 			subHeadLineHeightTablet,
 			subHeadLineHeightMobile,
 			subHeadLoadGoogleFonts,
-			verticalSpace,
-			horizontalSpace,
 			separatorwidth,
 			borderwidth,
 			connectorBgsize,
@@ -99,7 +100,6 @@ const Settings = ( props ) => {
 			dateLoadGoogleFonts,
 			iconSize,
 			borderRadius,
-			bgPadding,
 			iconFocus,
 			iconBgFocus,
 			displayPostDate,
@@ -121,6 +121,22 @@ const Settings = ( props ) => {
 			mobileMarginUnit,
 			tabletMarginUnit,
 			marginLink,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+			topPaddingTablet,
+			rightPaddingTablet,
+			bottomPaddingTablet,
+			leftPaddingTablet,
+			topPaddingMobile,
+			rightPaddingMobile,
+			bottomPaddingMobile,
+			leftPaddingMobile,
+			paddingUnit,
+			mobilePaddingUnit,
+			tabletPaddingUnit,
+			paddingLink,
 		},
 	} = props;
 
@@ -219,103 +235,127 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
+			    title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<h2>{ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<SelectControl
-					label={ __(
-						'Orientation',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ timelinAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { timelinAlignment: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Orientation", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: timelinAlignment,
+						label: "timelinAlignment",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
-							value: 'left',
-							label: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
+							value: "left",
+							icon: (
+								<Icon
+									icon={renderSVG("fa fa-align-left")}
+								/>
+							),
+							tooltip: __(
+								"Left",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
-							value: 'right',
-							label: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
+							value: "center",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-center"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Center",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
-							value: 'center',
-							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
+							value: "right",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-right"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Right",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
-					] }
+					]}
+					showIcons={true}
 				/>
-				<SelectControl
-					label={ __(
-						'Arrow Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ arrowlinAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { arrowlinAlignment: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Arrow Alignment", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: arrowlinAlignment,
+						label: "arrowlinAlignment",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
 							value: 'top',
 							label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
+							tooltip: __( 'Top', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'bottom',
-							label: __(
-								'Bottom',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
+							tooltip: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'center',
-							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+							tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 						},
-					] }
+					]}
+					showIcons={false}
 				/>
-				<SelectControl
-					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
-					value={ stack }
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Stack On", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: stack,
+						label: "stack",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
 						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
+							value: "none",
+							label: "None",
+							tooltip: __(
+								"None",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
-							value: 'tablet',
-							label: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
+							value: "tablet",
+							label: "Tablet",
+							tooltip: __(
+								"Tablet",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
 						{
-							value: 'mobile',
-							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
+							value: "mobile",
+							label: "Mobile",
+							tooltip: __(
+								"Mobile",
+								"ultimate-addons-for-gutenberg"
 							),
 						},
-					] }
+					]}
+					showIcons={false}
 					help={ __(
 						'Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.',
 						'ultimate-addons-for-gutenberg'
 					) }
-					onChange={ ( value ) => setAttributes( { stack: value } ) }
 				/>
 				<h2>{ __( 'Date' ) }</h2>
 				<ToggleControl
@@ -442,6 +482,76 @@ const Settings = ( props ) => {
 				/>
 				<SpacingControl
 					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: topPaddingTablet,
+						label: "topPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: rightPaddingTablet,
+						label: "rightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomPaddingTablet,
+						label: "bottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: leftPaddingTablet,
+						label: "leftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: topPaddingMobile,
+						label: "topPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: rightPaddingMobile,
+						label: "rightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomPaddingMobile,
+						label: "bottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: leftPaddingMobile,
+						label: "leftPaddingMobile",
+					}}
+					unit={{
+						value: paddingUnit,
+						label: "paddingUnit",
+					}}
+					mUnit={{
+						value: mobilePaddingUnit,
+						label: "mobilePaddingUnit",
+					}}
+					tUnit={{
+						value: tabletPaddingUnit,
+						label: "tabletPaddingUnit",
+					}}
+					attributes={props}
+					setAttributes={setAttributes}
+					link={{
+						value: paddingLink,
+						label: "paddingLink",
+					}}
+				/>
+				<SpacingControl
+					{...props}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: topMargin,
@@ -519,22 +629,12 @@ const Settings = ( props ) => {
 				title={ __( 'Connector', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <FontIconPicker
-					icons={ wp.UAGBSvgIcons }
-					value={ icon }
-					onChange={ getTimelineicon }
-					isMulti={ false }
-					renderFunc={ renderSVG }
-					noSelectedPlaceholder={ __(
-						'Select Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/> */}
 				<UAGIconPicker
 					label={__("Icon", "ultimate-addons-for-gutenberg")}
 					value={icon}
 					onChange={getTimelineicon}
 				/>
+				{ !icon && (
 				<Range
 					label={__(
 						"Icon Size",
@@ -547,6 +647,7 @@ const Settings = ( props ) => {
 					max={30}
 					displayUnit={false}
 				/>
+				)}
 				<Range
 					label={__(
 						"Icon Background Size",
@@ -592,52 +693,47 @@ const Settings = ( props ) => {
 				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __(
-						'Heading Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__("Heading Tag", "ultimate-addons-for-gutenberg")}
+					data={{
+						value: headingTag,
+						label: "headingTag",
+					}}
+					options={[
 						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+							value: "h1",
+							label: __("H1", "ultimate-addons-for-gutenberg"),
 						},
 						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+							value: "h2",
+							label: __("H2", "ultimate-addons-for-gutenberg"),
 						},
 						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+							value: "h3",
+							label: __("H3", "ultimate-addons-for-gutenberg"),
 						},
 						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+							value: "h4",
+							label: __("H4", "ultimate-addons-for-gutenberg"),
 						},
 						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+							value: "h5",
+							label: __("H5", "ultimate-addons-for-gutenberg"),
 						},
 						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+							value: "h6",
+							label: __("H6", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: 'span',
+							label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'p',
 							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
 						},
-						{
-							value: 'span',
-							label: __(
-								'SPAN',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+					]}
 				/>
 				<Range
 					label={__(
@@ -650,20 +746,6 @@ const Settings = ( props ) => {
 						setAttributes({ borderRadius: value })
 					}
 					min={0}
-					max={50}
-					displayUnit={false}
-				/>
-				<Range
-					label={__(
-						"Padding",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={bgPadding}
-					onChange={(value) =>
-						setAttributes({ bgPadding: value })
-					}
-					min={1}
 					max={50}
 					displayUnit={false}
 				/>
@@ -1009,6 +1091,7 @@ const Settings = ( props ) => {
 					]}
 					normal={iconColorSettings}
 					focus={iconFocusSettings}
+					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
@@ -1067,12 +1150,12 @@ const Settings = ( props ) => {
 			{ blockControls() }
 			<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab key={"general"}>
+				<InspectorTab {...UAGTabs.general}>
 					{ generalSettings() }
 					{ timelineItemSettings() }
 					{ connectorSettings() }
 				</InspectorTab>
-				<InspectorTab key={"style"}>
+				<InspectorTab {...UAGTabs.style}>
 				{ headingColorSettings() }
 				{ contentColorSettings() }
 				{ dateColorSettings() }
@@ -1080,7 +1163,7 @@ const Settings = ( props ) => {
 				{ connectorColorSettings() }
 				{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab key={"advance"}>
+				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

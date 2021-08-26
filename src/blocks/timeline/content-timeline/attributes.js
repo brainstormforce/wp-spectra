@@ -366,6 +366,58 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	leftPadding: {
+		type: "number",
+	},
+	rightPadding: {
+		type: "number",
+	},
+	topPadding: {
+		type: "number",
+	},
+	bottomPadding: {
+		type: "number",
+	},
+	leftPaddingTablet: {
+		type: "number",
+	},
+	rightPaddingTablet: {
+		type: "number",
+	},
+	topPaddingTablet: {
+		type: "number",
+	},
+	bottomPaddingTablet: {
+		type: "number",
+	},
+	leftPaddingMobile: {
+		type: "number",
+	},
+	rightPaddingMobile: {
+		type: "number",
+	},
+	topPaddingMobile: {
+		type: "number",
+	},
+	bottomPaddingMobile: {
+		type: "number",
+	},
+	paddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobilePaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	paddingLink: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

@@ -51,7 +51,27 @@ const ContentTimelineComponent = ( props ) => {
 			rightMargin,
 			bottomMargin,
 			leftMargin,
+			bgPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
 		} = attributes;
+
+		if( bgPadding ){
+			if (!topPadding) {
+				setAttributes({ topPadding: bgPadding });
+			}
+			if (!bottomPadding) {
+				setAttributes({ bottomPadding: bgPadding });
+			}
+			if (!rightPadding) {
+				setAttributes({ rightPadding: bgPadding });
+			}
+			if (!leftPadding) {
+				setAttributes({ leftPadding: bgPadding });
+			}
+		}
 
 		if (verticalSpace) {
 			if (!topMargin) {
