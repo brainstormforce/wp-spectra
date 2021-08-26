@@ -641,6 +641,7 @@ const Settings = (props) => {
 				}
 				min={0}
 				max={50}
+				displayUnit={false}
 			/>
 		</PanelBody>
 	);
@@ -1376,6 +1377,7 @@ const Settings = (props) => {
 				}
 				min={0}
 				max={50}
+				displayUnit={false}
 			/>
 			<Range
 				label={__(
