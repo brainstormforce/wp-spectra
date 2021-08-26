@@ -3947,13 +3947,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
 					'margin-right'  => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
-					'margin-top'    => UAGB_Helper::get_css_value( $top_margin, $attr['marginUnit'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 				),
 				'.uagb-timeline__field:not(:last-child)' => array(
-					'margin-left'   => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
-					'margin-right'  => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
-					'margin-top'    => UAGB_Helper::get_css_value( $top_margin, $attr['marginUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
@@ -3961,10 +3956,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
-				' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
 				),
-				' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+				'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
 					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 				),
 				' .uagb-timeline__date-new'              => array(
@@ -4016,6 +4011,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => 0,
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
+					'border-right-color' => $attr['backgroundColor'],
+				),
+				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-left .uagb-timeline__arrow:after' => array(
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line' => array(
