@@ -1260,20 +1260,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
+
 			if ( ! $attr['inheritFromTheme'] ) {
 				$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 				$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
 				$selectors[ $wrapper ] = array(
-					'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
-					'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-color'  => $attr['borderColor'],
-					'border-style'  => $attr['borderStyle'],
-					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-					'background'    => $attr['background'],
-					'padding'       => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
-					'color'         => $attr['color'],
+					'font-size'      => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+					'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+					'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-color'   => $attr['borderColor'],
+					'border-style'   => $attr['borderStyle'],
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+					'background'     => $attr['background'],
+					'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+					'color'          => $attr['color'],
 				);
 
 				$selectors[ $wrapper . ':hover' ]                    = array(
@@ -1288,13 +1296,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$m_selectors[ $wrapper ] = array(
-					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+					'font-size'      => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+					'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
 				);
 
 				$t_selectors[ $wrapper ] = array(
-					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+					'font-size'      => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+					'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
 				);
 			}
 
