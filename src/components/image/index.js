@@ -18,9 +18,10 @@ const UAGImage = (props) => {
 		backgroundImage,
 		onRemoveImage,
 		showVideoInput,
+		label
 	} = props;
 
-	let label = __("Image", "ultimate-addons-for-gutenberg");
+	let labelText = __("Image", "ultimate-addons-for-gutenberg");
 	let selectImageLabel = __("Select Image", "ultimate-addons-for-gutenberg");
 	let replaceImageLabel = __(
 		"Replace Image",
@@ -39,11 +40,12 @@ const UAGImage = (props) => {
 		removeImageLabel = __("Remove Video", "ultimate-addons-for-gutenberg");
 		allowedTypes = ["video"];
 	}
+	let title = label ? label : labelText;
 	return (
 		<BaseControl className="editor-bg-image-control" label={label}>
 			<div className="uagb-bg-image">
 				<MediaUpload
-					title={selectImageLabel}
+					title={title}
 					onSelect={onSelectImage}
 					allowedTypes={allowedTypes}
 					value={backgroundImage}
