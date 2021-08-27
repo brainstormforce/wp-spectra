@@ -540,13 +540,20 @@ const UAGBPostCarousel = ( props ) => {
 							} )
 						}
 					/>
-					<QueryControls
-					{ ...{ order, orderBy } }
-					numberOfItems={ postsToShow }
-					onNumberOfItemsChange={ ( value ) =>
-						setAttributes( { postsToShow: value } )
-					}
-				/>
+					<Range
+						label={ __(
+							'Number of items',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ postsToShow }
+						onChange={ ( value ) =>
+							setAttributes( { postsToShow: value } )
+						}
+						setAttributes={setAttributes}
+					    displayUnit={false}
+						min={ 1 }
+						max={ 100 }
+					/>
 					<SelectControl
 						label={ __( 'Order By' ) }
 						value={ orderBy }
@@ -742,13 +749,9 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 100 }
 					max={ 5000 }
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __( 'Arrows & Dots', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
 				<SelectControl
 					label={ __(
-						'Select Type',
+						'Arrows & Dots Type',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ arrowDots }
@@ -779,58 +782,6 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					] }
 				/>
-				{ 'dots' != arrowDots && (
-					<>
-						<Range
-							label={ __(
-								'Arrow Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ arrowSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowSize: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							setAttributes={setAttributes}
-							displayUnit={false}
-							unit={{
-								value: arrowSizeUnit,
-								label: "arrowSizeUnit",
-							}}
-						/>
-						<Range
-							label={ __(
-								'Arrow Border Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ arrowBorderSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowBorderSize: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							setAttributes={setAttributes}
-							displayUnit={false}
-						/>
-						<Range
-							label={ __(
-								'Arrow Border Radius',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={setAttributes}
-							displayUnit={false}
-							value={ arrowBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( {
-									arrowBorderRadius: value,
-								} )
-							}
-							min={ 0 }
-							max={ 50 }
-						/>
-					</>
-				) }
 			</PanelBody>
 		);
 	};
@@ -1024,6 +975,7 @@ const UAGBPostCarousel = ( props ) => {
 							}
 							min={1}
 							max={100}
+							displayUnit = {false}
 						/>
 					) }
 			</PanelBody>
@@ -1847,7 +1799,61 @@ const UAGBPostCarousel = ( props ) => {
 		</PanelBody>
 	);
 	};
-
+	const carouselStyle = () => {
+		return <PanelBody
+					title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					<Range
+						label={ __(
+							'Arrow Size',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ arrowSize }
+						onChange={ ( value ) =>
+							setAttributes( { arrowSize: value } )
+						}
+						min={ 0 }
+						max={ 50 }
+						setAttributes={setAttributes}
+						displayUnit={false}
+						unit={{
+							value: arrowSizeUnit,
+							label: "arrowSizeUnit",
+						}}
+					/>
+					<Range
+						label={ __(
+							'Arrow Border Size',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ arrowBorderSize }
+						onChange={ ( value ) =>
+							setAttributes( { arrowBorderSize: value } )
+						}
+						min={ 0 }
+						max={ 50 }
+						setAttributes={setAttributes}
+						displayUnit={false}
+					/>
+					<Range
+						label={ __(
+							'Arrow Border Radius',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={setAttributes}
+						displayUnit={false}
+						value={ arrowBorderRadius }
+						onChange={ ( value ) =>
+							setAttributes( {
+								arrowBorderRadius: value,
+							} )
+						}
+						min={ 0 }
+						max={ 50 }
+					/>
+				</PanelBody>
+	}
 	const inspectorControls = (
 		<InspectorControls>
 			<InspectorTabs>
@@ -1882,6 +1888,7 @@ const UAGBPostCarousel = ( props ) => {
 						imageStyle() 
 					)}
 					{ spacingSettings() }
+					{ 'dots' != arrowDots &&  carouselStyle()}
 				</InspectorTab>
 				<InspectorTab key={"advance"}></InspectorTab>
 			</InspectorTabs>

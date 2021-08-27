@@ -132,10 +132,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => 20,
 							),
-							'paginationSpacingUnit'           => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
 							'paginationAlignment'         => array(
 								'type'    => 'string',
 								'default' => 'left',
@@ -162,6 +158,78 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'grid',
 							),
+							'displayPostContentRadio'     => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'          => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'                  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'               => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'              => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'                 => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -174,51 +242,51 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'pauseOnHover'      => array(
+							'pauseOnHover'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'      => array(
+							'infiniteLoop'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'   => array(
+							'transitionSpeed'         => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'         => array(
+							'arrowDots'               => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'          => array(
+							'autoplay'                => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'     => array(
+							'autoplaySpeed'           => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'         => array(
+							'arrowSize'               => array(
 								'type'    => 'number',
 								'default' => 20,
 							),
-							'arrowBorderSize'   => array(
+							'arrowBorderSize'         => array(
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'arrowBorderRadius' => array(
+							'arrowBorderRadius'       => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'        => array(
+							'arrowColor'              => array(
 								'type'    => 'string',
 								'default' => '#aaaaaa',
 							),
-							'equalHeight'       => array(
+							'equalHeight'             => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'      => array(
+							'layoutConfig'            => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -228,9 +296,81 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'         => array(
+							'post_type'               => array(
 								'type'    => 'string',
 								'default' => 'carousel',
+							),
+							'displayPostContentRadio' => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'      => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'              => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'     => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'             => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
 						)
 					),
@@ -343,6 +483,90 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							'post_type'                    => array(
 								'type'    => 'string',
 								'default' => 'masonry',
+							),
+							'mobilepaginationButtonPaddingType' => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletpaginationButtonPaddingType' => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationButtonPaddingType'  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'displayPostContentRadio'      => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'           => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'                   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'                => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'               => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'                  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'            => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'            => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
 						)
 					),
@@ -511,34 +735,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'columnGap'               => array(
 					'type'    => 'number',
 					'default' => 20,
-				),
-				'rowGapUnit'              => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'columnGapUnit'           => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'imageBottomSpaceUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'titleBottomSpaceUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'metaBottomSpaceUnit'     => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'ctaBottomSpaceUnit'      => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'excerptBottomSpaceUnit'  => array(
-					'type'    => 'string',
-					'default' => 'px',
 				),
 				'bgColor'                 => array(
 					'type'    => 'string',
@@ -756,14 +952,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'contentPaddingUnit'      => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
 				'contentPaddingMobile'    => array(
-					'type' => 'number',
-				),
-				'contentPaddingTablet'    => array(
 					'type' => 'number',
 				),
 				'ctaBottomSpace'          => array(
@@ -790,126 +979,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'excludeCurrentPost'      => array(
 					'type'    => 'boolean',
 					'default' => false,
-				),
-				'rowGapUnit'              => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'columnGapUnit'           => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'imageBottomSpaceUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'titleBottomSpaceUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'metaBottomSpaceUnit'     => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'ctaBottomSpaceUnit'      => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'titleTransform'          => array(
-					'type' => 'string',
-				),
-				'metaLinkTransform'       => array(
-					'type' => 'string',
-				),
-				'excerptTransform'        => array(
-					'type' => 'string',
-				),
-				'ctaTransform'            => array(
-					'type' => 'string',
-				),
-				'titleDecoration'         => array(
-					'type' => 'string',
-				),
-				'metaLinkDecoration'      => array(
-					'type' => 'string',
-				),
-				'excerptDecoration'       => array(
-					'type' => 'string',
-				),
-				'ctaDecoration'           => array(
-					'type' => 'string',
-				),
-				'paddingBtnTop'           => array(
-					'type' => 'number',
-				),
-				'paddingBtnBottom'        => array(
-					'type' => 'number',
-				),
-				'paddingBtnLeft'          => array(
-					'type' => 'number',
-				),
-				'paddingBtnRight'         => array(
-					'type' => 'number',
-				),
-				'paddingBtnTopTablet'     => array(
-					'type' => 'number',
-				),
-				'paddingBtnRightTablet'   => array(
-					'type' => 'number',
-				),
-				'paddingBtnBottomTablet'  => array(
-					'type' => 'number',
-				),
-				'paddingBtnLeftTablet'    => array(
-					'type' => 'number',
-				),
-				'paddingBtnTopMobile'     => array(
-					'type' => 'number',
-				),
-				'paddingBtnRightMobile'   => array(
-					'type' => 'number',
-				),
-				'paddingBtnBottomMobile'  => array(
-					'type' => 'number',
-				),
-				'paddingBtnLeftMobile'    => array(
-					'type' => 'number',
-				),
-				'paddingBtnUnit'          => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'mobilePaddingBtnUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'tabletPaddingBtnUnit'    => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'spacingLink'             => array(
-					'type'    => 'string',
-					'default' => 'px',
-				),
-				'paddingTopTablet'        => array(
-					'type' => 'number',
-				),
-				'paddingRightTablet'      => array(
-					'type' => 'number',
-				),
-				'paddingBottomTablet'     => array(
-					'type' => 'number',
-				),
-				'paddingLeftTablet'       => array(
-					'type' => 'number',
-				),
-				'mobilePaddingUnit'       => array(
-					'type' => 'string',
-					'default' => 'px'
-				),
-				'tabletPaddingUnit'       => array(
-					'type' => 'string',
-					'default' => 'px'
 				),
 			);
 		}

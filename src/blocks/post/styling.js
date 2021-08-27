@@ -187,7 +187,6 @@ function styling( props ) {
 		mobilepaginationButtonPaddingType,
 		tabletpaginationButtonPaddingType,
 		loaderSize,
-		loaderSizeUnit,
 		loaderColor,
 		
 	} = props.attributes;
@@ -726,8 +725,8 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				'width': generateCSSUnit( loaderSize, loaderSizeUnit ),
-				'height': generateCSSUnit( loaderSize, loaderSizeUnit ),
+				'width': generateCSSUnit( loaderSize, 'px' ),
+				'height': generateCSSUnit( loaderSize, 'px' ),
 				'background-color': loaderColor,
 			};
 		}

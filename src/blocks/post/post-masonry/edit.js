@@ -15,7 +15,7 @@
  import SpacingControl from "../../../components/spacing-control";
  import Range from "../../../components/range/Range.js";
  import ResponsiveSlider from "../../../components/responsive-slider";
- 
+ import UAGTabsControl from "../../../components/tabs";
  import renderSVG from "@Controls/renderIcon";
  import MultiButtonsControl from "../../../components/multi-buttons-control";
  const Settings = lazy( () =>
@@ -364,14 +364,12 @@
 		 paginationMasonryBorderColor,
 		 paginationMasonryBorderHColor,
 		 paginationFontSize,
-		 paginationFontSizeUnit,
 		 loaderColor,
 		 loaderSize,
-		 loaderSizeUnit,
-		paginationButtonPaddingDesktopTop,
-		paginationButtonPaddingDesktopRight,
-		paginationButtonPaddingDesktopBottom,
-		paginationButtonPaddingDesktopLeft,
+		 paginationButtonPaddingTop,
+		 paginationButtonPaddingRight,
+		 paginationButtonPaddingBottom,
+		 paginationButtonPaddingLeft,
 		paginationButtonPaddingTopTablet,
 		paginationButtonPaddingRightTablet,
 		paginationButtonPaddingBottomTablet,
@@ -504,13 +502,20 @@
 						} )
 					}
 				/>
-				<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						onNumberOfItemsChange={ ( value ) =>
-							setAttributes( { postsToShow: value } )
-						}
-					/>
+				<Range
+					label={ __(
+						'Number of items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ postsToShow }
+					onChange={ ( value ) =>
+						setAttributes( { postsToShow: value } )
+					}
+					setAttributes={setAttributes}
+					displayUnit={false}
+					min={ 1 }
+					max={ 100 }
+				/>
 				<SelectControl
 					label={ __( 'Order By' ) }
 					value={ orderBy }
@@ -598,15 +603,58 @@
 					displayUnit={false}
 					setAttributes={setAttributes}
 				/>
-				<SelectControl
-					label={ __( "Pagination",'ultimate-addons-for-gutenberg' ) }
-					value={ paginationType }
-					onChange={ ( value ) => setAttributes( { paginationType: value } ) }
-					options={ [
-						{ value: "none", label: __( "None",'ultimate-addons-for-gutenberg' ) },
-						{ value: "infinite", label: __( "Infinite",'ultimate-addons-for-gutenberg' ) },
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Pagination',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: paginationType,
+						label: "paginationType",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
+						{
+							value: "none",
+							label: 'None'
+
+						},
+						{
+							value: "infinite",
+							label: 'Infinite',
+						},
+
+					]}
+					showIcons={false}
 				/>
+				{ 'infinite' === paginationType && (
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							'Infinite Load Event',
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: paginationEventType,
+							label: "paginationEventType",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+							{
+								value: "button",
+								label: 'Button'
+					
+							},
+							{
+								value: "scroll",
+								label: 'Scroll',
+							},
+					
+						]}
+						showIcons={false}
+					/>
+				) }
 				{ 'infinite' === paginationType &&
 						'button' === paginationEventType && (
 							<TextControl
@@ -724,10 +772,7 @@
 								setAttributes={setAttributes}
 								min={ 0 }
 								max={ 100 }
-								unit={{
-									value: paginationFontSizeUnit,
-									label: "paginationFontSizeUnit",
-								}}
+								displayUnit = {false}
 							/>
 							<SpacingControl
 							{...props}
@@ -736,20 +781,20 @@
 							"ultimate-addons-for-gutenberg"
 							)}
 							valueTop={{
-								value: paginationButtonPaddingDesktopTop,
-								label: "paginationButtonPaddingDesktopTop",
+								value: paginationButtonPaddingTop,
+								label: "paginationButtonPaddingTop",
 							}}
 							valueRight={{
-								value: paginationButtonPaddingDesktopRight,
-								label: "paginationButtonPaddingDesktopRight",
+								value: paginationButtonPaddingRight,
+								label: "paginationButtonPaddingRight",
 							}}
 							valueBottom={{
-								value: paginationButtonPaddingDesktopBottom,
-								label: "paginationButtonPaddingDesktopBottom",
+								value: paginationButtonPaddingBottom,
+								label: "paginationButtonPaddingBottom",
 							}}
 							valueLeft={{
-								value: paginationButtonPaddingDesktopLeft,
-								label: "paginationButtonPaddingDesktopLeft",
+								value: paginationButtonPaddingLeft,
+								label: "paginationButtonPaddingLeft",
 							}}
 							valueTopTablet={{
 								value: paginationButtonPaddingTopTablet,
@@ -803,48 +848,70 @@
 								label: "spacingLink",
 							}}
 							/>
-							<AdvancedPopColorControl
+							<UAGTabsControl
+								tabs={[
+								{
+									name: "normal",
+									title: __(
+										"Normal",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+								{
+									name: "hover",
+									title: __(
+										"Hover",
+										"ultimate-addons-for-gutenberg"
+									),
+								},
+								]}
+								normal={<>
+								<AdvancedPopColorControl
+									label={__(
+										'Text Color',
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={paginationTextColor}
+									onColorChange={(value) =>
+										setAttributes({ paginationTextColor: value })
+									}
+								/>
+								<AdvancedPopColorControl
+									label={__(
+										'Background Color',
+										"ultimate-addons-for-gutenberg"
+									)}
+									colorValue={paginationMasonryBgColor}
+									onColorChange={(value) =>
+										setAttributes({ paginationMasonryBgColor: value })
+									}
+								/></>}
+								hover={<>
+								<AdvancedPopColorControl
 								label={__(
 									'Text Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={paginationTextColor}
-								onColorChange={(value) =>
-									setAttributes({ paginationTextColor: value })
-								}
-							/> 
-							<AdvancedPopColorControl
-								label={__(
-									'Text Hover Color',
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={paginationTextHoverColor}
 								onColorChange={(value) =>
 									setAttributes({ paginationTextHoverColor: value })
 								}
-							/> 
-							<AdvancedPopColorControl
+								/>  
+								<AdvancedPopColorControl
 								label={__(
 									'Background Color',
-									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={paginationMasonryBgColor}
-								onColorChange={(value) =>
-									setAttributes({ paginationMasonryBgColor: value })
-								}
-							/> 
-							<AdvancedPopColorControl
-								label={__(
-									'Background Hover Color',
 									"ultimate-addons-for-gutenberg"
 								)}
 								colorValue={paginationBgHoverColor}
 								onColorChange={(value) =>
 									setAttributes({ paginationBgHoverColor: value })
 								}
-							/> 
+								/></>}
+								disableBottomSeparator={false}
+							/>
 							<Border
 								setAttributes={setAttributes}
+								disableBottomSeparator={true}
 								borderStyle={{
 									value: paginationMasonryBorderStyle,
 									label: 'paginationMasonryBorderStyle',
@@ -884,6 +951,7 @@
 										"Border Hover Color",
 										"ultimate-addons-for-gutenberg"
 									),
+								
 								}}
 							/>
 						</>
@@ -911,10 +979,7 @@
 								}
 								min={ 1 }
 								max={ 50 }
-								unit={{
-									value: loaderSizeUnit,
-									label: "loaderSizeUnit",
-								}}
+								displayUnit = {false}
 							/>
 						</>
 					) }
@@ -1112,6 +1177,7 @@
 							}
 							min={1}
 							max={100}
+							displayUnit = {false}
 						/>
 					) }
 			</PanelBody>
@@ -1890,45 +1956,66 @@
 					label: "spacingLink",
 				}}
 			/>
-			<AdvancedPopColorControl
+			<UAGTabsControl
+				tabs={[
+				{
+					name: "normal",
+					title: __(
+						"Normal",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				{
+					name: "hover",
+					title: __(
+						"Hover",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				]}
+				normal={<>
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgColor: value })
+					}
+				/></>}
+				hover={<>
+				<AdvancedPopColorControl
 				label={__(
 					'Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaColor: value })
-				}
-			/>	
-			<AdvancedPopColorControl
-				label={__(
-					'Hover Color',
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={ctaHColor}
 				onColorChange={(value) =>
 					setAttributes({ ctaHColor: value })
 				}
-			/>   
-			<AdvancedPopColorControl
+				/>  
+				<AdvancedPopColorControl
 				label={__(
 					'Background Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaBgColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaBgColor: value })
-				}
-			/>	
-			<AdvancedPopColorControl
-				label={__(
-					'Background Hover Color',
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={ctaBgHColor}
 				onColorChange={(value) =>
 					setAttributes({ ctaBgHColor: value })
 				}
+				/></>}
+				disableBottomSeparator={false}
 			/>								
 		</PanelBody>
 	);
@@ -1939,7 +2026,6 @@
 				<InspectorTabs>
 					<InspectorTab key={"general"}>
 						{ generalSettings() }
-						{ paginationSettings() }
 						{ imageSettings() }
 						{ contentSettings() }
 						{ readMoreLinkSettings() }
@@ -1961,7 +2047,8 @@
 							)}
 							{ displayPostLink && (
 								readMoreLinkStyleSettings()
-							)}
+							)}	
+							{ paginationSettings() }
 							</>
 						)}
 						{displayPostImage && (
