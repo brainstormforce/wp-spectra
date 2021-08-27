@@ -44,6 +44,28 @@ const ColumnsComponent = (props) => {
 			"uagb-columns-style-" + props.clientId.substr(0, 8)
 		);
 		document.head.appendChild($style);
+
+		const { attributes, setAttributes } = props;
+		const {
+			topMargin,
+			bottomMargin,
+			topMarginDesktop,
+			bottomMarginDesktop,
+		} = attributes;
+
+		//Margin
+		if (topMargin) {
+			if (!topMarginDesktop) {
+				setAttributes({ topMarginDesktop: topMargin });
+			}
+		}
+
+		if (bottomMargin) {
+			if (!bottomMarginDesktop) {
+				setAttributes({ bottomMarginDesktop: bottomMargin });
+			}
+		}
+		
 	}, []);
 
 	useEffect(() => {
