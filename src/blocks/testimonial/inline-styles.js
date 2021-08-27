@@ -149,7 +149,7 @@ function testimonialStyle( props ) {
 		},
 		// Image
 		' .uagb-tm__image img': {
-			width: generateCSSUnit( imageWidth, imageWidthType ),
+			'width': generateCSSUnit( imageWidth, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
 		' .uagb-tm__content': {
@@ -228,15 +228,15 @@ function testimonialStyle( props ) {
 			'color': arrowColor,
 		},
 		' .slick-arrow svg': {
-			fill: arrowColor,
-			height: generateCSSUnit( arrowSize, arrowSizeType ),
-			width: generateCSSUnit( arrowSize, arrowSizeType ),
+			'fill': arrowColor,
+			'height': generateCSSUnit( arrowSize, arrowSizeType ),
+			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
 	};
 
 	if ( test_item_count == columns ) {
 		selectors[ '.uagb-slick-carousel' ] = {
-			padding: '0',
+			'padding': '0',
 		};
 	}
 
@@ -258,13 +258,13 @@ function testimonialStyle( props ) {
 
 	if ( arrowDots === 'dots' ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			padding: '0 0 35px 0',
+			'padding': '0 0 35px 0',
 		};
 	}
 
 	if ( test_item_count === 1 || test_item_count === columns ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			padding: '0',
+			'padding': '0',
 		};
 	}
 

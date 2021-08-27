@@ -413,7 +413,7 @@ const Settings = ( props ) => {
 	const carouselStyle = () => {
 		return (
 			<PanelBody
-				title={ __( 'Carousel Style', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Arrow & Dots', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				{ 'dots' != arrowDots && (
@@ -480,22 +480,8 @@ const Settings = ( props ) => {
 						label: "rowGapType",
 					}}
 				/>
-				<Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={{
-						value: columnGapType,
-						label: "columnGapType",
-					}}
-					setAttributes={setAttributes}
-				/>
 				<AdvancedPopColorControl
-					label={__('Arrow & Dots Color', "ultimate-addons-for-gutenberg")}
+					label={__('Color', "ultimate-addons-for-gutenberg")}
 					colorValue={arrowColor ? arrowColor : ""}
 					onColorChange={(value) =>
 						setAttributes({
@@ -503,6 +489,14 @@ const Settings = ( props ) => {
 						})
 					}
 				/>
+			</PanelBody>
+		);
+	};
+	const borderSetting = () => {
+		return <PanelBody
+					title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
 				<Border
 					setAttributes={setAttributes}
 					borderStyle={{
@@ -537,6 +531,13 @@ const Settings = ( props ) => {
 						),
 					}}
 				/>
+				</PanelBody>
+	}
+	const backgroundStyle = () => {
+		return <PanelBody
+					title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
 				<Background
 					setAttributes={setAttributes}
 					backgroundGradient={{
@@ -588,9 +589,8 @@ const Settings = ( props ) => {
 					}}
 					{...props}
 				/>
-			</PanelBody>
-		);
-	};
+				</PanelBody>
+	}
 	const nameStyle = () => {
 		return <PanelBody
 				title={ __(
@@ -719,6 +719,20 @@ const Settings = ( props ) => {
 					unit={{
 						value: descSpaceType,
 						label: "descSpaceType",
+					}}
+					setAttributes={setAttributes}
+				/>
+				<Range
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					value={ columnGap }
+					onChange={ ( value ) =>
+						setAttributes( { columnGap: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					unit={{
+						value: columnGapType,
+						label: "columnGapType",
 					}}
 					setAttributes={setAttributes}
 				/>
@@ -1365,6 +1379,8 @@ const Settings = ( props ) => {
 						{ companyStyle() }
 						{ imageStyle() }
 						{ carouselStyle() }
+						{ borderSetting() }
+						{ backgroundStyle() }
 					</InspectorTab>
 					<InspectorTab {...UAGTabs.advance}>
 					</InspectorTab>
