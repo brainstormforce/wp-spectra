@@ -42,8 +42,6 @@ const Settings = ( props ) => {
 		titleDescStyle,
 		titleDescAlignment,
 		fieldStyle,
-		fieldVrPadding,
-		fieldHrPadding,
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
@@ -54,8 +52,6 @@ const Settings = ( props ) => {
 		fieldBorderFocusColor,
 		textAreaHeight,
 		buttonAlignment,
-		buttonVrPadding,
-		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -146,8 +142,6 @@ const Settings = ( props ) => {
 		errorMsgBorderColor,
 		msgBorderSize,
 		msgBorderRadius,
-		msgVrPadding,
-		msgHrPadding,
 		msgFontSize,
 		msgFontSizeType,
 		msgFontSizeTablet,
@@ -180,12 +174,10 @@ const Settings = ( props ) => {
 		fieldrightPadding,
 		fieldbottomPadding,
 		fieldleftPadding,
-		//Mobile
 		fieldtopMobilePadding,
 		fieldrightMobilePadding,
 		fieldbottomMobilePadding,
 		fieldleftMobilePadding,
-		//Tablet
 		fieldtopTabletPadding,
 		fieldrightTabletPadding,
 		fieldbottomTabletPadding,
@@ -194,17 +186,14 @@ const Settings = ( props ) => {
 		fieldmobilePaddingUnit,
 		fieldtabletPaddingUnit,
 		fieldpaddingLink,
-
 		buttontopPadding,
 		buttonrightPadding,
 		buttonbottomPadding,
 		buttonleftPadding,
-		//Mobile
 		buttontopMobilePadding,
 		buttonrightMobilePadding,
 		buttonbottomMobilePadding,
 		buttonleftMobilePadding,
-		//Tablet
 		buttontopTabletPadding,
 		buttonrightTabletPadding,
 		buttonbottomTabletPadding,
@@ -213,17 +202,14 @@ const Settings = ( props ) => {
 		buttonmobilePaddingUnit,
 		buttontabletPaddingUnit,
 		buttonpaddingLink,
-
 		msgtopPadding,
 		msgrightPadding,
 		msgbottomPadding,
 		msgleftPadding,
-		//Mobile
 		msgtopMobilePadding,
 		msgrightMobilePadding,
 		msgbottomMobilePadding,
 		msgleftMobilePadding,
-		//Tablet
 		msgtopTabletPadding,
 		msgrightTabletPadding,
 		msgbottomTabletPadding,
@@ -976,7 +962,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__("Background Color", "ultimate-addons-for-gutenberg")}
-					colorValue={buttonBgColor ? buttonBgColor : ""}
+					colorValue={buttonBgColor}
 					onColorChange={(value) =>
 						setAttributes({ buttonBgColor: value })
 					}
@@ -1008,7 +994,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__("Background Color", "ultimate-addons-for-gutenberg")}
-					colorValue={buttonBgHoverColor ? buttonBgHoverColor : ""}
+					colorValue={buttonBgHoverColor}
 					onColorChange={(value) =>
 						setAttributes({ buttonBgHoverColor: value })
 					}
@@ -1221,28 +1207,6 @@ const Settings = ( props ) => {
 					max={200}
 					displayUnit={false}
 				/>
-				{/* <RangeControl
-					label={ UAGB_Block_Icons.vertical_spacing }
-					className={ 'uagb-margin-control' }
-					value={ fieldVrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { fieldVrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					initialPosition={ 10 }
-				/>
-				<RangeControl
-					label={ UAGB_Block_Icons.horizontal_spacing }
-					className={ 'uagb-margin-control' }
-					value={ fieldHrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { fieldHrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					initialPosition={ 10 }
-				/> */}
 				<SpacingControl
 					{...props}
 					label={__("Field Padding", "ultimate-addons-for-gutenberg")}
@@ -1284,7 +1248,7 @@ const Settings = ( props ) => {
 					}}
 					valueRightMobile={{
 						value: fieldrightMobilePadding,
-						label: "rightMobilePadding",
+						label: "fieldrightMobilePadding",
 					}}
 					valueBottomMobile={{
 						value: fieldbottomMobilePadding,
@@ -1313,28 +1277,6 @@ const Settings = ( props ) => {
 						label: "fieldpaddingLink",
 					}}
 				/>
-				{/* <RangeControl
-					label={ UAGB_Block_Icons.vertical_spacing }
-					className={ 'uagb-margin-control' }
-					value={ buttonVrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { buttonVrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					initialPosition={ 10 }
-				/>
-				<RangeControl
-					label={ UAGB_Block_Icons.horizontal_spacing }
-					className={ 'uagb-margin-control' }
-					value={ buttonHrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { buttonHrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					initialPosition={ 10 }
-				/> */}
 				<SpacingControl
 					{...props}
 					label={__("Button Padding", "ultimate-addons-for-gutenberg")}
@@ -1376,7 +1318,7 @@ const Settings = ( props ) => {
 					}}
 					valueRightMobile={{
 						value: buttonrightMobilePadding,
-						label: "rightMobilePadding",
+						label: "buttonrightMobilePadding",
 					}}
 					valueBottomMobile={{
 						value: buttonbottomMobilePadding,
@@ -1405,28 +1347,6 @@ const Settings = ( props ) => {
 						label: "buttonpaddingLink",
 					}}
 				/>
-				{/* <RangeControl
-					label={ UAGB_Block_Icons.vertical_spacing }
-					className={ 'uagb-margin-control' }
-					value={ msgVrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { msgVrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					allowReset
-				/>
-				<RangeControl
-					label={ UAGB_Block_Icons.horizontal_spacing }
-					className={ 'uagb-margin-control' }
-					value={ msgHrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { msgHrPadding: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					allowReset
-				/> */}
 				<SpacingControl
 					{...props}
 					label={__("Message Padding", "ultimate-addons-for-gutenberg")}
@@ -1468,7 +1388,7 @@ const Settings = ( props ) => {
 					}}
 					valueRightMobile={{
 						value: msgrightMobilePadding,
-						label: "rightMobilePadding",
+						label: "msgrightMobilePadding",
 					}}
 					valueBottomMobile={{
 						value: msgbottomMobilePadding,
@@ -1600,21 +1520,21 @@ const Settings = ( props ) => {
 						/>
 						<AdvancedPopColorControl
 							label={__("Label Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckLableColor ? radioCheckLableColor : ""}
+							colorValue={radioCheckLableColor}
 							onColorChange={(value) =>
 								setAttributes({ radioCheckLableColor: value })
 							}
 						/>
 						<AdvancedPopColorControl
 							label={__("Background Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckBgColor ? radioCheckBgColor : ""}
+							colorValue={radioCheckBgColor}
 							onColorChange={(value) =>
 								setAttributes({ radioCheckBgColor: value })
 							}
 						/>
 						<AdvancedPopColorControl
 							label={__("Selected Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckSelectColor ? radioCheckSelectColor : ""}
+							colorValue={radioCheckSelectColor}
 							onColorChange={(value) =>
 								setAttributes({ radioCheckSelectColor: value })
 							}

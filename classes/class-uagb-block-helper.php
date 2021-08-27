@@ -4811,12 +4811,61 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$t_selectors = array(
-				' form.wpgf-form:not(input)' => array(
+				' form.wpgf-form:not(input)'           => array(
 					'color' => $attr['fieldLabelColor'],
+				),
+				' input:not([type=submit])'            => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+				),
+				' textarea'                            => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+				),
+				' input.gform_button'                  => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftTabletPadding'], $attr['buttontabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightTabletPadding'], $attr['buttontabletPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopTabletPadding'], $attr['buttontabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomTabletPadding'], $attr['buttontabletPaddingUnit'] ),
+				),
+				' .gform_wrapper div.validation_error' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightTabletPadding'], $attr['msgtabletPaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 				),
 			);
 
-			$m_selectors = array();
+			$m_selectors = array(
+				' input:not([type=submit])'            => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+				),
+				' textarea'                            => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+				),
+				' input.gform_button'                  => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
+				),
+				' .gform_wrapper div.validation_error' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
