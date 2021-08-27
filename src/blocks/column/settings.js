@@ -190,7 +190,6 @@ const Settings = ( props ) => {
 						label: "paddingLink",
 					}}
 				/>
-				<hr className="uagb-editor__separator" />
 				<SpacingControl
 					{...props.parentProps}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
