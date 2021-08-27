@@ -24,22 +24,31 @@ class UAGB_Block_Module {
 	 */
 	private static $blocks = array(
 		'star-rating' => array(
-			'dir' => 'start-rating/'
-		)
+			'dir' => 'star-rating/',
+		),
 	);
 
+	/**
+	 * Get frontend css.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param string  $slug Block slug.
+	 * @param array   $attr Block attributes.
+	 * @param string  $id   Block id.
+	 *
+	 * @return array
+	 */
 	public static function get_frontend_css( $slug, $attr, $id ) {
 
-		$css = '';
+		$css = array();
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$css_file = include UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . 'frontend.css.php';
+			$css_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . 'frontend.css.php';
 
 			if ( file_exists( $css_file ) ) {
-				ob_start();
-				include $css_file;
-				$css = ob_get_clean();
+				$css = include $css_file;
 			}
 		}
 

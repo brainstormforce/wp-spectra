@@ -738,12 +738,13 @@ class UAGB_Post_Assets {
 				break;
 
 			// case 'uagb/star-rating':
-			// 	$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
-			// 	break;
+			// $css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
+			// break;
 
 			default:
-				$block_slug = str_replace( 'uagb/', '', $name );
-				$css += UAGB_Block_Module::get_frontend_css( $block_slug, $blockattr, $block_id );
+				$_block_slug = str_replace( 'uagb/', '', $name );
+				$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+				$css         = array_merge( $css, $_block_css );
 				break;
 		}
 
