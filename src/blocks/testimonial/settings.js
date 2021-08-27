@@ -10,7 +10,7 @@ import Border from "../../components/border";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
 import SpacingControl from "../../components/spacing-control";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-
+import UAGImage from "../../components/image";
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
@@ -1050,55 +1050,18 @@ const Settings = ( props ) => {
 		) {
 			imageVal = test_block[ index ].image;
 		}
-		return (
-			<PanelBody
-				key={ index }
-				title={
-					__( 'Image', 'ultimate-addons-for-gutenberg' ) +
-					' ' +
-					( index + 1 ) +
-					' ' +
-					__( 'Settings', 'ultimate-addons-for-gutenberg' )
-				}
-				initialOpen={ false }
-				className={ 'uagb-repeater-panel' }
-			>
-				<BaseControl
-					id=""
-					className="editor-bg-image-control"
-					label={ __( '' ) }
-				>
-					<MediaUpload
-						title={ __( 'Select Image' + ( index + 1 ) ) }
-						onSelect={ ( media ) => {
-							onSelectTestImage( media, index );
-						} }
-						allowedTypes={ [ 'image' ] }
-						value={ imageVal }
-						render={ ( { open } ) => (
-							<Button isSecondary onClick={ open }>
-								{ getImageName( test_block[ index ].image ) }
-							</Button>
-						) }
+		return (	
+					<UAGImage
+						label = {'Image'+index}
+						onSelectImage={() => onRemoveTestImage(imageVal, index )}
+						backgroundImage={imageVal}
+						onRemoveImage={ imageVal && (
+							test_block[ index ].image.url !== null &&
+							test_block[ index ].image.url !== '' && (
+								onRemoveTestImage( index )
+							))}
 					/>
-					{ imageVal &&
-						test_block[ index ].image.url !== null &&
-						test_block[ index ].image.url !== '' && (
-							<Button
-								className="uagb-rm-btn"
-								key={ index }
-								onClick={ () => {
-									onRemoveTestImage( index );
-								} }
-								isLink
-								isDestructive
-							>
-								{ __( 'Remove Image' ) }
-							</Button>
-						) }
-				</BaseControl>
-			</PanelBody>
-		);
+				)
 	};
 
 	let cnt = 0;
