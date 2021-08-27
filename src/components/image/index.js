@@ -39,6 +39,7 @@ const UAGImage = (props) => {
 		removeImageLabel = __("Remove Video", "ultimate-addons-for-gutenberg");
 		allowedTypes = ["video"];
 	}
+	
 	return (
 		<BaseControl className="editor-bg-image-control" label={label}>
 			<div className="uagb-bg-image">
