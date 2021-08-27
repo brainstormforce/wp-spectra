@@ -198,7 +198,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	tabletSelectors = {
@@ -254,7 +254,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		clear: 'unset',
+		'clear': 'unset',
 	};
 
 	tabletSelectors[
@@ -265,7 +265,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	mobileSelectors = {
@@ -321,7 +321,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		clear: 'unset',
+		'clear': 'unset',
 	};
 
 	mobileSelectors[
@@ -332,7 +332,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	let stylingCss = '';
