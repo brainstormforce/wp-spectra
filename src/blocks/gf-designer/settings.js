@@ -4,6 +4,12 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 import {
 	AlignmentToolbar,
@@ -2088,13 +2094,20 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
-				{ fieldSettings() }
-				{ fieldBorderSetting() }
-				{ typographySettings() }
-				{ radioCheckSetting() }
-				{ btnSetting() }
-				{ msgSettings() }
-				{ spacingSetting() }
+				<InspectorTabs>
+					<InspectorTab {...UAGTabs.general}>
+					{ fieldSettings() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.style}>
+					{ fieldBorderSetting() }
+					{ typographySettings() }
+					{ radioCheckSetting() }
+					{ btnSetting() }
+					{ msgSettings() }
+					{ spacingSetting() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{ loadInputGoogleFonts }
 			{ loadButtonGoogleFonts }
