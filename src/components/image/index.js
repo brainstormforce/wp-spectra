@@ -20,7 +20,7 @@ const UAGImage = (props) => {
 		showVideoInput,
 		label
 	} = props;
-	let labelText = label ? label : __("Image", "ultimate-addons-for-gutenberg");
+	let labelText = __("Image", "ultimate-addons-for-gutenberg");
 	let selectImageLabel = __("Select Image", "ultimate-addons-for-gutenberg");
 	let replaceImageLabel = __(
 		"Replace Image",
@@ -39,7 +39,7 @@ const UAGImage = (props) => {
 		removeImageLabel = __("Remove Video", "ultimate-addons-for-gutenberg");
 		allowedTypes = ["video"];
 	}
-
+	labelText = label ? label : labelText;
 	return (
 		<BaseControl className="editor-bg-image-control" label={labelText}>
 			<div className="uagb-bg-image">

@@ -516,10 +516,6 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
-	paddingspacingLink: {
-		type: "boolean",
-		default: false,
-	},
 	paddingBtnUnit: {
 		type: "string",
 		default: "px",
