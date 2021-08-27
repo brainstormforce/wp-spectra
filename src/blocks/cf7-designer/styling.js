@@ -118,11 +118,11 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wpcf7 form.wpcf7-form:not(input)': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 		},
 		' .wpcf7 input:not([type=submit])': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -147,7 +147,7 @@ function styling( props ) {
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -180,7 +180,7 @@ function styling( props ) {
 		},
 		' .wpcf7 textarea': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
 			'border-radius': generateCSSUnit(
@@ -204,11 +204,11 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wpcf7 input::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' .wpcf7 textarea::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' .wpcf7 form label': {
@@ -243,7 +243,7 @@ function styling( props ) {
 
 		//Submit button
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			color: buttonTextColor,
+			'color': buttonTextColor,
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
@@ -266,7 +266,7 @@ function styling( props ) {
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
-			color: buttonTextHoverColor,
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
@@ -274,16 +274,16 @@ function styling( props ) {
 		// Check box Radio.
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-color': fieldBorderFocusColor,
 		},
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'display': 'inline-flex',
-			height: generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
-			width: generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
@@ -295,14 +295,14 @@ function styling( props ) {
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderFocusColor,
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			height: generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
-			width: generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'color': fieldInputColor,
+			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
@@ -314,14 +314,14 @@ function styling( props ) {
 		},
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'display':'inline-flex',
 			'border-radius': '100%',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			height: 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			width: 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
+			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
+			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 		},
 
 		// underline border
@@ -373,9 +373,9 @@ function styling( props ) {
 		// Override check box , Radio & acceptance.
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -390,9 +390,9 @@ function styling( props ) {
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
 			'display' : 'inline-flex',
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -407,9 +407,9 @@ function styling( props ) {
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -430,7 +430,7 @@ function styling( props ) {
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 	};
 
