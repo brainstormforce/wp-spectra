@@ -147,7 +147,7 @@ function styling( props ) {
 			'border-color' : borderColor,
 			'border-radius' : generateCSSUnit( borderRadius, 'px' ),
 		},
-		' .uagb-columns__overlay:hover' : {
+		'.uagb-columns__wrap:hover .uagb-columns__overlay' : {
 			'border-color' : borderHoverColor,
 		}
 	};
