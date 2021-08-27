@@ -1497,7 +1497,7 @@ const Settings = (props) => {
 						{msgSettings}
 					</InspectorTab>
 					<InspectorTab key={"style"}>
-						{fieldStyling == "box" && fieldStyling}
+						{fieldStyle == "box" && fieldStyling}
 						{enableOveride && radioCheckStyling}
 						{buttonStyling}
 						{messageStyling}
