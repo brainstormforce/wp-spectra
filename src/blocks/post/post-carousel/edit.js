@@ -1047,7 +1047,7 @@ const UAGBPostCarousel = ( props ) => {
 				/> 
 				<Range
 					label={__(
-						'Vertical Spacing',
+						'Row Gap',
 						"ultimate-addons-for-gutenberg"
 					)}
 					setAttributes={setAttributes}
@@ -1064,7 +1064,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<Range
 					label={__(
-						'Horizontal Spacing',
+						'Column Gap',
 						"ultimate-addons-for-gutenberg"
 					)}
 					setAttributes={setAttributes}
@@ -1208,49 +1208,26 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Html Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ titleTag }
-					onChange={ ( value ) =>
-						setAttributes( { titleTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'span',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'p',
-							label: __( 'p', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Html Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: titleTag,
+						label: "titleTag",
+					}}
+					options={[
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+						{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
+						{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
+					]}
 				/>
 				{ ! inheritFromTheme && (
 					<>
@@ -1640,6 +1617,7 @@ const UAGBPostCarousel = ( props ) => {
 				}}
 			/>
 			<Border
+				disableBottomSeparator={true}
 					setAttributes={setAttributes}
 					borderStyle={{
 						value: borderStyle,
@@ -1756,46 +1734,67 @@ const UAGBPostCarousel = ( props ) => {
 					label: "spacingLink",
 				}}
 			/>
-			<AdvancedPopColorControl
+			<UAGTabsControl
+				tabs={[
+				{
+					name: "normal",
+					title: __(
+						"Normal",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				{
+					name: "hover",
+					title: __(
+						"Hover",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				]}
+				normal={<>
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgColor: value })
+					}
+				/></>}
+				hover={<>
+				<AdvancedPopColorControl
 				label={__(
 					'Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaColor: value })
-				}
-			/>	
-			<AdvancedPopColorControl
-				label={__(
-					'Hover Color',
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={ctaHColor}
 				onColorChange={(value) =>
 					setAttributes({ ctaHColor: value })
 				}
-			/>   
-			<AdvancedPopColorControl
+				/>  
+				<AdvancedPopColorControl
 				label={__(
 					'Background Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaBgColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaBgColor: value })
-				}
-			/>	
-			<AdvancedPopColorControl
-				label={__(
-					'Background Hover Color',
 					"ultimate-addons-for-gutenberg"
 				)}
 				colorValue={ctaBgHColor}
 				onColorChange={(value) =>
 					setAttributes({ ctaBgHColor: value })
 				}
-			/>								
+				/></>}
+				disableBottomSeparator={false}
+			/>							
 		</PanelBody>
 	);
 	};

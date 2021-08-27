@@ -720,7 +720,7 @@
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Title Tag",
+							"Html Tag",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
@@ -728,14 +728,14 @@
 							label: "titleTag",
 						}}
 						options={[
-							{ value: "h1", label: __("H1") },
-							{ value: "h2", label: __("H2") },
-							{ value: "h3", label: __("H3") },
-							{ value: "h4", label: __("H4") },
-							{ value: "h5", label: __("H5") },
-							{ value: "h6", label: __("H6") },
-							{ value: "span", label: __("Span") },
-							{ value: "p", label: __("P") },
+							{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+							{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+							{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+							{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+							{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+							{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+							{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
+							{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
 						]}
 					/>
 				)}
@@ -905,7 +905,7 @@
 			/> 
 			<Range
 				label={__(
-					'Vertical Spacing',
+					'Row Gap',
 					"ultimate-addons-for-gutenberg"
 				)}
 				setAttributes={setAttributes}
@@ -922,7 +922,7 @@
 			/>
 			<Range
 				label={__(
-					'Horizontal Spacing',
+					'Column Gap',
 					"ultimate-addons-for-gutenberg"
 				)}
 				setAttributes={setAttributes}
@@ -1454,6 +1454,7 @@
 				}}
 			/>
 			<Border
+			disableBottomSeparator={true}
 					setAttributes={setAttributes}
 					borderStyle={{
 						value: borderStyle,
