@@ -18,7 +18,7 @@ class UAGB_Post_Assets {
 	 * Current Block List
 	 *
 	 * @since 1.13.4
-	 * @var current_block_list
+	 * @var array
 	 */
 	public $current_block_list = array();
 
@@ -737,12 +737,13 @@ class UAGB_Post_Assets {
 				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 				break;
 
-			case 'uagb/star-rating':
-				$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
-				break;
+			// case 'uagb/star-rating':
+			// 	$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
+			// 	break;
 
 			default:
-				// Nothing to do here.
+				$block_slug = str_replace( 'uagb/', '', $name );
+				$css += UAGB_Block_Module::get_frontend_css( $block_slug, $blockattr, $block_id );
 				break;
 		}
 
