@@ -12,18 +12,17 @@ import ResponsiveSlider from "../../components/responsive-slider";
 import SpacingControl from "../../components/spacing-control";
 import UAGTabsControl from "../../components/tabs";
 import UAGImage from "../../components/image";
+import MultiButtonsControl from "../../components/multi-buttons-control";
+import renderSVG from "@Controls/renderIcon";
 import {
 	PanelBody,
 	SelectControl,
 	Button,
 	TextControl,
-	BaseControl,
 	ToggleControl,
 	Toolbar,
 	Tooltip,
-	TabPanel,
-	ButtonGroup,
-	Dashicon,
+	Icon
 } from '@wordpress/components';
 
 import {
@@ -251,6 +250,7 @@ const Settings = ( props ) => {
 	const imageControls = (
 		<>
 			<UAGImage
+				label = {__('Author Image','ultimate-addons-for-gutenberg')}
 				onSelectImage={onSelectImage}
 				backgroundImage={authorImage}
 				onRemoveImage={onRemoveImage}
@@ -259,38 +259,62 @@ const Settings = ( props ) => {
 			authorImage.url !== 'null' &&
 			authorImage.url !== '' && (
 				<>
-					<SelectControl
-						label={ __(
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
 							'Author Image Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ authorImgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { authorImgPosition: value } )
-						}
-						options={ [
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: authorImgPosition,
+							label: "authorImgPosition",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
-								value: 'left',
-								label: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
+								value: "left",
+								icon: (
+									<Icon
+										icon={renderSVG(
+											"fa fa-align-left"
+										)}
+									/>
+								),
+								tooltip: __(
+									"Left",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
-								value: 'right',
-								label: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
+								value: "top",
+								icon: (
+									<Icon
+										icon={renderSVG(
+											"fa fa-align-center"
+										)}
+									/>
+								),
+								tooltip: __(
+									"Top",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
 							{
-								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
+								value: "right",
+								icon: (
+									<Icon
+										icon={renderSVG(
+											"fa fa-align-right"
+										)}
+									/>
+								),
+								tooltip: __(
+									"Right",
+									"ultimate-addons-for-gutenberg"
 								),
 							},
-						] }
+						]}
+						showIcons={true}
 					/>
 					<SelectControl
 						label={ __(
@@ -338,6 +362,22 @@ const Settings = ( props ) => {
 							value: authorImgBorderRadiusUnit,
 							label: "authorImgBorderRadiusUnit",
 						}}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __(
+									"%",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "%",
+							},
+						]}
 					/>
 				</>
 			) }
@@ -443,12 +483,24 @@ const Settings = ( props ) => {
 
 	const skinSettings = (
 		<PanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }>
-			<SelectControl
-				label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-				options={ [
+			<MultiButtonsControl
+				setAttributes={setAttributes}
+				label={__(
+					'Type',
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					value: skinStyle,
+					label: "skinStyle",
+				}}
+				className="uagb-multi-button-alignment-control"
+				options={[
 					{
 						value: 'border',
-						label: __( 'Modern', 'ultimate-addons-for-gutenberg' ),
+						label: __(
+							'Modern',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'quotation',
@@ -457,9 +509,8 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					},
-				] }
-				value={ skinStyle }
-				onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
+				]}
+				showIcons={false}
 			/>
 			{imageControls}
 			<SelectControl
@@ -1071,7 +1122,7 @@ const Settings = ( props ) => {
 				/>
 			</>
 		);
-		return <PanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }>
+		return <PanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 					{ skinStyle === 'border' && borderStyleSetting() }
 					{ skinStyle === 'quotation' && quoteSettings }
 					{ skinStyle == 'quotation' && (
@@ -1286,16 +1337,18 @@ const Settings = ( props ) => {
 							label: "tweetBtnDecoration",
 						}}
 					/>
-					<SelectControl
-						label={ __(
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
 							'Target URL',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ iconTargetUrl }
-						onChange={ ( value ) =>
-							setAttributes( { iconTargetUrl: value } )
-						}
-						options={ [
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: iconTargetUrl,
+							label: "iconTargetUrl",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'current',
 								label: __(
@@ -1309,8 +1362,10 @@ const Settings = ( props ) => {
 									'Custom URL',
 									'ultimate-addons-for-gutenberg'
 								),
+							
 							},
-						] }
+						]}
+						showIcons={false}
 					/>
 					{ iconTargetUrl == 'custom' && (
 						<TextControl
@@ -1403,7 +1458,7 @@ const Settings = ( props ) => {
 					{ iconView == 'icon_text' && (
 						<Range
 							label={ __(
-								'Space between Tweet Icon and Text',
+								'Tweet Icon & Text Spacing',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={setAttributes}
