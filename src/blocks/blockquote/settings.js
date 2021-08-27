@@ -513,29 +513,45 @@ const Settings = ( props ) => {
 				showIcons={false}
 			/>
 			{imageControls}
-			<SelectControl
-				label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
-				value={ stack }
-				options={ [
+			<MultiButtonsControl
+				setAttributes={setAttributes}
+				label={__(
+					'Stack on',
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					value: stack,
+					label: "stack",
+				}}
+				className="uagb-multi-button-alignment-control"
+				options={[
 					{
 						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+						label: __(
+							'None',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'tablet',
-						label: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
+						label: __(
+							'Tablet',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'mobile',
-						label: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
+						label: __(
+							'Mobile',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
-				] }
-				help={ __(
-					'Note: Choose on what breakpoint the elements will stack.',
-					'ultimate-addons-for-gutenberg'
-				) }
-				onChange={ ( value ) => setAttributes( { stack: value } ) }
+				]}
+				showIcons={false}
 			/>
+			<p>
+				Note: Choose on what breakpoint the elements will stack.
+			</p>
 		</PanelBody>
 	);
 
@@ -703,20 +719,22 @@ const Settings = ( props ) => {
 			/>
 			{ enableTweet && (
 				<>
-					<SelectControl
-						label={ __(
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
 							'Icon View',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ iconView }
-						onChange={ ( value ) =>
-							setAttributes( { iconView: value } )
-						}
-						options={ [
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: iconView,
+							label: "iconView",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'icon_text',
 								label: __(
-									'Icon & Text',
+									'Both',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
@@ -726,6 +744,7 @@ const Settings = ( props ) => {
 									'Icon',
 									'ultimate-addons-for-gutenberg'
 								),
+							
 							},
 							{
 								value: 'text',
@@ -733,19 +752,23 @@ const Settings = ( props ) => {
 									'Text',
 									'ultimate-addons-for-gutenberg'
 								),
+							
 							},
-						] }
+						]}
+						showIcons={false}
 					/>
-					<SelectControl
-						label={ __(
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
 							'Icon Style',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ iconSkin }
-						onChange={ ( value ) =>
-							setAttributes( { iconSkin: value } )
-						}
-						options={ [
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: iconSkin,
+							label: "iconSkin",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
 							{
 								value: 'classic',
 								label: __(
@@ -759,6 +782,7 @@ const Settings = ( props ) => {
 									'Bubble',
 									'ultimate-addons-for-gutenberg'
 								),
+							
 							},
 							{
 								value: 'link',
@@ -766,8 +790,10 @@ const Settings = ( props ) => {
 									'Link',
 									'ultimate-addons-for-gutenberg'
 								),
+							
 							},
-						] }
+						]}
+						showIcons={false}
 					/>
 				</>
 			) }
