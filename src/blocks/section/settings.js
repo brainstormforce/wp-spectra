@@ -85,6 +85,7 @@ const Settings = (props) => {
 		boxShadowSpread,
 		boxShadowPosition,
 		spacingLink,
+		marginspacingLink,
 		gradientValue,
 	} = attributes;
 
@@ -378,8 +379,8 @@ const Settings = (props) => {
 					attributes={attributes}
 					setAttributes={setAttributes}
 					link={{
-						value: spacingLink,
-						label: "spacingLink",
+						value: marginspacingLink,
+						label: "marginspacingLink",
 					}}
 				/>
 			</PanelBody>
