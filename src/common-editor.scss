@@ -25,13 +25,13 @@
 			/* Gutenberg DatePicker CSS */
 			.components-datetime {
 				.components-datetime__buttons {
-					margin:10px 0 10px 0;
+					margin: 10px 0 10px 0;
 					/* Unset box-shadow */
-					.components-button:focus:not(:disabled){
-						box-shadow:unset;
+					.components-button:focus:not(:disabled) {
+						box-shadow: unset;
 					}
 				}
-			} 
+			}
 		}
 	}
 }
@@ -72,6 +72,10 @@
 	height: auto;
 	.components-input-control__label {
 		padding-bottom: 8px !important;
+	}
+	.components-select-control__input {
+		font-size: 12px !important;
+		line-height: 2 !important;
 	}
 }
 
@@ -551,10 +555,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	> .components-panel__body-title
 	.components-button.components-panel__body-toggle:focus {
 	box-shadow: none;
-}
-.uagb-inspector-tab .components-panel__body .components-select-control__input {
-	font-size: 12px;
-	line-height: normal;
 }
 .uag-responsive-common-button {
 	box-shadow: none;

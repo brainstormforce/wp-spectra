@@ -33,7 +33,7 @@ const Background = (props) => {
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 	} = props;
-
+	
 	const onRemoveImage = () => {
 		const { setAttributes } = props;
 

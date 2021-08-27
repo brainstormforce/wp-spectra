@@ -69,8 +69,6 @@ const Settings = ( props ) => {
 		subHeadLineHeightTablet,
 		subHeadLineHeightMobile,
 		subHeadLoadGoogleFonts,
-		verticalSpace,
-		horizontalSpace,
 		headSpace,
 		separatorwidth,
 		borderwidth,
@@ -591,56 +589,9 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{/* <SelectControl
-					label={ __(
-						'Tag',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingTag }
-					onChange={ ( value ) =>
-						setAttributes( { headingTag: value } )
-					}
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'SPAN',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/> */}
 				<MultiButtonsControl
 					setAttributes={setAttributes}
-					label={__("Tag", "ultimate-addons-for-gutenberg")}
+					label={__("Heading Tag", "ultimate-addons-for-gutenberg")}
 					data={{
 						value: headingTag,
 						label: "headingTag",
@@ -1458,20 +1409,6 @@ const Settings = ( props ) => {
 					max={50}
 					displayUnit={false}
 				/>
-				{/* <Range
-					label={__(
-						"Block Padding",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={bgPadding}
-					onChange={(value) =>
-						setAttributes({ bgPadding: value })
-					}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/> */}
 				<Range
 					label={__(
 						"Content Padding",
@@ -1486,34 +1423,6 @@ const Settings = ( props ) => {
 					max={50}
 					displayUnit={false}
 				/>
-				{/* <Range
-					label={__(
-						"Horizontal Space",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={horizontalSpace}
-					onChange={(value) =>
-						setAttributes({ horizontalSpace: value })
-					}
-					min={1}
-					max={50}
-					displayUnit={false}
-				/>
-				<Range
-					label={__(
-						"Vertical Space",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={verticalSpace}
-					onChange={(value) =>
-						setAttributes({ verticalSpace: value })
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-				/> */}
 				<Range
 					label={__(
 						"Heading Bottom Spacing",
