@@ -2,17 +2,21 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import {
-	BlockAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
-	SelectControl,
-	RangeControl,
-	BaseControl,
+	Icon,
 } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
+import MultiButtonsControl from "../../components/multi-buttons-control";
+import renderSVG from "@Controls/renderIcon";
+import Range from "../../components/range/Range.js";
+import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -48,81 +52,131 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
+				title={ __(
+					'Common',
+					'ultimate-addons-for-gutenberg'
+				) }
 				initialOpen={ true }
 			>
-				<BaseControl>
-					<BaseControl.VisualLabel>
-						{ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-					</BaseControl.VisualLabel>
-					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ ( value ) =>
-							setAttributes( {
-								align: value,
-							} )
-						}
-						controls={ [ 'left', 'center', 'right', 'full' ] }
-						isCollapsed={ false }
-					/>
-				</BaseControl>
-				<h2>{ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<RangeControl
-					label={ __(
-						'Gap Between Buttons',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ gap }
-					onChange={ ( value ) => setAttributes( { gap: value } ) }
-					help={ __(
-						'Note: The gap between the buttons will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.',
-						'ultimate-addons-for-gutenberg'
-					) }
-					min={ 0 }
-					max={ 500 }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Alignment",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: align,
+						label: "align",
+					}}
+					className="uagb-multi-button-alignment-control"
+					options={[
+						{
+							value: "left",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-left"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Left",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "center",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-center"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Center",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "right",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-right"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Right",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "full",
+							icon: (
+								<Icon
+									icon={renderSVG(
+										"fa fa-align-justify"
+									)}
+								/>
+							),
+							tooltip: __(
+								"Full Width",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					showIcons={true}
 				/>
-				<hr className="uagb-editor__separator" />
-				<SelectControl
-					label={ __( 'Stack on', 'ultimate-addons-for-gutenberg' ) }
-					value={ stack }
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'desktop',
-							label: __(
-								'Desktop',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'tablet',
-							label: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'mobile',
-							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					onChange={ ( value ) => setAttributes( { stack: value } ) }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Stack On",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: stack,
+						label: "stack",
+					}}
+					options={[
+						{ value: "none", label: __("None", "ultimate-addons-for-gutenberg") },
+						{ value: "desktop", label: __("Desktop", "ultimate-addons-for-gutenberg") },
+						{ value: "tablet", label: __("Tablet", "ultimate-addons-for-gutenberg") },
+						{ value: "mobile", label: __("Mobile", "ultimate-addons-for-gutenberg") },
+					]}
 					help={ __(
 						'Note: Choose on what breakpoint the buttons will stack.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }</h2>
+				<Range
+					label={__(
+						"Gap Between Buttons",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={gap}
+					onChange={(value) =>
+						setAttributes({ gap: value })
+					}
+					min={0}
+					max={500}
+					displayUnit={false}
+				/>
+			</PanelBody>
+		);
+	};
+
+	const styleSettings = () => {
+		return (
+			<PanelBody
+				title={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ true }
+			>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -146,8 +200,17 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<InspectorControls>{ generalSettings() }</InspectorControls>
-
+			<InspectorControls>
+			<InspectorTabs>
+				<InspectorTab {...UAGTabs.general}>
+				{ generalSettings() }
+				</InspectorTab>
+				<InspectorTab {...UAGTabs.style}>
+				{ styleSettings() }
+				</InspectorTab>
+				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+			</InspectorTabs>
+			</InspectorControls>
 			{ loadBtnGoogleFonts }
 		</Suspense>
 	);
