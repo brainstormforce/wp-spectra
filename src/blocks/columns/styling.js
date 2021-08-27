@@ -46,8 +46,12 @@ function styling( props ) {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		topMarginMobile,
+		rightMarginMobile,
+		leftMarginMobile,
 		bottomMarginMobile,
 		topMarginTablet,
+		rightMarginTablet,
+		leftMarginTablet,
 		bottomMarginTablet,
 		topDividerOpacity,
 		bottomDividerOpacity,
@@ -66,6 +70,7 @@ function styling( props ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor
 	} = props.attributes;
 
 	let max_width = '100%';
@@ -90,20 +95,20 @@ function styling( props ) {
 	const selectors = {
 		'.uagb-columns__wrap': style,
 		' .uagb-columns__video-wrap': {
-			opacity:
+			'opacity':
 				typeof backgroundVideoOpacity !== 'undefined'
 					? ( 100 - backgroundVideoOpacity ) / 100
 					: 0.5,
 		},
 		' .uagb-column__wrap': {
-			padding: generateCSSUnit( columnGap, 'px' ),
+			'padding': generateCSSUnit( columnGap, 'px' ),
 		},
 		' .uagb-columns__shape-top svg': {
-			width: 'calc( ' + topWidth + '% + 1.3px )',
-			height: generateCSSUnit( topHeight, 'px' ),
+			'width': 'calc( ' + topWidth + '% + 1.3px )',
+			'height': generateCSSUnit( topHeight, 'px' ),
 		},
 		' .uagb-columns__shape-top .uagb-columns__shape-fill': {
-			fill: hexToRgba(
+			'fill': hexToRgba(
 				topColor,
 				typeof topDividerOpacity !== 'undefined'
 					? topDividerOpacity
@@ -111,11 +116,11 @@ function styling( props ) {
 			),
 		},
 		' .uagb-columns__shape-bottom svg': {
-			width: 'calc( ' + bottomWidth + '% + 1.3px )',
-			height: generateCSSUnit( bottomHeight, 'px' ),
+			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
+			'height': generateCSSUnit( bottomHeight, 'px' ),
 		},
 		' .uagb-columns__shape-bottom .uagb-columns__shape-fill': {
-			fill: hexToRgba(
+			'fill': hexToRgba(
 				bottomColor,
 				typeof bottomDividerOpacity !== 'undefined'
 					? bottomDividerOpacity
@@ -141,19 +146,22 @@ function styling( props ) {
 			'border-width' : generateCSSUnit( borderWidth, 'px' ),
 			'border-color' : borderColor,
 			'border-radius' : generateCSSUnit( borderRadius, 'px' ),
-		} 
+		},
+		'.uagb-columns__wrap:hover .uagb-columns__overlay' : {
+			'border-color' : borderHoverColor,
+		}
 	};
 	
 	switch ( backgroundType ) {
 		case 'video':
 			selectors[ ' > .uagb-columns__overlay' ] = {
-				opacity: 1,
+				'opacity': 1,
 				'background-color': backgroundVideoColor,
 			};
 			break;
 		case 'image':
 			selectors[ ' > .uagb-columns__overlay' ] = {
-				opacity:
+				'opacity':
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
 						: '',
@@ -162,7 +170,7 @@ function styling( props ) {
 			break;
 		case 'color':
 			selectors[ ' > .uagb-columns__overlay' ] = {
-				opacity:
+				'opacity':
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
 						: '',
@@ -170,24 +178,20 @@ function styling( props ) {
 			};
 			break;
 		case 'gradient':
-			selectors[ ' > .uagb-columns__overlay' ][ 'background-color' ] =
-				'transparent';
-			selectors[ ' > .uagb-columns__overlay' ].opacity =
-				typeof backgroundOpacity !== 'undefined'
+			selectors[ ' > .uagb-columns__overlay' ] = {
+			'background-color': 'transparent',
+			'opacity': typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
-					: '';
+					: '',
+				}
 			if ( gradientValue ) {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = gradientValue;
+				selectors[ ' > .uagb-columns__overlay' ] = { 
+					'background-image' : gradientValue, 
+				};
 			} else if ( 'linear' === gradientType ) {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+				selectors[ ' > .uagb-columns__overlay' ] = { 'background-image' : `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`};
 			} else {
-				selectors[ ' > .uagb-columns__overlay' ][
-					'background-image'
-				] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+				selectors[ ' > .uagb-columns__overlay' ] = { 'background-image' : `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`};
 			}
 			break;
 	}
@@ -215,12 +219,17 @@ function styling( props ) {
 				bottomMarginTablet,
 				tabletMarginType
 			),
+			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginType ),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginType
+			),
 		},
 		' .uagb-columns__shape-top svg': {
-			height: generateCSSUnit( topHeightTablet, 'px' ),
+			'height': generateCSSUnit( topHeightTablet, 'px' ),
 		},
 		' .uagb-columns__shape-bottom svg': {
-			height: generateCSSUnit( bottomHeightTablet, 'px' ),
+			'height': generateCSSUnit( bottomHeightTablet, 'px' ),
 		},
 	};
 
@@ -247,12 +256,17 @@ function styling( props ) {
 				bottomMarginMobile,
 				mobileMarginType
 			),
+			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginType ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				mobileMarginType
+			),
 		},
 		' .uagb-columns__shape-top svg': {
-			height: generateCSSUnit( topHeightMobile, 'px' ),
+			'height': generateCSSUnit( topHeightMobile, 'px' ),
 		},
 		' .uagb-columns__shape-bottom svg': {
-			height: generateCSSUnit( bottomHeightMobile, 'px' ),
+			'height': generateCSSUnit( bottomHeightMobile, 'px' ),
 		},
 	};
 
