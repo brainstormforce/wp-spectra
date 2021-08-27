@@ -27,7 +27,6 @@ import {
 import {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	ToggleControl,
 } from '@wordpress/components';
 
@@ -147,14 +146,21 @@ const Settings = ( props ) => {
 			<PanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 			>
-				<RangeControl
-					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
-					value={ columns }
-					min={ 0 }
-					max={ 6 }
-					onChange={ ( value ) =>
-						setAttributes( { columns: value } )
+				<Range
+					label={__(
+						"Columns",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={columns}
+					onChange={(value) =>
+						setAttributes({
+							columns: value,
+						})
 					}
+					min={0}
+					max={6}
+					displayUnit={false}
 				/>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
