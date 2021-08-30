@@ -945,10 +945,6 @@ const Settings = ( props ) => {
 							]}
 							to={
 								<TextControl
-												label={ __(
-													'To',
-													'ultimate-addons-for-gutenberg'
-												) }
 												placeholder={ __(
 													'Email',
 													'ultimate-addons-for-gutenberg'
@@ -964,10 +960,6 @@ const Settings = ( props ) => {
 							}
 							cc={
 								<TextControl
-												label={ __(
-													'CC',
-													'ultimate-addons-for-gutenberg'
-												) }
 												placeholder={ __(
 													'Email',
 													'ultimate-addons-for-gutenberg'
@@ -982,10 +974,6 @@ const Settings = ( props ) => {
 							}
 							bcc={
 								<TextControl
-								label={ __(
-									'BCC',
-									'ultimate-addons-for-gutenberg'
-								) }
 								placeholder={ __(
 									'Email',
 									'ultimate-addons-for-gutenberg'
