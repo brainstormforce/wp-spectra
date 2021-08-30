@@ -353,80 +353,92 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	const messageStyle = () => {
+	const successMessageStyle = () => {
 		return (
 			<PanelBody
-				title={ __( 'Message', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Success Message', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				{ 'message' === confirmationType && (
 				    <>
-					<h2>Success Message</h2>
-							<AdvancedPopColorControl
-								label={__(
-									'Text Color',
+						<AdvancedPopColorControl
+							label={__(
+								'Text Color',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={successMessageTextColor ? successMessageTextColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ successMessageTextColor: value })
+							}
+						/>
+						<AdvancedPopColorControl
+							label={__(
+								'Background Color',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={successMessageBGColor ? successMessageBGColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ successMessageBGColor: value })
+							}
+						/>
+						<Border
+							setAttributes={setAttributes}
+							borderStyle={{
+								value: successMessageBorderStyle,
+								label: "successMessageBorderStyle",
+								title: __(
+									"Border Style",
 									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={successMessageTextColor ? successMessageTextColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ successMessageTextColor: value })
-								}
-							/>
-							<AdvancedPopColorControl
-								label={__(
-									'Background Color',
+								),
+							}}
+							borderWidth={{
+								value: successMessageBorderWidth,
+								label: "successMessageBorderWidth",
+								title: __(
+									"Width",
 									"ultimate-addons-for-gutenberg"
-								)}
-								colorValue={successMessageBGColor ? successMessageBGColor : ""}
-								onColorChange={(value) =>
-									setAttributes({ successMessageBGColor: value })
-								}
-							/>
-							<Border
-								setAttributes={setAttributes}
-								borderStyle={{
-									value: successMessageBorderStyle,
-									label: "successMessageBorderStyle",
-									title: __(
-										"Border Style",
-										"ultimate-addons-for-gutenberg"
-									),
-								}}
-								borderWidth={{
-									value: successMessageBorderWidth,
-									label: "successMessageBorderWidth",
-									title: __(
-										"Width",
-										"ultimate-addons-for-gutenberg"
-									),
-								}}
-								borderRadius={{
-									value: successMessageBorderRadius,
-									label: "successMessageBorderRadius",
-									title: __(
-										"Radius",
-										"ultimate-addons-for-gutenberg"
-									),
-								}}
-								borderColor={{
-									value: successMessageBorderColor,
-									label: "successMessageBorderColor",
-									title: __(
-										"Color",
-										"ultimate-addons-for-gutenberg"
-									),
-								}}
-								borderHoverColor={{
-									value: successMessageHoverBorderColor,
-									label: "successMessageHoverBorderColor",
-									title: __(
-										"Hover Color",
-										"ultimate-addons-for-gutenberg"
-									),
-								}}
-							/>
-							<h2>Failed Message</h2>
+								),
+							}}
+							borderRadius={{
+								value: successMessageBorderRadius,
+								label: "successMessageBorderRadius",
+								title: __(
+									"Radius",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+							borderColor={{
+								value: successMessageBorderColor,
+								label: "successMessageBorderColor",
+								title: __(
+									"Color",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+							borderHoverColor={{
+								value: successMessageHoverBorderColor,
+								label: "successMessageHoverBorderColor",
+								title: __(
+									"Hover Color",
+									"ultimate-addons-for-gutenberg"
+								),
+							}}
+						/>
+					</>
+				) }
+			</PanelBody>
+			)
+	}
+	const failedMessageStyle = () => {
+		return (
+			<PanelBody
+				title={ __( 'Failed Message', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+				className="uagb__url-panel-body"
+			>
+				{ 'message' === confirmationType && (
+				    <>
 							<AdvancedPopColorControl
 								label={__(
 									'Text Color',
@@ -1732,7 +1744,8 @@ const Settings = ( props ) => {
 						{inputSettings()}
 						{fieldSettings()}
 						{checkboxSettings()}
-						{messageStyle()}
+						{successMessageStyle()}
+						{failedMessageStyle()}
 						{submitButtonStyle()}
 					</InspectorTab>
 					<InspectorTab {...UAGTabs.advance}>
