@@ -919,99 +919,87 @@ const Settings = ( props ) => {
 				/>
 				{ true === sendAfterSubmitEmail && (
 					<>
-						<TabPanel
-							className="uagb-size-type-field-tabs components-base-control uagb-size-type-field__common-tabs uagb-inline-margin uagb-email-controls-tabs"
-							activeClass="active-tab"
-							tabs={ [
+						<UAGTabsControl
+							tabs={[
 								{
-									name: 'to',
-									title: 'To',
-									className:
-										'uagb-desktop-tab uagb-responsive-tabs',
+									name: "to",
+									title: __(
+										"To",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
 								{
-									name: 'cc',
-									title: 'CC',
-									className:
-										'uagb-tablet-tab uagb-responsive-tabs',
+									name: "cc",
+									title: __(
+										"CC",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
 								{
-									name: 'bcc',
-									title: 'BCC',
-									className:
-										'uagb-mobile-tab uagb-responsive-tabs',
+									name: "bcc",
+									title: __(
+										"BCC",
+										"ultimate-addons-for-gutenberg"
+									),
 								},
-							] }
-						>
-							{ ( tab ) => {
-								let tabout;
-
-								if ( 'to' === tab.name ) {
-									tabout = (
-										<TextControl
-											label={ __(
-												'To',
-												'ultimate-addons-for-gutenberg'
-											) }
-											placeholder={ __(
-												'Email',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ afterSubmitToEmail }
-											onChange={ ( value ) =>
-												setAttributes( {
-													afterSubmitToEmail: value,
-												} )
-											}
-										/>
-									);
-								} else if ( 'cc' === tab.name ) {
-									tabout = (
-										<TextControl
-											label={ __(
-												'CC',
-												'ultimate-addons-for-gutenberg'
-											) }
-											placeholder={ __(
-												'Email',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ afterSubmitCcEmail }
-											onChange={ ( value ) =>
-												setAttributes( {
-													afterSubmitCcEmail: value,
-												} )
-											}
-										/>
-									);
-								} else {
-									tabout = (
-										<TextControl
-											label={ __(
-												'BCC',
-												'ultimate-addons-for-gutenberg'
-											) }
-											placeholder={ __(
-												'Email',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ afterSubmitBccEmail }
-											onChange={ ( value ) =>
-												setAttributes( {
-													afterSubmitBccEmail: value,
-												} )
-											}
-										/>
-									);
+							]}
+							to={
+								<TextControl
+												label={ __(
+													'To',
+													'ultimate-addons-for-gutenberg'
+												) }
+												placeholder={ __(
+													'Email',
+													'ultimate-addons-for-gutenberg'
+												) }
+												value={ afterSubmitToEmail }
+												onChange={ ( value ) =>
+													setAttributes( {
+														afterSubmitToEmail: value,
+													} )
+												}
+											/>
+								
+							}
+							cc={
+								<TextControl
+												label={ __(
+													'CC',
+													'ultimate-addons-for-gutenberg'
+												) }
+												placeholder={ __(
+													'Email',
+													'ultimate-addons-for-gutenberg'
+												) }
+												value={ afterSubmitCcEmail }
+												onChange={ ( value ) =>
+													setAttributes( {
+														afterSubmitCcEmail: value,
+													} )
+												}
+											/>
+							}
+							bcc={
+								<TextControl
+								label={ __(
+									'BCC',
+									'ultimate-addons-for-gutenberg'
+								) }
+								placeholder={ __(
+									'Email',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ afterSubmitBccEmail }
+								onChange={ ( value ) =>
+									setAttributes( {
+										afterSubmitBccEmail: value,
+									} )
 								}
-
-								return (
-									<div className="uagb-form-emailto">
-										{ tabout }
-									</div>
-								);
-							} }
-						</TabPanel>
+							/>
+							}
+							disableBottomSeparator = {false}
+						/>
 						<TextControl
 							label={ __(
 								'Subject',
