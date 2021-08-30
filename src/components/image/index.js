@@ -18,9 +18,9 @@ const UAGImage = (props) => {
 		backgroundImage,
 		onRemoveImage,
 		showVideoInput,
+		label
 	} = props;
-
-	let label = __("Image", "ultimate-addons-for-gutenberg");
+	let labelText = __("Image", "ultimate-addons-for-gutenberg");
 	let selectImageLabel = __("Select Image", "ultimate-addons-for-gutenberg");
 	let replaceImageLabel = __(
 		"Replace Image",
@@ -30,7 +30,7 @@ const UAGImage = (props) => {
 	let allowedTypes = ["image"];
 
 	if (showVideoInput) {
-		label = __("Video", "ultimate-addons-for-gutenberg");
+		labelText = __("Video", "ultimate-addons-for-gutenberg");
 		selectImageLabel = __("Select Video", "ultimate-addons-for-gutenberg");
 		replaceImageLabel = __(
 			"Replace Video",
@@ -39,9 +39,9 @@ const UAGImage = (props) => {
 		removeImageLabel = __("Remove Video", "ultimate-addons-for-gutenberg");
 		allowedTypes = ["video"];
 	}
-	
+	labelText = label ? label : labelText;
 	return (
-		<BaseControl className="editor-bg-image-control" label={label}>
+		<BaseControl className="editor-bg-image-control" label={labelText}>
 			<div className="uagb-bg-image">
 				<MediaUpload
 					title={selectImageLabel}
