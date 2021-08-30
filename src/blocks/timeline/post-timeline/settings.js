@@ -863,13 +863,7 @@ const Settings = ( props ) => {
 	};
 	const connectorColorsSettings = () => {
 		const iconColorSettings = (
-			<PanelBody
-				title={ __(
-					'Color',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ true }
-			>
+			<>
 				<AdvancedPopColorControl
 					label={__("Line Color", "ultimate-addons-for-gutenberg")}
 					colorValue={separatorColor ? separatorColor : ""}
@@ -898,17 +892,11 @@ const Settings = ( props ) => {
 						setAttributes({ separatorBorder: value })
 					}
 				/>
-			</PanelBody>
+			</>
 		);
 
 		const iconFocusSettings = (
-			<PanelBody
-				title={ __(
-					'Color Settings',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ true }
-			>
+			<>
 				<AdvancedPopColorControl
 					label={__("Line Color", "ultimate-addons-for-gutenberg")}
 					colorValue={separatorFillColor ? separatorFillColor : ""}
@@ -937,7 +925,7 @@ const Settings = ( props ) => {
 						setAttributes({ borderFocus: value })
 					}
 				/>
-			</PanelBody>
+			</>
 		);
 
 		return (
@@ -946,7 +934,7 @@ const Settings = ( props ) => {
 					'Connector',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<UAGTabsControl
 					tabs={[
