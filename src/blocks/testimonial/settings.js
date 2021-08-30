@@ -530,6 +530,7 @@ const Settings = ( props ) => {
 							"ultimate-addons-for-gutenberg"
 						),
 					}}
+					disableBottomSeparator={true}
 				/>
 				</PanelBody>
 	}
@@ -1050,9 +1051,10 @@ const Settings = ( props ) => {
 		) {
 			imageVal = test_block[ index ].image;
 		}
+		index = index + 1;
 		return (	
 					<UAGImage
-						label = {'Image'+index}
+						label = {'Image '+index}
 						onSelectImage={() => onRemoveTestImage(imageVal, index )}
 						backgroundImage={imageVal}
 						onRemoveImage={ imageVal && (
