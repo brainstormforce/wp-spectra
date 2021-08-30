@@ -5937,13 +5937,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-forms-main-form .uagb-forms-accept-wrap > input']                              = array(
 					'color' => $attr['inputColor'],
 				);
-				$selectors[' .uagb-forms-main-form  .uagb-forms-input']                         = array(
+				$selectors[' .uagb-forms-main-form .uagb-forms-input']                         = array(
 					'background-color' => $attr['bgColor'],
 					'border'           => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
 					'color'            => $attr['inputColor'],
 				);
-				$selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'] = array(
+				$selectors[' .uagb-forms-main-form .uagb-forms-input.uagb-form-phone-country'] = array(
 					'padding-top'    => UAGB_Helper::get_css_value( $paddingFieldTop, $attr['paddingFieldUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $paddingFieldBottom, $attr['paddingFieldUnit'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingFieldLeft, $attr['paddingFieldUnit'] ),
