@@ -1543,7 +1543,7 @@ const Settings = ( props ) => {
 									}
 								/>
 							}
-							disableBottomSeparator={false}
+							disableBottomSeparator={true}
 						/>
 					) }
 					{ iconSkin !== 'link' && (
