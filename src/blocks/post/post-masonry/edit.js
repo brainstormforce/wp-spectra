@@ -907,7 +907,7 @@
 									setAttributes({ paginationBgHoverColor: value })
 								}
 								/></>}
-								disableBottomSeparator={false}
+								disableBottomSeparator={true}
 							/>
 							<Border
 								setAttributes={setAttributes}

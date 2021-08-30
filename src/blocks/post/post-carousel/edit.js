@@ -15,7 +15,7 @@ import InspectorTab from "../../../components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "../../../components/spacing-control";
 import Range from "../../../components/range/Range.js";
 import ResponsiveSlider from "../../../components/responsive-slider";
-
+import UAGTabsControl from "../../../components/tabs";
 import MultiButtonsControl from "../../../components/multi-buttons-control";
 const MAX_POSTS_COLUMNS = 8;
 
@@ -1795,7 +1795,7 @@ const UAGBPostCarousel = ( props ) => {
 					setAttributes({ ctaBgHColor: value })
 				}
 				/></>}
-				disableBottomSeparator={false}
+				disableBottomSeparator={true}
 			/>							
 		</PanelBody>
 	);
