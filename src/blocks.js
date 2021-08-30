@@ -33,7 +33,7 @@ import "./blocks/columns/block.js";
 // import "./blocks/cf7-designer/block.js";
 // import "./blocks/gf-designer/block.js";
 // import "./blocks/blockquote/block.js";
-// import "./blocks/marketing-button/block.js";
+import "./blocks/marketing-button/block.js";
 import "./blocks/table-of-contents/block.js";
 import "./blocks/how-to/block.js";
 import "./blocks/faq/block.js";
