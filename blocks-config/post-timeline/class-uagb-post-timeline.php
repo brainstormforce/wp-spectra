@@ -491,109 +491,109 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'leftMargin'=> array(
-							'type' =>  'number',
+						'leftMargin'              => array(
+							'type' => 'number',
 						),
-						'rightMargin'=> array(
-							'type' =>  'number',
+						'rightMargin'             => array(
+							'type' => 'number',
 						),
-						'topMargin'=> array(
-							'type' =>  'number',
+						'topMargin'               => array(
+							'type' => 'number',
 						),
-						'bottomMargin'=> array(
-							'type' =>  'number',
+						'bottomMargin'            => array(
+							'type' => 'number',
 						),
-						'leftMarginTablet'=> array(
-							'type' =>  'number',
+						'leftMarginTablet'        => array(
+							'type' => 'number',
 						),
-						'rightMarginTablet'=> array(
-							'type' =>  'number',
+						'rightMarginTablet'       => array(
+							'type' => 'number',
 						),
-						'topMarginTablet'=> array(
-							'type' =>  'number',
+						'topMarginTablet'         => array(
+							'type' => 'number',
 						),
-						'bottomMarginTablet'=> array(
-							'type' =>  'number',
+						'bottomMarginTablet'      => array(
+							'type' => 'number',
 						),
-						'leftMarginMobile'=> array(
-							'type' =>  'number',
+						'leftMarginMobile'        => array(
+							'type' => 'number',
 						),
-						'rightMarginMobile'=> array(
-							'type' =>  'number',
+						'rightMarginMobile'       => array(
+							'type' => 'number',
 						),
-						'topMarginMobile'=> array(
-							'type' =>  'number',
+						'topMarginMobile'         => array(
+							'type' => 'number',
 						),
-						'bottomMarginMobile'=> array(
-							'type' =>  'number',
+						'bottomMarginMobile'      => array(
+							'type' => 'number',
 						),
-						'marginUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'marginUnit'              => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'mobileMarginUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'mobileMarginUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'tabletMarginUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'tabletMarginUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'marginLink'=> array(
-							'type' =>  'boolean',
-							'default' =>  false,
+						'marginLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
 						),
-						'leftPadding'=> array(
-							'type' =>  'number',
+						'leftPadding'             => array(
+							'type' => 'number',
 						),
-						'rightPadding'=> array(
-							'type' =>  'number',
+						'rightPadding'            => array(
+							'type' => 'number',
 						),
-						'topPadding'=> array(
-							'type' =>  'number',
+						'topPadding'              => array(
+							'type' => 'number',
 						),
-						'bottomPadding'=> array(
-							'type' =>  'number',
+						'bottomPadding'           => array(
+							'type' => 'number',
 						),
-						'leftPaddingTablet'=> array(
-							'type' =>  'number',
+						'leftPaddingTablet'       => array(
+							'type' => 'number',
 						),
-						'rightPaddingTablet'=> array(
-							'type' =>  'number',
+						'rightPaddingTablet'      => array(
+							'type' => 'number',
 						),
-						'topPaddingTablet'=> array(
-							'type' =>  'number',
+						'topPaddingTablet'        => array(
+							'type' => 'number',
 						),
-						'bottomPaddingTablet'=> array(
-							'type' =>  'number',
+						'bottomPaddingTablet'     => array(
+							'type' => 'number',
 						),
-						'leftPaddingMobile'=> array(
-							'type' =>  'number',
+						'leftPaddingMobile'       => array(
+							'type' => 'number',
 						),
-						'rightPaddingMobile'=> array(
-							'type' =>  'number',
+						'rightPaddingMobile'      => array(
+							'type' => 'number',
 						),
-						'topPaddingMobile'=> array(
-							'type' =>  'number',
+						'topPaddingMobile'        => array(
+							'type' => 'number',
 						),
-						'bottomPaddingMobile'=> array(
-							'type' =>  'number',
+						'bottomPaddingMobile'     => array(
+							'type' => 'number',
 						),
-						'paddingUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'paddingUnit'             => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'mobilePaddingUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'mobilePaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'tabletPaddingUnit'=> array(
-							'type' =>  'string',
-							'default' =>  'px',
+						'tabletPaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
-						'paddingLink'=> array(
-							'type' =>  'boolean',
-							'default' =>  false,
+						'paddingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
 						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
