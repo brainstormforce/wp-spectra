@@ -1462,6 +1462,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconFontSizeType'       => 'px',
 							'iconFontSizeTablet'     => 20,
 							'iconFontSizeMobile'     => 20,
+							'paddingBtnUnit'         => 'px',
+							'mobilePaddingBtnUnit'   => 'px',
+							'tabletPaddingBtnUnit'   => 'px',
 						),
 					),
 					'uagb/buttons'                => array(
