@@ -500,6 +500,7 @@ const Settings = (props) => {
 								"ultimate-addons-for-gutenberg"
 							),
 						}}
+						disableBottomSeparator = { true }
 					/>
 				</PanelBody>
 				<PanelBody title="Box Shadow" initialOpen={false}>
