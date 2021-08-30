@@ -140,10 +140,10 @@
   z-index: 2;
   width: 100%;
   height: 70px;
-  box-shadow: 0px 5px 15px rgba(190, 190, 190, 0.1); }
+  box-shadow: 0px 5px 15px rgba(190, 190, 190, 0.1);
+  border-bottom: 1px solid #eee; }
   .uag-global-nav-menu .uag-global-nav__title a:focus,
   .uag-global-nav-menu .uag-global-nav__title a:hover {
-    box-shadow: none;
     outline: 0; }
   .uag-global-nav-menu .uag-global-nav__title .uag-logo {
     width: 178.65px; }
@@ -173,19 +173,20 @@
     align-items: center;
     padding: 16px 27px;
     color: #444;
-    margin-bottom: -1px;
     cursor: pointer;
     font-size: 14px;
     line-height: 1em;
     letter-spacing: 0.225px;
     font-weight: var(--heading-weight-400);
     max-width: 100%;
+    margin-bottom: -1px;
     text-align: center;
     text-decoration: none;
-    box-sizing: unset; }
+    box-sizing: unset;
+    border-bottom: 1px solid #eee; }
   .uag-global-nav-menu a.uag-global-nav-menu__tab:hover {
     color: #135E96;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 51.56%, #F3F5F7 100%); }
+    background: linear-gradient(180deg, rgba(252, 38, 38, 0) 51.56%, #F3F5F7 100%); }
 
 /* New FIxed header */
 .uag-menu-page-content {
@@ -322,8 +323,7 @@ body.folded .uag-global-nav-menu {
 
 .uag-global-settings-metabox {
   font-size: 14px;
-  max-width: 100%;
-  border-top: 1px solid #eee; }
+  max-width: 100%; }
   .uag-global-settings-metabox form {
     margin: 0; }
   .uag-global-settings-metabox h3 {
@@ -341,8 +341,7 @@ body.folded .uag-global-nav-menu {
   background: var(--background-light-color);
   padding: 50px 30px;
   width: 80%;
-  margin: 0 auto;
-  border-top: 1px solid #eee; }
+  margin: 0 auto; }
 
 .uag-extension__metabox {
   margin: 20px 0px;
@@ -703,12 +702,15 @@ body.folded .uag-global-nav-menu {
 
 .uag-global-footer {
   text-align: center; }
-  .uag-global-footer p {
-    text-align: unset;
+  .uag-global-footer span {
     margin-bottom: 0px;
     color: var(--content-color);
     font-family: var(--heading-font-family);
     font-size: 14px; }
+  .uag-global-footer .uag-left__footer {
+    float: left; }
+  .uag-global-footer .uag-right__footer {
+    float: right; }
 
 @media screen and (max-width: 960px) {
   #wpfooter {

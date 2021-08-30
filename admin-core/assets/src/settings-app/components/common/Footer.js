@@ -37,7 +37,7 @@ function Footer() {
 	) );
 	return (
 		<div className="uag-global-footer">
-			<p className="uag-left__footer">
+			<span className="uag-left__footer">
 				Loving Ultimate Addons? We really appreciate if leave us{ ' ' }
 				{ stars } rating on{ ' ' }
 				<a
@@ -47,8 +47,8 @@ function Footer() {
 				>
 					WordPress.org.
 				</a>
-				</p>
-			<p className="uag-right__footer">Thank you for your support!</p>
+				</span>
+			<span className="uag-right__footer">Thank you for your support!</span>
 		</div>
 	);
 }

@@ -1302,13 +1302,13 @@ function Footer() {
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "uag-global-footer"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
     className: "uag-left__footer"
   }, "Loving Ultimate Addons? We really appreciate if leave us", ' ', stars, " rating on", ' ', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
     target: "_blank",
     href: "https://wordpress.org/plugins/ultimate-addons-for-gutenberg/",
     rel: "noreferrer"
-  }, "WordPress.org.")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+  }, "WordPress.org.")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
     className: "uag-right__footer"
   }, "Thank you for your support!"));
 }

@@ -1,11 +1,16 @@
 .uag-global-footer{
     text-align: center;
-    p{
-        text-align: unset;
+    span{
         margin-bottom: 0px;
         color: var(--content-color);
         font-family: var(--heading-font-family);
         font-size: 14px;
+    }
+    .uag-left__footer{
+        float: left;
+    }
+    .uag-right__footer{
+        float: right;
     }
 }
 @media screen and (max-width: 960px){

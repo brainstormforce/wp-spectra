@@ -130,7 +130,6 @@
 .uag-menu-page-wrapper a:focus,
 .uag-menu-page-wrapper button:focus,
 .uag-menu-page-wrapper input:focus {
-	box-shadow: none;
 	outline: none;
 }
 /* Admin Base */
