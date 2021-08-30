@@ -112,8 +112,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	let selectors = {};
-	let tablet_selectors = {};
-	let mobile_selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
 	selectors = {
 		' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea': {
@@ -299,13 +299,13 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
 			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
 		};
-		tablet_selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
 			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
 			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
 		};
-		mobile_selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
 			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
@@ -373,13 +373,13 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
 			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
 		};
-		tablet_selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
 			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
 			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
 		};
-		mobile_selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
 			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
@@ -429,7 +429,7 @@ function styling( props ) {
 		};
 	}
 
-	tablet_selectors = {
+	tabletSelectors = {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit( paddingBtnTopTablet , tabletPaddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet , tabletPaddingBtnUnit ),
@@ -468,7 +468,7 @@ function styling( props ) {
 		},
 	};
 
-	mobile_selectors = {
+	mobileSelectors = {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit( paddingBtnTopMobile , mobilePaddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile , mobilePaddingBtnUnit ),
@@ -507,16 +507,18 @@ function styling( props ) {
 		},
 	};
 
-	let styling_css = '';
-	const id = `.uagb-block-${ block_id }`;
+	let stylingCss = '';
+	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
+	stylingCss = generateCSS( selectors, base_selector );
 
-	styling_css = generateCSS( selectors, id );
+	stylingCss += generateCSS( tabletSelectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	styling_css += generateCSS( tablet_selectors, id, true, 'tablet' );
+	stylingCss += generateCSS( mobileSelectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
-	styling_css += generateCSS( mobile_selectors, id, true, 'mobile' );
-
-	return styling_css;
+	return stylingCss;
 }
 
 export default styling;
