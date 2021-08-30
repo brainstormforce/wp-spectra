@@ -26,7 +26,7 @@ import "./blocks/icon-list/block.js";
 import "./blocks/icon-list-child/block.js";
 // import "./blocks/price-list/block.js";
 // import "./blocks/price-list-child/block.js";
-// import "./blocks/timeline/block.js";
+import "./blocks/timeline/block.js";
 import "./blocks/call-to-action/block.js";
 import "./blocks/column/block.js";
 import "./blocks/columns/block.js";
