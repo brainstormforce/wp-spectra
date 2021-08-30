@@ -424,6 +424,7 @@ const Settings = ( props ) => {
 									"ultimate-addons-for-gutenberg"
 								),
 							}}
+							disableBottomSeparator={true}
 						/>
 					</>
 				) }
