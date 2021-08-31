@@ -418,15 +418,13 @@ const Settings = (props) => {
 					"ultimate-addons-for-gutenberg"
 				)}
 			</p>
-			<SelectControl
-				label={__(
-					"Validation Message Position",
-					"ultimate-addons-for-gutenberg"
-				)}
-				value={validationMsgPosition}
-				onChange={(value) =>
-					setAttributes({ validationMsgPosition: value })
-				}
+			<MultiButtonsControl
+				setAttributes={setAttributes}
+				label={__("Validation Message Position", "ultimate-addons-for-gutenberg")}
+				data={{
+					value: validationMsgPosition,
+					label: "validationMsgPosition",
+				}}
 				options={[
 					{
 						value: "default",
@@ -1014,12 +1012,12 @@ const Settings = (props) => {
 				borderColor={{
 					value: buttonBorderColor,
 					label: "buttonBorderColor",
-					title: __("Color", "ultimate-addons-for-gutenberg"),
+					title: __("Border Color", "ultimate-addons-for-gutenberg"),
 				}}
 				borderHoverColor={{
 					value: buttonBorderHoverColor,
 					label: "buttonBorderHoverColor",
-					title: __("Hover Color", "ultimate-addons-for-gutenberg"),
+					title: __("Border Color", "ultimate-addons-for-gutenberg"),
 				}}
 			/>
 			<UAGTabsControl

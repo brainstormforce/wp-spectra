@@ -29,7 +29,7 @@ const Border = (props) => {
 
 	let tabOutputNormal = (
 		<AdvancedPopColorControl
-			label={__("Color", "ultimate-addons-for-gutenberg")}
+			label={borderColor.title}
 			colorValue={borderColor.value}
 			onColorChange={(value) =>
 				setAttributes({ [borderColor.label]: value })
@@ -38,7 +38,7 @@ const Border = (props) => {
 	);
 	let tabOutputHover = (
 		<AdvancedPopColorControl
-			label={__("Color", "ultimate-addons-for-gutenberg")}
+			label={borderHoverColor.title}
 			colorValue={borderHoverColor.value}
 			onColorChange={(value) =>
 				setAttributes({ [borderHoverColor.label]: value })
