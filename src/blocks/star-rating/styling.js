@@ -8,7 +8,6 @@ import generateCSSUnit from "@Controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		range,
 		layout,
 		rating,
 		size,
@@ -31,7 +30,7 @@ function styling( props ) {
 	} = props.attributes
 
 	let alignment = 'flex-start';
-	let stack_alignment = align;
+	let stackAlignment = align;
 	
 	if ( align ) {
 		if ( 'right' === align ) {
@@ -42,7 +41,7 @@ function styling( props ) {
 		}
 		if ( 'full' === align ) {
 			alignment = 'space-between';
-			stack_alignment = 'left';
+			stackAlignment = 'left';
 		}
 	}
 
@@ -66,7 +65,7 @@ function styling( props ) {
 		},
 		".uag-star-rating__wrapper" : {
 			'justify-content': alignment,
-			'text-align' : stack_alignment,
+			'text-align' : stackAlignment,
 		}
 	}
 
@@ -94,28 +93,28 @@ function styling( props ) {
 		"color": color,
 	}
 
-	var tablet_selectors = {
+	var tabletSelectors = {
 		" .uag-star-rating__title.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( fontSizeTablet, fontSizeType ),
 			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
 		},
 	}
-	var mobile_selectors = {
+	var mobileSelectors = {
 		" .uag-star-rating__title.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( fontSizeMobile, fontSizeType ),
 			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
 		},
 	}
 
-	var base_selector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	var baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
-	var styling_css = generateCSS( selectors, base_selector )
+	var stylingCss = generateCSS( selectors, baseSelector )
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, "tablet" )
+	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, "mobile" )
+	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, "mobile" )
 
-	return styling_css
+	return stylingCss
 }
 
 export default styling
