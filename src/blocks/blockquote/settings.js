@@ -795,6 +795,36 @@ const Settings = ( props ) => {
 						]}
 						showIcons={false}
 					/>
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							'Target URL',
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: iconTargetUrl,
+							label: "iconTargetUrl",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+							{
+								value: 'current',
+								label: __(
+									'Current Page',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'custom',
+								label: __(
+									'Custom URL',
+									'ultimate-addons-for-gutenberg'
+								),
+							
+							},
+						]}
+						showIcons={false}
+					/>
 				</>
 			) }
 			{ enableTweet && iconView !== 'icon' && (
@@ -1299,100 +1329,72 @@ const Settings = ( props ) => {
 					title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: tweetBtnLoadGoogleFonts,
-							label: 'tweetBtnLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: tweetBtnFontFamily,
-							label: 'tweetBtnFontFamily',
-						} }
-						fontWeight={ {
-							value: tweetBtnFontWeight,
-							label: 'tweetBtnFontWeight',
-						} }
-						fontSubset={ {
-							value: tweetBtnFontSubset,
-							label: 'tweetBtnFontSubset',
-						} }
-						fontSizeType={ {
-							value: tweetBtnFontSizeType,
-							label: 'tweetBtnFontSizeType',
-						} }
-						fontSize={ {
-							value: tweetBtnFontSize,
-							label: 'tweetBtnFontSize',
-						} }
-						fontSizeMobile={ {
-							value: tweetBtnFontSizeMobile,
-							label: 'tweetBtnFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: tweetBtnFontSizeTablet,
-							label: 'tweetBtnFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: tweetBtnLineHeightType,
-							label: 'tweetBtnLineHeightType',
-						} }
-						lineHeight={ {
-							value: tweetBtnLineHeight,
-							label: 'tweetBtnLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: tweetBtnLineHeightMobile,
-							label: 'tweetBtnLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: tweetBtnLineHeightTablet,
-							label: 'tweetBtnLineHeightTablet',
-						} }
-						transform={{
-							value: tweetBtnTransform,
-							label: "tweetBtnTransform",
-						}}
-						decoration={{
-							value: tweetBtnDecoration,
-							label: "tweetBtnDecoration",
-						}}
-					/>
-					<MultiButtonsControl
-						setAttributes={setAttributes}
-						label={__(
-							'Target URL',
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							value: iconTargetUrl,
-							label: "iconTargetUrl",
-						}}
-						className="uagb-multi-button-alignment-control"
-						options={[
-							{
-								value: 'current',
-								label: __(
-									'Current Page',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'custom',
-								label: __(
-									'Custom URL',
-									'ultimate-addons-for-gutenberg'
-								),
-							
-							},
-						]}
-						showIcons={false}
-					/>
+					{enableTweet !== 'icon' && (
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: tweetBtnLoadGoogleFonts,
+								label: 'tweetBtnLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: tweetBtnFontFamily,
+								label: 'tweetBtnFontFamily',
+							} }
+							fontWeight={ {
+								value: tweetBtnFontWeight,
+								label: 'tweetBtnFontWeight',
+							} }
+							fontSubset={ {
+								value: tweetBtnFontSubset,
+								label: 'tweetBtnFontSubset',
+							} }
+							fontSizeType={ {
+								value: tweetBtnFontSizeType,
+								label: 'tweetBtnFontSizeType',
+							} }
+							fontSize={ {
+								value: tweetBtnFontSize,
+								label: 'tweetBtnFontSize',
+							} }
+							fontSizeMobile={ {
+								value: tweetBtnFontSizeMobile,
+								label: 'tweetBtnFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: tweetBtnFontSizeTablet,
+								label: 'tweetBtnFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: tweetBtnLineHeightType,
+								label: 'tweetBtnLineHeightType',
+							} }
+							lineHeight={ {
+								value: tweetBtnLineHeight,
+								label: 'tweetBtnLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: tweetBtnLineHeightMobile,
+								label: 'tweetBtnLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: tweetBtnLineHeightTablet,
+								label: 'tweetBtnLineHeightTablet',
+							} }
+							transform={{
+								value: tweetBtnTransform,
+								label: "tweetBtnTransform",
+							}}
+							decoration={{
+								value: tweetBtnDecoration,
+								label: "tweetBtnDecoration",
+							}}
+						/>
+					)}
 					{ iconTargetUrl == 'custom' && (
 						<TextControl
 							label={ __(
