@@ -4228,8 +4228,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
-			$field_hr_padding = UAGB_Helper::get_css_value( $attr['fieldHrPadding'], 'px' );
-			$field_vr_padding = UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' );
+			$message_top_padding_dekstop    = isset( $attr['messageTopPaddingDesktop'] ) ? $attr['messageTopPaddingDesktop'] : $attr['msgVrPadding'];
+			$message_bottom_padding_dekstop = isset( $attr['messageBottomPaddingDesktop'] ) ? $attr['messageBottomPaddingDesktop'] : $attr['msgVrPadding'];
+			$message_left_padding_dekstop   = isset( $attr['messageLeftPaddingDesktop'] ) ? $attr['messageLeftPaddingDesktop'] : $attr['msgHrPadding'];
+			$message_right_padding_dekstop  = isset( $attr['messageRightPaddingDesktop'] ) ? $attr['messageRightPaddingDesktop'] : $attr['msgHrPadding'];
+
+			$button_top_padding_dekstop    = isset( $attr['buttonTopPaddingDesktop'] ) ? $attr['buttonTopPaddingDesktop'] : $attr['buttonVrPadding'];
+			$button_bottom_padding_dekstop = isset( $attr['buttonBottomPaddingDesktop'] ) ? $attr['buttonBottomPaddingDesktop'] : $attr['buttonVrPadding'];
+			$button_left_padding_dekstop   = isset( $attr['buttonLeftPaddingDesktop'] ) ? $attr['buttonLeftPaddingDesktop'] : $attr['buttonHrPadding'];
+			$button_right_padding_dekstop  = isset( $attr['buttonRightPaddingDesktop'] ) ? $attr['buttonRightPaddingDesktop'] : $attr['buttonHrPadding'];
+
+			$field_top_padding_dekstop = isset( $attr['fieldTopPaddingDesktop'] ) ? UAGB_Helper::get_css_value( $attr['fieldTopPaddingDesktop'], $attr['fieldPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['fieldVrPadding'], $attr['fieldPaddingTypeDesktop'] );
+
+			$field_bottom_padding_dekstop = isset( $attr['fieldBottomPaddingDesktop'] ) ? UAGB_Helper::get_css_value( $attr['fieldBottomPaddingDesktop'], $attr['fieldPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['fieldVrPadding'], $attr['fieldPaddingTypeDesktop'] );
+
+			$field_left_padding_dekstop = isset( $attr['fieldLeftPaddingDesktop'] ) ? UAGB_Helper::get_css_value( $attr['fieldLeftPaddingDesktop'], $attr['fieldPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['fieldHrPadding'], $attr['fieldPaddingTypeDesktop'] );
+
+			$field_right_padding_dekstop = isset( $attr['fieldRightPaddingDesktop'] ) ? UAGB_Helper::get_css_value( $attr['fieldRightPaddingDesktop'], $attr['fieldPaddingTypeDesktop'] ) : UAGB_Helper::get_css_value( $attr['fieldHrPadding'], $attr['fieldPaddingTypeDesktop'] );
+
+			$field_vr_padding = isset( $attr['fieldTopPaddingDesktop'] ) ? $attr['fieldTopPaddingDesktop'] : $attr['fieldVrPadding'];
 
 			$selectors = array(
 				' .wpcf7 .wpcf7-form'                      => array(
@@ -4245,10 +4262,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'padding-left'     => $field_hr_padding,
-					'padding-right'    => $field_hr_padding,
-					'padding-top'      => $field_vr_padding,
-					'padding-bottom'   => $field_vr_padding,
+					'padding-left'     => $field_left_padding_dekstop,
+					'padding-right'    => $field_right_padding_dekstop,
+					'padding-top'      => $field_top_padding_dekstop,
+					'padding-bottom'   => $field_bottom_padding_dekstop,
 					'margin-top'       => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
@@ -4265,16 +4282,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align'       => $attr['align'],
 				),
 				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => array(
-					'padding-left'   => $field_hr_padding,
-					'padding-right'  => $field_hr_padding,
-					'padding-top'    => $field_vr_padding,
-					'padding-bottom' => $field_vr_padding,
+					'padding-left'   => $field_left_padding_dekstop,
+					'padding-right'  => $field_right_padding_dekstop,
+					'padding-top'    => $field_top_padding_dekstop,
+					'padding-bottom' => $field_bottom_padding_dekstop,
 				),
 				' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => array(
-					'padding-left'   => $field_hr_padding,
-					'padding-right'  => $field_hr_padding,
-					'padding-top'    => $field_vr_padding,
-					'padding-bottom' => $field_vr_padding,
+					'padding-left'   => $field_left_padding_dekstop,
+					'padding-right'  => $field_right_padding_dekstop,
+					'padding-top'    => $field_top_padding_dekstop,
+					'padding-bottom' => $field_bottom_padding_dekstop,
 				),
 				' .wpcf7 textarea'                         => array(
 					'background-color' => $attr['fieldBgColor'],
@@ -4283,10 +4300,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 					'border-style'     => $attr['fieldBorderStyle'],
-					'padding-left'     => $field_hr_padding,
-					'padding-right'    => $field_hr_padding,
-					'padding-top'      => $field_vr_padding,
-					'padding-bottom'   => $field_vr_padding,
+					'padding-left'     => $field_left_padding_dekstop,
+					'padding-right'    => $field_right_padding_dekstop,
+					'padding-top'      => $field_top_padding_dekstop,
+					'padding-bottom'   => $field_bottom_padding_dekstop,
 					'margin-top'       => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 					'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 					'text-align'       => $attr['align'],
@@ -4319,10 +4336,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-style'     => $attr['buttonBorderStyle'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['buttonBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['buttonBorderRadius'], $attr['buttonBorderRadiusType'] ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['buttonHrPadding'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['buttonVrPadding'], 'px' ),
+					'padding-left'     => UAGB_Helper::get_css_value( $button_left_padding_dekstop, $attr['buttonPaddingTypeDesktop'] ),
+					'padding-right'    => UAGB_Helper::get_css_value( $button_right_padding_dekstop, $attr['buttonPaddingTypeDesktop'] ),
+					'padding-top'      => UAGB_Helper::get_css_value( $button_top_padding_dekstop, $attr['buttonPaddingTypeDesktop'] ),
+					'padding-bottom'   => UAGB_Helper::get_css_value( $button_bottom_padding_dekstop, $attr['buttonPaddingTypeDesktop'] ),
 				),
 				' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
 					'color'            => $attr['buttonTextHoverColor'],
@@ -4334,32 +4351,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7 .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'height'           => $field_vr_padding,
-					'width'            => $field_vr_padding,
+					'height'           => $field_top_padding_dekstop,
+					'width'            => $field_top_padding_dekstop,
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 				),
 				' .wpcf7 .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'height'           => $field_vr_padding,
-					'width'            => $field_vr_padding,
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'height'           => $field_top_padding_dekstop,
+					'width'            => $field_top_padding_dekstop,
+					'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
@@ -4368,8 +4385,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7 .wpcf7-radio input[type="radio"] + span:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'height'           => $field_vr_padding,
-					'width'            => $field_vr_padding,
+					'height'           => $field_top_padding_dekstop,
+					'width'            => $field_top_padding_dekstop,
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
@@ -4420,13 +4437,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-style'  => $attr['fieldBorderStyle'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'     => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 				),
 				' .uagb-cf7-styler__field-style-box .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array(
 					'border-style'  => $attr['fieldBorderStyle'],
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'     => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
 				),
 				' .wpcf7-radio input[type="radio"]:checked + span:before' => array(
 					'background-color' => $attr['fieldInputColor'],
@@ -4490,10 +4507,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .wpcf7-response-output'                  => array(
 					'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], 'px' ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['msgVrPadding'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgVrPadding'], 'px' ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['msgHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $message_top_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $message_bottom_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $message_left_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $message_right_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
 				),
 				' .wpcf7 form.failed .wpcf7-response-output' => array(
 					'background-color' => $attr['errorMsgBgColor'],
@@ -4513,13 +4530,60 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
+			$field_padding_tablet = array(
+				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
+			);
+
 			$t_selectors = array(
 				' .wpcf7 form.wpcf7-form:not(input)' => array(
 					'color' => $attr['fieldLabelColor'],
 				),
+				' .wpcf7-response-output'            => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
+				),
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
+				),
+				' .wpcf7 input:not([type=submit])'   => $field_padding_tablet,
+				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_tablet,
+				' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_tablet,
+				' .wpcf7 textarea'                   => $field_padding_tablet,
 			);
 
-			$m_selectors = array();
+			$field_padding_mobile = array(
+				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
+			);
+
+			$m_selectors = array(
+				' .wpcf7-response-output'          => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
+				),
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
+				),
+				' .wpcf7 input:not([type=submit])' => $field_padding_mobile,
+				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
+				' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
+				' .wpcf7 textarea'                 => $field_padding_mobile,
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
