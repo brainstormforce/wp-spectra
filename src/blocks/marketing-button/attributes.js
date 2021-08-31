@@ -275,6 +275,58 @@ const attributes = {
 		type: 'number',
 		default: 20,
 	},
+	spacingLink: {
+		type: "boolean",
+		default: false,
+	},
+	paddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobilePaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabletPaddingBtnUnit: {
+		type: "string",
+		default: "px",
+	},
+	paddingBtnTop: {
+		type: "number",
+	},
+	paddingBtnBottom: {
+		type: "number",
+	},
+	paddingBtnLeft: {
+		type: "number",
+	},
+	paddingBtnRight: {
+		type: "number",
+	},
+	paddingBtnTopTablet: {
+		type: "number",
+	},
+	paddingBtnRightTablet: {
+		type: "number",
+	},
+	paddingBtnBottomTablet: {
+		type: "number",
+	},
+	paddingBtnLeftTablet: {
+		type: "number",
+	},
+	paddingBtnTopMobile: {
+		type: "number",
+	},
+	paddingBtnRightMobile: {
+		type: "number",
+	},
+	paddingBtnBottomMobile: {
+		type: "number",
+	},
+	paddingBtnLeftMobile: {
+		type: "number",
+	},
 };
 
 export default attributes;

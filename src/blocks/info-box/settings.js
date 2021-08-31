@@ -189,6 +189,7 @@ const Settings = (props) => {
 		showDesc,
 		inheritFromTheme,
 		spacingLink,
+		paddingspacingLink,
 		headLineTransform,
 		headLineDecoration,
 		prefixSpaceUnit,
@@ -1788,8 +1789,8 @@ const Settings = (props) => {
 									attributes={attributes}
 									setAttributes={setAttributes}
 									link={{
-										value: spacingLink,
-										label: "spacingLink",
+										value: paddingspacingLink,
+										label: "paddingspacingLink",
 									}}
 								/>
 							)}

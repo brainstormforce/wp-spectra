@@ -348,6 +348,34 @@ class UAGBInlineNoticeEdit extends Component {
 								]}
 								normal={tabOutputNormal}
 								hover={tabOutputHover}
+							/>
+							<UAGTabsControl
+								tabs={[
+									{
+										name: "normal",
+										title: __(
+											"Normal",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										name: "hover",
+										title: __(
+											"Hover",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+									{
+										name: "focus",
+										title: __(
+											"Focus",
+											"ultimate-addons-for-gutenberg"
+										),
+									},
+								]}
+								normal={tabOutputNormal}
+								hover={tabOutputHover}
+								focus={''}
 								disableBottomSeparator={true}
 							/>
 						</PanelBody>
