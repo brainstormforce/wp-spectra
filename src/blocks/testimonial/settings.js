@@ -1055,13 +1055,9 @@ const Settings = ( props ) => {
 		return (	
 					<UAGImage
 						label = {'Image '+index}
-						onSelectImage={() => onRemoveTestImage(imageVal, index )}
+						onSelectImage={(imageVal) => onSelectTestImage(imageVal, index )}
 						backgroundImage={imageVal}
-						onRemoveImage={ imageVal && (
-							test_block[ index ].image.url !== null &&
-							test_block[ index ].image.url !== '' && (
-								onRemoveTestImage( index )
-							))}
+						onRemoveImage={(index) => onRemoveTestImage(index) }
 					/>
 				)
 	};
