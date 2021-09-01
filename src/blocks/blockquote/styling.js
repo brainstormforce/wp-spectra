@@ -459,10 +459,19 @@ function styling( props ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, baseSelector, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, baseSelector, true, 'mobile' );
-
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 	return stylingCss;
 }
 
