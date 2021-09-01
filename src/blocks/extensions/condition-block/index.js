@@ -217,7 +217,7 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 
 if( '1' === enableConditions ){
 	addFilter(
-		'editor.BlockEdit',
+		'uag_advance_tab',
 		'uagb/advanced-control-block',
 		AdvancedControlsBlock,
 	);
