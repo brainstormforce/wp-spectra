@@ -1,11 +1,10 @@
-.uagb-beside-color-click {
-	display: flex;
-	align-items: center;
-}
-
 .uagb-advanced-color-settings-container {
 	display: flex;
 	align-items: center;
+	.uagb-beside-color-click {
+		display: flex;
+		align-items: center;
+	}
 	.uagb-color-icon-indicate {
 		height: auto;
 		position: relative;
