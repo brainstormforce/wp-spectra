@@ -825,6 +825,18 @@ const Settings = ( props ) => {
 						]}
 						showIcons={false}
 					/>
+					{ iconTargetUrl == 'custom' && (
+						<TextControl
+							label={ __(
+								'URL',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ customUrl }
+							onChange={ ( value ) =>
+								setAttributes( { customUrl: value } )
+							}
+						/>
+					) }
 				</>
 			) }
 			{ enableTweet && iconView !== 'icon' && (
@@ -1329,7 +1341,7 @@ const Settings = ( props ) => {
 					title={ __( 'Twitter Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					{enableTweet !== 'icon' && (
+					{iconView !== 'icon' && (
 						<TypographyControl
 							label={ __(
 								'Typography',
@@ -1395,18 +1407,6 @@ const Settings = ( props ) => {
 							}}
 						/>
 					)}
-					{ iconTargetUrl == 'custom' && (
-						<TextControl
-							label={ __(
-								'URL',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ customUrl }
-							onChange={ ( value ) =>
-								setAttributes( { customUrl: value } )
-							}
-						/>
-					) }
 					{ iconSkin !== 'link' && (
 						<SpacingControl
 						{...props}
