@@ -919,12 +919,12 @@ const Settings = ( props ) => {
 					label: "quoteUnit",
 				}}
 				mUnit={{
-					value: quoteUnit,
-					label: "quoteUnit",
+					value: quotemobileUnit,
+					label: "quotemobileUnit",
 				}}
 				tUnit={{
-					value: quoteUnit,
-					label: "quoteUnit",
+					value: quotetabletUnit,
+					label: "quotetabletUnit",
 				}}
 				deviceType={deviceType}
 				attributes={attributes}
@@ -1467,12 +1467,12 @@ const Settings = ( props ) => {
 							label: "paddingBtnUnit",
 						}}
 						mUnit={{
-							value: paddingBtnUnit,
-							label: "paddingBtnUnit",
+							value: mobilePaddingBtnUnit,
+							label: "mobilePaddingBtnUnit",
 						}}
 						tUnit={{
-							value: paddingBtnUnit,
-							label: "paddingBtnUnit",
+							value: tabletPaddingBtnUnit,
+							label: "tabletPaddingBtnUnit",
 						}}
 						deviceType={deviceType}
 						attributes={attributes}

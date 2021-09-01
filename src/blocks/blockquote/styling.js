@@ -103,6 +103,8 @@ function styling( props ) {
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
 		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
 		descTransform,
 		authorTransform,
 		tweetBtnTransform,
@@ -117,6 +119,8 @@ function styling( props ) {
 		quoteBottomMarginMobile,
 		quoteLeftMarginMobile,
 		quoteRightMarginMobile,
+		quotemobileUnit,
+		quotetabletUnit
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -328,10 +332,10 @@ function styling( props ) {
 	}
 	const tabletSelectors = {
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			'margin-top': generateCSSUnit( quoteTopMarginTablet, quoteUnit ),
-			'margin-bottom': generateCSSUnit( quoteBottomMarginTablet, quoteUnit ),
-			'margin-left': generateCSSUnit( quoteLeftMarginTablet, quoteUnit ),
-			'margin-right': generateCSSUnit( quoteRightMarginTablet, quoteUnit ),
+			'margin-top': generateCSSUnit( quoteTopMarginTablet, quotetabletUnit ),
+			'margin-bottom': generateCSSUnit( quoteBottomMarginTablet, quotetabletUnit ),
+			'margin-left': generateCSSUnit( quoteLeftMarginTablet, quotetabletUnit ),
+			'margin-right': generateCSSUnit( quoteRightMarginTablet, quotetabletUnit ),
 		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -381,18 +385,18 @@ function styling( props ) {
 			'height': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 		},
 		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
-			'padding-left': generateCSSUnit( paddingBtnLeftTablet, paddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightTablet, paddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopTablet, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
 		}
 	};
 	const mobileSelectors = {
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			'margin-top': generateCSSUnit( quoteTopMarginMobile, quoteUnit ),
-			'margin-bottom': generateCSSUnit( quoteBottomMarginMobile, quoteUnit ),
-			'margin-left': generateCSSUnit( quoteLeftMarginMobile, quoteUnit ),
-			'margin-right': generateCSSUnit( quoteRightMarginMobile, quoteUnit ),
+			'margin-top': generateCSSUnit( quoteTopMarginMobile, quotemobileUnit ),
+			'margin-bottom': generateCSSUnit( quoteBottomMarginMobile, quotemobileUnit ),
+			'margin-left': generateCSSUnit( quoteLeftMarginMobile, quotemobileUnit ),
+			'margin-right': generateCSSUnit( quoteRightMarginMobile, quotemobileUnit ),
 		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -442,10 +446,10 @@ function styling( props ) {
 			'height': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 		},
 		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
-			'padding-left': generateCSSUnit( paddingBtnLeftMobile, paddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightMobile, paddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopMobile, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, paddingBtnUnit ),
+			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
 		},
 	};
 	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
