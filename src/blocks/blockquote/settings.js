@@ -136,8 +136,6 @@ const Settings = ( props ) => {
 		borderWidthUnit,
 		quoteBorderRadiusUnit,
 		quoteUnit,
-		quotemobileUnit,
-		quotetabletUnit,
 		borderGapUnit,
 		descSpaceUnit,
 		authorSpaceUnit,
@@ -918,14 +916,6 @@ const Settings = ( props ) => {
 					value: quoteUnit,
 					label: "quoteUnit",
 				}}
-				mUnit={{
-					value: quotemobileUnit,
-					label: "quotemobileUnit",
-				}}
-				tUnit={{
-					value: quotetabletUnit,
-					label: "quotetabletUnit",
-				}}
 				deviceType={deviceType}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -1465,14 +1455,6 @@ const Settings = ( props ) => {
 						unit={{
 							value: paddingBtnUnit,
 							label: "paddingBtnUnit",
-						}}
-						mUnit={{
-							value: mobilePaddingBtnUnit,
-							label: "mobilePaddingBtnUnit",
-						}}
-						tUnit={{
-							value: tabletPaddingBtnUnit,
-							label: "tabletPaddingBtnUnit",
 						}}
 						deviceType={deviceType}
 						attributes={attributes}

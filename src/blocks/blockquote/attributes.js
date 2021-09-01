@@ -390,14 +390,6 @@ const attributes = {
 	quoteRightMarginMobile:{
 		type: 'number'
 	},
-	quotemobileUnit:{
-		type: 'string',
-		default: 'px'
-	},
-	quotetabletUnit:{
-		type: 'string',
-		default: 'px'
-	},
 	quoteHoverColor: {
 		type: 'string',
 	},
@@ -448,14 +440,6 @@ const attributes = {
 		type: 'number'
 	},
 	paddingBtnUnit: {
-		type: 'string',
-		default: 'px'
-	},
-	mobilePaddingBtnUnit: {
-		type: 'string',
-		default: 'px'
-	},
-	tabletPaddingBtnUnit: {
 		type: 'string',
 		default: 'px'
 	},
