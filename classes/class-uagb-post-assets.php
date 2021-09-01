@@ -739,6 +739,7 @@ class UAGB_Post_Assets {
 
 			case 'uagb/star-rating':
 				$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
+				UAGB_Block_JS::blocks_star_rating_gfont( $blockattr );
 				break;
 
 			default:

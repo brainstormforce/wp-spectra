@@ -21,13 +21,14 @@ const $ = jQuery;
 
 const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
+		const { setAttributes, clientId, attributes } = props;
 		// Replacement for componentDidMount.
 		//Store client id.
-		props.setAttributes( { block_id: props.clientId } );
-		props.setAttributes( { classMigrate: true } );
-		props.setAttributes( { childMigrate: true } );
+		setAttributes( { block_id: clientId } );
+		setAttributes( { classMigrate: true } );
+		setAttributes( { childMigrate: true } );
 
-		const id = props.clientId;
+		const id = clientId;
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
@@ -39,9 +40,55 @@ const ContentTimelineComponent = ( props ) => {
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
 			'id',
-			'uagb-content-timeline-style-' + props.clientId
+			'uagb-content-timeline-style-' + clientId
 		);
 		document.head.appendChild( $style );
+
+		const {
+			verticalSpace,
+			horizontalSpace,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			bgPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+		} = attributes;
+
+		if( bgPadding ){
+			if (!topPadding) {
+				setAttributes({ topPadding: bgPadding });
+			}
+			if (!bottomPadding) {
+				setAttributes({ bottomPadding: bgPadding });
+			}
+			if (!rightPadding) {
+				setAttributes({ rightPadding: bgPadding });
+			}
+			if (!leftPadding) {
+				setAttributes({ leftPadding: bgPadding });
+			}
+		}
+
+		if (verticalSpace) {
+			if (!topMargin) {
+				setAttributes({ topMargin: verticalSpace });
+			}
+			if (!bottomMargin) {
+				setAttributes({ bottomMargin: verticalSpace });
+			}
+		}
+		if (horizontalSpace) {
+			if (!rightMargin) {
+				setAttributes({ rightMargin: horizontalSpace });
+			}
+			if (!leftMargin) {
+				setAttributes({ leftMargin: horizontalSpace });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

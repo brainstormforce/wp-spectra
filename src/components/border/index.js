@@ -29,7 +29,7 @@ const Border = (props) => {
 
 	let tabOutputNormal = (
 		<AdvancedPopColorControl
-			label={__("Color", "ultimate-addons-for-gutenberg")}
+			label={borderColor.title}
 			colorValue={borderColor.value}
 			onColorChange={(value) =>
 				setAttributes({ [borderColor.label]: value })
@@ -38,7 +38,7 @@ const Border = (props) => {
 	);
 	let tabOutputHover = (
 		<AdvancedPopColorControl
-			label={__("Color", "ultimate-addons-for-gutenberg")}
+			label={borderHoverColor.title}
 			colorValue={borderHoverColor.value}
 			onColorChange={(value) =>
 				setAttributes({ [borderHoverColor.label]: value })
@@ -137,7 +137,22 @@ const Border = (props) => {
 						}
 						min={0}
 						max={100}
-						displayUnit={false}
+						displayUnit={borderRadius?.displayUnit || false}
+						unit={borderRadius?.unit || false}
+						units={[
+							{
+								name: __(
+									"Pixel",
+									"ultimate-addons-for-gutenberg"
+								),
+								unitValue: "px",
+							},
+							{
+								name: __("%", "ultimate-addons-for-gutenberg"),
+								unitValue: "%",
+							},
+						]}
+						setAttributes={setAttributes}
 					/>
 				</div>
 			)}

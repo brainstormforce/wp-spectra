@@ -27,6 +27,7 @@ const Render = ( props ) => {
 			noticeAlignment,
 			headingTag,
 		},
+		deviceType,
 		setAttributes,
 		className,
 	} = props;
@@ -45,7 +46,8 @@ const Render = ( props ) => {
 				'uagb-inline_notice__outer-wrap',
 				`${ noticeDismiss }`,
 				`uagb-inline_notice__align-${ noticeAlignment }`,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
 			{ imageIconHtml }
