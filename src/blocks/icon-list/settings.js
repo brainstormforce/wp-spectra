@@ -243,7 +243,7 @@ const Settings = ( props ) => {
 				>
 					<Range
 						label={__(
-							"Gap between Items",
+							"Gap between Items (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -268,7 +268,7 @@ const Settings = ( props ) => {
 				>
 					<Range
 						label={__(
-							"Gap between Icon and Label",
+							"Gap between Icon and Label (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -388,7 +388,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Background Size",
+							"Background Size (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -403,7 +403,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Border",
+							"Border (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -418,7 +418,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Border Radius",
+							"Border Radius (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
