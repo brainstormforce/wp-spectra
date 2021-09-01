@@ -1,4 +1,8 @@
 <?php
+
+// Add fonts.
+UAGB_Block_JS::blocks_star_rating_gfont( $attr );
+
 $defaults = UAGB_Helper::$block_list['uagb/star-rating']['attributes'];
 
 $attr = array_merge( $defaults, $attr );

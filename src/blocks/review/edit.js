@@ -202,6 +202,14 @@ compose( [
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
+		const { __experimentalGetPreviewDeviceType = null } = select(
+			"core/edit-post"
+		);
+
+		const deviceType = __experimentalGetPreviewDeviceType
+			? __experimentalGetPreviewDeviceType()
+			: null;
+			
 		const newAverage =
 			ownProps.attributes.parts
 				.map( ( i ) => i.value )
@@ -330,6 +338,7 @@ export default compose(
 
 		return {
 			schemaJsonData: jsonData,
+			deviceType,
 		};
 	} )
 )( ReviewComponent );

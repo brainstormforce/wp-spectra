@@ -1,11 +1,19 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
-import React, { useMemo } from 'react';
+import React, { useMemo, useLayoutEffect } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
+import styles from './editor.lazy.scss';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 
 const Render = ( props ) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 	props = props.parentProps;
 
 	// Setup the attributes.

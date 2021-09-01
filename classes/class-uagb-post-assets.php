@@ -82,7 +82,7 @@ class UAGB_Post_Assets {
 	 * Stylesheet
 	 *
 	 * @since 1.13.4
-	 * @var stylesheet
+	 * @var string
 	 */
 	public $stylesheet = '';
 
@@ -738,8 +738,9 @@ class UAGB_Post_Assets {
 				break;
 
 			// case 'uagb/star-rating':
-			// $css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
-			// break;
+			// 	$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
+			// 	UAGB_Block_JS::blocks_star_rating_gfont( $blockattr );
+			// 	break;
 
 			default:
 				$_block_slug = str_replace( 'uagb/', '', $name );
