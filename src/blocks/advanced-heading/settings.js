@@ -484,7 +484,7 @@ const Settings = ( props ) => {
 					{ subheadingPanel()}
 					{ seperatorSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>

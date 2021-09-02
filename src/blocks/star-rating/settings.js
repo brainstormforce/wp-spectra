@@ -256,7 +256,7 @@ const Settings = ( props ) => {
                 { starStyling }
                 { '' !== title && titleStyling }
                 </InspectorTab>
-                <InspectorTab {...UAGTabs.advance}>
+                <InspectorTab {...UAGTabs.advance} parentProps = {props}>
                 </InspectorTab>
             </InspectorTabs>
             </InspectorControls>

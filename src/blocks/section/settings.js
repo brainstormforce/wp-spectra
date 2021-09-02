@@ -569,7 +569,7 @@ const Settings = (props) => {
 					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>
 			</InspectorTabs>
 		);

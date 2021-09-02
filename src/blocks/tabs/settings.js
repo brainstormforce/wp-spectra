@@ -1138,7 +1138,7 @@ const Settings = (props) => {
 					{tabBodySettings()}
 					{tabBorderSettings()}
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

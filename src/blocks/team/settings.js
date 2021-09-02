@@ -1112,7 +1112,7 @@ const Settings = ( props ) => {
 					{ getSocialIconPanelColorSettings() }
 					{ image && ( getSpacingPanelBody() ) }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		);

@@ -13,7 +13,9 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import Range from "../../components/range/Range.js";
 import SpacingControl from "../../components/spacing-control";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import InspectorTab, {
+	UAGTabs,
+} from "../../components/inspector-tabs/InspectorTab.js";
 import { __ } from "@wordpress/i18n";
 import Border from "../../components/border";
 import { select } from "@wordpress/data";
@@ -975,17 +977,17 @@ const Settings = (props) => {
 		<Suspense fallback={lazyLoader()}>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab key={"general"}>
+					<InspectorTab {...UAGTabs.general}>
 						{faqGeneralSettings()}
 						{"accordion" === layout && faqIconSettings()}
 					</InspectorTab>
-					<InspectorTab key={"style"}>
+					<InspectorTab {...UAGTabs.style}>
 						{commonStyle()}
 						{iconStyle()}
 						{faqQuestionSettings()}
 						{faqAnswerSettings()}
 					</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{loadQuestionGoogleFonts}
