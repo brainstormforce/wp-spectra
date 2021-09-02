@@ -3972,16 +3972,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => UAGB_Helper::get_css_value( $attr['quoteSizeTablet'], $attr['quoteSizeType'] ),
 				),
 				' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button' => array(
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'] , $attr['tabletPaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 				),
 				' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button' => array(
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'] , $attr['tabletPaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'] , $attr['tabletPaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 				),
 			);
 
@@ -4002,16 +4002,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
 				),
 				' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button' => array(
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'] , $attr['mobilePaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 				),
 				' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button' => array(
-					'padding-left' => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-right' => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-top' => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'] , $attr['mobilePaddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'] , $attr['mobilePaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 				),
 			);
 
