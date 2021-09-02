@@ -278,20 +278,6 @@ const Settings = ( props ) => {
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<Range
-					label={__(
-						'Bottom Space',
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={headingBottom}
-					onChange={(value) =>
-						setAttributes({ headingBottom: value })
-					}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/>
 				<AdvancedPopColorControl
 					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
@@ -354,6 +340,20 @@ const Settings = ( props ) => {
 						value: headingLineHeightTablet,
 						label: 'headingLineHeightTablet',
 					} }
+				/>
+				<Range
+					label={__(
+						'Bottom Space',
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={headingBottom}
+					onChange={(value) =>
+						setAttributes({ headingBottom: value })
+					}
+					min={0}
+					max={50}
+					displayUnit={false}
 				/>
 			</PanelBody>
 		)
@@ -422,18 +422,6 @@ const Settings = ( props ) => {
 				]}
 				showIcons={true}
 			/>
-			<ToggleControl
-				label={ __(
-					'Disable Bullet Points',
-					'ultimate-addons-for-gutenberg'
-				) }
-				checked={ disableBullets }
-				onChange={ () =>
-					setAttributes( {
-						disableBullets: ! disableBullets,
-					} )
-				}
-			/>
 			<ResponsiveSlider
 				label={__(
 					"Gap Between Lists",
@@ -484,6 +472,86 @@ const Settings = ( props ) => {
 			/>
 			<ToggleControl
 				label={ __(
+					'Custom Width',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ customWidth }
+				onChange={ () =>
+					setAttributes( { customWidth: ! customWidth } )
+				}
+				help={ __(
+					"Table's width will be auto if this is kept off.",
+					'ultimate-addons-for-gutenberg'
+				) }
+			/>
+			{ customWidth &&
+				<ResponsiveSlider
+					label={__(
+						"Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						desktop: {
+							value: widthDesktop,
+							label: "widthDesktop",
+							unit: {
+								value: widthTypeDesktop,
+								label: "widthTypeDesktop",
+							},
+							min: 0,
+							max: maxDesk,
+						},
+						tablet: {
+							value: widthTablet,
+							label: "widthTablet",
+							unit: {
+								value: widthTypeTablet,
+								label: "widthTypeTablet",
+							},
+							min: 0,
+							max: maxTab,						
+						},
+						mobile: {
+							value: widthMobile,
+							label: "widthMobile",
+							unit: {
+								value: widthTypeMobile,
+								label: "widthTypeMobile",
+							},
+							min: 0,
+							max: maxMob,
+						},
+					}}
+					units={[
+						{
+							name: __(
+								"Pixel",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "px",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
+					setAttributes={setAttributes}
+				/>
+			}
+			<ToggleControl
+				label={ __(
+					'Disable Bullet Points',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ disableBullets }
+				onChange={ () =>
+					setAttributes( {
+						disableBullets: ! disableBullets,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __(
 					'Make Content Collapsible',
 					'ultimate-addons-for-gutenberg'
 				) }
@@ -530,98 +598,30 @@ const Settings = ( props ) => {
 					
 				</>
 			) }
-			<ToggleControl
-					label={ __(
-						'Custom Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ customWidth }
-					onChange={ () =>
-						setAttributes( { customWidth: ! customWidth } )
-					}
-					help={ __(
-						"Table's width will be auto if this is kept off.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-				{ customWidth &&
-					<ResponsiveSlider
-						label={__(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: widthDesktop,
-								label: "widthDesktop",
-								unit: {
-									value: widthTypeDesktop,
-									label: "widthTypeDesktop",
-								},
-								min: 0,
-								max: maxDesk,
-							},
-							tablet: {
-								value: widthTablet,
-								label: "widthTablet",
-								unit: {
-									value: widthTypeTablet,
-									label: "widthTypeTablet",
-								},
-								min: 0,
-								max: maxTab,						
-							},
-							mobile: {
-								value: widthMobile,
-								label: "widthMobile",
-								unit: {
-									value: widthTypeMobile,
-									label: "widthTypeMobile",
-								},
-								min: 0,
-								max: maxMob,
-							},
-						}}
-						units={[
-							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
-							},
-							{
-								name: __("%", "ultimate-addons-for-gutenberg"),
-								unitValue: "%",
-							},
-						]}
-						setAttributes={setAttributes}
-					/>
-				}
-				<ResponsiveSlider
-					label={__(
-						"Columns",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
-						desktop: {
-							value: tColumnsDesktop,
-							label: "tColumnsDesktop",
-						},
-						tablet: {
-							value: tColumnsTablet,
-							label: "tColumnsTablet",
-						},
-						mobile: {
-							value: tColumnsMobile,
-							label: "tColumnsMobile",
-						},
-					}}
-					min={1}
-					max={10}
-					displayUnit={false}
-					setAttributes={setAttributes}
-				/>
+			<ResponsiveSlider
+				label={__(
+					"Columns",
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					desktop: {
+						value: tColumnsDesktop,
+						label: "tColumnsDesktop",
+					},
+					tablet: {
+						value: tColumnsTablet,
+						label: "tColumnsTablet",
+					},
+					mobile: {
+						value: tColumnsMobile,
+						label: "tColumnsMobile",
+					},
+				}}
+				min={1}
+				max={10}
+				displayUnit={false}
+				setAttributes={setAttributes}
+			/>
 			</PanelBody>
 		)
 	};
@@ -701,6 +701,7 @@ const Settings = ( props ) => {
 						}
 					/>
 				}
+				disableBottomSeparator={true}
 			/>
 			<TypographyControl
 					label={ __(
