@@ -29,18 +29,12 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
 	const { className, setAttributes, attributes , deviceType} = props;
-
-	const sizeTypes = [
-		{ key: 'px', name: __( 'px', 'ultimate-addons-for-gutenberg' ) },
-		{ key: 'em', name: __( 'em', 'ultimate-addons-for-gutenberg' ) },
-	];
 
 	const {
 		skinStyle,
@@ -516,7 +510,7 @@ const Settings = ( props ) => {
 			<MultiButtonsControl
 				setAttributes={setAttributes}
 				label={__(
-					'Stack on',
+					'Stack On',
 					"ultimate-addons-for-gutenberg"
 				)}
 				data={{
