@@ -191,6 +191,8 @@ class AdminMenu {
 				'admin_base_url'  => admin_url(),
 				'current_theme'   => $theme->name,
 				'theme_file'      => file_exists( get_theme_root() . '/astra/functions.php' ),
+				'starter_template_activate' => is_plugin_active('astra-sites/astra-sites.php'),
+				'starter_template_path'     => file_exists( ABSPATH . 'wp-content/plugins/astra-sites/astra-sites.php'),
 				'plugin_dir'      => UAGB_URL,
 				'plugin_ver'      => UAGB_VER,
 				'logo_url'        => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
