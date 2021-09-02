@@ -24,7 +24,7 @@ function BlocksSettings() {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />
 	} );
 
-	const categories = [{'All': 'all'},{'Creative':'creative'},{'Forms':'forms'},{'Content':'content'}];
+	const categories = [{'All': 'all'},{'Creative':'creative'},{'Forms':'forms'},{'Content':'content'},{'SEO':'seo'},{'Post':'post'}];
 
 	const setCategory = ( data ) => {
 		setcheckCategory(data);
