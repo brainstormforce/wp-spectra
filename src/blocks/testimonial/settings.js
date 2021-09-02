@@ -11,6 +11,8 @@ import AdvancedPopColorControl from "../../components/color-control/advanced-pop
 import SpacingControl from "../../components/spacing-control";
 import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
 import UAGImage from "../../components/image";
+import MultiButtonsControl from "../../components/multi-buttons-control";
+
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
@@ -18,15 +20,12 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
-	ToggleControl,
-	BaseControl,
-	Button,
+	ToggleControl
 } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -372,34 +371,35 @@ const Settings = ( props ) => {
 					max={ 5000 }
 					displayUnit = {false}
 				/>
-				<SelectControl
-					label={ __(
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
 						'Show Arrows & Dots',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ arrowDots }
-					onChange={ ( value ) =>
-						setAttributes( { arrowDots: value } )
-					}
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: arrowDots,
+						label: "arrowDots",
+					}}
 					options={ [
 						{
 							value: 'arrows',
 							label: __(
-								'Only Arrows',
+								'Arrows',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
 							value: 'dots',
 							label: __(
-								'Only Dots',
+								'Dots',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
 							value: 'arrows_dots',
 							label: __(
-								'Both Arrows & Dots',
+								'Both',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -697,47 +697,7 @@ const Settings = ( props ) => {
 					'Content',
 					'ultimate-addons-for-gutenberg'
 				) } initialOpen={false}>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={descColor ? descColor : ""}
-					onColorChange={(value) =>
-						setAttributes({
-							descColor: value,
-						})
-					}
-				/>
-				<Range
-					label={ __(
-						'Bottom Margin',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ descSpace }
-					onChange={ ( value ) =>
-						setAttributes( { descSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={{
-						value: descSpaceType,
-						label: "descSpaceType",
-					}}
-					setAttributes={setAttributes}
-				/>
-				<Range
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={{
-						value: columnGapType,
-						label: "columnGapType",
-					}}
-					setAttributes={setAttributes}
-				/>
-				<TypographyControl
+					<TypographyControl
 					label={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -800,6 +760,46 @@ const Settings = ( props ) => {
 						value: descDecoration,
 						label: "descDecoration",
 					}}
+				/>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={descColor ? descColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							descColor: value,
+						})
+					}
+				/>
+				<Range
+					label={ __(
+						'Bottom Margin',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ descSpace }
+					onChange={ ( value ) =>
+						setAttributes( { descSpace: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					unit={{
+						value: descSpaceType,
+						label: "descSpaceType",
+					}}
+					setAttributes={setAttributes}
+				/>
+				<Range
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					value={ columnGap }
+					onChange={ ( value ) =>
+						setAttributes( { columnGap: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					unit={{
+						value: columnGapType,
+						label: "columnGapType",
+					}}
+					setAttributes={setAttributes}
 				/>
 				<SpacingControl
 					{...props}
@@ -884,18 +884,9 @@ const Settings = ( props ) => {
 					'Company',
 					'ultimate-addons-for-gutenberg'
 				) } initialOpen={false}>
-				<AdvancedPopColorControl
-						label={__("Company Color", "ultimate-addons-for-gutenberg")}
-						colorValue={companyColor ? companyColor : ""}
-						onColorChange={(value) =>
-							setAttributes({
-								companyColor: value,
-							})
-						}
-					/>
-				<TypographyControl
+					<TypographyControl
 						label={ __(
-							'Company Typography',
+							'Typography',
 							'ultimate-addons-for-gutenberg'
 						) }
 						attributes={ attributes }
@@ -957,6 +948,16 @@ const Settings = ( props ) => {
 							label: "companyDecoration",
 						}}
 					/>
+				<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={companyColor ? companyColor : ""}
+						onColorChange={(value) =>
+							setAttributes({
+								companyColor: value,
+							})
+						}
+					/>
+				
 				
 				</PanelBody>
 	}
@@ -1055,7 +1056,7 @@ const Settings = ( props ) => {
 		return (	
 					<UAGImage
 						label = {'Image '+index}
-						onSelectImage={(imageVal) => onSelectTestImage(imageVal, index )}
+						onSelectImage={() => onSelectTestImage(imageVal, index )}
 						backgroundImage={imageVal}
 						onRemoveImage={(index) => onRemoveTestImage(index) }
 					/>
@@ -1161,12 +1162,16 @@ const Settings = ( props ) => {
 						{ getImageData() }
 						{ cnt > 0 && (
 							<>
-								<SelectControl
-									label={ __( 'Image Position' ) }
-									value={ imagePosition }
-									onChange={ ( value ) =>
-										setAttributes( { imagePosition: value } )
-									}
+								<MultiButtonsControl
+									setAttributes={setAttributes}
+									label={__(
+										'Image Position',
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										value: imagePosition,
+										label: "imagePosition",
+									}}
 									options={ [
 										{
 											value: 'top',
@@ -1201,82 +1206,50 @@ const Settings = ( props ) => {
 								{ ( imagePosition == 'left' ||
 									imagePosition == 'right' ) && (
 									<>
-										<SelectControl
-											label={ __(
-												'Vertical ALignment',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ imageAlignment }
-											onChange={ ( value ) =>
-												setAttributes( {
-													imageAlignment: value,
-												} )
-											}
-											options={ [
-												{
-													value: 'top',
-													label: __(
-														'Top',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													value: 'middle',
-													label: __(
-														'Middle',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-											] }
+										<MultiButtonsControl
+											setAttributes={setAttributes}
+											label={__(
+												"Vertical ALignment",
+												"ultimate-addons-for-gutenberg"
+											)}
+											data={{
+												value: imageAlignment,
+												label: "imageAlignment",
+											}}
+											options={[
+												{ value: "top", label: __("Top", "ultimate-addons-for-gutenberg") },
+												{ value: "middle", label: __("Middle", "ultimate-addons-for-gutenberg") },
+											]}
 										/>
-										<SelectControl
-											label={ __(
-												'Stack on',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ stack }
-											options={ [
-												{
-													value: 'none',
-													label: __(
-														'None',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													value: 'tablet',
-													label: __(
-														'Tablet',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													value: 'mobile',
-													label: __(
-														'Mobile',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-											] }
-											help={ __(
-												'Note: Choose on what breakpoint the Info Box will stack.',
-												'ultimate-addons-for-gutenberg'
-											) }
-											onChange={ ( value ) =>
-												setAttributes( { stack: value } )
-											}
+										<MultiButtonsControl
+											setAttributes={setAttributes}
+											label={__(
+												"Stack On",
+												"ultimate-addons-for-gutenberg"
+											)}
+											data={{
+												value: stack,
+												label: "stack",
+											}}
+											options={[
+												{ value: "none", label: __("None", "ultimate-addons-for-gutenberg") },
+												{ value: "tablet", label: __("Tablet", "ultimate-addons-for-gutenberg") },
+												{ value: "mobile", label: __("Mobile", "ultimate-addons-for-gutenberg") },
+											]}
+											
 										/>
 									</>
 								) }
-								<SelectControl
-									label={ __(
+								<MultiButtonsControl
+									setAttributes={setAttributes}
+									label={__(
 										'Image Style',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ iconimgStyle }
-									onChange={ ( value ) =>
-										setAttributes( { iconimgStyle: value } )
-									}
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										value: iconimgStyle,
+										label: "iconimgStyle",
+									}}
 									options={ [
 										{
 											value: 'normal',
