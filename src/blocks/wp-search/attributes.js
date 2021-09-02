@@ -253,16 +253,20 @@ const attributes = {
 		type: 'number'
 	},
 	paddingInputUnit:{
-		type: 'number'
+		type: 'string',
+		default: 'px'
 	},
 	mobilePaddingInputUnit:{
-		type: 'number'
+		type: 'string',
+		default: 'px'
 	},
 	tabletPaddingInputUnit:{
-		type: 'number'
+		type: 'string',
+		default: 'px'
 	},
-	spacingLink:{
-		type: 'string'
+	spacingLink: {
+		type: "boolean",
+		default: false,
 	},
 	iconSizeType:{
 		type: 'string',
