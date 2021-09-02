@@ -4531,10 +4531,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$field_padding_tablet = array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingTablet'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
+				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
+				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
 			);
 
 			$t_selectors = array(
@@ -4542,16 +4542,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['fieldLabelColor'],
 				),
 				' .wpcf7-response-output'            => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingTablet'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 				),
 				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingTablet'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 				),
 				' .wpcf7 input:not([type=submit])'   => $field_padding_tablet,
 				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_tablet,
@@ -4560,24 +4560,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$field_padding_mobile = array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingMobile'], $attr['fieldPaddingTypeDesktop'] ),
+				'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldTopPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
+				'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
+				'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
 			);
 
 			$m_selectors = array(
 				' .wpcf7-response-output'          => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingMobile'], $attr['messagePaddingTypeDesktop'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 				),
 				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeDesktop'] ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 				),
 				' .wpcf7 input:not([type=submit])' => $field_padding_mobile,
 				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,

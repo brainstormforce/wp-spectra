@@ -669,6 +669,14 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'fieldPaddingTypeTablet'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldPaddingTypeMobile'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'fieldSpacingLink'              => array(
 							'type'    => 'boolean',
 							'default' => false,
