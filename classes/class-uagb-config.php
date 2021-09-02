@@ -2766,6 +2766,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'imageMarginTopMobile'    => '',
 							'imageMarginBottomMobile' => '',
 							'imageMarginUnit'         => 'px',
+							'tabletImageMarginUnit'   => 'px',
+							'mobileImageMarginUnit'   => 'px',
 							'spacingLink'             => false,
 							'socialSpace'             => 20,
 							'headingTag'              => 'h3',

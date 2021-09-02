@@ -124,6 +124,8 @@ const Settings = ( props ) => {
 		imageMarginBottomMobile,
 		imageMarginLeftMobile,
 		imageMarginUnit,
+		tabletImageMarginUnit,
+		mobileImageMarginUnit,
 		spacingLink,
 	} = attributes;
 
@@ -1078,12 +1080,12 @@ const Settings = ( props ) => {
 						label: "imageMarginUnit",
 					}}
 					mUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: mobileImageMarginUnit,
+						label: "mobileImageMarginUnit",
 					}}
 					tUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: tabletImageMarginUnit,
+						label: "tabletImageMarginUnit",
 					}}
 					deviceType={deviceType}
 					attributes={attributes}

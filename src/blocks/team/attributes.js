@@ -326,6 +326,14 @@ const attributes = {
 		type: 'string',
 		default: 'px'
 	},
+	tabletImageMarginUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	mobileImageMarginUnit: {
+		type: 'string',
+		default: 'px'
+	},
 	spacingLink: {
 		type: "boolean",
 		default: false,

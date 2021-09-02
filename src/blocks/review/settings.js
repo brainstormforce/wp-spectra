@@ -13,7 +13,6 @@ import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
-import UAGTabsControl from "../../components/tabs";
 import UAGImage from "../../components/image";
 import SpacingControl from "@Components/spacing-control";
 import MultiButtonsControl from "../../components/multi-buttons-control";

@@ -61,6 +61,8 @@ function styling( props ) {
 		imageMarginBottomMobile,
 		imageMarginLeftMobile,
 		imageMarginUnit,
+		tabletImageMarginUnit,
+		mobileImageMarginUnit,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -68,10 +70,10 @@ function styling( props ) {
 
 	let autoImageLeftMargin        = ( 'auto' === imageLeftMargin ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
 	let autoImageRightMargin       = ( 'auto' === imageRightMargin ) ? 'auto' : generateCSSUnit( imageRightMargin, imageMarginUnit );
-	let autoImageLeftMarginMobile  = ( 'auto' === imageMarginLeftMobile ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
-	let autoImageRightMarginMobile = ( 'auto' === imageMarginRightMobile ) ? 'auto' : generateCSSUnit( imageMarginRightMobile, imageMarginUnit );
-	let autoImageLeftMarginTablet  = ( 'auto' === imageMarginLeftTablet ) ? 'auto' : generateCSSUnit( imageMarginLeftTablet, imageMarginUnit );
-	let autoImageRightMarginTablet = ( 'auto' === imageMarginRightTablet ) ? 'auto' : generateCSSUnit( imageMarginRightTablet, imageMarginUnit )
+	let autoImageLeftMarginMobile  = ( 'auto' === imageMarginLeftMobile ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
+	let autoImageRightMarginMobile = ( 'auto' === imageMarginRightMobile ) ? 'auto' : generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
+	let autoImageLeftMarginTablet  = ( 'auto' === imageMarginLeftTablet ) ? 'auto' : generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
+	let autoImageRightMarginTablet = ( 'auto' === imageMarginRightTablet ) ? 'auto' : generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit )
 
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -197,8 +199,8 @@ function styling( props ) {
 			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopMobile, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, imageMarginUnit ),
+			'margin-top': generateCSSUnit( imageMarginTopMobile, mobileImageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, mobileImageMarginUnit ),
 			'margin-left': autoImageLeftMarginMobile,
 			'margin-right': autoImageRightMarginMobile,
 		},
@@ -234,8 +236,8 @@ function styling( props ) {
 			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopTablet, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, imageMarginUnit ),
+			'margin-top': generateCSSUnit( imageMarginTopTablet, tabletImageMarginUnit ),
+			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, tabletImageMarginUnit ),
 			'margin-left': autoImageLeftMarginTablet,
 			'margin-right': autoImageRightMarginTablet,
 		},

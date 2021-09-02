@@ -1951,10 +1951,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$auto_image_left_margin         = ( 'auto' === $image_left_margin ) ? 'auto' : UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] );
 			$auto_image_right_margin        = ( 'auto' === $image_right_margin ) ? 'auto' : UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] );
-			$auto_image_left_margin_mobile  = ( 'auto' === $attr['imageMarginLeftMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['imageMarginUnit'] );
-			$auto_image_right_margin_mobile = ( 'auto' === $attr['imageMarginRightMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['imageMarginUnit'] );
-			$auto_image_left_margin_tablet  = ( 'auto' === $attr['imageMarginLeftTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['imageMarginUnit'] );
-			$auto_image_right_margin_tablet = ( 'auto' === $attr['imageMarginRightTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['imageMarginUnit'] );
+			$auto_image_left_margin_mobile  = ( 'auto' === $attr['imageMarginLeftMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['mobileImageMarginUnit'] );
+			$auto_image_right_margin_mobile = ( 'auto' === $attr['imageMarginRightMobile'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightMobile'], $attr['mobileImageMarginUnit'] );
+			$auto_image_left_margin_tablet  = ( 'auto' === $attr['imageMarginLeftTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['tabletImageMarginUnit'] );
+			$auto_image_right_margin_tablet = ( 'auto' === $attr['imageMarginRightTablet'] ) ? 'auto' : UAGB_Helper::get_css_value( $attr['imageMarginRightTablet'], $attr['tabletImageMarginUnit'] );
 
 			$icon_size   = UAGB_Helper::get_css_value( $attr['socialFontSize'], $attr['socialFontSizeType'] );
 			$m_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeMobile'], $attr['socialFontSizeType'] );
@@ -2039,8 +2039,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => $m_icon_size,
 				),
 				' .uagb-team__image-wrap'      => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['imageMarginUnit'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['imageMarginUnit'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['mobileImageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['mobileImageMarginUnit'] ),
 					'margin-left'   => $auto_image_left_margin_mobile,
 					'margin-right'  => $auto_image_right_margin_mobile,
 				),
@@ -2058,8 +2058,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => $t_icon_size,
 				),
 				' .uagb-team__image-wrap'      => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['imageMarginUnit'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['imageMarginUnit'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['tabletImageMarginUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['tabletImageMarginUnit'] ),
 					'margin-left'   => $auto_image_left_margin_tablet,
 					'margin-right'  => $auto_image_right_margin_tablet,
 				),
