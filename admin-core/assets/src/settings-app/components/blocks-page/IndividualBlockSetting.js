@@ -48,30 +48,39 @@ function IndividualBlockSetting( props ) {
 		}
 	}, [ options.blocks_activation_and_deactivation ] );
 
-	return (
-		<div className="uag-individual-block-settings-metabox">
-			<ToggleField
-				id={ props.blockInfo.slug }
-				name="blocks_activation_and_deactivation"
-				value={ blocksValue[ props.blockInfo.slug ] }
-				label={ props.blockInfo.title }
-			/>
-			<a
-				href={ `https://ultimategutenberg.com/blocks/${ props.blockInfo.link }` }
-				target="_blank"
-				rel="noreferrer"
-			>
-				{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
-			</a>
-			<a
-				href={ `https://ultimategutenberg.com/docs/${ props.blockInfo.doc }` }
-				target="_blank"
-				rel="noreferrer"
-			>
-				{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
-			</a>
-		</div>
-	);
+	let categories = props.blockInfo.admin_categories;
+	
+	let isCategory = categories.find(element =>	element == props.cat);
+	
+	if(isCategory){
+		return (
+			<div className="uag-individual-block-settings-metabox">
+				<ToggleField
+					id={ props.blockInfo.slug }
+					name="blocks_activation_and_deactivation"
+					value={ blocksValue[ props.blockInfo.slug ] }
+					label={ props.blockInfo.title }
+				/>
+				<a
+					href={ `https://ultimategutenberg.com/blocks/${ props.blockInfo.link }` }
+					target="_blank"
+					rel="noreferrer"
+				>
+					{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
+				</a>
+				<a
+					href={ `https://ultimategutenberg.com/docs/${ props.blockInfo.doc }` }
+					target="_blank"
+					rel="noreferrer"
+				>
+					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
+				</a>
+			</div>
+		);
+	}else{
+		return null;
+	}
+			
 }
 
 export default IndividualBlockSetting;
