@@ -284,6 +284,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$wp_filesystem = uagb_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
+
+				if ( 'cf7-styler' === $c_block ) {
+					$c_block = 'cf7-designer';
+				}
+				if ( 'gf-styler' === $c_block ) {
+					$c_block = 'gf-designer';
+				}
+
 				$style .= $wp_filesystem->get_contents( UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
