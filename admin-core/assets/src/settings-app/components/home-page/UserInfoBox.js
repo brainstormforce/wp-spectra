@@ -114,12 +114,10 @@ function UserInfoBox() {
 	return (
 		<div className="uag-user-info">
 			<div className="uag-metabox uag-metabox__header">
-				<div className="uag-metabox__title">
-					<h1>
-						{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) +
-							uag_react.current_user }
-					</h1>
-				</div>
+				<h1>
+					{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) +
+						uag_react.current_user }
+				</h1>
 				<p>
 					{ __(
 						'Thank you for choosing Ultimate Addons for Gutenberg! Start building stunning websites faster than ever before with the most comprehensive library of advanced and creative blocks.',
