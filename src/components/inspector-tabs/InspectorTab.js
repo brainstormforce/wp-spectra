@@ -1,8 +1,8 @@
-import { addFilter, applyFilters } from "@wordpress/hooks";
+import { applyFilters } from "@wordpress/hooks";
 
 const InspectorTab = props => {
     const {children, isActive, type} = props;
-console.log(type);
+
     return (
         <div
             style={{
@@ -11,9 +11,7 @@ console.log(type);
             className={`uagb-inspector-tab uagb-tab-content-${type}`}
         >
             {Array.isArray(children) ? children.map(item => item) : children}
-			{'advance' === type && applyFilters( 'uag_advance_tab', 'Test') }
-			{'advance' === type && 'Testt' }
-
+			{'advance' === type && applyFilters( 'uag_advance_tab', props.parentProps) }
 		</div>
     )
 }
