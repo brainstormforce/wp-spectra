@@ -324,7 +324,7 @@ const Settings = ( props ) => {
 					) }
 					<ToggleControl
 						label={ __(
-							'Disable Link',
+							'Enable Link',
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ disableLink }

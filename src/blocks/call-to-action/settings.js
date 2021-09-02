@@ -318,22 +318,20 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+				{ ( ctaType === 'button' ) && (
 					<>
-						{ ctaType === 'button' && (
-							<ToggleControl
-								label={ __(
-									'Inherit from Theme',
-									'ultimate-addons-for-gutenberg'
-								) }
-								checked={ inheritFromTheme }
-								onChange={ () =>
-									setAttributes( {
-										inheritFromTheme: ! inheritFromTheme,
-									} )
-								}
-							/>
-						) }
+						<ToggleControl
+							label={ __(
+								'Inherit from Theme',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ inheritFromTheme }
+							onChange={ () =>
+								setAttributes( {
+									inheritFromTheme: ! inheritFromTheme,
+								} )
+							}
+						/>
 					</>
 				) }
 				{ ctaType !== 'all' && ctaType !== 'none' && (
@@ -977,6 +975,7 @@ const Settings = ( props ) => {
 							showIcons={false}
 						/>
 						{ ctaPosition && ctaPosition === 'right' && (
+							<>
 							<MultiButtonsControl
 								setAttributes={setAttributes}
 								label={__(
@@ -1014,8 +1013,6 @@ const Settings = ( props ) => {
 								]}
 								showIcons={false}
 							/>
-						) }
-						{ ctaPosition == 'right' && (
 							<MultiButtonsControl
 								setAttributes={setAttributes}
 								label={__(
@@ -1068,6 +1065,7 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 							/>
+							</>
 						) }
 					</>
 				)}			
