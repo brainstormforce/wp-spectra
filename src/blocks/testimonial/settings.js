@@ -258,27 +258,6 @@ const Settings = ( props ) => {
 		} );
 	};
 
-	/*
-	 * Event to set Image selectot label.
-	 */
-	const getImageName = ( image ) => {
-		let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-		if ( image ) {
-			if ( image.url == null || image.url == '' ) {
-				imageName = __(
-					'Select Image',
-					'ultimate-addons-for-gutenberg'
-				);
-			} else {
-				imageName = __(
-					'Replace Image',
-					'ultimate-addons-for-gutenberg'
-				);
-			}
-		}
-		return imageName;
-	};
-
 	const getImageData = () => {
 		const getImages = [];
 		for ( let i = 0; i < test_item_count; i++ ) {
@@ -971,7 +950,7 @@ const Settings = ( props ) => {
 					<SpacingControl
 						{...props}
 						label={__(
-							"Image Padding",
+							"Padding",
 							"ultimate-addons-for-gutenberg"
 						)}
 						valueTop={{
@@ -1166,7 +1145,7 @@ const Settings = ( props ) => {
 								<MultiButtonsControl
 									setAttributes={setAttributes}
 									label={__(
-										'Image Position',
+										'Position',
 										"ultimate-addons-for-gutenberg"
 									)}
 									data={{
@@ -1244,7 +1223,7 @@ const Settings = ( props ) => {
 								<MultiButtonsControl
 									setAttributes={setAttributes}
 									label={__(
-										'Image Style',
+										'Style',
 										"ultimate-addons-for-gutenberg"
 									)}
 									data={{
@@ -1277,7 +1256,7 @@ const Settings = ( props ) => {
 								/>
 								<SelectControl
 									label={ __(
-										'Image Size',
+										'Size',
 										'ultimate-addons-for-gutenberg'
 									) }
 									options={ imageSizeOptions }
