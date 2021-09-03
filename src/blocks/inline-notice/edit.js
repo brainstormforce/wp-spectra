@@ -3,6 +3,7 @@
  */
 
 // Import block dependencies and components.
+import { withSelect } from '@wordpress/data';
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, Suspense, lazy } from 'react';
@@ -100,4 +101,16 @@ const UAGBInlineNoticeEdit = ( props ) => {
 	);
 };
 
-export default UAGBInlineNoticeEdit;
+export default withSelect( ( select ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select(
+		'core/edit-post'
+	);
+
+	const deviceType = __experimentalGetPreviewDeviceType
+		? __experimentalGetPreviewDeviceType()
+		: null;
+
+	return {
+		deviceType,
+	};
+} )( UAGBInlineNoticeEdit );
