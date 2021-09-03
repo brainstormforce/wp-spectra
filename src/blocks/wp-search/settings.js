@@ -336,6 +336,20 @@ const Settings = (props) => {
 						value: spacingLink,
 						label: "spacingLink",
 					}}
+					units={[
+						{
+							name: __("Pixel", "ultimate-addons-for-gutenberg"),
+							unitValue: "px",
+						},
+						{
+							name: __("Em", "ultimate-addons-for-gutenberg"),
+							unitValue: "em",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
 				/>
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
