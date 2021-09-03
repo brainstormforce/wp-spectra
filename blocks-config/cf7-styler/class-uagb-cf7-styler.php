@@ -533,6 +533,146 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'messageTopPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingDesktop'   => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingDesktop'    => array(
+							'type' => 'number',
+						),
+
+						'messageTopPaddingTablet'       => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingTablet'    => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingTablet'      => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingTablet'     => array(
+							'type' => 'number',
+						),
+
+						'messageTopPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingMobile'    => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'messagePaddingTypeDesktop'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'messageSpacingLink'            => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						'buttonTopPaddingDesktop'       => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingDesktop'    => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+
+						'buttonTopPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingTablet'     => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingTablet'       => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingTablet'      => array(
+							'type' => 'number',
+						),
+
+						'buttonTopPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'buttonPaddingTypeDesktop'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonSpacingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						'fieldTopPaddingDesktop'        => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingDesktop'       => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+
+						'fieldTopPaddingTablet'         => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingTablet'      => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingTablet'       => array(
+							'type' => 'number',
+						),
+
+						'fieldTopPaddingMobile'         => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'fieldPaddingTypeDesktop'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldSpacingLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

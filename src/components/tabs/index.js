@@ -12,13 +12,15 @@ const UAGTabsControl = (props) => {
 	}, []);
 
 	let bottomSeparatorClass = !props?.disableBottomSeparator
-		? "uag-control-tabs-bottom-separator"
+		? "uag-control-tabs-bottom-separator "
 		: "";
+
+	let tabsCountClass = 3 === props.tabs.length ? "uag-control-tabs-three-tabs " : ""; 
 
 	return (
 		<>
 			<TabPanel
-				className={`uag-control-tabs ${bottomSeparatorClass}`}
+				className={`uag-control-tabs ${bottomSeparatorClass} ${tabsCountClass}`}
 				activeClass="active-tab"
 				tabs={props.tabs}
 			>

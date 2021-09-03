@@ -33,6 +33,52 @@ const PostTimelineComponent = ( props ) => {
 		const style = document.createElement( 'style' );
 		style.setAttribute( 'id', 'uagb-timeline-style-' + props.clientId );
 		document.head.appendChild( style );
+
+		const {
+			verticalSpace,
+			horizontalSpace,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			bgPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+		} = props.attributes;
+
+		if( bgPadding ){
+			if (!topPadding) {
+				props.setAttributes({ topPadding: bgPadding });
+			}
+			if (!bottomPadding) {
+				props.setAttributes({ bottomPadding: bgPadding });
+			}
+			if (!rightPadding) {
+				props.setAttributes({ rightPadding: bgPadding });
+			}
+			if (!leftPadding) {
+				props.setAttributes({ leftPadding: bgPadding });
+			}
+		}
+
+		if (verticalSpace) {
+			if (!topMargin) {
+				props.setAttributes({ topMargin: verticalSpace });
+			}
+			if (!bottomMargin) {
+				props.setAttributes({ bottomMargin: verticalSpace });
+			}
+		}
+		if (horizontalSpace) {
+			if (!rightMargin) {
+				props.setAttributes({ rightMargin: horizontalSpace });
+			}
+			if (!leftMargin) {
+				props.setAttributes({ leftMargin: horizontalSpace });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
