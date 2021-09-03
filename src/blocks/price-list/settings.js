@@ -352,58 +352,153 @@ const Settings = ( props ) => {
 		{ value: 'medium', label: __( 'Medium' ) },
 		{ value: 'full', label: __( 'Large' ) },
 	];
-
-	//Image Setting
+		//Image Setting
 	const imageSettings = () => {
+			return (
+				<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+						'Image Position',
+						"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+						value: imagePosition,
+						label: "imagePosition",
+						}}
+						className="uagb-multi-button-alignment-control"
+						options={[
+						{
+						value: "left",
+						icon: (
+						<Icon
+						icon={renderSVG(
+							"fa fa-align-left"
+						)}
+						/>
+						),
+						tooltip: __(
+						"Left",
+						"ultimate-addons-for-gutenberg"
+						),
+						},
+						{
+						value: "top",
+						icon: (
+						<Icon
+						icon={renderSVG(
+							"fa fa-align-center"
+						)}
+						/>
+						),
+						tooltip: __(
+						"Top",
+						"ultimate-addons-for-gutenberg"
+						),
+						},
+						{
+						value: "right",
+						icon: (
+						<Icon
+						icon={renderSVG(
+							"fa fa-align-right"
+						)}
+						/>
+						),
+						tooltip: __(
+						"Right",
+						"ultimate-addons-for-gutenberg"
+						),
+						},
+						]}
+						showIcons={true}
+					/>
+					{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
+						<>
+								<MultiButtonsControl
+									setAttributes={setAttributes}
+									label={__(
+										'Stack on',
+										"ultimate-addons-for-gutenberg"
+									)}
+									data={{
+										value: stack,
+										label: "stack",
+									}}
+									className="uagb-multi-button-alignment-control"
+									options={[
+										{
+											value: "none",
+											label: 'None'
+										},
+										{
+											value: "tablet",
+											label: 'Tablet'
+										},
+										{
+											value: "mobile",
+											label: 'Mobile'
+										},
+									]}
+									help={ __(
+										'Note: Choose on what breakpoint the Images will stack.'
+									) }
+									showIcons={false}
+								/>
+							<MultiButtonsControl
+								setAttributes={setAttributes}
+								label={__(
+									'Vertical Alignment',
+									"ultimate-addons-for-gutenberg"
+								)}
+								data={{
+									value: imageAlignment,
+									label: "imageAlignment",
+								}}
+								className="uagb-multi-button-alignment-control"
+								options={[
+									{
+										value: "top",
+										label: 'Top'
+	
+									},
+									{
+										value: "middle",
+										label: 'Middle',
+									},
+	
+								]}
+								showIcons={false}
+							/>
+							</>
+					) }
+					<SelectControl
+						label={ __( 'Size' ) }
+						options={ imageSizeOptions }
+						value={ imageSize }
+						onChange={ setimageSize }
+					/>
+					<Range
+						label={ __( 'Width' ) }
+						value={ imageWidth }
+						setAttributes={setAttributes}
+						onChange={ ( value ) =>
+							setAttributes( { imageWidth: value } )
+						}
+						min={ 0 }
+						max={ 500 }
+						unit={{
+							value: imageWidthType,
+							label: "imageWidthType",
+						}}
+					/>
+				</PanelBody>
+			)
+		}
+	//Image Setting
+	const imageStyles = () => {
 		return (
 			<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
-				{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
-						<MultiButtonsControl
-							setAttributes={setAttributes}
-							label={__(
-								'Vertical Alignment',
-								"ultimate-addons-for-gutenberg"
-							)}
-							data={{
-								value: imageAlignment,
-								label: "imageAlignment",
-							}}
-							className="uagb-multi-button-alignment-control"
-							options={[
-								{
-									value: "top",
-									label: 'Top'
-
-								},
-								{
-									value: "middle",
-									label: 'Middle',
-								},
-
-							]}
-							showIcons={false}
-						/>
-				) }
-				<SelectControl
-					label={ __( 'Size' ) }
-					options={ imageSizeOptions }
-					value={ imageSize }
-					onChange={ setimageSize }
-				/>
-				<Range
-					label={ __( 'Width' ) }
-					value={ imageWidth }
-					setAttributes={setAttributes}
-					onChange={ ( value ) =>
-						setAttributes( { imageWidth: value } )
-					}
-					min={ 0 }
-					max={ 500 }
-					unit={{
-						value: imageWidthType,
-						label: "imageWidthType",
-					}}
-				/>
 				<SpacingControl
 					{...props}
 					label={__(
@@ -486,16 +581,6 @@ const Settings = ( props ) => {
 	const contentSettings = () => {
 		return (
 			<PanelBody title={ __( 'Content' ) } initialOpen={ false }>
-				
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={descColor ? descColor : ""}
-					onColorChange={(value) =>
-						setAttributes({
-							descColor: value,
-						})
-					}
-				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -556,6 +641,15 @@ const Settings = ( props ) => {
 						value: descDecoration,
 						label: "descDecoration",
 					}}
+				/>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={descColor ? descColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							descColor: value,
+						})
+					}
 				/>
 			</PanelBody>
 		);
@@ -721,41 +815,6 @@ const Settings = ( props ) => {
 	};
 	const titleSettings = () => {
 		return <PanelBody title={ __( 'Title' ) } initialOpen={ false }>
-					<MultiButtonsControl
-						setAttributes={setAttributes}
-						label={__(
-							"Heading Tag",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							value: headingTag,
-							label: "headingTag",
-						}}
-						options={[
-							{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
-							{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
-							{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
-							{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
-							{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
-							{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
-							{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
-							{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
-						]}
-					/>
-					<Range
-						label={ __( 'Bottom Margin' ) }
-						value={ titleSpace }
-						setAttributes={setAttributes}
-						onChange={ ( value ) =>
-							setAttributes( { titleSpace: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						unit={{
-							value: titleSpaceType,
-							label: "titleSpaceType",
-						}}
-					/>
 					<TypographyControl
 						label={ __( 'Typography' ) }
 						attributes={ attributes }
@@ -826,6 +885,20 @@ const Settings = ( props ) => {
 							})
 						}
 					/>
+					<Range
+						label={ __( 'Bottom Margin' ) }
+						value={ titleSpace }
+						setAttributes={setAttributes}
+						onChange={ ( value ) =>
+							setAttributes( { titleSpace: value } )
+						}
+						min={ 0 }
+						max={ 50 }
+						unit={{
+							value: titleSpaceType,
+							label: "titleSpaceType",
+						}}
+					/>
 				</PanelBody>
 	}
 	const inspectControl = () => {
@@ -833,7 +906,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab {...UAGTabs.general}>
-						<PanelBody initialOpen={ true }>
+						<PanelBody title={ __( 'General' ) } initialOpen={ true }>
 							<ResponsiveSlider
 								label={__(
 									"Columns",
@@ -857,102 +930,35 @@ const Settings = ( props ) => {
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit = {false}
 								setAttributes={setAttributes}
-							/>
+							/>	
 							<MultiButtonsControl
 								setAttributes={setAttributes}
 								label={__(
-								'Image Position',
-								"ultimate-addons-for-gutenberg"
+									"Heading Tag",
+									"ultimate-addons-for-gutenberg"
 								)}
 								data={{
-								value: imagePosition,
-								label: "imagePosition",
+									value: headingTag,
+									label: "headingTag",
 								}}
-								className="uagb-multi-button-alignment-control"
 								options={[
-								{
-								value: "left",
-								icon: (
-								<Icon
-								icon={renderSVG(
-									"fa fa-align-left"
-								)}
-								/>
-								),
-								tooltip: __(
-								"Left",
-								"ultimate-addons-for-gutenberg"
-								),
-								},
-								{
-								value: "top",
-								icon: (
-								<Icon
-								icon={renderSVG(
-									"fa fa-align-center"
-								)}
-								/>
-								),
-								tooltip: __(
-								"Top",
-								"ultimate-addons-for-gutenberg"
-								),
-								},
-								{
-								value: "right",
-								icon: (
-								<Icon
-								icon={renderSVG(
-									"fa fa-align-right"
-								)}
-								/>
-								),
-								tooltip: __(
-								"Right",
-								"ultimate-addons-for-gutenberg"
-								),
-								},
+									{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+									{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+									{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+									{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+									{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+									{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+									{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
+									{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
 								]}
-								showIcons={true}
-							/>
-							{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
-								<MultiButtonsControl
-									setAttributes={setAttributes}
-									label={__(
-										'Stack on',
-										"ultimate-addons-for-gutenberg"
-									)}
-									data={{
-										value: stack,
-										label: "stack",
-									}}
-									className="uagb-multi-button-alignment-control"
-									options={[
-										{
-											value: "none",
-											label: 'None'
-										},
-										{
-											value: "tablet",
-											label: 'Tablet'
-										},
-										{
-											value: "mobile",
-											label: 'Mobile'
-										},
-									]}
-									help={ __(
-										'Note: Choose on what breakpoint the Images will stack.'
-									) }
-									showIcons={false}
-								/>
-							) }
+							/>			
 						</PanelBody>
+						{imageSettings()}
 					</InspectorTab>
 					<InspectorTab {...UAGTabs.style}>
 					{ titleSettings() }
 					{ separatorSettings() }
-					{ imageSettings() }
+					{ imageStyles() }
 					{ contentSettings() }
 					{ priceSettings() }
 					{ marginSettings() }
