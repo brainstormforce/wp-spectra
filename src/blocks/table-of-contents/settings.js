@@ -174,7 +174,7 @@ const Settings = ( props ) => {
 			>
 				<h2>
 					{ __(
-						'Select the heading to consider when generating the table',
+						'Choose heading tags to generate table',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
