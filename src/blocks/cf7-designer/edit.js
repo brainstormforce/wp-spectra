@@ -1,6 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { SelectControl, Placeholder } from '@wordpress/components';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
@@ -111,6 +112,40 @@ const UAGBCF7 = ( props ) => {
 		}
 	}, [ props ] );
 
+	const { formId } = props.attributes;
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		const { setAttributes } = props;
+
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
+	if ( formId == 0 ) {
+		return (
+			<Placeholder
+				icon="admin-post"
+				label={ __(
+					'Select a Contact Form 7',
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<SelectControl
+					value={ formId }
+					onChange={ onSelectForm }
+					options={ uagb_blocks_info.cf7_forms }
+				/>
+			</Placeholder>
+		);
+	}
+	
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />

@@ -52,10 +52,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Common',
-					'ultimate-addons-for-gutenberg'
-				) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl
