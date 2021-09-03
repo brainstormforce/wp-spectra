@@ -293,7 +293,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: "url",
-							label: ("Url Text"),
+							label: ("URL Text"),
 							tooltip: __(
 								"Url Text",
 								"ultimate-addons-for-gutenberg"
@@ -434,7 +434,7 @@ const Settings = ( props ) => {
 	const failedMessageStyle = () => {
 		return (
 			<PanelBody
-				title={ __( 'Failed Message', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Error Message', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
@@ -1020,7 +1020,7 @@ const Settings = ( props ) => {
 			>
 				<TypographyControl
 					label={ __(
-						'Label Typography',
+						'Typography',
 						'ultimate-addons-for-gutenberg'
 					) }
 					attributes={ attributes }
@@ -1120,7 +1120,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						'Label Color',
+						'Color',
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={labelColor ? labelColor : ""}
@@ -1140,7 +1140,7 @@ const Settings = ( props ) => {
 			>
 				<TypographyControl
 					label={ __(
-						'Input Typography',
+						'Typography',
 						'ultimate-addons-for-gutenberg'
 					) }
 					attributes={ attributes }
@@ -1240,7 +1240,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						'Input Color',
+						'Color',
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={inputColor ? inputColor : ""}
