@@ -245,6 +245,7 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveTestImage = ( index ) => {
+		
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item.image = null;
@@ -1052,13 +1053,13 @@ const Settings = ( props ) => {
 		) {
 			imageVal = test_block[ index ].image;
 		}
-		index = index + 1;
+		let labelIndex = index + 1;
 		return (	
 					<UAGImage
-						label = {'Image '+index}
-						onSelectImage={() => onSelectTestImage(imageVal, index )}
+						label = {'Image '+ labelIndex}
+						onSelectImage={(media) => onSelectTestImage(media, index )}
 						backgroundImage={imageVal}
-						onRemoveImage={(index) => onRemoveTestImage(index) }
+						onRemoveImage={() => onRemoveTestImage(index) }
 					/>
 				)
 	};
