@@ -418,33 +418,19 @@ const Settings = (props) => {
 						onChange={(value) => setAttributes({ stack: value })}
 					/>
 				)}
-				<SelectControl
-					label={__("Select Source", "ultimate-addons-for-gutenberg")}
-					value={source_type}
-					onChange={(value) => setAttributes({ source_type: value })}
-					options={[
-						{
-							value: "icon",
-							label: __("Icon", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "image",
-							label: __("Image", "ultimate-addons-for-gutenberg"),
-						},
-					]}
-				/>
 				{iconimgPosition &&
 					iconimgPosition !== "above-title" &&
 					iconimgPosition !== "below-title" && (
-						<SelectControl
+						<MultiButtonsControl
+							setAttributes={setAttributes}
 							label={__(
 								"Vertical Alignment",
 								"ultimate-addons-for-gutenberg"
 							)}
-							value={sourceAlign}
-							onChange={(value) =>
-								setAttributes({ sourceAlign: value })
-							}
+							data={{
+								value: sourceAlign,
+								label: "sourceAlign",
+							}}
 							options={[
 								{
 									value: "top",
@@ -463,6 +449,27 @@ const Settings = (props) => {
 							]}
 						/>
 					)}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Select Source",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: source_type,
+						label: "source_type",
+					}}
+					options={[
+						{
+							value: "icon",
+							label: __("Icon", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "image",
+							label: __("Image", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+				/>
 				{source_type == "icon" && (
 					<>
 						<UAGIconPicker
