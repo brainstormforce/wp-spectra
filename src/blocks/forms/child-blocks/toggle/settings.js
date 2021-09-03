@@ -43,16 +43,10 @@ const Settings = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Default State',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ toggleStatus
+						? __( 'ON State', 'ultimate-addons-for-gutenberg' )
+						: __( 'OFF State', 'ultimate-addons-for-gutenberg' ) }
 					checked={ toggleStatus }
-					help={
-						toggleStatus
-							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
-							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
-					}
 					onChange={ () =>
 						setAttributes( { toggleStatus: ! toggleStatus } )
 					}
