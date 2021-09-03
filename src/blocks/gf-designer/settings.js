@@ -348,7 +348,7 @@ const Settings = ( props ) => {
 				{ fieldStyle == 'box' && (
 					<SelectControl
 						label={ __(
-							'Border Style',
+							'Style',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ fieldBorderStyle }
@@ -426,7 +426,7 @@ const Settings = ( props ) => {
 					fieldStyle == 'underline' ) && (
 					<Range
 						label={ __(
-							'Border Width (px)',
+							'Width (px)',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={setAttributes}
@@ -441,7 +441,7 @@ const Settings = ( props ) => {
 				) }
 				<Range
 					label={ __(
-						'Border Radius',
+						'Radius',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={setAttributes}
@@ -491,7 +491,7 @@ const Settings = ( props ) => {
 					normal={ ( 'none' != fieldBorderStyle || fieldStyle == 'underline' ) && (
 						<>
 								<AdvancedPopColorControl
-									label={__("Border Color", "ultimate-addons-for-gutenberg")}
+									label={__("Color", "ultimate-addons-for-gutenberg")}
 									colorValue={fieldBorderColor ? fieldBorderColor : ""}
 									onColorChange={(value) =>
 										setAttributes({ fieldBorderColor: value })
@@ -502,7 +502,7 @@ const Settings = ( props ) => {
 					active={ ( 'none' != fieldBorderStyle || fieldStyle == 'underline' ) && (
 						<>
 								<AdvancedPopColorControl
-									label={__("Border Color", "ultimate-addons-for-gutenberg")}
+									label={__("Color", "ultimate-addons-for-gutenberg")}
 									colorValue={fieldBorderFocusColor ? fieldBorderFocusColor : ""}
 									onColorChange={(value) =>
 										setAttributes({ fieldBorderFocusColor: value })
@@ -522,6 +522,20 @@ const Settings = ( props ) => {
 				title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={fieldInputColor ? fieldInputColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ fieldInputColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__("Background Color", "ultimate-addons-for-gutenberg")}
+					colorValue={fieldBgColor ? fieldBgColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ fieldBgColor: value })
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -575,20 +589,6 @@ const Settings = ( props ) => {
 						label: 'inputLineHeightTablet',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={fieldInputColor ? fieldInputColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ fieldInputColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__("Background Color", "ultimate-addons-for-gutenberg")}
-					colorValue={fieldBgColor ? fieldBgColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ fieldBgColor: value })
-					}
-				/>
 			</PanelBody>
 		)
 	}
@@ -608,9 +608,13 @@ const Settings = ( props ) => {
 				/>
 				{ ! enableLabel && (
 					<>
-						<h2>
-							{ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
-						</h2>
+						<AdvancedPopColorControl
+							label={__("Color", "ultimate-addons-for-gutenberg")}
+							colorValue={fieldLabelColor ? fieldLabelColor : ""}
+							onColorChange={(value) =>
+								setAttributes({ fieldLabelColor: value })
+							}
+						/>
 						<TypographyControl
 							label={ __(
 								'Typography',
@@ -666,13 +670,6 @@ const Settings = ( props ) => {
 								value: labelLineHeightTablet,
 								label: 'labelLineHeightTablet',
 							} }
-						/>
-						<AdvancedPopColorControl
-							label={__("Color", "ultimate-addons-for-gutenberg")}
-							colorValue={fieldLabelColor ? fieldLabelColor : ""}
-							onColorChange={(value) =>
-								setAttributes({ fieldLabelColor: value })
-							}
 						/>
 					</>
 				) }
@@ -825,7 +822,7 @@ const Settings = ( props ) => {
 			<>
 				<SelectControl
 					label={ __(
-						'Border Style',
+						'Style',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ buttonBorderStyle }
@@ -901,7 +898,7 @@ const Settings = ( props ) => {
 				{ 'none' != buttonBorderStyle && (
 					<Range
 						label={ __(
-							'Border Width (px)',
+							'Width (px)',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={setAttributes}
@@ -916,7 +913,7 @@ const Settings = ( props ) => {
 				) }
 				<Range
 					label={ __(
-						'Border Radius',
+						'Radius',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={setAttributes}
@@ -1091,6 +1088,28 @@ const Settings = ( props ) => {
 					]}
 					showIcons={true}
 				/>
+				{ btnBorderSetting() }
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "hover",
+							title: __(
+								"Hover",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={buttonNormalSettings()}
+					hover={buttonHoverSettings()}
+					disableBottomSeparator={true}
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1146,28 +1165,6 @@ const Settings = ( props ) => {
 						value: buttonLineHeightTablet,
 						label: 'buttonLineHeightTablet',
 					} }
-				/>
-				{ btnBorderSetting() }
-				<UAGTabsControl
-					tabs={[
-						{
-							name: "normal",
-							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							name: "hover",
-							title: __(
-								"Hover",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-					normal={buttonNormalSettings()}
-					hover={buttonHoverSettings()}
-					disableBottomSeparator={true}
 				/>
 			</PanelBody>
 		);
@@ -1462,6 +1459,27 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h2>
+						<AdvancedPopColorControl
+							label={__("Label Color", "ultimate-addons-for-gutenberg")}
+							colorValue={radioCheckLableColor}
+							onColorChange={(value) =>
+								setAttributes({ radioCheckLableColor: value })
+							}
+						/>
+						<AdvancedPopColorControl
+							label={__("Background Color", "ultimate-addons-for-gutenberg")}
+							colorValue={radioCheckBgColor}
+							onColorChange={(value) =>
+								setAttributes({ radioCheckBgColor: value })
+							}
+						/>
+						<AdvancedPopColorControl
+							label={__("Selected Color", "ultimate-addons-for-gutenberg")}
+							colorValue={radioCheckSelectColor}
+							onColorChange={(value) =>
+								setAttributes({ radioCheckSelectColor: value })
+							}
+						/>
 						<TypographyControl
 							label={ __(
 								'Typography',
@@ -1518,33 +1536,12 @@ const Settings = ( props ) => {
 								label: 'radioCheckLineHeightTablet',
 							} }
 						/>
-						<AdvancedPopColorControl
-							label={__("Label Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckLableColor}
-							onColorChange={(value) =>
-								setAttributes({ radioCheckLableColor: value })
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__("Background Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckBgColor}
-							onColorChange={(value) =>
-								setAttributes({ radioCheckBgColor: value })
-							}
-						/>
-						<AdvancedPopColorControl
-							label={__("Selected Color", "ultimate-addons-for-gutenberg")}
-							colorValue={radioCheckSelectColor}
-							onColorChange={(value) =>
-								setAttributes({ radioCheckSelectColor: value })
-							}
-						/>
 						{ fieldBorderStyle !== 'none' && (
 							<>
 								<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
 								<Range
 									label={ __(
-										'Border Width (px)',
+										'Width (px)',
 										'ultimate-addons-for-gutenberg'
 									) }
 									setAttributes={setAttributes}
@@ -1558,7 +1555,7 @@ const Settings = ( props ) => {
 								/>
 								<Range
 									label={ __(
-										'Border Radius',
+										'Radius',
 										'ultimate-addons-for-gutenberg'
 									) }
 									setAttributes={setAttributes}
@@ -1589,7 +1586,7 @@ const Settings = ( props ) => {
 									]}
 								/>
 								<AdvancedPopColorControl
-									label={__("Border Color", "ultimate-addons-for-gutenberg")}
+									label={__("Color", "ultimate-addons-for-gutenberg")}
 									colorValue={radioCheckBorderColor ? radioCheckBorderColor : ""}
 									onColorChange={(value) =>
 										setAttributes({ radioCheckBorderColor: value })
@@ -1720,8 +1717,6 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-
-				
 				<h2>
 					{ __(
 						'Form Error Validation',
@@ -1848,7 +1843,6 @@ const Settings = ( props ) => {
 						label: 'msgLineHeightTablet',
 					} }
 				/>
-				
 				<h2>
 					{ __(
 						'Form Success Validation',
