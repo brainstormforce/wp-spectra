@@ -1,4 +1,11 @@
 <?php
+/**
+ * Frontend CSS & Google Fonts loading File.
+ *
+ * @since x.x.x
+ *
+ * @package uagb
+ */
 
 // Add fonts.
 UAGB_Block_JS::blocks_star_rating_gfont( $attr );

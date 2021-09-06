@@ -582,11 +582,6 @@ class UAGB_Post_Assets {
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;
 
-			case 'uagb/advanced-heading':
-				$css += UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_advanced_heading_gfont( $blockattr );
-				break;
-
 			case 'uagb/info-box':
 				$css += UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_info_box_gfont( $blockattr );
@@ -736,11 +731,6 @@ class UAGB_Post_Assets {
 				$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
 				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
 				break;
-
-			// case 'uagb/star-rating':
-			// 	$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
-			// 	UAGB_Block_JS::blocks_star_rating_gfont( $blockattr );
-			// 	break;
 
 			default:
 				$_block_slug = str_replace( 'uagb/', '', $name );

@@ -104,51 +104,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 						),
 					),
-					'uagb/advanced-heading'       => array(
-						'slug'        => '',
-						'title'       => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block lets you add a combination of a heading and a sub-heading with a separator in between.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => false,
-						'attributes'  => array(
-							'classMigrate'            => false,
-							'headingAlign'            => 'center',
-							'headingColor'            => '',
-							'subHeadingColor'         => '',
-							'separatorColor'          => '',
-							'seperatorStyle'          => 'solid',
-							'separatorHeight'         => '',
-							'separatorWidth'          => '',
-							'separatorWidthType'      => '%',
-							'headFontFamily'          => '',
-							'headLoadGoogleFonts'     => false,
-							'headFontWeight'          => '',
-							'headFontSubset'          => '',
-							'headFontSize'            => '',
-							'headFontSizeType'        => 'px',
-							'headFontSizeTablet'      => '',
-							'headFontSizeMobile'      => '',
-							'headLineHeight'          => '',
-							'headLineHeightType'      => 'em',
-							'headLineHeightTablet'    => '',
-							'headLineHeightMobile'    => '',
-							'subHeadFontFamily'       => '',
-							'subHeadLoadGoogleFonts'  => false,
-							'subHeadFontWeight'       => '',
-							'subHeadFontSubset'       => '',
-							'subHeadFontSize'         => '',
-							'subHeadFontSizeType'     => 'px',
-							'subHeadFontSizeTablet'   => '',
-							'subHeadFontSizeMobile'   => '',
-							'subHeadLineHeight'       => '',
-							'subHeadLineHeightType'   => 'em',
-							'subHeadLineHeightTablet' => '',
-							'subHeadLineHeightMobile' => '',
-							'headSpace'               => 15,
-							'separatorSpace'          => 15,
-							'separatorHoverColor'     => '',
-						),
-					),
 					'uagb/columns'                => array(
 						'slug'        => '',
 						'title'       => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
@@ -3263,46 +3218,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'playOn'           => 'none',
 						),
 					),
-					// 'uagb/star-rating'            => array(
-					// 	'slug'        => '',
-					// 	'title'       => __( 'Star Rating', 'ultimate-addons-for-gutenberg' ),
-					// 	'description' => __( 'This block helps you add Star Rating and customize it as required.', 'ultimate-addons-for-gutenberg' ),
-					// 	'default'     => true,
-					// 	'js_assets'   => array(),
-					// 	'attributes'  => array(
-					// 		'block_id'         => '',
-					// 		'range'            => '5',
-					// 		'rating'           => '4',
-					// 		'size'             => '',
-					// 		'align'            => 'left',
-					// 		'layout'           => 'inline',
-					// 		'gap'              => '',
-					// 		'unmarkedColor'    => '#ccd6df',
-					// 		'color'            => '#f0ad4e',
-					// 		'fontFamily'       => 'Default',
-					// 		'fontWeight'       => '',
-					// 		'fontSubset'       => '',
-					// 		'fontSizeType'     => 'px',
-					// 		'fontSize'         => '',
-					// 		'fontSizeMobile'   => '',
-					// 		'fontSizeTablet'   => '',
-					// 		'lineHeightType'   => 'em',
-					// 		'lineHeight'       => '',
-					// 		'lineHeightMobile' => '',
-					// 		'lineHeightTablet' => '',
-					// 		'titleColor'       => '',
-					// 		'titleGap'         => '10',
-					// 	),
-					// ),
 				);
 
 				$block_files = glob( UAGB_DIR . 'includes/blocks/*/block.php' );
 
-				foreach( $block_files as $block_file ) {
+				foreach ( $block_files as $block_file ) {
 					$block_slug = '';
 					$block_data = array();
 
-					include( $block_file );
+					include $block_file;
 
 					if ( ! empty( $block_slug ) && ! empty( $block_data ) ) {
 

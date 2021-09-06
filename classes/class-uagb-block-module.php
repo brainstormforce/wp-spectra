@@ -23,8 +23,11 @@ class UAGB_Block_Module {
 	 * @var array
 	 */
 	private static $blocks = array(
-		'star-rating' => array(
+		'star-rating'      => array(
 			'dir' => 'star-rating/',
+		),
+		'advanced-heading' => array(
+			'dir' => 'advanced-heading/',
 		),
 	);
 
@@ -33,9 +36,9 @@ class UAGB_Block_Module {
 	 *
 	 * @since x.x.x
 	 *
-	 * @param string  $slug Block slug.
-	 * @param array   $attr Block attributes.
-	 * @param string  $id   Block id.
+	 * @param string $slug Block slug.
+	 * @param array  $attr Block attributes.
+	 * @param string $id   Block id.
 	 *
 	 * @return array
 	 */
