@@ -3276,11 +3276,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
-
 			// Pagination CSS.
 			$selectors[' .uagb-post-pagination-wrap'] = array(
 
-				'margin-top' => UAGB_Helper::get_css_value( $attr['paginationSpacing'], 'px' ),
+				'margin-top' => UAGB_Helper::get_css_value( $attr['paginationSpacing'], $attr['paginationSpacingUnit'] ),
 				'text-align' => $attr['paginationAlignment'],
 			);
 			if ( 'filled' === $attr['paginationLayout'] ) {
@@ -3333,7 +3332,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-post__text .uagb-post__title a', $combined_selectors );
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' .uagb-post__text .uagb-post-grid-byline', $combined_selectors );
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' .uagb-post__text .uagb-post-grid-byline .uagb-post__author', $combined_selectors );
-
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' .uagb-post__text .uagb-post-grid-byline .uagb-post__author a', $combined_selectors );
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'excerpt', ' .uagb-post__text .uagb-post__excerpt', $combined_selectors );
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text .uagb-post__cta', $combined_selectors );
@@ -3363,8 +3361,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
 
-			$arrow_size = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
-
+			$arrow_size                 = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
 			$selectors[' .slick-arrow'] = array(
 				'border-color' => $attr['arrowColor'],
 			);
@@ -3444,13 +3441,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
 
+			$paginationpaddingTop    = isset( $attr['paginationButtonPaddingTop'] ) ? $attr['paginationButtonPaddingTop'] : $attr['vpaginationButtonPaddingDesktop'];
+			$paginationpaddingBottom = isset( $attr['paginationButtonPaddingBottom'] ) ? $attr['paginationButtonPaddingBottom'] : $attr['vpaginationButtonPaddingDesktop'];
+			$paginationpaddingLeft   = isset( $attr['paginationButtonPaddingLeft'] ) ? $attr['paginationButtonPaddingLeft'] : $attr['hpaginationButtonPaddingDesktop'];
+			$paginationpaddingRight  = isset( $attr['paginationButtonPaddingRight'] ) ? $attr['paginationButtonPaddingRight'] : $attr['hpaginationButtonPaddingDesktop'];
+
+			$paginationButtonPaddingTopTablet    = isset( $attr['paginationButtonPaddingTopTablet'] ) ? $attr['paginationButtonPaddingTopTablet'] : $attr['vpaginationButtonPaddingTablet'];
+			$paginationButtonPaddingBottomTablet = isset( $attr['paginationButtonPaddingBottomTablet'] ) ? $attr['paginationButtonPaddingBottomTablet'] : $attr['vpaginationButtonPaddingTablet'];
+			$paginationButtonPaddingLeftTablet   = isset( $attr['paginationButtonPaddingLeftTablet'] ) ? $attr['paginationButtonPaddingLeftTablet'] : $attr['hpaginationButtonPaddingTablet'];
+			$paginationButtonPaddingRightTablet  = isset( $attr['paginationButtonPaddingRightTablet'] ) ? $attr['paginationButtonPaddingRightTablet'] : $attr['hpaginationButtonPaddingTablet'];
+
+			$paginationButtonPaddingTopMobile    = isset( $attr['paginationButtonPaddingTopMobile'] ) ? $attr['paginationButtonPaddingTopMobile'] : $attr['vpaginationButtonPaddingMobile'];
+			$paginationButtonPaddingBottomMobile = isset( $attr['paginationButtonPaddingBottomMobile'] ) ? $attr['paginationButtonPaddingBottomMobile'] : $attr['vpaginationButtonPaddingMobile'];
+			$paginationButtonPaddingLeftMobile   = isset( $attr['paginationButtonPaddingLeftMobile'] ) ? $attr['paginationButtonPaddingLeftMobile'] : $attr['hpaginationButtonPaddingMobile'];
+			$paginationButtonPaddingRightMobile  = isset( $attr['paginationButtonPaddingRightMobile'] ) ? $attr['paginationButtonPaddingRightMobile'] : $attr['hpaginationButtonPaddingMobile'];
+
 			if ( 'infinite' === $attr['paginationType'] ) {
 
 				$selectors[' .uagb-post__load-more-wrap'] = array(
 					'text-align' => $attr['paginationAlign'],
 				);
 
-				$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button'] = array(
+				$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']       = array(
 
 					'color'            => $attr['paginationTextColor'],
 					'background-color' => $attr['paginationMasonryBgColor'],
@@ -3459,27 +3471,62 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['paginationMasonryBorderRadius'], 'px' ),
 					'border-color'     => $attr['paginationMasonryBorderColor'],
 					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], 'px' ),
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
-
+					'padding-top'      => UAGB_Helper::get_css_value(
+						$paginationpaddingTop,
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-bottom'   => UAGB_Helper::get_css_value(
+						$paginationpaddingBottom,
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-right'    => UAGB_Helper::get_css_value(
+						$paginationpaddingRight,
+						$attr['paginationButtonPaddingType']
+					),
+					'padding-left'     => UAGB_Helper::get_css_value(
+						$paginationpaddingLeft,
+						$attr['paginationButtonPaddingType']
+					),
 				);
 				$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'] = array(
 					'color'            => $attr['paginationTextHoverColor'],
 					'background-color' => $attr['paginationBgHoverColor'],
 				);
 				$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
+					'padding-top'    => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingTopMobile,
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-right'  => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingRightMobile,
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-bottom' => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingBottomMobile,
+						$attr['mobilepaginationButtonPaddingType']
+					),
+					'padding-left'   => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingLeftMobile,
+						$attr['mobilepaginationButtonPaddingType']
+					),
 				);
 				$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
+					'padding-top'    => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingTopTablet,
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-bottom' => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingBottomTablet,
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-right'  => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingRightTablet,
+						$attr['tabletpaginationButtonPaddingType']
+					),
+					'padding-left'   => UAGB_Helper::get_css_value(
+						$paginationButtonPaddingLeftTablet,
+						$attr['tabletpaginationButtonPaddingType']
+					),
 				);
 
 				$selectors['.uagb-post-grid .uagb-post-inf-loader div'] = array(
@@ -3518,36 +3565,50 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.4.0
 		 */
 		public static function get_post_selectors( $attr ) {
+
+			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
+			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
+			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
+			$paddingRight  = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
+
+			$paddingBtnTop    = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['btnVPadding'];
+			$paddingBtnBottom = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['btnVPadding'];
+			$paddingBtnLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] : $attr['btnHPadding'];
+			$paddingBtnRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['btnHPadding'];
+
 			$selectors = array(
 				' .uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
 				),
 				' .uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), 'px' ),
+					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap'    => array(
-					'background' => $attr['bgColor'],
-					'padding'    => UAGB_Helper::get_css_value( ( $attr['contentPadding'] ), 'px' ),
-					'text-align' => $attr['align'],
+					'background'     => $attr['bgColor'],
+					'padding-top'    => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
+					'text-align'     => $attr['align'],
 				),
 
 				' .uagb-post__cta'           => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image'         => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__title'         => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post-grid-byline'    => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__excerpt'       => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], $attr['excerptBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image:before'  => array(
 					'background-color' => $attr['bgOverlayColor'],
@@ -3556,9 +3617,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			if ( 'background' !== $attr['imgPosition'] ) {
 				$selectors[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
-					'margin-top'   => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['contentPadding'] ), 'px' ),
+					'margin-top'   => UAGB_Helper::get_css_value( -$paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( -$paddingLeft, $attr['contentPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( -$paddingRight, $attr['contentPaddingUnit'] ),
 				);
 			}
 			if ( ! $attr['inheritFromTheme'] ) {
@@ -3583,15 +3644,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-style'  => $attr['borderStyle'],
 				);
 				$selectors[' .uagb-post__text .uagb-post__cta a']                           = array(
-					'color'   => $attr['ctaColor'],
-					'padding' => ( $attr['btnVPadding'] ) . 'px ' . ( $attr['btnHPadding'] ) . 'px',
+					'color'          => $attr['ctaColor'],
+					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeft, $attr['paddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
+
 				);
-				$selectors[' .uagb-post__text .uagb-post__cta:hover']                       = array(
+				$selectors[' .uagb-post__text .uagb-post__cta:hover']   = array(
 					'color'        => $attr['ctaHColor'],
 					'background'   => $attr['ctaBgHColor'],
 					'border-color' => $attr['borderHColor'],
 				);
-				$selectors[' .uagb-post__text .uagb-post__cta:hover a']                     = array(
+				$selectors[' .uagb-post__text .uagb-post__cta:hover a'] = array(
 					'color' => $attr['ctaHColor'],
 				);
 			}
@@ -3607,13 +3672,38 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
+			$paddingTopMobile    = isset( $attr['paddingTopMobile'] ) ? $attr['paddingTopMobile'] : $attr['contentPaddingMobile'];
+			$paddingBottomMobile = isset( $attr['paddingBottomMobile'] ) ? $attr['paddingBottomMobile'] : $attr['contentPaddingMobile'];
+			$paddingLeftMobile   = isset( $attr['paddingLeftMobile'] ) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
+			$paddingRightMobile  = isset( $attr['paddingRightMobile'] ) ? $attr['paddingRightMobile'] : $attr['contentPaddingMobile'];
 
-			return array(
+			$paddingBtnTopMobile    = isset( $attr['paddingBtnTopMobile'] ) ? $attr['paddingBtnTopMobile'] : $attr['btnVPadding'];
+			$paddingBtnBottomMobile = isset( $attr['paddingBtnBottomMobile'] ) ? $attr['paddingBtnBottomMobile'] : $attr['btnVPadding'];
+			$paddingBtnLeftMobile   = isset( $attr['paddingBtnLeftMobile'] ) ? $attr['paddingBtnLeftMobile'] : $attr['btnHPadding'];
+			$paddingBtnRightMobile  = isset( $attr['paddingBtnRightMobile'] ) ? $attr['paddingBtnRightMobile'] : $attr['btnHPadding'];
+
+			$m_selector = array(
 				' .uagb-post__inner-wrap' => array(
-					'padding' => ( $attr['contentPaddingMobile'] ) . 'px',
+					'padding-top'    => UAGB_Helper::get_css_value( $paddingTopMobile, $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomMobile, $attr['mobilePaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
+				),
+				' .uagb-post__cta a'      => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopMobile, $attr['mobilePaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottomMobile, $attr['mobilePaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftMobile, $attr['mobilePaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightMobile, $attr['mobilePaddingBtnUnit'] ),
 				),
 			);
-
+			if ( 'background' !== $attr['imgPosition'] && '' !== $paddingTopMobile && '' !== $paddingLeftMobile && '' !== $paddingRightMobile ) {
+				$m_selector[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
+					'margin-top'   => UAGB_Helper::get_css_value( -$paddingTopMobile, $attr['mobilePaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( -$paddingLeftMobile, $attr['mobilePaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( -$paddingRightMobile, $attr['mobilePaddingUnit'] ),
+				);
+			}
+			return $m_selector;
 		}
 
 		/**
@@ -3623,8 +3713,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
-			return array();
 
+			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
+			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
+			$paddingBtnLeftTablet   = isset( $attr['paddingBtnLeftTablet'] ) ? $attr['paddingBtnLeftTablet'] : $attr['btnHPadding'];
+			$paddingBtnRightTablet  = isset( $attr['paddingBtnRightTablet'] ) ? $attr['paddingBtnRightTablet'] : $attr['btnHPadding'];
+
+			$t_selector = array(
+
+				' .uagb-post__inner-wrap' => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+				),
+				' .uagb-post__cta a'      => array(
+					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopTablet, $attr['tabletPaddingBtnUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottomTablet, $attr['tabletPaddingBtnUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftTablet, $attr['tabletPaddingBtnUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightTablet, $attr['tabletPaddingBtnUnit'] ),
+				),
+			);
+			if ( 'background' !== $attr['imgPosition'] && '' !== $attr['paddingTopTablet'] && '' !== $attr['paddingLeftTablet'] && '' !== $attr['paddingRightTablet'] ) {
+				$t_selector[' .uagb-post__inner-wrap > .uagb-post__image:first-child'] = array(
+					'margin-top'   => UAGB_Helper::get_css_value( -$attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( -$attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( -$attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+				);
+			}
+			return $t_selector;
 		}
 		/**
 		 * Get Tabs CSS

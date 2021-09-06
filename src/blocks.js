@@ -12,7 +12,7 @@ __webpack_public_path__ = uagb_blocks_info.uagb_url + "dist/";
 
 import "./blocks/extensions/attributes.js";
 import "./blocks/advanced-heading/block.js";
-// import "./blocks/post/block.js";
+import "./blocks/post/block.js";
 import "./blocks/section/block.js";
 import "./blocks/buttons/block.js";
 import "./blocks/buttons-child/block.js";
