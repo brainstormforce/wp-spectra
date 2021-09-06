@@ -557,6 +557,49 @@ const Settings = (props) => {
 							label: "buttonWidthType",
 						}}
 					/>
+					{"icon" === buttonType && (
+						<>
+							<Range
+								label={__(
+									"Icon Size",
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={buttonIconSize}
+								onChange={(value) => {
+									setAttributes({
+										buttonIconSize: value,
+									});
+								}}
+								min={0}
+								max={500}
+								unit={{
+									value: buttonIconSizeType,
+									label: "buttonIconSizeType",
+								}}
+							/>
+						</>
+					)}
+					<UAGTabsControl
+						tabs={[
+							{
+								name: "normal",
+								title: __(
+									"Normal",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								name: "hover",
+								title: __(
+									"Hover",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						normal={tabOutputNormal}
+						hover={tabOutputHover}
+					/>
 					<TypographyControl
 						label={__(
 							"Typography",
@@ -620,50 +663,6 @@ const Settings = (props) => {
 							value: buttonDecoration,
 							label: "buttonDecoration",
 						}}
-					/>
-					{"icon" === buttonType && (
-						<>
-							<Range
-								label={__(
-									"Icon Size",
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={buttonIconSize}
-								onChange={(value) => {
-									setAttributes({
-										buttonIconSize: value,
-									});
-								}}
-								min={0}
-								max={500}
-								unit={{
-									value: buttonIconSizeType,
-									label: "buttonIconSizeType",
-								}}
-							/>
-						</>
-					)}
-					<UAGTabsControl
-						tabs={[
-							{
-								name: "normal",
-								title: __(
-									"Normal",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-							{
-								name: "hover",
-								title: __(
-									"Hover",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-						]}
-						normal={tabOutputNormal}
-						hover={tabOutputHover}
-						disableBottomSeparator={true}
 					/>
 				</PanelBody>
 			);

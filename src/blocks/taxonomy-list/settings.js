@@ -928,13 +928,13 @@ const Settings = (props) => {
 					borderWidth={{
 						value: borderThickness,
 						label: "borderThickness",
-						title: __("Thickness", "ultimate-addons-for-gutenberg"),
+						title: __("Width", "ultimate-addons-for-gutenberg"),
 					}}
 					borderRadius={{
 						value: borderRadius,
 						label: "borderRadius",
 						title: __(
-							"Rounded Corners",
+							"Radius",
 							"ultimate-addons-for-gutenberg"
 						),
 					}}

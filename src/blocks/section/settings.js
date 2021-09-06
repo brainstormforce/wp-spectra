@@ -243,77 +243,6 @@ const Settings = (props) => {
 			<PanelBody title="Spacing" initialOpen={false}>
 				<SpacingControl
 					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
-						value: topPadding,
-						label: "topPadding",
-					}}
-					valueRight={{
-						value: rightPadding,
-						label: "rightPadding",
-					}}
-					valueBottom={{
-						value: bottomPadding,
-						label: "bottomPadding",
-					}}
-					valueLeft={{
-						value: leftPadding,
-						label: "leftPadding",
-					}}
-					valueTopTablet={{
-						value: topPaddingTablet,
-						label: "topPaddingTablet",
-					}}
-					valueRightTablet={{
-						value: rightPaddingTablet,
-						label: "rightPaddingTablet",
-					}}
-					valueBottomTablet={{
-						value: bottomPaddingTablet,
-						label: "bottomPaddingTablet",
-					}}
-					valueLeftTablet={{
-						value: leftPaddingTablet,
-						label: "leftPaddingTablet",
-					}}
-					valueTopMobile={{
-						value: topPaddingMobile,
-						label: "topPaddingMobile",
-					}}
-					valueRightMobile={{
-						value: rightPaddingMobile,
-						label: "rightPaddingMobile",
-					}}
-					valueBottomMobile={{
-						value: bottomPaddingMobile,
-						label: "bottomPaddingMobile",
-					}}
-					valueLeftMobile={{
-						value: leftPaddingMobile,
-						label: "leftPaddingMobile",
-					}}
-					unit={{
-						value: desktopPaddingType,
-						label: "desktopPaddingType",
-					}}
-					mUnit={{
-						value: mobilePaddingType,
-						label: "mobilePaddingType",
-					}}
-					tUnit={{
-						value: tabletPaddingType,
-						label: "tabletPaddingType",
-					}}
-					deviceType={deviceType}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: spacingLink,
-						label: "spacingLink",
-					}}
-				/>
-				<SpacingControl
-					{...props}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: topMargin,
@@ -381,6 +310,77 @@ const Settings = (props) => {
 					link={{
 						value: marginspacingLink,
 						label: "marginspacingLink",
+					}}
+				/>
+				<SpacingControl
+					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: topPaddingTablet,
+						label: "topPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: rightPaddingTablet,
+						label: "rightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomPaddingTablet,
+						label: "bottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: leftPaddingTablet,
+						label: "leftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: topPaddingMobile,
+						label: "topPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: rightPaddingMobile,
+						label: "rightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomPaddingMobile,
+						label: "bottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: leftPaddingMobile,
+						label: "leftPaddingMobile",
+					}}
+					unit={{
+						value: desktopPaddingType,
+						label: "desktopPaddingType",
+					}}
+					mUnit={{
+						value: mobilePaddingType,
+						label: "mobilePaddingType",
+					}}
+					tUnit={{
+						value: tabletPaddingType,
+						label: "tabletPaddingType",
+					}}
+					deviceType={deviceType}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
 					}}
 				/>
 			</PanelBody>
@@ -565,9 +565,9 @@ const Settings = (props) => {
 					{getLayoutPanelBody()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
-					{getSpacingPanelBody()}
-					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
+					{getBorderPanelBody()}
+					{getSpacingPanelBody()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.advance}>
 				</InspectorTab>
