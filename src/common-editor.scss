@@ -35,12 +35,18 @@
 
 			/* Gutenberg Toggle Help CSS*/
 			.components-base-control__help {
-				margin-top: 4px;
+				margin-top: 10px;
 			}
 		}
 	}
 }
-
+/* UAG Help Notice CSS*/
+.uagb-inspector-tab .uag-control-help-notice {
+	margin-top: 10px;
+	font-size: 12px;
+	font-style: normal;
+	color: rgb(117, 117, 117);
+}
 /* Reset CSS*/
 .components-panel__body
 	.uagb-control__header

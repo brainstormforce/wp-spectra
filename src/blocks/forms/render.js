@@ -31,7 +31,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	const {
 		block_id,
 		submitButtonText,
@@ -83,7 +83,8 @@ const Render = ( props ) => {
 				className={ classnames(
 					'uagb-forms__outer-wrap',
 					`uagb-block-${ block_id }`,
-					`uagb-forms__${ buttonSize }-btn`
+					`uagb-forms__${ buttonSize }-btn`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
 				<form
