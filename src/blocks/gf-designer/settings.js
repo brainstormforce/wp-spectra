@@ -348,7 +348,7 @@ const Settings = ( props ) => {
 				{ fieldStyle == 'box' && (
 					<SelectControl
 						label={ __(
-							'Style',
+							'Border Style',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ fieldBorderStyle }
