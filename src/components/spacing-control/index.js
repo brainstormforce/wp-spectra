@@ -642,6 +642,7 @@ const SpacingControl = (props) => {
 					<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
 				</div>
 			</div>
+			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 		</div>
 	);
 };

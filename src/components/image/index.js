@@ -66,6 +66,7 @@ const UAGImage = (props) => {
 						{removeImageLabel}
 					</Button>
 				)}
+				{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 			</div>
 		</BaseControl>
 	);
