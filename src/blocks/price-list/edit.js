@@ -19,7 +19,53 @@ const UAGBRestaurantMenu = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
+		const {
+			imgVrPadding,
+			imgHrPadding,
+			contentVrPadding,
+			contentHrPadding,
+			contentPaddingTop,
+			contentPaddingRight,
+			contentPaddingBottom,
+			contentPaddingLeft,
+			imgPaddingTop,
+			imgPaddingRight,
+			imgPaddingBottom,
+			imgPaddingLeft,
+		} = props.attributes;
 
+		if (imgVrPadding) {
+			if (!imgPaddingTop) {
+				props.setAttributes({ imgPaddingTop: imgVrPadding });
+			}
+			if (!imgPaddingBottom) {
+				props.setAttributes({ imgPaddingBottom: imgVrPadding });
+			}
+		}
+		if (imgHrPadding) {
+			if (!imgPaddingRight) {
+				props.setAttributes({ imgPaddingRight: imgHrPadding });
+			}
+			if (!imgPaddingLeft) {
+				props.setAttributes({ imgPaddingLeft: imgHrPadding });
+			}
+		}
+		if (contentVrPadding) {
+			if (!contentPaddingTop) {
+				props.setAttributes({ contentPaddingTop: contentVrPadding });
+			}
+			if (!contentPaddingBottom) {
+				props.setAttributes({ contentPaddingBottom: contentVrPadding });
+			}
+		}
+		if (contentHrPadding) {
+			if (!contentPaddingRight) {
+				props.setAttributes({ contentPaddingRight: contentHrPadding });
+			}
+			if (!contentPaddingLeft) {
+				props.setAttributes({ contentPaddingLeft: contentHrPadding });
+			}
+		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(

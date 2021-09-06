@@ -121,6 +121,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -145,6 +147,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -169,6 +173,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -227,6 +233,7 @@ const MultiButtonsControl = (props) => {
 					</div>
 				</div>
 				{output[deviceType] ? output[deviceType] : output.Desktop}
+				{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 			</div>
 		);
 	}
@@ -260,11 +267,14 @@ const MultiButtonsControl = (props) => {
 						aria-pressed={data.value === option.value}
 						onClick={() => onClickHandler(option.value)}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
 				))}
 			</ButtonGroup>
+			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 		</div>
 	);
 };
