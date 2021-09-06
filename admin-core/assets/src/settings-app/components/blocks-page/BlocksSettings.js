@@ -24,7 +24,7 @@ function BlocksSettings() {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />
 	} );
 
-	const categories = [{'All': 'all'},{'Creative':'creative'},{'Forms':'forms'},{'Content':'content'},{'SEO':'seo'},{'Post':'post'}];
+	const categories = ['all','creative','forms','content','seo','post'];
 
 	const setCategory = ( data ) => {
 		setcheckCategory(data);
@@ -101,10 +101,10 @@ function BlocksSettings() {
 				{ categories.map( ( cat ) => (
 					<NormalButton
 						buttonText={ __(
-							Object.keys(cat),
+							cat,
 							'ultimate-addons-for-gutenberg'
 						) }
-						onClick={() => setCategory(Object.values(cat)) }
+						onClick={() => setCategory(cat) } 
 					/>
 				))}
 				<div className="uag-bulk-blocks-action-btn">
