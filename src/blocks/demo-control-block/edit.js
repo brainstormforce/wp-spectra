@@ -312,6 +312,7 @@ class UAGBInlineNoticeEdit extends Component {
 							titleColor: value,
 						})
 					}
+					help={__("The aim is to provide greater control as well as uniformity in the way we display button elements.", "ultimate-addons-for-gutenberg")}
 				/>
 			);
 			let tabOutputHover = (
@@ -381,6 +382,7 @@ class UAGBInlineNoticeEdit extends Component {
 						</PanelBody>
 						<PanelBody title="Alignment" initialOpen={false}>
 							<MultiButtonsControl
+							help={__("The aim is to provide greater control as well as uniformity in the way we display button elements.", "ultimate-addons-for-gutenberg")}
 								setAttributes={setAttributes}
 								label={__(
 									"Alignment",
@@ -465,8 +467,10 @@ class UAGBInlineNoticeEdit extends Component {
 									value: paddingUnit,
 									label: "paddingUnit",
 								}}
+								help={__("The aim is to provide greater control as well as uniformity in the way we display button elements.", "ultimate-addons-for-gutenberg")}
 							/>
 							<ResponsiveSlider
+							help={__("The aim is to provide greater control as well as uniformity in the way we display button elements.", "ultimate-addons-for-gutenberg")}
 								label={__(
 									"Responsive Slider",
 									"ultimate-addons-for-gutenberg"
@@ -897,6 +901,7 @@ class UAGBInlineNoticeEdit extends Component {
 						</PanelBody>
 						<PanelBody title="Spacing" initialOpen={false}>
 							<SpacingControl
+							help={__("The aim is to provide greater control as well as uniformity in the way we display button elements.", "ultimate-addons-for-gutenberg")}
 								{...this.props}
 								label={__(
 									"Padding",
