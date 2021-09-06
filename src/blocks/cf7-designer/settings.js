@@ -23,6 +23,7 @@ import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
+	Placeholder,
 } from "@wordpress/components";
 
 const Settings = (props) => {
@@ -349,16 +350,32 @@ const Settings = (props) => {
 			/>
 		</>
 	);
-	const generalSettings = (
-		<PanelBody title={__("General", "ultimate-addons-for-gutenberg")}>
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		const { setAttributes } = props;
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
+
+	const generalSettings = (			
+		<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } >
 			<SelectControl
-				label={__("Select Form", "ultimate-addons-for-gutenberg")}
-				value={formId}
-				onChange={onSelectForm}
-				options={uagb_blocks_info.cf7_forms}
-			/>
-		</PanelBody>
-	);
+				label={ __( "Select Form",'ultimate-addons-for-gutenberg' ) }
+				value={ formId }
+				onChange={ onSelectForm }
+				options={ uagb_blocks_info.cf7_forms }
+			/>												
+		</PanelBody>			
+	)
 
 	const fieldSetting = (
 		<PanelBody
@@ -1463,19 +1480,6 @@ const Settings = (props) => {
 			/>
 		</PanelBody>
 	);
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectForm = (id) => {
-		if (!id) {
-			setAttributes({ isHtml: false });
-			setAttributes({ formId: null });
-			return;
-		}
-
-		setAttributes({ isHtml: false });
-		setAttributes({ formId: id });
-	};
 
 	return (
 		<Suspense fallback={lazyLoader()}>
