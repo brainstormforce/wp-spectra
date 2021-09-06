@@ -8,6 +8,7 @@
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body {
   /* Gutenberg DatePicker CSS */
+  /* Gutenberg Toggle Help CSS*/
 }
 
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body > .components-base-control {
@@ -30,6 +31,18 @@
 
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-datetime .components-datetime__buttons .components-button:focus:not(:disabled) {
   box-shadow: unset;
+}
+
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-base-control__help {
+  margin-top: 10px;
+}
+
+/* UAG Help Notice CSS*/
+.uagb-inspector-tab .uag-control-help-notice {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: normal;
+  color: #757575;
 }
 
 /* Reset CSS*/
@@ -390,10 +403,6 @@ button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disa
   background-color: transparent;
 }
 
-.components-button.uagb-rm-btn {
-  margin-left: 10px;
-}
-
 [class^="fipicon-"] {
   speak: none;
   font-style: normal;
@@ -617,7 +626,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
   margin-left: 5px;
 }
 
-.components-base-control
+.components-panel__body .components-base-control
 .uagb-control__header
 .uagb-range-control-responsive
 .uagb-responsive-tabs {
@@ -646,45 +655,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
   width: 17px;
   margin-left: 0px;
   margin-top: 6px;
-}
-
-.uagb-bg-image {
-  border-radius: 2px;
-  background-color: #f0f0f0;
-  min-height: 90px;
-  padding: 8px 0;
-  text-align: center;
-  display: block;
-  width: 100%;
-  transition: all 0.1s ease-out;
-  box-shadow: 0 0 0 0 #0085ba;
-  margin-top: 10px;
-}
-
-.uagb-bg-image button.components-button.is-secondary {
-  margin-top: 20px;
-  margin-right: 30px;
-}
-
-.uagb-bg-image button.components-button.uagb-rm-btn.is-link.is-destructive {
-  margin-top: 18px;
-}
-
-.uagb-bg-image .components-button:focus:not(:disabled) {
-  box-shadow: 0 0;
-  color: 0 0;
-}
-
-.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),
-.components-button.is-tertiary:hover:not(:disabled) {
-  box-shadow: 0 0;
-  color: 0 0;
-}
-
-.uagb-bg-image .components-button.is-secondary,
-.components-button.is-tertiary {
-  box-shadow: 0 0;
-  color: 0 0;
 }
 
 .interface-interface-skeleton__sidebar

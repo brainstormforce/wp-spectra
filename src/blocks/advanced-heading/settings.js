@@ -214,7 +214,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={__(
-						"Heading Bottom Spacing (px)",
+						"Bottom Spacing (px)",
 						"ultimate-addons-for-gutenberg"
 					)}
 					setAttributes={setAttributes}
@@ -453,7 +453,7 @@ const Settings = ( props ) => {
 			{ seperatorStyle !== 'none' && (
 				<Range
 					label={__(
-						"Separator Bottom Spacing (px)",
+						"Bottom Spacing (px)",
 						"ultimate-addons-for-gutenberg"
 					)}
 					setAttributes={setAttributes}

@@ -1,7 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { __ } from '@wordpress/i18n';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -23,6 +23,79 @@ const UAGBCF7 = ( props ) => {
 			'uagb-cf7-styler-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const { attributes, setAttributes } = props;
+		const {
+			msgVrPadding,
+			msgHrPadding,
+			messageTopPaddingDesktop,
+			messageBottomPaddingDesktop,
+			messageRightPaddingDesktop,
+			messageLeftPaddingDesktop,
+			buttonVrPadding,
+			buttonHrPadding,
+			buttonTopPaddingDesktop,
+			buttonBottomPaddingDesktop,
+			buttonRightPaddingDesktop,
+			buttonLeftPaddingDesktop,
+			fieldVrPadding,
+			fieldHrPadding,
+			fieldTopPaddingDesktop,
+			fieldBottomPaddingDesktop,
+			fieldRightPaddingDesktop,
+			fieldLeftPaddingDesktop,
+		} = attributes;
+
+		if (msgVrPadding) {
+			if (!messageTopPaddingDesktop) {
+				setAttributes({ messageTopPaddingDesktop: msgVrPadding });
+			}
+			if (!messageBottomPaddingDesktop) {
+				setAttributes({ messageBottomPaddingDesktop: msgVrPadding });
+			}
+		}
+		if (msgHrPadding) {
+			if (!messageRightPaddingDesktop) {
+				setAttributes({ messageRightPaddingDesktop: msgHrPadding });
+			}
+			if (!messageLeftPaddingDesktop) {
+				setAttributes({ messageLeftPaddingDesktop: msgHrPadding });
+			}
+		}
+
+		if (buttonVrPadding) {
+			if (!buttonTopPaddingDesktop) {
+				setAttributes({ buttonTopPaddingDesktop: buttonVrPadding });
+			}
+			if (!buttonBottomPaddingDesktop) {
+				setAttributes({ buttonBottomPaddingDesktop: buttonVrPadding });
+			}
+		}
+		if (buttonHrPadding) {
+			if (!buttonRightPaddingDesktop) {
+				setAttributes({ buttonRightPaddingDesktop: buttonHrPadding });
+			}
+			if (!buttonLeftPaddingDesktop) {
+				setAttributes({ buttonLeftPaddingDesktop: buttonHrPadding });
+			}
+		}
+
+		if (fieldVrPadding) {
+			if (!fieldTopPaddingDesktop) {
+				setAttributes({ fieldTopPaddingDesktop: fieldVrPadding });
+			}
+			if (!fieldBottomPaddingDesktop) {
+				setAttributes({ fieldBottomPaddingDesktop: fieldVrPadding });
+			}
+		}
+		if (fieldHrPadding) {
+			if (!fieldRightPaddingDesktop) {
+				setAttributes({ fieldRightPaddingDesktop: fieldHrPadding });
+			}
+			if (!fieldLeftPaddingDesktop) {
+				setAttributes({ fieldLeftPaddingDesktop: fieldHrPadding });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

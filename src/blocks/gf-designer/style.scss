@@ -56,7 +56,7 @@
 	position: relative;
 }
 
-.uagb-gf-styler__check-style-enabled .uag-gf-select-custom::after {
+.uagb-gf-styler__check-style-enabled .uag-gf-select-custom:after {
 	position: absolute;
 	top: 45%;
 	right: 0.5em;
@@ -76,19 +76,19 @@
 	vertical-align: middle;
 }
 
-.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label::before {
+.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label:before {
 	box-shadow: inset 0 0 0 4px #fafafa;
 }
 
-.uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
 
-.uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"]:checked + label::before {
+.uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"]:checked + label:before {
 	font-weight: 700;
 }
 
@@ -112,10 +112,10 @@
 	width: 100% !important;
 }
 
-.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="checkbox"]:checked + label::before,
-.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="radio"]:checked + label::before,
-.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="checkbox"] + label::before,
-.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="radio"] + label::before {
+.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="checkbox"]:checked + label:before,
+.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="radio"]:checked + label:before,
+.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="checkbox"] + label:before,
+.uagb-gf-styler__check-style-enabled .gform_wrapper input[type="radio"] + label:before {
 	-webkit-box-sizing: content-box !important;
 	-moz-box-sizing: content-box !important;
 	box-sizing: content-box !important;
@@ -156,15 +156,15 @@
 	font-size: 13px;
 }
 
-.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	width: 10px;
 	height: 10px;
 }
 
-.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uag-gf-input-size-xs .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	font-size: -webkit-calc(10px / 1.2);
 	font-size: calc(10px / 1.2);
 }
@@ -194,15 +194,15 @@
 	font-size: 15px;
 }
 
-.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	width: 12px;
 	height: 12px;
 }
 
-.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uag-gf-input-size-sm .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	font-size: -webkit-calc(12px / 1.2);
 	font-size: calc(12px / 1.2);
 }
@@ -232,15 +232,15 @@
 	font-size: 16px;
 }
 
-.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	width: 15px;
 	height: 15px;
 }
 
-.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uag-gf-input-size-md .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	font-size: -webkit-calc(15px / 1.2);
 	font-size: calc(15px / 1.2);
 }
@@ -270,15 +270,15 @@
 	font-size: 18px;
 }
 
-.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	width: 20px;
 	height: 20px;
 }
 
-.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uag-gf-input-size-lg .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	font-size: -webkit-calc(20px / 1.2);
 	font-size: calc(20px / 1.2);
 }
@@ -308,15 +308,15 @@
 	font-size: 20px;
 }
 
-.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label::before,
-.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before,
-.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label::before {
+.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before,
+.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before,
+.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"] + label:before {
 	width: 25px;
 	height: 25px;
 }
 
-.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"]:checked + label::before {
+.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uag-gf-input-size-xl .uagb-gf-styler__check-style-enabled .ginput_container_consent input[type="checkbox"]:checked + label:before {
 	font-size: -webkit-calc(25px / 1.2);
 	font-size: calc(25px / 1.2);
 }
@@ -339,7 +339,7 @@
 	padding: 0 0 0 0;
 }
 
-.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label::before {
+.uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"] + label:before {
 	-webkit-border-radius: 100%;
 	border-radius: 100%;
 }
@@ -428,9 +428,9 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	display: none;
 }
 
-.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_checkbox .gfield_checkbox input[type="checkbox"] + label::before,
-.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_radio .gfield_radio input[type="radio"] + label::before,
-.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_consent input[type="checkbox"] + label::before {
+.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_checkbox .gfield_checkbox input[type="checkbox"] + label:before,
+.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_radio .gfield_radio input[type="radio"] + label:before,
+.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_consent input[type="checkbox"] + label:before {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 10px;
@@ -438,8 +438,8 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	content: "";
 }
 
-.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_checkbox .gfield_checkbox input[type="checkbox"]:checked + label::before,
-.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_consent input[type="checkbox"]:checked + label::before {
+.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_checkbox .gfield_checkbox input[type="checkbox"]:checked + label:before,
+.uagb-gf-styler__check-style-enabled .gform_body .ginput_container_consent input[type="checkbox"]:checked + label:before {
 	line-height: 1.2;
 	content: "\2714";
 }

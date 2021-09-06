@@ -173,18 +173,18 @@ const Settings = (props) => {
 					className="uagb-multi-button-alignment-control"
 					options={[
 						{
-							value: "simple",
-							label: "Classic",
-							tooltip: __(
-								"Classic",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
 							value: "modern",
 							label: "Modern",
 							tooltip: __(
 								"Modern",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							value: "simple",
+							label: "Classic",
+							tooltip: __(
+								"Classic",
 								"ultimate-addons-for-gutenberg"
 							),
 						},
@@ -195,7 +195,7 @@ const Settings = (props) => {
 				{"simple" === layout && (
 					<Range
 						label={__(
-							"Highlight width",
+							"Border Width",
 							"ultimate-addons-for-gutenberg"
 						)}
 						value={highlightWidth}
@@ -207,57 +207,38 @@ const Settings = (props) => {
 						displayUnit={false}
 					/>
 				)}
-				<SelectControl
-					label={__("Title Tag")}
-					value={headingTag}
-					onChange={(value) => setAttributes({ headingTag: value })}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Title Tag",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: headingTag,
+						label: "headingTag",
+					}}
 					options={[
-						{
-							value: "h1",
-							label: __("H1", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h2",
-							label: __("H2", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h3",
-							label: __("H3", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h4",
-							label: __("H4", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h5",
-							label: __("H5", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "h6",
-							label: __("H6", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "span",
-							label: __("span", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "p",
-							label: __("p", "ultimate-addons-for-gutenberg"),
-						},
+						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
+						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
+						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
+						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
+						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
+						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
+						{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg")	},
+						{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
 					]}
 				/>
-				<SelectControl
+				<MultiButtonsControl
+					setAttributes={setAttributes}
 					label={__(
 						"Notice Display",
 						"ultimate-addons-for-gutenberg"
 					)}
+					data={{
+						value: noticeDismiss,
+						label: "noticeDismiss",
+					}}
 					options={noticeDismissOptions}
-					value={noticeDismiss}
-					onChange={(value) =>
-						setAttributes({
-							noticeDismiss: value,
-						})
-					}
 				/>
 				{noticeDismiss && (
 					<>
@@ -312,7 +293,7 @@ const Settings = (props) => {
 				/>
 				<AdvancedPopColorControl
 					label={__(
-						"Highlight Color",
+						"Border Color",
 						"ultimate-addons-for-gutenberg"
 					)}
 					colorValue={noticeColor ? noticeColor : ""}
