@@ -1225,7 +1225,7 @@ const UAGBPostCarousel = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Html Tag",
+						"HTML Tag",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
