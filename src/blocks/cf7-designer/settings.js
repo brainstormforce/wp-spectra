@@ -354,7 +354,6 @@ const Settings = (props) => {
 	 * Event to set Image as while adding.
 	 */
 	const onSelectForm = ( id ) => {
-		const { setAttributes } = props;
 		if ( ! id ) {
 			setAttributes( { isHtml: false } );
 			setAttributes( { formId: null } );
