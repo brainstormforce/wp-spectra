@@ -23,7 +23,6 @@ import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
-	Placeholder,
 } from "@wordpress/components";
 
 const Settings = (props) => {
