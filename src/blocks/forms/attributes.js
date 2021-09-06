@@ -391,5 +391,149 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	
+	successMessageBorderRadius:{
+		type: 'string'
+	},
+	successMessageHoverBorderColor:{
+		type: 'string'
+	},
+	failedMessageBorderRadius:{
+		type: 'string'
+	},
+	failedMessageHoverBorderColor:{
+		type: 'string'
+	},
+	paddingBtnTop:{
+		type: 'number'
+	},
+	paddingBtnRight:{
+		type: 'number'
+	},
+	paddingBtnBottom:{
+		type: 'number'
+	},
+	paddingBtnLeft:{
+		type: 'number'
+	},
+	paddingBtnTopTablet:{
+		type: 'number'
+	},
+	paddingBtnRightTablet:{
+		type: 'number'
+	},
+	paddingBtnBottomTablet:{
+		type: 'number'
+	},
+	paddingBtnLeftTablet:{
+		type: 'number'
+	},
+	paddingBtnTopMobile:{
+		type: 'number'
+	},
+	paddingBtnRightMobile:{
+		type: 'number'
+	},
+	paddingBtnBottomMobile:{
+		type: 'number'
+	},
+	paddingBtnLeftMobile:{
+		type: 'number'
+	},
+	paddingBtnUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	mobilePaddingBtnUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	tabletPaddingBtnUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	paddingspacingLink:{
+		type: 'boolean',
+		default: false,
+	},
+	submitTextTransform:{
+		type: 'string'
+	},
+	submitTextDecoration:{
+		type: 'string'
+	},
+	labelTextTransform:{
+		type: 'string'
+	},
+	labelTextDecoration:{
+		type: 'string'
+	},
+	inputTransform:{
+		type: 'string'
+	},
+	inputDecoration:{
+		type: 'string'
+	},
+	fieldGapType:{
+		type: 'string',
+		default: 'px'
+	},
+	paddingFieldTop:{
+		type: 'number'
+	},
+	paddingFieldRight:{
+		type: 'number'
+	},
+	paddingFieldBottom:{
+		type: 'number'
+	},
+	paddingFieldLeft:{
+		type: 'number'
+	},
+	paddingFieldTopTablet:{
+		type: 'number'
+	},
+	paddingFieldRightTablet:{
+		type: 'number'
+	},
+	paddingFieldBottomTablet:{
+		type: 'number'
+	},
+	paddingFieldLeftTablet:{
+		type: 'number'
+	},
+	paddingFieldTopMobile:{
+		type: 'number'
+	},
+	paddingFieldRightMobile:{
+		type: 'number'
+	},
+	paddingFieldBottomMobile:{
+		type: 'number'
+	},
+	paddingFieldLeftMobile:{
+		type: 'number'
+	},
+	paddingFieldUnit:{
+		type: 'string',
+		default: 'px'
+	},
+	paddingFieldUnitmobile:{
+		type: 'string',
+		default: 'px'
+	},
+	paddingFieldUnitTablet:{
+		type: 'string',
+		default: 'px'
+	},
+	paddingFieldLink:{
+		type: 'boolean',
+		default: false
+	},
+	toggleSizeType:{
+		type: 'string',
+		default: 'px'
+	},
+
 };
 export default attributes;
