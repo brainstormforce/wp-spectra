@@ -34,7 +34,15 @@
 }
 
 .block-editor-block-inspector .uagb-inspector-tab .components-panel__body .components-base-control__help {
-  margin-top: 4px;
+  margin-top: 10px;
+}
+
+/* UAG Help Notice CSS*/
+.uagb-inspector-tab .uag-control-help-notice {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: normal;
+  color: #757575;
 }
 
 /* Reset CSS*/
