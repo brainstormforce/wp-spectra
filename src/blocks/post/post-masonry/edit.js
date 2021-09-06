@@ -516,12 +516,16 @@
 					min={ 1 }
 					max={ 100 }
 				/>
-				<SelectControl
-					label={ __( 'Order By' ) }
-					value={ orderBy }
-					onChange={ ( value ) =>
-						setAttributes( { orderBy: value } )
-					}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Order By',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: orderBy,
+						label: "orderBy",
+					}}
 					options={ [
 						{
 							value: 'date',
@@ -553,10 +557,16 @@
 						},
 					] }
 				/>
-				<SelectControl
-					label={ __( 'Order' ) }
-					value={ order }
-					onChange={ ( value ) => setAttributes( { order: value } ) }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Order',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: order,
+						label: "order",
+					}}
 					options={ [
 						{
 							value: 'desc',
@@ -907,7 +917,7 @@
 									setAttributes({ paginationBgHoverColor: value })
 								}
 								/></>}
-								disableBottomSeparator={true}
+								disableBottomSeparator={false}
 							/>
 							<Border
 								setAttributes={setAttributes}
@@ -1010,7 +1020,7 @@
 				{ displayPostImage == true && (
 					<SelectControl
 						label={ __(
-							'Image Sizes',
+							'Sizes',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ imgSize }
@@ -1021,32 +1031,33 @@
 					/>
 				) }
 				{ displayPostImage == true && (
-					<SelectControl
-						label={ __(
-							'Image Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { imgPosition: value } )
-						}
-						options={ [
-							{
-								value: 'top',
-								label: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'background',
-								label: __(
-									'Background',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-					/>
+					<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Position',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: imgPosition,
+						label: "imgPosition",
+					}}
+					options={ [
+						{
+							value: 'top',
+							label: __(
+								'Top',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'background',
+							label: __(
+								'Background',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
 				) }
 				{ displayPostImage == true && imgPosition == 'background' && (
 					<ToggleControl
@@ -1358,8 +1369,10 @@
 	};
 
 	const imageStyle = () => {
-	return displayPostImage == true && imgPosition == 'background' && (
-		<>
+	return <PanelBody
+				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 			<AdvancedPopColorControl
 				label={__(
 					'Background Overlay Color',
@@ -1400,8 +1413,7 @@
 					label: "imageBottomSpaceUnit",
 				}}
 			/>
-		</>
-	)
+		</PanelBody>
 	};
 	const titleStyle = () => {
 	return  <PanelBody
@@ -1411,7 +1423,7 @@
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Html Tag",
+						"HTML Tag",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -1631,6 +1643,17 @@
 				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={excerptColor}
+					onColorChange={(value) =>
+						setAttributes({ excerptColor: value })
+					}
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1694,16 +1717,6 @@
 						value: excerptDecoration,
 						label: "excerptDecoration",
 					}}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						'Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={excerptColor}
-					onColorChange={(value) =>
-						setAttributes({ excerptColor: value })
-					}
 				/>
 				<Range
 					label={__(
@@ -2025,11 +2038,11 @@
 							)}
 							{ displayPostLink && (
 								readMoreLinkStyleSettings()
-							)}	
-							{ paginationSettings() }
+							)}
 							</>
 						)}
-						{displayPostImage && (
+						{ paginationSettings() }
+						{displayPostImage == true && imgPosition == 'background' && (
 							imageStyle() 
 						)}
 						{ spacingSettings() }

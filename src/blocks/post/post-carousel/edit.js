@@ -556,12 +556,16 @@ const UAGBPostCarousel = ( props ) => {
 						min={ 1 }
 						max={ 100 }
 					/>
-					<SelectControl
-						label={ __( 'Order By' ) }
-						value={ orderBy }
-						onChange={ ( value ) =>
-							setAttributes( { orderBy: value } )
-						}
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							'Order By',
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: orderBy,
+							label: "orderBy",
+						}}
 						options={ [
 							{
 								value: 'date',
@@ -593,10 +597,16 @@ const UAGBPostCarousel = ( props ) => {
 							},
 						] }
 					/>
-					<SelectControl
-						label={ __( 'Order' ) }
-						value={ order }
-						onChange={ ( value ) => setAttributes( { order: value } ) }
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							'Order',
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: order,
+							label: "order",
+						}}
 						options={ [
 							{
 								value: 'desc',
@@ -751,34 +761,35 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 100 }
 					max={ 5000 }
 				/>
-				<SelectControl
-					label={ __(
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
 						'Arrows & Dots Type',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ arrowDots }
-					onChange={ ( value ) =>
-						setAttributes( { arrowDots: value } )
-					}
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: arrowDots,
+						label: "arrowDots",
+					}}
 					options={ [
 						{
 							value: 'arrows',
 							label: __(
-								'Only Arrows',
+								'Arrows',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
 							value: 'dots',
 							label: __(
-								'Only Dots',
+								'Dots',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
 							value: 'arrows_dots',
 							label: __(
-								'Both Arrows & Dots',
+								'Both',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -809,7 +820,7 @@ const UAGBPostCarousel = ( props ) => {
 				{ displayPostImage == true && (
 					<SelectControl
 						label={ __(
-							'Image Sizes',
+							'Sizes',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ imgSize }
@@ -820,15 +831,16 @@ const UAGBPostCarousel = ( props ) => {
 					/>
 				) }
 				{ displayPostImage == true && (
-					<SelectControl
-						label={ __(
-							'Image Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { imgPosition: value } )
-						}
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
+							'Position',
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: imgPosition,
+							label: "imgPosition",
+						}}
 						options={ [
 							{
 								value: 'top',
@@ -1802,12 +1814,12 @@ const UAGBPostCarousel = ( props ) => {
 	};
 	const carouselStyle = () => {
 		return <PanelBody
-					title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Arrow', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
 					<Range
 						label={ __(
-							'Arrow Size',
+							'Size',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ arrowSize }
@@ -1825,7 +1837,7 @@ const UAGBPostCarousel = ( props ) => {
 					/>
 					<Range
 						label={ __(
-							'Arrow Border Size',
+							'Border Size',
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ arrowBorderSize }
@@ -1839,7 +1851,7 @@ const UAGBPostCarousel = ( props ) => {
 					/>
 					<Range
 						label={ __(
-							'Arrow Border Radius',
+							'Border Radius',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={setAttributes}
