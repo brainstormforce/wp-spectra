@@ -64,7 +64,7 @@ const Settings = ( props ) => {
 	const textColorControls = () => {
 		return (
 				<PanelBody
-					title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
 				>	
 					<UAGTabsControl
@@ -322,15 +322,9 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<h2>
-						{ __(
-							'List Item Link',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</h2>
 					<ToggleControl
 						label={ __(
-							'Disable Link',
+							'Link',
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ disableLink }
@@ -338,7 +332,7 @@ const Settings = ( props ) => {
 							setAttributes( { disableLink: ! disableLink } )
 						}
 					/>
-					{ ! disableLink && (
+					{ disableLink && (
 						<>
 							<p className="components-base-control__label">
 								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }

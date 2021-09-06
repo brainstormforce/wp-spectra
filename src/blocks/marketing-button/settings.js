@@ -212,7 +212,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Text Alignment",
+						"Alignment",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -255,7 +255,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Title Tag",
+						"Tag",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -374,7 +374,7 @@ const Settings = ( props ) => {
 	const titleSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<Range
@@ -1027,7 +1027,7 @@ const Settings = ( props ) => {
 						value: borderStyle,
 						label: "borderStyle",
 						title: __(
-							"Border Style",
+							"Style",
 							"ultimate-addons-for-gutenberg"
 						),
 					}}

@@ -350,8 +350,23 @@ const Settings = (props) => {
 			/>
 		</>
 	);
-	const generalSettings = (
-		<PanelBody title={__("General", "ultimate-addons-for-gutenberg")}>
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
+
+	const generalSettings = (			
+		<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } >
 			<SelectControl
 				label={ __(
 					'Select Form',
@@ -1509,19 +1524,6 @@ const Settings = (props) => {
 			/>
 		</PanelBody>
 	);
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectForm = ( id ) => {
-		if ( ! id ) {
-			setAttributes( { isHtml: false } );
-			setAttributes( { formId: null } );
-			return;
-		}
-		setAttributes( { isHtml: false } );
-		setAttributes( { formId: id } );
-	};
-	
 	return (
 		<Suspense fallback={lazyLoader()}>
 			<BlockControls key="controls">

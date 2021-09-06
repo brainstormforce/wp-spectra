@@ -1,7 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { __ } from '@wordpress/i18n';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
