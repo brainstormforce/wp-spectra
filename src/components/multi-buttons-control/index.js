@@ -121,6 +121,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -145,6 +147,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -169,6 +173,8 @@ const MultiButtonsControl = (props) => {
 							})
 						}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
@@ -260,6 +266,8 @@ const MultiButtonsControl = (props) => {
 						aria-pressed={data.value === option.value}
 						onClick={() => onClickHandler(option.value)}
 						aria-label={option.tooltip}
+						label={option.tooltip}
+						showTooltip={option.tooltip ? true : false}
 					>
 						{showIcons ? option.icon : option.label}
 					</Button>
