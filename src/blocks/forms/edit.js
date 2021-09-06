@@ -32,7 +32,53 @@ const UAGBFormsEdit = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		const {
+			vPaddingSubmit,
+			hPaddingSubmit,
+			vPaddingField,
+			hPaddingField,
+			paddingFieldTop,
+			paddingFieldRight,
+			paddingFieldBottom,
+			paddingFieldLeft,
+			paddingBtnTop,
+			paddingBtnRight,
+			paddingBtnBottom,
+			paddingBtnLeft,
+		} = props.attributes;
 
+		if (vPaddingSubmit) {
+			if (!paddingBtnTop) {
+				setAttributes({ paddingBtnTop: vPaddingSubmit });
+			}
+			if (!paddingBtnBottom) {
+				setAttributes({ paddingBtnBottom: vPaddingSubmit });
+			}
+		}
+		if (hPaddingSubmit) {
+			if (!paddingBtnRight) {
+				setAttributes({ paddingBtnRight: hPaddingSubmit });
+			}
+			if (!paddingBtnLeft) {
+				setAttributes({ paddingBtnLeft: hPaddingSubmit });
+			}
+		}
+		if (vPaddingField) {
+			if (!paddingFieldTop) {
+				setAttributes({ paddingFieldTop: vPaddingField });
+			}
+			if (!paddingFieldBottom) {
+				setAttributes({ paddingFieldBottom: vPaddingField });
+			}
+		}
+		if (hPaddingField) {
+			if (!paddingFieldRight) {
+				setAttributes({ paddingFieldRight: hPaddingField });
+			}
+			if (!paddingFieldLeft) {
+				setAttributes({ paddingFieldLeft: hPaddingField });
+			}
+		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
@@ -55,23 +101,6 @@ const UAGBFormsEdit = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );
-
-	useEffect( () => {
-		const { setAttributes } = props; // Assigning block_id in the attribute.
-
-		setAttributes( {
-			block_id: props.clientId.substr( 0, 8 ),
-		} ); // Pushing Style tag for this block css.
-
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-		const id = props.clientId;
-		window.addEventListener( 'load', renderReadyClasses( id ) );
-	}, [] );
 
 	const blockVariationPickerOnSelect = useCallback(
 		( nextVariation = props.defaultVariation ) => {
@@ -203,6 +232,12 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		getBlockVariations,
 		getDefaultBlockVariation,
 	} = select( 'core/blocks' );
+	const { __experimentalGetPreviewDeviceType = null } = select(
+		'core/edit-post'
+	);
+	const deviceType = __experimentalGetPreviewDeviceType
+		? __experimentalGetPreviewDeviceType()
+		: null;
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -223,6 +258,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 				? null
 				: getBlockVariations( props.name ),
 		replaceInnerBlocks,
+		deviceType
 	};
 } );
 

@@ -276,6 +276,7 @@ const AdvancedPopColorControl = (props) => {
 					)}
 				</div>
 			</div>
+			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 		</div>
 	);
 };
