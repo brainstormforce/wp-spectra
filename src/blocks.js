@@ -17,7 +17,7 @@ import "./blocks/section/block.js";
 import "./blocks/buttons/block.js";
 import "./blocks/buttons-child/block.js";
 import "./blocks/info-box/block.js";
-// import "./blocks/testimonial/block.js";
+import "./blocks/testimonial/block.js";
 import "./blocks/team/block.js";
 import "./blocks/social-share/block.js";
 import "./blocks/social-share-child/block.js";
