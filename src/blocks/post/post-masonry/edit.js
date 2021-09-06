@@ -917,7 +917,7 @@
 									setAttributes({ paginationBgHoverColor: value })
 								}
 								/></>}
-								disableBottomSeparator={false}
+								disableBottomSeparator={true}
 							/>
 							<Border
 								setAttributes={setAttributes}
@@ -2006,7 +2006,7 @@
 					setAttributes({ ctaBgHColor: value })
 				}
 				/></>}
-				disableBottomSeparator={false}
+				disableBottomSeparator={true}
 			/>								
 		</PanelBody>
 	);
