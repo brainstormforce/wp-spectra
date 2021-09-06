@@ -1031,50 +1031,47 @@
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				{displayPostImage == true && imgPosition == 'background' && (
-					<>
-						<AdvancedPopColorControl
-							label={__(
-								'Background Overlay Color',
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={bgOverlayColor}
-							onColorChange={(value) =>
-								setAttributes({ bgOverlayColor: value })
-							}
-						/> 
-						<Range
-							label={__(
-								'Overlay Opacity',
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={overlayOpacity}
-							onChange={(value) =>
-								setAttributes({ overlayOpacity: value })
-							}
-							min={0}
-							max={100}
-						/>
-						<Range
-							label={__(
-								'Bottom Spacing',
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={imageBottomSpace}
-							onChange={(value) =>
-								setAttributes({ imageBottomSpace: value })
-							}
-							min={0}
-							max={50}
-							unit={{
-								value: imageBottomSpaceUnit,
-								label: "imageBottomSpaceUnit",
-							}}
-						/>
-					</>
-				)}
+				
+				<AdvancedPopColorControl
+					label={__(
+						'Background Overlay Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={bgOverlayColor}
+					onColorChange={(value) =>
+						setAttributes({ bgOverlayColor: value })
+					}
+				/> 
+				<Range
+					label={__(
+						'Overlay Opacity',
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={overlayOpacity}
+					onChange={(value) =>
+						setAttributes({ overlayOpacity: value })
+					}
+					min={0}
+					max={100}
+				/>
+				<Range
+					label={__(
+						'Bottom Spacing',
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={imageBottomSpace}
+					onChange={(value) =>
+						setAttributes({ imageBottomSpace: value })
+					}
+					min={0}
+					max={50}
+					unit={{
+						value: imageBottomSpaceUnit,
+						label: "imageBottomSpaceUnit",
+					}}
+				/>
 			</PanelBody>
 	};
 
@@ -1707,9 +1704,9 @@
 								),
 							},
 							{
-								name: "hover",
+								name: "active",
 								title: __(
-									"Hover",
+									"Active",
 									"ultimate-addons-for-gutenberg"
 								),
 							},
@@ -1751,7 +1748,7 @@
 						)}
 						</>
 						}
-						hover={<>
+						active={<>
 						<AdvancedPopColorControl
 							label={__(
 							'Text Color',
@@ -1881,7 +1878,7 @@
 							{ postPagination && (
 								paginationStyle()
 							)}
-							{displayPostImage && (
+							{displayPostImage == true && imgPosition == 'background' && (
 								imageStyle() 
 							)}
 							{ spacingSettings() }
