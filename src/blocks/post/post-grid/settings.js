@@ -415,12 +415,16 @@
 					max={500}
 					displayUnit = { false }
 				/>
-				<SelectControl
-					label={ __( 'Order By' ) }
-					value={ orderBy }
-					onChange={ ( value ) =>
-						setAttributes( { orderBy: value } )
-					}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Order By',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: orderBy,
+						label: "orderBy",
+					}}
 					options={ [
 						{
 							value: 'date',
@@ -452,10 +456,16 @@
 						},
 					] }
 				/>
-				<SelectControl
-					label={ __( 'Order' ) }
-					value={ order }
-					onChange={ ( value ) => setAttributes( { order: value } ) }
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						'Order',
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: order,
+						label: "order",
+					}}
 					options={ [
 						{
 							value: 'desc',
@@ -656,15 +666,16 @@
 					/>
 				) }
 				{ displayPostImage == true && (
-					<SelectControl
-						label={ __(
+					<MultiButtonsControl
+						setAttributes={setAttributes}
+						label={__(
 							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ imgPosition }
-						onChange={ ( value ) =>
-							setAttributes( { imgPosition: value } )
-						}
+							"ultimate-addons-for-gutenberg"
+						)}
+						data={{
+							value: imgPosition,
+							label: "imgPosition",
+						}}
 						options={ [
 							{
 								value: 'top',
@@ -720,7 +731,7 @@
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Html Tag",
+							"HTML Tag",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
@@ -1016,51 +1027,57 @@
 	};
 
 	const imageStyle = () => {
-	return displayPostImage == true && imgPosition == 'background' && (
-		<>
-			<AdvancedPopColorControl
-				label={__(
-					'Background Overlay Color',
-					"ultimate-addons-for-gutenberg"
+	return <PanelBody
+				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+				{displayPostImage == true && imgPosition == 'background' && (
+					<>
+						<AdvancedPopColorControl
+							label={__(
+								'Background Overlay Color',
+								"ultimate-addons-for-gutenberg"
+							)}
+							colorValue={bgOverlayColor}
+							onColorChange={(value) =>
+								setAttributes({ bgOverlayColor: value })
+							}
+						/> 
+						<Range
+							label={__(
+								'Overlay Opacity',
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={overlayOpacity}
+							onChange={(value) =>
+								setAttributes({ overlayOpacity: value })
+							}
+							min={0}
+							max={100}
+						/>
+						<Range
+							label={__(
+								'Bottom Spacing',
+								"ultimate-addons-for-gutenberg"
+							)}
+							setAttributes={setAttributes}
+							value={imageBottomSpace}
+							onChange={(value) =>
+								setAttributes({ imageBottomSpace: value })
+							}
+							min={0}
+							max={50}
+							unit={{
+								value: imageBottomSpaceUnit,
+								label: "imageBottomSpaceUnit",
+							}}
+						/>
+					</>
 				)}
-				colorValue={bgOverlayColor}
-				onColorChange={(value) =>
-					setAttributes({ bgOverlayColor: value })
-				}
-			/> 
-			<Range
-				label={__(
-					'Overlay Opacity',
-					"ultimate-addons-for-gutenberg"
-				)}
-				setAttributes={setAttributes}
-				value={overlayOpacity}
-				onChange={(value) =>
-					setAttributes({ overlayOpacity: value })
-				}
-				min={0}
-				max={100}
-			/>
-			<Range
-				label={__(
-					'Bottom Spacing',
-					"ultimate-addons-for-gutenberg"
-				)}
-				setAttributes={setAttributes}
-				value={imageBottomSpace}
-				onChange={(value) =>
-					setAttributes({ imageBottomSpace: value })
-				}
-				min={0}
-				max={50}
-				unit={{
-					value: imageBottomSpaceUnit,
-					label: "imageBottomSpaceUnit",
-				}}
-			/>
-		</>
-	)
+			</PanelBody>
 	};
+
 	const titleStyle = () => {
 	return  <PanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
@@ -1268,70 +1285,6 @@
 				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: excerptLoadGoogleFonts,
-						label: 'excerptLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: excerptFontFamily,
-						label: 'excerptFontFamily',
-					} }
-					fontWeight={ {
-						value: excerptFontWeight,
-						label: 'excerptFontWeight',
-					} }
-					fontSubset={ {
-						value: excerptFontSubset,
-						label: 'excerptFontSubset',
-					} }
-					fontSizeType={ {
-						value: excerptFontSizeType,
-						label: 'excerptFontSizeType',
-					} }
-					fontSize={ {
-						value: excerptFontSize,
-						label: 'excerptFontSize',
-					} }
-					fontSizeMobile={ {
-						value: excerptFontSizeMobile,
-						label: 'excerptFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: excerptFontSizeTablet,
-						label: 'excerptFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: excerptLineHeightType,
-						label: 'excerptLineHeightType',
-					} }
-					lineHeight={ {
-						value: excerptLineHeight,
-						label: 'excerptLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: excerptLineHeightMobile,
-						label: 'excerptLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: excerptLineHeightTablet,
-						label: 'excerptLineHeightTablet',
-					} }
-					transform={{
-						value: excerptTransform,
-						label: "excerptTransform",
-					}}
-					decoration={{
-						value: excerptDecoration,
-						label: "excerptDecoration",
-					}}
-				/>
 				<AdvancedPopColorControl
 					label={__(
 						'Color',
@@ -1341,7 +1294,70 @@
 					onColorChange={(value) =>
 						setAttributes({ excerptColor: value })
 					}
-				/>
+				/><TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: excerptLoadGoogleFonts,
+					label: 'excerptLoadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: excerptFontFamily,
+					label: 'excerptFontFamily',
+				} }
+				fontWeight={ {
+					value: excerptFontWeight,
+					label: 'excerptFontWeight',
+				} }
+				fontSubset={ {
+					value: excerptFontSubset,
+					label: 'excerptFontSubset',
+				} }
+				fontSizeType={ {
+					value: excerptFontSizeType,
+					label: 'excerptFontSizeType',
+				} }
+				fontSize={ {
+					value: excerptFontSize,
+					label: 'excerptFontSize',
+				} }
+				fontSizeMobile={ {
+					value: excerptFontSizeMobile,
+					label: 'excerptFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: excerptFontSizeTablet,
+					label: 'excerptFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: excerptLineHeightType,
+					label: 'excerptLineHeightType',
+				} }
+				lineHeight={ {
+					value: excerptLineHeight,
+					label: 'excerptLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: excerptLineHeightMobile,
+					label: 'excerptLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: excerptLineHeightTablet,
+					label: 'excerptLineHeightTablet',
+				} }
+				transform={{
+					value: excerptTransform,
+					label: "excerptTransform",
+				}}
+				decoration={{
+					value: excerptDecoration,
+					label: "excerptDecoration",
+				}}
+			/>
 				<Range
 					label={__(
 						'Bottom Spacing',
@@ -1637,9 +1653,6 @@
 	);
 	};
 	const paginationStyle = () => {
-		if ( true !== postPagination ) {
-			return;
-		}
 		return <PanelBody
 					title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
@@ -1863,8 +1876,10 @@
 								{ displayPostLink && (
 									readMoreLinkStyleSettings()
 								)}
-								{paginationStyle()}
 								</>
+							)}
+							{ postPagination && (
+								paginationStyle()
 							)}
 							{displayPostImage && (
 								imageStyle() 
