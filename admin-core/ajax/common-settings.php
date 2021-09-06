@@ -88,7 +88,7 @@ class CommonSettings extends AjaxBase {
 			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) ); // phpcs:ignore
 			wp_send_json_error( $response_data );
 		}
-		$activate = activate_plugin( $plugin_slug, ' ', false, true );
+		$activate = activate_plugin( 'astra-sites/astra-sites.php', ' ', false, true );
 
 		if ( is_wp_error( $activate ) ) {
 			wp_send_json_error(

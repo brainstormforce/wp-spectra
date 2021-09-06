@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useStateValue } from '@Utils/StateProvider';
 import apiFetch from '@wordpress/api-fetch';
-import { element } from 'prop-types';
 
 const blocksInfo = uag_react.blocks_info;
 
