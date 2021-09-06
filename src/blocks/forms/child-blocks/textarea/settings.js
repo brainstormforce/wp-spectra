@@ -3,9 +3,11 @@ import { __ } from '@wordpress/i18n';
 import {
 	PanelBody,
 	ToggleControl,
-	RangeControl,
 	TextControl,
 } from '@wordpress/components';
+import Range from "../../../../components/range/Range.js";
+import InspectorTabs from "../../../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "../../../../components/inspector-tabs/InspectorTab.js";
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -19,9 +21,7 @@ const Settings = ( props ) => {
 	const textareaInspectorControls = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
-				className="uagb__url-panel-body"
 			>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
@@ -42,16 +42,17 @@ const Settings = ( props ) => {
 						setAttributes( { placeholder: value } )
 					}
 				/>
-				<RangeControl
+				<Range
 					label={ __(
 						'Number of lines',
 						'ultimate-addons-for-gutenberg'
 					) }
+					setAttributes={setAttributes}
 					value={ rows }
 					onChange={ ( value ) => setAttributes( { rows: value } ) }
 					min={ 2 }
 					max={ 10 }
-					allowReset
+					displayUnit = {false}
 				/>
 			</PanelBody>
 		);
@@ -60,7 +61,13 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<InspectorControls>
-				{ textareaInspectorControls() }
+				<InspectorTabs tabs={["general", "advance"]}>
+					<InspectorTab {...UAGTabs.general}>
+					{ textareaInspectorControls() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}>
+					</InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 		</>
 	);
