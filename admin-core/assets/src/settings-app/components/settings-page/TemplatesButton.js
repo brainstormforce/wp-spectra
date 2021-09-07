@@ -12,7 +12,6 @@ function TemplatesButton() {
 	const [ enableTemplate, setenableStarterTemplate ] = useState(
 		options.enable_templates_button
 	);
-
 	const enableTemplatesButtonlabel =
 		globaldata.settings.enable_templates_button.fields
 			.enable_templates_button.label;

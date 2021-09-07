@@ -32,6 +32,12 @@ function UserInfoBox() {
 			'_blank'
 		);
 	};
+	const getStarterClick = () => {
+		window.open(
+			'https://ultimategutenberg.com',
+			'_blank'
+		);
+	};
 	const onGetSupportClick = () => {
 		window.open(
 			'https://ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
@@ -201,16 +207,17 @@ function UserInfoBox() {
 				</h1>
 				<p>
 					{ __(
-						'Thank you for choosing Ultimate Addons for Gutenberg! Start building stunning websites faster than ever before with the most comprehensive library of advanced and creative blocks.',
+						'Thank you for choosing Ultimate Addons for Gutenberg! Power up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! UAG is the most popular addon for Gutenberg available on WordPress.org.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
 				<NormalButton
 					buttonText={ __(
-						'Let\'s Get Started',
+						'Learn More',
 						'ultimate-addons-for-gutenberg'
 					) }
 					saving={ false }
+					onClick={ getStarterClick }
 				/>
 			</div>
 			<div className="uag-metabox uag-metabox__element">
@@ -245,7 +252,7 @@ function UserInfoBox() {
 				</h3>
 				<p>
 					{ __(
-						'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. It is a fully Gutenberg compatible theme and empowers your website with lots of customizations, features and functions without affecting the speed and performance! With Astra you can build blogs, business websites, ecommerce stores or offer online courses with ease.',
+						'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. You can pair UAG with Astra theme to extend your website building experience with Gutenberg. With Astra, you can build blogs, business websites, eCommerce stores or offer online courses with ease.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>

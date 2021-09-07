@@ -82,6 +82,12 @@ function AssetsGeneration( props ) {
 	const enableFileGenerationdesc =
 		globaldata.settings.enable_file_generation.fields.enable_file_generation
 			.desc;
+	const enableFileRegenerationlabel =
+		globaldata.settings.enable_file_regeneration.fields.enable_file_regeneration
+			.label;
+	const enableFileRegenerationdesc =
+		globaldata.settings.enable_file_regeneration.fields.enable_file_regeneration
+			.desc;
 
 	return (
 		<>
@@ -134,20 +140,8 @@ function AssetsGeneration( props ) {
 					</div>
 				</div>
 				<div className="uag-version-control__element">
-					<h3>
-						{ ' ' }
-						{ __(
-							'Assets Regeneration',
-							'ultimate-addons-for-gutenberg'
-						) }{ ' ' }
-					</h3>
-					<p>
-						{ ' ' }
-						{ __(
-							'You can regenerate your CSS & Javascript assets here.',
-							'ultimate-addons-for-gutenberg'
-						) }{ ' ' }
-					</p>
+					<h3>{ ReactHtmlParser( enableFileRegenerationlabel ) }</h3>
+					<p>{ ReactHtmlParser( enableFileRegenerationdesc ) }</p>
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={ __(

@@ -63,7 +63,6 @@ class GlobalSettings {
 				),
 			),
 			'enable_file_generation'             => array(
-				'title'  => __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_file_generation' => array(
 						'type'  => 'button',
@@ -71,7 +70,7 @@ class GlobalSettings {
 						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => sprintf(
 							/* translators: %1$s: link html start, %2$s: link html end*/
-							__( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page. Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know more.', 'ultimate-addons-for-gutenberg' ),
+							__( 'Ultimate Addons for Gutenberg by default loads the CSS & JS inline on the page. If you want to generate separate CSS & JS files for UAG blocks, enable this option. Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know the difference between generating CSS & JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ),
 							esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' )
 						),
 					),
@@ -81,17 +80,26 @@ class GlobalSettings {
 				'title' => __( 'Blocks Activation & Deactivation', 'ultimate-addons-for-gutenberg' ),
 			),
 			'enable_templates_button'            => array(
-				'title'  => __( 'Templates', 'ultimate-addons-for-gutenberg' ),
 				'fields' => array(
 					'enable_templates_button' => array(
 						'type'  => 'button',
 						'name'  => 'enable_templates_button',
 						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
-						'desc'  => __( 'Enabling this option will generate CSS & JS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS & JS inline on page.', 'ultimate-addons-for-gutenberg' ),
+						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library will be accessible with a UAG Templates button while editing the page/post. You can manage the visibility of the button with this option. ', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),
-
+			'enable_file_regeneration'             => array(
+				'fields' => array(
+					'enable_file_regeneration' => array(
+						'type'  => 'button',
+						'name'  => 'enable_file_regeneration',
+						'label' => __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ),
+						'desc'  => 
+							__( 'Facing issues with style, layout, color or any other designing try regenerating assets here. Use this option to regenerate CSS & Javascript assets.', 'ultimate-addons-for-gutenberg' )
+					),
+				),
+			),
 		);
 
 		$settings = apply_filters( 'uag_global_settings_data', $settings );

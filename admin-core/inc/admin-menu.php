@@ -198,6 +198,7 @@ class AdminMenu {
 				'logo_url'                  => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
 				'admin_url'                 => admin_url( 'admin.php' ),
 				'ajax_url'                  => admin_url( 'admin-ajax.php' ),
+				'wp_pages_url'                  => admin_url( 'post-new.php?post_type=page' ),
 				'home_slug'                 => $this->menu_slug,
 				'rollback_url'              => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
 				'blocks_info'               => $blocks_info,
