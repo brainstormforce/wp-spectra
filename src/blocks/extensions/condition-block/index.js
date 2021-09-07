@@ -156,17 +156,17 @@ const UserConditionOptions = ( props ) => {
 const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 	return (props) => {
-		
+
 		const { Fragment } = wp.element;
-		
+
 		const { InspectorControls } = wp.blockEditor;
-		
+
 		const { isSelected } = props;
 
 		const { PanelBody } = wp.components;
-		
+
 		const blockName = props.name;
-		
+
 		const blockType = ['wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
 			<Fragment>
@@ -178,12 +178,12 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
-						{ UserConditionOptions( props ) }						
+						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ UserConditionOptions( props ) }
 					</PanelBody>
 				</InspectorControls>
 				}
-				
+
 			</Fragment>
 		);
 	};
@@ -191,7 +191,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
-	const { 
+	const {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
@@ -202,15 +202,15 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
-	
-		if ( UAGHideTab ) {	
+
+		if ( UAGHideTab ) {
 			extraProps.className = extraProps.className + ' uag-hide-tab';
 		}
-	
-		if ( UAGHideMob ) {	
+
+		if ( UAGHideMob ) {
 			extraProps.className = extraProps.className + ' uag-hide-mob';
 		}
-		
+
 	}
 
 	return extraProps;
@@ -219,16 +219,16 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 if( '1' === enableConditions ){
 	//For UAG Blocks.
 	addFilter(
-		'uag_advance_tab',
+		'uag_advance_tab_content',
 		'uagb/advanced-control-block',
-		function(props) {
+		function( content, props ) {
 
 			if ( !props ) {
-				return '';
+				return content;
 			}
-			
+
 			const { isSelected, name } = props;
-			
+
 			const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
 
 			if( isSelected && ! blockType.includes(name) ) {
@@ -238,8 +238,8 @@ if( '1' === enableConditions ){
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
-						{ UserConditionOptions( props ) }						
+						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ UserConditionOptions( props ) }
 					</PanelBody>
 				);
 			}
