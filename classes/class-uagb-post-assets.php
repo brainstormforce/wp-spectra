@@ -596,10 +596,6 @@ class UAGB_Post_Assets {
 				$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
 				break;
 
-			case 'uagb/blockquote':
-				$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
-				break;
-
 			case 'uagb/tabs':
 				$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 				$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
@@ -725,7 +721,11 @@ class UAGB_Post_Assets {
 			default:
 				$_block_slug = str_replace( 'uagb/', '', $name );
 				$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+				$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
 				$css         = array_merge( $css, $_block_css );
+				if ( ! empty( $_block_js ) ) {
+					$js .= $_block_js;
+				}
 				break;
 		}
 

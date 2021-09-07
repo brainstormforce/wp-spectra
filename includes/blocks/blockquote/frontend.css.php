@@ -8,7 +8,7 @@
  */
 
 // Adds Fonts.
-UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
+UAGB_Block_JS::blocks_blockquote_gfont( $attr );
 
 $defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
 
@@ -28,12 +28,12 @@ if ( 'border' === $attr['skinStyle'] ) {
 }
 
 $selectors = array(
-	' .uagb-blockquote__content'          => array(
+	' .uagb-blockquote__content'                        => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
 		'text-align'    => $text_align,
 	),
-	' cite.uagb-blockquote__author'       => array(
+	' cite.uagb-blockquote__author'                     => array(
 		'color'      => $attr['authorColor'],
 		'text-align' => $text_align,
 	),
@@ -69,10 +69,10 @@ $selectors = array(
 		'text-align' => $attr['align'],
 	),
 
-	' .uagb-blockquote__author-wrap'      => array(
+	' .uagb-blockquote__author-wrap'                    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $author_space, 'px' ),
 	),
-	' .uagb-blockquote__author-image img' => array(
+	' .uagb-blockquote__author-image img'               => array(
 		'width'         => UAGB_Helper::get_css_value( $attr['authorImageWidth'], 'px' ),
 		'height'        => UAGB_Helper::get_css_value( $attr['authorImageWidth'], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadius'], '%' ),

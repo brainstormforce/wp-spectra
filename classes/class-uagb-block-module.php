@@ -35,7 +35,7 @@ class UAGB_Block_Module {
 		'column'           => array(
 			'dir' => 'column/',
 		),
-		'blockquote'           => array(
+		'blockquote'       => array(
 			'dir' => 'blockquote/',
 		),
 	);
@@ -65,5 +65,31 @@ class UAGB_Block_Module {
 		}
 
 		return $css;
+	}
+	/**
+	 * Get frontend JS.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param string $slug Block slug.
+	 * @param array  $attr Block attributes.
+	 * @param string $id   Block id.
+	 *
+	 * @return array
+	 */
+	public static function get_frontend_js( $slug, $attr, $id ) {
+
+		$js = '';
+
+		if ( isset( self::$blocks[ $slug ] ) ) {
+
+			$js_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . 'frontend.js.php';
+
+			if ( file_exists( $js_file ) ) {
+				$js = include $js_file;
+			}
+		}
+
+		return $js;
 	}
 }
