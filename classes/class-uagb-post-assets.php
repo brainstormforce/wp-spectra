@@ -597,8 +597,6 @@ class UAGB_Post_Assets {
 				break;
 
 			case 'uagb/blockquote':
-				$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
 				$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
 				break;
 

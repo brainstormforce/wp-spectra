@@ -35,6 +35,9 @@ class UAGB_Block_Module {
 		'column'           => array(
 			'dir' => 'column/',
 		),
+		'blockquote'           => array(
+			'dir' => 'blockquote/',
+		),
 	);
 
 	/**

@@ -3063,7 +3063,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					include $block_file;
 
 					if ( ! empty( $block_slug ) && ! empty( $block_data ) ) {
-
 						self::$block_attributes[ $block_slug ] = $block_data;
 					}
 				}
