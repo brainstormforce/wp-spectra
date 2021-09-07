@@ -7,18 +7,18 @@ import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
-import ResponsiveSlider from "../../components/responsive-slider";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import SpacingControl from "../../components/spacing-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import SpacingControl from "@Components/spacing-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
 import { __ } from "@wordpress/i18n";
-import Border from "../../components/border";
+import Border from "@Components/border";
 import { select } from "@wordpress/data";
-import UAGIconPicker from "../../components/icon-picker";
-import UAGTabsControl from "../../components/tabs";
+import UAGIconPicker from "@Components/icon-picker";
+import UAGTabsControl from "@Components/tabs";
 
 import { InspectorControls } from "@wordpress/block-editor";
 

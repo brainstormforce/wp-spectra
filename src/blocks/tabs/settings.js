@@ -1,17 +1,17 @@
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import renderSVG from "@Controls/renderIcon";
 import TypographyControl from "@Components/typography";
 import ResponsiveSelectControl from "@Components/responsive-select";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import Border from "../../components/border";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import Border from "@Components/border";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import UAGTabsControl from "@Components/tabs";
 
 import React from "react";
 import { __ } from "@wordpress/i18n";

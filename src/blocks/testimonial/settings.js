@@ -3,19 +3,19 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import Background from "../../components/background";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "../../components/spacing-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import UAGImage from "../../components/image";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "@Components/spacing-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import UAGImage from "@Components/image";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -126,7 +126,7 @@ const Settings = ( props ) => {
 		backgroundAttachment,
 		gradientValue,
 		descTransform,
-		descDecoration, 
+		descDecoration,
 		nameTransform,
 		nameDecoration,
 		companyTransform,
@@ -245,7 +245,7 @@ const Settings = ( props ) => {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveTestImage = ( index ) => {
-		
+
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item.image = null;
@@ -855,7 +855,7 @@ const Settings = ( props ) => {
 						label: "spacingLink",
 					}}
 				/>
-				
+
 				</PanelBody>
 	};
 	const companyStyle = () => {
@@ -937,8 +937,8 @@ const Settings = ( props ) => {
 							})
 						}
 					/>
-				
-				
+
+
 				</PanelBody>
 	}
 	const imageStyle = () => {
@@ -1020,7 +1020,7 @@ const Settings = ( props ) => {
 							value: imgspacingLink,
 							label: "imgspacingLink",
 						}}
-					/>	
+					/>
 				</PanelBody>
 	}
 	// Set testinomial image panel
@@ -1033,7 +1033,7 @@ const Settings = ( props ) => {
 			imageVal = test_block[ index ].image;
 		}
 		let labelIndex = index + 1;
-		return (	
+		return (
 					<UAGImage
 						label = {'Image '+ labelIndex}
 						onSelectImage={(media) => onSelectTestImage(media, index )}
@@ -1216,7 +1216,7 @@ const Settings = ( props ) => {
 												{ value: "tablet", label: __("Tablet", "ultimate-addons-for-gutenberg") },
 												{ value: "mobile", label: __("Mobile", "ultimate-addons-for-gutenberg") },
 											]}
-											
+
 										/>
 									</>
 								) }

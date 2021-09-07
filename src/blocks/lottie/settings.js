@@ -1,13 +1,13 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from "@Controls/renderIcon";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import Range from "../../components/range/Range.js";
-import UAGTabsControl from "../../components/tabs";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import Range from "@Components/range/Range.js";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	InspectorControls,
@@ -132,7 +132,7 @@ const Settings = ( props ) => {
 				options={[
 					{
 						value: 'left',
-						icon: ( 
+						icon: (
 						    <Icon icon={renderSVG("fa fa-align-left")} />
 						),
 						tooltip: __(

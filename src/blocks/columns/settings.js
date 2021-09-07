@@ -5,18 +5,18 @@ import { __ } from '@wordpress/i18n';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import BoxShadowControl from '@Components/box-shadow';
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import SpacingControl from "../../components/spacing-control";
-import Background from "../../components/background";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import SpacingControl from "@Components/spacing-control";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	BlockControls,
@@ -121,7 +121,7 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 	} = attributes;
-	
+
 	const blockControlSettings = () => {
 		return (
 			<BlockControls>

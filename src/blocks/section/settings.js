@@ -2,13 +2,13 @@ import React, { Suspense } from "react";
 import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import BoxShadowControl from "@Components/box-shadow";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import Background from "../../components/background";
-import Border from "../../components/border";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
