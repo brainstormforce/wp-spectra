@@ -510,7 +510,6 @@ const Settings = ( props ) => {
 								} )
 							}
 						/>
-						<hr className="uagb-editor__separator" />
 						<p className="components-base-control__label">
 								{ __(
 									'Twitter',
@@ -539,7 +538,6 @@ const Settings = ( props ) => {
 								/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Facebook',
@@ -568,7 +566,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'LinkedIn',
@@ -597,7 +594,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Pinterest',

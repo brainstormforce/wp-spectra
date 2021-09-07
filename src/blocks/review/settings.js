@@ -919,17 +919,10 @@ const Settings = (props) => {
 		}
 
 		return (
-			<PanelBody initialOpen={true}>
-				<ToggleControl
-					label={__(
-						"Enable Schema Support",
-						"ultimate-addons-for-gutenberg"
-					)}
-					checked={enableSchema}
-					onChange={() =>
-						setAttributes({ enableSchema: !enableSchema })
-					}
-				/>
+			<PanelBody 
+			    title={__("General", "ultimate-addons-for-gutenberg")}
+				initialOpen={true}
+			>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
@@ -966,6 +959,16 @@ const Settings = (props) => {
 							label: __("H6", "ultimate-addons-for-gutenberg"),
 						},
 					]}
+				/>
+				<ToggleControl
+					label={__(
+						"Enable Schema Support",
+						"ultimate-addons-for-gutenberg"
+					)}
+					checked={enableSchema}
+					onChange={() =>
+						setAttributes({ enableSchema: !enableSchema })
+					}
 				/>
 				<ToggleControl
 					label={__(
@@ -1040,7 +1043,7 @@ const Settings = (props) => {
 		return (
 			<PanelBody
 				title={__("Image", "ultimate-addons-for-gutenberg")}
-				initialOpen={true}
+				initialOpen={false}
 			>
 				<>
 					<UAGImage
