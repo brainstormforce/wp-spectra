@@ -1047,7 +1047,7 @@ const Settings = ( props ) => {
 				{ getBorder() }
 				{ getSpacing() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 			{ loadGFonts }

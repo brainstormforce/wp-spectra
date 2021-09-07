@@ -1617,7 +1617,7 @@ const Settings = ( props ) => {
 					{ connectorColorsSettings() }
 					{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>

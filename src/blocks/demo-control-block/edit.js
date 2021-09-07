@@ -1158,7 +1158,7 @@ class UAGBInlineNoticeEdit extends Component {
 							)}
 						</PanelBody>
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {this.props}></InspectorTab>
 				</InspectorTabs>
 			);
 		};
