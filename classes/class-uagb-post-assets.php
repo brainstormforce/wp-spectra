@@ -673,14 +673,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_post_gfont( $blockattr );
 				break;
 
-			case 'uagb/columns':
-				$css += UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/column':
-				$css += UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
-				break;
-
 			case 'uagb/cf7-styler':
 				$css += UAGB_Block_Helper::get_cf7_styler_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_cf7_styler_gfont( $blockattr );

@@ -29,6 +29,12 @@ class UAGB_Block_Module {
 		'advanced-heading' => array(
 			'dir' => 'advanced-heading/',
 		),
+		'columns'          => array(
+			'dir' => 'columns/',
+		),
+		'column'           => array(
+			'dir' => 'column/',
+		),
 	);
 
 	/**
