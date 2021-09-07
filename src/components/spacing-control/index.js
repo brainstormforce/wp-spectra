@@ -85,9 +85,10 @@ const SpacingControl = (props) => {
 	};
 
 	const onChangeUnits = (value) => {
-		if ("mobile" === value.className) {
+		
+		if ("Mobile" === deviceType) {
 			setAttributes({ [mUnit.label]: value.unitValue });
-		} else if ("tablet" === value.className) {
+		} else if ("Tablet" === deviceType) {
 			setAttributes({ [tUnit.label]: value.unitValue });
 		} else {
 			setAttributes({ [unit.label]: value.unitValue });
@@ -641,6 +642,7 @@ const SpacingControl = (props) => {
 					<span className="uagb-spacing-control__number-label uagb-spacing-control__link-label"></span>
 				</div>
 			</div>
+			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 		</div>
 	);
 };

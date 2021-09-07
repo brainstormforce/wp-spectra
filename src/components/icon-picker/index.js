@@ -30,6 +30,7 @@ const UAGIconPicker = (props) => {
 					__("Select Icon", "ultimate-addons-for-gutenberg")
 				}
 			/>
+			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
 		</div>
 	);
 };

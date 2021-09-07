@@ -13,7 +13,7 @@ import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
+import { PanelBody, TextControl } from "@wordpress/components";
 
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -336,6 +336,20 @@ const Settings = (props) => {
 						value: spacingLink,
 						label: "spacingLink",
 					}}
+					units={[
+						{
+							name: __("Pixel", "ultimate-addons-for-gutenberg"),
+							unitValue: "px",
+						},
+						{
+							name: __("Em", "ultimate-addons-for-gutenberg"),
+							unitValue: "em",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
 				/>
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
@@ -543,6 +557,49 @@ const Settings = (props) => {
 							label: "buttonWidthType",
 						}}
 					/>
+					{"icon" === buttonType && (
+						<>
+							<Range
+								label={__(
+									"Icon Size",
+									"ultimate-addons-for-gutenberg"
+								)}
+								setAttributes={setAttributes}
+								value={buttonIconSize}
+								onChange={(value) => {
+									setAttributes({
+										buttonIconSize: value,
+									});
+								}}
+								min={0}
+								max={500}
+								unit={{
+									value: buttonIconSizeType,
+									label: "buttonIconSizeType",
+								}}
+							/>
+						</>
+					)}
+					<UAGTabsControl
+						tabs={[
+							{
+								name: "normal",
+								title: __(
+									"Normal",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+							{
+								name: "hover",
+								title: __(
+									"Hover",
+									"ultimate-addons-for-gutenberg"
+								),
+							},
+						]}
+						normal={tabOutputNormal}
+						hover={tabOutputHover}
+					/>
 					<TypographyControl
 						label={__(
 							"Typography",
@@ -606,50 +663,6 @@ const Settings = (props) => {
 							value: buttonDecoration,
 							label: "buttonDecoration",
 						}}
-					/>
-					{"icon" === buttonType && (
-						<>
-							<Range
-								label={__(
-									"Icon Size",
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={buttonIconSize}
-								onChange={(value) => {
-									setAttributes({
-										buttonIconSize: value,
-									});
-								}}
-								min={0}
-								max={500}
-								unit={{
-									value: buttonIconSizeType,
-									label: "buttonIconSizeType",
-								}}
-							/>
-						</>
-					)}
-					<UAGTabsControl
-						tabs={[
-							{
-								name: "normal",
-								title: __(
-									"Normal",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-							{
-								name: "hover",
-								title: __(
-									"Hover",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-						]}
-						normal={tabOutputNormal}
-						hover={tabOutputHover}
-						disableBottomSeparator={true}
 					/>
 				</PanelBody>
 			);

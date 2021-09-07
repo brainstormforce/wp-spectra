@@ -589,6 +589,198 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						'msgleftPadding'                => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightPadding'               => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopPadding'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomPadding'              => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgleftMobilePadding'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightMobilePadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopMobilePadding'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgleftTabletPadding'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightTabletPadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopTabletPadding'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtabletPaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgmobilePaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgpaddingUnit'                => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgpaddingLink'                => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'buttonleftPadding'             => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonrightPadding'            => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttontopPadding'              => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonbottomPadding'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonleftMobilePadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonrightMobilePadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttontopMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonbottomMobilePadding'     => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonleftTabletPadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonrightTabletPadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttontopTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonbottomTabletPadding'     => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonpaddingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'buttontabletPaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonmobilePaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonpaddingUnit'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldleftPadding'              => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldrightPadding'             => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtopPadding'               => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldbottomPadding'            => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldleftMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldrightMobilePadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtopMobilePadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldbottomMobilePadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldleftTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldrightTabletPadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtopTabletPadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldbottomTabletPadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtabletPaddingUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldmobilePaddingUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldpaddingUnit'              => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldpaddingLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

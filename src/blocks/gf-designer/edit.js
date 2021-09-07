@@ -24,6 +24,81 @@ const UAGBGF = ( props ) => {
 			'uagb-gf-styler-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+
+		const {
+			msgVrPadding,
+			msgHrPadding,
+			buttonVrPadding,
+			buttonHrPadding,
+			fieldVrPadding,
+			fieldHrPadding,
+			buttontopPadding,
+			buttonrightPadding,
+			buttonbottomPadding,
+			buttonleftPadding,
+			fieldtopPadding,
+			fieldrightPadding,
+			fieldbottomPadding,
+			fieldleftPadding,
+			msgtopPadding,
+			msgrightPadding,
+			msgbottomPadding,
+			msgleftPadding,
+		} = props.attributes;
+
+		if(buttonVrPadding){
+			if(!buttontopPadding){
+				props.setAttributes( { buttontopPadding: buttonVrPadding } );
+			}
+			if(!buttonbottomPadding){
+				props.setAttributes( { buttonbottomPadding: buttonVrPadding } );
+			}
+		}
+		
+		if(buttonHrPadding){
+			if(!buttonrightPadding){
+				props.setAttributes( { buttonrightPadding: buttonHrPadding } );
+			}
+			if(!buttonleftPadding){
+				props.setAttributes( { buttonleftPadding: buttonHrPadding } );
+			}
+		}
+		
+		if(msgVrPadding){
+			if(!msgtopPadding){
+				props.setAttributes( { msgtopPadding: msgVrPadding } );
+			}
+			if(!msgbottomPadding){
+				props.setAttributes( { msgbottomPadding: msgVrPadding } );
+			}
+		}
+		
+		if(msgHrPadding){
+			if(!msgrightPadding){
+				props.setAttributes( { msgrightPadding: msgHrPadding } );
+			}
+			if(!msgleftPadding){
+				props.setAttributes( { msgleftPadding: msgHrPadding } );
+			}
+		}
+		
+		if(fieldVrPadding){
+			if(!fieldtopPadding){
+				props.setAttributes( { fieldtopPadding: fieldVrPadding } );
+			}
+			if(!fieldbottomPadding){
+				props.setAttributes( { fieldbottomPadding: fieldVrPadding } );
+			}
+		}
+		
+		if(fieldHrPadding){
+			if(!fieldrightPadding){
+				props.setAttributes( { fieldrightPadding: fieldHrPadding } );
+			}
+			if(!fieldleftPadding){
+				props.setAttributes( { fieldleftPadding: fieldHrPadding } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

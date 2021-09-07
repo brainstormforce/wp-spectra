@@ -51,8 +51,12 @@ const Settings = (props) => {
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
+		questionPaddingTypeMobile,
+		questionPaddingTypeTablet,
 		answerTextColor,
 		answerPaddingTypeDesktop,
+		answerPaddingTypeMobile,
+		answerPaddingTypeTablet,
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
@@ -591,12 +595,12 @@ const Settings = (props) => {
 						label: "questionPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeMobile,
+						label: "questionPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeTablet,
+						label: "questionPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
@@ -625,6 +629,13 @@ const Settings = (props) => {
 				initialOpen={false}
 				className="uagb__url-panel-body"
 			>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={answerTextColor}
+					onColorChange={(value) =>
+						setAttributes({ answerTextColor: value })
+					}
+				/>
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
 					attributes={attributes}
@@ -677,13 +688,6 @@ const Settings = (props) => {
 						value: answerLineHeightTablet,
 						label: "answerLineHeightTablet",
 					}}
-				/>
-				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={answerTextColor}
-					onColorChange={(value) =>
-						setAttributes({ answerTextColor: value })
-					}
 				/>
 				<SpacingControl
 					{...props}
@@ -741,12 +745,12 @@ const Settings = (props) => {
 						label: "answerPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeMobile,
+						label: "answerPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeTablet,
+						label: "answerPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
@@ -771,7 +775,7 @@ const Settings = (props) => {
 	const commonStyle = () => {
 		return (
 			<PanelBody
-				title={__("Common", "ultimate-addons-for-gutenberg")}
+				title={__("Container", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 				className="uagb__url-panel-body"
 			>

@@ -124,6 +124,8 @@ const Settings = ( props ) => {
 		imageMarginBottomMobile,
 		imageMarginLeftMobile,
 		imageMarginUnit,
+		tabletImageMarginUnit,
+		mobileImageMarginUnit,
 		spacingLink,
 	} = attributes;
 
@@ -508,7 +510,6 @@ const Settings = ( props ) => {
 								} )
 							}
 						/>
-						<hr className="uagb-editor__separator" />
 						<p className="components-base-control__label">
 								{ __(
 									'Twitter',
@@ -537,7 +538,6 @@ const Settings = ( props ) => {
 								/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Facebook',
@@ -566,7 +566,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'LinkedIn',
@@ -595,7 +594,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Pinterest',
@@ -1078,12 +1076,12 @@ const Settings = ( props ) => {
 						label: "imageMarginUnit",
 					}}
 					mUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: mobileImageMarginUnit,
+						label: "mobileImageMarginUnit",
 					}}
 					tUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: tabletImageMarginUnit,
+						label: "tabletImageMarginUnit",
 					}}
 					deviceType={deviceType}
 					attributes={attributes}

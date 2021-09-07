@@ -106,6 +106,14 @@ const attributes = {
 		type: "string",
 		default: "px",
 	},
+	questionPaddingTypeTablet: {
+		type: "string",
+		default: "px",
+	},
+	questionPaddingTypeMobile: {
+		type: "string",
+		default: "px",
+	},
 	vquestionPaddingMobile: {
 		type: "number",
 		default: 10,
@@ -135,6 +143,14 @@ const attributes = {
 		default: "#313131",
 	},
 	answerPaddingTypeDesktop: {
+		type: "string",
+		default: "px",
+	},
+	answerPaddingTypeTablet: {
+		type: "string",
+		default: "px",
+	},
+	answerPaddingTypeMobile: {
 		type: "string",
 		default: "px",
 	},

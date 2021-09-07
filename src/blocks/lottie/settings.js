@@ -118,39 +118,6 @@ const Settings = ( props ) => {
 						: ''
 				}
 			/>
-			<ToggleControl
-				label={ __( 'Loop', 'ultimate-addons-for-gutenberg' ) }
-				checked={ loop }
-				onChange={ loopLottie }
-				help={ __(
-					"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
-				) }
-			/>
-			<Range
-				label={__(
-					"Speed",
-					"ultimate-addons-for-gutenberg"
-				)}
-				setAttributes={setAttributes}
-				value={speed}
-				onChange={(value) =>
-					setAttributes({ speed: value })
-				}
-				min={1}
-				max={50}
-				displayUnit={false}
-			/>
-			{ loop && (
-				<ToggleControl
-					label={ __( 'Reverse', 'ultimate-addons-for-gutenberg' ) }
-					checked={ reverse }
-					onChange={ reverseDirection }
-					help={ __(
-						'Direction of animation.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-			) }
 			<MultiButtonsControl
 				setAttributes={setAttributes}
 				label={__(
@@ -198,6 +165,39 @@ const Settings = ( props ) => {
 				]}
 				showIcons={true}
 			/>
+			<ToggleControl
+				label={ __( 'Loop', 'ultimate-addons-for-gutenberg' ) }
+				checked={ loop }
+				onChange={ loopLottie }
+				help={ __(
+					"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
+				) }
+			/>
+			<Range
+				label={__(
+					"Speed",
+					"ultimate-addons-for-gutenberg"
+				)}
+				setAttributes={setAttributes}
+				value={speed}
+				onChange={(value) =>
+					setAttributes({ speed: value })
+				}
+				min={1}
+				max={50}
+				displayUnit={false}
+			/>
+			{ loop && (
+				<ToggleControl
+					label={ __( 'Reverse', 'ultimate-addons-for-gutenberg' ) }
+					checked={ reverse }
+					onChange={ reverseDirection }
+					help={ __(
+						'Direction of animation.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+			) }
 		</PanelBody>
 	);
 

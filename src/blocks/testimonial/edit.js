@@ -26,6 +26,50 @@ const UAGBtestimonial = ( props ) => {
 			'uagb-testinomial-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+		const {
+			imgVrPadding,
+			imgHrPadding,
+			imgpaddingTop,
+			imgpaddingBottom,
+			imgpaddingRight,
+			imgpaddingLeft,
+			contentPadding,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+		} = props.attributes;
+
+		if (imgVrPadding) {
+			if (!imgpaddingTop) {
+				props.setAttributes({ imgpaddingTop: imgVrPadding });
+			}
+			if (!imgpaddingBottom) {
+				props.setAttributes({ imgpaddingBottom: imgVrPadding });
+			}
+		}
+		if (imgHrPadding) {
+			if (!imgpaddingRight) {
+				props.setAttributes({ imgpaddingRight: imgHrPadding });
+			}
+			if (!imgpaddingLeft) {
+				props.setAttributes({ imgpaddingLeft: imgHrPadding });
+			}
+		}
+		if (contentPadding) {
+			if (!paddingTop) {
+				props.setAttributes({ paddingTop: contentPadding });
+			}
+			if (!paddingBottom) {
+				props.setAttributes({ paddingBottom: contentPadding });
+			}
+			if (!paddingLeft) {
+				props.setAttributes({ paddingLeft: contentPadding });
+			}
+			if (!paddingRight) {
+				props.setAttributes({ paddingRight: contentPadding });
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
