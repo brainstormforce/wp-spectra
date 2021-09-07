@@ -11,8 +11,17 @@ function UserInfoBox() {
 	const [ activateThemeText, setsactivateThemeText ] = useState(
 		'Activate ASTRA Now!'
 	);
-	const [ installingTheme, setsinstallingTheme ] = useState( false );
+	const [ installingTheme, setsinstallingTheme ] = useState( false 
+		);
 	const [ activateTheme, setsactivateTheme ] = useState( false );
+	const [ installingPluginText, setsinstallingPluginText ] = useState(
+		'Import a Starter Template',
+	);
+	const [ activatePluginText, setsactivatePluginText ] = useState(
+		'Activate Starter Template',
+	);
+	const [ installingPlugin, setsinstallingPlugin ] = useState( false );
+	const [ activatePlugin, setsactivatePlugin ] = useState( false );
 
 	const onJointheCommunityClick = () => {
 		window.open( 'https://ultimategutenberg.com/', '_blank' );
@@ -79,6 +88,7 @@ function UserInfoBox() {
 	const learnMoreAstraClick = () => {
 		window.open( 'https://wpastra.com/', '_blank' );
 	};
+	
 	const astraThemeButton = () => {
 		if ( ! uag_react.theme_file ) {
 			return (
@@ -111,6 +121,77 @@ function UserInfoBox() {
 		return null;
 	};
 
+	const starterTemplateBtn = () => {
+		
+		if( !uag_react.starter_template_activate && uag_react.starter_template_path ){
+			return <NormalButton
+						buttonText={ __(
+							activatePluginText,
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ activatePlugin }
+						onClick={ onstarterTemapletActivate }
+					/>
+		}else if( uag_react.starter_template_activate ){
+			return null;
+		}else if(!uag_react.starter_template_path){
+			return <NormalButton
+						buttonText={ __(
+							installingPluginText,
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ installingPlugin }
+						onClick={ onstarterTemapletinstall }
+					/>
+		}
+	};
+
+	const onstarterTemapletActivate = () => {
+		setsactivatePlugin( true );
+		setsactivatePluginText( 'Activating Starter Template' );
+		setTimeout( function () {
+			const formData = new window.FormData();
+			formData.append( 'action', 'uag_starter_template_activate' );
+			formData.append( 'security', uag_react.starter_template_activate_nonce );
+			formData.append( 'slug', 'astra-sites' );
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( ( data ) => {
+				if ( data.success ) {
+					setsactivatePlugin( false );
+					setsactivatePluginText( 'Plugin Activated!' );
+					window.location.reload();
+				}
+			} );
+		}, 1200 );
+	};
+	const onstarterTemapletinstall = () => {
+		setsinstallingPlugin( true );
+		setsinstallingPluginText( 'Installing Starter Template' );
+
+		if (
+			wp.updates.shouldRequestFilesystemCredentials &&
+			! wp.updates.ajaxLocked
+		) {
+			wp.updates.requestFilesystemCredentials( event );
+
+			$document.on( 'credential-modal-cancel', function () {
+				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
+			} );
+		}
+
+		wp.updates
+			.installPlugin( {
+				slug: 'astra-sites',
+			} )
+			.then( function ( e ) {
+				setsinstallingPlugin( false );
+				setsinstallingPluginText( 'Installed Starter Template!' );
+				window.location.reload();
+			} );
+	};
 	return (
 		<div className="uag-user-info">
 			<div className="uag-metabox uag-metabox__header">
@@ -226,13 +307,7 @@ function UserInfoBox() {
 							'ultimate-addons-for-gutenberg'
 						) }
 					</p>
-					<NormalButton
-						buttonText={ __(
-							'Import a Starter Template',
-							'ultimate-addons-for-gutenberg'
-						) }
-						saving={ false }
-					/>
+					{ starterTemplateBtn() }
 				</div>
 			</div>
 			<div className="uag-metabox uag-metabox__element">

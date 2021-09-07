@@ -38,7 +38,7 @@ function Footer() {
 	return (
 		<div className="uag-global-footer">
 			<span className="uag-left__footer">
-				Loving Ultimate Addons? We really appreciate if leave us{ ' ' }
+				Loving Ultimate Addons? We really appreciate if you can leave us{ ' ' }
 				{ stars } rating on{ ' ' }
 				<a
 					target="_blank"

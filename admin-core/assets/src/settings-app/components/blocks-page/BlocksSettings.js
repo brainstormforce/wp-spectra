@@ -13,15 +13,21 @@ function BlocksSettings() {
 	const [ savingStateDeactivate, setssavingStateDeactivate ] = useState(
 		false
 	);
-
+	const [ checkCategory , setcheckCategory ] = useState('all');
 	const [ { options }, dispatch ] = useStateValue();
 
 	const blocksValue = options.blocks_activation_and_deactivation;
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
-		return <IndividualBlockSetting key={ index } blockInfo={ block } />;
+		
+		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />
 	} );
 
+	const categories = ['all','creative','forms','content','seo','post'];
+
+	const setCategory = ( data ) => {
+		setcheckCategory(data);
+	};
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault();
 		setssavingStateActivate( true );
@@ -91,13 +97,15 @@ function BlocksSettings() {
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
-				<a>{ __( 'All Blocks', 'ultimate-addons-for-gutenberg' ) } </a>
-				<a href={ uag_react.reusable_url }>
-					{ __(
-						' Reusable Blocks',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</a>
+				{ categories.map( ( cat ) => (
+					<NormalButton
+						buttonText={ __(
+							cat,
+							'ultimate-addons-for-gutenberg'
+						) }
+						onClick={() => setCategory(cat) } 
+					/>
+				))}
 				<div className="uag-bulk-blocks-action-btn">
 					<NormalButton
 						buttonText={ __(
