@@ -1,13 +1,13 @@
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
-import UAGImage from "../../components/image";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
+import UAGImage from "@Components/image";
 
 import {
 	PanelBody,
@@ -50,7 +50,7 @@ const Settings = ( props ) => {
 			setAttributes({ image: null });
 			return;
 		}
-		
+
 		setAttributes({ image: media });
 	};
 
@@ -64,9 +64,9 @@ const Settings = ( props ) => {
 	const textColorControls = () => {
 		return (
 				<PanelBody
-					title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ true }
-				>	
+				>
 					<UAGTabsControl
 						tabs={[
 							{
@@ -322,15 +322,9 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<h2>
-						{ __(
-							'List Item Link',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</h2>
 					<ToggleControl
 						label={ __(
-							'Disable Link',
+							'Link',
 							'ultimate-addons-for-gutenberg'
 						) }
 						checked={ disableLink }
@@ -338,7 +332,7 @@ const Settings = ( props ) => {
 							setAttributes( { disableLink: ! disableLink } )
 						}
 					/>
-					{ ! disableLink && (
+					{ disableLink && (
 						<>
 							<p className="components-base-control__label">
 								{ __( 'URL', 'ultimate-addons-for-gutenberg' ) }

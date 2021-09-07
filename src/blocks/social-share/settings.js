@@ -4,13 +4,13 @@
 
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import { __ } from '@wordpress/i18n';
 
 import {

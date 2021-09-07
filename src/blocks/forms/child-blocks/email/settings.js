@@ -1,5 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -15,9 +17,7 @@ const Settings = ( props ) => {
 	const nameInspectorControls = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
-				className="uagb__url-panel-body"
 			>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
@@ -40,9 +40,15 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
-			<InspectorControls>{ nameInspectorControls() }</InspectorControls>
-		</>
+			<InspectorControls>
+			<InspectorTabs tabs={["general", "advance"]}>
+					<InspectorTab {...UAGTabs.general}>
+					{ nameInspectorControls() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}>
+					</InspectorTab>
+				</InspectorTabs>
+			</InspectorControls>
 	);
 };
 export default React.memo( Settings );

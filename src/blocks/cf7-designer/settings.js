@@ -1,19 +1,17 @@
 import React, { Suspense } from "react";
-
 import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, {
-	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
+import renderSVG from "@Controls/renderIcon";
 
 import {
 	AlignmentToolbar,
@@ -25,6 +23,7 @@ import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
+	Icon,
 } from "@wordpress/components";
 
 const Settings = (props) => {
@@ -166,6 +165,8 @@ const Settings = (props) => {
 		messageBottomPaddingMobile,
 		messageLeftPaddingMobile,
 		messagePaddingTypeDesktop,
+		messagePaddingTypeTablet,
+		messagePaddingTypeMobile,
 		messageSpacingLink,
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
@@ -180,6 +181,8 @@ const Settings = (props) => {
 		buttonBottomPaddingMobile,
 		buttonLeftPaddingMobile,
 		buttonPaddingTypeDesktop,
+		buttonPaddingTypeTablet,
+		buttonPaddingTypeMobile,
 		buttonSpacingLink,
 		fieldTopPaddingDesktop,
 		fieldRightPaddingDesktop,
@@ -194,6 +197,8 @@ const Settings = (props) => {
 		fieldBottomPaddingMobile,
 		fieldLeftPaddingMobile,
 		fieldPaddingTypeDesktop,
+		fieldPaddingTypeMobile,
+		fieldPaddingTypeTablet,
 		fieldSpacingLink,
 	} = attributes;
 
@@ -351,13 +356,31 @@ const Settings = (props) => {
 			/>
 		</>
 	);
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectForm = ( id ) => {
+		if ( ! id ) {
+			setAttributes( { isHtml: false } );
+			setAttributes( { formId: null } );
+			return;
+		}
+
+		setAttributes( { isHtml: false } );
+		setAttributes( { formId: id } );
+	};
+
 	const generalSettings = (
-		<PanelBody title={__("General", "ultimate-addons-for-gutenberg")}>
+		<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } >
 			<SelectControl
-				label={__("Select Form", "ultimate-addons-for-gutenberg")}
-				value={formId}
-				onChange={onSelectForm}
-				options={uagb_blocks_info.cf7_forms}
+				label={ __(
+					'Select Form',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ formId }
+				onChange={ onSelectForm }
+				options={ uagb_blocks_info.cf7_forms }
 			/>
 		</PanelBody>
 	);
@@ -459,29 +482,74 @@ const Settings = (props) => {
 		>
 			<MultiButtonsControl
 				setAttributes={setAttributes}
-				label={__("Alignment", "ultimate-addons-for-gutenberg")}
+				label={__(
+					"Alignment",
+					"ultimate-addons-for-gutenberg"
+				)}
 				data={{
 					value: buttonAlignment,
 					label: "buttonAlignment",
 				}}
+				className="uagb-multi-button-alignment-control"
 				options={[
 					{
-						value: "center",
-						label: __("Center", "ultimate-addons-for-gutenberg"),
+						value: "left",
+						icon: (
+							<Icon
+								icon={renderSVG(
+									"fa fa-align-left"
+								)}
+							/>
+						),
+						tooltip: __(
+							"Left",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 					{
-						value: "left",
-						label: __("Left", "ultimate-addons-for-gutenberg"),
+						value: "center",
+						icon: (
+							<Icon
+								icon={renderSVG(
+									"fa fa-align-center"
+								)}
+							/>
+						),
+						tooltip: __(
+							"Center",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 					{
 						value: "right",
-						label: __("Right", "ultimate-addons-for-gutenberg"),
+						icon: (
+							<Icon
+								icon={renderSVG(
+									"fa fa-align-right"
+								)}
+							/>
+						),
+						tooltip: __(
+							"Right",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 					{
 						value: "justify",
-						label: __("Justified", "ultimate-addons-for-gutenberg"),
+						icon: (
+							<Icon
+								icon={renderSVG(
+									"fa fa-align-justify"
+								)}
+							/>
+						),
+						tooltip: __(
+							"Justified",
+							"ultimate-addons-for-gutenberg"
+						),
 					},
 				]}
+				showIcons={true}
 			/>
 		</PanelBody>
 	);
@@ -491,6 +559,13 @@ const Settings = (props) => {
 			title={__("Label & Input", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
 		>
+			<AdvancedPopColorControl
+				label={__("Label Color", "ultimate-addons-for-gutenberg")}
+				colorValue={fieldLabelColor}
+				onColorChange={(value) =>
+					setAttributes({ fieldLabelColor: value })
+				}
+			/>
 			<TypographyControl
 				label={__("Label Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
@@ -542,10 +617,10 @@ const Settings = (props) => {
 				}}
 			/>
 			<AdvancedPopColorControl
-				label={__("Label Color", "ultimate-addons-for-gutenberg")}
-				colorValue={fieldLabelColor}
+				label={__("Input Color", "ultimate-addons-for-gutenberg")}
+				colorValue={fieldInputColor}
 				onColorChange={(value) =>
-					setAttributes({ fieldLabelColor: value })
+					setAttributes({ fieldInputColor: value })
 				}
 			/>
 			<TypographyControl
@@ -599,13 +674,6 @@ const Settings = (props) => {
 				}}
 			/>
 			<AdvancedPopColorControl
-				label={__("Input Color", "ultimate-addons-for-gutenberg")}
-				colorValue={fieldInputColor}
-				onColorChange={(value) =>
-					setAttributes({ fieldInputColor: value })
-				}
-			/>
-			<AdvancedPopColorControl
 				label={__("Background Color", "ultimate-addons-for-gutenberg")}
 				colorValue={fieldBgColor}
 				onColorChange={(value) =>
@@ -630,19 +698,19 @@ const Settings = (props) => {
 			/>
 		</PanelBody>
 	);
-	
+
 	const fieldStyling = (
 		<PanelBody
 			title={__("Field", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
-		>	
+		>
 			<Border
 				setAttributes={setAttributes}
 				borderStyle={{
 					value: fieldBorderStyle,
 					label: "fieldBorderStyle",
 					title: __(
-						"Border Style",
+						"Style",
 						"ultimate-addons-for-gutenberg"
 					),
 				}}
@@ -693,7 +761,7 @@ const Settings = (props) => {
 			/>
 			<SpacingControl
 				{...props}
-				label={__("Field Padding", "ultimate-addons-for-gutenberg")}
+				label={__("Padding", "ultimate-addons-for-gutenberg")}
 				valueTop={{
 					value: fieldTopPaddingDesktop,
 					label: "fieldTopPaddingDesktop",
@@ -747,12 +815,12 @@ const Settings = (props) => {
 					label: "fieldPaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: fieldPaddingTypeDesktop,
-					label: "fieldPaddingTypeDesktop",
+					value: fieldPaddingTypeMobile,
+					label: "fieldPaddingTypeMobile",
 				}}
 				tUnit={{
-					value: fieldPaddingTypeDesktop,
-					label: "fieldPaddingTypeDesktop",
+					value: fieldPaddingTypeTablet,
+					label: "fieldPaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -778,6 +846,16 @@ const Settings = (props) => {
 				min={0}
 				max={50}
 				displayUnit={false}
+			/>
+			<AdvancedPopColorControl
+				label={__(
+					"Label Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={radioCheckLableColor}
+				onColorChange={(value) =>
+					setAttributes({ radioCheckLableColor: value })
+				}
 			/>
 			<TypographyControl
 				label={__(
@@ -834,16 +912,6 @@ const Settings = (props) => {
 					value: radioCheckLineHeightTablet,
 					label: "radioCheckLineHeightTablet",
 				}}
-			/>
-			<AdvancedPopColorControl
-				label={__(
-					"Label Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={radioCheckLableColor}
-				onColorChange={(value) =>
-					setAttributes({ radioCheckLableColor: value })
-				}
 			/>
 			<AdvancedPopColorControl
 				label={__(
@@ -939,6 +1007,26 @@ const Settings = (props) => {
 			title={__("Submit Button", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
 		>
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "normal",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "hover",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				normal={buttonNormalSettings}
+				hover={buttonHoverSettings}
+			/>
 			<TypographyControl
 				label={__("Typography", "ultimate-addons-for-gutenberg")}
 				attributes={attributes}
@@ -994,7 +1082,7 @@ const Settings = (props) => {
 				borderStyle={{
 					value: buttonBorderStyle,
 					label: "buttonBorderStyle",
-					title: __("Border Style", "ultimate-addons-for-gutenberg"),
+					title: __("Style", "ultimate-addons-for-gutenberg"),
 				}}
 				borderWidth={{
 					value: buttonBorderWidth,
@@ -1021,26 +1109,6 @@ const Settings = (props) => {
 					label: "buttonBorderHoverColor",
 					title: __("Border Color", "ultimate-addons-for-gutenberg"),
 				}}
-			/>
-			<UAGTabsControl
-				tabs={[
-					{
-						name: "normal",
-						title: __(
-							"Normal",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-					{
-						name: "hover",
-						title: __(
-							"Hover",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-				]}
-				normal={buttonNormalSettings}
-				hover={buttonHoverSettings}
 			/>
 			<SpacingControl
 				{...props}
@@ -1098,12 +1166,12 @@ const Settings = (props) => {
 					label: "buttonPaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: buttonPaddingTypeDesktop,
-					label: "buttonPaddingTypeDesktop",
+					value: buttonPaddingTypeMobile,
+					label: "buttonPaddingTypeMobile",
 				}}
 				tUnit={{
-					value: buttonPaddingTypeDesktop,
-					label: "buttonPaddingTypeDesktop",
+					value: buttonPaddingTypeTablet,
+					label: "buttonPaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -1129,6 +1197,18 @@ const Settings = (props) => {
 					"ultimate-addons-for-gutenberg"
 				)}
 			</p>
+			<AdvancedPopColorControl
+				label={__(
+					"Validation Message Color",
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={validationMsgColor}
+				onColorChange={(value) =>
+					setAttributes({
+						validationMsgColor: value,
+					})
+				}
+			/>
 			<TypographyControl
 				label={__(
 					"Validation Typography",
@@ -1185,18 +1265,6 @@ const Settings = (props) => {
 					label: "validationMsgLineHeightTablet",
 				}}
 			/>
-			<AdvancedPopColorControl
-				label={__(
-					"Validation Message Color",
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={validationMsgColor}
-				onColorChange={(value) =>
-					setAttributes({
-						validationMsgColor: value,
-					})
-				}
-			/>
 			{validationMsgPosition === "bottom_right" && (
 				<>
 					<AdvancedPopColorControl
@@ -1213,7 +1281,7 @@ const Settings = (props) => {
 					/>
 				</>
 			)}
-			
+
 			{enableHighlightBorder && (
 				<>
 					<AdvancedPopColorControl
@@ -1230,7 +1298,6 @@ const Settings = (props) => {
 					/>
 				</>
 			)}
-
 			<hr className="uagb-editor__separator" />
 			<h2>
 				{__(
@@ -1276,7 +1343,6 @@ const Settings = (props) => {
 					label: "msgLineHeightTablet",
 				}}
 			/>
-
 			<hr className="uagb-editor__separator" />
 			<h2>{__("Success Message", "ultimate-addons-for-gutenberg")}</h2>
 			<AdvancedPopColorControl
@@ -1312,7 +1378,6 @@ const Settings = (props) => {
 					})
 				}
 			/>
-
 			<hr className="uagb-editor__separator" />
 			<h2>{__("Error Message", "ultimate-addons-for-gutenberg")}</h2>
 			<AdvancedPopColorControl
@@ -1449,12 +1514,12 @@ const Settings = (props) => {
 					label: "messagePaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: messagePaddingTypeDesktop,
-					label: "messagePaddingTypeDesktop",
+					value: messagePaddingTypeMobile,
+					label: "messagePaddingTypeMobile",
 				}}
 				tUnit={{
-					value: messagePaddingTypeDesktop,
-					label: "messagePaddingTypeDesktop",
+					value: messagePaddingTypeTablet,
+					label: "messagePaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -1465,20 +1530,6 @@ const Settings = (props) => {
 			/>
 		</PanelBody>
 	);
-	/*
-	 * Event to set Image as while adding.
-	 */
-	const onSelectForm = (id) => {
-		if (!id) {
-			setAttributes({ isHtml: false });
-			setAttributes({ formId: null });
-			return;
-		}
-
-		setAttributes({ isHtml: false });
-		setAttributes({ formId: id });
-	};
-
 	return (
 		<Suspense fallback={lazyLoader()}>
 			<BlockControls key="controls">

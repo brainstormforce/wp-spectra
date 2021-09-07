@@ -23,6 +23,8 @@ function styling(props) {
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
+		questionPaddingTypeMobile,
+		questionPaddingTypeTablet,
 		vquestionPaddingMobile,
 		vquestionPaddingTablet,
 		vquestionPaddingDesktop,
@@ -31,6 +33,8 @@ function styling(props) {
 		hquestionPaddingDesktop,
 		answerTextColor,
 		answerPaddingTypeDesktop,
+		answerPaddingTypeMobile,
+		answerPaddingTypeTablet,
 		answerTopPadding,
 		answerBottomPadding,
 		answerRightPadding,
@@ -210,37 +214,37 @@ function styling(props) {
 		" .uagb-faq-questions-button": {
 			"padding-top": generateCSSUnit(
 				vquestionPaddingTablet,
-				questionPaddingTypeDesktop
+				questionPaddingTypeTablet
 			),
 			"padding-bottom": generateCSSUnit(
 				questionBottomPaddingTablet,
-				questionPaddingTypeDesktop
+				questionPaddingTypeTablet
 			),
 			"padding-right": generateCSSUnit(
 				hquestionPaddingTablet,
-				questionPaddingTypeDesktop
+				questionPaddingTypeTablet
 			),
 			"padding-left": generateCSSUnit(
 				questionLeftPaddingTablet,
-				questionPaddingTypeDesktop
+				questionPaddingTypeTablet
 			),
 		},
 		" .uagb-faq-content span": {
 			"margin-top": generateCSSUnit(
 				answerTopPaddingTablet,
-				answerPaddingTypeDesktop
+				answerPaddingTypeTablet
 			),
 			"margin-bottom": generateCSSUnit(
 				answerBottomPaddingTablet,
-				answerPaddingTypeDesktop
+				answerPaddingTypeTablet
 			),
 			"margin-right": generateCSSUnit(
 				answerRightPaddingTablet,
-				answerPaddingTypeDesktop
+				answerPaddingTypeTablet
 			),
 			"margin-left": generateCSSUnit(
 				answerLeftPaddingTablet,
-				answerPaddingTypeDesktop
+				answerPaddingTypeTablet
 			),
 		},
 		" .uagb-faq-questions-button .uagb-question": {
@@ -279,37 +283,37 @@ function styling(props) {
 		" .uagb-faq-questions-button": {
 			"padding-top": generateCSSUnit(
 				vquestionPaddingMobile,
-				questionPaddingTypeDesktop
+				questionPaddingTypeMobile
 			),
 			"padding-bottom": generateCSSUnit(
 				questionBottomPaddingMobile,
-				questionPaddingTypeDesktop
+				questionPaddingTypeMobile
 			),
 			"padding-right": generateCSSUnit(
 				hquestionPaddingMobile,
-				questionPaddingTypeDesktop
+				questionPaddingTypeMobile
 			),
 			"padding-left": generateCSSUnit(
 				questionLeftPaddingMobile,
-				questionPaddingTypeDesktop
+				questionPaddingTypeMobile
 			),
 		},
 		" .uagb-faq-content span": {
 			"margin-top": generateCSSUnit(
 				answerTopPaddingMobile,
-				answerPaddingTypeDesktop
+				answerPaddingTypeMobile
 			),
 			"margin-bottom": generateCSSUnit(
 				answerBottomPaddingMobile,
-				answerPaddingTypeDesktop
+				answerPaddingTypeMobile
 			),
 			"margin-right": generateCSSUnit(
 				answerRightPaddingMobile,
-				answerPaddingTypeDesktop
+				answerPaddingTypeMobile
 			),
 			"margin-left": generateCSSUnit(
 				answerLeftPaddingMobile,
-				answerPaddingTypeDesktop
+				answerPaddingTypeMobile
 			),
 		},
 		" .uagb-faq-questions-button .uagb-question": {

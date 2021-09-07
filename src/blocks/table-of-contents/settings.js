@@ -2,20 +2,20 @@ import { __ } from '@wordpress/i18n';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import renderSVG from '@Controls/renderIcon';
 import WebfontLoader from '@Components/typography/fontloader';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import Border from "../../components/border";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import Border from "@Components/border";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	BlockControls,
@@ -174,7 +174,7 @@ const Settings = ( props ) => {
 			>
 				<h2>
 					{ __(
-						'Select the heading to consider when generating the table',
+						'Choose heading tags to generate table',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
@@ -278,20 +278,6 @@ const Settings = ( props ) => {
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<Range
-					label={__(
-						'Bottom Space',
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={headingBottom}
-					onChange={(value) =>
-						setAttributes({ headingBottom: value })
-					}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/>
 				<AdvancedPopColorControl
 					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={headingColor ? headingColor : ""}
@@ -355,10 +341,24 @@ const Settings = ( props ) => {
 						label: 'headingLineHeightTablet',
 					} }
 				/>
+				<Range
+					label={__(
+						'Bottom Space',
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={headingBottom}
+					onChange={(value) =>
+						setAttributes({ headingBottom: value })
+					}
+					min={0}
+					max={50}
+					displayUnit={false}
+				/>
 			</PanelBody>
 		)
 	};
-	
+
 	const getContent = () => {
 		return (
 			<PanelBody
@@ -422,18 +422,6 @@ const Settings = ( props ) => {
 				]}
 				showIcons={true}
 			/>
-			<ToggleControl
-				label={ __(
-					'Disable Bullet Points',
-					'ultimate-addons-for-gutenberg'
-				) }
-				checked={ disableBullets }
-				onChange={ () =>
-					setAttributes( {
-						disableBullets: ! disableBullets,
-					} )
-				}
-			/>
 			<ResponsiveSlider
 				label={__(
 					"Gap Between Lists",
@@ -484,6 +472,86 @@ const Settings = ( props ) => {
 			/>
 			<ToggleControl
 				label={ __(
+					'Custom Width',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ customWidth }
+				onChange={ () =>
+					setAttributes( { customWidth: ! customWidth } )
+				}
+				help={ __(
+					"Table's width will be auto if this is kept off.",
+					'ultimate-addons-for-gutenberg'
+				) }
+			/>
+			{ customWidth &&
+				<ResponsiveSlider
+					label={__(
+						"Width",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						desktop: {
+							value: widthDesktop,
+							label: "widthDesktop",
+							unit: {
+								value: widthTypeDesktop,
+								label: "widthTypeDesktop",
+							},
+							min: 0,
+							max: maxDesk,
+						},
+						tablet: {
+							value: widthTablet,
+							label: "widthTablet",
+							unit: {
+								value: widthTypeTablet,
+								label: "widthTypeTablet",
+							},
+							min: 0,
+							max: maxTab,
+						},
+						mobile: {
+							value: widthMobile,
+							label: "widthMobile",
+							unit: {
+								value: widthTypeMobile,
+								label: "widthTypeMobile",
+							},
+							min: 0,
+							max: maxMob,
+						},
+					}}
+					units={[
+						{
+							name: __(
+								"Pixel",
+								"ultimate-addons-for-gutenberg"
+							),
+							unitValue: "px",
+						},
+						{
+							name: __("%", "ultimate-addons-for-gutenberg"),
+							unitValue: "%",
+						},
+					]}
+					setAttributes={setAttributes}
+				/>
+			}
+			<ToggleControl
+				label={ __(
+					'Disable Bullet Points',
+					'ultimate-addons-for-gutenberg'
+				) }
+				checked={ disableBullets }
+				onChange={ () =>
+					setAttributes( {
+						disableBullets: ! disableBullets,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __(
 					'Make Content Collapsible',
 					'ultimate-addons-for-gutenberg'
 				) }
@@ -527,101 +595,33 @@ const Settings = ( props ) => {
 						max={300}
 						displayUnit={false}
 					/>
-					
+
 				</>
 			) }
-			<ToggleControl
-					label={ __(
-						'Custom Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ customWidth }
-					onChange={ () =>
-						setAttributes( { customWidth: ! customWidth } )
-					}
-					help={ __(
-						"Table's width will be auto if this is kept off.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-				{ customWidth &&
-					<ResponsiveSlider
-						label={__(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						)}
-						data={{
-							desktop: {
-								value: widthDesktop,
-								label: "widthDesktop",
-								unit: {
-									value: widthTypeDesktop,
-									label: "widthTypeDesktop",
-								},
-								min: 0,
-								max: maxDesk,
-							},
-							tablet: {
-								value: widthTablet,
-								label: "widthTablet",
-								unit: {
-									value: widthTypeTablet,
-									label: "widthTypeTablet",
-								},
-								min: 0,
-								max: maxTab,						
-							},
-							mobile: {
-								value: widthMobile,
-								label: "widthMobile",
-								unit: {
-									value: widthTypeMobile,
-									label: "widthTypeMobile",
-								},
-								min: 0,
-								max: maxMob,
-							},
-						}}
-						units={[
-							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
-							},
-							{
-								name: __("%", "ultimate-addons-for-gutenberg"),
-								unitValue: "%",
-							},
-						]}
-						setAttributes={setAttributes}
-					/>
-				}
-				<ResponsiveSlider
-					label={__(
-						"Columns",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
-						desktop: {
-							value: tColumnsDesktop,
-							label: "tColumnsDesktop",
-						},
-						tablet: {
-							value: tColumnsTablet,
-							label: "tColumnsTablet",
-						},
-						mobile: {
-							value: tColumnsMobile,
-							label: "tColumnsMobile",
-						},
-					}}
-					min={1}
-					max={10}
-					displayUnit={false}
-					setAttributes={setAttributes}
-				/>
+			<ResponsiveSlider
+				label={__(
+					"Columns",
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					desktop: {
+						value: tColumnsDesktop,
+						label: "tColumnsDesktop",
+					},
+					tablet: {
+						value: tColumnsTablet,
+						label: "tColumnsTablet",
+					},
+					mobile: {
+						value: tColumnsMobile,
+						label: "tColumnsMobile",
+					},
+				}}
+				min={1}
+				max={10}
+				displayUnit={false}
+				setAttributes={setAttributes}
+			/>
 			</PanelBody>
 		)
 	};
@@ -701,6 +701,7 @@ const Settings = ( props ) => {
 						}
 					/>
 				}
+				disableBottomSeparator={true}
 			/>
 			<TypographyControl
 					label={ __(
@@ -784,7 +785,7 @@ const Settings = ( props ) => {
 			</PanelBody>
 		)
 	};
-		
+
 	let maxDesk = ( ( '%' == widthTypeDesktop ) ? 100 : 1000 );
 	let maxTab = ( ( '%' == widthTypeTablet ) ? 100 : 1000 );
 	let maxMob = ( ( '%' == widthTypeMobile ) ? 100 : 1000 );
@@ -808,7 +809,7 @@ const Settings = ( props ) => {
 
 	const getBorder = () => {
 		return(
-			<PanelBody 
+			<PanelBody
 			title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			>
@@ -862,7 +863,7 @@ const Settings = ( props ) => {
 
 	const getSpacing = () => {
 		return(
-			<PanelBody 
+			<PanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			>

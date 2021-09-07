@@ -98,6 +98,8 @@ function styling( props ) {
 		buttonBottomPaddingMobile,
 		buttonLeftPaddingMobile,
 		buttonPaddingTypeDesktop,
+		buttonPaddingTypeTablet,
+		buttonPaddingTypeMobile,
 		fieldTopPaddingDesktop,
 		fieldRightPaddingDesktop,
 		fieldBottomPaddingDesktop,
@@ -111,6 +113,8 @@ function styling( props ) {
 		fieldBottomPaddingMobile,
 		fieldLeftPaddingMobile,
 		fieldPaddingTypeDesktop,
+		fieldPaddingTypeTablet,
+		fieldPaddingTypeMobile,
 	} = props.attributes;
 
 	const selectors = {
@@ -435,10 +439,10 @@ function styling( props ) {
 	};
 
 	const fieldPaddingTablet = {
-		'padding-left': generateCSSUnit( fieldLeftPaddingTablet, fieldPaddingTypeDesktop ),
-		'padding-right': generateCSSUnit( fieldRightPaddingTablet, fieldPaddingTypeDesktop ),
-		'padding-top': generateCSSUnit( fieldTopPaddingTablet, fieldPaddingTypeDesktop ),
-		'padding-bottom': generateCSSUnit( fieldBottomPaddingTablet, fieldPaddingTypeDesktop ),
+		'padding-left': generateCSSUnit( fieldLeftPaddingTablet, fieldPaddingTypeTablet ),
+		'padding-right': generateCSSUnit( fieldRightPaddingTablet, fieldPaddingTypeTablet ),
+		'padding-top': generateCSSUnit( fieldTopPaddingTablet, fieldPaddingTypeTablet ),
+		'padding-bottom': generateCSSUnit( fieldBottomPaddingTablet, fieldPaddingTypeTablet ),
 	};
 	const tabletSelectors = {
 		' .wpcf7 input:not([type=submit])': {
@@ -527,17 +531,17 @@ function styling( props ) {
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option' : fieldPaddingTablet,
 		' .wpcf7 textarea'                 : fieldPaddingTablet,
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			'padding-left': generateCSSUnit( buttonLeftPaddingTablet, buttonPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( buttonRightPaddingTablet, buttonPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( buttonTopPaddingTablet, buttonPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( buttonBottomPaddingTablet, buttonPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit( buttonLeftPaddingTablet, buttonPaddingTypeTablet ),
+			'padding-right': generateCSSUnit( buttonRightPaddingTablet, buttonPaddingTypeTablet ),
+			'padding-top': generateCSSUnit( buttonTopPaddingTablet, buttonPaddingTypeTablet ),
+			'padding-bottom': generateCSSUnit( buttonBottomPaddingTablet, buttonPaddingTypeTablet ),
 		},
 	};
 	const fieldPaddingMobile = {
-		'padding-left': generateCSSUnit( fieldLeftPaddingMobile, fieldPaddingTypeDesktop ),
-		'padding-right': generateCSSUnit( fieldRightPaddingMobile, fieldPaddingTypeDesktop ),
-		'padding-top': generateCSSUnit( fieldTopPaddingMobile, fieldPaddingTypeDesktop ),
-		'padding-bottom': generateCSSUnit( fieldBottomPaddingMobile, fieldPaddingTypeDesktop ),
+		'padding-left': generateCSSUnit( fieldLeftPaddingMobile, fieldPaddingTypeMobile ),
+		'padding-right': generateCSSUnit( fieldRightPaddingMobile, fieldPaddingTypeMobile ),
+		'padding-top': generateCSSUnit( fieldTopPaddingMobile, fieldPaddingTypeMobile ),
+		'padding-bottom': generateCSSUnit( fieldBottomPaddingMobile, fieldPaddingTypeMobile ),
 	};
 	const mobileSelectors = {
 		' .wpcf7 input:not([type=submit])': {
@@ -625,10 +629,10 @@ function styling( props ) {
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option' : fieldPaddingMobile,
 		' .wpcf7 textarea'                 : fieldPaddingMobile,
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			'padding-left': generateCSSUnit( buttonLeftPaddingMobile, buttonPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( buttonRightPaddingMobile, buttonPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( buttonTopPaddingMobile, buttonPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( buttonBottomPaddingMobile, buttonPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit( buttonLeftPaddingMobile, buttonPaddingTypeMobile ),
+			'padding-right': generateCSSUnit( buttonRightPaddingMobile, buttonPaddingTypeMobile ),
+			'padding-top': generateCSSUnit( buttonTopPaddingMobile, buttonPaddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( buttonBottomPaddingMobile, buttonPaddingTypeMobile ),
 		},
 	};
 

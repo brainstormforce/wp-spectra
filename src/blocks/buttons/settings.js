@@ -10,13 +10,13 @@ import {
 } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import renderSVG from "@Controls/renderIcon";
-import Range from "../../components/range/Range.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Range from "@Components/range/Range.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -52,10 +52,6 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Common',
-					'ultimate-addons-for-gutenberg'
-				) }
 				initialOpen={ true }
 			>
 				<MultiButtonsControl

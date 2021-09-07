@@ -3,7 +3,7 @@
  */
 
 // Import classes
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import {
@@ -13,14 +13,14 @@ import {
 	PanelBody,
 	SelectControl,
 } from '@wordpress/components';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
-import UAGImage from "../../components/image";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
+import UAGImage from "@Components/image";
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -51,7 +51,7 @@ const Settings = ( props ) => {
 			setAttributes({ image: null });
 			return;
 		}
-		
+
 		setAttributes({ image: media });
 	};
 

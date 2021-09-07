@@ -450,36 +450,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={__(
-						"Heading Bottom Spacing",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={headSpace}
-					onChange={(value) =>
-						setAttributes({ headSpace: value })
-					}
-					min={0}
-					max={50}
-					displayUnit={false}
-				/>
-				{ displayPostDate && timelinAlignment !== 'center' && (
-					<Range
-						label={__(
-							"Date Bottom Spacing",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={dateBottomspace}
-						onChange={(value) =>
-							setAttributes({ dateBottomspace: value })
-						}
-						min={0}
-						max={50}
-						displayUnit={false}
-					/>
-				) }
 				<SpacingControl
 					{...props}
 					label={__("Padding", "ultimate-addons-for-gutenberg")}
@@ -756,71 +726,85 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __(
-					'Title',
+					'Heading',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ true }
 			>
-			<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
-				colorValue={headingColor ? headingColor : ""}
-				onColorChange={(value) =>
-					setAttributes({ headingColor: value })
-				}
-			/>
-			<TypographyControl
-				label={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
-				attributes={ props.attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: headLoadGoogleFonts,
-					label: 'headLoadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: headFontFamily,
-					label: 'headFontFamily',
-				} }
-				fontWeight={ {
-					value: headFontWeight,
-					label: 'headFontWeight',
-				} }
-				fontSubset={ {
-					value: headFontSubset,
-					label: 'headFontSubset',
-				} }
-				fontSizeType={ {
-					value: headFontSizeType,
-					label: 'headFontSizeType',
-				} }
-				fontSize={ { value: headFontSize, label: 'headFontSize' } }
-				fontSizeMobile={ {
-					value: headFontSizeMobile,
-					label: 'headFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: headFontSizeTablet,
-					label: 'headFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: headLineHeightType,
-					label: 'headLineHeightType',
-				} }
-				lineHeight={ {
-					value: headLineHeight,
-					label: 'headLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: headLineHeightMobile,
-					label: 'headLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: headLineHeightTablet,
-					label: 'headLineHeightTablet',
-				} }
-			/>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={headingColor ? headingColor : ""}
+					onColorChange={(value) =>
+						setAttributes({ headingColor: value })
+					}
+				/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: headLoadGoogleFonts,
+						label: 'headLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: headFontFamily,
+						label: 'headFontFamily',
+					} }
+					fontWeight={ {
+						value: headFontWeight,
+						label: 'headFontWeight',
+					} }
+					fontSubset={ {
+						value: headFontSubset,
+						label: 'headFontSubset',
+					} }
+					fontSizeType={ {
+						value: headFontSizeType,
+						label: 'headFontSizeType',
+					} }
+					fontSize={ { value: headFontSize, label: 'headFontSize' } }
+					fontSizeMobile={ {
+						value: headFontSizeMobile,
+						label: 'headFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: headFontSizeTablet,
+						label: 'headFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: headLineHeightType,
+						label: 'headLineHeightType',
+					} }
+					lineHeight={ {
+						value: headLineHeight,
+						label: 'headLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: headLineHeightMobile,
+						label: 'headLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: headLineHeightTablet,
+						label: 'headLineHeightTablet',
+					} }
+				/>
+				<Range
+					label={__(
+						"Bottom Spacing",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={headSpace}
+					onChange={(value) =>
+						setAttributes({ headSpace: value })
+					}
+					min={0}
+					max={50}
+					displayUnit={false}
+				/>
 			</PanelBody>
 			)
 	}
@@ -915,66 +899,78 @@ const Settings = ( props ) => {
 					setAttributes({ dateColor: value })
 				}
 			/>
-			{ displayPostDate && (
-					<>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ props.attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: dateLoadGoogleFonts,
-								label: 'dateLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: dateFontFamily,
-								label: 'dateFontFamily',
-							} }
-							fontWeight={ {
-								value: dateFontWeight,
-								label: 'dateFontWeight',
-							} }
-							fontSubset={ {
-								value: dateFontSubset,
-								label: 'dateFontSubset',
-							} }
-							fontSizeType={ {
-								value: dateFontsizeType,
-								label: 'dateFontsizeType',
-							} }
-							fontSize={ {
-								value: dateFontsize,
-								label: 'dateFontsize',
-							} }
-							fontSizeMobile={ {
-								value: dateFontsizeMobile,
-								label: 'dateFontsizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: dateFontsizeTablet,
-								label: 'dateFontsizeTablet',
-							} }
-							lineHeightType={ {
-								value: dateLineHeightType,
-								label: 'dateLineHeightType',
-							} }
-							lineHeight={ {
-								value: dateLineHeight,
-								label: 'dateLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: dateLineHeightMobile,
-								label: 'dateLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: dateLineHeightTablet,
-								label: 'dateLineHeightTablet',
-							} }
-						/>
-					</>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
 				) }
+				attributes={ props.attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: dateLoadGoogleFonts,
+					label: 'dateLoadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: dateFontFamily,
+					label: 'dateFontFamily',
+				} }
+				fontWeight={ {
+					value: dateFontWeight,
+					label: 'dateFontWeight',
+				} }
+				fontSubset={ {
+					value: dateFontSubset,
+					label: 'dateFontSubset',
+				} }
+				fontSizeType={ {
+					value: dateFontsizeType,
+					label: 'dateFontsizeType',
+				} }
+				fontSize={ {
+					value: dateFontsize,
+					label: 'dateFontsize',
+				} }
+				fontSizeMobile={ {
+					value: dateFontsizeMobile,
+					label: 'dateFontsizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: dateFontsizeTablet,
+					label: 'dateFontsizeTablet',
+				} }
+				lineHeightType={ {
+					value: dateLineHeightType,
+					label: 'dateLineHeightType',
+				} }
+				lineHeight={ {
+					value: dateLineHeight,
+					label: 'dateLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: dateLineHeightMobile,
+					label: 'dateLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: dateLineHeightTablet,
+					label: 'dateLineHeightTablet',
+				} }
+			/>
+			{ timelinAlignment !== 'center' && (
+				<Range
+					label={__(
+						"Date Bottom Spacing",
+						"ultimate-addons-for-gutenberg"
+					)}
+					setAttributes={setAttributes}
+					value={dateBottomspace}
+					onChange={(value) =>
+						setAttributes({ dateBottomspace: value })
+					}
+					min={0}
+					max={50}
+					displayUnit={false}
+				/>
+			) }
 			</PanelBody>
 		);
 	};
@@ -1158,7 +1154,7 @@ const Settings = ( props ) => {
 				<InspectorTab {...UAGTabs.style}>
 				{ headingColorSettings() }
 				{ contentColorSettings() }
-				{ dateColorSettings() }
+				{ displayPostDate && ( dateColorSettings() ) }
 				{ backgroundColorSetting() }
 				{ connectorColorSettings() }
 				{ spacingSettings() }

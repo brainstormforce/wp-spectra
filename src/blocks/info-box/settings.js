@@ -1,20 +1,20 @@
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import { __ } from "@wordpress/i18n";
 import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import TypographyControl from "@Components/typography";
 import WebfontLoader from "@Components/typography/fontloader";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import UAGImage from "../../components/image";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import UAGImage from "@Components/image";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 $ = jQuery;
 
@@ -418,33 +418,19 @@ const Settings = (props) => {
 						onChange={(value) => setAttributes({ stack: value })}
 					/>
 				)}
-				<SelectControl
-					label={__("Select Source", "ultimate-addons-for-gutenberg")}
-					value={source_type}
-					onChange={(value) => setAttributes({ source_type: value })}
-					options={[
-						{
-							value: "icon",
-							label: __("Icon", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "image",
-							label: __("Image", "ultimate-addons-for-gutenberg"),
-						},
-					]}
-				/>
 				{iconimgPosition &&
 					iconimgPosition !== "above-title" &&
 					iconimgPosition !== "below-title" && (
-						<SelectControl
+						<MultiButtonsControl
+							setAttributes={setAttributes}
 							label={__(
 								"Vertical Alignment",
 								"ultimate-addons-for-gutenberg"
 							)}
-							value={sourceAlign}
-							onChange={(value) =>
-								setAttributes({ sourceAlign: value })
-							}
+							data={{
+								value: sourceAlign,
+								label: "sourceAlign",
+							}}
 							options={[
 								{
 									value: "top",
@@ -463,6 +449,27 @@ const Settings = (props) => {
 							]}
 						/>
 					)}
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__(
+						"Select Source",
+						"ultimate-addons-for-gutenberg"
+					)}
+					data={{
+						value: source_type,
+						label: "source_type",
+					}}
+					options={[
+						{
+							value: "icon",
+							label: __("Icon", "ultimate-addons-for-gutenberg"),
+						},
+						{
+							value: "image",
+							label: __("Image", "ultimate-addons-for-gutenberg"),
+						},
+					]}
+				/>
 				{source_type == "icon" && (
 					<>
 						<UAGIconPicker

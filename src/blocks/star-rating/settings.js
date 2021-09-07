@@ -1,20 +1,16 @@
 // Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
+import TypographyControl from "@Components/typography"
 // Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
+import WebfontLoader from "@Components/typography/fontloader"
 import { __ } from '@wordpress/i18n';
-import {
-	InspectorControls,
-} from "@wordpress/block-editor"
-
-import {
-	PanelBody,
-} from "@wordpress/components"
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import { InspectorControls } from "@wordpress/block-editor"
+import { PanelBody,Icon } from "@wordpress/components"
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import renderSVG from "@Controls/renderIcon";
 
 const Settings = ( props ) => {
     props = props.parentProps;
@@ -52,7 +48,7 @@ const Settings = ( props ) => {
 	let loadTitleGoogleFonts;
 
 	if( loadGoogleFonts == true ) {
-		
+
 		const hconfig = {
 			google: {
 				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
@@ -64,18 +60,18 @@ const Settings = ( props ) => {
 			</WebfontLoader>
 		)
 	}
-    
+
     let alignmentOptions = [
-        { value: "left", label: __( "Left", 'ultimate-addons-for-gutenberg' ) },
-        { value: "center", label: __( "Center", 'ultimate-addons-for-gutenberg' ) },
-        { value: "right", label: __( "Right", 'ultimate-addons-for-gutenberg' ) },
-        { value: "full", label: __( "Full Width", 'ultimate-addons-for-gutenberg' ) },
+        { value: "left", icon: (<Icon icon={ renderSVG( "fa fa-align-left" )}/>) },
+        { value: "center", icon: (<Icon icon={ renderSVG( "fa fa-align-center" )}/>) },
+        { value: "right", icon: (<Icon icon={ renderSVG( "fa fa-align-right" )}/>) },
+        { value: "full", icon: ( <Icon icon={ renderSVG( "fa fa-align-justify" )}/> ) },
     ];
 	if ( 'stack' === layout ) {
 		alignmentOptions = [
-            { value: "left", label: __( "Left", 'ultimate-addons-for-gutenberg' ) },
-            { value: "center", label: __( "Center", 'ultimate-addons-for-gutenberg' ) },
-            { value: "right", label: __( "Right", 'ultimate-addons-for-gutenberg' ) },
+            { value: "left", icon: (<Icon icon={ renderSVG( "fa fa-align-left" )}/>) },
+            { value: "center", icon: (<Icon icon={ renderSVG( "fa fa-align-center" )}/>) },
+            { value: "right", icon: (<Icon icon={ renderSVG( "fa fa-align-right" )}/>) },
         ];
 		if ( 'full' === align ) {
 			setAttributes( {
@@ -145,11 +141,22 @@ const Settings = ( props ) => {
                     label: "align",
                 }}
                 options={ alignmentOptions }
+                showIcons={true}
             />
         </PanelBody>
     )
     const titleStyling =  (
         <PanelBody title={ __( "Title", 'ultimate-addons-for-gutenberg' ) } initialOpen={false}>
+            <AdvancedPopColorControl
+                label={__(
+                    "Color",
+                    "ultimate-addons-for-gutenberg"
+                )}
+                colorValue={titleColor}
+                onColorChange={(value) =>
+                    setAttributes({ titleColor: value })
+                }
+            />
              <TypographyControl
                 label={ __( "Typography", 'ultimate-addons-for-gutenberg' ) }
                 attributes = { attributes }
@@ -166,16 +173,6 @@ const Settings = ( props ) => {
                 lineHeight = { { value: lineHeight, label:'lineHeight'  } }
                 lineHeightMobile = { { value: lineHeightMobile, label:'lineHeightMobile'  } }
                 lineHeightTablet= { { value: lineHeightTablet, label:'lineHeightTablet'  } }
-            />
-            <AdvancedPopColorControl
-                label={__(
-                    "Color",
-                    "ultimate-addons-for-gutenberg"
-                )}
-                colorValue={titleColor}
-                onColorChange={(value) =>
-                    setAttributes({ titleColor: value })
-                }
             />
             <Range
                 label={__(

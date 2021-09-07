@@ -1,18 +1,18 @@
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import renderSVG from "@Controls/renderIcon";
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import SpacingControl from "../../components/spacing-control";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGImage from "../../components/image";
-import UAGTabsControl from "../../components/tabs";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import SpacingControl from "@Components/spacing-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGImage from "@Components/image";
+import UAGTabsControl from "@Components/tabs";
 
 let imageSizeOptions = [
 	{
@@ -124,6 +124,8 @@ const Settings = ( props ) => {
 		imageMarginBottomMobile,
 		imageMarginLeftMobile,
 		imageMarginUnit,
+		tabletImageMarginUnit,
+		mobileImageMarginUnit,
 		spacingLink,
 	} = attributes;
 
@@ -508,7 +510,6 @@ const Settings = ( props ) => {
 								} )
 							}
 						/>
-						<hr className="uagb-editor__separator" />
 						<p className="components-base-control__label">
 								{ __(
 									'Twitter',
@@ -537,7 +538,6 @@ const Settings = ( props ) => {
 								/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Facebook',
@@ -566,7 +566,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'LinkedIn',
@@ -595,7 +594,6 @@ const Settings = ( props ) => {
 							/>
 							</>
 							}
-							<hr className="uagb-editor__separator" />
 							<p className="components-base-control__label">
 								{ __(
 									'Pinterest',
@@ -638,7 +636,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ false }
-			>	
+			>
 				<AdvancedPopColorControl
 					label={__(
 						"Color",
@@ -1078,12 +1076,12 @@ const Settings = ( props ) => {
 						label: "imageMarginUnit",
 					}}
 					mUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: mobileImageMarginUnit,
+						label: "mobileImageMarginUnit",
 					}}
 					tUnit={{
-						value: imageMarginUnit,
-						label: "imageMarginUnit",
+						value: tabletImageMarginUnit,
+						label: "tabletImageMarginUnit",
 					}}
 					deviceType={deviceType}
 					attributes={attributes}

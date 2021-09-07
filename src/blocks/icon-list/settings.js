@@ -9,11 +9,11 @@ import {
 	BlockAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 import {
 	PanelBody,
@@ -93,7 +93,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			
+
 				<PanelBody
 					initialOpen={ true }
 				>
@@ -160,17 +160,6 @@ const Settings = ( props ) => {
 										),
 									},
 									{
-										value: 'desktop',
-										label: __(
-											'Desktop',
-											'ultimate-addons-for-gutenberg'
-										),
-										tooltip: __(
-											"Desktop",
-											"ultimate-addons-for-gutenberg"
-										),
-									},
-									{
 										value: 'tablet',
 										label: __(
 											'Tablet',
@@ -201,14 +190,6 @@ const Settings = ( props ) => {
 							/>
 						</>
 					) }
-					<ToggleControl
-						label={ __(
-							'Hide Labels',
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ hideLabel }
-						onChange={ ( value ) => changeChildAttr( value ) }
-					/>
 					{ ! hideLabel && (
 					<>
 						<MultiButtonsControl
@@ -242,6 +223,14 @@ const Settings = ( props ) => {
 						/>
 					</>
 					)}
+					<ToggleControl
+						label={ __(
+							'Hide Labels',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ hideLabel }
+						onChange={ ( value ) => changeChildAttr( value ) }
+					/>
 				</PanelBody>
 		);
 	};
@@ -249,12 +238,12 @@ const Settings = ( props ) => {
 	const commonSetting = () => {
 		return (
 				<PanelBody
-					title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
 					<Range
 						label={__(
-							"Gap between Items",
+							"Gap between Items (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -267,77 +256,83 @@ const Settings = ( props ) => {
 						displayUnit={false}
 						help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results.", 'ultimate-addons-for-gutenberg' ) }
 					/>
-					{ ! hideLabel && (
-						<>
-							<Range
-								label={__(
-									"Gap between Icon and Label",
-									"ultimate-addons-for-gutenberg"
-								)}
-								setAttributes={setAttributes}
-								value={inner_gap}
-								onChange={(value) =>
-									setAttributes({ inner_gap: value })
-								}
-								min={0}
-								max={100}
-								displayUnit={false}
-							/>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: loadGoogleFonts,
-									label: 'loadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: fontFamily,
-									label: 'fontFamily',
-								} }
-								fontWeight={ {
-									value: fontWeight,
-									label: 'fontWeight',
-								} }
-								fontSubset={ {
-									value: fontSubset,
-									label: 'fontSubset',
-								} }
-								fontSizeType={ {
-									value: fontSizeType,
-									label: 'fontSizeType',
-								} }
-								fontSize={ { value: fontSize, label: 'fontSize' } }
-								fontSizeMobile={ {
-									value: fontSizeMobile,
-									label: 'fontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: fontSizeTablet,
-									label: 'fontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: lineHeightType,
-									label: 'lineHeightType',
-								} }
-								lineHeight={ {
-									value: lineHeight,
-									label: 'lineHeight',
-								} }
-								lineHeightMobile={ {
-									value: lineHeightMobile,
-									label: 'lineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: lineHeightTablet,
-									label: 'lineHeightTablet',
-								} }
-							/>
-						</>
-					)}
+				</PanelBody>
+		)
+	}
+
+	const labelSetting = () => {
+		return (
+				<PanelBody
+					title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					<Range
+						label={__(
+							"Gap between Icon and Label (px)",
+							"ultimate-addons-for-gutenberg"
+						)}
+						setAttributes={setAttributes}
+						value={inner_gap}
+						onChange={(value) =>
+							setAttributes({ inner_gap: value })
+						}
+						min={0}
+						max={100}
+						displayUnit={false}
+					/>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: loadGoogleFonts,
+							label: 'loadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: fontFamily,
+							label: 'fontFamily',
+						} }
+						fontWeight={ {
+							value: fontWeight,
+							label: 'fontWeight',
+						} }
+						fontSubset={ {
+							value: fontSubset,
+							label: 'fontSubset',
+						} }
+						fontSizeType={ {
+							value: fontSizeType,
+							label: 'fontSizeType',
+						} }
+						fontSize={ { value: fontSize, label: 'fontSize' } }
+						fontSizeMobile={ {
+							value: fontSizeMobile,
+							label: 'fontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: fontSizeTablet,
+							label: 'fontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: lineHeightType,
+							label: 'lineHeightType',
+						} }
+						lineHeight={ {
+							value: lineHeight,
+							label: 'lineHeight',
+						} }
+						lineHeightMobile={ {
+							value: lineHeightMobile,
+							label: 'lineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: lineHeightTablet,
+							label: 'lineHeightTablet',
+						} }
+					/>
 				</PanelBody>
 		)
 	}
@@ -393,7 +388,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Background Size",
+							"Background Size (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -408,7 +403,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Border",
+							"Border (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -423,7 +418,7 @@ const Settings = ( props ) => {
 					/>
 					<Range
 						label={__(
-							"Border Radius",
+							"Border Radius (px)",
 							"ultimate-addons-for-gutenberg"
 						)}
 						setAttributes={setAttributes}
@@ -449,7 +444,8 @@ const Settings = ( props ) => {
 				{ generalSetting() }
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
-					{iconSetting()} 
+					{iconSetting()}
+					{ ! hideLabel && ( labelSetting() ) }
 					{commonSetting()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.advance}  parentProps = {props}></InspectorTab>

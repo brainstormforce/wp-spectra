@@ -7,20 +7,18 @@ import React, { Suspense } from "react";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
-import ResponsiveSlider from "../../components/responsive-slider";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import SpacingControl from "../../components/spacing-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, {
-	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import SpacingControl from "@Components/spacing-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 import { __ } from "@wordpress/i18n";
-import Border from "../../components/border";
+import Border from "@Components/border";
 import { select } from "@wordpress/data";
-import UAGIconPicker from "../../components/icon-picker";
-import UAGTabsControl from "../../components/tabs";
+import UAGIconPicker from "@Components/icon-picker";
+import UAGTabsControl from "@Components/tabs";
 
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -53,8 +51,12 @@ const Settings = (props) => {
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
+		questionPaddingTypeMobile,
+		questionPaddingTypeTablet,
 		answerTextColor,
 		answerPaddingTypeDesktop,
+		answerPaddingTypeMobile,
+		answerPaddingTypeTablet,
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
@@ -593,12 +595,12 @@ const Settings = (props) => {
 						label: "questionPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeMobile,
+						label: "questionPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeTablet,
+						label: "questionPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
@@ -627,6 +629,13 @@ const Settings = (props) => {
 				initialOpen={false}
 				className="uagb__url-panel-body"
 			>
+				<AdvancedPopColorControl
+					label={__("Text Color", "ultimate-addons-for-gutenberg")}
+					colorValue={answerTextColor}
+					onColorChange={(value) =>
+						setAttributes({ answerTextColor: value })
+					}
+				/>
 				<TypographyControl
 					label={__("Typography", "ultimate-addons-for-gutenberg")}
 					attributes={attributes}
@@ -679,13 +688,6 @@ const Settings = (props) => {
 						value: answerLineHeightTablet,
 						label: "answerLineHeightTablet",
 					}}
-				/>
-				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={answerTextColor}
-					onColorChange={(value) =>
-						setAttributes({ answerTextColor: value })
-					}
 				/>
 				<SpacingControl
 					{...props}
@@ -743,12 +745,12 @@ const Settings = (props) => {
 						label: "answerPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeMobile,
+						label: "answerPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeTablet,
+						label: "answerPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
@@ -773,7 +775,7 @@ const Settings = (props) => {
 	const commonStyle = () => {
 		return (
 			<PanelBody
-				title={__("Common", "ultimate-addons-for-gutenberg")}
+				title={__("Container", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 				className="uagb__url-panel-body"
 			>

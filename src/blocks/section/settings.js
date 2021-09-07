@@ -2,13 +2,13 @@ import React, { Suspense } from "react";
 import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import BoxShadowControl from "@Components/box-shadow";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import Background from "../../components/background";
-import Border from "../../components/border";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -243,77 +243,6 @@ const Settings = (props) => {
 			<PanelBody title="Spacing" initialOpen={false}>
 				<SpacingControl
 					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
-						value: topPadding,
-						label: "topPadding",
-					}}
-					valueRight={{
-						value: rightPadding,
-						label: "rightPadding",
-					}}
-					valueBottom={{
-						value: bottomPadding,
-						label: "bottomPadding",
-					}}
-					valueLeft={{
-						value: leftPadding,
-						label: "leftPadding",
-					}}
-					valueTopTablet={{
-						value: topPaddingTablet,
-						label: "topPaddingTablet",
-					}}
-					valueRightTablet={{
-						value: rightPaddingTablet,
-						label: "rightPaddingTablet",
-					}}
-					valueBottomTablet={{
-						value: bottomPaddingTablet,
-						label: "bottomPaddingTablet",
-					}}
-					valueLeftTablet={{
-						value: leftPaddingTablet,
-						label: "leftPaddingTablet",
-					}}
-					valueTopMobile={{
-						value: topPaddingMobile,
-						label: "topPaddingMobile",
-					}}
-					valueRightMobile={{
-						value: rightPaddingMobile,
-						label: "rightPaddingMobile",
-					}}
-					valueBottomMobile={{
-						value: bottomPaddingMobile,
-						label: "bottomPaddingMobile",
-					}}
-					valueLeftMobile={{
-						value: leftPaddingMobile,
-						label: "leftPaddingMobile",
-					}}
-					unit={{
-						value: desktopPaddingType,
-						label: "desktopPaddingType",
-					}}
-					mUnit={{
-						value: mobilePaddingType,
-						label: "mobilePaddingType",
-					}}
-					tUnit={{
-						value: tabletPaddingType,
-						label: "tabletPaddingType",
-					}}
-					deviceType={deviceType}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
-						value: spacingLink,
-						label: "spacingLink",
-					}}
-				/>
-				<SpacingControl
-					{...props}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
 					valueTop={{
 						value: topMargin,
@@ -381,6 +310,77 @@ const Settings = (props) => {
 					link={{
 						value: marginspacingLink,
 						label: "marginspacingLink",
+					}}
+				/>
+				<SpacingControl
+					{...props}
+					label={__("Padding", "ultimate-addons-for-gutenberg")}
+					valueTop={{
+						value: topPadding,
+						label: "topPadding",
+					}}
+					valueRight={{
+						value: rightPadding,
+						label: "rightPadding",
+					}}
+					valueBottom={{
+						value: bottomPadding,
+						label: "bottomPadding",
+					}}
+					valueLeft={{
+						value: leftPadding,
+						label: "leftPadding",
+					}}
+					valueTopTablet={{
+						value: topPaddingTablet,
+						label: "topPaddingTablet",
+					}}
+					valueRightTablet={{
+						value: rightPaddingTablet,
+						label: "rightPaddingTablet",
+					}}
+					valueBottomTablet={{
+						value: bottomPaddingTablet,
+						label: "bottomPaddingTablet",
+					}}
+					valueLeftTablet={{
+						value: leftPaddingTablet,
+						label: "leftPaddingTablet",
+					}}
+					valueTopMobile={{
+						value: topPaddingMobile,
+						label: "topPaddingMobile",
+					}}
+					valueRightMobile={{
+						value: rightPaddingMobile,
+						label: "rightPaddingMobile",
+					}}
+					valueBottomMobile={{
+						value: bottomPaddingMobile,
+						label: "bottomPaddingMobile",
+					}}
+					valueLeftMobile={{
+						value: leftPaddingMobile,
+						label: "leftPaddingMobile",
+					}}
+					unit={{
+						value: desktopPaddingType,
+						label: "desktopPaddingType",
+					}}
+					mUnit={{
+						value: mobilePaddingType,
+						label: "mobilePaddingType",
+					}}
+					tUnit={{
+						value: tabletPaddingType,
+						label: "tabletPaddingType",
+					}}
+					deviceType={deviceType}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					link={{
+						value: spacingLink,
+						label: "spacingLink",
 					}}
 				/>
 			</PanelBody>
@@ -565,9 +565,9 @@ const Settings = (props) => {
 					{getLayoutPanelBody()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>
-					{getSpacingPanelBody()}
-					{getBorderPanelBody()}
 					{getBackgroundPanelBody()}
+					{getBorderPanelBody()}
+					{getSpacingPanelBody()}
 				</InspectorTab>
 				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>

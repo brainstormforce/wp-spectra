@@ -622,6 +622,14 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'buttonPaddingTypeTablet'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonPaddingTypeMobile'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'buttonSpacingLink'             => array(
 							'type'    => 'boolean',
 							'default' => false,
@@ -666,6 +674,14 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type' => 'number',
 						),
 						'fieldPaddingTypeDesktop'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldPaddingTypeTablet'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldPaddingTypeMobile'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),

@@ -5,17 +5,17 @@ import WebfontLoader from "@Components/typography/fontloader";
 import renderSVG from "@Controls/renderIcon";
 import TypographyControl from "@Components/typography";
 import BoxShadowControl from "@Components/box-shadow";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 import {
 	PanelBody,
 	SelectControl,
@@ -928,13 +928,13 @@ const Settings = (props) => {
 					borderWidth={{
 						value: borderThickness,
 						label: "borderThickness",
-						title: __("Thickness", "ultimate-addons-for-gutenberg"),
+						title: __("Width", "ultimate-addons-for-gutenberg"),
 					}}
 					borderRadius={{
 						value: borderRadius,
 						label: "borderRadius",
 						title: __(
-							"Rounded Corners",
+							"Radius",
 							"ultimate-addons-for-gutenberg"
 						),
 					}}

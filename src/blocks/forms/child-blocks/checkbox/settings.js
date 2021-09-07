@@ -2,6 +2,8 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { PanelBody, ToggleControl } from '@wordpress/components';
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -15,9 +17,7 @@ const Settings = ( props ) => {
 	const checkboxInspectorControls = () => {
 		return (
 			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
-				className="uagb__url-panel-body"
 			>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
@@ -33,11 +33,15 @@ const Settings = ( props ) => {
 	};
 
 	return (
-		<>
 			<InspectorControls>
-				{ checkboxInspectorControls() }
+				<InspectorTabs tabs={["general", "advance"]}>
+					<InspectorTab {...UAGTabs.general}>
+					{ checkboxInspectorControls() }
+					</InspectorTab>
+					<InspectorTab {...UAGTabs.advance}>
+					</InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
-		</>
 	);
 };
 

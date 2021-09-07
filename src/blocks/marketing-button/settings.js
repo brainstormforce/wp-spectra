@@ -1,22 +1,22 @@
 // Import all of our Text Options requirements.
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import React, { Suspense, useState } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import Border from "../../components/border";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import Border from "@Components/border";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	BlockControls,
@@ -212,7 +212,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Text Alignment",
+						"Alignment",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -255,7 +255,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
-						"Title Tag",
+						"Tag",
 						"ultimate-addons-for-gutenberg"
 					)}
 					data={{
@@ -374,7 +374,7 @@ const Settings = ( props ) => {
 	const titleSettings = () => {
 		return (
 			<PanelBody
-				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<Range
@@ -1027,7 +1027,7 @@ const Settings = ( props ) => {
 						value: borderStyle,
 						label: "borderStyle",
 						title: __(
-							"Border Style",
+							"Style",
 							"ultimate-addons-for-gutenberg"
 						),
 					}}

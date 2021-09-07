@@ -1,17 +1,17 @@
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import renderSVG from "@Controls/renderIcon";
 import TypographyControl from "@Components/typography";
 import ResponsiveSelectControl from "@Components/responsive-select";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import Border from "../../components/border";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import Border from "@Components/border";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import UAGTabsControl from "@Components/tabs";
 
 import React from "react";
 import { __ } from "@wordpress/i18n";
@@ -413,7 +413,7 @@ const Settings = (props) => {
 		return (
 			<PanelBody
 				title={__(
-					"Tabs Title Settings",
+					"Tabs Title",
 					"ultimate-addons-for-gutenberg"
 				)}
 				initialOpen={false}
@@ -834,6 +834,87 @@ const Settings = (props) => {
 				title={__("Title", "ultimate-addons-for-gutenberg")}
 				initialOpen={false}
 			>
+				<UAGTabsControl
+					tabs={[
+						{
+							name: "normal",
+							title: __(
+								"Normal",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+						{
+							name: "active",
+							title: __(
+								"Active",
+								"ultimate-addons-for-gutenberg"
+							),
+						},
+					]}
+					normal={tabOutputNormal}
+					active={tabOutputActive}
+				/>
+				<TypographyControl
+					label={__("Typography", "ultimate-addons-for-gutenberg")}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					loadGoogleFonts={{
+						value: titleLoadGoogleFonts,
+						label: "titleLoadGoogleFonts",
+					}}
+					fontFamily={{
+						value: titleFontFamily,
+						label: "titleFontFamily",
+					}}
+					fontWeight={{
+						value: titleFontWeight,
+						label: "titleFontWeight",
+					}}
+					fontSubset={{
+						value: titleFontSubset,
+						label: "titleFontSubset",
+					}}
+					fontSizeType={{
+						value: titleFontSizeType,
+						label: "titleFontSizeType",
+					}}
+					fontSize={{
+						value: titleFontSize,
+						label: "titleFontSize",
+					}}
+					fontSizeMobile={{
+						value: titleFontSizeMobile,
+						label: "titleFontSizeMobile",
+					}}
+					fontSizeTablet={{
+						value: titleFontSizeTablet,
+						label: "titleFontSizeTablet",
+					}}
+					lineHeightType={{
+						value: titleLineHeightType,
+						label: "titleLineHeightType",
+					}}
+					lineHeight={{
+						value: titleLineHeight,
+						label: "titleLineHeight",
+					}}
+					lineHeightMobile={{
+						value: titleLineHeightMobile,
+						label: "titleLineHeightMobile",
+					}}
+					lineHeightTablet={{
+						value: titleLineHeightTablet,
+						label: "titleLineHeightTablet",
+					}}
+					transform={{
+						value: titleTransform,
+						label: "titleTransform",
+					}}
+					decoration={{
+						value: titleDecoration,
+						label: "titleDecoration",
+					}}
+				/>
 				<SpacingControl
 					{...props}
 					label={__("Margin", "ultimate-addons-for-gutenberg")}
@@ -972,87 +1053,6 @@ const Settings = (props) => {
 					link={{
 						value: tabTitlePaddingLink,
 						label: "tabTitlePaddingLink",
-					}}
-				/>
-				<UAGTabsControl
-					tabs={[
-						{
-							name: "normal",
-							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							name: "active",
-							title: __(
-								"Active",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-					]}
-					normal={tabOutputNormal}
-					active={tabOutputActive}
-				/>
-				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
-						value: titleLoadGoogleFonts,
-						label: "titleLoadGoogleFonts",
-					}}
-					fontFamily={{
-						value: titleFontFamily,
-						label: "titleFontFamily",
-					}}
-					fontWeight={{
-						value: titleFontWeight,
-						label: "titleFontWeight",
-					}}
-					fontSubset={{
-						value: titleFontSubset,
-						label: "titleFontSubset",
-					}}
-					fontSizeType={{
-						value: titleFontSizeType,
-						label: "titleFontSizeType",
-					}}
-					fontSize={{
-						value: titleFontSize,
-						label: "titleFontSize",
-					}}
-					fontSizeMobile={{
-						value: titleFontSizeMobile,
-						label: "titleFontSizeMobile",
-					}}
-					fontSizeTablet={{
-						value: titleFontSizeTablet,
-						label: "titleFontSizeTablet",
-					}}
-					lineHeightType={{
-						value: titleLineHeightType,
-						label: "titleLineHeightType",
-					}}
-					lineHeight={{
-						value: titleLineHeight,
-						label: "titleLineHeight",
-					}}
-					lineHeightMobile={{
-						value: titleLineHeightMobile,
-						label: "titleLineHeightMobile",
-					}}
-					lineHeightTablet={{
-						value: titleLineHeightTablet,
-						label: "titleLineHeightTablet",
-					}}
-					transform={{
-						value: titleTransform,
-						label: "titleTransform",
-					}}
-					decoration={{
-						value: titleDecoration,
-						label: "titleDecoration",
 					}}
 				/>
 			</PanelBody>
