@@ -165,6 +165,8 @@ const Settings = (props) => {
 		messageBottomPaddingMobile,
 		messageLeftPaddingMobile,
 		messagePaddingTypeDesktop,
+		messagePaddingTypeTablet,
+		messagePaddingTypeMobile,
 		messageSpacingLink,
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
@@ -179,6 +181,8 @@ const Settings = (props) => {
 		buttonBottomPaddingMobile,
 		buttonLeftPaddingMobile,
 		buttonPaddingTypeDesktop,
+		buttonPaddingTypeTablet,
+		buttonPaddingTypeMobile,
 		buttonSpacingLink,
 		fieldTopPaddingDesktop,
 		fieldRightPaddingDesktop,
@@ -193,6 +197,8 @@ const Settings = (props) => {
 		fieldBottomPaddingMobile,
 		fieldLeftPaddingMobile,
 		fieldPaddingTypeDesktop,
+		fieldPaddingTypeMobile,
+		fieldPaddingTypeTablet,
 		fieldSpacingLink,
 	} = attributes;
 
@@ -809,12 +815,12 @@ const Settings = (props) => {
 					label: "fieldPaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: fieldPaddingTypeDesktop,
-					label: "fieldPaddingTypeDesktop",
+					value: fieldPaddingTypeMobile,
+					label: "fieldPaddingTypeMobile",
 				}}
 				tUnit={{
-					value: fieldPaddingTypeDesktop,
-					label: "fieldPaddingTypeDesktop",
+					value: fieldPaddingTypeTablet,
+					label: "fieldPaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -1160,12 +1166,12 @@ const Settings = (props) => {
 					label: "buttonPaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: buttonPaddingTypeDesktop,
-					label: "buttonPaddingTypeDesktop",
+					value: buttonPaddingTypeMobile,
+					label: "buttonPaddingTypeMobile",
 				}}
 				tUnit={{
-					value: buttonPaddingTypeDesktop,
-					label: "buttonPaddingTypeDesktop",
+					value: buttonPaddingTypeTablet,
+					label: "buttonPaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}
@@ -1508,12 +1514,12 @@ const Settings = (props) => {
 					label: "messagePaddingTypeDesktop",
 				}}
 				mUnit={{
-					value: messagePaddingTypeDesktop,
-					label: "messagePaddingTypeDesktop",
+					value: messagePaddingTypeMobile,
+					label: "messagePaddingTypeMobile",
 				}}
 				tUnit={{
-					value: messagePaddingTypeDesktop,
-					label: "messagePaddingTypeDesktop",
+					value: messagePaddingTypeTablet,
+					label: "messagePaddingTypeTablet",
 				}}
 				attributes={attributes}
 				setAttributes={setAttributes}

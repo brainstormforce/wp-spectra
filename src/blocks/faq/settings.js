@@ -51,8 +51,12 @@ const Settings = (props) => {
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
+		questionPaddingTypeMobile,
+		questionPaddingTypeTablet,
 		answerTextColor,
 		answerPaddingTypeDesktop,
+		answerPaddingTypeMobile,
+		answerPaddingTypeTablet,
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
@@ -591,12 +595,12 @@ const Settings = (props) => {
 						label: "questionPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeMobile,
+						label: "questionPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
+						value: questionPaddingTypeTablet,
+						label: "questionPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}
@@ -741,12 +745,12 @@ const Settings = (props) => {
 						label: "answerPaddingTypeDesktop",
 					}}
 					mUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeMobile,
+						label: "answerPaddingTypeMobile",
 					}}
 					tUnit={{
-						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
+						value: answerPaddingTypeTablet,
+						label: "answerPaddingTypeTablet",
 					}}
 					attributes={attributes}
 					setAttributes={setAttributes}

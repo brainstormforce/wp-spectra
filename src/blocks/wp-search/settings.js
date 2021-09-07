@@ -13,7 +13,7 @@ import InspectorTab, {
 	UAGTabs,
 } from "../../components/inspector-tabs/InspectorTab.js";
 import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
+import { PanelBody, TextControl } from "@wordpress/components";
 
 import { InspectorControls } from "@wordpress/block-editor";
 
