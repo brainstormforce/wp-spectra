@@ -52,7 +52,7 @@ function IndividualBlockSetting( props ) {
 	
 	let isCategory = categories.find(element =>	element == props.cat);
 	
-	if(isCategory){
+	if(isCategory || props.cat === 'all'){
 		return (
 			<div className="uag-individual-block-settings-metabox">
 				<ToggleField
