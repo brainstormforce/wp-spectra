@@ -2,7 +2,7 @@ import styles from "./editor.lazy.scss";
 import React, { useLayoutEffect } from "react";
 import classnames from "classnames";
 const { __ } = wp.i18n;
-const { Fragment, cloneElement, Children } = wp.element;
+const { cloneElement, Children } = wp.element;
 
 const { useState, useRef, useEffect } = wp.element,
 	LAYOUT = "general",
@@ -65,7 +65,7 @@ const InspectorTabs = (props) => {
 	};
 
 	return (
-		<Fragment>
+		<>
 			<div className={"uagb-inspector-tabs-container"}>
 				{/*
 				 * The tabs is static, you must use layout, style & advance
@@ -155,7 +155,7 @@ const InspectorTabs = (props) => {
 						isActive: child.key === currentTab,
 					});
 				})}
-		</Fragment>
+		</>
 	);
 };
 
