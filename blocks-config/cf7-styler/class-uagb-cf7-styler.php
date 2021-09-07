@@ -622,11 +622,11 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonPaddingTypeTablet'      => array(
+						'buttonPaddingTypeTablet'       => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonPaddingTypeMobile'      => array(
+						'buttonPaddingTypeMobile'       => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
@@ -677,11 +677,11 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldPaddingTypeTablet'       => array(
+						'fieldPaddingTypeTablet'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldPaddingTypeMobile'       => array(
+						'fieldPaddingTypeMobile'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
