@@ -7,7 +7,6 @@
 	row-gap: 20px;
     column-gap: 20px;
 	h3{
-		font-weight: 500;
 		font-size: 20px;
 	}
 	.uag-metabox{
@@ -17,8 +16,8 @@
     	border-radius: 2px;
 	}
 	p{
-		color:#535C65;
 		line-height: 1.7;
+		max-width: 80%;
 	}
 	.uag-metabox__header{
 		flex: 1 0 0%;
@@ -26,7 +25,6 @@
 		flex-direction: column;
 		p{
 			margin-bottom: 0;
-			max-width: 100%;
 			display: inline-block;
 		}
 		.uag-field{
@@ -46,14 +44,27 @@
 			margin-top: auto;
 		}
 	}
+	.uag-metabox__element:last-of-type{
+		p{
+			width: 100%;
+			max-width: 100%;
+		}
+	}
 	.uag-starter-site__elements{
 		display: grid;
     	grid-template-columns: 40% 55%;
-		column-gap: 20px;
+		padding: 0px;
 		img{
 			height: auto;
 			max-width: 100%;
 			width: 100%;
+		}
+		.uag-starter-tmp__details{
+			padding: 45px;
+			p{
+				width: 100%;
+				max-width: 100%;
+			}
 		}
 	}
 	.uag-theme__metabox{
@@ -64,8 +75,7 @@
 			row-gap: 10px;
 		}
 		p{
-			display: inline-block;		
-			max-width: 100%;
+			display: inline-block;	
 		}
 	}
 }
