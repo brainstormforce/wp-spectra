@@ -3,16 +3,16 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from "../../components/border";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
+import Border from "@Components/border";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
 import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from "@Controls/renderIcon";
-import UAGTabsControl from "../../components/tabs";
+import UAGTabsControl from "@Components/tabs";
 import {
 	PanelBody,
 	SelectControl,
@@ -888,7 +888,7 @@ const Settings = ( props ) => {
 					}}
 					disableBottomSeparator={true}
 				/>
-				
+
 			</PanelBody>
 		);
 	};
@@ -951,7 +951,7 @@ const Settings = ( props ) => {
 													} )
 												}
 											/>
-								
+
 							}
 							cc={
 								<TextControl
@@ -1004,7 +1004,7 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	
+
 	const labelSettings = () => {
 		return (
 			<PanelBody

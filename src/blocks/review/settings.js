@@ -12,10 +12,10 @@ import AdvancedPopColorControl from "@Components/color-control/advanced-pop-colo
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import UAGImage from "../../components/image";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import UAGImage from "@Components/image";
 import SpacingControl from "@Components/spacing-control";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 $ = jQuery;
 import {
@@ -919,7 +919,7 @@ const Settings = (props) => {
 		}
 
 		return (
-			<PanelBody 
+			<PanelBody
 			    title={__("General", "ultimate-addons-for-gutenberg")}
 				initialOpen={true}
 			>

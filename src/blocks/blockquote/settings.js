@@ -4,15 +4,15 @@ import React from 'react';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
-import Range from "../../components/range/Range.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import SpacingControl from "../../components/spacing-control";
-import UAGTabsControl from "../../components/tabs";
-import UAGImage from "../../components/image";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import Range from "@Components/range/Range.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import SpacingControl from "@Components/spacing-control";
+import UAGTabsControl from "@Components/tabs";
+import UAGImage from "@Components/image";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import renderSVG from "@Controls/renderIcon";
 import {
 	PanelBody,
@@ -738,7 +738,7 @@ const Settings = ( props ) => {
 									'Icon',
 									'ultimate-addons-for-gutenberg'
 								),
-							
+
 							},
 							{
 								value: 'text',
@@ -746,7 +746,7 @@ const Settings = ( props ) => {
 									'Text',
 									'ultimate-addons-for-gutenberg'
 								),
-							
+
 							},
 						]}
 						showIcons={false}
@@ -776,7 +776,7 @@ const Settings = ( props ) => {
 									'Bubble',
 									'ultimate-addons-for-gutenberg'
 								),
-							
+
 							},
 							{
 								value: 'link',
@@ -784,7 +784,7 @@ const Settings = ( props ) => {
 									'Link',
 									'ultimate-addons-for-gutenberg'
 								),
-							
+
 							},
 						]}
 						showIcons={false}
@@ -814,7 +814,7 @@ const Settings = ( props ) => {
 									'Custom URL',
 									'ultimate-addons-for-gutenberg'
 								),
-							
+
 							},
 						]}
 						showIcons={false}
@@ -835,7 +835,7 @@ const Settings = ( props ) => {
 			) }
 			{ enableTweet && iconView !== 'icon' && (
 				<>
-					
+
 					<TextControl
 						label={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 						value={ iconLabel }
@@ -1223,7 +1223,7 @@ const Settings = ( props ) => {
 				onColorChange={(value) =>
 					setAttributes({ borderColor: value })
 				}
-			/>	
+			/>
 		);
 		let tabOutputHover = (
 			<AdvancedPopColorControl

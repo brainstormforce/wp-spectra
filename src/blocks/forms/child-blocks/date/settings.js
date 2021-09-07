@@ -2,8 +2,8 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
-import InspectorTabs from "../../../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../../../components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 
 import { InspectorControls } from '@wordpress/block-editor';
 

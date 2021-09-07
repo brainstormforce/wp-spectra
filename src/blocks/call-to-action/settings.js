@@ -1,4 +1,4 @@
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -9,16 +9,16 @@ import {
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import Range from "../../components/range/Range.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import Border from "../../components/border";
-import SpacingControl from "../../components/spacing-control";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import Range from "@Components/range/Range.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import Border from "@Components/border";
+import SpacingControl from "@Components/spacing-control";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	PanelBody,
@@ -916,7 +916,7 @@ const Settings = ( props ) => {
 					]}
 				/>
 				{ ctaType !== 'all' && ctaType !== 'none' && (
-					<>	
+					<>
 						{ ( ctaType === 'text' || ctaType === 'button' ) && (
 							<>
 								{ ctaPosition === 'right' && (
@@ -1068,7 +1068,7 @@ const Settings = ( props ) => {
 							</>
 						) }
 					</>
-				)}			
+				)}
 			</PanelBody>
 		);
 	};

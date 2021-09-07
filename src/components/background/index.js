@@ -1,11 +1,11 @@
 import { __ } from "@wordpress/i18n";
-import Range from "../../components/range/Range.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import { SelectControl } from "@wordpress/components";
 import styles from "./editor.lazy.scss";
-import GradientSettings from "../../components/gradient-settings";
+import GradientSettings from "@Components/gradient-settings";
 import React, { useLayoutEffect } from "react";
-import UAGImage from "../../components/image";
+import UAGImage from "@Components/image";
 
 const Background = (props) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -33,7 +33,7 @@ const Background = (props) => {
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 	} = props;
-	
+
 	const onRemoveImage = () => {
 		const { setAttributes } = props;
 

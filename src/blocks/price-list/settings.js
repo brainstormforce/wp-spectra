@@ -4,15 +4,15 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
-import Range from "../../components/range/Range.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "../../components/spacing-control";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import SpacingControl from "@Components/spacing-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 import renderSVG from "@Controls/renderIcon";
 const maxColumns = 3;
 
@@ -460,13 +460,13 @@ const Settings = ( props ) => {
 									{
 										value: "top",
 										label: 'Top'
-	
+
 									},
 									{
 										value: "middle",
 										label: 'Middle',
 									},
-	
+
 								]}
 								showIcons={false}
 							/>
@@ -657,7 +657,7 @@ const Settings = ( props ) => {
 
 	//seperator setting
 	const separatorSettings = () => {
-		return (	
+		return (
 			<PanelBody title={ __( 'Separator' ) } initialOpen={ false }>
 				<SelectControl
 					label={ __( 'Style' ) }
@@ -930,7 +930,7 @@ const Settings = ( props ) => {
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit = {false}
 								setAttributes={setAttributes}
-							/>	
+							/>
 							<MultiButtonsControl
 								setAttributes={setAttributes}
 								label={__(
@@ -951,7 +951,7 @@ const Settings = ( props ) => {
 									{ value: "span", label: __("Span", "ultimate-addons-for-gutenberg") },
 									{ value: "p", label: __("P", "ultimate-addons-for-gutenberg") },
 								]}
-							/>			
+							/>
 						</PanelBody>
 						{imageSettings()}
 					</InspectorTab>

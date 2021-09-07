@@ -11,8 +11,8 @@ import InspectorTab, {
 } from "@Components/inspector-tabs/InspectorTab.js";
 import MultiButtonsControl from "@Components/multi-buttons-control";
 import renderSVG from '@Controls/renderIcon';
-import Range from "../../components/range/Range.js";
-import UAGTabsControl from "../../components/tabs";
+import Range from "@Components/range/Range.js";
+import UAGTabsControl from "@Components/tabs";
 import SpacingControl from "@Components/spacing-control";
 
 import {

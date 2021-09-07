@@ -1,18 +1,18 @@
 import { __ } from "@wordpress/i18n";
 import TypographyControl from "@Components/typography";
 import BoxShadowControl from "@Components/box-shadow";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import WebfontLoader from "@Components/typography/fontloader";
 import React from "react";
-import Border from "../../components/border";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import UAGTabsControl from "../../components/tabs";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import Border from "@Components/border";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import UAGTabsControl from "@Components/tabs";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import { PanelBody, TextControl } from "@wordpress/components";
 
 import { InspectorControls } from "@wordpress/block-editor";

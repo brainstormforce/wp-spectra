@@ -9,25 +9,25 @@ import renderSVG from "@Controls/renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import UAGBIcon from "@Controls/UAGBIcon.json";
 import UAGB_Block_Icons from "@Controls/block-icons";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import GradientSettings from "../../components/gradient-settings";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import BoxShadowControl from "../../components/box-shadow";
-import Background from "../../components/background";
-import Border from "../../components/border";
-import ResponsiveSlider from "../../components/responsive-slider";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import GradientSettings from "@Components/gradient-settings";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import BoxShadowControl from "@Components/box-shadow";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import ResponsiveSlider from "@Components/responsive-slider";
+import UAGTabsControl from "@Components/tabs";
 // Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography";
+import TypographyControl from "@Components/typography";
 
 // Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader";
+import WebfontLoader from "@Components/typography/fontloader";
 
 // Setup the block
 
