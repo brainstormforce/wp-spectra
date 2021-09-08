@@ -5,10 +5,9 @@ import {
 	Dashicon,
 	RangeControl,
 	__experimentalNumberControl as NumberControl,
-} from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
-const { useSelect, useDispatch } = wp.data;
-
+} from "@wordpress/components";
+import { useState, useEffect } from "@wordpress/element";
+import { useSelect, useDispatch } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import map from 'lodash/map';
 import styles from './editor.lazy.scss';

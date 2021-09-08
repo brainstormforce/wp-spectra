@@ -1,9 +1,8 @@
 import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
-import { ToggleControl, PanelBody, RangeControl } from '@wordpress/components';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
+import { InspectorControls } from "@wordpress/block-editor";
+import { ToggleControl, PanelBody, RangeControl } from "@wordpress/components";
+import { createHigherOrderComponent } from "@wordpress/compose";
+import { addFilter } from "@wordpress/hooks";
 const { enableMasonryGallery } = uagb_blocks_info;
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateCSS from '@Controls/generateCSS';
@@ -90,44 +89,30 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		applyCSS();
 
 		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				{ isSelected &&
-					blockType.includes( blockName ) &&
-					attributes.ids &&
-					attributes.ids.length !== 0 && (
-						<InspectorControls>
-							<PanelBody
-								title={ __(
-									'Masonry Gallery',
-									'ultimate-addons-for-gutenberg'
-								) }
-								initialOpen={ false }
-							>
-								<ToggleControl
-									label={ __( 'Enable Masonry Layout' ) }
-									checked={ attributes.masonry }
-									onChange={ ( value ) => update( value ) }
+			<>
+				<BlockEdit {...props} />
+				{isSelected && blockType.includes(blockName) && attributes.ids && attributes.ids.length !== 0 &&
+					<InspectorControls>
+						<PanelBody title={ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+							<ToggleControl
+								label={ __('Enable Masonry Layout')}
+								checked={attributes.masonry}
+								onChange={(value) => update( value )}
+							/>
+							{ attributes.masonry &&
+								<RangeControl
+									label={ __( "Gap", 'ultimate-addons-for-gutenberg' ) }
+									value={ attributes.masonryGutter }
+									onChange={ ( value ) => applyGutter( value ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
 								/>
-								{ attributes.masonry && (
-									<RangeControl
-										label={ __(
-											'Gap',
-											'ultimate-addons-for-gutenberg'
-										) }
-										value={ attributes.masonryGutter }
-										onChange={ ( value ) =>
-											applyGutter( value )
-										}
-										min={ 0 }
-										max={ 100 }
-										allowReset
-									/>
-								) }
-							</PanelBody>
-						</InspectorControls>
-					) }
-			</Fragment>
+							}
+						</PanelBody>	
+					</InspectorControls>
+				}
+			</>
 		);
 	};
 }, 'MasonryGallery' );

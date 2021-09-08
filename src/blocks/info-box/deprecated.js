@@ -19,8 +19,6 @@ import InfoBoxIconImage from './components/InfoBoxIconImage';
 // Import icon.
 import attributes from './attributes';
 
-import { Fragment } from '@wordpress/element';
-
 const deprecated = [
 	{
 		attributes,
@@ -48,7 +46,7 @@ const deprecated = [
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle && (
 						<InfoBoxSeparator attributes={ props.attributes } />
 					) }
@@ -59,12 +57,12 @@ const deprecated = [
 						/>
 						<InfoBoxCta attributes={ props.attributes } />
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
 			const title_text = (
-				<Fragment>
+				<>
 					<div className="uagb-ifb-title-wrap">
 						<Prefix
 							attributes={ props.attributes }
@@ -75,11 +73,11 @@ const deprecated = [
 							setAttributes="not_set"
 						/>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-infobox__content-wrap',
@@ -102,38 +100,38 @@ const deprecated = [
 									desc }
 
 								{ iconimgPosition === 'left-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ iconimgPosition === 'right-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ( iconimgPosition == 'left' ||
 									iconimgPosition == 'right' ) && (
-									<Fragment>
+									<>
 										{ title_text }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
 							{ iconimgPosition == 'right' && is_image }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -142,7 +140,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -151,7 +149,7 @@ const deprecated = [
 						id={ `uagb-infobox-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-infobox-link-wrap"
@@ -161,11 +159,11 @@ const deprecated = [
 									{ ' ' }
 									{ output }
 								</a>
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -202,7 +200,7 @@ const deprecated = [
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle && (
 						<InfoBoxSeparator attributes={ props.attributes } />
 					) }
@@ -217,12 +215,12 @@ const deprecated = [
 							<InfoBoxCta attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
 			const title_text = (
-				<Fragment>
+				<>
 					<div className="uagb-ifb-title-wrap">
 						{ showPrefix && '' !== prefixTitle && (
 							<Prefix
@@ -237,11 +235,11 @@ const deprecated = [
 							/>
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-infobox__content-wrap',
@@ -264,38 +262,38 @@ const deprecated = [
 									desc }
 
 								{ iconimgPosition === 'left-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ iconimgPosition === 'right-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ( iconimgPosition == 'left' ||
 									iconimgPosition == 'right' ) && (
-									<Fragment>
+									<>
 										{ title_text }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
 							{ iconimgPosition == 'right' && is_image }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -304,7 +302,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -313,7 +311,7 @@ const deprecated = [
 						id={ `uagb-infobox-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-infobox-link-wrap"
@@ -323,11 +321,11 @@ const deprecated = [
 									{ ' ' }
 									{ output }
 								</a>
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -364,7 +362,7 @@ const deprecated = [
 
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle && (
 						<InfoBoxSeparator attributes={ props.attributes } />
 					) }
@@ -379,12 +377,12 @@ const deprecated = [
 							<CallToAction attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
 			const title_text = (
-				<Fragment>
+				<>
 					<div className="uagb-ifb-title-wrap">
 						{ showPrefix && '' !== prefixTitle && (
 							<Prefix
@@ -399,11 +397,11 @@ const deprecated = [
 							/>
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-infobox__content-wrap',
@@ -426,38 +424,38 @@ const deprecated = [
 									desc }
 
 								{ iconimgPosition === 'left-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ iconimgPosition === 'right-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ( iconimgPosition == 'left' ||
 									iconimgPosition == 'right' ) && (
-									<Fragment>
+									<>
 										{ title_text }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
 							{ iconimgPosition == 'right' && is_image }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -466,7 +464,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -475,7 +473,7 @@ const deprecated = [
 						id={ `uagb-infobox-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-infobox-link-wrap"
@@ -485,11 +483,11 @@ const deprecated = [
 									{ ' ' }
 									{ output }
 								</a>
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -539,10 +537,10 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ is_image }
 						{ 'none' !== seperatorStyle && seperator_html }
-					</Fragment>
+					</>
 				);
 			}
 
@@ -560,15 +558,15 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ 'none' !== seperatorStyle && seperator_html }
 						{ is_image }
-					</Fragment>
+					</>
 				);
 			}
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle &&
 						seperator_position == 'after_title' &&
 						show_seperator &&
@@ -587,12 +585,12 @@ const deprecated = [
 							<CallToAction attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
 			const title_text = (
-				<Fragment>
+				<>
 					<div className="uagb-ifb-title-wrap">
 						{ showPrefix && '' !== prefixTitle && (
 							<Prefix
@@ -610,11 +608,11 @@ const deprecated = [
 							/>
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-infobox__content-wrap',
@@ -642,38 +640,38 @@ const deprecated = [
 									desc }
 
 								{ iconimgPosition === 'left-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-left-title-image">
 											{ icon_image_html }
 											{ title_text }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ iconimgPosition === 'right-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-right-title-image">
 											{ title_text }
 											{ icon_image_html }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ( iconimgPosition == 'left' ||
 									iconimgPosition == 'right' ) && (
-									<Fragment>
+									<>
 										{ title_text }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
 							{ iconimgPosition == 'right' && icon_image_html }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -682,7 +680,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -691,7 +689,7 @@ const deprecated = [
 						id={ `uagb-infobox-${ block_id }` }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-infobox-link-wrap uagb-infbox__link-to-all"
@@ -699,11 +697,11 @@ const deprecated = [
 									rel="noopener noreferrer"
 								></a>
 								{ output }
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -753,10 +751,10 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ is_image }
 						{ 'none' !== seperatorStyle && seperator_html }
-					</Fragment>
+					</>
 				);
 			}
 
@@ -774,15 +772,15 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ 'none' !== seperatorStyle && seperator_html }
 						{ is_image }
-					</Fragment>
+					</>
 				);
 			}
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle &&
 						seperator_position == 'after_title' &&
 						show_seperator &&
@@ -801,12 +799,12 @@ const deprecated = [
 							<CallToAction attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
 			const title_text = (
-				<Fragment>
+				<>
 					<div className="uagb-ifb-title-wrap">
 						{ showPrefix && '' !== prefixTitle && (
 							<Prefix
@@ -824,11 +822,11 @@ const deprecated = [
 							/>
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			const output = (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-infobox__content-wrap',
@@ -856,38 +854,38 @@ const deprecated = [
 									desc }
 
 								{ iconimgPosition === 'left-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-left-title-image">
 											{ icon_image_html }
 											{ title_text }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ iconimgPosition === 'right-title' && (
-									<Fragment>
+									<>
 										<div className="uagb-ifb-right-title-image">
 											{ title_text }
 											{ icon_image_html }
 										</div>
 										{ desc }
-									</Fragment>
+									</>
 								) }
 
 								{ ( iconimgPosition == 'left' ||
 									iconimgPosition == 'right' ) && (
-									<Fragment>
+									<>
 										{ title_text }
 										{ desc }
-									</Fragment>
+									</>
 								) }
 							</div>
 
 							{ iconimgPosition == 'right' && icon_image_html }
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 
 			let target = '';
@@ -896,7 +894,7 @@ const deprecated = [
 			}
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -905,7 +903,7 @@ const deprecated = [
 						) }
 					>
 						{ ctaType == 'all' && (
-							<Fragment>
+							<>
 								<a
 									href={ ctaLink }
 									className="uagb-infobox-link-wrap uagb-infbox__link-to-all"
@@ -913,11 +911,11 @@ const deprecated = [
 									rel="noopener noreferrer"
 								></a>
 								{ output }
-							</Fragment>
+							</>
 						) }
 						{ ctaType !== 'all' && output }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -966,10 +964,10 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ is_image }
 						{ 'none' !== seperatorStyle && seperator_html }
-					</Fragment>
+					</>
 				);
 			}
 
@@ -987,15 +985,15 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ 'none' !== seperatorStyle && seperator_html }
 						{ is_image }
-					</Fragment>
+					</>
 				);
 			}
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle &&
 						seperator_position == 'after_title' &&
 						show_seperator &&
@@ -1014,7 +1012,7 @@ const deprecated = [
 							<CallToAction attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
@@ -1064,31 +1062,31 @@ const deprecated = [
 								desc }
 
 							{ iconimgPosition === 'left-title' && (
-								<Fragment>
+								<>
 									<div className="uagb-ifb-left-title-image">
 										{ icon_image_html }
 										{ title_text }
 									</div>
 									{ desc }
-								</Fragment>
+								</>
 							) }
 
 							{ iconimgPosition === 'right-title' && (
-								<Fragment>
+								<>
 									<div className="uagb-ifb-right-title-image">
 										{ title_text }
 										{ icon_image_html }
 									</div>
 									{ desc }
-								</Fragment>
+								</>
 							) }
 
 							{ ( iconimgPosition == 'left' ||
 								iconimgPosition == 'right' ) && (
-								<Fragment>
+								<>
 									{ title_text }
 									{ desc }
-								</Fragment>
+								</>
 							) }
 						</div>
 
@@ -1169,10 +1167,10 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ is_image }
 						{ 'none' !== seperatorStyle && seperator_html }
-					</Fragment>
+					</>
 				);
 			}
 
@@ -1190,15 +1188,15 @@ const deprecated = [
 			) {
 				show_seperator = false;
 				icon_image_html = (
-					<Fragment>
+					<>
 						{ 'none' !== seperatorStyle && seperator_html }
 						{ is_image }
-					</Fragment>
+					</>
 				);
 			}
 			// Get description and seperator components.
 			const desc = (
-				<Fragment>
+				<>
 					{ 'none' !== seperatorStyle &&
 						seperator_position == 'after_title' &&
 						show_seperator &&
@@ -1217,7 +1215,7 @@ const deprecated = [
 							<CallToAction attributes={ props.attributes } />
 						) }
 					</div>
-				</Fragment>
+				</>
 			);
 
 			// Get Title and Prefix components.
@@ -1267,31 +1265,31 @@ const deprecated = [
 								desc }
 
 							{ iconimgPosition === 'left-title' && (
-								<Fragment>
+								<>
 									<div className="uagb-ifb-left-title-image">
 										{ icon_image_html }
 										{ title_text }
 									</div>
 									{ desc }
-								</Fragment>
+								</>
 							) }
 
 							{ iconimgPosition === 'right-title' && (
-								<Fragment>
+								<>
 									<div className="uagb-ifb-right-title-image">
 										{ title_text }
 										{ icon_image_html }
 									</div>
 									{ desc }
-								</Fragment>
+								</>
 							) }
 
 							{ ( iconimgPosition == 'left' ||
 								iconimgPosition == 'right' ) && (
-								<Fragment>
+								<>
 									{ title_text }
 									{ desc }
-								</Fragment>
+								</>
 							) }
 						</div>
 
