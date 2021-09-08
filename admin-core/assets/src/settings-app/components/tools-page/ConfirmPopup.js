@@ -26,7 +26,7 @@ function ConfirmPopup( props ) {
 		<div className={ `uagb-confirm-rollback-popup ${ show }` }>
 			<div className="uagb-confirm-rollback-popup__content">
 				<div className="uagb-confirm-rollback-popup__header">
-					Rollback to Previous Version
+					Roll Back to Previous Version
 				</div>
 				<div className="uagb-confirm-rollback-popup__message">
 					Are you sure you want to reinstall previous version?

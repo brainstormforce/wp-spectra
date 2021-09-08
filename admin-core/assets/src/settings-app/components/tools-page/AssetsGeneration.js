@@ -92,7 +92,7 @@ function AssetsGeneration( props ) {
 	return (
 		<>
 			<h2>
-				{ __( 'Assets Generation', 'ultimate-addons-for-gutenberg' ) }
+				{ __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-version-control__elements">
 				<div className="uag-version-control__element">

@@ -38,8 +38,7 @@ function Footer() {
 	return (
 		<div className="uag-global-footer">
 			<span className="uag-left__footer">
-				Loving Ultimate Addons? We really appreciate if you can leave us{ ' ' }
-				{ stars } rating on{ ' ' }
+				Loving Ultimate Addons? We would really appreciate it if you could leave us a {stars} rating on {' '}
 				<a
 					target="_blank"
 					href="https://wordpress.org/plugins/ultimate-addons-for-gutenberg/"
@@ -48,7 +47,6 @@ function Footer() {
 					WordPress.org.
 				</a>
 				</span>
-			<span className="uag-right__footer">Thank you for your support!</span>
 		</div>
 	);
 }

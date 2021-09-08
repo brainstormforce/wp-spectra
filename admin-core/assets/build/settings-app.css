@@ -40,5 +40,5 @@
 
 .uag-settings-nav__contents{display:-ms-grid;display:grid;-ms-grid-columns:auto auto;grid-template-columns:auto auto;margin:35px;row-gap:20px;column-gap:20px}.uag-settings-page-heading{margin:30px}.uag-settings-nav__content{padding:25px;background:var(--metabox-background-color)}
 
-.uag-global-footer{text-align:center}.uag-global-footer span{margin-bottom:0px;color:var(--content-color);font-family:var(--heading-font-family);font-size:14px}.uag-global-footer .uag-left__footer{float:left}.uag-global-footer .uag-right__footer{float:right}@media screen and (max-width: 960px){#wpfooter{display:block;position:relative;margin-left:0px !important}}
+.uag-global-footer{text-align:center}.uag-global-footer span{margin-bottom:0px;color:var(--content-color);font-family:var(--heading-font-family);font-size:14px}.uag-global-footer .uag-left__footer{float:left}@media screen and (max-width: 960px){#wpfooter{display:block;position:relative;margin-left:0px !important}}
 

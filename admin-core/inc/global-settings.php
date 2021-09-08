@@ -31,7 +31,7 @@ class GlobalSettings {
 						'name'    => 'rollback_to_previous_version',
 						'label'   => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Rollback to a previous version before the issue appeared.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
+						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Roll back to a previous version to help troubleshoot the issue.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
 						'options' => AdminHelper::get_rollback_versions_options(),
 					),
 				),
@@ -45,7 +45,7 @@ class GlobalSettings {
 						'label' => __( 'Enable Beta', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'  => __(
-							'Enable this option to turn on beta updates & get notified when a new beta version of Ultimate Addons for Gutenberg is available.The beta version will not install automatically. You will always have the option to ignore it.',
+							'Enable this option to turn on beta updates and be notified when a new beta version of Ultimate Addons for Gutenberg is available. The beta version will not install automatically, you will have to install it when you get a notification. It is recommended to try beta on a test environment only.',
 							'ultimate-addons-for-gutenberg'
 						),
 					),
@@ -70,7 +70,7 @@ class GlobalSettings {
 						'label' => __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => sprintf(
 							/* translators: %1$s: link html start, %2$s: link html end*/
-							__( 'Ultimate Addons for Gutenberg by default loads the CSS & JS inline on the page. If you want to generate separate CSS & JS files for UAG blocks, enable this option. Please read this <a target="_blank" rel="noopener" href="%1$s">article</a> to know the difference between generating CSS & JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ),
+							__( 'Ultimate Addons for Gutenberg loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for UAG blocks, enable this option. Please read this article to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ),
 							esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' )
 						),
 					),
@@ -85,7 +85,7 @@ class GlobalSettings {
 						'type'  => 'button',
 						'name'  => 'enable_templates_button',
 						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
-						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library will be accessible with a UAG Templates button while editing the page/post. You can manage the visibility of the button with this option. ', 'ultimate-addons-for-gutenberg' ),
+						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library is accessible with the UAG Templates button while editing the page or post. Manage the visibility of that button with this option. ', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),
@@ -94,9 +94,9 @@ class GlobalSettings {
 					'enable_file_regeneration' => array(
 						'type'  => 'button',
 						'name'  => 'enable_file_regeneration',
-						'label' => __( 'Assets Regeneration', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => 
-							__( 'Facing issues with style, layout, color or any other designing try regenerating assets here. Use this option to regenerate CSS & Javascript assets.', 'ultimate-addons-for-gutenberg' )
+							__( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' )
 					),
 				),
 			),
