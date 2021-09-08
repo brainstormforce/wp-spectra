@@ -9,7 +9,7 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 const { useSelect, useDispatch } = wp.data;
 
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import map from 'lodash/map';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
@@ -171,9 +171,9 @@ const Range = ( props ) => {
 		props.setAttributes( { [ props.unit.label ]: value } );
 	};
 
-	const onUnitSizeClick = ( unitSizes ) => {
+	const onUnitSizeClick = ( uSizes ) => {
 		const items = [];
-		unitSizes.map( ( key ) =>
+		uSizes.map( ( key ) =>
 			items.push(
 				<Tooltip
 					text={ sprintf(
