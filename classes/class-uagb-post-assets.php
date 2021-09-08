@@ -673,15 +673,6 @@ class UAGB_Post_Assets {
 				$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
 				break;
 
-			case 'uagb/faq':
-				$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
-
-				if ( ! isset( $blockattr['layout'] ) ) {
-					$this->uag_faq_layout = true;
-				}
-				UAGB_Block_JS::blocks_faq_gfont( $blockattr );
-				break;
-
 			case 'uagb/wp-search':
 				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
@@ -710,6 +701,10 @@ class UAGB_Post_Assets {
 				$css         = array_merge( $css, $_block_css );
 				if ( ! empty( $_block_js ) ) {
 					$js .= $_block_js;
+				}
+
+				if ( 'uagb/faq' === $name && ! isset( $blockattr['layout'] ) ) {
+					$this->uag_faq_layout = true;
 				}
 				break;
 		}

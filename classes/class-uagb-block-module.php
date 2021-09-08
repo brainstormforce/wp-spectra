@@ -47,6 +47,9 @@ class UAGB_Block_Module {
 		'content-timeline' => array(
 			'dir' => 'content-timeline',
 		),
+		'faq'              => array(
+			'dir' => 'faq',
+		),
 	);
 
 	/**
