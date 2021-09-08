@@ -4,13 +4,7 @@
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import {
-	ButtonGroup,
-	Button,
-	TabPanel,
-	Tooltip,
-	Dashicon,
-} from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip, Dashicon } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
 
@@ -287,10 +281,10 @@ const SpacingControl = ( props ) => {
 		},
 	];
 
-	const onUnitSizeClick = ( unitSizes ) => {
+	const onUnitSizeClick = ( uSizes ) => {
 		const items = [];
 
-		unitSizes.map( ( key ) => {
+		uSizes.map( ( key ) => {
 			items.push(
 				<Tooltip
 					text={ sprintf(
