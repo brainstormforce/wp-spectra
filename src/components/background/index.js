@@ -35,20 +35,16 @@ const Background = ( props ) => {
 	} = props;
 
 	const onRemoveImage = () => {
-		const { setAttributes } = props;
-
 		setAttributes( { [ backgroundImage.label ]: null } );
 	};
 
 	const onSelectImage = ( media ) => {
-		const { setAttributes } = props;
-
 		if ( ! media || ! media.url ) {
 			setAttributes( { [ backgroundImage.label ]: null } );
 			return;
 		}
 
-		if ( ! media.type || 'image' != media.type ) {
+		if ( ! media.type || 'image' !== media.type ) {
 			return;
 		}
 
@@ -64,7 +60,7 @@ const Background = ( props ) => {
 			setAttributes( { [ backgroundVideo.label ]: null } );
 			return;
 		}
-		if ( ! media.type || 'video' != media.type ) {
+		if ( ! media.type || 'video' !== media.type ) {
 			return;
 		}
 		setAttributes( { [ backgroundVideo.label ]: media } );
@@ -354,7 +350,7 @@ const Background = ( props ) => {
 									] }
 								/>
 							</div>
-							{ 'color' == overlayType.value && (
+							{ 'color' === overlayType.value && (
 								<div className="uag-background-image-overlay-color">
 									<AdvancedPopColorControl
 										label={ __(
@@ -372,7 +368,7 @@ const Background = ( props ) => {
 									/>
 								</div>
 							) }
-							{ 'gradient' == overlayType.value && (
+							{ 'gradient' === overlayType.value && (
 								<div className="uag-background-image-overlay-gradient">
 									<GradientSettings
 										backgroundGradient={
@@ -394,9 +390,9 @@ const Background = ( props ) => {
 					/>
 				</div>
 			) }
-			{ ( 'color' == backgroundType.value ||
-				( 'image' == backgroundType.value && backgroundImage.value ) ||
-				'gradient' == backgroundType.value ) && (
+			{ ( 'color' === backgroundType.value ||
+				( 'image' === backgroundType.value && backgroundImage.value ) ||
+				'gradient' === backgroundType.value ) && (
 				<div className="uag-background-opacity">
 					<Range
 						label={ __(
@@ -425,7 +421,7 @@ const Background = ( props ) => {
 					/>
 				</div>
 			) }
-			{ 'video' == backgroundType.value &&
+			{ 'video' === backgroundType.value &&
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
 					<div className="uag-background-video-overlay">
@@ -443,7 +439,7 @@ const Background = ( props ) => {
 						/>
 					</div>
 				) }
-			{ 'video' == backgroundType.value &&
+			{ 'video' === backgroundType.value &&
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
 					<div className="uag-background-video-opacity">
