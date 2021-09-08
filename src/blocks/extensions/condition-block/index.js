@@ -157,8 +157,6 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 	return (props) => {
 
-		const { Fragment } = wp.element;
-
 		const { InspectorControls } = wp.blockEditor;
 
 		const { isSelected } = props;
@@ -169,7 +167,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 		const blockType = ['wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
-			<Fragment>
+			<>
 				<BlockEdit {...props} />
 				{isSelected && ! blockType.includes(blockName) &&  ! blockName.includes('uagb/') &&
 				<InspectorControls>
@@ -183,8 +181,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 					</PanelBody>
 				</InspectorControls>
 				}
-
-			</Fragment>
+			</>
 		);
 	};
 }, 'AdvancedControlsBlock');

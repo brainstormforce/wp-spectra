@@ -1,5 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import { Fragment } from "@wordpress/element";
 import { InspectorControls } from "@wordpress/block-editor";
 import { ToggleControl, PanelBody, RangeControl } from "@wordpress/components";
 import { createHigherOrderComponent } from "@wordpress/compose";
@@ -74,7 +73,7 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 		applyCSS();
 		
 		return (
-			<Fragment>
+			<>
 				<BlockEdit {...props} />
 				{isSelected && blockType.includes(blockName) && attributes.ids && attributes.ids.length !== 0 &&
 					<InspectorControls>
@@ -97,7 +96,7 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 						</PanelBody>	
 					</InspectorControls>
 				}
-			</Fragment>
+			</>
 		);
 	};
 }, 'MasonryGallery');
