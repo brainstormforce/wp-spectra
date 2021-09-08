@@ -4,7 +4,7 @@
 
  import {
 	createElement as el
-} from 'react';
+} from '@wordpress/element';
 
 const UAGB_Block_Icons = {
 	section: el(

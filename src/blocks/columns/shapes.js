@@ -1,6 +1,6 @@
 import {
 	createElement as el
-} from 'react';
+} from '@wordpress/element';
 
 const shapes = {
 	triangle: el(
