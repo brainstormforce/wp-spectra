@@ -24,28 +24,28 @@ class UAGB_Block_Module {
 	 */
 	private static $blocks = array(
 		'star-rating'      => array(
-			'dir' => 'star-rating/',
+			'dir' => 'star-rating',
 		),
 		'advanced-heading' => array(
-			'dir' => 'advanced-heading/',
+			'dir' => 'advanced-heading',
 		),
 		'columns'          => array(
-			'dir' => 'columns/',
+			'dir' => 'columns',
 		),
 		'column'           => array(
-			'dir' => 'column/',
+			'dir' => 'column',
 		),
 		'blockquote'       => array(
-			'dir' => 'blockquote/',
+			'dir' => 'blockquote',
 		),
 		'call-to-action'   => array(
-			'dir' => 'call-to-action/',
+			'dir' => 'call-to-action',
 		),
 		'cf7-styler'       => array(
-			'dir' => 'cf7-styler/',
+			'dir' => 'cf7-styler',
 		),
 		'content-timeline' => array(
-			'dir' => 'content-timeline/',
+			'dir' => 'content-timeline',
 		),
 	);
 
@@ -66,7 +66,7 @@ class UAGB_Block_Module {
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$css_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . 'frontend.css.php';
+			$css_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . '/frontend.css.php';
 
 			if ( file_exists( $css_file ) ) {
 				$css = include $css_file;
@@ -92,7 +92,7 @@ class UAGB_Block_Module {
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$js_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . 'frontend.js.php';
+			$js_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . '/frontend.js.php';
 
 			if ( file_exists( $js_file ) ) {
 				$js = include $js_file;
