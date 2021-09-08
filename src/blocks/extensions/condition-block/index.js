@@ -2,6 +2,8 @@ import { ToggleControl, SelectControl } from "@wordpress/components"
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody } from '@wordpress/components';
 const { enableConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -158,11 +160,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 		
 		const { Fragment } = wp.element;
 		
-		const { InspectorControls } = wp.blockEditor;
-		
 		const { isSelected } = props;
-
-		const { PanelBody } = wp.components;
 		
 		const blockName = props.name;
 		

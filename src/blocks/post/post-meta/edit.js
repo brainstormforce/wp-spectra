@@ -1,7 +1,6 @@
 import { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
-
-const { dateI18n, format, __experimentalGetSettings } = wp.date;
+import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 
 export const PostMeta = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.

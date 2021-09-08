@@ -10,7 +10,7 @@ import save from './save';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/section', {
 	title: uagb_blocks_info.blocks[ 'uagb/section' ].title,
