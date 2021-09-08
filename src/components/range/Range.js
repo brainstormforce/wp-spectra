@@ -5,8 +5,8 @@ import {
 	Dashicon,
 	RangeControl,
 	__experimentalNumberControl as NumberControl,
-} from "@wordpress/components";
-import { useState, useEffect } from "@wordpress/element";
+} from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import map from 'lodash/map';

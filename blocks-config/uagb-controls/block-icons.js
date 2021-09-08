@@ -2,9 +2,7 @@
  * Block Icons
  */
 
- import {
-	createElement as el
-} from '@wordpress/element';
+import { createElement as el } from '@wordpress/element';
 
 const UAGB_Block_Icons = {
 	section: el(

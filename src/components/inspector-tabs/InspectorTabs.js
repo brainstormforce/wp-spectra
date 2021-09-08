@@ -1,12 +1,18 @@
-import styles from "./editor.lazy.scss";
-import React, { useLayoutEffect } from "react";
-import classnames from "classnames";
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
+import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { cloneElement, Children, useState, useRef, useEffect } from '@wordpress/element';
+import {
+	cloneElement,
+	Children,
+	useState,
+	useRef,
+	useEffect,
+} from '@wordpress/element';
 
-const LAYOUT = "general",
-	STYLE = "style",
-	ADVANCE = "advance";
+const LAYOUT = 'general',
+	STYLE = 'style',
+	ADVANCE = 'advance';
 
 const InspectorTabs = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -66,8 +72,8 @@ const InspectorTabs = ( props ) => {
 
 	return (
 		<>
-			<div className={"uagb-inspector-tabs-container"}>
-				{/*
+			<div className={ 'uagb-inspector-tabs-container' }>
+				{ /*
 				 * The tabs is static, you must use layout, style & advance
 				 */ }
 				<div
@@ -153,8 +159,8 @@ const InspectorTabs = ( props ) => {
 					return cloneElement( child, {
 						index,
 						isActive: child.key === currentTab,
-					});
-				})}
+					} );
+				} ) }
 		</>
 	);
 };

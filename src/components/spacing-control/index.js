@@ -283,11 +283,11 @@ const SpacingControl = ( props ) => {
 
 	const onUnitSizeClick = ( uSizes ) => {
 		const items = [];
-
-		uSizes.map( ( key ) => {
+		uSizes.map( ( key ) =>
 			items.push(
 				<Tooltip
 					text={ sprintf(
+						/* translators: abbreviation for units */
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
@@ -319,6 +319,7 @@ const SpacingControl = ( props ) => {
 						}
 						data-device-type={ deviceType }
 						aria-label={ sprintf(
+							/* translators: abbreviation for units */
 							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
 						) }
@@ -327,8 +328,9 @@ const SpacingControl = ( props ) => {
 						{ key.unitValue }
 					</Button>
 				</Tooltip>
-			);
-		} );
+			)
+		);
+
 		return items;
 	};
 

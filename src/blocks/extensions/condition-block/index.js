@@ -1,7 +1,7 @@
 import { ToggleControl, SelectControl, PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from "@wordpress/compose";
-import { addFilter } from "@wordpress/hooks";
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const { enableConditions } = uagb_blocks_info;
@@ -154,10 +154,8 @@ const UserConditionOptions = ( props ) => {
 	);
 };
 
-const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
-
-	return (props) => {
-
+const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		const { isSelected } = props;
 
 		const blockName = props.name;
@@ -179,19 +177,29 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 		];
 		return (
 			<>
-				<BlockEdit {...props} />
-				{isSelected && ! blockType.includes(blockName) &&  ! blockName.includes('uagb/') &&
-				<InspectorControls>
-					<PanelBody
-						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ UserConditionOptions( props ) }
-					</PanelBody>
-				</InspectorControls>
-				}
+				<BlockEdit { ...props } />
+				{ isSelected &&
+					! blockType.includes( blockName ) &&
+					! blockName.includes( 'uagb/' ) && (
+						<InspectorControls>
+							<PanelBody
+								title={ __(
+									'UAG - Extentions',
+									'ultimate-addons-for-gutenberg'
+								) }
+								initialOpen={ false }
+								className="block-editor-block-inspector__advanced uagb-extention-tab"
+							>
+								<p className="components-base-control__help">
+									{ __(
+										"Below setting will only take effect once you are on the live page, and not while you're editing.",
+										'ultimate-addons-for-gutenberg'
+									) }
+								</p>
+								{ UserConditionOptions( props ) }
+							</PanelBody>
+						</InspectorControls>
+					) }
 			</>
 		);
 	};
