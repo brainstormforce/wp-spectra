@@ -41,6 +41,9 @@ class UAGB_Block_Module {
 		'call-to-action'   => array(
 			'dir' => 'call-to-action/',
 		),
+		'cf7-styler'       => array(
+			'dir' => 'cf7-styler/',
+		),
 	);
 
 	/**

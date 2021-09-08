@@ -8,7 +8,7 @@
  */
 
 // Adds Fonts.
-UAGB_Block_JS::blocks_call_to_action_gfont( $blockattr );
+UAGB_Block_JS::blocks_call_to_action_gfont( $attr );
 
 $defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
 
