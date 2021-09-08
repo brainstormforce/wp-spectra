@@ -3,21 +3,21 @@
  */
 
 // Import classes
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import Border from "@Components/border";
 import SpacingControl from "@Components/spacing-control";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 import TypographyControl from '@Components/typography';
 import Range from "@Components/range/Range.js";
-import UAGTabsControl from "../../components/tabs";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 import {
 	BlockControls,
@@ -106,7 +106,7 @@ const Settings = ( props ) => {
 	};
 
 	const buttonSettings = () => {
-	
+
 		return (
 			<PanelBody
 				title={ __(
@@ -183,7 +183,7 @@ const Settings = ( props ) => {
 	};
 
 	const textSettings = () => {
-	
+
 		return (
 			<PanelBody
 				title={ __(
@@ -307,7 +307,7 @@ const Settings = ( props ) => {
 	}
 
 	const IconSettings = () => {
-	
+
 		return (
 			<PanelBody
 				title={ __(
@@ -339,7 +339,7 @@ const Settings = ( props ) => {
 	}
 
 	const borderSettings = () => {
-	
+
 		return (
 			<PanelBody
 				title={ __(
@@ -392,7 +392,7 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ false }
-			>				
+			>
 			<SpacingControl
 				{...props}
 				label={__("Padding", "ultimate-addons-for-gutenberg")}
@@ -523,7 +523,7 @@ const Settings = ( props ) => {
 				{ ( '' !== icon && inheritFromTheme ) && ( IconSettings() ) }
 				{ ! inheritFromTheme && ( borderSettings() ) }
 				{ ! inheritFromTheme && ( spacingSettings() ) }
-				{ ( '' == icon && inheritFromTheme ) && ( 
+				{ ( '' == icon && inheritFromTheme ) && (
 					<p className="uagb-settings-notice">
 						{__(
 							"There is no style available for the inheritFromTheme option.",
@@ -532,7 +532,7 @@ const Settings = ( props ) => {
 					</p>
 				) }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>

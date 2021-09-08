@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import Range from "../../components/range/Range.js";
+import Range from "@Components/range/Range.js";
 // Extend component
 import { useSelect } from "@wordpress/data";
 

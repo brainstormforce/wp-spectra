@@ -3,14 +3,14 @@ import { __ } from "@wordpress/i18n";
 import lazyLoader from "@Controls/lazy-loader";
 import WebfontLoader from "@Components/typography/fontloader";
 import TypographyControl from "@Components/typography";
-import Border from "../../components/border";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 import renderSVG from "@Controls/renderIcon";
 
 import {
@@ -371,7 +371,7 @@ const Settings = (props) => {
 		setAttributes( { formId: id } );
 	};
 
-	const generalSettings = (			
+	const generalSettings = (
 		<PanelBody title={ __( "General",'ultimate-addons-for-gutenberg' ) } >
 			<SelectControl
 				label={ __(
@@ -698,12 +698,12 @@ const Settings = (props) => {
 			/>
 		</PanelBody>
 	);
-	
+
 	const fieldStyling = (
 		<PanelBody
 			title={__("Field", "ultimate-addons-for-gutenberg")}
 			initialOpen={false}
-		>	
+		>
 			<Border
 				setAttributes={setAttributes}
 				borderStyle={{
@@ -1281,7 +1281,7 @@ const Settings = (props) => {
 					/>
 				</>
 			)}
-			
+
 			{enableHighlightBorder && (
 				<>
 					<AdvancedPopColorControl
@@ -1540,21 +1540,21 @@ const Settings = (props) => {
 			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab key={"general"}>
+					<InspectorTab {...UAGTabs.general}>
 						{generalSettings}
 						{fieldSetting}
 						{radioCheckSetting}
 						{btnSetting}
 						{msgSettings}
 					</InspectorTab>
-					<InspectorTab key={"style"}>
+					<InspectorTab {...UAGTabs.style}>
 						{fieldStyle == "box" && fieldStyling}
 						{enableOveride && radioCheckStyling}
 						{buttonStyling}
 						{messageStyling}
 						{labelInputStyling}
 					</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{loadInputGoogleFonts}

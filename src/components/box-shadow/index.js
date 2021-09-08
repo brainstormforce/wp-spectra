@@ -3,7 +3,7 @@
  *
  */
 import { __ } from "@wordpress/i18n";
-import Range from "../../components/range/Range.js";
+import Range from "@Components/range/Range.js";
 import AdvancedPopColorControl from "../color-control/advanced-pop-color-control";
 import { Button, Dashicon } from "@wordpress/components";
 import { useState } from "@wordpress/element";

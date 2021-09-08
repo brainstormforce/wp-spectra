@@ -10,13 +10,13 @@ import {
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import Range from "../../components/range/Range.js";
-import UAGImage from "../../components/image";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import Range from "@Components/range/Range.js";
+import UAGImage from "@Components/image";
 
 import {
 	PanelBody,
@@ -24,7 +24,7 @@ import {
 	ToggleControl,
 	ExternalLink,
 } from '@wordpress/components';
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 let imageSizeOptions = [
 	{
@@ -121,7 +121,7 @@ const Settings = ( props ) => {
 			setAttributes({ mainimage: null });
 			return;
 		}
-		
+
 		setAttributes({ mainimage: media });
 	};
 
@@ -224,7 +224,7 @@ const Settings = ( props ) => {
 				/>
 			</PanelBody>
 		);
-	};	
+	};
 		const imageSettings = () => {
 			return (
 				<PanelBody
@@ -843,7 +843,7 @@ const Settings = ( props ) => {
 					{ descriptionColorSettings() }
 					{ spacingSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadHeadingGoogleFonts }

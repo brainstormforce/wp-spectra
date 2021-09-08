@@ -4,15 +4,15 @@
 
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import Background from "../../components/background";
-import Border from "../../components/border";
-import SpacingControl from "../../components/spacing-control";
+import Background from "@Components/background";
+import Border from "@Components/border";
+import SpacingControl from "@Components/spacing-control";
 import { __ } from '@wordpress/i18n';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import ResponsiveSlider from "../../components/responsive-slider";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import ResponsiveSlider from "@Components/responsive-slider";
 
 import {
 	InspectorControls,
@@ -391,7 +391,7 @@ const Settings = ( props ) => {
 				{ borderSettings() }
 				{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>

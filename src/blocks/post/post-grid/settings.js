@@ -7,18 +7,18 @@
  import WebfontLoader from '@Components/typography/fontloader';
  import TypographyControl from '@Components/typography';
  import { __ } from '@wordpress/i18n';
- import Border from "../../../components/border";
- import AdvancedPopColorControl from "../../../components/color-control/advanced-pop-color-control.js";
- import InspectorTabs from "../../../components/inspector-tabs/InspectorTabs.js";
- import InspectorTab from "../../../components/inspector-tabs/InspectorTab.js";
- import SpacingControl from "../../../components/spacing-control";
- import Range from "../../../components/range/Range.js";
- import ResponsiveSlider from "../../../components/responsive-slider";
- import MultiButtonsControl from "../../../components/multi-buttons-control";
+ import Border from "@Components/border";
+ import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+ import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+ import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+ import SpacingControl from "@Components/spacing-control";
+ import Range from "@Components/range/Range.js";
+ import ResponsiveSlider from "@Components/responsive-slider";
+ import MultiButtonsControl from "@Components/multi-buttons-control";
  import renderSVG from "@Controls/renderIcon";
- import UAGTabsControl from "../../../components/tabs";
+ import UAGTabsControl from "@Components/tabs";
  const MAX_POSTS_COLUMNS = 8;
- 
+
  import {
 	 PanelBody,
 	 SelectControl,
@@ -28,13 +28,13 @@
 	 RadioControl,
 	 Icon,
  } from '@wordpress/components';
- 
+
  import {
 	 InspectorControls,
 	 BlockAlignmentToolbar,
 	 BlockControls
  } from '@wordpress/block-editor';
- 
+
  const Settings = ( props ) => {
 	 // Caching all Props
 	 const {
@@ -45,7 +45,7 @@
 		 deviceType,
 		 taxonomyList,
 	 } = props.parentProps;
- 
+
 	 // Caching all attributes.
 	 const {
 		 displayPostTitle,
@@ -212,7 +212,7 @@
 		mobilePaddingUnit,
 		tabletPaddingUnit,
 	 } = attributes;
- 
+
 	 const onSelectPostType = ( value ) => {
 		 setAttributes( { postType: value } );
 		 setAttributes( { categories: '' } );
@@ -241,13 +241,13 @@
 		 setAttributes( { paginationNextText: value } );
 		 setAttributes( { paginationMarkup: 'empty' } );
 	 };
- 
+
 	 const taxonomyListOptions = [];
- 
+
 	 const categoryListOptions = [
 		 { value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	 ];
- 
+
 	 if ( '' != taxonomyList ) {
 		 Object.keys( taxonomyList ).map( ( item ) => {
 			 return taxonomyListOptions.push( {
@@ -256,7 +256,7 @@
 			 } );
 		 } );
 	 }
- 
+
 	 if ( '' != categoriesList ) {
 		 Object.keys( categoriesList ).map( ( item ) => {
 			 return categoryListOptions.push( {
@@ -265,10 +265,10 @@
 			 } );
 		 } );
 	 }
- 
+
 	 const blockControlsSettings = () => {
 		 const { isEditing } = props.state;
- 
+
 		 return (
 			 <BlockControls>
 				 <BlockAlignmentToolbar
@@ -291,12 +291,12 @@
 			 </BlockControls>
 		 );
 	 };
- 
+
 	 let loadTitleGoogleFonts;
 	 let loadMetaGoogleFonts;
 	 let loadExcerptGoogleFonts;
 	 let loadCtaGoogleFonts;
- 
+
 	 if ( titleLoadGoogleFonts == true ) {
 		 const titleconfig = {
 			 google: {
@@ -306,12 +306,12 @@
 				 ],
 			 },
 		 };
- 
+
 		 loadTitleGoogleFonts = (
 			 <WebfontLoader config={ titleconfig }></WebfontLoader>
 		 );
 	 }
- 
+
 	 if ( metaLoadGoogleFonts == true ) {
 		 const metaconfig = {
 			 google: {
@@ -321,12 +321,12 @@
 				 ],
 			 },
 		 };
- 
+
 		 loadMetaGoogleFonts = (
 			 <WebfontLoader config={ metaconfig }></WebfontLoader>
 		 );
 	 }
- 
+
 	 if ( excerptLoadGoogleFonts == true ) {
 		 const excerptconfig = {
 			 google: {
@@ -336,12 +336,12 @@
 				 ],
 			 },
 		 };
- 
+
 		 loadExcerptGoogleFonts = (
 			 <WebfontLoader config={ excerptconfig }></WebfontLoader>
 		 );
 	 }
- 
+
 	 if ( ctaLoadGoogleFonts == true ) {
 		 const ctaconfig = {
 			 google: {
@@ -351,7 +351,7 @@
 				 ],
 			 },
 		 };
- 
+
 		 loadCtaGoogleFonts = (
 			 <WebfontLoader config={ ctaconfig }></WebfontLoader>
 		 );
@@ -584,12 +584,12 @@
 		if ( true !== postPagination ) {
 			return;
 		}
-	
+
 		return (
 			<PanelBody
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
-			>				
+			>
 				<MultiButtonsControl
 					setAttributes={setAttributes}
 					label={__(
@@ -913,7 +913,7 @@
 				onColorChange={(value) =>
 					setAttributes({ bgColor: value })
 				}
-			/> 
+			/>
 			<Range
 				label={__(
 					'Row Gap',
@@ -947,7 +947,7 @@
 					value: columnGapUnit,
 					label: "columnGapUnit",
 				}}
-			/>     
+			/>
 			<SpacingControl
 				{...props}
 				label={__(
@@ -1031,7 +1031,7 @@
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				
+
 				<AdvancedPopColorControl
 					label={__(
 						'Background Overlay Color',
@@ -1041,7 +1041,7 @@
 					onColorChange={(value) =>
 						setAttributes({ bgOverlayColor: value })
 					}
-				/> 
+				/>
 				<Range
 					label={__(
 						'Overlay Opacity',
@@ -1091,7 +1091,7 @@
 							onColorChange={(value) =>
 								setAttributes({ titleColor: value })
 							}
-						/> 
+						/>
 						<TypographyControl
 							label={ __(
 							'Typography',
@@ -1192,7 +1192,7 @@
 						setAttributes({ metaColor: value })
 					}
 				/>
-			
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1257,7 +1257,7 @@
 						label: "metaLinkDecoration",
 					}}
 				/>
-					
+
 				<Range
 					label={__(
 					'Bottom Spacing',
@@ -1372,7 +1372,7 @@
 						label: "excerptBottomSpaceUnit",
 					}}
 				/>
-				
+
 			</PanelBody>
 	}
 	const readMoreLinkStyleSettings = () => {
@@ -1583,8 +1583,8 @@
 					value: spacingLink,
 					label: "spacingLink",
 				}}
-			/>		
-					
+			/>
+
 			<UAGTabsControl
 				tabs={[
 					{
@@ -1633,7 +1633,7 @@
 					onColorChange={(value) =>
 						setAttributes({ ctaHColor: value })
 					}
-					/>  
+					/>
 					<AdvancedPopColorControl
 					label={__(
 						'Background Color',
@@ -1645,7 +1645,7 @@
 					}
 				/></>}
 				disableBottomSeparator={true}
-			/>						
+			/>
 		</PanelBody>
 	);
 	};
@@ -1721,7 +1721,7 @@
 								onColorChange={(value) =>
 									setAttributes({ paginationColor: value })
 									}
-							/> 
+							/>
 							{ paginationLayout == 'filled' && (
 								<AdvancedPopColorControl
 									label={__(
@@ -1732,7 +1732,7 @@
 									onColorChange={(value) =>
 										setAttributes({ paginationBgColor: value })
 									}
-								/> 
+								/>
 							)}
 						{ paginationLayout == 'border' && (
 							<AdvancedPopColorControl
@@ -1859,14 +1859,14 @@
 						{ ! inheritFromTheme && (
 							<>
 								{ displayPostTitle && (
-									titleStyle() 
+									titleStyle()
 								)}
 								{ ( displayPostAuthor ||
 								displayPostDate ||
 								displayPostComment ||
 								displayPostTaxonomy ) && (
-									metaStyle() 	
-								)}	
+									metaStyle()
+								)}
 								{ displayPostExcerpt && (
 									excerptStyle()
 								)}
@@ -1879,7 +1879,7 @@
 								paginationStyle()
 							)}
 							{displayPostImage == true && imgPosition == 'background' && (
-								imageStyle() 
+								imageStyle()
 							)}
 							{ spacingSettings() }
 						</InspectorTab>
@@ -1888,11 +1888,11 @@
 				</InspectorControls>
 	}
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
- 
+
 	 if ( ! hasPosts ) {
 		 return <>{ inspectorControlsSettings() }</>;
 	 }
-	 
+
 	 return (
 		 <Suspense fallback={ lazyLoader() }>
 			 { blockControlsSettings() }
@@ -1904,6 +1904,5 @@
 		 </Suspense>
 	 );
  };
- 
+
  export default React.memo( Settings );
- 

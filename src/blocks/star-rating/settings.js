@@ -1,15 +1,15 @@
 // Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
+import TypographyControl from "@Components/typography"
 // Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
+import WebfontLoader from "@Components/typography/fontloader"
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from "@wordpress/block-editor"
 import { PanelBody,Icon } from "@wordpress/components"
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 import renderSVG from "@Controls/renderIcon";
 
 const Settings = ( props ) => {
@@ -48,7 +48,7 @@ const Settings = ( props ) => {
 	let loadTitleGoogleFonts;
 
 	if( loadGoogleFonts == true ) {
-		
+
 		const hconfig = {
 			google: {
 				families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
@@ -60,7 +60,7 @@ const Settings = ( props ) => {
 			</WebfontLoader>
 		)
 	}
-    
+
     let alignmentOptions = [
         { value: "left", icon: (<Icon icon={ renderSVG( "fa fa-align-left" )}/>) },
         { value: "center", icon: (<Icon icon={ renderSVG( "fa fa-align-center" )}/>) },
@@ -253,7 +253,7 @@ const Settings = ( props ) => {
                 { starStyling }
                 { '' !== title && titleStyling }
                 </InspectorTab>
-                <InspectorTab {...UAGTabs.advance}>
+                <InspectorTab {...UAGTabs.advance} parentProps = {props}>
                 </InspectorTab>
             </InspectorTabs>
             </InspectorControls>

@@ -5,9 +5,9 @@ import {
 	ToggleControl,
 	TextControl,
 } from '@wordpress/components';
-import Range from "../../../../components/range/Range.js";
-import InspectorTabs from "../../../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "../../../../components/inspector-tabs/InspectorTab.js";
+import Range from "@Components/range/Range.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 
 import { InspectorControls } from '@wordpress/block-editor';
 

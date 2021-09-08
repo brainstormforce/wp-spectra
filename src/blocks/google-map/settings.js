@@ -1,11 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import Range from "../../components/range/Range.js";
+import Range from "@Components/range/Range.js";
 import { InspectorControls } from '@wordpress/block-editor';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 import {
 	PanelBody,
 	TextControl,
@@ -581,7 +581,7 @@ const Settings = ( props ) => {
 					/>
 				</PanelBody>
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

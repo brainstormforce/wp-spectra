@@ -2,20 +2,20 @@ import { __ } from '@wordpress/i18n';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
-import UAGIconPicker from "../../components/icon-picker";
+import UAGIconPicker from "@Components/icon-picker";
 import renderSVG from '@Controls/renderIcon';
 import WebfontLoader from '@Components/typography/fontloader';
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import ResponsiveSlider from "../../components/responsive-slider";
-import Border from "../../components/border";
-import SpacingControl from "../../components/spacing-control";
-import Range from "../../components/range/Range.js";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import Border from "@Components/border";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "../../components/multi-buttons-control";
-import UAGTabsControl from "../../components/tabs";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import MultiButtonsControl from "@Components/multi-buttons-control";
+import UAGTabsControl from "@Components/tabs";
 
 import {
 	BlockControls,
@@ -358,7 +358,7 @@ const Settings = ( props ) => {
 			</PanelBody>
 		)
 	};
-	
+
 	const getContent = () => {
 		return (
 			<PanelBody
@@ -509,7 +509,7 @@ const Settings = ( props ) => {
 								label: "widthTypeTablet",
 							},
 							min: 0,
-							max: maxTab,						
+							max: maxTab,
 						},
 						mobile: {
 							value: widthMobile,
@@ -595,7 +595,7 @@ const Settings = ( props ) => {
 						max={300}
 						displayUnit={false}
 					/>
-					
+
 				</>
 			) }
 			<ResponsiveSlider
@@ -785,7 +785,7 @@ const Settings = ( props ) => {
 			</PanelBody>
 		)
 	};
-		
+
 	let maxDesk = ( ( '%' == widthTypeDesktop ) ? 100 : 1000 );
 	let maxTab = ( ( '%' == widthTypeTablet ) ? 100 : 1000 );
 	let maxMob = ( ( '%' == widthTypeMobile ) ? 100 : 1000 );
@@ -809,7 +809,7 @@ const Settings = ( props ) => {
 
 	const getBorder = () => {
 		return(
-			<PanelBody 
+			<PanelBody
 			title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			>
@@ -863,7 +863,7 @@ const Settings = ( props ) => {
 
 	const getSpacing = () => {
 		return(
-			<PanelBody 
+			<PanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			>
@@ -1047,7 +1047,7 @@ const Settings = ( props ) => {
 				{ getBorder() }
 				{ getSpacing() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 			{ loadGFonts }

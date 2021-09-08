@@ -2,14 +2,14 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "../../components/color-control/advanced-pop-color-control.js";
-import Range from "../../components/range/Range.js";
-import UAGTabsControl from "../../components/tabs";
-import MultiButtonsControl from "../../components/multi-buttons-control";
+} from "@Components/inspector-tabs/InspectorTab.js";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import Range from "@Components/range/Range.js";
+import UAGTabsControl from "@Components/tabs";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 
 import { __ } from '@wordpress/i18n';
 
@@ -449,7 +449,7 @@ const Settings = ( props ) => {
 						}
 					/>
 				</>
-			)}	
+			)}
 			{ seperatorStyle !== 'none' && (
 				<Range
 					label={__(
@@ -469,7 +469,7 @@ const Settings = ( props ) => {
 			</PanelBody>
 		);
 	};
-	
+
 
 	return (
 		<div>
@@ -484,7 +484,7 @@ const Settings = ( props ) => {
 					{ subheadingPanel()}
 					{ seperatorSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>

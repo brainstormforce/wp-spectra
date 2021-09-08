@@ -6,11 +6,11 @@ import {
 	BlockControls,
 	InspectorControls
 } from '@wordpress/block-editor';
-import UAGImage from "../../components/image";
-import InspectorTabs from "../../components/inspector-tabs/InspectorTabs.js";
+import UAGImage from "@Components/image";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
 import InspectorTab, {
 	UAGTabs,
-} from "../../components/inspector-tabs/InspectorTab.js";
+} from "@Components/inspector-tabs/InspectorTab.js";
 import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -62,7 +62,7 @@ const Settings = ( props ) => {
 			</>
 		);
 	};
-	
+
 	return (
 		<>
 			{ blockControls() }

@@ -8,15 +8,15 @@ import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
-import Border from "../../../components/border";
-import AdvancedPopColorControl from "../../../components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "../../../components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "../../../components/inspector-tabs/InspectorTab.js";
-import SpacingControl from "../../../components/spacing-control";
-import Range from "../../../components/range/Range.js";
-import ResponsiveSlider from "../../../components/responsive-slider";
-import UAGTabsControl from "../../../components/tabs";
-import MultiButtonsControl from "../../../components/multi-buttons-control";
+import Border from "@Components/border";
+import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import SpacingControl from "@Components/spacing-control";
+import Range from "@Components/range/Range.js";
+import ResponsiveSlider from "@Components/responsive-slider";
+import UAGTabsControl from "@Components/tabs";
+import MultiButtonsControl from "@Components/multi-buttons-control";
 const MAX_POSTS_COLUMNS = 8;
 
 const Settings = lazy( () =>
@@ -352,7 +352,7 @@ const UAGBPostCarousel = ( props ) => {
 		metaBottomSpaceUnit,
 		ctaBottomSpaceUnit,
 		excerptBottomSpaceUnit,
-		rowGapUnit, 
+		rowGapUnit,
 		columnGapUnit,
 	} = attributes;
 	const taxonomyListOptions = [];
@@ -1058,7 +1058,7 @@ const UAGBPostCarousel = ( props ) => {
 					onColorChange={(value) =>
 						setAttributes({ bgColor: value })
 					}
-				/> 
+				/>
 				<Range
 					label={__(
 						'Row Gap',
@@ -1092,7 +1092,7 @@ const UAGBPostCarousel = ( props ) => {
 						value: columnGapUnit,
 						label: "columnGapUnit",
 					}}
-				/>     
+				/>
 				<SpacingControl
 					{...props}
 					label={__(
@@ -1170,7 +1170,7 @@ const UAGBPostCarousel = ( props ) => {
 			</PanelBody>
 		);
 	};
-	
+
 	const imageStyle = () => {
 	return displayPostImage == true && imgPosition == 'background' && (
 		<>
@@ -1183,7 +1183,7 @@ const UAGBPostCarousel = ( props ) => {
 				onColorChange={(value) =>
 					setAttributes({ bgOverlayColor: value })
 				}
-			/> 
+			/>
 			<Range
 				label={__(
 					'Overlay Opacity',
@@ -1254,7 +1254,7 @@ const UAGBPostCarousel = ( props ) => {
 							onColorChange={(value) =>
 								setAttributes({ titleColor: value })
 							}
-						/> 
+						/>
 						<TypographyControl
 							label={ __(
 							'Typography',
@@ -1355,7 +1355,7 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes({ metaColor: value })
 					}
 				/>
-			
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1420,7 +1420,7 @@ const UAGBPostCarousel = ( props ) => {
 						label: "metaLinkDecoration",
 					}}
 				/>
-					
+
 				<Range
 					label={__(
 					'Bottom Spacing',
@@ -1536,7 +1536,7 @@ const UAGBPostCarousel = ( props ) => {
 						label: "excerptBottomSpaceUnit",
 					}}
 				/>
-				
+
 			</PanelBody>
 	}
 	const readMoreLinkStyleSettings = () => {
@@ -1796,7 +1796,7 @@ const UAGBPostCarousel = ( props ) => {
 				onColorChange={(value) =>
 					setAttributes({ ctaHColor: value })
 				}
-				/>  
+				/>
 				<AdvancedPopColorControl
 				label={__(
 					'Background Color',
@@ -1808,7 +1808,7 @@ const UAGBPostCarousel = ( props ) => {
 				}
 				/></>}
 				disableBottomSeparator={true}
-			/>							
+			/>
 		</PanelBody>
 	);
 	};
@@ -1881,14 +1881,14 @@ const UAGBPostCarousel = ( props ) => {
 				{ ! inheritFromTheme && (
 					<>
 						{ displayPostTitle && (
-							titleStyle() 
+							titleStyle()
 						)}
 						{ ( displayPostAuthor ||
 						displayPostDate ||
 						displayPostComment ||
 						displayPostTaxonomy ) && (
-							metaStyle() 	
-						)}	
+							metaStyle()
+						)}
 						{ displayPostExcerpt && (
 							excerptStyle()
 						)}
@@ -1898,7 +1898,7 @@ const UAGBPostCarousel = ( props ) => {
 						</>
 					)}
 					{displayPostImage && (
-						imageStyle() 
+						imageStyle()
 					)}
 					{ spacingSettings() }
 					{ 'dots' != arrowDots &&  carouselStyle()}

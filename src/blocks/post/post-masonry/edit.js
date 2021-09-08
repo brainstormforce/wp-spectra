@@ -8,28 +8,28 @@
  import styling from '.././styling';
  import { compose } from '@wordpress/compose';
  import TypographyControl from '@Components/typography';
- import Border from "../../../components/border";
- import AdvancedPopColorControl from "../../../components/color-control/advanced-pop-color-control.js";
- import InspectorTabs from "../../../components/inspector-tabs/InspectorTabs.js";
- import InspectorTab from "../../../components/inspector-tabs/InspectorTab.js";
- import SpacingControl from "../../../components/spacing-control";
- import Range from "../../../components/range/Range.js";
- import ResponsiveSlider from "../../../components/responsive-slider";
- import UAGTabsControl from "../../../components/tabs";
+ import Border from "@Components/border";
+ import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
+ import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+ import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+ import SpacingControl from "@Components/spacing-control";
+ import Range from "@Components/range/Range.js";
+ import ResponsiveSlider from "@Components/responsive-slider";
+ import UAGTabsControl from "@Components/tabs";
  import renderSVG from "@Controls/renderIcon";
- import MultiButtonsControl from "../../../components/multi-buttons-control";
+ import MultiButtonsControl from "@Components/multi-buttons-control";
  const Settings = lazy( () =>
 	 import(
 		 /* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
 	 )
  );
- 
+
  const Render = lazy( () =>
 	 import( /* webpackChunkName: "chunks/post-masonry/render" */ './render' )
  );
- 
+
  const MAX_POSTS_COLUMNS = 8;
- 
+
  import {
 	 PanelBody,
 	 Placeholder,
@@ -41,17 +41,17 @@
 	 Icon,
 	 RadioControl,
  } from '@wordpress/components';
- 
+
  import { InspectorControls } from '@wordpress/block-editor';
- 
+
  import { withSelect, withDispatch } from '@wordpress/data';
- 
+
  const UAGBPostMasonry = ( props ) => {
 	 const [ state, setState ] = useState( {
 		 isEditing: false,
 		 innerBlocks: [],
 	 } );
- 
+
 	 useEffect( () => {
 		 props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		 const {
@@ -208,38 +208,38 @@
 		 );
 		 document.head.appendChild( $style );
 	 }, [] );
- 
+
 	 useEffect( () => {
 		 const element = document.getElementById(
 			 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 )
 		 );
- 
+
 		 if ( null !== element && undefined !== element ) {
 			 element.innerHTML = styling( props );
 		 }
 	 }, [ props ] );
- 
+
 	 const togglePreview = () => {
 		 setState( { isEditing: ! state.isEditing } );
 		 if ( ! state.isEditing ) {
 			 __( 'Showing All Post Masonry Layout.' );
 		 }
 	 };
- 
+
 	 const onSelectPostType = ( value ) => {
 		 const { setAttributes } = props;
- 
+
 		 setAttributes( { postType: value } );
 		 setAttributes( { categories: '' } );
 	 };
- 
+
 	 const onSelectTaxonomyType = ( value ) => {
 		 const { setAttributes } = props;
- 
+
 		 setAttributes( { taxonomyType: value } );
 		 setAttributes( { categories: '' } );
 	 };
- 
+
 	 const {
 		 attributes,
 		 categoriesList,
@@ -248,7 +248,7 @@
 		 deviceType,
 		 taxonomyList,
 	 } = props;
- 
+
 	 const {
 		 displayPostTitle,
 		 displayPostDate,
@@ -431,13 +431,13 @@
 		excerptBottomSpaceUnit,
 		contentPaddingUnit,
 	 } = attributes;
- 
+
 	 const taxonomyListOptions = [];
- 
+
 	 const categoryListOptions = [
 		 { value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	 ];
- 
+
 	 if ( '' != taxonomyList ) {
 		 Object.keys( taxonomyList ).map( ( item ) => {
 			 return taxonomyListOptions.push( {
@@ -446,7 +446,7 @@
 			 } );
 		 } );
 	 }
- 
+
 	 if ( '' != categoriesList ) {
 		 Object.keys( categoriesList ).map( ( item ) => {
 			 return categoryListOptions.push( {
@@ -654,13 +654,13 @@
 							{
 								value: "button",
 								label: 'Button'
-					
+
 							},
 							{
 								value: "scroll",
 								label: 'Scroll',
 							},
-					
+
 						]}
 						showIcons={false}
 					/>
@@ -906,7 +906,7 @@
 								onColorChange={(value) =>
 									setAttributes({ paginationTextHoverColor: value })
 								}
-								/>  
+								/>
 								<AdvancedPopColorControl
 								label={__(
 									'Background Color',
@@ -961,7 +961,7 @@
 										"Border Hover Color",
 										"ultimate-addons-for-gutenberg"
 									),
-								
+
 								}}
 							/>
 						</>
@@ -1255,7 +1255,7 @@
 				onColorChange={(value) =>
 					setAttributes({ bgColor: value })
 				}
-			/> 
+			/>
 			<Range
 				label={__(
 					'Row Gap',
@@ -1289,7 +1289,7 @@
 					value: columnGapUnit,
 					label: "columnGapUnit",
 				}}
-			/>     
+			/>
 			<SpacingControl
 				{...props}
 				label={__(
@@ -1382,7 +1382,7 @@
 				onColorChange={(value) =>
 					setAttributes({ bgOverlayColor: value })
 				}
-			/> 
+			/>
 			<Range
 				label={__(
 					'Overlay Opacity',
@@ -1452,7 +1452,7 @@
 							onColorChange={(value) =>
 								setAttributes({ titleColor: value })
 							}
-						/> 
+						/>
 						<TypographyControl
 							label={ __(
 							'Typography',
@@ -1553,7 +1553,7 @@
 						setAttributes({ metaColor: value })
 					}
 				/>
-			
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1618,7 +1618,7 @@
 						label: "metaLinkDecoration",
 					}}
 				/>
-					
+
 				<Range
 					label={__(
 					'Bottom Spacing',
@@ -1735,7 +1735,7 @@
 						label: "excerptBottomSpaceUnit",
 					}}
 				/>
-				
+
 			</PanelBody>
 	}
 	const readMoreLinkStyleSettings = () => {
@@ -1995,7 +1995,7 @@
 				onColorChange={(value) =>
 					setAttributes({ ctaHColor: value })
 				}
-				/>  
+				/>
 				<AdvancedPopColorControl
 				label={__(
 					'Background Color',
@@ -2007,7 +2007,7 @@
 				}
 				/></>}
 				disableBottomSeparator={true}
-			/>								
+			/>
 		</PanelBody>
 	);
 	};
@@ -2025,14 +2025,14 @@
 					{ ! inheritFromTheme && (
 						<>
 							{ displayPostTitle && (
-								titleStyle() 
+								titleStyle()
 							)}
 							{ ( displayPostAuthor ||
 							displayPostDate ||
 							displayPostComment ||
 							displayPostTaxonomy ) && (
-								metaStyle() 	
-							)}	
+								metaStyle()
+							)}
 							{ displayPostExcerpt && (
 								excerptStyle()
 							)}
@@ -2043,7 +2043,7 @@
 						)}
 						{ paginationSettings() }
 						{displayPostImage == true && imgPosition == 'background' && (
-							imageStyle() 
+							imageStyle()
 						)}
 						{ spacingSettings() }
 					</InspectorTab>
@@ -2051,9 +2051,9 @@
 				</InspectorTabs>
 			</InspectorControls>
 	 );
- 
+
 	 const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
- 
+
 	 if ( ! hasPosts ) {
 		 return (
 			 <>
@@ -2073,7 +2073,7 @@
 			 </>
 		 );
 	 }
- 
+
 	 return (
 		 <Suspense fallback={ lazyLoader() }>
 			 <Settings
@@ -2090,7 +2090,7 @@
 		 </Suspense>
 	 );
  };
- 
+
  export default compose(
 	 withSelect( ( select, props ) => {
 		 const {
@@ -2103,20 +2103,20 @@
 			 excludeCurrentPost,
 		 } = props.attributes;
 		 const { getEntityRecords } = select( 'core' );
- 
+
 		 const { __experimentalGetPreviewDeviceType = null } = select(
 			 'core/edit-post'
 		 );
- 
+
 		 const deviceType = __experimentalGetPreviewDeviceType
 			 ? __experimentalGetPreviewDeviceType()
 			 : null;
- 
+
 		 const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		 const currentTax = allTaxonomy[ postType ];
 		 let categoriesList = [];
 		 let rest_base = '';
- 
+
 		 if ( 'undefined' !== typeof currentTax ) {
 			 if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				 rest_base =
@@ -2125,7 +2125,7 @@
 						 ? currentTax.taxonomy[ taxonomyType ].name
 						 : currentTax.taxonomy[ taxonomyType ].rest_base;
 			 }
- 
+
 			 if ( '' != taxonomyType ) {
 				 if (
 					 'undefined' !== typeof currentTax.terms &&
@@ -2135,13 +2135,13 @@
 				 }
 			 }
 		 }
- 
+
 		 const latestPostsQuery = {
 			 order,
 			 orderby: orderBy,
 			 per_page: postsToShow,
 		 };
- 
+
 		 if ( excludeCurrentPost ) {
 			 latestPostsQuery.exclude = select(
 				 'core/editor'
@@ -2187,4 +2187,3 @@
 		 };
 	 } )
  )( UAGBPostMasonry );
- 
