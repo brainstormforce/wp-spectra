@@ -1,4 +1,6 @@
-const el = wp.element.createElement;
+import {
+	createElement as el
+} from 'react';
 
 const shapes = {
 	triangle: el(

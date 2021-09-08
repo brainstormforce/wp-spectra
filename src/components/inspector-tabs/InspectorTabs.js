@@ -1,11 +1,10 @@
 import styles from "./editor.lazy.scss";
 import React, { useLayoutEffect } from "react";
 import classnames from "classnames";
-const { __ } = wp.i18n;
-const { Fragment, cloneElement, Children } = wp.element;
+import { __ } from '@wordpress/i18n';
+import { Fragment, cloneElement, Children, useState, useRef, useEffect } from '@wordpress/element';
 
-const { useState, useRef, useEffect } = wp.element,
-	LAYOUT = "general",
+const LAYOUT = "general",
 	STYLE = "style",
 	ADVANCE = "advance";
 
