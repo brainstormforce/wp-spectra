@@ -110,6 +110,7 @@ const MultiButtonsControl = ( props ) => {
 			>
 				{ options.map( ( option ) => (
 					<Button
+						key={ `option-${ option.value }` }
 						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.desktop.value !== option.value }
@@ -136,6 +137,7 @@ const MultiButtonsControl = ( props ) => {
 			>
 				{ options.map( ( option ) => (
 					<Button
+						key={ `option-${ option.value }` }
 						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.tablet.value !== option.value }
@@ -162,6 +164,7 @@ const MultiButtonsControl = ( props ) => {
 			>
 				{ options.map( ( option ) => (
 					<Button
+						key={ `option-${ option.value }` }
 						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.mobile.value !== option.value }
@@ -264,6 +267,7 @@ const MultiButtonsControl = ( props ) => {
 			>
 				{ options.map( ( option ) => (
 					<Button
+						key={ `option-${ option.value }` }
 						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.value !== option.value }
