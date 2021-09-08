@@ -144,18 +144,18 @@ const AdvancedPopColorControl = ( props ) => {
 		setCacheValue( cachedValueUpdate );
 	};
 
-	const unConvertOpacity = ( value ) => {
+	const unConvertOpacity = ( valueColor ) => {
 		let val = 100;
-		if ( value ) {
-			val = value * 100;
+		if ( valueColor ) {
+			val = valueColor * 100;
 		}
 		return val;
 	};
 
-	const convertOpacity = ( value ) => {
+	const convertOpacity = ( valueColor ) => {
 		let val = 1;
-		if ( value ) {
-			val = value / 100;
+		if ( valueColor ) {
+			val = valueColor / 100;
 		}
 		return val;
 	};
