@@ -1,7 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { PanelBody, ToggleControl, TextControl } from '@wordpress/components';
 
@@ -16,9 +18,7 @@ const Settings = ( props ) => {
 
 	const nameInspectorControls = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ nameRequired }
@@ -42,15 +42,14 @@ const Settings = ( props ) => {
 	};
 
 	return (
-			<InspectorControls>
-				<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
+		<InspectorControls>
+			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+				<InspectorTab { ...UAGTabs.general }>
 					{ nameInspectorControls() }
-					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
-				</InspectorTabs>
-			</InspectorControls>
+				</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 export default React.memo( Settings );

@@ -364,7 +364,7 @@ const attributes = {
 		type: 'number',
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	paddingUnit: {

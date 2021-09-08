@@ -108,7 +108,6 @@ function styling( props ) {
 		paddingFieldUnitmobile,
 		paddingFieldUnitTablet,
 		toggleSizeType,
-
 	} = props.attributes;
 
 	let selectors = {};
@@ -121,7 +120,7 @@ function styling( props ) {
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
-			'margin-bottom': generateCSSUnit( fieldGap, fieldGapType),
+			'margin-bottom': generateCSSUnit( fieldGap, fieldGapType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
@@ -133,7 +132,7 @@ function styling( props ) {
 			'text-transform': labelTextTransform,
 			'text-decoration': labelTextDecoration,
 			'font-weight': labelFontWeight,
-			'color': labelColor,
+			color: labelColor,
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -145,7 +144,7 @@ function styling( props ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputplaceholderColor,
+			color: inputplaceholderColor,
 		},
 		' .uagb-forms-main-form input': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -157,7 +156,7 @@ function styling( props ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputplaceholderColor,
+			color: inputplaceholderColor,
 		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -169,18 +168,18 @@ function styling( props ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputplaceholderColor,
+			color: inputplaceholderColor,
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
-			'outline': ' none !important',
-			'border': '2px solid ' + inputactiveColor,
+			outline: ' none !important',
+			border: '2px solid ' + inputactiveColor,
 		},
 
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
-			'color': submitColor,
+			color: submitColor,
 			'font-size': generateCSSUnit(
 				submitTextFontSize,
 				submitTextFontSizeType
@@ -194,7 +193,7 @@ function styling( props ) {
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,
 			'background-color': submitBgColor,
-			'border':
+			border:
 				generateCSSUnit( submitborderWidth, 'px' ) +
 				' ' +
 				submitborderStyle +
@@ -202,21 +201,24 @@ function styling( props ) {
 				submitborderColor,
 			'border-radius': generateCSSUnit( submitborderRadius, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
-			'color': submitColorHover,
+			color: submitColorHover,
 			'background-color': submitBgColorHover,
 			'border-color': submitborderHoverColor,
 		},
 		' .uagb-switch ': {
-			'height': generateCSSUnit(
+			height: generateCSSUnit(
 				25 + toggleHeightSize + inputborderWidth,
 				'px'
 			),
-			'width': generateCSSUnit(
+			width: generateCSSUnit(
 				50 + toggleWidthSize + inputborderWidth,
 				'px'
 			),
@@ -228,64 +230,64 @@ function styling( props ) {
 			'box-shadow': '0 0 1px' + toggleActiveColor,
 		},
 		' .uagb-slider:before ': {
-			'height': generateCSSUnit(
+			height: generateCSSUnit(
 				20 + toggleHeightSize - inputborderWidth,
 				'px'
 			),
-			'width': generateCSSUnit(
+			width: generateCSSUnit(
 				20 + toggleWidthSize - inputborderWidth / 2,
 				'px'
 			),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ': {
-			'transform':
+			transform:
 				'translateX(' +
 				generateCSSUnit( 26 + toggleWidthSize, 'px' ) / 2 +
 				')',
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
 			'background-color': inputColor,
-			'font-size': 'calc(' + toggleSize + toggleSizeType +' / 1.2 )',
+			'font-size': 'calc(' + toggleSize + toggleSizeType + ' / 1.2 )',
 		},
 		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
 			'background-color': bgColor,
-			'width': generateCSSUnit( toggleSize, toggleSizeType ),
-			'height': generateCSSUnit( toggleSize, toggleSizeType ),
+			width: generateCSSUnit( toggleSize, toggleSizeType ),
+			height: generateCSSUnit( toggleSize, toggleSizeType ),
 		},
 		' .uagb-forms-radio-wrap > label': {
-			'color': inputColor,
+			color: inputColor,
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
-			'color': inputColor,
+			color: inputColor,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
 			'background-color': bgColor,
 			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
-			'width': generateCSSUnit( toggleSize, 'px' ),
-			'height': generateCSSUnit( toggleSize, 'px' ),
+			width: generateCSSUnit( toggleSize, 'px' ),
+			height: generateCSSUnit( toggleSize, 'px' ),
 		},
 		' .uagb-forms-checkbox-wrap > label': {
-			'color': inputColor,
+			color: inputColor,
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
-			'color': inputColor,
+			color: inputColor,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
 			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
 			'background-color': bgColor,
-			'width': generateCSSUnit( toggleSize, 'px' ),
-			'height': generateCSSUnit( toggleSize, 'px' ),
+			width: generateCSSUnit( toggleSize, 'px' ),
+			height: generateCSSUnit( toggleSize, 'px' ),
 		},
 		' .uagb-forms-accept-wrap > label': {
-			'color': inputColor,
+			color: inputColor,
 		},
 	};
 
 	if ( 'boxed' == formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border':
+			border:
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
@@ -293,28 +295,61 @@ function styling( props ) {
 				inputborderColor,
 			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
 			'background-color': bgColor,
-			'color': inputColor,
+			color: inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottom, paddingFieldUnit ),
-			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
-			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottom,
+				paddingFieldUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeft,
+				paddingFieldUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRight,
+				paddingFieldUnit
+			),
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
-			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
-			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
+			'padding-top': generateCSSUnit(
+				paddingFieldTopTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightTablet,
+				paddingFieldUnitTablet
+			),
 		};
 		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
-			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
-			'padding-right': generateCSSUnit( paddingFieldRightMobile, paddingFieldUnitmobile ),
+			'padding-top': generateCSSUnit(
+				paddingFieldTopMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightMobile,
+				paddingFieldUnitmobile
+			),
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
 		] = {
-			'border':
+			border:
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
@@ -325,7 +360,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
 		] = {
-			'border':
+			border:
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
@@ -336,7 +371,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
 		] = {
-			'border':
+			border:
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
@@ -344,7 +379,7 @@ function styling( props ) {
 				inputborderColor,
 		};
 		selectors[ ' .uagb-slider ' ] = {
-			'border':
+			border:
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
@@ -357,33 +392,66 @@ function styling( props ) {
 		};
 	} else if ( 'underlined' == formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border': 0,
-			'outline': 0,
+			border: 0,
+			outline: 0,
 			'border-radius': 0,
-			'background': 'transparent',
+			background: 'transparent',
 			'border-bottom':
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
 				' ' +
 				inputborderColor,
-			'color': inputColor,
+			color: inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottom, paddingFieldUnit ),
-			'padding-left': generateCSSUnit( paddingFieldLeft, paddingFieldUnit ),
-			'padding-right': generateCSSUnit( paddingFieldRight, paddingFieldUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottom,
+				paddingFieldUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeft,
+				paddingFieldUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRight,
+				paddingFieldUnit
+			),
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
-			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
-			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
+			'padding-top': generateCSSUnit(
+				paddingFieldTopTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightTablet,
+				paddingFieldUnitTablet
+			),
 		};
 		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
-			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
-			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),
-			'padding-right': generateCSSUnit( paddingFieldRightMobile, paddingFieldUnitmobile ),
+			'padding-top': generateCSSUnit(
+				paddingFieldTopMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightMobile,
+				paddingFieldUnitmobile
+			),
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
@@ -431,10 +499,22 @@ function styling( props ) {
 
 	tabletSelectors = {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
-			'padding-top': generateCSSUnit( paddingBtnTopTablet , tabletPaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet , tabletPaddingBtnUnit ),
-			'padding-left': generateCSSUnit( paddingBtnLeftTablet , tabletPaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightTablet , tabletPaddingBtnUnit ),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'font-size': generateCSSUnit(
@@ -470,10 +550,22 @@ function styling( props ) {
 
 	mobileSelectors = {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
-			'padding-top': generateCSSUnit( paddingBtnTopMobile , mobilePaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile , mobilePaddingBtnUnit ),
-			'padding-left': generateCSSUnit( paddingBtnLeftMobile , mobilePaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightMobile , mobilePaddingBtnUnit ),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'font-size': generateCSSUnit(
@@ -514,9 +606,19 @@ function styling( props ) {
 	) }`;
 	stylingCss = generateCSS( selectors, base_selector );
 
-	stylingCss += generateCSS( tabletSelectors, `${base_selector}.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, `${base_selector}.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

@@ -29,36 +29,46 @@ function styling( props ) {
 			'margin-bottom'
 		] = generateCSSUnit( gap, 'px' );
 
-		selectors[
-			' .block-editor-block-list__layout'
-		] = {
+		selectors[ ' .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'tablet' == stack ) {
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-button__wrapper' ] = {
+		tabletSelectors[
+			'.uagb-editor-preview-mode-tablet .uagb-button__wrapper'
+		] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-button__wrapper' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
+		] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+		tabletSelectors[
+			'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'mobile' == stack ) {
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-button__wrapper' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
+		] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
 
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
 	}
@@ -103,7 +113,7 @@ function styling( props ) {
 	} else {
 		selectors[ ' .uagb-button__wrapper' ][ 'justify-content' ] = 'center';
 		selectors[ ' .uagb-buttons-repeater' ] = {
-			'width': '100%',
+			width: '100%',
 		};
 		selectors[
 			" .wp-block[data-type='uagb/buttons-child']:first-child .uagb-button__wrapper"

@@ -95,7 +95,7 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let selectors = {};
@@ -115,7 +115,7 @@ function styling( props ) {
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
 			'font-weight': fontWeight,
-			'color': linkColor,
+			color: linkColor,
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': alignment,
@@ -132,54 +132,42 @@ function styling( props ) {
 			),
 			'font-family': headingFontFamily,
 			'font-weight': headingFontWeight,
-			'color': headingColor,
+			color: headingColor,
 		},
 		' .uagb-toc__list-wrap ol li a:hover': {
-			'color': linkHoverColor,
+			color: linkHoverColor,
 		},
 		' .uagb-toc__wrap': {
 			'border-style': borderStyle,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-color': borderColor,
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'padding-left': generateCSSUnit(
-				leftPadding,
-				paddingTypeDesktop
-			),
+			'padding-left': generateCSSUnit( leftPadding, paddingTypeDesktop ),
 			'padding-right': generateCSSUnit(
 				rightPadding,
 				paddingTypeDesktop
 			),
-			'padding-top': generateCSSUnit(
-				topPadding,
-				paddingTypeDesktop
-			),
+			'padding-top': generateCSSUnit( topPadding, paddingTypeDesktop ),
 			'padding-bottom': generateCSSUnit(
 				bottomPadding,
 				paddingTypeDesktop
 			),
-			'background': backgroundColor,
+			background: backgroundColor,
 		},
 		' .uagb-toc__wrap:hover': {
 			'border-color': borderHoverColor,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
 			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
-			'margin-right': generateCSSUnit(
-				rightMargin,
-				marginTypeDesktop
-			),
+			'margin-right': generateCSSUnit( rightMargin, marginTypeDesktop ),
 			'margin-top': generateCSSUnit( topMargin, marginTypeDesktop ),
-			'margin-bottom': generateCSSUnit(
-				bottomMargin,
-				marginTypeDesktop
-			),
+			'margin-bottom': generateCSSUnit( bottomMargin, marginTypeDesktop ),
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
 			'padding-top': 0,
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list li': {
-			'color': bulletColor,
+			color: bulletColor,
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child': {
 			'padding-bottom': 0,
@@ -217,15 +205,15 @@ function styling( props ) {
 				' / 2 )',
 		},
 		' .uag-toc__collapsible-wrap svg': {
-			'width': generateCSSUnit( iconSize, 'px' ),
-			'height': generateCSSUnit( iconSize, 'px' ),
-			'fill': iconColor,
+			width: generateCSSUnit( iconSize, 'px' ),
+			height: generateCSSUnit( iconSize, 'px' ),
+			fill: iconColor,
 		},
 	};
 
 	selectors[ ' .uagb-toc__list-wrap' ] = {
 		'column-count': tColumnsDesktop,
-		'overflow': 'hidden',
+		overflow: 'hidden',
 	};
 
 	if ( customWidth ) {
@@ -263,7 +251,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__wrap': {
-			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
+			width: generateCSSUnit( widthTablet, widthTypeTablet ),
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
 				paddingTypeTablet
@@ -272,21 +260,33 @@ function styling( props ) {
 				rightPaddingTablet,
 				paddingTypeTablet
 			),
-			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+			'padding-top': generateCSSUnit(
+				topPaddingTablet,
+				paddingTypeTablet
+			),
 			'padding-bottom': generateCSSUnit(
 				bottomPaddingTablet,
 				paddingTypeTablet
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				marginTypeTablet
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				marginTypeTablet
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				marginTypeTablet
+			),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsTablet,
-			'overflow': 'hidden',
+			overflow: 'hidden',
 		},
 
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
@@ -351,7 +351,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__wrap': {
-			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
+			width: generateCSSUnit( widthMobile, widthTypeMobile ),
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
 				paddingTypeMobile
@@ -360,21 +360,33 @@ function styling( props ) {
 				rightPaddingMobile,
 				paddingTypeMobile
 			),
-			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-top': generateCSSUnit(
+				topPaddingMobile,
+				paddingTypeMobile
+			),
 			'padding-bottom': generateCSSUnit(
 				bottomPaddingMobile,
 				paddingTypeMobile
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				marginTypeMobile
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				marginTypeMobile
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				marginTypeMobile
+			),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsMobile,
-			'overflow': 'hidden',
+			overflow: 'hidden',
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
 			'padding-top': generateCSSUnit(
@@ -422,7 +434,10 @@ function styling( props ) {
 		},
 	};
 
-	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
 
 	let styling_css = generateCSS( selectors, id );
 

@@ -341,161 +341,161 @@ const attributes = {
 		type: 'string',
 		default: 'tablet',
 	},
-	imageWidthType:{
-		type:'string',
-		default: 'px'
+	imageWidthType: {
+		type: 'string',
+		default: 'px',
 	},
-	arrowSizeType:{
-		type:'string',
-		default: 'px'
+	arrowSizeType: {
+		type: 'string',
+		default: 'px',
 	},
-	rowGapType:{
-		type:'string',
-		default: 'px'
+	rowGapType: {
+		type: 'string',
+		default: 'px',
 	},
-	columnGapType:{
-		type:'string',
-		default: 'px'
+	columnGapType: {
+		type: 'string',
+		default: 'px',
 	},
-	descSpaceType:{
-		type:'string',
-		default: 'px'
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
 	},
-	nameSpaceType:{
-		type:'string',
-		default: 'px'
+	nameSpaceType: {
+		type: 'string',
+		default: 'px',
 	},
-	borderHoverColor:{
-		type:'string',
+	borderHoverColor: {
+		type: 'string',
 	},
-	overlayType:{
-		type:'string',
+	overlayType: {
+		type: 'string',
 	},
-	backgroundAttachment:{
-		type:'string',
+	backgroundAttachment: {
+		type: 'string',
 	},
-	gradientValue:{
-		type:'string',
+	gradientValue: {
+		type: 'string',
 	},
-	descTransform:{
-		type:'string',
+	descTransform: {
+		type: 'string',
 	},
-	descDecoration:{
-		type:'string',
-	}, 
-	nameTransform:{
-		type:'string',
+	descDecoration: {
+		type: 'string',
 	},
-	nameDecoration:{
-		type:'string',
+	nameTransform: {
+		type: 'string',
 	},
-	companyTransform:{
-		type:'string',
+	nameDecoration: {
+		type: 'string',
 	},
-	companyDecoration:{
-		type:'string',
+	companyTransform: {
+		type: 'string',
 	},
-	paddingUnit:{
-		type:'string',
-		default: 'px'
+	companyDecoration: {
+		type: 'string',
 	},
-	mobilePaddingUnit:{
-		type:'string',
-		default: 'px'
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
 	},
-	tabletPaddingUnit:{
-		type:'string',
-		default: 'px'
+	mobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
 	},
-	paddingTop:{
-		type:'number',
+	tabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
 	},
-	paddingBottom:{
-		type:'number',
+	paddingTop: {
+		type: 'number',
 	},
-	paddingLeft:{
-		type:'number',
+	paddingBottom: {
+		type: 'number',
 	},
-	paddingRight:{
-		type:'number',
+	paddingLeft: {
+		type: 'number',
 	},
-	paddingTopTablet:{
-		type:'number',
+	paddingRight: {
+		type: 'number',
 	},
-	paddingRightTablet:{
-		type:'number',
+	paddingTopTablet: {
+		type: 'number',
 	},
-	paddingBottomTablet:{
-		type:'number',
+	paddingRightTablet: {
+		type: 'number',
 	},
-	paddingLeftTablet:{
-		type:'number',
+	paddingBottomTablet: {
+		type: 'number',
 	},
-	paddingTopMobile:{
-		type:'number',
+	paddingLeftTablet: {
+		type: 'number',
 	},
-	paddingRightMobile:{
-		type:'number',
+	paddingTopMobile: {
+		type: 'number',
 	},
-	paddingBottomMobile:{
-		type:'number',
+	paddingRightMobile: {
+		type: 'number',
 	},
-	paddingLeftMobile:{
-		type:'number',
+	paddingBottomMobile: {
+		type: 'number',
 	},
-	imgspacingLink:{
-		type:'boolean',
+	paddingLeftMobile: {
+		type: 'number',
 	},
-	spacingLink:{
-		type:'boolean',
+	imgspacingLink: {
+		type: 'boolean',
 	},
-	imgpaddingTop:{
-		type:'number',
+	spacingLink: {
+		type: 'boolean',
 	},
-	imgpaddingRight:{
-		type:'number',
+	imgpaddingTop: {
+		type: 'number',
 	},
-	imgpaddingBottom:{
-		type:'number',
+	imgpaddingRight: {
+		type: 'number',
 	},
-	imgpaddingLeft:{
-		type:'number',
+	imgpaddingBottom: {
+		type: 'number',
 	},
-	imgpaddingTopTablet:{
-		type:'number',
+	imgpaddingLeft: {
+		type: 'number',
 	},
-	imgpaddingRightTablet:{
-		type:'number',
+	imgpaddingTopTablet: {
+		type: 'number',
 	},
-	imgpaddingBottomTablet:{
-		type:'number',
+	imgpaddingRightTablet: {
+		type: 'number',
 	},
-	imgpaddingLeftTablet:{
-		type:'number',
+	imgpaddingBottomTablet: {
+		type: 'number',
 	},
-	imgpaddingTopMobile:{
-		type:'number',
+	imgpaddingLeftTablet: {
+		type: 'number',
 	},
-	imgpaddingRightMobile:{
-		type:'number',
+	imgpaddingTopMobile: {
+		type: 'number',
 	},
-	imgpaddingBottomMobile:{
-		type:'number',
+	imgpaddingRightMobile: {
+		type: 'number',
 	},
-	imgpaddingLeftMobile:{
-		type:'number',
+	imgpaddingBottomMobile: {
+		type: 'number',
 	},
-	imgpaddingUnit:{
-		type:'string',
-		default: 'px'
+	imgpaddingLeftMobile: {
+		type: 'number',
 	},
-	imgmobilePaddingUnit:{
-		type:'string',
-		default: 'px'
+	imgpaddingUnit: {
+		type: 'string',
+		default: 'px',
 	},
-	imgtabletPaddingUnit:{
-		type:'string',
-		default: 'px'
+	imgmobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgtabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
 	},
 	gradientColor1: {
 		type: 'string',

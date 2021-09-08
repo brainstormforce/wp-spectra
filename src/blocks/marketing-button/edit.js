@@ -55,54 +55,62 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			paddingBtnLeftMobile,
 		} = props.attributes;
 
-		if (vPadding) {
-			if (!paddingBtnTop) {
-				props.setAttributes({ paddingBtnTop: vPadding });
+		if ( vPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: vPadding } );
 			}
-			if (!paddingBtnBottom) {
-				props.setAttributes({ paddingBtnBottom: vPadding });
-			}
-		}
-		if (hPadding) {
-			if (!paddingBtnRight) {
-				props.setAttributes({ paddingBtnRight: hPadding });
-			}
-			if (!paddingBtnLeft) {
-				props.setAttributes({ paddingBtnLeft: hPadding });
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: vPadding } );
 			}
 		}
-
-		if (vPaddingMobile) {
-			if (!paddingBtnTopMobile) {
-				props.setAttributes({ paddingBtnTopMobile: vPaddingMobile });
+		if ( hPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: hPadding } );
 			}
-			if (!paddingBtnBottomMobile) {
-				props.setAttributes({ paddingBtnBottomMobile: vPaddingMobile });
-			}
-		}
-		if (hPaddingMobile) {
-			if (!paddingBtnRightMobile) {
-				props.setAttributes({ paddingBtnRightMobile: hPaddingMobile });
-			}
-			if (!paddingBtnLeftMobile) {
-				props.setAttributes({ paddingBtnLeftMobile: hPaddingMobile });
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: hPadding } );
 			}
 		}
 
-		if (vPaddingTablet) {
-			if (!paddingBtnTopTablet) {
-				props.setAttributes({ paddingBtnTopTablet: vPaddingTablet });
+		if ( vPaddingMobile ) {
+			if ( ! paddingBtnTopMobile ) {
+				props.setAttributes( { paddingBtnTopMobile: vPaddingMobile } );
 			}
-			if (!paddingBtnBottomTablet) {
-				props.setAttributes({ paddingBtnBottomTablet: vPaddingTablet });
+			if ( ! paddingBtnBottomMobile ) {
+				props.setAttributes( {
+					paddingBtnBottomMobile: vPaddingMobile,
+				} );
 			}
 		}
-		if (hPaddingTablet) {
-			if (!paddingBtnRightTablet) {
-				props.setAttributes({ paddingBtnRightTablet: hPaddingTablet });
+		if ( hPaddingMobile ) {
+			if ( ! paddingBtnRightMobile ) {
+				props.setAttributes( {
+					paddingBtnRightMobile: hPaddingMobile,
+				} );
 			}
-			if (!paddingBtnLeftTablet) {
-				props.setAttributes({ paddingBtnLeftTablet: hPaddingTablet });
+			if ( ! paddingBtnLeftMobile ) {
+				props.setAttributes( { paddingBtnLeftMobile: hPaddingMobile } );
+			}
+		}
+
+		if ( vPaddingTablet ) {
+			if ( ! paddingBtnTopTablet ) {
+				props.setAttributes( { paddingBtnTopTablet: vPaddingTablet } );
+			}
+			if ( ! paddingBtnBottomTablet ) {
+				props.setAttributes( {
+					paddingBtnBottomTablet: vPaddingTablet,
+				} );
+			}
+		}
+		if ( hPaddingTablet ) {
+			if ( ! paddingBtnRightTablet ) {
+				props.setAttributes( {
+					paddingBtnRightTablet: hPaddingTablet,
+				} );
+			}
+			if ( ! paddingBtnLeftTablet ) {
+				props.setAttributes( { paddingBtnLeftTablet: hPaddingTablet } );
 			}
 		}
 	}, [] );

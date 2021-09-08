@@ -252,58 +252,57 @@ const attributes = {
 		default: 5,
 	},
 	ctaTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	ctaBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	ctaLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	ctaRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	ctaLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	ctaRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	ctaTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	ctaBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	ctaLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	ctaRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	ctaTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	ctaBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	ctaPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobileCTAPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletCTAPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	ctaPaddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
-
 };
 
 export default attributes;

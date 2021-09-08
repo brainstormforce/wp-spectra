@@ -3,9 +3,9 @@ const paths = require( './paths' );
 const fs = require( 'fs' );
 const sass = require( 'node-sass' );
 
-
 /* Generate common editor */
-sass.render( {
+sass.render(
+	{
 		file: paths.pluginSrc + '/common-editor.scss',
 		outputStyle: 'expanded',
 		outFile: paths.pluginDist + '/common-editor.css',
@@ -17,10 +17,9 @@ sass.render( {
 				paths.pluginDist + '/common-editor.css',
 				result.css,
 				function ( err ) {
-
 					if ( err ) throw err;
 
-					console.log( "\n\nCommon editor generated!" );
+					console.log( '\n\nCommon editor generated!' );
 				}
 			);
 		}

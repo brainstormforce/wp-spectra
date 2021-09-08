@@ -62,56 +62,80 @@ function styling( props ) {
 				'border-style': borderStyle,
 				'border-color': borderColor,
 				'border-radius': generateCSSUnit( borderRadius, 'px' ),
-				'background': background,
+				background,
 				'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 				'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 				'padding-top': generateCSSUnit( topPadding, paddingUnit ),
 				'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 			},
 			' .uagb-buttons-repeater:hover': {
-				'background': hBackground,
+				background: hBackground,
 				'border-width': generateCSSUnit( borderWidth, 'px' ),
 				'border-style': borderStyle,
 				'border-color': borderHColor,
 			},
 			' .uagb-buttons-repeater a.uagb-button__link': {
-				'color': color,
+				color,
 			},
 			' .uagb-buttons-repeater:hover a.uagb-button__link': {
-				'color': hColor,
+				color: hColor,
 			},
 			' .uagb-buttons-repeater:hover .uagb-button__link': {
-				'color': hColor,
+				color: hColor,
 			},
 			' .uagb-buttons-repeater:hover .uagb-button__icon': {
-				'color': hColor,
+				color: hColor,
 			},
 			' .uagb-buttons-repeater .uagb-button__link': {
-				'color': color,
+				color,
 			},
 		};
 
 		mobileSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeMobile, sizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
+			'padding-left': generateCSSUnit(
+				leftMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomMobilePadding,
+				mobilePaddingUnit
+			),
 		};
 
 		tabletSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeTablet, sizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
+			'padding-left': generateCSSUnit(
+				leftTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomTabletPadding,
+				tabletPaddingUnit
+			),
 		};
 	}
 
 	selectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( size, sizeType ),
+		width: generateCSSUnit( size, sizeType ),
 	};
 
 	if ( ! inheritFromTheme ) {
@@ -127,13 +151,13 @@ function styling( props ) {
 	};
 
 	mobileSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeMobile, sizeType ),
-		'height': generateCSSUnit( sizeMobile, sizeType ),
+		width: generateCSSUnit( sizeMobile, sizeType ),
+		height: generateCSSUnit( sizeMobile, sizeType ),
 	};
 
 	tabletSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeTablet, sizeType ),
-		'height': generateCSSUnit( sizeTablet, sizeType ),
+		width: generateCSSUnit( sizeTablet, sizeType ),
+		height: generateCSSUnit( sizeTablet, sizeType ),
 	};
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;

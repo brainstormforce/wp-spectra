@@ -161,8 +161,8 @@ const attributes = {
 		type: 'string',
 	},
 	overlayType: {
-		type: "string",
-		default: "color",
+		type: 'string',
+		default: 'color',
 	},
 	gradientColor1: {
 		type: 'string',
@@ -315,11 +315,11 @@ const attributes = {
 		default: 'px',
 	},
 	paddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	marginLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	boxShadowColor: {
@@ -344,8 +344,8 @@ const attributes = {
 		default: 'outset',
 	},
 	gradientValue: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 };
 

@@ -94,10 +94,13 @@ function styling( props ) {
 	let mobileSelectors = {};
 
 	const $iconSize = generateCSSUnit( iconSize, iconSizeType );
-	const $buttonIconSize = generateCSSUnit( buttonIconSize, buttonIconSizeType);
+	const $buttonIconSize = generateCSSUnit(
+		buttonIconSize,
+		buttonIconSizeType
+	);
 
 	const inputCSS = {
-		'color': textColor,
+		color: textColor,
 		'background-color': inputBgColor,
 		'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 		'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
@@ -105,21 +108,33 @@ function styling( props ) {
 		'font-weight': inputFontWeight,
 		'text-decoration': inputDecoration,
 		'text-transform': inputTransform,
-		'border': 0,
+		border: 0,
 		'border-radius': '0px',
-		'margin': 0,
-		'outline': 'unset',
-		'padding-top': generateCSSUnit(paddingInputTop,inputPaddingTypeDesktop),
-		'padding-bottom': generateCSSUnit(paddingInputBottom,inputPaddingTypeDesktop),
-		'padding-right': generateCSSUnit(paddingInputRight,inputPaddingTypeDesktop),
-		'padding-left': generateCSSUnit(paddingInputLeft,inputPaddingTypeDesktop),
-		'transition': 'all .5s',
+		margin: 0,
+		outline: 'unset',
+		'padding-top': generateCSSUnit(
+			paddingInputTop,
+			inputPaddingTypeDesktop
+		),
+		'padding-bottom': generateCSSUnit(
+			paddingInputBottom,
+			inputPaddingTypeDesktop
+		),
+		'padding-right': generateCSSUnit(
+			paddingInputRight,
+			inputPaddingTypeDesktop
+		),
+		'padding-left': generateCSSUnit(
+			paddingInputLeft,
+			inputPaddingTypeDesktop
+		),
+		transition: 'all .5s',
 	};
 	const boxCSS = {
 		'border-style': borderStyle,
 		'border-width': generateCSSUnit( borderWidth, 'px' ),
 		'border-color': borderColor,
-		'outline': 'unset',
+		outline: 'unset',
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
@@ -199,7 +214,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-search-wrapper .uagb-search-form__container:hover'
 		] = {
-			'border-color':borderHColor
+			'border-color': borderHColor,
 		};
 		if ( 'inset' === boxShadowPosition ) {
 			selectors[ ' .uagb-search-wrapper .uagb-search-form__input' ] = {
@@ -222,9 +237,18 @@ function styling( props ) {
 			' .uagb-search-form__container .uagb-wp-search-icon-wrap'
 		] = {
 			'background-color': inputBgColor,
-			'padding-top': generateCSSUnit(paddingInputTop,inputPaddingTypeDesktop),
-			'padding-bottom': generateCSSUnit(paddingInputBottom,inputPaddingTypeDesktop),
-			'padding-left': generateCSSUnit(paddingInputLeft,inputPaddingTypeDesktop),
+			'padding-top': generateCSSUnit(
+				paddingInputTop,
+				inputPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingInputBottom,
+				inputPaddingTypeDesktop
+			),
+			'padding-left': generateCSSUnit(
+				paddingInputLeft,
+				inputPaddingTypeDesktop
+			),
 		};
 	}
 
@@ -249,15 +273,36 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
-			'padding-top': generateCSSUnit(paddingInputTopMobile,mobilePaddingInputUnit),
-			'padding-bottom':generateCSSUnit(paddingInputBottomMobile,mobilePaddingInputUnit),
-			'padding-right':generateCSSUnit(paddingInputRightMobile,mobilePaddingInputUnit),
-			'padding-left':generateCSSUnit(paddingInputLeftMobile,mobilePaddingInputUnit),
+			'padding-top': generateCSSUnit(
+				paddingInputTopMobile,
+				mobilePaddingInputUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingInputBottomMobile,
+				mobilePaddingInputUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingInputRightMobile,
+				mobilePaddingInputUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingInputLeftMobile,
+				mobilePaddingInputUnit
+			),
 		},
 		' .uagb-search-form__container .uagb-wp-search-icon-wrap': {
-			'padding-top': generateCSSUnit(paddingInputTopMobile,mobilePaddingInputUnit),
-			'padding-bottom': generateCSSUnit(paddingInputBottomMobile,mobilePaddingInputUnit),
-			'padding-left': generateCSSUnit(paddingInputLeftMobile,mobilePaddingInputUnit),
+			'padding-top': generateCSSUnit(
+				paddingInputTopMobile,
+				mobilePaddingInputUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingInputBottomMobile,
+				mobilePaddingInputUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingInputLeftMobile,
+				mobilePaddingInputUnit
+			),
 		},
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
 			'font-size': generateCSSUnit(
@@ -281,17 +326,38 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
-			'padding-top': generateCSSUnit(paddingInputTopTablet,tabletPaddingInputUnit),
-			'padding-bottom': generateCSSUnit(paddingInputBottomTablet,tabletPaddingInputUnit),
-			'padding-right': generateCSSUnit(paddingInputRightTablet,tabletPaddingInputUnit),
-			'padding-left': generateCSSUnit(paddingInputLeftTablet,tabletPaddingInputUnit),
+			'padding-top': generateCSSUnit(
+				paddingInputTopTablet,
+				tabletPaddingInputUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingInputBottomTablet,
+				tabletPaddingInputUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingInputRightTablet,
+				tabletPaddingInputUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingInputLeftTablet,
+				tabletPaddingInputUnit
+			),
 		},
 		' .uagb-search-form__container .uagb-wp-search-icon-wrap': {
-			'padding-top':  generateCSSUnit(paddingInputTopTablet, tabletPaddingInputUnit),
-			'padding-bottom':  generateCSSUnit(paddingInputBottomTablet, tabletPaddingInputUnit),
-			'padding-left':  generateCSSUnit(paddingInputLeftTablet, tabletPaddingInputUnit),
+			'padding-top': generateCSSUnit(
+				paddingInputTopTablet,
+				tabletPaddingInputUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingInputBottomTablet,
+				tabletPaddingInputUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingInputLeftTablet,
+				tabletPaddingInputUnit
+			),
 		},
-		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text':  {
+		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
 			'font-size': generateCSSUnit(
 				buttonFontSizeTablet,
 				buttonFontSizeType

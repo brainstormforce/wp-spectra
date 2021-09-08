@@ -196,7 +196,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-infobox__outer-wrap',
 				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			{ ctaType == 'all' && (

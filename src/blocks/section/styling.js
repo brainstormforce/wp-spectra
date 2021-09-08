@@ -64,7 +64,7 @@ function styling( props ) {
 		borderStyle,
 		borderWidth,
 		borderColor,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let inner_width = '100%';
@@ -184,9 +184,15 @@ function styling( props ) {
 	] = generateCSSUnit( borderRadius, 'px' );
 
 	if ( borderStyle != 'none' ) {
-		selectors[ ' > .uagb-section__overlay'][ 'border-style' ] = borderStyle;
-		selectors[ ' > .uagb-section__overlay'][ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
-		selectors[ ' > .uagb-section__overlay'][ 'border-color' ] = borderColor;
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-style'
+		] = borderStyle;
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-width'
+		] = generateCSSUnit( borderWidth, 'px' );
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-color'
+		] = borderColor;
 	}
 	tabletSelectors = {
 		'.uagb-section__wrap': {

@@ -71,10 +71,10 @@ function styling( props ) {
 
 	const selectors = {
 		' .uagb-star-inner-container svg': {
-			'fill': starColor,
+			fill: starColor,
 		},
 		' .uagb-avg-review-star-inner-container svg': {
-			'fill': starColor,
+			fill: starColor,
 		},
 		' .uagb-rating-title': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -84,7 +84,7 @@ function styling( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
-			'color': titleColor,
+			color: titleColor,
 		},
 		' .uagb_review_entry': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -106,7 +106,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': descColor,
+			color: descColor,
 		},
 		' .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -119,7 +119,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': authorColor,
+			color: authorColor,
 		},
 		' .uagb-rating-desc, .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -132,7 +132,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': descColor,
+			color: descColor,
 		},
 		' .uagb_review_block': {
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
@@ -152,17 +152,17 @@ function styling( props ) {
 				contentLineHeight,
 				contentLineHeightType
 			),
-			'color': summaryColor,
+			color: summaryColor,
 		},
 		' .uagb_review_entry .rich-text': {
-			'color': contentColor,
+			color: contentColor,
 		},
 		' .uagb_review_entry .star, .uagb_review_average_stars .star': {
-			'fill': starColor,
+			fill: starColor,
 		},
 		' .uagb_review_entry path, .uagb_review_average_stars path': {
-			'stroke': starOutlineColor,
-			'fill': starActiveColor,
+			stroke: starOutlineColor,
+			fill: starActiveColor,
 		},
 	};
 
@@ -198,10 +198,22 @@ function styling( props ) {
 			),
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+			'padding-left': generateCSSUnit(
+				paddingLeftMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightMobile,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomMobile,
+				mobilePaddingUnit
+			),
 		},
 	};
 
@@ -237,10 +249,22 @@ function styling( props ) {
 			),
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
+			'padding-left': generateCSSUnit(
+				paddingLeftTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightTablet,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomTablet,
+				tabletPaddingUnit
+			),
 		},
 	};
 
@@ -251,9 +275,19 @@ function styling( props ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

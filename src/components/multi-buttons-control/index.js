@@ -1,25 +1,25 @@
 /**
  * WordPress dependencies
  */
-import { Button, ButtonGroup } from "@wordpress/components";
-import { __ } from "@wordpress/i18n";
+import { Button, ButtonGroup } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 const { useSelect, useDispatch } = wp.data;
-import { useState } from "@wordpress/element";
+import { useState } from '@wordpress/element';
 
 /**
  * Import Css
  */
-import styles from "./editor.lazy.scss";
-import React, { useLayoutEffect } from "react";
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
 
-const MultiButtonsControl = (props) => {
+const MultiButtonsControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 	const {
 		data,
 		label,
@@ -30,19 +30,19 @@ const MultiButtonsControl = (props) => {
 		onChange,
 	} = props;
 
-	const deviceType = useSelect((select) => {
-		return select("core/edit-post").__experimentalGetPreviewDeviceType();
-	}, []);
-	const [displayResponsive, toggleResponsive] = useState(false);
+	const deviceType = useSelect( ( select ) => {
+		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
+	}, [] );
+	const [ displayResponsive, toggleResponsive ] = useState( false );
 	const {
 		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-	} = useDispatch("core/edit-post");
+	} = useDispatch( 'core/edit-post' );
 
-	const customSetPreviewDeviceType = (device) => {
-		setPreviewDeviceType(device);
-		toggleResponsive(!displayResponsive);
+	const customSetPreviewDeviceType = ( device ) => {
+		setPreviewDeviceType( device );
+		toggleResponsive( ! displayResponsive );
 	};
-	let iconsClass = showIcons ? "uag-multibutton-icons" : "";
+	const iconsClass = showIcons ? 'uag-multibutton-icons' : '';
 	const devicesSvgs = {
 		desktop: (
 			<svg
@@ -77,204 +77,210 @@ const MultiButtonsControl = (props) => {
 	};
 	const devices = [
 		{
-			name: "Desktop",
+			name: 'Desktop',
 			title: devicesSvgs.desktop,
-			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
+			itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Tablet",
+			name: 'Tablet',
 			title: devicesSvgs.tablet,
-			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
+			itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Mobile",
-			key: "mobile",
+			name: 'Mobile',
+			key: 'mobile',
 			title: devicesSvgs.mobile,
-			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
+			itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
 		},
 	];
-	if (!options) {
+	if ( ! options ) {
 		return __(
-			"Please add a option props to MultiButtonsControl",
-			"ultimate-addons-for-gutenberg"
+			'Please add a option props to MultiButtonsControl',
+			'ultimate-addons-for-gutenberg'
 		);
 	}
 
-	if (responsive) {
+	if ( responsive ) {
 		const output = {};
 
 		output.Desktop = (
 			<ButtonGroup
-				className={`uagb-multi-button-button-group`}
-				aria-label={label}
+				className={ `uagb-multi-button-button-group` }
+				aria-label={ label }
 			>
-				{options.map((option) => (
+				{ options.map( ( option ) => (
 					<Button
-						className={`uagb-multi-button`}
+						className={ `uagb-multi-button` }
 						isLarge
-						isSecondary={data.desktop.value !== option.value}
-						isPrimary={data.desktop.value === option.value}
-						aria-pressed={data.desktop.value === option.value}
-						onClick={() =>
-							setAttributes({
-								[data.desktop.label]: option.value,
-							})
+						isSecondary={ data.desktop.value !== option.value }
+						isPrimary={ data.desktop.value === option.value }
+						aria-pressed={ data.desktop.value === option.value }
+						onClick={ () =>
+							setAttributes( {
+								[ data.desktop.label ]: option.value,
+							} )
 						}
-						aria-label={option.tooltip}
-						label={option.tooltip}
-						showTooltip={option.tooltip ? true : false}
+						aria-label={ option.tooltip }
+						label={ option.tooltip }
+						showTooltip={ option.tooltip ? true : false }
 					>
-						{showIcons ? option.icon : option.label}
+						{ showIcons ? option.icon : option.label }
 					</Button>
-				))}
+				) ) }
 			</ButtonGroup>
 		);
 		output.Tablet = (
 			<ButtonGroup
-				className={`uagb-multi-button-button-group`}
-				aria-label={label}
+				className={ `uagb-multi-button-button-group` }
+				aria-label={ label }
 			>
-				{options.map((option) => (
+				{ options.map( ( option ) => (
 					<Button
-						className={`uagb-multi-button`}
+						className={ `uagb-multi-button` }
 						isLarge
-						isSecondary={data.tablet.value !== option.value}
-						isPrimary={data.tablet.value === option.value}
-						aria-pressed={data.tablet.value === option.value}
-						onClick={() =>
-							setAttributes({
-								[data.tablet.label]: option.value,
-							})
+						isSecondary={ data.tablet.value !== option.value }
+						isPrimary={ data.tablet.value === option.value }
+						aria-pressed={ data.tablet.value === option.value }
+						onClick={ () =>
+							setAttributes( {
+								[ data.tablet.label ]: option.value,
+							} )
 						}
-						aria-label={option.tooltip}
-						label={option.tooltip}
-						showTooltip={option.tooltip ? true : false}
+						aria-label={ option.tooltip }
+						label={ option.tooltip }
+						showTooltip={ option.tooltip ? true : false }
 					>
-						{showIcons ? option.icon : option.label}
+						{ showIcons ? option.icon : option.label }
 					</Button>
-				))}
+				) ) }
 			</ButtonGroup>
 		);
 		output.Mobile = (
 			<ButtonGroup
-				className={`uagb-multi-button-button-group`}
-				aria-label={label}
+				className={ `uagb-multi-button-button-group` }
+				aria-label={ label }
 			>
-				{options.map((option) => (
+				{ options.map( ( option ) => (
 					<Button
-						className={`uagb-multi-button`}
+						className={ `uagb-multi-button` }
 						isLarge
-						isSecondary={data.mobile.value !== option.value}
-						isPrimary={data.mobile.value === option.value}
-						aria-pressed={data.mobile.value === option.value}
-						onClick={() =>
-							setAttributes({
-								[data.mobile.label]: option.value,
-							})
+						isSecondary={ data.mobile.value !== option.value }
+						isPrimary={ data.mobile.value === option.value }
+						aria-pressed={ data.mobile.value === option.value }
+						onClick={ () =>
+							setAttributes( {
+								[ data.mobile.label ]: option.value,
+							} )
 						}
-						aria-label={option.tooltip}
-						label={option.tooltip}
-						showTooltip={option.tooltip ? true : false}
+						aria-label={ option.tooltip }
+						label={ option.tooltip }
+						showTooltip={ option.tooltip ? true : false }
 					>
-						{showIcons ? option.icon : option.label}
+						{ showIcons ? option.icon : option.label }
 					</Button>
-				))}
+				) ) }
 			</ButtonGroup>
 		);
 		const commonResponsiveHandler = () => {
-			toggleResponsive(!displayResponsive);
+			toggleResponsive( ! displayResponsive );
 		};
 		return (
 			<div
-				className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
 			>
 				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
 					<div className="uag-responsive-label-wrap">
-						{label && (
-							<span className="uag-control-label">{label}</span>
-						)}
-						{!displayResponsive && (
+						{ label && (
+							<span className="uag-control-label">{ label }</span>
+						) }
+						{ ! displayResponsive && (
 							<Button
 								key="uag-responsive-common-button"
 								className="uag-responsive-common-button"
-								onClick={commonResponsiveHandler}
+								onClick={ commonResponsiveHandler }
 							>
-								{devicesSvgs[deviceType.toLowerCase()]}
+								{ devicesSvgs[ deviceType.toLowerCase() ] }
 							</Button>
-						)}
-						{displayResponsive && (
+						) }
+						{ displayResponsive && (
 							<ButtonGroup
 								className="uagb-range-control-responsive components-tab-panel__tabs"
-								aria-label={__(
-									"Device",
-									"ultimate-addons-for-gutenberg"
-								)}
+								aria-label={ __(
+									'Device',
+									'ultimate-addons-for-gutenberg'
+								) }
 							>
-								{devices.map(
-									({ name, key, title, itemClass }) => (
+								{ devices.map(
+									( { name, key, title, itemClass } ) => (
 										<Button
-											key={key}
-											className={`components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${itemClass}${
+											key={ key }
+											className={ `components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${ itemClass }${
 												name === deviceType
-													? " active-tab"
-													: ""
-											}`}
-											aria-pressed={deviceType === name}
-											onClick={() =>
-												customSetPreviewDeviceType(name)
+													? ' active-tab'
+													: ''
+											}` }
+											aria-pressed={ deviceType === name }
+											onClick={ () =>
+												customSetPreviewDeviceType(
+													name
+												)
 											}
 										>
-											{title}
+											{ title }
 										</Button>
 									)
-								)}
+								) }
 							</ButtonGroup>
-						)}
+						) }
 					</div>
 				</div>
-				{output[deviceType] ? output[deviceType] : output.Desktop}
-				{props.help && <p className="uag-control-help-notice">{props.help}</p>}
+				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
+				{ props.help && (
+					<p className="uag-control-help-notice">{ props.help }</p>
+				) }
 			</div>
 		);
 	}
 
-	const onClickHandler = (value) => {
-		if (onChange) {
-			onChange(value);
+	const onClickHandler = ( value ) => {
+		if ( onChange ) {
+			onChange( value );
 			return;
 		}
-		setAttributes({
-			[data.label]: value,
-		});
+		setAttributes( {
+			[ data.label ]: value,
+		} );
 	};
 	return (
 		<div
-			className={`components-base-control uagb-multi-buttons-control ${iconsClass}`}
+			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
 		>
 			<span className="uagb-multi-buttons-control__label uag-control-label">
-				{label}
+				{ label }
 			</span>
 			<ButtonGroup
-				className={`uagb-multi-button-button-group`}
-				aria-label={label}
+				className={ `uagb-multi-button-button-group` }
+				aria-label={ label }
 			>
-				{options.map((option) => (
+				{ options.map( ( option ) => (
 					<Button
-						className={`uagb-multi-button`}
+						className={ `uagb-multi-button` }
 						isLarge
-						isSecondary={data.value !== option.value}
-						isPrimary={data.value === option.value}
-						aria-pressed={data.value === option.value}
-						onClick={() => onClickHandler(option.value)}
-						aria-label={option.tooltip}
-						label={option.tooltip}
-						showTooltip={option.tooltip ? true : false}
+						isSecondary={ data.value !== option.value }
+						isPrimary={ data.value === option.value }
+						aria-pressed={ data.value === option.value }
+						onClick={ () => onClickHandler( option.value ) }
+						aria-label={ option.tooltip }
+						label={ option.tooltip }
+						showTooltip={ option.tooltip ? true : false }
 					>
-						{showIcons ? option.icon : option.label}
+						{ showIcons ? option.icon : option.label }
 					</Button>
-				))}
+				) ) }
 			</ButtonGroup>
-			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
+			{ props.help && (
+				<p className="uag-control-help-notice">{ props.help }</p>
+			) }
 		</div>
 	);
 };

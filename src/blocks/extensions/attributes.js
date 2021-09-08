@@ -61,32 +61,31 @@ function addAttributes( settings ) {
 wp.hooks.addFilter(
 	'blocks.registerBlockType',
 	'uagb/advanced-control-block',
-    addAttributes
+	addAttributes
 );
 
-if ( "1" === enableMasonryGallery ) {
+if ( '1' === enableMasonryGallery ) {
 	function addMasonryAttribute( settings ) {
 		const blockType = [ 'core/gallery' ];
-		if( blockType.includes(settings.name) ){
-			
+		if ( blockType.includes( settings.name ) ) {
 			if ( settings.attributes ) {
 				settings.attributes = Object.assign( settings.attributes, {
-					masonry:{
-						type: "boolean",
-						default: false
+					masonry: {
+						type: 'boolean',
+						default: false,
 					},
 					masonryGutter: {
-						type: "number",
+						type: 'number',
 					},
-					block_id : {
-						type: "string"
-					}
-				} );		
+					block_id: {
+						type: 'string',
+					},
+				} );
 			}
 		}
 		return settings;
 	}
-	
+
 	wp.hooks.addFilter(
 		'blocks.registerBlockType',
 		'uagb/masonry-gallery',

@@ -51,7 +51,10 @@ function SchemaNotices( props ) {
 		emptyItems.push( 'Description' );
 	}
 	if (
-		! mainimage || mainimage === "null" || mainimage.url === "null" || mainimage.url === ""
+		! mainimage ||
+		mainimage === 'null' ||
+		mainimage.url === 'null' ||
+		mainimage.url === ''
 	) {
 		emptyItems.push( 'Image' );
 	}

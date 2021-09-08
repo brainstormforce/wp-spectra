@@ -72,7 +72,7 @@ const attributes = {
 	},
 	descSpaceUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	author: {
 		selector: '.uagb-blockquote__author',
@@ -128,7 +128,7 @@ const attributes = {
 	},
 	authorSpaceUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	authorImage: {
 		type: 'object',
@@ -147,7 +147,7 @@ const attributes = {
 	},
 	authorImageWidthUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	authorImgBorderRadius: {
 		type: 'number',
@@ -155,7 +155,7 @@ const attributes = {
 	},
 	authorImgBorderRadiusUnit: {
 		type: 'string',
-		default: '%'
+		default: '%',
 	},
 	authorImgPosition: {
 		type: 'string',
@@ -270,9 +270,9 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
-	tweetIconSpacingUnit:{
-		type: "string",
-		default: 'px'
+	tweetIconSpacingUnit: {
+		type: 'string',
+		default: 'px',
 	},
 	borderColor: {
 		type: 'string',
@@ -290,16 +290,16 @@ const attributes = {
 		type: 'number',
 		default: 15,
 	},
-	borderGapUnit:{
+	borderGapUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	verticalPadding: {
 		type: 'number',
 	},
-	verticalPaddingUnit:{
+	verticalPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	quoteStyle: {
 		type: 'string',
@@ -327,7 +327,7 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
-	quoteUnit:{
+	quoteUnit: {
 		type: 'string',
 		default: 'px',
 	},
@@ -345,9 +345,9 @@ const attributes = {
 		type: 'number',
 		default: 100,
 	},
-	quoteBorderRadiusUnit:{
+	quoteBorderRadiusUnit: {
 		type: 'string',
-		default: '%'
+		default: '%',
 	},
 	quoteBgColor: {
 		type: 'string',
@@ -366,37 +366,37 @@ const attributes = {
 		type: 'number',
 		default: 20,
 	},
-	quoteTopMarginTablet:{
-		type: 'number'
+	quoteTopMarginTablet: {
+		type: 'number',
 	},
-	quoteBottomMarginTablet:{
-		type: 'number'
+	quoteBottomMarginTablet: {
+		type: 'number',
 	},
-	quoteLeftMarginTablet:{
-		type: 'number'
+	quoteLeftMarginTablet: {
+		type: 'number',
 	},
-	quoteRightMarginTablet:{
-		type: 'number'
+	quoteRightMarginTablet: {
+		type: 'number',
 	},
-	quoteTopMarginMobile:{
-		type: 'number'
+	quoteTopMarginMobile: {
+		type: 'number',
 	},
-	quoteBottomMarginMobile:{
-		type: 'number'
+	quoteBottomMarginMobile: {
+		type: 'number',
 	},
-	quoteLeftMarginMobile:{
-		type: 'number'
+	quoteLeftMarginMobile: {
+		type: 'number',
 	},
-	quoteRightMarginMobile:{
-		type: 'number'
+	quoteRightMarginMobile: {
+		type: 'number',
 	},
-	quotemobileUnit:{
+	quotemobileUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	quotetabletUnit:{
+	quotetabletUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	quoteHoverColor: {
 		type: 'string',
@@ -409,62 +409,62 @@ const attributes = {
 	},
 	borderWidthUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	paddingBtnTop: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnBottom: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnLeft: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnRight: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnTopTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnRightTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnBottomTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnLeftTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnTopMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnRightMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnBottomMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnLeftMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	paddingBtnUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	tabletPaddingBtnUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	btnspacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 };

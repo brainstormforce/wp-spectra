@@ -44,20 +44,20 @@ const ReviewComponent = ( props ) => {
 			leftPadding,
 		} = attributes;
 
-		if ( contentVrPadding ){
-			if ( !topPadding ){
+		if ( contentVrPadding ) {
+			if ( ! topPadding ) {
 				setAttributes( { topPadding: contentVrPadding } );
 			}
-			if ( !bottomPadding ){
+			if ( ! bottomPadding ) {
 				setAttributes( { bottomPadding: contentVrPadding } );
 			}
 		}
 
-		if( contentHrPadding ){
-			if( !rightPadding ){
+		if ( contentHrPadding ) {
+			if ( ! rightPadding ) {
 				setAttributes( { rightPadding: contentHrPadding } );
 			}
-			if( !leftPadding ){
+			if ( ! leftPadding ) {
 				setAttributes( { leftPadding: contentHrPadding } );
 			}
 		}
@@ -88,7 +88,6 @@ const ReviewComponent = ( props ) => {
 		$( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
 			event.preventDefault();
 		} );
-		
 	}, [ props ] );
 
 	// Setup the attributes
@@ -203,13 +202,13 @@ compose( [
 export default compose(
 	withSelect( ( select, ownProps ) => {
 		const { __experimentalGetPreviewDeviceType = null } = select(
-			"core/edit-post"
+			'core/edit-post'
 		);
 
 		const deviceType = __experimentalGetPreviewDeviceType
 			? __experimentalGetPreviewDeviceType()
 			: null;
-			
+
 		const newAverage =
 			ownProps.attributes.parts
 				.map( ( i ) => i.value )

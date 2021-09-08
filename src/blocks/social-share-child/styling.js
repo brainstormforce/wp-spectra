@@ -14,22 +14,22 @@ function styling( props ) {
 
 	const selectors = {
 		'.uagb-ss-repeater a.uagb-ss__link': {
-			'color': icon_color,
+			color: icon_color,
 		},
 		'.uagb-ss-repeater a.uagb-ss__link svg': {
-			'fill': icon_color,
+			fill: icon_color,
 		},
 		'.uagb-ss-repeater:hover a.uagb-ss__link': {
-			'color': icon_hover_color,
+			color: icon_hover_color,
 		},
 		'.uagb-ss-repeater:hover a.uagb-ss__link svg': {
-			'fill': icon_hover_color,
+			fill: icon_hover_color,
 		},
 		'.uagb-ss-repeater.uagb-ss__wrapper': {
-			'background': icon_bg_color,
+			background: icon_bg_color,
 		},
 		'.uagb-ss-repeater.uagb-ss__wrapper:hover': {
-			'background': icon_bg_hover_color,
+			background: icon_bg_hover_color,
 		},
 	};
 

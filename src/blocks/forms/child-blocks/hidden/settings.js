@@ -1,7 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { PanelBody, TextControl } from '@wordpress/components';
 
@@ -16,9 +18,7 @@ const Settings = ( props ) => {
 
 	const hiddenFieldSettings = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<TextControl
 					label={ __( 'Value', 'ultimate-addons-for-gutenberg' ) }
 					value={ hidden_field_value }
@@ -33,12 +33,11 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<InspectorControls>
-				<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
-					{ hiddenFieldSettings() }
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ hiddenFieldSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

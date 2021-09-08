@@ -3,15 +3,16 @@ import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import React, { useLayoutEffect } from 'react';
-import {
-	InnerBlocks,
-	RichText
-} from '@wordpress/block-editor';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { Tooltip, Dashicon } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import { select, dispatch } from '@wordpress/data';
-const { updateBlockAttributes, insertBlock, removeBlock } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
-const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
+const { updateBlockAttributes, insertBlock, removeBlock } = ! wp.blockEditor
+	? dispatch( 'core/editor' )
+	: dispatch( 'core/block-editor' );
+const { getBlockOrder } = ! wp.blockEditor
+	? select( 'core/editor' )
+	: select( 'core/block-editor' );
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -109,7 +110,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const removeTab = ( index ) => {
-
 		const childBlocks = getBlockOrder( clientId );
 
 		removeBlock( childBlocks[ index ], false );

@@ -2,34 +2,36 @@
  * BLOCK: FAQ
  */
 
-import renderSVG from "@Controls/renderIcon";
-import React, { Suspense } from "react";
-import lazyLoader from "@Controls/lazy-loader";
-import WebfontLoader from "@Components/typography/fontloader";
-import TypographyControl from "@Components/typography";
-import ResponsiveSlider from "@Components/responsive-slider";
-import MultiButtonsControl from "@Components/multi-buttons-control";
-import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
-import Range from "@Components/range/Range.js";
-import SpacingControl from "@Components/spacing-control";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
-import { __ } from "@wordpress/i18n";
-import Border from "@Components/border";
-import { select } from "@wordpress/data";
-import UAGIconPicker from "@Components/icon-picker";
-import UAGTabsControl from "@Components/tabs";
+import renderSVG from '@Controls/renderIcon';
+import React, { Suspense } from 'react';
+import lazyLoader from '@Controls/lazy-loader';
+import WebfontLoader from '@Components/typography/fontloader';
+import TypographyControl from '@Components/typography';
+import ResponsiveSlider from '@Components/responsive-slider';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import Range from '@Components/range/Range.js';
+import SpacingControl from '@Components/spacing-control';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
+import { __ } from '@wordpress/i18n';
+import Border from '@Components/border';
+import { select } from '@wordpress/data';
+import UAGIconPicker from '@Components/icon-picker';
+import UAGTabsControl from '@Components/tabs';
 
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
 	Icon,
-} from "@wordpress/components";
+} from '@wordpress/components';
 
-const Settings = (props) => {
+const Settings = ( props ) => {
 	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
@@ -125,259 +127,278 @@ const Settings = (props) => {
 		answerLeftPaddingMobile,
 	} = attributes;
 
-	const onchangeIcon = (value) => {
-		const getChildBlocks = select("core/block-editor").getBlocks(
+	const onchangeIcon = ( value ) => {
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
-		getChildBlocks.forEach((faqChild) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.icon = value;
-		});
+		} );
 
-		setAttributes({ icon: value });
+		setAttributes( { icon: value } );
 	};
-	const onchangeActiveIcon = (value) => {
-		const getChildBlocks = select("core/block-editor").getBlocks(
+	const onchangeActiveIcon = ( value ) => {
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach((faqChild) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.iconActive = value;
-		});
+		} );
 
-		setAttributes({ iconActive: value });
+		setAttributes( { iconActive: value } );
 	};
-	const onchangeLayout = (value) => {
-		const getChildBlocks = select("core/block-editor").getBlocks(
+	const onchangeLayout = ( value ) => {
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach((faqChild) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.layout = value;
-		});
+		} );
 
-		setAttributes({ layout: value });
+		setAttributes( { layout: value } );
 	};
-	const onchangeTag = (value) => {
-		const getChildBlocks = select("core/block-editor").getBlocks(
+	const onchangeTag = ( value ) => {
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
 
-		getChildBlocks.forEach((faqChild) => {
+		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = value;
-		});
+		} );
 
-		setAttributes({ headingTag: value });
+		setAttributes( { headingTag: value } );
 	};
 
 	const faqGeneralSettings = () => {
 		return (
 			<PanelBody
-				title={__("General", "ultimate-addons-for-gutenberg")}
-				initialOpen={true}
+				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__("Layout", "ultimate-addons-for-gutenberg")}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: layout,
-						label: "layout",
-					}}
-					onChange={onchangeLayout}
-					options={[
+						label: 'layout',
+					} }
+					onChange={ onchangeLayout }
+					options={ [
 						{
-							value: "accordion",
+							value: 'accordion',
 							label: __(
-								"Accordion",
-								"ultimate-addons-for-gutenberg"
+								'Accordion',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "grid",
-							label: __("Grid", "ultimate-addons-for-gutenberg"),
+							value: 'grid',
+							label: __(
+								'Grid',
+								'ultimate-addons-for-gutenberg'
+							),
 						},
-					]}
+					] }
 				/>
-				{"accordion" === layout && (
+				{ 'accordion' === layout && (
 					<>
 						<ToggleControl
-							label={__(
-								"Collapse other items",
-								"ultimate-addons-for-gutenberg"
-							)}
-							checked={inactiveOtherItems}
-							onChange={() =>
-								setAttributes({
-									inactiveOtherItems: !inactiveOtherItems,
-								})
+							label={ __(
+								'Collapse other items',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ inactiveOtherItems }
+							onChange={ () =>
+								setAttributes( {
+									inactiveOtherItems: ! inactiveOtherItems,
+								} )
 							}
 						/>
-						{true === inactiveOtherItems && (
+						{ true === inactiveOtherItems && (
 							<ToggleControl
-								label={__(
-									"Expand First Item",
-									"ultimate-addons-for-gutenberg"
-								)}
-								checked={expandFirstItem}
-								onChange={() =>
-									setAttributes({
-										expandFirstItem: !expandFirstItem,
-									})
+								label={ __(
+									'Expand First Item',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ expandFirstItem }
+								onChange={ () =>
+									setAttributes( {
+										expandFirstItem: ! expandFirstItem,
+									} )
 								}
 							/>
-						)}
+						) }
 						<ToggleControl
-							label={__(
-								"Enable Toggle",
-								"ultimate-addons-for-gutenberg"
-							)}
-							checked={enableToggle}
-							onChange={() =>
-								setAttributes({
-									enableToggle: !enableToggle,
-								})
+							label={ __(
+								'Enable Toggle',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ enableToggle }
+							onChange={ () =>
+								setAttributes( {
+									enableToggle: ! enableToggle,
+								} )
 							}
 						/>
 					</>
-				)}
+				) }
 				<ToggleControl
-					label={__(
-						"Enable Schema Support",
-						"ultimate-addons-for-gutenberg"
-					)}
-					checked={enableSchemaSupport}
-					onChange={() =>
-						setAttributes({
-							enableSchemaSupport: !enableSchemaSupport,
-						})
+					label={ __(
+						'Enable Schema Support',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableSchemaSupport }
+					onChange={ () =>
+						setAttributes( {
+							enableSchemaSupport: ! enableSchemaSupport,
+						} )
 					}
 				/>
 				<ToggleControl
-					label={__(
-						"Enable Separator",
-						"ultimate-addons-for-gutenberg"
-					)}
-					checked={enableSeparator}
-					onChange={() =>
-						setAttributes({ enableSeparator: !enableSeparator })
+					label={ __(
+						'Enable Separator',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableSeparator }
+					onChange={ () =>
+						setAttributes( { enableSeparator: ! enableSeparator } )
 					}
 				/>
 				<SelectControl
-					label={__("Question Tag", "ultimate-addons-for-gutenberg")}
-					value={headingTag}
-					onChange={(value) => onchangeTag(value)}
-					options={[
+					label={ __(
+						'Question Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ headingTag }
+					onChange={ ( value ) => onchangeTag( value ) }
+					options={ [
 						{
-							value: "span",
-							label: __("Span", "ultimate-addons-for-gutenberg"),
+							value: 'span',
+							label: __(
+								'Span',
+								'ultimate-addons-for-gutenberg'
+							),
 						},
 						{
-							value: "p",
-							label: __("P", "ultimate-addons-for-gutenberg"),
+							value: 'p',
+							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h1",
-							label: __("H1", "ultimate-addons-for-gutenberg"),
+							value: 'h1',
+							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h2",
-							label: __("H2", "ultimate-addons-for-gutenberg"),
+							value: 'h2',
+							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h3",
-							label: __("H3", "ultimate-addons-for-gutenberg"),
+							value: 'h3',
+							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h4",
-							label: __("H4", "ultimate-addons-for-gutenberg"),
+							value: 'h4',
+							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h5",
-							label: __("H5", "ultimate-addons-for-gutenberg"),
+							value: 'h5',
+							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: "h6",
-							label: __("H6", "ultimate-addons-for-gutenberg"),
+							value: 'h6',
+							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
 						},
-					]}
+					] }
 				/>
-				{"grid" === layout && (
+				{ 'grid' === layout && (
 					<ResponsiveSlider
-						label={__("Columns", "ultimate-addons-for-gutenberg")}
-						data={{
+						label={ __(
+							'Columns',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
 							desktop: {
 								value: columns,
-								label: "columns",
+								label: 'columns',
 								min: 1,
 								max: 6,
 							},
 							tablet: {
 								value: tcolumns,
-								label: "tcolumns",
+								label: 'tcolumns',
 								min: 1,
 								max: 4,
 							},
 							mobile: {
 								value: mcolumns,
-								label: "mcolumns",
+								label: 'mcolumns',
 								min: 1,
 								max: 2,
 							},
-						}}
-						displayUnit={false}
-						setAttributes={setAttributes}
+						} }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
-				)}
-				{"grid" === layout && (
+				) }
+				{ 'grid' === layout && (
 					<MultiButtonsControl
-						setAttributes={setAttributes}
-						label={__("Alignment", "ultimate-addons-for-gutenberg")}
-						data={{
+						setAttributes={ setAttributes }
+						label={ __(
+							'Alignment',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
 							value: align,
-							label: "align",
-						}}
+							label: 'align',
+						} }
 						className="uagb-multi-button-alignment-control"
-						options={[
+						options={ [
 							{
-								value: "left",
+								value: 'left',
 								icon: (
 									<Icon
-										icon={renderSVG("fa fa-align-left")}
+										icon={ renderSVG( 'fa fa-align-left' ) }
 									/>
 								),
 								tooltip: __(
-									"Left",
-									"ultimate-addons-for-gutenberg"
+									'Left',
+									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
-								value: "center",
+								value: 'center',
 								icon: (
 									<Icon
-										icon={renderSVG("fa fa-align-center")}
+										icon={ renderSVG(
+											'fa fa-align-center'
+										) }
 									/>
 								),
 								tooltip: __(
-									"Center",
-									"ultimate-addons-for-gutenberg"
+									'Center',
+									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
-								value: "right",
+								value: 'right',
 								icon: (
 									<Icon
-										icon={renderSVG("fa fa-align-right")}
+										icon={ renderSVG(
+											'fa fa-align-right'
+										) }
 									/>
 								),
 								tooltip: __(
-									"Right",
-									"ultimate-addons-for-gutenberg"
+									'Right',
+									'ultimate-addons-for-gutenberg'
 								),
 							},
-						]}
-						showIcons={true}
+						] }
+						showIcons={ true }
 					/>
-				)}
+				) }
 			</PanelBody>
 		);
 	};
@@ -385,52 +406,58 @@ const Settings = (props) => {
 	const faqIconSettings = () => {
 		return (
 			<PanelBody
-				title={__("Icon", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<UAGIconPicker
-					label={__("Expand", "ultimate-addons-for-gutenberg")}
-					value={icon}
-					onChange={(value) => onchangeIcon(value)}
+					label={ __( 'Expand', 'ultimate-addons-for-gutenberg' ) }
+					value={ icon }
+					onChange={ ( value ) => onchangeIcon( value ) }
 				/>
 				<UAGIconPicker
-					label={__("Collapse", "ultimate-addons-for-gutenberg")}
-					value={iconActive}
-					onChange={(value) => onchangeActiveIcon(value)}
+					label={ __( 'Collapse', 'ultimate-addons-for-gutenberg' ) }
+					value={ iconActive }
+					onChange={ ( value ) => onchangeActiveIcon( value ) }
 				/>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Icon Alignment",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __(
+						'Icon Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
 						value: iconAlign,
-						label: "iconAlign",
-					}}
+						label: 'iconAlign',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
-							value: "row",
-							icon: <Icon icon={renderSVG("fa fa-align-left")} />,
-							tooltip: __(
-								"Left",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "row-reverse",
+							value: 'row',
 							icon: (
-								<Icon icon={renderSVG("fa fa-align-right")} />
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
 							),
 							tooltip: __(
-								"Right",
-								"ultimate-addons-for-gutenberg"
+								'Left',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={true}
+						{
+							value: 'row-reverse',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
 				/>
 			</PanelBody>
 		);
@@ -438,186 +465,192 @@ const Settings = (props) => {
 	const faqQuestionSettings = () => {
 		return (
 			<PanelBody
-				title={__("Question", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Question', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: questionloadGoogleFonts,
-						label: "questionloadGoogleFonts",
-					}}
-					fontFamily={{
+						label: 'questionloadGoogleFonts',
+					} }
+					fontFamily={ {
 						value: questionFontFamily,
-						label: "questionFontFamily",
-					}}
-					fontWeight={{
+						label: 'questionFontFamily',
+					} }
+					fontWeight={ {
 						value: questionFontWeight,
-						label: "questionFontWeight",
-					}}
-					fontSubset={{
+						label: 'questionFontWeight',
+					} }
+					fontSubset={ {
 						value: questionFontSubset,
-						label: "questionFontSubset",
-					}}
-					fontSizeType={{
+						label: 'questionFontSubset',
+					} }
+					fontSizeType={ {
 						value: questionFontSizeType,
-						label: "questionFontSizeType",
-					}}
-					fontSize={{
+						label: 'questionFontSizeType',
+					} }
+					fontSize={ {
 						value: questionFontSize,
-						label: "questionFontSize",
-					}}
-					fontSizeMobile={{
+						label: 'questionFontSize',
+					} }
+					fontSizeMobile={ {
 						value: questionFontSizeMobile,
-						label: "questionFontSizeMobile",
-					}}
-					fontSizeTablet={{
+						label: 'questionFontSizeMobile',
+					} }
+					fontSizeTablet={ {
 						value: questionFontSizeTablet,
-						label: "questionFontSizeTablet",
-					}}
-					lineHeightType={{
+						label: 'questionFontSizeTablet',
+					} }
+					lineHeightType={ {
 						value: questionLineHeightType,
-						label: "questionLineHeightType",
-					}}
-					lineHeight={{
+						label: 'questionLineHeightType',
+					} }
+					lineHeight={ {
 						value: questionLineHeight,
-						label: "questionLineHeight",
-					}}
-					lineHeightMobile={{
+						label: 'questionLineHeight',
+					} }
+					lineHeightMobile={ {
 						value: questionLineHeightMobile,
-						label: "questionLineHeightMobile",
-					}}
-					lineHeightTablet={{
+						label: 'questionLineHeightMobile',
+					} }
+					lineHeightTablet={ {
 						value: questionLineHeightTablet,
-						label: "questionLineHeightTablet",
-					}}
+						label: 'questionLineHeightTablet',
+					} }
 				/>
 				<UAGTabsControl
-					tabs={[
+					tabs={ [
 						{
-							name: "normal",
+							name: 'normal',
 							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
+								'Normal',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							name: "active",
+							name: 'active',
 							title: __(
-								"Active/Hover",
-								"ultimate-addons-for-gutenberg"
+								'Active/Hover',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
+					] }
 					normal={
 						<AdvancedPopColorControl
-							label={__(
-								"Text Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={questionTextColor}
-							onColorChange={(value) =>
-								setAttributes({ questionTextColor: value })
+							label={ __(
+								'Text Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextColor: value } )
 							}
 						/>
 					}
 					active={
 						<AdvancedPopColorControl
-							label={__(
-								"Text Color",
-								"ultimate-addons-for-gutenberg"
-							)}
-							colorValue={questionTextActiveColor}
-							onColorChange={(value) =>
-								setAttributes({
+							label={ __(
+								'Text Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextActiveColor }
+							onColorChange={ ( value ) =>
+								setAttributes( {
 									questionTextActiveColor: value,
-								})
+								} )
 							}
 						/>
 					}
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: vquestionPaddingDesktop,
-						label: "vquestionPaddingDesktop",
-					}}
-					valueRight={{
+						label: 'vquestionPaddingDesktop',
+					} }
+					valueRight={ {
 						value: hquestionPaddingDesktop,
-						label: "hquestionPaddingDesktop",
-					}}
-					valueBottom={{
+						label: 'hquestionPaddingDesktop',
+					} }
+					valueBottom={ {
 						value: questionBottomPaddingDesktop,
-						label: "questionBottomPaddingDesktop",
-					}}
-					valueLeft={{
+						label: 'questionBottomPaddingDesktop',
+					} }
+					valueLeft={ {
 						value: questionLeftPaddingDesktop,
-						label: "questionLeftPaddingDesktop",
-					}}
-					valueTopTablet={{
+						label: 'questionLeftPaddingDesktop',
+					} }
+					valueTopTablet={ {
 						value: vquestionPaddingTablet,
-						label: "vquestionPaddingTablet",
-					}}
-					valueRightTablet={{
+						label: 'vquestionPaddingTablet',
+					} }
+					valueRightTablet={ {
 						value: hquestionPaddingTablet,
-						label: "hquestionPaddingTablet",
-					}}
-					valueBottomTablet={{
+						label: 'hquestionPaddingTablet',
+					} }
+					valueBottomTablet={ {
 						value: questionBottomPaddingTablet,
-						label: "questionBottomPaddingTablet",
-					}}
-					valueLeftTablet={{
+						label: 'questionBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
 						value: questionLeftPaddingTablet,
-						label: "questionLeftPaddingTablet",
-					}}
-					valueTopMobile={{
+						label: 'questionLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
 						value: vquestionPaddingMobile,
-						label: "vquestionPaddingMobile",
-					}}
-					valueRightMobile={{
+						label: 'vquestionPaddingMobile',
+					} }
+					valueRightMobile={ {
 						value: hquestionPaddingMobile,
-						label: "hquestionPaddingMobile",
-					}}
-					valueBottomMobile={{
+						label: 'hquestionPaddingMobile',
+					} }
+					valueBottomMobile={ {
 						value: questionBottomPaddingMobile,
-						label: "questionBottomPaddingMobile",
-					}}
-					valueLeftMobile={{
+						label: 'questionBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
 						value: questionLeftPaddingMobile,
-						label: "questionLeftPaddingMobile",
-					}}
-					unit={{
+						label: 'questionLeftPaddingMobile',
+					} }
+					unit={ {
 						value: questionPaddingTypeDesktop,
-						label: "questionPaddingTypeDesktop",
-					}}
-					mUnit={{
+						label: 'questionPaddingTypeDesktop',
+					} }
+					mUnit={ {
 						value: questionPaddingTypeMobile,
-						label: "questionPaddingTypeMobile",
-					}}
-					tUnit={{
+						label: 'questionPaddingTypeMobile',
+					} }
+					tUnit={ {
 						value: questionPaddingTypeTablet,
-						label: "questionPaddingTypeTablet",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'questionPaddingTypeTablet',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: questionSpacingLink,
-						label: "questionSpacingLink",
-					}}
-					units={[
+						label: 'questionSpacingLink',
+					} }
+					units={ [
 						{
-							name: __("Pixel", "ultimate-addons-for-gutenberg"),
-							unitValue: "px",
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
 						},
 						{
-							name: __("%", "ultimate-addons-for-gutenberg"),
-							unitValue: "%",
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
 						},
-					]}
+					] }
 				/>
 			</PanelBody>
 		);
@@ -625,149 +658,158 @@ const Settings = (props) => {
 	const faqAnswerSettings = () => {
 		return (
 			<PanelBody
-				title={__("Answer", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Answer', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={answerTextColor}
-					onColorChange={(value) =>
-						setAttributes({ answerTextColor: value })
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ answerTextColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { answerTextColor: value } )
 					}
 				/>
 				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: answerloadGoogleFonts,
-						label: "answerloadGoogleFonts",
-					}}
-					fontFamily={{
+						label: 'answerloadGoogleFonts',
+					} }
+					fontFamily={ {
 						value: answerFontFamily,
-						label: "answerFontFamily",
-					}}
-					fontWeight={{
+						label: 'answerFontFamily',
+					} }
+					fontWeight={ {
 						value: answerFontWeight,
-						label: "answerFontWeight",
-					}}
-					fontSubset={{
+						label: 'answerFontWeight',
+					} }
+					fontSubset={ {
 						value: answerFontSubset,
-						label: "answerFontSubset",
-					}}
-					fontSizeType={{
+						label: 'answerFontSubset',
+					} }
+					fontSizeType={ {
 						value: answerFontSizeType,
-						label: "answerFontSizeType",
-					}}
-					fontSize={{
+						label: 'answerFontSizeType',
+					} }
+					fontSize={ {
 						value: answerFontSize,
-						label: "answerFontSize",
-					}}
-					fontSizeMobile={{
+						label: 'answerFontSize',
+					} }
+					fontSizeMobile={ {
 						value: answerFontSizeMobile,
-						label: "answerFontSizeMobile",
-					}}
-					fontSizeTablet={{
+						label: 'answerFontSizeMobile',
+					} }
+					fontSizeTablet={ {
 						value: answerFontSizeTablet,
-						label: "answerFontSizeTablet",
-					}}
-					lineHeightType={{
+						label: 'answerFontSizeTablet',
+					} }
+					lineHeightType={ {
 						value: answerLineHeightType,
-						label: "answerLineHeightType",
-					}}
-					lineHeight={{
+						label: 'answerLineHeightType',
+					} }
+					lineHeight={ {
 						value: answerLineHeight,
-						label: "answerLineHeight",
-					}}
-					lineHeightMobile={{
+						label: 'answerLineHeight',
+					} }
+					lineHeightMobile={ {
 						value: answerLineHeightMobile,
-						label: "answerLineHeightMobile",
-					}}
-					lineHeightTablet={{
+						label: 'answerLineHeightMobile',
+					} }
+					lineHeightTablet={ {
 						value: answerLineHeightTablet,
-						label: "answerLineHeightTablet",
-					}}
+						label: 'answerLineHeightTablet',
+					} }
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: answerTopPadding,
-						label: "answerTopPadding",
-					}}
-					valueRight={{
+						label: 'answerTopPadding',
+					} }
+					valueRight={ {
 						value: answerRightPadding,
-						label: "answerRightPadding",
-					}}
-					valueBottom={{
+						label: 'answerRightPadding',
+					} }
+					valueBottom={ {
 						value: answerBottomPadding,
-						label: "answerBottomPadding",
-					}}
-					valueLeft={{
+						label: 'answerBottomPadding',
+					} }
+					valueLeft={ {
 						value: answerLeftPadding,
-						label: "answerLeftPadding",
-					}}
-					valueTopTablet={{
+						label: 'answerLeftPadding',
+					} }
+					valueTopTablet={ {
 						value: answerTopPaddingTablet,
-						label: "answerTopPaddingTablet",
-					}}
-					valueRightTablet={{
+						label: 'answerTopPaddingTablet',
+					} }
+					valueRightTablet={ {
 						value: answerRightPaddingTablet,
-						label: "answerRightPaddingTablet",
-					}}
-					valueBottomTablet={{
+						label: 'answerRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
 						value: answerBottomPaddingTablet,
-						label: "answerBottomPaddingTablet",
-					}}
-					valueLeftTablet={{
+						label: 'answerBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
 						value: answerLeftPaddingTablet,
-						label: "answerLeftPaddingTablet",
-					}}
-					valueTopMobile={{
+						label: 'answerLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
 						value: answerTopPaddingMobile,
-						label: "answerTopPaddingMobile",
-					}}
-					valueRightMobile={{
+						label: 'answerTopPaddingMobile',
+					} }
+					valueRightMobile={ {
 						value: answerRightPaddingMobile,
-						label: "answerRightPaddingMobile",
-					}}
-					valueBottomMobile={{
+						label: 'answerRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
 						value: answerBottomPaddingMobile,
-						label: "answerBottomPaddingMobile",
-					}}
-					valueLeftMobile={{
+						label: 'answerBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
 						value: answerLeftPaddingMobile,
-						label: "answerLeftPaddingMobile",
-					}}
-					unit={{
+						label: 'answerLeftPaddingMobile',
+					} }
+					unit={ {
 						value: answerPaddingTypeDesktop,
-						label: "answerPaddingTypeDesktop",
-					}}
-					mUnit={{
+						label: 'answerPaddingTypeDesktop',
+					} }
+					mUnit={ {
 						value: answerPaddingTypeMobile,
-						label: "answerPaddingTypeMobile",
-					}}
-					tUnit={{
+						label: 'answerPaddingTypeMobile',
+					} }
+					tUnit={ {
 						value: answerPaddingTypeTablet,
-						label: "answerPaddingTypeTablet",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'answerPaddingTypeTablet',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: answerSpacingLink,
-						label: "answerSpacingLink",
-					}}
-					units={[
+						label: 'answerSpacingLink',
+					} }
+					units={ [
 						{
-							name: __("Pixel", "ultimate-addons-for-gutenberg"),
-							unitValue: "px",
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
 						},
 						{
-							name: __("%", "ultimate-addons-for-gutenberg"),
-							unitValue: "%",
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
 						},
-					]}
+					] }
 				/>
 			</PanelBody>
 		);
@@ -775,167 +817,178 @@ const Settings = (props) => {
 	const commonStyle = () => {
 		return (
 			<PanelBody
-				title={__("Container", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={boxBgColor}
-					onColorChange={(value) =>
-						setAttributes({ boxBgColor: value })
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ boxBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { boxBgColor: value } )
 					}
 				/>
 				<Range
-					label={__("Rows Gap (px)", "ultimate-addons-for-gutenberg")}
-					setAttributes={setAttributes}
-					value={rowsGap}
-					onChange={(value) => setAttributes({ rowsGap: value })}
-					min={0}
-					max={50}
-					displayUnit={false}
+					label={ __(
+						'Rows Gap (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ rowsGap }
+					onChange={ ( value ) =>
+						setAttributes( { rowsGap: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
 				/>
-				{"grid" === layout && (
+				{ 'grid' === layout && (
 					<>
 						<Range
-							label={__(
-								"Columns Gap (px)",
-								"ultimate-addons-for-gutenberg"
-							)}
-							setAttributes={setAttributes}
-							value={columnsGap}
-							onChange={(value) =>
-								setAttributes({ columnsGap: value })
+							label={ __(
+								'Columns Gap (px)',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ columnsGap }
+							onChange={ ( value ) =>
+								setAttributes( { columnsGap: value } )
 							}
-							min={0}
-							max={50}
-							displayUnit={false}
+							min={ 0 }
+							max={ 50 }
+							displayUnit={ false }
 						/>
 						<ToggleControl
-							label={__(
-								"Equal Height",
-								"ultimate-addons-for-gutenberg"
-							)}
-							checked={equalHeight}
-							onChange={() =>
-								setAttributes({ equalHeight: !equalHeight })
+							label={ __(
+								'Equal Height',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ equalHeight }
+							onChange={ () =>
+								setAttributes( { equalHeight: ! equalHeight } )
 							}
 						/>
 					</>
-				)}
+				) }
 				<hr className="uagb-editor__separator" />
-				<h2>{__("Border", "ultimate-addons-for-gutenberg")}</h2>
+				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
+					setAttributes={ setAttributes }
+					borderStyle={ {
 						value: borderStyle,
-						label: "borderStyle",
-						title: __("Style", "ultimate-addons-for-gutenberg"),
-					}}
-					borderWidth={{
+						label: 'borderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
 						value: borderWidth,
-						label: "borderWidth",
-						title: __("Width", "ultimate-addons-for-gutenberg"),
-					}}
-					borderRadius={{
+						label: 'borderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
 						value: borderRadius,
-						label: "borderRadius",
-						title: __("Radius", "ultimate-addons-for-gutenberg"),
-					}}
-					borderColor={{
+						label: 'borderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
 						value: borderColor,
-						label: "borderColor",
-						title: __("Color", "ultimate-addons-for-gutenberg"),
-					}}
-					borderHoverColor={{
+						label: 'borderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
 						value: borderHoverColor,
-						label: "borderHoverColor",
+						label: 'borderHoverColor',
 						title: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
 						),
-					}}
-					disableBottomSeparator={true}
+					} }
+					disableBottomSeparator={ true }
 				/>
 			</PanelBody>
 		);
 	};
 	const iconStyle = () => {
-		if ("accordion" !== layout) {
-			return "";
+		if ( 'accordion' !== layout ) {
+			return '';
 		}
 		return (
 			<PanelBody
-				title={__("Icon", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<ResponsiveSlider
-					label={__("Size", "ultimate-addons-for-gutenberg")}
-					data={{
+					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						desktop: {
 							value: iconSize,
-							label: "iconSize",
+							label: 'iconSize',
 						},
 						tablet: {
 							value: iconSizeTablet,
-							label: "iconSizeTablet",
+							label: 'iconSizeTablet',
 						},
 						mobile: {
 							value: iconSizeMobile,
-							label: "iconSizeMobile",
+							label: 'iconSizeMobile',
 						},
-					}}
-					min={0}
-					max={100}
-					unit={{
+					} }
+					min={ 0 }
+					max={ 100 }
+					unit={ {
 						value: iconSizeType,
-						label: "iconSizeType",
-					}}
-					units={[
+						label: 'iconSizeType',
+					} }
+					units={ [
 						{
-							name: __("Pixel", "ultimate-addons-for-gutenberg"),
-							unitValue: "px",
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
 						},
 						{
-							name: __("%", "ultimate-addons-for-gutenberg"),
-							unitValue: "%",
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
 						},
-					]}
-					setAttributes={setAttributes}
+					] }
+					setAttributes={ setAttributes }
 				/>
 				<Range
-					label={__(
-						"Gap between Icon and Question",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={gapBtwIconQUestion}
-					onChange={(value) =>
-						setAttributes({ gapBtwIconQUestion: value })
+					label={ __(
+						'Gap between Icon and Question',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ gapBtwIconQUestion }
+					onChange={ ( value ) =>
+						setAttributes( { gapBtwIconQUestion: value } )
 					}
-					min={0}
-					max={100}
-					displayUnit={false}
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
 				/>
 				<AdvancedPopColorControl
-					label={__("Expand Color", "ultimate-addons-for-gutenberg")}
-					colorValue={iconColor}
-					onColorChange={(value) =>
-						setAttributes({ iconColor: value })
+					label={ __(
+						'Expand Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ iconColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { iconColor: value } )
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__(
-						"Collapse Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={iconActiveColor}
-					onColorChange={(value) =>
-						setAttributes({ iconActiveColor: value })
+					label={ __(
+						'Collapse Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ iconActiveColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { iconActiveColor: value } )
 					}
 				/>
 			</PanelBody>
@@ -945,57 +998,60 @@ const Settings = (props) => {
 	let loadQuestionGoogleFonts;
 	let loadAnswerGoogleFonts;
 
-	if (questionloadGoogleFonts == true) {
+	if ( questionloadGoogleFonts == true ) {
 		const qconfig = {
 			google: {
 				families: [
 					questionFontFamily +
-						(questionFontWeight ? ":" + questionFontWeight : ""),
+						( questionFontWeight ? ':' + questionFontWeight : '' ),
 				],
 			},
 		};
 
 		loadQuestionGoogleFonts = (
-			<WebfontLoader config={qconfig}></WebfontLoader>
+			<WebfontLoader config={ qconfig }></WebfontLoader>
 		);
 	}
 
-	if (answerloadGoogleFonts == true) {
+	if ( answerloadGoogleFonts == true ) {
 		const aconfig = {
 			google: {
 				families: [
 					answerFontFamily +
-						(answerFontWeight ? ":" + answerFontWeight : ""),
+						( answerFontWeight ? ':' + answerFontWeight : '' ),
 				],
 			},
 		};
 
 		loadAnswerGoogleFonts = (
-			<WebfontLoader config={aconfig}></WebfontLoader>
+			<WebfontLoader config={ aconfig }></WebfontLoader>
 		);
 	}
 
 	return (
-		<Suspense fallback={lazyLoader()}>
+		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab {...UAGTabs.general}>
-						{faqGeneralSettings()}
-						{"accordion" === layout && faqIconSettings()}
+					<InspectorTab { ...UAGTabs.general }>
+						{ faqGeneralSettings() }
+						{ 'accordion' === layout && faqIconSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.style}>
-						{commonStyle()}
-						{iconStyle()}
-						{faqQuestionSettings()}
-						{faqAnswerSettings()}
+					<InspectorTab { ...UAGTabs.style }>
+						{ commonStyle() }
+						{ iconStyle() }
+						{ faqQuestionSettings() }
+						{ faqAnswerSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-			{loadQuestionGoogleFonts}
-			{loadAnswerGoogleFonts}
+			{ loadQuestionGoogleFonts }
+			{ loadAnswerGoogleFonts }
 		</Suspense>
 	);
 };
 
-export default React.memo(Settings);
+export default React.memo( Settings );

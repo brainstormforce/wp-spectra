@@ -38,10 +38,7 @@ const ContentTimelineComponent = ( props ) => {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-content-timeline-style-' + clientId
-		);
+		$style.setAttribute( 'id', 'uagb-content-timeline-style-' + clientId );
 		document.head.appendChild( $style );
 
 		const {
@@ -58,35 +55,35 @@ const ContentTimelineComponent = ( props ) => {
 			leftPadding,
 		} = attributes;
 
-		if( bgPadding ){
-			if (!topPadding) {
-				setAttributes({ topPadding: bgPadding });
+		if ( bgPadding ) {
+			if ( ! topPadding ) {
+				setAttributes( { topPadding: bgPadding } );
 			}
-			if (!bottomPadding) {
-				setAttributes({ bottomPadding: bgPadding });
+			if ( ! bottomPadding ) {
+				setAttributes( { bottomPadding: bgPadding } );
 			}
-			if (!rightPadding) {
-				setAttributes({ rightPadding: bgPadding });
+			if ( ! rightPadding ) {
+				setAttributes( { rightPadding: bgPadding } );
 			}
-			if (!leftPadding) {
-				setAttributes({ leftPadding: bgPadding });
+			if ( ! leftPadding ) {
+				setAttributes( { leftPadding: bgPadding } );
 			}
 		}
 
-		if (verticalSpace) {
-			if (!topMargin) {
-				setAttributes({ topMargin: verticalSpace });
+		if ( verticalSpace ) {
+			if ( ! topMargin ) {
+				setAttributes( { topMargin: verticalSpace } );
 			}
-			if (!bottomMargin) {
-				setAttributes({ bottomMargin: verticalSpace });
+			if ( ! bottomMargin ) {
+				setAttributes( { bottomMargin: verticalSpace } );
 			}
 		}
-		if (horizontalSpace) {
-			if (!rightMargin) {
-				setAttributes({ rightMargin: horizontalSpace });
+		if ( horizontalSpace ) {
+			if ( ! rightMargin ) {
+				setAttributes( { rightMargin: horizontalSpace } );
 			}
-			if (!leftMargin) {
-				setAttributes({ leftMargin: horizontalSpace });
+			if ( ! leftMargin ) {
+				setAttributes( { leftMargin: horizontalSpace } );
 			}
 		}
 	}, [] );

@@ -17,7 +17,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, setAttributes, attributes, deviceType} = props;
+	const { className, setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const { block_id, ctaPosition, ctaType } = attributes;
@@ -89,7 +89,7 @@ const Render = ( props ) => {
 					className,
 					'uagb-cta__outer-wrap',
 					`uagb-block-${ block_id }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
 				{ ctaType == 'all' && (

@@ -40,34 +40,34 @@ const UAGBtestimonial = ( props ) => {
 			paddingRight,
 		} = props.attributes;
 
-		if (imgVrPadding) {
-			if (!imgpaddingTop) {
-				props.setAttributes({ imgpaddingTop: imgVrPadding });
+		if ( imgVrPadding ) {
+			if ( ! imgpaddingTop ) {
+				props.setAttributes( { imgpaddingTop: imgVrPadding } );
 			}
-			if (!imgpaddingBottom) {
-				props.setAttributes({ imgpaddingBottom: imgVrPadding });
-			}
-		}
-		if (imgHrPadding) {
-			if (!imgpaddingRight) {
-				props.setAttributes({ imgpaddingRight: imgHrPadding });
-			}
-			if (!imgpaddingLeft) {
-				props.setAttributes({ imgpaddingLeft: imgHrPadding });
+			if ( ! imgpaddingBottom ) {
+				props.setAttributes( { imgpaddingBottom: imgVrPadding } );
 			}
 		}
-		if (contentPadding) {
-			if (!paddingTop) {
-				props.setAttributes({ paddingTop: contentPadding });
+		if ( imgHrPadding ) {
+			if ( ! imgpaddingRight ) {
+				props.setAttributes( { imgpaddingRight: imgHrPadding } );
 			}
-			if (!paddingBottom) {
-				props.setAttributes({ paddingBottom: contentPadding });
+			if ( ! imgpaddingLeft ) {
+				props.setAttributes( { imgpaddingLeft: imgHrPadding } );
 			}
-			if (!paddingLeft) {
-				props.setAttributes({ paddingLeft: contentPadding });
+		}
+		if ( contentPadding ) {
+			if ( ! paddingTop ) {
+				props.setAttributes( { paddingTop: contentPadding } );
 			}
-			if (!paddingRight) {
-				props.setAttributes({ paddingRight: contentPadding });
+			if ( ! paddingBottom ) {
+				props.setAttributes( { paddingBottom: contentPadding } );
+			}
+			if ( ! paddingLeft ) {
+				props.setAttributes( { paddingLeft: contentPadding } );
+			}
+			if ( ! paddingRight ) {
+				props.setAttributes( { paddingRight: contentPadding } );
 			}
 		}
 	}, [] );
