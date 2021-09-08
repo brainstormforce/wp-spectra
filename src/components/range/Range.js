@@ -150,9 +150,9 @@ const Range = ( props ) => {
 		unitSizes = props.units;
 	}
 
-	const handleOnChange = ( value ) => {
-		setValue( value );
-		const parsedValue = parseFloat( value );
+	const handleOnChange = ( newValue ) => {
+		setValue( newValue );
+		const parsedValue = parseFloat( newValue );
 		props.onChange( parsedValue );
 	};
 
@@ -167,8 +167,8 @@ const Range = ( props ) => {
 		setCacheValue( cachedValueUpdate );
 	};
 
-	const onChangeUnits = ( value ) => {
-		props.setAttributes( { [ props.unit.label ]: value } );
+	const onChangeUnits = ( newValue ) => {
+		props.setAttributes( { [ props.unit.label ]: newValue } );
 	};
 
 	const onUnitSizeClick = ( uSizes ) => {
@@ -177,6 +177,7 @@ const Range = ( props ) => {
 			items.push(
 				<Tooltip
 					text={ sprintf(
+						/* translators: abbreviation for units */
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
@@ -189,6 +190,7 @@ const Range = ( props ) => {
 						isSecondary={ props.unit.value !== key.unitValue }
 						aria-pressed={ props.unit.value === key.unitValue }
 						aria-label={ sprintf(
+							/* translators: abbreviation for units */
 							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
 						) }
