@@ -44,6 +44,9 @@ class UAGB_Block_Module {
 		'cf7-styler'       => array(
 			'dir' => 'cf7-styler/',
 		),
+		'content-timeline' => array(
+			'dir' => 'content-timeline/',
+		),
 	);
 
 	/**
