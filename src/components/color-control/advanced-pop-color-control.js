@@ -290,7 +290,7 @@ const AdvancedPopColorControl = ( props ) => {
 	);
 };
 
-export default withSelect( ( select, ownProps ) => {
+export default withSelect( ( select ) => {
 	const settings = select( 'core/block-editor' ).getSettings();
 	const colors = settings.colors;
 	return { colors };
