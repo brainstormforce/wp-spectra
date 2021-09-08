@@ -5,7 +5,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InfoBoxStyle from './inline-styles';
 
-const { withSelect } = wp.data;
+import { withSelect } from '@wordpress/data';
 
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )

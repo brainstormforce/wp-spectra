@@ -1,6 +1,5 @@
 import { useLayoutEffect } from 'react';
-
-const { decodeEntities } = wp.htmlEntities;
+import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 

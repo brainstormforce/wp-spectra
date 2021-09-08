@@ -1,4 +1,6 @@
-const el = wp.element.createElement;
+import {
+	createElement as el
+} from '@wordpress/element';
 
 const shapes = {
 	triangle: el(

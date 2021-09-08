@@ -3,7 +3,7 @@
  */
 import { Button, ButtonGroup } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-const { useSelect, useDispatch } = wp.data;
+import { useSelect, useDispatch } from '@wordpress/data';
 import { useState } from "@wordpress/element";
 
 /**
