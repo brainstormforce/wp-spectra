@@ -662,11 +662,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_marketing_btn_gfont( $blockattr );
 				break;
 
-			case 'uagb/gf-styler':
-				$css += UAGB_Block_Helper::get_gf_styler_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_gf_styler_gfont( $blockattr );
-				break;
-
 			case 'uagb/table-of-contents':
 				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );

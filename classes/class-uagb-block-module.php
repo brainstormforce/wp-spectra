@@ -50,6 +50,9 @@ class UAGB_Block_Module {
 		'faq'              => array(
 			'dir' => 'faq',
 		),
+		'gf-styler'        => array(
+			'dir' => 'gf-styler',
+		),
 	);
 
 	/**
