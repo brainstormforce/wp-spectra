@@ -38,6 +38,9 @@ class UAGB_Block_Module {
 		'blockquote'       => array(
 			'dir' => 'blockquote/',
 		),
+		'call-to-action'   => array(
+			'dir' => 'call-to-action/',
+		),
 	);
 
 	/**
