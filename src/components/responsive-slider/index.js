@@ -1,4 +1,3 @@
-import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 // Extend component
 import { useSelect } from '@wordpress/data';
@@ -31,7 +30,7 @@ const ResponsiveSlider = ( props ) => {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.label ) }
+				label={ props.label }
 				value={ props.data.desktop.value || '' }
 				onChange={ ( value ) =>
 					props.setAttributes( {
@@ -50,7 +49,7 @@ const ResponsiveSlider = ( props ) => {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.label ) }
+				label={ props.label }
 				value={ props.data.tablet.value }
 				onChange={ ( value ) =>
 					props.setAttributes( {
@@ -69,7 +68,7 @@ const ResponsiveSlider = ( props ) => {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.label ) }
+				label={ props.label }
 				value={ props.data.mobile.value }
 				onChange={ ( value ) =>
 					props.setAttributes( {
