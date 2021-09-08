@@ -11,18 +11,19 @@
 	}
 	.uag-metabox{
 		background-color: var(--metabox-background-color);
-		padding: 45px;
 		box-shadow: 0px 3px 20px rgba(190, 190, 190, 0.15);
     	border-radius: 2px;
 	}
 	p{
 		line-height: 1.7;
-		max-width: 80%;
+		max-width: 800px;
+		width: 100%;
 	}
 	.uag-metabox__header{
 		flex: 1 0 0%;
 		display: flex;
 		flex-direction: column;
+		padding: 4%;
 		p{
 			margin-bottom: 0;
 			display: inline-block;
@@ -38,36 +39,27 @@
 		flex: 1 0 0%;
 		display: flex;
 		flex-direction: column;
+		padding: 8%;
 		.uag-field{
 			display: flex;
 			justify-content: space-between;
 			margin-top: auto;
 		}
 	}
-	.uag-metabox__element:last-of-type{
-		p{
-			width: 100%;
-			max-width: 100%;
-		}
-	}
 	.uag-starter-site__elements{
 		display: grid;
-    	grid-template-columns: 40% 55%;
-		padding: 0px;
+    	grid-template-columns: 40% 60%;
 		img{
 			height: auto;
 			max-width: 100%;
 			width: 100%;
 		}
 		.uag-starter-tmp__details{
-			padding: 45px;
-			p{
-				width: 100%;
-				max-width: 100%;
-			}
+			padding: 8%;
 		}
 	}
 	.uag-theme__metabox{
+		padding: 4%;
 		.uag-theme__cta{
 			display: flex;
 			flex-wrap: wrap;	

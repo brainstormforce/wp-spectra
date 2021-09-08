@@ -77,8 +77,3 @@
         font-size: 16px;
     }
 }
-@media (min-width: 783px){
-    .uag-blocks-settings {
-        grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
-    }
-}
