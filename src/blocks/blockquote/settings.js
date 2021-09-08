@@ -1632,7 +1632,7 @@ const Settings = ( props ) => {
 					{ contentStyling }
 					{ spacingSettings }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

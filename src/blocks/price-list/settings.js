@@ -963,7 +963,7 @@ const Settings = ( props ) => {
 					{ priceSettings() }
 					{ marginSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		);

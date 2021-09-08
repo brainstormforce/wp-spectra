@@ -1719,7 +1719,7 @@ const Settings = ( props ) => {
 						{failedMessageStyle()}
 						{submitButtonStyle()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

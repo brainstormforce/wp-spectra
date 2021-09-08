@@ -1956,7 +1956,7 @@ const Settings = ( props ) => {
 					{ msgSettings() }
 					{ spacingSetting() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadInputGoogleFonts }
