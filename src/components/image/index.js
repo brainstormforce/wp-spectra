@@ -53,7 +53,11 @@ const UAGImage = ( props ) => {
 	}
 	labelText = label ? label : labelText;
 	return (
-		<BaseControl className="editor-bg-image-control" label={ labelText }>
+		<BaseControl
+			className="editor-bg-image-control"
+			id={ `uagb-option-selector-${ label }` }
+			label={ labelText }
+		>
 			<div className="uagb-bg-image">
 				<MediaUpload
 					title={ selectImageLabel }
