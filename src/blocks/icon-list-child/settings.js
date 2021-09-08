@@ -375,7 +375,7 @@ const Settings = ( props ) => {
 			{ bgStyleControls() }
 			{ borderStyleControls() }
 			</InspectorTab>
-			<InspectorTab {...UAGTabs.advance}></InspectorTab>
+			<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 		</InspectorTabs>
 		</InspectorControls>
 	)

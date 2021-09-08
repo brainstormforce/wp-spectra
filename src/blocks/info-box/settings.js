@@ -1868,7 +1868,7 @@ const Settings = (props) => {
 					<InspectorTab {...UAGTabs.style}>
 						{styleSettings()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={lazyLoader()}>

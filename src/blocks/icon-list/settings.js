@@ -448,7 +448,7 @@ const Settings = ( props ) => {
 					{ ! hideLabel && ( labelSetting() ) }
 					{commonSetting()}
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance}  parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 			{ googleFonts }

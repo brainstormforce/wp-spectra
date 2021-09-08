@@ -753,7 +753,7 @@ const Settings = (props) => {
 						{iconSettings()}
 						{buttonSettings()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{loadInputGoogleFonts}

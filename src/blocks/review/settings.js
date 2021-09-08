@@ -1264,7 +1264,7 @@ const Settings = (props) => {
 						{starSettings()}
 						{overallPadding()}
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{loadHeadingGoogleFonts}

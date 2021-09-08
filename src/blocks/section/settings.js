@@ -569,7 +569,7 @@ const Settings = (props) => {
 					{getBorderPanelBody()}
 					{getSpacingPanelBody()}
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>
 			</InspectorTabs>
 		);

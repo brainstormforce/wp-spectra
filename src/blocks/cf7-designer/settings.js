@@ -6,7 +6,7 @@ import TypographyControl from "@Components/typography";
 import Border from "@Components/border";
 import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
 import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
 import SpacingControl from "@Components/spacing-control";
 import Range from "@Components/range/Range.js";
 import MultiButtonsControl from "@Components/multi-buttons-control";
@@ -1540,21 +1540,21 @@ const Settings = (props) => {
 			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab key={"general"}>
+					<InspectorTab {...UAGTabs.general}>
 						{generalSettings}
 						{fieldSetting}
 						{radioCheckSetting}
 						{btnSetting}
 						{msgSettings}
 					</InspectorTab>
-					<InspectorTab key={"style"}>
+					<InspectorTab {...UAGTabs.style}>
 						{fieldStyle == "box" && fieldStyling}
 						{enableOveride && radioCheckStyling}
 						{buttonStyling}
 						{messageStyling}
 						{labelInputStyling}
 					</InspectorTab>
-					<InspectorTab key={"advance"}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{loadInputGoogleFonts}
