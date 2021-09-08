@@ -1,7 +1,8 @@
-import { ToggleControl, SelectControl } from "@wordpress/components"
+import { ToggleControl, SelectControl, PanelBody } from "@wordpress/components"
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
+
 const { enableConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -155,32 +156,31 @@ const UserConditionOptions = ( props ) => {
 const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 	return (props) => {
-		
+
 		const { InspectorControls } = wp.blockEditor;
-		
+
 		const { isSelected } = props;
 
 		const { PanelBody } = wp.components;
-		
+
 		const blockName = props.name;
-		
-		const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
+
+		const blockType = ['wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
 			<>
 				<BlockEdit {...props} />
-				{isSelected && ! blockType.includes(blockName) &&
+				{isSelected && ! blockType.includes(blockName) &&  ! blockName.includes('uagb/') &&
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p> 
-						{ UserConditionOptions( props ) }						
+						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ UserConditionOptions( props ) }
 					</PanelBody>
 				</InspectorControls>
 				}
-				
 			</>
 		);
 	};
@@ -188,7 +188,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 function ApplyExtraClass(extraProps, blockType, attributes) {
 
-	const { 
+	const {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
@@ -199,21 +199,50 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
-	
-		if ( UAGHideTab ) {	
+
+		if ( UAGHideTab ) {
 			extraProps.className = extraProps.className + ' uag-hide-tab';
 		}
-	
-		if ( UAGHideMob ) {	
+
+		if ( UAGHideMob ) {
 			extraProps.className = extraProps.className + ' uag-hide-mob';
 		}
-		
+
 	}
 
 	return extraProps;
 }
 
 if( '1' === enableConditions ){
+	//For UAG Blocks.
+	addFilter(
+		'uag_advance_tab_content',
+		'uagb/advanced-control-block',
+		function( content, props ) {
+
+			if ( !props ) {
+				return content;
+			}
+
+			const { isSelected, name } = props;
+
+			const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
+
+			if( isSelected && ! blockType.includes(name) ) {
+				return (
+					<PanelBody
+						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ UserConditionOptions( props ) }
+					</PanelBody>
+				);
+			}
+		}
+	);
+	//For Non-UAG Blocks.
 	addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
@@ -226,3 +255,4 @@ if( '1' === enableConditions ){
         ApplyExtraClass,
     );
 }
+

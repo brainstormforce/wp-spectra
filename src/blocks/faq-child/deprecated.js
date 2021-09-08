@@ -5,7 +5,6 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import attributes from './attributes';
-import { Fragment } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
@@ -24,14 +23,14 @@ const deprecated = [
 
 			const faqRenderIcon = () => {
 				return (
-					<Fragment>
+					<>
 						<span className="uagb-icon uagb-faq-icon-wrap">
 							{ renderSVG( icon ) }
 						</span>
 						<span className="uagb-icon-active uagb-faq-icon-wrap">
 							{ renderSVG( iconActive ) }
 						</span>
-					</Fragment>
+					</>
 				);
 			};
 			const faqRenderAccordion = () => {
@@ -87,14 +86,14 @@ const deprecated = [
 
 			const faqRenderIcon = () => {
 				return (
-					<Fragment>
+					<>
 						<span className="uagb-icon uagb-faq-icon-wrap">
 							{ renderSVG( icon ) }
 						</span>
 						<span className="uagb-icon-active uagb-faq-icon-wrap">
 							{ renderSVG( iconActive ) }
 						</span>
-					</Fragment>
+					</>
 				);
 			};
 			const faqRenderAccordion = () => {

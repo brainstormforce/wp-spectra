@@ -1102,7 +1102,7 @@ const Settings = ( props ) => {
 					{ ctaType == 'button' && ! inheritFromTheme && ( ctaBorderSettings())}
 					{ marginSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadCtaGoogleFonts }

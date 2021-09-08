@@ -11,15 +11,13 @@ import Description from './components/Description';
 import PositionClasses from '../price-list/classes';
 import RestMenuImage from './components/RestMenuImage';
 
-import { Fragment } from '@wordpress/element';
-
 const deprecated = [
 	{
 		attributes,
 		save( props ) {
 			const { block_id, className, imagePosition } = props.attributes;
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							'uagb-rest_menu__wrap',
@@ -48,7 +46,7 @@ const deprecated = [
 									) }
 									<div className="uagb-rm__text-wrap">
 										{
-											<Fragment>
+											<>
 												<div className="uagb-rm-details">
 													<div className="uagb-rm__title-wrap">
 														<Title
@@ -78,7 +76,7 @@ const deprecated = [
 														/>
 													</div>
 												</div>
-											</Fragment>
+											</>
 										}
 									</div>
 									{ imagePosition == 'right' && (
@@ -93,7 +91,7 @@ const deprecated = [
 							</div>
 						</div>
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},

@@ -38,7 +38,7 @@ const Settings = ( props ) => {
 	<InspectorControls>
 		<InspectorTabs tabs={["general", "advance"]}>
 		<InspectorTab {...UAGTabs.general}>{ timelineItemSettings() }</InspectorTab>
-		<InspectorTab {...UAGTabs.advance}></InspectorTab>
+		<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 		</InspectorTabs>
 	</InspectorControls>
 	);

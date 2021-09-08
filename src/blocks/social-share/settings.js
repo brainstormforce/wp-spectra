@@ -257,7 +257,7 @@ const Settings = ( props ) => {
 			<InspectorTabs>
 				<InspectorTab {...UAGTabs.general}>{ generalSettings() }</InspectorTab>
 				<InspectorTab {...UAGTabs.style}>{ spacingSettings() }</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}></InspectorTab>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 			</InspectorTabs>
 			</InspectorControls>
 		</Suspense>
