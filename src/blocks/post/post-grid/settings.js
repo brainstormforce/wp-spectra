@@ -1385,6 +1385,111 @@
 			) }
 			initialOpen={ false }
 		>
+			<UAGTabsControl
+				tabs={[
+					{
+						name: "normal",
+						title: __(
+							"Normal",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+					{
+						name: "hover",
+						title: __(
+							"Hover",
+							"ultimate-addons-for-gutenberg"
+						),
+					},
+				]}
+				normal={<>
+					<AdvancedPopColorControl
+						label={__(
+							'Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={ctaColor}
+						onColorChange={(value) =>
+							setAttributes({ ctaColor: value })
+						}
+					/>
+					<AdvancedPopColorControl
+						label={__(
+							'Background Color',
+							"ultimate-addons-for-gutenberg"
+						)}
+						colorValue={ctaBgColor}
+						onColorChange={(value) =>
+							setAttributes({ ctaBgColor: value })
+						}
+					/></>}
+				hover={<>
+					<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaHColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaHColor: value })
+					}
+					/>
+					<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgHColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgHColor: value })
+					}
+				/></>}
+				disableBottomSeparator={true}
+			/>
+			<Border
+			disableBottomSeparator={true}
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: 'borderStyle',
+						title: __(
+							"Border Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: 'borderWidth',
+						title: __(
+							"Border Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: 'borderRadius',
+						title: __(
+							"Border Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: 'borderColor',
+						title: __(
+							"Border Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: borderHColor,
+						label: 'borderHColor',
+						title: __(
+							"Border Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+				/>
 			<TypographyControl
 				label={ __(
 					'Typography',
@@ -1466,50 +1571,7 @@
 					label: "ctaBottomSpaceUnit",
 				}}
 			/>
-			<Border
-			disableBottomSeparator={true}
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							"Border Style",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderWidth={{
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							"Border Width",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderRadius={{
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							"Border Radius",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderColor={{
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							"Border Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderHoverColor={{
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							"Border Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-				/>
+			
 			<SpacingControl
 				{...props}
 				label={__(
@@ -1583,68 +1645,6 @@
 					value: spacingLink,
 					label: "spacingLink",
 				}}
-			/>
-
-			<UAGTabsControl
-				tabs={[
-					{
-						name: "normal",
-						title: __(
-							"Normal",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-					{
-						name: "hover",
-						title: __(
-							"Hover",
-							"ultimate-addons-for-gutenberg"
-						),
-					},
-				]}
-				normal={<>
-					<AdvancedPopColorControl
-						label={__(
-							'Color',
-							"ultimate-addons-for-gutenberg"
-						)}
-						colorValue={ctaColor}
-						onColorChange={(value) =>
-							setAttributes({ ctaColor: value })
-						}
-					/>
-					<AdvancedPopColorControl
-						label={__(
-							'Background Color',
-							"ultimate-addons-for-gutenberg"
-						)}
-						colorValue={ctaBgColor}
-						onColorChange={(value) =>
-							setAttributes({ ctaBgColor: value })
-						}
-					/></>}
-				hover={<>
-					<AdvancedPopColorControl
-					label={__(
-						'Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={ctaHColor}
-					onColorChange={(value) =>
-						setAttributes({ ctaHColor: value })
-					}
-					/>
-					<AdvancedPopColorControl
-					label={__(
-						'Background Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={ctaBgHColor}
-					onColorChange={(value) =>
-						setAttributes({ ctaBgHColor: value })
-					}
-				/></>}
-				disableBottomSeparator={true}
 			/>
 		</PanelBody>
 	);
