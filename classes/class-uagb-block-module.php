@@ -122,6 +122,9 @@ class UAGB_Block_Module {
 		'taxonomy-list'      => array(
 			'dir' => 'taxonomy-list',
 		),
+		'forms'              => array(
+			'dir' => 'forms',
+		),
 	);
 
 	/**

@@ -562,12 +562,6 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/forms':
-				$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_forms_gfont( $blockattr );
-				break;
-
 			case 'uagb/lottie':
 				$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
 				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
