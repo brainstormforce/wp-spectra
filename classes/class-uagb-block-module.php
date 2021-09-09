@@ -80,6 +80,9 @@ class UAGB_Block_Module {
 		'post-carousel'    => array(
 			'dir' => 'post-carousel',
 		),
+		'post-grid'        => array(
+			'dir' => 'post-grid',
+		),
 	);
 
 	/**

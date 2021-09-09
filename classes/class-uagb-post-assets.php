@@ -606,11 +606,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_post_timeline_gfont( $blockattr );
 				break;
 
-			case 'uagb/post-grid':
-				$css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
 			case 'uagb/post-masonry':
 				$css += UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_post_gfont( $blockattr );
