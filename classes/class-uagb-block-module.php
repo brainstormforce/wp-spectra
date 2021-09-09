@@ -89,6 +89,9 @@ class UAGB_Block_Module {
 		'post-timeline'    => array(
 			'dir' => 'post-timeline',
 		),
+		'restaurant-menu'  => array(
+			'dir' => 'restaurant-menu',
+		),
 	);
 
 	/**
