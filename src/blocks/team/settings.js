@@ -290,7 +290,7 @@ const Settings = ( props ) => {
 									<Icon icon={renderSVG("fa fa-align-center")} />
 								),
 								tooltip: __(
-									"Above",
+									"Top",
 									"ultimate-addons-for-gutenberg"
 								),
 							},
