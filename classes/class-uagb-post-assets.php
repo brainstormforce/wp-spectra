@@ -626,17 +626,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_post_timeline_gfont( $blockattr );
 				break;
 
-			case 'uagb/icon-list':
-				$css += UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
-				// We have used the same buttons gfont function because the inputs to these functions are same.
-				// If need be please add a new function for Info Box and go ahead.
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/icon-list-child':
-				$css += UAGB_Block_Helper::get_icon_list_child_css( $blockattr, $block_id );
-				break;
-
 			case 'uagb/post-grid':
 				$css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_post_gfont( $blockattr );
