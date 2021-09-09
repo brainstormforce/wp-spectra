@@ -113,6 +113,9 @@ class UAGB_Block_Module {
 		'team'               => array(
 			'dir' => 'team',
 		),
+		'testimonial'        => array(
+			'dir' => 'testimonial',
+		),
 	);
 
 	/**

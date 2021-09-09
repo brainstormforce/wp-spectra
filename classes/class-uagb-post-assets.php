@@ -562,12 +562,6 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/testimonial':
-				$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_testimonial_js( $blockattr, $block_id );
-				break;
-
 			case 'uagb/wp-search':
 				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
