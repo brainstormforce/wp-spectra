@@ -571,15 +571,6 @@ class UAGB_Post_Assets {
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;
 
-			case 'uagb/buttons':
-				$css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/buttons-child':
-				$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
-				break;
-
 			case 'uagb/tabs':
 				$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
 				$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );

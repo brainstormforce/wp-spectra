@@ -71,6 +71,12 @@ class UAGB_Block_Module {
 		'marketing-button' => array(
 			'dir' => 'marketing-button',
 		),
+		'buttons'          => array(
+			'dir' => 'buttons',
+		),
+		'buttons-child'    => array(
+			'dir' => 'buttons-child',
+		),
 	);
 
 	/**
