@@ -83,6 +83,9 @@ class UAGB_Block_Module {
 		'post-grid'        => array(
 			'dir' => 'post-grid',
 		),
+		'post-masonry'     => array(
+			'dir' => 'post-masonry',
+		),
 	);
 
 	/**
