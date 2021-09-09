@@ -16,7 +16,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes , deviceType } = props;
+	const { attributes, deviceType } = props;
 
 	const { className, btn_count, buttons, stack } = attributes;
 

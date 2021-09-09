@@ -52,9 +52,9 @@ const attributes = {
 		type: 'number',
 		default: 40,
 	},
-	iconSizeType:{
+	iconSizeType: {
 		type: 'String',
-		default : 'px'
+		default: 'px',
 	},
 	iconHover: {
 		type: 'string',
@@ -105,13 +105,13 @@ const attributes = {
 	prefixLineHeightTablet: {
 		type: 'number',
 	},
-	prefixTextTransform:{
-		type: "string",
-		default: "normal",
+	prefixTextTransform: {
+		type: 'string',
+		default: 'normal',
 	},
-	prefixTextDecoration:{
-		type: "string",
-		default: "none",
+	prefixTextDecoration: {
+		type: 'string',
+		default: 'none',
 	},
 	prefixLineHeightMobile: {
 		type: 'number',
@@ -147,21 +147,21 @@ const attributes = {
 	headFontSubset: {
 		type: 'string',
 	},
-	headLineTransform:{
-		type:'string',
-		default:'normal'
+	headLineTransform: {
+		type: 'string',
+		default: 'normal',
 	},
-	headLineDecoration:{
-		type:'string',
-		default:'none'
+	headLineDecoration: {
+		type: 'string',
+		default: 'none',
 	},
-	subHeadLineTransform:{
-		type:'string',
-		default:'normal'
+	subHeadLineTransform: {
+		type: 'string',
+		default: 'normal',
 	},
-	subHeadLineDecoration:{
-		type:'string',
-		default:'none'
+	subHeadLineDecoration: {
+		type: 'string',
+		default: 'none',
 	},
 	headLineHeightType: {
 		type: 'string',
@@ -225,30 +225,30 @@ const attributes = {
 		default: 10,
 	},
 	headTabletSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	headMobileSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	subHeadSpace: {
 		type: 'number',
 		default: 10,
 	},
 	subHeadTabletSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	subHeadMobileSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	seperatorSpace: {
 		type: 'number',
 		default: 10,
 	},
 	seperatorTabletSpace: {
-		type : 'number'
+		type: 'number',
 	},
 	seperatorMobileSpace: {
-		type : 'number'
+		type: 'number',
 	},
 	iconimgBorderRadius: {
 		type: 'number',
@@ -282,7 +282,7 @@ const attributes = {
 		type: 'number',
 		default: 5,
 	},
-	ctaIconSpaceType:{
+	ctaIconSpaceType: {
 		type: 'string',
 		default: 'px',
 	},
@@ -310,7 +310,7 @@ const attributes = {
 		type: 'number',
 		default: 2,
 	},
-	thicknessUnit:{
+	thicknessUnit: {
 		type: 'string',
 		default: 'px',
 	},
@@ -330,13 +330,13 @@ const attributes = {
 		type: 'string',
 		default: '#333',
 	},
-	ctaTextTransform:{
-		type:'string',
-		default:'normal'
+	ctaTextTransform: {
+		type: 'string',
+		default: 'normal',
 	},
-	ctaTextDecoration:{
-		type:'string',
-		default:'none'
+	ctaTextDecoration: {
+		type: 'string',
+		default: 'none',
 	},
 	ctaFontSize: {
 		type: 'number',
@@ -414,10 +414,10 @@ const attributes = {
 		default: 5,
 	},
 	prefixTabletSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	prefixMobileSpace: {
-		type: 'number'
+		type: 'number',
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -451,10 +451,10 @@ const attributes = {
 		default: 120,
 	},
 	imageWidthMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	imageWidthTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	imageWidthType: {
 		type: 'boolean',
@@ -477,124 +477,124 @@ const attributes = {
 		default: true,
 	},
 	iconMarginTopTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginRightTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginBottomTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginLeftTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginTopMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginRightMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginBottomMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginLeftMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	iconMarginUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	iconMobilePaddingUnit:{
+	iconMobilePaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	iconTabletPaddingUnit:{
+	iconTabletPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	paddingspacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	paddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletPaddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	paddingBtnTop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	paddingBtnBottom: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	paddingBtnLeft: {
-		type: "number",
+		type: 'number',
 		default: 14,
 	},
 	paddingBtnRight: {
-		type: "number",
+		type: 'number',
 		default: 14,
 	},
 	paddingBtnTopTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnRightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnBottomTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnLeftTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnTopMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnRightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnBottomMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnLeftMobile: {
-		type: "number",
+		type: 'number',
 	},
-	prefixSpaceUnit:{
+	prefixSpaceUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
-	headSpaceUnit:{
+	headSpaceUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
-	seperatorSpaceUnit:{
+	seperatorSpaceUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
-	subHeadSpaceUnit:{
+	subHeadSpaceUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
-	imageWidthUnit:{
+	imageWidthUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
-	iconimgBorderRadiusUnit:{
+	iconimgBorderRadiusUnit: {
 		type: 'string',
-		default:'px'
+		default: 'px',
 	},
 };
 

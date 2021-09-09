@@ -18,29 +18,29 @@ function styling( props ) {
 
 	const selectors = {
 		'.uagb-icon-list-repeater .uagb-icon-list__source-icon': {
-			'color': icon_color,
+			"color": icon_color,
 		},
 		'.uagb-icon-list-repeater .uagb-icon-list__source-icon svg': {
-			'fill': icon_color,
+			"fill": icon_color,
 		},
 		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-icon': {
-			'color': icon_hover_color,
+			"color": icon_hover_color,
 		},
 		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-icon svg': {
-			'fill': icon_hover_color,
+			"fill": icon_hover_color,
 		},
 		'.uagb-icon-list-repeater .uagb-icon-list__label': {
-			'color': label_color,
+			"color": label_color,
 		},
 		'.uagb-icon-list-repeater:hover .uagb-icon-list__label': {
-			'color': label_hover_color,
+			"color": label_hover_color,
 		},
 		'.uagb-icon-list-repeater .uagb-icon-list__source-wrap': {
-			'background': icon_bg_color,
+			"background": icon_bg_color,
 			'border-color': icon_border_color,
 		},
 		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-wrap': {
-			'background': icon_bg_hover_color,
+			"background": icon_bg_hover_color,
 			'border-color': icon_border_hover_color,
 		},
 	};

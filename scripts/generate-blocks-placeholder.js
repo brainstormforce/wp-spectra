@@ -13,28 +13,31 @@ const dest_content = `/**
  */
 `;
 
-const getBlockSlug = content => {
-	return ( content.match( /registerBlockType\(\s*.*?['"](.*?)['"]/ ) || [] )[ 1 ]
+const getBlockSlug = ( content ) => {
+	return ( content.match( /registerBlockType\(\s*.*?['"](.*?)['"]/ ) ||
+		[] )[ 1 ];
 };
 
-const getBlockTitle = content => {
-	return ( content.match( /title\s*:.*?(__\(.*?\))/ ) || [] )[ 1 ]
+const getBlockTitle = ( content ) => {
+	return ( content.match( /title\s*:.*?(__\(.*?\))/ ) || [] )[ 1 ];
 };
 
-const registerBlocks = glob.sync( './src/blocks/**/block.js' ).reduce( ( code, file ) => {
-	const content = fs.readFileSync( path.resolve( file ), 'utf8' );
-	
-	const blockSlug = getBlockSlug( content );
-	const blockTitle = getBlockTitle( content );
-	if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) ) {
-		return code;
-	}
-	
-	return `${ code }
-registerBlockType( '${ blockSlug }', { title: ${ blockTitle } } );`
-}, dest_content );
+const registerBlocks = glob
+	.sync( './src/blocks/**/block.js' )
+	.reduce( ( code, file ) => {
+		const content = fs.readFileSync( path.resolve( file ), 'utf8' );
 
-fs.writeFile( dest_file, registerBlocks, err => {
+		const blockSlug = getBlockSlug( content );
+		const blockTitle = getBlockTitle( content );
+		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) ) {
+			return code;
+		}
+
+		return `${ code }
+registerBlockType( '${ blockSlug }', { title: ${ blockTitle } } );`;
+	}, dest_content );
+
+fs.writeFile( dest_file, registerBlocks, ( err ) => {
 	if ( err ) {
 		return console.log( err );
 	}

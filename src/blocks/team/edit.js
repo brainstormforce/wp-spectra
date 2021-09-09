@@ -50,26 +50,25 @@ const UAGBTeam = ( props ) => {
 			imageBottomMargin,
 		} = props.attributes;
 
-		if (imgTopMargin) {
-			if (!imageTopMargin) {
-				props.setAttributes({ imageTopMargin: imgTopMargin });
+		if ( imgTopMargin ) {
+			if ( ! imageTopMargin ) {
+				props.setAttributes( { imageTopMargin: imgTopMargin } );
 			}
-			
 		}
-		if (imgBottomMargin) {
-			if (!imageBottomMargin) {
-				props.setAttributes({ imageBottomMargin: imgBottomMargin });
+		if ( imgBottomMargin ) {
+			if ( ! imageBottomMargin ) {
+				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
 			}
 		}
 
-		if (imgLeftMargin) {
-			if (!imageLeftMargin) {
-				props.setAttributes({ imageLeftMargin: imgLeftMargin });
+		if ( imgLeftMargin ) {
+			if ( ! imageLeftMargin ) {
+				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
 			}
 		}
-		if (imgRightMargin) {
-			if (!imageRightMargin) {
-				props.setAttributes({ imageRightMargin: imgRightMargin });
+		if ( imgRightMargin ) {
+			if ( ! imageRightMargin ) {
+				props.setAttributes( { imageRightMargin: imgRightMargin } );
 			}
 		}
 	}, [] );

@@ -68,12 +68,30 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	let autoImageLeftMargin        = ( 'auto' === imageLeftMargin ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
-	let autoImageRightMargin       = ( 'auto' === imageRightMargin ) ? 'auto' : generateCSSUnit( imageRightMargin, imageMarginUnit );
-	let autoImageLeftMarginMobile  = ( 'auto' === imageMarginLeftMobile ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
-	let autoImageRightMarginMobile = ( 'auto' === imageMarginRightMobile ) ? 'auto' : generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
-	let autoImageLeftMarginTablet  = ( 'auto' === imageMarginLeftTablet ) ? 'auto' : generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
-	let autoImageRightMarginTablet = ( 'auto' === imageMarginRightTablet ) ? 'auto' : generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit )
+	const autoImageLeftMargin =
+		'auto' === imageLeftMargin
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+	const autoImageRightMargin =
+		'auto' === imageRightMargin
+			? 'auto'
+			: generateCSSUnit( imageRightMargin, imageMarginUnit );
+	const autoImageLeftMarginMobile =
+		'auto' === imageMarginLeftMobile
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
+	const autoImageRightMarginMobile =
+		'auto' === imageMarginRightMobile
+			? 'auto'
+			: generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
+	const autoImageLeftMarginTablet =
+		'auto' === imageMarginLeftTablet
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
+	const autoImageRightMarginTablet =
+		'auto' === imageMarginRightTablet
+			? 'auto'
+			: generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit );
 
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -84,7 +102,7 @@ function styling( props ) {
 			),
 			'font-family': descFontFamily,
 			'font-weight': descFontWeight,
-			'color': descColor,
+			"color": descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
@@ -95,31 +113,31 @@ function styling( props ) {
 				prefixLineHeight,
 				prefixLineHeightType
 			),
-			'color': prefixColor,
+			"color": prefixColor,
 		},
 		' .uagb-team__desc-wrap': {
 			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
 		},
 		' .uagb-team__social-icon a': {
-			'color': socialColor,
+			"color": socialColor,
 			'font-size': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			"width": generateCSSUnit( socialFontSize, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSize, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSize,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			'fill': socialColor,
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			"fill": socialColor,
+			"width": generateCSSUnit( socialFontSize, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSize, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon:hover a': {
-			'color': socialHoverColor,
+			"color": socialHoverColor,
 		},
 		' .uagb-team__social-icon:hover svg': {
-			'fill': socialHoverColor,
+			"fill": socialHoverColor,
 		},
 		'.uagb-team__image-position-left .uagb-team__social-icon': {
 			'margin-right': generateCSSUnit( socialSpace, 'px' ),
@@ -143,10 +161,13 @@ function styling( props ) {
 		},
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				imageBottomMargin,
+				imageMarginUnit
+			),
 			'margin-left': autoImageLeftMargin,
 			'margin-right': autoImageRightMargin,
-			'width': generateCSSUnit( imgWidth, 'px' ),
+			"width": generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
 
@@ -165,7 +186,7 @@ function styling( props ) {
 		'font-weight': titleFontWeight,
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		'color': titleColor,
+		"color": titleColor,
 		'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
 	};
 
@@ -187,20 +208,26 @@ function styling( props ) {
 				socialFontSizeMobile,
 				socialFontSizeType
 			),
-			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			"width": generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSizeMobile,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			'width': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			"width": generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopMobile, mobileImageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, mobileImageMarginUnit ),
+			'margin-top': generateCSSUnit(
+				imageMarginTopMobile,
+				mobileImageMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				imageMarginBottomMobile,
+				mobileImageMarginUnit
+			),
 			'margin-left': autoImageLeftMarginMobile,
 			'margin-right': autoImageRightMarginMobile,
 		},
@@ -224,20 +251,26 @@ function styling( props ) {
 				socialFontSizeTablet,
 				socialFontSizeType
 			),
-			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			"width": generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 			'line-height': generateCSSUnit(
 				socialFontSizeTablet,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
-			'width': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			"width": generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
+			"height": generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopTablet, tabletImageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, tabletImageMarginUnit ),
+			'margin-top': generateCSSUnit(
+				imageMarginTopTablet,
+				tabletImageMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				imageMarginBottomTablet,
+				tabletImageMarginUnit
+			),
 			'margin-left': autoImageLeftMarginTablet,
 			'margin-right': autoImageRightMarginTablet,
 		},

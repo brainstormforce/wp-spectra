@@ -5,83 +5,85 @@ import {
 	Dashicon,
 	RangeControl,
 	__experimentalNumberControl as NumberControl,
-} from "@wordpress/components";
-import { useState, useEffect } from "@wordpress/element";
+} from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 
+import { __ } from '@wordpress/i18n';
+import map from 'lodash/map';
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
 
-import { __ } from "@wordpress/i18n";
-import map from "lodash/map";
-import styles from "./editor.lazy.scss";
-import React, { useLayoutEffect } from "react";
+const isNumberControlSupported = !! NumberControl;
 
-const isNumberControlSupported = !!NumberControl;
-
-const Range = (props) => {
+const Range = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
+	}, [] );
 	const { withInputField, isShiftStepEnabled } = props;
 
-	const [value, setValue] = useState(props.value);
+	const [ value, setValue ] = useState( props.value );
 
-	let defaultCache = {
+	const defaultCache = {
 		value: props.value,
 		resetDisabled: true,
 		unit: props.unit.value,
 	};
 
-	const [cachedValue, setCacheValue] = useState(defaultCache);
-	const [displayResponsive, toggleResponsive] = useState(false);
+	const [ cachedValue, setCacheValue ] = useState( defaultCache );
+	const [ displayResponsive, toggleResponsive ] = useState( false );
 
-	useEffect(() => {
-		let cachedValueUpdate = { ...cachedValue };
+	useEffect( () => {
+		const cachedValueUpdate = { ...cachedValue };
 
-		if (undefined !== value) {
-			cachedValueUpdate["value"] = value;
-			setCacheValue(cachedValueUpdate);
+		if ( undefined !== value ) {
+			cachedValueUpdate.value = value;
+			setCacheValue( cachedValueUpdate );
 		}
-		if (undefined !== props.unit.value) {
-			cachedValueUpdate["unit"] = props.unit.value;
-			setCacheValue(cachedValueUpdate);
+		if ( undefined !== props.unit.value ) {
+			cachedValueUpdate.unit = props.unit.value;
+			setCacheValue( cachedValueUpdate );
 		}
-	}, []);
+	}, [] );
 
-	useEffect(() => {
-		let cachedValueUpdate = { ...cachedValue };
-
-		if (JSON.stringify(value) !== JSON.stringify(cachedValueUpdate.value)) {
-			cachedValueUpdate["resetDisabled"] = false;
-			setCacheValue(cachedValueUpdate);
-		}
-	}, [props.value]);
-
-	useEffect(() => {
-		let cachedValueUpdate = { ...cachedValue };
+	useEffect( () => {
+		const cachedValueUpdate = { ...cachedValue };
 
 		if (
-			JSON.stringify(props.unit.value) !==
-			JSON.stringify(cachedValueUpdate.unit)
+			JSON.stringify( value ) !==
+			JSON.stringify( cachedValueUpdate.value )
 		) {
-			cachedValueUpdate["resetDisabled"] = false;
-			setCacheValue(cachedValueUpdate);
+			cachedValueUpdate.resetDisabled = false;
+			setCacheValue( cachedValueUpdate );
 		}
-	}, [props.unit]);
+	}, [ props.value ] );
+
+	useEffect( () => {
+		const cachedValueUpdate = { ...cachedValue };
+
+		if (
+			JSON.stringify( props.unit.value ) !==
+			JSON.stringify( cachedValueUpdate.unit )
+		) {
+			cachedValueUpdate.resetDisabled = false;
+			setCacheValue( cachedValueUpdate );
+		}
+	}, [ props.unit ] );
 
 	const {
 		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-	} = useDispatch("core/edit-post");
-	const customSetPreviewDeviceType = (device) => {
-		setPreviewDeviceType(device);
-		toggleResponsive(!displayResponsive);
+	} = useDispatch( 'core/edit-post' );
+	const customSetPreviewDeviceType = ( device ) => {
+		setPreviewDeviceType( device );
+		toggleResponsive( ! displayResponsive );
 	};
-	const deviceType = useSelect((select) => {
-		return select("core/edit-post").__experimentalGetPreviewDeviceType();
-	}, []);
+	const deviceType = useSelect( ( select ) => {
+		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
+	}, [] );
 	const devicesSvgs = {
 		desktop: (
 			<svg
@@ -116,84 +118,83 @@ const Range = (props) => {
 	};
 	const devices = [
 		{
-			name: "Desktop",
+			name: 'Desktop',
 			title: devicesSvgs.desktop,
-			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
+			itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Tablet",
+			name: 'Tablet',
 			title: devicesSvgs.tablet,
-			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
+			itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Mobile",
-			key: "mobile",
+			name: 'Mobile',
+			key: 'mobile',
 			title: devicesSvgs.mobile,
-			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
+			itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
 		},
 	];
 
 	let unitSizes = [
 		{
-			name: __("Pixel", "ultimate-addons-for-gutenberg"),
-			unitValue: "px",
+			name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+			unitValue: 'px',
 		},
 		{
-			name: __("Em", "ultimate-addons-for-gutenberg"),
-			unitValue: "em",
+			name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+			unitValue: 'em',
 		},
 	];
 
-	if (props.units) {
+	if ( props.units ) {
 		unitSizes = props.units;
 	}
 
-	const handleOnChange = (value) => {
-		setValue(value);
-		const parsedValue = parseFloat(value);
-		props.onChange(parsedValue);
-		return;
+	const handleOnChange = ( value ) => {
+		setValue( value );
+		const parsedValue = parseFloat( value );
+		props.onChange( parsedValue );
 	};
 
 	const resetValues = () => {
-		let cachedValueUpdate = { ...cachedValue };
+		const cachedValueUpdate = { ...cachedValue };
 
-		setValue(cachedValueUpdate.value);
-		props.onChange(cachedValueUpdate.value);
-		onChangeUnits(cachedValueUpdate.unit);
+		setValue( cachedValueUpdate.value );
+		props.onChange( cachedValueUpdate.value );
+		onChangeUnits( cachedValueUpdate.unit );
 
-		cachedValueUpdate["resetDisabled"] = true;
-		setCacheValue(cachedValueUpdate);
+		cachedValueUpdate.resetDisabled = true;
+		setCacheValue( cachedValueUpdate );
 	};
 
-	const onChangeUnits = (value) => {
-		props.setAttributes({ [props.unit.label]: value });
+	const onChangeUnits = ( value ) => {
+		props.setAttributes( { [ props.unit.label ]: value } );
 	};
 
-	const onUnitSizeClick = (unitSizes) => {
+	const onUnitSizeClick = ( unitSizes ) => {
 		const items = [];
-		unitSizes.map((key) =>
+		unitSizes.map( ( key ) =>
 			items.push(
 				<Tooltip
-					text={sprintf(
-						__("%s units", "ultimate-addons-for-gutenberg"),
+					text={ sprintf(
+						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
-					)}
+					) }
 				>
 					<Button
-						key={key.unitValue}
-						className={"uagb-range-control__units--" + key.name}
+						key={ key.unitValue }
+						className={ 'uagb-range-control__units--' + key.name }
 						isSmall
-						isPrimary={props.unit.value === key.unitValue}
-						isSecondary={props.unit.value !== key.unitValue}
-						aria-pressed={props.unit.value === key.unitValue}
-						aria-label={sprintf(
-							__("%s units", "ultimate-addons-for-gutenberg"),
+						isPrimary={ props.unit.value === key.unitValue }
+						isSecondary={ props.unit.value !== key.unitValue }
+						aria-pressed={ props.unit.value === key.unitValue }
+						aria-label={ sprintf(
+							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
-						)}
-						onClick={() => onChangeUnits(key.unitValue)}
+						) }
+						onClick={ () => onChangeUnits( key.unitValue ) }
 					>
-						{key.unitValue}
+						{ key.unitValue }
 					</Button>
 				</Tooltip>
 			)
@@ -203,115 +204,124 @@ const Range = (props) => {
 	};
 
 	const commonResponsiveHandler = () => {
-		toggleResponsive(!displayResponsive);
+		toggleResponsive( ! displayResponsive );
 	};
 
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
 				<div className="uag-responsive-label-wrap">
-					{props.label && (
-						<span className="uag-control-label">{props.label}</span>
-					)}
-					{!displayResponsive && props.responsive && (
+					{ props.label && (
+						<span className="uag-control-label">
+							{ props.label }
+						</span>
+					) }
+					{ ! displayResponsive && props.responsive && (
 						<Button
 							key="uag-responsive-common-button"
 							className="uag-responsive-common-button"
-							onClick={commonResponsiveHandler}
+							onClick={ commonResponsiveHandler }
 						>
-							{devicesSvgs[deviceType.toLowerCase()]}
+							{ devicesSvgs[ deviceType.toLowerCase() ] }
 						</Button>
-					)}
-					{displayResponsive && props.responsive && (
+					) }
+					{ displayResponsive && props.responsive && (
 						<ButtonGroup
 							className="uagb-range-control-responsive components-tab-panel__tabs"
-							aria-label={__(
-								"Device",
-								"ultimate-addons-for-gutenberg"
-							)}
+							aria-label={ __(
+								'Device',
+								'ultimate-addons-for-gutenberg'
+							) }
 						>
-							{map(devices, ({ name, key, title, itemClass }) => (
-								<Button
-									key={key}
-									className={`components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${itemClass}${
-										name === deviceType ? " active-tab" : ""
-									}`}
-									aria-pressed={deviceType === name}
-									onClick={() =>
-										customSetPreviewDeviceType(name)
-									}
-								>
-									{title}
-								</Button>
-							))}
+							{ map(
+								devices,
+								( { name, key, title, itemClass } ) => (
+									<Button
+										key={ key }
+										className={ `components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${ itemClass }${
+											name === deviceType
+												? ' active-tab'
+												: ''
+										}` }
+										aria-pressed={ deviceType === name }
+										onClick={ () =>
+											customSetPreviewDeviceType( name )
+										}
+									>
+										{ title }
+									</Button>
+								)
+							) }
 						</ButtonGroup>
-					)}
+					) }
 				</div>
 				<div className="uagb-range-control__actions">
 					<Button
 						className="uagb-reset"
-						disabled={cachedValue.resetDisabled}
+						disabled={ cachedValue.resetDisabled }
 						isSecondary
 						isSmall
-						onClick={(e) => {
+						onClick={ ( e ) => {
 							e.preventDefault();
 							resetValues();
-						}}
+						} }
 					>
 						<Dashicon icon="image-rotate" />
 					</Button>
-					{props.displayUnit && (
+					{ props.displayUnit && (
 						<ButtonGroup
 							className="uagb-range-control__units"
-							aria-label={__(
-								"Select Units",
-								"ultimate-addons-for-gutenberg"
-							)}
+							aria-label={ __(
+								'Select Units',
+								'ultimate-addons-for-gutenberg'
+							) }
 						>
-							{onUnitSizeClick(unitSizes)}
+							{ onUnitSizeClick( unitSizes ) }
 						</ButtonGroup>
-					)}
+					) }
 				</div>
 			</div>
 			<div className="uagb-range-control__mobile-controls">
 				<RangeControl
-					value={props.value || ""}
-					onChange={handleOnChange}
-					withInputField={false}
-					allowReset={false}
-					max={props.max}
-					min={props.min}
-					initialPosition={0}
-					step={props.step || 1}
+					value={ props.value || '' }
+					onChange={ handleOnChange }
+					withInputField={ false }
+					allowReset={ false }
+					max={ props.max }
+					min={ props.min }
+					initialPosition={ 0 }
+					step={ props.step || 1 }
 				/>
-				{withInputField && isNumberControlSupported && (
+				{ withInputField && isNumberControlSupported && (
 					<NumberControl
-						disabled={props.disabled}
-						isShiftStepEnabled={isShiftStepEnabled}
-						max={props.max}
-						min={props.min}
-						onChange={handleOnChange}
-						value={props.value || ""}
-						step={props.step || 1}
+						disabled={ props.disabled }
+						isShiftStepEnabled={ isShiftStepEnabled }
+						max={ props.max }
+						min={ props.min }
+						onChange={ handleOnChange }
+						value={ props.value || '' }
+						step={ props.step || 1 }
 					/>
-				)}
+				) }
 			</div>
-			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
+			{ props.help && (
+				<p className="uag-control-help-notice">{ props.help }</p>
+			) }
 		</div>
 	);
 };
 
 Range.defaultProps = {
-	label: __("Margin", "ultimate-addons-for-gutenberg"),
-	className: "",
+	label: __( 'Margin', 'ultimate-addons-for-gutenberg' ),
+	className: '',
 	allowReset: true,
 	withInputField: true,
 	isShiftStepEnabled: true,
 	max: Infinity,
 	min: -Infinity,
-	resetFallbackValue: "",
+	resetFallbackValue: '',
 	placeholder: null,
-	unit: ["px", "em"],
+	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
 	onChange: () => {},

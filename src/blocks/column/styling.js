@@ -55,7 +55,7 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	const position = backgroundPosition.replace( '-', ' ' );
@@ -165,26 +165,26 @@ function styling( props ) {
 
 	if ( colWidth != '' && colWidth != 0 ) {
 		selectors[ '.block-editor-block-list__block' ] = {
-			'width': colWidth + '%',
+			"width": colWidth + '%',
 		};
 	}
 
 	if ( colWidthTablet != '' && colWidthTablet != 0 ) {
 		tabletSelectors[ '.block-editor-block-list__block' ] = {
-			'width': colWidthTablet + '%',
+			"width": colWidthTablet + '%',
 		};
 	}
 
 	if ( colWidthMobile != '' && colWidthMobile != 0 ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
-			'width': colWidthMobile + '%',
+			"width": colWidthMobile + '%',
 		};
 	}
 
 	if ( 'none' !== borderStyle ) {
-		selectors['.block-editor-block-list__block:hover'] = {
-			'border-color' : borderHoverColor,
-		}
+		selectors[ '.block-editor-block-list__block:hover' ] = {
+			'border-color': borderHoverColor,
+		};
 	}
 
 	let stylingCss = '';

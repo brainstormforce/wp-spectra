@@ -1,87 +1,87 @@
 const attributes = {
 	block_id: {
-		type: "string"
+		type: 'string',
 	},
 	layout: {
-		type: "string",
-		default: "inline"
+		type: 'string',
+		default: 'inline',
 	},
 	rating: {
-		type: "number",
-		default: 4
+		type: 'number',
+		default: 4,
 	},
 	range: {
-		type: "string",
-		default: "5"
+		type: 'string',
+		default: '5',
 	},
 	size: {
-		type: "number",
+		type: 'number',
 	},
 	gap: {
-		type: "number",
+		type: 'number',
 	},
 	align: {
-		type: "string",
-		default: "left"
+		type: 'string',
+		default: 'left',
 	},
 	unmarkedColor: {
-		type: "string",
-		default: "#ccd6df"
+		type: 'string',
+		default: '#ccd6df',
 	},
 	color: {
-		type: "string",
-		default: "#f0ad4e"
+		type: 'string',
+		default: '#f0ad4e',
 	},
 	title: {
-		type: "string"
+		type: 'string',
 	},
-	titleGap : {
-		type: "number",
-		default: 10
+	titleGap: {
+		type: 'number',
+		default: 10,
 	},
 	titleColor: {
-		type: "string",
+		type: 'string',
 	},
 	fontSize: {
-		type: "number",
+		type: 'number',
 	},
 	fontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	fontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	fontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	fontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	fontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	fontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	lineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	lineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	lineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	lineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	loadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	}
-}
+		type: 'boolean',
+		default: false,
+	},
+};
 
-export default attributes
+export default attributes;

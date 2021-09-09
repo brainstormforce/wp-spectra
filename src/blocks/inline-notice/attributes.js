@@ -144,55 +144,55 @@ const attributes = {
 		default: false,
 	},
 	titleLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	titleRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	titleTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	titleBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	titleLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobileTitlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletTitlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	titlePaddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	layout: {
@@ -204,72 +204,72 @@ const attributes = {
 		default: 10,
 	},
 	contentLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	contentRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	contentTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	contentBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	contentLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	contentRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	contentTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	contentBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	contentLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	contentRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	contentTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	contentBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	contentPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobileContentPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletContentPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	contentPaddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	contentVrPadding: {
-		type: "number",
-		default : 15
+		type: 'number',
+		default: 15,
 	},
 	contentHrPadding: {
-		type: "number",
-		default : 15
+		type: 'number',
+		default: 15,
 	},
 	titleVrPadding: {
-		type: "number",
-		default : 15
+		type: 'number',
+		default: 15,
 	},
 	titleHrPadding: {
-		type: "number",
-		default : 15
+		type: 'number',
+		default: 15,
 	},
 };
 

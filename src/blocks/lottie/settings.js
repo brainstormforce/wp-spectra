@@ -1,13 +1,15 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import renderSVG from "@Controls/renderIcon";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "@Components/multi-buttons-control";
-import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
-import ResponsiveSlider from "@Components/responsive-slider";
-import Range from "@Components/range/Range.js";
-import UAGTabsControl from "@Components/tabs";
+import renderSVG from '@Controls/renderIcon';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import ResponsiveSlider from '@Components/responsive-slider';
+import Range from '@Components/range/Range.js';
+import UAGTabsControl from '@Components/tabs';
 
 import {
 	InspectorControls,
@@ -49,66 +51,52 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const controlsSettings = (
-		<PanelBody
-			initialOpen={ true }
-		>
+		<PanelBody initialOpen={ true }>
 			<MultiButtonsControl
-				setAttributes={setAttributes}
-				label={__(
-					"Play On",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
+				setAttributes={ setAttributes }
+				label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
 					value: playOn,
-					label: "playOn",
-				}}
+					label: 'playOn',
+				} }
 				className="uagb-multi-button-alignment-control"
-				options={[
+				options={ [
 					{
-						value: "none",
-						label: __(
-							"Default",
-							"ultimate-addons-for-gutenberg"
-						),
+						value: 'none',
+						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
 						tooltip: __(
 							'Default',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
-						value: "hover",
-						label: __(
-							"Hover",
-							"ultimate-addons-for-gutenberg"
-						),
+						value: 'hover',
+						label: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 						tooltip: __(
 							'On Hover',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
-						value: "click",
-						label: __(
-							"Click",
-							"ultimate-addons-for-gutenberg"
-						),
+						value: 'click',
+						label: __( 'Click', 'ultimate-addons-for-gutenberg' ),
 						tooltip: __(
 							'On Click',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
 					{
-						value: "scroll",
+						value: 'scroll',
 						label: __(
-							"Viewport",
-							"ultimate-addons-for-gutenberg"
+							'Viewport',
+							'ultimate-addons-for-gutenberg'
 						),
 						tooltip: __(
 							'Viewport',
 							'ultimate-addons-for-gutenberg'
 						),
 					},
-				]}
+				] }
 				help={
 					'scroll' === playOn
 						? __(
@@ -119,32 +107,23 @@ const Settings = ( props ) => {
 				}
 			/>
 			<MultiButtonsControl
-				setAttributes={setAttributes}
-				label={__(
-					"Alignment",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
+				setAttributes={ setAttributes }
+				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
 					value: align,
-					label: "align",
-				}}
+					label: 'align',
+				} }
 				className="uagb-multi-button-alignment-control"
-				options={[
+				options={ [
 					{
 						value: 'left',
-						icon: (
-						    <Icon icon={renderSVG("fa fa-align-left")} />
-						),
-						tooltip: __(
-							'Left',
-							'ultimate-addons-for-gutenberg'
-						),
-
+						icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+						tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 					},
 					{
 						value: 'center',
 						icon: (
-							<Icon icon={renderSVG("fa fa-align-center")} />
+							<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
 						),
 						tooltip: __(
 							'Center',
@@ -154,16 +133,12 @@ const Settings = ( props ) => {
 					{
 						value: 'right',
 						icon: (
-							<Icon icon={renderSVG("fa fa-align-right")} />
+							<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
 						),
-						tooltip: __(
-							'Right',
-							'ultimate-addons-for-gutenberg'
-						),
+						tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 					},
-
-				]}
-				showIcons={true}
+				] }
+				showIcons={ true }
 			/>
 			<ToggleControl
 				label={ __( 'Loop', 'ultimate-addons-for-gutenberg' ) }
@@ -174,18 +149,13 @@ const Settings = ( props ) => {
 				) }
 			/>
 			<Range
-				label={__(
-					"Speed",
-					"ultimate-addons-for-gutenberg"
-				)}
-				setAttributes={setAttributes}
-				value={speed}
-				onChange={(value) =>
-					setAttributes({ speed: value })
-				}
-				min={1}
-				max={50}
-				displayUnit={false}
+				label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
+				setAttributes={ setAttributes }
+				value={ speed }
+				onChange={ ( value ) => setAttributes( { speed: value } ) }
+				min={ 1 }
+				max={ 50 }
+				displayUnit={ false }
 			/>
 			{ loop && (
 				<ToggleControl
@@ -207,89 +177,77 @@ const Settings = ( props ) => {
 			initialOpen={ true }
 		>
 			<ResponsiveSlider
-				label={__(
-					"Width",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
+				label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
 					desktop: {
 						value: width,
-						label: "width",
+						label: 'width',
 					},
 					tablet: {
 						value: widthTablet,
-						label: "widthTablet",
+						label: 'widthTablet',
 					},
 					mobile: {
 						value: widthMob,
-						label: "widthMob",
+						label: 'widthMob',
 					},
-				}}
+				} }
 				min={ 0 }
 				max={ 1000 }
-				displayUnit={false}
-				setAttributes={setAttributes}
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
-				label={__(
-					"Height",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
+				label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
 					desktop: {
 						value: height,
-						label: "height",
+						label: 'height',
 					},
 					tablet: {
 						value: heightTablet,
-						label: "heightTablet",
+						label: 'heightTablet',
 					},
 					mobile: {
 						value: heightMob,
-						label: "heightMob",
+						label: 'heightMob',
 					},
-				}}
+				} }
 				min={ 0 }
 				max={ 1000 }
-				displayUnit={false}
-				setAttributes={setAttributes}
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 			<UAGTabsControl
-				tabs={[
+				tabs={ [
 					{
-						name: "normal",
-						title: __(
-							"Normal",
-							"ultimate-addons-for-gutenberg"
-						),
+						name: 'normal',
+						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 					},
 					{
-						name: "hover",
-						title: __(
-							"Hover",
-							"ultimate-addons-for-gutenberg"
-						),
+						name: 'hover',
+						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
 					},
-				]}
+				] }
 				normal={
 					<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={backgroundColor ? backgroundColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ backgroundColor: value })
+						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ backgroundColor ? backgroundColor : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { backgroundColor: value } )
 						}
 					/>
 				}
 				hover={
 					<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={backgroundHColor ? backgroundHColor : ""}
-						onColorChange={(value) =>
-							setAttributes({ backgroundHColor: value })
+						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ backgroundHColor ? backgroundHColor : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { backgroundHColor: value } )
 						}
 					/>
 				}
-				disableBottomSeparator={true}
+				disableBottomSeparator={ true }
 			/>
 		</PanelBody>
 	);
@@ -387,16 +345,18 @@ const Settings = ( props ) => {
 		<>
 			{ validJsonPath === 'valid' && getBlockControls() }
 			<InspectorControls>
-				<InspectorTabs tabs={["general", "style", "advance"]}>
-			  	<InspectorTab {...UAGTabs.general}>
-			  	 { controlsSettings }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>
-				{ styleSettings }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
-				</InspectorTab>
-			</InspectorTabs>
+				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ controlsSettings }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ styleSettings }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 		</>
 	);

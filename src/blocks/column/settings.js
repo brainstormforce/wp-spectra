@@ -4,23 +4,19 @@
 
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import Background from "@Components/background";
-import Border from "@Components/border";
-import SpacingControl from "@Components/spacing-control";
+import Background from '@Components/background';
+import Border from '@Components/border';
+import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
-import ResponsiveSlider from "@Components/responsive-slider";
+} from '@Components/inspector-tabs/InspectorTab.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 
-import {
-	InspectorControls,
-} from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-} from '@wordpress/components';
+import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	const {
@@ -86,30 +82,30 @@ const Settings = ( props ) => {
 			<PanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 			>
-			<ResponsiveSlider
-				label={__(
-					"Content Width (%)",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
-					desktop: {
-						value: colWidth,
-						label: "colWidth",
-					},
-					tablet: {
-						value: colWidthTablet,
-						label: "colWidthTablet",
-					},
-					mobile: {
-						value: colWidthMobile,
-						label: "colWidthMobile",
-					},
-				}}
-				min={0}
-				max={100}
-				displayUnit={false}
-				setAttributes={setAttributes}
-			/>
+				<ResponsiveSlider
+					label={ __(
+						'Content Width (%)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: colWidth,
+							label: 'colWidth',
+						},
+						tablet: {
+							value: colWidthTablet,
+							label: 'colWidthTablet',
+						},
+						mobile: {
+							value: colWidthMobile,
+							label: 'colWidthMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
 			</PanelBody>
 		);
 	};
@@ -121,144 +117,144 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<SpacingControl
-					{...props.parentProps}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props.parentProps }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: topPadding,
-						label: "topPadding",
-					}}
-					valueRight={{
+						label: 'topPadding',
+					} }
+					valueRight={ {
 						value: rightPadding,
-						label: "rightPadding",
-					}}
-					valueBottom={{
+						label: 'rightPadding',
+					} }
+					valueBottom={ {
 						value: bottomPadding,
-						label: "bottomPadding",
-					}}
-					valueLeft={{
+						label: 'bottomPadding',
+					} }
+					valueLeft={ {
 						value: leftPadding,
-						label: "leftPadding",
-					}}
-					valueTopTablet={{
+						label: 'leftPadding',
+					} }
+					valueTopTablet={ {
 						value: topPaddingTablet,
-						label: "topPaddingTablet",
-					}}
-					valueRightTablet={{
+						label: 'topPaddingTablet',
+					} }
+					valueRightTablet={ {
 						value: rightPaddingTablet,
-						label: "rightPaddingTablet",
-					}}
-					valueBottomTablet={{
+						label: 'rightPaddingTablet',
+					} }
+					valueBottomTablet={ {
 						value: bottomPaddingTablet,
-						label: "bottomPaddingTablet",
-					}}
-					valueLeftTablet={{
+						label: 'bottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
 						value: leftPaddingTablet,
-						label: "leftPaddingTablet",
-					}}
-					valueTopMobile={{
+						label: 'leftPaddingTablet',
+					} }
+					valueTopMobile={ {
 						value: topPaddingMobile,
-						label: "topPaddingMobile",
-					}}
-					valueRightMobile={{
+						label: 'topPaddingMobile',
+					} }
+					valueRightMobile={ {
 						value: rightPaddingMobile,
-						label: "rightPaddingMobile",
-					}}
-					valueBottomMobile={{
+						label: 'rightPaddingMobile',
+					} }
+					valueBottomMobile={ {
 						value: bottomPaddingMobile,
-						label: "bottomPaddingMobile",
-					}}
-					valueLeftMobile={{
+						label: 'bottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
 						value: leftPaddingMobile,
-						label: "leftPaddingMobile",
-					}}
-					unit={{
+						label: 'leftPaddingMobile',
+					} }
+					unit={ {
 						value: desktopPaddingType,
-						label: "desktopPaddingType",
-					}}
-					mUnit={{
+						label: 'desktopPaddingType',
+					} }
+					mUnit={ {
 						value: mobilePaddingType,
-						label: "mobilePaddingType",
-					}}
-					tUnit={{
+						label: 'mobilePaddingType',
+					} }
+					tUnit={ {
 						value: tabletPaddingType,
-						label: "tabletPaddingType",
-					}}
-					attributes={props.attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tabletPaddingType',
+					} }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: paddingLink,
-						label: "paddingLink",
-					}}
+						label: 'paddingLink',
+					} }
 				/>
 				<SpacingControl
-					{...props.parentProps}
-					label={__("Margin", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props.parentProps }
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: topMargin,
-						label: "topMargin",
-					}}
-					valueRight={{
+						label: 'topMargin',
+					} }
+					valueRight={ {
 						value: rightMargin,
-						label: "rightMargin",
-					}}
-					valueBottom={{
+						label: 'rightMargin',
+					} }
+					valueBottom={ {
 						value: bottomMargin,
-						label: "bottomMargin",
-					}}
-					valueLeft={{
+						label: 'bottomMargin',
+					} }
+					valueLeft={ {
 						value: leftMargin,
-						label: "leftMargin",
-					}}
-					valueTopTablet={{
+						label: 'leftMargin',
+					} }
+					valueTopTablet={ {
 						value: topMarginTablet,
-						label: "topMarginTablet",
-					}}
-					valueRightTablet={{
+						label: 'topMarginTablet',
+					} }
+					valueRightTablet={ {
 						value: rightMarginTablet,
-						label: "rightMarginTablet",
-					}}
-					valueBottomTablet={{
+						label: 'rightMarginTablet',
+					} }
+					valueBottomTablet={ {
 						value: bottomMarginTablet,
-						label: "bottomMarginTablet",
-					}}
-					valueLeftTablet={{
+						label: 'bottomMarginTablet',
+					} }
+					valueLeftTablet={ {
 						value: leftMarginTablet,
-						label: "leftMarginTablet",
-					}}
-					valueTopMobile={{
+						label: 'leftMarginTablet',
+					} }
+					valueTopMobile={ {
 						value: topMarginMobile,
-						label: "topMarginMobile",
-					}}
-					valueRightMobile={{
+						label: 'topMarginMobile',
+					} }
+					valueRightMobile={ {
 						value: rightMarginMobile,
-						label: "rightMarginMobile",
-					}}
-					valueBottomMobile={{
+						label: 'rightMarginMobile',
+					} }
+					valueBottomMobile={ {
 						value: bottomMarginMobile,
-						label: "bottomMarginMobile",
-					}}
-					valueLeftMobile={{
+						label: 'bottomMarginMobile',
+					} }
+					valueLeftMobile={ {
 						value: leftMarginMobile,
-						label: "leftMarginMobile",
-					}}
-					unit={{
+						label: 'leftMarginMobile',
+					} }
+					unit={ {
 						value: desktopMarginType,
-						label: "desktopMarginType",
-					}}
-					mUnit={{
+						label: 'desktopMarginType',
+					} }
+					mUnit={ {
 						value: mobileMarginType,
-						label: "mobileMarginType",
-					}}
-					tUnit={{
+						label: 'mobileMarginType',
+					} }
+					tUnit={ {
 						value: tabletMarginType,
-						label: "tabletMarginType",
-					}}
-					attributes={props.attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tabletMarginType',
+					} }
+					attributes={ props.attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: marginLink,
-						label: "marginLink",
-					}}
+						label: 'marginLink',
+					} }
 				/>
 			</PanelBody>
 		);
@@ -270,57 +266,57 @@ const Settings = ( props ) => {
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-			<Background
-				setAttributes={setAttributes}
-				backgroundGradient={{
-					value: gradientValue,
-					label: "gradientValue",
-				}}
-				backgroundImageColor={{
-					value: backgroundImageColor,
-					label: "backgroundImageColor",
-				}}
-				overlayType={{
-					value: overlayType,
-					label: "overlayType",
-				}}
-				backgroundSize={{
-					value: backgroundSize,
-					label: "backgroundSize",
-				}}
-				backgroundRepeat={{
-					value: backgroundRepeat,
-					label: "backgroundRepeat",
-				}}
-				backgroundAttachment={{
-					value: backgroundAttachment,
-					label: "backgroundAttachment",
-				}}
-				backgroundPosition={{
-					value: backgroundPosition,
-					label: "backgroundPosition",
-				}}
-				backgroundImage={{
-					value: backgroundImage,
-					label: "backgroundImage",
-				}}
-				backgroundColor={{
-					value: backgroundColor,
-					label: "backgroundColor",
-				}}
-				backgroundType={{
-					value: backgroundType,
-					label: "backgroundType",
-				}}
-				backgroundOpacity={{
-					value: backgroundOpacity,
-					label: "backgroundOpacity",
-				}}
-				backgroundVideoType={{
-					value: false,
-				}}
-				{...props.parentProps}
-			/>
+				<Background
+					setAttributes={ setAttributes }
+					backgroundGradient={ {
+						value: gradientValue,
+						label: 'gradientValue',
+					} }
+					backgroundImageColor={ {
+						value: backgroundImageColor,
+						label: 'backgroundImageColor',
+					} }
+					overlayType={ {
+						value: overlayType,
+						label: 'overlayType',
+					} }
+					backgroundSize={ {
+						value: backgroundSize,
+						label: 'backgroundSize',
+					} }
+					backgroundRepeat={ {
+						value: backgroundRepeat,
+						label: 'backgroundRepeat',
+					} }
+					backgroundAttachment={ {
+						value: backgroundAttachment,
+						label: 'backgroundAttachment',
+					} }
+					backgroundPosition={ {
+						value: backgroundPosition,
+						label: 'backgroundPosition',
+					} }
+					backgroundImage={ {
+						value: backgroundImage,
+						label: 'backgroundImage',
+					} }
+					backgroundColor={ {
+						value: backgroundColor,
+						label: 'backgroundColor',
+					} }
+					backgroundType={ {
+						value: backgroundType,
+						label: 'backgroundType',
+					} }
+					backgroundOpacity={ {
+						value: backgroundOpacity,
+						label: 'backgroundOpacity',
+					} }
+					backgroundVideoType={ {
+						value: false,
+					} }
+					{ ...props.parentProps }
+				/>
 			</PanelBody>
 		);
 	};
@@ -331,50 +327,38 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-			<Border
-				setAttributes={setAttributes}
-				borderStyle={{
-					value: borderStyle,
-					label: "borderStyle",
-					title: __(
-						"Style",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				borderWidth={{
-					value: borderWidth,
-					label: "borderWidth",
-					title: __(
-						"Width",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				borderRadius={{
-					value: borderRadius,
-					label: "borderRadius",
-					title: __(
-						"Radius",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				borderColor={{
-					value: borderColor,
-					label: "borderColor",
-					title: __(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				borderHoverColor={{
-					value: borderHoverColor,
-					label: "borderHoverColor",
-					title: __(
-						"Hover Color",
-						"ultimate-addons-for-gutenberg"
-					),
-				}}
-				disableBottomSeparator={true}
-			/>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: borderStyle,
+						label: 'borderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: borderWidth,
+						label: 'borderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: borderRadius,
+						label: 'borderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: borderColor,
+						label: 'borderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: borderHoverColor,
+						label: 'borderHoverColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ true }
+				/>
 			</PanelBody>
 		);
 	};
@@ -382,17 +366,20 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs>
-				<InspectorTab {...UAGTabs.general}>
-				{ layoutSettings() }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>
-				{ backgroundSettings() }
-				{ borderSettings() }
-				{ spacingSettings() }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
-			</InspectorTabs>
+				<InspectorTabs>
+					<InspectorTab { ...UAGTabs.general }>
+						{ layoutSettings() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ backgroundSettings() }
+						{ borderSettings() }
+						{ spacingSettings() }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 		</Suspense>
 	);

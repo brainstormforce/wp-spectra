@@ -1,17 +1,17 @@
-import { __ } from "@wordpress/i18n";
-import { __experimentalGradientPicker } from "@wordpress/components";
+import { __ } from '@wordpress/i18n';
+import { __experimentalGradientPicker } from '@wordpress/components';
 
-function GradientSettings(props) {
+function GradientSettings( props ) {
 	const { setAttributes, backgroundGradient } = props;
 
-	const onGradientChange = (value) => {
-		setAttributes({ [backgroundGradient.label]: value });
+	const onGradientChange = ( value ) => {
+		setAttributes( { [ backgroundGradient.label ]: value } );
 	};
 
 	return (
 		<__experimentalGradientPicker
-			value={backgroundGradient.value}
-			onChange={onGradientChange}
+			value={ backgroundGradient.value }
+			onChange={ onGradientChange }
 		/>
 	);
 }

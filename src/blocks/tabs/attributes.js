@@ -1,379 +1,379 @@
 /**
  * BLOCK: UAGB Tabs Block Attributes
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 const attributes = {
 	block_id: {
-		type: "string",
+		type: 'string',
 	},
 	tabHeaders: {
-		type: "array",
+		type: 'array',
 		default: [
-			__("Tab 1", "ultimate-addons-for-gutenberg"),
-			__("Tab 2", "ultimate-addons-for-gutenberg"),
-			__("Tab 3", "ultimate-addons-for-gutenberg"),
+			__( 'Tab 1', 'ultimate-addons-for-gutenberg' ),
+			__( 'Tab 2', 'ultimate-addons-for-gutenberg' ),
+			__( 'Tab 3', 'ultimate-addons-for-gutenberg' ),
 		],
 	},
 	tabActive: {
-		type: "number",
+		type: 'number',
 		default: 0,
 	},
 	tabActiveFrontend: {
-		type: "number",
+		type: 'number',
 		default: 0,
 	},
 	tabsStyleD: {
-		type: "string",
-		default: "hstyle1",
+		type: 'string',
+		default: 'hstyle1',
 	},
 	tabsStyleT: {
-		type: "string",
-		default: "vstyle6",
+		type: 'string',
+		default: 'vstyle6',
 	},
 	tabsStyleM: {
-		type: "string",
-		default: "vstyle6",
+		type: 'string',
+		default: 'vstyle6',
 	},
 	headerBgColor: {
-		type: "string",
+		type: 'string',
 	},
 	headerTextColor: {
-		type: "string",
-		default: "#007cba",
+		type: 'string',
+		default: '#007cba',
 	},
 	bodyBgColor: {
-		type: "string",
+		type: 'string',
 	},
 	bodyTextColor: {
-		type: "string",
+		type: 'string',
 	},
 	borderStyle: {
-		type: "string",
-		default: "solid",
+		type: 'string',
+		default: 'solid',
 	},
 	borderWidth: {
-		type: "number",
+		type: 'number',
 		default: 1,
 	},
 	borderRadius: {
-		type: "number",
+		type: 'number',
 	},
 	borderColor: {
-		type: "string",
-		default: "#e0e0e0",
+		type: 'string',
+		default: '#e0e0e0',
 	},
 	borderHoverColor: {
-		type: "string",
+		type: 'string',
 	},
 	activeTabBgColor: {
-		type: "string",
-		default: "#007cba",
+		type: 'string',
+		default: '#007cba',
 	},
 	activeTabTextColor: {
-		type: "string",
-		default: "#fff",
+		type: 'string',
+		default: '#fff',
 	},
 	tabTitleLeftMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleLeftMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleLeftMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobiletabTitleMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tablettabTitleMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabTitleMarginLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	tabBodyLeftMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomMargin: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyLeftMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomMarginTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyLeftMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomMarginMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobiletabBodyMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tablettabBodyMarginUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabBodyMarginLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	tabBodyVertPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyHrPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobiletabTitlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tablettabTitlePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabTitlePaddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	tabBodyLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	tabBodyPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobiletabBodyPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tablettabBodyPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabBodyPaddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 
 	tabTitleVertPadding: {
-		type: "number",
+		type: 'number',
 	},
 	tabTitleHrPadding: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeType: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	titleFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	titleFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	titleFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	titleLineHeightType: {
-		type: "string",
-		default: "em",
+		type: 'string',
+		default: 'em',
 	},
 	titleLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleLoadGoogleFonts: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	titleTransform: {
-		type: "string",
-		default: "normal",
+		type: 'string',
+		default: 'normal',
 	},
 	titleDecoration: {
-		type: "string",
-		default: "none",
+		type: 'string',
+		default: 'none',
 	},
 	tabAlign: {
-		type: "string",
-		default: "left",
+		type: 'string',
+		default: 'left',
 	},
 	titleAlign: {
-		type: "string",
-		default: "center",
+		type: 'string',
+		default: 'center',
 	},
 	showIcon: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	icon: {
-		type: "string",
+		type: 'string',
 	},
 	iconPosition: {
-		type: "string",
-		default: "left",
+		type: 'string',
+		default: 'left',
 	},
 	iconSpacing: {
-		type: "string",
+		type: 'string',
 		default: 10,
 	},
 	iconColor: {
-		type: "string",
+		type: 'string',
 	},
 	iconSize: {
-		type: "number",
+		type: 'number',
 		default: 12,
 	},
 	activeiconColor: {
-		type: "string",
+		type: 'string',
 	},
 };
 

@@ -128,7 +128,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'text-align': align,
-			'color': headingColor,
+			"color": headingColor,
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -139,7 +139,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'text-align': align,
-			'color': headingColor,
+			"color": headingColor,
 		},
 		' .uagb-timeline__heading-text': {
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
@@ -156,7 +156,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightType
 			),
 			'text-align': align,
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': align,
@@ -181,35 +181,35 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__line': {
 			'background-color': separatorColor,
-			'width': generateCSSUnit( separatorwidth, 'px' ),
+			"width": generateCSSUnit( separatorwidth, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsize + 'px / 2 )',
+			"right": 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			'left': 'calc( ' + connectorBgsize + 'px / 2 )',
+			"left": 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		'.uagb-timeline__center-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsize + 'px / 2 )',
+			"right": 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'background-color': separatorBg,
 			'min-height': generateCSSUnit( connectorBgsize, 'px' ),
 			'min-width': generateCSSUnit( connectorBgsize, 'px' ),
 			'line-height': generateCSSUnit( connectorBgsize, 'px' ),
-			'border': borderwidth + 'px solid' + separatorBorder,
+			"border": borderwidth + 'px solid' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgsize, 'px' ),
+			"height": generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgsize, 'px' ),
+			"height": generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgsize, 'px' ),
+			"height": generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgsize, 'px' ),
+			"height": generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
@@ -220,7 +220,7 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
-			'color': dateColor,
+			"color": dateColor,
 			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
@@ -237,7 +237,7 @@ function contentTimelineStyle( props ) {
 			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
 		},
 		' .uagb-timeline__date-new': {
-			'color': dateColor,
+			"color": dateColor,
 			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
@@ -255,22 +255,22 @@ function contentTimelineStyle( props ) {
 			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 		},
 		' .uagb-timeline__main .uagb-timeline__icon-new': {
-			'color': iconColor,
+			"color": iconColor,
 			'font-size': generateCSSUnit( iconSize, 'px' ),
-			'width': generateCSSUnit( iconSize, 'px' ),
+			"width": generateCSSUnit( iconSize, 'px' ),
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon': {
-			'background': iconBgFocus,
+			"background": iconBgFocus,
 			'border-color': borderFocus,
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new': {
-			'color': iconFocus,
+			"color": iconFocus,
 		},
 		' .uagb-timeline__main .uagb-timeline__icon-new svg': {
-			'fill': iconColor,
+			"fill": iconColor,
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
-			'fill': iconFocus,
+			"fill": iconFocus,
 		},
 
 		//Author and CTA
@@ -285,7 +285,7 @@ function contentTimelineStyle( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
-			'color': authorColor,
+			"color": authorColor,
 		},
 		' .uagb-timeline__author-link': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -295,7 +295,7 @@ function contentTimelineStyle( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
-			'color': authorColor,
+			"color": authorColor,
 		},
 
 		' .uagb-timeline__link_parent': {
@@ -306,7 +306,7 @@ function contentTimelineStyle( props ) {
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-			'color': ctaColor,
+			"color": ctaColor,
 			'background-color': ctaBackground,
 		},
 	};
@@ -368,16 +368,34 @@ function contentTimelineStyle( props ) {
 			'margin-right': 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				tabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				tabletMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				tabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				tabletMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
 			'text-align': respSelectors,
@@ -436,11 +454,23 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
-			'padding-left': generateCSSUnit( leftPaddingTablet, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( topPaddingTablet, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingUnit ),
-		}
+			'padding-left': generateCSSUnit(
+				leftPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingTablet,
+				tabletPaddingUnit
+			),
+		},
 	};
 
 	const mobileSelectors = {
@@ -499,16 +529,34 @@ function contentTimelineStyle( props ) {
 			'margin-right': 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				mobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				mobileMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				mobileMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				mobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				mobileMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				mobileMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading': {
 			'text-align': respSelectors,
@@ -567,11 +615,23 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
-			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( topPaddingMobile, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomPaddingMobile, mobilePaddingUnit ),
-		}
+			'padding-left': generateCSSUnit(
+				leftPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingMobile,
+				mobilePaddingUnit
+			),
+		},
 	};
 
 	let stylingCss = '';

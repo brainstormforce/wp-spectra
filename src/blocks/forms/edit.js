@@ -47,36 +47,36 @@ const UAGBFormsEdit = ( props ) => {
 			paddingBtnLeft,
 		} = props.attributes;
 
-		if (vPaddingSubmit) {
-			if (!paddingBtnTop) {
-				setAttributes({ paddingBtnTop: vPaddingSubmit });
+		if ( vPaddingSubmit ) {
+			if ( ! paddingBtnTop ) {
+				setAttributes( { paddingBtnTop: vPaddingSubmit } );
 			}
-			if (!paddingBtnBottom) {
-				setAttributes({ paddingBtnBottom: vPaddingSubmit });
-			}
-		}
-		if (hPaddingSubmit) {
-			if (!paddingBtnRight) {
-				setAttributes({ paddingBtnRight: hPaddingSubmit });
-			}
-			if (!paddingBtnLeft) {
-				setAttributes({ paddingBtnLeft: hPaddingSubmit });
+			if ( ! paddingBtnBottom ) {
+				setAttributes( { paddingBtnBottom: vPaddingSubmit } );
 			}
 		}
-		if (vPaddingField) {
-			if (!paddingFieldTop) {
-				setAttributes({ paddingFieldTop: vPaddingField });
+		if ( hPaddingSubmit ) {
+			if ( ! paddingBtnRight ) {
+				setAttributes( { paddingBtnRight: hPaddingSubmit } );
 			}
-			if (!paddingFieldBottom) {
-				setAttributes({ paddingFieldBottom: vPaddingField });
+			if ( ! paddingBtnLeft ) {
+				setAttributes( { paddingBtnLeft: hPaddingSubmit } );
 			}
 		}
-		if (hPaddingField) {
-			if (!paddingFieldRight) {
-				setAttributes({ paddingFieldRight: hPaddingField });
+		if ( vPaddingField ) {
+			if ( ! paddingFieldTop ) {
+				setAttributes( { paddingFieldTop: vPaddingField } );
 			}
-			if (!paddingFieldLeft) {
-				setAttributes({ paddingFieldLeft: hPaddingField });
+			if ( ! paddingFieldBottom ) {
+				setAttributes( { paddingFieldBottom: vPaddingField } );
+			}
+		}
+		if ( hPaddingField ) {
+			if ( ! paddingFieldRight ) {
+				setAttributes( { paddingFieldRight: hPaddingField } );
+			}
+			if ( ! paddingFieldLeft ) {
+				setAttributes( { paddingFieldLeft: hPaddingField } );
 			}
 		}
 		// Pushing Style tag for this block css.
@@ -258,7 +258,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 				? null
 				: getBlockVariations( props.name ),
 		replaceInnerBlocks,
-		deviceType
+		deviceType,
 	};
 } );
 

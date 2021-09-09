@@ -143,7 +143,7 @@ const attributes = {
 		type: 'number',
 		default: 900,
 	},
-	widthUnit:{
+	widthUnit: {
 		type: 'string',
 		default: '%',
 	},
@@ -303,11 +303,11 @@ const attributes = {
 		default: '',
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	marginspacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 };

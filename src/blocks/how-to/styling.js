@@ -67,7 +67,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 		'.uagb-how-to-main-wrap p': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
@@ -103,7 +103,7 @@ function styling( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			'color': showTotaltimecolor,
+			"color": showTotaltimecolor,
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-family': subHeadFontFamily,
@@ -116,7 +116,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 			'margin-left': generateCSSUnit( timeSpace, 'px' ),
 		},
 		' .uagb-howto-timeINmin-text ': {
@@ -130,7 +130,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-text': {
 			'font-family': priceFontFamily,
@@ -140,7 +140,7 @@ function styling( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			'color': showTotaltimecolor,
+			"color": showTotaltimecolor,
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-value': {
 			'font-family': subHeadFontFamily,
@@ -153,7 +153,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 			'margin-left': generateCSSUnit( costSpace, 'px' ),
 		},
 
@@ -190,7 +190,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-tools-text': {
@@ -201,7 +201,7 @@ function styling( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			'color': showTotaltimecolor,
+			"color": showTotaltimecolor,
 		},
 
 		'  .block-editor-rich-text__editable.uagb-tools__label': {
@@ -215,7 +215,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-materials-text': {
@@ -226,7 +226,7 @@ function styling( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			'color': showTotaltimecolor,
+			"color": showTotaltimecolor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-steps-text': {
@@ -237,7 +237,7 @@ function styling( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			'color': showTotaltimecolor,
+			"color": showTotaltimecolor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-materials__label': {
@@ -251,7 +251,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			'color': subHeadingColor,
+			"color": subHeadingColor,
 		},
 	};
 
@@ -269,7 +269,7 @@ function styling( props ) {
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-		'color': headingColor,
+		"color": headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
 

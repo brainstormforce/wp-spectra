@@ -84,7 +84,7 @@ function styling( props ) {
 		borderThickness,
 		borderColor,
 		borderRadius,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let selectors = {};
@@ -100,16 +100,28 @@ function styling( props ) {
 	selectors = {
 		//grid layout styling
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
-			'display': 'grid',
+			"display": 'grid',
 			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
 			'grid-column-gap': generateCSSUnit( columnGap, 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGap, 'px' ),
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPadding, contentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPadding, contentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPadding, contentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPadding, contentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPadding,
+				contentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPadding,
+				contentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPadding,
+				contentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPadding,
+				contentPaddingUnit
+			),
 			'background-color': bgColor,
 			'text-align': alignment,
 			'box-shadow':
@@ -126,7 +138,7 @@ function styling( props ) {
 				boxShadowPositionCSS,
 		},
 		' .uagb-layout-grid .uagb-tax-title': {
-			'color': titleColor,
+			"color": titleColor,
 			'margin-top': '0',
 			'margin-bottom': generateCSSUnit( titleBottomSpace, 'px' ),
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -138,7 +150,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-layout-grid .uagb-tax-count': {
-			'color': countColor,
+			"color": countColor,
 			'font-size': generateCSSUnit( countFontSize, countFontSizeType ),
 			'font-family': countFontFamily,
 			'font-weight': countFontWeight,
@@ -151,7 +163,7 @@ function styling( props ) {
 		//List layout styling
 		' .uagb-layout-list .uagb-tax-list': {
 			'list-style': listStyle,
-			'color': listStyleColor,
+			"color": listStyleColor,
 			'font-size': generateCSSUnit( listFontSize, listFontSizeType ),
 			'font-family': listFontFamily,
 			'font-weight': listFontWeight,
@@ -161,13 +173,13 @@ function styling( props ) {
 			),
 		},
 		' .uagb-layout-list .uagb-tax-list:hover': {
-			'color': hoverlistStyleColor,
+			"color": hoverlistStyleColor,
 		},
 		' .uagb-layout-list .uagb-tax-list a.uagb-tax-link': {
-			'color': listTextColor,
+			"color": listTextColor,
 		},
 		' .uagb-layout-list .uagb-tax-list a.uagb-tax-link:hover': {
-			'color': hoverlistTextColor,
+			"color": hoverlistTextColor,
 		},
 		' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap': {
 			'margin-bottom': generateCSSUnit( listBottomMargin, 'px' ),
@@ -179,7 +191,7 @@ function styling( props ) {
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			'width': generateCSSUnit( seperatorWidth, '%' ),
+			"width": generateCSSUnit( seperatorWidth, '%' ),
 		};
 		selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
 			'border-top-color': seperatorHoverColor,
@@ -188,7 +200,7 @@ function styling( props ) {
 
 	if ( borderStyle !== 'none' ) {
 		selectors[ ' .uagb-taxomony-box' ] = {
-			'border':
+			"border":
 				generateCSSUnit( borderThickness, 'px' ) +
 				' ' +
 				borderStyle +
@@ -206,10 +218,22 @@ function styling( props ) {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPaddingMobile, mobileContentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPaddingMobile, mobileContentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPaddingMobile, mobileContentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPaddingMobile, mobileContentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingMobile,
+				mobileContentPaddingUnit
+			),
 		},
 		' .uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(
@@ -248,10 +272,22 @@ function styling( props ) {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPaddingTablet, tabletContentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPaddingTablet, tabletContentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPaddingTablet, tabletContentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPaddingTablet, tabletContentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingTablet,
+				tabletContentPaddingUnit
+			),
 		},
 		' .uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(

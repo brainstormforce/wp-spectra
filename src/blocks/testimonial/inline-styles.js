@@ -85,7 +85,7 @@ function testimonialStyle( props ) {
 		backgroundAttachment,
 		gradientValue,
 		descTransform,
-		descDecoration, 
+		descDecoration,
 		nameTransform,
 		nameDecoration,
 		companyTransform,
@@ -141,7 +141,10 @@ function testimonialStyle( props ) {
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'padding-top': generateCSSUnit( imgpaddingTop, imgpaddingUnit ),
 			'padding-right': generateCSSUnit( imgpaddingRight, imgpaddingUnit ),
-			'padding-bottom': generateCSSUnit( imgpaddingBottom, imgpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottom,
+				imgpaddingUnit
+			),
 			'padding-left': generateCSSUnit( imgpaddingLeft, imgpaddingUnit ),
 		},
 		' .uagb-tm__image-position-top .uagb-tm__image-content': {
@@ -149,7 +152,7 @@ function testimonialStyle( props ) {
 		},
 		// Image
 		' .uagb-tm__image img': {
-			'width': generateCSSUnit( imageWidth, imageWidthType ),
+			"width": generateCSSUnit( imageWidth, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
 		' .uagb-tm__content': {
@@ -170,7 +173,7 @@ function testimonialStyle( props ) {
 				nameLineHeight,
 				nameLineHeightType
 			),
-			'color': authorColor,
+			"color": authorColor,
 			'margin-bottom': generateCSSUnit( nameSpace, nameSpaceType ),
 		},
 		// Title Style
@@ -187,7 +190,7 @@ function testimonialStyle( props ) {
 				companyLineHeight,
 				companyLineHeightType
 			),
-			'color': companyColor,
+			"color": companyColor,
 		},
 		// Description Style
 		' .uagb-tm__desc': {
@@ -200,7 +203,7 @@ function testimonialStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			'color': descColor,
+			"color": descColor,
 			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
 		},
 		' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content': {
@@ -216,27 +219,27 @@ function testimonialStyle( props ) {
 		},
 		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay': {
 			'background-color': backgroundImageColor,
-			'opacity':
+			"opacity":
 				typeof backgroundOpacity !== 'undefined'
 					? ( 100 - backgroundOpacity ) / 100
 					: 0.5,
 		},
 		' ul.slick-dots li button:before': {
-			'color': arrowColor,
+			"color": arrowColor,
 		},
 		' ul.slick-dots li.slick-active button:before': {
-			'color': arrowColor,
+			"color": arrowColor,
 		},
 		' .slick-arrow svg': {
-			'fill': arrowColor,
-			'height': generateCSSUnit( arrowSize, arrowSizeType ),
-			'width': generateCSSUnit( arrowSize, arrowSizeType ),
+			"fill": arrowColor,
+			"height": generateCSSUnit( arrowSize, arrowSizeType ),
+			"width": generateCSSUnit( arrowSize, arrowSizeType ),
 		},
 	};
 
 	if ( test_item_count == columns ) {
 		selectors[ '.uagb-slick-carousel' ] = {
-			'padding': '0',
+			"padding": '0',
 		};
 	}
 
@@ -258,13 +261,13 @@ function testimonialStyle( props ) {
 
 	if ( arrowDots === 'dots' ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			'padding': '0 0 35px 0',
+			"padding": '0 0 35px 0',
 		};
 	}
 
 	if ( test_item_count === 1 || test_item_count === columns ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			'padding': '0',
+			"padding": '0',
 		};
 	}
 
@@ -280,10 +283,22 @@ function testimonialStyle( props ) {
 			),
 		},
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
-			'padding-top': generateCSSUnit( imgpaddingTopMobile, imgmobilePaddingUnit ),
-			'padding-right': generateCSSUnit( imgpaddingRightMobile, imgmobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( imgpaddingBottomMobile, imgmobilePaddingUnit ),
-			'padding-left': generateCSSUnit( imgpaddingLeftMobile, imgmobilePaddingUnit ),
+			'padding-top': generateCSSUnit(
+				imgpaddingTopMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgpaddingRightMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottomMobile,
+				imgmobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				imgpaddingLeftMobile,
+				imgmobilePaddingUnit
+			),
 		},
 		' .uagb-tm__company': {
 			'font-size': generateCSSUnit(
@@ -306,25 +321,61 @@ function testimonialStyle( props ) {
 			),
 		},
 		' .uagb-tm__content': {
-			'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
-			'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
+			'padding-top': generateCSSUnit(
+				paddingTopMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomMobile,
+				mobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingLeftMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightMobile,
+				mobilePaddingUnit
+			),
 		},
 	};
 
 	const tabletSelectors = {
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
-			'padding-top': generateCSSUnit( imgpaddingTopTablet, imgtabletPaddingUnit ),
-			'padding-right': generateCSSUnit( imgpaddingRightTablet, imgtabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( imgpaddingBottomTablet, imgtabletPaddingUnit ),
-			'padding-left': generateCSSUnit( imgpaddingLeftTablet, imgtabletPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				imgpaddingTopTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgpaddingRightTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgpaddingBottomTablet,
+				imgtabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				imgpaddingLeftTablet,
+				imgtabletPaddingUnit
+			),
 		},
 		' .uagb-tm__content': {
-			'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
-			'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				paddingTopTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomTablet,
+				tabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingLeftTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightTablet,
+				tabletPaddingUnit
+			),
 		},
 		' .uagb-tm__desc': {
 			'font-size': generateCSSUnit(
@@ -361,8 +412,7 @@ function testimonialStyle( props ) {
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
-		selectors[ ' .uagb-tm__content' ][ 'background-color' ] =
-			'transparent';
+		selectors[ ' .uagb-tm__content' ][ 'background-color' ] = 'transparent';
 		selectors[ ' .uagb-tm__content' ].opacity =
 			typeof backgroundOpacity !== 'undefined'
 				? backgroundOpacity / 100

@@ -64,7 +64,7 @@ function styling( props ) {
 		borderStyle,
 		borderWidth,
 		borderColor,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let inner_width = '100%';
@@ -87,7 +87,7 @@ function styling( props ) {
 	const selectors = {
 		'.uagb-section__wrap': inlineStyles( props ),
 		' .uagb-section__video-wrap': {
-			'opacity':
+			"opacity":
 				typeof backgroundVideoOpacity !== 'undefined'
 					? ( 100 - backgroundVideoOpacity ) / 100
 					: 0.5,
@@ -118,13 +118,13 @@ function styling( props ) {
 
 	if ( 'video' == backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ] = {
-			'opacity': 1,
+			"opacity": 1,
 			'background-color': backgroundVideoColor,
 		};
 	} else if ( 'image' == backgroundType ) {
 		if ( 'color' == overlayType ) {
 			selectors[ ' > .uagb-section__overlay' ] = {
-				'opacity':
+				"opacity":
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
 						: 0,
@@ -133,7 +133,7 @@ function styling( props ) {
 		} else {
 			selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
 				'transparent';
-			selectors[ ' > .uagb-section__overlay' ][ 'opacity' ] =
+			selectors[ ' > .uagb-section__overlay' ].opacity =
 				typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
 					: '';
@@ -150,7 +150,7 @@ function styling( props ) {
 		}
 	} else if ( 'color' == backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ] = {
-			'opacity':
+			"opacity":
 				typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
 					: '',
@@ -159,7 +159,7 @@ function styling( props ) {
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
 			'transparent';
-		selectors[ ' > .uagb-section__overlay' ][ 'opacity' ] =
+		selectors[ ' > .uagb-section__overlay' ].opacity =
 			typeof backgroundOpacity !== 'undefined'
 				? backgroundOpacity / 100
 				: '';
@@ -184,9 +184,15 @@ function styling( props ) {
 	] = generateCSSUnit( borderRadius, 'px' );
 
 	if ( borderStyle != 'none' ) {
-		selectors[ ' > .uagb-section__overlay'][ 'border-style' ] = borderStyle;
-		selectors[ ' > .uagb-section__overlay'][ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
-		selectors[ ' > .uagb-section__overlay'][ 'border-color' ] = borderColor;
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-style'
+		] = borderStyle;
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-width'
+		] = generateCSSUnit( borderWidth, 'px' );
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-color'
+		] = borderColor;
 	}
 	tabletSelectors = {
 		'.uagb-section__wrap': {

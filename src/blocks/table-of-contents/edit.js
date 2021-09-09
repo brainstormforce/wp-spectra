@@ -94,109 +94,108 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		} = attributes;
 
 		//Padding
-		if (vPaddingDesktop) {
-			if (!topPadding) {
-				setAttributes({ topPadding: vPaddingDesktop });
+		if ( vPaddingDesktop ) {
+			if ( ! topPadding ) {
+				setAttributes( { topPadding: vPaddingDesktop } );
 			}
-			if (!bottomPadding) {
-				setAttributes({ bottomPadding: vPaddingDesktop });
-			}
-		}
-		if (hPaddingDesktop) {
-			if (!rightPadding) {
-				setAttributes({ rightPadding: hPaddingDesktop });
-			}
-			if (!leftPadding) {
-				setAttributes({ leftPadding: hPaddingDesktop });
+			if ( ! bottomPadding ) {
+				setAttributes( { bottomPadding: vPaddingDesktop } );
 			}
 		}
-
-		if (vPaddingMobile) {
-			if (!topPaddingMobile) {
-				setAttributes({ topPaddingMobile: vPaddingMobile });
+		if ( hPaddingDesktop ) {
+			if ( ! rightPadding ) {
+				setAttributes( { rightPadding: hPaddingDesktop } );
 			}
-			if (!bottomPaddingMobile) {
-				setAttributes({ bottomPaddingMobile: vPaddingMobile });
-			}
-		}
-		if (hPaddingMobile) {
-			if (!rightPaddingMobile) {
-				setAttributes({ rightPaddingMobile: hPaddingMobile });
-			}
-			if (!leftPaddingMobile) {
-				setAttributes({ leftPaddingMobile: hPaddingMobile });
+			if ( ! leftPadding ) {
+				setAttributes( { leftPadding: hPaddingDesktop } );
 			}
 		}
 
-		if (vPaddingTablet) {
-			if (!topPaddingTablet) {
-				setAttributes({ topPaddingTablet: vPaddingTablet });
+		if ( vPaddingMobile ) {
+			if ( ! topPaddingMobile ) {
+				setAttributes( { topPaddingMobile: vPaddingMobile } );
 			}
-			if (!bottomPaddingTablet) {
-				setAttributes({ bottomPaddingTablet: vPaddingTablet });
+			if ( ! bottomPaddingMobile ) {
+				setAttributes( { bottomPaddingMobile: vPaddingMobile } );
 			}
 		}
-		if (hPaddingTablet) {
-			if (!rightPaddingTablet) {
-				setAttributes({ rightPaddingTablet: hPaddingTablet });
+		if ( hPaddingMobile ) {
+			if ( ! rightPaddingMobile ) {
+				setAttributes( { rightPaddingMobile: hPaddingMobile } );
 			}
-			if (!leftPaddingTablet) {
-				setAttributes({ leftPaddingTablet: hPaddingTablet });
+			if ( ! leftPaddingMobile ) {
+				setAttributes( { leftPaddingMobile: hPaddingMobile } );
+			}
+		}
+
+		if ( vPaddingTablet ) {
+			if ( ! topPaddingTablet ) {
+				setAttributes( { topPaddingTablet: vPaddingTablet } );
+			}
+			if ( ! bottomPaddingTablet ) {
+				setAttributes( { bottomPaddingTablet: vPaddingTablet } );
+			}
+		}
+		if ( hPaddingTablet ) {
+			if ( ! rightPaddingTablet ) {
+				setAttributes( { rightPaddingTablet: hPaddingTablet } );
+			}
+			if ( ! leftPaddingTablet ) {
+				setAttributes( { leftPaddingTablet: hPaddingTablet } );
 			}
 		}
 
 		//Margin
-		if (vMarginDesktop) {
-			if (!topMargin) {
-				setAttributes({ topMargin: vMarginDesktop });
+		if ( vMarginDesktop ) {
+			if ( ! topMargin ) {
+				setAttributes( { topMargin: vMarginDesktop } );
 			}
-			if (!bottomMargin) {
-				setAttributes({ bottomMargin: vMarginDesktop });
-			}
-		}
-		if (hMarginDesktop) {
-			if (!rightMargin) {
-				setAttributes({ rightMargin: hMarginDesktop });
-			}
-			if (!leftMargin) {
-				setAttributes({ leftMargin: hMarginDesktop });
+			if ( ! bottomMargin ) {
+				setAttributes( { bottomMargin: vMarginDesktop } );
 			}
 		}
-
-		if (vMarginMobile) {
-			if (!topMarginMobile) {
-				setAttributes({ topMarginMobile: vMarginMobile });
+		if ( hMarginDesktop ) {
+			if ( ! rightMargin ) {
+				setAttributes( { rightMargin: hMarginDesktop } );
 			}
-			if (!bottomMarginMobile) {
-				setAttributes({ bottomMarginMobile: vMarginMobile });
-			}
-		}
-		if (hMarginMobile) {
-			if (!rightMarginMobile) {
-				setAttributes({ rightMarginMobile: hMarginMobile });
-			}
-			if (!leftMarginMobile) {
-				setAttributes({ leftMarginMobile: hMarginMobile });
+			if ( ! leftMargin ) {
+				setAttributes( { leftMargin: hMarginDesktop } );
 			}
 		}
 
-		if (vMarginTablet) {
-			if (!topMarginTablet) {
-				setAttributes({ topMarginTablet: vMarginTablet });
+		if ( vMarginMobile ) {
+			if ( ! topMarginMobile ) {
+				setAttributes( { topMarginMobile: vMarginMobile } );
 			}
-			if (!bottomMarginTablet) {
-				setAttributes({ bottomMarginTablet: vMarginTablet });
+			if ( ! bottomMarginMobile ) {
+				setAttributes( { bottomMarginMobile: vMarginMobile } );
 			}
 		}
-		if (hMarginTablet) {
-			if (!rightMarginTablet) {
-				setAttributes({ rightMarginTablet: hMarginTablet });
+		if ( hMarginMobile ) {
+			if ( ! rightMarginMobile ) {
+				setAttributes( { rightMarginMobile: hMarginMobile } );
 			}
-			if (!leftMarginTablet) {
-				setAttributes({ leftMarginTablet: hMarginTablet });
+			if ( ! leftMarginMobile ) {
+				setAttributes( { leftMarginMobile: hMarginMobile } );
 			}
 		}
 
+		if ( vMarginTablet ) {
+			if ( ! topMarginTablet ) {
+				setAttributes( { topMarginTablet: vMarginTablet } );
+			}
+			if ( ! bottomMarginTablet ) {
+				setAttributes( { bottomMarginTablet: vMarginTablet } );
+			}
+		}
+		if ( hMarginTablet ) {
+			if ( ! rightMarginTablet ) {
+				setAttributes( { rightMarginTablet: hMarginTablet } );
+			}
+			if ( ! leftMarginTablet ) {
+				setAttributes( { leftMarginTablet: hMarginTablet } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -208,8 +207,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );
-
-	
 
 	const { scrollToTop } = props.attributes;
 

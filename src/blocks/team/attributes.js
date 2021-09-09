@@ -295,28 +295,28 @@ const attributes = {
 		type: 'number',
 	},
 	imageMarginTopTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	imageMarginRightTablet: {
 		type: 'number',
 		default: 'auto',
 	},
 	imageMarginBottomTablet: {
-		type: 'number'
+		type: 'number',
 	},
 	imageMarginLeftTablet: {
 		type: 'number',
 		default: 'auto',
 	},
 	imageMarginTopMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	imageMarginRightMobile: {
 		type: 'number',
 		default: 'auto',
 	},
 	imageMarginBottomMobile: {
-		type: 'number'
+		type: 'number',
 	},
 	imageMarginLeftMobile: {
 		type: 'number',
@@ -324,18 +324,18 @@ const attributes = {
 	},
 	imageMarginUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	tabletImageMarginUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	mobileImageMarginUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 };
