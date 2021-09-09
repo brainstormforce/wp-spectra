@@ -3,6 +3,7 @@ module.exports = {
 	ignorePatterns: [ 'deprecated.js' ],
 	rules: {
 		camelcase: 'off',
+		'quote-props': [ 'error', 'consistent' ],
 	},
 	globals: {
 		uagb_blocks_info: true,
