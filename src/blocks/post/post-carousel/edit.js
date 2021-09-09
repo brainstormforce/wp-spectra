@@ -1445,7 +1445,17 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<TypographyControl
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={excerptColor}
+					onColorChange={(value) =>
+						setAttributes({ excerptColor: value })
+					}
+				/>
+					<TypographyControl
 					label={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -1509,16 +1519,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: "excerptDecoration",
 					}}
 				/>
-				<AdvancedPopColorControl
-					label={__(
-						'Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={excerptColor}
-					onColorChange={(value) =>
-						setAttributes({ excerptColor: value })
-					}
-				/>
 				<Range
 					label={__(
 						'Bottom Spacing',
@@ -1549,6 +1549,67 @@ const UAGBPostCarousel = ( props ) => {
 			) }
 			initialOpen={ false }
 		>
+			<UAGTabsControl
+				tabs={[
+				{
+					name: "normal",
+					title: __(
+						"Normal",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				{
+					name: "hover",
+					title: __(
+						"Hover",
+						"ultimate-addons-for-gutenberg"
+					),
+				},
+				]}
+				normal={<>
+				<AdvancedPopColorControl
+					label={__(
+						'Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaColor: value })
+					}
+				/>
+				<AdvancedPopColorControl
+					label={__(
+						'Background Color',
+						"ultimate-addons-for-gutenberg"
+					)}
+					colorValue={ctaBgColor}
+					onColorChange={(value) =>
+						setAttributes({ ctaBgColor: value })
+					}
+				/></>}
+				hover={<>
+				<AdvancedPopColorControl
+				label={__(
+					'Color',
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={ctaHColor}
+				onColorChange={(value) =>
+					setAttributes({ ctaHColor: value })
+				}
+				/>
+				<AdvancedPopColorControl
+				label={__(
+					'Background Color',
+					"ultimate-addons-for-gutenberg"
+				)}
+				colorValue={ctaBgHColor}
+				onColorChange={(value) =>
+					setAttributes({ ctaBgHColor: value })
+				}
+				/></>}
+				disableBottomSeparator={false}
+			/>
 			<TypographyControl
 				label={ __(
 					'Typography',
@@ -1613,7 +1674,7 @@ const UAGBPostCarousel = ( props ) => {
 					label: "ctaDecoration",
 				}}
 			/>
-				<Range
+			<Range
 				label={__(
 					'Bottom Spacing',
 					"ultimate-addons-for-gutenberg"
@@ -1677,7 +1738,7 @@ const UAGBPostCarousel = ( props ) => {
 			<SpacingControl
 				{...props}
 				label={__(
-					"Button Padding",
+					"Padding",
 					"ultimate-addons-for-gutenberg"
 				)}
 				valueTop={{
@@ -1747,67 +1808,6 @@ const UAGBPostCarousel = ( props ) => {
 					value: spacingLink,
 					label: "spacingLink",
 				}}
-			/>
-			<UAGTabsControl
-				tabs={[
-				{
-					name: "normal",
-					title: __(
-						"Normal",
-						"ultimate-addons-for-gutenberg"
-					),
-				},
-				{
-					name: "hover",
-					title: __(
-						"Hover",
-						"ultimate-addons-for-gutenberg"
-					),
-				},
-				]}
-				normal={<>
-				<AdvancedPopColorControl
-					label={__(
-						'Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={ctaColor}
-					onColorChange={(value) =>
-						setAttributes({ ctaColor: value })
-					}
-				/>
-				<AdvancedPopColorControl
-					label={__(
-						'Background Color',
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={ctaBgColor}
-					onColorChange={(value) =>
-						setAttributes({ ctaBgColor: value })
-					}
-				/></>}
-				hover={<>
-				<AdvancedPopColorControl
-				label={__(
-					'Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaHColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaHColor: value })
-				}
-				/>
-				<AdvancedPopColorControl
-				label={__(
-					'Background Color',
-					"ultimate-addons-for-gutenberg"
-				)}
-				colorValue={ctaBgHColor}
-				onColorChange={(value) =>
-					setAttributes({ ctaBgHColor: value })
-				}
-				/></>}
-				disableBottomSeparator={true}
 			/>
 		</PanelBody>
 	);
