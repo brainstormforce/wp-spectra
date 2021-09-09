@@ -1309,16 +1309,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$current_block_list[] = $name;
 
 			if ( strpos( $name, 'uagb/' ) !== false ) {
-				
+
 				self::$uag_flag = true;
-				$_block_slug = str_replace( 'uagb/', '', $name );
-				$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-				$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
-				$css         = array_merge( $css, $_block_css );
+				$_block_slug    = str_replace( 'uagb/', '', $name );
+				$_block_css     = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+				$_block_js      = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+				$css            = array_merge( $css, $_block_css );
 				if ( ! empty( $_block_js ) ) {
 					$js .= $_block_js;
 				}
-	
+
 				if ( 'uagb/faq' === $name && ! isset( $blockattr['layout'] ) ) {
 					$this->uag_faq_layout = true;
 				}
