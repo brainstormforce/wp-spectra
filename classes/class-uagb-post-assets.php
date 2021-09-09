@@ -562,10 +562,6 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/lottie':
-				$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
-				break;
 
 			default:
 				$_block_slug = str_replace( 'uagb/', '', $name );

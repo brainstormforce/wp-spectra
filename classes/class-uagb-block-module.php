@@ -125,6 +125,9 @@ class UAGB_Block_Module {
 		'forms'              => array(
 			'dir' => 'forms',
 		),
+		'lottie'             => array(
+			'dir' => 'lottie',
+		),
 	);
 
 	/**
