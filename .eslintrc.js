@@ -1,19 +1,20 @@
 module.exports = {
+	root: true,
 	extends: [ 'plugin:@wordpress/eslint-plugin/recommended' ],
 	ignorePatterns: [ 'deprecated.js' ],
 	rules: {
-		camelcase: 'off',
+		"camelcase": 'off',
 		'quote-props': [ 'error', 'consistent-as-needed' ],
 	},
 	overrides: [
 		{
 			files: [
-				'src/blocks/**/inline-styles.js',
-				'src/blocks/**/styling.js',
+				'src/blocks/*/styling.js',
+				'src/blocks/*/inline-styles.js',
 			],
-			excludedFiles: '*.spec.js',
 			rules: {
-				"quotes": [ 'warn', 'single' ],
+				'prettier/prettier': 'off',
+				"quotes": [ 'warn', 'single', { avoidEscape: true } ],
 				'quote-props': [ 'error', 'always' ],
 			},
 		},

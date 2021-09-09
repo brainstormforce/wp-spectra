@@ -53,14 +53,14 @@ function styling( props ) {
 		},
 		' .uag-star-rating > span': {
 			'margin-right': generateCSSUnit( gap, 'px' ),
-			color: unmarkedColor,
+			'color': unmarkedColor,
 		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'font-family': fontFamily,
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
-			color: titleColor,
+			'color': titleColor,
 		},
 		'.uag-star-rating__wrapper': {
 			'justify-content': alignment,
@@ -80,20 +80,20 @@ function styling( props ) {
 		selectors[
 			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
 		] = {
-			"color": color,
-			"width": generateCSSUnit( width, '%' ),
-			"position": 'absolute',
-			"content": "'★'",
-			"overflow": 'hidden',
+			color,
+			'width': generateCSSUnit( width, '%' ),
+			'position': 'absolute',
+			'content': "'★'",
+			'overflow': 'hidden',
 		};
 
 		selectors[ ' .uag-star:nth-child(' + Math.ceil( rating ) + ')' ] = {
-			"position": 'relative',
+			'position': 'relative',
 		};
 	}
 
 	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( rating ) + ')' ] = {
-		"color": color,
+		color,
 	};
 
 	const tabletSelectors = {

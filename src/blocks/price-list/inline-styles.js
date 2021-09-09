@@ -128,7 +128,7 @@ function RestMenuStyle( props ) {
 		},
 		// Image
 		' .uagb-rm__image img': {
-			"width": generateCSSUnit( imageWidth, imageWidthType ),
+			'width': generateCSSUnit( imageWidth, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
 		' .uagb-rm__separator-parent': {
@@ -156,7 +156,7 @@ function RestMenuStyle( props ) {
 		// Prefix Style
 		' .uagb-rm__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
-			"color": titleColor,
+			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
 			'font-family': titleFontFamily,
 			'text-transform': titleTransform,
@@ -178,7 +178,7 @@ function RestMenuStyle( props ) {
 				priceLineHeight,
 				priceLineHeightType
 			),
-			"color": priceColor,
+			'color': priceColor,
 		},
 		// Description Style
 		' .uagb-rm__desc': {
@@ -191,7 +191,7 @@ function RestMenuStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			"color": descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 	};
@@ -201,7 +201,7 @@ function RestMenuStyle( props ) {
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			"width": generateCSSUnit( seperatorWidth, seperatorWidthType ),
+			'width': generateCSSUnit( seperatorWidth, seperatorWidthType ),
 		};
 	}
 
@@ -213,7 +213,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		"clear": 'left',
+		'clear': 'left',
 	};
 
 	tabletSelectors = {
@@ -293,7 +293,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		"clear": 'unset',
+		'clear': 'unset',
 	};
 
 	tabletSelectors[
@@ -304,7 +304,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		"clear": 'left',
+		'clear': 'left',
 	};
 
 	mobileSelectors = {
@@ -384,7 +384,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		"clear": 'unset',
+		'clear': 'unset',
 	};
 
 	mobileSelectors[
@@ -395,7 +395,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		"clear": 'left',
+		'clear': 'left',
 	};
 
 	let stylingCss = '';
