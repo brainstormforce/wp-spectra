@@ -562,20 +562,10 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/wp-search':
-				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
-				break;
-
 			case 'uagb/forms':
 				$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
 				$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_forms_gfont( $blockattr );
-				break;
-
-			case 'uagb/taxonomy-list':
-				$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
 				break;
 
 			case 'uagb/lottie':

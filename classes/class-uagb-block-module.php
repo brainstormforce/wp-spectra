@@ -116,6 +116,12 @@ class UAGB_Block_Module {
 		'testimonial'        => array(
 			'dir' => 'testimonial',
 		),
+		'wp-search'          => array(
+			'dir' => 'wp-search',
+		),
+		'taxonomy-list'      => array(
+			'dir' => 'taxonomy-list',
+		),
 	);
 
 	/**
