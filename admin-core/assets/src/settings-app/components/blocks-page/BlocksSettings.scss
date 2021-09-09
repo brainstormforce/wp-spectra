@@ -68,7 +68,10 @@
                 padding: 0px 15px;
             }
         }
-        .uag-block-cat a:active{
+        .uag-uppercase-cat{
+            text-transform: uppercase;
+        }
+        .uag-block-cat a:active,.uag-block-cat a:hover{
             color: #2271b1;
         }
         .uag-block-cat:not(:last-child)::after{
