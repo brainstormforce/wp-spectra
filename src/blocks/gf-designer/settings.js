@@ -600,7 +600,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ToggleControl
-					label="Hide Label?"
+					label="Hide Label"
 					checked={ enableLabel }
 					onChange={ () =>
 						setAttributes( { enableLabel: ! enableLabel } )
@@ -743,7 +743,7 @@ const Settings = ( props ) => {
 					<MultiButtonsControl
 						setAttributes={setAttributes}
 						label={__(
-							"Form Title & Description",
+							"Title & Description Alignment",
 							"ultimate-addons-for-gutenberg"
 						)}
 						data={{
@@ -1719,26 +1719,26 @@ const Settings = ( props ) => {
 				) }
 				<h2>
 					{ __(
-						'Form Error Validation',
+						'Error Message Validation',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
 				<AdvancedPopColorControl
-					label={__("Error Message Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={errorMsgColor ? errorMsgColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ errorMsgColor: value })
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__("Error Message Background Color", "ultimate-addons-for-gutenberg")}
+					label={__("Background Color", "ultimate-addons-for-gutenberg")}
 					colorValue={errorMsgBgColor ? errorMsgBgColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ errorMsgBgColor: value })
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__("Error Message Border Color", "ultimate-addons-for-gutenberg")}
+					label={__("Border Color", "ultimate-addons-for-gutenberg")}
 					colorValue={errorMsgBorderColor ? errorMsgBorderColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ errorMsgBorderColor: value })
@@ -1746,7 +1746,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Message Border Width (px)',
+						'Border Width (px)',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={setAttributes}
@@ -1760,7 +1760,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Message Border Radius',
+						'Border Radius',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={setAttributes}
@@ -1845,12 +1845,12 @@ const Settings = ( props ) => {
 				/>
 				<h2>
 					{ __(
-						'Form Success Validation',
+						'Success Message Validation',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
 				<AdvancedPopColorControl
-					label={__("Success Message Color", "ultimate-addons-for-gutenberg")}
+					label={__("Color", "ultimate-addons-for-gutenberg")}
 					colorValue={successMsgColor ? successMsgColor : ""}
 					onColorChange={(value) =>
 						setAttributes({ successMsgColor: value })
@@ -1858,7 +1858,7 @@ const Settings = ( props ) => {
 				/>
 				<TypographyControl
 					label={ __(
-						'Success Message Typography',
+						'Typography',
 						'ultimate-addons-for-gutenberg'
 					) }
 					attributes={ attributes }

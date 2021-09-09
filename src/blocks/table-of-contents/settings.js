@@ -424,6 +424,30 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={__(
+					"Columns",
+					"ultimate-addons-for-gutenberg"
+				)}
+				data={{
+					desktop: {
+						value: tColumnsDesktop,
+						label: "tColumnsDesktop",
+					},
+					tablet: {
+						value: tColumnsTablet,
+						label: "tColumnsTablet",
+					},
+					mobile: {
+						value: tColumnsMobile,
+						label: "tColumnsMobile",
+					},
+				}}
+				min={1}
+				max={10}
+				displayUnit={false}
+				setAttributes={setAttributes}
+			/>
+			<ResponsiveSlider
+				label={__(
 					"Gap Between Lists",
 					"ultimate-addons-for-gutenberg"
 				)}
@@ -598,30 +622,6 @@ const Settings = ( props ) => {
 
 				</>
 			) }
-			<ResponsiveSlider
-				label={__(
-					"Columns",
-					"ultimate-addons-for-gutenberg"
-				)}
-				data={{
-					desktop: {
-						value: tColumnsDesktop,
-						label: "tColumnsDesktop",
-					},
-					tablet: {
-						value: tColumnsTablet,
-						label: "tColumnsTablet",
-					},
-					mobile: {
-						value: tColumnsMobile,
-						label: "tColumnsMobile",
-					},
-				}}
-				min={1}
-				max={10}
-				displayUnit={false}
-				setAttributes={setAttributes}
-			/>
 			</PanelBody>
 		)
 	};
