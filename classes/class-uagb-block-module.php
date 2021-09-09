@@ -53,6 +53,9 @@ class UAGB_Block_Module {
 		'gf-styler'        => array(
 			'dir' => 'gf-styler',
 		),
+		'how-to'           => array(
+			'dir' => 'how-to',
+		),
 	);
 
 	/**

@@ -573,11 +573,6 @@ class UAGB_Post_Assets {
 				$js .= UAGB_Block_JS::get_inline_notice_js( $blockattr, $block_id );
 				break;
 
-			case 'uagb/how-to':
-				$css += UAGB_Block_Helper::get_how_to_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_how_to_gfont( $blockattr );
-				break;
-
 			case 'uagb/section':
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;
