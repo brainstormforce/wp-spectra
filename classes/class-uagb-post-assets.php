@@ -567,12 +567,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_review_gfont( $blockattr );
 				break;
 
-			case 'uagb/inline-notice':
-				$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_inline_notice_js( $blockattr, $block_id );
-				break;
-
 			case 'uagb/section':
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;

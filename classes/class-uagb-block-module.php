@@ -65,6 +65,9 @@ class UAGB_Block_Module {
 		'info-box'         => array(
 			'dir' => 'info-box',
 		),
+		'inline-notice'    => array(
+			'dir' => 'inline-notice',
+		),
 	);
 
 	/**
