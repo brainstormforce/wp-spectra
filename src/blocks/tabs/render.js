@@ -136,7 +136,7 @@ const Render = ( props ) => {
 					className,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-					`uagb-tabs__wrap`,
+					'uagb-tabs__wrap',
 					`uagb-tabs__${ tabsStyleD }-desktop`,
 					`uagb-tabs__${ tabsStyleT }-tablet`,
 					`uagb-tabs__${ tabsStyleM }-mobile`

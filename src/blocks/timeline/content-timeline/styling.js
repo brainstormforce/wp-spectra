@@ -125,7 +125,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'text-align': align,
-			"color": headingColor,
+			'color': headingColor,
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -136,7 +136,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'text-align': align,
-			"color": headingColor,
+			'color': headingColor,
 		},
 		' .uagb-timeline__heading-text': {
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
@@ -153,7 +153,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightType
 			),
 			'text-align': align,
-			"color": subHeadingColor,
+			'color': subHeadingColor,
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': align,
@@ -189,7 +189,7 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__line': {
 			'background-color': separatorColor,
-			"width": generateCSSUnit( separatorwidth, 'px' ),
+			'width': generateCSSUnit( separatorwidth, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
 			right: 'calc( ' + connectorBgsize + 'px / 2 )',
@@ -205,7 +205,7 @@ function contentTimelineStyle( props ) {
 			'min-height': generateCSSUnit( connectorBgsize, 'px' ),
 			'min-width': generateCSSUnit( connectorBgsize, 'px' ),
 			'line-height': generateCSSUnit( connectorBgsize, 'px' ),
-			"border": borderwidth + 'px solid' + separatorBorder,
+			'border': borderwidth + 'px solid' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
 			height: generateCSSUnit( connectorBgsize, 'px' ),
@@ -229,7 +229,7 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
-			"color": dateColor,
+			'color': dateColor,
 			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
@@ -252,7 +252,7 @@ function contentTimelineStyle( props ) {
 			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
 		},
 		' .uagb-timeline__date-new': {
-			"color": dateColor,
+			'color': dateColor,
 			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
@@ -270,17 +270,17 @@ function contentTimelineStyle( props ) {
 			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 		},
 		' .uagb-timeline__icon-new': {
-			"color": iconColor,
+			'color': iconColor,
 			'font-size': generateCSSUnit( iconSize, 'px' ),
-			"width": generateCSSUnit( iconSize, 'px' ),
+			'width': generateCSSUnit( iconSize, 'px' ),
 		},
 		' .uagb-timeline__icon-new svg': {
-			"fill": iconColor,
+			'fill': iconColor,
 			'font-size': generateCSSUnit( iconSize, 'px' ),
-			"width": generateCSSUnit( iconSize, 'px' ),
+			'width': generateCSSUnit( iconSize, 'px' ),
 		},
 		' .uagb-timeline__marker.uagb-timeline__in-view-icon': {
-			"background": iconBgFocus,
+			'background': iconBgFocus,
 			'border-color': borderFocus,
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new': {
@@ -305,7 +305,7 @@ function contentTimelineStyle( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
-			"color": authorColor,
+			'color': authorColor,
 		},
 		' .uagb-timeline__author-link': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -315,7 +315,7 @@ function contentTimelineStyle( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
-			"color": authorColor,
+			'color': authorColor,
 		},
 
 		' .uagb-timeline__link_parent': {
@@ -326,7 +326,7 @@ function contentTimelineStyle( props ) {
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-			"color": ctaColor,
+			'color': ctaColor,
 			'background-color': ctaBackground,
 		},
 	};

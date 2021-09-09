@@ -55,7 +55,7 @@ const Render = ( props ) => {
 	return (
 		<div
 			className={ classnames(
-				`uagb-icon-list-repeater`,
+				'uagb-icon-list-repeater',
 				'uagb-icon-list__wrapper',
 				className,
 				`uagb-block-${ block_id }`

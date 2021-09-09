@@ -26,7 +26,7 @@ export default function save( props ) {
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
-				`uagb-tabs__wrap`,
+				'uagb-tabs__wrap',
 				`uagb-tabs__${ tabsStyleD }-desktop`,
 				`uagb-tabs__${ tabsStyleT }-tablet`,
 				`uagb-tabs__${ tabsStyleM }-mobile`

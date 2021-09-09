@@ -3,7 +3,9 @@ module.exports = {
 	extends: [ 'plugin:@wordpress/eslint-plugin/recommended' ],
 	ignorePatterns: [ 'deprecated.js' ],
 	rules: {
-		"camelcase": 'off',
+		'camelcase': 'off',
+		'prettier/prettier': 'off',
+		'quotes': [ 'error', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
 		'quote-props': [ 'error', 'consistent-as-needed' ],
 	},
 	overrides: [
@@ -13,8 +15,7 @@ module.exports = {
 				'src/blocks/*/inline-styles.js',
 			],
 			rules: {
-				'prettier/prettier': 'off',
-				"quotes": [ 'warn', 'single', { avoidEscape: true } ],
+				// 'quotes': [ 'warn', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
 				'quote-props': [ 'error', 'always' ],
 			},
 		},

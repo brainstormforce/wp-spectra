@@ -10,7 +10,7 @@ const lazyLoader = () => {
 			</p>
 			<style
 				dangerouslySetInnerHTML={ {
-					__html: `.uagb-loader:after {content: '.';animation: dots 1s steps(5, end) infinite;}@keyframes dots {0%, 20% {color: #00000000;text-shadow: .25em 0 0 #00000000, .5em 0 0 #00000000;}40% {color: #000000FF;text-shadow: .25em 0 0 #00000000, .5em 0 0 #00000000;}60% {text-shadow: .25em 0 0 #000000FF, .5em 0 0 #00000000;}80%, 100% {text-shadow: .25em 0 0 #000000FF, .5em 0 0 #000000FF;}}`,
+					__html: '.uagb-loader:after {content: \'.\';animation: dots 1s steps(5, end) infinite;}@keyframes dots {0%, 20% {color: #00000000;text-shadow: .25em 0 0 #00000000, .5em 0 0 #00000000;}40% {color: #000000FF;text-shadow: .25em 0 0 #00000000, .5em 0 0 #00000000;}60% {text-shadow: .25em 0 0 #000000FF, .5em 0 0 #00000000;}80%, 100% {text-shadow: .25em 0 0 #000000FF, .5em 0 0 #000000FF;}}',
 				} }
 			/>
 		</>
