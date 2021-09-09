@@ -43,9 +43,9 @@
 
 .uag-bulk-blocks-settings-wrap {
     display: grid;
-    grid-template-columns: 80% 20%;
-    column-gap: 20px;
-    padding-bottom: 20px;
+    grid-template-columns: 79% 20%;
+    column-gap: 16px;
+    padding-bottom: 25px;
     .uag-block-cat-list{
         background-color: #ffffff;
         display: inline-flex;
@@ -83,7 +83,7 @@
     }
     .uag-bulk-blocks-action-btn{
         display: inline-flex;
-        align-items: center;
+        justify-content: flex-end;
         .uag-button{
             border: none;
             background-color: #fff;
