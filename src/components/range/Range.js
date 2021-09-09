@@ -7,7 +7,8 @@ import {
 	__experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
-const { useSelect, useDispatch } = wp.data;
+import { useSelect, useDispatch } from '@wordpress/data';
+
 
 import { __ } from "@wordpress/i18n";
 import map from "lodash/map";

@@ -703,7 +703,7 @@ const Settings = ( props ) => {
 		>
 			<ToggleControl
 				label={ __(
-					'Enable Twitter Icon',
+					'Enable Icon',
 					'ultimate-addons-for-gutenberg'
 				) }
 				checked={ enableTweet }
@@ -1405,7 +1405,7 @@ const Settings = ( props ) => {
 						<SpacingControl
 						{...props}
 						label={__(
-							"Button Padding",
+							"Padding",
 							"ultimate-addons-for-gutenberg"
 						)}
 						valueTop={{
@@ -1480,7 +1480,7 @@ const Settings = ( props ) => {
 					{ iconView == 'icon_text' && (
 						<Range
 							label={ __(
-								'Tweet Icon & Text Spacing',
+								'Icon & Text Spacing',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={setAttributes}
@@ -1518,7 +1518,7 @@ const Settings = ( props ) => {
 							normal={
 								<AdvancedPopColorControl
 									label={__(
-										'Tweet Color',
+										'Color',
 										"ultimate-addons-for-gutenberg"
 									)}
 									colorValue={tweetLinkColor ? tweetLinkColor : ""}
@@ -1530,7 +1530,7 @@ const Settings = ( props ) => {
 							hover={
 								<AdvancedPopColorControl
 									label={__(
-										'Tweet Color',
+										'Color',
 										"ultimate-addons-for-gutenberg"
 									)}
 									colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
@@ -1564,7 +1564,7 @@ const Settings = ( props ) => {
 								<>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Color',
+											'Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnColor ? tweetBtnColor : ""}
@@ -1574,7 +1574,7 @@ const Settings = ( props ) => {
 									/>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Background Color',
+											'Background Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnBgColor ? tweetBtnBgColor : ""}
@@ -1588,7 +1588,7 @@ const Settings = ( props ) => {
 								<>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Color',
+											'Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnHoverColor ? tweetBtnHoverColor : ""}
@@ -1598,7 +1598,7 @@ const Settings = ( props ) => {
 									/>
 									<AdvancedPopColorControl
 										label={__(
-											'Tweet Background Color',
+											'Background Color',
 											"ultimate-addons-for-gutenberg"
 										)}
 										colorValue={tweetBtnBgHoverColor ? tweetBtnBgHoverColor : ""}
@@ -1632,7 +1632,7 @@ const Settings = ( props ) => {
 					{ contentStyling }
 					{ spacingSettings }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance}>
+				<InspectorTab {...UAGTabs.advance} parentProps = {props}>
 				</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

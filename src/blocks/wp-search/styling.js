@@ -143,24 +143,24 @@ function styling( props ) {
 	if ( 'px' === inputSizeType ) {
 		boxCSS[ 'max-width' ] = generateCSSUnit( inputSize, inputSizeType );
 	} else {
-		boxCSS.width = generateCSSUnit( inputSize, inputSizeType );
+		boxCSS[ 'width' ] = generateCSSUnit( inputSize, inputSizeType );
 	}
 
 	selectors = {
 		' .uagb-search-form__container .uagb-search-submit': {
-			width: generateCSSUnit( buttonWidth, buttonWidthType ),
-			padding: 0,
-			border: 0,
+			'width': generateCSSUnit( buttonWidth, buttonWidthType ),
+			'padding': 0,
+			'border': 0,
 		},
 		' .uagb-search-form__container .uagb-search-form__input::placeholder': {
-			color: textColor,
-			opacity: 0.6,
+			'color': textColor,
+			'opacity': 0.6,
 		},
 		' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg': {
-			width: $buttonIconSize,
-			height: $buttonIconSize,
+			'width': $buttonIconSize,
+			'height': $buttonIconSize,
 			'font-size': $buttonIconSize,
-			fill: buttonIconColor,
+			'fill': buttonIconColor,
 		},
 		' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text': {
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
@@ -172,19 +172,19 @@ function styling( props ) {
 			'font-weight': buttonFontWeight,
 			'text-decoration': buttonDecoration,
 			'text-transform': buttonTransform,
-			color: buttonTextColor,
+			'color': buttonTextColor,
 		},
 		' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text': {
-			color: buttonTextHoverColor,
+			'color': buttonTextHoverColor,
 		},
 		' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg': {
-			fill: buttonIconHoverColor,
+			'fill': buttonIconHoverColor,
 		},
 		'.uagb-layout-input .uagb-wp-search-icon-wrap svg': {
-			width: $iconSize,
-			height: $iconSize,
+			'width': $iconSize,
+			'height': $iconSize,
 			'font-size': $iconSize,
-			fill: tmpIconColor,
+			'fill': tmpIconColor,
 		},
 	};
 

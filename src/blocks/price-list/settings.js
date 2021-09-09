@@ -502,7 +502,7 @@ const Settings = ( props ) => {
 				<SpacingControl
 					{...props}
 					label={__(
-						"Image Padding",
+						"Padding",
 						"ultimate-addons-for-gutenberg"
 					)}
 					valueTop={{
@@ -581,6 +581,15 @@ const Settings = ( props ) => {
 	const contentSettings = () => {
 		return (
 			<PanelBody title={ __( 'Content' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={descColor ? descColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							descColor: value,
+						})
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -641,15 +650,6 @@ const Settings = ( props ) => {
 						value: descDecoration,
 						label: "descDecoration",
 					}}
-				/>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={descColor ? descColor : ""}
-					onColorChange={(value) =>
-						setAttributes({
-							descColor: value,
-						})
-					}
 				/>
 			</PanelBody>
 		);
@@ -740,6 +740,15 @@ const Settings = ( props ) => {
 	const priceSettings = () => {
 		return (
 			<PanelBody title={ __( 'Price' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={priceColor ? priceColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							priceColor: value,
+						})
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -801,20 +810,21 @@ const Settings = ( props ) => {
 						label: "priceDecoration",
 					}}
 				/>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={priceColor ? priceColor : ""}
-					onColorChange={(value) =>
-						setAttributes({
-							priceColor: value,
-						})
-					}
-				/>
 			</PanelBody>
 		);
 	};
 	const titleSettings = () => {
 		return <PanelBody title={ __( 'Title' ) } initialOpen={ false }>
+					
+					<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={titleColor ? titleColor : ""}
+						onColorChange={(value) =>
+							setAttributes({
+								titleColor: value,
+							})
+						}
+					/>
 					<TypographyControl
 						label={ __( 'Typography' ) }
 						attributes={ attributes }
@@ -875,15 +885,6 @@ const Settings = ( props ) => {
 							value: titleDecoration,
 							label: "titleDecoration",
 						}}
-					/>
-					<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={titleColor ? titleColor : ""}
-						onColorChange={(value) =>
-							setAttributes({
-								titleColor: value,
-							})
-						}
 					/>
 					<Range
 						label={ __( 'Bottom Margin' ) }
@@ -963,7 +964,7 @@ const Settings = ( props ) => {
 					{ priceSettings() }
 					{ marginSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		);

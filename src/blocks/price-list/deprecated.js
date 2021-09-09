@@ -11,8 +11,6 @@ import Description from '../price-list-child/components/Description';
 import PositionClasses from './classes';
 import RestMenuImage from '../price-list-child/components/RestMenuImage';
 
-import { Fragment } from '@wordpress/element';
-
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
@@ -27,7 +25,7 @@ const deprecated = [
 			} = props.attributes;
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -57,7 +55,7 @@ const deprecated = [
 
 									<div className="uagb-rm__text-wrap">
 										{
-											<Fragment>
+											<>
 												<div
 													className="uagb-rm-details"
 													key={ 'tm_wraps-' + index }
@@ -117,7 +115,7 @@ const deprecated = [
 														/>
 													</div>
 												</div>
-											</Fragment>
+											</>
 										}
 									</div>
 									{ imagePosition == 'right' && (
@@ -133,7 +131,7 @@ const deprecated = [
 							</div>
 						) ) }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -150,7 +148,7 @@ const deprecated = [
 			} = props.attributes;
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -180,7 +178,7 @@ const deprecated = [
 
 									<div className="uagb-rm__text-wrap">
 										{
-											<Fragment>
+											<>
 												<div
 													className="uagb-rm-details"
 													key={ 'tm_wraps-' + index }
@@ -240,7 +238,7 @@ const deprecated = [
 														/>
 													</div>
 												</div>
-											</Fragment>
+											</>
 										}
 									</div>
 									{ imagePosition == 'right' && (
@@ -256,7 +254,7 @@ const deprecated = [
 							</div>
 						) ) }
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
@@ -267,7 +265,7 @@ const deprecated = [
 			const { block_id, className } = props.attributes;
 
 			return (
-				<Fragment>
+				<>
 					<div
 						className={ classnames(
 							className,
@@ -277,7 +275,7 @@ const deprecated = [
 					>
 						<InnerBlocks.Content />
 					</div>
-				</Fragment>
+				</>
 			);
 		},
 	},
