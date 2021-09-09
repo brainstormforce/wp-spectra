@@ -23,7 +23,7 @@ function BlocksSettings() {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />
 	} );
 
-	const categories = ['all','creative','forms','content','seo','post'];
+	const categories = ['all','creative','forms','content','seo','post','extention'];
 
 	const setCategory = ( data ) => {
 		setcheckCategory(data);
@@ -97,15 +97,15 @@ function BlocksSettings() {
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
-				{ categories.map( ( cat ) => (
-					<NormalButton
-						buttonText={ __(
-							cat,
-							'ultimate-addons-for-gutenberg'
-						) }
-						onClick={() => setCategory(cat) } 
-					/>
-				))}
+				<ul className="uag-block-cat-list">
+				<span className='uag-block-cat-label'>Filter By:</span>
+					{ categories.map( ( cat ) => (
+						<li className='uag-block-cat'>
+							<a onClick={() => setCategory(cat) } 
+							>{cat}</a>
+						</li>
+					))}
+				</ul>
 				<div className="uag-bulk-blocks-action-btn">
 					<NormalButton
 						buttonText={ __(

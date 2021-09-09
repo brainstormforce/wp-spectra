@@ -4,6 +4,8 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     width: 100%;
     justify-content: center;
+    column-gap: 15px;
+    row-gap: 15px;
 }
 .components-toggle-control__label{
     font-family: var(--heading-font-family);
@@ -25,7 +27,6 @@
 .uag-individual-block-settings-metabox {
     background: var(--metabox-background-color);
     padding: 18px;
-    margin: 15px;
     box-shadow: 0px 3px 20px rgba(190, 190, 190, 0.15);
     border-radius: 2px;
     a{
@@ -41,33 +42,52 @@
 }
 
 .uag-bulk-blocks-settings-wrap {
-    margin: 0px 15px 15px 15px;
-    display: flex;
-    white-space:pre;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    row-gap: 10px;
-    column-gap: 10px;
-    :last-child {
-        margin-left: auto;
-        display: flex;
-    }
-    a:first-child{
-        padding-right: 10px;
-        border-right: 1px solid #ddd;
-    }
-    a{
-        text-decoration: unset;
-        margin-bottom: 0px;
-        font-family: var(--heading-font-family);
-        font-weight: var(--heading-weight-400);
-        font-size: 14px;
-        line-height: 1.5em;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    column-gap: 20px;
+    padding-bottom: 20px;
+    .uag-block-cat-list{
+        background-color: #ffffff;
+        display: inline-flex;
+        list-style:none;
+        .uag-block-cat-label{
+            font-weight: 700;
+            padding: 10px;
+        }
+        .uag-block-cat{
+            margin-bottom: 0px;
+            display:inline-block; 
+            padding: 10px; 
+            position:relative;
+            text-transform: capitalize;
+            a{
+                color:black;
+            }
+        }
+        .uag-block-cat:not(:last-child)::after{
+            content: "";
+            border: 1px solid #e2e2e2;
+            border-width: 1px 1px 0 0;
+            position: relative;
+            right: -11px;
+            top: 0;
+            height: 65%;
+          }
     }
     .uag-bulk-blocks-action-btn{
+        display: inline-flex;
         align-items: center;
-        column-gap: 10px;
+        .uag-button{
+            border: 1px solid #fff;
+            background-color: #fff;
+            color:black;
+        }
+        .uag-button:hover,
+        .uag-button:focus,
+        .uag-button:active {
+            background:#2271b1;
+            color: var(--metabox-background-color);
+        }
     }
     
     .components-base-control__field{
