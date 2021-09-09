@@ -562,11 +562,6 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/tabs':
-				$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
-				break;
-
 			case 'uagb/testimonial':
 				$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
@@ -576,15 +571,6 @@ class UAGB_Post_Assets {
 			case 'uagb/team':
 				$css += UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_team_gfont( $blockattr );
-				break;
-
-			case 'uagb/social-share':
-				$css += UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_social_share_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/social-share-child':
-				$css += UAGB_Block_Helper::get_social_share_child_css( $blockattr, $block_id );
 				break;
 
 			case 'uagb/table-of-contents':

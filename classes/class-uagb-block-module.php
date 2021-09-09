@@ -23,80 +23,89 @@ class UAGB_Block_Module {
 	 * @var array
 	 */
 	private static $blocks = array(
-		'star-rating'      => array(
+		'star-rating'        => array(
 			'dir' => 'star-rating',
 		),
-		'advanced-heading' => array(
+		'advanced-heading'   => array(
 			'dir' => 'advanced-heading',
 		),
-		'columns'          => array(
+		'columns'            => array(
 			'dir' => 'columns',
 		),
-		'column'           => array(
+		'column'             => array(
 			'dir' => 'column',
 		),
-		'blockquote'       => array(
+		'blockquote'         => array(
 			'dir' => 'blockquote',
 		),
-		'call-to-action'   => array(
+		'call-to-action'     => array(
 			'dir' => 'call-to-action',
 		),
-		'cf7-styler'       => array(
+		'cf7-styler'         => array(
 			'dir' => 'cf7-styler',
 		),
-		'content-timeline' => array(
+		'content-timeline'   => array(
 			'dir' => 'content-timeline',
 		),
-		'faq'              => array(
+		'faq'                => array(
 			'dir' => 'faq',
 		),
-		'gf-styler'        => array(
+		'gf-styler'          => array(
 			'dir' => 'gf-styler',
 		),
-		'how-to'           => array(
+		'how-to'             => array(
 			'dir' => 'how-to',
 		),
-		'icon-list'        => array(
+		'icon-list'          => array(
 			'dir' => 'icon-list',
 		),
-		'icon-list-child'  => array(
+		'icon-list-child'    => array(
 			'dir' => 'icon-list-child',
 		),
-		'info-box'         => array(
+		'info-box'           => array(
 			'dir' => 'info-box',
 		),
-		'inline-notice'    => array(
+		'inline-notice'      => array(
 			'dir' => 'inline-notice',
 		),
-		'marketing-button' => array(
+		'marketing-button'   => array(
 			'dir' => 'marketing-button',
 		),
-		'buttons'          => array(
+		'buttons'            => array(
 			'dir' => 'buttons',
 		),
-		'buttons-child'    => array(
+		'buttons-child'      => array(
 			'dir' => 'buttons-child',
 		),
-		'post-carousel'    => array(
+		'post-carousel'      => array(
 			'dir' => 'post-carousel',
 		),
-		'post-grid'        => array(
+		'post-grid'          => array(
 			'dir' => 'post-grid',
 		),
-		'post-masonry'     => array(
+		'post-masonry'       => array(
 			'dir' => 'post-masonry',
 		),
-		'post-timeline'    => array(
+		'post-timeline'      => array(
 			'dir' => 'post-timeline',
 		),
-		'restaurant-menu'  => array(
+		'restaurant-menu'    => array(
 			'dir' => 'restaurant-menu',
 		),
-		'review'           => array(
+		'review'             => array(
 			'dir' => 'review',
 		),
-		'section'          => array(
+		'section'            => array(
 			'dir' => 'section',
+		),
+		'social-share'       => array(
+			'dir' => 'social-share',
+		),
+		'social-share-child' => array(
+			'dir' => 'social-share-child',
+		),
+		'tabs'               => array(
+			'dir' => 'tabs',
 		),
 	);
 

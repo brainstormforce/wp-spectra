@@ -51,7 +51,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 			if ( null === self::$block_attributes ) {
 
 				self::$block_attributes = array(
-					'uagb/demo-control'       => array(
+					'uagb/demo-control'      => array(
 						'slug'        => '',
 						'title'       => __( 'Demo Control', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you find out demo control.', 'ultimate-addons-for-gutenberg' ),
@@ -104,187 +104,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							// demo.
 						),
 					),
-					'uagb/social-share'       => array(
-						'slug'        => '',
-						'title'       => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => false,
-						'attributes'  => array(
-							'classMigrate'  => false,
-							'childMigrate'  => false,
-							'align'         => 'center',
-							'social_count'  => '1',
-							'socials'       => array(
-								array(
-									'type'                => 'facebook',
-									'image_icon'          => 'icon',
-									'icon'                => 'fab fa-facebook',
-									'image'               => '',
-									'icon_color'          => '#3a3a3a',
-									'icon_hover_color'    => '#3a3a3a',
-									'icon_bg_color'       => '',
-									'icon_bg_hover_color' => '',
-								),
-							),
-							'gap'           => '10',
-							'size'          => '40',
-							'sizeType'      => 'px',
-							'sizeMobile'    => '',
-							'sizeTablet'    => '',
-							'bgSize'        => '0',
-							'bgSizeType'    => 'px',
-							'bgSizeMobile'  => '',
-							'bgSizeTablet'  => '',
-							'borderRadius'  => '0',
-							'social_layout' => 'horizontal',
-							'stack'         => 'none',
-						),
-					),
-					'uagb/social-share-child' => array(
-						'slug'        => '',
-						'title'       => __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-						'extension'   => false,
-						'attributes'  => array(
-							'type'                => 'facebook',
-							'image_icon'          => 'icon',
-							'icon'                => 'fab fa-facebook',
-							'image'               => '',
-							'icon_color'          => '#3a3a3a',
-							'icon_hover_color'    => '',
-							'icon_bg_color'       => '',
-							'icon_bg_hover_color' => '',
-						),
-					),
-					'uagb/tabs'               => array(
-						'slug'        => '',
-						'title'       => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => false,
-						'js_assets'   => array( 'uagb-tabs-js' ),
-						'attributes'  => array(
-							'tabHeaders'                  => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
-							'tabAlign'                    => 'left',
-							'tabActive'                   => 0,
-							'tabActiveFrontend'           => 0,
-							'tabsStyleD'                  => 'hstyle1',
-							'tabsStyleT'                  => 'vstyle6',
-							'tabsStyleM'                  => 'vstyle6',
-							'headerBgColor'               => '',
-							'headerTextColor'             => '#007cba',
-							'bodyBgColor'                 => '',
-							'bodyTextColor'               => '',
-							'borderWidth'                 => 1,
-							'borderColor'                 => '#e0e0e0',
-							'borderRadius'                => '',
-							'borderStyle'                 => '',
-							'borderHoverColor'            => '',
-							'activeTabBgColor'            => '#007cba',
-							'activeTabTextColor'          => '#fff',
-							'activeiconColor'             => '#fff',
-							'tabTitleLeftMargin'          => '',
-							'tabTitleRightMargin'         => '',
-							'tabTitleTopMargin'           => '',
-							'tabTitleBottomMargin'        => '',
-							'tabTitleLeftMarginTablet'    => '',
-							'tabTitleRightMarginTablet'   => '',
-							'tabTitleTopMarginTablet'     => '',
-							'tabTitleBottomMarginTablet'  => '',
-							'tabTitleLeftMarginMobile'    => '',
-							'tabTitleRightMarginMobile'   => '',
-							'tabTitleTopMarginMobile'     => '',
-							'tabTitleBottomMarginMobile'  => '',
-							'tabTitleMarginUnit'          => '',
-							'mobiletabTitleMarginUnit'    => '',
-							'tablettabTitleMarginUnit'    => '',
-							'tabTitleMarginLink'          => '',
-							'tabTitleTopPaddingTablet'    => '',
-							'tabTitleRightPaddingTablet'  => '',
-							'tabTitleBottomPaddingTablet' => '',
-							'tabTitleLeftPaddingTablet'   => '',
-							'tabTitleTopPaddingMobile'    => '',
-							'tabTitleRightPaddingMobile'  => '',
-							'tabTitleBottomPaddingMobile' => '',
-							'tabTitleLeftPaddingMobile'   => '',
-							'tabTitlePaddingUnit'         => '',
-							'mobiletabTitlePaddingUnit'   => '',
-							'tablettabTitlePaddingUnit'   => '',
-							'tabTitlePaddingLink'         => '',
-							'tabBodyLeftMargin'           => '',
-							'tabBodyRightMargin'          => '',
-							'tabBodyTopMargin'            => '',
-							'tabBodyBottomMargin'         => '',
-							'tabBodyLeftMarginTablet'     => '',
-							'tabBodyRightMarginTablet'    => '',
-							'tabBodyTopMarginTablet'      => '',
-							'tabBodyBottomMarginTablet'   => '',
-							'tabBodyLeftMarginMobile'     => '',
-							'tabBodyRightMarginMobile'    => '',
-							'tabBodyTopMarginMobile'      => '',
-							'tabBodyBottomMarginMobile'   => '',
-							'tabBodyMarginUnit'           => 'px',
-							'mobiletabBodyMarginUnit'     => 'px',
-							'tablettabBodyMarginUnit'     => 'px',
-							'tabBodyMarginLink'           => '',
-							'tabBodyTopPaddingTablet'     => '',
-							'tabBodyRightPaddingTablet'   => '',
-							'tabBodyBottomPaddingTablet'  => '',
-							'tabBodyLeftPaddingTablet'    => '',
-							'tabBodyTopPaddingMobile'     => '',
-							'tabBodyRightPaddingMobile'   => '',
-							'tabBodyBottomPaddingMobile'  => '',
-							'tabBodyLeftPaddingMobile'    => '',
-							'tabBodyPaddingUnit'          => 'px',
-							'mobiletabBodyPaddingUnit'    => 'px',
-							'tablettabBodyPaddingUnit'    => 'px',
-							'tabBodyPaddingLink'          => '',
-							'tabBodyVertPadding'          => '',
-							'tabBodyHrPadding'            => '',
-							'tabTitleVertPadding'         => '',
-							'tabTitleHrPadding'           => '',
-							'titleFontSize'               => '',
-							'titleFontSizeType'           => 'px',
-							'titleFontSizeTablet'         => '',
-							'titleFontSizeMobile'         => '',
-							'titleFontFamily'             => 'Default',
-							'titleFontWeight'             => '',
-							'titleFontSubset'             => '',
-							'titleLineHeightType'         => 'em',
-							'titleLineHeight'             => '',
-							'titleLineHeightTablet'       => '',
-							'titleLineHeightMobile'       => '',
-							'titleLoadGoogleFonts'        => false,
-							'titleAlign'                  => 'center',
-							'titleTransform'              => '',
-							'titleDecoration'             => '',
-							'showIcon'                    => false,
-							'icon'                        => '',
-							'iconColor'                   => '',
-							'iconSize'                    => 12,
-							'iconPosition'                => 'left',
-							'iconSpacing'                 => 10,
-						),
-					),
-					'uagb/tabs-child'         => array(
-						'slug'        => '',
-						'title'       => __( 'Tabs child', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => false,
-						'is_child'    => true,
-						'attributes'  => array(
-							'block_id'   => '',
-							'id'         => 0, // Unique Tab Body ID.
-							'header'     => '',
-							'tabActive'  => 0,
-							'tabHeaders' => '',
-						),
-					),
-					'uagb/table-of-contents'  => array(
+					'uagb/table-of-contents' => array(
 						'slug'        => '',
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
@@ -387,7 +207,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingAlignment'          => 'left',
 						),
 					),
-					'uagb/team'               => array(
+					'uagb/team'              => array(
 						'slug'        => '',
 						'title'       => __( 'Team', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
@@ -472,7 +292,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingTag'              => 'h3',
 						),
 					),
-					'uagb/testimonial'        => array(
+					'uagb/testimonial'       => array(
 						'slug'        => '',
 						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
@@ -606,7 +426,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientPosition'        => 'center center',
 						),
 					),
-					'uagb/wp-search'          => array(
+					'uagb/wp-search'         => array(
 						'slug'        => '',
 						'title'       => __( 'WP - Search', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
@@ -686,7 +506,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonWidthType'         => 'px',
 						),
 					),
-					'uagb/taxonomy-list'      => array(
+					'uagb/taxonomy-list'     => array(
 						'slug'        => '',
 						'title'       => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
@@ -783,7 +603,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'contentPaddingLink'       => false,
 						),
 					),
-					'uagb/forms'              => array(
+					'uagb/forms'             => array(
 						'slug'        => '',
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
@@ -925,7 +745,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'captchaMessage'             => __( 'Please fill up the above captcha.', 'ultimate-addons-for-gutenberg' ),
 						),
 					),
-					'uagb/forms-name'         => array(
+					'uagb/forms-name'        => array(
 						'slug'        => '',
 						'title'       => __( 'Name', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Name field.', 'ultimate-addons-for-gutenberg' ),
@@ -933,7 +753,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-email'        => array(
+					'uagb/forms-email'       => array(
 						'slug'        => '',
 						'title'       => __( 'Email', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Email field.', 'ultimate-addons-for-gutenberg' ),
@@ -941,7 +761,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-hidden'       => array(
+					'uagb/forms-hidden'      => array(
 						'slug'        => '',
 						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
@@ -954,7 +774,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 						),
 					),
-					'uagb/forms-phone'        => array(
+					'uagb/forms-phone'       => array(
 						'slug'        => '',
 						'title'       => __( 'Phone', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
@@ -962,7 +782,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-textarea'     => array(
+					'uagb/forms-textarea'    => array(
 						'slug'        => '',
 						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
@@ -974,7 +794,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'rows'         => '4',
 						),
 					),
-					'uagb/forms-checkbox'     => array(
+					'uagb/forms-checkbox'    => array(
 						'slug'        => '',
 						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
@@ -982,7 +802,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-radio'        => array(
+					'uagb/forms-radio'       => array(
 						'slug'        => '',
 						'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
@@ -990,7 +810,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-url'          => array(
+					'uagb/forms-url'         => array(
 						'slug'        => '',
 						'title'       => __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
@@ -1001,7 +821,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'name'     => __( 'URL', 'ultimate-addons-for-gutenberg' ),
 						),
 					),
-					'uagb/forms-select'       => array(
+					'uagb/forms-select'      => array(
 						'slug'        => '',
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
@@ -1009,7 +829,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-toggle'       => array(
+					'uagb/forms-toggle'      => array(
 						'slug'        => '',
 						'title'       => __( 'Toggle', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Toggle field.', 'ultimate-addons-for-gutenberg' ),
@@ -1017,7 +837,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-date'         => array(
+					'uagb/forms-date'        => array(
 						'slug'        => '',
 						'title'       => __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
@@ -1025,14 +845,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'is_child'    => true,
 						'attributes'  => array(),
 					),
-					'uagb/forms-accept'       => array(
+					'uagb/forms-accept'      => array(
 						'slug'        => '',
 						'title'       => __( 'Accept', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Accept field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(),
 					),
-					'uagb/lottie'             => array(
+					'uagb/lottie'            => array(
 						'slug'        => '',
 						'title'       => __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add Lottie animation and customize it as required.', 'ultimate-addons-for-gutenberg' ),
