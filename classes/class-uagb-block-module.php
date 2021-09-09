@@ -110,6 +110,9 @@ class UAGB_Block_Module {
 		'table-of-contents'  => array(
 			'dir' => 'table-of-contents',
 		),
+		'team'               => array(
+			'dir' => 'team',
+		),
 	);
 
 	/**

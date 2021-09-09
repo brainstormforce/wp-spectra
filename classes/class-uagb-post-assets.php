@@ -568,11 +568,6 @@ class UAGB_Post_Assets {
 				$js .= UAGB_Block_JS::get_testimonial_js( $blockattr, $block_id );
 				break;
 
-			case 'uagb/team':
-				$css += UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_team_gfont( $blockattr );
-				break;
-
 			case 'uagb/wp-search':
 				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
