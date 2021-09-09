@@ -1444,52 +1444,7 @@
 						setAttributes({ ctaBgHColor: value })
 					}
 				/></>}
-				disableBottomSeparator={true}
 			/>
-			<Border
-			disableBottomSeparator={true}
-					setAttributes={setAttributes}
-					borderStyle={{
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							"Border Style",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderWidth={{
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							"Border Width",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderRadius={{
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							"Border Radius",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderColor={{
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							"Border Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-					borderHoverColor={{
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							"Border Hover Color",
-							"ultimate-addons-for-gutenberg"
-						),
-					}}
-				/>
 			<TypographyControl
 				label={ __(
 					'Typography',
@@ -1554,6 +1509,50 @@
 					label: "ctaDecoration",
 				}}
 			/>
+			<Border
+					disableBottomSeparator={true}
+					setAttributes={setAttributes}
+					borderStyle={{
+						value: borderStyle,
+						label: 'borderStyle',
+						title: __(
+							"Border Style",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderWidth={{
+						value: borderWidth,
+						label: 'borderWidth',
+						title: __(
+							"Border Width",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderRadius={{
+						value: borderRadius,
+						label: 'borderRadius',
+						title: __(
+							"Border Radius",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderColor={{
+						value: borderColor,
+						label: 'borderColor',
+						title: __(
+							"Border Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+					borderHoverColor={{
+						value: borderHColor,
+						label: 'borderHColor',
+						title: __(
+							"Border Hover Color",
+							"ultimate-addons-for-gutenberg"
+						),
+					}}
+				/>
 				<Range
 				label={__(
 					'Bottom Spacing',
