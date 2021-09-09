@@ -62,6 +62,9 @@ class UAGB_Block_Module {
 		'icon-list-child'  => array(
 			'dir' => 'icon-list-child',
 		),
+		'info-box'         => array(
+			'dir' => 'info-box',
+		),
 	);
 
 	/**

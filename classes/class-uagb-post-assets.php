@@ -577,11 +577,6 @@ class UAGB_Post_Assets {
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;
 
-			case 'uagb/info-box':
-				$css += UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_info_box_gfont( $blockattr );
-				break;
-
 			case 'uagb/buttons':
 				$css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
