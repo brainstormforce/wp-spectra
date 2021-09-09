@@ -77,6 +77,9 @@ class UAGB_Block_Module {
 		'buttons-child'    => array(
 			'dir' => 'buttons-child',
 		),
+		'post-carousel'    => array(
+			'dir' => 'post-carousel',
+		),
 	);
 
 	/**
