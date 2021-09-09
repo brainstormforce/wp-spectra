@@ -579,7 +579,16 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) } initialOpen={false}
 				>
-				<TypographyControl
+				<AdvancedPopColorControl
+						label={__("Color", "ultimate-addons-for-gutenberg")}
+						colorValue={authorColor ? authorColor : ""}
+						onColorChange={(value) =>
+							setAttributes({
+								authorColor: value,
+							})
+						}
+					/>
+					<TypographyControl
 					label={ __(
 						'Typography',
 						'ultimate-addons-for-gutenberg'
@@ -643,15 +652,6 @@ const Settings = ( props ) => {
 						label: "nameDecoration",
 					}}
 				/>
-				<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={authorColor ? authorColor : ""}
-						onColorChange={(value) =>
-							setAttributes({
-								authorColor: value,
-							})
-						}
-					/>
 				<Range
 					label={ __(
 						'Bottom Margin',
@@ -677,6 +677,16 @@ const Settings = ( props ) => {
 					'Content',
 					'ultimate-addons-for-gutenberg'
 				) } initialOpen={false}>
+				
+				<AdvancedPopColorControl
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={descColor ? descColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							descColor: value,
+						})
+					}
+				/>
 					<TypographyControl
 					label={ __(
 						'Typography',
@@ -740,15 +750,6 @@ const Settings = ( props ) => {
 						value: descDecoration,
 						label: "descDecoration",
 					}}
-				/>
-				<AdvancedPopColorControl
-					label={__("Color", "ultimate-addons-for-gutenberg")}
-					colorValue={descColor ? descColor : ""}
-					onColorChange={(value) =>
-						setAttributes({
-							descColor: value,
-						})
-					}
 				/>
 				<Range
 					label={ __(
@@ -864,81 +865,80 @@ const Settings = ( props ) => {
 					'Company',
 					'ultimate-addons-for-gutenberg'
 				) } initialOpen={false}>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: companyLoadGoogleFonts,
-							label: 'companyLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: companyFontFamily,
-							label: 'companyFontFamily',
-						} }
-						fontWeight={ {
-							value: companyFontWeight,
-							label: 'companyFontWeight',
-						} }
-						fontSubset={ {
-							value: companyFontSubset,
-							label: 'companyFontSubset',
-						} }
-						fontSizeType={ {
-							value: companyFontSizeType,
-							label: 'companyFontSizeType',
-						} }
-						fontSize={ {
-							value: companyFontSize,
-							label: 'companyFontSize',
-						} }
-						fontSizeMobile={ {
-							value: companyFontSizeMobile,
-							label: 'companyFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: companyFontSizeTablet,
-							label: 'companyFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: companyLineHeightType,
-							label: 'companyLineHeightType',
-						} }
-						lineHeight={ {
-							value: companyLineHeight,
-							label: 'companyLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: companyLineHeightMobile,
-							label: 'companyLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: companyLineHeightTablet,
-							label: 'companyLineHeightTablet',
-						} }
-						transform={{
-							value: companyTransform,
-							label: "companyTransform",
-						}}
-						decoration={{
-							value: companyDecoration,
-							label: "companyDecoration",
-						}}
-					/>
+				
 				<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={companyColor ? companyColor : ""}
-						onColorChange={(value) =>
-							setAttributes({
-								companyColor: value,
-							})
-						}
-					/>
-
-
+					label={__("Color", "ultimate-addons-for-gutenberg")}
+					colorValue={companyColor ? companyColor : ""}
+					onColorChange={(value) =>
+						setAttributes({
+							companyColor: value,
+						})
+					}
+				/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: companyLoadGoogleFonts,
+						label: 'companyLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: companyFontFamily,
+						label: 'companyFontFamily',
+					} }
+					fontWeight={ {
+						value: companyFontWeight,
+						label: 'companyFontWeight',
+					} }
+					fontSubset={ {
+						value: companyFontSubset,
+						label: 'companyFontSubset',
+					} }
+					fontSizeType={ {
+						value: companyFontSizeType,
+						label: 'companyFontSizeType',
+					} }
+					fontSize={ {
+						value: companyFontSize,
+						label: 'companyFontSize',
+					} }
+					fontSizeMobile={ {
+						value: companyFontSizeMobile,
+						label: 'companyFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: companyFontSizeTablet,
+						label: 'companyFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: companyLineHeightType,
+						label: 'companyLineHeightType',
+					} }
+					lineHeight={ {
+						value: companyLineHeight,
+						label: 'companyLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: companyLineHeightMobile,
+						label: 'companyLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: companyLineHeightTablet,
+						label: 'companyLineHeightTablet',
+					} }
+					transform={{
+						value: companyTransform,
+						label: "companyTransform",
+					}}
+					decoration={{
+						value: companyDecoration,
+						label: "companyDecoration",
+					}}
+				/>
 				</PanelBody>
 	}
 	const imageStyle = () => {
