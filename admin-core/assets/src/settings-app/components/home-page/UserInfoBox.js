@@ -26,6 +26,9 @@ function UserInfoBox() {
 	const onJointheCommunityClick = () => {
 		window.open( 'https://ultimategutenberg.com/', '_blank' );
 	};
+	const onStarterTemplateLearnMore = () => {
+		window.open( 'https://startertemplates.com/', '_blank' );
+	};
 	const onKnowledgebaseClick = () => {
 		window.open(
 			'https://ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
@@ -128,7 +131,17 @@ function UserInfoBox() {
 	};
 
 	const starterTemplateBtn = () => {
-		
+		if(uag_react.starter_template_activate){
+			return <NormalButton
+						buttonText={ __(
+							'Learn More	',
+							'ultimate-addons-for-gutenberg'
+						) }
+						saving={ false }
+						classes="uag-button--secondary"
+						onClick = { onStarterTemplateLearnMore }
+					/>
+		}
 		if( !uag_react.starter_template_activate && uag_react.starter_template_path ){
 			return <NormalButton
 						buttonText={ __(
