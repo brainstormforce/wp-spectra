@@ -104,41 +104,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							// demo.
 						),
 					),
-					'uagb/post-title'            => array(
-						'slug'        => '',
-						'title'       => __( 'Post Title', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block fetches the blog title.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-					),
-					'uagb/post-button'           => array(
-						'slug'        => '',
-						'title'       => __( 'Post Button', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block display\'s a call to action button which links to the blogs page.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-					),
-					'uagb/post-excerpt'          => array(
-						'slug'        => '',
-						'title'       => __( 'Post Excerpt', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block fetches short description about a post.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-					),
-					'uagb/post-meta'             => array(
-						'slug'        => '',
-						'title'       => __( 'Post Meta', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block fetches post comments, author, publish date and categories data.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-					),
-					'uagb/post-image'            => array(
-						'slug'        => '',
-						'title'       => __( 'Post Image', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block fetches posts feature image.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-					),
 					'uagb/post-timeline'         => array(
 						'slug'        => '',
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
