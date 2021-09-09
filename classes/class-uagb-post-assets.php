@@ -601,11 +601,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_restaurant_menu_gfont( $blockattr );
 				break;
 
-			case 'uagb/post-timeline':
-				$css += UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_timeline_gfont( $blockattr );
-				break;
-
 			case 'uagb/table-of-contents':
 				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );

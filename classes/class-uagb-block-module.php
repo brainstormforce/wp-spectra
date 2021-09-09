@@ -86,6 +86,9 @@ class UAGB_Block_Module {
 		'post-masonry'     => array(
 			'dir' => 'post-masonry',
 		),
+		'post-timeline'    => array(
+			'dir' => 'post-timeline',
+		),
 	);
 
 	/**
