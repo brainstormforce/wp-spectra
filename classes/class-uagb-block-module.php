@@ -95,6 +95,9 @@ class UAGB_Block_Module {
 		'review'           => array(
 			'dir' => 'review',
 		),
+		'section'          => array(
+			'dir' => 'section',
+		),
 	);
 
 	/**
