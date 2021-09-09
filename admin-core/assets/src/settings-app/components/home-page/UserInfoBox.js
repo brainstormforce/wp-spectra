@@ -218,6 +218,7 @@ function UserInfoBox() {
 					) }
 					saving={ false }
 					onClick={ getStarterClick }
+					classes="uag-button--secondary"
 				/>
 			</div>
 			<div className="uag-metabox uag-metabox__element">
@@ -310,7 +311,7 @@ function UserInfoBox() {
 					</h3>
 					<p>
 						{ __(
-							'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. These templates are easy to customize and are optimized for conversion. Just import, tweak and deliver projects faster than ever before!',
+							'Want to speed up the website design process? Get access to professionally designed pre-built Starter Templates, completely free! Our extensive library of resources provides full website templates, single page templates and block patterns. ',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</p>

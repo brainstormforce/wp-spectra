@@ -47,9 +47,7 @@ function DisplayCondition() {
 	const enableDisplayConditionSettings =
 		globaldata.settings.enable_block_condition;
 	return (
-		<div className="uag-extension__metabox">
-			<h2>Extension</h2>
-			<div className="uag-individual-block-settings-metabox">
+			<div className="uag-individual-block-settings-metabox uag-extension__metabox">
 				<SettingTable settings={ enableDisplayConditionSettings } />
 				<a
 					href="https://ultimategutenberg.com/docs/display-conditions-blocks/"
@@ -58,7 +56,6 @@ function DisplayCondition() {
 				>
 					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
 				</a>
-			</div>
 		</div>
 	);
 }

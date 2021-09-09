@@ -1,11 +1,14 @@
 .uag-user-info {
 	background: var(--background-light-color);
-	box-shadow: none;
-	padding: 30px 30px;
-	display: grid;
-	grid-template-columns: 66% 33%;
-	row-gap: 20px;
-    column-gap: 20px;
+    box-shadow: none;
+    padding: 35px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 66% 33%;
+    grid-template-columns: 66% 32%;
+    row-gap: 25px;
+    column-gap: 25px;
+    box-sizing: border-box;
 	h3{
 		font-size: 20px;
 	}

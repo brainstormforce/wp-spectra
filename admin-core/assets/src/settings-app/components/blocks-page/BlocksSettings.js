@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useStateValue } from '@Utils/StateProvider';
 import apiFetch from '@wordpress/api-fetch';
+import DisplayCondition from './DisplayCondition';
 
 const blocksInfo = uag_react.blocks_info;
 
@@ -19,11 +20,16 @@ function BlocksSettings() {
 	const blocksValue = options.blocks_activation_and_deactivation;
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
-		
-		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />
-	} );
-
-	const categories = ['all','creative','forms','content','seo','post','extention'];
+		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />}
+	);
+	const renderMetaBoxes = () => {
+		if( checkCategory == 'extension'){
+			return <DisplayCondition/>
+		}else {
+			return renderBlocksMetaBoxes;
+		}
+	};
+	const categories = ['all','creative','forms','content','seo','post','extension'];
 
 	const setCategory = ( data ) => {
 		setcheckCategory(data);
@@ -127,7 +133,7 @@ function BlocksSettings() {
 					/>
 				</div>
 			</div>
-			<div className="uag-blocks-settings">{ renderBlocksMetaBoxes }</div>
+			<div className="uag-blocks-settings">{ renderMetaBoxes() }</div>
 		</>
 	);
 }

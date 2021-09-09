@@ -4,7 +4,6 @@ import { __ } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
 import React, { useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
-
 function AssetsGeneration( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 

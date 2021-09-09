@@ -12,9 +12,10 @@
 .uag-version-control__elements{
 	display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	row-gap: 20px;
-	column-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	row-gap: 25px;
+	column-gap: 25px;
+	margin-bottom: 25px;
 	.uag-version-control__element{
 		display: flex;
     	flex-direction: column;

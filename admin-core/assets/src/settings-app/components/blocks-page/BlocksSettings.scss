@@ -1,15 +1,15 @@
 .uag-blocks-settings {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     width: 100%;
     justify-content: center;
-    column-gap: 15px;
-    row-gap: 15px;
+    column-gap: 25px;
+    row-gap: 25px;
 }
 .components-toggle-control__label{
     font-family: var(--heading-font-family);
-    font-weight: var(--heading-weight-600);
+    font-weight: var(--heading-weight-500);
     font-size: 16px;
     line-height: 1.5em;
 }
@@ -21,7 +21,7 @@
     }
 }
 .uag-extension__metabox .uag-individual-block-settings-metabox a:last-child{
-		padding-left: 0px;
+		padding-left: 0px; 
 	}
 
 .uag-individual-block-settings-metabox {
@@ -50,8 +50,10 @@
         background-color: #ffffff;
         display: inline-flex;
         list-style:none;
+        margin: 0px;
+        padding: 6px;
         .uag-block-cat-label{
-            font-weight: 700;
+            font-weight: 500;
             padding: 10px;
         }
         .uag-block-cat{
@@ -60,9 +62,14 @@
             padding: 10px; 
             position:relative;
             text-transform: capitalize;
+            cursor: pointer;
             a{
                 color:black;
+                padding: 0px 15px;
             }
+        }
+        .uag-block-cat a:active{
+            color: #2271b1;
         }
         .uag-block-cat:not(:last-child)::after{
             content: "";
@@ -78,9 +85,10 @@
         display: inline-flex;
         align-items: center;
         .uag-button{
-            border: 1px solid #fff;
+            border: none;
             background-color: #fff;
             color:black;
+            padding: 17px;
         }
         .uag-button:hover,
         .uag-button:focus,
