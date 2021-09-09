@@ -573,12 +573,6 @@ class UAGB_Post_Assets {
 				UAGB_Block_JS::blocks_team_gfont( $blockattr );
 				break;
 
-			case 'uagb/table-of-contents':
-				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
-				break;
-
 			case 'uagb/wp-search':
 				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );

@@ -107,6 +107,9 @@ class UAGB_Block_Module {
 		'tabs'               => array(
 			'dir' => 'tabs',
 		),
+		'table-of-contents'  => array(
+			'dir' => 'table-of-contents',
+		),
 	);
 
 	/**
