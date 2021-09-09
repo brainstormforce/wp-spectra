@@ -562,11 +562,6 @@ class UAGB_Post_Assets {
 		}
 
 		switch ( $name ) {
-			case 'uagb/review':
-				$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_review_gfont( $blockattr );
-				break;
-
 			case 'uagb/section':
 				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 				break;

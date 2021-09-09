@@ -92,6 +92,9 @@ class UAGB_Block_Module {
 		'restaurant-menu'  => array(
 			'dir' => 'restaurant-menu',
 		),
+		'review'           => array(
+			'dir' => 'review',
+		),
 	);
 
 	/**
