@@ -68,6 +68,9 @@ class UAGB_Block_Module {
 		'inline-notice'    => array(
 			'dir' => 'inline-notice',
 		),
+		'marketing-button' => array(
+			'dir' => 'marketing-button',
+		),
 	);
 
 	/**
