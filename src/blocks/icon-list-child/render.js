@@ -31,7 +31,7 @@ const Render = ( props ) => {
 
 	let imageIconHtml = '';
 
-	if ( image_icon == 'icon' ) {
+	if ( image_icon === 'icon' ) {
 		if ( icon ) {
 			imageIconHtml = (
 				<span className="uagb-icon-list__source-icon">
@@ -75,7 +75,7 @@ const Render = ( props ) => {
 				<span className="uagb-icon-list__source-wrap">
 					{ imageIconHtml }
 				</span>
-				{ ! hideLabel && '' != label && (
+				{ ! hideLabel && '' !== label && (
 					<div className="uagb-icon-list__label-wrap">
 						<RichText
 							tagName="div"
@@ -88,7 +88,6 @@ const Render = ( props ) => {
 								setAttributes( { label: value } )
 							}
 							className="uagb-icon-list__label"
-							placeholder={ __( 'Description' ) }
 							multiline={ false }
 							allowedFormats={ [
 								'core/bold',
