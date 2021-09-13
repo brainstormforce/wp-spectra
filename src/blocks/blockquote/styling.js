@@ -64,8 +64,6 @@ function styling( props ) {
 		tweetBtnBgColor,
 		tweetBtnHoverColor,
 		tweetBtnBgHoverColor,
-		tweetBtnHrPadding,
-		tweetBtnVrPadding,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
 		authorImageWidth,
@@ -372,6 +370,7 @@ function styling( props ) {
 				quoteRightMarginTablet,
 				quotetabletUnit
 			),
+			'padding': generateCSSUnit( quotePaddingTablet, quotePaddingType ),
 		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -412,9 +411,6 @@ function styling( props ) {
 				tweetBtnFontSizeTablet,
 				tweetBtnFontSizeType
 			),
-		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			'padding': generateCSSUnit( quotePaddingTablet, quotePaddingType ),
 		},
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'width': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
@@ -457,6 +453,7 @@ function styling( props ) {
 				quoteRightMarginMobile,
 				quotemobileUnit
 			),
+			'padding': generateCSSUnit( quotePaddingMobile, quotePaddingType ),
 		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -497,9 +494,6 @@ function styling( props ) {
 				tweetBtnFontSizeMobile,
 				tweetBtnFontSizeType
 			),
-		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			'padding': generateCSSUnit( quotePaddingMobile, quotePaddingType ),
 		},
 		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'width': generateCSSUnit( quoteSizeMobile, quoteSizeType ),

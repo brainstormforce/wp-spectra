@@ -105,8 +105,6 @@ const Settings = ( props ) => {
 		tweetBtnLineHeightTablet,
 		tweetBtnLineHeightMobile,
 		tweetBtnLoadGoogleFonts,
-		tweetBtnHrPadding,
-		tweetBtnVrPadding,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
 		iconView,
@@ -174,7 +172,7 @@ const Settings = ( props ) => {
 	let loadAuthorGoogleFonts;
 	let loadTweetGoogleFonts;
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
 				families: [
@@ -189,7 +187,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( authorLoadGoogleFonts == true ) {
+	if ( authorLoadGoogleFonts === true ) {
 		const authorconfig = {
 			google: {
 				families: [
@@ -204,7 +202,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( tweetBtnLoadGoogleFonts == true ) {
+	if ( tweetBtnLoadGoogleFonts === true ) {
 		const tweetBtnconfig = {
 			google: {
 				families: [
@@ -235,7 +233,7 @@ const Settings = ( props ) => {
 			return;
 		}
 
-		if ( ! media.type || 'image' != media.type ) {
+		if ( ! media.type || 'image' !== media.type ) {
 			return;
 		}
 
@@ -791,7 +789,7 @@ const Settings = ( props ) => {
 						] }
 						showIcons={ false }
 					/>
-					{ iconTargetUrl == 'custom' && (
+					{ iconTargetUrl === 'custom' && (
 						<TextControl
 							label={ __(
 								'URL',
@@ -935,7 +933,7 @@ const Settings = ( props ) => {
 					label: 'descSpaceUnit',
 				} }
 			/>
-			{ align == 'center' && skinStyle !== 'border' && (
+			{ align === 'center' && skinStyle !== 'border' && (
 				<Range
 					label={ __(
 						'Author Bottom Spacing',
@@ -991,15 +989,6 @@ const Settings = ( props ) => {
 			label: __( 'Large', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
-
-	let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-	if ( authorImage ) {
-		if ( authorImage.url == null || authorImage.url == '' ) {
-			imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-		} else {
-			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
-		}
-	}
 
 	const getTooltipElement = () => {
 		return (
@@ -1162,7 +1151,7 @@ const Settings = ( props ) => {
 			>
 				{ skinStyle === 'border' && borderStyleSetting() }
 				{ skinStyle === 'quotation' && quoteSettings }
-				{ skinStyle == 'quotation' && (
+				{ skinStyle === 'quotation' && (
 					<UAGTabsControl
 						tabs={ [
 							{
@@ -1284,7 +1273,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ 'none' != borderStyle && (
+				{ 'none' !== borderStyle && (
 					<>
 						<Range
 							label={ __(
@@ -1477,7 +1466,7 @@ const Settings = ( props ) => {
 						} }
 					/>
 				) }
-				{ iconView == 'icon_text' && (
+				{ iconView === 'icon_text' && (
 					<Range
 						label={ __(
 							'Icon & Text Spacing',
@@ -1497,7 +1486,7 @@ const Settings = ( props ) => {
 						initialPosition={ 5 }
 					/>
 				) }
-				{ iconSkin == 'link' && (
+				{ iconSkin === 'link' && (
 					<UAGTabsControl
 						tabs={ [
 							{
