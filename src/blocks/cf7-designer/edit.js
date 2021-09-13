@@ -1,7 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import { __ } from '@wordpress/i18n';
+import jQuery from 'jquery';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -126,7 +126,7 @@ export default withSelect( ( select, props ) => {
 	const { formId, isHtml } = props.attributes;
 	let jsonData = '';
 
-	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
+	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
 		jQuery.ajax( {
 			url: uagb_blocks_info.ajax_url,
 			data: {

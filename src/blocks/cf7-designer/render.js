@@ -92,7 +92,7 @@ const Render = ( props ) => {
 				{ isHtml && (
 					<div dangerouslySetInnerHTML={ { __html: html } } />
 				) }
-				{ isHtml == false && (
+				{ isHtml === false && (
 					<Placeholder
 						icon="admin-post"
 						label={ __(

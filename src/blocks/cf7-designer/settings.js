@@ -211,7 +211,7 @@ const Settings = ( props ) => {
 	let loadValidationGoogleFonts;
 	let loadMsgGoogleFonts;
 
-	if ( labelLoadGoogleFonts == true ) {
+	if ( labelLoadGoogleFonts === true ) {
 		const labelconfig = {
 			google: {
 				families: [
@@ -226,7 +226,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( inputLoadGoogleFonts == true ) {
+	if ( inputLoadGoogleFonts === true ) {
 		const inputconfig = {
 			google: {
 				families: [
@@ -241,7 +241,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( buttonLoadGoogleFonts == true ) {
+	if ( buttonLoadGoogleFonts === true ) {
 		const buttonconfig = {
 			google: {
 				families: [
@@ -256,7 +256,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( radioCheckLoadGoogleFonts == true ) {
+	if ( radioCheckLoadGoogleFonts === true ) {
 		const radioCheckconfig = {
 			google: {
 				families: [
@@ -273,7 +273,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( validationMsgLoadGoogleFonts == true ) {
+	if ( validationMsgLoadGoogleFonts === true ) {
 		const validationMsgconfig = {
 			google: {
 				families: [
@@ -290,7 +290,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( msgLoadGoogleFonts == true ) {
+	if ( msgLoadGoogleFonts === true ) {
 		const msgconfig = {
 			google: {
 				families: [
@@ -1513,7 +1513,7 @@ const Settings = ( props ) => {
 						{ msgSettings }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ fieldStyle == 'box' && fieldStyling }
+						{ fieldStyle === 'box' && fieldStyling }
 						{ enableOveride && radioCheckStyling }
 						{ buttonStyling }
 						{ messageStyling }
