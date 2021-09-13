@@ -78,16 +78,13 @@ function AssetsGeneration( props ) {
 	const enableFileGenerationlabel =
 		globaldata.settings.enable_file_generation.fields.enable_file_generation
 			.label;
-	const enableFileGenerationdesc =
-		globaldata.settings.enable_file_generation.fields.enable_file_generation
-			.desc;
 	const enableFileRegenerationlabel =
 		globaldata.settings.enable_file_regeneration.fields.enable_file_regeneration
 			.label;
 	const enableFileRegenerationdesc =
 		globaldata.settings.enable_file_regeneration.fields.enable_file_regeneration
 			.desc;
-
+			
 	return (
 		<>
 			<h2>
@@ -96,7 +93,11 @@ function AssetsGeneration( props ) {
 			<div className="uag-version-control__elements">
 				<div className="uag-version-control__element">
 					<h3>{ ReactHtmlParser( enableFileGenerationlabel ) }</h3>
-					<p>{ ReactHtmlParser( enableFileGenerationdesc ) }</p>
+					<p>
+						{ __( 'Ultimate Addons for Gutenberg loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for UAG blocks, enable this option. Please read ', 'ultimate-addons-for-gutenberg' ) }
+						<a href="https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
+						{__( ' to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' )}
+					</p>
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
