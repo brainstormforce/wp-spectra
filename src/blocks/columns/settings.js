@@ -27,7 +27,7 @@ import {
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	const { attributes, setAttributes, deviceType } = props.parentProps;
+	const { attributes, setAttributes } = props.parentProps;
 
 	const {
 		stack,
@@ -241,7 +241,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ contentWidth == 'custom' && (
+				{ contentWidth === 'custom' && (
 					<>
 						<Range
 							label={ __(
@@ -254,7 +254,7 @@ const Settings = ( props ) => {
 								setAttributes( { width: value } )
 							}
 							min={ 0 }
-							max={ '%' == widthType ? 100 : 2000 }
+							max={ '%' === widthType ? 100 : 2000 }
 							unit={ {
 								value: widthType,
 								label: 'widthType',
@@ -753,7 +753,7 @@ const Settings = ( props ) => {
 					}
 					options={ dividers }
 				/>
-				{ topType != 'none' && (
+				{ topType !== 'none' && (
 					<>
 						<AdvancedPopColorControl
 							label={ __(
@@ -854,7 +854,7 @@ const Settings = ( props ) => {
 					}
 					options={ dividers }
 				/>
-				{ bottomType != 'none' && (
+				{ bottomType !== 'none' && (
 					<>
 						<AdvancedPopColorControl
 							label={ __(
