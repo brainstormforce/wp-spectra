@@ -162,11 +162,15 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 		const blockName = props.name;
 
-		const blockType = ['wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
+		const blockType = ['core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
+
+		let customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
+		const blockPrefix = blockName.substring(0, blockName.indexOf("/") + 1 );
+		
 		return (
 			<>
 				<BlockEdit {...props} />
-				{isSelected && ! blockType.includes(blockName) &&  ! blockName.includes('uagb/') &&
+				{isSelected && ! blockName.includes('uagb/') && ( blockName.includes('core/') || ( customBlocks && (customBlocks.includes(blockName) || customBlocks.includes(blockPrefix)) ) ) && ! blockType.includes(blockName) &&
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
