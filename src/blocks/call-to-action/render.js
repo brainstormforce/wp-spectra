@@ -62,21 +62,21 @@ const Render = ( props ) => {
 			>
 				<div className="uagb-cta__left-right-wrap">
 					<div className="uagb-cta__content">
-						{ ctaPosition == 'below-title' && (
+						{ ctaPosition === 'below-title' && (
 							<>
 								{ titleText }
 								{ descText }
 								{ isCta }
 							</>
 						) }
-						{ ctaPosition == 'right' && (
+						{ ctaPosition === 'right' && (
 							<>
 								{ titleText }
 								{ descText }
 							</>
 						) }
 					</div>
-					{ ctaPosition == 'right' && isCta }
+					{ ctaPosition === 'right' && isCta }
 				</div>
 			</div>
 		);
@@ -92,7 +92,7 @@ const Render = ( props ) => {
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
-				{ ctaType == 'all' && (
+				{ ctaType === 'all' && (
 					<>
 						<a
 							href="/"
