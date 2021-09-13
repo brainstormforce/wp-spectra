@@ -22,7 +22,7 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
 
-	if ( 'desktop' == stack ) {
+	if ( 'desktop' === stack ) {
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-left' ] = 0;
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-right' ] = 0;
 		selectors[ ' .uagb-button__wrapper' ][
@@ -32,7 +32,7 @@ function styling( props ) {
 		selectors[ ' .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
-	} else if ( 'tablet' == stack ) {
+	} else if ( 'tablet' === stack ) {
 		tabletSelectors[
 			'.uagb-editor-preview-mode-tablet .uagb-button__wrapper'
 		] = {
@@ -57,7 +57,7 @@ function styling( props ) {
 		] = {
 			'flex-direction': 'column',
 		};
-	} else if ( 'mobile' == stack ) {
+	} else if ( 'mobile' === stack ) {
 		mobileSelectors[
 			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
 		] = {
@@ -74,9 +74,9 @@ function styling( props ) {
 	}
 
 	let alignment = '';
-	if ( align == 'left' ) {
+	if ( align === 'left' ) {
 		alignment = 'flex-start';
-	} else if ( align == 'right' ) {
+	} else if ( align === 'right' ) {
 		alignment = 'flex-end';
 	} else {
 		alignment = 'center';
