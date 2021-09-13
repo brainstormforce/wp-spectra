@@ -34,7 +34,7 @@ import {
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 	const {
 		layout,
 		inactiveOtherItems,
@@ -998,7 +998,7 @@ const Settings = ( props ) => {
 	let loadQuestionGoogleFonts;
 	let loadAnswerGoogleFonts;
 
-	if ( questionloadGoogleFonts == true ) {
+	if ( questionloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [
@@ -1013,7 +1013,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( answerloadGoogleFonts == true ) {
+	if ( answerloadGoogleFonts === true ) {
 		const aconfig = {
 			google: {
 				families: [
