@@ -89,14 +89,14 @@ class GlobalSettings {
 					),
 				),
 			),
-			'enable_file_regeneration'             => array(
+			'enable_file_regeneration'           => array(
 				'fields' => array(
 					'enable_file_regeneration' => array(
 						'type'  => 'button',
 						'name'  => 'enable_file_regeneration',
 						'label' => __( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' ),
-						'desc'  => 
-							__( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' )
+						'desc'  =>
+							__( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),
