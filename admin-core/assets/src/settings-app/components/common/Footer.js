@@ -38,10 +38,18 @@ function Footer() {
 	return (
 		<div className="uag-global-footer">
 			<span className="uag-left__footer">
-				Loving Ultimate Addons? We would really appreciate it if you could leave us a {stars} rating on {' '}
+				Loving Ultimate Addons? We would really appreciate it if you could leave us a {' '}
 				<a
 					target="_blank"
-					href="https://wordpress.org/plugins/ultimate-addons-for-gutenberg/"
+					href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/#new-post"
+					rel="noreferrer"
+				>
+					{stars}
+				</a>
+				{' '} rating on {' '}
+				<a
+					target="_blank"
+					href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/#new-post"
 					rel="noreferrer"
 				>
 					WordPress.org.
