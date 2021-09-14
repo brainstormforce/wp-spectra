@@ -10,10 +10,7 @@ import DisplayCondition from './DisplayCondition';
 const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings() {
-	const [ savingStateActivate, setssavingStateActivate ] = useState( false );
-	const [ savingStateDeactivate, setssavingStateDeactivate ] = useState(
-		false
-	);
+	
 	const [ checkCategory , setcheckCategory ] = useState('all');
 	const [ { options }, dispatch ] = useStateValue();
 
@@ -35,8 +32,7 @@ function BlocksSettings() {
 		setcheckCategory(data);
 	};
 	const activateAllBlocks = ( e ) => {
-		e.preventDefault();
-		setssavingStateActivate( true );
+		e.preventDefault()
 
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
@@ -64,12 +60,10 @@ function BlocksSettings() {
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingStateActivate( false );
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
-		setssavingStateDeactivate( true );
 
 		window.uagUnsavedChanges = true;
 
@@ -97,7 +91,6 @@ function BlocksSettings() {
 			method: 'POST',
 			body: formData,
 		} ).then( ( data ) => {
-			setssavingStateDeactivate( false );
 		} );
 	};
 	return (
@@ -119,7 +112,6 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ activateAllBlocks }
-						saving={ savingStateActivate }
 						classes="uag-button--secondary"
 					/>
 					<NormalButton
@@ -128,7 +120,6 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ deactivateAllBlocks }
-						saving={ savingStateDeactivate }
 						classes="uag-button--secondary"
 					/>
 				</div>
