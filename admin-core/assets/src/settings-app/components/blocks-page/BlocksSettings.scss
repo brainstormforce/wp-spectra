@@ -43,7 +43,7 @@
 
 .uag-bulk-blocks-settings-wrap {
     display: grid;
-    grid-template-columns: 79% 20%;
+    grid-template-columns: 80% 20%;
     padding-bottom: 25px;
     .uag-block-cat-list{
         background-color: #ffffff;
@@ -89,14 +89,18 @@
     }
     .uag-bulk-blocks-action-btn{
         display: inline-flex;
-        .uag-button{
+        .uag-button {
             border: none;
             background-color: #fff;
             color:black;
             padding: 17px;
+            width: 100%;
         }
         .uag-button:hover {
             color: #2271b1;
+        }
+        .uag-button-field {
+            width: 100%;
         }
     }
     
