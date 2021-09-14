@@ -139,7 +139,7 @@ const Settings = ( props ) => {
 	let loadGFonts;
 	let headingloadGFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const config = {
 			google: {
 				families: [
@@ -151,7 +151,7 @@ const Settings = ( props ) => {
 		loadGFonts = <WebfontLoader config={ config }></WebfontLoader>;
 	}
 
-	if ( headingLoadGoogleFonts == true ) {
+	if ( headingLoadGoogleFonts === true ) {
 		const headingconfig = {
 			google: {
 				families: [
@@ -795,9 +795,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const maxDesk = '%' == widthTypeDesktop ? 100 : 1000;
-	const maxTab = '%' == widthTypeTablet ? 100 : 1000;
-	const maxMob = '%' == widthTypeMobile ? 100 : 1000;
+	const maxDesk = '%' === widthTypeDesktop ? 100 : 1000;
+	const maxTab = '%' === widthTypeTablet ? 100 : 1000;
+	const maxMob = '%' === widthTypeMobile ? 100 : 1000;
 
 	const getBackground = () => {
 		return (
