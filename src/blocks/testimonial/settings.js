@@ -77,8 +77,6 @@ const Settings = ( props ) => {
 		imagePosition,
 		imageAlignment,
 		nameSpace,
-		imgHrPadding,
-		imgVrPadding,
 		imageSize,
 		imageWidth,
 		columns,
@@ -96,7 +94,6 @@ const Settings = ( props ) => {
 		arrowColor,
 		rowGap,
 		columnGap,
-		contentPadding,
 		backgroundType,
 		backgroundColor,
 		backgroundImage,
@@ -165,7 +162,7 @@ const Settings = ( props ) => {
 	let loadCompanyGoogleFonts;
 	let loadDescGoogleFonts;
 
-	if ( nameLoadGoogleFonts == true ) {
+	if ( nameLoadGoogleFonts === true ) {
 		const nameconfig = {
 			google: {
 				families: [
@@ -180,7 +177,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( companyLoadGoogleFonts == true ) {
+	if ( companyLoadGoogleFonts === true ) {
 		const companyconfig = {
 			google: {
 				families: [
@@ -195,7 +192,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
 				families: [
@@ -308,7 +305,7 @@ const Settings = ( props ) => {
 					checked={ autoplay }
 					onChange={ toggleAutoplay }
 				/>
-				{ autoplay == true && (
+				{ autoplay === true && (
 					<Range
 						label={ __(
 							'Autoplay Speed (ms)',
@@ -391,7 +388,7 @@ const Settings = ( props ) => {
 				title={ __( 'Arrow & Dots', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ 'dots' != arrowDots && (
+				{ 'dots' !== arrowDots && (
 					<>
 						<Range
 							label={ __(
@@ -1190,8 +1187,8 @@ const Settings = ( props ) => {
 											},
 										] }
 									/>
-									{ ( imagePosition == 'left' ||
-										imagePosition == 'right' ) && (
+									{ ( imagePosition === 'left' ||
+										imagePosition === 'right' ) && (
 										<>
 											<MultiButtonsControl
 												setAttributes={ setAttributes }

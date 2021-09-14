@@ -43,12 +43,9 @@ function testimonialStyle( props ) {
 		descLineHeightMobile,
 		descSpace,
 		nameSpace,
-		imgVrPadding,
-		imgHrPadding,
 		imageWidth,
 		rowGap,
 		columnGap,
-		contentPadding,
 		backgroundType,
 		backgroundColor,
 		backgroundImage,
@@ -81,8 +78,6 @@ function testimonialStyle( props ) {
 		descSpaceType,
 		nameSpaceType,
 		borderHoverColor,
-		overlayType,
-		backgroundAttachment,
 		gradientValue,
 		descTransform,
 		descDecoration,
@@ -124,9 +119,9 @@ function testimonialStyle( props ) {
 
 	let imgAlign = 'center';
 
-	if ( headingAlign == 'left' ) {
+	if ( headingAlign === 'left' ) {
 		imgAlign = 'flex-start';
-	} else if ( headingAlign == 'right' ) {
+	} else if ( headingAlign === 'right' ) {
 		imgAlign = 'flex-end';
 	}
 
@@ -237,13 +232,13 @@ function testimonialStyle( props ) {
 		},
 	};
 
-	if ( test_item_count == columns ) {
+	if ( test_item_count === columns ) {
 		selectors[ '.uagb-slick-carousel' ] = {
 			'padding': '0',
 		};
 	}
 
-	if ( borderStyle != 'none' ) {
+	if ( borderStyle !== 'none' ) {
 		selectors[ ' .uagb-testimonial__wrap .uagb-tm__content' ] = {
 			'border-color': borderColor,
 			'border-style': borderStyle,
@@ -376,6 +371,7 @@ function testimonialStyle( props ) {
 				paddingRightTablet,
 				tabletPaddingUnit
 			),
+			'text-align': 'center',
 		},
 		' .uagb-tm__desc': {
 			'font-size': generateCSSUnit(
@@ -406,9 +402,6 @@ function testimonialStyle( props ) {
 				nameLineHeightTablet,
 				nameLineHeightType
 			),
-		},
-		' .uagb-tm__content': {
-			'text-align': 'center',
 		},
 	};
 	if ( 'gradient' === backgroundType ) {
