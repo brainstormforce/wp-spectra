@@ -62,12 +62,6 @@ const Settings = ( props ) => {
 		inputLineHeightTablet,
 		inputLineHeightMobile,
 		inputPaddingTypeDesktop,
-		vinputPaddingMobile,
-		vinputPaddingTablet,
-		vinputPaddingDesktop,
-		hinputPaddingMobile,
-		hinputPaddingTablet,
-		hinputPaddingDesktop,
 		buttonType,
 		buttonText,
 		buttonloadGoogleFonts,
@@ -99,7 +93,6 @@ const Settings = ( props ) => {
 		paddingInputRightMobile,
 		paddingInputBottomMobile,
 		paddingInputLeftMobile,
-		paddingInputUnit,
 		mobilePaddingInputUnit,
 		tabletPaddingInputUnit,
 		spacingLink,
@@ -177,7 +170,7 @@ const Settings = ( props ) => {
 						label: 'inputSizeType',
 					} }
 				/>
-				{ layout == 'input-button' && (
+				{ layout === 'input-button' && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -202,7 +195,7 @@ const Settings = ( props ) => {
 						showIcons={ false }
 					/>
 				) }
-				{ layout == 'input-button' && 'text' === buttonType && (
+				{ layout === 'input-button' && 'text' === buttonType && (
 					<>
 						<TextControl
 							label="Text"
@@ -748,7 +741,7 @@ const Settings = ( props ) => {
 
 	let loadInputGoogleFonts;
 
-	if ( inputloadGoogleFonts == true ) {
+	if ( inputloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [
@@ -764,7 +757,7 @@ const Settings = ( props ) => {
 
 	let loadButtonGoogleFonts;
 
-	if ( buttonloadGoogleFonts == true ) {
+	if ( buttonloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [
