@@ -27,7 +27,6 @@ import {
 
 import {
 	PanelBody,
-	SelectControl,
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
@@ -67,13 +66,6 @@ const Settings = ( props ) => {
 		borderColor,
 		borderHoverColor,
 		//Background
-		vPadding,
-		hPadding,
-		hPaddingMobile,
-		vPaddingMobile,
-		hPaddingTablet,
-		vPaddingTablet,
-		paddingType,
 		backgroundType,
 		backgroundColor,
 		backgroundHoverColor,
@@ -133,7 +125,7 @@ const Settings = ( props ) => {
 
 	// Load Google fonts for heading.
 	let loadTitleGoogleFonts;
-	if ( loadTitleGoogleFonts == true ) {
+	if ( loadTitleGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -150,7 +142,7 @@ const Settings = ( props ) => {
 
 	// Load Google fonts for prefix.
 	let loadPrefixGoogleFonts;
-	if ( loadPrefixGoogleFonts == true ) {
+	if ( loadPrefixGoogleFonts === true ) {
 		const prefixconfig = {
 			google: {
 				families: [
@@ -828,7 +820,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ 'color' == backgroundType && (
+				{ 'color' === backgroundType && (
 					<>
 						<UAGTabsControl
 							tabs={ [
@@ -923,7 +915,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ 'gradient' == backgroundType && (
+				{ 'gradient' === backgroundType && (
 					<>
 						<AdvancedPopColorControl
 							label={ __(
