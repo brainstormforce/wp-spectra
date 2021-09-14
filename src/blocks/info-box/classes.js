@@ -4,7 +4,7 @@
 
 function InfoBoxPositionClasses( attributes ) {
 	let sourceClass = 'uagb-infobox-has-image';
-	if ( attributes.source_type == 'icon' ) {
+	if ( attributes.source_type === 'icon' ) {
 		sourceClass = 'uagb-infobox-has-icon';
 	}
 

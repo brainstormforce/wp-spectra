@@ -40,18 +40,18 @@ const UAGBInfoBox = ( props ) => {
 
 		if ( ctaBtnVertPadding ) {
 			if ( ! paddingBtnTop ) {
-				setAttributes( { paddingBtnTop: ctaBtnVertPadding } );
+				props.setAttributes( { paddingBtnTop: ctaBtnVertPadding } );
 			}
 			if ( ! paddingBtnBottom ) {
-				setAttributes( { paddingBtnBottom: ctaBtnVertPadding } );
+				props.setAttributes( { paddingBtnBottom: ctaBtnVertPadding } );
 			}
 		}
 		if ( ctaBtnHrPadding ) {
 			if ( ! paddingBtnRight ) {
-				setAttributes( { paddingBtnRight: ctaBtnHrPadding } );
+				props.setAttributes( { paddingBtnRight: ctaBtnHrPadding } );
 			}
 			if ( ! paddingBtnLeft ) {
-				setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
+				props.setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
 			}
 		}
 	}, [] );
@@ -76,7 +76,7 @@ const UAGBInfoBox = ( props ) => {
 		</>
 	);
 };
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);

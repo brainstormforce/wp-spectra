@@ -302,8 +302,8 @@ function InfoBoxStyle( props ) {
 	}
 
 	if (
-		iconimgPosition == 'above-title' ||
-		iconimgPosition == 'below-title'
+		iconimgPosition === 'above-title' ||
+		iconimgPosition === 'below-title'
 	) {
 		selectors[ ' .uagb-infobox__content-wrap' ] = {
 			'text-align': headingAlign,
