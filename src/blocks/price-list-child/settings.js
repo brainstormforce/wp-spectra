@@ -49,7 +49,7 @@ const Settings = ( props ) => {
 	const blockControls = () => {
 		return (
 			<>
-				{ imagePosition == 'top' && (
+				{ imagePosition === 'top' && (
 					<BlockControls key="controls">
 						<AlignmentToolbar
 							value={ headingAlign }
