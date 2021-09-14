@@ -46,8 +46,6 @@ function styling( props ) {
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
-		tabBodyVertPadding,
-		tabBodyHrPadding,
 		iconSpacing,
 		tabsStyleD,
 		tabsStyleM,

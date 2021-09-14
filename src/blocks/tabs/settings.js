@@ -27,7 +27,7 @@ import {
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		tabsStyleD,
