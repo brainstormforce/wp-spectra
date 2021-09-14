@@ -13,6 +13,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
+import React from 'react';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -49,7 +50,7 @@ const Settings = ( props ) => {
 
 	let loadTitleGoogleFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
 				families: [
@@ -103,11 +104,6 @@ const Settings = ( props ) => {
 		}
 	}
 
-	/**
-	 * Adds all Feneral tab controls.
-	 *
-	 * @param value
-	 */
 	const generalSettings = (
 		<PanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
 			<MultiButtonsControl
