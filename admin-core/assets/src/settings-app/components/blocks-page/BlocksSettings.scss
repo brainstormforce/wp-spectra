@@ -74,6 +74,10 @@
         .uag-block-cat a:active,.uag-block-cat a:hover{
             color: #2271b1;
         }
+        .uag-cat-active a {
+            color: #2271b1;
+            text-decoration: underline;
+        }
         .uag-block-cat:not(:last-child)::after{
             content: "";
             border: 1px solid #e2e2e2;
