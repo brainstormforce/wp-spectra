@@ -162,11 +162,15 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 
 		const blockName = props.name;
 
-		const blockType = ['wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
+		const excludeBlocks = ['core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
+
+		let customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
+		const blockPrefix = blockName.substring(0, blockName.indexOf("/") + 1 );
+		
 		return (
 			<>
 				<BlockEdit {...props} />
-				{isSelected && ! blockType.includes(blockName) &&  ! blockName.includes('uagb/') &&
+				{isSelected && ! blockName.includes('uagb/') && ( blockName.includes('core/') || ( Array.isArray(customBlocks) && 0 !== customBlocks.length && (customBlocks.includes(blockName) || customBlocks.includes(blockPrefix)) ) ) && ! excludeBlocks.includes(blockName) &&
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
@@ -223,9 +227,9 @@ if( '1' === enableConditions ){
 
 			const { isSelected, name } = props;
 
-			const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
+			const excludeBlocks = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
 
-			if( isSelected && ! blockType.includes(name) ) {
+			if( isSelected && ! excludeBlocks.includes(name) ) {
 				return (
 					<PanelBody
 						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
