@@ -50,7 +50,7 @@ const Settings = ( props ) => {
 	let loadExcerptGoogleFonts;
 	let loadCtaGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -65,7 +65,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( metaLoadGoogleFonts == true ) {
+	if ( metaLoadGoogleFonts === true ) {
 		const metaconfig = {
 			google: {
 				families: [
@@ -80,7 +80,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( excerptLoadGoogleFonts == true ) {
+	if ( excerptLoadGoogleFonts === true ) {
 		const excerptconfig = {
 			google: {
 				families: [
@@ -95,7 +95,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( ctaLoadGoogleFonts == true ) {
+	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
 				families: [
