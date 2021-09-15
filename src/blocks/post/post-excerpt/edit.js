@@ -1,7 +1,7 @@
 export const PostExcerpt = ( props ) => {
 	const { post, attributes } = props;
 
-	if ( post.uagb_excerpt == undefined ) {
+	if ( post.uagb_excerpt == undefined ) {  // eslint-disable-line eqeqeq
 		return null;
 	}
 
@@ -21,7 +21,7 @@ export const PostExcerpt = ( props ) => {
 
 	if (
 		attributes.displayPostExcerpt &&
-		attributes.displayPostContentRadio == 'excerpt'
+		attributes.displayPostContentRadio === 'excerpt'
 	) {
 		return (
 			<div className="uagb-post__text">
@@ -32,7 +32,7 @@ export const PostExcerpt = ( props ) => {
 		);
 	} else if (
 		attributes.displayPostExcerpt &&
-		attributes.displayPostContentRadio == 'full_post'
+		attributes.displayPostContentRadio === 'full_post'
 	) {
 		return (
 			<div className="uagb-post__text">
