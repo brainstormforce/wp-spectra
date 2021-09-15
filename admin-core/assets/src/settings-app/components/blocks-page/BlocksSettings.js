@@ -20,13 +20,16 @@ function BlocksSettings() {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />}
 	);
 	const renderMetaBoxes = () => {
-		if( checkCategory == 'extension'){
-			return <DisplayCondition/>
+		if( checkCategory == 'extensions'){
+			return <>
+						{renderBlocksMetaBoxes}
+						<DisplayCondition/> 
+					</>
 		}else {
 			return renderBlocksMetaBoxes;
 		}
 	};
-	const categories = ['all','creative','forms','content','seo','post','extension'];
+	const categories = ['all','creative','content','post','social','forms','seo','extensions'];
 
 	const setCategory = ( data ) => {
 		setcheckCategory(data);
