@@ -1129,7 +1129,7 @@ const Settings = ( props ) => {
 	let loadSubHeadGoogleFonts;
 	let loadDateGoogleFonts;
 
-	if ( headLoadGoogleFonts == true ) {
+	if ( headLoadGoogleFonts === true ) {
 		const headconfig = {
 			google: {
 				families: [
@@ -1144,7 +1144,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( subHeadLoadGoogleFonts == true ) {
+	if ( subHeadLoadGoogleFonts === true ) {
 		const subHeadconfig = {
 			google: {
 				families: [
@@ -1159,7 +1159,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( dateLoadGoogleFonts == true ) {
+	if ( dateLoadGoogleFonts === true ) {
 		const dateconfig = {
 			google: {
 				families: [

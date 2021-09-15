@@ -17,7 +17,7 @@ const Render = lazy( () =>
 	)
 );
 
-const $ = jQuery;
+import jQuery from 'jquery';
 
 const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
@@ -32,7 +32,7 @@ const ContentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function () {
+		jQuery( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 
@@ -91,7 +91,7 @@ const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		if (
-			null ==
+			null ===
 			select( 'core/block-editor' ).getBlocksByClientId(
 				props.clientId
 			)[ 0 ]
@@ -102,12 +102,12 @@ const ContentTimelineComponent = ( props ) => {
 			.getBlocksByClientId( props.clientId )[ 0 ]
 			.innerBlocks.forEach( function ( block, key ) {
 				let alignClass = '';
-				if ( 'left' == block.attributes.timelinAlignment ) {
+				if ( 'left' === block.attributes.timelinAlignment ) {
 					alignClass = 'uagb-timeline__widget uagb-timeline__left';
-				} else if ( 'right' == block.attributes.timelinAlignment ) {
+				} else if ( 'right' === block.attributes.timelinAlignment ) {
 					alignClass = 'uagb-timeline__widget uagb-timeline__right';
-				} else if ( 'center' == block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) {
+				} else if ( 'center' === block.attributes.timelinAlignment ) {
+					if ( key % 2 == '0' ) { // eslint-disable-line  eqeqeq
 						alignClass =
 							'uagb-timeline__widget uagb-timeline__right';
 					} else {
@@ -117,14 +117,14 @@ const ContentTimelineComponent = ( props ) => {
 				}
 
 				let dayAlignClass = '';
-				if ( 'left' == block.attributes.timelinAlignment ) {
+				if ( 'left' === block.attributes.timelinAlignment ) {
 					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-left';
-				} else if ( 'right' == block.attributes.timelinAlignment ) {
+				} else if ( 'right' === block.attributes.timelinAlignment ) {
 					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-right';
-				} else if ( 'center' == block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) {
+				} else if ( 'center' === block.attributes.timelinAlignment ) {
+					if ( key % 2 == '0' ) { // eslint-disable-line  eqeqeq
 						dayAlignClass =
 							'uagb-timeline__day-new uagb-timeline__day-right';
 					} else {
@@ -157,14 +157,14 @@ const ContentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function () {
+		jQuery( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 	}, [ props ] );
 
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentConnector = ( id ) => {
-		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
+		const timeline = jQuery( '.uagb-timeline' ).parents( '#block-' + id );
 		const tmItem = timeline.find( '.uagb-timeline' );
 		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
 		const lineOuter = timeline.find( '.uagb-timeline__line' );
@@ -180,7 +180,7 @@ const ContentTimelineComponent = ( props ) => {
 			const timelineCardHeight = cardLast.height();
 			const lastItemTop = cardLast.offset().top - tmItem.offset().top;
 			let lastItem, parent_top;
-			const $document = $( document );
+			const $document = jQuery( document );
 
 			if ( tmItem.hasClass( 'uagb-timeline__arrow-center' ) ) {
 				lineOuter.css( 'bottom', timelineEndIcon.top );
@@ -243,7 +243,7 @@ const ContentTimelineComponent = ( props ) => {
 					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
-					++num;
+					++num; // eslint-disable-line no-unused-vars
 				} else {
 					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
