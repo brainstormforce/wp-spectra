@@ -4,7 +4,7 @@ import SettingTable from '../common/SettingTable';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 let enableBlockConditionCachedValue;
-function DisplayCondition() {
+function DisplayCondition(props) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	useEffect( () => {
@@ -45,19 +45,24 @@ function DisplayCondition() {
 	}, [ options.enable_block_condition ] );
 
 	const enableDisplayConditionSettings =
-		globaldata.settings.enable_block_condition;
-	return (
-			<div className="uag-individual-block-settings-metabox uag-extension__metabox">
-				<SettingTable settings={ enableDisplayConditionSettings } />
-				<a
-					href="https://ultimategutenberg.com/docs/display-conditions-blocks/"
-					target="_blank"
-					rel="noreferrer"
-				>
-					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
-				</a>
-		</div>
-	);
+		globaldata.settings.enable_block_condition; 
+
+	if(props.cat === 'extensions' || props.cat === 'all'){
+		return (
+				<div className="uag-individual-block-settings-metabox uag-extension__metabox">
+					<SettingTable settings={ enableDisplayConditionSettings } />
+					<a
+						href="https://ultimategutenberg.com/docs/display-conditions-blocks/"
+						target="_blank"
+						rel="noreferrer"
+					>
+						{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
+					</a>
+			</div>
+		);
+	}else{
+		return null;
+	}
 }
 
 export default DisplayCondition;

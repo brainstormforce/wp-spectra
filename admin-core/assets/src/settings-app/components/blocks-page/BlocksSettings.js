@@ -19,16 +19,7 @@ function BlocksSettings() {
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
 		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />}
 	);
-	const renderMetaBoxes = () => {
-		if( checkCategory == 'extensions'){
-			return <>
-						{renderBlocksMetaBoxes}
-						<DisplayCondition/> 
-					</>
-		}else {
-			return renderBlocksMetaBoxes;
-		}
-	};
+
 	const categories = ['all','creative','content','post','social','forms','seo','extensions'];
 
 	const setCategory = ( data ) => {
@@ -115,7 +106,7 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ activateAllBlocks }
-						classes="uag-button--secondary"
+						classes="uag-button--secondary" disabled = {checkCategory !== 'all' ? 'disabled' : ''}
 					/>
 					<NormalButton
 						buttonText={ __(
@@ -123,11 +114,11 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ deactivateAllBlocks }
-						classes="uag-button--secondary"
+						classes="uag-button--secondary" disabled = {checkCategory !== 'all' ? 'disabled' : ''}
 					/>
 				</div>
 			</div>
-			<div className="uag-blocks-settings">{ renderMetaBoxes() }</div>
+			<div className="uag-blocks-settings">{ renderBlocksMetaBoxes }<DisplayCondition cat = {checkCategory}/></div>
 		</>
 	);
 }

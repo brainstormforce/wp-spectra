@@ -29,10 +29,9 @@
     padding: 35px;
     width: 100%;
     margin: 0 auto;
-.uag-extension__metabox{
-	display: grid;
-    width: 330px;
-	a:last-child {
-		padding-left: 0px;
-	}
-}	}
+	.uag-extension__metabox{
+		a:last-child {
+			padding-left: 0px;
+		}
+	}	
+}
