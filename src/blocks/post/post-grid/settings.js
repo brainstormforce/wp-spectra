@@ -379,7 +379,7 @@ const Settings = ( props ) => {
 						options={ taxonomyListOptions }
 					/>
 				) }
-				{ '' !== categoriesList && (
+				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
 						<SelectControl
 							label={ taxonomyList[ taxonomyType ].label }
