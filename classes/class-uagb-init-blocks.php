@@ -382,7 +382,7 @@ class UAGB_Init_Blocks {
 				'enableMasonryGallery'              => apply_filters( 'uag_enable_masonry_gallery', true ),
 				'uagb_display_condition'            => apply_filters( 'enable_block_condition', true ),
 				'uagb_svg_icons'                    => UAGB_Helper::backend_load_font_awesome_icons(),
-				'uagb_enable_extensions_for_blocks' => apply_filters( 'uagb_enable_extensions_for_blocks', false ),
+				'uagb_enable_extensions_for_blocks' => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
 			)
 		);
 
