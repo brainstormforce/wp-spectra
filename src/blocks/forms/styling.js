@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
-		block_id,
 		buttonAlign,
 		submitColor,
 		submitColorHover,
@@ -20,8 +19,6 @@ function styling( props ) {
 		submitborderRadius,
 		submitborderColor,
 		submitborderHoverColor,
-		vPaddingSubmit,
-		hPaddingSubmit,
 		submitTextFontFamily,
 		submitTextFontWeight,
 		submitTextFontSize,
@@ -63,8 +60,6 @@ function styling( props ) {
 		inputborderRadius,
 		inputborderColor,
 		inputborderHoverColor,
-		vPaddingField,
-		hPaddingField,
 		fieldGap,
 		formStyle,
 		overallAlignment,
@@ -285,7 +280,7 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'boxed' == formStyle ) {
+	if ( 'boxed' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'border':
 				generateCSSUnit( inputborderWidth, 'px' ) +
@@ -390,7 +385,7 @@ function styling( props ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input:hover' ] = {
 			'border-color': inputborderHoverColor,
 		};
-	} else if ( 'underlined' == formStyle ) {
+	} else if ( 'underlined' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'border': 0,
 			'outline': 0,
@@ -516,7 +511,7 @@ function styling( props ) {
 				tabletPaddingBtnUnit
 			),
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
@@ -549,7 +544,7 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
 				paddingBtnTopMobile,
 				mobilePaddingBtnUnit
@@ -566,8 +561,6 @@ function styling( props ) {
 				paddingBtnRightMobile,
 				mobilePaddingBtnUnit
 			),
-		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'font-size': generateCSSUnit(
 				submitTextFontSizeMobile,
 				submitTextFontSizeType

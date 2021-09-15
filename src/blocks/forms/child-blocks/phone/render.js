@@ -24,7 +24,7 @@ const Render = ( props ) => {
 	const { block_id, phoneRequired, phoneName, pattern } = attributes;
 
 	let phone_html = '';
-	if ( pattern != '' ) {
+	if ( pattern !== '' ) {
 		phone_html = (
 			<input
 				type="tel"
@@ -47,9 +47,9 @@ const Render = ( props ) => {
 	}
 
 	let placeholder = '';
-	if ( pattern == '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
+	if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
 		placeholder = __( '123-45-678', 'ultimate-addons-for-gutenberg' );
-	} else if ( pattern == '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) {
+	} else if ( pattern === '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) {
 		placeholder = __( '123-456-6789', 'ultimate-addons-for-gutenberg' );
 	}
 
