@@ -1,0 +1,277 @@
+/**
+* *********************
+* Font Family
+* *********************
+*/
+
+@font-face {
+	font-family: var(--heading-font-family);
+	src: url( '../fonts/roboto-regular-webfont.eot' );
+	src: url( '../fonts/roboto-regular-webfont.eot' )
+			format( 'embedded-opentype' ),
+		url( '../fonts/roboto-regular-webfont.ttf' ) format( 'truetype' ),
+		url( '../fonts/roboto-regular-webfont.wof?kxnn1n' ) format( 'woff' ),
+		url( '../fonts/roboto-regular-webfont.svg' ) format( 'svg' );
+	font-weight: var(--heading-weight-400);
+	font-style: var(--heading-font-style);
+}
+
+@font-face {
+	font-family: var(--heading-font-family);
+	src: url( '../fonts/roboto-medium-webfont.eot' );
+	src: url( '../fonts/roboto-medium-webfont.eot' )
+			format( 'embedded-opentype' ),
+		url( '../fonts/roboto-medium-webfont.ttf' ) format( 'truetype' ),
+		url( '../fonts/roboto-medium-webfont.wof?kxnn1n' ) format( 'woff' ),
+		url( '../fonts/roboto-medium-webfont.svg' ) format( 'svg' );
+	font-weight: var(--heading-weight-500);
+	font-style: var(--heading-font-style);
+}
+
+@font-face {
+	font-family: var(--heading-font-family);
+	src: url( '../fonts/roboto-bold-webfont.eot' );
+	src: url( '../fonts/roboto-bold-webfont.eot' ) format( 'embedded-opentype' ),
+		url( '../fonts/roboto-bold-webfont.ttf' ) format( 'truetype' ),
+		url( '../fonts/roboto-bold-webfont.wof?kxnn1n' ) format( 'woff' ),
+		url( '../fonts/roboto-bold-webfont.svg' ) format( 'svg' );
+	font-weight: var(--heading-weight-600);
+	font-style: var(--heading-font-style);
+}
+
+/**
+* *********************
+* Font Icon
+* *********************
+*/
+@font-face {
+	font-family: 'ultimate-addons-for-gutenberg-logo-icon';
+	src: url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.eot?kxnn1n' );
+	src: url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.eot?kxnn1n#iefix' )
+			format( 'embedded-opentype' ),
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.ttf?kxnn1n' )
+			format( 'truetype' ),
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.woff?kxnn1n' ) format( 'woff' ),
+		url( '../fonts/icons/ultimate-addons-for-gutenberg-logo-icon.svg?kxnn1n#ultimate-addons-for-gutenberg-logo-icon' )
+			format( 'svg' );
+	font-weight: normal;
+	font-style: var(--heading-font-style);
+}
+
+.uag-ultimate-addons-for-gutenberg-logo-img [class^="ultimate-addons-for-gutenberg-icon"], .uag-ultimate-addons-for-gutenberg-logo-img [class*=" ultimate-addons-for-gutenberg-icon"], /* For Pro Compatibility */
+[class^="ultimate-addons-for-gutenberg-logo-icon"], [class*=" ultimate-addons-for-gutenberg-logo-icon"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'ultimate-addons-for-gutenberg-logo-icon' !important;
+	speak: none;
+	font-style: var(--heading-font-style);
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.uag-ultimate-addons-for-gutenberg-logo-img .ultimate-addons-for-gutenberg-icon:before, /* For Pro Compatibility */
+.ultimate-addons-for-gutenberg-logo-icon:before {
+	content: '\e900';
+	color: #f16334;
+}
+
+/**
+* *********************
+* Font Icon
+* *********************
+*/
+
+.uag-menu-page-wrapper,
+.uag-menu-page-wrapper * {
+	box-sizing: border-box;
+}
+
+#wpbody-content > .notice:not( .uag-notice ),
+#wpbody-content > .error {
+	display: none !important;
+}
+
+.uag-flex {
+	-js-display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	margin-bottom: 30px;
+}
+
+.uag-container {
+	margin: 0 auto;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.uag-menu-page-wrapper p {
+	line-height: 1.2;
+	margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.uag-menu-page-wrapper a:focus,
+.uag-menu-page-wrapper button:focus,
+.uag-menu-page-wrapper input:focus {
+	outline: none;
+}
+/* Admin Base */
+.uag-menu-page-wrapper {
+	font-family: 'Roboto', sans-serif;
+	right: -20px;
+	position: relative;
+	width: calc( 100% + 20px );
+}
+
+/* Page header */
+.uag-page-header {
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.uag-page-header h2 {
+	margin: 0;
+}
+
+/* Popup */
+.uag-json-importer,
+.uag-name-your-step,
+.uag-name-your-flow {
+	font-family: 'Roboto', sans-serif;
+}
+
+/* CartFlows logs page CSS */
+
+.uag-debug-page #uag-menu-page {
+	padding-top: 0px;
+}
+
+.uag-debug-page .uag-menu-page-content {
+	padding: 0;
+}
+
+.uag-debug-page .uag-top-links {
+	margin: 0;
+}
+
+.uag-debug-page .uag-debug-page-content {
+	padding: 0 20px;
+}
+
+.uag-log__section {
+	background: var(--metabox-background-color);
+	box-shadow: none;
+	margin-bottom: 20px;
+	border: 0;
+	padding: 30px 20px;
+	border-radius: 2px;
+}
+
+.uag-log__section .log-viewer-select {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 12px 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.uag-debug-log__section .uag-log--select {
+	font-weight: var(--heading-weight-400);
+	max-width: 100%;
+	margin: 0 0 0 15px;
+	height: 36px;
+	padding: 4px 15px 4px 30px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	width: 25rem;
+	background-size: 15px;
+	background-position: left 10px top 55%;
+}
+
+.uag-debug-log__section .uag-view-log--button {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	text-decoration: none;
+	text-shadow: none;
+	font-size: 14px;
+	min-height: 36px;
+	line-height: 1;
+	line-height: 1.5;
+	padding: 7px 18px;
+	display: inline;
+	display: inline-block;
+	vertical-align: middle;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+	font-weight: var(--heading-weight-400);
+	box-sizing: border-box;
+	background: #f06434;
+	border-color: #f06434;
+	color: var(--metabox-background-color);
+}
+.uag-log__section .log-viewer--title {
+	font-size: 18px;
+	margin: 0px;
+	font-weight: var(--heading-weight-400);
+}
+
+.uag-debug-log__section .uag-log-container {
+	word-break: break-all;
+	line-height: 1.5;
+	text-align: right;
+	background-color: var(--metabox-background-color);
+	padding: 15px;
+	border-radius: 3px;
+	max-height: 400px;
+	overflow-y: auto;
+	margin: 20px auto;
+}
+
+.uag-debug-log__section .uag-log-container::-webkit-scrollbar {
+	width: 5px;
+	background-color: #f1f1f1;
+	border-radius: 0;
+}
+.uag-debug-log__section .uag-log-container::-webkit-scrollbar-thumb {
+	border-radius: 0;
+	background-color: #d8d8d8;
+}
+
+.uag-debug-log__section .uag-log-container > pre {
+	display: contents;
+	white-space: pre-wrap;
+}
+
+#uag-menu-page .uag-delete-log--message {
+	padding: 15px;
+	margin: 5px 0px;
+	border-top: 0;
+	border-bottom: 0;
+	border-left: 0;
+}
+
+.uag-license-log__section .log-viewer {
+	padding: 0px 12px;
+}
+/* CartFlows logs page CSS */

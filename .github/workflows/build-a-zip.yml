@@ -6,6 +6,7 @@ on:
       - master
       - dev
       - next-release
+      - milestone
 env:
   ZIP_URL: http://uag-dev.xka9ibwowp-jqp3vd915350.p.runcloud.link/wp-content/uploads/uag-gh/
   PLUGIN_SLUG: ${{ github.event.repository.name }}
