@@ -1,7 +1,6 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 // Extend component
 import { useSelect } from '@wordpress/data';
@@ -22,7 +21,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeText ) } // eslint-disable-line  @wordpress/i18n-no-variables
+				label={ props.sizeText }
 				value={ props.size.value || '' }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeLabel ]: value } )
@@ -38,7 +37,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeTabletText ) } // eslint-disable-line  @wordpress/i18n-no-variables
+				label={ props.sizeTabletText }
 				value={ props.sizeTablet.value }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeTabletLabel ]: value } )
@@ -54,7 +53,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeMobileText ) } // eslint-disable-line  @wordpress/i18n-no-variables
+				label={ props.sizeMobileText }
 				value={ props.sizeMobile.value }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeMobileLabel ]: value } )
