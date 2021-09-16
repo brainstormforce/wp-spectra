@@ -141,6 +141,7 @@ const Settings = ( props ) => {
 			label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
+
 	if ( '' !== taxonomy_list_setting && undefined !== taxonomy_list_setting ) {
 		Object.keys( taxonomy_list_setting ).map( ( item ) => {
 			return taxonomyListOptions.push( {
@@ -210,6 +211,7 @@ const Settings = ( props ) => {
 				}
 			/>
 			<br />
+
 			{ 'none' !== listStyle && (
 				<>
 					<AdvancedPopColorControl
@@ -475,7 +477,6 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-
 				{ 'list' === layout && 'dropdown' !== listDisplayStyle && (
 					<>
 						<MultiButtonsControl

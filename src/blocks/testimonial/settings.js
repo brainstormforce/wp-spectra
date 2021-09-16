@@ -1037,7 +1037,7 @@ const Settings = ( props ) => {
 	};
 
 	let cnt = 0;
-	test_block.map( ( item, thisIndex ) => {
+	test_block.map( ( item, thisIndex ) => { // eslint-disable-line array-callback-return
 		const imageArray = test_block[ thisIndex ];
 		if ( imageArray && typeof imageArray !== 'undefined' ) {
 			const image = imageArray.image;
@@ -1073,7 +1073,6 @@ const Settings = ( props ) => {
 										const incAmount = Math.abs(
 											newCount - cloneTest_block.length
 										);
-
 										for ( let i = 0; i < incAmount; i++ ) {
 											cloneTest_block.push( {
 												description:
@@ -1086,7 +1085,6 @@ const Settings = ( props ) => {
 												image: '',
 											} );
 										}
-
 										setAttributes( {
 											test_block: cloneTest_block,
 										} );

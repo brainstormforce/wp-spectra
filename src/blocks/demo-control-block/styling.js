@@ -108,7 +108,6 @@ function styling( props ) {
 			),
 			'color': textColor,
 		},
-
 		' span.uagb-notice-dismiss': {
 			'fill': noticeDismissColor,
 		},

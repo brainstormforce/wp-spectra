@@ -4,12 +4,7 @@
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import {
-	ButtonGroup,
-	Button,
-	SelectControl,
-	Dashicon,
-} from '@wordpress/components';
+import { ButtonGroup, Button, SelectControl } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 
@@ -124,10 +119,8 @@ const ResponsiveSelectControl = ( props ) => {
 			<div className="uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
-						{ props.label && (
-							<span className="uag-control-label">
-								{ props.label }
-							</span>
+						{ label && (
+							<span className="uag-control-label">{ label }</span>
 						) }
 						{ ! displayResponsive && (
 							<Button

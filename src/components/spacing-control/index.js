@@ -4,13 +4,7 @@
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import {
-	ButtonGroup,
-	Button,
-	TabPanel,
-	Tooltip,
-	Dashicon,
-} from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip, Dashicon } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
 
@@ -287,13 +281,13 @@ const SpacingControl = ( props ) => {
 		},
 	];
 
-	const onUnitSizeClick = ( unitSizes ) => {
+	const onUnitSizeClick = ( uSizes ) => {
 		const items = [];
-
-		unitSizes.map( ( key ) => {
+		uSizes.map( ( key ) =>
 			items.push(
 				<Tooltip
 					text={ sprintf(
+						/* translators: abbreviation for units */
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
@@ -325,6 +319,7 @@ const SpacingControl = ( props ) => {
 						}
 						data-device-type={ deviceType }
 						aria-label={ sprintf(
+							/* translators: abbreviation for units */
 							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
 						) }
@@ -333,8 +328,9 @@ const SpacingControl = ( props ) => {
 						{ key.unitValue }
 					</Button>
 				</Tooltip>
-			);
-		} );
+			)
+		);
+
 		return items;
 	};
 
@@ -342,7 +338,7 @@ const SpacingControl = ( props ) => {
 
 	if ( link ) {
 		linkHtml = (
-			<span
+			<span // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 				className="uagb-spacing-control__link uagb-spacing-control-connected dashicons dashicons-admin-links "
 				onClick={ () => {
 					setAttributes( { [ link.label ]: false } );
@@ -352,7 +348,7 @@ const SpacingControl = ( props ) => {
 
 		if ( ! link.value ) {
 			linkHtml = (
-				<span
+				<span // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 					className="uagb-spacing-control__link uagb-spacing-control-disconnected dashicons dashicons-editor-unlink"
 					onClick={ () => {
 						onLinkClickHandler();

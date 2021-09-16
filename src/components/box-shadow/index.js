@@ -31,7 +31,6 @@ const BoxShadowControl = ( props ) => {
 	} = props;
 
 	let advancedControls;
-	let boxShadowAdvancedControls;
 	const activeClass = showAdvancedControls ? 'active' : '';
 
 	if ( showAdvancedControls ) {
@@ -139,7 +138,7 @@ const BoxShadowControl = ( props ) => {
 		);
 	}
 
-	boxShadowAdvancedControls = (
+	const boxShadowAdvancedControls = (
 		<div className="uag-box-shadow-option-actions">
 			<span className="uag-control-label">
 				{ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }

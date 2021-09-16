@@ -706,7 +706,7 @@ const Settings = ( props ) => {
 											'gtin14',
 											'gtin',
 										].map( ( a ) => ( {
-											label: __( a.toUpperCase() ),
+											label: __( a.toUpperCase() ), // eslint-disable-line  @wordpress/i18n-no-variables
 											value: a,
 										} ) ) }
 										onChange={ ( value ) =>

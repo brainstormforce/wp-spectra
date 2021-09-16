@@ -379,6 +379,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
 					<SelectControl
@@ -477,6 +478,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+
 				{ source_type === 'icon' && (
 					<>
 						<UAGIconPicker

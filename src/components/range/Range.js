@@ -8,8 +8,7 @@ import {
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
-
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import map from 'lodash/map';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
@@ -150,9 +149,9 @@ const Range = ( props ) => {
 		unitSizes = props.units;
 	}
 
-	const handleOnChange = ( value ) => {
-		setValue( value );
-		const parsedValue = parseFloat( value );
+	const handleOnChange = ( newValue ) => {
+		setValue( newValue );
+		const parsedValue = parseFloat( newValue );
 		props.onChange( parsedValue );
 	};
 
@@ -167,16 +166,17 @@ const Range = ( props ) => {
 		setCacheValue( cachedValueUpdate );
 	};
 
-	const onChangeUnits = ( value ) => {
-		props.setAttributes( { [ props.unit.label ]: value } );
+	const onChangeUnits = ( newValue ) => {
+		props.setAttributes( { [ props.unit.label ]: newValue } );
 	};
 
-	const onUnitSizeClick = ( unitSizes ) => {
+	const onUnitSizeClick = ( uSizes ) => {
 		const items = [];
-		unitSizes.map( ( key ) =>
+		uSizes.map( ( key ) =>
 			items.push(
 				<Tooltip
 					text={ sprintf(
+						/* translators: abbreviation for units */
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
@@ -189,6 +189,7 @@ const Range = ( props ) => {
 						isSecondary={ props.unit.value !== key.unitValue }
 						aria-pressed={ props.unit.value === key.unitValue }
 						aria-label={ sprintf(
+							/* translators: abbreviation for units */
 							__( '%s units', 'ultimate-addons-for-gutenberg' ),
 							key.name
 						) }

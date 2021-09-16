@@ -1601,7 +1601,6 @@ const Settings = ( props ) => {
 						label: 'ctaBottomSpaceUnit',
 					} }
 				/>
-
 				<SpacingControl
 					{ ...props }
 					label={ __(

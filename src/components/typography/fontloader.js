@@ -1,5 +1,5 @@
 if ( googlefonts === undefined ) {
-	var googlefonts = [];
+	var googlefonts = []; // eslint-disable-line no-var
 }
 import PropTypes from 'prop-types';
 import WebFont from 'webfontloader';
