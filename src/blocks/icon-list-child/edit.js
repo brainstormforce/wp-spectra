@@ -20,7 +20,6 @@ const Render = lazy( () =>
 let hideLabel;
 
 const UAGBIconListChild = ( props ) => {
-	
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -44,13 +43,17 @@ const UAGBIconListChild = ( props ) => {
 		}
 	}, [ props ] );
 
-	let parentBlock = select('core/block-editor').getBlockParents( props.clientId );
-	const parentBlockAttributes = select('core/block-editor').getBlockAttributes( parentBlock );
+	const parentBlock = select( 'core/block-editor' ).getBlockParents(
+		props.clientId
+	);
+	const parentBlockAttributes = select(
+		'core/block-editor'
+	).getBlockAttributes( parentBlock );
 	hideLabel = parentBlockAttributes.hideLabel;
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } hideLabel = { hideLabel } />
+			<Settings parentProps={ props } hideLabel={ hideLabel } />
 			<Render parentProps={ props } />
 		</Suspense>
 	);

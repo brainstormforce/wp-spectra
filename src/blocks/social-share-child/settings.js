@@ -3,24 +3,19 @@
  */
 
 // Import classes
-import UAGIconPicker from "@Components/icon-picker";
+import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import {
-	InspectorControls,
-} from '@wordpress/block-editor';
-import {
-	PanelBody,
-	SelectControl,
-} from '@wordpress/components';
-import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl } from '@wordpress/components';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "@Components/multi-buttons-control";
-import UAGTabsControl from "@Components/tabs";
-import UAGImage from "@Components/image";
+} from '@Components/inspector-tabs/InspectorTab.js';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGTabsControl from '@Components/tabs';
+import UAGImage from '@Components/image';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -41,25 +36,25 @@ const Settings = ( props ) => {
 	/*
 	 * Event to set Image as while adding.
 	 */
-	const onSelectImage = (media) => {
-		if (!media || !media.url) {
-			setAttributes({ image: null });
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( { image: null } );
 			return;
 		}
 
-		if (!media.type || "image" !== media.type) {
-			setAttributes({ image: null });
+		if ( ! media.type || 'image' !== media.type ) {
+			setAttributes( { image: null } );
 			return;
 		}
 
-		setAttributes({ image: media });
+		setAttributes( { image: media } );
 	};
 
 	/*
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		setAttributes({ image: "" });
+		setAttributes( { image: '' } );
 	};
 
 	const onChangeType = ( value ) => {
@@ -93,9 +88,7 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<SelectControl
 					label={ __( 'Type' ) }
 					value={ type }
@@ -241,57 +234,62 @@ const Settings = ( props ) => {
 					onChange={ onChangeType }
 				/>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Image / Icon",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __(
+						'Image / Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
 						value: image_icon,
-						label: "image_icon",
-					}}
+						label: 'image_icon',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
-							value: "icon",
+							value: 'icon',
 							label: __(
 								'Icon',
 								'ultimate-addons-for-gutenberg'
 							),
 							tooltip: __(
-								"Icon",
-								"ultimate-addons-for-gutenberg"
+								'Icon',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "image",
+							value: 'image',
 							label: __(
 								'Image',
 								'ultimate-addons-for-gutenberg'
 							),
 							tooltip: __(
-								"Image",
-								"ultimate-addons-for-gutenberg"
+								'Image',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={false}
+					] }
+					showIcons={ false }
 				/>
-				{ 'icon' == image_icon && (
+				{ 'icon' === image_icon && (
 					<>
 						<UAGIconPicker
-							label={__("Icon", "ultimate-addons-for-gutenberg")}
-							value={icon}
-							onChange={(value) => setAttributes({ icon: value })}
+							label={ __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ icon }
+							onChange={ ( value ) =>
+								setAttributes( { icon: value } )
+							}
 						/>
 					</>
 				) }
-				{ 'image' == image_icon && (
+				{ 'image' === image_icon && (
 					<>
 						<UAGImage
-							onSelectImage={onSelectImage}
-							backgroundImage={image}
-							onRemoveImage={onRemoveImage}
+							onSelectImage={ onSelectImage }
+							backgroundImage={ image }
+							onRemoveImage={ onRemoveImage }
 						/>
 					</>
 				) }
@@ -302,14 +300,17 @@ const Settings = ( props ) => {
 		let colorControl = '';
 		let colorControlHover = '';
 
-		if ( 'image' == image_icon ) {
+		if ( 'image' === image_icon ) {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Background Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_bg_color ? icon_bg_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_bg_color: value })
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ icon_bg_color ? icon_bg_color : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_bg_color: value } )
 						}
 					/>
 				</>
@@ -317,10 +318,15 @@ const Settings = ( props ) => {
 			colorControlHover = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Background Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_bg_hover_color: value })
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={
+							icon_bg_hover_color ? icon_bg_hover_color : ''
+						}
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_bg_hover_color: value } )
 						}
 					/>
 				</>
@@ -329,17 +335,20 @@ const Settings = ( props ) => {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_color ? icon_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_color: value })
+						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ icon_color ? icon_color : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_color: value } )
 						}
 					/>
 					<AdvancedPopColorControl
-						label={__("Background Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_bg_color ? icon_bg_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_bg_color: value })
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ icon_bg_color ? icon_bg_color : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_bg_color: value } )
 						}
 					/>
 				</>
@@ -347,17 +356,22 @@ const Settings = ( props ) => {
 			colorControlHover = (
 				<>
 					<AdvancedPopColorControl
-						label={__("Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_hover_color ? icon_hover_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_hover_color: value })
+						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ icon_hover_color ? icon_hover_color : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_hover_color: value } )
 						}
 					/>
 					<AdvancedPopColorControl
-						label={__("Background Color", "ultimate-addons-for-gutenberg")}
-						colorValue={icon_bg_hover_color ? icon_bg_hover_color : ""}
-						onColorChange={(value) =>
-							setAttributes({ icon_bg_hover_color: value })
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={
+							icon_bg_hover_color ? icon_bg_hover_color : ''
+						}
+						onColorChange={ ( value ) =>
+							setAttributes( { icon_bg_hover_color: value } )
 						}
 					/>
 				</>
@@ -368,25 +382,25 @@ const Settings = ( props ) => {
 				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 			>
 				<UAGTabsControl
-					tabs={[
+					tabs={ [
 						{
-							name: "normal",
+							name: 'normal',
 							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
+								'Normal',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							name: "hover",
+							name: 'hover',
 							title: __(
-								"Hover",
-								"ultimate-addons-for-gutenberg"
+								'Hover',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					normal={colorControl}
-					hover={colorControlHover}
-					disableBottomSeparator={true}
+					] }
+					normal={ colorControl }
+					hover={ colorControlHover }
+					disableBottomSeparator={ true }
 				/>
 			</PanelBody>
 		);
@@ -394,13 +408,16 @@ const Settings = ( props ) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab {...UAGTabs.general}>
+				<InspectorTab { ...UAGTabs.general }>
 					{ generalSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>
+				<InspectorTab { ...UAGTabs.style }>
 					{ iconColorSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
+				<InspectorTab
+					{ ...UAGTabs.advance }
+					parentProps={ props }
+				></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

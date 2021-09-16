@@ -1,397 +1,397 @@
 const attributes = {
 	block_id: {
-		type: "string",
+		type: 'string',
 	},
 	layout: {
-		type: "string",
-		default: "accordion",
+		type: 'string',
+		default: 'accordion',
 	},
 	inactiveOtherItems: {
-		type: "boolean",
+		type: 'boolean',
 		default: true,
 	},
 	expandFirstItem: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	enableSchemaSupport: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	align: {
-		type: "string",
-		default: "left",
+		type: 'string',
+		default: 'left',
 	},
 	enableSeparator: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	rowsGap: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	columnsGap: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	boxBgColor: {
-		type: "string",
-		default: "#FFFFFF",
+		type: 'string',
+		default: '#FFFFFF',
 	},
 	boxPaddingTypeMobile: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	boxPaddingTypeTablet: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	boxPaddingTypeDesktop: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	vBoxPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hBoxPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vBoxPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hBoxPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vBoxPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hBoxPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	borderStyle: {
-		type: "string",
-		default: "solid",
+		type: 'string',
+		default: 'solid',
 	},
 	borderWidth: {
-		type: "number",
+		type: 'number',
 		default: 1,
 	},
 	borderRadius: {
-		type: "number",
+		type: 'number',
 		default: 2,
 	},
 	borderColor: {
-		type: "string",
-		default: "#D2D2D2",
+		type: 'string',
+		default: '#D2D2D2',
 	},
 	borderHoverColor: {
-		type: "string",
-		default: "#D2D2D2",
+		type: 'string',
+		default: '#D2D2D2',
 	},
 	questionTextColor: {
-		type: "string",
-		default: "#313131",
+		type: 'string',
+		default: '#313131',
 	},
 	questionTextActiveColor: {
-		type: "string",
-		default: "#656565",
+		type: 'string',
+		default: '#656565',
 	},
 	questionPaddingTypeDesktop: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	questionPaddingTypeTablet: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	questionPaddingTypeMobile: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	vquestionPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vquestionPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vquestionPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hquestionPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hquestionPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hquestionPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	answerTextColor: {
-		type: "string",
-		default: "#313131",
+		type: 'string',
+		default: '#313131',
 	},
 	answerPaddingTypeDesktop: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	answerPaddingTypeTablet: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	answerPaddingTypeMobile: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	vanswerPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vanswerPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	vanswerPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hanswerPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hanswerPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	hanswerPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	iconColor: {
-		type: "string",
+		type: 'string',
 	},
 	iconActiveColor: {
-		type: "string",
+		type: 'string',
 	},
 	gapBtwIconQUestion: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionloadGoogleFonts: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	answerloadGoogleFonts: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	questionFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	questionFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	questionFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	questionFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	questionFontSizeType: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	questionFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	questionFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	questionLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	questionLineHeightType: {
-		type: "string",
-		default: "em",
+		type: 'string',
+		default: 'em',
 	},
 	questionLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	questionLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	answerFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	answerFontWeight: {
-		type: "string",
+		type: 'string',
 	},
 	answerFontSubset: {
-		type: "string",
+		type: 'string',
 	},
 	answerFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	answerFontSizeType: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	answerFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	answerLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	answerLineHeightType: {
-		type: "string",
-		default: "em",
+		type: 'string',
+		default: 'em',
 	},
 	answerLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	icon: {
-		type: "string",
-		default: "fas fa-plus",
+		type: 'string',
+		default: 'fas fa-plus',
 	},
 	iconActive: {
-		type: "string",
-		default: "fas fa-minus",
+		type: 'string',
+		default: 'fas fa-minus',
 	},
 	iconAlign: {
-		type: "string",
-		default: "row",
+		type: 'string',
+		default: 'row',
 	},
 	iconSize: {
-		type: "number",
+		type: 'number',
 		default: 12,
 	},
 	iconSizeTablet: {
-		type: "number",
+		type: 'number',
 		default: 12,
 	},
 	iconSizeMobile: {
-		type: "number",
+		type: 'number',
 		default: 12,
 	},
 	iconSizeType: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	columns: {
-		type: "number",
+		type: 'number',
 		default: 2,
 	},
 	tcolumns: {
-		type: "number",
+		type: 'number',
 		default: 2,
 	},
 	mcolumns: {
-		type: "number",
+		type: 'number',
 		default: 1,
 	},
 	schema: {
-		type: "string",
-		default: "",
+		type: 'string',
+		default: '',
 	},
 	enableToggle: {
-		type: "boolean",
+		type: 'boolean',
 		default: true,
 	},
 	equalHeight: {
-		type: "boolean",
+		type: 'boolean',
 		default: true,
 	},
 	questionLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionLeftPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionBottomPaddingDesktop: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	questionBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 		default: 10,
 	},
 	headingTag: {
-		type: "html",
-		selector: "span,p,h1,h2,h3,h4,h5,h6",
-		default: "span",
+		type: 'html',
+		selector: 'span,p,h1,h2,h3,h4,h5,h6',
+		default: 'span',
 	},
 	questionSpacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	answerSpacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	answerTopPadding: {
-		type: "number",
+		type: 'number',
 	},
 	answerRightPadding: {
-		type: "number",
+		type: 'number',
 	},
 	answerBottomPadding: {
-		type: "number",
+		type: 'number',
 	},
 	answerLeftPadding: {
-		type: "number",
+		type: 'number',
 	},
 	answerTopPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerRightPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerBottomPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerLeftPaddingTablet: {
-		type: "number",
+		type: 'number',
 	},
 	answerTopPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	answerRightPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	answerBottomPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 	answerLeftPaddingMobile: {
-		type: "number",
+		type: 'number',
 	},
 };
 export default attributes;

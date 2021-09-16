@@ -20,8 +20,8 @@ export default function save( props ) {
 
 	let blockControlsClass = '';
 
-	if ( 'full_width' == contentWidth ) {
-		if ( align == 'wide' || align == 'full' ) {
+	if ( 'full_width' === contentWidth ) {
+		if ( align === 'wide' || align === 'full' ) {
 			blockControlsClass = 'align' + align;
 		}
 	}
@@ -39,7 +39,7 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-section__overlay"></div>
-			{ 'video' == backgroundType && (
+			{ 'video' === backgroundType && (
 				<div className="uagb-section__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>

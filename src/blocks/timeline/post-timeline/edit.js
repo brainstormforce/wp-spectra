@@ -3,7 +3,7 @@
  */
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-$ = jQuery;
+import jQuery from 'jquery';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-timeline/settings" */ './settings'
@@ -25,7 +25,7 @@ const PostTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function () {
+		jQuery( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 
@@ -48,35 +48,35 @@ const PostTimelineComponent = ( props ) => {
 			leftPadding,
 		} = props.attributes;
 
-		if( bgPadding ){
-			if (!topPadding) {
-				props.setAttributes({ topPadding: bgPadding });
+		if ( bgPadding ) {
+			if ( ! topPadding ) {
+				props.setAttributes( { topPadding: bgPadding } );
 			}
-			if (!bottomPadding) {
-				props.setAttributes({ bottomPadding: bgPadding });
+			if ( ! bottomPadding ) {
+				props.setAttributes( { bottomPadding: bgPadding } );
 			}
-			if (!rightPadding) {
-				props.setAttributes({ rightPadding: bgPadding });
+			if ( ! rightPadding ) {
+				props.setAttributes( { rightPadding: bgPadding } );
 			}
-			if (!leftPadding) {
-				props.setAttributes({ leftPadding: bgPadding });
+			if ( ! leftPadding ) {
+				props.setAttributes( { leftPadding: bgPadding } );
 			}
 		}
 
-		if (verticalSpace) {
-			if (!topMargin) {
-				props.setAttributes({ topMargin: verticalSpace });
+		if ( verticalSpace ) {
+			if ( ! topMargin ) {
+				props.setAttributes( { topMargin: verticalSpace } );
 			}
-			if (!bottomMargin) {
-				props.setAttributes({ bottomMargin: verticalSpace });
+			if ( ! bottomMargin ) {
+				props.setAttributes( { bottomMargin: verticalSpace } );
 			}
 		}
-		if (horizontalSpace) {
-			if (!rightMargin) {
-				props.setAttributes({ rightMargin: horizontalSpace });
+		if ( horizontalSpace ) {
+			if ( ! rightMargin ) {
+				props.setAttributes( { rightMargin: horizontalSpace } );
 			}
-			if (!leftMargin) {
-				props.setAttributes({ leftMargin: horizontalSpace });
+			if ( ! leftMargin ) {
+				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
 		}
 	}, [] );
@@ -87,14 +87,14 @@ const PostTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentBack( id ) );
 		window.addEventListener( 'resize', timelineContentBack( id ) );
 
-		$( '.edit-post-layout__content' ).scroll( function () {
+		jQuery( '.edit-post-layout__content' ).scroll( function () {
 			timelineContentBack( id );
 		} );
 	}, [ props ] );
 
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentBack = ( id ) => {
-		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
+		const timeline = jQuery( '.uagb-timeline' ).parents( '#block-' + id );
 		const tmItem = timeline.find( '.uagb-timeline' );
 		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
 		const lineOuter = timeline.find( '.uagb-timeline__line' );
@@ -110,7 +110,7 @@ const PostTimelineComponent = ( props ) => {
 			const timelineCardHeight = cardLast.height();
 			const lastItemTop = cardLast.offset().top - tmItem.offset().top;
 			let lastItem, parentTop;
-			const $document = $( document );
+			const $document = jQuery( document );
 
 			if ( tmItem.hasClass( 'uagb-timeline__arrow-center' ) ) {
 				lineOuter.css( 'bottom', timelineEndIcon.top );
@@ -185,15 +185,14 @@ const PostTimelineComponent = ( props ) => {
 
 			//For changing icon background color and icon color.
 			let timelineIconPos, timelineCardPos;
-			let timelineIconTop, timelineCardTop, elementCardPos;
+			let timelineIconTop, timelineCardTop;
 			const timelineIcon = timeline.find( '.uagb-timeline__marker' ),
 				animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
 
 			for ( let i = 0; i < timelineIcon.length; i++ ) {
-				timelineIconPos = $( timelineIcon[ i ] ).offset().top;
-				timelineCardPos = $( animateBorder[ i ] ).offset().top;
+				timelineIconPos = jQuery( timelineIcon[ i ] ).offset().top;
+				timelineCardPos = jQuery( animateBorder[ i ] ).offset().top;
 				elementPos = timeline.offset().top;
-				elementCardPos = timeline.offset().top;
 
 				timelineIconTop = timelineIconPos - $document.scrollTop();
 				timelineCardTop = timelineCardPos - $document.scrollTop();
@@ -264,13 +263,13 @@ export default withSelect( ( select, props ) => {
 	if ( 'undefined' !== typeof currentTax ) {
 		if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 			restBase =
-				currentTax.taxonomy[ taxonomyType ].restBase == false ||
-				currentTax.taxonomy[ taxonomyType ].restBase == null
+				currentTax.taxonomy[ taxonomyType ].restBase === false ||
+				currentTax.taxonomy[ taxonomyType ].restBase === null
 					? currentTax.taxonomy[ taxonomyType ].name
 					: currentTax.taxonomy[ taxonomyType ].restBase;
 		}
 
-		if ( '' != taxonomyType ) {
+		if ( '' !== taxonomyType ) {
 			if (
 				'undefined' !== typeof currentTax.terms &&
 				'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -294,7 +293,7 @@ export default withSelect( ( select, props ) => {
 	category.push( temp );
 	const catlenght = categoriesList.length;
 	for ( let i = 0; i < catlenght; i++ ) {
-		if ( categoriesList[ i ].id == temp ) {
+		if ( categoriesList[ i ].id === temp ) {
 			if ( categoriesList[ i ].child.length !== 0 ) {
 				categoriesList[ i ].child.forEach( ( element ) => {
 					category.push( element );

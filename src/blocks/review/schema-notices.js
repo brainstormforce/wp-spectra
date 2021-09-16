@@ -200,7 +200,7 @@ const SchemaNotices = ( props ) => {
 		if (
 			'undefined' === typeof rContent ||
 			'' === rContent ||
-			false == enableDescription
+			false === enableDescription
 		) {
 			msg = __(
 				'Missing review description',
@@ -209,8 +209,11 @@ const SchemaNotices = ( props ) => {
 			emptyItems.push( msg );
 		}
 		if (
-			! mainimage || mainimage === "null" || mainimage.url === "null" || mainimage.url === "" ||
-			false == enableImage
+			! mainimage ||
+			mainimage === 'null' ||
+			mainimage.url === 'null' ||
+			mainimage.url === '' ||
+			false === enableImage
 		) {
 			msg = __( 'Missing review Image', 'ultimate-addons-for-gutenberg' );
 			emptyItems.push( msg );
@@ -222,7 +225,7 @@ const SchemaNotices = ( props ) => {
 		if (
 			'undefined' === typeof rAuthor ||
 			'' === rAuthor ||
-			false == showAuthor
+			false === showAuthor
 		) {
 			msg = __(
 				'Missing review author name',
@@ -254,7 +257,7 @@ const SchemaNotices = ( props ) => {
 	) );
 
 	const schemaNoticeMarkup = () => {
-		if ( enableSchema == true ) {
+		if ( enableSchema === true ) {
 			if ( 0 !== emptyItems.length ) {
 				return (
 					<div className="rating-schema-notices">

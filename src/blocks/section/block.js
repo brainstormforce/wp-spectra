@@ -35,7 +35,7 @@ registerBlockType( 'uagb/section', {
 			'wide' === align ||
 			'full' === align
 		) {
-			if ( 'full_width' == contentWidth ) {
+			if ( 'full_width' === contentWidth ) {
 				return { 'data-align': align };
 			}
 		}

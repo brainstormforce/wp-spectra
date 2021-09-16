@@ -49,7 +49,7 @@ const UAGBWpSearchEdit = ( props ) => {
 				isFocused: true,
 			} );
 		}
-		
+
 		const {
 			vinputPaddingMobile,
 			vinputPaddingTablet,
@@ -71,59 +71,83 @@ const UAGBWpSearchEdit = ( props ) => {
 			paddingInputLeftMobile,
 		} = props.attributes;
 
-		if (vinputPaddingDesktop) {
-			if (!paddingInputTop) {
-				props.setAttributes({ paddingInputTop: vinputPaddingDesktop });
+		if ( vinputPaddingDesktop ) {
+			if ( ! paddingInputTop ) {
+				props.setAttributes( {
+					paddingInputTop: vinputPaddingDesktop,
+				} );
 			}
-			if (!paddingInputBottom) {
-				props.setAttributes({ paddingInputBottom: vinputPaddingDesktop });
-			}
-		}
-		if (hinputPaddingDesktop) {
-			if (!paddingInputRight) {
-				props.setAttributes({ paddingInputRight: hinputPaddingDesktop });
-			}
-			if (!paddingInputLeft) {
-				props.setAttributes({ paddingInputLeft: hinputPaddingDesktop });
+			if ( ! paddingInputBottom ) {
+				props.setAttributes( {
+					paddingInputBottom: vinputPaddingDesktop,
+				} );
 			}
 		}
-		if (vinputPaddingTablet) {
-			if (!paddingInputTopTablet) {
-				props.setAttributes({ paddingInputTopTablet: vinputPaddingTablet });
+		if ( hinputPaddingDesktop ) {
+			if ( ! paddingInputRight ) {
+				props.setAttributes( {
+					paddingInputRight: hinputPaddingDesktop,
+				} );
 			}
-			if (!paddingInputBottomTablet) {
-				props.setAttributes({ paddingInputBottomTablet: vinputPaddingTablet });
-			}
-		}
-		if (hinputPaddingTablet) {
-			if (!paddingInputRightTablet) {
-				props.setAttributes({ paddingInputRightTablet: hinputPaddingTablet });
-			}
-			if (!paddingInputLeftTablet) {
-				props.setAttributes({ paddingInputLeftTablet: hinputPaddingTablet });
+			if ( ! paddingInputLeft ) {
+				props.setAttributes( {
+					paddingInputLeft: hinputPaddingDesktop,
+				} );
 			}
 		}
-		if (vinputPaddingMobile) {
-			if (!paddingInputTopMobile) {
-				props.setAttributes({ paddingInputTopMobile: vinputPaddingMobile });
+		if ( vinputPaddingTablet ) {
+			if ( ! paddingInputTopTablet ) {
+				props.setAttributes( {
+					paddingInputTopTablet: vinputPaddingTablet,
+				} );
 			}
-			if (!paddingInputBottomMobile) {
-				props.setAttributes({ paddingInputBottomMobile: vinputPaddingMobile });
+			if ( ! paddingInputBottomTablet ) {
+				props.setAttributes( {
+					paddingInputBottomTablet: vinputPaddingTablet,
+				} );
 			}
 		}
-		if (hinputPaddingMobile) {
-			if (!paddingInputRightMobile) {
-				props.setAttributes({ paddingInputRightMobile: hinputPaddingMobile });
+		if ( hinputPaddingTablet ) {
+			if ( ! paddingInputRightTablet ) {
+				props.setAttributes( {
+					paddingInputRightTablet: hinputPaddingTablet,
+				} );
 			}
-			if (!paddingInputLeftMobile) {
-				props.setAttributes({ paddingInputLeftMobile: hinputPaddingMobile });
+			if ( ! paddingInputLeftTablet ) {
+				props.setAttributes( {
+					paddingInputLeftTablet: hinputPaddingTablet,
+				} );
+			}
+		}
+		if ( vinputPaddingMobile ) {
+			if ( ! paddingInputTopMobile ) {
+				props.setAttributes( {
+					paddingInputTopMobile: vinputPaddingMobile,
+				} );
+			}
+			if ( ! paddingInputBottomMobile ) {
+				props.setAttributes( {
+					paddingInputBottomMobile: vinputPaddingMobile,
+				} );
+			}
+		}
+		if ( hinputPaddingMobile ) {
+			if ( ! paddingInputRightMobile ) {
+				props.setAttributes( {
+					paddingInputRightMobile: hinputPaddingMobile,
+				} );
+			}
+			if ( ! paddingInputLeftMobile ) {
+				props.setAttributes( {
+					paddingInputLeftMobile: hinputPaddingMobile,
+				} );
 			}
 		}
 		const element = document.getElementById(
 			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
 		);
 
-		if ( null != element && 'undefined' !== typeof element ) {
+		if ( null !== element && 'undefined' !== typeof element ) {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );

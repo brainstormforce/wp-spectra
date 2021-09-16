@@ -2,8 +2,10 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { PanelBody, ToggleControl } from '@wordpress/components';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -16,9 +18,7 @@ const Settings = ( props ) => {
 
 	const checkboxInspectorControls = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ checkboxRequired }
@@ -33,15 +33,14 @@ const Settings = ( props ) => {
 	};
 
 	return (
-			<InspectorControls>
-				<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
+		<InspectorControls>
+			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+				<InspectorTab { ...UAGTabs.general }>
 					{ checkboxInspectorControls() }
-					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
-				</InspectorTabs>
-			</InspectorControls>
+				</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 

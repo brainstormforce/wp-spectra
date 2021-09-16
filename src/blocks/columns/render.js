@@ -50,7 +50,7 @@ const Render = ( props ) => {
 		return childColumns;
 	}, [ columns ] );
 
-	const topDividerHtml = topType != 'none' && (
+	const topDividerHtml = topType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -66,7 +66,7 @@ const Render = ( props ) => {
 		</div>
 	);
 
-	const bottomDividerHtml = bottomType != 'none' && (
+	const bottomDividerHtml = bottomType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -115,7 +115,7 @@ const Render = ( props ) => {
 		>
 			<div className="uagb-columns__overlay"></div>
 			{ topDividerHtml }
-			{ 'video' == backgroundType && (
+			{ 'video' === backgroundType && (
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>

@@ -64,13 +64,13 @@ function styling( props ) {
 		borderStyle,
 		borderWidth,
 		borderColor,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let inner_width = '100%';
 
 	if ( typeof contentWidth !== 'undefined' ) {
-		if ( 'boxed' != contentWidth ) {
+		if ( 'boxed' !== contentWidth ) {
 			if ( typeof innerWidth !== 'undefined' ) {
 				inner_width = generateCSSUnit( innerWidth, innerWidthType );
 			}
@@ -116,13 +116,13 @@ function styling( props ) {
 
 	selectors[ ' > .uagb-section__overlay' ] = {};
 
-	if ( 'video' == backgroundType ) {
+	if ( 'video' === backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ] = {
 			'opacity': 1,
 			'background-color': backgroundVideoColor,
 		};
-	} else if ( 'image' == backgroundType ) {
-		if ( 'color' == overlayType ) {
+	} else if ( 'image' === backgroundType ) {
+		if ( 'color' === overlayType ) {
 			selectors[ ' > .uagb-section__overlay' ] = {
 				'opacity':
 					typeof backgroundOpacity !== 'undefined'
@@ -133,7 +133,7 @@ function styling( props ) {
 		} else {
 			selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
 				'transparent';
-			selectors[ ' > .uagb-section__overlay' ][ 'opacity' ] =
+			selectors[ ' > .uagb-section__overlay' ].opacity =
 				typeof backgroundOpacity !== 'undefined'
 					? backgroundOpacity / 100
 					: '';
@@ -148,7 +148,7 @@ function styling( props ) {
 				] = `radial-gradient( at ${ gradientOverlayPosition }, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`;
 			}
 		}
-	} else if ( 'color' == backgroundType ) {
+	} else if ( 'color' === backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ] = {
 			'opacity':
 				typeof backgroundOpacity !== 'undefined'
@@ -159,7 +159,7 @@ function styling( props ) {
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ][ 'background-color' ] =
 			'transparent';
-		selectors[ ' > .uagb-section__overlay' ][ 'opacity' ] =
+		selectors[ ' > .uagb-section__overlay' ].opacity =
 			typeof backgroundOpacity !== 'undefined'
 				? backgroundOpacity / 100
 				: '';
@@ -183,10 +183,16 @@ function styling( props ) {
 		'border-radius'
 	] = generateCSSUnit( borderRadius, 'px' );
 
-	if ( borderStyle != 'none' ) {
-		selectors[ ' > .uagb-section__overlay'][ 'border-style' ] = borderStyle;
-		selectors[ ' > .uagb-section__overlay'][ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
-		selectors[ ' > .uagb-section__overlay'][ 'border-color' ] = borderColor;
+	if ( borderStyle !== 'none' ) {
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-style'
+		] = borderStyle;
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-width'
+		] = generateCSSUnit( borderWidth, 'px' );
+		selectors[ ' > .uagb-section__overlay' ][
+			'border-color'
+		] = borderColor;
 	}
 	tabletSelectors = {
 		'.uagb-section__wrap': {
@@ -244,14 +250,14 @@ function styling( props ) {
 		'margin-bottom'
 	] = generateCSSUnit( bottomMarginMobile, mobileMarginType );
 
-	if ( 'right' == align && 'boxed' == contentWidth ) {
+	if ( 'right' === align && 'boxed' === contentWidth ) {
 		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginMobile, mobileMarginType );
 		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-right'
 		] = generateCSSUnit( rightMarginTablet, tabletMarginType );
-	} else if ( 'left' == align && 'boxed' == contentWidth ) {
+	} else if ( 'left' === align && 'boxed' === contentWidth ) {
 		mobileSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginMobile, mobileMarginType );
@@ -259,7 +265,7 @@ function styling( props ) {
 			'margin-left'
 		] = generateCSSUnit( leftMarginTablet, tabletMarginType );
 	}
-	if ( 'full_width' == contentWidth ) {
+	if ( 'full_width' === contentWidth ) {
 		tabletSelectors[ '.uagb-section__wrap' ][
 			'margin-left'
 		] = generateCSSUnit( leftMarginTablet, tabletMarginType );

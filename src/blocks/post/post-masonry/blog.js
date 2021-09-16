@@ -49,7 +49,8 @@ function Blog( props ) {
 				return (
 					<div className="uagb-post__load-more-wrap">
 						<span className="uagb-post-pagination-button">
-							<a className="uagb-post__load-more">
+							<a // eslint-disable-line jsx-a11y/anchor-is-valid
+								className="uagb-post__load-more">
 								{ buttonText }
 							</a>
 						</span>

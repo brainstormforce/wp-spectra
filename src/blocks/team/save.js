@@ -62,7 +62,7 @@ export default function save( props ) {
 
 	let image_html = '';
 
-	if ( '' != img_url ) {
+	if ( '' !== img_url ) {
 		image_html = (
 			<div
 				className={ classnames(
@@ -92,10 +92,10 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-team__wrap">
-				{ imgPosition == 'left' && image_html }
+				{ imgPosition === 'left' && image_html }
 
 				<div className="uagb-team__content">
-					{ imgPosition == 'above' && image_html }
+					{ imgPosition === 'above' && image_html }
 
 					<div className="uagb-team__title-wrap">
 						<RichText.Content
@@ -120,25 +120,25 @@ export default function save( props ) {
 					{ socialEnable && (
 						<div className="uagb-team__social-icon-wrap">
 							<ul className="uagb-team__social-list">
-								{ '' != twitterIcon &&
+								{ '' !== twitterIcon &&
 									social_html(
 										twitterIcon,
 										twitterLink,
 										socialTarget
 									) }
-								{ '' != fbIcon &&
+								{ '' !== fbIcon &&
 									social_html(
 										fbIcon,
 										fbLink,
 										socialTarget
 									) }
-								{ '' != linkedinIcon &&
+								{ '' !== linkedinIcon &&
 									social_html(
 										linkedinIcon,
 										linkedinLink,
 										socialTarget
 									) }
-								{ '' != pinIcon &&
+								{ '' !== pinIcon &&
 									social_html(
 										pinIcon,
 										pinLink,
@@ -149,7 +149,7 @@ export default function save( props ) {
 					) }
 				</div>
 
-				{ imgPosition == 'right' && image_html }
+				{ imgPosition === 'right' && image_html }
 			</div>
 		</div>
 	);

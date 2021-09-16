@@ -198,10 +198,22 @@ function styling( props ) {
 			),
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+			'padding-left': generateCSSUnit(
+				paddingLeftMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightMobile,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomMobile,
+				mobilePaddingUnit
+			),
 		},
 	};
 
@@ -237,10 +249,22 @@ function styling( props ) {
 			),
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( paddingLeftTablet, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( paddingRightTablet, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( paddingTopTablet, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
+			'padding-left': generateCSSUnit(
+				paddingLeftTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightTablet,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomTablet,
+				tabletPaddingUnit
+			),
 		},
 	};
 
@@ -251,9 +275,19 @@ function styling( props ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

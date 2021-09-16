@@ -143,7 +143,7 @@ const attributes = {
 	},
 	separatorHoverColor: {
 		type: 'string',
-	}
+	},
 };
 
 export default attributes;

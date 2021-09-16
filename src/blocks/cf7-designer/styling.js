@@ -134,10 +134,22 @@ function styling( props ) {
 				fieldBorderRadius,
 				fieldBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( fieldLeftPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( fieldRightPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( fieldTopPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( fieldBottomPaddingDesktop, fieldPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -171,16 +183,40 @@ function styling( props ) {
 			'text-align': align,
 		},
 		" .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple='multiple'])": {
-			'padding-left': generateCSSUnit( fieldLeftPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( fieldRightPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( fieldTopPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( fieldBottomPaddingDesktop, fieldPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 		},
 		" .wpcf7 select.wpcf7-select[multiple='multiple'] option": {
-			'padding-left': generateCSSUnit( fieldLeftPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( fieldRightPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( fieldTopPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( fieldBottomPaddingDesktop, fieldPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 		},
 		' .wpcf7 textarea': {
 			'background-color': fieldBgColor,
@@ -192,10 +228,22 @@ function styling( props ) {
 				fieldBorderRadiusType
 			),
 			'border-style': fieldBorderStyle,
-			'padding-left': generateCSSUnit( fieldLeftPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( fieldRightPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( fieldTopPaddingDesktop, fieldPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( fieldBottomPaddingDesktop, fieldPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -263,10 +311,22 @@ function styling( props ) {
 				buttonBorderRadius,
 				buttonBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( buttonLeftPaddingDesktop, buttonPaddingTypeDesktop ),
-			'padding-right': generateCSSUnit( buttonRightPaddingDesktop, buttonPaddingTypeDesktop ),
-			'padding-top': generateCSSUnit( buttonTopPaddingDesktop, buttonPaddingTypeDesktop ),
-			'padding-bottom': generateCSSUnit( buttonBottomPaddingDesktop, buttonPaddingTypeDesktop ),
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
@@ -319,7 +379,7 @@ function styling( props ) {
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'display':'inline-flex',
+			'display': 'inline-flex',
 			'border-radius': '100%',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
@@ -371,7 +431,7 @@ function styling( props ) {
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
 			'border-color': fieldBorderFocusColor,
-			'display' : 'inline-flex',
+			'display': 'inline-flex',
 		},
 
 		// Override check box , Radio & acceptance.
@@ -393,7 +453,7 @@ function styling( props ) {
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
-			'display' : 'inline-flex',
+			'display': 'inline-flex',
 			'color': radioCheckSelectColor,
 			'height': generateCSSUnit( radioCheckSize, 'px' ),
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
@@ -439,10 +499,22 @@ function styling( props ) {
 	};
 
 	const fieldPaddingTablet = {
-		'padding-left': generateCSSUnit( fieldLeftPaddingTablet, fieldPaddingTypeTablet ),
-		'padding-right': generateCSSUnit( fieldRightPaddingTablet, fieldPaddingTypeTablet ),
-		'padding-top': generateCSSUnit( fieldTopPaddingTablet, fieldPaddingTypeTablet ),
-		'padding-bottom': generateCSSUnit( fieldBottomPaddingTablet, fieldPaddingTypeTablet ),
+		'padding-left': generateCSSUnit(
+			fieldLeftPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-right': generateCSSUnit(
+			fieldRightPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-top': generateCSSUnit(
+			fieldTopPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			fieldBottomPaddingTablet,
+			fieldPaddingTypeTablet
+		),
 	};
 	const tabletSelectors = {
 		' .wpcf7 input:not([type=submit])': {
@@ -526,22 +598,46 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])' : fieldPaddingTablet,
-		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' : fieldPaddingTablet,
-		' .wpcf7 select.wpcf7-select[multiple="multiple"] option' : fieldPaddingTablet,
-		' .wpcf7 textarea'                 : fieldPaddingTablet,
-		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			'padding-left': generateCSSUnit( buttonLeftPaddingTablet, buttonPaddingTypeTablet ),
-			'padding-right': generateCSSUnit( buttonRightPaddingTablet, buttonPaddingTypeTablet ),
-			'padding-top': generateCSSUnit( buttonTopPaddingTablet, buttonPaddingTypeTablet ),
-			'padding-bottom': generateCSSUnit( buttonBottomPaddingTablet, buttonPaddingTypeTablet ),
+		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
+		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingTablet,
+		' .wpcf7 textarea': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingTablet,
+				buttonPaddingTypeTablet
+			),
 		},
 	};
 	const fieldPaddingMobile = {
-		'padding-left': generateCSSUnit( fieldLeftPaddingMobile, fieldPaddingTypeMobile ),
-		'padding-right': generateCSSUnit( fieldRightPaddingMobile, fieldPaddingTypeMobile ),
-		'padding-top': generateCSSUnit( fieldTopPaddingMobile, fieldPaddingTypeMobile ),
-		'padding-bottom': generateCSSUnit( fieldBottomPaddingMobile, fieldPaddingTypeMobile ),
+		'padding-left': generateCSSUnit(
+			fieldLeftPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-right': generateCSSUnit(
+			fieldRightPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-top': generateCSSUnit(
+			fieldTopPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			fieldBottomPaddingMobile,
+			fieldPaddingTypeMobile
+		),
 	};
 	const mobileSelectors = {
 		' .wpcf7 input:not([type=submit])': {
@@ -624,15 +720,27 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])' : fieldPaddingMobile,
-		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' : fieldPaddingMobile,
-		' .wpcf7 select.wpcf7-select[multiple="multiple"] option' : fieldPaddingMobile,
-		' .wpcf7 textarea'                 : fieldPaddingMobile,
-		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			'padding-left': generateCSSUnit( buttonLeftPaddingMobile, buttonPaddingTypeMobile ),
-			'padding-right': generateCSSUnit( buttonRightPaddingMobile, buttonPaddingTypeMobile ),
-			'padding-top': generateCSSUnit( buttonTopPaddingMobile, buttonPaddingTypeMobile ),
-			'padding-bottom': generateCSSUnit( buttonBottomPaddingMobile, buttonPaddingTypeMobile ),
+		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
+		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
+		' .wpcf7 textarea': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingMobile,
+				buttonPaddingTypeMobile
+			),
 		},
 	};
 

@@ -7,10 +7,10 @@ const itemCount = 4;
 const restMenuBlock = [];
 
 for ( let i = 1; i <= itemCount; i++ ) {
-	const descText = __(
+	const descText = __( 
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	);
-	const titleText = __( 'Menu Item ' + i );
+	const titleText = ( 'Menu Item ' + i );
 	const priceText = __( '$9' );
 	restMenuBlock.push( {
 		description: descText,
@@ -276,123 +276,123 @@ const attributes = {
 		type: 'number',
 		default: '',
 	},
-	imageWidthType:{
+	imageWidthType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	seperatorWidthType:{
+	seperatorWidthType: {
 		type: 'string',
-		default: '%'
+		default: '%',
 	},
-	rowGapType:{
+	rowGapType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	columnGapType:{
+	columnGapType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	titleSpaceType:{
+	titleSpaceType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	contentPaddingTopTablet:{
-		type: 'number'
+	contentPaddingTopTablet: {
+		type: 'number',
 	},
-	contentPaddingRightTablet:{
-		type: 'number'
+	contentPaddingRightTablet: {
+		type: 'number',
 	},
-	contentPaddingBottomTablet:{
-		type: 'number'
+	contentPaddingBottomTablet: {
+		type: 'number',
 	},
-	contentPaddingLeftTablet:{
-		type: 'number'
+	contentPaddingLeftTablet: {
+		type: 'number',
 	},
-	contentPaddingTopMobile:{
-		type: 'number'
+	contentPaddingTopMobile: {
+		type: 'number',
 	},
-	contentPaddingRightMobile:{
-		type: 'number'
+	contentPaddingRightMobile: {
+		type: 'number',
 	},
-	contentPaddingBottomMobile:{
-		type: 'number'
+	contentPaddingBottomMobile: {
+		type: 'number',
 	},
-	contentPaddingLeftMobile:{
-		type: 'number'
+	contentPaddingLeftMobile: {
+		type: 'number',
 	},
-	contentPaddingUnit:{
+	contentPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	contentMobilePaddingUnit:{
+	contentMobilePaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	contentTabletPaddingUnit:{
+	contentTabletPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	contentSpacingLink:{
-		type: "boolean",
+	contentSpacingLink: {
+		type: 'boolean',
 		default: false,
 	},
-	imgPaddingTopTablet:{
-		type: 'number'
+	imgPaddingTopTablet: {
+		type: 'number',
 	},
-	imgPaddingRightTablet:{
-		type: 'number'
+	imgPaddingRightTablet: {
+		type: 'number',
 	},
-	imgPaddingBottomTablet:{
-		type: 'number'
+	imgPaddingBottomTablet: {
+		type: 'number',
 	},
-	imgPaddingLeftTablet:{
-		type: 'number'
+	imgPaddingLeftTablet: {
+		type: 'number',
 	},
-	imgPaddingTopMobile:{
-		type: 'number'
+	imgPaddingTopMobile: {
+		type: 'number',
 	},
-	imgPaddingRightMobile:{
-		type: 'number'
+	imgPaddingRightMobile: {
+		type: 'number',
 	},
-	imgPaddingBottomMobile:{
-		type: 'number'
+	imgPaddingBottomMobile: {
+		type: 'number',
 	},
-	imgPaddingLeftMobile:{
-		type: 'number'
+	imgPaddingLeftMobile: {
+		type: 'number',
 	},
-	imgPaddingUnit:{
+	imgPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	imgMobilePaddingUnit:{
+	imgMobilePaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	imgTabletPaddingUnit:{
+	imgTabletPaddingUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	imgSpacingLink:{
-		type: "boolean",
+	imgSpacingLink: {
+		type: 'boolean',
 		default: false,
 	},
-	titleTransform:{
-		type: 'string'
+	titleTransform: {
+		type: 'string',
 	},
-	titleDecoration:{
-		type: 'string'
+	titleDecoration: {
+		type: 'string',
 	},
-	descTransform:{
-		type: 'string'
+	descTransform: {
+		type: 'string',
 	},
-	descDecoration:{
-		type: 'string'
+	descDecoration: {
+		type: 'string',
 	},
-	priceTransform:{
-		type: 'string'
+	priceTransform: {
+		type: 'string',
 	},
-	priceDecoration:{
-		type: 'string'
+	priceDecoration: {
+		type: 'string',
 	},
 };
 

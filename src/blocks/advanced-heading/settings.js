@@ -2,14 +2,14 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
-import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
-import Range from "@Components/range/Range.js";
-import UAGTabsControl from "@Components/tabs";
-import MultiButtonsControl from "@Components/multi-buttons-control";
+} from '@Components/inspector-tabs/InspectorTab.js';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import Range from '@Components/range/Range.js';
+import UAGTabsControl from '@Components/tabs';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 
 import { __ } from '@wordpress/i18n';
 
@@ -19,10 +19,7 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-	SelectControl,
-} from '@wordpress/components';
+import { PanelBody, SelectControl } from '@wordpress/components';
 
 // Extend component
 const Settings = ( props ) => {
@@ -64,7 +61,7 @@ const Settings = ( props ) => {
 		separatorSpace,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts,
-		separatorHoverColor
+		separatorHoverColor,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -117,23 +114,41 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Heading Tag",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __(
+						'Heading Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
 						value: headingTag,
-						label: "headingTag",
-					}}
-					options={[
-						{ value: "h1", label: __("H1", "ultimate-addons-for-gutenberg") },
-						{ value: "h2", label: __("H2", "ultimate-addons-for-gutenberg") },
-						{ value: "h3", label: __("H3", "ultimate-addons-for-gutenberg") },
-						{ value: "h4", label: __("H4", "ultimate-addons-for-gutenberg") },
-						{ value: "h5", label: __("H5", "ultimate-addons-for-gutenberg") },
-						{ value: "h6", label: __("H6", "ultimate-addons-for-gutenberg") },
-					]}
+						label: 'headingTag',
+					} }
+					options={ [
+						{
+							value: 'h1',
+							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h2',
+							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h3',
+							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h4',
+							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h5',
+							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'h6',
+							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
 				/>
 			</PanelBody>
 		);
@@ -142,89 +157,86 @@ const Settings = ( props ) => {
 	const headingPanel = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Heading',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 			>
 				<Suspense fallback={ lazyLoader() }>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: headLoadGoogleFonts,
-						label: 'headLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: headFontFamily,
-						label: 'headFontFamily',
-					} }
-					fontWeight={ {
-						value: headFontWeight,
-						label: 'headFontWeight',
-					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
-					} }
-					fontSizeType={ {
-						value: headFontSizeType,
-						label: 'headFontSizeType',
-					} }
-					fontSize={ { value: headFontSize, label: 'headFontSize' } }
-					fontSizeMobile={ {
-						value: headFontSizeMobile,
-						label: 'headFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: headFontSizeTablet,
-						label: 'headFontSizeTablet',
-					} }
-					lineHeightType={ {
-						value: headLineHeightType,
-						label: 'headLineHeightType',
-					} }
-					lineHeight={ {
-						value: headLineHeight,
-						label: 'headLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: headLineHeightMobile,
-						label: 'headLineHeightMobile',
-					} }
-					lineHeightTablet={ {
-						value: headLineHeightTablet,
-						label: 'headLineHeightTablet',
-					} }
-				/>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: headLoadGoogleFonts,
+							label: 'headLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: headFontFamily,
+							label: 'headFontFamily',
+						} }
+						fontWeight={ {
+							value: headFontWeight,
+							label: 'headFontWeight',
+						} }
+						fontSubset={ {
+							value: headFontSubset,
+							label: 'headFontSubset',
+						} }
+						fontSizeType={ {
+							value: headFontSizeType,
+							label: 'headFontSizeType',
+						} }
+						fontSize={ {
+							value: headFontSize,
+							label: 'headFontSize',
+						} }
+						fontSizeMobile={ {
+							value: headFontSizeMobile,
+							label: 'headFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: headFontSizeTablet,
+							label: 'headFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: headLineHeightType,
+							label: 'headLineHeightType',
+						} }
+						lineHeight={ {
+							value: headLineHeight,
+							label: 'headLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: headLineHeightMobile,
+							label: 'headLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: headLineHeightTablet,
+							label: 'headLineHeightTablet',
+						} }
+					/>
 				</Suspense>
 				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={headingColor ? headingColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ headingColor: value })
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ headingColor ? headingColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { headingColor: value } )
 					}
 				/>
 				<Range
-					label={__(
-						"Bottom Spacing (px)",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={headSpace}
-					onChange={(value) =>
-						setAttributes({ headSpace: value })
+					label={ __(
+						'Bottom Spacing (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ headSpace }
+					onChange={ ( value ) =>
+						setAttributes( { headSpace: value } )
 					}
-					min={0}
-					max={500}
-					displayUnit={false}
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
 				/>
 			</PanelBody>
 		);
@@ -233,10 +245,7 @@ const Settings = ( props ) => {
 	const subheadingPanel = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Description',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<Suspense fallback={ lazyLoader() }>
@@ -298,13 +307,10 @@ const Settings = ( props ) => {
 					/>
 				</Suspense>
 				<AdvancedPopColorControl
-					label={__(
-						"Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={subHeadingColor ? subHeadingColor : ""}
-					onColorChange={(value) =>
-						setAttributes({ subHeadingColor: value })
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ subHeadingColor ? subHeadingColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { subHeadingColor: value } )
 					}
 				/>
 			</PanelBody>
@@ -318,173 +324,193 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<SelectControl
-					label={__("Style", "ultimate-addons-for-gutenberg" )}
-					value={seperatorStyle}
-					onChange={(value) =>
-						setAttributes({ seperatorStyle: value })
+					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) =>
+						setAttributes( { seperatorStyle: value } )
 					}
-					options={[
+					options={ [
 						{
-							value: "none",
-							label: __("None", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "solid",
-							label: __("Solid", "ultimate-addons-for-gutenberg"),
-						},
-						{
-							value: "double",
+							value: 'none',
 							label: __(
-								"Double",
-								"ultimate-addons-for-gutenberg"
+								'None',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "dashed",
+							value: 'solid',
 							label: __(
-								"Dashed",
-								"ultimate-addons-for-gutenberg"
+								'Solid',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "dotted",
+							value: 'double',
 							label: __(
-								"Dotted",
-								"ultimate-addons-for-gutenberg"
+								'Double',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
+						{
+							value: 'dashed',
+							label: __(
+								'Dashed',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'dotted',
+							label: __(
+								'Dotted',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
 				/>
-				{"none" !== seperatorStyle && (
-				<>
+				{ 'none' !== seperatorStyle && (
+					<>
+						<Range
+							label={ __(
+								'Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ separatorWidth }
+							onChange={ ( value ) =>
+								setAttributes( {
+									separatorWidth: value,
+								} )
+							}
+							min={ 0 }
+							max={ '%' === separatorWidthType ? 100 : 500 }
+							unit={ {
+								value: separatorWidthType,
+								label: 'separatorWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
+						/>
+						<Range
+							label={ __(
+								'Thickness(px)',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ separatorHeight }
+							onChange={ ( value ) =>
+								setAttributes( {
+									separatorHeight: value,
+								} )
+							}
+							min={ 0 }
+							max={ 20 }
+							displayUnit={ false }
+						/>
+						<UAGTabsControl
+							tabs={ [
+								{
+									name: 'normal',
+									title: __(
+										'Normal',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									name: 'hover',
+									title: __(
+										'Hover',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							normal={
+								<AdvancedPopColorControl
+									label={ __(
+										'Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										separatorColor ? separatorColor : ''
+									}
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											separatorColor: value,
+										} )
+									}
+								/>
+							}
+							hover={
+								<AdvancedPopColorControl
+									label={ __(
+										'Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={
+										separatorHoverColor
+											? separatorHoverColor
+											: ''
+									}
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											separatorHoverColor: value,
+										} )
+									}
+								/>
+							}
+						/>
+					</>
+				) }
+				{ seperatorStyle !== 'none' && (
 					<Range
-						label={__(
-							"Width",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={separatorWidth}
-						onChange={(value) =>
-							setAttributes({
-								separatorWidth: value,
-							})
-						}
-						min={0}
-						max={
-							"%" == separatorWidthType
-								? 100
-								: 500
-						}
-						unit={{
-							value: separatorWidthType,
-							label: "separatorWidthType",
-						}}
-						units={[
-							{
-								name: __(
-									"Pixel",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "px",
-							},
-							{
-								name: __(
-									"%",
-									"ultimate-addons-for-gutenberg"
-								),
-								unitValue: "%",
-							},
-						]}
-					/>
-					<Range
-						label={__(
-							"Thickness(px)",
-							"ultimate-addons-for-gutenberg"
-						)}
-						setAttributes={setAttributes}
-						value={separatorHeight}
-						onChange={(value) =>
-							setAttributes({
-								separatorHeight: value,
-							})
+						label={ __(
+							'Bottom Spacing (px)',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ separatorSpace }
+						onChange={ ( value ) =>
+							setAttributes( { separatorSpace: value } )
 						}
 						min={ 0 }
-						max={ 20 }
-						displayUnit={false}
+						max={ 500 }
+						displayUnit={ false }
 					/>
-					<UAGTabsControl
-						tabs={[
-							{
-								name: "normal",
-								title: __(
-									"Normal",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-							{
-								name: "hover",
-								title: __(
-									"Hover",
-									"ultimate-addons-for-gutenberg"
-								),
-							},
-						]}
-						normal={
-							<AdvancedPopColorControl
-								label={__( "Color", "ultimate-addons-for-gutenberg" )}
-								colorValue={ separatorColor ? separatorColor : "" }
-								onColorChange={(value) =>
-									setAttributes({ separatorColor: value })
-								}
-							/>
-						}
-						hover={
-							<AdvancedPopColorControl
-								label={__( "Color", "ultimate-addons-for-gutenberg" )}
-								colorValue={ separatorHoverColor ? separatorHoverColor : "" }
-								onColorChange={(value) =>
-									setAttributes({ separatorHoverColor: value })
-								}
-							/>
-						}
-					/>
-				</>
-			)}
-			{ seperatorStyle !== 'none' && (
-				<Range
-					label={__(
-						"Bottom Spacing (px)",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={separatorSpace}
-					onChange={(value) =>
-						setAttributes({ separatorSpace: value })
-					}
-					min={0}
-					max={500}
-					displayUnit={false}
-				/>
-			) }
+				) }
 			</PanelBody>
 		);
 	};
-
 
 	return (
 		<div>
 			{ blockControlSettings() }
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab {...UAGTabs.general}>
-					{ generalPanel() }
+					<InspectorTab { ...UAGTabs.general }>
+						{ generalPanel() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.style}>
-					{ headingPanel()}
-					{ subheadingPanel()}
-					{ seperatorSettings() }
+					<InspectorTab { ...UAGTabs.style }>
+						{ headingPanel() }
+						{ subheadingPanel() }
+						{ seperatorSettings() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			<Suspense fallback={ lazyLoader() }>

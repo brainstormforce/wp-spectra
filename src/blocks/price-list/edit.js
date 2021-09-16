@@ -34,36 +34,40 @@ const UAGBRestaurantMenu = ( props ) => {
 			imgPaddingLeft,
 		} = props.attributes;
 
-		if (imgVrPadding) {
-			if (!imgPaddingTop) {
-				props.setAttributes({ imgPaddingTop: imgVrPadding });
+		if ( imgVrPadding ) {
+			if ( ! imgPaddingTop ) {
+				props.setAttributes( { imgPaddingTop: imgVrPadding } );
 			}
-			if (!imgPaddingBottom) {
-				props.setAttributes({ imgPaddingBottom: imgVrPadding });
-			}
-		}
-		if (imgHrPadding) {
-			if (!imgPaddingRight) {
-				props.setAttributes({ imgPaddingRight: imgHrPadding });
-			}
-			if (!imgPaddingLeft) {
-				props.setAttributes({ imgPaddingLeft: imgHrPadding });
+			if ( ! imgPaddingBottom ) {
+				props.setAttributes( { imgPaddingBottom: imgVrPadding } );
 			}
 		}
-		if (contentVrPadding) {
-			if (!contentPaddingTop) {
-				props.setAttributes({ contentPaddingTop: contentVrPadding });
+		if ( imgHrPadding ) {
+			if ( ! imgPaddingRight ) {
+				props.setAttributes( { imgPaddingRight: imgHrPadding } );
 			}
-			if (!contentPaddingBottom) {
-				props.setAttributes({ contentPaddingBottom: contentVrPadding });
+			if ( ! imgPaddingLeft ) {
+				props.setAttributes( { imgPaddingLeft: imgHrPadding } );
 			}
 		}
-		if (contentHrPadding) {
-			if (!contentPaddingRight) {
-				props.setAttributes({ contentPaddingRight: contentHrPadding });
+		if ( contentVrPadding ) {
+			if ( ! contentPaddingTop ) {
+				props.setAttributes( { contentPaddingTop: contentVrPadding } );
 			}
-			if (!contentPaddingLeft) {
-				props.setAttributes({ contentPaddingLeft: contentHrPadding });
+			if ( ! contentPaddingBottom ) {
+				props.setAttributes( {
+					contentPaddingBottom: contentVrPadding,
+				} );
+			}
+		}
+		if ( contentHrPadding ) {
+			if ( ! contentPaddingRight ) {
+				props.setAttributes( {
+					contentPaddingRight: contentHrPadding,
+				} );
+			}
+			if ( ! contentPaddingLeft ) {
+				props.setAttributes( { contentPaddingLeft: contentHrPadding } );
 			}
 		}
 		// Pushing Style tag for this block css.

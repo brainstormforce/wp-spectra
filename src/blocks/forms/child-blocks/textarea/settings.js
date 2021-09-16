@@ -1,13 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import {
-	PanelBody,
-	ToggleControl,
-	TextControl,
-} from '@wordpress/components';
-import Range from "@Components/range/Range.js";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import { PanelBody, ToggleControl, TextControl } from '@wordpress/components';
+import Range from '@Components/range/Range.js';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -20,9 +18,7 @@ const Settings = ( props ) => {
 
 	const textareaInspectorControls = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ textareaRequired }
@@ -47,12 +43,12 @@ const Settings = ( props ) => {
 						'Number of lines',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={setAttributes}
+					setAttributes={ setAttributes }
 					value={ rows }
 					onChange={ ( value ) => setAttributes( { rows: value } ) }
 					min={ 2 }
 					max={ 10 }
-					displayUnit = {false}
+					displayUnit={ false }
 				/>
 			</PanelBody>
 		);
@@ -61,12 +57,11 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<InspectorControls>
-				<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
-					{ textareaInspectorControls() }
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ textareaInspectorControls() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

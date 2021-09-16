@@ -2,7 +2,7 @@
  * BLOCK: Call To Action
  */
 
- import { withSelect } from '@wordpress/data';
+import { withSelect } from '@wordpress/data';
 import CtaStyle from './inline-styles';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -39,20 +39,20 @@ const UAGBCallToAction = ( props ) => {
 			ctaLeftPadding,
 		} = props.attributes;
 
-		if (ctaBtnVertPadding) {
-			if (!ctaTopPadding) {
-				props.setAttributes({ ctaTopPadding: ctaBtnVertPadding });
+		if ( ctaBtnVertPadding ) {
+			if ( ! ctaTopPadding ) {
+				props.setAttributes( { ctaTopPadding: ctaBtnVertPadding } );
 			}
-			if (!ctaBottomPadding) {
-				props.setAttributes({ ctaBottomPadding: ctaBtnVertPadding });
+			if ( ! ctaBottomPadding ) {
+				props.setAttributes( { ctaBottomPadding: ctaBtnVertPadding } );
 			}
 		}
-		if (ctaBtnHrPadding) {
-			if (!ctaRightPadding) {
-				props.setAttributes({ ctaRightPadding: ctaBtnHrPadding });
+		if ( ctaBtnHrPadding ) {
+			if ( ! ctaRightPadding ) {
+				props.setAttributes( { ctaRightPadding: ctaBtnHrPadding } );
 			}
-			if (!ctaLeftPadding) {
-				props.setAttributes({ ctaLeftPadding: ctaBtnHrPadding });
+			if ( ! ctaLeftPadding ) {
+				props.setAttributes( { ctaLeftPadding: ctaBtnHrPadding } );
 			}
 		}
 	}, [] );

@@ -16,7 +16,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes , deviceType } = props;
+	const { attributes, deviceType } = props;
 
 	const { className, btn_count, buttons, stack } = attributes;
 
@@ -50,7 +50,7 @@ const Render = ( props ) => {
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalMoverDirection={
-						'desktop' == stack ? 'vertical' : 'horizontal'
+						'desktop' === stack ? 'vertical' : 'horizontal'
 					}
 				/>
 			</div>

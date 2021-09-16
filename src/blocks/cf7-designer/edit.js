@@ -1,7 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import { __ } from '@wordpress/i18n';
+import jQuery from 'jquery';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -46,54 +46,56 @@ const UAGBCF7 = ( props ) => {
 			fieldLeftPaddingDesktop,
 		} = attributes;
 
-		if (msgVrPadding) {
-			if (!messageTopPaddingDesktop) {
-				setAttributes({ messageTopPaddingDesktop: msgVrPadding });
+		if ( msgVrPadding ) {
+			if ( ! messageTopPaddingDesktop ) {
+				setAttributes( { messageTopPaddingDesktop: msgVrPadding } );
 			}
-			if (!messageBottomPaddingDesktop) {
-				setAttributes({ messageBottomPaddingDesktop: msgVrPadding });
-			}
-		}
-		if (msgHrPadding) {
-			if (!messageRightPaddingDesktop) {
-				setAttributes({ messageRightPaddingDesktop: msgHrPadding });
-			}
-			if (!messageLeftPaddingDesktop) {
-				setAttributes({ messageLeftPaddingDesktop: msgHrPadding });
+			if ( ! messageBottomPaddingDesktop ) {
+				setAttributes( { messageBottomPaddingDesktop: msgVrPadding } );
 			}
 		}
-
-		if (buttonVrPadding) {
-			if (!buttonTopPaddingDesktop) {
-				setAttributes({ buttonTopPaddingDesktop: buttonVrPadding });
+		if ( msgHrPadding ) {
+			if ( ! messageRightPaddingDesktop ) {
+				setAttributes( { messageRightPaddingDesktop: msgHrPadding } );
 			}
-			if (!buttonBottomPaddingDesktop) {
-				setAttributes({ buttonBottomPaddingDesktop: buttonVrPadding });
-			}
-		}
-		if (buttonHrPadding) {
-			if (!buttonRightPaddingDesktop) {
-				setAttributes({ buttonRightPaddingDesktop: buttonHrPadding });
-			}
-			if (!buttonLeftPaddingDesktop) {
-				setAttributes({ buttonLeftPaddingDesktop: buttonHrPadding });
+			if ( ! messageLeftPaddingDesktop ) {
+				setAttributes( { messageLeftPaddingDesktop: msgHrPadding } );
 			}
 		}
 
-		if (fieldVrPadding) {
-			if (!fieldTopPaddingDesktop) {
-				setAttributes({ fieldTopPaddingDesktop: fieldVrPadding });
+		if ( buttonVrPadding ) {
+			if ( ! buttonTopPaddingDesktop ) {
+				setAttributes( { buttonTopPaddingDesktop: buttonVrPadding } );
 			}
-			if (!fieldBottomPaddingDesktop) {
-				setAttributes({ fieldBottomPaddingDesktop: fieldVrPadding });
+			if ( ! buttonBottomPaddingDesktop ) {
+				setAttributes( {
+					buttonBottomPaddingDesktop: buttonVrPadding,
+				} );
 			}
 		}
-		if (fieldHrPadding) {
-			if (!fieldRightPaddingDesktop) {
-				setAttributes({ fieldRightPaddingDesktop: fieldHrPadding });
+		if ( buttonHrPadding ) {
+			if ( ! buttonRightPaddingDesktop ) {
+				setAttributes( { buttonRightPaddingDesktop: buttonHrPadding } );
 			}
-			if (!fieldLeftPaddingDesktop) {
-				setAttributes({ fieldLeftPaddingDesktop: fieldHrPadding });
+			if ( ! buttonLeftPaddingDesktop ) {
+				setAttributes( { buttonLeftPaddingDesktop: buttonHrPadding } );
+			}
+		}
+
+		if ( fieldVrPadding ) {
+			if ( ! fieldTopPaddingDesktop ) {
+				setAttributes( { fieldTopPaddingDesktop: fieldVrPadding } );
+			}
+			if ( ! fieldBottomPaddingDesktop ) {
+				setAttributes( { fieldBottomPaddingDesktop: fieldVrPadding } );
+			}
+		}
+		if ( fieldHrPadding ) {
+			if ( ! fieldRightPaddingDesktop ) {
+				setAttributes( { fieldRightPaddingDesktop: fieldHrPadding } );
+			}
+			if ( ! fieldLeftPaddingDesktop ) {
+				setAttributes( { fieldLeftPaddingDesktop: fieldHrPadding } );
 			}
 		}
 	}, [] );
@@ -124,7 +126,7 @@ export default withSelect( ( select, props ) => {
 	const { formId, isHtml } = props.attributes;
 	let jsonData = '';
 
-	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
+	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
 		jQuery.ajax( {
 			url: uagb_blocks_info.ajax_url,
 			data: {

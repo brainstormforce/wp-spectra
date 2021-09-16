@@ -30,7 +30,6 @@ function inlineStyles( props ) {
 		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
 	};
 
-
 	const position = backgroundPosition.replace( '-', ' ' );
 
 	if ( 'image' === backgroundType ) {

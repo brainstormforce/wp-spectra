@@ -48,8 +48,8 @@ export default function save( props ) {
 	let showSeperator = true;
 
 	if (
-		position == 'after_icon' &&
-		( iconimgPosition == 'above-title' || iconimgPosition == 'below-title' )
+		position === 'after_icon' &&
+		( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' )
 	) {
 		showSeperator = false;
 		iconImageHtml = (
@@ -61,14 +61,14 @@ export default function save( props ) {
 	}
 
 	if (
-		position == 'after_icon' &&
+		position === 'after_icon' &&
 		( iconimgPosition !== 'above-title' ||
 			iconimgPosition !== 'below-title' )
 	) {
 		position = 'after_title';
 	}
 
-	if ( iconimgPosition == 'below-title' && position == 'after_title' ) {
+	if ( iconimgPosition === 'below-title' && position === 'after_title' ) {
 		showSeperator = false;
 		iconImageHtml = (
 			<>
@@ -81,7 +81,7 @@ export default function save( props ) {
 	const desc = (
 		<>
 			{ 'none' !== seperatorStyle &&
-				position == 'after_title' &&
+				position === 'after_title' &&
 				showSeperator &&
 				seperatorHtml }
 			<div className="uagb-ifb-text-wrap">
@@ -92,7 +92,7 @@ export default function save( props ) {
 					/>
 				) }
 				{ 'none' !== seperatorStyle &&
-					position == 'after_desc' &&
+					position === 'after_desc' &&
 					seperatorHtml }
 				{ ctaType !== 'none' && (
 					<CallToAction attributes={ props.attributes } />
@@ -111,7 +111,7 @@ export default function save( props ) {
 				/>
 			) }
 			{ 'none' !== seperatorStyle &&
-				position == 'after_prefix' &&
+				position === 'after_prefix' &&
 				seperatorHtml }
 			{ showTitle && '' !== infoBoxTitle && (
 				<Title
@@ -126,23 +126,23 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				'uagb-infobox__content-wrap',
-				ctaType == 'all' ? ' uagb-infobox_cta-type-all' : '',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
 				...InfoBoxPositionClasses( props.attributes )
 			) }
 		>
 			<div className="uagb-ifb-left-right-wrap">
-				{ iconimgPosition == 'left' && isImage }
+				{ iconimgPosition === 'left' && isImage }
 				<div className="uagb-ifb-content">
-					{ iconimgPosition == 'above-title' && iconImageHtml }
+					{ iconimgPosition === 'above-title' && iconImageHtml }
 
-					{ ( iconimgPosition == 'above-title' ||
-						iconimgPosition == 'below-title' ) &&
+					{ ( iconimgPosition === 'above-title' ||
+						iconimgPosition === 'below-title' ) &&
 						title_text }
 
-					{ iconimgPosition == 'below-title' && iconImageHtml }
+					{ iconimgPosition === 'below-title' && iconImageHtml }
 
-					{ ( iconimgPosition == 'above-title' ||
-						iconimgPosition == 'below-title' ) &&
+					{ ( iconimgPosition === 'above-title' ||
+						iconimgPosition === 'below-title' ) &&
 						desc }
 
 					{ iconimgPosition === 'left-title' && (
@@ -165,8 +165,8 @@ export default function save( props ) {
 						</>
 					) }
 
-					{ ( iconimgPosition == 'left' ||
-						iconimgPosition == 'right' ) && (
+					{ ( iconimgPosition === 'left' ||
+						iconimgPosition === 'right' ) && (
 						<>
 							{ title_text }
 							{ desc }
@@ -174,7 +174,7 @@ export default function save( props ) {
 					) }
 				</div>
 
-				{ iconimgPosition == 'right' && iconImageHtml }
+				{ iconimgPosition === 'right' && iconImageHtml }
 			</div>
 		</div>
 	);
@@ -192,8 +192,8 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ ctaType == 'all' && (
-				<a
+			{ ctaType === 'all' && (
+				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					href={ ctaLink }
 					className="uagb-infobox-link-wrap uagb-infbox__link-to-all"
 					target={ target }

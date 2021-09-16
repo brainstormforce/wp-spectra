@@ -66,18 +66,22 @@ function styling( props ) {
 		'line-height': generateCSSUnit( size, sizeType ),
 	};
 
-	const alignment =
-		align == 'left'
-			? 'flex-start'
-			: align == 'right'
-			? 'flex-end'
-			: 'center';
+	let alignment = 'center';
+	if ( align === 'left' ){
+		alignment = 'flex-start';
+	}else if( align === 'right' ){
+		alignment = 'flex-end'
+	}else{ 
+		alignment = 'center';
+	}
 
 	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks' ] = {
 		'text-align': align,
 	};
 
-	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks > .block-editor-block-list__layout' ] = {
+	selectors[
+		'.uagb-social-share__outer-wrap .block-editor-inner-blocks > .block-editor-block-list__layout'
+	] = {
 		'justify-content': alignment,
 		'-webkit-box-pack': alignment,
 		'-ms-flex-pack': alignment,
@@ -86,8 +90,8 @@ function styling( props ) {
 		'align-items': alignment,
 	};
 
-	if ( 'horizontal' == social_layout ) {
-		if ( 'desktop' == stack ) {
+	if ( 'horizontal' === social_layout ) {
+		if ( 'desktop' === stack ) {
 			selectors[
 				'.uagb-social-share__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout'
 			] = {
@@ -109,17 +113,21 @@ function styling( props ) {
 				'-ms-flex-align': alignment,
 				'align-items': alignment,
 			};
-		} else if ( 'tablet' == stack ) {
+		} else if ( 'tablet' === stack ) {
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			tabletSelectors[
+				'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
+			] = {
 				'flex-direction': 'column',
 			};
-			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			mobileSelectors[
+				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+			] = {
 				'flex-direction': 'column',
 			};
 			tabletSelectors[
@@ -128,14 +136,16 @@ function styling( props ) {
 				'margin-left': 0,
 				'margin-right': 0,
 			};
-		} else if ( 'mobile' == stack ) {
+		} else if ( 'mobile' === stack ) {
 			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
 
-			mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			mobileSelectors[
+				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+			] = {
 				'flex-direction': 'column',
 			};
 

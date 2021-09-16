@@ -84,7 +84,7 @@ function styling( props ) {
 		borderThickness,
 		borderColor,
 		borderRadius,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let selectors = {};
@@ -106,10 +106,22 @@ function styling( props ) {
 			'grid-row-gap': generateCSSUnit( rowGap, 'px' ),
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPadding, contentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPadding, contentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPadding, contentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPadding, contentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPadding,
+				contentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPadding,
+				contentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPadding,
+				contentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPadding,
+				contentPaddingUnit
+			),
 			'background-color': bgColor,
 			'text-align': alignment,
 			'box-shadow':
@@ -206,10 +218,22 @@ function styling( props ) {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPaddingMobile, mobileContentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPaddingMobile, mobileContentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPaddingMobile, mobileContentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPaddingMobile, mobileContentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingMobile,
+				mobileContentPaddingUnit
+			),
 		},
 		' .uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(
@@ -248,10 +272,22 @@ function styling( props ) {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
-			'padding-top': generateCSSUnit( contentTopPaddingTablet, tabletContentPaddingUnit ),
-			'padding-bottom': generateCSSUnit( contentBottomPaddingTablet, tabletContentPaddingUnit ),
-			'padding-left': generateCSSUnit( contentLeftPaddingTablet, tabletContentPaddingUnit ),
-			'padding-right': generateCSSUnit( contentRightPaddingTablet, tabletContentPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingTablet,
+				tabletContentPaddingUnit
+			),
 		},
 		' .uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(

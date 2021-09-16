@@ -96,19 +96,19 @@ const attributes = {
 		type: 'number',
 	},
 	paddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobilePaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletPaddingUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	paddingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	borderWidth: {

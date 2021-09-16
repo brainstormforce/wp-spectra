@@ -48,10 +48,10 @@ function IndividualBlockSetting( props ) {
 		}
 	}, [ options.blocks_activation_and_deactivation ] );
 
-	let categories = props.blockInfo.admin_categories;
-	
-	let isCategory = categories.find(element =>	element == props.cat);
-	
+	const categories = props.blockInfo.admin_categories;
+
+	const isCategory = categories.find(element =>	element == props.cat);
+
 	if(isCategory || props.cat === 'all'){
 		return (
 			<div className="uag-individual-block-settings-metabox">
@@ -77,10 +77,9 @@ function IndividualBlockSetting( props ) {
 				</a>
 			</div>
 		);
-	}else{
-		return null;
 	}
-			
+
+	return null;
 }
 
 export default IndividualBlockSetting;

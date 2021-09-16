@@ -257,7 +257,7 @@ function styling( props ) {
 
 	selectors[ '.uagb-how-to-main-wrap' ] = {
 		'text-align': overallAlignment,
-		display: 'block',
+		'display': 'block',
 	};
 
 	selectors[

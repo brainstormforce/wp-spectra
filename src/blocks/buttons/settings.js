@@ -1,22 +1,17 @@
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import {
-	InspectorControls,
-} from '@wordpress/block-editor';
-import {
-	PanelBody,
-	Icon,
-} from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, Icon } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import MultiButtonsControl from "@Components/multi-buttons-control";
-import renderSVG from "@Controls/renderIcon";
-import Range from "@Components/range/Range.js";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import renderSVG from '@Controls/renderIcon';
+import Range from '@Components/range/Range.js';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -35,7 +30,7 @@ const Settings = ( props ) => {
 
 	let loadBtnGoogleFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const btnconfig = {
 			google: {
 				families: [
@@ -51,114 +46,120 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Alignment",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: align,
-						label: "align",
-					}}
+						label: 'align',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
-							value: "left",
+							value: 'left',
 							icon: (
 								<Icon
-									icon={renderSVG(
-										"fa fa-align-left"
-									)}
+									icon={ renderSVG( 'fa fa-align-left' ) }
 								/>
 							),
 							tooltip: __(
-								"Left",
-								"ultimate-addons-for-gutenberg"
+								'Left',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "center",
+							value: 'center',
 							icon: (
 								<Icon
-									icon={renderSVG(
-										"fa fa-align-center"
-									)}
+									icon={ renderSVG( 'fa fa-align-center' ) }
 								/>
 							),
 							tooltip: __(
-								"Center",
-								"ultimate-addons-for-gutenberg"
+								'Center',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "right",
+							value: 'right',
 							icon: (
 								<Icon
-									icon={renderSVG(
-										"fa fa-align-right"
-									)}
+									icon={ renderSVG( 'fa fa-align-right' ) }
 								/>
 							),
 							tooltip: __(
-								"Right",
-								"ultimate-addons-for-gutenberg"
+								'Right',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "full",
+							value: 'full',
 							icon: (
 								<Icon
-									icon={renderSVG(
-										"fa fa-align-justify"
-									)}
+									icon={ renderSVG( 'fa fa-align-justify' ) }
 								/>
 							),
 							tooltip: __(
-								"Full Width",
-								"ultimate-addons-for-gutenberg"
+								'Full Width',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={true}
+					] }
+					showIcons={ true }
 				/>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Stack On",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: stack,
-						label: "stack",
-					}}
-					options={[
-						{ value: "none", label: __("None", "ultimate-addons-for-gutenberg") },
-						{ value: "desktop", label: __("Desktop", "ultimate-addons-for-gutenberg") },
-						{ value: "tablet", label: __("Tablet", "ultimate-addons-for-gutenberg") },
-						{ value: "mobile", label: __("Mobile", "ultimate-addons-for-gutenberg") },
-					]}
+						label: 'stack',
+					} }
+					options={ [
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'desktop',
+							label: __(
+								'Desktop',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'tablet',
+							label: __(
+								'Tablet',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'mobile',
+							label: __(
+								'Mobile',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
 					help={ __(
 						'Note: Choose on what breakpoint the buttons will stack.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
 				<Range
-					label={__(
-						"Gap Between Buttons",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={gap}
-					onChange={(value) =>
-						setAttributes({ gap: value })
-					}
-					min={0}
-					max={500}
-					displayUnit={false}
+					label={ __(
+						'Gap Between Buttons',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ gap }
+					onChange={ ( value ) => setAttributes( { gap: value } ) }
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
 				/>
 			</PanelBody>
 		);
@@ -167,10 +168,7 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<PanelBody
-				title={ __(
-					'Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
+				title={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<TypographyControl
@@ -197,15 +195,18 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
-			<InspectorTabs>
-				<InspectorTab {...UAGTabs.general}>
-				{ generalSettings() }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>
-				{ styleSettings() }
-				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
-			</InspectorTabs>
+				<InspectorTabs>
+					<InspectorTab { ...UAGTabs.general }>
+						{ generalSettings() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ styleSettings() }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{ loadBtnGoogleFonts }
 		</Suspense>

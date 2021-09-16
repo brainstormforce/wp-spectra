@@ -11,13 +11,15 @@ function generateCSS(
 		let css = '';
 
 		for ( const property in cssProps ) {
-
-
-			if ( typeof cssProps[ property ] === 'undefined' || cssProps[ property ] === null || cssProps[ property ]?.length === 0 ) {
+			if (
+				typeof cssProps[ property ] === 'undefined' ||
+				cssProps[ property ] === null ||
+				cssProps[ property ]?.length === 0
+			) {
 				continue;
 			}
 
-			let propertyValue = cssProps[ property ];
+			const propertyValue = cssProps[ property ];
 
 			if ( 'font-family' === property && 'Default' === propertyValue ) {
 				continue;

@@ -34,7 +34,7 @@ const InfoBoxCta = ( props ) => {
 		return (
 			<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
 				{ attributes.ctaType === 'text' && (
-					<a
+					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
 						className="uagb-infobox-cta-link"
 						rel={ rel }
@@ -58,7 +58,7 @@ const InfoBoxCta = ( props ) => {
 								: null
 						) }
 					>
-						<a
+						<a // eslint-disable-line jsx-a11y/anchor-is-valid
 							className={ ctaBtnClass }
 							target={ target }
 							rel={ rel }

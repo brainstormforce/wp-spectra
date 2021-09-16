@@ -55,7 +55,7 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	const position = backgroundPosition.replace( '-', ' ' );
@@ -74,7 +74,7 @@ function styling( props ) {
 		'border-radius': generateCSSUnit( borderRadius, desktopMarginType ),
 	};
 
-	if ( borderStyle != 'none' ) {
+	if ( borderStyle !== 'none' ) {
 		style[ 'border-style' ] = borderStyle;
 		style[ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
 		style[ 'border-color' ] = borderColor;
@@ -163,28 +163,28 @@ function styling( props ) {
 		},
 	};
 
-	if ( colWidth != '' && colWidth != 0 ) {
+	if ( colWidth !== '' && colWidth !== 0 ) {
 		selectors[ '.block-editor-block-list__block' ] = {
 			'width': colWidth + '%',
 		};
 	}
 
-	if ( colWidthTablet != '' && colWidthTablet != 0 ) {
+	if ( colWidthTablet !== '' && colWidthTablet !== 0 ) {
 		tabletSelectors[ '.block-editor-block-list__block' ] = {
 			'width': colWidthTablet + '%',
 		};
 	}
 
-	if ( colWidthMobile != '' && colWidthMobile != 0 ) {
+	if ( colWidthMobile !== '' && colWidthMobile !== 0 ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
 			'width': colWidthMobile + '%',
 		};
 	}
 
 	if ( 'none' !== borderStyle ) {
-		selectors['.block-editor-block-list__block:hover'] = {
-			'border-color' : borderHoverColor,
-		}
+		selectors[ '.block-editor-block-list__block:hover' ] = {
+			'border-color': borderHoverColor,
+		};
 	}
 
 	let stylingCss = '';

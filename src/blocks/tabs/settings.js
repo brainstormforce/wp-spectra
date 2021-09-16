@@ -1,33 +1,33 @@
-import UAGIconPicker from "@Components/icon-picker";
-import renderSVG from "@Controls/renderIcon";
-import TypographyControl from "@Components/typography";
-import ResponsiveSelectControl from "@Components/responsive-select";
-import MultiButtonsControl from "@Components/multi-buttons-control";
-import AdvancedPopColorControl from "@Components/color-control/advanced-pop-color-control.js";
-import SpacingControl from "@Components/spacing-control";
-import Range from "@Components/range/Range.js";
-import Border from "@Components/border";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import UAGIconPicker from '@Components/icon-picker';
+import renderSVG from '@Controls/renderIcon';
+import TypographyControl from '@Components/typography';
+import ResponsiveSelectControl from '@Components/responsive-select';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import SpacingControl from '@Components/spacing-control';
+import Range from '@Components/range/Range.js';
+import Border from '@Components/border';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
-import UAGTabsControl from "@Components/tabs";
+} from '@Components/inspector-tabs/InspectorTab.js';
+import UAGTabsControl from '@Components/tabs';
 
-import React from "react";
-import { __ } from "@wordpress/i18n";
+import React from 'react';
+import { __ } from '@wordpress/i18n';
 
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
 	Icon,
-} from "@wordpress/components";
+} from '@wordpress/components';
 
-const Settings = (props) => {
+const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		tabsStyleD,
@@ -136,275 +136,275 @@ const Settings = (props) => {
 	} = attributes;
 
 	const tabStyleSettings = () => {
-		let tabsStyleOptions = {
+		const tabsStyleOptions = {
 			desktop: [
 				{
-					value: "hstyle1",
+					value: 'hstyle1',
 					label: __(
-						"Horizontal Style 1",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 1',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle2",
+					value: 'hstyle2',
 					label: __(
-						"Horizontal Style 2",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 2',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle3",
+					value: 'hstyle3',
 					label: __(
-						"Horizontal Style 3",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 3',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle4",
+					value: 'hstyle4',
 					label: __(
-						"Horizontal Style 4",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 4',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle5",
+					value: 'hstyle5',
 					label: __(
-						"Horizontal Style 5",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 5',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle6",
+					value: 'vstyle6',
 					label: __(
-						"Vertical Style 6",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 6',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle7",
+					value: 'vstyle7',
 					label: __(
-						"Vertical Style 7",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 7',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle8",
+					value: 'vstyle8',
 					label: __(
-						"Vertical Style 8",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 8',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle9",
+					value: 'vstyle9',
 					label: __(
-						"Vertical Style 9",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 9',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle10",
+					value: 'vstyle10',
 					label: __(
-						"Vertical Style 10",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 10',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 			],
 			tablet: [
 				{
-					value: "hstyle1",
+					value: 'hstyle1',
 					label: __(
-						"Horizontal Style 1",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 1',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle2",
+					value: 'hstyle2',
 					label: __(
-						"Horizontal Style 2",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 2',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle3",
+					value: 'hstyle3',
 					label: __(
-						"Horizontal Style 3",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 3',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle4",
+					value: 'hstyle4',
 					label: __(
-						"Horizontal Style 4",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 4',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle5",
+					value: 'hstyle5',
 					label: __(
-						"Horizontal Style 5",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 5',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle6",
+					value: 'vstyle6',
 					label: __(
-						"Vertical Style 6",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 6',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle7",
+					value: 'vstyle7',
 					label: __(
-						"Vertical Style 7",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 7',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle8",
+					value: 'vstyle8',
 					label: __(
-						"Vertical Style 8",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 8',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle9",
+					value: 'vstyle9',
 					label: __(
-						"Vertical Style 9",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 9',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle10",
+					value: 'vstyle10',
 					label: __(
-						"Vertical Style 10",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 10',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 			],
 			mobile: [
 				{
-					value: "hstyle1",
+					value: 'hstyle1',
 					label: __(
-						"Horizontal Style 1",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 1',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle2",
+					value: 'hstyle2',
 					label: __(
-						"Horizontal Style 2",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 2',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle3",
+					value: 'hstyle3',
 					label: __(
-						"Horizontal Style 3",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 3',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle4",
+					value: 'hstyle4',
 					label: __(
-						"Horizontal Style 4",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 4',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "hstyle5",
+					value: 'hstyle5',
 					label: __(
-						"Horizontal Style 5",
-						"ultimate-addons-for-gutenberg"
+						'Horizontal Style 5',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle6",
+					value: 'vstyle6',
 					label: __(
-						"Vertical Style 6",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 6',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle7",
+					value: 'vstyle7',
 					label: __(
-						"Vertical Style 7",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 7',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle8",
+					value: 'vstyle8',
 					label: __(
-						"Vertical Style 8",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 8',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle9",
+					value: 'vstyle9',
 					label: __(
-						"Vertical Style 9",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 9',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "vstyle10",
+					value: 'vstyle10',
 					label: __(
-						"Vertical Style 10",
-						"ultimate-addons-for-gutenberg"
+						'Vertical Style 10',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "stack1",
+					value: 'stack1',
 					label: __(
-						"Stack Style 11",
-						"ultimate-addons-for-gutenberg"
+						'Stack Style 11',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "stack2",
+					value: 'stack2',
 					label: __(
-						"Stack Style 12",
-						"ultimate-addons-for-gutenberg"
+						'Stack Style 12',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "stack3",
+					value: 'stack3',
 					label: __(
-						"Stack Style 13",
-						"ultimate-addons-for-gutenberg"
+						'Stack Style 13',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 				{
-					value: "stack4",
+					value: 'stack4',
 					label: __(
-						"Stack Style 14",
-						"ultimate-addons-for-gutenberg"
+						'Stack Style 14',
+						'ultimate-addons-for-gutenberg'
 					),
 				},
 			],
 		};
 		return (
 			<PanelBody
-				title={__("Layout", "ultimate-addons-for-gutenberg")}
-				initialOpen={true}
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<ResponsiveSelectControl
-					label={__("Style", "ultimate-addons-for-gutenberg")}
-					data={{
+					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						desktop: {
 							value: tabsStyleD,
-							label: "tabsStyleD",
+							label: 'tabsStyleD',
 						},
 						tablet: {
 							value: tabsStyleT,
-							label: "tabsStyleT",
+							label: 'tabsStyleT',
 						},
 						mobile: {
 							value: tabsStyleM,
-							label: "tabsStyleM",
+							label: 'tabsStyleM',
 						},
-					}}
-					options={tabsStyleOptions}
-					setAttributes={setAttributes}
+					} }
+					options={ tabsStyleOptions }
+					setAttributes={ setAttributes }
 				/>
 			</PanelBody>
 		);
@@ -412,209 +412,230 @@ const Settings = (props) => {
 	const tabTitleSettings = () => {
 		return (
 			<PanelBody
-				title={__(
-					"Tabs Title",
-					"ultimate-addons-for-gutenberg"
-				)}
-				initialOpen={false}
+				title={ __( 'Tabs Title', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<SelectControl
-					label={__(
-						"Initial Open Tab",
-						"ultimate-addons-for-gutenberg"
-					)}
-					value={tabActiveFrontend}
-					options={tabHeaders.map((tab, index) => {
+					label={ __(
+						'Initial Open Tab',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ tabActiveFrontend }
+					options={ tabHeaders.map( ( tab, index ) => {
 						return { value: index, label: tab };
-					})}
-					onChange={(value) =>
-						setAttributes({
-							tabActiveFrontend: parseInt(value),
-						})
+					} ) }
+					onChange={ ( value ) =>
+						setAttributes( {
+							tabActiveFrontend: parseInt( value ),
+						} )
 					}
 				/>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__("Tab Alignment", "ultimate-addons-for-gutenberg")}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __(
+						'Tab Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
 						value: tabAlign,
-						label: "tabAlign",
-					}}
+						label: 'tabAlign',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
-							value: "left",
-							icon: <Icon icon={renderSVG("fa fa-align-left")} />,
-							tooltip: __(
-								"Left",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "center",
+							value: 'left',
 							icon: (
-								<Icon icon={renderSVG("fa fa-align-center")} />
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
 							),
 							tooltip: __(
-								"Center",
-								"ultimate-addons-for-gutenberg"
+								'Left',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "right",
+							value: 'center',
 							icon: (
-								<Icon icon={renderSVG("fa fa-align-right")} />
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
 							),
 							tooltip: __(
-								"Right",
-								"ultimate-addons-for-gutenberg"
+								'Center',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={true}
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
 				/>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Text Alignment",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __(
+						'Text Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
 						value: titleAlign,
-						label: "titleAlign",
-					}}
+						label: 'titleAlign',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
-							value: "left",
-							icon: <Icon icon={renderSVG("fa fa-align-left")} />,
-							tooltip: __(
-								"Left",
-								"ultimate-addons-for-gutenberg"
-							),
-						},
-						{
-							value: "center",
+							value: 'left',
 							icon: (
-								<Icon icon={renderSVG("fa fa-align-center")} />
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
 							),
 							tooltip: __(
-								"Center",
-								"ultimate-addons-for-gutenberg"
+								'Left',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: "right",
+							value: 'center',
 							icon: (
-								<Icon icon={renderSVG("fa fa-align-right")} />
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
 							),
 							tooltip: __(
-								"Right",
-								"ultimate-addons-for-gutenberg"
+								'Center',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={true}
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
 				/>
 				<ToggleControl
-					label={__("Enable Icon", "ultimate-addons-for-gutenberg")}
-					checked={showIcon}
-					onChange={() => setAttributes({ showIcon: !showIcon })}
+					label={ __(
+						'Enable Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ showIcon }
+					onChange={ () => setAttributes( { showIcon: ! showIcon } ) }
 				/>
-				{showIcon && (
+				{ showIcon && (
 					<>
 						<UAGIconPicker
-							label={__(
-								"Button Icon",
-								"ultimate-addons-for-gutenberg"
-							)}
-							value={icon}
-							onChange={(value) => setAttributes({ icon: value })}
+							label={ __(
+								'Button Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ icon }
+							onChange={ ( value ) =>
+								setAttributes( { icon: value } )
+							}
 						/>
 						<MultiButtonsControl
-							setAttributes={setAttributes}
-							label={__(
-								"Icon Position",
-								"ultimate-addons-for-gutenberg"
-							)}
-							data={{
+							setAttributes={ setAttributes }
+							label={ __(
+								'Icon Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
 								value: iconPosition,
-								label: "iconPosition",
-							}}
+								label: 'iconPosition',
+							} }
 							className="uagb-multi-button-alignment-control"
-							options={[
+							options={ [
 								{
-									value: "left",
+									value: 'left',
 									label: __(
-										"Left",
-										"ultimate-addons-for-gutenberg"
+										'Left',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
-									value: "right",
+									value: 'right',
 									label: __(
-										"Right",
-										"ultimate-addons-for-gutenberg"
+										'Right',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
-									value: "top",
+									value: 'top',
 									label: __(
-										"Top",
-										"ultimate-addons-for-gutenberg"
+										'Top',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
-									value: "bottom",
+									value: 'bottom',
 									label: __(
-										"Bottom",
-										"ultimate-addons-for-gutenberg"
+										'Bottom',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
-							]}
+							] }
 						/>
 					</>
-				)}
+				) }
 			</PanelBody>
 		);
 	};
 	const tabBorderSettings = () => {
 		return (
 			<PanelBody
-				title={__("Border", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<Border
-					setAttributes={setAttributes}
-					borderStyle={{
+					setAttributes={ setAttributes }
+					borderStyle={ {
 						value: borderStyle,
-						label: "borderStyle",
-						title: __("Style", "ultimate-addons-for-gutenberg"),
-					}}
-					borderWidth={{
+						label: 'borderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
 						value: borderWidth,
-						label: "borderWidth",
-						title: __("Width", "ultimate-addons-for-gutenberg"),
-					}}
-					borderRadius={{
+						label: 'borderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
 						value: borderRadius,
-						label: "borderRadius",
-						title: __("Radius", "ultimate-addons-for-gutenberg"),
-					}}
-					borderColor={{
+						label: 'borderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
 						value: borderColor,
-						label: "borderColor",
-						title: __("Color", "ultimate-addons-for-gutenberg"),
-					}}
-					borderHoverColor={{
+						label: 'borderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
 						value: borderHoverColor,
-						label: "borderHoverColor",
+						label: 'borderHoverColor',
 						title: __(
-							"Hover Color",
-							"ultimate-addons-for-gutenberg"
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
 						),
-					}}
-					disableBottomSeparator={true}
+					} }
+					disableBottomSeparator={ true }
 				/>
 			</PanelBody>
 		);
@@ -622,505 +643,523 @@ const Settings = (props) => {
 	const tabBodySettings = () => {
 		return (
 			<PanelBody
-				title={__("Body", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Body', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={bodyBgColor}
-					onColorChange={(value) =>
-						setAttributes({ bodyBgColor: value })
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ bodyBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { bodyBgColor: value } )
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={bodyTextColor}
-					onColorChange={(value) =>
-						setAttributes({ bodyTextColor: value })
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ bodyTextColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { bodyTextColor: value } )
 					}
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Margin", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: tabBodyTopMargin,
-						label: "tabBodyTopMargin",
-					}}
-					valueRight={{
+						label: 'tabBodyTopMargin',
+					} }
+					valueRight={ {
 						value: tabBodyRightMargin,
-						label: "tabBodyRightMargin",
-					}}
-					valueBottom={{
+						label: 'tabBodyRightMargin',
+					} }
+					valueBottom={ {
 						value: tabBodyBottomMargin,
-						label: "tabBodyBottomMargin",
-					}}
-					valueLeft={{
+						label: 'tabBodyBottomMargin',
+					} }
+					valueLeft={ {
 						value: tabBodyLeftMargin,
-						label: "tabBodyLeftMargin",
-					}}
-					valueTopTablet={{
+						label: 'tabBodyLeftMargin',
+					} }
+					valueTopTablet={ {
 						value: tabBodyTopMarginTablet,
-						label: "tabBodyTopMarginTablet",
-					}}
-					valueRightTablet={{
+						label: 'tabBodyTopMarginTablet',
+					} }
+					valueRightTablet={ {
 						value: tabBodyRightMarginTablet,
-						label: "tabBodyRightMarginTablet",
-					}}
-					valueBottomTablet={{
+						label: 'tabBodyRightMarginTablet',
+					} }
+					valueBottomTablet={ {
 						value: tabBodyBottomMarginTablet,
-						label: "tabBodyBottomMarginTablet",
-					}}
-					valueLeftTablet={{
+						label: 'tabBodyBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
 						value: tabBodyLeftMarginTablet,
-						label: "tabBodyLeftMarginTablet",
-					}}
-					valueTopMobile={{
+						label: 'tabBodyLeftMarginTablet',
+					} }
+					valueTopMobile={ {
 						value: tabBodyTopMarginMobile,
-						label: "tabBodyTopMarginMobile",
-					}}
-					valueRightMobile={{
+						label: 'tabBodyTopMarginMobile',
+					} }
+					valueRightMobile={ {
 						value: tabBodyRightMarginMobile,
-						label: "tabBodyRightMarginMobile",
-					}}
-					valueBottomMobile={{
+						label: 'tabBodyRightMarginMobile',
+					} }
+					valueBottomMobile={ {
 						value: tabBodyBottomMarginMobile,
-						label: "tabBodyBottomMarginMobile",
-					}}
-					valueLeftMobile={{
+						label: 'tabBodyBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
 						value: tabBodyLeftMarginMobile,
-						label: "tabBodyLeftMarginMobile",
-					}}
-					unit={{
+						label: 'tabBodyLeftMarginMobile',
+					} }
+					unit={ {
 						value: tabBodyMarginUnit,
-						label: "tabBodyMarginUnit",
-					}}
-					mUnit={{
+						label: 'tabBodyMarginUnit',
+					} }
+					mUnit={ {
 						value: mobiletabBodyMarginUnit,
-						label: "mobiletabBodyMarginUnit",
-					}}
-					tUnit={{
+						label: 'mobiletabBodyMarginUnit',
+					} }
+					tUnit={ {
 						value: tablettabBodyMarginUnit,
-						label: "tablettabBodyMarginUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tablettabBodyMarginUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: tabBodyMarginLink,
-						label: "tabBodyMarginLink",
-					}}
+						label: 'tabBodyMarginLink',
+					} }
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: tabBodyTopPadding,
-						label: "tabBodyTopPadding",
-					}}
-					valueRight={{
+						label: 'tabBodyTopPadding',
+					} }
+					valueRight={ {
 						value: tabBodyRightPadding,
-						label: "tabBodyRightPadding",
-					}}
-					valueBottom={{
+						label: 'tabBodyRightPadding',
+					} }
+					valueBottom={ {
 						value: tabBodyBottomPadding,
-						label: "tabBodyBottomPadding",
-					}}
-					valueLeft={{
+						label: 'tabBodyBottomPadding',
+					} }
+					valueLeft={ {
 						value: tabBodyLeftPadding,
-						label: "tabBodyLeftPadding",
-					}}
-					valueTopTablet={{
+						label: 'tabBodyLeftPadding',
+					} }
+					valueTopTablet={ {
 						value: tabBodyTopPaddingTablet,
-						label: "tabBodyTopPaddingTablet",
-					}}
-					valueRightTablet={{
+						label: 'tabBodyTopPaddingTablet',
+					} }
+					valueRightTablet={ {
 						value: tabBodyRightPaddingTablet,
-						label: "tabBodyRightPaddingTablet",
-					}}
-					valueBottomTablet={{
+						label: 'tabBodyRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
 						value: tabBodyBottomPaddingTablet,
-						label: "tabBodyBottomPaddingTablet",
-					}}
-					valueLeftTablet={{
+						label: 'tabBodyBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
 						value: tabBodyLeftPaddingTablet,
-						label: "tabBodyLeftPaddingTablet",
-					}}
-					valueTopMobile={{
+						label: 'tabBodyLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
 						value: tabBodyTopPaddingMobile,
-						label: "tabBodyTopPaddingMobile",
-					}}
-					valueRightMobile={{
+						label: 'tabBodyTopPaddingMobile',
+					} }
+					valueRightMobile={ {
 						value: tabBodyRightPaddingMobile,
-						label: "tabBodyRightPaddingMobile",
-					}}
-					valueBottomMobile={{
+						label: 'tabBodyRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
 						value: tabBodyBottomPaddingMobile,
-						label: "tabBodyBottomPaddingMobile",
-					}}
-					valueLeftMobile={{
+						label: 'tabBodyBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
 						value: tabBodyLeftPaddingMobile,
-						label: "tabBodyLeftPaddingMobile",
-					}}
-					unit={{
+						label: 'tabBodyLeftPaddingMobile',
+					} }
+					unit={ {
 						value: tabBodyPaddingUnit,
-						label: "tabBodyPaddingUnit",
-					}}
-					mUnit={{
+						label: 'tabBodyPaddingUnit',
+					} }
+					mUnit={ {
 						value: mobiletabBodyPaddingUnit,
-						label: "mobiletabBodyPaddingUnit",
-					}}
-					tUnit={{
+						label: 'mobiletabBodyPaddingUnit',
+					} }
+					tUnit={ {
 						value: tablettabBodyPaddingUnit,
-						label: "tablettabBodyPaddingUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tablettabBodyPaddingUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: tabBodyPaddingLink,
-						label: "tabBodyPaddingLink",
-					}}
+						label: 'tabBodyPaddingLink',
+					} }
 				/>
 			</PanelBody>
 		);
 	};
 
 	const tabTitleStyle = () => {
-		let tabOutputNormal = (
+		const tabOutputNormal = (
 			<>
 				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={headerBgColor}
-					onColorChange={(value) =>
-						setAttributes({ headerBgColor: value })
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ headerBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { headerBgColor: value } )
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={headerTextColor}
-					onColorChange={(value) =>
-						setAttributes({ headerTextColor: value })
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ headerTextColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { headerTextColor: value } )
 					}
 				/>
 			</>
 		);
-		let tabOutputActive = (
+		const tabOutputActive = (
 			<>
 				<AdvancedPopColorControl
-					label={__(
-						"Background Color",
-						"ultimate-addons-for-gutenberg"
-					)}
-					colorValue={activeTabBgColor}
-					onColorChange={(value) =>
-						setAttributes({ activeTabBgColor: value })
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ activeTabBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { activeTabBgColor: value } )
 					}
 				/>
 				<AdvancedPopColorControl
-					label={__("Text Color", "ultimate-addons-for-gutenberg")}
-					colorValue={activeTabTextColor}
-					onColorChange={(value) =>
-						setAttributes({ activeTabTextColor: value })
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ activeTabTextColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { activeTabTextColor: value } )
 					}
 				/>
 			</>
 		);
 		return (
 			<PanelBody
-				title={__("Title", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<UAGTabsControl
-					tabs={[
+					tabs={ [
 						{
-							name: "normal",
+							name: 'normal',
 							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
+								'Normal',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							name: "active",
+							name: 'active',
 							title: __(
-								"Active",
-								"ultimate-addons-for-gutenberg"
+								'Active',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					normal={tabOutputNormal}
-					active={tabOutputActive}
+					] }
+					normal={ tabOutputNormal }
+					active={ tabOutputActive }
 				/>
 				<TypographyControl
-					label={__("Typography", "ultimate-addons-for-gutenberg")}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					loadGoogleFonts={{
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
 						value: titleLoadGoogleFonts,
-						label: "titleLoadGoogleFonts",
-					}}
-					fontFamily={{
+						label: 'titleLoadGoogleFonts',
+					} }
+					fontFamily={ {
 						value: titleFontFamily,
-						label: "titleFontFamily",
-					}}
-					fontWeight={{
+						label: 'titleFontFamily',
+					} }
+					fontWeight={ {
 						value: titleFontWeight,
-						label: "titleFontWeight",
-					}}
-					fontSubset={{
+						label: 'titleFontWeight',
+					} }
+					fontSubset={ {
 						value: titleFontSubset,
-						label: "titleFontSubset",
-					}}
-					fontSizeType={{
+						label: 'titleFontSubset',
+					} }
+					fontSizeType={ {
 						value: titleFontSizeType,
-						label: "titleFontSizeType",
-					}}
-					fontSize={{
+						label: 'titleFontSizeType',
+					} }
+					fontSize={ {
 						value: titleFontSize,
-						label: "titleFontSize",
-					}}
-					fontSizeMobile={{
+						label: 'titleFontSize',
+					} }
+					fontSizeMobile={ {
 						value: titleFontSizeMobile,
-						label: "titleFontSizeMobile",
-					}}
-					fontSizeTablet={{
+						label: 'titleFontSizeMobile',
+					} }
+					fontSizeTablet={ {
 						value: titleFontSizeTablet,
-						label: "titleFontSizeTablet",
-					}}
-					lineHeightType={{
+						label: 'titleFontSizeTablet',
+					} }
+					lineHeightType={ {
 						value: titleLineHeightType,
-						label: "titleLineHeightType",
-					}}
-					lineHeight={{
+						label: 'titleLineHeightType',
+					} }
+					lineHeight={ {
 						value: titleLineHeight,
-						label: "titleLineHeight",
-					}}
-					lineHeightMobile={{
+						label: 'titleLineHeight',
+					} }
+					lineHeightMobile={ {
 						value: titleLineHeightMobile,
-						label: "titleLineHeightMobile",
-					}}
-					lineHeightTablet={{
+						label: 'titleLineHeightMobile',
+					} }
+					lineHeightTablet={ {
 						value: titleLineHeightTablet,
-						label: "titleLineHeightTablet",
-					}}
-					transform={{
+						label: 'titleLineHeightTablet',
+					} }
+					transform={ {
 						value: titleTransform,
-						label: "titleTransform",
-					}}
-					decoration={{
+						label: 'titleTransform',
+					} }
+					decoration={ {
 						value: titleDecoration,
-						label: "titleDecoration",
-					}}
+						label: 'titleDecoration',
+					} }
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Margin", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: tabTitleTopMargin,
-						label: "tabTitleTopMargin",
-					}}
-					valueRight={{
+						label: 'tabTitleTopMargin',
+					} }
+					valueRight={ {
 						value: tabTitleRightMargin,
-						label: "tabTitleRightMargin",
-					}}
-					valueBottom={{
+						label: 'tabTitleRightMargin',
+					} }
+					valueBottom={ {
 						value: tabTitleBottomMargin,
-						label: "tabTitleBottomMargin",
-					}}
-					valueLeft={{
+						label: 'tabTitleBottomMargin',
+					} }
+					valueLeft={ {
 						value: tabTitleLeftMargin,
-						label: "tabTitleLeftMargin",
-					}}
-					valueTopTablet={{
+						label: 'tabTitleLeftMargin',
+					} }
+					valueTopTablet={ {
 						value: tabTitleTopMarginTablet,
-						label: "tabTitleTopMarginTablet",
-					}}
-					valueRightTablet={{
+						label: 'tabTitleTopMarginTablet',
+					} }
+					valueRightTablet={ {
 						value: tabTitleRightMarginTablet,
-						label: "tabTitleRightMarginTablet",
-					}}
-					valueBottomTablet={{
+						label: 'tabTitleRightMarginTablet',
+					} }
+					valueBottomTablet={ {
 						value: tabTitleBottomMarginTablet,
-						label: "tabTitleBottomMarginTablet",
-					}}
-					valueLeftTablet={{
+						label: 'tabTitleBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
 						value: tabTitleLeftMarginTablet,
-						label: "tabTitleLeftMarginTablet",
-					}}
-					valueTopMobile={{
+						label: 'tabTitleLeftMarginTablet',
+					} }
+					valueTopMobile={ {
 						value: tabTitleTopMarginMobile,
-						label: "tabTitleTopMarginMobile",
-					}}
-					valueRightMobile={{
+						label: 'tabTitleTopMarginMobile',
+					} }
+					valueRightMobile={ {
 						value: tabTitleRightMarginMobile,
-						label: "tabTitleRightMarginMobile",
-					}}
-					valueBottomMobile={{
+						label: 'tabTitleRightMarginMobile',
+					} }
+					valueBottomMobile={ {
 						value: tabTitleBottomMarginMobile,
-						label: "tabTitleBottomMarginMobile",
-					}}
-					valueLeftMobile={{
+						label: 'tabTitleBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
 						value: tabTitleLeftMarginMobile,
-						label: "tabTitleLeftMarginMobile",
-					}}
-					unit={{
+						label: 'tabTitleLeftMarginMobile',
+					} }
+					unit={ {
 						value: tabTitleMarginUnit,
-						label: "tabTitleMarginUnit",
-					}}
-					mUnit={{
+						label: 'tabTitleMarginUnit',
+					} }
+					mUnit={ {
 						value: mobiletabTitleMarginUnit,
-						label: "mobiletabTitleMarginUnit",
-					}}
-					tUnit={{
+						label: 'mobiletabTitleMarginUnit',
+					} }
+					tUnit={ {
 						value: tablettabTitleMarginUnit,
-						label: "tablettabTitleMarginUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tablettabTitleMarginUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: tabTitleMarginLink,
-						label: "tabTitleMarginLink",
-					}}
+						label: 'tabTitleMarginLink',
+					} }
 				/>
 				<SpacingControl
-					{...props}
-					label={__("Padding", "ultimate-addons-for-gutenberg")}
-					valueTop={{
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
 						value: tabTitleTopPadding,
-						label: "tabTitleTopPadding",
-					}}
-					valueRight={{
+						label: 'tabTitleTopPadding',
+					} }
+					valueRight={ {
 						value: tabTitleRightPadding,
-						label: "tabTitleRightPadding",
-					}}
-					valueBottom={{
+						label: 'tabTitleRightPadding',
+					} }
+					valueBottom={ {
 						value: tabTitleBottomPadding,
-						label: "tabTitleBottomPadding",
-					}}
-					valueLeft={{
+						label: 'tabTitleBottomPadding',
+					} }
+					valueLeft={ {
 						value: tabTitleLeftPadding,
-						label: "tabTitleLeftPadding",
-					}}
-					valueTopTablet={{
+						label: 'tabTitleLeftPadding',
+					} }
+					valueTopTablet={ {
 						value: tabTitleTopPaddingTablet,
-						label: "tabTitleTopPaddingTablet",
-					}}
-					valueRightTablet={{
+						label: 'tabTitleTopPaddingTablet',
+					} }
+					valueRightTablet={ {
 						value: tabTitleRightPaddingTablet,
-						label: "tabTitleRightPaddingTablet",
-					}}
-					valueBottomTablet={{
+						label: 'tabTitleRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
 						value: tabTitleBottomPaddingTablet,
-						label: "tabTitleBottomPaddingTablet",
-					}}
-					valueLeftTablet={{
+						label: 'tabTitleBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
 						value: tabTitleLeftPaddingTablet,
-						label: "tabTitleLeftPaddingTablet",
-					}}
-					valueTopMobile={{
+						label: 'tabTitleLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
 						value: tabTitleTopPaddingMobile,
-						label: "tabTitleTopPaddingMobile",
-					}}
-					valueRightMobile={{
+						label: 'tabTitleTopPaddingMobile',
+					} }
+					valueRightMobile={ {
 						value: tabTitleRightPaddingMobile,
-						label: "tabTitleRightPaddingMobile",
-					}}
-					valueBottomMobile={{
+						label: 'tabTitleRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
 						value: tabTitleBottomPaddingMobile,
-						label: "tabTitleBottomPaddingMobile",
-					}}
-					valueLeftMobile={{
+						label: 'tabTitleBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
 						value: tabTitleLeftPaddingMobile,
-						label: "tabTitleLeftPaddingMobile",
-					}}
-					unit={{
+						label: 'tabTitleLeftPaddingMobile',
+					} }
+					unit={ {
 						value: tabTitlePaddingUnit,
-						label: "tabTitlePaddingUnit",
-					}}
-					mUnit={{
+						label: 'tabTitlePaddingUnit',
+					} }
+					mUnit={ {
 						value: mobiletabTitlePaddingUnit,
-						label: "mobiletabTitlePaddingUnit",
-					}}
-					tUnit={{
+						label: 'mobiletabTitlePaddingUnit',
+					} }
+					tUnit={ {
 						value: tablettabTitlePaddingUnit,
-						label: "tablettabTitlePaddingUnit",
-					}}
-					attributes={attributes}
-					setAttributes={setAttributes}
-					link={{
+						label: 'tablettabTitlePaddingUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
 						value: tabTitlePaddingLink,
-						label: "tabTitlePaddingLink",
-					}}
+						label: 'tabTitlePaddingLink',
+					} }
 				/>
 			</PanelBody>
 		);
 	};
 
 	const tabIconStyle = () => {
-		if (!showIcon) {
-			return "";
+		if ( ! showIcon ) {
+			return '';
 		}
-		let tabOutputNormal = (
+		const tabOutputNormal = (
 			<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
-				colorValue={iconColor}
-				onColorChange={(value) => setAttributes({ iconColor: value })}
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ iconColor }
+				onColorChange={ ( value ) =>
+					setAttributes( { iconColor: value } )
+				}
 			/>
 		);
-		let tabOutputActive = (
+		const tabOutputActive = (
 			<AdvancedPopColorControl
-				label={__("Color", "ultimate-addons-for-gutenberg")}
-				colorValue={activeiconColor}
-				onColorChange={(value) =>
-					setAttributes({ activeiconColor: value })
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ activeiconColor }
+				onColorChange={ ( value ) =>
+					setAttributes( { activeiconColor: value } )
 				}
 			/>
 		);
 		return (
 			<PanelBody
-				title={__("Icon", "ultimate-addons-for-gutenberg")}
-				initialOpen={false}
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<Range
-					label={__("Spacing", "ultimate-addons-for-gutenberg")}
-					setAttributes={setAttributes}
-					value={iconSpacing}
-					onChange={(value) => setAttributes({ iconSpacing: value })}
-					min={0}
-					max={500}
-					displayUnit={false}
+					label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ iconSpacing }
+					onChange={ ( value ) =>
+						setAttributes( { iconSpacing: value } )
+					}
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
 				/>
 				<UAGTabsControl
-					tabs={[
+					tabs={ [
 						{
-							name: "normal",
+							name: 'normal',
 							title: __(
-								"Normal",
-								"ultimate-addons-for-gutenberg"
+								'Normal',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							name: "active",
+							name: 'active',
 							title: __(
-								"Active",
-								"ultimate-addons-for-gutenberg"
+								'Active',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					normal={tabOutputNormal}
-					active={tabOutputActive}
+					] }
+					normal={ tabOutputNormal }
+					active={ tabOutputActive }
 				/>
 				<Range
-					label={__("Size", "ultimate-addons-for-gutenberg")}
-					setAttributes={setAttributes}
-					value={iconSize}
-					onChange={(value) => setAttributes({ iconSize: value })}
-					min={0}
-					max={500}
-					displayUnit={false}
+					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ iconSize }
+					onChange={ ( value ) =>
+						setAttributes( { iconSize: value } )
+					}
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
 				/>
 			</PanelBody>
 		);
@@ -1128,19 +1167,22 @@ const Settings = (props) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab {...UAGTabs.general}>
-					{tabStyleSettings()}
-					{tabTitleSettings()}
+				<InspectorTab { ...UAGTabs.general }>
+					{ tabStyleSettings() }
+					{ tabTitleSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>
-					{tabTitleStyle()}
-					{tabIconStyle()}
-					{tabBodySettings()}
-					{tabBorderSettings()}
+				<InspectorTab { ...UAGTabs.style }>
+					{ tabTitleStyle() }
+					{ tabIconStyle() }
+					{ tabBodySettings() }
+					{ tabBorderSettings() }
 				</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
+				<InspectorTab
+					{ ...UAGTabs.advance }
+					parentProps={ props }
+				></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
 };
-export default React.memo(Settings);
+export default React.memo( Settings );

@@ -37,20 +37,20 @@ const UAGBBlockQuote = ( props ) => {
 			paddingBtnLeft,
 		} = props.attributes;
 
-		if (tweetBtnVrPadding) {
-			if (!paddingBtnTop) {
-				props.setAttributes({ paddingBtnTop: tweetBtnVrPadding });
+		if ( tweetBtnVrPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: tweetBtnVrPadding } );
 			}
-			if (!paddingBtnBottom) {
-				props.setAttributes({ paddingBtnBottom: tweetBtnVrPadding });
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: tweetBtnVrPadding } );
 			}
 		}
-		if (tweetBtnHrPadding) {
-			if (!paddingBtnRight) {
-				props.setAttributes({ paddingBtnRight: tweetBtnHrPadding });
+		if ( tweetBtnHrPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: tweetBtnHrPadding } );
 			}
-			if (!paddingBtnLeft) {
-				props.setAttributes({ paddingBtnLeft: tweetBtnHrPadding });
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
 			}
 		}
 		// Pushing Style tag for this block css.

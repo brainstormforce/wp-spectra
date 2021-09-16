@@ -38,20 +38,20 @@ const UAGBInfoBox = ( props ) => {
 			paddingBtnLeft,
 		} = props.attributes;
 
-		if (ctaBtnVertPadding) {
-			if (!paddingBtnTop) {
-				setAttributes({ paddingBtnTop: ctaBtnVertPadding });
+		if ( ctaBtnVertPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: ctaBtnVertPadding } );
 			}
-			if (!paddingBtnBottom) {
-				setAttributes({ paddingBtnBottom: ctaBtnVertPadding });
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: ctaBtnVertPadding } );
 			}
 		}
-		if (ctaBtnHrPadding) {
-			if (!paddingBtnRight) {
-				setAttributes({ paddingBtnRight: ctaBtnHrPadding });
+		if ( ctaBtnHrPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: ctaBtnHrPadding } );
 			}
-			if (!paddingBtnLeft) {
-				setAttributes({ paddingBtnLeft: ctaBtnHrPadding });
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
 			}
 		}
 	}, [] );
@@ -76,15 +76,16 @@ const UAGBInfoBox = ( props ) => {
 		</>
 	);
 };
-export default withSelect((select, props) => {
+
+export default withSelect( ( select ) => {
 	const { __experimentalGetPreviewDeviceType = null } = select(
-		"core/edit-post"
+		'core/edit-post'
 	);
-	let deviceType = __experimentalGetPreviewDeviceType
+	const deviceType = __experimentalGetPreviewDeviceType
 		? __experimentalGetPreviewDeviceType()
 		: null;
 
 	return {
-		deviceType: deviceType,
+		deviceType,
 	};
-})(UAGBInfoBox);
+} )( UAGBInfoBox );

@@ -48,49 +48,64 @@ const UAGBTaxonomyList = ( props ) => {
 			contentLeftPaddingMobile,
 		} = props.attributes;
 
-		if (contentPadding) {
-			if (!contentTopPadding) {
-				props.setAttributes({ contentTopPadding: contentPadding });
+		if ( contentPadding ) {
+			if ( ! contentTopPadding ) {
+				props.setAttributes( { contentTopPadding: contentPadding } );
 			}
-			if (!contentBottomPadding) {
-				props.setAttributes({ contentBottomPadding: contentPadding });
+			if ( ! contentBottomPadding ) {
+				props.setAttributes( { contentBottomPadding: contentPadding } );
 			}
-			if (!contentLeftPadding) {
-				props.setAttributes({ contentLeftPadding: contentPadding });
+			if ( ! contentLeftPadding ) {
+				props.setAttributes( { contentLeftPadding: contentPadding } );
 			}
-			if (!contentRightPadding) {
-				props.setAttributes({ contentRightPadding: contentPadding });
-			}
-		}
-		if (contentPaddingMobile) {
-			if (!contentTopPaddingMobile) {
-				props.setAttributes({ contentTopPaddingMobile: contentPaddingMobile });
-			}
-			if (!contentBottomPaddingMobile) {
-				props.setAttributes({ contentBottomPaddingMobile: contentPaddingMobile });
-			}
-			if (!contentLeftPaddingMobile) {
-				props.setAttributes({ contentLeftPaddingMobile: contentPaddingMobile });
-			}
-			if (!contentRightPaddingMobile) {
-				props.setAttributes({ contentRightPaddingMobile: contentPaddingMobile });
+			if ( ! contentRightPadding ) {
+				props.setAttributes( { contentRightPadding: contentPadding } );
 			}
 		}
-		if (contentPaddingTablet) {
-			if (!contentTopPaddingTablet) {
-				props.setAttributes({ contentTopPaddingTablet: contentPaddingTablet });
+		if ( contentPaddingMobile ) {
+			if ( ! contentTopPaddingMobile ) {
+				props.setAttributes( {
+					contentTopPaddingMobile: contentPaddingMobile,
+				} );
 			}
-			if (!contentBottomPaddingTablet) {
-				props.setAttributes({ contentBottomPaddingTablet: contentPaddingTablet });
+			if ( ! contentBottomPaddingMobile ) {
+				props.setAttributes( {
+					contentBottomPaddingMobile: contentPaddingMobile,
+				} );
 			}
-			if (!contentLeftPaddingTablet) {
-				props.setAttributes({ contentLeftPaddingTablet: contentPaddingTablet });
+			if ( ! contentLeftPaddingMobile ) {
+				props.setAttributes( {
+					contentLeftPaddingMobile: contentPaddingMobile,
+				} );
 			}
-			if (!contentRightPaddingTablet) {
-				props.setAttributes({ contentRightPaddingTablet: contentPaddingTablet });
+			if ( ! contentRightPaddingMobile ) {
+				props.setAttributes( {
+					contentRightPaddingMobile: contentPaddingMobile,
+				} );
 			}
 		}
-
+		if ( contentPaddingTablet ) {
+			if ( ! contentTopPaddingTablet ) {
+				props.setAttributes( {
+					contentTopPaddingTablet: contentPaddingTablet,
+				} );
+			}
+			if ( ! contentBottomPaddingTablet ) {
+				props.setAttributes( {
+					contentBottomPaddingTablet: contentPaddingTablet,
+				} );
+			}
+			if ( ! contentLeftPaddingTablet ) {
+				props.setAttributes( {
+					contentLeftPaddingTablet: contentPaddingTablet,
+				} );
+			}
+			if ( ! contentRightPaddingTablet ) {
+				props.setAttributes( {
+					contentRightPaddingTablet: contentPaddingTablet,
+				} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -98,7 +113,7 @@ const UAGBTaxonomyList = ( props ) => {
 			'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 )
 		);
 
-		if ( null != element && 'undefined' !== typeof element ) {
+		if ( null !== element && 'undefined' !== typeof element ) {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );

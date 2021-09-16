@@ -50,7 +50,8 @@ const Render = ( props ) => {
 			) }
 		>
 			<div className="uagb-marketing-btn__wrap">
-				<a className="uagb-marketing-btn__link">
+				<a // eslint-disable-line jsx-a11y/anchor-is-valid
+				 className="uagb-marketing-btn__link">
 					<div className="uagb-marketing-btn__title-wrap">
 						{ '' !== icon && (
 							<div className="uagb-marketing-btn__icon-wrap">

@@ -30,13 +30,6 @@ function styling( props ) {
 		borderColor,
 		borderHoverColor,
 		//Background
-		vPadding,
-		hPadding,
-		hPaddingMobile,
-		vPaddingMobile,
-		hPaddingTablet,
-		vPaddingTablet,
-		paddingType,
 		backgroundType,
 		backgroundColor,
 		backgroundHoverColor,
@@ -70,7 +63,6 @@ function styling( props ) {
 		prefixLineHeightTablet,
 		prefixLineHeightMobile,
 		paddingBtnUnit,
-		spacingLink,
 		mobilePaddingBtnUnit,
 		tabletPaddingBtnUnit,
 		paddingBtnTop,
@@ -91,9 +83,9 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const setIconColor = '' == iconColor ? titleColor : iconColor;
+	const setIconColor = '' === iconColor ? titleColor : iconColor;
 	const setIconHoverColor =
-		'' == iconHoverColor ? titleHoverColor : iconHoverColor;
+		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
 
 	selectors = {
 		' .uagb-marketing-btn__title-wrap': {
@@ -139,7 +131,10 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 			'border-style': borderStyle,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-color': borderColor,
@@ -150,9 +145,9 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'transparent' == backgroundType ) {
+	if ( 'transparent' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ].background = 'transparent';
-	} else if ( 'color' == backgroundType ) {
+	} else if ( 'color' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ].background = hexToRgba(
 			backgroundColor,
 			backgroundOpacity
@@ -163,7 +158,7 @@ function styling( props ) {
 			backgroundHoverColor,
 			backgroundHoverOpacity
 		);
-	} else if ( 'gradient' == backgroundType ) {
+	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
 			'transparent';
 
@@ -190,7 +185,7 @@ function styling( props ) {
 		}
 	}
 
-	const marginType = 'after' == iconPosition ? 'margin-left' : 'margin-right';
+	const marginType = 'after' === iconPosition ? 'margin-left' : 'margin-right';
 
 	selectors[ ' .uagb-marketing-btn__icon-wrap' ][
 		marginType
@@ -222,10 +217,22 @@ function styling( props ) {
 			'height': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
 		},
 		' .uagb-marketing-btn__link': {
-			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
 		},
 	};
 
@@ -255,10 +262,22 @@ function styling( props ) {
 			'height': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
 		},
 		' .uagb-marketing-btn__link': {
-			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
 		},
 	};
 

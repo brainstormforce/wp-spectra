@@ -1,7 +1,7 @@
-import { ToggleControl, SelectControl, PanelBody } from "@wordpress/components"
+import { ToggleControl, SelectControl, PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from "@wordpress/compose";
-import { addFilter } from "@wordpress/hooks";
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const { enableConditions } = uagb_blocks_info;
@@ -40,7 +40,7 @@ const UserConditionOptions = ( props ) => {
 					{ value: 'os', label: __( 'Operating System' ) },
 				] }
 			/>
-			{ UAGDisplayConditions == 'userstate' && (
+			{ UAGDisplayConditions === 'userstate' && (
 				<>
 					<ToggleControl
 						label={ __( 'Hide From Logged In Users' ) }
@@ -62,7 +62,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'responsiveVisibility' && (
+			{ UAGDisplayConditions === 'responsiveVisibility' && (
 				<>
 					<ToggleControl
 						label={ __( 'Hide on Desktop' ) }
@@ -93,7 +93,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'os' && (
+			{ UAGDisplayConditions === 'os' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide on Operating System' ) }
@@ -114,7 +114,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'browser' && (
+			{ UAGDisplayConditions === 'browser' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide on Browser' ) }
@@ -138,7 +138,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'userRole' && (
+			{ UAGDisplayConditions === 'userRole' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide for User Role' ) }
@@ -154,18 +154,16 @@ const UserConditionOptions = ( props ) => {
 	);
 };
 
-const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
-
-	return (props) => {
-
+const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		const { isSelected } = props;
 
 		const blockName = props.name;
 
 		const excludeBlocks = ['core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
 
-		let customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
-		const blockPrefix = blockName.substring(0, blockName.indexOf("/") + 1 );
+		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
+		const blockPrefix = blockName.substring(0, blockName.indexOf('/') + 1 );
 		
 		return (
 			<>
@@ -185,10 +183,9 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 			</>
 		);
 	};
-}, 'AdvancedControlsBlock');
+}, 'AdvancedControlsBlock' );
 
-function ApplyExtraClass(extraProps, blockType, attributes) {
-
+function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
 		UAGHideTab,
@@ -208,20 +205,18 @@ function ApplyExtraClass(extraProps, blockType, attributes) {
 		if ( UAGHideMob ) {
 			extraProps.className = extraProps.className + ' uag-hide-mob';
 		}
-
 	}
 
 	return extraProps;
 }
 
-if( '1' === enableConditions ){
+if ( '1' === enableConditions ) {
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',
 		'uagb/advanced-control-block',
-		function( content, props ) {
-
-			if ( !props ) {
+		function ( content, props ) {
+			if ( ! props ) {
 				return content;
 			}
 
@@ -232,11 +227,19 @@ if( '1' === enableConditions ){
 			if( isSelected && ! excludeBlocks.includes(name) ) {
 				return (
 					<PanelBody
-						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
+						title={ __(
+							'UAG - Extentions',
+							'ultimate-addons-for-gutenberg'
+						) }
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						<p className="components-base-control__help">
+							{ __(
+								"Below setting will only take effect once you are on the live page, and not while you're editing.",
+								'ultimate-addons-for-gutenberg'
+							) }
+						</p>
 						{ UserConditionOptions( props ) }
 					</PanelBody>
 				);
@@ -247,13 +250,12 @@ if( '1' === enableConditions ){
 	addFilter(
 		'editor.BlockEdit',
 		'uagb/advanced-control-block',
-		AdvancedControlsBlock,
+		AdvancedControlsBlock
 	);
 
-    addFilter(
-        'blocks.getSaveContent.extraProps',
-        'uagb/apply-extra-class',
-        ApplyExtraClass,
-    );
+	addFilter(
+		'blocks.getSaveContent.extraProps',
+		'uagb/apply-extra-class',
+		ApplyExtraClass
+	);
 }
-

@@ -2,8 +2,10 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
-import InspectorTab, { UAGTabs } from "@Components/inspector-tabs/InspectorTab.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -71,9 +73,7 @@ const Settings = ( props ) => {
 
 	const dateInspectorControls = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
@@ -127,7 +127,9 @@ const Settings = ( props ) => {
 								setAttributes( { newMinDay } )
 							}
 						/>
-						<p>	{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :
+						<p>
+							{ ' ' }
+							{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :
 						</p>
 						<SelectControl
 							className={ 'maxDate' }
@@ -166,14 +168,13 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<InspectorControls>
-			<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
-					{ dateInspectorControls() }
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ dateInspectorControls() }
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}>
-					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
-				</InspectorControls>
+			</InspectorControls>
 		</>
 	);
 };

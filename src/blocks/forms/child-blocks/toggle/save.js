@@ -39,7 +39,8 @@ export default function save( props ) {
 				className={ `uagb-forms-toggle-label ${ isRequired } uagb-forms-input-label` }
 				id={ block_id }
 			/>
-			<label className="uagb-switch" id="uag-form">
+			<label // eslint-disable-line jsx-a11y/label-has-for
+			className="uagb-switch" id="uag-form">
 				<input
 					type="hidden"
 					className="uagb-forms-toggle-input"

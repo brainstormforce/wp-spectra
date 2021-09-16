@@ -95,19 +95,22 @@ function styling( props ) {
 		headingLineHeightMobile,
 		disableBullets,
 		headingAlignment,
-		borderHoverColor
+		borderHoverColor,
 	} = props.attributes;
 
 	let selectors = {};
 	let tablet_selectors = {};
 	let mobile_selectors = {};
 
-	const alignment =
-		headingAlignment == 'left'
-			? 'flex-start'
-			: headingAlignment == 'right'
-			? 'flex-end'
-			: 'center';
+	let alignment = 'center';
+
+	if ( headingAlignment === 'left' ){
+		alignment = 'flex-start';
+	} else if( headingAlignment === 'right' ){
+		alignment = 'flex-end';
+	}else{
+		alignment = 'center';
+	}
 
 	selectors = {
 		' .uagb-toc__list-wrap ol li a': {
@@ -142,18 +145,12 @@ function styling( props ) {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-color': borderColor,
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'padding-left': generateCSSUnit(
-				leftPadding,
-				paddingTypeDesktop
-			),
+			'padding-left': generateCSSUnit( leftPadding, paddingTypeDesktop ),
 			'padding-right': generateCSSUnit(
 				rightPadding,
 				paddingTypeDesktop
 			),
-			'padding-top': generateCSSUnit(
-				topPadding,
-				paddingTypeDesktop
-			),
+			'padding-top': generateCSSUnit( topPadding, paddingTypeDesktop ),
 			'padding-bottom': generateCSSUnit(
 				bottomPadding,
 				paddingTypeDesktop
@@ -165,15 +162,9 @@ function styling( props ) {
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
 			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
-			'margin-right': generateCSSUnit(
-				rightMargin,
-				marginTypeDesktop
-			),
+			'margin-right': generateCSSUnit( rightMargin, marginTypeDesktop ),
 			'margin-top': generateCSSUnit( topMargin, marginTypeDesktop ),
-			'margin-bottom': generateCSSUnit(
-				bottomMargin,
-				marginTypeDesktop
-			),
+			'margin-bottom': generateCSSUnit( bottomMargin, marginTypeDesktop ),
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
 			'padding-top': 0,
@@ -272,17 +263,29 @@ function styling( props ) {
 				rightPaddingTablet,
 				paddingTypeTablet
 			),
-			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+			'padding-top': generateCSSUnit(
+				topPaddingTablet,
+				paddingTypeTablet
+			),
 			'padding-bottom': generateCSSUnit(
 				bottomPaddingTablet,
 				paddingTypeTablet
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				marginTypeTablet
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				marginTypeTablet
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				marginTypeTablet
+			),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsTablet,
@@ -360,17 +363,29 @@ function styling( props ) {
 				rightPaddingMobile,
 				paddingTypeMobile
 			),
-			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-top': generateCSSUnit(
+				topPaddingMobile,
+				paddingTypeMobile
+			),
 			'padding-bottom': generateCSSUnit(
 				bottomPaddingMobile,
 				paddingTypeMobile
 			),
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list:first-child': {
-			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				marginTypeMobile
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				marginTypeMobile
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				marginTypeMobile
+			),
 		},
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsMobile,
@@ -422,7 +437,10 @@ function styling( props ) {
 		},
 	};
 
-	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
 
 	let styling_css = generateCSS( selectors, id );
 
@@ -440,12 +458,12 @@ function styling( props ) {
 		'mobile'
 	);
 
-	if ( '' != scrollToTopColor ) {
+	if ( '' !== scrollToTopColor ) {
 		styling_css +=
 			'.uagb-toc__scroll-top { color: ' + scrollToTopColor + '; }';
 	}
 
-	if ( '' != scrollToTopBgColor ) {
+	if ( '' !== scrollToTopBgColor ) {
 		styling_css +=
 			'.block-editor-page .uagb-toc__scroll-top.uagb-toc__show-scroll.uagb-toc__show-scroll { background: ' +
 			scrollToTopBgColor +
