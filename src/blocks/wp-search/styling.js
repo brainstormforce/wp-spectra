@@ -94,7 +94,7 @@ function styling( props ) {
 	);
 
 	const inputCSS = {
-		color: textColor,
+		'color': textColor,
 		'background-color': inputBgColor,
 		'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 		'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),

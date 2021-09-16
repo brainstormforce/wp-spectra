@@ -62,7 +62,7 @@ module.exports = function ( grunt ) {
 					potFilename: 'languages/ultimate-addons-for-gutenberg.pot',
 					exclude: [ 'admin/bsf-core' ],
 					potHeaders: {
-						poedit: true,
+						'poedit': true,
 						'x-poedit-keywordslist': true,
 					},
 					type: 'wp-plugin',
