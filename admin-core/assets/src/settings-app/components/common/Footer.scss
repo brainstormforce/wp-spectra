@@ -1,0 +1,19 @@
+.uag-global-footer{
+    text-align: center;
+    span{
+        margin-bottom: 0px;
+        color: var(--content-color);
+        font-family: var(--heading-font-family);
+        font-size: 14px;
+    }
+    .uag-left__footer{
+        float: left;
+    }
+}
+@media screen and (max-width: 960px){
+     #wpfooter {
+        display: block;
+        position: relative;
+        margin-left: 0px!important;
+    }
+}
