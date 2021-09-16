@@ -1,10 +1,10 @@
 import React from 'react';
 const Excerpt = ( props ) => {
 	const { post, attributes } = props;
-
+	let trimmed_excerpt;
 	if ( attributes.displayPostExcerpt && undefined !== post.uagb_excerpt ) {
 		if ( attributes.displayPostExcerpt && post.uagb_excerpt ) {
-			var trimmed_excerpt = post.uagb_excerpt // eslint-disable-line no-var
+			trimmed_excerpt = post.uagb_excerpt
 				.split( /\s+/ )
 				.slice( 0, attributes.exerptLength )
 				.join( ' ' );
