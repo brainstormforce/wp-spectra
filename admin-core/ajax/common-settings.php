@@ -25,14 +25,14 @@ class CommonSettings extends AjaxBase {
 	 *
 	 * @access private
 	 * @var object Class object.
-	 * @since 1.0.0
+	 * @since x.x.x
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since x.x.x
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {

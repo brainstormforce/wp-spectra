@@ -36,7 +36,7 @@ abstract class AjaxBase {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since x.x.x
 	 */
 	public function __construct() {
 

@@ -25,14 +25,14 @@ class Admin_Loader {
 	 *
 	 * @access private
 	 * @var object Class object.
-	 * @since 1.0.0
+	 * @since x.x.x
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since x.x.x
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -76,7 +76,7 @@ class Admin_Loader {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since x.x.x
 	 */
 	public function __construct() {
 
