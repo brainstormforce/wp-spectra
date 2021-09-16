@@ -47,7 +47,7 @@ function styling( props ) {
 	
 	selectors = {
 		' .uagb-icon-list__source-wrap': {
-			padding: generateCSSUnit( bgSize, 'px' ),
+			'padding': generateCSSUnit( bgSize, 'px' ),
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 			'border-style':
 				0 === border || undefined === border ? 'none' : 'solid',
@@ -75,20 +75,20 @@ function styling( props ) {
 			'margin-right': 0,
 		},
 		' .uagb-icon-list__source-image': {
-			width: generateCSSUnit( size, sizeType ),
+			'width': generateCSSUnit( size, sizeType ),
 		},
 		' .uagb-icon-list__source-icon': {
-			width: generateCSSUnit( size, sizeType ),
-			height: generateCSSUnit( size, sizeType ),
+			'width': generateCSSUnit( size, sizeType ),
+			'height': generateCSSUnit( size, sizeType ),
 			'font-size': generateCSSUnit( size, sizeType ),
 		},
 		' .uagb-icon-list__source-icon svg': {
-			width: generateCSSUnit( size, sizeType ),
-			height: generateCSSUnit( size, sizeType ),
+			'width': generateCSSUnit( size, sizeType ),
+			'height': generateCSSUnit( size, sizeType ),
 		},
 		' .uagb-icon-list__source-icon:before': {
-			width: generateCSSUnit( size, sizeType ),
-			height: generateCSSUnit( size, sizeType ),
+			'width': generateCSSUnit( size, sizeType ),
+			'height': generateCSSUnit( size, sizeType ),
 			'font-size': generateCSSUnit( size, sizeType ),
 		},
 		' .uagb-icon-list__label-wrap': {
@@ -101,40 +101,40 @@ function styling( props ) {
 
 	mobileSelectors = {
 		' .uagb-icon-list__source-image': {
-			width: generateCSSUnit( sizeMobile, sizeType ),
+			'width': generateCSSUnit( sizeMobile, sizeType ),
 		},
 		' .uagb-icon-list__source-icon': {
-			width: generateCSSUnit( sizeMobile, sizeType ),
-			height: generateCSSUnit( sizeMobile, sizeType ),
+			'width': generateCSSUnit( sizeMobile, sizeType ),
+			'height': generateCSSUnit( sizeMobile, sizeType ),
 			'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		},
 		' .uagb-icon-list__source-icon svg': {
-			width: generateCSSUnit( sizeMobile, sizeType ),
-			height: generateCSSUnit( sizeMobile, sizeType ),
+			'width': generateCSSUnit( sizeMobile, sizeType ),
+			'height': generateCSSUnit( sizeMobile, sizeType ),
 		},
 		' .uagb-icon-list__source-icon:before': {
-			width: generateCSSUnit( sizeMobile, sizeType ),
-			height: generateCSSUnit( sizeMobile, sizeType ),
+			'width': generateCSSUnit( sizeMobile, sizeType ),
+			'height': generateCSSUnit( sizeMobile, sizeType ),
 			'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		},
 	};
 
 	tabletSelectors = {
 		' .uagb-icon-list__source-image': {
-			width: generateCSSUnit( sizeTablet, sizeType ),
+			'width': generateCSSUnit( sizeTablet, sizeType ),
 		},
 		' .uagb-icon-list__source-icon': {
-			width: generateCSSUnit( sizeTablet, sizeType ),
-			height: generateCSSUnit( sizeTablet, sizeType ),
+			'width': generateCSSUnit( sizeTablet, sizeType ),
+			'height': generateCSSUnit( sizeTablet, sizeType ),
 			'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		},
 		' .uagb-icon-list__source-icon svg': {
-			width: generateCSSUnit( sizeTablet, sizeType ),
-			height: generateCSSUnit( sizeTablet, sizeType ),
+			'width': generateCSSUnit( sizeTablet, sizeType ),
+			'height': generateCSSUnit( sizeTablet, sizeType ),
 		},
 		' .uagb-icon-list__source-icon:before': {
-			width: generateCSSUnit( sizeTablet, sizeType ),
-			height: generateCSSUnit( sizeTablet, sizeType ),
+			'width': generateCSSUnit( sizeTablet, sizeType ),
+			'height': generateCSSUnit( sizeTablet, sizeType ),
 			'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		},
 	};

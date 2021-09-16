@@ -39,7 +39,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			<a
+			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className="uagb-ss__link"
 				data-href={ url }
 				rel="noopener noreferrer"

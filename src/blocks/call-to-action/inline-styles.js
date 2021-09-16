@@ -80,17 +80,17 @@ function CtaStyle( props ) {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
-			color: ctaBtnLinkColor,
+			'color': ctaBtnLinkColor,
 		},
 		' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text': {
-			color: ctaLinkHoverColor,
+			'color': ctaLinkHoverColor,
 		},
 
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
-			color: ctaBtnLinkColor,
+			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
 			'border-style': ctaBorderStyle,
 			'border-color': ctaBorderColor,
@@ -106,24 +106,24 @@ function CtaStyle( props ) {
 		},
 
 		' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button': {
-			color: ctaLinkHoverColor,
+			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
 			'border-color': ctaBorderhoverColor,
 		},
 
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		},
 
 		' .uagb-cta__button-wrapper .uagb-cta__block-link svg': {
-			fill: ctaBtnLinkColor,
+			'fill': ctaBtnLinkColor,
 		},
 
 		' .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg': {
-			fill: ctaLinkHoverColor,
+			'fill': ctaLinkHoverColor,
 		},
 
 		// Title Style
@@ -135,7 +135,7 @@ function CtaStyle( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
-			color: titleColor,
+			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
 		},
 
@@ -148,7 +148,7 @@ function CtaStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 
@@ -182,12 +182,12 @@ function CtaStyle( props ) {
 		selectors[
 			' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content'
 		] = {
-			width: generateCSSUnit( contentWidth, '%' ),
+			'width': generateCSSUnit( contentWidth, '%' ),
 		};
 		selectors[
 			' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'
 		] = {
-			width: generateCSSUnit( 100 - contentWidth, '%' ),
+			'width': generateCSSUnit( 100 - contentWidth, '%' ),
 		};
 	}
 
@@ -236,8 +236,8 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaFontSizeTablet,
 				ctaFontSizeType
@@ -290,8 +290,8 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaFontSizeMobile,
 				ctaFontSizeType

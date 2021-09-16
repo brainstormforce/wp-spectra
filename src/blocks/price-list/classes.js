@@ -8,7 +8,7 @@ function PositionClasses( attributes ) {
 	const image = attributes.image;
 
 	if ( typeof attributes.rest_menu_item_arr !== 'undefined' ) {
-		attributes.rest_menu_item_arr.map( ( item ) => {
+		attributes.rest_menu_item_arr.map( ( item ) => { // eslint-disable-line  array-callback-return
 			const image_arr = item.image;
 			if ( image_arr && typeof image_arr !== 'undefined' ) {
 				imgeCount++;

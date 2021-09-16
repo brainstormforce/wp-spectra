@@ -51,7 +51,7 @@ const Render = ( props ) => {
 		html = formJson.data.html;
 	}
 
-	if ( formId == 0 ) {
+	if ( formId == 0 ) { // eslint-disable-line eqeqeq
 		return (
 			<Placeholder
 				icon="admin-post"

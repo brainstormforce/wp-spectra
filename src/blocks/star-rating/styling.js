@@ -80,7 +80,7 @@ function styling( props ) {
 		selectors[
 			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
 		] = {
-			color,
+			'color': color,
 			'width': generateCSSUnit( width, '%' ),
 			'position': 'absolute',
 			'content': "'★'",
@@ -93,7 +93,7 @@ function styling( props ) {
 	}
 
 	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( rating ) + ')' ] = {
-		color,
+		'color': color,
 	};
 
 	const tabletSelectors = {

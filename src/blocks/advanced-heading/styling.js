@@ -46,7 +46,7 @@ function styling( props ) {
 
 	const selectors = {
 		' .uagb-desc-text': {
-			margin: 0,
+			'margin': 0,
 			'text-align': headingAlign,
 			'font-family': subHeadFontFamily,
 			'font-weight': subHeadFontWeight,

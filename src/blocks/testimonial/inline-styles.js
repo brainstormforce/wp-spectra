@@ -147,7 +147,7 @@ function testimonialStyle( props ) {
 		},
 		// Image
 		' .uagb-tm__image img': {
-			width: generateCSSUnit( imageWidth, imageWidthType ),
+			'width': generateCSSUnit( imageWidth, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
 		' .uagb-tm__content': {
@@ -168,7 +168,7 @@ function testimonialStyle( props ) {
 				nameLineHeight,
 				nameLineHeightType
 			),
-			color: authorColor,
+			'color': authorColor,
 			'margin-bottom': generateCSSUnit( nameSpace, nameSpaceType ),
 		},
 		// Title Style
@@ -185,7 +185,7 @@ function testimonialStyle( props ) {
 				companyLineHeight,
 				companyLineHeightType
 			),
-			color: companyColor,
+			'color': companyColor,
 		},
 		// Description Style
 		' .uagb-tm__desc': {
@@ -198,7 +198,7 @@ function testimonialStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
 		},
 		' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content': {
@@ -214,27 +214,27 @@ function testimonialStyle( props ) {
 		},
 		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay': {
 			'background-color': backgroundImageColor,
-			opacity:
+			'opacity':
 				typeof backgroundOpacity !== 'undefined'
 					? ( 100 - backgroundOpacity ) / 100
 					: 0.5,
 		},
 		' ul.slick-dots li button:before': {
-			color: arrowColor,
+			'color': arrowColor,
 		},
 		' ul.slick-dots li.slick-active button:before': {
-			color: arrowColor,
+			'color': arrowColor,
 		},
 		' .slick-arrow svg': {
-			fill: arrowColor,
-			height: generateCSSUnit( arrowSize, arrowSizeType ),
-			width: generateCSSUnit( arrowSize, arrowSizeType ),
+			'fill': arrowColor,
+			'height': generateCSSUnit( arrowSize, arrowSizeType ),
+			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
 	};
 
 	if ( test_item_count === columns ) {
 		selectors[ '.uagb-slick-carousel' ] = {
-			padding: '0',
+			'padding': '0',
 		};
 	}
 
@@ -256,13 +256,13 @@ function testimonialStyle( props ) {
 
 	if ( arrowDots === 'dots' ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			padding: '0 0 35px 0',
+			'padding': '0 0 35px 0',
 		};
 	}
 
 	if ( test_item_count === 1 || test_item_count === columns ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
-			padding: '0',
+			'padding': '0',
 		};
 	}
 

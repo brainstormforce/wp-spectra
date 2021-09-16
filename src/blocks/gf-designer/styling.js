@@ -181,14 +181,14 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wp-block-uagb-gf-styler form:not(input)': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 		},
 		' .gform_heading': {
 			'text-align': titleDescAlignment,
 		},
 		' input:not([type=submit])': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -221,7 +221,7 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' input[type=button]': {
-			color: buttonTextColor,
+			'color': buttonTextColor,
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
@@ -265,7 +265,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
 			'font-weight': inputFontWeight,
@@ -299,7 +299,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
 			'font-weight': inputFontWeight,
@@ -357,7 +357,7 @@ function styling( props ) {
 		},
 		' textarea': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
 			'border-radius': generateCSSUnit(
@@ -388,21 +388,21 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
-			height:
+			'height':
 				'auto' === textAreaHeight
 					? textAreaHeight
 					: textAreaHeight + 'px',
 		},
 		' textarea::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' input::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' form label.gfield_label': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
 			'font-weight': labelFontWeight,
@@ -412,7 +412,7 @@ function styling( props ) {
 			),
 		},
 		' form .gfield_radio label.gfield_label': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
 			'font-weight': labelFontWeight,
@@ -422,7 +422,7 @@ function styling( props ) {
 			),
 		},
 		' form .gfield_checkbox label.gfield_label': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
 			'font-weight': labelFontWeight,
@@ -448,7 +448,7 @@ function styling( props ) {
 
 		// Submit button.
 		' input.gform_button': {
-			color: buttonTextColor,
+			'color': buttonTextColor,
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
@@ -482,12 +482,12 @@ function styling( props ) {
 			),
 		},
 		' input.gform_button:hover': {
-			color: buttonTextHoverColor,
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
 		' input.gform_next_button:hover': {
-			color: buttonTextHoverColor,
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
@@ -551,9 +551,9 @@ function styling( props ) {
 		// Override check box.
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
@@ -568,9 +568,9 @@ function styling( props ) {
 		},
 		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -582,9 +582,9 @@ function styling( props ) {
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -603,7 +603,7 @@ function styling( props ) {
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -616,11 +616,11 @@ function styling( props ) {
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 
 		' .gform_wrapper .gfield_description.validation_message': {
-			color: validationMsgColor,
+			'color': validationMsgColor,
 		},
 		' .gform_wrapper .validation_message': {
 			'font-size': generateCSSUnit(
@@ -690,7 +690,7 @@ function styling( props ) {
 		},
 
 		' .gform_wrapper div.validation_error': {
-			color: errorMsgColor,
+			'color': errorMsgColor,
 			'background-color': errorMsgBgColor,
 			'border-color': errorMsgBorderColor,
 			'border-style': 'solid',
@@ -713,7 +713,7 @@ function styling( props ) {
 		},
 
 		' .gform_confirmation_message': {
-			color: successMsgColor,
+			'color': successMsgColor,
 			'font-size': generateCSSUnit(
 				successMsgFontSize,
 				successMsgFontSizeType

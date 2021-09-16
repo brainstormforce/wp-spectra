@@ -165,19 +165,19 @@ function styling( props ) {
 
 	if ( colWidth !== '' && colWidth !== 0 ) {
 		selectors[ '.block-editor-block-list__block' ] = {
-			width: colWidth + '%',
+			'width': colWidth + '%',
 		};
 	}
 
 	if ( colWidthTablet !== '' && colWidthTablet !== 0 ) {
 		tabletSelectors[ '.block-editor-block-list__block' ] = {
-			width: colWidthTablet + '%',
+			'width': colWidthTablet + '%',
 		};
 	}
 
 	if ( colWidthMobile !== '' && colWidthMobile !== 0 ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
-			width: colWidthMobile + '%',
+			'width': colWidthMobile + '%',
 		};
 	}
 
