@@ -162,8 +162,8 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const excludeBlocks = ['core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss'];
 
-		let customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
-		const blockPrefix = blockName.substring(0, blockName.indexOf("/") + 1 );
+		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
+		const blockPrefix = blockName.substring(0, blockName.indexOf('/') + 1 );
 		
 		return (
 			<>

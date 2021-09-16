@@ -11,7 +11,7 @@ function DisplayCondition(props) {
 		window.onbeforeunload = null;
 		enableBlockConditionCachedValue = options.enable_block_condition;
 	}, [] );
-	
+
 	useEffect( () => {
 		if (
 			enableBlockConditionCachedValue !== options.enable_block_condition
@@ -45,7 +45,7 @@ function DisplayCondition(props) {
 	}, [ options.enable_block_condition ] );
 
 	const enableDisplayConditionSettings =
-		globaldata.settings.enable_block_condition; 
+		globaldata.settings.enable_block_condition;
 	const width = props.cat === 'extensions' ? 'uag-extension' : '';
 	if(props.cat === 'extensions' || props.cat === 'all'){
 		return (
@@ -60,9 +60,9 @@ function DisplayCondition(props) {
 					</a>
 			</div>
 		);
-	}else{
-		return null;
 	}
+
+	return null;
 }
 
 export default DisplayCondition;
