@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class ApiBase.
+ * Class Api_Base.
  */
-abstract class ApiBase extends \WP_REST_Controller {
+abstract class Api_Base extends \WP_REST_Controller {
 
 	/**
 	 * Endpoint namespace.

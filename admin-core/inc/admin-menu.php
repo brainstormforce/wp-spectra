@@ -7,7 +7,7 @@
 
 namespace UagAdmin\Inc;
 
-use UagAdmin\Inc\AdminHelper;
+use UagAdmin\Inc\Admin_Helper;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class Admin_Menu.
  */
-class AdminMenu {
+class Admin_Menu {
 
 	/**
 	 * Instance
@@ -340,4 +340,4 @@ class AdminMenu {
 
 }
 
-AdminMenu::get_instance();
+Admin_Menu::get_instance();

@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use UagAdmin\Api\ApiBase;
-use UagAdmin\Inc\AdminHelper;
-use UagAdmin\Inc\GlobalSettings;
+use UagAdmin\Api\Api_Base;
+use UagAdmin\Inc\Admin_Helper;
+use UagAdmin\Inc\Global_Settings;
 
 /**
  * Class Admin_Query.
  */
-class CommonSettings extends ApiBase {
+class Common_Settings extends Api_Base {
 
 	/**
 	 * Route base.
@@ -82,8 +82,8 @@ class CommonSettings extends ApiBase {
 	 */
 	public function get_common_settings( $request ) {
 
-		$settings = GlobalSettings::get_global_settings_fields();
-		$options  = AdminHelper::get_options();
+		$settings = Global_Settings::get_global_settings_fields();
+		$options  = Admin_Helper::get_options();
 
 		return array(
 			'settings' => $settings,

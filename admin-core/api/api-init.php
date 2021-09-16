@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class ApiInit.
+ * Class Api_Init.
  */
-class ApiInit {
+class Api_Init {
 
 	/**
 	 * Instance
@@ -66,7 +66,7 @@ class ApiInit {
 	public function register_routes() {
 
 		$controllers = array(
-			'UagAdmin\Api\CommonSettings',
+			'UagAdmin\Api\Common_Settings',
 		);
 
 		foreach ( $controllers as $controller ) {
@@ -76,4 +76,4 @@ class ApiInit {
 	}
 }
 
-ApiInit::get_instance();
+Api_Init::get_instance();

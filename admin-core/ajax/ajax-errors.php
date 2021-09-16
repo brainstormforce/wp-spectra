@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class AjaxErrors
+ * Class Ajax_Errors
  */
-class AjaxErrors {
+class Ajax_Errors {
 
 	/**
 	 * Instance
@@ -78,4 +78,4 @@ class AjaxErrors {
 	}
 }
 
-AjaxErrors::get_instance();
+Ajax_Errors::get_instance();

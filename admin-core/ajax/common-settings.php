@@ -12,13 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use UagAdmin\Ajax\AjaxBase;
-use UagAdmin\Inc\AdminHelper;
+use UagAdmin\Ajax\Ajax_Base;
+use UagAdmin\Inc\Admin_Helper;
 
 /**
- * Class CommonSettings.
+ * Class Common_Settings.
  */
-class CommonSettings extends AjaxBase {
+class Common_Settings extends Ajax_Base {
 
 	/**
 	 * Instance

@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class AdminHelper.
+ * Class Admin_Helper.
  */
-class AdminHelper {
+class Admin_Helper {
 
 	/**
 	 * Common.

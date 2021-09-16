@@ -7,9 +7,9 @@
 
 namespace UagAdmin;
 
-use UagAdmin\Api\ApiInit;
-use UagAdmin\Ajax\AjaxInit;
-use UagAdmin\Inc\AdminMenu;
+use UagAdmin\Api\Api_Init;
+use UagAdmin\Ajax\Ajax_Init;
+use UagAdmin\Inc\Admin_Menu;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -100,14 +100,14 @@ class Admin_Loader {
 	public function setup_classes() {
 
 		/* Init API */
-		ApiInit::get_instance();
+		Api_Init::get_instance();
 
 		if ( is_admin() ) {
 			/* Setup Menu */
-			AdminMenu::get_instance();
+			Admin_Menu::get_instance();
 
 			/* Ajax init */
-			AjaxInit::get_instance();
+			Ajax_Init::get_instance();
 		}
 	}
 }
