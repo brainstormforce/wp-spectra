@@ -379,7 +379,7 @@ class UAGB_Init_Blocks {
 				'uagb_url'                          => UAGB_URL,
 				'uagb_mime_type'                    => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'                     => UAGB_URI,
-				'enableConditions'     => apply_filters_deprecated( 'enable_block_condition', array( $displayCondition ), '1.23.4', 'uag_enable_block_condition' ),
+				'enableConditions'                  => apply_filters_deprecated( 'enable_block_condition', array( $displayCondition ), '1.23.4', 'uag_enable_block_condition' ),
 				'enableMasonryGallery'              => apply_filters( 'uag_enable_masonry_gallery', true ),
 				'uagb_svg_icons'                    => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks' => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),

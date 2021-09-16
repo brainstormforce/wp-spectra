@@ -51,13 +51,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
 					'uagb/demo-control'           => array(
-						'slug'        => '',
+						'slug'             => '',
 						'admin_categories' => array(),
-						'title'       => __( 'Demo Control', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you find out demo control.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'extension'   => false,
-						'attributes'  => array(
+						'title'            => __( 'Demo Control', 'ultimate-addons-for-gutenberg' ),
+						'description'      => __( 'This block helps you find out demo control.', 'ultimate-addons-for-gutenberg' ),
+						'default'          => true,
+						'extension'        => false,
+						'attributes'       => array(
 							'block_id'              => '',
 							'c_id'                  => null,
 							'cookies'               => false,
@@ -331,7 +331,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description'      => __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),
 						'default'          => true,
 						'extension'        => false,
-						'attributes'  => array(
+						'attributes'       => array(
 							'classMigrate'              => false,
 							'block_id '                 => '',
 							'skinStyle'                 => 'border',
@@ -469,7 +469,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description'      => __( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'          => true,
 						'extension'        => false,
-						'attributes'  => array(
+						'attributes'       => array(
 							'classMigrate'           => false,
 							'inheritFromTheme'       => false,
 							'textAlign'              => 'left',
@@ -1527,7 +1527,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'          => true,
 						'extension'        => false,
 						'js_assets'        => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
-						'attributes'  => array(
+						'attributes'       => array(
 							'block_id'                 => '',
 							'c_id'                     => null,
 							'cookies'                  => false,
@@ -2408,7 +2408,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description'      => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'          => true,
 						'extension'        => false,
-						'attributes'  => array(
+						'attributes'       => array(
 							'classMigrate'               => false,
 							'block_id'                   => '',
 							'headingAlign'               => 'left',
@@ -2808,7 +2808,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'          => true,
 						'extension'        => false,
 						'js_assets'        => array( 'uagb-tabs-js' ),
-						'attributes'  => array(
+						'attributes'       => array(
 							'tabHeaders'                  => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 							'tabAlign'                    => 'left',
 							'tabActive'                   => 0,
@@ -3042,7 +3042,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description'      => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
 						'default'          => true,
 						'extension'        => false,
-						'attributes'  => array(
+						'attributes'       => array(
 							'classMigrate'            => false,
 							'block_id'                => '',
 							'align'                   => 'center',
@@ -3349,7 +3349,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'            => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 						'description'      => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 						'default'          => true,
-						'attributes'  => array(
+						'attributes'       => array(
 							'block_id'                 => '',
 							'postType'                 => 'post',
 							'taxonomyType'             => 'category',
