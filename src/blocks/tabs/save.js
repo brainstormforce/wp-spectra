@@ -38,7 +38,7 @@ export default function save( props ) {
 					<li
 						key={ index }
 						className={ `uagb-tab ${
-							tabActiveFrontend == index
+							tabActiveFrontend === index
 								? 'uagb-tabs__active'
 								: ''
 						}` }

@@ -598,11 +598,11 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])': fieldPaddingTablet,
+		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingTablet,
-		' .wpcf7 textarea': fieldPaddingTablet,
-		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
+		' .wpcf7 textarea': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingTablet,
 				buttonPaddingTypeTablet
@@ -720,11 +720,11 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])': fieldPaddingMobile,
+		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
-		' .wpcf7 textarea': fieldPaddingMobile,
-		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
+		' .wpcf7 textarea': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingMobile,
 				buttonPaddingTypeMobile

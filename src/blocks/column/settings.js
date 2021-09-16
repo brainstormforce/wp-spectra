@@ -74,7 +74,6 @@ const Settings = ( props ) => {
 			desktopMarginType,
 		},
 		setAttributes,
-		deviceType,
 	} = props.parentProps;
 
 	const layoutSettings = () => {

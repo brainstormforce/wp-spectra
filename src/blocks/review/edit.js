@@ -14,7 +14,7 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/render" */ './render' )
 );
-$ = jQuery;
+import jQuery from 'jquery';
 let prevState;
 
 const ReviewComponent = ( props ) => {
@@ -85,7 +85,7 @@ const ReviewComponent = ( props ) => {
 			element.innerHTML = styling( props );
 		}
 
-		$( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
+		jQuery( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
 			event.preventDefault();
 		} );
 	}, [ props ] );
@@ -222,8 +222,8 @@ export default compose(
 			)
 		) {
 			itemtype =
-				ownProps.attributes.itemSubtype != 'None' &&
-				ownProps.attributes.itemSubtype != ''
+				ownProps.attributes.itemSubtype !== 'None' &&
+				ownProps.attributes.itemSubtype !== ''
 					? ownProps.attributes.itemSubtype
 					: ownProps.attributes.itemType;
 		} else {
@@ -322,7 +322,7 @@ export default compose(
 			jsonData.itemReviewed.image = ownProps.attributes.mainimage.url;
 		}
 
-		if ( ownProps.attributes.itemType == 'Product' ) {
+		if ( ownProps.attributes.itemType === 'Product' ) {
 			jsonData.itemReviewed[ ownProps.attributes.identifierType ] =
 				ownProps.attributes.identifier;
 			jsonData.itemReviewed.offers = {

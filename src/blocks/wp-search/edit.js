@@ -147,7 +147,7 @@ const UAGBWpSearchEdit = ( props ) => {
 			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
 		);
 
-		if ( null != element && 'undefined' !== typeof element ) {
+		if ( null !== element && 'undefined' !== typeof element ) {
 			element.innerHTML = styling( props );
 		}
 	}, [ props ] );

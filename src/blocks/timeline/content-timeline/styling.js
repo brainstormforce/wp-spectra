@@ -192,13 +192,13 @@ function contentTimelineStyle( props ) {
 			'width': generateCSSUnit( separatorwidth, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			right: 'calc( ' + connectorBgsize + 'px / 2 )',
+			'right': 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			left: 'calc( ' + connectorBgsize + 'px / 2 )',
+			'left': 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		'.uagb-timeline__center-block .uagb-timeline__line': {
-			right: 'calc( ' + connectorBgsize + 'px / 2 )',
+			'right': 'calc( ' + connectorBgsize + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'background-color': separatorBg,
@@ -208,16 +208,16 @@ function contentTimelineStyle( props ) {
 			'border': borderwidth + 'px solid' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
-			height: generateCSSUnit( connectorBgsize, 'px' ),
+			'height': generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow': {
-			height: generateCSSUnit( connectorBgsize, 'px' ),
+			'height': generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow': {
-			height: generateCSSUnit( connectorBgsize, 'px' ),
+			'height': generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
-			height: generateCSSUnit( connectorBgsize, 'px' ),
+			'height': generateCSSUnit( connectorBgsize, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
@@ -284,13 +284,13 @@ function contentTimelineStyle( props ) {
 			'border-color': borderFocus,
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new': {
-			color: iconFocus,
+			'color': iconFocus,
 		},
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
-			fill: iconFocus,
+			'fill': iconFocus,
 		},
 		' .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
-			fill: iconColor,
+			'fill': iconColor,
 		},
 
 		//Author and CTA

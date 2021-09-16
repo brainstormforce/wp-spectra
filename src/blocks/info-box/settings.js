@@ -15,8 +15,7 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-
-$ = jQuery;
+import jQuery from 'jquery';
 
 import {
 	AlignmentToolbar,
@@ -222,7 +221,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index ) {
+		jQuery.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -241,21 +240,12 @@ const Settings = ( props ) => {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
 
-	let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-	if ( iconImage ) {
-		if ( iconImage.url == null || iconImage.url == '' ) {
-			imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-		} else {
-			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
-		}
-	}
-
 	let loadPrefixGoogleFonts;
 	let loadSubHeadGoogleFonts;
 	let loadCtaGoogleFonts;
 	let loadHeadGoogleFonts;
 
-	if ( prefixLoadGoogleFonts == true ) {
+	if ( prefixLoadGoogleFonts === true ) {
 		const prefixconfig = {
 			google: {
 				families: [
@@ -270,7 +260,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( headLoadGoogleFonts == true ) {
+	if ( headLoadGoogleFonts === true ) {
 		const headconfig = {
 			google: {
 				families: [
@@ -285,7 +275,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( subHeadLoadGoogleFonts == true ) {
+	if ( subHeadLoadGoogleFonts === true ) {
 		const subHeadconfig = {
 			google: {
 				families: [
@@ -300,7 +290,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( subHeadLoadGoogleFonts == true ) {
+	if ( subHeadLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
 				families: [
@@ -389,8 +379,9 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ ( iconimgPosition == 'left' ||
-					iconimgPosition == 'right' ) && (
+
+				{ ( iconimgPosition === 'left' ||
+					iconimgPosition === 'right' ) && (
 					<SelectControl
 						label={ __(
 							'Stack on',
@@ -487,7 +478,8 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				{ source_type == 'icon' && (
+
+				{ source_type === 'icon' && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -501,7 +493,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ source_type == 'image' && (
+				{ source_type === 'image' && (
 					<>
 						<UAGImage
 							onSelectImage={ onSelectImage }
@@ -867,7 +859,7 @@ const Settings = ( props ) => {
 					<PanelBody title="Icon/Image" initialOpen={ false }>
 						<>
 							{ ' ' }
-							{ source_type == 'icon' && (
+							{ source_type === 'icon' && (
 								<>
 									<AdvancedPopColorControl
 										label={ __(
@@ -916,7 +908,7 @@ const Settings = ( props ) => {
 									/>
 								</>
 							) }
-							{ source_type == 'image' &&
+							{ source_type === 'image' &&
 								iconImage &&
 								iconImage.url !== 'null' &&
 								iconImage.url !== '' && (
@@ -1301,7 +1293,7 @@ const Settings = ( props ) => {
 										}
 										min={ 0 }
 										max={
-											'%' == separatorWidthType
+											'%' === separatorWidthType
 												? 100
 												: 500
 										}
@@ -1793,7 +1785,7 @@ const Settings = ( props ) => {
 										disableLineHeight={ true }
 									/>
 								) }
-								{ ! inheritFromTheme && ctaType == 'button' && (
+								{ ! inheritFromTheme && ctaType === 'button' && (
 									<SpacingControl
 										{ ...props }
 										label={ __(
@@ -1869,7 +1861,7 @@ const Settings = ( props ) => {
 										} }
 									/>
 								) }
-								{ ! inheritFromTheme && ctaType == 'button' && (
+								{ ! inheritFromTheme && ctaType === 'button' && (
 									<Border
 										setAttributes={ setAttributes }
 										borderStyle={ {
@@ -1922,8 +1914,8 @@ const Settings = ( props ) => {
 	};
 	return (
 		<>
-			{ ( iconimgPosition == 'above-title' ||
-				iconimgPosition == 'below-title' ) &&
+			{ ( iconimgPosition === 'above-title' ||
+				iconimgPosition === 'below-title' ) &&
 				blockControls() }
 			<InspectorControls>
 				<InspectorTabs>

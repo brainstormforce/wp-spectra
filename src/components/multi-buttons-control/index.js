@@ -105,12 +105,13 @@ const MultiButtonsControl = ( props ) => {
 
 		output.Desktop = (
 			<ButtonGroup
-				className={ 'uagb-multi-button-button-group' }
+				className={ `uagb-multi-button-button-group` }
 				aria-label={ label }
 			>
 				{ options.map( ( option ) => (
 					<Button
-						className={ 'uagb-multi-button' }
+						key={ `option-${ option.value }` }
+						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.desktop.value !== option.value }
 						isPrimary={ data.desktop.value === option.value }
@@ -131,12 +132,13 @@ const MultiButtonsControl = ( props ) => {
 		);
 		output.Tablet = (
 			<ButtonGroup
-				className={ 'uagb-multi-button-button-group' }
+				className={ `uagb-multi-button-button-group` }
 				aria-label={ label }
 			>
 				{ options.map( ( option ) => (
 					<Button
-						className={ 'uagb-multi-button' }
+						key={ `option-${ option.value }` }
+						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.tablet.value !== option.value }
 						isPrimary={ data.tablet.value === option.value }
@@ -157,12 +159,13 @@ const MultiButtonsControl = ( props ) => {
 		);
 		output.Mobile = (
 			<ButtonGroup
-				className={ 'uagb-multi-button-button-group' }
+				className={ `uagb-multi-button-button-group` }
 				aria-label={ label }
 			>
 				{ options.map( ( option ) => (
 					<Button
-						className={ 'uagb-multi-button' }
+						key={ `option-${ option.value }` }
+						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.mobile.value !== option.value }
 						isPrimary={ data.mobile.value === option.value }
@@ -259,12 +262,13 @@ const MultiButtonsControl = ( props ) => {
 				{ label }
 			</span>
 			<ButtonGroup
-				className={ 'uagb-multi-button-button-group' }
+				className={ `uagb-multi-button-button-group` }
 				aria-label={ label }
 			>
 				{ options.map( ( option ) => (
 					<Button
-						className={ 'uagb-multi-button' }
+						key={ `option-${ option.value }` }
+						className={ `uagb-multi-button` }
 						isLarge
 						isSecondary={ data.value !== option.value }
 						isPrimary={ data.value === option.value }

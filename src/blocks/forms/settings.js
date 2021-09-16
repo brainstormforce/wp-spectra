@@ -1659,7 +1659,7 @@ const Settings = ( props ) => {
 
 	let loadsubmittextGoogleFonts;
 
-	if ( submitTextloadGoogleFonts == true ) {
+	if ( submitTextloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [
@@ -1677,7 +1677,7 @@ const Settings = ( props ) => {
 
 	let loadlabelGoogleFonts;
 
-	if ( labelloadGoogleFonts == true ) {
+	if ( labelloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [
@@ -1693,7 +1693,7 @@ const Settings = ( props ) => {
 
 	let loadinputGoogleFonts;
 
-	if ( inputloadGoogleFonts == true ) {
+	if ( inputloadGoogleFonts === true ) {
 		const qconfig = {
 			google: {
 				families: [

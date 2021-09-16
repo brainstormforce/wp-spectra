@@ -23,7 +23,7 @@ export default function save( props ) {
 				) }
 			>
 				<div className="uagb-rm__content">
-					{ ( imagePosition == 'top' || imagePosition == 'left' ) && (
+					{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
 						<RestMenuImage attributes={ props.attributes } />
 					) }
 					<div className="uagb-rm__text-wrap">
@@ -55,7 +55,7 @@ export default function save( props ) {
 							</>
 						}
 					</div>
-					{ imagePosition == 'right' && (
+					{ imagePosition === 'right' && (
 						<RestMenuImage attributes={ props.attributes } />
 					) }
 				</div>

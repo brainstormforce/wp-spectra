@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
-$ = jQuery;
+import jQuery from 'jquery';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import {
@@ -134,7 +134,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index ) {
+		jQuery.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );

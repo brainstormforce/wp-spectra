@@ -51,7 +51,7 @@ const Render = ( props ) => {
 		html = formJson.data.html;
 	}
 
-	if ( formId == 0 ) {
+	if ( parseInt( formId ) === 0 ) { 
 		return (
 			<Placeholder
 				icon="admin-post"
@@ -92,7 +92,7 @@ const Render = ( props ) => {
 				{ isHtml && (
 					<div dangerouslySetInnerHTML={ { __html: html } } />
 				) }
-				{ isHtml == false && (
+				{ isHtml === false && (
 					<Placeholder
 						icon="admin-post"
 						label={ __(

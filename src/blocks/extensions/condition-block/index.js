@@ -40,7 +40,7 @@ const UserConditionOptions = ( props ) => {
 					{ value: 'os', label: __( 'Operating System' ) },
 				] }
 			/>
-			{ UAGDisplayConditions == 'userstate' && (
+			{ UAGDisplayConditions === 'userstate' && (
 				<>
 					<ToggleControl
 						label={ __( 'Hide From Logged In Users' ) }
@@ -62,7 +62,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'responsiveVisibility' && (
+			{ UAGDisplayConditions === 'responsiveVisibility' && (
 				<>
 					<ToggleControl
 						label={ __( 'Hide on Desktop' ) }
@@ -93,7 +93,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'os' && (
+			{ UAGDisplayConditions === 'os' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide on Operating System' ) }
@@ -114,7 +114,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'browser' && (
+			{ UAGDisplayConditions === 'browser' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide on Browser' ) }
@@ -138,7 +138,7 @@ const UserConditionOptions = ( props ) => {
 					/>
 				</>
 			) }
-			{ UAGDisplayConditions == 'userRole' && (
+			{ UAGDisplayConditions === 'userRole' && (
 				<>
 					<SelectControl
 						label={ __( 'Hide for User Role' ) }

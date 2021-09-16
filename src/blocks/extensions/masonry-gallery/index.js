@@ -59,7 +59,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		/**
 		 * Update the Masonry flag.
 		 *
-		 * @param {bool} value
+		 * @param {boolean} value
 		 */
 		const update = ( value ) => {
 			if ( value ) {
@@ -76,7 +76,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		/**
 		 * Gutter value for the Masonry layout
 		 *
-		 * @param {int} value
+		 * @param {number} value
 		 */
 		const applyGutter = ( value ) => {
 			if ( undefined === value ) {

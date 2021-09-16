@@ -133,7 +133,6 @@ const Settings = ( props ) => {
 		iconSize,
 		exerptLength,
 		borderRadius,
-		bgPadding,
 		contentPadding,
 		iconFocus,
 		iconBgFocus,
@@ -197,7 +196,7 @@ const Settings = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' != taxonomyList ) {
+	if ( '' !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -206,7 +205,7 @@ const Settings = ( props ) => {
 		} );
 	}
 
-	if ( '' != categoriesList ) {
+	if ( '' !== categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
@@ -221,7 +220,7 @@ const Settings = ( props ) => {
 	let loadAuthorGoogleFonts;
 	let loadCtaGoogleFonts;
 
-	if ( headLoadGoogleFonts == true ) {
+	if ( headLoadGoogleFonts === true ) {
 		const headconfig = {
 			google: {
 				families: [
@@ -236,7 +235,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( subHeadLoadGoogleFonts == true ) {
+	if ( subHeadLoadGoogleFonts === true ) {
 		const subHeadconfig = {
 			google: {
 				families: [
@@ -251,7 +250,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( dateLoadGoogleFonts == true ) {
+	if ( dateLoadGoogleFonts === true ) {
 		const dateconfig = {
 			google: {
 				families: [
@@ -266,7 +265,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( authorLoadGoogleFonts == true ) {
+	if ( authorLoadGoogleFonts === true ) {
 		const authorconfig = {
 			google: {
 				families: [
@@ -281,7 +280,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( ctaLoadGoogleFonts == true ) {
+	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
 				families: [
@@ -310,7 +309,7 @@ const Settings = ( props ) => {
 					onChange={ ( value ) => onSelectPostType( value ) }
 					options={ uagb_blocks_info.post_types }
 				/>
-				{ '' != taxonomyList && (
+				{ '' !== taxonomyList && (
 					<SelectControl
 						label={ __(
 							'Taxonomy',
@@ -321,7 +320,7 @@ const Settings = ( props ) => {
 						options={ taxonomyListOptions }
 					/>
 				) }
-				{ '' != categoriesList && (
+				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
 						<SelectControl
 							label={ taxonomyList[ taxonomyType ].label }

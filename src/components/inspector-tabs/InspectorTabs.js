@@ -26,8 +26,7 @@ const InspectorTabs = ( props ) => {
 		[ currentTab, setCurrentTab ] = useState(
 			defaultTab ? defaultTab : tabs[ 0 ]
 		),
-		tabContainer = useRef(),
-		offset = useRef( undefined );
+		tabContainer = useRef();
 
 	let sidebarPanel;
 
@@ -35,7 +34,7 @@ const InspectorTabs = ( props ) => {
 		sidebarPanel = tabContainer.current.closest( '.components-panel' );
 	} );
 
-	const observer = new IntersectionObserver(
+	const observer = new IntersectionObserver( // eslint-disable-line no-undef
 		( [ e ] ) =>
 			e.target.classList.toggle(
 				'uagb-is-sticky',
@@ -154,7 +153,6 @@ const InspectorTabs = ( props ) => {
 						throw new Error(
 							'props.key not found in <InspectorTab />, you must use `key` prop'
 						);
-						return;
 					}
 					return cloneElement( child, {
 						index,

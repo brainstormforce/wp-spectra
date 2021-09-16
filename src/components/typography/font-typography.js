@@ -93,7 +93,7 @@ function FontFamilyControl( props ) {
 	let fontSubset = '';
 
 	//Push Google Fonts into stytem fonts object
-	Object.keys( googleFonts ).map( ( k, v ) => {
+	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
 		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
 
 		if ( k === props.fontFamily.value ) {
@@ -128,14 +128,14 @@ function FontFamilyControl( props ) {
 	}
 
 	const onFontfamilyChange = ( value ) => {
-		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props;
+		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props; // eslint-disable-line no-shadow
 		props.setAttributes( { [ fontFamily.label ]: value } );
 		onLoadGoogleFonts( loadGoogleFonts, value );
 		onFontChange( fontWeight, fontSubset, value );
 	};
 
-	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
-		let font_flag;
+	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => { // eslint-disable-line no-shadow
+		let font_flag;  // eslint-disable-line no-unused-vars
 		let new_value;
 
 		if ( typeof googleFonts[ fontFamily ] === 'object' ) {
@@ -144,7 +144,7 @@ function FontFamilyControl( props ) {
 
 			if ( typeof gfontsObj === 'object' ) {
 				gfontsObj.forEach( function ( item ) {
-					if ( fontWeight.value == item ) {
+					if ( fontWeight.value === item ) {
 						font_flag = false;
 					} else {
 						new_value = item;
@@ -156,7 +156,7 @@ function FontFamilyControl( props ) {
 				} );
 
 				gfontSubsetObj.forEach( function ( item ) {
-					if ( fontSubset.value == item ) {
+					if ( fontSubset.value === item ) {
 						font_flag = false;
 					} else {
 						new_value = item;
@@ -174,7 +174,7 @@ function FontFamilyControl( props ) {
 		let value;
 
 		if (
-			fontFamily != '' &&
+			fontFamily !== '' &&
 			typeof googleFonts[ fontFamily ] !== 'object'
 		) {
 			value = false;
@@ -184,7 +184,7 @@ function FontFamilyControl( props ) {
 
 		props.setAttributes( { [ loadGoogleFonts.label ]: value } );
 	};
-	props;
+	
 	return (
 		<div className="uag-typography-font-family-options">
 			<div className="uag-typography-font-family">

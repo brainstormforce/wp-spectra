@@ -38,7 +38,7 @@ const Settings = ( props ) => {
 	const setStateValue = props.setStateValue;
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		link,
@@ -513,7 +513,7 @@ const Settings = ( props ) => {
 						{ '' !== icon && inheritFromTheme && IconSettings() }
 						{ ! inheritFromTheme && borderSettings() }
 						{ ! inheritFromTheme && spacingSettings() }
-						{ '' == icon && inheritFromTheme && (
+						{ '' === icon && inheritFromTheme && (
 							<p className="uagb-settings-notice">
 								{ __(
 									'There is no style available for the inheritFromTheme option.',

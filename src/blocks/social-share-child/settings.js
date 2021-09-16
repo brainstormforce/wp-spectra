@@ -270,7 +270,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ 'icon' == image_icon && (
+				{ 'icon' === image_icon && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -284,7 +284,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ 'image' == image_icon && (
+				{ 'image' === image_icon && (
 					<>
 						<UAGImage
 							onSelectImage={ onSelectImage }
@@ -300,7 +300,7 @@ const Settings = ( props ) => {
 		let colorControl = '';
 		let colorControlHover = '';
 
-		if ( 'image' == image_icon ) {
+		if ( 'image' === image_icon ) {
 			colorControl = (
 				<>
 					<AdvancedPopColorControl

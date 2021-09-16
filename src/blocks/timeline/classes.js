@@ -5,17 +5,17 @@
 function ContentTmClasses( attributes ) {
 	/* Arrow position */
 	let arrowAlignClass = 'uagb-timeline__arrow-top' + ' ';
-	if ( attributes.arrowlinAlignment == 'center' ) {
+	if ( attributes.arrowlinAlignment === 'center' ) {
 		arrowAlignClass = 'uagb-timeline__arrow-center' + ' ';
-	} else if ( attributes.arrowlinAlignment == 'bottom' ) {
+	} else if ( attributes.arrowlinAlignment === 'bottom' ) {
 		arrowAlignClass = 'uagb-timeline__arrow-bottom' + ' ';
 	}
 
 	/* Alignmnet */
 	let alignClass = 'uagb-timeline__center-block ' + ' ';
-	if ( attributes.timelinAlignment == 'left' ) {
+	if ( attributes.timelinAlignment === 'left' ) {
 		alignClass = 'uagb-timeline__left-block' + ' ';
-	} else if ( attributes.timelinAlignment == 'right' ) {
+	} else if ( attributes.timelinAlignment === 'right' ) {
 		alignClass = 'uagb-timeline__right-block' + ' ';
 	}
 	alignClass += arrowAlignClass + '';

@@ -62,7 +62,7 @@ function styling( props ) {
 				'border-style': borderStyle,
 				'border-color': borderColor,
 				'border-radius': generateCSSUnit( borderRadius, 'px' ),
-				background,
+				'background': background,
 				'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 				'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 				'padding-top': generateCSSUnit( topPadding, paddingUnit ),
@@ -75,7 +75,7 @@ function styling( props ) {
 				'border-color': borderHColor,
 			},
 			' .uagb-buttons-repeater a.uagb-button__link': {
-				color,
+				'color': color,
 			},
 			' .uagb-buttons-repeater:hover a.uagb-button__link': {
 				'color': hColor,
@@ -87,7 +87,7 @@ function styling( props ) {
 				'color': hColor,
 			},
 			' .uagb-buttons-repeater .uagb-button__link': {
-				color,
+				'color': color,
 			},
 		};
 

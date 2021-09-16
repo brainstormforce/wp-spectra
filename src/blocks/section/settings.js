@@ -27,7 +27,6 @@ const Settings = ( props ) => {
 		align,
 		contentWidth,
 		width,
-		widthUnit,
 		innerWidth,
 		innerWidthType,
 		tag,
@@ -92,7 +91,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	let blockControls = [ 'left', 'center', 'right' ];
-	if ( 'full_width' == contentWidth ) {
+	if ( 'full_width' === contentWidth ) {
 		blockControls = [ 'wide', 'full' ];
 	}
 
@@ -122,7 +121,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ contentWidth == 'boxed' && (
+				{ contentWidth === 'boxed' && (
 					<Range
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }

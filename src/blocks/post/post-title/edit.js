@@ -18,7 +18,7 @@ export const PostTitle = ( props ) => {
 
 	const target = attributes.newTab ? '_blank' : '_self';
 
-	if ( undefined == post.title ) {
+	if ( undefined === post.title ) {
 		return null;
 	}
 

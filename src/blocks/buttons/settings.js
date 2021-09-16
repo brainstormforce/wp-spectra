@@ -30,7 +30,7 @@ const Settings = ( props ) => {
 
 	let loadBtnGoogleFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const btnconfig = {
 			google: {
 				families: [

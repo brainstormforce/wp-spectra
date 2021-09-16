@@ -12,10 +12,12 @@ module.exports = {
 		{
 			files: [
 				'src/blocks/*/styling.js',
+				'src/blocks/*/*/styling.js',
 				'src/blocks/*/inline-styles.js',
 			],
 			rules: {
 				// 'quotes': [ 'warn', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
+				'object-shorthand': ['error', 'never'],
 				'quote-props': [ 'error', 'always' ],
 			},
 		},

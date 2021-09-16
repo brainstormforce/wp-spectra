@@ -3,6 +3,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
+import jQuery from 'jquery';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
 );
@@ -10,7 +11,6 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/render" */ './render' )
 );
 import { withSelect } from '@wordpress/data';
-$ = jQuery;
 
 const UAGBGF = ( props ) => {
 	useEffect( () => {
@@ -102,7 +102,7 @@ const UAGBGF = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		$( '.wpgf-submit' ).click( function ( event ) {
+		jQuery( '.wpgf-submit' ).click( function ( event ) {
 			event.preventDefault();
 		} );
 
@@ -131,7 +131,7 @@ const UAGBGF = ( props ) => {
 		setAttributes( { isHtml: false } );
 		setAttributes( { formId: id } );
 	};
-	if ( formId == 0 ) {
+	if ( formId === 0 ) {
 		return (
 			<Placeholder
 				icon="admin-post"
@@ -161,8 +161,8 @@ export default withSelect( ( select, props ) => {
 	const { formId, isHtml } = props.attributes;
 	let jsonData = '';
 
-	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
-		$.ajax( {
+	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+		jQuery.ajax( {
 			url: uagb_blocks_info.ajax_url,
 			data: {
 				action: 'uagb_gf_shortcode',

@@ -1,14 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 // Extend component
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 /**
  * Build the Measure controls
  *
- * @param props
+ * @param {Object[]} props
  * @return {Object} Measure settings.
  */
 export default function RangeTypographyControl( props ) {
@@ -22,7 +21,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeText ) }
+				label={ props.sizeText }
 				value={ props.size.value || '' }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeLabel ]: value } )
@@ -38,7 +37,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeTabletText ) }
+				label={ props.sizeTabletText }
 				value={ props.sizeTablet.value }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeTabletLabel ]: value } )
@@ -54,7 +53,7 @@ export default function RangeTypographyControl( props ) {
 		<>
 			<Range
 				{ ...props }
-				label={ __( props.sizeMobileText ) }
+				label={ props.sizeMobileText }
 				value={ props.sizeMobile.value }
 				onChange={ ( value ) =>
 					props.setAttributes( { [ props.sizeMobileLabel ]: value } )

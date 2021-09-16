@@ -257,10 +257,6 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
-	paddingLink: {
-		type: 'boolean',
-		default: false,
-	},
 	// Margin
 	vMarginDesktop: {
 		type: 'number',

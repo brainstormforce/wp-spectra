@@ -112,7 +112,7 @@ const UAGBTabsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( ( select ) => { // eslint-disable-line no-shadow
 		const { __experimentalGetPreviewDeviceType = null } = select(
 			'core/edit-post'
 		);
@@ -123,7 +123,7 @@ export default compose(
 			deviceType,
 		};
 	} ),
-	withDispatch( ( dispatch, { clientId }, { select } ) => {
+	withDispatch( ( dispatch, { clientId }, { select } ) => { // eslint-disable-line no-shadow
 		const { getBlock } = select( 'core/block-editor' );
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(
 			'core/block-editor'

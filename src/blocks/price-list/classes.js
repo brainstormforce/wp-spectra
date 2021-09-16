@@ -8,7 +8,7 @@ function PositionClasses( attributes ) {
 	const image = attributes.image;
 
 	if ( typeof attributes.rest_menu_item_arr !== 'undefined' ) {
-		attributes.rest_menu_item_arr.map( ( item ) => {
+		attributes.rest_menu_item_arr.map( ( item ) => { // eslint-disable-line  array-callback-return
 			const image_arr = item.image;
 			if ( image_arr && typeof image_arr !== 'undefined' ) {
 				imgeCount++;
@@ -28,8 +28,8 @@ function PositionClasses( attributes ) {
 	iconimgStyleClass += ' uagb-rm__align-' + attributes.headingAlign + ' ';
 
 	if (
-		'left' == attributes.imagePosition ||
-		'right' == attributes.imagePosition
+		'left' === attributes.imagePosition ||
+		'right' === attributes.imagePosition
 	) {
 		iconimgStyleClass +=
 			'uagb-rm__image-aligned-' + attributes.imageAlignment + ' ';

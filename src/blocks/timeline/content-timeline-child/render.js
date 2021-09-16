@@ -64,7 +64,7 @@ const Render = ( props ) => {
 	let displayInnerDate = false;
 	const postDate = t_date;
 
-	if ( timelinAlignment == 'center' ) {
+	if ( timelinAlignment === 'center' ) {
 		displayInnerDate = true;
 	}
 
@@ -84,13 +84,13 @@ const Render = ( props ) => {
 				<div className={ props.attributes.dayalign_class }>
 					<div className="uagb-timeline__events-inner-new">
 						<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
-							{ displayPostDate != true && t_date && (
+							{ displayPostDate !== true && t_date && (
 								<div
 									className={
 										'uagb-timeline__inner-date-new'
 									}
 								>
-									{ ( 'custom' != dateFormat &&
+									{ ( 'custom' !== dateFormat &&
 										dateI18n( dateFormat, postDate ) ) ||
 										postDate }
 								</div>
@@ -150,9 +150,9 @@ const Render = ( props ) => {
 				</div>
 				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">
-						{ displayPostDate != true && t_date && (
+						{ displayPostDate !== true && t_date && (
 							<div className={ 'uagb-timeline__date-new' }>
-								{ ( 'custom' != dateFormat &&
+								{ ( 'custom' !== dateFormat &&
 									dateI18n( dateFormat, postDate ) ) ||
 									postDate }
 							</div>

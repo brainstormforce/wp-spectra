@@ -50,7 +50,7 @@ const Render = ( props ) => {
 					templateLock={ false }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalMoverDirection={
-						'desktop' == stack ? 'vertical' : 'horizontal'
+						'desktop' === stack ? 'vertical' : 'horizontal'
 					}
 				/>
 			</div>

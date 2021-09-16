@@ -92,10 +92,10 @@ function styling( props ) {
 	let iconColorTemp = iconColor;
 	let iconActiveColorTemp = iconActiveColor;
 
-	if ( 'undefined' === typeof iconColor || '' == iconColor ) {
+	if ( 'undefined' === typeof iconColor ) {
 		iconColorTemp = questionTextColor;
 	}
-	if ( 'undefined' === typeof iconActiveColor || '' == iconActiveColor ) {
+	if ( 'undefined' === typeof iconActiveColor ) {
 		iconActiveColorTemp = questionTextActiveColor;
 	}
 

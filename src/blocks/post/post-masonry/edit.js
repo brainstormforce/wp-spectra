@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import UAGB_Block_Icons from '@Controls/block-icons';
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
@@ -33,7 +32,6 @@ const MAX_POSTS_COLUMNS = 8;
 import {
 	PanelBody,
 	Placeholder,
-	QueryControls,
 	SelectControl,
 	Spinner,
 	ToggleControl,
@@ -307,8 +305,6 @@ const UAGBPostMasonry = ( props ) => {
 		borderColor,
 		borderHColor,
 		borderRadius,
-		btnVPadding,
-		btnHPadding,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -319,8 +315,6 @@ const UAGBPostMasonry = ( props ) => {
 		rowGap,
 		columnGap,
 		bgColor,
-		contentPadding,
-		contentPaddingMobile,
 		titleColor,
 		titleTag,
 		titleFontSize,
@@ -478,7 +472,7 @@ const UAGBPostMasonry = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' != taxonomyList ) {
+	if ( '' !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -487,7 +481,7 @@ const UAGBPostMasonry = ( props ) => {
 		} );
 	}
 
-	if ( '' != categoriesList ) {
+	if ( '' !== categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
@@ -507,7 +501,7 @@ const UAGBPostMasonry = ( props ) => {
 					onChange={ ( value ) => onSelectPostType( value ) }
 					options={ uagb_blocks_info.post_types }
 				/>
-				{ '' != taxonomyList && (
+				{ '' !== taxonomyList && (
 					<SelectControl
 						label={ __(
 							'Taxonomy',
@@ -518,7 +512,7 @@ const UAGBPostMasonry = ( props ) => {
 						options={ taxonomyListOptions }
 					/>
 				) }
-				{ '' != categoriesList && (
+				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
 						<SelectControl
 							label={ taxonomyList[ taxonomyType ].label }
@@ -1082,7 +1076,7 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
-				{ displayPostImage == true && (
+				{ displayPostImage === true && (
 					<SelectControl
 						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
 						value={ imgSize }
@@ -1092,7 +1086,7 @@ const UAGBPostMasonry = ( props ) => {
 						options={ uagb_blocks_info.image_sizes }
 					/>
 				) }
-				{ displayPostImage == true && (
+				{ displayPostImage === true && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -1121,7 +1115,7 @@ const UAGBPostMasonry = ( props ) => {
 						] }
 					/>
 				) }
-				{ displayPostImage == true && imgPosition == 'background' && (
+				{ displayPostImage === true && imgPosition === 'background' && (
 					<ToggleControl
 						label={ __(
 							'Link Complete Box',
@@ -2121,8 +2115,8 @@ const UAGBPostMasonry = ( props ) => {
 						</>
 					) }
 					{ paginationSettings() }
-					{ displayPostImage == true &&
-						imgPosition == 'background' &&
+					{ displayPostImage === true &&
+						imgPosition === 'background' &&
 						imageStyle() }
 					{ spacingSettings() }
 				</InspectorTab>
@@ -2199,13 +2193,13 @@ export default compose(
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base === null
 						? currentTax.taxonomy[ taxonomyType ].name
 						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
 
-			if ( '' != taxonomyType ) {
+			if ( '' !== taxonomyType ) {
 				if (
 					'undefined' !== typeof currentTax.terms &&
 					'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -2231,7 +2225,7 @@ export default compose(
 		category.push( temp );
 		const catlenght = categoriesList.length;
 		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id == temp ) {
+			if ( categoriesList[ i ].id === temp ) {
 				if ( categoriesList[ i ].child.length !== 0 ) {
 					categoriesList[ i ].child.forEach( ( element ) => {
 						category.push( element );
