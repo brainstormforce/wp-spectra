@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class GlobalSettings.
+ * Class Global_Settings.
  */
-class GlobalSettings {
+class Global_Settings {
 
 	/**
 	 * Get flow meta options.
@@ -32,7 +32,7 @@ class GlobalSettings {
 						'label'   => __( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 						'desc'    => sprintf( __( 'Experiencing an issue with Ultimate Addons for Gutenberg version %s? Roll back to a previous version to help troubleshoot the issue.', 'ultimate-addons-for-gutenberg' ), UAGB_VER ),
-						'options' => AdminHelper::get_rollback_versions_options(),
+						'options' => Admin_Helper::get_rollback_versions_options(),
 					),
 				),
 			),

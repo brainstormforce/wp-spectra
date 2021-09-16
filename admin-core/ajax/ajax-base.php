@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use UagAdmin\Ajax\AjaxErrors;
+use UagAdmin\Ajax\Ajax_Errors;
 
 /**
- * Class AjaxBase.
+ * Class Ajax_Base.
  */
-abstract class AjaxBase {
+abstract class Ajax_Base {
 
 	/**
 	 * Ajax action prefix.
@@ -40,7 +40,7 @@ abstract class AjaxBase {
 	 */
 	public function __construct() {
 
-		$this->errors = AjaxErrors::get_instance();
+		$this->errors = Ajax_Errors::get_instance();
 	}
 
 	/**

@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class AjaxInit.
+ * Class Ajax_Init.
  */
-class AjaxInit {
+class Ajax_Init {
 
 	/**
 	 * Instance
@@ -66,7 +66,7 @@ class AjaxInit {
 	public function register_all_ajax_events() {
 
 		$controllers = array(
-			'UagAdmin\Ajax\CommonSettings',
+			'UagAdmin\Ajax\Common_Settings',
 		);
 
 		foreach ( $controllers as $controller ) {
@@ -76,4 +76,4 @@ class AjaxInit {
 	}
 }
 
-AjaxInit::get_instance();
+Ajax_Init::get_instance();
