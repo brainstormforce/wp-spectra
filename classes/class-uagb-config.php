@@ -52,6 +52,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				self::$block_attributes = array(
 					'uagb/demo-control'           => array(
 						'slug'        => '',
+						'admin_categories' => array(),
 						'title'       => __( 'Demo Control', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you find out demo control.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
