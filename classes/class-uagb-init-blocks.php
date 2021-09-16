@@ -355,35 +355,34 @@ class UAGB_Init_Blocks {
 				'deactivated_blocks' => $blocks,
 			)
 		);
+		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' );
 
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                 => UAGB_Config::get_block_attributes(),
-				'category'               => 'uagb',
-				'ajax_url'               => admin_url( 'admin-ajax.php' ),
-				'cf7_forms'              => $this->get_cf7_forms(),
-				'gf_forms'               => $this->get_gravity_forms(),
-				'tablet_breakpoint'      => UAGB_TABLET_BREAKPOINT,
-				'mobile_breakpoint'      => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'            => UAGB_Helper::get_image_sizes(),
-				'post_types'             => UAGB_Helper::get_post_types(),
-				'all_taxonomy'           => UAGB_Helper::get_related_taxonomy(),
-				'taxonomy_list'          => UAGB_Helper::get_taxonomy_list(),
-				'uagb_ajax_nonce'        => $uagb_ajax_nonce,
-				'uagb_home_url'          => home_url(),
-				'user_role'              => $this->get_user_role(),
-				'uagb_url'               => UAGB_URL,
-				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'          => UAGB_URI,
-				'enableConditions'       => apply_filters_deprecated( 'enable_block_condition', array( true ), '1.23.4', 'uag_enable_block_condition' ),
-				'enableMasonryGallery'   => apply_filters( 'uag_enable_masonry_gallery', true ),
-				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
-				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
+				'blocks'               => UAGB_Config::get_block_attributes(),
+				'category'             => 'uagb',
+				'ajax_url'             => admin_url( 'admin-ajax.php' ),
+				'cf7_forms'            => $this->get_cf7_forms(),
+				'gf_forms'             => $this->get_gravity_forms(),
+				'tablet_breakpoint'    => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint'    => UAGB_MOBILE_BREAKPOINT,
+				'image_sizes'          => UAGB_Helper::get_image_sizes(),
+				'post_types'           => UAGB_Helper::get_post_types(),
+				'all_taxonomy'         => UAGB_Helper::get_related_taxonomy(),
+				'taxonomy_list'        => UAGB_Helper::get_taxonomy_list(),
+				'uagb_ajax_nonce'      => $uagb_ajax_nonce,
+				'uagb_home_url'        => home_url(),
+				'user_role'            => $this->get_user_role(),
+				'uagb_url'             => UAGB_URL,
+				'uagb_mime_type'       => UAGB_Helper::get_mime_type(),
+				'uagb_site_url'        => UAGB_URI,
+				'enableConditions'     => apply_filters_deprecated( 'enable_block_condition', array( $displayCondition ), '1.23.4', 'uag_enable_block_condition' ),
+				'enableMasonryGallery' => apply_filters( 'uag_enable_masonry_gallery', true ),
+				'uagb_svg_icons'       => UAGB_Helper::backend_load_font_awesome_icons(),
 			)
 		);
-
 		// To match the editor with frontend.
 		// Scripts Dependency.
 		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
