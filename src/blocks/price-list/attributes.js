@@ -10,8 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	const descText = __( 
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	);
-	const titleText = __( 'Menu Item ' + i // eslint-disable-line  @wordpress/i18n-no-variables
-	);
+	const titleText = ( 'Menu Item ' + i );
 	const priceText = __( '$9' );
 	restMenuBlock.push( {
 		description: descText,
