@@ -46,8 +46,6 @@ function styling( props ) {
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
-		tabBodyVertPadding,
-		tabBodyHrPadding,
 		iconSpacing,
 		tabsStyleD,
 		tabsStyleM,
@@ -108,7 +106,7 @@ function styling( props ) {
 	let mobileSelectors = {};
 	selectors = {
 		' > .uagb-tabs__panel .uagb-tab': {
-			background: headerBgColor,
+			'background': headerBgColor,
 			'text-align': titleAlign,
 			'padding-top': generateCSSUnit(
 				tabTitleTopPadding,
@@ -144,7 +142,7 @@ function styling( props ) {
 			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a > p': {
-			color: headerTextColor,
+			'color': headerTextColor,
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -156,16 +154,16 @@ function styling( props ) {
 			'text-decoration': titleDecoration,
 		},
 		' > .uagb-tabs__panel .uagb-tab.uagb-tabs__active ': {
-			background: activeTabBgColor,
+			'background': activeTabBgColor,
 		},
 		' > .uagb-tabs__panel .uagb-tab.uagb-tabs__active p': {
-			color: activeTabTextColor,
+			'color': activeTabTextColor,
 		},
 		' > .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg': {
-			fill: activeiconColor,
+			'fill': activeiconColor,
 		},
 		' > .uagb-tabs__body-wrap ': {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'padding-top': generateCSSUnit(
 				tabBodyTopPadding,
 				tabBodyPaddingUnit
@@ -200,12 +198,12 @@ function styling( props ) {
 			),
 		},
 		' > .uagb-tabs__body-wrap > .block-editor-inner-blocks p': {
-			color: bodyTextColor,
+			'color': bodyTextColor,
 		},
 		' .uagb-tabs__icon svg': {
-			height: generateCSSUnit( iconSize, 'px' ),
-			width: generateCSSUnit( iconSize, 'px' ),
-			fill: iconColor,
+			'height': generateCSSUnit( iconSize, 'px' ),
+			'width': generateCSSUnit( iconSize, 'px' ),
+			'fill': iconColor,
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
@@ -401,7 +399,7 @@ function styling( props ) {
 
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -413,7 +411,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -425,7 +423,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -439,7 +437,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -453,7 +451,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleM === 'hstyle5' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -467,7 +465,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleM === 'vstyle10' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
@@ -481,7 +479,7 @@ function styling( props ) {
 	}
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
-			background: bodyBgColor,
+			'background': bodyBgColor,
 			'border-color': borderColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,

@@ -245,7 +245,7 @@ export default compose(
 			'@context': 'https://schema.org',
 			'@type': 'FAQPage',
 			'@id': page_url,
-			mainEntity: [],
+			'mainEntity': [],
 		};
 		const faqChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
@@ -254,10 +254,10 @@ export default compose(
 		faqChildBlocks.forEach( ( faqChild, key ) => {
 			faq_data = {
 				'@type': 'Question',
-				name: faqChild.attributes.question,
-				acceptedAnswer: {
+				'name': faqChild.attributes.question,
+				'acceptedAnswer': {
 					'@type': 'Answer',
-					text: faqChild.attributes.answer,
+					'text': faqChild.attributes.answer,
 				},
 			};
 			json_data.mainEntity[ key ] = faq_data;

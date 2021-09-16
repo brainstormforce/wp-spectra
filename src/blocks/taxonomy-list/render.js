@@ -28,9 +28,9 @@ const Render = ( props ) => {
 	} = attributes;
 
 	let Tag;
-	if ( 'grid' == layout ) {
+	if ( 'grid' === layout ) {
 		Tag = titleTag ? titleTag : 'H4';
-	} else if ( 'list' == layout ) {
+	} else if ( 'list' === layout ) {
 		Tag = titleTag ? titleTag : 'div';
 	}
 
@@ -49,7 +49,7 @@ const Render = ( props ) => {
 						`uagb-layout-${ layout }`
 					) }
 				>
-					{ 'grid' == layout &&
+					{ 'grid' === layout &&
 						categoriesList.map( ( p, index ) => (
 							<div className="uagb-taxomony-box" key={ index }>
 								<a className="uagb-tax-link" href={ p.link }>
@@ -71,7 +71,7 @@ const Render = ( props ) => {
 							</div>
 						) ) }
 
-					{ 'list' == layout && 'list' == listDisplayStyle && (
+					{ 'list' === layout && 'list' === listDisplayStyle && (
 						<ul className="uagb-list-wrap">
 							{ categoriesList.map( ( p, index ) => (
 								<li className="uagb-tax-list" key={ index }>
@@ -86,7 +86,7 @@ const Render = ( props ) => {
 										{ showCount && (
 											<span className="uagb-tax-list-count">{ ` (${ p.count })` }</span>
 										) }
-										{ showhierarchy && p.children != null && (
+										{ showhierarchy && p.children !== null && (
 											<ul className="uagb-taxonomy-list-children">
 												{ Object.keys( p.children ).map(
 													function ( key, i ) {
@@ -117,7 +117,7 @@ const Render = ( props ) => {
 										) }
 									</Tag>
 
-									{ 'none' != seperatorStyle && (
+									{ 'none' !== seperatorStyle && (
 										<div className="uagb-tax-separator-wrap">
 											<div className="uagb-tax-separator"></div>
 										</div>
@@ -127,7 +127,7 @@ const Render = ( props ) => {
 						</ul>
 					) }
 
-					{ 'list' == layout && 'dropdown' == listDisplayStyle && (
+					{ 'list' === layout && 'dropdown' === listDisplayStyle && (
 						<select className="uagb-list-dropdown-wrap">
 							{ categoriesList.map( ( p, index ) => (
 								<option key={ index } value={ p.link }>
@@ -140,7 +140,7 @@ const Render = ( props ) => {
 				</div>
 
 				{ /* If no Taxonomy is available. */ }
-				{ categoriesList == '' && (
+				{ categoriesList === '' && (
 					<div className="uagb-tax-not-available">
 						{ noTaxDisplaytext }
 					</div>

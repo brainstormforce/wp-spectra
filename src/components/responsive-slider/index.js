@@ -1,3 +1,4 @@
+
 import Range from '@Components/range/Range.js';
 // Extend component
 import { useSelect } from '@wordpress/data';

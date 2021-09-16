@@ -63,9 +63,9 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-cta__left-right-wrap">
-				{ ctaPosition == 'left' && isCta }
+				{ ctaPosition === 'left' && isCta }
 				<div className="uagb-cta__content">
-					{ ctaPosition == 'above-title' && (
+					{ ctaPosition === 'above-title' && (
 						<>
 							{ isCta }
 							{ titleText }
@@ -73,7 +73,7 @@ export default function save( props ) {
 						</>
 					) }
 
-					{ ctaPosition == 'below-title' && (
+					{ ctaPosition === 'below-title' && (
 						<>
 							{ titleText }
 							{ desc }
@@ -81,7 +81,7 @@ export default function save( props ) {
 						</>
 					) }
 
-					{ ( ctaPosition == 'left' || ctaPosition == 'right' ) && (
+					{ ( ctaPosition === 'left' || ctaPosition === 'right' ) && (
 						<>
 							{ titleText }
 							{ desc }
@@ -89,7 +89,7 @@ export default function save( props ) {
 					) }
 				</div>
 
-				{ ctaPosition == 'right' && isCta }
+				{ ctaPosition === 'right' && isCta }
 			</div>
 		</div>
 	);
@@ -107,7 +107,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ ctaType == 'all' && (
+			{ ctaType === 'all' && (
 				<>
 					<a
 						href={ ctaLink }

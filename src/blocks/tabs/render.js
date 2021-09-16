@@ -136,7 +136,7 @@ const Render = ( props ) => {
 					className,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-					`uagb-tabs__wrap`,
+					'uagb-tabs__wrap',
 					`uagb-tabs__${ tabsStyleD }-desktop`,
 					`uagb-tabs__${ tabsStyleT }-tablet`,
 					`uagb-tabs__${ tabsStyleM }-mobile`
@@ -162,9 +162,10 @@ const Render = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
-											<span
+											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+												role='button'
 												className="uagb-tab-item__move-back"
-												onClick={
+												onClick={ 
 													index === 0
 														? ' '
 														: onMoveBack(
@@ -190,7 +191,8 @@ const Render = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
-											<span
+											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+												role='button'
 												className="uagb-tab-item__move-forward"
 												onClick={
 													index === tabHeaders.length
@@ -217,7 +219,9 @@ const Render = ( props ) => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									>
-										<span
+										<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+											role='button'
+											tabIndex={ index }
 											className="uagb-tabs__remove"
 											onClick={ () => removeTab( index ) }
 										>
@@ -226,7 +230,9 @@ const Render = ( props ) => {
 									</Tooltip>
 								</div>
 							) }
-							<a
+							<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
+								role='button'
+								tabIndex={ index }
 								className={ `uagb-tabs__icon-position-${ iconPosition } uagb-tabs-list` }
 								onClick={ () => {
 									props.updateActiveTab( index );
@@ -271,7 +277,11 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							<span onClick={ () => addTab() }>
+							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+								role='button'
+								tabIndex='0'
+								onClick={ () => addTab() } 
+							> 
 								<Dashicon icon="plus" />
 							</span>
 						</Tooltip>

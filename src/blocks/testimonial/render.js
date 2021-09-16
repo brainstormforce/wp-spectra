@@ -84,9 +84,9 @@ const Render = ( props ) => {
 	};
 
 	const dots =
-		'dots' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 	const arrows =
-		'arrows' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
 	const settings = {
 		slidesToShow: columns,
@@ -151,8 +151,8 @@ const Render = ( props ) => {
 								key={ 'tm_content-' + index }
 							>
 								<div className="uagb-tm__overlay"></div>
-								{ ( imagePosition == 'top' ||
-									imagePosition == 'left' ) && (
+								{ ( imagePosition === 'top' ||
+									imagePosition === 'left' ) && (
 									<TestimonialImage
 										attributes={ attributes }
 										index_value={ index }
@@ -172,7 +172,7 @@ const Render = ( props ) => {
 										</>
 									}
 									<div className="uagb-tm__meta-inner">
-										{ imagePosition == 'bottom' && (
+										{ imagePosition === 'bottom' && (
 											<TestimonialImage
 												attributes={ attributes }
 												index_value={ index }
@@ -210,7 +210,7 @@ const Render = ( props ) => {
 										}
 									</div>
 								</div>
-								{ imagePosition == 'right' && (
+								{ imagePosition === 'right' && (
 									<TestimonialImage
 										attributes={ attributes }
 										index_value={ index }

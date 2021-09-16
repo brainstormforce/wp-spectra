@@ -24,7 +24,7 @@ import { PanelBody } from '@wordpress/components';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		align,
@@ -90,7 +90,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ 'horizontal' == social_layout && (
+				{ 'horizontal' === social_layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }

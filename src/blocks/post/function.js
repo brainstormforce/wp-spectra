@@ -51,8 +51,8 @@ export const renderPostLayout = (
 	}
 
 	const blockMap = getBlockMap( blockName );
-	let children = [];
-	return layoutConfig.map( ( [ name, props = {} ] ) => {
+	let children = []; // eslint-disable-line no-unused-vars
+	return layoutConfig.map( ( [ name, props = {} ], key ) => {
 		if ( !! props.children && props.children.length > 0 ) {
 			children = renderPostLayout(
 				blockName,
@@ -67,9 +67,9 @@ export const renderPostLayout = (
 		if ( ! LayoutComponent ) {
 			return null;
 		}
-
+		
 		return (
-			<Suspense fallback={ <div className="wc-block-placeholder" /> }>
+			<Suspense key={ key } fallback={ <div className="wc-block-placeholder" /> }>
 				<LayoutComponent
 					{ ...props }
 					post={ post }

@@ -15,6 +15,7 @@ import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
+import jQuery from 'jquery';
 
 let imageSizeOptions = [
 	{
@@ -153,7 +154,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index ) {
+		jQuery.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -172,20 +173,11 @@ const Settings = ( props ) => {
 		imageSizeOptions = getImageSize( image.sizes );
 	}
 
-	let imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-	if ( image ) {
-		if ( image.url == null || image.url == '' ) {
-			imageName = __( 'Select Image', 'ultimate-addons-for-gutenberg' );
-		} else {
-			imageName = __( 'Replace Image', 'ultimate-addons-for-gutenberg' );
-		}
-	}
-
 	let loadTitleGoogleFonts;
 	let loadPrefixGoogleFonts;
 	let loadDescGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const tconfig = {
 			google: {
 				families: [
@@ -200,7 +192,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( prefixLoadGoogleFonts == true ) {
+	if ( prefixLoadGoogleFonts === true ) {
 		const pconfig = {
 			google: {
 				families: [
@@ -215,7 +207,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const dconfig = {
 			google: {
 				families: [
@@ -318,7 +310,7 @@ const Settings = ( props ) => {
 									/>
 								),
 								tooltip: __(
-									'Above',
+									'Top',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
@@ -340,7 +332,7 @@ const Settings = ( props ) => {
 						showIcons={ true }
 					/>
 				) }
-				{ imgPosition != 'above' && image && (
+				{ imgPosition !== 'above' && image && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -1173,7 +1165,7 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ imgPosition == 'above' && getBlockControls() }
+			{ imgPosition === 'above' && getBlockControls() }
 			{ getInspectorControls() }
 			{ getFontSettings() }
 		</>

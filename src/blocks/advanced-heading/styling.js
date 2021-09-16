@@ -58,7 +58,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 		' .uagb-separator-wrap': {
 			'text-align': headingAlign,
@@ -71,7 +71,7 @@ function styling( props ) {
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-		color: headingColor,
+		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
 
@@ -79,7 +79,7 @@ function styling( props ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit( separatorHeight, 'px' ),
-			width: generateCSSUnit( separatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( separatorWidth, separatorWidthType ),
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit( separatorSpace, 'px' ),
 		};

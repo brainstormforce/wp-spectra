@@ -11,8 +11,6 @@ function styling( props ) {
 	const {
 		align,
 		titleDescAlignment,
-		fieldHrPadding,
-		fieldVrPadding,
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
@@ -21,8 +19,6 @@ function styling( props ) {
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
-		buttonVrPadding,
-		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -124,8 +120,6 @@ function styling( props ) {
 		msgBorderSize,
 		msgBorderRadius,
 		msgBorderRadiusType,
-		msgVrPadding,
-		msgHrPadding,
 		successMsgColor,
 		fieldtopPadding,
 		fieldrightPadding,
@@ -144,7 +138,6 @@ function styling( props ) {
 		fieldpaddingUnit,
 		fieldmobilePaddingUnit,
 		fieldtabletPaddingUnit,
-		fieldpaddingLink,
 
 		buttontopPadding,
 		buttonrightPadding,
@@ -163,7 +156,6 @@ function styling( props ) {
 		buttonpaddingUnit,
 		buttonmobilePaddingUnit,
 		buttontabletPaddingUnit,
-		buttonpaddingLink,
 
 		msgtopPadding,
 		msgrightPadding,
@@ -182,7 +174,6 @@ function styling( props ) {
 		msgpaddingUnit,
 		msgmobilePaddingUnit,
 		msgtabletPaddingUnit,
-		msgpaddingLink,
 	} = props.attributes;
 
 	const selectors = {

@@ -4,7 +4,7 @@ const Excerpt = ( props ) => {
 
 	if ( attributes.displayPostExcerpt && undefined !== post.uagb_excerpt ) {
 		if ( attributes.displayPostExcerpt && post.uagb_excerpt ) {
-			var trimmed_excerpt = post.uagb_excerpt
+			var trimmed_excerpt = post.uagb_excerpt // eslint-disable-line no-var
 				.split( /\s+/ )
 				.slice( 0, attributes.exerptLength )
 				.join( ' ' );

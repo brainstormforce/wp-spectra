@@ -158,7 +158,7 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'modern' == layout ) {
+	if ( 'modern' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = noticeColor;
@@ -181,7 +181,7 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
-	} else if ( 'simple' == layout ) {
+	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = contentBgColor;

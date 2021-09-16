@@ -171,8 +171,8 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'above' != imgPosition ) {
-		if ( 'middle' == imgAlign ) {
+	if ( 'above' !== imgPosition ) {
+		if ( 'middle' === imgAlign ) {
 			selectors[ ' .uagb-team__image-wrap' ][ 'align-self' ] = 'center';
 		}
 	}

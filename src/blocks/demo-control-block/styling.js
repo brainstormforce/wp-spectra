@@ -83,7 +83,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
-			color: titleColor,
+			'color': titleColor,
 			//  "padding": generateCSSUnit( rPadding, "px" ),
 			'padding-left': generateCSSUnit( paddingLeft, paddingUnit ),
 			'padding-right': generateCSSUnit( paddingRight, paddingUnit ),
@@ -106,11 +106,10 @@ function styling( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: textColor,
+			'color': textColor,
 		},
-
 		' span.uagb-notice-dismiss': {
-			fill: noticeDismissColor,
+			'fill': noticeDismissColor,
 		},
 	};
 

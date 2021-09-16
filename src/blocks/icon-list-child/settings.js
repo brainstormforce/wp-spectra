@@ -313,7 +313,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ 'icon' == image_icon && (
+				{ 'icon' === image_icon && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -327,7 +327,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ 'image' == image_icon && (
+				{ 'image' === image_icon && (
 					<>
 						<UAGImage
 							onSelectImage={ onSelectImage }
@@ -382,7 +382,7 @@ const Settings = ( props ) => {
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ ! hideLabel && textColorControls() }
-					{ 'icon' == image_icon &&
+					{ 'icon' === image_icon &&
 						'' !== icon &&
 						iconStyleControls() }
 					{ bgStyleControls() }

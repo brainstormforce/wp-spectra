@@ -75,8 +75,8 @@ function styling( props ) {
 
 	let max_width = '100%';
 
-	if ( 'custom' == contentWidth ) {
-		if ( '' != width ) {
+	if ( 'custom' === contentWidth ) {
+		if ( '' !== width ) {
 			max_width = generateCSSUnit( width, widthType );
 		}
 	}
@@ -180,7 +180,7 @@ function styling( props ) {
 		case 'gradient':
 			selectors[ ' > .uagb-columns__overlay' ] = {
 				'background-color': 'transparent',
-				opacity:
+				'opacity':
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100
 						: '',
@@ -281,7 +281,7 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'tablet' == stack ) {
+	if ( 'tablet' === stack ) {
 		tabletSelectors[
 			'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
 		] = {
@@ -292,7 +292,7 @@ function styling( props ) {
 		] = {
 			'flex-direction': 'column',
 		};
-	} else if ( 'mobile' == stack ) {
+	} else if ( 'mobile' === stack ) {
 		mobileSelectors[
 			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
 		] = {

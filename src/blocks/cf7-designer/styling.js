@@ -378,8 +378,8 @@ function styling( props ) {
 		},
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			display: 'inline-flex',
+			'color': fieldInputColor,
+			'display': 'inline-flex',
 			'border-radius': '100%',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
@@ -431,7 +431,7 @@ function styling( props ) {
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
 			'border-color': fieldBorderFocusColor,
-			display: 'inline-flex',
+			'display': 'inline-flex',
 		},
 
 		// Override check box , Radio & acceptance.
@@ -453,10 +453,10 @@ function styling( props ) {
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
-			display: 'inline-flex',
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'display': 'inline-flex',
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),

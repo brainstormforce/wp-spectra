@@ -36,10 +36,9 @@ import {
 	ToggleControl,
 	TextControl,
 	RadioControl,
-	QueryControls,
 } from '@wordpress/components';
 
-import { InspectorControls, ColorPalette } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import { withSelect, withDispatch } from '@wordpress/data';
 
@@ -162,9 +161,9 @@ const UAGBPostCarousel = ( props ) => {
 	useEffect( () => {
 		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
-			uagb_carousel_height( props.clientId.substr( 0, 8 ) );
+			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		} else {
-			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) );
+			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
 
 		const element = document.getElementById(
@@ -226,8 +225,6 @@ const UAGBPostCarousel = ( props ) => {
 		borderColor,
 		borderHColor,
 		borderRadius,
-		btnVPadding,
-		btnHPadding,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -238,8 +235,6 @@ const UAGBPostCarousel = ( props ) => {
 		rowGap,
 		columnGap,
 		bgColor,
-		contentPadding,
-		contentPaddingMobile,
 		titleColor,
 		titleTag,
 		titleFontSize,
@@ -296,7 +291,6 @@ const UAGBPostCarousel = ( props ) => {
 		ctaBgColor,
 		ctaHColor,
 		ctaBgHColor,
-		arrowColor,
 		titleBottomSpace,
 		imageBottomSpace,
 		ctaBottomSpace,
@@ -377,7 +371,7 @@ const UAGBPostCarousel = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' != taxonomyList ) {
+	if ( '' !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -386,7 +380,7 @@ const UAGBPostCarousel = ( props ) => {
 		} );
 	}
 
-	if ( '' != categoriesList ) {
+	if ( '' !== categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
@@ -402,115 +396,6 @@ const UAGBPostCarousel = ( props ) => {
 		}
 	};
 
-	const hoverSettings = (
-		<>
-			<p className="uagb-setting-label">
-				{ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: ctaHColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ ctaHColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { ctaHColor: colorValue } )
-				}
-				allowReset
-			/>
-			<p className="uagb-setting-label">
-				{ __(
-					'Background Hover Color',
-					'ultimate-addons-for-gutenberg'
-				) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: ctaBgHColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ ctaBgHColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { ctaBgHColor: colorValue } )
-				}
-				allowReset
-			/>
-			<p className="uagb-setting-label">
-				{ __( 'Border Hover Color', 'ultimate-addons-for-gutenberg' ) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: borderHColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ borderHColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { borderHColor: colorValue } )
-				}
-				allowReset
-			/>
-		</>
-	);
-
-	const normalSettings = (
-		<>
-			<p className="uagb-setting-label">
-				{ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: ctaColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ ctaColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { ctaColor: colorValue } )
-				}
-				allowReset
-			/>
-			<p className="uagb-setting-label">
-				{ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: ctaBgColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ ctaBgColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { ctaBgColor: colorValue } )
-				}
-				allowReset
-			/>
-			<p className="uagb-setting-label">
-				{ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
-				<span className="components-base-control__label">
-					<span
-						className="component-color-indicator"
-						style={ { backgroundColor: borderColor } }
-					></span>
-				</span>
-			</p>
-			<ColorPalette
-				value={ borderColor }
-				onChange={ ( colorValue ) =>
-					setAttributes( { borderColor: colorValue } )
-				}
-				allowReset
-			/>
-		</>
-	);
-
 	const getGeneralPanelBody = () => {
 		return (
 			<PanelBody
@@ -523,7 +408,7 @@ const UAGBPostCarousel = ( props ) => {
 					onChange={ ( value ) => onSelectPostType( value ) }
 					options={ uagb_blocks_info.post_types }
 				/>
-				{ '' != taxonomyList && (
+				{ '' !== taxonomyList && (
 					<SelectControl
 						label={ __(
 							'Taxonomy',
@@ -534,7 +419,7 @@ const UAGBPostCarousel = ( props ) => {
 						options={ taxonomyListOptions }
 					/>
 				) }
-				{ '' != categoriesList && (
+				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
 						<SelectControl
 							label={ taxonomyList[ taxonomyType ].label }
@@ -727,7 +612,7 @@ const UAGBPostCarousel = ( props ) => {
 					checked={ autoplay }
 					onChange={ () => setAttributes( { autoplay: ! autoplay } ) }
 				/>
-				{ autoplay == true && (
+				{ autoplay === true && (
 					<Range
 						label={ __(
 							'Autoplay Speed (ms)',
@@ -823,7 +708,7 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
-				{ displayPostImage == true && (
+				{ displayPostImage === true && (
 					<SelectControl
 						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
 						value={ imgSize }
@@ -833,7 +718,7 @@ const UAGBPostCarousel = ( props ) => {
 						options={ uagb_blocks_info.image_sizes }
 					/>
 				) }
-				{ displayPostImage == true && (
+				{ displayPostImage === true && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -862,7 +747,7 @@ const UAGBPostCarousel = ( props ) => {
 						] }
 					/>
 				) }
-				{ displayPostImage == true && imgPosition == 'background' && (
+				{ displayPostImage === true && imgPosition === 'background' && (
 					<ToggleControl
 						label={ __(
 							'Link Complete Box',
@@ -1171,8 +1056,8 @@ const UAGBPostCarousel = ( props ) => {
 
 	const imageStyle = () => {
 		return (
-			displayPostImage == true &&
-			imgPosition == 'background' && (
+			displayPostImage === true &&
+			imgPosition === 'background' && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(
@@ -1472,6 +1357,13 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ excerptColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { excerptColor: value } )
+					}
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1536,13 +1428,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'excerptDecoration',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ excerptColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { excerptColor: value } )
-					}
-				/>
 				<Range
 					label={ __(
 						'Bottom Spacing',
@@ -1572,6 +1457,73 @@ const UAGBPostCarousel = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ ctaColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { ctaColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ ctaBgColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { ctaBgColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ ctaHColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { ctaHColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ ctaBgHColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { ctaBgHColor: value } )
+								}
+							/>
+						</>
+					}
+					disableBottomSeparator={ false }
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1699,10 +1651,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Button Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: paddingBtnTop,
 						label: 'paddingBtnTop',
@@ -1770,73 +1719,6 @@ const UAGBPostCarousel = ( props ) => {
 						value: spacingLink,
 						label: 'spacingLink',
 					} }
-				/>
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					normal={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaColor: value } )
-								}
-							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgColor: value } )
-								}
-							/>
-						</>
-					}
-					hover={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaHColor: value } )
-								}
-							/>
-							<AdvancedPopColorControl
-								label={ __(
-									'Background Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ ctaBgHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgHColor: value } )
-								}
-							/>
-						</>
-					}
-					disableBottomSeparator={ true }
 				/>
 			</PanelBody>
 		);
@@ -1920,7 +1802,7 @@ const UAGBPostCarousel = ( props ) => {
 					) }
 					{ displayPostImage && imageStyle() }
 					{ spacingSettings() }
-					{ 'dots' != arrowDots && carouselStyle() }
+					{ 'dots' !== arrowDots && carouselStyle() }
 				</InspectorTab>
 				<InspectorTab key={ 'advance' }></InspectorTab>
 			</InspectorTabs>
@@ -1995,13 +1877,13 @@ export default compose(
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base === null
 						? currentTax.taxonomy[ taxonomyType ].name
 						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
 
-			if ( '' != taxonomyType ) {
+			if ( '' !== taxonomyType ) {
 				if (
 					'undefined' !== typeof currentTax.terms &&
 					'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -2027,7 +1909,7 @@ export default compose(
 		category.push( temp );
 		const catlenght = categoriesList.length;
 		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id == temp ) {
+			if ( categoriesList[ i ].id === temp ) {
 				if ( categoriesList[ i ].child.length !== 0 ) {
 					categoriesList[ i ].child.forEach( ( element ) => {
 						category.push( element );

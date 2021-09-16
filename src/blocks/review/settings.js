@@ -17,7 +17,7 @@ import UAGImage from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 
-$ = jQuery;
+import jQuery from 'jquery';
 import {
 	PanelBody,
 	SelectControl,
@@ -169,7 +169,7 @@ const Settings = ( props ) => {
 	let loadHeadingGoogleFonts;
 	let loadSubHeadingGoogleFonts;
 
-	if ( headLoadGoogleFonts == true ) {
+	if ( headLoadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
 				families: [
@@ -184,7 +184,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( subHeadLoadGoogleFonts == true ) {
+	if ( subHeadLoadGoogleFonts === true ) {
 		const sconfig = {
 			google: {
 				families: [
@@ -199,7 +199,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( contentLoadGoogleFonts == true ) {
+	if ( contentLoadGoogleFonts === true ) {
 		const cconfig = {
 			google: {
 				families: [
@@ -220,7 +220,7 @@ const Settings = ( props ) => {
 
 	const getImageSize = ( sizes ) => {
 		const sizeArr = [];
-		$.each( sizes, function ( index ) {
+		jQuery.each( sizes, function ( index ) {
 			const name = index;
 			const p = { value: name, label: name };
 			sizeArr.push( p );
@@ -735,7 +735,7 @@ const Settings = ( props ) => {
 									/>
 								</>
 							) }
-							{ offerType == 'Offer' && (
+							{ offerType === 'Offer' && (
 								<>
 									<TextControl
 										label={ __(

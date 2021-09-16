@@ -111,7 +111,7 @@ const Settings = ( props ) => {
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 
-	if ( ctaLoadGoogleFonts == true ) {
+	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
 				families: [
@@ -126,7 +126,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -141,7 +141,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
 				families: [
@@ -794,7 +794,7 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				) }
-				{ ctaType == 'button' && ! inheritFromTheme && (
+				{ ctaType === 'button' && ! inheritFromTheme && (
 					<>
 						<SpacingControl
 							{ ...props }
@@ -1106,7 +1106,7 @@ const Settings = ( props ) => {
 							ctaType !== 'all' &&
 							ctaType !== 'none' &&
 							ctaStyleSettings() }
-						{ ctaType == 'button' &&
+						{ ctaType === 'button' &&
 							! inheritFromTheme &&
 							ctaBorderSettings() }
 						{ marginSettings() }

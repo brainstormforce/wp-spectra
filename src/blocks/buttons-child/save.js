@@ -24,7 +24,7 @@ export default function save( props ) {
 			return (
 				<span
 					className={ classnames(
-						`uagb-button__icon`,
+						'uagb-button__icon',
 						`uagb-button__icon-position-${ iconPosition }`
 					) }
 				>

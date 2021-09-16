@@ -25,12 +25,10 @@ function styling( props ) {
 		titleFontSizeTablet,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
 		titleLineHeightMobile,
-		titleLoadGoogleFonts,
 		titleBottomSpace,
 		titleTransform,
 		titleDecoration,
@@ -42,12 +40,10 @@ function styling( props ) {
 		metaFontSizeTablet,
 		metaFontFamily,
 		metaFontWeight,
-		metaFontSubset,
 		metaLineHeightType,
 		metaLineHeight,
 		metaLineHeightTablet,
 		metaLineHeightMobile,
-		metaLoadGoogleFonts,
 		metaColor,
 		metaBottomSpace,
 		metaLinkTransform,
@@ -60,12 +56,10 @@ function styling( props ) {
 		excerptFontSizeMobile,
 		excerptFontFamily,
 		excerptFontWeight,
-		excerptFontSubset,
 		excerptLineHeightType,
 		excerptLineHeight,
 		excerptLineHeightTablet,
 		excerptLineHeightMobile,
-		excerptLoadGoogleFonts,
 		excerptColor,
 		excerptBottomSpace,
 		excerptBottomSpaceUnit,
@@ -80,12 +74,10 @@ function styling( props ) {
 		ctaFontSizeMobile,
 		ctaFontFamily,
 		ctaFontWeight,
-		ctaFontSubset,
 		ctaLineHeightType,
 		ctaLineHeight,
 		ctaLineHeightTablet,
 		ctaLineHeightMobile,
-		ctaLoadGoogleFonts,
 		ctaBottomSpace,
 		ctaBgColor,
 		ctaHColor,
@@ -151,9 +143,7 @@ function styling( props ) {
 		mobilePaddingUnit,
 		tabletPaddingUnit,
 		contentPadding,
-		contentPaddingMobile,
 		contentPaddingUnit,
-		contentPaddingTablet,
 		arrowColor,
 		arrowSize,
 		arrowSizeUnit,
@@ -203,7 +193,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
-			background: bgColor,
+			'background': bgColor,
 			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 			'padding-bottom': generateCSSUnit(
 				paddingBottom,
@@ -377,7 +367,7 @@ function styling( props ) {
 	}
 
 	if ( true === postPagination ) {
-		if ( 'filled' == paginationLayout ) {
+		if ( 'filled' === paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'background-color': paginationBgColor,
 				color: paginationColor,
@@ -427,7 +417,7 @@ function styling( props ) {
 				};
 			}
 		}
-		if ( 'border' == paginationLayout ) {
+		if ( 'border' === paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'border-style': 'solid',
 				'border-width': generateCSSUnit( paginationBorderSize, 'px' ),
@@ -593,7 +583,6 @@ function styling( props ) {
 					ctaFontSizeType
 				),
 				'line-height': ctaLineHeightMobile + ctaLineHeightType,
-				'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 				'padding-top': generateCSSUnit(
 					paddingBtnTopMobile,
 					mobilePaddingBtnUnit

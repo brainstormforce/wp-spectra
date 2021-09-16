@@ -50,9 +50,6 @@ const Settings = ( props ) => {
 		countColor,
 		rowGap,
 		columnGap,
-		contentPadding,
-		contentPaddingMobile,
-		contentPaddingTablet,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -144,8 +141,9 @@ const Settings = ( props ) => {
 			label: __( 'Select Taxonomy', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
-	if ( '' != taxonomy_list_setting && undefined != taxonomy_list_setting ) {
-		Object.keys( taxonomy_list_setting ).map( ( item, thisIndex ) => {
+
+	if ( '' !== taxonomy_list_setting && undefined !== taxonomy_list_setting ) {
+		Object.keys( taxonomy_list_setting ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
 				label: taxonomyList[ item ].label,
@@ -157,7 +155,7 @@ const Settings = ( props ) => {
 	let loadCountGoogleFonts;
 	let loadListGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -172,7 +170,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( countLoadGoogleFonts == true ) {
+	if ( countLoadGoogleFonts === true ) {
 		const countconfig = {
 			google: {
 				families: [
@@ -187,7 +185,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( listLoadGoogleFonts == true ) {
+	if ( listLoadGoogleFonts === true ) {
 		const listconfig = {
 			google: {
 				families: [
@@ -213,7 +211,8 @@ const Settings = ( props ) => {
 				}
 			/>
 			<br />
-			{ 'none' != listStyle && (
+
+			{ 'none' !== listStyle && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(
@@ -239,7 +238,7 @@ const Settings = ( props ) => {
 				}
 			/>
 			<br />
-			{ 'none' != listStyle && (
+			{ 'none' !== listStyle && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(
@@ -382,7 +381,7 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
-				{ 'list' == layout && (
+				{ 'list' === layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -417,7 +416,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ 'grid' == layout && (
+				{ 'grid' === layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -478,8 +477,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-
-				{ 'list' == layout && 'dropdown' !== listDisplayStyle && (
+				{ 'list' === layout && 'dropdown' !== listDisplayStyle && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -553,7 +551,7 @@ const Settings = ( props ) => {
 					onChange={ ( value ) => onSelectPostType( value ) }
 					options={ uagb_blocks_info.post_types }
 				/>
-				{ '' != taxonomyList && (
+				{ '' !== taxonomyList && (
 					<SelectControl
 						label={ __(
 							'Taxonomy',
@@ -564,7 +562,7 @@ const Settings = ( props ) => {
 						options={ taxonomyListOptions }
 					/>
 				) }
-				{ '' == taxonomyList && (
+				{ '' === taxonomyList && (
 					<TextControl
 						autoComplete="off"
 						label={ __(
@@ -609,8 +607,8 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				{ 'list' == layout &&
-					'list' == listDisplayStyle &&
+				{ 'list' === layout &&
+					'list' === listDisplayStyle &&
 					'post_tag' !== taxonomyType && (
 						<ToggleControl
 							label={ __(
@@ -798,7 +796,7 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ 'grid' == layout && (
+				{ 'grid' === layout && (
 					<>
 						<Range
 							label={ __(
@@ -920,7 +918,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ 'list' == layout && (
+				{ 'list' === layout && (
 					<Range
 						label={ __(
 							'Bottom Margin',

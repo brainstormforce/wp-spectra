@@ -137,19 +137,19 @@ export default compose(
 		const jsonData = {
 			'@context': 'https://schema.org',
 			'@type': 'HowTo',
-			name: ownProps.attributes.headingTitle,
-			description: ownProps.attributes.headingDesc,
-			image: {
+			'name': ownProps.attributes.headingTitle,
+			'description': ownProps.attributes.headingDesc,
+			'image': {
 				'@type': 'ImageObject',
-				url: urlChk,
-				height: '406',
-				width: '305',
+				'url': urlChk,
+				'height': '406',
+				'width': '305',
 			},
-			totalTime: '',
-			estimatedCost: [],
-			tool: [],
-			supply: [],
-			step: [],
+			'totalTime': '',
+			'estimatedCost': [],
+			'tool': [],
+			'supply': [],
+			'step': [],
 		};
 
 		const y = ownProps.attributes.timeInYears
@@ -177,8 +177,8 @@ export default compose(
 		if ( ownProps.attributes.showEstcost ) {
 			jsonData.estimatedCost = {
 				'@type': 'MonetaryAmount',
-				currency: ownProps.attributes.currencyType,
-				value: ownProps.attributes.cost,
+				'currency': ownProps.attributes.currencyType,
+				'value': ownProps.attributes.cost,
 			};
 		}
 
@@ -186,7 +186,7 @@ export default compose(
 			ownProps.attributes.tools.forEach( ( tools, key ) => {
 				toolsData = {
 					'@type': 'HowToTool',
-					name: tools.add_required_tools,
+					'name': tools.add_required_tools,
 				};
 				jsonData.tool[ key ] = toolsData;
 			} );
@@ -196,7 +196,7 @@ export default compose(
 			ownProps.attributes.materials.forEach( ( materials, key ) => {
 				materialsData = {
 					'@type': 'HowToSupply',
-					name: materials.add_required_materials,
+					'name': materials.add_required_materials,
 				};
 				jsonData.supply[ key ] = materialsData;
 			} );
@@ -209,10 +209,10 @@ export default compose(
 		getChildBlocks.forEach( ( steps, key ) => {
 			stepsData = {
 				'@type': 'HowToStep',
-				url: steps.attributes.ctaLink,
-				name: steps.attributes.infoBoxTitle,
-				text: steps.attributes.headingDesc,
-				image: steps.attributes.iconImage.url,
+				'url': steps.attributes.ctaLink,
+				'name': steps.attributes.infoBoxTitle,
+				'text': steps.attributes.headingDesc,
+				'image': steps.attributes.iconImage.url,
 			};
 			jsonData.step[ key ] = stepsData;
 		} );

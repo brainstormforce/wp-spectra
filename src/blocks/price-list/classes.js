@@ -28,8 +28,8 @@ function PositionClasses( attributes ) {
 	iconimgStyleClass += ' uagb-rm__align-' + attributes.headingAlign + ' ';
 
 	if (
-		'left' == attributes.imagePosition ||
-		'right' == attributes.imagePosition
+		'left' === attributes.imagePosition ||
+		'right' === attributes.imagePosition
 	) {
 		iconimgStyleClass +=
 			'uagb-rm__image-aligned-' + attributes.imageAlignment + ' ';

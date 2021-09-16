@@ -28,15 +28,11 @@ const Settings = ( props ) => {
 	const {
 		menu_item_count,
 		titleSpace,
-		imgHrPadding,
-		imgVrPadding,
 		columns,
 		tcolumns,
 		mcolumns,
 		rowGap,
 		columnGap,
-		contentHrPadding,
-		contentVrPadding,
 		priceColor,
 		descColor,
 		titleColor,
@@ -131,36 +127,6 @@ const Settings = ( props ) => {
 		priceDecoration,
 	} = attributes;
 
-	const setcolumns = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.columns = value;
-		} );
-		setAttributes( { columns: value } );
-	};
-	const setheadingTag = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.headingTag = value;
-		} );
-		setAttributes( { headingTag: value } );
-	};
-	const setimagePosition = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition = value;
-		} );
-		setAttributes( { imagePosition: value } );
-	};
 	const setimageSize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -172,22 +138,11 @@ const Settings = ( props ) => {
 		setAttributes( { imageSize: value } );
 	};
 
-	const setimageAlignment = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageAlignment = value;
-		} );
-		setAttributes( { imageAlignment: value } );
-	};
-
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -202,7 +157,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
 				families: [
@@ -217,7 +172,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( priceLoadGoogleFonts == true ) {
+	if ( priceLoadGoogleFonts === true ) {
 		const priceconfig = {
 			google: {
 				families: [
@@ -401,7 +356,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
+				{ ( imagePosition === 'left' || imagePosition === 'right' ) && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -487,10 +442,7 @@ const Settings = ( props ) => {
 			<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
-					label={ __(
-						'Image Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: imgPaddingTop,
 						label: 'imgPaddingTop',
@@ -567,6 +519,15 @@ const Settings = ( props ) => {
 	const contentSettings = () => {
 		return (
 			<PanelBody title={ __( 'Content' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ descColor ? descColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							descColor: value,
+						} )
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -628,15 +589,6 @@ const Settings = ( props ) => {
 						label: 'descDecoration',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
-				/>
 			</PanelBody>
 		);
 	};
@@ -663,7 +615,7 @@ const Settings = ( props ) => {
 						{ value: 'ridge', label: __( 'Ridge' ) },
 					] }
 				/>
-				{ 'none' != seperatorStyle && (
+				{ 'none' !== seperatorStyle && (
 					<>
 						<Range
 							label={ __( 'Width' ) }
@@ -735,6 +687,15 @@ const Settings = ( props ) => {
 	const priceSettings = () => {
 		return (
 			<PanelBody title={ __( 'Price' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ priceColor ? priceColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							priceColor: value,
+						} )
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -796,21 +757,21 @@ const Settings = ( props ) => {
 						label: 'priceDecoration',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ priceColor ? priceColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							priceColor: value,
-						} )
-					}
-				/>
 			</PanelBody>
 		);
 	};
 	const titleSettings = () => {
 		return (
 			<PanelBody title={ __( 'Title' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ titleColor ? titleColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							titleColor: value,
+						} )
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
 					attributes={ attributes }
@@ -871,15 +832,6 @@ const Settings = ( props ) => {
 						value: titleDecoration,
 						label: 'titleDecoration',
 					} }
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							titleColor: value,
-						} )
-					}
 				/>
 				<Range
 					label={ __( 'Bottom Margin' ) }
@@ -1011,7 +963,10 @@ const Settings = ( props ) => {
 						{ priceSettings() }
 						{ marginSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		);

@@ -44,7 +44,7 @@ export default function save( props ) {
 					rel="noopener noreferrer"
 				>
 					<div className="uagb-marketing-btn__title-wrap">
-						{ '' != icon && (
+						{ '' !== icon && (
 							<div className="uagb-marketing-btn__icon-wrap">
 								{ renderSVG( icon ) }
 							</div>

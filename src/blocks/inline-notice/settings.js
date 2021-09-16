@@ -19,7 +19,7 @@ import {
 
 import { select } from '@wordpress/data';
 
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;

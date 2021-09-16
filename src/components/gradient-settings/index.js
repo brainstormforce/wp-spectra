@@ -1,3 +1,4 @@
+
 import { __experimentalGradientPicker } from '@wordpress/components';
 
 function GradientSettings( props ) {

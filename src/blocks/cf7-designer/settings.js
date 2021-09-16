@@ -211,7 +211,7 @@ const Settings = ( props ) => {
 	let loadValidationGoogleFonts;
 	let loadMsgGoogleFonts;
 
-	if ( labelLoadGoogleFonts == true ) {
+	if ( labelLoadGoogleFonts === true ) {
 		const labelconfig = {
 			google: {
 				families: [
@@ -226,7 +226,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( inputLoadGoogleFonts == true ) {
+	if ( inputLoadGoogleFonts === true ) {
 		const inputconfig = {
 			google: {
 				families: [
@@ -241,7 +241,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( buttonLoadGoogleFonts == true ) {
+	if ( buttonLoadGoogleFonts === true ) {
 		const buttonconfig = {
 			google: {
 				families: [
@@ -256,7 +256,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( radioCheckLoadGoogleFonts == true ) {
+	if ( radioCheckLoadGoogleFonts === true ) {
 		const radioCheckconfig = {
 			google: {
 				families: [
@@ -273,7 +273,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( validationMsgLoadGoogleFonts == true ) {
+	if ( validationMsgLoadGoogleFonts === true ) {
 		const validationMsgconfig = {
 			google: {
 				families: [
@@ -290,7 +290,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( msgLoadGoogleFonts == true ) {
+	if ( msgLoadGoogleFonts === true ) {
 		const msgconfig = {
 			google: {
 				families: [
@@ -990,6 +990,48 @@ const Settings = ( props ) => {
 				normal={ buttonNormalSettings }
 				hover={ buttonHoverSettings }
 			/>
+			<Border
+				setAttributes={ setAttributes }
+				borderStyle={ {
+					value: buttonBorderStyle,
+					label: 'buttonBorderStyle',
+					title: __(
+						'Border Style',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				borderWidth={ {
+					value: buttonBorderWidth,
+					label: 'buttonBorderWidth',
+					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderRadius={ {
+					value: buttonBorderRadius,
+					label: 'buttonBorderRadius',
+					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					displayUnit: true,
+					unit: {
+						value: buttonBorderRadiusType,
+						label: 'buttonBorderRadiusType',
+					},
+				} }
+				borderColor={ {
+					value: buttonBorderColor,
+					label: 'buttonBorderColor',
+					title: __(
+						'Border Color',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				borderHoverColor={ {
+					value: buttonBorderHoverColor,
+					label: 'buttonBorderHoverColor',
+					title: __(
+						'Border Color',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
@@ -1038,45 +1080,6 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: buttonLineHeightTablet,
 					label: 'buttonLineHeightTablet',
-				} }
-			/>
-			<Border
-				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: buttonBorderStyle,
-					label: 'buttonBorderStyle',
-					title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderWidth={ {
-					value: buttonBorderWidth,
-					label: 'buttonBorderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: buttonBorderRadius,
-					label: 'buttonBorderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					displayUnit: true,
-					unit: {
-						value: buttonBorderRadiusType,
-						label: 'buttonBorderRadiusType',
-					},
-				} }
-				borderColor={ {
-					value: buttonBorderColor,
-					label: 'buttonBorderColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: buttonBorderHoverColor,
-					label: 'buttonBorderHoverColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
 				} }
 			/>
 			<SpacingControl
@@ -1270,7 +1273,7 @@ const Settings = ( props ) => {
 			<hr className="uagb-editor__separator" />
 			<h2>
 				{ __(
-					'Form Success / Error Validation',
+					'Form Success / Error Message',
 					'ultimate-addons-for-gutenberg'
 				) }
 			</h2>
@@ -1510,7 +1513,7 @@ const Settings = ( props ) => {
 						{ msgSettings }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ fieldStyle == 'box' && fieldStyling }
+						{ fieldStyle === 'box' && fieldStyling }
 						{ enableOveride && radioCheckStyling }
 						{ buttonStyling }
 						{ messageStyling }

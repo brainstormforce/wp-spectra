@@ -53,14 +53,14 @@ function styling( props ) {
 		},
 		' .uag-star-rating > span': {
 			'margin-right': generateCSSUnit( gap, 'px' ),
-			color: unmarkedColor,
+			'color': unmarkedColor,
 		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'font-family': fontFamily,
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
-			color: titleColor,
+			'color': titleColor,
 		},
 		'.uag-star-rating__wrapper': {
 			'justify-content': alignment,
@@ -81,14 +81,14 @@ function styling( props ) {
 			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
 		] = {
 			color,
-			width: generateCSSUnit( width, '%' ),
-			position: 'absolute',
-			content: "'★'",
-			overflow: 'hidden',
+			'width': generateCSSUnit( width, '%' ),
+			'position': 'absolute',
+			'content': "'★'",
+			'overflow': 'hidden',
 		};
 
 		selectors[ ' .uag-star:nth-child(' + Math.ceil( rating ) + ')' ] = {
-			position: 'relative',
+			'position': 'relative',
 		};
 	}
 

@@ -16,7 +16,7 @@ export default function save( props ) {
 
 	let imageIconHtml = '';
 
-	if ( image_icon == 'icon' ) {
+	if ( image_icon === 'icon' ) {
 		if ( icon ) {
 			imageIconHtml = (
 				<span className="uagb-ss__source-icon">

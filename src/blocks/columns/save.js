@@ -32,7 +32,7 @@ export default function save( props ) {
 
 	const CustomTag = `${ tag }`;
 
-	const topDividerHtml = topType != 'none' && (
+	const topDividerHtml = topType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -48,7 +48,7 @@ export default function save( props ) {
 		</div>
 	);
 
-	const bottomDividerHtml = bottomType != 'none' && (
+	const bottomDividerHtml = bottomType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -91,7 +91,7 @@ export default function save( props ) {
 		>
 			<div className="uagb-columns__overlay"></div>
 			{ topDividerHtml }
-			{ 'video' == backgroundType && (
+			{ 'video' === backgroundType && (
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>

@@ -21,7 +21,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes, deviceType, clientId } = props;
+	const { attributes, setAttributes, clientId } = props;
 
 	const {
 		align,
@@ -54,7 +54,7 @@ const Settings = ( props ) => {
 
 	let googleFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const hconfig = {
 			google: {
 				families: [
@@ -127,7 +127,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ 'horizontal' == icon_layout && (
+				{ 'horizontal' === icon_layout && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -252,7 +252,7 @@ const Settings = ( props ) => {
 					max={ 100 }
 					displayUnit={ false }
 					help={ __(
-						'Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results.',
+						'Note: For better editing experience, the gap between items might look larger than applied. Viewing in frontend will show the actual results.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
