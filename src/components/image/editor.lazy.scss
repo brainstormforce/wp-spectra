@@ -1,0 +1,28 @@
+.uagb-bg-image {
+	border-radius: 2px;
+	background-color: #f0f0f0;
+	min-height: 90px;
+	padding: 8px 0;
+	text-align: center;
+	display: flex;
+	width: 100%;
+	transition: all 0.1s ease-out;
+	box-shadow: 0 0 0 0 #0085ba;
+	margin-top: 10px;
+	align-items: center;
+	justify-content: center;
+	.components-button {
+		margin: 0;
+		padding: 0;
+	}
+	.uagb-rm-btn {
+		margin-left: 10px;
+	}
+}
+.uagb-bg-image .components-button:focus:not(:disabled),
+.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),
+.components-button.is-tertiary:hover:not(:disabled),
+.uagb-bg-image .components-button.is-secondary,
+.components-button.is-tertiary {
+	box-shadow: none;
+}

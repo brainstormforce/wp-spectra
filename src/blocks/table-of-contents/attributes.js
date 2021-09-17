@@ -133,6 +133,62 @@ const attributes = {
 	},
 
 	// Padding
+	contentLeftPadding: {
+		type: 'number',
+		default: 15,
+	},
+	contentRightPadding: {
+		type: 'number',
+		default: 15,
+	},
+	contentTopPadding: {
+		type: 'number',
+		default: 15,
+	},
+	contentBottomPadding: {
+		type: 'number',
+		default: 15,
+	},
+	contentLeftPaddingTablet: {
+		type: 'number',
+	},
+	contentRightPaddingTablet: {
+		type: 'number',
+	},
+	contentTopPaddingTablet: {
+		type: 'number',
+	},
+	contentBottomPaddingTablet: {
+		type: 'number',
+	},
+	contentLeftPaddingMobile: {
+		type: 'number',
+	},
+	contentRightPaddingMobile: {
+		type: 'number',
+	},
+	contentTopPaddingMobile: {
+		type: 'number',
+	},
+	contentBottomPaddingMobile: {
+		type: 'number',
+	},
+	contentPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobileContentPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletContentPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentPaddingLink: {
+		type: 'boolean',
+		default: false,
+	},
 	vPaddingDesktop: {
 		type: 'number',
 		default: 30,
@@ -153,6 +209,54 @@ const attributes = {
 	hPaddingMobile: {
 		type: 'number',
 	},
+	leftPadding: {
+		type: 'number',
+	},
+	rightPadding: {
+		type: 'number',
+	},
+	topPadding: {
+		type: 'number',
+	},
+	bottomPadding: {
+		type: 'number',
+	},
+	leftPaddingTablet: {
+		type: 'number',
+	},
+	rightPaddingTablet: {
+		type: 'number',
+	},
+	topPaddingTablet: {
+		type: 'number',
+	},
+	bottomPaddingTablet: {
+		type: 'number',
+	},
+	leftPaddingMobile: {
+		type: 'number',
+	},
+	rightPaddingMobile: {
+		type: 'number',
+	},
+	topPaddingMobile: {
+		type: 'number',
+	},
+	bottomPaddingMobile: {
+		type: 'number',
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
 	// Margin
 	vMarginDesktop: {
 		type: 'number',
@@ -172,6 +276,42 @@ const attributes = {
 	hMarginMobile: {
 		type: 'number',
 	},
+	leftMargin: {
+		type: 'number',
+	},
+	rightMargin: {
+		type: 'number',
+	},
+	topMargin: {
+		type: 'number',
+	},
+	bottomMargin: {
+		type: 'number',
+	},
+	leftMarginTablet: {
+		type: 'number',
+	},
+	rightMarginTablet: {
+		type: 'number',
+	},
+	topMarginTablet: {
+		type: 'number',
+	},
+	bottomMarginTablet: {
+		type: 'number',
+	},
+	leftMarginMobile: {
+		type: 'number',
+	},
+	rightMarginMobile: {
+		type: 'number',
+	},
+	topMarginMobile: {
+		type: 'number',
+	},
+	bottomMarginMobile: {
+		type: 'number',
+	},
 	marginTypeDesktop: {
 		type: 'string',
 		default: 'px',
@@ -183,6 +323,14 @@ const attributes = {
 	marginTypeMobile: {
 		type: 'string',
 		default: 'px',
+	},
+	marginLink: {
+		type: 'boolean',
+		default: false,
+	},
+	paddingLink: {
+		type: 'boolean',
+		default: false,
 	},
 	headingBottom: {
 		type: 'number',
@@ -236,6 +384,10 @@ const attributes = {
 		type: 'number',
 	},
 	borderColor: {
+		type: 'string',
+		default: '#333',
+	},
+	borderHoverColor: {
 		type: 'string',
 		default: '#333',
 	},

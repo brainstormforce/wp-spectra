@@ -5,6 +5,7 @@ import styling from '.././styling';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
+import jQuery from 'jquery';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -30,6 +31,78 @@ const PostGridComponent = ( props ) => {
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		const {
+			btnVPadding,
+			btnHPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+			contentPadding,
+			contentPaddingMobile,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
+		} = props.attributes;
+
+		if ( btnVPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: btnVPadding } );
+			}
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: btnVPadding } );
+			}
+		}
+		if ( btnHPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: btnHPadding } );
+			}
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: btnHPadding } );
+			}
+		}
+		if ( contentPadding ) {
+			if ( ! paddingTop ) {
+				props.setAttributes( { paddingTop: contentPadding } );
+			}
+			if ( ! paddingBottom ) {
+				props.setAttributes( { paddingBottom: contentPadding } );
+			}
+			if ( ! paddingRight ) {
+				props.setAttributes( { paddingRight: contentPadding } );
+			}
+			if ( ! paddingLeft ) {
+				props.setAttributes( { paddingLeft: contentPadding } );
+			}
+		}
+
+		if ( contentPaddingMobile ) {
+			if ( ! paddingTopMobile ) {
+				props.setAttributes( {
+					paddingTopMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingBottomMobile ) {
+				props.setAttributes( {
+					paddingBottomMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingRightMobile ) {
+				props.setAttributes( {
+					paddingRightMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingLeftMobile ) {
+				props.setAttributes( {
+					paddingLeftMobile: contentPaddingMobile,
+				} );
+			}
+		}
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
 			'id',
@@ -150,12 +223,12 @@ export default compose(
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base === null
 						? currentTax.taxonomy[ taxonomyType ].name
 						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
-			if ( '' != taxonomyType ) {
+			if ( '' !== taxonomyType ) {
 				if (
 					'undefined' !== typeof currentTax.terms &&
 					'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -179,7 +252,7 @@ export default compose(
 		category.push( temp );
 		const catlenght = categoriesList.length;
 		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id == temp ) {
+			if ( categoriesList[ i ].id === temp ) {
 				if ( categoriesList[ i ].child.length !== 0 ) {
 					categoriesList[ i ].child.forEach( ( element ) => {
 						category.push( element );

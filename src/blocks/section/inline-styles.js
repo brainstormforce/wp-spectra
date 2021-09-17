@@ -16,13 +16,13 @@ function inlineStyles( props ) {
 		topMargin,
 		bottomMargin,
 		width,
+		widthUnit,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
 		backgroundImage,
 		backgroundRepeat,
 		backgroundType,
-		borderRadius,
 		desktopMarginType,
 		desktopPaddingType,
 	} = props.attributes;
@@ -58,7 +58,7 @@ function inlineStyles( props ) {
 		}
 	}
 
-	if ( 'full_width' == contentWidth ) {
+	if ( 'full_width' === contentWidth ) {
 		style[ 'margin-left' ] = generateCSSUnit(
 			leftMargin,
 			desktopMarginType
@@ -73,9 +73,9 @@ function inlineStyles( props ) {
 
 	let section_width = '100%';
 
-	if ( 'boxed' == contentWidth ) {
-		if ( '' != width ) {
-			section_width = width + 'px';
+	if ( 'boxed' === contentWidth ) {
+		if ( '' !== width ) {
+			section_width = width + widthUnit;
 		}
 	}
 

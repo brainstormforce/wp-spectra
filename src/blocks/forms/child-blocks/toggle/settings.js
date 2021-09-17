@@ -1,12 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import {
-	PanelBody,
-	ToggleControl,
-	SelectControl,
-	TextControl,
-} from '@wordpress/components';
-
+import { PanelBody, ToggleControl, TextControl } from '@wordpress/components';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const Settings = ( props ) => {
@@ -24,11 +23,7 @@ const Settings = ( props ) => {
 
 	const toggleInspectorControls = () => {
 		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
+			<PanelBody initialOpen={ true }>
 				<p className="uagb-settings-notice">
 					{ __(
 						'Leaving the toggle in On/Off state will set it as a default value on page load for the user.',
@@ -44,16 +39,12 @@ const Settings = ( props ) => {
 					}
 				/>
 				<ToggleControl
-					label={ __(
-						'Default State',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ toggleStatus }
-					help={
+					label={
 						toggleStatus
 							? __( 'ON State', 'ultimate-addons-for-gutenberg' )
 							: __( 'OFF State', 'ultimate-addons-for-gutenberg' )
 					}
+					checked={ toggleStatus }
 					onChange={ () =>
 						setAttributes( { toggleStatus: ! toggleStatus } )
 					}
@@ -78,35 +69,39 @@ const Settings = ( props ) => {
 						setAttributes( { falseValue: value } )
 					}
 				/>
-				<SelectControl
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-					value={ layout }
-					onChange={ ( value ) => setAttributes( { layout: value } ) }
+					data={ {
+						value: layout,
+						label: 'layout',
+					} }
+					className="uagb-multi-button-alignment-control"
 					options={ [
 						{
 							value: '',
-							label: __(
-								'Square',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: 'Square',
 						},
 						{
 							value: 'round',
-							label: __(
-								'Round',
-								'ultimate-addons-for-gutenberg'
-							),
+							label: 'Round',
 						},
 					] }
+					showIcons={ false }
 				/>
 			</PanelBody>
 		);
 	};
 
 	return (
-		<>
-			<InspectorControls>{ toggleInspectorControls() }</InspectorControls>
-		</>
+		<InspectorControls>
+			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+				<InspectorTab { ...UAGTabs.general }>
+					{ toggleInspectorControls() }
+				</InspectorTab>
+				<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 export default React.memo( Settings );

@@ -66,7 +66,7 @@ const Blog = ( props ) => {
 					) ) }
 				</InnerBlockLayoutContextProvider>
 			</div>
-			{ postPagination == true && 'empty' !== paginationMarkup && (
+			{ postPagination === true && 'empty' !== paginationMarkup && (
 				<div
 					dangerouslySetInnerHTML={ { __html: paginationMarkup } }
 					className="uagb-post-pagination-wrap"

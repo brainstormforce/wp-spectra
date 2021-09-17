@@ -27,6 +27,7 @@ const Render = ( props ) => {
 			noticeAlignment,
 			headingTag,
 		},
+		deviceType,
 		setAttributes,
 		className,
 	} = props;
@@ -45,7 +46,8 @@ const Render = ( props ) => {
 				'uagb-inline_notice__outer-wrap',
 				`${ noticeDismiss }`,
 				`uagb-inline_notice__align-${ noticeAlignment }`,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			{ imageIconHtml }
@@ -66,7 +68,7 @@ const Render = ( props ) => {
 				tagName="div"
 				multiline="p"
 				placeholder={ __(
-					'Add notice text…',
+					'Add Content…',
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ noticeContent }

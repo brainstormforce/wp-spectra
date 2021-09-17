@@ -27,7 +27,7 @@ const CTA = ( props ) => {
 	}
 
 	let link = '/';
-	if ( setAttributes == 'not_set' ) {
+	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
 	}
 	return (

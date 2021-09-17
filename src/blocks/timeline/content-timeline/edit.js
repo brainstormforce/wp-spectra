@@ -17,37 +17,81 @@ const Render = lazy( () =>
 	)
 );
 
-const $ = jQuery;
+import jQuery from 'jquery';
 
 const ContentTimelineComponent = ( props ) => {
 	useEffect( () => {
+		const { setAttributes, clientId, attributes } = props;
 		// Replacement for componentDidMount.
 		//Store client id.
-		props.setAttributes( { block_id: props.clientId } );
-		props.setAttributes( { classMigrate: true } );
-		props.setAttributes( { childMigrate: true } );
+		setAttributes( { block_id: clientId } );
+		setAttributes( { classMigrate: true } );
+		setAttributes( { childMigrate: true } );
 
-		const id = props.clientId;
+		const id = clientId;
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function () {
+		jQuery( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-content-timeline-style-' + props.clientId
-		);
+		$style.setAttribute( 'id', 'uagb-content-timeline-style-' + clientId );
 		document.head.appendChild( $style );
+
+		const {
+			verticalSpace,
+			horizontalSpace,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			bgPadding,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+		} = attributes;
+
+		if ( bgPadding ) {
+			if ( ! topPadding ) {
+				setAttributes( { topPadding: bgPadding } );
+			}
+			if ( ! bottomPadding ) {
+				setAttributes( { bottomPadding: bgPadding } );
+			}
+			if ( ! rightPadding ) {
+				setAttributes( { rightPadding: bgPadding } );
+			}
+			if ( ! leftPadding ) {
+				setAttributes( { leftPadding: bgPadding } );
+			}
+		}
+
+		if ( verticalSpace ) {
+			if ( ! topMargin ) {
+				setAttributes( { topMargin: verticalSpace } );
+			}
+			if ( ! bottomMargin ) {
+				setAttributes( { bottomMargin: verticalSpace } );
+			}
+		}
+		if ( horizontalSpace ) {
+			if ( ! rightMargin ) {
+				setAttributes( { rightMargin: horizontalSpace } );
+			}
+			if ( ! leftMargin ) {
+				setAttributes( { leftMargin: horizontalSpace } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		if (
-			null ==
+			null ===
 			select( 'core/block-editor' ).getBlocksByClientId(
 				props.clientId
 			)[ 0 ]
@@ -58,12 +102,12 @@ const ContentTimelineComponent = ( props ) => {
 			.getBlocksByClientId( props.clientId )[ 0 ]
 			.innerBlocks.forEach( function ( block, key ) {
 				let alignClass = '';
-				if ( 'left' == block.attributes.timelinAlignment ) {
+				if ( 'left' === block.attributes.timelinAlignment ) {
 					alignClass = 'uagb-timeline__widget uagb-timeline__left';
-				} else if ( 'right' == block.attributes.timelinAlignment ) {
+				} else if ( 'right' === block.attributes.timelinAlignment ) {
 					alignClass = 'uagb-timeline__widget uagb-timeline__right';
-				} else if ( 'center' == block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) {
+				} else if ( 'center' === block.attributes.timelinAlignment ) {
+					if ( key % 2 === 0 ) { 
 						alignClass =
 							'uagb-timeline__widget uagb-timeline__right';
 					} else {
@@ -73,14 +117,14 @@ const ContentTimelineComponent = ( props ) => {
 				}
 
 				let dayAlignClass = '';
-				if ( 'left' == block.attributes.timelinAlignment ) {
+				if ( 'left' === block.attributes.timelinAlignment ) {
 					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-left';
-				} else if ( 'right' == block.attributes.timelinAlignment ) {
+				} else if ( 'right' === block.attributes.timelinAlignment ) {
 					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-right';
-				} else if ( 'center' == block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) {
+				} else if ( 'center' === block.attributes.timelinAlignment ) {
+					if ( key % 2 === 0 ) { 
 						dayAlignClass =
 							'uagb-timeline__day-new uagb-timeline__day-right';
 					} else {
@@ -113,14 +157,14 @@ const ContentTimelineComponent = ( props ) => {
 		window.addEventListener( 'load', timelineContentConnector( id ) );
 		window.addEventListener( 'resize', timelineContentConnector( id ) );
 		const time = this;
-		$( '.edit-post-layout__content' ).on( 'scroll', function () {
+		jQuery( '.edit-post-layout__content' ).on( 'scroll', function () {
 			time.timelineContentConnector( id );
 		} );
 	}, [ props ] );
 
 	/*  Js for timeline line and inner line filler*/
 	const timelineContentConnector = ( id ) => {
-		const timeline = $( '.uagb-timeline' ).parents( '#block-' + id );
+		const timeline = jQuery( '.uagb-timeline' ).parents( '#block-' + id );
 		const tmItem = timeline.find( '.uagb-timeline' );
 		const lineInner = timeline.find( '.uagb-timeline__line__inner' );
 		const lineOuter = timeline.find( '.uagb-timeline__line' );
@@ -136,7 +180,7 @@ const ContentTimelineComponent = ( props ) => {
 			const timelineCardHeight = cardLast.height();
 			const lastItemTop = cardLast.offset().top - tmItem.offset().top;
 			let lastItem, parent_top;
-			const $document = $( document );
+			const $document = jQuery( document );
 
 			if ( tmItem.hasClass( 'uagb-timeline__arrow-center' ) ) {
 				lineOuter.css( 'bottom', timelineEndIcon.top );
@@ -156,7 +200,6 @@ const ContentTimelineComponent = ( props ) => {
 				lastItem = parent_top + timelineEndIcon.top;
 			}
 
-			let num = 0;
 			const elementEnd = lastItem + 20;
 
 			const connectorHeight =
@@ -199,7 +242,6 @@ const ContentTimelineComponent = ( props ) => {
 					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
-					++num;
 				} else {
 					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop

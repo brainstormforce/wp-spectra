@@ -22,51 +22,61 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
 
-	if ( 'desktop' == stack ) {
+	if ( 'desktop' === stack ) {
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-left' ] = 0;
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-right' ] = 0;
 		selectors[ ' .uagb-button__wrapper' ][
 			'margin-bottom'
 		] = generateCSSUnit( gap, 'px' );
 
-		selectors[
-			' .block-editor-block-list__layout'
+		selectors[ ' .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+	} else if ( 'tablet' === stack ) {
+		tabletSelectors[
+			'.uagb-editor-preview-mode-tablet .uagb-button__wrapper'
+		] = {
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( gap, 'px' ),
+		};
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
+		] = {
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( gap, 'px' ),
+		};
+		tabletSelectors[
+			'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
 		] = {
 			'flex-direction': 'column',
 		};
-	} else if ( 'tablet' == stack ) {
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-button__wrapper' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( gap, 'px' ),
-		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-button__wrapper' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( gap, 'px' ),
-		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
-			'flex-direction': 'column',
-		};
-	} else if ( 'mobile' == stack ) {
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-button__wrapper' ] = {
+	} else if ( 'mobile' === stack ) {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
+		] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( gap, 'px' ),
 		};
 
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+		mobileSelectors[
+			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
+		] = {
 			'flex-direction': 'column',
 		};
 	}
 
 	let alignment = '';
-	if ( align == 'left' ) {
+	if ( align === 'left' ) {
 		alignment = 'flex-start';
-	} else if ( align == 'right' ) {
+	} else if ( align === 'right' ) {
 		alignment = 'flex-end';
 	} else {
 		alignment = 'center';
@@ -103,7 +113,7 @@ function styling( props ) {
 	} else {
 		selectors[ ' .uagb-button__wrapper' ][ 'justify-content' ] = 'center';
 		selectors[ ' .uagb-buttons-repeater' ] = {
-			width: '100%',
+			'width': '100%',
 		};
 		selectors[
 			" .wp-block[data-type='uagb/buttons-child']:first-child .uagb-button__wrapper"

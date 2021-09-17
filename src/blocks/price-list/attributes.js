@@ -7,10 +7,10 @@ const itemCount = 4;
 const restMenuBlock = [];
 
 for ( let i = 1; i <= itemCount; i++ ) {
-	const descText = __(
+	const descText = __( 
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	);
-	const titleText = __( 'Menu Item ' + i );
+	const titleText = ( 'Menu Item ' + i );
 	const priceText = __( '$9' );
 	restMenuBlock.push( {
 		description: descText,
@@ -275,6 +275,124 @@ const attributes = {
 	imageWidth: {
 		type: 'number',
 		default: '',
+	},
+	imageWidthType: {
+		type: 'string',
+		default: 'px',
+	},
+	seperatorWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	rowGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	columnGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	titleSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	contentPaddingTopTablet: {
+		type: 'number',
+	},
+	contentPaddingRightTablet: {
+		type: 'number',
+	},
+	contentPaddingBottomTablet: {
+		type: 'number',
+	},
+	contentPaddingLeftTablet: {
+		type: 'number',
+	},
+	contentPaddingTopMobile: {
+		type: 'number',
+	},
+	contentPaddingRightMobile: {
+		type: 'number',
+	},
+	contentPaddingBottomMobile: {
+		type: 'number',
+	},
+	contentPaddingLeftMobile: {
+		type: 'number',
+	},
+	contentPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentMobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentTabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	imgPaddingTopTablet: {
+		type: 'number',
+	},
+	imgPaddingRightTablet: {
+		type: 'number',
+	},
+	imgPaddingBottomTablet: {
+		type: 'number',
+	},
+	imgPaddingLeftTablet: {
+		type: 'number',
+	},
+	imgPaddingTopMobile: {
+		type: 'number',
+	},
+	imgPaddingRightMobile: {
+		type: 'number',
+	},
+	imgPaddingBottomMobile: {
+		type: 'number',
+	},
+	imgPaddingLeftMobile: {
+		type: 'number',
+	},
+	imgPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgMobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgTabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	titleTransform: {
+		type: 'string',
+	},
+	titleDecoration: {
+		type: 'string',
+	},
+	descTransform: {
+		type: 'string',
+	},
+	descDecoration: {
+		type: 'string',
+	},
+	priceTransform: {
+		type: 'string',
+	},
+	priceDecoration: {
+		type: 'string',
 	},
 };
 

@@ -2,14 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-
 import { SelectControl } from '@wordpress/components';
-
-/**
- * Internal dependencies
- */
 import googleFonts from './fonts';
-import Select from 'react-select';
 
 function FontFamilyControl( props ) {
 	const fonts = [
@@ -99,7 +93,7 @@ function FontFamilyControl( props ) {
 	let fontSubset = '';
 
 	//Push Google Fonts into stytem fonts object
-	Object.keys( googleFonts ).map( ( k, v ) => {
+	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
 		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
 
 		if ( k === props.fontFamily.value ) {
@@ -119,23 +113,29 @@ function FontFamilyControl( props ) {
 		fontWeightObj.push( { value: item, label: item } );
 	} );
 
-	const fontSubsetObj = [];
+	let fontSubsetObj = [
+		{
+			value: 'test',
+			label: __( 'Latin', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
 
 	if ( typeof fontSubset === 'object' ) {
+		fontSubsetObj = [];
 		fontSubset.forEach( function ( item ) {
 			fontSubsetObj.push( { value: item, label: item } );
 		} );
 	}
 
 	const onFontfamilyChange = ( value ) => {
-		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props;
-		props.setAttributes( { [ fontFamily.label ]: value.label } );
-		onLoadGoogleFonts( loadGoogleFonts, value.label );
-		onFontChange( fontWeight, fontSubset, value.label );
+		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props; // eslint-disable-line no-shadow
+		props.setAttributes( { [ fontFamily.label ]: value } );
+		onLoadGoogleFonts( loadGoogleFonts, value );
+		onFontChange( fontWeight, fontSubset, value );
 	};
 
-	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
-		let font_flag;
+	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => { // eslint-disable-line no-shadow
+		let font_flag;  // eslint-disable-line no-unused-vars
 		let new_value;
 
 		if ( typeof googleFonts[ fontFamily ] === 'object' ) {
@@ -144,7 +144,7 @@ function FontFamilyControl( props ) {
 
 			if ( typeof gfontsObj === 'object' ) {
 				gfontsObj.forEach( function ( item ) {
-					if ( fontWeight.value == item ) {
+					if ( fontWeight.value === item ) {
 						font_flag = false;
 					} else {
 						new_value = item;
@@ -156,7 +156,7 @@ function FontFamilyControl( props ) {
 				} );
 
 				gfontSubsetObj.forEach( function ( item ) {
-					if ( fontSubset.value == item ) {
+					if ( fontSubset.value === item ) {
 						font_flag = false;
 					} else {
 						new_value = item;
@@ -174,7 +174,7 @@ function FontFamilyControl( props ) {
 		let value;
 
 		if (
-			fontFamily != '' &&
+			fontFamily !== '' &&
 			typeof googleFonts[ fontFamily ] !== 'object'
 		) {
 			value = false;
@@ -184,41 +184,55 @@ function FontFamilyControl( props ) {
 
 		props.setAttributes( { [ loadGoogleFonts.label ]: value } );
 	};
-
+	
 	return (
 		<div className="uag-typography-font-family-options">
-			<label className="uag-typography-font-family-label">
-				{ __( 'Font Family', 'ultimate-addons-for-gutenberg' ) }
-			</label>
-			<Select
-				options={ fonts }
-				value={ {
-					value: props.fontFamily.value,
-					label: props.fontFamily.value,
-					weight: fontWeightObj,
-				} }
-				isMulti={ false }
-				maxMenuHeight={ 300 }
-				onChange={ onFontfamilyChange }
-				className="react-select-container"
-				classNamePrefix="react-select"
-			/>
-			<SelectControl
-				label={ __( 'Font Weight', 'ultimate-addons-for-gutenberg' ) }
-				value={ props.fontWeight.value }
-				onChange={ ( value ) =>
-					props.setAttributes( { [ props.fontWeight.label ]: value } )
-				}
-				options={ fontWeightObj }
-			/>
-			<SelectControl
-				label={ __( 'Font Subset', 'ultimate-addons-for-gutenberg' ) }
-				value={ props.fontSubset.value }
-				onChange={ ( value ) =>
-					props.setAttributes( { [ props.fontSubset.label ]: value } )
-				}
-				options={ fontSubsetObj }
-			/>
+			<div className="uag-typography-font-family">
+				<SelectControl
+					label={ __( 'Family', 'ultimate-addons-for-gutenberg' ) }
+					options={ fonts }
+					value={ props.fontFamily.value }
+					onChange={ onFontfamilyChange }
+					className="react-select-container"
+				/>
+			</div>
+			<div className="uag-typography-weight-subset-wrap">
+				<div className="uag-typography-font-family-weight">
+					<SelectControl
+						label={ __(
+							'Weight',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ props.fontWeight.value }
+						onChange={ ( value ) =>
+							props.setAttributes( {
+								[ props.fontWeight.label ]: value,
+							} )
+						}
+						options={ fontWeightObj }
+						className="react-select-container"
+					/>
+				</div>
+				<div className="uag-typography-font-family-subset">
+					<SelectControl
+						label={ __(
+							'Subset',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ props.fontSubset.value }
+						onChange={ ( value ) =>
+							props.setAttributes( {
+								[ props.fontSubset.label ]: value,
+							} )
+						}
+						options={ fontSubsetObj }
+						className="react-select-container"
+						disabled={
+							! props.fontSubset.label || ! props.fontSubset.value
+						}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

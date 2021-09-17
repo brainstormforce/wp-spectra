@@ -50,7 +50,6 @@ function Blog( props ) {
 				className="slick-next slick-arrow"
 				aria-label="Next"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -70,7 +69,6 @@ function Blog( props ) {
 				className="slick-prev slick-arrow"
 				aria-label="Previous"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -83,9 +81,9 @@ function Blog( props ) {
 	}
 
 	const dots =
-		'dots' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 	const arrows =
-		'arrows' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
 	const equalHeightClass = equalHeight
 		? 'uagb-post__carousel_equal-height'
@@ -104,7 +102,7 @@ function Blog( props ) {
 		rtl: false,
 		afterChange: () => {
 			if ( equalHeight ) {
-				uagb_carousel_height( block_id );
+				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
 			}
 		},
 		nextArrow: <NextArrow arrowSize={ arrowSize } />,
@@ -187,7 +185,7 @@ function Blog( props ) {
 				`uagb-block-${ block_id }`
 			) }
 			data-blog-id={ block_id }
-			style={ 'dots' == arrowDots ? { padding: '0 0 35px 0' } : {} }
+			style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
 		>
 			<Suspense fallback={ lazyLoader() }>
 				<Slider

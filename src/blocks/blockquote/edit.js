@@ -28,7 +28,31 @@ const UAGBBlockQuote = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { classMigrate: true } );
+		const {
+			tweetBtnVrPadding,
+			tweetBtnHrPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+		} = props.attributes;
 
+		if ( tweetBtnVrPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: tweetBtnVrPadding } );
+			}
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: tweetBtnVrPadding } );
+			}
+		}
+		if ( tweetBtnHrPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: tweetBtnHrPadding } );
+			}
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
+			}
+		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(

@@ -141,6 +141,9 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	separatorHoverColor: {
+		type: 'string',
+	},
 };
 
 export default attributes;

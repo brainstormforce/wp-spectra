@@ -39,6 +39,38 @@ const UAGBTeam = ( props ) => {
 			'uagb-team-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+		const {
+			imgLeftMargin,
+			imgRightMargin,
+			imgTopMargin,
+			imgBottomMargin,
+			imageLeftMargin,
+			imageRightMargin,
+			imageTopMargin,
+			imageBottomMargin,
+		} = props.attributes;
+
+		if ( imgTopMargin ) {
+			if ( ! imageTopMargin ) {
+				props.setAttributes( { imageTopMargin: imgTopMargin } );
+			}
+		}
+		if ( imgBottomMargin ) {
+			if ( ! imageBottomMargin ) {
+				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
+			}
+		}
+
+		if ( imgLeftMargin ) {
+			if ( ! imageLeftMargin ) {
+				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
+			}
+		}
+		if ( imgRightMargin ) {
+			if ( ! imageRightMargin ) {
+				props.setAttributes( { imageRightMargin: imgRightMargin } );
+			}
+		}
 	}, [] );
 
 	return (

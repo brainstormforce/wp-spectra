@@ -38,7 +38,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-blockquote__outer-wrap',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			<div

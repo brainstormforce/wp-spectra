@@ -9,9 +9,7 @@ import TableOfContent from './deprecated/toc';
 import attributes from "./attributes"
 import renderSVG from "@Controls/renderIcon"
 
-const {
-	RichText
-} = wp.blockEditor
+import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

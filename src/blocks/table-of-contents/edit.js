@@ -3,7 +3,7 @@
  */
 
 import styling from './styling';
-$ = jQuery;
+import jQuery from 'jquery';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -34,7 +34,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const scrollToTopSvg =
 			'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
 
-		if ( 0 == scroll_element.length ) {
+		if ( 0 === scroll_element.length ) {
 			jQuery( 'body' ).append(
 				'<div class="uagb-toc__scroll-top"> ' +
 					scrollToTopSvg +
@@ -52,6 +52,150 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		if ( props.attributes.heading && '' !== props.attributes.heading ) {
 			props.setAttributes( { headingTitle: props.attributes.heading } );
 		}
+
+		const { attributes, setAttributes } = props;
+		const {
+			vPaddingDesktop,
+			vPaddingTablet,
+			vPaddingMobile,
+			hPaddingDesktop,
+			hPaddingTablet,
+			hPaddingMobile,
+			vMarginDesktop,
+			vMarginTablet,
+			vMarginMobile,
+			hMarginDesktop,
+			hMarginTablet,
+			hMarginMobile,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			topMarginTablet,
+			rightMarginTablet,
+			bottomMarginTablet,
+			leftMarginTablet,
+			topMarginMobile,
+			rightMarginMobile,
+			bottomMarginMobile,
+			leftMarginMobile,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+			topPaddingTablet,
+			rightPaddingTablet,
+			bottomPaddingTablet,
+			leftPaddingTablet,
+			topPaddingMobile,
+			rightPaddingMobile,
+			bottomPaddingMobile,
+			leftPaddingMobile,
+		} = attributes;
+
+		//Padding
+		if ( vPaddingDesktop ) {
+			if ( ! topPadding ) {
+				setAttributes( { topPadding: vPaddingDesktop } );
+			}
+			if ( ! bottomPadding ) {
+				setAttributes( { bottomPadding: vPaddingDesktop } );
+			}
+		}
+		if ( hPaddingDesktop ) {
+			if ( ! rightPadding ) {
+				setAttributes( { rightPadding: hPaddingDesktop } );
+			}
+			if ( ! leftPadding ) {
+				setAttributes( { leftPadding: hPaddingDesktop } );
+			}
+		}
+
+		if ( vPaddingMobile ) {
+			if ( ! topPaddingMobile ) {
+				setAttributes( { topPaddingMobile: vPaddingMobile } );
+			}
+			if ( ! bottomPaddingMobile ) {
+				setAttributes( { bottomPaddingMobile: vPaddingMobile } );
+			}
+		}
+		if ( hPaddingMobile ) {
+			if ( ! rightPaddingMobile ) {
+				setAttributes( { rightPaddingMobile: hPaddingMobile } );
+			}
+			if ( ! leftPaddingMobile ) {
+				setAttributes( { leftPaddingMobile: hPaddingMobile } );
+			}
+		}
+
+		if ( vPaddingTablet ) {
+			if ( ! topPaddingTablet ) {
+				setAttributes( { topPaddingTablet: vPaddingTablet } );
+			}
+			if ( ! bottomPaddingTablet ) {
+				setAttributes( { bottomPaddingTablet: vPaddingTablet } );
+			}
+		}
+		if ( hPaddingTablet ) {
+			if ( ! rightPaddingTablet ) {
+				setAttributes( { rightPaddingTablet: hPaddingTablet } );
+			}
+			if ( ! leftPaddingTablet ) {
+				setAttributes( { leftPaddingTablet: hPaddingTablet } );
+			}
+		}
+
+		//Margin
+		if ( vMarginDesktop ) {
+			if ( ! topMargin ) {
+				setAttributes( { topMargin: vMarginDesktop } );
+			}
+			if ( ! bottomMargin ) {
+				setAttributes( { bottomMargin: vMarginDesktop } );
+			}
+		}
+		if ( hMarginDesktop ) {
+			if ( ! rightMargin ) {
+				setAttributes( { rightMargin: hMarginDesktop } );
+			}
+			if ( ! leftMargin ) {
+				setAttributes( { leftMargin: hMarginDesktop } );
+			}
+		}
+
+		if ( vMarginMobile ) {
+			if ( ! topMarginMobile ) {
+				setAttributes( { topMarginMobile: vMarginMobile } );
+			}
+			if ( ! bottomMarginMobile ) {
+				setAttributes( { bottomMarginMobile: vMarginMobile } );
+			}
+		}
+		if ( hMarginMobile ) {
+			if ( ! rightMarginMobile ) {
+				setAttributes( { rightMarginMobile: hMarginMobile } );
+			}
+			if ( ! leftMarginMobile ) {
+				setAttributes( { leftMarginMobile: hMarginMobile } );
+			}
+		}
+
+		if ( vMarginTablet ) {
+			if ( ! topMarginTablet ) {
+				setAttributes( { topMarginTablet: vMarginTablet } );
+			}
+			if ( ! bottomMarginTablet ) {
+				setAttributes( { bottomMarginTablet: vMarginTablet } );
+			}
+		}
+		if ( hMarginTablet ) {
+			if ( ! rightMarginTablet ) {
+				setAttributes( { rightMarginTablet: hMarginTablet } );
+			}
+			if ( ! leftMarginTablet ) {
+				setAttributes( { leftMarginTablet: hMarginTablet } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -67,7 +211,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	const { scrollToTop } = props.attributes;
 
 	const scrollElement = jQuery( '.uagb-toc__scroll-top' );
-	if ( null != scrollElement && 'undefined' !== scrollElement ) {
+	if ( null !== scrollElement && 'undefined' !== scrollElement ) {
 		if ( scrollToTop ) {
 			scrollElement.addClass( 'uagb-toc__show-scroll' );
 		} else {
@@ -118,13 +262,13 @@ export default compose(
 
 		let level = 0;
 
-		const headerArray = $( 'div.is-root-container' ).find(
+		const headerArray = jQuery( 'div.is-root-container' ).find(
 			'h1, h2, h3, h4, h5, h6'
 		);
 		const headers = [];
-		if ( headerArray != 'undefined' ) {
+		if ( headerArray !== 'undefined' ) {
 			headerArray.each( function ( index, value ) {
-				const header = $( this );
+				const header = jQuery( this );
 				let excludeHeading;
 
 				if ( value.className.includes( 'uagb-toc-hide-heading' ) ) {

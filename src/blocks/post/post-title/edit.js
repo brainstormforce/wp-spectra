@@ -1,6 +1,5 @@
 import { useLayoutEffect } from 'react';
-
-const { decodeEntities } = wp.htmlEntities;
+import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
@@ -19,7 +18,7 @@ export const PostTitle = ( props ) => {
 
 	const target = attributes.newTab ? '_blank' : '_self';
 
-	if ( undefined == post.title ) {
+	if ( undefined === post.title ) {
 		return null;
 	}
 

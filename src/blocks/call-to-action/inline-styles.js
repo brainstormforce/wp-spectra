@@ -41,8 +41,21 @@ function CtaStyle( props ) {
 		ctaFontWeight,
 		ctaBtnLinkColor,
 		ctaBgColor,
-		ctaBtnVertPadding,
-		ctaBtnHrPadding,
+		ctaTopPadding,
+		ctaRightPadding,
+		ctaBottomPadding,
+		ctaLeftPadding,
+		ctaTopPaddingTablet,
+		ctaRightPaddingTablet,
+		ctaBottomPaddingTablet,
+		ctaLeftPaddingTablet,
+		ctaTopPaddingMobile,
+		ctaRightPaddingMobile,
+		ctaBottomPaddingMobile,
+		ctaLeftPaddingMobile,
+		ctaPaddingUnit,
+		mobileCTAPaddingUnit,
+		tabletCTAPaddingUnit,
 		ctaBorderStyle,
 		ctaBorderColor,
 		ctaBorderWidth,
@@ -67,47 +80,50 @@ function CtaStyle( props ) {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
-			color: ctaBtnLinkColor,
+			'color': ctaBtnLinkColor,
 		},
 		' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text': {
-			color: ctaLinkHoverColor,
+			'color': ctaLinkHoverColor,
 		},
 
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
-			color: ctaBtnLinkColor,
+			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
 			'border-style': ctaBorderStyle,
 			'border-color': ctaBorderColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-			'padding-top': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( ctaBtnVertPadding, 'px' ),
-			'padding-left': generateCSSUnit( ctaBtnHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( ctaBtnHrPadding, 'px' ),
+			'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPadding,
+				ctaPaddingUnit
+			),
+			'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
+			'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 		},
 
 		' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button': {
-			color: ctaLinkHoverColor,
+			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
 			'border-color': ctaBorderhoverColor,
 		},
 
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		},
 
 		' .uagb-cta__button-wrapper .uagb-cta__block-link svg': {
-			fill: ctaBtnLinkColor,
+			'fill': ctaBtnLinkColor,
 		},
 
 		' .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg': {
-			fill: ctaLinkHoverColor,
+			'fill': ctaLinkHoverColor,
 		},
 
 		// Title Style
@@ -119,7 +135,7 @@ function CtaStyle( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
-			color: titleColor,
+			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
 		},
 
@@ -132,7 +148,7 @@ function CtaStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 
@@ -166,12 +182,12 @@ function CtaStyle( props ) {
 		selectors[
 			' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content'
 		] = {
-			width: generateCSSUnit( contentWidth, '%' ),
+			'width': generateCSSUnit( contentWidth, '%' ),
 		};
 		selectors[
 			' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'
 		] = {
-			width: generateCSSUnit( 100 - contentWidth, '%' ),
+			'width': generateCSSUnit( 100 - contentWidth, '%' ),
 		};
 	}
 
@@ -201,11 +217,27 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'padding-top': generateCSSUnit(
+				ctaTopPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				ctaLeftPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				ctaRightPaddingTablet,
+				tabletCTAPaddingUnit
+			),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaFontSizeTablet,
 				ctaFontSizeType
@@ -239,11 +271,27 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'padding-top': generateCSSUnit(
+				ctaTopPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				ctaLeftPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				ctaRightPaddingMobile,
+				mobileCTAPaddingUnit
+			),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			height: generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			width: generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaFontSizeMobile,
 				ctaFontSizeType
@@ -258,9 +306,19 @@ function CtaStyle( props ) {
 
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, id, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, id, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

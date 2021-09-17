@@ -341,6 +341,188 @@ const attributes = {
 		type: 'string',
 		default: 'tablet',
 	},
+	imageWidthType: {
+		type: 'string',
+		default: 'px',
+	},
+	arrowSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	rowGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	columnGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	nameSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	borderHoverColor: {
+		type: 'string',
+	},
+	overlayType: {
+		type: 'string',
+	},
+	backgroundAttachment: {
+		type: 'string',
+	},
+	gradientValue: {
+		type: 'string',
+	},
+	descTransform: {
+		type: 'string',
+	},
+	descDecoration: {
+		type: 'string',
+	},
+	nameTransform: {
+		type: 'string',
+	},
+	nameDecoration: {
+		type: 'string',
+	},
+	companyTransform: {
+		type: 'string',
+	},
+	companyDecoration: {
+		type: 'string',
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingTop: {
+		type: 'number',
+	},
+	paddingBottom: {
+		type: 'number',
+	},
+	paddingLeft: {
+		type: 'number',
+	},
+	paddingRight: {
+		type: 'number',
+	},
+	paddingTopTablet: {
+		type: 'number',
+	},
+	paddingRightTablet: {
+		type: 'number',
+	},
+	paddingBottomTablet: {
+		type: 'number',
+	},
+	paddingLeftTablet: {
+		type: 'number',
+	},
+	paddingTopMobile: {
+		type: 'number',
+	},
+	paddingRightMobile: {
+		type: 'number',
+	},
+	paddingBottomMobile: {
+		type: 'number',
+	},
+	paddingLeftMobile: {
+		type: 'number',
+	},
+	imgspacingLink: {
+		type: 'boolean',
+	},
+	spacingLink: {
+		type: 'boolean',
+	},
+	imgpaddingTop: {
+		type: 'number',
+	},
+	imgpaddingRight: {
+		type: 'number',
+	},
+	imgpaddingBottom: {
+		type: 'number',
+	},
+	imgpaddingLeft: {
+		type: 'number',
+	},
+	imgpaddingTopTablet: {
+		type: 'number',
+	},
+	imgpaddingRightTablet: {
+		type: 'number',
+	},
+	imgpaddingBottomTablet: {
+		type: 'number',
+	},
+	imgpaddingLeftTablet: {
+		type: 'number',
+	},
+	imgpaddingTopMobile: {
+		type: 'number',
+	},
+	imgpaddingRightMobile: {
+		type: 'number',
+	},
+	imgpaddingBottomMobile: {
+		type: 'number',
+	},
+	imgpaddingLeftMobile: {
+		type: 'number',
+	},
+	imgpaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgmobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgtabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	gradientColor1: {
+		type: 'string',
+	},
+	gradientColor2: {
+		type: 'string',
+	},
+	gradientType: {
+		type: 'string',
+		default: 'linear',
+	},
+	gradientLocation1: {
+		type: 'number',
+		default: 0,
+	},
+	gradientLocation2: {
+		type: 'number',
+		default: 100,
+	},
+	gradientAngle: {
+		type: 'number',
+		default: 0,
+	},
+	gradientPosition: {
+		type: 'string',
+		default: 'center center',
+	},
 };
 
 export default attributes;

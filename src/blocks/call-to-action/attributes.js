@@ -251,6 +251,58 @@ const attributes = {
 		type: 'number',
 		default: 5,
 	},
+	ctaTopPadding: {
+		type: 'number',
+	},
+	ctaBottomPadding: {
+		type: 'number',
+	},
+	ctaLeftPadding: {
+		type: 'number',
+	},
+	ctaRightPadding: {
+		type: 'number',
+	},
+	ctaLeftPaddingTablet: {
+		type: 'number',
+	},
+	ctaRightPaddingTablet: {
+		type: 'number',
+	},
+	ctaTopPaddingTablet: {
+		type: 'number',
+	},
+	ctaBottomPaddingTablet: {
+		type: 'number',
+	},
+	ctaLeftPaddingMobile: {
+		type: 'number',
+	},
+	ctaRightPaddingMobile: {
+		type: 'number',
+	},
+	ctaTopPaddingMobile: {
+		type: 'number',
+	},
+	ctaBottomPaddingMobile: {
+		type: 'number',
+	},
+	ctaPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobileCTAPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletCTAPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	ctaPaddingLink: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

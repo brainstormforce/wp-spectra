@@ -37,6 +37,24 @@ const FaqComponent = ( props ) => {
 			vquestionPaddingMobile,
 			questionLeftPaddingMobile,
 			hquestionPaddingMobile,
+			answerTopPadding,
+			answerBottomPadding,
+			answerRightPadding,
+			answerLeftPadding,
+			answerTopPaddingTablet,
+			answerBottomPaddingTablet,
+			answerRightPaddingTablet,
+			answerLeftPaddingTablet,
+			answerTopPaddingMobile,
+			answerBottomPaddingMobile,
+			answerRightPaddingMobile,
+			answerLeftPaddingMobile,
+			vanswerPaddingDesktop,
+			hanswerPaddingDesktop,
+			vanswerPaddingTablet,
+			hanswerPaddingTablet,
+			vanswerPaddingMobile,
+			hanswerPaddingMobile,
 		} = attributes;
 
 		// Assigning block_id in the attribute.
@@ -101,6 +119,74 @@ const FaqComponent = ( props ) => {
 				questionLeftPaddingMobile: hquestionPaddingMobile,
 			} );
 		}
+
+		if ( vanswerPaddingDesktop ) {
+			if ( ! answerTopPadding ) {
+				setAttributes( { answerTopPadding: vanswerPaddingDesktop } );
+			}
+			if ( ! answerBottomPadding ) {
+				setAttributes( { answerBottomPadding: vanswerPaddingDesktop } );
+			}
+		}
+		if ( hanswerPaddingDesktop ) {
+			if ( ! answerRightPadding ) {
+				setAttributes( { answerRightPadding: hanswerPaddingDesktop } );
+			}
+			if ( ! answerLeftPadding ) {
+				setAttributes( { answerLeftPadding: hanswerPaddingDesktop } );
+			}
+		}
+
+		if ( vanswerPaddingTablet ) {
+			if ( ! answerTopPaddingTablet ) {
+				setAttributes( {
+					answerTopPaddingTablet: vanswerPaddingTablet,
+				} );
+			}
+			if ( ! answerBottomPaddingTablet ) {
+				setAttributes( {
+					answerBottomPaddingTablet: vanswerPaddingTablet,
+				} );
+			}
+		}
+		if ( hanswerPaddingTablet ) {
+			if ( ! answerRightPaddingTablet ) {
+				setAttributes( {
+					answerRightPaddingTablet: hanswerPaddingTablet,
+				} );
+			}
+			if ( ! answerLeftPaddingTablet ) {
+				setAttributes( {
+					answerLeftPaddingTablet: hanswerPaddingTablet,
+				} );
+			}
+		}
+
+		if ( vanswerPaddingMobile ) {
+			if ( ! answerTopPaddingMobile ) {
+				setAttributes( {
+					answerTopPaddingMobile: vanswerPaddingMobile,
+				} );
+			}
+			if ( ! answerBottomPaddingMobile ) {
+				setAttributes( {
+					answerBottomPaddingMobile: vanswerPaddingMobile,
+				} );
+			}
+		}
+		if ( hanswerPaddingMobile ) {
+			if ( ! answerRightPaddingMobile ) {
+				setAttributes( {
+					answerRightPaddingMobile: hanswerPaddingMobile,
+				} );
+			}
+			if ( ! answerLeftPaddingMobile ) {
+				setAttributes( {
+					answerLeftPaddingMobile: hanswerPaddingMobile,
+				} );
+			}
+		}
+
 		prevState = props.schemaJsonData;
 	}, [] );
 
@@ -159,7 +245,7 @@ export default compose(
 			'@context': 'https://schema.org',
 			'@type': 'FAQPage',
 			'@id': page_url,
-			mainEntity: [],
+			'mainEntity': [],
 		};
 		const faqChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
@@ -168,10 +254,10 @@ export default compose(
 		faqChildBlocks.forEach( ( faqChild, key ) => {
 			faq_data = {
 				'@type': 'Question',
-				name: faqChild.attributes.question,
-				acceptedAnswer: {
+				'name': faqChild.attributes.question,
+				'acceptedAnswer': {
 					'@type': 'Answer',
-					text: faqChild.attributes.answer,
+					'text': faqChild.attributes.answer,
 				},
 			};
 			json_data.mainEntity[ key ] = faq_data;

@@ -31,7 +31,7 @@ function inlineStyles( props ) {
 
 	switch ( backgroundType ) {
 		case 'image':
-			if ( 'color' == overlayType ) {
+			if ( 'color' === overlayType ) {
 				style.opacity =
 					typeof backgroundOpacity !== 'undefined'
 						? backgroundOpacity / 100

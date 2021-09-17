@@ -37,7 +37,7 @@ const Render = ( props ) => {
 		>
 			<Suspense fallback={ lazyLoader() }>
 				<div className="uagb-rm__content">
-					{ ( position == 'top' || position == 'left' ) && (
+					{ ( position === 'top' || position === 'left' ) && (
 						<RestMenuImage attributes={ attributes } />
 					) }
 					<div className="uagb-rm__text-wrap">
@@ -69,7 +69,7 @@ const Render = ( props ) => {
 							</>
 						}
 					</div>
-					{ position == 'right' && (
+					{ position === 'right' && (
 						<RestMenuImage attributes={ attributes } />
 					) }
 				</div>

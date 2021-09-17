@@ -325,6 +325,60 @@ const attributes = {
 		type: 'number',
 		default: 50,
 	},
+	topPadding: {
+		type: 'number',
+	},
+	bottomPadding: {
+		type: 'number',
+	},
+	rightPadding: {
+		type: 'number',
+	},
+	leftPadding: {
+		type: 'number',
+	},
+	//Mobile
+	paddingTopMobile: {
+		type: 'number',
+	},
+	paddingBottomMobile: {
+		type: 'number',
+	},
+	paddingRightMobile: {
+		type: 'number',
+	},
+	paddingLeftMobile: {
+		type: 'number',
+	},
+	//Tablet
+	paddingTopTablet: {
+		type: 'number',
+	},
+	paddingBottomTablet: {
+		type: 'number',
+	},
+	paddingRightTablet: {
+		type: 'number',
+	},
+	paddingLeftTablet: {
+		type: 'number',
+	},
+	spacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
 	star_gap: {
 		type: 'number',
 		default: 100,

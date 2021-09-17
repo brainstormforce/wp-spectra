@@ -90,6 +90,10 @@ const attributes = {
 		type: 'string',
 		default: '#D2D2D2',
 	},
+	borderHoverColor: {
+		type: 'string',
+		default: '#D2D2D2',
+	},
 	questionTextColor: {
 		type: 'string',
 		default: '#313131',
@@ -99,6 +103,14 @@ const attributes = {
 		default: '#656565',
 	},
 	questionPaddingTypeDesktop: {
+		type: 'string',
+		default: 'px',
+	},
+	questionPaddingTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	questionPaddingTypeMobile: {
 		type: 'string',
 		default: 'px',
 	},
@@ -131,6 +143,14 @@ const attributes = {
 		default: '#313131',
 	},
 	answerPaddingTypeDesktop: {
+		type: 'string',
+		default: 'px',
+	},
+	answerPaddingTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	answerPaddingTypeMobile: {
 		type: 'string',
 		default: 'px',
 	},
@@ -328,6 +348,50 @@ const attributes = {
 		type: 'html',
 		selector: 'span,p,h1,h2,h3,h4,h5,h6',
 		default: 'span',
+	},
+	questionSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	answerSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	answerTopPadding: {
+		type: 'number',
+	},
+	answerRightPadding: {
+		type: 'number',
+	},
+	answerBottomPadding: {
+		type: 'number',
+	},
+	answerLeftPadding: {
+		type: 'number',
+	},
+	answerTopPaddingTablet: {
+		type: 'number',
+	},
+	answerRightPaddingTablet: {
+		type: 'number',
+	},
+	answerBottomPaddingTablet: {
+		type: 'number',
+	},
+	answerLeftPaddingTablet: {
+		type: 'number',
+	},
+	answerTopPaddingMobile: {
+		type: 'number',
+	},
+	answerRightPaddingMobile: {
+		type: 'number',
+	},
+	answerBottomPaddingMobile: {
+		type: 'number',
+	},
+	answerLeftPaddingMobile: {
+		type: 'number',
 	},
 };
 export default attributes;

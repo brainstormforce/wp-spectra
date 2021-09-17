@@ -1,0 +1,25 @@
+.uag-bg-select-control {
+	.uag-background-type .components-select-control {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
+
+	// .uag-background-type,
+	.uag-background-color,
+	.uag-background-image,
+	.uag-background-gradient,
+	.uag-background-opacity,
+	.uag-background-video,
+	.uag-background-video-overlay,
+	.uag-background-video-opacity,
+	.uag-background-image-position,
+	.uag-background-image-attachment,
+	.uag-background-image-repeat,
+	.uag-background-image-size,
+	.uag-background-image-overlay-type,
+	.uag-background-image-overlay-color,
+	.uag-background-image-overlay-gradient {
+		margin-top: 24px;
+	}
+}

@@ -42,8 +42,23 @@ function styling( props ) {
 		contentLineHeight,
 		contentLineHeightTablet,
 		contentLineHeightMobile,
-		contentVrPadding,
-		contentHrPadding,
+		topPadding,
+		bottomPadding,
+		rightPadding,
+		leftPadding,
+		//Mobile
+		paddingTopMobile,
+		paddingBottomMobile,
+		paddingRightMobile,
+		paddingLeftMobile,
+		//Tablet
+		paddingTopTablet,
+		paddingBottomTablet,
+		paddingRightTablet,
+		paddingLeftTablet,
+		paddingUnit,
+		mobilePaddingUnit,
+		tabletPaddingUnit,
 		authorColor,
 		summaryColor,
 		starActiveColor,
@@ -56,10 +71,10 @@ function styling( props ) {
 
 	const selectors = {
 		' .uagb-star-inner-container svg': {
-			fill: starColor,
+			'fill': starColor,
 		},
 		' .uagb-avg-review-star-inner-container svg': {
-			fill: starColor,
+			'fill': starColor,
 		},
 		' .uagb-rating-title': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -69,7 +84,7 @@ function styling( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
-			color: titleColor,
+			'color': titleColor,
 		},
 		' .uagb_review_entry': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -91,7 +106,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 		},
 		' .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -104,7 +119,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: authorColor,
+			'color': authorColor,
 		},
 		' .uagb-rating-desc, .uagb-rating-author': {
 			'font-size': generateCSSUnit(
@@ -117,13 +132,13 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 		},
 		' .uagb_review_block': {
-			'padding-left': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( contentVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( contentVrPadding, 'px' ),
+			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
+			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
+			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 			'text-align': overallAlignment,
 		},
 		' .uagb_review_summary, p.rich-text.block-editor-rich-text__editable.uagb_review_summary_title': {
@@ -137,17 +152,17 @@ function styling( props ) {
 				contentLineHeight,
 				contentLineHeightType
 			),
-			color: summaryColor,
+			'color': summaryColor,
 		},
 		' .uagb_review_entry .rich-text': {
-			color: contentColor,
+			'color': contentColor,
 		},
 		' .uagb_review_entry .star, .uagb_review_average_stars .star': {
-			fill: starColor,
+			'fill': starColor,
 		},
 		' .uagb_review_entry path, .uagb_review_average_stars path': {
-			stroke: starOutlineColor,
-			fill: starActiveColor,
+			'stroke': starOutlineColor,
+			'fill': starActiveColor,
 		},
 	};
 
@@ -180,6 +195,24 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				contentLineHeightMobile,
 				contentLineHeightType
+			),
+		},
+		' .uagb_review_block': {
+			'padding-left': generateCSSUnit(
+				paddingLeftMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightMobile,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomMobile,
+				mobilePaddingUnit
 			),
 		},
 	};
@@ -215,6 +248,24 @@ function styling( props ) {
 				contentLineHeightType
 			),
 		},
+		' .uagb_review_block': {
+			'padding-left': generateCSSUnit(
+				paddingLeftTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingRightTablet,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingTopTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBottomTablet,
+				tabletPaddingUnit
+			),
+		},
 	};
 
 	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id.substr(
@@ -224,9 +275,19 @@ function styling( props ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, baseSelector, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, baseSelector, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

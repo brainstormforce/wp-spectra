@@ -1,0 +1,112 @@
+/** Box Shadow Popup CSS*/
+.uag-box-shadow-options {
+
+	margin-bottom: 24px;
+	// border: 1px solid lightgrey;
+	// border-radius: 8px;
+	// padding: 15px;
+	// margin: 1.5em 0;
+	// .components-button:focus:not(:disabled){
+	// 	box-shadow: none;
+    // 	outline: none;
+	// }
+	// .components-toggle-control
+	// 	.components-base-control__field
+	// 	.components-form-toggle {
+	// 	padding: 0;
+	// 	margin: 0;
+	// }
+	.uag-box-shadow-option-actions {
+		display: flex;
+		justify-content: space-between;
+		margin: 0;
+		align-items: center;
+		// & > .components-base-control {
+		// 	.components-base-control__field {
+		// 		margin: 0;
+		// 	}
+		// }
+		.uag-box-shadow-button {
+			margin: 0;
+			height: 28px;
+			width: 28px;
+			padding: 5px;
+			border: 1px solid #d3d3d3;
+			border-radius: 3px;
+
+			.dashicons-edit {
+				font-size: 15px;
+				line-height: 20px;
+			}
+
+			&:focus:not(:disabled){
+				box-shadow: none;
+				outline: none;
+			}
+		}
+	}
+
+	.uagb-box-shadow-advanced {
+		border: 1px solid #d3d3d3;
+		border-radius: 3px;
+		padding: 15px;
+		margin: 10px 0;
+		position: relative;
+
+		> .components-base-control {
+			margin-top: 0;
+		}
+
+		&:after,
+		&:before {
+			bottom: 100%;
+			right: 8px;
+			border: solid transparent;
+			content: "";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		&:after{
+			right: 9px;
+		}
+		&:after {
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #fff;
+			border-width: 5px;
+			margin-left: -5px;
+		}
+		&:before {
+			border-color: rgba(211, 211, 211, 0);
+			border-bottom-color: #d3d3d3;
+			border-width: 6px;
+			margin-left: -6px;
+		}
+
+		.uagb-shadow-color,
+		.uagb-horizontal-wrap,
+		.uagb-vertical-wrap,
+		.uagb-blur-wrap,
+		.uagb-spread-wrap {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+// .uagb-inspector-tab .components-panel__body.is-opened .uag-box-shadow-options {
+// 	.components-base-control {
+// 		padding: 0;
+// 		width: 100%;
+// 	}
+// }
+// .uagb-inspector-tab .components-panel__body.is-opened .uag-box-shadow-options {
+// 	.components-base-control.components-toggle-control {
+// 		padding: 0;
+// 		width: auto;
+// 	}
+// }
+.block-editor-block-inspector .components-base-control:last-child {
+	margin-bottom: 0px;
+}
+

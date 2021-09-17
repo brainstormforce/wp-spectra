@@ -47,13 +47,23 @@ const attributes = {
 	bodyTextColor: {
 		type: 'string',
 	},
+	borderStyle: {
+		type: 'string',
+		default: 'solid',
+	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
 	},
+	borderRadius: {
+		type: 'number',
+	},
 	borderColor: {
 		type: 'string',
 		default: '#e0e0e0',
+	},
+	borderHoverColor: {
+		type: 'string',
 	},
 	activeTabBgColor: {
 		type: 'string',
@@ -75,6 +85,46 @@ const attributes = {
 	tabTitleBottomMargin: {
 		type: 'number',
 	},
+	tabTitleLeftMarginTablet: {
+		type: 'number',
+	},
+	tabTitleRightMarginTablet: {
+		type: 'number',
+	},
+	tabTitleTopMarginTablet: {
+		type: 'number',
+	},
+	tabTitleBottomMarginTablet: {
+		type: 'number',
+	},
+	tabTitleLeftMarginMobile: {
+		type: 'number',
+	},
+	tabTitleRightMarginMobile: {
+		type: 'number',
+	},
+	tabTitleTopMarginMobile: {
+		type: 'number',
+	},
+	tabTitleBottomMarginMobile: {
+		type: 'number',
+	},
+	tabTitleMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobiletabTitleMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tablettabTitleMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabTitleMarginLink: {
+		type: 'boolean',
+		default: false,
+	},
 	tabBodyLeftMargin: {
 		type: 'number',
 	},
@@ -87,12 +137,157 @@ const attributes = {
 	tabBodyBottomMargin: {
 		type: 'number',
 	},
+	tabBodyLeftMarginTablet: {
+		type: 'number',
+	},
+	tabBodyRightMarginTablet: {
+		type: 'number',
+	},
+	tabBodyTopMarginTablet: {
+		type: 'number',
+	},
+	tabBodyBottomMarginTablet: {
+		type: 'number',
+	},
+	tabBodyLeftMarginMobile: {
+		type: 'number',
+	},
+	tabBodyRightMarginMobile: {
+		type: 'number',
+	},
+	tabBodyTopMarginMobile: {
+		type: 'number',
+	},
+	tabBodyBottomMarginMobile: {
+		type: 'number',
+	},
+	tabBodyMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobiletabBodyMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tablettabBodyMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabBodyMarginLink: {
+		type: 'boolean',
+		default: false,
+	},
 	tabBodyVertPadding: {
 		type: 'number',
 	},
 	tabBodyHrPadding: {
 		type: 'number',
 	},
+	tabTitleLeftPadding: {
+		type: 'number',
+	},
+	tabTitleRightPadding: {
+		type: 'number',
+	},
+	tabTitleTopPadding: {
+		type: 'number',
+	},
+	tabTitleBottomPadding: {
+		type: 'number',
+	},
+	tabTitleLeftPaddingTablet: {
+		type: 'number',
+	},
+	tabTitleRightPaddingTablet: {
+		type: 'number',
+	},
+	tabTitleTopPaddingTablet: {
+		type: 'number',
+	},
+	tabTitleBottomPaddingTablet: {
+		type: 'number',
+	},
+	tabTitleLeftPaddingMobile: {
+		type: 'number',
+	},
+	tabTitleRightPaddingMobile: {
+		type: 'number',
+	},
+	tabTitleTopPaddingMobile: {
+		type: 'number',
+	},
+	tabTitleBottomPaddingMobile: {
+		type: 'number',
+	},
+	tabTitlePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobiletabTitlePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tablettabTitlePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabTitlePaddingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	tabBodyLeftPadding: {
+		type: 'number',
+	},
+	tabBodyRightPadding: {
+		type: 'number',
+	},
+	tabBodyTopPadding: {
+		type: 'number',
+	},
+	tabBodyBottomPadding: {
+		type: 'number',
+	},
+	tabBodyLeftPaddingTablet: {
+		type: 'number',
+	},
+	tabBodyRightPaddingTablet: {
+		type: 'number',
+	},
+	tabBodyTopPaddingTablet: {
+		type: 'number',
+	},
+	tabBodyBottomPaddingTablet: {
+		type: 'number',
+	},
+	tabBodyLeftPaddingMobile: {
+		type: 'number',
+	},
+	tabBodyRightPaddingMobile: {
+		type: 'number',
+	},
+	tabBodyTopPaddingMobile: {
+		type: 'number',
+	},
+	tabBodyBottomPaddingMobile: {
+		type: 'number',
+	},
+	tabBodyPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobiletabBodyPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tablettabBodyPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabBodyPaddingLink: {
+		type: 'boolean',
+		default: false,
+	},
+
 	tabTitleVertPadding: {
 		type: 'number',
 	},
@@ -138,6 +333,14 @@ const attributes = {
 	titleLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+	},
+	titleTransform: {
+		type: 'string',
+		default: 'normal',
+	},
+	titleDecoration: {
+		type: 'string',
+		default: 'none',
 	},
 	tabAlign: {
 		type: 'string',

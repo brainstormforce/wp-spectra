@@ -83,7 +83,7 @@ function TableOfContents( props ) {
 	};
 
 	if (
-		mappingHeaders != 'undefined' &&
+		mappingHeaders !== 'undefined' &&
 		headers &&
 		headers.length > 0 &&
 		headers.filter( ( header ) => mappingHeaders[ header.tag - 1 ] )
