@@ -27,5 +27,7 @@ module.exports = {
 		uagb_blocks_info: true,
 		UAGB_Block_Icons: true,
 		__webpack_public_path__: true,
+		jQuery: true,
+		uagb_deactivate_blocks: true,
 	},
 };
