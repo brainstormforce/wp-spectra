@@ -87,6 +87,8 @@ function BlocksSettings() {
 		} ).then( ( data ) => {
 		} );
 	};
+	let disabledClass = checkCategory !== 'all' ? 'disabled' : '';
+
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">
@@ -106,7 +108,7 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ activateAllBlocks }
-						classes="uag-button--secondary" disabled = {checkCategory !== 'all' ? 'disabled' : ''}
+						classes={`uag-button--secondary ${disabledClass}`} disabled = {disabledClass}
 					/>
 					<NormalButton
 						buttonText={ __(
@@ -114,7 +116,7 @@ function BlocksSettings() {
 							'ultimate-addons-for-gutenberg'
 						) }
 						onClick={ deactivateAllBlocks }
-						classes="uag-button--secondary" disabled = {checkCategory !== 'all' ? 'disabled' : ''}
+						classes={`uag-button--secondary ${disabledClass}`} disabled = {disabledClass}
 					/>
 				</div>
 			</div>
