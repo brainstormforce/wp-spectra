@@ -18,7 +18,7 @@ class UAGB_Post_Assets {
 	 * Current Block List
 	 *
 	 * @since 1.13.4
-	 * @var current_block_list
+	 * @var array
 	 */
 	public $current_block_list = array();
 
@@ -82,7 +82,7 @@ class UAGB_Post_Assets {
 	 * Stylesheet
 	 *
 	 * @since 1.13.4
-	 * @var stylesheet
+	 * @var string
 	 */
 	public $stylesheet = '';
 
@@ -561,190 +561,18 @@ class UAGB_Post_Assets {
 			$css       += $common_css;
 		}
 
-		switch ( $name ) {
-			case 'uagb/review':
-				$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_review_gfont( $blockattr );
-				break;
+		if ( strpos( $name, 'uagb/' ) !== false ) {
+			$_block_slug = str_replace( 'uagb/', '', $name );
+			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+			$css         = array_merge( $css, $_block_css );
+			if ( ! empty( $_block_js ) ) {
+				$js .= $_block_js;
+			}
 
-			case 'uagb/inline-notice':
-				$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_inline_notice_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/how-to':
-				$css += UAGB_Block_Helper::get_how_to_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_how_to_gfont( $blockattr );
-				break;
-
-			case 'uagb/section':
-				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/advanced-heading':
-				$css += UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_advanced_heading_gfont( $blockattr );
-				break;
-
-			case 'uagb/info-box':
-				$css += UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_info_box_gfont( $blockattr );
-				break;
-
-			case 'uagb/buttons':
-				$css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/buttons-child':
-				$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/blockquote':
-				$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/tabs':
-				$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_tabs_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/testimonial':
-				$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_testimonial_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/team':
-				$css += UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_team_gfont( $blockattr );
-				break;
-
-			case 'uagb/social-share':
-				$css += UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_social_share_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/social-share-child':
-				$css += UAGB_Block_Helper::get_social_share_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/content-timeline':
-				$css += UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_content_timeline_gfont( $blockattr );
-				break;
-
-			case 'uagb/restaurant-menu':
-				$css += UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_restaurant_menu_gfont( $blockattr );
-				break;
-
-			case 'uagb/call-to-action':
-				$css += UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_call_to_action_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-timeline':
-				$css += UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_timeline_gfont( $blockattr );
-				break;
-
-			case 'uagb/icon-list':
-				$css += UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
-				// We have used the same buttons gfont function because the inputs to these functions are same.
-				// If need be please add a new function for Info Box and go ahead.
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/icon-list-child':
-				$css += UAGB_Block_Helper::get_icon_list_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/post-grid':
-				$css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-carousel':
-				$css += UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-masonry':
-				$css += UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/columns':
-				$css += UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/column':
-				$css += UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/cf7-styler':
-				$css += UAGB_Block_Helper::get_cf7_styler_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_cf7_styler_gfont( $blockattr );
-				break;
-
-			case 'uagb/marketing-button':
-				$css += UAGB_Block_Helper::get_marketing_btn_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_marketing_btn_gfont( $blockattr );
-				break;
-
-			case 'uagb/gf-styler':
-				$css += UAGB_Block_Helper::get_gf_styler_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_gf_styler_gfont( $blockattr );
-				break;
-
-			case 'uagb/table-of-contents':
-				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/faq':
-				$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
-
-				if ( ! isset( $blockattr['layout'] ) ) {
-					$this->uag_faq_layout = true;
-				}
-				UAGB_Block_JS::blocks_faq_gfont( $blockattr );
-				break;
-
-			case 'uagb/wp-search':
-				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
-				break;
-
-			case 'uagb/forms':
-				$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_forms_gfont( $blockattr );
-				break;
-
-			case 'uagb/taxonomy-list':
-				$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
-				break;
-
-			case 'uagb/lottie':
-				$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/star-rating':
-				$css += UAGB_Block_Helper::get_star_rating_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_star_rating_gfont( $blockattr );
-				break;
-
-			default:
-				// Nothing to do here.
-				break;
+			if ( 'uagb/faq' === $name && ! isset( $blockattr['layout'] ) ) {
+				$this->uag_faq_layout = true;
+			}
 		}
 
 		if ( isset( $block['innerBlocks'] ) ) {
