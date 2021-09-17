@@ -430,6 +430,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => '',
 							),
+							'paginationMasonryBorderHColor' => array(
+								'type'    => 'string',
+								'default' => '',
+							),
 							'paginationFontSize'           => array(
 								'type'    => 'number',
 								'default' => 13,

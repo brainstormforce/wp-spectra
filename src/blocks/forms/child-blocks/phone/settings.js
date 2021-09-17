@@ -46,9 +46,9 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ ( new_pattern ) => {
-						setAttributes( { new_pattern } );
-					} }
+					onChange={ ( value ) =>
+						setAttributes( { pattern: value } )
+					}
 				/>
 			</PanelBody>
 		);

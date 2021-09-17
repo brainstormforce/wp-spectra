@@ -111,6 +111,7 @@ $block_data = array(
 		'paginationMasonryBorderWidth'      => 1,
 		'paginationMasonryBorderRadius'     => 2,
 		'paginationMasonryBorderColor'      => '',
+		'paginationMasonryBorderHColor'     => '',
 		'paginationFontSize'                => 13,
 		'loaderColor'                       => '#0085ba',
 		'loaderSize'                        => 18,

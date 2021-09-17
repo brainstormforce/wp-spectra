@@ -146,9 +146,7 @@ function styling( props ) {
 		contentPaddingUnit,
 		arrowColor,
 		arrowSize,
-		arrowSizeUnit,
 		paginationType,
-		paginationFontSizeUnit,
 		paginationFontSize,
 		paginationEventType,
 		paginationAlign,
@@ -158,6 +156,7 @@ function styling( props ) {
 		paginationMasonryBorderWidth,
 		paginationMasonryBorderRadius,
 		paginationMasonryBorderColor,
+		paginationMasonryBorderHColor,
 		paginationButtonPaddingType,
 		paginationTextHoverColor,
 		paginationBgHoverColor,
@@ -522,8 +521,8 @@ function styling( props ) {
 
 	selectors[ ' .slick-arrow svg' ] = {
 		'fill': arrowColor,
-		'height': generateCSSUnit( arrowSize, arrowSizeUnit ),
-		'width': generateCSSUnit( arrowSize, arrowSizeUnit ),
+		'height': generateCSSUnit( arrowSize, 'px' ),
+		'width': generateCSSUnit( arrowSize, 'px' ),
 	};
 
 	if ( ! inheritFromTheme ) {
@@ -700,7 +699,7 @@ function styling( props ) {
 				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
 					paginationFontSize,
-					paginationFontSizeUnit
+					'px'
 				),
 				'padding-top': generateCSSUnit(
 					paginationButtonPaddingTop,
@@ -724,6 +723,7 @@ function styling( props ) {
 			] = {
 				'color': paginationTextHoverColor,
 				'background-color': paginationBgHoverColor,
+				'border-color': paginationMasonryBorderHColor,
 			};
 			mobileSelectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button'

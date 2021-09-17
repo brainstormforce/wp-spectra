@@ -489,6 +489,9 @@ const UAGBPostMasonry = ( props ) => {
 			} );
 		} );
 	}
+
+	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+	
 	const generalSettings = () => {
 		return (
 			<PanelBody
@@ -2125,8 +2128,6 @@ const UAGBPostMasonry = ( props ) => {
 		</InspectorControls>
 	);
 
-	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
-
 	if ( ! hasPosts ) {
 		return (
 			<>
@@ -2153,6 +2154,7 @@ const UAGBPostMasonry = ( props ) => {
 				parentProps={ props }
 				state={ state }
 				inspectorControls={ inspectorControls }
+				togglePreview={ togglePreview }
 			/>
 			<Render
 				parentProps={ props }
