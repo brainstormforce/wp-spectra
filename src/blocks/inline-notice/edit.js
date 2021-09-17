@@ -46,40 +46,39 @@ const UAGBInlineNoticeEdit = ( props ) => {
 			contentLeftPadding,
 		} = attributes;
 
-		if (titleVrPadding) {
-			if (!titleTopPadding) {
-				setAttributes({ titleTopPadding: titleVrPadding });
+		if ( titleVrPadding ) {
+			if ( ! titleTopPadding ) {
+				setAttributes( { titleTopPadding: titleVrPadding } );
 			}
-			if (!titleBottomPadding) {
-				setAttributes({ titleBottomPadding: titleVrPadding });
-			}
-		}
-		if (titleHrPadding) {
-			if (!titleRightPadding) {
-				setAttributes({ titleRightPadding: titleHrPadding });
-			}
-			if (!titleLeftPadding) {
-				setAttributes({ titleLeftPadding: titleHrPadding });
+			if ( ! titleBottomPadding ) {
+				setAttributes( { titleBottomPadding: titleVrPadding } );
 			}
 		}
-
-		if (contentVrPadding) {
-			if (!contentTopPadding) {
-				setAttributes({ contentTopPadding: contentVrPadding });
+		if ( titleHrPadding ) {
+			if ( ! titleRightPadding ) {
+				setAttributes( { titleRightPadding: titleHrPadding } );
 			}
-			if (!contentBottomPadding) {
-				setAttributes({ contentBottomPadding: contentVrPadding });
-			}
-		}
-		if (contentHrPadding) {
-			if (!contentRightPadding) {
-				setAttributes({ contentRightPadding: contentHrPadding });
-			}
-			if (!contentLeftPadding) {
-				setAttributes({ contentLeftPadding: contentHrPadding });
+			if ( ! titleLeftPadding ) {
+				setAttributes( { titleLeftPadding: titleHrPadding } );
 			}
 		}
 
+		if ( contentVrPadding ) {
+			if ( ! contentTopPadding ) {
+				setAttributes( { contentTopPadding: contentVrPadding } );
+			}
+			if ( ! contentBottomPadding ) {
+				setAttributes( { contentBottomPadding: contentVrPadding } );
+			}
+		}
+		if ( contentHrPadding ) {
+			if ( ! contentRightPadding ) {
+				setAttributes( { contentRightPadding: contentHrPadding } );
+			}
+			if ( ! contentLeftPadding ) {
+				setAttributes( { contentLeftPadding: contentHrPadding } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

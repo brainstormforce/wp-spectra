@@ -68,12 +68,30 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	let autoImageLeftMargin        = ( 'auto' === imageLeftMargin ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
-	let autoImageRightMargin       = ( 'auto' === imageRightMargin ) ? 'auto' : generateCSSUnit( imageRightMargin, imageMarginUnit );
-	let autoImageLeftMarginMobile  = ( 'auto' === imageMarginLeftMobile ) ? 'auto' : generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
-	let autoImageRightMarginMobile = ( 'auto' === imageMarginRightMobile ) ? 'auto' : generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
-	let autoImageLeftMarginTablet  = ( 'auto' === imageMarginLeftTablet ) ? 'auto' : generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
-	let autoImageRightMarginTablet = ( 'auto' === imageMarginRightTablet ) ? 'auto' : generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit )
+	const autoImageLeftMargin =
+		'auto' === imageLeftMargin
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+	const autoImageRightMargin =
+		'auto' === imageRightMargin
+			? 'auto'
+			: generateCSSUnit( imageRightMargin, imageMarginUnit );
+	const autoImageLeftMarginMobile =
+		'auto' === imageMarginLeftMobile
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
+	const autoImageRightMarginMobile =
+		'auto' === imageMarginRightMobile
+			? 'auto'
+			: generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
+	const autoImageLeftMarginTablet =
+		'auto' === imageMarginLeftTablet
+			? 'auto'
+			: generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
+	const autoImageRightMarginTablet =
+		'auto' === imageMarginRightTablet
+			? 'auto'
+			: generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit );
 
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
@@ -143,15 +161,18 @@ function styling( props ) {
 		},
 		' .uagb-team__image-wrap': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageBottomMargin, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				imageBottomMargin,
+				imageMarginUnit
+			),
 			'margin-left': autoImageLeftMargin,
 			'margin-right': autoImageRightMargin,
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
 
-	if ( 'above' != imgPosition ) {
-		if ( 'middle' == imgAlign ) {
+	if ( 'above' !== imgPosition ) {
+		if ( 'middle' === imgAlign ) {
 			selectors[ ' .uagb-team__image-wrap' ][ 'align-self' ] = 'center';
 		}
 	}
@@ -199,8 +220,14 @@ function styling( props ) {
 			'height': generateCSSUnit( socialFontSizeMobile, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopMobile, mobileImageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomMobile, mobileImageMarginUnit ),
+			'margin-top': generateCSSUnit(
+				imageMarginTopMobile,
+				mobileImageMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				imageMarginBottomMobile,
+				mobileImageMarginUnit
+			),
 			'margin-left': autoImageLeftMarginMobile,
 			'margin-right': autoImageRightMarginMobile,
 		},
@@ -236,8 +263,14 @@ function styling( props ) {
 			'height': generateCSSUnit( socialFontSizeTablet, socialFontSizeType ),
 		},
 		' .uagb-team__image-wrap': {
-			'margin-top': generateCSSUnit( imageMarginTopTablet, tabletImageMarginUnit ),
-			'margin-bottom': generateCSSUnit( imageMarginBottomTablet, tabletImageMarginUnit ),
+			'margin-top': generateCSSUnit(
+				imageMarginTopTablet,
+				tabletImageMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				imageMarginBottomTablet,
+				tabletImageMarginUnit
+			),
 			'margin-left': autoImageLeftMarginTablet,
 			'margin-right': autoImageRightMarginTablet,
 		},

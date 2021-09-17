@@ -127,12 +127,12 @@ const Render = ( props ) => {
 	const socialLinks = (
 		<div className="uagb-team__social-icon-wrap">
 			<ul className="uagb-team__social-list">
-				{ '' != twitterIcon &&
+				{ '' !== twitterIcon &&
 					socialHtml( twitterIcon, twitterLink, socialTarget ) }
-				{ '' != fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
-				{ '' != linkedinIcon &&
+				{ '' !== fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
+				{ '' !== linkedinIcon &&
 					socialHtml( linkedinIcon, linkedinLink, socialTarget ) }
-				{ '' != pinIcon &&
+				{ '' !== pinIcon &&
 					socialHtml( pinIcon, pinLink, socialTarget ) }
 			</ul>
 		</div>
@@ -185,7 +185,7 @@ const Render = ( props ) => {
 
 	let imageHtml = '';
 
-	if ( '' != imgUrl ) {
+	if ( '' !== imgUrl ) {
 		imageHtml = (
 			<div
 				className={ classnames(
@@ -217,10 +217,10 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-team__wrap">
-					{ imgPosition == 'left' && imageHtml }
+					{ imgPosition === 'left' && imageHtml }
 
 					<div className="uagb-team__content">
-						{ imgPosition == 'above' && imageHtml }
+						{ imgPosition === 'above' && imageHtml }
 
 						{ titleHtml }
 
@@ -229,7 +229,7 @@ const Render = ( props ) => {
 						{ socialEnable && socialLinks }
 					</div>
 
-					{ imgPosition == 'right' && imageHtml }
+					{ imgPosition === 'right' && imageHtml }
 				</div>
 			</div>
 		</>

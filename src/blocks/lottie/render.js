@@ -43,7 +43,7 @@ const Render = ( props ) => {
 	}
 
 	return (
-		<div
+		<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 			className={ classnames(
 				className,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,

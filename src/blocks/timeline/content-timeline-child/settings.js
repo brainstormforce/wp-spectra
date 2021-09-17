@@ -1,10 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { PanelBody, TextControl } from '@wordpress/components';
 
@@ -23,9 +23,7 @@ const Settings = ( props ) => {
 		}
 
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<TextControl
 					label={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
 					value={ t_date }
@@ -35,12 +33,17 @@ const Settings = ( props ) => {
 		);
 	};
 	return (
-	<InspectorControls>
-		<InspectorTabs tabs={["general", "advance"]}>
-		<InspectorTab {...UAGTabs.general}>{ timelineItemSettings() }</InspectorTab>
-		<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
-		</InspectorTabs>
-	</InspectorControls>
+		<InspectorControls>
+			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+				<InspectorTab { ...UAGTabs.general }>
+					{ timelineItemSettings() }
+				</InspectorTab>
+				<InspectorTab
+					{ ...UAGTabs.advance }
+					parentProps={ props }
+				></InspectorTab>
+			</InspectorTabs>
+		</InspectorControls>
 	);
 };
 

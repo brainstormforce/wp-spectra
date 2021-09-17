@@ -154,10 +154,16 @@ function InfoBoxStyle( props ) {
 			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
 		},
 		' .uagb-infobox .uagb-ifb-image-content img': {
-			'border-radius': generateCSSUnit( iconimgBorderRadius, iconimgBorderRadiusUnit ),
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadius,
+				iconimgBorderRadiusUnit
+			),
 		},
 		// CTA style
 		' .uagb-infobox-cta-link': {
@@ -165,8 +171,8 @@ function InfoBoxStyle( props ) {
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
 			'color': ctaLinkColor,
-			'text-decoration':ctaTextDecoration,
-			'text-transform': ctaTextTransform
+			'text-decoration': ctaTextDecoration,
+			'text-transform': ctaTextTransform,
 		},
 		' .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
@@ -197,7 +203,10 @@ function InfoBoxStyle( props ) {
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
@@ -221,7 +230,7 @@ function InfoBoxStyle( props ) {
 				prefixLineHeight,
 				prefixLineHeightType
 			),
-			'text-decoration':prefixTextDecoration,
+			'text-decoration': prefixTextDecoration,
 			'text-transform': prefixTextTransform,
 			'color': prefixColor,
 			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
@@ -238,7 +247,7 @@ function InfoBoxStyle( props ) {
 				headLineHeight,
 				headLineHeightType
 			),
-			'text-decoration':headLineDecoration,
+			'text-decoration': headLineDecoration,
 			'text-transform': headLineTransform,
 			'color': headingColor,
 			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
@@ -263,12 +272,18 @@ function InfoBoxStyle( props ) {
 		// Seperator
 		' .uagb-ifb-separator': {
 			'width': generateCSSUnit( seperatorWidth, separatorWidthType ),
-			'border-top-width': generateCSSUnit( seperatorThickness, thicknessUnit ),
+			'border-top-width': generateCSSUnit(
+				seperatorThickness,
+				thicknessUnit
+			),
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 		},
 		' .uagb-ifb-separator-parent': {
-			'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
+			'margin-bottom': generateCSSUnit(
+				seperatorSpace,
+				seperatorSpaceUnit
+			),
 		},
 		' .uagb-ifb-align-icon-after': {
 			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
@@ -287,8 +302,8 @@ function InfoBoxStyle( props ) {
 	}
 
 	if (
-		iconimgPosition == 'above-title' ||
-		iconimgPosition == 'below-title'
+		iconimgPosition === 'above-title' ||
+		iconimgPosition === 'below-title'
 	) {
 		selectors[ ' .uagb-infobox__content-wrap' ] = {
 			'text-align': headingAlign,
@@ -297,10 +312,22 @@ function InfoBoxStyle( props ) {
 
 	const tabletSelectors = {
 		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
-			'margin-top': generateCSSUnit(iconMarginTopTablet , iconTabletPaddingUnit),
-			'margin-right': generateCSSUnit(iconMarginRightTablet , iconTabletPaddingUnit),
-			'margin-bottom': generateCSSUnit(iconMarginBottomTablet , iconTabletPaddingUnit),
-			'margin-left': generateCSSUnit(iconMarginLeftTablet , iconTabletPaddingUnit),
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletPaddingUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletPaddingUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletPaddingUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletPaddingUnit
+			),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
@@ -313,10 +340,22 @@ function InfoBoxStyle( props ) {
 			),
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
-			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
-			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
 			'font-size': generateCSSUnit(
@@ -363,16 +402,40 @@ function InfoBoxStyle( props ) {
 
 	const mobileSelectors = {
 		' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap': {
-			'margin-top': generateCSSUnit(iconMarginTopMobile , iconMobilePaddingUnit),
-			'margin-right': generateCSSUnit(iconMarginRightMobile , iconMobilePaddingUnit),
-			'margin-bottom': generateCSSUnit(iconMarginBottomMobile , iconMobilePaddingUnit),
-			'margin-left': generateCSSUnit(iconMarginLeftMobile , iconMobilePaddingUnit),
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobilePaddingUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobilePaddingUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobilePaddingUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobilePaddingUnit
+			),
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
-			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
-			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit(
@@ -433,9 +496,19 @@ function InfoBoxStyle( props ) {
 	) }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 	return stylingCss;
 }
 

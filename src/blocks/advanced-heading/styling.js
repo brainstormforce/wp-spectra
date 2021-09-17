@@ -38,7 +38,7 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
-		separatorHoverColor
+		separatorHoverColor,
 	} = props.attributes;
 
 	const tablet_selectors = {};

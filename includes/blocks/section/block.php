@@ -9,12 +9,15 @@
 
 $block_slug = 'uagb/section';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Section', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'attributes'  => array(
+	'doc'              => 'section',
+	'slug'             => '',
+	'admin_categories' => array(),
+	'link'             => 'sections',
+	'title'            => __( 'Section', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'attributes'       => array(
 		'classMigrate'             => false,
 		'topPadding'               => '20',
 		'bottomPadding'            => '20',

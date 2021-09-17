@@ -9,13 +9,16 @@
 
 $block_slug = 'uagb/post-timeline';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'js_assets'   => array( 'uagb-timeline-js' ),
-	'attributes'  => array(
+	'doc'              => 'post-timeline',
+	'slug'             => '',
+	'admin_categories' => array( 'creative', 'post' ),
+	'link'             => 'post-timeline',
+	'title'            => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'js_assets'        => array( 'uagb-timeline-js' ),
+	'attributes'       => array(
 		'align'                   => 'center',
 		'headingColor'            => '',
 		'subHeadingColor'         => '',

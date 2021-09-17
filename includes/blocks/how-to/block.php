@@ -9,12 +9,15 @@
 
 $block_slug = 'uagb/how-to';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'How-to Schema', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'attributes'  => array(
+	'doc'              => 'how-to-schema',
+	'slug'             => '',
+	'admin_categories' => array( 'seo' ),
+	'link'             => 'how-to-schema',
+	'title'            => __( 'How-to Schema', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'attributes'       => array(
 		'block_id'                => '',
 		'overallAlignment'        => 'left',
 		'tools_count'             => 1,

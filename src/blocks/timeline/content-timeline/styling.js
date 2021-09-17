@@ -116,7 +116,6 @@ function contentTimelineStyle( props ) {
 	const respSelectors = 'left';
 
 	const selectors = {
-		
 		' .uagb-timeline__heading.rich-text': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-family': headFontFamily,
@@ -287,8 +286,8 @@ function contentTimelineStyle( props ) {
 		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new': {
 			'color': iconFocus,
 		},
-		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' :{
-			'fill' : iconFocus,
+		' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
+			'fill': iconFocus,
 		},
 		' .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg': {
 			'fill': iconColor,
@@ -389,16 +388,34 @@ function contentTimelineStyle( props ) {
 			'margin-right': 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				tabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				tabletMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit( leftMarginTablet, tabletMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginTablet, tabletMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginTablet,
+				tabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginTablet,
+				tabletMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, tabletMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginTablet,
+				tabletMarginUnit
+			),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__heading': {
 			'text-align': respSelectors,
@@ -457,12 +474,23 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
-			'padding-left': generateCSSUnit( leftPaddingTablet, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( rightPaddingTablet, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( topPaddingTablet, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingUnit ),
-		}
-		
+			'padding-left': generateCSSUnit(
+				leftPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingTablet,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingTablet,
+				tabletPaddingUnit
+			),
+		},
 	};
 
 	const mobileSelectors = {
@@ -521,16 +549,34 @@ function contentTimelineStyle( props ) {
 			'margin-right': 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				mobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				mobileMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				mobileMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit( leftMarginMobile, mobileMarginUnit ),
-			'margin-right': generateCSSUnit( rightMarginMobile, mobileMarginUnit ),
+			'margin-left': generateCSSUnit(
+				leftMarginMobile,
+				mobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				rightMarginMobile,
+				mobileMarginUnit
+			),
 			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, mobileMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				bottomMarginMobile,
+				mobileMarginUnit
+			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__heading': {
 			'text-align': respSelectors,
@@ -589,11 +635,23 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
-			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( rightPaddingMobile, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( topPaddingMobile, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomPaddingMobile, mobilePaddingUnit ),
-		}
+			'padding-left': generateCSSUnit(
+				leftPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topPaddingMobile,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomPaddingMobile,
+				mobilePaddingUnit
+			),
+		},
 	};
 
 	let stylingCss = '';

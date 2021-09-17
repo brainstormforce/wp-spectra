@@ -94,19 +94,43 @@ function styling( props ) {
 		mobileSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeMobile, sizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
-			'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
-			'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
+			'padding-left': generateCSSUnit(
+				leftMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topMobilePadding,
+				mobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomMobilePadding,
+				mobilePaddingUnit
+			),
 		};
 
 		tabletSelectors[ ' .uagb-buttons-repeater' ] = {
 			'font-size': generateCSSUnit( sizeTablet, sizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
-			'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
-			'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
+			'padding-left': generateCSSUnit(
+				leftTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rightTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				topTabletPadding,
+				tabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				bottomTabletPadding,
+				tabletPaddingUnit
+			),
 		};
 	}
 

@@ -9,13 +9,16 @@
 
 $block_slug = 'uagb/table-of-contents';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'js_assets'   => array( 'uagb-table-of-contents' ),
-	'attributes'  => array(
+	'doc'              => 'table-of-contents',
+	'slug'             => '',
+	'admin_categories' => array( 'seo' ),
+	'link'             => 'table-of-contents',
+	'title'            => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'js_assets'        => array( 'uagb-table-of-contents' ),
+	'attributes'       => array(
 		'classMigrate'              => false,
 		'block_id'                  => '',
 		'heading'                   => __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),

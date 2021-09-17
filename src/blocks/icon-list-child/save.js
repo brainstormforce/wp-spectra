@@ -25,7 +25,7 @@ export default function save( props ) {
 
 	let imageIconHtml = '';
 
-	if ( image_icon == 'icon' ) {
+	if ( image_icon === 'icon' ) {
 		if ( icon ) {
 			imageIconHtml = (
 				<span className="uagb-icon-list__source-icon">
@@ -49,7 +49,7 @@ export default function save( props ) {
 	return (
 		<div
 			className={ classnames(
-				`uagb-icon-list-repeater`,
+				'uagb-icon-list-repeater',
 				'uagb-icon-list__wrapper',
 				className,
 				`uagb-block-${ block_id }`
@@ -69,7 +69,7 @@ export default function save( props ) {
 				<span className="uagb-icon-list__source-wrap">
 					{ imageIconHtml }
 				</span>
-				{ ! hideLabel && '' != label && (
+				{ ! hideLabel && '' !== label && (
 					<div className="uagb-icon-list__label-wrap">
 						<RichText.Content
 							tagName="span"

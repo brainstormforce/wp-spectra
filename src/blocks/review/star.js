@@ -58,7 +58,7 @@ const Stars = ( props ) => {
 							<rect
 								height="150"
 								width={
-									( value - i > 0
+									( value - i > 0 // eslint-disable-line no-nested-ternary
 										? value - i < 1
 											? value - i
 											: 1

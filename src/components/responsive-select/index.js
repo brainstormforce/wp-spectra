@@ -1,40 +1,35 @@
 /**
  * External dependencies
  */
-import styles from "./editor.lazy.scss";
-import React, { useLayoutEffect } from "react";
-import { __ } from "@wordpress/i18n";
-import {
-	ButtonGroup,
-	Button,
-	SelectControl,
-	Dashicon,
-} from "@wordpress/components";
-import { useDispatch, useSelect } from "@wordpress/data";
-import { useState } from "@wordpress/element";
+import styles from './editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
+import { __ } from '@wordpress/i18n';
+import { ButtonGroup, Button, SelectControl } from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 
-const ResponsiveSelectControl = (props) => {
+const ResponsiveSelectControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect(() => {
+	useLayoutEffect( () => {
 		styles.use();
 		return () => {
 			styles.unuse();
 		};
-	}, []);
-	const [displayResponsive, toggleResponsive] = useState(false);
+	}, [] );
+	const [ displayResponsive, toggleResponsive ] = useState( false );
 	const { label, data, setAttributes, options } = props;
 
-	const deviceType = useSelect((select) => {
-		return select("core/edit-post").__experimentalGetPreviewDeviceType();
-	}, []);
+	const deviceType = useSelect( ( select ) => {
+		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
+	}, [] );
 
 	const {
 		__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-	} = useDispatch("core/edit-post");
+	} = useDispatch( 'core/edit-post' );
 
-	const customSetPreviewDeviceType = (device) => {
-		setPreviewDeviceType(device);
-		toggleResponsive(!displayResponsive);
+	const customSetPreviewDeviceType = ( device ) => {
+		setPreviewDeviceType( device );
+		toggleResponsive( ! displayResponsive );
 	};
 
 	const devicesSvgs = {
@@ -71,100 +66,108 @@ const ResponsiveSelectControl = (props) => {
 	};
 	const devices = [
 		{
-			name: "Desktop",
+			name: 'Desktop',
 			title: devicesSvgs.desktop,
-			itemClass: "uagb-desktop-tab uagb-responsive-tabs",
+			itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Tablet",
+			name: 'Tablet',
 			title: devicesSvgs.tablet,
-			itemClass: "uagb-tablet-tab uagb-responsive-tabs",
+			itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 		},
 		{
-			name: "Mobile",
-			key: "mobile",
+			name: 'Mobile',
+			key: 'mobile',
 			title: devicesSvgs.mobile,
-			itemClass: "uagb-mobile-tab uagb-responsive-tabs",
+			itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
 		},
 	];
 
 	const output = {};
 	output.Desktop = (
 		<SelectControl
-			value={data.desktop.value}
-			onChange={(value) => setAttributes({ [data.desktop.label]: value })}
-			options={options.desktop}
+			value={ data.desktop.value }
+			onChange={ ( value ) =>
+				setAttributes( { [ data.desktop.label ]: value } )
+			}
+			options={ options.desktop }
 		/>
 	);
 	output.Tablet = (
 		<SelectControl
-			value={data.tablet.value}
-			onChange={(value) => setAttributes({ [data.tablet.label]: value })}
-			options={options.tablet || options.desktop}
+			value={ data.tablet.value }
+			onChange={ ( value ) =>
+				setAttributes( { [ data.tablet.label ]: value } )
+			}
+			options={ options.tablet || options.desktop }
 		/>
 	);
 	output.Mobile = (
 		<SelectControl
-			value={data.mobile.value}
-			onChange={(value) => setAttributes({ [data.mobile.label]: value })}
-			options={options.mobile || options.desktop}
+			value={ data.mobile.value }
+			onChange={ ( value ) =>
+				setAttributes( { [ data.mobile.label ]: value } )
+			}
+			options={ options.mobile || options.desktop }
 		/>
 	);
 	const commonResponsiveHandler = () => {
-		toggleResponsive(!displayResponsive);
+		toggleResponsive( ! displayResponsive );
 	};
 	return (
 		<div className="components-base-control uagb-responsive-select-control">
 			<div className="uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
 					<div className="uag-responsive-label-wrap">
-						{props.label && (
-							<span className="uag-control-label">
-								{props.label}
-							</span>
-						)}
-						{!displayResponsive && (
+						{ label && (
+							<span className="uag-control-label">{ label }</span>
+						) }
+						{ ! displayResponsive && (
 							<Button
 								key="uag-responsive-common-button"
 								className="uag-responsive-common-button"
-								onClick={commonResponsiveHandler}
+								onClick={ commonResponsiveHandler }
 							>
-								{devicesSvgs[deviceType.toLowerCase()]}
+								{ devicesSvgs[ deviceType.toLowerCase() ] }
 							</Button>
-						)}
-						{displayResponsive && (
+						) }
+						{ displayResponsive && (
 							<ButtonGroup
 								className="uagb-range-control-responsive components-tab-panel__tabs"
-								aria-label={__(
-									"Device",
-									"ultimate-addons-for-gutenberg"
-								)}
+								aria-label={ __(
+									'Device',
+									'ultimate-addons-for-gutenberg'
+								) }
 							>
-								{devices.map(
-									({ name, key, title, itemClass }) => (
+								{ devices.map(
+									( { name, key, title, itemClass } ) => (
 										<Button
-											key={key}
-											className={`components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${itemClass}${
+											key={ key }
+											className={ `components-button components-tab-panel__tabs-item uagb-range-control-responsive-item ${ itemClass }${
 												name === deviceType
-													? " active-tab"
-													: ""
-											}`}
-											aria-pressed={deviceType === name}
-											onClick={() =>
-												customSetPreviewDeviceType(name)
+													? ' active-tab'
+													: ''
+											}` }
+											aria-pressed={ deviceType === name }
+											onClick={ () =>
+												customSetPreviewDeviceType(
+													name
+												)
 											}
 										>
-											{title}
+											{ title }
 										</Button>
 									)
-								)}
+								) }
 							</ButtonGroup>
-						)}
+						) }
 					</div>
 				</div>
-				{output[deviceType] ? output[deviceType] : output.Desktop}
+				{ output[ deviceType ] ? output[ deviceType ] : output.Desktop }
 			</div>
-			{props.help && <p className="uag-control-help-notice">{props.help}</p>}
+			{ props.help && (
+				<p className="uag-control-help-notice">{ props.help }</p>
+			) }
 		</div>
 	);
 };

@@ -16,7 +16,7 @@ export default function save( props ) {
 
 	let imageIconHtml = '';
 
-	if ( image_icon == 'icon' ) {
+	if ( image_icon === 'icon' ) {
 		if ( icon ) {
 			imageIconHtml = (
 				<span className="uagb-ss__source-icon">
@@ -39,7 +39,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			<a
+			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className="uagb-ss__link"
 				data-href={ url }
 				rel="noopener noreferrer"

@@ -1,0 +1,16 @@
+@keyframes uag-saving {
+	0% {
+		background-position: 200px 0;
+	}
+}
+
+.uag-normal-button-control{
+	.uag-saving {
+		color: var(--background-light-color);
+		animation: uag-saving 2.5s linear infinite;
+		opacity: 1;
+		background-size: 100px 100%;
+		background-image: linear-gradient(
+			-45deg,var(--link-hv-color) 33%,var(--link-color) 0,var(--link-color) 70%,var(--link-hv-color) 0);
+	}
+}

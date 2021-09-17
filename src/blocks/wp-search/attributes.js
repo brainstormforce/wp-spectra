@@ -216,84 +216,84 @@ const attributes = {
 		type: 'string',
 		default: '%',
 	},
-	paddingInputTop:{
-		type: 'number'
+	paddingInputTop: {
+		type: 'number',
 	},
-	paddingInputRight:{
-		type: 'number'
+	paddingInputRight: {
+		type: 'number',
 	},
-	paddingInputBottom:{
-		type: 'number'
+	paddingInputBottom: {
+		type: 'number',
 	},
-	paddingInputLeft:{
-		type: 'number'
+	paddingInputLeft: {
+		type: 'number',
 	},
-	paddingInputTopTablet:{
-		type: 'number'
+	paddingInputTopTablet: {
+		type: 'number',
 	},
-	paddingInputRightTablet:{
-		type: 'number'
+	paddingInputRightTablet: {
+		type: 'number',
 	},
-	paddingInputBottomTablet:{
-		type: 'number'
+	paddingInputBottomTablet: {
+		type: 'number',
 	},
-	paddingInputLeftTablet:{
-		type: 'number'
+	paddingInputLeftTablet: {
+		type: 'number',
 	},
-	paddingInputTopMobile:{
-		type: 'number'
+	paddingInputTopMobile: {
+		type: 'number',
 	},
-	paddingInputRightMobile:{
-		type: 'number'
+	paddingInputRightMobile: {
+		type: 'number',
 	},
-	paddingInputBottomMobile:{
-		type: 'number'
+	paddingInputBottomMobile: {
+		type: 'number',
 	},
-	paddingInputLeftMobile:{
-		type: 'number'
+	paddingInputLeftMobile: {
+		type: 'number',
 	},
-	paddingInputUnit:{
+	paddingInputUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	mobilePaddingInputUnit:{
+	mobilePaddingInputUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	tabletPaddingInputUnit:{
+	tabletPaddingInputUnit: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
-	iconSizeType:{
+	iconSizeType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
 	},
-	inputTransform:{
-		type: 'string'
-	},
-	inputDecoration:{
-		type: 'string'
-	},
-	buttonTransform:{
-		type: 'string'
-	},
-	buttonDecoration:{
-		type: 'string'
-	},
-	borderHColor:{
-		type: 'string'
-	},
-	buttonIconSizeType:{
+	inputTransform: {
 		type: 'string',
-		default: 'px'
 	},
-	buttonWidthType:{
+	inputDecoration: {
 		type: 'string',
-		default: 'px'
+	},
+	buttonTransform: {
+		type: 'string',
+	},
+	buttonDecoration: {
+		type: 'string',
+	},
+	borderHColor: {
+		type: 'string',
+	},
+	buttonIconSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	buttonWidthType: {
+		type: 'string',
+		default: 'px',
 	},
 };
 

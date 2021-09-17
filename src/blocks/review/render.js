@@ -106,7 +106,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-ratings__outer-wrap',
 				`uagb-block-${ block_id.substr( 0, 8 ) }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			<ReviewBody

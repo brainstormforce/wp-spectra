@@ -1,0 +1,38 @@
+.uag-global-settings-metabox {
+	font-size: 14px;
+	max-width: 100%;
+	form {
+		margin: 0;
+	}
+
+	h3 {
+		text-align: left;
+	}
+
+	h4 {
+		margin: 25px 0 0;
+	}
+
+	.uag-select-option label {
+		font-weight: var(--heading-weight-500);
+	}
+
+	.uag-field__desc {
+		color: #666;
+		line-height: 1.55em;
+		margin-top: 15px;
+	}
+
+}
+.uag-blocks-settings-metabox {
+	background: var(--background-light-color);
+    padding: 35px;
+    width: 100%;
+    margin: 0 auto;
+	.uag-extension__metabox{
+		a {
+			padding-left: 0px;
+		}
+	}.uag-extension{
+		width: 411px;}	
+}

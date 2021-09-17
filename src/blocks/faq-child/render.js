@@ -45,7 +45,7 @@ const Render = ( props ) => {
 				<div className="uagb-faq-questions-button uagb-faq-questions">
 					{ 'accordion' === layout && faqRenderIcon() }
 					<RichText
-						tagName={ 'span' != headingTag ? headingTag : 'div' }
+						tagName={ 'span' !== headingTag ? headingTag : 'div' }
 						placeholder={ __( 'Question' ) }
 						value={ question }
 						onChange={ ( value ) =>

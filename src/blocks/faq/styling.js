@@ -2,10 +2,10 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS";
-import generateCSSUnit from "@Controls/generateCSSUnit";
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling(props) {
+function styling( props ) {
 	const {
 		layout,
 		inactiveOtherItems,
@@ -92,352 +92,352 @@ function styling(props) {
 	let iconColorTemp = iconColor;
 	let iconActiveColorTemp = iconActiveColor;
 
-	if ("undefined" === typeof iconColor || "" == iconColor) {
+	if ( 'undefined' === typeof iconColor ) {
 		iconColorTemp = questionTextColor;
 	}
-	if ("undefined" === typeof iconActiveColor || "" == iconActiveColor) {
+	if ( 'undefined' === typeof iconActiveColor ) {
 		iconActiveColorTemp = questionTextActiveColor;
 	}
 
 	selectors = {
-		" .uagb-icon svg": {
-			'width': generateCSSUnit(iconSize, iconSizeType),
-			'height': generateCSSUnit(iconSize, iconSizeType),
-			"font-size": generateCSSUnit(iconSize, iconSizeType),
+		' .uagb-icon svg': {
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'height': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'fill': iconColorTemp,
 		},
-		" .uagb-icon-active svg": {
-			'width': generateCSSUnit(iconSize, iconSizeType),
-			'height': generateCSSUnit(iconSize, iconSizeType),
-			"font-size": generateCSSUnit(iconSize, iconSizeType),
+		' .uagb-icon-active svg': {
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'height': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'fill': iconActiveColorTemp,
 		},
-		" .uagb-faq-child__outer-wrap": {
-			"margin-bottom": generateCSSUnit(rowsGap, "px"),
+		' .uagb-faq-child__outer-wrap': {
+			'margin-bottom': generateCSSUnit( rowsGap, 'px' ),
 		},
-		".uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
-			"grid-column-gap": generateCSSUnit(columnsGap, "px"),
-			"grid-row-gap": generateCSSUnit(rowsGap, "px"),
+		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
+			'grid-column-gap': generateCSSUnit( columnsGap, 'px' ),
+			'grid-row-gap': generateCSSUnit( rowsGap, 'px' ),
 		},
-		" .uagb-faq-item": {
-			"background-color": boxBgColor,
-			"border-style": borderStyle,
-			"border-width": generateCSSUnit(borderWidth, "px"),
-			"border-radius": generateCSSUnit(borderRadius, "px"),
-			"border-color": borderColor,
+		' .uagb-faq-item': {
+			'background-color': boxBgColor,
+			'border-style': borderStyle,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			'border-color': borderColor,
 		},
-		" .uagb-faq-item:hover": {
-			"border-color": borderHoverColor,
+		' .uagb-faq-item:hover': {
+			'border-color': borderHoverColor,
 		},
-		" .uagb-faq-item .uagb-question": {
+		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,
 		},
-		" .uagb-faq-item.uagb-faq-item-active .uagb-question": {
+		' .uagb-faq-item.uagb-faq-item-active .uagb-question': {
 			'color': questionTextActiveColor,
 		},
-		" .uagb-faq-item:hover .uagb-question": {
+		' .uagb-faq-item:hover .uagb-question': {
 			'color': questionTextActiveColor,
 		},
-		" .uagb-faq-questions-button": {
-			"padding-top": generateCSSUnit(
+		' .uagb-faq-questions-button': {
+			'padding-top': generateCSSUnit(
 				vquestionPaddingDesktop,
 				questionPaddingTypeDesktop
 			),
-			"padding-bottom": generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				questionBottomPaddingDesktop,
 				questionPaddingTypeDesktop
 			),
-			"padding-right": generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				hquestionPaddingDesktop,
 				questionPaddingTypeDesktop
 			),
-			"padding-left": generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				questionLeftPaddingDesktop,
 				questionPaddingTypeDesktop
 			),
 		},
-		" .uagb-faq-content span": {
-			"margin-top": generateCSSUnit(
+		' .uagb-faq-content span': {
+			'margin-top': generateCSSUnit(
 				answerTopPadding,
 				answerPaddingTypeDesktop
 			),
-			"margin-bottom": generateCSSUnit(
+			'margin-bottom': generateCSSUnit(
 				answerBottomPadding,
 				answerPaddingTypeDesktop
 			),
-			"margin-right": generateCSSUnit(
+			'margin-right': generateCSSUnit(
 				answerRightPadding,
 				answerPaddingTypeDesktop
 			),
-			"margin-left": generateCSSUnit(
+			'margin-left': generateCSSUnit(
 				answerLeftPadding,
 				answerPaddingTypeDesktop
 			),
 		},
-		".uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap": {
-			"margin-right": generateCSSUnit(gapBtwIconQUestion, "px"),
+		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-right': generateCSSUnit( gapBtwIconQUestion, 'px' ),
 		},
-		".uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap": {
-			"margin-left": generateCSSUnit(gapBtwIconQUestion, "px"),
+		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-left': generateCSSUnit( gapBtwIconQUestion, 'px' ),
 		},
-		" .uagb-faq-item:hover .uagb-icon svg": {
+		' .uagb-faq-item:hover .uagb-icon svg': {
 			'fill': iconActiveColorTemp,
 		},
-		" .uagb-faq-item .uagb-faq-questions-button.uagb-faq-questions": {
-			"flex-direction": iconAlign,
+		' .uagb-faq-item .uagb-faq-questions-button.uagb-faq-questions': {
+			'flex-direction': iconAlign,
 		},
-		" .uagb-faq-questions-button .uagb-question": {
-			"font-size": generateCSSUnit(
+		' .uagb-faq-questions-button .uagb-question': {
+			'font-size': generateCSSUnit(
 				questionFontSize,
 				questionFontSizeType
 			),
-			"line-height": generateCSSUnit(
+			'line-height': generateCSSUnit(
 				questionLineHeight,
 				questionLineHeightType
 			),
-			"font-family": questionFontFamily,
-			"font-weight": questionFontWeight,
+			'font-family': questionFontFamily,
+			'font-weight': questionFontWeight,
 		},
-		" .uagb-faq-item .uagb-faq-content p": {
-			"font-size": generateCSSUnit(answerFontSize, answerFontSizeType),
-			"line-height": generateCSSUnit(
+		' .uagb-faq-item .uagb-faq-content p': {
+			'font-size': generateCSSUnit( answerFontSize, answerFontSizeType ),
+			'line-height': generateCSSUnit(
 				answerLineHeight,
 				answerLineHeightType
 			),
-			"font-family": answerFontFamily,
-			"font-weight": answerFontWeight,
+			'font-family': answerFontFamily,
+			'font-weight': answerFontWeight,
 			'color': answerTextColor,
 		},
 	};
 
 	tabletSelectors = {
-		" .uagb-faq-questions-button": {
-			"padding-top": generateCSSUnit(
+		' .uagb-faq-questions-button': {
+			'padding-top': generateCSSUnit(
 				vquestionPaddingTablet,
 				questionPaddingTypeTablet
 			),
-			"padding-bottom": generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				questionBottomPaddingTablet,
 				questionPaddingTypeTablet
 			),
-			"padding-right": generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				hquestionPaddingTablet,
 				questionPaddingTypeTablet
 			),
-			"padding-left": generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				questionLeftPaddingTablet,
 				questionPaddingTypeTablet
 			),
 		},
-		" .uagb-faq-content span": {
-			"margin-top": generateCSSUnit(
+		' .uagb-faq-content span': {
+			'margin-top': generateCSSUnit(
 				answerTopPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			"margin-bottom": generateCSSUnit(
+			'margin-bottom': generateCSSUnit(
 				answerBottomPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			"margin-right": generateCSSUnit(
+			'margin-right': generateCSSUnit(
 				answerRightPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			"margin-left": generateCSSUnit(
+			'margin-left': generateCSSUnit(
 				answerLeftPaddingTablet,
 				answerPaddingTypeTablet
 			),
 		},
-		" .uagb-faq-questions-button .uagb-question": {
-			"font-size": generateCSSUnit(
+		' .uagb-faq-questions-button .uagb-question': {
+			'font-size': generateCSSUnit(
 				questionFontSizeTablet,
 				questionFontSizeType
 			),
-			"line-height": generateCSSUnit(
+			'line-height': generateCSSUnit(
 				questionLineHeightTablet,
 				questionLineHeightType
 			),
 		},
-		" .uagb-faq-item .uagb-faq-content p": {
-			"font-size": generateCSSUnit(
+		' .uagb-faq-item .uagb-faq-content p': {
+			'font-size': generateCSSUnit(
 				answerFontSizeTablet,
 				answerFontSizeType
 			),
-			"line-height": generateCSSUnit(
+			'line-height': generateCSSUnit(
 				answerLineHeightTablet,
 				answerLineHeightType
 			),
 		},
-		" .uagb-icon svg": {
-			'width': generateCSSUnit(iconSizeTablet, iconSizeType),
-			'height': generateCSSUnit(iconSizeTablet, iconSizeType),
-			"font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
+		' .uagb-icon svg': {
+			'width': generateCSSUnit( iconSizeTablet, iconSizeType ),
+			'height': generateCSSUnit( iconSizeTablet, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeTablet, iconSizeType ),
 		},
-		" .uagb-icon-active svg": {
-			'width': generateCSSUnit(iconSizeTablet, iconSizeType),
-			'height': generateCSSUnit(iconSizeTablet, iconSizeType),
-			"font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
+		' .uagb-icon-active svg': {
+			'width': generateCSSUnit( iconSizeTablet, iconSizeType ),
+			'height': generateCSSUnit( iconSizeTablet, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeTablet, iconSizeType ),
 		},
 	};
 
 	mobileSelectors = {
-		" .uagb-faq-questions-button": {
-			"padding-top": generateCSSUnit(
+		' .uagb-faq-questions-button': {
+			'padding-top': generateCSSUnit(
 				vquestionPaddingMobile,
 				questionPaddingTypeMobile
 			),
-			"padding-bottom": generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				questionBottomPaddingMobile,
 				questionPaddingTypeMobile
 			),
-			"padding-right": generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				hquestionPaddingMobile,
 				questionPaddingTypeMobile
 			),
-			"padding-left": generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				questionLeftPaddingMobile,
 				questionPaddingTypeMobile
 			),
 		},
-		" .uagb-faq-content span": {
-			"margin-top": generateCSSUnit(
+		' .uagb-faq-content span': {
+			'margin-top': generateCSSUnit(
 				answerTopPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			"margin-bottom": generateCSSUnit(
+			'margin-bottom': generateCSSUnit(
 				answerBottomPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			"margin-right": generateCSSUnit(
+			'margin-right': generateCSSUnit(
 				answerRightPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			"margin-left": generateCSSUnit(
+			'margin-left': generateCSSUnit(
 				answerLeftPaddingMobile,
 				answerPaddingTypeMobile
 			),
 		},
-		" .uagb-faq-questions-button .uagb-question": {
-			"font-size": generateCSSUnit(
+		' .uagb-faq-questions-button .uagb-question': {
+			'font-size': generateCSSUnit(
 				questionFontSizeMobile,
 				questionFontSizeType
 			),
-			"line-height": generateCSSUnit(
+			'line-height': generateCSSUnit(
 				questionLineHeightMobile,
 				questionLineHeightType
 			),
 		},
-		" .uagb-faq-item .uagb-faq-content p": {
-			"font-size": generateCSSUnit(
+		' .uagb-faq-item .uagb-faq-content p': {
+			'font-size': generateCSSUnit(
 				answerFontSizeMobile,
 				answerFontSizeType
 			),
-			"line-height": generateCSSUnit(
+			'line-height': generateCSSUnit(
 				answerLineHeightMobile,
 				answerLineHeightType
 			),
 		},
-		" .uagb-icon svg": {
-			'width': generateCSSUnit(iconSizeMobile, iconSizeType),
-			'height': generateCSSUnit(iconSizeMobile, iconSizeType),
-			"font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
+		' .uagb-icon svg': {
+			'width': generateCSSUnit( iconSizeMobile, iconSizeType ),
+			'height': generateCSSUnit( iconSizeMobile, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeMobile, iconSizeType ),
 		},
-		" .uagb-icon-active svg": {
-			'width': generateCSSUnit(iconSizeMobile, iconSizeType),
-			'height': generateCSSUnit(iconSizeMobile, iconSizeType),
-			"font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
+		' .uagb-icon-active svg': {
+			'width': generateCSSUnit( iconSizeMobile, iconSizeType ),
+			'height': generateCSSUnit( iconSizeMobile, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeMobile, iconSizeType ),
 		},
 	};
 
-	if ("accordion" === layout && true === inactiveOtherItems) {
+	if ( 'accordion' === layout && true === inactiveOtherItems ) {
 		selectors[
-			" .block-editor-block-list__layout .uagb-faq-child__outer-wrap .uagb-faq-content "
+			' .block-editor-block-list__layout .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
-			'display': "none",
+			'display': 'none',
 		};
 	}
-	if ("accordion" === layout && false === inactiveOtherItems) {
+	if ( 'accordion' === layout && false === inactiveOtherItems ) {
 		selectors[
-			" .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active"
+			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active'
 		] = {
-			'display': "inline-block",
+			'display': 'inline-block',
 		};
 		selectors[
-			" .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon"
+			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon'
 		] = {
-			'display': "none",
-		};
-	}
-	if ("accordion" === layout && true === expandFirstItem) {
-		selectors[
-			" .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-content "
-		] = {
-			'display': "block",
-		};
-		selectors[
-			" .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active "
-		] = {
-			'display': "inline-block",
-		};
-		selectors[
-			" .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon "
-		] = {
-			'display': "none",
+			'display': 'none',
 		};
 	}
-	if (true === enableSeparator) {
+	if ( 'accordion' === layout && true === expandFirstItem ) {
 		selectors[
-			".uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content "
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
-			"border-style": "solid",
-			"border-top-color": borderColor,
-			"border-top-width": generateCSSUnit(borderWidth, "px"),
+			'display': 'block',
 		};
 		selectors[
-			".uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover "
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
 		] = {
-			"border-top-color": borderHoverColor,
+			'display': 'inline-block',
+		};
+		selectors[
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon '
+		] = {
+			'display': 'none',
 		};
 	}
-	if ("grid" === layout) {
+	if ( true === enableSeparator ) {
 		selectors[
-			" .block-editor-block-list__layout .uagb-faq-child__outer-wrap "
+			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
-			"text-align": align,
+			'border-style': 'solid',
+			'border-top-color': borderColor,
+			'border-top-width': generateCSSUnit( borderWidth, 'px' ),
 		};
 		selectors[
-			".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "
+			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
 		] = {
-			"grid-template-columns": "repeat(" + columns + ", 1fr)",
+			'border-top-color': borderHoverColor,
+		};
+	}
+	if ( 'grid' === layout ) {
+		selectors[
+			' .block-editor-block-list__layout .uagb-faq-child__outer-wrap '
+		] = {
+			'text-align': align,
+		};
+		selectors[
+			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
+		] = {
+			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
 		};
 		tabletSelectors[
-			".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "
+			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			"grid-template-columns": "repeat(" + tcolumns + ", 1fr)",
+			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		};
 		mobileSelectors[
-			".uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout "
+			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			"grid-template-columns": "repeat(" + mcolumns + ", 1fr)",
+			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		};
 	}
 
-	let stylingCss = "";
-	const id = `.uagb-block-${props.clientId.substr(0, 8)}`;
+	let stylingCss = '';
+	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	stylingCss = generateCSS(selectors, id);
+	stylingCss = generateCSS( selectors, id );
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`${id}.uagb-editor-preview-mode-tablet`,
+		`${ id }.uagb-editor-preview-mode-tablet`,
 		true,
-		"tablet"
+		'tablet'
 	);
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`${id}.uagb-editor-preview-mode-mobile`,
+		`${ id }.uagb-editor-preview-mode-mobile`,
 		true,
-		"mobile"
+		'mobile'
 	);
 
 	return stylingCss;

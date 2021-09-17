@@ -44,7 +44,7 @@ const Render = ( props ) => {
 		const element = document.getElementById(
 			'uagb-timeline-style-' + props.clientId
 		);
-		if ( null != element && 'undefined' !== typeof element ) {
+		if ( null !== element && 'undefined' !== typeof element ) {
 			element.innerHTML = contentTimelineStyle( props );
 		}
 
@@ -80,7 +80,7 @@ const Render = ( props ) => {
 		return (
 			<div className="uagb-timeline__days">
 				{ displayPosts.map( ( post, index ) => {
-					if ( timelinAlignment == 'center' ) {
+					if ( timelinAlignment === 'center' ) {
 						displayInnerDate = true;
 						contentAlignClass = AlignClass(
 							props.attributes,

@@ -97,7 +97,10 @@ function CtaStyle( props ) {
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
-			'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPadding,
+				ctaPaddingUnit
+			),
 			'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
 			'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 		},
@@ -214,10 +217,22 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-bottom': generateCSSUnit( ctaBottomPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-left': generateCSSUnit( ctaLeftPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-right': generateCSSUnit( ctaRightPaddingTablet, tabletCTAPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				ctaTopPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				ctaLeftPaddingTablet,
+				tabletCTAPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				ctaRightPaddingTablet,
+				tabletCTAPaddingUnit
+			),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -256,10 +271,22 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-bottom': generateCSSUnit( ctaBottomPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-left': generateCSSUnit( ctaLeftPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-right': generateCSSUnit( ctaRightPaddingMobile, mobileCTAPaddingUnit ),
+			'padding-top': generateCSSUnit(
+				ctaTopPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				ctaBottomPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				ctaLeftPaddingMobile,
+				mobileCTAPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				ctaRightPaddingMobile,
+				mobileCTAPaddingUnit
+			),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -279,9 +306,19 @@ function CtaStyle( props ) {
 
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

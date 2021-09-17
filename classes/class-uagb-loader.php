@@ -90,6 +90,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @return void
 		 */
 		public function loader() {
+
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
@@ -97,7 +98,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
-			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
+
+			if ( 'yes' === $enable_templates_button ) {
+				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			} else {
+				add_filter( 'ast_block_templates_disable', '__return_true' );
+			}
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
@@ -131,6 +139,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
+			// require_once UAGB_DIR . 'legacy-admin/uagb-legacy-admin.php'.
+			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 		}
 
 		/**

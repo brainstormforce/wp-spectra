@@ -9,14 +9,17 @@
 
 $block_slug = 'uagb/testimonial';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'js_assets'   => array( 'uagb-slick-js' ),
-	'css_assets'  => array( 'uagb-slick-css' ),
-	'attributes'  => array(
+	'doc'              => 'testimonial',
+	'slug'             => '',
+	'admin_categories' => array( 'content', 'social' ),
+	'link'             => 'testimonials',
+	'title'            => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'js_assets'        => array( 'uagb-slick-js' ),
+	'css_assets'       => array( 'uagb-slick-css' ),
+	'attributes'       => array(
 		'classMigrate'            => false,
 		'headingAlign'            => 'center',
 		'companyColor'            => '#888888',

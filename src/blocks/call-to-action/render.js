@@ -17,7 +17,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, setAttributes, attributes, deviceType} = props;
+	const { className, setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const { block_id, ctaPosition, ctaType } = attributes;
@@ -62,21 +62,21 @@ const Render = ( props ) => {
 			>
 				<div className="uagb-cta__left-right-wrap">
 					<div className="uagb-cta__content">
-						{ ctaPosition == 'below-title' && (
+						{ ctaPosition === 'below-title' && (
 							<>
 								{ titleText }
 								{ descText }
 								{ isCta }
 							</>
 						) }
-						{ ctaPosition == 'right' && (
+						{ ctaPosition === 'right' && (
 							<>
 								{ titleText }
 								{ descText }
 							</>
 						) }
 					</div>
-					{ ctaPosition == 'right' && isCta }
+					{ ctaPosition === 'right' && isCta }
 				</div>
 			</div>
 		);
@@ -89,10 +89,10 @@ const Render = ( props ) => {
 					className,
 					'uagb-cta__outer-wrap',
 					`uagb-block-${ block_id }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
-				{ ctaType == 'all' && (
+				{ ctaType === 'all' && (
 					<>
 						<a
 							href="/"

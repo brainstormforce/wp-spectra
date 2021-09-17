@@ -276,56 +276,56 @@ const attributes = {
 		default: 20,
 	},
 	spacingLink: {
-		type: "boolean",
+		type: 'boolean',
 		default: false,
 	},
 	paddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	tabletPaddingBtnUnit: {
-		type: "string",
-		default: "px",
+		type: 'string',
+		default: 'px',
 	},
 	paddingBtnTop: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnBottom: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnLeft: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnRight: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnTopTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnRightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnBottomTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnLeftTablet: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnTopMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnRightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnBottomMobile: {
-		type: "number",
+		type: 'number',
 	},
 	paddingBtnLeftMobile: {
-		type: "number",
+		type: 'number',
 	},
 };
 

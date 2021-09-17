@@ -5,6 +5,7 @@ import styling from '.././styling';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
+import jQuery from 'jquery';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -49,49 +50,57 @@ const PostGridComponent = ( props ) => {
 			paddingLeftMobile,
 		} = props.attributes;
 
-		if (btnVPadding) {
-			if (!paddingBtnTop) {
-				props.setAttributes({ paddingBtnTop: btnVPadding });
+		if ( btnVPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: btnVPadding } );
 			}
-			if (!paddingBtnBottom) {
-				props.setAttributes({ paddingBtnBottom: btnVPadding });
-			}
-		}
-		if (btnHPadding) {
-			if (!paddingBtnRight) {
-				props.setAttributes({ paddingBtnRight: btnHPadding });
-			}
-			if (!paddingBtnLeft) {
-				props.setAttributes({ paddingBtnLeft: btnHPadding });
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: btnVPadding } );
 			}
 		}
-		if (contentPadding) {
-			if (!paddingTop) {
-				props.setAttributes({ paddingTop: contentPadding });
+		if ( btnHPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: btnHPadding } );
 			}
-			if (!paddingBottom) {
-				props.setAttributes({ paddingBottom: contentPadding });
-			}
-			if (!paddingRight) {
-				props.setAttributes({ paddingRight: contentPadding });
-			}
-			if (!paddingLeft) {
-				props.setAttributes({ paddingLeft: contentPadding });
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: btnHPadding } );
 			}
 		}
-		
-		if (contentPaddingMobile) {
-			if (!paddingTopMobile) {
-				props.setAttributes({ paddingTopMobile: contentPaddingMobile });
+		if ( contentPadding ) {
+			if ( ! paddingTop ) {
+				props.setAttributes( { paddingTop: contentPadding } );
 			}
-			if (!paddingBottomMobile) {
-				props.setAttributes({ paddingBottomMobile: contentPaddingMobile });
+			if ( ! paddingBottom ) {
+				props.setAttributes( { paddingBottom: contentPadding } );
 			}
-			if (!paddingRightMobile) {
-				props.setAttributes({ paddingRightMobile: contentPaddingMobile });
+			if ( ! paddingRight ) {
+				props.setAttributes( { paddingRight: contentPadding } );
 			}
-			if (!paddingLeftMobile) {
-				props.setAttributes({ paddingLeftMobile: contentPaddingMobile });
+			if ( ! paddingLeft ) {
+				props.setAttributes( { paddingLeft: contentPadding } );
+			}
+		}
+
+		if ( contentPaddingMobile ) {
+			if ( ! paddingTopMobile ) {
+				props.setAttributes( {
+					paddingTopMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingBottomMobile ) {
+				props.setAttributes( {
+					paddingBottomMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingRightMobile ) {
+				props.setAttributes( {
+					paddingRightMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingLeftMobile ) {
+				props.setAttributes( {
+					paddingLeftMobile: contentPaddingMobile,
+				} );
 			}
 		}
 		const $style = document.createElement( 'style' );
@@ -214,12 +223,12 @@ export default compose(
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base === null
 						? currentTax.taxonomy[ taxonomyType ].name
 						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
-			if ( '' != taxonomyType ) {
+			if ( '' !== taxonomyType ) {
 				if (
 					'undefined' !== typeof currentTax.terms &&
 					'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -243,7 +252,7 @@ export default compose(
 		category.push( temp );
 		const catlenght = categoriesList.length;
 		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id == temp ) {
+			if ( categoriesList[ i ].id === temp ) {
 				if ( categoriesList[ i ].child.length !== 0 ) {
 					categoriesList[ i ].child.forEach( ( element ) => {
 						category.push( element );

@@ -4,13 +4,13 @@
 
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
-import Range from "@Components/range/Range.js";
-import ResponsiveSlider from "@Components/responsive-slider";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
-import MultiButtonsControl from "@Components/multi-buttons-control";
+} from '@Components/inspector-tabs/InspectorTab.js';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -19,14 +19,12 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-} from '@wordpress/components';
+import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		align,
@@ -57,21 +55,16 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody
-				initialOpen={ true }
-			>
+			<PanelBody initialOpen={ true }>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__(
-						"Layout",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: social_layout,
-						label: "social_layout",
-					}}
+						label: 'social_layout',
+					} }
 					className="uagb-multi-button-alignment-control"
-					options={[
+					options={ [
 						{
 							value: 'horizontal',
 							label: __(
@@ -79,8 +72,8 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							),
 							tooltip: __(
-								"Horizontal",
-								"ultimate-addons-for-gutenberg"
+								'Horizontal',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
@@ -90,27 +83,27 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							),
 							tooltip: __(
-								"Vertical",
-								"ultimate-addons-for-gutenberg"
+								'Vertical',
+								'ultimate-addons-for-gutenberg'
 							),
 						},
-					]}
-					showIcons={false}
+					] }
+					showIcons={ false }
 				/>
-				{ 'horizontal' == social_layout && (
+				{ 'horizontal' === social_layout && (
 					<>
 						<MultiButtonsControl
-							setAttributes={setAttributes}
-							label={__(
-								"Stack On",
-								"ultimate-addons-for-gutenberg"
-							)}
-							data={{
+							setAttributes={ setAttributes }
+							label={ __(
+								'Stack On',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
 								value: stack,
-								label: "stack",
-							}}
+								label: 'stack',
+							} }
 							className="uagb-multi-button-alignment-control"
-							options={[
+							options={ [
 								{
 									value: 'none',
 									label: __(
@@ -118,8 +111,8 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 									tooltip: __(
-										"None",
-										"ultimate-addons-for-gutenberg"
+										'None',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
@@ -129,8 +122,8 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 									tooltip: __(
-										"Desktop",
-										"ultimate-addons-for-gutenberg"
+										'Desktop',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
@@ -140,8 +133,8 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 									tooltip: __(
-										"Tablet",
-										"ultimate-addons-for-gutenberg"
+										'Tablet',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
 								{
@@ -151,12 +144,12 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									),
 									tooltip: __(
-										"Mobile",
-										"ultimate-addons-for-gutenberg"
+										'Mobile',
+										'ultimate-addons-for-gutenberg'
 									),
 								},
-							]}
-							showIcons={false}
+							] }
+							showIcons={ false }
 							help={ __(
 								'Note: Choose on what breakpoint the Icons will stack.',
 								'ultimate-addons-for-gutenberg'
@@ -175,76 +168,78 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 			>
 				<ResponsiveSlider
-					label={__(
-						"Size",
-						"ultimate-addons-for-gutenberg"
-					)}
-					data={{
+					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						desktop: {
 							value: size,
-							label: "size",
+							label: 'size',
 						},
 						tablet: {
 							value: sizeTablet,
-							label: "sizeTablet",
+							label: 'sizeTablet',
 						},
 						mobile: {
 							value: sizeMobile,
-							label: "sizeMobile",
+							label: 'sizeMobile',
 						},
-					}}
-					min={0}
-					max={500}
-					unit={{
+					} }
+					min={ 0 }
+					max={ 500 }
+					unit={ {
 						value: sizeType,
-						label: "sizeType",
-					}}
-					setAttributes={setAttributes}
+						label: 'sizeType',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<Range
-					label={__(
-						"Background Size",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={bgSize}
-					onChange={(value) =>
-						setAttributes({ bgSize: value })
-					}
-					min={0}
-					max={500}
-					displayUnit={false}
-					help={ __( "Note: Background Size option is useful when one adds background color to the icons.",'ultimate-addons-for-gutenberg' ) }
+					label={ __(
+						'Background Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ bgSize }
+					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
+					help={ __(
+						'Note: Background Size option is useful when one adds background color to the icons.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				<Range
-					label={__(
-						"Border Radius",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={borderRadius}
-					onChange={(value) =>
-						setAttributes({ borderRadius: value })
+					label={ __(
+						'Border Radius',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ borderRadius }
+					onChange={ ( value ) =>
+						setAttributes( { borderRadius: value } )
 					}
-					min={0}
-					max={500}
-					displayUnit={false}
-					help={ __( "Note: Border Radius option is useful when one adds background color to the icons.",'ultimate-addons-for-gutenberg' ) }
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
+					help={ __(
+						'Note: Border Radius option is useful when one adds background color to the icons.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				<Range
-					label={__(
-						"Gap between Items",
-						"ultimate-addons-for-gutenberg"
-					)}
-					setAttributes={setAttributes}
-					value={gap}
-					onChange={(value) =>
-						setAttributes({ gap: value })
-					}
-					min={0}
-					max={100}
-					displayUnit={false}
-					help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.",'ultimate-addons-for-gutenberg' ) }
+					label={ __(
+						'Gap between Items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ gap }
+					onChange={ ( value ) => setAttributes( { gap: value } ) }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					help={ __(
+						'Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 			</PanelBody>
 		);
@@ -254,11 +249,18 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
 			<InspectorControls>
-			<InspectorTabs>
-				<InspectorTab {...UAGTabs.general}>{ generalSettings() }</InspectorTab>
-				<InspectorTab {...UAGTabs.style}>{ spacingSettings() }</InspectorTab>
-				<InspectorTab {...UAGTabs.advance} parentProps = {props}></InspectorTab>
-			</InspectorTabs>
+				<InspectorTabs>
+					<InspectorTab { ...UAGTabs.general }>
+						{ generalSettings() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ spacingSettings() }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 		</Suspense>
 	);

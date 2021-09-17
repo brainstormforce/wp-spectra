@@ -9,12 +9,15 @@
 
 $block_slug = 'uagb/icon-list';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Icon List', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'attributes'  => array(
+	'doc'              => 'icon-list',
+	'slug'             => '',
+	'admin_categories' => array( 'creative', 'social' ),
+	'link'             => 'icon-list',
+	'title'            => __( 'Icon List', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'attributes'       => array(
 		'classMigrate'     => false,
 		'childMigrate'     => false,
 		'align'            => 'left',

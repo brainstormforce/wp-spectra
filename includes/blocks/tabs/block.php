@@ -9,13 +9,16 @@
 
 $block_slug = 'uagb/tabs';
 $block_data = array(
-	'slug'        => '',
-	'title'       => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
-	'description' => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
-	'default'     => true,
-	'extension'   => false,
-	'js_assets'   => array( 'uagb-tabs-js' ),
-	'attributes'  => array(
+	'slug'             => '',
+	'admin_categories' => array( 'content' ),
+	'link'             => 'tabs',
+	'doc'              => 'tabs-block',
+	'title'            => __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
+	'description'      => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
+	'default'          => true,
+	'extension'        => false,
+	'js_assets'        => array( 'uagb-tabs-js' ),
+	'attributes'       => array(
 		'tabHeaders'                  => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 		'tabAlign'                    => 'left',
 		'tabActive'                   => 0,

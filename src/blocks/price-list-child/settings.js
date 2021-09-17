@@ -4,13 +4,13 @@ import React from 'react';
 import {
 	AlignmentToolbar,
 	BlockControls,
-	InspectorControls
+	InspectorControls,
 } from '@wordpress/block-editor';
-import UAGImage from "@Components/image";
-import InspectorTabs from "@Components/inspector-tabs/InspectorTabs.js";
+import UAGImage from '@Components/image';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
-} from "@Components/inspector-tabs/InspectorTab.js";
+} from '@Components/inspector-tabs/InspectorTab.js';
 import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
@@ -49,7 +49,7 @@ const Settings = ( props ) => {
 	const blockControls = () => {
 		return (
 			<>
-				{ imagePosition == 'top' && (
+				{ imagePosition === 'top' && (
 					<BlockControls key="controls">
 						<AlignmentToolbar
 							value={ headingAlign }
@@ -67,24 +67,22 @@ const Settings = ( props ) => {
 		<>
 			{ blockControls() }
 			<InspectorControls>
-				<InspectorTabs tabs={["general", "advance"]}>
-					<InspectorTab {...UAGTabs.general}>
-						<PanelBody
-							initialOpen = {true}
-						>
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						<PanelBody initialOpen={ true }>
 							<p className="uagb-settings-notice">
 								{ __(
 									'For the common styling options please select the Parent Block of this Price List Item.'
 								) }
 							</p>
 							<UAGImage
-								onSelectImage={onSelectRestImage}
-								backgroundImage={image}
-								onRemoveImage={onRemoveRestImage}
+								onSelectImage={ onSelectRestImage }
+								backgroundImage={ image }
+								onRemoveImage={ onRemoveRestImage }
 							/>
 						</PanelBody>
 					</InspectorTab>
-					<InspectorTab {...UAGTabs.advance}></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

@@ -47,7 +47,7 @@ const Render = ( props ) => {
 				`${ noticeDismiss }`,
 				`uagb-inline_notice__align-${ noticeAlignment }`,
 				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			{ imageIconHtml }
