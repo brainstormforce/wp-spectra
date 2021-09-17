@@ -107,7 +107,7 @@ const ContentTimelineComponent = ( props ) => {
 				} else if ( 'right' === block.attributes.timelinAlignment ) {
 					alignClass = 'uagb-timeline__widget uagb-timeline__right';
 				} else if ( 'center' === block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) { // eslint-disable-line  eqeqeq
+					if ( key % 2 === 0 ) { 
 						alignClass =
 							'uagb-timeline__widget uagb-timeline__right';
 					} else {
@@ -124,7 +124,7 @@ const ContentTimelineComponent = ( props ) => {
 					dayAlignClass =
 						'uagb-timeline__day-new uagb-timeline__day-right';
 				} else if ( 'center' === block.attributes.timelinAlignment ) {
-					if ( key % 2 == '0' ) { // eslint-disable-line  eqeqeq
+					if ( key % 2 === 0 ) { 
 						dayAlignClass =
 							'uagb-timeline__day-new uagb-timeline__day-right';
 					} else {

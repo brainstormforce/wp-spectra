@@ -10,7 +10,7 @@ function DayAlignClass( attributes, index_val ) {
 	} else if ( 'right' === attributes.timelinAlignment ) {
 		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
 	} else if ( 'center' === attributes.timelinAlignment ) {
-		if ( index_val % 2 == '0' ) { // eslint-disable-line eqeqeq
+		if ( index_val % 2 === 0 ) { 
 			dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
 		} else {
 			dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
