@@ -80,7 +80,7 @@ function styling( props ) {
 	};
 
 	selectors[
-		''
+		'.uagb-social-share__outer-wrap'
 	] = {
 		'justify-content': alignment,
 		'-webkit-box-pack': alignment,
