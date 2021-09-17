@@ -70,6 +70,7 @@ if ( 'infinite' === $attr['paginationType'] ) {
 	$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'] = array(
 		'color'            => $attr['paginationTextHoverColor'],
 		'background-color' => $attr['paginationBgHoverColor'],
+		'border-color'     => $attr['paginationMasonryBorderHColor'],
 	);
 	$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
 		'padding-top'    => UAGB_Helper::get_css_value(
