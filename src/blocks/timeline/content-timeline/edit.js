@@ -200,7 +200,6 @@ const ContentTimelineComponent = ( props ) => {
 				lastItem = parent_top + timelineEndIcon.top;
 			}
 
-			let num = 0;
 			const elementEnd = lastItem + 20;
 
 			const connectorHeight =
@@ -243,7 +242,6 @@ const ContentTimelineComponent = ( props ) => {
 					lineInner.height(
 						viewportHeightHalf - Math.abs( photoViewportOffsetTop )
 					);
-					++num; // eslint-disable-line no-unused-vars
 				} else {
 					lineInner.height(
 						viewportHeightHalf + photoViewportOffsetTop
