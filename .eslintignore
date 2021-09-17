@@ -12,3 +12,8 @@ node_modules
 vendor
 *.css
 *.scss
+
+**/deprecated/**
+legacy-admin/**
+admin-core/**
+src/blocks/demo-control-block/**

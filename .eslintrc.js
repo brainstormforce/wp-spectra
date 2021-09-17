@@ -5,6 +5,7 @@ module.exports = {
 	rules: {
 		'camelcase': 'off',
 		'prettier/prettier': 'off',
+		'@wordpress/no-global-event-listener': 'off',
 		'quotes': [ 'error', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
 		'quote-props': [ 'error', 'consistent-as-needed' ],
 	},
