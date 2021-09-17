@@ -52,7 +52,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	}
 }
-@media (min-width: 1366px){
+@media (min-width: 1920px){
 	.uag-version-control__elements,
 	.uag-global-settings-metabox .uag-starter-template__button {
 		grid-template-columns: 1fr 1fr 1fr;
