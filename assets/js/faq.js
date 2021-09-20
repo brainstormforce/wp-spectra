@@ -3,7 +3,7 @@ function slideUp( target, duration ) {
 	target.style.transitionDuration = duration + 'ms';
 	target.style.boxSizing = 'border-box';
 	target.style.height = target.offsetHeight + 'px';
-	target.offsetHeight;
+	target.offsetHeight; // eslint-disable-line no-unused-expressions
 	target.style.overflow = 'hidden';
 	target.style.height = 0;
 	target.style.paddingTop = 0;
@@ -24,6 +24,7 @@ function slideUp( target, duration ) {
 }
 
 function slideDown( target, duration ) {
+	
 	target.style.removeProperty( 'display' );
 	let display = window.getComputedStyle( target ).display;
 
@@ -37,7 +38,7 @@ function slideDown( target, duration ) {
 	target.style.paddingBottom = 0;
 	target.style.marginTop = 0;
 	target.style.marginBottom = 0;
-	target.offsetHeight;
+	target.offsetHeight; // eslint-disable-line no-unused-expressions
 	target.style.boxSizing = 'border-box';
 	target.style.transitionProperty = 'height, margin, padding';
 	target.style.transitionDuration = duration + 'ms';
@@ -52,13 +53,6 @@ function slideDown( target, duration ) {
 		target.style.removeProperty( 'transition-duration' );
 		target.style.removeProperty( 'transition-property' );
 	}, duration );
-}
-
-function slideToggle( target, duration ) {
-	if ( window.getComputedStyle( target ).display === 'none' ) {
-		return slideDown( target, duration );
-	}
-	return slideUp( target, duration );
 }
 
 function setupFAQ() {
@@ -94,7 +88,7 @@ function setupFAQ() {
 			);
 		}
 	} else {
-		for ( var item = 0; item < expandFirstelements.length; item++ ) {
+		for ( let item = 0; item < expandFirstelements.length; item++ ) {
 			if (
 				true ===
 				expandFirstelements[ item ].classList.contains(
@@ -118,7 +112,7 @@ function setupFAQ() {
 			}
 		}
 	}
-	for ( var item = 0; item < inactiveOtherelements.length; item++ ) {
+	for ( let item = 0; item < inactiveOtherelements.length; item++ ) {
 		if (
 			true ===
 			inactiveOtherelements[ item ].classList.contains(
@@ -157,14 +151,14 @@ window.addEventListener( 'load', function () {
 		'uagb-faq-layout-accordion'
 	);
 	for ( let item = 0; item < accordionElements.length; item++ ) {
-		var questionButtons = accordionElements[ item ].querySelectorAll(
+		const questionButtons = accordionElements[ item ].querySelectorAll(
 			'.uagb-faq-questions-button'
 		);
 		const faqItems = accordionElements[ item ].querySelectorAll(
 			'.uagb-faq-item'
 		);
 
-		for ( var button = 0; button < questionButtons.length; button++ ) {
+		for ( let button = 0; button < questionButtons.length; button++ ) {
 			questionButtons[ button ].addEventListener(
 				'click',
 				function ( e ) {
@@ -173,7 +167,7 @@ window.addEventListener( 'load', function () {
 			);
 		}
 
-		for ( var button = 0; button < faqItems.length; button++ ) {
+		for ( let button = 0; button < faqItems.length; button++ ) {
 			faqItems[ button ].addEventListener( 'keyup', function ( e ) {
 				faqClick( e, this, questionButtons );
 			} );
@@ -204,7 +198,7 @@ function faqClick( e, faqItem, questionButtons ) {
 				500
 			);
 			if ( 'true' === faqToggle ) {
-				var questionButtons = parent.querySelectorAll(
+				questionButtons = parent.querySelectorAll(
 					'.uagb-faq-content'
 				);
 				for (

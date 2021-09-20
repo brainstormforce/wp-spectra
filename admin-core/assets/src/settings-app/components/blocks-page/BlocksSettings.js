@@ -97,7 +97,7 @@ function BlocksSettings() {
 		} ).then( ( data ) => { setstatus(true);
 		} );
 	};
-	let disabledClass = checkCategory !== 'all' ? 'disabled' : '';
+	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
 
 	return (
 		<>

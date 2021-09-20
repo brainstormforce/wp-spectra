@@ -277,7 +277,10 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
-			wp_delete_file( $combined_path );
+
+			if ( file_exists( $combined_path ) ) {
+				wp_delete_file( $combined_path );
+			}
 
 			$style = '';
 
@@ -292,9 +295,13 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$c_block = 'gf-designer';
 				}
 
-				$style .= $wp_filesystem->get_contents( UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css' );
+				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
 
+				if ( file_exists( $style_file ) ) {
+					$style .= $wp_filesystem->get_contents( $style_file );
+				}
 			}
+
 			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
