@@ -54,7 +54,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {
+		} ).then( ( data ) => {  setstatus(true);
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
@@ -85,7 +85,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {
+		} ).then( ( data ) => { setstatus(true);
 		} );
 	};
 	let disabledClass = checkCategory !== 'all' ? 'disabled' : '';
