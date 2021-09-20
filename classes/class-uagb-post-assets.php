@@ -438,7 +438,8 @@ class UAGB_Post_Assets {
 		if ( empty( $this->stylesheet ) ) {
 			return;
 		}
-
+		UAGB_Admin_Helper::create_specific_stylesheet(); // create stylesheet.
+		UAGB_Scripts_Utils::enqueue_blocks_styles(); // Style.
 		echo '<style id="uagb-style-frontend-' . $this->post_id . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
 
@@ -554,7 +555,7 @@ class UAGB_Post_Assets {
 		// Add static css here.
 		$block_css_arr = UAGB_Config::get_block_assets_css();
 
-		if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
+		if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) && 'enabled' === $this->file_generation ) {
 			$common_css = array(
 				'common' => $this->get_block_static_css( $block_css_arr[ $name ]['name'] ),
 			);
@@ -595,13 +596,15 @@ class UAGB_Post_Assets {
 					$inner_assets    = $this->get_block_css_and_js( $inner_block );
 					$inner_block_css = $inner_assets['css'];
 
-					$css_common  = ( isset( $css['common'] ) ? $css['common'] : '' );
 					$css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
 					$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
 					$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
 
-					if ( isset( $inner_block_css['common'] ) ) {
-						$css['common'] = $css_common . $inner_block_css['common'];
+					if ( 'enabled' === $this->file_generation ) {
+						$css_common = ( isset( $css['common'] ) ? $css['common'] : '' );
+						if ( isset( $inner_block_css['common'] ) ) {
+							$css['common'] = $css_common . $inner_block_css['common'];
+						}
 					}
 
 					if ( isset( $inner_block_css['desktop'] ) ) {
