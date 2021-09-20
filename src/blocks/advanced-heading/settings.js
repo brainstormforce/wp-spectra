@@ -504,8 +504,8 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingPanel() }
-						{ subheadingPanel() }
 						{ seperatorSettings() }
+						{ subheadingPanel() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
