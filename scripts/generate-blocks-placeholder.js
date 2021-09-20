@@ -39,7 +39,8 @@ registerBlockType( '${ blockSlug }', { title: ${ blockTitle } } );`;
 
 fs.writeFile( dest_file, registerBlocks, ( err ) => {
 	if ( err ) {
-		return console.log( err );
+		console.log( err ); // eslint-disable-line
+		return
 	}
 
 	console.log( `Sucessfully written block registration placeholder ${ dest_file }` ) // eslint-disable-line

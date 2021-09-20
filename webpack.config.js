@@ -11,6 +11,7 @@ const wp_rules = defaultConfig.module.rules.filter( function ( item ) {
 		item.exclude = [ /node_modules/, /editor/ ];
 		return true;
 	}
+	return false;
 } );
 
 module.exports = {

@@ -3,13 +3,13 @@
 	let loadStatus = true;
 	UAGBPostCarousel = {
 		_setHeight( scope ) {
-			let post_wrapper = scope.find( '.slick-slide' ),
-				post_active = scope.find( '.slick-slide.slick-active' ),
-				max_height = -1,
+			const post_wrapper = scope.find( '.slick-slide' ),
+				post_active = scope.find( '.slick-slide.slick-active' );
+			let	max_height = -1,
 				wrapper_height = -1,
 				post_active_height = -1;
 
-			post_active.each( function ( i ) {
+			post_active.each( function () {
 				const this_height = $( this ).outerHeight(),
 					blog_post = $( this ).find( '.uagb-post__inner-wrap' ),
 					blog_post_height = blog_post.outerHeight();
@@ -24,7 +24,7 @@
 				}
 			} );
 
-			post_active.each( function ( i ) {
+			post_active.each( function () {
 				const selector = $( this ).find( '.uagb-post__inner-wrap' );
 				selector.animate(
 					{ height: max_height },
@@ -58,7 +58,7 @@
 			const post_wrapper = scope.find( '.slick-slide' ),
 				post_active = scope.find( '.slick-active' );
 
-			post_active.each( function ( i ) {
+			post_active.each( function () {
 				const selector = $( this ).find( '.uagb-post__inner-wrap' );
 				selector.css( 'height', 'auto' );
 			} );
@@ -92,7 +92,7 @@
 							page_number: count,
 						};
 						total = $scope.data( 'total' );
-						if ( true == loadStatus ) {
+						if ( true === loadStatus ) {
 							if ( count <= total ) {
 								loader.show();
 								UAGBPostMasonry._callAjax(
@@ -114,7 +114,7 @@
 				$( document ).on(
 					'click',
 					'.uagb-post-pagination-button',
-					function ( e ) {
+					function () {
 						$scope = $( this ).closest( '.uagb-post-grid' );
 						total = $scope.data( 'total' );
 						const $args = {
@@ -122,7 +122,7 @@
 							page_number: count,
 						};
 						$scope.find( '.uagb-post__load-more-wrap' ).hide();
-						if ( true == loadStatus ) {
+						if ( true === loadStatus ) {
 							if ( count <= total ) {
 								loader.show();
 								UAGBPostMasonry._callAjax(
@@ -163,7 +163,7 @@
 						$scope.find( '.uagb-post__load-more-wrap' ).show();
 					}
 
-					if ( count == $obj.total ) {
+					if ( count === $obj.total ) {
 						$scope.find( '.uagb-post__load-more-wrap' ).hide();
 					}
 				},

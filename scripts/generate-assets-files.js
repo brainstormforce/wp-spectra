@@ -17,9 +17,11 @@ sass.render(
 				paths.pluginDist + '/common-editor.css',
 				result.css,
 				function ( err ) {
-					if ( err ) throw err;
+					if ( err ) {
+						throw err;
+					}
 
-					console.log( '\n\nCommon editor generated!' );
+					console.log( '\n\nCommon editor generated!' ); // eslint-disable-line
 				}
 			);
 		}
@@ -27,7 +29,7 @@ sass.render(
 );
 
 //Generate individual block's css files
-fs.readdir( paths.pluginSrc + '/blocks', function ( error, items ) {
+fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
 	for ( let index = 0; index < items.length; index++ ) {
 		sass.render(
 			{
@@ -62,12 +64,12 @@ fs.readdir( paths.pluginSrc + '/blocks', function ( error, items ) {
 		);
 	}
 
-	if ( error ) {
-		console.error( error );
+	if ( readError ) {
+		console.error( readError ); // eslint-disable-line
 		return;
 	}
 
-	console.log( "\n\nIndividaul block's css files Generated Successfully!" );
+	console.log( "\n\nIndividaul block's css files Generated Successfully!" ); // eslint-disable-line
 } );
 
 // Copy generated style file content to custom style file
@@ -83,11 +85,9 @@ const old_dest = paths.pluginDist + '/blocks.style.css';
 fs.copyFile( src, old_dest, ( error ) => {
 	// incase of any error
 	if ( error ) {
-		console.error( error );
+		console.error( error ); // eslint-disable-line
 		return;
 	}
 
-	console.log(
-		'\n\nStyle in deprecated file blocks.style.css - Copied Successfully!'
-	);
+	console.log( '\n\nStyle in deprecated file blocks.style.css - Copied Successfully!' ); // eslint-disable-line
 } );
