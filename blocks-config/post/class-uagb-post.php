@@ -1695,7 +1695,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
-			
 
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );

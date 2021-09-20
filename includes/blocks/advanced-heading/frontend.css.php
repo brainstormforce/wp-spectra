@@ -36,7 +36,7 @@ $selectors = array(
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 
 if ( 'none' !== $seperatorStyle ) {
-	$selectors['.wp-block-uagb-advanced-heading .uagb-separator']       = array(
+	$selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 		'border-top-style' => $attr['seperatorStyle'],
 		'border-top-width' => UAGB_Helper::get_css_value( $attr['separatorHeight'], 'px' ),
 		'width'            => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
