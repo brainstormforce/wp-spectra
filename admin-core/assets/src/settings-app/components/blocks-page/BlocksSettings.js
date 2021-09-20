@@ -27,7 +27,7 @@ function BlocksSettings() {
 	};
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault()
-
+        options.enable_block_condition = 'enabled';
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
@@ -60,7 +60,7 @@ function BlocksSettings() {
 		e.preventDefault();
 
 		window.uagUnsavedChanges = true;
-
+		options.enable_block_condition = 'disabled';
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
