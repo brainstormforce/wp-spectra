@@ -61,7 +61,6 @@ const Settings = ( props ) => {
 		separatorSpace,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts,
-		separatorHoverColor,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -420,56 +419,18 @@ const Settings = ( props ) => {
 							max={ 20 }
 							displayUnit={ false }
 						/>
-						<UAGTabsControl
-							tabs={ [
-								{
-									name: 'normal',
-									title: __(
-										'Normal',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'hover',
-									title: __(
-										'Hover',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							normal={
-								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										separatorColor ? separatorColor : ''
-									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											separatorColor: value,
-										} )
-									}
-								/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								separatorColor ? separatorColor : ''
 							}
-							hover={
-								<AdvancedPopColorControl
-									label={ __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									) }
-									colorValue={
-										separatorHoverColor
-											? separatorHoverColor
-											: ''
-									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											separatorHoverColor: value,
-										} )
-									}
-								/>
+							onColorChange={ ( value ) =>
+								setAttributes( {
+									separatorColor: value,
+								} )
 							}
 						/>
 					</>

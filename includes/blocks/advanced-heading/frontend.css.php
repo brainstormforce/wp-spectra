@@ -43,9 +43,6 @@ if ( 'none' !== $seperatorStyle ) {
 		'border-color'     => $attr['separatorColor'],
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], 'px' ),
 	);
-	$selectors['.wp-block-uagb-advanced-heading .uagb-separator:hover'] = array(
-		'border-color' => $attr['separatorHoverColor'],
-	);
 }
 
 $combined_selectors = array(
