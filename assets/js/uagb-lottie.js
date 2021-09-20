@@ -1,4 +1,4 @@
-( function ( $ ) {
+( function () {
 	UAGBLottie = {
 		_run( attr, id ) {
 			const animation = bodymovin.loadAnimation( {
