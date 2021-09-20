@@ -22,7 +22,7 @@ function TemplatesButton() {
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
-		if ( enableTemplate == 'no' ) {
+		if ( enableTemplate === 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
@@ -67,7 +67,7 @@ function TemplatesButton() {
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
-								enableTemplate == 'yes'
+								enableTemplate === 'yes'
 									? __(
 											'Disable',
 											'ultimate-addons-for-gutenberg'
@@ -83,7 +83,7 @@ function TemplatesButton() {
 						<span
 							className={ `uag-control__status-${ enableTemplate }` }
 						>
-							{ enableTemplate == 'yes'
+							{ enableTemplate === 'yes'
 								? __(
 										'Enabled ',
 										'ultimate-addons-for-gutenberg'

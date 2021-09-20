@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
 import React, { useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
-function AssetsGeneration( props ) {
+function AssetsGeneration( ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	const [ enableFileGeneration, setEnableFileGeneration ] = useState(
@@ -43,7 +43,7 @@ function AssetsGeneration( props ) {
 	const handleAssetGeneration = () => {
 		setAssetGenState( true );
 		let assetStatus;
-		if ( enableFileGeneration == 'disabled' ) {
+		if ( enableFileGeneration === 'disabled' ) {
 			assetStatus = 'enabled';
 		} else {
 			assetStatus = 'disabled';
@@ -101,7 +101,7 @@ function AssetsGeneration( props ) {
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
-								enableFileGeneration == 'enabled'
+								enableFileGeneration === 'enabled'
 									? __(
 											'Disable',
 											'ultimate-addons-for-gutenberg'
@@ -121,7 +121,7 @@ function AssetsGeneration( props ) {
 									: 'no'
 							}` }
 						>
-							{ enableFileGeneration == 'enabled'
+							{ enableFileGeneration === 'enabled'
 								? __(
 										'Enabled',
 										'ultimate-addons-for-gutenberg'

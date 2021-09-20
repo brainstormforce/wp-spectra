@@ -88,7 +88,7 @@ function UserInfoBox() {
 			.installTheme( {
 				slug: 'astra',
 			} )
-			.then( function ( e ) {
+			.then( function (  ) {
 				setsinstallingTheme( false );
 				setsinstallingThemeText( 'Installed Astra!' );
 				window.location.reload();
