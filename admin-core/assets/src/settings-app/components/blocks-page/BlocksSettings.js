@@ -28,6 +28,11 @@ function BlocksSettings() {
 	};
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault()
+        dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'enabled',
+		} );
         setstatus(false);
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
@@ -61,7 +66,11 @@ function BlocksSettings() {
 		e.preventDefault();
         setstatus(false);
 		window.uagUnsavedChanges = true;
-
+		dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'disabled',
+		} );
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
