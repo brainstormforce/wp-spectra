@@ -134,7 +134,7 @@ function AssetsGeneration( ) {
 								src={
 									uag_react.plugin_dir +
 									'admin-core/assets/images/check.svg'
-								}
+								} alt = ''
 							/>
 						</span>
 					</div>

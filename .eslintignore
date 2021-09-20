@@ -15,5 +15,4 @@ vendor
 
 **/deprecated/**
 legacy-admin/**
-admin-core/**
 src/blocks/demo-control-block/**

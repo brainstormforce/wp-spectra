@@ -194,7 +194,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( event );
+			wp.updates.requestFilesystemCredentials( );
 
 			$document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
@@ -205,7 +205,7 @@ function UserInfoBox() {
 			.installPlugin( {
 				slug: 'astra-sites',
 			} )
-			.then( function ( e ) {
+			.then( function ( ) {
 				setsinstallingPlugin( false );
 				setsinstallingPluginText( 'Installed Starter Template!' );
 				window.location.reload();
