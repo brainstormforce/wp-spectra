@@ -55,18 +55,17 @@ const InspectorTabs = ( props ) => {
 
 		// component will unmount
 		return () => {
-			sidebarPanel && sidebarPanel.removeAttribute( 'data-uagb-tab' );
+			return sidebarPanel && sidebarPanel.removeAttribute( 'data-uagb-tab' );
 		};
 	}, [] );
 
 	useEffect( () => {
-		sidebarPanel &&
-			sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
+		return sidebarPanel && sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
 	}, [ defaultTab ] );
 
 	const _onTabChange = ( tab ) => {
 		setCurrentTab( tab );
-		sidebarPanel && sidebarPanel.setAttribute( 'data-uagb-tab', tab );
+		return sidebarPanel && sidebarPanel.setAttribute( 'data-uagb-tab', tab );
 	};
 
 	return (

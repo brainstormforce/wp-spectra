@@ -42,7 +42,6 @@ UAGBTabs = {
 
 		const mainWrapClass = e.currentTarget.mainWrapClass;
 		const tabId = tabName.getAttribute( 'data-tab' );
-		const mainWrap = document.querySelector( mainWrapClass );
 		const tabPanel = selectedLi.closest( '.uagb-tabs__panel' );
 		const tabSelectedBody = document.querySelector(
 			mainWrapClass +
@@ -71,7 +70,7 @@ UAGBTabs = {
 			.classList.remove( 'uagb-tabs-body__active' );
 
 		// Set aria-selected attribute as flase for old active tab.
-		for ( var i = 0; i < allLi.length; i++ ) {
+		for ( let i = 0; i < allLi.length; i++ ) {
 			allLi[ i ].setAttribute( 'aria-selected', false );
 		}
 
@@ -88,7 +87,7 @@ UAGBTabs = {
 		tabSelectedBody.setAttribute( 'aria-hidden', false );
 
 		// Set aria-hidden attribute true for all unselected tab body.
-		for ( var i = 0; i < tabUnselectedBody.length; i++ ) {
+		for ( let i = 0; i < tabUnselectedBody.length; i++ ) {
 			tabUnselectedBody[ i ].setAttribute( 'aria-hidden', true );
 		}
 	},
@@ -139,7 +138,7 @@ UAGBTabs = {
 				.classList.remove( 'uagb-tabs-body__active' );
 
 			// Set aria-selected attribute as flase for old active tab.
-			for ( var i = 0; i < allLi.length; i++ ) {
+			for ( let i = 0; i < allLi.length; i++ ) {
 				allLi[ i ].setAttribute( 'aria-selected', false );
 			}
 
@@ -156,7 +155,7 @@ UAGBTabs = {
 			tabSelectedBody.setAttribute( 'aria-hidden', false );
 
 			// Set aria-hidden attribute true for all unselected tab body.
-			for ( var i = 0; i < tabUnselectedBody.length; i++ ) {
+			for ( let i = 0; i < tabUnselectedBody.length; i++ ) {
 				tabUnselectedBody[ i ].setAttribute( 'aria-hidden', true );
 			}
 		}

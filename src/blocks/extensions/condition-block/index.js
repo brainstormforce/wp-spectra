@@ -210,7 +210,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-if ( '1' === enableConditions ) {
+if ( 'enabled' === enableConditions ) {
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',

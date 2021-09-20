@@ -12,7 +12,7 @@
 			$phoneinput = $form.find( '.uagb-forms-phone-input' );
 			$phoneinput.on( 'keypress', function ( e ) {
 				const charCode = e.which ? e.which : e.keyCode;
-				if ( charCode == 45 ) {
+				if ( charCode === 45 ) {
 					return true;
 				}
 				if ( charCode > 31 && ( charCode < 48 || charCode > 57 ) ) {
@@ -46,19 +46,19 @@
 				checkboxGroup.prop( 'required', ! isChecked );
 			} );
 			requiredCheckboxes.trigger( 'change' );
-
+			
 			//append recaptcha js when enabled.
 			if (
-				attr.reCaptchaEnable == true &&
-				attr.reCaptchaType == 'v2' &&
+				attr.reCaptchaEnable === true &&
+				attr.reCaptchaType === 'v2' &&
 				attr.reCaptchaSiteKeyV2
 			) {
 				$( 'head' ).append(
 					' <script src="https://www.google.com/recaptcha/api.js"></script>'
 				);
 			} else if (
-				attr.reCaptchaEnable == true &&
-				attr.reCaptchaType == 'v3' &&
+				attr.reCaptchaEnable === true &&
+				attr.reCaptchaType === 'v3' &&
 				attr.reCaptchaSiteKeyV3
 			) {
 				if ( attr.hidereCaptchaBatch ) {
@@ -143,8 +143,8 @@
 				e.preventDefault();
 				const $this = $( this );
 				if (
-					attr.reCaptchaEnable == true &&
-					attr.reCaptchaType == 'v3' &&
+					attr.reCaptchaEnable === true &&
+					attr.reCaptchaType === 'v3' &&
 					attr.reCaptchaSiteKeyV3
 				) {
 					grecaptcha.ready( function () {
@@ -172,8 +172,8 @@
 
 			let uagab_captcha_keys, captcha_response;
 			if (
-				attr.reCaptchaEnable == true &&
-				attr.reCaptchaType == 'v2' &&
+				attr.reCaptchaEnable === true &&
+				attr.reCaptchaType === 'v2' &&
 				attr.reCaptchaSiteKeyV2
 			) {
 				captcha_response = $form[ 0 ].getElementsByClassName(
@@ -194,8 +194,8 @@
 				};
 			}
 			if (
-				attr.reCaptchaEnable == true &&
-				attr.reCaptchaType == 'v3' &&
+				attr.reCaptchaEnable === true &&
+				attr.reCaptchaType === 'v3' &&
 				attr.reCaptchaSiteKeyV3
 			) {
 				uagab_captcha_keys = {
@@ -213,7 +213,7 @@
 				const inputname = originalSerialized[ i ].name;
 				if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {
 					//For checkbox element
-					var name = originalSerialized[ i ].name;
+					let name = originalSerialized[ i ].name;
 					name = name.substring( 0, name.length - 2 );
 					if ( ! ( name in postData ) ) {
 						postData[ name ] = [];
@@ -222,7 +222,7 @@
 				} else if ( originalSerialized[ i ].value.startsWith( '+' ) ) {
 					//For phone element.
 
-					var name = originalSerialized[ i ].name;
+					let name = originalSerialized[ i ].name;
 					name = name.substring( 0, name.length - 2 );
 					if ( ! ( name in postData ) ) {
 						postData[ name ] = [];

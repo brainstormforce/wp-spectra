@@ -12,12 +12,13 @@ const blocksInfo = uag_react.blocks_info;
 function BlocksSettings() {
 	
 	const [ checkCategory , setcheckCategory ] = useState('all');
+	const [ status , setstatus ] = useState(true);
 	const [ { options }, dispatch ] = useStateValue();
 
 	const blocksValue = options.blocks_activation_and_deactivation;
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
-		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />}
+		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} status={status}/>}
 	);
 
 	const categories = ['all','creative','content','post','social','forms','seo','extensions'];
@@ -26,7 +27,17 @@ function BlocksSettings() {
 		setcheckCategory(data);
 	};
 	const activateAllBlocks = ( e ) => {
+<<<<<<< HEAD
 		e.preventDefault();
+=======
+		e.preventDefault()
+        dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'enabled',
+		} );
+        setstatus(false);
+>>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
@@ -52,13 +63,25 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
+<<<<<<< HEAD
 		} ).then( ( ) => {
+=======
+		} ).then( ( data ) => {  setstatus(true);
+>>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
+<<<<<<< HEAD
+=======
+        setstatus(false);
+>>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		window.uagUnsavedChanges = true;
-
+		dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'disabled',
+		} );
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
@@ -82,7 +105,11 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
+<<<<<<< HEAD
 		} ).then( (  ) => {
+=======
+		} ).then( ( data ) => { setstatus(true);
+>>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		} );
 	};
 	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
