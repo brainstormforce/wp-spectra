@@ -50,8 +50,6 @@ function TemplatesButton() {
 			if ( data.success ) {
 				setssavingState( false );
 				setenableStarterTemplate( status );
-			} else {
-				console.log( 'Error' );
 			}
 		} );
 	};

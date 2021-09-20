@@ -77,7 +77,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( event );
+			wp.updates.requestFilesystemCredentials( );
 
 			$document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );

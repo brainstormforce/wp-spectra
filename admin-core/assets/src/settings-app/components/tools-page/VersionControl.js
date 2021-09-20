@@ -7,7 +7,7 @@ import SettingTable from '../common/SettingTable';
 import React, { useState } from 'react';
 import ConfirmPopup from './ConfirmPopup';
 import apiFetch from '@wordpress/api-fetch';
-function VersionControl( props ) {
+function VersionControl( ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	const [ savingState, setsavingState ] = useState( false );
