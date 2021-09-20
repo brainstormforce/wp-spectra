@@ -12,12 +12,13 @@ const blocksInfo = uag_react.blocks_info;
 function BlocksSettings() {
 	
 	const [ checkCategory , setcheckCategory ] = useState('all');
+	const [ status , setstatus ] = useState(true);
 	const [ { options }, dispatch ] = useStateValue();
 
 	const blocksValue = options.blocks_activation_and_deactivation;
 
 	const renderBlocksMetaBoxes = blocksInfo.map( ( block, index ) => {
-		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} />}
+		return <IndividualBlockSetting key={ index } blockInfo={ block } cat = {checkCategory} status={status}/>}
 	);
 
 	const categories = ['all','creative','content','post','social','forms','seo','extensions'];
@@ -32,6 +33,7 @@ function BlocksSettings() {
 			name: 'enable_block_condition',
 			value: 'enabled',
 		} );
+        setstatus(false);
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
@@ -57,12 +59,12 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {
+		} ).then( ( data ) => {  setstatus(true);
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
-
+        setstatus(false);
 		window.uagUnsavedChanges = true;
 		dispatch( {
 			type: 'SET_OPTION',
@@ -92,7 +94,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {
+		} ).then( ( data ) => { setstatus(true);
 		} );
 	};
 	let disabledClass = checkCategory !== 'all' ? 'disabled' : '';
