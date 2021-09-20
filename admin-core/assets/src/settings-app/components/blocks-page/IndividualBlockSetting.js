@@ -18,8 +18,8 @@ function IndividualBlockSetting( props ) {
 
 	useEffect( () => {
 		if (
-			JSON.stringify( blocksCachedValue ) !==
-			JSON.stringify( blocksValue )
+			(JSON.stringify( blocksCachedValue ) !==
+			JSON.stringify( blocksValue )) && props.status
 		) {
 			dispatch( {
 				type: 'SET_OPTION',
