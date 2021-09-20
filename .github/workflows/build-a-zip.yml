@@ -7,7 +7,7 @@ on:
       - dev
       - next-release
 env:
-  ZIP_URL: http://uag-dev.xka9ibwowp-jqp3vd915350.p.runcloud.link/wp-content/uploads/uag-gh/
+  ZIP_URL: https://dev.ultimategutenberg.com/wp-content/uploads/uag-gh/
   PLUGIN_SLUG: ${{ github.event.repository.name }}
   ZIP_NAME: "${{ github.event.repository.name }}.zip"
 
