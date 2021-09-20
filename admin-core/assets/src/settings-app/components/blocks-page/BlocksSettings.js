@@ -27,7 +27,11 @@ function BlocksSettings() {
 	};
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault()
-        options.enable_block_condition = 'enabled';
+        dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'enabled',
+		} );
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
@@ -60,7 +64,11 @@ function BlocksSettings() {
 		e.preventDefault();
 
 		window.uagUnsavedChanges = true;
-		options.enable_block_condition = 'disabled';
+		dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_block_condition',
+			value: 'disabled',
+		} );
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
