@@ -294,6 +294,8 @@ class UAGB_Post_Assets {
 
 			// Print Dynamic CSS.
 			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
+				UAGB_Admin_Helper::create_specific_stylesheet(); // create stylesheet.
+				UAGB_Scripts_Utils::enqueue_blocks_styles(); // Style.
 				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			}
 			// Print Dynamic JS.
@@ -438,8 +440,7 @@ class UAGB_Post_Assets {
 		if ( empty( $this->stylesheet ) ) {
 			return;
 		}
-		UAGB_Admin_Helper::create_specific_stylesheet(); // create stylesheet.
-		UAGB_Scripts_Utils::enqueue_blocks_styles(); // Style.
+
 		echo '<style id="uagb-style-frontend-' . $this->post_id . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 	}
 
