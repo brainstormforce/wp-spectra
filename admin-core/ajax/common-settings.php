@@ -250,6 +250,10 @@ class Common_Settings extends Ajax_Base {
 
 		\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
 
+		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
+			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
+		}
+
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);

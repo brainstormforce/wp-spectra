@@ -294,7 +294,6 @@ class UAGB_Post_Assets {
 
 			// Print Dynamic CSS.
 			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
-				UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 				UAGB_Scripts_Utils::enqueue_blocks_styles(); // Enqueue block styles.
 				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			}
