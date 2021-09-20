@@ -10,7 +10,7 @@
 	// Callback function for all event listeners.
 	function uagbTimelineInit() {
 		const timeline = $( '.uagb-timeline' );
-		if ( timeline.parents( '.wp-block' ).length == 0 ) {
+		if ( timeline.parents( '.wp-block' ).length === 0 ) {
 			timeline.each( function () {
 				const line_inner = $( this ).find(
 					'.uagb-timeline__line__inner'
@@ -53,14 +53,13 @@
 					$last_item = parent_top + timeline_end_icon.top;
 				}
 
-				let num = 0;
 				const elementEnd = $last_item + 20;
 				const connectorHeight =
 					3 *
 					$( this ).find( '.uagb-timeline__marker:first' ).height();
 				const viewportHeight = document.documentElement.clientHeight;
 				const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
-				var elementPos = $( this ).offset().top;
+				let elementPos = $( this ).offset().top;
 				const new_elementPos = elementPos + timeline_start_icon.top;
 				let photoViewportOffsetTop =
 					new_elementPos - $document.scrollTop();
@@ -97,7 +96,6 @@
 							viewportHeightHalf -
 								Math.abs( photoViewportOffsetTop )
 						);
-						++num;
 					} else {
 						line_inner.height(
 							viewportHeightHalf + photoViewportOffsetTop
@@ -112,14 +110,13 @@
 
 				//Icon bg color and icon color
 				let timeline_icon_pos, timeline_card_pos;
-				var elementPos, elementCardPos;
 				let timeline_icon_top, timeline_card_top;
-				let timeline_icon = $( this ).find( '.uagb-timeline__marker' ),
-					animate_border = $( this ).find(
+				const timeline_icon = $( this ).find( '.uagb-timeline__marker' );
+				let	animate_border = $( this ).find(
 						'.uagb-timeline__field-wrap'
 					);
 
-				if ( animate_border.length == 0 ) {
+				if ( animate_border.length === 0 ) {
 					animate_border = $( this ).find(
 						'.uagb-timeline__animate-border'
 					);
@@ -129,7 +126,6 @@
 					timeline_icon_pos = $( timeline_icon[ i ] ).offset().top;
 					timeline_card_pos = $( animate_border[ i ] ).offset().top;
 					elementPos = $( this ).offset().top;
-					elementCardPos = $( this ).offset().top;
 
 					timeline_icon_top =
 						timeline_icon_pos - $document.scrollTop();
