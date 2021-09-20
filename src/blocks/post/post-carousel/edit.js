@@ -303,7 +303,7 @@ const UAGBPostCarousel = ( props ) => {
 		transitionSpeed,
 		arrowDots,
 		arrowSize,
-		arrowSizeUnit,
+		arrowColor,
 		arrowBorderSize,
 		arrowBorderRadius,
 		excerptLength,
@@ -395,6 +395,8 @@ const UAGBPostCarousel = ( props ) => {
 			__( 'Showing All Post Grid Layout.' );
 		}
 	};
+
+	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	const getGeneralPanelBody = () => {
 		return (
@@ -1729,6 +1731,18 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Arrow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<AdvancedPopColorControl
+					label={ __(
+						'Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ arrowColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { arrowColor: value } )
+					}
+				/>
+			{ 'dots' !== arrowDots && 
+				<>
 				<Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					value={ arrowSize }
@@ -1739,10 +1753,6 @@ const UAGBPostCarousel = ( props ) => {
 					max={ 50 }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
-					unit={ {
-						value: arrowSizeUnit,
-						label: 'arrowSizeUnit',
-					} }
 				/>
 				<Range
 					label={ __(
@@ -1774,6 +1784,8 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 				/>
+				</>
+			}
 			</PanelBody>
 		);
 	};
@@ -1802,14 +1814,12 @@ const UAGBPostCarousel = ( props ) => {
 					) }
 					{ displayPostImage && imageStyle() }
 					{ spacingSettings() }
-					{ 'dots' !== arrowDots && carouselStyle() }
+					{ carouselStyle() }
 				</InspectorTab>
 				<InspectorTab key={ 'advance' }></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);
-
-	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	if ( ! hasPosts ) {
 		return (
