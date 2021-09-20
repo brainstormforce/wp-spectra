@@ -27,9 +27,6 @@ function BlocksSettings() {
 		setcheckCategory(data);
 	};
 	const activateAllBlocks = ( e ) => {
-<<<<<<< HEAD
-		e.preventDefault();
-=======
 		e.preventDefault()
         dispatch( {
 			type: 'SET_OPTION',
@@ -37,7 +34,6 @@ function BlocksSettings() {
 			value: 'enabled',
 		} );
         setstatus(false);
->>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
@@ -63,19 +59,12 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-<<<<<<< HEAD
-		} ).then( ( ) => {
-=======
-		} ).then( ( data ) => {  setstatus(true);
->>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
+		} ).then( ( ) => {  setstatus(true);
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
-<<<<<<< HEAD
-=======
         setstatus(false);
->>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
 		window.uagUnsavedChanges = true;
 		dispatch( {
 			type: 'SET_OPTION',
@@ -105,11 +94,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-<<<<<<< HEAD
-		} ).then( (  ) => {
-=======
-		} ).then( ( data ) => { setstatus(true);
->>>>>>> 0ebaff66b176a9b8ea34f7c645090cb311bd85d0
+		} ).then( ( ) => { setstatus(true);
 		} );
 	};
 	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
