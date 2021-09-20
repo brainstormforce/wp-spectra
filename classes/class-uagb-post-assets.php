@@ -294,8 +294,8 @@ class UAGB_Post_Assets {
 
 			// Print Dynamic CSS.
 			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
-				UAGB_Admin_Helper::create_specific_stylesheet(); // create stylesheet.
-				UAGB_Scripts_Utils::enqueue_blocks_styles(); // Style.
+				UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
+				UAGB_Scripts_Utils::enqueue_blocks_styles(); // Enqueue block styles.
 				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			}
 			// Print Dynamic JS.
@@ -601,7 +601,7 @@ class UAGB_Post_Assets {
 					$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
 					$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
 
-					if ( 'enabled' === $this->file_generation ) {
+					if ( 'enabled' === $this->file_generation ) { // Get common CSS for the block when file generation is enabled.
 						$css_common = ( isset( $css['common'] ) ? $css['common'] : '' );
 						if ( isset( $inner_block_css['common'] ) ) {
 							$css['common'] = $css_common . $inner_block_css['common'];
