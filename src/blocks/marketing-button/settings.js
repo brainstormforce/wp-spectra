@@ -1011,22 +1011,6 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Angle',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ gradientAngle }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientAngle: value,
-								} )
-							}
-							min={ 0 }
-							max={ 360 }
-							displayUnit={ false }
-						/>
-						<Range
-							label={ __(
 								'Opacity',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -1041,6 +1025,24 @@ const Settings = ( props ) => {
 							max={ 100 }
 							displayUnit={ false }
 						/>
+						{ 'linear' === gradientType &&
+							<Range
+								label={ __(
+									'Angle',
+									'ultimate-addons-for-gutenberg'
+								) }
+								setAttributes={ setAttributes }
+								value={ gradientAngle }
+								onChange={ ( value ) =>
+									setAttributes( {
+										gradientAngle: value,
+									} )
+								}
+								min={ 0 }
+								max={ 360 }
+								displayUnit={ false }
+							/>
+						}
 					</>
 				) }
 			</PanelBody>
