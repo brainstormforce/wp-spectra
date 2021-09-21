@@ -75,7 +75,7 @@ const attributes = {
 	},
 	columns: {
 		type: 'number',
-		default: 2,
+		default: 1,
 	},
 	tcolumns: {
 		type: 'number',
@@ -108,7 +108,7 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: 'string',
-		default: 'dashed',
+		default: 'solid',
 	},
 	seperatorWidth: {
 		type: 'number',
@@ -120,7 +120,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: 'string',
-		default: '#b2b4b5',
+		default: '#dddddd',
 	},
 	descColor: {
 		type: 'string',
@@ -262,7 +262,7 @@ const attributes = {
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'top',
+		default: 'left',
 	},
 	imageAlignment: {
 		type: 'string',
@@ -274,7 +274,7 @@ const attributes = {
 	},
 	imageWidth: {
 		type: 'number',
-		default: '',
+		default: 100,
 	},
 	imageWidthType: {
 		type: 'string',

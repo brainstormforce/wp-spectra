@@ -79,7 +79,7 @@ const attributes = {
 	},
 	customWidth: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	widthTypeDesktop: {
 		type: 'string',
@@ -95,7 +95,7 @@ const attributes = {
 	},
 	widthDesktop: {
 		type: 'number',
-		default: 100,
+		default: 28,
 	},
 	widthTablet: {
 		type: 'number',
@@ -119,7 +119,7 @@ const attributes = {
 	// Color
 	backgroundColor: {
 		type: 'string',
-		default: '#eee',
+		default: '#f4f4f4',
 	},
 	linkColor: {
 		type: 'string',
@@ -382,10 +382,11 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
+		default: 6,
 	},
 	borderColor: {
 		type: 'string',
-		default: '#333',
+		default: '#ddd',
 	},
 	borderHoverColor: {
 		type: 'string',

@@ -12,7 +12,7 @@ const attributes = {
 	},
 	expandFirstItem: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	enableSchemaSupport: {
 		type: 'boolean',
@@ -28,7 +28,7 @@ const attributes = {
 	},
 	rowsGap: {
 		type: 'number',
-		default: 10,
+		default: 15,
 	},
 	columnsGap: {
 		type: 'number',
