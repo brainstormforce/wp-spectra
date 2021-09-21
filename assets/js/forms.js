@@ -1,5 +1,5 @@
 ( function ( $ ) {
-	UAGBForms = { // eslint-disable-line no-undef
+	window.UAGBForms = {
 		init( attr, id ) {
 			const $scope = $( id );
 			const $form = $scope.find( '.uagb-forms-main-form' );
@@ -41,7 +41,7 @@
 				checkboxGroup.prop( 'required', ! isChecked );
 			} );
 			requiredCheckboxes.trigger( 'change' );
-			
+
 			//append recaptcha js when enabled.
 			if (
 				attr.reCaptchaEnable === true &&
@@ -152,12 +152,12 @@
 									document.getElementById(
 										'g-recaptcha-response'
 									).value = token;
-									UAGBForms._formSubmit( e, $this, attr ); // eslint-disable-line no-undef
+									window.UAGBForms._formSubmit( e, $this, attr );
 								}
 							} );
 					} );
 				} else {
-					UAGBForms._formSubmit( e, $this, attr ); // eslint-disable-line no-undef
+					window.UAGBForms._formSubmit( e, $this, attr );
 				}
 			} );
 		},
