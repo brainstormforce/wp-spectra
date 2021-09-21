@@ -1,6 +1,8 @@
 function generateCSS(
 	selectorsObj,
 	id,
+	isResponsive = false, // eslint-disable-line no-unused-vars
+	responsiveType = '', // eslint-disable-line no-unused-vars
 ) {
 	let gen_styling_css = '';
 
