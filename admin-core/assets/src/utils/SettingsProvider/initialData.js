@@ -6,7 +6,6 @@ export const settingsInitialState = {
 const settingsEvents = ( state, data ) => {
 	switch ( data.status ) {
 		case 'SAVED':
-			window.uagUnsavedChanges = false;
 			return {
 				...state,
 				settingsProcess: 'saved',

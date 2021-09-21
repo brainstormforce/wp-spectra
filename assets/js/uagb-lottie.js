@@ -1,5 +1,5 @@
 ( function () {
-	UAGBLottie = {
+	window.UAGBLottie = {
 		_run( attr, id ) {
 			const animation = bodymovin.loadAnimation( {
 				container: document.getElementsByClassName( id )[ 0 ],
@@ -45,4 +45,4 @@
 			}
 		},
 	};
-} )( jQuery );
+} )();

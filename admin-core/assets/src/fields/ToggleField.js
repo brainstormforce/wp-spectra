@@ -9,7 +9,7 @@ function ToggleField( props ) {
 	function handleCheckboxClick( e ) {
 		const checkedValue = e ? 'enabled' : 'disabled';
 		// Trigger change
-		const changeEvent = new CustomEvent( 'uag:toggle:change', {
+		const changeEvent = new CustomEvent( 'uag:toggle:change', { // eslint-disable-line no-undef
 			bubbles: true,
 			detail: { e, name, value: checkedValue, id },
 		} );

@@ -46,7 +46,7 @@ function VersionControl( ) {
 
 		setshowPopup( false );
 
-		location.href = rollbackUrl;
+		location.href = rollbackUrl; // eslint-disable-line no-undef
 	};
 
 	const cancelPopup = () => {

@@ -257,8 +257,8 @@ const ContentTimelineComponent = ( props ) => {
 			//For changing icon background color and icon color.
 			let timelineIconPos, timelineCardPos;
 			let timelineIconTop, timelineCardTop;
-			let timelineIcon = timeline.find( '.uagb-timeline__marker' );
-			let	animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
+			const timelineIcon = timeline.find( '.uagb-timeline__marker' );
+			const animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
 			
 			for ( let i = 0; i < timelineIcon.length; i++ ) {
 				

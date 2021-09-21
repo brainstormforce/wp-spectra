@@ -1,5 +1,5 @@
 ( function ( $ ) {
-	UAGBInlineNotice = {
+	window.UAGBInlineNotice = {
 		_run( attr, id ) {
 			if ( $( id ).length === 0 ) {
 				return;
@@ -16,39 +16,18 @@
 
 			if ( attr.noticeDismiss !== '' ) {
 				$( id + ' .uagb-notice-dismiss' ).on( 'click', function () {
-					if (
-						true === is_cookie &&
-						'undefined' !== typeof current_cookie
-					) {
-						current_cookies = Cookies.set(
+
+					if ( true === is_cookie && 'undefined' === typeof current_cookie ) {
+						Cookies.set(
 							'uagb-notice-' + unique_id,
 							true,
 							{ expires: cookies_days }
 						);
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
 					}
 
-					if (
-						'undefined' === typeof current_cookie &&
-						true === is_cookie
-					) {
-						current_cookies = Cookies.set(
-							'uagb-notice-' + unique_id,
-							true,
-							{ expires: cookies_days }
-						);
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
-					}
-
-					if ( false === is_cookie ) {
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
-					}
+					$( id )
+						.addClass( 'uagb-notice__active' )
+						.css( 'display', 'none' );
 				} );
 			}
 		},

@@ -79,7 +79,7 @@ function UserInfoBox() {
 		) {
 			wp.updates.requestFilesystemCredentials( );
 
-			$document.on( 'credential-modal-cancel', function () {
+			document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
 			} );
 		}
@@ -102,10 +102,7 @@ function UserInfoBox() {
 		if ( ! uag_react.theme_file ) {
 			return (
 				<NormalButton
-					buttonText={ __(
-						installingThemeText,
-						'ultimate-addons-for-gutenberg'
-					) }
+					buttonText={ installingThemeText }
 					saving={ installingTheme }
 					onClick={ installAstraClick }
 				/>
@@ -116,10 +113,7 @@ function UserInfoBox() {
 		) {
 			return (
 				<NormalButton
-					buttonText={ __(
-						activateThemeText,
-						'ultimate-addons-for-gutenberg'
-					) }
+					buttonText={ activateThemeText}
 					saving={ activateTheme }
 					onClick={ activateAstraClick }
 					data-slug="astra"
@@ -134,7 +128,7 @@ function UserInfoBox() {
 		if(uag_react.starter_template_activate){
 			return <NormalButton
 						buttonText={ __(
-							'Learn More	',
+							'Learn More',
 							'ultimate-addons-for-gutenberg'
 						) }
 						saving={ false }
@@ -144,10 +138,7 @@ function UserInfoBox() {
 		}
 		if( !uag_react.starter_template_activate && uag_react.starter_template_path ){
 			return <NormalButton
-						buttonText={ __(
-							activatePluginText,
-							'ultimate-addons-for-gutenberg'
-						) }
+						buttonText={activatePluginText }
 						saving={ activatePlugin }
 						onClick={ onstarterTemapletActivate }
 					/>
@@ -155,10 +146,7 @@ function UserInfoBox() {
 			return null;
 		}else if(!uag_react.starter_template_path){
 			return <NormalButton
-						buttonText={ __(
-							installingPluginText,
-							'ultimate-addons-for-gutenberg'
-						) }
+						buttonText={ installingPluginText }
 						saving={ installingPlugin }
 						onClick={ onstarterTemapletinstall }
 					/>
@@ -196,7 +184,7 @@ function UserInfoBox() {
 		) {
 			wp.updates.requestFilesystemCredentials( );
 
-			$document.on( 'credential-modal-cancel', function () {
+			document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
 			} );
 		}

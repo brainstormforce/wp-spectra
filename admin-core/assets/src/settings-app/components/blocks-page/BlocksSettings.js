@@ -34,7 +34,6 @@ function BlocksSettings() {
 			value: 'enabled',
 		} );
         setstatus(false);
-		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
@@ -65,7 +64,6 @@ function BlocksSettings() {
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
         setstatus(false);
-		window.uagUnsavedChanges = true;
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_block_condition',
@@ -106,8 +104,8 @@ function BlocksSettings() {
 				<span className='uag-block-cat-label'>Filter By:</span>
 					{ categories.map( ( cat ) => (
 						<li key={cat} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
-							<a onClick={() => setCategory(cat) } role = "button" onKeyDown={() => setCategory(cat)} tabIndex={0}
-							>{cat}</a>
+							<a onClick={() => setCategory(cat) } role = "button" onKeyDown={() => setCategory(cat)} tabIndex={0} // eslint-disable-line jsx-a11y/anchor-is-valid
+							>{cat} </a>
 						</li>
 					))}
 				</ul>

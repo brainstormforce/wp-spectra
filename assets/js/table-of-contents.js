@@ -29,24 +29,24 @@
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
 
-	UAGBTableOfContents = {
+	UAGBTableOfContents = { // eslint-disable-line no-undef
 		init() {
 			$( document ).on(
 				'click',
 				'.uagb-toc__list a',
-				UAGBTableOfContents._scroll
+				UAGBTableOfContents._scroll // eslint-disable-line no-undef
 			);
 			$( document ).on(
 				'click',
 				'.uagb-toc__scroll-top',
-				UAGBTableOfContents._scrollTop
+				UAGBTableOfContents._scrollTop // eslint-disable-line no-undef
 			);
 			$( document ).on(
 				'click',
 				'.uagb-toc__title-wrap',
-				UAGBTableOfContents._toggleCollapse
+				UAGBTableOfContents._toggleCollapse // eslint-disable-line no-undef
 			);
-			$( document ).on( 'scroll', UAGBTableOfContents._showHideScroll );
+			$( document ).on( 'scroll', UAGBTableOfContents._showHideScroll ); // eslint-disable-line no-undef
 		},
 
 		hyperLinks() {
@@ -162,7 +162,6 @@
 			}
 
 			const allowed_h_tags = [];
-			let headerMappingHeaders = [];
 			let allowed_h_tags_str;
 			if ( undefined !== attr.mappingHeaders ) {
 				attr.mappingHeaders.forEach( function ( h_tag, index ) {
@@ -173,10 +172,6 @@
 				} );
 				allowed_h_tags_str =
 					null !== allowed_h_tags ? allowed_h_tags.join( ',' ) : '';
-
-				headerMappingHeaders = attr.mappingHeaders.filter(
-					( header ) => header
-				).length;
 			}
 
 			const all_header =
@@ -232,12 +227,12 @@
 				scroll_element.removeClass( 'uagb-toc__show-scroll' );
 			}
 
-			UAGBTableOfContents._showHideScroll();
-			UAGBTableOfContents.hyperLinks();
+			UAGBTableOfContents._showHideScroll(); // eslint-disable-line no-undef
+			UAGBTableOfContents.hyperLinks(); // eslint-disable-line no-undef
 		},
 	};
 
 	$( document ).ready( function () {
-		UAGBTableOfContents.init();
+		UAGBTableOfContents.init(); // eslint-disable-line no-undef
 	} );
 } )( jQuery );

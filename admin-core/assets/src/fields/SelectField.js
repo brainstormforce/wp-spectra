@@ -10,7 +10,7 @@ function SelectField( props ) {
 		setValue( e.target.value );
 
 		// Trigger change
-		const changeEvent = new CustomEvent( 'uag:select:change', {
+		const changeEvent = new CustomEvent( 'uag:select:change', { // eslint-disable-line no-undef
 			bubbles: true,
 			detail: { e, name: props.name, value: e.target.value },
 		} );
@@ -30,12 +30,12 @@ function SelectField( props ) {
 		<div className="uag-field uag-select-option">
 			<div className="uag-field__data">
 				<div className="uag-field__data--content">
-					<select
+					<select // eslint-disable-line jsx-a11y/no-onchange
 						className={ props.class }
 						name={ name }
 						id={ id }
 						value={ value }
-						onChange={ handleChange }
+						onChange={ handleChange } 
 					>
 						{ options &&
 							options.map( ( option, i ) => {
