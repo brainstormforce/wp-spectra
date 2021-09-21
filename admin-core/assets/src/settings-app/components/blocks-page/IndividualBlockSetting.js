@@ -18,8 +18,8 @@ function IndividualBlockSetting( props ) {
 
 	useEffect( () => {
 		if (
-			JSON.stringify( blocksCachedValue ) !==
-			JSON.stringify( blocksValue )
+			(JSON.stringify( blocksCachedValue ) !==
+			JSON.stringify( blocksValue )) && props.status
 		) {
 			dispatch( {
 				type: 'SET_OPTION',
@@ -50,7 +50,7 @@ function IndividualBlockSetting( props ) {
 
 	const categories = props.blockInfo.admin_categories;
 
-	const isCategory = categories.find(element =>	element == props.cat);
+	const isCategory = categories.find(element =>	element === props.cat);
 
 	if(isCategory || props.cat === 'all'){
 		return (

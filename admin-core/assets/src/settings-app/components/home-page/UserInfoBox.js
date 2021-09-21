@@ -77,7 +77,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( event );
+			wp.updates.requestFilesystemCredentials( );
 
 			$document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
@@ -88,7 +88,7 @@ function UserInfoBox() {
 			.installTheme( {
 				slug: 'astra',
 			} )
-			.then( function ( e ) {
+			.then( function (  ) {
 				setsinstallingTheme( false );
 				setsinstallingThemeText( 'Installed Astra!' );
 				window.location.reload();
@@ -194,7 +194,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( event );
+			wp.updates.requestFilesystemCredentials( );
 
 			$document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
@@ -205,7 +205,7 @@ function UserInfoBox() {
 			.installPlugin( {
 				slug: 'astra-sites',
 			} )
-			.then( function ( e ) {
+			.then( function ( ) {
 				setsinstallingPlugin( false );
 				setsinstallingPluginText( 'Installed Starter Template!' );
 				window.location.reload();
@@ -312,7 +312,7 @@ function UserInfoBox() {
 						src={
 							uag_react.plugin_dir +
 							'admin-core/assets/images/astra-starter-sites.png'
-						}
+						} alt =''
 					/>
 				</div>
 				<div className="uag-starter-tmp__details">

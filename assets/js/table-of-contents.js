@@ -75,7 +75,7 @@
 			}
 		},
 
-		_toggleCollapse( e ) {
+		_toggleCollapse() {
 			if ( $( this ).find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				const $root = $( this ).closest(
 					'.wp-block-uagb-table-of-contents'
@@ -89,8 +89,8 @@
 			}
 		},
 
-		_showHideScroll( e ) {
-			if ( null != scroll_element ) {
+		_showHideScroll() {
+			if ( null !== scroll_element ) {
 				if ( jQuery( window ).scrollTop() > 300 ) {
 					if ( scroll_to_top ) {
 						scroll_element.addClass( 'uagb-toc__show-scroll' );
@@ -106,9 +106,8 @@
 		/**
 		 * Smooth To Top.
 		 *
-		 * @param e
 		 */
-		_scrollTop( e ) {
+		_scrollTop() {
 			$( 'html, body' ).animate(
 				{
 					scrollTop: 0,
@@ -120,9 +119,8 @@
 		/**
 		 * Smooth Scroll.
 		 *
-		 * @param e
 		 */
-		_scroll( e ) {
+		_scroll() {
 			if ( this.hash !== '' ) {
 				const hash = this.hash;
 				const node = $( this ).closest(
@@ -151,8 +149,8 @@
 		/**
 		 * Alter the_content.
 		 *
-		 * @param attr
-		 * @param id
+		 * @param {Object} attr
+		 * @param {string} id
 		 */
 		_run( attr, id ) {
 			const $this_scope = $( id );
@@ -165,13 +163,15 @@
 
 			const allowed_h_tags = [];
 			let headerMappingHeaders = [];
+			let allowed_h_tags_str;
 			if ( undefined !== attr.mappingHeaders ) {
 				attr.mappingHeaders.forEach( function ( h_tag, index ) {
+					// eslint-disable-next-line no-unused-expressions
 					h_tag === true
 						? allowed_h_tags.push( 'h' + ( index + 1 ) )
 						: null;
 				} );
-				var allowed_h_tags_str =
+				allowed_h_tags_str =
 					null !== allowed_h_tags ? allowed_h_tags.join( ',' ) : '';
 
 				headerMappingHeaders = attr.mappingHeaders.filter(
@@ -187,7 +187,7 @@
 			if ( 0 !== all_header.length ) {
 				const toc_list_wrap = $( '.uagb-toc__list-wrap' );
 
-				all_header.each( function ( index, value ) {
+				all_header.each( function () {
 					const header = $( this );
 					let header_text = parseTocSlug( header.text() );
 
@@ -217,7 +217,7 @@
 				'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
 
 			scroll_element = $( '.uagb-toc__scroll-top' );
-			if ( 0 == scroll_element.length ) {
+			if ( 0 === scroll_element.length ) {
 				$( 'body' ).append(
 					'<div class="uagb-toc__scroll-top"> ' +
 						scrollToTopSvg +

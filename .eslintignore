@@ -12,3 +12,7 @@ node_modules
 vendor
 *.css
 *.scss
+
+**/deprecated/**
+legacy-admin/**
+src/blocks/demo-control-block/**

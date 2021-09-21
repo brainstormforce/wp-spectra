@@ -6,11 +6,11 @@
  */
 
 function hexToRgba( color, opacity ) {
-	if ( undefined == color ) {
+	if ( ! color ) {
 		return '';
 	}
 
-	if ( undefined == opacity || '' == opacity ) {
+	if ( ! opacity || '' === opacity ) {
 		opacity = 100;
 	}
 
