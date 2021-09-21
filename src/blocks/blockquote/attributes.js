@@ -12,22 +12,23 @@ const attributes = {
 	},
 	skinStyle: {
 		type: 'string',
-		default: 'border',
+		default: 'quotation',
 	},
 	align: {
 		type: 'string',
-		default: 'left',
+		default: 'center',
 	},
 	descriptionText: {
 		selector: 'div.uagb-blockquote__content',
 		default:
-			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
 	},
 	descColor: {
 		type: 'string',
 	},
 	descFontSize: {
 		type: 'number',
+		default: 18,
 	},
 	descFontSizeType: {
 		type: 'string',
@@ -55,6 +56,7 @@ const attributes = {
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1.5,
 	},
 	descLineHeightTablet: {
 		type: 'number',
@@ -68,7 +70,7 @@ const attributes = {
 	},
 	descSpace: {
 		type: 'number',
-		default: 20,
+		default: 25,
 	},
 	descSpaceUnit: {
 		type: 'string',
@@ -76,7 +78,7 @@ const attributes = {
 	},
 	author: {
 		selector: '.uagb-blockquote__author',
-		default: 'Author',
+		default: 'Author Name',
 	},
 	authorColor: {
 		type: 'string',
@@ -167,7 +169,7 @@ const attributes = {
 	},
 	enableTweet: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	iconView: {
 		type: 'string',
@@ -303,11 +305,11 @@ const attributes = {
 	},
 	quoteStyle: {
 		type: 'string',
-		default: 'style_2',
+		default: 'style_1',
 	},
 	quoteColor: {
 		type: 'string',
-		default: '#abb8c3',
+		default: '#3d3d3d',
 	},
 	quoteSize: {
 		type: 'number',
@@ -351,20 +353,21 @@ const attributes = {
 	},
 	quoteBgColor: {
 		type: 'string',
-		default: '#333',
+		default: '#f4f4f4',
 	},
 	quoteTopMargin: {
 		type: 'number',
 	},
 	quoteBottomMargin: {
 		type: 'number',
+		default: 15,
 	},
 	quoteLeftMargin: {
 		type: 'number',
 	},
 	quoteRightMargin: {
 		type: 'number',
-		default: 20,
+		default: 0,
 	},
 	quoteTopMarginTablet: {
 		type: 'number',

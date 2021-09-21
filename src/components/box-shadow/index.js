@@ -94,7 +94,7 @@ const BoxShadowControl = ( props ) => {
 								[ boxShadowSpread.label ]: value,
 							} )
 						}
-						min={ 0 }
+						min={ -100 }
 						max={ 100 }
 						displayUnit={ false }
 					/>

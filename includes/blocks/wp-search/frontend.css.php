@@ -104,7 +104,10 @@ $selectors = array(
 if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 	$selectors[' .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
-	$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
+	$selectors[' .uagb-search-wrapper .uagb-search-form__container']       = $boxCSS;
+	$selectors[' .uagb-search-wrapper .uagb-search-form__container:hover'] = array(
+		'border-color' => $attr['borderHColor'],
+	);
 
 	if ( 'inset' === $attr['boxShadowPosition'] ) {
 		$selectors[' .uagb-search-wrapper .uagb-search-form__input'] = array(

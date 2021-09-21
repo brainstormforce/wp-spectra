@@ -75,11 +75,11 @@ const attributes = {
 	},
 	buttonWidth: {
 		type: 'number',
-		default: 55,
+		default: 50,
 	},
 	buttonIconSize: {
 		type: 'number',
-		default: 17,
+		default: 15,
 	},
 	iconColor: {
 		type: 'string',
@@ -218,15 +218,19 @@ const attributes = {
 	},
 	paddingInputTop: {
 		type: 'number',
+		default: 12,
 	},
 	paddingInputRight: {
 		type: 'number',
+		default: 20,
 	},
 	paddingInputBottom: {
 		type: 'number',
+		default: 12,
 	},
 	paddingInputLeft: {
 		type: 'number',
+		default: 15,
 	},
 	paddingInputTopTablet: {
 		type: 'number',
