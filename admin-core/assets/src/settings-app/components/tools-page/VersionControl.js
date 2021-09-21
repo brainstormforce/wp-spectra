@@ -45,8 +45,7 @@ function VersionControl( ) {
 		);
 
 		setshowPopup( false );
-
-		location.href = rollbackUrl; // eslint-disable-line no-undef
+		window.location.href = rollbackUrl; 
 	};
 
 	const cancelPopup = () => {
