@@ -17,10 +17,7 @@
 			if ( attr.noticeDismiss !== '' ) {
 				$( id + ' .uagb-notice-dismiss' ).on( 'click', function () {
 
-					if (
-						true === is_cookie &&
-						'undefined' !== typeof current_cookie
-					) {
+					if ( true === is_cookie && 'undefined' === typeof current_cookie ) {
 						Cookies.set(
 							'uagb-notice-' + unique_id,
 							true,
