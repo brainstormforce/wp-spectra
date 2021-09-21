@@ -544,7 +544,7 @@ const Settings = ( props ) => {
 					<>
 						<UAGIconPicker
 							label={ __(
-								'Button Icon',
+								'Tab Icon',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ icon }
@@ -815,16 +815,6 @@ const Settings = ( props ) => {
 			<>
 				<AdvancedPopColorControl
 					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ headerBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { headerBgColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
 						'Text Color',
 						'ultimate-addons-for-gutenberg'
 					) }
@@ -833,20 +823,20 @@ const Settings = ( props ) => {
 						setAttributes( { headerTextColor: value } )
 					}
 				/>
-			</>
-		);
-		const tabOutputActive = (
-			<>
 				<AdvancedPopColorControl
 					label={ __(
 						'Background Color',
 						'ultimate-addons-for-gutenberg'
 					) }
-					colorValue={ activeTabBgColor }
+					colorValue={ headerBgColor }
 					onColorChange={ ( value ) =>
-						setAttributes( { activeTabBgColor: value } )
+						setAttributes( { headerBgColor: value } )
 					}
 				/>
+			</>
+		);
+		const tabOutputActive = (
+			<>
 				<AdvancedPopColorControl
 					label={ __(
 						'Text Color',
@@ -855,6 +845,16 @@ const Settings = ( props ) => {
 					colorValue={ activeTabTextColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { activeTabTextColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ activeTabBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { activeTabBgColor: value } )
 					}
 				/>
 			</>

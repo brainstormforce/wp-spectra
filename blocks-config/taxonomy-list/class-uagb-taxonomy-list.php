@@ -202,7 +202,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						),
 						'titleBottomSpace'           => array(
 							'type'    => 'number',
-							'default' => 15,
+							'default' => 5,
 						),
 						'listBottomMargin'           => array(
 							'type'    => 'number',
@@ -258,7 +258,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						),
 						'borderRadius'               => array(
 							'type'    => 'number',
-							'default' => 0,
+							'default' => 3,
 						),
 						'borderStyle'                => array(
 							'type'    => 'string',

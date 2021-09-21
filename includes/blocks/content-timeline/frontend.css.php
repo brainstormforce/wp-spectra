@@ -41,6 +41,9 @@ $selectors = array(
 	' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
 		'color' => $attr['iconFocus'],
 	),
+	' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
+		'fill' => $attr['iconFocus'],
+	),
 	' .uagb-timeline__heading-text'                        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
