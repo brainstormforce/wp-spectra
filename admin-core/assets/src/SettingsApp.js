@@ -13,7 +13,6 @@ import settingsEvents, {
 } from '@Utils/SettingsProvider/initialData';
 
 /* Main Compnent */
-import './common/common';
 import './common/all-config.scss';
 import MainSettings from '@SettingsApp/MainSettings';
 import Footer from '@SettingsApp/components/common/Footer';

@@ -1,15 +1,10 @@
 ( function ( $ ) {
-	UAGBForms = {
+	UAGBForms = { // eslint-disable-line no-undef
 		init( attr, id ) {
-			$scope = $( id );
-			$form = $scope.find( '.uagb-forms-main-form' );
+			const $scope = $( id );
+			const $form = $scope.find( '.uagb-forms-main-form' );
 
-			$submitButtonWrap = $form.find(
-				'.uagb-forms-main-submit-button-wrap'
-			);
-			$submitButton = $form.find( '.uagb-forms-main-submit-button' );
-
-			$phoneinput = $form.find( '.uagb-forms-phone-input' );
+			const $phoneinput = $form.find( '.uagb-forms-phone-input' );
 			$phoneinput.on( 'keypress', function ( e ) {
 				const charCode = e.which ? e.which : e.keyCode;
 				if ( charCode === 45 ) {
@@ -23,7 +18,7 @@
 
 			const toggleinput = $form.find( '.uagb-forms-toggle-input' );
 
-			toggleinput.on( 'change', function ( e ) {
+			toggleinput.on( 'change', function () {
 				if ( this.checked ) {
 					$( this ).val( $( this ).attr( 'data-truestate' ) );
 				} else {
@@ -35,7 +30,7 @@
 			const requiredCheckboxes = $(
 				'.uagb-forms-checkbox-wrap :checkbox[required]'
 			);
-			requiredCheckboxes.on( 'change', function ( e ) {
+			requiredCheckboxes.on( 'change', function () {
 				const checkboxGroup = requiredCheckboxes.filter(
 					'[name="' + $( this ).attr( 'name' ) + '"]'
 				);
@@ -147,8 +142,8 @@
 					attr.reCaptchaType === 'v3' &&
 					attr.reCaptchaSiteKeyV3
 				) {
-					grecaptcha.ready( function () {
-						grecaptcha
+					grecaptcha.ready( function () { // eslint-disable-line no-undef
+						grecaptcha // eslint-disable-line no-undef
 							.execute( attr.reCaptchaSiteKeyV3, {
 								action: 'submit',
 							} )
@@ -157,12 +152,12 @@
 									document.getElementById(
 										'g-recaptcha-response'
 									).value = token;
-									UAGBForms._formSubmit( e, $this, attr );
+									UAGBForms._formSubmit( e, $this, attr ); // eslint-disable-line no-undef
 								}
 							} );
 					} );
 				} else {
-					UAGBForms._formSubmit( e, $this, attr );
+					UAGBForms._formSubmit( e, $this, attr ); // eslint-disable-line no-undef
 				}
 			} );
 		},
