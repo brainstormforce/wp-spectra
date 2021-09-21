@@ -742,7 +742,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'bgColor'                 => array(
 					'type'    => 'string',
-					'default' => '#e4e4e4',
+					'default' => '#f5f5f5',
 				),
 
 				// Title Attributes.
