@@ -152,11 +152,13 @@ function styling( props ) {
 			tabletSelectors[
 				'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
 			] = {
+				'display': 'flex',
 				'flex-direction': 'column',
 			};
 			mobileSelectors[
 				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
 			] = {
+				'display': 'flex',
 				'flex-direction': 'column',
 			};
 			tabletSelectors[
@@ -176,6 +178,7 @@ function styling( props ) {
 			mobileSelectors[
 				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
 			] = {
+				'display': 'flex',
 				'flex-direction': 'column',
 			};
 

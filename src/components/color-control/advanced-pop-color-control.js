@@ -219,6 +219,7 @@ const AdvancedPopColorControl = ( props ) => {
 									disableCustomColors={ true }
 								/>
 							) }
+							<button type="button" onClick = { () => { onChangeComplete( '', true ) } } className="uagb-clear-btn-inside-picker components-button components-circular-option-picker__clear is-secondary is-small">{ __( 'Clear' ) }</button>
 						</Popover>
 					) }
 					{ visible.isVisible && (

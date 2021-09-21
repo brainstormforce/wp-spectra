@@ -59,7 +59,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {  setstatus(true);
+		} ).then( ( ) => {  setstatus(true);
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
@@ -94,7 +94,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => { setstatus(true);
+		} ).then( ( ) => { setstatus(true);
 		} );
 	};
 	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
@@ -105,8 +105,8 @@ function BlocksSettings() {
 				<ul className="uag-block-cat-list">
 				<span className='uag-block-cat-label'>Filter By:</span>
 					{ categories.map( ( cat ) => (
-						<li className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
-							<a onClick={() => setCategory(cat) } 
+						<li key={cat} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
+							<a onClick={() => setCategory(cat) } role = "button" onKeyDown={() => setCategory(cat)} tabIndex={0}
 							>{cat}</a>
 						</li>
 					))}

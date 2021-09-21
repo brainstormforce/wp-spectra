@@ -50,7 +50,7 @@ function IndividualBlockSetting( props ) {
 
 	const categories = props.blockInfo.admin_categories;
 
-	const isCategory = categories.find(element =>	element == props.cat);
+	const isCategory = categories.find(element =>	element === props.cat);
 
 	if(isCategory || props.cat === 'all'){
 		return (

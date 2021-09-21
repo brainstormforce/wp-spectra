@@ -226,6 +226,7 @@ const attributes = {
 	},
 	bottomColor: {
 		type: 'string',
+		default: '#333',
 	},
 	bottomHeight: {
 		type: 'number',
@@ -245,6 +246,7 @@ const attributes = {
 	},
 	topColor: {
 		type: 'string',
+		default: '#333',
 	},
 	topHeight: {
 		type: 'number',
