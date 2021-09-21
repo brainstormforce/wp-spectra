@@ -1,4 +1,3 @@
-const path = require( 'path' );
 const paths = require( './paths' );
 const fs = require( 'fs' );
 const sass = require( 'node-sass' );
@@ -30,35 +29,27 @@ sass.render(
 
 //Generate individual block's css files
 fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
-	for ( let index = 0; index < items.length; index++ ) {
+
+	for ( const item of items ) {
+
 		sass.render(
 			{
-				file:
-					paths.pluginSrc +
-					'/blocks/' +
-					items[ index ] +
-					'/style.scss',
+				file: paths.pluginSrc + '/blocks/' + item + '/style.scss',
 				outputStyle: 'compressed',
-				outFile: './assets/css/blocks/' + items[ index ] + '.css',
+				outFile: './assets/css/blocks/' + item + '.css',
 				sourceMap: false,
 			},
 			function ( error, result ) {
-				if ( null !== result ) {
-					const file_path = result.stats.entry;
-					let new_path = file_path.replace(
-						paths.pluginSrc + path.sep + 'blocks' + path.sep,
-						''
+
+				if ( result && ! error ) {
+
+					fs.writeFile(
+						'./assets/css/blocks/' + item + '.css',
+						result.css,
+						function ( err ) {
+							if ( err ) throw err;
+						}
 					);
-					new_path = new_path.replace( path.sep + 'style.scss', '' );
-					if ( ! error && undefined !== new_path ) {
-						fs.writeFile(
-							'./assets/css/blocks/' + new_path + '.css',
-							result.css,
-							function ( err ) {
-								if ( err ) throw err;
-							}
-						);
-					}
 				}
 			}
 		);
