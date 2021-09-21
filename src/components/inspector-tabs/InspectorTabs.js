@@ -58,7 +58,7 @@ const InspectorTabs = ( props ) => {
 		return () => {
 
 			if( sidebarPanel ) {
-				let inspectorTabs = sidebarPanel.querySelector(
+				const inspectorTabs = sidebarPanel.querySelector(
 					'.uagb-inspector-tabs-container'
 				);
 
@@ -70,12 +70,17 @@ const InspectorTabs = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		return sidebarPanel && sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
+		if ( sidebarPanel ) {
+			sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
+		}
 	}, [ defaultTab ] );
 
 	const _onTabChange = ( tab ) => {
 		setCurrentTab( tab );
-		return sidebarPanel && sidebarPanel.setAttribute( 'data-uagb-tab', tab );
+
+		if ( sidebarPanel ) {
+			sidebarPanel.setAttribute( 'data-uagb-tab', tab );
+		}
 	};
 
 	return (
