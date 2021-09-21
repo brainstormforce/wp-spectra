@@ -1,7 +1,8 @@
 ( function ( $ ) {
-	$ = jQuery;
+
 	let loadStatus = true;
-	UAGBPostCarousel = { // eslint-disable-line no-undef
+
+	window.UAGBPostCarousel = {
 		_setHeight( scope ) {
 			const post_wrapper = scope.find( '.slick-slide' ),
 				post_active = scope.find( '.slick-slide.slick-active' );
@@ -44,7 +45,7 @@
 
 			post_wrapper.each( function () {
 				const $this = jQuery( this );
-					
+
 				if ( $this.hasClass( 'slick-active' ) ) {
 					return true;
 				}
@@ -66,7 +67,7 @@
 
 			post_wrapper.each( function () {
 				const $this = jQuery( this );
-					
+
 				if ( $this.hasClass( 'slick-active' ) ) {
 					return true;
 				}
@@ -75,7 +76,8 @@
 			} );
 		},
 	};
-	UAGBPostMasonry = { // eslint-disable-line no-undef
+
+	window.UAGBPostMasonry = {
 		_init( $attr, $selector ) {
 			let count = 2;
 			const windowHeight50 = jQuery( window ).outerHeight() / 1.25;
@@ -97,7 +99,7 @@
 						if ( true === loadStatus ) {
 							if ( count <= total ) {
 								loader.show();
-								UAGBPostMasonry._callAjax( // eslint-disable-line no-undef
+								window.UAGBPostMasonry._callAjax(
 									$scope,
 									$args,
 									$attr,
@@ -127,7 +129,7 @@
 						if ( true === loadStatus ) {
 							if ( count <= total ) {
 								loader.show();
-								UAGBPostMasonry._callAjax( // eslint-disable-line no-undef
+								window.UAGBPostMasonry._callAjax(
 									$scope,
 									$args,
 									$attr,
@@ -180,7 +182,7 @@ function uagb_carousel_height( id ) { // eslint-disable-line no-unused-vars
 	const scope = wrap
 		.find( '.wp-block-uagb-post-carousel' )
 		.find( '.is-carousel' );
-	UAGBPostCarousel._setHeight( scope ); // eslint-disable-line no-undef
+	window.UAGBPostCarousel._setHeight( scope );
 }
 
 // Unset Carousel Height for Customiser.
@@ -189,5 +191,5 @@ function uagb_carousel_unset_height( id ) { // eslint-disable-line no-unused-var
 	const scope = wrap
 		.find( '.wp-block-uagb-post-carousel' )
 		.find( '.is-carousel' );
-	UAGBPostCarousel._unSetHeight( scope ); // eslint-disable-line no-undef
+	window.UAGBPostCarousel._unSetHeight( scope );
 }
