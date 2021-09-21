@@ -1,5 +1,5 @@
 ( function () {
-	UAGBLottie = {
+	UAGBLottie = { // eslint-disable-line no-undef
 		_run( attr, id ) {
 			const animation = bodymovin.loadAnimation( {
 				container: document.getElementsByClassName( id )[ 0 ],

@@ -32,5 +32,7 @@ module.exports = {
 		uag_react: true,
 		uagb_data: true,
 		bodymovin: true,
+		uagb_forms_data: true,
+		define: true,
 	},
 };
