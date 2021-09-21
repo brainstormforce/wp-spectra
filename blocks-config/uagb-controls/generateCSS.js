@@ -1,8 +1,6 @@
 function generateCSS(
 	selectorsObj,
 	id,
-	isResponsive = false,
-	responsiveType = ''
 ) {
 	let gen_styling_css = '';
 
