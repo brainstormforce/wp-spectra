@@ -105,8 +105,8 @@ function BlocksSettings() {
 				<ul className="uag-block-cat-list">
 				<span className='uag-block-cat-label'>Filter By:</span>
 					{ categories.map( ( cat ) => (
-						<li className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
-							<a onClick={() => setCategory(cat) } 
+						<li key={cat} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
+							<a onClick={() => setCategory(cat) } role = "button" onKeyDown={() => setCategory(cat)} tabIndex={0}
 							>{cat}</a>
 						</li>
 					))}

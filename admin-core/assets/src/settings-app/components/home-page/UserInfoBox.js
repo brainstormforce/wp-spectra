@@ -312,7 +312,7 @@ function UserInfoBox() {
 						src={
 							uag_react.plugin_dir +
 							'admin-core/assets/images/astra-starter-sites.png'
-						}
+						} alt =''
 					/>
 				</div>
 				<div className="uag-starter-tmp__details">
