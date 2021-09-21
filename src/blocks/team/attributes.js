@@ -16,7 +16,7 @@ const attributes = {
 	},
 	tag: {
 		type: 'string',
-		default: 'h3',
+		default: 'h4',
 	},
 	title: {
 		selector: 'h1,h2,h3,h4,h5,h6',
@@ -176,7 +176,7 @@ const attributes = {
 	},
 	imgStyle: {
 		type: 'string',
-		default: 'normal',
+		default: 'circle',
 	},
 	imgPosition: {
 		type: 'string',
@@ -192,17 +192,19 @@ const attributes = {
 	},
 	imgWidth: {
 		type: 'number',
-		default: 120,
+		default: 100,
 	},
 	titleSpace: {
 		type: 'number',
+		default: 6,
 	},
 	prefixSpace: {
 		type: 'number',
+		default: 11,
 	},
 	descSpace: {
 		type: 'number',
-		default: 10,
+		default: 18,
 	},
 	imgLeftMargin: {
 		type: 'number',
