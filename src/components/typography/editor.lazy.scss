@@ -1,40 +1,3 @@
-/*.components-button-group.components-tab-panel__tabs {
-	padding-right: 26px;
-}*/
-
-
-/*.uagb-field-child {
-	padding-top: 12px;
-	padding-bottom: 16px;
-}*/
-
-/*label.uag-typography-font-family-label {
-	margin-top: 10px;
-	margin-right: 88px;
-}*/
-
-/*.css-1pcexqc-container.react-select-container {
-	margin-top: 10px;
-	width: 100px;
-}*/
-
-/*.components-input-control__container.css-bmkl3j-Container.e1cr7zh11 {
-	margin-right: 20px;
-}*/
-
-/*label.uag-typography-font-family-weight-label {
-	margin-right: 84px;
-}*/
-
-
-/*label.uag-typography-font-family-subset-label {
-	margin-right: 86px;
-}*/
-
-/*.block-editor-block-inspector .components-base-control:last-child {
-	margin-bottom: 0px;
-}*/
-
 /* Reset Gutenberg Css */
 .block-editor-block-inspector .uag-typography-options{
 	.components-base-control,
@@ -48,19 +11,6 @@
 	}
 }
 
-/*.uagb-inspector-tab .components-panel__body .uag-typography-options {
-	.components-base-control {
-		padding: 0;
-		width: 100%;
-	}
-}*/
-/*.uagb-inspector-tab .components-panel__body.is-opened .uag-typography-options {
-	.components-base-control.components-toggle-control {
-		padding: 0;
-		width: auto;
-	}
-}*/
-
 .uag-typography-options {
 
 	margin-bottom: 24px;
@@ -73,11 +23,6 @@
 		justify-content: space-between;
 		margin: 0;
 		align-items: center;
-		/*& > .components-base-control {
-			.components-base-control__field {
-				margin: 0;
-			}
-		}*/
 
 		.uag-typography-main-label {
 			font-size: 13px;
@@ -110,7 +55,7 @@
 		padding: 15px;
 		margin: 10px 0;
 		position: relative;
-
+		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.30);
 		/* Common component control css */
 		.components-select-control {
 			height: auto;

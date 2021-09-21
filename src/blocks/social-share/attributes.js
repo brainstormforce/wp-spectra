@@ -48,11 +48,11 @@ const attributes = {
 	},
 	gap: {
 		type: 'number',
-		default: 10,
+		default: 15,
 	},
 	size: {
 		type: 'number',
-		default: 40,
+		default: 25,
 	},
 	sizeType: {
 		type: 'string',

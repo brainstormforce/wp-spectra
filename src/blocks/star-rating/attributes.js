@@ -16,9 +16,11 @@ const attributes = {
 	},
 	size: {
 		type: 'number',
+		default: 18,
 	},
 	gap: {
 		type: 'number',
+		default: 2,
 	},
 	align: {
 		type: 'string',
