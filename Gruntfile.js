@@ -208,8 +208,8 @@ module.exports = function ( grunt ) {
 		request(
 			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
 			function ( error, response, body ) {
-				if ( response && response.statusCode == 200 ) {
-					console.log( 'Fonts successfully fetched!' );
+				if ( response && response.statusCode === 200 ) {
+					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line
 
 					const fonts = JSON.parse( body );
 
@@ -218,7 +218,7 @@ module.exports = function ( grunt ) {
 						JSON.stringify( fonts, null, 4 ),
 						function ( err ) {
 							if ( ! err ) {
-								console.log( 'Font-Awesome library updated!' );
+								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line
 							}
 						}
 					);
