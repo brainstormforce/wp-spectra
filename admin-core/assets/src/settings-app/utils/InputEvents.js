@@ -12,7 +12,6 @@ export default function InputEvents() {
 				optionsClone[ id ] = value;
 				value = optionsClone;
 			}
-			window.uagUnsavedChanges = true;
 			dispatch( {
 				type: 'SET_OPTION',
 				name,
@@ -26,16 +25,16 @@ export default function InputEvents() {
 	useEffect( () => {
 		if ( options ) {
 			fieldTypes.map( function ( field ) {
-				document.addEventListener(
-					`uag:${ field.type }:change`,
-					baseInputChange
-				);
+				return document.addEventListener(
+							`uag:${ field.type }:change`,
+							baseInputChange
+						);
 			} );
 		}
 
 		return () => {
 			fieldTypes.map( function ( field ) {
-				document.removeEventListener(
+				return document.removeEventListener(
 					`uag:${ field.type }:change`,
 					baseInputChange
 				);

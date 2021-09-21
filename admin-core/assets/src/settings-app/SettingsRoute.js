@@ -33,7 +33,6 @@ function SettingsRoute() {
 					break;
 			}
 		}
-		uagWpNavMenuChange( path );
 	}
 
 	return <>{ routePage }</>;

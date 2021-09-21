@@ -34,7 +34,6 @@ function BlocksSettings() {
 			value: 'enabled',
 		} );
         setstatus(false);
-		window.uagUnsavedChanges = true;
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
@@ -65,7 +64,6 @@ function BlocksSettings() {
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
         setstatus(false);
-		window.uagUnsavedChanges = true;
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_block_condition',
