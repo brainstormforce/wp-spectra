@@ -22,11 +22,12 @@ const InspectorTabs = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	const { defaultTab, children, tabs } = props,
-		[ currentTab, setCurrentTab ] = useState(
-			defaultTab ? defaultTab : tabs[ 0 ]
-		),
-		tabContainer = useRef();
+
+	const { defaultTab, children, tabs } = props;
+
+	const [ currentTab, setCurrentTab ] = useState( defaultTab ? defaultTab : tabs[ 0 ] );
+
+	const tabContainer = useRef();
 
 	let sidebarPanel;
 
@@ -55,7 +56,16 @@ const InspectorTabs = ( props ) => {
 
 		// component will unmount
 		return () => {
-			return sidebarPanel && sidebarPanel.removeAttribute( 'data-uagb-tab' );
+
+			if( sidebarPanel ) {
+				let inspectorTabs = sidebarPanel.querySelector(
+					'.uagb-inspector-tabs-container'
+				);
+
+				if( inspectorTabs.length === 0 ) {
+					sidebarPanel.removeAttribute( 'data-uagb-tab' );
+				}
+			}
 		};
 	}, [] );
 
@@ -163,7 +173,7 @@ const InspectorTabs = ( props ) => {
 };
 
 InspectorTabs.defaultProps = {
-	defaultTab: null,
+	defaultTab: 'general',
 	tabs: [ 'general', 'style', 'advance' ],
 };
 
