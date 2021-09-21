@@ -29,6 +29,10 @@ module.exports = {
 		__webpack_public_path__: true,
 		jQuery: true,
 		uagb_deactivate_blocks: true,
-		uag_react: true
+		uag_react: true,
+		uagb_data: true,
+		bodymovin: true,
+		uagb_forms_data: true,
+		define: true,
 	},
 };

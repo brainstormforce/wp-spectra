@@ -197,101 +197,105 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody title={ __( 'Heading' ) } initialOpen={ true }>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: textAlign,
-						label: 'textAlign',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: titleTag,
-						label: 'titleTag',
-					} }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-				/>
-			</PanelBody>
+			<>
+				<PanelBody title={ __( 'Content' ) } initialOpen={ true }>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: textAlign,
+							label: 'textAlign',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-left' ) }
+									/>
+								),
+								tooltip: __(
+									'Left',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'center',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-center' ) }
+									/>
+								),
+								tooltip: __(
+									'Center',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'right',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-right' ) }
+									/>
+								),
+								tooltip: __(
+									'Right',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						showIcons={ true }
+					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Heading' ) } initialOpen={ false }>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: titleTag,
+							label: 'titleTag',
+						} }
+						options={ [
+							{
+								value: 'h1',
+								label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h2',
+								label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h3',
+								label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h4',
+								label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h5',
+								label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h6',
+								label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'span',
+								label: __(
+									'Span',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'p',
+								label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+				</PanelBody>
+			</>
 		);
 	};
 	const buttonSettings = () => {
@@ -1007,22 +1011,6 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Angle',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ gradientAngle }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientAngle: value,
-								} )
-							}
-							min={ 0 }
-							max={ 360 }
-							displayUnit={ false }
-						/>
-						<Range
-							label={ __(
 								'Opacity',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -1037,6 +1025,24 @@ const Settings = ( props ) => {
 							max={ 100 }
 							displayUnit={ false }
 						/>
+						{ 'linear' === gradientType &&
+							<Range
+								label={ __(
+									'Angle',
+									'ultimate-addons-for-gutenberg'
+								) }
+								setAttributes={ setAttributes }
+								value={ gradientAngle }
+								onChange={ ( value ) =>
+									setAttributes( {
+										gradientAngle: value,
+									} )
+								}
+								min={ 0 }
+								max={ 360 }
+								displayUnit={ false }
+							/>
+						}
 					</>
 				) }
 			</PanelBody>

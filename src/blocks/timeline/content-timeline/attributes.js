@@ -84,7 +84,7 @@ const attributes = {
 	},
 	separatorFillColor: {
 		type: 'string',
-		default: '#61ce70',
+		default: '#0693e3',
 	},
 	separatorBorder: {
 		type: 'string',
@@ -92,7 +92,7 @@ const attributes = {
 	},
 	borderFocus: {
 		type: 'string',
-		default: '#5cb85c',
+		default: '#0693e3',
 	},
 	headingTag: {
 		type: 'string',
@@ -216,7 +216,7 @@ const attributes = {
 	},
 	iconBgFocus: {
 		type: 'string',
-		default: '#61ce70',
+		default: '#0693e3',
 	},
 	dateColor: {
 		type: 'string',

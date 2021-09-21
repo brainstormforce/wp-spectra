@@ -253,6 +253,48 @@ const ContentTimelineComponent = ( props ) => {
 			) {
 				lineInner.height( elementEnd );
 			}
+
+			//For changing icon background color and icon color.
+			let timelineIconPos, timelineCardPos;
+			let timelineIconTop, timelineCardTop;
+			let timelineIcon = timeline.find( '.uagb-timeline__marker' );
+			let	animateBorder = timeline.find( '.uagb-timeline__field-wrap' );
+			
+			for ( let i = 0; i < timelineIcon.length; i++ ) {
+				
+				timelineIconPos = jQuery( timelineIcon[ i ] ).offset().top;
+				timelineCardPos = jQuery( animateBorder[ i ] ).offset().top;
+
+				timelineIconTop = timelineIconPos - $document.scrollTop();
+				timelineCardTop = timelineCardPos - $document.scrollTop();
+
+				if ( timelineCardTop < viewportHeightHalf ) {
+					animateBorder[ i ].classList.remove( 'out-view' );
+					animateBorder[ i ].classList.add( 'in-view' );
+				} else {
+					// Remove classes if element is below than half of viewport.
+					animateBorder[ i ].classList.add( 'out-view' );
+					animateBorder[ i ].classList.remove( 'in-view' );
+				}
+
+				if ( timelineIconTop < viewportHeightHalf ) {
+					// Add classes if element is above than half of viewport.
+					timelineIcon[ i ].classList.remove(
+						'uagb-timeline__out-view-icon'
+					);
+					timelineIcon[ i ].classList.add(
+						'uagb-timeline__in-view-icon'
+					);
+				} else {
+					// Remove classes if element is below than half of viewport.
+					timelineIcon[ i ].classList.add(
+						'uagb-timeline__out-view-icon'
+					);
+					timelineIcon[ i ].classList.remove(
+						'uagb-timeline__in-view-icon'
+					);
+				}
+			}
 		}
 	};
 

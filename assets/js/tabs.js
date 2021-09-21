@@ -1,4 +1,4 @@
-UAGBTabs = {
+UAGBTabs = { // eslint-disable-line no-undef
 	init( $selector ) {
 		const tabsWrap = document.querySelector( $selector );
 		const tabActive = tabsWrap.getAttribute( 'data-tab-active' );
@@ -33,7 +33,7 @@ UAGBTabs = {
 			tabsAnchor.mainWrapClass = $selector;
 			// Add Click event listener
 			tabsAnchor.addEventListener( 'click', function ( e ) {
-				UAGBTabs.tabClickEvent( e, this, this.parentElement );
+				UAGBTabs.tabClickEvent( e, this, this.parentElement ); // eslint-disable-line no-undef
 			} );
 		}
 	},
