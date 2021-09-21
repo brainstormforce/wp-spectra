@@ -22,7 +22,7 @@ function TemplatesButton() {
 	const enableStarterTemplate = () => {
 		setssavingState( true );
 		let status;
-		if ( enableTemplate == 'no' ) {
+		if ( enableTemplate === 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
@@ -50,8 +50,6 @@ function TemplatesButton() {
 			if ( data.success ) {
 				setssavingState( false );
 				setenableStarterTemplate( status );
-			} else {
-				console.log( 'Error' );
 			}
 		} );
 	};
@@ -67,7 +65,7 @@ function TemplatesButton() {
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
-								enableTemplate == 'yes'
+								enableTemplate === 'yes'
 									? __(
 											'Disable',
 											'ultimate-addons-for-gutenberg'
@@ -83,7 +81,7 @@ function TemplatesButton() {
 						<span
 							className={ `uag-control__status-${ enableTemplate }` }
 						>
-							{ enableTemplate == 'yes'
+							{ enableTemplate === 'yes'
 								? __(
 										'Enabled ',
 										'ultimate-addons-for-gutenberg'
@@ -96,7 +94,7 @@ function TemplatesButton() {
 								src={
 									uag_react.plugin_dir +
 									'admin-core/assets/images/check.svg'
-								}
+								} alt = ''
 							/>
 						</span>
 					</div>

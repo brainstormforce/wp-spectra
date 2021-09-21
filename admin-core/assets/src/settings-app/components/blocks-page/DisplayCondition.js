@@ -33,11 +33,7 @@ function DisplayCondition(props) {
 				url: uag_react.ajax_url,
 				method: 'POST',
 				body: formData,
-			} ).then( ( data ) => {
-				if ( data.success ) {
-				} else {
-					console.log( 'Error' );
-				}
+			} ).then( ( ) => {
 			} );
 
 			enableBlockConditionCachedValue = options.enable_block_condition;

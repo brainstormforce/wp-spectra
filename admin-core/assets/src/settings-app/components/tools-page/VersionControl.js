@@ -7,7 +7,7 @@ import SettingTable from '../common/SettingTable';
 import React, { useState } from 'react';
 import ConfirmPopup from './ConfirmPopup';
 import apiFetch from '@wordpress/api-fetch';
-function VersionControl( props ) {
+function VersionControl( ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	const [ savingState, setsavingState ] = useState( false );
@@ -56,7 +56,7 @@ function VersionControl( props ) {
 		e.preventDefault();
 		setsavingState( true );
 		let status;
-		if ( enableBeta == 'no' ) {
+		if ( enableBeta === 'no' ) {
 			status = 'yes';
 		} else {
 			status = 'no';
@@ -110,7 +110,7 @@ function VersionControl( props ) {
 					<div className="uag-version-control-button">
 						<NormalButton
 							buttonText={
-								enableBeta == 'yes'
+								enableBeta === 'yes'
 									? __(
 											'Disable',
 											'ultimate-addons-for-gutenberg'
@@ -126,7 +126,7 @@ function VersionControl( props ) {
 						<span
 							className={ `uag-control__status-${ enableBeta }` }
 						>
-							{ enableBeta == 'yes'
+							{ enableBeta === 'yes'
 								? __(
 										'Enabled',
 										'ultimate-addons-for-gutenberg'
@@ -139,7 +139,7 @@ function VersionControl( props ) {
 								src={
 									uag_react.plugin_dir +
 									'admin-core/assets/images/check.svg'
-								}
+								} alt=''
 							/>
 						</span>
 					</div>
