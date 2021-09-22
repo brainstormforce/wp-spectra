@@ -1,6 +1,7 @@
 /*#######################################################################################*/
 
 // Base
+
 /**
  * google-material-color v1.2.6
  * https://github.com/danlevan/google-material-color
@@ -10,7 +11,7 @@ $palette: (
 	Grey: (
 		50: #fafafa,
 		100: #f5f5f5,
-		200: #eeeeee,
+		200: #eee,
 		300: #e0e0e0,
 		400: #bdbdbd,
 		500: #9e9e9e,
@@ -20,7 +21,7 @@ $palette: (
 		900: #212121,
 	),
 	Black: (
-		500: #000000,
+		500: #000,
 		Text: rgba(0, 0, 0, 0.87),
 		Secondary Text: rgba(0, 0, 0, 0.54),
 		Icons: rgba(0, 0, 0, 0.54),
@@ -29,10 +30,10 @@ $palette: (
 		Dividers: rgba(0, 0, 0, 0.12),
 	),
 	White: (
-		500: #ffffff,
-		Text: #ffffff,
+		500: #fff,
+		Text: #fff,
 		Secondary Text: rgba(255, 255, 255, 0.7),
-		Icons: #ffffff,
+		Icons: #fff,
 		Disabled: rgba(255, 255, 255, 0.3),
 		Hint Text: rgba(255, 255, 255, 0.3),
 		Dividers: rgba(255, 255, 255, 0.12),
@@ -58,14 +59,15 @@ $palette: (
 @function palette($color, $shade: 500) {
 	$colorMap: map-get($palette, $color);
 	$result: map-get($colorMap, $shade);
+
 	@return $result;
 }
 
 // Variables
-$scheme: Grey !default;
-$bg: White !default;
+$scheme: grey !default;
+$bg: white !default;
 
-$text: palette(Grey, 800) !default;
+$text: palette(grey, 800) !default;
 $icon-text: palette($scheme, 800) !default;
 
 $color-background: palette($bg, 500) !default;
@@ -88,7 +90,7 @@ $btn-bg-active-color: palette($scheme, 300) !default;
 
 $icon-border-color: palette($scheme, 200) !default;
 $empty-icon-color: palette($scheme, 300) !default;
-$error-icon-color: palette(Red, 200) !default;
+$error-icon-color: palette(red, 200) !default;
 
 $del-bg-color: palette($scheme, 200) !default;
 $del-bg-hover-color: palette($scheme, 300) !default;
@@ -100,11 +102,17 @@ $del-bg-hover-color: palette($scheme, 300) !default;
 /// @requires {function} top-shadow
 /// @requires {function} bottom-shadow
 @mixin card($depth) {
+
 	@if $depth < 1 {
 		box-shadow: none;
-	} @else if $depth > 5 {
-		@warn 'Invalid $depth `#{$depth}` for mixin `card`.';
-	} @else {
+	}
+
+	@else if $depth > 5 {
+
+		@warn "Invalid $depth `#{$depth}` for mixin `card`.";
+	}
+
+	@else {
 		box-shadow: bottom-shadow($depth), top-shadow($depth);
 	}
 }
@@ -135,6 +143,7 @@ $del-bg-hover-color: palette($scheme, 300) !default;
 	border: 0 none;
 	border-bottom: 1px solid $elem-border-color;
 	transition: box-shadow 250ms, border 250ms;
+
 	&:focus,
 	&:active {
 		border-bottom-color: $elem-border-focus-color;
@@ -151,12 +160,14 @@ $theme: default;
 
 	&:active,
 	&:focus {
+
 		@include card(1);
 		border: 1px solid $btn-bg-hover-color;
 	}
 
 	// dropdown button
 	.rfipbtn {
+
 		&__button {
 			border: 0 none transparent;
 			border-left: 1px solid $btn-border-color;
@@ -200,6 +211,7 @@ $theme: default;
 }
 
 .rfipdropdown--#{$theme} {
+
 	@include card(5);
 	color: $text;
 
@@ -212,8 +224,10 @@ $theme: default;
 	border: 1px solid $btn-border-color;
 	// Category item
 	.rfipcategory {
+
 		select {
 			background-color: $color-background;
+
 			@include input($elem-border-color, $elem-border-focus-color);
 		}
 	}
@@ -222,6 +236,7 @@ $theme: default;
 	.rfipicons {
 		// current page
 		&__cp {
+
 			@include input($elem-border-color, $elem-border-focus-color);
 		}
 
@@ -230,10 +245,12 @@ $theme: default;
 			background-color: $pager-bg-color;
 			border: 1px solid $pager-bg-color;
 			color: $icon-text;
+
 			&:hover {
 				background-color: $pager-bg-hover-color;
 				border: 1px solid $pager-bg-hover-color;
 			}
+
 			&:focus,
 			&:active {
 				border: 1px solid $pager-bg-hover-color;
@@ -245,14 +262,17 @@ $theme: default;
 			background-color: $ibox-bg-color;
 			border: 1px solid $ibox-bg-color;
 			color: $icon-text;
+
 			&:hover {
 				background-color: $ibox-bg-hover-color;
 				border: 1px solid $ibox-bg-hover-color;
 			}
+
 			&:focus,
 			&:active {
 				border: 1px solid $ibox-bg-hover-color;
 			}
+
 			&--error {
 				color: $error-icon-color;
 			}
@@ -261,7 +281,9 @@ $theme: default;
 
 	// Search
 	.rfipsearch {
+
 		input {
+
 			@include input($elem-border-color, $elem-border-focus-color);
 		}
 	}
@@ -273,19 +295,30 @@ $theme: default;
 .rfipdropdown {
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-		"Helvetica Neue", sans-serif;
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		"Roboto",
+		"Oxygen",
+		"Ubuntu",
+		"Cantarell",
+		"Fira Sans",
+		"Droid Sans",
+		"Helvetica Neue",
+		sans-serif;
 	font-size: 14px;
 	line-height: (24/14);
 	vertical-align: baseline;
 
 	box-sizing: border-box;
+
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
+
 	input,
 	select {
 		font-size: 14px;
@@ -333,6 +366,7 @@ $theme: default;
 
 		// Open
 		&--open {
+
 			i {
 				transform: rotate(-180deg);
 			}
@@ -393,6 +427,7 @@ $theme: default;
 		align-items: center;
 		justify-content: center;
 		font-size: 18px;
+
 		img,
 		svg {
 			height: 18px;
@@ -416,6 +451,7 @@ $theme: default;
 	width: 100%;
 	margin: 0 0 8px;
 	position: relative;
+
 	select {
 		width: 100%;
 		display: block;
@@ -428,6 +464,7 @@ $theme: default;
 		transition: border 250ms, box-shadow 250ms;
 		background-color: transparent !important;
 	}
+
 	i {
 		position: absolute;
 		right: 2px;
@@ -455,6 +492,7 @@ $theme: default;
 	// For animation
 	&.fipappear-enter-active,
 	&.fipappear-exit-active {
+
 		.rfipdropdown__selector {
 			transition: max-height 300ms ease-out, padding 300ms ease-out;
 			padding: 16px;
@@ -510,6 +548,7 @@ $theme: default;
 	&__right {
 		margin-left: auto;
 	}
+
 	&__left,
 	&__right {
 		cursor: pointer;
@@ -529,6 +568,7 @@ $theme: default;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		img {
 			height: 18px;
 			width: 18px;
@@ -555,17 +595,21 @@ $theme: default;
 		border-radius: 2px;
 		outline: 0 none;
 		font-size: 20px;
+
 		img,
 		svg {
 			max-height: 24px;
 			width: auto;
 		}
+
 		> * {
 			transform: scale(1);
 			transition: transform 250ms;
 			transform-origin: center;
 		}
+
 		&:hover {
+
 			> * {
 				transform: scale(1.8);
 			}
@@ -602,6 +646,7 @@ $theme: default;
 .rfipsearch {
 	width: 100%;
 	margin: 0 0 8px;
+
 	input {
 		width: 100%;
 		display: block;
@@ -609,27 +654,34 @@ $theme: default;
 		line-height: 32px;
 	}
 }
+
 .components-panel {
+
 	.rfipdropdown,
 	.rfipdropdown.rfipdropdown--default.fipappear-enter-done {
 		left: 0;
 		width: 100%;
 	}
+
 	.rfipicons__ibox {
 		font-size: 15px;
 	}
+
 	.rfipicons__icon {
 		height: 40px;
 	}
+
 	.rfipicons__ibox:hover > * {
 		-webkit-transform: scale(1.45);
 		-ms-transform: scale(1.45);
 		transform: scale(1.45);
 	}
 }
+
 .rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
 	fill: #007cba;
 }
+
 .rfipbtn--default .rfipbtn__icon {
 	color: #424242;
 	height: 40px;
@@ -645,6 +697,7 @@ $theme: default;
 	border-radius: 100%;
 	margin-left: 10px;
 }
+
 .rfipdropdown--default .rfipicons__ibox,
 .rfipdropdown--default .rfipicons__ibox:focus,
 .rfipdropdown--default .rfipicons__ibox:active,
@@ -653,9 +706,11 @@ $theme: default;
 	background-color: transparent;
 	border: 0;
 }
+
 .rfipdropdown--default .rfipicons__icon--selected .rfipicons__ibox svg {
 	fill: #007cba;
 }
+
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
 	width: 16px;
@@ -670,9 +725,11 @@ $theme: default;
 /* Override default CSS - UAG */
 
 .uag-icon-picker {
+
 	.rfip {
 		margin: 4px 0 0;
 	}
+
 	.uag-control-label {
 		padding-bottom: 4px;
 		display: block;

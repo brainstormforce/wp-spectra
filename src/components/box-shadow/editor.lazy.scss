@@ -2,11 +2,13 @@
 .uag-box-shadow-options {
 
 	margin-bottom: 24px;
+
 	.uag-box-shadow-option-actions {
 		display: flex;
 		justify-content: space-between;
 		margin: 0;
 		align-items: center;
+
 		.uag-box-shadow-button {
 			margin: 0;
 			height: 28px;
@@ -20,7 +22,7 @@
 				line-height: 20px;
 			}
 
-			&:focus:not(:disabled){
+			&:focus:not(:disabled) {
 				box-shadow: none;
 				outline: none;
 			}
@@ -33,13 +35,14 @@
 		padding: 15px;
 		margin: 10px 0;
 		position: relative;
-		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.30);
+		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+
 		> .components-base-control {
 			margin-top: 0;
 		}
 
-		&:after,
-		&:before {
+		&::after,
+		&::before {
 			bottom: 100%;
 			right: 8px;
 			border: solid transparent;
@@ -49,16 +52,19 @@
 			position: absolute;
 			pointer-events: none;
 		}
-		&:after{
+
+		&::after {
 			right: 9px;
 		}
-		&:after {
+
+		&::after {
 			border-color: rgba(255, 255, 255, 0);
 			border-bottom-color: #fff;
 			border-width: 5px;
 			margin-left: -5px;
 		}
-		&:before {
+
+		&::before {
 			border-color: rgba(211, 211, 211, 0);
 			border-bottom-color: #d3d3d3;
 			border-width: 6px;
@@ -88,6 +94,6 @@
 // 	}
 // }
 .block-editor-block-inspector .components-base-control:last-child {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 

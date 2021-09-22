@@ -46,19 +46,13 @@
 }
 
 /* Reset CSS*/
-.components-panel__body
-.uagb-control__header
-.uagb-control__actions
-.uagb-reset {
+.components-panel__body .uagb-control__header .uagb-control__actions .uagb-reset {
   padding: 0;
   margin-right: 4px;
 }
 
-/* Spacing control Units CSS*/
-.components-panel__body
-.uagb-control__header
-.uagb-control__actions
-.uagb-spacing-control__units {
+.components-panel__body .uagb-control__header .uagb-control__actions .uagb-spacing-control__units {
+  /* Spacing control Units CSS*/
   display: flex;
   align-items: center;
 }
@@ -140,10 +134,7 @@
   line-height: 0;
 }
 
-.uagb-size-type-field-tabs
-.components-tab-panel__tabs
-button
-span.dashicon.dashicons {
+.uagb-size-type-field-tabs .components-tab-panel__tabs button span.dashicon.dashicons {
   font-size: 15px;
 }
 
@@ -184,9 +175,7 @@ hr.uagb-editor__separator {
 }
 
 .uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button,
-.uagb-inspect-tabs.uagb-inspect-tabs-col-2
-> .components-tab-panel__tabs
-button {
+.uagb-inspect-tabs.uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button {
   width: 50%;
 }
 
@@ -195,7 +184,7 @@ button {
 .components-button-group .components-button.is-primary,
 .components-button-group .components-button:focus,
 .components-toolbar .components-button,
-.components-toolbar .components-button:before {
+.components-toolbar .components-button::before {
   z-index: unset;
 }
 
@@ -320,8 +309,7 @@ button {
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
-.uagb-size-type-field
-button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
   box-shadow: none;
   background: transparent;
   border: none;
@@ -341,8 +329,7 @@ button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
-.uagb-size-type-field
-button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
   color: #000;
   box-shadow: none;
   background: transparent;
@@ -457,8 +444,7 @@ label.wp-block-uagb-blockquote__via-label svg {
   margin-top: 1em;
 }
 
-.edit-post-settings-sidebar__panel-block
-.components-panel__body.uagb-repeater-panel:last-child {
+.edit-post-settings-sidebar__panel-block .components-panel__body.uagb-repeater-panel:last-child {
   margin-bottom: 1em;
 }
 
@@ -475,10 +461,7 @@ label.wp-block-uagb-blockquote__via-label svg {
   margin-bottom: 15px;
 }
 
-.uag-typography-range-options
-+ .components-base-control
-.components-base-control__field
-.css-unzpkb-Flex-Root {
+.uag-typography-range-options + .components-base-control .components-base-control__field .css-unzpkb-Flex-Root {
   position: inherit;
 }
 
@@ -549,22 +532,17 @@ button.components-button.uagb-review-select-btn.is-secondary {
   margin-bottom: 18px;
 }
 
-.uag-typography-range-options
-.components-base-control
-.components-flex.components-select-control {
+.uag-typography-range-options .components-base-control .components-flex.components-select-control {
   position: unset;
 }
 
-.uag-typography-option-actions
-.uagb-typography-control-btn.components-button:focus:not(:disabled) {
+.uag-typography-option-actions .uagb-typography-control-btn.components-button:focus:not(:disabled) {
   box-shadow: unset;
   outline: none;
   color: #2e92c4;
 }
 
-.uagb-inspector-tab
-.components-panel__body.is-opened
-> .components-panel__body-title {
+.uagb-inspector-tab .components-panel__body.is-opened > .components-panel__body-title {
   margin-bottom: 16px;
 }
 
@@ -575,10 +553,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
   margin-bottom: 16px;
 }
 
-.uagb-inspector-tab
-.components-panel__body
-> .components-panel__body-title
-.components-button.components-panel__body-toggle:focus {
+.uagb-inspector-tab .components-panel__body > .components-panel__body-title .components-button.components-panel__body-toggle:focus {
   box-shadow: none;
 }
 
@@ -626,20 +601,15 @@ button.components-button.uagb-review-select-btn.is-secondary {
   margin-left: 5px;
 }
 
-.components-panel__body .components-base-control
-.uagb-control__header
-.uagb-range-control-responsive
-.uagb-responsive-tabs {
+.components-panel__body .components-base-control .uagb-control__header .uagb-range-control-responsive .uagb-responsive-tabs {
   margin: 0;
   padding: 4px;
   line-height: 0;
   box-shadow: none;
 }
 
-.uagb-inspector-tab
-.components-base-control
-.components-range-control__wrapper {
-  margin-left: 0px;
+.uagb-inspector-tab .components-base-control .components-range-control__wrapper {
+  margin-left: 0;
 }
 
 .components-range-control__slider {
@@ -653,13 +623,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
   left: 0%;
   height: 17px;
   width: 17px;
-  margin-left: 0px;
+  margin-left: 0;
   margin-top: 6px;
 }
 
-.interface-interface-skeleton__sidebar
-.components-panel[data-uagb-tab="advance"]
-.block-editor-block-inspector__advanced.uagb-extention-tab {
+.interface-interface-skeleton__sidebar .components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab {
   border: none;
   border-bottom: 1px solid #e0e0e0;
 }

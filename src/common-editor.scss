@@ -6,10 +6,14 @@
 */
 
 /* ------------------------------------------------------------------------------------------------*/
+
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector {
+
 	.uagb-inspector-tab {
+
 		.components-panel__body {
+
 			> .components-base-control {
 				margin-bottom: 24px;
 
@@ -22,10 +26,13 @@
 			> .components-base-control:last-child {
 				margin-bottom: 0;
 			}
+
 			/* Gutenberg DatePicker CSS */
 			.components-datetime {
+
 				.components-datetime__buttons {
 					margin: 10px 0 10px 0;
+
 					/* Unset box-shadow */
 					.components-button:focus:not(:disabled) {
 						box-shadow: unset;
@@ -40,6 +47,7 @@
 		}
 	}
 }
+
 /* UAG Help Notice CSS*/
 .uagb-inspector-tab .uag-control-help-notice {
 	margin-top: 10px;
@@ -47,22 +55,28 @@
 	font-style: normal;
 	color: rgb(117, 117, 117);
 }
+
 /* Reset CSS*/
-.components-panel__body
-	.uagb-control__header
-	.uagb-control__actions
-	.uagb-reset {
-	padding: 0;
-	margin-right: 4px;
+.components-panel__body {
+
+	.uagb-control__header {
+
+		.uagb-control__actions {
+
+			.uagb-reset {
+				padding: 0;
+				margin-right: 4px;
+			}
+
+			.uagb-spacing-control__units { /* Spacing control Units CSS*/
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
 }
-/* Spacing control Units CSS*/
-.components-panel__body
-	.uagb-control__header
-	.uagb-control__actions
-	.uagb-spacing-control__units {
-	display: flex;
-	align-items: center;
-}
+
+
 /* UAG Control Label CSS*/
 .uag-control-label,
 .uagb-inspector-tab .components-base-control__label,
@@ -71,19 +85,24 @@
 	font-size: 13px;
 	line-height: 1.4;
 }
+
 /* Panel Body CSS*/
 .uagb-inspector-tab,
 [data-uagb-tab] {
+
 	.components-panel__body-title .components-button {
 		font-size: 14px;
 	}
 }
+
 /* GB Select Control CSS*/
 .uagb-inspector-tab .components-select-control {
 	height: auto;
+
 	.components-input-control__label {
 		padding-bottom: 8px !important;
 	}
+
 	.components-select-control__input {
 		font-size: 12px !important;
 		line-height: 2 !important;
@@ -104,6 +123,7 @@
 	margin-bottom: -20px;
 	display: block;
 }
+
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
 .uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
 	width: 10px;
@@ -137,17 +157,19 @@
 	line-height: 0;
 }
 
-.uagb-size-type-field-tabs
-	.components-tab-panel__tabs
-	button
-	span.dashicon.dashicons {
-	font-size: 15px;
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+
+	button span.dashicon.dashicons {
+		font-size: 15px;
+	}
 }
 
 .uagb-control__actions .uagb-size-type-field-tabs {
 	margin: 0;
 }
+
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs END*/
+
 /* ------------------------------------------------------------------------------------------------*/
 
 .uagb-inspect-tabs .components-tab-panel__tabs button {
@@ -181,19 +203,19 @@ hr.uagb-editor__separator {
 }
 
 .uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button,
-.uagb-inspect-tabs.uagb-inspect-tabs-col-2
-	> .components-tab-panel__tabs
-	button {
+.uagb-inspect-tabs.uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button {
 	width: 50%;
 }
+
 .DayPickerNavigation,
 .DayPicker_weekHeader,
 .components-button-group .components-button.is-primary,
 .components-button-group .components-button:focus,
 .components-toolbar .components-button,
-.components-toolbar .components-button:before {
+.components-toolbar .components-button::before {
 	z-index: unset;
 }
+
 .uagb-inspect-tabs .components-tab-panel__tabs {
 	margin-bottom: 15px;
 }
@@ -286,12 +308,14 @@ hr.uagb-editor__separator {
 	justify-content: flex-end;
 	margin-bottom: -18px;
 }
+
 .edit-post-sidebar h2.uagb-size-type-field-title {
 	font-size: 14px;
 	margin-bottom: 0;
 	color: #555d66;
 	margin-top: 30px;
 }
+
 .uagb-size-type-field button.components-button.uagb-size-btn {
 	background: transparent;
 	color: #777;
@@ -313,8 +337,7 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
-.uagb-size-type-field
-	button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled="true"]) {
 	box-shadow: none;
 	background: transparent;
 	border: none;
@@ -334,8 +357,7 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
-.uagb-size-type-field
-	button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
+.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
 	color: #000;
 	box-shadow: none;
 	background: transparent;
@@ -398,6 +420,7 @@ hr.uagb-editor__separator {
 	vertical-align: middle;
 	background-color: transparent;
 }
+
 [class^="fipicon-"] {
 	speak: none;
 	font-style: normal;
@@ -434,9 +457,11 @@ label.wp-block-uagb-blockquote__via-label svg {
 	fill: #6c7781;
 	vertical-align: middle;
 }
+
 .slick-arrow svg {
 	vertical-align: middle;
 }
+
 .components-select-control__input {
 	text-transform: capitalize;
 }
@@ -449,8 +474,8 @@ label.wp-block-uagb-blockquote__via-label svg {
 	background: #fff;
 	margin-top: 1em;
 }
-.edit-post-settings-sidebar__panel-block
-	.components-panel__body.uagb-repeater-panel:last-child {
+
+.edit-post-settings-sidebar__panel-block .components-panel__body.uagb-repeater-panel:last-child {
 	margin-bottom: 1em;
 }
 
@@ -466,16 +491,18 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-forms-button-group {
 	margin-bottom: 15px;
 }
-.uag-typography-range-options
-	+ .components-base-control
-	.components-base-control__field
-	.css-unzpkb-Flex-Root {
-	position: inherit;
+
+.uag-typography-range-options + .components-base-control {
+
+	.components-base-control__field .css-unzpkb-Flex-Root {
+		position: inherit;
+	}
 }
 
 .uag-typography-range-options + .components-button-group.uagb-size-type-field {
 	margin-bottom: -33px;
 }
+
 /* Common uagb reset CSS start here */
 button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 	color: #2e92c4;
@@ -486,14 +513,17 @@ button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 	height: 11px;
 	font-size: 9px;
 }
+
 .uagb-reset {
 	margin-top: 0.3em;
 	height: auto;
 }
+
 button.components-button.uagb-reset.is-secondary.is-small {
 	box-shadow: unset;
 	background: 0 0;
 }
+
 /* Common uagb reset CSS end here */
 
 /* Common CSS for border start here */
@@ -513,6 +543,7 @@ button.components-button.uagb-reset.is-secondary.is-small {
 label.uagb-border-label {
 	margin-right: 130px;
 }
+
 /* Common CSS for border ens here */
 
 button.components-button.uagb-review-select-btn.is-secondary {
@@ -522,31 +553,32 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .components-toggle-control__label {
 	line-height: 2;
 }
+
 .uagb-control__header {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 8px;
 }
+
 .components-panel__body .uagb-control__label {
 	margin-bottom: 0;
 }
+
 .uagb-components-base-control {
 	margin-bottom: 18px;
 }
-.uag-typography-range-options
-	.components-base-control
-	.components-flex.components-select-control {
+
+.uag-typography-range-options .components-base-control .components-flex.components-select-control {
 	position: unset;
 }
-.uag-typography-option-actions
-	.uagb-typography-control-btn.components-button:focus:not(:disabled) {
+
+.uag-typography-option-actions .uagb-typography-control-btn.components-button:focus:not(:disabled) {
 	box-shadow: unset;
 	outline: none;
 	color: #2e92c4;
 }
-.uagb-inspector-tab
-	.components-panel__body.is-opened
-	> .components-panel__body-title {
+
+.uagb-inspector-tab .components-panel__body.is-opened > .components-panel__body-title {
 	margin-bottom: 16px;
 }
 
@@ -556,12 +588,14 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin: -10px;
 	margin-bottom: 16px;
 }
-.uagb-inspector-tab
-	.components-panel__body
-	> .components-panel__body-title
+
+.uagb-inspector-tab .components-panel__body > .components-panel__body-title {
+
 	.components-button.components-panel__body-toggle:focus {
-	box-shadow: none;
+		box-shadow: none;
+	}
 }
+
 .uag-responsive-common-button {
 	box-shadow: none;
 	color: #007cba;
@@ -580,9 +614,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	line-height: 0;
 	margin-left: 5px;
 }
+
 .uag-responsive-common-button .dashicon {
 	font-size: 15px;
 }
+
 .components-button.uag-responsive-common-button:hover,
 .components-button.uag-responsive-common-button:focus,
 .components-button.uag-responsive-common-button:active {
@@ -595,6 +631,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	display: flex;
 	align-items: center;
 }
+
 .components-panel__body.is-opened .uagb-range-control-responsive {
 	display: flex;
 	align-items: center;
@@ -602,36 +639,40 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin: 0;
 	margin-left: 5px;
 }
-.components-panel__body .components-base-control
-	.uagb-control__header
-	.uagb-range-control-responsive
-	.uagb-responsive-tabs {
-	margin: 0;
-	padding: 4px;
-	line-height: 0;
-	box-shadow: none;
+
+.components-panel__body .components-base-control {
+
+	.uagb-control__header .uagb-range-control-responsive .uagb-responsive-tabs {
+		margin: 0;
+		padding: 4px;
+		line-height: 0;
+		box-shadow: none;
+	}
 }
-.uagb-inspector-tab
-	.components-base-control
-	.components-range-control__wrapper {
-	margin-left: 0px;
+
+.uagb-inspector-tab .components-base-control .components-range-control__wrapper {
+	margin-left: 0;
 }
+
 .components-range-control__slider {
 	align-items: center;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 }
+
 .uagb-inspector-tab span[CLASS*="-ThumbWrapper"] {
 	left: 0%;
 	height: 17px;
 	width: 17px;
-	margin-left: 0px;
+	margin-left: 0;
 	margin-top: 6px;
 }
-.interface-interface-skeleton__sidebar
-	.components-panel[data-uagb-tab="advance"]
-	.block-editor-block-inspector__advanced.uagb-extention-tab {
-	border: none;
-	border-bottom: 1px solid #e0e0e0;
+
+.interface-interface-skeleton__sidebar {
+
+	.components-panel[data-uagb-tab="advance"] .block-editor-block-inspector__advanced.uagb-extention-tab {
+		border: none;
+		border-bottom: 1px solid #e0e0e0;
+	}
 }

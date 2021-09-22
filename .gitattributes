@@ -1,2 +1,6 @@
 dist/** -diff
+admin-core/**/build/*.css -diff
+admin-core/**/build/*.js -diff
+assets/css/blocks/** -diff
 assets/css/custom-style-blocks.css -diff
+--diff-filter=D

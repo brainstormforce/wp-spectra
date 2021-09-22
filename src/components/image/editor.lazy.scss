@@ -11,14 +11,17 @@
 	margin-top: 10px;
 	align-items: center;
 	justify-content: center;
+
 	.components-button {
 		margin: 0;
 		padding: 0;
 	}
+
 	.uagb-rm-btn {
 		margin-left: 10px;
 	}
 }
+
 .uagb-bg-image .components-button:focus:not(:disabled),
 .uagb-bg-image .components-button.is-secondary:hover:not(:disabled),
 .components-button.is-tertiary:hover:not(:disabled),

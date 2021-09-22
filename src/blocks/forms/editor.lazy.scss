@@ -1,7 +1,9 @@
 .uagb-forms__outer-wrap {
 	border: 2px solid #007cba;
-	padding:25px;
+	padding: 25px;
+
 	.uagb-forms-main-form {
+
 		.uagb-forms-form-hidden-data {
 			display: none;
 		}
@@ -39,6 +41,7 @@ select.uagb-forms-select-box.uagb-forms-input {
 .uagb-form-emailto {
 	margin-top: 10px;
 }
+
 .uagb-forms-recaptcha-button {
 	display: block;
 	width: 50%;
@@ -50,7 +53,6 @@ select.uagb-forms-select-box.uagb-forms-input {
 	justify-content: center;
 }
 
-[data-type="uagb/forms"]
-	.block-editor-block-variation-picker__variation.components-button.has-icon {
+[data-type="uagb/forms"] .block-editor-block-variation-picker__variation.components-button.has-icon {
 	width: 90px;
 }

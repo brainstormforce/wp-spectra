@@ -63,7 +63,7 @@
     "format:js": "wp-scripts format-js",
     "lint-js": "wp-scripts lint-js",
     "lint-js:fix": "npm run lint-js -- --fix",
-    "lint-css": "wp-scripts lint-style admin-core",
+    "lint-css": "wp-scripts lint-style",
     "lint-css:fix": "npm run lint-css -- --fix",
     "admin-lint-js": "wp-scripts lint-js admin-core/assets/src",
     "admin-lint-js:fix": "npm run admin-lint-js -- --fix",

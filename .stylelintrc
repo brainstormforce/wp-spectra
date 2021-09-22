@@ -6,6 +6,15 @@
 		"font-weight-notation": null,
 		"declaration-property-unit-allowed-list": {
 			"line-height": [ "px", "em" ]
-		}
+		},
+		"max-line-length": [
+			180,
+			{
+				"ignore": "non-comments",
+				"ignorePattern": [
+					"/(https?://[0-9,a-z]*.*)|(^description\\:.+)|(^tags\\:.+)/i",
+				]
+			}
+		]
 	}
 }

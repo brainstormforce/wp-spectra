@@ -1,5 +1,6 @@
 /* Reset Gutenberg Css */
-.block-editor-block-inspector .uag-typography-options{
+.block-editor-block-inspector .uag-typography-options {
+
 	.components-base-control,
 	.components-base-control__field {
 		margin: 0;
@@ -16,7 +17,7 @@
 	margin-bottom: 24px;
 
 	/* Label & actions */
-	.uag-typography-option-actions{
+	.uag-typography-option-actions {
 
 		/** Typography & Box Shadow Popup CSS*/
 		display: flex;
@@ -41,7 +42,7 @@
 				line-height: 20px;
 			}
 
-			&:focus:not(:disabled){
+			&:focus:not(:disabled) {
 				box-shadow: none;
 				outline: none;
 			}
@@ -55,14 +56,15 @@
 		padding: 15px;
 		margin: 10px 0;
 		position: relative;
-		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.30);
+		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+
 		/* Common component control css */
 		.components-select-control {
 			height: auto;
 		}
 
-		&:after,
-		&:before {
+		&::after,
+		&::before {
 			bottom: 100%;
 			right: 8px;
 			border: solid transparent;
@@ -72,16 +74,16 @@
 			position: absolute;
 			pointer-events: none;
 		}
-		&:after{
+
+		&::after {
 			right: 9px;
-		}
-		&:after {
 			border-color: rgba(255, 255, 255, 0);
 			border-bottom-color: #fff;
 			border-width: 5px;
 			margin-left: -5px;
 		}
-		&:before {
+
+		&::before {
 			border-color: rgba(211, 211, 211, 0);
 			border-bottom-color: #d3d3d3;
 			border-width: 6px;
@@ -95,10 +97,12 @@
 	.uag-typography-transform-decoration-wrap {
 		display: flex;
 		justify-content: space-between;
+
 		/*.components-base-control__field {
 			margin-bottom: 0;
 		}*/
 	}
+
 	/* Font options - family width subset */
 	.uag-typography-font-family-options {
 
@@ -127,7 +131,7 @@
 	}*/
 
 	/* Range options */
-	.uag-typography-range-options{
+	.uag-typography-range-options {
 
 		margin-bottom: 16px;
 
@@ -137,6 +141,7 @@
 			margin-bottom: 8px;
 		}*/
 	}
+
 	/*.components-button-group.uagb-size-type-field {
 		padding-right: 26px;
 	}*/

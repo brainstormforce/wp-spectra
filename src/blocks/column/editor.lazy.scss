@@ -42,7 +42,9 @@
 }
 
 .wp-block-uagb-column.uagb-column__wrap {
-	.uagb-column__inner-wrap, .block-editor-inner-blocks {
+
+	.uagb-column__inner-wrap,
+	.block-editor-inner-blocks {
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
