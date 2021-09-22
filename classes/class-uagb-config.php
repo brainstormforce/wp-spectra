@@ -178,7 +178,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'name' => 'call-to-action',
 					),
 					'uagb/cf7-styler'             => array(
-						'name' => 'cf7-designer',
+						'name' => 'cf7-styler',
 					),
 					'uagb/column'                 => array(
 						'name' => 'column',
@@ -196,7 +196,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'name' => 'forms',
 					),
 					'uagb/gf-styler'              => array(
-						'name' => 'gf-designer',
+						'name' => 'gf-styler',
 					),
 					'uagb/google-map'             => array(
 						'name' => 'google-map',

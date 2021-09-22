@@ -288,13 +288,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				if ( 'cf7-styler' === $c_block ) {
-					$c_block = 'cf7-designer';
-				}
-				if ( 'gf-styler' === $c_block ) {
-					$c_block = 'gf-designer';
-				}
-
 				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
 
 				if ( file_exists( $style_file ) ) {

@@ -43,8 +43,22 @@ fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
 
 				if ( result && ! error ) {
 
+					let file_name = item;
+
+					switch ( item ) {
+						case 'cf7-designer':
+							file_name = 'cf7-styler';
+							break;
+						case 'gf-designer':
+							file_name = 'gf-styler';
+							break;
+						default:
+							file_name = item;
+							break;
+					}
+
 					fs.writeFile(
-						'./assets/css/blocks/' + item + '.css',
+						'./assets/css/blocks/' + file_name + '.css',
 						result.css,
 						function ( err ) {
 							if ( err ) throw err;
