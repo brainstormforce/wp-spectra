@@ -14,6 +14,7 @@
 .rtl .uagb-timeline__left-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
 	border-left: 13px solid #eee;
 	border-right: none;
+	right: 470px;
 }
 
 .rtl .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
@@ -42,6 +43,7 @@
 .rtl .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
 	border-right: 13px solid #eee;
 	border-left: none;
+	right: 470px;
 }
 
 .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
@@ -56,14 +58,6 @@
 .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
 	border-left: 13px solid #eee;
 	border-right: none;
-}
-
-.rtl .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
-	right: 470px;
-}
-
-.rtl .uagb-timeline__left-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
-	right: 470px;
 }
 
 .rtl .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {

@@ -1,21 +1,13 @@
 /**
  * External dependencies
  */
-import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { ButtonGroup, Button, SelectControl } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 
 const ResponsiveSelectControl = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
 	const [ displayResponsive, toggleResponsive ] = useState( false );
 	const { label, data, setAttributes, options } = props;
 

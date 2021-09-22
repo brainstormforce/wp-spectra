@@ -4,7 +4,7 @@
 
 	.uagb-spacing-control__link {
 		border: 1px solid #8c8f94;
-		background-color: #fff;
+		background-color: #d5dadf;
 		color: #1e8cbe;
 		justify-content: center;
 		display: flex;
@@ -13,6 +13,7 @@
 		font-size: 12px;
 		line-height: 28px;
 		cursor: pointer;
+		width: 12%;
 
 		&.uagb-spacing-control-disconnected {
 			color: #2d3748;
@@ -29,6 +30,9 @@
 
 	input[type="number"].uagb-spacing-control__number,
 	.uagb-spacing-control__link {
+		border-left: 1px solid #d5dadf;
+		border-right: 1px solid #d5dadf;
+		border-color: #d5dadf;
 		border-radius: 0;
 		box-shadow: none !important;
 		height: 30px;
@@ -37,21 +41,9 @@
 		width: 25%;
 	}
 
-	.uagb-spacing-control__link {
-		width: 12%;
-		background: #d5dadf;
-	}
-
 	input[type="number"].uagb-spacing-control__number:focus,
 	.uagb-spacing-control__link {
 		z-index: 1;
-	}
-
-	input[type="number"].uagb-spacing-control__number,
-	.uagb-spacing-control__link {
-		border-left: 1px solid #d5dadf;
-		border-right: 1px solid #d5dadf;
-		border-color: #d5dadf;
 	}
 
 	.uagb-spacing-control__mobile-controls button[type="button"] > span {
@@ -75,9 +67,6 @@
 		padding-right: 4px;
 		margin-right: 0;
 	}
-}
-
-.uagb-spacing-control {
 
 	.uagb-spacing-control__inputs {
 		display: flex;
@@ -85,7 +74,6 @@
 
 	.uagb-spacing-control__mobile-controls-item {
 		border: 0;
-		border-radius: 2px 0 0 2px;
 		display: none;
 		font-size: 10px;
 		height: 30px;
@@ -122,7 +110,7 @@
 		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-secondary:active:not(:disabled),
 		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-tertiary:active:not(:disabled) {
 			background: #fff;
-			color: black;
+			color: #000;
 		}
 
 		&.components-button {

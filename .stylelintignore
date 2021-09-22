@@ -28,4 +28,4 @@ admin-core/assets/build/
 admin-core/assets/images/
 admin-core/**/*-rtl.css
 
-src/blocks/demo-control-block/
+src/components/icon-picker/editor.lazy.scss

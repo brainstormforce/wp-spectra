@@ -329,7 +329,13 @@ class UAGB_Init_Blocks {
 
 		if ( is_array( $saved_blocks ) ) {
 			foreach ( $saved_blocks as $slug => $data ) {
+
 				$_slug         = 'uagb/' . $slug;
+
+				if ( ! isset( UAGB_Config::$block_attributes[ $_slug ] ) ) {
+					continue;
+				}
+
 				$current_block = UAGB_Config::$block_attributes[ $_slug ];
 
 				if ( isset( $current_block['is_child'] ) && $current_block['is_child'] ) {

@@ -64,10 +64,10 @@ $palette: (
 }
 
 // Variables
-$scheme: grey !default;
-$bg: white !default;
+$scheme: #808080 !default;
+$bg: #fff !default;
 
-$text: palette(grey, 800) !default;
+$text: palette(#808080, 800) !default;
 $icon-text: palette($scheme, 800) !default;
 
 $color-background: palette($bg, 500) !default;
@@ -90,7 +90,7 @@ $btn-bg-active-color: palette($scheme, 300) !default;
 
 $icon-border-color: palette($scheme, 200) !default;
 $empty-icon-color: palette($scheme, 300) !default;
-$error-icon-color: palette(red, 200) !default;
+$error-icon-color: palette(#f00, 200) !default;
 
 $del-bg-color: palette($scheme, 200) !default;
 $del-bg-hover-color: palette($scheme, 300) !default;
@@ -122,7 +122,7 @@ $del-bg-hover-color: palette($scheme, 300) !default;
 @function top-shadow($depth) {
 	$primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
 	$blur: nth(1.5 3 10 14 19, $depth) * 4px;
-	$color: rgba(black, nth(0.12 0.16 0.19 0.25 0.3, $depth));
+	$color: rgba(#000, nth(0.12 0.16 0.19 0.25 0.3, $depth));
 
 	@return 0 $primary-offset $blur $color;
 }
@@ -133,7 +133,7 @@ $del-bg-hover-color: palette($scheme, 300) !default;
 @function bottom-shadow($depth) {
 	$primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
 	$blur: nth(1 3 3 5 6, $depth) * 4px;
-	$color: rgba(black, nth(0.24 0.23 0.23 0.22 0.22, $depth));
+	$color: rgba(#000, nth(0.24 0.23 0.23 0.22 0.22, $depth));
 
 	@return 0 $primary-offset $blur $color;
 }

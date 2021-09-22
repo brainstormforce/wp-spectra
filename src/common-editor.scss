@@ -111,17 +111,17 @@
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
-	z-index: unset;
-}
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs {
 	display: block;
 	border-bottom: 0;
 	text-align: right;
 	padding-right: 28px;
 	margin-right: 45px;
 	margin-bottom: -20px;
-	display: block;
+	z-index: unset;
+
+	button span.dashicon.dashicons {
+		font-size: 15px;
+	}
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
@@ -136,7 +136,6 @@
 	padding: 4px;
 	margin-bottom: 0;
 	outline: 0;
-	width: auto;
 	font-size: 8px;
 	background: transparent;
 	color: #999;
@@ -150,18 +149,10 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
 	color: #007cba;
-	box-shadow: none;
 	border-radius: 100%;
 	padding: 0;
 	margin: 0;
 	line-height: 0;
-}
-
-.uagb-size-type-field-tabs .components-tab-panel__tabs {
-
-	button span.dashicon.dashicons {
-		font-size: 15px;
-	}
 }
 
 .uagb-control__actions .uagb-size-type-field-tabs {
@@ -296,7 +287,6 @@ hr.uagb-editor__separator {
 	width: 100%;
 	background-color: #fff;
 	border: 1px solid #e0e0e0;
-	width: 100%;
 }
 
 .components-button-group.uagb-size-type-field {
@@ -304,8 +294,6 @@ hr.uagb-editor__separator {
 	justify-content: flex-end;
 	margin: 0;
 	text-align: right;
-	display: flex;
-	justify-content: flex-end;
 	margin-bottom: -18px;
 }
 
@@ -344,11 +332,7 @@ hr.uagb-editor__separator {
 	outline: none;
 	color: #000;
 	text-decoration: underline;
-	background: transparent;
 	-webkit-box-shadow: none;
-	box-shadow: none;
-	border: none;
-	outline: none;
 }
 
 .components-button-group .components-button.is-button {
@@ -359,7 +343,6 @@ hr.uagb-editor__separator {
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,
 .uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled="true"]) {
 	color: #000;
-	box-shadow: none;
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -427,7 +410,6 @@ hr.uagb-editor__separator {
 	font-weight: 400;
 	font-variant: normal;
 	line-height: 1;
-	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	display: flex;
