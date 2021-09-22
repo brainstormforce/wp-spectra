@@ -62,7 +62,7 @@ const InspectorTabs = ( props ) => {
 					'.uagb-inspector-tabs-container'
 				);
 
-				if( inspectorTabs.length === 0 ) {
+				if( ! inspectorTabs || null === inspectorTabs ) {
 					sidebarPanel.removeAttribute( 'data-uagb-tab' );
 				}
 			}
