@@ -1,6 +1,7 @@
 .uag-global-settings-metabox {
 	font-size: 14px;
 	max-width: 100%;
+
 	form {
 		margin: 0;
 	}
@@ -24,15 +25,21 @@
 	}
 
 }
+
 .uag-blocks-settings-metabox {
 	background: var(--background-light-color);
-    padding: 35px;
-    width: 100%;
-    margin: 0 auto;
-	.uag-extension__metabox{
+	padding: 35px;
+	width: 100%;
+	margin: 0 auto;
+
+	.uag-extension__metabox {
+
 		a {
-			padding-left: 0px;
+			padding-left: 0;
 		}
-	}.uag-extension{
-		width: 411px;}	
+	}
+
+	.uag-extension {
+		width: 411px;
+	}
 }

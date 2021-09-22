@@ -1,35 +1,9 @@
-.uag-ultimate-addons-for-gutenberg-logo-img [class^="ultimate-addons-for-gutenberg-icon"], .uag-ultimate-addons-for-gutenberg-logo-img [class*=" ultimate-addons-for-gutenberg-icon"], /* For Pro Compatibility */
-[class^="ultimate-addons-for-gutenberg-logo-icon"], [class*=" ultimate-addons-for-gutenberg-logo-icon"] {
-	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'ultimate-addons-for-gutenberg-logo-icon' !important;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.uag-ultimate-addons-for-gutenberg-logo-img .ultimate-addons-for-gutenberg-icon:before, /* For Pro Compatibility */
-.ultimate-addons-for-gutenberg-logo-icon:before {
-	content: '\e900';
-	color: #f16334;
-}
-
-/**
-* *********************
-* Cartflows Font Icon
-* *********************
-*/
-
 .uag-menu-page-wrapper,
 .uag-menu-page-wrapper * {
 	box-sizing: border-box;
 }
 
-#wpbody-content > .notice:not( .uag-notice ),
+#wpbody-content > .notice:not(.uag-notice),
 #wpbody-content > .error {
 	display: none !important;
 }
@@ -57,7 +31,7 @@
 
 .uag-container {
 	margin: 0 auto;
-	padding: 0px;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -67,12 +41,13 @@
 	box-shadow: none;
 	outline: none;
 }
+
 /* Admin Base */
 .uag-menu-page-wrapper {
 	font-family: var(--heading-font-family);
 	left: -20px;
 	position: relative;
-	width: calc( 100% + 20px );
+	width: calc(100% + 20px);
 }
 
 
@@ -82,13 +57,16 @@
 	text-align: center;
 	padding: 20px;
 	margin-bottom: 20px;
+
 	/* margin: 0; */
-	box-shadow: 0 1px 1px 0 rgba( 0, 0, 0, 0.1 );
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 	position: relative;
 }
+
 .uag-logo {
 	max-width: 250px;
 }
+
 .uag-top-links {
 	flex: auto;
 	text-align: right;
@@ -102,8 +80,9 @@
 	color: #7d7d7d;
 	display: inline-block;
 	height: 66px;
-	border-left: 1px solid #dddddd;
+	border-left: 1px solid #ddd;
 }
+
 .uag-top-links a:hover {
 	color: #444;
 	background: #fdfdfd;

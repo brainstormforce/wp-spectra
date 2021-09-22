@@ -2,6 +2,10 @@
 	"extends": [ "@wordpress/stylelint-config" ],
 	"rules": {
 		"selector-class-pattern": null,
-		"no-descending-specificity": null
+		"no-descending-specificity": null,
+		"font-weight-notation": null,
+		"declaration-property-unit-allowed-list": {
+			"line-height": [ "px", "em" ]
+		}
 	}
 }

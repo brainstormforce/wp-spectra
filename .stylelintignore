@@ -16,3 +16,7 @@ assets/css/style-blocks.rtl.css
 *-invalid.*
 *.min.css
 
+
+admin-core/assets/build/
+admin-core/assets/images/
+admin-core/**/*-rtl.css

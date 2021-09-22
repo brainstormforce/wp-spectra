@@ -6,17 +6,20 @@
 	max-width: 100%;
 	min-height: 100%;
 	padding: 10px 16px;
-    font-size: 13px;
-    line-height: 1.25em;
+	font-size: 13px;
+	line-height: 1.25em;
+
 	&:focus {
 		box-shadow: none;
 		border-color: #aaa;
 		color: #444;
 	}
+
 	&:hover {
 		color: #444;
 	}
 }
-.uag-select-option{
+
+.uag-select-option {
 	width: 100%;
 }

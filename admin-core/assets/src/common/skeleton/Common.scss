@@ -5,7 +5,7 @@
 .uag-skeleton {
 	height: 1.2em;
 	display: block;
-	background-color: rgba( 0, 0, 0, 0.11 );
+	background-color: rgba(0, 0, 0, 0.11);
 }
 
 .uag-skeleton-pulse {
@@ -13,45 +13,49 @@
 }
 
 @keyframes uag-skeleton-keyframes-pulse {
+
 	0% {
 		opacity: 1;
 	}
+
 	50% {
 		opacity: 0.4;
 	}
+
 	100% {
 		opacity: 1;
 	}
 }
+
 .uag-skeleton--wave {
 	overflow: hidden;
 	position: relative;
 }
+
 .uag-skeleton--wave::after {
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	content: '';
+	content: "";
 	position: absolute;
 	animation: uag-skeleton-keyframes-wave 1.6s linear 0.5s infinite;
-	transform: translateX( -100% );
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba( 0, 0, 0, 0.04 ),
-		transparent
-	);
+	transform: translateX(-100%);
+	background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.04), transparent);
 }
+
 @keyframes uag-skeleton-keyframes-wave {
+
 	0% {
-		transform: translateX( -100% );
+		transform: translateX(-100%);
 	}
+
 	60% {
-		transform: translateX( 100% );
+		transform: translateX(100%);
 	}
+
 	100% {
-		transform: translateX( 100% );
+		transform: translateX(100%);
 	}
 }
 

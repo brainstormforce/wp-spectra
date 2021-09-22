@@ -1,112 +1,125 @@
 .uag-menu-page-wrapper {
 
-    // Button CSS.
-    .uag-normal-button-control {
+	// Button CSS.
+	.uag-normal-button-control {
 
-        .uag-button {
-            display: inline-block;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 0;
-            padding: 10px 16px;
-            cursor: pointer;
-            -webkit-appearance: none;
-            border-radius: 3px;
-            white-space: nowrap;
-            box-sizing: border-box;
-            text-transform: capitalize;
-        }
-    	
-    }
-    // Headings CSS.
-    h1 {
-        font-family: var(--heading-font-family); 
-        color: var(--heading-color);
-        font-weight: var(--heading-weight-500);    
-        margin-bottom: 10px;
-        margin-top: 0px;
-        line-height: normal;
-        text-transform: capitalize;
-    }
-    h2{
-        font-family: var(--heading-font-family);    
-        font-weight: var(--heading-weight-500);
-        font-size: 24px;
-        margin:0px 0px 15px 0px;
-        color: var(--heading-color);
-        line-height: 1.30em;
-    }
-    h3 {
-        margin: 0px;
-        margin-bottom:10px;
-        color: var(--heading-color);
-        font-family: var(--heading-font-family);
-        font-weight: var(--heading-weight-500);
-        font-size: 18px;
-        line-height: 1.30em;
-    }
-    .uag-field{
-        border-radius: 2px; 
-    }
-    // Paragraph CSS.
-    p {
-        color: var(--content-color);
-        font-family: var(--heading-font-family);
-        font-size: 14px;
-        margin-top: 0px;
-        margin-bottom: 20px;
-        line-height: 1.55em;
-        text-align: left;
-    }
-    .components-base-control__field {
-        font-size: 16px;
-    }
+		.uag-button {
+			display: inline-block;
+			text-decoration: none;
+			font-size: 14px;
+			margin: 0;
+			padding: 10px 16px;
+			cursor: pointer;
+			-webkit-appearance: none;
+			border-radius: 3px;
+			white-space: nowrap;
+			box-sizing: border-box;
+			text-transform: capitalize;
+		}
+
+	}
+	// Headings CSS.
+	h1 {
+		font-family: var(--heading-font-family);
+		color: var(--heading-color);
+		font-weight: var(--heading-weight-500);
+		margin-bottom: 10px;
+		margin-top: 0;
+		line-height: normal;
+		text-transform: capitalize;
+	}
+
+	h2 {
+		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-500);
+		font-size: 24px;
+		margin: 0 0 15px 0;
+		color: var(--heading-color);
+		line-height: 1.3em;
+	}
+
+	h3 {
+		margin: 0;
+		margin-bottom: 10px;
+		color: var(--heading-color);
+		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-500);
+		font-size: 18px;
+		line-height: 1.3em;
+	}
+
+	.uag-field {
+		border-radius: 2px;
+	}
+	// Paragraph CSS.
+	p {
+		color: var(--content-color);
+		font-family: var(--heading-font-family);
+		font-size: 14px;
+		margin-top: 0;
+		margin-bottom: 20px;
+		line-height: 1.55em;
+		text-align: left;
+	}
+
+	.components-base-control__field {
+		font-size: 16px;
+	}
 }
+
 .uag-button--primary:hover,
 .uag-button--primary:focus,
 .uag-button--primary:active {
-    background:var(--accent-hv-color);
-    color: var(--metabox-background-color);
+	background: var(--accent-hv-color);
+	color: var(--metabox-background-color);
 }
-.uag-button--primary{
-    border-width: 0px;
-    background: var(--accent-color);
-    color: var(--background-light-color);
+
+.uag-button--primary {
+	border-width: 0;
+	background: var(--accent-color);
+	color: var(--background-light-color);
 }
-.uag-button--secondary{
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    background: #f6f7f7;
-    vertical-align: top;  
+
+.uag-button--secondary {
+	color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+	background: #f6f7f7;
+	vertical-align: top;
 }
+
 .uag-button--secondary:hover,
 .uag-button--secondary:focus,
 .uag-button--secondary:active {
-    background: #f0f0f1;
-    border-color: var(--accent-hv-color);
-    color: var(--accent-hv-color);
-}
-.uag-control__status-yes{
-    display: inline-flex;
-    color: #639102;
-    align-items: center;
-    font-weight: 500;
-    img{ 
-        margin-left:5px;
-        width: 18px;
-    }
-}
-.uag-control__status-no, .uag-control__status-disabled{
-    color:#FF0000;
-    font-weight: 500;   
-    display: inline-flex;
-    align-items: center;
-    img{
-        display: none;
-    }
-}
-#wpwrap{
-    background: var(--background-light-color);
+	background: #f0f0f1;
+	border-color: var(--accent-hv-color);
+	color: var(--accent-hv-color);
 }
 
+.uag-control__status-yes {
+	display: inline-flex;
+	color: #639102;
+	align-items: center;
+	font-weight: 500;
+
+	img {
+		margin-left: 5px;
+		width: 18px;
+	}
+}
+
+.uag-control__status-no,
+.uag-control__status-disabled {
+	color: #f00;
+	font-weight: 500;
+	display: inline-flex;
+	align-items: center;
+
+	img {
+		display: none;
+	}
+}
+
+#wpwrap {
+	background: var(--background-light-color);
+}
 
