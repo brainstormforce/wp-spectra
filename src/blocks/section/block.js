@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/section', {
-	title: uagb_blocks_info.blocks[ 'uagb/section' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/section' ].description,
+	title: __( 'Section', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.section,
 	category: uagb_blocks_info.category,
 	keywords: [

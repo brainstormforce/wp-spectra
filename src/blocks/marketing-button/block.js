@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/marketing-button', {
-	title: uagb_blocks_info.blocks[ 'uagb/marketing-button' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/marketing-button' ].description,
+	title: __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.marketing_button,
 	category: uagb_blocks_info.category,
 	keywords: [

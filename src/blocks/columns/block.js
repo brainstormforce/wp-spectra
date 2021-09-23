@@ -15,8 +15,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/columns', {
-	title: uagb_blocks_info.blocks[ 'uagb/columns' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/columns' ].description,
+	title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
+	description:  __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.columns,
 	category: uagb_blocks_info.category,
 	keywords: [

@@ -11,8 +11,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/review', {
-	title: uagb_blocks_info.blocks[ 'uagb/review' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/review' ].description,
+	title: __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.review,
 	category: uagb_blocks_info.category,
 	keywords: [

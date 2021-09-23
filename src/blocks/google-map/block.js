@@ -15,8 +15,8 @@ import { registerBlockType } from '@wordpress/blocks';
 wp.uagb_google_api_key = 'AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4';
 
 registerBlockType( 'uagb/google-map', {
-	title: uagb_blocks_info.blocks[ 'uagb/google-map' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/google-map' ].description,
+	title: __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.google_map,
 	keywords: [
 		__( 'google map', 'ultimate-addons-for-gutenberg' ),

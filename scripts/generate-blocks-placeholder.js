@@ -29,7 +29,8 @@ const registerBlocks = glob
 
 		const blockSlug = getBlockSlug( content );
 		const blockTitle = getBlockTitle( content );
-		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) ) {
+
+		if ( ! blockSlug || ! blockTitle || -1 !== file.indexOf( 'child' ) || './src/blocks/column/block.js' === file ) {
 			return code;
 		}
 

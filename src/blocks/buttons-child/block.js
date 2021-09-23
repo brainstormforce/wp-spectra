@@ -9,10 +9,11 @@ import edit from './edit';
 import save from './save';
 import './style.scss';
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/buttons-child', {
-	title: uagb_blocks_info.blocks[ 'uagb/buttons-child' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/buttons-child' ].description,
+	title: __( 'Button', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons_child,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/buttons' ],

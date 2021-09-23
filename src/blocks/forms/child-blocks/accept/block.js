@@ -8,10 +8,11 @@ import edit from './edit';
 import save from './save';
 
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/forms-accept', {
-	title: uagb_blocks_info.blocks[ 'uagb/forms-accept' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/forms-accept' ].description,
+	title: __( 'Accept', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps to add Accept field.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.accept,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],

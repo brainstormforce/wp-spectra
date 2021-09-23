@@ -17,8 +17,8 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/taxonomy-list', {
-	title: uagb_blocks_info.blocks[ 'uagb/taxonomy-list' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/taxonomy-list' ].description,
+	title: __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.taxonomy_list,
 	category: uagb_blocks_info.category,
 	keywords: [

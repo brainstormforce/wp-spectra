@@ -14,8 +14,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/team', {
-	title: uagb_blocks_info.blocks[ 'uagb/team' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/team' ].description,
+	title: __( 'Team', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.team,
 	keywords: [
 		__( 'team', 'ultimate-addons-for-gutenberg' ),

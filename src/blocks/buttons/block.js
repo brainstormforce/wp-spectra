@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/buttons', {
-	title: uagb_blocks_info.blocks[ 'uagb/buttons' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/buttons' ].description,
+	title: __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
+	description:  __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
 	category: uagb_blocks_info.category,
 	keywords: [

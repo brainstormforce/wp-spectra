@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/wp-search', {
-	title: uagb_blocks_info.blocks[ 'uagb/wp-search' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/wp-search' ].description,
+	title: __( 'WP - Search', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.wp_search,
 	keywords: [
 		__( 'search', 'ultimate-addons-for-gutenberg' ),

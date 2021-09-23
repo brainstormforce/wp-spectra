@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/inline-notice', {
-	title: uagb_blocks_info.blocks[ 'uagb/inline-notice' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/inline-notice' ].description,
+	title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.inline_notice,
 	category: uagb_blocks_info.category,
 	keywords: [
