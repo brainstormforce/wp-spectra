@@ -77,7 +77,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( );
+			wp.updates.requestFilesystemCredentials();
 
 			document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
@@ -88,7 +88,7 @@ function UserInfoBox() {
 			.installTheme( {
 				slug: 'astra',
 			} )
-			.then( function (  ) {
+			.then( function () {
 				setsinstallingTheme( false );
 				setsinstallingThemeText( 'Installed Astra!' );
 				window.location.reload();
@@ -125,7 +125,7 @@ function UserInfoBox() {
 	};
 
 	const starterTemplateBtn = () => {
-		if(uag_react.starter_template_activate){
+		if( uag_react.starter_template_activate ){
 			return <NormalButton
 						buttonText={ __(
 							'Learn More',
@@ -144,7 +144,7 @@ function UserInfoBox() {
 					/>
 		}else if( uag_react.starter_template_activate ){
 			return null;
-		}else if(!uag_react.starter_template_path){
+		}else if( !uag_react.starter_template_path ){
 			return <NormalButton
 						buttonText={ installingPluginText }
 						saving={ installingPlugin }
@@ -182,7 +182,7 @@ function UserInfoBox() {
 			wp.updates.shouldRequestFilesystemCredentials &&
 			! wp.updates.ajaxLocked
 		) {
-			wp.updates.requestFilesystemCredentials( );
+			wp.updates.requestFilesystemCredentials();
 
 			document.on( 'credential-modal-cancel', function () {
 				wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
@@ -193,7 +193,7 @@ function UserInfoBox() {
 			.installPlugin( {
 				slug: 'astra-sites',
 			} )
-			.then( function ( ) {
+			.then( function () {
 				setsinstallingPlugin( false );
 				setsinstallingPluginText( 'Installed Starter Template!' );
 				window.location.reload();

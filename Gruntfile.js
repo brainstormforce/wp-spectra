@@ -157,6 +157,32 @@ module.exports = function ( grunt ) {
 				},
 			},
 		},
+		rtlcss: {
+            options: {
+                // rtlcss options
+                config: {
+                    preserveComments: true,
+                    greedy: true
+                },
+                // generate source maps
+                map: false
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'admin-core/assets/build',
+                        src: [
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
+                        dest: 'admin-core/assets/build',
+                        ext: '-rtl.css'
+
+                    },
+                ]
+            }
+        },
 	} );
 
 	/* Load Tasks */
@@ -172,6 +198,7 @@ module.exports = function ( grunt ) {
 
 	/* Read File Generation task */
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
+	grunt.loadNpmTasks( 'grunt-rtlcss' );
 
 	/* Register task started */
 	grunt.registerTask( 'release', [
@@ -229,4 +256,7 @@ module.exports = function ( grunt ) {
 
 	// Generate Read me file
 	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
+
+	// rtlcss, you will still need to install ruby and sass on your system manually to run this
+	grunt.registerTask( 'rtl', ['rtlcss'] );
 };

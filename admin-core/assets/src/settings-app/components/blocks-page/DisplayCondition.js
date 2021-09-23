@@ -4,7 +4,7 @@ import SettingTable from '../common/SettingTable';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 let enableBlockConditionCachedValue;
-function DisplayCondition(props) {
+function DisplayCondition( props ) {
 	const [ { globaldata, options }, dispatch ] = useStateValue();
 
 	useEffect( () => {
@@ -33,7 +33,7 @@ function DisplayCondition(props) {
 				url: uag_react.ajax_url,
 				method: 'POST',
 				body: formData,
-			} ).then( ( ) => {
+			} ).then( () => {
 			} );
 
 			enableBlockConditionCachedValue = options.enable_block_condition;
@@ -43,7 +43,7 @@ function DisplayCondition(props) {
 	const enableDisplayConditionSettings =
 		globaldata.settings.enable_block_condition;
 	const width = props.cat === 'extensions' ? 'uag-extension' : '';
-	if(props.cat === 'extensions' || props.cat === 'all'){
+	if( props.cat === 'extensions' || props.cat === 'all' ){
 		return (
 				<div className={`uag-individual-block-settings-metabox uag-extension__metabox ${width}`}>
 					<SettingTable settings={ enableDisplayConditionSettings } />

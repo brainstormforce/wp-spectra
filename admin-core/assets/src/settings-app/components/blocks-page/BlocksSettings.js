@@ -11,8 +11,8 @@ const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings() {
 	
-	const [ checkCategory , setcheckCategory ] = useState('all');
-	const [ status , setstatus ] = useState(true);
+	const [ checkCategory , setcheckCategory ] = useState( 'all' );
+	const [ status , setstatus ] = useState( true );
 	const [ { options }, dispatch ] = useStateValue();
 
 	const blocksValue = options.blocks_activation_and_deactivation;
@@ -24,7 +24,7 @@ function BlocksSettings() {
 	const categories = ['all','creative','content','post','social','forms','seo','extensions'];
 
 	const setCategory = ( data ) => {
-		setcheckCategory(data);
+		setcheckCategory( data );
 	};
 	const activateAllBlocks = ( e ) => {
 		e.preventDefault()
@@ -33,7 +33,7 @@ function BlocksSettings() {
 			name: 'enable_block_condition',
 			value: 'enabled',
 		} );
-        setstatus(false);
+        setstatus( false );
 		const value = { ...blocksValue };
 
 		for ( const block in blocksValue ) {
@@ -58,12 +58,12 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( ) => {  setstatus(true);
+		} ).then( () => {  setstatus( true );
 		} );
 	};
 	const deactivateAllBlocks = ( e ) => {
 		e.preventDefault();
-        setstatus(false);
+        setstatus( false );
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_block_condition',
@@ -92,7 +92,7 @@ function BlocksSettings() {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( ) => { setstatus(true);
+		} ).then( () => { setstatus( true );
 		} );
 	};
 	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
@@ -104,10 +104,10 @@ function BlocksSettings() {
 				<span className='uag-block-cat-label'>Filter By:</span>
 					{ categories.map( ( cat ) => (
 						<li key={cat} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
-							<a onClick={() => setCategory(cat) } role = "button" onKeyDown={() => setCategory(cat)} tabIndex={0} // eslint-disable-line jsx-a11y/anchor-is-valid
+							<a onClick={() => setCategory( cat ) } role = "button" onKeyDown={() => setCategory( cat )} tabIndex={0} // eslint-disable-line jsx-a11y/anchor-is-valid
 							>{cat} </a>
 						</li>
-					))}
+					) )}
 				</ul>
 				<div className="uag-bulk-blocks-action-btn">
 					<NormalButton

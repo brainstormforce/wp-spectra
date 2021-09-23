@@ -1,5 +1,25 @@
-.uag-menu-page-wrapper {
+#wpbody-content > .notice:not(.uag-notice),
+#wpbody-content > .error {
+	display: none !important;
+}
 
+.uag-menu-page-wrapper,
+.uag-menu-page-wrapper * {
+	box-sizing: border-box;
+}
+
+.uag-menu-page-wrapper a:focus,
+.uag-menu-page-wrapper button:focus,
+.uag-menu-page-wrapper input:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.uag-menu-page-wrapper {
+	font-family: var(--heading-font-family);
+	left: -20px;
+	position: relative;
+	width: calc(100% + 20px);
 	// Button CSS.
 	.uag-normal-button-control {
 

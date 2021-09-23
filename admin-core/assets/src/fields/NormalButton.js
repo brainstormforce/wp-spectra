@@ -1,9 +1,8 @@
 import React from 'react';
 import './NormalButton.scss';
-import ReactHtmlParser from 'react-html-parser';
 
 const NormalButton = ( props ) => {
-	const { classes, saving, buttonText, desc } = props;
+	const { classes, saving, buttonText } = props;
 	
 	const savingState = saving ? 'uag-saving' : '';
 	const btnClass = classes ? classes : 'uag-button--primary';
@@ -15,11 +14,6 @@ const NormalButton = ( props ) => {
 			>
 				{ buttonText }
 			</button>
-			{ desc && (
-				<div className="uag-field__desc">
-					{ ReactHtmlParser( desc ) }
-				</div>
-			) }
 		</div>
 	);
 };

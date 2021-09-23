@@ -176,8 +176,6 @@ class Admin_Menu {
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
 		wp_enqueue_style( $admin_slug . '-font', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap', array(), UAGB_VER );
 		// Styles.
-		wp_enqueue_style( $admin_slug . '-common', UAG_ADMIN_URL . 'assets/css/common.css', array(), UAGB_VER );
-		wp_style_add_data( $admin_slug . '-common', 'rtl', 'replace' );
 
 		wp_enqueue_style( 'wp-components' );
 
