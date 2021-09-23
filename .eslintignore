@@ -13,5 +13,6 @@ vendor
 *.css
 *.scss
 
+assets/js/js_cookie.js
+
 **/deprecated/**
-legacy-admin/**

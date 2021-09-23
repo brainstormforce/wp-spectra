@@ -14,7 +14,6 @@
 	<!-- Skip classname issues in admin-core dir-->
 	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
 		<exclude-pattern>*/admin-core/*</exclude-pattern>
-		<exclude-pattern>*/legacy-admin/*</exclude-pattern>
 	</rule>
 	<!-- Show sniff codes in all reports -->
 	<arg value="s"/>

@@ -23,7 +23,6 @@ assets/css/custom-style-blocks.css
 admin/bsf-analytics/
 admin/assets/images/
 
-legacy-admin/
 admin-core/assets/build/
 admin-core/assets/images/
 admin-core/**/*-rtl.css
