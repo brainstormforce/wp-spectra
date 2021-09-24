@@ -64,14 +64,14 @@ function styling( props ) {
 		'.uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child': {
 			'margin-bottom': 0,
 		},
-		'.uagb-icon-list__layout-horizontal .wp-block[data-type="uagb/icon-list-child"]': {
+		'.uagb-icon-list__layout-horizontal .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]': {
 			'margin-left': generateCSSUnit( editorGap / 2, 'px' ),
 			'margin-right': generateCSSUnit( editorGap / 2, 'px' ),
 		},
-		'.uagb-icon-list__layout-horizontal .wp-block[data-type="uagb/icon-list-child"]:first-child': {
+		'.uagb-icon-list__layout-horizontal .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:first-child': {
 			'margin-left': 0,
 		},
-		'.uagb-icon-list__layout-horizontal .wp-block[data-type="uagb/icon-list-child"]:last-child': {
+		'.uagb-icon-list__layout-horizontal .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:last-child': {
 			'margin-right': 0,
 		},
 		' .uagb-icon-list__source-image': {

@@ -117,6 +117,8 @@ const Settings = ( props ) => {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
+		titleLoadGoogleFonts,
+		prefixLoadGoogleFonts
 	} = attributes;
 
 	const onChangeOpensInNewTab = ( value ) => {
@@ -125,7 +127,7 @@ const Settings = ( props ) => {
 
 	// Load Google fonts for heading.
 	let loadTitleGoogleFonts;
-	if ( loadTitleGoogleFonts === true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -142,7 +144,7 @@ const Settings = ( props ) => {
 
 	// Load Google fonts for prefix.
 	let loadPrefixGoogleFonts;
-	if ( loadPrefixGoogleFonts === true ) {
+	if ( prefixLoadGoogleFonts === true ) {
 		const prefixconfig = {
 			google: {
 				families: [
@@ -423,8 +425,8 @@ const Settings = ( props ) => {
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
-						value: loadTitleGoogleFonts,
-						label: 'loadTitleGoogleFonts',
+						value: titleLoadGoogleFonts,
+						label: 'titleLoadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: titleFontFamily,
@@ -534,8 +536,8 @@ const Settings = ( props ) => {
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
-						value: loadPrefixGoogleFonts,
-						label: 'loadPrefixGoogleFonts',
+						value: prefixLoadGoogleFonts,
+						label: 'prefixLoadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: prefixFontFamily,

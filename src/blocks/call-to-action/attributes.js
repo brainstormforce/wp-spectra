@@ -205,11 +205,11 @@ const attributes = {
 	},
 	ctaBgColor: {
 		type: 'string',
-		default: 'transparent',
+		default: '',
 	},
 	ctaBgHoverColor: {
 		type: 'string',
-		default: 'transparent',
+		default: '',
 	},
 	ctaBorderColor: {
 		type: 'string',

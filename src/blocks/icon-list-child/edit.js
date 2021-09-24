@@ -49,7 +49,7 @@ const UAGBIconListChild = ( props ) => {
 	const parentBlockAttributes = select(
 		'core/block-editor'
 	).getBlockAttributes( parentBlock );
-	hideLabel = parentBlockAttributes.hideLabel;
+	hideLabel = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.hideLabel : '';
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
