@@ -34,16 +34,16 @@ $field_left_padding   = isset( $attr['fieldleftPadding'] ) ? $attr['fieldleftPad
 $field_right_padding  = isset( $attr['fieldrightPadding'] ) ? $attr['fieldrightPadding'] : $attr['fieldHrPadding'];
 
 $selectors = array(
-	' .gform_wrapper form'                              => array(
+	' .gform_wrapper form'                                 => array(
 		'text-align' => $attr['align'],
 	),
-	' .wp-block-uagb-gf-styler form:not(input)'         => array(
+	' .wp-block-uagb-gf-styler form:not(input)'            => array(
 		'color' => $attr['fieldLabelColor'],
 	),
-	' .gform_heading'                                   => array(
+	' .gform_heading'                                      => array(
 		'text-align' => $attr['titleDescAlignment'],
 	),
-	' input:not([type=submit])'                         => array(
+	' input:not([type=submit])'                            => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
@@ -58,7 +58,7 @@ $selectors = array(
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
 	),
-	' input[type=button]'                               => array(
+	' input[type=button]'                                  => array(
 		'color'            => $attr['buttonTextColor'],
 		'background-color' => $attr['buttonBgColor'],
 		'border-color'     => $attr['buttonBorderColor'],
@@ -70,12 +70,12 @@ $selectors = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $button_top_padding, $attr['buttonpaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $button_bottom_padding, $attr['buttonpaddingUnit'] ),
 	),
-	' input[type=button]:hover'                         => array(
+	' input[type=button]:hover'                            => array(
 		'color'            => $attr['buttonTextHoverColor'],
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
 	),
-	' .gform_wrapper select '                           => array(
+	' .gform_wrapper select '                              => array(
 		'background-color' => $attr['fieldBgColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -90,7 +90,7 @@ $selectors = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $field_top_padding, $attr['fieldpaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $field_bottom_padding, $attr['fieldpaddingUnit'] ),
 	),
-	' .chosen-container-single span'                    => array(
+	' .chosen-container-single span'                       => array(
 		'background-color' => $attr['fieldBgColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -114,13 +114,13 @@ $selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $field_top_padding, $attr['fieldpaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $field_bottom_padding, $attr['fieldpaddingUnit'] ),
 	),
-	' select.wpgf-select[multiple="multiple"] option'   => array(
+	' select.wpgf-select[multiple="multiple"] option'      => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $field_left_padding, $attr['fieldpaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $field_right_padding, $attr['fieldpaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $field_top_padding, $attr['fieldpaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $field_bottom_padding, $attr['fieldpaddingUnit'] ),
 	),
-	' textarea'                                         => array(
+	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -136,29 +136,29 @@ $selectors = array(
 		'text-align'       => $attr['align'],
 		'height'           => $attr['textAreaHeight'],
 	),
-	' textarea::placeholder'                            => array(
+	' textarea::placeholder'                               => array(
 		'color'      => $attr['fieldInputColor'],
 		'text-align' => $attr['align'],
 	),
-	' input::placeholder'                               => array(
+	' input::placeholder'                                  => array(
 		'color'      => $attr['fieldInputColor'],
 		'text-align' => $attr['align'],
 	),
-	' form label.gfield_label'                          => array(
+	' .gform_wrapper.gravity-theme .gfield_label'          => array(
 		'color'       => $attr['fieldLabelColor'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 		'font-family' => $attr['labelFontFamily'],
 		'font-weight' => $attr['labelFontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
 	),
-	' form .gfield_radio label.gfield_label'            => array(
+	' form .gfield_radio label.gfield_label'               => array(
 		'color'       => $attr['fieldLabelColor'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 		'font-family' => $attr['labelFontFamily'],
 		'font-weight' => $attr['labelFontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
 	),
-	' form .gfield_checkbox label.gfield_label'         => array(
+	' form .gfield_checkbox label.gfield_label'            => array(
 		'color'       => $attr['fieldLabelColor'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 		'font-family' => $attr['labelFontFamily'],
@@ -170,18 +170,18 @@ $selectors = array(
 	),
 
 	// Focus.
-	' form input:not([type=submit]):focus'              => array(
+	' form input:not([type=submit]):focus'                 => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
-	' form select:focus'                                => array(
+	' form select:focus'                                   => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
-	' textarea:focus'                                   => array(
+	' .gform_wrapper.gravity-theme textarea:focus'         => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
 
 	// Submit button.
-	' input.gform_button'                               => array(
+	' input.gform_button'                                  => array(
 		'color'            => $attr['buttonTextColor'],
 		'background-color' => $attr['buttonBgColor'],
 		'border-color'     => $attr['buttonBorderColor'],
@@ -194,11 +194,11 @@ $selectors = array(
 		'padding-bottom'   => UAGB_Helper::get_css_value( $button_bottom_padding, $attr['buttonpaddingUnit'] ),
 	),
 
-	' .gform_footer.top_label input[type="submit"]'     => array(
+	' .gform_footer.top_label input[type="submit"]'        => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['buttonFontSize'], $attr['buttonFontSizeType'] ),
 	),
 
-	' input.gform_button:hover'                         => array(
+	' input.gform_button:hover'                            => array(
 		'color'            => $attr['buttonTextHoverColor'],
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
@@ -222,13 +222,13 @@ $selectors = array(
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 		'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 	),
-	' input[type="checkbox"]:checked + label:before'    => array(
+	' input[type="checkbox"]:checked + label:before'       => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 		'border-color'     => $attr['fieldBorderFocusColor'],
 	),
-	' input[type="checkbox"] + label:before'            => array(
+	' input[type="checkbox"] + label:before'               => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'height'           => UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' ),
@@ -239,7 +239,7 @@ $selectors = array(
 		'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
-	' .gfield_radio input[type="radio"] + label:before' => array(
+	' .gfield_radio input[type="radio"] + label:before'    => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'height'           => UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' ),
@@ -260,21 +260,21 @@ $selectors = array(
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
-	' .uagb-gf-styler__field-style-underline textarea'  => array(
+	' .uagb-gf-styler__field-style-underline textarea'     => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
-	' .uagb-gf-styler__field-style-underline select'    => array(
+	' .uagb-gf-styler__field-style-underline select'       => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
-	' .uagb-gf-styler__field-style-underline textarea'  => array(
+	' .uagb-gf-styler__field-style-underline textarea'     => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
@@ -404,7 +404,7 @@ $selectors = array(
 		'border-color' => $attr['fieldBorderColor'] . '!important',
 	),
 
-	' .gform_wrapper div.validation_error'              => array(
+	' .gform_wrapper div.validation_error'                 => array(
 		'color'            => $attr['errorMsgColor'],
 		'background-color' => $attr['errorMsgBgColor'],
 		'border-color'     => $attr['errorMsgBorderColor'],
@@ -417,34 +417,34 @@ $selectors = array(
 		'padding-bottom'   => UAGB_Helper::get_css_value( $msg_bottom_padding, $attr['msgpaddingUnit'] ),
 	),
 
-	' .gform_confirmation_message'                      => array(
+	' .gform_confirmation_message'                         => array(
 		'color' => $attr['successMsgColor'],
 	),
 );
 
 $t_selectors = array(
-	' form.wpgf-form:not(input)'           => array(
+	' form.wpgf-form:not(input)'                           => array(
 		'color' => $attr['fieldLabelColor'],
 	),
-	' input:not([type=submit])'            => array(
+	' input:not([type=submit])'                            => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 	),
-	' textarea'                            => array(
+	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 	),
-	' input.gform_button'                  => array(
+	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 	),
-	' .gform_wrapper div.validation_error' => array(
+	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
@@ -453,25 +453,25 @@ $t_selectors = array(
 );
 
 $m_selectors = array(
-	' input:not([type=submit])'            => array(
+	' input:not([type=submit])'                            => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 	),
-	' textarea'                            => array(
+	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 	),
-	' input.gform_button'                  => array(
+	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 	),
-	' .gform_wrapper div.validation_error' => array(
+	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
@@ -485,7 +485,7 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'validationMsg', ' .gform_wrapper .validation_message', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'validationMsg', ' .gform_wrapper.gravity-theme .validation_message', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'validationMsg', ' span.wpgf-not-valid-tip', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'successMsg', ' .gform_confirmation_message', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .gform_wrapper div.validation_error', $combined_selectors );
@@ -493,10 +493,10 @@ $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'msg', ' .wpgf-res
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' input.gform_button, input.gform_previous_button, input.gform_next_button', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_checkbox label.gfield_label', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form .gfield_radio label.gfield_label', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' form label.gfield_label', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .gform_wrapper.gravity-theme label.gfield_label', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' textarea', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' select', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' input:not([type=submit])', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .gform_wrapper.gravity-theme input:not([type=submit])', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'radioCheck', ' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .chosen-container-single span', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'radioCheck', ' .uagb-gf-styler__check-style-enabled form .gfield_radio label', $combined_selectors );

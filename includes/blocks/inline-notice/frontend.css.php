@@ -57,18 +57,18 @@ $content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $
 
 if ( $attr['noticeDismiss'] ) {
 	if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
-		$rPadding             = ( $title_right_padding + '13' );
+		$right_padding        = ( $title_right_padding + 13 );
 		$left_padding         = $title_left_padding;
 		$left_padding_mobile  = $title_left_padding_mobile;
-		$right_padding_mobile = ( $title_right_padding_mobile + '13' );
+		$right_padding_mobile = ( $title_right_padding_mobile + 13 );
 		$left_padding_tablet  = $title_left_padding_tablet;
-		$right_padding_tablet = ( $title_right_padding_tablet + '13' );
+		$right_padding_tablet = ( $title_right_padding_tablet + 13 );
 	} else {
-		$left_padding         = ( $title_left_padding + '13' );
+		$left_padding         = ( $title_left_padding + 13 );
 		$right_padding        = $title_right_padding;
-		$left_padding_mobile  = ( $title_left_padding_mobile + '13' );
+		$left_padding_mobile  = ( $title_left_padding_mobile + 13 );
 		$right_padding_mobile = $title_right_padding_mobile;
-		$left_padding_tablet  = ( $title_left_padding_tablet + '13' );
+		$left_padding_tablet  = ( $title_left_padding_tablet + 13 );
 		$right_padding_tablet = $title_right_padding_tablet;
 	}
 } else {

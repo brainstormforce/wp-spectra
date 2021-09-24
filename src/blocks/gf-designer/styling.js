@@ -401,7 +401,7 @@ function styling( props ) {
 			'color': fieldInputColor,
 			'text-align': align,
 		},
-		' form label.gfield_label': {
+		' form .gfield_label': {
 			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,

@@ -155,7 +155,7 @@ const Settings = ( props ) => {
 								{
 									value: 'tablet',
 									label: __(
-										'Tablet',
+										'Tablet + Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
 									tooltip: __(

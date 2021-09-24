@@ -85,9 +85,11 @@ const attributes = {
 	},
 	gradientColor1: {
 		type: 'string',
+		default: '#F2295B',
 	},
 	gradientColor2: {
 		type: 'string',
+		default: '#61CE70',
 	},
 	gradientType: {
 		type: 'string',

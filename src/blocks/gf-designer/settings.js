@@ -843,7 +843,7 @@ const Settings = ( props ) => {
 				) }
 				<Range
 					label={ __(
-						'TextArea Height',
+						'Text Area Height',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
