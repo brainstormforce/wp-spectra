@@ -11,7 +11,9 @@ import TypographyControl from '@Components/typography';
 import Border from '@Components/border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
-import InspectorTab from '@Components/inspector-tabs/InspectorTab.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -1792,14 +1794,14 @@ const UAGBPostCarousel = ( props ) => {
 	const inspectorControls = (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab key={ 'general' }>
+				<InspectorTab { ...UAGTabs.general }>
 					{ getGeneralPanelBody() }
 					{ getCarouselPanelBody() }
 					{ getImagePanelBody() }
 					{ getContentPanelBody() }
 					{ getReadMoreLinkPanelBody() }
 				</InspectorTab>
-				<InspectorTab key={ 'style' }>
+				<InspectorTab { ...UAGTabs.style }>
 					{ ! inheritFromTheme && (
 						<>
 							{ displayPostTitle && titleStyle() }
@@ -1816,7 +1818,7 @@ const UAGBPostCarousel = ( props ) => {
 					{ spacingSettings() }
 					{ carouselStyle() }
 				</InspectorTab>
-				<InspectorTab key={ 'advance' }></InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

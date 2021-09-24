@@ -19,6 +19,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 
 const Settings = ( props ) => {
+	props = props.parentProps;
 	const {
 		attributes: {
 			topPadding,
@@ -74,7 +75,7 @@ const Settings = ( props ) => {
 			desktopMarginType,
 		},
 		setAttributes,
-	} = props.parentProps;
+	} = props;
 
 	const layoutSettings = () => {
 		return (
@@ -116,7 +117,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<SpacingControl
-					{ ...props.parentProps }
+					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: topPadding,
@@ -186,7 +187,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<SpacingControl
-					{ ...props.parentProps }
+					{ ...props }
 					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: topMargin,
@@ -314,7 +315,7 @@ const Settings = ( props ) => {
 					backgroundVideoType={ {
 						value: false,
 					} }
-					{ ...props.parentProps }
+					{ ...props }
 				/>
 			</PanelBody>
 		);

@@ -27,7 +27,8 @@ import {
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 const Settings = ( props ) => {
-	const { attributes, setAttributes } = props.parentProps;
+	props = props.parentProps;
+	const { attributes, setAttributes } = props;
 
 	const {
 		stack,
@@ -432,7 +433,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
 				<SpacingControl
-					{ ...props.parentProps }
+					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: topPadding,
@@ -502,7 +503,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<SpacingControl
-					{ ...props.parentProps }
+					{ ...props }
 					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
 						value: topMarginDesktop,
@@ -641,7 +642,7 @@ const Settings = ( props ) => {
 						value: backgroundVideoOpacity,
 						label: 'backgroundVideoOpacity',
 					} }
-					{ ...props.parentProps }
+					{ ...props }
 				/>
 			</PanelBody>
 		);
