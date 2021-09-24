@@ -296,12 +296,6 @@ function UserInfoBox() {
 			</div>
 			<div className="uag-metabox uag-starter-site__elements">
 				<div className="uag-starter-tmp__img">
-					<img
-						src={
-							uag_react.plugin_dir +
-							'admin-core/assets/images/astra-starter-sites.png'
-						} alt =''
-					/>
 				</div>
 				<div className="uag-starter-tmp__details">
 					<h3>

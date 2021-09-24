@@ -34,6 +34,17 @@ module.exports = {
 		filename: '[name].js',
 		path: path.resolve( __dirname, 'assets/build' ),
 	},
+	module: {
+		rules: [
+			...defaultConfig.module.rules,
+			{
+                test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
+                use: [
+                    'file-loader'
+                ]
+            }
+		]
+	},
 	plugins: [
 		// ...defaultConfig.plugins,
 		...defaultConfig.plugins.filter( function ( plugin ) {
