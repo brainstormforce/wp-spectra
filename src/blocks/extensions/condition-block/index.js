@@ -171,7 +171,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'UAG - Extentions', 'ultimate-addons-for-gutenberg' ) }
+						title={ __( 'UAG - Extensions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
@@ -228,7 +228,7 @@ if ( 'enabled' === enableConditions ) {
 				return (
 					<PanelBody
 						title={ __(
-							'UAG - Extentions',
+							'UAG - Extensions',
 							'ultimate-addons-for-gutenberg'
 						) }
 						initialOpen={ false }
