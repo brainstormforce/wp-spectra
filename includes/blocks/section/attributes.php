@@ -52,7 +52,6 @@ return array(
 	'gradientAngle'            => '0',
 	'gradientPosition'         => 'center center',
 	'backgroundColor'          => '',
-	'backgroundOpacity'        => '',
 	'backgroundVideoOpacity'   => '50',
 	'backgroundImageColor'     => '',
 	'align'                    => 'center',

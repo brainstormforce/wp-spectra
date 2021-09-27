@@ -101,7 +101,6 @@ const Settings = ( props ) => {
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		backgroundOpacity,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -555,10 +554,6 @@ const Settings = ( props ) => {
 					backgroundType={ {
 						value: backgroundType,
 						label: 'backgroundType',
-					} }
-					backgroundOpacity={ {
-						value: backgroundOpacity,
-						label: 'backgroundOpacity',
 					} }
 					backgroundVideoType={ {
 						value: false,

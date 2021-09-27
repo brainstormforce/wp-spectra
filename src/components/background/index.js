@@ -28,7 +28,6 @@ const Background = ( props ) => {
 		backgroundColor,
 		backgroundVideoType,
 		backgroundType,
-		backgroundOpacity,
 		backgroundVideo,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
@@ -387,27 +386,6 @@ const Background = ( props ) => {
 					<GradientSettings
 						backgroundGradient={ props.backgroundGradient }
 						setAttributes={ props.setAttributes }
-					/>
-				</div>
-			) }
-			{ ( 'color' === backgroundType.value ||
-				( 'image' === backgroundType.value && backgroundImage.value ) ||
-				'gradient' === backgroundType.value ) && (
-				<div className="uag-background-opacity">
-					<Range
-						label={ __(
-							'Opacity',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ backgroundOpacity.value }
-						onChange={ ( val ) =>
-							setAttributes( {
-								[ backgroundOpacity.label ]: parseInt( val ),
-							} )
-						}
-						min={ 0 }
-						max={ 100 }
-						displayUnit={ false }
 					/>
 				</div>
 			) }

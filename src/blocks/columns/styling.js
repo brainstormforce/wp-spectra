@@ -13,7 +13,6 @@ function styling( props ) {
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
-		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
 		contentWidth,
@@ -161,29 +160,17 @@ function styling( props ) {
 			break;
 		case 'image':
 			selectors[ ' > .uagb-columns__overlay' ] = {
-				'opacity':
-					typeof backgroundOpacity !== 'undefined'
-						? backgroundOpacity / 100
-						: '',
 				'background-color': backgroundImageColor,
 			};
 			break;
 		case 'color':
 			selectors[ ' > .uagb-columns__overlay' ] = {
-				'opacity':
-					typeof backgroundOpacity !== 'undefined'
-						? backgroundOpacity / 100
-						: '',
 				'background-color': backgroundColor,
 			};
 			break;
 		case 'gradient':
 			selectors[ ' > .uagb-columns__overlay' ] = {
 				'background-color': 'transparent',
-				'opacity':
-					typeof backgroundOpacity !== 'undefined'
-						? backgroundOpacity / 100
-						: '',
 			};
 			if ( gradientValue ) {
 				selectors[ ' > .uagb-columns__overlay' ] = {

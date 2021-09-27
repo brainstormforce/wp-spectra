@@ -51,7 +51,6 @@ return array(
 	'gradientLocation2'      => '100',
 	'gradientAngle'          => '0',
 	'gradientPosition'       => 'center center',
-	'backgroundOpacity'      => '',
 	'backgroundVideoOpacity' => '50',
 	'backgroundVideoColor'   => '',
 	'backgroundImageColor'   => '',

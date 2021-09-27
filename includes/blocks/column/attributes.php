@@ -50,7 +50,6 @@ return array(
 	'gradientLocation1'        => 0,
 	'gradientLocation2'        => 100,
 	'gradientAngle'            => 0,
-	'backgroundOpacity'        => '',
 	'backgroundImageColor'     => '',
 	'borderStyle'              => 'none',
 	'borderWidth'              => 1,

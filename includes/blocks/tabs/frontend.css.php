@@ -54,7 +54,7 @@ $selectors = array(
 		'fill' => $attr['activeiconColor'],
 	),
 
-	'.uagb-tabs__wrap .uagb-tabs__body-wrap '                              => array(
+	'.uagb-tabs__wrap .uagb-tabs__body-wrap '              => array(
 		'background'     => $attr['bodyBgColor'],
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_body_top_padding, $attr['tabBodyPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $tab_body_bottom_padding, $attr['tabBodyPaddingUnit'] ),

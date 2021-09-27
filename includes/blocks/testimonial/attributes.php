@@ -64,7 +64,6 @@ return array(
 	'backgroundSize'          => 'cover',
 	'backgroundRepeat'        => 'no-repeat',
 	'backgroundImageColor'    => '',
-	'backgroundOpacity'       => 0,
 	'borderStyle'             => 'none',
 	'borderWidth'             => 1,
 	'borderRadius'            => 0,

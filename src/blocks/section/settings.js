@@ -63,7 +63,6 @@ const Settings = ( props ) => {
 		backgroundAttachment,
 		backgroundRepeat,
 		backgroundSize,
-		backgroundOpacity,
 		backgroundVideoColor,
 		backgroundVideoOpacity,
 		backgroundImageColor,
@@ -445,10 +444,6 @@ const Settings = ( props ) => {
 					backgroundType={ {
 						value: backgroundType,
 						label: 'backgroundType',
-					} }
-					backgroundOpacity={ {
-						value: backgroundOpacity,
-						label: 'backgroundOpacity',
 					} }
 					backgroundVideoType={ {
 						value: true,

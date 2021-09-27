@@ -115,18 +115,14 @@ if ( 'video' === $bg_type ) {
 	);
 } elseif ( 'image' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay'] = array(
-		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 		'background-color' => $attr['backgroundImageColor'],
 	);
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay'] = array(
-		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		'background-color' => $attr['backgroundColor'],
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent';
-	$selectors[' > .uagb-columns__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
-
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-columns__overlay']['background-image'] = $attr['gradientValue'];
 	} else {
