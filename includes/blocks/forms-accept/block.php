@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -14,5 +14,4 @@ $block_data = array(
 	'title'       => __( 'Accept', 'ultimate-addons-for-gutenberg' ),
 	'description' => __( 'This block helps to add Accept field.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
-	'attributes'  => array(),
 );

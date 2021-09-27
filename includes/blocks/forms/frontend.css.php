@@ -10,9 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_forms_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/forms']['attributes'];
-
-$attr        = array_merge( $defaults, (array) $attr );
 $selectors   = array();
 $m_selectors = array();
 $t_selectors = array();

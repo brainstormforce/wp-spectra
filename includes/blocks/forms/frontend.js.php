@@ -7,9 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/forms']['attributes'];
-
-$attr     = array_merge( $defaults, (array) $attr );
 $selector = '.uagb-block-' . $id;
 $js_attr  = array(
 	'block_id'                => $attr['block_id'],

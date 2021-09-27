@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -16,5 +16,4 @@ $block_data = array(
 	'description'      => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'is_child'         => true,
-	'attributes'       => array(),
 );

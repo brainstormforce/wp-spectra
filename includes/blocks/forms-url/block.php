@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -16,8 +16,4 @@ $block_data = array(
 	'description'      => __( 'This block helps to add URL field.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'is_child'         => true,
-	'attributes'       => array(
-		'block_id' => '',
-		'name'     => __( 'URL', 'ultimate-addons-for-gutenberg' ),
-	),
 );
