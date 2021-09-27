@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_testimonial_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $img_align = 'center';
 if ( 'left' === $attr['headingAlign'] ) {
 	$img_align = 'flex-start';

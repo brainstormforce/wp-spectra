@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_marketing_btn_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/marketing-button']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $m_selectors = array();
 $t_selectors = array();
 

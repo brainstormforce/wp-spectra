@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_gf_styler_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/gf-styler']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $attr['msgVrPadding']   = ( '' === $attr['msgVrPadding'] ) ? '0' : $attr['msgVrPadding'];
 $attr['msgHrPadding']   = ( '' === $attr['msgHrPadding'] ) ? '0' : $attr['msgHrPadding'];
 $attr['textAreaHeight'] = ( 'auto' === $attr['msgHrPadding'] ) ? $attr['textAreaHeight'] : $attr['textAreaHeight'] . 'px';
