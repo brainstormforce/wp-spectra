@@ -9,10 +9,6 @@
 
 global $content_width;
 
-$defaults = UAGB_Helper::$block_list['uagb/column']['attributes'];
-
-$attr = array_merge( $defaults, $attr );
-
 $bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 $overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'none';
 

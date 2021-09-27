@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_blockquote_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $author_space = $attr['authorSpace'];
 
 if ( 'center' !== $attr['align'] || 'border' === $attr['skinStyle'] ) {

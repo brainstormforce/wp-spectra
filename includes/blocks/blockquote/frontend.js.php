@@ -7,10 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 if ( ! $attr['enableTweet'] ) {
 	return '';
 }
@@ -41,7 +37,7 @@ if ( selector.length > 0 ) {
 
 		blockquote__tweet[0].addEventListener("click",function(){
 			var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo esc_url( $url ); ?>")+"&text="+("<?php echo esc_html( $attr['descriptionText'] ); ?>")+"&via="+("<?php echo esc_html( $via ); ?>");
-			window.open( request_url ); 
+			window.open( request_url );
 		});
 	}
 }

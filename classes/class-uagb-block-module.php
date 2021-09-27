@@ -147,9 +147,23 @@ class UAGB_Block_Module {
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$css_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . '/frontend.css.php';
+			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
+
+			$css_file = $block_dir . '/frontend.css.php';
 
 			if ( file_exists( $css_file ) ) {
+
+				// Set default attributes.
+				$attr_file = $block_dir . '/attributes.php';
+
+				if ( file_exists( $attr_file ) ) {
+
+					$default_attr = include $attr_file;
+
+					$attr = array_merge( $default_attr, $attr );
+				}
+
+				// Get CSS.
 				$css = include $css_file;
 			}
 		}
@@ -173,9 +187,23 @@ class UAGB_Block_Module {
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$js_file = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'] . '/frontend.js.php';
+			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
+
+			$js_file = $block_dir . '/frontend.js.php';
 
 			if ( file_exists( $js_file ) ) {
+
+				// Set default attributes.
+				$attr_file = $block_dir . '/attributes.php';
+
+				if ( file_exists( $attr_file ) ) {
+
+					$default_attr = include $attr_file;
+
+					$attr = array_merge( $default_attr, $attr );
+				}
+
+				// Get JS.
 				$js = include $js_file;
 			}
 		}

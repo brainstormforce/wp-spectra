@@ -10,10 +10,6 @@
 // Add fonts.
 UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $m_selectors = array();
 $t_selectors = array();
 

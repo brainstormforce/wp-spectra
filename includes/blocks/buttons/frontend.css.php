@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $m_selectors = array();
 $t_selectors = array();
 
@@ -125,7 +121,7 @@ if ( $attr['childMigrate'] ) {
 
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
+	$defaults = include UAGB_DIR . 'includes/blocks/buttons-child/attributes.php';
 
 	foreach ( $attr['buttons'] as $key => $button ) {
 
@@ -133,7 +129,7 @@ if ( ! $attr['childMigrate'] ) {
 			break;
 		}
 
-		$button = array_merge( $defaults, (array) $button );
+		$button = array_merge( $defaults, $button );
 
 		$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 
@@ -142,10 +138,10 @@ if ( ! $attr['childMigrate'] ) {
 			'font-weight' => $attr['fontWeight'],
 		);
 
-		$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
-		$selectors       = array_merge( $selectors, (array) $child_selectors['selectors'] );
-		$t_selectors     = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
-		$m_selectors     = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );
+		$child_selectors = UAGB_Block_Helper::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
+		$selectors       = array_merge( $selectors, $child_selectors['selectors'] );
+		$t_selectors     = array_merge( $t_selectors, $child_selectors['t_selectors'] );
+		$m_selectors     = array_merge( $m_selectors, $child_selectors['m_selectors'] );
 	}
 }
 

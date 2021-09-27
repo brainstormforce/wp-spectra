@@ -249,42 +249,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
-		 * Get Buttons default array.
-		 *
-		 * @since 0.0.1
-		 */
-		public static function get_button_defaults() {
-
-			$default = array();
-
-			for ( $i = 1; $i <= 2; $i++ ) {
-				$default[] = array(
-					'size'             => '',
-					'vPadding'         => 10,
-					'hPadding'         => 14,
-					'borderWidth'      => 1,
-					'borderRadius'     => 2,
-					'borderStyle'      => 'solid',
-					'borderColor'      => '#333',
-					'borderHColor'     => '#333',
-					'color'            => '#333',
-					'background'       => '',
-					'hColor'           => '#333',
-					'hBackground'      => '',
-					'sizeType'         => 'px',
-					'sizeMobile'       => '',
-					'sizeTablet'       => '',
-					'lineHeightType'   => 'em',
-					'lineHeight'       => '',
-					'lineHeightMobile' => '',
-					'lineHeightTablet' => '',
-				);
-			}
-
-			return $default;
-		}
-
-		/**
 		 * Get Json Data.
 		 *
 		 * @since 1.8.1

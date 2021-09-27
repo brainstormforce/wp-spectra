@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_cf7_styler_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/cf7-styler']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $message_top_padding_dekstop    = isset( $attr['messageTopPaddingDesktop'] ) ? $attr['messageTopPaddingDesktop'] : $attr['msgVrPadding'];
 $message_bottom_padding_dekstop = isset( $attr['messageBottomPaddingDesktop'] ) ? $attr['messageBottomPaddingDesktop'] : $attr['msgVrPadding'];
 $message_left_padding_dekstop   = isset( $attr['messageLeftPaddingDesktop'] ) ? $attr['messageLeftPaddingDesktop'] : $attr['msgHrPadding'];

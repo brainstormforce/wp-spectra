@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_call_to_action_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $t_selectors = array();
 $m_selectors = array();
 

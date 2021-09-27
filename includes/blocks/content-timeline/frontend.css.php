@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_content_timeline_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $selectors   = array();
 $t_selectors = array();
 $m_selectors = array();

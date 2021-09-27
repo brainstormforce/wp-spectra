@@ -9,10 +9,6 @@
 
 global $content_width;
 
-$defaults = UAGB_Helper::$block_list['uagb/columns']['attributes'];
-
-$attr = array_merge( $defaults, $attr );
-
 $bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
 $top_margin    = isset( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : $attr['topMargin'];
