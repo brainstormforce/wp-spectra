@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -16,12 +16,4 @@ $block_data = array(
 	'default'     => true,
 	'is_child'    => true,
 	'extension'   => false,
-	'attributes'  => array(
-		'block_id'   => '',
-		'question'   => '',
-		'answer'     => '',
-		'icon'       => 'fas fa-plus',
-		'iconActive' => 'fas fa-minus',
-		'layout'     => 'accordion',
-	),
 );

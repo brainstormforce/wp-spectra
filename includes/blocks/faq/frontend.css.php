@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_faq_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/faq']['attributes'];
-
-$attr = array_merge( $defaults, $attr );
-
 $icon_color        = $attr['iconColor'];
 $icon_active_color = $attr['iconActiveColor'];
 

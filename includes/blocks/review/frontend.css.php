@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_review_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/review']['attributes'];
-
-$attr = array_merge( $defaults, $attr );
-
 $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();

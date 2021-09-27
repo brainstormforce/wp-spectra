@@ -7,10 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 
 $m_selectors = array();
@@ -121,7 +117,7 @@ $selectors['.uagb-social-share__outer-wrap'] = array(
 
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = UAGB_Helper::$block_list['uagb/social-share-child']['attributes'];
+	$defaults = UAGB_DIR . 'includes/blocks/social-share-child/attributes.php';
 
 	foreach ( $attr['socials'] as $key => $socials ) {
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -17,28 +17,4 @@ $block_data = array(
 	'description'      => __( 'This block helps you add Star Rating and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array(),
-	'attributes'       => array(
-		'block_id'         => '',
-		'range'            => '5',
-		'rating'           => '4',
-		'size'             => '',
-		'align'            => 'left',
-		'layout'           => 'inline',
-		'gap'              => '',
-		'unmarkedColor'    => '#ccd6df',
-		'color'            => '#f0ad4e',
-		'fontFamily'       => 'Default',
-		'fontWeight'       => '',
-		'fontSubset'       => '',
-		'fontSizeType'     => 'px',
-		'fontSize'         => '',
-		'fontSizeMobile'   => '',
-		'fontSizeTablet'   => '',
-		'lineHeightType'   => 'em',
-		'lineHeight'       => '',
-		'lineHeightMobile' => '',
-		'lineHeightTablet' => '',
-		'titleColor'       => '',
-		'titleGap'         => '10',
-	),
 );

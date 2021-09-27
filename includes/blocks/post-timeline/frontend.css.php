@@ -10,9 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/post-timeline']['attributes'];
-
-$attr        = array_merge( $defaults, (array) $attr );
 $t_selectors = array();
 
 $selectors = array(

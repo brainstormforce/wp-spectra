@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -16,14 +16,4 @@ $block_data = array(
 	'default'     => true,
 	'is_child'    => true,
 	'extension'   => false,
-	'attributes'  => array(
-		'type'                => 'facebook',
-		'image_icon'          => 'icon',
-		'icon'                => 'fab fa-facebook',
-		'image'               => '',
-		'icon_color'          => '#3a3a3a',
-		'icon_hover_color'    => '',
-		'icon_bg_color'       => '',
-		'icon_bg_hover_color' => '',
-	),
 );
