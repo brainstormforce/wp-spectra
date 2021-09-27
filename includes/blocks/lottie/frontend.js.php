@@ -7,9 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/lottie']['attributes'];
-
-$attr          = array_merge( $defaults, (array) $attr );
 $base_selector = 'uagb-block-';
 $selector      = $base_selector . $id;
 

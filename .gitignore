@@ -29,6 +29,9 @@ ultimate-addons-for-gutenberg.zip
 # config/webpack.config.prod.js
 # .stylelintrc
 
+# Auth
+auth.json
+
 # phpunit
 .phpunit.result.cache
 

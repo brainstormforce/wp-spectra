@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Information & Attributes File.
+ * Block Information.
  *
  * @since x.x.x
  *
@@ -17,9 +17,4 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'attributes'       => array(
-		'block_id' => '',
-		'height'   => '300',
-		'language' => 'en',
-	),
 );

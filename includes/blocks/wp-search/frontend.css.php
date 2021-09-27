@@ -10,9 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_wp_search_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/wp-search']['attributes'];
-$attr     = array_merge( $defaults, $attr );
-
 $selectors            = array();
 $t_selectors          = array();
 $m_selectors          = array();
