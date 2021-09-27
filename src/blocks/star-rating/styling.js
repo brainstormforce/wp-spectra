@@ -72,6 +72,7 @@ function styling( props ) {
 	if ( 'stack' === layout ) {
 		index = 'margin-bottom';
 	}
+	
 	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
 	] = generateCSSUnit( titleGap, 'px' );
@@ -109,7 +110,7 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }.uag-star-rating__wrapper`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

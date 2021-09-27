@@ -240,6 +240,21 @@ const Settings = ( props ) => {
 		setAttributes( { authorImage: media } );
 	};
 
+	const imageSizeOptions = [
+		{
+			value: 'thumbnail',
+			label: __( 'Thumbnail', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'medium',
+			label: __( 'Medium', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			value: 'full',
+			label: __( 'Large', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
+
 	// Image controls.
 	const imageControls = (
 		<>
@@ -974,21 +989,6 @@ const Settings = ( props ) => {
 			) }
 		</PanelBody>
 	);
-
-	const imageSizeOptions = [
-		{
-			value: 'thumbnail',
-			label: __( 'Thumbnail', 'ultimate-addons-for-gutenberg' ),
-		},
-		{
-			value: 'medium',
-			label: __( 'Medium', 'ultimate-addons-for-gutenberg' ),
-		},
-		{
-			value: 'full',
-			label: __( 'Large', 'ultimate-addons-for-gutenberg' ),
-		},
-	];
 
 	const getTooltipElement = () => {
 		return (

@@ -12,11 +12,11 @@ const attributes = {
 	},
 	skinStyle: {
 		type: 'string',
-		default: 'quotation',
+		default: 'border',
 	},
 	align: {
 		type: 'string',
-		default: 'center',
+		default: 'left',
 	},
 	descriptionText: {
 		selector: 'div.uagb-blockquote__content',
@@ -305,7 +305,7 @@ const attributes = {
 	},
 	quoteStyle: {
 		type: 'string',
-		default: 'style_1',
+		default: 'style_2',
 	},
 	quoteColor: {
 		type: 'string',
