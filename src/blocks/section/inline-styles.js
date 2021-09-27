@@ -16,7 +16,6 @@ function inlineStyles( props ) {
 		topMargin,
 		bottomMargin,
 		width,
-		widthUnit,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
@@ -75,7 +74,7 @@ function inlineStyles( props ) {
 
 	if ( 'boxed' === contentWidth ) {
 		if ( '' !== width ) {
-			section_width = width + widthUnit;
+			section_width = width + 'px';
 		}
 	}
 

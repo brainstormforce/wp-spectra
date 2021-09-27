@@ -143,10 +143,6 @@ const attributes = {
 		type: 'number',
 		default: 900,
 	},
-	widthUnit: {
-		type: 'string',
-		default: '%',
-	},
 	innerWidth: {
 		type: 'number',
 		default: 1140,

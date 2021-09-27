@@ -63,7 +63,7 @@ $position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 $section_width = '100%';
 
 if ( isset( $attr['contentWidth'] ) && ( 'boxed' === $attr['contentWidth'] && isset( $attr['width'] ) ) ) {
-	$section_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthUnit'] );
+	$section_width = UAGB_Helper::get_css_value( $attr['width'], 'px' );
 }
 
 if ( 'wide' !== $attr['align'] && 'full' !== $attr['align'] ) {
