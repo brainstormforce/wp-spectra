@@ -85,6 +85,9 @@ $selectors = array(
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 	),
+	' .uagb-testimonial__wrap .uagb-tm__content:hover'       => array(
+		'border-color'  => $attr['borderHoverColor'],
+	),
 	' ul.slick-dots li button:before'                  => array(
 		'color' => $attr['arrowColor'],
 	),
