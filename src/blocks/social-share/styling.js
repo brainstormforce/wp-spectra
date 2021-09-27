@@ -42,7 +42,7 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
 
-	selectors[ '.uagb-ss__wrapper' ] = {
+	selectors[ ' .uagb-ss__wrapper' ] = {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 	};
 

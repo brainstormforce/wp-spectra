@@ -69,27 +69,27 @@ function styling( props ) {
 	let mobileSelectors = {};
 
 	const autoImageLeftMargin =
-		'auto' === imageLeftMargin
+	undefined === imageLeftMargin || 'auto' === imageLeftMargin 
 			? 'auto'
-			: generateCSSUnit( imageMarginLeftMobile, imageMarginUnit );
+			: generateCSSUnit( imageLeftMargin, imageMarginUnit );
 	const autoImageRightMargin =
-		'auto' === imageRightMargin
+	undefined === imageRightMargin || 'auto' === imageRightMargin
 			? 'auto'
 			: generateCSSUnit( imageRightMargin, imageMarginUnit );
 	const autoImageLeftMarginMobile =
-		'auto' === imageMarginLeftMobile
+	undefined === imageMarginLeftMobile || 'auto' === imageMarginLeftMobile
 			? 'auto'
 			: generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
 	const autoImageRightMarginMobile =
-		'auto' === imageMarginRightMobile
+	undefined === imageMarginRightMobile || 'auto' === imageMarginRightMobile
 			? 'auto'
 			: generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
 	const autoImageLeftMarginTablet =
-		'auto' === imageMarginLeftTablet
+	undefined === imageMarginLeftTablet || 'auto' === imageMarginLeftTablet
 			? 'auto'
 			: generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
 	const autoImageRightMarginTablet =
-		'auto' === imageMarginRightTablet
+	undefined === imageMarginRightTablet || 'auto' === imageMarginRightTablet
 			? 'auto'
 			: generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit );
 

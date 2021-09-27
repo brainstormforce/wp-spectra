@@ -25,7 +25,7 @@ return array(
 		),
 	),
 	'gap'           => '10',
-	'size'          => '40',
+	'size'          => '25',
 	'sizeType'      => 'px',
 	'sizeMobile'    => '',
 	'sizeTablet'    => '',

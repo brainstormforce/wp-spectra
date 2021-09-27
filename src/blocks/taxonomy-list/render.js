@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
+import { decodeEntities } from '@wordpress/html-entities';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -131,7 +132,7 @@ const Render = ( props ) => {
 						<select className="uagb-list-dropdown-wrap">
 							{ categoriesList.map( ( p, index ) => (
 								<option key={ index } value={ p.link }>
-									{ p.name }
+									{ decodeEntities( p.name ) }
 									{ showCount && ` (${ p.count })` }
 								</option>
 							) ) }

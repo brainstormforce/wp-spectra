@@ -95,7 +95,7 @@ const attributes = {
 	},
 	widthDesktop: {
 		type: 'number',
-		default: 28,
+		default: 100,
 	},
 	widthTablet: {
 		type: 'number',

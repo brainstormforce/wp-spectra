@@ -51,7 +51,10 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const controlsSettings = (
-		<PanelBody initialOpen={ true }>
+		<PanelBody 
+			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ true }
+		>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Play On', 'ultimate-addons-for-gutenberg' ) }

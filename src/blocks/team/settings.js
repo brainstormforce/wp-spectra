@@ -235,7 +235,9 @@ const Settings = ( props ) => {
 
 	const getImagePanelBody = () => {
 		return (
-			<PanelBody>
+			<PanelBody
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Title Tag', 'ultimate-addons-for-gutenberg' ) }
