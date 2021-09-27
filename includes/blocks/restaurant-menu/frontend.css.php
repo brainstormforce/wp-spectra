@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_restaurant_menu_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $m_selectors = array();
 $t_selectors = array();
 
