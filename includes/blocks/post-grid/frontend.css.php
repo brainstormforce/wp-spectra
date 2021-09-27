@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.
 $selectors[' .uagb-post-pagination-wrap'] = array(

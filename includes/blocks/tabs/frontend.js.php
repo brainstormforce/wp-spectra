@@ -7,9 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
-
-$attr     = array_merge( $defaults, (array) $attr );
 $selector = '.uagb-block-' . $id;
 ob_start();
 ?>

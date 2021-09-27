@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_tabs_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/tabs']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $tab_title_top_padding    = isset( $attr['tabTitleTopPadding'] ) ? $attr['tabTitleTopPadding'] : $attr['tabTitleVertPadding'];
 $tab_title_bottom_padding = isset( $attr['tabTitleBottomPadding'] ) ? $attr['tabTitleBottomPadding'] : $attr['tabTitleVertPadding'];
 $tab_title_left_padding   = isset( $attr['tabTitleLeftPadding'] ) ? $attr['tabTitleLeftPadding'] : $attr['tabTitleHrPadding'];

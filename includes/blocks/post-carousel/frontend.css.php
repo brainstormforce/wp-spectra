@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
