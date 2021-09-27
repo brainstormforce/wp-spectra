@@ -1430,46 +1430,52 @@ const UAGBPostMasonry = ( props ) => {
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Overlay Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgOverlayColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgOverlayColor: value } )
-					}
-				/>
-				<Range
-					label={ __(
-						'Overlay Opacity',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ overlayOpacity }
-					onChange={ ( value ) =>
-						setAttributes( { overlayOpacity: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-				/>
-				<Range
-					label={ __(
-						'Image Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ imageBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { imageBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: imageBottomSpaceUnit,
-						label: 'imageBottomSpaceUnit',
-					} }
-				/>
+				{imgPosition === 'background' &&
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Overlay Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ bgOverlayColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { bgOverlayColor: value } )
+							}
+						/>
+						<Range
+							label={ __(
+								'Overlay Opacity',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ overlayOpacity }
+							onChange={ ( value ) =>
+								setAttributes( { overlayOpacity: value } )
+							}
+							min={ 0 }
+							max={ 100 }
+						/>
+					</>
+				}
+				{imgPosition === 'top' &&
+					<Range
+						label={ __(
+							'Image Bottom Spacing',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ imageBottomSpace }
+						onChange={ ( value ) =>
+							setAttributes( { imageBottomSpace: value } )
+						}
+						min={ 0 }
+						max={ 50 }
+						unit={ {
+							value: imageBottomSpaceUnit,
+							label: 'imageBottomSpaceUnit',
+						} }
+					/>
+				}
 			</PanelBody>
 		);
 	};
@@ -2121,7 +2127,6 @@ const UAGBPostMasonry = ( props ) => {
 					) }
 					{ paginationSettings() }
 					{ displayPostImage === true &&
-						imgPosition === 'background' &&
 						imageStyle() }
 					{ spacingSettings() }
 				</InspectorTab>

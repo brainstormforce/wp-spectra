@@ -947,7 +947,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ rowGap }
 					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
@@ -960,7 +960,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Column Gap',
+						'Row Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1057,31 +1057,36 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Overlay Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bgOverlayColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgOverlayColor: value } )
-					}
-				/>
-				<Range
-					label={ __(
-						'Overlay Opacity',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ overlayOpacity }
-					onChange={ ( value ) =>
-						setAttributes( { overlayOpacity: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-				/>
+				initialOpen={ false }
+			> 
+			{imgPosition === 'background' &&
+				<>
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Overlay Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ bgOverlayColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { bgOverlayColor: value } )
+						}
+					/>
+					<Range
+						label={ __(
+							'Overlay Opacity',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ overlayOpacity }
+						onChange={ ( value ) =>
+							setAttributes( { overlayOpacity: value } )
+						}
+						min={ 0 }
+						max={ 100 }
+					/>
+				</>
+			}
+			{imgPosition === 'top' &&
 				<Range
 					label={ __(
 						'Bottom Spacing',
@@ -1099,6 +1104,7 @@ const Settings = ( props ) => {
 						label: 'imageBottomSpaceUnit',
 					} }
 				/>
+			}
 			</PanelBody>
 		);
 	};
@@ -1926,7 +1932,6 @@ const Settings = ( props ) => {
 						) }
 						{ postPagination && paginationStyle() }
 						{ displayPostImage === true &&
-							imgPosition === 'background' &&
 							imageStyle() }
 						{ spacingSettings() }
 					</InspectorTab>

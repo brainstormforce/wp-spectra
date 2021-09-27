@@ -952,7 +952,7 @@ const UAGBPostCarousel = ( props ) => {
 					}
 				/>
 				<Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ rowGap }
 					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
@@ -965,7 +965,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Column Gap',
+						'Row Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1060,8 +1060,11 @@ const UAGBPostCarousel = ( props ) => {
 
 	const imageStyle = () => {
 		return (
-			displayPostImage === true &&
-			imgPosition === 'background' && (
+			<PanelBody
+				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			> 
+			{imgPosition === 'background' && (
 				<>
 					<AdvancedPopColorControl
 						label={ __(
@@ -1086,25 +1089,28 @@ const UAGBPostCarousel = ( props ) => {
 						min={ 0 }
 						max={ 100 }
 					/>
-					<Range
-						label={ __(
-							'Image Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ imageBottomSpace }
-						onChange={ ( value ) =>
-							setAttributes( { imageBottomSpace: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						unit={ {
-							value: imageBottomSpaceUnit,
-							label: 'imageBottomSpaceUnit',
-						} }
-					/>
 				</>
-			)
+			)}
+			{imgPosition === 'top' && (
+			<Range
+				label={ __(
+					'Image Bottom Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				setAttributes={ setAttributes }
+				value={ imageBottomSpace }
+				onChange={ ( value ) =>
+					setAttributes( { imageBottomSpace: value } )
+				}
+				min={ 0 }
+				max={ 50 }
+				unit={ {
+					value: imageBottomSpaceUnit,
+					label: 'imageBottomSpaceUnit',
+				} }
+			/>
+			)}
+			</PanelBody>
 		);
 	};
 	const titleStyle = () => {
@@ -1730,7 +1736,7 @@ const UAGBPostCarousel = ( props ) => {
 	const carouselStyle = () => {
 		return (
 			<PanelBody
-				title={ __( 'Arrow', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Arrow and Dots', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
@@ -1814,7 +1820,7 @@ const UAGBPostCarousel = ( props ) => {
 							{ displayPostLink && readMoreLinkStyleSettings() }
 						</>
 					) }
-					{ displayPostImage && imageStyle() }
+					{ displayPostImage  && imageStyle() }
 					{ spacingSettings() }
 					{ carouselStyle() }
 				</InspectorTab>

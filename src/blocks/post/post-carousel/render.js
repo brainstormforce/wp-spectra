@@ -112,7 +112,7 @@ const Render = ( props ) => {
 			</Placeholder>
 		);
 	};
-
+	
 	const renderViewMode = (
 		<Disabled>
 			<Blog
