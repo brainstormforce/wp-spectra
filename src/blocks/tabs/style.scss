@@ -18,7 +18,8 @@
 		}
 
 		.uagb-tabs__icon-position-left {
-			display: block;
+			display: inline-flex;
+			align-items: center;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;
@@ -44,7 +45,8 @@
 		}
 
 		.uagb-tabs__icon-position-right {
-			display: block;
+			display: inline-flex;
+			align-items: center;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;
