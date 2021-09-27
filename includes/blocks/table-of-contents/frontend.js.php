@@ -7,9 +7,6 @@
  * @package uagb
  */
 
-$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
-
-$attr          = array_merge( $defaults, (array) $attr );
 $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
 $selector      = $base_selector . $id;
 

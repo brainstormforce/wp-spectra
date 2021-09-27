@@ -10,9 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_table_of_contents_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
-
-$attr        = array_merge( $defaults, (array) $attr );
 $m_selectors = array();
 $t_selectors = array();
 
