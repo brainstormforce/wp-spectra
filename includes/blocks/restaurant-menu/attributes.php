@@ -14,7 +14,7 @@ return array(
 	'descColor'                  => '#333',
 	'priceColor'                 => '#888888',
 	'titleColor'                 => '#333',
-	'imagePosition'              => 'top',
+	'imagePosition'              => 'left',
 	'imageAlignment'             => 'top',
 	'titleFontSize'              => '',
 	'titleFontSizeType'          => 'px',

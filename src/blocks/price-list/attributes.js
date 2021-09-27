@@ -65,13 +65,29 @@ const attributes = {
 		type: 'number',
 		default: 0,
 	},
-	imgTopPadding: {
+	imgPaddingTop: {
 		type: 'number',
-		default: 0,
 	},
-	imgBottomPadding: {
+	imgPaddingRight: {
 		type: 'number',
-		default: 0,
+	},
+	imgPaddingBottom: {
+		type: 'number',
+	},
+	imgPaddingLeft: {
+		type: 'number',
+	},
+	contentPaddingTop:{
+		type:'number'
+	},
+	contentPaddingRight:{
+		type:'number'
+	},
+	contentPaddingBottom:{
+		type:'number'
+	},
+	contentPaddingLeft:{
+		type:'number'
 	},
 	columns: {
 		type: 'number',
@@ -108,7 +124,7 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'dashed',
 	},
 	seperatorWidth: {
 		type: 'number',

@@ -126,7 +126,7 @@ const Settings = ( props ) => {
 		priceTransform,
 		priceDecoration,
 	} = attributes;
-
+	
 	const setimageSize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId

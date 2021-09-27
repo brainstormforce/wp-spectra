@@ -86,6 +86,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
+	
 	}, [] );
 
 	useEffect( () => {
@@ -102,11 +103,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		);
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition =
-				props.attributes.imagePosition;
+			pricelistChild.attributes.imagePosition =props.attributes.imagePosition;
 			pricelistChild.attributes.columns = props.attributes.columns;
 			pricelistChild.attributes.tcolumns = props.attributes.tcolumns;
 			pricelistChild.attributes.mcolumns = props.attributes.mcolumns;
+			pricelistChild.attributes.headingTag = props.attributes.headingTag;
+			pricelistChild.attributes.imageSize = props.attributes.imageSize;
 		} );
 	}, [ props ] );
 
