@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $m_selectors = array();
 $t_selectors = array();
 

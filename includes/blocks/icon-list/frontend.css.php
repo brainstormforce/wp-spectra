@@ -12,10 +12,6 @@
 // If need be please add a new function for Info Box and go ahead.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
-
-$attr = array_merge( $defaults, (array) $attr );
-
 $alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 
 $m_selectors = array();
@@ -204,7 +200,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 }
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
+	$defaults = UAGB_DIR . 'includes/blocks/icon-list-child/attributes.php';
 
 	foreach ( $attr['icons'] as $key => $icon ) {
 
