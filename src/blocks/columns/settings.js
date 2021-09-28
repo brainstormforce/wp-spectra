@@ -98,8 +98,6 @@ const Settings = ( props ) => {
 		topFlip,
 		reverseTablet,
 		reverseMobile,
-		topDividerOpacity,
-		bottomDividerOpacity,
 		topContentAboveShape,
 		bottomContentAboveShape,
 		mobileMarginType,
@@ -763,20 +761,6 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ topDividerOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { topDividerOpacity: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-						<Range
-							label={ __(
 								'Width',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -861,20 +845,6 @@ const Settings = ( props ) => {
 							onColorChange={ ( value ) =>
 								setAttributes( { bottomColor: value } )
 							}
-						/>
-						<Range
-							label={ __(
-								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ bottomDividerOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { bottomDividerOpacity: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
 						/>
 						<Range
 							label={ __(

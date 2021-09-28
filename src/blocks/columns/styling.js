@@ -3,7 +3,6 @@
  */
 
 import inlineStyles from './inline-styles';
-import hexToRgba from '@Controls/hexToRgba';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
@@ -52,8 +51,6 @@ function styling( props ) {
 		rightMarginTablet,
 		leftMarginTablet,
 		bottomMarginTablet,
-		topDividerOpacity,
-		bottomDividerOpacity,
 		mobileMarginType,
 		tabletMarginType,
 		mobilePaddingType,
@@ -107,24 +104,14 @@ function styling( props ) {
 			'height': generateCSSUnit( topHeight, 'px' ),
 		},
 		' .uagb-columns__shape-top .uagb-columns__shape-fill': {
-			'fill': hexToRgba(
-				topColor,
-				typeof topDividerOpacity !== 'undefined'
-					? topDividerOpacity
-					: 100
-			),
+			'fill': topColor,
 		},
 		' .uagb-columns__shape-bottom svg': {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' ),
 		},
 		' .uagb-columns__shape-bottom .uagb-columns__shape-fill': {
-			'fill': hexToRgba(
-				bottomColor,
-				typeof bottomDividerOpacity !== 'undefined'
-					? bottomDividerOpacity
-					: 100
-			),
+			'fill': bottomColor,
 		},
 		'.wp-block-uagb-columns': {
 			'box-shadow':

@@ -248,10 +248,14 @@
 	}
 }
 
-#wpwrap .edit-post-visual-editor .uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"] {
-	flex: none !important;
-	width: 100% !important;
-	margin-right: 0;
+/* for editor preview */
+.uagb-editor-preview-mode-mobile.uagb-columns__stack-mobile,
+.uagb-editor-preview-mode-tablet.uagb-columns__stack-tablet,
+.uagb-editor-preview-mode-mobile.uagb-columns__stack-tablet {
+
+	> .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block[data-type="uagb/column"] {
+		width: 100% !important;
+	}
 }
 
 .block-editor-block-list__block[data-type="uagb/columns"] > .block-editor-block-list__block-edit::before {

@@ -75,8 +75,6 @@ const Settings = ( props ) => {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity,
-		backgroundHoverOpacity,
 		//Typography
 		titleFontFamily,
 		titleFontWeight,
@@ -863,22 +861,6 @@ const Settings = ( props ) => {
 											} )
 										}
 									/>
-									<Range
-										label={ __(
-											'Opacity',
-											'ultimate-addons-for-gutenberg'
-										) }
-										setAttributes={ setAttributes }
-										value={ backgroundOpacity }
-										onChange={ ( value ) =>
-											setAttributes( {
-												backgroundOpacity: value,
-											} )
-										}
-										min={ 0 }
-										max={ 100 }
-										displayUnit={ false }
-									/>
 								</>
 							}
 							hover={
@@ -898,22 +880,6 @@ const Settings = ( props ) => {
 												backgroundHoverColor: value,
 											} )
 										}
-									/>
-									<Range
-										label={ __(
-											'Opacity',
-											'ultimate-addons-for-gutenberg'
-										) }
-										setAttributes={ setAttributes }
-										value={ backgroundHoverOpacity }
-										onChange={ ( value ) =>
-											setAttributes( {
-												backgroundHoverOpacity: value,
-											} )
-										}
-										min={ 0 }
-										max={ 100 }
-										displayUnit={ false }
 									/>
 								</>
 							}
@@ -1005,22 +971,6 @@ const Settings = ( props ) => {
 							onChange={ ( value ) =>
 								setAttributes( {
 									gradientLocation2: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-						<Range
-							label={ __(
-								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ backgroundOpacity }
-							onChange={ ( value ) =>
-								setAttributes( {
-									backgroundOpacity: value,
 								} )
 							}
 							min={ 0 }

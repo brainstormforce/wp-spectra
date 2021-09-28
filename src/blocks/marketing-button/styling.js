@@ -3,7 +3,6 @@
  */
 
 import generateCSS from '@Controls/generateCSS';
-import hexToRgba from '@Controls/hexToRgba';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
@@ -39,8 +38,6 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity,
-		backgroundHoverOpacity,
 		//Typography
 		titleFontFamily,
 		titleFontWeight,
@@ -148,16 +145,10 @@ function styling( props ) {
 	if ( 'transparent' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ].background = 'transparent';
 	} else if ( 'color' === backgroundType ) {
-		selectors[ ' .uagb-marketing-btn__link' ].background = hexToRgba(
-			backgroundColor,
-			backgroundOpacity
-		);
+		selectors[ ' .uagb-marketing-btn__link' ].background = backgroundColor;
 
 		// Hover Background
-		selectors[ ' .uagb-marketing-btn__link:hover' ].background = hexToRgba(
-			backgroundHoverColor,
-			backgroundHoverOpacity
-		);
+		selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
 	} else if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
 			'transparent';
@@ -165,23 +156,11 @@ function styling( props ) {
 		if ( 'linear' === gradientType ) {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ hexToRgba(
-				gradientColor1,
-				backgroundOpacity
-			) } ${ gradientLocation1 }%, ${ hexToRgba(
-				gradientColor2,
-				backgroundOpacity
-			) } ${ gradientLocation2 }%)`;
+			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
 		} else {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `radial-gradient( at center center, ${ hexToRgba(
-				gradientColor1,
-				backgroundOpacity
-			) } ${ gradientLocation1 }%, ${ hexToRgba(
-				gradientColor2,
-				backgroundOpacity
-			) } ${ gradientLocation2 }%)`;
+			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
 	}
 
