@@ -39,7 +39,7 @@ $selectors = array(
 	' .gform_heading'                                      => array(
 		'text-align' => $attr['titleDescAlignment'],
 	),
-	' input:not([type=submit])'                            => array(
+	' .gform_wrapper.gravity-theme input:not([type=submit])' => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
@@ -71,7 +71,7 @@ $selectors = array(
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
 	),
-	' .gform_wrapper select '                              => array(
+	' .gform_wrapper.gravity-theme select '                => array(
 		'background-color' => $attr['fieldBgColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -161,7 +161,10 @@ $selectors = array(
 		'font-weight' => $attr['labelFontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
 	),
-	' .wpgf .gfield_checkbox input[type="checkbox"] + label, .wpgf .gfield_checkbox input[type="checkbox"] + label' => array(
+	' .gform_wrapper.gravity-theme .gfield_checkbox '      => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
+	),
+	' .gform_wrapper.gravity-theme .gfield_radio '         => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 	),
 
@@ -354,7 +357,7 @@ $selectors = array(
 		'background-color' => $attr['validationMsgBgColor'],
 	),
 
-	' .uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input:not([type="submit"]):not([type="button"]):not([type="image"])' => array(
+	' .uagb-gf-styler__error-yes .gform_wrapper .gfield_error .ginput_container input' => array(
 		'border-color' => $attr['highlightBorderColor'],
 	),
 
@@ -400,7 +403,7 @@ $selectors = array(
 		'border-color' => $attr['fieldBorderColor'] . '!important',
 	),
 
-	' .gform_wrapper div.validation_error'                 => array(
+	' .gform_wrapper.gravity-theme div.validation_message' => array(
 		'color'            => $attr['errorMsgColor'],
 		'background-color' => $attr['errorMsgBgColor'],
 		'border-color'     => $attr['errorMsgBorderColor'],

@@ -98,7 +98,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 						<InspectorControls>
 							<PanelBody
 								title={ __(
-									'UAG - Masonry Gallery',
+									'Masonry Gallery',
 									'ultimate-addons-for-gutenberg'
 								) }
 								initialOpen={ false }

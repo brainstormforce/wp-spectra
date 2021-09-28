@@ -617,6 +617,20 @@ const Settings = ( props ) => {
 						label: 'inputLineHeightTablet',
 					} }
 				/>
+				<Range
+					label={ __(
+						'Text Area Height',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ textAreaHeight }
+					onChange={ ( value ) =>
+						setAttributes( { textAreaHeight: value } )
+					}
+					min={ 0 }
+					max={ 1000 }
+					displayUnit={ false }
+				/>
 			</PanelBody>
 		);
 	};
@@ -841,20 +855,6 @@ const Settings = ( props ) => {
 						showIcons={ true }
 					/>
 				) }
-				<Range
-					label={ __(
-						'Text Area Height',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ textAreaHeight }
-					onChange={ ( value ) =>
-						setAttributes( { textAreaHeight: value } )
-					}
-					min={ 0 }
-					max={ 1000 }
-					displayUnit={ false }
-				/>
 			</PanelBody>
 		);
 	};

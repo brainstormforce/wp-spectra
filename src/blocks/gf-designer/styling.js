@@ -481,12 +481,12 @@ function styling( props ) {
 				buttonpaddingUnit
 			),
 		},
-		' input.gform_button:hover': {
+		':hover input.gform_button': {
 			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
-		' input.gform_next_button:hover': {
+		':hover input.gform_next_button': {
 			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
