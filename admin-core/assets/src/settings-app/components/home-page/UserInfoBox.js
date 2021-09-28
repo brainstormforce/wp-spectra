@@ -99,7 +99,7 @@ function UserInfoBox() {
 	};
 	
 	const astraThemeButton = () => {
-		if ( ! uag_react.theme_file ) {
+		if ( ! uag_react.theme_file && uag_react.is_main_site ) {
 			return (
 				<NormalButton
 					buttonText={ installingThemeText }
@@ -144,7 +144,7 @@ function UserInfoBox() {
 					/>
 		}else if( uag_react.starter_template_activate ){
 			return null;
-		}else if( !uag_react.starter_template_path ){
+		}else if( !uag_react.starter_template_path && uag_react.is_main_site ){
 			return <NormalButton
 						buttonText={ installingPluginText }
 						saving={ installingPlugin }

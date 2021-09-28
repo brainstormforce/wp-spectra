@@ -201,6 +201,7 @@ class Admin_Menu {
 				'rollback_url'              => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
 				'blocks_info'               => $blocks_info,
 				'reusable_url'              => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
+				'is_main_site'              => is_main_site(),
 			)
 		);
 
