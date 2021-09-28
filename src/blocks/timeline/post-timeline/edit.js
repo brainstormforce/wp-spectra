@@ -262,11 +262,7 @@ export default withSelect( ( select, props ) => {
 
 	if ( 'undefined' !== typeof currentTax ) {
 		if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
-			restBase =
-				currentTax.taxonomy[ taxonomyType ].restBase === false ||
-				currentTax.taxonomy[ taxonomyType ].restBase === null
-					? currentTax.taxonomy[ taxonomyType ].name
-					: currentTax.taxonomy[ taxonomyType ].restBase;
+			restBase = ( currentTax.taxonomy[taxonomyType].rest_base === false || currentTax.taxonomy[taxonomyType].rest_base === null ) ? currentTax.taxonomy[taxonomyType].name : currentTax.taxonomy[taxonomyType].rest_base
 		}
 
 		if ( '' !== taxonomyType ) {
