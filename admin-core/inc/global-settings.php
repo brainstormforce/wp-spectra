@@ -23,8 +23,7 @@ class Global_Settings {
 	public static function get_global_settings_fields() {
 
 		$settings = array(
-			'rollback_to_previous_version'       => array(
-				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
+			'rollback_to_previous_version' => array(
 				'fields' => array(
 					'rollback_to_previous_version' => array(
 						'type'    => 'select',
@@ -36,8 +35,7 @@ class Global_Settings {
 					),
 				),
 			),
-			'enable_beta_updates'                => array(
-				'title'  => __( 'Version Control ', 'ultimate-addons-for-gutenberg' ),
+			'enable_beta_updates'          => array(
 				'fields' => array(
 					'enable_beta_updates' => array(
 						'type'  => 'button',
@@ -51,8 +49,7 @@ class Global_Settings {
 					),
 				),
 			),
-			'enable_block_condition'             => array(
-				'title'  => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
+			'enable_block_condition'       => array(
 				'fields' => array(
 					'enable_block_condition' => array(
 						'type'  => 'toggle',
@@ -62,7 +59,17 @@ class Global_Settings {
 					),
 				),
 			),
-			'enable_file_generation'             => array(
+			'enable_masonry_gallery'       => array(
+				'fields' => array(
+					'enable_masonry_gallery' => array(
+						'type'  => 'toggle',
+						'name'  => 'enable_masonry_gallery',
+						'label' => __( 'Masonry Extension', 'ultimate-addons-for-gutenberg' ),
+						/* translators: %1$s: link html start, %2$s: link html end*/
+					),
+				),
+			),
+			'enable_file_generation'       => array(
 				'fields' => array(
 					'enable_file_generation' => array(
 						'type'  => 'button',
@@ -76,20 +83,17 @@ class Global_Settings {
 					),
 				),
 			),
-			'blocks_activation_and_deactivation' => array(
-				'title' => __( 'Blocks Activation & Deactivation', 'ultimate-addons-for-gutenberg' ),
-			),
-			'enable_templates_button'            => array(
+			'enable_templates_button'      => array(
 				'fields' => array(
 					'enable_templates_button' => array(
 						'type'  => 'button',
 						'name'  => 'enable_templates_button',
-						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Enable UAG Templates Button', 'ultimate-addons-for-gutenberg' ),
 						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library is accessible with the UAG Templates button while editing the page or post. Manage the visibility of that button with this option. ', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),
-			'enable_file_regeneration'           => array(
+			'enable_file_regeneration'     => array(
 				'fields' => array(
 					'enable_file_regeneration' => array(
 						'type'  => 'button',

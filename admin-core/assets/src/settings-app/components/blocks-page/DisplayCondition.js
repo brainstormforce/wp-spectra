@@ -40,12 +40,11 @@ function DisplayCondition( props ) {
 		}
 	}, [ options.enable_block_condition ] );
 
-	const enableDisplayConditionSettings =
-		globaldata.settings.enable_block_condition;
-	const width = props.cat === 'extensions' ? 'uag-extension' : '';
+	const enableDisplayConditionSettings = globaldata.settings.enable_block_condition;
+	
 	if( props.cat === 'extensions' || props.cat === 'all' ){
 		return (
-				<div className={`uag-individual-block-settings-metabox uag-extension__metabox ${width}`}>
+				<div className={`uag-individual-block-settings-metabox uag-extension__metabox `}>
 					<SettingTable settings={ enableDisplayConditionSettings } />
 					<a
 						href="https://ultimategutenberg.com/docs/display-conditions-blocks/"

@@ -64,7 +64,7 @@ wp.hooks.addFilter(
 	addAttributes
 );
 
-if ( '1' === enableMasonryGallery ) {
+if ( 'enabled' === enableMasonryGallery || true === enableMasonryGallery ) {
 	function addMasonryAttribute( settings ) {
 		const blockType = [ 'core/gallery' ];
 		if ( blockType.includes( settings.name ) ) {

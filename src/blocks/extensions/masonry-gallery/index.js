@@ -140,7 +140,7 @@ function ApplyUniqueClass( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-if ( '1' === enableMasonryGallery ) {
+if ( 'enabled' === enableMasonryGallery || true === enableMasonryGallery ) {
 	addFilter(
 		'editor.BlockEdit',
 		'uagb/masonry-gallery',

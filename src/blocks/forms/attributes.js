@@ -34,6 +34,26 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	failedMessageTextColor    : { 
+		type: 'string',
+		default: '#000000'
+	},
+	failedMessageBorderColor  : { 
+		type: 'string',
+		default: 'red'
+	},
+	failedMessageBGColor      : { 
+		type: 'string',
+		default: '#f5f5f'
+	},
+	failedMessageBorderStyle  : { 
+		type: 'string',
+		default: 'solid'
+	},
+	failedMessageBorderWidth  : { 
+		type: 'number',
+		default: 2,
+	},     
 	confirmationUrl: {
 		type: 'string',
 	},
@@ -371,18 +391,6 @@ const attributes = {
 	successMessageBorderWidth: {
 		type: 'string',
 		default: '2',
-	},
-	failedMessageTextColor: {
-		type: 'string',
-		default: '#000000',
-	},
-	failedMessageBorderColor: {
-		type: 'string',
-		default: 'red',
-	},
-	failedMessageBGColor: {
-		type: 'string',
-		default: '#f5f5f5',
 	},
 	captchaMessage: {
 		type: 'string',

@@ -24,7 +24,7 @@ function UserInfoBox() {
 	const [ activatePlugin, setsactivatePlugin ] = useState( false );
 
 	const onJointheCommunityClick = () => {
-		window.open( 'https://ultimategutenberg.com/', '_blank' );
+		window.open( 'https://www.facebook.com/groups/wpastra/', '_blank' );
 	};
 	const onStarterTemplateLearnMore = () => {
 		window.open( 'https://startertemplates.com/', '_blank' );
@@ -254,7 +254,7 @@ function UserInfoBox() {
 				</h3>
 				<p>
 					{ __(
-						'With over 1 million+ active installs, Astra is the fastest and most popular free WordPress theme. Pair UAG with the Astra theme to extend your website building experience with Gutenberg. With Astra, you can build blogs, business websites, eCommerce stores, offer online courses or build any type of website with ease.',
+						'With over 1+ million active installs, Astra is the fastest and most popular free WordPress theme. Pair UAG with the Astra theme to extend your website building experience with Gutenberg. With Astra, you can build blogs, business websites, eCommerce stores, offer online courses or build any type of website with ease.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>

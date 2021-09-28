@@ -55,6 +55,7 @@ class Common_Settings extends Ajax_Base {
 			'regenerate_assets',
 			'enable_templates_button',
 			'enable_block_condition',
+			'enable_masonry_gallery',
 			'blocks_activation_and_deactivation',
 			'theme_activate',
 			'starter_template_activate',
@@ -150,6 +151,40 @@ class Common_Settings extends Ajax_Base {
 				'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
 			)
 		);
+	}
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function enable_masonry_gallery() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_enable_masonry_gallery', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_masonry_gallery', sanitize_text_field( $_POST['value'] ) );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
 	}
 	/**
 	 * Save settings.

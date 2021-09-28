@@ -6,6 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { useStateValue } from '@Utils/StateProvider';
 import apiFetch from '@wordpress/api-fetch';
 import DisplayCondition from './DisplayCondition';
+import MasonryExtension from './MasonryExtension';
 
 const blocksInfo = uag_react.blocks_info;
 
@@ -31,6 +32,11 @@ function BlocksSettings() {
         dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_block_condition',
+			value: 'enabled',
+		} );
+		dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_masonry_gallery',
 			value: 'enabled',
 		} );
         setstatus( false );
@@ -67,6 +73,11 @@ function BlocksSettings() {
 		dispatch( {
 			type: 'SET_OPTION',
 			name: 'enable_block_condition',
+			value: 'disabled',
+		} );
+		dispatch( {
+			type: 'SET_OPTION',
+			name: 'enable_masonry_gallery',
 			value: 'disabled',
 		} );
 		const value = { ...blocksValue };
@@ -128,7 +139,11 @@ function BlocksSettings() {
 					/>
 				</div>
 			</div>
-			<div className="uag-blocks-settings">{ renderBlocksMetaBoxes }<DisplayCondition cat = {checkCategory}/></div>
+			<div className="uag-blocks-settings">
+				{ renderBlocksMetaBoxes }
+				<DisplayCondition cat = {checkCategory}/>
+				<MasonryExtension cat = {checkCategory}/>
+			</div>
 		</>
 	);
 }

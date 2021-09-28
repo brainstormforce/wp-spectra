@@ -87,6 +87,10 @@
 	}
 }
 
+a[href=""] {
+	display: none;
+}
+
 .uag-button--primary:hover,
 .uag-button--primary:focus,
 .uag-button--primary:active {

@@ -47,6 +47,7 @@ class Admin_Helper {
 			'blocks_activation_and_deactivation' => self::get_blocks(),
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' ),
+			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
 		);
 
 		return $options;

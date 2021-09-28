@@ -56,7 +56,7 @@ function TemplatesButton() {
 	return (
 		<>
 			<h2>
-				{ __( 'Starter Templates', 'ultimate-addons-for-gutenberg' ) }
+				{ __( 'UAG Templates', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-starter-template__button uag-version-control__elements">
 				<div className="uag-version-control__element">
