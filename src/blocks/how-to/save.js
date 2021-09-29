@@ -188,17 +188,18 @@ export default function save( props ) {
 					/>
 				</span>
 			) }
+			<div className="uagb-how-to-tools__wrap">
 			{ showTools && (
-				<div className="uagb-how-to-tools__wrap">
+				
 					<RichText.Content
 						value={ toolsTitle }
 						tagName="h4"
 						className="uagb-howto-req-tools-text"
 					/>
-				</div>
 			) }
 			{ showTools && (
 				<>
+				<div className="uagb-how-to-tools">
 					{ tools.map( ( tool, index ) => {
 						return (
 							<div
@@ -218,6 +219,7 @@ export default function save( props ) {
 							</div>
 						);
 					} ) }
+				</div>
 				</>
 			) }
 			{ showMaterials && (
@@ -252,6 +254,7 @@ export default function save( props ) {
 					} ) }
 				</>
 			) }
+			</div>
 			<div className="uagb-how-to-steps__wrap">
 				<RichText.Content
 					value={ stepsTitle }

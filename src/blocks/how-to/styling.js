@@ -89,7 +89,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 
-		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper': {
+		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 		' .wp-block-uagb-info-box': {
