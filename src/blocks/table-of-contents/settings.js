@@ -702,7 +702,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					}
-					disableBottomSeparator={ true }
+					disableBottomSeparator={ false }
 				/>
 				<TypographyControl
 					label={ __(
