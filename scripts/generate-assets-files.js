@@ -6,7 +6,7 @@ const sass = require( 'node-sass' );
 sass.render(
 	{
 		file: paths.pluginSrc + '/common-editor.scss',
-		outputStyle: 'expanded',
+		outputStyle: 'compressed',
 		outFile: paths.pluginDist + '/common-editor.css',
 		sourceMap: false,
 	},

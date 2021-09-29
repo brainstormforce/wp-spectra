@@ -183,6 +183,26 @@ module.exports = function ( grunt ) {
                 ]
             }
         },
+
+		// Minified CSS.
+		cssmin: {
+			options: {
+				keepSpecialComments: 0,
+			},
+			css: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/css',
+						src: [ '*.css', '!*.min.css', '!blocks/*.css' ],
+						dest: 'assets/css',
+						ext: '.min.css',
+					},
+				],
+			},
+		},
+
+		// Minified JS.
 		uglify: {
 			js: {
 				options: {
@@ -207,6 +227,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
@@ -279,5 +300,5 @@ module.exports = function ( grunt ) {
 	// rtlcss, you will still need to install ruby and sass on your system manually to run this
 	grunt.registerTask( 'rtl', ['rtlcss'] );
 
-	grunt.registerTask( 'minify', ['rtlcss', 'uglify' ] );
+	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
 };

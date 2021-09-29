@@ -92,7 +92,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep' => array( 'jquery' ),
 					),
 					'uagb-slick-css'         => array(
-						'src' => UAGB_URL . 'assets/css/slick.css',
+						'src' => UAGB_URL . 'assets/css/slick.min.css',
 						'dep' => array(),
 					),
 					'uagb-masonry'           => array(
