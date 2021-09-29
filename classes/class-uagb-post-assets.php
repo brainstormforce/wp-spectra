@@ -71,7 +71,7 @@ class UAGB_Post_Assets {
 	public $fallback_js = false;
 
 	/**
-	 * Enque Style and Script Variable
+	 * Enqueue Style and Script Variable
 	 *
 	 * @since 1.14.0
 	 * @var instance

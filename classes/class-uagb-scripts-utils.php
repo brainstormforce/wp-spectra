@@ -172,4 +172,17 @@ final class UAGB_Scripts_Utils {
 
 		return $info;
 	}
+
+	/**
+	 * Get JS url from to assets.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param string $file_name File name.
+	 *
+	 * @return string JS url.
+	 */
+	public static function get_js_url( $file_name ) {
+		return UAGB_URL . 'assets/js/' . $file_name . UAGB_JS_EXT;
+	}
 }

@@ -13,6 +13,6 @@ vendor
 *.css
 *.scss
 
-assets/js/js_cookie.js
+assets/js/js_cookie.min.js
 
 **/deprecated/**

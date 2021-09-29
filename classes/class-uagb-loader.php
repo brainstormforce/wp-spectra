@@ -80,6 +80,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			define( 'UAGB_ASSET_VER', get_option( '__uagb_asset_version', UAGB_VER ) );
+			define( 'UAGB_CSS_EXT', defined( 'WP_DEBUG' ) && WP_DEBUG ? '.css' : '.min.css' );
+			define( 'UAGB_JS_EXT', defined( 'WP_DEBUG' ) && WP_DEBUG ? '.js' : '.min.js' );
 		}
 
 		/**

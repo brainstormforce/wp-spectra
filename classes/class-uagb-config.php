@@ -82,20 +82,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
-					'uagb-timeline-js'       => array(
-						'src' => UAGB_URL . 'assets/js/timeline.js',
-						'dep' => array( 'jquery' ),
-					),
-					'uagb-masonry'           => array(
-						'src' => UAGB_URL . 'assets/js/isotope.min.js',
-						'dep' => array( 'jquery' ),
-					),
+					// Lib.
 					'uagb-imagesloaded'      => array(
 						'src' => UAGB_URL . 'assets/js/imagesloaded.min.js',
-						'dep' => array( 'jquery' ),
-					),
-					'uagb-table-of-contents' => array(
-						'src' => UAGB_URL . 'assets/js/table-of-contents.js',
 						'dep' => array( 'jquery' ),
 					),
 					'uagb-slick-js'          => array(
@@ -106,41 +95,55 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src' => UAGB_URL . 'assets/css/slick.css',
 						'dep' => array(),
 					),
-					'uagb-post-js'           => array(
-						'src' => UAGB_URL . 'assets/js/post.js',
-						'dep' => $post_js_dep,
-					),
-					'uagb-faq-js'            => array(
-						'src'        => UAGB_URL . 'assets/js/faq.js',
-						'dep'        => array(),
-						'skipEditor' => true,
+					'uagb-masonry'           => array(
+						'src' => UAGB_URL . 'assets/js/isotope.min.js',
+						'dep' => array( 'jquery' ),
 					),
 					'uagb-cookie-lib'        => array(
-						'src'        => UAGB_URL . 'assets/js/js_cookie.js',
+						'src'        => UAGB_URL . 'assets/js/js_cookie.min.js',
 						'dep'        => array( 'jquery' ),
 						'skipEditor' => true,
 					),
-					'uagb-inline-notice-js'  => array(
-						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
-						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
-						'skipEditor' => true,
-					),
-					'uagb-tabs-js'           => array(
-						'src' => UAGB_URL . 'assets/js/tabs.js',
-						'dep' => array( 'jquery' ),
-					),
-					'uagb-forms-js'          => array(
-						'src' => UAGB_URL . 'assets/js/forms.js',
-						'dep' => array( 'jquery' ),
-					),
-					'uagb-bodymovin-min'     => array(
+					'uagb-bodymovin-js'      => array(
 						'src'        => UAGB_URL . 'assets/js/uagb-bodymovin.min.js',
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
+
+					// Blocks.
+					'uagb-timeline-js'       => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-table-of-contents' => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-post-js'           => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'post' ),
+						'dep' => $post_js_dep,
+					),
+					'uagb-faq-js'            => array(
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'faq' ),
+						'dep'        => array(),
+						'skipEditor' => true,
+					),
+					'uagb-inline-notice-js'  => array(
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
+						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+						'skipEditor' => true,
+					),
+					'uagb-tabs-js'           => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-forms-js'          => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'forms' ),
+						'dep' => array( 'jquery' ),
+					),
 					'uagb-lottie-js'         => array(
-						'src'        => UAGB_URL . 'assets/js/uagb-lottie.js',
-						'dep'        => array( 'jquery', 'uagb-bodymovin-min' ),
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
+						'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
 					),
 				);
