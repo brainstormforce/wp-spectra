@@ -343,6 +343,54 @@ import AuthorImage from './components/AuthorImage';
 	},
 	borderHoverColor: {
 		type: "string",
+	},
+	quoteBorderRadiusUnit: {
+		type: 'string',
+		default: '%',
+	},
+	paddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tweetIconSpacingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	quoteUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	quotemobileUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	quotetabletUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	descSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	borderWidthUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	borderGapUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	verticalPaddingUnit: {
+		type: 'string',
+		default: 'px',
 	},			
 }
 

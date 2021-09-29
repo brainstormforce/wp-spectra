@@ -13,6 +13,7 @@ const Render = lazy( () =>
 
 const UAGBBlockQuote = ( props ) => {
 	useEffect( () => {
+		
 		const element = document.getElementById(
 			'uagb-blockquote-style-' + props.clientId.substr( 0, 8 )
 		);
