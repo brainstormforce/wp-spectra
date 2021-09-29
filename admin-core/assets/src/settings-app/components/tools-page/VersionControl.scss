@@ -15,7 +15,7 @@
 .uag-version-control__elements {
 	display: grid;
 	justify-content: center;
-	grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	grid-template-columns: 1fr 1fr 1fr;
 	row-gap: 25px;
 	column-gap: 25px;
 	margin-bottom: 35px;
@@ -58,7 +58,7 @@
 
 	.uag-global-settings-metabox .uag-starter-template__button {
 		margin-bottom: 55px;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
 

@@ -1,6 +1,5 @@
 import SettingsPageSkeleton from '@Admin/settings-app/components/settings-page/SettingsPageSkeleton';
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import apiFetch from '@wordpress/api-fetch';
 import { useStateValue } from '@Utils/StateProvider';
 import TemplatesButton from '@SettingsApp/components/settings-page/TemplatesButton';
@@ -38,10 +37,6 @@ function SettingsPage() {
 		};
 	}, [] );
 
-	const location = useLocation();
-	const tab = location.hash;
-	let currentTab = <p>Default Tab</p>;
-
 	if ( loading ) {
 		return (
 			<div className="uag-global-settings-metabox">
@@ -49,19 +44,11 @@ function SettingsPage() {
 			</div>
 		);
 	}
-	switch ( tab ) {
-		case '#templates_settings':
-			currentTab = <TemplatesButton />;
-			break;
-		default:
-			currentTab = <TemplatesButton />;
-			break;
-	}
 
 	return (
 		<div className="uag-global-settings-metabox">
 			<AssetsGeneration />
-			<>{ currentTab }</>
+			<TemplatesButton />
 		</div>
 	);
 }
