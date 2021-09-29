@@ -164,7 +164,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
-		
+
 		return (
 			<>
 				<BlockEdit {...props} />
@@ -175,7 +175,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below setting will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						<p className="components-base-control__help">{ __( "Below UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
 					</PanelBody>
 				</InspectorControls>
