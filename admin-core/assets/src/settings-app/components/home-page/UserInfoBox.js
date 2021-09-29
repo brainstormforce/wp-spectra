@@ -11,7 +11,7 @@ function UserInfoBox() {
 	const [ activateThemeText, setsactivateThemeText ] = useState(
 		'Activate ASTRA Now!'
 	);
-	const [ installingTheme, setsinstallingTheme ] = useState( false 
+	const [ installingTheme, setsinstallingTheme ] = useState( false
 		);
 	const [ activateTheme, setsactivateTheme ] = useState( false );
 	const [ installingPluginText, setsinstallingPluginText ] = useState(
@@ -97,7 +97,7 @@ function UserInfoBox() {
 	const learnMoreAstraClick = () => {
 		window.open( 'https://wpastra.com/', '_blank' );
 	};
-	
+
 	const astraThemeButton = () => {
 		if ( ! uag_react.theme_file && uag_react.is_main_site ) {
 			return (
@@ -204,7 +204,7 @@ function UserInfoBox() {
 			<div className="uag-metabox uag-metabox__header">
 				<h1>
 					{ __( 'Welcome ', 'ultimate-addons-for-gutenberg' ) +
-						uag_react.current_user }
+						uag_react.current_user + ' 👋' }
 				</h1>
 				<p>
 					{ __(
@@ -335,7 +335,7 @@ function UserInfoBox() {
 					saving={ false }
 					classes="uag-button--secondary"
 				/>
-			</div>	
+			</div>
 		</div>
 	);
 }

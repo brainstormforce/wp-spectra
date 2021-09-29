@@ -54,7 +54,7 @@
 		color: #444;
 		margin-bottom: -1px;
 		cursor: pointer;
-		font-size: 14px;
+		font-size: 15px;
 		line-height: 1em;
 		letter-spacing: 0.225px;
 		font-weight: var(--heading-weight-400);
@@ -73,6 +73,7 @@
 .uag-menu-page-wrapper a.uag-global-nav-menu__tab.uag-global-nav-menu__tab--active:active {
 	color: #135e96;
 	box-shadow: inset 0 -4px 0 -2px #135e96;
+	font-weight: 500;
 }
 
 /* New FIxed header */
